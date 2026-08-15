@@ -1,0 +1,64 @@
+name: Direction coverage audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/direction-coverage-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-direction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - slug: 2023-aaa
+            asset: 2023_8_aaa_pbp.csv
+          - slug: 2023-aa
+            asset: 2023_8_aa_pbp.csv
+          - slug: 2023-high-a
+            asset: 2023_8_a+_pbp.csv
+          - slug: 2023-single-a
+            asset: 2023_8_a_pbp.csv
+          - slug: 2023-rookie
+            asset: 2023_8_rk_pbp.csv
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit ${{ matrix.slug }} direction evidence
+        run: |
+          python scripts/audit_direction_coverage.py \
+            --url "https://github.com/armstjc/milb-data-repository/releases/download/pbp/${{ matrix.asset }}" \
+            --asset-name "${{ matrix.asset }}" \
+            --work-dir "data/quarantine/direction-coverage/${{ matrix.slug }}" \
+            --report-dir "reports/generated/direction-coverage/${{ matrix.slug }}"
+
+      - name: Upload ${{ matrix.slug }} direction report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: direction-coverage-${{ matrix.slug }}
+          path: reports/generated/direction-coverage/${{ matrix.slug }}/
+          if-no-files-found: warn
+          retention-days: 14
