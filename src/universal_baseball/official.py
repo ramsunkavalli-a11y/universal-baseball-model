@@ -3,8 +3,8 @@
 The project intentionally does not flatten the full MLB Stats API feed here.
 `python-mlb-statsapi` owns HTTP transport, retries, and error handling through
 its stable public low-level adapter. We project only the plate-appearance,
-pitch-event, and boxscore batting fields needed to verify reusable sources and
-our own event aggregation.
+pitch-event, batted-ball, and boxscore fields needed to verify reusable sources
+and our own event aggregation.
 """
 
 from __future__ import annotations
@@ -43,6 +43,15 @@ OFFICIAL_PITCH_EVENT_COLUMNS = (
     "description",
     "has_pitch_data",
     "pitch_type_code",
+    "batter_side",
+    "is_in_play",
+    "hit_trajectory",
+    "hit_location",
+    "hit_coord_x",
+    "hit_coord_y",
+    "hit_total_distance",
+    "hit_launch_speed",
+    "hit_launch_angle",
 )
 
 OFFICIAL_TEAM_BATTING_COLUMNS = (
@@ -97,6 +106,15 @@ def _empty_pitch_event_frame() -> pl.DataFrame:
             "description": pl.String,
             "has_pitch_data": pl.Boolean,
             "pitch_type_code": pl.String,
+            "batter_side": pl.String,
+            "is_in_play": pl.Boolean,
+            "hit_trajectory": pl.String,
+            "hit_location": pl.String,
+            "hit_coord_x": pl.Float64,
+            "hit_coord_y": pl.Float64,
+            "hit_total_distance": pl.Float64,
+            "hit_launch_speed": pl.Float64,
+            "hit_launch_angle": pl.Float64,
         }
     )
 
@@ -136,6 +154,22 @@ def _int_or_none(value: Any) -> int | None:
         return None
 
 
+def _float_or_none(value: Any) -> float | None:
+    if value is None or value == "":
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _string_or_none(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text if text else None
+
+
 def _batting_side_from_half_inning(value: Any) -> str | None:
     if value is None:
         return None
@@ -160,6 +194,8 @@ def project_official_play_by_play(
 
     Zero-pitch plate appearances (for example a signaled intentional walk) are
     retained in the PA table even though they have no corresponding pitch row.
+    Structured ``hitData`` fields are retained only as source evidence; no spray
+    direction or batted-ball category is inferred in this adapter.
     """
 
     pa_rows: list[dict[str, Any]] = []
@@ -179,6 +215,7 @@ def project_official_play_by_play(
         pitcher = _mapping(matchup.get("pitcher"))
         bat_side = _mapping(matchup.get("batSide"))
         pitch_hand = _mapping(matchup.get("pitchHand"))
+        batter_side_code = _string_or_none(bat_side.get("code"))
         at_bat_index = play.get("atBatIndex")
         pa_key = None if at_bat_index is None else str(at_bat_index)
         half_inning = about.get("halfInning")
@@ -205,7 +242,7 @@ def project_official_play_by_play(
                 "batting_side": _batting_side_from_half_inning(half_inning),
                 "batter_id": _int_or_none(batter.get("id")),
                 "pitcher_id": _int_or_none(pitcher.get("id")),
-                "batter_side": bat_side.get("code"),
+                "batter_side": batter_side_code,
                 "pitcher_hand": pitch_hand.get("code"),
                 "official_pitch_count": len(current_pitch_events),
             }
@@ -214,6 +251,8 @@ def project_official_play_by_play(
         for play_event in current_pitch_events:
             details = _mapping(play_event.get("details"))
             pitch_type = _mapping(details.get("type"))
+            hit_data = _mapping(play_event.get("hitData"))
+            hit_coordinates = _mapping(hit_data.get("coordinates"))
             pitch_event_rows.append(
                 {
                     "game_pk": game_key,
@@ -226,6 +265,15 @@ def project_official_play_by_play(
                     "description": details.get("description"),
                     "has_pitch_data": play_event.get("pitchData") is not None,
                     "pitch_type_code": pitch_type.get("code"),
+                    "batter_side": batter_side_code,
+                    "is_in_play": details.get("isInPlay") is True,
+                    "hit_trajectory": _string_or_none(hit_data.get("trajectory")),
+                    "hit_location": _string_or_none(hit_data.get("location")),
+                    "hit_coord_x": _float_or_none(hit_coordinates.get("coordX")),
+                    "hit_coord_y": _float_or_none(hit_coordinates.get("coordY")),
+                    "hit_total_distance": _float_or_none(hit_data.get("totalDistance")),
+                    "hit_launch_speed": _float_or_none(hit_data.get("launchSpeed")),
+                    "hit_launch_angle": _float_or_none(hit_data.get("launchAngle")),
                 }
             )
 
@@ -253,6 +301,17 @@ def project_official_play_by_play(
                 pl.col("at_bat_number").cast(pl.String),
                 pl.col("event_index").cast(pl.Int64),
                 pl.col("pitch_number").cast(pl.Int64),
+                pl.col("is_in_play").cast(pl.Boolean),
+                *[
+                    pl.col(column).cast(pl.Float64)
+                    for column in (
+                        "hit_coord_x",
+                        "hit_coord_y",
+                        "hit_total_distance",
+                        "hit_launch_speed",
+                        "hit_launch_angle",
+                    )
+                ],
             ]
         )
 
