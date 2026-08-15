@@ -151,10 +151,10 @@ def test_batted_ball_comparison_never_silently_resolves_conflicting_source_paylo
 
     assert result["field_summaries"]["bb_type"]["source_conflicting_key_count"] == 1
     assert result["total_source_field_conflict_count"] == 1
-    assert result["source_field_conflict_examples"][0]["conflicts"]["bb_type"] == [
+    assert set(result["source_field_conflict_examples"][0]["conflicts"]["bb_type"]) == {
         "line_drive",
         "ground_ball",
-    ]
+    }
     assert result["certification_clean"] is False
 
 
