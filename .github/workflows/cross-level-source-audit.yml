@@ -21,18 +21,22 @@ jobs:
         include:
           - slug: aa
             asset: 2025_4_aa_pbp.csv
+            expected_year: 2025
             expected_month: 4
             expected_level: aa
           - slug: high-a
             asset: 2025_4_a+_pbp.csv
+            expected_year: 2025
             expected_month: 4
             expected_level: a+
           - slug: single-a
             asset: 2025_4_a_pbp.csv
+            expected_year: 2025
             expected_month: 4
             expected_level: a
-          - slug: rookie-june
-            asset: 2025_6_rk_pbp.csv
+          - slug: rookie-june-2024
+            asset: 2024_6_rk_pbp.csv
+            expected_year: 2024
             expected_month: 6
             expected_level: rk
 
@@ -54,7 +58,7 @@ jobs:
           python scripts/certify_armstjc_release.py \
             --url "https://github.com/armstjc/milb-data-repository/releases/download/pbp/${{ matrix.asset }}" \
             --asset-name "${{ matrix.asset }}" \
-            --expected-year 2025 \
+            --expected-year ${{ matrix.expected_year }} \
             --expected-month ${{ matrix.expected_month }} \
             --expected-level "${{ matrix.expected_level }}" \
             --official-sample-games 3 \
