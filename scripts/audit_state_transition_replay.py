@@ -14,6 +14,7 @@ from universal_baseball.canonical_schema import CANONICAL_SCHEMA_VERSION
 from universal_baseball.event_types import PLATE_APPEARANCE_EVENT_TYPES
 from universal_baseball.official_capture import capture_official_json
 from universal_baseball.provenance import NormalizationDefinition, make_source_snapshot_id
+from universal_baseball.state_transition_terminal_outs import apply_terminal_allplay_outs
 from universal_baseball.state_transitions import (
     build_official_state_transitions,
     transition_quality_flags,
@@ -119,12 +120,13 @@ def _audit_game(group: str, game_id: int) -> tuple[dict[str, Any], pl.DataFrame]
         normalizer_version="poc-v1",
         canonical_schema_version=CANONICAL_SCHEMA_VERSION,
     )
-    transitions = build_official_state_transitions(
+    provisional = build_official_state_transitions(
         game_id,
         capture.data,
         source_snapshot_id=snapshot_id,
         normalization_id=normalization.normalization_id,
     )
+    transitions = apply_terminal_allplay_outs(provisional, capture.data)
     quality = transition_quality_flags(transitions)
     quality_counts = _quality_counts(quality) if not quality.is_empty() else Counter()
     continuity = _continuity_breaks(transitions)
@@ -192,7 +194,8 @@ def main() -> int:
     total_continuity_breaks = sum(report["continuity_break_count"] for report in reports)
 
     payload = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
+        "terminal_outs_semantics": "top-level allPlay.count.outs for terminal result; playEvent.count.outs for preterminal runner events",
         "game_count": len(reports),
         "transition_count": combined.height,
         "official_true_pa_count": total_true_pa,
@@ -212,9 +215,9 @@ def main() -> int:
         "games": reports,
         "quality_examples": quality.head(50).to_dicts(),
         "interpretation": (
-            "The replay never resets reconstructed bases/scores to official sequence-end values. "
-            "Therefore a bad movement can propagate into subsequent state and is detectable through "
-            "explicit sequence-end reconciliation flags or continuity breaks."
+            "Runner state is replayed without resetting to official postOn values. "
+            "Terminal outs follow baseballquery's established top-level allPlay.count.outs rule, "
+            "while preterminal runner events use playEvent.count.outs."
         ),
     }
     (report_dir / "state_transition_replay.json").write_text(
@@ -248,7 +251,7 @@ def main() -> int:
     lines.extend(
         [
             "",
-            "This is a state-replay certification POC, not yet a production RE24 table. A clean result would justify freezing the canonical state-transition schema and then validating the same semantics against Chadwick/Retrosheet MLB events.",
+            "This remains a state-replay certification POC, not yet a production RE24 table. A clean result justifies freezing the state-transition schema and validating it against Chadwick/Retrosheet MLB events.",
             "",
         ]
     )
