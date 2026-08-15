@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Run the first armstjc MiLB PBP release smoke certification."""
+"""Run armstjc MiLB PBP release certification against official true PAs."""
 
 from __future__ import annotations
 
@@ -20,8 +20,8 @@ from universal_baseball.certification import (
     write_report,
 )
 from universal_baseball.official import fetch_official_game_evidence
-from universal_baseball.source_comparison import (
-    compare_pitch_source_to_official_pas,
+from universal_baseball.source_sequence_comparison import (
+    compare_pitch_source_to_official_true_pas,
     select_diverse_game_ids,
 )
 
@@ -62,8 +62,9 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=5,
         help=(
-            "Number of date-spread games to compare with official PA results. "
-            "Use a large value for an explicit full-release audit."
+            "Number of date-spread games to compare with official true plate "
+            "appearances and pitch events. Use a large value for an explicit "
+            "full-release audit."
         ),
     )
     parser.add_argument(
@@ -77,12 +78,7 @@ def parse_args() -> argparse.Namespace:
 def _fetch_official_per_game(
     game_ids: list[int],
 ) -> tuple[pl.DataFrame, pl.DataFrame, list[dict[str, Any]], list[int]]:
-    """Fetch official evidence while recording adapter failures by game.
-
-    This is deliberately an audit helper rather than production retry logic. An
-    official-utility failure should not hide which games the current adapter can
-    and cannot represent.
-    """
+    """Fetch official true-PA and pitch evidence while recording failures."""
 
     pa_frames: list[pl.DataFrame] = []
     pitch_frames: list[pl.DataFrame] = []
@@ -106,7 +102,7 @@ def _fetch_official_per_game(
         pitch_frames.append(pitch_frame)
         successes.append(int(game_id))
 
-    official_pas = (
+    official_true_pas = (
         pl.concat(pa_frames, how="vertical_relaxed") if pa_frames else pl.DataFrame()
     )
     official_pitch_events = (
@@ -114,23 +110,27 @@ def _fetch_official_per_game(
         if pitch_frames
         else pl.DataFrame()
     )
-    return official_pas, official_pitch_events, failures, successes
+    return official_true_pas, official_pitch_events, failures, successes
 
 
 def _write_official_comparison(
-    comparison: dict,
+    comparison: dict[str, Any],
     game_ids: list[int],
     output_dir: Path,
 ) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    json_path = output_dir / "armstjc_official_pa_sample.json"
-    markdown_path = output_dir / "armstjc_official_pa_sample.md"
+    json_path = output_dir / "armstjc_official_sequence_sample.json"
+    markdown_path = output_dir / "armstjc_official_sequence_sample.md"
 
-    payload = {"sample_game_ids": game_ids, **comparison}
+    payload = {
+        "report_schema_version": 3,
+        "sample_game_ids": game_ids,
+        **comparison,
+    }
     json_path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
 
     lines = [
-        "# armstjc + official PA hybrid sample",
+        "# armstjc pitch-sequence + official true-PA sample",
         "",
         f"- Requested games: {len(game_ids)}",
         f"- Official-adapter successful games: {comparison['successful_official_game_count']}",
@@ -144,30 +144,33 @@ def _write_official_comparison(
             "- Distinct natural pitch keys **for comparison only**: "
             f"{comparison['source_rows_after_natural_key_collapse_for_comparison']:,}"
         ),
-        f"- Source PAs: {comparison['source_pa_count']:,}",
-        f"- Official PAs: {comparison['official_pa_count']:,}",
-        f"- Shared PAs: {comparison['shared_pa_count']:,}",
-        f"- Source-only PAs: {comparison['source_only_pa_count']:,}",
-        f"- Official-only PAs: {comparison['official_only_pa_count']:,}",
+        f"- Source pitch-bearing sequences: {comparison['source_pitch_sequence_count']:,}",
+        f"- Official true PAs: {comparison['official_true_pa_count']:,}",
         (
-            "- Official-only zero-pitch PAs (structural pitch-table gap): "
-            f"{comparison['official_only_zero_pitch_pa_count']:,}"
+            "- Shared source-sequence / true-PA keys: "
+            f"{comparison['shared_sequence_true_pa_count']:,}"
+        ),
+        f"- Source-only pitch-bearing sequences: {comparison['source_only_pitch_sequence_count']:,}",
+        f"- Official-only true PAs: {comparison['official_only_true_pa_count']:,}",
+        (
+            "- Official-only zero-pitch true PAs (structural pitch-table gap): "
+            f"{comparison['official_only_zero_pitch_true_pa_count']:,}"
         ),
         (
-            "- Official-only positive-pitch PAs (unexplained gap): "
-            f"{comparison['official_only_positive_pitch_pa_count']:,}"
+            "- Official-only positive-pitch true PAs (unexplained gap): "
+            f"{comparison['official_only_positive_pitch_true_pa_count']:,}"
         ),
         (
-            "- PAs with source-vs-official pitch-count mismatch: "
-            f"{comparison['pitch_count_mismatch_pa_count']:,}"
+            "- Shared sequences with source-vs-official pitch-count mismatch: "
+            f"{comparison['pitch_count_mismatch_sequence_count']:,}"
         ),
         (
-            "- PAs with source-vs-official description mismatch: "
-            f"{comparison['description_mismatch_pa_count']:,}"
+            "- Shared sequences with source-vs-official description mismatch: "
+            f"{comparison['description_mismatch_sequence_count']:,}"
         ),
         (
-            "- Official PAs with nonblank event_type: "
-            f"{comparison['official_event_type_nonblank_pa_count']:,}"
+            "- Official true PAs with nonblank event_type: "
+            f"{comparison['official_event_type_nonblank_true_pa_count']:,}"
         ),
         (
             "- Source pitch rows with nonblank `events`: "
@@ -175,13 +178,23 @@ def _write_official_comparison(
         ),
     ]
 
-    zero_pitch_examples = comparison.get("official_only_zero_pitch_pa_examples") or []
+    zero_pitch_examples = (
+        comparison.get("official_only_zero_pitch_true_pa_examples") or []
+    )
     if zero_pitch_examples:
-        lines.extend(["", "## Structural zero-pitch PA gaps", ""])
+        lines.extend(["", "## Structural zero-pitch true-PA gaps", ""])
         for row in zero_pitch_examples:
             lines.append(
-                f"- game {row['game_pk']} PA {row['at_bat_number']}: "
+                f"- game {row['game_pk']} sequence {row['at_bat_number']}: "
                 f"{row.get('event_type')} — {row.get('description')}"
+            )
+
+    source_only_examples = comparison.get("source_only_pitch_sequence_examples") or []
+    if source_only_examples:
+        lines.extend(["", "## Source-only pitch-bearing sequence examples", ""])
+        for row in source_only_examples[:10]:
+            lines.append(
+                f"- game {row['game_pk']} sequence {row['at_bat_number']}"
             )
 
     if comparison["official_fetch_failures"]:
@@ -209,7 +222,9 @@ def _write_official_comparison(
     lines.extend(
         [
             "",
-            "This is a viability test for a hybrid source strategy, not certification.",
+            "A source `game_pk + atBatIndex` group is a **pitch-bearing sequence**, "
+            "not automatically a plate appearance. Official true-PA membership is "
+            "defined independently by versioned MLB event semantics.",
             "",
         ]
     )
@@ -251,12 +266,12 @@ def main() -> int:
         return 0
 
     game_ids = select_diverse_game_ids(frame, limit=args.official_sample_games)
-    official_pas, official_pitch_events, failures, successful_game_ids = (
+    official_true_pas, official_pitch_events, failures, successful_game_ids = (
         _fetch_official_per_game(game_ids)
     )
 
     if not successful_game_ids:
-        error_path = args.report_dir / "armstjc_official_pa_sample_error.json"
+        error_path = args.report_dir / "armstjc_official_sequence_sample_error.json"
         error_path.parent.mkdir(parents=True, exist_ok=True)
         error_path.write_text(
             json.dumps(
@@ -274,9 +289,9 @@ def main() -> int:
 
     successful_strings = [str(game_id) for game_id in successful_game_ids]
     sample_source = frame.filter(pl.col("game_pk").is_in(successful_strings))
-    comparison = compare_pitch_source_to_official_pas(
+    comparison = compare_pitch_source_to_official_true_pas(
         sample_source,
-        official_pas,
+        official_true_pas,
         official_pitch_events,
     )
     comparison["requested_game_count"] = len(game_ids)
@@ -286,15 +301,20 @@ def main() -> int:
 
     print(
         "\nHybrid sample: "
-        f"{comparison['shared_pa_count']}/{comparison['official_pa_count']} official PAs "
-        "matched source PA keys; "
-        f"{comparison['pitch_count_mismatch_pa_count']} shared PAs had pitch-count "
-        "mismatches."
+        f"{comparison['shared_sequence_true_pa_count']}/"
+        f"{comparison['official_true_pa_count']} official true PAs shared a source "
+        "pitch-sequence key; "
+        f"{comparison['pitch_count_mismatch_sequence_count']} shared sequences had "
+        "pitch-count mismatches."
     )
     print(
-        "PA gaps: "
-        f"{comparison['official_only_zero_pitch_pa_count']} structural zero-pitch; "
-        f"{comparison['official_only_positive_pitch_pa_count']} unexplained positive-pitch."
+        "True-PA gaps from the pitch table: "
+        f"{comparison['official_only_zero_pitch_true_pa_count']} structural zero-pitch; "
+        f"{comparison['official_only_positive_pitch_true_pa_count']} unexplained positive-pitch."
+    )
+    print(
+        "Source-only pitch-bearing sequences: "
+        f"{comparison['source_only_pitch_sequence_count']}"
     )
     print(
         "Official-adapter coverage: "
