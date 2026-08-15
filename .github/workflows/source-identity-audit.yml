@@ -1,0 +1,61 @@
+name: Reusable-source identity audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/source-identity-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  certify-source-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - slug: 2025-aaa
+            asset: 2025_3_aaa_pbp.csv
+            game_args: "--sample-games 5"
+          - slug: 2023-rookie-explicit
+            asset: 2023_8_rk_pbp.csv
+            game_args: "--game-id 741849 --game-id 742555 --game-id 743157"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit ${{ matrix.slug }} MLBAM identities
+        run: |
+          python scripts/audit_armstjc_identity.py \
+            --url "https://github.com/armstjc/milb-data-repository/releases/download/pbp/${{ matrix.asset }}" \
+            --asset-name "${{ matrix.asset }}" \
+            ${{ matrix.game_args }} \
+            --work-dir "data/quarantine/source-identity/${{ matrix.slug }}" \
+            --report-dir "reports/generated/source-identity/${{ matrix.slug }}"
+
+      - name: Upload ${{ matrix.slug }} identity report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: source-identity-${{ matrix.slug }}
+          path: reports/generated/source-identity/${{ matrix.slug }}/
+          if-no-files-found: warn
+          retention-days: 14
