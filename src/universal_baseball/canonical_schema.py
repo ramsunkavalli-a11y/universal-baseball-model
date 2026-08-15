@@ -8,7 +8,6 @@ semantics, and source conflict behavior are the hard parts to freeze first.
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
-from typing import Any
 
 import polars as pl
 
@@ -137,61 +136,30 @@ QUALITY_ISSUE_SCHEMA: dict[str, pl.DataType] = {
 }
 
 SOURCE_SNAPSHOT_REQUIRED = {
-    "source_snapshot_id",
-    "source_name",
-    "source_role",
-    "upstream_locator",
-    "content_sha256",
-    "retrieved_at_utc",
-    "raw_object_key",
+    "source_snapshot_id", "source_name", "source_role", "upstream_locator",
+    "content_sha256", "retrieved_at_utc", "raw_object_key",
 }
 NORMALIZATION_REQUIRED = set(NORMALIZATION_DEFINITION_SCHEMA)
 PLAY_SEQUENCE_REQUIRED = {
-    "normalization_id",
-    "source_snapshot_id",
-    "game_pk",
-    "at_bat_index",
-    "payload_hash",
-    "duplicate_row_count",
-    "classification_status",
+    "normalization_id", "source_snapshot_id", "game_pk", "at_bat_index",
+    "payload_hash", "duplicate_row_count", "classification_status",
 }
 PITCH_REQUIRED = {
-    "normalization_id",
-    "source_snapshot_id",
-    "game_pk",
-    "at_bat_index",
-    "pitch_number",
-    "payload_hash",
-    "duplicate_row_count",
+    "normalization_id", "source_snapshot_id", "game_pk", "at_bat_index",
+    "pitch_number", "payload_hash", "duplicate_row_count",
 }
-PLAYER_CROSSWALK_REQUIRED = {
-    "normalization_id",
-    "source_snapshot_id",
-    "mlbam_id",
-}
+PLAYER_CROSSWALK_REQUIRED = {"normalization_id", "source_snapshot_id", "mlbam_id"}
 QUALITY_ISSUE_REQUIRED = {
-    "quality_issue_id",
-    "issue_code",
-    "severity",
-    "entity_type",
-    "check_name",
-    "check_version",
-    "detected_at_utc",
-    "details_json",
+    "quality_issue_id", "issue_code", "severity", "entity_type",
+    "check_name", "check_version", "detected_at_utc", "details_json",
 }
 
 _ALLOWED_SEQUENCE_STATUS = {
-    "official_true_pa",
-    "official_non_pa",
-    "unclassified_source_sequence",
+    "official_true_pa", "official_non_pa", "unclassified_source_sequence",
 }
 _ALLOWED_SEVERITY = {"info", "warning", "error", "quarantine"}
 _ALLOWED_ENTITY_TYPE = {
-    "source_snapshot",
-    "game",
-    "play_sequence",
-    "pitch",
-    "player_crosswalk",
+    "source_snapshot", "game", "play_sequence", "pitch", "player_crosswalk",
 }
 _HEX64_PATTERN = r"^[0-9a-f]{64}$"
 
@@ -204,22 +172,13 @@ def conform_to_schema(
     table_name: str,
     allow_extra: bool = False,
 ) -> pl.DataFrame:
-    """Return an exact typed canonical frame or fail on ambiguous structure.
-
-    Missing optional columns are added as typed nulls. Missing required columns
-    fail. Extra columns fail by default so a source adapter cannot accidentally
-    discard newly appearing evidence while claiming to emit a canonical table.
-    Casting is strict: invalid source strings must be cleaned/flagged in the
-    source adapter rather than silently becoming null here.
-    """
+    """Return an exact typed canonical frame or fail on ambiguous structure."""
 
     expected = set(schema)
     required = set(required_columns)
     missing_required = sorted(required - set(frame.columns))
     if missing_required:
-        raise ValueError(
-            f"{table_name} missing required columns: {missing_required}"
-        )
+        raise ValueError(f"{table_name} missing required columns: {missing_required}")
 
     extra = sorted(set(frame.columns) - expected)
     if extra and not allow_extra:
@@ -228,38 +187,31 @@ def conform_to_schema(
     result = frame
     missing_optional = [column for column in schema if column not in result.columns]
     if missing_optional:
-        result = result.with_columns(
-            [
-                pl.lit(None, dtype=schema[column]).alias(column)
-                for column in missing_optional
-            ]
-        )
+        result = result.with_columns([
+            pl.lit(None, dtype=schema[column]).alias(column)
+            for column in missing_optional
+        ])
 
-    result = result.select(list(schema)).cast(dict(schema), strict=True)
-    return result
+    # Source adapters own messy parsing/coercion. Canonicalization is strict so
+    # invalid source text cannot silently turn into null evidence here.
+    return result.select(list(schema)).cast(dict(schema), strict=True)
 
 
 def _assert_non_null(frame: pl.DataFrame, columns: Iterable[str], table_name: str) -> None:
     columns = list(columns)
     if not columns:
         return
-    null_rows = frame.filter(
-        pl.any_horizontal([pl.col(column).is_null() for column in columns])
-    )
-    if not null_rows.is_empty():
+    rows = frame.filter(pl.any_horizontal([pl.col(c).is_null() for c in columns]))
+    if not rows.is_empty():
         raise ValueError(
-            f"{table_name} has {null_rows.height} rows with null required key values "
+            f"{table_name} has {rows.height} rows with null required key values "
             f"in {columns}"
         )
 
 
 def _assert_unique(frame: pl.DataFrame, columns: Iterable[str], table_name: str) -> None:
     columns = list(columns)
-    duplicates = (
-        frame.group_by(columns)
-        .len()
-        .filter(pl.col("len") > 1)
-    )
+    duplicates = frame.group_by(columns).len().filter(pl.col("len") > 1)
     if not duplicates.is_empty():
         raise ValueError(
             f"{table_name} has {duplicates.height} duplicate key groups for {columns}"
@@ -268,8 +220,7 @@ def _assert_unique(frame: pl.DataFrame, columns: Iterable[str], table_name: str)
 
 def _assert_hex64(frame: pl.DataFrame, column: str, table_name: str) -> None:
     invalid = frame.filter(
-        pl.col(column).is_null()
-        | ~pl.col(column).str.contains(_HEX64_PATTERN)
+        pl.col(column).is_null() | ~pl.col(column).str.contains(_HEX64_PATTERN)
     )
     if not invalid.is_empty():
         raise ValueError(
@@ -296,14 +247,18 @@ def validate_source_snapshot(frame: pl.DataFrame) -> pl.DataFrame:
     _assert_unique(result, ["source_snapshot_id"], "source_snapshot")
     _assert_hex64(result, "source_snapshot_id", "source_snapshot")
     _assert_hex64(result, "content_sha256", "source_snapshot")
+
     impossible = result.filter(
-        pl.col("knowledge_available_at_utc").is_not_null()
-        & (pl.col("knowledge_available_at_utc") > pl.col("retrieved_at_utc"))
+        (pl.col("source_published_at_utc").is_not_null()
+         & (pl.col("source_published_at_utc") > pl.col("retrieved_at_utc")))
+        | (pl.col("knowledge_available_at_utc").is_not_null()
+           & (pl.col("knowledge_available_at_utc") > pl.col("retrieved_at_utc")))
+        | (pl.col("source_published_at_utc").is_not_null()
+           & pl.col("knowledge_available_at_utc").is_not_null()
+           & (pl.col("knowledge_available_at_utc") < pl.col("source_published_at_utc")))
     )
     if not impossible.is_empty():
-        raise ValueError(
-            "source_snapshot contains knowledge_available_at_utc after retrieval"
-        )
+        raise ValueError("source_snapshot contains impossible publication/knowledge timing")
     return result
 
 
@@ -328,12 +283,7 @@ def validate_play_sequence_observation(frame: pl.DataFrame) -> pl.DataFrame:
         required_columns=PLAY_SEQUENCE_REQUIRED,
         table_name="play_sequence_observation",
     )
-    key = [
-        "normalization_id",
-        "game_pk",
-        "at_bat_index",
-        "payload_hash",
-    ]
+    key = ["normalization_id", "game_pk", "at_bat_index", "payload_hash"]
     _assert_non_null(result, PLAY_SEQUENCE_REQUIRED, "play_sequence_observation")
     _assert_unique(result, key, "play_sequence_observation")
     _assert_hex64(result, "normalization_id", "play_sequence_observation")
@@ -347,21 +297,17 @@ def validate_play_sequence_observation(frame: pl.DataFrame) -> pl.DataFrame:
     if not invalid_status.is_empty():
         raise ValueError("play_sequence_observation contains invalid classification_status")
 
-    true_pa_mismatch = result.filter(
-        (pl.col("classification_status") == "official_true_pa")
-        & (pl.col("is_plate_appearance") != True)  # noqa: E712
+    is_pa = pl.col("is_plate_appearance")
+    status = pl.col("classification_status")
+    mismatch = result.filter(
+        ((status == "official_true_pa") & ~is_pa.fill_null(False))
+        | ((status == "official_non_pa") & is_pa.fill_null(True))
+        | ((status == "unclassified_source_sequence") & is_pa.is_not_null())
     )
-    non_pa_mismatch = result.filter(
-        (pl.col("classification_status") == "official_non_pa")
-        & (pl.col("is_plate_appearance") != False)  # noqa: E712
-    )
-    unclassified_has_boolean = result.filter(
-        (pl.col("classification_status") == "unclassified_source_sequence")
-        & pl.col("is_plate_appearance").is_not_null()
-    )
-    if not true_pa_mismatch.is_empty() or not non_pa_mismatch.is_empty() or not unclassified_has_boolean.is_empty():
+    if not mismatch.is_empty():
         raise ValueError(
-            "play_sequence_observation classification_status disagrees with is_plate_appearance"
+            "play_sequence_observation classification_status disagrees with "
+            "is_plate_appearance"
         )
     return result
 
@@ -374,11 +320,7 @@ def validate_pitch_observation(frame: pl.DataFrame) -> pl.DataFrame:
         table_name="pitch_observation",
     )
     key = [
-        "normalization_id",
-        "game_pk",
-        "at_bat_index",
-        "pitch_number",
-        "payload_hash",
+        "normalization_id", "game_pk", "at_bat_index", "pitch_number", "payload_hash",
     ]
     _assert_non_null(result, PITCH_REQUIRED, "pitch_observation")
     _assert_unique(result, key, "pitch_observation")
@@ -386,8 +328,7 @@ def validate_pitch_observation(frame: pl.DataFrame) -> pl.DataFrame:
     _assert_hex64(result, "source_snapshot_id", "pitch_observation")
     _assert_hex64(result, "payload_hash", "pitch_observation")
     _assert_positive_duplicate_counts(result, "pitch_observation")
-    invalid_pitch_numbers = result.filter(pl.col("pitch_number") < 1)
-    if not invalid_pitch_numbers.is_empty():
+    if not result.filter(pl.col("pitch_number") < 1).is_empty():
         raise ValueError("pitch_observation contains pitch_number < 1")
     return result
 
@@ -400,11 +341,7 @@ def validate_player_crosswalk_observation(frame: pl.DataFrame) -> pl.DataFrame:
         table_name="player_crosswalk_observation",
     )
     _assert_non_null(result, PLAYER_CROSSWALK_REQUIRED, "player_crosswalk_observation")
-    _assert_unique(
-        result,
-        ["normalization_id", "mlbam_id"],
-        "player_crosswalk_observation",
-    )
+    _assert_unique(result, ["normalization_id", "mlbam_id"], "player_crosswalk_observation")
     _assert_hex64(result, "normalization_id", "player_crosswalk_observation")
     _assert_hex64(result, "source_snapshot_id", "player_crosswalk_observation")
     return result
@@ -420,11 +357,68 @@ def validate_quality_issue(frame: pl.DataFrame) -> pl.DataFrame:
     _assert_non_null(result, QUALITY_ISSUE_REQUIRED, "quality_issue")
     _assert_unique(result, ["quality_issue_id"], "quality_issue")
     _assert_hex64(result, "quality_issue_id", "quality_issue")
-
-    invalid_severity = result.filter(~pl.col("severity").is_in(sorted(_ALLOWED_SEVERITY)))
-    if not invalid_severity.is_empty():
+    if not result.filter(~pl.col("severity").is_in(sorted(_ALLOWED_SEVERITY))).is_empty():
         raise ValueError("quality_issue contains invalid severity")
-    invalid_entity = result.filter(~pl.col("entity_type").is_in(sorted(_ALLOWED_ENTITY_TYPE)))
-    if not invalid_entity.is_empty():
+    if not result.filter(~pl.col("entity_type").is_in(sorted(_ALLOWED_ENTITY_TYPE))).is_empty():
         raise ValueError("quality_issue contains invalid entity_type")
     return result
+
+
+def validate_provenance_links(
+    observations: pl.DataFrame,
+    normalization_definitions: pl.DataFrame,
+    source_snapshots: pl.DataFrame,
+    *,
+    table_name: str,
+) -> None:
+    """Verify observation → normalization → source-snapshot provenance links.
+
+    Every observation carries both IDs intentionally: the direct source ID keeps
+    Parquet rows self-describing, while the normalization ID proves which version
+    of our interpretation produced them. The two must agree.
+    """
+
+    required = {"normalization_id", "source_snapshot_id"}
+    missing = sorted(required - set(observations.columns))
+    if missing:
+        raise ValueError(f"{table_name} missing provenance columns: {missing}")
+
+    definitions = validate_normalization_definition(normalization_definitions)
+    snapshots = validate_source_snapshot(source_snapshots)
+    normalization_map = definitions.select(
+        ["normalization_id", "source_snapshot_id"]
+    ).rename({"source_snapshot_id": "expected_source_snapshot_id"})
+
+    checked = observations.join(
+        normalization_map,
+        on="normalization_id",
+        how="left",
+    )
+    missing_normalization = checked.filter(
+        pl.col("expected_source_snapshot_id").is_null()
+    )
+    if not missing_normalization.is_empty():
+        raise ValueError(
+            f"{table_name} references {missing_normalization.height} unknown "
+            "normalization definitions"
+        )
+
+    mismatched = checked.filter(
+        pl.col("source_snapshot_id") != pl.col("expected_source_snapshot_id")
+    )
+    if not mismatched.is_empty():
+        raise ValueError(
+            f"{table_name} has {mismatched.height} rows whose normalization points "
+            "to a different source snapshot"
+        )
+
+    known_snapshot_ids = snapshots.select("source_snapshot_id")
+    missing_snapshot = checked.select("source_snapshot_id").unique().join(
+        known_snapshot_ids,
+        on="source_snapshot_id",
+        how="anti",
+    )
+    if not missing_snapshot.is_empty():
+        raise ValueError(
+            f"{table_name} references {missing_snapshot.height} unknown source snapshots"
+        )
