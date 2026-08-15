@@ -8,7 +8,7 @@ Primary reusable source under test: `armstjc/milb-data-repository`.
 
 Official comparison source: MLB Stats API `game/{gamePk}/playByPlay`, fetched through the stable low-level `MlbDataAdapter` transport from `python-mlb-statsapi` and projected into a deliberately small set of PA and pitch-event fields by this project.
 
-The tests now cover recent Triple-A, Double-A, High-A, Single-A, and Rookie/complex/DSL source files. Older-history and aggregate-stat reconciliation remain open.
+The tests now cover recent Triple-A, Double-A, High-A, Single-A, and Rookie/complex/DSL source files, plus an official PBP-to-boxscore batting reconciliation across MLB through Rookie-level games. Older-history, batted-ball, identity, and finer tracking-coverage certification remain open.
 
 ## Triple-A bootstrap slice
 
@@ -113,7 +113,7 @@ A second audit tested one recent source asset at each lower affiliated level, us
 
 Across these samples, **913/913 official PA keys were present in the reusable source**. There were no source-only PAs and no positive-pitch official-only PAs in the selected games. Two shared Double-A PAs had one more physical pitch in the current official feed than in the reusable source.
 
-This is strong evidence that the reusable files preserve the underlying PA/pitch sequence well enough to continue evaluating them as a historical bootstrap, but it is not yet aggregate statistical certification.
+This is strong evidence that the reusable files preserve the underlying PA/pitch sequence well enough to continue evaluating them as a historical bootstrap, but it is not yet full historical certification.
 
 ### Natural-key conflicts at AA, High-A, and Single-A
 
@@ -173,6 +173,28 @@ The cross-level samples contain description-string differences even where PA key
 
 Narrative descriptions remain useful for debugging and edge-case interpretation, but canonical reconciliation should prioritize structured IDs, event codes, counts, and baseball state rather than exact description-string equality.
 
+## Official PBP → boxscore batting reconciliation
+
+The first aggregate-stat reconciliation exposed another useful validator mistake before it reached the data model.
+
+A naive version counted every Stats API `allPlays` row as a PA. That worked for the MLB and Single-A controls but over-counted selected AAA, AA, High-A, and Rookie batting lines by one or more PAs/ABs. The extra rows had structured result event types such as `pickoff_1b`, `game_advisory`, `caught_stealing_2b`, `caught_stealing_3b`, and `other_out`.
+
+Crucially, these rows can still carry `result.type="atBat"`, so neither array row count nor `result.type` is a safe PA rule.
+
+The Stats API's `/eventTypes` endpoint already solves this classification problem by attaching a `plateAppearance` flag to each event code. We stored a dated 2026-08-15 snapshot of those official semantics and changed reconciliation to:
+
+1. count only result event types MLB marks as plate appearances;
+2. keep known runner/game result rows but exclude them from batting PA accounting;
+3. fail certification on blank or previously unseen event codes instead of guessing;
+4. reconstruct AB from `PA - BB - HBP - SH - SF - CI`;
+5. compare PA, AB, H, 2B, 3B, HR, BB, IBB, HBP, K, SH, SF, and CI to official team boxscore totals.
+
+After that change, **all 22 home/away batting lines across 11 representative games reconciled exactly on all 13 audited totals**, with no blank or unknown result event types. The sample spans MLB, AAA, AA, High-A, Single-A, and Rookie-level games and includes the irregular MiLB game `780856` that broke the strict high-level PBP client.
+
+This clears the initial aggregate-stat reconciliation gate for the narrow official PA projection. It does not prove all historical event types or source seasons behave identically, which is why unknown-code detection and older-slice testing remain required.
+
+See ADR 004.
+
 ## What is now established
 
 The POC has enough evidence to make several foundation decisions without pretending the source is perfect:
@@ -185,19 +207,21 @@ The POC has enough evidence to make several foundation decisions without pretend
 6. DSL/ACL/FCL classification comes from row-level league metadata.
 7. Tracking coverage must be explicit evidence metadata.
 8. Exact narrative text is not a certification target.
+9. Stats API `allPlays` rows are not automatically PAs; official event-type semantics govern PA accounting.
+10. The narrow official PA projection can reproduce official boxscore batting totals in the first cross-level reconciliation suite.
 
 ## Remaining concerns before promotion
 
-The source is still **quarantined**. The next foundation gates are:
+The reusable historical source is still **quarantined**. The next foundation gates are:
 
-- official statistical reconciliation for PA, AB, H, 2B, 3B, HR, BB, HBP, and K;
 - older historical-slice testing for schema/behavior drift;
+- explicit per-league sampling inside level buckets, especially a confirmed DSL game rather than only a mixed Rookie asset;
 - batted-ball direction/category validation before a FaBIO-like profile depends on it;
 - player identity crosswalk validation;
 - tracking availability profiling at park/league/season grain rather than only release-slice grain;
 - source-data terms/redistribution review.
 
-Cross-level basic sequence testing, DSL identification, adjacent-file overlap, and natural-key conflict handling are no longer open conceptual blockers; they are now certification rules.
+Cross-level recent sequence testing, initial aggregate batting reconciliation, DSL presence/identification, adjacent-file overlap, event-type PA semantics, and natural-key conflict handling are no longer open conceptual blockers; they are now certification rules.
 
 ## Current provisional architecture
 
@@ -206,6 +230,7 @@ Cross-level basic sequence testing, DSL identification, adjacent-file overlap, a
 3. canonical PA records keyed independently and enriched/certified from the official feed;
 4. canonical pitch records attached to PA records where pitches exist, with one resolved pitch per natural pitch key in current views;
 5. official MLB API access through a narrow low-level adapter for verification, PA outcomes, gap filling, and incremental updates;
-6. richer tracking sources such as Savant/SportsDataverse added later as optional evidence tiers.
+6. versioned official event-type semantics for reproducible PA accounting and drift detection;
+7. richer tracking sources such as Savant/SportsDataverse added later as optional evidence tiers.
 
-The next step is the **reconciliation suite**, not a production historical backfill.
+The next source-certification work should focus on **older history and explicit league coverage**, not production-scale backfill yet.
