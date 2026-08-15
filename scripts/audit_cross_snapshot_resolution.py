@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Exercise the ordering-free pitch resolver on a real overlapping source pair."""
+"""Exercise ordering-free source resolution and narrow official adjudication."""
 
 from __future__ import annotations
 
@@ -10,9 +10,13 @@ from pathlib import Path
 
 import polars as pl
 
+from universal_baseball.authority_adjudication import (
+    adjudicate_pitch_conflicts_with_official_pas,
+)
 from universal_baseball.canonical_adapters import normalize_armstjc_pitch_observations
 from universal_baseball.canonical_schema import CANONICAL_SCHEMA_VERSION
 from universal_baseball.certification import download_file, read_quarantined_csv
+from universal_baseball.official import fetch_official_game_evidence
 from universal_baseball.provenance import NormalizationDefinition, make_source_snapshot_id
 from universal_baseball.resolution import (
     pitch_resolution_conflicts,
@@ -22,6 +26,7 @@ from universal_baseball.resolution import (
 
 BASE_URL = "https://github.com/armstjc/milb-data-repository/releases/download/pbp"
 SOURCE_KEY = ["game_pk", "at_bat_number", "pitch_number"]
+OFFICIAL_ADJUDICATION_FIELDS = ("batter_side", "pitcher_hand")
 
 
 def parse_args() -> argparse.Namespace:
@@ -68,6 +73,35 @@ def _field_conflict_counts(conflicts: pl.DataFrame) -> dict[str, int]:
     return dict(sorted(counts.items(), key=lambda item: (-item[1], item[0])))
 
 
+def _adjudication_records_with_asset_names(
+    adjudication: pl.DataFrame,
+    snapshot_to_asset: dict[str, str],
+) -> list[dict[str, object]]:
+    records: list[dict[str, object]] = []
+    for row in adjudication.to_dicts():
+        candidates = row.pop("source_candidates_by_snapshot") or {}
+        matching_ids = row.get("matching_source_snapshot_ids") or []
+        ambiguous_ids = row.get("ambiguous_source_snapshot_ids") or []
+        records.append(
+            {
+                **row,
+                "source_candidates_by_asset": {
+                    snapshot_to_asset.get(snapshot_id, snapshot_id): values
+                    for snapshot_id, values in candidates.items()
+                },
+                "matching_source_assets": [
+                    snapshot_to_asset.get(snapshot_id, snapshot_id)
+                    for snapshot_id in matching_ids
+                ],
+                "ambiguous_source_assets": [
+                    snapshot_to_asset.get(snapshot_id, snapshot_id)
+                    for snapshot_id in ambiguous_ids
+                ],
+            }
+        )
+    return records
+
+
 def main() -> int:
     args = parse_args()
     args.work_dir.mkdir(parents=True, exist_ok=True)
@@ -75,8 +109,12 @@ def main() -> int:
 
     left_path = args.work_dir / args.left_asset
     right_path = args.work_dir / args.right_asset
-    left_meta = download_file(f"{BASE_URL}/{args.left_asset}", left_path, timeout_seconds=180)
-    right_meta = download_file(f"{BASE_URL}/{args.right_asset}", right_path, timeout_seconds=180)
+    left_meta = download_file(
+        f"{BASE_URL}/{args.left_asset}", left_path, timeout_seconds=180
+    )
+    right_meta = download_file(
+        f"{BASE_URL}/{args.right_asset}", right_path, timeout_seconds=180
+    )
 
     left = read_quarantined_csv(left_path)
     right = read_quarantined_csv(right_path)
@@ -92,6 +130,10 @@ def main() -> int:
 
     left_snapshot = _snapshot_id(args.left_asset, str(left_meta["sha256"]))
     right_snapshot = _snapshot_id(args.right_asset, str(right_meta["sha256"]))
+    snapshot_to_asset = {
+        left_snapshot: args.left_asset,
+        right_snapshot: args.right_asset,
+    }
     left_normalization = _normalization(left_snapshot)
     right_normalization = _normalization(right_snapshot)
 
@@ -127,6 +169,45 @@ def main() -> int:
         )
     }
 
+    # Only fields already present as structured matchup evidence in the official
+    # true-PA projection are adjudicated here. The source-only consensus remains
+    # unchanged regardless of the answer.
+    adjudication_records: list[dict[str, object]] = []
+    adjudication_status_counts: dict[str, int] = {}
+    adjudication_sequence_field_count = 0
+    relevant_conflicts = conflicts.filter(
+        pl.col("conflict_fields").list.eval(
+            pl.element().is_in(list(OFFICIAL_ADJUDICATION_FIELDS))
+        ).list.any()
+    ) if not conflicts.is_empty() else conflicts
+
+    if not relevant_conflicts.is_empty():
+        conflict_game_ids = sorted(
+            int(value)
+            for value in relevant_conflicts.get_column("game_pk").unique().to_list()
+        )
+        official_pas, _ = fetch_official_game_evidence(conflict_game_ids)
+        adjudication = adjudicate_pitch_conflicts_with_official_pas(
+            observations,
+            relevant_conflicts,
+            official_pas,
+            fields=OFFICIAL_ADJUDICATION_FIELDS,
+        )
+        adjudication_sequence_field_count = adjudication.height
+        adjudication_status_counts = {
+            str(row["status"]): int(row["len"])
+            for row in (
+                adjudication.group_by("status")
+                .len()
+                .sort("status")
+                .to_dicts()
+            )
+        }
+        adjudication_records = _adjudication_records_with_asset_names(
+            adjudication,
+            snapshot_to_asset,
+        )
+
     payload = {
         "left_asset": args.left_asset,
         "right_asset": args.right_asset,
@@ -149,6 +230,16 @@ def main() -> int:
                 "conflict_fields",
             ]
         ).head(25).to_dicts(),
+        "official_adjudication": {
+            "fields": list(OFFICIAL_ADJUDICATION_FIELDS),
+            "sequence_field_count": adjudication_sequence_field_count,
+            "status_counts": adjudication_status_counts,
+            "records": adjudication_records,
+            "note": (
+                "Official evidence is diagnostic only; it does not mutate the "
+                "source-only consensus view."
+            ),
+        },
         "resolution_policy": (
             resolved.get_column("resolution_policy")[0] if resolved.height else None
         ),
@@ -192,10 +283,27 @@ def main() -> int:
     else:
         lines.append("- None")
 
+    lines.extend(["", "## Official adjudication of residual hand conflicts", ""])
+    if adjudication_records:
+        lines.append(
+            f"- Unique sequence-field conflicts checked: {adjudication_sequence_field_count:,}"
+        )
+        for status, count in adjudication_status_counts.items():
+            lines.append(f"- `{status}`: {count:,}")
+        lines.append("")
+        for row in adjudication_records:
+            lines.append(
+                f"- game {row['game_pk']} sequence {row['at_bat_index']} "
+                f"`{row['field']}`: source={row['source_candidates_by_asset']}; "
+                f"official={row['official_value']!r}; status={row['status']}"
+            )
+    else:
+        lines.append("- No supported residual conflicts to adjudicate.")
+
     lines.extend(
         [
             "",
-            "No source row is selected as globally newer. Stable non-null fields survive across snapshots; disagreeing canonical fields remain null in the derived source-only view and are explicitly reported.",
+            "No source row is selected as globally newer. Stable non-null fields survive across snapshots; disagreeing canonical fields remain null in the derived source-only view and are explicitly reported. Official evidence is evaluated separately and does not silently mutate source consensus.",
             "",
         ]
     )
