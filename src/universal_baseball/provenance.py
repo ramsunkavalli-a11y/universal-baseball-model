@@ -1,8 +1,9 @@
-"""Canonical source-snapshot provenance utilities.
+"""Canonical source and normalization provenance utilities.
 
-A source snapshot identifies immutable upstream evidence. Parser/normalizer code
-is versioned separately so the same raw bytes can be re-normalized without
-pretending the upstream source changed.
+An upstream source snapshot and our interpretation of that snapshot are separate
+identities. Re-running newer normalization code over identical raw bytes must
+create a new normalization definition without pretending the upstream evidence
+changed.
 """
 
 from __future__ import annotations
@@ -17,19 +18,22 @@ from typing import Any
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
-def _validated_sha256(value: str) -> str:
+def _validated_sha256(value: str, *, field_name: str = "content_sha256") -> str:
     normalized = value.strip().lower()
     if not _SHA256_RE.fullmatch(normalized):
-        raise ValueError("content_sha256 must be exactly 64 hexadecimal characters")
+        raise ValueError(
+            f"{field_name} must be exactly 64 hexadecimal characters"
+        )
     return normalized
 
 
 def _require_aware_utc(value: datetime | None, field_name: str) -> datetime | None:
     if value is None:
         return None
-    if value.tzinfo is None or value.utcoffset() is None:
+    offset = value.utcoffset()
+    if value.tzinfo is None or offset is None:
         raise ValueError(f"{field_name} must be timezone-aware")
-    if value.utcoffset().total_seconds() != 0:
+    if offset.total_seconds() != 0:
         raise ValueError(f"{field_name} must be normalized to UTC")
     return value
 
@@ -40,13 +44,7 @@ def make_source_snapshot_id(
     content_sha256: str,
     upstream_version: str | None = None,
 ) -> str:
-    """Return a deterministic identity for immutable upstream content.
-
-    The ID depends on the source family, exact content digest, and optional
-    upstream version. It intentionally does not depend on parser version or
-    retrieval path: changing our code does not change what the upstream bytes
-    *are*.
-    """
+    """Return a deterministic identity for immutable upstream content."""
 
     source = source_name.strip()
     if not source:
@@ -57,9 +55,32 @@ def make_source_snapshot_id(
     return sha256(material).hexdigest()
 
 
+def make_normalization_id(
+    *,
+    source_snapshot_id: str,
+    normalizer_name: str,
+    normalizer_version: str,
+    canonical_schema_version: str,
+) -> str:
+    """Identify the deterministic interpretation applied to one source snapshot."""
+
+    snapshot = _validated_sha256(
+        source_snapshot_id, field_name="source_snapshot_id"
+    )
+    name = normalizer_name.strip()
+    version = normalizer_version.strip()
+    schema_version = canonical_schema_version.strip()
+    if not all((name, version, schema_version)):
+        raise ValueError("normalization definition text fields cannot be blank")
+    material = "\x1f".join(
+        (snapshot, name, version, schema_version)
+    ).encode("utf-8")
+    return sha256(material).hexdigest()
+
+
 @dataclass(frozen=True, slots=True)
 class SourceSnapshot:
-    """Immutable canonical metadata for one upstream source snapshot."""
+    """Immutable metadata for one exact upstream source representation."""
 
     source_snapshot_id: str
     source_name: str
@@ -70,8 +91,6 @@ class SourceSnapshot:
     source_published_at_utc: datetime | None
     retrieved_at_utc: datetime
     knowledge_available_at_utc: datetime | None
-    parser_name: str
-    parser_version: str
     license_id: str | None
     raw_object_key: str
 
@@ -84,8 +103,6 @@ class SourceSnapshot:
         upstream_locator: str,
         content_sha256: str,
         retrieved_at_utc: datetime,
-        parser_name: str,
-        parser_version: str,
         raw_object_key: str,
         upstream_version: str | None = None,
         source_published_at_utc: datetime | None = None,
@@ -95,19 +112,8 @@ class SourceSnapshot:
         source_name = source_name.strip()
         source_role = source_role.strip()
         upstream_locator = upstream_locator.strip()
-        parser_name = parser_name.strip()
-        parser_version = parser_version.strip()
         raw_object_key = raw_object_key.strip()
-        if not all(
-            (
-                source_name,
-                source_role,
-                upstream_locator,
-                parser_name,
-                parser_version,
-                raw_object_key,
-            )
-        ):
+        if not all((source_name, source_role, upstream_locator, raw_object_key)):
             raise ValueError("required source snapshot text fields cannot be blank")
 
         digest = _validated_sha256(content_sha256)
@@ -144,13 +150,52 @@ class SourceSnapshot:
             source_published_at_utc=published,
             retrieved_at_utc=retrieved,
             knowledge_available_at_utc=knowledge,
-            parser_name=parser_name,
-            parser_version=parser_version,
             license_id=license_id.strip() if license_id else None,
             raw_object_key=raw_object_key,
         )
 
     def as_record(self) -> dict[str, Any]:
-        """Return a flat record suitable for a Polars source-snapshot table."""
+        return asdict(self)
 
+
+@dataclass(frozen=True, slots=True)
+class NormalizationDefinition:
+    """Versioned interpretation of one immutable source snapshot."""
+
+    normalization_id: str
+    source_snapshot_id: str
+    normalizer_name: str
+    normalizer_version: str
+    canonical_schema_version: str
+
+    @classmethod
+    def build(
+        cls,
+        *,
+        source_snapshot_id: str,
+        normalizer_name: str,
+        normalizer_version: str,
+        canonical_schema_version: str,
+    ) -> "NormalizationDefinition":
+        snapshot = _validated_sha256(
+            source_snapshot_id, field_name="source_snapshot_id"
+        )
+        name = normalizer_name.strip()
+        version = normalizer_version.strip()
+        schema_version = canonical_schema_version.strip()
+        normalization_id = make_normalization_id(
+            source_snapshot_id=snapshot,
+            normalizer_name=name,
+            normalizer_version=version,
+            canonical_schema_version=schema_version,
+        )
+        return cls(
+            normalization_id=normalization_id,
+            source_snapshot_id=snapshot,
+            normalizer_name=name,
+            normalizer_version=version,
+            canonical_schema_version=schema_version,
+        )
+
+    def as_record(self) -> dict[str, Any]:
         return asdict(self)
