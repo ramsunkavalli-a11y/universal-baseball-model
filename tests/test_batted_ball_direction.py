@@ -101,3 +101,32 @@ def test_missing_coordinates_or_unknown_hand_stays_unknown() -> None:
     )
 
     assert frame.get_column("direction").to_list() == [None, None, None]
+
+
+def test_sparse_string_coordinates_are_cast_and_invalid_values_become_unknown() -> None:
+    frame = pl.DataFrame(
+        {
+            "hc_x": ["25.42", "125.42", "not-a-number", ""],
+            "hc_y": ["98.27", "98.27", "98.27", "98.27"],
+            "stand": ["R", "R", "R", "L"],
+        }
+    ).with_columns(
+        [
+            field_spray_angle_expr(pl.col("hc_x"), pl.col("hc_y")).alias("angle"),
+            batted_ball_direction_expr(
+                pl.col("hc_x"), pl.col("hc_y"), pl.col("stand")
+            ).alias("direction"),
+        ]
+    )
+
+    angles = frame.get_column("angle").to_list()
+    assert abs(angles[0] - (-33.75)) < 1e-9
+    assert abs(angles[1]) < 1e-9
+    assert angles[2] is None
+    assert angles[3] is None
+    assert frame.get_column("direction").to_list() == [
+        "pull",
+        "center",
+        None,
+        None,
+    ]
