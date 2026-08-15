@@ -1,0 +1,75 @@
+name: Official stat reconciliation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/official-stat-reconciliation.yml"
+      - "scripts/reconcile_official_games.py"
+      - "src/universal_baseball/official.py"
+      - "src/universal_baseball/reconciliation.py"
+      - "tests/test_official.py"
+      - "tests/test_reconciliation.py"
+
+permissions:
+  contents: read
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - slug: mlb-control
+            game1: 632970
+            game2: 632970
+          - slug: aaa
+            game1: 780856
+            game2: 779584
+          - slug: aa
+            game1: 783272
+            game2: 783342
+          - slug: high-a
+            game1: 784030
+            game2: 784554
+          - slug: single-a
+            game1: 785482
+            game2: 788630
+          - slug: rookie-mixed
+            game1: 771821
+            game2: 773624
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Reconcile ${{ matrix.slug }} PBP to official boxscores
+        run: |
+          python scripts/reconcile_official_games.py \
+            --game-id ${{ matrix.game1 }} \
+            --game-id ${{ matrix.game2 }} \
+            --label "${{ matrix.slug }}" \
+            --report-dir "reports/generated/reconciliation/${{ matrix.slug }}" \
+            --require-exact
+
+      - name: Upload ${{ matrix.slug }} reconciliation report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: official-reconciliation-${{ matrix.slug }}
+          path: reports/generated/reconciliation/${{ matrix.slug }}/
+          if-no-files-found: warn
+          retention-days: 14
