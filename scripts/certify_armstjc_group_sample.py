@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Compare one or more source games from each observed group to official PBP."""
+"""Compare grouped source pitch-bearing sequences with official true PAs."""
 
 from __future__ import annotations
 
@@ -14,7 +14,9 @@ from universal_baseball.armstjc_schema import normalize_known_schema_aliases
 from universal_baseball.certification import read_quarantined_csv
 from universal_baseball.official import fetch_official_game_evidence
 from universal_baseball.sampling import select_game_ids_by_group
-from universal_baseball.source_comparison import compare_pitch_source_to_official_pas
+from universal_baseball.source_sequence_comparison import (
+    compare_pitch_source_to_official_true_pas,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -75,8 +77,8 @@ def main() -> int:
                     {
                         "group": group_value,
                         "game_pk": game_id,
-                        "error_type": "EmptyOfficialPAFrame",
-                        "error": "official PBP projection returned no rows",
+                        "error_type": "EmptyOfficialTruePAFrame",
+                        "error": "official true-PA projection returned no rows",
                     }
                 )
                 continue
@@ -92,14 +94,14 @@ def main() -> int:
             }
             continue
 
-        official_pas = pl.concat(pa_frames, how="vertical_relaxed")
+        official_true_pas = pl.concat(pa_frames, how="vertical_relaxed")
         official_pitches = pl.concat(pitch_frames, how="vertical_relaxed")
         source_sample = group_source.filter(
             pl.col("game_pk").is_in([str(game_id) for game_id in successful_ids])
         )
-        comparison = compare_pitch_source_to_official_pas(
+        comparison = compare_pitch_source_to_official_true_pas(
             source_sample,
-            official_pas,
+            official_true_pas,
             official_pitches,
         )
         groups[group_value] = {
@@ -109,7 +111,7 @@ def main() -> int:
         }
 
     payload = {
-        "report_schema_version": 2,
+        "report_schema_version": 3,
         "source_file": args.input_file.name,
         "group_column": args.group_column,
         "games_per_group": args.games_per_group,
@@ -120,11 +122,11 @@ def main() -> int:
     }
 
     args.report_dir.mkdir(parents=True, exist_ok=True)
-    json_path = args.report_dir / "armstjc_group_official_sample.json"
+    json_path = args.report_dir / "armstjc_group_official_sequence_sample.json"
     json_path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
 
     lines = [
-        "# armstjc grouped official sample",
+        "# armstjc grouped pitch-sequence / official true-PA sample",
         "",
         f"- Source file: `{args.input_file.name}`",
         f"- Group column: `{args.group_column}`",
@@ -151,27 +153,40 @@ def main() -> int:
             lines.append("- No successful official comparison.")
         else:
             lines.append(
-                f"- Shared PAs: {comparison['shared_pa_count']}/"
-                f"{comparison['official_pa_count']} official PAs"
+                "- Shared source-sequence / true-PA keys: "
+                f"{comparison['shared_sequence_true_pa_count']}/"
+                f"{comparison['official_true_pa_count']} official true PAs"
             )
             lines.append(
-                f"- Official-only positive-pitch PAs: "
-                f"{comparison['official_only_positive_pitch_pa_count']}"
+                "- Source-only pitch-bearing sequences: "
+                f"{comparison['source_only_pitch_sequence_count']}"
             )
             lines.append(
-                f"- Pitch-count mismatch PAs: "
-                f"{comparison['pitch_count_mismatch_pa_count']}"
+                "- Official-only positive-pitch true PAs: "
+                f"{comparison['official_only_positive_pitch_true_pa_count']}"
+            )
+            lines.append(
+                "- Pitch-count mismatch sequences: "
+                f"{comparison['pitch_count_mismatch_sequence_count']}"
             )
         lines.append("")
 
-    (args.report_dir / "armstjc_group_official_sample.md").write_text(
+    lines.extend(
+        [
+            "A source `game_pk + atBatIndex` group is a pitch-bearing sequence, "
+            "not automatically a plate appearance. Official true-PA membership is "
+            "defined independently by versioned MLB event semantics.",
+            "",
+        ]
+    )
+    (args.report_dir / "armstjc_group_official_sequence_sample.md").write_text(
         "\n".join(lines), encoding="utf-8"
     )
     print("\n".join(lines))
 
-    # A source-group audit should fail only if a requested group could not be
-    # checked at all. Observed source-vs-current-feed discrepancies remain report
-    # evidence to investigate rather than being auto-repaired or hidden.
+    # A grouped source audit fails only if a requested group could not be checked
+    # at all. Observed source-vs-current-feed discrepancies remain evidence to
+    # investigate rather than values to auto-repair or hide.
     return 1 if any(result.get("comparison") is None for result in groups.values()) else 0
 
 
