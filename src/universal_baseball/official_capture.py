@@ -85,9 +85,10 @@ def capture_official_json(
     response_hooks = active_session.hooks.setdefault("response", [])
     response_hooks.append(record_response)
     adapter = MlbDataAdapter(ver="v1", session=active_session)
-    retrieved_at = datetime.now(UTC)
+    retrieved_at: datetime | None = None
     try:
         adapter.get(target)
+        retrieved_at = datetime.now(UTC)
     finally:
         # MlbDataAdapter does not close injected Sessions. Remove only our hook
         # so caller-owned Session behavior is restored exactly.
@@ -97,7 +98,7 @@ def capture_official_json(
         if owned_session:
             active_session.close()
 
-    if not captured:
+    if not captured or retrieved_at is None:
         raise RuntimeError(f"official transport returned no capturable response for {target}")
     status_code = int(captured["status_code"])
     if not 200 <= status_code <= 299:
