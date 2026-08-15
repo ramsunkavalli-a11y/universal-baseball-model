@@ -66,6 +66,20 @@ def _event_public_dict(row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _official_pa_public_dict(
+    key: tuple[str, str],
+    row: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "game_pk": key[0],
+        "at_bat_number": key[1],
+        "official_pitch_count": int(row.get("official_pitch_count") or 0),
+        "event": row.get("event"),
+        "event_type": row.get("event_type"),
+        "description": row.get("description"),
+    }
+
+
 def _diagnose_pitch_mismatches(
     source_exact_unique: pl.DataFrame,
     official_pitch_events: pl.DataFrame,
@@ -187,6 +201,10 @@ def compare_pitch_source_to_official_pas(
     never mutated or silently promoted. The goal is to learn whether the unique
     pitch rows underneath an upstream duplication defect still align with the
     official PA structure.
+
+    A pitch-grain source cannot represent a plate appearance with zero pitches.
+    Official-only PAs are therefore split into zero-pitch structural gaps and
+    positive-pitch unexplained gaps rather than treating both as source errors.
     """
 
     required_source = {"game_pk", "at_bat_number", "pitch_number"}
@@ -236,6 +254,18 @@ def compare_pitch_source_to_official_pas(
     source_keys = set(source_map)
     official_keys = set(official_map)
     shared = source_keys & official_keys
+    official_only_keys = official_keys - source_keys
+
+    official_only_pas = [
+        _official_pa_public_dict(key, official_map[key])
+        for key in sorted(official_only_keys)
+    ]
+    official_only_zero_pitch_pas = [
+        row for row in official_only_pas if row["official_pitch_count"] == 0
+    ]
+    official_only_positive_pitch_pas = [
+        row for row in official_only_pas if row["official_pitch_count"] > 0
+    ]
 
     pitch_mismatches: list[dict[str, Any]] = []
     description_mismatches: list[dict[str, Any]] = []
@@ -298,9 +328,15 @@ def compare_pitch_source_to_official_pas(
         source_game_keys = {key for key in source_keys if key[0] == game_id}
         official_game_keys = {key for key in official_keys if key[0] == game_id}
         shared_game = source_game_keys & official_game_keys
+        official_only_game_keys = official_game_keys - source_game_keys
         game_pitch_mismatches = [
             row for row in pitch_mismatches if row["game_pk"] == game_id
         ]
+        zero_pitch_gaps = sum(
+            1
+            for key in official_only_game_keys
+            if int(official_map[key].get("official_pitch_count") or 0) == 0
+        )
         per_game.append(
             {
                 "game_pk": game_id,
@@ -308,7 +344,10 @@ def compare_pitch_source_to_official_pas(
                 "official_pa_count": len(official_game_keys),
                 "shared_pa_count": len(shared_game),
                 "source_only_pa_count": len(source_game_keys - official_game_keys),
-                "official_only_pa_count": len(official_game_keys - source_game_keys),
+                "official_only_pa_count": len(official_only_game_keys),
+                "official_only_zero_pitch_pa_count": zero_pitch_gaps,
+                "official_only_positive_pitch_pa_count": len(official_only_game_keys)
+                - zero_pitch_gaps,
                 "pitch_count_mismatch_pa_count": len(game_pitch_mismatches),
             }
         )
@@ -329,7 +368,12 @@ def compare_pitch_source_to_official_pas(
         "official_pa_count": len(official_keys),
         "shared_pa_count": len(shared),
         "source_only_pa_count": len(source_keys - official_keys),
-        "official_only_pa_count": len(official_keys - source_keys),
+        "official_only_pa_count": len(official_only_keys),
+        "official_only_zero_pitch_pa_count": len(official_only_zero_pitch_pas),
+        "official_only_positive_pitch_pa_count": len(official_only_positive_pitch_pas),
+        "official_only_pa_examples": official_only_pas[:25],
+        "official_only_zero_pitch_pa_examples": official_only_zero_pitch_pas[:25],
+        "official_only_positive_pitch_pa_examples": official_only_positive_pitch_pas[:25],
         "pitch_count_mismatch_pa_count": len(pitch_mismatches),
         "pitch_count_mismatch_examples": pitch_mismatches[:25],
         "pitch_count_mismatch_diagnosis": pitch_mismatch_diagnosis,
