@@ -1,8 +1,9 @@
 """Deterministic resolution of immutable canonical observations.
 
-This module resolves *within one normalization/source snapshot*. It deliberately
-does not decide which overlapping upstream snapshot is newer; that requires a
-source-specific ordering policy and cannot be inferred from our retrieval order.
+Within-snapshot resolution and cross-snapshot resolution are deliberately
+separate. Cross-snapshot resolution does **not** infer a source chronology from
+retrieval time, GitHub asset creation time, or a filename period. The reusable
+MiLB source has demonstrated that each of those can be misleading.
 """
 
 from __future__ import annotations
@@ -12,7 +13,11 @@ from typing import Any
 
 import polars as pl
 
-from universal_baseball.canonical_schema import PITCH_OBSERVATION_SCHEMA
+from universal_baseball.canonical_schema import (
+    PITCH_OBSERVATION_SCHEMA,
+    validate_normalization_definition,
+    validate_pitch_observation,
+)
 
 
 PITCH_NATURAL_KEY = ("game_pk", "at_bat_index", "pitch_number")
@@ -26,6 +31,7 @@ _PITCH_PROVENANCE = {
 PITCH_RESOLVABLE_FIELDS = tuple(
     column for column in PITCH_OBSERVATION_SCHEMA if column not in _PITCH_PROVENANCE
 )
+CROSS_SNAPSHOT_RESOLUTION_POLICY = "non_null_field_consensus_v1"
 
 
 def _stable_non_null_value(values: list[Any]) -> tuple[Any, bool]:
@@ -85,8 +91,6 @@ def resolve_pitch_observations_within_snapshot(
     rows: list[dict[str, Any]] = []
 
     for key_values, group in observations.group_by(list(PITCH_NATURAL_KEY), maintain_order=False):
-        # Polars returns a scalar for a one-column group key and a tuple for
-        # multiple columns; the natural pitch key always has three columns.
         game_pk, at_bat_index, pitch_number = key_values
         conflicts: list[str] = []
         row: dict[str, Any] = {
@@ -108,6 +112,143 @@ def resolve_pitch_observations_within_snapshot(
         rows.append(row)
 
     return pl.DataFrame(rows).sort(list(PITCH_NATURAL_KEY))
+
+
+def _validated_normalization_family(
+    observations: pl.DataFrame,
+    normalization_definitions: pl.DataFrame,
+) -> dict[str, str]:
+    """Prove all observations were produced by one comparable normalizer family."""
+
+    definitions = validate_normalization_definition(normalization_definitions)
+    observed_links = observations.select(
+        ["normalization_id", "source_snapshot_id"]
+    ).unique()
+
+    multiple_normalizations = (
+        observed_links.group_by("source_snapshot_id")
+        .agg(pl.col("normalization_id").n_unique().alias("normalization_count"))
+        .filter(pl.col("normalization_count") != 1)
+    )
+    if not multiple_normalizations.is_empty():
+        raise ValueError(
+            "cross-snapshot resolver requires exactly one normalization per source snapshot"
+        )
+
+    linked = observed_links.join(
+        definitions,
+        on="normalization_id",
+        how="left",
+        suffix="_definition",
+    )
+    missing_definition = linked.filter(pl.col("normalizer_name").is_null())
+    if not missing_definition.is_empty():
+        raise ValueError("pitch observations reference missing normalization definitions")
+
+    source_mismatch = linked.filter(
+        pl.col("source_snapshot_id") != pl.col("source_snapshot_id_definition")
+    )
+    if not source_mismatch.is_empty():
+        raise ValueError(
+            "normalization definition source_snapshot_id disagrees with pitch observations"
+        )
+
+    family_columns = [
+        "normalizer_name",
+        "normalizer_version",
+        "canonical_schema_version",
+    ]
+    families = linked.select(family_columns).unique()
+    if families.height != 1:
+        raise ValueError(
+            "cross-snapshot resolver cannot mix normalizer/schema versions"
+        )
+    row = families.to_dicts()[0]
+    return {column: str(row[column]) for column in family_columns}
+
+
+def resolve_pitch_observations_across_snapshots(
+    observations: pl.DataFrame,
+    normalization_definitions: pl.DataFrame,
+) -> pl.DataFrame:
+    """Build an ordering-free working view across overlapping source snapshots.
+
+    This is intentionally a *field consensus* resolver rather than a row winner.
+    It is designed for source families whose assets can overlap, be re-uploaded,
+    or carry ambiguous chronology.
+
+    Rules:
+    - observations must be valid canonical pitch observations;
+    - every source snapshot may contribute only one normalization, and all
+      normalizations must use the same normalizer name/version and canonical
+      schema version;
+    - one non-null value (even when other observations are null) resolves;
+    - multiple distinct non-null values make that field null and explicitly
+      conflicted;
+    - no retrieval timestamp, asset creation timestamp, filename period, or row
+      order is used as a tie-breaker;
+    - the raw source observations remain immutable; this output is a derived
+      working view and retains contributing snapshot/normalization IDs.
+
+    Official evidence can later adjudicate a conflicted field through a separate
+    authority-aware transform. It is not silently mixed into source consensus.
+    """
+
+    canonical = validate_pitch_observation(observations)
+    if canonical.is_empty():
+        raise ValueError("cannot resolve empty pitch observation table")
+    family = _validated_normalization_family(canonical, normalization_definitions)
+
+    aggregations: list[pl.Expr] = [
+        pl.col("source_snapshot_id").n_unique().alias("source_snapshot_count"),
+        pl.col("source_snapshot_id").unique().sort().alias("source_snapshot_ids"),
+        pl.col("normalization_id").n_unique().alias("normalization_count"),
+        pl.col("normalization_id").unique().sort().alias("normalization_ids"),
+        pl.len().alias("observation_variant_count"),
+        pl.col("duplicate_row_count").sum().alias("raw_source_row_count"),
+    ]
+    conflict_columns: list[str] = []
+
+    for field in PITCH_RESOLVABLE_FIELDS:
+        values = pl.col(field).drop_nulls()
+        conflict_column = f"__conflict__{field}"
+        conflict_columns.append(conflict_column)
+        aggregations.extend(
+            [
+                pl.when(values.n_unique() <= 1)
+                .then(values.first())
+                .otherwise(pl.lit(None, dtype=PITCH_OBSERVATION_SCHEMA[field]))
+                .alias(field),
+                (values.n_unique() > 1).alias(conflict_column),
+            ]
+        )
+
+    resolved = canonical.group_by(list(PITCH_NATURAL_KEY)).agg(aggregations)
+    conflict_names = [
+        pl.when(pl.col(flag))
+        .then(pl.lit(field))
+        .otherwise(pl.lit(None, dtype=pl.String))
+        for field, flag in zip(PITCH_RESOLVABLE_FIELDS, conflict_columns, strict=True)
+    ]
+    resolved = (
+        resolved.with_columns(
+            pl.concat_list(conflict_names)
+            .list.drop_nulls()
+            .alias("conflict_fields")
+        )
+        .with_columns(
+            pl.col("conflict_fields").list.len().alias("conflict_field_count"),
+            pl.lit(CROSS_SNAPSHOT_RESOLUTION_POLICY).alias("resolution_policy"),
+            pl.lit(family["normalizer_name"]).alias("normalizer_name"),
+            pl.lit(family["normalizer_version"]).alias("normalizer_version"),
+            pl.lit(family["canonical_schema_version"]).alias(
+                "canonical_schema_version"
+            ),
+        )
+        .drop(conflict_columns)
+        .sort(list(PITCH_NATURAL_KEY))
+    )
+    return resolved
 
 
 def pitch_resolution_conflicts(resolved: pl.DataFrame) -> pl.DataFrame:
