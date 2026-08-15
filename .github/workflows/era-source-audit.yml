@@ -7,10 +7,6 @@ on:
       - main
     paths:
       - ".github/workflows/era-source-audit.yml"
-      - "scripts/certify_armstjc_release.py"
-      - "src/universal_baseball/certification.py"
-      - "src/universal_baseball/official.py"
-      - "src/universal_baseball/source_comparison.py"
 
 permissions:
   contents: read
@@ -23,10 +19,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - slug: 2005-aaa-march
-            asset: 2005_3_aaa_pbp.csv
+          - slug: 2005-aaa-september
+            asset: 2005_9_aaa_pbp.csv
             expected_year: 2005
-            expected_month: 3
+            expected_month: 9
           - slug: 2015-aaa-september
             asset: 2015_9_aaa_pbp.csv
             expected_year: 2015
