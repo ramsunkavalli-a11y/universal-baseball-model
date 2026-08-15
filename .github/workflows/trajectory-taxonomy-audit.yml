@@ -1,0 +1,62 @@
+name: Trajectory taxonomy audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/trajectory-taxonomy-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-trajectory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - slug: 2005-aaa
+            asset: 2005_9_aaa_pbp.csv
+          - slug: 2015-aaa
+            asset: 2015_9_aaa_pbp.csv
+          - slug: 2024-rookie
+            asset: 2024_6_rk_pbp.csv
+          - slug: 2025-aaa
+            asset: 2025_3_aaa_pbp.csv
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit ${{ matrix.slug }} trajectory vocabulary
+        run: |
+          python scripts/audit_trajectory_taxonomy.py \
+            --url "https://github.com/armstjc/milb-data-repository/releases/download/pbp/${{ matrix.asset }}" \
+            --asset-name "${{ matrix.asset }}" \
+            --work-dir "data/quarantine/trajectory-taxonomy/${{ matrix.slug }}" \
+            --report-dir "reports/generated/trajectory-taxonomy/${{ matrix.slug }}"
+
+      - name: Upload ${{ matrix.slug }} trajectory report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: trajectory-taxonomy-${{ matrix.slug }}
+          path: reports/generated/trajectory-taxonomy/${{ matrix.slug }}/
+          if-no-files-found: warn
+          retention-days: 14
