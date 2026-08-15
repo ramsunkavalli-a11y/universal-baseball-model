@@ -8,6 +8,9 @@ from typing import Any
 import polars as pl
 
 
+SOURCE_PITCH_KEY = ("game_pk", "at_bat_number", "pitch_number")
+
+
 def select_diverse_game_ids(frame: pl.DataFrame, limit: int = 5) -> list[int]:
     """Select game IDs spread across the observed source date range."""
 
@@ -195,19 +198,20 @@ def compare_pitch_source_to_official_pas(
     official: pl.DataFrame,
     official_pitch_events: pl.DataFrame | None = None,
 ) -> dict[str, Any]:
-    """Compare deduplicated pitch rows with official PA rows.
+    """Compare source pitch keys with official PA rows.
 
-    Exact source duplicates are removed *for comparison only*. The raw source is
-    never mutated or silently promoted. The goal is to learn whether the unique
-    pitch rows underneath an upstream duplication defect still align with the
-    official PA structure.
+    The source is not repaired or promoted here. Exact duplicate rows are removed
+    only to simplify payload inspection, while pitch counts are computed from
+    the natural pitch key ``game_pk + at_bat_number + pitch_number``. This is
+    important because an upstream file can contain two distinct payload snapshots
+    for the same pitch key; those are data conflicts, not two baseball pitches.
 
     A pitch-grain source cannot represent a plate appearance with zero pitches.
     Official-only PAs are therefore split into zero-pitch structural gaps and
     positive-pitch unexplained gaps rather than treating both as source errors.
     """
 
-    required_source = {"game_pk", "at_bat_number", "pitch_number"}
+    required_source = set(SOURCE_PITCH_KEY)
     missing_source = sorted(required_source - set(source.columns))
     if missing_source:
         raise ValueError(f"source missing required columns: {missing_source}")
@@ -225,12 +229,16 @@ def compare_pitch_source_to_official_pas(
         raise ValueError(f"official frame missing required columns: {missing_official}")
 
     source_exact_unique = source.unique()
+    source_key_unique = source.unique(subset=list(SOURCE_PITCH_KEY))
 
     source_pa_rows = (
         source_exact_unique.group_by(["game_pk", "at_bat_number"])
         .agg(
             [
-                pl.len().alias("source_pitch_count"),
+                pl.col("pitch_number")
+                .drop_nulls()
+                .n_unique()
+                .alias("source_pitch_count"),
                 pl.col("description").drop_nulls().n_unique().alias("description_variants")
                 if "description" in source_exact_unique.columns
                 else pl.lit(0).alias("description_variants"),
@@ -363,6 +371,9 @@ def compare_pitch_source_to_official_pas(
     return {
         "source_rows_raw": int(source.height),
         "source_rows_after_exact_dedup_for_comparison": int(source_exact_unique.height),
+        "source_rows_after_natural_key_collapse_for_comparison": int(
+            source_key_unique.height
+        ),
         "official_pa_rows": int(official.height),
         "source_pa_count": len(source_keys),
         "official_pa_count": len(official_keys),
