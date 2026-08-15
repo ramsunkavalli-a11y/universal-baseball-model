@@ -13,11 +13,18 @@ The filenames do not describe disjoint calendar partitions:
 - the April asset spans April 1 through May 1;
 - all 729 April 23 pitch keys in the March asset also occur in the April asset;
 - 663 of those overlapping rows are identical;
-- 66 carry later values in one or more non-key fields.
+- 66 carry different values in one or more non-key fields.
 
 The 66 revisions are narrow in this audit: 65 change only `play_end_datetime`; one pitch changes `release_spin_rate` from 738 to 744 and `spin_axis`/`spin_dir` from 17 to 20. No outcome, player identity, pitch-number, velocity, movement, location, or batted-ball field changed among the overlapping rows.
 
-Release metadata also shows that these assets were produced after the nominal filename month rather than being frozen month-end extracts. The filename is therefore source metadata, not a safe temporal boundary for our canonical database.
+A later inventory audit showed that GitHub asset chronology is not a safe replacement for filename chronology. For example:
+
+- `2025_3_aaa_pbp.csv` was created before `2025_4_aaa_pbp.csv`, matching filename-period order;
+- `2023_7_rk_pbp.csv` was recreated in 2025, while `2023_8_rk_pbp.csv` was created in 2023, so asset creation order reverses filename-period order.
+
+A direct comparison of those re-uploaded 2023 Rookie assets found 5,524 overlapping natural pitch keys. All 5,524 full rows differ because team labels changed, but among fields currently projected into the canonical pitch observation only three differ: `hit_location` on 1,747 keys, `pitcher_hand` on 14, and `batter_side` on 2. The accepted coordinate direction evidence (`hc_x`, `hc_y`), pitch characteristics, pitch result, trajectory and player IDs did not appear among the changed columns.
+
+The source therefore behaves as a collection of overlapping, mutable snapshots with imperfect chronology metadata rather than as a clean series of disjoint monthly partitions.
 
 ## Decision
 
@@ -41,33 +48,47 @@ Normalized tables are partitioned/queryable by actual baseball fields such as `g
 
 ### Multiple observations of one natural key are first-class
 
-If the same natural key appears in multiple source assets, both source observations remain auditable.
+If the same natural key appears in multiple source assets, all source observations remain auditable. No whole-row winner is chosen merely because one asset was downloaded later, created later on GitHub, or has a higher filename month.
 
-A current working view may select the latest successfully normalized observation for that key, provided no certification rule marks the conflict as unresolved or invalid. This selection is a view/transform, not deletion of earlier source state.
+### Current source working view uses field consensus, not inferred chronology
 
-### Historical/as-of analysis must remain reconstructable
+For overlapping snapshots from the same source family and the same normalizer/schema version, the default source-only working view is resolved field by field:
 
-Backtests and frozen historical rankings must be able to use only evidence that was available by the relevant cutoff. Later source corrections must not silently leak into earlier model snapshots.
+- if all non-null observations agree, that value resolves;
+- null plus one non-null value resolves to the observed value;
+- if two non-null observations disagree, that field remains null in the resolved source view and is explicitly flagged as a conflict;
+- the contributing source snapshot and normalization IDs remain attached to the derived record;
+- no asset timestamp, retrieval timestamp, filename period or row order is used as a tie-breaker.
 
-The data foundation therefore needs two distinct temporal concepts:
+This is intentionally conservative. It lets stable evidence such as pitch shape or Gameday coordinates survive an unrelated team-label or base-state revision without pretending that one entire source row is globally newer or more correct.
+
+Official-source evidence may later adjudicate a conflicted field in a separate authority-aware transform. It is not silently mixed into source consensus.
+
+### Historical/as-of analysis must remain reconstructable and honestly labeled
+
+Backtests and frozen historical rankings must distinguish event time from knowledge time.
+
+For source snapshots collected contemporaneously, the foundation should preserve:
 
 - event time: when the baseball event occurred (`game_date`, pitch/play timestamps where useful);
 - knowledge time: when this project could have known a particular source observation (`source_updated_at`/`retrieved_at` and provenance).
 
+For historical assets first retrieved years after the games occurred, current corrected history cannot prove the exact information set available at the historical cutoff. Those tests are **event-cutoff retrospective backtests**, not true vintage-information-set backtests, unless a contemporaneous archive is separately available.
+
 ### Conflicts are measured, not assumed harmless
 
-Later observations are not automatically declared more correct. Cross-snapshot differences are profiled by field and can trigger source-specific certification rules. Core identity/outcome/key conflicts receive more scrutiny than late-filled tracking or timing metadata.
-
-For the tested March-April overlap, the observed revisions are compatible with using the later observation in a current view while retaining the earlier observation for provenance/as-of reconstruction.
+Cross-snapshot differences are profiled by field and source. Core identity/outcome/key conflicts receive more scrutiny than labels, timing metadata or optional enrichment fields. Conflict rates become explicit source-quality outputs during backfill rather than being silently repaired.
 
 ## Consequences
 
 - Upstream collection quirks cannot create duplicate canonical pitches merely because assets overlap.
-- We can take advantage of later feed corrections without destroying historical reproducibility.
-- Source filenames remain useful for retrieval/provenance but are decoupled from canonical storage layout.
-- Certification must inspect adjacent/successive source assets before a new source is promoted.
-- The eventual normalized storage design should support a source-observation layer plus resolved/current PA and pitch views rather than one destructive deduplication pass.
+- We do not need a brittle global ordering rule for re-uploaded release assets.
+- Stable fields can be used even when unrelated fields disagree across snapshots.
+- Source filenames and GitHub asset timestamps remain useful provenance but are decoupled from canonical storage and row selection.
+- The normalized design requires a source-observation layer plus a derived consensus view and explicit quality/conflict records.
+- Official-source adjudication remains separate from source-only consensus.
+- Backfill can proceed without first proving a total chronological order across all 624 historical assets.
 
 ## Non-decision
 
-This ADR does not yet freeze the complete observation-table schema, the final conflict-resolution hierarchy, or retention policy for large raw files. Those will be designed after cross-level and historical certification show how often revisions occur and which fields are affected.
+This ADR does not define an authority hierarchy for every conflicted field, nor does it claim that all historical source revisions are harmless. Those rules remain field- and source-specific and are introduced only after empirical certification supports them.
