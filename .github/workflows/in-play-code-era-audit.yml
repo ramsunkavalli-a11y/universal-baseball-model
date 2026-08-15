@@ -2,13 +2,6 @@ name: Historical in-play code era audit
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/in-play-code-era-audit.yml"
-      - "scripts/audit_in_play_code_eras.py"
-      - "src/universal_baseball/canonical_adapters.py"
 
 permissions:
   contents: read
