@@ -50,6 +50,17 @@ SCOPE_FIELDS = (
     "league_level_name",
 )
 
+EXPECTED_LEVEL_NAMES = {
+    "aaa": {"triple-a"},
+    "aa": {"double-a"},
+    "a+": {"high-a"},
+    "high-a": {"high-a"},
+    "a": {"single-a"},
+    "single-a": {"single-a"},
+    "rk": {"rookie"},
+    "rookie": {"rookie"},
+}
+
 EVENT_FIELDS = ("events", "type", "bb_type")
 
 
@@ -170,6 +181,10 @@ def _distinct_values(
     return [str(value) for value in values[:limit]]
 
 
+def _normalized_label(value: str) -> str:
+    return value.strip().lower().replace("–", "-").replace("—", "-")
+
+
 def _scope_profile(frame: pl.DataFrame, spec: ReleaseSpec) -> dict[str, Any]:
     profile: dict[str, Any] = {
         "expected": {
@@ -204,6 +219,23 @@ def _scope_profile(frame: pl.DataFrame, spec: ReleaseSpec) -> dict[str, Any]:
         if observed and observed != {str(spec.expected_month)}:
             warnings.append(
                 f"expected game_month {spec.expected_month}, observed {sorted(observed)}"
+            )
+
+    if spec.expected_level is not None and "league_level_name" in frame.columns:
+        expected_key = _normalized_label(spec.expected_level)
+        expected_names = EXPECTED_LEVEL_NAMES.get(expected_key)
+        observed_names = {
+            _normalized_label(value)
+            for value in (_distinct_values(frame, "league_level_name") or [])
+        }
+        if expected_names is None:
+            warnings.append(
+                f"no level-taxonomy rule defined for expected level {spec.expected_level!r}"
+            )
+        elif observed_names and not observed_names.issubset(expected_names):
+            warnings.append(
+                "expected league_level_name "
+                f"{sorted(expected_names)}, observed {sorted(observed_names)}"
             )
 
     profile["warnings"] = warnings
