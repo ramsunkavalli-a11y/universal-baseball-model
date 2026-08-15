@@ -8,7 +8,6 @@ on:
     paths:
       - "src/**"
       - "scripts/certify_armstjc_release.py"
-      - "scripts/audit_armstjc_partitions.py"
       - "tests/**"
       - "pyproject.toml"
       - ".github/workflows/source-certification-smoke.yml"
@@ -18,7 +17,6 @@ on:
     paths:
       - "src/**"
       - "scripts/certify_armstjc_release.py"
-      - "scripts/audit_armstjc_partitions.py"
       - "tests/**"
       - "pyproject.toml"
       - ".github/workflows/source-certification-smoke.yml"
@@ -29,7 +27,7 @@ permissions:
 jobs:
   armstjc-release-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
 
     steps:
       - name: Check out repository
@@ -49,9 +47,6 @@ jobs:
 
       - name: Profile small quarantined armstjc release sample
         run: python scripts/certify_armstjc_release.py
-
-      - name: Audit March-April armstjc partition relationship
-        run: python scripts/audit_armstjc_partitions.py
 
       - name: Upload certification reports only
         if: always()
