@@ -42,6 +42,7 @@ def test_compare_pitch_source_to_official_pas_ignores_exact_duplicates_for_compa
 
     assert result["source_rows_raw"] == 6
     assert result["source_rows_after_exact_dedup_for_comparison"] == 3
+    assert result["source_rows_after_natural_key_collapse_for_comparison"] == 3
     assert result["source_pa_count"] == 2
     assert result["official_pa_count"] == 2
     assert result["shared_pa_count"] == 2
@@ -49,6 +50,39 @@ def test_compare_pitch_source_to_official_pas_ignores_exact_duplicates_for_compa
     assert result["description_mismatch_pa_count"] == 0
     assert result["official_event_type_nonblank_pa_count"] == 2
     assert result["source_events_nonblank_pitch_row_count"] == 0
+
+
+def test_compare_counts_conflicting_payloads_for_one_pitch_key_once() -> None:
+    source = pl.DataFrame(
+        {
+            "game_pk": ["1", "1", "1"],
+            "at_bat_number": ["0", "0", "0"],
+            "pitch_number": ["1", "1", "2"],
+            "description": [
+                "Batter strikes out.",
+                "Batter strikes out.",
+                "Batter strikes out.",
+            ],
+            "release_speed": ["94.0", "94.2", "85.0"],
+        }
+    )
+    official = pl.DataFrame(
+        {
+            "game_pk": ["1"],
+            "at_bat_number": ["0"],
+            "event": ["Strikeout"],
+            "event_type": ["strikeout"],
+            "description": ["Batter strikes out."],
+            "official_pitch_count": [2],
+        }
+    )
+
+    result = compare_pitch_source_to_official_pas(source, official)
+
+    assert result["source_rows_raw"] == 3
+    assert result["source_rows_after_exact_dedup_for_comparison"] == 3
+    assert result["source_rows_after_natural_key_collapse_for_comparison"] == 2
+    assert result["pitch_count_mismatch_pa_count"] == 0
 
 
 def test_compare_reports_missing_pa_and_pitch_count_disagreement() -> None:
