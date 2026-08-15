@@ -1,11 +1,20 @@
 from __future__ import annotations
 
+from math import pi, tan
+
 import polars as pl
 
 from universal_baseball.trajectory_audit import (
     build_trajectory_profile,
     collapse_trajectory_evidence,
 )
+
+
+def _coordinates_for_final_angle(angle_degrees: float) -> tuple[float, float]:
+    geometric_angle = angle_degrees / 0.75
+    forward = 100.0
+    horizontal = tan(geometric_angle * pi / 180.0) * forward
+    return 125.42 + horizontal, 198.27 - forward
 
 
 def test_collapse_trajectory_evidence_nulls_conflicting_fields() -> None:
@@ -109,3 +118,36 @@ def test_profile_counts_foul_airborne_descriptions_without_parsing_for_productio
     assert report["airborne_count"] == 2
     assert report["airborne_description_mentions_foul_count"] == 1
     assert report["airborne_description_mentions_foul_rate"] == 0.5
+
+
+def test_spray_geometry_reports_foul_text_and_approx_fair_sector_separately() -> None:
+    foul_x, foul_y = _coordinates_for_final_angle(50.0)
+    fair_x, fair_y = _coordinates_for_final_angle(30.0)
+    unexplained_x, unexplained_y = _coordinates_for_final_angle(-50.0)
+    frame = pl.DataFrame(
+        {
+            "game_pk": ["1", "1", "1"],
+            "at_bat_number": ["0", "1", "2"],
+            "pitch_number": ["1", "1", "1"],
+            "type": ["X", "X", "X"],
+            "bb_type": ["popup", "fly_ball", "fly_ball"],
+            "hit_location": ["2", "9", "7"],
+            "description": [
+                "Batter pops out to catcher in foul territory.",
+                "Batter flies out to right fielder in foul territory.",
+                "Batter flies out to left fielder.",
+            ],
+            "hc_x": [foul_x, fair_x, unexplained_x],
+            "hc_y": [foul_y, fair_y, unexplained_y],
+            "stand": ["R", "R", "R"],
+        }
+    )
+
+    report = build_trajectory_profile(frame)
+    geometry = report["airborne_spray_geometry"]
+
+    assert geometry["spray_angle_present_count"] == 3
+    assert geometry["outside_approx_fair_sector_count"] == 2
+    assert geometry["foul_text_and_outside_sector_count"] == 1
+    assert geometry["foul_text_but_inside_sector_count"] == 1
+    assert geometry["outside_sector_without_foul_text_count"] == 1
