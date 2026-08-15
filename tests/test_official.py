@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from universal_baseball.official import (
     project_official_boxscore,
     project_official_play_by_play,
@@ -89,6 +91,92 @@ def test_projection_keeps_zero_pitch_pa_and_tolerates_unknown_pitch_type() -> No
     assert pitch_frame.get_column("hit_total_distance").to_list() == [286.0]
     assert pitch_frame.get_column("hit_launch_speed").to_list() == [101.4]
     assert pitch_frame.get_column("hit_launch_angle").to_list() == [17.0]
+
+
+def test_projection_excludes_known_non_pa_allplays_even_when_result_type_is_atbat() -> None:
+    payload = {
+        "allPlays": [
+            {
+                "atBatIndex": 25,
+                "result": {
+                    "type": "atBat",
+                    "event": "Pickoff 1B",
+                    "eventType": "pickoff_1b",
+                    "description": "Pitcher picks runner off first base.",
+                },
+                "about": {"halfInning": "top"},
+                "matchup": {
+                    "batter": {"id": 10},
+                    "pitcher": {"id": 20},
+                    "batSide": {"code": "R"},
+                    "pitchHand": {"code": "L"},
+                },
+                "playEvents": [],
+            },
+            {
+                "atBatIndex": 26,
+                "result": {
+                    "type": "atBat",
+                    "event": "Walk",
+                    "eventType": "walk",
+                    "description": "Batter walks.",
+                },
+                "about": {"halfInning": "top"},
+                "matchup": {
+                    "batter": {"id": 30},
+                    "pitcher": {"id": 20},
+                    "batSide": {"code": "L"},
+                    "pitchHand": {"code": "L"},
+                },
+                "playEvents": [],
+            },
+        ]
+    }
+
+    pa_frame, pitch_frame = project_official_play_by_play(39715, payload)
+
+    assert pa_frame.height == 1
+    assert pa_frame.get_column("at_bat_number").to_list() == ["26"]
+    assert pa_frame.get_column("event_type").to_list() == ["walk"]
+    assert pitch_frame.is_empty()
+
+
+def test_projection_fails_loudly_on_unknown_result_event_type() -> None:
+    payload = {
+        "allPlays": [
+            {
+                "atBatIndex": 1,
+                "result": {
+                    "type": "atBat",
+                    "event": "Future rule event",
+                    "eventType": "future_rule_event",
+                },
+                "about": {"halfInning": "top"},
+                "matchup": {},
+                "playEvents": [],
+            }
+        ]
+    }
+
+    with pytest.raises(ValueError, match="unknown eventType"):
+        project_official_play_by_play(1, payload)
+
+
+def test_projection_fails_loudly_on_blank_result_event_type() -> None:
+    payload = {
+        "allPlays": [
+            {
+                "atBatIndex": 1,
+                "result": {"type": "atBat", "event": "Unknown"},
+                "about": {"halfInning": "top"},
+                "matchup": {},
+                "playEvents": [],
+            }
+        ]
+    }
+
+    with pytest.raises(ValueError, match="blank eventType"):
+        project_official_play_by_play(1, payload)
 
 
 def test_projection_keeps_in_play_event_even_when_hit_data_is_missing() -> None:
