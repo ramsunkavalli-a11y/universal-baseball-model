@@ -60,8 +60,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--official-sample-games",
         type=int,
-        default=100,
-        help="Number of date-spread games to compare with official PA results.",
+        default=5,
+        help=(
+            "Number of date-spread games to compare with official PA results. "
+            "Use a large value for an explicit full-release audit."
+        ),
     )
     parser.add_argument(
         "--skip-official-sample",
@@ -74,11 +77,11 @@ def parse_args() -> argparse.Namespace:
 def _fetch_official_per_game(
     game_ids: list[int],
 ) -> tuple[pl.DataFrame, pl.DataFrame, list[dict[str, Any]], list[int]]:
-    """Fetch official evidence while recording wrapper failures by game.
+    """Fetch official evidence while recording adapter failures by game.
 
-    This is deliberately an audit helper rather than production retry logic. A
-    third-party client failure should not prevent us from learning which games
-    it can and cannot represent.
+    This is deliberately an audit helper rather than production retry logic. An
+    official-utility failure should not hide which games the current adapter can
+    and cannot represent.
     """
 
     pa_frames: list[pl.DataFrame] = []
@@ -103,9 +106,13 @@ def _fetch_official_per_game(
         pitch_frames.append(pitch_frame)
         successes.append(int(game_id))
 
-    official_pas = pl.concat(pa_frames, how="vertical_relaxed") if pa_frames else pl.DataFrame()
+    official_pas = (
+        pl.concat(pa_frames, how="vertical_relaxed") if pa_frames else pl.DataFrame()
+    )
     official_pitch_events = (
-        pl.concat(pitch_frames, how="vertical_relaxed") if pitch_frames else pl.DataFrame()
+        pl.concat(pitch_frames, how="vertical_relaxed")
+        if pitch_frames
+        else pl.DataFrame()
     )
     return official_pas, official_pitch_events, failures, successes
 
@@ -126,8 +133,8 @@ def _write_official_comparison(
         "# armstjc + official PA hybrid sample",
         "",
         f"- Requested games: {len(game_ids)}",
-        f"- Official-client successful games: {comparison['successful_official_game_count']}",
-        f"- Official-client failed games: {len(comparison['official_fetch_failures'])}",
+        f"- Official-adapter successful games: {comparison['successful_official_game_count']}",
+        f"- Official-adapter failed games: {len(comparison['official_fetch_failures'])}",
         f"- Raw source rows: {comparison['source_rows_raw']:,}",
         (
             "- Source rows after exact dedup **for comparison only**: "
@@ -138,6 +145,14 @@ def _write_official_comparison(
         f"- Shared PAs: {comparison['shared_pa_count']:,}",
         f"- Source-only PAs: {comparison['source_only_pa_count']:,}",
         f"- Official-only PAs: {comparison['official_only_pa_count']:,}",
+        (
+            "- Official-only zero-pitch PAs (structural pitch-table gap): "
+            f"{comparison['official_only_zero_pitch_pa_count']:,}"
+        ),
+        (
+            "- Official-only positive-pitch PAs (unexplained gap): "
+            f"{comparison['official_only_positive_pitch_pa_count']:,}"
+        ),
         (
             "- PAs with source-vs-official pitch-count mismatch: "
             f"{comparison['pitch_count_mismatch_pa_count']:,}"
@@ -156,8 +171,17 @@ def _write_official_comparison(
         ),
     ]
 
+    zero_pitch_examples = comparison.get("official_only_zero_pitch_pa_examples") or []
+    if zero_pitch_examples:
+        lines.extend(["", "## Structural zero-pitch PA gaps", ""])
+        for row in zero_pitch_examples:
+            lines.append(
+                f"- game {row['game_pk']} PA {row['at_bat_number']}: "
+                f"{row.get('event_type')} — {row.get('description')}"
+            )
+
     if comparison["official_fetch_failures"]:
-        lines.extend(["", "## Official-client failures", ""])
+        lines.extend(["", "## Official-adapter failures", ""])
         for failure in comparison["official_fetch_failures"]:
             first_line = failure["error"].splitlines()[0]
             lines.append(
@@ -235,14 +259,14 @@ def main() -> int:
                 {
                     "sample_game_ids": game_ids,
                     "official_fetch_failures": failures,
-                    "error": "official client failed for every requested game",
+                    "error": "official adapter failed for every requested game",
                 },
                 indent=2,
                 sort_keys=True,
             ),
             encoding="utf-8",
         )
-        raise RuntimeError("official client failed for every requested game")
+        raise RuntimeError("official adapter failed for every requested game")
 
     successful_strings = [str(game_id) for game_id in successful_game_ids]
     sample_source = frame.filter(pl.col("game_pk").is_in(successful_strings))
@@ -264,7 +288,12 @@ def main() -> int:
         "mismatches."
     )
     print(
-        "Official-client coverage: "
+        "PA gaps: "
+        f"{comparison['official_only_zero_pitch_pa_count']} structural zero-pitch; "
+        f"{comparison['official_only_positive_pitch_pa_count']} unexplained positive-pitch."
+    )
+    print(
+        "Official-adapter coverage: "
         f"{len(successful_game_ids)}/{len(game_ids)} games; "
         f"failed game IDs: {[failure['game_pk'] for failure in failures]}"
     )
