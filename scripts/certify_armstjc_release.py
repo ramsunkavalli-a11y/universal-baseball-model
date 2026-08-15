@@ -4,7 +4,10 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
+
+import polars as pl
 
 from universal_baseball.certification import (
     ReleaseSpec,
@@ -14,6 +17,11 @@ from universal_baseball.certification import (
     read_quarantined_csv,
     sha256_file,
     write_report,
+)
+from universal_baseball.official import fetch_official_pa_results
+from universal_baseball.source_comparison import (
+    compare_pitch_source_to_official_pas,
+    select_diverse_game_ids,
 )
 
 
@@ -48,7 +56,67 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Profile an already-downloaded file instead of fetching the release.",
     )
+    parser.add_argument(
+        "--official-sample-games",
+        type=int,
+        default=5,
+        help="Number of date-spread games to compare with official PA results.",
+    )
+    parser.add_argument(
+        "--skip-official-sample",
+        action="store_true",
+        help="Run only the release-integrity smoke test.",
+    )
     return parser.parse_args()
+
+
+def _write_official_comparison(
+    comparison: dict,
+    game_ids: list[int],
+    output_dir: Path,
+) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    json_path = output_dir / "armstjc_official_pa_sample.json"
+    markdown_path = output_dir / "armstjc_official_pa_sample.md"
+
+    payload = {"sample_game_ids": game_ids, **comparison}
+    json_path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+
+    lines = [
+        "# armstjc + official PA hybrid sample",
+        "",
+        f"- Sample games: {', '.join(str(game_id) for game_id in game_ids)}",
+        f"- Raw source rows: {comparison['source_rows_raw']:,}",
+        (
+            "- Source rows after exact dedup **for comparison only**: "
+            f"{comparison['source_rows_after_exact_dedup_for_comparison']:,}"
+        ),
+        f"- Source PAs: {comparison['source_pa_count']:,}",
+        f"- Official PAs: {comparison['official_pa_count']:,}",
+        f"- Shared PAs: {comparison['shared_pa_count']:,}",
+        f"- Source-only PAs: {comparison['source_only_pa_count']:,}",
+        f"- Official-only PAs: {comparison['official_only_pa_count']:,}",
+        (
+            "- PAs with source-vs-official pitch-count mismatch: "
+            f"{comparison['pitch_count_mismatch_pa_count']:,}"
+        ),
+        (
+            "- PAs with source-vs-official description mismatch: "
+            f"{comparison['description_mismatch_pa_count']:,}"
+        ),
+        (
+            "- Official PAs with nonblank event_type: "
+            f"{comparison['official_event_type_nonblank_pa_count']:,}"
+        ),
+        (
+            "- Source pitch rows with nonblank `events`: "
+            f"{comparison['source_events_nonblank_pitch_row_count']}"
+        ),
+        "",
+        "This is a viability test for a hybrid source strategy, not certification.",
+        "",
+    ]
+    markdown_path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> int:
@@ -81,6 +149,42 @@ def main() -> int:
     report = build_release_report(frame, spec, file_metadata)
     write_report(report, args.report_dir)
     print(markdown_summary(report))
+
+    if args.skip_official_sample or args.official_sample_games <= 0:
+        return 0
+
+    game_ids = select_diverse_game_ids(frame, limit=args.official_sample_games)
+    game_id_strings = [str(game_id) for game_id in game_ids]
+    sample_source = frame.filter(pl.col("game_pk").is_in(game_id_strings))
+
+    try:
+        official = fetch_official_pa_results(game_ids)
+        comparison = compare_pitch_source_to_official_pas(sample_source, official)
+        _write_official_comparison(comparison, game_ids, args.report_dir)
+    except Exception as exc:
+        error_path = args.report_dir / "armstjc_official_pa_sample_error.json"
+        error_path.parent.mkdir(parents=True, exist_ok=True)
+        error_path.write_text(
+            json.dumps(
+                {
+                    "sample_game_ids": game_ids,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                },
+                indent=2,
+                sort_keys=True,
+            ),
+            encoding="utf-8",
+        )
+        raise
+
+    print(
+        "\nHybrid sample: "
+        f"{comparison['shared_pa_count']}/{comparison['official_pa_count']} official PAs "
+        "matched source PA keys; "
+        f"{comparison['pitch_count_mismatch_pa_count']} shared PAs had pitch-count "
+        "mismatches."
+    )
     return 0
 
 
