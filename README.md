@@ -12,11 +12,18 @@ A public-data baseball player evaluation and projection system covering MLB thro
 - Validate chronologically and prevent hindsight leakage.
 - Keep production logic in `src/`; notebooks are for exploration only.
 
+## Foundation documents
+
+- [`docs/source-audit.md`](docs/source-audit.md) — research and provisional assignment of public data sources/packages.
+- [`docs/source-certification-plan.md`](docs/source-certification-plan.md) — empirical tests a reusable source must pass before it can feed canonical tables.
+- [`docs/adr/001-reuse-first-source-strategy.md`](docs/adr/001-reuse-first-source-strategy.md) — architectural decision establishing the reuse-first, certification-gated strategy.
+
 ## Initial workflow
 
 1. Audit reusable public data sources and packages.
-2. Define the minimum canonical data needed for the first Performance model.
-3. Run a small proof of concept and reconcile it against official totals.
-4. Only then design the historical/incremental pipeline.
+2. Certify the most promising reusable inputs on deliberately varied small samples.
+3. Define the narrow canonical contracts needed by the first Performance/Profile model using what the audit and certification reveal.
+4. Reconcile the proof of concept against official totals and characterize data coverage.
+5. Only then commit to the historical/incremental production pipeline.
 
-The project will proceed in small, verified implementation batches rather than large scaffolding changes.
+Foundation work should favor correctness, reversibility, and explicit evidence over speed. We should pause for a decision when an unresolved source or modeling assumption could materially change downstream architecture rather than papering over it in code.
