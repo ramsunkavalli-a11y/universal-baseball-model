@@ -1,0 +1,68 @@
+name: Direction era audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/direction-era-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-era-direction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - slug: 2005-aaa
+            asset: 2005_9_aaa_pbp.csv
+          - slug: 2015-aaa
+            asset: 2015_9_aaa_pbp.csv
+          - slug: 2024-rookie
+            asset: 2024_6_rk_pbp.csv
+          - slug: 2025-aaa
+            asset: 2025_3_aaa_pbp.csv
+          - slug: 2025-aa
+            asset: 2025_4_aa_pbp.csv
+          - slug: 2025-high-a
+            asset: 2025_4_a+_pbp.csv
+          - slug: 2025-single-a
+            asset: 2025_4_a_pbp.csv
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit ${{ matrix.slug }} direction evidence
+        run: |
+          python scripts/audit_direction_coverage.py \
+            --url "https://github.com/armstjc/milb-data-repository/releases/download/pbp/${{ matrix.asset }}" \
+            --asset-name "${{ matrix.asset }}" \
+            --work-dir "data/quarantine/direction-era/${{ matrix.slug }}" \
+            --report-dir "reports/generated/direction-era/${{ matrix.slug }}"
+
+      - name: Upload ${{ matrix.slug }} direction report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: direction-era-${{ matrix.slug }}
+          path: reports/generated/direction-era/${{ matrix.slug }}/
+          if-no-files-found: warn
+          retention-days: 14
