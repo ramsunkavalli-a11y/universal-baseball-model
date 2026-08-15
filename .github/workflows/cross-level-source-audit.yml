@@ -7,6 +7,9 @@ on:
       - main
     paths:
       - ".github/workflows/cross-level-source-audit.yml"
+      - "scripts/certify_armstjc_group_sample.py"
+      - "src/universal_baseball/sampling.py"
+      - "tests/test_sampling.py"
 
 permissions:
   contents: read
@@ -69,6 +72,15 @@ jobs:
         run: |
           python scripts/diagnose_armstjc_conflicts.py \
             --input-file "data/quarantine/armstjc/${{ matrix.slug }}/${{ matrix.asset }}" \
+            --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
+
+      - name: Explicitly sample each Rookie league
+        if: matrix.slug == 'rookie-june-2024'
+        run: |
+          python scripts/certify_armstjc_group_sample.py \
+            --input-file "data/quarantine/armstjc/${{ matrix.slug }}/${{ matrix.asset }}" \
+            --group-column league_name \
+            --games-per-group 1 \
             --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
 
       - name: Upload ${{ matrix.slug }} audit report
