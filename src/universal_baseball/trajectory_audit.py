@@ -11,13 +11,24 @@ from typing import Any
 
 import polars as pl
 
+from universal_baseball.batted_ball_direction import field_spray_angle_expr
+
 
 PITCH_KEY = ("game_pk", "at_bat_number", "pitch_number")
-PROFILE_FIELDS = ("type", "bb_type", "hit_location", "description")
+PROFILE_FIELDS = (
+    "type",
+    "bb_type",
+    "hit_location",
+    "description",
+    "hc_x",
+    "hc_y",
+    "stand",
+)
 AIRBORNE_TYPES = ("popup", "fly_ball")
 BUNT_TYPES = ("bunt_grounder", "bunt_popup", "bunt_line_drive")
 INFIELD_POSITIONS = (1, 2, 3, 4, 5, 6)
 OUTFIELD_POSITIONS = (7, 8, 9)
+APPROX_FAIR_LINE_DEGREES = 45.0
 
 
 def _stable_value(field: str) -> pl.Expr:
@@ -90,6 +101,39 @@ def _counts(frame: pl.DataFrame, column: str) -> dict[str, int]:
     return {str(row[column]): int(row["len"]) for row in rows}
 
 
+def _spray_geometry(rows: pl.DataFrame) -> dict[str, Any]:
+    if not {"hc_x", "hc_y"} <= set(rows.columns):
+        return {
+            "spray_angle_present_count": 0,
+            "outside_approx_fair_sector_count": 0,
+            "outside_approx_fair_sector_rate": None,
+            "foul_text_and_outside_sector_count": 0,
+            "foul_text_but_inside_sector_count": 0,
+            "outside_sector_without_foul_text_count": 0,
+        }
+
+    angled = rows.with_columns(
+        field_spray_angle_expr(pl.col("hc_x"), pl.col("hc_y")).alias("spray_angle")
+    ).filter(pl.col("spray_angle").is_not_null())
+    outside_expr = pl.col("spray_angle").abs() > APPROX_FAIR_LINE_DEGREES
+    outside = angled.filter(outside_expr)
+    foul_expr = _contains_foul_expr() if "description" in angled.columns else pl.lit(False)
+    foul_and_outside = angled.filter(foul_expr & outside_expr).height
+    foul_inside = angled.filter(foul_expr & ~outside_expr).height
+    outside_not_foul = angled.filter(outside_expr & ~foul_expr).height
+
+    return {
+        "spray_angle_present_count": angled.height,
+        "outside_approx_fair_sector_count": outside.height,
+        "outside_approx_fair_sector_rate": (
+            outside.height / angled.height if angled.height else None
+        ),
+        "foul_text_and_outside_sector_count": foul_and_outside,
+        "foul_text_but_inside_sector_count": foul_inside,
+        "outside_sector_without_foul_text_count": outside_not_foul,
+    }
+
+
 def _trajectory_detail(bip: pl.DataFrame, trajectory: str) -> dict[str, Any]:
     rows = bip.filter(pl.col("bb_type") == trajectory)
     total = rows.height
@@ -126,6 +170,7 @@ def _trajectory_detail(bip: pl.DataFrame, trajectory: str) -> dict[str, Any]:
         "description_hit_like_count": hit_like_count,
         "description_hit_like_rate": hit_like_count / total if total else None,
         "hit_location_counts": _counts(rows.with_columns(position.alias("position")), "position"),
+        "spray_geometry": _spray_geometry(rows),
     }
 
 
@@ -188,6 +233,7 @@ def build_trajectory_profile(frame: pl.DataFrame) -> dict[str, Any]:
         "airborne_description_mentions_foul_rate": (
             airborne_foul_count / airborne.height if airborne.height else None
         ),
+        "airborne_spray_geometry": _spray_geometry(airborne),
         "audited_field_conflicts": {
             "conflicting_pitch_key_count": any_conflict,
             "field_conflict_counts": field_conflicts,
