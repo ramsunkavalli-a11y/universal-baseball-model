@@ -14,11 +14,8 @@ from universal_baseball.canonical_schema import CANONICAL_SCHEMA_VERSION
 from universal_baseball.event_types import PLATE_APPEARANCE_EVENT_TYPES
 from universal_baseball.official_capture import capture_official_json
 from universal_baseball.provenance import NormalizationDefinition, make_source_snapshot_id
-from universal_baseball.state_transition_terminal_outs import apply_terminal_allplay_outs
-from universal_baseball.state_transitions import (
-    build_official_state_transitions,
-    transition_quality_flags,
-)
+from universal_baseball.state_transitions import transition_quality_flags
+from universal_baseball.state_transitions_v2 import build_official_state_transitions_v2
 
 
 SAMPLES = {
@@ -117,16 +114,15 @@ def _audit_game(group: str, game_id: int) -> tuple[dict[str, Any], pl.DataFrame]
     normalization = NormalizationDefinition.build(
         source_snapshot_id=snapshot_id,
         normalizer_name="build_official_state_transitions",
-        normalizer_version="poc-v1",
+        normalizer_version="poc-v2",
         canonical_schema_version=CANONICAL_SCHEMA_VERSION,
     )
-    provisional = build_official_state_transitions(
+    transitions = build_official_state_transitions_v2(
         game_id,
         capture.data,
         source_snapshot_id=snapshot_id,
         normalization_id=normalization.normalization_id,
     )
-    transitions = apply_terminal_allplay_outs(provisional, capture.data)
     quality = transition_quality_flags(transitions)
     quality_counts = _quality_counts(quality) if not quality.is_empty() else Counter()
     continuity = _continuity_breaks(transitions)
@@ -141,15 +137,11 @@ def _audit_game(group: str, game_id: int) -> tuple[dict[str, Any], pl.DataFrame]
         "game_pk": game_id,
         "source_snapshot_sha256": capture.content_sha256,
         "transition_count": transitions.height,
-        "terminal_transition_count": transitions.filter(
-            pl.col("is_terminal_sequence_result")
-        ).height,
+        "terminal_transition_count": transitions.filter(pl.col("is_terminal_sequence_result")).height,
         "official_true_pa_count": true_pa_official,
         "true_pa_terminal_transition_count": true_pa_terminal,
         "preterminal_transition_count": preterminal.height,
-        "re24_candidate_transition_count": transitions.filter(
-            pl.col("re24_state_event_candidate")
-        ).height,
+        "re24_candidate_transition_count": transitions.filter(pl.col("re24_state_event_candidate")).height,
         "quality_flag_transition_count": quality.height,
         "quality_flag_counts": dict(sorted(quality_counts.items())),
         "continuity_break_count": len(continuity),
@@ -186,26 +178,20 @@ def main() -> int:
     quality = transition_quality_flags(combined)
     quality_counts = _quality_counts(quality) if not quality.is_empty() else Counter()
     total_true_pa = sum(report["official_true_pa_count"] for report in reports)
-    total_true_pa_terminal = sum(
-        report["true_pa_terminal_transition_count"] for report in reports
-    )
+    total_true_pa_terminal = sum(report["true_pa_terminal_transition_count"] for report in reports)
     total_runs = sum(report["transition_runs_scored"] for report in reports)
     total_official_runs = sum(report["official_final_total_runs"] for report in reports)
     total_continuity_breaks = sum(report["continuity_break_count"] for report in reports)
 
     payload = {
-        "report_schema_version": 2,
+        "report_schema_version": 3,
         "terminal_outs_semantics": "top-level allPlay.count.outs for terminal result; playEvent.count.outs for preterminal runner events",
         "game_count": len(reports),
         "transition_count": combined.height,
         "official_true_pa_count": total_true_pa,
         "true_pa_terminal_transition_count": total_true_pa_terminal,
-        "preterminal_transition_count": combined.filter(
-            ~pl.col("is_terminal_sequence_result")
-        ).height,
-        "re24_candidate_transition_count": combined.filter(
-            pl.col("re24_state_event_candidate")
-        ).height,
+        "preterminal_transition_count": combined.filter(~pl.col("is_terminal_sequence_result")).height,
+        "re24_candidate_transition_count": combined.filter(pl.col("re24_state_event_candidate")).height,
         "quality_flag_transition_count": quality.height,
         "quality_flag_counts": dict(sorted(quality_counts.items())),
         "continuity_break_count": total_continuity_breaks,
@@ -215,9 +201,8 @@ def main() -> int:
         "games": reports,
         "quality_examples": quality.head(50).to_dicts(),
         "interpretation": (
-            "Runner state is replayed without resetting to official postOn values. "
-            "Terminal outs follow baseballquery's established top-level allPlay.count.outs rule, "
-            "while preterminal runner events use playEvent.count.outs."
+            "Runner/base/score state is replayed without resetting to official postOn values. "
+            "Terminal outs use allPlay.count.outs; preterminal runner events use playEvent.count.outs."
         ),
     }
     (report_dir / "state_transition_replay.json").write_text(
@@ -251,7 +236,7 @@ def main() -> int:
     lines.extend(
         [
             "",
-            "This remains a state-replay certification POC, not yet a production RE24 table. A clean result justifies freezing the state-transition schema and validating it against Chadwick/Retrosheet MLB events.",
+            "This remains a state-replay certification POC, not yet a production RE24 table. A clean result justifies consolidating the v2 semantics and validating the state fields against Chadwick/Retrosheet MLB events.",
             "",
         ]
     )
