@@ -10,6 +10,7 @@ from typing import Any
 
 import polars as pl
 
+from universal_baseball.armstjc_schema import normalize_known_schema_aliases
 from universal_baseball.certification import read_quarantined_csv
 from universal_baseball.official import fetch_official_game_evidence
 from universal_baseball.sampling import select_game_ids_by_group
@@ -31,7 +32,8 @@ def _fetch_game(game_id: int) -> tuple[pl.DataFrame, pl.DataFrame]:
 
 def main() -> int:
     args = parse_args()
-    frame = read_quarantined_csv(args.input_file)
+    raw_frame = read_quarantined_csv(args.input_file)
+    frame, schema_alias_report = normalize_known_schema_aliases(raw_frame)
     selected = select_game_ids_by_group(
         frame,
         args.group_column,
@@ -39,7 +41,9 @@ def main() -> int:
     )
     if not selected:
         raise RuntimeError(
-            f"no game groups selected from source column {args.group_column!r}"
+            f"no game groups selected from standardized source column "
+            f"{args.group_column!r}; schema aliases applied: "
+            f"{schema_alias_report['actions']}"
         )
 
     groups: dict[str, Any] = {}
@@ -105,10 +109,11 @@ def main() -> int:
         }
 
     payload = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "source_file": args.input_file.name,
         "group_column": args.group_column,
         "games_per_group": args.games_per_group,
+        "schema_alias_report": schema_alias_report,
         "selected_groups": selected,
         "groups": groups,
         "failed_games": failed_games,
@@ -123,10 +128,20 @@ def main() -> int:
         "",
         f"- Source file: `{args.input_file.name}`",
         f"- Group column: `{args.group_column}`",
+        f"- Known schema alias actions: {schema_alias_report['action_count']}",
         f"- Groups sampled: {len(selected)}",
         f"- Failed games: {len(failed_games)}",
         "",
     ]
+    if schema_alias_report["actions"]:
+        lines.extend(["## Schema aliases applied", ""])
+        for action in schema_alias_report["actions"]:
+            lines.append(
+                f"- `{action['alias']}` → `{action['canonical']}`: "
+                f"{action['action']}"
+            )
+        lines.append("")
+
     for group_value, result in groups.items():
         comparison = result.get("comparison")
         lines.append(f"## {group_value}")
