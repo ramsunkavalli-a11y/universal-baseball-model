@@ -79,6 +79,56 @@ def test_compare_reports_missing_pa_and_pitch_count_disagreement() -> None:
     assert result["pitch_count_mismatch_pa_count"] == 1
 
 
+def test_pitch_mismatch_diagnosis_identifies_automatic_strike() -> None:
+    source = pl.DataFrame(
+        {
+            "game_pk": ["1", "1"],
+            "at_bat_number": ["0", "0"],
+            "pitch_number": ["1", "3"],
+            "description": ["Batter strikes out.", "Batter strikes out."],
+        }
+    )
+    official = pl.DataFrame(
+        {
+            "game_pk": ["1"],
+            "at_bat_number": ["0"],
+            "event": ["Strikeout"],
+            "event_type": ["strikeout"],
+            "description": ["Batter strikes out."],
+            "official_pitch_count": [3],
+        }
+    )
+    official_pitch_events = pl.DataFrame(
+        {
+            "game_pk": ["1", "1", "1"],
+            "at_bat_number": ["0", "0", "0"],
+            "event_index": [0, 1, 2],
+            "pitch_number": [1, 2, 3],
+            "code": ["B", "AC", "S"],
+            "event": [None, None, None],
+            "event_type": [None, None, None],
+            "description": ["Ball", "Automatic Strike", "Swinging Strike"],
+            "has_pitch_data": [True, False, True],
+            "pitch_type_code": ["FF", None, "SL"],
+        }
+    )
+
+    result = compare_pitch_source_to_official_pas(
+        source,
+        official,
+        official_pitch_events,
+    )
+
+    diagnosis = result["pitch_count_mismatch_diagnosis"]
+    assert diagnosis["mismatch_class_counts"] == {
+        "source_skips_automatic_strike": 1
+    }
+    assert diagnosis["missing_official_pitch_event_code_counts"] == {"AC": 1}
+    detail = diagnosis["mismatch_details"][0]
+    assert detail["missing_source_pitch_numbers"] == [2]
+    assert detail["missing_official_pitch_events"][0]["has_pitch_data"] is False
+
+
 def test_select_diverse_game_ids_spans_observed_dates() -> None:
     frame = pl.DataFrame(
         {
