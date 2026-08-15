@@ -2,16 +2,6 @@ name: Official stat reconciliation
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/official-stat-reconciliation.yml"
-      - "scripts/reconcile_official_games.py"
-      - "src/universal_baseball/official.py"
-      - "src/universal_baseball/reconciliation.py"
-      - "tests/test_official.py"
-      - "tests/test_reconciliation.py"
 
 permissions:
   contents: read

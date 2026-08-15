@@ -2,14 +2,6 @@ name: Cross-level source audit
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/cross-level-source-audit.yml"
-      - "scripts/certify_armstjc_group_sample.py"
-      - "src/universal_baseball/sampling.py"
-      - "tests/test_sampling.py"
 
 permissions:
   contents: read
@@ -72,6 +64,13 @@ jobs:
         run: |
           python scripts/diagnose_armstjc_conflicts.py \
             --input-file "data/quarantine/armstjc/${{ matrix.slug }}/${{ matrix.asset }}" \
+            --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
+
+      - name: Audit ${{ matrix.slug }} batted-ball evidence
+        run: |
+          python scripts/certify_armstjc_batted_ball.py \
+            --input-file "data/quarantine/armstjc/${{ matrix.slug }}/${{ matrix.asset }}" \
+            --sample-games 3 \
             --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
 
       - name: Explicitly sample each Rookie league

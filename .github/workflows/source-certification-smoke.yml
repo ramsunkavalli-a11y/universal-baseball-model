@@ -2,24 +2,6 @@ name: Source certification smoke
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "src/**"
-      - "scripts/certify_armstjc_release.py"
-      - "tests/**"
-      - "pyproject.toml"
-      - ".github/workflows/source-certification-smoke.yml"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "src/**"
-      - "scripts/certify_armstjc_release.py"
-      - "tests/**"
-      - "pyproject.toml"
-      - ".github/workflows/source-certification-smoke.yml"
 
 permissions:
   contents: read
@@ -47,6 +29,13 @@ jobs:
 
       - name: Profile small quarantined armstjc release sample
         run: python scripts/certify_armstjc_release.py
+
+      - name: Audit batted-ball evidence on the same source file
+        run: |
+          python scripts/certify_armstjc_batted_ball.py \
+            --input-file "data/quarantine/armstjc/2025_3_aaa_pbp.csv" \
+            --sample-games 5 \
+            --report-dir "reports/generated/armstjc"
 
       - name: Upload certification reports only
         if: always()
