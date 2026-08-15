@@ -1,16 +1,17 @@
 """Thin official-source projections used for certification.
 
 The project intentionally does not flatten the full MLB Stats API feed here.
-`python-mlb-statsapi` owns transport and response modeling; we project only the
-plate-appearance and pitch-event fields needed to verify reusable sources.
+`python-mlb-statsapi` owns HTTP transport, retries, and error handling through
+its stable public low-level adapter. We project only the plate-appearance and
+pitch-event fields needed to verify reusable sources.
 """
 
 from __future__ import annotations
 
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 from typing import Any
 
-import mlbstatsapi
+from mlbstatsapi import MlbDataAdapter
 import polars as pl
 
 
@@ -69,70 +70,78 @@ def _empty_pitch_event_frame() -> pl.DataFrame:
     )
 
 
-def fetch_official_game_evidence(
-    game_ids: Iterable[int],
+def _mapping(value: Any) -> Mapping[str, Any]:
+    return value if isinstance(value, Mapping) else {}
+
+
+def project_official_play_by_play(
+    game_id: int,
+    payload: Mapping[str, Any],
 ) -> tuple[pl.DataFrame, pl.DataFrame]:
-    """Fetch PA rows plus current official events marked as pitches.
+    """Project a raw MLB playByPlay payload into certification evidence.
 
-    `python-mlb-statsapi` owns HTTP transport and response modeling. We retain
-    enough pitch-event detail to explain disagreements with a reused historical
-    source without building our own MLB feed parser.
+    This deliberately extracts a tiny stable surface instead of mirroring the
+    full feed schema. Missing optional nested fields remain null. In particular,
+    MiLB can emit ``details.type={"description": "Unknown"}`` without a pitch
+    type code; that is valid source data and must not make ingestion fail.
 
-    The live-feed `pitchIndex` array is deliberately not used as a pitch count.
-    In real MiLB games it can contain more references than there are current
-    `playEvents` marked `isPitch=true` (for example after feed revisions). The
-    current `playEvents` collection is the evidence we actually compare.
+    Zero-pitch plate appearances (for example a signaled intentional walk) are
+    retained in the PA table even though they have no corresponding pitch row.
     """
 
     pa_rows: list[dict[str, Any]] = []
     pitch_event_rows: list[dict[str, Any]] = []
+    game_key = str(game_id)
 
-    with mlbstatsapi.Mlb() as mlb:
-        for game_id in game_ids:
-            plays = mlb.get_game_play_by_play(int(game_id))
-            if plays is None:
-                continue
+    all_plays = payload.get("allPlays") or []
+    if not isinstance(all_plays, list):
+        all_plays = []
 
-            for play in plays.all_plays:
-                game_key = str(game_id)
-                pa_key = str(play.at_bat_index)
-                current_pitch_events = [
-                    play_event
-                    for play_event in play.play_events
-                    if play_event.is_pitch
-                ]
+    for play_value in all_plays:
+        play = _mapping(play_value)
+        result = _mapping(play.get("result"))
+        at_bat_index = play.get("atBatIndex")
+        pa_key = None if at_bat_index is None else str(at_bat_index)
 
-                pa_rows.append(
-                    {
-                        "game_pk": game_key,
-                        "at_bat_number": pa_key,
-                        "result_type": play.result.type,
-                        "event": play.result.event,
-                        "event_type": play.result.event_type,
-                        "description": play.result.description,
-                        "official_pitch_count": len(current_pitch_events),
-                    }
-                )
+        play_events_value = play.get("playEvents") or []
+        play_events = (
+            play_events_value if isinstance(play_events_value, list) else []
+        )
+        current_pitch_events = [
+            _mapping(event)
+            for event in play_events
+            if _mapping(event).get("isPitch") is True
+        ]
 
-                for play_event in current_pitch_events:
-                    details = play_event.details
-                    pitch_type = details.type if details is not None else None
-                    pitch_event_rows.append(
-                        {
-                            "game_pk": game_key,
-                            "at_bat_number": pa_key,
-                            "event_index": play_event.index,
-                            "pitch_number": play_event.pitch_number,
-                            "code": None if details is None else details.code,
-                            "event": None if details is None else details.event,
-                            "event_type": None if details is None else details.event_type,
-                            "description": None if details is None else details.description,
-                            "has_pitch_data": play_event.pitch_data is not None,
-                            "pitch_type_code": None
-                            if pitch_type is None
-                            else pitch_type.code,
-                        }
-                    )
+        pa_rows.append(
+            {
+                "game_pk": game_key,
+                "at_bat_number": pa_key,
+                "result_type": result.get("type"),
+                "event": result.get("event"),
+                "event_type": result.get("eventType"),
+                "description": result.get("description"),
+                "official_pitch_count": len(current_pitch_events),
+            }
+        )
+
+        for play_event in current_pitch_events:
+            details = _mapping(play_event.get("details"))
+            pitch_type = _mapping(details.get("type"))
+            pitch_event_rows.append(
+                {
+                    "game_pk": game_key,
+                    "at_bat_number": pa_key,
+                    "event_index": play_event.get("index"),
+                    "pitch_number": play_event.get("pitchNumber"),
+                    "code": details.get("code"),
+                    "event": details.get("event"),
+                    "event_type": details.get("eventType"),
+                    "description": details.get("description"),
+                    "has_pitch_data": play_event.get("pitchData") is not None,
+                    "pitch_type_code": pitch_type.get("code"),
+                }
+            )
 
     pa_frame = pl.DataFrame(pa_rows) if pa_rows else _empty_pa_frame()
     pitch_frame = (
@@ -156,6 +165,46 @@ def fetch_official_game_evidence(
             ]
         )
 
+    return pa_frame, pitch_frame
+
+
+def fetch_official_game_evidence(
+    game_ids: Iterable[int],
+) -> tuple[pl.DataFrame, pl.DataFrame]:
+    """Fetch official PAs and current pitch events for selected games.
+
+    The stable public ``MlbDataAdapter`` supplies transport/retries, while the
+    project owns only the narrow projection in :func:`project_official_play_by_play`.
+    This avoids depending on stricter third-party object models for irregular
+    but valid MiLB payloads.
+    """
+
+    pa_frames: list[pl.DataFrame] = []
+    pitch_frames: list[pl.DataFrame] = []
+    adapter = MlbDataAdapter(ver="v1")
+    try:
+        for game_id in game_ids:
+            response = adapter.get(f"game/{int(game_id)}/playByPlay")
+            if not response.data:
+                continue
+            pa_frame, pitch_frame = project_official_play_by_play(
+                int(game_id), response.data
+            )
+            pa_frames.append(pa_frame)
+            pitch_frames.append(pitch_frame)
+    finally:
+        adapter.close()
+
+    pa_frame = (
+        pl.concat(pa_frames, how="vertical_relaxed")
+        if pa_frames
+        else _empty_pa_frame()
+    )
+    pitch_frame = (
+        pl.concat(pitch_frames, how="vertical_relaxed")
+        if pitch_frames
+        else _empty_pitch_event_frame()
+    )
     return pa_frame, pitch_frame
 
 
