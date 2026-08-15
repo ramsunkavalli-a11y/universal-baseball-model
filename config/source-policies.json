@@ -1,0 +1,56 @@
+{
+  "manifest_version": 1,
+  "sources": [
+    {
+      "source_name": "armstjc_milb_pbp",
+      "upstream": "armstjc/milb-data-repository",
+      "role": "historical_bootstrap",
+      "license_id": "MIT",
+      "attribution_required": true,
+      "redistribution_policy": "license_permits_reuse_with_notice",
+      "notes": "Preserve upstream copyright/license notice with redistributed derivatives. Raw release assets remain quarantined; production tables carry source snapshot provenance."
+    },
+    {
+      "source_name": "chadwick_register",
+      "upstream": "chadwickbureau/register",
+      "role": "crosswalk",
+      "license_id": "ODC-By-1.0",
+      "attribution_required": true,
+      "redistribution_policy": "attribution_required",
+      "notes": "Public Register extract is a versioned identity crosswalk. Preserve Chadwick Baseball Bureau attribution and snapshot provenance. Do not imply that delayed public extracts are current to the day."
+    },
+    {
+      "source_name": "mlb_stats_api_playbyplay",
+      "upstream": "MLB Stats API",
+      "role": "official_authority",
+      "license_id": null,
+      "attribution_required": null,
+      "redistribution_policy": "review_required_before_public_redistribution",
+      "notes": "Use as official reconciliation/incremental authority. This project has not established a standalone redistribution license for bulk raw API payloads; keep raw captures private/quarantined unless terms are reviewed."
+    },
+    {
+      "source_name": "baseball_savant_minor_statcast",
+      "upstream": "Baseball Savant / MLB",
+      "role": "tracking_enrichment_candidate",
+      "license_id": null,
+      "attribution_required": null,
+      "redistribution_policy": "review_required_before_public_redistribution",
+      "notes": "Candidate optional evidence source. Retrieval helper choice does not change MLB's underlying data/terms. Promote only after coverage and terms review."
+    },
+    {
+      "source_name": "retrosheet",
+      "upstream": "Retrosheet",
+      "role": "historical_mlb_validation_candidate",
+      "license_id": null,
+      "attribution_required": true,
+      "redistribution_policy": "follow_upstream_notice",
+      "notes": "Planned MLB historical validation source. Before bundling any Retrosheet-derived data, preserve the exact upstream notice/citation requirements for the downloaded distribution."
+    }
+  ],
+  "policy": {
+    "unknown_license_default": "do_not_publicly_redistribute_raw_or_bulk_derived_data_until_reviewed",
+    "provenance_required": true,
+    "raw_source_storage_default": "private_quarantine",
+    "model_output_policy": "source licensing is reviewed separately from publication of aggregate model outputs"
+  }
+}
