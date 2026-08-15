@@ -90,6 +90,22 @@ def validate_sequence_semantics_links(
         raise ValueError(f"play sequences missing semantics columns: {missing}")
     definitions = validate_event_semantics_frame(semantics)
 
+    # Unclassified source sequences cannot borrow the authority of the frozen
+    # official semantics registry. Check this independently of whether the frame
+    # also contains classified rows; otherwise an all-unclassified frame could
+    # escape through the classified-empty early return below.
+    unclassified = sequences.filter(
+        pl.col("classification_status") == "unclassified_source_sequence"
+    )
+    if not unclassified.is_empty():
+        invalid_unclassified = unclassified.filter(
+            pl.col("event_semantics_snapshot_id").is_not_null()
+        )
+        if not invalid_unclassified.is_empty():
+            raise ValueError(
+                "unclassified source sequence cannot claim registered official semantics"
+            )
+
     classified = sequences.filter(
         pl.col("classification_status").is_in(["official_true_pa", "official_non_pa"])
     )
@@ -123,15 +139,3 @@ def validate_sequence_semantics_links(
     )
     if not disagreement.is_empty():
         raise ValueError("play sequence PA classification disagrees with registered semantics")
-
-    unclassified = sequences.filter(
-        pl.col("classification_status") == "unclassified_source_sequence"
-    )
-    if not unclassified.is_empty():
-        invalid_unclassified = unclassified.filter(
-            pl.col("event_semantics_snapshot_id").is_not_null()
-        )
-        if not invalid_unclassified.is_empty():
-            raise ValueError(
-                "unclassified source sequence cannot claim registered official semantics"
-            )
