@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from typing import Any
 
 import polars as pl
 
@@ -70,6 +71,45 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def _fetch_official_per_game(
+    game_ids: list[int],
+) -> tuple[pl.DataFrame, pl.DataFrame, list[dict[str, Any]], list[int]]:
+    """Fetch official evidence while recording wrapper failures by game.
+
+    This is deliberately an audit helper rather than production retry logic. A
+    third-party client failure should not prevent us from learning which games
+    it can and cannot represent.
+    """
+
+    pa_frames: list[pl.DataFrame] = []
+    pitch_frames: list[pl.DataFrame] = []
+    failures: list[dict[str, Any]] = []
+    successes: list[int] = []
+
+    for game_id in game_ids:
+        try:
+            pa_frame, pitch_frame = fetch_official_game_evidence([game_id])
+        except Exception as exc:
+            failures.append(
+                {
+                    "game_pk": int(game_id),
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                }
+            )
+            continue
+
+        pa_frames.append(pa_frame)
+        pitch_frames.append(pitch_frame)
+        successes.append(int(game_id))
+
+    official_pas = pl.concat(pa_frames, how="vertical_relaxed") if pa_frames else pl.DataFrame()
+    official_pitch_events = (
+        pl.concat(pitch_frames, how="vertical_relaxed") if pitch_frames else pl.DataFrame()
+    )
+    return official_pas, official_pitch_events, failures, successes
+
+
 def _write_official_comparison(
     comparison: dict,
     game_ids: list[int],
@@ -85,7 +125,9 @@ def _write_official_comparison(
     lines = [
         "# armstjc + official PA hybrid sample",
         "",
-        f"- Sample games: {', '.join(str(game_id) for game_id in game_ids)}",
+        f"- Requested games: {len(game_ids)}",
+        f"- Official-client successful games: {comparison['successful_official_game_count']}",
+        f"- Official-client failed games: {len(comparison['official_fetch_failures'])}",
         f"- Raw source rows: {comparison['source_rows_raw']:,}",
         (
             "- Source rows after exact dedup **for comparison only**: "
@@ -113,6 +155,14 @@ def _write_official_comparison(
             f"{comparison['source_events_nonblank_pitch_row_count']}"
         ),
     ]
+
+    if comparison["official_fetch_failures"]:
+        lines.extend(["", "## Official-client failures", ""])
+        for failure in comparison["official_fetch_failures"]:
+            first_line = failure["error"].splitlines()[0]
+            lines.append(
+                f"- game {failure['game_pk']}: {failure['error_type']}: {first_line}"
+            )
 
     diagnosis = comparison.get("pitch_count_mismatch_diagnosis")
     if diagnosis and diagnosis.get("available"):
@@ -173,33 +223,38 @@ def main() -> int:
         return 0
 
     game_ids = select_diverse_game_ids(frame, limit=args.official_sample_games)
-    game_id_strings = [str(game_id) for game_id in game_ids]
-    sample_source = frame.filter(pl.col("game_pk").is_in(game_id_strings))
+    official_pas, official_pitch_events, failures, successful_game_ids = (
+        _fetch_official_per_game(game_ids)
+    )
 
-    try:
-        official_pas, official_pitch_events = fetch_official_game_evidence(game_ids)
-        comparison = compare_pitch_source_to_official_pas(
-            sample_source,
-            official_pas,
-            official_pitch_events,
-        )
-        _write_official_comparison(comparison, game_ids, args.report_dir)
-    except Exception as exc:
+    if not successful_game_ids:
         error_path = args.report_dir / "armstjc_official_pa_sample_error.json"
         error_path.parent.mkdir(parents=True, exist_ok=True)
         error_path.write_text(
             json.dumps(
                 {
                     "sample_game_ids": game_ids,
-                    "error_type": type(exc).__name__,
-                    "error": str(exc),
+                    "official_fetch_failures": failures,
+                    "error": "official client failed for every requested game",
                 },
                 indent=2,
                 sort_keys=True,
             ),
             encoding="utf-8",
         )
-        raise
+        raise RuntimeError("official client failed for every requested game")
+
+    successful_strings = [str(game_id) for game_id in successful_game_ids]
+    sample_source = frame.filter(pl.col("game_pk").is_in(successful_strings))
+    comparison = compare_pitch_source_to_official_pas(
+        sample_source,
+        official_pas,
+        official_pitch_events,
+    )
+    comparison["requested_game_count"] = len(game_ids)
+    comparison["successful_official_game_count"] = len(successful_game_ids)
+    comparison["official_fetch_failures"] = failures
+    _write_official_comparison(comparison, game_ids, args.report_dir)
 
     print(
         "\nHybrid sample: "
@@ -207,6 +262,11 @@ def main() -> int:
         "matched source PA keys; "
         f"{comparison['pitch_count_mismatch_pa_count']} shared PAs had pitch-count "
         "mismatches."
+    )
+    print(
+        "Official-client coverage: "
+        f"{len(successful_game_ids)}/{len(game_ids)} games; "
+        f"failed game IDs: {[failure['game_pk'] for failure in failures]}"
     )
     diagnosis = comparison.get("pitch_count_mismatch_diagnosis")
     if diagnosis and diagnosis.get("available"):
