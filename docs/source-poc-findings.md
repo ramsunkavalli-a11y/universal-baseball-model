@@ -48,6 +48,8 @@ A separate edge-case audit of game `779653` found a signaled intentional walk at
 
 This is not a defect that should be "fixed" by inventing a pitch row. It establishes an architectural requirement: the canonical data model needs a PA table that exists independently of the pitch table. Pitch rows attach to PAs when pitches exist; a valid PA may have zero pitch children.
 
+See ADR 002.
+
 ## Validation bug found in our own POC
 
 The first comparison incorrectly used the MLB feed's `pitchIndex` list length as the official pitch count and reported 28 mismatched PAs in a five-game sample. Inspecting the actual `playEvents` showed that `pitchIndex` can retain references that do not correspond one-for-one with the current events marked `isPitch=true`.
@@ -72,11 +74,32 @@ Use the stable public low-level `MlbDataAdapter` from `python-mlb-statsapi` for 
 
 This is intentionally not a custom full-feed parser. It is a narrow adapter over already-solved HTTP plumbing, and it tolerates optional/missing nested fields rather than encoding the complete MLB JSON schema.
 
+## Adjacent-file / partition audit
+
+The `2025_3_aaa_pbp.csv` and `2025_4_aaa_pbp.csv` assets do not behave like disjoint calendar partitions.
+
+After exact deduplication **for comparison only**:
+
+- the March asset contains 12,818 pitch keys from March 28-30 plus 729 pitch keys dated April 23;
+- the April asset contains 114,003 pitch keys spanning April 1 through May 1;
+- the same 729 April 23 natural keys occur in both assets;
+- 663 overlapping rows are identical across the two source snapshots;
+- 66 overlapping rows have one or more changed values.
+
+The changed values are narrow:
+
+- 65 overlapping pitches differ only in `play_end_datetime`;
+- one pitch changes `release_spin_rate` from 738 to 744 and `spin_axis` / `spin_dir` from 17 to 20;
+- no observed overlapping row changes player identity, PA outcome, pitch number, velocity, movement, plate location or batted-ball fields.
+
+This supports treating upstream release files as **versioned source snapshots**, not as canonical month partitions. Source filename/month remains provenance only. Normalized data should be organized by actual event date/season/level, while repeated observations of the same natural key retain source asset, retrieval time and checksum so later corrections do not contaminate historical as-of backtests.
+
+See ADR 003.
+
 ## Remaining concerns before promotion
 
-The asset is still **quarantined**. The POC has not yet completed:
+The source is still **quarantined**. The POC has not yet completed:
 
-- adjacent-file overlap/partition testing;
 - official statistical reconciliation for AB, H, 2B, 3B, HR, BB, HBP and K;
 - cross-level testing at AA, A+, A and rookie/complex levels;
 - explicit DSL identification/coverage;
@@ -86,16 +109,17 @@ The asset is still **quarantined**. The POC has not yet completed:
 - tracking availability profiling by league/park/season;
 - source-data terms/redistribution review.
 
-The next source-level question is the partition anomaly: `2025_3_aaa_pbp.csv` contains row dates/month values extending into April. The next test should compare adjacent release assets by natural keys and row dates before treating filename month as partition truth.
+Adjacent-file overlap is no longer an open conceptual blocker; it is now a certification rule. Future source promotion must profile repeated natural keys across snapshots and preserve knowledge-time provenance.
 
 ## Current provisional conclusion
 
-`armstjc/milb-data-repository` remains promising as a **historical pitch-level bootstrap**. The tested slice suggests that, after a deterministic exact-duplicate normalization, its underlying pitch sequence agrees extremely well with the current official feed. It should not be used alone for PA reconstruction because zero-pitch PAs and its broken PA outcome field require an independent PA layer.
+`armstjc/milb-data-repository` remains promising as a **historical pitch-level bootstrap**. The tested AAA slice suggests that, after a deterministic exact-duplicate normalization, its underlying pitch sequence agrees extremely well with the current official feed. It should not be used alone for PA reconstruction because zero-pitch PAs and its broken PA outcome field require an independent PA layer.
 
-The likely architecture is therefore:
+The provisional architecture is therefore:
 
 1. quarantined reusable pitch-grain history from armstjc, explicitly normalized and certified;
-2. canonical PA records keyed independently and enriched/certified from the official feed;
-3. canonical pitch records attached to PA records where pitches exist;
-4. official MLB API access through a narrow low-level adapter for verification, gap filling and incremental updates;
-5. richer tracking sources such as Savant/SportsDataverse added later as optional evidence tiers.
+2. a source-observation/provenance layer that preserves repeated snapshots rather than destructively deduplicating them;
+3. canonical PA records keyed independently and enriched/certified from the official feed;
+4. canonical pitch records attached to PA records where pitches exist;
+5. official MLB API access through a narrow low-level adapter for verification, gap filling and incremental updates;
+6. richer tracking sources such as Savant/SportsDataverse added later as optional evidence tiers.
