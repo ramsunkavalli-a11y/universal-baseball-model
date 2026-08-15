@@ -1,0 +1,67 @@
+name: Era source audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/era-source-audit.yml"
+      - "scripts/certify_armstjc_release.py"
+      - "src/universal_baseball/certification.py"
+      - "src/universal_baseball/official.py"
+      - "src/universal_baseball/source_comparison.py"
+
+permissions:
+  contents: read
+
+jobs:
+  certify-era:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - slug: 2005-aaa-march
+            asset: 2005_3_aaa_pbp.csv
+            expected_year: 2005
+            expected_month: 3
+          - slug: 2015-aaa-september
+            asset: 2015_9_aaa_pbp.csv
+            expected_year: 2015
+            expected_month: 9
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Audit ${{ matrix.slug }} source slice
+        run: |
+          python scripts/certify_armstjc_release.py \
+            --url "https://github.com/armstjc/milb-data-repository/releases/download/pbp/${{ matrix.asset }}" \
+            --asset-name "${{ matrix.asset }}" \
+            --expected-year ${{ matrix.expected_year }} \
+            --expected-month ${{ matrix.expected_month }} \
+            --expected-level aaa \
+            --official-sample-games 2 \
+            --work-dir "data/quarantine/armstjc/${{ matrix.slug }}" \
+            --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
+
+      - name: Upload ${{ matrix.slug }} audit report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: era-${{ matrix.slug }}
+          path: reports/generated/armstjc/${{ matrix.slug }}/
+          if-no-files-found: warn
+          retention-days: 14
