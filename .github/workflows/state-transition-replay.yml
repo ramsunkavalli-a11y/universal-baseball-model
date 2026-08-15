@@ -2,13 +2,6 @@ name: State transition replay audit
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/state-transition-replay.yml"
-      - "scripts/audit_state_transition_replay.py"
-      - "src/universal_baseball/state_transitions.py"
 
 permissions:
   contents: read
