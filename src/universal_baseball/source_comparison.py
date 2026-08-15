@@ -148,7 +148,7 @@ def compare_pitch_source_to_official_pas(
             source_exact_unique.select(
                 (
                     pl.col("events").is_not_null()
-                    & (pl.col("events").str.strip_chars() != "")
+                    & (pl.col("events").cast(pl.String).str.strip_chars() != "")
                 )
                 .sum()
                 .alias("nonblank")
