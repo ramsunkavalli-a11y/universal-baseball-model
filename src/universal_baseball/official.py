@@ -72,11 +72,16 @@ def _empty_pitch_event_frame() -> pl.DataFrame:
 def fetch_official_game_evidence(
     game_ids: Iterable[int],
 ) -> tuple[pl.DataFrame, pl.DataFrame]:
-    """Fetch PA rows plus official events marked as pitches for selected games.
+    """Fetch PA rows plus current official events marked as pitches.
 
     `python-mlb-statsapi` owns HTTP transport and response modeling. We retain
     enough pitch-event detail to explain disagreements with a reused historical
     source without building our own MLB feed parser.
+
+    The live-feed `pitchIndex` array is deliberately not used as a pitch count.
+    In real MiLB games it can contain more references than there are current
+    `playEvents` marked `isPitch=true` (for example after feed revisions). The
+    current `playEvents` collection is the evidence we actually compare.
     """
 
     pa_rows: list[dict[str, Any]] = []
@@ -91,6 +96,12 @@ def fetch_official_game_evidence(
             for play in plays.all_plays:
                 game_key = str(game_id)
                 pa_key = str(play.at_bat_index)
+                current_pitch_events = [
+                    play_event
+                    for play_event in play.play_events
+                    if play_event.is_pitch
+                ]
+
                 pa_rows.append(
                     {
                         "game_pk": game_key,
@@ -99,14 +110,11 @@ def fetch_official_game_evidence(
                         "event": play.result.event,
                         "event_type": play.result.event_type,
                         "description": play.result.description,
-                        "official_pitch_count": len(play.pitch_index),
+                        "official_pitch_count": len(current_pitch_events),
                     }
                 )
 
-                for play_event in play.play_events:
-                    if not play_event.is_pitch:
-                        continue
-
+                for play_event in current_pitch_events:
                     details = play_event.details
                     pitch_type = details.type if details is not None else None
                     pitch_event_rows.append(
