@@ -59,7 +59,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--official-sample-games",
         type=int,
-        default=5,
+        default=100,
         help="Number of date-spread games to compare with official PA results.",
     )
     parser.add_argument(
