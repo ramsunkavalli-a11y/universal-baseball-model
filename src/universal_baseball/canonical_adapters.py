@@ -16,6 +16,8 @@ from typing import Any, Mapping
 import polars as pl
 
 from universal_baseball.canonical_schema import (
+    PITCH_OBSERVATION_SCHEMA,
+    PLAY_SEQUENCE_OBSERVATION_SCHEMA,
     validate_pitch_observation,
     validate_play_sequence_observation,
 )
@@ -121,6 +123,10 @@ def normalize_armstjc_pitch_observations(
     agree. Byte/row-identical source duplicates compact into
     ``duplicate_row_count``. The known source batter mutation is preserved as
     ``source_batter_mlbam_id`` rather than corrected here.
+
+    The canonical schema is supplied to Polars at construction time. Sparse
+    source columns must never let inference choose a narrower type before a
+    later valid value appears in the same asset.
     """
 
     required = {"game_pk", "at_bat_number", "pitch_number"}
@@ -180,21 +186,12 @@ def normalize_armstjc_pitch_observations(
         }
 
     rows = list(accumulator.values())
-    if not rows:
-        return validate_pitch_observation(
-            pl.DataFrame(
-                schema={
-                    "normalization_id": pl.String,
-                    "source_snapshot_id": pl.String,
-                    "game_pk": pl.Int64,
-                    "at_bat_index": pl.Int64,
-                    "pitch_number": pl.Int64,
-                    "payload_hash": pl.String,
-                    "duplicate_row_count": pl.Int64,
-                }
-            )
-        )
-    return validate_pitch_observation(pl.DataFrame(rows))
+    canonical = pl.from_dicts(
+        rows,
+        schema=PITCH_OBSERVATION_SCHEMA,
+        strict=True,
+    )
+    return validate_pitch_observation(canonical)
 
 
 def normalize_official_play_sequence_observations(
@@ -278,4 +275,9 @@ def normalize_official_play_sequence_observations(
     rows = list(accumulator.values())
     if not rows:
         raise ValueError(f"official game {game_id} playByPlay contains no sequences")
-    return validate_play_sequence_observation(pl.DataFrame(rows))
+    canonical = pl.from_dicts(
+        rows,
+        schema=PLAY_SEQUENCE_OBSERVATION_SCHEMA,
+        strict=True,
+    )
+    return validate_play_sequence_observation(canonical)
