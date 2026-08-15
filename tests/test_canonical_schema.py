@@ -10,6 +10,7 @@ from universal_baseball.canonical_schema import (
     validate_normalization_definition,
     validate_pitch_observation,
     validate_play_sequence_observation,
+    validate_provenance_links,
     validate_quality_issue,
     validate_source_snapshot,
 )
@@ -42,19 +43,21 @@ def _normalization() -> NormalizationDefinition:
     )
 
 
+def _provenance_frames() -> tuple[pl.DataFrame, pl.DataFrame]:
+    snapshot = validate_source_snapshot(pl.DataFrame([_snapshot().as_record()]))
+    normalization = validate_normalization_definition(
+        pl.DataFrame([_normalization().as_record()])
+    )
+    return snapshot, normalization
+
+
 def test_source_and_normalization_tables_add_typed_optional_columns() -> None:
-    snapshot = _snapshot()
-    source_frame = validate_source_snapshot(pl.DataFrame([snapshot.as_record()]))
+    source_frame, normalized = _provenance_frames()
     assert source_frame.schema["knowledge_available_at_utc"] == pl.Datetime(
         time_unit="us", time_zone="UTC"
     )
-
-    normalization = _normalization()
-    normalized = validate_normalization_definition(
-        pl.DataFrame([normalization.as_record()])
-    )
     assert normalized.get_column("source_snapshot_id").to_list() == [
-        snapshot.source_snapshot_id
+        _snapshot().source_snapshot_id
     ]
 
 
@@ -107,20 +110,24 @@ def test_play_sequence_supports_true_pa_non_pa_and_unclassified() -> None:
     assert frame.get_column("result_description").null_count() == 3
 
 
-def test_play_sequence_rejects_status_boolean_disagreement() -> None:
+def test_play_sequence_rejects_status_boolean_disagreement_including_null() -> None:
     normalization = _normalization()
-    row = {
+    base = {
         "normalization_id": normalization.normalization_id,
         "source_snapshot_id": normalization.source_snapshot_id,
         "game_pk": 1,
         "at_bat_index": 1,
         "payload_hash": PAYLOAD_HASH,
         "duplicate_row_count": 1,
-        "classification_status": "unclassified_source_sequence",
-        "is_plate_appearance": True,
     }
-    with pytest.raises(ValueError, match="classification_status"):
-        validate_play_sequence_observation(pl.DataFrame([row]))
+    for status, value in [
+        ("unclassified_source_sequence", True),
+        ("official_true_pa", None),
+        ("official_non_pa", None),
+    ]:
+        row = {**base, "classification_status": status, "is_plate_appearance": value}
+        with pytest.raises(ValueError, match="classification_status"):
+            validate_play_sequence_observation(pl.DataFrame([row]))
 
 
 def test_pitch_observation_allows_payload_variants_but_not_duplicate_variant_keys() -> None:
@@ -143,7 +150,6 @@ def test_pitch_observation_allows_payload_variants_but_not_duplicate_variant_key
 
     frame = validate_pitch_observation(pl.DataFrame([first, second]))
     assert frame.height == 2
-
     with pytest.raises(ValueError, match="duplicate key groups"):
         validate_pitch_observation(pl.DataFrame([first, first]))
 
@@ -166,6 +172,32 @@ def test_pitch_observation_rejects_nonphysical_pitch_number_and_zero_duplicate_c
     base["duplicate_row_count"] = 0
     with pytest.raises(ValueError, match="duplicate_row_count < 1"):
         validate_pitch_observation(pl.DataFrame([base]))
+
+
+def test_observation_provenance_must_match_normalization_source_snapshot() -> None:
+    snapshots, definitions = _provenance_frames()
+    normalization = _normalization()
+    observation = pl.DataFrame(
+        {
+            "normalization_id": [normalization.normalization_id],
+            "source_snapshot_id": [normalization.source_snapshot_id],
+        }
+    )
+    validate_provenance_links(
+        observation,
+        definitions,
+        snapshots,
+        table_name="fixture_observation",
+    )
+
+    bad = observation.with_columns(pl.lit("f" * 64).alias("source_snapshot_id"))
+    with pytest.raises(ValueError, match="different source snapshot"):
+        validate_provenance_links(
+            bad,
+            definitions,
+            snapshots,
+            table_name="fixture_observation",
+        )
 
 
 def test_quality_issue_enforces_controlled_severity_and_entity_type() -> None:
