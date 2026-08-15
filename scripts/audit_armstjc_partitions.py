@@ -86,6 +86,30 @@ def main() -> int:
     for row in overlap["natural_keys_by_game_date"]:
         lines.append(f"- {row['game_date']}: {row['len']:,}")
 
+    detail = overlap.get("changed_row_detail") or {}
+    if detail.get("available") and detail.get("changed_column_counts"):
+        lines.extend(["", "## Columns changed across overlapping rows", ""])
+        for column, count in detail["changed_column_counts"].items():
+            lines.append(f"- `{column}`: {count:,} overlapping keys")
+
+        lines.extend(["", "## Changed-row examples", ""])
+        for example in detail.get("examples", []):
+            key_text = ", ".join(
+                f"{column}={example[column]}" for column in comparison["natural_key"]
+            )
+            lines.append(
+                f"- {key_text}: changed {', '.join(example['changed_columns'])}"
+            )
+    elif not detail.get("available", True):
+        lines.extend(
+            [
+                "",
+                "## Changed-row detail unavailable",
+                "",
+                f"- {detail.get('reason')}",
+            ]
+        )
+
     lines.extend(
         [
             "",
