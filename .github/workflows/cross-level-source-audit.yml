@@ -65,6 +65,12 @@ jobs:
             --work-dir "data/quarantine/armstjc/${{ matrix.slug }}" \
             --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
 
+      - name: Diagnose ${{ matrix.slug }} natural-key conflicts
+        run: |
+          python scripts/diagnose_armstjc_conflicts.py \
+            --input-file "data/quarantine/armstjc/${{ matrix.slug }}/${{ matrix.asset }}" \
+            --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
+
       - name: Upload ${{ matrix.slug }} audit report
         if: always()
         uses: actions/upload-artifact@v7
