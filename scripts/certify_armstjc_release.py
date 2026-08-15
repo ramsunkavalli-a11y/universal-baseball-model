@@ -18,7 +18,7 @@ from universal_baseball.certification import (
     sha256_file,
     write_report,
 )
-from universal_baseball.official import fetch_official_pa_results
+from universal_baseball.official import fetch_official_game_evidence
 from universal_baseball.source_comparison import (
     compare_pitch_source_to_official_pas,
     select_diverse_game_ids,
@@ -112,10 +112,29 @@ def _write_official_comparison(
             "- Source pitch rows with nonblank `events`: "
             f"{comparison['source_events_nonblank_pitch_row_count']}"
         ),
-        "",
-        "This is a viability test for a hybrid source strategy, not certification.",
-        "",
     ]
+
+    diagnosis = comparison.get("pitch_count_mismatch_diagnosis")
+    if diagnosis and diagnosis.get("available"):
+        lines.extend(["", "## Pitch-count mismatch diagnosis", ""])
+        for label, count in diagnosis["mismatch_class_counts"].items():
+            lines.append(f"- {label}: {count}")
+        lines.append(
+            "- Missing official event codes: "
+            f"{diagnosis['missing_official_pitch_event_code_counts']}"
+        )
+        lines.append(
+            "- Missing official events with pitch data: "
+            f"{diagnosis['missing_official_pitch_event_has_pitch_data_counts']}"
+        )
+
+    lines.extend(
+        [
+            "",
+            "This is a viability test for a hybrid source strategy, not certification.",
+            "",
+        ]
+    )
     markdown_path.write_text("\n".join(lines), encoding="utf-8")
 
 
@@ -158,8 +177,12 @@ def main() -> int:
     sample_source = frame.filter(pl.col("game_pk").is_in(game_id_strings))
 
     try:
-        official = fetch_official_pa_results(game_ids)
-        comparison = compare_pitch_source_to_official_pas(sample_source, official)
+        official_pas, official_pitch_events = fetch_official_game_evidence(game_ids)
+        comparison = compare_pitch_source_to_official_pas(
+            sample_source,
+            official_pas,
+            official_pitch_events,
+        )
         _write_official_comparison(comparison, game_ids, args.report_dir)
     except Exception as exc:
         error_path = args.report_dir / "armstjc_official_pa_sample_error.json"
@@ -185,6 +208,13 @@ def main() -> int:
         f"{comparison['pitch_count_mismatch_pa_count']} shared PAs had pitch-count "
         "mismatches."
     )
+    diagnosis = comparison.get("pitch_count_mismatch_diagnosis")
+    if diagnosis and diagnosis.get("available"):
+        print(f"Mismatch classes: {diagnosis['mismatch_class_counts']}")
+        print(
+            "Missing official pitch-event codes: "
+            f"{diagnosis['missing_official_pitch_event_code_counts']}"
+        )
     return 0
 
 
