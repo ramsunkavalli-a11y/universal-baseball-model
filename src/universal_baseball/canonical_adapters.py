@@ -27,6 +27,15 @@ from universal_baseball.event_types import (
 )
 
 
+# armstjc exports MLB playEvent ``details.code`` as its ``type`` column. Its
+# own column guide understates that vocabulary as B/S/X, but live certification
+# found all three D/E/X on rows the upstream parser had already confirmed with
+# structured ``details.isInPlay == True``. Historical Gameday parsers likewise
+# distinguish multiple in-play result descriptions. Keep the positive code set
+# explicit and retain hitData-derived evidence as a future-code-safe backstop.
+ARMSTJC_IN_PLAY_CODES = frozenset({"D", "E", "X"})
+
+
 def _json_safe(value: Any) -> Any:
     if value is None or isinstance(value, (str, bool, int)):
         return value
@@ -110,6 +119,46 @@ def _utc_datetime(value: Any) -> datetime | None:
     return parsed.astimezone(UTC)
 
 
+def _armstjc_in_play_value(
+    pitch_code: str | None,
+    *,
+    bb_type: str | None,
+    hit_location: int | None,
+    hc_x: float | None,
+    hc_y: float | None,
+    hit_distance: float | None,
+    launch_speed: float | None,
+    launch_angle: float | None,
+) -> bool | None:
+    """Recover the upstream structured in-play flag without using X alone.
+
+    The reusable export does not carry MLB's ``details.isInPlay`` boolean, but
+    its parser populates every exported hitData field only inside the branch
+    where that boolean is true. Therefore either a certified D/E/X code or any
+    preserved hitData field is positive in-play evidence. A nonblank different
+    pitch code with no hitData is treated as non-in-play; a blank code and no
+    hitData remains unknown.
+    """
+
+    has_hit_data = any(
+        value is not None
+        for value in (
+            bb_type,
+            hit_location,
+            hc_x,
+            hc_y,
+            hit_distance,
+            launch_speed,
+            launch_angle,
+        )
+    )
+    if pitch_code in ARMSTJC_IN_PLAY_CODES or has_hit_data:
+        return True
+    if pitch_code is not None:
+        return False
+    return None
+
+
 def normalize_armstjc_pitch_observations(
     frame: pl.DataFrame,
     *,
@@ -149,6 +198,14 @@ def normalize_armstjc_pitch_observations(
             continue
 
         pitch_code = _text(raw_row.get("type"))
+        bb_type = _text(raw_row.get("bb_type"))
+        hit_location = _int(raw_row.get("hit_location"))
+        hc_x = _float(raw_row.get("hc_x"))
+        hc_y = _float(raw_row.get("hc_y"))
+        hit_distance = _float(raw_row.get("hit_distance_sc"))
+        launch_speed = _float(raw_row.get("launch_speed"))
+        launch_angle = _float(raw_row.get("launch_angle"))
+
         accumulator[key] = {
             "normalization_id": normalization_id,
             "source_snapshot_id": source_snapshot_id,
@@ -162,11 +219,20 @@ def normalize_armstjc_pitch_observations(
             "batter_side": _text(raw_row.get("stand")),
             "pitcher_hand": _text(raw_row.get("p_throws")),
             "pitch_code": pitch_code,
-            "is_in_play": pitch_code == "X" if pitch_code is not None else None,
-            "bb_type": _text(raw_row.get("bb_type")),
-            "hit_location": _int(raw_row.get("hit_location")),
-            "hc_x": _float(raw_row.get("hc_x")),
-            "hc_y": _float(raw_row.get("hc_y")),
+            "is_in_play": _armstjc_in_play_value(
+                pitch_code,
+                bb_type=bb_type,
+                hit_location=hit_location,
+                hc_x=hc_x,
+                hc_y=hc_y,
+                hit_distance=hit_distance,
+                launch_speed=launch_speed,
+                launch_angle=launch_angle,
+            ),
+            "bb_type": bb_type,
+            "hit_location": hit_location,
+            "hc_x": hc_x,
+            "hc_y": hc_y,
             "pitch_type": _text(raw_row.get("pitch_type")),
             "pitch_name": _text(raw_row.get("pitch_name")),
             "release_speed": _float(raw_row.get("release_speed")),
@@ -180,9 +246,9 @@ def normalize_armstjc_pitch_observations(
             "release_spin_rate": _float(raw_row.get("release_spin_rate")),
             "spin_axis": _float(raw_row.get("spin_axis")),
             "release_extension": _float(raw_row.get("release_extension")),
-            "launch_speed": _float(raw_row.get("launch_speed")),
-            "launch_angle": _float(raw_row.get("launch_angle")),
-            "hit_distance": _float(raw_row.get("hit_distance_sc")),
+            "launch_speed": launch_speed,
+            "launch_angle": launch_angle,
+            "hit_distance": hit_distance,
         }
 
     rows = list(accumulator.values())
