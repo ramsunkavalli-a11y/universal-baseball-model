@@ -1,0 +1,92 @@
+name: Historical source audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/historical-source-audit.yml"
+      - "scripts/certify_armstjc_release.py"
+      - "scripts/diagnose_armstjc_conflicts.py"
+      - "scripts/certify_armstjc_group_sample.py"
+      - "src/universal_baseball/certification.py"
+      - "src/universal_baseball/source_comparison.py"
+      - "src/universal_baseball/source_conflicts.py"
+      - "src/universal_baseball/sampling.py"
+
+permissions:
+  contents: read
+
+jobs:
+  certify-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - slug: 2023-aaa
+            asset: 2023_8_aaa_pbp.csv
+            expected_level: aaa
+          - slug: 2023-aa
+            asset: 2023_8_aa_pbp.csv
+            expected_level: aa
+          - slug: 2023-high-a
+            asset: 2023_8_a+_pbp.csv
+            expected_level: a+
+          - slug: 2023-single-a
+            asset: 2023_8_a_pbp.csv
+            expected_level: a
+          - slug: 2023-rookie
+            asset: 2023_8_rk_pbp.csv
+            expected_level: rk
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Audit ${{ matrix.slug }} historical slice
+        run: |
+          python scripts/certify_armstjc_release.py \
+            --url "https://github.com/armstjc/milb-data-repository/releases/download/pbp/${{ matrix.asset }}" \
+            --asset-name "${{ matrix.asset }}" \
+            --expected-year 2023 \
+            --expected-month 8 \
+            --expected-level "${{ matrix.expected_level }}" \
+            --official-sample-games 2 \
+            --work-dir "data/quarantine/armstjc/${{ matrix.slug }}" \
+            --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
+
+      - name: Diagnose ${{ matrix.slug }} natural-key conflicts
+        run: |
+          python scripts/diagnose_armstjc_conflicts.py \
+            --input-file "data/quarantine/armstjc/${{ matrix.slug }}/${{ matrix.asset }}" \
+            --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
+
+      - name: Explicitly sample 2023 Rookie leagues
+        if: matrix.slug == '2023-rookie'
+        run: |
+          python scripts/certify_armstjc_group_sample.py \
+            --input-file "data/quarantine/armstjc/${{ matrix.slug }}/${{ matrix.asset }}" \
+            --group-column league_name \
+            --games-per-group 1 \
+            --report-dir "reports/generated/armstjc/${{ matrix.slug }}"
+
+      - name: Upload ${{ matrix.slug }} audit report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: historical-${{ matrix.slug }}
+          path: reports/generated/armstjc/${{ matrix.slug }}/
+          if-no-files-found: warn
+          retention-days: 14
