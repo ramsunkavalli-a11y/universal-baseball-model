@@ -28,8 +28,18 @@ SOURCE_TO_OFFICIAL_FIELDS: dict[str, str] = {
     "launch_angle": "hit_launch_angle",
 }
 
+# Some integer-coded source fields are inferred as floats by CSV readers when
+# nulls are present (for example hit_location="9.0" versus official "9").
+# Treat those semantic numeric categories numerically rather than as text.
 NUMERIC_SOURCE_FIELDS = frozenset(
-    {"hc_x", "hc_y", "hit_distance_sc", "launch_speed", "launch_angle"}
+    {
+        "hit_location",
+        "hc_x",
+        "hc_y",
+        "hit_distance_sc",
+        "launch_speed",
+        "launch_angle",
+    }
 )
 
 
