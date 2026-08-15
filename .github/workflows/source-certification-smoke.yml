@@ -11,6 +11,15 @@ on:
       - "tests/**"
       - "pyproject.toml"
       - ".github/workflows/source-certification-smoke.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "scripts/certify_armstjc_release.py"
+      - "tests/**"
+      - "pyproject.toml"
+      - ".github/workflows/source-certification-smoke.yml"
 
 permissions:
   contents: read
