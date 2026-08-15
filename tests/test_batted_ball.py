@@ -53,6 +53,34 @@ def test_batted_ball_comparison_matches_direct_hitdata_fields() -> None:
     assert result["certification_clean"] is True
 
 
+def test_batted_ball_comparison_normalizes_integer_location_codes_from_float_csv() -> None:
+    source = pl.DataFrame(
+        {
+            "game_pk": ["1"],
+            "at_bat_number": ["0"],
+            "pitch_number": ["2"],
+            "hit_location": ["9.0"],
+        }
+    )
+    official = pl.DataFrame(
+        {
+            "game_pk": ["1"],
+            "at_bat_number": ["0"],
+            "pitch_number": [2],
+            "is_in_play": [True],
+            "hit_location": ["9"],
+        }
+    )
+
+    result = compare_source_batted_balls(source, official)
+
+    assert result["field_summaries"]["hit_location"][
+        "matches_when_both_nonblank"
+    ] == 1
+    assert result["total_field_mismatch_count"] == 0
+    assert result["certification_clean"] is True
+
+
 def test_batted_ball_comparison_reports_missing_source_metadata_and_mismatch() -> None:
     source = pl.DataFrame(
         {
