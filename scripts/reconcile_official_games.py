@@ -39,12 +39,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--require-exact",
         action="store_true",
-        help="Return a non-zero exit code if any batting line fails reconciliation.",
+        help=(
+            "Return non-zero unless all boxscore lines reconcile and every result "
+            "event has known, non-null MLB event-type semantics."
+        ),
     )
     return parser.parse_args()
 
 
-def _fetch_games(game_ids: list[int]) -> tuple[pl.DataFrame, pl.DataFrame, list[dict[str, Any]]]:
+def _fetch_games(
+    game_ids: list[int],
+) -> tuple[pl.DataFrame, pl.DataFrame, list[dict[str, Any]]]:
     pa_frames: list[pl.DataFrame] = []
     box_frames: list[pl.DataFrame] = []
     failures: list[dict[str, Any]] = []
@@ -54,9 +59,11 @@ def _fetch_games(game_ids: list[int]) -> tuple[pl.DataFrame, pl.DataFrame, list[
             pa_frame, _ = fetch_official_game_evidence([game_id])
             box_frame = fetch_official_team_batting([game_id])
             if pa_frame.is_empty():
-                raise RuntimeError("official playByPlay projection returned no PAs")
+                raise RuntimeError("official playByPlay projection returned no plays")
             if box_frame.is_empty():
-                raise RuntimeError("official boxscore projection returned no team batting lines")
+                raise RuntimeError(
+                    "official boxscore projection returned no team batting lines"
+                )
             pa_frames.append(pa_frame)
             box_frames.append(box_frame)
         except Exception as exc:
@@ -68,8 +75,12 @@ def _fetch_games(game_ids: list[int]) -> tuple[pl.DataFrame, pl.DataFrame, list[
                 }
             )
 
-    pas = pl.concat(pa_frames, how="vertical_relaxed") if pa_frames else pl.DataFrame()
-    boxes = pl.concat(box_frames, how="vertical_relaxed") if box_frames else pl.DataFrame()
+    pas = (
+        pl.concat(pa_frames, how="vertical_relaxed") if pa_frames else pl.DataFrame()
+    )
+    boxes = (
+        pl.concat(box_frames, how="vertical_relaxed") if box_frames else pl.DataFrame()
+    )
     return pas, boxes, failures
 
 
@@ -87,14 +98,20 @@ def _markdown(payload: dict[str, Any]) -> str:
         f"- Official batting lines: {comparison['official_line_count']}",
         f"- Exact matching lines: {comparison['exact_match_line_count']}",
         f"- Mismatching lines: {comparison['mismatch_line_count']}",
-        f"- All reconciled: **{comparison['all_reconciled']}**",
+        f"- All batting lines reconciled: **{comparison['all_reconciled']}**",
+        f"- Certification clean: **{comparison['certification_clean']}**",
         "",
-        "## Structured PA event vocabulary",
+        "## Structured result-event vocabulary",
         "",
+        f"Event-type reference: {event_profile.get('event_type_snapshot')}",
         f"Null/blank event types: {event_profile.get('null_or_blank_count')}",
+        f"Unknown event types: {event_profile.get('unknown_counts')}",
+        f"Known non-PA result events excluded from PA accounting: "
+        f"{event_profile.get('known_non_pa_counts')}",
     ]
 
-    for event_type, count in (event_profile.get("counts") or {}).items():
+    lines.extend(["", "### Plate-appearance event counts", ""])
+    for event_type, count in (event_profile.get("plate_appearance_counts") or {}).items():
         lines.append(f"- `{event_type}`: {count}")
 
     if comparison["stat_mismatch_counts"]:
@@ -124,9 +141,9 @@ def _markdown(payload: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "This report compares two official representations for the same games. "
-            "It certifies our narrow event projection/accounting logic; it does not "
-            "make the boxscore independent evidence about MLB's underlying feed.",
+            "This compares two official representations for the same games. It "
+            "certifies our narrow event projection/accounting logic; the boxscore "
+            "is not independent evidence about MLB's underlying feed.",
             "",
         ]
     )
@@ -149,7 +166,7 @@ def main() -> int:
     )
 
     payload = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "label": args.label,
         "requested_game_ids": game_ids,
         "successful_game_ids": successful_games,
@@ -171,7 +188,7 @@ def main() -> int:
     )
     print(summary)
 
-    if args.require_exact and (failures or not comparison["all_reconciled"]):
+    if args.require_exact and (failures or not comparison["certification_clean"]):
         return 1
     return 0
 
