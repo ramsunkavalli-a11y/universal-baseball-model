@@ -4,13 +4,18 @@ from datetime import UTC, datetime, timedelta, timezone
 
 import pytest
 
-from universal_baseball.provenance import SourceSnapshot, make_source_snapshot_id
+from universal_baseball.provenance import (
+    NormalizationDefinition,
+    SourceSnapshot,
+    make_normalization_id,
+    make_source_snapshot_id,
+)
 
 
 DIGEST = "a" * 64
 
 
-def test_source_snapshot_id_is_deterministic_and_parser_independent() -> None:
+def test_source_snapshot_id_is_deterministic_and_normalizer_independent() -> None:
     first = make_source_snapshot_id(
         source_name="armstjc_milb_pbp",
         content_sha256=DIGEST,
@@ -40,8 +45,6 @@ def test_source_snapshot_build_validates_and_preserves_temporal_semantics() -> N
         source_published_at_utc=published,
         retrieved_at_utc=retrieved,
         knowledge_available_at_utc=knowledge,
-        parser_name="armstjc_adapter",
-        parser_version="0.1",
         license_id="MIT",
         raw_object_key="quarantine/armstjc/2025_3_aaa_pbp.csv",
     )
@@ -51,6 +54,35 @@ def test_source_snapshot_build_validates_and_preserves_temporal_semantics() -> N
     assert snapshot.knowledge_available_at_utc == knowledge
     assert snapshot.retrieved_at_utc == retrieved
     assert snapshot.as_record()["source_snapshot_id"] == snapshot.source_snapshot_id
+    assert "normalizer_name" not in snapshot.as_record()
+
+
+def test_normalization_definition_versions_our_interpretation_separately() -> None:
+    snapshot_id = make_source_snapshot_id(
+        source_name="armstjc_milb_pbp",
+        content_sha256=DIGEST,
+    )
+    first = NormalizationDefinition.build(
+        source_snapshot_id=snapshot_id,
+        normalizer_name="armstjc_adapter",
+        normalizer_version="0.1",
+        canonical_schema_version="0.1",
+    )
+    second = NormalizationDefinition.build(
+        source_snapshot_id=snapshot_id,
+        normalizer_name="armstjc_adapter",
+        normalizer_version="0.2",
+        canonical_schema_version="0.1",
+    )
+
+    assert first.source_snapshot_id == second.source_snapshot_id == snapshot_id
+    assert first.normalization_id != second.normalization_id
+    assert first.normalization_id == make_normalization_id(
+        source_snapshot_id=snapshot_id,
+        normalizer_name="armstjc_adapter",
+        normalizer_version="0.1",
+        canonical_schema_version="0.1",
+    )
 
 
 def test_unknown_historical_availability_stays_null() -> None:
@@ -60,8 +92,6 @@ def test_unknown_historical_availability_stays_null() -> None:
         upstream_locator="game/39715/playByPlay",
         content_sha256="b" * 64,
         retrieved_at_utc=datetime(2026, 8, 15, 19, tzinfo=UTC),
-        parser_name="official_projection",
-        parser_version="0.1",
         raw_object_key="quarantine/mlb/game-39715.json",
     )
 
@@ -77,8 +107,6 @@ def test_snapshot_rejects_fake_or_inconsistent_time_provenance() -> None:
             upstream_locator="thing",
             content_sha256=DIGEST,
             retrieved_at_utc=datetime(2026, 8, 15),
-            parser_name="parser",
-            parser_version="1",
             raw_object_key="raw/thing",
         )
 
@@ -90,8 +118,6 @@ def test_snapshot_rejects_fake_or_inconsistent_time_provenance() -> None:
             upstream_locator="thing",
             content_sha256=DIGEST,
             retrieved_at_utc=datetime(2026, 8, 15, tzinfo=non_utc),
-            parser_name="parser",
-            parser_version="1",
             raw_object_key="raw/thing",
         )
 
@@ -106,8 +132,6 @@ def test_snapshot_rejects_fake_or_inconsistent_time_provenance() -> None:
             source_published_at_utc=published,
             knowledge_available_at_utc=knowledge,
             retrieved_at_utc=datetime(2026, 8, 15, tzinfo=UTC),
-            parser_name="parser",
-            parser_version="1",
             raw_object_key="raw/thing",
         )
 
@@ -125,3 +149,21 @@ def test_snapshot_id_changes_with_source_family_or_content() -> None:
         source_name="source-a",
         content_sha256="b" * 64,
     )
+
+
+def test_normalization_definition_rejects_blank_or_invalid_inputs() -> None:
+    snapshot_id = "c" * 64
+    with pytest.raises(ValueError, match="cannot be blank"):
+        make_normalization_id(
+            source_snapshot_id=snapshot_id,
+            normalizer_name="",
+            normalizer_version="1",
+            canonical_schema_version="0.1",
+        )
+    with pytest.raises(ValueError, match="source_snapshot_id"):
+        NormalizationDefinition.build(
+            source_snapshot_id="not-a-digest",
+            normalizer_name="adapter",
+            normalizer_version="1",
+            canonical_schema_version="0.1",
+        )
