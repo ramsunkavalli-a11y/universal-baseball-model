@@ -2,11 +2,6 @@ name: Direction coverage audit
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/direction-coverage-audit.yml"
 
 permissions:
   contents: read
