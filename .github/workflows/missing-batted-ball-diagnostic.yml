@@ -8,6 +8,7 @@ on:
     paths:
       - ".github/workflows/missing-batted-ball-diagnostic.yml"
       - "scripts/diagnose_missing_batted_ball_events.py"
+      - "scripts/diagnose_source_bip_codes.py"
 
 permissions:
   contents: read
@@ -35,6 +36,9 @@ jobs:
 
       - name: Diagnose missing batted-ball events
         run: python scripts/diagnose_missing_batted_ball_events.py
+
+      - name: Diagnose reusable-source BIP codes
+        run: python scripts/diagnose_source_bip_codes.py
 
       - name: Upload diagnostic report
         if: always()
