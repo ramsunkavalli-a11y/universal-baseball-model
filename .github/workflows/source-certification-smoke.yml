@@ -1,0 +1,49 @@
+name: Source certification smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "src/**"
+      - "scripts/certify_armstjc_release.py"
+      - "tests/**"
+      - "pyproject.toml"
+      - ".github/workflows/source-certification-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  armstjc-release-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Profile small quarantined armstjc release
+        run: python scripts/certify_armstjc_release.py
+
+      - name: Upload certification report only
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: armstjc-release-smoke-report
+          path: reports/generated/armstjc/
+          if-no-files-found: error
+          retention-days: 14
