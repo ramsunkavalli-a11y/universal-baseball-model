@@ -15,6 +15,11 @@ from typing import Any
 from mlbstatsapi import MlbDataAdapter
 import polars as pl
 
+from universal_baseball.event_types import (
+    KNOWN_EVENT_TYPES,
+    PLATE_APPEARANCE_EVENT_TYPES,
+)
+
 
 OFFICIAL_PA_COLUMNS = (
     "game_pk",
@@ -181,21 +186,56 @@ def _batting_side_from_half_inning(value: Any) -> str | None:
     return None
 
 
+def _validated_result_event_type(
+    game_id: int,
+    at_bat_index: Any,
+    result: Mapping[str, Any],
+) -> str:
+    """Return a known structured MLB result code or fail certification.
+
+    Stats API ``allPlays`` contains both plate appearances and runner/game
+    actions. The project's versioned MLB ``/eventTypes`` snapshot determines
+    which is which. Unknown or blank result codes must be investigated before
+    the snapshot is updated; silently guessing would make historical accounting
+    non-reproducible.
+    """
+
+    event_type = _string_or_none(result.get("eventType"))
+    if event_type is None:
+        raise ValueError(
+            "official allPlays result has blank eventType: "
+            f"game_pk={game_id}, atBatIndex={at_bat_index!r}"
+        )
+    if event_type not in KNOWN_EVENT_TYPES:
+        raise ValueError(
+            "official allPlays result has unknown eventType: "
+            f"game_pk={game_id}, atBatIndex={at_bat_index!r}, "
+            f"eventType={event_type!r}"
+        )
+    return event_type
+
+
 def project_official_play_by_play(
     game_id: int,
     payload: Mapping[str, Any],
 ) -> tuple[pl.DataFrame, pl.DataFrame]:
-    """Project a raw MLB playByPlay payload into certification evidence.
+    """Project raw MLB playByPlay into true-PA and pitch-event evidence.
 
     This deliberately extracts a tiny stable surface instead of mirroring the
     full feed schema. Missing optional nested fields remain null. In particular,
     MiLB can emit ``details.type={"description": "Unknown"}`` without a pitch
     type code; that is valid source data and must not make ingestion fail.
 
-    Zero-pitch plate appearances (for example a signaled intentional walk) are
-    retained in the PA table even though they have no corresponding pitch row.
-    Structured ``hitData`` fields are retained only as source evidence; no spray
-    direction or batted-ball category is inferred in this adapter.
+    The PA frame contains only result codes MLB marks as plate appearances in
+    the project's frozen ``/eventTypes`` snapshot. Known non-PA ``allPlays``
+    rows such as pickoffs and game advisories are excluded. Blank or unseen
+    result codes fail loudly rather than being guessed. Zero-pitch PAs (for
+    example a signaled intentional walk) remain valid PA rows.
+
+    Physical pitch events are projected independently from PA classification so
+    source-certification evidence is not discarded merely because its enclosing
+    ``allPlays`` record is a non-PA action. Structured ``hitData`` is retained as
+    direct evidence; no spray direction or batted-ball category is inferred.
     """
 
     pa_rows: list[dict[str, Any]] = []
@@ -219,6 +259,11 @@ def project_official_play_by_play(
         at_bat_index = play.get("atBatIndex")
         pa_key = None if at_bat_index is None else str(at_bat_index)
         half_inning = about.get("halfInning")
+        result_event_type = _validated_result_event_type(
+            game_id,
+            at_bat_index,
+            result,
+        )
 
         play_events_value = play.get("playEvents") or []
         play_events = (
@@ -230,23 +275,24 @@ def project_official_play_by_play(
             if _mapping(event).get("isPitch") is True
         ]
 
-        pa_rows.append(
-            {
-                "game_pk": game_key,
-                "at_bat_number": pa_key,
-                "result_type": result.get("type"),
-                "event": result.get("event"),
-                "event_type": result.get("eventType"),
-                "description": result.get("description"),
-                "half_inning": half_inning,
-                "batting_side": _batting_side_from_half_inning(half_inning),
-                "batter_id": _int_or_none(batter.get("id")),
-                "pitcher_id": _int_or_none(pitcher.get("id")),
-                "batter_side": batter_side_code,
-                "pitcher_hand": pitch_hand.get("code"),
-                "official_pitch_count": len(current_pitch_events),
-            }
-        )
+        if result_event_type in PLATE_APPEARANCE_EVENT_TYPES:
+            pa_rows.append(
+                {
+                    "game_pk": game_key,
+                    "at_bat_number": pa_key,
+                    "result_type": result.get("type"),
+                    "event": result.get("event"),
+                    "event_type": result_event_type,
+                    "description": result.get("description"),
+                    "half_inning": half_inning,
+                    "batting_side": _batting_side_from_half_inning(half_inning),
+                    "batter_id": _int_or_none(batter.get("id")),
+                    "pitcher_id": _int_or_none(pitcher.get("id")),
+                    "batter_side": batter_side_code,
+                    "pitcher_hand": pitch_hand.get("code"),
+                    "official_pitch_count": len(current_pitch_events),
+                }
+            )
 
         for play_event in current_pitch_events:
             details = _mapping(play_event.get("details"))
@@ -381,7 +427,7 @@ def project_official_boxscore(
 def fetch_official_game_evidence(
     game_ids: Iterable[int],
 ) -> tuple[pl.DataFrame, pl.DataFrame]:
-    """Fetch official PAs and current pitch events for selected games.
+    """Fetch official true PAs and current pitch events for selected games.
 
     The stable public ``MlbDataAdapter`` supplies transport/retries, while the
     project owns only the narrow projection in :func:`project_official_play_by_play`.
@@ -442,7 +488,7 @@ def fetch_official_team_batting(game_ids: Iterable[int]) -> pl.DataFrame:
 
 
 def fetch_official_pa_results(game_ids: Iterable[int]) -> pl.DataFrame:
-    """Fetch one row per official play/PA for selected game IDs."""
+    """Fetch one row per true official plate appearance for selected games."""
 
     pa_frame, _ = fetch_official_game_evidence(game_ids)
     return pa_frame
