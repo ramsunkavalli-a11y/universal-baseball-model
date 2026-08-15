@@ -140,6 +140,10 @@ def _write_official_comparison(
             "- Source rows after exact dedup **for comparison only**: "
             f"{comparison['source_rows_after_exact_dedup_for_comparison']:,}"
         ),
+        (
+            "- Distinct natural pitch keys **for comparison only**: "
+            f"{comparison['source_rows_after_natural_key_collapse_for_comparison']:,}"
+        ),
         f"- Source PAs: {comparison['source_pa_count']:,}",
         f"- Official PAs: {comparison['official_pa_count']:,}",
         f"- Shared PAs: {comparison['shared_pa_count']:,}",
