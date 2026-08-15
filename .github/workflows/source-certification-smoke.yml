@@ -2,6 +2,18 @@ name: Source certification smoke
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/source-certification-smoke.yml"
+      - "src/universal_baseball/official.py"
+      - "src/universal_baseball/batted_ball.py"
+      - "scripts/certify_armstjc_release.py"
+      - "scripts/certify_armstjc_batted_ball.py"
+      - "tests/test_official.py"
+      - "tests/test_batted_ball.py"
+      - "pyproject.toml"
 
 permissions:
   contents: read
