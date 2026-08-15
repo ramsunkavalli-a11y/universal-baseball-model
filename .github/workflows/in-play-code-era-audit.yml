@@ -1,0 +1,47 @@
+name: Historical in-play code era audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/in-play-code-era-audit.yml"
+      - "scripts/audit_in_play_code_eras.py"
+      - "src/universal_baseball/canonical_adapters.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-in-play-codes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit historical in-play code semantics
+        run: python scripts/audit_in_play_code_eras.py
+
+      - name: Upload era report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: in-play-code-era-audit
+          path: reports/generated/in-play-code-era-audit/
+          if-no-files-found: warn
+          retention-days: 14
