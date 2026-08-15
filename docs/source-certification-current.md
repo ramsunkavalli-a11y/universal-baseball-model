@@ -2,236 +2,206 @@
 
 Last updated: 2026-08-15
 
-This document is the current checkpoint for the foundation-layer source work. Earlier POC reports remain useful evidence, but this file reflects the latest semantics, source-resolution rules, and canonical contracts after the edge cases found during live certification.
+This is the current checkpoint for the foundation-layer source work. Detailed experiments remain in the audit scripts, workflow artifacts, and ADRs; this document records the decisions that should govern the next implementation work.
 
-## Current source roles
-
-| Need | Current preferred source / method | Status |
-|---|---|---|
-| Historical affiliated MiLB physical-pitch bootstrap | `armstjc/milb-data-repository` release assets | Accepted bootstrap with explicit normalization, provenance, and conflict handling |
-| Official play/result authority | MLB Stats API | Accepted authority |
-| Official HTTP utility | low-level `python-mlb-statsapi` `MlbDataAdapter` | Accepted for narrow transport; strict high-level PBP objects rejected |
-| PA / non-PA semantics | versioned MLB Stats API `/eventTypes` snapshot | Accepted |
-| Cross-system player IDs | pinned public Chadwick Register | Accepted enrichment/crosswalk strategy |
-| Richer Minor Statcast later | Baseball Savant, likely via SportsDataverse/helper logic | Evaluated; optional enrichment, not a universal foundation dependency |
-| Historical MLB backtesting | Retrosheet + Chadwick | Planned separately from the MiLB bootstrap |
-
-The governing principle remains:
+## Governing source strategy
 
 > **Canonical authority: MLB Stats API. Canonical working data: our normalized tables, built wherever practical from mature public parsers/datasets and continuously certified against official representations.**
 
-## Foundation gates now passed
+Raw authority does not mean rebuilding mature extraction work. Reuse existing cleaned history and parser logic where it survives certification; write custom ingestion only for a demonstrated gap.
 
-The reusable-source viability question is no longer open-ended package hunting. The following have been tested and promoted into explicit architecture decisions:
+## Accepted source roles
 
-1. physical-pitch history is reusable across MLB-affiliated levels including DSL;
-2. official PA/non-PA semantics reconcile to official boxscore batting totals;
-3. source files are overlapping mutable snapshots, not trustworthy calendar partitions;
-4. exact duplicates and repeated payload variants are preserved/compacted deterministically rather than silently dropped;
-5. `play_sequence` is the lossless parent grain, not plate appearance;
-6. MLBAM is the primary modern event identity and Chadwick is a versioned crosswalk;
-7. Gameday `hc_x/hc_y` supports a near-universal coordinate-derived Pull/Center/Oppo direction signal;
-8. source-only cross-snapshot resolution is field consensus, not inferred chronology;
-9. source conflicts can be adjudicated by separate official authority where structured official evidence exists;
-10. canonical provenance, typed schemas, Parquet persistence, DuckDB querying, and event-cutoff/vintage semantics have working tests and live POCs.
+| Need | Preferred source / method | Status |
+|---|---|---|
+| Historical affiliated MiLB pitch + Gameday batted-ball bootstrap | `armstjc/milb-data-repository` | Accepted with versioned normalization, provenance, and conflict handling |
+| Official PA/result/matchup authority | MLB Stats API | Accepted |
+| Official HTTP/retry utility | low-level `python-mlb-statsapi` transport | Accepted; exact successful response bytes are captured separately |
+| PA / non-PA semantics | versioned MLB Stats API `/eventTypes` snapshot | Accepted |
+| Cross-system player IDs | pinned Chadwick Register | Accepted versioned crosswalk |
+| Universal spray direction | Gameday `hc_x/hc_y` + established Petti/pybaseball transform | Accepted |
+| Richer Minor Statcast | Baseball Savant, likely through SportsDataverse/helper logic | Later optional enrichment |
+| Historical MLB validation | Retrosheet + Chadwick | Planned separately from MiLB bootstrap |
 
-## Reusable MiLB pitch source
+## Foundation gates passed
 
-### Sequence and pitch fidelity
+The following are no longer open architecture questions:
 
-The reusable source preserves physical pitch sequence very well in the tested samples.
+1. affiliated MiLB physical-pitch history is reusable across AAA, AA, High-A, Single-A, ACL, FCL, and DSL;
+2. the reusable history remains structurally useful in tested 2005 and 2015 AAA samples;
+3. official PA/non-PA semantics reconcile to official batting totals in the tested reconciliation set;
+4. upstream releases are overlapping mutable snapshots, not trustworthy calendar partitions;
+5. exact duplicates and payload variants are preserved/compacted deterministically rather than silently dropped;
+6. the lossless parent grain is `play_sequence`, not plate appearance;
+7. MLBAM is the primary modern event identity and Chadwick is a versioned crosswalk;
+8. Gameday `hc_x/hc_y` provides a near-universal Pull/Center/Opposite direction signal;
+9. source-only cross-snapshot resolution is field consensus, not inferred chronology;
+10. structured official evidence can adjudicate specific source conflicts without selecting a whole source snapshot as the winner;
+11. canonical provenance, typed schemas, quality issues, Parquet persistence, DuckDB querying, and event-cutoff/vintage semantics have working tests and live POCs;
+12. the multi-asset historical database POC passed;
+13. the minimum universal Performance-event mapper is validated from 2005 AAA through recent DSL/complex ball, before foul-air screening.
 
-Recent testing spans AAA, AA, High-A, Single-A, ACL, FCL, and DSL. Explicit Rookie-league checks matched the official feed in both 2023 and 2024 samples, including:
+## Reusable MiLB source: certified caveats
 
-- 2024 DSL game `773530`: 83/83 official true-PA sequence keys represented, zero pitch-count disagreements;
-- 2024 ACL game `772320`: 64/64, zero disagreements;
-- 2024 FCL game `771821`: 81/81, zero disagreements;
-- 2023 DSL game `741849`: 69/69, zero pitch-count disagreements in the original sequence audit;
-- 2023 ACL game `743157`: 74/74;
-- 2023 FCL game `742555`: 87/87.
+### Physical pitch sequence is strong
 
-Older-era testing also remained structurally strong:
+Representative recent samples across all current affiliated levels match official pitch-bearing sequence structure and physical-pitch counts very closely. Older 2005/2015 AAA samples also passed the structural gates. This is why the reusable source remains the historical bootstrap rather than being replaced with a custom all-history Stats API parser.
 
-- 2015 September AAA: sampled official sequences matched with zero pitch-count disagreement;
-- 2005 September AAA: after applying correct official PA semantics, 161/161 true official PAs shared the source sequence key and every shared sequence matched physical-pitch count.
+### Release files are snapshots, not month partitions
 
-The historical bootstrap is therefore not a recent-season-only convenience.
+Observed defects include exact 2x row duplication in some assets, cross-month game overlap, and revised values for the same natural pitch key. GitHub asset creation/re-upload timestamps also do not reliably order baseball truth.
 
-### Deterministic duplicates and mutable snapshots
-
-Released files cannot be treated as canonical monthly partitions.
-
-Observed examples include:
-
-- `2025_3_aaa_pbp.csv`: 25,636 raw rows -> 12,818 exact-unique rows, a perfect 2x duplication;
-- `2005_9_aaa_pbp.csv`: 32,292 raw rows -> 16,146 exact-unique rows, also a perfect 2x duplication;
-- adjacent assets overlap on actual game date and can carry revised values for the same natural pitch key.
-
-The source natural pitch key is:
+The reusable-source natural pitch key is:
 
 `game_pk + at_bat_number + pitch_number`
 
-Raw observations are preserved with exact source snapshot and normalization provenance. Canonical partitioning uses actual baseball event date, never the release filename period.
+Raw observations retain asset/checksum/retrieval provenance. Canonical partitioning uses actual event date.
 
-### PA outcome column is not reusable
+### The upstream `events` PA outcome is not reusable
 
-The upstream source's `events` field is not a trustworthy PA outcome. Code review shows the parser reads the PA result but later writes a pitch-event variable into the exported `events` column.
+The parser reads the PA result but later exports a pitch-event variable into `events`. PA/result semantics therefore come from the narrow official play-sequence layer.
 
-PA/result semantics therefore come from the narrow official play-sequence layer. This is one of the limited places where the project uses the official feed directly because the reusable source does not contain a trustworthy structured substitute.
+### Upstream batter ID can be mutated by pinch-runners
 
-### Known batter-ID parser defect
+The parser changes `batter_id` for every `offensive_substitution`, including pinch-runners. Targeted live comparison found three batter mismatches and all three had this cause. Canonical sequence participants therefore come from the official structured matchup. Raw source participant IDs remain provenance/debug evidence.
 
-The upstream parser changes `batter_id` for every `offensive_substitution`, including pinch-runners that are not the batter.
+### The exported `type` field is MLB `details.code`, not merely B/S/X
 
-Live identity comparison found three batter mismatches in the targeted audit and all three were explained by this same bug. Pitcher identity was perfect in that sample. Raw source participant IDs remain provenance/debug evidence; canonical sequence participant identity comes from the official structured matchup.
+This was a material adapter bug discovered by the first Performance audit. In six recent AAA/Rookie games, 283 BIP-expected PAs all had reusable-source batted-ball evidence, but their contact rows used:
 
-This defect is a reason to use the hybrid architecture, **not** a reason to rebuild the entire historical parser.
+- `X`: 150;
+- `D`: 77;
+- `E`: 56.
 
-## Canonical event grain
+An X-only interpretation falsely labeled all 133 D/E contacts as missing. Historical release checks confirmed the same vocabulary:
 
-Two opposite edge cases are both real:
+- 2005 September AAA batted-ball rows: D=1,478, E=731, X=3,696, zero unexpected codes;
+- 2015 September AAA: D=1,991, E=984, X=5,221, zero unexpected codes.
 
-1. a true PA can have **zero physical pitches**, e.g. a signaled intentional walk;
-2. a physical pitch can occur in a sequence that **does not become a PA**, e.g. a pitch followed by an inning-ending caught stealing before the batter completes a PA.
+The canonical adapter therefore reconstructs positive in-play evidence from `{D,E,X}` or any preserved hitData-derived field. See ADR 010.
 
-Therefore the minimum lossless relationship is:
+## Canonical event grain and official semantics
+
+Two opposite edge cases are real:
+
+1. a true PA can contain zero physical pitches, such as a signaled intentional walk;
+2. a physical pitch can occur in a sequence that never becomes a PA, such as an inning-ending caught stealing after a pitch.
+
+Therefore:
 
 `game -> play_sequence -> 0..N pitches`
 
-with:
+and:
 
 `plate_appearance = play_sequence where official is_plate_appearance = true`
 
-The parent sequence is keyed by `game_pk + atBatIndex`. Source-only groupings are **pitch-bearing sequences**, not “source PAs.”
+Stats API `allPlays` also contains runner/game actions. A frozen dated `/eventTypes` snapshot determines PA semantics; unknown result codes fail certification until reviewed.
 
-See ADR 006, which refines ADR 002.
-
-## Official PA semantics and aggregate reconciliation
-
-Stats API `allPlays` rows are not automatically plate appearances. Runner/game results such as pickoffs, caught stealings, substitutions and advisories can appear in the same array.
-
-The project uses a dated snapshot of MLB's `/eventTypes` `plateAppearance` semantics. Blank or previously unseen result event types fail certification until reviewed rather than being guessed.
-
-Using those semantics, the PBP-derived batting aggregation reconciled **22/22 home/away team batting lines across 11 representative MLB/MiLB games exactly on all 13 audited totals**:
-
-PA, AB, H, 2B, 3B, HR, BB, IBB, HBP, K, SH, SF, CI.
-
-See ADR 004.
+The reconciliation suite matched **22/22 team batting lines across 11 representative MLB/MiLB games on all 13 audited totals**: PA, AB, H, 2B, 3B, HR, BB, IBB, HBP, K, SH, SF, and CI.
 
 ## Batted-ball evidence and universal direction
 
-Direct reusable-source batted-ball fields matched current official `hitData` extremely well in live comparison. One historical launch-angle observation differed from the current official feed, consistent with later feed revision rather than a reason to overwrite source history.
+The accepted direction transform is:
 
-The universal direction transform is now accepted:
+- Gameday `hc_x/hc_y` coordinates;
+- established Bill Petti / pybaseball spray-angle transform including the `0.75` calibration factor;
+- Pull/Center/Opposite relative to batter handedness;
+- no production `hit_location` fallback;
+- no approximate foul-line geometry as a fair/foul classifier.
 
-- use Gameday `hc_x/hc_y` coordinates;
-- use the established Bill Petti / pybaseball spray-angle transform, including its `0.75` calibration factor;
-- derive Pull/Center/Oppo relative to batter handedness;
-- do **not** use `hit_location` as the production direction fallback;
-- do **not** use approximate foul-line geometry to decide fair/foul status.
+Coordinate coverage is approximately 99% in tested 2005/2015 AAA trajectory-bearing balls and essentially complete in tested recent levels including Rookie/DSL.
 
-Coordinate coverage among in-play balls is approximately 99% in tested 2005/2015 AAA slices and essentially 100% in tested recent levels, including Rookie/complex/DSL. Coordinate direction therefore belongs in the universal PBP evidence layer rather than the optional sensor/tracking tier.
+Accepted trajectory families are:
 
-Trajectory mapping is also empirically supported:
+- `popup -> IFFB`;
+- `fly_ball -> OFFB`;
+- `line_drive -> LD`;
+- `ground_ball -> GB`;
+- `bunt_* -> BUNT` special family.
 
-- `popup` -> IFFB core family;
-- `fly_ball` -> OFFB core family;
-- bunts remain an explicit special family rather than being forced into GB/LD/IFFB;
-- flagged foul airborne outs remain real Performance events but are not forced into the FaBIO 12-bin core view.
+Foul airborne outs remain real Performance events but are not to be forced into the FaBIO 12-bin skill view. The exact foul-air eligibility rule remains a small open definition gate.
 
-See ADR 007 and ADR 008.
+## Minimum universal Performance-event mapper
 
-## Tracking remains an enrichment tier
+The descriptive mapper preserves exactly one row per official true PA. Official sequence data supply PA existence/result/participants; resolved reusable pitch evidence supplies physical contact, trajectory, and direction.
 
-The common source schema does not imply common sensor availability. Release speed, spin, launch speed/angle and related tracking fields vary sharply by level, park, season and feed availability.
+Core candidate bins before foul-air screening are:
 
-Structural absence is not missing-at-random and must never be imputed as though every player had equal tracking opportunity. A more detailed park/league/season coverage map remains useful before tracking features enter Current Talent models, but it is **not a blocker for the universal outcome/profile historical backfill**.
+- BB/HBP;
+- K;
+- IFFB;
+- Pull / Center / Opposite OFFB;
+- Pull / Center / Opposite LD;
+- Pull / Center / Opposite GB.
 
-## Player identity and Chadwick
+Bunts and special non-BIP outcomes remain explicit outside the core rather than being coerced into a bin.
 
-MLBAM is the canonical modern event identity. Chadwick is a versioned cross-system enrichment layer.
+After correcting D/E/X semantics, the live audit produced:
 
-The first live audit pinned Chadwick public commit:
+- 2025 AAA: 209/211 PAs (99.05%) core eligible before foul-air screening; the two exclusions were bunts; zero structural mapping failures;
+- 2024 ACL/DSL/FCL: 228/228 PAs (100%) core eligible; zero structural failures;
+- 2005 AAA: 159/161 PAs (98.76%) core eligible; two bunts excluded; zero structural failures;
+- 2015 AAA: 146/146 PAs (100%) core eligible; zero structural failures.
 
-`2e8e73355f9c77b963115377bd98c784cfeec10f`
+This validates **event mapping**, not a run-value model. No player score, shrinkage, or projection belongs here yet.
 
-The snapshot contained:
+## Cross-snapshot resolution
 
-- 518,743 public people rows;
-- 129,658 MLBAM-linked rows;
-- 129,658 unique MLBAM IDs;
-- zero duplicate MLBAM IDs.
+The source-only policy remains `non_null_field_consensus_v1`:
 
-Official structured IDs from representative AAA, DSL, and FCL games matched Chadwick **83/83** in the first sample. Missing future links remain `crosswalk_pending`; the system never fuzzy-matches a player name automatically.
+- all non-null observations agree -> resolve;
+- null plus one observed non-null value -> resolve the observed value;
+- multiple distinct non-null values -> leave the canonical field null and flag a quality issue;
+- never use retrieval time, asset creation time, filename period, or row order as a tiebreaker.
 
-See ADR 005.
+In the 2023 July/August Rookie overlap test, 5,524 pitch keys resolved with only 16 pitches (0.29%) retaining any canonical conflict. These collapsed to seven unique sequence/field hand disputes, and current structured official matchup data matched exactly one source value in all seven cases.
 
-## Cross-snapshot resolution: no inferred “latest row”
+## Identity
 
-An inventory of the public MiLB PBP release contained 624 recognized assets spanning 2005-2025. GitHub asset timestamps are useful provenance but are not a trustworthy chronology for source truth. A concrete counterexample is `2023_7_rk_pbp.csv`, which was recreated in 2025 after the original `2023_8_rk_pbp.csv` asset from 2023.
+MLBAM is the canonical modern event identity. Chadwick is a pinned/versioned enrichment layer. The first pinned snapshot contained 518,743 public people rows, 129,658 MLBAM-linked identities, and zero duplicate MLBAM IDs. Representative AAA/DSL/FCL official IDs matched Chadwick 83/83. Missing links remain `crosswalk_pending`; automatic fuzzy-name matching is not allowed.
 
-A direct comparison of those two Rookie assets found:
+## Provenance, storage, and temporal semantics
 
-- 5,524 overlapping natural pitch keys;
-- all 5,524 raw full rows differ, driven largely by changed team labels and other non-model source fields;
-- after canonical normalization, 5,524 pitches resolve cleanly with only **16 pitches (0.29%)** retaining any canonical field conflict;
-- those 16 conflicts are only `pitcher_hand` (14 pitches) and `batter_side` (2 pitches).
+The canonical contract separates immutable `source_snapshot` identity from versioned `normalization_definition` identity. Parser changes therefore do not pretend the upstream evidence changed.
 
-The source-only resolution policy is therefore `non_null_field_consensus_v1`:
+Exact official response bytes are captured while still reusing `python-mlb-statsapi`'s public retry/session behavior. Canonical writes use atomic Zstandard Parquet with content/schema fingerprints; DuckDB round-trips are tested.
 
-- all non-null observations agree -> resolve the value;
-- null plus one non-null observed value -> resolve the observed value;
-- multiple distinct non-null values -> leave the field null and flag it explicitly;
-- never use retrieval time, GitHub asset creation time, filename period or row order as a tie-breaker.
+The multi-asset historical POC used the awkward `2025_3_aaa` + `2025_4_aaa` pair and successfully materialized:
 
-The 16 pitch-level hand conflicts reduce to **7 unique play-sequence/field disputes**. Current structured MLB Stats API matchup evidence matched exactly one source snapshot in **7/7** cases. In this particular audit all seven official values matched the re-uploaded July asset, but that does **not** make the July asset a global row winner. It establishes only that official structured matchup evidence can adjudicate these hand fields when source consensus fails.
+- three games spanning left-only, overlap, and right-only source coverage;
+- 1,123 canonical pitch observations -> 861 pitch-consensus rows;
+- 206 official play-sequence observations;
+- one preserved source-field conflict -> one canonical quality issue;
+- 6/6 official batting lines reconciled exactly;
+- zero positive-pitch PA gaps, pitch-count mismatches, or orphan records;
+- event-date Parquet partitions queryable through DuckDB.
 
-See ADR 003 and the cross-snapshot resolution audit.
+Temporal validation distinguishes **event-cutoff retrospective** backtests from true **vintage information-set** backtests. Current corrected history is not mislabeled as historical vintage evidence.
 
-## Canonical provenance and storage contract
+## Tracking remains enrichment, not universal evidence
 
-The project now separates:
+Velocity, spin, EV/LA, and related sensor fields vary sharply by level, park, and season. Structural absence is not missing-at-random and must not be imputed as equal opportunity. A park/league/season coverage map remains useful before Current Talent models consume tracking, but it does not block the universal outcome/profile foundation.
 
-- immutable `source_snapshot` identity;
-- `normalization_definition` identity for our parser/schema interpretation;
-- typed source observations at `game`, `play_sequence`, `pitch`, and player-crosswalk grains;
-- explicit `quality_issue` records;
-- derived source-consensus views rather than destructive deduplication.
+## Reproducibility rules
 
-A parser-version change therefore creates a new normalization without pretending the upstream bytes changed.
+1. Preserve raw/reusable source evidence with checksums and provenance.
+2. Treat release assets as mutable snapshots, not calendar truth.
+3. Normalize at explicit baseball grains.
+4. Keep source consensus separate from official adjudication.
+5. Version parser logic, event semantics, and identity crosswalks.
+6. Unknown codes/conflicts/identities fail or remain explicitly unresolved; never silently guess.
+7. Structural coverage is evidence quality, not player skill.
+8. Fast deterministic tests run normally; expensive live-source audits are manual after their gate is passed.
 
-Canonical table writes use atomic Zstandard Parquet with schema/content fingerprints. DuckDB can query persisted canonical artifacts. Live one-game POCs have validated the real source -> canonical observation -> Parquet/DuckDB path.
+## Next foundation milestone: run-value / base-out-state reuse audit
 
-The temporal contract also distinguishes:
+Before assigning values to the FaBIO-compatible events, evaluate what mature public work already solves for:
 
-- **event-cutoff retrospective backtests** using current corrected historical data restricted by event date;
-- **true vintage information-set backtests** only when the evidence's historical availability can actually be demonstrated.
+1. start/end outs and base occupancy at the PA/play-sequence grain;
+2. runs scored during the sequence;
+3. run-expectancy / RE24 construction and league-season normalization;
+4. whether the reusable MiLB files already preserve the necessary state fields reliably enough to avoid re-fetching every historical game;
+5. whether baseballr, SportsDataverse, Retrosheet/baseballquery, or another established implementation supplies reusable state/reconciliation logic;
+6. how Collier/FaBIO-style league-average event run values should be estimated without conflating the batter/pitcher event with contextual baserunner quality.
 
-Current historical release assets are not mislabeled as true historical vintages merely because their games occurred in the past.
-
-## Provenance and reproducibility rules
-
-1. Preserve raw/reusable source files in quarantine with checksum and retrieval/source metadata.
-2. Treat upstream assets as mutable snapshots, not canonical calendar partitions.
-3. Normalize at explicit baseball natural grains rather than by whole-row count.
-4. Keep official authority separate from source-only consensus; an official disagreement is explicit adjudication evidence, not permission to rewrite raw history.
-5. Version event-type semantics and identity crosswalks used in historical evaluation.
-6. Never silently fix unknown event codes, participant mismatches, field conflicts or ambiguous identities.
-7. Keep structural missingness/coverage separate from player skill.
-8. Ordinary commits should run fast deterministic CI; heavy live-source audits should be manual or narrowly triggered.
-
-## Next foundation milestone
-
-The next highest-value step is **not** more generic source hunting. It is a limited multi-asset historical-database POC that exercises the accepted contracts together before a large backfill:
-
-1. ingest a deliberately awkward pair of overlapping source assets;
-2. persist source snapshots and normalization definitions;
-3. materialize game and pitch observations partitioned by actual event date;
-4. build the field-consensus pitch view and explicit quality/conflict records;
-5. retrieve and persist the narrow official play-sequence/result layer for the POC games;
-6. validate official semantics and batting reconciliation;
-7. round-trip the resulting Parquet tables through DuckDB and verify repeatability.
-
-In parallel with that POC, freeze the **minimum universal Performance event taxonomy** that the first model actually needs. Do not expand the historical database just to warehouse unused source fields.
-
-Tracking coverage maps, richer Statcast, external FanGraphs/BBRef/Retrosheet crosswalk spot checks, defense, and Current Talent enrichment remain later gates for the layers that depend on them. They are no longer blockers for the first universal outcome/profile database.
+Only after that audit should the first **Performance value** transform be frozen and a production-scale historical backfill begin. The foul-air core-eligibility rule can be closed in parallel. Tracking, defense, richer Statcast, and Current Talent modeling remain later layer-specific gates.
