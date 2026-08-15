@@ -1,0 +1,48 @@
+name: Cross-snapshot hand diagnostic
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/cross-snapshot-hand-diagnostic.yml"
+      - "scripts/diagnose_cross_snapshot_hand_conflicts.py"
+      - "src/universal_baseball/cross_snapshot.py"
+      - "src/universal_baseball/official.py"
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Diagnose remaining hand conflicts
+        run: python scripts/diagnose_cross_snapshot_hand_conflicts.py
+
+      - name: Upload diagnostic report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cross-snapshot-hand-diagnostic
+          path: reports/generated/cross-snapshot-hand-diagnostic/
+          if-no-files-found: warn
+          retention-days: 14
