@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import polars as pl
 
-from universal_baseball.source_comparison import (
-    compare_pitch_source_to_official_pas,
+from universal_baseball.source_sequence_comparison import (
+    compare_pitch_source_to_official_true_pas,
     select_diverse_game_ids,
 )
 
 
-def test_compare_pitch_source_to_official_pas_ignores_exact_duplicates_for_comparison() -> None:
+def test_compare_pitch_source_to_true_pas_ignores_exact_duplicates_for_comparison() -> None:
     source = pl.DataFrame(
         {
             "game_pk": ["1", "1", "1", "1", "1", "1"],
@@ -38,18 +38,20 @@ def test_compare_pitch_source_to_official_pas_ignores_exact_duplicates_for_compa
         }
     )
 
-    result = compare_pitch_source_to_official_pas(source, official)
+    result = compare_pitch_source_to_official_true_pas(source, official)
 
     assert result["source_rows_raw"] == 6
     assert result["source_rows_after_exact_dedup_for_comparison"] == 3
     assert result["source_rows_after_natural_key_collapse_for_comparison"] == 3
-    assert result["source_pa_count"] == 2
-    assert result["official_pa_count"] == 2
-    assert result["shared_pa_count"] == 2
-    assert result["pitch_count_mismatch_pa_count"] == 0
-    assert result["description_mismatch_pa_count"] == 0
-    assert result["official_event_type_nonblank_pa_count"] == 2
+    assert result["source_pitch_sequence_count"] == 2
+    assert result["official_true_pa_count"] == 2
+    assert result["shared_sequence_true_pa_count"] == 2
+    assert result["pitch_count_mismatch_sequence_count"] == 0
+    assert result["description_mismatch_sequence_count"] == 0
+    assert result["official_event_type_nonblank_true_pa_count"] == 2
     assert result["source_events_nonblank_pitch_row_count"] == 0
+    assert "source_pa_count" not in result
+    assert "shared_pa_count" not in result
 
 
 def test_compare_counts_conflicting_payloads_for_one_pitch_key_once() -> None:
@@ -77,15 +79,15 @@ def test_compare_counts_conflicting_payloads_for_one_pitch_key_once() -> None:
         }
     )
 
-    result = compare_pitch_source_to_official_pas(source, official)
+    result = compare_pitch_source_to_official_true_pas(source, official)
 
     assert result["source_rows_raw"] == 3
     assert result["source_rows_after_exact_dedup_for_comparison"] == 3
     assert result["source_rows_after_natural_key_collapse_for_comparison"] == 2
-    assert result["pitch_count_mismatch_pa_count"] == 0
+    assert result["pitch_count_mismatch_sequence_count"] == 0
 
 
-def test_compare_reports_missing_pa_and_pitch_count_disagreement() -> None:
+def test_compare_reports_source_only_sequence_and_true_pa_pitch_count_disagreement() -> None:
     source = pl.DataFrame(
         {
             "game_pk": ["1", "1", "1"],
@@ -105,17 +107,17 @@ def test_compare_reports_missing_pa_and_pitch_count_disagreement() -> None:
         }
     )
 
-    result = compare_pitch_source_to_official_pas(source, official)
+    result = compare_pitch_source_to_official_true_pas(source, official)
 
-    assert result["shared_pa_count"] == 1
-    assert result["source_only_pa_count"] == 1
-    assert result["official_only_pa_count"] == 1
-    assert result["official_only_zero_pitch_pa_count"] == 0
-    assert result["official_only_positive_pitch_pa_count"] == 1
-    assert result["pitch_count_mismatch_pa_count"] == 1
+    assert result["shared_sequence_true_pa_count"] == 1
+    assert result["source_only_pitch_sequence_count"] == 1
+    assert result["official_only_true_pa_count"] == 1
+    assert result["official_only_zero_pitch_true_pa_count"] == 0
+    assert result["official_only_positive_pitch_true_pa_count"] == 1
+    assert result["pitch_count_mismatch_sequence_count"] == 1
 
 
-def test_compare_classifies_zero_pitch_official_only_pa_as_structural_gap() -> None:
+def test_compare_classifies_zero_pitch_true_pa_as_structural_pitch_table_gap() -> None:
     source = pl.DataFrame(
         {
             "game_pk": ["1"],
@@ -138,12 +140,15 @@ def test_compare_classifies_zero_pitch_official_only_pa_as_structural_gap() -> N
         }
     )
 
-    result = compare_pitch_source_to_official_pas(source, official)
+    result = compare_pitch_source_to_official_true_pas(source, official)
 
-    assert result["official_only_pa_count"] == 1
-    assert result["official_only_zero_pitch_pa_count"] == 1
-    assert result["official_only_positive_pitch_pa_count"] == 0
-    assert result["official_only_zero_pitch_pa_examples"][0]["event_type"] == "intent_walk"
+    assert result["official_only_true_pa_count"] == 1
+    assert result["official_only_zero_pitch_true_pa_count"] == 1
+    assert result["official_only_positive_pitch_true_pa_count"] == 0
+    assert (
+        result["official_only_zero_pitch_true_pa_examples"][0]["event_type"]
+        == "intent_walk"
+    )
 
 
 def test_pitch_mismatch_diagnosis_identifies_automatic_strike() -> None:
@@ -180,7 +185,7 @@ def test_pitch_mismatch_diagnosis_identifies_automatic_strike() -> None:
         }
     )
 
-    result = compare_pitch_source_to_official_pas(
+    result = compare_pitch_source_to_official_true_pas(
         source,
         official,
         official_pitch_events,
