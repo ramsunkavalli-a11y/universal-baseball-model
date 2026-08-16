@@ -1,13 +1,7 @@
 name: Rookie pitch-sequence fidelity audit
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/pitch-sequence-fidelity-audit.yml"
-      - "scripts/audit_pitch_sequence_fidelity.py"
-      - "scripts/audit_pitch_sequence_fidelity_2023.py"
-      - "src/universal_baseball/pitch_sequence_fidelity.py"
-      - "tests/test_pitch_sequence_fidelity.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
