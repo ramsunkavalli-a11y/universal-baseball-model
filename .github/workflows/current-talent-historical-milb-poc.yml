@@ -2,21 +2,6 @@ name: Current Talent historical MiLB evidence POC
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-historical-milb-poc.yml"
-      - "scripts/poc_current_talent_historical_milb_game_evidence.py"
-      - "src/universal_baseball/current_talent_era.py"
-      - "src/universal_baseball/current_talent_milb_source.py"
-      - "src/universal_baseball/current_talent_milb_evidence.py"
-      - "src/universal_baseball/armstjc_contacts.py"
-      - "src/universal_baseball/contact_identity_overlay.py"
-      - "src/universal_baseball/player_game_controls.py"
-      - "src/universal_baseball/player_game_stats.py"
-      - "tests/test_current_talent_era.py"
-      - "tests/test_current_talent_milb_source.py"
 
 permissions:
   contents: read
