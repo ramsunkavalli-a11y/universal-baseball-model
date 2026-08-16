@@ -56,7 +56,9 @@ HISTORICAL_PLAYER_GAME_IDENTITY_CORRECTIONS: tuple[
             "2021 DSL LAD Bautista official boxscore audit: source participant 703595 is absent; "
             "Victor Diaz 682770 is the unique same-game batter matching team 611, batting order "
             "500, DH, and the complete PA/AB/BB/HBP/SO/SF/SH/CI vector. Team-611 outcome totals "
-            "match official boxscores in all 57 audited games."
+            "match official boxscores in all 57 audited games. The reusable source also contains "
+            "an empty 682770 roster placeholder in game 660171; that placeholder may be absorbed "
+            "only while it remains null-outcome and zero-contact evidence."
         ),
     ),
 )
@@ -97,6 +99,40 @@ def _date_iso(value: Any) -> str | None:
     return text[:10] if text else None
 
 
+def _empty_target_placeholder_is_safe(
+    target_outcome: pl.DataFrame,
+    target_control: pl.DataFrame,
+    *,
+    correction: HistoricalPlayerGameIdentityCorrection,
+) -> bool:
+    """Return true only for the audited null-outcome/zero-contact target placeholder."""
+
+    if target_outcome.height != 1 or target_control.height != 1:
+        return False
+    outcome_row = target_outcome.row(0, named=True)
+    control_row = target_control.row(0, named=True)
+    if int(outcome_row.get("league_id") or -1) != correction.league_id:
+        return False
+    if _date_iso(outcome_row.get("game_date")) != correction.game_date:
+        return False
+    if any(outcome_row.get(field) is not None for field in OUTCOME_FIELDS):
+        return False
+    if "expected_contact_count" not in control_row:
+        return False
+    if int(control_row.get("expected_contact_count") or 0) != 0:
+        return False
+    for field in ("batting_PA", "batting_AB", "batting_SO", "batting_SF", "batting_SH"):
+        if field in control_row and control_row.get(field) is not None:
+            return False
+    if "league_id" in control_row and control_row.get("league_id") is not None:
+        if int(control_row["league_id"]) != correction.league_id:
+            return False
+    if "game_date" in control_row and control_row.get("game_date") is not None:
+        if _date_iso(control_row["game_date"]) != correction.game_date:
+            return False
+    return True
+
+
 def apply_historical_player_game_identity_corrections(
     outcomes: pl.DataFrame,
     controls: pl.DataFrame,
@@ -109,7 +145,13 @@ def apply_historical_player_game_identity_corrections(
     certified batting vector. The matching resolved contact-control row is then
     remapped with the same game/player key so downstream contact residual logic
     either agrees with the source PBP participant or triggers existing official
-    sequence authority. Target-key collisions fail closed.
+    sequence authority.
+
+    A target-key collision still fails closed unless the existing target is the
+    separately audited empty roster placeholder: all outcome fields null and
+    expected contacts exactly zero. In that one case the empty target row is
+    removed before the substantive source evidence is remapped to the corrected
+    player ID.
 
     Corrections are applicable only when their actual league is present in the
     supplied outcome slice. A 2021 DSL exception therefore cannot make a 2021
@@ -124,7 +166,7 @@ def apply_historical_player_game_identity_corrections(
         "game_date",
         *OUTCOME_FIELDS,
     }
-    control_required = {"game_id", "player_id"}
+    control_required = {"game_id", "player_id", "expected_contact_count"}
     missing_outcomes = sorted(outcome_required - set(outcomes.columns))
     missing_controls = sorted(control_required - set(controls.columns))
     if missing_outcomes:
@@ -135,6 +177,7 @@ def apply_historical_player_game_identity_corrections(
     corrected_outcomes = outcomes
     corrected_controls = controls
     evidence_rows: list[dict[str, Any]] = []
+    absorbed_empty_target_placeholder_count = 0
     season_registered = [
         correction
         for correction in HISTORICAL_PLAYER_GAME_IDENTITY_CORRECTIONS
@@ -178,16 +221,6 @@ def apply_historical_player_game_identity_corrections(
                 f"observed={observed} expected={expected}"
             )
 
-        target_outcome = corrected_outcomes.filter(
-            (pl.col("game_id") == correction.game_id)
-            & (pl.col("player_id") == correction.corrected_player_id)
-        )
-        if not target_outcome.is_empty():
-            raise ValueError(
-                "certified identity correction would collide with an existing target outcome: "
-                f"game={correction.game_id} player={correction.corrected_player_id}"
-            )
-
         source_control = corrected_controls.filter(
             (pl.col("game_id") == correction.game_id)
             & (pl.col("player_id") == correction.source_player_id)
@@ -198,15 +231,32 @@ def apply_historical_player_game_identity_corrections(
                 f"game={correction.game_id} player={correction.source_player_id}, "
                 f"rows={source_control.height}"
             )
+
+        target_outcome = corrected_outcomes.filter(
+            (pl.col("game_id") == correction.game_id)
+            & (pl.col("player_id") == correction.corrected_player_id)
+        )
         target_control = corrected_controls.filter(
             (pl.col("game_id") == correction.game_id)
             & (pl.col("player_id") == correction.corrected_player_id)
         )
-        if not target_control.is_empty():
-            raise ValueError(
-                "certified identity correction would collide with an existing target contact control: "
-                f"game={correction.game_id} player={correction.corrected_player_id}"
+        if not target_outcome.is_empty() or not target_control.is_empty():
+            if not _empty_target_placeholder_is_safe(
+                target_outcome,
+                target_control,
+                correction=correction,
+            ):
+                raise ValueError(
+                    "certified identity correction would collide with non-empty or ambiguous target evidence: "
+                    f"game={correction.game_id} player={correction.corrected_player_id}"
+                )
+            target_predicate = (
+                (pl.col("game_id") == correction.game_id)
+                & (pl.col("player_id") == correction.corrected_player_id)
             )
+            corrected_outcomes = corrected_outcomes.filter(~target_predicate)
+            corrected_controls = corrected_controls.filter(~target_predicate)
+            absorbed_empty_target_placeholder_count += 1
 
         outcome_predicate = (
             (pl.col("game_id") == correction.game_id)
@@ -258,6 +308,7 @@ def apply_historical_player_game_identity_corrections(
         "applicable_correction_count": len(applicable),
         "observed_league_ids": sorted(observed_league_ids),
         "applied_correction_count": int(evidence.height),
+        "absorbed_empty_target_placeholder_count": absorbed_empty_target_placeholder_count,
         "corrected_game_count": int(evidence.get_column("game_id").n_unique()) if not evidence.is_empty() else 0,
         "corrected_source_player_count": int(evidence.get_column("source_player_id").n_unique()) if not evidence.is_empty() else 0,
         "fail_closed_on_source_drift": True,
