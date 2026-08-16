@@ -33,22 +33,31 @@ def _savant() -> pl.DataFrame:
     )
 
 
-def test_mlb_game_evidence_uses_true_pa_and_contact_profile() -> None:
+def test_mlb_game_evidence_uses_true_pa_and_separate_contact_denominator() -> None:
     summary, profile, metrics = build_mlb_current_talent_player_game_evidence(_savant())
 
     assert summary.height == 1
     row = summary.row(0, named=True)
     assert row["batting_plate_appearances"] == 4
+    assert row["expected_contact_count"] == 1
+    assert row["observed_contact_count"] == 1
+    assert row["contact_count_residual"] == 0
     assert row["core_profile_event_count"] == 3
-    assert row["non_core_event_count"] == 1
-    assert row["unknown_event_count"] == 0
+    assert row["bunt_contact_count"] == 0
+    assert row["foul_air_excluded_count"] == 0
+    assert row["unknown_contact_count"] == 0
+    assert row["special_noncontact_count"] == 1
+    assert row["pa_accounting_residual"] == 0
     assert row["participant_authority_status"] == "savant_official"
-    assert row["source_capability_tier"] == "mlb_savant_result_contact_profile_v1"
+    assert row["source_capability_tier"] == "mlb_savant_result_contact_profile_v2"
 
     assert profile.get_column("occurrence_count").sum() == 3
     assert {"BB_HBP", "K"}.issubset(set(profile.get_column("core_bin").to_list()))
     assert metrics["true_pa_terminal_count"] == 4
     assert metrics["contact_event_count"] == 1
+    assert metrics["total_expected_contacts"] == 1
+    assert metrics["total_observed_contacts"] == 1
+    assert metrics["evidence_denominator_policy"] == "separate_pa_expected_contact_observed_contact_v2"
 
 
 def test_mlb_game_evidence_rejects_non_mlb_league() -> None:
