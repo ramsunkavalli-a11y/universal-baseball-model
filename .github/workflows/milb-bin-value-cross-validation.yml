@@ -1,10 +1,7 @@
 name: MiLB bin value cross-validation
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/milb-bin-value-cross-validation.yml"
-      - "scripts/audit_milb_bin_value_cross_validation.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
