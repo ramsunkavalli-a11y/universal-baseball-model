@@ -1,13 +1,7 @@
 name: Universal 2024 batting Performance artifact join
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - scripts/materialize_universal_batting_performance.py
-      - src/universal_baseball/universal_performance.py
-      - .github/workflows/batting-performance-multilevel-poc.yml
+  workflow_dispatch:
 
 permissions:
   contents: read
