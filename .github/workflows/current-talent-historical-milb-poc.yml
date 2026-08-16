@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        level: [aaa, rk]
+        level: [aaa, aa, "a+", a, rk]
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
