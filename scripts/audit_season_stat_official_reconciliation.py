@@ -26,6 +26,7 @@ import polars as pl
 
 from universal_baseball.certification import download_file, read_quarantined_csv
 from universal_baseball.official_capture import capture_official_json, new_official_session
+from universal_baseball.season_stats import standardize_armstjc_season_stats
 
 
 BASE_URL = "https://github.com/armstjc/milb-data-repository/releases/download"
@@ -89,6 +90,9 @@ PITCHING_COMPARE = {
     "intentionalWalks": "pitching_intentional_walks",
     "hitBatsmen": "pitching_hit_batsmen",
     "strikeOuts": "pitching_strike_outs",
+    # armstjc season-pitching releases currently do not expose sacrifice bunts.
+    # Keep the desired comparison field here; mutual-field comparison below will
+    # skip it rather than inventing a source value.
     "sacBunts": "pitching_sac_bunts",
     "sacFlies": "pitching_sac_flies",
 }
@@ -118,23 +122,12 @@ def _source_numeric(frame: pl.DataFrame, column: str) -> pl.Expr:
     return pl.col(column).cast(pl.Int64, strict=False).fill_null(0)
 
 
-def _grain_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
-    prefix = f"{kind}_"
-    required = {
-        f"{prefix}player_id",
-        f"{prefix}team_id",
-        f"{prefix}league_id",
-        f"{prefix}year",
-    }
+def _grain_profile(frame: pl.DataFrame) -> dict[str, Any]:
+    required = {"player_id", "team_id", "league_id", "season"}
     missing = sorted(required - set(frame.columns))
     if missing:
-        raise ValueError(f"{kind} source missing grain columns: {missing}")
-    key = [
-        f"{prefix}year",
-        f"{prefix}league_id",
-        f"{prefix}team_id",
-        f"{prefix}player_id",
-    ]
+        raise ValueError(f"standardized season-stat source missing grain columns: {missing}")
+    key = ["season", "league_id", "team_id", "player_id"]
     duplicates = frame.group_by(key).len().filter(pl.col("len") > 1)
     return {
         "key": key,
@@ -143,9 +136,9 @@ def _grain_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
         "duplicate_extra_row_count": int(
             duplicates.select((pl.col("len") - 1).sum()).item() or 0
         ),
-        "distinct_player_count": frame.get_column(f"{prefix}player_id").n_unique(),
-        "distinct_team_count": frame.get_column(f"{prefix}team_id").n_unique(),
-        "distinct_league_count": frame.get_column(f"{prefix}league_id").n_unique(),
+        "distinct_player_count": frame.get_column("player_id").n_unique(),
+        "distinct_team_count": frame.get_column("team_id").n_unique(),
+        "distinct_league_count": frame.get_column("league_id").n_unique(),
     }
 
 
@@ -174,7 +167,12 @@ def _accounting_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
         label = "BF = AB + BB + HBP + SH + SF + CI"
     missing = sorted({total, *components} - set(frame.columns))
     if missing:
-        return {"available": False, "missing_columns": missing}
+        return {
+            "available": False,
+            "identity": label,
+            "missing_columns": missing,
+            "reason": "source does not expose every component required for exact accounting",
+        }
 
     working = frame.with_columns(
         _source_numeric(frame, total).alias("__total"),
@@ -199,7 +197,11 @@ def _accounting_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
         "mismatch_rate": mismatches.height / working.height if working.height else None,
         "difference_counts": dict(sorted(difference_counts.items())),
         "mismatch_examples": mismatches.select(
-            [column for column in frame.columns if column in {total, *components, f"{kind}_player_id", f"{kind}_team_id", f"{kind}_league_id"}]
+            [
+                column
+                for column in frame.columns
+                if column in {total, *components, "player_id", "team_id", "league_id"}
+            ]
         ).head(15).to_dicts(),
     }
 
@@ -252,10 +254,9 @@ def _official_splits(payload: Mapping[str, Any]) -> list[dict[str, Any]]:
     return result
 
 
-def _source_rows_for_player(frame: pl.DataFrame, kind: str, person_id: int) -> list[dict[str, Any]]:
-    player_col = f"{kind}_player_id"
+def _source_rows_for_player(frame: pl.DataFrame, person_id: int) -> list[dict[str, Any]]:
     return frame.filter(
-        pl.col(player_col).cast(pl.Int64, strict=False) == person_id
+        pl.col("player_id").cast(pl.Int64, strict=False) == person_id
     ).to_dicts()
 
 
@@ -272,15 +273,15 @@ def _compare_player(
     if not isinstance(capture.data, Mapping):
         raise RuntimeError(f"official stats payload for {person_id} is not an object")
     official = _official_splits(capture.data)
-    source = _source_rows_for_player(frame, kind, person_id)
+    source = _source_rows_for_player(frame, person_id)
     compare_fields = BATTING_COMPARE if kind == "batting" else PITCHING_COMPARE
 
     matches: list[dict[str, Any]] = []
     unmatched_source: list[dict[str, Any]] = []
     official_used: set[int] = set()
     for source_row in source:
-        team_id = _int(source_row.get(f"{kind}_team_id"))
-        league_id = _int(source_row.get(f"{kind}_league_id"))
+        team_id = _int(source_row.get("team_id"))
+        league_id = _int(source_row.get("league_id"))
         candidates = [
             (index, row)
             for index, row in enumerate(official)
@@ -292,22 +293,23 @@ def _compare_player(
                 {
                     "team_id": team_id,
                     "league_id": league_id,
-                    "team_name": source_row.get(f"{kind}_team_name"),
+                    "team_name": source_row.get("team_name"),
                 }
             )
             continue
         index, official_row = candidates[0]
         official_used.add(index)
         differences: dict[str, Any] = {}
-        compared = 0
+        compared_fields: list[str] = []
+        official_stat = official_row["stat"]
         for official_field, source_field in compare_fields.items():
-            if source_field not in source_row:
+            if source_field not in source_row or official_field not in official_stat:
                 continue
-            official_value = _int(official_row["stat"].get(official_field))
+            official_value = _int(official_stat.get(official_field))
             source_value = _int(source_row.get(source_field))
             if official_value is None and source_value is None:
                 continue
-            compared += 1
+            compared_fields.append(source_field)
             if official_value != source_value:
                 differences[source_field] = {
                     "source": source_value,
@@ -320,7 +322,8 @@ def _compare_player(
                 "league_id": league_id,
                 "official_sport_id": official_row["sport_id"],
                 "official_sport_name": official_row["sport_name"],
-                "compared_field_count": compared,
+                "compared_field_count": len(compared_fields),
+                "compared_fields": compared_fields,
                 "difference_count": len(differences),
                 "differences": differences,
             }
@@ -342,6 +345,7 @@ def _compare_player(
         "matched_rows": matches,
         "all_compared_fields_exact": bool(matches)
         and not unmatched_source
+        and all(row["compared_field_count"] > 0 for row in matches)
         and all(row["difference_count"] == 0 for row in matches),
         "official_split_preview": official[:8],
     }
@@ -353,27 +357,31 @@ def main() -> int:
     work_dir.mkdir(parents=True, exist_ok=True)
     report_dir.mkdir(parents=True, exist_ok=True)
 
-    loaded: list[tuple[dict[str, Any], pl.DataFrame, dict[str, Any]]] = []
+    loaded: list[tuple[dict[str, Any], pl.DataFrame, dict[str, Any], dict[str, Any]]] = []
     for spec in SPECS:
         path = work_dir / spec["asset"]
         metadata = download_file(
             f"{BASE_URL}/{spec['tag']}/{spec['asset']}", path, timeout_seconds=180
         )
-        frame = read_quarantined_csv(path)
-        loaded.append((spec, frame, metadata))
+        raw_frame = read_quarantined_csv(path)
+        frame, normalization = standardize_armstjc_season_stats(
+            raw_frame, spec["kind"]
+        )
+        loaded.append((spec, frame, metadata, normalization))
 
     session = new_official_session()
     try:
         sports = _sports_map(session)
         source_reports: list[dict[str, Any]] = []
         player_reports: list[dict[str, Any]] = []
-        for spec, frame, metadata in loaded:
+        for spec, frame, metadata, normalization in loaded:
             source_reports.append(
                 {
                     "asset": spec["asset"],
                     "kind": spec["kind"],
                     "source_sha256": metadata["sha256"],
-                    "grain": _grain_profile(frame, spec["kind"]),
+                    "schema_normalization": normalization,
+                    "grain": _grain_profile(frame),
                     "accounting": _accounting_profile(frame, spec["kind"]),
                 }
             )
@@ -396,8 +404,13 @@ def main() -> int:
     finally:
         session.close()
 
+    available_accounting = [
+        report["accounting"]
+        for report in source_reports
+        if report["accounting"].get("available")
+    ]
     payload = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "official_sports": sports,
         "source_reports": source_reports,
         "player_reconciliation": player_reports,
@@ -405,17 +418,19 @@ def main() -> int:
             report["grain"]["duplicate_group_count"] == 0
             for report in source_reports
         ),
-        "source_accounting_all_exact": all(
-            report["accounting"].get("mismatch_row_count") == 0
-            for report in source_reports
-            if report["accounting"].get("available")
+        "available_accounting_check_count": len(available_accounting),
+        "source_available_accounting_all_exact": bool(available_accounting)
+        and all(
+            report.get("mismatch_row_count") == 0
+            for report in available_accounting
         ),
         "official_player_rows_all_exact": all(
             report["all_compared_fields_exact"] for report in player_reports
         ) if player_reports else None,
         "interpretation": (
             "Current official season splits are a certification oracle, not a historical-vintage rewrite. "
-            "The reusable season rows remain immutable source snapshots with their own checksums."
+            "The reusable season rows remain immutable source snapshots with their own checksums. "
+            "Unavailable accounting components remain explicit rather than inferred."
         ),
     }
     (report_dir / "season_stat_official_reconciliation.json").write_text(
@@ -426,7 +441,7 @@ def main() -> int:
         "# Season-player aggregate certification",
         "",
         f"- Source player-team-league grains all unique: {payload['source_grain_all_unique']}",
-        f"- PA/BF accounting identities all exact: {payload['source_accounting_all_exact']}",
+        f"- Available exact PA/BF accounting checks: {payload['available_accounting_check_count']}; all exact={payload['source_available_accounting_all_exact']}",
         f"- Sampled official player/team splits all exact: {payload['official_player_rows_all_exact']}",
         "",
         "## Source rows",
@@ -434,17 +449,31 @@ def main() -> int:
     ]
     for report in source_reports:
         accounting = report["accounting"]
+        if accounting.get("available"):
+            accounting_text = (
+                f"accounting mismatches {accounting.get('mismatch_row_count')}/"
+                f"{accounting.get('compared_row_count')}"
+            )
+        else:
+            accounting_text = (
+                "accounting unavailable; missing "
+                f"{accounting.get('missing_columns', [])}"
+            )
         lines.append(
             f"- `{report['asset']}`: rows {report['grain']['row_count']:,}; "
             f"duplicate player-team-league-season groups {report['grain']['duplicate_group_count']}; "
-            f"accounting mismatches {accounting.get('mismatch_row_count', 'n/a')}/{accounting.get('compared_row_count', 'n/a')}"
+            f"{accounting_text}"
         )
     lines.extend(["", "## Official player split checks", ""])
     for report in player_reports:
+        compared = sum(
+            row["compared_field_count"] for row in report["matched_rows"]
+        )
         lines.append(
             f"- {report['kind']} player `{report['person_id']}`: "
             f"source rows {report['source_row_count']}; official splits {report['official_split_count']}; "
-            f"matched {report['matched_source_row_count']}; exact={report['all_compared_fields_exact']}"
+            f"matched {report['matched_source_row_count']}; compared fields {compared}; "
+            f"exact={report['all_compared_fields_exact']}"
         )
         if report["unmatched_source_rows"] or not report["all_compared_fields_exact"]:
             lines.append(
