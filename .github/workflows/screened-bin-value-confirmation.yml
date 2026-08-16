@@ -1,0 +1,50 @@
+name: Screened Performance-bin value confirmation
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/screened-bin-value-confirmation.yml"
+      - "scripts/audit_screened_bin_value_confirmation.py"
+      - "src/universal_baseball/performance_events.py"
+      - "tests/test_performance_events.py"
+
+permissions:
+  contents: read
+
+jobs:
+  confirm-screened-bin-values:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Prepare quarantine directories
+        run: |
+          mkdir -p data/quarantine/screened-bin-value-confirmation/primary
+          mkdir -p data/quarantine/screened-bin-value-confirmation/independent-2024-aaa
+
+      - name: Confirm estimator on final screened bins
+        run: python scripts/audit_screened_bin_value_confirmation.py
+
+      - name: Upload screened confirmation
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: screened-bin-value-confirmation
+          path: reports/generated/screened-bin-value-confirmation/
+          if-no-files-found: warn
+          retention-days: 14
