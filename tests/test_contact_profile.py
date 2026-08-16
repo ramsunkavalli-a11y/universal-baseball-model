@@ -82,6 +82,19 @@ def test_contact_profile_classifies_core_and_exclusion_states() -> None:
     assert by_index[5]["contact_profile_status"] == "unknown_missing_trajectory"
 
 
+def test_opposite_direction_uses_compact_oppo_core_bin_label() -> None:
+    frame = _contacts().head(1).with_columns(
+        pl.lit("ground_ball").alias("bb_type"),
+        pl.lit(170.0).alias("hc_x"),
+        pl.lit(100.0).alias("hc_y"),
+        pl.lit("R").alias("batter_side"),
+        pl.lit("Batter grounds out to second baseman.").alias("result_description"),
+    )
+    row = classify_contact_profile_events(frame).to_dicts()[0]
+    assert row["direction"] == "opposite"
+    assert row["core_bin"] == "OPPO_GB"
+
+
 def test_ground_ball_does_not_require_result_narrative_for_core() -> None:
     frame = _contacts().filter(pl.col("at_bat_index") == 2).with_columns(
         pl.lit(None, dtype=pl.String).alias("result_description")
