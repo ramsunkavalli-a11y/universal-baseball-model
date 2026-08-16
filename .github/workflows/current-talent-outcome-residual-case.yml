@@ -9,6 +9,7 @@ on:
       - ".github/workflows/current-talent-outcome-residual-case.yml"
       - "scripts/diagnose_current_talent_outcome_residual_case.py"
       - "scripts/diagnose_current_talent_2021_rk_team_residuals.py"
+      - "scripts/diagnose_current_talent_2021_dsl_lad_bautista_boxscores.py"
 
 permissions:
   contents: read
@@ -40,6 +41,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/diagnose_current_talent_2021_rk_team_residuals.py
+
+      - name: Audit 2021 DSL LAD Bautista official boxscores
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/diagnose_current_talent_2021_dsl_lad_bautista_boxscores.py
 
       - name: Upload diagnostic artifact
         if: always()
