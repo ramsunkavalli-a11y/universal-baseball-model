@@ -2,31 +2,33 @@
 
 The adapter reuses two already-certified public layers:
 
-- armstjc player-game boxscores for PA / BB / HBP / K / catcher interference;
-- resolved + participant-authorized contact-profile events for the 10 contact bins.
+- armstjc player-game boxscores for PA / BB / HBP / K / result-contact counts;
+- resolved + participant-authorized contact-profile observations for the 10
+  contact bins and explicit non-core contact families.
 
-It intentionally does not replay every official PA.  Conflicting cumulative
-boxscore snapshots are resolved only by component-wise statistical dominance.
-Actual-league and game-type disagreement is a hard blocker.  A game-date
-conflict is retained as a flag and assigned the *latest* observed date so a
-completed suspended/resumed game cannot leak later events backward across a
-Current Talent cutoff.
+ADR 024 keeps those evidence grains separate.  The boxscore backbone supplies
+true batting opportunities and expected result contacts; reusable PBP supplies
+observed physical contact/profile evidence.  Their signed residual is preserved
+rather than clipping contact observations to plate appearances.
+
+Conflicting cumulative boxscore snapshots are resolved only by component-wise
+statistical dominance. Actual-league and game-type disagreement is a hard
+blocker. A game-date conflict is retained as a flag and assigned the *latest*
+observed date so a completed suspended/resumed game cannot leak later events
+backward across a Current Talent cutoff.
 """
 
 from __future__ import annotations
 
-from datetime import date
 from typing import Any
 
 import polars as pl
 
 from universal_baseball.bin_value_policy import LEAGUE_LEVEL_GROUP
 from universal_baseball.current_talent_evidence import (
-    PLAYER_GAME_PROFILE_REQUIRED,
     PLAYER_GAME_SUMMARY_REQUIRED,
     validate_player_game_evidence,
 )
-from universal_baseball.performance_season import CONTACT_CORE_BINS
 
 
 OUTCOME_FIELDS = (
@@ -260,7 +262,13 @@ def build_milb_current_talent_player_game_evidence(
     resolved_outcomes: pl.DataFrame,
     contact_profile: pl.DataFrame,
 ) -> tuple[pl.DataFrame, pl.DataFrame, dict[str, Any]]:
-    """Combine resolved boxscore outcomes + classified contacts at player-game grain."""
+    """Combine boxscore opportunity evidence + classified contact observations.
+
+    ``expected_contact_count`` is the independent result-contact count implied by
+    AB - K + SF + SH. ``observed_contact_count`` is the number of classified
+    reusable physical contact observations after participant authority. Their
+    signed residual is evidence quality, not a quantity to force to zero.
+    """
 
     outcome_required = {
         "game_id",
@@ -302,66 +310,97 @@ def build_milb_current_talent_player_game_evidence(
     contact_counts = contact_profile.group_by(
         ["season", "league_id", "game_pk", "batter_mlbam_id"]
     ).agg(
-        pl.len().alias("contact_event_count"),
-        pl.col("core_bin").is_not_null().sum().alias("core_contact_count"),
-        (pl.col("contact_profile_status") == "special_bunt").sum().alias("bunt_contact_count"),
-        (pl.col("contact_profile_status") == "foul_air_excluded").sum().alias("foul_air_excluded_count"),
-        pl.col("contact_profile_status").str.starts_with("unknown").sum().alias("unknown_contact_count"),
-        (pl.col("participant_authority") != "source_default").sum().alias("official_overlay_contact_count"),
+        pl.len().cast(pl.Int64).alias("contact_event_count"),
+        pl.col("core_bin").is_not_null().sum().cast(pl.Int64).alias("core_contact_count"),
+        (pl.col("contact_profile_status") == "special_bunt")
+        .sum()
+        .cast(pl.Int64)
+        .alias("bunt_contact_count"),
+        (pl.col("contact_profile_status") == "foul_air_excluded")
+        .sum()
+        .cast(pl.Int64)
+        .alias("foul_air_excluded_count"),
+        pl.col("contact_profile_status")
+        .str.starts_with("unknown")
+        .sum()
+        .cast(pl.Int64)
+        .alias("unknown_contact_count"),
+        (pl.col("participant_authority") != "source_default")
+        .sum()
+        .cast(pl.Int64)
+        .alias("official_overlay_contact_count"),
     )
 
-    outcome_base = outcomes.with_columns(
-        pl.col("game_date").dt.year().cast(pl.Int64).alias("season"),
-        pl.col("league_id")
-        .replace_strict(
-            {int(k): str(v) for k, v in LEAGUE_LEVEL_GROUP.items()},
-            default=None,
-            return_dtype=pl.String,
+    outcome_base = (
+        outcomes.with_columns(
+            pl.col("game_date").dt.year().cast(pl.Int64).alias("season"),
+            pl.col("league_id")
+            .replace_strict(
+                {int(k): str(v) for k, v in LEAGUE_LEVEL_GROUP.items()},
+                default=None,
+                return_dtype=pl.String,
+            )
+            .alias("level_group"),
+            (pl.col("batting_BB") + pl.col("batting_HBP")).cast(pl.Int64).alias("bb_hbp_count"),
+            pl.col("batting_SO").cast(pl.Int64).alias("strikeout_count"),
+            (
+                pl.col("batting_AB")
+                - pl.col("batting_SO")
+                + pl.col("batting_SF")
+                + pl.col("batting_SH")
+            )
+            .cast(pl.Int64)
+            .alias("expected_contact_count"),
+            pl.col("batting_CI").cast(pl.Int64).alias("special_noncontact_count"),
         )
-        .alias("level_group"),
-        (pl.col("batting_BB") + pl.col("batting_HBP")).alias("bb_hbp_count"),
-        pl.col("batting_SO").alias("strikeout_count"),
+        .with_columns(
+            (
+                pl.col("batting_PA")
+                - pl.col("expected_contact_count")
+                - pl.col("special_noncontact_count")
+                - pl.col("bb_hbp_count")
+                - pl.col("strikeout_count")
+            )
+            .cast(pl.Int64)
+            .alias("pa_accounting_residual")
+        )
     )
     unknown_leagues = outcome_base.filter(pl.col("level_group").is_null())
     if not unknown_leagues.is_empty():
         raise ValueError("Current Talent MiLB evidence contains uncertified league IDs")
 
-    joined = outcome_base.join(
-        contact_counts,
-        left_on=["season", "league_id", "game_id", "player_id"],
-        right_on=["season", "league_id", "game_pk", "batter_mlbam_id"],
-        how="left",
-    ).with_columns(
-        *[
-            pl.col(column).fill_null(0).cast(pl.Int64)
-            for column in (
-                "contact_event_count",
-                "core_contact_count",
-                "bunt_contact_count",
-                "foul_air_excluded_count",
-                "unknown_contact_count",
-                "official_overlay_contact_count",
-            )
-        ]
+    joined = (
+        outcome_base.join(
+            contact_counts,
+            left_on=["season", "league_id", "game_id", "player_id"],
+            right_on=["season", "league_id", "game_pk", "batter_mlbam_id"],
+            how="left",
+        )
+        .with_columns(
+            *[
+                pl.col(column).fill_null(0).cast(pl.Int64)
+                for column in (
+                    "contact_event_count",
+                    "core_contact_count",
+                    "bunt_contact_count",
+                    "foul_air_excluded_count",
+                    "unknown_contact_count",
+                    "official_overlay_contact_count",
+                )
+            ]
+        )
+        .with_columns(
+            pl.col("contact_event_count").alias("observed_contact_count"),
+            (
+                pl.col("contact_event_count") - pl.col("expected_contact_count")
+            ).alias("contact_count_residual"),
+            (
+                pl.col("bb_hbp_count")
+                + pl.col("strikeout_count")
+                + pl.col("core_contact_count")
+            ).alias("core_profile_event_count"),
+        )
     )
-
-    joined = joined.with_columns(
-        (pl.col("bb_hbp_count") + pl.col("strikeout_count") + pl.col("core_contact_count")).alias(
-            "core_profile_event_count"
-        ),
-        (pl.col("bunt_contact_count") + pl.col("foul_air_excluded_count") + pl.col("batting_CI")).alias(
-            "known_non_core_event_count"
-        ),
-    ).with_columns(
-        (
-            pl.col("batting_PA")
-            - pl.col("core_profile_event_count")
-            - pl.col("known_non_core_event_count")
-        ).alias("unknown_event_count")
-    )
-    invalid = joined.filter(pl.col("unknown_event_count") < 0)
-    if not invalid.is_empty():
-        raise ValueError("Current Talent MiLB evidence over-accounts player-game plate appearances")
 
     summary = joined.select(
         pl.col("season").cast(pl.Int64),
@@ -371,9 +410,15 @@ def build_milb_current_talent_player_game_evidence(
         pl.col("player_id").cast(pl.Int64),
         pl.col("level_group").cast(pl.String),
         pl.col("batting_PA").cast(pl.Int64).alias("batting_plate_appearances"),
+        pl.col("expected_contact_count").cast(pl.Int64),
+        pl.col("observed_contact_count").cast(pl.Int64),
+        pl.col("contact_count_residual").cast(pl.Int64),
         pl.col("core_profile_event_count").cast(pl.Int64),
-        pl.col("known_non_core_event_count").cast(pl.Int64).alias("non_core_event_count"),
-        pl.col("unknown_event_count").cast(pl.Int64),
+        pl.col("bunt_contact_count").cast(pl.Int64),
+        pl.col("foul_air_excluded_count").cast(pl.Int64),
+        pl.col("unknown_contact_count").cast(pl.Int64),
+        pl.col("special_noncontact_count").cast(pl.Int64),
+        pl.col("pa_accounting_residual").cast(pl.Int64),
         pl.when(pl.col("contact_event_count") == 0)
         .then(pl.lit("no_contact_identity_needed"))
         .when(pl.col("official_overlay_contact_count") == 0)
@@ -382,12 +427,15 @@ def build_milb_current_talent_player_game_evidence(
         .then(pl.lit("official_overlay"))
         .otherwise(pl.lit("mixed_source_and_official"))
         .alias("participant_authority_status"),
-        pl.lit("universal_result_contact_profile_v1").alias("source_capability_tier"),
+        pl.lit("universal_result_contact_profile_v2").alias("source_capability_tier"),
     )
 
-    contact_profile_long = contact_profile.filter(pl.col("core_bin").is_not_null()).group_by(
-        ["season", "league_id", "game_pk", "batter_mlbam_id", "core_bin"]
-    ).agg(pl.len().alias("occurrence_count")).rename({"batter_mlbam_id": "player_id"})
+    contact_profile_long = (
+        contact_profile.filter(pl.col("core_bin").is_not_null())
+        .group_by(["season", "league_id", "game_pk", "batter_mlbam_id", "core_bin"])
+        .agg(pl.len().cast(pl.Int64).alias("occurrence_count"))
+        .rename({"batter_mlbam_id": "player_id"})
+    )
 
     outcome_profile = pl.concat(
         [
@@ -415,19 +463,24 @@ def build_milb_current_talent_player_game_evidence(
         how="vertical_relaxed",
     )
 
-    contact_profile_long = contact_profile_long.join(
-        summary.select("season", "game_date", "game_pk", "league_id", "player_id", "level_group"),
-        on=["season", "game_pk", "league_id", "player_id"],
-        how="inner",
-    ).select(
-        "season",
-        "game_date",
-        "game_pk",
-        "league_id",
-        "player_id",
-        "level_group",
-        "core_bin",
-        pl.col("occurrence_count").cast(pl.Int64),
+    contact_profile_long = (
+        contact_profile_long.join(
+            summary.select(
+                "season", "game_date", "game_pk", "league_id", "player_id", "level_group"
+            ),
+            on=["season", "game_pk", "league_id", "player_id"],
+            how="inner",
+        )
+        .select(
+            "season",
+            "game_date",
+            "game_pk",
+            "league_id",
+            "player_id",
+            "level_group",
+            "core_bin",
+            pl.col("occurrence_count").cast(pl.Int64),
+        )
     )
 
     profile = pl.concat([outcome_profile, contact_profile_long], how="vertical_relaxed").sort(
@@ -443,8 +496,15 @@ def build_milb_current_talent_player_game_evidence(
         ),
         "game_date_conflict_player_game_count": int(
             outcomes.get_column("game_date_conflict").sum() or 0
-        ) if "game_date_conflict" in outcomes.columns else 0,
+        )
+        if "game_date_conflict" in outcomes.columns
+        else 0,
         "resolution_policy": OUTCOME_RESOLUTION_POLICY,
         "game_date_conflict_policy": "use latest observed date to prevent backward leakage",
+        "evidence_denominator_policy": "separate_pa_expected_contact_observed_contact_v2",
     }
-    return summary.sort(list(PLAYER_GAME_SUMMARY_REQUIRED & set(summary.columns))), profile, metrics
+    return (
+        summary.sort(list(PLAYER_GAME_SUMMARY_REQUIRED & set(summary.columns))),
+        profile,
+        metrics,
+    )
