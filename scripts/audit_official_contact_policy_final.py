@@ -248,7 +248,9 @@ def main() -> int:
         | (pl.col("source_batter_mismatch") == True)  # noqa: E712
     ).write_csv(REPORT_DIR / "flagged_source_vs_official_contact_keys.csv")
     residuals.write_csv(REPORT_DIR / "official_vs_player_game_residuals.csv")
-    edge_pa_rows.write_csv(REPORT_DIR / "contact_definition_residual_player_pas.csv")
+    edge_pa_rows.with_columns(
+        pl.col("pitch_event_types").list.join("|").alias("pitch_event_types")
+    ).write_csv(REPORT_DIR / "contact_definition_residual_player_pas.csv")
     edge_summary.write_csv(REPORT_DIR / "contact_definition_residual_event_summary.csv")
     definition_residuals.write_csv(
         REPORT_DIR / "official_pbp_vs_boxscore_contact_definition.csv"
