@@ -21,6 +21,36 @@ from universal_baseball.mlb_season_stats import MlbTeamLeague
 
 MLB_LEAGUE_IDS = frozenset({103, 104})
 
+# Baseball Savant can relabel historical franchise abbreviations to a newer
+# display abbreviation. Keep those differences explicit and season-scoped
+# rather than fuzzy-matching team strings. In the 2024 full-season source gate,
+# Oakland rows were emitted as ``ATH`` while the season-specific official team
+# authority correctly used ``OAK``.
+SAVANT_TEAM_ABBREVIATION_ALIASES: dict[tuple[int, str], str] = {
+    (2024, "ATH"): "OAK",
+}
+
+
+def _normalize_savant_batting_team(frame: pl.DataFrame) -> pl.DataFrame:
+    if "game_year" not in frame.columns:
+        return frame.with_columns(
+            pl.col("batting_team").cast(pl.String).alias("batting_team_authority_abbreviation")
+        )
+
+    alias = pl.col("batting_team").cast(pl.String)
+    for (season, source_abbreviation), authority_abbreviation in (
+        SAVANT_TEAM_ABBREVIATION_ALIASES.items()
+    ):
+        alias = (
+            pl.when(
+                (pl.col("game_year").cast(pl.Int64, strict=False) == season)
+                & (pl.col("batting_team").cast(pl.String) == source_abbreviation)
+            )
+            .then(pl.lit(authority_abbreviation))
+            .otherwise(alias)
+        )
+    return frame.with_columns(alias.alias("batting_team_authority_abbreviation"))
+
 
 def assign_savant_actual_league(
     savant: pl.DataFrame,
@@ -28,9 +58,11 @@ def assign_savant_actual_league(
 ) -> pl.DataFrame:
     """Assign each regular-season Savant row to batting team's AL/NL league.
 
-    The mapping is season-specific authority from MLB team metadata. Unknown or
-    missing batting-team abbreviations are hard errors because silently dropping
-    them would corrupt traded-player actual-league Performance grain.
+    The mapping is season-specific authority from MLB team metadata. Known
+    source-display aliases are normalized through the explicit season-scoped
+    table above. Unknown or missing batting-team abbreviations are hard errors
+    because silently dropping them would corrupt traded-player actual-league
+    Performance grain.
     """
 
     required = {"batting_team", "game_pk", "at_bat_index", "pitch_number"}
@@ -38,11 +70,14 @@ def assign_savant_actual_league(
     if missing:
         raise ValueError(f"Savant rows missing MLB league-assignment fields: {missing}")
     if savant.is_empty():
-        return savant.with_columns(pl.lit(None, dtype=pl.Int64).alias("league_id"))
+        return savant.with_columns(
+            pl.lit(None, dtype=pl.Int64).alias("league_id"),
+            pl.col("batting_team").cast(pl.String).alias("batting_team_authority_abbreviation"),
+        )
 
     mapping_rows = [
         {
-            "batting_team": row.abbreviation,
+            "batting_team_authority_abbreviation": row.abbreviation,
             "league_id": int(row.league_id),
             "league_name": row.league_name,
         }
@@ -50,7 +85,9 @@ def assign_savant_actual_league(
     ]
     if not mapping_rows:
         raise ValueError("MLB team-league authority is empty")
-    mapping = pl.DataFrame(mapping_rows).unique(subset=["batting_team"], keep="none")
+    mapping = pl.DataFrame(mapping_rows).unique(
+        subset=["batting_team_authority_abbreviation"], keep="none"
+    )
     if mapping.height != len(mapping_rows):
         raise ValueError("MLB team-league authority has duplicate abbreviations")
 
@@ -63,13 +100,24 @@ def assign_savant_actual_league(
             f"Savant has {missing_team.height} rows without resolvable batting team"
         )
 
-    observed = set(str(value) for value in savant.get_column("batting_team").unique())
-    known = set(str(value) for value in mapping.get_column("batting_team").unique())
+    normalized = _normalize_savant_batting_team(savant)
+    observed = set(
+        str(value)
+        for value in normalized.get_column("batting_team_authority_abbreviation").unique()
+    )
+    known = set(
+        str(value)
+        for value in mapping.get_column("batting_team_authority_abbreviation").unique()
+    )
     unknown = sorted(observed - known)
     if unknown:
-        raise ValueError(f"Savant batting-team abbreviations absent from MLB authority: {unknown}")
+        raise ValueError(
+            f"Savant batting-team abbreviations absent from MLB authority: {unknown}"
+        )
 
-    result = savant.join(mapping, on="batting_team", how="left")
+    result = normalized.join(
+        mapping, on="batting_team_authority_abbreviation", how="left"
+    )
     unresolved = result.filter(~pl.col("league_id").is_in(sorted(MLB_LEAGUE_IDS)))
     if not unresolved.is_empty():
         raise ValueError("Savant rows remain without certified AL/NL league assignment")
