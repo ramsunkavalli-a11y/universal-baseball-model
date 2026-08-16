@@ -1,0 +1,44 @@
+name: Source batter identity mismatch diagnostic
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/source-batter-identity-mismatch-diagnostic.yml"
+      - "scripts/diagnose_source_batter_identity_mismatches.py"
+      - "src/universal_baseball/official_capture.py"
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose-source-batter-mismatches:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Diagnose frozen identity mismatches
+        run: python scripts/diagnose_source_batter_identity_mismatches.py
+
+      - name: Upload mismatch diagnostic
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: source-batter-identity-mismatch-diagnostic
+          path: reports/generated/source-batter-identity-mismatch-diagnostic/
+          if-no-files-found: warn
+          retention-days: 14
