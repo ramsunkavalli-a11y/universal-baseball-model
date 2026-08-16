@@ -1,0 +1,50 @@
+name: MiLB bin value pooling diagnostic
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/milb-bin-value-pooling.yml"
+      - "scripts/audit_milb_bin_value_pooling.py"
+      - "src/universal_baseball/bin_value_pooling.py"
+      - "tests/test_bin_value_pooling.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-pooling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Regenerate 45-game stability evidence
+        run: python scripts/audit_milb_bin_value_stability.py --max-games-per-league 45
+
+      - name: Compare pooling estimators
+        run: python scripts/audit_milb_bin_value_pooling.py
+
+      - name: Upload pooling diagnostic
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: milb-bin-value-pooling
+          path: |
+            reports/generated/milb-bin-value-stability/
+            reports/generated/milb-bin-value-pooling/
+          if-no-files-found: warn
+          retention-days: 14
