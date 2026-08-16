@@ -106,6 +106,23 @@ def test_reconciliation_sampling_sums_multiteam_volume_and_selects_each_league()
     ]
 
 
+def test_reconciliation_sampling_excludes_players_seen_in_multiple_actual_leagues() -> None:
+    frame = pl.DataFrame(
+        {
+            "league_id": [112, 117, 112, 117],
+            "player_id": [10, 10, 20, 30],
+            "batting_plate_appearances": [300, 200, 150, 140],
+        }
+    )
+
+    selected = select_reconciliation_players(frame, "batting")
+
+    assert selected == [
+        {"league_id": 112, "player_id": 20, "sample_volume": 150},
+        {"league_id": 117, "player_id": 30, "sample_volume": 140},
+    ]
+
+
 def test_reconciliation_sampling_ties_break_on_player_id() -> None:
     frame = pl.DataFrame(
         {
