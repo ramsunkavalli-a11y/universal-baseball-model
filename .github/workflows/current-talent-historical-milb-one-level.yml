@@ -56,6 +56,7 @@ jobs:
       - name: Run historical evidence unit tests
         run: >-
           python -m pytest
+          tests/test_armstjc_contacts.py
           tests/test_current_talent_era.py
           tests/test_current_talent_identity_corrections.py
           tests/test_current_talent_milb_source.py
