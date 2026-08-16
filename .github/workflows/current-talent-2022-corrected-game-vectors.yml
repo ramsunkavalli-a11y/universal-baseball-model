@@ -2,12 +2,6 @@ name: Current Talent 2022 corrected game vectors
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-2022-corrected-game-vectors.yml"
-      - "scripts/diagnose_current_talent_2022_corrected_game_vectors.py"
 
 permissions:
   contents: read
