@@ -6,7 +6,7 @@ certified source into the same player-game contract used by affiliated MiLB so
 chronological snapshot code is source-agnostic.
 
 ADR 024 preserves true-PA/result opportunities separately from physical
-contact/profile observations.  No season-end totals are used here. Every count is
+contact/profile observations. No season-end totals are used here. Every count is
 derived from game-grain Savant evidence that occurred before a future validation
 cutoff.
 """
@@ -31,8 +31,9 @@ MLB_CAPABILITY_TIER = "mlb_savant_result_contact_profile_v2"
 MLB_PARTICIPANT_AUTHORITY = "savant_official"
 
 # True PA terminal events that are neither the two outcome core families nor a
-# contact family are explicit known special non-contact outcomes. Any remaining
-# PA identity residual stays signed and visible rather than being imputed.
+# result-contact opportunity are explicit known special non-contact outcomes.
+# A physical bat-ball contact can still occur during one of these PAs (notably
+# catcher interference); ADR 024 preserves that separately in observed contacts.
 KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES = frozenset(
     {
         "catcher_interf",
@@ -119,12 +120,21 @@ def build_mlb_current_talent_player_game_evidence(
             .sum()
             .cast(pl.Int64)
             .alias("strikeout_count"),
-            pl.col("is_contact").sum().cast(pl.Int64).alias("expected_contact_count"),
             pl.col("events")
             .is_in(sorted(KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES))
             .sum()
             .cast(pl.Int64)
             .alias("special_noncontact_count"),
+        )
+        .with_columns(
+            (
+                pl.col("batting_plate_appearances")
+                - pl.col("special_noncontact_count")
+                - pl.col("bb_hbp_count")
+                - pl.col("strikeout_count")
+            )
+            .cast(pl.Int64)
+            .alias("expected_contact_count")
         )
         .with_columns(
             (
