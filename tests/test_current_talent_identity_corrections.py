@@ -72,6 +72,33 @@ def _controls(*, include_target: bool = False) -> pl.DataFrame:
     return pl.DataFrame(rows)
 
 
+def _non_target_outcomes() -> pl.DataFrame:
+    return pl.DataFrame(
+        [
+            {
+                "game_id": 600001,
+                "player_id": 600100,
+                "league_id": 112,
+                "game_date": date(2021, 5, 4),
+                "batting_PA": 4,
+                "batting_AB": 4,
+                "batting_BB": 0,
+                "batting_HBP": 0,
+                "batting_SO": 1,
+                "batting_SF": 0,
+                "batting_SH": 0,
+                "batting_CI": 0,
+            }
+        ]
+    )
+
+
+def _non_target_controls() -> pl.DataFrame:
+    return pl.DataFrame(
+        [{"game_id": 600001, "player_id": 600100, "expected_contact_count": 3}]
+    )
+
+
 def test_certified_identity_correction_remaps_outcome_and_contact_control() -> None:
     outcomes, controls, evidence, metrics = apply_historical_player_game_identity_corrections(
         _outcomes(),
@@ -89,7 +116,28 @@ def test_certified_identity_correction_remaps_outcome_and_contact_control() -> N
     assert corrected["batting_SH"] == 1
     assert evidence.height == 1
     assert evidence.row(0, named=True)["policy"] == IDENTITY_CORRECTION_POLICY
+    assert metrics["registered_correction_count_for_season"] == 1
+    assert metrics["applicable_correction_count"] == 1
     assert metrics["applied_correction_count"] == 1
+
+
+def test_certified_identity_correction_ignores_non_target_2021_league() -> None:
+    source_outcomes = _non_target_outcomes()
+    source_controls = _non_target_controls()
+
+    outcomes, controls, evidence, metrics = apply_historical_player_game_identity_corrections(
+        source_outcomes,
+        source_controls,
+        season=2021,
+    )
+
+    assert outcomes.to_dicts() == source_outcomes.to_dicts()
+    assert controls.to_dicts() == source_controls.to_dicts()
+    assert evidence.is_empty()
+    assert metrics["registered_correction_count_for_season"] == 1
+    assert metrics["applicable_correction_count"] == 0
+    assert metrics["applied_correction_count"] == 0
+    assert metrics["observed_league_ids"] == [112]
 
 
 def test_certified_identity_correction_fails_closed_if_source_vector_drifts() -> None:
