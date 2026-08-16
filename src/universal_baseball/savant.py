@@ -67,8 +67,10 @@ SAVANT_PERFORMANCE_SCHEMA: dict[str, pl.DataType] = {
     "hit_location": pl.String,
     "hc_x": pl.Float64,
     "hc_y": pl.Float64,
+    "inning_topbot": pl.String,
     "home_team": pl.String,
     "away_team": pl.String,
+    "batting_team": pl.String,
     "is_terminal_event": pl.Boolean,
     "is_plate_appearance_terminal": pl.Boolean,
     "is_contact": pl.Boolean,
@@ -185,6 +187,11 @@ def project_savant_performance_rows(
       ``bunt``.
     - ``truncated_pa`` is a Savant terminal marker for an interrupted PA, not a
       true official PA result. Unknown terminal labels fail loudly.
+    - when Savant exposes ``inning_topbot``, derive the batting team from the
+      away team in the top half and home team in the bottom half. The field is
+      optional at this low-level adapter boundary for old fixtures; production
+      season materialization requires it to be non-null on real regular-season
+      rows before assigning AL/NL environment.
     """
 
     required = {
@@ -252,6 +259,19 @@ def project_savant_performance_rows(
         sorted(PLATE_APPEARANCE_EVENT_TYPES)
     )
 
+    if "inning_topbot" in raw.columns:
+        inning_topbot = pl.col("inning_topbot").cast(pl.String)
+        batting_team = (
+            pl.when(inning_topbot.str.to_lowercase() == "top")
+            .then(pl.col("away_team").cast(pl.String))
+            .when(inning_topbot.str.to_lowercase().is_in(["bot", "bottom"]))
+            .then(pl.col("home_team").cast(pl.String))
+            .otherwise(pl.lit(None, dtype=pl.String))
+        )
+    else:
+        inning_topbot = pl.lit(None, dtype=pl.String)
+        batting_team = pl.lit(None, dtype=pl.String)
+
     projected = raw.select(
         pl.col("game_date").cast(pl.String),
         _integer_like("game_year"),
@@ -273,8 +293,10 @@ def project_savant_performance_rows(
         pl.col("hit_location").cast(pl.String),
         pl.col("hc_x").cast(pl.Float64, strict=False),
         pl.col("hc_y").cast(pl.Float64, strict=False),
+        inning_topbot.alias("inning_topbot"),
         pl.col("home_team").cast(pl.String),
         pl.col("away_team").cast(pl.String),
+        batting_team.alias("batting_team"),
         terminal.alias("is_terminal_event"),
         is_pa_terminal.alias("is_plate_appearance_terminal"),
         contact.alias("is_contact"),
