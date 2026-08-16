@@ -31,12 +31,12 @@ def _season() -> pl.DataFrame:
         {
             "season": [2022, 2022, 2022],
             "league_id": [112, 112, 117],
-            "person_id": [10, 10, 20],
+            "player_id": [10, 10, 20],
             "team_id": [1, 2, 3],
-            "plate_appearances": [4, 5, 4],
-            "walks": [1, 0, 1],
-            "hit_by_pitch": [0, 1, 0],
-            "strikeouts": [1, 2, 1],
+            "batting_plate_appearances": [4, 5, 4],
+            "batting_base_on_balls": [1, 0, 1],
+            "batting_hit_by_pitch": [0, 1, 0],
+            "batting_strike_outs": [1, 2, 1],
         }
     )
 
@@ -57,10 +57,10 @@ def test_reconciliation_aggregates_teams_and_matches_exactly() -> None:
 
 def test_reconciliation_preserves_mismatch_diagnostics_without_repair() -> None:
     bad = _season().with_columns(
-        pl.when((pl.col("league_id") == 117) & (pl.col("person_id") == 20))
-        .then(pl.col("walks") + 1)
-        .otherwise(pl.col("walks"))
-        .alias("walks")
+        pl.when((pl.col("league_id") == 117) & (pl.col("player_id") == 20))
+        .then(pl.col("batting_base_on_balls") + 1)
+        .otherwise(pl.col("batting_base_on_balls"))
+        .alias("batting_base_on_balls")
     )
     comparison, metrics = reconcile_resolved_outcomes_to_season_aggregates(
         _games(), bad, season=2022, expected_league_ids=frozenset({112, 117})
