@@ -6,6 +6,7 @@ on:
       - ".github/workflows/player-game-contact-localization.yml"
       - "scripts/audit_player_game_contact_localization.py"
       - "scripts/audit_official_contact_exceptions.py"
+      - "scripts/audit_official_contact_policy_final.py"
       - "src/universal_baseball/player_game_stats.py"
       - "src/universal_baseball/official.py"
       - "tests/test_player_game_stats.py"
@@ -37,8 +38,8 @@ jobs:
       - name: Localize 2024 AAA contact attribution with player-game boxscores
         run: python scripts/audit_player_game_contact_localization.py
 
-      - name: Adjudicate sparse exceptions with targeted official PBP
-        run: python scripts/audit_official_contact_exceptions.py
+      - name: Certify final exception-only official participant overlay
+        run: python scripts/audit_official_contact_policy_final.py
 
       - name: Upload player-game localization report
         if: always()
@@ -49,11 +50,11 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-      - name: Upload targeted official exception report
+      - name: Upload final contact policy report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: official-contact-exceptions
-          path: reports/generated/official-contact-exceptions/
+          name: official-contact-policy-final
+          path: reports/generated/official-contact-policy-final/
           if-no-files-found: warn
           retention-days: 14
