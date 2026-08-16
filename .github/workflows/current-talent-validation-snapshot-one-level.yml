@@ -1,6 +1,13 @@
 name: Current Talent validation snapshot one level
 
 on:
+  # One-time self-bootstrap path trigger. Remove after the first real-data run
+  # succeeds so live certification remains manual-only.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - .github/workflows/current-talent-validation-snapshot-one-level.yml
   workflow_dispatch:
     inputs:
       season:
@@ -43,9 +50,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      TARGET_SEASON: ${{ inputs.season }}
-      TARGET_LEVEL: ${{ inputs.level }}
-      SNAPSHOT_MONTH: ${{ inputs.snapshot_month }}
+      TARGET_SEASON: ${{ inputs.season || '2021' }}
+      TARGET_LEVEL: ${{ inputs.level || 'rk' }}
+      SNAPSHOT_MONTH: ${{ inputs.snapshot_month || '8' }}
 
     steps:
       - name: Check out repository
