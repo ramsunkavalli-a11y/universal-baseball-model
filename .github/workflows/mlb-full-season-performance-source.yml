@@ -1,20 +1,7 @@
 name: MLB full-season Performance source gate
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/mlb-full-season-performance-source.yml"
-      - "scripts/audit_mlb_full_season_performance_source.py"
-      - "src/universal_baseball/savant.py"
-      - "src/universal_baseball/mlb_performance.py"
-      - "src/universal_baseball/mlb_season_stats.py"
-      - "src/universal_baseball/contact_profile.py"
-      - "tests/test_savant.py"
-      - "tests/test_savant_batting_team.py"
-      - "tests/test_mlb_performance.py"
-      - "tests/test_mlb_season_stats.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
