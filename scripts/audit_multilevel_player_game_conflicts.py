@@ -34,12 +34,7 @@ def _csv_safe_unresolved(frame: pl.DataFrame) -> pl.DataFrame:
     if frame.is_empty() or "source_assets" not in frame.columns:
         return frame
     return frame.with_columns(
-        pl.col("source_assets")
-        .map_elements(
-            lambda values: json.dumps(values or [], separators=(",", ":")),
-            return_dtype=pl.String,
-        )
-        .alias("source_assets_json")
+        pl.col("source_assets").list.join("|").alias("source_assets_joined")
     ).drop("source_assets")
 
 
@@ -148,7 +143,6 @@ def main() -> int:
             REPORT_DIR / "unresolved_player_games.csv"
         )
     if not observations_all.is_empty():
-        # source_assets is not present here; every row carries scalar source_asset.
         observations_all.write_csv(REPORT_DIR / "unresolved_source_observations.csv")
 
     payload = {
