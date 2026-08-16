@@ -1,14 +1,7 @@
 name: MLB bulk season stats audit
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/mlb-bulk-season-stats.yml"
-      - "scripts/audit_mlb_bulk_season_stats.py"
-      - "src/universal_baseball/savant.py"
-      - "tests/test_savant.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
