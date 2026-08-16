@@ -1,0 +1,64 @@
+name: Current Talent historical outcome backbone
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/current-talent-historical-outcome-backbone.yml"
+      - "scripts/audit_current_talent_historical_outcome_backbone.py"
+      - "src/universal_baseball/current_talent_season_reconciliation.py"
+      - "src/universal_baseball/season_stat_assets.py"
+      - "tests/test_current_talent_season_reconciliation.py"
+      - "tests/test_season_stat_assets.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        level: [aaa, aa, "a+", a, rk]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run outcome-backbone unit tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_season_reconciliation.py
+          tests/test_season_stat_assets.py
+          tests/test_current_talent_milb_evidence.py
+          tests/test_current_talent_era.py
+
+      - name: Audit 2022 player-game outcome backbone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          python scripts/audit_current_talent_historical_outcome_backbone.py
+          --season 2022
+          --level "${{ matrix.level }}"
+
+      - name: Upload outcome-backbone report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-historical-outcome-backbone-${{ matrix.level }}
+          path: reports/generated/current-talent-historical-outcome-backbone/2022/${{ matrix.level }}/
+          if-no-files-found: warn
+          retention-days: 14
