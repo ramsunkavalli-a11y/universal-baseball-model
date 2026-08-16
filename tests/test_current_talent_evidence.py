@@ -20,9 +20,15 @@ def _summary() -> pl.DataFrame:
             "player_id": [10, 10, 10, 20],
             "level_group": ["AAA", "AAA", "AAA", "MLB"],
             "batting_plate_appearances": [4, 4, 4, 5],
+            "expected_contact_count": [0, 2, 0, 3],
+            "observed_contact_count": [0, 2, 0, 3],
+            "contact_count_residual": [0, 0, 0, 0],
             "core_profile_event_count": [4, 3, 4, 4],
-            "non_core_event_count": [0, 1, 0, 0],
-            "unknown_event_count": [0, 0, 0, 1],
+            "bunt_contact_count": [0, 1, 0, 0],
+            "foul_air_excluded_count": [0, 0, 0, 0],
+            "unknown_contact_count": [0, 0, 0, 1],
+            "special_noncontact_count": [0, 0, 0, 0],
+            "pa_accounting_residual": [0, 0, 0, 0],
             "participant_authority_status": ["source", "official_overlay", "source", "official"],
             "source_capability_tier": ["result", "result", "result", "mlb_full"],
         }
@@ -52,13 +58,19 @@ def _profile() -> pl.DataFrame:
     )
 
 
-def test_player_game_evidence_contract_reconciles_profile() -> None:
+def test_player_game_evidence_contract_reconciles_profile_and_denominators() -> None:
     report = validate_player_game_evidence(_summary(), _profile())
     assert report["player_game_count"] == 4
     assert report["player_count"] == 2
     assert report["actual_league_count"] == 2
     assert report["total_plate_appearances"] == 17
+    assert report["total_expected_contacts"] == 5
+    assert report["total_observed_contacts"] == 5
+    assert report["total_contact_count_residual"] == 0
     assert report["total_core_events"] == 15
+    assert report["total_bunt_contacts"] == 1
+    assert report["total_unknown_contacts"] == 1
+    assert report["total_pa_accounting_residual"] == 0
 
 
 def test_snapshot_excludes_cutoff_day_and_preserves_actual_league_history() -> None:
@@ -71,8 +83,16 @@ def test_snapshot_excludes_cutoff_day_and_preserves_actual_league_history() -> N
 
     player10 = summary.filter(pl.col("player_id") == 10).row(0, named=True)
     assert player10["raw_plate_appearances"] == 8
+    assert player10["raw_expected_contacts"] == 2
+    assert player10["raw_observed_contacts"] == 2
+    assert player10["raw_contact_count_residual"] == 0
     assert player10["raw_core_events"] == 7
-    assert player10["raw_non_core_events"] == 1
+    assert player10["raw_bunt_contacts"] == 1
+    assert player10["raw_unknown_contacts"] == 0
+    assert player10["raw_pa_accounting_residual"] == 0
+    assert player10["raw_contact_coverage_rate"] == 1.0
+    assert player10["raw_core_events_per_pa"] == pytest.approx(7 / 8)
+    assert player10["raw_core_share_of_profile_observations"] == pytest.approx(7 / 8)
     assert player10["game_count"] == 2
     assert player10["league_count"] == 1
     assert player10["min_level_group"] == "AAA"
@@ -95,7 +115,10 @@ def test_snapshot_hard_lookback_window_is_deterministic() -> None:
 
     player10 = summary.filter(pl.col("player_id") == 10).row(0, named=True)
     assert player10["raw_plate_appearances"] == 4
+    assert player10["raw_expected_contacts"] == 2
+    assert player10["raw_observed_contacts"] == 2
     assert player10["raw_core_events"] == 3
+    assert player10["raw_bunt_contacts"] == 1
     assert player10["first_evidence_date"] == date(2024, 4, 20)
     assert profile.filter(pl.col("player_id") == 10).get_column("raw_occurrence_count").sum() == 3
 
@@ -111,6 +134,8 @@ def test_snapshot_half_life_exposes_effective_evidence_without_changing_raw_coun
     player10 = summary.filter(pl.col("player_id") == 10).row(0, named=True)
     assert player10["raw_plate_appearances"] == 8
     assert 0 < player10["effective_plate_appearances"] < 8
+    assert 0 < player10["effective_expected_contacts"] < 2
+    assert 0 < player10["effective_observed_contacts"] < 2
     assert 0 < player10["effective_core_events"] < 7
     assert pytest.approx(
         profile.filter(pl.col("player_id") == 10).get_column("effective_occurrence_count").sum(),
@@ -131,6 +156,26 @@ def test_profile_mismatch_fails_loudly() -> None:
     )
     with pytest.raises(ValueError, match="do not reconcile"):
         validate_player_game_evidence(_summary(), bad_profile)
+
+
+def test_contact_residual_is_allowed_when_accounting_is_explicit() -> None:
+    summary = _summary().with_columns(
+        pl.when(pl.col("game_pk") == 2)
+        .then(pl.lit(3))
+        .otherwise(pl.col("observed_contact_count"))
+        .alias("observed_contact_count"),
+        pl.when(pl.col("game_pk") == 2)
+        .then(pl.lit(1))
+        .otherwise(pl.col("contact_count_residual"))
+        .alias("contact_count_residual"),
+        pl.when(pl.col("game_pk") == 2)
+        .then(pl.lit(1))
+        .otherwise(pl.col("unknown_contact_count"))
+        .alias("unknown_contact_count"),
+    )
+    report = validate_player_game_evidence(summary, _profile())
+    assert report["total_contact_count_residual"] == 1
+    assert report["nonzero_contact_residual_player_game_count"] == 1
 
 
 def test_invalid_window_parameters_fail() -> None:
