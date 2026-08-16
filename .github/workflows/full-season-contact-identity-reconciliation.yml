@@ -4,16 +4,15 @@ on:
   pull_request:
     paths:
       - ".github/workflows/full-season-contact-identity-reconciliation.yml"
-      - "scripts/audit_full_season_contact_identity_reconciliation.py"
-      - "src/universal_baseball/armstjc_assets.py"
-      - "src/universal_baseball/season_stats.py"
-      - "src/universal_baseball/certification.py"
+      - "scripts/audit_player_game_contact_localization.py"
+      - "src/universal_baseball/player_game_stats.py"
+      - "tests/test_player_game_stats.py"
 
 permissions:
   contents: read
 
 jobs:
-  reconcile-2024-aaa-contacts:
+  localize-2024-aaa-contacts:
     runs-on: ubuntu-latest
     timeout-minutes: 90
 
@@ -33,14 +32,14 @@ jobs:
       - name: Run unit tests
         run: python -m pytest
 
-      - name: Reconcile 2024 AAA contacts to season aggregates
-        run: python scripts/audit_full_season_contact_identity_reconciliation.py
+      - name: Localize 2024 AAA contact attribution with player-game boxscores
+        run: python scripts/audit_player_game_contact_localization.py
 
-      - name: Upload contact identity reconciliation
+      - name: Upload player-game localization report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: full-season-contact-identity-reconciliation
-          path: reports/generated/full-season-contact-identity-reconciliation/
+          name: player-game-contact-localization
+          path: reports/generated/player-game-contact-localization/
           if-no-files-found: warn
           retention-days: 14
