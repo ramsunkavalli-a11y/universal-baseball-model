@@ -22,6 +22,12 @@ CONTACT_KEY = ("game_pk", "at_bat_index", "pitch_number")
 PLAYER_GAME_KEY = ("game_id", "player_id")
 SOURCE_DEFAULT = "source_default"
 OFFICIAL_EXCEPTION_OVERLAY = "official_exception_overlay"
+OFFICIAL_CONTACT_AUTHORITY_SCHEMA: dict[str, pl.DataType] = {
+    "game_pk": pl.Int64,
+    "at_bat_index": pl.Int64,
+    "pitch_number": pl.Int64,
+    "official_batter_id": pl.Int64,
+}
 
 
 def _validate_unique(frame: pl.DataFrame, key: tuple[str, ...], label: str) -> None:
@@ -31,6 +37,73 @@ def _validate_unique(frame: pl.DataFrame, key: tuple[str, ...], label: str) -> N
     duplicates = frame.group_by(list(key)).len().filter(pl.col("len") > 1)
     if not duplicates.is_empty():
         raise ValueError(f"{label} contains duplicate keys at {key}")
+
+
+def project_official_contact_authority(
+    pa_frame: pl.DataFrame,
+    pitch_frame: pl.DataFrame,
+) -> pl.DataFrame:
+    """Project official PA/pitch evidence to physical-contact participant authority.
+
+    ``pa_frame`` and ``pitch_frame`` are the tolerant canonical projections
+    returned by ``official.fetch_official_game_evidence``. Only physical pitches
+    whose official ``is_in_play`` flag is true enter the authority table. Batter
+    identity always comes from the top-level PA/matchup row, never a mutable
+    offensive-substitution event.
+    """
+
+    pa_required = {"game_pk", "at_bat_number", "batter_id"}
+    pitch_required = {
+        "game_pk",
+        "at_bat_number",
+        "pitch_number",
+        "is_in_play",
+    }
+    missing_pa = sorted(pa_required - set(pa_frame.columns))
+    missing_pitch = sorted(pitch_required - set(pitch_frame.columns))
+    if missing_pa:
+        raise ValueError(f"official PA frame missing contact authority columns: {missing_pa}")
+    if missing_pitch:
+        raise ValueError(
+            f"official pitch frame missing contact authority columns: {missing_pitch}"
+        )
+    if pitch_frame.is_empty():
+        return pl.DataFrame(schema=OFFICIAL_CONTACT_AUTHORITY_SCHEMA)
+
+    pa = (
+        pa_frame.select(
+            pl.col("game_pk").cast(pl.Int64, strict=False),
+            pl.col("at_bat_number").cast(pl.Int64, strict=False).alias("at_bat_index"),
+            pl.col("batter_id").cast(pl.Int64, strict=False).alias("official_batter_id"),
+        )
+        .drop_nulls(["game_pk", "at_bat_index"])
+    )
+    duplicate_pa = (
+        pa.group_by(["game_pk", "at_bat_index"])
+        .agg(pl.col("official_batter_id").drop_nulls().n_unique().alias("batter_count"))
+        .filter(pl.col("batter_count") > 1)
+    )
+    if not duplicate_pa.is_empty():
+        raise ValueError("official PA evidence has conflicting matchup batter identity")
+    pa = pa.unique(subset=["game_pk", "at_bat_index"], keep="any")
+
+    contacts = (
+        pitch_frame.filter(pl.col("is_in_play") == True)  # noqa: E712
+        .select(
+            pl.col("game_pk").cast(pl.Int64, strict=False),
+            pl.col("at_bat_number").cast(pl.Int64, strict=False).alias("at_bat_index"),
+            pl.col("pitch_number").cast(pl.Int64, strict=False),
+        )
+        .drop_nulls(list(CONTACT_KEY))
+        .join(pa, on=["game_pk", "at_bat_index"], how="left")
+        .select(list(OFFICIAL_CONTACT_AUTHORITY_SCHEMA))
+        .cast(OFFICIAL_CONTACT_AUTHORITY_SCHEMA, strict=True)
+        .sort(list(CONTACT_KEY))
+    )
+    _validate_unique(contacts, CONTACT_KEY, "official contact authority")
+    if contacts.filter(pl.col("official_batter_id").is_null()).height:
+        raise ValueError("official physical contact lacks top-level matchup batter")
+    return contacts
 
 
 def contact_identity_residuals(
