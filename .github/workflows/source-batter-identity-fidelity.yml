@@ -1,14 +1,7 @@
 name: Reusable PBP batter identity fidelity audit
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/source-batter-identity-fidelity.yml"
-      - "scripts/audit_source_batter_identity_fidelity.py"
-      - "src/universal_baseball/armstjc_schema.py"
-      - "src/universal_baseball/sampling.py"
-      - "src/universal_baseball/event_types.py"
-      - "src/universal_baseball/official_capture.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
