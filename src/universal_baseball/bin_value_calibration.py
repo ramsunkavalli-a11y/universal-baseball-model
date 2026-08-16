@@ -24,6 +24,25 @@ DIRECT_BIN_VALUE_SCHEMA: dict[str, pl.DataType] = {
 }
 
 
+def _canonical_core_bin_expr(column: str = "core_bin") -> pl.Expr:
+    """Normalize legacy descriptive opposite-field bin labels.
+
+    Earlier audit mappers concatenated the descriptive direction string
+    ``opposite`` and therefore emitted ``OPPOSITE_GB/LD/OFFB``. The production
+    player-season schema froze the more compact ``OPPO_*`` vocabulary. This is
+    a one-to-one label normalization only; it does not alter event membership or
+    any previously certified shrinkage result.
+    """
+
+    value = pl.col(column).cast(pl.String)
+    return (
+        pl.when(value.str.starts_with("OPPOSITE_"))
+        .then(value.str.replace(r"^OPPOSITE_", "OPPO_"))
+        .otherwise(value)
+        .alias(column)
+    )
+
+
 def summarize_direct_bin_values(events: pl.DataFrame) -> pl.DataFrame:
     """Estimate direct league-season-bin contextual value means.
 
@@ -40,12 +59,16 @@ def summarize_direct_bin_values(events: pl.DataFrame) -> pl.DataFrame:
     if events.is_empty():
         return pl.DataFrame(schema=DIRECT_BIN_VALUE_SCHEMA)
 
-    working = events.select(
-        pl.col("season").cast(pl.Int64, strict=False),
-        pl.col("league_id").cast(pl.Int64, strict=False),
-        pl.col("core_bin").cast(pl.String),
-        pl.col("re24").cast(pl.Float64, strict=False),
-    ).drop_nulls(["season", "league_id", "core_bin"])
+    working = (
+        events.select(
+            pl.col("season").cast(pl.Int64, strict=False),
+            pl.col("league_id").cast(pl.Int64, strict=False),
+            pl.col("core_bin").cast(pl.String),
+            pl.col("re24").cast(pl.Float64, strict=False),
+        )
+        .with_columns(_canonical_core_bin_expr())
+        .drop_nulls(["season", "league_id", "core_bin"])
+    )
 
     invalid = working.filter(~pl.col("core_bin").is_in(list(ALL_CORE_BINS)))
     if not invalid.is_empty():
@@ -104,6 +127,7 @@ def bin_calibration_coverage(events: pl.DataFrame) -> pl.DataFrame:
             pl.col("core_bin").cast(pl.String),
             pl.col("re24").cast(pl.Float64, strict=False),
         )
+        .with_columns(_canonical_core_bin_expr())
         .drop_nulls(["season", "league_id", "core_bin"])
         .group_by(["season", "league_id", "core_bin"])
         .agg(
