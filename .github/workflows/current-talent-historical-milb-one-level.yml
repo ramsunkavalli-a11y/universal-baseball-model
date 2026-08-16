@@ -28,7 +28,6 @@ on:
       - source-certification-poc
     paths:
       - ".github/workflows/current-talent-historical-milb-one-level.yml"
-      - "scripts/diagnose_current_talent_2021_identity_collision.py"
 
 permissions:
   contents: read
@@ -67,12 +66,6 @@ jobs:
           tests/test_current_talent_season_reconciliation.py
           tests/test_official_mixed_codes.py
           tests/test_season_stat_assets.py
-
-      - name: Diagnose 2021 Rookie identity collision
-        if: ${{ env.TARGET_SEASON == '2021' && env.TARGET_LEVEL == 'rk' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/diagnose_current_talent_2021_identity_collision.py
 
       - name: Materialize historical Current Talent game evidence
         env:
