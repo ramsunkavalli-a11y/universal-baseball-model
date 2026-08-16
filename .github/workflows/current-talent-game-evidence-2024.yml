@@ -8,6 +8,8 @@ on:
     paths:
       - ".github/workflows/current-talent-game-evidence-2024.yml"
       - "scripts/materialize_current_talent_game_evidence_2024.py"
+      - "src/universal_baseball/armstjc_assets.py"
+      - "src/universal_baseball/player_game_stats.py"
       - "src/universal_baseball/current_talent_evidence.py"
       - "src/universal_baseball/current_talent_milb_evidence.py"
       - "src/universal_baseball/current_talent_mlb_evidence.py"
@@ -27,6 +29,10 @@ jobs:
   materialize:
     runs-on: ubuntu-latest
     timeout-minutes: 55
+    env:
+      # Public armstjc release inventory is read through GitHub REST. Auth keeps
+      # the live POC independent of the low unauthenticated per-IP rate limit.
+      GITHUB_TOKEN: ${{ github.token }}
 
     steps:
       - name: Check out repository
