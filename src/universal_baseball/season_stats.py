@@ -66,6 +66,9 @@ PITCHING_COLUMN_MAP: dict[str, str] = {
     "pitching_IBB": "pitching_intentional_walks",
     "pitching_HBP": "pitching_hit_batsmen",
     "pitching_SO": "pitching_strike_outs",
+    # Current audited releases do not expose this source column, but keeping the
+    # expected alias makes the limitation explicit and future-proofs the adapter.
+    "pitching_SH": "pitching_sac_bunts",
     "pitching_SF": "pitching_sac_flies",
     "pitching_CI": "pitching_catchers_interference",
     "pitching_balls_in_play": "pitching_balls_in_play",
