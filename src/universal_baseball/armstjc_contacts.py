@@ -189,32 +189,33 @@ def resolve_armstjc_contact_observations(
     if observations.is_empty():
         return pl.DataFrame(schema=RESOLVED_CONTACT_SCHEMA)
 
-    raw_rows = observations.height
+    # Exact duplicates do not create baseball variants, but retain their raw
+    # multiplicity without an O(keys × rows) scan.  This matters at full-season
+    # scale where some upstream files duplicate every game.
+    raw_counts = {
+        (int(row["game_pk"]), int(row["at_bat_index"]), int(row["pitch_number"])): int(row["raw_source_row_count"])
+        for row in observations.group_by(list(CONTACT_NATURAL_KEY))
+        .len(name="raw_source_row_count")
+        .to_dicts()
+    }
     exact = observations.unique(maintain_order=True)
     rows: list[dict[str, Any]] = []
 
     for key_values, group in exact.group_by(list(CONTACT_NATURAL_KEY), maintain_order=False):
         game_pk, at_bat_index, pitch_number = key_values
+        key = (int(game_pk), int(at_bat_index), int(pitch_number))
         conflicts: list[str] = []
         row: dict[str, Any] = {
-            "game_pk": int(game_pk),
-            "at_bat_index": int(at_bat_index),
-            "pitch_number": int(pitch_number),
+            "game_pk": key[0],
+            "at_bat_index": key[1],
+            "pitch_number": key[2],
             "source_snapshot_count": int(group.get_column("source_asset").n_unique()),
             "source_assets_json": json.dumps(
                 sorted(str(v) for v in group.get_column("source_asset").unique().to_list()),
                 separators=(",", ":"),
             ),
             "observation_variant_count": int(group.height),
-            # exact rows are already collapsed; recover multiplicity by matching
-            # this physical key in the original observation frame.
-            "raw_source_row_count": int(
-                observations.filter(
-                    (pl.col("game_pk") == int(game_pk))
-                    & (pl.col("at_bat_index") == int(at_bat_index))
-                    & (pl.col("pitch_number") == int(pitch_number))
-                ).height
-            ),
+            "raw_source_row_count": raw_counts[key],
             "resolution_policy": CONTACT_RESOLUTION_POLICY,
         }
         for field in CONTACT_RESOLVABLE_FIELDS:
@@ -226,9 +227,8 @@ def resolve_armstjc_contact_observations(
         row["conflict_fields_json"] = json.dumps(conflicts, separators=(",", ":"))
         rows.append(row)
 
-    result = (
-        pl.DataFrame(rows, schema=RESOLVED_CONTACT_SCHEMA)
-        .sort(list(CONTACT_NATURAL_KEY))
+    result = pl.DataFrame(rows, schema=RESOLVED_CONTACT_SCHEMA).sort(
+        list(CONTACT_NATURAL_KEY)
     )
     if contacts_only:
         result = result.filter(pl.col("source_is_in_play") == True)  # noqa: E712
@@ -237,35 +237,44 @@ def resolve_armstjc_contact_observations(
 
 def contact_resolution_metrics(
     observations: pl.DataFrame,
-    resolved_contacts: pl.DataFrame,
+    resolved: pl.DataFrame,
 ) -> dict[str, int]:
-    """Return compact quality metrics for source-contact materialization."""
+    """Return compact quality metrics for resolved contact evidence.
+
+    Pass the full resolved pitch-key view (``contacts_only=False``) when contact
+    status conflicts themselves must be counted. Passing a contacts-only view
+    still reports profile/batter conflicts among accepted contact rows.
+    """
 
     if observations.is_empty():
         return {
             "raw_observation_count": 0,
+            "resolved_pitch_key_count": 0,
             "resolved_contact_count": 0,
-            "contact_conflict_count": 0,
-            "batter_conflict_count": 0,
+            "contact_status_conflict_key_count": 0,
+            "contact_batter_conflict_count": 0,
             "profile_field_conflict_contact_count": 0,
         }
-    if resolved_contacts.is_empty():
+    if resolved.is_empty():
         return {
             "raw_observation_count": observations.height,
+            "resolved_pitch_key_count": 0,
             "resolved_contact_count": 0,
-            "contact_conflict_count": 0,
-            "batter_conflict_count": 0,
+            "contact_status_conflict_key_count": 0,
+            "contact_batter_conflict_count": 0,
             "profile_field_conflict_contact_count": 0,
         }
 
-    conflicts = resolved_contacts.filter(pl.col("conflict_field_count") > 0)
+    contacts = resolved.filter(pl.col("source_is_in_play") == True)  # noqa: E712
+    conflicts = contacts.filter(pl.col("conflict_field_count") > 0)
     return {
         "raw_observation_count": observations.height,
-        "resolved_contact_count": resolved_contacts.height,
-        "contact_conflict_count": resolved_contacts.filter(
+        "resolved_pitch_key_count": resolved.height,
+        "resolved_contact_count": contacts.height,
+        "contact_status_conflict_key_count": resolved.filter(
             pl.col("conflict_fields_json").str.contains('"source_is_in_play"')
         ).height,
-        "batter_conflict_count": resolved_contacts.filter(
+        "contact_batter_conflict_count": contacts.filter(
             pl.col("conflict_fields_json").str.contains('"source_batter_id"')
         ).height,
         "profile_field_conflict_contact_count": conflicts.filter(
