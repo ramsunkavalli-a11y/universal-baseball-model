@@ -41,6 +41,7 @@ SAVANT_PERFORMANCE_SCHEMA: dict[str, pl.DataType] = {
     "game_date": pl.String,
     "game_year": pl.Int64,
     "game_pk": pl.Int64,
+    "source_at_bat_number": pl.Int64,
     "at_bat_index": pl.Int64,
     "pitch_number": pl.Int64,
     "game_type": pl.String,
@@ -157,7 +158,13 @@ def project_savant_performance_rows(
     *,
     regular_season_only: bool = True,
 ) -> pl.DataFrame:
-    """Project Savant pitches to the MLB Performance evidence surface."""
+    """Project Savant pitches to the MLB Performance evidence surface.
+
+    Savant's public ``at_bat_number`` is one-based for the same play sequence
+    whose MLB Stats API ``atBatIndex`` is zero-based. Preserve the raw number and
+    normalize the canonical ``at_bat_index`` by subtracting one. This mapping is
+    source semantics, not an inferred row-order correction.
+    """
 
     required = {
         "game_date",
@@ -193,11 +200,23 @@ def project_savant_performance_rows(
         | _nonblank("hc_x")
         | _nonblank("hc_y")
     )
+    source_at_bat = pl.col("at_bat_number").cast(pl.Float64, strict=False)
+    canonical_at_bat = (
+        pl.when(
+            source_at_bat.is_not_null()
+            & (source_at_bat == source_at_bat.floor())
+            & (source_at_bat >= 1)
+        )
+        .then(source_at_bat.cast(pl.Int64) - 1)
+        .otherwise(None)
+        .alias("at_bat_index")
+    )
     projected = raw.select(
         pl.col("game_date").cast(pl.String),
         _integer_like("game_year"),
         _integer_like("game_pk"),
-        _integer_like("at_bat_number", "at_bat_index"),
+        _integer_like("at_bat_number", "source_at_bat_number"),
+        canonical_at_bat,
         _integer_like("pitch_number"),
         pl.col("game_type").cast(pl.String),
         _integer_like("batter", "batter_mlbam_id"),
