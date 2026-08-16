@@ -35,7 +35,11 @@ jobs:
         run: python -m pytest
 
       - name: Reconcile season aggregates
-        run: python scripts/audit_season_stat_official_reconciliation.py
+        shell: bash
+        run: |
+          mkdir -p reports/generated/season-stat-official-reconciliation
+          set -o pipefail
+          python scripts/audit_season_stat_official_reconciliation.py 2>&1 | tee reports/generated/season-stat-official-reconciliation/console.log
 
       - name: Upload reconciliation report
         if: always()
