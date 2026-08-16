@@ -6,6 +6,10 @@ compared with the separately published season-player batting release after that
 release is standardized by ``standardize_armstjc_season_stats``. Team rows are
 aggregated within actual league so trades do not create false mismatches.
 
+Only positive-PA regular-season batting rows participate. Player-game releases
+also contain roster/defensive rows with no batting opportunity and null batting
+components; those rows are outside the Current Talent batting evidence contract.
+
 No mismatch is repaired here. Differences remain explicit diagnostic evidence
 for source-coverage or semantic investigation before a season enters model
 training.
@@ -35,14 +39,7 @@ def reconcile_resolved_outcomes_to_season_aggregates(
     expected_league_ids: frozenset[int] | None = None,
     require_exact: bool = False,
 ) -> tuple[pl.DataFrame, dict[str, Any]]:
-    """Compare historical game outcomes with the independent season backbone.
-
-    ``season_aggregates`` must already be standardized by
-    ``standardize_armstjc_season_stats(..., "batting")``. ``require_exact=False``
-    is the default because a newly audited historical season should persist
-    discrepancy evidence before an acceptance decision is made. Callers may
-    promote exactness later if empirical history supports it.
-    """
+    """Compare historical positive-PA game outcomes with the season backbone."""
 
     game_required = {"game_date", "game_type", "league_id", "player_id", "outcome_resolution"}
     game_required.update(game_field for game_field, _, _ in OUTCOME_FIELD_MAP)
@@ -60,6 +57,8 @@ def reconcile_resolved_outcomes_to_season_aggregates(
         (pl.col("game_type") == "R")
         & pl.col("game_date").is_not_null()
         & (pl.col("game_date").dt.year() == year)
+        & pl.col("batting_PA").is_not_null()
+        & (pl.col("batting_PA") > 0)
     )
     unresolved = games.filter(
         pl.col("outcome_resolution").str.starts_with("unresolved")
@@ -69,10 +68,14 @@ def reconcile_resolved_outcomes_to_season_aggregates(
     )
     if not unresolved.is_empty():
         raise ValueError(
-            "resolved outcomes contain unresolved/null fields required for season reconciliation"
+            "positive-PA resolved outcomes contain unresolved/null fields required for season reconciliation"
         )
 
-    aggregate = season_aggregates.filter(pl.col("season").cast(pl.Int64, strict=False) == year)
+    aggregate = season_aggregates.filter(
+        (pl.col("season").cast(pl.Int64, strict=False) == year)
+        & pl.col("batting_plate_appearances").cast(pl.Int64, strict=False).is_not_null()
+        & (pl.col("batting_plate_appearances").cast(pl.Int64, strict=False) > 0)
+    )
     if expected_league_ids is not None:
         expected = sorted(int(value) for value in expected_league_ids)
         games = games.filter(pl.col("league_id").is_in(expected))
@@ -177,7 +180,7 @@ def reconcile_resolved_outcomes_to_season_aggregates(
         "mismatch_player_league_count": int(mismatch.height),
         "exact_reconciliation": bool(exact),
         "fields": field_metrics,
-        "reconciliation_grain": "season_league_player_across_teams",
+        "reconciliation_grain": "positive_pa_regular_season_league_player_across_teams",
         "repair_policy": "diagnostic_only_no_synthetic_repair",
     }
     if require_exact and not exact:
