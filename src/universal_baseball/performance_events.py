@@ -1,15 +1,15 @@
 """Minimum universal Performance event classification.
 
-This module implements the first PA-level bridge between the accepted canonical
+This module implements the PA-level bridge between the accepted canonical
 source contracts and the FaBIO-compatible Performance/Profile design in ADR 008.
 It is deliberately descriptive: no run values, shrinkage, or projection logic
 belongs here.
 
-The top-level Performance accounting is exhaustive for official true plate
-appearances. The 12-bin FaBIO-style view is a narrower core classification.
-Airborne foul screening is intentionally *not* applied yet; the emitted core bin
-is therefore a pre-foul-screen candidate suitable for coverage auditing and
-later sensitivity analysis.
+Top-level Performance accounting remains exhaustive for official true plate
+appearances. The 12-bin FaBIO-style skill view is narrower. Airborne foul outs
+are screened only from a certified official narrative signal: the exact phrase
+``foul territory`` in the structured play-sequence result description. Spray
+geometry and broad uses of the word ``foul`` are never used as fair/foul rules.
 """
 
 from __future__ import annotations
@@ -46,6 +46,11 @@ TRAJECTORY_FAMILY = {
     "bunt_popup": "BUNT",
     "bunt_line_drive": "BUNT",
 }
+FOUL_AIR_TRAJECTORY_FAMILIES = frozenset({"IFFB", "OFFB", "LD"})
+# Certified across representative 2005 AAA, 2015 AAA, 2024 Rookie/complex,
+# and 2025 AAA source vocabulary plus deterministic official reconciliation.
+# Deliberately narrower than a generic ``foul`` search.
+FOUL_TERRITORY_REGEX = r"(?i)\bfoul\s+territory\b"
 
 PERFORMANCE_EVENT_SCHEMA: dict[str, pl.DataType] = {
     "game_pk": pl.Int64,
@@ -53,6 +58,7 @@ PERFORMANCE_EVENT_SCHEMA: dict[str, pl.DataType] = {
     "batter_mlbam_id": pl.Int64,
     "pitcher_mlbam_id": pl.Int64,
     "official_event_type": pl.String,
+    "official_result_description": pl.String,
     "performance_family": pl.String,
     "is_bip_expected": pl.Boolean,
     "in_play_pitch_count": pl.Int64,
@@ -65,6 +71,10 @@ PERFORMANCE_EVENT_SCHEMA: dict[str, pl.DataType] = {
     "direction": pl.String,
     "fabio_core_bin_pre_foul_screen": pl.String,
     "core_profile_eligible_pre_foul_screen": pl.Boolean,
+    "foul_air_status": pl.String,
+    "is_foul_air_out": pl.Boolean,
+    "fabio_core_bin": pl.String,
+    "core_profile_eligible": pl.Boolean,
     "evidence_status": pl.String,
 }
 
@@ -89,14 +99,16 @@ def build_performance_events(
     """Classify official true PAs using official outcomes + reusable BIP evidence.
 
     Required authority split:
-    - PA existence, outcome, batter identity and batting side come from the
-      official structured play-sequence layer;
+    - PA existence, outcome, result narrative, batter identity and batting side
+      come from the official structured play-sequence layer;
     - physical in-play pitch, trajectory and coordinates come from the resolved
       reusable pitch evidence;
     - source disagreements remain null/conflicted upstream and therefore reduce
       classification coverage here rather than being imputed.
 
-    The function returns exactly one row per official true PA.
+    The function returns exactly one exhaustive row per official true PA. The
+    screened ``fabio_core_bin`` is populated only where the 12-bin skill-view
+    evidence is complete, including certified foul-air eligibility.
     """
 
     required_sequences = {
@@ -104,6 +116,7 @@ def build_performance_events(
         "at_bat_index",
         "classification_status",
         "result_event_type",
+        "result_description",
         "batter_mlbam_id",
         "pitcher_mlbam_id",
         "batter_side",
@@ -188,6 +201,7 @@ def build_performance_events(
                 "pitcher_mlbam_id",
                 "batter_side",
                 pl.col("result_event_type").alias("official_event_type"),
+                pl.col("result_description").alias("official_result_description"),
             ]
         )
         .join(bip, on=["game_pk", "at_bat_index"], how="left")
@@ -269,17 +283,65 @@ def build_performance_events(
         .otherwise(pl.lit(None, dtype=pl.String))
     )
 
+    candidate_foul_air = clean_bip & trajectory.is_in(
+        sorted(FOUL_AIR_TRAJECTORY_FAMILIES)
+    )
+    narrative_present = (
+        pl.col("official_result_description").is_not_null()
+        & (pl.col("official_result_description").str.strip_chars().str.len_chars() > 0)
+    )
+    explicit_foul_territory = (
+        candidate_foul_air
+        & narrative_present
+        & pl.col("official_result_description").str.contains(FOUL_TERRITORY_REGEX)
+    )
+
+    foul_air_status = (
+        pl.when(~clean_bip)
+        .then(pl.lit("not_evaluable_unclean_or_non_bip"))
+        .when(~trajectory.is_in(sorted(FOUL_AIR_TRAJECTORY_FAMILIES)))
+        .then(pl.lit("not_foul_air_trajectory"))
+        .when(~narrative_present)
+        .then(pl.lit("unknown_missing_official_description"))
+        .when(explicit_foul_territory)
+        .then(pl.lit("foul_air_official_foul_territory"))
+        .otherwise(pl.lit("not_foul_air_official_description"))
+    )
+    is_foul_air_out = (
+        pl.when(~clean_bip)
+        .then(pl.lit(False))
+        .when(~trajectory.is_in(sorted(FOUL_AIR_TRAJECTORY_FAMILIES)))
+        .then(pl.lit(False))
+        .when(~narrative_present)
+        .then(pl.lit(None, dtype=pl.Boolean))
+        .otherwise(explicit_foul_territory)
+    )
+
     result = (
         working.with_columns(
             performance_family.alias("performance_family"),
             is_bip_expected.alias("is_bip_expected"),
             evidence_status.alias("evidence_status"),
             core_bin.alias("fabio_core_bin_pre_foul_screen"),
+            foul_air_status.alias("foul_air_status"),
+            is_foul_air_out.alias("is_foul_air_out"),
         )
         .with_columns(
             pl.col("fabio_core_bin_pre_foul_screen")
             .is_not_null()
             .alias("core_profile_eligible_pre_foul_screen")
+        )
+        .with_columns(
+            pl.when(
+                pl.col("fabio_core_bin_pre_foul_screen").is_not_null()
+                & (pl.col("is_foul_air_out") == False)  # noqa: E712
+            )
+            .then(pl.col("fabio_core_bin_pre_foul_screen"))
+            .otherwise(pl.lit(None, dtype=pl.String))
+            .alias("fabio_core_bin")
+        )
+        .with_columns(
+            pl.col("fabio_core_bin").is_not_null().alias("core_profile_eligible")
         )
         .select(list(PERFORMANCE_EVENT_SCHEMA))
         .cast(PERFORMANCE_EVENT_SCHEMA, strict=True)
