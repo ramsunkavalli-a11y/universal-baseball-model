@@ -2,12 +2,6 @@ name: Current Talent 2022 official residual oracle
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-2022-official-residual-oracle.yml"
-      - "scripts/diagnose_current_talent_2022_official_residual_oracle.py"
 
 permissions:
   contents: read
