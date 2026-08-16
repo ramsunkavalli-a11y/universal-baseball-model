@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
+import os
 import re
 from typing import Any, Iterable
 
@@ -37,6 +38,16 @@ def _parse_utc(value: str) -> datetime:
     if parsed.tzinfo is None or parsed.utcoffset() is None:
         raise ValueError(f"GitHub timestamp is not timezone-aware: {value!r}")
     return parsed.astimezone(UTC)
+
+
+def _apply_optional_github_auth(client: requests.Session) -> None:
+    """Authenticate public GitHub inventory calls when a token is available."""
+
+    if "Authorization" in client.headers:
+        return
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if token:
+        client.headers["Authorization"] = f"Bearer {token}"
 
 
 def parse_pbp_asset_name(name: str) -> tuple[int, int, str] | None:
@@ -130,6 +141,7 @@ def fetch_pbp_asset_inventory(
     client.headers.setdefault(
         "User-Agent", "universal-baseball-model-source-inventory/0.1"
     )
+    _apply_optional_github_auth(client)
     try:
         release_response = client.get(
             f"https://api.github.com/repos/{owner}/{repo}/releases/tags/{release_tag}",
