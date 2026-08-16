@@ -15,13 +15,16 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 from typing import Any
 
 import polars as pl
+import requests
 
 import build_batting_performance_level_poc as milb_performance
 import build_mlb_batting_performance_2024 as mlb_performance
+from universal_baseball.armstjc_assets import fetch_pbp_asset_inventory
 from universal_baseball.certification import download_file, read_quarantined_csv
 from universal_baseball.current_talent_milb_evidence import (
     build_milb_current_talent_player_game_evidence,
@@ -65,6 +68,22 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def _source_inventory_session() -> requests.Session:
+    """Return one reusable GitHub session for public armstjc release inventory.
+
+    GitHub Actions supplies ``GITHUB_TOKEN`` explicitly in the live POC workflow
+    so public release enumeration does not depend on the low unauthenticated
+    per-IP REST quota. Local runs remain valid without credentials.
+    """
+
+    session = requests.Session()
+    session.headers["User-Agent"] = "universal-baseball-model-current-talent-poc/0.1"
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if token:
+        session.headers["Authorization"] = f"Bearer {token}"
+    return session
+
+
 def _find_unique(root: Path, filename: str) -> Path:
     matches = sorted(path for path in root.rglob(filename) if path.is_file())
     if len(matches) != 1:
@@ -92,12 +111,13 @@ def _load_aaa_current_outcomes(
     *,
     work_dir: Path,
     league_ids: frozenset[int],
+    github_session: requests.Session,
 ) -> tuple[pl.DataFrame, dict[str, Any]]:
     raw_dir = work_dir / "player-game"
     raw_dir.mkdir(parents=True, exist_ok=True)
     assets = [
         asset
-        for asset in fetch_player_game_asset_inventory()
+        for asset in fetch_player_game_asset_inventory(session=github_session)
         if asset.year == SEASON and asset.filename_level == AAA_LEVEL
     ]
     if not assets:
@@ -189,23 +209,47 @@ def _build_aaa(
     work_dir = work_root / "aaa"
     work_dir.mkdir(parents=True, exist_ok=True)
 
-    contacts, contact_metrics = milb_performance._load_reusable_contacts(
-        AAA_LEVEL, spec.league_ids, work_dir
-    )
-    contact_controls, control_metrics = milb_performance._load_player_game_controls(
-        AAA_LEVEL, spec.league_ids, work_dir
-    )
-    authorized, authority_metrics, _ = milb_performance._participant_authority_and_false_negative_gate(
-        contacts,
-        contact_controls,
-        unflagged_sample_games=0,
-    )
-    classified = milb_performance._classify_contacts(authorized)
+    github_session = _source_inventory_session()
+    original_pbp_inventory = milb_performance.fetch_pbp_asset_inventory
+    original_player_game_inventory = milb_performance.fetch_player_game_asset_inventory
 
-    resolved_outcomes, outcome_metrics = _load_aaa_current_outcomes(
-        work_dir=work_dir,
-        league_ids=spec.league_ids,
-    )
+    def authenticated_pbp_inventory():
+        return fetch_pbp_asset_inventory(session=github_session)
+
+    def authenticated_player_game_inventory():
+        return fetch_player_game_asset_inventory(session=github_session)
+
+    # The frozen Performance helper functions import the inventory callables at
+    # module scope. Scope the authenticated versions to this live POC only rather
+    # than changing source-layer semantics globally.
+    milb_performance.fetch_pbp_asset_inventory = authenticated_pbp_inventory
+    milb_performance.fetch_player_game_asset_inventory = authenticated_player_game_inventory
+    try:
+        contacts, contact_metrics = milb_performance._load_reusable_contacts(
+            AAA_LEVEL, spec.league_ids, work_dir
+        )
+        contact_controls, control_metrics = milb_performance._load_player_game_controls(
+            AAA_LEVEL, spec.league_ids, work_dir
+        )
+        authorized, authority_metrics, _ = (
+            milb_performance._participant_authority_and_false_negative_gate(
+                contacts,
+                contact_controls,
+                unflagged_sample_games=0,
+            )
+        )
+        classified = milb_performance._classify_contacts(authorized)
+
+        resolved_outcomes, outcome_metrics = _load_aaa_current_outcomes(
+            work_dir=work_dir,
+            league_ids=spec.league_ids,
+            github_session=github_session,
+        )
+    finally:
+        milb_performance.fetch_pbp_asset_inventory = original_pbp_inventory
+        milb_performance.fetch_player_game_asset_inventory = original_player_game_inventory
+        github_session.close()
+
     summary, profile, evidence_metrics = build_milb_current_talent_player_game_evidence(
         resolved_outcomes,
         classified,
