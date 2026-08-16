@@ -1,14 +1,7 @@
 name: All-level season profile aggregate reuse audit
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/all-level-season-profile-reuse.yml"
-      - "scripts/audit_all_level_season_profile_reuse.py"
-      - "scripts/audit_season_stat_official_reconciliation.py"
-      - "src/universal_baseball/season_stats.py"
-      - "src/universal_baseball/certification.py"
-      - "src/universal_baseball/official_capture.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
