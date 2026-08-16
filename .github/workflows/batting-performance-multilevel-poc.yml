@@ -1,19 +1,22 @@
-name: Batting Performance multilevel POC
+name: Universal 2024 batting Performance artifact join
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - scripts/materialize_universal_batting_performance.py
+      - src/universal_baseball/universal_performance.py
+      - .github/workflows/batting-performance-multilevel-poc.yml
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
-  build-level:
-    strategy:
-      fail-fast: false
-      matrix:
-        level: ["aaa", "aa", "a+", "a", "rk"]
+  combine-certified-artifacts:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 20
 
     steps:
       - name: Check out repository
@@ -31,49 +34,34 @@ jobs:
       - name: Run unit tests
         run: python -m pytest
 
-      - name: Build completed-level batting Performance POC
-        run: python scripts/build_batting_performance_level_poc_v2.py --level '${{ matrix.level }}'
-
-      - name: Upload level artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: batting-performance-${{ matrix.level }}-2024
-          path: reports/generated/batting-performance-multilevel-poc/
-          if-no-files-found: error
-          retention-days: 14
-
-  materialize-affiliated:
-    needs: build-level
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v7
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - name: Install project
-        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
-
-      - name: Download level artifacts
+      - name: Download certified affiliated Performance artifact
         uses: actions/download-artifact@v7
         with:
-          pattern: batting-performance-*-2024
-          path: level-artifacts
-          merge-multiple: true
+          name: affiliated-batting-performance-2024
+          path: certified-inputs/affiliated
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31948208695
+          github-token: ${{ github.token }}
 
-      - name: Materialize affiliated 2024 batting Performance
-        run: python scripts/materialize_affiliated_batting_performance.py --input-root level-artifacts
+      - name: Download certified MLB Performance artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: mlb-batting-performance-2024
+          path: certified-inputs/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31955217794
+          github-token: ${{ github.token }}
 
-      - name: Upload affiliated Performance dataset
+      - name: Materialize universal 2024 batting Performance
+        run: >-
+          python scripts/materialize_universal_batting_performance.py
+          --affiliated-root certified-inputs/affiliated
+          --mlb-root certified-inputs/mlb
+
+      - name: Upload universal Performance dataset
         uses: actions/upload-artifact@v7
         with:
-          name: affiliated-batting-performance-2024
-          path: reports/generated/affiliated-batting-performance-2024/
+          name: universal-batting-performance-2024
+          path: reports/generated/universal-batting-performance-2024/
           if-no-files-found: error
           retention-days: 14
