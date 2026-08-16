@@ -1,17 +1,7 @@
 name: MLB Savant Performance source audit
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/mlb-savant-performance-source.yml"
-      - "scripts/audit_mlb_savant_performance_source.py"
-      - "src/universal_baseball/savant.py"
-      - "tests/test_savant.py"
-      - "src/universal_baseball/official.py"
-      - "src/universal_baseball/contact_identity_overlay.py"
-      - "src/universal_baseball/performance_events.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
