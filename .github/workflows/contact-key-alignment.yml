@@ -1,4 +1,4 @@
-name: Contact key alignment audit
+name: Contact sequence authority audit
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - ".github/workflows/contact-key-alignment.yml"
-      - "scripts/audit_contact_key_alignment.py"
+      - "scripts/audit_contact_sequence_authority.py"
       - "scripts/build_batting_performance_level_poc.py"
       - "src/universal_baseball/player_game_controls.py"
       - "src/universal_baseball/contact_identity_overlay.py"
@@ -41,14 +41,14 @@ jobs:
       - name: Run unit tests
         run: python -m pytest
 
-      - name: Audit contact key alignment
-        run: python scripts/audit_contact_key_alignment.py --level '${{ matrix.level }}'
+      - name: Audit play-sequence participant authority
+        run: python scripts/audit_contact_sequence_authority.py --level '${{ matrix.level }}'
 
-      - name: Upload alignment artifact
+      - name: Upload authority artifact
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: contact-key-alignment-${{ matrix.level }}
-          path: reports/generated/contact-key-alignment/
+          name: contact-sequence-authority-${{ matrix.level }}
+          path: reports/generated/contact-sequence-authority/
           if-no-files-found: warn
           retention-days: 14
