@@ -1,7 +1,24 @@
 name: Batting Performance multilevel POC
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/batting-performance-multilevel-poc.yml"
+      - "scripts/build_batting_performance_level_poc.py"
+      - "scripts/build_batting_performance_level_poc_v2.py"
+      - "scripts/materialize_affiliated_batting_performance.py"
+      - "src/universal_baseball/contact_identity_overlay.py"
+      - "src/universal_baseball/player_game_controls.py"
+      - "src/universal_baseball/armstjc_contacts.py"
+      - "src/universal_baseball/performance_level_config.py"
+      - "src/universal_baseball/contact_profile.py"
+      - "src/universal_baseball/performance_season.py"
+      - "src/universal_baseball/performance_materialization.py"
+      - "src/universal_baseball/bin_value_calibration.py"
+      - "src/universal_baseball/bin_value_policy.py"
+      - "tests/test_performance_materialization.py"
 
 permissions:
   contents: read
@@ -35,10 +52,45 @@ jobs:
         run: python scripts/build_batting_performance_level_poc_v2.py --level '${{ matrix.level }}'
 
       - name: Upload level artifact
-        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: batting-performance-${{ matrix.level }}-2024
           path: reports/generated/batting-performance-multilevel-poc/
-          if-no-files-found: warn
+          if-no-files-found: error
+          retention-days: 14
+
+  materialize-affiliated:
+    needs: build-level
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Download level artifacts
+        uses: actions/download-artifact@v7
+        with:
+          pattern: batting-performance-*-2024
+          path: level-artifacts
+          merge-multiple: true
+
+      - name: Materialize affiliated 2024 batting Performance
+        run: python scripts/materialize_affiliated_batting_performance.py --input-root level-artifacts
+
+      - name: Upload affiliated Performance dataset
+        uses: actions/upload-artifact@v7
+        with:
+          name: affiliated-batting-performance-2024
+          path: reports/generated/affiliated-batting-performance-2024/
+          if-no-files-found: error
           retention-days: 14
