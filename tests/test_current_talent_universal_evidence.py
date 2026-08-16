@@ -16,11 +16,23 @@ def _summary(league_id: int, level: str, game_pk: int, player_id: int) -> pl.Dat
             "player_id": [player_id],
             "level_group": [level],
             "batting_plate_appearances": [4],
+            "expected_contact_count": [2],
+            "observed_contact_count": [2],
+            "contact_count_residual": [0],
             "core_profile_event_count": [3],
-            "non_core_event_count": [1],
-            "unknown_event_count": [0],
-            "participant_authority_status": ["source_default" if level != "MLB" else "savant_official"],
-            "source_capability_tier": ["result_profile" if level != "MLB" else "mlb_savant_result_contact_profile_v1"],
+            "bunt_contact_count": [0],
+            "foul_air_excluded_count": [0],
+            "unknown_contact_count": [1],
+            "special_noncontact_count": [0],
+            "pa_accounting_residual": [0],
+            "participant_authority_status": [
+                "source_default" if level != "MLB" else "savant_official"
+            ],
+            "source_capability_tier": [
+                "universal_result_contact_profile_v2"
+                if level != "MLB"
+                else "mlb_savant_result_contact_profile_v2"
+            ],
         }
     )
 
@@ -50,6 +62,9 @@ def test_universal_evidence_combines_mlb_and_milb_without_translation() -> None:
     assert profile.height == 4
     assert metrics["actual_league_count"] == 2
     assert metrics["level_groups"] == ["AAA", "MLB"]
+    assert metrics["total_expected_contacts"] == 4
+    assert metrics["total_observed_contacts"] == 4
+    assert metrics["total_unknown_contacts"] == 2
     assert set(summary.get_column("league_id").to_list()) == {117, 103}
 
 
