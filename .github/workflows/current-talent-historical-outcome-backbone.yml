@@ -2,16 +2,6 @@ name: Current Talent historical outcome backbone
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-historical-outcome-backbone.yml"
-      - "scripts/audit_current_talent_historical_outcome_backbone.py"
-      - "src/universal_baseball/current_talent_season_reconciliation.py"
-      - "src/universal_baseball/season_stat_assets.py"
-      - "tests/test_current_talent_season_reconciliation.py"
-      - "tests/test_season_stat_assets.py"
 
 permissions:
   contents: read
