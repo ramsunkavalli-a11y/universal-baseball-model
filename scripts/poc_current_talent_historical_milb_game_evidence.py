@@ -5,6 +5,11 @@ This gate samples an earlier post-reorganization season before any full history
 backfill. It reuses the certified physical-contact, player-game, participant-
 authority, and profile taxonomy layers without importing 2024 run values or
 season-end Performance tables into historical predictors.
+
+Some older PBP schemas omit ``league_id``.  The POC may enrich that field only
+from a unique structured ``game_id -> league_id`` map derived from the same
+season's player-game source.  Filename level is never substituted for actual
+league identity.
 """
 
 from __future__ import annotations
@@ -40,6 +45,8 @@ from universal_baseball.current_talent_milb_evidence import (
 )
 from universal_baseball.current_talent_milb_source import (
     classify_milb_current_talent_contacts,
+    derive_player_game_league_map,
+    enrich_historical_pbp_league_id,
     validate_expected_actual_leagues,
 )
 from universal_baseball.official import fetch_official_game_evidence
@@ -76,7 +83,7 @@ def parse_args() -> argparse.Namespace:
 
 def _github_session() -> requests.Session:
     session = requests.Session()
-    session.headers["User-Agent"] = "universal-baseball-model-historical-milb-poc/0.1"
+    session.headers["User-Agent"] = "universal-baseball-model-historical-milb-poc/0.2"
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     if token:
         session.headers["Authorization"] = f"Bearer {token}"
@@ -120,11 +127,57 @@ def _sample_games(
     return sorted(set(selected)), by_league
 
 
+def _player_game_assets(
+    *,
+    season: int,
+    level: str,
+    session: requests.Session,
+) -> list[Any]:
+    assets = [
+        asset
+        for asset in fetch_player_game_asset_inventory(session=session)
+        if asset.year == season and asset.filename_level == level
+    ]
+    if not assets:
+        raise RuntimeError(f"no reusable {season} {level} player-game assets found")
+    return assets
+
+
+def _load_game_league_map(
+    *,
+    assets: list[Any],
+    work_dir: Path,
+) -> tuple[pl.DataFrame, dict[str, Any]]:
+    raw_dir = work_dir / "player-game"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    frames: list[pl.DataFrame] = []
+    for asset in assets:
+        path = raw_dir / asset.name
+        if not path.exists() or path.stat().st_size <= 0:
+            download_file(asset.browser_download_url, path, timeout_seconds=240)
+        raw = read_quarantined_csv(path)
+        required = {"game_id", "league_id", "game_type"}
+        missing = sorted(required - set(raw.columns))
+        if missing:
+            raise RuntimeError(f"{asset.name} missing game-league-map fields: {missing}")
+        frames.append(raw.select("game_id", "league_id", "game_type"))
+    mapping, metrics = derive_player_game_league_map(
+        pl.concat(frames, how="vertical_relaxed"),
+        game_type=GAME_TYPE,
+    )
+    return mapping, {
+        **metrics,
+        "player_game_asset_count": len(assets),
+        "player_game_assets": [asset.name for asset in assets],
+    }
+
+
 def _load_contacts(
     *,
     season: int,
     level: str,
     league_ids: frozenset[int],
+    game_league_map: pl.DataFrame,
     work_dir: Path,
     session: requests.Session,
     games_per_league: int,
@@ -145,14 +198,22 @@ def _load_contacts(
     pbp_dir = work_dir / "pbp"
     pbp_dir.mkdir(parents=True, exist_ok=True)
     frames: list[pl.DataFrame] = []
+    enrichment: list[dict[str, Any]] = []
     for asset in sorted(chosen, key=lambda row: (row.filename_period, row.asset_id)):
         path = pbp_dir / asset.name
         if not path.exists() or path.stat().st_size <= 0:
             download_file(asset.browser_download_url, path, timeout_seconds=300)
         raw = read_quarantined_csv(path)
+        enriched, metrics = enrich_historical_pbp_league_id(
+            raw,
+            game_league_map,
+            source_asset=asset.name,
+            game_type=GAME_TYPE,
+        )
+        enrichment.append(metrics)
         frames.append(
             project_armstjc_contact_observations(
-                raw,
+                enriched,
                 source_asset=asset.name,
                 season=season,
                 game_type=GAME_TYPE,
@@ -187,6 +248,7 @@ def _load_contacts(
     )
     return sample, {
         "selected_pbp_assets": [asset.name for asset in chosen],
+        "league_id_enrichment": enrichment,
         "sample_games_by_league": games_by_league,
         "sample_game_count": len(game_ids),
         "sample_contact_count": sample.height,
@@ -199,29 +261,18 @@ def _load_contacts(
 
 def _load_player_games(
     *,
+    assets: list[Any],
     season: int,
     level: str,
     sample_games: list[int],
     league_ids: frozenset[int],
     work_dir: Path,
-    session: requests.Session,
 ) -> tuple[pl.DataFrame, pl.DataFrame, dict[str, Any]]:
-    assets = [
-        asset
-        for asset in fetch_player_game_asset_inventory(session=session)
-        if asset.year == season and asset.filename_level == level
-    ]
-    if not assets:
-        raise RuntimeError(f"no reusable {season} {level} player-game assets found")
-
     raw_dir = work_dir / "player-game"
-    raw_dir.mkdir(parents=True, exist_ok=True)
     control_frames: list[pl.DataFrame] = []
     outcome_frames: list[pl.DataFrame] = []
     for asset in assets:
         path = raw_dir / asset.name
-        if not path.exists() or path.stat().st_size <= 0:
-            download_file(asset.browser_download_url, path, timeout_seconds=240)
         raw = read_quarantined_csv(path)
         control = project_player_game_batting(
             raw, source_asset=asset.name, season=season, game_type=GAME_TYPE
@@ -236,10 +287,12 @@ def _load_player_games(
 
     if not control_frames or not outcome_frames:
         raise RuntimeError("sample games have no player-game evidence")
-    control_obs = pl.concat(control_frames, how="vertical_relaxed")
-    outcome_obs = pl.concat(outcome_frames, how="vertical_relaxed")
-    controls, control_metrics = resolve_player_game_contact_controls(control_obs)
-    outcomes, outcome_metrics = resolve_milb_player_game_outcomes(outcome_obs)
+    controls, control_metrics = resolve_player_game_contact_controls(
+        pl.concat(control_frames, how="vertical_relaxed")
+    )
+    outcomes, outcome_metrics = resolve_milb_player_game_outcomes(
+        pl.concat(outcome_frames, how="vertical_relaxed")
+    )
     if control_metrics["unresolved_contact_control_count"]:
         raise RuntimeError("sample contains unresolved contact-control snapshots")
     if outcome_metrics["unresolved_player_game_count"]:
@@ -257,7 +310,6 @@ def _load_player_games(
     if missing_games:
         raise RuntimeError(f"sample contact games missing positive-PA boxscores: {missing_games}")
     return controls, outcomes, {
-        "player_game_assets": [asset.name for asset in assets],
         "contact_controls": control_metrics,
         "outcomes": outcome_metrics,
         "league_coverage": coverage,
@@ -299,22 +351,32 @@ def main() -> int:
 
     session = _github_session()
     try:
+        player_game_assets = _player_game_assets(
+            season=args.season,
+            level=args.level,
+            session=session,
+        )
+        game_league_map, league_map_metrics = _load_game_league_map(
+            assets=player_game_assets,
+            work_dir=work_dir,
+        )
         contacts, contact_metrics = _load_contacts(
             season=args.season,
             level=args.level,
             league_ids=spec.league_ids,
+            game_league_map=game_league_map,
             work_dir=work_dir,
             session=session,
             games_per_league=args.games_per_league,
         )
         sample_games = sorted(int(v) for v in contacts.get_column("game_pk").unique().to_list())
         controls, outcomes, player_game_metrics = _load_player_games(
+            assets=player_game_assets,
             season=args.season,
             level=args.level,
             sample_games=sample_games,
             league_ids=spec.league_ids,
             work_dir=work_dir,
-            session=session,
         )
     finally:
         session.close()
@@ -360,11 +422,12 @@ def main() -> int:
         "contact_residual": int(summary.get_column("contact_count_residual").sum() or 0),
     }
     report = {
-        "report_schema_version": 2,
+        "report_schema_version": 3,
         "season": args.season,
         "filename_level": args.level,
         "level_group": spec.level_group,
         "actual_league_ids": sorted(spec.league_ids),
+        "game_league_map": league_map_metrics,
         "contacts": contact_metrics,
         "player_game": player_game_metrics,
         "participant_authority": authority_metrics,
