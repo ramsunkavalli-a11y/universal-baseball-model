@@ -144,12 +144,13 @@ def select_reconciliation_players(
     *,
     per_league: int = 1,
 ) -> list[dict[str, int]]:
-    """Choose deterministic high-volume players from every observed league.
+    """Choose deterministic high-volume, single-league players for validation.
 
-    Selection is based only on the reusable source under audit. Player volume is
-    summed across team rows within a league, then ties are broken by MLBAM player
-    ID. This avoids stale hand-picked IDs and keeps the certification sample
-    reproducible as long as the source snapshot is unchanged.
+    The official person-season endpoint is queried at the broader sport level
+    (for example Triple-A or Rookie). To make that total comparable to one actual
+    source league, candidates who appeared in more than one source league are
+    excluded. Volume is summed across team rows within the remaining league and
+    ties are broken by MLBAM player ID.
     """
 
     if per_league < 1:
@@ -165,7 +166,7 @@ def select_reconciliation_players(
             f"{kind} reconciliation sampling missing required columns: {missing}"
         )
 
-    candidates = (
+    working = (
         frame.select(
             pl.col("league_id").cast(pl.Int64, strict=False).alias("league_id"),
             pl.col("player_id").cast(pl.Int64, strict=False).alias("player_id"),
@@ -173,6 +174,13 @@ def select_reconciliation_players(
         )
         .drop_nulls(["league_id", "player_id", "__volume"])
         .filter(pl.col("__volume") > 0)
+    )
+    player_league_counts = working.group_by("player_id").agg(
+        pl.col("league_id").n_unique().alias("__league_count")
+    )
+    candidates = (
+        working.join(player_league_counts, on="player_id", how="left")
+        .filter(pl.col("__league_count") == 1)
         .group_by(["league_id", "player_id"])
         .agg(pl.col("__volume").sum().alias("sample_volume"))
         .sort(
