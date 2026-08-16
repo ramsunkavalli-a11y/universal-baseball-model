@@ -8,6 +8,13 @@ names.
 
 Only observed and intentionally mapped fields are renamed. Missing optional
 fields stay missing so source limitations remain visible.
+
+Completed-2024 all-level certification also supports three convenience fields
+on both sides of the ball: ground outs, air outs, and pitch count. These are
+standardized here, but ground/air *outs* are not treated as one-per-contact
+trajectory event counts. Detailed trajectory hit/out components and aggregate
+swings/whiffs remain outside the certified production mapping pending separate
+semantic/fidelity validation.
 """
 
 from __future__ import annotations
@@ -51,6 +58,11 @@ BATTING_COLUMN_MAP: dict[str, str] = {
     "batting_fly_hits": "batting_fly_hits",
     "batting_pop_hits": "batting_pop_hits",
     "batting_line_hits": "batting_line_hits",
+    # Independently exposed by the official person-season representation and
+    # exact in the 2024 all-level reconciliation sample.
+    "batting_GO": "batting_ground_outs",
+    "batting_AO": "batting_air_outs",
+    "batting_pitches_faced": "batting_pitches_seen",
 }
 
 PITCHING_COLUMN_MAP: dict[str, str] = {
@@ -72,6 +84,11 @@ PITCHING_COLUMN_MAP: dict[str, str] = {
     "pitching_SF": "pitching_sac_flies",
     "pitching_CI": "pitching_catchers_interference",
     "pitching_balls_in_play": "pitching_balls_in_play",
+    # Independently exposed by the official person-season representation and
+    # exact in the 2024 all-level reconciliation sample.
+    "pitching_GO": "pitching_ground_outs",
+    "pitching_AO": "pitching_air_outs",
+    "pitching_PI": "pitching_pitches_thrown",
 }
 
 REQUIRED_GRAIN_COLUMNS = ("season", "league_id", "team_id", "player_id")
@@ -79,6 +96,15 @@ SAMPLE_VOLUME_COLUMNS: dict[SeasonStatKind, str] = {
     "batting": "batting_plate_appearances",
     "pitching": "pitching_batters_faced",
 }
+
+BATTING_PA_COMPONENT_COLUMNS = (
+    "batting_at_bats",
+    "batting_base_on_balls",
+    "batting_hit_by_pitch",
+    "batting_sac_bunts",
+    "batting_sac_flies",
+    "batting_catchers_interference_reached",
+)
 
 
 def _column_map(kind: SeasonStatKind) -> dict[str, str]:
@@ -153,6 +179,34 @@ def standardize_armstjc_season_stats(
         "absent_optional_columns": absent_optional,
         "required_grain_columns": list(REQUIRED_GRAIN_COLUMNS),
     }
+
+
+def with_batting_pa_residual(frame: pl.DataFrame) -> pl.DataFrame:
+    """Expose true PA counts not explained by the standard aggregate components.
+
+    The common identity ``PA = AB + BB + HBP + SH + SF + CI`` is exact in nearly
+    all certified 2024 rows but not literally universal: one Double-A row had a
+    +1 residual. We preserve that evidence as ``batting_other_plate_appearances``
+    rather than silently forcing the standard components to equal PA or guessing
+    the underlying rare event type.
+
+    The residual is signed on purpose. A negative value is a quality signal and
+    must not be clamped to zero.
+    """
+
+    required = {"batting_plate_appearances", *BATTING_PA_COMPONENT_COLUMNS}
+    missing = sorted(required - set(frame.columns))
+    if missing:
+        raise ValueError(f"batting PA residual missing required columns: {missing}")
+
+    total = pl.col("batting_plate_appearances").cast(pl.Int64, strict=False)
+    components = sum(
+        (pl.col(column).cast(pl.Int64, strict=False) for column in BATTING_PA_COMPONENT_COLUMNS),
+        start=pl.lit(0, dtype=pl.Int64),
+    )
+    return frame.with_columns(
+        (total - components).alias("batting_other_plate_appearances")
+    )
 
 
 def select_reconciliation_players(
