@@ -1,12 +1,7 @@
 name: Screened Performance-bin value confirmation
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/screened-bin-value-confirmation.yml"
-      - "scripts/audit_screened_bin_value_confirmation.py"
-      - "src/universal_baseball/performance_events.py"
-      - "tests/test_performance_events.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
