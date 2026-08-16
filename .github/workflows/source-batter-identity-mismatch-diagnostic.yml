@@ -1,11 +1,7 @@
 name: Source batter identity mismatch diagnostic
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/source-batter-identity-mismatch-diagnostic.yml"
-      - "scripts/diagnose_source_batter_identity_mismatches.py"
-      - "src/universal_baseball/official_capture.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
