@@ -23,11 +23,6 @@ on:
           - "a+"
           - a
           - rk
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-historical-milb-one-level.yml"
 
 permissions:
   contents: read
@@ -37,8 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      TARGET_SEASON: ${{ github.event_name == 'workflow_dispatch' && inputs.season || '2021' }}
-      TARGET_LEVEL: ${{ github.event_name == 'workflow_dispatch' && inputs.level || 'rk' }}
+      TARGET_SEASON: ${{ inputs.season }}
+      TARGET_LEVEL: ${{ inputs.level }}
 
     steps:
       - name: Check out repository
