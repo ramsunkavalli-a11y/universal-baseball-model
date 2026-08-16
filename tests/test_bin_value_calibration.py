@@ -34,6 +34,25 @@ def test_direct_bin_calibration_returns_mean_sd_and_standard_error() -> None:
     assert walk["standard_error"] is None
 
 
+def test_legacy_opposite_label_normalizes_to_production_oppo_vocabulary() -> None:
+    events = pl.DataFrame(
+        {
+            "season": [2024, 2024],
+            "league_id": [112, 112],
+            "core_bin": ["OPPOSITE_GB", "OPPOSITE_GB"],
+            "re24": [0.1, 0.3],
+        }
+    )
+    value = summarize_direct_bin_values(events).to_dicts()[0]
+    assert value["core_bin"] == "OPPO_GB"
+    assert value["occurrence_count"] == 2
+    assert value["mean_run_value"] == pytest.approx(0.2)
+
+    coverage = bin_calibration_coverage(events).to_dicts()[0]
+    assert coverage["core_bin"] == "OPPO_GB"
+    assert coverage["event_count"] == 2
+
+
 def test_missing_re24_is_excluded_from_mean_but_visible_in_coverage() -> None:
     events = pl.DataFrame(
         {
