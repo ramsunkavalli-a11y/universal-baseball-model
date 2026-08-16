@@ -30,7 +30,8 @@ def test_raw_csv_is_read_as_strings_before_explicit_projection() -> None:
     projected = project_savant_performance_rows(raw)
     row = projected.to_dicts()[0]
     assert row["game_pk"] == 745001
-    assert row["at_bat_index"] == 2
+    assert row["source_at_bat_number"] == 2
+    assert row["at_bat_index"] == 1
     assert row["pitch_number"] == 7
     assert row["batter_mlbam_id"] == 101
     assert row["batter_side"] == "R"
@@ -69,13 +70,49 @@ def test_hitdata_can_preserve_contact_when_pitch_code_is_not_x() -> None:
     assert row["is_contact"] is True
 
 
+def test_savant_at_bat_number_must_be_positive_one_based() -> None:
+    raw = pl.DataFrame(
+        {
+            "game_date": ["2024-06-15"],
+            "game_year": ["2024"],
+            "game_pk": ["745001"],
+            "at_bat_number": ["0"],
+            "pitch_number": ["1"],
+            "game_type": ["R"],
+            "batter": ["101"],
+            "pitcher": ["201"],
+            "stand": ["R"],
+            "p_throws": ["L"],
+            "events": [None],
+            "description": ["called_strike"],
+            "des": [None],
+            "type": ["S"],
+            "bb_type": [None],
+            "hit_location": [None],
+            "hc_x": [None],
+            "hc_y": [None],
+            "home_team": ["SF"],
+            "away_team": ["LAD"],
+        },
+        schema_overrides={
+            "events": pl.String,
+            "des": pl.String,
+            "bb_type": pl.String,
+            "hit_location": pl.String,
+            "hc_x": pl.String,
+            "hc_y": pl.String,
+        },
+    )
+    assert project_savant_performance_rows(raw).is_empty()
+
+
 def test_non_regular_season_rows_are_structurally_filtered() -> None:
     raw = pl.DataFrame(
         {
             "game_date": ["2024-03-15"],
             "game_year": ["2024"],
             "game_pk": ["1"],
-            "at_bat_number": ["0"],
+            "at_bat_number": ["1"],
             "pitch_number": ["1"],
             "game_type": ["S"],
             "batter": ["101"],
