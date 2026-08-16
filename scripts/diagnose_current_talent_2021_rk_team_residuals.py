@@ -3,8 +3,10 @@
 
 This diagnostic tests whether the sparse player × league residuals between the
 reusable player-game history and the independent season batting release are
-actually concentrated in one team/stint. It does not mutate either source and
-it does not relax the Current Talent admission gate.
+actually concentrated in one team/stint. Ambiguous raw game/player team keys
+are preserved as diagnostics and excluded from team attribution rather than
+silently resolved. The script does not mutate either source and does not relax
+the Current Talent admission gate.
 """
 
 from __future__ import annotations
@@ -114,16 +116,28 @@ def main() -> int:
             .select("game_id", "player_id", "team_id", "team_name")
             .unique()
         )
-        team_conflicts = (
-            raw_team_map.group_by(["game_id", "player_id"])
-            .agg(pl.col("team_id").n_unique().alias("team_count"))
-            .filter(pl.col("team_count") != 1)
+        team_key_counts = raw_team_map.group_by(["game_id", "player_id"]).agg(
+            pl.col("team_id").n_unique().alias("team_count")
         )
-        if not team_conflicts.is_empty():
-            raise RuntimeError(
-                "raw player-game history has conflicting team identity for a game/player"
+        team_conflicts = team_key_counts.filter(pl.col("team_count") != 1)
+        conflict_detail = raw_team_map.join(
+            team_conflicts.select("game_id", "player_id"),
+            on=["game_id", "player_id"],
+            how="inner",
+        ).sort(["game_id", "player_id", "team_id"])
+        if not conflict_detail.is_empty():
+            conflict_detail.write_csv(report_root / "raw_team_conflicts.csv")
+        valid_team_keys = team_key_counts.filter(pl.col("team_count") == 1).select(
+            "game_id", "player_id"
+        )
+        team_map = (
+            raw_team_map.join(
+                valid_team_keys,
+                on=["game_id", "player_id"],
+                how="inner",
             )
-        team_map = raw_team_map.unique(["game_id", "player_id"], keep="first")
+            .unique(["game_id", "player_id"], keep="first")
+        )
 
         season_inventory = fetch_season_stat_asset_inventory("batting", session=session)
         season_asset = select_season_stat_asset(
@@ -156,7 +170,7 @@ def main() -> int:
         raise RuntimeError("expected 2021 DSL residuals but found none")
     residual_player_ids = residuals.get_column("player_id").unique().to_list()
 
-    source_games = (
+    source_games_all = (
         resolved.filter(
             (pl.col("league_id") == LEAGUE_ID)
             & (pl.col("game_type") == GAME_TYPE)
@@ -166,11 +180,14 @@ def main() -> int:
         )
         .join(team_map, on=["game_id", "player_id"], how="left")
     )
-    missing_team = source_games.filter(pl.col("team_id").is_null())
+    missing_team = source_games_all.filter(pl.col("team_id").is_null()).sort(
+        ["player_id", "game_id"]
+    )
     if not missing_team.is_empty():
-        raise RuntimeError(
-            f"{missing_team.height} residual-player games lack a unique raw team mapping"
-        )
+        missing_team.write_csv(report_root / "residual_source_games_without_unique_team.csv")
+    source_games = source_games_all.filter(pl.col("team_id").is_not_null())
+    if source_games.is_empty():
+        raise RuntimeError("no residual-player games have unambiguous raw team attribution")
 
     source_by_player_team = (
         source_games.group_by(["player_id", "team_id", "team_name"])
@@ -235,12 +252,17 @@ def main() -> int:
     source_team_611 = source_team_summary.filter(pl.col("team_id") == 611).to_dicts()
     season_team_611 = season_team_summary.filter(pl.col("team_id") == 611).to_dicts()
     report = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "season": SEASON,
         "level": LEVEL,
         "league_id": LEAGUE_ID,
         "residual_player_league_count": int(residuals.height),
         "residual_player_ids": [int(value) for value in sorted(residual_player_ids)],
+        "raw_team_conflict_key_count": int(team_conflicts.height),
+        "raw_team_conflict_row_count": int(conflict_detail.height),
+        "residual_source_game_count": int(source_games_all.height),
+        "residual_source_game_without_unique_team_count": int(missing_team.height),
+        "residual_source_game_with_unique_team_count": int(source_games.height),
         "source_team_summary": source_team_summary.to_dicts(),
         "season_team_summary": season_team_summary.to_dicts(),
         "source_team_611": source_team_611,
@@ -251,9 +273,10 @@ def main() -> int:
         "season_schema": season_schema_metrics,
         "accepted": False,
         "interpretation": (
-            "Diagnostic only. Concentration of residual-player PA in a source team that is absent "
-            "or incomplete in the season release is evidence of season-aggregate coverage drift, "
-            "not permission to repair chronology or weaken reconciliation globally."
+            "Diagnostic only. Concentration of unambiguously attributed residual-player PA in a "
+            "source team that is absent or incomplete in the season release is evidence of season-"
+            "aggregate coverage drift. Ambiguous team keys remain explicitly unassigned and are not "
+            "used to justify chronology or identity repair."
         ),
     }
     (report_root / "team_residual_report.json").write_text(
@@ -264,7 +287,9 @@ def main() -> int:
             "# 2021 Rookie Current Talent residuals by team",
             "",
             f"- DSL residual player-league rows: {residuals.height}",
-            f"- Source teams represented: {source_team_summary.height}",
+            f"- Raw team-conflict game/player keys: {team_conflicts.height}",
+            f"- Residual-player games without unique team: {missing_team.height}/{source_games_all.height}",
+            f"- Source teams represented (unambiguous only): {source_team_summary.height}",
             f"- Season teams represented for those players: {season_team_summary.height}",
             f"- Source team 611 rows: {source_team_611}",
             f"- Season team 611 rows: {season_team_611}",
