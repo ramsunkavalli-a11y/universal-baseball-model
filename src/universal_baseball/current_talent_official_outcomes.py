@@ -12,8 +12,10 @@ those responsibilities separate:
 - existing games may receive field-level official overlays;
 - an official-only positive-PA game may be inserted explicitly at its official
   game date;
-- source-only positive-PA games, duplicate official games, missing official
-  fields, or post-overlay total disagreement fail closed.
+- distinct-team official splits for one player/game may be collapsed only when
+  their identity/date/vector semantics agree; other duplicate official games fail closed;
+- source-only positive-PA games, missing official fields, or post-overlay total
+  disagreement fail closed.
 
 The resulting history is retrospective corrected-event history. It must never be
 labeled a vintage information-set backtest unless source availability at the
@@ -41,7 +43,7 @@ OFFICIAL_TO_OUTCOME: dict[str, str] = {
     "sacBunts": "batting_SH",
     "catchersInterference": "batting_CI",
 }
-OFFICIAL_GAME_LOG_POLICY = "residual_triggered_official_game_log_v1"
+OFFICIAL_GAME_LOG_POLICY = "residual_triggered_official_game_log_v2"
 
 
 def _mapping(value: Any) -> Mapping[str, Any]:
@@ -100,6 +102,77 @@ def official_game_log_endpoint(*, player_id: int, sport_id: int, season: int) ->
     return f"people/{int(player_id)}/stats?{urlencode(params)}"
 
 
+def _collapse_distinct_team_game_splits(frame: pl.DataFrame) -> pl.DataFrame:
+    """Collapse safe same-player/game/league official team-stint splits.
+
+    The Stats API can expose one game twice when a player has batting stats for
+    two different teams under the same official game identity. Treat those as
+    additive game components only when date, game type, league, player, and the
+    complete outcome vector are all usable and every split has a distinct,
+    non-null team. Same-team duplicates remain an error.
+    """
+
+    if frame.is_empty():
+        return frame
+
+    rows: list[dict[str, Any]] = []
+    for group in frame.partition_by(
+        ["game_id", "player_id", "league_id"], maintain_order=True
+    ):
+        if group.height == 1:
+            rows.append(group.row(0, named=True))
+            continue
+
+        game_id = int(group.get_column("game_id")[0])
+        player_id = int(group.get_column("player_id")[0])
+
+        if group.get_column("game_date").null_count():
+            raise ValueError(
+                f"official duplicate gameLog rows lack date for player={player_id} "
+                f"game={game_id}"
+            )
+        if group.get_column("game_date").n_unique() != 1:
+            raise ValueError(
+                f"official duplicate gameLog rows disagree on date for player={player_id} "
+                f"game={game_id}"
+            )
+        if (
+            group.get_column("game_type").null_count()
+            or group.get_column("game_type").n_unique() != 1
+        ):
+            raise ValueError(
+                f"official duplicate gameLog rows disagree on game type for player={player_id} "
+                f"game={game_id}"
+            )
+        team_ids = group.get_column("team_id")
+        if team_ids.null_count() or team_ids.n_unique() != group.height:
+            raise ValueError(
+                f"official duplicate gameLog rows are not distinct-team splits for "
+                f"player={player_id} game={game_id}"
+            )
+        if any(group.get_column(field).null_count() for field in OUTCOME_FIELDS):
+            raise ValueError(
+                f"official duplicate gameLog rows lack complete outcome vectors for "
+                f"player={player_id} game={game_id}"
+            )
+
+        first = group.row(0, named=True)
+        rows.append(
+            {
+                **first,
+                "team_id": None,
+                **{
+                    field: int(group.get_column(field).sum() or 0)
+                    for field in OUTCOME_FIELDS
+                },
+            }
+        )
+
+    return pl.DataFrame(rows, schema=frame.schema, strict=False).sort(
+        ["game_id", "player_id", "league_id"]
+    )
+
+
 def project_official_hitting_game_log(
     payload: Mapping[str, Any],
     *,
@@ -156,7 +229,7 @@ def project_official_hitting_game_log(
                 **{field: pl.Int64 for field in OUTCOME_FIELDS},
             }
         )
-    return pl.DataFrame(rows).with_columns(
+    projected = pl.DataFrame(rows).with_columns(
         pl.col("game_id").cast(pl.Int64),
         pl.col("player_id").cast(pl.Int64),
         pl.col("game_date").cast(pl.String).str.to_date(strict=False),
@@ -164,7 +237,8 @@ def project_official_hitting_game_log(
         pl.col("league_id").cast(pl.Int64, strict=False),
         pl.col("team_id").cast(pl.Int64, strict=False),
         *[pl.col(field).cast(pl.Int64, strict=False) for field in OUTCOME_FIELDS],
-    ).sort("game_id")
+    )
+    return _collapse_distinct_team_game_splits(projected)
 
 
 def _sum_vector(frame: pl.DataFrame) -> dict[str, int]:
