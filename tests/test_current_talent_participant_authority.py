@@ -36,13 +36,13 @@ def test_participant_authority_uses_allplays_grain_without_pitch_projection() ->
     result = project_official_allplays_participant_authority(700001, payload)
     assert result.to_dicts() == [
         {
-            "source_game_pk": 700001,
-            "source_at_bat_index": 4,
+            "game_pk": 700001,
+            "at_bat_index": 4,
             "official_batter_id": 100,
         },
         {
-            "source_game_pk": 700001,
-            "source_at_bat_index": 5,
+            "game_pk": 700001,
+            "at_bat_index": 5,
             "official_batter_id": 200,
         },
     ]
@@ -60,8 +60,8 @@ def test_participant_authority_ignores_rows_without_sequence_or_batter_identity(
     )
     assert result.is_empty()
     assert result.schema == {
-        "source_game_pk": pl.Int64,
-        "source_at_bat_index": pl.Int64,
+        "game_pk": pl.Int64,
+        "at_bat_index": pl.Int64,
         "official_batter_id": pl.Int64,
     }
 
