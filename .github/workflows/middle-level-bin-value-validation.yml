@@ -1,18 +1,7 @@
 name: Middle-level screened bin value validation
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/middle-level-bin-value-validation.yml"
-      - "scripts/audit_middle_level_bin_value_validation.py"
-      - "scripts/audit_screened_bin_value_confirmation.py"
-      - "scripts/audit_milb_bin_value_cross_validation.py"
-      - "scripts/audit_milb_bin_value_stability.py"
-      - "scripts/audit_milb_bin_run_values.py"
-      - "src/universal_baseball/bin_value_pooling.py"
-      - "src/universal_baseball/performance_events.py"
-      - "src/universal_baseball/run_expectancy.py"
-      - "src/universal_baseball/state_transitions_v2.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
