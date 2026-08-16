@@ -1,0 +1,47 @@
+name: Reusable PBP batter identity fidelity audit
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/source-batter-identity-fidelity.yml"
+      - "scripts/audit_source_batter_identity_fidelity.py"
+      - "src/universal_baseball/armstjc_schema.py"
+      - "src/universal_baseball/sampling.py"
+      - "src/universal_baseball/event_types.py"
+      - "src/universal_baseball/official_capture.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-source-batter-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit source batter identity fidelity
+        run: python scripts/audit_source_batter_identity_fidelity.py
+
+      - name: Upload batter identity report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: source-batter-identity-fidelity
+          path: reports/generated/source-batter-identity-fidelity/
+          if-no-files-found: warn
+          retention-days: 14
