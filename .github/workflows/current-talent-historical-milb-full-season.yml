@@ -6,7 +6,7 @@ on:
       season:
         description: Post-reorganization season to materialize
         required: true
-        default: "2023"
+        default: "2021"
         type: choice
         options:
           - "2021"
@@ -43,7 +43,7 @@ permissions:
 jobs:
   materialize:
     env:
-      TARGET_SEASON: ${{ github.event_name == 'workflow_dispatch' && inputs.season || '2023' }}
+      TARGET_SEASON: ${{ github.event_name == 'workflow_dispatch' && inputs.season || '2021' }}
     strategy:
       fail-fast: false
       matrix:
