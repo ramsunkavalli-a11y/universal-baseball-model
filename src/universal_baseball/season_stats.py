@@ -75,6 +75,10 @@ PITCHING_COLUMN_MAP: dict[str, str] = {
 }
 
 REQUIRED_GRAIN_COLUMNS = ("season", "league_id", "team_id", "player_id")
+SAMPLE_VOLUME_COLUMNS: dict[SeasonStatKind, str] = {
+    "batting": "batting_plate_appearances",
+    "pitching": "pitching_batters_faced",
+}
 
 
 def _column_map(kind: SeasonStatKind) -> dict[str, str]:
@@ -132,3 +136,66 @@ def standardize_armstjc_season_stats(
         "absent_optional_columns": absent_optional,
         "required_grain_columns": list(REQUIRED_GRAIN_COLUMNS),
     }
+
+
+def select_reconciliation_players(
+    frame: pl.DataFrame,
+    kind: SeasonStatKind,
+    *,
+    per_league: int = 1,
+) -> list[dict[str, int]]:
+    """Choose deterministic high-volume players from every observed league.
+
+    Selection is based only on the reusable source under audit. Player volume is
+    summed across team rows within a league, then ties are broken by MLBAM player
+    ID. This avoids stale hand-picked IDs and keeps the certification sample
+    reproducible as long as the source snapshot is unchanged.
+    """
+
+    if per_league < 1:
+        raise ValueError("per_league must be at least 1")
+    if kind not in SAMPLE_VOLUME_COLUMNS:
+        raise ValueError(f"unsupported season-stat kind: {kind!r}")
+
+    volume_column = SAMPLE_VOLUME_COLUMNS[kind]
+    required = {"league_id", "player_id", volume_column}
+    missing = sorted(required - set(frame.columns))
+    if missing:
+        raise ValueError(
+            f"{kind} reconciliation sampling missing required columns: {missing}"
+        )
+
+    candidates = (
+        frame.select(
+            pl.col("league_id").cast(pl.Int64, strict=False).alias("league_id"),
+            pl.col("player_id").cast(pl.Int64, strict=False).alias("player_id"),
+            pl.col(volume_column).cast(pl.Int64, strict=False).alias("__volume"),
+        )
+        .drop_nulls(["league_id", "player_id", "__volume"])
+        .filter(pl.col("__volume") > 0)
+        .group_by(["league_id", "player_id"])
+        .agg(pl.col("__volume").sum().alias("sample_volume"))
+        .sort(
+            ["league_id", "sample_volume", "player_id"],
+            descending=[False, True, False],
+        )
+    )
+    if candidates.is_empty():
+        return []
+
+    selected = (
+        candidates.group_by("league_id", maintain_order=True)
+        .head(per_league)
+        .sort(
+            ["league_id", "sample_volume", "player_id"],
+            descending=[False, True, False],
+        )
+    )
+    return [
+        {
+            "league_id": int(row["league_id"]),
+            "player_id": int(row["player_id"]),
+            "sample_volume": int(row["sample_volume"]),
+        }
+        for row in selected.to_dicts()
+    ]
