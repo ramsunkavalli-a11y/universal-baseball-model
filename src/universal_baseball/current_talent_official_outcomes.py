@@ -303,7 +303,14 @@ def apply_official_game_log_outcome_authority(
     if target_source.is_empty():
         raise ValueError(f"no positive-PA source evidence for player={player_id} league={league_id}")
     if target_official.is_empty():
-        raise ValueError(f"no official gameLog evidence for player={player_id} league={league_id}")
+        diagnostic_games = sorted(
+            int(value) for value in target_source.get_column("game_id").unique().to_list()
+        )
+        diagnostic_totals = _sum_vector(target_source)
+        raise ValueError(
+            f"no official gameLog evidence for player={player_id} league={league_id}; "
+            f"source_games={diagnostic_games}; source_totals={diagnostic_totals}"
+        )
 
     duplicate_official = target_official.group_by("game_id").len().filter(pl.col("len") > 1)
     if not duplicate_official.is_empty():
