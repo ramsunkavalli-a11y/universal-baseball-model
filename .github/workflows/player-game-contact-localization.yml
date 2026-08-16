@@ -1,16 +1,7 @@
 name: Player-game contact localization
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/player-game-contact-localization.yml"
-      - "scripts/audit_player_game_contact_localization.py"
-      - "scripts/audit_official_contact_exceptions.py"
-      - "scripts/audit_official_contact_policy_final.py"
-      - "scripts/audit_contact_identity_false_negative.py"
-      - "src/universal_baseball/player_game_stats.py"
-      - "src/universal_baseball/official.py"
-      - "tests/test_player_game_stats.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
