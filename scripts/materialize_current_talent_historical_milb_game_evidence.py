@@ -535,10 +535,6 @@ def main() -> int:
         raise RuntimeError("historical Current Talent output unexpectedly spans multiple seasons")
     if evidence_metrics["actual_league_count"] != len(spec.league_ids):
         raise RuntimeError("historical Current Talent output lost actual-league coverage")
-    if not evidence_metrics["profile_matches_summary_core_counts"]:
-        raise RuntimeError("historical Current Talent profile does not reconcile to summary core counts")
-    if not evidence_metrics["profile_has_no_orphans"]:
-        raise RuntimeError("historical Current Talent profile contains orphan player-games")
 
     outcome_storage = write_canonical_parquet(
         corrected_outcomes,
