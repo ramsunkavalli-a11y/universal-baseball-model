@@ -224,7 +224,7 @@ def apply_historical_player_game_identity_corrections(
                 "game_id": correction.game_id,
                 "source_player_id": correction.source_player_id,
                 "corrected_player_id": correction.corrected_player_id,
-                "game_date": correction.game_date,
+                "game_date": date.fromisoformat(correction.game_date),
                 **expected,
                 "policy": IDENTITY_CORRECTION_POLICY,
                 "evidence": correction.evidence,
