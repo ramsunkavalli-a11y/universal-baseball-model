@@ -1,0 +1,52 @@
+name: Independent 2024 middle-level bin value confirmation
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/middle-level-bin-value-independent-validation.yml"
+      - "scripts/audit_middle_level_bin_value_independent_validation.py"
+      - "scripts/audit_middle_level_bin_value_validation.py"
+      - "scripts/audit_screened_bin_value_confirmation.py"
+      - "scripts/audit_milb_bin_value_cross_validation.py"
+      - "scripts/audit_milb_bin_value_stability.py"
+      - "scripts/audit_milb_bin_run_values.py"
+      - "src/universal_baseball/bin_value_pooling.py"
+      - "src/universal_baseball/performance_events.py"
+      - "src/universal_baseball/run_expectancy.py"
+      - "src/universal_baseball/state_transitions_v2.py"
+
+permissions:
+  contents: read
+
+jobs:
+  confirm-middle-levels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Confirm pre-specified middle-level strengths on 2024
+        run: python scripts/audit_middle_level_bin_value_independent_validation.py
+
+      - name: Upload independent middle-level report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: middle-level-bin-value-independent-validation
+          path: reports/generated/middle-level-bin-value-independent-validation/
+          if-no-files-found: warn
+          retention-days: 14
