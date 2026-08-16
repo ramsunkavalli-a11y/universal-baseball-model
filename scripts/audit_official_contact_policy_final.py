@@ -3,15 +3,15 @@
 
 The preceding discovery work showed that player-game boxscore controls can
 localize sparse PBP batter-attribution defects, but a seemingly unambiguous
-+1/-1 source-only reassignment was wrong in 1 of 182 cases.  This gate therefore
++1/-1 source-only reassignment was wrong in 1 of 182 cases. This gate therefore
 certifies the safer production policy rather than attempting another heuristic:
 
 1. build the reusable-source contact set and player-game controls;
 2. flag every game with any player-game contact residual;
 3. fetch official PBP only for that flagged game set;
-4. verify physical contact-key coverage across the *entire* flagged set;
+4. verify physical contact-key coverage across the entire flagged set;
 5. treat official matchup batter as participant authority for those games; and
-6. isolate any residual difference between official ``isInPlay`` semantics and
+6. isolate residual differences between official ``isInPlay`` semantics and
    boxscore-style AB-SO+SF+SH contact accounting instead of forcing equality.
 
 This is a certification script, not a permanent all-season official backfill.
@@ -106,15 +106,20 @@ def _edge_case_pa_rows(
     official_contacts: pl.DataFrame,
     residuals: pl.DataFrame,
 ) -> pl.DataFrame:
+    """Return scalar-only diagnostic rows for player-game count residuals.
+
+    The earlier version retained a nested list of pitch-event types. That is
+    useful interactively but invalid for CSV output, and in all-null groups
+    Polars infers ``list[null]`` which cannot be safely joined as strings. The
+    diagnostic only needs to know whether a PA has an official in-play pitch;
+    physical-key details are already written separately.
+    """
+
     residual_pairs = residuals.select("game_id", "player_id", "difference")
-    contact_by_pa = (
-        official_contacts.group_by(["game_id", "at_bat_index"])
-        .agg(
-            pl.len().alias("official_in_play_pitch_count"),
-            pl.col("pitch_event_type").unique().sort().alias("pitch_event_types"),
-        )
+    contact_by_pa = official_contacts.group_by(["game_id", "at_bat_index"]).agg(
+        pl.len().alias("official_in_play_pitch_count")
     )
-    pas = (
+    return (
         pa_frame.select(
             pl.col("game_pk").cast(pl.Int64, strict=False).alias("game_id"),
             pl.col("at_bat_number").cast(pl.Int64, strict=False).alias("at_bat_index"),
@@ -135,7 +140,6 @@ def _edge_case_pa_rows(
         .join(residual_pairs, on=["game_id", "player_id"], how="inner")
         .sort(["game_id", "player_id", "at_bat_index"])
     )
-    return pas
 
 
 def main() -> int:
@@ -170,7 +174,7 @@ def main() -> int:
         .to_list()
     )
 
-    # Retain the earlier heuristic only as evidence about why it is *not* safe
+    # Retain the earlier heuristic only as evidence about why it is not safe
     # enough to mutate production data automatically.
     heuristic_repairs = identify_unambiguous_contact_reassignments(source_comparison)
 
@@ -233,8 +237,6 @@ def main() -> int:
     )
     definition_residuals = definition_by_game.filter(pl.col("difference") != 0)
 
-    # A compact event-level view makes the semantic residuals inspectable rather
-    # than burying them in a total.  We do not infer a new contact definition here.
     edge_summary = (
         edge_pa_rows.group_by(
             ["difference", "event_type", "has_official_in_play_pitch"]
@@ -248,9 +250,7 @@ def main() -> int:
         | (pl.col("source_batter_mismatch") == True)  # noqa: E712
     ).write_csv(REPORT_DIR / "flagged_source_vs_official_contact_keys.csv")
     residuals.write_csv(REPORT_DIR / "official_vs_player_game_residuals.csv")
-    edge_pa_rows.with_columns(
-        pl.col("pitch_event_types").list.join("|").alias("pitch_event_types")
-    ).write_csv(REPORT_DIR / "contact_definition_residual_player_pas.csv")
+    edge_pa_rows.write_csv(REPORT_DIR / "contact_definition_residual_player_pas.csv")
     edge_summary.write_csv(REPORT_DIR / "contact_definition_residual_event_summary.csv")
     definition_residuals.write_csv(
         REPORT_DIR / "official_pbp_vs_boxscore_contact_definition.csv"
