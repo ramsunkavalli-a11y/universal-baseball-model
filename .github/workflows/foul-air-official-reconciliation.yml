@@ -1,11 +1,7 @@
 name: Foul-air official narrative reconciliation
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/foul-air-official-reconciliation.yml"
-      - "scripts/audit_foul_air_official_reconciliation.py"
-      - "scripts/audit_foul_air_descriptions.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
