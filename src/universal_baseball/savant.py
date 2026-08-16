@@ -22,6 +22,11 @@ from urllib.parse import quote
 import polars as pl
 import requests
 
+from universal_baseball.event_types import (
+    KNOWN_EVENT_TYPES,
+    PLATE_APPEARANCE_EVENT_TYPES,
+)
+
 
 SAVANT_ROOT = "https://baseballsavant.mlb.com"
 # Keep the mature pybaseball search surface, then apply our own explicit regular-
@@ -36,6 +41,10 @@ _SAVANT_DETAIL_TEMPLATE = (
     "&min_results=0&group_by=name&sort_col=pitches"
     "&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&"
 )
+
+# Savant emits this source-specific terminal label for a PA interrupted by an
+# inning-ending runner event. It is not an official true PA result eventType.
+SAVANT_NON_PA_TERMINAL_EVENTS = frozenset({"truncated_pa"})
 
 SAVANT_PERFORMANCE_SCHEMA: dict[str, pl.DataType] = {
     "game_date": pl.String,
@@ -53,6 +62,7 @@ SAVANT_PERFORMANCE_SCHEMA: dict[str, pl.DataType] = {
     "pitch_description": pl.String,
     "result_description": pl.String,
     "pitch_result_code": pl.String,
+    "source_bb_type": pl.String,
     "bb_type": pl.String,
     "hit_location": pl.String,
     "hc_x": pl.Float64,
@@ -60,6 +70,7 @@ SAVANT_PERFORMANCE_SCHEMA: dict[str, pl.DataType] = {
     "home_team": pl.String,
     "away_team": pl.String,
     "is_terminal_event": pl.Boolean,
+    "is_plate_appearance_terminal": pl.Boolean,
     "is_contact": pl.Boolean,
 }
 
@@ -95,12 +106,7 @@ def fetch_savant_csv(
     session: requests.Session | None = None,
     timeout_seconds: int = 120,
 ) -> SavantCsvCapture:
-    """Fetch exact Baseball Savant CSV bytes for a date range.
-
-    The function intentionally returns exact response bytes rather than a parsed
-    DataFrame so source-snapshot identity can be established before
-    normalization. Caller-owned sessions are never closed.
-    """
+    """Fetch exact Baseball Savant CSV bytes for a date range."""
 
     path = savant_detail_request_path(start_date, end_date, team=team)
     owned = session is None
@@ -120,12 +126,7 @@ def fetch_savant_csv(
 
 
 def read_savant_csv_bytes(content: bytes) -> pl.DataFrame:
-    """Read Savant CSV losslessly enough for explicit downstream projection.
-
-    All raw columns are initially strings so sparse/late values cannot drive
-    inferred numeric types at the source boundary. Numeric meaning is applied
-    only by :func:`project_savant_performance_rows`.
-    """
+    """Read Savant CSV with all raw columns initially typed as strings."""
 
     if not content.strip():
         return pl.DataFrame()
@@ -153,6 +154,20 @@ def _nonblank(column: str) -> pl.Expr:
     )
 
 
+def _validate_savant_event_vocabulary(raw: pl.DataFrame) -> None:
+    if "events" not in raw.columns or raw.is_empty():
+        return
+    observed = {
+        str(value).strip()
+        for value in raw.get_column("events").drop_nulls().unique().to_list()
+        if str(value).strip()
+    }
+    allowed = set(KNOWN_EVENT_TYPES) | set(SAVANT_NON_PA_TERMINAL_EVENTS)
+    unknown = sorted(observed - allowed)
+    if unknown:
+        raise ValueError(f"Savant CSV contains unknown terminal event codes: {unknown}")
+
+
 def project_savant_performance_rows(
     raw: pl.DataFrame,
     *,
@@ -160,10 +175,16 @@ def project_savant_performance_rows(
 ) -> pl.DataFrame:
     """Project Savant pitches to the MLB Performance evidence surface.
 
-    Savant's public ``at_bat_number`` is one-based for the same play sequence
-    whose MLB Stats API ``atBatIndex`` is zero-based. Preserve the raw number and
-    normalize the canonical ``at_bat_index`` by subtracting one. This mapping is
-    source semantics, not an inferred row-order correction.
+    Source semantics normalized here:
+
+    - Savant ``at_bat_number`` is one-based for the play sequence whose Stats
+      API ``atBatIndex`` is zero-based; preserve raw and subtract one.
+    - Savant's public ``bb_type`` collapses bunt trajectories into the ordinary
+      GB/LD/popup vocabulary. Preserve raw ``source_bb_type`` and reconstruct the
+      canonical Gameday bunt family only when the PA narrative explicitly says
+      ``bunt``.
+    - ``truncated_pa`` is a Savant terminal marker for an interrupted PA, not a
+      true official PA result. Unknown terminal labels fail loudly.
     """
 
     required = {
@@ -193,6 +214,7 @@ def project_savant_performance_rows(
         raise ValueError(f"Savant CSV missing Performance fields: {missing}")
     if raw.is_empty():
         return pl.DataFrame(schema=SAVANT_PERFORMANCE_SCHEMA)
+    _validate_savant_event_vocabulary(raw)
 
     contact = (
         (pl.col("type").cast(pl.String).str.strip_chars().str.to_uppercase() == "X")
@@ -211,6 +233,25 @@ def project_savant_performance_rows(
         .otherwise(None)
         .alias("at_bat_index")
     )
+    source_bb = pl.col("bb_type").cast(pl.String)
+    bunt_narrative = (
+        pl.col("des").cast(pl.String).str.to_lowercase().str.contains(r"\bbunt\b")
+    ).fill_null(False)
+    canonical_bb = (
+        pl.when(bunt_narrative & (source_bb == "ground_ball"))
+        .then(pl.lit("bunt_grounder"))
+        .when(bunt_narrative & (source_bb == "line_drive"))
+        .then(pl.lit("bunt_line_drive"))
+        .when(bunt_narrative & source_bb.is_in(["popup", "fly_ball"]))
+        .then(pl.lit("bunt_popup"))
+        .otherwise(source_bb)
+        .alias("bb_type")
+    )
+    terminal = _nonblank("events")
+    is_pa_terminal = pl.col("events").cast(pl.String).is_in(
+        sorted(PLATE_APPEARANCE_EVENT_TYPES)
+    )
+
     projected = raw.select(
         pl.col("game_date").cast(pl.String),
         _integer_like("game_year"),
@@ -227,13 +268,15 @@ def project_savant_performance_rows(
         pl.col("description").cast(pl.String).alias("pitch_description"),
         pl.col("des").cast(pl.String).alias("result_description"),
         pl.col("type").cast(pl.String).alias("pitch_result_code"),
-        pl.col("bb_type").cast(pl.String),
+        source_bb.alias("source_bb_type"),
+        canonical_bb,
         pl.col("hit_location").cast(pl.String),
         pl.col("hc_x").cast(pl.Float64, strict=False),
         pl.col("hc_y").cast(pl.Float64, strict=False),
         pl.col("home_team").cast(pl.String),
         pl.col("away_team").cast(pl.String),
-        _nonblank("events").alias("is_terminal_event"),
+        terminal.alias("is_terminal_event"),
+        is_pa_terminal.alias("is_plate_appearance_terminal"),
         contact.alias("is_contact"),
     ).drop_nulls(["game_pk", "at_bat_index", "pitch_number"])
 
