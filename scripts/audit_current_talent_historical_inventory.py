@@ -49,8 +49,10 @@ def main() -> int:
         f"- Recognized player-game assets: {len(player_game_assets):,}",
         f"- Observed years: {report['observed_years'][0] if report['observed_years'] else 'none'}"
         f"–{report['observed_years'][-1] if report['observed_years'] else 'none'}",
-        "- Complete current-level years with both source families: "
+        "- Years with both source families present at every current level: "
         + ", ".join(str(year) for year in report["complete_all_level_years"]),
+        "- Years with exact PBP/player-game filename-period parity at every current level: "
+        + ", ".join(str(year) for year in report["period_parity_all_level_years"]),
         "",
         "## Recent year × level coverage",
         "",
@@ -63,13 +65,16 @@ def main() -> int:
             f"- {row['year']} {row['filename_level']}: "
             f"PBP={row['pbp_asset_count']} assets/{row['pbp_periods']}; "
             f"player-game={row['player_game_asset_count']} assets/{row['player_game_periods']}; "
-            f"both={row['has_both_source_families']}"
+            f"both={row['has_both_source_families']}; "
+            f"period_parity={row['period_sets_match']}; "
+            f"period_overlap={row['common_period_coverage_ratio']:.3f}"
         )
     lines.extend(
         [
             "",
-            "Inventory overlap only; deeper source semantics, league mapping, chronology, and "
-            "Performance reconciliation remain required before a year enters model training.",
+            "Source-family presence is a weak inventory gate. Period parity is the preferred "
+            "initial history-planning gate, but neither certifies deeper source semantics, league "
+            "mapping, chronology, participant authority, or frozen-Performance reconciliation.",
         ]
     )
     text = "\n".join(lines)
