@@ -1,11 +1,11 @@
 """Reusable armstjc MiLB player-game boxscore release helpers.
 
 The public ``game_player_stats`` release is useful as a cheap, game-grain
-identity check against pitch-level PBP. It is not treated as canonical truth:
+identity check against pitch-level PBP.  It is not treated as canonical truth:
 raw release snapshots retain provenance and exact duplicates are removed before
-aggregation. When cumulative player-game batting snapshots conflict, a current
+aggregation.  When cumulative player-game batting snapshots conflict, a current
 state is selected only when exactly one observation component-wise dominates
-all alternatives across PA, AB, SO, SF, and SH. Non-monotonic conflicts remain
+all alternatives across PA, AB, SO, SF, and SH.  Non-monotonic conflicts remain
 unresolved rather than being ordered by filename or upload time.
 """
 
@@ -13,7 +13,6 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
-import os
 import re
 from typing import Any, Iterable
 
@@ -54,23 +53,6 @@ def _parse_utc(value: str) -> datetime:
     if parsed.tzinfo is None or parsed.utcoffset() is None:
         raise ValueError(f"GitHub timestamp is not timezone-aware: {value!r}")
     return parsed.astimezone(UTC)
-
-
-def _apply_optional_github_auth(client: requests.Session) -> None:
-    """Use Actions/CLI GitHub auth when available without requiring credentials.
-
-    Public armstjc release inventory works anonymously, but long CI sessions can
-    exhaust GitHub's low unauthenticated REST quota.  ``GITHUB_TOKEN`` is exposed
-    explicitly by workflows that need the inventory; ``GH_TOKEN`` keeps local
-    GitHub CLI environments equally reusable.  An explicitly configured session
-    Authorization header always wins.
-    """
-
-    if "Authorization" in client.headers:
-        return
-    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-    if token:
-        client.headers["Authorization"] = f"Bearer {token}"
 
 
 def parse_player_game_asset_name(name: str) -> tuple[int, int, str] | None:
@@ -165,7 +147,6 @@ def fetch_player_game_asset_inventory(
     client.headers.setdefault(
         "User-Agent", "universal-baseball-model-player-game-inventory/0.1"
     )
-    _apply_optional_github_auth(client)
     try:
         release_response = client.get(
             f"https://api.github.com/repos/{owner}/{repo}/releases/tags/{release_tag}",
@@ -226,7 +207,7 @@ def project_player_game_batting(
     """Project a raw player-game CSV to fields needed for contact reconciliation.
 
     Batting rows with no batting stat payload are retained with a zero expected
-    contact count. Partially populated batting contact inputs are kept as null
+    contact count.  Partially populated batting contact inputs are kept as null
     rather than silently interpreted as zero.
     """
 
@@ -250,48 +231,311 @@ def project_player_game_batting(
         _int_expr("league_id"),
         _int_expr("team_id"),
         _int_expr("player_id"),
-        *[_int_expr(field) for field in _BATTING_FIELDS],
-        pl.lit(str(source_asset)).alias("source_asset"),
+        *[_int_expr(column) for column in _BATTING_FIELDS],
+        pl.lit(source_asset).alias("source_asset"),
     ).drop_nulls(PLAYER_GAME_KEY)
 
     if season is not None:
-        projected = projected.filter(pl.col("game_date").str.starts_with(f"{int(season)}-"))
+        projected = projected.filter(pl.col("game_date").str.starts_with(f"{season}-"))
     if game_type is not None:
-        projected = projected.filter(pl.col("game_type") == str(game_type))
+        projected = projected.filter(pl.col("game_type") == game_type)
 
-    all_batting_null = pl.all_horizontal([pl.col(field).is_null() for field in _BATTING_FIELDS])
-    all_contact_inputs_present = pl.all_horizontal(
-        [pl.col(field).is_not_null() for field in _CONTACT_INPUTS]
+    has_any_batting = pl.any_horizontal(
+        [pl.col(column).is_not_null() for column in _BATTING_FIELDS]
+    )
+    has_all_contact_inputs = pl.all_horizontal(
+        [pl.col(column).is_not_null() for column in _CONTACT_INPUTS]
     )
     expected_contact = (
-        pl.col("batting_AB")
-        - pl.col("batting_SO")
-        + pl.col("batting_SF")
-        + pl.col("batting_SH")
-    )
-    return projected.with_columns(
-        pl.when(all_batting_null)
+        pl.when(has_all_contact_inputs)
+        .then(
+            pl.col("batting_AB")
+            - pl.col("batting_SO")
+            + pl.col("batting_SF")
+            + pl.col("batting_SH")
+        )
+        .when(~has_any_batting)
         .then(pl.lit(0, dtype=pl.Int64))
-        .when(all_contact_inputs_present)
-        .then(expected_contact)
         .otherwise(None)
         .alias("expected_contact_count")
     )
+    return projected.with_columns(expected_contact)
 
 
-def player_game_contact_residuals(frame: pl.DataFrame) -> pl.DataFrame:
-    """Summarize contact-count residuals at player-game grain."""
+def _cumulative_batting_dominates(
+    candidate: dict[str, Any], other: dict[str, Any]
+) -> bool:
+    """Whether candidate can be a later cumulative snapshot than ``other``.
 
-    required = {"game_id", "player_id", "expected_contact_count", "source_asset"}
-    missing = sorted(required - set(frame.columns))
+    A null in the earlier observation provides no lower bound.  Any non-null
+    earlier value must remain non-null and may not decrease in the candidate.
+    """
+
+    for field in _BATTING_FIELDS:
+        candidate_value = candidate[field]
+        other_value = other[field]
+        if other_value is None:
+            continue
+        if candidate_value is None or int(candidate_value) < int(other_value):
+            return False
+    return True
+
+
+def _resolved_row_from_selection(
+    *,
+    key: dict[str, int],
+    summary: dict[str, Any],
+    selection: dict[str, Any] | None,
+    resolution: str,
+) -> dict[str, Any]:
+    row: dict[str, Any] = {
+        **key,
+        "distinct_observation_count": int(summary["distinct_observation_count"]),
+        "source_asset_count": int(summary["source_asset_count"]),
+        "source_assets": summary["source_assets"],
+        "batting_vector_count": int(summary["batting_vector_count"]),
+        "resolved_by_componentwise_dominance": resolution == "componentwise_dominance",
+        "player_game_resolution": resolution,
+    }
+    for field in _METADATA_FIELDS + _BATTING_FIELDS + ["expected_contact_count"]:
+        row[field] = selection[field] if selection is not None else None
+    return row
+
+
+def resolve_player_game_batting(
+    observations: pl.DataFrame,
+) -> tuple[pl.DataFrame, dict[str, int]]:
+    """Exact-dedup and conservatively resolve cumulative player-game snapshots.
+
+    The upstream monthly builder currently appends each successfully parsed game
+    twice, so exact duplicates are measured and removed first.  Assets can also
+    carry partial snapshots of games outside their apparent filename period.
+    Filename chronology is therefore not used to pick a winner.
+
+    For each player-game, immutable metadata must agree.  If more than one
+    distinct cumulative batting vector exists, a current observation is selected
+    only when exactly one vector component-wise dominates every alternative
+    across PA, AB, SO, SF, and SH.  Otherwise that player-game stays unresolved.
+    """
+
+    if observations.is_empty():
+        raise ValueError("player-game observations cannot be empty")
+    required = set(
+        PLAYER_GAME_KEY
+        + _METADATA_FIELDS
+        + _BATTING_FIELDS
+        + ["expected_contact_count", "source_asset"]
+    )
+    missing = sorted(required - set(observations.columns))
     if missing:
-        raise ValueError(f"player-game frame missing residual fields: {missing}")
+        raise ValueError(f"player-game observations missing fields: {missing}")
 
-    return (
-        frame.group_by(PLAYER_GAME_KEY)
+    raw_rows = observations.height
+    exact = observations.unique(maintain_order=True)
+    exact_duplicate_rows = raw_rows - exact.height
+
+    # First collapse rows that differ only in release provenance.  This leaves
+    # one logical observation per distinct player-game state while retaining
+    # source provenance separately in the group summary.
+    logical_fields = _METADATA_FIELDS + _BATTING_FIELDS + ["expected_contact_count"]
+    logical = exact.select(PLAYER_GAME_KEY + logical_fields).unique(maintain_order=True)
+    summaries = (
+        exact.group_by(PLAYER_GAME_KEY)
         .agg(
-            pl.col("expected_contact_count").max().alias("expected_contact_count"),
+            pl.len().alias("distinct_observation_count"),
             pl.col("source_asset").n_unique().alias("source_asset_count"),
+            pl.col("source_asset").unique().sort().alias("source_assets"),
+            pl.struct(_BATTING_FIELDS).n_unique().alias("batting_vector_count"),
+            *[
+                pl.col(field).drop_nulls().n_unique().alias(f"{field}_value_count")
+                for field in _METADATA_FIELDS
+            ],
         )
         .sort(PLAYER_GAME_KEY)
+    )
+    summary_by_key = {
+        (int(row["game_id"]), int(row["player_id"])): row
+        for row in summaries.to_dicts()
+    }
+
+    resolved_rows: list[dict[str, Any]] = []
+    conflict_count = 0
+    dominance_resolved_count = 0
+    unresolved_conflict_count = 0
+    metadata_conflict_count = 0
+
+    for group in logical.partition_by(PLAYER_GAME_KEY, maintain_order=True):
+        rows = group.to_dicts()
+        first = rows[0]
+        key_tuple = (int(first["game_id"]), int(first["player_id"]))
+        summary = summary_by_key[key_tuple]
+        key = {"game_id": key_tuple[0], "player_id": key_tuple[1]}
+
+        metadata_conflict = any(
+            int(summary[f"{field}_value_count"]) > 1 for field in _METADATA_FIELDS
+        )
+        if metadata_conflict:
+            metadata_conflict_count += 1
+            unresolved_conflict_count += 1
+            resolved_rows.append(
+                _resolved_row_from_selection(
+                    key=key,
+                    summary=summary,
+                    selection=None,
+                    resolution="unresolved_metadata_conflict",
+                )
+            )
+            continue
+
+        # Metadata nulls can differ from non-nulls across otherwise compatible
+        # snapshots.  Fill each selected row with the sole non-null group value.
+        metadata_values: dict[str, Any] = {}
+        for field in _METADATA_FIELDS:
+            non_null = [row[field] for row in rows if row[field] is not None]
+            metadata_values[field] = non_null[0] if non_null else None
+
+        # Distinct batting vectors, not source asset labels, define a snapshot
+        # conflict.  This is what exposed the three 2024 AAA partial-game states.
+        by_vector: dict[tuple[Any, ...], dict[str, Any]] = {}
+        for row in rows:
+            vector = tuple(row[field] for field in _BATTING_FIELDS)
+            by_vector.setdefault(vector, row)
+        candidates = list(by_vector.values())
+
+        if len(candidates) == 1:
+            selected = dict(candidates[0])
+            selected.update(metadata_values)
+            resolved_rows.append(
+                _resolved_row_from_selection(
+                    key=key,
+                    summary=summary,
+                    selection=selected,
+                    resolution="consensus",
+                )
+            )
+            continue
+
+        conflict_count += 1
+        dominators = [
+            candidate
+            for candidate in candidates
+            if all(
+                _cumulative_batting_dominates(candidate, other)
+                for other in candidates
+            )
+        ]
+        if len(dominators) == 1:
+            selected = dict(dominators[0])
+            selected.update(metadata_values)
+            dominance_resolved_count += 1
+            resolved_rows.append(
+                _resolved_row_from_selection(
+                    key=key,
+                    summary=summary,
+                    selection=selected,
+                    resolution="componentwise_dominance",
+                )
+            )
+        else:
+            unresolved_conflict_count += 1
+            resolved_rows.append(
+                _resolved_row_from_selection(
+                    key=key,
+                    summary=summary,
+                    selection=None,
+                    resolution="unresolved_nonmonotonic_conflict",
+                )
+            )
+
+    resolved = pl.DataFrame(resolved_rows).sort(PLAYER_GAME_KEY)
+    # Restore stable integer dtypes after dict-based resolution.
+    resolved = resolved.with_columns(
+        *[
+            pl.col(field).cast(pl.Int64, strict=False)
+            for field in [
+                "game_id",
+                "player_id",
+                "league_id",
+                "team_id",
+                *_BATTING_FIELDS,
+                "expected_contact_count",
+                "distinct_observation_count",
+                "source_asset_count",
+                "batting_vector_count",
+            ]
+        ]
+    )
+    unresolved_contact_count = resolved.filter(
+        pl.col("expected_contact_count").is_null()
+    ).height
+
+    diagnostics = {
+        "raw_observation_count": raw_rows,
+        "exact_unique_observation_count": exact.height,
+        "exact_duplicate_row_count": exact_duplicate_rows,
+        "resolved_player_game_count": resolved.height,
+        "conflicting_player_game_count": conflict_count,
+        "resolved_by_componentwise_dominance_count": dominance_resolved_count,
+        "unresolved_conflicting_player_game_count": unresolved_conflict_count,
+        "metadata_conflict_player_game_count": metadata_conflict_count,
+        "unresolved_expected_contact_player_game_count": unresolved_contact_count,
+    }
+    return resolved, diagnostics
+
+
+def identify_unambiguous_contact_reassignments(
+    comparison: pl.DataFrame,
+) -> pl.DataFrame:
+    """Find strict source-only +1/-1 player-game reassignments.
+
+    A game is repairable without official PBP only when exactly two players have
+    non-zero residuals, one is +1 and the other -1, and the +1 player has exactly
+    one source contact but zero expected boxscore contacts.  Under those
+    conditions the contaminated source contact is unique and its recipient is
+    unique.  Everything else stays in the exception queue.
+    """
+
+    required = {
+        "game_id",
+        "player_id",
+        "source_contact_count",
+        "expected_contact_count",
+        "difference",
+    }
+    missing = sorted(required - set(comparison.columns))
+    if missing:
+        raise ValueError(f"contact comparison missing fields: {missing}")
+
+    rows: list[dict[str, int]] = []
+    for game in comparison.filter(pl.col("difference") != 0).partition_by(
+        "game_id", maintain_order=True
+    ):
+        if game.height != 2:
+            continue
+        positive = game.filter(pl.col("difference") == 1)
+        negative = game.filter(pl.col("difference") == -1)
+        if positive.height != 1 or negative.height != 1:
+            continue
+        donor = positive.row(0, named=True)
+        recipient = negative.row(0, named=True)
+        if (
+            int(donor["source_contact_count"]) != 1
+            or int(donor["expected_contact_count"]) != 0
+        ):
+            continue
+        rows.append(
+            {
+                "game_id": int(donor["game_id"]),
+                "source_batter_id": int(donor["player_id"]),
+                "reassigned_batter_id": int(recipient["player_id"]),
+            }
+        )
+
+    return pl.DataFrame(
+        rows,
+        schema={
+            "game_id": pl.Int64,
+            "source_batter_id": pl.Int64,
+            "reassigned_batter_id": pl.Int64,
+        },
     )
