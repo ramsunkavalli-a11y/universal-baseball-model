@@ -1,0 +1,67 @@
+name: Batting Performance multilevel POC
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/batting-performance-multilevel-poc.yml"
+      - "scripts/build_batting_performance_level_poc.py"
+      - "src/universal_baseball/performance_level_config.py"
+      - "src/universal_baseball/armstjc_contacts.py"
+      - "src/universal_baseball/contact_identity_overlay.py"
+      - "src/universal_baseball/contact_profile.py"
+      - "src/universal_baseball/performance_season.py"
+      - "src/universal_baseball/bin_value_calibration.py"
+      - "src/universal_baseball/bin_value_policy.py"
+      - "src/universal_baseball/bin_value_pooling.py"
+      - "src/universal_baseball/player_game_stats.py"
+      - "src/universal_baseball/season_stats.py"
+      - "src/universal_baseball/official.py"
+      - "src/universal_baseball/storage.py"
+      - "tests/test_performance_level_config.py"
+      - "tests/test_armstjc_contacts.py"
+      - "tests/test_contact_identity_overlay.py"
+      - "tests/test_contact_profile.py"
+      - "tests/test_performance_season.py"
+      - "tests/test_bin_value_calibration.py"
+
+permissions:
+  contents: read
+
+jobs:
+  build-level:
+    strategy:
+      fail-fast: false
+      matrix:
+        level: ["aa", "a+", "a", "rk"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Build completed-level batting Performance POC
+        run: python scripts/build_batting_performance_level_poc.py --level '${{ matrix.level }}'
+
+      - name: Upload level artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: batting-performance-${{ matrix.level }}-2024
+          path: reports/generated/batting-performance-multilevel-poc/
+          if-no-files-found: warn
+          retention-days: 14
