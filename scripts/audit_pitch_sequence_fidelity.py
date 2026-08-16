@@ -30,7 +30,6 @@ from typing import Any
 
 import polars as pl
 
-import audit_milb_bin_run_values as base
 import audit_milb_bin_value_stability as stability
 from universal_baseball.certification import download_file, read_quarantined_csv
 from universal_baseball.official_capture import capture_official_json, new_official_session
@@ -62,7 +61,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _load_inventory(asset: str, work_dir: Path, max_games: int) -> tuple[pl.DataFrame, dict]:
+def _load_inventory(asset: str, work_dir: Path, max_games: int) -> dict[str, Any]:
     path = work_dir / asset
     metadata = download_file(f"{BASE_URL}/{asset}", path, timeout_seconds=240)
     frame = read_quarantined_csv(path)
@@ -71,7 +70,7 @@ def _load_inventory(asset: str, work_dir: Path, max_games: int) -> tuple[pl.Data
     orders = stability._inventory_orders(frame, asset, max_games=max_games)
     if not orders:
         raise RuntimeError(f"source inventory has no leagues/games: {asset}")
-    return frame, {"metadata": metadata, "orders": orders}
+    return {"metadata": metadata, "orders": orders}
 
 
 def _pct(value: float | None) -> str:
@@ -152,8 +151,8 @@ def main() -> int:
     args.work_dir.mkdir(parents=True, exist_ok=True)
     args.report_dir.mkdir(parents=True, exist_ok=True)
 
-    _, rookie = _load_inventory(ROOKIE_ASSET, args.work_dir, args.games_per_league)
-    _, single_a = _load_inventory(SINGLE_A_ASSET, args.work_dir, args.games_per_league)
+    rookie = _load_inventory(ROOKIE_ASSET, args.work_dir, args.games_per_league)
+    single_a = _load_inventory(SINGLE_A_ASSET, args.work_dir, args.games_per_league)
 
     selected: list[dict[str, Any]] = []
     league_meta: dict[str, dict[str, Any]] = {}
@@ -174,13 +173,26 @@ def main() -> int:
                 "game_count": len(games),
             }
             for game in games:
-                selected.append({**game, "environment_id": environment_id, "source_class": source_class})
+                selected.append(
+                    {
+                        **game,
+                        "environment_id": environment_id,
+                        "source_class": source_class,
+                    }
+                )
 
     rows_by_environment: dict[str, list[dict[str, Any]]] = defaultdict(list)
     official_sha256: dict[int, str] = {}
     session = new_official_session()
     try:
-        for game in sorted(selected, key=lambda item: (item["environment_id"], item["game_date"], item["game_pk"])):
+        for game in sorted(
+            selected,
+            key=lambda item: (
+                item["environment_id"],
+                item["game_date"],
+                item["game_pk"],
+            ),
+        ):
             capture = capture_official_json(
                 f"game/{game['game_pk']}/playByPlay",
                 session=session,
@@ -266,7 +278,11 @@ def main() -> int:
         "## Pooled Single-A control",
         "",
     ]
-    for outcome, label in (("strikeout", "K"), ("walk", "BB"), ("batted_ball", "BIP")):
+    for outcome, label in (
+        ("strikeout", "K"),
+        ("walk", "BB"),
+        ("batted_ball", "BIP"),
+    ):
         value = control["outcomes"][outcome]
         lines.append(
             f"- {label}: n={value['pa_count']:,}; mean recorded pitches={value['mean_recorded_pitch_events']:.3f}; "
@@ -277,7 +293,6 @@ def main() -> int:
 
     lines.extend(["", "## Rookie / complex leagues", ""])
     for row in comparisons:
-        summary = summaries[f"{league_meta[next(k for k,v in league_meta.items() if v['league_id']==row['league_id'] and v['season']==league_meta[k]['season'])]['season']}:{row['league_id']}"] if False else None
         lines.extend(
             [
                 f"### {row['league_name']} (league_id={row['league_id']})",
