@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/pitch-sequence-fidelity-audit.yml"
       - "scripts/audit_pitch_sequence_fidelity.py"
+      - "scripts/audit_pitch_sequence_fidelity_2023.py"
       - "src/universal_baseball/pitch_sequence_fidelity.py"
       - "tests/test_pitch_sequence_fidelity.py"
 
@@ -12,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  audit-pitch-sequence-fidelity:
+  replicate-2023-pitch-sequence-fidelity:
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -32,14 +33,14 @@ jobs:
       - name: Run unit tests
         run: python -m pytest
 
-      - name: Audit official pitch-sequence fidelity
-        run: python scripts/audit_pitch_sequence_fidelity.py --games-per-league 20
+      - name: Replicate official pitch-sequence fidelity on August 2023
+        run: python scripts/audit_pitch_sequence_fidelity_2023.py --games-per-league 20
 
-      - name: Upload fidelity report
+      - name: Upload 2023 fidelity report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: pitch-sequence-fidelity
+          name: pitch-sequence-fidelity-2023
           path: reports/generated/pitch-sequence-fidelity/
           if-no-files-found: warn
           retention-days: 14
