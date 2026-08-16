@@ -201,7 +201,14 @@ def main() -> int:
     )
 
     if mapping["year_level_rows"]:
-        pl.DataFrame(mapping["year_level_rows"]).write_csv(args.report_root / "league_map.csv")
+        flat_rows = [
+            {
+                **row,
+                "league_ids": ",".join(str(value) for value in row["league_ids"]),
+            }
+            for row in mapping["year_level_rows"]
+        ]
+        pl.DataFrame(flat_rows).write_csv(args.report_root / "league_map.csv")
     if asset_errors:
         pl.DataFrame(asset_errors).write_csv(args.report_root / "asset_errors.csv")
 
