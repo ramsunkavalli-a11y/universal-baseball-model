@@ -8,6 +8,7 @@ on:
     paths:
       - ".github/workflows/current-talent-2021-rk-contact-sequence-diagnostic.yml"
       - "scripts/diagnose_current_talent_2021_rk_contact_sequence_coverage.py"
+      - "scripts/diagnose_raw_2021_rk_pbp_sequence.py"
 
 permissions:
   contents: read
@@ -40,6 +41,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/diagnose_current_talent_2021_rk_contact_sequence_coverage.py
+
+      - name: Capture raw uncovered PBP sequence
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/diagnose_raw_2021_rk_pbp_sequence.py
 
       - name: Upload diagnostic artifact
         if: always()
