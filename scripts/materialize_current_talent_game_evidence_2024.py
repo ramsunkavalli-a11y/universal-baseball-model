@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 """Live 2024 Current Talent player-game evidence POC for AAA + MLB.
 
-This is the first end-to-end chronology-safe materialization gate.  It reuses the
+This is the first end-to-end chronology-safe materialization gate. It reuses the
 already-certified 2024 Performance source paths, projects them to player-game
 Current Talent evidence, and then rolls those games back up against the frozen
-Performance artifacts.  Acceptance requires exact PA, total core-event, and
-12-bin occurrence reconciliation independently for AAA and MLB.
+Performance artifacts. Acceptance requires exact PA, core-event, 12-bin, and
+available contact-classification reconciliation independently for AAA and MLB.
 
 The POC intentionally stops before level translation, age priors, shrinkage,
 projection, playing time, defense, WAR, or rankings.
@@ -140,7 +140,11 @@ def _load_aaa_current_outcomes(
             f"AAA Current Talent actual-league coverage mismatch: observed={sorted(observed)}, "
             f"expected={sorted(league_ids)}"
         )
-    return resolved, {"asset_count": len(assets), "asset_names": [a.name for a in assets], **metrics}
+    return resolved, {
+        "asset_count": len(assets),
+        "asset_names": [a.name for a in assets],
+        **metrics,
+    }
 
 
 def _reconcile_and_persist(
@@ -161,9 +165,7 @@ def _reconcile_and_persist(
     )
     mismatch_dir = report_dir / "reconciliation"
     mismatch_dir.mkdir(parents=True, exist_ok=True)
-    summary_mismatch = summary_comparison.filter(
-        (pl.col("pa_difference") != 0) | (pl.col("core_event_difference") != 0)
-    )
+    summary_mismatch = summary_comparison.filter(pl.col("has_any_mismatch"))
     bin_mismatch = bin_comparison.filter(pl.col("occurrence_difference") != 0)
     summary_mismatch.write_csv(mismatch_dir / f"{label}_summary_mismatches.csv")
     bin_mismatch.write_csv(mismatch_dir / f"{label}_bin_mismatches.csv")
@@ -171,7 +173,8 @@ def _reconcile_and_persist(
         raise RuntimeError(
             f"{label} player-game evidence failed frozen Performance reconciliation: "
             f"summary={metrics['summary_mismatch_row_count']}, "
-            f"bins={metrics['profile_bin_mismatch_row_count']}"
+            f"bins={metrics['profile_bin_mismatch_row_count']}; "
+            f"fields={metrics['summary_field_mismatch_counts']}"
         )
     return metrics
 
@@ -322,11 +325,12 @@ def main() -> int:
     }
 
     report = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "scope": {
             "season": SEASON,
             "levels": ["AAA", "MLB"],
             "purpose": "chronology-safe Current Talent game-evidence live POC",
+            "evidence_denominator_policy": "ADR 024 separate PA / expected-contact / observed-contact",
         },
         "aaa": aaa_metrics,
         "mlb": mlb_metrics,
@@ -357,9 +361,11 @@ def main() -> int:
         "",
         f"- AAA player-games: {aaa_summary.height:,}",
         f"- AAA PA: {aaa_metrics['reconciliation']['game_plate_appearances']:,}",
+        f"- AAA contact residual: {aaa_metrics['evidence']['total_contact_count_residual']:+,}",
         f"- AAA frozen Performance reconciliation: {aaa_metrics['reconciliation']['exact_reconciliation']}",
         f"- MLB player-games: {mlb_summary.height:,}",
         f"- MLB PA: {mlb_metrics['reconciliation']['game_plate_appearances']:,}",
+        f"- MLB contact residual: {mlb_metrics['evidence']['total_contact_count_residual']:+,}",
         f"- MLB frozen Performance reconciliation: {mlb_metrics['reconciliation']['exact_reconciliation']}",
         f"- Combined player-games: {combined_summary.height:,}",
         f"- Combined actual leagues: {combined_metrics['actual_league_count']}",
