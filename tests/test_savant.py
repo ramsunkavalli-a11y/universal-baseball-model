@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import date
 
 import polars as pl
+import pytest
 
 from universal_baseball.savant import (
     project_savant_performance_rows,
@@ -36,9 +37,114 @@ def test_raw_csv_is_read_as_strings_before_explicit_projection() -> None:
     assert row["batter_mlbam_id"] == 101
     assert row["batter_side"] == "R"
     assert row["is_terminal_event"] is True
+    assert row["is_plate_appearance_terminal"] is True
     assert row["is_contact"] is True
+    assert row["source_bb_type"] == "fly_ball"
     assert row["bb_type"] == "fly_ball"
     assert row["hc_x"] == 80.0
+
+
+def test_bunt_narrative_restores_canonical_bunt_trajectory() -> None:
+    raw = pl.DataFrame(
+        {
+            "game_date": ["2024-06-15"],
+            "game_year": ["2024"],
+            "game_pk": ["745001"],
+            "at_bat_number": ["2"],
+            "pitch_number": ["1"],
+            "game_type": ["R"],
+            "batter": ["101"],
+            "pitcher": ["201"],
+            "stand": ["R"],
+            "p_throws": ["L"],
+            "events": ["sac_bunt"],
+            "description": ["hit_into_play"],
+            "des": ["Batter out on a sacrifice bunt to first baseman."],
+            "type": ["X"],
+            "bb_type": ["ground_ball"],
+            "hit_location": ["3"],
+            "hc_x": ["125.42"],
+            "hc_y": ["190.0"],
+            "home_team": ["SF"],
+            "away_team": ["LAD"],
+        }
+    )
+    row = project_savant_performance_rows(raw).to_dicts()[0]
+    assert row["source_bb_type"] == "ground_ball"
+    assert row["bb_type"] == "bunt_grounder"
+
+
+def test_truncated_pa_is_terminal_source_marker_but_not_true_pa() -> None:
+    raw = pl.DataFrame(
+        {
+            "game_date": ["2024-06-15"],
+            "game_year": ["2024"],
+            "game_pk": ["745001"],
+            "at_bat_number": ["2"],
+            "pitch_number": ["3"],
+            "game_type": ["R"],
+            "batter": ["101"],
+            "pitcher": ["201"],
+            "stand": ["R"],
+            "p_throws": ["L"],
+            "events": ["truncated_pa"],
+            "description": ["ball"],
+            "des": [None],
+            "type": ["B"],
+            "bb_type": [None],
+            "hit_location": [None],
+            "hc_x": [None],
+            "hc_y": [None],
+            "home_team": ["SF"],
+            "away_team": ["LAD"],
+        },
+        schema_overrides={
+            "des": pl.String,
+            "bb_type": pl.String,
+            "hit_location": pl.String,
+            "hc_x": pl.String,
+            "hc_y": pl.String,
+        },
+    )
+    row = project_savant_performance_rows(raw).to_dicts()[0]
+    assert row["is_terminal_event"] is True
+    assert row["is_plate_appearance_terminal"] is False
+
+
+def test_unknown_terminal_event_fails_loudly() -> None:
+    raw = pl.DataFrame(
+        {
+            "game_date": ["2024-06-15"],
+            "game_year": ["2024"],
+            "game_pk": ["745001"],
+            "at_bat_number": ["2"],
+            "pitch_number": ["3"],
+            "game_type": ["R"],
+            "batter": ["101"],
+            "pitcher": ["201"],
+            "stand": ["R"],
+            "p_throws": ["L"],
+            "events": ["future_new_event"],
+            "description": ["ball"],
+            "des": [None],
+            "type": ["B"],
+            "bb_type": [None],
+            "hit_location": [None],
+            "hc_x": [None],
+            "hc_y": [None],
+            "home_team": ["SF"],
+            "away_team": ["LAD"],
+        },
+        schema_overrides={
+            "des": pl.String,
+            "bb_type": pl.String,
+            "hit_location": pl.String,
+            "hc_x": pl.String,
+            "hc_y": pl.String,
+        },
+    )
+    with pytest.raises(ValueError, match="unknown terminal event"):
+        project_savant_performance_rows(raw)
 
 
 def test_hitdata_can_preserve_contact_when_pitch_code_is_not_x() -> None:
