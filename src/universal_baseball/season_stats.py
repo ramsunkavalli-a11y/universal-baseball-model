@@ -89,6 +89,23 @@ def _column_map(kind: SeasonStatKind) -> dict[str, str]:
     raise ValueError(f"unsupported season-stat kind: {kind!r}")
 
 
+def _integer_like_expr(column: str, alias: str) -> pl.Expr:
+    """Parse integer-like numeric values, including source strings like ``125.0``.
+
+    Counts and MLBAM IDs are integral even though some release files serialize
+    them as decimal strings. Parse through Float64 but reject non-integral values
+    instead of silently truncating them.
+    """
+
+    numeric = pl.col(column).cast(pl.Float64, strict=False)
+    return (
+        pl.when(numeric.is_not_null() & (numeric == numeric.floor()))
+        .then(numeric.cast(pl.Int64, strict=False))
+        .otherwise(None)
+        .alias(alias)
+    )
+
+
 def standardize_armstjc_season_stats(
     frame: pl.DataFrame,
     kind: SeasonStatKind,
@@ -168,9 +185,9 @@ def select_reconciliation_players(
 
     working = (
         frame.select(
-            pl.col("league_id").cast(pl.Int64, strict=False).alias("league_id"),
-            pl.col("player_id").cast(pl.Int64, strict=False).alias("player_id"),
-            pl.col(volume_column).cast(pl.Int64, strict=False).alias("__volume"),
+            _integer_like_expr("league_id", "league_id"),
+            _integer_like_expr("player_id", "player_id"),
+            _integer_like_expr(volume_column, "__volume"),
         )
         .drop_nulls(["league_id", "player_id", "__volume"])
         .filter(pl.col("__volume") > 0)
