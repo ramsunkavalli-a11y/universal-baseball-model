@@ -1,0 +1,52 @@
+name: Current Talent 2022 outcome adjudication
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/current-talent-2022-outcome-adjudication.yml"
+      - "scripts/certify_current_talent_2022_outcome_adjudication.py"
+      - "src/universal_baseball/current_talent_official_outcomes.py"
+      - "src/universal_baseball/current_talent_era.py"
+      - "tests/test_current_talent_official_outcomes.py"
+
+permissions:
+  contents: read
+
+jobs:
+  adjudicate:
+    strategy:
+      fail-fast: false
+      matrix:
+        level: [aaa, aa, "a+", a, rk]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Run official outcome authority tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_official_outcomes.py
+          tests/test_current_talent_season_reconciliation.py
+          tests/test_current_talent_era.py
+      - name: Certify 2022 full-season outcome adjudication
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          python scripts/certify_current_talent_2022_outcome_adjudication.py
+          --level "${{ matrix.level }}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-2022-outcome-adjudication-${{ matrix.level }}
+          path: reports/generated/current-talent-2022-outcome-adjudication/${{ matrix.level }}/
+          if-no-files-found: warn
+          retention-days: 14
