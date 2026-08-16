@@ -60,6 +60,20 @@ def _trajectory_family_expr(bb_type_column: str) -> pl.Expr:
     return expression.alias("trajectory_family")
 
 
+def _core_direction_prefix_expr(direction: pl.Expr) -> pl.Expr:
+    """Map descriptive direction labels to the frozen compact bin vocabulary."""
+
+    return (
+        pl.when(direction == "pull")
+        .then(pl.lit("PULL"))
+        .when(direction == "center")
+        .then(pl.lit("CENTER"))
+        .when(direction == "opposite")
+        .then(pl.lit("OPPO"))
+        .otherwise(pl.lit(None, dtype=pl.String))
+    )
+
+
 def classify_contact_profile_events(frame: pl.DataFrame) -> pl.DataFrame:
     """Classify one resolved row per physical contact into the screened core view.
 
@@ -125,6 +139,7 @@ def classify_contact_profile_events(frame: pl.DataFrame) -> pl.DataFrame:
 
     trajectory = pl.col("trajectory_family")
     direction = pl.col("direction")
+    core_direction = _core_direction_prefix_expr(direction)
     candidate_foul_air = trajectory.is_in(sorted(FOUL_AIR_TRAJECTORY_FAMILIES))
     narrative_present = (
         pl.col("result_description").is_not_null()
@@ -156,12 +171,12 @@ def classify_contact_profile_events(frame: pl.DataFrame) -> pl.DataFrame:
     pre_screen_bin = (
         pl.when(trajectory == "IFFB")
         .then(pl.lit("IFFB"))
-        .when((trajectory == "OFFB") & direction.is_not_null())
-        .then(pl.concat_str([direction.str.to_uppercase(), pl.lit("OFFB")], separator="_"))
-        .when((trajectory == "LD") & direction.is_not_null())
-        .then(pl.concat_str([direction.str.to_uppercase(), pl.lit("LD")], separator="_"))
-        .when((trajectory == "GB") & direction.is_not_null())
-        .then(pl.concat_str([direction.str.to_uppercase(), pl.lit("GB")], separator="_"))
+        .when((trajectory == "OFFB") & core_direction.is_not_null())
+        .then(pl.concat_str([core_direction, pl.lit("OFFB")], separator="_"))
+        .when((trajectory == "LD") & core_direction.is_not_null())
+        .then(pl.concat_str([core_direction, pl.lit("LD")], separator="_"))
+        .when((trajectory == "GB") & core_direction.is_not_null())
+        .then(pl.concat_str([core_direction, pl.lit("GB")], separator="_"))
         .otherwise(pl.lit(None, dtype=pl.String))
     )
 
