@@ -45,8 +45,9 @@ The following are no longer open architecture questions:
 14. state replay semantics are validated on affiliated games and independently against Retrosheet;
 15. deterministic RE24 mechanics are validated on a complete independent MLB season;
 16. the MiLB league-to-Performance-bin state/value pipeline works across AAA and Rookie/complex environments;
-17. direct small-sample league-season bin means are **not** stable enough to freeze blindly; pooling/shrinkage or a larger certified sample is required;
-18. reusable season-player batting/pitching aggregates are certified as the historical outcome-count backbone for mutually available fields.
+17. direct small-sample league-season bin means are noisy enough that pooling had to be validated rather than assumed;
+18. reusable season-player batting/pitching aggregates are certified as the historical outcome-count backbone for mutually available fields;
+19. AAA bin-value estimation uses an independently confirmed, same-level shrinkage rule with 25 prior-equivalent occurrences; Rookie/complex remains unpooled until conflicting evidence is resolved.
 
 ## Reusable MiLB pitch source: certified caveats
 
@@ -109,7 +110,7 @@ The affiliated replay POC produced **476 transitions from 439 true PAs**, includ
 
 Independent Retrosheet validation then matched **228/228 ordered candidate transitions across 3 MLB games**, with **3/3 exact games**, zero transition-count mismatch half-innings, and zero shared-position state mismatches. See ADR 012.
 
-## RE24 mechanics are frozen; production bin weights are not
+## RE24 mechanics and AAA bin-value estimator are frozen
 
 The accepted run-expectancy mechanics are standard 24-state base/out RE:
 
@@ -123,7 +124,36 @@ The full 2025 Retrosheet validation covered **2,478 games**, **193,080 candidate
 
 The first MiLB end-to-end value POC covered **75 games across five environments** (2024 ACL/FCL/DSL and 2025 PCL/IL). All environments observed **24/24 states**, and all **5,539 core pre-foul-screen PAs** joined to RE24.
 
-However, the 45-game-per-environment stability audit showed meaningful split-half noise. Alternating 23-vs-22-game bin-value MAE ranged from about **0.058 to 0.103 runs**, with larger errors in individual bins. Direct sampled league-season bin means are therefore diagnostic, not production weights.
+The 45-game-per-environment stability audit then showed meaningful split-half noise. Alternating 23-vs-22-game bin-value MAE ranged from about **0.058 to 0.103 runs**, with larger errors in individual bins. That result motivated explicit predictive testing rather than blindly freezing direct small-sample means.
+
+### AAA pooling rule
+
+Three leakage-safe tests now support a modest same-level AAA regularizer.
+
+**2025 split-half:** direct AAA MAE/RMSE/occurrence-weighted MAE were 0.0881 / 0.1112 / 0.0823. Strengths 5–100 prior-equivalent occurrences all improved the three principal summaries.
+
+**2025 five-fold predictive validation:** direct AAA cell MAE/RMSE were 0.0563 / 0.0735 and event MAE/RMSE were 0.4304 / 0.5124. Strengths 5–100 again improved all four summaries. Strength 25 was the conservative candidate selected for independent confirmation.
+
+**Independent 2024 confirmation:** before looking at 2024 results, strength **25** was pre-specified. A separate June 2024 AAA snapshot supplied 45 PCL and 45 IL games, each split into five nine-game holdouts. Direct cell MAE/RMSE were 0.080304 / 0.115283 and event MAE/RMSE were 0.324536 / 0.485045. With strength 25 they improved to 0.079219 / 0.111472 and 0.324451 / 0.484600. The secondary 2024 grid placed strengths 5, 10, 25, and 50 in the robust region.
+
+Therefore, for an AAA league-season/bin with a certified same-season peer AAA estimate:
+
+`pooled_mean = (league_mean * league_bin_n + peer_aaa_mean * 25) / (league_bin_n + 25)`
+
+Rules:
+
+- the peer prior is the same bin from the other AAA league in the same season;
+- the target league never contributes to its own prior;
+- no all-MiLB, Rookie, MLB, or adjacent-season fallback is substituted if same-season peer evidence is absent;
+- the rule is for **bin-value estimation only**, not player-talent shrinkage;
+- initial calibrated implementation should use at least the validated scale of **45 games per AAA league-season when available**; more certified games are allowed and naturally reduce the relative effect of the fixed prior count;
+- fewer-game calibration is not certified by this gate.
+
+See ADR 014.
+
+### Rookie/complex values remain direct
+
+The Rookie/complex split-half diagnostic found no positive strength that improved all principal metrics, while five-fold validation found only a small improvement at strengths 5–25. Because those tests disagree, positive Rookie/complex pooling is not frozen. The first production transform retains direct league-season estimates there and carries the weaker estimator evidence explicitly.
 
 ## Season-player aggregate reuse
 
@@ -183,7 +213,7 @@ Core candidate bins before foul-air screening are:
 
 Bunts and special non-BIP outcomes remain explicit outside the core rather than being coerced into a bin.
 
-Live/historical mapping audits found zero structural mapping failures in the validated samples after correcting D/E/X semantics. This validates event mapping, not final run-value weights or player scores.
+Live/historical mapping audits found zero structural mapping failures in the validated samples after correcting D/E/X semantics. This validates event mapping and the pre-foul-screen bin assignment; the remaining eligibility issue is foul airborne outs.
 
 ## Cross-snapshot resolution and identity
 
@@ -220,20 +250,17 @@ Velocity, spin, EV/LA, and related sensor fields vary sharply by level, park, an
 8. Reject empty/placeholder aggregate assets as unavailable data.
 9. Fast deterministic tests run normally; expensive live-source audits become manual after their gate is passed.
 
-## Next foundation milestone: production Performance-value estimator
+## Next foundation milestone: foul-air eligibility and first production Performance transform
 
-State reconstruction and RE24 mechanics are closed. The next gate is to choose a statistically defensible estimator for league-typical Performance-bin values without overfitting limited official PBP samples.
+State reconstruction, RE24 mechanics, aggregate outcome-count reuse, and the initial AAA bin-value estimator are closed. The remaining Performance architecture gate is the exact **foul-air eligibility** rule for the 12-bin FaBIO-style skill view.
 
-The next POC should compare, using held-out or split-half error:
+The next POC should determine, from structured official/reusable evidence rather than approximate foul-line geometry, which airborne outs are foul and therefore remain real exhaustive Performance events but are excluded from the 12-bin skill accounting. The rule should be tested across historical AAA and recent AAA/Rookie environments and must preserve one exhaustive Performance row per official true PA.
 
-1. direct league-season bin means;
-2. explicit partial pooling/shrinkage toward a documented prior (for example same-level or broader MiLB bin means);
-3. larger official-PBP samples where the marginal error reduction justifies the fetch cost;
-4. sensitivity by common versus sparse bins rather than judging only a global correlation;
-5. whether different pooling strength is required for AAA versus Rookie/complex environments.
+Once that gate is frozen:
 
-The objective is not to force shrinkage to win. If simple pooling fails to improve held-out error, retain the result and expand the certified sample rather than choosing a prettier estimator.
-
-In parallel, close the foul-air eligibility definition. After those two gates, freeze the first production **Performance value** transform and design the historical backfill so season-player aggregates supply standard outcome counts while play/pitch evidence is fetched or reused only for information that genuinely requires it.
+1. emit both exhaustive Performance events and the screened 12-bin skill view;
+2. apply the accepted RE24/bin-value estimator by league-season, including AAA lambda=25 same-level pooling and direct Rookie/complex values;
+3. design the historical backfill so certified season-player aggregates supply standard outcome totals while reusable play/pitch evidence supplies trajectory/direction and official PBP is targeted to calibration/state needs;
+4. attach explicit estimator/source/coverage quality metadata rather than silently filling unavailable evidence.
 
 Tracking, defense, richer Statcast, Current Talent modeling, projection/shrinkage at the **player** level, and player ranking remain later layer-specific work.
