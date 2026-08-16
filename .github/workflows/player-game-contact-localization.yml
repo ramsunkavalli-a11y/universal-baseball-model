@@ -7,6 +7,7 @@ on:
       - "scripts/audit_player_game_contact_localization.py"
       - "scripts/audit_official_contact_exceptions.py"
       - "scripts/audit_official_contact_policy_final.py"
+      - "scripts/audit_contact_identity_false_negative.py"
       - "src/universal_baseball/player_game_stats.py"
       - "src/universal_baseball/official.py"
       - "tests/test_player_game_stats.py"
@@ -41,6 +42,9 @@ jobs:
       - name: Certify final exception-only official participant overlay
         run: python scripts/audit_official_contact_policy_final.py
 
+      - name: Audit unflagged games for hidden participant mismatches
+        run: python scripts/audit_contact_identity_false_negative.py
+
       - name: Upload player-game localization report
         if: always()
         uses: actions/upload-artifact@v7
@@ -56,5 +60,14 @@ jobs:
         with:
           name: official-contact-policy-final
           path: reports/generated/official-contact-policy-final/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload false-negative audit report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: contact-identity-false-negative
+          path: reports/generated/contact-identity-false-negative/
           if-no-files-found: warn
           retention-days: 14
