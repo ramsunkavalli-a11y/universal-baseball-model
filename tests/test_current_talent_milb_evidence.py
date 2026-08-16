@@ -69,7 +69,7 @@ def test_player_game_outcome_resolution_uses_latest_date_for_dominant_snapshot()
     assert metrics["unresolved_player_game_count"] == 0
 
 
-def test_build_milb_player_game_evidence_reconciles_core_profile() -> None:
+def test_build_milb_player_game_evidence_preserves_separate_denominators() -> None:
     projected = project_milb_player_game_outcomes(
         _raw_player_games(), source_asset="fixture", season=2024
     )
@@ -79,18 +79,28 @@ def test_build_milb_player_game_evidence_reconciles_core_profile() -> None:
     )
 
     game100 = summary.filter(pl.col("game_pk") == 100).row(0, named=True)
-    # 1 BB + 1 K + 2 classified core contacts = 4 core events / 4 PA.
+    # 1 BB + 1 K + 2 core contacts. Independent boxscore result contacts = 2.
     assert game100["batting_plate_appearances"] == 4
+    assert game100["expected_contact_count"] == 2
+    assert game100["observed_contact_count"] == 2
+    assert game100["contact_count_residual"] == 0
     assert game100["core_profile_event_count"] == 4
-    assert game100["non_core_event_count"] == 0
-    assert game100["unknown_event_count"] == 0
+    assert game100["bunt_contact_count"] == 0
+    assert game100["unknown_contact_count"] == 0
+    assert game100["special_noncontact_count"] == 0
+    assert game100["pa_accounting_residual"] == 0
     assert game100["participant_authority_status"] == "mixed_source_and_official"
 
     game101 = summary.filter(pl.col("game_pk") == 101).row(0, named=True)
-    # 1 K + 1 IFFB + 1 bunt leaves one PA explicitly unknown/non-core residual.
+    # Boxscore implies 3 result contacts; reusable PBP observes IFFB + bunt = 2.
+    assert game101["batting_plate_appearances"] == 4
+    assert game101["expected_contact_count"] == 3
+    assert game101["observed_contact_count"] == 2
+    assert game101["contact_count_residual"] == -1
     assert game101["core_profile_event_count"] == 2
-    assert game101["non_core_event_count"] == 1
-    assert game101["unknown_event_count"] == 1
+    assert game101["bunt_contact_count"] == 1
+    assert game101["unknown_contact_count"] == 0
+    assert game101["pa_accounting_residual"] == 0
 
     p100 = profile.filter(pl.col("game_pk") == 100)
     assert p100.get_column("occurrence_count").sum() == 4
@@ -103,6 +113,8 @@ def test_build_milb_player_game_evidence_reconciles_core_profile() -> None:
     assert metrics["player_game_count"] == 2
     assert metrics["contact_event_count"] == 4
     assert metrics["official_overlay_contact_count"] == 1
+    assert metrics["total_contact_count_residual"] == -1
+    assert metrics["evidence_denominator_policy"] == "separate_pa_expected_contact_observed_contact_v2"
 
 
 def test_nonmonotonic_outcome_conflict_remains_unresolved() -> None:
@@ -118,10 +130,32 @@ def test_nonmonotonic_outcome_conflict_remains_unresolved() -> None:
     assert metrics["unresolved_player_game_count"] == 1
 
 
-def test_overaccounted_player_game_fails_loudly() -> None:
+def test_contact_overage_is_preserved_not_clipped_to_pa_partition() -> None:
     raw = _raw_player_games().filter(pl.col("game_id") == 101)
     projected = project_milb_player_game_outcomes(raw, source_asset="fixture")
     resolved, _ = resolve_milb_player_game_outcomes(projected)
     contacts = pl.concat([_contacts().filter(pl.col("game_pk") == 101)] * 3)
-    with pytest.raises(ValueError, match="over-accounts"):
-        build_milb_current_talent_player_game_evidence(resolved, contacts)
+
+    summary, profile, metrics = build_milb_current_talent_player_game_evidence(
+        resolved, contacts
+    )
+    row = summary.row(0, named=True)
+    assert row["batting_plate_appearances"] == 4
+    assert row["expected_contact_count"] == 3
+    assert row["observed_contact_count"] == 6
+    assert row["contact_count_residual"] == 3
+    assert row["core_profile_event_count"] == 4
+    assert row["bunt_contact_count"] == 3
+    assert profile.get_column("occurrence_count").sum() == 4
+    assert metrics["nonzero_contact_residual_player_game_count"] == 1
+
+
+def test_invalid_negative_boxscore_contact_expectation_fails_validation() -> None:
+    raw = _raw_player_games().filter(pl.col("game_id") == 101).with_columns(
+        pl.lit(0).alias("batting_AB"),
+        pl.lit(1).alias("batting_SO"),
+    )
+    projected = project_milb_player_game_outcomes(raw, source_asset="fixture")
+    resolved, _ = resolve_milb_player_game_outcomes(projected)
+    with pytest.raises(ValueError, match="negative observed evidence counts"):
+        build_milb_current_talent_player_game_evidence(resolved, _contacts().filter(pl.col("game_pk") == 101))
