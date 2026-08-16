@@ -28,6 +28,21 @@ WORK_DIR = Path("data/quarantine/multilevel-player-game-conflicts")
 REPORT_DIR = Path("reports/generated/multilevel-player-game-conflicts")
 
 
+def _csv_safe_unresolved(frame: pl.DataFrame) -> pl.DataFrame:
+    """Flatten nested provenance fields before diagnostic CSV output."""
+
+    if frame.is_empty() or "source_assets" not in frame.columns:
+        return frame
+    return frame.with_columns(
+        pl.col("source_assets")
+        .map_elements(
+            lambda values: json.dumps(values or [], separators=(",", ":")),
+            return_dtype=pl.String,
+        )
+        .alias("source_assets_json")
+    ).drop("source_assets")
+
+
 def main() -> int:
     WORK_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
@@ -89,7 +104,9 @@ def main() -> int:
             .sort("player_game_resolution")
             .to_dicts()
         }
-        unresolved_games = int(unresolved.get_column("game_id").n_unique()) if unresolved.height else 0
+        unresolved_games = (
+            int(unresolved.get_column("game_id").n_unique()) if unresolved.height else 0
+        )
         unresolved_by_league = (
             {
                 str(int(row["league_id"])): int(row["len"])
@@ -127,7 +144,9 @@ def main() -> int:
         else pl.DataFrame()
     )
     if not unresolved_all.is_empty():
-        unresolved_all.write_csv(REPORT_DIR / "unresolved_player_games.csv")
+        _csv_safe_unresolved(unresolved_all).write_csv(
+            REPORT_DIR / "unresolved_player_games.csv"
+        )
     if not observations_all.is_empty():
         # source_assets is not present here; every row carries scalar source_asset.
         observations_all.write_csv(REPORT_DIR / "unresolved_source_observations.csv")
