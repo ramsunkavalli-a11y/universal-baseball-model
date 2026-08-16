@@ -236,6 +236,11 @@ def project_official_play_by_play(
     source-certification evidence is not discarded merely because its enclosing
     ``allPlays`` record is a non-PA action. Structured ``hitData`` is retained as
     direct evidence; no spray direction or batted-ball category is inferred.
+
+    Historical MiLB pitch-event fields are typed explicitly before DataFrame
+    construction. Some feeds mix numeric-looking and string codes (for example
+    ``1`` and ``FF``) in the same nested field; those are source values, not a
+    reason for Polars inference to fail the entire official projection.
     """
 
     pa_rows: list[dict[str, Any]] = []
@@ -280,16 +285,16 @@ def project_official_play_by_play(
                 {
                     "game_pk": game_key,
                     "at_bat_number": pa_key,
-                    "result_type": result.get("type"),
-                    "event": result.get("event"),
+                    "result_type": _string_or_none(result.get("type")),
+                    "event": _string_or_none(result.get("event")),
                     "event_type": result_event_type,
-                    "description": result.get("description"),
-                    "half_inning": half_inning,
+                    "description": _string_or_none(result.get("description")),
+                    "half_inning": _string_or_none(half_inning),
                     "batting_side": _batting_side_from_half_inning(half_inning),
                     "batter_id": _int_or_none(batter.get("id")),
                     "pitcher_id": _int_or_none(pitcher.get("id")),
                     "batter_side": batter_side_code,
-                    "pitcher_hand": pitch_hand.get("code"),
+                    "pitcher_hand": _string_or_none(pitch_hand.get("code")),
                     "official_pitch_count": len(current_pitch_events),
                 }
             )
@@ -305,12 +310,12 @@ def project_official_play_by_play(
                     "at_bat_number": pa_key,
                     "event_index": _int_or_none(play_event.get("index")),
                     "pitch_number": _int_or_none(play_event.get("pitchNumber")),
-                    "code": details.get("code"),
-                    "event": details.get("event"),
-                    "event_type": details.get("eventType"),
-                    "description": details.get("description"),
+                    "code": _string_or_none(details.get("code")),
+                    "event": _string_or_none(details.get("event")),
+                    "event_type": _string_or_none(details.get("eventType")),
+                    "description": _string_or_none(details.get("description")),
                     "has_pitch_data": play_event.get("pitchData") is not None,
-                    "pitch_type_code": pitch_type.get("code"),
+                    "pitch_type_code": _string_or_none(pitch_type.get("code")),
                     "batter_side": batter_side_code,
                     "is_in_play": details.get("isInPlay") is True,
                     "hit_trajectory": _string_or_none(hit_data.get("trajectory")),
@@ -323,43 +328,20 @@ def project_official_play_by_play(
                 }
             )
 
-    pa_frame = pl.DataFrame(pa_rows) if pa_rows else _empty_pa_frame()
+    pa_frame = (
+        pl.DataFrame(pa_rows, schema=_empty_pa_frame().schema, strict=False)
+        if pa_rows
+        else _empty_pa_frame()
+    )
     pitch_frame = (
-        pl.DataFrame(pitch_event_rows)
+        pl.DataFrame(
+            pitch_event_rows,
+            schema=_empty_pitch_event_frame().schema,
+            strict=False,
+        )
         if pitch_event_rows
         else _empty_pitch_event_frame()
     )
-
-    if pa_rows:
-        pa_frame = pa_frame.with_columns(
-            [
-                pl.col("game_pk").cast(pl.String),
-                pl.col("at_bat_number").cast(pl.String),
-                pl.col("batter_id").cast(pl.Int64),
-                pl.col("pitcher_id").cast(pl.Int64),
-                pl.col("official_pitch_count").cast(pl.Int64),
-            ]
-        )
-    if pitch_event_rows:
-        pitch_frame = pitch_frame.with_columns(
-            [
-                pl.col("game_pk").cast(pl.String),
-                pl.col("at_bat_number").cast(pl.String),
-                pl.col("event_index").cast(pl.Int64),
-                pl.col("pitch_number").cast(pl.Int64),
-                pl.col("is_in_play").cast(pl.Boolean),
-                *[
-                    pl.col(column).cast(pl.Float64)
-                    for column in (
-                        "hit_coord_x",
-                        "hit_coord_y",
-                        "hit_total_distance",
-                        "hit_launch_speed",
-                        "hit_launch_angle",
-                    )
-                ],
-            ]
-        )
 
     return pa_frame, pitch_frame
 
