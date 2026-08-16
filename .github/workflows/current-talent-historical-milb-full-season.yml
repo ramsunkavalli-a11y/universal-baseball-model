@@ -2,6 +2,16 @@ name: Current Talent historical MiLB full season
 
 on:
   workflow_dispatch:
+    inputs:
+      season:
+        description: Post-reorganization season to materialize
+        required: true
+        default: "2023"
+        type: choice
+        options:
+          - "2021"
+          - "2022"
+          - "2023"
   push:
     branches:
       - source-certification-poc
@@ -32,6 +42,8 @@ permissions:
 
 jobs:
   materialize:
+    env:
+      TARGET_SEASON: ${{ github.event_name == 'workflow_dispatch' && inputs.season || '2023' }}
     strategy:
       fail-fast: false
       matrix:
@@ -64,19 +76,19 @@ jobs:
           tests/test_official_mixed_codes.py
           tests/test_season_stat_assets.py
 
-      - name: Materialize 2022 historical Current Talent game evidence
+      - name: Materialize historical Current Talent game evidence
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >-
           python scripts/materialize_current_talent_historical_milb_game_evidence.py
-          --season 2022
+          --season "${TARGET_SEASON}"
           --level "${{ matrix.level }}"
 
       - name: Upload historical game-evidence artifact
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: current-talent-historical-milb-full-season-${{ matrix.level }}
-          path: reports/generated/current-talent-historical-milb-game-evidence/2022/${{ matrix.level == 'a+' && 'aplus' || matrix.level }}/
+          name: current-talent-historical-milb-full-season-${{ env.TARGET_SEASON }}-${{ matrix.level }}
+          path: reports/generated/current-talent-historical-milb-game-evidence/${{ env.TARGET_SEASON }}/${{ matrix.level == 'a+' && 'aplus' || matrix.level }}/
           if-no-files-found: warn
           retention-days: 14
