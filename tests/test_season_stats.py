@@ -3,7 +3,10 @@ from __future__ import annotations
 import polars as pl
 import pytest
 
-from universal_baseball.season_stats import standardize_armstjc_season_stats
+from universal_baseball.season_stats import (
+    select_reconciliation_players,
+    standardize_armstjc_season_stats,
+)
 
 
 def test_standardize_batting_season_stats_maps_grain_and_outcomes() -> None:
@@ -82,3 +85,50 @@ def test_standardize_season_stats_rejects_raw_canonical_collision() -> None:
 
     with pytest.raises(ValueError, match="refusing ambiguous rename"):
         standardize_armstjc_season_stats(raw, "batting")
+
+
+def test_reconciliation_sampling_sums_multiteam_volume_and_selects_each_league() -> None:
+    frame = pl.DataFrame(
+        {
+            "league_id": [112, 112, 112, 112, 117, 117],
+            "player_id": [10, 10, 20, 30, 40, 50],
+            "batting_plate_appearances": [110, 100, 205, 150, 99, 101],
+        }
+    )
+
+    selected = select_reconciliation_players(frame, "batting", per_league=2)
+
+    assert selected == [
+        {"league_id": 112, "player_id": 10, "sample_volume": 210},
+        {"league_id": 112, "player_id": 20, "sample_volume": 205},
+        {"league_id": 117, "player_id": 50, "sample_volume": 101},
+        {"league_id": 117, "player_id": 40, "sample_volume": 99},
+    ]
+
+
+def test_reconciliation_sampling_ties_break_on_player_id() -> None:
+    frame = pl.DataFrame(
+        {
+            "league_id": [130, 130],
+            "player_id": [900, 800],
+            "pitching_batters_faced": [100, 100],
+        }
+    )
+
+    assert select_reconciliation_players(frame, "pitching") == [
+        {"league_id": 130, "player_id": 800, "sample_volume": 100}
+    ]
+
+
+def test_reconciliation_sampling_requires_positive_count() -> None:
+    frame = pl.DataFrame(
+        {
+            "league_id": [130],
+            "player_id": [800],
+            "pitching_batters_faced": [0],
+        }
+    )
+
+    assert select_reconciliation_players(frame, "pitching") == []
+    with pytest.raises(ValueError, match="per_league"):
+        select_reconciliation_players(frame, "pitching", per_league=0)
