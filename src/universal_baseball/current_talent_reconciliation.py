@@ -32,8 +32,15 @@ def reconcile_player_game_to_performance(
     game_profile: pl.DataFrame,
     performance_summary: pl.DataFrame,
     performance_profile: pl.DataFrame,
+    *,
+    require_exact: bool = True,
 ) -> tuple[pl.DataFrame, pl.DataFrame, dict[str, Any]]:
-    """Return row/bin comparisons and fail when game evidence does not reproduce Performance."""
+    """Return season comparisons and optionally fail on any evidence mismatch.
+
+    ``require_exact=False`` is intended only for diagnostic materialization so a
+    failed live gate can persist the exact mismatch rows before the caller raises.
+    Production acceptance should retain the default exact requirement.
+    """
 
     validate_player_game_evidence(game_summary, game_profile)
 
@@ -131,7 +138,7 @@ def reconcile_player_game_to_performance(
         ),
         "exact_reconciliation": summary_mismatch.is_empty() and bin_mismatch.is_empty(),
     }
-    if not metrics["exact_reconciliation"]:
+    if require_exact and not metrics["exact_reconciliation"]:
         raise ValueError(
             "player-game Current Talent evidence does not exactly reconcile to frozen Performance: "
             f"summary_mismatches={summary_mismatch.height}, bin_mismatches={bin_mismatch.height}"
