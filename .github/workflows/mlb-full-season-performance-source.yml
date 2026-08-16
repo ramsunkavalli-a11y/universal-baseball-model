@@ -1,13 +1,18 @@
-name: MLB full-season Performance source gate
+name: MLB bin value policy gate
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - scripts/audit_mlb_bin_value_policy.py
+      - .github/workflows/mlb-full-season-performance-source.yml
 
 permissions:
   contents: read
 
 jobs:
-  reconcile-2024-mlb-source:
+  audit-2024-mlb-bin-values:
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -27,14 +32,14 @@ jobs:
       - name: Run unit tests
         run: python -m pytest
 
-      - name: Reconcile full-season MLB Performance sources
-        run: python scripts/audit_mlb_full_season_performance_source.py
+      - name: Audit 2024 MLB Performance-bin value policy
+        run: python scripts/audit_mlb_bin_value_policy.py
 
-      - name: Upload source artifact
+      - name: Upload MLB bin-value policy artifact
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: mlb-full-season-performance-source
-          path: reports/generated/mlb-full-season-performance-source/
+          name: mlb-bin-value-policy
+          path: reports/generated/mlb-bin-value-policy/
           if-no-files-found: warn
           retention-days: 14
