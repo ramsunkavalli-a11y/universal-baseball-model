@@ -9,6 +9,8 @@ Policy follows the accepted source architecture:
 - project only fields needed for physical contact/profile evidence;
 - infer positive contact from accepted D/E/X pitch codes or preserved hitData
   fields, never from X alone;
+- apply only pinned, fully fingerprinted false-positive contact exclusions that
+  were separately certified against official game evidence;
 - collapse overlapping release snapshots by non-null field consensus at natural
   physical-pitch grain;
 - never use filename period, upload time, retrieval time, or row order as a
@@ -19,6 +21,7 @@ Policy follows the accepted source architecture:
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 import json
 from typing import Any
 
@@ -28,6 +31,53 @@ import polars as pl
 CONTACT_IN_PLAY_CODES = frozenset({"D", "E", "X"})
 CONTACT_NATURAL_KEY = ("game_pk", "at_bat_index", "pitch_number")
 CONTACT_RESOLUTION_POLICY = "non_null_field_consensus_v1"
+CERTIFIED_FALSE_POSITIVE_CONTACT_POLICY = "certified_raw_false_positive_contact_exclusion_v1"
+
+
+@dataclass(frozen=True)
+class CertifiedFalsePositiveContact:
+    source_asset: str
+    season: int
+    game_pk: int
+    at_bat_index: int
+    pitch_number: int
+    game_date: str
+    league_id: int
+    batter_id: int
+    pitcher_id: int
+    type_code: str
+    hit_location: str
+    result_description: str
+    evidence: str
+
+
+CERTIFIED_FALSE_POSITIVE_CONTACTS: tuple[CertifiedFalsePositiveContact, ...] = (
+    CertifiedFalsePositiveContact(
+        source_asset="2021_7_rk_pbp.csv",
+        season=2021,
+        game_pk=657792,
+        at_bat_index=54,
+        pitch_number=1,
+        game_date="2021-07-22",
+        league_id=124,
+        batter_id=678365,
+        pitcher_id=683690,
+        type_code="X",
+        hit_location="1",
+        result_description=(
+            "Julio Herrera caught stealing 2nd base, pitcher Royber Salinas to second baseman "
+            "Joseph Fernando."
+        ),
+        evidence=(
+            "2021 Rookie raw-sequence audit run 31978717668: the source row is a caught-stealing "
+            "runner event with no event result, bb_type, spray coordinates, launch data, or hit "
+            "distance. It is admitted as contact only because the reusable release stamps type=X "
+            "and hit_location=1. Current official play-sequence authority contains no matching "
+            "contact sequence."
+        ),
+    ),
+)
+
 
 CONTACT_RESOLVABLE_FIELDS: dict[str, pl.DataType] = {
     "game_date": pl.String,
@@ -41,6 +91,7 @@ CONTACT_RESOLVABLE_FIELDS: dict[str, pl.DataType] = {
     "hc_x": pl.Float64,
     "hc_y": pl.Float64,
     "result_description": pl.String,
+    "certified_contact_exclusion_policy": pl.String,
 }
 
 RESOLVED_CONTACT_SCHEMA: dict[str, pl.DataType] = {
@@ -93,6 +144,96 @@ def _certified_batter_side_column(frame: pl.DataFrame, source_asset: str) -> str
     )
 
 
+def _raw_key_mask(correction: CertifiedFalsePositiveContact) -> pl.Expr:
+    return (
+        (_int_expr("game_pk") == correction.game_pk)
+        & (_int_expr("at_bat_number") == correction.at_bat_index)
+        & (_int_expr("pitch_number") == correction.pitch_number)
+    )
+
+
+def _certified_false_positive_mask(
+    frame: pl.DataFrame,
+    *,
+    source_asset: str,
+    season: int | None,
+) -> pl.Expr:
+    """Return the exact certified false-positive mask, failing on fingerprint drift.
+
+    A correction is inspected only when its natural key is present in the
+    supplied source slice. This keeps projection usable on audited subsets while
+    preventing a changed row at the certified key from being silently excluded.
+    """
+
+    combined = pl.lit(False)
+    corrections = [
+        correction
+        for correction in CERTIFIED_FALSE_POSITIVE_CONTACTS
+        if correction.source_asset == str(source_asset)
+        and (season is None or correction.season == int(season))
+    ]
+    for correction in corrections:
+        key_mask = _raw_key_mask(correction)
+        candidate = frame.filter(key_mask)
+        if candidate.is_empty():
+            continue
+        if candidate.height != 1:
+            raise ValueError(
+                "certified false-positive contact expected one raw source row: "
+                f"asset={source_asset} game={correction.game_pk} "
+                f"at_bat={correction.at_bat_index} pitch={correction.pitch_number}, "
+                f"rows={candidate.height}"
+            )
+        row = candidate.row(0, named=True)
+
+        def text(name: str) -> str | None:
+            value = row.get(name)
+            if value is None:
+                return None
+            stripped = str(value).strip()
+            return stripped if stripped else None
+
+        observed = {
+            "game_date": text("game_date"),
+            "league_id": int(float(row["league_id"])) if row.get("league_id") is not None else None,
+            "batter_id": int(float(row["batter"])) if row.get("batter") is not None else None,
+            "pitcher_id": int(float(row["pitcher"])) if row.get("pitcher") is not None else None,
+            "type_code": text("type").upper() if text("type") is not None else None,
+            "hit_location": text("hit_location"),
+            "result_description": text("description"),
+            "bb_type": text("bb_type"),
+            "hc_x": row.get("hc_x"),
+            "hc_y": row.get("hc_y"),
+            "hit_distance_sc": row.get("hit_distance_sc"),
+            "launch_speed": row.get("launch_speed"),
+            "launch_angle": row.get("launch_angle"),
+        }
+        expected = {
+            "game_date": correction.game_date,
+            "league_id": correction.league_id,
+            "batter_id": correction.batter_id,
+            "pitcher_id": correction.pitcher_id,
+            "type_code": correction.type_code,
+            "hit_location": correction.hit_location,
+            "result_description": correction.result_description,
+            "bb_type": None,
+            "hc_x": None,
+            "hc_y": None,
+            "hit_distance_sc": None,
+            "launch_speed": None,
+            "launch_angle": None,
+        }
+        if observed != expected:
+            raise ValueError(
+                "certified false-positive contact source fingerprint drifted: "
+                f"asset={source_asset} game={correction.game_pk} "
+                f"at_bat={correction.at_bat_index} pitch={correction.pitch_number}; "
+                f"observed={observed} expected={expected}"
+            )
+        combined = combined | key_mask
+    return combined
+
+
 def project_armstjc_contact_observations(
     frame: pl.DataFrame,
     *,
@@ -132,7 +273,7 @@ def project_armstjc_contact_observations(
         raise ValueError(f"{source_asset} missing contact projection fields: {missing}")
     batter_side_column = _certified_batter_side_column(frame, source_asset)
 
-    positive_contact = (
+    raw_positive_contact = (
         pl.col("type").cast(pl.String).str.strip_chars().str.to_uppercase().is_in(
             sorted(CONTACT_IN_PLAY_CODES)
         )
@@ -144,6 +285,12 @@ def project_armstjc_contact_observations(
         | _nonblank("launch_speed")
         | _nonblank("launch_angle")
     )
+    certified_false_positive = _certified_false_positive_mask(
+        frame,
+        source_asset=source_asset,
+        season=season,
+    )
+    positive_contact = raw_positive_contact & ~certified_false_positive
 
     projected = (
         frame.select(
@@ -161,6 +308,10 @@ def project_armstjc_contact_observations(
             pl.col("hc_x").cast(pl.Float64, strict=False),
             pl.col("hc_y").cast(pl.Float64, strict=False),
             pl.col("description").cast(pl.String).alias("result_description"),
+            pl.when(certified_false_positive)
+            .then(pl.lit(CERTIFIED_FALSE_POSITIVE_CONTACT_POLICY))
+            .otherwise(pl.lit(None, dtype=pl.String))
+            .alias("certified_contact_exclusion_policy"),
             pl.lit(str(source_asset)).alias("source_asset"),
         )
         .drop_nulls(list(CONTACT_NATURAL_KEY))
@@ -267,6 +418,7 @@ def contact_resolution_metrics(
             "raw_observation_count": 0,
             "resolved_pitch_key_count": 0,
             "resolved_contact_count": 0,
+            "certified_false_positive_contact_key_count": 0,
             "contact_status_conflict_key_count": 0,
             "contact_batter_conflict_count": 0,
             "profile_field_conflict_contact_count": 0,
@@ -276,6 +428,7 @@ def contact_resolution_metrics(
             "raw_observation_count": observations.height,
             "resolved_pitch_key_count": 0,
             "resolved_contact_count": 0,
+            "certified_false_positive_contact_key_count": 0,
             "contact_status_conflict_key_count": 0,
             "contact_batter_conflict_count": 0,
             "profile_field_conflict_contact_count": 0,
@@ -287,15 +440,19 @@ def contact_resolution_metrics(
         "raw_observation_count": observations.height,
         "resolved_pitch_key_count": resolved.height,
         "resolved_contact_count": contacts.height,
+        "certified_false_positive_contact_key_count": resolved.filter(
+            pl.col("certified_contact_exclusion_policy")
+            == CERTIFIED_FALSE_POSITIVE_CONTACT_POLICY
+        ).height,
         "contact_status_conflict_key_count": resolved.filter(
-            pl.col("conflict_fields_json").str.contains('"source_is_in_play"')
+            pl.col("conflict_fields_json").str.contains('\"source_is_in_play\"')
         ).height,
         "contact_batter_conflict_count": contacts.filter(
-            pl.col("conflict_fields_json").str.contains('"source_batter_id"')
+            pl.col("conflict_fields_json").str.contains('\"source_batter_id\"')
         ).height,
         "profile_field_conflict_contact_count": conflicts.filter(
             pl.col("conflict_fields_json").str.contains(
-                '"(batter_side|bb_type|hc_x|hc_y|result_description)"'
+                '\"(batter_side|bb_type|hc_x|hc_y|result_description)\"'
             )
         ).height,
     }
