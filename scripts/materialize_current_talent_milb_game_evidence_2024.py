@@ -18,6 +18,13 @@ import polars as pl
 
 import build_batting_performance_level_poc as performance
 from universal_baseball.certification import download_file, read_quarantined_csv
+from universal_baseball.contact_identity_overlay import (
+    OFFICIAL_SEQUENCE_AUTHORITY_SCHEMA,
+    apply_contact_identity_authority_by_sequence,
+    contact_identity_residuals,
+    exception_games_from_residuals,
+    project_official_sequence_authority,
+)
 from universal_baseball.current_talent_milb_evidence import (
     build_milb_current_talent_player_game_evidence,
     project_milb_player_game_outcomes,
@@ -26,6 +33,7 @@ from universal_baseball.current_talent_milb_evidence import (
 from universal_baseball.current_talent_reconciliation import (
     reconcile_player_game_to_performance,
 )
+from universal_baseball.official import fetch_official_game_evidence
 from universal_baseball.performance_level_config import performance_level_spec_2024
 from universal_baseball.player_game_controls import resolve_player_game_contact_controls
 from universal_baseball.player_game_stats import (
@@ -85,9 +93,9 @@ def _load_contact_controls(
     """Load player-game batting using the certified contact-control contract.
 
     Contact attribution needs a player-game expected-contact count, not a fully
-    resolved generic metadata record.  Historical suspended/resumed/corrected
+    resolved generic metadata record. Historical suspended/resumed/corrected
     games can legitimately disagree on ``game_date`` or ``team_id`` across
-    release snapshots while retaining a unique cumulative batting vector.  The
+    release snapshots while retaining a unique cumulative batting vector. The
     dedicated contact-control resolver keeps those disagreements explicit and
     non-blocking, while ``game_type``/``league_id`` conflicts and unresolved
     batting vectors remain hard failures.
@@ -139,6 +147,33 @@ def _load_contact_controls(
         "asset_names": [asset.name for asset in assets],
         **metrics,
     }
+
+
+def _apply_sequence_participant_authority(
+    contacts: pl.DataFrame,
+    contact_controls: pl.DataFrame,
+) -> tuple[pl.DataFrame, dict[str, Any]]:
+    """Overlay official batter identity only for residual games at matchup grain.
+
+    Production participant authority is a ``game_pk + at_bat_index`` property.
+    It must not require today's official ``isInPlay`` pitch key to equal the
+    preserved historical source contact key. Reusable contact geometry/coding is
+    therefore left untouched; official allPlays supplies only the batter identity
+    for source contact sequences in games flagged by the player-game residual.
+    """
+
+    residuals = contact_identity_residuals(contacts, contact_controls)
+    exception_games = exception_games_from_residuals(residuals)
+    if exception_games:
+        official_pa, _ = fetch_official_game_evidence(exception_games)
+        official_sequences = project_official_sequence_authority(official_pa)
+    else:
+        official_sequences = pl.DataFrame(schema=OFFICIAL_SEQUENCE_AUTHORITY_SCHEMA)
+    return apply_contact_identity_authority_by_sequence(
+        contacts,
+        contact_controls,
+        official_sequences,
+    )
 
 
 def _load_current_outcomes(
@@ -210,10 +245,9 @@ def main() -> int:
         work_dir=work_dir,
         league_ids=spec.league_ids,
     )
-    authorized, authority_metrics, _ = performance._participant_authority_and_false_negative_gate(
+    authorized, authority_metrics = _apply_sequence_participant_authority(
         contacts,
         contact_controls,
-        unflagged_sample_games=0,
     )
     classified = performance._classify_contacts(authorized)
 
@@ -301,6 +335,7 @@ def main() -> int:
             f"- Actual leagues: {len(spec.league_ids)}",
             f"- Nonblocking contact-control metadata conflicts: "
             f"{control_metrics['nonblocking_metadata_conflict_player_game_count']:,}",
+            f"- Participant authority grain: {authority_metrics['authority_grain']}",
             f"- Frozen Performance reconciliation: {reconciliation['exact_reconciliation']}",
         ]
     )
