@@ -1,0 +1,45 @@
+name: Rookie pitch-sequence fidelity audit
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pitch-sequence-fidelity-audit.yml"
+      - "scripts/audit_pitch_sequence_fidelity.py"
+      - "src/universal_baseball/pitch_sequence_fidelity.py"
+      - "tests/test_pitch_sequence_fidelity.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-pitch-sequence-fidelity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit official pitch-sequence fidelity
+        run: python scripts/audit_pitch_sequence_fidelity.py --games-per-league 20
+
+      - name: Upload fidelity report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pitch-sequence-fidelity
+          path: reports/generated/pitch-sequence-fidelity/
+          if-no-files-found: warn
+          retention-days: 14
