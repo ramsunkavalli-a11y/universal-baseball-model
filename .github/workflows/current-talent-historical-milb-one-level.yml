@@ -67,6 +67,12 @@ jobs:
           tests/test_official_mixed_codes.py
           tests/test_season_stat_assets.py
 
+      - name: Diagnose 2021 Rookie identity collision
+        if: ${{ env.TARGET_SEASON == '2021' && env.TARGET_LEVEL == 'rk' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/diagnose_current_talent_2021_identity_collision.py
+
       - name: Materialize historical Current Talent game evidence
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
