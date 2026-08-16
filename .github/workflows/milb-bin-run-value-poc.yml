@@ -2,16 +2,6 @@ name: MiLB bin run value POC
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/milb-bin-run-value-poc.yml"
-      - "scripts/audit_milb_bin_run_values.py"
-      - "src/universal_baseball/official_capture.py"
-      - "src/universal_baseball/run_expectancy.py"
-      - "src/universal_baseball/performance_events.py"
-      - "src/universal_baseball/state_transitions_v2.py"
 
 permissions:
   contents: read
