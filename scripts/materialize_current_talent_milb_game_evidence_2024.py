@@ -27,7 +27,11 @@ from universal_baseball.current_talent_reconciliation import (
     reconcile_player_game_to_performance,
 )
 from universal_baseball.performance_level_config import performance_level_spec_2024
-from universal_baseball.player_game_stats import fetch_player_game_asset_inventory
+from universal_baseball.player_game_controls import resolve_player_game_contact_controls
+from universal_baseball.player_game_stats import (
+    fetch_player_game_asset_inventory,
+    project_player_game_batting,
+)
 from universal_baseball.storage import write_canonical_parquet
 
 
@@ -61,6 +65,82 @@ def _find_unique(root: Path, filename: str) -> Path:
     return matches[0]
 
 
+def _player_game_assets(level: str):
+    assets = [
+        asset
+        for asset in fetch_player_game_asset_inventory()
+        if asset.year == SEASON and asset.filename_level == level
+    ]
+    if not assets:
+        raise RuntimeError(f"no reusable {SEASON} {level} player-game assets found")
+    return assets
+
+
+def _load_contact_controls(
+    *,
+    level: str,
+    work_dir: Path,
+    league_ids: frozenset[int],
+) -> tuple[pl.DataFrame, dict[str, Any]]:
+    """Load player-game batting using the certified contact-control contract.
+
+    Contact attribution needs a player-game expected-contact count, not a fully
+    resolved generic metadata record.  Historical suspended/resumed/corrected
+    games can legitimately disagree on ``game_date`` or ``team_id`` across
+    release snapshots while retaining a unique cumulative batting vector.  The
+    dedicated contact-control resolver keeps those disagreements explicit and
+    non-blocking, while ``game_type``/``league_id`` conflicts and unresolved
+    batting vectors remain hard failures.
+    """
+
+    raw_dir = work_dir / "player-game"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    assets = _player_game_assets(level)
+
+    frames: list[pl.DataFrame] = []
+    for asset in assets:
+        path = raw_dir / asset.name
+        if not path.exists() or path.stat().st_size <= 0:
+            download_file(asset.browser_download_url, path, timeout_seconds=240)
+        raw = read_quarantined_csv(path)
+        frames.append(
+            project_player_game_batting(
+                raw,
+                source_asset=asset.name,
+                season=SEASON,
+                game_type="R",
+            )
+        )
+        del raw
+
+    observations = pl.concat(frames, how="vertical_relaxed")
+    resolved, metrics = resolve_player_game_contact_controls(observations)
+    if metrics["unresolved_contact_control_count"]:
+        raise RuntimeError(
+            f"{level} unresolved player-game contact controls remain after certified "
+            f"metadata-aware resolution: {metrics['unresolved_contact_control_count']}"
+        )
+
+    expected = resolved.filter(pl.col("expected_contact_count").is_not_null())
+    unexpected = expected.filter(~pl.col("league_id").is_in(sorted(league_ids)))
+    if not unexpected.is_empty():
+        raise RuntimeError(f"{level} player-game contact controls contain unexpected league IDs")
+    observed = {
+        int(value)
+        for value in expected.get_column("league_id").drop_nulls().unique().to_list()
+    }
+    if observed != set(league_ids):
+        raise RuntimeError(
+            f"{level} player-game contact-control league coverage mismatch: "
+            f"observed={sorted(observed)}, expected={sorted(league_ids)}"
+        )
+    return resolved, {
+        "asset_count": len(assets),
+        "asset_names": [asset.name for asset in assets],
+        **metrics,
+    }
+
+
 def _load_current_outcomes(
     *,
     level: str,
@@ -69,13 +149,7 @@ def _load_current_outcomes(
 ) -> tuple[pl.DataFrame, dict[str, Any]]:
     raw_dir = work_dir / "player-game"
     raw_dir.mkdir(parents=True, exist_ok=True)
-    assets = [
-        asset
-        for asset in fetch_player_game_asset_inventory()
-        if asset.year == SEASON and asset.filename_level == level
-    ]
-    if not assets:
-        raise RuntimeError(f"no reusable {SEASON} {level} player-game assets found")
+    assets = _player_game_assets(level)
 
     frames: list[pl.DataFrame] = []
     for asset in assets:
@@ -131,8 +205,10 @@ def main() -> int:
     contacts, contact_metrics = performance._load_reusable_contacts(
         args.level, spec.league_ids, work_dir
     )
-    contact_controls, control_metrics = performance._load_player_game_controls(
-        args.level, spec.league_ids, work_dir
+    contact_controls, control_metrics = _load_contact_controls(
+        level=args.level,
+        work_dir=work_dir,
+        league_ids=spec.league_ids,
     )
     authorized, authority_metrics, _ = performance._participant_authority_and_false_negative_gate(
         contacts,
@@ -223,6 +299,8 @@ def main() -> int:
             f"- Player-games: {summary.height:,}",
             f"- PA: {reconciliation['game_plate_appearances']:,}",
             f"- Actual leagues: {len(spec.league_ids)}",
+            f"- Nonblocking contact-control metadata conflicts: "
+            f"{control_metrics['nonblocking_metadata_conflict_player_game_count']:,}",
             f"- Frozen Performance reconciliation: {reconciliation['exact_reconciliation']}",
         ]
     )
