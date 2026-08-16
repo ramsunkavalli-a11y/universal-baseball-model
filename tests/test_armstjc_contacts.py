@@ -3,8 +3,10 @@ from __future__ import annotations
 import json
 
 import polars as pl
+import pytest
 
 from universal_baseball.armstjc_contacts import (
+    CERTIFIED_FALSE_POSITIVE_CONTACT_POLICY,
     contact_resolution_metrics,
     project_armstjc_contact_observations,
     resolve_armstjc_contact_observations,
@@ -47,6 +49,43 @@ def _raw() -> pl.DataFrame:
     )
 
 
+def _certified_false_contact() -> pl.DataFrame:
+    return pl.DataFrame(
+        {
+            "game_pk": [657792],
+            "at_bat_number": [54],
+            "pitch_number": [1],
+            "batter": [678365],
+            "pitcher": [683690],
+            "stand": ["R"],
+            "game_date": ["2021-07-22"],
+            "game_type": ["R"],
+            "league_id": [124],
+            "type": ["X"],
+            "bb_type": [None],
+            "hc_x": [None],
+            "hc_y": [None],
+            "description": [
+                "Julio Herrera caught stealing 2nd base, pitcher Royber Salinas to second baseman Joseph Fernando."
+            ],
+            "hit_location": ["1"],
+            "hit_distance_sc": [None],
+            "launch_speed": [None],
+            "launch_angle": [None],
+        },
+        schema_overrides={
+            "bb_type": pl.String,
+            "hc_x": pl.Float64,
+            "hc_y": pl.Float64,
+            "description": pl.String,
+            "hit_location": pl.String,
+            "hit_distance_sc": pl.Float64,
+            "launch_speed": pl.Float64,
+            "launch_angle": pl.Float64,
+        },
+    )
+
+
 def test_projection_accepts_d_e_x_or_hitdata_contact_evidence() -> None:
     projected = project_armstjc_contact_observations(
         _raw(), source_asset="2024_6_aaa_pbp.csv", season=2024
@@ -61,6 +100,36 @@ def test_projection_accepts_raw_stand_alias_for_batter_side() -> None:
         raw, source_asset="2024_3_aaa_pbp.csv", season=2024
     )
     assert projected.get_column("batter_side").to_list() == ["R", "L", "R"]
+
+
+def test_certified_runner_event_is_excluded_from_contact_evidence() -> None:
+    observations = project_armstjc_contact_observations(
+        _certified_false_contact(),
+        source_asset="2021_7_rk_pbp.csv",
+        season=2021,
+    )
+    row = observations.row(0, named=True)
+    assert row["source_is_in_play"] is False
+    assert row["certified_contact_exclusion_policy"] == CERTIFIED_FALSE_POSITIVE_CONTACT_POLICY
+
+    resolved = resolve_armstjc_contact_observations(observations, contacts_only=False)
+    contacts = resolve_armstjc_contact_observations(observations, contacts_only=True)
+    assert contacts.is_empty()
+    metrics = contact_resolution_metrics(observations, resolved)
+    assert metrics["certified_false_positive_contact_key_count"] == 1
+    assert metrics["resolved_contact_count"] == 0
+
+
+def test_certified_runner_event_fails_closed_if_fingerprint_drifts() -> None:
+    drifted = _certified_false_contact().with_columns(
+        pl.lit("Different narrative.").alias("description")
+    )
+    with pytest.raises(ValueError, match="source fingerprint drifted"):
+        project_armstjc_contact_observations(
+            drifted,
+            source_asset="2021_7_rk_pbp.csv",
+            season=2021,
+        )
 
 
 def test_resolution_uses_non_null_consensus_and_preserves_conflicts() -> None:
