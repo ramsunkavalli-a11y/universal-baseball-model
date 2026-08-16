@@ -1,0 +1,47 @@
+name: All-level season profile aggregate reuse audit
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/all-level-season-profile-reuse.yml"
+      - "scripts/audit_all_level_season_profile_reuse.py"
+      - "scripts/audit_season_stat_official_reconciliation.py"
+      - "src/universal_baseball/season_stats.py"
+      - "src/universal_baseball/certification.py"
+      - "src/universal_baseball/official_capture.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-all-level-season-profile-reuse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit rich season aggregate reuse across affiliated levels
+        run: python scripts/audit_all_level_season_profile_reuse.py
+
+      - name: Upload all-level aggregate reuse report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: all-level-season-profile-reuse
+          path: reports/generated/all-level-season-profile-reuse/
+          if-no-files-found: warn
+          retention-days: 14
