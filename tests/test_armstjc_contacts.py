@@ -55,6 +55,14 @@ def test_projection_accepts_d_e_x_or_hitdata_contact_evidence() -> None:
     assert projected.get_column("source_batter_id").to_list() == [101, 102, 103]
 
 
+def test_projection_accepts_raw_stand_alias_for_batter_side() -> None:
+    raw = _raw().rename({"batter_side": "stand"})
+    projected = project_armstjc_contact_observations(
+        raw, source_asset="2024_3_aaa_pbp.csv", season=2024
+    )
+    assert projected.get_column("batter_side").to_list() == ["R", "L", "R"]
+
+
 def test_resolution_uses_non_null_consensus_and_preserves_conflicts() -> None:
     projected = project_armstjc_contact_observations(
         _raw().head(1), source_asset="a.csv", season=2024
