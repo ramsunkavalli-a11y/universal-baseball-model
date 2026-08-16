@@ -1,10 +1,7 @@
 name: Independent 2024 AAA bin value confirmation
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/aaa-bin-value-independent-validation.yml"
-      - "scripts/audit_aaa_bin_value_independent_validation.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
