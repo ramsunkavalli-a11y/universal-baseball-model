@@ -8,6 +8,7 @@ on:
     paths:
       - ".github/workflows/current-talent-2021-rk-raw-sequence.yml"
       - "scripts/diagnose_raw_2021_rk_pbp_sequence.py"
+      - "scripts/diagnose_2021_rk_contact_false_positive_signature.py"
 
 permissions:
   contents: read
@@ -35,11 +36,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/diagnose_raw_2021_rk_pbp_sequence.py
 
+      - name: Audit contact false-positive signature
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/diagnose_2021_rk_contact_false_positive_signature.py
+
       - name: Upload diagnostic artifact
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: current-talent-2021-rk-raw-pbp-sequence
-          path: reports/generated/current-talent-2021-rk-contact-sequence-diagnostic/raw_missing_sequence*.json
+          path: |
+            reports/generated/current-talent-2021-rk-contact-sequence-diagnostic/raw_missing_sequence*.json
+            reports/generated/current-talent-2021-rk-contact-sequence-diagnostic/contact_false_positive_signature_audit.json
           if-no-files-found: warn
           retention-days: 14
