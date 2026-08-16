@@ -1,0 +1,47 @@
+name: MLB bulk season stats audit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/mlb-bulk-season-stats.yml"
+      - "scripts/audit_mlb_bulk_season_stats.py"
+      - "src/universal_baseball/savant.py"
+      - "tests/test_savant.py"
+
+permissions:
+  contents: read
+
+jobs:
+  certify-2024-mlb-outcome-backbone:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m pytest
+
+      - name: Audit MLB bulk season outcome backbone
+        run: python scripts/audit_mlb_bulk_season_stats.py
+
+      - name: Upload source audit
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: mlb-bulk-season-stats
+          path: reports/generated/mlb-bulk-season-stats/
+          if-no-files-found: warn
+          retention-days: 14
