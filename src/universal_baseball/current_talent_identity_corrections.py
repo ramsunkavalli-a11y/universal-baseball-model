@@ -110,6 +110,11 @@ def apply_historical_player_game_identity_corrections(
     remapped with the same game/player key so downstream contact residual logic
     either agrees with the source PBP participant or triggers existing official
     sequence authority. Target-key collisions fail closed.
+
+    Corrections are applicable only when their actual league is present in the
+    supplied outcome slice. A 2021 DSL exception therefore cannot make a 2021
+    AAA/AA/High-A/Single-A materialization expect DSL evidence that is outside
+    that level's input.
     """
 
     outcome_required = {
@@ -130,10 +135,19 @@ def apply_historical_player_game_identity_corrections(
     corrected_outcomes = outcomes
     corrected_controls = controls
     evidence_rows: list[dict[str, Any]] = []
-    applicable = [
+    season_registered = [
         correction
         for correction in HISTORICAL_PLAYER_GAME_IDENTITY_CORRECTIONS
         if correction.season == int(season)
+    ]
+    observed_league_ids = {
+        int(value)
+        for value in corrected_outcomes.get_column("league_id").drop_nulls().unique().to_list()
+    }
+    applicable = [
+        correction
+        for correction in season_registered
+        if correction.league_id in observed_league_ids
     ]
 
     for correction in applicable:
@@ -240,7 +254,9 @@ def apply_historical_player_game_identity_corrections(
     )
     return corrected_outcomes, corrected_controls, evidence, {
         "policy": IDENTITY_CORRECTION_POLICY,
-        "registered_correction_count_for_season": len(applicable),
+        "registered_correction_count_for_season": len(season_registered),
+        "applicable_correction_count": len(applicable),
+        "observed_league_ids": sorted(observed_league_ids),
         "applied_correction_count": int(evidence.height),
         "corrected_game_count": int(evidence.get_column("game_id").n_unique()) if not evidence.is_empty() else 0,
         "corrected_source_player_count": int(evidence.get_column("source_player_id").n_unique()) if not evidence.is_empty() else 0,
