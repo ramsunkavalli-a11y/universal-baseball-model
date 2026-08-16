@@ -1,15 +1,17 @@
 """Reconcile game-grain Current Talent evidence to frozen season Performance.
 
 The Current Talent evidence layer must be a chronology-safe decomposition of the
-same observed Performance facts, not a second statistic.  This module rolls
+same observed Performance facts, not a second statistic. This module rolls
 player-game evidence back to player x actual-league x season grain and requires
 exact equality with the frozen Performance contract for:
 
 - batting plate appearances;
-- total 12-bin core-profile event count; and
-- every individual core-bin occurrence count.
+- total 12-bin core-profile event count;
+- every individual core-bin occurrence count; and
+- source-derived contact/accounting fields whenever the frozen Performance
+  summary exposes their corresponding season totals.
 
-Run values are deliberately not compared here.  Current Talent consumes evidence
+Run values are deliberately not compared here. Current Talent consumes evidence
 counts; Performance owns contextual value calibration.
 """
 
@@ -25,6 +27,17 @@ from universal_baseball.performance_season import ALL_CORE_BINS
 
 SEASON_KEY = ("season", "league_id", "player_id")
 PROFILE_KEY = (*SEASON_KEY, "core_bin")
+
+# Game-evidence field -> frozen Performance summary field. These are compared
+# only when the Performance artifact actually exposes the right-hand field.
+OPTIONAL_SUMMARY_RECONCILIATION_FIELDS: tuple[tuple[str, str], ...] = (
+    ("expected_contact_count", "aggregate_contact_count"),
+    ("observed_contact_count", "contact_event_count"),
+    ("contact_count_residual", "contact_count_residual_vs_aggregate"),
+    ("bunt_contact_count", "bunt_contact_count"),
+    ("foul_air_excluded_count", "foul_air_excluded_count"),
+    ("unknown_contact_count", "unknown_contact_count"),
+)
 
 
 def reconcile_player_game_to_performance(
@@ -62,11 +75,24 @@ def reconcile_player_game_to_performance(
     if not perf_summary_dupes.is_empty() or not perf_profile_dupes.is_empty():
         raise ValueError("Performance reconciliation input violates canonical season grain")
 
+    optional_fields = [
+        (game_field, performance_field)
+        for game_field, performance_field in OPTIONAL_SUMMARY_RECONCILIATION_FIELDS
+        if game_field in game_summary.columns and performance_field in performance_summary.columns
+    ]
+
     game_rollup = (
         game_summary.group_by(list(SEASON_KEY))
         .agg(
             pl.col("batting_plate_appearances").sum().cast(pl.Int64).alias("game_pa"),
             pl.col("core_profile_event_count").sum().cast(pl.Int64).alias("game_core_events"),
+            *[
+                pl.col(game_field)
+                .sum()
+                .cast(pl.Int64)
+                .alias(f"game_{performance_field}")
+                for game_field, performance_field in optional_fields
+            ],
         )
         .sort(list(SEASON_KEY))
     )
@@ -74,20 +100,47 @@ def reconcile_player_game_to_performance(
         *SEASON_KEY,
         pl.col("batting_plate_appearances").cast(pl.Int64).alias("performance_pa"),
         pl.col("core_profile_event_count").cast(pl.Int64).alias("performance_core_events"),
+        *[
+            pl.col(performance_field)
+            .cast(pl.Int64)
+            .alias(f"performance_{performance_field}")
+            for _, performance_field in optional_fields
+        ],
     )
+
+    fill_columns = [
+        "game_pa",
+        "game_core_events",
+        "performance_pa",
+        "performance_core_events",
+        *[f"game_{performance_field}" for _, performance_field in optional_fields],
+        *[f"performance_{performance_field}" for _, performance_field in optional_fields],
+    ]
+    difference_columns = [
+        "pa_difference",
+        "core_event_difference",
+        *[f"{performance_field}_difference" for _, performance_field in optional_fields],
+    ]
     summary_comparison = (
         game_rollup.join(perf_rollup, on=list(SEASON_KEY), how="full", coalesce=True)
-        .with_columns(
-            pl.col("game_pa").fill_null(0),
-            pl.col("game_core_events").fill_null(0),
-            pl.col("performance_pa").fill_null(0),
-            pl.col("performance_core_events").fill_null(0),
-        )
+        .with_columns(*[pl.col(column).fill_null(0).cast(pl.Int64) for column in fill_columns])
         .with_columns(
             (pl.col("game_pa") - pl.col("performance_pa")).alias("pa_difference"),
             (pl.col("game_core_events") - pl.col("performance_core_events")).alias(
                 "core_event_difference"
             ),
+            *[
+                (
+                    pl.col(f"game_{performance_field}")
+                    - pl.col(f"performance_{performance_field}")
+                ).alias(f"{performance_field}_difference")
+                for _, performance_field in optional_fields
+            ],
+        )
+        .with_columns(
+            pl.any_horizontal([pl.col(column) != 0 for column in difference_columns]).alias(
+                "has_any_mismatch"
+            )
         )
         .sort(list(SEASON_KEY))
     )
@@ -118,14 +171,22 @@ def reconcile_player_game_to_performance(
     if not invalid_bins.is_empty():
         raise ValueError("reconciliation encountered bins outside the frozen 12-bin taxonomy")
 
-    summary_mismatch = summary_comparison.filter(
-        (pl.col("pa_difference") != 0) | (pl.col("core_event_difference") != 0)
-    )
+    summary_mismatch = summary_comparison.filter(pl.col("has_any_mismatch"))
     bin_mismatch = bin_comparison.filter(pl.col("occurrence_difference") != 0)
+    field_mismatch_counts = {
+        column.removesuffix("_difference"): summary_comparison.filter(pl.col(column) != 0).height
+        for column in difference_columns
+    }
 
     metrics: dict[str, Any] = {
         "player_league_season_row_count": summary_comparison.height,
         "summary_mismatch_row_count": summary_mismatch.height,
+        "summary_fields_compared": [
+            "batting_plate_appearances",
+            "core_profile_event_count",
+            *[performance_field for _, performance_field in optional_fields],
+        ],
+        "summary_field_mismatch_counts": field_mismatch_counts,
         "profile_bin_row_count": bin_comparison.height,
         "profile_bin_mismatch_row_count": bin_mismatch.height,
         "game_plate_appearances": int(summary_comparison.get_column("game_pa").sum() or 0),
