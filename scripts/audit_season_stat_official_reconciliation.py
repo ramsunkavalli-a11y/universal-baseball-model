@@ -101,9 +101,12 @@ def _int(value: Any) -> int | None:
     if value is None or str(value).strip() == "":
         return None
     try:
-        return int(float(value))
+        numeric = float(value)
     except (TypeError, ValueError):
         return None
+    if not numeric.is_integer():
+        return None
+    return int(numeric)
 
 
 def _text(value: Any) -> str | None:
@@ -113,8 +116,17 @@ def _text(value: Any) -> str | None:
     return text or None
 
 
+def _source_integer_like(column: str) -> pl.Expr:
+    numeric = pl.col(column).cast(pl.Float64, strict=False)
+    return (
+        pl.when(numeric.is_not_null() & (numeric == numeric.floor()))
+        .then(numeric.cast(pl.Int64, strict=False))
+        .otherwise(None)
+    )
+
+
 def _source_numeric(column: str) -> pl.Expr:
-    return pl.col(column).cast(pl.Int64, strict=False).fill_null(0)
+    return _source_integer_like(column).fill_null(0)
 
 
 def _grain_profile(frame: pl.DataFrame) -> dict[str, Any]:
@@ -265,8 +277,8 @@ def _aggregate_source_player_league(
     fields: list[str],
 ) -> tuple[dict[str, int], int]:
     subset = frame.filter(
-        (pl.col("player_id").cast(pl.Int64, strict=False) == person_id)
-        & (pl.col("league_id").cast(pl.Int64, strict=False) == league_id)
+        (_source_integer_like("player_id") == person_id)
+        & (_source_integer_like("league_id") == league_id)
     )
     available = [field for field in fields if field in subset.columns]
     if subset.is_empty() or not available:
@@ -374,10 +386,14 @@ def main() -> int:
         source_reports: list[dict[str, Any]] = []
         player_reports: list[dict[str, Any]] = []
         for spec, frame, metadata, normalization in loaded:
+            grain = _grain_profile(frame)
             selected = select_reconciliation_players(
                 frame,
                 spec["kind"],
                 per_league=SAMPLE_PER_ACTUAL_LEAGUE,
+            )
+            expected_sample_count = (
+                int(grain["distinct_league_count"]) * SAMPLE_PER_ACTUAL_LEAGUE
             )
             source_reports.append(
                 {
@@ -387,9 +403,11 @@ def main() -> int:
                     "sport_label": spec["sport_label"],
                     "source_sha256": metadata["sha256"],
                     "schema_normalization": normalization,
-                    "grain": _grain_profile(frame),
+                    "grain": grain,
                     "accounting": _accounting_profile(frame, spec["kind"]),
+                    "expected_reconciliation_sample_count": expected_sample_count,
                     "selected_reconciliation_players": selected,
+                    "sample_coverage_complete": len(selected) == expected_sample_count,
                 }
             )
             sport_id = sports.get(spec["sport_label"])
@@ -416,32 +434,46 @@ def main() -> int:
         for report in source_reports
         if report["accounting"].get("available")
     ]
+    source_grain_all_unique = all(
+        report["grain"]["duplicate_group_count"] == 0 for report in source_reports
+    )
+    source_available_accounting_all_exact = bool(available_accounting) and all(
+        report.get("mismatch_row_count") == 0 for report in available_accounting
+    )
+    reconciliation_sample_coverage_complete = all(
+        report["sample_coverage_complete"] for report in source_reports
+    )
+    official_player_samples_all_exact = bool(player_reports) and all(
+        report["exact"] for report in player_reports
+    )
+    certification_pass = (
+        source_grain_all_unique
+        and source_available_accounting_all_exact
+        and reconciliation_sample_coverage_complete
+        and official_player_samples_all_exact
+    )
+
     payload = {
-        "report_schema_version": 3,
+        "report_schema_version": 4,
         "certification_season": CERTIFICATION_SEASON,
         "sample_per_actual_league": SAMPLE_PER_ACTUAL_LEAGUE,
         "official_sports": sports,
         "source_reports": source_reports,
         "player_reconciliation": player_reports,
-        "source_grain_all_unique": all(
-            report["grain"]["duplicate_group_count"] == 0
-            for report in source_reports
-        ),
+        "source_grain_all_unique": source_grain_all_unique,
         "available_accounting_check_count": len(available_accounting),
-        "source_available_accounting_all_exact": bool(available_accounting)
-        and all(
-            report.get("mismatch_row_count") == 0
-            for report in available_accounting
-        ),
+        "source_available_accounting_all_exact": source_available_accounting_all_exact,
+        "reconciliation_sample_coverage_complete": reconciliation_sample_coverage_complete,
         "official_sample_count": len(player_reports),
-        "official_player_samples_all_exact": bool(player_reports)
-        and all(report["exact"] for report in player_reports),
+        "official_player_samples_all_exact": official_player_samples_all_exact,
+        "certification_pass": certification_pass,
         "interpretation": (
             f"Completed {CERTIFICATION_SEASON} source rows are compared to current "
             "official completed-season totals. Samples are chosen deterministically "
             "from each actual source league and exclude players who appeared in "
             "multiple source leagues, so the broader official sport total is "
-            "comparable. Current official data is a certification oracle, not a "
+            "comparable. Only fields present in both source and official payloads "
+            "are compared. Current official data is a certification oracle, not a "
             "historical-vintage rewrite."
         ),
     }
@@ -454,8 +486,10 @@ def main() -> int:
         "# Season-player aggregate certification",
         "",
         f"Completed season under test: **{CERTIFICATION_SEASON}**",
+        f"- Certification pass: {payload['certification_pass']}",
         f"- Source player-team-league grains all unique: {payload['source_grain_all_unique']}",
         f"- Available exact PA/BF accounting checks: {payload['available_accounting_check_count']}; all exact={payload['source_available_accounting_all_exact']}",
+        f"- Reconciliation sample coverage complete: {payload['reconciliation_sample_coverage_complete']}",
         f"- Deterministic official samples: {payload['official_sample_count']}; all exact={payload['official_player_samples_all_exact']}",
         "",
         "## Source files",
@@ -480,7 +514,9 @@ def main() -> int:
         lines.append(
             f"- `{report['asset']}`: rows {report['grain']['row_count']:,}; "
             f"duplicate grain groups {report['grain']['duplicate_group_count']}; "
-            f"{accounting_text}; samples [{samples}]"
+            f"{accounting_text}; sample coverage "
+            f"{len(report['selected_reconciliation_players'])}/"
+            f"{report['expected_reconciliation_sample_count']}; samples [{samples}]"
         )
 
     lines.extend(["", "## Official completed-season checks", ""])
@@ -502,7 +538,7 @@ def main() -> int:
     lines.extend(
         [
             "",
-            "A clean result would support using season-player aggregates as the historical outcome-count backbone, with PBP retained for contact profile and sampled official PBP retained for league run-value calibration.",
+            "A passing result supports using season-player aggregates as the historical outcome-count backbone for mutually available fields, with PBP retained for contact profile and sampled official PBP retained for league run-value calibration.",
             "",
         ]
     )
@@ -511,7 +547,7 @@ def main() -> int:
         summary, encoding="utf-8"
     )
     print(summary)
-    return 0
+    return 0 if certification_pass else 1
 
 
 if __name__ == "__main__":
