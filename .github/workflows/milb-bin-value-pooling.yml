@@ -1,12 +1,7 @@
 name: MiLB bin value pooling diagnostic
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/milb-bin-value-pooling.yml"
-      - "scripts/audit_milb_bin_value_pooling.py"
-      - "src/universal_baseball/bin_value_pooling.py"
-      - "tests/test_bin_value_pooling.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
