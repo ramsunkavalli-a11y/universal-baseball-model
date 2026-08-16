@@ -3,13 +3,11 @@
 
 The existing season-stat gate proved 2024 AAA/Rookie standard outcome counts.
 This audit extends the same independent official reconciliation to AA, High-A,
-Single-A and simultaneously tests richer fields already preserved by the
-upstream armstjc extractor: batted-ball shape hits/outs, balls in play, pitches,
-swings, and whiffs.
+Single-A and tests richer fields preserved by the upstream armstjc extractor.
 
-The purpose is architectural: determine which player-season features can come
-from mature public aggregates so the historical pipeline does not replay PBP for
-information somebody else has already aggregated correctly.
+The key distinction is semantic: fields such as ``groundOuts`` and ``airOuts``
+are *outs recorded*, not necessarily one batted-ball event each. This audit does
+not promote them as trajectory-event counts merely because they are present.
 """
 
 from __future__ import annotations
@@ -28,7 +26,6 @@ from universal_baseball.season_stats import (
     select_reconciliation_players,
     standardize_armstjc_season_stats,
 )
-
 
 SEASON = 2024
 LEVEL_SPECS = (
@@ -51,6 +48,9 @@ SPECS = tuple(
     for kind in ("batting", "pitching")
 )
 
+# The public Stats API person-season representation exposes only a subset of the
+# richer BDFED fields. Keep every candidate here; _compare_player compares only
+# fields present in both representations.
 BATTING_PROFILE_COMPARE = {
     **base.BATTING_COMPARE,
     "groundOuts": "batting_GO",
@@ -90,8 +90,7 @@ def _num(column: str) -> pl.Expr:
 
 
 def _difference_profile(frame: pl.DataFrame, lhs: pl.Expr, rhs: pl.Expr) -> dict[str, Any]:
-    working = frame.select((lhs - rhs).alias("difference"))
-    differences = working.get_column("difference")
+    differences = frame.select((lhs - rhs).alias("difference")).get_column("difference")
     mismatches = differences.filter(differences != 0)
     counts = Counter(int(value) for value in mismatches.to_list())
     return {
@@ -118,8 +117,8 @@ def _inequality_profile(frame: pl.DataFrame, lower: pl.Expr, upper: pl.Expr) -> 
 def _raw_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
     if kind == "batting":
         required = {
-            "batting_AB", "batting_SO", "batting_HR", "batting_SF",
-            "batting_GO", "batting_AO", "batting_FO", "batting_PO", "batting_LO",
+            "batting_AB", "batting_SO", "batting_HR", "batting_SH", "batting_SF",
+            "batting_GiDP", "batting_GO", "batting_AO", "batting_FO", "batting_PO", "batting_LO",
             "batting_ground_hits", "batting_fly_hits", "batting_pop_hits", "batting_line_hits",
             "batting_pitches_faced", "batting_swings", "batting_whiffs",
             "batting_balls_in_play", "batting_reached_on_error",
@@ -127,6 +126,7 @@ def _raw_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
         missing = sorted(required - set(frame.columns))
         if missing:
             return {"available": False, "missing_columns": missing}
+
         trajectory_hits = (
             _num("batting_ground_hits") + _num("batting_fly_hits")
             + _num("batting_pop_hits") + _num("batting_line_hits")
@@ -135,22 +135,36 @@ def _raw_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
             _num("batting_GO") + _num("batting_FO")
             + _num("batting_PO") + _num("batting_LO")
         )
+        naive_components = trajectory_hits + trajectory_outs + _num("batting_reached_on_error")
+        babip_denominator = (
+            _num("batting_AB") - _num("batting_SO") - _num("batting_HR") + _num("batting_SF")
+        )
+        broad_contact_formula = (
+            _num("batting_AB") - _num("batting_SO") + _num("batting_SF") + _num("batting_SH")
+        )
         return {
             "available": True,
+            "semantic_guardrail": (
+                "groundOuts/flyOuts/popOuts/lineOuts are outs recorded, not certified "
+                "one-row-per-contact event counts; double plays can make their sum exceed BIP"
+            ),
             "air_outs_equals_components": _difference_profile(
                 frame,
                 _num("batting_AO"),
                 _num("batting_FO") + _num("batting_PO") + _num("batting_LO"),
             ),
-            "source_bip_vs_standard_bip_formula": _difference_profile(
-                frame,
-                _num("batting_balls_in_play"),
-                _num("batting_AB") - _num("batting_SO") - _num("batting_HR") + _num("batting_SF"),
+            "source_bip_vs_broad_contact_formula_ab_minus_so_plus_sf_plus_sh": _difference_profile(
+                frame, _num("batting_balls_in_play"), broad_contact_formula
             ),
-            "source_bip_vs_trajectory_hits_outs_plus_roe": _difference_profile(
+            "source_bip_minus_babip_denominator_vs_hr_plus_sh": _difference_profile(
                 frame,
-                _num("batting_balls_in_play"),
-                trajectory_hits + trajectory_outs + _num("batting_reached_on_error"),
+                _num("batting_balls_in_play") - babip_denominator,
+                _num("batting_HR") + _num("batting_SH"),
+            ),
+            "naive_trajectory_components_minus_bip_vs_gidp": _difference_profile(
+                frame,
+                naive_components - _num("batting_balls_in_play"),
+                _num("batting_GiDP"),
             ),
             "whiffs_le_swings": _inequality_profile(
                 frame, _num("batting_whiffs"), _num("batting_swings")
@@ -165,7 +179,7 @@ def _raw_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
         }
 
     required = {
-        "pitching_AB", "pitching_SO", "pitching_HR", "pitching_SF",
+        "pitching_AB", "pitching_SO", "pitching_HR", "pitching_SF", "pitching_GiDP",
         "pitching_FO", "pitching_GO", "pitching_AO", "pitching_pop_outs", "pitching_line_outs",
         "pitching_FH", "pitching_PH", "pitching_LH",
         "pitching_PI", "pitching_total_swings", "pitching_swing_and_misses",
@@ -176,12 +190,16 @@ def _raw_profile(frame: pl.DataFrame, kind: str) -> dict[str, Any]:
         return {"available": False, "missing_columns": missing}
     return {
         "available": True,
+        "semantic_guardrail": (
+            "pitching source omits groundHits, so it cannot reconstruct a complete "
+            "trajectory-event distribution from season aggregates"
+        ),
         "air_outs_equals_components": _difference_profile(
             frame,
             _num("pitching_AO"),
             _num("pitching_FO") + _num("pitching_pop_outs") + _num("pitching_line_outs"),
         ),
-        "source_bip_vs_standard_bip_formula": _difference_profile(
+        "source_bip_vs_standard_fieldable_bip_formula": _difference_profile(
             frame,
             _num("pitching_balls_in_play"),
             _num("pitching_AB") - _num("pitching_SO") - _num("pitching_HR") + _num("pitching_SF"),
@@ -273,33 +291,40 @@ def main() -> int:
         base.BATTING_COMPARE = original_batting
         base.PITCHING_COMPARE = original_pitching
 
-    standard_exact = [row for row in player_reports if row["exact"]]
-    all_samples_exact = len(standard_exact) == len(player_reports) and bool(player_reports)
-    profile_field_counts = Counter()
-    profile_difference_counts = Counter()
+    exact = [row for row in player_reports if row["exact"]]
+    field_counts = Counter()
+    difference_counts = Counter()
     for row in player_reports:
         for field in row["compared_fields"]:
-            if field.startswith("batting_") or field.startswith("pitching_"):
-                profile_field_counts[field] += 1
+            field_counts[field] += 1
         for field in row["differences"]:
-            profile_difference_counts[field] += 1
+            difference_counts[field] += 1
+
+    baseline_batting_fields = set(base.BATTING_COMPARE.values())
+    baseline_pitching_fields = set(base.PITCHING_COMPARE.values())
+    extra_official_fields = sorted(
+        field
+        for field in field_counts
+        if field not in baseline_batting_fields and field not in baseline_pitching_fields
+    )
 
     payload = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "status": "all_level_completed_season_profile_reuse_audit",
         "season": SEASON,
         "source_reports": source_reports,
         "player_reports": player_reports,
         "reconciliation_sample_count": len(player_reports),
-        "exact_sample_count": len(standard_exact),
-        "all_samples_exact": all_samples_exact,
-        "compared_field_sample_counts": dict(sorted(profile_field_counts.items())),
-        "field_difference_sample_counts": dict(sorted(profile_difference_counts.items())),
+        "exact_sample_count": len(exact),
+        "all_samples_exact": len(exact) == len(player_reports) and bool(player_reports),
+        "compared_field_sample_counts": dict(sorted(field_counts.items())),
+        "field_difference_sample_counts": dict(sorted(difference_counts.items())),
+        "extra_fields_independently_exposed_by_stats_api": extra_official_fields,
         "interpretation_guardrail": (
-            "A rich field is reusable only if it is structurally present, passes basic row-level "
-            "arithmetic/inequality checks where defined, and matches the independent official "
-            "person-season representation in sampled leagues. Direction remains unavailable in "
-            "these aggregates and is not inferred."
+            "Official person-season reconciliation independently supports only mutually exposed "
+            "fields. Structural consistency alone does not promote totalSwings, swingAndMisses, "
+            "or hit/out trajectory components to physical-process evidence. Ground/air out "
+            "columns count outs, not guaranteed one-per-contact events. Direction is absent."
         ),
     }
     (report_dir / "all_level_season_profile_reuse.json").write_text(
@@ -312,7 +337,8 @@ def main() -> int:
         f"- Season: {SEASON}",
         f"- Source assets: {len(source_reports)}",
         f"- Official player-league samples: {len(player_reports)}",
-        f"- Exact samples across every mutually available compared field: **{len(standard_exact)}/{len(player_reports)}**",
+        f"- Exact samples across every mutually available compared field: **{len(exact)}/{len(player_reports)}**",
+        f"- Extra rich fields independently exposed by Stats API: `{extra_official_fields}`",
         "",
     ]
     for report in source_reports:
@@ -345,7 +371,8 @@ def main() -> int:
         [
             "",
             "Direction / Pull-Center-Opposite is not present in these season aggregates. "
-            "No directional profile is inferred from trajectory counts.",
+            "Detailed trajectory hit/out fields are not treated as event counts, and swings/whiffs "
+            "remain process candidates pending fidelity validation.",
             "",
         ]
     )
