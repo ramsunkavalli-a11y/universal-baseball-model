@@ -11,7 +11,9 @@ classification. Keeping this projector narrow has two advantages:
   ``play_sequence -> 0..N pitches`` grain.
 
 Exact HTTP bytes are captured by the caller through ``official_capture``. This
-module performs only the deterministic payload projection.
+module performs only the deterministic payload projection and returns the
+already-frozen ``game_pk + at_bat_index`` authority schema used by the contact
+overlay layer.
 """
 
 from __future__ import annotations
@@ -63,8 +65,8 @@ def project_official_allplays_participant_authority(
             continue
         rows.append(
             {
-                "source_game_pk": int(game_pk),
-                "source_at_bat_index": at_bat_index,
+                "game_pk": int(game_pk),
+                "at_bat_index": at_bat_index,
                 "official_batter_id": batter_id,
             }
         )
@@ -73,7 +75,7 @@ def project_official_allplays_participant_authority(
         return pl.DataFrame(schema=OFFICIAL_SEQUENCE_AUTHORITY_SCHEMA)
     frame = pl.DataFrame(rows, schema=OFFICIAL_SEQUENCE_AUTHORITY_SCHEMA, strict=False)
     conflicts = (
-        frame.group_by(["source_game_pk", "source_at_bat_index"])
+        frame.group_by(["game_pk", "at_bat_index"])
         .agg(pl.col("official_batter_id").n_unique().alias("batter_id_count"))
         .filter(pl.col("batter_id_count") > 1)
     )
@@ -82,6 +84,6 @@ def project_official_allplays_participant_authority(
             f"official allPlays contains conflicting matchup batters for game_pk={game_pk}"
         )
     return frame.unique(
-        subset=["source_game_pk", "source_at_bat_index"],
+        subset=["game_pk", "at_bat_index"],
         maintain_order=False,
-    ).sort(["source_game_pk", "source_at_bat_index"])
+    ).sort(["game_pk", "at_bat_index"])
