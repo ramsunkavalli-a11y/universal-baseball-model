@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Audit reusable Gameday narrative vocabulary for airborne foul-territory outs.
+"""Audit reusable Gameday narrative vocabulary for foul-air outs.
 
 This is a descriptive certification tool, not a production classifier. It asks
 whether a narrow, explicit narrative allowlist can identify airborne balls
@@ -8,10 +8,10 @@ caught in foul territory without treating every occurrence of the word
 
 The source rows are first collapsed at natural physical-pitch grain using the
 same non-null field-consensus logic as the trajectory taxonomy audit. We then
-inspect only ``popup`` and ``fly_ball`` trajectories and partition descriptions
-into explicit foul-territory phrases versus other/ambiguous uses of ``foul``.
-Spray angle is retained only as a diagnostic; it is never used to classify
-fair/foul status.
+inspect ``popup``, ``fly_ball``, and ``line_drive`` trajectories and partition
+descriptions into explicit foul-territory phrases versus other/ambiguous uses
+of ``foul``. Spray angle is retained only as a diagnostic; it is never used to
+classify fair/foul status.
 """
 
 from __future__ import annotations
@@ -27,9 +27,10 @@ import polars as pl
 
 from universal_baseball.batted_ball_direction import field_spray_angle_expr
 from universal_baseball.certification import download_file, read_quarantined_csv
-from universal_baseball.trajectory_audit import AIRBORNE_TYPES, collapse_trajectory_evidence
+from universal_baseball.trajectory_audit import collapse_trajectory_evidence
 
 
+FOUL_SCREEN_BB_TYPES = frozenset({"popup", "fly_ball", "line_drive"})
 EXPLICIT_FOUL_TERRITORY_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("foul_territory", re.compile(r"\bfoul\s+territory\b", re.IGNORECASE)),
     ("foul_ground", re.compile(r"\bfoul\s+ground\b", re.IGNORECASE)),
@@ -95,7 +96,7 @@ def build_report(frame: pl.DataFrame, *, example_limit: int) -> dict[str, Any]:
     if missing:
         raise ValueError(f"collapsed source missing foul-air fields: {missing}")
 
-    airborne = collapsed.filter(pl.col("bb_type").is_in(list(AIRBORNE_TYPES)))
+    airborne = collapsed.filter(pl.col("bb_type").is_in(sorted(FOUL_SCREEN_BB_TYPES)))
     if {"hc_x", "hc_y"} <= set(airborne.columns):
         airborne = airborne.with_columns(
             field_spray_angle_expr(pl.col("hc_x"), pl.col("hc_y")).alias("spray_angle")
@@ -158,6 +159,7 @@ def build_report(frame: pl.DataFrame, *, example_limit: int) -> dict[str, Any]:
     explicit = counters["explicit_foul_territory"]
     return {
         "natural_pitch_key_count": collapsed.height,
+        "foul_screen_bb_types": sorted(FOUL_SCREEN_BB_TYPES),
         "airborne_pitch_count": airborne.height,
         "airborne_trajectory_counts": trajectory_counts,
         "airborne_description_present_count": with_description.height,
@@ -192,13 +194,13 @@ def _pct(value: float | None) -> str:
 
 def _markdown(asset: str, metadata: dict[str, Any], report: dict[str, Any]) -> str:
     lines = [
-        "# Airborne foul-description vocabulary audit",
+        "# Foul-air description vocabulary audit",
         "",
         "**Diagnostic only. This report does not promote a production foul-air rule.**",
         "",
         f"- Asset: `{asset}`",
         f"- Source SHA-256: `{metadata['sha256']}`",
-        f"- Airborne `popup` + `fly_ball` pitch keys: {report['airborne_pitch_count']:,}",
+        f"- Candidate `popup` + `fly_ball` + `line_drive` pitch keys: {report['airborne_pitch_count']:,}",
         f"- Description present: {report['airborne_description_present_count']:,}",
         f"- Description missing: {report['airborne_description_missing_count']:,}",
         f"- Description conflicts at natural pitch grain: {report['airborne_description_conflict_count']:,}",
@@ -255,7 +257,7 @@ def main() -> int:
         raise RuntimeError(f"foul-air source asset is empty: {args.asset_name}")
     report = build_report(frame, example_limit=args.example_limit)
     payload = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "status": "description_vocabulary_diagnostic_not_production_rule",
         "source_asset": args.asset_name,
         "source_url": args.url,
