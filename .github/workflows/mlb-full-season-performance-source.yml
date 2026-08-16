@@ -1,18 +1,18 @@
-name: MLB bin value policy gate
+name: MLB bin value independent confirmation
 
 on:
   pull_request:
     branches:
       - main
     paths:
-      - scripts/audit_mlb_bin_value_policy.py
+      - scripts/audit_mlb_bin_value_independent_validation.py
       - .github/workflows/mlb-full-season-performance-source.yml
 
 permissions:
   contents: read
 
 jobs:
-  audit-2024-mlb-bin-values:
+  confirm-2023-mlb-bin-values:
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -32,14 +32,14 @@ jobs:
       - name: Run unit tests
         run: python -m pytest
 
-      - name: Audit 2024 MLB Performance-bin value policy
-        run: python scripts/audit_mlb_bin_value_policy.py
+      - name: Confirm pre-specified MLB lambda=5 on 2023
+        run: python scripts/audit_mlb_bin_value_independent_validation.py
 
-      - name: Upload MLB bin-value policy artifact
+      - name: Upload MLB independent confirmation artifact
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: mlb-bin-value-policy
-          path: reports/generated/mlb-bin-value-policy/
+          name: mlb-bin-value-independent-validation
+          path: reports/generated/mlb-bin-value-independent-validation/
           if-no-files-found: warn
           retention-days: 14
