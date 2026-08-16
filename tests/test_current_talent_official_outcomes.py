@@ -152,7 +152,7 @@ def test_official_only_positive_pa_game_is_inserted_explicitly() -> None:
                 }
             ),
         ],
-        how="vertical",
+        how="vertical_relaxed",
     )
     corrected, evidence, metrics = apply_official_game_log_outcome_authority(
         _source(), official, player_id=100, league_id=122
@@ -185,7 +185,7 @@ def test_official_only_zero_pa_game_is_not_inserted() -> None:
         pl.lit(0).alias("batting_AB"),
         pl.lit(0).alias("batting_SO"),
     )
-    official = pl.concat([_official(), zero], how="vertical")
+    official = pl.concat([_official(), zero], how="vertical_relaxed")
     corrected, _, metrics = apply_official_game_log_outcome_authority(
         _source(), official, player_id=100, league_id=122
     )
