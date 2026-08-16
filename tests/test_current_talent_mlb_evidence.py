@@ -60,6 +60,35 @@ def test_mlb_game_evidence_uses_true_pa_and_separate_contact_denominator() -> No
     assert metrics["evidence_denominator_policy"] == "separate_pa_expected_contact_observed_contact_v2"
 
 
+def test_physical_contact_on_interference_pa_is_observed_but_not_expected_result_contact() -> None:
+    # A catcher-interference PA can contain a real bat-ball contact even though
+    # the official PA result belongs to the special non-contact result family.
+    # ADR 024 must preserve that physical observation as a signed contact
+    # residual rather than redefining the result-contact denominator.
+    savant = _savant().with_columns(
+        pl.when(pl.col("events") == "catcher_interf")
+        .then(pl.lit(True))
+        .otherwise(pl.col("is_contact"))
+        .alias("is_contact")
+    )
+
+    summary, profile, metrics = build_mlb_current_talent_player_game_evidence(savant)
+    row = summary.row(0, named=True)
+
+    assert row["batting_plate_appearances"] == 4
+    assert row["expected_contact_count"] == 1
+    assert row["observed_contact_count"] == 2
+    assert row["contact_count_residual"] == 1
+    assert row["special_noncontact_count"] == 1
+    assert row["unknown_contact_count"] == 1
+    assert row["core_profile_event_count"] == 3
+    assert row["pa_accounting_residual"] == 0
+    assert profile.get_column("occurrence_count").sum() == 3
+    assert metrics["total_expected_contacts"] == 1
+    assert metrics["total_observed_contacts"] == 2
+    assert metrics["total_contact_count_residual"] == 1
+
+
 def test_mlb_game_evidence_rejects_non_mlb_league() -> None:
     bad = _savant().with_columns(pl.lit(117).alias("league_id"))
     with pytest.raises(ValueError, match="non-MLB league"):
