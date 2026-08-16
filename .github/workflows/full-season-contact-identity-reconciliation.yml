@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/full-season-contact-identity-reconciliation.yml"
-      - "scripts/audit_player_game_snapshot_conflicts.py"
+      - "scripts/audit_player_game_contact_localization.py"
       - "src/universal_baseball/player_game_stats.py"
       - "tests/test_player_game_stats.py"
 
@@ -12,9 +12,9 @@ permissions:
   contents: read
 
 jobs:
-  diagnose-2024-aaa-player-game-snapshots:
+  localize-2024-aaa-contacts:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
 
     steps:
       - name: Check out repository
@@ -32,14 +32,14 @@ jobs:
       - name: Run unit tests
         run: python -m pytest
 
-      - name: Diagnose 2024 AAA player-game snapshot conflicts
-        run: python scripts/audit_player_game_snapshot_conflicts.py
+      - name: Localize 2024 AAA contact attribution with player-game boxscores
+        run: python scripts/audit_player_game_contact_localization.py
 
-      - name: Upload player-game snapshot diagnostic
+      - name: Upload player-game localization report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: player-game-snapshot-conflicts
-          path: reports/generated/player-game-snapshot-conflicts/
+          name: player-game-contact-localization
+          path: reports/generated/player-game-contact-localization/
           if-no-files-found: warn
           retention-days: 14
