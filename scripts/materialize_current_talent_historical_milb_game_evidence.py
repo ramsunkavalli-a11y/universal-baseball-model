@@ -5,6 +5,8 @@ This is the reusable post-reorganization historical path. It keeps outcome and
 contact evidence separate until both have passed their own source controls:
 
 - player-game batting supplies chronological outcome vectors and contact controls;
+- certified exception-only participant corrections are applied after player-game
+  snapshot resolution and before outcome/contact reconciliation;
 - season-player batting independently triggers sparse outcome review;
 - current official gameLog adjudicates only residual player × league outcome rows;
 - reusable PBP supplies physical contact geometry/profile evidence;
@@ -46,6 +48,9 @@ from universal_baseball.contact_identity_overlay import (
     project_official_sequence_authority,
 )
 from universal_baseball.current_talent_era import current_talent_level_spec
+from universal_baseball.current_talent_identity_corrections import (
+    apply_historical_player_game_identity_corrections,
+)
 from universal_baseball.current_talent_milb_evidence import (
     build_milb_current_talent_player_game_evidence,
     project_milb_player_game_outcomes,
@@ -179,13 +184,6 @@ def _load_player_game_sources(
             f"{season} {level} has unresolved player-game contact controls: "
             f"{control_metrics['unresolved_contact_control_count']}"
         )
-    expected_controls = controls.filter(pl.col("expected_contact_count").is_not_null())
-    control_coverage = validate_expected_actual_leagues(
-        expected_controls,
-        league_column="league_id",
-        expected_league_ids=league_ids,
-        label=f"{season} {level} player-game contact controls",
-    )
 
     outcomes, outcome_metrics = resolve_milb_player_game_outcomes(
         pl.concat(outcome_frames, how="vertical_relaxed")
@@ -195,6 +193,22 @@ def _load_player_game_sources(
             f"{season} {level} has unresolved player-game outcomes: "
             f"{outcome_metrics['unresolved_player_game_count']}"
         )
+
+    outcomes, controls, identity_evidence, identity_metrics = (
+        apply_historical_player_game_identity_corrections(
+            outcomes,
+            controls,
+            season=season,
+        )
+    )
+
+    expected_controls = controls.filter(pl.col("expected_contact_count").is_not_null())
+    control_coverage = validate_expected_actual_leagues(
+        expected_controls,
+        league_column="league_id",
+        expected_league_ids=league_ids,
+        label=f"{season} {level} player-game contact controls",
+    )
     positive_pa = outcomes.filter(
         (pl.col("game_type") == GAME_TYPE)
         & pl.col("batting_PA").is_not_null()
@@ -212,6 +226,10 @@ def _load_player_game_sources(
         "game_league_map": league_map_metrics,
         "contact_controls": {**control_metrics, "league_coverage": control_coverage},
         "outcomes": {**outcome_metrics, "league_coverage": outcome_coverage},
+        "identity_corrections": {
+            **identity_metrics,
+            "evidence": identity_evidence.to_dicts(),
+        },
     }
 
 
