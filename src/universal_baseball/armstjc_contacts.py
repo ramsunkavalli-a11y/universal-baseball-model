@@ -74,6 +74,25 @@ def _nonblank(column: str) -> pl.Expr:
     )
 
 
+def _certified_batter_side_column(frame: pl.DataFrame, source_asset: str) -> str:
+    """Return the certified raw batter-side column for this source asset.
+
+    armstjc's parser exports MLB matchup ``batSide.code`` as ``stand``. Some
+    audited intermediate/reprocessed files expose the already-normalized
+    ``batter_side`` spelling. Both represent the same structured source field;
+    no fuzzy aliasing is allowed here.
+    """
+
+    if "batter_side" in frame.columns:
+        return "batter_side"
+    if "stand" in frame.columns:
+        return "stand"
+    raise ValueError(
+        f"{source_asset} missing certified batter-side field: expected 'stand' "
+        "or normalized 'batter_side'"
+    )
+
+
 def project_armstjc_contact_observations(
     frame: pl.DataFrame,
     *,
@@ -83,10 +102,10 @@ def project_armstjc_contact_observations(
 ) -> pl.DataFrame:
     """Project one raw PBP asset to contact-relevant source observations.
 
-    The raw release historically uses ``at_bat_number`` for the play-sequence
-    index. ``league_id`` and ``description`` are present in recent audited
-    releases; historical callers should normalize known schema aliases before
-    entering this production adapter.
+    The raw release uses ``at_bat_number`` for the play-sequence index and
+    historically exports batter handedness as ``stand``. A normalized
+    ``batter_side`` spelling is accepted only because it is already a certified
+    one-to-one alias of the same MLB matchup field.
     """
 
     required = {
@@ -95,7 +114,6 @@ def project_armstjc_contact_observations(
         "pitch_number",
         "batter",
         "pitcher",
-        "batter_side",
         "game_date",
         "game_type",
         "league_id",
@@ -112,6 +130,7 @@ def project_armstjc_contact_observations(
     missing = sorted(required - set(frame.columns))
     if missing:
         raise ValueError(f"{source_asset} missing contact projection fields: {missing}")
+    batter_side_column = _certified_batter_side_column(frame, source_asset)
 
     positive_contact = (
         pl.col("type").cast(pl.String).str.strip_chars().str.to_uppercase().is_in(
@@ -136,7 +155,7 @@ def project_armstjc_contact_observations(
             _int_expr("league_id"),
             _int_expr("batter", "source_batter_id"),
             _int_expr("pitcher", "source_pitcher_id"),
-            pl.col("batter_side").cast(pl.String),
+            pl.col(batter_side_column).cast(pl.String).alias("batter_side"),
             positive_contact.alias("source_is_in_play"),
             pl.col("bb_type").cast(pl.String),
             pl.col("hc_x").cast(pl.Float64, strict=False),
@@ -189,9 +208,6 @@ def resolve_armstjc_contact_observations(
     if observations.is_empty():
         return pl.DataFrame(schema=RESOLVED_CONTACT_SCHEMA)
 
-    # Exact duplicates do not create baseball variants, but retain their raw
-    # multiplicity without an O(keys × rows) scan.  This matters at full-season
-    # scale where some upstream files duplicate every game.
     raw_counts = {
         (int(row["game_pk"]), int(row["at_bat_index"]), int(row["pitch_number"])): int(row["raw_source_row_count"])
         for row in observations.group_by(list(CONTACT_NATURAL_KEY))
