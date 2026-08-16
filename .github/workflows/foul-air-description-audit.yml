@@ -1,10 +1,7 @@
 name: Foul-air description vocabulary audit
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/foul-air-description-audit.yml"
-      - "scripts/audit_foul_air_descriptions.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
