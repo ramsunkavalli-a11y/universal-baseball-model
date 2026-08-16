@@ -7,12 +7,18 @@ CSV export already exposes the required pitch/contact surface. This gate samples
 three regular-season dates spanning 2024 and reconciles Savant against the
 project's tolerant Stats API projection.
 
-The audit deliberately separates:
-- physical contact-key coverage;
-- participant identity;
-- trajectory / Gameday coordinates;
-- PA narrative / foul-territory classification; and
-- terminal-event coverage (which may legitimately omit zero-pitch PAs).
+The gate deliberately separates source semantics:
+
+- contact *existence/profile* is certified at play-sequence grain because the
+  current Stats API can revise the pitch number assigned to an otherwise
+  identical historical contact;
+- pitch-number drift is retained as revision evidence rather than used as a
+  participant/profile tiebreaker;
+- canonical bunt trajectory is reconstructed from Savant's explicit PA
+  narrative because the public ``bb_type`` collapses bunts;
+- ``truncated_pa`` is retained as a source terminal marker but is not a true PA;
+- standard PA/outcome totals remain a separate backbone so pitch-level exports
+  never need to invent zero-pitch PAs.
 """
 
 from __future__ import annotations
@@ -21,14 +27,13 @@ from datetime import date
 from hashlib import sha256
 import json
 from pathlib import Path
-import re
 
 import polars as pl
 
-from universal_baseball.contact_identity_overlay import project_official_contact_authority
 from universal_baseball.official import fetch_official_game_evidence
 from universal_baseball.performance_events import FOUL_TERRITORY_REGEX
 from universal_baseball.savant import (
+    SAVANT_NON_PA_TERMINAL_EVENTS,
     fetch_savant_csv,
     project_savant_performance_rows,
     read_savant_csv_bytes,
@@ -38,6 +43,8 @@ from universal_baseball.savant import (
 REPORT_DIR = Path("reports/generated/mlb-savant-performance-source")
 AUDIT_DATES = (date(2024, 4, 15), date(2024, 6, 15), date(2024, 9, 15))
 GAMES_PER_DATE = 4
+SEQUENCE_KEY = ["game_pk", "at_bat_index"]
+CONTACT_KEY = ["game_pk", "at_bat_index", "pitch_number"]
 
 
 def _normalized_text_expr(column: str) -> pl.Expr:
@@ -50,56 +57,122 @@ def _normalized_text_expr(column: str) -> pl.Expr:
     )
 
 
-def _contact_comparison(
-    savant: pl.DataFrame,
+def _official_contacts(
     official_pa: pl.DataFrame,
     official_pitch: pl.DataFrame,
 ) -> pl.DataFrame:
-    key = ["game_pk", "at_bat_index", "pitch_number"]
-    savant_contacts = savant.filter(pl.col("is_contact")).select(
-        *key,
-        "batter_mlbam_id",
-        "batter_side",
-        "bb_type",
-        "hc_x",
-        "hc_y",
-        "result_description",
-    ).with_columns(pl.lit(True).alias("savant_present"))
-
-    pa_authority = official_pa.select(
+    pa = official_pa.select(
         pl.col("game_pk").cast(pl.Int64),
         pl.col("at_bat_number").cast(pl.Int64).alias("at_bat_index"),
         pl.col("batter_id").cast(pl.Int64).alias("official_batter_id"),
-        pl.col("description").alias("official_result_description"),
+        pl.col("description").cast(pl.String).alias("official_result_description"),
     )
-    official_contacts = (
+    return (
         official_pitch.filter(pl.col("is_in_play") == True)  # noqa: E712
         .select(
             pl.col("game_pk").cast(pl.Int64),
             pl.col("at_bat_number").cast(pl.Int64).alias("at_bat_index"),
-            pl.col("pitch_number").cast(pl.Int64),
-            pl.col("batter_side").alias("official_batter_side"),
-            pl.col("hit_trajectory").alias("official_bb_type"),
-            pl.col("hit_coord_x").alias("official_hc_x"),
-            pl.col("hit_coord_y").alias("official_hc_y"),
+            pl.col("pitch_number").cast(pl.Int64).alias("official_pitch_number"),
+            pl.col("batter_side").cast(pl.String).alias("official_batter_side"),
+            pl.col("hit_trajectory").cast(pl.String).alias("official_bb_type"),
+            pl.col("hit_coord_x").cast(pl.Float64).alias("official_hc_x"),
+            pl.col("hit_coord_y").cast(pl.Float64).alias("official_hc_y"),
         )
-        .join(pa_authority, on=["game_pk", "at_bat_index"], how="left")
-        .with_columns(pl.lit(True).alias("official_present"))
+        .join(pa, on=SEQUENCE_KEY, how="left")
+        .sort([*SEQUENCE_KEY, "official_pitch_number"])
     )
 
+
+def _contact_sequence_counts(
+    savant_contacts: pl.DataFrame,
+    official_contacts: pl.DataFrame,
+) -> pl.DataFrame:
+    source = (
+        savant_contacts.group_by(SEQUENCE_KEY)
+        .len(name="savant_contact_count")
+        .with_columns(pl.lit(True).alias("savant_sequence_present"))
+    )
+    official = (
+        official_contacts.group_by(SEQUENCE_KEY)
+        .len(name="official_contact_count")
+        .with_columns(pl.lit(True).alias("official_sequence_present"))
+    )
     return (
-        savant_contacts.join(official_contacts, on=key, how="full", coalesce=True)
+        source.join(official, on=SEQUENCE_KEY, how="full", coalesce=True)
         .with_columns(
-            pl.col("savant_present").fill_null(False),
-            pl.col("official_present").fill_null(False),
+            pl.col("savant_sequence_present").fill_null(False),
+            pl.col("official_sequence_present").fill_null(False),
+            pl.col("savant_contact_count").fill_null(0).cast(pl.Int64),
+            pl.col("official_contact_count").fill_null(0).cast(pl.Int64),
         )
         .with_columns(
-            pl.when(pl.col("savant_present") & pl.col("official_present"))
-            .then(pl.lit("both"))
-            .when(pl.col("savant_present"))
-            .then(pl.lit("savant_only"))
-            .otherwise(pl.lit("official_only"))
-            .alias("key_presence"),
+            (
+                pl.col("savant_contact_count") - pl.col("official_contact_count")
+            ).alias("contact_count_difference")
+        )
+        .sort(SEQUENCE_KEY)
+    )
+
+
+def _rank_contacts_within_sequence(
+    frame: pl.DataFrame,
+    *,
+    pitch_column: str,
+) -> pl.DataFrame:
+    return (
+        frame.sort([*SEQUENCE_KEY, pitch_column])
+        .with_columns(
+            pl.col(pitch_column)
+            .rank(method="ordinal")
+            .over(SEQUENCE_KEY)
+            .cast(pl.Int64)
+            .alias("contact_rank")
+        )
+    )
+
+
+def _paired_contact_comparison(
+    savant: pl.DataFrame,
+    official_pa: pl.DataFrame,
+    official_pitch: pl.DataFrame,
+) -> tuple[pl.DataFrame, pl.DataFrame]:
+    savant_contacts = (
+        savant.filter(pl.col("is_contact"))
+        .select(
+            *SEQUENCE_KEY,
+            pl.col("pitch_number").cast(pl.Int64).alias("savant_pitch_number"),
+            "batter_mlbam_id",
+            "batter_side",
+            "source_bb_type",
+            "bb_type",
+            "hc_x",
+            "hc_y",
+            "result_description",
+        )
+        .sort([*SEQUENCE_KEY, "savant_pitch_number"])
+    )
+    official_contacts = _official_contacts(official_pa, official_pitch)
+    sequence_counts = _contact_sequence_counts(savant_contacts, official_contacts)
+
+    source_ranked = _rank_contacts_within_sequence(
+        savant_contacts,
+        pitch_column="savant_pitch_number",
+    )
+    official_ranked = _rank_contacts_within_sequence(
+        official_contacts,
+        pitch_column="official_pitch_number",
+    )
+    comparison = (
+        source_ranked.join(
+            official_ranked,
+            on=[*SEQUENCE_KEY, "contact_rank"],
+            how="full",
+            coalesce=True,
+        )
+        .with_columns(
+            (
+                pl.col("savant_pitch_number") - pl.col("official_pitch_number")
+            ).alias("pitch_number_delta"),
             (
                 pl.col("batter_mlbam_id").is_not_null()
                 & pl.col("official_batter_id").is_not_null()
@@ -126,7 +199,9 @@ def _contact_comparison(
                 & ((pl.col("hc_y") - pl.col("official_hc_y")).abs() < 1e-9)
             ).alias("hc_y_match_when_both"),
             _normalized_text_expr("result_description").alias("savant_result_norm"),
-            _normalized_text_expr("official_result_description").alias("official_result_norm"),
+            _normalized_text_expr("official_result_description").alias(
+                "official_result_norm"
+            ),
         )
         .with_columns(
             (
@@ -145,45 +220,71 @@ def _contact_comparison(
             .fill_null(False)
             .alias("official_foul_territory"),
         )
-        .sort(key)
+        .sort([*SEQUENCE_KEY, "contact_rank"])
     )
+    return comparison, sequence_counts
 
 
-def _terminal_comparison(savant: pl.DataFrame, official_pa: pl.DataFrame) -> pl.DataFrame:
-    savant_terminal = (
-        savant.filter(pl.col("is_terminal_event"))
+def _terminal_comparison(
+    savant: pl.DataFrame,
+    official_pa: pl.DataFrame,
+) -> tuple[pl.DataFrame, pl.DataFrame]:
+    savant_pa = (
+        savant.filter(pl.col("is_plate_appearance_terminal"))
         .select(
-            "game_pk",
-            "at_bat_index",
+            *SEQUENCE_KEY,
             "events",
             "batter_mlbam_id",
+            "result_description",
         )
-        .unique(subset=["game_pk", "at_bat_index"], keep="any")
-        .with_columns(pl.lit(True).alias("savant_terminal_present"))
+        .unique(subset=SEQUENCE_KEY, keep="any")
+        .with_columns(pl.lit(True).alias("savant_pa_present"))
     )
-    official = official_pa.select(
-        pl.col("game_pk").cast(pl.Int64),
-        pl.col("at_bat_number").cast(pl.Int64).alias("at_bat_index"),
-        pl.col("event_type").alias("official_event_type"),
-        pl.col("batter_id").cast(pl.Int64).alias("official_batter_id"),
-        pl.col("official_pitch_count").cast(pl.Int64),
-    ).with_columns(pl.lit(True).alias("official_pa_present"))
-    return (
-        savant_terminal.join(
-            official,
-            on=["game_pk", "at_bat_index"],
-            how="full",
-            coalesce=True,
+    truncated = (
+        savant.filter(pl.col("events").is_in(sorted(SAVANT_NON_PA_TERMINAL_EVENTS)))
+        .select(*SEQUENCE_KEY, "events", "batter_mlbam_id", "pitch_number")
+        .unique(subset=SEQUENCE_KEY, keep="any")
+        .sort(SEQUENCE_KEY)
+    )
+    official = (
+        official_pa.select(
+            pl.col("game_pk").cast(pl.Int64),
+            pl.col("at_bat_number").cast(pl.Int64).alias("at_bat_index"),
+            pl.col("event_type").cast(pl.String).alias("official_event_type"),
+            pl.col("batter_id").cast(pl.Int64).alias("official_batter_id"),
+            pl.col("official_pitch_count").cast(pl.Int64),
+            pl.col("description").cast(pl.String).alias("official_result_description"),
         )
+        .with_columns(pl.lit(True).alias("official_pa_present"))
+    )
+    comparison = (
+        savant_pa.join(official, on=SEQUENCE_KEY, how="full", coalesce=True)
         .with_columns(
-            pl.col("savant_terminal_present").fill_null(False),
+            pl.col("savant_pa_present").fill_null(False),
             pl.col("official_pa_present").fill_null(False),
         )
-        .sort(["game_pk", "at_bat_index"])
+        .with_columns(
+            (
+                pl.col("events").is_not_null()
+                & pl.col("official_event_type").is_not_null()
+                & (pl.col("events") == pl.col("official_event_type"))
+            ).alias("event_type_match"),
+            (
+                pl.col("batter_mlbam_id").is_not_null()
+                & pl.col("official_batter_id").is_not_null()
+                & (pl.col("batter_mlbam_id") == pl.col("official_batter_id"))
+            ).alias("batter_match"),
+        )
+        .sort(SEQUENCE_KEY)
     )
+    return comparison, truncated
 
 
-def _match_rate(frame: pl.DataFrame, field: str, availability: pl.Expr) -> dict[str, int | float | None]:
+def _match_rate(
+    frame: pl.DataFrame,
+    field: str,
+    availability: pl.Expr,
+) -> dict[str, int | float | None]:
     available = frame.filter(availability)
     matched = available.filter(pl.col(field) == True)  # noqa: E712
     return {
@@ -204,7 +305,9 @@ def main() -> int:
         capture = fetch_savant_csv(audit_date, audit_date)
         raw = read_savant_csv_bytes(capture.response_bytes)
         projected = project_savant_performance_rows(raw, regular_season_only=True)
-        games = sorted(int(value) for value in projected.get_column("game_pk").unique().to_list())
+        games = sorted(
+            int(value) for value in projected.get_column("game_pk").unique().to_list()
+        )
         chosen = games[:GAMES_PER_DATE]
         if len(chosen) != GAMES_PER_DATE:
             raise RuntimeError(
@@ -228,70 +331,111 @@ def main() -> int:
     selected_games = sorted(set(selected_games))
     official_pa, official_pitch = fetch_official_game_evidence(selected_games)
 
-    contact = _contact_comparison(savant, official_pa, official_pitch)
-    terminal = _terminal_comparison(savant, official_pa)
-    both_contacts = contact.filter(pl.col("key_presence") == "both")
-    savant_only = contact.filter(pl.col("key_presence") == "savant_only")
-    official_only = contact.filter(pl.col("key_presence") == "official_only")
+    contact, sequence_counts = _paired_contact_comparison(
+        savant,
+        official_pa,
+        official_pitch,
+    )
+    sequence_count_mismatches = sequence_counts.filter(
+        pl.col("contact_count_difference") != 0
+    )
+    multi_contact_sequences = sequence_counts.filter(
+        (pl.col("savant_contact_count") > 1) | (pl.col("official_contact_count") > 1)
+    )
+    pitch_drift = contact.filter(pl.col("pitch_number_delta") != 0)
 
     batter = _match_rate(
-        both_contacts,
+        contact,
         "batter_match",
-        pl.col("batter_mlbam_id").is_not_null() & pl.col("official_batter_id").is_not_null(),
+        pl.col("batter_mlbam_id").is_not_null()
+        & pl.col("official_batter_id").is_not_null(),
     )
     side = _match_rate(
-        both_contacts,
+        contact,
         "batter_side_match",
-        pl.col("batter_side").is_not_null() & pl.col("official_batter_side").is_not_null(),
+        pl.col("batter_side").is_not_null()
+        & pl.col("official_batter_side").is_not_null(),
     )
     trajectory = _match_rate(
-        both_contacts,
+        contact,
         "trajectory_match_when_both",
         pl.col("bb_type").is_not_null() & pl.col("official_bb_type").is_not_null(),
     )
     hc_x = _match_rate(
-        both_contacts,
+        contact,
         "hc_x_match_when_both",
         pl.col("hc_x").is_not_null() & pl.col("official_hc_x").is_not_null(),
     )
     hc_y = _match_rate(
-        both_contacts,
+        contact,
         "hc_y_match_when_both",
         pl.col("hc_y").is_not_null() & pl.col("official_hc_y").is_not_null(),
     )
     description = _match_rate(
-        both_contacts,
+        contact,
         "result_description_match_when_both",
         pl.col("result_description").is_not_null()
         & pl.col("official_result_description").is_not_null(),
     )
-    foul_disagreement = both_contacts.filter(
+    foul_disagreement = contact.filter(
         pl.col("savant_foul_territory") != pl.col("official_foul_territory")
     )
 
-    missing_savant_terminal = terminal.filter(
-        pl.col("official_pa_present") & ~pl.col("savant_terminal_present")
+    terminal, truncated = _terminal_comparison(savant, official_pa)
+    missing_savant_pa = terminal.filter(
+        pl.col("official_pa_present") & ~pl.col("savant_pa_present")
     )
-    extra_savant_terminal = terminal.filter(
-        pl.col("savant_terminal_present") & ~pl.col("official_pa_present")
+    extra_savant_pa = terminal.filter(
+        pl.col("savant_pa_present") & ~pl.col("official_pa_present")
     )
-    zero_pitch_missing = missing_savant_terminal.filter(pl.col("official_pitch_count") == 0)
+    nonzero_pitch_missing = missing_savant_pa.filter(
+        pl.col("official_pitch_count").fill_null(0) > 0
+    )
+    zero_pitch_missing = missing_savant_pa.filter(
+        pl.col("official_pitch_count").fill_null(-1) == 0
+    )
+    paired_pa = terminal.filter(
+        pl.col("savant_pa_present") & pl.col("official_pa_present")
+    )
+    terminal_event_mismatch = paired_pa.filter(~pl.col("event_type_match"))
+    terminal_batter_mismatch = paired_pa.filter(~pl.col("batter_match"))
 
-    contact.filter(pl.col("key_presence") != "both").write_csv(
-        REPORT_DIR / "contact_key_differences.csv"
+    sequence_count_mismatches.write_csv(
+        REPORT_DIR / "contact_sequence_count_differences.csv"
     )
-    both_contacts.filter(
+    pitch_drift.select(
+        *SEQUENCE_KEY,
+        "contact_rank",
+        "savant_pitch_number",
+        "official_pitch_number",
+        "pitch_number_delta",
+        "batter_mlbam_id",
+        "official_batter_id",
+        "bb_type",
+        "official_bb_type",
+        "hc_x",
+        "official_hc_x",
+        "hc_y",
+        "official_hc_y",
+        "result_description",
+        "official_result_description",
+    ).write_csv(REPORT_DIR / "contact_pitch_number_drift.csv")
+    contact.filter(
         (~pl.col("batter_match").fill_null(True))
         | (~pl.col("trajectory_match_when_both").fill_null(True))
         | (~pl.col("hc_x_match_when_both").fill_null(True))
         | (~pl.col("hc_y_match_when_both").fill_null(True))
+        | (~pl.col("result_description_match_when_both").fill_null(True))
         | (pl.col("savant_foul_territory") != pl.col("official_foul_territory"))
     ).write_csv(REPORT_DIR / "contact_field_differences.csv")
-    missing_savant_terminal.write_csv(REPORT_DIR / "official_pas_without_savant_terminal.csv")
-    extra_savant_terminal.write_csv(REPORT_DIR / "savant_terminal_without_official_pa.csv")
+    missing_savant_pa.write_csv(REPORT_DIR / "official_pas_without_savant_pa_terminal.csv")
+    extra_savant_pa.write_csv(REPORT_DIR / "savant_pa_terminal_without_official_pa.csv")
+    truncated.write_csv(REPORT_DIR / "savant_truncated_pa_sequences.csv")
 
+    savant_contact_count = savant.filter(pl.col("is_contact")).height
+    official_contact_count = official_pitch.filter(pl.col("is_in_play") == True).height  # noqa: E712
     payload = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "season": 2024,
         "source": "Baseball Savant Statcast CSV",
         "sample": {
@@ -301,37 +445,55 @@ def main() -> int:
             "game_ids": selected_games,
             "captures": captures,
         },
-        "rows": {
-            "savant_pitch_rows": savant.height,
-            "savant_contact_rows": savant.filter(pl.col("is_contact")).height,
-            "official_contact_rows": official_pitch.filter(pl.col("is_in_play") == True).height,  # noqa: E712
-            "matched_contact_keys": both_contacts.height,
-            "savant_only_contact_keys": savant_only.height,
-            "official_only_contact_keys": official_only.height,
+        "contact_surface": {
+            "savant_contact_rows": savant_contact_count,
+            "official_contact_rows": official_contact_count,
+            "savant_contact_sequence_count": sequence_counts.filter(
+                pl.col("savant_sequence_present")
+            ).height,
+            "official_contact_sequence_count": sequence_counts.filter(
+                pl.col("official_sequence_present")
+            ).height,
+            "sequence_count_mismatch_count": sequence_count_mismatches.height,
+            "multi_contact_sequence_count": multi_contact_sequences.height,
+            "paired_contact_row_count": contact.height,
+            "pitch_number_drift_count": pitch_drift.height,
+            "pitch_number_delta_counts": {
+                str(row["pitch_number_delta"]): int(row["len"])
+                for row in pitch_drift.group_by("pitch_number_delta")
+                .len()
+                .sort("pitch_number_delta")
+                .to_dicts()
+            },
         },
         "contact_fields": {
             "batter": batter,
             "batter_side": side,
-            "trajectory": trajectory,
+            "canonical_trajectory": trajectory,
             "hc_x": hc_x,
             "hc_y": hc_y,
             "result_description": description,
             "foul_territory_disagreement_count": foul_disagreement.height,
         },
         "terminal_pa_surface": {
-            "savant_terminal_sequence_count": terminal.filter(
-                pl.col("savant_terminal_present")
+            "savant_true_pa_terminal_count": terminal.filter(
+                pl.col("savant_pa_present")
             ).height,
             "official_true_pa_count": terminal.filter(pl.col("official_pa_present")).height,
-            "official_pa_missing_savant_terminal_count": missing_savant_terminal.height,
+            "official_pa_missing_savant_terminal_count": missing_savant_pa.height,
             "missing_savant_terminal_zero_pitch_pa_count": zero_pitch_missing.height,
-            "savant_terminal_without_official_pa_count": extra_savant_terminal.height,
+            "missing_savant_terminal_nonzero_pitch_pa_count": nonzero_pitch_missing.height,
+            "savant_pa_terminal_without_official_pa_count": extra_savant_pa.height,
+            "paired_pa_event_type_mismatch_count": terminal_event_mismatch.height,
+            "paired_pa_batter_mismatch_count": terminal_batter_mismatch.height,
+            "savant_truncated_pa_count": truncated.height,
         },
         "interpretation": (
-            "Savant can serve as the reusable MLB contact/profile source if physical "
-            "contact keys and certified profile fields reconcile to Stats API. Standard "
-            "PA/outcome totals should remain a separate aggregate backbone because a "
-            "pitch-level export need not represent zero-pitch PAs."
+            "Baseball Savant is certified here at play-sequence/contact-profile grain. "
+            "Its source pitch number is preserved even when current Stats API numbering "
+            "has drifted. Savant's raw bunt-collapsed bb_type and truncated_pa marker are "
+            "normalized explicitly. Standard season PA/outcome totals remain a separate "
+            "backbone rather than being reconstructed from pitch rows."
         ),
     }
     (REPORT_DIR / "mlb_savant_performance_source.json").write_text(
@@ -342,36 +504,48 @@ def main() -> int:
         "# MLB Savant Performance source audit — 2024",
         "",
         f"- Dates / games: {len(AUDIT_DATES)} / {len(selected_games)}",
-        f"- Savant / official contact rows: {savant.filter(pl.col('is_contact')).height:,} / {official_pitch.filter(pl.col('is_in_play') == True).height:,}",  # noqa: E712
-        f"- Matched contact keys: {both_contacts.height:,}",
-        f"- Savant-only / official-only contact keys: {savant_only.height:,} / {official_only.height:,}",
+        f"- Savant / official contact rows: {savant_contact_count:,} / {official_contact_count:,}",
+        f"- Contact-sequence count mismatches: {sequence_count_mismatches.height:,}",
+        f"- Multi-contact sequences: {multi_contact_sequences.height:,}",
+        f"- Paired contact rows: {contact.height:,}",
+        f"- Pitch-number drift rows: {pitch_drift.height:,}",
         f"- Batter match: {batter['matched']:,}/{batter['compared']:,}",
-        f"- Trajectory match when both present: {trajectory['matched']:,}/{trajectory['compared']:,}",
+        f"- Canonical trajectory match when both present: {trajectory['matched']:,}/{trajectory['compared']:,}",
         f"- hc_x / hc_y match when both present: {hc_x['matched']:,}/{hc_x['compared']:,} / {hc_y['matched']:,}/{hc_y['compared']:,}",
+        f"- Result narrative match when both present: {description['matched']:,}/{description['compared']:,}",
         f"- Foul-territory classification disagreements: {foul_disagreement.height:,}",
-        f"- Official true PAs without Savant terminal row: {missing_savant_terminal.height:,}",
-        f"- Of those, zero-pitch official PAs: {zero_pitch_missing.height:,}",
-        f"- Savant terminal rows without official true PA: {extra_savant_terminal.height:,}",
+        f"- Official true PAs without Savant true-PA terminal: {missing_savant_pa.height:,}",
+        f"- Missing with nonzero / zero official pitches: {nonzero_pitch_missing.height:,} / {zero_pitch_missing.height:,}",
+        f"- Savant true-PA terminals without official true PA: {extra_savant_pa.height:,}",
+        f"- Paired PA event/batter mismatches: {terminal_event_mismatch.height:,} / {terminal_batter_mismatch.height:,}",
+        f"- Savant truncated_pa non-PA markers: {truncated.height:,}",
     ]
     summary = "\n".join(lines)
     (REPORT_DIR / "mlb_savant_performance_source.md").write_text(summary, encoding="utf-8")
     print(summary)
 
-    if savant_only.height or official_only.height:
-        raise RuntimeError("Savant physical contact keys do not reconcile to official sample")
+    if sequence_count_mismatches.height:
+        raise RuntimeError("Savant contact sequence counts do not reconcile to official sample")
+    if contact.height != savant_contact_count or contact.height != official_contact_count:
+        raise RuntimeError("paired contact rows do not account for both sources")
     for label, result in (
         ("batter", batter),
         ("batter side", side),
-        ("trajectory", trajectory),
+        ("canonical trajectory", trajectory),
         ("hc_x", hc_x),
         ("hc_y", hc_y),
+        ("result description", description),
     ):
         if result["mismatched"]:
             raise RuntimeError(f"Savant {label} differs from official sample")
     if foul_disagreement.height:
-        raise RuntimeError("Savant foul-territory narrative classification differs from official")
-    if extra_savant_terminal.height:
-        raise RuntimeError("Savant terminal rows include non-PA official sequences")
+        raise RuntimeError("Savant foul-territory classification differs from official")
+    if nonzero_pitch_missing.height:
+        raise RuntimeError("Savant misses official nonzero-pitch true PAs")
+    if extra_savant_pa.height:
+        raise RuntimeError("Savant true-PA terminals include non-PA official sequences")
+    if terminal_event_mismatch.height or terminal_batter_mismatch.height:
+        raise RuntimeError("Savant PA terminal semantics differ from official sample")
     return 0
 
 
