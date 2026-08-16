@@ -2,15 +2,6 @@ name: Current Talent 2022 outcome adjudication
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-2022-outcome-adjudication.yml"
-      - "scripts/certify_current_talent_2022_outcome_adjudication.py"
-      - "src/universal_baseball/current_talent_official_outcomes.py"
-      - "src/universal_baseball/current_talent_era.py"
-      - "tests/test_current_talent_official_outcomes.py"
 
 permissions:
   contents: read
