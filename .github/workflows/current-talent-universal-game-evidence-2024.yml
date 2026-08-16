@@ -1,0 +1,119 @@
+name: Current Talent 2024 universal game evidence
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/current-talent-universal-game-evidence-2024.yml"
+      - "scripts/materialize_current_talent_milb_game_evidence_2024.py"
+      - "scripts/combine_current_talent_game_evidence_2024.py"
+      - "src/universal_baseball/current_talent_evidence.py"
+      - "src/universal_baseball/current_talent_milb_evidence.py"
+      - "src/universal_baseball/current_talent_universal_evidence.py"
+      - "src/universal_baseball/current_talent_reconciliation.py"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  build-affiliated-level:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        level: [aaa, aa, "a+", a, rk]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run game-evidence unit tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_evidence.py
+          tests/test_current_talent_milb_evidence.py
+          tests/test_current_talent_reconciliation.py
+
+      - name: Download certified level Performance
+        uses: actions/download-artifact@v7
+        with:
+          name: batting-performance-${{ matrix.level }}-2024
+          path: certified-performance
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31948208695
+          github-token: ${{ github.token }}
+
+      - name: Materialize level player-game evidence
+        run: >-
+          python scripts/materialize_current_talent_milb_game_evidence_2024.py
+          --level "${{ matrix.level }}"
+          --performance-root certified-performance
+
+      - name: Upload accepted level game evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-milb-game-evidence-2024-${{ matrix.level }}
+          path: reports/generated/current-talent-milb-game-evidence-2024/${{ matrix.level }}/
+          if-no-files-found: warn
+          retention-days: 14
+
+  combine-universal:
+    needs: build-affiliated-level
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Download accepted affiliated game evidence
+        uses: actions/download-artifact@v7
+        with:
+          pattern: current-talent-milb-game-evidence-2024-*
+          path: accepted-inputs/milb
+
+      - name: Download accepted MLB game evidence
+        uses: actions/download-artifact@v7
+        with:
+          name: current-talent-game-evidence-2024-aaa-mlb
+          path: accepted-inputs/top-end
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31958748147
+          github-token: ${{ github.token }}
+
+      - name: Combine complete 2024 universal game evidence
+        run: >-
+          python scripts/combine_current_talent_game_evidence_2024.py
+          --milb-root accepted-inputs/milb
+          --mlb-root accepted-inputs/top-end
+
+      - name: Upload universal game-evidence artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-universal-game-evidence-2024
+          path: reports/generated/current-talent-universal-game-evidence-2024/
+          if-no-files-found: error
+          retention-days: 14
