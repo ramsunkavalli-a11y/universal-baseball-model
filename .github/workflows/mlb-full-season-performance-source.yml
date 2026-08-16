@@ -1,21 +1,13 @@
-name: MLB batting Performance materialization gate
+name: MLB Performance live-source audits and materialization
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - scripts/build_mlb_batting_performance_2024.py
-      - src/universal_baseball/mlb_*.py
-      - src/universal_baseball/retrosheet.py
-      - src/universal_baseball/performance_*.py
-      - .github/workflows/mlb-full-season-performance-source.yml
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  build-2024-mlb-performance:
+  audit-and-materialize-mlb:
     runs-on: ubuntu-latest
     timeout-minutes: 90
 
@@ -35,14 +27,27 @@ jobs:
       - name: Run unit tests
         run: python -m pytest
 
+      - name: Reconcile full-season 2024 MLB Performance sources
+        run: python scripts/audit_mlb_full_season_performance_source.py
+
+      - name: Audit primary 2024 MLB bin-value policy
+        run: python scripts/audit_mlb_bin_value_policy.py
+
+      - name: Confirm pre-specified MLB lambda=5 on 2023
+        run: python scripts/audit_mlb_bin_value_independent_validation.py
+
       - name: Materialize completed-2024 MLB batting Performance
         run: python scripts/build_mlb_batting_performance_2024.py
 
-      - name: Upload MLB batting Performance artifact
+      - name: Upload MLB Performance outputs
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: mlb-batting-performance-2024
-          path: reports/generated/mlb-batting-performance-2024/
+          name: mlb-performance-live-gates
+          path: |
+            reports/generated/mlb-full-season-performance-source/
+            reports/generated/mlb-bin-value-policy/
+            reports/generated/mlb-bin-value-independent-validation/
+            reports/generated/mlb-batting-performance-2024/
           if-no-files-found: warn
           retention-days: 14
