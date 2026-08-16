@@ -123,6 +123,35 @@ def test_reconciliation_sampling_excludes_players_seen_in_multiple_actual_league
     ]
 
 
+def test_reconciliation_sampling_accepts_integer_like_decimal_strings() -> None:
+    frame = pl.DataFrame(
+        {
+            "league_id": ["112.0", "112.0", "117.0"],
+            "player_id": ["700001.0", "700002.0", "700003.0"],
+            "pitching_batters_faced": ["525.0", "200.0", "510.0"],
+        }
+    )
+
+    assert select_reconciliation_players(frame, "pitching") == [
+        {"league_id": 112, "player_id": 700001, "sample_volume": 525},
+        {"league_id": 117, "player_id": 700003, "sample_volume": 510},
+    ]
+
+
+def test_reconciliation_sampling_rejects_fractional_identifiers_or_counts() -> None:
+    frame = pl.DataFrame(
+        {
+            "league_id": ["112.0", "112.5", "117.0"],
+            "player_id": ["700001.0", "700002.0", "700003.0"],
+            "pitching_batters_faced": ["525.5", "600.0", "510.0"],
+        }
+    )
+
+    assert select_reconciliation_players(frame, "pitching") == [
+        {"league_id": 117, "player_id": 700003, "sample_volume": 510}
+    ]
+
+
 def test_reconciliation_sampling_ties_break_on_player_id() -> None:
     frame = pl.DataFrame(
         {
