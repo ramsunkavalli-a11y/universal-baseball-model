@@ -107,13 +107,11 @@ def main() -> int:
     target_outcomes = outcomes.filter(
         (pl.col("game_id") == GAME_ID) & pl.col("player_id").is_in(PLAYER_IDS)
     ).sort("player_id")
-
-    target_controls.write_csv(report_dir / "identity_collision_controls.csv")
-    target_outcomes.write_csv(report_dir / "identity_collision_outcomes.csv")
-    if raw_rows:
-        pl.concat(raw_rows, how="diagonal_relaxed").write_csv(
-            report_dir / "identity_collision_raw_rows.csv"
-        )
+    raw_target = (
+        pl.concat(raw_rows, how="diagonal_relaxed").to_dicts()
+        if raw_rows
+        else []
+    )
 
     report = {
         "season": SEASON,
@@ -122,18 +120,20 @@ def main() -> int:
         "player_ids": list(PLAYER_IDS),
         "resolved_outcomes": target_outcomes.to_dicts(),
         "resolved_controls": target_controls.to_dicts(),
+        "raw_rows": raw_target,
         "outcome_resolution_metrics": outcome_metrics,
         "control_resolution_metrics": control_metrics,
-        "raw_row_count": int(sum(frame.height for frame in raw_rows)),
+        "raw_row_count": len(raw_target),
         "interpretation": (
             "Diagnostic only. A target-row collision may be merged only if the existing corrected-player "
             "row contains no competing positive-PA/contact evidence; otherwise identity repair remains blocked."
         ),
     }
+    rendered = json.dumps(report, indent=2, sort_keys=True, default=str)
     (report_dir / "identity_collision_report.json").write_text(
-        json.dumps(report, indent=2, sort_keys=True, default=str), encoding="utf-8"
+        rendered, encoding="utf-8"
     )
-    print(json.dumps(report, indent=2, sort_keys=True, default=str))
+    print(rendered)
     return 0
 
 
