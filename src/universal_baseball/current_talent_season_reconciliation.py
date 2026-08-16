@@ -2,8 +2,9 @@
 
 This is an independent admission check for historical Current Talent evidence.
 The player-game source is summed to player × actual-league × season grain and
-compared with the separately published season-player batting release. Team rows
-are aggregated within actual league so trades do not create false mismatches.
+compared with the separately published season-player batting release after that
+release is standardized by ``standardize_armstjc_season_stats``. Team rows are
+aggregated within actual league so trades do not create false mismatches.
 
 No mismatch is repaired here. Differences remain explicit diagnostic evidence
 for source-coverage or semantic investigation before a season enters model
@@ -19,10 +20,10 @@ import polars as pl
 
 OUTCOME_RECONCILIATION_KEY = ("season", "league_id", "player_id")
 OUTCOME_FIELD_MAP: tuple[tuple[str, str, str], ...] = (
-    ("batting_PA", "plate_appearances", "plate_appearances"),
-    ("batting_BB", "walks", "walks"),
-    ("batting_HBP", "hit_by_pitch", "hit_by_pitch"),
-    ("batting_SO", "strikeouts", "strikeouts"),
+    ("batting_PA", "batting_plate_appearances", "plate_appearances"),
+    ("batting_BB", "batting_base_on_balls", "walks"),
+    ("batting_HBP", "batting_hit_by_pitch", "hit_by_pitch"),
+    ("batting_SO", "batting_strike_outs", "strikeouts"),
 )
 
 
@@ -36,15 +37,16 @@ def reconcile_resolved_outcomes_to_season_aggregates(
 ) -> tuple[pl.DataFrame, dict[str, Any]]:
     """Compare historical game outcomes with the independent season backbone.
 
-    ``season_aggregates`` must already be normalized by ``normalize_season_player_stats``.
-    ``require_exact=False`` is the default because a newly audited historical
-    season should persist discrepancy evidence before an acceptance decision is
-    made. Callers may promote exactness later if empirical history supports it.
+    ``season_aggregates`` must already be standardized by
+    ``standardize_armstjc_season_stats(..., "batting")``. ``require_exact=False``
+    is the default because a newly audited historical season should persist
+    discrepancy evidence before an acceptance decision is made. Callers may
+    promote exactness later if empirical history supports it.
     """
 
     game_required = {"game_date", "game_type", "league_id", "player_id", "outcome_resolution"}
     game_required.update(game_field for game_field, _, _ in OUTCOME_FIELD_MAP)
-    season_required = {"season", "league_id", "person_id"}
+    season_required = {"season", "league_id", "player_id"}
     season_required.update(season_field for _, season_field, _ in OUTCOME_FIELD_MAP)
     missing_game = sorted(game_required - set(resolved_outcomes.columns))
     missing_season = sorted(season_required - set(season_aggregates.columns))
@@ -70,17 +72,21 @@ def reconcile_resolved_outcomes_to_season_aggregates(
             "resolved outcomes contain unresolved/null fields required for season reconciliation"
         )
 
-    aggregate = season_aggregates.filter(pl.col("season") == year)
+    aggregate = season_aggregates.filter(pl.col("season").cast(pl.Int64, strict=False) == year)
     if expected_league_ids is not None:
         expected = sorted(int(value) for value in expected_league_ids)
         games = games.filter(pl.col("league_id").is_in(expected))
-        aggregate = aggregate.filter(pl.col("league_id").is_in(expected))
+        aggregate = aggregate.filter(pl.col("league_id").cast(pl.Int64, strict=False).is_in(expected))
         observed_game_leagues = sorted(
             int(value) for value in games.get_column("league_id").drop_nulls().unique().to_list()
         )
         observed_aggregate_leagues = sorted(
             int(value)
-            for value in aggregate.get_column("league_id").drop_nulls().unique().to_list()
+            for value in aggregate.get_column("league_id")
+            .cast(pl.Int64, strict=False)
+            .drop_nulls()
+            .unique()
+            .to_list()
         )
         if observed_game_leagues != expected:
             raise ValueError(
@@ -103,14 +109,23 @@ def reconcile_resolved_outcomes_to_season_aggregates(
         )
     )
     aggregate_rollup = (
-        aggregate.group_by(["season", "league_id", "person_id"])
+        aggregate.select(
+            pl.col("season").cast(pl.Int64),
+            pl.col("league_id").cast(pl.Int64, strict=False),
+            pl.col("player_id").cast(pl.Int64, strict=False),
+            *[
+                pl.col(season_field).cast(pl.Int64, strict=False)
+                for _, season_field, _ in OUTCOME_FIELD_MAP
+            ],
+        )
+        .drop_nulls(["season", "league_id", "player_id"])
+        .group_by(["season", "league_id", "player_id"])
         .agg(
             *[
                 pl.col(season_field).sum().cast(pl.Int64).alias(f"season_{label}")
                 for _, season_field, label in OUTCOME_FIELD_MAP
             ]
         )
-        .rename({"person_id": "player_id"})
     )
 
     fill_columns = [
