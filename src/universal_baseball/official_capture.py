@@ -40,8 +40,13 @@ class CapturedOfficialJson:
         path.write_bytes(self.raw_bytes)
 
 
-def _new_retrying_session() -> requests.Session:
-    """Create a caller-owned Session using the package's public retry policy."""
+def new_official_session() -> requests.Session:
+    """Create a caller-owned reusable Session with the package retry policy.
+
+    Batch certification jobs should reuse one Session rather than constructing a
+    fresh TCP pool for every game. The caller owns and must close the returned
+    Session. ``capture_official_json(..., session=session)`` never closes it.
+    """
 
     session = requests.Session()
     retry_adapter = HTTPAdapter(max_retries=create_retry_policy())
@@ -73,7 +78,7 @@ def capture_official_json(
         raise ValueError("official endpoint cannot be blank")
 
     owned_session = session is None
-    active_session = session or _new_retrying_session()
+    active_session = session or new_official_session()
     captured: dict[str, Any] = {}
 
     def record_response(response: requests.Response, *args: Any, **kwargs: Any) -> requests.Response:
