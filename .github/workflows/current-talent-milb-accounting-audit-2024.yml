@@ -1,0 +1,41 @@
+name: Current Talent 2024 MiLB accounting audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/current-talent-milb-accounting-audit-2024.yml"
+      - "scripts/audit_current_talent_milb_game_accounting_2024.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        level: [aa, rk]
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Audit player-game PA/contact accounting
+        run: python scripts/audit_current_talent_milb_game_accounting_2024.py --level "${{ matrix.level }}"
+      - name: Upload audit
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-milb-accounting-audit-2024-${{ matrix.level }}
+          path: reports/generated/current-talent-milb-accounting-audit-2024/${{ matrix.level }}/
+          if-no-files-found: warn
+          retention-days: 14
