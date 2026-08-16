@@ -1,16 +1,7 @@
 name: Savant delta run expectancy audit
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/savant-delta-run-expectancy.yml"
-      - "scripts/audit_savant_delta_run_expectancy.py"
-      - "src/universal_baseball/savant.py"
-      - "tests/test_savant.py"
-      - "src/universal_baseball/state_transitions_v2.py"
-      - "src/universal_baseball/run_expectancy.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
