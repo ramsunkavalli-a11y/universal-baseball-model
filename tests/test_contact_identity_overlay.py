@@ -7,6 +7,7 @@ from universal_baseball.contact_identity_overlay import (
     apply_contact_identity_authority,
     contact_identity_residuals,
     exception_games_from_residuals,
+    project_official_contact_authority,
 )
 
 
@@ -42,6 +43,39 @@ def _official_game_one() -> pl.DataFrame:
             "official_batter_id": [101, 102],
         }
     )
+
+
+def test_official_contact_projection_uses_pa_matchup_batter_only_on_in_play_pitches() -> None:
+    pa = pl.DataFrame(
+        {
+            "game_pk": [1, 1],
+            "at_bat_number": [0, 1],
+            "batter_id": [101, 102],
+        }
+    )
+    pitch = pl.DataFrame(
+        {
+            "game_pk": [1, 1, 1],
+            "at_bat_number": [0, 0, 1],
+            "pitch_number": [1, 2, 1],
+            "is_in_play": [False, True, True],
+        }
+    )
+    authority = project_official_contact_authority(pa, pitch)
+    assert authority.to_dicts() == [
+        {
+            "game_pk": 1,
+            "at_bat_index": 0,
+            "pitch_number": 2,
+            "official_batter_id": 101,
+        },
+        {
+            "game_pk": 1,
+            "at_bat_index": 1,
+            "pitch_number": 1,
+            "official_batter_id": 102,
+        },
+    ]
 
 
 def test_residuals_flag_only_games_with_player_attribution_difference() -> None:
