@@ -58,6 +58,38 @@ def _int(value: Any) -> int | None:
     return int(numeric) if numeric.is_integer() else None
 
 
+def _row_aligned_to_schema(
+    frame: pl.DataFrame,
+    values: Mapping[str, Any],
+) -> pl.DataFrame:
+    """Build one row with exactly ``frame``'s column order and dtypes.
+
+    Official-only historical games lack source-only metadata columns by design.
+    Those fields must become typed nulls rather than relying on Polars diagonal
+    concat inference, which can pair incompatible inferred dtypes (for example a
+    Python ``date`` beside an integer column) when the source schema evolves.
+    """
+
+    if frame.is_empty() and not frame.columns:
+        raise ValueError("cannot align an official outcome insert to an empty schema")
+    expressions: list[pl.Expr] = []
+    for column, dtype in frame.schema.items():
+        value = values.get(column)
+        if value is None:
+            expressions.append(pl.lit(None, dtype=dtype).alias(column))
+        else:
+            expressions.append(
+                pl.lit(value).cast(dtype, strict=False).alias(column)
+            )
+    row = pl.select(expressions)
+    if row.schema != frame.schema:
+        raise ValueError(
+            "official outcome insert schema alignment failed: "
+            f"row={row.schema}, target={frame.schema}"
+        )
+    return row
+
+
 def official_game_log_endpoint(*, player_id: int, sport_id: int, season: int) -> str:
     params = {
         "stats": "gameLog",
@@ -284,7 +316,7 @@ def apply_official_game_log_outcome_authority(
     for game_id in official_only_positive:
         official_row = official_positive.filter(pl.col("game_id") == game_id).row(0, named=True)
         insert_games.append(game_id)
-        insert = {
+        insert_values = {
             "game_id": game_id,
             "player_id": int(player_id),
             "game_date": official_row["game_date"],
@@ -296,7 +328,8 @@ def apply_official_game_log_outcome_authority(
             "outcome_resolution": "official_game_log_insert",
             "outcome_authority": "official_game_log",
         }
-        working = pl.concat([working, pl.DataFrame([insert])], how="diagonal_relaxed")
+        insert_frame = _row_aligned_to_schema(working, insert_values)
+        working = pl.concat([working, insert_frame], how="vertical")
         for field in OUTCOME_FIELDS:
             official_value = int(official_row[field] or 0)
             if official_value == 0:
