@@ -1,24 +1,7 @@
 name: Batting Performance multilevel POC
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/batting-performance-multilevel-poc.yml"
-      - "scripts/build_batting_performance_level_poc.py"
-      - "scripts/build_batting_performance_level_poc_v2.py"
-      - "scripts/materialize_affiliated_batting_performance.py"
-      - "src/universal_baseball/contact_identity_overlay.py"
-      - "src/universal_baseball/player_game_controls.py"
-      - "src/universal_baseball/armstjc_contacts.py"
-      - "src/universal_baseball/performance_level_config.py"
-      - "src/universal_baseball/contact_profile.py"
-      - "src/universal_baseball/performance_season.py"
-      - "src/universal_baseball/performance_materialization.py"
-      - "src/universal_baseball/bin_value_calibration.py"
-      - "src/universal_baseball/bin_value_policy.py"
-      - "tests/test_performance_materialization.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
