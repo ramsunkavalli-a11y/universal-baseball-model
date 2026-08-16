@@ -3,6 +3,11 @@
 Performance remains observed evidence at actual-league grain.  This module adds
 only reporting/environment context and concatenates already-certified MLB and
 MiLB outputs; it performs no cross-level translation or talent inference.
+
+The component artifacts may have been materialized at different code checkpoints.
+The frozen ``batting_performance_v1`` contract explicitly permits additive
+source/diagnostic columns, so the universal join must depend only on that stable
+surface rather than requiring incidental schemas to be identical.
 """
 
 from __future__ import annotations
@@ -13,7 +18,12 @@ import polars as pl
 
 from universal_baseball.bin_value_policy import LEAGUE_LEVEL_GROUP
 from universal_baseball.mlb_bin_value_policy import MLB_LEAGUE_IDS
-from universal_baseball.performance_contract import validate_batting_performance_contract
+from universal_baseball.performance_contract import (
+    BIN_VALUE_REQUIRED_COLUMNS,
+    PROFILE_REQUIRED_COLUMNS,
+    SUMMARY_REQUIRED_COLUMNS,
+    validate_batting_performance_contract,
+)
 from universal_baseball.performance_materialization import LEAGUE_FILENAME_LEVEL
 
 
@@ -53,6 +63,28 @@ def add_universal_environment_context(frame: pl.DataFrame) -> pl.DataFrame:
     )
 
 
+def _stable_surface(frame: pl.DataFrame, required: frozenset[str]) -> pl.DataFrame:
+    """Project one artifact to the frozen contract surface in deterministic order."""
+
+    missing = sorted(required - set(frame.columns))
+    if missing:
+        raise ValueError(f"Performance artifact missing stable contract columns: {missing}")
+    return frame.select(sorted(required))
+
+
+def _combine_surfaces(
+    left: pl.DataFrame,
+    right: pl.DataFrame,
+    required: frozenset[str],
+) -> pl.DataFrame:
+    """Concatenate compatible contract surfaces while relaxing numeric widths."""
+
+    return pl.concat(
+        [_stable_surface(left, required), _stable_surface(right, required)],
+        how="vertical_relaxed",
+    )
+
+
 def combine_universal_batting_performance(
     affiliated_summary: pl.DataFrame,
     affiliated_profile: pl.DataFrame,
@@ -63,7 +95,13 @@ def combine_universal_batting_performance(
     *,
     expected_season: int | None = None,
 ) -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame, dict[str, Any]]:
-    """Combine certified MLB and affiliated frames without cross-level scoring."""
+    """Combine certified MLB and affiliated frames without cross-level scoring.
+
+    Each input is validated *before* projection, so source-specific diagnostics
+    remain part of the component certification evidence even though they are not
+    copied into the universal stable table.  Downstream layers therefore consume
+    only fields whose meaning is frozen by ``batting_performance_v1``.
+    """
 
     affiliated_contract = validate_batting_performance_contract(
         affiliated_summary,
@@ -79,13 +117,25 @@ def combine_universal_batting_performance(
     )
 
     summary = add_universal_environment_context(
-        pl.concat([affiliated_summary, mlb_summary], how="vertical_relaxed")
+        _combine_surfaces(
+            affiliated_summary,
+            mlb_summary,
+            SUMMARY_REQUIRED_COLUMNS,
+        )
     )
     profile = add_universal_environment_context(
-        pl.concat([affiliated_profile, mlb_profile], how="vertical_relaxed")
+        _combine_surfaces(
+            affiliated_profile,
+            mlb_profile,
+            PROFILE_REQUIRED_COLUMNS,
+        )
     )
     values = add_universal_environment_context(
-        pl.concat([affiliated_bin_values, mlb_bin_values], how="vertical_relaxed")
+        _combine_surfaces(
+            affiliated_bin_values,
+            mlb_bin_values,
+            BIN_VALUE_REQUIRED_COLUMNS,
+        )
     )
 
     if expected_season is not None:
@@ -118,6 +168,10 @@ def combine_universal_batting_performance(
         "affiliated_contract": affiliated_contract,
         "mlb_contract": mlb_contract,
         "combined_contract": combined_contract,
+        "surface_policy": (
+            "component artifacts validated in full, then projected to the frozen "
+            "batting_performance_v1 surface before concatenation"
+        ),
     }
     return (
         summary.sort(["season", "league_id", "player_id"]),
