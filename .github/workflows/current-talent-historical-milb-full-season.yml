@@ -12,30 +12,6 @@ on:
           - "2021"
           - "2022"
           - "2023"
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-historical-milb-full-season.yml"
-      - "scripts/materialize_current_talent_historical_milb_game_evidence.py"
-      - "src/universal_baseball/current_talent_era.py"
-      - "src/universal_baseball/current_talent_milb_source.py"
-      - "src/universal_baseball/current_talent_milb_evidence.py"
-      - "src/universal_baseball/current_talent_official_outcomes.py"
-      - "src/universal_baseball/current_talent_season_reconciliation.py"
-      - "src/universal_baseball/current_talent_participant_authority.py"
-      - "src/universal_baseball/season_stat_assets.py"
-      - "src/universal_baseball/contact_identity_overlay.py"
-      - "src/universal_baseball/armstjc_contacts.py"
-      - "src/universal_baseball/official.py"
-      - "tests/test_current_talent_era.py"
-      - "tests/test_current_talent_milb_source.py"
-      - "tests/test_current_talent_milb_evidence.py"
-      - "tests/test_current_talent_official_outcomes.py"
-      - "tests/test_current_talent_participant_authority.py"
-      - "tests/test_current_talent_season_reconciliation.py"
-      - "tests/test_official_mixed_codes.py"
-      - "tests/test_season_stat_assets.py"
 
 permissions:
   contents: read
@@ -43,7 +19,7 @@ permissions:
 jobs:
   materialize:
     env:
-      TARGET_SEASON: ${{ github.event_name == 'workflow_dispatch' && inputs.season || '2021' }}
+      TARGET_SEASON: ${{ inputs.season }}
     strategy:
       fail-fast: false
       matrix:
@@ -67,9 +43,12 @@ jobs:
       - name: Run historical evidence unit tests
         run: >-
           python -m pytest
+          tests/test_armstjc_contacts.py
           tests/test_current_talent_era.py
+          tests/test_current_talent_identity_corrections.py
           tests/test_current_talent_milb_source.py
           tests/test_current_talent_milb_evidence.py
+          tests/test_current_talent_official_multiteam.py
           tests/test_current_talent_official_outcomes.py
           tests/test_current_talent_participant_authority.py
           tests/test_current_talent_season_reconciliation.py
