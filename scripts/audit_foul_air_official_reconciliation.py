@@ -1,14 +1,15 @@
 #!/usr/bin/env python
-"""Reconcile reusable airborne PA narratives to MLB Stats API result descriptions.
+"""Reconcile reusable foul-air PA narratives to MLB Stats API descriptions.
 
 The foul-air vocabulary audit found a candidate explicit narrative rule. This
 script checks that the reusable ``description`` field is preserving the same PA
 narrative concept as official Stats API ``allPlay.result.description`` rather
 than a source-specific rewrite.
 
-For each audited asset it deterministically samples airborne PAs from both sides
-of the candidate rule (explicit ``foul territory`` and ordinary airborne),
-spreading samples across games when possible. It then compares:
+For each audited asset it deterministically samples popup/fly-ball/line-drive
+PAs from both sides of the candidate rule (explicit ``foul territory`` and
+ordinary contact), spreading samples across games when possible. It then
+compares:
 
 - source natural PA key to official ``atBatIndex``;
 - official PA semantics;
@@ -29,11 +30,11 @@ from typing import Any, Mapping
 
 import polars as pl
 
-from audit_foul_air_descriptions import classify_description
+from audit_foul_air_descriptions import FOUL_SCREEN_BB_TYPES, classify_description
 from universal_baseball.certification import download_file, read_quarantined_csv
 from universal_baseball.event_types import PLATE_APPEARANCE_EVENT_TYPES
 from universal_baseball.official_capture import capture_official_json, new_official_session
-from universal_baseball.trajectory_audit import AIRBORNE_TYPES, collapse_trajectory_evidence
+from universal_baseball.trajectory_audit import collapse_trajectory_evidence
 
 
 def parse_args() -> argparse.Namespace:
@@ -74,7 +75,7 @@ def _source_airborne_rows(frame: pl.DataFrame) -> list[dict[str, Any]]:
         raise ValueError(f"source missing official-reconciliation fields: {missing}")
     rows = (
         collapsed.filter(
-            pl.col("bb_type").is_in(list(AIRBORNE_TYPES))
+            pl.col("bb_type").is_in(sorted(FOUL_SCREEN_BB_TYPES))
             & pl.col("description").is_not_null()
         )
         .sort(["game_pk", "at_bat_number", "pitch_number"])
@@ -116,9 +117,6 @@ def _sample_class(
     if not candidates:
         return []
 
-    # Prefer game diversity so the official check does not certify one feed row
-    # repeated across many PAs from the same game. Supplement deterministically
-    # only if the class has fewer unique games than requested samples.
     selected: list[dict[str, Any]] = []
     seen_games: set[int] = set()
     selected_keys: set[tuple[int, int]] = set()
@@ -174,12 +172,8 @@ def main() -> int:
         raise RuntimeError(f"foul-air reconciliation source is empty: {args.asset_name}")
 
     airborne = _source_airborne_rows(frame)
-    flagged = _sample_class(
-        airborne, flag=True, limit=args.sample_per_class
-    )
-    ordinary = _sample_class(
-        airborne, flag=False, limit=args.sample_per_class
-    )
+    flagged = _sample_class(airborne, flag=True, limit=args.sample_per_class)
+    ordinary = _sample_class(airborne, flag=False, limit=args.sample_per_class)
     if not flagged:
         raise RuntimeError("source has no explicit foul-territory airborne candidates")
     if not ordinary:
@@ -253,6 +247,10 @@ def main() -> int:
             not bool(row["source_explicit_foul_territory"]) for row in comparisons
         ),
     }
+    sampled_bb_type_counts: dict[str, int] = {}
+    for row in comparisons:
+        bb_type = str(row["bb_type"])
+        sampled_bb_type_counts[bb_type] = sampled_bb_type_counts.get(bb_type, 0) + 1
     official_found_count = sum(bool(row["official_found"]) for row in comparisons)
     official_pa_count = sum(bool(row["official_is_plate_appearance"]) for row in comparisons)
     classification_exact_count = sum(bool(row["classification_exact"]) for row in comparisons)
@@ -265,13 +263,15 @@ def main() -> int:
     )
 
     payload = {
-        "report_schema_version": 1,
+        "report_schema_version": 2,
         "status": "official_foul_air_narrative_reconciliation",
         "source_asset": args.asset_name,
         "source_url": args.url,
         "source_metadata": metadata,
+        "foul_screen_bb_types": sorted(FOUL_SCREEN_BB_TYPES),
         "sample_per_class_requested": args.sample_per_class,
         "sample_class_counts": source_class_counts,
+        "sampled_bb_type_counts": dict(sorted(sampled_bb_type_counts.items())),
         "sample_count": len(comparisons),
         "sample_game_count": len({int(row["game_pk"]) for row in comparisons}),
         "official_found_count": official_found_count,
@@ -297,7 +297,9 @@ def main() -> int:
         "",
         f"- Asset: `{args.asset_name}`",
         f"- Source SHA-256: `{metadata['sha256']}`",
+        f"- Candidate trajectories: `{sorted(FOUL_SCREEN_BB_TYPES)}`",
         f"- Samples: {len(comparisons)} across {payload['sample_game_count']} games",
+        f"- Sampled trajectory counts: `{payload['sampled_bb_type_counts']}`",
         f"- Source class counts: `{source_class_counts}`",
         f"- Official sequence found: {official_found_count}/{len(comparisons)}",
         f"- Official true PA: {official_pa_count}/{len(comparisons)}",
