@@ -1,7 +1,7 @@
 name: Current Talent historical MLB season
 
 on:
-  # One-time bootstrap for the independent 2023 gate; remove after the run resolves.
+  # One-time retry for the 2023 gate from preserved source cache; remove after success.
   push:
     branches:
       - source-certification-poc
@@ -65,6 +65,15 @@ jobs:
           path: .
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: 31988255280
+          github-token: ${{ github.token }}
+      - name: Seed preserved 2023 source cache
+        if: ${{ env.TARGET_SEASON == '2023' }}
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2023
+          path: .
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31988352942
           github-token: ${{ github.token }}
       - name: Materialize historical MLB player-game evidence
         run: >-
