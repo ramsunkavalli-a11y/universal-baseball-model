@@ -1,3 +1,4 @@
+from datetime import date
 import math
 
 import polars as pl
@@ -49,6 +50,28 @@ def test_standardization_reuses_training_parameters_on_evaluation_rows() -> None
     assert eligible["z_sweet_spot_share"] == pytest.approx(2.0)
     assert ineligible["z_mean_exit_velocity"] is None
     assert ineligible["z_sweet_spot_share"] is None
+
+
+def test_chronological_snapshot_grain_preserves_as_of_date() -> None:
+    training = pl.DataFrame(
+        {
+            "as_of_date": [date(2021, 7, 15), date(2022, 7, 15), date(2021, 7, 15)],
+            "player_id": [1, 1, 2],
+            "tracked_bbe_eligible": [True, True, True],
+            "recency_weighted_mean_exit_velocity": [90.0, 94.0, 100.0],
+            "recency_weighted_sweet_spot_share": [0.20, 0.30, 0.40],
+        }
+    )
+
+    fitted = fit_batted_ball_feature_standardization(training)
+    observed = standardize_batted_ball_quality_features(training, fitted)
+
+    assert fitted.fitted_player_count == 3
+    assert observed.select("as_of_date", "player_id").rows() == [
+        (date(2021, 7, 15), 1),
+        (date(2021, 7, 15), 2),
+        (date(2022, 7, 15), 1),
+    ]
 
 
 def test_fit_rejects_zero_variance_feature() -> None:
