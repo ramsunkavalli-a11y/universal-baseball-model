@@ -1,0 +1,54 @@
+{
+  "accepted_input_runs": {
+    "baseline_fit": 32075112279,
+    "feature_attachment": 32075892988
+  },
+  "authorized_by_development_gate": "current_talent_contact_value_2022_development",
+  "boundary": {
+    "accessed_2023": false,
+    "confirmation_scoring_performed": false,
+    "feature_search_performed": false,
+    "model_form_changed": false,
+    "network_requests_performed": false,
+    "terminal_value_scale_changed": false,
+    "uses_only_2021_2022_training_snapshots": true
+  },
+  "feature_standardization": {
+    "fitted_player_snapshot_count": 1788,
+    "mean_exit_velocity": 87.56765458046604,
+    "mean_sweet_spot_share": 0.34421856089476915,
+    "scale_exit_velocity": 3.087267010464925,
+    "scale_sweet_spot_share": 0.0629687444393524
+  },
+  "gate": "current_talent_contact_value_confirmation_refit_2021_2022",
+  "report_schema_version": "0.1",
+  "residual_fit": {
+    "beta_mean_exit_velocity": 0.019444311355484883,
+    "beta_sweet_spot_share": -0.0016659086163438607,
+    "determinant": 18569017159.610256,
+    "fitted_future_contact_count": 166386,
+    "fitted_player_count": 1597
+  },
+  "training_cutoffs": [
+    "2021-07-15",
+    "2022-07-15"
+  ],
+  "training_snapshots": [
+    {
+      "baseline_fitted_event_count": 238119,
+      "baseline_max_training_event_date": "2021-07-14",
+      "cutoff_date": "2021-07-15",
+      "eligible_standardization_rows": 649,
+      "training_event_count": 69382,
+      "training_player_snapshot_count": 621
+    },
+    {
+      "baseline_fitted_event_count": 886940,
+      "baseline_max_training_event_date": "2022-07-14",
+      "cutoff_date": "2022-07-15",
+      "eligible_standardization_rows": 1139,
+      "training_event_count": 97004,
+      "training_player_snapshot_count": 976
+    }
+  ]
+}
