@@ -212,10 +212,11 @@ def load_plays_contact_value_transitions(
 
     Retrosheet's parsed play table already exposes game date/type and discrete PA
     outcome flags. All state-changing transitions are retained for RE estimation;
-    ``contact_value_target_candidate`` marks non-bunt BIP plate appearances and
-    ``terminal_outcome_group`` is populated only when the frozen mapping supports
-    the terminal result. Unsupported target candidates remain visible so callers
-    can fail closed instead of silently dropping them.
+    ``contact_value_target_candidate`` marks non-bunt result-producing contact PAs
+    (Retrosheet BIP plus home runs), and ``terminal_outcome_group`` is populated
+    only when the frozen mapping supports the terminal result. Unsupported target
+    candidates remain visible so callers can fail closed instead of silently
+    dropping them.
     """
 
     columns = [
@@ -281,7 +282,7 @@ def load_plays_contact_value_transitions(
     frame = _transition_projection(frame).with_columns(
         (
             _flag("pa")
-            & _flag("bip")
+            & (_flag("bip") | _flag("hr"))
             & ~_flag("bunt")
             & ~_flag("sh")
         ).alias("contact_value_target_candidate"),
