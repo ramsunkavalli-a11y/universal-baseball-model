@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Check out branch
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: Capture latest confirmation workflow states
         env:
@@ -32,6 +34,7 @@ jobs:
           workflows = {
               "tracking_confirmation": "current-talent-batted-ball-tracking-confirmation.yml",
               "contact_value_confirmation_source": "current-talent-contact-value-confirmation-source.yml",
+              "contact_value_confirmation_source_v2": "current-talent-contact-value-confirmation-source-v2.yml",
           }
           output = {
               "gate": "current_talent_confirmation_source_status_probe",
@@ -49,8 +52,7 @@ jobs:
                   "--json", "databaseId,status,conclusion,headSha,createdAt,updatedAt,displayTitle,url",
               ]
               result = subprocess.run(command, check=True, text=True, capture_output=True, env=env)
-              rows = json.loads(result.stdout)
-              output["workflows"][key] = rows
+              output["workflows"][key] = json.loads(result.stdout)
           Path("docs/current-talent-confirmation-status.json").write_text(
               json.dumps(output, indent=2, sort_keys=True) + "\n"
           )
@@ -59,8 +61,20 @@ jobs:
 
       - name: Persist status probe
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/current-talent-confirmation-status.json
-          git diff --cached --quiet || git commit -m "Persist confirmation source workflow status"
-          git push
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Persist confirmation source workflow status"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
