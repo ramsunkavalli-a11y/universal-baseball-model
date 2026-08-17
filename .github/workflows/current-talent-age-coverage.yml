@@ -1,12 +1,6 @@
 name: Current Talent age coverage audit
 
 on:
-  # One-time bootstrap for 2021-08-01 coverage; remove after the run resolves.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-age-coverage.yml
   workflow_dispatch:
     inputs:
       milb_source_run_id:
@@ -44,11 +38,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      MILB_SOURCE_RUN_ID: ${{ inputs.milb_source_run_id || '31980820797' }}
-      MILB_ARTIFACT_PATTERN: ${{ inputs.milb_artifact_pattern || 'ct-validation-game-evidence-2021-*' }}
-      MLB_SOURCE_RUN_ID: ${{ inputs.mlb_source_run_id || '31986504169' }}
-      TARGET_SEASON: ${{ inputs.season || '2021' }}
-      AS_OF_DATE: ${{ inputs.as_of_date || '2021-08-01' }}
+      MILB_SOURCE_RUN_ID: ${{ inputs.milb_source_run_id }}
+      MILB_ARTIFACT_PATTERN: ${{ inputs.milb_artifact_pattern }}
+      MLB_SOURCE_RUN_ID: ${{ inputs.mlb_source_run_id }}
+      TARGET_SEASON: ${{ inputs.season }}
+      AS_OF_DATE: ${{ inputs.as_of_date }}
 
     steps:
       - name: Check out repository
