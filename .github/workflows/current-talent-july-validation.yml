@@ -1,12 +1,6 @@
 name: Current Talent July validation gate
 
 on:
-  # One-time bootstrap for 2021-2023 July 1 validation; remove after the gate resolves.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-july-validation.yml
   workflow_dispatch:
 
 permissions:
