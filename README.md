@@ -22,6 +22,8 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 
 - [`docs/project-status.md`](docs/project-status.md) — **canonical current handoff / roadmap**.
 - [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target, chronology, baseline, and validation contract.
+- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — exact age-as-of coverage plus implemented/tested Baseline 0 and Baseline 1 primitives; chronological predictive scoring is the next gate.
+- [`docs/current-talent-historical-mlb-checkpoint.md`](docs/current-talent-historical-mlb-checkpoint.md) — certified 2021–2023 historical MLB Current Talent evidence and official reconciliation rules.
 - [`docs/current-talent-historical-milb-checkpoint.md`](docs/current-talent-historical-milb-checkpoint.md) — certified 2021–2023 historical affiliated-MiLB evidence.
 - [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — first production-shaped completed-2024 affiliated batting Performance materialization.
 
