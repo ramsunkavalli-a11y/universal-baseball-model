@@ -35,12 +35,24 @@ def test_structured_terminal_event_mapping_matches_frozen_contract() -> None:
     assert terminal_group_from_structured_event_type(None) is None
 
 
-def test_narrative_fallback_refuses_force_out_until_official_reconciliation() -> None:
-    result = classify_terminal_result_description(
+def test_narrative_fallback_uses_source_reconciled_force_and_fc_distinctions() -> None:
+    force = classify_terminal_result_description(
         "Example Batter grounds into a force out, shortstop A to second baseman B. Runner out at 2nd."
     )
-    assert result.terminal_outcome_group is None
-    assert result.status == "unresolved_force_out_description"
+    assert force.terminal_outcome_group == "OUT"
+    assert force.status == "supported_narrative_fallback"
+
+    fc_out = classify_terminal_result_description(
+        "Example Batter reaches on a fielder's choice out, third baseman A to catcher B. Runner out at home."
+    )
+    assert fc_out.terminal_outcome_group == "OUT"
+    assert fc_out.status == "supported_narrative_fallback"
+
+    fc_reach = classify_terminal_result_description(
+        "Example Batter reaches on a fielder's choice, fielded by third baseman A. Runner scores."
+    )
+    assert fc_reach.terminal_outcome_group == "FC_REACH"
+    assert fc_reach.status == "supported_narrative_fallback"
 
 
 def test_narrative_fallback_accepts_unambiguous_terminal_groups() -> None:
