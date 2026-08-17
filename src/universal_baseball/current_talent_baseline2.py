@@ -168,11 +168,13 @@ def build_frozen_b1_vs_b2_scoring_pair(
 
 
 def relabel_pair_model(model: str) -> str:
-    """Map temporary scorer labels to the actual challenger comparison names."""
+    """Map scorer labels to stable B1/B2 comparison names idempotently."""
 
     mapping = {
         "baseline0": "frozen_baseline1",
         "baseline1": "baseline2",
+        "frozen_baseline1": "frozen_baseline1",
+        "baseline2": "baseline2",
     }
     try:
         return mapping[str(model)]
