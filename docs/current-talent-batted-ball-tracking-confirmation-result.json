@@ -1,0 +1,62 @@
+{
+  "2022_milb_confirmation_capture_complete": true,
+  "2023_milb_capture_end_date": "2023-08-31",
+  "2023_mlb_last_game_date": "2023-10-01",
+  "authorized_by": "current_talent_contact_value_confirmation_refit_2021_2022",
+  "boundary": {
+    "2023_source_evidence_accessed": true,
+    "confirmation_coefficients_changed": false,
+    "confirmation_losses_computed": false,
+    "feature_search_performed": false,
+    "live_source_io_performed": true,
+    "model_scoring": false
+  },
+  "canonical_model_bbe_contract": "result_producing_non_bunt_pitch_grain_v1",
+  "development_tracking_run_id": 32046012977,
+  "gate": "current_talent_batted_ball_tracking_confirmation",
+  "report_schema_version": "0.1",
+  "reused_2021_tracking_exactly": true,
+  "reused_2022_mlb_tracking_exactly": true,
+  "seasons": {
+    "2021": {
+      "first_game_date": "2021-04-01",
+      "games": 2953,
+      "last_game_date": "2021-10-03",
+      "model_bbe": 142201,
+      "parquet": "reports/generated/current-talent-batted-ball-tracking-confirmation/2021/combined/reconciled_tracked_bbe_2021.parquet",
+      "players": 1252,
+      "source_capability_tier_count": 3,
+      "source_families": [
+        "MILB_SAVANT_TRACKED",
+        "MLB_SAVANT"
+      ]
+    },
+    "2022": {
+      "first_game_date": "2022-04-06",
+      "games": 3597,
+      "last_game_date": "2022-10-05",
+      "model_bbe": 171415,
+      "parquet": "reports/generated/current-talent-batted-ball-tracking-confirmation/2022/combined/reconciled_tracked_bbe_2022.parquet",
+      "players": 1265,
+      "source_capability_tier_count": 5,
+      "source_families": [
+        "MILB_SAVANT_TRACKED",
+        "MLB_SAVANT"
+      ]
+    },
+    "2023": {
+      "first_game_date": "2023-03-30",
+      "games": 4346,
+      "last_game_date": "2023-10-01",
+      "model_bbe": 206542,
+      "parquet": "reports/generated/current-talent-batted-ball-tracking-confirmation/2023/combined/reconciled_tracked_bbe_2023.parquet",
+      "players": 1369,
+      "source_capability_tier_count": 5,
+      "source_families": [
+        "MILB_SAVANT_TRACKED",
+        "MLB_SAVANT"
+      ]
+    }
+  },
+  "tracking_source_epoch": "2021-01-01"
+}
