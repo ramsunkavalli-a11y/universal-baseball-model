@@ -25,6 +25,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import re
 from typing import Any
+import unicodedata
 
 import polars as pl
 
@@ -86,6 +87,7 @@ _SPECIAL_UNSUPPORTED = re.compile(
     r"\b(catcher interference|batter interference|fan interference|runner interference)\b",
     re.I,
 )
+_MOJIBAKE_MARKERS = ("Ã", "Â", "â", "ð", "�")
 
 
 @dataclass(frozen=True, slots=True)
@@ -157,10 +159,35 @@ def _text(value: Any) -> str | None:
     return text if text else None
 
 
-def _description_identity(value: str) -> str:
-    """Normalize formatting-only whitespace for duplicate-source comparison."""
+def _repair_utf8_mojibake(value: str) -> str:
+    """Repair narrow UTF-8-as-Latin-1 mojibake only when evidence improves.
 
-    return " ".join(value.split())
+    Historical release overlap occasionally contains the same PA narrative once
+    as proper Unicode and once with UTF-8 bytes decoded as Latin-1 (for example
+    ``GonzÃ¡lez`` vs ``González``). This helper is used only for duplicate-source
+    identity comparison; substantive narrative differences still fail closed.
+    """
+
+    repaired = value
+    for _ in range(2):
+        current_score = sum(repaired.count(marker) for marker in _MOJIBAKE_MARKERS)
+        if current_score == 0:
+            break
+        try:
+            candidate = repaired.encode("latin-1").decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            break
+        candidate_score = sum(candidate.count(marker) for marker in _MOJIBAKE_MARKERS)
+        if candidate_score >= current_score:
+            break
+        repaired = candidate
+    return unicodedata.normalize("NFC", repaired)
+
+
+def _description_identity(value: str) -> str:
+    """Normalize whitespace/encoding artifacts for duplicate-source comparison."""
+
+    return _repair_utf8_mojibake(" ".join(value.split()))
 
 
 def project_terminal_pa_descriptions(
@@ -172,10 +199,11 @@ def project_terminal_pa_descriptions(
 
     The terminal pitch is the maximum structured ``pitch_number`` within
     ``game_pk + at_bat_number``. Exact duplicated release rows therefore do not
-    become extra events. Formatting-only whitespace differences are treated as
-    the same repeated description. If terminal rows disagree on their nonblank
-    PA result description after that normalization, projection fails instead of
-    choosing by filename, retrieval time, or row order.
+    become extra events. Formatting-only whitespace differences and a narrow
+    UTF-8-as-Latin-1 mojibake duplicate are treated as the same repeated
+    description. If terminal rows disagree on their nonblank PA result
+    description after that normalization, projection fails instead of choosing
+    by filename, retrieval time, or row order.
     """
 
     required = {"game_pk", "at_bat_number", "pitch_number", "game_type"}
