@@ -223,3 +223,19 @@ The exact 200-PA player-aggregate diagnostic cap is not yet applied because the 
 3. Read `docs/current-talent-baseline-checkpoint.md`.
 4. Inspect current `source-certification-poc` head.
 5. Continue with the **multi-fold calibration review across July 15 / Aug. 1 / Sep. 1**. Do not tune hyperparameters or re-audit closed source/certification work first.
+
+<!-- BEGIN AUTO CURRENT TALENT DEVELOPMENT SELECTION -->
+## Development-grid candidate selected — awaiting 2023 confirmation
+
+The predeclared 18-candidate simple-baseline grid has been evaluated on **2021–2022 only**. Alternative grid configurations have not been evaluated on 2023.
+
+Preselected candidate: **`hl180_ps100_fitted`** — half-life **180 days**, prior strength **100**, translation **`fitted_translation`**.
+
+Development equal-fold mean B1 log loss: **2.255543**; Brier: **0.869233**.
+
+Versus the prior 90/100/fitted reference, selected-minus-reference mean log loss is **-0.000262** and Brier is **-0.000133**.
+
+Detailed checkpoint: `docs/current-talent-development-selection-checkpoint.md`.
+
+**Next gate:** evaluate this preselected candidate on the three 2023 folds only; compare to B0 and the existing 90/100/fitted reference. Do not run the full alternative grid on 2023 and do not reselect using 2023 if confirmation fails.
+<!-- END AUTO CURRENT TALENT DEVELOPMENT SELECTION -->
