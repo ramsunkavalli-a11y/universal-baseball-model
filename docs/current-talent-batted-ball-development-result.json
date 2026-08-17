@@ -1,0 +1,86 @@
+{
+  "calibration_summary": {
+    "baseline2_mean_abs_intercept_error": 0.3593412729626808,
+    "baseline2_mean_abs_slope_error": 0.1386300765301862,
+    "richer_mean_abs_intercept_error": 0.3633843603244145,
+    "richer_mean_abs_slope_error": 0.14003769608993982
+  },
+  "challenger": "baseline2_plus_ev_sweet_spot_contact_residual_v1",
+  "comparator": "translated_multiseason_recency_empirical_bayes_v1",
+  "confirmation_data_present": false,
+  "development_cutoffs": [
+    "2022-07-15",
+    "2022-08-01",
+    "2022-09-01"
+  ],
+  "development_workflow_run_id": "32053829482",
+  "eligible_for_fixed_2023_confirmation": false,
+  "fixed_l2_penalty": 0.01,
+  "gate": "current_talent_batted_ball_quality_2022_development",
+  "non_mlb_transport": {
+    "combined_any_milb_evidence_equal_fold_mean_log_loss_delta": 3.8461962443688456e-05,
+    "combined_any_milb_evidence_future_core_events": 168030,
+    "combined_any_milb_evidence_supported_and_improves": false,
+    "failed_capability_tiers": [
+      {
+        "future_core_events": 21520,
+        "meaningfully_supported": true,
+        "source_capability_tier": "MILB_SAVANT_TRACKED:2022:117:AAA",
+        "worse_on_both_fold_count": 3
+      }
+    ],
+    "tier_diagnostics": [
+      {
+        "future_core_events": 55438,
+        "meaningfully_supported": true,
+        "source_capability_tier": "MILB_SAVANT_TRACKED:2021:123:SINGLE_A",
+        "worse_on_both_fold_count": 1
+      },
+      {
+        "future_core_events": 71241,
+        "meaningfully_supported": true,
+        "source_capability_tier": "MILB_SAVANT_TRACKED:2022:112:AAA",
+        "worse_on_both_fold_count": 1
+      },
+      {
+        "future_core_events": 21520,
+        "meaningfully_supported": true,
+        "source_capability_tier": "MILB_SAVANT_TRACKED:2022:117:AAA",
+        "worse_on_both_fold_count": 3
+      },
+      {
+        "future_core_events": 42338,
+        "meaningfully_supported": true,
+        "source_capability_tier": "MILB_SAVANT_TRACKED:2022:123:SINGLE_A",
+        "worse_on_both_fold_count": 0
+      }
+    ]
+  },
+  "primary_min_complete_tracked_bbe": 20,
+  "promotion_checks": {
+    "all_component_calibration_fits_converged": true,
+    "calibration_intercept_within_25pct_guardrail": true,
+    "calibration_slope_within_25pct_guardrail": true,
+    "identical_scored_coverage": true,
+    "log_loss_wins_at_least_2_of_3": false,
+    "lower_equal_fold_mean_log_loss": false,
+    "no_meaningful_non_mlb_capability_tier_worse_on_both_in_2_folds": false,
+    "no_worse_equal_fold_mean_brier": false,
+    "non_mlb_evidence_cohort_supported_and_improves_log_loss": false
+  },
+  "proper_score_summary": {
+    "baseline2_equal_fold_mean_brier": 0.8727392908377398,
+    "baseline2_equal_fold_mean_log_loss": 2.2673364381515646,
+    "richer_equal_fold_mean_brier": 0.8727447332159365,
+    "richer_equal_fold_mean_log_loss": 2.267363113662203,
+    "richer_log_loss_fold_wins": 1,
+    "richer_minus_baseline2_equal_fold_mean_brier": 5.442378196662823e-06,
+    "richer_minus_baseline2_equal_fold_mean_log_loss": 2.6675510638174416e-05
+  },
+  "result_schema_version": "0.1",
+  "source_probe_run_id": "32044627608",
+  "source_report_sha256": "f74c2439772bc4e6d607920481fcf19666ed63382f861012a7ac075e7f4fc64e",
+  "tracked_bbe_definition": "result_producing_type_X_terminal_event_complete_EV_LA_non_bunt_pitch_grain",
+  "tracking_materialization_run_id": "32046012977",
+  "training_cutoff": "2021-07-15"
+}
