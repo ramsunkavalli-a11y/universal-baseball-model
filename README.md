@@ -2,6 +2,12 @@
 
 A public-data baseball player evaluation and projection system covering MLB through affiliated minor leagues.
 
+## Start here
+
+**Current work is on `source-certification-poc`, not `main`.** A new chat or contributor should read [`docs/project-status.md`](docs/project-status.md) first. It records the latest completed milestones, certified workflow runs, important boundaries, current branch/PR state, and the recommended next batch.
+
+The active draft PR is **#1 — Build and certify universal baseball foundation layer**.
+
 ## Core principles
 
 - Separate **Performance**, **Current Talent**, **Projection**, and **Player Value / Overall Ranking** instead of collapsing them into one opaque score.
@@ -12,18 +18,27 @@ A public-data baseball player evaluation and projection system covering MLB thro
 - Validate chronologically and prevent hindsight leakage.
 - Keep production logic in `src/`; notebooks are for exploration only.
 
-## Foundation documents
+## Current milestone documents
 
-- [`docs/source-audit.md`](docs/source-audit.md) — research and provisional assignment of public data sources/packages.
-- [`docs/source-certification-plan.md`](docs/source-certification-plan.md) — empirical tests a reusable source must pass before it can feed canonical tables.
-- [`docs/adr/001-reuse-first-source-strategy.md`](docs/adr/001-reuse-first-source-strategy.md) — architectural decision establishing the reuse-first, certification-gated strategy.
+- [`docs/project-status.md`](docs/project-status.md) — **canonical current handoff / roadmap**.
+- [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target, chronology, baseline, and validation contract.
+- [`docs/current-talent-historical-milb-checkpoint.md`](docs/current-talent-historical-milb-checkpoint.md) — certified 2021–2023 historical affiliated-MiLB evidence.
+- [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — first production-shaped completed-2024 affiliated batting Performance materialization.
 
-## Initial workflow
+## Foundation references
 
-1. Audit reusable public data sources and packages.
-2. Certify the most promising reusable inputs on deliberately varied small samples.
-3. Define the narrow canonical contracts needed by the first Performance/Profile model using what the audit and certification reveal.
-4. Reconcile the proof of concept against official totals and characterize data coverage.
-5. Only then commit to the historical/incremental production pipeline.
+- [`docs/source-audit.md`](docs/source-audit.md) — research and assignment of public data sources/packages.
+- [`docs/source-certification-plan.md`](docs/source-certification-plan.md) — empirical tests reusable sources must pass before feeding canonical tables.
+- [`docs/source-certification-current.md`](docs/source-certification-current.md) — detailed foundation/source certification snapshot; use `docs/project-status.md` for the live roadmap.
+- [`docs/canonical-data-contract.md`](docs/canonical-data-contract.md) — canonical grains, provenance, and storage semantics.
+- [`docs/adr/`](docs/adr/) — accepted architectural decisions.
 
-Foundation work should favor correctness, reversibility, and explicit evidence over speed. We should pause for a decision when an unresolved source or modeling assumption could materially change downstream architecture rather than papering over it in code.
+## Development workflow
+
+1. Reuse existing public work where it survives certification; do not restart settled source research without a concrete failure.
+2. Make changes in small batches of roughly **2–3 steps**.
+3. Verify each batch before expanding scope so an early assumption cannot contaminate a large downstream change.
+4. Keep heavy live-source certification workflows manual after their gate passes; keep deterministic regression tests in normal CI.
+5. Pause for an explicit modeling decision when an unresolved assumption could materially change downstream architecture rather than papering over it in code.
+
+Foundation work should favor correctness, reversibility, explicit evidence, and reproducibility over speed.
