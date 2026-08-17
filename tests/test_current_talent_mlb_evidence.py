@@ -146,7 +146,7 @@ def test_one_strike_mid_pa_substitution_keeps_strikeout_with_substitute() -> Non
     assert metrics["outcome_batter_reassignment_count"] == 0
 
 
-def test_interference_error_narrative_is_special_outcome_but_preserves_contact() -> None:
+def test_interference_error_field_error_is_special_outcome_but_preserves_contact() -> None:
     savant = pl.DataFrame(
         {
             "game_date": ["2021-04-28"],
@@ -179,6 +179,41 @@ def test_interference_error_narrative_is_special_outcome_but_preserves_contact()
     assert row["contact_count_residual"] == 1
     assert row["pa_accounting_residual"] == 0
     assert metrics["narrative_interference_error_count"] == 1
+
+
+def test_fielders_choice_with_later_interference_error_remains_result_contact() -> None:
+    savant = pl.DataFrame(
+        {
+            "game_date": ["2021-05-16"],
+            "game_year": [2021],
+            "game_pk": [634188],
+            "league_id": [103],
+            "at_bat_index": [40],
+            "pitch_number": [2],
+            "batter_mlbam_id": [657656],
+            "batter_side": ["R"],
+            "events": ["fielders_choice"],
+            "result_description": [
+                "Ramon Laureano reaches on a fielder's choice. Interference error by catcher."
+            ],
+            "pitch_result_code": ["X"],
+            "bb_type": ["ground_ball"],
+            "hc_x": [110.60],
+            "hc_y": [166.32],
+            "is_plate_appearance_terminal": [True],
+            "is_contact": [True],
+        }
+    )
+
+    summary, _profile, metrics = build_mlb_current_talent_player_game_evidence(savant)
+    row = summary.row(0, named=True)
+    assert row["batting_plate_appearances"] == 1
+    assert row["special_noncontact_count"] == 0
+    assert row["expected_contact_count"] == 1
+    assert row["observed_contact_count"] == 1
+    assert row["contact_count_residual"] == 0
+    assert row["pa_accounting_residual"] == 0
+    assert metrics["narrative_interference_error_count"] == 0
 
 
 def test_mlb_game_evidence_rejects_non_mlb_league() -> None:
