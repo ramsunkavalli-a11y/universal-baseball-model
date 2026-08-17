@@ -1,7 +1,7 @@
 # Current Talent batted-ball-quality challenger plan
 
 Last updated: 2026-08-17  
-Status: **PREDECLARED DESIGN; do not bulk-materialize or evaluate the challenger until deterministic implementation/source checks pass.**
+Status: **PREDECLARED DESIGN; deterministic source/request, feature, application, standardization, and residual-fit contracts are implemented. Do not bulk-materialize or evaluate the challenger until the tracked-only tiny live-source probe is reverified.**
 
 ## Purpose
 
@@ -40,7 +40,7 @@ The source probe established:
 - structural rather than random missingness by league/venue;
 - no defensible historical bat-tracking data merely from modern column names.
 
-Reuse the proven request/filter semantics documented in that checkpoint. Retain exact raw response bytes plus an explicit projected schema. Do not build a second identity system.
+Reuse the frozen tracked-only request semantics in `src/universal_baseball/current_talent_savant_minors.py`. The manual probe script must route through that helper rather than rebuilding an endpoint query independently. Retain exact raw response bytes plus an explicit projected schema. Do not build a second identity system.
 
 ## Capability tiers
 
@@ -121,11 +121,28 @@ followed by a softmax across the 10 contact bins.
 
 The B2 conditional contact profile is therefore an offset/reference, not discarded and refit from scratch.
 
-### Regularization
+### Training likelihood and environment translation
 
-Use one shared L2 penalty across all residual coefficients. Before any held-out evaluation, compare only a very small training-only penalty set if needed for numerical stability; if a penalty search is required, it must be predeclared and selected strictly inside training data. Do not use 2022 development or 2023 confirmation outcomes to choose the penalty after seeing challenger scores.
+Residual coefficients are fit against **future contact outcomes only**, but the likelihood must respect the actual future league environment.
 
-Prefer the simplest dependency-light implementation compatible with the repository. `pyproject.toml` currently has no sklearn/scipy runtime dependency, so do not add a large modeling dependency without first showing it materially reduces implementation risk versus a small deterministic optimizer.
+For each training player / realized target environment:
+
+1. condition B2 on the ten contact bins in latent MLB-scale space;
+2. add the already-fitted training-only target-level CLR environment effect for each contact bin;
+3. renormalize across the ten contact bins;
+4. add the EV / sweet-spot residual in latent logit space and score the resulting conditional contact probabilities against future contact-bin counts.
+
+Do not fit directly to raw future contact shares without the target-environment translation. That would change the established universal-level observation model rather than isolate the richer evidence family.
+
+The training table must carry and reconcile `as_of_date`, player, realized target environment, B2 latent conditional contact probability, target environment effect, standardized features, future contact counts, and future contact-event denominator. BB/HBP and K counts are excluded from the residual coefficient fit.
+
+### Regularization — frozen before development
+
+Use one shared fixed L2 penalty of **0.01** across all twenty residual coefficients, applied to **mean per-contact negative log likelihood**.
+
+There is **no penalty search** in this challenger. The value is fixed before 2022 development and before any richer held-out scores are observed. This avoids turning regularization into another development hyperparameter while providing mild identification/stability control for the multinomial residual.
+
+The implementation remains dependency-light and uses a deterministic convex optimizer with backtracking line search. Do not add sklearn/scipy merely for this fit.
 
 ## Why this model form
 
@@ -139,11 +156,18 @@ This gate does not claim mean EV / sweet-spot share exhaust the value of batted-
 
 Use the existing Current Talent as-of semantics and 90-day future event target.
 
-### Training for 2022 development
+### Training for 2022 development — frozen protocol
 
-Fit feature standardization and residual coefficients using only eligible **2021** tracked-evidence snapshots/outcomes available under the existing chronological validation rules.
+Fit the feature standardization and residual coefficients from a **single 2021-07-15 training snapshot and its 90-day future outcomes**.
 
-A shared residual relationship may be learned across MLB and tracked MiLB rows, but capability tier/level must be retained for diagnostics. The model may not learn 2022 coefficients from the same 2022 future outcomes on which it is evaluated.
+Reasons for using one annual training snapshot rather than stacking the July 15 / August 1 / September 1 2021 targets:
+
+- the three 90-day target windows overlap heavily;
+- stacking them would count many of the same future events multiple times in the residual likelihood;
+- July 15 is already the earliest stable 2021 universal Current Talent validation date with the required translation support;
+- a single fixed annual snapshot keeps the richer fit interpretable and prevents hidden weighting choices.
+
+Feature standardization is fit only on richer-eligible 2021-07-15 rows and then frozen for all three 2022 development folds. Residual coefficients are fit only from the 2021-07-15 training table. No 2022 future outcomes enter coefficient fitting or standardization before development scoring.
 
 ### 2022 development folds
 
@@ -155,16 +179,20 @@ Evaluate frozen B2 versus B2+richer on:
 
 Only players meeting the primary >=20 tracked-BBE rule at each cutoff enter the **paired richer-evidence comparison**. Both B2 and richer must be scored on the exact same players, target environments, and future events.
 
-Do not use 2023 to choose features, eligibility threshold, model form, or promotion decision from development.
+Do not use 2023 to choose features, eligibility threshold, model form, penalty, or promotion decision from development.
 
 ### 2023 confirmation
 
 If and only if the fixed challenger passes the 2022 development gate:
 
-- refit the same frozen model form using eligible 2021-2022 training history only;
+- refit the same unchanged feature/model form using the union of the **2021-07-15 and 2022-07-15** training snapshots/outcomes;
+- refit feature standardization only on those training snapshot rows;
+- use the same fixed L2 penalty = 0.01;
 - confirm on 2023-07-15 / 2023-08-01 / 2023-09-01;
 - evaluate only the fixed challenger versus frozen B2;
-- do not search alternate features, thresholds, or model forms on 2023.
+- do not search alternate features, thresholds, penalties, training dates, or model forms on 2023.
+
+Using one July 15 training snapshot per completed season avoids duplicate weighting from overlapping within-season target horizons while allowing the confirmation fit to learn from development-year evidence after the development decision is closed.
 
 The expansion of AAA tracking in 2023 may increase confirmation coverage, but it must not alter the candidate selected from the earlier gate.
 
@@ -219,15 +247,16 @@ This preserves a universal MLB-through-affiliated-minors ranking surface while a
 
 Proceed in small gates:
 
-1. **Request parity check:** compare the repository's thin Minor League Savant request against the proven public `baseball-stats-python` tracked-request semantics on tiny dates; freeze request fields/filters.
-2. **Deterministic EV/LA projection:** add a canonical tracked-BBE table with explicit capability and raw completeness diagnostics; test identity, BBE definition, EV/LA completeness, duplicate pitch/contact keys, and strict pre-cutoff filtering.
-3. **Feature builder:** implement 180-day recency-weighted mean EV / sweet-spot share plus evidence counts; test no future leakage and exact B2 fallback below threshold.
-4. **Residual model:** implement/train the conditional-contact adjustment and tests proving BB/HBP and K remain exactly B2 while 10 contact bins normalize correctly.
-5. Only after those pass, materialize the minimal 2021-2022 source needed for the predeclared development folds.
-6. Run 2022 development; persist checkpoint before any 2023 challenger evaluation.
-7. If development passes, run the fixed 2023 confirmation once and freeze/reject accordingly.
+1. **DONE — request semantics:** thin tracked-only Minor League Savant helper is frozen and unit-tested.
+2. **DONE — deterministic EV/LA projection:** canonical complete tracked BBE grain and strict no-imputation behavior are implemented/tested.
+3. **DONE — feature builder:** 180-day recency-weighted mean EV / sweet-spot share, evidence counts, cutoff exclusion, and B2 fallback are implemented/tested.
+4. **DONE — residual application / training contract:** contact-only application, training-only standardization, target-environment-aware training table, fixed-penalty residual fitter, and deterministic tests are implemented.
+5. **NEXT — tiny tracked-only source recheck:** rerun the existing manual Minor Savant probe after routing it through the frozen tracked request helper. Retain raw bytes and capability diagnostics; do not bulk-materialize if this fails or materially changes the certified source picture.
+6. Only after that passes, materialize the minimum 2021-2022 tracked evidence needed for the fixed 2021 training snapshot plus three 2022 development folds.
+7. Run 2022 development; persist checkpoint before any 2023 challenger evaluation.
+8. If development passes, refit on the fixed annual training snapshots and run the fixed 2023 confirmation once; freeze/reject accordingly.
 
-Do not bulk-download all Minor League Savant data before the deterministic source/feature contract passes.
+Do not bulk-download all Minor League Savant data before the tiny tracked-only source recheck and deterministic contract are both green.
 
 ## Explicitly deferred
 
