@@ -1,18 +1,20 @@
 # Historical MLB Current Talent evidence checkpoint
 
-Status: **2021 certified; 2022–2023 not yet run**
+Status: **2021–2023 certified**
 
-This checkpoint records the first MLB historical player-game evidence gate used to connect the Current Talent environment-translation graph to its MLB reporting anchor. It is evidence infrastructure only; it is not a Current Talent estimate, projection, WAR model, or ranking.
+This checkpoint records the MLB historical player-game evidence gate used to connect the Current Talent environment-translation graph to its MLB reporting anchor. It is evidence infrastructure only; it is not a Current Talent estimate, projection, WAR model, or ranking.
 
 ## Certified scope
 
-Certified workflow run: `31986504169`  
-Workflow: `.github/workflows/current-talent-historical-mlb-season.yml`  
-Season: **2021 MLB regular season**  
+Workflow: `.github/workflows/current-talent-historical-mlb-season.yml` — manual-only after certification.  
 Actual league IDs: **103 / 104**  
 Temporal semantics: `retrospective_event_cutoff_corrected_history_not_vintage_information_set`
 
-The workflow is manual-only after certification.
+Certified workflow runs:
+
+- 2021: `31986504169`
+- 2022: `31988255280`
+- 2023: `31989561396`
 
 ## Source / authority roles
 
@@ -21,31 +23,37 @@ The workflow is manual-only after certification.
 - **MLB Stats API team metadata**: season-specific team-to-AL/NL assignment.
 - **Bulk MLB Stats API season hitting totals**: independent player × actual-league × season outcome reconciliation authority.
 
-Exact source bytes are retained in the workflow artifact with hashes and request metadata. Savant is fetched in small cached date chunks and retryable 429/5xx transport failures use bounded backoff; retries do not change evidence semantics.
+Exact source bytes are retained in workflow artifacts with hashes and request metadata. Savant is fetched in small cached date chunks and retryable 429/5xx transport failures use bounded backoff; retries do not change evidence semantics.
 
-## Certified 2021 evidence totals
+## Certified evidence totals
 
-- players: **1,049**
-- player-game rows: **51,476**
-- profile rows: **147,053**
-- true PA terminal events / PA: **181,818**
-- BB + HBP: **17,906**
-- strikeouts: **42,145**
-- expected result-contact opportunities: **121,705**
-- observed physical contacts: **121,707**
-- physical-contact residual: **+2** across 2 player × league rows
-- special non-contact outcomes: **62**
-- core profile events: **176,948**
-- unknown contacts: **82**
+| Season | Players | Player-games | Profile rows | PA | BB+HBP | K | Expected contacts | Observed contacts | Contact residual | Special non-contact |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2021 | 1,049 | 51,476 | 147,053 | 181,818 | 17,906 | 42,145 | 121,705 | 121,707 | +2 | 62 |
+| 2022 | 693 | 48,325 | 147,376 | 182,052 | 16,899 | 40,812 | 124,267 | 124,269 | +2 | 74 |
+| 2023 | 656 | 48,763 | 148,702 | 184,104 | 17,931 | 41,843 | 124,234 | 124,236 | +2 | 96 |
+
+Additional 2022 metrics:
+
+- outcome-batter reassignments: **2**
+- core profile events: **177,413**
+- unknown contacts: **47**
 - PA-accounting residual: **0**
-- scheduled regular-season games: **2,430**
-- games represented by positive player-game evidence: **2,429**
+- regular-season games represented: **2,430 / 2,430**
 
-The +2 physical-contact residual is diagnostic by design under ADR 024. It is not repaired into the official result-contact denominator.
+Additional 2023 metrics:
+
+- outcome-batter reassignments: **4**
+- core profile events: **179,597**
+- unknown contacts: **57**
+- PA-accounting residual: **0**
+- regular-season games represented: **2,430 / 2,430**
+
+The +2 physical-contact residual in every certified season is diagnostic by design under ADR 024. It is not repaired into the official result-contact denominator.
 
 ## Exact official season reconciliation
 
-The accepted 2021 evidence reconciles exactly to the independent official season backbone at player × actual league × season grain:
+For **2021, 2022, and 2023**, the accepted evidence reconciles exactly to the independent official season backbone at player × actual league × season grain:
 
 - PA mismatch rows: **0**
 - BB/HBP mismatch rows: **0**
@@ -53,39 +61,42 @@ The accepted 2021 evidence reconciles exactly to the independent official season
 - expected-contact mismatch rows: **0**
 - special-noncontact mismatch rows: **0**
 - exact outcome mismatch rows: **0**
+- PA-accounting residual: **0**
 
-Totals match official authority exactly for PA, BB/HBP, K, expected result contacts, and special non-contact outcomes.
-
-## Historical source semantics frozen by the gate
+## Historical source semantics frozen by the gates
 
 ### 1. Two-strike mid-PA batter substitution
 
-Savant updates the batter identity on each pitch. In seven 2021 PAs, a substitute completed a strikeout after entering with two strikes; the Savant terminal pitch carries the substitute ID while official scoring charges the PA/K to the original batter.
+Savant updates batter identity on each pitch. When a substitute completes a strikeout after entering an already two-strike PA, the terminal Savant pitch can carry the substitute ID while official scoring charges the PA/K to the original batter.
 
 Policy: `two_strike_mid_pa_substitution_v1`
 
 The correction is derived only from game-grain pitch sequence evidence:
 
 - exactly two observed batter IDs in the PA;
-- terminal event is a strikeout family event;
-- terminal batter differs from the initial batter;
+- terminal event is a strikeout-family event;
+- terminal batter differs from initial batter;
 - at least two strike-coded pitches occurred before the terminal batter's first pitch.
 
-The PA/K result is then assigned to the initial batter. A substitution before two strikes remains with the substitute. More-than-two-batter strikeout sequences or incomplete prior pitch-result evidence fail closed rather than being guessed.
+The PA/K result is assigned to the initial batter. A substitution before two strikes remains with the substitute. More-than-two-batter strikeout sequences or incomplete prior pitch-result evidence fail closed.
 
-2021 outcome-batter reassignments: **7**.
+Observed reassignments:
+
+- 2021: **7**
+- 2022: **2**
+- 2023: **4**
 
 Physical-contact identity is not rewritten by this rule; result evidence and observed contact evidence remain separate.
 
 ### 2. Interference-error `field_error`
 
-Savant can emit a terminal `field_error` result whose result text explicitly says the batter reached on an interference error, while still exposing a real batted-ball contact.
+Savant can emit a terminal `field_error` result whose text explicitly says the batter reached on an interference error while still exposing a real batted-ball contact.
 
 Policy: `known_event_or_field_error_interference_narrative_v2`
 
-Only `field_error` + explicit `interference error` result text is added to the special non-contact outcome family. A normal result-contact event such as `fielders_choice` is **not** reclassified merely because the narrative later mentions an interference error.
+Only `field_error` + explicit `interference error` result text is added to the special non-contact outcome family. A normal result-contact event such as `fielders_choice` is not reclassified merely because the narrative later mentions interference.
 
-The 2021 gate found one qualifying PA. Its batted-ball contact remains in observed physical-contact/profile evidence, producing the intended signed contact residual rather than redefining the result-contact denominator.
+The batted-ball observation remains in physical-contact/profile evidence, preserving ADR 024's separate denominators.
 
 ### 3. Historical Oakland abbreviation
 
@@ -93,9 +104,13 @@ Current Savant output can relabel historical Oakland rows as `ATH` while season-
 
 The mapping is explicit and season-scoped, not fuzzy: `ATH -> OAK` for 2021–2024. Unknown team abbreviations remain hard failures.
 
-## Transport issue found during certification
+### 4. Historical Savant result recovery
 
-The first 2021 live attempt hit a transient Baseball Savant `502` on one date chunk. The materializer now retries only retryable transport statuses (`429`, `500`, `502`, `503`, `504`) with bounded backoff and reuses already captured chunks. This is transport resilience only and does not relax data acceptance.
+Historical Savant source oddities are handled only through narrow, evidence-backed recovery rules with regression tests. The independent official PA/BB-HBP/K/contact-opportunity accounting gate is never weakened to make a season pass.
+
+## Transport resilience
+
+The first 2021 live attempt hit a transient Baseball Savant `502`. The materializer retries only retryable transport statuses (`429`, `500`, `502`, `503`, `504`) with bounded backoff and reuses already captured chunks. This is transport resilience only and does not relax data acceptance.
 
 ## Implementation
 
@@ -111,6 +126,7 @@ Key files:
 
 ## Next gate
 
-1. Run the same independent historical MLB certification for **2022**, then **2023**, without weakening the 2021 rules.
-2. Combine certified MLB + affiliated-MiLB training evidence and fit the first real **MLB-connected** translation surface using training-period data only.
-3. Inspect support/stability/residuals before freezing a translation form or fitting Baseline 0 / Baseline 1.
+1. Combine **certified 2021 MLB + affiliated-MiLB evidence** before the existing 2021-08-01 cutoff.
+2. Fit the first real **MLB-connected environment-translation surface** using training-period data only.
+3. Inspect graph support, offsets, residuals, promotion/demotion directionality, and stability across later cutoffs before freezing a translation form.
+4. Only then fit Baseline 0 / Baseline 1.
