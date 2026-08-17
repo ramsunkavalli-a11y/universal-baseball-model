@@ -4,13 +4,14 @@ from urllib.parse import parse_qs, urlparse
 import pytest
 
 from universal_baseball.current_talent_savant_minors import (
+    REGULAR_SEASON_GAME_TYPE_FILTER,
     SAVANT_MINORS_CSV_ROOT,
     build_tracked_minor_savant_url,
     plan_tracked_minor_savant_requests,
 )
 
 
-def test_tracked_minor_savant_url_uses_explicit_tracked_filters() -> None:
+def test_tracked_minor_savant_url_uses_explicit_tracked_regular_season_filters() -> None:
     url = build_tracked_minor_savant_url(date(2022, 6, 1), date(2022, 6, 2))
     parsed = urlparse(url)
     params = parse_qs(parsed.query)
@@ -19,6 +20,7 @@ def test_tracked_minor_savant_url_uses_explicit_tracked_filters() -> None:
     assert params == {
         "all": ["true"],
         "player_type": ["batter"],
+        "hfGT": [REGULAR_SEASON_GAME_TYPE_FILTER],
         "game_date_gt": ["2022-06-01"],
         "game_date_lt": ["2022-06-02"],
         "type": ["details"],
@@ -33,6 +35,7 @@ def test_tracked_minor_savant_url_allows_single_date_probe() -> None:
     params = parse_qs(urlparse(url).query)
     assert params["game_date_gt"] == ["2023-07-01"]
     assert params["game_date_lt"] == ["2023-07-01"]
+    assert params["hfGT"] == [REGULAR_SEASON_GAME_TYPE_FILTER]
 
 
 def test_tracked_minor_savant_url_rejects_reverse_range() -> None:
@@ -62,6 +65,7 @@ def test_request_plan_is_contiguous_nonoverlapping_and_bounded() -> None:
         assert params["game_date_gt"] == [request.start_date.isoformat()]
         assert params["game_date_lt"] == [request.end_date.isoformat()]
         assert params["chk_is..tracked"] == ["on"]
+        assert params["hfGT"] == [REGULAR_SEASON_GAME_TYPE_FILTER]
 
 
 def test_request_plan_supports_one_day_and_rejects_invalid_chunk_size() -> None:
