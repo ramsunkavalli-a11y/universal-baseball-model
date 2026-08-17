@@ -15,6 +15,13 @@ from typing import Any
 import polars as pl
 
 
+# MLB certified player-game evidence carries AL/NL league IDs (103/104) at the
+# player/team grain. Interleague games therefore legitimately contain both IDs.
+# Game-coverage diagnostics do not need that player-level distinction, so MLB is
+# collapsed to one explicit synthetic game-level league bucket. Player-level
+# provenance elsewhere remains unchanged.
+MLB_GAME_COVERAGE_LEAGUE_ID = 0
+
 CERTIFIED_GAME_COVERAGE_SCHEMA: dict[str, pl.DataType] = {
     "season": pl.Int64,
     "league_id": pl.Int64,
@@ -41,10 +48,16 @@ def build_certified_game_tracking_coverage(
 ) -> tuple[pl.DataFrame, dict[str, Any]]:
     """Compare returned tracked-source games with the certified game universe.
 
-    ``certified_player_games`` may contain many player rows per game. Every game
-    must collapse to exactly one season/league/level environment. A game counts as
-    tracked when its ``game_pk`` appears anywhere in the returned Savant response;
-    this intentionally does not depend on EV/LA completeness or player matching.
+    ``certified_player_games`` may contain many player rows per game. Every MiLB
+    game must collapse to exactly one season/league/level environment. MLB is a
+    special case because its player-game evidence retains AL/NL affiliation and an
+    interleague game can therefore carry both league IDs; for this game-level
+    diagnostic all MLB rows are normalized to ``league_id=0`` before ambiguity
+    checks and denominator aggregation.
+
+    A game counts as tracked when its ``game_pk`` appears anywhere in the returned
+    Savant response; this intentionally does not depend on EV/LA completeness or
+    player matching.
     """
 
     if "game_pk" not in raw_savant.columns:
@@ -54,12 +67,21 @@ def build_certified_game_tracking_coverage(
     if missing:
         raise ValueError(f"certified player-game evidence missing coverage fields: {missing}")
 
-    certified_games = certified_player_games.select(
-        pl.col("game_pk").cast(pl.Int64, strict=False),
-        pl.col("season").cast(pl.Int64, strict=False),
-        pl.col("league_id").cast(pl.Int64, strict=False),
-        pl.col("level_group").cast(pl.String),
-    ).drop_nulls(["game_pk", "season", "league_id", "level_group"])
+    certified_games = (
+        certified_player_games.select(
+            pl.col("game_pk").cast(pl.Int64, strict=False),
+            pl.col("season").cast(pl.Int64, strict=False),
+            pl.col("league_id").cast(pl.Int64, strict=False),
+            pl.col("level_group").cast(pl.String),
+        )
+        .drop_nulls(["game_pk", "season", "league_id", "level_group"])
+        .with_columns(
+            pl.when(pl.col("level_group") == "MLB")
+            .then(pl.lit(MLB_GAME_COVERAGE_LEAGUE_ID, dtype=pl.Int64))
+            .otherwise(pl.col("league_id"))
+            .alias("league_id")
+        )
+    )
 
     if certified_games.is_empty():
         raise ValueError("certified player-game evidence contains no usable games")
