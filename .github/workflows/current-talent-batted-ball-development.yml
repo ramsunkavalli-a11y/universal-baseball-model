@@ -42,6 +42,7 @@ jobs:
           tests/test_current_talent_batted_ball_scoring.py
           tests/test_current_talent_batted_ball_residual_fit.py
           tests/test_current_talent_batted_ball_development_contract.py
+          tests/test_current_talent_batted_ball_checkpoint_renderer.py
           tests/test_current_talent_baseline2.py
           tests/test_current_talent_scoring.py
           tests/test_current_talent_score_diagnostics.py
@@ -50,8 +51,11 @@ jobs:
           tests/test_current_talent_universal_evidence.py
           tests/test_chadwick.py
 
-      - name: Compile offline development runner
-        run: python -m py_compile scripts/materialize_current_talent_batted_ball_development.py
+      - name: Compile offline development tools
+        run: >-
+          python -m py_compile
+          scripts/materialize_current_talent_batted_ball_development.py
+          scripts/render_current_talent_batted_ball_development_checkpoint.py
 
       - name: Download corrected tracking materialization
         uses: actions/download-artifact@v8
@@ -197,6 +201,23 @@ jobs:
               "non_mlb_transport": report["non_mlb_transport"],
           }, indent=2))
           PY
+
+      - name: Render checkpoint files for review
+        run: >-
+          python scripts/render_current_talent_batted_ball_development_checkpoint.py
+          --report reports/generated/current-talent-batted-ball-development/report.json
+          --output-dir reports/generated/current-talent-batted-ball-development/checkpoint
+
+      - name: Attach source tracking checkpoints to development artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/generated/current-talent-batted-ball-development/source-tracking
+          cp "$(find reports/generated/current-talent-batted-ball-development-inputs/tracking -name checkpoint.json -print -quit)" \
+            reports/generated/current-talent-batted-ball-development/source-tracking/tracking-checkpoint.json
+          find reports/generated/current-talent-batted-ball-development-inputs/tracking \
+            \( -name 'report*.json' -o -name 'tracking_completeness*.csv' -o -name 'capability_summary.csv' \) \
+            -type f -exec cp --parents {} reports/generated/current-talent-batted-ball-development/source-tracking/ \;
 
       - name: Upload richer development artifact
         if: always()
