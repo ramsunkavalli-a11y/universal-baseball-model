@@ -56,18 +56,50 @@ jobs:
         run: python -m py_compile scripts/fit_current_talent_contact_value_residual.py
 
       - name: Fit fixed 2021 residual without development scoring
-        run: >-
-          python scripts/fit_current_talent_contact_value_residual.py
-          --baseline-root seeded/baseline
-          --feature-root seeded/features
-
-      - name: Persist accepted fit report in branch
+        shell: bash
         run: |
-          cp reports/generated/current-talent-contact-value-residual-fit/report.json docs/current-talent-contact-value-residual-fit-result.json
+          set +e
+          set -o pipefail
+          root="reports/generated/current-talent-contact-value-residual-fit"
+          mkdir -p "$root"
+          python scripts/fit_current_talent_contact_value_residual.py \
+            --baseline-root seeded/baseline \
+            --feature-root seeded/features \
+            2>&1 | tee "$root/fit.log"
+          status=${PIPESTATUS[0]}
+          printf '%s\n' "$status" > "$root/fit-exit-code.txt"
+          exit "$status"
+
+      - name: Persist fit result or diagnostics in branch
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="reports/generated/current-talent-contact-value-residual-fit"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/current-talent-contact-value-residual-fit-result.json
-          git diff --cached --quiet || git commit -m "Persist frozen Challenger 2 residual fit"
+          if [ -f "$root/report.json" ]; then
+            cp "$root/report.json" docs/current-talent-contact-value-residual-fit-result.json
+          fi
+          if [ -f "$root/fit.log" ]; then
+            cp "$root/fit.log" docs/current-talent-contact-value-residual-fit-latest.log
+          fi
+          if [ -f "$root/fit-exit-code.txt" ]; then
+            cp "$root/fit-exit-code.txt" docs/current-talent-contact-value-residual-fit-exit-code.txt
+          fi
+          git add \
+            docs/current-talent-contact-value-residual-fit-result.json \
+            docs/current-talent-contact-value-residual-fit-latest.log \
+            docs/current-talent-contact-value-residual-fit-exit-code.txt \
+            2>/dev/null || true
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          if [ -f "$root/report.json" ]; then
+            git commit -m "Persist frozen Challenger 2 residual fit"
+          else
+            git commit -m "Persist Challenger 2 residual fit diagnostics"
+          fi
           git push
 
       - name: Upload residual-fit artifact
