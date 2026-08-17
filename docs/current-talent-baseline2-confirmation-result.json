@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1",
+  "status": "confirmed_and_promoted_as_universal_results_only_comparator",
+  "confirmation_workflow_run": 31998882475,
+  "confirmation_season": 2023,
+  "confirmation_cutoffs": ["2023-07-15", "2023-08-01", "2023-09-01"],
+  "full_candidate_search_on_2023": false,
+  "fixed_challenger_only": true,
+  "frozen_comparator": {
+    "candidate_id": "hl180_ps100_fitted",
+    "season_to_date_only": true,
+    "half_life_days": 180.0,
+    "prior_strength_core_events": 100.0,
+    "translation_variant": "fitted_translation"
+  },
+  "baseline2": {
+    "method": "translated_multiseason_recency_empirical_bayes_v1",
+    "lookback_days": 1095,
+    "half_life_days": 180.0,
+    "prior_strength_core_events": 100.0,
+    "same_frozen_baseline0_prior": true,
+    "same_fold_translation_as_comparator": true,
+    "only_intended_change_vs_frozen_b1": "player_specific_history_depth"
+  },
+  "proper_scores": {
+    "frozen_baseline1_equal_fold_mean_log_loss": 2.25231326367745,
+    "baseline2_equal_fold_mean_log_loss": 2.2493078575016656,
+    "baseline2_minus_frozen_log_loss": -0.0030054061757844863,
+    "frozen_baseline1_equal_fold_mean_brier": 0.8696532366922343,
+    "baseline2_equal_fold_mean_brier": 0.8690790302608522,
+    "baseline2_minus_frozen_brier": -0.0005742064313820627,
+    "baseline2_log_loss_fold_wins": 3,
+    "baseline2_brier_fold_wins": 3
+  },
+  "calibration": {
+    "frozen_baseline1_mean_abs_intercept_error": 0.5223172185509338,
+    "baseline2_mean_abs_intercept_error": 0.3495992246676554,
+    "frozen_baseline1_mean_abs_slope_error": 0.19065665069946977,
+    "baseline2_mean_abs_slope_error": 0.13002696164599356,
+    "frozen_baseline1_mean_ece": 0.0026149034243533615,
+    "baseline2_mean_ece": 0.0027335273204057986,
+    "all_component_fits_converged": true
+  },
+  "breadth": {
+    "component_log_loss_wins": 25,
+    "component_log_loss_comparisons": 36,
+    "component_brier_wins": 36,
+    "component_brier_comparisons": 36,
+    "persistent_both_score_loser_count": 0,
+    "meaningfully_supported_non_mlb_level_failures": 0
+  },
+  "history_evidence": {
+    "mean_share_model_eligible_players_with_prior_season_effective_evidence": 0.8253984844625125,
+    "mean_additional_effective_core_events": 55.99096446548007
+  },
+  "confirmation_hard_checks": {
+    "lower_equal_fold_mean_log_loss": true,
+    "no_worse_equal_fold_mean_brier": true,
+    "identical_scored_coverage": true,
+    "no_meaningful_non_mlb_consistent_reversal": true,
+    "all_component_calibration_fits_converged": true,
+    "calibration_intercept_within_25pct_guardrail": true,
+    "calibration_slope_within_25pct_guardrail": true
+  },
+  "confirmed_under_predeclared_hard_checks": true,
+  "six_fold_development_plus_confirmation_summary": {
+    "frozen_baseline1_equal_fold_mean_log_loss": 2.2544165302513064,
+    "baseline2_equal_fold_mean_log_loss": 2.2516028917315265,
+    "baseline2_minus_frozen_log_loss": -0.0028136385197799,
+    "frozen_baseline1_equal_fold_mean_brier": 0.8696982494533323,
+    "baseline2_equal_fold_mean_brier": 0.8691657556132476,
+    "baseline2_minus_frozen_brier": -0.0005324938400847,
+    "baseline2_log_loss_fold_wins": 6,
+    "baseline2_brier_fold_wins": 6,
+    "component_log_loss_wins": 51,
+    "component_log_loss_comparisons": 72,
+    "component_brier_wins": 72,
+    "component_brier_comparisons": 72,
+    "frozen_baseline1_mean_abs_intercept_error": 0.5232725715639212,
+    "baseline2_mean_abs_intercept_error": 0.3676466237784215,
+    "frozen_baseline1_mean_abs_slope_error": 0.19165728483351577,
+    "baseline2_mean_abs_slope_error": 0.13863945852086226,
+    "frozen_baseline1_mean_ece": 0.002559954569567417,
+    "baseline2_mean_ece": 0.0025633183058036495
+  },
+  "decision": "Promote Baseline 2 as the fixed universal results-only Current Talent comparator for richer process, tracking, or scouting challengers. Keep frozen Baseline 1 as the simpler season-to-date reference; do not retune either baseline in response to richer challengers."
+}
