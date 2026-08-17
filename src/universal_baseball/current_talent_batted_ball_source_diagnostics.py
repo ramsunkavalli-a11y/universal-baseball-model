@@ -1,10 +1,15 @@
 """Source-completeness diagnostics for tracked EV/launch-angle evidence.
 
-The richer Current Talent challenger uses only complete observed EV+LA batted
-balls, but its audit surface also needs to show how much returned BBE-like source
-evidence was complete and how many games contributed. These diagnostics remain
-separate from talent features: they describe measurement/source coverage, not
-player skill, and they never impute a missing measurement.
+The richer Current Talent challenger uses only complete observed, result-producing
+BBE for talent features. Its audit surface also needs to show how much broader
+Savant contact / BBE-like source evidence carried complete measurements and how
+many games contributed. These diagnostics therefore stay deliberately broader
+than the feature definition and operate at pitch grain.
+
+They describe measurement/source coverage, not player skill, and never impute a
+missing measurement. Their field names use ``observation`` rather than ``BBE``
+where completeness is measured so broad foul/contact rows cannot be mistaken for
+model-eligible result-producing batted balls.
 """
 
 from __future__ import annotations
@@ -14,12 +19,13 @@ from datetime import date
 import polars as pl
 
 
-TRACKING_OBSERVATION_KEY = ("game_pk", "player_id", "at_bat_number")
+TRACKING_OBSERVATION_KEY = ("game_pk", "player_id", "at_bat_number", "pitch_number")
 TRACKING_OBSERVATION_SCHEMA: dict[str, pl.DataType] = {
     "game_date": pl.Date,
     "game_pk": pl.Int64,
     "player_id": pl.Int64,
     "at_bat_number": pl.Int64,
+    "pitch_number": pl.Int64,
     "bbe_like_source_rows": pl.Int64,
     "rows_with_exit_velocity": pl.Int64,
     "rows_with_launch_angle": pl.Int64,
@@ -32,11 +38,11 @@ TRACKING_COMPLETENESS_SCHEMA: dict[str, pl.DataType] = {
     "as_of_date": pl.Date,
     "player_id": pl.Int64,
     "bbe_like_observations": pl.Int64,
-    "complete_ev_la_bbe": pl.Int64,
+    "complete_ev_la_observations": pl.Int64,
     "complete_ev_la_share": pl.Float64,
     "tracked_game_count": pl.Int64,
     "complete_tracked_game_count": pl.Int64,
-    "ambiguous_multiple_complete_ev_la_bbe": pl.Int64,
+    "ambiguous_multiple_complete_ev_la_observations": pl.Int64,
 }
 
 
@@ -57,12 +63,12 @@ def _nonblank(column: str) -> pl.Expr:
 
 
 def project_savant_bbe_tracking_observations(raw: pl.DataFrame) -> pl.DataFrame:
-    """Collapse broad Savant BBE-like rows to one source observation per PA key.
+    """Collapse broad Savant BBE-like/contact rows to one pitch observation.
 
-    The broad BBE-like definition is for *measurement completeness diagnostics*
-    only. It must not replace the stricter complete-EV+LA feature projection.
-    Multiple complete EV+LA rows at one canonical key are retained as an explicit
-    ambiguity flag rather than silently deduplicated.
+    The broad definition is for *measurement completeness diagnostics* only. It
+    intentionally includes source rows such as measured fouls and must not replace
+    the stricter result-producing BBE feature projection. Multiple raw rows at one
+    pitch key are retained as counts/ambiguity rather than silently deduplicated.
     """
 
     required = {
@@ -70,6 +76,7 @@ def project_savant_bbe_tracking_observations(raw: pl.DataFrame) -> pl.DataFrame:
         "game_pk",
         "batter",
         "at_bat_number",
+        "pitch_number",
         "bb_type",
         "description",
         "launch_speed",
@@ -86,6 +93,7 @@ def project_savant_bbe_tracking_observations(raw: pl.DataFrame) -> pl.DataFrame:
         _integer_like("game_pk", "game_pk"),
         _integer_like("batter", "player_id"),
         _integer_like("at_bat_number", "at_bat_number"),
+        _integer_like("pitch_number", "pitch_number"),
         pl.col("bb_type").cast(pl.String),
         pl.col("description").cast(pl.String),
         pl.col("launch_speed").cast(pl.Float64, strict=False),
@@ -95,6 +103,7 @@ def project_savant_bbe_tracking_observations(raw: pl.DataFrame) -> pl.DataFrame:
         & pl.col("game_pk").is_not_null()
         & pl.col("player_id").is_not_null()
         & pl.col("at_bat_number").is_not_null()
+        & pl.col("pitch_number").is_not_null()
     )
 
     bbe_like = projected.filter(
@@ -112,7 +121,7 @@ def project_savant_bbe_tracking_observations(raw: pl.DataFrame) -> pl.DataFrame:
         .filter(pl.col("date_count") != 1)
     )
     if not date_conflict.is_empty():
-        raise ValueError("Savant BBE-like source has conflicting game dates at canonical key")
+        raise ValueError("Savant BBE-like source has conflicting game dates at pitch key")
 
     observations = (
         bbe_like.group_by(list(TRACKING_OBSERVATION_KEY))
@@ -146,7 +155,7 @@ def build_tracking_completeness_diagnostics(
     *,
     cutoff: date,
 ) -> pl.DataFrame:
-    """Summarize pre-cutoff tracking completeness at player grain."""
+    """Summarize pre-cutoff broad tracking completeness at player grain."""
 
     missing = sorted(set(TRACKING_OBSERVATION_SCHEMA) - set(observations.columns))
     if missing:
@@ -158,7 +167,7 @@ def build_tracking_completeness_diagnostics(
         pl.col("len") != 1
     )
     if not duplicate.is_empty():
-        raise ValueError("tracking observations violate canonical BBE-like grain")
+        raise ValueError("tracking observations violate canonical pitch grain")
 
     eligible = observations.with_columns(
         pl.col("game_date").cast(pl.Date, strict=False).alias("game_date")
@@ -170,7 +179,9 @@ def build_tracking_completeness_diagnostics(
         eligible.group_by("player_id")
         .agg(
             pl.len().cast(pl.Int64).alias("bbe_like_observations"),
-            pl.col("has_complete_ev_la").sum().cast(pl.Int64).alias("complete_ev_la_bbe"),
+            pl.col("has_complete_ev_la").sum().cast(pl.Int64).alias(
+                "complete_ev_la_observations"
+            ),
             pl.col("game_pk").n_unique().cast(pl.Int64).alias("tracked_game_count"),
             pl.col("game_pk")
             .filter(pl.col("has_complete_ev_la"))
@@ -180,11 +191,11 @@ def build_tracking_completeness_diagnostics(
             pl.col("ambiguous_multiple_complete_ev_la")
             .sum()
             .cast(pl.Int64)
-            .alias("ambiguous_multiple_complete_ev_la_bbe"),
+            .alias("ambiguous_multiple_complete_ev_la_observations"),
         )
         .with_columns(
             (
-                pl.col("complete_ev_la_bbe")
+                pl.col("complete_ev_la_observations")
                 / pl.col("bbe_like_observations").cast(pl.Float64)
             ).alias("complete_ev_la_share"),
             pl.lit(cutoff).alias("as_of_date"),
