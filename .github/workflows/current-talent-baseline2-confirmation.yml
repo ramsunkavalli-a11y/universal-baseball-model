@@ -1,15 +1,7 @@
 name: Current Talent Baseline 2 confirmation
 
 on:
-  # One-time bootstrap for the fixed 2023 holdout confirmation. Return to
-  # manual-only after the gate is resolved.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-baseline2-confirmation.yml
-      - scripts/materialize_current_talent_baseline2_confirmation.py
-      - docs/current-talent-baseline2-development-result.json
+  # Gate completed on run 31998882475. Keep held-out historical confirmation manual-only.
   workflow_dispatch:
 
 permissions:
