@@ -21,6 +21,13 @@ from universal_baseball.current_talent_validation_dataset import (
 
 
 FILENAME_LEVELS = ("aaa", "aa", "a+", "a", "rk")
+TABLE_LEVEL_TOKEN = {
+    "aaa": "aaa",
+    "aa": "aa",
+    "a+": "aplus",
+    "a": "a",
+    "rk": "rk",
+}
 
 
 def _parse_args() -> argparse.Namespace:
@@ -76,19 +83,21 @@ def main() -> int:
     profiles: list[pl.DataFrame] = []
     inputs: list[dict[str, str]] = []
     for level in FILENAME_LEVELS:
+        table_level = TABLE_LEVEL_TOKEN[level]
         summary_path = _one(
             args.input_root,
-            f"current_talent_game_summary_{args.season}_{level}.parquet",
+            f"current_talent_game_summary_{args.season}_{table_level}.parquet",
         )
         profile_path = _one(
             args.input_root,
-            f"current_talent_game_profile_{args.season}_{level}.parquet",
+            f"current_talent_game_profile_{args.season}_{table_level}.parquet",
         )
         summaries.append(pl.read_parquet(summary_path))
         profiles.append(pl.read_parquet(profile_path))
         inputs.append(
             {
                 "filename_level": level,
+                "table_level_token": table_level,
                 "summary": str(summary_path),
                 "profile": str(profile_path),
             }
