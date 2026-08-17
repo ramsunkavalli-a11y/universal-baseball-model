@@ -1,12 +1,6 @@
 name: Current Talent baseline validation
 
 on:
-  # One-time bootstrap for the first 2021-08-01 gate; remove after it resolves.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-baseline-validation.yml
   workflow_dispatch:
     inputs:
       milb_source_run_id:
@@ -54,13 +48,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      MILB_SOURCE_RUN_ID: ${{ inputs.milb_source_run_id || '31980820797' }}
-      MILB_ARTIFACT_PATTERN: ${{ inputs.milb_artifact_pattern || 'ct-validation-game-evidence-2021-*' }}
-      MLB_SOURCE_RUN_ID: ${{ inputs.mlb_source_run_id || '31986504169' }}
-      TARGET_SEASON: ${{ inputs.season || '2021' }}
-      AS_OF_DATE: ${{ inputs.as_of_date || '2021-08-01' }}
-      HALF_LIFE_DAYS: ${{ inputs.half_life_days || '90' }}
-      PRIOR_STRENGTH_CORE_EVENTS: ${{ inputs.prior_strength_core_events || '100' }}
+      MILB_SOURCE_RUN_ID: ${{ inputs.milb_source_run_id }}
+      MILB_ARTIFACT_PATTERN: ${{ inputs.milb_artifact_pattern }}
+      MLB_SOURCE_RUN_ID: ${{ inputs.mlb_source_run_id }}
+      TARGET_SEASON: ${{ inputs.season }}
+      AS_OF_DATE: ${{ inputs.as_of_date }}
+      HALF_LIFE_DAYS: ${{ inputs.half_life_days }}
+      PRIOR_STRENGTH_CORE_EVENTS: ${{ inputs.prior_strength_core_events }}
 
     steps:
       - name: Check out repository
