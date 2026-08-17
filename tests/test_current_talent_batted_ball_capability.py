@@ -124,7 +124,7 @@ def test_capability_excludes_cutoff_and_future_bbe() -> None:
             _rows(),
             _rows().head(1).with_columns(
                 pl.lit(date(2022, 7, 1)).alias("game_date"),
-                pl.lit(100).alias("game_pk"),
+                pl.lit(100, dtype=pl.Int64).alias("game_pk"),
             ),
         ]
     )
