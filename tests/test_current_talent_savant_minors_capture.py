@@ -31,17 +31,28 @@ def test_certified_date_bounds_span_all_milb_summary_files(tmp_path) -> None:
     assert end == date(2022, 9, 28)
 
 
-def test_response_validator_requires_canonical_source_fields() -> None:
-    content = (
+def _valid_csv(*, game_type: str = "R") -> bytes:
+    return (
         "game_date,game_pk,batter,at_bat_number,pitch_number,events,type,des,description,"
-        "bb_type,launch_speed,launch_angle\n"
-        "2022-06-01,1,10,1,3,single,X,Batter singles.,hit_into_play,line_drive,99.0,18.0\n"
+        "bb_type,launch_speed,launch_angle,game_type\n"
+        f"2022-06-01,1,10,1,3,single,X,Batter singles.,hit_into_play,line_drive,99.0,18.0,{game_type}\n"
     ).encode()
 
-    rows, columns = _validate_response_csv(content, request_url="https://example.test")
+
+def test_response_validator_requires_canonical_source_fields_and_regular_season() -> None:
+    rows, columns = _validate_response_csv(
+        _valid_csv(), request_url="https://example.test"
+    )
 
     assert rows == 1
-    assert columns == 12
+    assert columns == 13
+
+
+def test_response_validator_rejects_non_regular_game_type() -> None:
+    with pytest.raises(ValueError, match="non-regular game types"):
+        _validate_response_csv(
+            _valid_csv(game_type="W"), request_url="https://example.test"
+        )
 
 
 def test_response_validator_fails_closed_on_html_or_schema_drift() -> None:
