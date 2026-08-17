@@ -4,6 +4,7 @@ import sys
 
 import polars as pl
 import pytest
+import requests
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
@@ -11,6 +12,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from capture_current_talent_savant_minors_tracking import (  # noqa: E402
     _certified_date_bounds,
+    _fetch_with_retry,
     _validate_response_csv,
 )
 
@@ -49,3 +51,69 @@ def test_response_validator_fails_closed_on_html_or_schema_drift() -> None:
     incomplete = b"game_date,game_pk\n2022-06-01,1\n"
     with pytest.raises(ValueError, match="missing fields"):
         _validate_response_csv(incomplete, request_url="https://example.test")
+
+
+def _response(status: int) -> requests.Response:
+    response = requests.Response()
+    response.status_code = status
+    response.url = "https://example.test"
+    response._content = b"ok"
+    return response
+
+
+class _FakeSession:
+    def __init__(self, outcomes: list[requests.Response | Exception]) -> None:
+        self.outcomes = list(outcomes)
+        self.calls = 0
+
+    def get(self, url: str, timeout: int) -> requests.Response:
+        self.calls += 1
+        outcome = self.outcomes.pop(0)
+        if isinstance(outcome, Exception):
+            raise outcome
+        return outcome
+
+
+def test_fetch_retries_transient_http_with_bounded_exponential_backoff() -> None:
+    session = _FakeSession([_response(503), _response(429), _response(200)])
+    sleeps: list[float] = []
+
+    response, attempts = _fetch_with_retry(
+        session,  # type: ignore[arg-type]
+        "https://example.test",
+        max_attempts=4,
+        base_backoff_seconds=2.0,
+        sleep_fn=sleeps.append,
+    )
+
+    assert response.status_code == 200
+    assert attempts == 3
+    assert session.calls == 3
+    assert sleeps == [2.0, 4.0]
+
+
+def test_fetch_retries_transport_exception_but_not_nontransient_http() -> None:
+    session = _FakeSession([requests.ConnectionError("temporary"), _response(200)])
+    sleeps: list[float] = []
+
+    response, attempts = _fetch_with_retry(
+        session,  # type: ignore[arg-type]
+        "https://example.test",
+        max_attempts=2,
+        base_backoff_seconds=1.0,
+        sleep_fn=sleeps.append,
+    )
+    assert response.status_code == 200
+    assert attempts == 2
+    assert sleeps == [1.0]
+
+    no_retry = _FakeSession([_response(404), _response(200)])
+    with pytest.raises(requests.HTTPError):
+        _fetch_with_retry(
+            no_retry,  # type: ignore[arg-type]
+            "https://example.test",
+            max_attempts=2,
+            base_backoff_seconds=0.0,
+            sleep_fn=lambda _: None,
+        )
+    assert no_retry.calls == 1
