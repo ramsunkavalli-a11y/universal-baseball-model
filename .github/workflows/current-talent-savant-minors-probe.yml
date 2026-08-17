@@ -1,0 +1,62 @@
+name: Current Talent Minor League Savant probe
+
+on:
+  # One-time source-capability bootstrap. Return to manual-only after the probe resolves.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - .github/workflows/current-talent-savant-minors-probe.yml
+      - scripts/probe_savant_minors_tracking.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          ref: source-certification-poc
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Compile source probe
+        run: python -m py_compile scripts/probe_savant_minors_tracking.py
+
+      - name: Download certified 2023 MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-historical-milb-full-season-2023-*
+          path: reports/generated/current-talent-savant-minors-probe-inputs/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31971923778"
+          github-token: ${{ github.token }}
+
+      - name: Probe one official Minor League Savant date
+        run: >-
+          python scripts/probe_savant_minors_tracking.py
+          --certified-milb-root reports/generated/current-talent-savant-minors-probe-inputs/milb
+          --probe-date 2023-07-01
+          --output-dir reports/generated/current-talent-savant-minors-probe
+
+      - name: Upload source probe artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-savant-minors-probe
+          path: reports/generated/current-talent-savant-minors-probe/
+          if-no-files-found: warn
+          retention-days: 14
