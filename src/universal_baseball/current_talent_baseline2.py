@@ -160,8 +160,8 @@ def build_frozen_b1_vs_b2_scoring_pair(
         pl.col("baseline1_latent_probability").sum().alias("_baseline2_sum"),
     )
     if sums.filter(
-        (pl.col("_frozen_b1_sum") - 1.0).abs() > tolerance
-        | (pl.col("_baseline2_sum") - 1.0).abs() > tolerance
+        ((pl.col("_frozen_b1_sum") - 1.0).abs() > tolerance)
+        | ((pl.col("_baseline2_sum") - 1.0).abs() > tolerance)
     ).height:
         raise ValueError("paired Baseline 1 / Baseline 2 profiles do not sum to one")
     return result
