@@ -1,12 +1,6 @@
 name: Current Talent translation support diagnostic
 
 on:
-  # One-time stability bootstrap for Aug. 1, 2022 and Aug. 1, 2023; remove after both resolve.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-translation-support.yml
   workflow_dispatch:
     inputs:
       source_run_id:
@@ -43,16 +37,12 @@ jobs:
   support:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    strategy:
-      fail-fast: false
-      matrix:
-        include: ${{ github.event_name == 'push' && fromJSON('[{"season":"2022","source_run_id":"31971662070","milb_artifact_pattern":"current-talent-historical-milb-full-season-*","mlb_source_run_id":"31988255280","training_end":"2022-08-01"},{"season":"2023","source_run_id":"31971923778","milb_artifact_pattern":"current-talent-historical-milb-full-season-2023-*","mlb_source_run_id":"31989561396","training_end":"2023-08-01"}]') || fromJSON(format('[{{"season":"{0}","source_run_id":"{1}","milb_artifact_pattern":"{2}","mlb_source_run_id":"{3}","training_end":"{4}"}}]', inputs.season, inputs.source_run_id, inputs.milb_artifact_pattern, inputs.mlb_source_run_id, inputs.training_end)) }}
     env:
-      SOURCE_RUN_ID: ${{ matrix.source_run_id }}
-      MILB_ARTIFACT_PATTERN: ${{ matrix.milb_artifact_pattern }}
-      MLB_SOURCE_RUN_ID: ${{ matrix.mlb_source_run_id }}
-      TARGET_SEASON: ${{ matrix.season }}
-      TRAINING_END: ${{ matrix.training_end }}
+      SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+      MILB_ARTIFACT_PATTERN: ${{ inputs.milb_artifact_pattern }}
+      MLB_SOURCE_RUN_ID: ${{ inputs.mlb_source_run_id }}
+      TARGET_SEASON: ${{ inputs.season }}
+      TRAINING_END: ${{ inputs.training_end }}
 
     steps:
       - name: Check out repository
