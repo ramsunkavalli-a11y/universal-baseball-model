@@ -1,0 +1,76 @@
+name: Current Talent translation support diagnostic
+
+on:
+  # One-time bootstrap for the first certified support run; remove after success.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - .github/workflows/current-talent-translation-support.yml
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Workflow run containing five certified ct-validation-game-evidence artifacts
+        required: true
+        default: "31980820797"
+        type: string
+      season:
+        description: Season represented by the source artifacts
+        required: true
+        default: "2021"
+        type: string
+      training_end:
+        description: Exclusive training cutoff YYYY-MM-DD
+        required: true
+        default: "2021-08-01"
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  support:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SOURCE_RUN_ID: ${{ inputs.source_run_id || '31980820797' }}
+      TARGET_SEASON: ${{ inputs.season || '2021' }}
+      TRAINING_END: ${{ inputs.training_end || '2021-08-01' }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Run translation foundation tests
+        run: python -m pytest tests/test_current_talent_translation.py
+      - name: Download certified five-level game evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: ct-validation-game-evidence-${{ env.TARGET_SEASON }}-*
+          path: reports/generated/current-talent-translation-inputs/${{ env.TARGET_SEASON }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          github-token: ${{ github.token }}
+      - name: Materialize matched-environment support
+        run: >-
+          python scripts/materialize_current_talent_translation_support.py
+          --input-root "reports/generated/current-talent-translation-inputs/${TARGET_SEASON}"
+          --season "${TARGET_SEASON}"
+          --training-end "${TRAINING_END}"
+          --min-core-events-per-stint 20
+          --max-gap-days 365
+          --output-dir "reports/generated/current-talent-translation-support/${TARGET_SEASON}/${TRAINING_END}"
+      - name: Upload translation support artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-translation-support-${{ env.TARGET_SEASON }}-${{ env.TRAINING_END }}
+          path: reports/generated/current-talent-translation-support/${{ env.TARGET_SEASON }}/${{ env.TRAINING_END }}/
+          if-no-files-found: error
+          retention-days: 14
