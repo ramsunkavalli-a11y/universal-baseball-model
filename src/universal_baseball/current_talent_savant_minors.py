@@ -5,6 +5,10 @@ by the first richer Current Talent challenger and provides deterministic request
 chunk planning for the later provenance-aware materializer. Actual capture stays
 inside explicit manual workflows so raw response bytes and source metadata remain
 auditable.
+
+The richer Current Talent result evidence is regular-season evidence. Historical
+tracking requests therefore explicitly select regular-season Minor Savant games
+rather than relying on the endpoint's implicit/default game-type behavior.
 """
 
 from __future__ import annotations
@@ -16,11 +20,13 @@ from urllib.parse import urlencode
 
 SAVANT_MINORS_CSV_ROOT = "https://baseballsavant.mlb.com/statcast-search-minors/csv"
 DEFAULT_TRACKED_MINOR_CHUNK_DAYS = 7
+REGULAR_SEASON_GAME_TYPE = "R"
+REGULAR_SEASON_GAME_TYPE_FILTER = "R|"
 
 
 @dataclass(frozen=True, slots=True)
 class TrackedMinorSavantRequest:
-    """One inclusive date chunk for a tracked-only Minor Savant capture."""
+    """One inclusive date chunk for a tracked regular-season Minor Savant capture."""
 
     start_date: date
     end_date: date
@@ -29,13 +35,14 @@ class TrackedMinorSavantRequest:
 
 
 def build_tracked_minor_savant_url(start_date: date, end_date: date) -> str:
-    """Build the tracked-only batter detail request used for EV/LA evidence."""
+    """Build the tracked regular-season batter request used for EV/LA evidence."""
 
     if end_date < start_date:
         raise ValueError("Minor Savant end_date must be on or after start_date")
     params = {
         "all": "true",
         "player_type": "batter",
+        "hfGT": REGULAR_SEASON_GAME_TYPE_FILTER,
         "game_date_gt": start_date.isoformat(),
         "game_date_lt": end_date.isoformat(),
         "type": "details",
