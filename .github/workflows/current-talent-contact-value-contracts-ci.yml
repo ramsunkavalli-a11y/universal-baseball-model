@@ -12,6 +12,7 @@ on:
       - "src/universal_baseball/current_talent_contact_value_evidence.py"
       - "src/universal_baseball/current_talent_contact_value_features.py"
       - "src/universal_baseball/current_talent_contact_value_prediction.py"
+      - "src/universal_baseball/current_talent_contact_value_scoring.py"
       - "src/universal_baseball/current_talent_batted_ball_standardization.py"
       - "tests/test_current_talent_contact_value.py"
       - "tests/test_current_talent_contact_value_baseline.py"
@@ -20,6 +21,7 @@ on:
       - "tests/test_current_talent_contact_value_evidence.py"
       - "tests/test_current_talent_contact_value_features.py"
       - "tests/test_current_talent_contact_value_prediction.py"
+      - "tests/test_current_talent_contact_value_scoring.py"
       - "tests/test_current_talent_batted_ball_standardization.py"
       - ".github/workflows/current-talent-contact-value-contracts-ci.yml"
   workflow_dispatch:
@@ -54,6 +56,7 @@ jobs:
           src/universal_baseball/current_talent_contact_value_evidence.py
           src/universal_baseball/current_talent_contact_value_features.py
           src/universal_baseball/current_talent_contact_value_prediction.py
+          src/universal_baseball/current_talent_contact_value_scoring.py
 
       - name: Verify contact-value contracts
         run: >-
@@ -65,4 +68,5 @@ jobs:
           tests/test_current_talent_contact_value_evidence.py
           tests/test_current_talent_contact_value_features.py
           tests/test_current_talent_contact_value_prediction.py
+          tests/test_current_talent_contact_value_scoring.py
           tests/test_current_talent_batted_ball_standardization.py
