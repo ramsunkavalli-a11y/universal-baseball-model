@@ -1,0 +1,125 @@
+{
+  "chadwick_archive": {
+    "file_size_bytes": 27714562,
+    "resolved_url": "https://codeload.github.com/chadwickbureau/register/zip/2e8e73355f9c77b963115377bd98c784cfeec10f",
+    "retrieved_at_utc": "2026-08-17T05:16:13.137614+00:00",
+    "sha256": "940c2be6e497351bf6c5a8b65d62d6742483521ef6e23181252aef86c2cb97ce"
+  },
+  "chadwick_snapshot_sha": "2e8e73355f9c77b963115377bd98c784cfeec10f",
+  "combined_evidence_metrics": {
+    "actual_league_count": 16,
+    "core_profile_count_exceeds_pa_player_game_count": 0,
+    "level_group_count": 6,
+    "level_groups": [
+      "AA",
+      "AAA",
+      "HIGH_A",
+      "MLB",
+      "ROOKIE_COMPLEX",
+      "SINGLE_A"
+    ],
+    "nonzero_contact_residual_player_game_count": 1265,
+    "nonzero_pa_accounting_residual_player_game_count": 5,
+    "participant_authority_statuses": [
+      "no_contact_identity_needed",
+      "official_overlay",
+      "savant_official",
+      "source_default"
+    ],
+    "player_count": 3985,
+    "player_game_count": 243399,
+    "profile_row_count": 771754,
+    "season_count": 1,
+    "source_capability_tiers": [
+      "mlb_savant_result_contact_profile_v2",
+      "universal_result_contact_profile_v2"
+    ],
+    "total_bunt_contacts": 5852,
+    "total_contact_count_residual": -2922,
+    "total_core_events": 950711,
+    "total_expected_contacts": 621342,
+    "total_foul_air_excluded_contacts": 16281,
+    "total_observed_contacts": 618420,
+    "total_pa_accounting_residual": 5,
+    "total_plate_appearances": 976704,
+    "total_special_noncontact_events": 443,
+    "total_unknown_contacts": 490
+  },
+  "confirmation_fold_count": 3,
+  "confirmation_season": 2023,
+  "full_grid_evaluated_on_2023": false,
+  "inputs": [
+    {
+      "filename_level": "aaa",
+      "profile": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-aaa/tables/current_talent_game_profile_2023_aaa.parquet",
+      "source_group": "affiliated_milb",
+      "summary": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-aaa/tables/current_talent_game_summary_2023_aaa.parquet"
+    },
+    {
+      "filename_level": "aa",
+      "profile": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-aa/tables/current_talent_game_profile_2023_aa.parquet",
+      "source_group": "affiliated_milb",
+      "summary": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-aa/tables/current_talent_game_summary_2023_aa.parquet"
+    },
+    {
+      "filename_level": "a+",
+      "profile": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-a+/tables/current_talent_game_profile_2023_aplus.parquet",
+      "source_group": "affiliated_milb",
+      "summary": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-a+/tables/current_talent_game_summary_2023_aplus.parquet"
+    },
+    {
+      "filename_level": "a",
+      "profile": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-a/tables/current_talent_game_profile_2023_a.parquet",
+      "source_group": "affiliated_milb",
+      "summary": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-a/tables/current_talent_game_summary_2023_a.parquet"
+    },
+    {
+      "filename_level": "rk",
+      "profile": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-rk/tables/current_talent_game_profile_2023_rk.parquet",
+      "source_group": "affiliated_milb",
+      "summary": "reports/generated/current-talent-2023-confirmation-inputs/milb/current-talent-historical-milb-full-season-2023-rk/tables/current_talent_game_summary_2023_rk.parquet"
+    },
+    {
+      "filename_level": "mlb",
+      "profile": "reports/generated/current-talent-2023-confirmation-inputs/mlb/reports/generated/current-talent-historical-mlb-game-evidence/2023/tables/current_talent_game_profile_2023_mlb.parquet",
+      "source_group": "mlb",
+      "summary": "reports/generated/current-talent-2023-confirmation-inputs/mlb/reports/generated/current-talent-historical-mlb-game-evidence/2023/tables/current_talent_game_summary_2023_mlb.parquet"
+    }
+  ],
+  "interpretation": "Confirmation only. If the preselected development candidate fails, do not reselect using 2023. Record instability and keep the baseline unfrozen.",
+  "proper_score_confirmation": true,
+  "reference_candidate": {
+    "candidate_id": "hl90_ps100_fitted",
+    "half_life_days": 90.0,
+    "prior_strength_core_events": 100.0,
+    "translation_variant": "fitted_translation"
+  },
+  "reference_mean_baseline1_brier": 0.8697583942330818,
+  "reference_mean_baseline1_log_loss": 2.252558511038908,
+  "report_schema_version": "0.1",
+  "selected_b1_brier_win_vs_b0_fold_count": 3,
+  "selected_b1_log_loss_win_vs_b0_fold_count": 3,
+  "selected_candidate": {
+    "candidate_id": "hl180_ps100_fitted",
+    "half_life_days": 180.0,
+    "prior_strength_core_events": 100.0,
+    "translation_variant": "fitted_translation"
+  },
+  "selected_component_brier_win_vs_b0_count": 35,
+  "selected_component_comparison_count": 36,
+  "selected_component_log_loss_win_vs_b0_count": 36,
+  "selected_mean_abs_calibration_intercept_error": 0.522317218550933,
+  "selected_mean_abs_calibration_slope_error": 0.19065665069946947,
+  "selected_mean_b1_minus_b0_brier": -0.004777442388865534,
+  "selected_mean_b1_minus_b0_log_loss": -0.018813641248036344,
+  "selected_mean_baseline1_brier": 0.8696532366922343,
+  "selected_mean_baseline1_log_loss": 2.25231326367745,
+  "selected_mean_ece": 0.0026149034243533615,
+  "selected_minus_reference_mean_brier": -0.00010515754084750029,
+  "selected_minus_reference_mean_log_loss": -0.00024524736145803416,
+  "selected_stratum_brier_win_vs_b0_count": 62,
+  "selected_stratum_comparison_count": 62,
+  "selected_stratum_log_loss_win_vs_b0_count": 62,
+  "selection_source": "docs/current-talent-development-selected-candidate.json",
+  "selection_uses_only_preselected_candidate_on_2023": true
+}

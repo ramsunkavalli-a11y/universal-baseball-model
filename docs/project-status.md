@@ -239,3 +239,19 @@ Detailed checkpoint: `docs/current-talent-development-selection-checkpoint.md`.
 
 **Next gate:** evaluate this preselected candidate on the three 2023 folds only; compare to B0 and the existing 90/100/fitted reference. Do not run the full alternative grid on 2023 and do not reselect using 2023 if confirmation fails.
 <!-- END AUTO CURRENT TALENT DEVELOPMENT SELECTION -->
+
+<!-- BEGIN AUTO CURRENT TALENT 2023 CONFIRMATION -->
+## 2023 selected-candidate confirmation
+
+Preselected candidate **`hl180_ps100_fitted`** is **CONFIRMED** under the predeclared confirmation rule.
+
+2023 equal-fold mean B1 log loss: **2.252313**; Brier: **0.869653**.
+
+Mean B1−B0: **-0.018814 log loss / -0.004777 Brier**.
+
+Selected minus fixed-reference mean: **-0.000245 log loss / -0.000105 Brier**.
+
+The full 18-candidate grid was **not** evaluated on 2023. Detailed checkpoint: `docs/current-talent-2023-confirmation-checkpoint.md`.
+
+**Next gate:** Make the documented simple-baseline freeze decision from the predeclared development + confirmation evidence; do not add richer inputs first.
+<!-- END AUTO CURRENT TALENT 2023 CONFIRMATION -->
