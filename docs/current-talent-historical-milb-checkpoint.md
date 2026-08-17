@@ -12,6 +12,8 @@ Successful full-season validation runs:
 
 This checkpoint certifies the historical evidence foundation needed to build deterministic as-of snapshots and future target windows. It does **not** certify a Current Talent model, environmental translation, Projection, playing time, WAR/value, or an overall ranking.
 
+**Subsequent progress:** the snapshot/future-window gate described at the bottom of the original checkpoint has now been implemented and validated on a real five-level 2021 multilevel slice. See `docs/project-status.md` for the live roadmap and current metrics.
+
 ## 2021 final evidence totals
 
 The final five-level 2021 run produced:
@@ -71,8 +73,24 @@ PA/result-opportunity evidence and contact/profile evidence retain separate deno
 
 The heavy historical full-season and one-level live-source workflows are **manual-only after certification**. Their deterministic source/identity/contact regression tests remain part of the validation gate and normal CI remains automatic.
 
+## Snapshot / target gate completed after this checkpoint
+
+The next gate originally listed here has now passed on a real five-level affiliated-MiLB slice:
+
+- cutoff: **2021-08-01**
+- future horizon: **90 days**
+- successful multilevel workflow: `31980820797`
+- predictor players: **3,828**
+- future target players: **3,631**
+- scored players: **3,245**
+- real transition rows: **3,144 same-level / 523 promotions / 212 demotions / 3 ambiguous as-of environments**
+
+The snapshot code preserves actual as-of and future environments and does not invent same-day chronology. This validates chronology/transition plumbing only; no Current Talent estimator or environment translation is implied.
+
 ## Next gate
 
-1. Assemble deterministic as-of predictor snapshots from the certified player-game evidence.
-2. Assemble leakage-safe future windows, with the primary 90-day target and 200-PA aggregate diagnostic cap plus the contracted secondary horizons.
-3. Only after those builders are validated, learn environmental translations and fit Baseline 0 / Baseline 1 out of time.
+See `docs/project-status.md`. In short:
+
+1. implement leakage-safe **training-only environment translation** with MLB as the reporting anchor;
+2. fit **Baseline 0 / Baseline 1 only**;
+3. expand chronological validation across cutoffs/seasons and include MLB before promoting a universal Current Talent model.
