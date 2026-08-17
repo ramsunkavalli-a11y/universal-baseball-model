@@ -1,12 +1,6 @@
 name: Current Talent translation support diagnostic
 
 on:
-  # One-time bootstrap for the first certified MLB-connected 2021 fit; remove after the run resolves.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-translation-support.yml
   workflow_dispatch:
     inputs:
       source_run_id:
@@ -39,10 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      SOURCE_RUN_ID: ${{ inputs.source_run_id || '31980820797' }}
-      MLB_SOURCE_RUN_ID: ${{ inputs.mlb_source_run_id || '31986504169' }}
-      TARGET_SEASON: ${{ inputs.season || '2021' }}
-      TRAINING_END: ${{ inputs.training_end || '2021-08-01' }}
+      SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+      MLB_SOURCE_RUN_ID: ${{ inputs.mlb_source_run_id }}
+      TARGET_SEASON: ${{ inputs.season }}
+      TRAINING_END: ${{ inputs.training_end }}
 
     steps:
       - name: Check out repository
