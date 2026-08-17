@@ -128,6 +128,35 @@ def test_mlb_source_keeps_only_supported_terminal_core_contacts() -> None:
     assert metrics["richer_residual_fitted"] is False
 
 
+def test_mlb_source_labels_structured_sac_bunt_even_if_upstream_shape_looks_core() -> None:
+    # 2021 contains two real Savant rows whose structured result is
+    # sac_bunt_double_play and whose narrative says "ground bunts".  The older
+    # general-purpose profile normalizer's exact-word "bunt" regex does not turn
+    # those raw ground_ball shapes into BUNT, so Challenger 2 must still exclude
+    # them from the structured terminal event itself.
+    frame = pl.DataFrame(
+        [
+            _row(
+                game_pk=15,
+                at_bat_index=5,
+                pitch_number=2,
+                event="sac_bunt_double_play",
+                description="Batter ground bunts into a sacrifice double play.",
+                terminal=True,
+                contact=True,
+                bb_type="ground_ball",
+            )
+        ]
+    )
+    target, metrics = materialize_mlb_contact_value_target_contacts(frame)
+    assert target.is_empty()
+    assert metrics["core_terminal_contact_count"] == 1
+    assert metrics["unsupported_core_terminal_contact_count"] == 1
+    assert metrics["unsupported_terminal_status_counts_all_terminal_contacts"] == {
+        "unsupported_bunt": 1
+    }
+
+
 def test_mlb_source_rejects_2023_before_materialization() -> None:
     frame = pl.DataFrame(
         [
