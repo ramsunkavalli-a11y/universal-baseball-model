@@ -111,8 +111,8 @@ Proceed to 2023 confirmation only if all of the following hold on the three 2022
 2. Baseline 2 has no worse equal-fold mean Brier score than Baseline 1;
 3. Baseline 2 wins log loss in at least 2 of 3 folds;
 4. scored coverage is identical between the two models;
-5. the aggregate gain is not solely an MLB artifact: no non-MLB level with meaningful support may show a consistent reversal on both proper scores across at least 2 of 3 folds;
-6. calibration diagnostics do not show a new structural failure.
+5. the aggregate gain is not solely an MLB artifact: a non-MLB level is considered meaningfully supported when it contributes at least **1,000 future core events across the three development folds**; no such level may show Baseline 2 worse than Baseline 1 on both proper scores in at least 2 of 3 folds;
+6. all component calibration fits converge, and Baseline 2's equal-fold mean absolute calibration-intercept error and absolute calibration-slope error are each no more than **25% worse** than Baseline 1. Fixed-bin ECE is reported but is not a hard gate because the frozen-baseline calibration review already showed that ECE can move differently from intercept/slope calibration.
 
 If these conditions fail, Baseline 2 is not promoted and the frozen Baseline 1 remains the universal results-only baseline.
 
@@ -123,8 +123,9 @@ Confirmation passes only if:
 1. Baseline 2 retains lower equal-fold mean log loss than Baseline 1;
 2. Baseline 2 retains no worse equal-fold mean Brier score than Baseline 1;
 3. coverage remains identical;
-4. no material lower-level or component failure appears that reverses the interpretation of the aggregate result;
-5. calibration remains interpretable rather than materially degrading.
+4. for non-MLB levels with at least **1,000 future core events across the three confirmation folds**, no level shows Baseline 2 worse on both proper scores in at least 2 of 3 folds;
+5. all component calibration fits converge, and Baseline 2's equal-fold mean absolute calibration-intercept and slope errors are each no more than **25% worse** than Baseline 1;
+6. component diagnostics show no new broad failure that overturns the aggregate result.
 
 A tiny confirmation edge may still be rejected on simplicity grounds if it is unstable across folds or concentrated in one narrow stratum. Baseline 2 is not entitled to promotion merely because it has more history.
 
