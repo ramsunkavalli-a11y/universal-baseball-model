@@ -15,6 +15,7 @@ def _tracked() -> pl.DataFrame:
             "game_pk": [100, 100],
             "player_id": [10, 10],
             "at_bat_number": [1, 2],
+            "pitch_number": [4, 3],
             "launch_speed": [95.0, 101.0],
             "launch_angle": [10.0, 25.0],
             "sweet_spot": [True, True],
@@ -42,6 +43,7 @@ def test_minor_tracking_is_labeled_from_observed_certified_game_environment() ->
     )
 
     assert observed.height == 2
+    assert observed.get_column("pitch_number").to_list() == [4, 3]
     assert set(observed.get_column("source_family")) == {"MILB_SAVANT_TRACKED"}
     assert set(observed.get_column("source_capability_tier")) == {
         "MILB_SAVANT_TRACKED:2022:117:AAA"
@@ -71,6 +73,16 @@ def test_duplicate_identical_certified_rows_collapse_but_conflicting_environment
         reconcile_tracked_bbe_to_certified_environment(
             _tracked(),
             conflicting,
+            source_family="MILB_SAVANT_TRACKED",
+        )
+
+
+def test_duplicate_pitch_grain_tracking_fails_closed() -> None:
+    duplicated = pl.concat([_tracked(), _tracked().head(1)])
+    with pytest.raises(ValueError, match="pitch-grain"):
+        reconcile_tracked_bbe_to_certified_environment(
+            duplicated,
+            _certified(),
             source_family="MILB_SAVANT_TRACKED",
         )
 
