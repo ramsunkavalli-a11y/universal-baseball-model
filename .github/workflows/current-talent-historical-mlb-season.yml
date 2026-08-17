@@ -1,7 +1,7 @@
 name: Current Talent historical MLB season
 
 on:
-  # One-time bootstrap for the first 2021 live gate; remove after the run resolves.
+  # One-time retry using the preserved partial 2021 Savant cache; remove after success.
   push:
     branches:
       - source-certification-poc
@@ -21,6 +21,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   materialize:
@@ -46,6 +47,15 @@ jobs:
           tests/test_current_talent_mlb_evidence.py
           tests/test_current_talent_mlb_history.py
           tests/test_savant.py
+      - name: Seed preserved partial 2021 source cache
+        if: ${{ env.TARGET_SEASON == '2021' }}
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2021
+          path: .
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31983082041
+          github-token: ${{ github.token }}
       - name: Materialize historical MLB player-game evidence
         run: >-
           python scripts/materialize_current_talent_historical_mlb_game_evidence.py
