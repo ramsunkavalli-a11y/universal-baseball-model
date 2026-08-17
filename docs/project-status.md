@@ -19,157 +19,169 @@ This is the **start-here file for a new chat, coding agent, or contributor**. Re
 - Surface early errors rather than compounding them.
 - Heavy live-source/reuse workflows return to **manual-only after their gate passes**; deterministic tests stay in normal CI.
 - Keep **Performance**, **Current Talent**, **Projection**, and **Player Value / Overall Ranking** separate.
-- **Pause at meaningful project junctures to update this handoff before continuing.** Update after a major gate, a material model/architecture decision, or a changed recommended next batch.
+- Pause at meaningful project junctures to update this handoff before continuing.
 
 ## Current stage
 
-The project is in **chronological Current Talent model validation**. Source/data plumbing is no longer the active bottleneck.
+The **simple results-only Current Talent baseline is now frozen**. The selection/confirmation gate is complete.
 
-Implemented/certified foundations include:
+Frozen comparator: **`hl180_ps100_fitted`**
 
-1. reuse-first canonical data/provenance/identity architecture;
+- predictor recency half-life: **180 days**;
+- Baseline 1 empirical-Bayes prior strength: **100 effective core events**;
+- environment translation: **`fitted_translation`**;
+- Baseline 0 age-band width: **2.0 years**;
+- Baseline 0 minimum preferred age+level peers: **12**.
+
+The age-band / peer settings were held fixed during the first hyperparameter grid rather than independently optimized. They are frozen as part of the reproducible simple comparator, not claimed to be globally optimal.
+
+Detailed freeze decision: `docs/current-talent-simple-baseline-freeze.md`.
+
+**Do not retune this baseline while testing richer challengers.** A proposed change to these settings is itself a new challenger and must earn out-of-time value under the same chronological protocol.
+
+## What is already implemented / certified
+
+1. reuse-first canonical data, provenance, and identity architecture;
 2. production-shaped 2024 affiliated-MiLB batting Performance;
 3. certified 2021–2023 affiliated-MiLB Current Talent evidence;
 4. certified 2021–2023 MLB Current Talent evidence with official reconciliation;
-5. leakage-safe predictor snapshots and future targets;
-6. training-only MLB-anchored matched-transition environment translation candidate;
+5. leakage-safe predictor snapshots and 90-day future targets;
+6. training-only MLB-anchored matched-transition environment translation;
 7. exact Chadwick DOB → age-as-of enrichment;
 8. Baseline 0 / Baseline 1 results-only Current Talent estimators;
-9. proper future-environment scoring, calibration diagnostics, and controlled translation ablation.
+9. proper future-environment scoring, calibration diagnostics, and controlled translation ablation;
+10. nine-fold calibration review;
+11. predeclared 18-candidate chronological development grid on 2021–2022 only;
+12. selected-candidate confirmation on 2023 without 2023 reselection;
+13. explicit simple-baseline freeze.
 
-**No Current Talent estimator is frozen/promoted yet.**
+Source/data plumbing is no longer the active bottleneck for the simple Current Talent baseline.
 
-## Baseline definitions
+## Frozen baseline definitions
 
-Core batting profile: 12 components — BB/HBP, K, IFFB, and Pull/Center/Oppo × OFFB/LD/GB.
+Core batting profile: **12 components** — BB/HBP, K, IFFB, and Pull/Center/Oppo × OFFB/LD/GB.
 
-**Baseline 0 — `loo_age_level_population_prior_v1`**
+### Baseline 0 — `loo_age_level_population_prior_v1`
 
 - no player-specific recent Performance;
 - exact age-as-of + current unambiguous level;
 - leave-one-out age+level population prior;
-- candidate 2-year age band;
+- 2-year age band;
 - minimum 12 preferred age+level peers;
 - same-level then global fallback only when needed.
 
-**Baseline 1 — `translated_recency_empirical_bayes_v1`**
+### Baseline 1 — `translated_recency_empirical_bayes_v1`
 
 - season-to-date player core-profile evidence;
-- candidate 90-day recency half-life;
+- **180-day** recency half-life;
 - player×level evidence handled before multi-level pooling;
-- optional candidate level translation to MLB latent scale;
+- **fitted training-only level translation** to the MLB latent scale;
 - empirical-Bayes shrinkage toward B0;
-- candidate prior strength = 100 effective core events.
+- prior strength = **100 effective core events**.
 
-These remain candidate settings, not frozen hyperparameters.
+All other temporal, observation, scoring, target-horizon, identity, source-authority, and component rules remain governed by `docs/current-talent-validation-contract.md` and `docs/current-talent-baseline-selection-plan.md`.
 
-## Fixed-setting B1 vs B0 chronology
+## Selection gate — complete
 
-Lower is better. The same candidate settings were used in every fold below.
+The predeclared grid searched only:
 
-### Common July 15
+- half-life: 45 / 90 / 180 days;
+- prior strength: 50 / 100 / 200 effective core events;
+- translation: fitted vs zero offsets.
 
-| Cutoff | Future core events | B1-B0 log loss | B1-B0 Brier |
-|---|---:|---:|---:|
-| 2021-07-15 | 435,778 | **-0.013638** | **-0.003643** |
-| 2022-07-15 | 375,163 | **-0.017258** | **-0.004476** |
-| 2023-07-15 | 369,944 | **-0.017367** | **-0.004398** |
+Selection used only six development folds:
 
-Runs: 2021 `31995116901`; 2022/2023 `31995251526`.
+- 2021-07-15 / 2021-08-01 / 2021-09-01;
+- 2022-07-15 / 2022-08-01 / 2022-09-01.
 
-`2021-07-15` is the first tested 2021 date where all six levels have training-only translation support. `2021-07-01` correctly fails closed because no pre-cutoff `ROOKIE_COMPLEX` effect exists.
+Selected candidate: **`hl180_ps100_fitted`**.
 
-### Common Aug. 1
+Development summary:
 
-| Cutoff | Future core events | B1-B0 log loss | B1-B0 Brier | Fixed-strata wins | Component wins |
-|---|---:|---:|---:|---:|---:|
-| 2021-08-01 | 344,391 | **-0.015896** | **-0.004284** | 21/21 | 12/12 |
-| 2022-08-01 | 280,640 | **-0.018520** | **-0.004706** | 21/21 | 12/12 |
-| 2023-08-01 | 275,511 | **-0.018226** | **-0.004638** | 21/21 | 12/12 |
+- equal-fold mean B1 log loss: **2.255543**;
+- equal-fold mean B1 Brier: **0.869233**;
+- mean B1−B0 log loss: **-0.017598**;
+- mean B1−B0 Brier: **-0.004643**;
+- B1 proper-score wins vs B0: **6/6** folds on both metrics;
+- selected minus prior 90/100/fitted reference: **-0.000262** log loss / **-0.000133** Brier;
+- component wins vs B0: **72/72** log loss, **66/72** Brier;
+- stratum wins vs B0: **125/125** on both proper scores.
 
-Runs: 2021 `31993773737`; 2022/2023 `31994079021`.
+Detailed checkpoint: `docs/current-talent-development-selection-checkpoint.md`.
+Persisted selected candidate: `docs/current-talent-development-selected-candidate.json`.
 
-### Common Sep. 1 — late-season gate passed
+## 2023 confirmation gate — complete
 
-Run: **`31995542018`**.
+Only the preselected candidate plus the fixed 90/100/fitted reference were evaluated on the three 2023 folds. The full 18-candidate grid was **not** evaluated on 2023, and there was no 2023 reselection.
 
-| Cutoff | Future core events | B1-B0 log loss | B1-B0 Brier |
-|---|---:|---:|---:|
-| 2021-09-01 | 163,751 | **-0.018898** | **-0.004986** |
-| 2022-09-01 | 124,141 | **-0.020860** | **-0.005166** |
-| 2023-09-01 | 134,188 | **-0.018447** | **-0.004577** |
+Confirmation folds:
 
-The future-event sample is much smaller in September because affiliated seasons wind down inside the 90-day target horizon. That reduced opportunity volume is a coverage property and is reported explicitly; it is not treated as poor talent.
+- 2023-07-15;
+- 2023-08-01;
+- 2023-09-01.
 
-### Core Baseline 1 conclusion
+Confirmation summary:
 
-The B1 signal now survives **three seasons × three common calendar positions** (July 15, Aug. 1, Sep. 1), with unchanged settings. The player-specific recent-results + empirical-Bayes signal is therefore a robust baseline finding, not an Aug. 1 artifact.
+- equal-fold mean B1 log loss: **2.252313**;
+- equal-fold mean B1 Brier: **0.869653**;
+- mean B1−B0 log loss: **-0.018814**;
+- mean B1−B0 Brier: **-0.004777**;
+- B1 proper-score wins vs B0: **3/3** folds on both metrics;
+- selected minus fixed reference: **-0.000245** log loss / **-0.000105** Brier;
+- component wins vs B0: **36/36** log loss, **35/36** Brier;
+- stratum wins vs B0: **62/62** on both proper scores.
 
-This still does **not** freeze the exact half-life, prior strength, age-band width, peer threshold, or translation choice.
+Confirmation workflow run: **`31997270467`**.
 
-## Translation ablation
+Detailed checkpoint: `docs/current-talent-2023-confirmation-checkpoint.md`.
+Machine-readable result: `docs/current-talent-2023-confirmation-result.json`.
 
-Implementation:
+### Workflow bootstrap note
 
-- `src/universal_baseball/current_talent_ablation.py`
-- `scripts/materialize_current_talent_translation_ablation.py`
-- `tests/test_current_talent_ablation.py`
+The first 2023 confirmation run fired before the development-selection JSON had been committed and correctly failed its prerequisite check. The selection checkpoint was then committed by GitHub Actions, whose `GITHUB_TOKEN` commit did not trigger a second workflow. `.github/workflows/current-talent-2023-selected-confirmation.yml` now documents this chaining limitation; the explicit bootstrap run above passed end to end.
 
-Controlled ablation: replace fitted `clr_environment_effect` values with zero while leaving recency, B0 peer rules, B1 shrinkage, player/target coverage, and future scoring unchanged. B0 still knows current level through its peer prior.
+## Calibration guardrail
 
-### July 15 — B1 fitted translation minus zero offsets
+The nine-fold calibration review established that Baseline 1 materially improves calibration intercept/slope error versus Baseline 0, while its coarse fixed-bin ECE can be slightly worse. No post-hoc recalibration was applied.
 
-| Cutoff | Log loss delta | Brier delta |
-|---|---:|---:|
-| 2021-07-15 | **+0.000997** | **+0.000336** |
-| 2022-07-15 | **-0.000713** | **-0.000202** |
-| 2023-07-15 | **-0.000727** | **-0.000218** |
+For the **selected 180/100/fitted candidate**, combining its six development folds and three 2023 confirmation folds gives approximately:
 
-At the same July 15 date, fitted translation loses in 2021 and wins modestly in 2022/2023. The three-season event-weighted effect is essentially zero.
+- equal-fold mean absolute calibration-intercept error: **0.5513**;
+- equal-fold mean absolute calibration-slope error: **0.2010**;
+- equal-fold mean fixed-bin ECE: **0.00299**.
 
-### Aug. 1 — B1 fitted minus zero
+Known systematic defects remain visible and should become challenger targets rather than retrospective baseline patches:
 
-| Cutoff | Log loss delta | Brier delta |
-|---|---:|---:|
-| 2021-08-01 | **-0.000328** | +0.000003 |
-| 2022-08-01 | **-0.000838** | **-0.000246** |
-| 2023-08-01 | **-0.001093** | **-0.000263** |
+- **K**: mean-rate bias and calibration slopes generally above 1;
+- **LD/OFFB directional components**: slopes consistently below 1, indicating overly dispersed/extreme forecasts.
 
-Run: `31994550684`.
+Detailed review: `docs/current-talent-calibration-checkpoint.md`.
+Primary calibration workflow run: **`31996082936`**.
 
-### Sep. 1 — B1 fitted minus zero
+## Why the simple baseline is frozen
 
-| Cutoff | Log loss delta | Brier delta | Strata LL wins | Strata Brier wins | Component LL wins | Component Brier wins |
-|---|---:|---:|---:|---:|---:|---:|
-| 2021-09-01 | **-0.000624** | **-0.000158** | 15/21 | 14/21 | 5/12 | 8/12 |
-| 2022-09-01 | **-0.002478** | **-0.000742** | 19/20 | 18/20 | 5/12 | 12/12 |
-| 2023-09-01 | **-0.002026** | **-0.000577** | 16/21 | 17/21 | 7/12 | 8/12 |
+The predeclared freeze criteria are met:
 
-September translation effects are more favorable than July/August, but the earlier common-July instability still matters.
+- B1 beats B0 out of time on both proper scores;
+- the selected parameterization confirms on 2023 rather than reversing its development advantage;
+- no major evaluated stratum is catastrophically harmed;
+- candidate coverage is held constant during confirmation and no structural coverage failure appears;
+- calibration is imperfect but interpretable, with defects explicitly documented.
 
-### Translation decision
+Freeze decision: `docs/current-talent-simple-baseline-freeze.md`.
 
-- The much larger B1-vs-B0 gain is primarily **player-specific recent evidence + EB shrinkage**.
-- Fitted level translation is a smaller second-order effect.
-- Its aggregate benefit is usually favorable, especially later in-season, but its sign/magnitude is not stable enough across time/components to freeze it as required.
-- **Keep fitted and zero-offset translation variants alive for formal chronological model selection.**
-- Do not add a more complex translation merely to rescue the current one before the simple baseline is selected.
+## Governing Current Talent documents
 
-## Governing validation rules
+Read these in this order when working on the next Current Talent gate:
 
-`docs/current-talent-validation-contract.md` is authoritative.
+1. `docs/project-status.md` — current handoff;
+2. `docs/current-talent-validation-contract.md` — authoritative validation rules;
+3. `docs/current-talent-simple-baseline-freeze.md` — frozen comparator and decision boundary;
+4. `docs/current-talent-calibration-checkpoint.md` — calibration findings / known defects;
+5. `docs/current-talent-development-selection-checkpoint.md` — 2021–2022 selection evidence;
+6. `docs/current-talent-2023-confirmation-checkpoint.md` — held-out-for-grid confirmation evidence.
 
-Frozen rules include:
-
-- Current Talent = latent rate/profile ability now, conditional on opportunity;
-- predictor evidence strictly before cutoff;
-- environment effects training-only;
-- future outcomes scored in their realized environment;
-- primary horizon = next 90 calendar days;
-- zero future PA is not poor talent;
-- chronological / rolling-origin validation only;
-- proper scoring and calibration outrank correlation;
-- richer evidence must beat simple baselines out of time.
+Historical source and baseline checkpoints remain useful provenance, but do not reopen their closed gates without a concrete failure.
 
 ## Key implementation / workflow files
 
@@ -179,79 +191,46 @@ Frozen rules include:
 - `src/universal_baseball/current_talent_baselines.py`
 - `src/universal_baseball/current_talent_scoring.py`
 - `src/universal_baseball/current_talent_score_diagnostics.py`
-- `src/universal_baseball/current_talent_ablation.py`
-- `scripts/materialize_current_talent_baseline_validation.py`
-- `scripts/materialize_current_talent_translation_ablation.py`
-- `.github/workflows/current-talent-baseline-validation.yml`
-- `.github/workflows/current-talent-july-validation.yml`
-- `.github/workflows/current-talent-2021-july-probe.yml`
-- `.github/workflows/current-talent-july15-confirmation.yml`
-- `.github/workflows/current-talent-september-validation.yml`
+- `src/universal_baseball/current_talent_calibration.py`
+- `src/universal_baseball/current_talent_selection.py`
+- `scripts/materialize_current_talent_selection_grid.py`
+- `scripts/materialize_current_talent_2023_confirmation.py`
+- `.github/workflows/current-talent-baseline-selection-grid.yml`
+- `.github/workflows/current-talent-2023-selected-confirmation.yml`
 
-All completed live workflows above are **manual-only**.
+Completed live-source / heavy validation workflows should remain manual-only after their gates pass unless a new gate specifically requires them.
 
 ## Important boundaries / not complete
 
+The simple results-only baseline freeze does **not** complete Current Talent or the player-ranking system.
+
 Still unresolved:
 
-- multi-fold calibration stability across July 15 / Aug. 1 / Sep. 1;
-- formal model selection between fitted translation and zero offsets;
-- selected recency half-life;
-- selected EB prior strength;
-- selected age-band width / peer threshold;
+- Baseline 2 / richer process, tracking, or scouting inputs;
+- component-specific shrinkage or any proposed recalibration challenger;
 - final uncertainty model;
-- Baseline 2 / richer process-tracking-scouting inputs;
-- Projection, future aging/development, playing time/role, defense, WAR/value, or final ranking.
+- Projection / future aging and development;
+- playing time / role;
+- defense;
+- WAR / player-value conversion;
+- final cross-player ranking.
 
-The exact 200-PA player-aggregate diagnostic cap is not yet applied because the certified backbone is player-game aggregate. Do not invent within-game PA order to force it. This does not affect event-likelihood scoring, which correctly uses all eligible future events in the horizon.
+The exact 200-PA player-aggregate diagnostic cap is not applied because the certified backbone is player-game aggregate. Do not invent within-game PA order to force it. This does not affect event-likelihood scoring, which uses all eligible future events in the target horizon.
 
 ## Recommended next batch
 
-**Do not tune or add richer features yet.**
+**Do not retune the frozen simple baseline.**
 
-1. Build a reproducible **multi-fold calibration review** over the nine common July 15 / Aug. 1 / Sep. 1 folds, for B0/B1 and fitted/zero translation where available.
-2. Add calibration intercept/slope diagnostics required by the validation contract, not only reliability-bin ECE.
-3. Document whether B1's proper-score win is accompanied by acceptable calibration stability and which components are systematically over/under-confident.
-4. Then define a small **predeclared chronological model-selection grid** for recency half-life, EB prior strength, and translation choice. Use earlier seasons for selection and a later season for confirmation rather than tuning to all nine folds.
-5. Freeze the simple baseline only if proper scores and calibration justify it.
-6. Only after freeze test Baseline 2 or richer inputs.
+1. Define a small, predeclared **Baseline 2 / richer-evidence challenger contract** against `hl180_ps100_fitted` before implementing the challenger.
+2. Choose one evidence family or modeling addition at a time, favoring mature reusable public data/packages over new raw-source cleanup.
+3. Preserve the frozen chronological scoring protocol and eligible population where possible; require an out-of-time proper-score improvement before promoting richer complexity.
+
+Do not begin Projection, playing-time, defense, WAR, or final-ranking work inside this gate.
 
 ## If starting a new chat
 
 1. Read this file.
 2. Read `docs/current-talent-validation-contract.md`.
-3. Read `docs/current-talent-baseline-checkpoint.md`.
-4. Inspect current `source-certification-poc` head.
-5. Continue with the **multi-fold calibration review across July 15 / Aug. 1 / Sep. 1**. Do not tune hyperparameters or re-audit closed source/certification work first.
-
-<!-- BEGIN AUTO CURRENT TALENT DEVELOPMENT SELECTION -->
-## Development-grid candidate selected — awaiting 2023 confirmation
-
-The predeclared 18-candidate simple-baseline grid has been evaluated on **2021–2022 only**. Alternative grid configurations have not been evaluated on 2023.
-
-Preselected candidate: **`hl180_ps100_fitted`** — half-life **180 days**, prior strength **100**, translation **`fitted_translation`**.
-
-Development equal-fold mean B1 log loss: **2.255543**; Brier: **0.869233**.
-
-Versus the prior 90/100/fitted reference, selected-minus-reference mean log loss is **-0.000262** and Brier is **-0.000133**.
-
-Detailed checkpoint: `docs/current-talent-development-selection-checkpoint.md`.
-
-**Next gate:** evaluate this preselected candidate on the three 2023 folds only; compare to B0 and the existing 90/100/fitted reference. Do not run the full alternative grid on 2023 and do not reselect using 2023 if confirmation fails.
-<!-- END AUTO CURRENT TALENT DEVELOPMENT SELECTION -->
-
-<!-- BEGIN AUTO CURRENT TALENT 2023 CONFIRMATION -->
-## 2023 selected-candidate confirmation
-
-Preselected candidate **`hl180_ps100_fitted`** is **CONFIRMED** under the predeclared confirmation rule.
-
-2023 equal-fold mean B1 log loss: **2.252313**; Brier: **0.869653**.
-
-Mean B1−B0: **-0.018814 log loss / -0.004777 Brier**.
-
-Selected minus fixed-reference mean: **-0.000245 log loss / -0.000105 Brier**.
-
-The full 18-candidate grid was **not** evaluated on 2023. Detailed checkpoint: `docs/current-talent-2023-confirmation-checkpoint.md`.
-
-**Next gate:** Make the documented simple-baseline freeze decision from the predeclared development + confirmation evidence; do not add richer inputs first.
-<!-- END AUTO CURRENT TALENT 2023 CONFIRMATION -->
+3. Read `docs/current-talent-simple-baseline-freeze.md`.
+4. Inspect the current `source-certification-poc` head.
+5. Continue with the **Baseline 2 / richer-evidence challenger design**. Do not rerun calibration, reselect hyperparameters, evaluate the full grid on 2023, or re-audit closed source/certification work first.
