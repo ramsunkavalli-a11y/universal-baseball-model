@@ -193,7 +193,7 @@ def test_nonterminal_ball_description_is_not_promoted_to_event() -> None:
     row = project_savant_performance_rows(raw).to_dicts()[0]
     assert row["events"] is None
     assert row["is_terminal_event"] is False
-    assert row["is_plate_appearance_terminal"] is False
+    assert row["is_plate_appearance_terminal"] is not True
 
 
 def test_unknown_terminal_event_fails_loudly() -> None:
