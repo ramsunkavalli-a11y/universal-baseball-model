@@ -35,6 +35,7 @@ from universal_baseball.mlb_performance_materialization import classify_mlb_sava
 DEVELOPMENT_SOURCE_SEASONS = frozenset({2021, 2022})
 CONTACT_KEY = ("game_pk", "at_bat_index", "pitch_number")
 MLB_TERMINAL_OUTCOME_STATUS = "supported_structured_savant_event"
+BUNT_TERMINAL_EVENT_TYPES = frozenset({"sac_bunt", "sac_bunt_double_play"})
 
 
 def _require_columns(frame: pl.DataFrame, required: set[str], label: str) -> None:
@@ -180,15 +181,22 @@ def materialize_mlb_contact_value_target_contacts(
     structured_group_counts: dict[str, int] = {}
     for row in joined.iter_rows(named=True):
         event_type = _normalized_event_type(row.get("terminal_event_type"))
+        bunt = event_type in BUNT_TERMINAL_EVENT_TYPES
         special = (
             event_type in KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES
             or _is_field_error_interference(
                 event_type, row.get("terminal_result_description")
             )
         )
-        group = None if special else terminal_group_from_structured_event_type(event_type)
+        group = (
+            None
+            if (bunt or special)
+            else terminal_group_from_structured_event_type(event_type)
+        )
 
-        if special:
+        if bunt:
+            source_status = "unsupported_bunt"
+        elif special:
             source_status = "unsupported_special_result"
         elif group is None:
             source_status = "unsupported_structured_event"
