@@ -43,6 +43,8 @@ B2 passed 2022 development and fixed 2023 confirmation. Across the six folds it 
 
 Governing protocol: `docs/current-talent-batted-ball-quality-challenger-plan.md`.
 
+Source-semantic checkpoint: `docs/current-talent-batted-ball-source-semantics-checkpoint.md`.
+
 The first richer challenger adds only:
 
 1. 180-day recency-weighted mean exit velocity;
@@ -70,7 +72,21 @@ The corrected model-BBE contract is now frozen:
 
 This is a source-semantics/evidence-target correction, not a feature search. It happened before any 2022 richer score was observed and does not change the feature family, threshold, model form, chronology or promotion rules.
 
-Broad source-capability diagnostics remain intentionally wider and may include measured foul/contact rows. They now operate at pitch grain and call those rows **observations**, not model BBE.
+Broad source-capability diagnostics remain intentionally wider and may include measured foul/contact rows. They operate at pitch grain and call those rows **observations**, not model BBE.
+
+## Source-only feasibility under the corrected definition
+
+A reproducible source audit now exists at `scripts/audit_current_talent_batted_ball_source_semantics.py`.
+
+Using retained certified MLB source bytes only, with no richer fitting/scoring:
+
+- 2021-07-15: 65,578 corrected BBE; 497 hitters >=20; median 116 raw / 94.47 effective BBE;
+- 2022-07-15: 67,923 corrected BBE; 491 hitters >=20;
+- 2022-08-01: 77,516 corrected BBE; 504 hitters >=20;
+- 2022-09-01: 98,823 corrected BBE; 542 hitters >=20;
+- zero duplicate corrected pitch keys and zero multiple-result PAs at all audited cutoffs.
+
+These are **source/feature availability diagnostics only**, not evidence that EV/LA improves B2. Full details and certified artifact digests are in `docs/current-talent-batted-ball-source-semantics-checkpoint.md`.
 
 ## Source capability boundary
 
@@ -100,7 +116,7 @@ Known certified MLB source artifact runs:
 - 2022: `31988255280`
 - 2023: `31989561396`
 
-The 2021 artifact has already been retrieved in the current work session for source-only inspection; that does **not** constitute richer-model fitting or scoring.
+The 2021/2022 artifacts have been retrieved in the current work session for source-only inspection; that does **not** constitute richer-model fitting or scoring. Do not use 2023 confirmation data for candidate reselection.
 
 ## Richer model form — frozen before development
 
@@ -178,6 +194,8 @@ Confirmation uses the same hard conditions. Failure means retain B2; do not rese
   - manual tiny source probe;
   - routes through frozen helper;
   - retains raw bytes/provenance/capability diagnostics.
+- `scripts/audit_current_talent_batted_ball_source_semantics.py`
+  - source-only reproducible BBE semantics/availability audit from retained raw bytes.
 - `src/universal_baseball/current_talent_batted_ball_quality.py`
   - corrected result-producing non-bunt pitch-grain BBE projection;
   - 180-day EV/sweet-spot features;
@@ -192,7 +210,7 @@ Confirmation uses the same hard conditions. Failure means retain B2; do not rese
   - target-environment-aware training table;
   - fixed-penalty deterministic residual fitter.
 
-The manual workflow `.github/workflows/current-talent-savant-minors-probe.yml` now runs the deterministic richer-source/model tests before making the tiny live source probes.
+The manual workflow `.github/workflows/current-talent-savant-minors-probe.yml` now runs the deterministic richer-source/model tests, including the source-audit test, before making the tiny live source probes.
 
 ## Verification state
 
@@ -227,9 +245,10 @@ Read in this order:
 
 1. `docs/project-status.md`
 2. `docs/current-talent-batted-ball-quality-challenger-plan.md`
-3. `docs/current-talent-validation-contract.md`
-4. `docs/current-talent-results-only-baseline-freeze.md`
-5. `docs/current-talent-savant-minors-source-checkpoint.md`
-6. `docs/current-talent-richer-source-capability-inventory.md`
+3. `docs/current-talent-batted-ball-source-semantics-checkpoint.md`
+4. `docs/current-talent-validation-contract.md`
+5. `docs/current-talent-results-only-baseline-freeze.md`
+6. `docs/current-talent-savant-minors-source-checkpoint.md`
+7. `docs/current-talent-richer-source-capability-inventory.md`
 
 Do not redo B1/B2 selection/confirmation unless a concrete implementation failure is discovered.
