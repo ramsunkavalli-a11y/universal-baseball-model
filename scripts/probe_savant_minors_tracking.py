@@ -7,24 +7,25 @@ bytes, checks the fields needed for an EV/launch-angle challenger, and reconcile
 Savant game/batter identity to already-certified same-season Current Talent
 player-game evidence.
 
-The endpoint/query shape is being *proven by this probe*. Do not promote it to a
-production adapter merely because a community example suggests the URL.
+Future probes use the frozen tracked-only request helper from the richer challenger
+contract rather than maintaining a second request implementation here.
 """
 
 from __future__ import annotations
 
 import argparse
+from datetime import date
 import hashlib
 import io
 import json
 from pathlib import Path
-from urllib.parse import urlencode
 
 import polars as pl
 import requests
 
+from universal_baseball.current_talent_savant_minors import build_tracked_minor_savant_url
 
-SAVANT_MINORS_ROOT = "https://baseballsavant.mlb.com/statcast-search-minors/csv"
+
 PROBE_DATE = "2023-07-01"
 REQUIRED_FIELDS = {
     "game_date",
@@ -57,15 +58,8 @@ def _parse_args() -> argparse.Namespace:
 
 
 def _request_url(probe_date: str) -> str:
-    params = {
-        "all": "true",
-        "player_type": "batter",
-        "game_date_gt": probe_date,
-        "game_date_lt": probe_date,
-        "type": "details",
-        "minors": "true",
-    }
-    return SAVANT_MINORS_ROOT + "?" + urlencode(params)
+    parsed = date.fromisoformat(probe_date)
+    return build_tracked_minor_savant_url(parsed, parsed)
 
 
 def _fetch(url: str) -> tuple[bytes, str, int, str]:
@@ -141,9 +135,10 @@ def main() -> int:
     args = _parse_args()
     probe_date = str(args.probe_date)
     try:
-        season = int(probe_date[:4])
+        parsed_probe_date = date.fromisoformat(probe_date)
     except ValueError as exc:
-        raise ValueError(f"probe date must begin with a four-digit season: {probe_date}") from exc
+        raise ValueError(f"probe date must be ISO YYYY-MM-DD: {probe_date}") from exc
+    season = parsed_probe_date.year
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     request_url = _request_url(probe_date)
@@ -235,10 +230,11 @@ def main() -> int:
     }
 
     report = {
-        "report_schema_version": "0.2",
+        "report_schema_version": "0.3",
         "probe_date": probe_date,
         "season": season,
         "source": "Baseball Savant Minor League Statcast Search official CSV",
+        "request_semantics": "tracked_only_helper_v1",
         "request_url": request_url,
         "retrieved_url": retrieved_url,
         "status_code": status_code,
@@ -273,7 +269,7 @@ def main() -> int:
         "raw_column_names": raw.columns,
         "raw_response_file": str(raw_path),
         "decision_boundary": (
-            "This one-date probe certifies only endpoint/schema/identity feasibility. "
+            "This one-date probe certifies tracked-only endpoint/schema/identity feasibility. "
             "It does not certify full-season completeness, historical venue entitlement, "
             "or a richer Current Talent feature definition."
         ),
