@@ -18,8 +18,10 @@ def _ideal_projected_and_target() -> tuple[pl.DataFrame, pl.DataFrame]:
 
     for player_id, k_probability in enumerate(k_probabilities, start=1):
         other_probability = (1.0 - k_probability) / len(other_bins)
-        k_count = int(k_probability * opportunities)
-        other_count = int(other_probability * opportunities)
+        # Explicit rounding avoids a synthetic-fixture artifact such as
+        # 0.063636... * 11000 evaluating to 699.999999999 instead of 700.
+        k_count = int(round(k_probability * opportunities))
+        other_count = int(round(other_probability * opportunities))
         assert k_count + other_count * len(other_bins) == opportunities
         for core_bin in ALL_CORE_BINS:
             probability = k_probability if core_bin == "K" else other_probability
