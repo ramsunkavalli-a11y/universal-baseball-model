@@ -1,18 +1,21 @@
 """Source contracts for Current Talent contact-value challenger 2.
 
-This module is deliberately upstream of model evaluation.  It defines only:
+This module is deliberately upstream of model evaluation. It defines only:
 
 - the frozen MLB Stats API terminal-event taxonomy for the nine contact-value
   outcome groups;
 - a conservative narrative fallback for historical reusable MiLB PBP; and
 - deterministic terminal-PA projection from overlapping historical pitch rows.
 
-Structured official ``event_type`` is authoritative whenever available.  The
+Structured official ``event_type`` is authoritative whenever available. The
 historical armstjc release does not export the PA-level structured result code,
 so its repeated PA result description may be used only through the conservative
-fallback below.  In particular, narrative ``force out`` is *not* guessed into a
-frozen group here; a source-only official reconciliation must settle that
-mapping before the fallback can be promoted for those rows.
+fallback below. The historically ambiguous English result labels were settled by
+source-only official reconciliation across 2021-22 affiliated levels:
+
+- ``force out`` -> official ``force_out`` -> ``OUT``;
+- ``reaches on a fielder's choice out`` -> ``fielders_choice_out`` -> ``OUT``;
+- plain ``reaches on a fielder's choice`` -> ``fielders_choice`` -> ``FC_REACH``.
 
 No player scoring, future-outcome fitting, or 2023 evidence is accessed here.
 """
@@ -44,8 +47,11 @@ STRUCTURED_TERMINAL_GROUP: dict[str, str] = {
 }
 SUPPORTED_TERMINAL_GROUPS = frozenset(STRUCTURED_TERMINAL_GROUP.values())
 
-# These phrases are intentionally narrower than the exploratory audit.  A
+# These phrases are intentionally narrower than the exploratory audit. A
 # description can be used only when it identifies exactly one frozen group.
+# Source-only official reconciliation established the distinct FC/force-out
+# semantics; regexes therefore keep ``fielder's choice out`` separate from plain
+# ``fielder's choice`` rather than relying on pattern order.
 _NARRATIVE_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("HR", re.compile(r"\b(homers|home run|grand slam)\b", re.I)),
     ("3B", re.compile(r"\btriples\b", re.I)),
@@ -62,17 +68,19 @@ _NARRATIVE_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ),
     (
         "FC_REACH",
-        re.compile(r"\breaches(?: first base)? on (?:a )?fielder'?s choice\b", re.I),
+        re.compile(
+            r"\breaches(?: first base)? on (?:a )?fielder'?s choice(?! out)\b",
+            re.I,
+        ),
     ),
     (
         "OUT",
         re.compile(
-            r"\b(grounds out|flies out|flyout|lines out|lineout|pops out|pop out|fouls out|foul out)\b",
+            r"\b(grounds out|flies out|flyout|lines out|lineout|pops out|pop out|fouls out|foul out|force out|fielder'?s choice out)\b",
             re.I,
         ),
     ),
 )
-_FORCE_OUT = re.compile(r"\bforce out\b", re.I)
 _BUNT = re.compile(r"\bbunt\b", re.I)
 _SPECIAL_UNSUPPORTED = re.compile(
     r"\b(catcher interference|batter interference|fan interference|runner interference)\b",
@@ -90,7 +98,7 @@ class NarrativeOutcomeClassification:
 def terminal_group_from_structured_event_type(event_type: str | None) -> str | None:
     """Return the frozen nine-group target for an official PA event type.
 
-    Unsupported/special PA outcomes return ``None``.  Callers that require a
+    Unsupported/special PA outcomes return ``None``. Callers that require a
     supported contact target must fail closed or exclude them symmetrically.
     """
 
@@ -107,11 +115,8 @@ def classify_terminal_result_description(
 ) -> NarrativeOutcomeClassification:
     """Conservatively classify one historical PA result description.
 
-    ``force out`` is intentionally unresolved even if another broad lexical
-    pattern would otherwise match.  That phrase has a distinct structured MLB
-    event type in the frozen taxonomy and must be source-reconciled directly.
-    Multiple frozen-group matches are also unresolved rather than resolved by
-    pattern order.
+    Only source-reconciled lexical distinctions are accepted. Multiple frozen-
+    group matches remain unresolved rather than being resolved by pattern order.
     """
 
     text = "" if description is None else str(description).strip()
@@ -121,8 +126,6 @@ def classify_terminal_result_description(
         return NarrativeOutcomeClassification(None, "unsupported_bunt", ())
     if _SPECIAL_UNSUPPORTED.search(text):
         return NarrativeOutcomeClassification(None, "unsupported_special_result", ())
-    if _FORCE_OUT.search(text):
-        return NarrativeOutcomeClassification(None, "unresolved_force_out_description", ())
 
     matched = tuple(
         group for group, pattern in _NARRATIVE_PATTERNS if pattern.search(text)
@@ -162,8 +165,8 @@ def project_terminal_pa_descriptions(
     """Project overlapping reusable PBP to one terminal description per PA.
 
     The terminal pitch is the maximum structured ``pitch_number`` within
-    ``game_pk + at_bat_number``.  Exact duplicated release rows therefore do not
-    become extra events.  If terminal rows disagree on their nonblank PA result
+    ``game_pk + at_bat_number``. Exact duplicated release rows therefore do not
+    become extra events. If terminal rows disagree on their nonblank PA result
     description, projection fails instead of choosing by filename, retrieval
     time, or row order.
     """
