@@ -1,0 +1,53 @@
+name: Current Talent contact-value official terminal semantics
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "scripts/audit_current_talent_contact_value_official_terminal_semantics.py"
+      - "src/universal_baseball/current_talent_contact_value_source.py"
+      - "src/universal_baseball/official.py"
+      - "src/universal_baseball/event_types.py"
+      - ".github/workflows/current-talent-contact-value-official-terminal-semantics.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Compile terminal semantics audit
+        run: >-
+          python -m py_compile
+          src/universal_baseball/current_talent_contact_value_source.py
+          scripts/audit_current_talent_contact_value_official_terminal_semantics.py
+
+      - name: Reconcile terminal descriptions to official PA event types
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/audit_current_talent_contact_value_official_terminal_semantics.py
+
+      - name: Upload terminal semantics audit
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-official-terminal-semantics
+          path: reports/generated/current-talent-contact-value-official-terminal-semantics/
+          if-no-files-found: warn
+          retention-days: 14
