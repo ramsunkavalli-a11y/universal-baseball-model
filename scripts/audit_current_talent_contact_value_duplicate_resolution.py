@@ -26,7 +26,7 @@ LEVELS = ("aaa", "aa", "a+", "a", "rk")
 
 def _session() -> requests.Session:
     session = requests.Session()
-    session.headers["User-Agent"] = "universal-baseball-model-contact-value-duplicate-audit/0.1"
+    session.headers["User-Agent"] = "universal-baseball-model-contact-value-duplicate-audit/0.2"
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     if token:
         session.headers["Authorization"] = f"Bearer {token}"
@@ -45,6 +45,14 @@ def _audit(asset: ArmstjcAsset, root: Path) -> dict[str, object]:
     path = root / asset.name
     meta = download_file(asset.browser_download_url, path, attempts=4, timeout_seconds=240)
     frame = pl.read_csv(path, infer_schema_length=10_000, null_values=[""], ignore_errors=False)
+
+    # Some historical release snapshots predate the parser's league_id export.
+    # league_id is not part of the natural physical-pitch key and this audit is
+    # only asking whether repeated rows collapse or conflict. Preserve the
+    # metadata as explicitly unknown rather than inventing a league identifier.
+    if "league_id" not in frame.columns:
+        frame = frame.with_columns(pl.lit(None, dtype=pl.Int64).alias("league_id"))
+
     observations = project_armstjc_contact_observations(
         frame,
         source_asset=asset.name,
@@ -77,6 +85,7 @@ def _audit(asset: ArmstjcAsset, root: Path) -> dict[str, object]:
     return {
         "asset": asset.as_record(),
         "download": meta,
+        "league_id_present_in_raw": "league_id" in pl.scan_csv(path, infer_schema_length=1000).collect_schema().names(),
         "raw_observation_count": int(observations.height),
         "resolved_pitch_key_count": int(resolved.height),
         "duplicate_pitch_key_count": duplicate_key_count,
@@ -102,7 +111,7 @@ def main() -> int:
     assets = [_choose_asset(inventory, year=year, level=level) for year in YEARS for level in LEVELS]
     audited = [_audit(asset, work) for asset in assets]
     payload = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "gate": "current_talent_contact_value_duplicate_resolution_exploration",
         "model_scoring_performed": False,
         "confirmation_2023_accessed": False,
@@ -124,6 +133,7 @@ def main() -> int:
         lines += [
             f"## {a['year']} {a['filename_level']} — `{a['name']}`",
             "",
+            f"- Raw league_id present: {r['league_id_present_in_raw']}",
             f"- Raw observations: {r['raw_observation_count']}",
             f"- Resolved pitch keys: {r['resolved_pitch_key_count']}",
             f"- Duplicate pitch keys: {r['duplicate_pitch_key_count']}",
