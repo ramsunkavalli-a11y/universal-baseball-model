@@ -25,7 +25,7 @@ import polars as pl
 
 from universal_baseball.current_talent_contact_value import (
     ContactValueBaselineFit,
-    apply_contact_value_baseline,
+    predict_contact_value_baseline,
     build_contact_value_residual_player_training,
     fit_contact_value_residual_wls,
 )
@@ -137,7 +137,7 @@ def main() -> int:
     if paired.get_column("event_date").max() >= target_end:
         raise RuntimeError("residual training target exceeds exclusive 90-day window")
 
-    event_training = apply_contact_value_baseline(
+    event_training = predict_contact_value_baseline(
         paired,
         baseline,
         output_column="baseline_contact_value",
