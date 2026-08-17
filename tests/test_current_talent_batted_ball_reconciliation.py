@@ -64,7 +64,7 @@ def test_duplicate_identical_certified_rows_collapse_but_conflicting_environment
         [
             _certified(),
             _certified().with_columns(
-                pl.lit(118).alias("league_id"),
+                pl.lit(118, dtype=pl.Int64).alias("league_id"),
                 pl.lit("AA").alias("level_group"),
             ),
         ]
