@@ -2,36 +2,42 @@
 
 Last updated: 2026-08-17
 
-This is the **start-here file for a new chat, coding agent, or contributor**. Read it before reconstructing state from old commits or conversation history.
+This is the **start-here file for a new chat, coding agent, or contributor**.
 
 ## Active work
 
 - Repo: `ramsunkavalli-a11y/universal-baseball-model`
 - Working branch: `source-certification-poc`
 - Draft PR: **#1 — Build and certify universal baseball foundation layer**
-- `main` is used only for small manual-workflow dispatchers when needed; model/source development remains on `source-certification-poc`.
-- Inspect the current branch head before editing because parallel commits may have landed.
+- `main` is used only for small manual workflow dispatchers when needed; source/model development remains on `source-certification-poc`.
+- Inspect the current branch head before editing.
 
-## Execution rules
+## Working rules
 
 - Work in small batches of roughly 2–3 steps and verify before expanding.
-- Prefer mature public datasets/parsers/packages over rebuilding source cleanup.
-- Surface source/model errors early rather than compounding them.
+- Prefer mature public datasets/parsers/packages over rebuilding raw-source cleanup.
+- Surface source/model errors early.
 - Keep **Performance**, **Current Talent**, **Projection**, and **Player Value / Overall Ranking** separate.
 - Never retune frozen Baseline 2 to rescue a richer challenger.
-- Do not impute structurally unavailable tracking evidence merely to keep a richer model universal.
-- Keep live-source acquisition separate from deterministic model evaluation.
-- **Do not inspect 2023 richer performance for a challenger that failed 2022 development.**
+- Do not impute structurally unavailable tracking evidence.
+- Keep live-source capture separate from deterministic evaluation.
+- **Do not inspect 2023 richer performance unless the exact candidate first passes its frozen 2022 development gate.**
 
 ## Current stage
 
 The universal results-only **Current Talent Baseline 2 is frozen and remains the production comparator/fallback**.
 
-The first richer-evidence challenger — mean EV + sweet-spot share reshaping B2's conditional contact profile — has now completed its fixed 2022 development gate and **FAILED**.
+Richer challenger 1 completed its fixed 2022 development gate and **failed**. It is closed; no 2023 confirmation is authorized.
 
-There is no authorization to run its 2023 confirmation. The candidate is closed.
+Richer challenger 2 has now been **predeclared and frozen before any new 2022 score exists**:
 
-The next modeling batch is to predeclare a genuinely new richer challenger before any further 2022 evaluation. The governing first-challenger plan had already identified the natural alternative: treat observed batted-ball quality as a **separate contact-quality/value latent target**, rather than forcing EV/LA to predict the ten direction/trajectory contact probabilities.
+`baseline2_plus_ev_sweet_spot_contact_value_residual_v1`
+
+Governing plan:
+
+`docs/current-talent-batted-ball-contact-value-challenger-plan.md`
+
+The immediate gate is **2021 pre-cutoff Retrosheet contact-value-scale source feasibility**. Do not implement or run the 2022 challenger-2 evaluator until that source/value-scale gate passes and deterministic fitting primitives are tested.
 
 ## Frozen Current Talent Baseline 2
 
@@ -39,283 +45,251 @@ Method:
 
 `translated_multiseason_recency_empirical_bayes_v1`
 
-- up to **1,095 days** of eligible player results history;
-- **180-day** exponential recency half-life;
-- **100 effective core events** of empirical-Bayes prior strength;
+- up to 1,095 days of eligible results history;
+- 180-day exponential recency half-life;
+- empirical-Bayes prior strength 100 effective core events;
 - fitted training-only MLB-anchored environment translation;
-- frozen age + current-level Baseline 0 prior;
+- frozen age/current-level Baseline 0 prior;
 - frozen 12-component Current Talent profile;
-- 90-day future Current Talent target.
+- 90-day future target.
 
-B2 passed 2022 development and fixed 2023 confirmation. Across six folds it beat B1 **6/6 on log loss and 6/6 on Brier**.
+B2 beat B1 on all six frozen development/confirmation folds for both log loss and Brier.
 
-Key freeze: `docs/current-talent-results-only-baseline-freeze.md`.
+Key freeze:
 
-## Certified richer source layer — completed
+`docs/current-talent-results-only-baseline-freeze.md`
 
-The richer-source work is reusable even though challenger 1 failed.
+## Certified richer source layer — complete and reusable
 
-### Corrected tiny Minor Savant source gate
+### Minor Savant probe
 
 Authoritative run: **`32044627608`**
 
-Accepted reports:
+Accepted contract:
 
-- schema `0.5`;
+- report schema `0.5`;
 - `request_semantics = tracked_only_helper_v1`;
-- `canonical_model_bbe_contract = result_producing_non_bunt_pitch_grain_v1`;
+- canonical BBE contract `result_producing_non_bunt_pitch_grain_v1`;
 - certified-game denominator present;
-- 100% returned `game_pk + batter` identity reconciliation on all three probe dates;
+- 100% returned game+batter identity reconciliation on all three fixed probe dates;
 - nonzero canonical BBE.
 
-Source checkpoint:
+Checkpoint:
 
 `docs/current-talent-savant-minors-source-checkpoint.md`
 
 ### Historical tracking materialization V2
 
-Authoritative run: **`32046012977`**, attempt 2 — passed.
+Authoritative run: **`32046012977`**, attempt 2.
 
-Checkpoint contract:
+Checkpoint:
 
 - schema `0.3`;
 - `workflow_contract = full_2021_prior_season_v2`;
-- `tracking_source_epoch = 2021-01-01`;
+- source epoch `2021-01-01`;
+- full 2021 prior season through `2021-10-03`;
+- 2022 development history through `2022-08-31`;
 - `prior_season_2021_complete = true`;
-- 2021 capture through **2021-10-03**;
-- 2022 development capture through **2022-08-31**;
 - `development_tracking_ready = true`;
-- zero unmatched returned source games in the final accepted materialization.
+- zero unmatched returned source games.
 
 Combined canonical tracked BBE:
 
-- **2021: 142,201**
-- **2022: 164,689**
+- 2021: **142,201**
+- 2022: **164,689**
 
-Historical coverage remains capability-limited, not universal:
+Coverage remains capability-limited. In particular, do not convert 2022 `AAA` into a blanket tracked capability flag; league/venue coverage is materially uneven.
 
-- 2021 MiLB: tracked FSL / Single-A evidence;
-- 2022 MiLB: tracked FSL plus observed partial AAA evidence;
-- 2023 source capability is known from the probe but has **not** been used for richer modeling;
-- AA / High-A / other Single-A / Rookie Complex / DSL remain B2 fallback absent a separate source gate.
+## Source-contract corrections already resolved
 
-The 2022 AAA evidence remains materially uneven. Do not convert `AAA` into a blanket tracking-capability label.
+### Canonical tracked BBE
 
-## Important source corrections discovered during execution
-
-These were source-contract corrections made before accepting downstream model results, not outcome-driven feature tuning.
-
-### 1. Result-producing BBE semantics
-
-Raw Savant EV/LA also appears on foul contacts. Canonical richer model BBE is therefore:
-
-- valid game / batter / PA / pitch identity;
-- normalized Savant `type == X`;
+- valid game/batter/PA/pitch identity;
+- Savant `type == X`;
 - nonblank terminal `events`;
-- observed `launch_speed` + `launch_angle`;
-- explicit bunt narrative excluded;
-- key = `game_pk + player_id + at_bat_number + pitch_number`;
-- fail on duplicate pitch key or multiple result-producing BBE in one PA.
+- complete EV + launch angle;
+- explicit bunt exclusion;
+- key `game_pk + player_id + at_bat_number + pitch_number`;
+- duplicate pitch key or multiple result BBE in one PA fails closed.
 
-Broad source-completeness diagnostics remain wider and may include measured foul/contact observations.
+Broad source-completeness diagnostics may include measured foul/contact observations; model BBE do not.
 
-### 2. MLB game-coverage denominator
+### MLB game coverage
 
-Certified MLB player-game evidence legitimately carries both AL/NL league IDs within interleague games. Game-coverage diagnostics therefore collapse MLB games to one synthetic game-level MLB league bucket while preserving player-level AL/NL provenance everywhere else.
+Interleague games legitimately carry both AL/NL player-level league IDs. Game-coverage diagnostics collapse MLB to one game-level MLB bucket while player-level league provenance remains intact elsewhere. MiLB ambiguity still fails closed.
 
-MiLB game/league ambiguity still fails closed.
+### MiLB regular-season scope
 
-### 3. MiLB regular-season request scope
+The first full 2021 capture revealed exactly 134 otherwise-valid BBE from three `game_type = W` postseason/championship games. Historical Minor Savant requests now include `hfGT=R|`, and the capture fails if returned rows are not regular-season type `R`.
 
-The initial full-season 2021 capture returned 134 otherwise-valid BBE from exactly three `game_type = W` postseason/championship games that were not in the certified regular-season Current Talent universe.
+## Richer challenger 1 — CLOSED / REJECTED
 
-The official/reused Minor Savant request semantics now explicitly include:
+Method:
 
-`hfGT=R|`
+`baseline2_plus_ev_sweet_spot_contact_residual_v1`
 
-The capture also fails closed if the returned CSV contains a non-`R` game type.
-
-## First richer challenger — CLOSED / REJECTED
-
-Governing design:
-
-`docs/current-talent-batted-ball-quality-challenger-plan.md`
+Development workflow run: **`32053829482`**
 
 Persisted result:
 
 - `docs/current-talent-batted-ball-development-checkpoint.md`
 - `docs/current-talent-batted-ball-development-result.json`
 
-Development workflow run: **`32053829482` — success as an execution, failed as a model gate.**
+Frozen features were 180-day weighted mean EV + 8–32 degree sweet-spot share, >=20 tracked BBE, fixed L2 0.01, 2021-07-15 training only, and 2022-07-15 / 08-01 / 09-01 development folds.
 
-### Frozen candidate
-
-Comparator:
-
-`translated_multiseason_recency_empirical_bayes_v1`
-
-Challenger:
-
-`baseline2_plus_ev_sweet_spot_contact_residual_v1`
-
-Features:
-
-1. 180-day recency-weighted mean exit velocity;
-2. 180-day recency-weighted sweet-spot share, launch angle 8–32° inclusive.
-
-Application:
-
-- only the ten conditional non-bunt contact bins could move;
-- BB/HBP and K remained exactly B2;
-- missing/ineligible tracking returned exact B2;
-- primary richer eligibility >=20 complete tracked BBE;
-- L2 fixed at 0.01;
-- standardization + residual fit from 2021-07-15 only;
-- fixed development folds 2022-07-15 / 08-01 / 09-01;
-- no 2023 input entered the evaluator.
-
-### Development result
-
-Equal-fold mean proper scores:
+Equal-fold means:
 
 | Model | Log loss | Brier |
 |---|---:|---:|
 | B2 | 2.267336438 | 0.872739291 |
-| EV/SS richer | 2.267363114 | 0.872744733 |
+| richer 1 | 2.267363114 | 0.872744733 |
 
-Richer minus B2:
+Richer 1 was worse on both means and won log loss only 1/3 folds.
 
-- log loss: **+0.000026676** — worse;
-- Brier: **+0.000005442** — worse;
-- richer log-loss fold wins: **1/3**.
+Any-observed-MiLB cohort also worsened. Exact tier `MILB_SAVANT_TRACKED:2022:117:AAA` had 21,520 future core events and was worse on both log loss and Brier in 3/3 folds, triggering the frozen transport failure rule.
 
-Fold log-loss deltas, richer minus B2:
+Calibration and optimizer checks passed, so this was a predictive/transport rejection rather than a pipeline failure.
 
-- 2022-07-15: +0.000094
-- 2022-08-01: +0.000085
-- 2022-09-01: -0.000099
+**Do not tune or rerun this candidate and do not create its 2023 confirmation.**
 
-### Non-MLB transport
+## Richer challenger 2 — FROZEN, NOT YET SCORED
 
-Any-observed-MiLB-evidence cohort:
+Governing plan:
 
-- future core events: **168,030**;
-- equal-fold mean log-loss delta: **+0.000038462**;
-- required improvement: **FAIL**.
+`docs/current-talent-batted-ball-contact-value-challenger-plan.md`
 
-The exact capability tier `MILB_SAVANT_TRACKED:2022:117:AAA` had **21,520** future core events and was worse on both log loss and Brier in **3/3 folds**, triggering the predeclared transport failure rule.
+Method label:
 
-### Calibration
+`baseline2_plus_ev_sweet_spot_contact_value_residual_v1`
 
-The candidate did **not** fail because of broken fitting/calibration:
+### Interpretation
 
-- all required calibration fits converged;
-- intercept guardrail passed;
-- slope guardrail passed;
-- scored coverage matched exactly.
+B2's 12-component probability vector remains unchanged. The new candidate tests whether the same observed EV + sweet-spot features predict a **separate scalar contact-value residual after conditioning on contact shape and level**.
 
-Training fit also converged and improved its 2021 training contact objective. The problem is lack of held-out 2022 transport/predictive gain.
+This is a new candidate, not a repair of challenger 1.
 
-### Decision
+### Frozen features
 
-Retain B2. Close `baseline2_plus_ev_sweet_spot_contact_residual_v1`.
+- 180-day recency-weighted mean EV;
+- 180-day recency-weighted sweet-spot share, LA 8–32 degrees;
+- >=20 complete canonical tracked BBE;
+- source epoch `2021-01-01`;
+- no imputation and no new feature search.
 
-**Do not create or run a 2023 confirmation workflow for this candidate. Do not tune its threshold, L2, feature definitions, or contact-bin residual after seeing this result.**
+### Frozen terminal groups
 
-## Interpretation of challenger 1 failure
+- `1B`
+- `2B`
+- `3B`
+- `HR`
+- `ROE`
+- `FC_REACH`
+- `SF`
+- `MULTI_OUT`
+- `OUT`
 
-The narrow hypothesis that mean EV + sweet-spot share should improve Current Talent by predicting a hitter's future **direction/trajectory contact mix** was not supported.
+Bunts and unsupported/special outcomes are outside the target. Mapping must fail closed before scoring.
 
-That does **not** show that EV/LA has no talent signal. The feature family is more naturally connected to **damage/value conditional on contact** than to whether future contact lands in Pull/Center/Oppo × GB/LD/OFFB bins.
+### Frozen MLB-scale value table
 
-Importantly, this alternative target was named in the governing challenger plan before the development result was observed:
+Use Retrosheet 2021 MLB regular-season state transitions **strictly before 2021-07-15**:
 
-> if the narrow contact-profile test fails, a later challenger may test a separate contact-quality/value latent target rather than silently changing the first protocol.
+1. estimate the project's canonical 24-state run-expectancy matrix from that pre-cutoff sample;
+2. attach contextual RE24;
+3. take event-weighted mean RE24 within each frozen terminal group;
+4. freeze those nine group values for all 2022 development folds.
 
-That is the recommended next model family.
+Actual per-event RE24 is not treated as player talent; RE24 is used only to create a context-neutral terminal-outcome value scale.
 
-## Next challenger boundary — design before code
+### Frozen conditional comparator
 
-The next candidate should reuse the already-certified EV/LA source layer but be a **new predeclared model**, not a rescue of challenger 1.
+At each snapshot, fit pre-cutoff-only additive OLS:
 
-Recommended direction:
+`terminal_value ~ contact_bin + level_group`
 
-**B2 + observed batted-ball contact-value residual**
+- reference bin `IFFB`;
+- reference level `MLB`;
+- intercept;
+- no interactions, player terms, shrinkage, regularization or search.
 
-Conceptually:
+This is a controlled evaluation baseline, not a replacement for B2.
 
-- B2 remains the universal results-only Current Talent profile and exact fallback;
-- tracked EV/LA is used only for hitters with sufficient observed pre-cutoff evidence;
-- richer evidence estimates a separate player contact-quality/value latent term;
-- do **not** force EV/LA to alter BB/HBP, K, or the ten directional contact probabilities;
-- do not use xwOBA/barrel/hard-hit composites in the first version;
-- reuse raw EV + LA and the existing certified contextual Performance/run-value machinery where possible;
-- preserve target-environment handling and explicit MLB/MiLB capability reporting;
-- evaluate incrementally against B2 on a predeclared future value target and, only if justified, define how that scalar later feeds Player Value / Overall Ranking.
+### Frozen richer fit
 
-Before implementation, freeze:
+Training snapshot: `2021-07-15` only.
 
-1. exact future contact-value target;
-2. how environment/context is removed so the target represents player contact quality rather than league/park circumstance;
-3. whether the richer term is residualized against B2's predicted contact mix/bin values or modeled independently;
-4. minimum tracked-BBE threshold;
-5. feature family — initially mean EV + sweet-spot only unless a new feature search is explicitly registered;
-6. training chronology and fixed regularization;
-7. primary proper loss / calibration metric;
-8. non-MLB transport guardrail;
-9. production semantics: separate Current Talent dimension vs any later Player Value use.
+`player_contact_value_residual = beta_EV * z_EV + beta_SS * z_SS`
 
-Do **not** evaluate another candidate on 2022 until this contract is committed.
+- no intercept;
+- no interactions;
+- no regularization/search;
+- player-weighted least squares with weight = supported future target contacts;
+- finite full-rank solution required.
 
-## Reusable implementation from challenger 1
+Evaluate unchanged on 2022-07-15 / 08-01 / 09-01.
 
-Keep and reuse unless a concrete bug is found:
+Primary score is event-weighted MSE; MAE is the secondary guardrail. The full promotion and MiLB transport rules are frozen in the challenger plan.
 
-- `src/universal_baseball/current_talent_savant_minors.py`
-- `src/universal_baseball/current_talent_batted_ball_quality.py` for canonical BBE + feature construction
-- `src/universal_baseball/current_talent_batted_ball_source_diagnostics.py`
-- `src/universal_baseball/current_talent_batted_ball_game_coverage.py`
-- `src/universal_baseball/current_talent_batted_ball_reconciliation.py`
-- `src/universal_baseball/current_talent_batted_ball_materialization.py`
-- `src/universal_baseball/current_talent_batted_ball_capability.py`
-- historical tracking materialization artifact from run `32046012977`
-- certified 2021/2022 results evidence already used by B2
-- existing environment translation / calibration / Performance-bin value infrastructure where it fits the new target.
+**No 2022 challenger-2 score exists yet. No 2023 data may enter.**
 
-Do not reuse the rejected 20-coefficient conditional-contact residual as the new model form merely because the code exists.
+## Retrosheet feasibility implementation now in progress
 
-## Workflows
+Retrosheet's parsed play table already contains the exact narrow surface needed for the value-scale gate: date/game type, PA result flags, BIP/bunt flags, and explicit pre/post base-out states. The repo now has a chronology-aware projection rather than parsing raw Retrosheet event strings.
 
-Manual dispatchers currently exposed on `main`:
+Implemented:
 
-- `Current Talent Minor League Savant probe`
-- `Current Talent batted-ball tracking materialization v2`
-- `Current Talent batted-ball richer development`
+- `src/universal_baseball/retrosheet.py`
+  - pre-cutoff regular-season contact-value transition projection;
+  - frozen nine-group mapping from parsed outcome flags;
+  - unsupported target contacts remain visible/fail-closed;
+- `tests/test_retrosheet.py`
+  - cutoff and game-type checks;
+  - frozen group mapping checks;
+  - unsupported and bunt handling;
+- `scripts/audit_current_talent_contact_value_scale.py`
+  - downloads only the public 2021 Retrosheet parsed-play archive;
+  - uses no 2022/2023 input;
+  - requires all 24 states;
+  - requires zero unsupported target contacts and complete RE24 coverage;
+  - emits the frozen nine-value table only on success;
+  - performs no player/model scoring.
 
-They explicitly check out `source-certification-poc` where appropriate.
+Manual dispatcher exposed on `main`:
 
-The development workflow is now historical evidence for challenger 1. Do not rerun it with altered candidate settings under the same method label.
+`Current Talent contact-value scale audit`
+
+## Reuse inventory for challenger 2
+
+Prefer:
+
+- existing Retrosheet state-transition adapter and `run_expectancy.py`;
+- existing B2/Performance core contact-bin classification;
+- public `armstjc/milb-data-repository` historical 2021/2022 PBP assets rather than rebuilding MiLB raw-source cleanup;
+- tracking materialization run `32046012977` for EV/LA features and capability provenance;
+- existing certified 2021/2022 Current Talent results evidence;
+- current Performance bin-value/state logic where semantics match.
+
+Do not reuse challenger 1's rejected 20-coefficient contact-probability residual as challenger 2's model form.
 
 ## Exact next batch
 
-Keep this small.
-
-1. **Design and commit the second richer challenger contract** around a separate contact-quality/value latent target, reusing existing Performance/run-value work rather than inventing a new outcome definition unnecessarily.
-2. Inspect the existing Performance-bin contextual RE24/value machinery and the Current Talent scoring boundary to choose the narrowest defensible future target and residualization.
-3. Only after that contract is frozen, implement deterministic training/scoring code and tests. Do not touch 2023.
+1. Run and inspect **Current Talent contact-value scale audit**. If it fails, diagnose source/mapping coverage before changing the frozen target contract.
+2. If the scale gate passes, persist its exact nine values + source digest and implement deterministic additive `contact_bin + level_group` OLS plus two-feature no-intercept weighted residual fitting and tests.
+3. Only after those deterministic tests pass, build the offline 2022 challenger-2 evaluator. **Do not touch 2023.**
 
 ## Governing docs for a new chat
 
 Read in this order:
 
 1. `docs/project-status.md`
-2. `docs/current-talent-batted-ball-development-checkpoint.md`
-3. `docs/current-talent-batted-ball-development-result.json`
-4. `docs/current-talent-batted-ball-quality-challenger-plan.md`
-5. `docs/current-talent-batted-ball-development-execution-contract.md`
-6. `docs/current-talent-batted-ball-tracking-history-contract.md`
-7. `docs/current-talent-savant-minors-source-checkpoint.md`
-8. `docs/current-talent-results-only-baseline-freeze.md`
-9. `docs/current-talent-validation-contract.md`
+2. `docs/current-talent-batted-ball-contact-value-challenger-plan.md`
+3. `docs/current-talent-batted-ball-development-checkpoint.md`
+4. `docs/current-talent-batted-ball-development-result.json`
+5. `docs/current-talent-batted-ball-quality-challenger-plan.md`
+6. `docs/current-talent-batted-ball-development-execution-contract.md`
+7. `docs/current-talent-batted-ball-tracking-history-contract.md`
+8. `docs/current-talent-savant-minors-source-checkpoint.md`
+9. `docs/current-talent-results-only-baseline-freeze.md`
+10. `docs/current-talent-validation-contract.md`
 
-Do not redo B1/B2 selection or challenger-1 development unless a concrete implementation failure is discovered.
+Do not redo B1/B2 selection or challenger-1 development absent a concrete implementation bug.
