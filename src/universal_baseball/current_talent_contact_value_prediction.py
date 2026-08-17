@@ -18,8 +18,7 @@ import polars as pl
 from universal_baseball.current_talent_contact_value import (
     ContactValueBaselineFit,
     ContactValueResidualFit,
-    apply_contact_value_baseline,
-    apply_contact_value_residual,
+    predict_contact_value_baseline,
 )
 from universal_baseball.current_talent_contact_value_evidence import (
     CONTACT_VALUE_TARGET_KEY,
@@ -58,16 +57,17 @@ def materialize_contact_value_prediction_geometry(
         raise ValueError("paired contact-value prediction surface contains fallback rows")
 
     expected_keys = paired_future_contacts.select(key_columns).sort(key_columns)
-    scored = apply_contact_value_baseline(
+    scored = predict_contact_value_baseline(
         paired_future_contacts,
         baseline_fit,
         output_column="comparator_contact_value_prediction",
-    )
-    scored = apply_contact_value_residual(
-        scored,
-        residual_fit,
-        output_column="player_contact_value_residual_prediction",
-        applies_column="contact_value_residual_applies",
+    ).with_columns(
+        (
+            residual_fit.beta_mean_exit_velocity * pl.col("z_mean_exit_velocity")
+            + residual_fit.beta_sweet_spot_share * pl.col("z_sweet_spot_share")
+        )
+        .cast(pl.Float64)
+        .alias("player_contact_value_residual_prediction")
     ).with_columns(
         (
             pl.col("comparator_contact_value_prediction")
