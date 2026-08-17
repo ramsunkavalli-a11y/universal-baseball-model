@@ -17,6 +17,7 @@ This is the **start-here file for a new chat, coding agent, or contributor**. Re
 - Surface early errors rather than compounding them.
 - Heavy live-source/reuse workflows return to **manual-only after their gate passes**; deterministic tests belong in normal CI.
 - Keep **Performance**, **Current Talent**, **Projection**, and **Player Value / Overall Ranking** separate until their contracts justify combination.
+- **Pause at meaningful project junctures to update repository documentation before continuing.** At minimum, refresh this file after a major gate passes, a material modeling/architecture decision is frozen, or the recommended next batch changes. The goal is that a new chat can resume from the repo without rediscovering conversation context.
 
 ## Current project stage
 
