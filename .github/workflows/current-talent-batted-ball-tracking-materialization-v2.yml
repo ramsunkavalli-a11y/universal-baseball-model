@@ -1,0 +1,250 @@
+name: Current Talent batted-ball tracking materialization v2
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_probe_run_id:
+        description: "Successful corrected Minor Savant probe run (report schema 0.5)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          ref: source-certification-poc
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify deterministic richer-source contracts
+        run: >-
+          python -m pytest
+          tests/test_current_talent_savant_minors.py
+          tests/test_current_talent_savant_minors_capture.py
+          tests/test_current_talent_batted_ball_quality.py
+          tests/test_current_talent_batted_ball_source_diagnostics.py
+          tests/test_current_talent_batted_ball_reconciliation.py
+          tests/test_current_talent_batted_ball_materialization.py
+          tests/test_current_talent_batted_ball_capability.py
+          tests/test_current_talent_batted_ball_development_contract.py
+
+      - name: Compile source materialization tools
+        run: >-
+          python -m py_compile
+          scripts/capture_current_talent_savant_minors_tracking.py
+          scripts/materialize_current_talent_tracked_bbe_from_raw.py
+          scripts/combine_current_talent_tracked_bbe.py
+
+      - name: Download corrected tiny-source probe artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-savant-minors-probe-*
+          path: reports/generated/current-talent-batted-ball-tracking-gate/probe
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: ${{ inputs.source_probe_run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Require corrected probe contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("reports/generated/current-talent-batted-ball-tracking-gate/probe")
+          reports = sorted(root.rglob("report.json"))
+          if len(reports) != 3:
+              raise SystemExit(f"expected 3 corrected probe reports, found {len(reports)}")
+          observed = {}
+          for path in reports:
+              report = json.loads(path.read_text())
+              season = int(report["season"])
+              if report.get("report_schema_version") != "0.5":
+                  raise SystemExit(f"probe {season} is not corrected schema 0.5")
+              if report.get("request_semantics") != "tracked_only_helper_v1":
+                  raise SystemExit(f"probe {season} did not use frozen tracked-only request helper")
+              if report.get("canonical_model_bbe_contract") != "result_producing_non_bunt_pitch_grain_v1":
+                  raise SystemExit(f"probe {season} lacks corrected model-BBE contract")
+              coverage = report.get("certified_game_tracking_coverage") or {}
+              if int(coverage.get("certified_game_count", 0)) <= 0:
+                  raise SystemExit(f"probe {season} lacks certified-game coverage denominator")
+              if int(report.get("canonical_model_bbe_count", 0)) <= 0:
+                  raise SystemExit(f"probe {season} produced no canonical model BBE")
+              observed[season] = str(path)
+          if set(observed) != {2021, 2022, 2023}:
+              raise SystemExit(f"corrected probe seasons mismatch: {sorted(observed)}")
+          Path("reports/generated/current-talent-batted-ball-tracking-gate/probe_validation.json").write_text(
+              json.dumps({"source_probe_run_id": "${{ inputs.source_probe_run_id }}", "reports": observed}, indent=2) + "\n"
+          )
+          PY
+
+      - name: Download certified 2021 MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: ct-validation-game-evidence-2021-*
+          path: reports/generated/current-talent-batted-ball-tracking-inputs/2021/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31980820797"
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2022 MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-historical-milb-full-season-*
+          path: reports/generated/current-talent-batted-ball-tracking-inputs/2022/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31971662070"
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2021 MLB evidence and retained Savant cache
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2021
+          path: reports/generated/current-talent-batted-ball-tracking-inputs/2021/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31986504169"
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2022 MLB evidence and retained Savant cache
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2022
+          path: reports/generated/current-talent-batted-ball-tracking-inputs/2022/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31988255280"
+          github-token: ${{ github.token }}
+
+      - name: Materialize retained MLB tracking
+        shell: bash
+        run: |
+          set -euo pipefail
+          for season in 2021 2022; do
+            input_root="reports/generated/current-talent-batted-ball-tracking-inputs/${season}/mlb"
+            raw_root="$(find "$input_root" -type d -path '*/raw/savant' -print -quit)"
+            if [[ -z "$raw_root" ]]; then
+              echo "No retained MLB raw/savant directory for ${season}" >&2
+              exit 1
+            fi
+            python scripts/materialize_current_talent_tracked_bbe_from_raw.py \
+              --raw-root "$raw_root" \
+              --certified-evidence-root "$input_root" \
+              --season "$season" \
+              --source-family MLB_SAVANT \
+              --output-dir "reports/generated/current-talent-batted-ball-tracking-materialization/${season}/mlb"
+          done
+
+      - name: Capture full tracked 2021 MiLB prior-season history
+        run: >-
+          python scripts/capture_current_talent_savant_minors_tracking.py
+          --certified-milb-root reports/generated/current-talent-batted-ball-tracking-inputs/2021/milb
+          --season 2021
+          --output-dir reports/generated/current-talent-batted-ball-tracking-materialization/2021/milb
+
+      - name: Capture tracked 2022 MiLB development history
+        run: >-
+          python scripts/capture_current_talent_savant_minors_tracking.py
+          --certified-milb-root reports/generated/current-talent-batted-ball-tracking-inputs/2022/milb
+          --season 2022
+          --end-date 2022-08-31
+          --output-dir reports/generated/current-talent-batted-ball-tracking-materialization/2022/milb
+
+      - name: Require complete 2021 prior-season MiLB capture
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("reports/generated/current-talent-batted-ball-tracking-materialization/2021/milb/report.json")
+          report = json.loads(path.read_text())
+          if report.get("report_schema_version") != "0.4":
+              raise SystemExit("2021 MiLB capture lacks current game-coverage-aware report schema")
+          if report.get("capture_end_date") != report.get("certified_game_date_end"):
+              raise SystemExit(
+                  f"2021 MiLB prior-season history is truncated: capture={report.get('capture_end_date')} "
+                  f"certified_end={report.get('certified_game_date_end')}"
+              )
+          if report.get("canonical_model_bbe_contract") != "result_producing_non_bunt_pitch_grain_v1":
+              raise SystemExit("2021 MiLB capture lacks corrected model-BBE contract")
+          if "certified_game_tracking_coverage" not in report:
+              raise SystemExit("2021 MiLB capture lacks certified-game coverage diagnostics")
+          print(json.dumps(report["certified_game_tracking_coverage"], indent=2))
+          PY
+
+      - name: Combine per-season MLB and MiLB tracking
+        shell: bash
+        run: |
+          set -euo pipefail
+          for season in 2021 2022; do
+            python scripts/combine_current_talent_tracked_bbe.py \
+              --season "$season" \
+              --mlb-parquet "reports/generated/current-talent-batted-ball-tracking-materialization/${season}/mlb/reconciled_tracked_bbe_${season}_mlb_savant.parquet" \
+              --milb-parquet "reports/generated/current-talent-batted-ball-tracking-materialization/${season}/milb/reconciled_tracked_bbe_${season}_milb_savant_tracked.parquet" \
+              --output-dir "reports/generated/current-talent-batted-ball-tracking-materialization/${season}/combined"
+          done
+
+      - name: Write corrected source checkpoint summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import polars as pl
+
+          root = Path("reports/generated/current-talent-batted-ball-tracking-materialization")
+          report_2021 = json.loads((root / "2021/milb/report.json").read_text())
+          report_2022 = json.loads((root / "2022/milb/report.json").read_text())
+          output = {
+              "report_schema_version": "0.3",
+              "gate": "current_talent_batted_ball_tracking_materialization",
+              "workflow_contract": "full_2021_prior_season_v2",
+              "source_probe_run_id": "${{ inputs.source_probe_run_id }}",
+              "tracking_source_epoch": "2021-01-01",
+              "prior_season_2021_complete": report_2021["capture_end_date"] == report_2021["certified_game_date_end"],
+              "development_capture_end_dates": {
+                  "2021": report_2021["capture_end_date"],
+                  "2022": report_2022["capture_end_date"],
+              },
+              "canonical_model_bbe_contract": "result_producing_non_bunt_pitch_grain_v1",
+              "development_tracking_ready": True,
+              "seasons": {},
+          }
+          if output["prior_season_2021_complete"] is not True:
+              raise SystemExit("2021 prior-season tracking is not complete through the certified season end")
+          for season in (2021, 2022):
+              path = root / str(season) / "combined" / f"reconciled_tracked_bbe_{season}.parquet"
+              frame = pl.read_parquet(path)
+              output["seasons"][str(season)] = {
+                  "parquet": str(path),
+                  "model_bbe": frame.height,
+                  "players": frame.get_column("player_id").n_unique(),
+                  "games": frame.get_column("game_pk").n_unique(),
+                  "source_families": sorted(frame.get_column("source_family").unique().to_list()),
+                  "first_game_date": str(frame.get_column("game_date").min()),
+                  "last_game_date": str(frame.get_column("game_date").max()),
+              }
+          (root / "checkpoint.json").write_text(json.dumps(output, indent=2) + "\n")
+          print(json.dumps(output, indent=2))
+          PY
+
+      - name: Upload corrected richer tracking materialization artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-batted-ball-tracking-materialization
+          path: |
+            reports/generated/current-talent-batted-ball-tracking-materialization/
+            reports/generated/current-talent-batted-ball-tracking-gate/probe_validation.json
+          if-no-files-found: error
+          retention-days: 14
