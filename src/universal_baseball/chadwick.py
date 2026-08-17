@@ -9,6 +9,7 @@ enrichment and coverage certification.
 from __future__ import annotations
 
 from collections import Counter
+from datetime import date
 from io import BytesIO
 from pathlib import Path
 import re
@@ -121,6 +122,129 @@ def mlbam_crosswalk(people: pl.DataFrame) -> pl.DataFrame:
     if "key_mlbam" not in people.columns:
         raise ValueError("Chadwick people frame missing key_mlbam")
     return people.filter(pl.col("key_mlbam").is_not_null())
+
+
+def build_mlbam_age_as_of(
+    people: pl.DataFrame,
+    mlbam_ids: Iterable[int],
+    *,
+    as_of_date: date,
+) -> pl.DataFrame:
+    """Derive exact age at one cutoff from Chadwick DOB for requested MLBAM IDs.
+
+    Age is a time-varying model feature and is therefore derived from immutable
+    date of birth plus the explicit snapshot cutoff; a mutable current-age field
+    is never stored. Complete but invalid dates, future dates, and duplicate
+    Chadwick rows for a requested MLBAM ID fail closed. Partial DOBs are retained
+    as missing exact age rather than being imputed to January 1 or another
+    invented date.
+    """
+
+    required = {"key_mlbam", "birth_year", "birth_month", "birth_day"}
+    missing = sorted(required - set(people.columns))
+    if missing:
+        raise ValueError(f"Chadwick people frame missing age fields: {missing}")
+
+    requested = sorted({int(value) for value in mlbam_ids})
+    if not requested:
+        return pl.DataFrame(
+            schema={
+                "player_id": pl.Int64,
+                "birth_date": pl.Date,
+                "age_years": pl.Float64,
+                "age_source_status": pl.String,
+            }
+        )
+
+    selected = people.filter(pl.col("key_mlbam").is_in(requested))
+    duplicates = (
+        selected.group_by("key_mlbam")
+        .len()
+        .filter(pl.col("len") > 1)
+        .sort("key_mlbam")
+    )
+    if not duplicates.is_empty():
+        ids = [int(value) for value in duplicates.get_column("key_mlbam").to_list()]
+        raise ValueError(f"Chadwick has duplicate requested MLBAM IDs: {ids}")
+
+    by_id = {
+        int(row["key_mlbam"]): row
+        for row in selected.select(
+            "key_mlbam", "birth_year", "birth_month", "birth_day"
+        ).iter_rows(named=True)
+    }
+    rows: list[dict[str, object]] = []
+    for player_id in requested:
+        source = by_id.get(player_id)
+        if source is None:
+            rows.append(
+                {
+                    "player_id": player_id,
+                    "birth_date": None,
+                    "age_years": None,
+                    "age_source_status": "missing_chadwick_identity",
+                }
+            )
+            continue
+
+        parts = (
+            source["birth_year"],
+            source["birth_month"],
+            source["birth_day"],
+        )
+        present = [value is not None for value in parts]
+        if not any(present):
+            rows.append(
+                {
+                    "player_id": player_id,
+                    "birth_date": None,
+                    "age_years": None,
+                    "age_source_status": "missing_birth_date",
+                }
+            )
+            continue
+        if not all(present):
+            rows.append(
+                {
+                    "player_id": player_id,
+                    "birth_date": None,
+                    "age_years": None,
+                    "age_source_status": "partial_birth_date",
+                }
+            )
+            continue
+
+        try:
+            birth_date = date(int(parts[0]), int(parts[1]), int(parts[2]))
+        except (TypeError, ValueError) as exc:
+            raise ValueError(
+                f"Chadwick has invalid complete birth date for MLBAM {player_id}: {parts}"
+            ) from exc
+        if birth_date > as_of_date:
+            raise ValueError(
+                f"Chadwick birth date is after as-of date for MLBAM {player_id}: "
+                f"birth={birth_date.isoformat()}, as_of={as_of_date.isoformat()}"
+            )
+
+        age_years = (as_of_date - birth_date).days / 365.2425
+        rows.append(
+            {
+                "player_id": player_id,
+                "birth_date": birth_date,
+                "age_years": float(age_years),
+                "age_source_status": "exact_birth_date",
+            }
+        )
+
+    return pl.DataFrame(
+        rows,
+        schema={
+            "player_id": pl.Int64,
+            "birth_date": pl.Date,
+            "age_years": pl.Float64,
+            "age_source_status": pl.String,
+        },
+    ).sort("player_id")
 
 
 def profile_mlbam_coverage(
