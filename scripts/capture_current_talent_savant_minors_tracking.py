@@ -7,7 +7,8 @@ the tiny tracked-only source probe passes under the corrected BBE contract.
 The date range is derived from already-certified MiLB player-game evidence and may
 be truncated with ``--end-date`` for a development-only capture. Requests are split
 into small deterministic chunks; exact response bytes, URLs, hashes, and status
-metadata are retained before the common raw->canonical->reconciliation path runs.
+metadata are retained before the common raw->canonical->reconciliation and broad
+source-completeness paths run.
 """
 
 from __future__ import annotations
@@ -24,6 +25,7 @@ import requests
 
 from universal_baseball.current_talent_batted_ball_materialization import (
     RAW_SAVANT_BBE_FIELDS,
+    build_tracking_environment_completeness,
     load_certified_player_game_environments,
     materialize_reconciled_tracked_bbe,
     read_retained_savant_csv_tree,
@@ -156,6 +158,11 @@ def main() -> int:
         season=args.season,
         source_family="MILB_SAVANT_TRACKED",
     )
+    completeness, completeness_metrics = build_tracking_environment_completeness(
+        raw,
+        certified,
+        source_family="MILB_SAVANT_TRACKED",
+    )
     reconciled = materialize_reconciled_tracked_bbe(
         raw,
         certified,
@@ -171,9 +178,11 @@ def main() -> int:
         f"reconciled_tracked_bbe_{args.season}_milb_savant_tracked.csv"
     )
     raw_file_manifest_path = args.output_dir / "raw_file_manifest.csv"
+    completeness_path = args.output_dir / "tracking_completeness_by_environment.csv"
     reconciled.write_parquet(reconciled_path, compression="zstd")
     reconciled.write_csv(reconciled_csv)
     raw_file_manifest.write_csv(raw_file_manifest_path)
+    completeness.write_csv(completeness_path)
 
     by_tier = (
         reconciled.group_by(["source_capability_tier", "level_group", "league_id"])
@@ -192,7 +201,7 @@ def main() -> int:
     by_tier.write_csv(by_tier_path)
 
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "scope": "manual_tracked_minor_savant_historical_capture",
         "live_source_io": True,
         "season": args.season,
@@ -205,6 +214,8 @@ def main() -> int:
         "canonical_model_bbe_contract": "result_producing_non_bunt_pitch_grain_v1",
         "raw_response_bytes": int(request_manifest.get_column("response_bytes").sum()),
         "raw_response_rows": int(request_manifest.get_column("row_count").sum()),
+        "broad_tracking_completeness": completeness_metrics,
+        "broad_tracking_completeness_by_environment": completeness.to_dicts(),
         "canonical_model_bbe_count": int(reconciled.height),
         "canonical_game_count": int(reconciled.get_column("game_pk").n_unique()),
         "canonical_player_count": int(reconciled.get_column("player_id").n_unique()),
@@ -213,6 +224,7 @@ def main() -> int:
             "request_manifest": str(request_manifest_path),
             "raw_file_manifest": str(raw_file_manifest_path),
             "raw_root": str(raw_root),
+            "tracking_completeness_by_environment": str(completeness_path),
             "reconciled_parquet": str(reconciled_path),
             "reconciled_csv": str(reconciled_csv),
             "capability_summary": str(by_tier_path),
