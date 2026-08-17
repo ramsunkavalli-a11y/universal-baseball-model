@@ -1,0 +1,230 @@
+name: Current Talent contact-value 2023 confirmation source v2
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/current-talent-contact-value-confirmation-source-v2.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Require frozen confirmation authorization
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("docs/current-talent-contact-value-confirmation-refit-result.json").read_text())
+          assert report["gate"] == "current_talent_contact_value_confirmation_refit_2021_2022"
+          assert report["boundary"]["accessed_2023"] is False
+          assert report["boundary"]["confirmation_scoring_performed"] is False
+          PY
+
+      - name: Verify frozen source contracts including encoding regression
+        run: >-
+          python -m pytest
+          tests/test_current_talent_contact_value_source.py
+          tests/test_current_talent_contact_value_mlb_source.py
+          tests/test_current_talent_contact_value_evidence.py
+          tests/test_current_talent_milb_source.py
+          tests/test_current_talent_participant_authority.py
+
+      - name: Download certified 2023 MLB source cache
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2023
+          path: .
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31989561396
+          github-token: ${{ github.token }}
+
+      - name: Materialize all 2023 MiLB targets
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for level in aaa aa 'a+' a rk; do
+            python - "$level" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "scripts")
+          import materialize_current_talent_contact_value_source as source
+
+          level = sys.argv[1]
+          source.ALLOWED_SEASONS = (2023,)
+          sys.argv = ["materialize_current_talent_contact_value_source.py", "--season", "2023", "--level", level]
+          status = source.main()
+          if status != 0:
+              raise SystemExit(status)
+          slug = level.replace("+", "plus")
+          path = Path("reports/generated/current-talent-contact-value-source-materialization/2023") / slug / "report.json"
+          report = json.loads(path.read_text())
+          report["boundaries"]["accessed_2023"] = True
+          report["confirmation_source_authorized"] = True
+          report["confirmation_scoring_performed"] = False
+          report["gate"] = "current_talent_contact_value_confirmation_source_materialization"
+          path.write_text(json.dumps(report, indent=2, sort_keys=True, default=str) + "\n")
+          PY
+          done
+
+      - name: Materialize 2023 MLB targets
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "scripts")
+          import materialize_current_talent_contact_value_mlb_source as source
+
+          original = source.materialize_mlb_contact_value_target_contacts
+          source.DEVELOPMENT_SOURCE_SEASONS = frozenset({2023})
+          source.CERTIFIED_HISTORY_RUN[2023] = 31989561396
+          source.materialize_mlb_contact_value_target_contacts = lambda frame: original(frame, allowed_seasons=frozenset({2023}))
+          sys.argv = ["materialize_current_talent_contact_value_mlb_source.py", "--season", "2023"]
+          status = source.main()
+          if status != 0:
+              raise SystemExit(status)
+          path = Path("reports/generated/current-talent-contact-value-mlb-source/2023/report.json")
+          report = json.loads(path.read_text())
+          report["source_boundary"]["accessed_2023"] = True
+          report["confirmation_source_authorized"] = True
+          report["confirmation_scoring_performed"] = False
+          report["gate"] = "current_talent_contact_value_confirmation_mlb_source_materialization"
+          path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Audit 2023 confirmation source
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import polars as pl
+
+          root = Path("reports/generated")
+          milb_root = root / "current-talent-contact-value-source-materialization/2023"
+          summaries = []
+          schemas = set()
+          total_supported = 0
+          total_core = 0
+          for level in ["aaa", "aa", "aplus", "a", "rk"]:
+              report = json.loads((milb_root / level / "report.json").read_text())
+              if report.get("gate") != "current_talent_contact_value_confirmation_source_materialization":
+                  raise SystemExit(f"unexpected MiLB gate {level}")
+              if report.get("accepted_source_materialization") is not True:
+                  raise SystemExit(f"unaccepted MiLB source {level}")
+              boundary = report.get("boundaries", {})
+              if boundary.get("accessed_2023") is not True or boundary.get("model_scoring") is not False:
+                  raise SystemExit(f"MiLB source boundary mismatch {level}")
+              material = report["target_materialization"]
+              supported = int(material["supported_target_contact_count"])
+              core = int(material["core_terminal_contact_count"])
+              if supported <= 0 or core <= 0:
+                  raise SystemExit(f"empty MiLB source {level}")
+              table = next((milb_root / level / "tables").glob("contact_value_target_contacts_2023_*.parquet"))
+              frame = pl.read_parquet(table)
+              schemas.add(tuple((name, str(dtype)) for name, dtype in frame.schema.items()))
+              if frame.get_column("terminal_outcome_group").n_unique() != 9:
+                  raise SystemExit(f"MiLB {level} lacks all nine terminal groups")
+              total_supported += supported
+              total_core += core
+              summaries.append({
+                  "source": "MiLB",
+                  "level": level,
+                  "supported_target_contacts": supported,
+                  "core_terminal_contacts": core,
+                  "supported_rate": supported / core,
+                  "first_event_date": material["event_date_min"],
+                  "last_event_date": material["event_date_max"],
+              })
+
+          mlb = json.loads((root / "current-talent-contact-value-mlb-source/2023/report.json").read_text())
+          if mlb.get("gate") != "current_talent_contact_value_confirmation_mlb_source_materialization":
+              raise SystemExit("unexpected MLB gate")
+          if mlb.get("accepted_source_materialization") is not True:
+              raise SystemExit("unaccepted MLB source")
+          boundary = mlb.get("source_boundary", {})
+          if boundary.get("accessed_2023") is not True or boundary.get("model_scoring") is not False:
+              raise SystemExit("MLB source boundary mismatch")
+          mlb_table = root / "current-talent-contact-value-mlb-source/2023/tables/current_talent_contact_value_target_2023_mlb.parquet"
+          mlb_frame = pl.read_parquet(mlb_table)
+          schemas.add(tuple((name, str(dtype)) for name, dtype in mlb_frame.schema.items()))
+          if mlb_frame.get_column("terminal_outcome_group").n_unique() != 9:
+              raise SystemExit("MLB source lacks all nine terminal groups")
+          if len(schemas) != 1:
+              raise SystemExit("MLB/MiLB target schemas disagree")
+          mlb_supported = int(mlb["target"]["row_count"])
+          mlb_core = int(mlb["materialization"]["core_terminal_contact_count"])
+          total_supported += mlb_supported
+          total_core += mlb_core
+          summaries.append({
+              "source": "MLB",
+              "level": "MLB",
+              "supported_target_contacts": mlb_supported,
+              "core_terminal_contacts": mlb_core,
+              "supported_rate": mlb_supported / mlb_core,
+              "first_event_date": mlb["target"]["first_event_date"],
+              "last_event_date": mlb["target"]["last_event_date"],
+          })
+
+          checkpoint = {
+              "report_schema_version": "0.2",
+              "gate": "current_talent_contact_value_confirmation_source_2023",
+              "authorized_by": "current_talent_contact_value_confirmation_refit_2021_2022",
+              "season": 2023,
+              "source_summaries": summaries,
+              "aggregate": {
+                  "core_terminal_contacts": total_core,
+                  "supported_target_contacts": total_supported,
+                  "supported_target_rate": total_supported / total_core,
+                  "shared_target_schema": True,
+                  "all_nine_terminal_groups_each_source_slice": True,
+              },
+              "boundary": {
+                  "2023_source_evidence_accessed": True,
+                  "terminal_values_attached": False,
+                  "baseline_fitted": False,
+                  "richer_coefficients_changed": False,
+                  "confirmation_scoring_performed": False,
+                  "feature_search_performed": False,
+              },
+              "encoding_normalization": "utf8_as_latin1_duplicate_identity_only_v1",
+          }
+          out = root / "current-talent-contact-value-confirmation-source"
+          out.mkdir(parents=True, exist_ok=True)
+          (out / "checkpoint.json").write_text(json.dumps(checkpoint, indent=2, sort_keys=True) + "\n")
+          print(json.dumps(checkpoint, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload 2023 confirmation source artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-confirmation-source-v2
+          path: |
+            reports/generated/current-talent-contact-value-source-materialization/2023/
+            reports/generated/current-talent-contact-value-mlb-source/2023/
+            reports/generated/current-talent-contact-value-confirmation-source/
+          if-no-files-found: warn
+          retention-days: 14
