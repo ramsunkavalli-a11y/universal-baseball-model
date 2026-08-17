@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 
 import pytest
+import requests
 
+import universal_baseball.mlb_season_stats as mlb_season_stats
 from universal_baseball.mlb_season_stats import (
     MLB_BATTING_BACKBONE_SCHEMA,
     capture_manifest,
@@ -73,3 +75,60 @@ def test_unknown_actual_league_is_rejected() -> None:
 def test_capture_manifest_is_stable_json() -> None:
     # No captures is still a deterministic serializable provenance object.
     assert json.loads(capture_manifest([])) == []
+
+
+class _FakeResponse:
+    def __init__(self, status_code: int = 200):
+        self.status_code = status_code
+
+    def raise_for_status(self) -> None:
+        if self.status_code >= 400:
+            raise requests.HTTPError(f"status={self.status_code}")
+
+
+class _TimeoutThenSuccessSession:
+    def __init__(self):
+        self.calls = 0
+
+    def get(self, *_args, **_kwargs):
+        self.calls += 1
+        if self.calls == 1:
+            raise requests.ReadTimeout("transient")
+        return _FakeResponse(200)
+
+
+class _BadGatewayThenSuccessSession:
+    def __init__(self):
+        self.calls = 0
+
+    def get(self, *_args, **_kwargs):
+        self.calls += 1
+        return _FakeResponse(502 if self.calls == 1 else 200)
+
+
+def test_statsapi_transport_timeout_is_retried(monkeypatch) -> None:
+    monkeypatch.setattr(mlb_season_stats.time, "sleep", lambda _seconds: None)
+    session = _TimeoutThenSuccessSession()
+    response = mlb_season_stats._statsapi_get_with_retry(
+        session,
+        "https://statsapi.mlb.com/api/v1/teams",
+        params={"sportId": 1, "season": 2023},
+        timeout_seconds=1,
+        attempts=2,
+    )
+    assert response.status_code == 200
+    assert session.calls == 2
+
+
+def test_statsapi_retryable_502_is_retried(monkeypatch) -> None:
+    monkeypatch.setattr(mlb_season_stats.time, "sleep", lambda _seconds: None)
+    session = _BadGatewayThenSuccessSession()
+    response = mlb_season_stats._statsapi_get_with_retry(
+        session,
+        "https://statsapi.mlb.com/api/v1/stats",
+        params={"season": 2023},
+        timeout_seconds=1,
+        attempts=2,
+    )
+    assert response.status_code == 200
+    assert session.calls == 2
