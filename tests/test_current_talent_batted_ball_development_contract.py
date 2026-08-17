@@ -1,9 +1,19 @@
 from datetime import date
+from pathlib import Path
+import sys
 
 import polars as pl
 import pytest
 
-from scripts.materialize_current_talent_batted_ball_development import (
+# The development runner deliberately reuses an existing sibling script helper and
+# is executed as ``python scripts/...`` in workflows. Import it in the same module
+# search context so this test validates the executable path rather than a different
+# namespace-package path.
+SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+from materialize_current_talent_batted_ball_development import (  # noqa: E402
     DEVELOPMENT_CUTOFFS,
     MEANINGFUL_NON_MLB_FUTURE_CORE_EVENTS,
     TRAINING_CUTOFF,
@@ -11,7 +21,7 @@ from scripts.materialize_current_talent_batted_ball_development import (
     _mean_pair_delta,
     _non_mlb_guardrails,
 )
-from universal_baseball.current_talent_batted_ball_reconciliation import (
+from universal_baseball.current_talent_batted_ball_reconciliation import (  # noqa: E402
     RECONCILED_TRACKED_BBE_SCHEMA,
 )
 
@@ -74,8 +84,10 @@ def _paired_capability_rows(*, support_per_fold: int, worse_folds: set[date]) ->
                     "model": model,
                     "future_core_events": support_per_fold,
                     "player_count": 20,
-                    "event_weighted_log_loss": b2_log + (0.01 if worse else (-0.01 if model == "batted_ball_richer" else 0.0)),
-                    "event_weighted_multinomial_brier": b2_brier + (0.01 if worse else (-0.01 if model == "batted_ball_richer" else 0.0)),
+                    "event_weighted_log_loss": b2_log
+                    + (0.01 if worse else (-0.01 if model == "batted_ball_richer" else 0.0)),
+                    "event_weighted_multinomial_brier": b2_brier
+                    + (0.01 if worse else (-0.01 if model == "batted_ball_richer" else 0.0)),
                     "non_mlb_source_tier": True,
                 }
             )
