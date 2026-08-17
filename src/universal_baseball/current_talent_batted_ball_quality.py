@@ -1,8 +1,9 @@
 """Deterministic batted-ball-quality evidence for richer Current Talent challengers.
 
 This module intentionally stops before model fitting. It projects complete observed
-Savant exit-velocity / launch-angle batted balls to a small canonical surface and
-builds leakage-safe player features at an as-of cutoff.
+Savant exit-velocity / launch-angle batted balls to a small canonical surface,
+builds leakage-safe player features at an as-of cutoff, and applies already-fitted
+contact-shape residual coefficients to frozen Baseline 2.
 
 Missing tracking is never imputed. Capability-tier assignment remains external so
 source coverage can be certified at game/league/venue grain before these features
@@ -12,15 +13,18 @@ are used by a richer model.
 from __future__ import annotations
 
 from datetime import date
-from math import log
+from math import exp, log
 
 import polars as pl
+
+from universal_baseball.performance_season import CONTACT_CORE_BINS
 
 
 TRACKED_BBE_HALF_LIFE_DAYS = 180.0
 PRIMARY_MIN_COMPLETE_TRACKED_BBE = 20
 SWEET_SPOT_MIN_DEGREES = 8.0
 SWEET_SPOT_MAX_DEGREES = 32.0
+RICHER_BATTED_BALL_METHOD = "baseline2_plus_ev_sweet_spot_contact_residual_v1"
 
 TRACKED_BBE_KEY = ("game_pk", "player_id", "at_bat_number")
 TRACKED_BBE_SCHEMA: dict[str, pl.DataType] = {
@@ -44,6 +48,22 @@ TRACKED_FEATURE_SCHEMA: dict[str, pl.DataType] = {
     "last_tracked_bbe_date": pl.Date,
     "tracked_bbe_eligible": pl.Boolean,
 }
+
+RICHER_STANDARDIZED_FEATURE_REQUIRED = frozenset(
+    {
+        "player_id",
+        "tracked_bbe_eligible",
+        "z_mean_exit_velocity",
+        "z_sweet_spot_share",
+    }
+)
+RICHER_COEFFICIENT_REQUIRED = frozenset(
+    {
+        "core_bin",
+        "beta_mean_exit_velocity",
+        "beta_sweet_spot_share",
+    }
+)
 
 
 def _integer_like(column: str, alias: str) -> pl.Expr:
@@ -174,3 +194,125 @@ def build_batted_ball_quality_features(
         .sort("player_id")
     )
     return features
+
+
+def apply_batted_ball_quality_residual(
+    baseline2_profile: pl.DataFrame,
+    standardized_features: pl.DataFrame,
+    coefficients: pl.DataFrame,
+    *,
+    probability_tolerance: float = 1e-12,
+) -> pl.DataFrame:
+    """Apply fitted EV/LA residuals to B2's conditional contact distribution.
+
+    ``BB_HBP`` and ``K`` are copied exactly from Baseline 2.  Only the ten contact
+    bins are adjusted, and their total probability mass is held exactly at the B2
+    contact mass. Players without an eligible standardized feature row fall back
+    to B2 without imputation.
+
+    The coefficient table contains one no-intercept residual pair per contact bin;
+    coefficient fitting and feature standardization are deliberately separate,
+    training-only steps.
+    """
+
+    if probability_tolerance < 0:
+        raise ValueError("probability tolerance must be nonnegative")
+    required_profile = {"player_id", "core_bin", "baseline2_latent_probability"}
+    missing_profile = sorted(required_profile - set(baseline2_profile.columns))
+    missing_features = sorted(RICHER_STANDARDIZED_FEATURE_REQUIRED - set(standardized_features.columns))
+    missing_coefficients = sorted(RICHER_COEFFICIENT_REQUIRED - set(coefficients.columns))
+    if missing_profile:
+        raise ValueError(f"Baseline 2 profile missing fields: {missing_profile}")
+    if missing_features:
+        raise ValueError(f"standardized richer features missing fields: {missing_features}")
+    if missing_coefficients:
+        raise ValueError(f"batted-ball residual coefficients missing fields: {missing_coefficients}")
+
+    duplicate_profile = baseline2_profile.group_by(["player_id", "core_bin"]).len().filter(pl.col("len") != 1)
+    if not duplicate_profile.is_empty():
+        raise ValueError("Baseline 2 profile violates player_id + core_bin grain")
+    duplicate_features = standardized_features.group_by("player_id").len().filter(pl.col("len") != 1)
+    if not duplicate_features.is_empty():
+        raise ValueError("standardized richer features violate player_id grain")
+    duplicate_coefficients = coefficients.group_by("core_bin").len().filter(pl.col("len") != 1)
+    if not duplicate_coefficients.is_empty():
+        raise ValueError("batted-ball residual coefficients violate core_bin grain")
+
+    coefficient_bins = set(str(value) for value in coefficients.get_column("core_bin").to_list())
+    if coefficient_bins != set(CONTACT_CORE_BINS):
+        raise ValueError("batted-ball residual coefficients must contain exactly the ten contact bins")
+
+    coefficient_lookup = {
+        str(row["core_bin"]): (
+            float(row["beta_mean_exit_velocity"]),
+            float(row["beta_sweet_spot_share"]),
+        )
+        for row in coefficients.iter_rows(named=True)
+    }
+    feature_lookup = {
+        int(row["player_id"]): row
+        for row in standardized_features.iter_rows(named=True)
+        if bool(row["tracked_bbe_eligible"])
+        and row["z_mean_exit_velocity"] is not None
+        and row["z_sweet_spot_share"] is not None
+    }
+
+    rows: list[dict[str, object]] = []
+    for key, group in baseline2_profile.group_by("player_id", maintain_order=True):
+        player_id = int(key[0]) if isinstance(key, tuple) else int(key)
+        probabilities = {
+            str(row["core_bin"]): float(row["baseline2_latent_probability"])
+            for row in group.iter_rows(named=True)
+        }
+        expected_bins = {"BB_HBP", "K", *CONTACT_CORE_BINS}
+        if set(probabilities) != expected_bins:
+            raise ValueError(f"Baseline 2 player {player_id} does not contain the full 12-bin profile")
+        if any(value <= 0 or value >= 1 for value in probabilities.values()):
+            raise ValueError("Baseline 2 latent probabilities must be strictly between zero and one")
+        if abs(sum(probabilities.values()) - 1.0) > probability_tolerance:
+            raise ValueError("Baseline 2 latent probabilities must sum to one")
+
+        feature = feature_lookup.get(player_id)
+        adjusted = dict(probabilities)
+        applied = feature is not None
+        if applied:
+            z_ev = float(feature["z_mean_exit_velocity"])
+            z_ss = float(feature["z_sweet_spot_share"])
+            contact_mass = sum(probabilities[core_bin] for core_bin in CONTACT_CORE_BINS)
+            logits: dict[str, float] = {}
+            for core_bin in CONTACT_CORE_BINS:
+                conditional = probabilities[core_bin] / contact_mass
+                beta_ev, beta_ss = coefficient_lookup[core_bin]
+                logits[core_bin] = log(conditional) + beta_ev * z_ev + beta_ss * z_ss
+            max_logit = max(logits.values())
+            denominator = sum(exp(value - max_logit) for value in logits.values())
+            if denominator <= 0:
+                raise ValueError("batted-ball residual softmax denominator must be positive")
+            for core_bin in CONTACT_CORE_BINS:
+                adjusted[core_bin] = (
+                    exp(logits[core_bin] - max_logit) / denominator * contact_mass
+                )
+
+        for core_bin in ["BB_HBP", "K", *CONTACT_CORE_BINS]:
+            rows.append(
+                {
+                    "player_id": player_id,
+                    "core_bin": core_bin,
+                    "baseline2_latent_probability": probabilities[core_bin],
+                    "richer_latent_probability": adjusted[core_bin],
+                    "richer_adjustment_applied": applied,
+                    "richer_method": RICHER_BATTED_BALL_METHOD if applied else "baseline2_fallback",
+                }
+            )
+
+    result = pl.DataFrame(rows).sort(["player_id", "core_bin"])
+    sums = result.group_by("player_id").agg(
+        pl.col("baseline2_latent_probability").sum().alias("_b2_sum"),
+        pl.col("richer_latent_probability").sum().alias("_richer_sum"),
+    )
+    if sums.filter(
+        ((pl.col("_b2_sum") - 1.0).abs() > probability_tolerance)
+        | ((pl.col("_richer_sum") - 1.0).abs() > probability_tolerance)
+    ).height:
+        raise ValueError("Baseline 2 / richer profiles do not sum to one")
+    return result
