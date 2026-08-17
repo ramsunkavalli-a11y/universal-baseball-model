@@ -18,8 +18,11 @@ reconciliation:
   official scoring charges the PA/K to the original batter. The pitch sequence
   is sufficient to identify that case without using season-end totals;
 - Savant can label an official interference-error PA as ``field_error`` while
-  still exposing the real batted-ball contact. The result narrative identifies
-  the special non-contact PA outcome; the physical contact remains separate.
+  still exposing the real batted-ball contact. Only that terminal event plus an
+  explicit interference-error result narrative is reclassified; a normal
+  result-contact event such as ``fielders_choice`` is not reclassified merely
+  because its narrative mentions a later interference error. The physical
+  contact remains separate in either case.
 """
 
 from __future__ import annotations
@@ -41,7 +44,7 @@ MLB_LEVEL_GROUP = "MLB"
 MLB_CAPABILITY_TIER = "mlb_savant_result_contact_profile_v2"
 MLB_PARTICIPANT_AUTHORITY = "savant_official"
 MLB_OUTCOME_IDENTITY_POLICY = "two_strike_mid_pa_substitution_v1"
-MLB_SPECIAL_NONCONTACT_POLICY = "event_code_plus_interference_error_narrative_v1"
+MLB_SPECIAL_NONCONTACT_POLICY = "known_event_or_field_error_interference_narrative_v2"
 
 # True PA terminal events that are neither the two outcome core families nor a
 # result-contact opportunity are explicit known special non-contact outcomes.
@@ -131,7 +134,11 @@ def _with_official_outcome_batter(savant: pl.DataFrame) -> pl.DataFrame:
             .sum()
             .cast(pl.Int64)
             .alias("_prior_strike_pitch_count"),
-            pl.col("pitch_result_code").is_null().sum().cast(pl.Int64).alias("_prior_null_code_count"),
+            pl.col("pitch_result_code")
+            .is_null()
+            .sum()
+            .cast(pl.Int64)
+            .alias("_prior_null_code_count"),
         )
     )
     terminal_context = terminal_context.join(
@@ -176,17 +183,29 @@ def _with_official_outcome_batter(savant: pl.DataFrame) -> pl.DataFrame:
     )
 
 
-def _special_noncontact_outcome() -> pl.Expr:
-    narrative_interference_error = (
-        pl.col("result_description")
+def _field_error_interference_outcome() -> pl.Expr:
+    """Return the narrow Savant field-error form of an interference PA.
+
+    A narrative mention alone is insufficient: a fielder's-choice contact can
+    legitimately be followed by a separate interference error. The historical
+    2021 season gate distinguishes those cases exactly, so require Savant's
+    terminal ``field_error`` event plus the explicit interference-error wording.
+    """
+
+    return (
+        (pl.col("events").cast(pl.String) == "field_error")
+        & pl.col("result_description")
         .cast(pl.String)
         .str.to_lowercase()
         .str.contains(r"\binterference error\b")
         .fill_null(False)
     )
+
+
+def _special_noncontact_outcome() -> pl.Expr:
     return (
         pl.col("events").is_in(sorted(KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES))
-        | narrative_interference_error
+        | _field_error_interference_outcome()
     )
 
 
@@ -434,13 +453,8 @@ def build_mlb_current_talent_player_game_evidence(
     outcome_reassignments = terminal.filter(
         pl.col("_outcome_player_id") != pl.col("_terminal_batter_id")
     ).height
-    narrative_interference_errors = terminal.filter(
-        (~pl.col("events").is_in(sorted(KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES)))
-        & pl.col("result_description")
-        .cast(pl.String)
-        .str.to_lowercase()
-        .str.contains(r"\binterference error\b")
-        .fill_null(False)
+    field_error_interference_outcomes = terminal.filter(
+        _field_error_interference_outcome()
     ).height
     return (
         summary.sort(["game_date", "game_pk", "player_id"]),
@@ -455,6 +469,6 @@ def build_mlb_current_talent_player_game_evidence(
             "outcome_identity_policy": MLB_OUTCOME_IDENTITY_POLICY,
             "outcome_batter_reassignment_count": int(outcome_reassignments),
             "special_noncontact_policy": MLB_SPECIAL_NONCONTACT_POLICY,
-            "narrative_interference_error_count": int(narrative_interference_errors),
+            "narrative_interference_error_count": int(field_error_interference_outcomes),
         },
     )
