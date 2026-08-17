@@ -77,6 +77,7 @@ jobs:
           python -m pytest
           tests/test_current_talent_baselines.py
           tests/test_current_talent_scoring.py
+          tests/test_current_talent_score_diagnostics.py
           tests/test_current_talent_translation.py
           tests/test_chadwick.py
       - name: Download certified MiLB evidence
