@@ -1,0 +1,308 @@
+name: Current Talent batted-ball tracking confirmation
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/current-talent-batted-ball-tracking-confirmation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Require authorized frozen confirmation refit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("docs/current-talent-contact-value-confirmation-refit-result.json")
+          report = json.loads(path.read_text())
+          if report.get("gate") != "current_talent_contact_value_confirmation_refit_2021_2022":
+              raise SystemExit("unexpected confirmation refit gate")
+          boundary = report.get("boundary", {})
+          if boundary.get("accessed_2023") is not False:
+              raise SystemExit("confirmation refit already accessed 2023")
+          if boundary.get("confirmation_scoring_performed") is not False:
+              raise SystemExit("confirmation refit already scored confirmation")
+          if boundary.get("model_form_changed") is not False:
+              raise SystemExit("confirmation refit changed model form")
+          print(json.dumps(report["residual_fit"], indent=2))
+          PY
+
+      - name: Verify richer source contracts
+        run: >-
+          python -m pytest
+          tests/test_current_talent_savant_minors.py
+          tests/test_current_talent_savant_minors_capture.py
+          tests/test_current_talent_savant_minors_capture_coverage.py
+          tests/test_current_talent_batted_ball_quality.py
+          tests/test_current_talent_batted_ball_game_coverage.py
+          tests/test_current_talent_batted_ball_reconciliation.py
+          tests/test_current_talent_batted_ball_materialization.py
+          tests/test_current_talent_batted_ball_capability.py
+
+      - name: Compile source tools
+        run: >-
+          python -m py_compile
+          scripts/capture_current_talent_savant_minors_tracking.py
+          scripts/materialize_current_talent_tracked_bbe_from_raw.py
+          scripts/combine_current_talent_tracked_bbe.py
+
+      - name: Download accepted development tracking artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-batted-ball-tracking-materialization
+          path: seeded/development-tracking
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32046012977
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2022 MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-historical-milb-full-season-*
+          path: seeded/2022/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31971662070
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2023 MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-historical-milb-full-season-2023-*
+          path: seeded/2023/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31971923778
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2023 MLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2023
+          path: seeded/2023/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31989561396
+          github-token: ${{ github.token }}
+
+      - name: Verify accepted development tracking seed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          matches = sorted(Path("seeded/development-tracking").rglob("checkpoint.json"))
+          if len(matches) != 1:
+              raise SystemExit(f"expected one development tracking checkpoint, found {len(matches)}")
+          report = json.loads(matches[0].read_text())
+          if report.get("gate") != "current_talent_batted_ball_tracking_materialization":
+              raise SystemExit("unexpected development tracking gate")
+          if report.get("development_tracking_ready") is not True:
+              raise SystemExit("development tracking seed not certified ready")
+          if report.get("canonical_model_bbe_contract") != "result_producing_non_bunt_pitch_grain_v1":
+              raise SystemExit("development tracking canonical contract mismatch")
+          if set(report.get("seasons", {})) != {"2021", "2022"}:
+              raise SystemExit("development tracking seed season mismatch")
+          print(json.dumps(report, indent=2))
+          PY
+
+      - name: Reuse accepted 2021 combined tracking and 2022 MLB tracking
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="reports/generated/current-talent-batted-ball-tracking-confirmation"
+          mkdir -p "$root/2021/combined" "$root/2022/mlb"
+          p2021="$(find seeded/development-tracking -path '*/2021/combined/reconciled_tracked_bbe_2021.parquet' -print -quit)"
+          p2022mlb="$(find seeded/development-tracking -path '*/2022/mlb/reconciled_tracked_bbe_2022_mlb_savant.parquet' -print -quit)"
+          test -n "$p2021"
+          test -n "$p2022mlb"
+          cp "$p2021" "$root/2021/combined/reconciled_tracked_bbe_2021.parquet"
+          cp "$p2022mlb" "$root/2022/mlb/reconciled_tracked_bbe_2022_mlb_savant.parquet"
+
+      - name: Capture full 2022 MiLB tracking for confirmation chronology
+        run: >-
+          python scripts/capture_current_talent_savant_minors_tracking.py
+          --certified-milb-root seeded/2022/milb
+          --season 2022
+          --output-dir reports/generated/current-talent-batted-ball-tracking-confirmation/2022/milb
+
+      - name: Require full 2022 MiLB capture
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("reports/generated/current-talent-batted-ball-tracking-confirmation/2022/milb/report.json")
+          report = json.loads(path.read_text())
+          if report.get("capture_end_date") != report.get("certified_game_date_end"):
+              raise SystemExit("2022 confirmation MiLB tracking remains truncated")
+          if report.get("canonical_model_bbe_contract") != "result_producing_non_bunt_pitch_grain_v1":
+              raise SystemExit("2022 confirmation tracking contract mismatch")
+          if int(report.get("canonical_model_bbe_count", 0)) <= 0:
+              raise SystemExit("2022 confirmation MiLB capture produced zero BBE")
+          print(json.dumps({
+              "capture_end_date": report["capture_end_date"],
+              "canonical_model_bbe_count": report["canonical_model_bbe_count"],
+              "coverage": report["certified_game_tracking_coverage"],
+          }, indent=2))
+          PY
+
+      - name: Materialize retained 2023 MLB tracking offline
+        shell: bash
+        run: |
+          set -euo pipefail
+          raw_root="$(find seeded/2023/mlb -type d -path '*/raw/savant' -print -quit)"
+          if [[ -z "$raw_root" ]]; then
+            echo "Certified 2023 MLB artifact has no retained raw/savant cache" >&2
+            exit 1
+          fi
+          python scripts/materialize_current_talent_tracked_bbe_from_raw.py \
+            --raw-root "$raw_root" \
+            --certified-evidence-root seeded/2023/mlb \
+            --season 2023 \
+            --source-family MLB_SAVANT \
+            --output-dir reports/generated/current-talent-batted-ball-tracking-confirmation/2023/mlb
+
+      - name: Capture 2023 MiLB tracking through final confirmation as-of date
+        run: >-
+          python scripts/capture_current_talent_savant_minors_tracking.py
+          --certified-milb-root seeded/2023/milb
+          --season 2023
+          --end-date 2023-08-31
+          --output-dir reports/generated/current-talent-batted-ball-tracking-confirmation/2023/milb
+
+      - name: Require 2023 capture boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("reports/generated/current-talent-batted-ball-tracking-confirmation/2023/milb/report.json")
+          report = json.loads(path.read_text())
+          if report.get("capture_end_date") != "2023-08-31":
+              raise SystemExit(f"2023 confirmation capture ended at {report.get('capture_end_date')}")
+          if report.get("canonical_model_bbe_contract") != "result_producing_non_bunt_pitch_grain_v1":
+              raise SystemExit("2023 confirmation tracking contract mismatch")
+          if int(report.get("canonical_model_bbe_count", 0)) <= 0:
+              raise SystemExit("2023 confirmation MiLB capture produced zero BBE")
+          print(json.dumps({
+              "capture_end_date": report["capture_end_date"],
+              "canonical_model_bbe_count": report["canonical_model_bbe_count"],
+              "coverage": report["certified_game_tracking_coverage"],
+          }, indent=2))
+          PY
+
+      - name: Combine 2022 and 2023 MLB plus MiLB tracking
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="reports/generated/current-talent-batted-ball-tracking-confirmation"
+          python scripts/combine_current_talent_tracked_bbe.py \
+            --season 2022 \
+            --mlb-parquet "$root/2022/mlb/reconciled_tracked_bbe_2022_mlb_savant.parquet" \
+            --milb-parquet "$root/2022/milb/reconciled_tracked_bbe_2022_milb_savant_tracked.parquet" \
+            --output-dir "$root/2022/combined"
+          python scripts/combine_current_talent_tracked_bbe.py \
+            --season 2023 \
+            --mlb-parquet "$root/2023/mlb/reconciled_tracked_bbe_2023_mlb_savant.parquet" \
+            --milb-parquet "$root/2023/milb/reconciled_tracked_bbe_2023_milb_savant_tracked.parquet" \
+            --output-dir "$root/2023/combined"
+
+      - name: Write confirmation tracking checkpoint
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import polars as pl
+
+          root = Path("reports/generated/current-talent-batted-ball-tracking-confirmation")
+          old_checkpoint = next(Path("seeded/development-tracking").rglob("checkpoint.json"))
+          old = json.loads(old_checkpoint.read_text())
+          capture_2022 = json.loads((root / "2022/milb/report.json").read_text())
+          capture_2023 = json.loads((root / "2023/milb/report.json").read_text())
+          mlb_2023 = next((root / "2023/mlb").glob("report_2023_mlb_savant.json"))
+          mlb_2023_report = json.loads(mlb_2023.read_text())
+
+          seasons = {}
+          for season in (2021, 2022, 2023):
+              path = root / str(season) / "combined" / f"reconciled_tracked_bbe_{season}.parquet"
+              frame = pl.read_parquet(path)
+              if frame.is_empty():
+                  raise SystemExit(f"empty confirmation tracking season {season}")
+              if set(frame.get_column("season").unique().to_list()) != {season}:
+                  raise SystemExit(f"confirmation tracking season identity mismatch {season}")
+              seasons[str(season)] = {
+                  "parquet": str(path),
+                  "model_bbe": int(frame.height),
+                  "players": int(frame.get_column("player_id").n_unique()),
+                  "games": int(frame.get_column("game_pk").n_unique()),
+                  "source_families": sorted(frame.get_column("source_family").unique().to_list()),
+                  "first_game_date": str(frame.get_column("game_date").min()),
+                  "last_game_date": str(frame.get_column("game_date").max()),
+                  "source_capability_tier_count": int(frame.get_column("source_capability_tier").n_unique()),
+              }
+              if set(seasons[str(season)]["source_families"]) != {"MLB_SAVANT", "MILB_SAVANT_TRACKED"}:
+                  raise SystemExit(f"source family mismatch for {season}")
+
+          report = {
+              "report_schema_version": "0.1",
+              "gate": "current_talent_batted_ball_tracking_confirmation",
+              "authorized_by": "current_talent_contact_value_confirmation_refit_2021_2022",
+              "canonical_model_bbe_contract": "result_producing_non_bunt_pitch_grain_v1",
+              "tracking_source_epoch": "2021-01-01",
+              "development_tracking_run_id": 32046012977,
+              "reused_2021_tracking_exactly": True,
+              "reused_2022_mlb_tracking_exactly": True,
+              "2022_milb_confirmation_capture_complete": capture_2022["capture_end_date"] == capture_2022["certified_game_date_end"],
+              "2023_milb_capture_end_date": capture_2023["capture_end_date"],
+              "2023_mlb_last_game_date": mlb_2023_report["last_game_date"],
+              "seasons": seasons,
+              "boundary": {
+                  "live_source_io_performed": True,
+                  "model_scoring": False,
+                  "confirmation_losses_computed": False,
+                  "feature_search_performed": False,
+                  "confirmation_coefficients_changed": False,
+                  "2023_source_evidence_accessed": True,
+              },
+          }
+          if report["2022_milb_confirmation_capture_complete"] is not True:
+              raise SystemExit("2022 MiLB confirmation capture is incomplete")
+          if report["2023_milb_capture_end_date"] != "2023-08-31":
+              raise SystemExit("2023 MiLB capture does not cover final confirmation as-of history")
+          (root / "checkpoint.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
+          print(json.dumps(report, indent=2, sort_keys=True))
+          PY
+
+      - name: Persist confirmation tracking checkpoint
+        run: |
+          cp reports/generated/current-talent-batted-ball-tracking-confirmation/checkpoint.json docs/current-talent-batted-ball-tracking-confirmation-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/current-talent-batted-ball-tracking-confirmation-result.json
+          git diff --cached --quiet || git commit -m "Persist Challenger 2 confirmation tracking"
+          git push
+
+      - name: Upload confirmation tracking artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-batted-ball-tracking-confirmation
+          path: reports/generated/current-talent-batted-ball-tracking-confirmation/
+          if-no-files-found: warn
+          retention-days: 14
