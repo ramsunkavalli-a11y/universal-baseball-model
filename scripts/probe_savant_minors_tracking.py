@@ -4,8 +4,8 @@
 This is deliberately not a season materializer. It verifies the current official
 Minor League CSV detail endpoint on one fixed historical date, retains exact raw
 bytes, checks the fields needed for an EV/launch-angle challenger, and reconciles
-Savant game/batter identity to already-certified 2023 Current Talent player-game
-evidence.
+Savant game/batter identity to already-certified same-season Current Talent
+player-game evidence.
 
 The endpoint/query shape is being *proven by this probe*. Do not promote it to a
 production adapter merely because a community example suggests the URL.
@@ -38,6 +38,14 @@ REQUIRED_FIELDS = {
     "at_bat_number",
     "pitch_number",
 }
+BAT_TRACKING_FIELDS = (
+    "bat_speed",
+    "swing_length",
+    "miss_distance",
+    "attack_angle",
+    "attack_direction",
+    "swing_path_tilt",
+)
 
 
 def _parse_args() -> argparse.Namespace:
@@ -101,10 +109,12 @@ def _integer_like(column: str, alias: str) -> pl.Expr:
     )
 
 
-def _load_certified_player_games(root: Path) -> pl.DataFrame:
-    paths = sorted(root.rglob("current_talent_game_summary_2023_*.parquet"))
+def _load_certified_player_games(root: Path, season: int) -> pl.DataFrame:
+    paths = sorted(root.rglob(f"current_talent_game_summary_{season}_*.parquet"))
     if not paths:
-        raise ValueError(f"no certified 2023 MiLB player-game summaries found under {root}")
+        raise ValueError(
+            f"no certified {season} MiLB player-game summaries found under {root}"
+        )
     frames = [
         pl.read_parquet(path).select("game_pk", "player_id", "level_group", "league_id")
         for path in paths
@@ -129,11 +139,16 @@ def _nonblank(column: str) -> pl.Expr:
 
 def main() -> int:
     args = _parse_args()
+    probe_date = str(args.probe_date)
+    try:
+        season = int(probe_date[:4])
+    except ValueError as exc:
+        raise ValueError(f"probe date must begin with a four-digit season: {probe_date}") from exc
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    request_url = _request_url(str(args.probe_date))
+    request_url = _request_url(probe_date)
     content, retrieved_url, status_code, content_type = _fetch(request_url)
-    raw_path = args.output_dir / f"savant-minors-{args.probe_date}.csv"
+    raw_path = args.output_dir / f"savant-minors-{probe_date}.csv"
     raw_path.write_bytes(content)
 
     raw = _read_raw_csv(content)
@@ -154,7 +169,7 @@ def main() -> int:
         pl.col("launch_angle").cast(pl.Float64, strict=False),
     ).drop_nulls(["game_pk", "player_id"])
 
-    certified = _load_certified_player_games(args.certified_milb_root)
+    certified = _load_certified_player_games(args.certified_milb_root, season)
     reconciled = projected.join(
         certified,
         on=["game_pk", "player_id"],
@@ -214,9 +229,15 @@ def main() -> int:
     by_level.write_csv(args.output_dir / "bbe_tracking_by_certified_level.csv")
     reconciled.head(500).write_csv(args.output_dir / "reconciled_sample.csv")
 
+    bat_tracking_nonnull_counts = {
+        field: int(raw.get_column(field).is_not_null().sum()) if field in raw.columns else None
+        for field in BAT_TRACKING_FIELDS
+    }
+
     report = {
-        "report_schema_version": "0.1",
-        "probe_date": str(args.probe_date),
+        "report_schema_version": "0.2",
+        "probe_date": probe_date,
+        "season": season,
         "source": "Baseball Savant Minor League Statcast Search official CSV",
         "request_url": request_url,
         "retrieved_url": retrieved_url,
@@ -239,6 +260,7 @@ def main() -> int:
         "bbe_like_complete_ev_la_share": (
             complete_ev_la.height / bbe_like.height if bbe_like.height else None
         ),
+        "bat_tracking_nonnull_counts": bat_tracking_nonnull_counts,
         "certified_level_summary": by_level.to_dicts(),
         "observed_certified_levels": sorted(
             str(value)
@@ -261,7 +283,9 @@ def main() -> int:
     # Require some actual reconciled EV/LA evidence before calling the source
     # probe successful. Exact coverage thresholds belong to the later model gate.
     if matched_keys.is_empty():
-        raise ValueError("Minor League Savant rows did not reconcile to certified 2023 evidence")
+        raise ValueError(
+            f"Minor League Savant rows did not reconcile to certified {season} evidence"
+        )
     if complete_ev_la.is_empty():
         raise ValueError("Minor League Savant probe found no complete EV/LA batted-ball rows")
     return 0
