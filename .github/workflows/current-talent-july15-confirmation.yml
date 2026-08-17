@@ -1,12 +1,6 @@
 name: Current Talent July 15 confirmation
 
 on:
-  # One-time bootstrap; restore to manual-only after this confirmation resolves.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-july15-confirmation.yml
   workflow_dispatch:
 
 permissions:
