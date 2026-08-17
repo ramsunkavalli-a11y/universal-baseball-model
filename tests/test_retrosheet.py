@@ -116,9 +116,9 @@ def _contact_row(
 def test_contact_value_projection_is_strictly_pre_cutoff_and_regular_season(tmp_path: Path) -> None:
     path = tmp_path / "plays.csv"
     rows = [
-        _contact_row("G1", game_date="2021-07-14", single=1, bip=1),
-        _contact_row("G2", game_date="2021-07-15", single=1, bip=1),
-        _contact_row("G3", game_date="2021-07-14", gametype="allstar", single=1, bip=1),
+        _contact_row("G1", game_date="20210714", single=1, bip=1),
+        _contact_row("G2", game_date="07/15/2021", single=1, bip=1),
+        _contact_row("G3", game_date="2021/07/14", gametype="allstar", single=1, bip=1),
     ]
     path.write_text(_contact_header() + "\n".join(rows) + "\n", encoding="utf-8")
 
