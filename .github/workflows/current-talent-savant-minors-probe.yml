@@ -1,7 +1,7 @@
 name: Current Talent Minor League Savant probe
 
 on:
-  # Source capability gate passed on run 31999568328. Keep live source probes manual-only.
+  # Live source gate. Keep manual-only.
   workflow_dispatch:
 
 permissions:
@@ -11,23 +11,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - season: 2021
-            probe_date: "2021-07-01"
-            run_id: "31980820797"
-            artifact_pattern: "ct-validation-game-evidence-2021-*"
-          - season: 2022
-            probe_date: "2022-07-01"
-            run_id: "31971662070"
-            artifact_pattern: "current-talent-historical-milb-full-season-*"
-          - season: 2023
-            probe_date: "2023-07-01"
-            run_id: "31971923778"
-            artifact_pattern: "current-talent-historical-milb-full-season-2023-*"
+    timeout-minutes: 30
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
@@ -69,27 +53,77 @@ jobs:
           scripts/audit_current_talent_batted_ball_source_semantics.py
           scripts/materialize_current_talent_batted_ball_development.py
 
-      - name: Download certified MiLB evidence
-        uses: actions/download-artifact@v8
-        with:
-          pattern: ${{ matrix.artifact_pattern }}
-          path: reports/generated/current-talent-savant-minors-probe-inputs/${{ matrix.season }}/milb
-          repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: ${{ matrix.run_id }}
-          github-token: ${{ github.token }}
+      - name: Download certified MiLB evidence serially with retry
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
 
-      - name: Probe one official Minor League Savant date
+          download_with_retry() {
+            local run_id="$1"
+            local pattern="$2"
+            local destination="$3"
+            local attempt
+            for attempt in 1 2 3 4 5; do
+              rm -rf "$destination"
+              mkdir -p "$destination"
+              echo "Downloading run ${run_id}, pattern ${pattern}, attempt ${attempt}/5"
+              if gh run download "$run_id" \
+                --repo "$GITHUB_REPOSITORY" \
+                --pattern "$pattern" \
+                --dir "$destination"; then
+                return 0
+              fi
+              if [[ "$attempt" -eq 5 ]]; then
+                echo "Artifact download failed after 5 attempts: run=${run_id} pattern=${pattern}" >&2
+                return 1
+              fi
+              sleep $((attempt * 15))
+            done
+          }
+
+          download_with_retry \
+            31980820797 \
+            'ct-validation-game-evidence-2021-*' \
+            'reports/generated/current-talent-savant-minors-probe-inputs/2021/milb'
+
+          download_with_retry \
+            31971662070 \
+            'current-talent-historical-milb-full-season-*' \
+            'reports/generated/current-talent-savant-minors-probe-inputs/2022/milb'
+
+          download_with_retry \
+            31971923778 \
+            'current-talent-historical-milb-full-season-2023-*' \
+            'reports/generated/current-talent-savant-minors-probe-inputs/2023/milb'
+
+      - name: Probe 2021 official Minor League Savant date
         run: >-
           python scripts/probe_savant_minors_tracking.py
-          --certified-milb-root reports/generated/current-talent-savant-minors-probe-inputs/${{ matrix.season }}/milb
-          --probe-date ${{ matrix.probe_date }}
-          --output-dir reports/generated/current-talent-savant-minors-probe/${{ matrix.season }}
+          --certified-milb-root reports/generated/current-talent-savant-minors-probe-inputs/2021/milb
+          --probe-date 2021-07-01
+          --output-dir reports/generated/current-talent-savant-minors-probe/2021
 
-      - name: Upload source probe artifact
+      - name: Probe 2022 official Minor League Savant date
+        run: >-
+          python scripts/probe_savant_minors_tracking.py
+          --certified-milb-root reports/generated/current-talent-savant-minors-probe-inputs/2022/milb
+          --probe-date 2022-07-01
+          --output-dir reports/generated/current-talent-savant-minors-probe/2022
+
+      - name: Probe 2023 official Minor League Savant date
+        run: >-
+          python scripts/probe_savant_minors_tracking.py
+          --certified-milb-root reports/generated/current-talent-savant-minors-probe-inputs/2023/milb
+          --probe-date 2023-07-01
+          --output-dir reports/generated/current-talent-savant-minors-probe/2023
+
+      - name: Upload combined source probe artifact
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: current-talent-savant-minors-probe-${{ matrix.season }}
-          path: reports/generated/current-talent-savant-minors-probe/${{ matrix.season }}/
+          name: current-talent-savant-minors-probe-all
+          path: reports/generated/current-talent-savant-minors-probe/
           if-no-files-found: warn
           retention-days: 14
