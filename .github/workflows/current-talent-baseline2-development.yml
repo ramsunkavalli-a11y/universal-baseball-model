@@ -1,0 +1,104 @@
+name: Current Talent Baseline 2 development
+
+on:
+  # One-time bootstrap for the predeclared 2022 multi-season challenger.
+  # Return to manual-only after this gate is resolved.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - .github/workflows/current-talent-baseline2-development.yml
+      - scripts/materialize_current_talent_baseline2_development.py
+      - src/universal_baseball/current_talent_baseline2.py
+      - tests/test_current_talent_baseline2.py
+      - docs/current-talent-baseline2-plan.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          ref: source-certification-poc
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run Baseline 2 regression tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_baseline2.py
+          tests/test_current_talent_baselines.py
+          tests/test_current_talent_scoring.py
+          tests/test_current_talent_score_diagnostics.py
+          tests/test_current_talent_calibration.py
+          tests/test_current_talent_translation.py
+          tests/test_current_talent_universal_evidence.py
+          tests/test_chadwick.py
+
+      - name: Download certified 2021 MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: ct-validation-game-evidence-2021-*
+          path: reports/generated/current-talent-baseline2-inputs/2021/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31980820797"
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2021 MLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2021
+          path: reports/generated/current-talent-baseline2-inputs/2021/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31986504169"
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2022 MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-historical-milb-full-season-*
+          path: reports/generated/current-talent-baseline2-inputs/2022/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31971662070"
+          github-token: ${{ github.token }}
+
+      - name: Download certified 2022 MLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2022
+          path: reports/generated/current-talent-baseline2-inputs/2022/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31988255280"
+          github-token: ${{ github.token }}
+
+      - name: Evaluate predeclared 2022 Baseline 2 challenger
+        run: >-
+          python scripts/materialize_current_talent_baseline2_development.py
+          --milb-input-root-2021 reports/generated/current-talent-baseline2-inputs/2021/milb
+          --mlb-input-root-2021 reports/generated/current-talent-baseline2-inputs/2021/mlb
+          --milb-input-root-2022 reports/generated/current-talent-baseline2-inputs/2022/milb
+          --mlb-input-root-2022 reports/generated/current-talent-baseline2-inputs/2022/mlb
+          --output-dir reports/generated/current-talent-baseline2-development
+
+      - name: Upload Baseline 2 development artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-baseline2-development
+          path: reports/generated/current-talent-baseline2-development/
+          if-no-files-found: warn
+          retention-days: 14
