@@ -1,0 +1,95 @@
+name: Current Talent September validation gate
+
+on:
+  # One-time bootstrap for the first common September 1 gate; restore to manual-only after resolution.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - .github/workflows/current-talent-september-validation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - season: "2021"
+            as_of_date: "2021-09-01"
+            milb_source_run_id: "31980820797"
+            milb_artifact_pattern: "ct-validation-game-evidence-2021-*"
+            mlb_source_run_id: "31986504169"
+          - season: "2022"
+            as_of_date: "2022-09-01"
+            milb_source_run_id: "31971662070"
+            milb_artifact_pattern: "current-talent-historical-milb-full-season-*"
+            mlb_source_run_id: "31988255280"
+          - season: "2023"
+            as_of_date: "2023-09-01"
+            milb_source_run_id: "31971923778"
+            milb_artifact_pattern: "current-talent-historical-milb-full-season-2023-*"
+            mlb_source_run_id: "31989561396"
+    env:
+      HALF_LIFE_DAYS: "90"
+      PRIOR_STRENGTH_CORE_EVENTS: "100"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Run targeted regression tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_ablation.py
+          tests/test_current_talent_baselines.py
+          tests/test_current_talent_scoring.py
+          tests/test_current_talent_score_diagnostics.py
+          tests/test_current_talent_translation.py
+          tests/test_chadwick.py
+      - name: Download certified MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: ${{ matrix.milb_artifact_pattern }}
+          path: reports/generated/current-talent-september-inputs/${{ matrix.season }}/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: ${{ matrix.milb_source_run_id }}
+          github-token: ${{ github.token }}
+      - name: Download certified MLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-${{ matrix.season }}
+          path: reports/generated/current-talent-september-inputs/${{ matrix.season }}/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: ${{ matrix.mlb_source_run_id }}
+          github-token: ${{ github.token }}
+      - name: Run fitted-vs-zero September gate
+        run: >-
+          python scripts/materialize_current_talent_translation_ablation.py
+          --input-root "reports/generated/current-talent-september-inputs/${{ matrix.season }}/milb"
+          --mlb-input-root "reports/generated/current-talent-september-inputs/${{ matrix.season }}/mlb"
+          --season "${{ matrix.season }}"
+          --as-of-date "${{ matrix.as_of_date }}"
+          --half-life-days "${HALF_LIFE_DAYS}"
+          --prior-strength-core-events "${PRIOR_STRENGTH_CORE_EVENTS}"
+          --output-dir "reports/generated/current-talent-september-validation/${{ matrix.season }}/${{ matrix.as_of_date }}"
+      - name: Upload September artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-september-validation-${{ matrix.season }}-${{ matrix.as_of_date }}
+          path: reports/generated/current-talent-september-validation/${{ matrix.season }}/${{ matrix.as_of_date }}/
+          if-no-files-found: warn
+          retention-days: 14
