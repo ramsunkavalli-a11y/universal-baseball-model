@@ -1,12 +1,17 @@
 from __future__ import annotations
 
 import csv
+from datetime import date
 from io import StringIO
 from pathlib import Path
 from zipfile import ZipFile
 
+import polars as pl
+import pytest
+
 from universal_baseball.chadwick import (
     CROSSWALK_COLUMNS,
+    build_mlbam_age_as_of,
     profile_mlbam_coverage,
     read_chadwick_people_archive,
 )
@@ -107,3 +112,77 @@ def test_chadwick_coverage_reports_missing_and_duplicate_mlbam_ids(tmp_path: Pat
     assert result["missing_mlbam_ids"] == [999999]
     assert result["duplicate_requested_mlbam_ids"] == {500001: 2}
     assert result["coverage_rate"] == 2 / 3
+
+
+def test_age_as_of_uses_exact_dob_and_does_not_impute_partial_dates() -> None:
+    people = pl.DataFrame(
+        {
+            "key_mlbam": [101, 102, 103],
+            "birth_year": [2000, 2001, None],
+            "birth_month": [2, None, None],
+            "birth_day": [29, None, None],
+        },
+        schema_overrides={
+            "key_mlbam": pl.Int64,
+            "birth_year": pl.Int64,
+            "birth_month": pl.Int64,
+            "birth_day": pl.Int64,
+        },
+    )
+
+    result = build_mlbam_age_as_of(
+        people,
+        [101, 102, 103, 999],
+        as_of_date=date(2021, 3, 1),
+    ).to_dicts()
+
+    exact = result[0]
+    assert exact["player_id"] == 101
+    assert exact["birth_date"] == date(2000, 2, 29)
+    assert exact["age_source_status"] == "exact_birth_date"
+    assert exact["age_years"] == pytest.approx(
+        (date(2021, 3, 1) - date(2000, 2, 29)).days / 365.2425
+    )
+
+    assert result[1]["age_source_status"] == "partial_birth_date"
+    assert result[1]["birth_date"] is None
+    assert result[1]["age_years"] is None
+    assert result[2]["age_source_status"] == "missing_birth_date"
+    assert result[3]["age_source_status"] == "missing_chadwick_identity"
+
+
+def test_age_as_of_fails_closed_on_duplicate_requested_mlbam() -> None:
+    people = pl.DataFrame(
+        {
+            "key_mlbam": [101, 101],
+            "birth_year": [2000, 2000],
+            "birth_month": [1, 1],
+            "birth_day": [2, 2],
+        }
+    )
+    with pytest.raises(ValueError, match="duplicate requested MLBAM IDs"):
+        build_mlbam_age_as_of(people, [101], as_of_date=date(2021, 8, 1))
+
+
+def test_age_as_of_fails_closed_on_invalid_complete_or_future_birth_date() -> None:
+    invalid = pl.DataFrame(
+        {
+            "key_mlbam": [101],
+            "birth_year": [2000],
+            "birth_month": [2],
+            "birth_day": [30],
+        }
+    )
+    with pytest.raises(ValueError, match="invalid complete birth date"):
+        build_mlbam_age_as_of(invalid, [101], as_of_date=date(2021, 8, 1))
+
+    future = pl.DataFrame(
+        {
+            "key_mlbam": [102],
+            "birth_year": [2022],
+            "birth_month": [1],
+            "birth_day": [1],
+        }
+    )
+    with pytest.raises(ValueError, match="birth date is after as-of date"):
+        build_mlbam_age_as_of(future, [102], as_of_date=date(2021, 8, 1))
