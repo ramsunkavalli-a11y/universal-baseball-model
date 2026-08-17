@@ -1,12 +1,6 @@
 name: Current Talent historical MLB season
 
 on:
-  # One-time validation retry for the narrowed 2021 outcome rules; remove after success.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-historical-mlb-season.yml
   workflow_dispatch:
     inputs:
       season:
@@ -28,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      TARGET_SEASON: ${{ inputs.season || '2021' }}
+      TARGET_SEASON: ${{ inputs.season }}
 
     steps:
       - name: Check out repository
@@ -48,14 +42,14 @@ jobs:
           tests/test_current_talent_mlb_history.py
           tests/test_mlb_performance.py
           tests/test_savant.py
-      - name: Seed preserved complete 2021 source cache
+      - name: Seed certified 2021 source cache
         if: ${{ env.TARGET_SEASON == '2021' }}
         uses: actions/download-artifact@v8
         with:
           name: current-talent-historical-mlb-2021
           path: .
           repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: 31986174137
+          run-id: 31986504169
           github-token: ${{ github.token }}
       - name: Materialize historical MLB player-game evidence
         run: >-
