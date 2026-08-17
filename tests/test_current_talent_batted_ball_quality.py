@@ -33,6 +33,7 @@ def _result_row(
     launch_angle: float | None = 20.0,
     events: str | None = "single",
     pitch_type: str = "X",
+    des: str = "Batter singles on a line drive to center field.",
 ) -> dict[str, object]:
     return {
         "game_date": game_date,
@@ -42,6 +43,7 @@ def _result_row(
         "pitch_number": pitch_number,
         "events": events,
         "type": pitch_type,
+        "des": des,
         "launch_speed": launch_speed,
         "launch_angle": launch_angle,
     }
@@ -149,6 +151,7 @@ def test_complete_ev_la_foul_contact_is_not_a_bbe() -> None:
                 launch_angle=-12.0,
                 events=None,
                 pitch_type="S",
+                des="Batter hits a foul ball.",
             ),
             _result_row(
                 game_date="2021-06-01",
@@ -160,6 +163,7 @@ def test_complete_ev_la_foul_contact_is_not_a_bbe() -> None:
                 launch_angle=18.0,
                 events="double",
                 pitch_type="X",
+                des="Batter doubles on a line drive to left field.",
             ),
         ]
     )
@@ -170,6 +174,40 @@ def test_complete_ev_la_foul_contact_is_not_a_bbe() -> None:
     row = observed.row(0, named=True)
     assert row["pitch_number"] == 6
     assert row["launch_speed"] == pytest.approx(103.0)
+
+
+def test_result_producing_bunt_is_excluded_from_richer_contact_evidence() -> None:
+    raw = _raw(
+        [
+            _result_row(
+                game_date="2021-06-01",
+                game_pk=1,
+                batter=10,
+                at_bat_number=1,
+                pitch_number=2,
+                launch_speed=42.0,
+                launch_angle=-35.0,
+                events="sac_bunt",
+                des="Batter out on a sacrifice bunt, pitcher to first baseman.",
+            ),
+            _result_row(
+                game_date="2021-06-02",
+                game_pk=2,
+                batter=10,
+                at_bat_number=1,
+                pitch_number=3,
+                launch_speed=96.0,
+                launch_angle=16.0,
+                events="single",
+                des="Batter singles on a line drive to center field.",
+            ),
+        ]
+    )
+
+    observed = project_complete_tracked_bbe(raw)
+
+    assert observed.height == 1
+    assert observed.row(0, named=True)["game_pk"] == 2
 
 
 def test_project_complete_tracked_bbe_rejects_duplicate_pitch_key() -> None:
