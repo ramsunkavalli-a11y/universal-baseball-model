@@ -1,0 +1,42 @@
+name: Current Talent contact-value contracts CI
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "src/universal_baseball/current_talent_contact_value.py"
+      - "src/universal_baseball/current_talent_batted_ball_standardization.py"
+      - "tests/test_current_talent_contact_value.py"
+      - "tests/test_current_talent_batted_ball_standardization.py"
+      - ".github/workflows/current-talent-contact-value-contracts-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Compile contact-value primitives
+        run: python -m py_compile src/universal_baseball/current_talent_contact_value.py
+
+      - name: Verify contact-value contracts
+        run: >-
+          python -m pytest
+          tests/test_current_talent_contact_value.py
+          tests/test_current_talent_batted_ball_standardization.py
