@@ -265,9 +265,7 @@ def build_batted_ball_residual_training_table(
             for core_bin in CONTACT_CORE_BINS
         ]
         target_conditional_values = _softmax(target_logits)
-        target_conditional = dict(
-            zip(CONTACT_CORE_BINS, target_conditional_values, strict=True)
-        )
+        target_conditional = dict(zip(CONTACT_CORE_BINS, target_conditional_values, strict=True))
         z_ev, z_ss = feature_lookup[player_id]
 
         for core_bin in CONTACT_CORE_BINS:
@@ -292,9 +290,8 @@ def build_batted_ball_residual_training_table(
 
     if not rows:
         return pl.DataFrame(schema=RESIDUAL_TRAINING_SCHEMA)
-    return (
-        pl.DataFrame(rows, schema=RESIDUAL_TRAINING_SCHEMA)
-        .sort([*RESIDUAL_TRAINING_ENVIRONMENT_KEY, "core_bin"])
+    return pl.DataFrame(rows, schema=RESIDUAL_TRAINING_SCHEMA).sort(
+        [*RESIDUAL_TRAINING_ENVIRONMENT_KEY, "core_bin"]
     )
 
 
@@ -326,7 +323,10 @@ def _training_groups(training_table: pl.DataFrame) -> list[dict[str, object]]:
             raise ValueError("future_contact_events must be constant within a training environment")
 
         row_lookup = {str(row["core_bin"]): row for row in group.iter_rows(named=True)}
-        counts = [int(row_lookup[core_bin]["future_contact_occurrence_count"]) for core_bin in CONTACT_CORE_BINS]
+        counts = [
+            int(row_lookup[core_bin]["future_contact_occurrence_count"])
+            for core_bin in CONTACT_CORE_BINS
+        ]
         n = next(iter(contact_events_values))
         if n <= 0 or sum(counts) != n:
             raise ValueError("future contact counts do not reconcile to future_contact_events")
@@ -339,12 +339,17 @@ def _training_groups(training_table: pl.DataFrame) -> list[dict[str, object]]:
             float(row_lookup[core_bin]["baseline2_target_conditional_contact_probability"])
             for core_bin in CONTACT_CORE_BINS
         ]
-        effects = [float(row_lookup[core_bin]["clr_environment_effect"]) for core_bin in CONTACT_CORE_BINS]
+        effects = [
+            float(row_lookup[core_bin]["clr_environment_effect"])
+            for core_bin in CONTACT_CORE_BINS
+        ]
         if any(value <= 0 or value >= 1 for value in latent + target):
             raise ValueError("conditional contact probabilities must lie strictly between zero and one")
         if abs(sum(latent) - 1.0) > 1e-7 or abs(sum(target) - 1.0) > 1e-7:
             raise ValueError("conditional contact probabilities must sum to one")
-        recomputed = _softmax([log(latent[index]) + effects[index] for index in range(len(CONTACT_CORE_BINS))])
+        recomputed = _softmax(
+            [log(latent[index]) + effects[index] for index in range(len(CONTACT_CORE_BINS))]
+        )
         if max(abs(recomputed[index] - target[index]) for index in range(len(target))) > 1e-8:
             raise ValueError("stored target conditional probabilities do not match translation offsets")
 
@@ -492,12 +497,11 @@ def fit_batted_ball_residual_coefficients(
             for index, core_bin in enumerate(CONTACT_CORE_BINS)
         ]
     ).sort("core_bin")
-    if coefficients.select(
-        pl.any_horizontal(
-            pl.col("beta_mean_exit_velocity").is_nan(),
-            pl.col("beta_sweet_spot_share").is_nan(),
-        )
-    ).item():
+    nonfinite = coefficients.filter(
+        ~pl.col("beta_mean_exit_velocity").is_finite()
+        | ~pl.col("beta_sweet_spot_share").is_finite()
+    )
+    if not nonfinite.is_empty():
         raise ValueError("residual fit produced non-finite coefficients")
 
     unique_players = training_table.get_column("player_id").n_unique()
