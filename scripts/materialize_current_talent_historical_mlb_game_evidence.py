@@ -15,6 +15,7 @@ from dataclasses import asdict
 from datetime import date, timedelta
 from hashlib import sha256
 from pathlib import Path
+import time
 from typing import Any
 
 import polars as pl
@@ -33,6 +34,7 @@ from universal_baseball.mlb_season_stats import (
     fetch_mlb_team_leagues,
 )
 from universal_baseball.savant import (
+    SavantCsvCapture,
     fetch_savant_csv,
     project_savant_performance_rows,
     read_savant_csv_bytes,
@@ -42,6 +44,8 @@ from universal_baseball.storage import write_canonical_parquet
 
 SCHEDULE_URL = "https://statsapi.mlb.com/api/v1/schedule"
 SAVANT_CHUNK_DAYS = 4
+SAVANT_FETCH_ATTEMPTS = 5
+SAVANT_RETRYABLE_STATUS_CODES = frozenset({429, 500, 502, 503, 504})
 
 
 def _parse_args() -> argparse.Namespace:
@@ -71,6 +75,42 @@ def _date_chunks(start: date, end: date, days: int) -> list[tuple[date, date]]:
         chunks.append((current, chunk_end))
         current = chunk_end + timedelta(days=1)
     return chunks
+
+
+def _fetch_savant_chunk_with_retry(
+    chunk_start: date,
+    chunk_end: date,
+    *,
+    session: requests.Session,
+    timeout_seconds: int = 180,
+    attempts: int = SAVANT_FETCH_ATTEMPTS,
+) -> tuple[SavantCsvCapture, int]:
+    """Retry only transient Savant transport failures; never semantic failures."""
+
+    if attempts <= 0:
+        raise ValueError("Savant fetch attempts must be positive")
+    for attempt in range(1, attempts + 1):
+        try:
+            return (
+                fetch_savant_csv(
+                    chunk_start,
+                    chunk_end,
+                    session=session,
+                    timeout_seconds=timeout_seconds,
+                ),
+                attempt,
+            )
+        except requests.HTTPError as exc:
+            status = exc.response.status_code if exc.response is not None else None
+            if status not in SAVANT_RETRYABLE_STATUS_CODES or attempt >= attempts:
+                raise
+        except (requests.ConnectionError, requests.Timeout):
+            if attempt >= attempts:
+                raise
+        # Long historical runs should survive isolated upstream 5xx responses but
+        # remain bounded. The first retry waits 2s, then 4/8/16s.
+        time.sleep(min(2 ** attempt, 30))
+    raise AssertionError("unreachable Savant retry loop")
 
 
 def _fetch_regular_season_bounds(
@@ -137,8 +177,9 @@ def _load_savant_season(
             request_path = None
             retrieved_url = "quarantine-cache"
             status_code = None
+            fetch_attempt_count = 0
         else:
-            capture = fetch_savant_csv(
+            capture, fetch_attempt_count = _fetch_savant_chunk_with_retry(
                 chunk_start,
                 chunk_end,
                 session=session,
@@ -163,6 +204,7 @@ def _load_savant_season(
                 "request_path": request_path,
                 "retrieved_url": retrieved_url,
                 "status_code": status_code,
+                "fetch_attempt_count": fetch_attempt_count,
                 "raw_path": str(path),
             }
         )
@@ -281,7 +323,7 @@ def main() -> int:
 
     observed_game_pks = set(summary.get_column("game_pk").unique().to_list())
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "accepted": bool(reconciliation_metrics["exact_outcome_reconciliation"]),
         "scope": {
             "season": season,
@@ -299,6 +341,11 @@ def main() -> int:
         "source": {
             "savant_chunk_count": len(savant_captures),
             "savant_captures": savant_captures,
+            "savant_retry_policy": {
+                "attempts": SAVANT_FETCH_ATTEMPTS,
+                "retryable_status_codes": sorted(SAVANT_RETRYABLE_STATUS_CODES),
+                "backoff_seconds": [2, 4, 8, 16],
+            },
             "team_authority": {
                 "response_sha256": sha256(team_response).hexdigest(),
                 "response_byte_count": len(team_response),
@@ -329,7 +376,7 @@ def main() -> int:
     if not report["accepted"]:
         raise RuntimeError(
             "historical MLB Current Talent season failed official outcome reconciliation: "
-            f"{mismatch.height} player-league-season rows; see {mismatch}"
+            f"{mismatch.height} player-league-season rows; see {report_dir / 'official_season_reconciliation_mismatches.csv'}"
         )
     return 0
 
