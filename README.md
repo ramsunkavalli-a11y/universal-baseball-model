@@ -8,6 +8,8 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 The active draft PR is **#1 — Build and certify universal baseball foundation layer**.
 
+**Current stage:** first real chronological Current Talent Baseline 0 vs Baseline 1 gate has passed for `2021-08-01`; the next work is rolling-origin / multi-cutoff validation and translation/hyperparameter ablation before any baseline is frozen.
+
 ## Core principles
 
 - Separate **Performance**, **Current Talent**, **Projection**, and **Player Value / Overall Ranking** instead of collapsing them into one opaque score.
