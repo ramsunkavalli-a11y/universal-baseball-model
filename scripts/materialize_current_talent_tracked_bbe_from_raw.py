@@ -8,7 +8,7 @@ No network I/O occurs here. The command is source-family agnostic:
   separate manual source workflow.
 
 Both paths use the same corrected canonical BBE projection, certified player-game
-reconciliation, and broad source-completeness audit.
+reconciliation, broad source-completeness audit, and certified-game coverage audit.
 """
 
 from __future__ import annotations
@@ -19,6 +19,9 @@ from pathlib import Path
 
 import polars as pl
 
+from universal_baseball.current_talent_batted_ball_game_coverage import (
+    build_certified_game_tracking_coverage,
+)
 from universal_baseball.current_talent_batted_ball_materialization import (
     build_tracking_environment_completeness,
     load_certified_player_game_environments,
@@ -54,6 +57,10 @@ def main() -> int:
         season=args.season,
         source_family=args.source_family,
     )
+    game_coverage, game_coverage_metrics = build_certified_game_tracking_coverage(
+        raw,
+        certified,
+    )
     completeness, completeness_metrics = build_tracking_environment_completeness(
         raw,
         certified,
@@ -74,10 +81,12 @@ def main() -> int:
     csv_path = args.output_dir / f"reconciled_tracked_bbe_{stem}.csv"
     manifest_path = args.output_dir / f"raw_savant_manifest_{stem}.csv"
     completeness_path = args.output_dir / f"tracking_completeness_{stem}.csv"
+    game_coverage_path = args.output_dir / f"certified_game_tracking_coverage_{stem}.csv"
     reconciled.write_parquet(parquet_path, compression="zstd")
     reconciled.write_csv(csv_path)
     manifest.write_csv(manifest_path)
     completeness.write_csv(completeness_path)
+    game_coverage.write_csv(game_coverage_path)
 
     by_tier = (
         reconciled.group_by(
@@ -98,7 +107,7 @@ def main() -> int:
     by_tier.write_csv(by_tier_path)
 
     report = {
-        "report_schema_version": "0.2",
+        "report_schema_version": "0.3",
         "scope": "offline_reconciled_tracked_bbe_materialization",
         "network_requests_performed": False,
         "season": args.season,
@@ -109,6 +118,10 @@ def main() -> int:
         "raw_csv_file_count": int(manifest.height),
         "raw_response_bytes": int(manifest.get_column("response_bytes").sum()),
         "raw_row_count": int(manifest.get_column("row_count").sum()),
+        "certified_game_tracking_coverage": {
+            **game_coverage_metrics,
+            "by_environment": game_coverage.to_dicts(),
+        },
         "broad_tracking_completeness": completeness_metrics,
         "broad_tracking_completeness_by_environment": completeness.to_dicts(),
         "canonical_model_bbe_count": int(reconciled.height),
@@ -121,6 +134,7 @@ def main() -> int:
             "reconciled_parquet": str(parquet_path),
             "reconciled_csv": str(csv_path),
             "raw_manifest_csv": str(manifest_path),
+            "certified_game_tracking_coverage_csv": str(game_coverage_path),
             "tracking_completeness_csv": str(completeness_path),
             "capability_csv": str(by_tier_path),
         },
