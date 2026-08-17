@@ -1,0 +1,104 @@
+name: Current Talent 2023 selected-candidate confirmation
+
+on:
+  # Trigger when the development-selected candidate is persisted. The workflow-file
+  # path also allows a one-time bootstrap if the checkpoint already exists.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - docs/current-talent-development-selected-candidate.json
+      - .github/workflows/current-talent-2023-selected-confirmation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  confirm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          ref: source-certification-poc
+          fetch-depth: 0
+      - name: Require persisted development selection
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f docs/current-talent-development-selected-candidate.json
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Run confirmation regression tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_selection.py
+          tests/test_current_talent_calibration.py
+          tests/test_current_talent_ablation.py
+          tests/test_current_talent_baselines.py
+          tests/test_current_talent_scoring.py
+          tests/test_current_talent_score_diagnostics.py
+          tests/test_current_talent_translation.py
+          tests/test_chadwick.py
+      - name: Download certified 2023 MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-historical-milb-full-season-2023-*
+          path: reports/generated/current-talent-2023-confirmation-inputs/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31971923778"
+          github-token: ${{ github.token }}
+      - name: Download certified 2023 MLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2023
+          path: reports/generated/current-talent-2023-confirmation-inputs/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31989561396"
+          github-token: ${{ github.token }}
+      - name: Evaluate only preselected candidate plus fixed reference
+        run: >-
+          python scripts/materialize_current_talent_2023_confirmation.py
+          --input-root reports/generated/current-talent-2023-confirmation-inputs/milb
+          --mlb-input-root reports/generated/current-talent-2023-confirmation-inputs/mlb
+          --selected-candidate docs/current-talent-development-selected-candidate.json
+          --output-dir reports/generated/current-talent-2023-confirmation
+      - name: Upload 2023 confirmation artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-2023-selected-confirmation
+          path: reports/generated/current-talent-2023-confirmation/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Sync branch before confirmation checkpoint
+        run: git pull --ff-only origin source-certification-poc
+      - name: Persist confirmation checkpoint
+        run: >-
+          python scripts/persist_current_talent_2023_confirmation_checkpoint.py
+          --confirmation-dir reports/generated/current-talent-2023-confirmation
+          --docs-dir docs
+          --project-status docs/project-status.md
+      - name: Commit confirmation checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            docs/project-status.md \
+            docs/current-talent-2023-confirmation-checkpoint.md \
+            docs/current-talent-2023-confirmation-result.json
+          if git diff --cached --quiet; then
+            echo "Confirmation checkpoint already matches repository state."
+          else
+            git commit -m "Checkpoint Current Talent 2023 confirmation"
+            git push origin HEAD:source-certification-poc
+          fi
