@@ -1,13 +1,7 @@
 name: Current Talent Minor League Savant probe
 
 on:
-  # One-time source-capability bootstrap. Return to manual-only after the probe resolves.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-savant-minors-probe.yml
-      - scripts/probe_savant_minors_tracking.py
+  # Source capability gate passed on run 31999568328. Keep live source probes manual-only.
   workflow_dispatch:
 
 permissions:
