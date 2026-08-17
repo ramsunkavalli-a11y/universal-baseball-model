@@ -22,10 +22,19 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 
 - [`docs/project-status.md`](docs/project-status.md) — **canonical current handoff / roadmap**.
 - [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target, chronology, baseline, and validation contract.
-- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — exact age-as-of coverage plus implemented/tested Baseline 0 and Baseline 1 primitives; chronological predictive scoring is the next gate.
+- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — Baseline 0/1 implementation plus the **first real 2021 chronological predictive gate**; rolling-origin stability and translation/hyperparameter ablation are next.
 - [`docs/current-talent-historical-mlb-checkpoint.md`](docs/current-talent-historical-mlb-checkpoint.md) — certified 2021–2023 historical MLB Current Talent evidence and official reconciliation rules.
 - [`docs/current-talent-historical-milb-checkpoint.md`](docs/current-talent-historical-milb-checkpoint.md) — certified 2021–2023 historical affiliated-MiLB evidence.
 - [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — first production-shaped completed-2024 affiliated batting Performance materialization.
+
+## Development workflow
+
+1. Reuse existing public work where it survives certification; do not restart settled source research without a concrete failure.
+2. Make changes in small batches of roughly **2–3 steps**.
+3. Verify each batch before expanding scope so an early assumption cannot contaminate a large downstream change.
+4. Keep heavy live-source certification/validation workflows manual after their gate passes; keep deterministic regression tests in normal CI.
+5. **Update `docs/project-status.md` at meaningful junctures before continuing**—especially after a major gate passes, a material architecture/modeling decision is frozen, or the recommended next batch changes. This handoff discipline is part of the workflow, not optional cleanup.
+6. Pause for an explicit modeling decision when an unresolved assumption could materially change downstream architecture rather than papering over it in code.
 
 ## Foundation references
 
@@ -34,14 +43,5 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 - [`docs/source-certification-current.md`](docs/source-certification-current.md) — detailed foundation/source certification snapshot; use `docs/project-status.md` for the live roadmap.
 - [`docs/canonical-data-contract.md`](docs/canonical-data-contract.md) — canonical grains, provenance, and storage semantics.
 - [`docs/adr/`](docs/adr/) — accepted architectural decisions.
-
-## Development workflow
-
-1. Reuse existing public work where it survives certification; do not restart settled source research without a concrete failure.
-2. Make changes in small batches of roughly **2–3 steps**.
-3. Verify each batch before expanding scope so an early assumption cannot contaminate a large downstream change.
-4. Keep heavy live-source certification workflows manual after their gate passes; keep deterministic regression tests in normal CI.
-5. **Update `docs/project-status.md` at meaningful junctures before continuing**—especially after a major gate passes, a material architecture/modeling decision is frozen, or the recommended next batch changes. This handoff discipline is part of the workflow, not optional cleanup.
-6. Pause for an explicit modeling decision when an unresolved assumption could materially change downstream architecture rather than papering over it in code.
 
 Foundation work should favor correctness, reversibility, explicit evidence, and reproducibility over speed.
