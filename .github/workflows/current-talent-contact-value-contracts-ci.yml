@@ -7,9 +7,11 @@ on:
     paths:
       - "src/universal_baseball/current_talent_contact_value.py"
       - "src/universal_baseball/current_talent_contact_value_source.py"
+      - "src/universal_baseball/current_talent_contact_value_mlb_source.py"
       - "src/universal_baseball/current_talent_batted_ball_standardization.py"
       - "tests/test_current_talent_contact_value.py"
       - "tests/test_current_talent_contact_value_source.py"
+      - "tests/test_current_talent_contact_value_mlb_source.py"
       - "tests/test_current_talent_batted_ball_standardization.py"
       - ".github/workflows/current-talent-contact-value-contracts-ci.yml"
   workflow_dispatch:
@@ -39,10 +41,12 @@ jobs:
           python -m py_compile
           src/universal_baseball/current_talent_contact_value.py
           src/universal_baseball/current_talent_contact_value_source.py
+          src/universal_baseball/current_talent_contact_value_mlb_source.py
 
       - name: Verify contact-value contracts
         run: >-
           python -m pytest
           tests/test_current_talent_contact_value.py
           tests/test_current_talent_contact_value_source.py
+          tests/test_current_talent_contact_value_mlb_source.py
           tests/test_current_talent_batted_ball_standardization.py
