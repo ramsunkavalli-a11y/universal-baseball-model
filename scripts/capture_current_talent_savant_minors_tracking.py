@@ -29,6 +29,9 @@ from typing import Callable
 import polars as pl
 import requests
 
+from universal_baseball.current_talent_batted_ball_game_coverage import (
+    build_certified_game_tracking_coverage,
+)
 from universal_baseball.current_talent_batted_ball_materialization import (
     RAW_SAVANT_BBE_FIELDS,
     build_tracking_environment_completeness,
@@ -81,6 +84,36 @@ def _certified_date_bounds(root: Path, season: int) -> tuple[date, date]:
     if not dates:
         raise ValueError(f"certified {season} MiLB summaries contain no game dates")
     return min(dates), max(dates)
+
+
+def _certified_player_games_through(root: Path, season: int, end_date: date) -> pl.DataFrame:
+    """Load the certified MiLB game universe only through the capture end date."""
+
+    paths = sorted(root.rglob(f"current_talent_game_summary_{season}_*.parquet"))
+    if not paths:
+        raise ValueError(f"no certified {season} MiLB game summaries under {root}")
+    frames: list[pl.DataFrame] = []
+    for path in paths:
+        frame = pl.read_parquet(path).select(
+            pl.col("game_date").cast(pl.String).str.to_date(strict=False).alias("game_date"),
+            pl.col("game_pk").cast(pl.Int64),
+            pl.col("player_id").cast(pl.Int64),
+            pl.col("league_id").cast(pl.Int64),
+            pl.col("level_group").cast(pl.String),
+        )
+        if frame.filter(pl.col("game_date").is_null()).height:
+            raise ValueError(f"certified MiLB summary contains invalid game_date: {path}")
+        frames.append(
+            frame.filter(pl.col("game_date") <= pl.lit(end_date)).with_columns(
+                pl.lit(season).cast(pl.Int64).alias("season")
+            )
+        )
+    combined = pl.concat(frames, how="vertical_relaxed").unique()
+    if combined.is_empty():
+        raise ValueError(
+            f"certified {season} MiLB game universe is empty through {end_date.isoformat()}"
+        )
+    return combined
 
 
 def _validate_response_csv(content: bytes, *, request_url: str) -> tuple[int, int]:
@@ -206,6 +239,15 @@ def main() -> int:
         season=args.season,
         source_family="MILB_SAVANT_TRACKED",
     )
+    certified_for_coverage = _certified_player_games_through(
+        args.certified_milb_root,
+        args.season,
+        capture_end,
+    )
+    game_coverage, game_coverage_metrics = build_certified_game_tracking_coverage(
+        raw,
+        certified_for_coverage,
+    )
     completeness, completeness_metrics = build_tracking_environment_completeness(
         raw,
         certified,
@@ -227,10 +269,12 @@ def main() -> int:
     )
     raw_file_manifest_path = args.output_dir / "raw_file_manifest.csv"
     completeness_path = args.output_dir / "tracking_completeness_by_environment.csv"
+    game_coverage_path = args.output_dir / "certified_game_tracking_coverage.csv"
     reconciled.write_parquet(reconciled_path, compression="zstd")
     reconciled.write_csv(reconciled_csv)
     raw_file_manifest.write_csv(raw_file_manifest_path)
     completeness.write_csv(completeness_path)
+    game_coverage.write_csv(game_coverage_path)
 
     by_tier = (
         reconciled.group_by(["source_capability_tier", "level_group", "league_id"])
@@ -249,7 +293,7 @@ def main() -> int:
     by_tier.write_csv(by_tier_path)
 
     report = {
-        "report_schema_version": "0.3",
+        "report_schema_version": "0.4",
         "scope": "manual_tracked_minor_savant_historical_capture",
         "live_source_io": True,
         "season": args.season,
@@ -268,6 +312,10 @@ def main() -> int:
         "canonical_model_bbe_contract": "result_producing_non_bunt_pitch_grain_v1",
         "raw_response_bytes": int(request_manifest.get_column("response_bytes").sum()),
         "raw_response_rows": int(request_manifest.get_column("row_count").sum()),
+        "certified_game_tracking_coverage": {
+            **game_coverage_metrics,
+            "by_environment": game_coverage.to_dicts(),
+        },
         "broad_tracking_completeness": completeness_metrics,
         "broad_tracking_completeness_by_environment": completeness.to_dicts(),
         "canonical_model_bbe_count": int(reconciled.height),
@@ -278,6 +326,7 @@ def main() -> int:
             "request_manifest": str(request_manifest_path),
             "raw_file_manifest": str(raw_file_manifest_path),
             "raw_root": str(raw_root),
+            "certified_game_tracking_coverage": str(game_coverage_path),
             "tracking_completeness_by_environment": str(completeness_path),
             "reconciled_parquet": str(reconciled_path),
             "reconciled_csv": str(reconciled_csv),
@@ -285,7 +334,8 @@ def main() -> int:
         },
         "decision_boundary": (
             "This capture provides observed tracked MiLB evidence only for returned tracked source "
-            "rows. Capability labels must not be generalized to unobserved games at the same level."
+            "rows. Certified-game coverage is measured against the same captured date window, and "
+            "capability labels must not be generalized to unobserved games at the same level."
         ),
     }
     report_path = args.output_dir / "report.json"
