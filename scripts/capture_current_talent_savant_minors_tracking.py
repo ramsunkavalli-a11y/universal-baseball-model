@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture tracked-only Minor Savant history for the richer Current Talent gate.
+"""Capture tracked regular-season Minor Savant history for the richer Current Talent gate.
 
 This is explicit live-source I/O and is intended for a manual workflow only *after*
 the tiny tracked-only source probe passes under the corrected BBE contract.
@@ -10,9 +10,14 @@ into small deterministic chunks; exact response bytes, URLs, hashes, and status
 metadata are retained before the common raw->canonical->reconciliation and broad
 source-completeness paths run.
 
+The certified Current Talent result surface is regular-season evidence. Requests
+therefore explicitly select regular-season games and each returned CSV is rejected
+if Savant returns any non-regular game type.
+
 Transient HTTP/network failures receive a small bounded retry/backoff. A chunk is
 never accepted unless its final successful response passes the exact CSV/schema
-contract; schema drift, empty content, and other semantic failures fail closed.
+contract; schema drift, game-type drift, empty content, and other semantic failures
+fail closed.
 """
 
 from __future__ import annotations
@@ -41,6 +46,7 @@ from universal_baseball.current_talent_batted_ball_materialization import (
 )
 from universal_baseball.current_talent_savant_minors import (
     DEFAULT_TRACKED_MINOR_CHUNK_DAYS,
+    REGULAR_SEASON_GAME_TYPE,
     plan_tracked_minor_savant_requests,
 )
 
@@ -131,10 +137,28 @@ def _validate_response_csv(content: bytes, *, request_url: str) -> tuple[int, in
         raise ValueError(
             f"tracked Minor Savant response is not readable CSV for {request_url}: {preview!r}"
         ) from exc
-    missing = sorted(set(RAW_SAVANT_BBE_FIELDS) - set(frame.columns))
+    required_fields = set(RAW_SAVANT_BBE_FIELDS) | {"game_type"}
+    missing = sorted(required_fields - set(frame.columns))
     if missing:
         raise ValueError(
             f"tracked Minor Savant response missing fields for {request_url}: {missing}"
+        )
+    bad_game_types = frame.filter(
+        pl.col("game_type").cast(pl.String).fill_null("").str.strip_chars()
+        != pl.lit(REGULAR_SEASON_GAME_TYPE)
+    )
+    if not bad_game_types.is_empty():
+        observed = sorted(
+            str(value)
+            for value in bad_game_types.get_column("game_type")
+            .cast(pl.String)
+            .fill_null("")
+            .unique()
+            .to_list()
+        )
+        raise ValueError(
+            "tracked Minor Savant response contains non-regular game types "
+            f"for {request_url}: {observed}"
         )
     return int(frame.height), len(frame.columns)
 
@@ -302,7 +326,8 @@ def main() -> int:
         "capture_end_date": capture_end.isoformat(),
         "chunk_days": args.chunk_days,
         "request_chunk_count": len(plan),
-        "request_semantics": "tracked_only_helper_v1",
+        "request_semantics": "tracked_regular_season_helper_v2",
+        "source_game_type": REGULAR_SEASON_GAME_TYPE,
         "transient_retry_policy": {
             "max_attempts": DEFAULT_MAX_FETCH_ATTEMPTS,
             "base_backoff_seconds": DEFAULT_RETRY_BACKOFF_SECONDS,
@@ -333,9 +358,10 @@ def main() -> int:
             "capability_summary": str(by_tier_path),
         },
         "decision_boundary": (
-            "This capture provides observed tracked MiLB evidence only for returned tracked source "
-            "rows. Certified-game coverage is measured against the same captured date window, and "
-            "capability labels must not be generalized to unobserved games at the same level."
+            "This capture provides observed tracked regular-season MiLB evidence only for returned "
+            "tracked source rows. Certified-game coverage is measured against the same captured "
+            "regular-season date window, and capability labels must not be generalized to "
+            "unobserved games at the same level."
         ),
     }
     report_path = args.output_dir / "report.json"
