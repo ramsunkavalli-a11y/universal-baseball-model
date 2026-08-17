@@ -2,6 +2,7 @@ import polars as pl
 import pytest
 
 from universal_baseball.current_talent_batted_ball_game_coverage import (
+    MLB_GAME_COVERAGE_LEAGUE_ID,
     build_certified_game_tracking_coverage,
 )
 
@@ -64,7 +65,32 @@ def test_game_coverage_keeps_zero_returned_environment_and_reports_unmatched_sou
     assert metrics["unmatched_source_game_count"] == 1
 
 
-def test_game_coverage_fails_on_ambiguous_game_environment() -> None:
+def test_game_coverage_collapses_mlb_interleague_player_affiliations() -> None:
+    certified = pl.DataFrame(
+        {
+            "game_pk": [1, 1, 2, 2],
+            "player_id": [10, 11, 12, 13],
+            "season": [2021] * 4,
+            "league_id": [103, 104, 103, 103],
+            "level_group": ["MLB"] * 4,
+        }
+    )
+    raw = pl.DataFrame({"game_pk": ["1", "2"]})
+
+    by_environment, metrics = build_certified_game_tracking_coverage(raw, certified)
+
+    assert metrics["certified_game_count"] == 2
+    assert metrics["tracked_game_count"] == 2
+    assert metrics["tracked_game_share"] == pytest.approx(1.0)
+    assert by_environment.height == 1
+    row = by_environment.row(0, named=True)
+    assert row["league_id"] == MLB_GAME_COVERAGE_LEAGUE_ID
+    assert row["level_group"] == "MLB"
+    assert row["certified_game_count"] == 2
+    assert row["tracked_game_count"] == 2
+
+
+def test_game_coverage_fails_on_ambiguous_milb_game_environment() -> None:
     certified = pl.DataFrame(
         {
             "game_pk": [1, 1],
