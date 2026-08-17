@@ -21,13 +21,39 @@ This is the **start-here file for a new chat, coding agent, or contributor**. Re
 
 ## Current project stage
 
-The source/data foundation, first batting Performance layer, historical affiliated-MiLB and MLB Current Talent evidence, chronological validation plumbing, MLB-anchored environment translation, exact age-as-of enrichment, and the first two results-only Current Talent baseline primitives are implemented.
+The project is now in **chronological Current Talent model validation**, not source plumbing.
 
-The candidate translation has shown **independent Aug. 1 stability in 2021, 2022, and 2023**. The strongest outcome components (K and BB/HBP) recover a coherent MLB difficulty ladder in all three seasons. Contact-shape components are materially noisier and are **not** being forced monotonic or promoted merely for aesthetics.
+Completed foundations include:
 
-**Baseline 0 and Baseline 1 are now implemented and unit-tested, but they have not yet been run through the real chronological future-target scoring gate. There is still no promoted Current Talent estimator.**
+- canonical/reuse-first public-data architecture;
+- first production-shaped batting Performance layer;
+- certified 2021–2023 affiliated-MiLB and MLB Current Talent evidence;
+- leakage-safe snapshot/future-target construction;
+- training-only MLB-anchored environment translation;
+- exact age-as-of enrichment;
+- Baseline 0 / Baseline 1 estimator primitives;
+- **the first real universal 2021-08-01 → 90-day predictive baseline gate**.
 
-The next modeling gate is therefore **real 2021 Baseline 0 / Baseline 1 materialization, mapping latent predictions into actual future environments, and 90-day proper-score/calibration validation**.
+The first real gate is promising: **Baseline 1 beats Baseline 0 on both event-weighted log loss and multinomial Brier over 344,391 future core events**, and the improvement is broad across target levels, transition classes, age bands, evidence bands, and all 12 profile components.
+
+However, **there is still no promoted/frozen Current Talent estimator**. This is one cutoff with candidate hyperparameters. Calibration is not uniformly better component-by-component, so the next gate is rolling-origin stability and hyperparameter/translation ablation, not richer features.
+
+## Governing Current Talent contract
+
+`docs/current-talent-validation-contract.md` remains authoritative.
+
+Key boundaries:
+
+- Current Talent = latent rate/profile ability **now**, conditional on opportunity.
+- Preserve the 12-component profile first; scalar value is secondary.
+- Environment effects are learned from training-period data only.
+- Predictor evidence must be strictly pre-cutoff.
+- Future outcomes are scored in the environment where they actually occur.
+- Primary target = next 90 calendar days; secondary 30/180/~365.
+- Zero future PA is not poor talent.
+- Validation is chronological / rolling-origin, never random split.
+- Proper scoring and calibration outrank prettier correlation.
+- Richer evidence must beat simple results-only baselines out of time.
 
 ## Completed milestones
 
@@ -35,7 +61,7 @@ The next modeling gate is therefore **real 2021 Baseline 0 / Baseline 1 material
 
 Source roles, provenance, canonical schemas, identity handling, event semantics, contact reconstruction, state replay, RE24, level/season capability gates, contextual bin-value policies, and typed persistence are implemented and tested.
 
-Primary references:
+References:
 
 - `docs/source-audit.md`
 - `docs/source-certification-current.md`
@@ -58,21 +84,19 @@ Certified workflow: `31948208695`
 
 ### 3. Historical affiliated-MiLB Current Talent evidence, 2021–2023
 
-All five post-reorganization affiliated level groups are certified for **2021, 2022, and 2023**.
+Checkpoint: `docs/current-talent-historical-milb-checkpoint.md`
 
-Runs:
+Certified runs:
 
 - 2021: `31979609553`
 - 2022: `31971662070`
 - 2023: `31971923778`
 
-2021 combined evidence: 180,523 player-games, 4,214 players, 704,360 PA.
+All five post-reorganization affiliated level groups are certified independently for each season.
 
-Checkpoint: `docs/current-talent-historical-milb-checkpoint.md`.
+### 4. Leakage-safe snapshots / future targets
 
-### 4. Leakage-safe snapshot / future-target surface
-
-Implemented modules:
+Implemented:
 
 - `src/universal_baseball/current_talent_evidence.py`
 - `src/universal_baseball/current_talent_validation.py`
@@ -81,21 +105,12 @@ Implemented modules:
 
 Frozen chronology:
 
-- predictor evidence: `game_date < as_of_date`
-- future target: `game_date >= as_of_date` and before exclusive horizon end
-- no fake within-day ordering from game PK / row order
-- actual as-of and future environments preserved
+- predictor evidence: `game_date < as_of_date`;
+- future target: `game_date >= as_of_date` and before the exclusive horizon end;
+- no fake within-day ordering from game PK / row order;
+- actual as-of and future environments preserved.
 
-Real 2021-08-01 → 90-day five-level MiLB validation run: `31980820797`
-
-- predictor players: 3,828
-- target players: 3,631
-- players on both sides: 3,245
-- scoring environment rows: 3,882
-- SAME_LEVEL: 3,144
-- PROMOTION: 523
-- DEMOTION: 212
-- AMBIGUOUS_AS_OF_ENVIRONMENT: 3
+Five-level MiLB 2021-08-01 → 90-day integration run: `31980820797`.
 
 ### 5. Historical MLB Current Talent evidence — 2021–2023 certified
 
@@ -104,21 +119,13 @@ Workflow: `.github/workflows/current-talent-historical-mlb-season.yml` — **man
 
 Certified runs:
 
-- 2021: `31986504169`
-- 2022: `31988255280`
-- 2023: `31989561396`
+- 2021: `31986504169` — 181,818 PA
+- 2022: `31988255280` — 182,052 PA
+- 2023: `31989561396` — 184,104 PA
 
-| Season | Players | Player-games | PA | BB+HBP | K | Expected contacts | Observed contacts | Contact residual |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 2021 | 1,049 | 51,476 | 181,818 | 17,906 | 42,145 | 121,705 | 121,707 | +2 |
-| 2022 | 693 | 48,325 | 182,052 | 16,899 | 40,812 | 124,267 | 124,269 | +2 |
-| 2023 | 656 | 48,763 | 184,104 | 17,931 | 41,843 | 124,234 | 124,236 | +2 |
+Every season reconciles exactly to independent official MLB player × actual AL/NL × season totals for PA, BB/HBP, K, expected-contact opportunity, and special non-contact outcomes. The remaining +2 physical-contact residual per season is an ADR-024 diagnostic, not a repaired result count.
 
-Every season reconciles exactly to independent official MLB player × AL/NL × season totals for PA, BB/HBP, K, expected-contact opportunity, and special non-contact outcomes. The +2 physical-contact residuals are ADR-024 diagnostics only.
-
-Frozen historical semantics include two-strike mid-PA batter substitution attribution, interference-error outcomes, explicit 2021–2024 `ATH -> OAK`, and bounded Savant transport retries/caching.
-
-### 6. MLB-anchored candidate environment translation — three-year stability gate passed
+### 6. MLB-anchored environment translation — three-year stability gate passed
 
 Implementation:
 
@@ -126,109 +133,31 @@ Implementation:
 - `scripts/materialize_current_talent_translation_support.py`
 - `.github/workflows/current-talent-translation-support.yml` — **manual-only**
 
-Candidate method: `matched_adjacent_stint_clr_wls_v1`
+Candidate method: `matched_adjacent_stint_clr_wls_v1`.
 
 Policy:
 
-- fit only on training games strictly before cutoff;
+- training games strictly before cutoff only;
 - chronological player environment stints;
 - same-day multi-environment ambiguity breaks continuity;
-- only adjacent observed stints paired;
-- sparse intermediate stops cannot be skipped to manufacture a transition;
-- 12-component profile uses symmetric-pseudocount CLR (`0.5`);
+- adjacent observed stints only;
+- sparse intermediate stops cannot be skipped to manufacture transitions;
+- 12-component symmetric-pseudocount CLR (`0.5`);
 - pair weight = `n1*n2/(n1+n2)`;
 - weighted graph least squares with `MLB = 0` anchor;
 - fail closed unless every fitted level connects to MLB.
 
-#### 2021-08-01 candidate
+Independent Aug. 1 fits succeeded in 2021, 2022, and 2023. K and BB/HBP recover a coherent level ladder across all three years; contact-shape effects are noisier and are **not** constrained to look monotonic.
 
-Run: `31992143231` (readable-offset rerun; first successful fit was `31991928288`)
+Reference runs:
 
-- 665 eligible cross-level pairs / 562 players
-- all 6 levels connected to MLB
-- max graph distance to MLB: 2
-- AAA→MLB: 122 pairs; MLB→AAA: 112
+- 2021 readable-offset fit: `31992143231`
+- 2022: `31992265175`
+- 2023: see translation-support history / checkpoint notes
 
-K CLR environment effects vs MLB:
+This is still a **candidate observation layer** until predictive ablation confirms that translation improves held-out scoring.
 
-- Rookie: **-1.015**
-- Single-A: **-0.707**
-- High-A: **-0.482**
-- AA: **-0.418**
-- AAA: **-0.365**
-- MLB: 0
-
-BB/HBP:
-
-- Rookie: **+0.860**
-- Single-A: **+0.732**
-- High-A: **+0.500**
-- AA: **+0.312**
-- AAA: **+0.228**
-- MLB: 0
-
-#### 2022-08-01 candidate
-
-Run: `31992265175`
-
-- 809 eligible cross-level pairs / 637 players
-- all 6 levels connected to MLB
-- AAA→MLB: 161 pairs; MLB→AAA: 114
-
-K:
-
-- Rookie: **-0.705**
-- Single-A: **-0.419**
-- High-A: **-0.292**
-- AA: **-0.294**
-- AAA: **-0.242**
-- MLB: 0
-
-BB/HBP:
-
-- Rookie: **+0.739**
-- Single-A: **+0.673**
-- High-A: **+0.450**
-- AA: **+0.417**
-- AAA: **+0.267**
-- MLB: 0
-
-#### 2023-08-01 candidate
-
-Run: `31992265175`
-
-- 825 eligible cross-level pairs / 639 players
-- all 6 levels connected to MLB
-- AAA→MLB: 163 pairs; MLB→AAA: 120
-
-K:
-
-- Rookie: **-0.844**
-- Single-A: **-0.518**
-- High-A: **-0.402**
-- AA: **-0.279**
-- AAA: **-0.286**
-- MLB: 0
-
-BB/HBP:
-
-- Rookie: **+0.920**
-- Single-A: **+0.813**
-- High-A: **+0.566**
-- AA: **+0.484**
-- AAA: **+0.416**
-- MLB: 0
-
-Interpretation:
-
-- **BB/HBP is monotonically ordered by level in all three independent seasons.**
-- **K has the same clear ladder**, with only tiny AA/AAA inversions in 2022 (~0.002) and 2023 (~0.006).
-- K is consistently the cleanest fit component (weighted residual RMSE roughly **0.39–0.43**).
-- BB/HBP is also useful (roughly **0.51–0.62** RMSE).
-- Contact-shape components are substantially noisier / less monotonic. Do **not** constrain or promote them merely to make the ladder prettier.
-- This stability result supports carrying the candidate translation into predictive baseline testing, **not freezing it as final**.
-
-### 7. Exact age-as-of enrichment — 2021 coverage gate passed
+### 7. Exact age-as-of enrichment
 
 Implementation:
 
@@ -236,94 +165,168 @@ Implementation:
 - `scripts/audit_current_talent_age_coverage.py`
 - `.github/workflows/current-talent-age-coverage.yml` — **manual-only**
 
-Age is derived from the pinned Chadwick Register DOB fields at the explicit cutoff. Partial/missing DOB is not imputed; duplicate requested MLBAM identities or invalid complete DOBs fail closed.
+2021-08-01 audit run: `31992658592`.
 
-2021-08-01 audit run: `31992658592`
-
-- universal training players: **4,315**
+- universal predictor players: **4,315**
 - exact DOB / exact age-as-of: **4,315**
 - coverage: **100.0%**
 - missing exact age: **0**
-- observed age range: approximately **16.93–41.54 years**
 
-The first baseline fit therefore requires no age-imputation branch.
+Age is derived from the pinned Chadwick DOB at the explicit cutoff; a mutable current-age field is not stored.
 
-### 8. Current Talent Baseline 0 / Baseline 1 primitives implemented and tested
+### 8. Baseline 0 / Baseline 1 primitives
 
 Checkpoint: `docs/current-talent-baseline-checkpoint.md`  
-Implementation CI: **`31992880494` — passed**.
+Implementation CI: `31992880494` — passed.
 
 Implementation:
 
 - `src/universal_baseball/current_talent_baselines.py`
 - `tests/test_current_talent_baselines.py`
 
-#### Baseline 0
-
-Method: `loo_age_level_population_prior_v1`
+Baseline 0 — `loo_age_level_population_prior_v1`:
 
 - no player-specific recent Performance in the predicted player's prior;
 - exact age-as-of + actual unambiguous current level;
 - default 2-year age band;
-- preferred same-level + same-age-band leave-one-out peers;
-- default minimum preferred peers: 12;
-- fallback to same level, then global other-player pool only if needed;
-- player explicitly excluded from every peer pool;
-- peer evidence is already on the MLB latent reporting scale.
+- same-level + same-age-band leave-one-out peers preferred;
+- default minimum preferred peers = 12;
+- fallback to same level, then global other-player pool only when necessary;
+- player is explicitly excluded from every peer pool.
 
-#### Baseline 1
-
-Method: `translated_recency_empirical_bayes_v1`
+Baseline 1 — `translated_recency_empirical_bayes_v1`:
 
 - recency-weighted player core-profile evidence;
-- evidence is aggregated at player × level first;
-- each level segment is translated to MLB scale **before** a player's multi-level evidence is pooled;
+- aggregate at player × level first;
+- translate each level segment to MLB scale **before** multi-level pooling;
 - empirical-Bayes shrinkage toward Baseline 0;
-- default prior strength: **100 effective core events**.
+- current candidate prior strength = 100 effective core events.
 
-Regression tests verify translation direction, evidence conservation, translated multi-level aggregation, leave-one-out behavior, fallback behavior, shrinkage, and profile normalization.
+### 9. First real chronological Baseline 0 / Baseline 1 predictive gate — passed
 
-These are **implementation primitives, not validated model winners**. Their defaults remain candidate hyperparameters until chronological scoring is complete.
+Primary diagnostic rerun: **`31993773737`**  
+First successful scoring run: `31993534180`  
+Workflow: `.github/workflows/current-talent-baseline-validation.yml` — **manual-only after bootstrap cleanup**.  
+Artifact from diagnostic rerun: `current-talent-baseline-validation-2021-2021-08-01`.
+
+Implementation added:
+
+- `src/universal_baseball/current_talent_scoring.py`
+- `src/universal_baseball/current_talent_score_diagnostics.py`
+- `scripts/materialize_current_talent_baseline_validation.py`
+- `tests/test_current_talent_scoring.py`
+- `tests/test_current_talent_score_diagnostics.py`
+
+#### Gate design
+
+For `2021-08-01`:
+
+1. combine certified MLB + five affiliated-MiLB level evidence;
+2. fit the environment translation using **only games before the cutoff**;
+3. derive exact age at the cutoff from pinned Chadwick;
+4. build Baseline 0 / Baseline 1 using pre-cutoff evidence only;
+5. map MLB-scale latent profiles into each **realized future target level** with the training-only level effect;
+6. score all eligible future core events in the next 90 days;
+7. retain aggregate, level, transition, age-band, evidence-band, component, and reliability diagnostics.
+
+Current candidate predictor settings used for this gate:
+
+- season-to-date evidence;
+- 90-day recency half-life;
+- Baseline 1 prior strength = 100 effective core events;
+- Baseline 0 age-band width = 2 years;
+- minimum preferred age-level peers = 12.
+
+**None of these hyperparameters are frozen from this single cutoff.**
+
+#### Coverage
+
+- combined universal evidence: **4,715 players / 231,999 player-games / 886,178 PA**
+- predictor players before cutoff: **4,315**
+- exact-age coverage: **4,315 / 4,315**
+- players receiving a Baseline 0/1 profile: **4,301**
+- 14 predictor players were excluded because their current environment was ambiguous under the fail-closed as-of rule
+- raw validation players with predictor + future target: **3,730**
+- baseline-scored players: **3,722**
+- therefore 8 otherwise-scoreable future players were among the 14 ambiguous-environment baseline exclusions
+- scored target-environment rows: **4,634**
+- future core events scored: **344,391**
+- target players with no pre-cutoff predictor evidence remain coverage-only: **400**
+
+Baseline 0 peer pools:
+
+- same age-band + level: **4,256 players**
+- same-level fallback: **45 players**
+- global fallback: **0**
+
+#### Aggregate proper scores
+
+| Model | Event-weighted log loss | Multinomial Brier |
+|---|---:|---:|
+| Baseline 0 | 2.268828 | 0.872730 |
+| Baseline 1 | **2.252931** | **0.868446** |
+
+Baseline 1 minus Baseline 0:
+
+- log loss: **-0.015896**
+- Brier: **-0.004284**
+
+Lower is better for both metrics.
+
+#### Breadth of the Baseline 1 gain
+
+The diagnostic rerun persists these comparisons directly in the artifact.
+
+Baseline 1 improved **both log loss and Brier in all 21 separate diagnostic strata**:
+
+- all **6 target levels**;
+- all **5 aggregate transition classes** represented (`SAME_LEVEL`, `PROMOTION`, `DEMOTION`, `MLB_DEBUT`, `MLB_TO_MILB`);
+- all **5 fixed age bands**;
+- all **5 fixed effective-evidence bands**.
+
+It also improved both proper-score contributions in **all 12 core profile components**.
+
+The evidence-volume pattern is directionally sensible for empirical Bayes: the Baseline 1 advantage is smallest below 25 effective core events and grows as player evidence increases.
+
+Do not over-interpret tiny level × transition cross-product cells; the broad claim above is about the separate fixed strata, not every sparse intersection.
+
+#### Calibration caveat
+
+Proper scoring improved broadly, but reliability calibration did **not** improve uniformly for every component.
+
+Examples from the 2021 gate:
+
+- BB/HBP reliability improved materially;
+- several contact components improved slightly;
+- K reliability ECE worsened slightly despite K proper-score contribution improving.
+
+Therefore this gate supports continuing with Baseline 1, **not freezing or promoting it yet**. Calibration and hyperparameter selection remain active validation questions.
 
 ## Important boundaries / not complete
 
 Still not frozen or validated:
 
-- real 2021 Baseline 0 / Baseline 1 predictions on the full universal cutoff population;
-- mapping the latent MLB-scale prediction into each actual future target environment for likelihood scoring;
-- whether Baseline 1 beats Baseline 0 out of time;
-- whether the candidate translation improves future prediction versus no-translation alternatives;
-- whether level-only translation is sufficient or actual league/season residual effects add out-of-time value;
+- whether Baseline 1's 2021 win survives independent later cutoffs/seasons;
 - selected recency window / half-life;
 - 2-year age-band width, 12-peer threshold, and 100-core-event EB prior strength;
-- rolling-origin log loss / Brier / calibration validation;
+- whether the candidate environment translation itself improves future prediction versus a no-translation/simple alternative;
+- whether level-only translation is sufficient or actual league/season residual effects add out-of-time value;
+- calibration stability / calibration model, especially by component;
 - final uncertainty model;
 - Baseline 2 / richer process-tracking-scouting inputs;
-- Projection, playing time/role, WAR/value, defense integration, or final ranking.
+- Projection, future aging/development, playing time/role, defense, WAR/value, or final ranking.
 
-The 90-day future target currently uses complete future player-game evidence. The contract's exact **200-PA aggregate diagnostic cap is not yet applied** because the certified backbone is player-game aggregate. Do not invent within-game PA order to force exactly 200; use a certified complete-game cap policy or true PA-grain target surface first.
-
-## Governing Current Talent contract
-
-`docs/current-talent-validation-contract.md` remains authoritative:
-
-- Current Talent = latent rate/profile ability **now**, conditional on opportunity.
-- Preserve component profile first; scalar value is secondary.
-- Environment effects learned from training-period data only.
-- Primary target = next 90 calendar days; secondary 30/180/~365.
-- Zero future PA is not poor talent.
-- Promotions/demotions scored in actual future environment.
-- Validation is chronological / rolling-origin, never random split.
-- Proper scoring and calibration outrank prettier correlation.
-- Richer evidence must beat simple results-only baselines out of time.
+The 90-day future target currently uses complete future player-game evidence. The contract's exact **200-PA player-aggregate diagnostic cap is not yet applied** because the certified backbone is player-game aggregate. Do not invent within-game PA order to force exactly 200; use a certified complete-game cap policy or true PA-grain target surface first. This does not affect the event-likelihood scoring above, which intentionally uses all eligible future events in the horizon.
 
 ## Recommended next batch
 
-1. Materialize real **2021-08-01 Baseline 0 and Baseline 1** profiles from the certified universal predictor evidence, exact age-as-of context, and training-only translation fit.
-2. Map each latent MLB-scale profile into the **actual target environment** represented by each future scoring row, then compute 90-day multinomial/component log loss, Brier score, and calibration.
-3. Compare at minimum environment-prior vs translated empirical-Bayes variants and stratify by level, age, evidence volume, and promotion/demotion transition before adding complexity.
+**Do not add richer features yet.**
 
-Do not skip directly to Baseline 2, tracking/process features, Projection, or ranking.
+1. Extend the existing baseline-validation gate to **independent chronological cutoffs/seasons**, beginning with later certified 2022/2023 surfaces and additional in-season cutoffs where the 90-day target remains observable.
+2. Compare a small predeclared set of simple predictor windows / EB prior strengths inside chronology rather than tuning on the 2021-08-01 result alone.
+3. Add a clean **translation ablation** (candidate MLB translation vs simpler/no-translation observation treatment) so predictive value of the translation itself is measured rather than assumed.
+4. Require stability in proper scores **and** acceptable calibration across years, levels, evidence bands, and promotion/demotion classes before freezing Baseline 1.
+5. Only after that baseline is frozen should Baseline 2 or richer process/tracking/scouting evidence be tested.
 
 ## Useful workflows / scripts
 
@@ -335,6 +338,7 @@ Manual live/reuse workflows:
 - `.github/workflows/current-talent-validation-snapshot-multilevel.yml`
 - `.github/workflows/current-talent-translation-support.yml`
 - `.github/workflows/current-talent-age-coverage.yml`
+- `.github/workflows/current-talent-baseline-validation.yml`
 
 Key materializers / audits:
 
@@ -344,6 +348,7 @@ Key materializers / audits:
 - `scripts/materialize_current_talent_validation_snapshot_multilevel.py`
 - `scripts/materialize_current_talent_translation_support.py`
 - `scripts/audit_current_talent_age_coverage.py`
+- `scripts/materialize_current_talent_baseline_validation.py`
 
 ## If starting a new chat
 
@@ -351,4 +356,4 @@ Key materializers / audits:
 2. Read `docs/current-talent-validation-contract.md`.
 3. Read `docs/current-talent-baseline-checkpoint.md`.
 4. Inspect current `source-certification-poc` head before editing.
-5. Continue with **real 2021 Baseline 0 / Baseline 1 materialization and chronological future-target scoring**; do not re-audit closed source, MLB certification, age-coverage, or translation-support questions.
+5. Continue with **rolling-origin / multi-cutoff Baseline 0 vs Baseline 1 validation plus a translation ablation**. Do not re-audit closed source, historical certification, age coverage, translation-support plumbing, or the first 2021 scoring gate unless a regression specifically fails.
