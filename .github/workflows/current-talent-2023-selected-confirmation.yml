@@ -3,6 +3,9 @@ name: Current Talent 2023 selected-candidate confirmation
 on:
   # Trigger when the development-selected candidate is persisted. The workflow-file
   # path also allows a one-time bootstrap if the checkpoint already exists.
+  # Note: commits pushed by a workflow's GITHUB_TOKEN do not trigger a second
+  # workflow, so an explicit workflow-file update/dispatch may be needed when the
+  # selected-candidate checkpoint itself was persisted by GitHub Actions.
   push:
     branches:
       - source-certification-poc
