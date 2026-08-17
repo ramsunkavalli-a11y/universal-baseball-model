@@ -24,6 +24,12 @@ from universal_baseball.current_talent_baselines import (
     fit_leave_one_out_age_level_prior,
 )
 from universal_baseball.current_talent_evidence import EvidenceWindow
+from universal_baseball.current_talent_score_diagnostics import (
+    add_diagnostic_bands,
+    build_calibration_summary,
+    build_component_proper_score_contributions,
+    build_separate_stratified_metrics,
+)
 from universal_baseball.current_talent_scoring import (
     project_latent_profiles_to_target_environment,
     score_current_talent_profiles,
@@ -146,12 +152,53 @@ def _aggregate_metric_rows(frame: pl.DataFrame) -> dict[str, dict[str, object]]:
     if frame.is_empty():
         return {}
     return {
-        str(row["model"]): {
-            key: value
-            for key, value in row.items()
-            if key != "model"
-        }
+        str(row["model"]): {key: value for key, value in row.items() if key != "model"}
         for row in frame.iter_rows(named=True)
+    }
+
+
+def _paired_win_summary(
+    frame: pl.DataFrame,
+    *,
+    key_columns: tuple[str, ...],
+    log_metric: str,
+    brier_metric: str,
+) -> dict[str, object]:
+    if frame.is_empty():
+        return {
+            "comparison_count": 0,
+            "baseline1_log_loss_win_count": 0,
+            "baseline1_brier_win_count": 0,
+        }
+    by_model: dict[str, dict[tuple[object, ...], dict[str, object]]] = {
+        "baseline0": {},
+        "baseline1": {},
+    }
+    for row in frame.iter_rows(named=True):
+        model = str(row["model"])
+        if model not in by_model:
+            continue
+        key = tuple(row[column] for column in key_columns)
+        by_model[model][key] = dict(row)
+    shared = sorted(set(by_model["baseline0"]) & set(by_model["baseline1"]), key=str)
+    log_deltas = [
+        float(by_model["baseline1"][key][log_metric])
+        - float(by_model["baseline0"][key][log_metric])
+        for key in shared
+    ]
+    brier_deltas = [
+        float(by_model["baseline1"][key][brier_metric])
+        - float(by_model["baseline0"][key][brier_metric])
+        for key in shared
+    ]
+    return {
+        "comparison_count": len(shared),
+        "baseline1_log_loss_win_count": sum(delta < 0 for delta in log_deltas),
+        "baseline1_brier_win_count": sum(delta < 0 for delta in brier_deltas),
+        "best_log_loss_delta": min(log_deltas) if log_deltas else None,
+        "worst_log_loss_delta": max(log_deltas) if log_deltas else None,
+        "best_brier_delta": min(brier_deltas) if brier_deltas else None,
+        "worst_brier_delta": max(brier_deltas) if brier_deltas else None,
     }
 
 
@@ -253,11 +300,21 @@ def main() -> int:
             suffix="_translated",
         )
     )
+    scoring_context = add_diagnostic_bands(scoring_context)
     score_report = score_current_talent_profiles(
         projected,
         validation.target_profile,
         scoring_context=scoring_context,
     )
+    separate_strata = build_separate_stratified_metrics(
+        score_report.environment_scores,
+        scoring_context,
+    )
+    component_scores = build_component_proper_score_contributions(
+        projected,
+        validation.target_profile,
+    )
+    calibration_summary = build_calibration_summary(score_report.component_calibration)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     output_tables = {
@@ -273,8 +330,19 @@ def main() -> int:
         "projected_target_profile": _write_table(projected, args.output_dir, "projected_target_profile"),
         "environment_scores": _write_table(score_report.environment_scores, args.output_dir, "environment_scores"),
         "component_calibration": _write_table(score_report.component_calibration, args.output_dir, "component_calibration"),
+        "calibration_summary": _write_table(calibration_summary, args.output_dir, "calibration_summary"),
+        "component_proper_score_contributions": _write_table(
+            component_scores,
+            args.output_dir,
+            "component_proper_score_contributions",
+        ),
         "aggregate_metrics": _write_table(score_report.aggregate_metrics, args.output_dir, "aggregate_metrics"),
         "stratified_metrics": _write_table(score_report.stratified_metrics, args.output_dir, "stratified_metrics"),
+        "separate_stratified_metrics": _write_table(
+            separate_strata,
+            args.output_dir,
+            "separate_stratified_metrics",
+        ),
     }
 
     aggregate = _aggregate_metric_rows(score_report.aggregate_metrics)
@@ -295,10 +363,14 @@ def main() -> int:
         }
 
     peer_source_counts = Counter(
-        str(value) for value in prior.select("player_id", "prior_peer_source").unique().get_column("prior_peer_source").to_list()
+        str(value)
+        for value in prior.select("player_id", "prior_peer_source")
+        .unique()
+        .get_column("prior_peer_source")
+        .to_list()
     )
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "accepted": True,
         "season": int(args.season),
         "as_of_date": cutoff.isoformat(),
@@ -314,6 +386,10 @@ def main() -> int:
             "min_age_level_peers": int(args.min_age_level_peers),
             "min_core_events_per_translation_stint": int(args.min_core_events_per_stint),
             "translation_max_gap_days": int(args.max_gap_days),
+        },
+        "diagnostic_bands_not_model_features": {
+            "age": ["<20", "20-21.9", "22-23.9", "24-26.9", "27+"],
+            "effective_translated_core_events": ["<25", "25-49", "50-99", "100-199", "200+"],
         },
         "inputs": inputs,
         "combined_evidence_metrics": combination_metrics,
@@ -332,12 +408,24 @@ def main() -> int:
         "score_metrics": score_report.metrics,
         "aggregate_proper_scores": aggregate,
         "baseline_comparison": comparison,
+        "baseline1_stratum_win_summary": _paired_win_summary(
+            separate_strata,
+            key_columns=("stratum_type", "stratum_value"),
+            log_metric="event_weighted_log_loss",
+            brier_metric="event_weighted_multinomial_brier",
+        ),
+        "baseline1_component_win_summary": _paired_win_summary(
+            component_scores,
+            key_columns=("core_bin",),
+            log_metric="multinomial_log_loss_contribution",
+            brier_metric="binary_brier_contribution",
+        ),
         "output_tables": output_tables,
         "interpretation": (
             "First chronological universal Baseline 0/Baseline 1 predictive validation gate. "
             "All translation and predictor evidence is strictly pre-cutoff; future core outcomes "
-            "are scored in their realized target level. Candidate hyperparameters are not frozen "
-            "from this single cutoff."
+            "are scored in their realized target level. Candidate hyperparameters and diagnostic "
+            "bands are not frozen from this single cutoff."
         ),
     }
     report_path = args.output_dir / "report.json"
