@@ -41,6 +41,7 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 2. Make changes in small batches of roughly **2–3 steps**.
 3. Verify each batch before expanding scope so an early assumption cannot contaminate a large downstream change.
 4. Keep heavy live-source certification workflows manual after their gate passes; keep deterministic regression tests in normal CI.
-5. Pause for an explicit modeling decision when an unresolved assumption could materially change downstream architecture rather than papering over it in code.
+5. **Update `docs/project-status.md` at meaningful junctures before continuing**—especially after a major gate passes, a material architecture/modeling decision is frozen, or the recommended next batch changes. This handoff discipline is part of the workflow, not optional cleanup.
+6. Pause for an explicit modeling decision when an unresolved assumption could materially change downstream architecture rather than papering over it in code.
 
 Foundation work should favor correctness, reversibility, explicit evidence, and reproducibility over speed.
