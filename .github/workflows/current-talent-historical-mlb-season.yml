@@ -1,6 +1,12 @@
 name: Current Talent historical MLB season
 
 on:
+  # One-time bootstrap for the independent 2022 gate; remove after the run resolves.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - .github/workflows/current-talent-historical-mlb-season.yml
   workflow_dispatch:
     inputs:
       season:
@@ -22,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      TARGET_SEASON: ${{ inputs.season }}
+      TARGET_SEASON: ${{ inputs.season || '2022' }}
 
     steps:
       - name: Check out repository
