@@ -1,7 +1,7 @@
 name: Current Talent historical MLB season
 
 on:
-  # One-time validation retry after outcome-normalization fixes; remove after success.
+  # One-time validation retry for the narrowed 2021 outcome rules; remove after success.
   push:
     branches:
       - source-certification-poc
@@ -55,7 +55,7 @@ jobs:
           name: current-talent-historical-mlb-2021
           path: .
           repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: 31984161728
+          run-id: 31986174137
           github-token: ${{ github.token }}
       - name: Materialize historical MLB player-game evidence
         run: >-
