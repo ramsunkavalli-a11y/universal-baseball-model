@@ -8,7 +8,7 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 The active draft PR is **#1 — Build and certify universal baseball foundation layer**.
 
-**Current stage:** Baseline 1 has beaten Baseline 0 with unchanged candidate settings at Aug. 1 cutoffs in **2021, 2022, and 2023**. A controlled translation ablation shows the learned level effects add only a small incremental Baseline 1 log-loss benefit; the main predictive gain comes from player-specific recent evidence + empirical-Bayes shrinkage. The next gate is fixed-setting **July 1** validation carrying both fitted and zero-offset translation variants. No Current Talent model is frozen yet.
+**Current stage:** Baseline 1 has beaten Baseline 0 with unchanged candidate settings at Aug. 1 cutoffs in **2021–2023** and at July 1 in **2022–2023**. The 2021 July 1 fold correctly fails closed because Rookie/complex does not yet have a supported pre-cutoff translation. Fitted translation adds only a small incremental aggregate benefit; the main predictive gain comes from player-specific recent evidence + empirical-Bayes shrinkage. The next gate is a **2021-07-15** support/validation probe without weakening translation rules. No Current Talent model is frozen yet.
 
 ## Core principles
 
@@ -24,7 +24,7 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 
 - [`docs/project-status.md`](docs/project-status.md) — **canonical current handoff / roadmap**.
 - [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target, chronology, baseline, and validation contract.
-- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — Baseline 0/1 implementation, fixed-parameter **2021–2023 Aug. 1 predictive stability**, and the completed fitted-vs-zero translation ablation.
+- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — Baseline 0/1 implementation, Aug. stability, fitted-vs-zero translation ablation, and the July 1 support boundary/results.
 - [`docs/current-talent-historical-mlb-checkpoint.md`](docs/current-talent-historical-mlb-checkpoint.md) — certified 2021–2023 historical MLB Current Talent evidence and official reconciliation rules.
 - [`docs/current-talent-historical-milb-checkpoint.md`](docs/current-talent-historical-milb-checkpoint.md) — certified 2021–2023 historical affiliated-MiLB evidence.
 - [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — first production-shaped completed-2024 affiliated batting Performance materialization.
