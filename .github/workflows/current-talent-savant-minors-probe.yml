@@ -32,9 +32,11 @@ jobs:
           python -m pytest
           tests/test_current_talent_savant_minors.py
           tests/test_current_talent_savant_minors_capture.py
+          tests/test_current_talent_savant_minors_capture_coverage.py
           tests/test_current_talent_batted_ball_quality.py
           tests/test_current_talent_batted_ball_standardization.py
           tests/test_current_talent_batted_ball_source_diagnostics.py
+          tests/test_current_talent_batted_ball_game_coverage.py
           tests/test_current_talent_batted_ball_source_audit.py
           tests/test_current_talent_batted_ball_reconciliation.py
           tests/test_current_talent_batted_ball_materialization.py
