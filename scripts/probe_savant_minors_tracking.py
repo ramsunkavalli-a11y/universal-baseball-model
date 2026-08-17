@@ -23,6 +23,9 @@ from pathlib import Path
 import polars as pl
 import requests
 
+from universal_baseball.current_talent_batted_ball_game_coverage import (
+    build_certified_game_tracking_coverage,
+)
 from universal_baseball.current_talent_batted_ball_materialization import (
     materialize_reconciled_tracked_bbe,
 )
@@ -117,6 +120,7 @@ def _load_certified_player_games(root: Path, season: int) -> pl.DataFrame:
         )
     frames = [
         pl.read_parquet(path).select(
+            pl.col("game_date").cast(pl.String).str.to_date(strict=False).alias("game_date"),
             pl.col("game_pk").cast(pl.Int64),
             pl.col("player_id").cast(pl.Int64),
             pl.col("league_id").cast(pl.Int64),
@@ -129,10 +133,12 @@ def _load_certified_player_games(root: Path, season: int) -> pl.DataFrame:
         .unique()
         .with_columns(pl.lit(season).cast(pl.Int64).alias("season"))
     )
+    if combined.filter(pl.col("game_date").is_null()).height:
+        raise ValueError("certified MiLB evidence contains invalid game_date")
     duplicate = (
         combined.group_by(["game_pk", "player_id"])
         .agg(
-            pl.struct(["season", "level_group", "league_id"])
+            pl.struct(["game_date", "season", "level_group", "league_id"])
             .n_unique()
             .alias("environment_count")
         )
@@ -182,7 +188,15 @@ def main() -> int:
         pl.col("launch_angle").cast(pl.Float64, strict=False),
     ).drop_nulls(["game_pk", "player_id"])
 
-    certified = _load_certified_player_games(args.certified_milb_root, season)
+    certified_all = _load_certified_player_games(args.certified_milb_root, season)
+    certified = certified_all.filter(pl.col("game_date") == pl.lit(parsed_probe_date))
+    if certified.is_empty():
+        raise ValueError(f"certified MiLB evidence has no games on probe date {probe_date}")
+
+    game_coverage, game_coverage_metrics = build_certified_game_tracking_coverage(
+        raw,
+        certified,
+    )
     reconciled = projected.join(
         certified.select("game_pk", "player_id", "level_group", "league_id"),
         on=["game_pk", "player_id"],
@@ -258,6 +272,7 @@ def main() -> int:
     )
     header_inventory.write_csv(args.output_dir / "column_inventory.csv")
     by_level.write_csv(args.output_dir / "tracking_observations_by_certified_level.csv")
+    game_coverage.write_csv(args.output_dir / "certified_game_tracking_coverage.csv")
     canonical_by_level.write_csv(args.output_dir / "canonical_model_bbe_by_certified_level.csv")
     reconciled.head(500).write_csv(args.output_dir / "broad_reconciled_sample.csv")
     canonical.head(500).write_csv(args.output_dir / "canonical_model_bbe_sample.csv")
@@ -268,7 +283,7 @@ def main() -> int:
     }
 
     report = {
-        "report_schema_version": "0.4",
+        "report_schema_version": "0.5",
         "probe_date": probe_date,
         "season": season,
         "source": "Baseball Savant Minor League Statcast Search official CSV",
@@ -289,6 +304,10 @@ def main() -> int:
         "certified_match_share": (
             matched_keys.height / reconciled_keys.height if reconciled_keys.height else None
         ),
+        "certified_game_tracking_coverage": {
+            **game_coverage_metrics,
+            "by_environment": game_coverage.to_dicts(),
+        },
         "bbe_like_observation_count": bbe_like.height,
         "bbe_like_with_any_ev_or_la_count": tracked_observation.height,
         "bbe_like_with_complete_ev_la_count": complete_observation.height,
@@ -312,10 +331,11 @@ def main() -> int:
         "raw_column_names": raw.columns,
         "raw_response_file": str(raw_path),
         "decision_boundary": (
-            "A successful run certifies the tracked-only request, required schema, certified "
-            "game/player identity, broad EV/LA capability, and corrected result-producing/non-bunt "
-            "pitch-grain BBE projection on these tiny historical dates. It does not certify "
-            "full-season completeness or authorize a richer model without the later development gate."
+            "A successful run certifies the tracked-only request, required schema, exact-date "
+            "certified game denominator, certified game/player identity, broad EV/LA capability, "
+            "and corrected result-producing/non-bunt pitch-grain BBE projection on these tiny "
+            "historical dates. It does not certify full-season completeness or authorize a richer "
+            "model without the later development gate."
         ),
     }
     (args.output_dir / "report.json").write_text(json.dumps(report, indent=2) + "\n")
@@ -324,6 +344,10 @@ def main() -> int:
         raise ValueError(
             f"Minor League Savant rows did not reconcile to certified {season} evidence"
         )
+    if int(game_coverage_metrics["certified_game_count"]) <= 0:
+        raise ValueError("Minor League Savant probe has no certified game denominator")
+    if int(game_coverage_metrics["tracked_game_count"]) <= 0:
+        raise ValueError("Minor League Savant probe returned no certified tracked games")
     if complete_observation.is_empty():
         raise ValueError("Minor League Savant probe found no complete EV/LA source observations")
     if canonical.is_empty():
