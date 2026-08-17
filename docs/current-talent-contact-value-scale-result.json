@@ -1,0 +1,64 @@
+{
+  "report_schema_version": "0.1",
+  "gate": "current_talent_contact_value_scale_source_feasibility",
+  "status": "PASSED",
+  "authoritative_workflow_run_id": "32056682313",
+  "authoritative_run_attempt": 5,
+  "artifact_id": "9297361481",
+  "artifact_name": "current-talent-contact-value-scale",
+  "artifact_digest": "sha256:4acb317160c506c33311f94956efd8694663c54a05607a7dc54d2f85cb2a3d01",
+  "cutoff_date_exclusive": "2021-07-15",
+  "development_or_confirmation_data_used": false,
+  "model_scoring_performed": false,
+  "game_count": 1348,
+  "game_types": [
+    "regular",
+    "playoff"
+  ],
+  "observed_state_count": 24,
+  "transition_count": 103534,
+  "contact_target_count": 65572,
+  "unsupported_contact_target_count": 0,
+  "missing_re24_target_count": 0,
+  "retrosheet_archive_sha256": "6c1503885a22f4fdd4f2195e78905839883406bf7bff5a7e1c11069a6bbde765",
+  "retrosheet_url": "https://www.retrosheet.org/downloads/plays/2021plays.zip",
+  "value_definition": "Event-weighted mean contextual RE24 within frozen parsed terminal outcome group, using a run-expectancy matrix estimated only from regular-season 2021 MLB state transitions with event date strictly before 2021-07-15.",
+  "terminal_outcome_values": {
+    "1B": {
+      "value": 0.4651970407443663,
+      "event_count": 13526
+    },
+    "2B": {
+      "value": 0.7665843002990237,
+      "event_count": 4208
+    },
+    "3B": {
+      "value": 1.0004100521698496,
+      "event_count": 352
+    },
+    "HR": {
+      "value": 1.3834396983847337,
+      "event_count": 3193
+    },
+    "ROE": {
+      "value": 0.43273757678346964,
+      "event_count": 732
+    },
+    "FC_REACH": {
+      "value": 0.1558534038205505,
+      "event_count": 357
+    },
+    "SF": {
+      "value": -0.06260868067734615,
+      "event_count": 610
+    },
+    "MULTI_OUT": {
+      "value": -0.8151401718384932,
+      "event_count": 2043
+    },
+    "OUT": {
+      "value": -0.24975231369042597,
+      "event_count": 40551
+    }
+  }
+}
