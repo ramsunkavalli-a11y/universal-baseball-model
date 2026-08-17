@@ -1,13 +1,17 @@
 """Deterministic batted-ball-quality evidence for richer Current Talent challengers.
 
-This module projects complete observed, result-producing Savant batted balls to a
-small canonical surface, builds leakage-safe player features at an as-of cutoff,
-and applies already-fitted contact-shape residual coefficients to frozen Baseline
-2.
+This module projects complete observed, result-producing non-bunt Savant batted
+balls to a small canonical surface, builds leakage-safe player features at an
+as-of cutoff, and applies already-fitted contact-shape residual coefficients to
+frozen Baseline 2.
 
 Savant may report launch metrics on non-result contact pitches such as fouls. The
 richer feature family intentionally follows Baseball Savant's BBE semantics: only
 an in-play contact row that produces a plate-appearance result is a tracked BBE.
+Bunts are then excluded because the frozen Current Talent core profile separately
+excludes bunt contact; this keeps richer evidence aligned to the contact target it
+is allowed to adjust.
+
 Missing tracking is never imputed. Capability-tier assignment remains external so
 source coverage can be certified at game/league/venue grain before these features
 are used by a richer model.
@@ -88,11 +92,14 @@ def _nonblank(column: str) -> pl.Expr:
 
 
 def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
-    """Project complete observed result-producing Savant BBE to pitch grain.
+    """Project complete observed result-producing, non-bunt Savant BBE.
 
     Complete EV/LA alone is not enough: Savant also exposes launch measurements
     on foul contacts. A canonical BBE must therefore be an in-play ``type == X``
     row with a nonblank terminal ``events`` value and complete EV + launch angle.
+    Rows whose Savant play narrative explicitly contains the word ``bunt`` are
+    excluded so the richer evidence matches the frozen non-bunt core-contact
+    target.
 
     The canonical key includes ``pitch_number`` so source contacts are never
     silently collapsed. A second result-producing BBE inside the same player/PA
@@ -107,6 +114,7 @@ def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
         "pitch_number",
         "events",
         "type",
+        "des",
         "launch_speed",
         "launch_angle",
     }
@@ -125,6 +133,7 @@ def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
             _integer_like("pitch_number", "pitch_number"),
             pl.col("events").cast(pl.String).alias("events"),
             pl.col("type").cast(pl.String).str.strip_chars().str.to_uppercase().alias("_pitch_result_type"),
+            pl.col("des").cast(pl.String).alias("_play_description"),
             pl.col("launch_speed").cast(pl.Float64, strict=False),
             pl.col("launch_angle").cast(pl.Float64, strict=False),
         )
@@ -136,6 +145,10 @@ def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
             & pl.col("pitch_number").is_not_null()
             & (pl.col("_pitch_result_type") == "X")
             & _nonblank("events")
+            & ~pl.col("_play_description")
+            .fill_null("")
+            .str.to_lowercase()
+            .str.contains(r"\bbunt\b")
             & pl.col("launch_speed").is_not_null()
             & pl.col("launch_angle").is_not_null()
         )
