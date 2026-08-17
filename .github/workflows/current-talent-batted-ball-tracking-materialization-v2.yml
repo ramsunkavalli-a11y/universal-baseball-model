@@ -36,8 +36,10 @@ jobs:
           python -m pytest
           tests/test_current_talent_savant_minors.py
           tests/test_current_talent_savant_minors_capture.py
+          tests/test_current_talent_savant_minors_capture_coverage.py
           tests/test_current_talent_batted_ball_quality.py
           tests/test_current_talent_batted_ball_source_diagnostics.py
+          tests/test_current_talent_batted_ball_game_coverage.py
           tests/test_current_talent_batted_ball_reconciliation.py
           tests/test_current_talent_batted_ball_materialization.py
           tests/test_current_talent_batted_ball_capability.py
@@ -46,18 +48,65 @@ jobs:
       - name: Compile source materialization tools
         run: >-
           python -m py_compile
+          scripts/probe_savant_minors_tracking.py
           scripts/capture_current_talent_savant_minors_tracking.py
           scripts/materialize_current_talent_tracked_bbe_from_raw.py
           scripts/combine_current_talent_tracked_bbe.py
 
-      - name: Download corrected tiny-source probe artifacts
-        uses: actions/download-artifact@v8
-        with:
-          pattern: current-talent-savant-minors-probe-*
-          path: reports/generated/current-talent-batted-ball-tracking-gate/probe
-          repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: ${{ inputs.source_probe_run_id }}
-          github-token: ${{ github.token }}
+      - name: Download required artifacts serially with retry
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          download_with_retry() {
+            local run_id="$1"
+            local pattern="$2"
+            local destination="$3"
+            local attempt
+            for attempt in 1 2 3 4 5; do
+              rm -rf "$destination"
+              mkdir -p "$destination"
+              echo "Downloading run ${run_id}, pattern ${pattern}, attempt ${attempt}/5"
+              if gh run download "$run_id" \
+                --repo "$GITHUB_REPOSITORY" \
+                --pattern "$pattern" \
+                --dir "$destination"; then
+                return 0
+              fi
+              if [[ "$attempt" -eq 5 ]]; then
+                echo "Artifact download failed after 5 attempts: run=${run_id} pattern=${pattern}" >&2
+                return 1
+              fi
+              sleep $((attempt * 15))
+            done
+          }
+
+          download_with_retry \
+            '${{ inputs.source_probe_run_id }}' \
+            'current-talent-savant-minors-probe-all' \
+            'reports/generated/current-talent-batted-ball-tracking-gate/probe'
+
+          download_with_retry \
+            31980820797 \
+            'ct-validation-game-evidence-2021-*' \
+            'reports/generated/current-talent-batted-ball-tracking-inputs/2021/milb'
+
+          download_with_retry \
+            31971662070 \
+            'current-talent-historical-milb-full-season-*' \
+            'reports/generated/current-talent-batted-ball-tracking-inputs/2022/milb'
+
+          download_with_retry \
+            31986504169 \
+            'current-talent-historical-mlb-2021' \
+            'reports/generated/current-talent-batted-ball-tracking-inputs/2021/mlb'
+
+          download_with_retry \
+            31988255280 \
+            'current-talent-historical-mlb-2022' \
+            'reports/generated/current-talent-batted-ball-tracking-inputs/2022/mlb'
 
       - name: Require corrected probe contract
         run: |
@@ -82,6 +131,8 @@ jobs:
               coverage = report.get("certified_game_tracking_coverage") or {}
               if int(coverage.get("certified_game_count", 0)) <= 0:
                   raise SystemExit(f"probe {season} lacks certified-game coverage denominator")
+              if int(coverage.get("tracked_game_count", 0)) <= 0:
+                  raise SystemExit(f"probe {season} returned no certified tracked games")
               if int(report.get("canonical_model_bbe_count", 0)) <= 0:
                   raise SystemExit(f"probe {season} produced no canonical model BBE")
               observed[season] = str(path)
@@ -91,42 +142,6 @@ jobs:
               json.dumps({"source_probe_run_id": "${{ inputs.source_probe_run_id }}", "reports": observed}, indent=2) + "\n"
           )
           PY
-
-      - name: Download certified 2021 MiLB evidence
-        uses: actions/download-artifact@v8
-        with:
-          pattern: ct-validation-game-evidence-2021-*
-          path: reports/generated/current-talent-batted-ball-tracking-inputs/2021/milb
-          repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: "31980820797"
-          github-token: ${{ github.token }}
-
-      - name: Download certified 2022 MiLB evidence
-        uses: actions/download-artifact@v8
-        with:
-          pattern: current-talent-historical-milb-full-season-*
-          path: reports/generated/current-talent-batted-ball-tracking-inputs/2022/milb
-          repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: "31971662070"
-          github-token: ${{ github.token }}
-
-      - name: Download certified 2021 MLB evidence and retained Savant cache
-        uses: actions/download-artifact@v8
-        with:
-          name: current-talent-historical-mlb-2021
-          path: reports/generated/current-talent-batted-ball-tracking-inputs/2021/mlb
-          repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: "31986504169"
-          github-token: ${{ github.token }}
-
-      - name: Download certified 2022 MLB evidence and retained Savant cache
-        uses: actions/download-artifact@v8
-        with:
-          name: current-talent-historical-mlb-2022
-          path: reports/generated/current-talent-batted-ball-tracking-inputs/2022/mlb
-          repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: "31988255280"
-          github-token: ${{ github.token }}
 
       - name: Materialize retained MLB tracking
         shell: bash
@@ -178,9 +193,10 @@ jobs:
               )
           if report.get("canonical_model_bbe_contract") != "result_producing_non_bunt_pitch_grain_v1":
               raise SystemExit("2021 MiLB capture lacks corrected model-BBE contract")
-          if "certified_game_tracking_coverage" not in report:
+          coverage = report.get("certified_game_tracking_coverage") or {}
+          if int(coverage.get("certified_game_count", 0)) <= 0:
               raise SystemExit("2021 MiLB capture lacks certified-game coverage diagnostics")
-          print(json.dumps(report["certified_game_tracking_coverage"], indent=2))
+          print(json.dumps(coverage, indent=2))
           PY
 
       - name: Combine per-season MLB and MiLB tracking
@@ -233,6 +249,9 @@ jobs:
                   "source_families": sorted(frame.get_column("source_family").unique().to_list()),
                   "first_game_date": str(frame.get_column("game_date").min()),
                   "last_game_date": str(frame.get_column("game_date").max()),
+                  "milb_certified_game_tracking_coverage": (
+                      report_2021 if season == 2021 else report_2022
+                  ).get("certified_game_tracking_coverage"),
               }
           (root / "checkpoint.json").write_text(json.dumps(output, indent=2) + "\n")
           print(json.dumps(output, indent=2))
