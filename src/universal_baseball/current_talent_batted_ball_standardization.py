@@ -31,9 +31,13 @@ class BattedBallFeatureStandardization:
 
     def __post_init__(self) -> None:
         if self.fitted_player_count < 2:
-            raise ValueError("feature standardization requires at least two eligible training players")
+            raise ValueError("feature standardization requires at least two eligible training rows")
         if self.scale_exit_velocity <= 0 or self.scale_sweet_spot_share <= 0:
             raise ValueError("feature standardization scales must be positive")
+
+
+def _feature_grain(features: pl.DataFrame) -> list[str]:
+    return ["as_of_date", "player_id"] if "as_of_date" in features.columns else ["player_id"]
 
 
 def _eligible_training_rows(features: pl.DataFrame) -> pl.DataFrame:
@@ -41,9 +45,10 @@ def _eligible_training_rows(features: pl.DataFrame) -> pl.DataFrame:
     missing = sorted(required - set(features.columns))
     if missing:
         raise ValueError(f"batted-ball features missing fields: {missing}")
-    duplicate = features.group_by("player_id").len().filter(pl.col("len") != 1)
+    grain = _feature_grain(features)
+    duplicate = features.group_by(grain).len().filter(pl.col("len") != 1)
     if not duplicate.is_empty():
-        raise ValueError("batted-ball features violate player_id grain")
+        raise ValueError(f"batted-ball features violate {' + '.join(grain)} grain")
     return features.filter(
         pl.col("tracked_bbe_eligible")
         & pl.col("recency_weighted_mean_exit_velocity").is_not_null()
@@ -54,11 +59,11 @@ def _eligible_training_rows(features: pl.DataFrame) -> pl.DataFrame:
 def fit_batted_ball_feature_standardization(
     training_features: pl.DataFrame,
 ) -> BattedBallFeatureStandardization:
-    """Fit population mean/SD using eligible training rows only."""
+    """Fit population mean/SD using eligible training snapshot rows only."""
 
     eligible = _eligible_training_rows(training_features)
     if eligible.height < 2:
-        raise ValueError("feature standardization requires at least two eligible training players")
+        raise ValueError("feature standardization requires at least two eligible training rows")
 
     ev_values = [float(value) for value in eligible.get_column(FEATURE_COLUMNS[0]).to_list()]
     ss_values = [float(value) for value in eligible.get_column(FEATURE_COLUMNS[1]).to_list()]
@@ -89,16 +94,18 @@ def standardize_batted_ball_quality_features(
     """Apply fixed training-only parameters without refitting evaluation rows.
 
     ``as_of_date`` is optional for compatibility with small deterministic callers,
-    but when present it is preserved unchanged for downstream chronology checks.
+    but when present it is preserved unchanged. Multiple chronological snapshots
+    for the same player are valid when their ``as_of_date`` values differ.
     """
 
     required = {"player_id", "tracked_bbe_eligible", *FEATURE_COLUMNS}
     missing = sorted(required - set(features.columns))
     if missing:
         raise ValueError(f"batted-ball features missing fields: {missing}")
-    duplicate = features.group_by("player_id").len().filter(pl.col("len") != 1)
+    grain = _feature_grain(features)
+    duplicate = features.group_by(grain).len().filter(pl.col("len") != 1)
     if not duplicate.is_empty():
-        raise ValueError("batted-ball features violate player_id grain")
+        raise ValueError(f"batted-ball features violate {' + '.join(grain)} grain")
 
     passthrough = ["as_of_date"] if "as_of_date" in features.columns else []
     return (
@@ -136,5 +143,5 @@ def standardize_batted_ball_quality_features(
             "z_mean_exit_velocity",
             "z_sweet_spot_share",
         )
-        .sort("player_id")
+        .sort([*passthrough, "player_id"])
     )
