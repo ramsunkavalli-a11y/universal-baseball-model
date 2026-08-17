@@ -1,0 +1,45 @@
+name: Current Talent contact-value source materialization CI
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "src/universal_baseball/current_talent_contact_value_source.py"
+      - "src/universal_baseball/current_talent_contact_value_materialization.py"
+      - "tests/test_current_talent_contact_value_source.py"
+      - "tests/test_current_talent_contact_value_materialization.py"
+      - ".github/workflows/current-talent-contact-value-source-materialization-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-materialization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Compile source materialization
+        run: >-
+          python -m py_compile
+          src/universal_baseball/current_talent_contact_value_source.py
+          src/universal_baseball/current_talent_contact_value_materialization.py
+
+      - name: Verify source materialization contracts
+        run: >-
+          python -m pytest
+          tests/test_current_talent_contact_value_source.py
+          tests/test_current_talent_contact_value_materialization.py
