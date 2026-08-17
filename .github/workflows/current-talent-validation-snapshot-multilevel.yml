@@ -1,12 +1,6 @@
 name: Current Talent validation snapshot multilevel MiLB
 
 on:
-  # One-time retry after artifact filename-token certification; remove after success.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-validation-snapshot-multilevel.yml
   workflow_dispatch:
     inputs:
       season:
@@ -79,7 +73,7 @@ jobs:
             level_dir: rk
             artifact_suffix: rk
     env:
-      TARGET_SEASON: ${{ inputs.season || '2021' }}
+      TARGET_SEASON: ${{ inputs.season }}
 
     steps:
       - name: Check out repository
@@ -111,8 +105,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      TARGET_SEASON: ${{ inputs.season || '2021' }}
-      SNAPSHOT_MONTH: ${{ inputs.snapshot_month || '8' }}
+      TARGET_SEASON: ${{ inputs.season }}
+      SNAPSHOT_MONTH: ${{ inputs.snapshot_month }}
 
     steps:
       - name: Check out repository
