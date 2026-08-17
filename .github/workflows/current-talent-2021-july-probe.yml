@@ -1,12 +1,6 @@
 name: Current Talent 2021 July support probe
 
 on:
-  # One-time bootstrap; restore to manual-only after the probe resolves.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-2021-july-probe.yml
   workflow_dispatch:
     inputs:
       as_of_date:
@@ -24,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      AS_OF_DATE: ${{ inputs.as_of_date || '2021-07-15' }}
+      AS_OF_DATE: ${{ inputs.as_of_date }}
       HALF_LIFE_DAYS: "90"
       PRIOR_STRENGTH_CORE_EVENTS: "100"
 
