@@ -1,7 +1,7 @@
 name: Current Talent historical MLB season
 
 on:
-  # One-time bootstrap for the independent 2022 gate; remove after the run resolves.
+  # One-time 2022 residual diagnostic bootstrap; remove after the gate resolves.
   push:
     branches:
       - source-certification-poc
@@ -57,9 +57,23 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: 31986504169
           github-token: ${{ github.token }}
+      - name: Seed preserved 2022 source cache
+        if: ${{ env.TARGET_SEASON == '2022' }}
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-2022
+          path: .
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 31986685217
+          github-token: ${{ github.token }}
       - name: Materialize historical MLB player-game evidence
         run: >-
           python scripts/materialize_current_talent_historical_mlb_game_evidence.py
+          --season "${TARGET_SEASON}"
+      - name: Capture official game logs for outcome residuals
+        if: failure()
+        run: >-
+          python scripts/diagnose_current_talent_historical_mlb_outcome_residuals.py
           --season "${TARGET_SEASON}"
       - name: Upload historical MLB evidence and source captures
         if: always()
