@@ -1,0 +1,101 @@
+{
+  "accepted_input_runs": {
+    "baseline_fit": 32075112279,
+    "feature_attachment": 32075892988
+  },
+  "boundary": {
+    "accessed_2023": false,
+    "calibration_computed": false,
+    "comparator_richer_event_keys_identical": true,
+    "development_losses_computed": false,
+    "model_scoring": false,
+    "network_requests_performed": false,
+    "promotion_decision_computed": false,
+    "residual_coefficients_refit": false
+  },
+  "development_cutoffs": [
+    "2022-07-15",
+    "2022-08-01",
+    "2022-09-01"
+  ],
+  "folds": [
+    {
+      "accessed_2023": false,
+      "baseline_fitted_event_count": 886940,
+      "baseline_max_training_event_date": "2022-07-14",
+      "calibration_computed": false,
+      "comparator_richer_event_keys_identical": true,
+      "cutoff_date": "2022-07-15",
+      "event_keys_unchanged": true,
+      "losses_computed": false,
+      "model_scoring": false,
+      "paired_event_count": 97004,
+      "paired_player_count": 976,
+      "prediction_values_finite": true,
+      "storage": {
+        "canonical_schema_version": "0.1",
+        "file_sha256": "e061b159ed7fcda86397484df3c9b8a13bed3487cc64377a5d8845c8c3c279af",
+        "file_size_bytes": 1617159,
+        "path": "reports/generated/current-talent-contact-value-prediction-geometry/tables/prediction_geometry_2022-07-15.parquet",
+        "row_count": 97004,
+        "schema_sha256": "f9739e8df4a3de66de9dc7863219984e6c0e8085e759ce6c423297411b620995",
+        "table_name": "current_talent_contact_value_prediction_geometry_2022-07-15"
+      }
+    },
+    {
+      "accessed_2023": false,
+      "baseline_fitted_event_count": 949651,
+      "baseline_max_training_event_date": "2022-07-31",
+      "calibration_computed": false,
+      "comparator_richer_event_keys_identical": true,
+      "cutoff_date": "2022-08-01",
+      "event_keys_unchanged": true,
+      "losses_computed": false,
+      "model_scoring": false,
+      "paired_event_count": 77859,
+      "paired_player_count": 957,
+      "prediction_values_finite": true,
+      "storage": {
+        "canonical_schema_version": "0.1",
+        "file_sha256": "3ebc99587044a432cb20e81068502bbcd4f6d37b2c0f2bcee258368742d68d81",
+        "file_size_bytes": 1323286,
+        "path": "reports/generated/current-talent-contact-value-prediction-geometry/tables/prediction_geometry_2022-08-01.parquet",
+        "row_count": 77859,
+        "schema_sha256": "f9739e8df4a3de66de9dc7863219984e6c0e8085e759ce6c423297411b620995",
+        "table_name": "current_talent_contact_value_prediction_geometry_2022-08-01"
+      }
+    },
+    {
+      "accessed_2023": false,
+      "baseline_fitted_event_count": 1072288,
+      "baseline_max_training_event_date": "2022-08-31",
+      "calibration_computed": false,
+      "comparator_richer_event_keys_identical": true,
+      "cutoff_date": "2022-09-01",
+      "event_keys_unchanged": true,
+      "losses_computed": false,
+      "model_scoring": false,
+      "paired_event_count": 37629,
+      "paired_player_count": 933,
+      "prediction_values_finite": true,
+      "storage": {
+        "canonical_schema_version": "0.1",
+        "file_sha256": "9e11a3dcab4fbde5473cf9a4d69af3516e5e1945be649345e47e2c28dcbc6659",
+        "file_size_bytes": 681457,
+        "path": "reports/generated/current-talent-contact-value-prediction-geometry/tables/prediction_geometry_2022-09-01.parquet",
+        "row_count": 37629,
+        "schema_sha256": "f9739e8df4a3de66de9dc7863219984e6c0e8085e759ce6c423297411b620995",
+        "table_name": "current_talent_contact_value_prediction_geometry_2022-09-01"
+      }
+    }
+  ],
+  "gate": "current_talent_contact_value_prediction_geometry_pre_scoring",
+  "report_schema_version": "0.1",
+  "residual_fit": {
+    "beta_mean_exit_velocity": 0.020808202510874292,
+    "beta_sweet_spot_share": -0.0032619728296970248,
+    "determinant": 3906075044.1483107,
+    "fitted_future_contact_count": 69382,
+    "fitted_player_count": 621
+  }
+}
