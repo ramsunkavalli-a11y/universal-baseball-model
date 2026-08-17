@@ -1,10 +1,13 @@
 """Deterministic batted-ball-quality evidence for richer Current Talent challengers.
 
-This module intentionally stops before model fitting. It projects complete observed
-Savant exit-velocity / launch-angle batted balls to a small canonical surface,
-builds leakage-safe player features at an as-of cutoff, and applies already-fitted
-contact-shape residual coefficients to frozen Baseline 2.
+This module projects complete observed, result-producing Savant batted balls to a
+small canonical surface, builds leakage-safe player features at an as-of cutoff,
+and applies already-fitted contact-shape residual coefficients to frozen Baseline
+2.
 
+Savant may report launch metrics on non-result contact pitches such as fouls. The
+richer feature family intentionally follows Baseball Savant's BBE semantics: only
+an in-play contact row that produces a plate-appearance result is a tracked BBE.
 Missing tracking is never imputed. Capability-tier assignment remains external so
 source coverage can be certified at game/league/venue grain before these features
 are used by a richer model.
@@ -26,12 +29,14 @@ SWEET_SPOT_MIN_DEGREES = 8.0
 SWEET_SPOT_MAX_DEGREES = 32.0
 RICHER_BATTED_BALL_METHOD = "baseline2_plus_ev_sweet_spot_contact_residual_v1"
 
-TRACKED_BBE_KEY = ("game_pk", "player_id", "at_bat_number")
+TRACKED_BBE_KEY = ("game_pk", "player_id", "at_bat_number", "pitch_number")
+TRACKED_BBE_PA_KEY = ("game_pk", "player_id", "at_bat_number")
 TRACKED_BBE_SCHEMA: dict[str, pl.DataType] = {
     "game_date": pl.Date,
     "game_pk": pl.Int64,
     "player_id": pl.Int64,
     "at_bat_number": pl.Int64,
+    "pitch_number": pl.Int64,
     "launch_speed": pl.Float64,
     "launch_angle": pl.Float64,
     "sweet_spot": pl.Boolean,
@@ -76,13 +81,22 @@ def _integer_like(column: str, alias: str) -> pl.Expr:
     )
 
 
-def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
-    """Project complete observed Savant EV+LA rows to one row per batted ball.
+def _nonblank(column: str) -> pl.Expr:
+    return pl.col(column).is_not_null() & (
+        pl.col(column).cast(pl.String).str.strip_chars() != ""
+    )
 
-    The canonical key is ``game_pk + batter + at_bat_number``. Savant normally
-    places launch metrics on the terminal/contact pitch of the plate appearance;
-    multiple complete EV+LA rows for the same key are treated as source ambiguity
-    and fail rather than being silently deduplicated.
+
+def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
+    """Project complete observed result-producing Savant BBE to pitch grain.
+
+    Complete EV/LA alone is not enough: Savant also exposes launch measurements
+    on foul contacts. A canonical BBE must therefore be an in-play ``type == X``
+    row with a nonblank terminal ``events`` value and complete EV + launch angle.
+
+    The canonical key includes ``pitch_number`` so source contacts are never
+    silently collapsed. A second result-producing BBE inside the same player/PA
+    is source-semantic ambiguity and fails closed.
     """
 
     required = {
@@ -90,6 +104,9 @@ def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
         "game_pk",
         "batter",
         "at_bat_number",
+        "pitch_number",
+        "events",
+        "type",
         "launch_speed",
         "launch_angle",
     }
@@ -105,6 +122,9 @@ def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
             _integer_like("game_pk", "game_pk"),
             _integer_like("batter", "player_id"),
             _integer_like("at_bat_number", "at_bat_number"),
+            _integer_like("pitch_number", "pitch_number"),
+            pl.col("events").cast(pl.String).alias("events"),
+            pl.col("type").cast(pl.String).str.strip_chars().str.to_uppercase().alias("_pitch_result_type"),
             pl.col("launch_speed").cast(pl.Float64, strict=False),
             pl.col("launch_angle").cast(pl.Float64, strict=False),
         )
@@ -113,8 +133,20 @@ def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
             & pl.col("game_pk").is_not_null()
             & pl.col("player_id").is_not_null()
             & pl.col("at_bat_number").is_not_null()
+            & pl.col("pitch_number").is_not_null()
+            & (pl.col("_pitch_result_type") == "X")
+            & _nonblank("events")
             & pl.col("launch_speed").is_not_null()
             & pl.col("launch_angle").is_not_null()
+        )
+        .select(
+            "game_date",
+            "game_pk",
+            "player_id",
+            "at_bat_number",
+            "pitch_number",
+            "launch_speed",
+            "launch_angle",
         )
         .with_columns(
             pl.col("launch_angle")
@@ -127,7 +159,13 @@ def project_complete_tracked_bbe(raw: pl.DataFrame) -> pl.DataFrame:
     duplicate = projected.group_by(list(TRACKED_BBE_KEY)).len().filter(pl.col("len") != 1)
     if not duplicate.is_empty():
         raise ValueError(
-            "tracked batted-ball source has multiple complete EV+LA rows for one "
+            "tracked batted-ball source has duplicate result-producing EV+LA rows at "
+            "game_pk + player_id + at_bat_number + pitch_number"
+        )
+    multiple_results = projected.group_by(list(TRACKED_BBE_PA_KEY)).len().filter(pl.col("len") != 1)
+    if not multiple_results.is_empty():
+        raise ValueError(
+            "tracked batted-ball source has multiple result-producing BBE for one "
             "game_pk + player_id + at_bat_number"
         )
 
@@ -141,7 +179,7 @@ def build_batted_ball_quality_features(
     half_life_days: float = TRACKED_BBE_HALF_LIFE_DAYS,
     min_complete_tracked_bbe: int = PRIMARY_MIN_COMPLETE_TRACKED_BBE,
 ) -> pl.DataFrame:
-    """Build leakage-safe EV/LA player features using only rows before cutoff."""
+    """Build leakage-safe EV/LA player features using only BBE before cutoff."""
 
     if half_life_days <= 0:
         raise ValueError("tracked-BBE half-life must be positive")
@@ -156,6 +194,9 @@ def build_batted_ball_quality_features(
     duplicate = tracked_bbe.group_by(list(TRACKED_BBE_KEY)).len().filter(pl.col("len") != 1)
     if not duplicate.is_empty():
         raise ValueError("canonical tracked batted-ball evidence violates canonical grain")
+    multiple_results = tracked_bbe.group_by(list(TRACKED_BBE_PA_KEY)).len().filter(pl.col("len") != 1)
+    if not multiple_results.is_empty():
+        raise ValueError("canonical tracked batted-ball evidence has multiple BBE in one PA")
 
     working = tracked_bbe.with_columns(
         pl.col("game_date").cast(pl.Date, strict=False).alias("game_date")
@@ -205,7 +246,7 @@ def apply_batted_ball_quality_residual(
 ) -> pl.DataFrame:
     """Apply fitted EV/LA residuals to B2's conditional contact distribution.
 
-    ``BB_HBP`` and ``K`` are copied exactly from Baseline 2.  Only the ten contact
+    ``BB_HBP`` and ``K`` are copied exactly from Baseline 2. Only the ten contact
     bins are adjusted, and their total probability mass is held exactly at the B2
     contact mass. Players without an eligible standardized feature row fall back
     to B2 without imputation.
