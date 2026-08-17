@@ -95,7 +95,7 @@ def test_physical_contact_on_interference_pa_is_observed_but_not_expected_result
 def _substitution_pa(*, strikes_before_substitute: int) -> pl.DataFrame:
     if strikes_before_substitute not in {1, 2}:
         raise ValueError("fixture supports one or two strikes")
-    prior_codes = ["S"] * strikes_before_substitute + ["B"] * (2 - strikes_before_substitute)
+    prior_codes = ["S"] * strikes_before_substitute + ["B"] * (3 - strikes_before_substitute)
     return pl.DataFrame(
         {
             "game_date": ["2021-07-05"] * 4,
