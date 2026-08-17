@@ -157,6 +157,12 @@ def _text(value: Any) -> str | None:
     return text if text else None
 
 
+def _description_identity(value: str) -> str:
+    """Normalize formatting-only whitespace for duplicate-source comparison."""
+
+    return " ".join(value.split())
+
+
 def project_terminal_pa_descriptions(
     raw_pbp_rows: pl.DataFrame,
     *,
@@ -166,9 +172,10 @@ def project_terminal_pa_descriptions(
 
     The terminal pitch is the maximum structured ``pitch_number`` within
     ``game_pk + at_bat_number``. Exact duplicated release rows therefore do not
-    become extra events. If terminal rows disagree on their nonblank PA result
-    description, projection fails instead of choosing by filename, retrieval
-    time, or row order.
+    become extra events. Formatting-only whitespace differences are treated as
+    the same repeated description. If terminal rows disagree on their nonblank
+    PA result description after that normalization, projection fails instead of
+    choosing by filename, retrieval time, or row order.
     """
 
     required = {"game_pk", "at_bat_number", "pitch_number", "game_type"}
@@ -214,15 +221,17 @@ def project_terminal_pa_descriptions(
     rows: list[dict[str, Any]] = []
     for group in terminal.partition_by(["game_pk", "at_bat_index"], maintain_order=False):
         first = group.row(0, named=True)
-        descriptions: list[str] = []
+        descriptions_by_identity: dict[str, str] = {}
         for row in group.iter_rows(named=True):
             selected = None
             for column in description_columns:
                 selected = _text(row.get(column))
                 if selected is not None:
                     break
-            if selected is not None and selected not in descriptions:
-                descriptions.append(selected)
+            if selected is not None:
+                identity = _description_identity(selected)
+                descriptions_by_identity.setdefault(identity, selected)
+        descriptions = list(descriptions_by_identity.values())
         if len(descriptions) > 1:
             raise ValueError(
                 "historical terminal PA has conflicting result descriptions: "
