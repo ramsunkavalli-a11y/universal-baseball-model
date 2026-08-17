@@ -1,0 +1,517 @@
+{
+  "accepted_input_runs": {
+    "baseline_fit": 32075112279,
+    "feature_attachment": 32075892988
+  },
+  "accepted_prediction_geometry": {
+    "development_cutoffs": [
+      "2022-07-15",
+      "2022-08-01",
+      "2022-09-01"
+    ],
+    "paired_counts": {
+      "2022-07-15": 97004,
+      "2022-08-01": 77859,
+      "2022-09-01": 37629
+    }
+  },
+  "any_observed_milb": {
+    "equal_fold_mean_baseline_mse": 0.2017534561593921,
+    "equal_fold_mean_richer_mse": 0.20141942641402558,
+    "mse_delta_richer_minus_baseline": -0.00033402974536653196,
+    "total_fold_contacts": 107048
+  },
+  "boundary": {
+    "accessed_2023": false,
+    "automatic_2023_follow_on": false,
+    "confirmation_data_present": false,
+    "development_model_scoring": true,
+    "feature_search_performed": false,
+    "network_requests_performed": false,
+    "offline_evaluator": true,
+    "residual_coefficients_refit": false,
+    "threshold_search_performed": false
+  },
+  "calibration_summary": {
+    "baseline_mean_absolute_intercept_error": 0.009059769936977567,
+    "baseline_mean_absolute_slope_error": 0.0037337420889670034,
+    "richer_mean_absolute_intercept_error": 0.008572858096503674,
+    "richer_mean_absolute_slope_error": 0.003119243058711215
+  },
+  "candidate": "baseline2_plus_ev_sweet_spot_contact_value_residual_v1",
+  "comparator": "conditional_contact_value_baseline_contact_bin_plus_level_group",
+  "development_cutoffs": [
+    "2022-07-15",
+    "2022-08-01",
+    "2022-09-01"
+  ],
+  "eligible_for_fixed_2023_confirmation": true,
+  "equal_fold_summary": {
+    "baseline_mae": 0.35317026840563903,
+    "baseline_mse": 0.19983482558337698,
+    "mae_delta_richer_minus_baseline": -0.0003587923734822418,
+    "mse_delta_richer_minus_baseline": -0.00035678554449641853,
+    "richer_mae": 0.3528114760321568,
+    "richer_mse": 0.19947804003888056,
+    "richer_mse_fold_wins": 3
+  },
+  "exact_non_mlb_capability_tiers": {
+    "MILB_SAVANT_TRACKED:2021:123:SINGLE_A": {
+      "folds": [
+        {
+          "baseline_mae": 0.3550540304547111,
+          "baseline_mse": 0.1982219389391781,
+          "cutoff_date": "2022-07-15",
+          "event_count": 17232,
+          "mae_delta_richer_minus_baseline": -0.002729826023520898,
+          "mse_delta_richer_minus_baseline": -0.00028776734588822905,
+          "richer_mae": 0.3523242044311902,
+          "richer_mse": 0.19793417159328988,
+          "richer_mse_win": true
+        },
+        {
+          "baseline_mae": 0.3544107006210532,
+          "baseline_mse": 0.19692398438326209,
+          "cutoff_date": "2022-08-01",
+          "event_count": 12833,
+          "mae_delta_richer_minus_baseline": -0.0028102348239808506,
+          "mse_delta_richer_minus_baseline": -0.0003358163296879324,
+          "richer_mae": 0.3516004657970723,
+          "richer_mse": 0.19658816805357415,
+          "richer_mse_win": true
+        },
+        {
+          "baseline_mae": 0.3521258521983749,
+          "baseline_mse": 0.19388940913331654,
+          "cutoff_date": "2022-09-01",
+          "event_count": 4145,
+          "mae_delta_richer_minus_baseline": -0.0018967155607520492,
+          "mse_delta_richer_minus_baseline": -0.00023389818141608676,
+          "richer_mae": 0.35022913663762284,
+          "richer_mse": 0.19365551095190045,
+          "richer_mse_win": true
+        }
+      ],
+      "meaningful_for_guardrail": true,
+      "passes_guardrail": true,
+      "total_fold_contacts": 34210,
+      "worse_both_mse_and_mae_fold_count": 0
+    },
+    "MILB_SAVANT_TRACKED:2022:112:AAA": {
+      "folds": [
+        {
+          "baseline_mae": 0.3618817797832639,
+          "baseline_mse": 0.2086425523825083,
+          "cutoff_date": "2022-07-15",
+          "event_count": 20016,
+          "mae_delta_richer_minus_baseline": -0.0008346910648059924,
+          "mse_delta_richer_minus_baseline": -0.000322351781499447,
+          "richer_mae": 0.3610470887184579,
+          "richer_mse": 0.20832020060100886,
+          "richer_mse_win": true
+        },
+        {
+          "baseline_mae": 0.3614077424693263,
+          "baseline_mse": 0.2094292056214093,
+          "cutoff_date": "2022-08-01",
+          "event_count": 16811,
+          "mae_delta_richer_minus_baseline": -0.0008678195335417027,
+          "mse_delta_richer_minus_baseline": -0.00023586165104164114,
+          "richer_mae": 0.3605399229357846,
+          "richer_mse": 0.20919334397036765,
+          "richer_mse_win": true
+        },
+        {
+          "baseline_mae": 0.3611729654501641,
+          "baseline_mse": 0.2080901273254226,
+          "cutoff_date": "2022-09-01",
+          "event_count": 9231,
+          "mae_delta_richer_minus_baseline": -0.0013106951274690082,
+          "mse_delta_richer_minus_baseline": -0.0004604221784311191,
+          "richer_mae": 0.3598622703226951,
+          "richer_mse": 0.20762970514699147,
+          "richer_mse_win": true
+        }
+      ],
+      "meaningful_for_guardrail": true,
+      "passes_guardrail": true,
+      "total_fold_contacts": 46058,
+      "worse_both_mse_and_mae_fold_count": 0
+    },
+    "MILB_SAVANT_TRACKED:2022:117:AAA": {
+      "folds": [
+        {
+          "baseline_mae": 0.349355748123204,
+          "baseline_mse": 0.19606984408552863,
+          "cutoff_date": "2022-07-15",
+          "event_count": 5898,
+          "mae_delta_richer_minus_baseline": 0.0007546530596134193,
+          "mse_delta_richer_minus_baseline": 0.00010419915841755611,
+          "richer_mae": 0.35011040118281744,
+          "richer_mse": 0.1961740432439462,
+          "richer_mse_win": false
+        },
+        {
+          "baseline_mae": 0.3507393591803644,
+          "baseline_mse": 0.19584347646714037,
+          "cutoff_date": "2022-08-01",
+          "event_count": 5075,
+          "mae_delta_richer_minus_baseline": 7.753628911189026e-05,
+          "mse_delta_richer_minus_baseline": -0.0001098194790300211,
+          "richer_mae": 0.3508168954694763,
+          "richer_mse": 0.19573365698811035,
+          "richer_mse_win": true
+        },
+        {
+          "baseline_mae": 0.3535974231203453,
+          "baseline_mse": 0.1999934470456052,
+          "cutoff_date": "2022-09-01",
+          "event_count": 3403,
+          "mae_delta_richer_minus_baseline": -0.0008741569287648576,
+          "mse_delta_richer_minus_baseline": -0.0004961918214605177,
+          "richer_mae": 0.35272326619158045,
+          "richer_mse": 0.1994972552241447,
+          "richer_mse_win": true
+        }
+      ],
+      "meaningful_for_guardrail": true,
+      "passes_guardrail": true,
+      "total_fold_contacts": 14376,
+      "worse_both_mse_and_mae_fold_count": 1
+    },
+    "MILB_SAVANT_TRACKED:2022:123:SINGLE_A": {
+      "folds": [
+        {
+          "baseline_mae": 0.35139316802420506,
+          "baseline_mse": 0.19059809643321043,
+          "cutoff_date": "2022-07-15",
+          "event_count": 12801,
+          "mae_delta_richer_minus_baseline": -0.004098604946188078,
+          "mse_delta_richer_minus_baseline": -0.0005200891189463264,
+          "richer_mae": 0.347294563078017,
+          "richer_mse": 0.1900780073142641,
+          "richer_mse_win": true
+        },
+        {
+          "baseline_mae": 0.35163782431318763,
+          "baseline_mse": 0.19156100719198163,
+          "cutoff_date": "2022-08-01",
+          "event_count": 9906,
+          "mae_delta_richer_minus_baseline": -0.0040428643035058665,
+          "mse_delta_richer_minus_baseline": -0.0006448237097344267,
+          "richer_mae": 0.34759496000968176,
+          "richer_mse": 0.1909161834822472,
+          "richer_mse_win": true
+        },
+        {
+          "baseline_mae": 0.3543456303018826,
+          "baseline_mse": 0.19449323563496965,
+          "cutoff_date": "2022-09-01",
+          "event_count": 3519,
+          "mae_delta_richer_minus_baseline": -0.00249365865705381,
+          "mse_delta_richer_minus_baseline": -0.00020136012109719936,
+          "richer_mae": 0.3518519716448288,
+          "richer_mse": 0.19429187551387245,
+          "richer_mse_win": true
+        }
+      ],
+      "meaningful_for_guardrail": true,
+      "passes_guardrail": true,
+      "total_fold_contacts": 26226,
+      "worse_both_mse_and_mae_fold_count": 0
+    }
+  },
+  "folds": [
+    {
+      "any_observed_milb": {
+        "baseline_mae": 0.3572163809317844,
+        "baseline_mse": 0.20162301320054557,
+        "event_count": 49247,
+        "mae_delta_richer_minus_baseline": -0.0017057983468975468,
+        "mse_delta_richer_minus_baseline": -0.00029611601844151125,
+        "richer_mae": 0.3555105825848869,
+        "richer_mse": 0.20132689718210406,
+        "richer_mse_win": true
+      },
+      "cutoff_date": "2022-07-15",
+      "exact_non_mlb_capability_tiers": {
+        "MILB_SAVANT_TRACKED:2021:123:SINGLE_A": {
+          "baseline_mae": 0.3550540304547111,
+          "baseline_mse": 0.1982219389391781,
+          "event_count": 17232,
+          "mae_delta_richer_minus_baseline": -0.002729826023520898,
+          "mse_delta_richer_minus_baseline": -0.00028776734588822905,
+          "richer_mae": 0.3523242044311902,
+          "richer_mse": 0.19793417159328988,
+          "richer_mse_win": true
+        },
+        "MILB_SAVANT_TRACKED:2022:112:AAA": {
+          "baseline_mae": 0.3618817797832639,
+          "baseline_mse": 0.2086425523825083,
+          "event_count": 20016,
+          "mae_delta_richer_minus_baseline": -0.0008346910648059924,
+          "mse_delta_richer_minus_baseline": -0.000322351781499447,
+          "richer_mae": 0.3610470887184579,
+          "richer_mse": 0.20832020060100886,
+          "richer_mse_win": true
+        },
+        "MILB_SAVANT_TRACKED:2022:117:AAA": {
+          "baseline_mae": 0.349355748123204,
+          "baseline_mse": 0.19606984408552863,
+          "event_count": 5898,
+          "mae_delta_richer_minus_baseline": 0.0007546530596134193,
+          "mse_delta_richer_minus_baseline": 0.00010419915841755611,
+          "richer_mae": 0.35011040118281744,
+          "richer_mse": 0.1961740432439462,
+          "richer_mse_win": false
+        },
+        "MILB_SAVANT_TRACKED:2022:123:SINGLE_A": {
+          "baseline_mae": 0.35139316802420506,
+          "baseline_mse": 0.19059809643321043,
+          "event_count": 12801,
+          "mae_delta_richer_minus_baseline": -0.004098604946188078,
+          "mse_delta_richer_minus_baseline": -0.0005200891189463264,
+          "richer_mae": 0.347294563078017,
+          "richer_mse": 0.1900780073142641,
+          "richer_mse_win": true
+        }
+      },
+      "geometry": {
+        "accessed_2023": false,
+        "calibration_computed": false,
+        "comparator_richer_event_keys_identical": true,
+        "event_keys_unchanged": true,
+        "losses_computed": false,
+        "model_scoring": false,
+        "paired_event_count": 97004,
+        "paired_player_count": 976,
+        "prediction_values_finite": true
+      },
+      "overall": {
+        "baseline_calibration": {
+          "absolute_intercept_error": 0.008912960796123796,
+          "absolute_slope_error": 0.00014942681385687884,
+          "event_count": 97004,
+          "intercept": -0.008912960796123796,
+          "slope": 1.0001494268138569
+        },
+        "baseline_mae": 0.35358443561854,
+        "baseline_mse": 0.20000902305817117,
+        "event_count": 97004,
+        "mae_delta_richer_minus_baseline": -0.00037239406401717856,
+        "mse_delta_richer_minus_baseline": -0.0003289679127155276,
+        "richer_calibration": {
+          "absolute_intercept_error": 0.008319399850902215,
+          "absolute_slope_error": 0.0007601874988010238,
+          "event_count": 97004,
+          "intercept": -0.008319399850902215,
+          "slope": 1.000760187498801
+        },
+        "richer_mae": 0.35321204155452285,
+        "richer_mse": 0.19968005514545564,
+        "richer_mse_win": true
+      }
+    },
+    {
+      "any_observed_milb": {
+        "baseline_mae": 0.35702421893431135,
+        "baseline_mse": 0.2016817906239647,
+        "event_count": 39401,
+        "mae_delta_richer_minus_baseline": -0.001732888350657602,
+        "mse_delta_richer_minus_baseline": -0.00032114162689469983,
+        "richer_mae": 0.35529133058365375,
+        "richer_mse": 0.20136064899707,
+        "richer_mse_win": true
+      },
+      "cutoff_date": "2022-08-01",
+      "exact_non_mlb_capability_tiers": {
+        "MILB_SAVANT_TRACKED:2021:123:SINGLE_A": {
+          "baseline_mae": 0.3544107006210532,
+          "baseline_mse": 0.19692398438326209,
+          "event_count": 12833,
+          "mae_delta_richer_minus_baseline": -0.0028102348239808506,
+          "mse_delta_richer_minus_baseline": -0.0003358163296879324,
+          "richer_mae": 0.3516004657970723,
+          "richer_mse": 0.19658816805357415,
+          "richer_mse_win": true
+        },
+        "MILB_SAVANT_TRACKED:2022:112:AAA": {
+          "baseline_mae": 0.3614077424693263,
+          "baseline_mse": 0.2094292056214093,
+          "event_count": 16811,
+          "mae_delta_richer_minus_baseline": -0.0008678195335417027,
+          "mse_delta_richer_minus_baseline": -0.00023586165104164114,
+          "richer_mae": 0.3605399229357846,
+          "richer_mse": 0.20919334397036765,
+          "richer_mse_win": true
+        },
+        "MILB_SAVANT_TRACKED:2022:117:AAA": {
+          "baseline_mae": 0.3507393591803644,
+          "baseline_mse": 0.19584347646714037,
+          "event_count": 5075,
+          "mae_delta_richer_minus_baseline": 7.753628911189026e-05,
+          "mse_delta_richer_minus_baseline": -0.0001098194790300211,
+          "richer_mae": 0.3508168954694763,
+          "richer_mse": 0.19573365698811035,
+          "richer_mse_win": true
+        },
+        "MILB_SAVANT_TRACKED:2022:123:SINGLE_A": {
+          "baseline_mae": 0.35163782431318763,
+          "baseline_mse": 0.19156100719198163,
+          "event_count": 9906,
+          "mae_delta_richer_minus_baseline": -0.0040428643035058665,
+          "mse_delta_richer_minus_baseline": -0.0006448237097344267,
+          "richer_mae": 0.34759496000968176,
+          "richer_mse": 0.1909161834822472,
+          "richer_mse_win": true
+        }
+      },
+      "geometry": {
+        "accessed_2023": false,
+        "calibration_computed": false,
+        "comparator_richer_event_keys_identical": true,
+        "event_keys_unchanged": true,
+        "losses_computed": false,
+        "model_scoring": false,
+        "paired_event_count": 77859,
+        "paired_player_count": 957,
+        "prediction_values_finite": true
+      },
+      "overall": {
+        "baseline_calibration": {
+          "absolute_intercept_error": 0.009559150331370454,
+          "absolute_slope_error": 0.003445546133467592,
+          "event_count": 77859,
+          "intercept": -0.009559150331370454,
+          "slope": 0.9965544538665324
+        },
+        "baseline_mae": 0.3529317120759916,
+        "baseline_mse": 0.19959128234865683,
+        "event_count": 77859,
+        "mae_delta_richer_minus_baseline": -0.00043880652955013977,
+        "mse_delta_richer_minus_baseline": -0.0003393854344766467,
+        "richer_calibration": {
+          "absolute_intercept_error": 0.0088532940921758,
+          "absolute_slope_error": 0.0027810148143361246,
+          "event_count": 77859,
+          "intercept": -0.0088532940921758,
+          "slope": 0.9972189851856639
+        },
+        "richer_mae": 0.35249290554644147,
+        "richer_mse": 0.1992518969141802,
+        "richer_mse_win": true
+      }
+    },
+    {
+      "any_observed_milb": {
+        "baseline_mae": 0.35745123181707394,
+        "baseline_mse": 0.201955564653666,
+        "event_count": 18400,
+        "mae_delta_richer_minus_baseline": -0.0014536304087107155,
+        "mse_delta_richer_minus_baseline": -0.00038483159076335705,
+        "richer_mae": 0.35599760140836323,
+        "richer_mse": 0.20157073306290263,
+        "richer_mse_win": true
+      },
+      "cutoff_date": "2022-09-01",
+      "exact_non_mlb_capability_tiers": {
+        "MILB_SAVANT_TRACKED:2021:123:SINGLE_A": {
+          "baseline_mae": 0.3521258521983749,
+          "baseline_mse": 0.19388940913331654,
+          "event_count": 4145,
+          "mae_delta_richer_minus_baseline": -0.0018967155607520492,
+          "mse_delta_richer_minus_baseline": -0.00023389818141608676,
+          "richer_mae": 0.35022913663762284,
+          "richer_mse": 0.19365551095190045,
+          "richer_mse_win": true
+        },
+        "MILB_SAVANT_TRACKED:2022:112:AAA": {
+          "baseline_mae": 0.3611729654501641,
+          "baseline_mse": 0.2080901273254226,
+          "event_count": 9231,
+          "mae_delta_richer_minus_baseline": -0.0013106951274690082,
+          "mse_delta_richer_minus_baseline": -0.0004604221784311191,
+          "richer_mae": 0.3598622703226951,
+          "richer_mse": 0.20762970514699147,
+          "richer_mse_win": true
+        },
+        "MILB_SAVANT_TRACKED:2022:117:AAA": {
+          "baseline_mae": 0.3535974231203453,
+          "baseline_mse": 0.1999934470456052,
+          "event_count": 3403,
+          "mae_delta_richer_minus_baseline": -0.0008741569287648576,
+          "mse_delta_richer_minus_baseline": -0.0004961918214605177,
+          "richer_mae": 0.35272326619158045,
+          "richer_mse": 0.1994972552241447,
+          "richer_mse_win": true
+        },
+        "MILB_SAVANT_TRACKED:2022:123:SINGLE_A": {
+          "baseline_mae": 0.3543456303018826,
+          "baseline_mse": 0.19449323563496965,
+          "event_count": 3519,
+          "mae_delta_richer_minus_baseline": -0.00249365865705381,
+          "mse_delta_richer_minus_baseline": -0.00020136012109719936,
+          "richer_mae": 0.3518519716448288,
+          "richer_mse": 0.19429187551387245,
+          "richer_mse_win": true
+        }
+      },
+      "geometry": {
+        "accessed_2023": false,
+        "calibration_computed": false,
+        "comparator_richer_event_keys_identical": true,
+        "event_keys_unchanged": true,
+        "losses_computed": false,
+        "model_scoring": false,
+        "paired_event_count": 37629,
+        "paired_player_count": 933,
+        "prediction_values_finite": true
+      },
+      "overall": {
+        "baseline_calibration": {
+          "absolute_intercept_error": 0.008707198683438451,
+          "absolute_slope_error": 0.007606253319576539,
+          "event_count": 37629,
+          "intercept": -0.008707198683438451,
+          "slope": 0.9923937466804235
+        },
+        "baseline_mae": 0.35299465752238557,
+        "baseline_mse": 0.199904171343303,
+        "event_count": 37629,
+        "mae_delta_richer_minus_baseline": -0.0002651765268795181,
+        "mse_delta_richer_minus_baseline": -0.00040200328629716453,
+        "richer_calibration": {
+          "absolute_intercept_error": 0.008545880346433006,
+          "absolute_slope_error": 0.005816526862996496,
+          "event_count": 37629,
+          "intercept": -0.008545880346433006,
+          "slope": 0.9941834731370035
+        },
+        "richer_mae": 0.35272948099550605,
+        "richer_mse": 0.19950216805700582,
+        "richer_mse_win": true
+      }
+    }
+  ],
+  "frozen_residual_fit": {
+    "beta_mean_exit_velocity": 0.020808202510874292,
+    "beta_sweet_spot_share": -0.0032619728296970248,
+    "determinant": 3906075044.1483107,
+    "fitted_future_contact_count": 69382,
+    "fitted_player_count": 621
+  },
+  "gate": "current_talent_contact_value_2022_development",
+  "promotion_checks": {
+    "all_calibration_fits_identifiable": true,
+    "any_milb_at_least_1000_and_lower_mean_mse": true,
+    "calibration_intercept_guardrail": true,
+    "calibration_slope_guardrail": true,
+    "equal_fold_mean_mae_no_worse": true,
+    "identical_paired_event_coverage": true,
+    "lower_equal_fold_mean_mse": true,
+    "mse_wins_at_least_2_of_3": true,
+    "no_meaningful_non_mlb_tier_worse_both_in_2_folds": true,
+    "residual_fit_finite_full_rank": true
+  },
+  "report_schema_version": "0.1"
+}
