@@ -1,0 +1,75 @@
+name: Current Talent contact-value combined chronology
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "src/universal_baseball/current_talent_contact_value.py"
+      - "src/universal_baseball/current_talent_contact_value_evidence.py"
+      - "scripts/audit_current_talent_contact_value_chronology.py"
+      - "tests/test_current_talent_contact_value_evidence.py"
+      - ".github/workflows/current-talent-contact-value-chronology.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify chronology contracts
+        run: python -m pytest tests/test_current_talent_contact_value_evidence.py
+
+      - name: Seed accepted MiLB target artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-contact-value-source-*
+          path: seeded/milb
+          merge-multiple: false
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32070152452
+          github-token: ${{ github.token }}
+
+      - name: Seed accepted MLB target artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: current-talent-contact-value-mlb-source-*
+          path: seeded/mlb
+          merge-multiple: false
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32074097045
+          github-token: ${{ github.token }}
+
+      - name: Compile chronology audit
+        run: python -m py_compile scripts/audit_current_talent_contact_value_chronology.py
+
+      - name: Audit combined valued chronology
+        run: >-
+          python scripts/audit_current_talent_contact_value_chronology.py
+          --milb-root seeded/milb
+          --mlb-root seeded/mlb
+
+      - name: Upload combined chronology artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-chronology
+          path: reports/generated/current-talent-contact-value-chronology/
+          if-no-files-found: warn
+          retention-days: 14
