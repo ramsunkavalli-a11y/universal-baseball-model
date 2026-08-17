@@ -33,6 +33,13 @@ RETROSHEET_TRANSITION_SCHEMA: dict[str, pl.DataType] = {
 }
 
 RETROSHEET_REGULAR_GAME_TYPES = frozenset({"regular", "playoff"})
+RETROSHEET_DATE_FORMATS = (
+    "%Y-%m-%d",
+    "%Y%m%d",
+    "%m/%d/%Y",
+    "%Y/%m/%d",
+    "%m/%d/%y",
+)
 RETROSHEET_CONTACT_VALUE_GROUPS = (
     "1B",
     "2B",
@@ -61,6 +68,18 @@ def _base_code(prefix: str) -> pl.Expr:
         + pl.when(pl.col(f"br2_{prefix}").fill_null("") != "").then(2).otherwise(0)
         + pl.when(pl.col(f"br3_{prefix}").fill_null("") != "").then(4).otherwise(0)
     )
+
+
+def _game_date_expr() -> pl.Expr:
+    """Parse known Retrosheet CSV date encodings without format inference."""
+
+    raw = pl.col("date").cast(pl.String).str.strip_chars()
+    return pl.coalesce(
+        [
+            raw.str.strptime(pl.Date, format=date_format, strict=False)
+            for date_format in RETROSHEET_DATE_FORMATS
+        ]
+    ).alias("game_date")
 
 
 def _transition_projection(frame: pl.DataFrame) -> pl.DataFrame:
@@ -240,12 +259,19 @@ def load_plays_contact_value_transitions(
         infer_schema_length=10_000,
         null_values=[""],
     ).with_columns(
-        pl.col("date").cast(pl.String).str.to_date(strict=False).alias("game_date"),
+        _game_date_expr(),
         pl.col("gametype").cast(pl.String).str.to_lowercase().alias("gametype"),
     )
     invalid_dates = frame.filter(pl.col("game_date").is_null())
     if not invalid_dates.is_empty():
-        raise ValueError("Retrosheet parsed plays contain invalid game date")
+        examples = (
+            invalid_dates.select(pl.col("date").cast(pl.String).alias("raw_date"))
+            .unique()
+            .head(10)
+            .get_column("raw_date")
+            .to_list()
+        )
+        raise ValueError(f"Retrosheet parsed plays contain invalid game date examples={examples}")
     frame = frame.filter(
         (pl.col("game_date") < pl.lit(cutoff_date))
         & pl.col("gametype").is_in(sorted(RETROSHEET_REGULAR_GAME_TYPES))
