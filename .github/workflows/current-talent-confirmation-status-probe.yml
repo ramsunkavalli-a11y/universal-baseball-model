@@ -1,0 +1,66 @@
+name: Current Talent confirmation status probe
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/current-talent-confirmation-status-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v7
+
+      - name: Capture latest confirmation workflow states
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          workflows = {
+              "tracking_confirmation": "current-talent-batted-ball-tracking-confirmation.yml",
+              "contact_value_confirmation_source": "current-talent-contact-value-confirmation-source.yml",
+          }
+          output = {
+              "gate": "current_talent_confirmation_source_status_probe",
+              "branch": "source-certification-poc",
+              "workflows": {},
+          }
+          env = dict(os.environ)
+          for key, workflow in workflows.items():
+              command = [
+                  "gh", "run", "list",
+                  "--repo", "ramsunkavalli-a11y/universal-baseball-model",
+                  "--workflow", workflow,
+                  "--branch", "source-certification-poc",
+                  "--limit", "3",
+                  "--json", "databaseId,status,conclusion,headSha,createdAt,updatedAt,displayTitle,url",
+              ]
+              result = subprocess.run(command, check=True, text=True, capture_output=True, env=env)
+              rows = json.loads(result.stdout)
+              output["workflows"][key] = rows
+          Path("docs/current-talent-confirmation-status.json").write_text(
+              json.dumps(output, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(output, indent=2, sort_keys=True))
+          PY
+
+      - name: Persist status probe
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/current-talent-confirmation-status.json
+          git diff --cached --quiet || git commit -m "Persist confirmation source workflow status"
+          git push
