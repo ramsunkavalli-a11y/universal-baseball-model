@@ -1,17 +1,7 @@
 name: Current Talent Baseline 2 development
 
 on:
-  # One-time bootstrap for the predeclared 2022 multi-season challenger.
-  # Return to manual-only after this gate is resolved.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-baseline2-development.yml
-      - scripts/materialize_current_talent_baseline2_development.py
-      - src/universal_baseball/current_talent_baseline2.py
-      - tests/test_current_talent_baseline2.py
-      - docs/current-talent-baseline2-plan.md
+  # Gate completed on run 31998668697. Keep heavy historical validation manual-only.
   workflow_dispatch:
 
 permissions:
