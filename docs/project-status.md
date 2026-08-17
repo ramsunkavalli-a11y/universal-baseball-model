@@ -21,7 +21,9 @@ This is the **start-here file for a new chat, coding agent, or contributor**. Re
 
 ## Current project stage
 
-The data/source foundation and first batting Performance layer are mature enough to support modeling work. Historical Current Talent evidence and chronological validation plumbing are functioning. The project is now finishing the **MLB historical evidence / environment-translation bridge** before fitting the first Current Talent baselines.
+The source/data foundation, first batting Performance layer, historical affiliated-MiLB Current Talent evidence, historical MLB Current Talent evidence, and chronological validation plumbing are now mature enough to support the first real modeling work.
+
+The **2021–2023 MLB historical bridge is complete**. The next gate is a real **MLB-connected environment translation fit** using only chronology-safe training evidence, followed by Baseline 0 / Baseline 1.
 
 There is **no promoted Current Talent estimator yet**.
 
@@ -132,31 +134,30 @@ Real 2021 pre-August MiLB support diagnostic: `31982728210`
 - 441 eligible pairs across 398 players
 - 303 promotions / 127 demotions / 11 same-level changes
 
-All five MiLB level groups are connected. Before the MLB historical gate, MLB was the only missing structural anchor.
+All five MiLB level groups were connected; MLB was the only missing structural anchor before the historical MLB bridge was completed.
 
-### 6. Historical MLB Current Talent evidence — 2021 certified
+### 6. Historical MLB Current Talent evidence — 2021–2023 certified
 
-The first historical MLB season is now certified on the same universal player-game evidence contract.
+All three initial historical MLB seasons are now certified on the same universal player-game evidence contract.
 
 Checkpoint: `docs/current-talent-historical-mlb-checkpoint.md`  
-Certified workflow run: **`31986504169`**  
-Workflow: `.github/workflows/current-talent-historical-mlb-season.yml` — manual-only after certification.
+Workflow: `.github/workflows/current-talent-historical-mlb-season.yml` — **manual-only** after certification.
 
-2021 MLB evidence:
+Certified workflow runs:
 
-- 1,049 players
-- 51,476 player-game rows
-- 147,053 profile rows
-- 181,818 PA
-- 17,906 BB+HBP
-- 42,145 K
-- 121,705 expected result-contact opportunities
-- 121,707 observed physical contacts
-- +2 physical-contact residual, diagnostic only
-- 62 special non-contact outcomes
-- 0 PA-accounting residual
+- 2021: **`31986504169`**
+- 2022: **`31988255280`**
+- 2023: **`31989561396`**
 
-Independent official MLB season reconciliation at player × actual AL/NL × season grain is **exact**:
+Season summaries:
+
+| Season | Players | Player-games | PA | BB+HBP | K | Expected contacts | Observed contacts | Contact residual | Special non-contact |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2021 | 1,049 | 51,476 | 181,818 | 17,906 | 42,145 | 121,705 | 121,707 | +2 | 62 |
+| 2022 | 693 | 48,325 | 182,052 | 16,899 | 40,812 | 124,267 | 124,269 | +2 | 74 |
+| 2023 | 656 | 48,763 | 184,104 | 17,931 | 41,843 | 124,234 | 124,236 | +2 | 96 |
+
+For **each season**, independent official MLB season reconciliation at player × actual AL/NL × season grain is exact:
 
 - PA mismatches: 0
 - BB/HBP mismatches: 0
@@ -164,20 +165,23 @@ Independent official MLB season reconciliation at player × actual AL/NL × seas
 - expected-contact mismatches: 0
 - special-noncontact mismatches: 0
 - exact outcome mismatch rows: 0
+- PA-accounting residual: 0
 
-Historical source semantics frozen by this gate:
+The +2 physical-contact residual in each season is diagnostic only under ADR 024 and is not repaired into result opportunities.
 
-- `two_strike_mid_pa_substitution_v1`: 7 strikeout PAs reassign official PA/K outcome identity from a substitute who entered with two strikes back to the original batter, using game-grain pitch sequence only.
+Historical source semantics frozen by these gates:
+
+- `two_strike_mid_pa_substitution_v1`: official PA/K outcome identity is reassigned from a substitute who enters an existing two-strike PA back to the original batter using game-grain pitch sequence; observed physical-contact identity remains separate.
 - `known_event_or_field_error_interference_narrative_v2`: only terminal `field_error` + explicit interference-error result text is treated as the historical interference special outcome; a `fielders_choice` whose narrative later mentions interference remains a normal result-contact PA.
 - physical contact remains separate from result attribution under ADR 024.
 - Savant historical Oakland display alias `ATH -> OAK` is explicit and season-scoped for 2021–2024.
-- bounded Savant 429/5xx retries and chunk caching were added after a live 502; transport resilience does not alter acceptance semantics.
+- bounded Savant 429/5xx retries and chunk caching are transport resilience only; they do not alter acceptance semantics.
+- historical Savant source oddities are resolved narrowly and regression-tested rather than by relaxing the official accounting gate.
 
 ## Important boundaries / not complete
 
 Still not frozen or validated:
 
-- **2022 and 2023 historical MLB evidence**;
 - a real MLB-connected translation fit across certified MLB + MiLB evidence;
 - whether level-only translation is sufficient or actual league/season residual effects add out-of-time value;
 - age/environment priors;
@@ -206,9 +210,9 @@ The 90-day future target currently uses complete future player-game evidence. Th
 
 ## Recommended next batch
 
-1. **Certify 2022 historical MLB evidence** independently using the now-frozen 2021 rules; if green, repeat for 2023.
-2. Combine certified MLB + affiliated-MiLB training evidence and fit the first real **MLB-connected translation surface** inside chronological training data only.
-3. Inspect translation support, offset stability, residuals, and actual league/season effects before freezing the form.
+1. Combine **certified 2021 MLB + affiliated-MiLB evidence** before the existing 2021-08-01 cutoff and fit the first real **MLB-connected translation surface** using training data only.
+2. Inspect support, graph connectivity, fitted offsets, residuals, promotion/demotion directionality, and whether actual league/season effects are necessary before freezing the translation form.
+3. Repeat translation/backtest across later chronological cutoffs/seasons; avoid choosing the form on one cutoff alone.
 4. Then fit **Baseline 0 / Baseline 1 only** and validate out of time before adding richer evidence.
 
 Do not skip directly to a complicated talent model.
@@ -235,6 +239,6 @@ Key materializers:
 
 1. Read this file.
 2. Read `docs/current-talent-validation-contract.md`.
-3. Read `docs/current-talent-historical-mlb-checkpoint.md` for the current MLB bridge and `docs/current-talent-historical-milb-checkpoint.md` only as needed.
+3. Read `docs/current-talent-historical-mlb-checkpoint.md` and `docs/current-talent-historical-milb-checkpoint.md` only as needed for evidence/source details.
 4. Inspect current `source-certification-poc` head before editing.
-5. Continue with **2022 MLB certification** in a small verified batch; do not re-audit already-closed source questions.
+5. Continue with the **first real 2021 MLB-connected translation fit** in a small verified batch; do not re-audit already-closed source questions.
