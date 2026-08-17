@@ -47,11 +47,13 @@ jobs:
         run: >-
           python -m pytest
           tests/test_current_talent_savant_minors.py
+          tests/test_current_talent_savant_minors_capture.py
           tests/test_current_talent_batted_ball_quality.py
           tests/test_current_talent_batted_ball_standardization.py
           tests/test_current_talent_batted_ball_source_diagnostics.py
           tests/test_current_talent_batted_ball_source_audit.py
           tests/test_current_talent_batted_ball_reconciliation.py
+          tests/test_current_talent_batted_ball_materialization.py
           tests/test_current_talent_batted_ball_capability.py
           tests/test_current_talent_batted_ball_scoring.py
           tests/test_current_talent_batted_ball_residual_fit.py
@@ -61,6 +63,9 @@ jobs:
         run: >-
           python -m py_compile
           scripts/probe_savant_minors_tracking.py
+          scripts/capture_current_talent_savant_minors_tracking.py
+          scripts/materialize_current_talent_tracked_bbe_from_raw.py
+          scripts/combine_current_talent_tracked_bbe.py
           scripts/audit_current_talent_batted_ball_source_semantics.py
           scripts/materialize_current_talent_batted_ball_development.py
 
