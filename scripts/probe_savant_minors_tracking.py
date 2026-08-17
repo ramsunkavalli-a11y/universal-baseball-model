@@ -2,13 +2,13 @@
 """Tiny official Baseball Savant Minor League tracking source probe.
 
 This is deliberately not a season materializer. It verifies the current official
-Minor League CSV detail endpoint on one fixed historical date, retains exact raw
-bytes, checks the fields needed for an EV/launch-angle challenger, and reconciles
-Savant game/batter identity to already-certified same-season Current Talent
-player-game evidence.
+tracked-only Minor League CSV detail endpoint on one fixed historical date,
+retains exact raw bytes, checks broad tracking capability, and runs the corrected
+result-producing/non-bunt model-BBE projection through the same certified
+player-game reconciliation used by later materialization.
 
-Future probes use the frozen tracked-only request helper from the richer challenger
-contract rather than maintaining a second request implementation here.
+A successful rerun therefore proves the *tiny-date* source contract needed before
+bulk historical MiLB capture. It does not certify full-season completeness.
 """
 
 from __future__ import annotations
@@ -23,15 +23,21 @@ from pathlib import Path
 import polars as pl
 import requests
 
+from universal_baseball.current_talent_batted_ball_materialization import (
+    materialize_reconciled_tracked_bbe,
+)
 from universal_baseball.current_talent_savant_minors import build_tracked_minor_savant_url
 
 
 PROBE_DATE = "2023-07-01"
+MODEL_BBE_CONTRACT = "result_producing_non_bunt_pitch_grain_v1"
 REQUIRED_FIELDS = {
     "game_date",
     "game_pk",
     "batter",
     "events",
+    "type",
+    "des",
     "description",
     "bb_type",
     "launch_speed",
@@ -85,7 +91,7 @@ def _read_raw_csv(content: bytes) -> pl.DataFrame:
             null_values=["", "null", "NA"],
             ignore_errors=False,
         )
-    except Exception as exc:  # pragma: no cover - exercised only on live source drift
+    except Exception as exc:  # pragma: no cover - live source drift only
         preview = content[:300].decode("utf-8", errors="replace")
         raise ValueError(f"Minor League Savant response is not readable CSV: {preview!r}") from exc
     if frame.is_empty():
@@ -110,20 +116,32 @@ def _load_certified_player_games(root: Path, season: int) -> pl.DataFrame:
             f"no certified {season} MiLB player-game summaries found under {root}"
         )
     frames = [
-        pl.read_parquet(path).select("game_pk", "player_id", "level_group", "league_id")
+        pl.read_parquet(path).select(
+            pl.col("game_pk").cast(pl.Int64),
+            pl.col("player_id").cast(pl.Int64),
+            pl.col("league_id").cast(pl.Int64),
+            pl.col("level_group").cast(pl.String),
+        )
         for path in paths
     ]
-    combined = pl.concat(frames, how="vertical_relaxed").unique()
+    combined = (
+        pl.concat(frames, how="vertical_relaxed")
+        .unique()
+        .with_columns(pl.lit(season).cast(pl.Int64).alias("season"))
+    )
     duplicate = (
         combined.group_by(["game_pk", "player_id"])
         .agg(
-            pl.col("level_group").n_unique().alias("level_count"),
-            pl.col("league_id").n_unique().alias("league_count"),
+            pl.struct(["season", "level_group", "league_id"])
+            .n_unique()
+            .alias("environment_count")
         )
-        .filter((pl.col("level_count") != 1) | (pl.col("league_count") != 1))
+        .filter(pl.col("environment_count") != 1)
     )
     if not duplicate.is_empty():
-        raise ValueError("certified MiLB evidence has ambiguous game_pk + player_id level identity")
+        raise ValueError("certified MiLB evidence has ambiguous game_pk + player_id environment")
+    if combined.filter(pl.col("level_group") == "MLB").height:
+        raise ValueError("certified MiLB evidence unexpectedly contains MLB rows")
     return combined
 
 
@@ -166,24 +184,22 @@ def main() -> int:
 
     certified = _load_certified_player_games(args.certified_milb_root, season)
     reconciled = projected.join(
-        certified,
+        certified.select("game_pk", "player_id", "level_group", "league_id"),
         on=["game_pk", "player_id"],
         how="left",
     )
 
-    # A BBE-like row is deliberately broad here. The goal is source capability,
-    # not a final event definition. This exposes how often tracking values exist
-    # on rows Savant itself marks as contact / batted-ball detail.
+    # Broad capability surface: deliberately wider than the model BBE definition.
     bbe_like = reconciled.filter(
         _nonblank("bb_type")
         | (pl.col("description").str.to_lowercase() == "hit_into_play")
         | pl.col("launch_speed").is_not_null()
         | pl.col("launch_angle").is_not_null()
     )
-    tracked_bbe = bbe_like.filter(
+    tracked_observation = bbe_like.filter(
         pl.col("launch_speed").is_not_null() | pl.col("launch_angle").is_not_null()
     )
-    complete_ev_la = bbe_like.filter(
+    complete_observation = bbe_like.filter(
         pl.col("launch_speed").is_not_null() & pl.col("launch_angle").is_not_null()
     )
 
@@ -214,6 +230,26 @@ def main() -> int:
         .sort(["level_group", "league_id"])
     )
 
+    # Corrected model surface: exact same projection and reconciliation as bulk
+    # materialization. This is what makes the new probe distinguishable from the
+    # older broad source-capability run.
+    canonical = materialize_reconciled_tracked_bbe(
+        raw,
+        certified,
+        source_family="MILB_SAVANT_TRACKED",
+    )
+    canonical_by_level = (
+        canonical.group_by(["level_group", "league_id", "source_capability_tier"])
+        .agg(
+            pl.len().cast(pl.Int64).alias("canonical_model_bbe"),
+            pl.col("game_pk").n_unique().cast(pl.Int64).alias("game_count"),
+            pl.col("player_id").n_unique().cast(pl.Int64).alias("batter_count"),
+            pl.col("launch_speed").mean().alias("mean_exit_velocity"),
+            pl.col("sweet_spot").mean().alias("sweet_spot_share"),
+        )
+        .sort(["level_group", "league_id"])
+    )
+
     header_inventory = pl.DataFrame(
         {
             "column_index": list(range(len(raw.columns))),
@@ -221,8 +257,10 @@ def main() -> int:
         }
     )
     header_inventory.write_csv(args.output_dir / "column_inventory.csv")
-    by_level.write_csv(args.output_dir / "bbe_tracking_by_certified_level.csv")
-    reconciled.head(500).write_csv(args.output_dir / "reconciled_sample.csv")
+    by_level.write_csv(args.output_dir / "tracking_observations_by_certified_level.csv")
+    canonical_by_level.write_csv(args.output_dir / "canonical_model_bbe_by_certified_level.csv")
+    reconciled.head(500).write_csv(args.output_dir / "broad_reconciled_sample.csv")
+    canonical.head(500).write_csv(args.output_dir / "canonical_model_bbe_sample.csv")
 
     bat_tracking_nonnull_counts = {
         field: int(raw.get_column(field).is_not_null().sum()) if field in raw.columns else None
@@ -230,11 +268,12 @@ def main() -> int:
     }
 
     report = {
-        "report_schema_version": "0.3",
+        "report_schema_version": "0.4",
         "probe_date": probe_date,
         "season": season,
         "source": "Baseball Savant Minor League Statcast Search official CSV",
         "request_semantics": "tracked_only_helper_v1",
+        "canonical_model_bbe_contract": MODEL_BBE_CONTRACT,
         "request_url": request_url,
         "retrieved_url": retrieved_url,
         "status_code": status_code,
@@ -250,14 +289,18 @@ def main() -> int:
         "certified_match_share": (
             matched_keys.height / reconciled_keys.height if reconciled_keys.height else None
         ),
-        "bbe_like_row_count": bbe_like.height,
-        "bbe_like_with_any_ev_or_la_count": tracked_bbe.height,
-        "bbe_like_with_complete_ev_la_count": complete_ev_la.height,
+        "bbe_like_observation_count": bbe_like.height,
+        "bbe_like_with_any_ev_or_la_count": tracked_observation.height,
+        "bbe_like_with_complete_ev_la_count": complete_observation.height,
         "bbe_like_complete_ev_la_share": (
-            complete_ev_la.height / bbe_like.height if bbe_like.height else None
+            complete_observation.height / bbe_like.height if bbe_like.height else None
         ),
+        "canonical_model_bbe_count": canonical.height,
+        "canonical_model_bbe_game_count": int(canonical.get_column("game_pk").n_unique()),
+        "canonical_model_bbe_batter_count": int(canonical.get_column("player_id").n_unique()),
+        "canonical_model_bbe_by_level": canonical_by_level.to_dicts(),
         "bat_tracking_nonnull_counts": bat_tracking_nonnull_counts,
-        "certified_level_summary": by_level.to_dicts(),
+        "broad_certified_level_summary": by_level.to_dicts(),
         "observed_certified_levels": sorted(
             str(value)
             for value in reconciled.get_column("level_group").drop_nulls().unique().to_list()
@@ -269,21 +312,24 @@ def main() -> int:
         "raw_column_names": raw.columns,
         "raw_response_file": str(raw_path),
         "decision_boundary": (
-            "This one-date probe certifies tracked-only endpoint/schema/identity feasibility. "
-            "It does not certify full-season completeness, historical venue entitlement, "
-            "or a richer Current Talent feature definition."
+            "A successful run certifies the tracked-only request, required schema, certified "
+            "game/player identity, broad EV/LA capability, and corrected result-producing/non-bunt "
+            "pitch-grain BBE projection on these tiny historical dates. It does not certify "
+            "full-season completeness or authorize a richer model without the later development gate."
         ),
     }
     (args.output_dir / "report.json").write_text(json.dumps(report, indent=2) + "\n")
 
-    # Require some actual reconciled EV/LA evidence before calling the source
-    # probe successful. Exact coverage thresholds belong to the later model gate.
     if matched_keys.is_empty():
         raise ValueError(
             f"Minor League Savant rows did not reconcile to certified {season} evidence"
         )
-    if complete_ev_la.is_empty():
-        raise ValueError("Minor League Savant probe found no complete EV/LA batted-ball rows")
+    if complete_observation.is_empty():
+        raise ValueError("Minor League Savant probe found no complete EV/LA source observations")
+    if canonical.is_empty():
+        raise ValueError(
+            "Minor League Savant probe found no corrected result-producing non-bunt EV/LA BBE"
+        )
     return 0
 
 
