@@ -10,6 +10,43 @@ from universal_baseball.retrosheet import (
 )
 
 
+CONTACT_COLUMNS = (
+    "gid",
+    "date",
+    "gametype",
+    "inning",
+    "top_bot",
+    "pn",
+    "pa",
+    "outs_pre",
+    "outs_post",
+    "br1_pre",
+    "br2_pre",
+    "br3_pre",
+    "br1_post",
+    "br2_post",
+    "br3_post",
+    "runs",
+    "score_v",
+    "score_h",
+    "single",
+    "double",
+    "triple",
+    "hr",
+    "sh",
+    "sf",
+    "roe",
+    "fc",
+    "othout",
+    "noout",
+    "bip",
+    "bunt",
+    "gdp",
+    "othdp",
+    "tp",
+)
+
+
 def test_find_plays_csv_member_prefers_play_named_csv() -> None:
     assert find_plays_csv_member(["notes.csv", "2024plays.csv", "README.txt"]) == "2024plays.csv"
 
@@ -41,22 +78,49 @@ def test_retrosheet_transition_projection_preserves_state_changes(tmp_path: Path
 
 
 def _contact_header() -> str:
-    return (
-        "gid,date,gametype,inning,top_bot,pn,pa,outs_pre,outs_post,"
-        "br1_pre,br2_pre,br3_pre,br1_post,br2_post,br3_post,runs,score_v,score_h,"
-        "single,double,triple,hr,sh,sf,roe,fc,othout,noout,bip,bunt,gdp,othdp,tp\n"
+    return ",".join(CONTACT_COLUMNS) + "\n"
+
+
+def _contact_row(
+    gid: str,
+    *,
+    game_date: str = "2021-06-01",
+    gametype: str = "regular",
+    outs_post: int = 0,
+    **flags: int,
+) -> str:
+    values: dict[str, str] = {column: "" for column in CONTACT_COLUMNS}
+    values.update(
+        {
+            "gid": gid,
+            "date": game_date,
+            "gametype": gametype,
+            "inning": "1",
+            "top_bot": "0",
+            "pn": "1",
+            "pa": "1",
+            "outs_pre": "0",
+            "outs_post": str(outs_post),
+            "runs": "0",
+            "score_v": "0",
+            "score_h": "0",
+        }
     )
+    for column, value in flags.items():
+        if column not in CONTACT_COLUMNS:
+            raise AssertionError(f"unknown synthetic Retrosheet column: {column}")
+        values[column] = str(value)
+    return ",".join(values[column] for column in CONTACT_COLUMNS)
 
 
 def test_contact_value_projection_is_strictly_pre_cutoff_and_regular_season(tmp_path: Path) -> None:
     path = tmp_path / "plays.csv"
-    path.write_text(
-        _contact_header()
-        + "G1,2021-07-14,regular,1,0,1,1,0,0,,,,runner,,,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0\n"
-        + "G2,2021-07-15,regular,1,0,1,1,0,0,,,,runner,,,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0\n"
-        + "G3,2021-07-14,allstar,1,0,1,1,0,0,,,,runner,,,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0\n",
-        encoding="utf-8",
-    )
+    rows = [
+        _contact_row("G1", game_date="2021-07-14", single=1, bip=1),
+        _contact_row("G2", game_date="2021-07-15", single=1, bip=1),
+        _contact_row("G3", game_date="2021-07-14", gametype="allstar", single=1, bip=1),
+    ]
+    path.write_text(_contact_header() + "\n".join(rows) + "\n", encoding="utf-8")
 
     result = load_plays_contact_value_transitions(path, cutoff_date=date(2021, 7, 15))
 
@@ -71,19 +135,18 @@ def test_contact_value_projection_is_strictly_pre_cutoff_and_regular_season(tmp_
 def test_contact_value_projection_maps_frozen_terminal_groups_and_exposes_unsupported(tmp_path: Path) -> None:
     path = tmp_path / "plays.csv"
     rows = [
-        # gid, outcome flags after score_h
-        "S,2021-06-01,regular,1,0,1,1,0,0,,,,r,,,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0",
-        "D,2021-06-01,regular,1,0,1,1,0,0,,,,r,,,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0",
-        "T,2021-06-01,regular,1,0,1,1,0,0,,,,r,,,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0",
-        "H,2021-06-01,regular,1,0,1,1,0,0,,,,,,,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0",
-        "E,2021-06-01,regular,1,0,1,1,0,0,,,,r,,,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0",
-        "F,2021-06-01,regular,1,0,1,1,0,0,,,,r,,,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0",
-        "SF,2021-06-01,regular,1,0,1,1,0,1,,,,,,,,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0",
-        "DP,2021-06-01,regular,1,0,1,1,0,2,r,,,,,,,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0",
-        "O,2021-06-01,regular,1,0,1,1,0,1,,,,,,,,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0",
-        "U,2021-06-01,regular,1,0,1,1,0,0,,,,r,,,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0",
+        _contact_row("S", single=1, bip=1),
+        _contact_row("D", double=1, bip=1),
+        _contact_row("T", triple=1, bip=1),
+        _contact_row("H", hr=1, bip=1),
+        _contact_row("E", roe=1, bip=1),
+        _contact_row("F", fc=1, bip=1),
+        _contact_row("SF", outs_post=1, sf=1, bip=1),
+        _contact_row("DP", outs_post=2, othout=1, bip=1, gdp=1),
+        _contact_row("O", outs_post=1, othout=1, bip=1),
+        _contact_row("U", noout=1, bip=1),
         # Bunt is deliberately outside the target even if it is otherwise an out.
-        "B,2021-06-01,regular,1,0,1,1,0,1,,,,,,,,0,0,0,0,0,1,0,0,0,1,0,0,1,1,0,0,0",
+        _contact_row("B", outs_post=1, othout=1, bip=1, bunt=1),
     ]
     path.write_text(_contact_header() + "\n".join(rows) + "\n", encoding="utf-8")
 
