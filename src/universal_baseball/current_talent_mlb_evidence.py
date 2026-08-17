@@ -1,14 +1,25 @@
 """Build MLB player-game Performance evidence for Current Talent snapshots.
 
-Baseball Savant already carries official MLB participant identities, true-PA
-terminal outcomes, game dates, and contact evidence. This adapter projects that
-certified source into the same player-game contract used by affiliated MiLB so
-chronological snapshot code is source-agnostic.
+Baseball Savant carries official MLB participant identities, true-PA terminal
+outcomes, game dates, and contact evidence. This adapter projects that source
+into the same player-game contract used by affiliated MiLB so chronological
+snapshot code is source-agnostic.
 
-ADR 024 preserves true-PA/result opportunities separately from physical
+ADR 024 preserves true-PA/result opportunity evidence separately from physical
 contact/profile observations. No season-end totals are used here. Every count is
 derived from game-grain Savant evidence that occurred before a future validation
 cutoff.
+
+Two source semantics require explicit normalization before official season
+reconciliation:
+
+- when a batter is replaced after two strikes and the substitute completes a
+  strikeout, Savant's terminal pitch carries the substitute batter ID while
+  official scoring charges the PA/K to the original batter. The pitch sequence
+  is sufficient to identify that case without using season-end totals;
+- Savant can label an official interference-error PA as ``field_error`` while
+  still exposing the real batted-ball contact. The result narrative identifies
+  the special non-contact PA outcome; the physical contact remains separate.
 """
 
 from __future__ import annotations
@@ -29,6 +40,8 @@ from universal_baseball.performance_events import (
 MLB_LEVEL_GROUP = "MLB"
 MLB_CAPABILITY_TIER = "mlb_savant_result_contact_profile_v2"
 MLB_PARTICIPANT_AUTHORITY = "savant_official"
+MLB_OUTCOME_IDENTITY_POLICY = "two_strike_mid_pa_substitution_v1"
+MLB_SPECIAL_NONCONTACT_POLICY = "event_code_plus_interference_error_narrative_v1"
 
 # True PA terminal events that are neither the two outcome core families nor a
 # result-contact opportunity are explicit known special non-contact outcomes.
@@ -41,6 +54,140 @@ KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES = frozenset(
         "os_ruling_pending_primary",
     }
 )
+
+
+def _with_official_outcome_batter(savant: pl.DataFrame) -> pl.DataFrame:
+    """Attach the player ID that receives the official PA result.
+
+    Savant updates ``batter`` on every pitch. If a pinch hitter enters after two
+    strikes and then completes a strikeout, the final Savant pitch therefore
+    points at the substitute even though official scoring assigns the PA/K to
+    the original batter. We detect only that narrow case from the observed pitch
+    sequence: a changed terminal batter, a strikeout result, and at least two
+    strike-coded pitches before the substitute's first pitch.
+
+    Other mid-PA substitutions retain the terminal batter as outcome authority.
+    Ambiguous >2-batter strikeout sequences fail closed rather than being guessed.
+    """
+
+    required = {
+        "game_pk",
+        "at_bat_index",
+        "pitch_number",
+        "batter_mlbam_id",
+        "events",
+        "is_plate_appearance_terminal",
+        "pitch_result_code",
+    }
+    missing = sorted(required - set(savant.columns))
+    if missing:
+        raise ValueError(f"MLB Current Talent outcome identity input missing fields: {missing}")
+
+    ordered = savant.sort(["game_pk", "at_bat_index", "pitch_number"])
+    pa_context = ordered.group_by(["game_pk", "at_bat_index"]).agg(
+        pl.col("batter_mlbam_id").drop_nulls().first().alias("_initial_batter_id"),
+        pl.col("batter_mlbam_id").drop_nulls().n_unique().alias("_batter_count"),
+    )
+    terminal = ordered.filter(pl.col("is_plate_appearance_terminal")).select(
+        "game_pk",
+        "at_bat_index",
+        pl.col("batter_mlbam_id").cast(pl.Int64).alias("_terminal_batter_id"),
+        pl.col("events").cast(pl.String).alias("_terminal_event"),
+    )
+    if terminal.group_by(["game_pk", "at_bat_index"]).len().filter(pl.col("len") > 1).height:
+        raise ValueError("MLB Savant contains duplicate true PA terminal sequences")
+
+    batter_first_pitch = ordered.group_by(
+        ["game_pk", "at_bat_index", "batter_mlbam_id"]
+    ).agg(pl.col("pitch_number").min().alias("_terminal_batter_first_pitch"))
+    terminal_context = (
+        terminal.join(pa_context, on=["game_pk", "at_bat_index"], how="left")
+        .join(
+            batter_first_pitch,
+            left_on=["game_pk", "at_bat_index", "_terminal_batter_id"],
+            right_on=["game_pk", "at_bat_index", "batter_mlbam_id"],
+            how="left",
+        )
+    )
+
+    prior = (
+        ordered.join(
+            terminal_context.select(
+                "game_pk", "at_bat_index", "_terminal_batter_first_pitch"
+            ),
+            on=["game_pk", "at_bat_index"],
+            how="inner",
+        )
+        .filter(pl.col("pitch_number") < pl.col("_terminal_batter_first_pitch"))
+        .group_by(["game_pk", "at_bat_index"])
+        .agg(
+            (
+                pl.col("pitch_result_code")
+                .cast(pl.String)
+                .str.strip_chars()
+                .str.to_uppercase()
+                == "S"
+            )
+            .sum()
+            .cast(pl.Int64)
+            .alias("_prior_strike_pitch_count"),
+            pl.col("pitch_result_code").is_null().sum().cast(pl.Int64).alias("_prior_null_code_count"),
+        )
+    )
+    terminal_context = terminal_context.join(
+        prior, on=["game_pk", "at_bat_index"], how="left"
+    ).with_columns(
+        pl.col("_prior_strike_pitch_count").fill_null(0).cast(pl.Int64),
+        pl.col("_prior_null_code_count").fill_null(0).cast(pl.Int64),
+    )
+
+    changed_strikeout = terminal_context.filter(
+        (pl.col("_batter_count") > 1)
+        & (pl.col("_initial_batter_id") != pl.col("_terminal_batter_id"))
+        & pl.col("_terminal_event").is_in(sorted(STRIKEOUT_EVENT_TYPES))
+    )
+    if changed_strikeout.filter(pl.col("_batter_count") > 2).height:
+        raise ValueError("MLB Savant has >2-batter strikeout PA requiring ambiguous outcome attribution")
+    if changed_strikeout.filter(pl.col("_prior_null_code_count") > 0).height:
+        raise ValueError("MLB Savant strikeout substitution PA has null prior pitch-result code")
+
+    terminal_context = terminal_context.with_columns(
+        pl.when(
+            (pl.col("_batter_count") == 2)
+            & (pl.col("_initial_batter_id") != pl.col("_terminal_batter_id"))
+            & pl.col("_terminal_event").is_in(sorted(STRIKEOUT_EVENT_TYPES))
+            & (pl.col("_prior_strike_pitch_count") >= 2)
+        )
+        .then(pl.col("_initial_batter_id"))
+        .otherwise(pl.col("_terminal_batter_id"))
+        .cast(pl.Int64)
+        .alias("_outcome_player_id")
+    )
+
+    return ordered.join(
+        terminal_context.select(
+            "game_pk",
+            "at_bat_index",
+            "_terminal_batter_id",
+            "_outcome_player_id",
+        ),
+        on=["game_pk", "at_bat_index"],
+        how="left",
+    )
+
+
+def _special_noncontact_outcome() -> pl.Expr:
+    narrative_interference_error = (
+        pl.col("result_description")
+        .cast(pl.String)
+        .str.to_lowercase()
+        .str.contains(r"\binterference error\b")
+        .fill_null(False)
+    )
+    return (
+        pl.col("events").is_in(sorted(KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES))
+        | narrative_interference_error
+    )
 
 
 def build_mlb_current_talent_player_game_evidence(
@@ -59,6 +206,7 @@ def build_mlb_current_talent_player_game_evidence(
         "is_contact",
         "at_bat_index",
         "pitch_number",
+        "pitch_result_code",
         "batter_side",
         "bb_type",
         "hc_x",
@@ -83,23 +231,24 @@ def build_mlb_current_talent_player_game_evidence(
     if unknown_leagues:
         raise ValueError(f"MLB Current Talent input contains non-MLB league IDs: {unknown_leagues}")
 
-    terminal = savant.filter(pl.col("is_plate_appearance_terminal"))
+    attributed = _with_official_outcome_batter(savant)
+    terminal = attributed.filter(pl.col("is_plate_appearance_terminal"))
     if terminal.is_empty():
         raise ValueError("MLB Current Talent input contains no true PA terminal rows")
     if terminal.filter(pl.col("batter_mlbam_id").is_null()).height:
         raise ValueError("MLB true PA terminal rows contain null batter identity")
-    duplicate_pa = terminal.group_by(["game_pk", "at_bat_index"]).len().filter(pl.col("len") > 1)
-    if not duplicate_pa.is_empty():
-        raise ValueError("MLB Savant contains duplicate true PA terminal sequences")
+    if terminal.filter(pl.col("_outcome_player_id").is_null()).height:
+        raise ValueError("MLB true PA terminal rows contain unresolved official outcome identity")
 
     terminal_games = terminal.with_columns(
         pl.col("game_date").cast(pl.String).str.to_date(strict=False).alias("_game_date"),
         pl.col("game_year").cast(pl.Int64).alias("season"),
         pl.col("league_id").cast(pl.Int64),
         pl.col("game_pk").cast(pl.Int64),
-        pl.col("batter_mlbam_id").cast(pl.Int64).alias("player_id"),
+        pl.col("_outcome_player_id").cast(pl.Int64).alias("player_id"),
         pl.col("events").cast(pl.String),
         pl.col("is_contact").cast(pl.Boolean),
+        _special_noncontact_outcome().alias("_is_special_noncontact_outcome"),
     )
     if terminal_games.filter(pl.col("_game_date").is_null()).height:
         raise ValueError("MLB true PA terminal rows contain unparseable game dates")
@@ -120,8 +269,7 @@ def build_mlb_current_talent_player_game_evidence(
             .sum()
             .cast(pl.Int64)
             .alias("strikeout_count"),
-            pl.col("events")
-            .is_in(sorted(KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES))
+            pl.col("_is_special_noncontact_outcome")
             .sum()
             .cast(pl.Int64)
             .alias("special_noncontact_count"),
@@ -149,7 +297,10 @@ def build_mlb_current_talent_player_game_evidence(
         )
     )
 
-    contacts = classify_mlb_savant_contacts(savant)
+    # Physical-contact identity remains the observed Savant batter identity even
+    # when the official PA/K belongs to a different batter after a two-strike
+    # substitution. ADR 024 keeps result and contact evidence separate.
+    contacts = classify_mlb_savant_contacts(attributed)
     contact_games = (
         contacts.group_by(["season", "league_id", "game_pk", "batter_mlbam_id"])
         .agg(
@@ -280,6 +431,17 @@ def build_mlb_current_talent_player_game_evidence(
         ["game_date", "game_pk", "player_id", "core_bin"]
     )
     contract = validate_player_game_evidence(summary, profile)
+    outcome_reassignments = terminal.filter(
+        pl.col("_outcome_player_id") != pl.col("_terminal_batter_id")
+    ).height
+    narrative_interference_errors = terminal.filter(
+        (~pl.col("events").is_in(sorted(KNOWN_SPECIAL_NONCONTACT_EVENT_TYPES)))
+        & pl.col("result_description")
+        .cast(pl.String)
+        .str.to_lowercase()
+        .str.contains(r"\binterference error\b")
+        .fill_null(False)
+    ).height
     return (
         summary.sort(["game_date", "game_pk", "player_id"]),
         profile,
@@ -290,5 +452,9 @@ def build_mlb_current_talent_player_game_evidence(
             "participant_authority": MLB_PARTICIPANT_AUTHORITY,
             "source_capability_tier": MLB_CAPABILITY_TIER,
             "evidence_denominator_policy": "separate_pa_expected_contact_observed_contact_v2",
+            "outcome_identity_policy": MLB_OUTCOME_IDENTITY_POLICY,
+            "outcome_batter_reassignment_count": int(outcome_reassignments),
+            "special_noncontact_policy": MLB_SPECIAL_NONCONTACT_POLICY,
+            "narrative_interference_error_count": int(narrative_interference_errors),
         },
     )
