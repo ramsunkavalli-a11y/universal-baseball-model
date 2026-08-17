@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "status": "eligible_for_2023_confirmation",
+  "development_workflow_run": 31998668697,
+  "development_season": 2022,
+  "development_cutoffs": ["2022-07-15", "2022-08-01", "2022-09-01"],
+  "frozen_comparator": {
+    "candidate_id": "hl180_ps100_fitted",
+    "season_to_date_only": true,
+    "half_life_days": 180.0,
+    "prior_strength_core_events": 100.0,
+    "translation_variant": "fitted_translation"
+  },
+  "baseline2": {
+    "method": "translated_multiseason_recency_empirical_bayes_v1",
+    "lookback_days": 1095,
+    "half_life_days": 180.0,
+    "prior_strength_core_events": 100.0,
+    "same_frozen_baseline0_prior": true,
+    "same_fold_translation_as_comparator": true,
+    "only_intended_change_vs_frozen_b1": "player_specific_history_depth"
+  },
+  "proper_scores": {
+    "frozen_baseline1_equal_fold_mean_log_loss": 2.256519796825162,
+    "baseline2_equal_fold_mean_log_loss": 2.253897925961388,
+    "baseline2_minus_frozen_log_loss": -0.0026218708637739674,
+    "frozen_baseline1_equal_fold_mean_brier": 0.8697432622144304,
+    "baseline2_equal_fold_mean_brier": 0.8692524809656429,
+    "baseline2_minus_frozen_brier": -0.0004907812487875418,
+    "baseline2_log_loss_fold_wins": 3,
+    "baseline2_brier_fold_wins": 3
+  },
+  "calibration": {
+    "frozen_baseline1_mean_abs_intercept_error": 0.5242279245769084,
+    "baseline2_mean_abs_intercept_error": 0.38569402288918764,
+    "frozen_baseline1_mean_abs_slope_error": 0.19265791896756188,
+    "baseline2_mean_abs_slope_error": 0.14725195539573108,
+    "all_component_fits_converged": true
+  },
+  "breadth": {
+    "component_log_loss_wins": 26,
+    "component_log_loss_comparisons": 36,
+    "component_brier_wins": 36,
+    "component_brier_comparisons": 36,
+    "meaningfully_supported_non_mlb_level_failures": 0
+  },
+  "history_evidence": {
+    "mean_share_model_eligible_players_with_prior_season_effective_evidence": 0.826351007327947,
+    "mean_additional_effective_core_events": 45.22072014392858
+  },
+  "promotion_checks": {
+    "lower_equal_fold_mean_log_loss": true,
+    "no_worse_equal_fold_mean_brier": true,
+    "log_loss_wins_at_least_2_of_3": true,
+    "identical_scored_coverage": true,
+    "no_meaningful_non_mlb_consistent_reversal": true,
+    "all_component_calibration_fits_converged": true,
+    "calibration_intercept_within_25pct_guardrail": true,
+    "calibration_slope_within_25pct_guardrail": true
+  },
+  "eligible_for_2023_confirmation": true,
+  "holdout_rule": "Do not tune history depth, half-life, prior strength, translation, or other Baseline 2 settings on 2023. Evaluate only this fixed challenger against the frozen Baseline 1 comparator."
+}
