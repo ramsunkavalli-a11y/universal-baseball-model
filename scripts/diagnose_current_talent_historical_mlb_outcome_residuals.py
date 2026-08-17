@@ -6,7 +6,10 @@ materializer. It runs only after the independent season backbone has identified 
 player × actual-league residual. It does not alter source evidence or acceptance.
 
 The purpose is to turn a season-level discrepancy into inspectable official game
-rows without hard-coding player IDs or guessing which game should change.
+rows without hard-coding player IDs or guessing which game should change. If the
+upstream materializer failed before it produced a reconciliation mismatch table
+(for example a transient source transport failure), this diagnostic exits cleanly
+because there is no outcome residual to adjudicate yet.
 """
 
 from __future__ import annotations
@@ -71,7 +74,11 @@ def main() -> int:
     mismatch_path = report_dir / "official_season_reconciliation_mismatches.csv"
 
     if not mismatch_path.exists():
-        raise FileNotFoundError(f"historical MLB mismatch CSV not found: {mismatch_path}")
+        print(
+            "No historical MLB reconciliation mismatch table exists; "
+            "upstream failure occurred before outcome residual adjudication."
+        )
+        return 0
     mismatch = pl.read_csv(mismatch_path)
     if mismatch.is_empty():
         print("No historical MLB outcome residuals to diagnose.")
