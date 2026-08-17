@@ -45,6 +45,7 @@ _SAVANT_DETAIL_TEMPLATE = (
 # Savant emits this source-specific terminal label for a PA interrupted by an
 # inning-ending runner event. It is not an official true PA result eventType.
 SAVANT_NON_PA_TERMINAL_EVENTS = frozenset({"truncated_pa"})
+SAVANT_TERMINAL_DESCRIPTION_RECOVERY_POLICY = "explicit_hit_by_pitch_description_v1"
 
 SAVANT_PERFORMANCE_SCHEMA: dict[str, pl.DataType] = {
     "game_date": pl.String,
@@ -187,6 +188,11 @@ def project_savant_performance_rows(
       ``bunt``.
     - ``truncated_pa`` is a Savant terminal marker for an interrupted PA, not a
       true official PA result. Unknown terminal labels fail loudly.
+    - a blank ``events`` value is recovered as ``hit_by_pitch`` only when Savant's
+      own pitch ``description`` explicitly equals ``hit_by_pitch``. The 2022
+      historical gate found one such row among 2,046 HBP descriptions; the other
+      2,045 already carried the same terminal event label. Other blank events are
+      not inferred.
     - when Savant exposes ``inning_topbot``, derive the batting team from the
       away team in the top half and home team in the bottom half. The field is
       optional at this low-level adapter boundary for old fixtures; production
@@ -254,10 +260,19 @@ def project_savant_performance_rows(
         .otherwise(source_bb)
         .alias("bb_type")
     )
-    terminal = _nonblank("events")
-    is_pa_terminal = pl.col("events").cast(pl.String).is_in(
-        sorted(PLATE_APPEARANCE_EVENT_TYPES)
+    raw_event = pl.col("events").cast(pl.String)
+    blank_event = raw_event.is_null() | (raw_event.str.strip_chars() == "")
+    explicit_hbp_description = (
+        pl.col("description").cast(pl.String).str.strip_chars().str.to_lowercase()
+        == "hit_by_pitch"
+    ).fill_null(False)
+    canonical_event = (
+        pl.when(blank_event & explicit_hbp_description)
+        .then(pl.lit("hit_by_pitch"))
+        .otherwise(raw_event)
     )
+    terminal = canonical_event.is_not_null() & (canonical_event.str.strip_chars() != "")
+    is_pa_terminal = canonical_event.is_in(sorted(PLATE_APPEARANCE_EVENT_TYPES))
 
     if "inning_topbot" in raw.columns:
         inning_topbot = pl.col("inning_topbot").cast(pl.String)
@@ -284,7 +299,7 @@ def project_savant_performance_rows(
         _integer_like("pitcher", "pitcher_mlbam_id"),
         pl.col("stand").cast(pl.String).alias("batter_side"),
         pl.col("p_throws").cast(pl.String).alias("pitcher_hand"),
-        pl.col("events").cast(pl.String),
+        canonical_event.alias("events"),
         pl.col("description").cast(pl.String).alias("pitch_description"),
         pl.col("des").cast(pl.String).alias("result_description"),
         pl.col("type").cast(pl.String).alias("pitch_result_code"),
