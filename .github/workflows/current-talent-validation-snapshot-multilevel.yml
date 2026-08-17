@@ -1,7 +1,7 @@
 name: Current Talent validation snapshot multilevel MiLB
 
 on:
-  # One-time self-bootstrap; remove after the first combined real-data run.
+  # One-time retry after artifact filename-token certification; remove after success.
   push:
     branches:
       - source-certification-poc
