@@ -2,9 +2,10 @@
 
 Tracking availability is structurally uneven in the historical minor leagues, so
 this layer deliberately assigns provenance from the *observed tracked game/player
-row* rather than declaring an entire level tracked.  A complete EV/LA batted ball
-may enter the richer Current Talent tier only after ``game_pk + player_id`` maps
-unambiguously to the already-certified player-game evidence.
+row* rather than declaring an entire level tracked. A complete result-producing
+EV/LA batted ball may enter the richer Current Talent tier only after its
+``game_pk + player_id`` maps unambiguously to the already-certified player-game
+evidence.
 
 The resulting capability key is descriptive provenance, not an eligibility rule:
 for example, observing one 2022 AAA tracked game does not imply that all 2022 AAA
@@ -15,7 +16,10 @@ from __future__ import annotations
 
 import polars as pl
 
-from universal_baseball.current_talent_batted_ball_quality import TRACKED_BBE_SCHEMA
+from universal_baseball.current_talent_batted_ball_quality import (
+    TRACKED_BBE_KEY,
+    TRACKED_BBE_SCHEMA,
+)
 
 
 TRACKED_SOURCE_FAMILIES = frozenset({"MLB_SAVANT", "MILB_SAVANT_TRACKED"})
@@ -46,9 +50,9 @@ def reconcile_tracked_bbe_to_certified_environment(
 
     ``certified_player_games`` may contain the full Current Talent game-summary
     surface; only ``game_pk + player_id + season + league_id + level_group`` are
-    used here.  Multiple summary rows for a player/game are allowed only when
-    they collapse to one identical environment.  Any complete tracked BBE with
-    no certified environment fails closed rather than being assigned a level from
+    used here. Multiple summary rows for a player/game are allowed only when they
+    collapse to one identical environment. Any complete tracked BBE with no
+    certified environment fails closed rather than being assigned a level from
     the tracking source itself.
     """
 
@@ -63,11 +67,11 @@ def reconcile_tracked_bbe_to_certified_environment(
     if tracked_bbe.is_empty():
         return pl.DataFrame(schema=RECONCILED_TRACKED_BBE_SCHEMA)
 
-    duplicate_bbe = tracked_bbe.group_by(["game_pk", "player_id", "at_bat_number"]).len().filter(
+    duplicate_bbe = tracked_bbe.group_by(list(TRACKED_BBE_KEY)).len().filter(
         pl.col("len") != 1
     )
     if not duplicate_bbe.is_empty():
-        raise ValueError("tracked batted-ball evidence violates canonical BBE grain")
+        raise ValueError("tracked batted-ball evidence violates canonical pitch-grain BBE key")
 
     environments = (
         certified_player_games.select(
@@ -130,6 +134,6 @@ def reconcile_tracked_bbe_to_certified_environment(
         )
         .select(*RECONCILED_TRACKED_BBE_SCHEMA)
         .cast(RECONCILED_TRACKED_BBE_SCHEMA, strict=True)
-        .sort(["game_date", "game_pk", "player_id", "at_bat_number"])
+        .sort(["game_date", *TRACKED_BBE_KEY])
     )
     return result
