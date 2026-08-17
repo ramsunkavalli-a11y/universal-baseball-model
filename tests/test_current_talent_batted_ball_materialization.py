@@ -4,6 +4,7 @@ import polars as pl
 import pytest
 
 from universal_baseball.current_talent_batted_ball_materialization import (
+    build_tracking_environment_completeness,
     combine_reconciled_tracked_bbe,
     materialize_reconciled_tracked_bbe,
 )
@@ -69,6 +70,48 @@ def test_raw_materialization_reuses_canonical_projection_and_environment_join() 
     assert row["launch_speed"] == pytest.approx(101.0)
     assert row["level_group"] == "AAA"
     assert row["source_capability_tier"] == "MILB_SAVANT_TRACKED:2022:117:AAA"
+
+
+def test_broad_completeness_keeps_measured_foul_separate_from_model_bbe() -> None:
+    completeness, metrics = build_tracking_environment_completeness(
+        _raw(),
+        _certified(level="AAA", league_id=117),
+        source_family="MILB_SAVANT_TRACKED",
+    )
+
+    assert metrics["bbe_like_observations"] == 2
+    assert metrics["matched_bbe_like_observations"] == 2
+    assert metrics["unmatched_bbe_like_observations"] == 0
+    row = completeness.row(0, named=True)
+    assert row["bbe_like_observations"] == 2
+    assert row["complete_ev_la_observations"] == 2
+    assert row["complete_ev_la_share"] == pytest.approx(1.0)
+    assert row["tracked_game_count"] == 1
+    assert row["source_capability_tier"] == "MILB_SAVANT_TRACKED:2022:117:AAA"
+
+
+def test_broad_completeness_reports_unmatched_observations_without_promoting_them() -> None:
+    raw = pl.concat(
+        [
+            _raw(),
+            _raw().tail(1).with_columns(
+                pl.lit("999").alias("batter"),
+                pl.lit("2").alias("game_pk"),
+            ),
+        ],
+        how="vertical_relaxed",
+    )
+    completeness, metrics = build_tracking_environment_completeness(
+        raw,
+        _certified(level="AAA", league_id=117),
+        source_family="MILB_SAVANT_TRACKED",
+    )
+
+    assert metrics["bbe_like_observations"] == 3
+    assert metrics["matched_bbe_like_observations"] == 2
+    assert metrics["unmatched_bbe_like_observations"] == 1
+    assert metrics["certified_match_share"] == pytest.approx(2 / 3)
+    assert completeness.get_column("bbe_like_observations").sum() == 2
 
 
 def _reconciled(*, source: str, player_id: int, game_pk: int, league_id: int, level: str) -> pl.DataFrame:
