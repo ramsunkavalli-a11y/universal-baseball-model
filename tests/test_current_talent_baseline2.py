@@ -6,16 +6,24 @@ import polars as pl
 import pytest
 from polars.testing import assert_frame_equal
 
+from universal_baseball.current_talent_baseline2 import (
+    BASELINE2_LOOKBACK_DAYS,
+    FROZEN_BASELINE2_HALF_LIFE_DAYS,
+    build_baseline2_profiles,
+    build_frozen_b1_vs_b2_scoring_pair,
+)
 from universal_baseball.current_talent_baselines import (
+    build_baseline_profiles,
     build_recency_weighted_level_profile,
     build_translated_player_evidence,
+    fit_leave_one_out_age_level_prior,
 )
 from universal_baseball.current_talent_evidence import EvidenceWindow
 from universal_baseball.performance_season import ALL_CORE_BINS
 
 
-B2_LOOKBACK_DAYS = 1095
-FROZEN_HALF_LIFE_DAYS = 180.0
+B2_LOOKBACK_DAYS = BASELINE2_LOOKBACK_DAYS
+FROZEN_HALF_LIFE_DAYS = FROZEN_BASELINE2_HALF_LIFE_DAYS
 
 
 def _summary_and_profile(game_dates: list[date], bins: list[str] | None = None) -> tuple[pl.DataFrame, pl.DataFrame]:
@@ -91,6 +99,40 @@ def _b2_window() -> EvidenceWindow:
         label="baseline2_multiseason_1095d_180d",
         lookback_days=B2_LOOKBACK_DAYS,
         half_life_days=FROZEN_HALF_LIFE_DAYS,
+    )
+
+
+def _translated_players(player_counts: dict[int, dict[str, float]]) -> pl.DataFrame:
+    rows: list[dict[str, object]] = []
+    for player_id, supplied in player_counts.items():
+        counts = {core_bin: float(supplied.get(core_bin, 0.0)) for core_bin in ALL_CORE_BINS}
+        total = sum(counts.values())
+        for core_bin in ALL_CORE_BINS:
+            rows.append(
+                {
+                    "player_id": player_id,
+                    "core_bin": core_bin,
+                    "translated_effective_count": counts[core_bin],
+                    "effective_core_events": total,
+                    "translated_mlb_rate": counts[core_bin] / total,
+                }
+            )
+    return pl.DataFrame(rows)
+
+
+def _frozen_prior(translated: pl.DataFrame) -> pl.DataFrame:
+    context = pl.DataFrame(
+        {
+            "player_id": [1, 2, 3],
+            "age_years": [22.2, 22.7, 22.9],
+            "as_of_level_group": ["AAA", "AAA", "AAA"],
+            "as_of_environment_ambiguous": [False, False, False],
+        }
+    )
+    return fit_leave_one_out_age_level_prior(
+        translated,
+        context,
+        min_age_level_peers=2,
     )
 
 
@@ -179,3 +221,64 @@ def test_baseline2_adds_prior_season_player_evidence_without_changing_current_ev
     b1_bb = b1.filter(pl.col("core_bin") == "BB_HBP").item(0, "translated_mlb_rate")
     b2_bb = b2.filter(pl.col("core_bin") == "BB_HBP").item(0, "translated_mlb_rate")
     assert b2_bb > b1_bb
+
+
+def test_baseline2_reuses_frozen_prior_and_pairs_cleanly_for_scoring() -> None:
+    current = _translated_players(
+        {
+            1: {"K": 90.0, "BB_HBP": 10.0},
+            2: {"K": 20.0, "BB_HBP": 80.0},
+            3: {"K": 30.0, "BB_HBP": 70.0},
+        }
+    )
+    multiseason = _translated_players(
+        {
+            1: {"K": 100.0, "BB_HBP": 30.0},
+            2: {"K": 30.0, "BB_HBP": 100.0},
+            3: {"K": 45.0, "BB_HBP": 85.0},
+        }
+    )
+    prior = _frozen_prior(current)
+    frozen = build_baseline_profiles(current, prior, prior_strength_core_events=100.0)
+    b2 = build_baseline2_profiles(multiseason, prior, prior_strength_core_events=100.0)
+    pair = build_frozen_b1_vs_b2_scoring_pair(frozen, b2)
+
+    expected_frozen = frozen.profile.select(
+        "player_id",
+        "core_bin",
+        pl.col("baseline1_latent_probability").alias("baseline0_latent_probability"),
+    )
+    expected_b2 = b2.profile.select(
+        "player_id",
+        "core_bin",
+        pl.col("baseline2_latent_probability").alias("baseline1_latent_probability"),
+    )
+    expected = expected_frozen.join(expected_b2, on=["player_id", "core_bin"]).sort(
+        ["player_id", "core_bin"]
+    )
+    assert_frame_equal(pair, expected, check_row_order=True, check_column_order=True)
+
+
+def test_baseline2_pair_rejects_a_changed_baseline0_prior() -> None:
+    current = _translated_players(
+        {
+            1: {"K": 90.0, "BB_HBP": 10.0},
+            2: {"K": 20.0, "BB_HBP": 80.0},
+            3: {"K": 30.0, "BB_HBP": 70.0},
+        }
+    )
+    prior = _frozen_prior(current)
+    frozen = build_baseline_profiles(current, prior, prior_strength_core_events=100.0)
+    b2 = build_baseline2_profiles(current, prior, prior_strength_core_events=100.0)
+    broken = type(b2)(
+        profile=b2.profile.with_columns(
+            pl.when((pl.col("player_id") == 1) & (pl.col("core_bin") == "K"))
+            .then(pl.col("baseline0_latent_probability") + 0.01)
+            .otherwise(pl.col("baseline0_latent_probability"))
+            .alias("baseline0_latent_probability")
+        ),
+        metrics=b2.metrics,
+    )
+
+    with pytest.raises(ValueError, match="does not share the frozen Baseline 0 prior"):
+        build_frozen_b1_vs_b2_scoring_pair(frozen, broken)
