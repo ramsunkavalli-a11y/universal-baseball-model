@@ -55,12 +55,14 @@ jobs:
           tests/test_current_talent_batted_ball_capability.py
           tests/test_current_talent_batted_ball_scoring.py
           tests/test_current_talent_batted_ball_residual_fit.py
+          tests/test_current_talent_batted_ball_development_contract.py
 
-      - name: Compile source tools
+      - name: Compile source and development tools
         run: >-
           python -m py_compile
           scripts/probe_savant_minors_tracking.py
           scripts/audit_current_talent_batted_ball_source_semantics.py
+          scripts/materialize_current_talent_batted_ball_development.py
 
       - name: Download certified MiLB evidence
         uses: actions/download-artifact@v8
