@@ -172,6 +172,7 @@ def main() -> int:
     )
 
     fit_metrics: dict[str, object] | None = None
+    fit_offsets: list[dict[str, object]] | None = None
     if include_mlb:
         fit = fit_level_clr_translation(
             evidence.pair_summary,
@@ -180,15 +181,18 @@ def main() -> int:
         )
         offsets_path = args.output_dir / "level_clr_offsets.parquet"
         fit.offsets.write_parquet(offsets_path, compression="zstd")
+        fit.offsets.write_csv(args.output_dir / "level_clr_offsets.csv")
         output_tables["level_clr_offsets"] = {
             "path": str(offsets_path),
+            "csv_path": str(args.output_dir / "level_clr_offsets.csv"),
             "row_count": int(fit.offsets.height),
             "column_count": len(fit.offsets.columns),
         }
         fit_metrics = fit.metrics
+        fit_offsets = [dict(row) for row in fit.offsets.iter_rows(named=True)]
 
     report = {
-        "report_schema_version": "0.2",
+        "report_schema_version": "0.3",
         "accepted": True,
         "scope": (
             "universal_mlb_connected_translation_candidate"
@@ -206,6 +210,7 @@ def main() -> int:
         "eligible_cross_level_levels": observed_pair_levels,
         "mlb_anchor_fit_status": "candidate_fit_completed" if include_mlb else "not_attempted_affiliated_milb_only",
         "mlb_anchor_fit_metrics": fit_metrics,
+        "mlb_anchor_fit_offsets": fit_offsets,
         "output_tables": output_tables,
         "interpretation": (
             "Candidate training-only MLB-anchored observation-layer translation fit. "
