@@ -138,7 +138,9 @@ def test_contact_value_projection_maps_frozen_terminal_groups_and_exposes_unsupp
         _contact_row("S", single=1, bip=1),
         _contact_row("D", double=1, bip=1),
         _contact_row("T", triple=1, bip=1),
-        _contact_row("H", hr=1, bip=1),
+        # Retrosheet's traditional BIP flag excludes most over-the-fence HR,
+        # but the frozen model BBE contract includes result-producing HR contact.
+        _contact_row("H", hr=1),
         _contact_row("E", roe=1, bip=1),
         _contact_row("F", fc=1, bip=1),
         _contact_row("SF", outs_post=1, sf=1, bip=1),
@@ -157,6 +159,7 @@ def test_contact_value_projection_maps_frozen_terminal_groups_and_exposes_unsupp
     assert mapped["D"]["terminal_outcome_group"] == "2B"
     assert mapped["T"]["terminal_outcome_group"] == "3B"
     assert mapped["H"]["terminal_outcome_group"] == "HR"
+    assert mapped["H"]["contact_value_target_candidate"] is True
     assert mapped["E"]["terminal_outcome_group"] == "ROE"
     assert mapped["F"]["terminal_outcome_group"] == "FC_REACH"
     assert mapped["SF"]["terminal_outcome_group"] == "SF"
