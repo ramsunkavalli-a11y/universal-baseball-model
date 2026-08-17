@@ -1,0 +1,115 @@
+name: Current Talent baseline validation
+
+on:
+  # One-time bootstrap for the first 2021-08-01 gate; remove after it resolves.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - .github/workflows/current-talent-baseline-validation.yml
+  workflow_dispatch:
+    inputs:
+      milb_source_run_id:
+        description: Run containing five certified MiLB player-game artifacts
+        required: true
+        default: "31980820797"
+        type: string
+      milb_artifact_pattern:
+        description: Artifact-name glob for five MiLB levels
+        required: true
+        default: "ct-validation-game-evidence-2021-*"
+        type: string
+      mlb_source_run_id:
+        description: Certified historical MLB run
+        required: true
+        default: "31986504169"
+        type: string
+      season:
+        description: Season
+        required: true
+        default: "2021"
+        type: string
+      as_of_date:
+        description: Predictor cutoff YYYY-MM-DD
+        required: true
+        default: "2021-08-01"
+        type: string
+      half_life_days:
+        description: Candidate recency half-life; not frozen
+        required: true
+        default: "90"
+        type: string
+      prior_strength_core_events:
+        description: Candidate Baseline 1 EB prior strength; not frozen
+        required: true
+        default: "100"
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      MILB_SOURCE_RUN_ID: ${{ inputs.milb_source_run_id || '31980820797' }}
+      MILB_ARTIFACT_PATTERN: ${{ inputs.milb_artifact_pattern || 'ct-validation-game-evidence-2021-*' }}
+      MLB_SOURCE_RUN_ID: ${{ inputs.mlb_source_run_id || '31986504169' }}
+      TARGET_SEASON: ${{ inputs.season || '2021' }}
+      AS_OF_DATE: ${{ inputs.as_of_date || '2021-08-01' }}
+      HALF_LIFE_DAYS: ${{ inputs.half_life_days || '90' }}
+      PRIOR_STRENGTH_CORE_EVENTS: ${{ inputs.prior_strength_core_events || '100' }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Run baseline and scoring regression tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_baselines.py
+          tests/test_current_talent_scoring.py
+          tests/test_current_talent_translation.py
+          tests/test_chadwick.py
+      - name: Download certified MiLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          pattern: ${{ env.MILB_ARTIFACT_PATTERN }}
+          path: reports/generated/current-talent-baseline-inputs/${{ env.TARGET_SEASON }}/milb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: ${{ env.MILB_SOURCE_RUN_ID }}
+          github-token: ${{ github.token }}
+      - name: Download certified MLB evidence
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-${{ env.TARGET_SEASON }}
+          path: reports/generated/current-talent-baseline-inputs/${{ env.TARGET_SEASON }}/mlb
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: ${{ env.MLB_SOURCE_RUN_ID }}
+          github-token: ${{ github.token }}
+      - name: Materialize and score Baseline 0 / Baseline 1
+        run: >-
+          python scripts/materialize_current_talent_baseline_validation.py
+          --input-root "reports/generated/current-talent-baseline-inputs/${TARGET_SEASON}/milb"
+          --mlb-input-root "reports/generated/current-talent-baseline-inputs/${TARGET_SEASON}/mlb"
+          --season "${TARGET_SEASON}"
+          --as-of-date "${AS_OF_DATE}"
+          --half-life-days "${HALF_LIFE_DAYS}"
+          --prior-strength-core-events "${PRIOR_STRENGTH_CORE_EVENTS}"
+          --output-dir "reports/generated/current-talent-baseline-validation/${TARGET_SEASON}/${AS_OF_DATE}"
+      - name: Upload baseline validation artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-baseline-validation-${{ env.TARGET_SEASON }}-${{ env.AS_OF_DATE }}
+          path: reports/generated/current-talent-baseline-validation/${{ env.TARGET_SEASON }}/${{ env.AS_OF_DATE }}/
+          if-no-files-found: warn
+          retention-days: 14
