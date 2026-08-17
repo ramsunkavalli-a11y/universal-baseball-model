@@ -1,0 +1,59 @@
+{
+  "accepted_input_runs": {
+    "baseline_fit": 32075112279,
+    "feature_attachment": 32075892988
+  },
+  "baseline": {
+    "cutoff_date": "2021-07-15",
+    "fitted_event_count": 238119,
+    "max_training_event_date": "2021-07-14",
+    "parameter_count": 15
+  },
+  "boundary": {
+    "2022_future_outcomes_accessed": false,
+    "accessed_2023": false,
+    "calibration_computed": false,
+    "coefficient_fit_uses_2021_only": true,
+    "development_losses_computed": false,
+    "model_form": "no_intercept_two_feature_event_equivalent_player_wls",
+    "model_scoring": false,
+    "network_requests_performed": false,
+    "richer_coefficients_fitted": true
+  },
+  "first_training_target_date": "2021-07-15",
+  "future_window_end_exclusive": "2021-10-13",
+  "future_window_start": "2021-07-15",
+  "gate": "current_talent_contact_value_residual_fit_2021_training_only",
+  "last_training_target_date": "2021-10-03",
+  "report_schema_version": "0.1",
+  "residual_fit": {
+    "beta_mean_exit_velocity": 0.020808202510874292,
+    "beta_sweet_spot_share": -0.0032619728296970248,
+    "determinant": 3906075044.1483107,
+    "fitted_future_contact_count": 69382,
+    "fitted_player_count": 621
+  },
+  "storage": {
+    "event_training": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "e12279d77ecd85615889a0bafcb53a524e3d4dc6cada21b297e429d4fb2bb93f",
+      "file_size_bytes": 846881,
+      "path": "reports/generated/current-talent-contact-value-residual-fit/tables/residual_training_events_2021-07-15.parquet",
+      "row_count": 69382,
+      "schema_sha256": "48c06206363024f8d3fcfc04c670bbfc2f1f6410e75ff06b51297d5e3ebb6e82",
+      "table_name": "current_talent_contact_value_residual_training_events_2021_07_15"
+    },
+    "player_training": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "f489fafbc4ef8a19e2a6343821f123d609ca8ea15cac4100e1f577e20878042d",
+      "file_size_bytes": 18536,
+      "path": "reports/generated/current-talent-contact-value-residual-fit/tables/residual_player_training_2021-07-15.parquet",
+      "row_count": 621,
+      "schema_sha256": "8f37755f92114ab464ab89ac535ac6c7674437bee748a55c0be59925127e45dd",
+      "table_name": "current_talent_contact_value_residual_player_training_2021_07_15"
+    }
+  },
+  "training_cutoff": "2021-07-15",
+  "training_event_count": 69382,
+  "training_player_count": 621
+}
