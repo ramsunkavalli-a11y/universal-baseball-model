@@ -111,6 +111,91 @@ def test_truncated_pa_is_terminal_source_marker_but_not_true_pa() -> None:
     assert row["is_plate_appearance_terminal"] is False
 
 
+def test_explicit_hit_by_pitch_description_recovers_missing_terminal_event() -> None:
+    # 2022-05-28, game 662280, Rodolfo Castro: Savant retained the
+    # full pitch sequence and explicit HBP pitch description but omitted only
+    # the terminal events label. The source-wide recovery is deliberately
+    # limited to that unambiguous description.
+    raw = pl.DataFrame(
+        {
+            "game_date": ["2022-05-28"],
+            "game_year": ["2022"],
+            "game_pk": ["662280"],
+            "at_bat_number": ["69"],
+            "pitch_number": ["5"],
+            "game_type": ["R"],
+            "batter": ["666801"],
+            "pitcher": ["661395"],
+            "stand": ["S"],
+            "p_throws": ["R"],
+            "events": [None],
+            "description": ["hit_by_pitch"],
+            "des": [None],
+            "type": ["B"],
+            "bb_type": [None],
+            "hit_location": [None],
+            "hc_x": [None],
+            "hc_y": [None],
+            "home_team": ["SD"],
+            "away_team": ["PIT"],
+            "inning_topbot": ["Top"],
+        },
+        schema_overrides={
+            "events": pl.String,
+            "des": pl.String,
+            "bb_type": pl.String,
+            "hit_location": pl.String,
+            "hc_x": pl.String,
+            "hc_y": pl.String,
+        },
+    )
+    row = project_savant_performance_rows(raw).to_dicts()[0]
+    assert row["events"] == "hit_by_pitch"
+    assert row["is_terminal_event"] is True
+    assert row["is_plate_appearance_terminal"] is True
+    assert row["is_contact"] is False
+
+
+def test_nonterminal_ball_description_is_not_promoted_to_event() -> None:
+    raw = pl.DataFrame(
+        {
+            "game_date": ["2022-05-28"],
+            "game_year": ["2022"],
+            "game_pk": ["662280"],
+            "at_bat_number": ["69"],
+            "pitch_number": ["4"],
+            "game_type": ["R"],
+            "batter": ["666801"],
+            "pitcher": ["661395"],
+            "stand": ["S"],
+            "p_throws": ["R"],
+            "events": [None],
+            "description": ["blocked_ball"],
+            "des": [None],
+            "type": ["B"],
+            "bb_type": [None],
+            "hit_location": [None],
+            "hc_x": [None],
+            "hc_y": [None],
+            "home_team": ["SD"],
+            "away_team": ["PIT"],
+            "inning_topbot": ["Top"],
+        },
+        schema_overrides={
+            "events": pl.String,
+            "des": pl.String,
+            "bb_type": pl.String,
+            "hit_location": pl.String,
+            "hc_x": pl.String,
+            "hc_y": pl.String,
+        },
+    )
+    row = project_savant_performance_rows(raw).to_dicts()[0]
+    assert row["events"] is None
+    assert row["is_terminal_event"] is False
+    assert row["is_plate_appearance_terminal"] is False
+
+
 def test_unknown_terminal_event_fails_loudly() -> None:
     raw = pl.DataFrame(
         {
