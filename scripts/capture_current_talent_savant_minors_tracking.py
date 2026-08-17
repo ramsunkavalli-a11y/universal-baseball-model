@@ -9,6 +9,10 @@ be truncated with ``--end-date`` for a development-only capture. Requests are sp
 into small deterministic chunks; exact response bytes, URLs, hashes, and status
 metadata are retained before the common raw->canonical->reconciliation and broad
 source-completeness paths run.
+
+Transient HTTP/network failures receive a small bounded retry/backoff. A chunk is
+never accepted unless its final successful response passes the exact CSV/schema
+contract; schema drift, empty content, and other semantic failures fail closed.
 """
 
 from __future__ import annotations
@@ -19,6 +23,8 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import time
+from typing import Callable
 
 import polars as pl
 import requests
@@ -40,6 +46,9 @@ USER_AGENT = (
     "universal-baseball-model/0.1 "
     "(public baseball research; tracked Minor Savant historical materialization)"
 )
+TRANSIENT_HTTP_STATUS = frozenset({429, 500, 502, 503, 504})
+DEFAULT_MAX_FETCH_ATTEMPTS = 4
+DEFAULT_RETRY_BACKOFF_SECONDS = 2.0
 
 
 def _parse_args() -> argparse.Namespace:
@@ -97,6 +106,45 @@ def _validate_response_csv(content: bytes, *, request_url: str) -> tuple[int, in
     return int(frame.height), len(frame.columns)
 
 
+def _fetch_with_retry(
+    session: requests.Session,
+    url: str,
+    *,
+    timeout_seconds: int = 120,
+    max_attempts: int = DEFAULT_MAX_FETCH_ATTEMPTS,
+    base_backoff_seconds: float = DEFAULT_RETRY_BACKOFF_SECONDS,
+    sleep_fn: Callable[[float], None] = time.sleep,
+) -> tuple[requests.Response, int]:
+    """Fetch one chunk with bounded retry only for transient transport failures."""
+
+    if max_attempts < 1:
+        raise ValueError("max_attempts must be at least one")
+    if base_backoff_seconds < 0:
+        raise ValueError("base_backoff_seconds must be nonnegative")
+
+    last_exception: requests.RequestException | None = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = session.get(url, timeout=timeout_seconds)
+        except requests.RequestException as exc:
+            last_exception = exc
+            if attempt == max_attempts:
+                raise
+        else:
+            if response.status_code not in TRANSIENT_HTTP_STATUS:
+                response.raise_for_status()
+                return response, attempt
+            if attempt == max_attempts:
+                response.raise_for_status()
+
+        if attempt < max_attempts:
+            sleep_fn(base_backoff_seconds * (2 ** (attempt - 1)))
+
+    if last_exception is not None:  # pragma: no cover - loop always raises first
+        raise last_exception
+    raise RuntimeError("tracked Minor Savant retry loop ended unexpectedly")
+
+
 def main() -> int:
     args = _parse_args()
     if args.chunk_days < 1:
@@ -122,8 +170,7 @@ def main() -> int:
     session.headers.update({"User-Agent": USER_AGENT})
     try:
         for request in plan:
-            response = session.get(request.request_url, timeout=120)
-            response.raise_for_status()
+            response, fetch_attempts = _fetch_with_retry(session, request.request_url)
             content = response.content
             row_count, column_count = _validate_response_csv(
                 content, request_url=request.request_url
@@ -137,6 +184,7 @@ def main() -> int:
                     "request_url": request.request_url,
                     "retrieved_url": response.url,
                     "status_code": int(response.status_code),
+                    "fetch_attempts": fetch_attempts,
                     "content_type": response.headers.get("content-type", ""),
                     "response_sha256": hashlib.sha256(content).hexdigest(),
                     "response_bytes": len(content),
@@ -201,7 +249,7 @@ def main() -> int:
     by_tier.write_csv(by_tier_path)
 
     report = {
-        "report_schema_version": "0.2",
+        "report_schema_version": "0.3",
         "scope": "manual_tracked_minor_savant_historical_capture",
         "live_source_io": True,
         "season": args.season,
@@ -211,6 +259,12 @@ def main() -> int:
         "chunk_days": args.chunk_days,
         "request_chunk_count": len(plan),
         "request_semantics": "tracked_only_helper_v1",
+        "transient_retry_policy": {
+            "max_attempts": DEFAULT_MAX_FETCH_ATTEMPTS,
+            "base_backoff_seconds": DEFAULT_RETRY_BACKOFF_SECONDS,
+            "status_codes": sorted(TRANSIENT_HTTP_STATUS),
+        },
+        "max_fetch_attempts_observed": int(request_manifest.get_column("fetch_attempts").max()),
         "canonical_model_bbe_contract": "result_producing_non_bunt_pitch_grain_v1",
         "raw_response_bytes": int(request_manifest.get_column("response_bytes").sum()),
         "raw_response_rows": int(request_manifest.get_column("row_count").sum()),
