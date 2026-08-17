@@ -143,7 +143,7 @@ def build_frozen_b1_vs_b2_scoring_pair(
     )
     if paired.height != frozen.height or paired.height != challenger.height:
         raise ValueError("frozen Baseline 1 and Baseline 2 coverage differs")
-    if paired.select(pl.any_horizontal(pl.all().is_null())).item():
+    if paired.filter(pl.any_horizontal(pl.all().is_null())).height:
         raise ValueError("frozen Baseline 1 and Baseline 2 keys do not match exactly")
     if paired.filter((pl.col("_frozen_b0") - pl.col("_challenger_b0")).abs() > tolerance).height:
         raise ValueError("Baseline 2 does not share the frozen Baseline 0 prior")
