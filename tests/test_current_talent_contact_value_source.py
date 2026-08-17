@@ -130,6 +130,27 @@ def test_terminal_projection_uses_final_pitch_and_collapses_exact_release_duplic
     assert classified.get_column("terminal_outcome_group").to_list() == ["1B"]
 
 
+def test_terminal_projection_collapses_utf8_latin1_mojibake_duplicate() -> None:
+    raw = pl.DataFrame(
+        {
+            "game_pk": [727949, 727949],
+            "at_bat_number": [49, 49],
+            "pitch_number": [3, 3],
+            "game_type": ["R", "R"],
+            "description": [
+                "Luis GonzÃ¡lez called out on strikes.",
+                "Luis González called out on strikes.",
+            ],
+        }
+    )
+
+    terminal = project_terminal_pa_descriptions(raw)
+    assert terminal.height == 1
+    row = terminal.row(0, named=True)
+    assert row["raw_terminal_row_count"] == 2
+    assert row["terminal_description_variant_count"] == 1
+
+
 def test_terminal_projection_rejects_conflicting_terminal_descriptions() -> None:
     raw = pl.DataFrame(
         {
