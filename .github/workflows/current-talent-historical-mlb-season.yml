@@ -1,0 +1,62 @@
+name: Current Talent historical MLB season
+
+on:
+  # One-time bootstrap for the first 2021 live gate; remove after the run resolves.
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - .github/workflows/current-talent-historical-mlb-season.yml
+  workflow_dispatch:
+    inputs:
+      season:
+        description: Historical MLB regular season to materialize
+        required: true
+        default: "2021"
+        type: choice
+        options:
+          - "2021"
+          - "2022"
+          - "2023"
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      TARGET_SEASON: ${{ inputs.season || '2021' }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Run MLB historical evidence tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_evidence.py
+          tests/test_current_talent_mlb_evidence.py
+          tests/test_current_talent_mlb_history.py
+          tests/test_savant.py
+      - name: Materialize historical MLB player-game evidence
+        run: >-
+          python scripts/materialize_current_talent_historical_mlb_game_evidence.py
+          --season "${TARGET_SEASON}"
+      - name: Upload historical MLB evidence and source captures
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-historical-mlb-${{ env.TARGET_SEASON }}
+          path: |
+            reports/generated/current-talent-historical-mlb-game-evidence/${{ env.TARGET_SEASON }}/
+            data/quarantine/current-talent-historical-mlb-game-evidence/${{ env.TARGET_SEASON }}/
+          if-no-files-found: warn
+          retention-days: 14
