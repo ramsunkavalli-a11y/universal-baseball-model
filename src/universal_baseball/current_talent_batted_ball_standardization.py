@@ -2,7 +2,9 @@
 
 The richer challenger must not derive centering/scaling parameters from evaluation
 folds. This module therefore makes the fitted standardization state explicit and
-reusable across later chronological folds.
+reusable across later chronological folds. When the source feature surface carries
+an ``as_of_date``, standardization preserves it so downstream fitting can fail
+closed on cutoff mismatches rather than relying on caller convention alone.
 """
 
 from __future__ import annotations
@@ -84,7 +86,11 @@ def standardize_batted_ball_quality_features(
     features: pl.DataFrame,
     fitted: BattedBallFeatureStandardization,
 ) -> pl.DataFrame:
-    """Apply fixed training-only parameters without refitting evaluation rows."""
+    """Apply fixed training-only parameters without refitting evaluation rows.
+
+    ``as_of_date`` is optional for compatibility with small deterministic callers,
+    but when present it is preserved unchanged for downstream chronology checks.
+    """
 
     required = {"player_id", "tracked_bbe_eligible", *FEATURE_COLUMNS}
     missing = sorted(required - set(features.columns))
@@ -94,8 +100,9 @@ def standardize_batted_ball_quality_features(
     if not duplicate.is_empty():
         raise ValueError("batted-ball features violate player_id grain")
 
+    passthrough = ["as_of_date"] if "as_of_date" in features.columns else []
     return (
-        features.select("player_id", "tracked_bbe_eligible", *FEATURE_COLUMNS)
+        features.select(*passthrough, "player_id", "tracked_bbe_eligible", *FEATURE_COLUMNS)
         .with_columns(
             pl.when(
                 pl.col("tracked_bbe_eligible")
@@ -123,6 +130,7 @@ def standardize_batted_ball_quality_features(
             .alias("z_sweet_spot_share"),
         )
         .select(
+            *passthrough,
             "player_id",
             "tracked_bbe_eligible",
             "z_mean_exit_velocity",
