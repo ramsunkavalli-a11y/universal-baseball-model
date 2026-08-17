@@ -15,6 +15,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from hashlib import sha256
 import json
+import time
 from typing import Any, Mapping
 
 import polars as pl
@@ -24,6 +25,9 @@ import requests
 MLB_STATS_URL = "https://statsapi.mlb.com/api/v1/stats"
 MLB_TEAM_URL = "https://statsapi.mlb.com/api/v1/teams"
 MLB_LEAGUE_IDS = (103, 104)
+MLB_STATSAPI_RETRYABLE_STATUS_CODES = frozenset({429, 500, 502, 503, 504})
+MLB_STATSAPI_RETRY_BACKOFF_SECONDS = (2, 4, 8, 16)
+MLB_STATSAPI_RETRY_ATTEMPTS = 5
 _REQUIRED_FIELDS = (
     "plateAppearances",
     "atBats",
@@ -85,6 +89,48 @@ def _integer_like(value: Any, *, field: str) -> int:
     return result
 
 
+def _statsapi_get_with_retry(
+    session: requests.Session,
+    url: str,
+    *,
+    params: Mapping[str, Any],
+    timeout_seconds: int,
+    attempts: int = MLB_STATSAPI_RETRY_ATTEMPTS,
+) -> requests.Response:
+    """GET a Stats API resource with bounded transport-only retries.
+
+    Retries are deliberately limited to connection/time-out failures and HTTP
+    statuses that are conventionally transient. Response contents and data
+    acceptance semantics are never modified. The final attempt raises the
+    original requests exception / HTTP error.
+    """
+
+    if attempts <= 0:
+        raise ValueError("Stats API retry attempts must be positive")
+    for attempt_index in range(attempts):
+        try:
+            response = session.get(url, params=params, timeout=timeout_seconds)
+            if (
+                int(response.status_code) in MLB_STATSAPI_RETRYABLE_STATUS_CODES
+                and attempt_index < attempts - 1
+            ):
+                delay = MLB_STATSAPI_RETRY_BACKOFF_SECONDS[
+                    min(attempt_index, len(MLB_STATSAPI_RETRY_BACKOFF_SECONDS) - 1)
+                ]
+                time.sleep(delay)
+                continue
+            response.raise_for_status()
+            return response
+        except (requests.Timeout, requests.ConnectionError):
+            if attempt_index >= attempts - 1:
+                raise
+            delay = MLB_STATSAPI_RETRY_BACKOFF_SECONDS[
+                min(attempt_index, len(MLB_STATSAPI_RETRY_BACKOFF_SECONDS) - 1)
+            ]
+            time.sleep(delay)
+    raise RuntimeError("unreachable Stats API retry state")
+
+
 def project_mlb_hitting_splits(
     splits: list[Mapping[str, Any]],
     *,
@@ -144,9 +190,8 @@ def project_mlb_hitting_splits(
         )
     if not rows:
         return pl.DataFrame(schema=MLB_BATTING_BACKBONE_SCHEMA)
-    result = (
-        pl.DataFrame(rows, schema=MLB_BATTING_BACKBONE_SCHEMA)
-        .sort(["league_id", "player_id"])
+    result = pl.DataFrame(rows, schema=MLB_BATTING_BACKBONE_SCHEMA).sort(
+        ["league_id", "player_id"]
     )
     duplicates = result.group_by(["season", "league_id", "player_id"]).len().filter(
         pl.col("len") > 1
@@ -188,8 +233,12 @@ def fetch_mlb_hitting_backbone(
                     "limit": int(page_limit),
                     "offset": int(offset),
                 }
-                response = active.get(MLB_STATS_URL, params=params, timeout=timeout_seconds)
-                response.raise_for_status()
+                response = _statsapi_get_with_retry(
+                    active,
+                    MLB_STATS_URL,
+                    params=params,
+                    timeout_seconds=timeout_seconds,
+                )
                 content = response.content
                 payload = response.json()
                 groups = payload.get("stats") or []
@@ -256,12 +305,12 @@ def fetch_mlb_team_leagues(
     owned = session is None
     active = session or requests.Session()
     try:
-        response = active.get(
+        response = _statsapi_get_with_retry(
+            active,
             MLB_TEAM_URL,
             params={"sportId": 1, "season": int(season)},
-            timeout=timeout_seconds,
+            timeout_seconds=timeout_seconds,
         )
-        response.raise_for_status()
         content = response.content
         payload = response.json()
     finally:
