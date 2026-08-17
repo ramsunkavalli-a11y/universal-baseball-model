@@ -145,11 +145,57 @@ A one-level 2021 Rookie/complex Aug. 1 validation run also passed end-to-end: `3
 
 Both live validation workflows are back to **manual-only** after certification. Normal CI after cleanup passed in run `31981095926`.
 
+### 6. Candidate environment-translation foundation
+
+`src/universal_baseball/current_talent_translation.py` now implements the first leakage-safe matched-player translation primitive. This is **candidate baseline infrastructure, not a promoted Current Talent model or a certified final translation form**.
+
+Current policy:
+
+- use only games strictly before the training cutoff;
+- construct chronological player environment stints from actual `season + league_id + level_group` evidence;
+- same-day multi-environment dates are ambiguous and break continuity rather than using game PK as a fake timestamp;
+- pair only **adjacent observed stints**;
+- determine pair eligibility only after pairing, so a sparse intermediate stop cannot be dropped to manufacture a cleaner transition;
+- preserve actual league/season context in the evidence;
+- represent the 12-component core profile with a symmetric-pseudocount centered-log-ratio (CLR) transform;
+- candidate pair precision weight is `n1*n2/(n1+n2)`;
+- the first candidate fitter estimates level-group CLR effects by within-player weighted graph least squares;
+- the fitter fails closed unless every fitted level is connected to the requested reporting anchor, normally `MLB`.
+
+Deterministic unit tests passed in CI run `31982645273`, including cutoff safety, ambiguity breaks, no sparse-stint bridging, compositional centering, known-offset recovery, and disconnected/missing-MLB-anchor failures.
+
+A real affiliated-MiLB support diagnostic reused the certified five-level 2021 artifacts and passed end-to-end in workflow `31982728210`.
+
+Artifact: `current-talent-translation-support-2021-2021-08-01`
+
+Pre-2021-08-01 training surface:
+
+- **100,152** player-games
+- **3,828** players
+- **97,470** player-dates
+- **16** ambiguous multi-environment player-dates
+- **4,967** observed environment stints
+- **1,124** adjacent stint pairs before evidence filtering
+- **441** eligible pairs across **398** players at the initial 20-core-event/stint threshold
+- **303** eligible promotions
+- **127** eligible demotions
+- **11** eligible same-level actual-environment changes
+
+The core MiLB ladder has substantial bidirectional support even at this single cutoff:
+
+- AA -> AAA: **99** eligible pairs; AAA -> AA: **38**
+- High-A -> AA: **79**; AA -> High-A: **18**
+- Single-A -> High-A: **78**; High-A -> Single-A: **22**
+- Rookie/complex -> Single-A: **25**; Single-A -> Rookie/complex: **30**
+
+All five affiliated MiLB level groups are connected by eligible cross-level evidence. **No MLB-anchor fit was attempted**, because the historical training artifact is affiliated MiLB only. The workflow `.github/workflows/current-talent-translation-support.yml` is manual-only after this gate.
+
 ## Important boundaries / things NOT complete
 
 There is **no promoted Current Talent estimator yet**. In particular, the repo has not yet frozen or validated:
 
-- leakage-safe environment / level translations to the MLB reporting anchor;
+- a real MLB-anchored environment/level translation fit;
+- whether level-only offsets are sufficient or actual league/season residual effects materially improve out-of-time scoring;
 - age/environment priors;
 - Baseline 0 (environment prior);
 - Baseline 1 (Marcel-style empirical Bayes player evidence);
@@ -158,7 +204,7 @@ There is **no promoted Current Talent estimator yet**. In particular, the repo h
 - richer process/tracking/scouting evidence in Current Talent;
 - Projection, playing-time/role, WAR/value, defense integration, or final overall ranking.
 
-The current five-level checkpoint is affiliated MiLB only. **Universal historical validation still needs MLB included** so MLB-debut and MLB-to-MiLB transition strata are exercised in real data.
+The current historical training/validation checkpoint is affiliated MiLB only. **Universal historical validation still needs MLB included** so the translation graph has its reporting anchor and MLB-debut / MLB-to-MiLB transition strata are exercised in real data.
 
 The 90-day future target currently uses all eligible complete future game/profile evidence for proper-score preparation. The contract's exact **200-PA player-aggregate diagnostic cap is not yet applied in `current_talent_validation_dataset.py`** because the certified historical outcome backbone is player-game aggregate. Do not fabricate within-game PA order merely to hit 200 exactly; either use a certified complete-game cap policy or a true PA-grain future event surface before claiming the exact cap.
 
@@ -180,25 +226,27 @@ The 90-day future target currently uses all eligible complete future game/profil
 
 Do **not** jump directly to a complicated talent model.
 
-1. **Environment translation foundation:** define and implement leakage-safe training-only environment/level translation with MLB as reporting anchor. Reuse matched-player transitions / repeated-player evidence where possible and preserve actual league/season context.
-2. **Baseline 0 / Baseline 1 only:** environment prior, then transparent empirical-Bayes recent-performance baseline with recency and evidence strength.
-3. **Validate before expanding:** run chronological snapshots across multiple cutoffs/seasons, add MLB to the historical surface, report proper scores/calibration plus transition and censoring strata, and resolve the aggregate-PA-cap diagnostic honestly.
+1. **Add MLB to the historical player-game evidence contract** for the post-reorganization training years, preserving the same outcome/profile grains and cutoff semantics.
+2. **Fit the first real MLB-connected translation surface inside chronological training data**, then inspect support, offset stability, residuals, and whether actual league/season effects add value beyond level-group effects.
+3. **Fit Baseline 0 / Baseline 1 only** and validate them out of time before adding richer evidence.
 
-Only after that gate passes should Baseline 2 or richer process/tracking inputs be considered.
+After those steps, expand rolling-origin snapshots across seasons/cutoffs, report proper scores/calibration plus transition and censoring strata, and resolve the aggregate-PA-cap diagnostic honestly. Only after that gate passes should Baseline 2 or richer process/tracking inputs be considered.
 
 ## Useful workflows / scripts
 
-Manual live workflows:
+Manual live/reuse workflows:
 
 - `.github/workflows/current-talent-historical-milb-one-level.yml`
 - `.github/workflows/current-talent-validation-snapshot-one-level.yml`
 - `.github/workflows/current-talent-validation-snapshot-multilevel.yml`
+- `.github/workflows/current-talent-translation-support.yml`
 
-Validation materializers:
+Validation / translation materializers:
 
 - `scripts/materialize_current_talent_historical_milb_game_evidence.py`
 - `scripts/materialize_current_talent_validation_snapshot.py`
 - `scripts/materialize_current_talent_validation_snapshot_multilevel.py`
+- `scripts/materialize_current_talent_translation_support.py`
 
 ## If starting a new chat
 
