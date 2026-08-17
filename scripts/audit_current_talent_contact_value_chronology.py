@@ -46,8 +46,12 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _target_tables(root: Path) -> list[Path]:
-    return sorted(root.glob("**/tables/current_talent_contact_value_target_*.parquet"))
+def _milb_target_tables(root: Path) -> list[Path]:
+    return sorted(root.glob("**/tables/contact_value_target_contacts_*.parquet"))
+
+
+def _mlb_target_tables(root: Path) -> list[Path]:
+    return sorted(root.glob("**/tables/current_talent_contact_value_target_*_mlb.parquet"))
 
 
 def _read_sources(paths: list[Path]) -> list[pl.DataFrame]:
@@ -161,8 +165,8 @@ def _window_metrics(valued: pl.DataFrame, cutoff: date) -> dict[str, Any]:
 
 def main() -> int:
     args = _parse_args()
-    milb_paths = _target_tables(args.milb_root)
-    mlb_paths = _target_tables(args.mlb_root)
+    milb_paths = _milb_target_tables(args.milb_root)
+    mlb_paths = _mlb_target_tables(args.mlb_root)
     if len(milb_paths) != EXPECTED_MILB_TABLE_COUNT:
         raise RuntimeError(
             f"expected {EXPECTED_MILB_TABLE_COUNT} accepted MiLB target tables, found {len(milb_paths)}"
