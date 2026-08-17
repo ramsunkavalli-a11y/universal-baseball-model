@@ -1,0 +1,96 @@
+name: Current Talent contact-value richer features
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "src/universal_baseball/current_talent_contact_value_features.py"
+      - "scripts/audit_current_talent_contact_value_features.py"
+      - "tests/test_current_talent_contact_value_features.py"
+      - ".github/workflows/current-talent-contact-value-features.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify richer feature contracts
+        run: python -m pytest tests/test_current_talent_contact_value_features.py tests/test_current_talent_batted_ball_standardization.py
+
+      - name: Seed accepted combined chronology artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-contact-value-chronology
+          path: seeded/chronology
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32074805618
+          github-token: ${{ github.token }}
+
+      - name: Seed certified tracking artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-batted-ball-tracking-materialization
+          path: seeded/tracking
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32046012977
+          github-token: ${{ github.token }}
+
+      - name: Require corrected tracking checkpoint
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          matches = sorted(Path("seeded/tracking").rglob("checkpoint.json"))
+          if len(matches) != 1:
+              raise SystemExit(f"expected one tracking checkpoint, found {len(matches)}")
+          report = json.loads(matches[0].read_text())
+          if report.get("gate") != "current_talent_batted_ball_tracking_materialization":
+              raise SystemExit("wrong tracking gate")
+          if report.get("canonical_model_bbe_contract") != "result_producing_non_bunt_pitch_grain_v1":
+              raise SystemExit("wrong canonical tracking contract")
+          if report.get("development_tracking_ready") is not True:
+              raise SystemExit("tracking artifact is not development-ready")
+          if set(report.get("seasons", {})) != {"2021", "2022"}:
+              raise SystemExit("tracking artifact does not contain exactly 2021/2022")
+          print(json.dumps({
+              "development_tracking_ready": report["development_tracking_ready"],
+              "2021_model_bbe": report["seasons"]["2021"]["model_bbe"],
+              "2022_model_bbe": report["seasons"]["2022"]["model_bbe"],
+          }, indent=2))
+          PY
+
+      - name: Compile feature audit
+        run: python -m py_compile scripts/audit_current_talent_contact_value_features.py
+
+      - name: Materialize richer feature attachment without scoring
+        run: >-
+          python scripts/audit_current_talent_contact_value_features.py
+          --tracking-root seeded/tracking
+          --chronology-root seeded/chronology
+
+      - name: Upload richer feature artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-features
+          path: reports/generated/current-talent-contact-value-features/
+          if-no-files-found: warn
+          retention-days: 14
