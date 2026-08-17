@@ -1,12 +1,6 @@
 name: Current Talent September validation gate
 
 on:
-  # One-time bootstrap for the first common September 1 gate; restore to manual-only after resolution.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-september-validation.yml
   workflow_dispatch:
 
 permissions:
