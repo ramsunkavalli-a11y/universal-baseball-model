@@ -7,8 +7,8 @@ No network I/O occurs here. The command is source-family agnostic:
 - point MILB_SAVANT_TRACKED at tracked-only Minor Savant raw chunks captured by a
   separate manual source workflow.
 
-Both paths use the same corrected canonical BBE projection and certified
-player-game reconciliation.
+Both paths use the same corrected canonical BBE projection, certified player-game
+reconciliation, and broad source-completeness audit.
 """
 
 from __future__ import annotations
@@ -20,6 +20,7 @@ from pathlib import Path
 import polars as pl
 
 from universal_baseball.current_talent_batted_ball_materialization import (
+    build_tracking_environment_completeness,
     load_certified_player_game_environments,
     materialize_reconciled_tracked_bbe,
     read_retained_savant_csv_tree,
@@ -53,6 +54,11 @@ def main() -> int:
         season=args.season,
         source_family=args.source_family,
     )
+    completeness, completeness_metrics = build_tracking_environment_completeness(
+        raw,
+        certified,
+        source_family=args.source_family,
+    )
     reconciled = materialize_reconciled_tracked_bbe(
         raw,
         certified,
@@ -63,18 +69,15 @@ def main() -> int:
             f"{args.source_family} retained source produced zero canonical model BBE for {args.season}"
         )
 
-    parquet_path = args.output_dir / (
-        f"reconciled_tracked_bbe_{args.season}_{args.source_family.lower()}.parquet"
-    )
-    csv_path = args.output_dir / (
-        f"reconciled_tracked_bbe_{args.season}_{args.source_family.lower()}.csv"
-    )
-    manifest_path = args.output_dir / (
-        f"raw_savant_manifest_{args.season}_{args.source_family.lower()}.csv"
-    )
+    stem = f"{args.season}_{args.source_family.lower()}"
+    parquet_path = args.output_dir / f"reconciled_tracked_bbe_{stem}.parquet"
+    csv_path = args.output_dir / f"reconciled_tracked_bbe_{stem}.csv"
+    manifest_path = args.output_dir / f"raw_savant_manifest_{stem}.csv"
+    completeness_path = args.output_dir / f"tracking_completeness_{stem}.csv"
     reconciled.write_parquet(parquet_path, compression="zstd")
     reconciled.write_csv(csv_path)
     manifest.write_csv(manifest_path)
+    completeness.write_csv(completeness_path)
 
     by_tier = (
         reconciled.group_by(
@@ -91,13 +94,11 @@ def main() -> int:
         )
         .sort(["level_group", "league_id", "source_capability_tier"])
     )
-    by_tier_path = args.output_dir / (
-        f"tracked_bbe_capability_{args.season}_{args.source_family.lower()}.csv"
-    )
+    by_tier_path = args.output_dir / f"tracked_bbe_capability_{stem}.csv"
     by_tier.write_csv(by_tier_path)
 
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "scope": "offline_reconciled_tracked_bbe_materialization",
         "network_requests_performed": False,
         "season": args.season,
@@ -108,6 +109,8 @@ def main() -> int:
         "raw_csv_file_count": int(manifest.height),
         "raw_response_bytes": int(manifest.get_column("response_bytes").sum()),
         "raw_row_count": int(manifest.get_column("row_count").sum()),
+        "broad_tracking_completeness": completeness_metrics,
+        "broad_tracking_completeness_by_environment": completeness.to_dicts(),
         "canonical_model_bbe_count": int(reconciled.height),
         "canonical_game_count": int(reconciled.get_column("game_pk").n_unique()),
         "canonical_player_count": int(reconciled.get_column("player_id").n_unique()),
@@ -118,12 +121,11 @@ def main() -> int:
             "reconciled_parquet": str(parquet_path),
             "reconciled_csv": str(csv_path),
             "raw_manifest_csv": str(manifest_path),
+            "tracking_completeness_csv": str(completeness_path),
             "capability_csv": str(by_tier_path),
         },
     }
-    report_path = args.output_dir / (
-        f"report_{args.season}_{args.source_family.lower()}.json"
-    )
+    report_path = args.output_dir / f"report_{stem}.json"
     report_path.write_text(json.dumps(report, indent=2, sort_keys=True, default=str) + "\n")
     print(json.dumps(report, indent=2, sort_keys=True, default=str))
     return 0
