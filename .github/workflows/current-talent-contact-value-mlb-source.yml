@@ -1,0 +1,73 @@
+name: Current Talent contact-value MLB source
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "src/universal_baseball/current_talent_contact_value_mlb_source.py"
+      - "scripts/materialize_current_talent_contact_value_mlb_source.py"
+      - "tests/test_current_talent_contact_value_mlb_source.py"
+      - ".github/workflows/current-talent-contact-value-mlb-source.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  materialize:
+    name: ${{ matrix.season }} MLB
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - season: 2021
+            seed_run: 31986504169
+          - season: 2022
+            seed_run: 31988255280
+
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify MLB source contracts
+        run: python -m pytest tests/test_current_talent_contact_value_mlb_source.py
+
+      - name: Seed certified historical MLB source cache
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-historical-mlb-${{ matrix.season }}
+          path: .
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: ${{ matrix.seed_run }}
+          github-token: ${{ github.token }}
+
+      - name: Compile offline materializer
+        run: python -m py_compile scripts/materialize_current_talent_contact_value_mlb_source.py
+
+      - name: Materialize source-only MLB target contacts
+        run: >-
+          python scripts/materialize_current_talent_contact_value_mlb_source.py
+          --season "${{ matrix.season }}"
+
+      - name: Upload MLB source materialization
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-mlb-source-${{ matrix.season }}
+          path: reports/generated/current-talent-contact-value-mlb-source/${{ matrix.season }}/
+          if-no-files-found: warn
+          retention-days: 14
