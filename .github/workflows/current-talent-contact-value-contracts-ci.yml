@@ -6,11 +6,13 @@ on:
       - source-certification-poc
     paths:
       - "src/universal_baseball/current_talent_contact_value.py"
+      - "src/universal_baseball/current_talent_contact_value_baseline.py"
       - "src/universal_baseball/current_talent_contact_value_source.py"
       - "src/universal_baseball/current_talent_contact_value_mlb_source.py"
       - "src/universal_baseball/current_talent_contact_value_evidence.py"
       - "src/universal_baseball/current_talent_batted_ball_standardization.py"
       - "tests/test_current_talent_contact_value.py"
+      - "tests/test_current_talent_contact_value_baseline.py"
       - "tests/test_current_talent_contact_value_source.py"
       - "tests/test_current_talent_contact_value_mlb_source.py"
       - "tests/test_current_talent_contact_value_evidence.py"
@@ -42,6 +44,7 @@ jobs:
         run: >-
           python -m py_compile
           src/universal_baseball/current_talent_contact_value.py
+          src/universal_baseball/current_talent_contact_value_baseline.py
           src/universal_baseball/current_talent_contact_value_source.py
           src/universal_baseball/current_talent_contact_value_mlb_source.py
           src/universal_baseball/current_talent_contact_value_evidence.py
@@ -50,6 +53,7 @@ jobs:
         run: >-
           python -m pytest
           tests/test_current_talent_contact_value.py
+          tests/test_current_talent_contact_value_baseline.py
           tests/test_current_talent_contact_value_source.py
           tests/test_current_talent_contact_value_mlb_source.py
           tests/test_current_talent_contact_value_evidence.py
