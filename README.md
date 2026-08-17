@@ -8,7 +8,7 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 The active draft PR is **#1 — Build and certify universal baseball foundation layer**.
 
-**Current stage:** first real chronological Current Talent Baseline 0 vs Baseline 1 gate has passed for `2021-08-01`; the next work is rolling-origin / multi-cutoff validation and translation/hyperparameter ablation before any baseline is frozen.
+**Current stage:** Baseline 1 has now beaten Baseline 0 with unchanged candidate settings at Aug. 1 cutoffs in **2021, 2022, and 2023**. The next gate is a translation ablation, followed by additional within-season cutoffs; no Current Talent model is frozen yet.
 
 ## Core principles
 
@@ -24,7 +24,7 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 
 - [`docs/project-status.md`](docs/project-status.md) — **canonical current handoff / roadmap**.
 - [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target, chronology, baseline, and validation contract.
-- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — Baseline 0/1 implementation plus the **first real 2021 chronological predictive gate**; rolling-origin stability and translation/hyperparameter ablation are next.
+- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — Baseline 0/1 implementation and fixed-parameter **2021–2023 Aug. 1 predictive stability**; translation ablation is next.
 - [`docs/current-talent-historical-mlb-checkpoint.md`](docs/current-talent-historical-mlb-checkpoint.md) — certified 2021–2023 historical MLB Current Talent evidence and official reconciliation rules.
 - [`docs/current-talent-historical-milb-checkpoint.md`](docs/current-talent-historical-milb-checkpoint.md) — certified 2021–2023 historical affiliated-MiLB evidence.
 - [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — first production-shaped completed-2024 affiliated batting Performance materialization.
@@ -35,7 +35,7 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 2. Make changes in small batches of roughly **2–3 steps**.
 3. Verify each batch before expanding scope so an early assumption cannot contaminate a large downstream change.
 4. Keep heavy live-source certification/validation workflows manual after their gate passes; keep deterministic regression tests in normal CI.
-5. **Update `docs/project-status.md` at meaningful junctures before continuing**—especially after a major gate passes, a material architecture/modeling decision is frozen, or the recommended next batch changes. This handoff discipline is part of the workflow, not optional cleanup.
+5. **Update `docs/project-status.md` at meaningful junctures before continuing**—especially after a major gate passes, a material architecture/modeling decision is frozen, or the recommended next batch changes.
 6. Pause for an explicit modeling decision when an unresolved assumption could materially change downstream architecture rather than papering over it in code.
 
 ## Foundation references
