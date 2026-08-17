@@ -16,9 +16,35 @@ def _raw(rows: list[dict[str, object]]) -> pl.DataFrame:
         pl.col("game_pk").cast(pl.String),
         pl.col("batter").cast(pl.String),
         pl.col("at_bat_number").cast(pl.String),
+        pl.col("pitch_number").cast(pl.String),
         pl.col("launch_speed").cast(pl.String),
         pl.col("launch_angle").cast(pl.String),
     )
+
+
+def _result_row(
+    *,
+    game_date: str,
+    game_pk: int,
+    batter: int,
+    at_bat_number: int,
+    pitch_number: int = 1,
+    launch_speed: float | None = 95.0,
+    launch_angle: float | None = 20.0,
+    events: str | None = "single",
+    pitch_type: str = "X",
+) -> dict[str, object]:
+    return {
+        "game_date": game_date,
+        "game_pk": game_pk,
+        "batter": batter,
+        "at_bat_number": at_bat_number,
+        "pitch_number": pitch_number,
+        "events": events,
+        "type": pitch_type,
+        "launch_speed": launch_speed,
+        "launch_angle": launch_angle,
+    }
 
 
 def _b2_profile(player_ids: tuple[int, ...] = (10, 11)) -> pl.DataFrame:
@@ -63,33 +89,43 @@ def _coefficients(*, nonzero: bool) -> pl.DataFrame:
     )
 
 
-def test_project_complete_tracked_bbe_keeps_only_complete_measurements() -> None:
+def test_project_complete_tracked_bbe_keeps_only_complete_result_bbe() -> None:
     raw = _raw(
         [
-            {
-                "game_date": "2023-06-01",
-                "game_pk": 1,
-                "batter": 10,
-                "at_bat_number": 1,
-                "launch_speed": 101.5,
-                "launch_angle": 20.0,
-            },
-            {
-                "game_date": "2023-06-01",
-                "game_pk": 1,
-                "batter": 10,
-                "at_bat_number": 2,
-                "launch_speed": 88.0,
-                "launch_angle": None,
-            },
-            {
-                "game_date": "2023-06-01",
-                "game_pk": 1,
-                "batter": 11,
-                "at_bat_number": 1,
-                "launch_speed": 90.0,
-                "launch_angle": 40.0,
-            },
+            _result_row(
+                game_date="2023-06-01",
+                game_pk=1,
+                batter=10,
+                at_bat_number=1,
+                launch_speed=101.5,
+                launch_angle=20.0,
+            ),
+            _result_row(
+                game_date="2023-06-01",
+                game_pk=1,
+                batter=10,
+                at_bat_number=2,
+                launch_speed=88.0,
+                launch_angle=None,
+            ),
+            _result_row(
+                game_date="2023-06-01",
+                game_pk=1,
+                batter=11,
+                at_bat_number=1,
+                launch_speed=90.0,
+                launch_angle=40.0,
+                events="field_out",
+            ),
+            _result_row(
+                game_date="2023-06-01",
+                game_pk=1,
+                batter=12,
+                at_bat_number=1,
+                launch_speed=99.0,
+                launch_angle=15.0,
+                events=None,
+            ),
         ]
     )
 
@@ -100,67 +136,119 @@ def test_project_complete_tracked_bbe_keeps_only_complete_measurements() -> None
     assert observed.get_column("sweet_spot").to_list() == [True, False]
 
 
-def test_project_complete_tracked_bbe_rejects_ambiguous_duplicate_contact() -> None:
+def test_complete_ev_la_foul_contact_is_not_a_bbe() -> None:
     raw = _raw(
         [
-            {
-                "game_date": "2023-06-01",
-                "game_pk": 1,
-                "batter": 10,
-                "at_bat_number": 1,
-                "launch_speed": 100.0,
-                "launch_angle": 20.0,
-            },
-            {
-                "game_date": "2023-06-01",
-                "game_pk": 1,
-                "batter": 10,
-                "at_bat_number": 1,
-                "launch_speed": 99.0,
-                "launch_angle": 19.0,
-            },
+            _result_row(
+                game_date="2021-06-01",
+                game_pk=1,
+                batter=10,
+                at_bat_number=7,
+                pitch_number=4,
+                launch_speed=72.0,
+                launch_angle=-12.0,
+                events=None,
+                pitch_type="S",
+            ),
+            _result_row(
+                game_date="2021-06-01",
+                game_pk=1,
+                batter=10,
+                at_bat_number=7,
+                pitch_number=6,
+                launch_speed=103.0,
+                launch_angle=18.0,
+                events="double",
+                pitch_type="X",
+            ),
         ]
     )
 
-    with pytest.raises(ValueError, match="multiple complete EV\+LA rows"):
+    observed = project_complete_tracked_bbe(raw)
+
+    assert observed.height == 1
+    row = observed.row(0, named=True)
+    assert row["pitch_number"] == 6
+    assert row["launch_speed"] == pytest.approx(103.0)
+
+
+def test_project_complete_tracked_bbe_rejects_duplicate_pitch_key() -> None:
+    row = _result_row(
+        game_date="2023-06-01",
+        game_pk=1,
+        batter=10,
+        at_bat_number=1,
+        pitch_number=3,
+        launch_speed=100.0,
+        launch_angle=20.0,
+    )
+    raw = _raw([row, {**row, "launch_speed": 99.0, "launch_angle": 19.0}])
+
+    with pytest.raises(ValueError, match="duplicate result-producing EV\+LA rows"):
+        project_complete_tracked_bbe(raw)
+
+
+def test_project_complete_tracked_bbe_rejects_multiple_result_bbe_in_same_pa() -> None:
+    raw = _raw(
+        [
+            _result_row(
+                game_date="2023-06-01",
+                game_pk=1,
+                batter=10,
+                at_bat_number=1,
+                pitch_number=2,
+                events="single",
+            ),
+            _result_row(
+                game_date="2023-06-01",
+                game_pk=1,
+                batter=10,
+                at_bat_number=1,
+                pitch_number=3,
+                events="double",
+            ),
+        ]
+    )
+
+    with pytest.raises(ValueError, match="multiple result-producing BBE"):
         project_complete_tracked_bbe(raw)
 
 
 def test_features_exclude_cutoff_and_future_rows_and_apply_threshold() -> None:
     raw = _raw(
         [
-            {
-                "game_date": "2023-06-01",
-                "game_pk": 1,
-                "batter": 10,
-                "at_bat_number": 1,
-                "launch_speed": 100.0,
-                "launch_angle": 20.0,
-            },
-            {
-                "game_date": "2023-06-20",
-                "game_pk": 2,
-                "batter": 10,
-                "at_bat_number": 1,
-                "launch_speed": 90.0,
-                "launch_angle": 0.0,
-            },
-            {
-                "game_date": "2023-07-01",
-                "game_pk": 3,
-                "batter": 10,
-                "at_bat_number": 1,
-                "launch_speed": 120.0,
-                "launch_angle": 25.0,
-            },
-            {
-                "game_date": "2023-07-02",
-                "game_pk": 4,
-                "batter": 10,
-                "at_bat_number": 1,
-                "launch_speed": 120.0,
-                "launch_angle": 25.0,
-            },
+            _result_row(
+                game_date="2023-06-01",
+                game_pk=1,
+                batter=10,
+                at_bat_number=1,
+                launch_speed=100.0,
+                launch_angle=20.0,
+            ),
+            _result_row(
+                game_date="2023-06-20",
+                game_pk=2,
+                batter=10,
+                at_bat_number=1,
+                launch_speed=90.0,
+                launch_angle=0.0,
+            ),
+            _result_row(
+                game_date="2023-07-01",
+                game_pk=3,
+                batter=10,
+                at_bat_number=1,
+                launch_speed=120.0,
+                launch_angle=25.0,
+            ),
+            _result_row(
+                game_date="2023-07-02",
+                game_pk=4,
+                batter=10,
+                at_bat_number=1,
+                launch_speed=120.0,
+                launch_angle=25.0,
+            ),
         ]
     )
     tracked = project_complete_tracked_bbe(raw)
@@ -182,14 +270,14 @@ def test_features_exclude_cutoff_and_future_rows_and_apply_threshold() -> None:
 def test_features_use_raw_count_for_primary_eligibility() -> None:
     raw = _raw(
         [
-            {
-                "game_date": f"2023-06-{day:02d}",
-                "game_pk": day,
-                "batter": 10,
-                "at_bat_number": 1,
-                "launch_speed": 95.0,
-                "launch_angle": 20.0,
-            }
+            _result_row(
+                game_date=f"2023-06-{day:02d}",
+                game_pk=day,
+                batter=10,
+                at_bat_number=1,
+                launch_speed=95.0,
+                launch_angle=20.0,
+            )
             for day in range(1, 21)
         ]
     )
