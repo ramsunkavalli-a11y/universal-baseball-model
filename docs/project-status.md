@@ -24,9 +24,11 @@ This is the **start-here file for a new chat, coding agent, or contributor**. Re
 
 The project is in **chronological Current Talent model validation**.
 
-Baseline 1 has a strong three-year Aug. 1 confirmation over Baseline 0 using unchanged candidate settings. A controlled translation ablation is now also complete.
+Baseline 1 has a strong three-year Aug. 1 confirmation over Baseline 0 using unchanged candidate settings. A controlled translation ablation is complete, and July 1 has now been tested where the historical translation graph supports a universal fit.
 
 ### Baseline 1 vs Baseline 0 — fixed settings
+
+Aug. 1:
 
 | Cutoff | Future core events | B1-B0 log loss | B1-B0 Brier | Fixed-strata wins | Component wins |
 |---|---:|---:|---:|---:|---:|
@@ -34,7 +36,14 @@ Baseline 1 has a strong three-year Aug. 1 confirmation over Baseline 0 using unc
 | 2022-08-01 | 280,640 | **-0.018520** | **-0.004706** | 21/21 | 12/12 |
 | 2023-08-01 | 275,511 | **-0.018226** | **-0.004638** | 21/21 | 12/12 |
 
-Lower is better. Settings were unchanged across years:
+July 1 where structurally supported:
+
+| Cutoff | Future core events | B1-B0 log loss | B1-B0 Brier |
+|---|---:|---:|---:|
+| 2022-07-01 | 448,049 | **-0.015154** | **-0.003995** |
+| 2023-07-01 | 444,276 | **-0.015839** | **-0.004079** |
+
+Lower is better. The candidate settings were unchanged across all successful folds:
 
 - season-to-date evidence;
 - 90-day recency half-life;
@@ -42,13 +51,15 @@ Lower is better. Settings were unchanged across years:
 - Baseline 0 age-band width = 2 years;
 - minimum preferred age-level peers = 12.
 
+**2021-07-01 is not a universal comparable fitted-translation cutoff.** The pre-cutoff matched-transition graph has no learned `ROOKIE_COMPLEX` offset, so the pipeline correctly fails closed when it encounters actual Rookie predictor evidence. This is a historical support boundary, not a code/model-score failure, and the translation rules must not be weakened to force July 1 to pass.
+
 ### Translation ablation — fitted CLR level effects vs zero offsets
 
-Run: **`31994550684`**.
+Aug. 1 run: `31994550684`.
 
-The ablation holds the entire Baseline 0/1 and scoring pipeline fixed and replaces only fitted `clr_environment_effect` values with zero. Baseline 0 still knows current level through its peer prior; this isolates the learned observation-layer translation rather than removing all level information.
+The ablation holds the Baseline 0/1 and scoring pipeline fixed and replaces only fitted `clr_environment_effect` values with zero. Baseline 0 still knows current level through its peer prior; this isolates the learned observation-layer translation.
 
-Baseline 1 fitted-translation minus zero-offset results:
+Baseline 1 fitted-minus-zero at Aug. 1:
 
 | Cutoff | Log loss delta | Brier delta | Strata LL wins | Strata Brier wins | Component LL wins | Component Brier wins |
 |---|---:|---:|---:|---:|---:|---:|
@@ -56,15 +67,17 @@ Baseline 1 fitted-translation minus zero-offset results:
 | 2022-08-01 | **-0.000838** | **-0.000246** | 17/21 | 17/21 | 3/12 | 9/12 |
 | 2023-08-01 | **-0.001093** | **-0.000263** | 16/21 | 15/21 | 6/12 | 8/12 |
 
-Interpretation:
+At July 1:
 
-- fitted translation improves Baseline 1 aggregate **log loss in all three years**, but by a small amount;
-- Brier is effectively flat/slightly worse in 2021 and modestly better in 2022/2023;
-- gains are not universal across components or strata;
-- Baseline 0 translation effects are inconsistent across years;
-- therefore the much larger Baseline 1-vs-Baseline 0 gain is primarily from **player-specific recent evidence + empirical-Bayes shrinkage**, not the current level-only translation layer.
+- 2022 B1 fitted-minus-zero: **-0.000409 log loss / -0.000130 Brier**, with fitted translation winning 16/21 log-loss strata, 17/21 Brier strata, 6/12 component log-loss contributions, and 8/12 component Brier contributions.
+- 2023 B1 fitted-minus-zero: **-0.000566 log loss / -0.000160 Brier**, with fitted translation winning 15/21 strata on both metrics and 7/12 components on both metrics.
 
-**Decision:** keep fitted translation as a candidate because it has a small repeatable aggregate log-loss benefit for Baseline 1, but do not freeze or treat it as essential yet. Additional chronological cutoffs should carry both fitted and zero-offset variants before deciding whether the added complexity earns its place.
+Interpretation remains stable:
+
+- the much larger B1-vs-B0 gain comes primarily from **player-specific recent evidence + empirical-Bayes shrinkage**;
+- fitted translation gives B1 a small aggregate benefit in the successful July and August folds, especially on log loss;
+- translation gains are not universal across components/strata;
+- fitted translation remains a candidate, not a frozen requirement.
 
 There is still **no promoted/frozen Current Talent estimator**.
 
@@ -157,6 +170,8 @@ Candidate: `matched_adjacent_stint_clr_wls_v1`.
 
 Independent Aug. 1 fits in 2021–2023 connect all six levels to MLB. K and BB/HBP recover a coherent difficulty ladder; contact-shape effects are noisier and are not forced monotonic.
 
+Historical support is cutoff-dependent. In particular, the 2021 graph does not yet have a Rookie/complex translation at July 1.
+
 ### 7. Exact age-as-of enrichment
 
 Implementation:
@@ -175,19 +190,9 @@ Pinned Chadwick DOB is converted to age at the explicit cutoff. Exact coverage a
 
 Checkpoint: `docs/current-talent-baseline-checkpoint.md`
 
-Baseline 0 — `loo_age_level_population_prior_v1`:
+Baseline 0 — `loo_age_level_population_prior_v1`: age + current-level leave-one-out population prior, no player-specific recent Performance.
 
-- no player-specific recent Performance;
-- exact age + current unambiguous level;
-- leave-one-out age+level peers;
-- same-level then global fallback only when needed.
-
-Baseline 1 — `translated_recency_empirical_bayes_v1`:
-
-- recency-weighted player core-profile evidence;
-- aggregate at player × level first;
-- translate each level segment to MLB scale before multi-level pooling;
-- empirical-Bayes shrinkage toward Baseline 0.
+Baseline 1 — `translated_recency_empirical_bayes_v1`: recency-weighted player evidence, player×level handling before pooling, empirical-Bayes shrinkage toward Baseline 0.
 
 ### 9. Real future-environment scoring and diagnostics
 
@@ -205,13 +210,13 @@ Diagnostics persist aggregate proper scores, target-level/transition strata, fix
 Runs:
 
 - 2021 diagnostic: `31993773737`
-- 2022/2023 confirmation matrix: `31994079021`
+- 2022/2023 confirmation: `31994079021`
 
-Baseline 1 beats Baseline 0 in all three years with unchanged settings; see table at top and `docs/current-talent-baseline-checkpoint.md`.
+B1 beats B0 in all three years with unchanged settings.
 
 ### 11. Controlled translation ablation — completed
 
-Run: **`31994550684`**.
+Run: `31994550684`.
 
 Implementation:
 
@@ -219,21 +224,35 @@ Implementation:
 - `scripts/materialize_current_talent_translation_ablation.py`
 - `tests/test_current_talent_ablation.py`
 
-The temporary three-season workflow used to execute the ablation was deleted after the gate. Artifacts remain attached to run `31994550684`.
+Result: fitted translation provides a small repeatable aggregate B1 log-loss benefit at Aug. 1, with mixed component/stratum results.
 
-Result: fitted translation provides a **small, repeatable aggregate log-loss benefit for Baseline 1**, but mixed Brier/component/stratum results. It remains a candidate, not a frozen requirement.
+### 12. July 1 fixed-setting validation — partial universal gate, informative boundary
+
+Run: **`31994814042`**.
+
+- targeted regression suite: 24/24 passed in each matrix job before live materialization;
+- 2022: passed, artifact `current-talent-july-validation-2022-2022-07-01` (artifact ID `9276488114`);
+- 2023: passed, artifact `current-talent-july-validation-2023-2023-07-01` (artifact ID `9276486631`);
+- 2021: fail-closed structural boundary — no fitted `ROOKIE_COMPLEX` offset before July 1.
+
+The workflow `.github/workflows/current-talent-july-validation.yml` was restored to **manual-only** after the gate. Deletion of the one-time file was connector-blocked, so it remains as a reproducible manual workflow rather than an auto-trigger.
+
+2022/2023 July results reinforce two earlier findings:
+
+1. B1's player-evidence/shrinkage advantage is not specific to Aug. 1.
+2. Fitted translation adds only a small incremental aggregate advantage over zero offsets.
 
 ## Important boundaries / not complete
 
 Still not frozen or validated:
 
-- stability at additional within-season cutoff dates rather than Aug. 1 only;
+- earliest 2021 in-season cutoff where all six translation levels are supported;
+- stability at a common July cutoff across all three years;
 - selected recency window / half-life;
 - selected EB prior strength;
 - age-band width / peer threshold;
-- multi-year calibration stability, especially by component;
-- whether a simpler/partial translation (for example only robust components) would beat both current fitted and zero-offset variants;
-- whether actual league/season residual effects add value beyond level-only translation;
+- multi-year/multi-cutoff calibration stability;
+- whether a simpler/partial translation would beat both current fitted and zero-offset variants;
 - final uncertainty model;
 - Baseline 2 / richer process-tracking-scouting inputs;
 - Projection, future aging/development, playing time/role, defense, WAR/value, or final ranking.
@@ -244,12 +263,12 @@ The exact 200-PA player-aggregate diagnostic cap is not yet applied because the 
 
 **Do not tune or add richer features yet.**
 
-1. Run an additional **July 1** chronological cutoff in 2021–2023 using the same fixed Baseline 0/1 settings.
-2. Carry both fitted-translation and zero-offset variants so the small translation effect is tested away from Aug. 1.
-3. If July 1 is structurally supported and consistent, add another earlier cutoff (likely June 1) before hyperparameter selection.
-4. Then compare a small predeclared set of recency half-lives / EB prior strengths inside chronology.
-5. Freeze the simple baseline only if proper-score gains and calibration remain acceptable across time, level, evidence volume, and transitions.
-6. Only then test Baseline 2 or richer process/tracking/scouting evidence.
+1. Probe **2021-07-15** with the same translation support rules and fixed B0/B1 settings to find the earliest universal six-level 2021 cutoff.
+2. If Rookie/complex is still unsupported, move the probe later in July without lowering the 20-core-event stint threshold or weakening graph-connectivity rules.
+3. Once a universal 2021 July date is found, run the same date in 2022/2023 for an apples-to-apples three-year July confirmation, carrying fitted and zero-offset variants.
+4. Document that gate before any hyperparameter selection.
+5. Then compare a small predeclared set of recency half-lives / EB prior strengths chronologically.
+6. Freeze the simple baseline only if proper-score gains and calibration remain acceptable across time, level, evidence volume, and transitions.
 
 ## Useful workflows / scripts
 
@@ -262,6 +281,7 @@ Manual live/reuse workflows:
 - `.github/workflows/current-talent-translation-support.yml`
 - `.github/workflows/current-talent-age-coverage.yml`
 - `.github/workflows/current-talent-baseline-validation.yml`
+- `.github/workflows/current-talent-july-validation.yml`
 
 Key materializers:
 
@@ -277,5 +297,5 @@ Key materializers:
 1. Read this file.
 2. Read `docs/current-talent-validation-contract.md`.
 3. Read `docs/current-talent-baseline-checkpoint.md`.
-4. Inspect the current `source-certification-poc` head before editing.
-5. Continue with **fixed-setting July 1 validation across 2021–2023, carrying fitted and zero translation variants**. Do not re-audit closed source/certification/age/Aug. 1 stability/translation-ablation questions unless a regression specifically fails.
+4. Inspect current `source-certification-poc` head before editing.
+5. Continue with the **2021-07-15 six-level support / validation probe**. Do not weaken translation support rules just to make an early cutoff pass.
