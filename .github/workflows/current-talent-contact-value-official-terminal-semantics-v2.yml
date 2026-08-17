@@ -1,0 +1,62 @@
+name: Current Talent contact-value official terminal semantics v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "src/universal_baseball/current_talent_contact_value_source.py"
+      - "scripts/audit_current_talent_contact_value_official_terminal_semantics_v2.py"
+      - "tests/test_current_talent_contact_value_source.py"
+      - ".github/workflows/current-talent-contact-value-official-terminal-semantics-v2.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run source-contract tests
+        run: python -m pytest tests/test_current_talent_contact_value_source.py
+
+      - name: Reconcile corrected terminal narrative semantics
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/audit_current_talent_contact_value_official_terminal_semantics_v2.py
+
+      - name: Enforce source-semantics acceptance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("reports/generated/current-talent-contact-value-official-terminal-semantics-v2/report.json").read_text())
+          if report.get("model_scoring_performed") is not False:
+              raise SystemExit("model scoring occurred in source gate")
+          if report.get("confirmation_2023_accessed") is not False:
+              raise SystemExit("2023 was accessed in source gate")
+          if report.get("accepted") is not True:
+              raise SystemExit("terminal narrative source semantics not accepted")
+          PY
+
+      - name: Upload corrected terminal semantics audit
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-official-terminal-semantics-v2
+          path: reports/generated/current-talent-contact-value-official-terminal-semantics-v2/
+          retention-days: 14
