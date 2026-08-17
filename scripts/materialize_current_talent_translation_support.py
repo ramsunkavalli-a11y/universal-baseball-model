@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Materialize matched-environment support from certified multilevel game evidence."""
+"""Materialize matched-environment support and optional MLB-anchored translation."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ import polars as pl
 
 from universal_baseball.current_talent_translation import (
     build_training_environment_transition_evidence,
+    fit_level_clr_translation,
 )
 from universal_baseball.current_talent_universal_evidence import (
     combine_universal_player_game_evidence,
@@ -30,6 +31,12 @@ FILENAME_LEVEL_TOKENS = {
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input-root", type=Path, required=True)
+    parser.add_argument(
+        "--mlb-input-root",
+        type=Path,
+        default=None,
+        help="Optional certified MLB artifact root. When supplied, fit an MLB-anchored candidate translation.",
+    )
     parser.add_argument("--season", type=int, required=True)
     parser.add_argument("--training-end", type=str, required=True)
     parser.add_argument("--min-core-events-per-stint", type=int, default=20)
@@ -82,10 +89,33 @@ def main() -> int:
         profiles.append(pl.read_parquet(profile_path))
         inputs.append(
             {
+                "source_group": "affiliated_milb",
                 "filename_level": filename_level,
                 "file_token": token,
                 "summary": str(summary_path),
                 "profile": str(profile_path),
+            }
+        )
+
+    include_mlb = args.mlb_input_root is not None
+    if include_mlb:
+        mlb_summary_path = _one(
+            args.mlb_input_root,
+            f"current_talent_game_summary_{args.season}_mlb.parquet",
+        )
+        mlb_profile_path = _one(
+            args.mlb_input_root,
+            f"current_talent_game_profile_{args.season}_mlb.parquet",
+        )
+        summaries.append(pl.read_parquet(mlb_summary_path))
+        profiles.append(pl.read_parquet(mlb_profile_path))
+        inputs.append(
+            {
+                "source_group": "mlb",
+                "filename_level": "mlb",
+                "file_token": "mlb",
+                "summary": str(mlb_summary_path),
+                "profile": str(mlb_profile_path),
             }
         )
 
@@ -97,6 +127,8 @@ def main() -> int:
     )
     observed_levels = set(summary.get_column("level_group").unique().to_list())
     expected_levels = {"AAA", "AA", "HIGH_A", "SINGLE_A", "ROOKIE_COMPLEX"}
+    if include_mlb:
+        expected_levels.add("MLB")
     if observed_levels != expected_levels:
         raise ValueError(
             "translation support diagnostic level coverage mismatch: "
@@ -130,15 +162,39 @@ def main() -> int:
 
     eligible = evidence.pair_summary.filter(pl.col("translation_pair_eligible"))
     eligible_cross_level = eligible.filter(pl.col("from_level_group") != pl.col("to_level_group"))
-    observed_pair_levels = sorted(
-        set(eligible_cross_level.get_column("from_level_group").to_list())
-        | set(eligible_cross_level.get_column("to_level_group").to_list())
-    ) if not eligible_cross_level.is_empty() else []
+    observed_pair_levels = (
+        sorted(
+            set(eligible_cross_level.get_column("from_level_group").to_list())
+            | set(eligible_cross_level.get_column("to_level_group").to_list())
+        )
+        if not eligible_cross_level.is_empty()
+        else []
+    )
+
+    fit_metrics: dict[str, object] | None = None
+    if include_mlb:
+        fit = fit_level_clr_translation(
+            evidence.pair_summary,
+            evidence.pair_profile,
+            anchor_level="MLB",
+        )
+        offsets_path = args.output_dir / "level_clr_offsets.parquet"
+        fit.offsets.write_parquet(offsets_path, compression="zstd")
+        output_tables["level_clr_offsets"] = {
+            "path": str(offsets_path),
+            "row_count": int(fit.offsets.height),
+            "column_count": len(fit.offsets.columns),
+        }
+        fit_metrics = fit.metrics
 
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "accepted": True,
-        "scope": "affiliated_milb_translation_support_only",
+        "scope": (
+            "universal_mlb_connected_translation_candidate"
+            if include_mlb
+            else "affiliated_milb_translation_support_only"
+        ),
         "season": int(args.season),
         "training_end_exclusive": training_end.isoformat(),
         "temporal_semantics": "retrospective_event_cutoff_corrected_history_not_vintage_information_set",
@@ -148,9 +204,15 @@ def main() -> int:
         "eligible_pair_support": _support_rows(eligible),
         "eligible_cross_level_pair_support": _support_rows(eligible_cross_level),
         "eligible_cross_level_levels": observed_pair_levels,
-        "mlb_anchor_fit_status": "not_attempted_affiliated_milb_only",
+        "mlb_anchor_fit_status": "candidate_fit_completed" if include_mlb else "not_attempted_affiliated_milb_only",
+        "mlb_anchor_fit_metrics": fit_metrics,
         "output_tables": output_tables,
         "interpretation": (
+            "Candidate training-only MLB-anchored observation-layer translation fit. "
+            "This is not a Current Talent estimator and is not promoted until chronological "
+            "out-of-time stability and predictive validation pass."
+            if include_mlb
+            else
             "Support diagnostic for the candidate matched-adjacent-stint translation layer. "
             "No level offsets are fitted because this artifact contains affiliated MiLB only; "
             "an MLB-connected training graph is required before MLB-anchor translation is claimed."
