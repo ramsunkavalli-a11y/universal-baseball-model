@@ -1,12 +1,6 @@
 name: Current Talent calibration review
 
 on:
-  # One-time bootstrap for the first nine-fold review; restore to manual-only after resolution.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-calibration-review.yml
   workflow_dispatch:
 
 permissions:
