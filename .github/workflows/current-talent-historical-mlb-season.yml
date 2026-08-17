@@ -1,12 +1,6 @@
 name: Current Talent historical MLB season
 
 on:
-  # One-time retry for the 2023 gate from preserved source cache; remove after success.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-historical-mlb-season.yml
   workflow_dispatch:
     inputs:
       season:
@@ -28,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      TARGET_SEASON: ${{ inputs.season || '2023' }}
+      TARGET_SEASON: ${{ inputs.season }}
 
     steps:
       - name: Check out repository
@@ -66,14 +60,14 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: 31988255280
           github-token: ${{ github.token }}
-      - name: Seed preserved 2023 source cache
+      - name: Seed certified 2023 source cache
         if: ${{ env.TARGET_SEASON == '2023' }}
         uses: actions/download-artifact@v8
         with:
           name: current-talent-historical-mlb-2023
           path: .
           repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: 31988352942
+          run-id: 31989561396
           github-token: ${{ github.token }}
       - name: Materialize historical MLB player-game evidence
         run: >-
