@@ -331,6 +331,10 @@ def main() -> int:
             prior_strength_core_events=FROZEN_BASELINE2_PRIOR_STRENGTH_CORE_EVENTS,
         )
         paired_profile = build_frozen_b1_vs_b2_scoring_pair(frozen_b1, baseline2)
+        frozen_model_player_count = frozen_b1.profile.get_column("player_id").n_unique()
+        baseline2_model_player_count = baseline2.profile.get_column("player_id").n_unique()
+        if frozen_model_player_count != baseline2_model_player_count:
+            raise ValueError(f"Baseline 2 model coverage differs from frozen B1 at {cutoff}")
 
         evidence_comparison = (
             frozen_translated.select(
@@ -359,8 +363,8 @@ def main() -> int:
                 pl.lit(cutoff).alias("as_of_date"),
             )
         )
-        if evidence_comparison.height != len(predictor_ids):
-            raise ValueError(f"Baseline 2 evidence coverage differs at {cutoff}")
+        if evidence_comparison.height != frozen_model_player_count:
+            raise ValueError(f"Baseline 2 evidence coverage differs from frozen B1 at {cutoff}")
         history_frames.append(evidence_comparison)
 
         projected = project_latent_profiles_to_target_environment(
@@ -475,9 +479,10 @@ def main() -> int:
                 "scored_target_environment_rows": coverage.get("baseline2", (0, 0, 0))[1],
                 "future_core_events": coverage.get("baseline2", (0, 0, 0))[2],
                 "predictor_player_count": len(predictor_ids),
+                "model_eligible_player_count": frozen_model_player_count,
                 "players_with_prior_season_effective_evidence": int(prior_players.height),
                 "share_players_with_prior_season_effective_evidence": float(prior_players.height)
-                / len(predictor_ids),
+                / frozen_model_player_count,
                 "mean_additional_effective_core_events": float(
                     evidence_comparison.get_column("additional_effective_core_events").mean()
                 ),
