@@ -8,7 +8,7 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 The active draft PR is **#1 — Build and certify universal baseball foundation layer**.
 
-**Current stage:** Baseline 1 has beaten Baseline 0 with unchanged candidate settings at common **July 15 and Aug. 1 cutoffs in 2021–2023**. The main predictive gain comes from player-specific recent evidence + empirical-Bayes shrinkage. Full-strength level translation is not stable enough to freeze: at July 15 it loses to zero offsets in 2021 and wins only modestly in 2022/2023. The next gate is a common **September 1** fold before chronological hyperparameter selection. No Current Talent model is frozen yet.
+**Current stage:** Baseline 1 has beaten Baseline 0 with unchanged candidate settings at common **July 15, Aug. 1, and Sep. 1 cutoffs in 2021–2023**. The main predictive gain is stable and comes from player-specific recent evidence + empirical-Bayes shrinkage. Full-strength level translation remains a smaller, less stable second-order effect and is not frozen. The next gate is a **multi-fold calibration review**, including calibration intercept/slope, before chronological hyperparameter selection. No Current Talent model is frozen yet.
 
 ## Core principles
 
@@ -24,7 +24,7 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 
 - [`docs/project-status.md`](docs/project-status.md) — **canonical current handoff / roadmap**.
 - [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target, chronology, baseline, and validation contract.
-- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — Baseline 0/1 implementation, common July 15/Aug. stability, and fitted-vs-zero translation ablation.
+- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — Baseline 0/1 implementation, nine common July/August/September folds, and fitted-vs-zero translation ablation.
 - [`docs/current-talent-historical-mlb-checkpoint.md`](docs/current-talent-historical-mlb-checkpoint.md) — certified 2021–2023 historical MLB Current Talent evidence and official reconciliation rules.
 - [`docs/current-talent-historical-milb-checkpoint.md`](docs/current-talent-historical-milb-checkpoint.md) — certified 2021–2023 historical affiliated-MiLB evidence.
 - [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — first production-shaped completed-2024 affiliated batting Performance materialization.
