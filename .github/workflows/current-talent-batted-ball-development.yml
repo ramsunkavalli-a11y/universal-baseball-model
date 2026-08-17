@@ -1,0 +1,263 @@
+name: Current Talent batted-ball richer development
+
+on:
+  workflow_dispatch:
+    inputs:
+      tracking_materialization_run_id:
+        description: "Successful V2 tracking materialization run"
+        required: true
+        default: "32046012977"
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out feature branch
+        uses: actions/checkout@v7
+        with:
+          ref: source-certification-poc
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run richer development regression tests
+        run: >-
+          python -m pytest
+          tests/test_current_talent_batted_ball_quality.py
+          tests/test_current_talent_batted_ball_standardization.py
+          tests/test_current_talent_batted_ball_reconciliation.py
+          tests/test_current_talent_batted_ball_materialization.py
+          tests/test_current_talent_batted_ball_capability.py
+          tests/test_current_talent_batted_ball_scoring.py
+          tests/test_current_talent_batted_ball_residual_fit.py
+          tests/test_current_talent_batted_ball_development_contract.py
+          tests/test_current_talent_batted_ball_checkpoint_renderer.py
+          tests/test_current_talent_baseline2.py
+          tests/test_current_talent_scoring.py
+          tests/test_current_talent_score_diagnostics.py
+          tests/test_current_talent_calibration.py
+          tests/test_current_talent_translation.py
+          tests/test_current_talent_universal_evidence.py
+          tests/test_chadwick.py
+
+      - name: Compile offline development tools
+        run: >-
+          python -m py_compile
+          scripts/materialize_current_talent_batted_ball_development.py
+          scripts/render_current_talent_batted_ball_development_checkpoint.py
+
+      - name: Download required artifacts serially with retry
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          download_with_retry() {
+            local run_id="$1"
+            local pattern="$2"
+            local destination="$3"
+            local attempt
+            for attempt in 1 2 3 4 5; do
+              rm -rf "$destination"
+              mkdir -p "$destination"
+              echo "Downloading run ${run_id}, pattern ${pattern}, attempt ${attempt}/5"
+              if gh run download "$run_id" \
+                --repo "$GITHUB_REPOSITORY" \
+                --pattern "$pattern" \
+                --dir "$destination"; then
+                return 0
+              fi
+              if [[ "$attempt" -eq 5 ]]; then
+                echo "Artifact download failed after 5 attempts: run=${run_id} pattern=${pattern}" >&2
+                return 1
+              fi
+              sleep $((attempt * 15))
+            done
+          }
+
+          download_with_retry \
+            '${{ inputs.tracking_materialization_run_id }}' \
+            'current-talent-batted-ball-tracking-materialization' \
+            'reports/generated/current-talent-batted-ball-development-inputs/tracking'
+
+          download_with_retry \
+            31980820797 \
+            'ct-validation-game-evidence-2021-*' \
+            'reports/generated/current-talent-batted-ball-development-inputs/2021/milb'
+
+          download_with_retry \
+            31986504169 \
+            'current-talent-historical-mlb-2021' \
+            'reports/generated/current-talent-batted-ball-development-inputs/2021/mlb'
+
+          download_with_retry \
+            31971662070 \
+            'current-talent-historical-milb-full-season-*' \
+            'reports/generated/current-talent-batted-ball-development-inputs/2022/milb'
+
+          download_with_retry \
+            31988255280 \
+            'current-talent-historical-mlb-2022' \
+            'reports/generated/current-talent-batted-ball-development-inputs/2022/mlb'
+
+      - name: Require V2 tracking checkpoint
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("reports/generated/current-talent-batted-ball-development-inputs/tracking")
+          matches = sorted(root.rglob("checkpoint.json"))
+          if len(matches) != 1:
+              raise SystemExit(f"expected one tracking checkpoint, found {len(matches)}")
+          report = json.loads(matches[0].read_text())
+          if report.get("report_schema_version") != "0.3":
+              raise SystemExit("tracking checkpoint is not schema 0.3")
+          if report.get("gate") != "current_talent_batted_ball_tracking_materialization":
+              raise SystemExit("tracking artifact is not the richer source-materialization gate")
+          if report.get("workflow_contract") != "full_2021_prior_season_v2":
+              raise SystemExit("tracking artifact is not the required V2 full-prior-season contract")
+          if report.get("tracking_source_epoch") != "2021-01-01":
+              raise SystemExit("tracking source epoch changed")
+          if report.get("prior_season_2021_complete") is not True:
+              raise SystemExit("2021 prior-season tracking is incomplete")
+          if report.get("canonical_model_bbe_contract") != "result_producing_non_bunt_pitch_grain_v1":
+              raise SystemExit("tracking artifact lacks corrected model-BBE contract")
+          if report.get("development_tracking_ready") is not True:
+              raise SystemExit("tracking artifact is not marked development-ready")
+          if report.get("development_capture_end_dates") != {"2021": "2021-10-03", "2022": "2022-08-31"}:
+              raise SystemExit(f"tracking capture dates changed: {report.get('development_capture_end_dates')}")
+          if set(report.get("seasons", {})) != {"2021", "2022"}:
+              raise SystemExit("tracking artifact does not contain exactly 2021/2022 development seasons")
+          for season in ("2021", "2022"):
+              if int(report["seasons"][season].get("model_bbe", 0)) <= 0:
+                  raise SystemExit(f"tracking season {season} has no model BBE")
+              families = set(report["seasons"][season].get("source_families", []))
+              if families != {"MLB_SAVANT", "MILB_SAVANT_TRACKED"}:
+                  raise SystemExit(f"tracking season {season} source families mismatch: {families}")
+          print(json.dumps(report, indent=2))
+          PY
+
+      - name: Fetch pinned Chadwick Register snapshot outside evaluator
+        run: |
+          python - <<'PY'
+          import hashlib
+          import time
+          from pathlib import Path
+          import requests
+          from universal_baseball.chadwick import (
+              CHADWICK_ARCHIVE_URL,
+              CHADWICK_SNAPSHOT_SHA,
+              read_chadwick_people_archive,
+          )
+
+          target = Path("reports/generated/current-talent-batted-ball-development-inputs/chadwick")
+          target.mkdir(parents=True, exist_ok=True)
+          path = target / f"register-{CHADWICK_SNAPSHOT_SHA}.zip"
+          response = None
+          for attempt in range(1, 5):
+              try:
+                  response = requests.get(CHADWICK_ARCHIVE_URL, timeout=120)
+                  response.raise_for_status()
+                  break
+              except requests.RequestException:
+                  if attempt == 4:
+                      raise
+                  time.sleep(2 ** attempt)
+          assert response is not None
+          path.write_bytes(response.content)
+          people = read_chadwick_people_archive(path)
+          manifest = target / "manifest.txt"
+          manifest.write_text(
+              f"snapshot_sha={CHADWICK_SNAPSHOT_SHA}\n"
+              f"archive_url={CHADWICK_ARCHIVE_URL}\n"
+              f"sha256={hashlib.sha256(response.content).hexdigest()}\n"
+              f"people_rows={people.height}\n"
+          )
+          print(manifest.read_text())
+          PY
+
+      - name: Evaluate fixed 2022 richer challenger offline
+        shell: bash
+        run: |
+          set -euo pipefail
+          chadwick="$(find reports/generated/current-talent-batted-ball-development-inputs/chadwick -name 'register-*.zip' -print -quit)"
+          tracking_root="reports/generated/current-talent-batted-ball-development-inputs/tracking"
+          tracked_2021="$(find "$tracking_root" -path '*/2021/combined/reconciled_tracked_bbe_2021.parquet' -print -quit)"
+          tracked_2022="$(find "$tracking_root" -path '*/2022/combined/reconciled_tracked_bbe_2022.parquet' -print -quit)"
+          test -n "$chadwick"
+          test -n "$tracked_2021"
+          test -n "$tracked_2022"
+          python scripts/materialize_current_talent_batted_ball_development.py \
+            --milb-input-root-2021 reports/generated/current-talent-batted-ball-development-inputs/2021/milb \
+            --mlb-input-root-2021 reports/generated/current-talent-batted-ball-development-inputs/2021/mlb \
+            --milb-input-root-2022 reports/generated/current-talent-batted-ball-development-inputs/2022/milb \
+            --mlb-input-root-2022 reports/generated/current-talent-batted-ball-development-inputs/2022/mlb \
+            --tracked-bbe-2021 "$tracked_2021" \
+            --tracked-bbe-2022 "$tracked_2022" \
+            --chadwick-archive "$chadwick" \
+            --output-dir reports/generated/current-talent-batted-ball-development
+
+      - name: Verify development report boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("reports/generated/current-talent-batted-ball-development/report.json")
+          report = json.loads(path.read_text())
+          if report.get("gate") != "current_talent_batted_ball_quality_2022_development":
+              raise SystemExit("unexpected richer development report gate")
+          if report.get("offline_evaluator") is not True or report.get("network_requests_performed") is not False:
+              raise SystemExit("richer evaluator violated offline boundary")
+          if report.get("confirmation_data_present") is not False:
+              raise SystemExit("development report unexpectedly contains confirmation data")
+          if report.get("development_cutoffs") != ["2022-07-15", "2022-08-01", "2022-09-01"]:
+              raise SystemExit("development cutoff contract changed")
+          print(json.dumps({
+              "eligible_for_fixed_2023_confirmation": report["eligible_for_fixed_2023_confirmation"],
+              "promotion_checks": report["promotion_checks"],
+              "proper_score_summary": report["proper_score_summary"],
+              "non_mlb_transport": report["non_mlb_transport"],
+          }, indent=2))
+          PY
+
+      - name: Render checkpoint files for review
+        run: >-
+          python scripts/render_current_talent_batted_ball_development_checkpoint.py
+          --report reports/generated/current-talent-batted-ball-development/report.json
+          --output-dir reports/generated/current-talent-batted-ball-development/checkpoint
+
+      - name: Attach source tracking checkpoints to development artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/generated/current-talent-batted-ball-development/source-tracking
+          cp "$(find reports/generated/current-talent-batted-ball-development-inputs/tracking -name checkpoint.json -print -quit)" \
+            reports/generated/current-talent-batted-ball-development/source-tracking/tracking-checkpoint.json
+          find reports/generated/current-talent-batted-ball-development-inputs/tracking \
+            \( -name 'report*.json' -o -name 'tracking_completeness*.csv' -o -name 'capability_summary.csv' \) \
+            -type f -exec cp --parents {} reports/generated/current-talent-batted-ball-development/source-tracking/ \;
+
+      - name: Upload richer development artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-batted-ball-development
+          path: |
+            reports/generated/current-talent-batted-ball-development/
+            reports/generated/current-talent-batted-ball-development-inputs/chadwick/manifest.txt
+          if-no-files-found: error
+          retention-days: 14
