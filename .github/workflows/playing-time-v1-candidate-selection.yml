@@ -105,6 +105,15 @@ jobs:
           download 31989561396 "current-talent-historical-mlb-2023" "seeded/2023/mlb"
           download 32096473700 "current-talent-historical-mlb-2024" "seeded/2024/mlb"
 
+      - name: Download immutable Projection development targets
+        uses: actions/download-artifact@v7
+        with:
+          name: projection-batting-v1-development-evidence
+          path: inputs/development-evidence
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32097702869
+          github-token: ${{ github.token }}
+
       - name: Download immutable frozen B2 snapshots
         uses: actions/download-artifact@v7
         with:
@@ -120,7 +129,7 @@ jobs:
       - name: Materialize pre-model MLB PA targets
         run: >-
           python scripts/materialize_playing_time_v1_target_surface.py
-          --development-evidence-root seeded
+          --development-evidence-root inputs/development-evidence
           --snapshot-root inputs/current-talent-snapshots
 
       - name: Materialize pre-model predictor candidates
