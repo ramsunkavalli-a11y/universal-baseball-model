@@ -1,4 +1,4 @@
-# refresh after Projection Baseline 0 CI extension
+# refresh after Projection Baseline 0 CI extension and source pin audit
 name: Projection v1 status probe
 
 on:
@@ -34,6 +34,7 @@ jobs:
 
           workflows = {
               "projection_validation_contracts_ci": "projection-validation-contracts-ci.yml",
+              "current_talent_universal_game_evidence_2024": "current-talent-universal-game-evidence-2024.yml",
           }
           output = {
               "gate": "projection_v1_status_probe",
