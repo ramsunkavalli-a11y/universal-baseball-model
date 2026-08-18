@@ -1,0 +1,110 @@
+name: Defense v1 Tier-B cohort audit
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-tier-b-cohort-audit.yml"
+      - "scripts/audit_defense_v1_tier_b_cohort.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  audit:
+    name: reproduce frozen Tier-B transfer cohort
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and frozen dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+
+      - name: Download certified historical fielding source
+        uses: actions/download-artifact@v7
+        with:
+          name: position-role-historical-source-2021-2024
+          path: inputs/historical
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32148467330
+
+      - name: Download frozen tracked source aggregate
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-tracked-source-2021-2023
+          path: inputs/tracked
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32182019495
+
+      - name: Verify frozen tracked parquet hashes
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          result = json.loads(Path("docs/defense-v1-tracked-source-result.json").read_text())
+          root = Path("inputs/tracked")
+          for key, filename in {
+              "range": "tracked_range_proxy_2021_2023.parquet",
+              "framing": "tracked_framing_proxy_2021_2023.parquet",
+          }.items():
+              matches = list(root.rglob(filename))
+              if len(matches) != 1:
+                  raise SystemExit(f"expected one {filename}; observed {matches}")
+              actual = hashlib.sha256(matches[0].read_bytes()).hexdigest()
+              expected = result["storage"][key]["sha256"]
+              if actual != expected:
+                  raise SystemExit(f"{key} SHA-256 mismatch: {actual} != {expected}")
+              print(f"verified {key}: {actual}")
+          PY
+
+      - name: Reproduce Tier-B cohort independently
+        run: >-
+          python -u scripts/audit_defense_v1_tier_b_cohort.py
+          --source-root inputs/historical
+          --tracked-root inputs/tracked
+          --binding-result docs/defense-v1-tracked-challenger-result.json
+          --output reports/generated/defense-v1-tier-b-cohort-audit/report.json
+
+      - name: Upload cohort audit
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-tier-b-cohort-audit
+          path: reports/generated/defense-v1-tier-b-cohort-audit/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist cohort audit
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-tier-b-cohort-audit/report.json docs/defense-v1-tier-b-cohort-audit.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-tier-b-cohort-audit.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Persist Defense v1 Tier-B cohort audit"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
