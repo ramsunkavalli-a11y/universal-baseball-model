@@ -30,6 +30,7 @@ MLB_START = "2024-06-01"
 MLB_END = "2024-06-30"
 MILB_START = "2024-06-10"
 MILB_END = "2024-06-16"
+MILB_SEASON = 2024
 REQUIRED_TRAJECTORY_COLUMNS = [
     "hc_x",
     "hc_y",
@@ -171,15 +172,20 @@ def _milb_pass(report: dict[str, Any]) -> bool:
 def _fetch_milb_level(label: str, candidates: tuple[str, ...]) -> tuple[pl.DataFrame, list[dict[str, Any]], str | None]:
     attempts: list[dict[str, Any]] = []
     for level_filter in candidates:
-        print(f"Fetching MiLB Statcast {label} with hfLevel={level_filter!r} {MILB_START}..{MILB_END}")
+        print(
+            f"Fetching MiLB Statcast {label} season={MILB_SEASON} "
+            f"with hfLevel={level_filter!r} {MILB_START}..{MILB_END}"
+        )
         pitches = mlb_statcast_search_minors(
             MILB_START,
             MILB_END,
+            season=MILB_SEASON,
             game_type="R",
             hfLevel=level_filter,
         )
         attempts.append(
             {
+                "season": MILB_SEASON,
                 "hfLevel": level_filter,
                 "pitch_row_count": int(pitches.height),
                 "column_count": len(pitches.columns),
@@ -228,7 +234,7 @@ def main() -> int:
     a_passed = next(row["passed"] for row in milb_reports if row["label"] == "A")
 
     report = {
-        "report_schema_version": "0.2",
+        "report_schema_version": "0.3",
         "gate": "defense_sportsdataverse_reuse_feasibility_poc",
         "contract": "docs/defense-sportsdataverse-reuse-poc-contract.md",
         "upstream": {
@@ -238,7 +244,12 @@ def main() -> int:
         },
         "source_windows": {
             "mlb": {"start": MLB_START, "end": MLB_END, "season": 2024, "game_type": "R"},
-            "milb": {"start": MILB_START, "end": MILB_END, "game_type": "R"},
+            "milb": {
+                "start": MILB_START,
+                "end": MILB_END,
+                "season": MILB_SEASON,
+                "game_type": "R",
+            },
         },
         "mlb": mlb_report,
         "milb": milb_reports,
