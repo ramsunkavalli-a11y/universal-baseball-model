@@ -241,7 +241,12 @@ Since this source checkpoint was originally written:
 4. **Projection v1** is now the active stage, using frozen Current Talent as its starting state;
 5. the current Projection implementation is reusing this certified source stack to assemble 2022–2024 development evidence while keeping 2025 outcomes quarantined.
 
-Projection has exposed one concrete new source-reuse edge case: 2024 MiLB `game_pk 755829` returns HTTP 404 from the expected official `/feed/live` surface. That is an implementation/source-availability gap to resolve under the same fail-closed principles above; it does **not** reopen the settled source architecture generally.
+Projection exposed a 2024 historical-reuse edge case when `game_pk 755829` returned HTTP 404 from the expected official `/feed/live` surface. That unavailable official PBP route did not require reopening the source architecture. Follow-up source-only audit run `32092166134` used the existing aggregate controls and localized the observed mismatch to two exact source-only residual rows:
+
+- High-A player `669233`, game `755829`: one extra `PA=1, AB=1` row;
+- Single-A player `686541`, game `754395`: one extra `PA=1, AB=1, SO=1` row.
+
+For both, removing the exact suspect row restores agreement with official gameLog totals. The correct next step is an explicit provenance-preserving quality/exclusion rule plus regression coverage, followed by a clean rerun of the 2024 historical evidence path. This is a narrow source-quality exception, not a reason to replace the reuse-first architecture.
 
 For live status and next actions, use:
 
