@@ -1,197 +1,199 @@
 # Project status and handoff
 
-Last updated: 2026-08-17 19:51 PT
+Last updated: 2026-08-17 21:13 PT
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
 ## Active work
 
 - Repo: `ramsunkavalli-a11y/universal-baseball-model`
-- Canonical integrated branch: `main`
+- Integrated branch: `main`
 - Active development branch: `source-certification-poc`
-- PR **#1** was merged on 2026-08-17, reconciling the active Projection history and the six prior `main` dispatcher commits without a force reset.
-- Treat `main` as the integrated source of truth. Inspect `source-certification-poc` and live Actions only for work newer than the most recent integration into `main`.
-- Work in small verified batches and inspect the current branch head before editing.
-- Prefer certified/reusable public data plus existing repo adapters over rebuilding source cleanup.
+- PR #1 was merged on 2026-08-17; `main` is the integrated source of truth through that merge.
+- Inspect `source-certification-poc` and live Actions for work newer than the latest integration.
+- Work in small verified batches.
+- Prefer certified/reusable public data and existing adapters over rebuilding source cleanup.
 - Fail closed on source ambiguity.
-- Keep Performance, Current Talent, Projection, and Player Value / Overall Ranking separate.
+- Keep Performance, Current Talent, Projection, playing time/role, defense, WAR/value, and final ranking separate.
 
 ## Stage summary
 
-### Performance — completed for current downstream needs
+### Performance — complete for current downstream batting needs
 
-Completed-2024 affiliated batting Performance materialization is production-shaped and retained for downstream reuse.
+Completed-2024 affiliated batting Performance materialization is production-shaped and retained.
 
 Primary checkpoint: `docs/performance-2024-affiliated-checkpoint.md`.
 
-Do not reopen Performance/source-foundation work unless Projection exposes a concrete implementation or coverage failure.
+Do not reopen Performance/source-foundation work absent a concrete downstream failure.
 
 ### Current Talent — DONE / FROZEN
 
-Universal results-only **Current Talent Baseline 2** is frozen and retained:
+Frozen universal results-only comparator:
 
 `translated_multiseason_recency_empirical_bayes_v1`
 
 Frozen design:
 
-- 1,095-day eligible results history
-- 180-day exponential half-life
-- EB prior strength 100 effective core events
-- training-only MLB-anchored level translation
-- frozen age/current-level Baseline 0 prior
-- frozen 12-component profile
-- 90-day future target used for Current Talent validation
+- current season plus prior certified seasons where available, capped at 1,095 days;
+- 180-day exponential half-life;
+- EB prior strength 100 effective core events;
+- training-only MLB-anchored level translation;
+- frozen age/current-level Baseline 0 prior;
+- frozen 12-component batting profile.
 
-Richer Challenger 1 failed fixed development and is closed.
+Richer Challenger 1 is closed after failed development.
 
-Richer Challenger 2 (`baseline2_plus_ev_sweet_spot_contact_value_residual_v1`) passed all frozen 2022 development gates but **failed the one-shot 2023 confirmation**. It improved MSE in all three confirmation folds but failed the predeclared MAE no-worse and calibration-intercept guardrails. Binding result: `confirmed = false`.
-
-Do **not** tune, rescue, reselect, or rerun Challenger 2 against 2023. Do not integrate its scalar into Current Talent, Performance, Projection, WAR, Player Value, or Overall Ranking.
+Richer Challenger 2 (`baseline2_plus_ev_sweet_spot_contact_value_residual_v1`) passed development but failed the one-shot 2023 confirmation. Binding result: `confirmed = false`. Do not tune/rescue/reselect it or integrate it downstream.
 
 Key Current Talent records:
 
 - `docs/current-talent-results-only-baseline-freeze.md`
 - `docs/current-talent-contact-value-confirmation-result.json`
-- `docs/current-talent-contact-value-confirmation-contract.md`
 - `docs/current-talent-challenger2-postmortem.md`
 
-Older Current Talent development/checkpoint files are historical evidence, not active tasks.
-
-### Projection v1 — ACTIVE STAGE
-
-Governing plan: `docs/projection-batting-v1-plan.md`.
+### Projection v1 — ACTIVE
 
 Primary question:
 
 > Does a simple leakage-safe age/development adjustment improve next-season batting-rate/profile prediction over carrying frozen Current Talent forward unchanged?
 
-Projection v1 remains rate/profile only. Playing time/role, defense, WAR/value, and final ranking remain separate future channels.
+Projection v1 is rate/profile only. Zero future opportunity is not bad batting skill; playing time/role remains a separate later channel.
 
-Chronological design:
+Untouched confirmation:
 
-- `2021-10-15` snapshot -> 2022 outcomes
-- `2022-10-15` snapshot -> 2023 outcomes
-- `2023-10-15` snapshot -> 2024 outcomes
-- **2025 regular-season outcomes remain quarantined as the untouched confirmation period**
+- **2025 regular-season outcomes remain quarantined.**
 
-No 2025 outcome table may be opened for feature choice, hyperparameter selection, threshold setting, rescue tuning, or development scoring.
+## Projection data/source gates — COMPLETE
 
-## Projection implementation status
+### Certified 2024 affiliated MiLB evidence
 
-### Deterministic contracts / fast CI — PASSING
+The exact source-residual quarantine work is complete and the final all-level report-level proof passed.
 
-Recent successful gates include:
+Binding 2024 MiLB run:
 
-- `32089050302` — next-year dataset contract
-- `32089669934` — Projection development-evidence materializer compiles in CI
-- `32090401492` — exact-game fallback contract
-- `32090635490` — exact-game league fallback contract
-- `32090687671` — combined exact-game outcome + league fallback tests
-- `32092505104` — exact source-residual quarantine policy
-- `32092672387` — source-residual quarantine propagated across evidence grains
-- `32092714174` — cross-grain source quarantine regression gate
+- `32095039114` — **Gate 2024 artifacts on exact reconciliation proof** — success.
 
-The deterministic chronology/dataset/source-authority contracts are not the current blocker.
+The final gate requires exact aggregate reconciliation, zero unresolved outcome residuals, both independent quarantine proofs for every applied row, and exact cross-grain quarantine-key propagation.
 
-### 2024 discrepancy diagnosis — COMPLETE
+The narrow terminal empty-slice case is accepted only after the pre-existing exact two-ledger quarantine has already proven the removed source row. No identity/outcome values are guessed or reassigned.
 
-Earlier historical-path runs failed. Official-feed recovery run `32091704947` showed that `game_pk 755829` returns HTTP 404 from the expected Stats API `/feed/live` surface.
+### Certified 2024 MLB v2 evidence
 
-Source-only residual audit `32092166134` then passed and localized the observed aggregate mismatch to two exact source-only rows:
+The older 2024 MLB game-evidence bundle used a pre-v2 schema and was not coerced into the new universal contract.
 
-1. **High-A** — player `669233`, game `755829`: extra `PA=1, AB=1` row.
-2. **Single-A** — player `686541`, game `754395`: extra `PA=1, AB=1, SO=1` row.
+Instead, the existing historical MLB materializer was reused for 2024 and certified on the current v2 evidence schema:
 
-For each row, removing the exact suspect eliminates the season mismatch and makes the remaining player-game totals match official gameLog totals. Audit artifact `9308734004`, digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
+- `32096473700` — **Materialize certified 2024 MLB Current Talent evidence** — success.
 
-### Exact source-residual quarantine — IMPLEMENTED / CROSS-GRAIN CI PASSED
+Artifact:
 
-Primary helper:
+- `current-talent-historical-mlb-2024`
+- artifact id `9310382371`
+- digest `sha256:bdca35299b7a82130eae197987aa1d1bb0448c8ef9dc9ee6c6ba3d39e79f2efe`
 
-`src/universal_baseball/current_talent_source_residual_quarantine.py`
+### Universal schema boundary
 
-Policy:
+Certified component artifacts may contain source-specific extra columns, but universal combination now explicitly projects onto the frozen canonical evidence fields before concatenation.
 
-`single_source_only_exact_season_and_official_residual_v1`
+Fast contract CI:
 
-A source row is quarantined only when:
+- `32096179903` — **Gate universal evidence schema in Projection CI** — success.
 
-1. there is exactly one source-only positive-PA game for the player/league;
-2. its PA/BB/HBP/SO vector exactly equals the independent season-player residual;
-3. removing its complete PA/AB/BB/HBP/SO/SF/SH/CI vector makes the remaining player-game totals exactly equal the official gameLog aggregate.
+## Projection development surfaces — COMPLETE / VERIFIED
 
-Anything less remains unresolved. No identity, league, or outcome value is guessed or reassigned.
+Final evidence-only materialization:
 
-The historical wrapper now propagates any proven quarantined player/game key consistently across:
+- `32097702869` — **Align Projection history diagnostics with frozen B2 source epoch** — success.
 
-- outcome rows;
-- player-game contact controls;
-- same-player PBP contact rows.
+This materializes all three authorized pre-confirmation folds using certified 2021–2024 MLB + affiliated evidence:
 
-It also fail-closes missing same-game league identity: if the exact official game endpoint itself returns 404, the unauthorizable PBP game is quarantined rather than inheriting filename-level identity.
+1. `2021-10-15 -> 2022`
+2. `2022-10-15 -> 2023`
+3. `2023-10-15 -> 2024`
 
-Cross-grain implementation commit: `be8eb1b781fcc8560e1ac2caec2413a2cc4ea2c3`.
+The run does **not** fit Projection, score a candidate, or access 2025.
 
-Fast CI runs `32092672387` and `32092714174` both completed **successfully**.
+### Frozen B2 history reproduction boundary
 
-### Full 2024 historical gate — LAUNCHED
+Do **not** backfill 2018–2020 merely because the B2 maximum lookback is 1,095 days.
 
-Two post-quarantine historical runs have been launched:
+The frozen B2 plan explicitly used current season plus prior **certified** seasons where available, and the certified universal source epoch begins in 2021. The 1,095-day value is a cap, not a command to expand into an unvalidated source era.
 
-- `32092672369` — **Quarantine exact 2024 source residuals across evidence grains**
-- `32092745178` — **Gate 2024 MiLB on exact source quarantine tests**
+Governing record:
 
-At the documentation cutoff they were queued; use `docs/projection-recovery-status.json` for their live status. Their result, not the earlier failed historical runs, is the current gating evidence.
+- `docs/projection-b2-history-reproduction-contract.md`
 
-Machine-readable workflow snapshots:
+Calendar left-censoring remains visible as a diagnostic; it is not a current blocker.
 
-- `docs/projection-status.json`
-- `docs/projection-recovery-status.json`
+## Projection methodology / model-selection contract — FROZEN BEFORE SCORING
 
-## Immediate next action
+Literature/methodology review:
 
-1. Inspect runs `32092672369` and `32092745178` when they complete.
-2. Require exact aggregate reconciliation, successful cross-grain quarantine metrics, and no new unresolved residuals.
-3. If the historical gate passes, persist/accept the clean certified 2024 evidence artifact and move to full 2022–2024 Projection development-surface materialization.
-4. If it fails, debug only the newly exposed exact discrepancy; do not broaden or loosen the quarantine policy without evidence.
-5. Only after the 2022–2024 development surfaces are complete and chronology-verified should Projection Baseline 0 / Baseline 1 scoring begin.
+- `docs/projection-v1-methodology-review.md`
 
-Do not jump ahead to the age curve or 2025 confirmation before the quarantined 2024 historical gate passes.
+Binding candidate/search/promotion contract:
 
-## Projection v1 model boundary already frozen
+- `docs/projection-batting-v1-development-contract.md`
 
-Baseline 0:
+Key decisions:
 
-- carry frozen Current Talent Baseline 2 forward unchanged to the next season.
+- Baseline 0 = frozen B2 carry-forward.
+- Baseline 1 operates on the 12-part profile through a fixed 11-D ILR representation.
+- Candidate forms are restricted to:
+  - age-only continuous piecewise-linear ridge adjustment;
+  - age + as-of-level main effects with the same ridge adjustment.
+- No age × level interaction, player-specific aging slopes, tracking, scouting, future level, or opportunity features.
+- Lambda grid is frozen at `{0.001, 0.01, 0.1, 1.0}`.
+- `2021 -> 2022` is the **training / candidate-selection fold** using deterministic 5-fold player-held-out CV.
+- `2022 -> 2023` and `2023 -> 2024` are the two **rolling-origin out-of-time validation folds** and cannot choose model form/hyperparameters.
+- 2025 remains untouched confirmation.
+- Future-opportunity selection is reported explicitly rather than imputed into the rate model.
 
-Baseline 1 starting family:
+## Immediate next batch
 
-- learn one-year change in the common Current Talent profile;
-- predictors available only at the October 15 snapshot;
-- age + current level/environment + frozen Current Talent profile + evidence strength/uncertainty as needed;
-- transparent, low-dimensional smoothing/pooling;
-- no future level, role, playing time, tracking, scouting grades, or prospect rankings.
+1. Materialize frozen B2 latent profiles + fold-specific pre-snapshot translation artifacts for the three pre-2025 Projection snapshots and verify exact reproduction of the frozen B2 contract.
+2. Implement/test deterministic ILR transform/inverse and the pre-registered ridge age-design contract.
+3. Only after those deterministic tests pass, run **2022-fold candidate selection**. Do not open 2023/2024 validation results to choose form/lambda.
 
-Before any 2025 scoring, freeze and persist the exact candidate forms, hyperparameter/search grid, promotion thresholds, calibration tolerances, and confirmation refit rule.
+After candidate selection:
 
-## Governing read order for a new chat
+- if selected candidate fails to beat carry-forward on held-out 2022 CV log loss, stop and retain Baseline 0;
+- otherwise freeze the selected form/lambda and run the two rolling-origin validation folds exactly as pre-registered.
+
+No 2025 outcome materialization/scoring belongs in the current batch.
+
+## Machine-readable/live status
+
+- `docs/projection-recovery-status.json` — current Actions registry.
+- `docs/projection-status.json` — Projection checkpoint snapshot.
+
+Recent successful runs include:
+
+- `32095039114` — certified 2024 MiLB all-level gate
+- `32096179903` — universal evidence schema contract
+- `32096473700` — certified 2024 MLB v2 evidence
+- `32097430956` — complete 2021–2024 development surfaces
+- `32097702874` — history-contract fast CI
+- `32097702869` — corrected-history development-surface materialization
+
+## Governing read order
 
 1. `docs/project-status.md`
-2. `docs/projection-batting-v1-plan.md`
-3. `docs/projection-recovery-status.json`
-4. `docs/projection-status.json`
-5. `docs/current-talent-results-only-baseline-freeze.md`
-6. `docs/current-talent-contact-value-confirmation-result.json`
-7. `docs/current-talent-challenger2-postmortem.md`
-8. `docs/performance-2024-affiliated-checkpoint.md`
-9. `docs/canonical-data-contract.md`
-10. `docs/source-certification-current.md`
+2. `docs/projection-batting-v1-development-contract.md`
+3. `docs/projection-v1-methodology-review.md`
+4. `docs/projection-batting-v1-plan.md`
+5. `docs/projection-b2-history-reproduction-contract.md`
+6. `docs/projection-recovery-status.json`
+7. `docs/current-talent-results-only-baseline-freeze.md`
+8. `docs/current-talent-contact-value-confirmation-result.json`
+9. `docs/current-talent-challenger2-postmortem.md`
+10. `docs/performance-2024-affiliated-checkpoint.md`
 
 ## Working rules
 
 - Do not redo settled Current Talent selection/confirmation work absent a concrete implementation failure.
-- Do not treat workflow failure alone as evidence for a broad rewrite; inspect the exact failing source contract first.
+- Do not broaden source quarantine policies because a workflow fails; inspect the exact failing contract.
 - Preserve immutable raw/source evidence and provenance.
-- Reuse certified artifacts where their scope matches the Projection fold.
-- Keep confirmation data quarantined until all development decisions are frozen.
-- Update this handoff whenever the live blocker or recommended next batch changes.
+- Reuse certified artifacts where scope matches.
+- Do not alter the pre-registered Projection candidate family/grid after seeing 2023/2024 validation outcomes.
+- Keep 2025 quarantined until the selected Projection model has passed development and the final confirmation refit is persisted and reproducible.
