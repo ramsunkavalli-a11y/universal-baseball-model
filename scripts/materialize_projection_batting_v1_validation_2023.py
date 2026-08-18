@@ -211,11 +211,11 @@ def main() -> int:
         },
         "storage": storage,
         "boundary": {
-            "form_or_lambda_reselected_on_2023": false,
-            "2024_candidate_scores_accessed": false,
-            "2025_accessed": false,
-            "future_level_used_as_predictor": false,
-            "playing_time_modeled": false
+            "form_or_lambda_reselected_on_2023": False,
+            "2024_candidate_scores_accessed": False,
+            "2025_accessed": False,
+            "future_level_used_as_predictor": False,
+            "playing_time_modeled": False,
         },
     }
     (args.output_root / "report.json").write_text(
