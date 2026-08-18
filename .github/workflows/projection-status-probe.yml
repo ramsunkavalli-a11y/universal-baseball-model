@@ -1,0 +1,78 @@
+name: Projection v1 status probe
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/projection-status-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Capture latest Projection workflow states
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          workflows = {
+              "projection_validation_contracts_ci": "projection-validation-contracts-ci.yml",
+          }
+          output = {
+              "gate": "projection_v1_status_probe",
+              "branch": "source-certification-poc",
+              "workflows": {},
+          }
+          env = dict(os.environ)
+          for key, workflow in workflows.items():
+              command = [
+                  "gh", "run", "list",
+                  "--repo", "ramsunkavalli-a11y/universal-baseball-model",
+                  "--workflow", workflow,
+                  "--branch", "source-certification-poc",
+                  "--limit", "5",
+                  "--json", "databaseId,status,conclusion,headSha,createdAt,updatedAt,displayTitle,url",
+              ]
+              result = subprocess.run(command, check=True, text=True, capture_output=True, env=env)
+              output["workflows"][key] = json.loads(result.stdout)
+          Path("docs/projection-status.json").write_text(
+              json.dumps(output, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(output, indent=2, sort_keys=True))
+          PY
+
+      - name: Persist Projection status probe
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/projection-status.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Persist Projection v1 workflow status"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
