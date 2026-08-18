@@ -121,14 +121,32 @@
     ],
     "source_only_outcome_audit": [
       {
-        "conclusion": "",
+        "conclusion": "success",
         "createdAt": "2026-08-18T02:31:46Z",
         "databaseId": 32092166134,
         "displayTitle": "Run 2024 source-only outcome residual audit",
         "headSha": "a22b70c0c36765409cb035e78b3ff522af547edc",
-        "status": "in_progress",
-        "updatedAt": "2026-08-18T02:31:50Z",
+        "status": "completed",
+        "updatedAt": "2026-08-18T02:33:54Z",
         "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092166134"
+      }
+    ]
+  },
+  "source_only_audit_artifact": {
+    "artifactId": 9308734004,
+    "digest": "sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466",
+    "exact_removable_residuals": [
+      {
+        "level": "high_a",
+        "player_id": 669233,
+        "game_pk": 755829,
+        "vector": {"batting_PA": 1, "batting_AB": 1, "batting_BB": 0, "batting_HBP": 0, "batting_SO": 0, "batting_SF": 0, "batting_SH": 0, "batting_CI": 0}
+      },
+      {
+        "level": "single_a",
+        "player_id": 686541,
+        "game_pk": 754395,
+        "vector": {"batting_PA": 1, "batting_AB": 1, "batting_BB": 0, "batting_HBP": 0, "batting_SO": 1, "batting_SF": 0, "batting_SH": 0, "batting_CI": 0}
       }
     ]
   }
