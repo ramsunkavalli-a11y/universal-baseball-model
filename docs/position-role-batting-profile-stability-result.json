@@ -1,0 +1,1516 @@
+{
+  "batting_role_positions": [
+    "C",
+    "1B",
+    "2B",
+    "3B",
+    "SS",
+    "LF",
+    "CF",
+    "RF",
+    "DH"
+  ],
+  "boundary": {
+    "2025_accessed": false,
+    "future_position_projected": false,
+    "model_fit": false,
+    "pitcher_role_included_in_batting_profile": false,
+    "playing_time_v1_modified": false
+  },
+  "contract": "docs/position-role-batting-profile-stability-contract.md",
+  "decision": {
+    "2025_confirmation_authorized": false,
+    "position_model_authorized": false,
+    "position_projection_method_selected": false,
+    "stability_audit_complete": true,
+    "team_allocator_authorized": false
+  },
+  "gate": "batting_position_role_profile_stability_development_only",
+  "pooled": {
+    "current_primary_share_ge_0_75_player_transition_count": 3445,
+    "defensive_profile_player_transition_count": 9270,
+    "exact_primary_match_rate_when_current_share_ge_0_75": 0.8037735849056604,
+    "exact_primary_position_match_rate": 0.6116109682947729,
+    "mean_defensive_profile_tv_distance": 0.28705965643840936,
+    "mean_role_profile_tv_distance": 0.321757463518027,
+    "median_defensive_profile_tv_distance": 0.24823125780661787,
+    "median_role_profile_tv_distance": 0.2857142857142857,
+    "p75_role_profile_tv_distance": 0.45716748768472903,
+    "p90_role_profile_tv_distance": 0.638070842201277,
+    "player_transition_count": 9336
+  },
+  "report_schema_version": "0.1",
+  "season_summaries": [
+    {
+      "games_played_fallback_count": 19,
+      "games_played_fallback_rate": 0.0047052996532937095,
+      "games_started_mode_count": 4019,
+      "mean_primary_role_share": 0.6717275121762365,
+      "median_primary_role_share": 0.6538461538461539,
+      "player_count": 4038,
+      "primary_position_counts": [
+        {
+          "len": 477,
+          "primary_position": "1B"
+        },
+        {
+          "len": 485,
+          "primary_position": "2B"
+        },
+        {
+          "len": 440,
+          "primary_position": "3B"
+        },
+        {
+          "len": 728,
+          "primary_position": "C"
+        },
+        {
+          "len": 459,
+          "primary_position": "CF"
+        },
+        {
+          "len": 138,
+          "primary_position": "DH"
+        },
+        {
+          "len": 454,
+          "primary_position": "LF"
+        },
+        {
+          "len": 449,
+          "primary_position": "RF"
+        },
+        {
+          "len": 408,
+          "primary_position": "SS"
+        }
+      ],
+      "season": 2021
+    },
+    {
+      "games_played_fallback_count": 20,
+      "games_played_fallback_rate": 0.004978839930296241,
+      "games_started_mode_count": 3997,
+      "mean_primary_role_share": 0.6638840692007933,
+      "median_primary_role_share": 0.6428571428571429,
+      "player_count": 4017,
+      "primary_position_counts": [
+        {
+          "len": 459,
+          "primary_position": "1B"
+        },
+        {
+          "len": 462,
+          "primary_position": "2B"
+        },
+        {
+          "len": 435,
+          "primary_position": "3B"
+        },
+        {
+          "len": 728,
+          "primary_position": "C"
+        },
+        {
+          "len": 452,
+          "primary_position": "CF"
+        },
+        {
+          "len": 153,
+          "primary_position": "DH"
+        },
+        {
+          "len": 473,
+          "primary_position": "LF"
+        },
+        {
+          "len": 428,
+          "primary_position": "RF"
+        },
+        {
+          "len": 427,
+          "primary_position": "SS"
+        }
+      ],
+      "season": 2022
+    },
+    {
+      "games_played_fallback_count": 14,
+      "games_played_fallback_rate": 0.0035175879396984926,
+      "games_started_mode_count": 3966,
+      "mean_primary_role_share": 0.6638372166895845,
+      "median_primary_role_share": 0.64,
+      "player_count": 3980,
+      "primary_position_counts": [
+        {
+          "len": 449,
+          "primary_position": "1B"
+        },
+        {
+          "len": 454,
+          "primary_position": "2B"
+        },
+        {
+          "len": 446,
+          "primary_position": "3B"
+        },
+        {
+          "len": 700,
+          "primary_position": "C"
+        },
+        {
+          "len": 446,
+          "primary_position": "CF"
+        },
+        {
+          "len": 176,
+          "primary_position": "DH"
+        },
+        {
+          "len": 469,
+          "primary_position": "LF"
+        },
+        {
+          "len": 408,
+          "primary_position": "RF"
+        },
+        {
+          "len": 432,
+          "primary_position": "SS"
+        }
+      ],
+      "season": 2023
+    },
+    {
+      "games_played_fallback_count": 12,
+      "games_played_fallback_rate": 0.0031982942430703624,
+      "games_started_mode_count": 3740,
+      "mean_primary_role_share": 0.6548272613718207,
+      "median_primary_role_share": 0.631578947368421,
+      "player_count": 3752,
+      "primary_position_counts": [
+        {
+          "len": 446,
+          "primary_position": "1B"
+        },
+        {
+          "len": 440,
+          "primary_position": "2B"
+        },
+        {
+          "len": 404,
+          "primary_position": "3B"
+        },
+        {
+          "len": 660,
+          "primary_position": "C"
+        },
+        {
+          "len": 405,
+          "primary_position": "CF"
+        },
+        {
+          "len": 144,
+          "primary_position": "DH"
+        },
+        {
+          "len": 429,
+          "primary_position": "LF"
+        },
+        {
+          "len": 414,
+          "primary_position": "RF"
+        },
+        {
+          "len": 410,
+          "primary_position": "SS"
+        }
+      ],
+      "season": 2024
+    }
+  ],
+  "seasons": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "source_fielding_sha256": "a30811e1c46c51479bf55f5326a844fdceafed34b48fbb010201b7aa3efc6c9b",
+  "source_run_id": 32149415617,
+  "source_sha": "82f0f406805d7536c2a7b09a343b4bec8dea3db0",
+  "storage": {
+    "adjacent_year_stability": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "e20c205061709525156d0194b2164f36b5db018f2c40cfff524c4fc7b9bf029f",
+      "file_size_bytes": 211245,
+      "path": "reports/generated/position-role-batting-profile-stability/tables/batting_role_adjacent_year_stability.parquet",
+      "row_count": 9336,
+      "schema_sha256": "c5fbc6926b9e7ac8c333a543f5933ee609f48e93f591a297035782503347dced",
+      "table_name": "batting_role_adjacent_year_stability_2021_2024"
+    },
+    "player_season": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "5c42d2d90ac6550bc1c52f6afd060c2889800714c6fd3a5aa427ac6e8bb4cc98",
+      "file_size_bytes": 160831,
+      "path": "reports/generated/position-role-batting-profile-stability/tables/batting_role_player_season_2021_2024.parquet",
+      "row_count": 15787,
+      "schema_sha256": "3b9fd2414e1f4aeb8b3b1b4b9201111301f7c614b2792745fcf36186d4b47e61",
+      "table_name": "batting_role_player_season_2021_2024"
+    },
+    "role_profiles": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "0437003203b349c97ed208f1545cbe6b72970d77837398a4d29e3b7ce8fd3a48",
+      "file_size_bytes": 835179,
+      "path": "reports/generated/position-role-batting-profile-stability/tables/batting_role_profiles_2021_2024.parquet",
+      "row_count": 52731,
+      "schema_sha256": "e42f9e28fdaad43c10ac9543be70784eceaf246ed6c80e6535d9d2d9ebc23549",
+      "table_name": "batting_role_profiles_2021_2024"
+    }
+  },
+  "transitions": [
+    {
+      "current_primary_share_ge_0_75_player_count": 1186,
+      "current_season": 2021,
+      "defensive_profile_paired_player_count": 3152,
+      "evidence_mode_transitions": [
+        {
+          "current_mode": "games_played_fallback",
+          "next_mode": "games_played_fallback",
+          "player_count": 1
+        },
+        {
+          "current_mode": "games_played_fallback",
+          "next_mode": "games_started",
+          "player_count": 4
+        },
+        {
+          "current_mode": "games_started",
+          "next_mode": "games_played_fallback",
+          "player_count": 4
+        },
+        {
+          "current_mode": "games_started",
+          "next_mode": "games_started",
+          "player_count": 3159
+        }
+      ],
+      "exact_primary_match_rate_when_current_share_ge_0_75": 0.8069139966273187,
+      "exact_primary_position_match_rate": 0.6145833333333334,
+      "mean_current_primary_role_share": 0.6714778964604424,
+      "mean_defensive_profile_tv_distance": 0.28750593326199675,
+      "mean_role_profile_tv_distance": 0.32338386445110495,
+      "median_current_primary_role_share": 0.6541704729112501,
+      "median_defensive_profile_tv_distance": 0.2509561093095193,
+      "median_role_profile_tv_distance": 0.2875702247191011,
+      "next_season": 2022,
+      "p75_role_profile_tv_distance": 0.4658253801798309,
+      "p90_role_profile_tv_distance": 0.6422296544035676,
+      "paired_player_count": 3168,
+      "primary_position_transition_matrix": [
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "1B",
+          "player_count": 225
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "2B",
+          "player_count": 17
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "3B",
+          "player_count": 32
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "C",
+          "player_count": 26
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "CF",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "DH",
+          "player_count": 24
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "LF",
+          "player_count": 9
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "RF",
+          "player_count": 12
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "SS",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "1B",
+          "player_count": 14
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "2B",
+          "player_count": 202
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "3B",
+          "player_count": 59
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "C",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "CF",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "DH",
+          "player_count": 16
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "LF",
+          "player_count": 19
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "RF",
+          "player_count": 8
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "SS",
+          "player_count": 50
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "1B",
+          "player_count": 58
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "2B",
+          "player_count": 54
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "3B",
+          "player_count": 184
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "C",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "CF",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "DH",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "LF",
+          "player_count": 11
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "RF",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "SS",
+          "player_count": 28
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "1B",
+          "player_count": 36
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "2B",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "3B",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "C",
+          "player_count": 522
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "CF",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "DH",
+          "player_count": 21
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "LF",
+          "player_count": 7
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "RF",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "1B",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "2B",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "3B",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "CF",
+          "player_count": 236
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "DH",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "LF",
+          "player_count": 80
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "RF",
+          "player_count": 70
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "SS",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "1B",
+          "player_count": 14
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "2B",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "3B",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "C",
+          "player_count": 19
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "DH",
+          "player_count": 17
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "LF",
+          "player_count": 7
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "RF",
+          "player_count": 8
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "1B",
+          "player_count": 12
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "2B",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "3B",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "C",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "CF",
+          "player_count": 43
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "DH",
+          "player_count": 14
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "LF",
+          "player_count": 172
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "RF",
+          "player_count": 68
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "1B",
+          "player_count": 23
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "2B",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "3B",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "CF",
+          "player_count": 63
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "DH",
+          "player_count": 13
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "LF",
+          "player_count": 79
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "RF",
+          "player_count": 158
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "1B",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "2B",
+          "player_count": 67
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "3B",
+          "player_count": 50
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "C",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "CF",
+          "player_count": 9
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "DH",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "LF",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "RF",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "SS",
+          "player_count": 231
+        }
+      ]
+    },
+    {
+      "current_primary_share_ge_0_75_player_count": 1156,
+      "current_season": 2022,
+      "defensive_profile_paired_player_count": 3096,
+      "evidence_mode_transitions": [
+        {
+          "current_mode": "games_played_fallback",
+          "next_mode": "games_started",
+          "player_count": 2
+        },
+        {
+          "current_mode": "games_started",
+          "next_mode": "games_played_fallback",
+          "player_count": 9
+        },
+        {
+          "current_mode": "games_started",
+          "next_mode": "games_started",
+          "player_count": 3111
+        }
+      ],
+      "exact_primary_match_rate_when_current_share_ge_0_75": 0.7724913494809689,
+      "exact_primary_position_match_rate": 0.6031390134529148,
+      "mean_current_primary_role_share": 0.667552440713,
+      "mean_defensive_profile_tv_distance": 0.2926531985155787,
+      "mean_role_profile_tv_distance": 0.3280238946094443,
+      "median_current_primary_role_share": 0.6487924094307074,
+      "median_defensive_profile_tv_distance": 0.25008945001022287,
+      "median_role_profile_tv_distance": 0.29028222443434043,
+      "next_season": 2023,
+      "p75_role_profile_tv_distance": 0.4670386548843407,
+      "p90_role_profile_tv_distance": 0.6507701600724857,
+      "paired_player_count": 3122,
+      "primary_position_transition_matrix": [
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "1B",
+          "player_count": 207
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "2B",
+          "player_count": 10
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "3B",
+          "player_count": 23
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "C",
+          "player_count": 20
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "CF",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "DH",
+          "player_count": 21
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "LF",
+          "player_count": 13
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "RF",
+          "player_count": 15
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "SS",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "1B",
+          "player_count": 25
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "2B",
+          "player_count": 183
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "3B",
+          "player_count": 69
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "CF",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "DH",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "LF",
+          "player_count": 15
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "RF",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "SS",
+          "player_count": 54
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "1B",
+          "player_count": 49
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "2B",
+          "player_count": 47
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "3B",
+          "player_count": 186
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "C",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "CF",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "DH",
+          "player_count": 7
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "LF",
+          "player_count": 10
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "RF",
+          "player_count": 9
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "SS",
+          "player_count": 27
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "1B",
+          "player_count": 42
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "2B",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "3B",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "C",
+          "player_count": 511
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "CF",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "DH",
+          "player_count": 30
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "LF",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "RF",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "1B",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "2B",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "3B",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "CF",
+          "player_count": 234
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "DH",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "LF",
+          "player_count": 70
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "RF",
+          "player_count": 68
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "SS",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "1B",
+          "player_count": 12
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "2B",
+          "player_count": 8
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "3B",
+          "player_count": 7
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "C",
+          "player_count": 22
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "CF",
+          "player_count": 8
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "DH",
+          "player_count": 33
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "LF",
+          "player_count": 6
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "RF",
+          "player_count": 6
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "SS",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "1B",
+          "player_count": 16
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "2B",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "3B",
+          "player_count": 8
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "C",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "CF",
+          "player_count": 41
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "DH",
+          "player_count": 21
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "LF",
+          "player_count": 157
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "RF",
+          "player_count": 75
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "SS",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "1B",
+          "player_count": 17
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "2B",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "3B",
+          "player_count": 6
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "CF",
+          "player_count": 45
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "DH",
+          "player_count": 12
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "LF",
+          "player_count": 80
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "RF",
+          "player_count": 145
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "SS",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "1B",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "2B",
+          "player_count": 86
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "3B",
+          "player_count": 56
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "CF",
+          "player_count": 6
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "DH",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "LF",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "RF",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "SS",
+          "player_count": 227
+        }
+      ]
+    },
+    {
+      "current_primary_share_ge_0_75_player_count": 1103,
+      "current_season": 2023,
+      "defensive_profile_paired_player_count": 3022,
+      "evidence_mode_transitions": [
+        {
+          "current_mode": "games_played_fallback",
+          "next_mode": "games_started",
+          "player_count": 3
+        },
+        {
+          "current_mode": "games_started",
+          "next_mode": "games_played_fallback",
+          "player_count": 6
+        },
+        {
+          "current_mode": "games_started",
+          "next_mode": "games_started",
+          "player_count": 3037
+        }
+      ],
+      "exact_primary_match_rate_when_current_share_ge_0_75": 0.8331822302810517,
+      "exact_primary_position_match_rate": 0.6172028890347997,
+      "mean_current_primary_role_share": 0.6658368400118607,
+      "mean_defensive_profile_tv_distance": 0.2808636700655226,
+      "mean_role_profile_tv_distance": 0.3136431378373323,
+      "median_current_primary_role_share": 0.6456117021276596,
+      "median_defensive_profile_tv_distance": 0.2415635772066722,
+      "median_role_profile_tv_distance": 0.27678010967786437,
+      "next_season": 2024,
+      "p75_role_profile_tv_distance": 0.4441157160881932,
+      "p90_role_profile_tv_distance": 0.6241959064327485,
+      "paired_player_count": 3046,
+      "primary_position_transition_matrix": [
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "1B",
+          "player_count": 207
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "2B",
+          "player_count": 7
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "3B",
+          "player_count": 20
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "C",
+          "player_count": 23
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "DH",
+          "player_count": 13
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "LF",
+          "player_count": 16
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "RF",
+          "player_count": 12
+        },
+        {
+          "current_primary_position": "1B",
+          "next_primary_position": "SS",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "1B",
+          "player_count": 16
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "2B",
+          "player_count": 198
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "3B",
+          "player_count": 53
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "C",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "CF",
+          "player_count": 10
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "DH",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "LF",
+          "player_count": 25
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "RF",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "2B",
+          "next_primary_position": "SS",
+          "player_count": 44
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "1B",
+          "player_count": 52
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "2B",
+          "player_count": 44
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "3B",
+          "player_count": 177
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "C",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "CF",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "DH",
+          "player_count": 8
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "LF",
+          "player_count": 10
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "RF",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "3B",
+          "next_primary_position": "SS",
+          "player_count": 42
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "1B",
+          "player_count": 37
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "2B",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "3B",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "C",
+          "player_count": 496
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "DH",
+          "player_count": 21
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "LF",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "C",
+          "next_primary_position": "RF",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "1B",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "2B",
+          "player_count": 6
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "3B",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "CF",
+          "player_count": 231
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "DH",
+          "player_count": 6
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "LF",
+          "player_count": 69
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "RF",
+          "player_count": 72
+        },
+        {
+          "current_primary_position": "CF",
+          "next_primary_position": "SS",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "1B",
+          "player_count": 17
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "2B",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "3B",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "C",
+          "player_count": 19
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "CF",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "DH",
+          "player_count": 35
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "LF",
+          "player_count": 11
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "RF",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "DH",
+          "next_primary_position": "SS",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "1B",
+          "player_count": 22
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "2B",
+          "player_count": 11
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "3B",
+          "player_count": 8
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "C",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "CF",
+          "player_count": 30
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "DH",
+          "player_count": 12
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "LF",
+          "player_count": 148
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "RF",
+          "player_count": 75
+        },
+        {
+          "current_primary_position": "LF",
+          "next_primary_position": "SS",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "1B",
+          "player_count": 26
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "2B",
+          "player_count": 4
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "3B",
+          "player_count": 5
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "C",
+          "player_count": 3
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "CF",
+          "player_count": 37
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "DH",
+          "player_count": 11
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "LF",
+          "player_count": 57
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "RF",
+          "player_count": 157
+        },
+        {
+          "current_primary_position": "RF",
+          "next_primary_position": "SS",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "1B",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "2B",
+          "player_count": 71
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "3B",
+          "player_count": 59
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "CF",
+          "player_count": 8
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "DH",
+          "player_count": 1
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "LF",
+          "player_count": 6
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "RF",
+          "player_count": 2
+        },
+        {
+          "current_primary_position": "SS",
+          "next_primary_position": "SS",
+          "player_count": 231
+        }
+      ]
+    }
+  ]
+}
