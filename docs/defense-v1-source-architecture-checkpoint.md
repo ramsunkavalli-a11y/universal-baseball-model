@@ -2,169 +2,206 @@
 
 Last updated: 2026-08-18
 
-Status: **SOURCE ARCHITECTURE GATES COMPLETE — READY FOR PRE-REGISTERED DEFENSE v1 DEVELOPMENT.**
+Status: **PRE-2025 DEVELOPMENT NEARLY CLOSED — FINAL TRACKED-EVIDENCE GATE IN PROGRESS.**
 
 ## Downstream need
 
-Defense must produce a player × position defensive-quality forecast that can be combined later with the already-frozen Position/Role and Playing Time channels. Position/Role answers *where* a player may play; Defense answers *how well* he is expected to field there.
+Defense must produce player × position defensive-quality forecasts that can later combine with frozen Position/Role and Playing Time. Defensive skill, positional adjustment, opportunity, team allocation, and WAR/value remain separate.
 
-Do not collapse defensive skill, positional adjustment, playing-time opportunity, or team allocation into one model.
+## Settled source architecture
 
-## Range / OAA — reusable tracked component
+### Range / OAA
 
-Pinned public implementation: SportsDataverse `0.0.75`, upstream commit `1dafadb38c5240d8e29a0f818efbabe04cd6c417`.
+Pinned reusable implementation: SportsDataverse `0.0.75`, upstream commit `1dafadb38c5240d8e29a0f818efbabe04cd6c417`.
 
-### MLB implementation gate
+MLB June-2024 reuse POC passed the upstream month-vs-season Savant oracle:
 
-The frozen June-2024 reuse POC passed the upstream Savant oracle gate:
+- 116,355 pitches / 20,623 BIP;
+- 18,820 usable OAA opportunities (`91.26%`);
+- 263 Savant-matched fielders;
+- Pearson `0.3045` vs frozen `>=0.30` gate.
 
-- 116,355 pitches;
-- 20,623 balls in play;
-- 18,820 usable OAA opportunities (`91.26%` of BIP);
-- 263 fielders matched to the full-season 2024 Savant OAA leaderboard;
-- Pearson `0.3045`, passing the frozen month-vs-season floor `>= 0.30`.
+SportsDataverse's own full-season 2024 test reports about `0.605` Pearson vs Savant OAA.
 
-SportsDataverse's own full-season 2024 test reports Pearson about `0.605` against Savant OAA.
+For MLB, prefer official public Savant Performance when directly available. Retain SportsDataverse's OAA implementation as the portable tracked implementation and independent check. Do not rebuild a public catch-probability model absent a concrete failure.
 
-**Architecture decision:** for MLB, prefer the public official Savant leaderboard when available; use SportsDataverse's public OAA implementation as the portable tracked implementation needed for MiLB and as an independent implementation check. Do not rebuild a public catch-probability model from scratch absent a concrete failure.
+### Tracked MiLB transport
 
-### Tracked MiLB execution gate
+SportsDataverse's default minor-search parameters returned zero rows; its OAA code was not the problem. The accepted transport is:
 
-The default SportsDataverse minor-search parameters returned zero rows; the OAA implementation was not the problem. A source diagnostic established the correct public Savant transport for this project: `minors=true`, bounded date chunks, then client-side official team/league classification.
+- Savant minors CSV with `minors=true`;
+- bounded date chunks;
+- no server-side `hfLevel` dependency;
+- client-side official team/league classification.
 
-Frozen 2024-06-10 through 2024-06-16 result:
+Frozen 2024-06-10 through 2024-06-16 diagnostic:
 
-- total tracked MiLB pool: 35,352 pitches;
-- AAA: 27,749 pitches / 4,479 BIP / 3,986 usable OAA opportunities (`88.99%`);
-- tracked non-AAA: 7,603 pitches / 1,196 BIP / 803 usable opportunities (`67.14%`);
-- all required trajectory/responsible-fielder fields present;
-- both frozen execution/coverage gates passed.
+- tracked pool 35,352 pitches;
+- AAA 27,749 pitches / 4,479 BIP / 3,986 OAA opportunities (`88.99%` usable);
+- tracked non-AAA 7,603 pitches / 1,196 BIP / 803 OAA opportunities (`67.14%` usable);
+- required fields present; both execution/coverage gates passed.
 
-Observed non-AAA home teams were Clearwater, Daytona, Dunedin, Fort Myers, and Jupiter, consistent with the public Florida State League tracking tier.
+This establishes technical reuse, not proprietary MiLB OAA accuracy.
 
-**Boundary:** this establishes technical reuse, not proprietary MiLB OAA accuracy.
+### Catcher framing
 
-## Catcher framing — reusable tracked component
+Frozen reuse POC passed:
 
-Our own frozen framing reuse POC passed:
+- MLB June 2024: 33 Savant-matched catchers, Pearson `0.5754` vs frozen `>=0.50`;
+- AAA: 14,298 eligible takes / 72 catchers, execution passed;
+- tracked non-AAA: 3,183 takes / 20 catchers, execution passed.
 
-- MLB June 2024: 33 Savant-matched catchers, Pearson `0.5754` vs frozen `>= 0.50` gate;
-- AAA: 14,298 eligible takes, 72 catchers, execution/coverage passed;
-- tracked non-AAA: 3,183 eligible takes, 20 catchers, execution/coverage passed.
+SportsDataverse framing is the leading portable tracked framing implementation. No production framing projection is frozen yet.
 
-SportsDataverse framing is therefore the leading portable tracked framing implementation. For MLB, the official public Savant framing leaderboard remains the higher-quality direct Performance source when available.
+### Universal official fielding evidence
 
-No production framing projection is frozen yet.
-
-## Catcher blocking / throwing
-
-Do not use the SportsDataverse public throwing reconstruction as a production component merely because code exists: its full-season 2024 correlation with Savant is only about `0.073`, largely because public pitch descriptions recover a minority of actual SB/CS attempts.
-
-Instead, the project's universal official fielding source supplies traditional catcher outcomes at every affiliated level. The forward-target test below shows that two of those simple rates carry meaningful next-season signal into Savant:
-
-- prior `caught_stealing_pct` -> next-year Savant `cs_aa_per_throw`: pooled Spearman `0.2033`, all three folds positive, supported;
-- prior `passed_balls_per_9` -> next-year Savant `blocks_above_average_per_game`: pooled Spearman `-0.1524` (correct negative direction), supported.
-
-`catcher_interference_per_9` has no direct Savant target in the frozen source set and is not supported for the first challenger.
-
-**Architecture decision:** first Defense-v1 catcher challenger may use universal CS% and passed-ball rate plus tracked framing where available. Keep throwing, blocking, and framing as separate projected components until a later value-layer combination rule is frozen.
-
-## Universal official fielding source — broad enough for Tier C
-
-The raw 2021–2024 official fielding captures already certified for Position/Role were audited without re-fetching source or opening 2025:
+The already-certified 2021–2024 official fielding captures contain broad all-level traditional counts:
 
 - 64/64 season × league pairs;
-- 224 retained fielding pages;
+- 224 raw fielding pages;
 - 100,166 raw fielding splits;
-- broad all-level traditional counts including putouts, assists, chances, errors, throwing errors and double plays;
-- broad catcher-specific outcomes including caught stealing, stolen bases, passed balls, catcher interference and related fields.
+- general putouts/assists/chances/errors/throwing errors/double plays;
+- catcher caught stealing/stolen bases/passed balls/interference and related outcomes.
 
-Availability alone was not treated as skill.
+Availability was not treated as skill.
 
-## Traditional fielding reliability screen
+## Traditional evidence gates — CLOSED
 
-Eight predeclared rates passed the deliberately low adjacent-year reliability screen, including range factor, fielding percentage, errors, throwing errors, double plays, CS%, passed balls, and catcher interference.
+### Reliability screen
 
-The extremely high raw repeat correlations for some fields were explicitly treated as position-signature contamination, not proof of defensive skill. This triggered the stronger next-year Savant target test with position effects removed.
+Eight predeclared rates had enough adjacent-year repeatability to justify a stronger next-year Savant target test. High raw correlations were explicitly treated as position-signature contamination rather than skill proof.
 
-## Traditional fielding -> next-year Savant target test
+### Next-year Savant target test
 
-Frozen target years: 2022, 2023, 2024. Inputs came only from the prior completed season's all-level official fielding source. No 2025 source or target was accessed.
+Development targets were 2022, 2023, 2024; no 2025 source/target was accessed.
 
-General target: next-year Savant OAA `diff_success_rate_formatted`. Both input features and target were standardized within exact matched defensive position in each fold before correlation.
+Supported first-challenger features:
 
-### Supported general features
+- `range_factor_per_9`: pooled position-adjusted Spearman `0.2277`;
+- `fielding_pct`: `0.1291`;
+- `throwing_errors_per_9`: pooled signed `0.0991`;
+- `errors_per_9`: pooled signed `0.0841`;
+- catcher `caught_stealing_pct`: `0.2033` vs next-year Savant throwing rate;
+- catcher `passed_balls_per_9`: signed `0.1524` vs next-year Savant blocking rate.
 
-- `range_factor_per_9`: pooled position-adjusted Spearman `0.2277`; all three folds passed directional floor.
-- `fielding_pct`: pooled `0.1291`; all three folds passed.
-- `throwing_errors_per_9`: pooled signed `0.0991`; all three folds passed in expected negative direction.
-- `errors_per_9`: pooled signed `0.0841`; two of three folds passed and pooled gate passed.
+Closed:
 
-### Closed general feature
+- `double_plays_per_9`: pooled `0.0372`, zero directional-fold passes;
+- `catcher_interference_per_9`: no direct frozen target.
 
-- `double_plays_per_9`: pooled `0.0372`; zero folds met the directional gate. Closed for the first Defense-v1 traditional challenger without rescue.
+Do not reopen the traditional feature universe for Defense v1.
 
-### Supported catcher features
+## Universal Defense v1 development — PASSED / SELECTED
 
-- `caught_stealing_pct`: pooled Spearman `0.2033` vs next-year Savant throwing rate; supported.
-- `passed_balls_per_9`: pooled signed Spearman `0.1524` vs next-year Savant blocking rate; supported.
+Governing contract: `docs/defense-v1-development-contract.md`.
 
-### Unsupported / unavailable
+All 2022–2024 defensive targets are development evidence because they were already opened during feature screening. Completed-2025 defensive targets are the untouched confirmation period.
 
-- `catcher_interference_per_9`: no direct frozen Savant target; not supported for the first challenger.
+### General range
 
-**Binding decision:** the first universal traditional Defense-v1 challenger feature set is limited to:
+Selected: **U1, lambda `0.0`** — current-season four-feature universal linear model.
 
-- fielding percentage;
-- range factor per 9;
-- errors per 9;
-- throwing errors per 9;
-- catcher caught-stealing percentage;
-- catcher passed-balls per 9.
+Development result:
 
-No other traditional fielding feature may be added to the first challenger based on these already-opened 2022–2024 targets.
+- 2022 MSE `1.10657` vs B0 `1.10142` — `0.47%` worse, inside frozen 5% guardrail;
+- 2023 MSE `0.91584` vs `0.96342` — better;
+- 2024 MSE `0.92537` vs `0.99816` — better;
+- pooled MSE `0.97744` vs B0 `1.02188` — **4.35% improvement**;
+- pooled Spearman `0.2330`;
+- all promotion gates passed.
 
-## Coverage tiers entering model development
+The two-season U2 family was considered under the frozen contract but did not beat the selected U1 on pooled OOF MSE.
 
-The evidence-tier design is now sufficiently supported to freeze a development contract:
+### Catcher blocking
 
-- **Tier A — MLB tracked:** official Savant tracked Performance where available plus universal official-fielding features.
-- **Tier B — tracked MiLB:** SportsDataverse portable range/framing evidence plus universal official-fielding features; tracking coverage remains explicit and is not treated as a proprietary truth label.
-- **Tier C — untracked affiliated MiLB:** universal official-fielding features only, with aggressive shrinkage/uncertainty to be selected in development rather than silently assigning zero defense.
+Selected: **C2**, fixed two-season recency/exposure model using passed-ball rate.
 
-Tracking absence is missing evidence, not neutral talent.
+- pooled MSE improvement vs neutral about **9.84%**;
+- promotion gate passed.
 
-## Minimum eventual Defense v1 output
+### Catcher throwing
 
-Before WAR/value, Defense v1 should expose at least:
+Selected: **C1**, current-season CS% model.
 
-- player id;
-- defensive position;
-- projected defensive-quality rate or equivalent skill score;
-- exposure basis;
-- evidence tier;
-- uncertainty / source-coverage metadata;
-- component provenance (range and catcher framing/blocking/throwing where applicable).
+- pooled MSE improvement vs neutral about **2.46%**;
+- promotion gate passed.
 
-Positional adjustment belongs to the later value layer, not inside fielding-quality skill.
+The universal Tier-C path therefore has actual pre-2025 predictive support; it is not an assumed-zero/average fallback.
 
-## Next development gate
+## Age challenger — FAILED / CLOSED
 
-Freeze a Defense-v1 development plan **before fitting a multivariate model or opening 2025 defensive targets**. The plan should:
+Governing contract: `docs/defense-v1-age-challenger-contract.md`.
 
-1. treat 2022–2024 as the already-opened development surface and reserve 2025 as untouched confirmation;
-2. establish a simple position-neutral universal baseline using only the six supported traditional features above;
-3. test whether age and tracked evidence add out-of-development value in a small, predeclared candidate set rather than an open-ended search;
-4. keep general range and catcher framing/blocking/throwing components separate;
-5. predeclare shrinkage, minimum exposure, missing-evidence behavior, target scaling, metrics, and promotion gates;
-6. refit/freeze exact parameters before any 2025 defensive target is opened if a challenger survives development.
+A1 added only quadratic age terms to the exact selected U1 incumbent. Official Stats API birth dates resolved for all 551 development players.
+
+Binding result:
+
+- A1 MSE worse than U1 in all 3 folds;
+- U1 pooled MSE `0.97744`;
+- A1 pooled MSE `0.99915` — **2.22% worse**;
+- pooled Spearman fell `0.23303 -> 0.20878`.
+
+Age is closed for Defense v1. No age rescue or alternate curve is authorized.
+
+## Final pre-2025 challenger — TRACKED EVIDENCE
+
+Governing contract: `docs/defense-v1-tracked-challenger-contract.md`.
+
+This is the final planned development challenger. No additional feature/model search is authorized afterward.
+
+Frozen questions:
+
+1. Does portable tracked range improve U1 for MLB players with tracked evidence?
+2. If yes, does that representation transfer acceptably from tracked 2023 MiLB evidence to 2024 MLB Savant outcomes?
+3. Does portable tracked catcher framing predict next-year Savant framing?
+4. If yes, does framing transfer acceptably for tracked 2023 MiLB catchers who reach the 2024 MLB target?
+
+The tracked source is being materialized separately so scorer logic cannot change source filters after observing results.
+
+Frozen tracked-source scope:
+
+- MLB inputs: 2021, 2022, 2023 regular seasons;
+- tracked MiLB transfer input: 2023 regular season;
+- SportsDataverse `0.0.75` range/framing implementations;
+- MiLB transport `minors=true` + client-side official level identity;
+- **no 2024 predictor pull and no 2025 source/target access**.
+
+Expected reusable artifact:
+
+- `tracked_range_proxy_2021_2023.parquet`;
+- `tracked_framing_proxy_2021_2023.parquet`;
+- exact file hashes/query records persisted in `docs/defense-v1-tracked-source-result.json` when the source gate completes.
+
+Scoring code is already staged at `scripts/audit_defense_v1_tracked_challenger.py` but must not run until the completed source artifact/run id is pinned.
+
+## Coverage tiers entering final selection
+
+- **Tier A — MLB tracked:** U1 universal evidence, with tracked range/framing only if final tracked gates pass.
+- **Tier B — tracked MiLB:** U1 universal evidence; tracked additions only if both their MLB development gate and predeclared MiLB->MLB transfer diagnostic pass.
+- **Tier C — untracked affiliated MiLB:** selected universal U1 general range plus selected universal catcher components where eligible.
+
+Missing tracking is missing evidence, not observed average talent.
+
+## After the tracked gate
+
+No further development challengers are planned.
+
+Next sequence must be:
+
+1. accept/close tracked components exactly by the frozen gates;
+2. refit retained Defense-v1 component(s) on all authorized 2022–2024 development responses;
+3. freeze exact normalization moments, coefficients, coverage/fallback rules, package versions and parameter hashes;
+4. only then materialize completed-2025 defensive targets in a separate source-only workflow;
+5. run one-shot 2025 confirmation with no refit, reselection or rescue tuning.
 
 ## Binding boundaries
 
-- No production Defense v1 projection is frozen yet.
-- No 2025 defensive target has been accessed.
-- No Tier-C defensive value has been imputed yet.
-- No catcher component-combination rule is frozen yet.
+- No production Defense v1 parameters are frozen yet.
+- Completed-2025 defensive targets remain untouched.
+- Age is closed.
+- Traditional feature search is closed.
+- No Tier-B tracked component is accepted without its transfer gate.
+- No catcher component-combination-to-runs rule is frozen yet.
 - No WAR/value calculation is authorized.
 - Playing Time v1 and Position/Role v1 remain frozen and untouched.
 
@@ -176,3 +213,7 @@ Freeze a Defense-v1 development plan **before fitting a multivariate model or op
 - `docs/defense-universal-fielding-source-audit-result.json`
 - `docs/defense-traditional-fielding-stability-result.json`
 - `docs/defense-traditional-to-savant-target-result.json`
+- `docs/defense-v1-development-contract.md`
+- `docs/defense-v1-universal-development-result.json`
+- `docs/defense-v1-age-challenger-result.json`
+- `docs/defense-v1-tracked-challenger-contract.md`
