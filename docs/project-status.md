@@ -13,7 +13,7 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 - Work in small verified batches.
 - Prefer certified/reusable public data and existing adapters over rebuilding source cleanup.
 - Fail closed on source ambiguity.
-- Keep Performance, Current Talent, Projection, playing time, role/position allocation, defense, WAR/value, and final ranking separate.
+- Keep Performance, Current Talent, Projection, playing time, position/role, defense, WAR/value, and final ranking separate.
 
 ## Stage summary
 
@@ -54,9 +54,9 @@ Retained Projection v1 rate model:
 
 The explicit age/development challenger was selected on 2022, passed fixed 2023 OOT validation, then failed the pre-registered 2024 OOT primary gate. That failure is binding; the challenger is closed without rescue tuning.
 
-**Important outcome boundary:** 2025 batting-rate/profile outcomes were not accessed for Projection v1 and remain unavailable as a rescue set for the rejected challenger. The later Playing Time confirmation accessed only completed-2025 MLB plate-appearance opportunity outcomes under its own separately frozen contract.
+**Outcome boundary:** 2025 batting-rate/profile outcomes remain untouched for Projection v1. Later Playing Time and Position/Role confirmations opened only their separately frozen 2025 opportunity or position-role targets.
 
-Key Projection records:
+Key records:
 
 - `docs/projection-batting-v1-development-contract.md`
 - `docs/projection-v1-methodology-review.md`
@@ -64,7 +64,6 @@ Key Projection records:
 - `docs/projection-batting-v1-validation-2023-result.json`
 - `docs/projection-batting-v1-validation-2024-result.json`
 - `docs/projection-batting-v1-development-result.json`
-- `docs/projection-batting-v1-development-checkpoint.md`
 
 ### Playing Time v1 — DONE / FROZEN / CONFIRMED
 
@@ -80,74 +79,112 @@ Architecture:
 
 The candidate was selected on 2022, passed fixed 2023 and 2024 OOT validation, was refit on all authorized 2022–2024 development responses, and had exact parameters/package versions frozen **before** 2025 source access.
 
-2025 confirmation was then split into isolated gates:
+2025 confirmation was split into isolated gates:
 
 1. pre-2025 frozen predictor/input gate — run `32144363818`;
 2. completed-2025 MLB-PA source/target materialization with no model parameters loaded — run `32144918922`;
-3. one-shot frozen B0-vs-candidate confirmation score — run `32146445795`.
+3. one-shot frozen confirmation score — run `32146445795`.
 
 Binding 2025 result on 3,759 snapshot players:
 
-- candidate full hurdle NLL: `1.283609009`;
-- B0 full hurdle NLL: `1.339572023`;
-- delta: **`-0.055963014`**;
+- candidate full hurdle NLL: `1.283609009` vs B0 `1.339572023`;
 - candidate PA MAE: `30.6525` vs B0 `39.0475`;
 - candidate participation log loss: `0.152517438` vs B0 `0.192781040`;
-- candidate positive-count NLL: `6.422618149` vs B0 `6.511763297`;
-- candidate participation Brier: `0.0451916` vs B0 `0.0593648`;
-- calibration converged with finite parameters for both;
-- **all six predeclared confirmation gates passed**.
+- all six predeclared confirmation gates passed.
 
 No 2025 refit, reselection, recalibration, threshold change, or rescue tuning occurred.
 
 Key records:
 
 - `docs/playing-time-role-current-status.md`
-- `docs/playing-time-role-v1-development-contract.md`
-- `docs/playing-time-v1-development-result.json`
-- `docs/playing-time-v1-confirmation-refit-result.json`
 - `docs/playing-time-v1-confirmation-contract.md`
-- `docs/playing-time-v1-confirmation-inputs-result.json`
-- `docs/playing-time-v1-confirmation-target-result.json`
 - `docs/playing-time-v1-confirmation-result.json`
 
-## ACTIVE NEXT STAGE — role / position / team-allocation coherence
+### Position / Role v1 — DONE / FROZEN / CONFIRMED
 
-The model now has two frozen portable player channels:
+Production model:
 
-- **batting rate/profile:** frozen Current Talent B2 carried forward one year;
-- **individual MLB opportunity:** confirmed Playing Time v1 hurdle model.
+`primary_share_thresholded_transition_mean_v1`
 
-Playing Time v1 intentionally does **not** force all individual expected PA forecasts into finite team/position totals. The next layer must address role/position/team coherence without reopening either frozen channel.
+Output is a portable nine-position batting-role profile across C, 1B, 2B, 3B, SS, LF, CF, RF, and DH. Pitcher usage stays outside the batting-role channel.
+
+Source foundation:
+
+- official Stats API `fielding` supplies explicit player × team × position games, games started, and innings, including explicit DH rows;
+- 2021–2024 historical source certification passed **64/64 season × league pairs** with 100,166 canonical rows — run `32148467330`;
+- 2025 confirmation source was materialized separately, **16/16 leagues**, 24,662 canonical rows, zero source errors — run `32153492066`.
+
+Development path:
+
+- raw year-to-year carry-forward was materially imperfect: pooled exact primary-position repeat `61.2%`, median full-profile TV distance `0.286`;
+- a broad transition smoother improved SSE but worsened TV in both development folds and failed;
+- its pre-specified postmortem showed smoothing was harmful below 0.65 current primary-position share and helpful at/above 0.65;
+- final challenger froze exactly one change: carry forward when `s < 0.65`; otherwise use `s × current_profile + (1-s) × prior-history mean next profile by current primary position`;
+- final challenger passed both development folds with no additional challenger authorized.
+
+Before 2025 source access, all confirmation parameters were frozen from 2021–2024 evidence. Parameter hash:
+
+`sha256:6b6cc7dd5cc7acb7d4396e60dccab12420fdb1828936a318383362d53a9e3def`
+
+One-shot 2025 confirmation — run `32154031433`, 2,891 players:
+
+- mean TV: `0.325526526` → `0.324624904` (**0.277% improvement**);
+- mean summed squared error: `0.226924779` → `0.216389159` (**4.643% improvement**);
+- primary-position match: `0.59530` → `0.59806` (diagnostic only);
+- smoothing active for 1,403 / 2,891 players (`48.53%`);
+- both binding gates passed.
+
+No fitting function was called during confirmation; parameters were not refit; threshold/candidate were not changed or reselected. Additional 2025 tuning is prohibited.
+
+Key records:
+
+- `docs/position-role-historical-source-result.json`
+- `docs/position-role-batting-profile-stability-result.json`
+- `docs/position-role-transition-challenger-result.json`
+- `docs/position-role-transition-challenger-diagnostic.json`
+- `docs/position-role-selective-transition-result.json`
+- `docs/position-role-2025-confirmation-contract.md`
+- `docs/position-role-confirmation-parameters.json`
+- `docs/position-role-2025-confirmation-source-result.json`
+- `docs/position-role-2025-confirmation-result.json`
+
+## ACTIVE NEXT STAGE — defense / defensive value design
+
+The project now has three frozen portable player channels needed downstream:
+
+- batting rate/profile;
+- individual MLB opportunity;
+- batting position/role profile.
+
+A team allocator is **not** currently authorized or required merely to make those player-level channels coherent. The next unresolved value dependency is defensive contribution/quality: position/role tells us *where* a player is expected to play, not *how well* he fields there.
 
 ### Immediate next batch
 
-1. Inventory existing repo/source support for chronology-safe player position, role, and team/organization association.
-2. Define the exact coherence problem and downstream need: e.g. whether WAR/value requires a deterministic position/role allocation layer first, or whether a new statistical model is actually necessary.
-3. Freeze inputs, outputs, chronology, constraints, and validation checks before fitting or allocating against future outcomes.
-4. Prefer a transparent deterministic/coherence layer over a new predictive model if the downstream requirement can be satisfied without another statistical estimation problem.
+1. Inventory mature public defensive datasets/packages already usable across MLB and affiliated minors before building any raw defensive-event parser.
+2. Define the minimum downstream defensive output actually required for WAR/value, including how coverage gaps below MLB should be represented rather than guessed away.
+3. Freeze source scope, chronology, positional grain, uncertainty/fallback rules, and validation gates before fitting a defensive projection.
 
-Do **not** jump directly to WAR/value until the position/role assumptions required by defense and replacement-level/value calculations are explicit.
+Do **not** reopen Playing Time or Position/Role, and do not introduce team-level allocation unless a later WAR/value requirement demonstrates that it is necessary.
 
 ## Governing read order
 
 1. `docs/project-status.md`
-2. `docs/playing-time-role-current-status.md`
-3. `docs/playing-time-v1-confirmation-result.json`
-4. `docs/playing-time-v1-confirmation-contract.md`
-5. `docs/playing-time-role-v1-development-contract.md`
-6. `docs/projection-batting-v1-development-result.json`
-7. `docs/projection-batting-v1-development-contract.md`
-8. `docs/current-talent-results-only-baseline-freeze.md`
-9. `docs/current-talent-contact-value-confirmation-result.json`
+2. `docs/position-role-2025-confirmation-result.json`
+3. `docs/position-role-2025-confirmation-contract.md`
+4. `docs/position-role-confirmation-parameters.json`
+5. `docs/position-role-historical-source-result.json`
+6. `docs/playing-time-role-current-status.md`
+7. `docs/playing-time-v1-confirmation-result.json`
+8. `docs/projection-batting-v1-development-result.json`
+9. `docs/current-talent-results-only-baseline-freeze.md`
 10. `docs/performance-2024-affiliated-checkpoint.md`
 
 ## Working rules
 
-- Do not redo settled Current Talent, Projection v1, or Playing Time v1 selection/validation/confirmation absent a concrete implementation failure.
+- Do not redo settled Current Talent, Projection v1, Playing Time v1, or Position/Role v1 selection/validation/confirmation absent a concrete implementation failure.
 - Do not tune the rejected Projection age/development model on 2024 or expose 2025 batting-rate outcomes as a rescue set.
-- Do not refit/rescore Playing Time v1 against 2025; the one-shot confirmation is binding.
+- Do not refit/rescore Playing Time v1 or Position/Role v1 against their 2025 confirmation targets; those one-shot decisions are binding.
 - Preserve immutable raw/source evidence and provenance.
 - Reuse certified artifacts where scope matches.
-- Keep batting-rate skill, opportunity, role/position allocation, defense, and value separate.
+- Keep batting-rate skill, opportunity, position/role, defense, and value separate.
 - Update this handoff whenever the active stage or binding result changes.
