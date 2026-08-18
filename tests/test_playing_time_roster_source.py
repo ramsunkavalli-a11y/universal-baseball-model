@@ -77,6 +77,8 @@ def test_40man_membership_allows_conflicting_status_duplicate_but_not_status_inf
     assert player["source_row_count"] == 2
     assert player["source_status_conflict"] is True
     assert player["source_status_codes"] == "A,MIN"
+    assert player["source_parent_team_ids"] == "137"
+    assert player["source_parent_team_id_mismatch"] is False
 
 
 def test_40man_membership_rejects_duplicate_identity_conflict() -> None:
@@ -97,16 +99,20 @@ def test_40man_membership_rejects_duplicate_identity_conflict() -> None:
         )
 
 
-def test_40man_membership_rejects_parent_team_conflict() -> None:
+def test_40man_membership_treats_parent_team_mismatch_as_diagnostic_only() -> None:
     payload = _payload()
     payload["roster"][0]["parentTeamId"] = 999  # type: ignore[index]
-    with pytest.raises(ValueError, match="parentTeamId mismatch"):
-        project_team_40man_membership_payload(
-            payload,
-            team_id=137,
-            season=2022,
-            as_of_date=date(2022, 10, 15),
-        )
+    membership = project_team_40man_membership_payload(
+        payload,
+        team_id=137,
+        season=2022,
+        as_of_date=date(2022, 10, 15),
+    )
+    player = membership.filter(membership["player_id"] == 1).row(0, named=True)
+    assert player["on_40man"] is True
+    assert player["team_id"] == 137
+    assert player["source_parent_team_ids"] == "999"
+    assert player["source_parent_team_id_mismatch"] is True
 
 
 def test_project_team_roster_payload_rejects_unknown_roster_type() -> None:
