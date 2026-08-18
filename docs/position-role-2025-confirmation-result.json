@@ -1,0 +1,218 @@
+{
+  "boundary": {
+    "2025_position_outcomes_scored": true,
+    "2025_position_source_accessed": true,
+    "candidate_reselected": false,
+    "defense_model_fit": false,
+    "fitting_function_called": false,
+    "parameters_refit": false,
+    "team_allocator_fit": false,
+    "threshold_changed": false
+  },
+  "candidate": {
+    "name": "primary_share_thresholded_transition_mean_v1",
+    "parameters_reconstructed_from_frozen_artifact": true,
+    "primary_share_threshold": 0.65
+  },
+  "contract": "docs/position-role-2025-confirmation-contract.md",
+  "decision": {
+    "additional_2025_tuning_authorized": false,
+    "confirmed": true,
+    "defense_model_authorized": false,
+    "frozen_position_role_v1": "primary_share_thresholded_transition_mean_v1",
+    "position_role_v1_frozen": true,
+    "team_allocator_authorized": false
+  },
+  "diagnostics": {
+    "by_2024_primary_position": [
+      {
+        "baseline_mean_sse": 0.19130578872372428,
+        "baseline_mean_tv": 0.2935814844604407,
+        "baseline_primary_match_rate": 0.6566666666666666,
+        "candidate_mean_sse": 0.18489049444160052,
+        "candidate_mean_tv": 0.30011806044457834,
+        "candidate_primary_match_rate": 0.6633333333333333,
+        "current_primary_position": "1B",
+        "player_count": 300,
+        "smoothing_active_rate": 0.53
+      },
+      {
+        "baseline_mean_sse": 0.290721108174543,
+        "baseline_mean_tv": 0.4062763174556881,
+        "baseline_primary_match_rate": 0.5117647058823529,
+        "candidate_mean_sse": 0.27709275891459706,
+        "candidate_mean_tv": 0.4039609762363936,
+        "candidate_primary_match_rate": 0.5117647058823529,
+        "current_primary_position": "2B",
+        "player_count": 340,
+        "smoothing_active_rate": 0.4
+      },
+      {
+        "baseline_mean_sse": 0.27136257761407145,
+        "baseline_mean_tv": 0.37615516138683214,
+        "baseline_primary_match_rate": 0.4952978056426332,
+        "candidate_mean_sse": 0.2560921249525726,
+        "candidate_mean_tv": 0.3784738737498966,
+        "candidate_primary_match_rate": 0.5015673981191222,
+        "current_primary_position": "3B",
+        "player_count": 319,
+        "smoothing_active_rate": 0.4827586206896552
+      },
+      {
+        "baseline_mean_sse": 0.13099421301497877,
+        "baseline_mean_tv": 0.20529267772108775,
+        "baseline_primary_match_rate": 0.8613678373382625,
+        "candidate_mean_sse": 0.12924528395674342,
+        "candidate_mean_tv": 0.20691076084226181,
+        "candidate_primary_match_rate": 0.8613678373382625,
+        "current_primary_position": "C",
+        "player_count": 541,
+        "smoothing_active_rate": 0.7024029574861368
+      },
+      {
+        "baseline_mean_sse": 0.21702643089628265,
+        "baseline_mean_tv": 0.3166373933972833,
+        "baseline_primary_match_rate": 0.6410256410256411,
+        "candidate_mean_sse": 0.20301604429483003,
+        "candidate_mean_tv": 0.30961682549160147,
+        "candidate_primary_match_rate": 0.6410256410256411,
+        "current_primary_position": "CF",
+        "player_count": 351,
+        "smoothing_active_rate": 0.4843304843304843
+      },
+      {
+        "baseline_mean_sse": 0.36234919912575986,
+        "baseline_mean_tv": 0.42171291672967987,
+        "baseline_primary_match_rate": 0.20224719101123595,
+        "candidate_mean_sse": 0.34953209202385144,
+        "candidate_mean_tv": 0.42270977375499946,
+        "candidate_primary_match_rate": 0.20224719101123595,
+        "current_primary_position": "DH",
+        "player_count": 89,
+        "smoothing_active_rate": 0.34831460674157305
+      },
+      {
+        "baseline_mean_sse": 0.2576099010256957,
+        "baseline_mean_tv": 0.3694956747572735,
+        "baseline_primary_match_rate": 0.4507042253521127,
+        "candidate_mean_sse": 0.24454990895015002,
+        "candidate_mean_tv": 0.3667777486767768,
+        "candidate_primary_match_rate": 0.4507042253521127,
+        "current_primary_position": "LF",
+        "player_count": 284,
+        "smoothing_active_rate": 0.2887323943661972
+      },
+      {
+        "baseline_mean_sse": 0.22514990530366252,
+        "baseline_mean_tv": 0.33418349702033523,
+        "baseline_primary_match_rate": 0.5353535353535354,
+        "candidate_mean_sse": 0.21333526822931043,
+        "candidate_mean_tv": 0.32990360223564036,
+        "candidate_primary_match_rate": 0.5454545454545454,
+        "current_primary_position": "RF",
+        "player_count": 297,
+        "smoothing_active_rate": 0.3164983164983165
+      },
+      {
+        "baseline_mean_sse": 0.253821625741965,
+        "baseline_mean_tv": 0.3539743570555145,
+        "baseline_primary_match_rate": 0.5297297297297298,
+        "candidate_mean_sse": 0.24083121483437764,
+        "candidate_mean_tv": 0.3513341441518726,
+        "candidate_primary_match_rate": 0.5324324324324324,
+        "current_primary_position": "SS",
+        "player_count": 370,
+        "smoothing_active_rate": 0.5324324324324324
+      }
+    ],
+    "by_2024_primary_share_band": [
+      {
+        "baseline_mean_sse": 0.2418123526031058,
+        "baseline_mean_tv": 0.3611665256009051,
+        "baseline_primary_match_rate": 0.4878980891719745,
+        "candidate_mean_sse": 0.2418123526031058,
+        "candidate_mean_tv": 0.3611665256009051,
+        "candidate_primary_match_rate": 0.489171974522293,
+        "player_count": 785,
+        "primary_share_band": "0.50_to_0.65",
+        "smoothing_active_rate": 0.0
+      },
+      {
+        "baseline_mean_sse": 0.23190972898095322,
+        "baseline_mean_tv": 0.32780836362173127,
+        "baseline_primary_match_rate": 0.6322418136020151,
+        "candidate_mean_sse": 0.20302579305720028,
+        "candidate_mean_tv": 0.32813510629828735,
+        "candidate_primary_match_rate": 0.6322418136020151,
+        "player_count": 397,
+        "primary_share_band": "0.65_to_0.75",
+        "smoothing_active_rate": 1.0
+      },
+      {
+        "baseline_mean_sse": 0.2510240784883236,
+        "baseline_mean_tv": 0.3099957408517037,
+        "baseline_primary_match_rate": 0.7119113573407202,
+        "candidate_mean_sse": 0.21879306359202835,
+        "candidate_mean_tv": 0.30557087477017514,
+        "candidate_primary_match_rate": 0.7119113573407202,
+        "player_count": 361,
+        "primary_share_band": "0.75_to_0.85",
+        "smoothing_active_rate": 1.0
+      },
+      {
+        "baseline_mean_sse": 0.21777943802162253,
+        "baseline_mean_tv": 0.24390197718207274,
+        "baseline_primary_match_rate": 0.834108527131783,
+        "candidate_mean_sse": 0.2063745413723601,
+        "candidate_mean_tv": 0.24213619611849024,
+        "candidate_primary_match_rate": 0.834108527131783,
+        "player_count": 645,
+        "primary_share_band": "ge_0.85",
+        "smoothing_active_rate": 1.0
+      },
+      {
+        "baseline_mean_sse": 0.2035010627270939,
+        "baseline_mean_tv": 0.3673062656417754,
+        "baseline_primary_match_rate": 0.41536273115220484,
+        "candidate_mean_sse": 0.2035010627270939,
+        "candidate_mean_tv": 0.3673062656417754,
+        "candidate_primary_match_rate": 0.42532005689900426,
+        "player_count": 703,
+        "primary_share_band": "lt_0.50",
+        "smoothing_active_rate": 0.0
+      }
+    ]
+  },
+  "gate": "position_role_2025_untouched_confirmation",
+  "inputs": {
+    "historical_role_profile_sha256": "0437003203b349c97ed208f1545cbe6b72970d77837398a4d29e3b7ce8fd3a48",
+    "historical_run_id": 32149415617,
+    "parameter_hash": "sha256:6b6cc7dd5cc7acb7d4396e60dccab12420fdb1828936a318383362d53a9e3def",
+    "parameter_report_run_id": null,
+    "parameter_run_id": 32153160537,
+    "source_fielding_sha256": "6a09b5770e2da839e8ef6c8959b7296e334dce4068b21edde2f727cc15f4d4b2",
+    "source_report_run_id": null,
+    "source_run_id": 32153492066
+  },
+  "metrics": {
+    "baseline_mean_sse": 0.2269247790225716,
+    "baseline_mean_tv": 0.32552652557267636,
+    "baseline_primary_match_rate": 0.5952957454168107,
+    "candidate_mean_sse": 0.21638915907166642,
+    "candidate_mean_tv": 0.32462490378130665,
+    "candidate_primary_match_rate": 0.5980629539951574,
+    "sse_absolute_improvement": 0.010535619950905184,
+    "sse_relative_improvement": 0.04642780747120275,
+    "tv_absolute_improvement": 0.0009016217913697111,
+    "tv_relative_improvement": 0.002769733709975094
+  },
+  "population": {
+    "rule": "valid 2024 role profile AND valid 2025 role profile",
+    "scored_player_count": 2891,
+    "smoothing_active_player_count": 1403,
+    "smoothing_active_rate": 0.4852992044275337
+  },
+  "report_schema_version": "0.1",
+  "source_run_id": 32154031433,
+  "source_sha": "0c5da7b651e85ca7bd6aed9ffe6e20be5393a146"
+}
