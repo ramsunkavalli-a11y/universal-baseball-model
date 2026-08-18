@@ -11,6 +11,7 @@ on:
       - "src/universal_baseball/current_talent_official_game_fallback.py"
       - "src/universal_baseball/current_talent_official_game_identity.py"
       - "src/universal_baseball/current_talent_source_residual_quarantine.py"
+      - "src/universal_baseball/current_talent_evidence_quarantine.py"
       - "scripts/materialize_projection_batting_v1_development_evidence.py"
       - "scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py"
       - "tests/test_projection_validation.py"
@@ -19,6 +20,7 @@ on:
       - "tests/test_current_talent_official_game_fallback.py"
       - "tests/test_current_talent_official_game_identity.py"
       - "tests/test_current_talent_source_residual_quarantine.py"
+      - "tests/test_current_talent_evidence_quarantine.py"
       - ".github/workflows/projection-validation-contracts-ci.yml"
   workflow_dispatch:
 
@@ -51,6 +53,7 @@ jobs:
           src/universal_baseball/current_talent_official_game_fallback.py
           src/universal_baseball/current_talent_official_game_identity.py
           src/universal_baseball/current_talent_source_residual_quarantine.py
+          src/universal_baseball/current_talent_evidence_quarantine.py
           scripts/materialize_projection_batting_v1_development_evidence.py
           scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py
 
@@ -63,3 +66,4 @@ jobs:
           tests/test_current_talent_official_game_fallback.py
           tests/test_current_talent_official_game_identity.py
           tests/test_current_talent_source_residual_quarantine.py
+          tests/test_current_talent_evidence_quarantine.py
