@@ -1,4 +1,4 @@
-# refresh after final exact-game fallback updates
+# refresh after exact-game audit launch
 name: Projection v1 status probe
 
 on:
@@ -36,6 +36,7 @@ jobs:
               "projection_validation_contracts_ci": "projection-validation-contracts-ci.yml",
               "current_talent_universal_game_evidence_2024": "current-talent-universal-game-evidence-2024.yml",
               "projection_historical_milb_2024": "projection-current-talent-historical-milb-2024.yml",
+              "projection_2024_exact_game_source_gap_audit": "projection-2024-exact-game-source-gap-audit.yml",
           }
           output = {
               "gate": "projection_v1_status_probe",
