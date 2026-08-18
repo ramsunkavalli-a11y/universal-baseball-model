@@ -1,8 +1,10 @@
 # Current Source Certification State
 
-Last updated: 2026-08-15
+Last updated: 2026-08-17
 
-This is the current checkpoint for the foundation-layer source work. Detailed experiments remain in audit scripts, workflow artifacts, and ADRs; this document records the decisions that should govern production Performance implementation.
+This is the **current source-foundation checkpoint**, not the live project roadmap. The source architecture recorded here remains the governing foundation for Performance, Current Talent, and Projection evidence reuse. For the active model stage, blocker, and next task, read `docs/project-status.md` first.
+
+Detailed experiments remain in audit scripts, workflow artifacts, and ADRs; this document records source decisions that should continue to govern downstream implementation.
 
 ## Governing source strategy
 
@@ -25,7 +27,7 @@ Raw authority does not mean rebuilding mature extraction work. Reuse cleaned his
 | PA / non-PA semantics | versioned MLB Stats API `/eventTypes` snapshot | Accepted |
 | Cross-system player IDs | pinned Chadwick Register | Accepted versioned crosswalk |
 | Universal spray direction | Gameday `hc_x/hc_y` + established Petti/pybaseball transform | Accepted |
-| Richer Minor Statcast | Baseball Savant / helper logic | Later optional enrichment |
+| Richer Minor Statcast | Baseball Savant / helper logic | Optional enrichment; not universal evidence |
 
 ## Foundation gates passed
 
@@ -227,21 +229,25 @@ Temporal validation distinguishes **event-cutoff retrospective** backtests from 
 8. Empty/placeholder aggregate assets are unavailable data, not zero-stat seasons.
 9. Fast deterministic tests run normally; expensive live-source audits become manual after their gate passes.
 
-## Next milestone: first production Performance player-season transform
+## Downstream status
 
-The source/event/value architecture needed for the first Performance layer is now sufficiently frozen. The next implementation should build a reproducible **player × actual league × season Performance output** without entering Current Talent or Projection.
+The source/event/value architecture described above is no longer waiting for its first Performance implementation.
 
-The production transform should:
+Since this source checkpoint was originally written:
 
-1. use certified season aggregates for standard PA/outcome counts (especially BB/HBP/K and denominators);
-2. use resolved reusable PBP for contact trajectory/direction;
-3. use certified source narrative for the `foul territory` core screen where source-description consensus is available, with official spot certification rather than an all-history narrative replay;
-4. reconcile contact participant counts against resolved player-game controls and fetch official participant evidence only for exception games;
-5. apply the certified league-season Performance-bin value policy by level;
-6. preserve exhaustive/non-core counts (bunts, foul-air, special, unknown/conflicted) rather than forcing every PA into a core bin;
-7. emit explicit coverage/evidence metadata, including core-profile coverage and authority-overlay counts;
-8. keep value totals, per-opportunity rates, sample sizes/effective evidence, and estimator provenance separate from later player-talent shrinkage.
+1. the completed-2024 affiliated **Performance** player-season layer was built and is production-shaped;
+2. universal **Current Talent Baseline 2** was developed, confirmed, and frozen as `translated_multiseason_recency_empirical_bayes_v1`;
+3. two richer Current Talent challengers were evaluated under chronological gates and closed without promotion;
+4. **Projection v1** is now the active stage, using frozen Current Talent as its starting state;
+5. the current Projection implementation is reusing this certified source stack to assemble 2022–2024 development evidence while keeping 2025 outcomes quarantined.
 
-Before large historical backfill, validate this transform on one completed multi-level season against the already-certified aggregate and contact controls.
+Projection has exposed one concrete new source-reuse edge case: 2024 MiLB `game_pk 755829` returns HTTP 404 from the expected official `/feed/live` surface. That is an implementation/source-availability gap to resolve under the same fail-closed principles above; it does **not** reopen the settled source architecture generally.
 
-Tracking, defense, Current Talent modeling, player-level projection/shrinkage, playing-time projection, value/WAR, and the overall ranking remain later layers.
+For live status and next actions, use:
+
+- `docs/project-status.md`
+- `docs/projection-batting-v1-plan.md`
+- `docs/projection-status.json`
+- `docs/projection-recovery-status.json`
+
+Do not use this source-certification document as a model-stage work queue.
