@@ -13,6 +13,7 @@ on:
       - "src/universal_baseball/projection_current_talent.py"
       - "src/universal_baseball/projection_ridge.py"
       - "src/universal_baseball/projection_training.py"
+      - "src/universal_baseball/projection_selection.py"
       - "src/universal_baseball/current_talent_universal_evidence.py"
       - "src/universal_baseball/current_talent_official_game_fallback.py"
       - "src/universal_baseball/current_talent_official_game_identity.py"
@@ -20,6 +21,7 @@ on:
       - "src/universal_baseball/current_talent_evidence_quarantine.py"
       - "scripts/materialize_projection_batting_v1_development_evidence.py"
       - "scripts/materialize_projection_batting_v1_current_talent_snapshots.py"
+      - "scripts/materialize_projection_batting_v1_training_responses.py"
       - "scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py"
       - "tests/test_projection_validation.py"
       - "tests/test_projection_baselines.py"
@@ -28,6 +30,7 @@ on:
       - "tests/test_projection_current_talent.py"
       - "tests/test_projection_ridge.py"
       - "tests/test_projection_training.py"
+      - "tests/test_projection_selection.py"
       - "tests/test_current_talent_universal_evidence.py"
       - "tests/test_current_talent_official_game_fallback.py"
       - "tests/test_current_talent_official_game_identity.py"
@@ -66,6 +69,7 @@ jobs:
           src/universal_baseball/projection_current_talent.py
           src/universal_baseball/projection_ridge.py
           src/universal_baseball/projection_training.py
+          src/universal_baseball/projection_selection.py
           src/universal_baseball/current_talent_universal_evidence.py
           src/universal_baseball/current_talent_official_game_fallback.py
           src/universal_baseball/current_talent_official_game_identity.py
@@ -73,6 +77,7 @@ jobs:
           src/universal_baseball/current_talent_evidence_quarantine.py
           scripts/materialize_projection_batting_v1_development_evidence.py
           scripts/materialize_projection_batting_v1_current_talent_snapshots.py
+          scripts/materialize_projection_batting_v1_training_responses.py
           scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py
 
       - name: Test Projection and source-authority contracts
@@ -85,6 +90,7 @@ jobs:
           tests/test_projection_current_talent.py
           tests/test_projection_ridge.py
           tests/test_projection_training.py
+          tests/test_projection_selection.py
           tests/test_current_talent_universal_evidence.py
           tests/test_current_talent_official_game_fallback.py
           tests/test_current_talent_official_game_identity.py
