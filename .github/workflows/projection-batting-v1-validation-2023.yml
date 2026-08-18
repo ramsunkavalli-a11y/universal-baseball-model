@@ -1,3 +1,4 @@
+# retrigger frozen 2023 validation; no model/data change
 name: Projection batting v1 2023 validation
 
 on:
@@ -7,7 +8,7 @@ on:
     paths:
       - ".github/workflows/projection-batting-v1-validation-2023.yml"
       - "docs/projection-batting-v1-selection-result.json"
-      - "scripts/materialize_projection_batting_v1_validation_2023.py"
+      - "scripts/materialize_projection_batting-v1-validation-2023.py"
       - "src/universal_baseball/projection_ridge.py"
       - "src/universal_baseball/projection_training.py"
       - "src/universal_baseball/projection_selection.py"
