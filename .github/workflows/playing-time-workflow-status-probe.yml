@@ -1,0 +1,81 @@
+name: Playing-time workflow status probe
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/playing-time-workflow-status-probe.yml"
+      - "docs/playing-time-workflow-status-trigger.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Capture playing-time workflow states
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+
+          workflows = {
+              "model_contracts": "playing-time-v1-model-contracts-ci-persist.yml",
+              "candidate_selection": "playing-time-v1-candidate-selection.yml",
+              "validation_2023": "playing-time-v1-validation-2023.yml",
+              "validation_2024": "playing-time-v1-validation-2024.yml",
+              "development_closeout": "playing-time-v1-development-closeout.yml",
+          }
+          output = {"gate": "playing_time_workflow_status_probe", "workflows": {}}
+          env = dict(os.environ)
+          for key, workflow in workflows.items():
+              result = subprocess.run(
+                  [
+                      "gh", "run", "list",
+                      "--repo", "ramsunkavalli-a11y/universal-baseball-model",
+                      "--workflow", workflow,
+                      "--branch", "source-certification-poc",
+                      "--limit", "5",
+                      "--json", "databaseId,status,conclusion,headSha,createdAt,updatedAt,displayTitle,url",
+                  ],
+                  text=True,
+                  capture_output=True,
+                  env=env,
+              )
+              output["workflows"][key] = {
+                  "returncode": result.returncode,
+                  "stdout": json.loads(result.stdout) if result.returncode == 0 and result.stdout.strip() else [],
+                  "stderr": result.stderr.strip(),
+              }
+          Path("docs/playing-time-workflow-status.json").write_text(
+              json.dumps(output, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(output, indent=2, sort_keys=True))
+          PY
+
+      - name: Persist playing-time workflow states
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/playing-time-workflow-status.json
+          git commit -m "Persist playing-time workflow status"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
