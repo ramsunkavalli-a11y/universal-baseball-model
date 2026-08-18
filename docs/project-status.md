@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-17 19:34 PT
+Last updated: 2026-08-17 19:38 PT
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
@@ -79,63 +79,58 @@ No 2025 outcome table may be opened for feature choice, hyperparameter selection
 
 ### Deterministic contracts / fast CI — PASSING
 
-Recent successful fast-CI gates:
+Recent successful gates include:
 
 - `32089050302` — next-year dataset contract
 - `32089669934` — Projection development-evidence materializer compiles in CI
 - `32090401492` — exact-game fallback contract
 - `32090635490` — exact-game league fallback contract
 - `32090687671` — combined exact-game outcome + league fallback tests
+- `32092505104` — exact source-residual quarantine policy in fast CI
 
-The deterministic chronology/dataset/fallback contracts are not the current blocker.
+The deterministic chronology/dataset/source-authority contracts are not the current blocker.
 
 ### 2024 MiLB historical evidence reuse/materialization — NOT YET CLEARED
 
-The heavy live-source path needed for the 2024 Projection development fold has not yet produced a clean certified artifact.
-
-Failed historical-path runs:
+Earlier historical-path runs failed:
 
 - `32089284674` — certified historical Current Talent path for 2024 MiLB
 - `32090307461` — exact-game official fallback rerun
 - `32090635458` — exact-game league fallback rerun
 - `32090668312` — both exact-game fallbacks rerun
 
-The failures are being treated as source/integration discrepancies to resolve explicitly, not as permission to bypass certification.
+The discrepancy has now been diagnosed and a fail-closed correction policy has been implemented; the full historical path still needs a clean rerun.
 
-### Exact-game official recovery — 404 CLASSIFIED AS A DEAD END FOR ONE GAME
+### Source discrepancy diagnosis — COMPLETE
 
-Original dedicated audit run `32091086460` failed because of an import-path issue. Recovery run `32091704947` fixed that import and reached the live source, then failed closed at:
+Official-feed recovery run `32091704947` showed that `game_pk 755829` returns HTTP 404 from the expected Stats API `/feed/live` surface.
 
-- `game_pk = 755829`
-- expected official live feed: `https://statsapi.mlb.com/api/v1/game/755829/feed/live`
-- response: **HTTP 404 Not Found**
-- recovery artifact `9308582512`, digest `sha256:a5847628722d0ae12e80ed90e649d20fd24e6195bf17b96fb61e681b35d273d2`
+Source-only residual audit `32092166134` then passed and localized the observed aggregate mismatch to two exact source-only rows:
 
-The fail-closed capture behavior was correct, but the official `/feed/live` path cannot adjudicate this game as currently identified.
+1. **High-A** — player `669233`, game `755829`: extra `PA=1, AB=1` row.
+2. **Single-A** — player `686541`, game `754395`: extra `PA=1, AB=1, SO=1` row.
 
-### Source-only residual audit — PASSED / ROOT CAUSE NARROWED
+For each row, removing the exact suspect eliminates the season mismatch and makes the remaining player-game totals match official gameLog totals. Audit artifact `9308734004`, digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
 
-Run `32092166134` then tested whether the retained source itself contains exact extra outcome rows that explain the remaining season mismatches without requiring unavailable official PBP. The audit **succeeded**.
+### Exact source-residual quarantine — IMPLEMENTED / CI PASSED
 
-It found exactly two deterministic source-only residuals:
+Production helper:
 
-1. **High-A** — player `669233`, game `755829`
-   - suspect row: `PA=1, AB=1, BB=0, HBP=0, SO=0, SF=0, SH=0, CI=0`
-   - season totals mismatch before removal
-   - season totals match after removal
-   - post-removal totals match official gameLog
-   - exact removable residual: **true**
+`src/universal_baseball/current_talent_source_residual_quarantine.py`
 
-2. **Single-A** — player `686541`, game `754395`
-   - suspect row: `PA=1, AB=1, BB=0, HBP=0, SO=1, SF=0, SH=0, CI=0`
-   - season totals mismatch before removal
-   - season totals match after removal
-   - post-removal totals match official gameLog
-   - exact removable residual: **true**
+Policy:
 
-Audit artifact: `9308734004`, digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
+`single_source_only_exact_season_and_official_residual_v1`
 
-This is stronger than the earlier generic source-gap diagnosis: the currently observed 2024 outcome residual is localized to **two exact source-only rows** whose deterministic removal restores official aggregate agreement.
+The helper removes a row only when all of the following hold:
+
+1. there is exactly one source-only positive-PA game for the player/league;
+2. its PA/BB/HBP/SO vector exactly equals the independent season-player residual;
+3. removing its complete PA/AB/BB/HBP/SO/SF/SH/CI vector makes the remaining player-game totals exactly equal the official gameLog aggregate.
+
+Anything less remains unresolved. No identity, league, or outcome value is guessed or reassigned.
+
+Fast CI run `32092505104` completed **successfully** with this policy and its regression tests included.
 
 Machine-readable workflow snapshots:
 
@@ -144,14 +139,13 @@ Machine-readable workflow snapshots:
 
 ## Immediate next action
 
-1. Encode the two audited source-only rows as an explicit, provenance-preserving 2024 source-quality/exclusion rule; do not silently drop them.
-2. Add deterministic regression tests proving that only the exact audited rows are excluded and that post-exclusion season totals match the official gameLog controls.
-3. Rerun the full 2024 MiLB historical evidence path.
-4. Require a clean certified 2024 artifact and verify there are no additional unresolved residuals before promoting it into Projection development evidence.
-5. Materialize and chronology-verify the full 2022–2024 Projection development snapshot/outcome surfaces with opportunity/censoring accounting.
-6. Only then begin Projection Baseline 0 / Baseline 1 development scoring.
+1. Rerun the complete 2024 MiLB historical evidence/materialization path with `single_source_only_exact_season_and_official_residual_v1` active.
+2. Require exact post-quarantine aggregate reconciliation and verify no additional unresolved source-only residuals appear.
+3. Persist the clean certified 2024 artifact with quarantine provenance/metrics.
+4. Materialize and chronology-verify the full 2022–2024 Projection development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
+5. Only then begin Projection Baseline 0 / Baseline 1 development scoring.
 
-Do not jump ahead to the age curve or 2025 confirmation while the 2024 evidence surface is unresolved.
+Do not jump ahead to the age curve or 2025 confirmation before the 2024 historical evidence rerun passes.
 
 ## Projection v1 model boundary already frozen
 
