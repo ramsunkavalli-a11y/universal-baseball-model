@@ -1,0 +1,102 @@
+{
+  "boundary": {
+    "2025_position_outcomes_scored": false,
+    "2025_position_source_accessed": false,
+    "batting_projection_v1_modified": false,
+    "defense_model_fit": false,
+    "hyperparameter_search": false,
+    "playing_time_v1_modified": false,
+    "team_allocator_fit": false,
+    "training_uses_only_prior_transitions": true
+  },
+  "candidate": {
+    "formula": "s * current_profile + (1 - s) * prior_history_mean_next_profile_by_current_primary_position",
+    "hyperparameters": [],
+    "name": "primary_share_weighted_transition_mean_v1"
+  },
+  "contract": "docs/position-role-transition-challenger-contract.md",
+  "decision": {
+    "2025_position_role_confirmation_authorized": false,
+    "candidate_passed_development": false,
+    "defense_model_authorized": false,
+    "team_allocator_authorized": false
+  },
+  "folds": [
+    {
+      "baseline_mean_sse": 0.23366154608097595,
+      "baseline_mean_tv": 0.32802389460944426,
+      "baseline_primary_match_rate": 0.6034593209481102,
+      "candidate_mean_sse": 0.21958644100683133,
+      "candidate_mean_tv": 0.334564061375774,
+      "candidate_primary_match_rate": 0.6031390134529148,
+      "current_season": 2022,
+      "mean_current_primary_share": 0.6675524407130001,
+      "next_season": 2023,
+      "passed": false,
+      "scored_player_count": 3122,
+      "sse_absolute_improvement": 0.014075105074144612,
+      "sse_relative_improvement": 0.06023714774730991,
+      "training_transitions": [
+        [
+          2021,
+          2022
+        ]
+      ],
+      "tv_absolute_improvement": -0.006540166766329736,
+      "tv_relative_improvement": -0.019938080346606053
+    },
+    {
+      "baseline_mean_sse": 0.2096615273170907,
+      "baseline_mean_tv": 0.3136431378373323,
+      "baseline_primary_match_rate": 0.6168745896257387,
+      "candidate_mean_sse": 0.1986110669022011,
+      "candidate_mean_tv": 0.32206250950844273,
+      "candidate_primary_match_rate": 0.6172028890347997,
+      "current_season": 2023,
+      "mean_current_primary_share": 0.6658368400118607,
+      "next_season": 2024,
+      "passed": false,
+      "scored_player_count": 3046,
+      "sse_absolute_improvement": 0.011050460414889607,
+      "sse_relative_improvement": 0.05270619057437736,
+      "training_transitions": [
+        [
+          2021,
+          2022
+        ],
+        [
+          2022,
+          2023
+        ]
+      ],
+      "tv_absolute_improvement": -0.008419371671110454,
+      "tv_relative_improvement": -0.026843793647661672
+    }
+  ],
+  "gate": "position_role_transition_smoothing_development",
+  "positions": [
+    "C",
+    "1B",
+    "2B",
+    "3B",
+    "SS",
+    "LF",
+    "CF",
+    "RF",
+    "DH"
+  ],
+  "report_schema_version": "0.1",
+  "source": {
+    "artifact_digest": "sha256:a2c5aa7cbc5f9bfaadcab9597a9b228c8f32463c09c88097052bcfec78cdeb26",
+    "artifact_name": "position-role-batting-profile-stability-2021-2024",
+    "run_id": 32149415617,
+    "seasons": [
+      2021,
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "source_run_id": 32152125644,
+  "source_sha": "c5270b6b6f508d97140afad09100c5257af6cf48"
+}
