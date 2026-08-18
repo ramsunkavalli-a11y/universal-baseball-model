@@ -1,0 +1,82 @@
+name: Current Talent contact-value 2023 confirmation evidence
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "scripts/materialize_current_talent_contact_value_confirmation_evidence.py"
+      - ".github/workflows/current-talent-contact-value-confirmation-evidence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Require accepted confirmation chronology and frozen refit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          chronology = json.loads(Path("docs/current-talent-contact-value-confirmation-chronology-result.json").read_text())
+          refit = json.loads(Path("docs/current-talent-contact-value-confirmation-refit-result.json").read_text())
+          if chronology.get("gate") != "current_talent_contact_value_confirmation_chronology_2023":
+              raise SystemExit("confirmation chronology checkpoint not accepted")
+          if chronology.get("boundary", {}).get("confirmation_scoring_performed") is not False:
+              raise SystemExit("confirmation chronology already scored")
+          if refit.get("gate") != "current_talent_contact_value_confirmation_refit_2021_2022":
+              raise SystemExit("wrong frozen confirmation refit")
+          PY
+
+      - name: Compile fixed confirmation evidence materializer
+        run: python -m py_compile scripts/materialize_current_talent_contact_value_confirmation_evidence.py
+
+      - name: Download accepted 2021-22 valued chronology
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-contact-value-chronology
+          path: seeded/development-chronology
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32074805618
+          github-token: ${{ github.token }}
+
+      - name: Download accepted 2023 confirmation source
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-contact-value-confirmation-source-v2
+          path: seeded/confirmation-source
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32082637028
+          github-token: ${{ github.token }}
+
+      - name: Materialize cutoff-safe 2023 confirmation evidence without scoring
+        run: >-
+          python scripts/materialize_current_talent_contact_value_confirmation_evidence.py
+          --development-chronology-root seeded/development-chronology
+          --confirmation-source-root seeded/confirmation-source
+
+      - name: Upload confirmation evidence artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-confirmation-evidence
+          path: reports/generated/current-talent-contact-value-confirmation-evidence/
+          if-no-files-found: warn
+          retention-days: 14
