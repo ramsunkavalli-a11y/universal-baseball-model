@@ -1,0 +1,131 @@
+name: Defense traditional fielding to Savant target test
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-traditional-to-savant-target.yml"
+      - "docs/defense-traditional-to-savant-target-contract.md"
+      - "scripts/audit_defense_traditional_to_savant_targets.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and pinned target transport
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+
+      - name: Verify target-test script
+        run: python -m py_compile scripts/audit_defense_traditional_to_savant_targets.py
+
+      - name: Download certified 2021-2024 fielding source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p historical-source
+          gh run download 32148467330 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-historical-source-2021-2024 \
+            --dir historical-source
+
+      - name: Run frozen next-year Savant target test
+        id: audit_run
+        shell: bash
+        run: |
+          set +e
+          mkdir -p reports/generated/defense-traditional-to-savant-targets
+          python scripts/audit_defense_traditional_to_savant_targets.py \
+            --source-root historical-source 2>&1 \
+            | tee reports/generated/defense-traditional-to-savant-targets/execution.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Upload target-test evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-traditional-to-savant-targets
+          path: reports/generated/defense-traditional-to-savant-targets/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist target-test result or failure diagnosis
+        if: always()
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+          AUDIT_EXIT_CODE: ${{ steps.audit_run.outputs.exit_code }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          root = Path('reports/generated/defense-traditional-to-savant-targets')
+          source = root / 'report.json'
+          log = root / 'execution.log'
+          if source.exists():
+              result = json.loads(source.read_text())
+          else:
+              tail = ''
+              if log.exists():
+                  tail = '\n'.join(log.read_text(errors='replace').splitlines()[-100:])
+              result = {
+                  'report_schema_version': '0.1',
+                  'gate': 'defense_traditional_to_next_year_savant_targets',
+                  'contract': 'docs/defense-traditional-to-savant-target-contract.md',
+                  'decision': {
+                      'defense_v1_traditional_challenger_supported_features': [],
+                      'traditional_feature_target_signal_established': False,
+                      'tier_c_fallback_frozen': False,
+                      'defense_projection_authorized': False,
+                      'war_value_authorized': False,
+                  },
+                  'failure': {
+                      'audit_exit_code': os.environ.get('AUDIT_EXIT_CODE', ''),
+                      'execution_log_tail': tail,
+                  },
+              }
+          result['workflow'] = {'audit_exit_code': os.environ.get('AUDIT_EXIT_CODE', '')}
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/defense-traditional-to-savant-target-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-traditional-to-savant-target-result.json
+          git commit -m "Persist traditional-to-Savant defense target test"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Enforce target-test execution success
+        if: always()
+        env:
+          AUDIT_EXIT_CODE: ${{ steps.audit_run.outputs.exit_code }}
+        run: test "${AUDIT_EXIT_CODE:-1}" -eq 0
