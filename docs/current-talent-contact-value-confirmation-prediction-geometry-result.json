@@ -1,0 +1,57 @@
+{
+  "report_schema_version": "0.1",
+  "gate": "current_talent_contact_value_confirmation_prediction_geometry_pre_scoring",
+  "run_id": 32087405934,
+  "artifact_id": 9307172264,
+  "artifact_sha256": "8833dd6aa90cf0d1675920f7293d23b8225755b706aafce95b7346dec52536a1",
+  "frozen_residual_fit": {
+    "beta_mean_exit_velocity": 0.019444311355484883,
+    "beta_sweet_spot_share": -0.0016659086163438607,
+    "determinant": 18569017159.610256,
+    "fitted_future_contact_count": 166386,
+    "fitted_player_count": 1597
+  },
+  "folds": [
+    {
+      "cutoff_date": "2023-07-15",
+      "paired_event_count": 118984,
+      "paired_player_count": 1226,
+      "baseline_fitted_event_count": 1484876,
+      "baseline_max_training_event_date": "2023-07-14",
+      "event_keys_unchanged": true,
+      "comparator_richer_event_keys_identical": true,
+      "prediction_values_finite": true
+    },
+    {
+      "cutoff_date": "2023-08-01",
+      "paired_event_count": 90949,
+      "paired_player_count": 1191,
+      "baseline_fitted_event_count": 1556104,
+      "baseline_max_training_event_date": "2023-07-31",
+      "event_keys_unchanged": true,
+      "comparator_richer_event_keys_identical": true,
+      "prediction_values_finite": true
+    },
+    {
+      "cutoff_date": "2023-09-01",
+      "paired_event_count": 40885,
+      "paired_player_count": 1158,
+      "baseline_fitted_event_count": 1674318,
+      "baseline_max_training_event_date": "2023-08-31",
+      "event_keys_unchanged": true,
+      "comparator_richer_event_keys_identical": true,
+      "prediction_values_finite": true
+    }
+  ],
+  "boundary": {
+    "2023_evidence_accessed": true,
+    "network_requests_performed": false,
+    "residual_coefficients_refit": false,
+    "comparator_richer_event_keys_identical": true,
+    "prediction_values_finite": true,
+    "confirmation_losses_computed": false,
+    "calibration_computed": false,
+    "confirmation_decision_computed": false,
+    "model_scoring": false
+  }
+}
