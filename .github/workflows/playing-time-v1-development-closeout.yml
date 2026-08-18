@@ -1,0 +1,204 @@
+name: Playing-time v1 development closeout
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/playing-time-v1-development-closeout.yml"
+      - "docs/playing-time-v1-selection-result.json"
+      - "docs/playing-time-v1-validation-2023-result.json"
+      - "docs/playing-time-v1-validation-2024-result.json"
+      - "scripts/fit_playing_time_v1_confirmation_refit.py"
+      - "src/universal_baseball/playing_time_model.py"
+      - "docs/playing-time-development-closeout-trigger.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  closeout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and playing-time dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install -r requirements-playing-time.txt
+
+      - name: Resolve binding development decision
+        id: decision
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          required = {
+              'selection': Path('docs/playing-time-v1-selection-result.json'),
+              'validation_2023': Path('docs/playing-time-v1-validation-2023-result.json'),
+              'validation_2024': Path('docs/playing-time-v1-validation-2024-result.json'),
+          }
+          missing = [name for name, path in required.items() if not path.exists()]
+          if missing:
+              raise SystemExit(f"playing-time closeout binding files missing: {missing}")
+          selection = json.loads(required['selection'].read_text())
+          validation_2024 = json.loads(required['validation_2024'].read_text())
+          promoted = bool(validation_2024.get('decision', {}).get('development_promotion_passed'))
+          selected_form = str(selection.get('selection', {}).get('selected_form'))
+          selection_run = selection.get('source_run_id')
+          if not selection_run:
+              raise SystemExit('playing-time selection result lacks source_run_id')
+          print(f"promoted={'true' if promoted else 'false'}")
+          print(f"selected_form={selected_form}")
+          print(f"selection_run_id={int(selection_run)}")
+          PY
+
+      - name: Verify confirmation-refit implementation
+        if: steps.decision.outputs.promoted == 'true'
+        run: >-
+          python -m py_compile
+          src/universal_baseball/playing_time_model.py
+          scripts/fit_playing_time_v1_confirmation_refit.py
+          && python -m pytest -q tests/test_playing_time_model.py
+
+      - name: Download immutable selection artifact for promoted model
+        if: steps.decision.outputs.promoted == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SELECTION_RUN_ID: ${{ steps.decision.outputs.selection_run_id }}
+        run: |
+          mkdir -p inputs/selection
+          gh run download "$SELECTION_RUN_ID" \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name playing-time-v1-candidate-selection \
+            --dir inputs/selection
+
+      - name: Freeze promoted model before any 2025 source access
+        if: steps.decision.outputs.promoted == 'true'
+        run: >-
+          python scripts/fit_playing_time_v1_confirmation_refit.py
+          --selection-artifact-root inputs/selection
+
+      - name: Pin refit workflow metadata
+        if: steps.decision.outputs.promoted == 'true'
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('reports/generated/playing-time-v1-confirmation-refit/report.json')
+          data = json.loads(path.read_text())
+          data['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          data['source_sha'] = os.environ['SOURCE_SHA']
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload confirmation-refit artifact
+        if: steps.decision.outputs.promoted == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: playing-time-v1-confirmation-refit
+          path: reports/generated/playing-time-v1-confirmation-refit/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Persist development closeout records
+        env:
+          PROMOTED: ${{ steps.decision.outputs.promoted }}
+          SELECTED_FORM: ${{ steps.decision.outputs.selected_form }}
+          SOURCE_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          selection = json.loads(Path('docs/playing-time-v1-selection-result.json').read_text())
+          validation_2023 = json.loads(Path('docs/playing-time-v1-validation-2023-result.json').read_text())
+          validation_2024 = json.loads(Path('docs/playing-time-v1-validation-2024-result.json').read_text())
+          promoted = os.environ['PROMOTED'] == 'true'
+          selected_form = os.environ['SELECTED_FORM']
+          if promoted:
+              refit = json.loads(Path('reports/generated/playing-time-v1-confirmation-refit/report.json').read_text())
+              status = 'development_passed_confirmation_refit_frozen'
+              production_model = None
+              confirmation_authorized = True
+              next_action = 'certify/materialize untouched 2024-10-15 -> 2025 playing-time confirmation surface, then run one fixed confirmation'
+          else:
+              refit = None
+              status = 'richer_candidate_rejected_baseline0_retained'
+              production_model = 'playing_time_level_hurdle_v1'
+              confirmation_authorized = False
+              next_action = 'playing-time v1 complete with level-only B0; proceed to role/position/team-allocation layer'
+          result = {
+              'gate': 'playing_time_v1_development_decision',
+              'status': status,
+              'selected_2022_form': selected_form,
+              'production_model_if_complete': production_model,
+              'selection_result': 'docs/playing-time-v1-selection-result.json',
+              'validation_2023_result': 'docs/playing-time-v1-validation-2023-result.json',
+              'validation_2024_result': 'docs/playing-time-v1-validation-2024-result.json',
+              'development_promotion_passed': promoted,
+              '2025_confirmation_authorized': confirmation_authorized,
+              'confirmation_refit_result': 'docs/playing-time-v1-confirmation-refit-result.json' if promoted else None,
+              '2025_accessed': False,
+              'batting_rate_modified': False,
+              'next_action': next_action,
+              'closeout_source_run_id': int(os.environ['SOURCE_RUN_ID']),
+          }
+          Path('docs/playing-time-v1-development-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          if promoted:
+              Path('docs/playing-time-v1-confirmation-refit-result.json').write_text(
+                  json.dumps(refit, indent=2, sort_keys=True) + '\n'
+              )
+          lines = [
+              '# Playing-time / role v1 development checkpoint',
+              '',
+              f'- Status: **{status}**',
+              f'- 2022 selected form: `{selected_form}`',
+              f'- Development promotion passed: **{promoted}**',
+              f'- 2025 accessed: **False**',
+              '',
+          ]
+          if promoted:
+              lines.extend([
+                  '- Exact 2022–2024 confirmation refit is frozen before any 2025 source access.',
+                  '- Next gate: certify/materialize the untouched 2025 opportunity target, then run one fixed confirmation.',
+              ])
+          else:
+              lines.extend([
+                  '- Retain `playing_time_level_hurdle_v1` as Playing Time v1.',
+                  '- No rescue tuning on the failed validation period.',
+                  '- Next stage: role/position/team-allocation coherence.',
+              ])
+          Path('docs/playing-time-v1-development-checkpoint.md').write_text('\n'.join(lines) + '\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/playing-time-v1-development-result.json docs/playing-time-v1-development-checkpoint.md
+          if [ -f docs/playing-time-v1-confirmation-refit-result.json ]; then
+            git add docs/playing-time-v1-confirmation-refit-result.json
+          fi
+          git commit -m "Persist playing-time v1 development closeout"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
