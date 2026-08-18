@@ -78,6 +78,67 @@ jobs:
           --season 2024
           --level "${{ matrix.level }}"
 
+      - name: Require exact 2024 reconciliation and quarantine proof
+        env:
+          LEVEL: ${{ matrix.level }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          level = os.environ["LEVEL"]
+          slug = "aplus" if level == "a+" else level
+          path = Path(
+              f"reports/generated/current-talent-historical-milb-game-evidence/2024/{slug}/report.json"
+          )
+          report = json.loads(path.read_text())
+          outcome = report["outcome_adjudication"]
+          participant = report["participant_authority"]
+          cross = participant["exact_source_residual_cross_grain_quarantine"]
+
+          if report.get("accepted") is not True:
+              raise SystemExit("historical evidence report is not accepted")
+          if outcome.get("post_reconciliation", {}).get("exact_reconciliation") is not True:
+              raise SystemExit("season aggregates do not reconcile exactly after adjudication")
+          if int(outcome.get("remaining_season_asset_residual_count", -1)) != 0:
+              raise SystemExit(
+                  f"unresolved season residuals remain: {outcome.get('remaining_season_asset_residual_keys')}"
+              )
+          if int(report.get("evidence_contract", {}).get("core_profile_count_exceeds_pa_player_game_count", -1)) != 0:
+              raise SystemExit("core profile event count exceeds PA for at least one player-game")
+
+          quarantined = sorted(tuple(row) for row in outcome.get("source_only_exact_residual_quarantined_keys", []))
+          cross_keys = sorted(tuple(row) for row in cross.get("keys", []))
+          if quarantined != cross_keys:
+              raise SystemExit("outcome quarantine keys do not match cross-grain quarantine keys")
+
+          applied = [
+              row["source_only_exact_residual_quarantine"]
+              for row in outcome.get("adjudications", [])
+              if row.get("source_only_exact_residual_quarantine", {}).get("applied")
+          ]
+          if len(applied) != int(outcome.get("source_only_exact_residual_quarantine_count", -1)):
+              raise SystemExit("quarantine count does not match applied adjudication proofs")
+          for proof in applied:
+              if proof.get("season_residual_exact") is not True:
+                  raise SystemExit("an applied quarantine lacks exact independent season residual proof")
+              if proof.get("official_full_vector_exact_after_removal") is not True:
+                  raise SystemExit("an applied quarantine lacks exact official gameLog vector proof")
+              if proof.get("source_values_reassigned") is not False:
+                  raise SystemExit("an applied quarantine reassigned source values")
+
+          print(json.dumps({
+              "level": level,
+              "accepted": True,
+              "exact_reconciliation": True,
+              "remaining_residuals": 0,
+              "exact_quarantine_count": len(applied),
+              "cross_grain_key_count": len(cross_keys),
+              "classification_counts": outcome.get("classification_counts", {}),
+          }, indent=2))
+          PY
+
       - name: Upload accepted 2024 historical game evidence
         if: always()
         uses: actions/upload-artifact@v7
