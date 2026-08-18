@@ -1,4 +1,4 @@
-# refresh after frozen B2 Projection snapshot fast-CI gate
+# track frozen B2 Projection snapshot materialization
 name: Projection recovery status probe
 
 on:
@@ -37,6 +37,7 @@ jobs:
               "historical_mlb": "current-talent-historical-mlb-season.yml",
               "projection_contracts": "projection-validation-contracts-ci.yml",
               "development_evidence": "projection-batting-v1-development-evidence.yml",
+              "current_talent_snapshots": "projection-batting-v1-current-talent-snapshots.yml",
           }
           output = {"gate": "projection_recovery_status_probe", "workflows": {}}
           env = dict(os.environ)
