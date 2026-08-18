@@ -23,7 +23,9 @@ Projection v1 asks whether a leakage-safe age/development adjustment improves ne
 
 ### Live Projection status
 
-Projection contracts and fast deterministic CI are passing, including the next-year dataset contract and exact-game outcome/league fallback behavior. The current implementation blocker is the heavy **2024 MiLB historical-evidence reuse/materialization path**: several live-source runs failed, so a dedicated exact-game source-gap audit/recovery is being used to isolate the remaining source issue before development evidence is promoted.
+Projection contracts and fast deterministic CI are passing, including the next-year dataset contract and exact-game outcome/league fallback behavior. The current implementation blocker is the heavy **2024 MiLB historical-evidence reuse/materialization path**.
+
+A dedicated recovery audit has isolated a concrete official-source condition: `game_pk 755829` returns **404 Not Found** from the expected Stats API `/feed/live` endpoint. The next step is to classify that exact source condition, encode the narrowest supported handling rule with regression coverage, continue the audit, and only then rerun the full 2024 evidence path.
 
 Machine-readable workflow snapshots:
 
