@@ -143,3 +143,5 @@ jobs:
           test "$INSTALL_OUTCOME" = "success"
           test "$COMPILE_OUTCOME" = "success"
           test "${AUDIT_EXIT_CODE:-1}" -eq 0
+
+      # Intentional no-op marker: rerun after concurrent result-file creation settled.
