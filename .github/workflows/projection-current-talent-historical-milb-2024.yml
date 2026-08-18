@@ -8,6 +8,7 @@ on:
       - ".github/workflows/projection-current-talent-historical-milb-2024.yml"
       - "scripts/materialize_current_talent_historical_milb_game_evidence.py"
       - "scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py"
+      - "scripts/materialize_current_talent_historical_milb_game_evidence_projection_gate.py"
       - "src/universal_baseball/current_talent_era.py"
       - "src/universal_baseball/current_talent_identity_corrections.py"
       - "src/universal_baseball/current_talent_milb_source.py"
@@ -73,7 +74,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >-
-          python scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py
+          python scripts/materialize_current_talent_historical_milb_game_evidence_projection_gate.py
           --season 2024
           --level "${{ matrix.level }}"
 
