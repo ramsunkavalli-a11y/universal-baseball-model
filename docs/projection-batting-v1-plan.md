@@ -1,12 +1,12 @@
 # Batting Projection v1 Plan
 
-Last updated: 2026-08-17
+Last updated: 2026-08-17 19:25 PT
 
-Status: **PRE-DEVELOPMENT CONTRACT — 2025 OUTCOMES QUARANTINED**
+Status: **IMPLEMENTATION / DEVELOPMENT-DATA ASSEMBLY — 2025 OUTCOMES QUARANTINED**
 
 ## Purpose
 
-Projection is the next layer after frozen Current Talent.
+Projection is the layer after frozen Current Talent.
 
 It answers:
 
@@ -22,6 +22,39 @@ Projection is not:
 - an overall ranking.
 
 The first Projection implementation is deliberately rate-only. Playing time / role probability remains a separate future channel so lack of opportunity is never treated as bad batting skill.
+
+## Current implementation status
+
+The design has moved beyond pre-development planning, but model development scoring has **not** started.
+
+Completed / passing deterministic work:
+
+- chronological Projection fold/window contracts;
+- next-year dataset contract;
+- development-evidence materializer compilation/contract coverage;
+- exact-game official outcome fallback behavior;
+- exact-game league fallback behavior;
+- combined fast-CI validation of those fallback contracts.
+
+Recent passing runs include `32089050302`, `32089669934`, `32090401492`, `32090635490`, and `32090687671`.
+
+Current blocker:
+
+- the heavy 2024 MiLB historical-evidence reuse/materialization path has not yet produced a clean certified artifact;
+- live-source runs `32089284674`, `32090307461`, `32090635458`, and `32090668312` failed;
+- dedicated source-gap audit run `32091086460` also failed before completing its intended inspection;
+- recovery run `32091704947` was launched with the interrupted import path corrected and was still in progress at the handoff timestamp.
+
+The current task is therefore **source-gap isolation and evidence materialization**, not age-curve fitting and not model selection.
+
+Machine-readable status:
+
+- `docs/projection-status.json`
+- `docs/projection-recovery-status.json`
+
+Canonical human handoff:
+
+- `docs/project-status.md`
 
 ## Starting point
 
@@ -90,7 +123,7 @@ Projection v1 development may use exactly these three chronological folds:
 
 The 2023 Challenger-2 confirmation outcomes are no longer untouched and are therefore eligible development evidence for this genuinely new Projection question.
 
-2024 has already been source-certified for Performance work, but no Projection v1 model has been selected against 2024 outcomes yet. It remains a development fold, not confirmation.
+2024 has already been source-certified for Performance work, but no Projection v1 model has been selected against 2024 outcomes. It remains a development fold, not confirmation.
 
 ## Untouched confirmation
 
@@ -224,12 +257,14 @@ After one-year Projection v1 is stable, add direct horizon-specific targets/mode
 
 Playing-time/role probability should then be added as a separate projection channel rather than folded into the rate model.
 
-## First implementation batch
+## Implementation sequence and gate
 
-1. build a deterministic Projection fold/window contract for the three development folds and quarantined 2025 confirmation;
-2. materialize October 15 frozen Baseline-2 Current Talent snapshots without using future outcomes;
-3. materialize next-calendar-year future outcome surfaces with explicit opportunity/censoring accounting;
-4. verify canonical player/event keys and chronology before implementing any age curve;
-5. only then implement carry-forward Projection Baseline 0 and the simple age/development Baseline 1.
+1. **DONE:** implement deterministic Projection fold/window and next-year dataset contracts.
+2. **DONE:** add/verify exact-game official outcome and league fallback behavior in fast CI.
+3. **IN PROGRESS:** produce a clean certified 2024 MiLB historical evidence artifact for Projection reuse; resolve only evidence-backed source gaps.
+4. **NEXT:** materialize and chronology-verify the complete 2022–2024 development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
+5. **THEN:** implement and score carry-forward Projection Baseline 0.
+6. **THEN:** implement the simple age/development Baseline 1 and run the frozen three-fold development comparison.
+7. **ONLY IF DEVELOPMENT PASSES:** freeze the confirmation refit/model-selection contract before opening any 2025 outcomes.
 
-No 2025 outcome materialization belongs in this first batch.
+No 2025 outcome materialization belongs in the current implementation batch.
