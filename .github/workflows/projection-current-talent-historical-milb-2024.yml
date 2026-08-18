@@ -7,12 +7,15 @@ on:
     paths:
       - ".github/workflows/projection-current-talent-historical-milb-2024.yml"
       - "scripts/materialize_current_talent_historical_milb_game_evidence.py"
+      - "scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py"
       - "src/universal_baseball/current_talent_era.py"
       - "src/universal_baseball/current_talent_identity_corrections.py"
       - "src/universal_baseball/current_talent_milb_source.py"
       - "src/universal_baseball/current_talent_milb_evidence.py"
       - "src/universal_baseball/current_talent_official_outcomes.py"
+      - "src/universal_baseball/current_talent_official_game_fallback.py"
       - "src/universal_baseball/current_talent_season_reconciliation.py"
+      - "tests/test_current_talent_official_game_fallback.py"
   workflow_dispatch:
 
 permissions:
@@ -41,7 +44,7 @@ jobs:
       - name: Install project
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
 
-      - name: Run historical evidence unit tests
+      - name: Run historical evidence and exact-game fallback tests
         run: >-
           python -m pytest
           tests/test_armstjc_contacts.py
@@ -51,6 +54,7 @@ jobs:
           tests/test_current_talent_milb_evidence.py
           tests/test_current_talent_official_multiteam.py
           tests/test_current_talent_official_outcomes.py
+          tests/test_current_talent_official_game_fallback.py
           tests/test_current_talent_participant_authority.py
           tests/test_current_talent_season_reconciliation.py
           tests/test_official_mixed_codes.py
@@ -60,7 +64,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >-
-          python scripts/materialize_current_talent_historical_milb_game_evidence.py
+          python scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py
           --season 2024
           --level "${{ matrix.level }}"
 
