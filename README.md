@@ -8,15 +8,30 @@ Read [`docs/project-status.md`](docs/project-status.md) first. `main` is the lat
 
 ## Current stage
 
-The portable batting, opportunity, and position/role channels are now frozen and validated enough to support the next value layer.
+The portable batting, opportunity, and position/role channels are frozen. Defense v1 is in its **final pre-2025 development gate**: universal range/blocking/throwing components have already been selected, the age challenger is closed, and the frozen tracked range/framing source gate has passed.
 
 - **Performance:** completed-2024 affiliated batting materialization is production-shaped and retained.
 - **Current Talent:** frozen at `translated_multiseason_recency_empirical_bayes_v1` (Baseline 2).
 - **Projection v1 batting rate/profile:** frozen at `frozen_current_talent_carry_forward_v1`; the age/development challenger failed its fixed OOT gate.
 - **Playing Time v1:** frozen and 2025-confirmed at `playing_time_recent_opportunity_40man_b2_hurdle_v1`.
 - **Position / Role v1:** frozen and 2025-confirmed at `primary_share_thresholded_transition_mean_v1`.
-- **Defense / defensive value:** **next active stage**.
-- **WAR/value and Overall Ranking:** later stages.
+- **Defense v1:** universal U1/C2/C1 path selected; final tracked source materialization passed; frozen tracked challenger scoring is next.
+- **WAR/value and Overall Ranking:** later stages; **not authorized yet**.
+
+### Defense v1 current handoff
+
+Read [`docs/defense-v1-development-checkpoint.md`](docs/defense-v1-development-checkpoint.md) for the active Defense handoff.
+
+The final tracked source workflow passed on run `32182019495`. It persisted hash-pinned 2021–2023 MLB tracked range/framing evidence plus 2023 tracked MiLB transfer evidence without opening any 2025 source or defensive target.
+
+The next authorized action is to run the already-frozen scorer at `scripts/audit_defense_v1_tracked_challenger.py` against those persisted artifacts:
+
+- general range: selected **U1** vs **T1 = U1 + tracked_range_z**;
+- catcher framing: **F0 neutral** vs frozen one-feature **F1**.
+
+If a tracked component passes its MLB gate, only its predeclared 2023-MiLB -> 2024-MLB transfer diagnostic may follow. There are no additional planned pre-2025 Defense challengers after this gate.
+
+**Do not open 2025 defensive source/targets or begin WAR/value work yet.**
 
 ### Position / Role v1 result
 
@@ -60,6 +75,9 @@ The pre-registered age/development challenger improved in the first 2023 OOT fol
 ## Current milestone documents
 
 - [`docs/project-status.md`](docs/project-status.md) — canonical live handoff and next action.
+- [`docs/defense-v1-development-checkpoint.md`](docs/defense-v1-development-checkpoint.md) — active Defense-v1 scoring handoff.
+- [`docs/defense-v1-tracked-challenger-contract.md`](docs/defense-v1-tracked-challenger-contract.md) — frozen final pre-2025 tracked challenger.
+- [`docs/defense-v1-tracked-source-result.json`](docs/defense-v1-tracked-source-result.json) — binding successful tracked-source gate.
 - [`docs/position-role-2025-confirmation-result.json`](docs/position-role-2025-confirmation-result.json) — binding Position / Role v1 confirmation.
 - [`docs/playing-time-v1-confirmation-result.json`](docs/playing-time-v1-confirmation-result.json) — binding Playing Time v1 confirmation.
 - [`docs/projection-batting-v1-development-result.json`](docs/projection-batting-v1-development-result.json) — binding Projection v1 decision.
