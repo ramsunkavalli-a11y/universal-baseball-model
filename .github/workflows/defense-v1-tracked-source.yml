@@ -8,6 +8,8 @@ on:
       - ".github/workflows/defense-v1-tracked-source.yml"
       - "docs/defense-v1-tracked-challenger-contract.md"
       - "scripts/materialize_defense_v1_tracked_source.py"
+      - "scripts/materialize_defense_v1_tracked_source_segment.py"
+      - "scripts/aggregate_defense_v1_tracked_source_segments.py"
   workflow_dispatch:
 
 permissions:
@@ -15,9 +17,56 @@ permissions:
   actions: read
 
 jobs:
-  materialize:
+  segment:
+    name: materialize ${{ matrix.segment }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        segment:
+          - mlb-2021
+          - mlb-2022
+          - mlb-2023
+          - milb-2023
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and pinned tracking implementation
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+
+      - name: Verify frozen segmented materializer
+        run: >-
+          python -m py_compile
+          scripts/materialize_defense_v1_tracked_source.py
+          scripts/materialize_defense_v1_tracked_source_segment.py
+
+      - name: Materialize frozen source segment
+        run: >-
+          python -u scripts/materialize_defense_v1_tracked_source_segment.py
+          --segment "${{ matrix.segment }}"
+
+      - name: Upload source segment
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-tracked-source-${{ matrix.segment }}
+          path: reports/generated/defense-v1-tracked-source-segments/
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate:
+    name: aggregate frozen tracked source
+    needs: segment
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
         with:
@@ -33,73 +82,45 @@ jobs:
           && python -m pip install -e ".[dev]"
           && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
 
-      - name: Verify tracked source materializer
-        run: python -m py_compile scripts/materialize_defense_v1_tracked_source.py
+      - name: Download all successful frozen source segments
+        uses: actions/download-artifact@v7
+        with:
+          pattern: defense-v1-tracked-source-*
+          path: inputs/segments
+          merge-multiple: true
 
-      - name: Materialize frozen historical tracked source
-        id: source_run
-        shell: bash
+      - name: Verify and aggregate exact segment artifacts
+        run: >-
+          python -u scripts/aggregate_defense_v1_tracked_source_segments.py
+          --segment-root inputs/segments
+
+      - name: Pin aggregate workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
         run: |
-          set +e
-          mkdir -p reports/generated/defense-v1-tracked-source
-          python scripts/materialize_defense_v1_tracked_source.py 2>&1 \
-            | tee reports/generated/defense-v1-tracked-source/execution.log
-          code=${PIPESTATUS[0]}
-          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
-          exit 0
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('reports/generated/defense-v1-tracked-source/report.json')
+          result = json.loads(path.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
+          PY
 
-      - name: Upload tracked source artifact
-        if: always()
+      - name: Upload verified aggregate tracked source
         uses: actions/upload-artifact@v7
         with:
           name: defense-v1-tracked-source-2021-2023
           path: reports/generated/defense-v1-tracked-source/
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30
 
-      - name: Persist source result or failure diagnosis
-        if: always()
-        env:
-          SOURCE_RUN_ID: ${{ github.run_id }}
-          SOURCE_SHA: ${{ github.sha }}
-          MATERIALIZE_EXIT_CODE: ${{ steps.source_run.outputs.exit_code }}
+      - name: Persist binding tracked source result
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import json, os
-          from pathlib import Path
-
-          root = Path('reports/generated/defense-v1-tracked-source')
-          source = root / 'report.json'
-          log = root / 'execution.log'
-          if source.exists():
-              result = json.loads(source.read_text())
-          else:
-              tail = ''
-              if log.exists():
-                  tail = '\n'.join(log.read_text(errors='replace').splitlines()[-160:])
-              result = {
-                  'report_schema_version': '0.1',
-                  'gate': 'defense_v1_tracked_source_materialization',
-                  'contract': 'docs/defense-v1-tracked-challenger-contract.md',
-                  'decision': {
-                      'tracked_source_materialized': False,
-                      'tracked_challenger_scoring_authorized_next': False,
-                      '2025_confirmation_authorized': False,
-                      'war_value_authorized': False,
-                  },
-                  'failure': {
-                      'materialize_exit_code': os.environ.get('MATERIALIZE_EXIT_CODE', ''),
-                      'execution_log_tail': tail,
-                  },
-              }
-          result['workflow'] = {'materialize_exit_code': os.environ.get('MATERIALIZE_EXIT_CODE', '')}
-          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
-          result['source_sha'] = os.environ['SOURCE_SHA']
-          Path('docs/defense-v1-tracked-source-result.json').write_text(
-              json.dumps(result, indent=2, sort_keys=True) + '\n'
-          )
-          PY
+          cp reports/generated/defense-v1-tracked-source/report.json docs/defense-v1-tracked-source-result.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/defense-v1-tracked-source-result.json
@@ -111,9 +132,3 @@ jobs:
             sleep $((attempt * 2))
           done
           exit 1
-
-      - name: Enforce tracked source materialization success
-        if: always()
-        env:
-          MATERIALIZE_EXIT_CODE: ${{ steps.source_run.outputs.exit_code }}
-        run: test "${MATERIALIZE_EXIT_CODE:-1}" -eq 0
