@@ -1,0 +1,149 @@
+{
+  "authorized_target_years_used_for_model_selection": [
+    2022
+  ],
+  "boundary": {
+    "2023_candidate_scores_accessed": false,
+    "2024_candidate_scores_accessed": false,
+    "2025_accessed": false,
+    "batting_rate_modified": false,
+    "future_level_used": false,
+    "future_team_used": false
+  },
+  "candidate_forms": [
+    "playing_time_level_hurdle_v1",
+    "playing_time_recent_opportunity_hurdle_v1",
+    "playing_time_recent_opportunity_40man_hurdle_v1",
+    "playing_time_recent_opportunity_40man_b2_hurdle_v1"
+  ],
+  "cv_fold_count": 5,
+  "cv_fold_counts": [
+    {
+      "cv_fold": 0,
+      "len": 947
+    },
+    {
+      "cv_fold": 1,
+      "len": 943
+    },
+    {
+      "cv_fold": 2,
+      "len": 939
+    },
+    {
+      "cv_fold": 3,
+      "len": 938
+    },
+    {
+      "cv_fold": 4,
+      "len": 935
+    }
+  ],
+  "gate": "playing_time_v1_2022_candidate_selection",
+  "report_schema_version": "0.1",
+  "selection": {
+    "advances_to_out_of_time_validation": true,
+    "baseline0_full_nll": 1.2158059301465094,
+    "baseline0_pooled_metrics": {
+      "mean_full_negative_log_likelihood": 1.2158059301465094,
+      "observed_mean_mlb_pa": 38.56592939174819,
+      "participation_brier": 0.08926162708091591,
+      "participation_log_loss": 0.27473909008797187,
+      "positive_count_negative_log_likelihood": 6.459702601394515,
+      "positive_players": 685,
+      "predicted_mean_mlb_pa": 38.05366148030442,
+      "scored_players": 4702,
+      "unconditional_mlb_pa_mae": 47.04298539761533,
+      "unconditional_mlb_pa_rmse": 104.74083149517553
+    },
+    "baseline0_selected": false,
+    "selected_form": "playing_time_recent_opportunity_40man_b2_hurdle_v1",
+    "selected_full_nll": 1.1014742187188973,
+    "selected_minus_baseline0_full_nll": -0.11433171142761211,
+    "selected_participation_log_loss": 0.16773889974277134,
+    "selected_pooled_metrics": {
+      "mean_full_negative_log_likelihood": 1.1014742187188973,
+      "observed_mean_mlb_pa": 38.56592939174819,
+      "participation_brier": 0.04893077662500148,
+      "participation_log_loss": 0.16773889974277134,
+      "positive_count_negative_log_likelihood": 6.409377328212766,
+      "positive_players": 685,
+      "predicted_mean_mlb_pa": 38.50821250636982,
+      "scored_players": 4702,
+      "unconditional_mlb_pa_mae": 27.420986365054073,
+      "unconditional_mlb_pa_rmse": 73.71657412727473
+    },
+    "selected_unconditional_pa_mae": 27.420986365054073,
+    "tie_break_metrics": {
+      "frozen_form_count": 4,
+      "full_nll_tie_eligible_count": 1,
+      "full_nll_tie_tolerance": 0.001,
+      "mae_tie_eligible_count": 1,
+      "mae_tie_tolerance": 1e-06,
+      "participation_log_loss_tie_tolerance": 0.0005,
+      "participation_tie_eligible_count": 1,
+      "selection_target": "2021-10-15_to_2022_only",
+      "simplicity_order": [
+        "playing_time_level_hurdle_v1",
+        "playing_time_recent_opportunity_hurdle_v1",
+        "playing_time_recent_opportunity_40man_hurdle_v1",
+        "playing_time_recent_opportunity_40man_b2_hurdle_v1"
+      ]
+    }
+  },
+  "selection_fold": "projection_2021_to_2022",
+  "source_inputs": {
+    "development_evidence_run": 32097702869,
+    "frozen_b2_snapshot_run": 32099733186,
+    "historical_40man_membership_recertified_in_same_run": true
+  },
+  "source_run_id": 32141616127,
+  "source_sha": "b147a54fec34da7de452d6693fc370a81669e161",
+  "storage": {
+    "cv_coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "5a2cd2f7fc1cf69ca489ea2ce048197b12ed50fde3143c4dfdd8e58200934b2e",
+      "file_size_bytes": 5245,
+      "path": "reports/generated/playing-time-v1-candidate-selection/tables/cv_coefficients.parquet",
+      "row_count": 330,
+      "schema_sha256": "1ace9f822b3aae906e8dc990fafc4dd8e25bf267d77f3218838f0d7e1be0e999",
+      "table_name": "playing_time_v1_2022_cv_coefficients"
+    },
+    "cv_fold_metrics": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "a03ca845cb143110f2d30f3da7b39c77d5f71f67fe68c13adae9494dd53b5e91",
+      "file_size_bytes": 6551,
+      "path": "reports/generated/playing-time-v1-candidate-selection/tables/cv_fold_metrics.parquet",
+      "row_count": 20,
+      "schema_sha256": "5c193072aa8c2ef15f542b652d3bb0d52f97669df134b4101e9f29b235d3f715",
+      "table_name": "playing_time_v1_2022_cv_fold_metrics"
+    },
+    "cv_scored_rows": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "3e29f4dda0eee0b22999ef1c31b659aafae50dbdd7973bde9f9637b29f36a214",
+      "file_size_bytes": 619013,
+      "path": "reports/generated/playing-time-v1-candidate-selection/tables/cv_scored_rows.parquet",
+      "row_count": 18808,
+      "schema_sha256": "663f10353da59173ea6d6183ed08e187f1cfea69a6eaf0c2f6bc22b046683ebb",
+      "table_name": "playing_time_v1_2022_cv_scored_rows"
+    },
+    "cv_standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "9dce08c71582a6afcd4e03cac36db0dd65306d42fa8c6242d39ef1b6fda0d355",
+      "file_size_bytes": 2953,
+      "path": "reports/generated/playing-time-v1-candidate-selection/tables/cv_standardization.parquet",
+      "row_count": 70,
+      "schema_sha256": "9792e0cfb17b0ecc13d4062d9e7838a6eeeae843330ddb5d22fd6b2f8cd976a3",
+      "table_name": "playing_time_v1_2022_cv_standardization"
+    },
+    "form_results": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "6030b3004f282c4dba7bd332f7ab541c3e0933d5653bca4ddb8e03b5ed113c2c",
+      "file_size_bytes": 4895,
+      "path": "reports/generated/playing-time-v1-candidate-selection/tables/form_results.parquet",
+      "row_count": 4,
+      "schema_sha256": "22805076e83a0d61e0afd8b1fbd174cbb8c307bc36af67833d6f16ea8fd9f70c",
+      "table_name": "playing_time_v1_2022_form_results"
+    }
+  }
+}
