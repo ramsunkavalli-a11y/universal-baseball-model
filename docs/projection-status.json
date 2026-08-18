@@ -1,156 +1,95 @@
 {
   "branch": "source-certification-poc",
-  "gate": "projection_v1_status_probe",
-  "workflows": {
-    "current_talent_universal_game_evidence_2024": [
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-08-18T01:35:16Z",
-        "databaseId": 32088755309,
-        "displayTitle": "Rerun 2024 universal evidence for Projection v1 reuse",
-        "headSha": "d66049dff3f18cd25bf6ff696629f3140b8255ef",
-        "status": "completed",
-        "updatedAt": "2026-08-18T01:40:05Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32088755309"
-      }
+  "gate": "projection_v1_pre_model_implementation",
+  "last_updated_pt": "2026-08-17 21:13",
+  "stage": {
+    "performance": "complete_for_current_downstream_batting_needs",
+    "current_talent": "done_frozen",
+    "projection_v1": "model_implementation",
+    "development_surfaces": "complete_verified",
+    "model_scoring_started": false,
+    "confirmation_2025_accessed": false
+  },
+  "frozen_current_talent": {
+    "method": "translated_multiseason_recency_empirical_bayes_v1",
+    "history_policy": "current_plus_prior_certified_seasons_where_available_capped_1095d",
+    "certified_source_start_season": 2021,
+    "lookback_cap_days": 1095,
+    "half_life_days": 180.0,
+    "prior_strength_effective_core_events": 100.0,
+    "pre_2021_backfill_authorized": false
+  },
+  "completed_gates": {
+    "historical_milb_2024": {
+      "run_id": 32095039114,
+      "conclusion": "success",
+      "display_title": "Gate 2024 artifacts on exact reconciliation proof"
+    },
+    "universal_evidence_schema": {
+      "run_id": 32096179903,
+      "conclusion": "success",
+      "display_title": "Gate universal evidence schema in Projection CI"
+    },
+    "historical_mlb_2024_v2": {
+      "run_id": 32096473700,
+      "conclusion": "success",
+      "artifact_id": 9310382371,
+      "artifact_name": "current-talent-historical-mlb-2024",
+      "artifact_digest": "sha256:bdca35299b7a82130eae197987aa1d1bb0448c8ef9dc9ee6c6ba3d39e79f2efe"
+    },
+    "projection_development_evidence_v2": {
+      "run_id": 32097702869,
+      "conclusion": "success",
+      "artifact_id": 9310520964,
+      "artifact_name": "projection-batting-v1-development-evidence",
+      "artifact_digest": "sha256:98d4881c6f53b00b29513311a2e2caf2fad76e10171220e4f81dd06230654857"
+    },
+    "projection_history_contract_ci": {
+      "run_id": 32097702874,
+      "conclusion": "success"
+    }
+  },
+  "development_folds": [
+    {
+      "snapshot": "2021-10-15",
+      "target_season": 2022,
+      "role": "candidate_selection"
+    },
+    {
+      "snapshot": "2022-10-15",
+      "target_season": 2023,
+      "role": "out_of_time_validation_1"
+    },
+    {
+      "snapshot": "2023-10-15",
+      "target_season": 2024,
+      "role": "out_of_time_validation_2"
+    }
+  ],
+  "confirmation": {
+    "snapshot": "2024-10-15",
+    "target_season": 2025,
+    "status": "quarantined_untouched",
+    "access_authorized": false
+  },
+  "model_contract": {
+    "methodology_review": "docs/projection-v1-methodology-review.md",
+    "binding_development_contract": "docs/projection-batting-v1-development-contract.md",
+    "baseline0": "frozen_current_talent_carry_forward_v1",
+    "candidate_forms": [
+      "projection_age_ilr_ridge_v1",
+      "projection_age_level_ilr_ridge_v1"
     ],
-    "projection_2024_exact_game_source_gap_audit": [
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-08-18T02:13:49Z",
-        "databaseId": 32091086460,
-        "displayTitle": "Run 2024 exact-game source-gap audit",
-        "headSha": "fdb2a055bb3b906766c8df3f189734e1ac036f41",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:14:11Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32091086460"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-08-18T02:24:14Z",
-        "databaseId": 32091704947,
-        "displayTitle": "Recover interrupted 2024 exact-game source audit",
-        "headSha": "72fda0d7ce5d329301803b8397f05bb0dcc2dd53",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:26:51Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32091704947"
-      }
-    ],
-    "projection_2024_source_only_outcome_row_audit": [
-      {
-        "conclusion": "success",
-        "createdAt": "2026-08-18T02:31:46Z",
-        "databaseId": 32092166134,
-        "displayTitle": "Run 2024 source-only outcome residual audit",
-        "headSha": "a22b70c0c36765409cb035e78b3ff522af547edc",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:33:54Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092166134"
-      }
-    ],
-    "projection_historical_milb_2024": [
-      {
-        "conclusion": "",
-        "createdAt": "2026-08-18T02:41:25Z",
-        "databaseId": 32092745178,
-        "displayTitle": "Gate 2024 MiLB on exact source quarantine tests",
-        "headSha": "c0fa4051f52b2c2cf17d0f2585f656dff86103e2",
-        "status": "queued",
-        "updatedAt": "2026-08-18T02:41:25Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092745178"
-      },
-      {
-        "conclusion": "",
-        "createdAt": "2026-08-18T02:40:15Z",
-        "databaseId": 32092672369,
-        "displayTitle": "Quarantine exact 2024 source residuals across evidence grains",
-        "headSha": "be8eb1b781fcc8560e1ac2caec2413a2cc4ea2c3",
-        "status": "queued",
-        "updatedAt": "2026-08-18T02:40:15Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092672369"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-08-18T02:06:59Z",
-        "databaseId": 32090668312,
-        "displayTitle": "Test both exact-game fallbacks in 2024 MiLB rerun",
-        "headSha": "3e0da5f00f76c22938d99780435192e43c019a09",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:19:14Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32090668312"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-08-18T02:06:25Z",
-        "databaseId": 32090635458,
-        "displayTitle": "Add exact-game league fallback to 2024 historical wrapper",
-        "headSha": "7cd45aed58297c5b35b049c28a5305b4ed9d4721",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:14:44Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32090635458"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-08-18T02:01:19Z",
-        "databaseId": 32090307461,
-        "displayTitle": "Rerun 2024 MiLB with exact-game official fallback",
-        "headSha": "cdc4eb355ddf5a9159505f5dee0c730ac8c75f04",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:11:12Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32090307461"
-      }
-    ],
-    "projection_validation_contracts_ci": [
-      {
-        "conclusion": "success",
-        "createdAt": "2026-08-18T02:40:54Z",
-        "databaseId": 32092714174,
-        "displayTitle": "Test cross-grain source quarantine in fast CI",
-        "headSha": "818e1bc490591e284b1e98a549e7c1921665c8ad",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:41:20Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092714174"
-      },
-      {
-        "conclusion": "success",
-        "createdAt": "2026-08-18T02:40:15Z",
-        "databaseId": 32092672387,
-        "displayTitle": "Quarantine exact 2024 source residuals across evidence grains",
-        "headSha": "be8eb1b781fcc8560e1ac2caec2413a2cc4ea2c3",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:40:41Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092672387"
-      },
-      {
-        "conclusion": "success",
-        "createdAt": "2026-08-18T02:37:25Z",
-        "databaseId": 32092505104,
-        "displayTitle": "Test exact source-residual quarantine in fast CI",
-        "headSha": "facd26f129cb3b709116936d1a996a3e3b0b5d4d",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:37:54Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092505104"
-      },
-      {
-        "conclusion": "success",
-        "createdAt": "2026-08-18T02:07:17Z",
-        "databaseId": 32090687671,
-        "displayTitle": "Test exact-game outcome and league fallbacks in fast CI",
-        "headSha": "55a9713a841acda9a6fdaf6f4ff82d49a0779187",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:08:40Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32090687671"
-      },
-      {
-        "conclusion": "success",
-        "createdAt": "2026-08-18T02:06:25Z",
-        "databaseId": 32090635490,
-        "displayTitle": "Add exact-game league fallback to 2024 historical wrapper",
-        "headSha": "7cd45aed58297c5b35b049c28a5305b4ed9d4721",
-        "status": "completed",
-        "updatedAt": "2026-08-18T02:06:51Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32090635490"
-      }
-    ]
-  }
+    "lambda_grid": [0.001, 0.01, 0.1, 1.0],
+    "candidate_selection_target_season": 2022,
+    "future_level_as_predictor": false,
+    "future_role_as_predictor": false,
+    "zero_future_opportunity_as_bad_skill": false
+  },
+  "next_actions": [
+    "materialize_frozen_b2_snapshot_probabilities_and_fold_specific_translation_artifacts",
+    "implement_and_test_deterministic_ilr_transform_inverse_and_age_design_contract",
+    "run_fast_ci_before_any_candidate_scoring",
+    "only_then_run_2022_candidate_selection"
+  ]
 }
