@@ -59,12 +59,12 @@ jobs:
             download 32095039114 "current-talent-historical-milb-full-season-2024-${level}" "seeded/2024/milb/${level}"
           done
 
-          # Certified MLB full-season evidence. The accepted 2024 artifact is a
-          # mixed AAA+MLB bundle but contains standalone *_2024_mlb parquet files.
+          # Certified MLB full-season v2 evidence on the same universal Current
+          # Talent player-game contract used by the 2021-2023 historical gates.
           download 31986504169 "current-talent-historical-mlb-2021" "seeded/2021/mlb"
           download 31988255280 "current-talent-historical-mlb-2022" "seeded/2022/mlb"
           download 31989561396 "current-talent-historical-mlb-2023" "seeded/2023/mlb"
-          download 31958748147 "current-talent-game-evidence-2024-aaa-mlb" "seeded/2024/mlb"
+          download 32096473700 "current-talent-historical-mlb-2024" "seeded/2024/mlb"
 
       - name: Verify expected pinned evidence files
         run: |
