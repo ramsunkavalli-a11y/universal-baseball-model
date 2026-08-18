@@ -1,4 +1,4 @@
-# refresh after canonical level-label fix in Projection selection
+# track frozen Projection 2023 out-of-time validation
 name: Projection recovery status probe
 
 on:
@@ -40,6 +40,7 @@ jobs:
               "current_talent_snapshots": "projection-batting-v1-current-talent-snapshots.yml",
               "training_responses": "projection-batting-v1-training-responses.yml",
               "candidate_selection": "projection-batting-v1-candidate-selection.yml",
+              "validation_2023": "projection-batting-v1-validation-2023.yml",
           }
           output = {"gate": "projection_recovery_status_probe", "workflows": {}}
           env = dict(os.environ)
