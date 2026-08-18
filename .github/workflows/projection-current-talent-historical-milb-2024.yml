@@ -14,8 +14,10 @@ on:
       - "src/universal_baseball/current_talent_milb_evidence.py"
       - "src/universal_baseball/current_talent_official_outcomes.py"
       - "src/universal_baseball/current_talent_official_game_fallback.py"
+      - "src/universal_baseball/current_talent_official_game_identity.py"
       - "src/universal_baseball/current_talent_season_reconciliation.py"
       - "tests/test_current_talent_official_game_fallback.py"
+      - "tests/test_current_talent_official_game_identity.py"
   workflow_dispatch:
 
 permissions:
@@ -55,6 +57,7 @@ jobs:
           tests/test_current_talent_official_multiteam.py
           tests/test_current_talent_official_outcomes.py
           tests/test_current_talent_official_game_fallback.py
+          tests/test_current_talent_official_game_identity.py
           tests/test_current_talent_participant_authority.py
           tests/test_current_talent_season_reconciliation.py
           tests/test_official_mixed_codes.py
