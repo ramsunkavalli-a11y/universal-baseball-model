@@ -82,101 +82,111 @@ Key records:
 - `docs/position-role-confirmation-parameters.json`
 - `docs/position-role-2025-confirmation-result.json`
 
-## ACTIVE NEXT STAGE — Defense v1 design / source gates
+## ACTIVE NEXT STAGE — Defense v1 final pre-2025 tracked challenger
 
-The project now has frozen player-level batting-rate, MLB-opportunity, and position/role channels. The unresolved downstream dependency is defensive quality.
+Primary active handoff: `docs/defense-v1-development-checkpoint.md`.
 
-A team allocator remains unnecessary unless a later value requirement demonstrates otherwise.
+Source/architecture checkpoint: `docs/defense-v1-source-architecture-checkpoint.md`.
 
-### Defense source architecture established so far
+The universal Defense-v1 development path is already selected:
 
-Primary checkpoint: `docs/defense-v1-source-architecture-checkpoint.md`.
+- general range: **U1, lambda `0.0`**;
+- catcher blocking: **C2**;
+- catcher throwing: **C1**;
+- age challenger: **failed / closed**;
+- traditional feature search: **closed**.
 
-#### Range / OAA — LEADING REUSE CANDIDATE
+The final planned pre-2025 challenger tests whether portable tracked range and catcher framing add enough next-season signal to the selected universal path.
 
-Pinned reusable implementation: SportsDataverse `0.0.75`, upstream commit `1dafadb38c5240d8e29a0f818efbabe04cd6c417`.
+### Final tracked source gate — PASSED
 
-MLB frozen reuse POC:
+Governing contract: `docs/defense-v1-tracked-challenger-contract.md`.
 
-- June 2024: 116,355 pitches / 20,623 BIP;
-- 18,820 usable OAA opportunities (`91.26%`);
-- 263 players matched to 2024 Savant OAA;
-- Pearson `0.3045`, passing the upstream month-vs-season oracle floor `>=0.30`;
-- SportsDataverse's own full-season 2024 test reports about `0.605` Pearson vs Savant OAA.
+Binding source record: `docs/defense-v1-tracked-source-result.json`.
 
-**Binding architecture decision:** do not build a new public catch-probability/OAA model from scratch unless a later implementation failure requires it.
+Workflow run `32182019495` completed successfully from source SHA `5438e905d24e2167432a52253320ccbc978186b8`.
 
-#### Tracked MiLB range — EXECUTION / COVERAGE FEASIBLE
+The source-only gate materialized and hash-pinned:
 
-SportsDataverse's default minor-search parameters initially returned zero rows. The OAA implementation was not the problem.
+- `tracked_range_proxy_2021_2023.parquet`: 6,872 rows, SHA-256 `a65cb6f7506d5e100c9f0b088fb276eecc1dab5599592dd477bfcc030d850a3e`;
+- `tracked_framing_proxy_2021_2023.parquet`: 579 rows, SHA-256 `1071b9d8209d6e9ba9d8c2b42ac7b99e3329387704e2910797b58f1a148cbc79`.
 
-Follow-up transport diagnostic added the raw Savant `minors=true` parameter, fetched the tracked MiLB pool, and classified Triple-A client-side from official team identity.
+Frozen source scope was preserved exactly:
 
-2024-06-10 through 2024-06-16:
+- MLB predictors: 2021, 2022, 2023 regular seasons;
+- tracked MiLB transfer input: 2023 regular season;
+- SportsDataverse `0.0.75` range/framing implementations;
+- MiLB `minors=true` transport plus client-side official level identity;
+- no 2024 tracking predictor pull;
+- **no 2025 source/target access**;
+- no model fit during source materialization;
+- no source-filter changes after the contract was frozen.
 
-- tracked pool: 35,352 pitches;
-- AAA: 27,749 pitches / 4,479 BIP / 3,986 OAA opportunities (`88.99%` usable);
-- tracked non-AAA: 7,603 pitches / 1,196 BIP / 803 OAA opportunities (`67.14%` usable);
-- required trajectory and responsible-fielder fields present;
-- both frozen execution/coverage gates passed.
+The binding result explicitly sets:
 
-Observed non-AAA home teams were Clearwater, Daytona, Dunedin, Fort Myers, and Jupiter, consistent with the public Florida State League tracking tier.
+- `tracked_source_materialized = true`;
+- `tracked_challenger_scoring_authorized_next = true`;
+- `2025_confirmation_authorized = false`;
+- `war_value_authorized = false`.
 
-**Important boundary:** this proves technical reuse on tracked MiLB data, not MiLB OAA accuracy; there is no public proprietary MiLB OAA oracle.
+### Frozen scorer to execute next
 
-For future MiLB Statcast materialization, use `minors=true`, bounded date chunks, and client-side official team/league classification. Do not rely on server-side `hfLevel` filtering.
+Scoring code: `scripts/audit_defense_v1_tracked_challenger.py`.
 
-#### Catcher defense — CANDIDATES, NOT ACCEPTED YET
+Run only against the persisted, hash-verified tracked artifacts. Do not re-query or change source filters.
 
-SportsDataverse exposes separate framing, blocking, and throwing components and explicitly supports MiLB pitch frames technically.
+Frozen comparisons:
 
-Current evidence:
+- **General range:** selected U1 incumbent vs **T1**, which adds only `tracked_range_z` to the exact U1 pipeline.
+- **Catcher framing:** **F0**, neutral framing z = 0, vs **F1**, the frozen one-feature unpenalized `tracked_framing_z -> framing_target_z` model.
 
-- framing: full-2024 public-data Pearson about `0.468` vs Savant; live floor `0.40`; promising reuse candidate;
-- blocking: implementation exists, but inspected offline oracle is mainly a wiring/coverage check rather than strong numeric validation;
-- throwing: full-2024 Pearson only about `0.073`, with severe public SB/CS attempt-recovery limitations; treat as weak evidence unless a better source is found.
+If a tracked component passes its MLB development gate, run only its predeclared 2023-MiLB -> 2024-MLB transfer diagnostic. Tier-B tracked use requires that transfer gate to pass. Insufficient transfer evidence is not a pass.
 
-Do not combine catcher components simply because reusable code exists.
+There are **no additional planned Defense-v1 development challengers after this gate**.
 
-#### Untracked affiliated MiLB — UNRESOLVED
+### Defense coverage tiers
 
-No tracked range signal exists universally below the documented Savant coverage tiers. Missing tracking must not be converted to a neutral defensive score by accident.
+- **Tier A — MLB tracked:** U1 universal evidence, with tracked range/framing only if the final tracked gates pass.
+- **Tier B — tracked MiLB:** U1 universal evidence; tracked additions only if both their MLB development gate and predeclared MiLB->MLB transfer diagnostic pass.
+- **Tier C — untracked affiliated MiLB:** selected universal U1 general range plus selected universal catcher components where eligible.
 
-A heavily shrunk/neutral fallback is a baseline candidate to test, not a production rule. First inventory whether official fielding outcomes or another mature public source provides a chronologically useful universal signal.
+Missing tracking is missing evidence, not observed average/zero skill.
 
-### Minimum eventual Defense v1 output
+## Immediate next batch
 
-Before WAR/value, Defense v1 should expose at least:
+1. Execute the frozen tracked challenger scorer against the persisted source artifacts and verify their hashes.
+2. Accept or close tracked range and tracked framing exactly by the frozen MLB and, when applicable, MiLB-transfer gates.
+3. If scoring completes cleanly, update the Defense checkpoint with the binding retained component set. Do not introduce another development challenger.
 
-- player id;
-- position;
-- projected defensive-quality value/rate on a clear run-value or equivalent scale;
-- opportunity basis;
-- evidence/coverage tier;
-- uncertainty / source-coverage metadata;
-- component provenance (range, framing, blocking, throwing where applicable).
+After that, the next batch is to refit only retained Defense-v1 components on all authorized 2022–2024 development responses and freeze exact parameters/coverage rules plus the 2025 confirmation contract.
 
-Positional adjustment belongs to the later value layer, not inside fielding-quality skill.
+Only **after that freeze** may completed-2025 defensive targets be materialized for the one-shot Defense-v1 confirmation.
 
-### Immediate next batch
+## Binding boundaries
 
-1. Run a frozen catcher feasibility POC on MLB plus the now-proven tracked MiLB transport, prioritizing framing and keeping blocking/throwing separate.
-2. Inventory universal non-tracking defensive evidence already available from official fielding stats / mature public sources and test whether any Tier-C signal deserves development.
-3. Only after those source gates, freeze Defense v1 chronology, shrinkage, age/projection choices, uncertainty rules, and OOT validation before fitting a production defensive forecast.
-
-Do **not** jump to WAR/value, reopen Playing Time/Position Role, or impute defense for untracked players yet.
+- **No 2025 defensive source/target access yet.**
+- **No WAR/value calculation yet.**
+- No tracked-source filter changes after observing challenger results.
+- No new Defense-v1 feature/model search after the frozen tracked challenger.
+- No age rescue or reopening rejected traditional features.
+- No proprietary MiLB validation claim.
+- No accidental neutral/zero imputation for missing tracking.
+- Playing Time v1 and Position/Role v1 remain frozen and untouched.
 
 ## Governing read order
 
 1. `docs/project-status.md`
-2. `docs/defense-v1-source-architecture-checkpoint.md`
-3. `docs/defense-milb-statcast-transport-diagnostic-result.json`
-4. `docs/defense-sportsdataverse-reuse-poc-result.json`
-5. `docs/position-role-2025-confirmation-result.json`
-6. `docs/playing-time-v1-confirmation-result.json`
-7. `docs/projection-batting-v1-development-result.json`
-8. `docs/current-talent-results-only-baseline-freeze.md`
-9. `docs/performance-2024-affiliated-checkpoint.md`
+2. `docs/defense-v1-development-checkpoint.md`
+3. `docs/defense-v1-tracked-challenger-contract.md`
+4. `docs/defense-v1-tracked-source-result.json`
+5. `docs/defense-v1-source-architecture-checkpoint.md`
+6. `docs/defense-v1-universal-development-result.json`
+7. `docs/defense-v1-age-challenger-result.json`
+8. `docs/position-role-2025-confirmation-result.json`
+9. `docs/playing-time-v1-confirmation-result.json`
+10. `docs/projection-batting-v1-development-result.json`
+11. `docs/current-talent-results-only-baseline-freeze.md`
+12. `docs/performance-2024-affiliated-checkpoint.md`
 
 ## Working rules
 
@@ -186,4 +196,5 @@ Do **not** jump to WAR/value, reopen Playing Time/Position Role, or impute defen
 - Reuse certified artifacts where scope matches.
 - Keep batting skill, opportunity, position/role, defensive skill, positional adjustment, and value separate.
 - Treat source coverage/missingness as information, not as zero skill.
+- Freeze exact model/source decisions before opening their held-out confirmation period.
 - Update this handoff whenever the active stage or binding result changes.
