@@ -47,106 +47,128 @@ Production model: `primary_share_thresholded_transition_mean_v1`.
 
 Historical source certification passed 64/64 season × league pairs. The selective transition model passed development and its untouched 2025 confirmation on 2,891 players.
 
-## ACTIVE STAGE — Defense v1 final refit / parameter freeze
+## ACTIVE STAGE — Defense v1 confirmation source preparation
 
 Primary handoff: `docs/defense-v1-development-checkpoint.md`.
 
-Source/architecture checkpoint: `docs/defense-v1-source-architecture-checkpoint.md`.
+Frozen confirmation contract: `docs/defense-v1-2025-confirmation-contract.md`.
 
-**Pre-2025 Defense-v1 feature/model development is now closed.**
+Frozen parameter package: `docs/defense-v1-confirmation-parameters.json`.
 
-### Universal Defense-v1 components already selected
+**Pre-2025 Defense-v1 development and parameter fitting are closed. Do not refit or reselect Defense.**
+
+### Final pre-2025 component set
+
+Universal components:
 
 - general range: **U1, lambda `0.0`**;
 - catcher blocking: **C2**;
-- catcher throwing: **C1**;
-- age challenger A1: failed / closed;
-- traditional feature search: closed.
+- catcher throwing: **C1**.
 
-### Frozen tracked source gate — PASSED
+Incremental tracked result:
 
-Binding source record: `docs/defense-v1-tracked-source-result.json`.
+- MLB tracked range T1 = exact U1 + `tracked_range_z`: **passed Tier A**;
+- tracked MiLB T1: **not accepted / insufficient transfer evidence**;
+- tracked framing F1: **failed / closed**;
+- age A1 and rejected traditional features: **closed**.
 
-Workflow run `32182019495` succeeded from source SHA `5438e905d24e2167432a52253320ccbc978186b8` and hash-pinned the 2021–2023 MLB tracked range/framing evidence plus 2023 tracked MiLB transfer evidence.
+The independent Tier-B cohort audit confirmed the zero-player transfer population was a sparse-overlap consequence of the frozen eligibility contract, not a player/position join bug. It does not reopen the gate.
 
-No 2025 source/target was accessed and no model was fit during source materialization.
+### Pre-2025 parameter freeze — COMPLETE
 
-### Final tracked challenger — COMPLETE
+Binding result: `docs/defense-v1-confirmation-parameters.json`.
 
-Governing contract: `docs/defense-v1-tracked-challenger-contract.md`.
+The retained forms were refit only on the already-authorized 2022–2024 development responses using 2021–2023 inputs.
 
-Binding result: `docs/defense-v1-tracked-challenger-result.json`.
+Latest deterministic freeze run recorded by the parameter package: `32198603779` from SHA `f228bc1e3f8e8099f1c6054f6a551b8c5bff6fdb`.
 
-Workflow run `32196115227` completed successfully from scoring SHA `ace1df97001b83b91a1a1021637c604ebdea6399` after verifying the pinned tracked-source hashes.
+Canonical parameter hash:
 
-#### General tracked range
+`sha256:cba6b7ebe4b2598db2c4d9ef360b0784f23a94ad61385f87149b08c46e0390d5`
 
-**Tier A / MLB: PASSED.** T1 = exact U1 + `tracked_range_z`.
+Frozen training rows:
 
-- 2022 MSE: `0.83749 -> 0.80983` — 3.30% better, n=140;
-- 2023: `0.86863 -> 0.85218` — 1.89% better, n=133;
-- 2024: `0.97975 -> 0.97191` — 0.80% better, n=141;
-- pooled MSE improvement: **1.93%**;
-- pooled Spearman delta: **+0.01180**;
-- all frozen Tier-A gates passed.
+- U1 general: 490;
+- T1 MLB tracked: 414;
+- C1 throwing: 197;
+- C2 blocking: 193.
 
-**Tier B / tracked MiLB: NOT ACCEPTED.** The predeclared 2023-MiLB -> 2024-MLB transfer diagnostic produced `0` eligible players and therefore `insufficient_transfer_evidence`. Under the frozen contract that is not a pass and has no rescue path.
+The package persists exact coefficients, universal normalization moments and fallback hierarchy, catcher normalization moments, training rows, development targets, tracked-range development moments, package versions, source provenance, and table hashes.
 
-Retain T1 for Tier-A MLB only; Tier B/C range stays on U1.
+Boundary at freeze:
 
-#### Tracked catcher framing
+- 2024 confirmation tracking predictor **not accessed**;
+- 2025 defensive target/source **not accessed**;
+- no model reselection or threshold change;
+- no run conversion / WAR/value.
 
-**FAILED / CLOSED.** F1 beat neutral F0 in 2 of 3 folds, improved pooled MSE 9.37%, and had pooled Spearman 0.2410, but its 2022 fold was **8.35% worse** than F0. That breaches the frozen maximum 5.0% fold-degradation guardrail.
+### Frozen coverage hierarchy
 
-The Tier-A failure is binding. MiLB transfer was not attempted. Tracked framing is not retained for Defense v1 and may not be rescued or retuned.
+General range:
 
-### Retained Defense-v1 evidence by tier entering final freeze
+1. eligible MLB + eligible MLB tracking -> T1;
+2. eligible MLB without eligible tracking -> U1;
+3. eligible affiliated MiLB -> U1;
+4. insufficient U1 evidence -> explicit insufficient evidence / neutral position-relative B0 for this component.
 
-- **Tier A — MLB tracked:** T1 tracked range; universal C2 blocking/C1 throwing where eligible; no tracked framing.
-- **Tier B — tracked MiLB:** U1 universal range; universal C2/C1 where eligible; no tracked framing.
-- **Tier C — untracked affiliated MiLB:** U1 universal range; universal C2/C1 where eligible.
+Catcher:
 
-Missing tracking remains missing evidence, not observed average/zero defensive skill.
+- eligible throwing -> C1, otherwise neutral/insufficient B0;
+- eligible blocking -> C2, otherwise neutral/insufficient B0;
+- tracked framing remains closed and is not fabricated as average skill.
 
 ## Immediate next batch
 
-The tracked result explicitly authorizes **final refit and parameter freeze next**. It does **not** authorize 2025 confirmation or WAR/value.
+The frozen parameter package authorizes source materialization, not model changes.
 
-1. Refit only retained Defense-v1 components on all authorized 2022–2024 development responses.
-2. Freeze exact normalization moments, coefficients, coverage/fallback rules, package versions, parameter hashes, and component provenance.
-3. Freeze the exact one-shot 2025 Defense-v1 confirmation contract before any completed-2025 defensive source/target is opened.
+1. Materialize **2024 MLB tracked-range predictor evidence only** under the frozen confirmation contract. This is source-only: no fitting, no scorer, no MiLB tracking, no framing, no 2025 target.
+2. Certify and persist its coverage/hashes.
+3. Only after that source is clean, materialize completed-2025 Savant range/throwing/blocking targets in a separate source-only workflow.
+4. Only after both source artifacts are certified, perform the frozen one-shot 2025 confirmation with no fitting.
 
-Stop after that freeze. A separate source-only workflow may materialize completed-2025 defensive targets only afterward.
+The 2024 tracking-predictor workflow is staged on `source-certification-poc`; its binding source result is `docs/defense-v1-2024-tracking-predictor-source-result.json` once the source run succeeds.
+
+## Binding one-shot confirmation order
+
+- U1 vs neutral B0 first.
+- Only if U1 confirms, T1 vs U1 on identical eligible MLB tracked rows; fewer than 75 is insufficient evidence.
+- C1 throwing vs B0; fewer than 30 is insufficient evidence.
+- C2 blocking vs B0; fewer than 30 is insufficient evidence.
+- Failed/insufficient components use their frozen fallback. No rescue, alternate family, threshold movement, recalibration, or 2025 refit.
 
 ## Binding boundaries
 
-- **No 2025 defensive source/target access yet.**
-- **No WAR/value calculation yet.**
+- **Do not refit/reselect Defense v1.**
+- **Do not calculate WAR/value yet.**
 - No additional Defense-v1 development challenger.
-- No rescue/reselection for tracked framing, age, rejected traditional features, or Tier-B tracked range.
+- No rescue for tracked framing, age, rejected traditional features, or Tier-B tracked range.
 - No proprietary MiLB validation claim.
-- No accidental neutral/zero imputation for missing tracking.
+- No accidental neutral/zero imputation for missing tracking; B0 is a declared component fallback, not observed talent evidence.
 - Playing Time v1 and Position/Role v1 remain frozen and untouched.
 
 ## Governing read order
 
 1. `docs/project-status.md`
 2. `docs/defense-v1-development-checkpoint.md`
-3. `docs/defense-v1-tracked-challenger-result.json`
-4. `docs/defense-v1-tracked-challenger-contract.md`
-5. `docs/defense-v1-tracked-source-result.json`
-6. `docs/defense-v1-source-architecture-checkpoint.md`
-7. `docs/defense-v1-universal-development-result.json`
-8. `docs/defense-v1-age-challenger-result.json`
-9. `docs/position-role-2025-confirmation-result.json`
-10. `docs/playing-time-v1-confirmation-result.json`
-11. `docs/projection-batting-v1-development-result.json`
-12. `docs/current-talent-results-only-baseline-freeze.md`
-13. `docs/performance-2024-affiliated-checkpoint.md`
+3. `docs/defense-v1-2025-confirmation-contract.md`
+4. `docs/defense-v1-confirmation-parameters.json`
+5. `docs/defense-v1-2024-tracking-predictor-source-result.json` — once materialized
+6. `docs/defense-v1-tracked-challenger-result.json`
+7. `docs/defense-v1-tier-b-cohort-audit.json`
+8. `docs/defense-v1-tracked-challenger-contract.md`
+9. `docs/defense-v1-tracked-source-result.json`
+10. `docs/defense-v1-source-architecture-checkpoint.md`
+11. `docs/defense-v1-universal-development-result.json`
+12. `docs/defense-v1-age-challenger-result.json`
+13. `docs/position-role-2025-confirmation-result.json`
+14. `docs/playing-time-v1-confirmation-result.json`
+15. `docs/projection-batting-v1-development-result.json`
+16. `docs/current-talent-results-only-baseline-freeze.md`
+17. `docs/performance-2024-affiliated-checkpoint.md`
 
 ## Working rules
 
-- Do not redo settled Current Talent, Projection v1, Playing Time v1, or Position/Role v1 absent a concrete implementation failure.
+- Do not redo settled Current Talent, Projection v1, Playing Time v1, Position/Role v1, or Defense development absent a concrete implementation failure.
 - Do not tune rejected models against their held-out failure periods.
 - Preserve immutable raw/source evidence and provenance.
 - Reuse certified artifacts where scope matches.
