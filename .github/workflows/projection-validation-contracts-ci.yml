@@ -8,6 +8,7 @@ on:
       - "src/universal_baseball/projection_validation.py"
       - "src/universal_baseball/projection_baselines.py"
       - "src/universal_baseball/projection_dataset.py"
+      - "src/universal_baseball/current_talent_universal_evidence.py"
       - "src/universal_baseball/current_talent_official_game_fallback.py"
       - "src/universal_baseball/current_talent_official_game_identity.py"
       - "src/universal_baseball/current_talent_source_residual_quarantine.py"
@@ -17,6 +18,7 @@ on:
       - "tests/test_projection_validation.py"
       - "tests/test_projection_baselines.py"
       - "tests/test_projection_dataset.py"
+      - "tests/test_current_talent_universal_evidence.py"
       - "tests/test_current_talent_official_game_fallback.py"
       - "tests/test_current_talent_official_game_identity.py"
       - "tests/test_current_talent_source_residual_quarantine.py"
@@ -50,6 +52,7 @@ jobs:
           src/universal_baseball/projection_validation.py
           src/universal_baseball/projection_baselines.py
           src/universal_baseball/projection_dataset.py
+          src/universal_baseball/current_talent_universal_evidence.py
           src/universal_baseball/current_talent_official_game_fallback.py
           src/universal_baseball/current_talent_official_game_identity.py
           src/universal_baseball/current_talent_source_residual_quarantine.py
@@ -63,6 +66,7 @@ jobs:
           tests/test_projection_validation.py
           tests/test_projection_baselines.py
           tests/test_projection_dataset.py
+          tests/test_current_talent_universal_evidence.py
           tests/test_current_talent_official_game_fallback.py
           tests/test_current_talent_official_game_identity.py
           tests/test_current_talent_source_residual_quarantine.py
