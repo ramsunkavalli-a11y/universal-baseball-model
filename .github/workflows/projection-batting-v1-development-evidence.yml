@@ -1,6 +1,11 @@
 name: Projection batting v1 development evidence
 
 on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/projection-batting-v1-development-evidence.yml"
   workflow_dispatch:
 
 permissions:
@@ -45,7 +50,7 @@ jobs:
             download 31979609553 "current-talent-historical-milb-full-season-2021-${level}" "seeded/2021/milb/${level}"
             download 31971662070 "current-talent-historical-milb-full-season-${level}" "seeded/2022/milb/${level}"
             download 31971923778 "current-talent-historical-milb-full-season-2023-${level}" "seeded/2023/milb/${level}"
-            download 32092745178 "current-talent-historical-milb-full-season-2024-${level}" "seeded/2024/milb/${level}"
+            download 32095039114 "current-talent-historical-milb-full-season-2024-${level}" "seeded/2024/milb/${level}"
           done
 
           # Certified MLB full-season evidence. The accepted 2024 artifact is a
