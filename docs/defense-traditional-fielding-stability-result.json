@@ -1,22 +1,457 @@
 {
+  "boundary": {
+    "2025_accessed": false,
+    "regression_model_fit": false,
+    "source_refetched": false,
+    "tracked_oaa_or_framing_target_accessed": false,
+    "traditional_stat_weight_selected": false,
+    "untracked_player_defense_imputed": false
+  },
   "contract": "docs/defense-traditional-fielding-stability-contract.md",
   "decision": {
     "defense_projection_authorized": false,
-    "predictive_target_test_warranted_features": [],
+    "predictive_target_test_warranted_features": [
+      "fielding_pct",
+      "range_factor_per_9",
+      "errors_per_9",
+      "throwing_errors_per_9",
+      "double_plays_per_9",
+      "caught_stealing_pct",
+      "passed_balls_per_9",
+      "catcher_interference_per_9"
+    ],
     "tier_c_fallback_frozen": false,
-    "tracked_target_opening_authorized_for_these_features": false,
+    "tracked_target_opening_authorized_for_these_features": true,
     "traditional_fielding_skill_established": false,
     "war_value_authorized": false
   },
-  "failure": {
-    "audit_exit_code": "1",
-    "execution_log_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/universal-baseball-model/universal-baseball-model/scripts/audit_defense_traditional_fielding_stability.py\", line 374, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/home/runner/work/universal-baseball-model/universal-baseball-model/scripts/audit_defense_traditional_fielding_stability.py\", line 186, in main\n    \"caught_stealing\": _integer(stat.get(\"caughtStealing\"), field=\"caughtStealing\"),\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/universal-baseball-model/universal-baseball-model/scripts/audit_defense_traditional_fielding_stability.py\", line 62, in _integer\n    raise ValueError(f\"missing {field}\")\nValueError: missing caughtStealing"
-  },
+  "features": [
+    {
+      "all_folds_pair_count_ge_100": true,
+      "feature": "fielding_pct",
+      "folds": [
+        {
+          "current_mean": 0.9774496275144514,
+          "current_median": 0.9857954545454546,
+          "current_season": 2021,
+          "next_mean": 0.9798161695089403,
+          "next_median": 0.9862068965517241,
+          "next_season": 2022,
+          "pair_count": 1255,
+          "pearson": 0.7292759251472898,
+          "spearman": 0.6123295838602473
+        },
+        {
+          "current_mean": 0.9786375983088806,
+          "current_median": 0.9853061126571346,
+          "current_season": 2022,
+          "next_mean": 0.9798399056766055,
+          "next_median": 0.9856459330143541,
+          "next_season": 2023,
+          "pair_count": 1276,
+          "pearson": 0.7351481794837146,
+          "spearman": 0.6186350036675681
+        },
+        {
+          "current_mean": 0.9790582646808953,
+          "current_median": 0.9855072463768116,
+          "current_season": 2023,
+          "next_mean": 0.979971549037579,
+          "next_median": 0.9858657243816255,
+          "next_season": 2024,
+          "pair_count": 1289,
+          "pearson": 0.7094448055920131,
+          "spearman": 0.5743231129319718
+        }
+      ],
+      "folds_with_spearman_ge_0_10": 3,
+      "pooled": {
+        "current_mean": 0.9783892568446184,
+        "current_median": 0.9855072463768116,
+        "next_mean": 0.9798765285566777,
+        "next_median": 0.9858888746657564,
+        "pair_count": 3820,
+        "pearson": 0.723006383771804,
+        "spearman": 0.6015254868419319
+      },
+      "predictive_target_test_warranted": true
+    },
+    {
+      "all_folds_pair_count_ge_100": true,
+      "feature": "range_factor_per_9",
+      "folds": [
+        {
+          "current_mean": 4.4644385320341184,
+          "current_median": 3.188976377952756,
+          "current_season": 2021,
+          "next_mean": 4.446131899171794,
+          "next_median": 3.264795918367347,
+          "next_season": 2022,
+          "pair_count": 2833,
+          "pearson": 0.9770644312225104,
+          "spearman": 0.9304286217718732
+        },
+        {
+          "current_mean": 4.444140598310946,
+          "current_median": 3.282110091743119,
+          "current_season": 2022,
+          "next_mean": 4.412636676825067,
+          "next_median": 3.2698961937716264,
+          "next_season": 2023,
+          "pair_count": 2783,
+          "pearson": 0.9783080833957548,
+          "spearman": 0.931199254650646
+        },
+        {
+          "current_mean": 4.407488652067045,
+          "current_median": 3.2228267763221936,
+          "current_season": 2023,
+          "next_mean": 4.37597710192946,
+          "next_median": 3.093195454160568,
+          "next_season": 2024,
+          "pair_count": 2880,
+          "pearson": 0.9781768426777657,
+          "spearman": 0.9249171652408946
+        }
+      ],
+      "folds_with_spearman_ge_0_10": 3,
+      "pooled": {
+        "current_mean": 4.438484576777908,
+        "current_median": 3.231218654173296,
+        "next_mean": 4.4113787188694324,
+        "next_median": 3.2100565681961033,
+        "pair_count": 8496,
+        "pearson": 0.9777648882495124,
+        "spearman": 0.9288935265463095
+      },
+      "predictive_target_test_warranted": true
+    },
+    {
+      "all_folds_pair_count_ge_100": true,
+      "feature": "errors_per_9",
+      "folds": [
+        {
+          "current_mean": 0.11227363409788213,
+          "current_median": 0.0819423368740516,
+          "current_season": 2021,
+          "next_mean": 0.10111120866680424,
+          "next_median": 0.0782608695652174,
+          "next_season": 2022,
+          "pair_count": 2833,
+          "pearson": 0.5679010797846158,
+          "spearman": 0.5715336054252603
+        },
+        {
+          "current_mean": 0.10648531632460584,
+          "current_median": 0.08108108108108109,
+          "current_season": 2022,
+          "next_mean": 0.10020896250703655,
+          "next_median": 0.07925636007827788,
+          "next_season": 2023,
+          "pair_count": 2783,
+          "pearson": 0.5765757978299747,
+          "spearman": 0.5274522453691474
+        },
+        {
+          "current_mean": 0.1053240974516246,
+          "current_median": 0.08041702150308708,
+          "current_season": 2023,
+          "next_mean": 0.09977716553828109,
+          "next_median": 0.07479224376731301,
+          "next_season": 2024,
+          "pair_count": 2880,
+          "pearson": 0.5546738336184158,
+          "spearman": 0.5252285673285413
+        }
+      ],
+      "folds_with_spearman_ge_0_10": 3,
+      "pooled": {
+        "current_mean": 0.10802180336527271,
+        "current_median": 0.08108108108108109,
+        "next_mean": 0.10036344556972561,
+        "next_median": 0.07758620689655173,
+        "pair_count": 8496,
+        "pearson": 0.5657723122306246,
+        "spearman": 0.5415449244390191
+      },
+      "predictive_target_test_warranted": true
+    },
+    {
+      "all_folds_pair_count_ge_100": true,
+      "feature": "throwing_errors_per_9",
+      "folds": [
+        {
+          "current_mean": 0.052530830793394684,
+          "current_median": 0.03096330275229358,
+          "current_season": 2021,
+          "next_mean": 0.049742765382343346,
+          "next_median": 0.03146853146853147,
+          "next_season": 2022,
+          "pair_count": 2833,
+          "pearson": 0.5002397763234492,
+          "spearman": 0.5183291447317209
+        },
+        {
+          "current_mean": 0.05250490621533821,
+          "current_median": 0.032640232108317214,
+          "current_season": 2022,
+          "next_mean": 0.04810081737022123,
+          "next_median": 0.02947598253275109,
+          "next_season": 2023,
+          "pair_count": 2783,
+          "pearson": 0.5659137343137841,
+          "spearman": 0.5183441496748631
+        },
+        {
+          "current_mean": 0.05156176171503615,
+          "current_median": 0.030303030303030304,
+          "current_season": 2023,
+          "next_mean": 0.04882219026998376,
+          "next_median": 0.027314119279687903,
+          "next_season": 2024,
+          "pair_count": 2880,
+          "pearson": 0.5346486590891015,
+          "spearman": 0.5085142211068368
+        }
+      ],
+      "folds_with_spearman_ge_0_10": 3,
+      "pooled": {
+        "current_mean": 0.052193840792640944,
+        "current_median": 0.03140508703747348,
+        "next_mean": 0.04889285982192297,
+        "next_median": 0.029419778810706843,
+        "pair_count": 8496,
+        "pearson": 0.5323041816553997,
+        "spearman": 0.5148200862256513
+      },
+      "predictive_target_test_warranted": true
+    },
+    {
+      "all_folds_pair_count_ge_100": true,
+      "feature": "double_plays_per_9",
+      "folds": [
+        {
+          "current_mean": 0.23988980724517067,
+          "current_median": 0.09165858389912707,
+          "current_season": 2021,
+          "next_mean": 0.24934039889047457,
+          "next_median": 0.08794788273615635,
+          "next_season": 2022,
+          "pair_count": 2833,
+          "pearson": 0.8678666938040959,
+          "spearman": 0.8578794453145426
+        },
+        {
+          "current_mean": 0.25299142132643254,
+          "current_median": 0.09591474245115453,
+          "current_season": 2022,
+          "next_mean": 0.26071183716355223,
+          "next_median": 0.09236031927023945,
+          "next_season": 2023,
+          "pair_count": 2783,
+          "pearson": 0.8837026596565241,
+          "spearman": 0.8635838839100133
+        },
+        {
+          "current_mean": 0.25548690771320254,
+          "current_median": 0.09094738454468868,
+          "current_season": 2023,
+          "next_mean": 0.24280423393124045,
+          "next_median": 0.0862622009569378,
+          "next_season": 2024,
+          "pair_count": 2880,
+          "pearson": 0.8878599093020924,
+          "spearman": 0.854789780761935
+        }
+      ],
+      "folds_with_spearman_ge_0_10": 3,
+      "pooled": {
+        "current_mean": 0.24946860212936126,
+        "current_median": 0.09285530117646223,
+        "next_mean": 0.2508496453160138,
+        "next_median": 0.08957700435873728,
+        "pair_count": 8496,
+        "pearson": 0.87897089095963,
+        "spearman": 0.8584279177099234
+      },
+      "predictive_target_test_warranted": true
+    },
+    {
+      "all_folds_pair_count_ge_100": true,
+      "feature": "caught_stealing_pct",
+      "folds": [
+        {
+          "current_mean": 0.26971856560779606,
+          "current_median": 0.2644284128745838,
+          "current_season": 2021,
+          "next_mean": 0.2403014249771675,
+          "next_median": 0.23354978354978356,
+          "next_season": 2022,
+          "pair_count": 424,
+          "pearson": 0.3742808965196502,
+          "spearman": 0.3691382004109881
+        },
+        {
+          "current_mean": 0.2491646458430436,
+          "current_median": 0.24444444444444444,
+          "current_season": 2022,
+          "next_mean": 0.23403766740725168,
+          "next_median": 0.22429906542056074,
+          "next_season": 2023,
+          "pair_count": 405,
+          "pearson": 0.26253540091807137,
+          "spearman": 0.2556663201278371
+        },
+        {
+          "current_mean": 0.241649319635652,
+          "current_median": 0.23529411764705882,
+          "current_season": 2023,
+          "next_mean": 0.22794411448529406,
+          "next_median": 0.2222222222222222,
+          "next_season": 2024,
+          "pair_count": 415,
+          "pearson": 0.46739204690093644,
+          "spearman": 0.43583308956837125
+        }
+      ],
+      "folds_with_spearman_ge_0_10": 3,
+      "pooled": {
+        "current_mean": 0.25366303941554164,
+        "current_median": 0.25,
+        "next_mean": 0.23413976447078214,
+        "next_median": 0.22654088050314464,
+        "pair_count": 1244,
+        "pearson": 0.3738090082522439,
+        "spearman": 0.35736418385212027
+      },
+      "predictive_target_test_warranted": true
+    },
+    {
+      "all_folds_pair_count_ge_100": true,
+      "feature": "passed_balls_per_9",
+      "folds": [
+        {
+          "current_mean": 0.16475604746900072,
+          "current_median": 0.12846946867565423,
+          "current_season": 2021,
+          "next_mean": 0.138004275205264,
+          "next_median": 0.11265646731571627,
+          "next_season": 2022,
+          "pair_count": 427,
+          "pearson": 0.5441742147146987,
+          "spearman": 0.5067232585009669
+        },
+        {
+          "current_mean": 0.154130341220144,
+          "current_median": 0.1276595744680851,
+          "current_season": 2022,
+          "next_mean": 0.1328583913221903,
+          "next_median": 0.10453539823008849,
+          "next_season": 2023,
+          "pair_count": 405,
+          "pearson": 0.53156233988333,
+          "spearman": 0.5365193882652934
+        },
+        {
+          "current_mean": 0.15501282554555268,
+          "current_median": 0.10953448256353973,
+          "current_season": 2023,
+          "next_mean": 0.1327473794648812,
+          "next_median": 0.09846394984326018,
+          "next_season": 2024,
+          "pair_count": 416,
+          "pearson": 0.5414108688474034,
+          "spearman": 0.5575871468649157
+        }
+      ],
+      "folds_with_spearman_ge_0_10": 3,
+      "pooled": {
+        "current_mean": 0.15806006080959256,
+        "current_median": 0.12282038901917505,
+        "next_mean": 0.1345820383457735,
+        "next_median": 0.10588235294117647,
+        "pair_count": 1248,
+        "pearson": 0.5397817074503106,
+        "spearman": 0.535521584077427
+      },
+      "predictive_target_test_warranted": true
+    },
+    {
+      "all_folds_pair_count_ge_100": true,
+      "feature": "catcher_interference_per_9",
+      "folds": [
+        {
+          "current_mean": 0.014527682575015827,
+          "current_median": 0.0,
+          "current_season": 2021,
+          "next_mean": 0.014234924310287497,
+          "next_median": 0.0,
+          "next_season": 2022,
+          "pair_count": 427,
+          "pearson": 0.24317345795797202,
+          "spearman": 0.13701282544979035
+        },
+        {
+          "current_mean": 0.013664441385459391,
+          "current_median": 0.0,
+          "current_season": 2022,
+          "next_mean": 0.01899632922316074,
+          "next_median": 0.0,
+          "next_season": 2023,
+          "pair_count": 405,
+          "pearson": 0.09236114606666568,
+          "spearman": 0.10175243805709747
+        },
+        {
+          "current_mean": 0.018463070792760796,
+          "current_median": 0.0,
+          "current_season": 2023,
+          "next_mean": 0.02207296754525822,
+          "next_median": 0.013517818481131826,
+          "next_season": 2024,
+          "pair_count": 416,
+          "pearson": 0.17996824407718387,
+          "spearman": 0.17917479993083527
+        }
+      ],
+      "folds_with_spearman_ge_0_10": 3,
+      "pooled": {
+        "current_mean": 0.015559340280794315,
+        "current_median": 0.0,
+        "next_mean": 0.018392772848317536,
+        "next_median": 0.0,
+        "pair_count": 1248,
+        "pearson": 0.17593010188992783,
+        "spearman": 0.1515482330708472
+      },
+      "predictive_target_test_warranted": true
+    }
+  ],
   "gate": "defense_traditional_fielding_adjacent_year_stability",
   "report_schema_version": "0.1",
-  "source_run_id": 32165107158,
-  "source_sha": "5b432307c19d8318544bf9b2feb1eabb9cbd39c2",
+  "source": {
+    "artifact_name": "position-role-historical-source-2021-2024",
+    "historical_source_run_id": 32148467330,
+    "player_season_position_count": 39723,
+    "raw_non_pitcher_non_dh_split_count": 53225,
+    "transitions": [
+      [
+        2021,
+        2022
+      ],
+      [
+        2022,
+        2023
+      ],
+      [
+        2023,
+        2024
+      ]
+    ]
+  },
+  "source_run_id": 32165288915,
+  "source_sha": "a37d19515a23abedfa59afa05c77d1057b347424",
   "workflow": {
-    "audit_exit_code": "1"
+    "audit_exit_code": "0"
   }
 }
