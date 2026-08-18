@@ -73,7 +73,7 @@ def _baseline_fits(root: Path) -> dict[date, ContactValueBaselineFit]:
         raise RuntimeError("confirmation evidence crossed pre-scoring boundary")
 
     output: dict[date, ContactValueBaselineFit] = {}
-    for row in report.get("cutoffs", []):
+    for row in report.get("cutoff_surfaces", []):
         cutoff = date.fromisoformat(row["cutoff_date"])
         if cutoff not in CONFIRMATION_CUTOFFS:
             continue
@@ -188,9 +188,6 @@ def main() -> int:
             table_dir / f"prediction_geometry_{token}.parquet",
             table_name=f"current_talent_contact_value_confirmation_prediction_geometry_{token}",
         ).as_record()
-        # The shared production helper reports accessed_2023=False because its original
-        # development contract predates confirmation.  Record the true confirmation
-        # boundary here without changing the shared math helper.
         metrics = dict(metrics)
         metrics["accessed_2023"] = True
         fold_reports.append(
