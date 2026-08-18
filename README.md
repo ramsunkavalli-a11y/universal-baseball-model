@@ -23,16 +23,21 @@ Projection v1 asks whether a leakage-safe age/development adjustment improves ne
 
 ### Live Projection status
 
-Projection contracts and fast deterministic CI are passing. The 2024 MiLB source discrepancy has now been diagnosed and a fail-closed quarantine policy is implemented and green in CI.
+Projection contracts and source-authority logic are passing fast CI. The 2024 MiLB discrepancy was localized to two exact source-only residual rows:
 
-The diagnosis:
+- High-A player `669233`, game `755829`: one extra `PA=1, AB=1` row.
+- Single-A player `686541`, game `754395`: one extra `PA=1, AB=1, SO=1` row.
 
-- High-A player `669233`, game `755829`: one source-only extra `PA=1, AB=1` row.
-- Single-A player `686541`, game `754395`: one source-only extra `PA=1, AB=1, SO=1` row.
+The fail-closed policy `single_source_only_exact_season_and_official_residual_v1` is implemented. It applies only when a single source-only positive-PA game exactly equals the independent season residual and its full removal makes the remaining player-game totals exactly match official gameLog.
 
-For both, removing the exact audited row restores agreement with official gameLog totals. The production helper `current_talent_source_residual_quarantine.py` applies only when a single source-only positive-PA game exactly matches both the independent season residual and the full official gameLog residual. Anything less remains unresolved.
+That quarantine is now propagated consistently across outcome rows, player-game contact controls, and same-player PBP contacts. Missing same-game league identity also fails closed: if the exact official game endpoint is 404, the unauthorizable PBP game is quarantined rather than inheriting filename-level identity.
 
-Fast CI run `32092505104` passed this policy. The current next step is to rerun the full 2024 MiLB historical evidence path with the quarantine active and require a clean certified artifact before Projection model scoring begins.
+Cross-grain fast CI passed in runs `32092672387` and `32092714174`. The full quarantined 2024 historical gates are now launched:
+
+- `32092672369` — Quarantine exact 2024 source residuals across evidence grains.
+- `32092745178` — Gate 2024 MiLB on exact source quarantine tests.
+
+Use `docs/projection-recovery-status.json` for their live state. Their result is the current Projection gate.
 
 Machine-readable workflow snapshots:
 
