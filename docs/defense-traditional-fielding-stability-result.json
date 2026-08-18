@@ -1,0 +1,22 @@
+{
+  "contract": "docs/defense-traditional-fielding-stability-contract.md",
+  "decision": {
+    "defense_projection_authorized": false,
+    "predictive_target_test_warranted_features": [],
+    "tier_c_fallback_frozen": false,
+    "tracked_target_opening_authorized_for_these_features": false,
+    "traditional_fielding_skill_established": false,
+    "war_value_authorized": false
+  },
+  "failure": {
+    "audit_exit_code": "1",
+    "execution_log_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/universal-baseball-model/universal-baseball-model/scripts/audit_defense_traditional_fielding_stability.py\", line 374, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/home/runner/work/universal-baseball-model/universal-baseball-model/scripts/audit_defense_traditional_fielding_stability.py\", line 186, in main\n    \"caught_stealing\": _integer(stat.get(\"caughtStealing\"), field=\"caughtStealing\"),\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/universal-baseball-model/universal-baseball-model/scripts/audit_defense_traditional_fielding_stability.py\", line 62, in _integer\n    raise ValueError(f\"missing {field}\")\nValueError: missing caughtStealing"
+  },
+  "gate": "defense_traditional_fielding_adjacent_year_stability",
+  "report_schema_version": "0.1",
+  "source_run_id": 32165107158,
+  "source_sha": "5b432307c19d8318544bf9b2feb1eabb9cbd39c2",
+  "workflow": {
+    "audit_exit_code": "1"
+  }
+}
