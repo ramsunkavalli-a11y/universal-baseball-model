@@ -106,16 +106,57 @@ jobs:
         run: python -m py_compile scripts/freeze_defense_v1_parameters.py
 
       - name: Refit and freeze retained Defense v1 components
-        run: >-
-          python -u scripts/freeze_defense_v1_parameters.py
-          --historical-root inputs/historical
-          --tracked-root inputs/tracked
-          --universal-result docs/defense-v1-universal-development-result.json
-          --tracked-result docs/defense-v1-tracked-challenger-result.json
-          --tracked-source-result docs/defense-v1-tracked-source-result.json
-          --confirmation-contract docs/defense-v1-2025-confirmation-contract.md
+        id: refit
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -u scripts/freeze_defense_v1_parameters.py \
+            --historical-root inputs/historical \
+            --tracked-root inputs/tracked \
+            --universal-result docs/defense-v1-universal-development-result.json \
+            --tracked-result docs/defense-v1-tracked-challenger-result.json \
+            --tracked-source-result docs/defense-v1-tracked-source-result.json \
+            --confirmation-contract docs/defense-v1-2025-confirmation-contract.md \
+            2>&1 | tee defense-v1-parameter-freeze.log
+
+      - name: Persist refit failure diagnostic
+        if: steps.refit.outcome == 'failure'
+        env:
+          FREEZE_RUN_ID: ${{ github.run_id }}
+          FREEZE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          log = Path("defense-v1-parameter-freeze.log")
+          lines = log.read_text(encoding="utf-8", errors="replace").splitlines() if log.exists() else []
+          payload = {
+              "diagnostic_only": True,
+              "freeze_run_id": int(os.environ["FREEZE_RUN_ID"]),
+              "freeze_sha": os.environ["FREEZE_SHA"],
+              "refit_outcome": "failure",
+              "log_tail": lines[-120:],
+              "boundary": {
+                  "2025_defensive_targets_accessed": False,
+                  "war_value_authorized": False,
+              },
+          }
+          Path("docs/defense-v1-parameter-freeze-failure.json").write_text(json.dumps(payload, indent=2) + "\n")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-parameter-freeze-failure.json
+          git commit -m "Persist Defense v1 parameter-freeze failure diagnostic"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then break; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
 
       - name: Pin freeze workflow metadata
+        if: steps.refit.outcome == 'success'
         env:
           FREEZE_RUN_ID: ${{ github.run_id }}
           FREEZE_SHA: ${{ github.sha }}
@@ -133,21 +174,24 @@ jobs:
           PY
 
       - name: Upload frozen Defense v1 parameter package
-        if: always()
+        if: steps.refit.outcome == 'success'
         uses: actions/upload-artifact@v7
         with:
           name: defense-v1-pre-2025-parameter-freeze
           path: reports/generated/defense-v1-parameter-freeze/
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30
 
       - name: Persist binding pre-2025 Defense v1 parameter result
+        if: steps.refit.outcome == 'success'
         run: |
           set -euo pipefail
           cp reports/generated/defense-v1-parameter-freeze/report.json docs/defense-v1-confirmation-parameters.json
+          rm -f docs/defense-v1-parameter-freeze-failure.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/defense-v1-confirmation-parameters.json
+          git add -u docs/defense-v1-parameter-freeze-failure.json || true
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Persist Defense v1 pre-2025 parameter freeze"
           for attempt in 1 2 3; do
