@@ -1,0 +1,103 @@
+{
+  "report_schema_version": "0.1",
+  "gate": "current_talent_contact_value_2023_confirmation",
+  "candidate": "baseline2_plus_ev_sweet_spot_contact_value_residual_v1",
+  "run_id": 32087555990,
+  "artifact_id": 9307217492,
+  "artifact_sha256": "0dbc2de14cb17fd19ec5ac7a03acc04280c56f58ad67e9154365c2ec60ce80e7",
+  "confirmation_contract": "docs/current-talent-contact-value-confirmation-contract.md",
+  "confirmation_cutoffs": ["2023-07-15", "2023-08-01", "2023-09-01"],
+  "confirmed": false,
+  "equal_fold_summary": {
+    "baseline_mse": 0.2033816366639647,
+    "richer_mse": 0.2030213703051861,
+    "mse_delta_richer_minus_baseline": -0.00036026635877858815,
+    "baseline_mae": 0.3561671497421868,
+    "richer_mae": 0.3569228787973761,
+    "mae_delta_richer_minus_baseline": 0.0007557290551893359,
+    "richer_mse_fold_wins": 3
+  },
+  "folds": [
+    {
+      "cutoff_date": "2023-07-15",
+      "event_count": 118984,
+      "baseline_mse": 0.20539230196417727,
+      "richer_mse": 0.20503003438890144,
+      "mse_delta_richer_minus_baseline": -0.0003622675752758264,
+      "baseline_mae": 0.3579810049243685,
+      "richer_mae": 0.3586938807626809,
+      "mae_delta_richer_minus_baseline": 0.0007128758383123657,
+      "richer_mse_win": true
+    },
+    {
+      "cutoff_date": "2023-08-01",
+      "event_count": 90949,
+      "baseline_mse": 0.20413346141961486,
+      "richer_mse": 0.20376371613693364,
+      "mse_delta_richer_minus_baseline": -0.0003697452826812164,
+      "baseline_mae": 0.3568383298413512,
+      "richer_mae": 0.3575903947228874,
+      "mae_delta_richer_minus_baseline": 0.0007520648815361741,
+      "richer_mse_win": true
+    },
+    {
+      "cutoff_date": "2023-09-01",
+      "event_count": 40885,
+      "baseline_mse": 0.20061914660810193,
+      "richer_mse": 0.20027036038972323,
+      "mse_delta_richer_minus_baseline": -0.00034878621837869384,
+      "baseline_mae": 0.35368211446084047,
+      "richer_mae": 0.35448436090656005,
+      "mae_delta_richer_minus_baseline": 0.0008022464457195788,
+      "richer_mse_win": true
+    }
+  ],
+  "calibration_summary": {
+    "baseline_mean_absolute_intercept_error": 0.006149013705759256,
+    "richer_mean_absolute_intercept_error": 0.010010572857580608,
+    "baseline_mean_absolute_slope_error": 0.01831262348741758,
+    "richer_mean_absolute_slope_error": 0.02169068400135325
+  },
+  "any_observed_milb": {
+    "total_fold_contacts": 190043,
+    "equal_fold_mean_baseline_mse": 0.20089396260933756,
+    "equal_fold_mean_richer_mse": 0.2006303557093879,
+    "mse_delta_richer_minus_baseline": -0.0002636068999496699
+  },
+  "confirmation_checks": {
+    "lower_equal_fold_mean_mse": true,
+    "equal_fold_mean_mae_no_worse": false,
+    "mse_wins_at_least_2_of_3": true,
+    "identical_paired_event_coverage": true,
+    "any_milb_at_least_1000_and_lower_mean_mse": true,
+    "no_meaningful_non_mlb_tier_worse_both_in_2_folds": true,
+    "residual_fit_finite_full_rank": true,
+    "all_calibration_fits_identifiable": true,
+    "calibration_intercept_guardrail": false,
+    "calibration_slope_guardrail": true
+  },
+  "exact_non_mlb_capability_tier_guardrails": {
+    "all_meaningful_tiers_passed": true,
+    "MILB_SAVANT_TRACKED:2021:123:SINGLE_A": {"total_fold_contacts": 31869, "worse_both_fold_count": 0},
+    "MILB_SAVANT_TRACKED:2022:112:AAA": {"total_fold_contacts": 39263, "worse_both_fold_count": 0},
+    "MILB_SAVANT_TRACKED:2022:117:AAA": {"total_fold_contacts": 22000, "worse_both_fold_count": 0},
+    "MILB_SAVANT_TRACKED:2022:123:SINGLE_A": {"total_fold_contacts": 36138, "worse_both_fold_count": 0},
+    "MILB_SAVANT_TRACKED:2023:112:AAA": {"total_fold_contacts": 43632, "worse_both_fold_count": 0},
+    "MILB_SAVANT_TRACKED:2023:117:AAA": {"total_fold_contacts": 85115, "worse_both_fold_count": 0},
+    "MILB_SAVANT_TRACKED:2023:123:SINGLE_A": {"total_fold_contacts": 27683, "worse_both_fold_count": 0}
+  },
+  "frozen_confirmation_residual_fit": {
+    "beta_mean_exit_velocity": 0.019444311355484883,
+    "beta_sweet_spot_share": -0.0016659086163438607,
+    "determinant": 18569017159.610256,
+    "fitted_future_contact_count": 166386,
+    "fitted_player_count": 1597
+  },
+  "binding_interpretation": {
+    "challenger_2_confirmed": false,
+    "reason": "Failed the predeclared equal-fold MAE no-worse and calibration-intercept guardrails despite lower MSE in all three confirmation folds and lower any-observed-MiLB mean MSE.",
+    "rescue_tuning_allowed_on_2023": false,
+    "automatic_integration_allowed": false,
+    "baseline_2_remains_frozen_current_talent_model": true
+  }
+}
