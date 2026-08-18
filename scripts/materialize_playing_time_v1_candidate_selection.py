@@ -153,7 +153,7 @@ def main() -> int:
         ["form", "cv_fold", "component", "feature"]
     )
     standardization = pl.concat(
-        standardization_frames, how="vertical_relaxed"
+        standardization_frames, how="diagonal_relaxed"
     ).sort(["form", "cv_fold", "feature"])
 
     storage = {
