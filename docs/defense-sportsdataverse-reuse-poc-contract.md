@@ -31,16 +31,20 @@ This deliberately mirrors the upstream package's committed month-vs-season oracl
 
 ### Tracked MiLB feasibility slices
 
-Use 2024-06-10 through 2024-06-16, regular season:
+Use 2024-06-10 through 2024-06-16, regular season.
 
-- `hfLevel=AAA|`
-- `hfLevel=A|`
+The SportsDataverse wrapper forwards raw Savant `hfLevel` parameters but does not normalize their syntax. Because the first transport attempt using pipe-form values returned empty frames, the source-interface probe is now explicitly frozen to these two encodings per level, in order:
+
+- AAA: `AAA|`, then `AAA`
+- Single-A: `A|`, then `A`
+
+Use the first non-empty response. This is transport discovery only; it does not alter any statistical or coverage threshold.
 
 These are tracking-coverage tiers, not claims of universal affiliated coverage. Missing AA, High-A, complex, or DSL evidence must remain missing rather than being imputed from this POC.
 
 ## Required public fields
 
-For each balls-in-play sample require the columns used by the upstream OAA implementation:
+For each balls-in-play sample require the trajectory and result columns used by the upstream OAA implementation:
 
 - `hc_x`
 - `hc_y`
@@ -49,7 +53,8 @@ For each balls-in-play sample require the columns used by the upstream OAA imple
 - `launch_speed`
 - `hit_location`
 - `events`
-- `fielder_1` through `fielder_9`
+
+For responsible fielders, require `fielder_2` through `fielder_9` for the non-pitcher defensive positions. `fielder_1` is **optional** because the current public Savant CSV does not expose it in the MLB sample, and the upstream SportsDataverse implementation intentionally resolves whatever `fielder_N` columns are available dynamically. Missing `fielder_1` therefore excludes pitcher-fielding assignment but must not block catcher/infield/outfield OAA execution.
 
 ## Frozen checks
 
@@ -57,7 +62,7 @@ For each balls-in-play sample require the columns used by the upstream OAA imple
 
 Pass only if all are true:
 
-1. all required columns are present;
+1. all required trajectory/result columns and `fielder_2` through `fielder_9` are present;
 2. the June MLB BIP sample is non-empty;
 3. reusable OAA produces at least 50 matched fielders against the Savant 2024 OAA leaderboard;
 4. Pearson correlation between June reusable OAA and full-season Savant OAA is **>= 0.30**, matching the upstream package's frozen month-vs-season oracle gate.
@@ -68,7 +73,7 @@ Do not lower the correlation gate after seeing the result.
 
 Pass a tracked level slice only if all are true:
 
-1. all required columns are present;
+1. all required trajectory/result columns and `fielder_2` through `fielder_9` are present;
 2. at least 100 balls in play are returned;
 3. the OAA implementation produces at least 100 total scored fielder opportunities;
 4. scored opportunities / returned BIP is at least 0.50.
@@ -95,7 +100,7 @@ Regardless of outcome:
 Persist:
 
 - exact package version;
-- date windows and filters;
+- date windows and attempted/selected MiLB filter encodings;
 - returned row/BIP counts;
 - required-field missingness/non-null coverage;
 - OAA opportunity counts and coverage rates;
