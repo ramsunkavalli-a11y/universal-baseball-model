@@ -8,37 +8,46 @@ Read [`docs/project-status.md`](docs/project-status.md) first. `main` is the lat
 
 ## Current stage
 
-The batting Performance, Current Talent, and one-year rate Projection v1 stages are complete enough to support the next channel.
+The portable batting, opportunity, and position/role channels are now frozen and validated enough to support the next value layer.
 
 - **Performance:** completed-2024 affiliated batting materialization is production-shaped and retained.
 - **Current Talent:** frozen at `translated_multiseason_recency_empirical_bayes_v1` (Baseline 2).
-- **Projection v1 batting rate/profile:** complete. The explicit age/development challenger failed fixed out-of-time development, so the retained one-year rate projection is `frozen_current_talent_carry_forward_v1`.
-- **Playing time / role:** **next active stage**.
-- **Defense, WAR/value, Overall Ranking:** later stages.
+- **Projection v1 batting rate/profile:** frozen at `frozen_current_talent_carry_forward_v1`; the age/development challenger failed its fixed OOT gate.
+- **Playing Time v1:** frozen and 2025-confirmed at `playing_time_recent_opportunity_40man_b2_hurdle_v1`.
+- **Position / Role v1:** frozen and 2025-confirmed at `primary_share_thresholded_transition_mean_v1`.
+- **Defense / defensive value:** **next active stage**.
+- **WAR/value and Overall Ranking:** later stages.
 
-### Projection v1 result
+### Position / Role v1 result
 
-The pre-registered age/development search selected `projection_age_level_ilr_ridge_v1` with ridge lambda `0.01` using only the 2022 target fold.
+Official 2021–2024 fielding source certification passed all 64 season×league pairs. After a broad transition smoother failed development, a final pre-frozen selective rule passed both development folds:
 
-It improved on carry-forward B2 in the first 2023 out-of-time fold, but reversed in the fixed 2024 fold:
+- carry the current nine-position role profile forward unchanged when primary-position share `< 0.65`;
+- at `>= 0.65`, blend the current profile with the historical next-year destination profile for that current primary position.
 
-- 2023 log-loss delta: **-0.000480**;
-- 2024 log-loss delta: **+0.000257**.
+All confirmation parameters were frozen before 2025 position data was opened. The one-shot 2025 confirmation then passed on 2,891 players:
 
-The frozen contract required improvement in both validation folds, so the challenger is rejected without rescue tuning. Carry-forward B2 remains Projection v1.
+- mean TV distance: **0.32553 → 0.32462**;
+- mean summed squared error: **0.22692 → 0.21639**.
 
-**2025 outcomes were never accessed** and remain untouched evidence for a future separately pre-registered Projection challenger if useful.
+No confirmation refit, threshold change, candidate reselection, or rescue tuning occurred.
 
-Key Projection records:
+Key Position / Role records:
 
-- [`docs/projection-batting-v1-development-checkpoint.md`](docs/projection-batting-v1-development-checkpoint.md)
-- [`docs/projection-batting-v1-development-result.json`](docs/projection-batting-v1-development-result.json)
-- [`docs/projection-batting-v1-development-contract.md`](docs/projection-batting-v1-development-contract.md)
-- [`docs/projection-v1-methodology-review.md`](docs/projection-v1-methodology-review.md)
+- [`docs/position-role-2025-confirmation-result.json`](docs/position-role-2025-confirmation-result.json)
+- [`docs/position-role-2025-confirmation-contract.md`](docs/position-role-2025-confirmation-contract.md)
+- [`docs/position-role-confirmation-parameters.json`](docs/position-role-confirmation-parameters.json)
+- [`docs/position-role-historical-source-result.json`](docs/position-role-historical-source-result.json)
+
+### Projection v1 boundary
+
+The pre-registered age/development challenger improved in the first 2023 OOT fold but reversed in the fixed 2024 fold, so carry-forward B2 remains Projection v1 without rescue tuning.
+
+**2025 batting-rate/profile outcomes remain untouched.** Later 2025 Playing Time and Position/Role confirmations used only their own separately frozen opportunity or position-role targets.
 
 ## Core principles
 
-- Keep **Performance**, **Current Talent**, **Projection**, **playing time/role**, **defense**, and **Player Value / Overall Ranking** separate.
+- Keep **Performance**, **Current Talent**, **Projection**, **playing time**, **position/role**, **defense**, and **Player Value / Overall Ranking** separate.
 - Use a common evaluation language across levels while allowing different evidence/models where coverage differs.
 - Prefer mature public datasets, parsers, and packages over rebuilding raw-source cleanup.
 - Treat MLB/official sources as reconciliation authority, not necessarily the first working dataset.
@@ -51,10 +60,10 @@ Key Projection records:
 ## Current milestone documents
 
 - [`docs/project-status.md`](docs/project-status.md) — canonical live handoff and next action.
-- [`docs/projection-batting-v1-development-checkpoint.md`](docs/projection-batting-v1-development-checkpoint.md) — Projection v1 closeout.
+- [`docs/position-role-2025-confirmation-result.json`](docs/position-role-2025-confirmation-result.json) — binding Position / Role v1 confirmation.
+- [`docs/playing-time-v1-confirmation-result.json`](docs/playing-time-v1-confirmation-result.json) — binding Playing Time v1 confirmation.
 - [`docs/projection-batting-v1-development-result.json`](docs/projection-batting-v1-development-result.json) — binding Projection v1 decision.
 - [`docs/current-talent-results-only-baseline-freeze.md`](docs/current-talent-results-only-baseline-freeze.md) — frozen Current Talent Baseline 2.
-- [`docs/current-talent-contact-value-confirmation-result.json`](docs/current-talent-contact-value-confirmation-result.json) — binding richer Current Talent challenger failure/closeout.
 - [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — completed-2024 affiliated batting Performance checkpoint.
 
 Older development/confirmation files remain historical evidence, not active work queues.
