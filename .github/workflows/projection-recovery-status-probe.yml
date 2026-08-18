@@ -1,4 +1,4 @@
-# refresh after Projection development-evidence schema rerun
+# track 2024 MLB certification before Projection development surfaces
 name: Projection recovery status probe
 
 on:
@@ -34,6 +34,7 @@ jobs:
               "recovery_audit": "projection-2024-exact-game-source-gap-audit-recovery.yml",
               "exact_game_audit_original": "projection-2024-exact-game-source-gap-audit.yml",
               "historical_milb_2024": "projection-current-talent-historical-milb-2024.yml",
+              "historical_mlb": "current-talent-historical-mlb-season.yml",
               "projection_contracts": "projection-validation-contracts-ci.yml",
               "development_evidence": "projection-batting-v1-development-evidence.yml",
           }
