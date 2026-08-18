@@ -3,6 +3,7 @@ from datetime import date
 import polars as pl
 
 from universal_baseball.current_talent_source_residual_quarantine import (
+    exact_residual_quarantine_is_terminal,
     quarantine_single_source_only_exact_residual,
 )
 
@@ -112,6 +113,41 @@ def test_strikeout_source_residual_can_be_quarantined_exactly() -> None:
     )
     assert corrected.filter(pl.col("game_id") == 11).is_empty()
     assert metrics["applied"] is True
+
+
+def test_empty_official_gamelog_can_end_in_terminal_exact_quarantine() -> None:
+    source = _source().filter(pl.col("game_id") == 11)
+    official = _official().head(0)
+    corrected, metrics = quarantine_single_source_only_exact_residual(
+        source,
+        official,
+        _comparison(),
+        player_id=100,
+        league_id=118,
+    )
+    assert corrected.is_empty()
+    assert metrics["applied"] is True
+    assert metrics["official_game_log_totals"]["batting_PA"] == 0
+    assert exact_residual_quarantine_is_terminal(
+        corrected,
+        official,
+        metrics,
+        player_id=100,
+        league_id=118,
+    ) is True
+
+
+def test_unapplied_quarantine_is_never_terminal() -> None:
+    corrected, metrics = quarantine_single_source_only_exact_residual(
+        _source(), _official(), _comparison(pa=2), player_id=100, league_id=118
+    )
+    assert exact_residual_quarantine_is_terminal(
+        corrected,
+        _official(),
+        metrics,
+        player_id=100,
+        league_id=118,
+    ) is False
 
 
 def test_season_residual_disagreement_fails_closed() -> None:
