@@ -1,0 +1,201 @@
+{
+  "boundary": {
+    "2025_position_outcomes_scored": false,
+    "2025_position_source_accessed": false,
+    "defense_model_fit": false,
+    "hyperparameter_search": false,
+    "team_allocator_fit": false,
+    "training_transitions_end_in_2024": true
+  },
+  "contract": "docs/position-role-2025-confirmation-contract.md",
+  "decision": {
+    "2025_position_source_materialization_authorized": true,
+    "confirmation_parameters_frozen": true,
+    "confirmation_scoring_authorized": false
+  },
+  "gate": "position_role_2025_confirmation_parameter_freeze",
+  "parameter_hash": "sha256:6b6cc7dd5cc7acb7d4396e60dccab12420fdb1828936a318383362d53a9e3def",
+  "parameters": {
+    "destination_means": {
+      "1B": {
+        "probabilities": {
+          "1B": 0.5448958754019838,
+          "2B": 0.03608739034194414,
+          "3B": 0.077494573089526,
+          "C": 0.06817487524809494,
+          "CF": 0.004587153994745096,
+          "DH": 0.16203603004362732,
+          "LF": 0.04998335835570025,
+          "RF": 0.048048944189957116,
+          "SS": 0.008691799334421092
+        },
+        "training_transition_count": 965
+      },
+      "2B": {
+        "probabilities": {
+          "1B": 0.05173206381642454,
+          "2B": 0.44424854549938614,
+          "3B": 0.17537218915299635,
+          "C": 0.004161016074370713,
+          "CF": 0.02616235212885816,
+          "DH": 0.0801902658358722,
+          "LF": 0.06230985162734237,
+          "RF": 0.021742819548525312,
+          "SS": 0.13408089631622422
+        },
+        "training_transition_count": 1090
+      },
+      "3B": {
+        "probabilities": {
+          "1B": 0.15081768404280887,
+          "2B": 0.1515799940590779,
+          "3B": 0.44204302319850036,
+          "C": 0.009051096446157599,
+          "CF": 0.00907348960026304,
+          "DH": 0.09096665973755064,
+          "LF": 0.03797909871449827,
+          "RF": 0.024766894814474884,
+          "SS": 0.08372205938666835
+        },
+        "training_transition_count": 1035
+      },
+      "C": {
+        "probabilities": {
+          "1B": 0.09158648313479358,
+          "2B": 0.004760091332829493,
+          "3B": 0.0060418141914853705,
+          "C": 0.724594640105549,
+          "CF": 0.0009828482358860834,
+          "DH": 0.15762993193539993,
+          "LF": 0.009476339142645833,
+          "RF": 0.004834246949586528,
+          "SS": 9.360497182422252e-05
+        },
+        "training_transition_count": 1748
+      },
+      "CF": {
+        "probabilities": {
+          "1B": 0.004549441514862751,
+          "2B": 0.01315184437713881,
+          "3B": 0.009225802440290342,
+          "C": 0.0,
+          "CF": 0.4818608213287817,
+          "DH": 0.07002012527371312,
+          "LF": 0.20842488862235167,
+          "RF": 0.20453274712211952,
+          "SS": 0.008234329320741949
+        },
+        "training_transition_count": 1179
+      },
+      "DH": {
+        "probabilities": {
+          "1B": 0.16043320882720402,
+          "2B": 0.03809736537163806,
+          "3B": 0.04364460536129282,
+          "C": 0.1617361818418166,
+          "CF": 0.03965467085421515,
+          "DH": 0.3677768581608945,
+          "LF": 0.0955991501857643,
+          "RF": 0.08563182918580636,
+          "SS": 0.007426130211368093
+        },
+        "training_transition_count": 271
+      },
+      "LF": {
+        "probabilities": {
+          "1B": 0.050021657041035644,
+          "2B": 0.019927345343702017,
+          "3B": 0.019246351755488934,
+          "C": 0.006603140806862999,
+          "CF": 0.12353154720782965,
+          "DH": 0.1346130224708387,
+          "LF": 0.39945010923612795,
+          "RF": 0.2406894401916261,
+          "SS": 0.005917385946488025
+        },
+        "training_transition_count": 960
+      },
+      "RF": {
+        "probabilities": {
+          "1B": 0.0602119416705636,
+          "2B": 0.0074655910133576454,
+          "3B": 0.009984607689813157,
+          "C": 0.0024078622135169695,
+          "CF": 0.13740933512547804,
+          "DH": 0.12583100698329905,
+          "LF": 0.23757829343134915,
+          "RF": 0.41515472102096684,
+          "SS": 0.003956640851655678
+        },
+        "training_transition_count": 947
+      },
+      "SS": {
+        "probabilities": {
+          "1B": 0.01926131119571887,
+          "2B": 0.21515534113813306,
+          "3B": 0.15602481300450427,
+          "C": 0.0007522977024374385,
+          "CF": 0.021042607893468387,
+          "DH": 0.050190327090885896,
+          "LF": 0.019723558530038952,
+          "RF": 0.011824274144418043,
+          "SS": 0.506025469300395
+        },
+        "training_transition_count": 1141
+      }
+    },
+    "formula": "carry_forward if s < 0.65 else s * current_profile + (1 - s) * frozen_mean_next_profile_by_current_primary_position",
+    "model_name": "primary_share_thresholded_transition_mean_v1",
+    "position_order": [
+      "C",
+      "1B",
+      "2B",
+      "3B",
+      "SS",
+      "LF",
+      "CF",
+      "RF",
+      "DH"
+    ],
+    "primary_share_threshold": 0.65,
+    "source": {
+      "artifact_digest": "sha256:a2c5aa7cbc5f9bfaadcab9597a9b228c8f32463c09c88097052bcfec78cdeb26",
+      "artifact_name": "position-role-batting-profile-stability-2021-2024",
+      "run_id": 32149415617
+    },
+    "training_transition_counts": [
+      {
+        "current_season": 2021,
+        "next_season": 2022,
+        "paired_player_count": 3168
+      },
+      {
+        "current_season": 2022,
+        "next_season": 2023,
+        "paired_player_count": 3122
+      },
+      {
+        "current_season": 2023,
+        "next_season": 2024,
+        "paired_player_count": 3046
+      }
+    ],
+    "training_transitions": [
+      [
+        2021,
+        2022
+      ],
+      [
+        2022,
+        2023
+      ],
+      [
+        2023,
+        2024
+      ]
+    ]
+  },
+  "report_schema_version": "0.1",
+  "source_run_id": 32153160537,
+  "source_sha": "8ba118dc10e1aac7619e6a0b631f98f3cf0de8f9"
+}
