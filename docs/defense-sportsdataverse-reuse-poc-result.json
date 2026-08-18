@@ -11,7 +11,7 @@
   "decision": {
     "aaa_tracked_oaa_reuse_feasible": false,
     "catcher_defense_authorized": false,
-    "mlb_oaa_reuse_candidate": false,
+    "mlb_oaa_reuse_candidate": true,
     "single_a_tracked_oaa_reuse_feasible": false,
     "tracked_milb_oaa_reuse_feasible_for_tested_tiers": false,
     "universal_defense_authorized": false,
@@ -22,12 +22,25 @@
     {
       "bip_row_count": 0,
       "column_count": 0,
-      "hfLevel": "AAA|",
+      "hfLevel_attempts": [
+        {
+          "column_count": 0,
+          "hfLevel": "AAA|",
+          "pitch_row_count": 0
+        },
+        {
+          "column_count": 0,
+          "hfLevel": "AAA",
+          "pitch_row_count": 0
+        }
+      ],
+      "hfLevel_selected": null,
       "label": "AAA",
       "oaa_bip_usable_rate": 0.0,
       "oaa_by_position": [],
       "oaa_row_count": 0,
       "oaa_total_opportunities": 0,
+      "optional_fielder_1_present": false,
       "passed": false,
       "pitch_row_count": 0,
       "required_columns_missing": [
@@ -38,7 +51,6 @@
         "launch_speed",
         "hit_location",
         "events",
-        "fielder_1",
         "fielder_2",
         "fielder_3",
         "fielder_4",
@@ -70,12 +82,25 @@
     {
       "bip_row_count": 0,
       "column_count": 0,
-      "hfLevel": "A|",
+      "hfLevel_attempts": [
+        {
+          "column_count": 0,
+          "hfLevel": "A|",
+          "pitch_row_count": 0
+        },
+        {
+          "column_count": 0,
+          "hfLevel": "A",
+          "pitch_row_count": 0
+        }
+      ],
+      "hfLevel_selected": null,
       "label": "A",
       "oaa_bip_usable_rate": 0.0,
       "oaa_by_position": [],
       "oaa_row_count": 0,
       "oaa_total_opportunities": 0,
+      "optional_fielder_1_present": false,
       "passed": false,
       "pitch_row_count": 0,
       "required_columns_missing": [
@@ -86,7 +111,6 @@
         "launch_speed",
         "hit_location",
         "events",
-        "fielder_1",
         "fielder_2",
         "fielder_3",
         "fielder_4",
@@ -120,21 +144,62 @@
     "bip_row_count": 20623,
     "column_count": 119,
     "label": "MLB",
-    "oaa_bip_usable_rate": 0.0,
-    "oaa_by_position": [],
-    "oaa_row_count": 0,
-    "oaa_total_opportunities": 0,
+    "oaa_bip_usable_rate": 0.912573340445134,
+    "oaa_by_position": [
+      {
+        "fielder_count": 61,
+        "opportunities": 184,
+        "position": 2
+      },
+      {
+        "fielder_count": 79,
+        "opportunities": 1454,
+        "position": 3
+      },
+      {
+        "fielder_count": 90,
+        "opportunities": 2286,
+        "position": 4
+      },
+      {
+        "fielder_count": 89,
+        "opportunities": 2204,
+        "position": 5
+      },
+      {
+        "fielder_count": 75,
+        "opportunities": 2558,
+        "position": 6
+      },
+      {
+        "fielder_count": 121,
+        "opportunities": 3223,
+        "position": 7
+      },
+      {
+        "fielder_count": 85,
+        "opportunities": 3622,
+        "position": 8
+      },
+      {
+        "fielder_count": 114,
+        "opportunities": 3289,
+        "position": 9
+      }
+    ],
+    "oaa_row_count": 714,
+    "oaa_total_opportunities": 18820,
+    "optional_fielder_1_present": false,
     "oracle": {
-      "matched_fielder_count": 0,
-      "passed": false,
-      "pearson_correlation": null,
+      "frozen_minimum_correlation": 0.3,
+      "matched_fielder_count": 263,
+      "passed": true,
+      "pearson_correlation": 0.30448953747236523,
       "savant_columns_missing": [],
       "savant_row_count": 272
     },
     "pitch_row_count": 116355,
-    "required_columns_missing": [
-      "fielder_1"
-    ],
+    "required_columns_missing": [],
     "required_field_non_null_rate": {
       "events": 1.0,
       "fielder_1": null,
@@ -154,9 +219,9 @@
       "launch_speed": 0.9955874509043301
     }
   },
-  "report_schema_version": "0.1",
-  "source_run_id": 32162011212,
-  "source_sha": "929a5a9dfc821fd42754b261ebc68a8903942500",
+  "report_schema_version": "0.2",
+  "source_run_id": 32162621108,
+  "source_sha": "0425e03ccfa64c1869d3a886abb5be76b6b687c0",
   "source_windows": {
     "milb": {
       "end": "2024-06-16",
