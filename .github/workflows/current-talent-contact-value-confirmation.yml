@@ -1,0 +1,104 @@
+name: Current Talent contact-value 2023 one-shot confirmation
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/current-talent-contact-value-confirmation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  confirm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out frozen confirmation commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Require all accepted pre-scoring gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          names = {
+              "evidence": ("docs/current-talent-contact-value-confirmation-evidence-result.json", "current_talent_contact_value_confirmation_evidence_pre_scoring"),
+              "features": ("docs/current-talent-contact-value-confirmation-features-result.json", "current_talent_contact_value_confirmation_features_pre_scoring"),
+              "geometry": ("docs/current-talent-contact-value-confirmation-prediction-geometry-result.json", "current_talent_contact_value_confirmation_prediction_geometry_pre_scoring"),
+              "refit": ("docs/current-talent-contact-value-confirmation-refit-result.json", "current_talent_contact_value_confirmation_refit_2021_2022"),
+          }
+          reports = {}
+          for label, (path, gate) in names.items():
+              report = json.loads(Path(path).read_text())
+              if report.get("gate") != gate:
+                  raise SystemExit(f"{label} gate not accepted")
+              reports[label] = report
+          if reports["evidence"].get("boundary", {}).get("model_scoring") is not False:
+              raise SystemExit("evidence already scored")
+          if reports["features"].get("boundary", {}).get("model_scoring") is not False:
+              raise SystemExit("features already scored")
+          if reports["geometry"].get("boundary", {}).get("model_scoring") is not False:
+              raise SystemExit("geometry already scored")
+          if reports["geometry"].get("boundary", {}).get("confirmation_losses_computed") is not False:
+              raise SystemExit("geometry already contains losses")
+          if reports["geometry"].get("boundary", {}).get("prediction_values_finite") is not True:
+              raise SystemExit("geometry predictions not accepted")
+          if reports["geometry"].get("boundary", {}).get("comparator_richer_event_keys_identical") is not True:
+              raise SystemExit("geometry paired keys not accepted")
+          if reports["refit"].get("boundary", {}).get("accessed_2023") is not False:
+              raise SystemExit("frozen refit accessed 2023")
+          contract = Path("docs/current-talent-contact-value-confirmation-contract.md").read_text()
+          if "FROZEN BEFORE 2023 PERFORMANCE SCORING" not in contract:
+              raise SystemExit("confirmation contract not frozen")
+          PY
+
+      - name: Compile frozen one-shot evaluator
+        run: python -m py_compile scripts/evaluate_current_talent_contact_value_confirmation.py
+
+      - name: Download accepted confirmation evidence
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-contact-value-confirmation-evidence
+          path: seeded/evidence
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32086538491
+          github-token: ${{ github.token }}
+
+      - name: Download accepted confirmation features
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-contact-value-confirmation-features
+          path: seeded/features
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32086704821
+          github-token: ${{ github.token }}
+
+      - name: Run fixed one-shot 2023 confirmation
+        run: >-
+          python scripts/evaluate_current_talent_contact_value_confirmation.py
+          --evidence-root seeded/evidence
+          --feature-root seeded/features
+          --confirmation-refit docs/current-talent-contact-value-confirmation-refit-result.json
+          --confirmation-contract docs/current-talent-contact-value-confirmation-contract.md
+
+      - name: Upload binding confirmation result
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-2023-confirmation
+          path: reports/generated/current-talent-contact-value-confirmation/
+          if-no-files-found: warn
+          retention-days: 30
