@@ -7,8 +7,10 @@ on:
     paths:
       - "src/universal_baseball/projection_validation.py"
       - "src/universal_baseball/projection_baselines.py"
+      - "src/universal_baseball/projection_dataset.py"
       - "tests/test_projection_validation.py"
       - "tests/test_projection_baselines.py"
+      - "tests/test_projection_dataset.py"
       - ".github/workflows/projection-validation-contracts-ci.yml"
   workflow_dispatch:
 
@@ -37,9 +39,11 @@ jobs:
           python -m py_compile
           src/universal_baseball/projection_validation.py
           src/universal_baseball/projection_baselines.py
+          src/universal_baseball/projection_dataset.py
 
-      - name: Test Projection chronology, carry-forward baseline, and 2025 quarantine
+      - name: Test Projection chronology, dataset, carry-forward baseline, and 2025 quarantine
         run: >-
           python -m pytest -q
           tests/test_projection_validation.py
           tests/test_projection_baselines.py
+          tests/test_projection_dataset.py
