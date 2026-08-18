@@ -1,0 +1,146 @@
+name: Defense v1 tracked challenger scoring
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-tracked-challenger.yml"
+      - "scripts/audit_defense_v1_tracked_challenger.py"
+      - "docs/defense-v1-tracked-challenger-contract.md"
+      - "docs/defense-v1-tracked-source-result.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  score:
+    name: score frozen tracked challenger
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and frozen dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+
+      - name: Download certified historical fielding source
+        uses: actions/download-artifact@v7
+        with:
+          name: position-role-historical-source-2021-2024
+          path: inputs/historical
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32148467330
+
+      - name: Download frozen tracked source aggregate
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-tracked-source-2021-2023
+          path: inputs/tracked
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32182019495
+
+      - name: Verify frozen source boundary and tracked hashes
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          result = json.loads(Path("docs/defense-v1-tracked-source-result.json").read_text())
+          if result.get("source_run_id") != 32182019495:
+              raise SystemExit("unexpected tracked source run id")
+          if result.get("source_sha") != "5438e905d24e2167432a52253320ccbc978186b8":
+              raise SystemExit("unexpected tracked source SHA")
+          if result.get("decision", {}).get("tracked_source_materialized") is not True:
+              raise SystemExit("tracked source is not materialized")
+          if result.get("decision", {}).get("tracked_challenger_scoring_authorized_next") is not True:
+              raise SystemExit("tracked scoring is not authorized")
+          if result.get("decision", {}).get("2025_confirmation_authorized") is not False:
+              raise SystemExit("2025 confirmation boundary changed")
+          if result.get("decision", {}).get("war_value_authorized") is not False:
+              raise SystemExit("WAR/value boundary changed")
+          if result.get("boundary", {}).get("2025_source_accessed") is not False:
+              raise SystemExit("2025 source boundary crossed")
+          if result.get("boundary", {}).get("2025_defensive_targets_accessed") is not False:
+              raise SystemExit("2025 defensive target boundary crossed")
+
+          root = Path("inputs/tracked")
+          checks = {
+              "range": "tracked_range_proxy_2021_2023.parquet",
+              "framing": "tracked_framing_proxy_2021_2023.parquet",
+          }
+          for key, filename in checks.items():
+              matches = list(root.rglob(filename))
+              if len(matches) != 1:
+                  raise SystemExit(f"expected one {filename}; observed {matches}")
+              actual = hashlib.sha256(matches[0].read_bytes()).hexdigest()
+              expected = result["storage"][key]["sha256"]
+              if actual != expected:
+                  raise SystemExit(f"{key} SHA-256 mismatch: {actual} != {expected}")
+              print(f"verified {key}: {actual}")
+          PY
+
+      - name: Verify frozen scorer compiles
+        run: python -m py_compile scripts/audit_defense_v1_tracked_challenger.py
+
+      - name: Score frozen tracked challenger
+        run: >-
+          python -u scripts/audit_defense_v1_tracked_challenger.py
+          --source-root inputs/historical
+          --tracked-root inputs/tracked
+
+      - name: Pin scoring workflow metadata
+        env:
+          SCORING_RUN_ID: ${{ github.run_id }}
+          SCORING_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-tracked-challenger/report.json")
+          result = json.loads(path.read_text())
+          result["scoring_run_id"] = int(os.environ["SCORING_RUN_ID"])
+          result["scoring_sha"] = os.environ["SCORING_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload tracked challenger result
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-tracked-challenger-result
+          path: reports/generated/defense-v1-tracked-challenger/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist binding tracked challenger result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-tracked-challenger/report.json docs/defense-v1-tracked-challenger-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-tracked-challenger-result.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Persist Defense v1 tracked challenger result"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
