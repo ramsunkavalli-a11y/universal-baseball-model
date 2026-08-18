@@ -1,0 +1,90 @@
+name: Projection batting v1 2023 validation
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/projection-batting-v1-validation-2023.yml"
+      - "docs/projection-batting-v1-selection-result.json"
+      - "scripts/materialize_projection_batting_v1_validation_2023.py"
+      - "src/universal_baseball/projection_ridge.py"
+      - "src/universal_baseball/projection_training.py"
+      - "src/universal_baseball/projection_selection.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify frozen validation implementation before artifact downloads
+        run: >-
+          python -m py_compile
+          scripts/materialize_projection_batting_v1_validation_2023.py
+          src/universal_baseball/projection_ridge.py
+          src/universal_baseball/projection_training.py
+          src/universal_baseball/projection_selection.py
+          && python -m pytest -q
+          tests/test_projection_ridge.py
+          tests/test_projection_training.py
+          tests/test_projection_selection.py
+
+      - name: Download immutable training responses
+        uses: actions/download-artifact@v7
+        with:
+          name: projection-batting-v1-training-responses
+          path: inputs/training-responses
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32100142102
+          github-token: ${{ github.token }}
+
+      - name: Download immutable development targets
+        uses: actions/download-artifact@v7
+        with:
+          name: projection-batting-v1-development-evidence
+          path: inputs/development-evidence
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32097702869
+          github-token: ${{ github.token }}
+
+      - name: Download immutable frozen B2 snapshots
+        uses: actions/download-artifact@v7
+        with:
+          name: projection-batting-v1-current-talent-snapshots
+          path: inputs/current-talent-snapshots
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32099733186
+          github-token: ${{ github.token }}
+
+      - name: Run fixed 2023 out-of-time validation
+        run: >-
+          python scripts/materialize_projection_batting_v1_validation_2023.py
+          --training-responses-root inputs/training-responses
+          --development-evidence-root inputs/development-evidence
+          --snapshot-root inputs/current-talent-snapshots
+
+      - name: Upload 2023 Projection validation
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: projection-batting-v1-validation-2023
+          path: reports/generated/projection-batting-v1-validation-2023/
+          if-no-files-found: warn
+          retention-days: 14
