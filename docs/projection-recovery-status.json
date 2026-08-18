@@ -58,6 +58,16 @@
     "projection_contracts": [
       {
         "conclusion": "success",
+        "createdAt": "2026-08-18T02:37:25Z",
+        "databaseId": 32092505104,
+        "displayTitle": "Test exact source-residual quarantine in fast CI",
+        "headSha": "facd26f129cb3b709116936d1a996a3e3b0b5d4d",
+        "status": "completed",
+        "updatedAt": "2026-08-18T02:37:54Z",
+        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092505104"
+      },
+      {
+        "conclusion": "success",
         "createdAt": "2026-08-18T02:07:17Z",
         "databaseId": 32090687671,
         "displayTitle": "Test exact-game outcome and league fallbacks in fast CI",
@@ -95,16 +105,6 @@
         "status": "completed",
         "updatedAt": "2026-08-18T01:51:13Z",
         "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32089669934"
-      },
-      {
-        "conclusion": "success",
-        "createdAt": "2026-08-18T01:40:20Z",
-        "databaseId": 32089050302,
-        "displayTitle": "Extend Projection CI to next-year dataset contract",
-        "headSha": "6d533d093880e8be9b745396a2be27f513d69c26",
-        "status": "completed",
-        "updatedAt": "2026-08-18T01:40:44Z",
-        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32089050302"
       }
     ],
     "recovery_audit": [
@@ -129,24 +129,6 @@
         "status": "completed",
         "updatedAt": "2026-08-18T02:33:54Z",
         "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32092166134"
-      }
-    ]
-  },
-  "source_only_audit_artifact": {
-    "artifactId": 9308734004,
-    "digest": "sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466",
-    "exact_removable_residuals": [
-      {
-        "level": "high_a",
-        "player_id": 669233,
-        "game_pk": 755829,
-        "vector": {"batting_PA": 1, "batting_AB": 1, "batting_BB": 0, "batting_HBP": 0, "batting_SO": 0, "batting_SF": 0, "batting_SH": 0, "batting_CI": 0}
-      },
-      {
-        "level": "single_a",
-        "player_id": 686541,
-        "game_pk": 754395,
-        "vector": {"batting_PA": 1, "batting_AB": 1, "batting_BB": 0, "batting_HBP": 0, "batting_SO": 1, "batting_SF": 0, "batting_SH": 0, "batting_CI": 0}
       }
     ]
   }
