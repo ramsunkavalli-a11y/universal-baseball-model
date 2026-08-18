@@ -1,0 +1,169 @@
+{
+  "acceptance": {
+    "accepted_for_feature_contract_consideration": false,
+    "all_historical_40man_team_rosters_nonempty": false,
+    "all_primary_40man_calls_succeeded": false,
+    "all_snapshot_seasons_have_30_mlb_teams": true,
+    "historical_date_parameter_changes_roster_membership": true,
+    "no_cross_team_duplicate_40man_player_ids_within_snapshot": true
+  },
+  "date_sensitivity_control": {
+    "early_count": 43,
+    "early_date": "2021-04-01",
+    "late_count": 45,
+    "late_date": "2021-10-15",
+    "roster_sets_differ": true,
+    "season": 2021,
+    "symmetric_difference_player_count": 20,
+    "symmetric_difference_player_ids": [
+      431148,
+      453265,
+      543022,
+      543351,
+      572125,
+      592178,
+      592717,
+      593974,
+      605538,
+      606625,
+      608678,
+      623485,
+      641793,
+      642731,
+      644433,
+      669214,
+      669674,
+      670768,
+      672744,
+      676845
+    ],
+    "team_id": 137
+  },
+  "gate": "playing_time_historical_roster_source_feasibility",
+  "interpretation": "Source-feasibility only. Acceptance authorizes historical 40-man status for consideration in the later frozen feature contract; active roster, IL/options/transactions/team-depth require separate authorization.",
+  "queried_2025": false,
+  "report_schema_version": "0.2",
+  "roster_source": "official_mlb_stats_api_team_roster",
+  "roster_type_primary": "40Man",
+  "season_reports": [
+    {
+      "active_not_in_same_date_40man_count": 0,
+      "active_sample": [
+        {
+          "active_count": 39,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 110
+        },
+        {
+          "active_count": 40,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 137
+        },
+        {
+          "active_count": 33,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 147
+        }
+      ],
+      "cross_team_duplicate_player_count": 0,
+      "failed_40man_team_count": 0,
+      "forty_man_player_rows": 1345,
+      "forty_man_team_count_max": 52,
+      "forty_man_team_count_mean": 44.833333333333336,
+      "forty_man_team_count_min": 39,
+      "mlb_team_count": 30,
+      "season": 2021,
+      "snapshot_date": "2021-10-15",
+      "successful_40man_team_count": 30,
+      "transactions_pm2d_for_team_137": 23
+    },
+    {
+      "active_not_in_same_date_40man_count": 0,
+      "active_sample": [
+        {
+          "active_count": 40,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 110
+        },
+        {
+          "active_count": 40,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 137
+        },
+        {
+          "active_count": 26,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 147
+        }
+      ],
+      "cross_team_duplicate_player_count": 0,
+      "failed_40man_team_count": 1,
+      "forty_man_player_rows": 1290,
+      "forty_man_team_count_max": 50,
+      "forty_man_team_count_mean": 44.48275862068966,
+      "forty_man_team_count_min": 40,
+      "mlb_team_count": 30,
+      "season": 2022,
+      "snapshot_date": "2022-10-15",
+      "successful_40man_team_count": 29,
+      "transactions_pm2d_for_team_137": 0
+    },
+    {
+      "active_not_in_same_date_40man_count": 0,
+      "active_sample": [
+        {
+          "active_count": 38,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 110
+        },
+        {
+          "active_count": 40,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 137
+        },
+        {
+          "active_count": 40,
+          "active_not_in_40man_count": 0,
+          "source_error": null,
+          "team_id": 147
+        }
+      ],
+      "cross_team_duplicate_player_count": 0,
+      "failed_40man_team_count": 1,
+      "forty_man_player_rows": 1296,
+      "forty_man_team_count_max": 52,
+      "forty_man_team_count_mean": 44.689655172413794,
+      "forty_man_team_count_min": 39,
+      "mlb_team_count": 30,
+      "season": 2023,
+      "snapshot_date": "2023-10-15",
+      "successful_40man_team_count": 29,
+      "transactions_pm2d_for_team_137": 0
+    }
+  ],
+  "snapshots": [
+    "2021-10-15",
+    "2022-10-15",
+    "2023-10-15"
+  ],
+  "source_errors": [
+    {
+      "label": "40Man:2022:121",
+      "message": "Stats API roster contains duplicate player IDs within team/date/type",
+      "type": "ValueError"
+    },
+    {
+      "label": "40Man:2023:121",
+      "message": "Stats API roster contains duplicate player IDs within team/date/type",
+      "type": "ValueError"
+    }
+  ]
+}
