@@ -1,4 +1,4 @@
-# refresh after launching 2024 universal evidence reuse
+# refresh after launching certified 2024 historical MiLB reuse
 name: Projection v1 status probe
 
 on:
@@ -35,6 +35,7 @@ jobs:
           workflows = {
               "projection_validation_contracts_ci": "projection-validation-contracts-ci.yml",
               "current_talent_universal_game_evidence_2024": "current-talent-universal-game-evidence-2024.yml",
+              "projection_historical_milb_2024": "projection-current-talent-historical-milb-2024.yml",
           }
           output = {
               "gate": "projection_v1_status_probe",
