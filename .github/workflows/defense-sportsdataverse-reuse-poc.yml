@@ -31,36 +31,89 @@ jobs:
           cache: pip
 
       - name: Install project and pinned reuse dependency
+        id: install
+        continue-on-error: true
         run: >-
           python -m pip install --upgrade pip
           && python -m pip install -e ".[dev]"
           && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
 
       - name: Verify audit script compiles
+        id: compile
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
         run: python -m py_compile scripts/audit_defense_sportsdataverse_reuse.py
 
       - name: Run frozen reuse feasibility POC
-        run: python scripts/audit_defense_sportsdataverse_reuse.py
+        id: audit_run
+        if: steps.install.outcome == 'success' && steps.compile.outcome == 'success'
+        shell: bash
+        run: |
+          set +e
+          mkdir -p reports/generated/defense-sportsdataverse-reuse-poc
+          python scripts/audit_defense_sportsdataverse_reuse.py 2>&1 \
+            | tee reports/generated/defense-sportsdataverse-reuse-poc/execution.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
 
       - name: Upload POC evidence
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: defense-sportsdataverse-reuse-poc
           path: reports/generated/defense-sportsdataverse-reuse-poc/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
 
-      - name: Persist POC result
+      - name: Persist POC result or failure diagnosis
+        if: always()
         env:
           SOURCE_RUN_ID: ${{ github.run_id }}
           SOURCE_SHA: ${{ github.sha }}
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          COMPILE_OUTCOME: ${{ steps.compile.outcome }}
+          AUDIT_EXIT_CODE: ${{ steps.audit_run.outputs.exit_code }}
         run: |
           set -euo pipefail
           python - <<'PY'
           import json, os
           from pathlib import Path
-          source = Path('reports/generated/defense-sportsdataverse-reuse-poc/report.json')
-          result = json.loads(source.read_text())
+
+          root = Path('reports/generated/defense-sportsdataverse-reuse-poc')
+          source = root / 'report.json'
+          log = root / 'execution.log'
+          if source.exists():
+              result = json.loads(source.read_text())
+          else:
+              tail = ''
+              if log.exists():
+                  tail = '\n'.join(log.read_text(errors='replace').splitlines()[-80:])
+              result = {
+                  'report_schema_version': '0.1',
+                  'gate': 'defense_sportsdataverse_reuse_feasibility_poc',
+                  'contract': 'docs/defense-sportsdataverse-reuse-poc-contract.md',
+                  'decision': {
+                      'mlb_oaa_reuse_candidate': False,
+                      'aaa_tracked_oaa_reuse_feasible': False,
+                      'single_a_tracked_oaa_reuse_feasible': False,
+                      'tracked_milb_oaa_reuse_feasible_for_tested_tiers': False,
+                      'universal_defense_authorized': False,
+                      'catcher_defense_authorized': False,
+                      'war_value_authorized': False,
+                  },
+                  'failure': {
+                      'install_outcome': os.environ.get('INSTALL_OUTCOME', ''),
+                      'compile_outcome': os.environ.get('COMPILE_OUTCOME', ''),
+                      'audit_exit_code': os.environ.get('AUDIT_EXIT_CODE', ''),
+                      'execution_log_tail': tail,
+                  },
+              }
+          result['workflow'] = {
+              'install_outcome': os.environ.get('INSTALL_OUTCOME', ''),
+              'compile_outcome': os.environ.get('COMPILE_OUTCOME', ''),
+              'audit_exit_code': os.environ.get('AUDIT_EXIT_CODE', ''),
+          }
           result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
           result['source_sha'] = os.environ['SOURCE_SHA']
           Path('docs/defense-sportsdataverse-reuse-poc-result.json').write_text(
@@ -70,6 +123,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/defense-sportsdataverse-reuse-poc-result.json
+          if git diff --cached --quiet; then exit 0; fi
           git commit -m "Persist SportsDataverse defense reuse POC"
           for attempt in 1 2 3; do
             git fetch origin source-certification-poc
@@ -78,3 +132,14 @@ jobs:
             sleep $((attempt * 2))
           done
           exit 1
+
+      - name: Enforce POC execution success
+        if: always()
+        env:
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          COMPILE_OUTCOME: ${{ steps.compile.outcome }}
+          AUDIT_EXIT_CODE: ${{ steps.audit_run.outputs.exit_code }}
+        run: |
+          test "$INSTALL_OUTCOME" = "success"
+          test "$COMPILE_OUTCOME" = "success"
+          test "${AUDIT_EXIT_CODE:-1}" -eq 0
