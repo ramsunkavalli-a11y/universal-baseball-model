@@ -1,4 +1,4 @@
-# retrigger status-only probe; no model/source change
+# refresh segmented tracked-source status; no model/source change
 name: Defense v1 workflow status probe
 
 on:
@@ -28,10 +28,7 @@ jobs:
           python - <<'PY'
           import json, os, subprocess
           from pathlib import Path
-
-          workflows = {
-              "tracked_source": "defense-v1-tracked-source.yml",
-          }
+          workflows = {"tracked_source": "defense-v1-tracked-source.yml"}
           out = {"gate": "defense_v1_workflow_status_probe", "workflows": {}}
           env = dict(os.environ)
           for key, workflow in workflows.items():
@@ -44,9 +41,7 @@ jobs:
                   "--json", "databaseId,status,conclusion,headSha,createdAt,updatedAt,displayTitle,url",
               ], check=True, text=True, capture_output=True, env=env)
               out["workflows"][key] = json.loads(result.stdout)
-          Path("docs/defense-v1-workflow-status.json").write_text(
-              json.dumps(out, indent=2, sort_keys=True) + "\n"
-          )
+          Path("docs/defense-v1-workflow-status.json").write_text(json.dumps(out, indent=2, sort_keys=True) + "\n")
           print(json.dumps(out, indent=2, sort_keys=True))
           PY
 
