@@ -30,7 +30,7 @@ MLB_START = "2024-06-01"
 MLB_END = "2024-06-30"
 MILB_START = "2024-06-10"
 MILB_END = "2024-06-16"
-REQUIRED_BIP_COLUMNS = [
+REQUIRED_TRAJECTORY_COLUMNS = [
     "hc_x",
     "hc_y",
     "hit_distance_sc",
@@ -38,7 +38,10 @@ REQUIRED_BIP_COLUMNS = [
     "launch_speed",
     "hit_location",
     "events",
-] + [f"fielder_{i}" for i in range(1, 10)]
+]
+REQUIRED_FIELDER_COLUMNS = [f"fielder_{i}" for i in range(2, 10)]
+REQUIRED_BIP_COLUMNS = REQUIRED_TRAJECTORY_COLUMNS + REQUIRED_FIELDER_COLUMNS
+COVERAGE_COLUMNS = REQUIRED_TRAJECTORY_COLUMNS + [f"fielder_{i}" for i in range(1, 10)]
 
 
 def _bip(frame: pl.DataFrame) -> pl.DataFrame:
@@ -53,7 +56,7 @@ def _bip(frame: pl.DataFrame) -> pl.DataFrame:
 
 def _field_coverage(frame: pl.DataFrame) -> dict[str, float | None]:
     out: dict[str, float | None] = {}
-    for column in REQUIRED_BIP_COLUMNS:
+    for column in COVERAGE_COLUMNS:
         if column not in frame.columns or frame.height == 0:
             out[column] = None
         else:
@@ -61,22 +64,23 @@ def _field_coverage(frame: pl.DataFrame) -> dict[str, float | None]:
     return out
 
 
+def _empty_oaa() -> pl.DataFrame:
+    return pl.DataFrame(
+        schema={
+            "fielder_id": pl.Utf8,
+            "position": pl.Int64,
+            "opportunities": pl.Int64,
+            "oaa": pl.Float64,
+        }
+    )
+
+
 def _oaa_summary(label: str, pitches: pl.DataFrame) -> tuple[dict[str, Any], pl.DataFrame]:
     bip = _bip(pitches)
     missing = [column for column in REQUIRED_BIP_COLUMNS if column not in bip.columns]
     coverage = _field_coverage(bip)
 
-    if missing or bip.is_empty():
-        oaa = pl.DataFrame(
-            schema={
-                "fielder_id": pl.Utf8,
-                "position": pl.Int64,
-                "opportunities": pl.Int64,
-                "oaa": pl.Float64,
-            }
-        )
-    else:
-        oaa = mlb_fielding_oaa(bip)
+    oaa = _empty_oaa() if missing or bip.is_empty() else mlb_fielding_oaa(bip)
 
     opportunities = int(oaa.get_column("opportunities").sum() or 0) if not oaa.is_empty() else 0
     usable_rate = float(opportunities / bip.height) if bip.height else 0.0
@@ -97,6 +101,7 @@ def _oaa_summary(label: str, pitches: pl.DataFrame) -> tuple[dict[str, Any], pl.
         "column_count": len(pitches.columns),
         "bip_row_count": int(bip.height),
         "required_columns_missing": missing,
+        "optional_fielder_1_present": "fielder_1" in bip.columns,
         "required_field_non_null_rate": coverage,
         "oaa_row_count": int(oaa.height),
         "oaa_total_opportunities": opportunities,
@@ -122,6 +127,7 @@ def _mlb_oracle(oaa: pl.DataFrame) -> dict[str, Any]:
             "savant_columns_missing": missing,
             "matched_fielder_count": 0,
             "pearson_correlation": None,
+            "frozen_minimum_correlation": 0.30,
             "passed": False,
         }
 
@@ -162,6 +168,28 @@ def _milb_pass(report: dict[str, Any]) -> bool:
     )
 
 
+def _fetch_milb_level(label: str, candidates: tuple[str, ...]) -> tuple[pl.DataFrame, list[dict[str, Any]], str | None]:
+    attempts: list[dict[str, Any]] = []
+    for level_filter in candidates:
+        print(f"Fetching MiLB Statcast {label} with hfLevel={level_filter!r} {MILB_START}..{MILB_END}")
+        pitches = mlb_statcast_search_minors(
+            MILB_START,
+            MILB_END,
+            game_type="R",
+            hfLevel=level_filter,
+        )
+        attempts.append(
+            {
+                "hfLevel": level_filter,
+                "pitch_row_count": int(pitches.height),
+                "column_count": len(pitches.columns),
+            }
+        )
+        if pitches.height:
+            return pitches, attempts, level_filter
+    return pl.DataFrame(), attempts, None
+
+
 def main() -> int:
     installed_version = version("sportsdataverse")
     if installed_version != PACKAGE_VERSION:
@@ -188,16 +216,11 @@ def main() -> int:
     )
 
     milb_reports: list[dict[str, Any]] = []
-    for label, level_filter in (("AAA", "AAA|"), ("A", "A|")):
-        print(f"Fetching MiLB Statcast {label} {MILB_START}..{MILB_END}")
-        pitches = mlb_statcast_search_minors(
-            MILB_START,
-            MILB_END,
-            game_type="R",
-            hfLevel=level_filter,
-        )
+    for label, candidates in (("AAA", ("AAA|", "AAA")), ("A", ("A|", "A"))):
+        pitches, attempts, selected = _fetch_milb_level(label, candidates)
         level_report, _ = _oaa_summary(label, pitches)
-        level_report["hfLevel"] = level_filter
+        level_report["hfLevel_attempts"] = attempts
+        level_report["hfLevel_selected"] = selected
         level_report["passed"] = _milb_pass(level_report)
         milb_reports.append(level_report)
 
@@ -205,7 +228,7 @@ def main() -> int:
     a_passed = next(row["passed"] for row in milb_reports if row["label"] == "A")
 
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "gate": "defense_sportsdataverse_reuse_feasibility_poc",
         "contract": "docs/defense-sportsdataverse-reuse-poc-contract.md",
         "upstream": {
@@ -254,6 +277,7 @@ def main() -> int:
     for row in milb_reports:
         lines.extend(
             [
+                f"- {row['label']} selected hfLevel: {row['hfLevel_selected']}",
                 f"- {row['label']} BIP: {row['bip_row_count']:,}",
                 f"- {row['label']} OAA opportunities: {row['oaa_total_opportunities']:,}",
                 f"- {row['label']} usable rate: {row['oaa_bip_usable_rate']:.3f}",
