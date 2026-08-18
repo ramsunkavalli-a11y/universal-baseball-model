@@ -1,0 +1,60 @@
+{
+  "2025_outcomes_accessed": false,
+  "2025_source_access_authorized_next": true,
+  "2025_target_materialized": false,
+  "confirmation_contract": "docs/playing-time-v1-confirmation-contract.md",
+  "gate": "playing_time_v1_confirmation_inputs_pre_2025",
+  "on_40man_player_count": 591,
+  "predictor_player_count": 3759,
+  "predictor_storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "615cedb08c327c5d03be310be54938589ed0b46419ac5fc7ec764ecfeb0bc49d",
+    "file_size_bytes": 539263,
+    "path": "reports/generated/playing-time-v1-confirmation-predictors/tables/projection_2024_to_2025_confirmation/predictors.parquet",
+    "row_count": 3759,
+    "schema_sha256": "c0fe039958f17a0ab0f758268684c28da97ab09b71d5c59911917c35871f51c9",
+    "table_name": "playing_time_v1_2024_10_15_confirmation_predictors"
+  },
+  "roster_storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "25299ab3bbcb70e3f46b19610db9a6fdf24595c07322901adc0dedf285cc4b8d",
+    "file_size_bytes": 7275,
+    "path": "reports/generated/playing-time-confirmation-40man-membership/tables/confirmation_40man_membership.parquet",
+    "row_count": 1339,
+    "schema_sha256": "b138cb3ca933207c03fdc2d616e8ee3b0b4e7bc69ecfcf880c344af022003ab8",
+    "table_name": "playing_time_confirmation_2024_10_15_40man_membership"
+  },
+  "snapshot_date": "2024-10-15",
+  "snapshot_storage": {
+    "player_context": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "1be295640db180ed41eda058d8bc11d00f48c07f36128a17c1525b3ad23e8d04",
+      "file_size_bytes": 146044,
+      "path": "reports/generated/projection-batting-v1-confirmation-snapshot/tables/projection_2024_to_2025_confirmation/player_context.parquet",
+      "row_count": 3759,
+      "schema_sha256": "23691657b1ac68aae20fbda0d9f4c5e0cf0352203634f16e07a9c3e56c2425bd",
+      "table_name": "projection_2024_to_2025_confirmation_player_context"
+    },
+    "profile": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "f09472701ab4ac4cf52628736a8aec37a01fd6a7bafd6816d961df3def096cea",
+      "file_size_bytes": 724965,
+      "path": "reports/generated/projection-batting-v1-confirmation-snapshot/tables/projection_2024_to_2025_confirmation/frozen_b2_profile.parquet",
+      "row_count": 45108,
+      "schema_sha256": "83e12b3c3dca92b02ea7ca2039e7d5cf0f83b73b749e37d1f23873b24c5f5c81",
+      "table_name": "projection_2024_to_2025_confirmation_frozen_b2_profile"
+    },
+    "translation_offsets": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "485b0b6f6c6a539f96d1ceae3d03d82e704d211e7bcdcf125e84563c72c36707",
+      "file_size_bytes": 4679,
+      "path": "reports/generated/projection-batting-v1-confirmation-snapshot/tables/projection_2024_to_2025_confirmation/translation_offsets.parquet",
+      "row_count": 72,
+      "schema_sha256": "551419b65e002b0133ecf3bebfd9eac8b1e06c9593e167ad47d974c84908923f",
+      "table_name": "projection_2024_to_2025_confirmation_translation_offsets"
+    }
+  },
+  "source_run_id": 32144363818,
+  "source_sha": "12fbce7c450795b371e8b8e6e9e3213a907377e9",
+  "status": "ready_to_open_2025_confirmation_target"
+}
