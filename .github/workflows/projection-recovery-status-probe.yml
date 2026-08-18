@@ -1,4 +1,4 @@
-# refresh after Projection training-response fast-CI
+# track Projection training-response materialization
 name: Projection recovery status probe
 
 on:
@@ -38,6 +38,7 @@ jobs:
               "projection_contracts": "projection-validation-contracts-ci.yml",
               "development_evidence": "projection-batting-v1-development-evidence.yml",
               "current_talent_snapshots": "projection-batting-v1-current-talent-snapshots.yml",
+              "training_responses": "projection-batting-v1-training-responses.yml",
           }
           output = {"gate": "projection_recovery_status_probe", "workflows": {}}
           env = dict(os.environ)
