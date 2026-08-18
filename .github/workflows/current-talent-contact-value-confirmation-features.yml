@@ -1,0 +1,86 @@
+name: Current Talent contact-value 2023 confirmation features
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "scripts/materialize_current_talent_contact_value_confirmation_features.py"
+      - ".github/workflows/current-talent-contact-value-confirmation-features.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out tested commit
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Require accepted pre-scoring evidence and frozen confirmation refit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          evidence = json.loads(Path("docs/current-talent-contact-value-confirmation-evidence-result.json").read_text())
+          refit = json.loads(Path("docs/current-talent-contact-value-confirmation-refit-result.json").read_text())
+          tracking = json.loads(Path("docs/current-talent-batted-ball-tracking-confirmation-result.json").read_text())
+          if evidence.get("gate") != "current_talent_contact_value_confirmation_evidence_pre_scoring":
+              raise SystemExit("confirmation evidence gate not accepted")
+          if evidence.get("boundary", {}).get("model_scoring") is not False:
+              raise SystemExit("confirmation evidence already scored")
+          if refit.get("gate") != "current_talent_contact_value_confirmation_refit_2021_2022":
+              raise SystemExit("wrong frozen confirmation refit")
+          if tracking.get("gate") != "current_talent_batted_ball_tracking_confirmation":
+              raise SystemExit("confirmation tracking gate not accepted")
+          PY
+
+      - name: Compile frozen confirmation feature materializer
+        run: python -m py_compile scripts/materialize_current_talent_contact_value_confirmation_features.py
+
+      - name: Download accepted confirmation tracking history
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-batted-ball-tracking-confirmation
+          path: seeded/tracking
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32079922837
+          github-token: ${{ github.token }}
+
+      - name: Download accepted confirmation evidence
+        uses: actions/download-artifact@v8
+        with:
+          name: current-talent-contact-value-confirmation-evidence
+          path: seeded/evidence
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32086538491
+          github-token: ${{ github.token }}
+
+      - name: Attach frozen 2023 features without scoring
+        run: >-
+          python scripts/materialize_current_talent_contact_value_confirmation_features.py
+          --tracking-root seeded/tracking
+          --evidence-root seeded/evidence
+          --confirmation-refit docs/current-talent-contact-value-confirmation-refit-result.json
+
+      - name: Upload confirmation features artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-confirmation-features
+          path: reports/generated/current-talent-contact-value-confirmation-features/
+          if-no-files-found: warn
+          retention-days: 14
