@@ -4,9 +4,9 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 ## Start here
 
-**Active work is on `source-certification-poc`, not `main`.** New chats, coding agents, and contributors should read [`docs/project-status.md`](docs/project-status.md) first.
+**`main` now contains the latest integrated project state.** New chats, coding agents, and contributors should read [`docs/project-status.md`](docs/project-status.md) first.
 
-The active draft PR is **#1**. The branch is far ahead of `main`; do not infer project status from the default branch.
+Active Projection development may continue on `source-certification-poc`, but completed work is merged back to `main`. PR **#1** was merged on 2026-08-17 to reconcile the full active history with the default branch.
 
 ## Current stage
 
