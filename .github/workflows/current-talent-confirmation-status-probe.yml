@@ -32,6 +32,7 @@ jobs:
           from pathlib import Path
 
           workflows = {
+              "confirmation_refit": "current-talent-contact-value-confirmation-refit.yml",
               "tracking_confirmation": "current-talent-batted-ball-tracking-confirmation.yml",
               "contact_value_confirmation_source": "current-talent-contact-value-confirmation-source.yml",
               "contact_value_confirmation_source_v2": "current-talent-contact-value-confirmation-source-v2.yml",
@@ -51,7 +52,7 @@ jobs:
                   "--repo", "ramsunkavalli-a11y/universal-baseball-model",
                   "--workflow", workflow,
                   "--branch", "source-certification-poc",
-                  "--limit", "3",
+                  "--limit", "5",
                   "--json", "databaseId,status,conclusion,headSha,createdAt,updatedAt,displayTitle,url",
               ]
               result = subprocess.run(command, check=True, text=True, capture_output=True, env=env)
