@@ -9,6 +9,7 @@ description = "Public-data baseball player evaluation and projection system."
 requires-python = ">=3.12"
 dependencies = [
     "duckdb>=1.0,<2",
+    "numpy>=2.0,<3",
     "polars>=1.0,<2",
     "python-mlb-statsapi>=1,<2",
     "requests>=2.28,<3",
