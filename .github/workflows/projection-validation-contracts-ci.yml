@@ -8,6 +8,7 @@ on:
       - "src/universal_baseball/projection_validation.py"
       - "src/universal_baseball/projection_baselines.py"
       - "src/universal_baseball/projection_dataset.py"
+      - "scripts/materialize_projection_batting_v1_development_evidence.py"
       - "tests/test_projection_validation.py"
       - "tests/test_projection_baselines.py"
       - "tests/test_projection_dataset.py"
@@ -34,12 +35,13 @@ jobs:
       - name: Install project
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
 
-      - name: Compile Projection v1 contracts
+      - name: Compile Projection v1 contracts and evidence materializer
         run: >-
           python -m py_compile
           src/universal_baseball/projection_validation.py
           src/universal_baseball/projection_baselines.py
           src/universal_baseball/projection_dataset.py
+          scripts/materialize_projection_batting_v1_development_evidence.py
 
       - name: Test Projection chronology, dataset, carry-forward baseline, and 2025 quarantine
         run: >-
