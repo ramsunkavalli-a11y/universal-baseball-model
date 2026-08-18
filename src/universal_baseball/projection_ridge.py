@@ -15,6 +15,8 @@ from typing import Any, Sequence
 import numpy as np
 import polars as pl
 
+from universal_baseball.current_talent_evidence import LEVEL_ORDINAL
+
 
 PROJECTION_FORM_AGE = "projection_age_ilr_ridge_v1"
 PROJECTION_FORM_AGE_LEVEL = "projection_age_level_ilr_ridge_v1"
@@ -32,16 +34,19 @@ AGE_FEATURE_NAMES = (
     "age_hinge_35_over_5",
 )
 LEVEL_INDICATOR_LEVELS = (
-    "Rookie Complex",
-    "Single-A",
-    "High-A",
+    "ROOKIE_COMPLEX",
+    "SINGLE_A",
+    "HIGH_A",
     "AA",
     "AAA",
 )
-LEVEL_FEATURE_NAMES = tuple(
-    f"level_{level.lower().replace(' ', '_').replace('-', '_')}" for level in LEVEL_INDICATOR_LEVELS
-)
-ALLOWED_LEVELS = frozenset((*LEVEL_INDICATOR_LEVELS, "MLB"))
+LEVEL_FEATURE_NAMES = tuple(f"level_{level.lower()}" for level in LEVEL_INDICATOR_LEVELS)
+ALLOWED_LEVELS = frozenset(LEVEL_ORDINAL)
+LEVEL_DISPLAY_ALIASES = {
+    "Rookie Complex": "ROOKIE_COMPLEX",
+    "Single-A": "SINGLE_A",
+    "High-A": "HIGH_A",
+}
 ZERO_SCALE_TOLERANCE = 1e-12
 
 
@@ -109,6 +114,14 @@ def projection_feature_names(form: str) -> tuple[str, ...]:
     raise ValueError(f"unsupported Projection candidate form: {form}")
 
 
+def _canonical_level(value: object) -> str:
+    level = str(value)
+    level = LEVEL_DISPLAY_ALIASES.get(level, level)
+    if level not in ALLOWED_LEVELS:
+        raise ValueError(f"unsupported Projection as-of level: {value}")
+    return level
+
+
 def build_projection_design(context: pl.DataFrame, *, form: str) -> pl.DataFrame:
     required = {"player_id", "age_years", "as_of_level_group"}
     missing = sorted(required - set(context.columns))
@@ -124,9 +137,7 @@ def build_projection_design(context: pl.DataFrame, *, form: str) -> pl.DataFrame
     for row in context.select("player_id", "age_years", "as_of_level_group").iter_rows(named=True):
         if row["age_years"] is None or row["as_of_level_group"] is None:
             raise ValueError("Projection design requires non-null age and as-of level")
-        level = str(row["as_of_level_group"])
-        if level not in ALLOWED_LEVELS:
-            raise ValueError(f"unsupported Projection as-of level: {level}")
+        level = _canonical_level(row["as_of_level_group"])
         features: dict[str, object] = {
             "player_id": int(row["player_id"]),
             "intercept": 1.0,
