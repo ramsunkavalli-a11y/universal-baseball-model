@@ -1,0 +1,2126 @@
+{
+  "boundary": {
+    "2025_accessed": false,
+    "2025_batting_rate_outcomes_accessed": false,
+    "model_fit": false,
+    "playing_time_v1_modified": false,
+    "position_inferred_from_missing_fielding": false,
+    "projection_v1_modified": false
+  },
+  "decision": {
+    "all_representative_leagues_viable": true,
+    "broader_historical_position_source_certification_authorized": true,
+    "position_model_authorized": false,
+    "team_allocator_authorized": false
+  },
+  "gate": "position_role_2024_official_bulk_fielding_source_poc",
+  "leagues": [
+    {
+      "acceptance": {
+        "both_group_requests_succeeded": true,
+        "fielding_identity_team_position_complete": true,
+        "pagination_complete": true,
+        "player_team_position_grain_unique": true,
+        "viable_for_broader_position_source_certification": true
+      },
+      "display_name": "MLB American League",
+      "fielding_diagnostics": {
+        "key_inventory": {
+          "player_keys": [
+            "firstName",
+            "fullName",
+            "id",
+            "lastName",
+            "link"
+          ],
+          "position_keys": [
+            "abbreviation",
+            "code",
+            "name",
+            "type"
+          ],
+          "split_keys": [
+            "league",
+            "numTeams",
+            "player",
+            "position",
+            "rank",
+            "season",
+            "sport",
+            "stat",
+            "team"
+          ],
+          "stat_keys": [
+            "age",
+            "assists",
+            "catcherERA",
+            "catchersInterference",
+            "caughtStealing",
+            "caughtStealingPercentage",
+            "chances",
+            "doublePlays",
+            "errors",
+            "fielding",
+            "games",
+            "gamesPlayed",
+            "gamesStarted",
+            "innings",
+            "passedBall",
+            "pickoffs",
+            "putOuts",
+            "rangeFactorPer9Inn",
+            "rangeFactorPerGame",
+            "stolenBasePercentage",
+            "stolenBases",
+            "throwingErrors",
+            "triplePlays",
+            "wildPitches"
+          ],
+          "team_keys": [
+            "id",
+            "link",
+            "name"
+          ]
+        },
+        "missing_player_id_split_count": 0,
+        "missing_position_split_count": 0,
+        "missing_team_id_split_count": 0,
+        "observed_positions": [
+          {
+            "abbreviation": "P",
+            "code": "1",
+            "name": "Pitcher"
+          },
+          {
+            "abbreviation": "DH",
+            "code": "10",
+            "name": "Designated Hitter"
+          },
+          {
+            "abbreviation": "C",
+            "code": "2",
+            "name": "Catcher"
+          },
+          {
+            "abbreviation": "1B",
+            "code": "3",
+            "name": "First Base"
+          },
+          {
+            "abbreviation": "2B",
+            "code": "4",
+            "name": "Second Base"
+          },
+          {
+            "abbreviation": "3B",
+            "code": "5",
+            "name": "Third Base"
+          },
+          {
+            "abbreviation": "SS",
+            "code": "6",
+            "name": "Shortstop"
+          },
+          {
+            "abbreviation": "LF",
+            "code": "7",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "CF",
+            "code": "8",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "RF",
+            "code": "9",
+            "name": "Outfielder"
+          }
+        ],
+        "player_team_position_duplicate_extra_row_count": 0,
+        "player_team_position_duplicate_key_count": 0,
+        "position_source_counts": {
+          "split.position": 1435
+        },
+        "split_count": 1435,
+        "unique_player_count": 771
+      },
+      "fielding_unique_player_count": 771,
+      "groups": {
+        "fielding": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/103/fielding_offset_0.json",
+              "group": "fielding",
+              "league_id": 103,
+              "offset": 0,
+              "reported_total_splits": 1435,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=103&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 381283,
+              "response_sha256": "0e84e16c6bfa38e679a9b811531d7c47b32c098404f691efca6e7c971b3252b2",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/103/fielding_offset_500.json",
+              "group": "fielding",
+              "league_id": 103,
+              "offset": 500,
+              "reported_total_splits": 1435,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=103&playerPool=ALL&gameType=R&limit=500&offset=500",
+              "response_byte_count": 703670,
+              "response_sha256": "7f457cd54705ffa405e67adc52bd33d148bc43d7e8146d16df682836fddb51bf",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/103/fielding_offset_1000.json",
+              "group": "fielding",
+              "league_id": 103,
+              "offset": 1000,
+              "reported_total_splits": 1435,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=103&playerPool=ALL&gameType=R&limit=500&offset=1000",
+              "response_byte_count": 305926,
+              "response_sha256": "ef41f639e3909e4030440c90b7c3b343f83c1f1926ffdb273ff0c50e3c8ceca4",
+              "returned_split_count": 435,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "assists",
+              "catcherERA",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "chances",
+              "doublePlays",
+              "errors",
+              "fielding",
+              "games",
+              "gamesPlayed",
+              "gamesStarted",
+              "innings",
+              "passedBall",
+              "pickoffs",
+              "putOuts",
+              "rangeFactorPer9Inn",
+              "rangeFactorPerGame",
+              "stolenBasePercentage",
+              "stolenBases",
+              "throwingErrors",
+              "triplePlays",
+              "wildPitches"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 3,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 1435,
+          "unique_player_count": 771
+        },
+        "hitting": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/103/hitting_offset_0.json",
+              "group": "hitting",
+              "league_id": 103,
+              "offset": 0,
+              "reported_total_splits": 391,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2024&leagueId=103&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 401605,
+              "response_sha256": "ca0cd722b53015e04fef4237fe7a54e7bcf023b33f1b8aee50395796e3fe0718",
+              "returned_split_count": 391,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "airOuts",
+              "atBats",
+              "atBatsPerHomeRun",
+              "avg",
+              "babip",
+              "baseOnBalls",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "doubles",
+              "gamesPlayed",
+              "groundIntoDoublePlay",
+              "groundOuts",
+              "groundOutsToAirouts",
+              "hitByPitch",
+              "hits",
+              "homeRuns",
+              "intentionalWalks",
+              "leftOnBase",
+              "numberOfPitches",
+              "obp",
+              "ops",
+              "plateAppearances",
+              "rbi",
+              "runs",
+              "sacBunts",
+              "sacFlies",
+              "slg",
+              "stolenBasePercentage",
+              "stolenBases",
+              "strikeOuts",
+              "totalBases",
+              "triples"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 1,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 391,
+          "unique_player_count": 391
+        }
+      },
+      "hitting_players_without_fielding_count": 1,
+      "hitting_players_without_fielding_examples": [
+        675915
+      ],
+      "hitting_unique_player_count": 391,
+      "league_id": 103,
+      "level_group": "MLB_AL",
+      "source_errors": []
+    },
+    {
+      "acceptance": {
+        "both_group_requests_succeeded": true,
+        "fielding_identity_team_position_complete": true,
+        "pagination_complete": true,
+        "player_team_position_grain_unique": true,
+        "viable_for_broader_position_source_certification": true
+      },
+      "display_name": "Triple-A International League",
+      "fielding_diagnostics": {
+        "key_inventory": {
+          "player_keys": [
+            "firstName",
+            "fullName",
+            "id",
+            "lastName",
+            "link"
+          ],
+          "position_keys": [
+            "abbreviation",
+            "code",
+            "name",
+            "type"
+          ],
+          "split_keys": [
+            "league",
+            "numTeams",
+            "player",
+            "position",
+            "rank",
+            "season",
+            "sport",
+            "stat",
+            "team"
+          ],
+          "stat_keys": [
+            "age",
+            "assists",
+            "catcherERA",
+            "catchersInterference",
+            "caughtStealing",
+            "caughtStealingPercentage",
+            "chances",
+            "doublePlays",
+            "errors",
+            "fielding",
+            "games",
+            "gamesPlayed",
+            "gamesStarted",
+            "innings",
+            "passedBall",
+            "pickoffs",
+            "putOuts",
+            "rangeFactorPer9Inn",
+            "rangeFactorPerGame",
+            "stolenBasePercentage",
+            "stolenBases",
+            "throwingErrors",
+            "triplePlays",
+            "wildPitches"
+          ],
+          "team_keys": [
+            "id",
+            "link",
+            "name"
+          ]
+        },
+        "missing_player_id_split_count": 0,
+        "missing_position_split_count": 0,
+        "missing_team_id_split_count": 0,
+        "observed_positions": [
+          {
+            "abbreviation": "P",
+            "code": "1",
+            "name": "Pitcher"
+          },
+          {
+            "abbreviation": "DH",
+            "code": "10",
+            "name": "Designated Hitter"
+          },
+          {
+            "abbreviation": "C",
+            "code": "2",
+            "name": "Catcher"
+          },
+          {
+            "abbreviation": "1B",
+            "code": "3",
+            "name": "First Base"
+          },
+          {
+            "abbreviation": "2B",
+            "code": "4",
+            "name": "Second Base"
+          },
+          {
+            "abbreviation": "3B",
+            "code": "5",
+            "name": "Third Base"
+          },
+          {
+            "abbreviation": "SS",
+            "code": "6",
+            "name": "Shortstop"
+          },
+          {
+            "abbreviation": "LF",
+            "code": "7",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "CF",
+            "code": "8",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "RF",
+            "code": "9",
+            "name": "Outfielder"
+          }
+        ],
+        "player_team_position_duplicate_extra_row_count": 0,
+        "player_team_position_duplicate_key_count": 0,
+        "position_source_counts": {
+          "split.position": 2722
+        },
+        "split_count": 2722,
+        "unique_player_count": 1390
+      },
+      "fielding_unique_player_count": 1390,
+      "groups": {
+        "fielding": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/117/fielding_offset_0.json",
+              "group": "fielding",
+              "league_id": 117,
+              "offset": 0,
+              "reported_total_splits": 2722,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=117&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 384567,
+              "response_sha256": "7e12c4c5afcec4e24da4fd2bfad9e68a314ac7bf9d3017d2a43e6495ca094047",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/117/fielding_offset_500.json",
+              "group": "fielding",
+              "league_id": 117,
+              "offset": 500,
+              "reported_total_splits": 2722,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=117&playerPool=ALL&gameType=R&limit=500&offset=500",
+              "response_byte_count": 735136,
+              "response_sha256": "7ae9888612f00683928bc1b0159fb0702324d06e5f7df9e952ccd0ac5ac9f1ef",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/117/fielding_offset_1000.json",
+              "group": "fielding",
+              "league_id": 117,
+              "offset": 1000,
+              "reported_total_splits": 2722,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=117&playerPool=ALL&gameType=R&limit=500&offset=1000",
+              "response_byte_count": 1065726,
+              "response_sha256": "8da971072bd0493095c418316acdb6ceb3957b5b9fc63d7c7eb72034f04d01f0",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/117/fielding_offset_1500.json",
+              "group": "fielding",
+              "league_id": 117,
+              "offset": 1500,
+              "reported_total_splits": 2722,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=117&playerPool=ALL&gameType=R&limit=500&offset=1500",
+              "response_byte_count": 353847,
+              "response_sha256": "0004e27e1ddd451e34ff4cea3d0291e3aef702f52da5ca69b0b66978539964b1",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/117/fielding_offset_2000.json",
+              "group": "fielding",
+              "league_id": 117,
+              "offset": 2000,
+              "reported_total_splits": 2722,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=117&playerPool=ALL&gameType=R&limit=500&offset=2000",
+              "response_byte_count": 396595,
+              "response_sha256": "af55e3004eb4c90ef027e776d8ad1c70017f6f0e244345b48be54fc4a180d1a3",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/117/fielding_offset_2500.json",
+              "group": "fielding",
+              "league_id": 117,
+              "offset": 2500,
+              "reported_total_splits": 2722,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=117&playerPool=ALL&gameType=R&limit=500&offset=2500",
+              "response_byte_count": 484596,
+              "response_sha256": "a1a9a7aaf0c7ec7094bb4d28d2e24ccd68055a699c6d43fba41957f2ef5104eb",
+              "returned_split_count": 222,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "assists",
+              "catcherERA",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "chances",
+              "doublePlays",
+              "errors",
+              "fielding",
+              "games",
+              "gamesPlayed",
+              "gamesStarted",
+              "innings",
+              "passedBall",
+              "pickoffs",
+              "putOuts",
+              "rangeFactorPer9Inn",
+              "rangeFactorPerGame",
+              "stolenBasePercentage",
+              "stolenBases",
+              "throwingErrors",
+              "triplePlays",
+              "wildPitches"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 6,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 2722,
+          "unique_player_count": 1390
+        },
+        "hitting": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/117/hitting_offset_0.json",
+              "group": "hitting",
+              "league_id": 117,
+              "offset": 0,
+              "reported_total_splits": 610,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2024&leagueId=117&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 516519,
+              "response_sha256": "16905f707fbcc9a31546e8ebca4788a6e6f7130f490ccb8d4ded00da60496e56",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/117/hitting_offset_500.json",
+              "group": "hitting",
+              "league_id": 117,
+              "offset": 500,
+              "reported_total_splits": 610,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2024&leagueId=117&playerPool=ALL&gameType=R&limit=500&offset=500",
+              "response_byte_count": 112719,
+              "response_sha256": "a6c9e2deebb173765018345498879d33fcf90a8b9311039cde04b71a4b4f82c9",
+              "returned_split_count": 110,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "airOuts",
+              "atBats",
+              "atBatsPerHomeRun",
+              "avg",
+              "babip",
+              "baseOnBalls",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "doubles",
+              "gamesPlayed",
+              "groundIntoDoublePlay",
+              "groundOuts",
+              "groundOutsToAirouts",
+              "hitByPitch",
+              "hits",
+              "homeRuns",
+              "intentionalWalks",
+              "leftOnBase",
+              "numberOfPitches",
+              "obp",
+              "ops",
+              "plateAppearances",
+              "rbi",
+              "runs",
+              "sacBunts",
+              "sacFlies",
+              "slg",
+              "stolenBasePercentage",
+              "stolenBases",
+              "strikeOuts",
+              "totalBases",
+              "triples"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 2,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 610,
+          "unique_player_count": 610
+        }
+      },
+      "hitting_players_without_fielding_count": 5,
+      "hitting_players_without_fielding_examples": [
+        676973,
+        676991,
+        685337,
+        690902,
+        691620
+      ],
+      "hitting_unique_player_count": 610,
+      "league_id": 117,
+      "level_group": "AAA",
+      "source_errors": []
+    },
+    {
+      "acceptance": {
+        "both_group_requests_succeeded": true,
+        "fielding_identity_team_position_complete": true,
+        "pagination_complete": true,
+        "player_team_position_grain_unique": true,
+        "viable_for_broader_position_source_certification": true
+      },
+      "display_name": "Double-A Eastern League",
+      "fielding_diagnostics": {
+        "key_inventory": {
+          "player_keys": [
+            "firstName",
+            "fullName",
+            "id",
+            "lastName",
+            "link"
+          ],
+          "position_keys": [
+            "abbreviation",
+            "code",
+            "name",
+            "type"
+          ],
+          "split_keys": [
+            "league",
+            "numTeams",
+            "player",
+            "position",
+            "rank",
+            "season",
+            "sport",
+            "stat",
+            "team"
+          ],
+          "stat_keys": [
+            "age",
+            "assists",
+            "catcherERA",
+            "catchersInterference",
+            "caughtStealing",
+            "caughtStealingPercentage",
+            "chances",
+            "doublePlays",
+            "errors",
+            "fielding",
+            "games",
+            "gamesPlayed",
+            "gamesStarted",
+            "innings",
+            "passedBall",
+            "pickoffs",
+            "putOuts",
+            "rangeFactorPer9Inn",
+            "rangeFactorPerGame",
+            "stolenBasePercentage",
+            "stolenBases",
+            "throwingErrors",
+            "triplePlays",
+            "wildPitches"
+          ],
+          "team_keys": [
+            "id",
+            "link",
+            "name"
+          ]
+        },
+        "missing_player_id_split_count": 0,
+        "missing_position_split_count": 0,
+        "missing_team_id_split_count": 0,
+        "observed_positions": [
+          {
+            "abbreviation": "P",
+            "code": "1",
+            "name": "Pitcher"
+          },
+          {
+            "abbreviation": "DH",
+            "code": "10",
+            "name": "Designated Hitter"
+          },
+          {
+            "abbreviation": "C",
+            "code": "2",
+            "name": "Catcher"
+          },
+          {
+            "abbreviation": "1B",
+            "code": "3",
+            "name": "First Base"
+          },
+          {
+            "abbreviation": "2B",
+            "code": "4",
+            "name": "Second Base"
+          },
+          {
+            "abbreviation": "3B",
+            "code": "5",
+            "name": "Third Base"
+          },
+          {
+            "abbreviation": "SS",
+            "code": "6",
+            "name": "Shortstop"
+          },
+          {
+            "abbreviation": "LF",
+            "code": "7",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "CF",
+            "code": "8",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "RF",
+            "code": "9",
+            "name": "Outfielder"
+          }
+        ],
+        "player_team_position_duplicate_extra_row_count": 0,
+        "player_team_position_duplicate_key_count": 0,
+        "position_source_counts": {
+          "split.position": 1362
+        },
+        "split_count": 1362,
+        "unique_player_count": 716
+      },
+      "fielding_unique_player_count": 716,
+      "groups": {
+        "fielding": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/113/fielding_offset_0.json",
+              "group": "fielding",
+              "league_id": 113,
+              "offset": 0,
+              "reported_total_splits": 1362,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=113&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 373241,
+              "response_sha256": "09788467b145c81ebc54e4304e95d47a94002cd4ca5661f5f9b643924c2cd95b",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/113/fielding_offset_500.json",
+              "group": "fielding",
+              "league_id": 113,
+              "offset": 500,
+              "reported_total_splits": 1362,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=113&playerPool=ALL&gameType=R&limit=500&offset=500",
+              "response_byte_count": 712161,
+              "response_sha256": "f858fba85f0096f22e59c018c924c7a5ca03f9da3d7e970de63177460ba2d578",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/113/fielding_offset_1000.json",
+              "group": "fielding",
+              "league_id": 113,
+              "offset": 1000,
+              "reported_total_splits": 1362,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=113&playerPool=ALL&gameType=R&limit=500&offset=1000",
+              "response_byte_count": 262540,
+              "response_sha256": "68dd5a3ec81dbe84995d3debf5dbe4ee2341852268b39558a299e1a5d7191e0a",
+              "returned_split_count": 362,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "assists",
+              "catcherERA",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "chances",
+              "doublePlays",
+              "errors",
+              "fielding",
+              "games",
+              "gamesPlayed",
+              "gamesStarted",
+              "innings",
+              "passedBall",
+              "pickoffs",
+              "putOuts",
+              "rangeFactorPer9Inn",
+              "rangeFactorPerGame",
+              "stolenBasePercentage",
+              "stolenBases",
+              "throwingErrors",
+              "triplePlays",
+              "wildPitches"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 3,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 1362,
+          "unique_player_count": 716
+        },
+        "hitting": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/113/hitting_offset_0.json",
+              "group": "hitting",
+              "league_id": 113,
+              "offset": 0,
+              "reported_total_splits": 330,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2024&leagueId=113&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 340467,
+              "response_sha256": "45f151fbfff937c3a09b6240c57dac8582205b268db2e80ca0551e0f785d1760",
+              "returned_split_count": 330,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "airOuts",
+              "atBats",
+              "atBatsPerHomeRun",
+              "avg",
+              "babip",
+              "baseOnBalls",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "doubles",
+              "gamesPlayed",
+              "groundIntoDoublePlay",
+              "groundOuts",
+              "groundOutsToAirouts",
+              "hitByPitch",
+              "hits",
+              "homeRuns",
+              "intentionalWalks",
+              "leftOnBase",
+              "numberOfPitches",
+              "obp",
+              "ops",
+              "plateAppearances",
+              "rbi",
+              "runs",
+              "sacBunts",
+              "sacFlies",
+              "slg",
+              "stolenBasePercentage",
+              "stolenBases",
+              "strikeOuts",
+              "totalBases",
+              "triples"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 1,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 330,
+          "unique_player_count": 330
+        }
+      },
+      "hitting_players_without_fielding_count": 1,
+      "hitting_players_without_fielding_examples": [
+        682793
+      ],
+      "hitting_unique_player_count": 330,
+      "league_id": 113,
+      "level_group": "AA",
+      "source_errors": []
+    },
+    {
+      "acceptance": {
+        "both_group_requests_succeeded": true,
+        "fielding_identity_team_position_complete": true,
+        "pagination_complete": true,
+        "player_team_position_grain_unique": true,
+        "viable_for_broader_position_source_certification": true
+      },
+      "display_name": "High-A Midwest League",
+      "fielding_diagnostics": {
+        "key_inventory": {
+          "player_keys": [
+            "firstName",
+            "fullName",
+            "id",
+            "lastName",
+            "link"
+          ],
+          "position_keys": [
+            "abbreviation",
+            "code",
+            "name",
+            "type"
+          ],
+          "split_keys": [
+            "league",
+            "numTeams",
+            "player",
+            "position",
+            "rank",
+            "season",
+            "sport",
+            "stat",
+            "team"
+          ],
+          "stat_keys": [
+            "age",
+            "assists",
+            "catcherERA",
+            "catchersInterference",
+            "caughtStealing",
+            "caughtStealingPercentage",
+            "chances",
+            "doublePlays",
+            "errors",
+            "fielding",
+            "games",
+            "gamesPlayed",
+            "gamesStarted",
+            "innings",
+            "passedBall",
+            "pickoffs",
+            "putOuts",
+            "rangeFactorPer9Inn",
+            "rangeFactorPerGame",
+            "stolenBasePercentage",
+            "stolenBases",
+            "throwingErrors",
+            "triplePlays",
+            "wildPitches"
+          ],
+          "team_keys": [
+            "id",
+            "link",
+            "name"
+          ]
+        },
+        "missing_player_id_split_count": 0,
+        "missing_position_split_count": 0,
+        "missing_team_id_split_count": 0,
+        "observed_positions": [
+          {
+            "abbreviation": "P",
+            "code": "1",
+            "name": "Pitcher"
+          },
+          {
+            "abbreviation": "DH",
+            "code": "10",
+            "name": "Designated Hitter"
+          },
+          {
+            "abbreviation": "C",
+            "code": "2",
+            "name": "Catcher"
+          },
+          {
+            "abbreviation": "1B",
+            "code": "3",
+            "name": "First Base"
+          },
+          {
+            "abbreviation": "2B",
+            "code": "4",
+            "name": "Second Base"
+          },
+          {
+            "abbreviation": "3B",
+            "code": "5",
+            "name": "Third Base"
+          },
+          {
+            "abbreviation": "SS",
+            "code": "6",
+            "name": "Shortstop"
+          },
+          {
+            "abbreviation": "LF",
+            "code": "7",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "CF",
+            "code": "8",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "RF",
+            "code": "9",
+            "name": "Outfielder"
+          }
+        ],
+        "player_team_position_duplicate_extra_row_count": 0,
+        "player_team_position_duplicate_key_count": 0,
+        "position_source_counts": {
+          "split.position": 1198
+        },
+        "split_count": 1198,
+        "unique_player_count": 638
+      },
+      "fielding_unique_player_count": 638,
+      "groups": {
+        "fielding": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/118/fielding_offset_0.json",
+              "group": "fielding",
+              "league_id": 118,
+              "offset": 0,
+              "reported_total_splits": 1198,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=118&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 353352,
+              "response_sha256": "0c7a90a0aed2019af7c6229b6834976e426718f2038ed1f8137d322ad184a591",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/118/fielding_offset_500.json",
+              "group": "fielding",
+              "league_id": 118,
+              "offset": 500,
+              "reported_total_splits": 1198,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=118&playerPool=ALL&gameType=R&limit=500&offset=500",
+              "response_byte_count": 390674,
+              "response_sha256": "777664f4c9e8e980ddce63aaaae9d475debc0bb9770f0dbf8585d1c7e67b43e9",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/118/fielding_offset_1000.json",
+              "group": "fielding",
+              "league_id": 118,
+              "offset": 1000,
+              "reported_total_splits": 1198,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=118&playerPool=ALL&gameType=R&limit=500&offset=1000",
+              "response_byte_count": 193104,
+              "response_sha256": "ee3cc416af8e4d72a508f423477fdd51707c5f1efdb1b3b449146f7d81c01a67",
+              "returned_split_count": 198,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "assists",
+              "catcherERA",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "chances",
+              "doublePlays",
+              "errors",
+              "fielding",
+              "games",
+              "gamesPlayed",
+              "gamesStarted",
+              "innings",
+              "passedBall",
+              "pickoffs",
+              "putOuts",
+              "rangeFactorPer9Inn",
+              "rangeFactorPerGame",
+              "stolenBasePercentage",
+              "stolenBases",
+              "throwingErrors",
+              "triplePlays",
+              "wildPitches"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 3,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 1198,
+          "unique_player_count": 638
+        },
+        "hitting": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/118/hitting_offset_0.json",
+              "group": "hitting",
+              "league_id": 118,
+              "offset": 0,
+              "reported_total_splits": 287,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2024&leagueId=118&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 296467,
+              "response_sha256": "07b8e77e08ffd4a2b1f08e45a01c92655887226b186282a07e4e55d85fe9f52a",
+              "returned_split_count": 287,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "airOuts",
+              "atBats",
+              "atBatsPerHomeRun",
+              "avg",
+              "babip",
+              "baseOnBalls",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "doubles",
+              "gamesPlayed",
+              "groundIntoDoublePlay",
+              "groundOuts",
+              "groundOutsToAirouts",
+              "hitByPitch",
+              "hits",
+              "homeRuns",
+              "intentionalWalks",
+              "leftOnBase",
+              "numberOfPitches",
+              "obp",
+              "ops",
+              "plateAppearances",
+              "rbi",
+              "runs",
+              "sacBunts",
+              "sacFlies",
+              "slg",
+              "stolenBasePercentage",
+              "stolenBases",
+              "strikeOuts",
+              "totalBases",
+              "triples"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 1,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 287,
+          "unique_player_count": 287
+        }
+      },
+      "hitting_players_without_fielding_count": 1,
+      "hitting_players_without_fielding_examples": [
+        815460
+      ],
+      "hitting_unique_player_count": 287,
+      "league_id": 118,
+      "level_group": "HIGH_A",
+      "source_errors": []
+    },
+    {
+      "acceptance": {
+        "both_group_requests_succeeded": true,
+        "fielding_identity_team_position_complete": true,
+        "pagination_complete": true,
+        "player_team_position_grain_unique": true,
+        "viable_for_broader_position_source_certification": true
+      },
+      "display_name": "Single-A Florida State League",
+      "fielding_diagnostics": {
+        "key_inventory": {
+          "player_keys": [
+            "firstName",
+            "fullName",
+            "id",
+            "lastName",
+            "link"
+          ],
+          "position_keys": [
+            "abbreviation",
+            "code",
+            "name",
+            "type"
+          ],
+          "split_keys": [
+            "league",
+            "numTeams",
+            "player",
+            "position",
+            "rank",
+            "season",
+            "sport",
+            "stat",
+            "team"
+          ],
+          "stat_keys": [
+            "age",
+            "assists",
+            "catcherERA",
+            "catchersInterference",
+            "caughtStealing",
+            "caughtStealingPercentage",
+            "chances",
+            "doublePlays",
+            "errors",
+            "fielding",
+            "games",
+            "gamesPlayed",
+            "gamesStarted",
+            "innings",
+            "passedBall",
+            "pickoffs",
+            "putOuts",
+            "rangeFactorPer9Inn",
+            "rangeFactorPerGame",
+            "stolenBasePercentage",
+            "stolenBases",
+            "throwingErrors",
+            "triplePlays",
+            "wildPitches"
+          ],
+          "team_keys": [
+            "id",
+            "link",
+            "name"
+          ]
+        },
+        "missing_player_id_split_count": 0,
+        "missing_position_split_count": 0,
+        "missing_team_id_split_count": 0,
+        "observed_positions": [
+          {
+            "abbreviation": "P",
+            "code": "1",
+            "name": "Pitcher"
+          },
+          {
+            "abbreviation": "DH",
+            "code": "10",
+            "name": "Designated Hitter"
+          },
+          {
+            "abbreviation": "C",
+            "code": "2",
+            "name": "Catcher"
+          },
+          {
+            "abbreviation": "1B",
+            "code": "3",
+            "name": "First Base"
+          },
+          {
+            "abbreviation": "2B",
+            "code": "4",
+            "name": "Second Base"
+          },
+          {
+            "abbreviation": "3B",
+            "code": "5",
+            "name": "Third Base"
+          },
+          {
+            "abbreviation": "SS",
+            "code": "6",
+            "name": "Shortstop"
+          },
+          {
+            "abbreviation": "LF",
+            "code": "7",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "CF",
+            "code": "8",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "RF",
+            "code": "9",
+            "name": "Outfielder"
+          }
+        ],
+        "player_team_position_duplicate_extra_row_count": 0,
+        "player_team_position_duplicate_key_count": 0,
+        "position_source_counts": {
+          "split.position": 943
+        },
+        "split_count": 943,
+        "unique_player_count": 515
+      },
+      "fielding_unique_player_count": 515,
+      "groups": {
+        "fielding": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/110/fielding_offset_0.json",
+              "group": "fielding",
+              "league_id": 110,
+              "offset": 0,
+              "reported_total_splits": 943,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=110&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 355431,
+              "response_sha256": "2e232c474545829aad1c42e82488301ff9d57b316f8a6c7ebbb7e3a9cfd67964",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/110/fielding_offset_500.json",
+              "group": "fielding",
+              "league_id": 110,
+              "offset": 500,
+              "reported_total_splits": 943,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=110&playerPool=ALL&gameType=R&limit=500&offset=500",
+              "response_byte_count": 308360,
+              "response_sha256": "d51fb7a350c0c993c3130fa98879c784ca44eba55720befc1a3f56a43c73fb5b",
+              "returned_split_count": 443,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "assists",
+              "catcherERA",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "chances",
+              "doublePlays",
+              "errors",
+              "fielding",
+              "games",
+              "gamesPlayed",
+              "gamesStarted",
+              "innings",
+              "passedBall",
+              "pickoffs",
+              "putOuts",
+              "rangeFactorPer9Inn",
+              "rangeFactorPerGame",
+              "stolenBasePercentage",
+              "stolenBases",
+              "throwingErrors",
+              "triplePlays",
+              "wildPitches"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 2,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 943,
+          "unique_player_count": 515
+        },
+        "hitting": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/110/hitting_offset_0.json",
+              "group": "hitting",
+              "league_id": 110,
+              "offset": 0,
+              "reported_total_splits": 217,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2024&leagueId=110&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 223621,
+              "response_sha256": "771d3edf1ebe6200fdb9be986289475c4fac067a36de1688c393ec27dee61df8",
+              "returned_split_count": 217,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "airOuts",
+              "atBats",
+              "atBatsPerHomeRun",
+              "avg",
+              "babip",
+              "baseOnBalls",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "doubles",
+              "gamesPlayed",
+              "groundIntoDoublePlay",
+              "groundOuts",
+              "groundOutsToAirouts",
+              "hitByPitch",
+              "hits",
+              "homeRuns",
+              "intentionalWalks",
+              "leftOnBase",
+              "numberOfPitches",
+              "obp",
+              "ops",
+              "plateAppearances",
+              "rbi",
+              "runs",
+              "sacBunts",
+              "sacFlies",
+              "slg",
+              "stolenBasePercentage",
+              "stolenBases",
+              "strikeOuts",
+              "totalBases",
+              "triples"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 1,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 217,
+          "unique_player_count": 217
+        }
+      },
+      "hitting_players_without_fielding_count": 0,
+      "hitting_players_without_fielding_examples": [],
+      "hitting_unique_player_count": 217,
+      "league_id": 110,
+      "level_group": "SINGLE_A",
+      "source_errors": []
+    },
+    {
+      "acceptance": {
+        "both_group_requests_succeeded": true,
+        "fielding_identity_team_position_complete": true,
+        "pagination_complete": true,
+        "player_team_position_grain_unique": true,
+        "viable_for_broader_position_source_certification": true
+      },
+      "display_name": "Arizona Complex League",
+      "fielding_diagnostics": {
+        "key_inventory": {
+          "player_keys": [
+            "firstName",
+            "fullName",
+            "id",
+            "lastName",
+            "link"
+          ],
+          "position_keys": [
+            "abbreviation",
+            "code",
+            "name",
+            "type"
+          ],
+          "split_keys": [
+            "league",
+            "numTeams",
+            "player",
+            "position",
+            "rank",
+            "season",
+            "sport",
+            "stat",
+            "team"
+          ],
+          "stat_keys": [
+            "age",
+            "assists",
+            "catcherERA",
+            "catchersInterference",
+            "caughtStealing",
+            "caughtStealingPercentage",
+            "chances",
+            "doublePlays",
+            "errors",
+            "fielding",
+            "games",
+            "gamesPlayed",
+            "gamesStarted",
+            "innings",
+            "passedBall",
+            "pickoffs",
+            "putOuts",
+            "rangeFactorPer9Inn",
+            "rangeFactorPerGame",
+            "stolenBasePercentage",
+            "stolenBases",
+            "throwingErrors",
+            "triplePlays",
+            "wildPitches"
+          ],
+          "team_keys": [
+            "id",
+            "link",
+            "name"
+          ]
+        },
+        "missing_player_id_split_count": 0,
+        "missing_position_split_count": 0,
+        "missing_team_id_split_count": 0,
+        "observed_positions": [
+          {
+            "abbreviation": "P",
+            "code": "1",
+            "name": "Pitcher"
+          },
+          {
+            "abbreviation": "DH",
+            "code": "10",
+            "name": "Designated Hitter"
+          },
+          {
+            "abbreviation": "C",
+            "code": "2",
+            "name": "Catcher"
+          },
+          {
+            "abbreviation": "1B",
+            "code": "3",
+            "name": "First Base"
+          },
+          {
+            "abbreviation": "2B",
+            "code": "4",
+            "name": "Second Base"
+          },
+          {
+            "abbreviation": "3B",
+            "code": "5",
+            "name": "Third Base"
+          },
+          {
+            "abbreviation": "SS",
+            "code": "6",
+            "name": "Shortstop"
+          },
+          {
+            "abbreviation": "LF",
+            "code": "7",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "CF",
+            "code": "8",
+            "name": "Outfielder"
+          },
+          {
+            "abbreviation": "RF",
+            "code": "9",
+            "name": "Outfielder"
+          }
+        ],
+        "player_team_position_duplicate_extra_row_count": 0,
+        "player_team_position_duplicate_key_count": 0,
+        "position_source_counts": {
+          "split.position": 1609
+        },
+        "split_count": 1609,
+        "unique_player_count": 905
+      },
+      "fielding_unique_player_count": 905,
+      "groups": {
+        "fielding": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/121/fielding_offset_0.json",
+              "group": "fielding",
+              "league_id": 121,
+              "offset": 0,
+              "reported_total_splits": 1609,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=121&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 383131,
+              "response_sha256": "4a1759cf7332347f36c8ad84d0ae6a0d87bf258ca2c5edd8632e3ceabeb52e1a",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/121/fielding_offset_500.json",
+              "group": "fielding",
+              "league_id": 121,
+              "offset": 500,
+              "reported_total_splits": 1609,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=121&playerPool=ALL&gameType=R&limit=500&offset=500",
+              "response_byte_count": 716012,
+              "response_sha256": "24eb901bd8649c7a3472e8eb8af204a1db969b5cbe5a5bee10478b95be1fecf5",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/121/fielding_offset_1000.json",
+              "group": "fielding",
+              "league_id": 121,
+              "offset": 1000,
+              "reported_total_splits": 1609,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=121&playerPool=ALL&gameType=R&limit=500&offset=1000",
+              "response_byte_count": 386941,
+              "response_sha256": "11566d0ce73f3f9273431f7d551da80c8913076a3e6261fb65e487aec03e9813",
+              "returned_split_count": 500,
+              "status_code": 200
+            },
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/121/fielding_offset_1500.json",
+              "group": "fielding",
+              "league_id": 121,
+              "offset": 1500,
+              "reported_total_splits": 1609,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2024&leagueId=121&playerPool=ALL&gameType=R&limit=500&offset=1500",
+              "response_byte_count": 339486,
+              "response_sha256": "43d9a9b9acbc8e9fb2939dee9e236e270aea1e65e7fe585f1dc3bcdbe5184ba3",
+              "returned_split_count": 109,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "assists",
+              "catcherERA",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "chances",
+              "doublePlays",
+              "errors",
+              "fielding",
+              "games",
+              "gamesPlayed",
+              "gamesStarted",
+              "innings",
+              "passedBall",
+              "pickoffs",
+              "putOuts",
+              "rangeFactorPer9Inn",
+              "rangeFactorPerGame",
+              "stolenBasePercentage",
+              "stolenBases",
+              "throwingErrors",
+              "triplePlays",
+              "wildPitches"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 4,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 1609,
+          "unique_player_count": 905
+        },
+        "hitting": {
+          "captures": [
+            {
+              "capture_path": "data/quarantine/position-role-fielding-source-poc/2024/121/hitting_offset_0.json",
+              "group": "hitting",
+              "league_id": 121,
+              "offset": 0,
+              "reported_total_splits": 397,
+              "requested_limit": 500,
+              "requested_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2024&leagueId=121&playerPool=ALL&gameType=R&limit=500&offset=0",
+              "response_byte_count": 405939,
+              "response_sha256": "6fcd08c14c8e0fe4323caf4bcb4d58cd31f08190b6d254bc185d0e1a5081740c",
+              "returned_split_count": 397,
+              "status_code": 200
+            }
+          ],
+          "key_inventory": {
+            "player_keys": [
+              "firstName",
+              "fullName",
+              "id",
+              "lastName",
+              "link"
+            ],
+            "position_keys": [
+              "abbreviation",
+              "code",
+              "name",
+              "type"
+            ],
+            "split_keys": [
+              "league",
+              "numTeams",
+              "player",
+              "position",
+              "rank",
+              "season",
+              "sport",
+              "stat",
+              "team"
+            ],
+            "stat_keys": [
+              "age",
+              "airOuts",
+              "atBats",
+              "atBatsPerHomeRun",
+              "avg",
+              "babip",
+              "baseOnBalls",
+              "catchersInterference",
+              "caughtStealing",
+              "caughtStealingPercentage",
+              "doubles",
+              "gamesPlayed",
+              "groundIntoDoublePlay",
+              "groundOuts",
+              "groundOutsToAirouts",
+              "hitByPitch",
+              "hits",
+              "homeRuns",
+              "intentionalWalks",
+              "leftOnBase",
+              "numberOfPitches",
+              "obp",
+              "ops",
+              "plateAppearances",
+              "rbi",
+              "runs",
+              "sacBunts",
+              "sacFlies",
+              "slg",
+              "stolenBasePercentage",
+              "stolenBases",
+              "strikeOuts",
+              "totalBases",
+              "triples"
+            ],
+            "team_keys": [
+              "id",
+              "link",
+              "name"
+            ]
+          },
+          "missing_player_id_split_count": 0,
+          "page_count": 1,
+          "pagination_complete": true,
+          "request_succeeded": true,
+          "split_count": 397,
+          "unique_player_count": 397
+        }
+      },
+      "hitting_players_without_fielding_count": 2,
+      "hitting_players_without_fielding_examples": [
+        670399,
+        688032
+      ],
+      "hitting_unique_player_count": 397,
+      "league_id": 121,
+      "level_group": "ROOKIE_COMPLEX",
+      "source_errors": []
+    }
+  ],
+  "report_schema_version": "0.1",
+  "request_contract": {
+    "gameType": "R",
+    "groups": [
+      "fielding",
+      "hitting"
+    ],
+    "playerPool": "ALL",
+    "representative_leagues": [
+      103,
+      117,
+      113,
+      118,
+      110,
+      121
+    ],
+    "season": 2024,
+    "sportIds_sent": false,
+    "stats": "season"
+  },
+  "season": 2024,
+  "source": "official_mlb_stats_api_stats_season",
+  "source_run_id": 32147584204,
+  "source_sha": "953b0fe5bab5102130c6f2ef9851c04fdafde15d"
+}
