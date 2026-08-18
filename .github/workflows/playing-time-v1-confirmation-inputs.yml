@@ -1,0 +1,185 @@
+name: Playing-time v1 confirmation inputs
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/playing-time-v1-confirmation-inputs.yml"
+      - "docs/playing-time-v1-confirmation-contract.md"
+      - "src/universal_baseball/projection_current_talent.py"
+      - "tests/test_projection_current_talent.py"
+      - "scripts/materialize_projection_batting_v1_confirmation_snapshot.py"
+      - "scripts/audit_playing_time_confirmation_40man_membership.py"
+      - "scripts/materialize_playing_time_v1_confirmation_predictors.py"
+      - "docs/playing-time-confirmation-inputs-trigger.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install -r requirements-playing-time.txt
+
+      - name: Require frozen development promotion and pre-2025 refit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          development = json.loads(Path('docs/playing-time-v1-development-result.json').read_text())
+          refit = json.loads(Path('docs/playing-time-v1-confirmation-refit-result.json').read_text())
+          if development.get('status') != 'development_passed_confirmation_refit_frozen':
+              raise SystemExit(f"development not frozen for confirmation: {development}")
+          if not development.get('2025_confirmation_authorized'):
+              raise SystemExit('development result does not authorize 2025 confirmation')
+          if development.get('2025_accessed'):
+              raise SystemExit('development result unexpectedly claims 2025 access')
+          decision = refit.get('decision', {})
+          if not decision.get('parameters_frozen_before_2025'):
+              raise SystemExit('confirmation parameters were not frozen before 2025')
+          if not decision.get('2025_source_materialization_authorized'):
+              raise SystemExit('refit does not authorize confirmation source materialization')
+          if refit.get('boundary', {}).get('2025_accessed'):
+              raise SystemExit('refit unexpectedly claims 2025 access')
+          print('Pre-2025 development/refit gate: PASS')
+          PY
+
+      - name: Verify confirmation predictor code before source work
+        run: >-
+          python -m py_compile
+          src/universal_baseball/projection_current_talent.py
+          scripts/materialize_projection_batting_v1_confirmation_snapshot.py
+          scripts/audit_playing_time_confirmation_40man_membership.py
+          scripts/materialize_playing_time_v1_confirmation_predictors.py
+          && python -m pytest -q
+          tests/test_projection_current_talent.py
+          tests/test_playing_time_model.py
+          tests/test_playing_time_roster_source.py
+
+      - name: Seed immutable certified 2021-2024 evidence artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo="ramsunkavalli-a11y/universal-baseball-model"
+          mkdir -p seeded
+          download() {
+            local run_id="$1"
+            local artifact="$2"
+            local dest="$3"
+            mkdir -p "$dest"
+            gh run download "$run_id" --repo "$repo" --name "$artifact" --dir "$dest"
+          }
+          for level in aaa aa 'a+' a rk; do
+            download 31979609553 "current-talent-historical-milb-full-season-2021-${level}" "seeded/2021/milb/${level}"
+            download 31971662070 "current-talent-historical-milb-full-season-${level}" "seeded/2022/milb/${level}"
+            download 31971923778 "current-talent-historical-milb-full-season-2023-${level}" "seeded/2023/milb/${level}"
+            download 32095039114 "current-talent-historical-milb-full-season-2024-${level}" "seeded/2024/milb/${level}"
+          done
+          download 31986504169 "current-talent-historical-mlb-2021" "seeded/2021/mlb"
+          download 31988255280 "current-talent-historical-mlb-2022" "seeded/2022/mlb"
+          download 31989561396 "current-talent-historical-mlb-2023" "seeded/2023/mlb"
+          download 32096473700 "current-talent-historical-mlb-2024" "seeded/2024/mlb"
+
+      - name: Materialize frozen 2024-10-15 B2 confirmation snapshot
+        run: >-
+          python scripts/materialize_projection_batting_v1_confirmation_snapshot.py
+          --input-root seeded
+
+      - name: Certify 2024-10-15 binary 40-man membership
+        run: python scripts/audit_playing_time_confirmation_40man_membership.py
+
+      - name: Materialize fixed confirmation predictors
+        run: >-
+          python scripts/materialize_playing_time_v1_confirmation_predictors.py
+          --evidence-root seeded
+          --snapshot-root reports/generated/projection-batting-v1-confirmation-snapshot
+          --membership-root reports/generated/playing-time-confirmation-40man-membership
+
+      - name: Build binding pre-2025 input result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          snapshot = json.loads(Path('reports/generated/projection-batting-v1-confirmation-snapshot/report.json').read_text())
+          roster = json.loads(Path('reports/generated/playing-time-confirmation-40man-membership/report.json').read_text())
+          predictors = json.loads(Path('reports/generated/playing-time-v1-confirmation-predictors/report.json').read_text())
+          if snapshot.get('boundary', {}).get('2025_outcomes_accessed'):
+              raise SystemExit('snapshot gate claims 2025 outcome access')
+          if roster.get('boundary', {}).get('2025_outcomes_accessed'):
+              raise SystemExit('roster gate claims 2025 outcome access')
+          if predictors.get('boundary', {}).get('2025_outcomes_accessed'):
+              raise SystemExit('predictor gate claims 2025 outcome access')
+          if not roster.get('accepted'):
+              raise SystemExit('confirmation 40-man source was not accepted')
+          result = {
+              'gate': 'playing_time_v1_confirmation_inputs_pre_2025',
+              'status': 'ready_to_open_2025_confirmation_target',
+              'source_run_id': int(os.environ['SOURCE_RUN_ID']),
+              'source_sha': os.environ['SOURCE_SHA'],
+              'confirmation_contract': 'docs/playing-time-v1-confirmation-contract.md',
+              'snapshot_date': '2024-10-15',
+              'predictor_player_count': predictors['player_count'],
+              'on_40man_player_count': predictors['on_40man_player_count'],
+              'snapshot_storage': snapshot['storage'],
+              'roster_storage': roster['storage'],
+              'predictor_storage': predictors['storage'],
+              '2025_outcomes_accessed': False,
+              '2025_target_materialized': False,
+              '2025_source_access_authorized_next': True,
+          }
+          Path('docs/playing-time-v1-confirmation-inputs-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+
+      - name: Upload immutable pre-2025 confirmation inputs
+        uses: actions/upload-artifact@v7
+        with:
+          name: playing-time-v1-confirmation-inputs
+          path: |
+            reports/generated/projection-batting-v1-confirmation-snapshot/
+            reports/generated/playing-time-confirmation-40man-membership/
+            reports/generated/playing-time-v1-confirmation-predictors/
+            data/quarantine/projection-batting-v1-confirmation-snapshot/
+            data/quarantine/playing-time-confirmation-40man-membership/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Persist binding pre-2025 input result
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/playing-time-v1-confirmation-inputs-result.json
+          git commit -m "Persist playing-time confirmation input gate"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
