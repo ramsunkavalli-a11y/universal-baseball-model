@@ -1,6 +1,6 @@
 # Batting Projection v1 Plan
 
-Last updated: 2026-08-17 19:25 PT
+Last updated: 2026-08-17 19:28 PT
 
 Status: **IMPLEMENTATION / DEVELOPMENT-DATA ASSEMBLY — 2025 OUTCOMES QUARANTINED**
 
@@ -36,16 +36,18 @@ Completed / passing deterministic work:
 - exact-game league fallback behavior;
 - combined fast-CI validation of those fallback contracts.
 
-Recent passing runs include `32089050302`, `32089669934`, `32090401492`, `32090635490`, and `32090687671`.
+Recent passing runs: `32089050302`, `32089669934`, `32090401492`, `32090635490`, and `32090687671`.
 
-Current blocker:
+The current blocker is the heavy 2024 MiLB historical-evidence reuse/materialization path. Live-source runs `32089284674`, `32090307461`, `32090635458`, and `32090668312` all failed.
 
-- the heavy 2024 MiLB historical-evidence reuse/materialization path has not yet produced a clean certified artifact;
-- live-source runs `32089284674`, `32090307461`, `32090635458`, and `32090668312` failed;
-- dedicated source-gap audit run `32091086460` also failed before completing its intended inspection;
-- recovery run `32091704947` was launched with the interrupted import path corrected and was still in progress at the handoff timestamp.
+Dedicated source-gap audit run `32091086460` first failed because of an import-path issue. Recovery run `32091704947` corrected that import and reached the official source, then failed closed on a concrete game-level source condition:
 
-The current task is therefore **source-gap isolation and evidence materialization**, not age-curve fitting and not model selection.
+- `game_pk = 755829`
+- `https://statsapi.mlb.com/api/v1/game/755829/feed/live` -> **404 Not Found**
+- `capture_official_json()` correctly rejected the non-2xx response
+- recovery artifact `9308582512`, digest `sha256:a5847628722d0ae12e80ed90e649d20fd24e6195bf17b96fb61e681b35d273d2`
+
+The current task is therefore to classify and handle that exact official-source condition, continue the audit beyond it, and obtain a clean certified 2024 evidence artifact. It is **not** time to fit the age curve or score Projection candidates.
 
 Machine-readable status:
 
@@ -261,8 +263,8 @@ Playing-time/role probability should then be added as a separate projection chan
 
 1. **DONE:** implement deterministic Projection fold/window and next-year dataset contracts.
 2. **DONE:** add/verify exact-game official outcome and league fallback behavior in fast CI.
-3. **IN PROGRESS:** produce a clean certified 2024 MiLB historical evidence artifact for Projection reuse; resolve only evidence-backed source gaps.
-4. **NEXT:** materialize and chronology-verify the complete 2022–2024 development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
+3. **CURRENT:** classify the official 404 for `game_pk 755829`, add the narrowest supported source rule/regression, and rerun the source-gap audit beyond that game.
+4. **NEXT:** obtain a clean certified 2024 MiLB historical evidence artifact and then materialize/chronology-verify the complete 2022–2024 development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
 5. **THEN:** implement and score carry-forward Projection Baseline 0.
 6. **THEN:** implement the simple age/development Baseline 1 and run the frozen three-fold development comparison.
 7. **ONLY IF DEVELOPMENT PASSES:** freeze the confirmation refit/model-selection contract before opening any 2025 outcomes.
