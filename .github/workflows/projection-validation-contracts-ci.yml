@@ -8,10 +8,13 @@ on:
       - "src/universal_baseball/projection_validation.py"
       - "src/universal_baseball/projection_baselines.py"
       - "src/universal_baseball/projection_dataset.py"
+      - "src/universal_baseball/current_talent_official_game_fallback.py"
       - "scripts/materialize_projection_batting_v1_development_evidence.py"
+      - "scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py"
       - "tests/test_projection_validation.py"
       - "tests/test_projection_baselines.py"
       - "tests/test_projection_dataset.py"
+      - "tests/test_current_talent_official_game_fallback.py"
       - ".github/workflows/projection-validation-contracts-ci.yml"
   workflow_dispatch:
 
@@ -35,17 +38,20 @@ jobs:
       - name: Install project
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
 
-      - name: Compile Projection v1 contracts and evidence materializer
+      - name: Compile Projection and exact-game fallback contracts
         run: >-
           python -m py_compile
           src/universal_baseball/projection_validation.py
           src/universal_baseball/projection_baselines.py
           src/universal_baseball/projection_dataset.py
+          src/universal_baseball/current_talent_official_game_fallback.py
           scripts/materialize_projection_batting_v1_development_evidence.py
+          scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py
 
-      - name: Test Projection chronology, dataset, carry-forward baseline, and 2025 quarantine
+      - name: Test Projection contracts and exact-game fallback
         run: >-
           python -m pytest -q
           tests/test_projection_validation.py
           tests/test_projection_baselines.py
           tests/test_projection_dataset.py
+          tests/test_current_talent_official_game_fallback.py
