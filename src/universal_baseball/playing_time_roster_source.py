@@ -3,8 +3,11 @@
 This module retrieves/projects official Stats API roster/transaction evidence.
 The certified 40-man feature is deliberately **set membership only**. The source
 can return the same player twice with conflicting row-level status (documented
-for José Buttó on 2022/2023 Mets snapshots), so Active/Minors/IL status is not
-derived from a `40Man` response.
+for José Buttó on 2022/2023 Mets snapshots), and can expose row-level
+``parentTeamId`` values that differ from the requested MLB organization for a
+player returned by that organization's 40Man endpoint. Therefore Active/Minors/
+IL status and row-level parent-team metadata are diagnostics only and are not
+used to infer binary 40-man membership.
 """
 
 from __future__ import annotations
@@ -39,6 +42,8 @@ FORTY_MAN_MEMBERSHIP_SCHEMA: dict[str, pl.DataType] = {
     "source_row_count": pl.Int64,
     "source_status_codes": pl.String,
     "source_status_conflict": pl.Boolean,
+    "source_parent_team_ids": pl.String,
+    "source_parent_team_id_mismatch": pl.Boolean,
 }
 
 
@@ -145,10 +150,12 @@ def project_team_40man_membership_payload(
 ) -> pl.DataFrame:
     """Project one binary 40-man membership row per player.
 
-    Duplicate source rows are allowed only when identity/team membership is
-    unambiguous. Conflicting source `status` values are preserved as diagnostics
-    but are **not** interpreted. This makes the only authorized fact:
-    `player_id is present in the official team's 40Man membership set as of date`.
+    Duplicate source rows are allowed only when player identity is unambiguous.
+    Conflicting source `status` and `parentTeamId` values are preserved as
+    diagnostics but are **not** interpreted. The authorized membership fact is
+    only that `player_id` is present in the requested official team's 40Man
+    endpoint as of the requested date. Cross-team endpoint conflicts are checked
+    by the caller after all MLB teams are collected.
     """
     rows = _roster_rows(payload)
     by_player: dict[int, list[dict[str, Any]]] = {}
@@ -157,12 +164,6 @@ def project_team_40man_membership_payload(
         player_id = person.get("id")
         if player_id is None:
             raise ValueError("Stats API 40Man row missing person.id")
-        parent_team_id = row.get("parentTeamId")
-        if parent_team_id is not None and int(parent_team_id) != int(team_id):
-            raise ValueError(
-                f"Stats API 40Man row parentTeamId mismatch for player {player_id}: "
-                f"{parent_team_id} != {team_id}"
-            )
         by_player.setdefault(int(player_id), []).append(row)
 
     projected: list[dict[str, object]] = []
@@ -182,6 +183,13 @@ def project_team_40man_membership_payload(
                 for row in player_rows
             }
         )
+        parent_team_ids = sorted(
+            {
+                int(row["parentTeamId"])
+                for row in player_rows
+                if row.get("parentTeamId") is not None
+            }
+        )
         projected.append(
             {
                 "as_of_date": as_of_date,
@@ -192,6 +200,10 @@ def project_team_40man_membership_payload(
                 "source_row_count": len(player_rows),
                 "source_status_codes": ",".join(status_codes),
                 "source_status_conflict": len(status_codes) > 1,
+                "source_parent_team_ids": ",".join(str(value) for value in parent_team_ids),
+                "source_parent_team_id_mismatch": any(
+                    value != int(team_id) for value in parent_team_ids
+                ),
             }
         )
     frame = (
