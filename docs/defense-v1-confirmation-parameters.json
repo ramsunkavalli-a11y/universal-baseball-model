@@ -1,0 +1,1561 @@
+{
+  "boundary": {
+    "2024_tracking_confirmation_predictor_accessed": false,
+    "2025_defensive_source_materialized": false,
+    "2025_defensive_targets_accessed": false,
+    "development_thresholds_changed": false,
+    "model_form_reselected": false,
+    "playing_time_v1_modified": false,
+    "position_role_v1_modified": false,
+    "run_value_conversion_performed": false
+  },
+  "contract": "docs/defense-v1-2025-confirmation-contract.md",
+  "contract_sha256": "5229fb29730f29ab5421978dfe580f5a426e9f6c7b4740d3ab7ffad54bb831aa",
+  "decision": {
+    "2024_mlb_tracking_confirmation_predictor_materialization_authorized": true,
+    "2025_confirmation_scoring_authorized_after_source_certification": true,
+    "2025_defensive_target_source_materialization_authorized": true,
+    "additional_development_challenger_authorized": false,
+    "defense_v1_final_confirmation_complete": false,
+    "pre_2025_parameters_frozen": true,
+    "war_value_authorized": false
+  },
+  "deterministic_reproduction": {
+    "comparison": "exact canonical parameter object equality",
+    "passed": true
+  },
+  "freeze_run_id": 32198466409,
+  "freeze_sha": "38c751b044ed994b3a0f5aebf437a8e732c76699",
+  "gate": "defense_v1_pre_2025_parameter_freeze",
+  "package_versions": {
+    "numpy": "2.5.2",
+    "polars": "1.43.2",
+    "python": "3.12.13",
+    "sportsdataverse": "0.0.75"
+  },
+  "parameter_hash": "sha256:cba6b7ebe4b2598db2c4d9ef360b0784f23a94ad61385f87149b08c46e0390d5",
+  "parameters": {
+    "catcher_blocking": {
+      "coefficients": [
+        -0.256238499226307,
+        -0.5264710753321524
+      ],
+      "eligibility": {
+        "minimum_fielding_outs": 300
+      },
+      "exposure": "fielding_outs",
+      "family": "C2",
+      "feature": "passed_balls_per_9",
+      "insufficient_evidence_fallback": "B0_neutral",
+      "lambda": 0.0,
+      "normalization": {
+        "count": 1765,
+        "feature": "passed_balls_per_9",
+        "mean": 0.17241685888606925,
+        "sd": 0.1391379197614434
+      },
+      "normalized_term": "passed_balls_per_9_z_two_season_recency_exposure",
+      "prior_season_recency_weight": 0.5,
+      "training_row_count": 193
+    },
+    "catcher_throwing": {
+      "coefficients": [
+        -0.05004551398089254,
+        0.22111290883166904
+      ],
+      "eligibility": {
+        "minimum_fielding_outs": 300,
+        "minimum_steal_attempts": 10
+      },
+      "family": "C1",
+      "feature": "caught_stealing_pct",
+      "insufficient_evidence_fallback": "B0_neutral",
+      "lambda": 0.0,
+      "normalization": {
+        "count": 1758,
+        "feature": "caught_stealing_pct",
+        "mean": 0.251255672552965,
+        "sd": 0.09338149541489442
+      },
+      "normalized_term": "caught_stealing_pct_z",
+      "training_row_count": 197
+    },
+    "closed": {
+      "additional_pre_2025_challenger_search": true,
+      "age_A1": true,
+      "tracked_framing_F1": true,
+      "tracked_milb_T1": true,
+      "traditional_feature_search": true
+    },
+    "general": {
+      "coverage_fallback": {
+        "eligible_affiliated_milb": "U1",
+        "eligible_mlb_with_eligible_tracking": "T1",
+        "eligible_mlb_without_eligible_tracking": "U1",
+        "insufficient_u1_evidence": "B0_neutral_position_relative",
+        "tracked_milb_t1": "closed_for_v1"
+      },
+      "eligibility": {
+        "exact_next_year_target_position_match": true,
+        "minimum_chances": 100,
+        "minimum_fielding_outs": 300,
+        "positions": [
+          "1B",
+          "2B",
+          "3B",
+          "SS",
+          "LF",
+          "CF",
+          "RF"
+        ]
+      },
+      "normalization": {
+        "cell": [
+          {
+            "count": 153,
+            "feature": "fielding_pct",
+            "level_group": "AA",
+            "mean": 0.989907898737824,
+            "position": "1B",
+            "sd": 0.0065377069729220996
+          },
+          {
+            "count": 168,
+            "feature": "fielding_pct",
+            "level_group": "AAA",
+            "mean": 0.9911010572515363,
+            "position": "1B",
+            "sd": 0.005946294937826814
+          },
+          {
+            "count": 157,
+            "feature": "fielding_pct",
+            "level_group": "HIGH_A",
+            "mean": 0.9886001517710269,
+            "position": "1B",
+            "sd": 0.0073092904414429226
+          },
+          {
+            "count": 208,
+            "feature": "fielding_pct",
+            "level_group": "MLB",
+            "mean": 0.993325578454293,
+            "position": "1B",
+            "sd": 0.004735138428684534
+          },
+          {
+            "count": 247,
+            "feature": "fielding_pct",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.9804596123994814,
+            "position": "1B",
+            "sd": 0.01285162680888882
+          },
+          {
+            "count": 172,
+            "feature": "fielding_pct",
+            "level_group": "SINGLE_A",
+            "mean": 0.9855788172606345,
+            "position": "1B",
+            "sd": 0.009251131826304894
+          },
+          {
+            "count": 120,
+            "feature": "fielding_pct",
+            "level_group": "AA",
+            "mean": 0.9744812983927267,
+            "position": "2B",
+            "sd": 0.013771471185013862
+          },
+          {
+            "count": 149,
+            "feature": "fielding_pct",
+            "level_group": "AAA",
+            "mean": 0.9771353055000893,
+            "position": "2B",
+            "sd": 0.012087069126489708
+          },
+          {
+            "count": 121,
+            "feature": "fielding_pct",
+            "level_group": "HIGH_A",
+            "mean": 0.9685246699298785,
+            "position": "2B",
+            "sd": 0.01891480344931014
+          },
+          {
+            "count": 205,
+            "feature": "fielding_pct",
+            "level_group": "MLB",
+            "mean": 0.9815692362204179,
+            "position": "2B",
+            "sd": 0.010704404020842764
+          },
+          {
+            "count": 86,
+            "feature": "fielding_pct",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.9561627914716949,
+            "position": "2B",
+            "sd": 0.02378759222672191
+          },
+          {
+            "count": 83,
+            "feature": "fielding_pct",
+            "level_group": "SINGLE_A",
+            "mean": 0.963062820934796,
+            "position": "2B",
+            "sd": 0.01781499473302727
+          },
+          {
+            "count": 98,
+            "feature": "fielding_pct",
+            "level_group": "AA",
+            "mean": 0.9360779323282383,
+            "position": "3B",
+            "sd": 0.02344900033018417
+          },
+          {
+            "count": 75,
+            "feature": "fielding_pct",
+            "level_group": "AAA",
+            "mean": 0.944357395273642,
+            "position": "3B",
+            "sd": 0.02252324490696831
+          },
+          {
+            "count": 73,
+            "feature": "fielding_pct",
+            "level_group": "HIGH_A",
+            "mean": 0.9236559095116157,
+            "position": "3B",
+            "sd": 0.029741487104521663
+          },
+          {
+            "count": 186,
+            "feature": "fielding_pct",
+            "level_group": "MLB",
+            "mean": 0.9562387179350119,
+            "position": "3B",
+            "sd": 0.020929335041672294
+          },
+          {
+            "count": 46,
+            "feature": "fielding_pct",
+            "level_group": "SINGLE_A",
+            "mean": 0.9175130089056616,
+            "position": "3B",
+            "sd": 0.029417580224784422
+          },
+          {
+            "count": 100,
+            "feature": "fielding_pct",
+            "level_group": "AA",
+            "mean": 0.9856648255486733,
+            "position": "CF",
+            "sd": 0.010782978655611961
+          },
+          {
+            "count": 77,
+            "feature": "fielding_pct",
+            "level_group": "AAA",
+            "mean": 0.9865647088763188,
+            "position": "CF",
+            "sd": 0.01022592131466285
+          },
+          {
+            "count": 80,
+            "feature": "fielding_pct",
+            "level_group": "HIGH_A",
+            "mean": 0.9791669400937885,
+            "position": "CF",
+            "sd": 0.014547727752655662
+          },
+          {
+            "count": 200,
+            "feature": "fielding_pct",
+            "level_group": "MLB",
+            "mean": 0.9891350398984836,
+            "position": "CF",
+            "sd": 0.009355828129109983
+          },
+          {
+            "count": 45,
+            "feature": "fielding_pct",
+            "level_group": "SINGLE_A",
+            "mean": 0.9758086729374427,
+            "position": "CF",
+            "sd": 0.013643321634535509
+          },
+          {
+            "count": 95,
+            "feature": "fielding_pct",
+            "level_group": "MLB",
+            "mean": 0.9868903795998284,
+            "position": "LF",
+            "sd": 0.010421695182280259
+          },
+          {
+            "count": 56,
+            "feature": "fielding_pct",
+            "level_group": "AA",
+            "mean": 0.9782770054427941,
+            "position": "RF",
+            "sd": 0.014020974682520377
+          },
+          {
+            "count": 32,
+            "feature": "fielding_pct",
+            "level_group": "AAA",
+            "mean": 0.9793853973466363,
+            "position": "RF",
+            "sd": 0.011032548655942363
+          },
+          {
+            "count": 40,
+            "feature": "fielding_pct",
+            "level_group": "HIGH_A",
+            "mean": 0.9715307777742849,
+            "position": "RF",
+            "sd": 0.01577132291952982
+          },
+          {
+            "count": 118,
+            "feature": "fielding_pct",
+            "level_group": "MLB",
+            "mean": 0.9842635335488207,
+            "position": "RF",
+            "sd": 0.011394094539498743
+          },
+          {
+            "count": 117,
+            "feature": "fielding_pct",
+            "level_group": "AA",
+            "mean": 0.9516637546035883,
+            "position": "SS",
+            "sd": 0.017874590485219766
+          },
+          {
+            "count": 135,
+            "feature": "fielding_pct",
+            "level_group": "AAA",
+            "mean": 0.9639109422708636,
+            "position": "SS",
+            "sd": 0.0160724855630023
+          },
+          {
+            "count": 110,
+            "feature": "fielding_pct",
+            "level_group": "HIGH_A",
+            "mean": 0.9483236052806986,
+            "position": "SS",
+            "sd": 0.02358995682489516
+          },
+          {
+            "count": 215,
+            "feature": "fielding_pct",
+            "level_group": "MLB",
+            "mean": 0.9689932210015365,
+            "position": "SS",
+            "sd": 0.013839408326056811
+          },
+          {
+            "count": 145,
+            "feature": "fielding_pct",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.9228111594633672,
+            "position": "SS",
+            "sd": 0.03103779596605635
+          },
+          {
+            "count": 113,
+            "feature": "fielding_pct",
+            "level_group": "SINGLE_A",
+            "mean": 0.9409116066324554,
+            "position": "SS",
+            "sd": 0.024578093458005042
+          },
+          {
+            "count": 153,
+            "feature": "range_factor_per_9",
+            "level_group": "AA",
+            "mean": 7.743355882796837,
+            "position": "1B",
+            "sd": 0.5228714418153766
+          },
+          {
+            "count": 168,
+            "feature": "range_factor_per_9",
+            "level_group": "AAA",
+            "mean": 7.997707661017924,
+            "position": "1B",
+            "sd": 0.5495878062315814
+          },
+          {
+            "count": 157,
+            "feature": "range_factor_per_9",
+            "level_group": "HIGH_A",
+            "mean": 7.868808966168049,
+            "position": "1B",
+            "sd": 0.5607690528435224
+          },
+          {
+            "count": 208,
+            "feature": "range_factor_per_9",
+            "level_group": "MLB",
+            "mean": 8.274158537024958,
+            "position": "1B",
+            "sd": 0.4827041237432936
+          },
+          {
+            "count": 247,
+            "feature": "range_factor_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 8.106762192810447,
+            "position": "1B",
+            "sd": 0.7384221521788239
+          },
+          {
+            "count": 172,
+            "feature": "range_factor_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 7.9177738392034005,
+            "position": "1B",
+            "sd": 0.6012623541874101
+          },
+          {
+            "count": 120,
+            "feature": "range_factor_per_9",
+            "level_group": "AA",
+            "mean": 3.997588595069613,
+            "position": "2B",
+            "sd": 0.37326294471912125
+          },
+          {
+            "count": 149,
+            "feature": "range_factor_per_9",
+            "level_group": "AAA",
+            "mean": 4.154588892210085,
+            "position": "2B",
+            "sd": 0.4102905474544067
+          },
+          {
+            "count": 121,
+            "feature": "range_factor_per_9",
+            "level_group": "HIGH_A",
+            "mean": 4.001162195480608,
+            "position": "2B",
+            "sd": 0.37483126235862096
+          },
+          {
+            "count": 205,
+            "feature": "range_factor_per_9",
+            "level_group": "MLB",
+            "mean": 4.212216224695831,
+            "position": "2B",
+            "sd": 0.3813695342122143
+          },
+          {
+            "count": 86,
+            "feature": "range_factor_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 4.472029041919199,
+            "position": "2B",
+            "sd": 0.4848669749112725
+          },
+          {
+            "count": 83,
+            "feature": "range_factor_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 4.1302575288408665,
+            "position": "2B",
+            "sd": 0.4338082845196799
+          },
+          {
+            "count": 98,
+            "feature": "range_factor_per_9",
+            "level_group": "AA",
+            "mean": 2.3679559136423616,
+            "position": "3B",
+            "sd": 0.26087322393121337
+          },
+          {
+            "count": 75,
+            "feature": "range_factor_per_9",
+            "level_group": "AAA",
+            "mean": 2.4077137217473275,
+            "position": "3B",
+            "sd": 0.26949245947372114
+          },
+          {
+            "count": 73,
+            "feature": "range_factor_per_9",
+            "level_group": "HIGH_A",
+            "mean": 2.3661428918255165,
+            "position": "3B",
+            "sd": 0.2887954284281109
+          },
+          {
+            "count": 186,
+            "feature": "range_factor_per_9",
+            "level_group": "MLB",
+            "mean": 2.603697954454739,
+            "position": "3B",
+            "sd": 0.2658734086139724
+          },
+          {
+            "count": 46,
+            "feature": "range_factor_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 2.344755528069595,
+            "position": "3B",
+            "sd": 0.2899471518733635
+          },
+          {
+            "count": 100,
+            "feature": "range_factor_per_9",
+            "level_group": "AA",
+            "mean": 2.4235303128426455,
+            "position": "CF",
+            "sd": 0.26613625303130045
+          },
+          {
+            "count": 77,
+            "feature": "range_factor_per_9",
+            "level_group": "AAA",
+            "mean": 2.421359022074508,
+            "position": "CF",
+            "sd": 0.26701437078558493
+          },
+          {
+            "count": 80,
+            "feature": "range_factor_per_9",
+            "level_group": "HIGH_A",
+            "mean": 2.278458957623363,
+            "position": "CF",
+            "sd": 0.27896542204567254
+          },
+          {
+            "count": 200,
+            "feature": "range_factor_per_9",
+            "level_group": "MLB",
+            "mean": 2.4813885704316405,
+            "position": "CF",
+            "sd": 0.2736693984940213
+          },
+          {
+            "count": 45,
+            "feature": "range_factor_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 2.3402940158319336,
+            "position": "CF",
+            "sd": 0.29153817572930385
+          },
+          {
+            "count": 95,
+            "feature": "range_factor_per_9",
+            "level_group": "MLB",
+            "mean": 1.8787217967939296,
+            "position": "LF",
+            "sd": 0.2055444425088097
+          },
+          {
+            "count": 56,
+            "feature": "range_factor_per_9",
+            "level_group": "AA",
+            "mean": 1.9901933394355207,
+            "position": "RF",
+            "sd": 0.23690331468800263
+          },
+          {
+            "count": 32,
+            "feature": "range_factor_per_9",
+            "level_group": "AAA",
+            "mean": 2.0134555491555277,
+            "position": "RF",
+            "sd": 0.19847336610264069
+          },
+          {
+            "count": 40,
+            "feature": "range_factor_per_9",
+            "level_group": "HIGH_A",
+            "mean": 1.923331561143567,
+            "position": "RF",
+            "sd": 0.253394126633149
+          },
+          {
+            "count": 118,
+            "feature": "range_factor_per_9",
+            "level_group": "MLB",
+            "mean": 2.1050092269365472,
+            "position": "RF",
+            "sd": 0.22906128038904588
+          },
+          {
+            "count": 117,
+            "feature": "range_factor_per_9",
+            "level_group": "AA",
+            "mean": 3.721709447218651,
+            "position": "SS",
+            "sd": 0.33596557727127724
+          },
+          {
+            "count": 135,
+            "feature": "range_factor_per_9",
+            "level_group": "AAA",
+            "mean": 3.769379396186591,
+            "position": "SS",
+            "sd": 0.3997175134471268
+          },
+          {
+            "count": 110,
+            "feature": "range_factor_per_9",
+            "level_group": "HIGH_A",
+            "mean": 3.703899511374153,
+            "position": "SS",
+            "sd": 0.3926440156450906
+          },
+          {
+            "count": 215,
+            "feature": "range_factor_per_9",
+            "level_group": "MLB",
+            "mean": 3.876226103745411,
+            "position": "SS",
+            "sd": 0.33835839125939493
+          },
+          {
+            "count": 145,
+            "feature": "range_factor_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 4.162071775558009,
+            "position": "SS",
+            "sd": 0.488820708389164
+          },
+          {
+            "count": 113,
+            "feature": "range_factor_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 3.7789956860891425,
+            "position": "SS",
+            "sd": 0.3824240884555272
+          },
+          {
+            "count": 153,
+            "feature": "errors_per_9",
+            "level_group": "AA",
+            "mean": 0.07866673933113269,
+            "position": "1B",
+            "sd": 0.05126751778432939
+          },
+          {
+            "count": 168,
+            "feature": "errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.07177437690931612,
+            "position": "1B",
+            "sd": 0.048869274510863606
+          },
+          {
+            "count": 157,
+            "feature": "errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.0903772319941362,
+            "position": "1B",
+            "sd": 0.05748267796655707
+          },
+          {
+            "count": 208,
+            "feature": "errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.055505057251233884,
+            "position": "1B",
+            "sd": 0.0392993368244144
+          },
+          {
+            "count": 247,
+            "feature": "errors_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.15969405227135255,
+            "position": "1B",
+            "sd": 0.10221708754734062
+          },
+          {
+            "count": 172,
+            "feature": "errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.11555968115466476,
+            "position": "1B",
+            "sd": 0.07389786867250214
+          },
+          {
+            "count": 120,
+            "feature": "errors_per_9",
+            "level_group": "AA",
+            "mean": 0.10501573479541772,
+            "position": "2B",
+            "sd": 0.05745428541979961
+          },
+          {
+            "count": 149,
+            "feature": "errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.09604508005591783,
+            "position": "2B",
+            "sd": 0.04950765859859796
+          },
+          {
+            "count": 121,
+            "feature": "errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.12980196844580974,
+            "position": "2B",
+            "sd": 0.07881724670285246
+          },
+          {
+            "count": 205,
+            "feature": "errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.07897465745532141,
+            "position": "2B",
+            "sd": 0.04621712366618592
+          },
+          {
+            "count": 86,
+            "feature": "errors_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.2035642286945425,
+            "position": "2B",
+            "sd": 0.10895913210718919
+          },
+          {
+            "count": 83,
+            "feature": "errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.15763346365609968,
+            "position": "2B",
+            "sd": 0.07621735963228492
+          },
+          {
+            "count": 98,
+            "feature": "errors_per_9",
+            "level_group": "AA",
+            "mean": 0.16164514863818896,
+            "position": "3B",
+            "sd": 0.061251321378394216
+          },
+          {
+            "count": 75,
+            "feature": "errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.14156070008781385,
+            "position": "3B",
+            "sd": 0.05887790548865691
+          },
+          {
+            "count": 73,
+            "feature": "errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.19499236749525178,
+            "position": "3B",
+            "sd": 0.0771783303948611
+          },
+          {
+            "count": 186,
+            "feature": "errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.11833937780148117,
+            "position": "3B",
+            "sd": 0.055696081725031876
+          },
+          {
+            "count": 46,
+            "feature": "errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.21132984653831602,
+            "position": "3B",
+            "sd": 0.0800272340827936
+          },
+          {
+            "count": 100,
+            "feature": "errors_per_9",
+            "level_group": "AA",
+            "mean": 0.035009308281037085,
+            "position": "CF",
+            "sd": 0.025708377262967493
+          },
+          {
+            "count": 77,
+            "feature": "errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.0328477422008742,
+            "position": "CF",
+            "sd": 0.025776999232707806
+          },
+          {
+            "count": 80,
+            "feature": "errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.047984952134344054,
+            "position": "CF",
+            "sd": 0.03223394934566934
+          },
+          {
+            "count": 200,
+            "feature": "errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.027258366414796367,
+            "position": "CF",
+            "sd": 0.02342047709706272
+          },
+          {
+            "count": 45,
+            "feature": "errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.058132885197448775,
+            "position": "CF",
+            "sd": 0.03464101503032822
+          },
+          {
+            "count": 95,
+            "feature": "errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.024796867054807107,
+            "position": "LF",
+            "sd": 0.0196202988024788
+          },
+          {
+            "count": 56,
+            "feature": "errors_per_9",
+            "level_group": "AA",
+            "mean": 0.04399151761521377,
+            "position": "RF",
+            "sd": 0.028506042404350222
+          },
+          {
+            "count": 32,
+            "feature": "errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.04297513239626974,
+            "position": "RF",
+            "sd": 0.023940568852566957
+          },
+          {
+            "count": 40,
+            "feature": "errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.05643659456350012,
+            "position": "RF",
+            "sd": 0.03267622016772829
+          },
+          {
+            "count": 118,
+            "feature": "errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.03368864765929118,
+            "position": "RF",
+            "sd": 0.024792924898991427
+          },
+          {
+            "count": 117,
+            "feature": "errors_per_9",
+            "level_group": "AA",
+            "mean": 0.18957456702767997,
+            "position": "SS",
+            "sd": 0.07447128334417545
+          },
+          {
+            "count": 135,
+            "feature": "errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.14040234387607956,
+            "position": "SS",
+            "sd": 0.06178243249437446
+          },
+          {
+            "count": 110,
+            "feature": "errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.20048132962144555,
+            "position": "SS",
+            "sd": 0.09022963635058305
+          },
+          {
+            "count": 215,
+            "feature": "errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.12399700607551391,
+            "position": "SS",
+            "sd": 0.05501262288319906
+          },
+          {
+            "count": 145,
+            "feature": "errors_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.34705982802370666,
+            "position": "SS",
+            "sd": 0.14018547531661904
+          },
+          {
+            "count": 113,
+            "feature": "errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.23580381500597203,
+            "position": "SS",
+            "sd": 0.09754871106464327
+          },
+          {
+            "count": 153,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AA",
+            "mean": 0.01887116002249862,
+            "position": "1B",
+            "sd": 0.02256175561386355
+          },
+          {
+            "count": 168,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.015434615375307648,
+            "position": "1B",
+            "sd": 0.022199973821056037
+          },
+          {
+            "count": 157,
+            "feature": "throwing_errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.02171437238547408,
+            "position": "1B",
+            "sd": 0.022175827177343444
+          },
+          {
+            "count": 208,
+            "feature": "throwing_errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.013756233043588771,
+            "position": "1B",
+            "sd": 0.01674317929987149
+          },
+          {
+            "count": 247,
+            "feature": "throwing_errors_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.04184240129644558,
+            "position": "1B",
+            "sd": 0.050726274576549456
+          },
+          {
+            "count": 172,
+            "feature": "throwing_errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.03434910362973729,
+            "position": "1B",
+            "sd": 0.039421642025615024
+          },
+          {
+            "count": 120,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AA",
+            "mean": 0.03926404646927557,
+            "position": "2B",
+            "sd": 0.03607630251015731
+          },
+          {
+            "count": 149,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.03786043650318465,
+            "position": "2B",
+            "sd": 0.032119660982471786
+          },
+          {
+            "count": 121,
+            "feature": "throwing_errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.04932150063003662,
+            "position": "2B",
+            "sd": 0.037953360368677615
+          },
+          {
+            "count": 205,
+            "feature": "throwing_errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.031723449554944404,
+            "position": "2B",
+            "sd": 0.02751784798542709
+          },
+          {
+            "count": 86,
+            "feature": "throwing_errors_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.08770531445168135,
+            "position": "2B",
+            "sd": 0.06759296714396262
+          },
+          {
+            "count": 83,
+            "feature": "throwing_errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.06612282621652377,
+            "position": "2B",
+            "sd": 0.04747350271053576
+          },
+          {
+            "count": 98,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AA",
+            "mean": 0.0819148917171778,
+            "position": "3B",
+            "sd": 0.045818889343306565
+          },
+          {
+            "count": 75,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.07071294211513565,
+            "position": "3B",
+            "sd": 0.046054667423086317
+          },
+          {
+            "count": 73,
+            "feature": "throwing_errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.09727969887199858,
+            "position": "3B",
+            "sd": 0.0471966719493439
+          },
+          {
+            "count": 186,
+            "feature": "throwing_errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.057251493601082996,
+            "position": "3B",
+            "sd": 0.03228861042504779
+          },
+          {
+            "count": 46,
+            "feature": "throwing_errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.11813204862500044,
+            "position": "3B",
+            "sd": 0.05757335645606591
+          },
+          {
+            "count": 100,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AA",
+            "mean": 0.010850088628416448,
+            "position": "CF",
+            "sd": 0.012910301255550084
+          },
+          {
+            "count": 77,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.010829769006043145,
+            "position": "CF",
+            "sd": 0.012276593197438672
+          },
+          {
+            "count": 80,
+            "feature": "throwing_errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.016402832072393715,
+            "position": "CF",
+            "sd": 0.01638595097764967
+          },
+          {
+            "count": 200,
+            "feature": "throwing_errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.007405609992093321,
+            "position": "CF",
+            "sd": 0.011846376374624457
+          },
+          {
+            "count": 45,
+            "feature": "throwing_errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.015541028979291209,
+            "position": "CF",
+            "sd": 0.016803211268744546
+          },
+          {
+            "count": 95,
+            "feature": "throwing_errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.007518374422108043,
+            "position": "LF",
+            "sd": 0.010710642171880568
+          },
+          {
+            "count": 56,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AA",
+            "mean": 0.01309694896389819,
+            "position": "RF",
+            "sd": 0.013856725928520301
+          },
+          {
+            "count": 32,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.01396011712166885,
+            "position": "RF",
+            "sd": 0.013250896428529562
+          },
+          {
+            "count": 40,
+            "feature": "throwing_errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.021537017129062287,
+            "position": "RF",
+            "sd": 0.017790750124990498
+          },
+          {
+            "count": 118,
+            "feature": "throwing_errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.012811180577730993,
+            "position": "RF",
+            "sd": 0.014210935940709284
+          },
+          {
+            "count": 117,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AA",
+            "mean": 0.08752745994031179,
+            "position": "SS",
+            "sd": 0.047004814354955335
+          },
+          {
+            "count": 135,
+            "feature": "throwing_errors_per_9",
+            "level_group": "AAA",
+            "mean": 0.06659869912879375,
+            "position": "SS",
+            "sd": 0.045286134231810285
+          },
+          {
+            "count": 110,
+            "feature": "throwing_errors_per_9",
+            "level_group": "HIGH_A",
+            "mean": 0.09677205925113404,
+            "position": "SS",
+            "sd": 0.05712228437107026
+          },
+          {
+            "count": 215,
+            "feature": "throwing_errors_per_9",
+            "level_group": "MLB",
+            "mean": 0.06297872453800661,
+            "position": "SS",
+            "sd": 0.039808598069074545
+          },
+          {
+            "count": 145,
+            "feature": "throwing_errors_per_9",
+            "level_group": "ROOKIE_COMPLEX",
+            "mean": 0.16824030673280088,
+            "position": "SS",
+            "sd": 0.08659865098184294
+          },
+          {
+            "count": 113,
+            "feature": "throwing_errors_per_9",
+            "level_group": "SINGLE_A",
+            "mean": 0.11529205930484301,
+            "position": "SS",
+            "sd": 0.057989416851997745
+          }
+        ],
+        "global": [
+          {
+            "count": 4169,
+            "feature": "fielding_pct",
+            "mean": 0.9707535514959604,
+            "sd": 0.026103759859549748
+          },
+          {
+            "count": 4169,
+            "feature": "range_factor_per_9",
+            "mean": 4.463470628240057,
+            "sd": 2.29855990103584
+          },
+          {
+            "count": 4169,
+            "feature": "errors_per_9",
+            "mean": 0.11546250370765178,
+            "sd": 0.09838477804958136
+          },
+          {
+            "count": 4169,
+            "feature": "throwing_errors_per_9",
+            "mean": 0.047203387330085056,
+            "sd": 0.05500371971622736
+          }
+        ],
+        "position": [
+          {
+            "count": 1105,
+            "feature": "fielding_pct",
+            "mean": 0.9877610055232492,
+            "position": "1B",
+            "sd": 0.009709090262287437
+          },
+          {
+            "count": 764,
+            "feature": "fielding_pct",
+            "mean": 0.9726548547349415,
+            "position": "2B",
+            "sd": 0.01769008707827994
+          },
+          {
+            "count": 501,
+            "feature": "fielding_pct",
+            "mean": 0.9395341229926475,
+            "position": "3B",
+            "sd": 0.029787459934362347
+          },
+          {
+            "count": 515,
+            "feature": "fielding_pct",
+            "mean": 0.985099345681306,
+            "position": "CF",
+            "sd": 0.012092734439053184
+          },
+          {
+            "count": 177,
+            "feature": "fielding_pct",
+            "mean": 0.9831485868707632,
+            "position": "LF",
+            "sd": 0.014323293658629138
+          },
+          {
+            "count": 272,
+            "feature": "fielding_pct",
+            "mean": 0.978620853976508,
+            "position": "RF",
+            "sd": 0.014753051545544781
+          },
+          {
+            "count": 835,
+            "feature": "fielding_pct",
+            "mean": 0.9512004853449693,
+            "position": "SS",
+            "sd": 0.026855795839512024
+          },
+          {
+            "count": 1105,
+            "feature": "range_factor_per_9",
+            "mean": 8.008148128937254,
+            "position": "1B",
+            "sd": 0.6162135152151549
+          },
+          {
+            "count": 764,
+            "feature": "range_factor_per_9",
+            "mean": 4.154182199688872,
+            "position": "2B",
+            "sd": 0.4275486771563496
+          },
+          {
+            "count": 501,
+            "feature": "range_factor_per_9",
+            "mean": 2.480126059367075,
+            "position": "3B",
+            "sd": 0.30719310989291276
+          },
+          {
+            "count": 515,
+            "feature": "range_factor_per_9",
+            "mean": 2.4229829731098214,
+            "position": "CF",
+            "sd": 0.2842594475901417
+          },
+          {
+            "count": 177,
+            "feature": "range_factor_per_9",
+            "mean": 1.8644836970267,
+            "position": "LF",
+            "sd": 0.21753262912630755
+          },
+          {
+            "count": 272,
+            "feature": "range_factor_per_9",
+            "mean": 2.0197296414576122,
+            "position": "RF",
+            "sd": 0.25120226006461904
+          },
+          {
+            "count": 835,
+            "feature": "range_factor_per_9",
+            "mean": 3.851078685449313,
+            "position": "SS",
+            "sd": 0.42030936642544175
+          },
+          {
+            "count": 1105,
+            "feature": "errors_per_9",
+            "mean": 0.09877744781845327,
+            "position": "1B",
+            "sd": 0.0779449701540101
+          },
+          {
+            "count": 764,
+            "feature": "errors_per_9",
+            "mean": 0.11701380787336739,
+            "position": "2B",
+            "sd": 0.07788437785207551
+          },
+          {
+            "count": 501,
+            "feature": "errors_per_9",
+            "mean": 0.15938863038553427,
+            "position": "3B",
+            "sd": 0.08316347717815206
+          },
+          {
+            "count": 515,
+            "feature": "errors_per_9",
+            "mean": 0.03632641427632445,
+            "position": "CF",
+            "sd": 0.029187547673948412
+          },
+          {
+            "count": 177,
+            "feature": "errors_per_9",
+            "mean": 0.031535485353531685,
+            "position": "LF",
+            "sd": 0.026507915746790234
+          },
+          {
+            "count": 272,
+            "feature": "errors_per_9",
+            "mean": 0.04358680636141817,
+            "position": "RF",
+            "sd": 0.029612552334554808
+          },
+          {
+            "count": 835,
+            "feature": "errors_per_9",
+            "mean": 0.19978005926852227,
+            "position": "SS",
+            "sd": 0.11811939580974669
+          },
+          {
+            "count": 1105,
+            "feature": "throwing_errors_per_9",
+            "mean": 0.025333823301915602,
+            "position": "1B",
+            "sd": 0.03473428528830348
+          },
+          {
+            "count": 764,
+            "feature": "throwing_errors_per_9",
+            "mean": 0.046930564095682824,
+            "position": "2B",
+            "sd": 0.04372045078849176
+          },
+          {
+            "count": 501,
+            "feature": "throwing_errors_per_9",
+            "mean": 0.08083010099245011,
+            "position": "3B",
+            "sd": 0.053216856796562226
+          },
+          {
+            "count": 515,
+            "feature": "throwing_errors_per_9",
+            "mean": 0.011042296010965057,
+            "position": "CF",
+            "sd": 0.01420140476204556
+          },
+          {
+            "count": 177,
+            "feature": "throwing_errors_per_9",
+            "mean": 0.00992128754886141,
+            "position": "LF",
+            "sd": 0.012306975576750756
+          },
+          {
+            "count": 272,
+            "feature": "throwing_errors_per_9",
+            "mean": 0.01530745755878674,
+            "position": "RF",
+            "sd": 0.01525837986348162
+          },
+          {
+            "count": 835,
+            "feature": "throwing_errors_per_9",
+            "mean": 0.09681405588790802,
+            "position": "SS",
+            "sd": 0.06799273108148361
+          }
+        ],
+        "rule": "fit on all authorized 2021-2023 input evidence; cell position x current_level_group when count>=30, then position fallback, then global fallback"
+      },
+      "tracked_mlb": {
+        "coefficients": [
+          0.016256147749734745,
+          -0.39320465259785464,
+          0.27778113033036755,
+          -0.4577510831781501,
+          -0.040633388200580815,
+          0.149447628966463
+        ],
+        "definition": "exact U1 features plus tracked_range_z on MLB tracked-eligible rows",
+        "family": "T1",
+        "lambda": 0.0,
+        "normalized_terms": [
+          "fielding_pct_z",
+          "range_factor_per_9_z",
+          "errors_per_9_z",
+          "throwing_errors_per_9_z",
+          "tracked_range_z"
+        ],
+        "retained_levels": [
+          "MLB"
+        ],
+        "training_row_count": 414
+      },
+      "universal": {
+        "coefficients": [
+          0.020398397612022133,
+          -0.324983859004553,
+          0.292067704715924,
+          -0.3616437248651945,
+          -0.06792588856959772
+        ],
+        "family": "U1",
+        "lambda": 0.0,
+        "normalized_terms": [
+          "fielding_pct_z",
+          "range_factor_per_9_z",
+          "errors_per_9_z",
+          "throwing_errors_per_9_z"
+        ],
+        "raw_features": [
+          "fielding_pct",
+          "range_factor_per_9",
+          "errors_per_9",
+          "throwing_errors_per_9"
+        ],
+        "training_row_count": 490
+      }
+    },
+    "model_name": "defense_v1_pre_2025_parameter_package",
+    "target_scale": {
+      "catcher_blocking": "within target year z-score of Savant blocks_above_average_per_game, target pitches>=500",
+      "catcher_throwing": "within target year z-score of Savant cs_aa_per_throw, target sb_attempts>=10",
+      "general_range": "within target year x position z-score of Savant diff_success_rate_formatted"
+    },
+    "tracked_range_feature": {
+      "confirmation_2024_mlb_moments": "target-free source moments materialized only after this freeze under the confirmation contract",
+      "degenerate_cell_behavior": "feature unavailable; do not pool across position or level",
+      "minimum_eligible_players_per_cell": 20,
+      "minimum_opportunities": 100,
+      "raw_formula": "100 * oaa / opportunities",
+      "standardization": "within source season x tracked level x position"
+    },
+    "training_input_years": [
+      2021,
+      2022,
+      2023
+    ],
+    "training_target_years": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "report_schema_version": "0.1",
+  "source": {
+    "development_target_years": [
+      2022,
+      2023,
+      2024
+    ],
+    "historical": {
+      "artifact_digest": "sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3",
+      "artifact_name": "position-role-historical-source-2021-2024",
+      "capture_page_count": 224,
+      "file_count": 224,
+      "manifest_sha256": "sha256:9acecb9f848ba8b9f17895301416bdfa4cc9b54e594374e00944fa1e93cb1475",
+      "player_season_position_count": 39723,
+      "primary_player_season_count": 15701,
+      "raw_position_split_count": 53225,
+      "run_id": 32148467330,
+      "total_size_bytes": 101839107
+    },
+    "target_rows": {
+      "catcher_blocking": {
+        "2022": 70,
+        "2023": 70,
+        "2024": 70
+      },
+      "catcher_throwing": {
+        "2022": 72,
+        "2023": 72,
+        "2024": 72
+      },
+      "general_range": {
+        "2022": 270,
+        "2023": 261,
+        "2024": 272
+      }
+    },
+    "tracked": {
+      "artifact_digest": "sha256:a177f04655cc497534c85f47d94aa597b273358154eb76999b4a0bc9d5584de4",
+      "artifact_name": "defense-v1-tracked-source-2021-2023",
+      "range_file_sha256": "a65cb6f7506d5e100c9f0b088fb276eecc1dab5599592dd477bfcc030d850a3e",
+      "range_row_count": 6872,
+      "run_id": 32182019495,
+      "source_sha": "5438e905d24e2167432a52253320ccbc978186b8"
+    }
+  },
+  "status": "frozen_ready_for_confirmation_source_materialization",
+  "storage": {
+    "catcher_normalization": {
+      "file_size_bytes": 2088,
+      "path": "reports/generated/defense-v1-parameter-freeze/tables/catcher_normalization.parquet",
+      "row_count": 2,
+      "sha256": "e8d56f43856cde8860525efbb72edc272f3d6ebcc5b6dca6b9cc7d36196e9c11",
+      "table_name": "defense_v1_frozen_catcher_normalization"
+    },
+    "coefficients": {
+      "file_size_bytes": 1620,
+      "path": "reports/generated/defense-v1-parameter-freeze/tables/coefficients.parquet",
+      "row_count": 15,
+      "sha256": "c686cd4231bbea77d8767df921d85497fbf6880929b2705ecba35dcc1d1de440",
+      "table_name": "defense_v1_frozen_coefficients"
+    },
+    "development_targets": {
+      "file_size_bytes": 10554,
+      "path": "reports/generated/defense-v1-parameter-freeze/tables/development_targets.parquet",
+      "row_count": 1229,
+      "sha256": "1c0a6361420c282db0a9e2c1400341be6cbd5305802422232cffae27a22eae61",
+      "table_name": "defense_v1_frozen_development_targets"
+    },
+    "general_normalization": {
+      "file_size_bytes": 5669,
+      "path": "reports/generated/defense-v1-parameter-freeze/tables/general_normalization.parquet",
+      "row_count": 164,
+      "sha256": "89c295820006a8960477da6ad7baa678c688b59127f897eee9ed469342e454bb",
+      "table_name": "defense_v1_frozen_general_normalization"
+    },
+    "tracked_range_development_moments": {
+      "file_size_bytes": 3129,
+      "path": "reports/generated/defense-v1-parameter-freeze/tables/tracked_range_development_moments.parquet",
+      "row_count": 34,
+      "sha256": "2977aff1e701a651c1de58dd68cf15f37f4cb97dcd2c0b7848e3415fe4f9bde2",
+      "table_name": "defense_v1_tracked_range_development_moments"
+    },
+    "training_rows": {
+      "file_size_bytes": 5379,
+      "path": "reports/generated/defense-v1-parameter-freeze/tables/training_rows.parquet",
+      "row_count": 1294,
+      "sha256": "ed8093990c0da7df85c282281dafc58154bdeba984a5c726afaf4c14fcca0706",
+      "table_name": "defense_v1_frozen_training_rows"
+    }
+  }
+}
