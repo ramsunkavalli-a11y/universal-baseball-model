@@ -34,15 +34,17 @@ Training snapshots:
 
 Frozen feature standardization:
 
-- mean EV: `89.14153098440633`
-- EV scale: `2.7378059749661574`
-- mean sweet-spot share: `0.3441350187274813`
-- sweet-spot scale: `0.06085059101688322`
+- mean EV: `87.56765458046604`
+- EV scale: `3.087267010464925`
+- mean sweet-spot share: `0.34421856089476915`
+- sweet-spot scale: `0.0629687444393524`
 
 Frozen residual coefficients:
 
-- beta EV: `0.019444323416633432`
-- beta sweet-spot: `-0.0016659093644997295`
+- beta EV: `0.019444311355484883`
+- beta sweet-spot: `-0.0016659086163438607`
+
+**Documentation correction, 2026-08-17:** the first version of this contract transcribed stale numerical values in the bullets above. The authoritative refit was already fixed by successful workflow run `32079555373` before any 2023 source workflow began; its artifact and the persisted refit result both contain the values shown here. This correction changes documentation only. It does not refit, select, tune, or use any 2023 performance result; no 2023 Challenger-2 loss or confirmation decision had been computed at correction time.
 
 No coefficient, standardization moment, feature, threshold, target group, value scale, baseline form, or capability grouping may be changed using 2023 evidence.
 
