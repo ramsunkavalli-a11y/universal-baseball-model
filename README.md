@@ -23,14 +23,16 @@ Projection v1 asks whether a leakage-safe age/development adjustment improves ne
 
 ### Live Projection status
 
-Projection contracts and fast deterministic CI are passing, including the next-year dataset contract and exact-game outcome/league fallback behavior. The remaining implementation work is the heavy **2024 MiLB historical-evidence reuse/materialization path**.
+Projection contracts and fast deterministic CI are passing. The 2024 MiLB source discrepancy has now been diagnosed and a fail-closed quarantine policy is implemented and green in CI.
 
-An official-feed recovery audit showed that `game_pk 755829` returns **404 Not Found** from the expected Stats API `/feed/live` endpoint. A follow-up source-only residual audit then passed and localized the observed aggregate mismatch to exactly two removable source rows:
+The diagnosis:
 
-- High-A player `669233`, game `755829`: one extra `PA=1, AB=1` row.
-- Single-A player `686541`, game `754395`: one extra `PA=1, AB=1, SO=1` row.
+- High-A player `669233`, game `755829`: one source-only extra `PA=1, AB=1` row.
+- Single-A player `686541`, game `754395`: one source-only extra `PA=1, AB=1, SO=1` row.
 
-For both cases, removing the exact suspect row eliminates the season mismatch and restores agreement with official gameLog totals. The next step is to encode these as explicit provenance-preserving source-quality exclusions with regression tests, then rerun the full 2024 evidence path.
+For both, removing the exact audited row restores agreement with official gameLog totals. The production helper `current_talent_source_residual_quarantine.py` applies only when a single source-only positive-PA game exactly matches both the independent season residual and the full official gameLog residual. Anything less remains unresolved.
+
+Fast CI run `32092505104` passed this policy. The current next step is to rerun the full 2024 MiLB historical evidence path with the quarantine active and require a clean certified artifact before Projection model scoring begins.
 
 Machine-readable workflow snapshots:
 
