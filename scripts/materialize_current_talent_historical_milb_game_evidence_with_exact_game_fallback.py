@@ -1,22 +1,25 @@
 #!/usr/bin/env python
-"""Historical MiLB Current Talent materializer with exact-game official fallbacks.
+"""Historical MiLB Current Talent materializer with sparse source-authority fallbacks.
 
 This is a thin orchestration wrapper around the certified historical materializer.
 Every source/contact/identity/reconciliation function remains unchanged except
-for two narrow source-authority seams:
+for narrow, fail-closed source-authority seams:
 
-1. if a player official ``gameLog`` omits a positive-PA source game, exact
-   official game play-by-play may confirm that game only when its complete true-
-   PA outcome vector exactly matches source;
-2. if a regular-season PBP game lacks reusable same-game league identity, the
-   exact official game feed may supply league identity only when both teams agree
-   on one league, both teams agree on the certified sport, and the league belongs
-   to the already-certified era/level league set.
+1. a single positive-PA source game absent from official gameLog may be
+   quarantined only when that row exactly equals the independent season-aggregate
+   residual and removing its full outcome vector exactly matches official gameLog;
+2. any proven quarantined player/game key is removed consistently from outcome,
+   contact-control, and same-player contact grains without reattribution;
+3. if a remaining gameLog omission has exact official true-PA evidence, that
+   evidence may confirm the source row only on a complete vector match;
+4. if a regular-season PBP game lacks reusable same-game league identity, exact
+   official game identity may fill it only after the existing sport/league checks;
+   when the exact official game endpoint itself returns 404, that unauthorizable
+   PBP game is quarantined rather than inheriting filename-level identity.
 
 The base gameLog adjudicator, same-game enrichment, league validation, and exact
-season-aggregate reconciliation all run afterward unchanged. Filename level is
-never itself substituted as actual league identity. No model fitting or
-Projection scoring is performed here.
+season-aggregate reconciliation still run afterward. No model fitting,
+Projection scoring, or 2025 access occurs here.
 """
 
 from __future__ import annotations
@@ -29,6 +32,10 @@ import polars as pl
 
 import materialize_current_talent_historical_milb_game_evidence as base
 from universal_baseball.current_talent_era import current_talent_level_spec
+from universal_baseball.current_talent_evidence_quarantine import (
+    quarantine_game_ids,
+    quarantine_player_game_keys,
+)
 from universal_baseball.current_talent_official_game_fallback import (
     augment_game_log_with_exact_pa_fallback,
     source_only_positive_pa_games,
@@ -37,11 +44,16 @@ from universal_baseball.current_talent_official_game_identity import (
     augment_game_league_map_with_official_identity,
     project_official_game_league_identity,
 )
+from universal_baseball.current_talent_source_residual_quarantine import (
+    quarantine_single_source_only_exact_residual,
+)
 from universal_baseball.official import project_official_play_by_play
 
 
 _BASE_ENRICH_HISTORICAL_PBP_LEAGUE_ID = base.enrich_historical_pbp_league_id
+_BASE_APPLY_PARTICIPANT_AUTHORITY = base._apply_participant_authority
 _LEVEL_TOKEN = re.compile(r"^(?P<season>\d{4}).*_(?P<level>aaa|aa|a\+|a|rk)_pbp\.csv$", re.I)
+_QUARANTINED_PLAYER_GAME_KEYS: set[tuple[int, int]] = set()
 
 
 def _source_asset_spec(source_asset: str):
@@ -66,7 +78,11 @@ def _regular_game_ids(frame: pl.DataFrame, *, game_type: str | None) -> set[int]
         working = working.filter(pl.col("game_type").cast(pl.String) == str(game_type))
     return {
         int(value)
-        for value in working.get_column("game_pk").cast(pl.Int64, strict=False).drop_nulls().unique().to_list()
+        for value in working.get_column("game_pk")
+        .cast(pl.Int64, strict=False)
+        .drop_nulls()
+        .unique()
+        .to_list()
     }
 
 
@@ -94,6 +110,7 @@ def _enrich_historical_pbp_league_id_with_exact_game_fallback(
     season, level, spec = _source_asset_spec(source_asset)
     identities = []
     snapshots: list[dict[str, Any]] = []
+    official_404_games: list[int] = []
     slug = "aplus" if level == "a+" else level
     raw_dir = (
         Path("reports/generated/current-talent-historical-milb-game-evidence")
@@ -106,6 +123,26 @@ def _enrich_historical_pbp_league_id_with_exact_game_fallback(
     try:
         for game_id in missing_games:
             endpoint = f"game/{int(game_id)}/feed/live"
+            probe_url = f"https://statsapi.mlb.com/api/v1/{endpoint}"
+            response = session.get(probe_url, timeout=30)
+            if response.status_code == 404:
+                official_404_games.append(int(game_id))
+                snapshots.append(
+                    {
+                        "game_id": int(game_id),
+                        "endpoint": endpoint,
+                        "url": probe_url,
+                        "http_status": 404,
+                        "classification": "official_exact_game_not_found_quarantine",
+                    }
+                )
+                continue
+            if not 200 <= response.status_code < 300:
+                raise RuntimeError(
+                    f"official exact-game identity probe failed: game={game_id}, "
+                    f"status={response.status_code}"
+                )
+
             capture = base.capture_official_json(endpoint, session=session)
             raw_path = raw_dir / f"game_{int(game_id)}_feed_live.json"
             capture.write_raw(raw_path)
@@ -118,6 +155,7 @@ def _enrich_historical_pbp_league_id_with_exact_game_fallback(
                     "game_id": int(game_id),
                     "endpoint": capture.endpoint,
                     "url": capture.url,
+                    "http_status": 200,
                     "retrieved_at_utc": capture.retrieved_at_utc.isoformat(),
                     "content_sha256": capture.content_sha256,
                     "raw_path": str(raw_path),
@@ -126,19 +164,35 @@ def _enrich_historical_pbp_league_id_with_exact_game_fallback(
                     "official_sport_id": identity.sport_id,
                     "away_team_id": identity.away_team_id,
                     "home_team_id": identity.home_team_id,
+                    "classification": "official_exact_game_identity_available",
                 }
             )
     finally:
         session.close()
 
-    augmented_map, fallback_metrics = augment_game_league_map_with_official_identity(
-        game_league_map,
-        identities,
-        expected_league_ids=spec.league_ids,
-        expected_sport_id=spec.official_sport_id,
-    )
-    enriched, metrics = _BASE_ENRICH_HISTORICAL_PBP_LEAGUE_ID(
+    working_pbp, orphan_quarantine = quarantine_game_ids(
         pbp_rows,
+        official_404_games,
+        game_column="game_pk",
+        label="pbp_missing_same_game_league_and_official_exact_game_404",
+    )
+    if identities:
+        augmented_map, fallback_metrics = augment_game_league_map_with_official_identity(
+            game_league_map,
+            identities,
+            expected_league_ids=spec.league_ids,
+            expected_sport_id=spec.official_sport_id,
+        )
+    else:
+        augmented_map = game_league_map
+        fallback_metrics = {
+            "official_identity_count": 0,
+            "inserted_game_count": 0,
+            "authority": "no_official_identity_insert_needed_after_404_quarantine",
+        }
+
+    enriched, metrics = _BASE_ENRICH_HISTORICAL_PBP_LEAGUE_ID(
+        working_pbp,
         augmented_map,
         source_asset=source_asset,
         game_type=game_type,
@@ -147,10 +201,29 @@ def _enrich_historical_pbp_league_id_with_exact_game_fallback(
     metrics["player_game_same_game_map_original_count"] = int(game_league_map.height)
     metrics["official_exact_game_identity_fallback"] = fallback_metrics
     metrics["official_exact_game_identity_snapshots"] = snapshots
+    metrics["unresolved_official_404_game_quarantine"] = orphan_quarantine
     metrics["league_id_authority"] = (
-        "player_game_same_game_structured_plus_sparse_official_exact_game_team_league"
+        "player_game_same_game_plus_sparse_official_identity_with_unverifiable_games_quarantined"
     )
     return enriched, metrics
+
+
+def _comparison_row(
+    pre_comparison: pl.DataFrame,
+    *,
+    player_id: int,
+    league_id: int,
+) -> dict[str, Any]:
+    rows = pre_comparison.filter(
+        (pl.col("player_id") == int(player_id))
+        & (pl.col("league_id") == int(league_id))
+    ).to_dicts()
+    if len(rows) != 1:
+        raise RuntimeError(
+            f"expected one pre-reconciliation row for player={player_id} league={league_id}; "
+            f"found={len(rows)}"
+        )
+    return rows[0]
 
 
 def _adjudicate_outcomes_with_exact_game_fallback(
@@ -163,6 +236,7 @@ def _adjudicate_outcomes_with_exact_game_fallback(
     sport_id: int,
     raw_official_dir: Path,
 ) -> tuple[pl.DataFrame, pl.DataFrame, dict[str, Any]]:
+    _QUARANTINED_PLAYER_GAME_KEYS.clear()
     pre_comparison, pre_metrics = base.reconcile_resolved_outcomes_to_season_aggregates(
         outcomes,
         season_stats,
@@ -196,6 +270,21 @@ def _adjudicate_outcomes_with_exact_game_fallback(
                 player_id=player_id,
                 sport_id=sport_id,
             )
+
+            corrected, residual_quarantine = quarantine_single_source_only_exact_residual(
+                corrected,
+                official,
+                _comparison_row(
+                    pre_comparison,
+                    player_id=player_id,
+                    league_id=league_id,
+                ),
+                player_id=player_id,
+                league_id=league_id,
+            )
+            if residual_quarantine.get("applied"):
+                game_id, quarantine_player = residual_quarantine["quarantined_player_game_key"]
+                _QUARANTINED_PLAYER_GAME_KEYS.add((int(game_id), int(quarantine_player)))
 
             source_only_games = source_only_positive_pa_games(
                 corrected,
@@ -261,6 +350,7 @@ def _adjudicate_outcomes_with_exact_game_fallback(
                 league_id=league_id,
             )
             metrics = dict(metrics)
+            metrics["source_only_exact_residual_quarantine"] = residual_quarantine
             metrics["game_log_gap_fallback"] = fallback_metrics
             if not evidence.is_empty():
                 evidence_frames.append(evidence)
@@ -322,11 +412,15 @@ def _adjudicate_outcomes_with_exact_game_fallback(
 
     classifications: dict[str, int] = {}
     exact_game_fallback_count = 0
+    exact_residual_quarantine_count = 0
     for row in adjudications:
         key = str(row["classification"])
         classifications[key] = classifications.get(key, 0) + 1
         exact_game_fallback_count += int(
             row.get("game_log_gap_fallback", {}).get("exact_game_pbp_confirmed_count", 0)
+        )
+        exact_residual_quarantine_count += int(
+            bool(row.get("source_only_exact_residual_quarantine", {}).get("applied"))
         )
     return corrected, evidence, {
         "pre_reconciliation": pre_metrics,
@@ -336,6 +430,10 @@ def _adjudicate_outcomes_with_exact_game_fallback(
         "classification_counts": classifications,
         "adjudications": adjudications,
         "official_snapshots": snapshots,
+        "source_only_exact_residual_quarantine_count": exact_residual_quarantine_count,
+        "source_only_exact_residual_quarantined_keys": [
+            list(key) for key in sorted(_QUARANTINED_PLAYER_GAME_KEYS)
+        ],
         "exact_game_game_log_gap_fallback_count": exact_game_fallback_count,
         "changed_field_evidence_count": int(evidence.height),
         "post_reconciliation": post_metrics,
@@ -348,10 +446,43 @@ def _adjudicate_outcomes_with_exact_game_fallback(
     }
 
 
-# Replace only the two sparse source-authority seams. All other behavior remains
-# the certified base materializer's implementation.
+def _apply_participant_authority_with_source_quarantine(
+    contacts: pl.DataFrame,
+    controls: pl.DataFrame,
+):
+    filtered_controls, control_metrics = quarantine_player_game_keys(
+        controls,
+        _QUARANTINED_PLAYER_GAME_KEYS,
+        game_column="game_id",
+        player_column="player_id",
+        label="player_game_contact_controls_exact_source_residual",
+    )
+    filtered_contacts, contact_metrics = quarantine_player_game_keys(
+        contacts,
+        _QUARANTINED_PLAYER_GAME_KEYS,
+        game_column="game_pk",
+        player_column="source_batter_id",
+        label="pbp_contacts_exact_source_residual",
+    )
+    authorized, metrics = _BASE_APPLY_PARTICIPANT_AUTHORITY(
+        filtered_contacts,
+        filtered_controls,
+    )
+    return authorized, {
+        **metrics,
+        "exact_source_residual_cross_grain_quarantine": {
+            "keys": [list(key) for key in sorted(_QUARANTINED_PLAYER_GAME_KEYS)],
+            "controls": control_metrics,
+            "contacts": contact_metrics,
+        },
+    }
+
+
+# Replace only sparse source-authority seams. All other behavior remains the
+# certified base materializer's implementation.
 base.enrich_historical_pbp_league_id = _enrich_historical_pbp_league_id_with_exact_game_fallback
 base._adjudicate_outcomes = _adjudicate_outcomes_with_exact_game_fallback
+base._apply_participant_authority = _apply_participant_authority_with_source_quarantine
 
 
 if __name__ == "__main__":
