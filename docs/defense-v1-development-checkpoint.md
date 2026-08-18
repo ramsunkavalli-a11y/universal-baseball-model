@@ -2,114 +2,127 @@
 
 Last updated: 2026-08-18
 
-Status: **FINAL PRE-2025 TRACKED CHALLENGER READY TO SCORE — SOURCE GATE PASSED.**
+Status: **PRE-2025 DEVELOPMENT CLOSED — TRACKED GATE COMPLETE; FINAL REFIT / PARAMETER FREEZE NEXT.**
 
-This is the active Defense-v1 development handoff. The tracked source has been materialized under the frozen contract, persisted with hashes, and independently completed successfully. No tracked challenger score has been accepted yet.
+This is the active Defense-v1 development handoff. The final pre-2025 tracked challenger has been scored under the frozen contract. No additional Defense-v1 development challenger is authorized.
 
-## Binding source result
+## Binding tracked challenger result
 
 Governing contract: `docs/defense-v1-tracked-challenger-contract.md`.
 
-Binding source record: `docs/defense-v1-tracked-source-result.json`.
+Binding result: `docs/defense-v1-tracked-challenger-result.json`.
 
-Successful source run:
+Successful scoring run:
 
-- workflow: `Defense v1 tracked source materialization`;
-- run id: `32182019495`;
+- workflow: `Defense v1 tracked challenger scoring`;
+- run id: `32196115227`;
 - conclusion: `success`;
-- source branch: `source-certification-poc`;
-- source SHA: `5438e905d24e2167432a52253320ccbc978186b8`.
+- scoring SHA: `ace1df97001b83b91a1a1021637c604ebdea6399`;
+- frozen tracked source run: `32182019495`;
+- frozen tracked source SHA: `5438e905d24e2167432a52253320ccbc978186b8`.
 
-The source result explicitly records:
+The workflow downloaded the already-certified historical fielding artifact and frozen tracked-source artifact, verified the pinned tracked parquet SHA-256 values, and executed the staged scorer without changing its statistical gates.
 
-- `tracked_source_materialized = true`;
-- `tracked_challenger_scoring_authorized_next = true`;
-- `2025_confirmation_authorized = false`;
-- `war_value_authorized = false`;
-- no 2025 source access;
-- no 2025 defensive-target access;
-- no model fit during source materialization;
-- no source-filter change from the frozen contract.
-
-## Persisted tracked artifacts
-
-### Range
-
-`reports/generated/defense-v1-tracked-source/tables/tracked_range_proxy_2021_2023.parquet`
-
-- rows: `6,872`;
-- SHA-256: `a65cb6f7506d5e100c9f0b088fb276eecc1dab5599592dd477bfcc030d850a3e`.
-
-### Framing
-
-`reports/generated/defense-v1-tracked-source/tables/tracked_framing_proxy_2021_2023.parquet`
-
-- rows: `579`;
-- SHA-256: `1071b9d8209d6e9ba9d8c2b42ac7b99e3329387704e2910797b58f1a148cbc79`.
-
-Materialized predictor scope remains exactly frozen:
-
-- MLB regular seasons: 2021, 2022, 2023;
-- tracked MiLB transfer input: 2023 regular season;
-- MiLB transport: `minors=true` with client-side official level identity;
-- SportsDataverse `0.0.75` range and framing implementations;
-- no 2024 tracking predictor pull;
-- no 2025 source or target access.
-
-## Frozen challenger to run next
-
-Scoring code is already staged at:
-
-`scripts/audit_defense_v1_tracked_challenger.py`
-
-Run it against the persisted, hash-verified tracked artifacts without re-querying or changing source filters.
-
-### General range
+## General tracked range — TIER A PASSED / TIER B NOT ACCEPTED
 
 Incumbent: selected universal **U1**, lambda `0.0`.
 
-Challenger: **T1**, the exact U1 pipeline plus only `tracked_range_z`.
+Challenger: **T1 = exact U1 + tracked_range_z**.
 
-The frozen MLB gate compares U1 and T1 on identical tracked-eligible rows in 2022, 2023, and 2024 grouped leave-one-target-year-out folds. If T1 passes MLB, run only the predeclared 2023-MiLB -> 2024-MLB transfer diagnostic. Tier-B tracked range is accepted only if that transfer gate also passes.
+### MLB / Tier A gate
 
-### Catcher framing
+T1 beat U1 on MSE in all three frozen held folds:
 
-Baseline: **F0**, neutral framing z = 0.
+- 2022: `0.83749 -> 0.80983` — **3.30% improvement**, 140 held players;
+- 2023: `0.86863 -> 0.85218` — **1.89% improvement**, 133 held players;
+- 2024: `0.97975 -> 0.97191` — **0.80% improvement**, 141 held players.
 
-Challenger: **F1**, an unpenalized one-feature linear model from `tracked_framing_z` to next-year Savant `framing_target_z`.
+Pooled:
 
-If F1 passes the frozen MLB development gate, run only the predeclared 2023-MiLB -> 2024-MLB catcher transfer diagnostic. Tier-B framing is accepted only if that transfer gate also passes.
+- U1 MSE `0.89594`;
+- T1 MSE `0.87864`;
+- **1.93% pooled MSE improvement**;
+- pooled Spearman `0.23611 -> 0.24791`, delta **+0.01180**;
+- all count, fold guardrail, direction, rank-correlation, and finite-value gates passed.
 
-No incumbent universal feature/model reselection is authorized during this gate.
+**Binding decision: Tier-A tracked range PASSED.** MLB tracked Defense v1 may retain T1.
 
-## Already settled Defense-v1 development
+### MiLB -> MLB / Tier B transfer gate
 
-- Universal general range: **U1, lambda `0.0` selected**.
-- Universal catcher blocking: **C2 selected**.
-- Universal catcher throwing: **C1 selected**.
-- Age challenger A1: **failed / closed**.
-- Traditional feature search: **closed**.
-- Catcher framing source feasibility: **passed**.
-- Tracked MiLB transport/execution coverage: **passed**.
-- Final tracked source materialization: **passed**.
+The predeclared transfer diagnostic was attempted only after Tier A passed. The exact frozen eligibility join produced `0` transfer players, so the result is:
 
-After the tracked challenger score, there are no additional planned pre-2025 development challengers.
+`insufficient_transfer_evidence`
+
+Under the frozen contract, insufficient evidence is not a pass and there is no rescue/reselection path.
+
+**Binding decision: Tier-B tracked range NOT ACCEPTED.** Tracked MiLB remains on universal U1 range for Defense v1.
+
+## Tracked catcher framing — FAILED / CLOSED
+
+Baseline: **F0 = neutral framing z = 0**.
+
+Challenger: **F1**, the frozen one-feature unpenalized `tracked_framing_z -> framing_target_z` model.
+
+Fold results:
+
+- 2022: F1 MSE `1.22360` vs F0 `1.12932` — **8.35% worse**, 24 held catchers;
+- 2023: `0.96052` vs `1.13651` — **15.49% better**, 30 held catchers;
+- 2024: `0.86047` vs `1.02263` — **15.86% better**, 41 held catchers.
+
+Pooled:
+
+- F0 MSE `1.08554`;
+- F1 MSE `0.98380`;
+- **9.37% pooled MSE improvement**;
+- F1 pooled Spearman `0.24101`;
+- F1 beat F0 in 2 of 3 folds.
+
+However, the frozen gate allowed no fold to be more than 5.0% worse. The 2022 fold was **8.35% worse**, so the guardrail fails despite the favorable pooled result.
+
+**Binding decision: Tier-A tracked framing FAILED and is CLOSED for Defense v1.** The MiLB transfer diagnostic was correctly not attempted after the MLB failure; Tier-B tracked framing is therefore also not accepted. No framing rescue or retuning is authorized.
+
+## Retained pre-2025 Defense-v1 component set
+
+### General range
+
+- **Tier A — MLB tracked:** T1 (`U1 + tracked_range_z`).
+- **Tier B — tracked MiLB:** U1 only; tracked range transfer was insufficient.
+- **Tier C — untracked affiliated MiLB:** U1 only.
+
+### Catcher components
+
+- blocking: selected universal **C2**;
+- throwing: selected universal **C1**;
+- tracked framing: **closed / not retained** for Defense v1.
+
+### Closed development paths
+
+- age challenger A1: failed / closed;
+- rejected traditional features: closed;
+- tracked framing F1: failed / closed;
+- Tier-B tracked range: not accepted for insufficient transfer evidence;
+- additional pre-2025 challenger search: not authorized.
+
+Missing tracking remains missing evidence, not observed average/zero defensive skill.
 
 ## Exact next sequence
 
-1. Execute the frozen tracked challenger scorer using the persisted source artifacts and pinned hashes.
-2. Accept or close tracked range and tracked framing exactly by the predeclared MLB and, when applicable, MiLB-transfer gates.
-3. Refit only retained Defense-v1 component(s) on all authorized 2022–2024 development responses.
-4. Freeze normalization moments, coefficients, coverage/fallback rules, package versions, parameter hashes, and the exact 2025 confirmation contract.
-5. Only after that freeze may a separate source-only workflow materialize completed-2025 defensive targets for one-shot confirmation.
+The binding result explicitly authorizes **final refit and parameter freeze next** while keeping 2025 confirmation and WAR/value unauthorized.
+
+Next batch:
+
+1. Refit only the retained Defense-v1 components on all authorized 2022–2024 development responses.
+2. Freeze exact normalization moments, coefficients, coverage/fallback rules, package versions, parameter hashes, and component provenance.
+3. Freeze the one-shot 2025 Defense-v1 confirmation contract before any completed-2025 defensive source/target is opened.
+
+Only after that freeze may a separate source-only workflow materialize completed-2025 defensive targets for confirmation.
 
 ## Binding boundaries
 
 - **Do not access 2025 defensive source/targets yet.**
 - **Do not calculate WAR/value yet.**
-- Do not change the frozen tracked source filters after seeing challenger results.
-- Do not add a new Defense-v1 challenger after this gate.
-- Do not rescue age or previously rejected traditional features.
-- Do not infer proprietary MiLB OAA truth from public tracked proxies.
-- Missing tracking remains missing evidence, not average/zero defensive skill.
+- Do not add another Defense-v1 development challenger.
+- Do not rescue tracked framing, age, or rejected traditional features.
+- Do not promote tracked range to Tier B without the failed/insufficient frozen transfer gate.
+- Do not infer proprietary MiLB OAA truth from the public tracked proxy.
 - Playing Time v1 and Position/Role v1 remain frozen and untouched.
