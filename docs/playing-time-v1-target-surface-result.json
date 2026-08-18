@@ -1,0 +1,249 @@
+{
+  "boundary": {
+    "2025_accessed": false,
+    "batting_rate_modified": false,
+    "playing_time_model_fit": false,
+    "playing_time_predictions_computed": false,
+    "role_thresholds_applied": false
+  },
+  "development_evidence_source_run": 32097702869,
+  "folds": [
+    {
+      "fold": "projection_2021_to_2022",
+      "metrics": {
+        "as_of_level_metrics": [
+          {
+            "as_of_level_group": "AA",
+            "mean_mlb_pa": 9.527102803738318,
+            "mlb_pa": 5097,
+            "mlb_participation_rate": 0.09532710280373832,
+            "players_with_mlb_pa": 51,
+            "snapshot_players": 535
+          },
+          {
+            "as_of_level_group": "AAA",
+            "mean_mlb_pa": 31.002493765586035,
+            "mlb_pa": 24864,
+            "mlb_participation_rate": 0.24189526184538654,
+            "players_with_mlb_pa": 194,
+            "snapshot_players": 802
+          },
+          {
+            "as_of_level_group": "HIGH_A",
+            "mean_mlb_pa": 2.8432122370936903,
+            "mlb_pa": 1487,
+            "mlb_participation_rate": 0.028680688336520075,
+            "players_with_mlb_pa": 15,
+            "snapshot_players": 523
+          },
+          {
+            "as_of_level_group": "MLB",
+            "mean_mlb_pa": 177.5936018957346,
+            "mlb_pa": 149889,
+            "mlb_participation_rate": 0.5035545023696683,
+            "players_with_mlb_pa": 425,
+            "snapshot_players": 844
+          },
+          {
+            "as_of_level_group": "ROOKIE_COMPLEX",
+            "mean_mlb_pa": 0.0,
+            "mlb_pa": 0,
+            "mlb_participation_rate": 0.0,
+            "players_with_mlb_pa": 0,
+            "snapshot_players": 1500
+          },
+          {
+            "as_of_level_group": "SINGLE_A",
+            "mean_mlb_pa": 0.0,
+            "mlb_pa": 0,
+            "mlb_participation_rate": 0.0,
+            "players_with_mlb_pa": 0,
+            "snapshot_players": 498
+          }
+        ],
+        "mean_next_year_mlb_pa_all_snapshot_players": 38.56592939174819,
+        "players_with_next_year_affiliated_pa": 3177,
+        "players_with_next_year_mlb_pa": 685,
+        "positive_mlb_pa_max": 724,
+        "positive_mlb_pa_mean": 264.7255474452555,
+        "positive_mlb_pa_median": 221.0,
+        "positive_mlb_pa_p90": 584.0,
+        "positive_mlb_pa_variance": 45190.22248601417,
+        "positive_mlb_pa_variance_to_mean": 170.70593647694463,
+        "snapshot_player_count": 4702,
+        "zero_next_year_mlb_pa_count": 4017,
+        "zero_next_year_mlb_pa_share": 0.8543173117822204
+      },
+      "snapshot_date": "2021-10-15",
+      "storage": {
+        "canonical_schema_version": "0.1",
+        "file_sha256": "82a0953ed0e6a1f02a02bf39d5dfeab7c205de5c8fecaaf6142c2892506982b6",
+        "file_size_bytes": 163760,
+        "path": "reports/generated/playing-time-v1-target-surface/tables/projection_2021_to_2022/next_year_mlb_pa_targets.parquet",
+        "row_count": 4702,
+        "schema_sha256": "764395524db72791c9b3507cd85a8dfb94dd4a512f3adb990301a046fc72c74d",
+        "table_name": "projection_2021_to_2022_playing_time_mlb_pa_targets"
+      },
+      "target_year": 2022
+    },
+    {
+      "fold": "projection_2022_to_2023",
+      "metrics": {
+        "as_of_level_metrics": [
+          {
+            "as_of_level_group": "AA",
+            "mean_mlb_pa": 12.730192719486082,
+            "mlb_pa": 5945,
+            "mlb_participation_rate": 0.09207708779443255,
+            "players_with_mlb_pa": 43,
+            "snapshot_players": 467
+          },
+          {
+            "as_of_level_group": "AAA",
+            "mean_mlb_pa": 35.50354609929078,
+            "mlb_pa": 20024,
+            "mlb_participation_rate": 0.24113475177304963,
+            "players_with_mlb_pa": 136,
+            "snapshot_players": 564
+          },
+          {
+            "as_of_level_group": "HIGH_A",
+            "mean_mlb_pa": 2.0020964360587,
+            "mlb_pa": 955,
+            "mlb_participation_rate": 0.014675052410901468,
+            "players_with_mlb_pa": 7,
+            "snapshot_players": 477
+          },
+          {
+            "as_of_level_group": "MLB",
+            "mean_mlb_pa": 289.2467289719626,
+            "mlb_pa": 154747,
+            "mlb_participation_rate": 0.8504672897196262,
+            "players_with_mlb_pa": 455,
+            "snapshot_players": 535
+          },
+          {
+            "as_of_level_group": "ROOKIE_COMPLEX",
+            "mean_mlb_pa": 0.0,
+            "mlb_pa": 0,
+            "mlb_participation_rate": 0.0,
+            "players_with_mlb_pa": 0,
+            "snapshot_players": 1438
+          },
+          {
+            "as_of_level_group": "SINGLE_A",
+            "mean_mlb_pa": 0.3953488372093023,
+            "mlb_pa": 221,
+            "mlb_participation_rate": 0.005366726296958855,
+            "players_with_mlb_pa": 3,
+            "snapshot_players": 559
+          }
+        ],
+        "mean_next_year_mlb_pa_all_snapshot_players": 45.02277227722772,
+        "players_with_next_year_affiliated_pa": 3121,
+        "players_with_next_year_mlb_pa": 644,
+        "positive_mlb_pa_max": 753,
+        "positive_mlb_pa_mean": 282.44099378881987,
+        "positive_mlb_pa_median": 251.5,
+        "positive_mlb_pa_p90": 614.0,
+        "positive_mlb_pa_variance": 46696.25272944717,
+        "positive_mlb_pa_variance_to_mean": 165.331002780573,
+        "snapshot_player_count": 4040,
+        "zero_next_year_mlb_pa_count": 3396,
+        "zero_next_year_mlb_pa_share": 0.8405940594059406
+      },
+      "snapshot_date": "2022-10-15",
+      "storage": {
+        "canonical_schema_version": "0.1",
+        "file_sha256": "11d28d8ce8d5eb42121572d2c2a8f791b20b3fdf886e9cb64ffc8cab0d5297ba",
+        "file_size_bytes": 165203,
+        "path": "reports/generated/playing-time-v1-target-surface/tables/projection_2022_to_2023/next_year_mlb_pa_targets.parquet",
+        "row_count": 4040,
+        "schema_sha256": "764395524db72791c9b3507cd85a8dfb94dd4a512f3adb990301a046fc72c74d",
+        "table_name": "projection_2022_to_2023_playing_time_mlb_pa_targets"
+      },
+      "target_year": 2023
+    },
+    {
+      "fold": "projection_2023_to_2024",
+      "metrics": {
+        "as_of_level_metrics": [
+          {
+            "as_of_level_group": "AA",
+            "mean_mlb_pa": 6.867850098619329,
+            "mlb_pa": 3482,
+            "mlb_participation_rate": 0.0650887573964497,
+            "players_with_mlb_pa": 33,
+            "snapshot_players": 507
+          },
+          {
+            "as_of_level_group": "AAA",
+            "mean_mlb_pa": 36.698905109489054,
+            "mlb_pa": 20111,
+            "mlb_participation_rate": 0.30474452554744524,
+            "players_with_mlb_pa": 167,
+            "snapshot_players": 548
+          },
+          {
+            "as_of_level_group": "HIGH_A",
+            "mean_mlb_pa": 0.8959660297239915,
+            "mlb_pa": 422,
+            "mlb_participation_rate": 0.010615711252653927,
+            "players_with_mlb_pa": 5,
+            "snapshot_players": 471
+          },
+          {
+            "as_of_level_group": "MLB",
+            "mean_mlb_pa": 306.982421875,
+            "mlb_pa": 157175,
+            "mlb_participation_rate": 0.859375,
+            "players_with_mlb_pa": 440,
+            "snapshot_players": 512
+          },
+          {
+            "as_of_level_group": "ROOKIE_COMPLEX",
+            "mean_mlb_pa": 0.0,
+            "mlb_pa": 0,
+            "mlb_participation_rate": 0.0,
+            "players_with_mlb_pa": 0,
+            "snapshot_players": 1411
+          },
+          {
+            "as_of_level_group": "SINGLE_A",
+            "mean_mlb_pa": 0.0,
+            "mlb_pa": 0,
+            "mlb_participation_rate": 0.0,
+            "players_with_mlb_pa": 0,
+            "snapshot_players": 536
+          }
+        ],
+        "mean_next_year_mlb_pa_all_snapshot_players": 45.46800501882058,
+        "players_with_next_year_affiliated_pa": 3048,
+        "players_with_next_year_mlb_pa": 645,
+        "positive_mlb_pa_max": 735,
+        "positive_mlb_pa_mean": 280.91472868217056,
+        "positive_mlb_pa_median": 249.0,
+        "positive_mlb_pa_p90": 619.0,
+        "positive_mlb_pa_variance": 46857.54466678685,
+        "positive_mlb_pa_variance_to_mean": 166.80344561000894,
+        "snapshot_player_count": 3985,
+        "zero_next_year_mlb_pa_count": 3340,
+        "zero_next_year_mlb_pa_share": 0.8381430363864492
+      },
+      "snapshot_date": "2023-10-15",
+      "storage": {
+        "canonical_schema_version": "0.1",
+        "file_sha256": "784bacc26fa437175f775859497a71fe89a99b21d6c4f8f0c51e2002ea50291f",
+        "file_size_bytes": 163415,
+        "path": "reports/generated/playing-time-v1-target-surface/tables/projection_2023_to_2024/next_year_mlb_pa_targets.parquet",
+        "row_count": 3985,
+        "schema_sha256": "764395524db72791c9b3507cd85a8dfb94dd4a512f3adb990301a046fc72c74d",
+        "table_name": "projection_2023_to_2024_playing_time_mlb_pa_targets"
+      },
+      "target_year": 2024
+    }
+  ],
+  "frozen_b2_snapshot_source_run": 32099733186,
+  "gate": "playing_time_v1_target_surface_pre_model",
+  "report_schema_version": "0.1"
+}
