@@ -1,0 +1,47 @@
+name: Current Talent contact-value scale audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out feature branch
+        uses: actions/checkout@v7
+        with:
+          ref: source-certification-poc
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify Retrosheet and RE24 contracts
+        run: >-
+          python -m pytest
+          tests/test_retrosheet.py
+          tests/test_run_expectancy.py
+
+      - name: Compile contact-value source audit
+        run: python -m py_compile scripts/audit_current_talent_contact_value_scale.py
+
+      - name: Build frozen pre-cutoff contact-value scale
+        run: python scripts/audit_current_talent_contact_value_scale.py
+
+      - name: Upload contact-value scale audit
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: current-talent-contact-value-scale
+          path: reports/generated/current-talent-contact-value-scale/
+          if-no-files-found: warn
+          retention-days: 14
