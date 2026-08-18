@@ -37,6 +37,7 @@ jobs:
               "validation_2023": "playing-time-v1-validation-2023.yml",
               "validation_2024": "playing-time-v1-validation-2024.yml",
               "development_closeout": "playing-time-v1-development-closeout.yml",
+              "confirmation_inputs": "playing-time-v1-confirmation-inputs.yml",
           }
           output = {"gate": "playing_time_workflow_status_probe", "workflows": {}}
           env = dict(os.environ)
