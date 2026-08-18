@@ -1,0 +1,61 @@
+{
+  "report_schema_version": "0.1",
+  "gate": "current_talent_contact_value_confirmation_evidence_pre_scoring",
+  "run_id": 32086538491,
+  "artifact_id": 9306895705,
+  "artifact_sha256": "d48b62566f29c89e4ce7767375bc50d4efd04023ac15bd4d76ab62c2205dc47a",
+  "combined_valued_contact_count": 1732957,
+  "confirmation_2023_valued_contact_count": 595619,
+  "cutoff_surfaces": [
+    {
+      "cutoff_date": "2023-07-15",
+      "baseline_contact_count": 1484876,
+      "baseline_last_event_date": "2023-07-14",
+      "future_target_contact_count": 248081,
+      "future_first_event_date": "2023-07-15",
+      "future_last_event_date": "2023-10-01",
+      "baseline_cell_count": 60,
+      "parameter_count": 15,
+      "full_rank": true,
+      "cutoff_safe": true
+    },
+    {
+      "cutoff_date": "2023-08-01",
+      "baseline_contact_count": 1556104,
+      "baseline_last_event_date": "2023-07-31",
+      "future_target_contact_count": 176853,
+      "future_first_event_date": "2023-08-01",
+      "future_last_event_date": "2023-10-01",
+      "baseline_cell_count": 60,
+      "parameter_count": 15,
+      "full_rank": true,
+      "cutoff_safe": true
+    },
+    {
+      "cutoff_date": "2023-09-01",
+      "baseline_contact_count": 1674318,
+      "baseline_last_event_date": "2023-08-31",
+      "future_target_contact_count": 58639,
+      "future_first_event_date": "2023-09-01",
+      "future_last_event_date": "2023-10-01",
+      "baseline_cell_count": 60,
+      "parameter_count": 15,
+      "full_rank": true,
+      "cutoff_safe": true,
+      "future_rookie_complex_absent_due_to_schedule": true
+    }
+  ],
+  "boundary": {
+    "2023_source_evidence_accessed": true,
+    "terminal_values_attached_unchanged": true,
+    "baseline_fitted": true,
+    "richer_features_attached": false,
+    "confirmation_coefficients_changed": false,
+    "future_predictions_computed": false,
+    "confirmation_losses_computed": false,
+    "calibration_computed": false,
+    "confirmation_decision_computed": false,
+    "model_scoring": false,
+    "network_requests_performed": false
+  }
+}
