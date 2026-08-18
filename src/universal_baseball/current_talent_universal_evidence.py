@@ -1,20 +1,22 @@
 """Combine MLB and affiliated player-game evidence for Current Talent snapshots.
 
-This is a contract/materialization layer only.  It concatenates already-validated
-source-specific game evidence and enforces universal canonical grains.  Level
+This is a contract/materialization layer only. It concatenates already-validated
+source-specific game evidence and enforces universal canonical grains. Level
 translation, age priors, recency selection, talent inference, and future scoring
 remain downstream model concerns.
 """
 
 from __future__ import annotations
 
-from typing import Any, Iterable
+from typing import Any, Iterable, Sequence
 
 import polars as pl
 
 from universal_baseball.current_talent_evidence import (
     PLAYER_GAME_KEY,
     PLAYER_GAME_PROFILE_KEY,
+    PLAYER_GAME_PROFILE_REQUIRED,
+    PLAYER_GAME_SUMMARY_REQUIRED,
     validate_player_game_evidence,
 )
 from universal_baseball.universal_performance import (
@@ -23,13 +25,55 @@ from universal_baseball.universal_performance import (
 )
 
 
-def _concat(frames: Iterable[pl.DataFrame], label: str) -> pl.DataFrame:
+SUMMARY_CANONICAL_COLUMNS: tuple[str, ...] = (
+    *PLAYER_GAME_KEY,
+    "level_group",
+    "batting_plate_appearances",
+    "expected_contact_count",
+    "observed_contact_count",
+    "contact_count_residual",
+    "core_profile_event_count",
+    "bunt_contact_count",
+    "foul_air_excluded_count",
+    "unknown_contact_count",
+    "special_noncontact_count",
+    "pa_accounting_residual",
+    "participant_authority_status",
+    "source_capability_tier",
+)
+PROFILE_CANONICAL_COLUMNS: tuple[str, ...] = (
+    *PLAYER_GAME_PROFILE_KEY,
+    "level_group",
+    "occurrence_count",
+)
+
+
+def _concat(
+    frames: Iterable[pl.DataFrame],
+    label: str,
+    canonical_columns: Sequence[str],
+) -> pl.DataFrame:
     materialized = list(frames)
     if not materialized:
         raise ValueError(f"no {label} Current Talent evidence frames supplied")
     if any(frame.is_empty() for frame in materialized):
         raise ValueError(f"{label} Current Talent evidence contains an empty component")
-    return pl.concat(materialized, how="vertical_relaxed")
+
+    required = set(canonical_columns)
+    for index, frame in enumerate(materialized):
+        missing = sorted(required - set(frame.columns))
+        if missing:
+            raise ValueError(
+                f"{label} Current Talent evidence component {index} missing canonical fields: {missing}"
+            )
+
+    # Certified source-specific artifacts can carry extra provenance/diagnostic
+    # fields and can serialize the same canonical columns in different orders.
+    # The universal surface is deliberately narrower: project every component to
+    # the frozen model-facing contract before concatenation rather than asking
+    # Polars to reconcile source-specific schemas implicitly.
+    projected = [frame.select(list(canonical_columns)) for frame in materialized]
+    return pl.concat(projected, how="vertical_relaxed")
 
 
 def combine_universal_player_game_evidence(
@@ -41,8 +85,16 @@ def combine_universal_player_game_evidence(
 ) -> tuple[pl.DataFrame, pl.DataFrame, dict[str, Any]]:
     """Combine source-specific player-game evidence on one stable surface."""
 
-    summary = _concat(summaries, "summary")
-    profile = _concat(profiles, "profile")
+    # Keep these assertions tied directly to the generic Current Talent
+    # validator so a future required-field change cannot silently leave this
+    # canonical projection stale.
+    if set(SUMMARY_CANONICAL_COLUMNS) != set(PLAYER_GAME_SUMMARY_REQUIRED):
+        raise RuntimeError("universal summary canonical fields drifted from Current Talent contract")
+    if set(PROFILE_CANONICAL_COLUMNS) != set(PLAYER_GAME_PROFILE_REQUIRED):
+        raise RuntimeError("universal profile canonical fields drifted from Current Talent contract")
+
+    summary = _concat(summaries, "summary", SUMMARY_CANONICAL_COLUMNS)
+    profile = _concat(profiles, "profile", PROFILE_CANONICAL_COLUMNS)
 
     # Source-specific adapters should already supply the normalized level label.
     # Validate it against the frozen universal league map rather than overwriting
@@ -105,6 +157,7 @@ def combine_universal_player_game_evidence(
         "source_capability_tiers": sorted(
             str(v) for v in summary.get_column("source_capability_tier").unique().to_list()
         ),
+        "universal_schema_policy": "project_required_current_talent_fields_before_concat_v1",
     }
     return (
         summary.sort(["game_date", "game_pk", "league_id", "player_id"]),
