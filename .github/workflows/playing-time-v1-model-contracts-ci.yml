@@ -1,0 +1,42 @@
+name: Playing-time v1 model contracts CI
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/playing-time-v1-model-contracts-ci.yml"
+      - "requirements-playing-time.txt"
+      - "src/universal_baseball/playing_time_model.py"
+      - "tests/test_playing_time_model.py"
+      - "docs/playing-time-model-ci-trigger.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and playing-time dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install -r requirements-playing-time.txt
+
+      - name: Compile playing-time model contracts
+        run: python -m py_compile src/universal_baseball/playing_time_model.py
+
+      - name: Test playing-time model contracts
+        run: python -m pytest -q tests/test_playing_time_model.py
