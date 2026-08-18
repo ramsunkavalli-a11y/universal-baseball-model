@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-17 19:28 PT
+Last updated: 2026-08-17 19:34 PT
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
@@ -89,32 +89,53 @@ Recent successful fast-CI gates:
 
 The deterministic chronology/dataset/fallback contracts are not the current blocker.
 
-### 2024 MiLB historical evidence reuse/materialization — NOT CLEARED
+### 2024 MiLB historical evidence reuse/materialization — NOT YET CLEARED
 
-The heavy live-source path needed for the 2024 Projection development fold has not yet completed successfully.
+The heavy live-source path needed for the 2024 Projection development fold has not yet produced a clean certified artifact.
 
-Failed runs:
+Failed historical-path runs:
 
 - `32089284674` — certified historical Current Talent path for 2024 MiLB
 - `32090307461` — exact-game official fallback rerun
 - `32090635458` — exact-game league fallback rerun
 - `32090668312` — both exact-game fallbacks rerun
 
-These failures are being treated as a source/integration problem to isolate, not as permission to bypass certification.
+The failures are being treated as source/integration discrepancies to resolve explicitly, not as permission to bypass certification.
 
-### Exact-game source-gap recovery — CONCRETE BLOCKER IDENTIFIED
+### Exact-game official recovery — 404 CLASSIFIED AS A DEAD END FOR ONE GAME
 
-Original dedicated audit run `32091086460` failed before completing the intended source inspection because of an import-path issue.
-
-Recovery run `32091704947` fixed that import path and reached the live source. It then failed closed on the first concrete unresolved game:
+Original dedicated audit run `32091086460` failed because of an import-path issue. Recovery run `32091704947` fixed that import and reached the live source, then failed closed at:
 
 - `game_pk = 755829`
-- requested official live feed: `https://statsapi.mlb.com/api/v1/game/755829/feed/live`
-- official response: **HTTP 404 Not Found**
-- failure occurs in `capture_official_json()` because official snapshots require a successful 2xx response
-- the recovery artifact was still uploaded: artifact `9308582512`, digest `sha256:a5847628722d0ae12e80ed90e649d20fd24e6195bf17b96fb61e681b35d273d2`
+- expected official live feed: `https://statsapi.mlb.com/api/v1/game/755829/feed/live`
+- response: **HTTP 404 Not Found**
+- recovery artifact `9308582512`, digest `sha256:a5847628722d0ae12e80ed90e649d20fd24e6195bf17b96fb61e681b35d273d2`
 
-This is now the current source-gap boundary. The immediate problem is no longer a generic workflow failure: the historical 2024 path contains at least one game whose expected `/feed/live` surface is unavailable at that game ID.
+The fail-closed capture behavior was correct, but the official `/feed/live` path cannot adjudicate this game as currently identified.
+
+### Source-only residual audit — PASSED / ROOT CAUSE NARROWED
+
+Run `32092166134` then tested whether the retained source itself contains exact extra outcome rows that explain the remaining season mismatches without requiring unavailable official PBP. The audit **succeeded**.
+
+It found exactly two deterministic source-only residuals:
+
+1. **High-A** — player `669233`, game `755829`
+   - suspect row: `PA=1, AB=1, BB=0, HBP=0, SO=0, SF=0, SH=0, CI=0`
+   - season totals mismatch before removal
+   - season totals match after removal
+   - post-removal totals match official gameLog
+   - exact removable residual: **true**
+
+2. **Single-A** — player `686541`, game `754395`
+   - suspect row: `PA=1, AB=1, BB=0, HBP=0, SO=1, SF=0, SH=0, CI=0`
+   - season totals mismatch before removal
+   - season totals match after removal
+   - post-removal totals match official gameLog
+   - exact removable residual: **true**
+
+Audit artifact: `9308734004`, digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
+
+This is stronger than the earlier generic source-gap diagnosis: the currently observed 2024 outcome residual is localized to **two exact source-only rows** whose deterministic removal restores official aggregate agreement.
 
 Machine-readable workflow snapshots:
 
@@ -123,13 +144,12 @@ Machine-readable workflow snapshots:
 
 ## Immediate next action
 
-1. Inspect game `755829` across the official schedule/game metadata surfaces and the retained certified source artifact.
-2. Determine whether the 404 represents an invalid/obsolete game ID, a game type without a live-feed surface, a historical Stats API availability gap, or a recoverable alternate official endpoint/representation.
-3. Make the narrowest evidence-backed source-wrapper/materialization rule; do not silently drop the game.
-4. Add a deterministic regression for that exact source condition.
-5. Rerun the dedicated source-gap audit so it can continue beyond `755829`, then rerun the full 2024 MiLB historical evidence path.
-6. Require a clean certified 2024 artifact before promoting it into Projection development evidence.
-7. Only after all 2022–2024 development surfaces are complete and chronology-verified should Projection Baseline 0 / Baseline 1 scoring begin.
+1. Encode the two audited source-only rows as an explicit, provenance-preserving 2024 source-quality/exclusion rule; do not silently drop them.
+2. Add deterministic regression tests proving that only the exact audited rows are excluded and that post-exclusion season totals match the official gameLog controls.
+3. Rerun the full 2024 MiLB historical evidence path.
+4. Require a clean certified 2024 artifact and verify there are no additional unresolved residuals before promoting it into Projection development evidence.
+5. Materialize and chronology-verify the full 2022–2024 Projection development snapshot/outcome surfaces with opportunity/censoring accounting.
+6. Only then begin Projection Baseline 0 / Baseline 1 development scoring.
 
 Do not jump ahead to the age curve or 2025 confirmation while the 2024 evidence surface is unresolved.
 
