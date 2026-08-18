@@ -9,12 +9,14 @@ on:
       - "src/universal_baseball/projection_baselines.py"
       - "src/universal_baseball/projection_dataset.py"
       - "src/universal_baseball/current_talent_official_game_fallback.py"
+      - "src/universal_baseball/current_talent_official_game_identity.py"
       - "scripts/materialize_projection_batting_v1_development_evidence.py"
       - "scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py"
       - "tests/test_projection_validation.py"
       - "tests/test_projection_baselines.py"
       - "tests/test_projection_dataset.py"
       - "tests/test_current_talent_official_game_fallback.py"
+      - "tests/test_current_talent_official_game_identity.py"
       - ".github/workflows/projection-validation-contracts-ci.yml"
   workflow_dispatch:
 
@@ -45,13 +47,15 @@ jobs:
           src/universal_baseball/projection_baselines.py
           src/universal_baseball/projection_dataset.py
           src/universal_baseball/current_talent_official_game_fallback.py
+          src/universal_baseball/current_talent_official_game_identity.py
           scripts/materialize_projection_batting_v1_development_evidence.py
           scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py
 
-      - name: Test Projection contracts and exact-game fallback
+      - name: Test Projection contracts and exact-game fallbacks
         run: >-
           python -m pytest -q
           tests/test_projection_validation.py
           tests/test_projection_baselines.py
           tests/test_projection_dataset.py
           tests/test_current_talent_official_game_fallback.py
+          tests/test_current_talent_official_game_identity.py
