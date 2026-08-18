@@ -4,7 +4,7 @@ Projection v1 starts from the already-frozen results-only Current Talent state.
 This module packages the exact Baseline-2 construction used by the historical
 Current Talent development/confirmation gates into a reusable October-snapshot
 builder. It deliberately does not score future outcomes, fit a Projection age
-curve, infer playing time, or access confirmation data.
+curve, infer playing time, or access confirmation outcomes.
 
 Frozen Current Talent semantics preserved here:
 
@@ -38,7 +38,11 @@ from universal_baseball.current_talent_translation import (
     build_training_environment_transition_evidence,
     fit_level_clr_translation,
 )
-from universal_baseball.projection_validation import ProjectionFold, require_development_fold
+from universal_baseball.projection_validation import (
+    PROJECTION_V1_CONFIRMATION_FOLD,
+    ProjectionFold,
+    require_development_fold,
+)
 
 
 PROJECTION_FROZEN_B2_SNAPSHOT_METHOD = "projection_reproduce_frozen_current_talent_b2_v1"
@@ -76,6 +80,20 @@ def _require_columns(frame: pl.DataFrame, required: set[str], label: str) -> Non
         raise ValueError(f"{label} missing fields: {missing}")
 
 
+def _require_snapshot_fold(
+    fold: ProjectionFold,
+    *,
+    allow_confirmation_snapshot: bool,
+) -> None:
+    if fold.confirmation:
+        if not allow_confirmation_snapshot:
+            raise ValueError("Projection confirmation snapshot requires explicit authorization")
+        if fold != PROJECTION_V1_CONFIRMATION_FOLD:
+            raise ValueError("only the frozen Projection v1 confirmation fold may be authorized")
+        return
+    require_development_fold(fold)
+
+
 def _require_current_season_only(frame: pl.DataFrame, *, season: int, label: str) -> None:
     if frame.is_empty():
         raise ValueError(f"{label} must not be empty")
@@ -103,15 +121,24 @@ def build_projection_frozen_b2_snapshot_from_offsets(
     translation_offsets: pl.DataFrame,
     *,
     fold: ProjectionFold,
+    allow_confirmation_snapshot: bool = False,
 ) -> ProjectionFrozenB2Snapshot:
     """Build frozen B2 using already-fitted snapshot-season translation offsets.
 
     This lower-level entry point exists so deterministic tests can isolate B2
     reproduction from the independently tested translation fitter. Production
     callers should normally use :func:`build_projection_frozen_b2_snapshot`.
+
+    The canonical 2024-10-15 confirmation predictor snapshot may be built only
+    after an explicit ``allow_confirmation_snapshot=True`` opt-in. This opt-in
+    never permits 2025 outcome evidence: all supplied history remains required
+    to precede the snapshot date.
     """
 
-    require_development_fold(fold)
+    _require_snapshot_fold(
+        fold,
+        allow_confirmation_snapshot=allow_confirmation_snapshot,
+    )
     validate_player_game_evidence(history_summary, history_profile)
     validate_player_game_evidence(current_summary, current_profile)
     _require_current_season_only(current_summary, season=fold.snapshot_date.year, label="current summary")
@@ -214,6 +241,7 @@ def build_projection_frozen_b2_snapshot_from_offsets(
         "future_outcomes_scored": False,
         "projection_model_fit": False,
         "playing_time_modeled": False,
+        "confirmation_snapshot_authorized": bool(fold.confirmation and allow_confirmation_snapshot),
         "confirmation_accessed": False,
     }
     return ProjectionFrozenB2Snapshot(
@@ -232,10 +260,14 @@ def build_projection_frozen_b2_snapshot(
     context: pl.DataFrame,
     *,
     fold: ProjectionFold,
+    allow_confirmation_snapshot: bool = False,
 ) -> ProjectionFrozenB2Snapshot:
-    """Fit the frozen translation and reproduce Baseline 2 at one dev snapshot."""
+    """Fit the frozen translation and reproduce Baseline 2 at one snapshot."""
 
-    require_development_fold(fold)
+    _require_snapshot_fold(
+        fold,
+        allow_confirmation_snapshot=allow_confirmation_snapshot,
+    )
     validate_player_game_evidence(current_summary, current_profile)
     _require_current_season_only(current_summary, season=fold.snapshot_date.year, label="current summary")
     _require_no_future_history(current_summary, fold=fold, label="current summary")
@@ -260,6 +292,7 @@ def build_projection_frozen_b2_snapshot(
         context,
         translation_fit.offsets,
         fold=fold,
+        allow_confirmation_snapshot=allow_confirmation_snapshot,
     )
     metrics = {
         **built.metrics,
