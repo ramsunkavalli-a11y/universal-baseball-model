@@ -16,7 +16,10 @@ from universal_baseball.projection_current_talent import (
     FROZEN_B0_MIN_AGE_LEVEL_PEERS,
     build_projection_frozen_b2_snapshot_from_offsets,
 )
-from universal_baseball.projection_validation import PROJECTION_V1_DEVELOPMENT_FOLDS
+from universal_baseball.projection_validation import (
+    PROJECTION_V1_CONFIRMATION_FOLD,
+    PROJECTION_V1_DEVELOPMENT_FOLDS,
+)
 
 
 def _evidence(rows: list[tuple[int, date, str]]) -> tuple[pl.DataFrame, pl.DataFrame]:
@@ -193,4 +196,54 @@ def test_projection_b2_snapshot_rejects_post_snapshot_history() -> None:
             _context(player_ids),
             _zero_offsets(),
             fold=fold,
+        )
+
+
+def test_projection_confirmation_snapshot_requires_explicit_authorization() -> None:
+    player_ids = list(range(1, FROZEN_B0_MIN_AGE_LEVEL_PEERS + 2))
+    current_summary, current_profile = _evidence(
+        [(player_id, date(2024, 9, 1), "K") for player_id in player_ids]
+    )
+    with pytest.raises(ValueError, match="requires explicit authorization"):
+        build_projection_frozen_b2_snapshot_from_offsets(
+            current_summary,
+            current_profile,
+            current_summary,
+            current_profile,
+            _context(player_ids),
+            _zero_offsets(),
+            fold=PROJECTION_V1_CONFIRMATION_FOLD,
+        )
+
+
+def test_projection_confirmation_snapshot_uses_only_pre_snapshot_evidence() -> None:
+    player_ids = list(range(1, FROZEN_B0_MIN_AGE_LEVEL_PEERS + 2))
+    current_summary, current_profile = _evidence(
+        [(player_id, date(2024, 9, 1), "K") for player_id in player_ids]
+    )
+    snapshot = build_projection_frozen_b2_snapshot_from_offsets(
+        current_summary,
+        current_profile,
+        current_summary,
+        current_profile,
+        _context(player_ids),
+        _zero_offsets(),
+        fold=PROJECTION_V1_CONFIRMATION_FOLD,
+        allow_confirmation_snapshot=True,
+    )
+    assert snapshot.metrics["confirmation_snapshot_authorized"] is True
+    assert snapshot.metrics["confirmation_accessed"] is False
+    assert snapshot.metrics["future_outcomes_scored"] is False
+
+    late_summary, late_profile = _evidence([(1, date(2024, 10, 15), "K")])
+    with pytest.raises(ValueError, match="at or after Projection snapshot"):
+        build_projection_frozen_b2_snapshot_from_offsets(
+            pl.concat([current_summary, late_summary], how="vertical_relaxed"),
+            pl.concat([current_profile, late_profile], how="vertical_relaxed"),
+            current_summary,
+            current_profile,
+            _context(player_ids),
+            _zero_offsets(),
+            fold=PROJECTION_V1_CONFIRMATION_FOLD,
+            allow_confirmation_snapshot=True,
         )
