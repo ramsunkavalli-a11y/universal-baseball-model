@@ -8,7 +8,24 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 The active draft PR is **#1 — Build and certify universal baseball foundation layer**.
 
-**Current stage:** Baseline 1 has beaten Baseline 0 with unchanged candidate settings at common **July 15, Aug. 1, and Sep. 1 cutoffs in 2021–2023**. The main predictive gain is stable and comes from player-specific recent evidence + empirical-Bayes shrinkage. Full-strength level translation remains a smaller, less stable second-order effect and is not frozen. The next gate is a **multi-fold calibration review**, including calibration intercept/slope, before chronological hyperparameter selection. No Current Talent model is frozen yet.
+## Current stage
+
+The first batting **Performance** layer is production-shaped for completed 2024 affiliated baseball, and the first universal batting **Current Talent** model is now frozen.
+
+Frozen Current Talent model:
+
+`translated_multiseason_recency_empirical_bayes_v1`
+
+It is a results-only, multi-season, recency-weighted empirical-Bayes profile with training-only MLB-anchored level translation.
+
+Two richer batted-ball challengers were tested under chronological contracts:
+
+- Challenger 1 failed fixed 2022 development and is closed.
+- Challenger 2 passed every fixed 2022 development gate but failed the one-shot 2023 confirmation because MAE and calibration-intercept guardrails deteriorated despite lower MSE in all three confirmation folds.
+
+Therefore Challenger 2 is closed without rescue tuning, and Baseline 2 remains the Current Talent model. See [`docs/current-talent-challenger2-postmortem.md`](docs/current-talent-challenger2-postmortem.md).
+
+The project is now moving to **batting Projection v1**. The first question is deliberately simple: can a leakage-safe age/development adjustment improve next-season rate/profile prediction over carrying frozen Current Talent forward unchanged? Projection v1 uses 2022–2024 as chronological development targets and quarantines **2025 outcomes** as the untouched confirmation period. See [`docs/projection-batting-v1-plan.md`](docs/projection-batting-v1-plan.md).
 
 ## Core principles
 
@@ -23,11 +40,12 @@ The active draft PR is **#1 — Build and certify universal baseball foundation 
 ## Current milestone documents
 
 - [`docs/project-status.md`](docs/project-status.md) — **canonical current handoff / roadmap**.
-- [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target, chronology, baseline, and validation contract.
-- [`docs/current-talent-baseline-checkpoint.md`](docs/current-talent-baseline-checkpoint.md) — Baseline 0/1 implementation, nine common July/August/September folds, and fitted-vs-zero translation ablation.
-- [`docs/current-talent-historical-mlb-checkpoint.md`](docs/current-talent-historical-mlb-checkpoint.md) — certified 2021–2023 historical MLB Current Talent evidence and official reconciliation rules.
-- [`docs/current-talent-historical-milb-checkpoint.md`](docs/current-talent-historical-milb-checkpoint.md) — certified 2021–2023 historical affiliated-MiLB evidence.
-- [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — first production-shaped completed-2024 affiliated batting Performance materialization.
+- [`docs/current-talent-results-only-baseline-freeze.md`](docs/current-talent-results-only-baseline-freeze.md) — frozen Current Talent Baseline 2.
+- [`docs/current-talent-contact-value-confirmation-result.json`](docs/current-talent-contact-value-confirmation-result.json) — binding Challenger 2 confirmation result.
+- [`docs/current-talent-challenger2-postmortem.md`](docs/current-talent-challenger2-postmortem.md) — lessons and methodological closeout.
+- [`docs/projection-batting-v1-plan.md`](docs/projection-batting-v1-plan.md) — pre-development Projection v1 contract; 2025 quarantined.
+- [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target/chronology principles and relationship to Projection.
+- [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — production-shaped completed-2024 affiliated batting Performance materialization.
 
 ## Development workflow
 
