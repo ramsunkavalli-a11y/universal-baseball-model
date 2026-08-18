@@ -29,6 +29,7 @@ jobs:
           import json, os, subprocess
           from pathlib import Path
           workflows = {
+              "source_only_outcome_audit": "projection-2024-source-only-outcome-row-audit.yml",
               "recovery_audit": "projection-2024-exact-game-source-gap-audit-recovery.yml",
               "exact_game_audit_original": "projection-2024-exact-game-source-gap-audit.yml",
               "historical_milb_2024": "projection-current-talent-historical-milb-2024.yml",
