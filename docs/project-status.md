@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-17 19:25 PT
+Last updated: 2026-08-17 19:28 PT
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
@@ -21,9 +21,7 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 
 Completed-2024 affiliated batting Performance materialization is production-shaped and retained for downstream reuse.
 
-Primary checkpoint:
-
-`docs/performance-2024-affiliated-checkpoint.md`
+Primary checkpoint: `docs/performance-2024-affiliated-checkpoint.md`.
 
 Do not reopen Performance/source-foundation work unless Projection exposes a concrete implementation or coverage failure.
 
@@ -60,9 +58,7 @@ Older Current Talent development/checkpoint files are historical evidence, not a
 
 ### Projection v1 — ACTIVE STAGE
 
-Governing plan:
-
-`docs/projection-batting-v1-plan.md`
+Governing plan: `docs/projection-batting-v1-plan.md`.
 
 Primary question:
 
@@ -83,51 +79,57 @@ No 2025 outcome table may be opened for feature choice, hyperparameter selection
 
 ### Deterministic contracts / fast CI — PASSING
 
-The Projection contract layer has advanced beyond pre-development planning. Recent successful fast-CI gates include:
+Recent successful fast-CI gates:
 
-- run `32089050302` — next-year dataset contract
-- run `32089669934` — Projection development-evidence materializer compiles in CI
-- run `32090401492` — exact-game fallback contract
-- run `32090635490` — exact-game league fallback contract
-- run `32090687671` — combined exact-game outcome + league fallback tests
+- `32089050302` — next-year dataset contract
+- `32089669934` — Projection development-evidence materializer compiles in CI
+- `32090401492` — exact-game fallback contract
+- `32090635490` — exact-game league fallback contract
+- `32090687671` — combined exact-game outcome + league fallback tests
 
-This means the deterministic chronology/dataset/fallback contracts are not the current blocker.
+The deterministic chronology/dataset/fallback contracts are not the current blocker.
 
-### 2024 MiLB historical evidence reuse/materialization — NOT YET CLEARED
+### 2024 MiLB historical evidence reuse/materialization — NOT CLEARED
 
-The heavy live-source path needed to reuse certified historical Current Talent evidence for the 2024 Projection development fold has not yet completed successfully.
+The heavy live-source path needed for the 2024 Projection development fold has not yet completed successfully.
 
-Recent failed runs:
+Failed runs:
 
 - `32089284674` — certified historical Current Talent path for 2024 MiLB
 - `32090307461` — exact-game official fallback rerun
 - `32090635458` — exact-game league fallback rerun
 - `32090668312` — both exact-game fallbacks rerun
 
-The failures are being treated as a source/integration issue to isolate, not as permission to bypass certification.
+These failures are being treated as a source/integration problem to isolate, not as permission to bypass certification.
 
-### Exact-game source-gap audit / recovery — CURRENT LIVE BLOCKER
+### Exact-game source-gap recovery — CONCRETE BLOCKER IDENTIFIED
 
-The first dedicated audit run `32091086460` failed before completing the intended source inspection. A narrow recovery workflow corrected the interrupted import path and launched run:
+Original dedicated audit run `32091086460` failed before completing the intended source inspection because of an import-path issue.
 
-`32091704947` — **Projection 2024 exact-game source-gap audit recovery**
+Recovery run `32091704947` fixed that import path and reached the live source. It then failed closed on the first concrete unresolved game:
 
-As of this handoff timestamp, that run is **in progress**.
+- `game_pk = 755829`
+- requested official live feed: `https://statsapi.mlb.com/api/v1/game/755829/feed/live`
+- official response: **HTTP 404 Not Found**
+- failure occurs in `capture_official_json()` because official snapshots require a successful 2xx response
+- the recovery artifact was still uploaded: artifact `9308582512`, digest `sha256:a5847628722d0ae12e80ed90e649d20fd24e6195bf17b96fb61e681b35d273d2`
 
-Machine-readable snapshots:
+This is now the current source-gap boundary. The immediate problem is no longer a generic workflow failure: the historical 2024 path contains at least one game whose expected `/feed/live` surface is unavailable at that game ID.
+
+Machine-readable workflow snapshots:
 
 - `docs/projection-status.json`
 - `docs/projection-recovery-status.json`
 
-These workflow snapshots are generated status evidence; use this file for the human interpretation and next action.
-
 ## Immediate next action
 
-1. Inspect the completed result/artifact from recovery run `32091704947`.
-2. Identify the exact 2024 MiLB games/source surfaces that still fail the certified historical reuse path.
-3. Make the narrowest source-wrapper/materialization correction supported by that evidence, with fast regression coverage.
-4. Rerun the 2024 MiLB historical evidence path and require a clean certified artifact before promoting it into Projection development evidence.
-5. Only after the 2022–2024 development evidence surfaces are complete and chronology-verified should Projection Baseline 0 / Baseline 1 development scoring begin.
+1. Inspect game `755829` across the official schedule/game metadata surfaces and the retained certified source artifact.
+2. Determine whether the 404 represents an invalid/obsolete game ID, a game type without a live-feed surface, a historical Stats API availability gap, or a recoverable alternate official endpoint/representation.
+3. Make the narrowest evidence-backed source-wrapper/materialization rule; do not silently drop the game.
+4. Add a deterministic regression for that exact source condition.
+5. Rerun the dedicated source-gap audit so it can continue beyond `755829`, then rerun the full 2024 MiLB historical evidence path.
+6. Require a clean certified 2024 artifact before promoting it into Projection development evidence.
+7. Only after all 2022–2024 development surfaces are complete and chronology-verified should Projection Baseline 0 / Baseline 1 scoring begin.
 
 Do not jump ahead to the age curve or 2025 confirmation while the 2024 evidence surface is unresolved.
 
