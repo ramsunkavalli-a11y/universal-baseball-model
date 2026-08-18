@@ -4,64 +4,74 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 ## Start here
 
-**Current work is on `source-certification-poc`, not `main`.** A new chat or contributor should read [`docs/project-status.md`](docs/project-status.md) first. It records the latest completed milestones, certified workflow runs, important boundaries, current branch/PR state, and the recommended next batch.
+**Active work is on `source-certification-poc`, not `main`.** New chats, coding agents, and contributors should read [`docs/project-status.md`](docs/project-status.md) first.
 
-The active draft PR is **#1 — Build and certify universal baseball foundation layer**.
+The active draft PR is **#1**. The branch is far ahead of `main`; do not infer project status from the default branch.
 
 ## Current stage
 
-The first batting **Performance** layer is production-shaped for completed 2024 affiliated baseball, and the first universal batting **Current Talent** model is now frozen.
+The project has completed the first batting **Performance** and **Current Talent** stages far enough to support downstream Projection work.
 
-Frozen Current Talent model:
+- **Performance:** completed-2024 affiliated batting materialization is production-shaped and frozen for downstream reuse.
+- **Current Talent:** finished and frozen. The retained universal model is `translated_multiseason_recency_empirical_bayes_v1` (Baseline 2).
+- **Projection v1:** active work.
+- **Player Value / WAR / Overall Ranking:** later stages; not yet implemented.
 
-`translated_multiseason_recency_empirical_bayes_v1`
+Two richer Current Talent batted-ball challengers were tested under predeclared chronological contracts. Challenger 1 failed development. Challenger 2 passed development but failed the single fixed 2023 confirmation because MAE and calibration-intercept guardrails deteriorated despite lower MSE in all three folds. Challenger 2 is closed without rescue tuning. Baseline 2 remains the production Current Talent model.
 
-It is a results-only, multi-season, recency-weighted empirical-Bayes profile with training-only MLB-anchored level translation.
+Projection v1 asks whether a leakage-safe age/development adjustment improves next-season batting-rate/profile prediction over carrying frozen Current Talent forward unchanged. Development uses 2022–2024 target seasons; **2025 outcomes remain quarantined as the untouched confirmation period**.
 
-Two richer batted-ball challengers were tested under chronological contracts:
+### Live Projection status
 
-- Challenger 1 failed fixed 2022 development and is closed.
-- Challenger 2 passed every fixed 2022 development gate but failed the one-shot 2023 confirmation because MAE and calibration-intercept guardrails deteriorated despite lower MSE in all three confirmation folds.
+Projection contracts and fast deterministic CI are passing, including the next-year dataset contract and exact-game outcome/league fallback behavior. The current implementation blocker is the heavy **2024 MiLB historical-evidence reuse/materialization path**: several live-source runs failed, so a dedicated exact-game source-gap audit/recovery is being used to isolate the remaining source issue before development evidence is promoted.
 
-Therefore Challenger 2 is closed without rescue tuning, and Baseline 2 remains the Current Talent model. See [`docs/current-talent-challenger2-postmortem.md`](docs/current-talent-challenger2-postmortem.md).
+Machine-readable workflow snapshots:
 
-The project is now moving to **batting Projection v1**. The first question is deliberately simple: can a leakage-safe age/development adjustment improve next-season rate/profile prediction over carrying frozen Current Talent forward unchanged? Projection v1 uses 2022–2024 as chronological development targets and quarantines **2025 outcomes** as the untouched confirmation period. See [`docs/projection-batting-v1-plan.md`](docs/projection-batting-v1-plan.md).
+- [`docs/projection-status.json`](docs/projection-status.json)
+- [`docs/projection-recovery-status.json`](docs/projection-recovery-status.json)
+
+Human handoff and modeling contract:
+
+- [`docs/project-status.md`](docs/project-status.md)
+- [`docs/projection-batting-v1-plan.md`](docs/projection-batting-v1-plan.md)
 
 ## Core principles
 
-- Separate **Performance**, **Current Talent**, **Projection**, and **Player Value / Overall Ranking** instead of collapsing them into one opaque score.
-- Use a common evaluation language across levels while allowing different evidence and models where data coverage differs.
-- Prefer mature public datasets, parsers, and packages over rebuilding source cleanup from scratch.
-- Treat MLB/official sources as the authority for reconciliation, not necessarily as the first working dataset.
-- Preserve uncertainty, data coverage, provenance, and measurement quality in model outputs.
+- Keep **Performance**, **Current Talent**, **Projection**, and **Player Value / Overall Ranking** separate.
+- Use a common evaluation language across levels while allowing different evidence/models where coverage differs.
+- Prefer mature public datasets, parsers, and packages over rebuilding raw-source cleanup.
+- Treat MLB/official sources as reconciliation authority, not necessarily the first working dataset.
+- Preserve uncertainty, coverage, provenance, and measurement quality.
 - Validate chronologically and prevent hindsight leakage.
 - Keep production logic in `src/`; notebooks are for exploration only.
+- Fail closed on unresolved source ambiguity.
 
 ## Current milestone documents
 
-- [`docs/project-status.md`](docs/project-status.md) — **canonical current handoff / roadmap**.
+- [`docs/project-status.md`](docs/project-status.md) — canonical live handoff and next action.
+- [`docs/projection-batting-v1-plan.md`](docs/projection-batting-v1-plan.md) — frozen Projection v1 design and 2025 quarantine.
+- [`docs/projection-status.json`](docs/projection-status.json) — persisted Projection workflow status.
+- [`docs/projection-recovery-status.json`](docs/projection-recovery-status.json) — focused recovery/source-gap workflow status.
 - [`docs/current-talent-results-only-baseline-freeze.md`](docs/current-talent-results-only-baseline-freeze.md) — frozen Current Talent Baseline 2.
-- [`docs/current-talent-contact-value-confirmation-result.json`](docs/current-talent-contact-value-confirmation-result.json) — binding Challenger 2 confirmation result.
-- [`docs/current-talent-challenger2-postmortem.md`](docs/current-talent-challenger2-postmortem.md) — lessons and methodological closeout.
-- [`docs/projection-batting-v1-plan.md`](docs/projection-batting-v1-plan.md) — pre-development Projection v1 contract; 2025 quarantined.
-- [`docs/current-talent-validation-contract.md`](docs/current-talent-validation-contract.md) — governing Current Talent target/chronology principles and relationship to Projection.
-- [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — production-shaped completed-2024 affiliated batting Performance materialization.
+- [`docs/current-talent-contact-value-confirmation-result.json`](docs/current-talent-contact-value-confirmation-result.json) — binding Challenger 2 failure/closeout.
+- [`docs/current-talent-challenger2-postmortem.md`](docs/current-talent-challenger2-postmortem.md) — methodological lessons and closeout.
+- [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — completed-2024 affiliated batting Performance checkpoint.
+
+Older Current Talent development/confirmation files are historical evidence. Do not treat them as active work queues.
 
 ## Development workflow
 
-1. Reuse existing public work where it survives certification; do not restart settled source research without a concrete failure.
-2. Make changes in small batches of roughly **2–3 steps**.
-3. Verify each batch before expanding scope so an early assumption cannot contaminate a large downstream change.
+1. Reuse certified public work and existing repo adapters before rebuilding source ingestion.
+2. Work in small verified batches, usually 2–3 steps.
+3. Verify each batch before expanding scope.
 4. Keep heavy live-source certification/validation workflows manual after their gate passes; keep deterministic regression tests in normal CI.
-5. **Update `docs/project-status.md` at meaningful junctures before continuing**—especially after a major gate passes, a material architecture/modeling decision is frozen, or the recommended next batch changes.
-6. Pause for an explicit modeling decision when an unresolved assumption could materially change downstream architecture rather than papering over it in code.
+5. Update `docs/project-status.md` whenever a major gate, blocker, or recommended next action changes.
+6. Do not open quarantined confirmation data before the model form, search space, refit rule, and promotion gates are frozen.
 
 ## Foundation references
 
-- [`docs/source-audit.md`](docs/source-audit.md) — research and assignment of public data sources/packages.
-- [`docs/source-certification-plan.md`](docs/source-certification-plan.md) — empirical tests reusable sources must pass before feeding canonical tables.
-- [`docs/source-certification-current.md`](docs/source-certification-current.md) — detailed foundation/source certification snapshot; use `docs/project-status.md` for the live roadmap.
+- [`docs/source-audit.md`](docs/source-audit.md) — public source/package audit.
+- [`docs/source-certification-plan.md`](docs/source-certification-plan.md) — source certification rules.
+- [`docs/source-certification-current.md`](docs/source-certification-current.md) — detailed source-certification snapshot.
 - [`docs/canonical-data-contract.md`](docs/canonical-data-contract.md) — canonical grains, provenance, and storage semantics.
 - [`docs/adr/`](docs/adr/) — accepted architectural decisions.
-
-Foundation work should favor correctness, reversibility, explicit evidence, and reproducibility over speed.
