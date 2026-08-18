@@ -1,4 +1,4 @@
-# refresh after exact report-level 2024 gate proof
+# track certified 2024 gate and Projection development-evidence build
 name: Projection recovery status probe
 
 on:
@@ -35,6 +35,7 @@ jobs:
               "exact_game_audit_original": "projection-2024-exact-game-source-gap-audit.yml",
               "historical_milb_2024": "projection-current-talent-historical-milb-2024.yml",
               "projection_contracts": "projection-validation-contracts-ci.yml",
+              "development_evidence": "projection-batting-v1-development-evidence.yml",
           }
           output = {"gate": "projection_recovery_status_probe", "workflows": {}}
           env = dict(os.environ)
