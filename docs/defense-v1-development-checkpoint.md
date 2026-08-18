@@ -57,6 +57,21 @@ Under the frozen contract, insufficient evidence is not a pass and there is no r
 
 **Binding decision: Tier-B tracked range NOT ACCEPTED.** Tracked MiLB remains on universal U1 range for Defense v1.
 
+### Independent Tier-B cohort sanity check
+
+Diagnostic result: `docs/defense-v1-tier-b-cohort-audit.json`.
+
+A separate diagnostic implementation reproduced the frozen 2023-MiLB -> 2024-MLB eligibility path without calling the scorer's transfer-subset function. It matched the binding transfer count exactly and showed where the cohort disappears:
+
+- 164 players had 2023 U1-eligible evidence plus a matching-position 2024 Savant OAA target;
+- 161 had already reached MLB in 2023 and were excluded by the frozen Tier-B definition;
+- only 3 remained non-MLB: Leo Jiménez (AAA, SS), Trey Sweeney (AA, SS), and Trey Lipscomb (AA, 3B);
+- Jiménez was the only one with any 2023 tracked MiLB range row, and it was at the exact U1 position, but it did not meet the frozen raw `>=100` OAA-opportunity requirement;
+- Sweeney and Lipscomb had no 2023 tracked MiLB range row in the frozen source;
+- therefore 0 players reached an eligible `tracked_range_z`, independently reproducing the binding `0` transfer population.
+
+This confirms that the Tier-B result is driven by sparse overlap under the predeclared eligibility contract rather than a player/position join mismatch. It does **not** convert insufficient evidence into a pass or authorize changing the frozen thresholds.
+
 ## Tracked catcher framing — FAILED / CLOSED
 
 Baseline: **F0 = neutral framing z = 0**.
