@@ -1,6 +1,6 @@
 # Batting Projection v1 Plan
 
-Last updated: 2026-08-17 19:34 PT
+Last updated: 2026-08-17 19:38 PT
 
 Status: **IMPLEMENTATION / DEVELOPMENT-DATA ASSEMBLY — 2025 OUTCOMES QUARANTINED**
 
@@ -34,29 +34,47 @@ Completed / passing deterministic work:
 - development-evidence materializer compilation/contract coverage;
 - exact-game official outcome fallback behavior;
 - exact-game league fallback behavior;
-- combined fast-CI validation of those fallback contracts.
+- combined fast-CI validation of those fallback contracts;
+- exact source-only residual quarantine policy and regression coverage.
 
-Recent passing runs: `32089050302`, `32089669934`, `32090401492`, `32090635490`, and `32090687671`.
+Recent passing runs: `32089050302`, `32089669934`, `32090401492`, `32090635490`, `32090687671`, and `32092505104`.
 
-The remaining blocker is the heavy 2024 MiLB historical-evidence reuse/materialization path. Historical-path runs `32089284674`, `32090307461`, `32090635458`, and `32090668312` failed.
+The heavy 2024 MiLB historical-evidence reuse/materialization path has not yet been rerun successfully with the newly proven source-residual quarantine active.
 
-A dedicated source-gap audit initially pursued exact official game feeds. Recovery run `32091704947` demonstrated that `game_pk 755829` returns **404 Not Found** from `https://statsapi.mlb.com/api/v1/game/755829/feed/live`, so that official PBP path cannot adjudicate the row directly.
+### 2024 discrepancy diagnosis
 
-Follow-up source-only residual audit `32092166134` then **passed** and narrowed the observed 2024 aggregate discrepancy to exactly two deterministic source-only rows:
+Earlier historical runs `32089284674`, `32090307461`, `32090635458`, and `32090668312` failed.
+
+Official-feed recovery run `32091704947` demonstrated that `game_pk 755829` returns **404 Not Found** from `https://statsapi.mlb.com/api/v1/game/755829/feed/live`, so direct official PBP cannot adjudicate that game via the expected surface.
+
+Source-only residual audit `32092166134` then **passed** and localized the observed aggregate discrepancy to exactly two deterministic source-only rows:
 
 - High-A player `669233`, game `755829`: `PA=1, AB=1`, with no BB/HBP/SO/SF/SH/CI.
 - Single-A player `686541`, game `754395`: `PA=1, AB=1, SO=1`, with no BB/HBP/SF/SH/CI.
 
-For both rows:
+For both rows, season totals mismatch before removal, match after removal, and post-removal totals match the official gameLog control. Audit artifact `9308734004`; digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
 
-- the season aggregate mismatches before removal;
-- the mismatch disappears after removing that exact row;
-- post-removal totals match the official gameLog control;
-- the audit classifies the row as an **exact removable residual**.
+### Exact residual quarantine policy
 
-Audit artifact `9308734004`; digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
+Implemented in:
 
-The current task is therefore no longer open-ended source hunting. It is to encode those two exact residuals as explicit provenance-preserving source-quality exclusions, test the rule, and rerun the complete 2024 historical evidence path. It is **not** time to fit the age curve or score Projection candidates.
+`src/universal_baseball/current_talent_source_residual_quarantine.py`
+
+Frozen policy name:
+
+`single_source_only_exact_season_and_official_residual_v1`
+
+A reusable player-game row may be quarantined only when:
+
+1. it is the **single** positive-PA source game absent from official gameLog for that player/league;
+2. its PA/BB/HBP/SO vector exactly equals the independent season-player aggregate residual;
+3. removing its complete PA/AB/BB/HBP/SO/SF/SH/CI vector makes the remaining player-game totals exactly equal the official gameLog aggregate.
+
+Anything less remains unresolved. The helper does not guess identity, league, or outcome values and does not reassign source values.
+
+Fast CI run `32092505104` completed **successfully** with the quarantine helper and its regression tests included.
+
+The current task is therefore to rerun the complete 2024 historical evidence path with this fail-closed policy active and require a clean certified artifact before any Projection model scoring.
 
 Machine-readable status:
 
@@ -272,11 +290,12 @@ Playing-time/role probability should then be added as a separate projection chan
 
 1. **DONE:** implement deterministic Projection fold/window and next-year dataset contracts.
 2. **DONE:** add/verify exact-game official outcome and league fallback behavior in fast CI.
-3. **DONE:** isolate the current 2024 aggregate discrepancy to two exact source-only residual rows via run `32092166134`.
-4. **CURRENT:** encode those two exclusions with explicit provenance + deterministic regression coverage, then rerun the full 2024 MiLB historical evidence path.
-5. **NEXT:** require a clean certified 2024 artifact and materialize/chronology-verify the complete 2022–2024 development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
-6. **THEN:** implement and score carry-forward Projection Baseline 0.
-7. **THEN:** implement the simple age/development Baseline 1 and run the frozen three-fold development comparison.
-8. **ONLY IF DEVELOPMENT PASSES:** freeze the confirmation refit/model-selection contract before opening any 2025 outcomes.
+3. **DONE:** isolate the 2024 aggregate discrepancy to two exact source-only residual rows via run `32092166134`.
+4. **DONE:** implement the fail-closed residual quarantine and pass fast CI (`32092505104`).
+5. **CURRENT:** rerun the full 2024 MiLB historical evidence/materialization path with the quarantine active; require exact aggregate reconciliation and persisted quarantine provenance.
+6. **NEXT:** materialize/chronology-verify the complete 2022–2024 development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
+7. **THEN:** implement and score carry-forward Projection Baseline 0.
+8. **THEN:** implement the simple age/development Baseline 1 and run the frozen three-fold development comparison.
+9. **ONLY IF DEVELOPMENT PASSES:** freeze the confirmation refit/model-selection contract before opening any 2025 outcomes.
 
 No 2025 outcome materialization belongs in the current implementation batch.
