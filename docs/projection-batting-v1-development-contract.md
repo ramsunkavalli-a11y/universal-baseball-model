@@ -122,6 +122,7 @@ For each fit:
 - retain and reuse those training-only centering/scaling values when predicting held-out rows;
 - intercept is unpenalized;
 - all other coefficients share one ridge penalty;
+- if a non-intercept predictor has zero weighted RMS after centering in a training split, retain the predictor in its frozen design position, set its stored scale to `1.0`, transform it to all zeros for that fit, and therefore leave its ridge coefficient at zero; do not drop/reorder predictors or borrow a scale from held-out data;
 - minimize
 
 `weighted mean squared ILR-delta error + lambda * squared Frobenius norm of penalized coefficients`.
