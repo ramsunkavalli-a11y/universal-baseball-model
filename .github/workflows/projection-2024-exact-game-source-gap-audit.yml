@@ -1,0 +1,48 @@
+name: Projection 2024 exact-game source-gap audit
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - "scripts/audit_projection_2024_exact_game_source_gaps.py"
+      - ".github/workflows/projection-2024-exact-game-source-gap-audit.yml"
+      - "src/universal_baseball/current_talent_official_game_identity.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Compile exact-game audit
+        run: python -m py_compile scripts/audit_projection_2024_exact_game_source_gaps.py
+
+      - name: Audit exact official game surfaces
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_projection_2024_exact_game_source_gaps.py
+
+      - name: Upload audit artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: projection-2024-exact-game-source-gap-audit
+          path: reports/generated/projection-2024-exact-game-source-gap-audit/
+          if-no-files-found: warn
+          retention-days: 14
