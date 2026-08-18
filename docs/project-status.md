@@ -16,36 +16,27 @@ This is the **start-here file for a new chat, coding agent, or contributor**.
 
 ## Current stage
 
-Universal results-only **Current Talent Baseline 2 remains frozen**:
+Universal results-only **Current Talent Baseline 2 remains frozen and retained**:
 
 `translated_multiseason_recency_empirical_bayes_v1`
 
-Richer Challenger 1 (`baseline2_plus_ev_sweet_spot_contact_residual_v1`) completed its fixed 2022 development gate and **failed**. It is closed.
+Richer Challenger 1 (`baseline2_plus_ev_sweet_spot_contact_residual_v1`) failed its fixed 2022 development gate and is closed.
 
 Richer Challenger 2:
 
 `baseline2_plus_ev_sweet_spot_contact_value_residual_v1`
 
-has now **passed every frozen 2022 development gate**. The authorized 2021+2022 confirmation refit is also complete and frozen. The project is now preparing the **single fixed 2023 confirmation**. No Challenger-2 2023 performance score has been computed yet.
+passed every frozen 2022 development gate, but **failed the single fixed 2023 confirmation** under the predeclared acceptance contract. It is therefore **not confirmed and must not be integrated or rescued by tuning on 2023**.
+
+Binding confirmation result:
+
+`docs/current-talent-contact-value-confirmation-result.json`
 
 ### Immediate task
 
-Build the fixed 2023 confirmation source surfaces before any confirmation scoring:
+Challenger 2 is methodologically closed. Do not refit, loosen guardrails, alter features, or rerun a modified Challenger 2 against 2023.
 
-1. reuse certified 2023 historical results evidence:
-   - MiLB run `31971923778`
-   - MLB run `31989561396`;
-2. extend the already-certified richer tracking layer for confirmation chronology:
-   - retain/carry 2021 tracking from run `32046012977`;
-   - complete 2022 MiLB tracking beyond the development-only `2022-08-31` cutoff;
-   - materialize 2023 MLB retained Savant tracking;
-   - capture 2023 MiLB tracking through the latest required confirmation as-of date (`2023-09-01`, so pre-cutoff history through `2023-08-31`);
-   - preserve exact `source_capability_tier` provenance and no imputation;
-3. materialize 2023 contact-value target history with the already-frozen terminal mapper/value scale;
-4. prove 2023 baseline `< cutoff`, future `[cutoff, cutoff+90d)`, feature chronology, identical paired coverage, and frozen confirmation coefficients;
-5. then run exactly one confirmation on `2023-07-15`, `2023-08-01`, `2023-09-01`, with no search/reselection.
-
-Do **not** tune the candidate after seeing 2023.
+Safe next work is repository/handoff cleanup and then selection of a genuinely new research question under a new predeclared development/confirmation design. Baseline 2 remains the production Current Talent model until a future challenger independently earns promotion.
 
 ## Frozen Baseline 2
 
@@ -65,7 +56,7 @@ Freeze: `docs/current-talent-results-only-baseline-freeze.md`
 
 Plan: `docs/current-talent-batted-ball-contact-value-challenger-plan.md`
 
-Frozen features:
+Fixed features:
 
 - 180-day recency-weighted mean EV
 - 180-day recency-weighted sweet-spot share, LA 8–32° inclusive
@@ -73,16 +64,23 @@ Frozen features:
 - tracking epoch `2021-01-01`
 - no tracking imputation/search
 
-Frozen conditional value gate:
+Fixed conditional-value design:
 
-- fixed nine-group MLB-scale terminal values
+- nine-group MLB-scale terminal values
 - additive control `terminal_value ~ contact_bin + level_group`
 - references `IFFB` / `MLB`
 - residual `beta_EV*z_EV + beta_SS*z_SS`, no intercept/no penalty
-- primary MSE, MAE no-worse guard
+- primary MSE
+- MAE no-worse hard guardrail
 - exact paired target coverage
 - MiLB/capability-tier transport checks
 - calibration guardrails
+
+Fixed confirmation acceptance contract:
+
+`docs/current-talent-contact-value-confirmation-contract.md`
+
+It reused the same ten promotion checks on the three 2023 folds. Confirmation was one-shot; failure prohibits 2023 rescue tuning/reselection.
 
 ## Completed Challenger 2 gates
 
@@ -106,7 +104,7 @@ Frozen values:
 
 ### 2. Historical terminal semantics — PASSED
 
-MiLB uses one terminal pitch per PA + conservative PA-result narrative fallback, reconciled to official structured semantics before freezing. Important distinctions: `force_out -> OUT`, `fielders_choice_out -> OUT`, plain `fielders_choice -> FC_REACH`. Exact duplicate release rows are harmless; substantive conflicts fail closed.
+MiLB uses one terminal pitch per PA plus conservative PA-result narrative fallback, reconciled to official structured semantics before freezing. Important distinctions: `force_out -> OUT`, `fielders_choice_out -> OUT`, plain `fielders_choice -> FC_REACH`. Exact duplicate release rows collapse; substantive conflicts fail closed.
 
 ### 3. 2021–22 MiLB target materialization — PASSED
 
@@ -139,15 +137,15 @@ Run `32074805618`:
 
 Run `32075112279`. All four fits are 60-cell / 15-parameter / full-rank / cutoff-safe. Sufficient-statistics implementation is coefficient-equivalent to the original event-wise OLS.
 
-### 7. Richer feature/provenance attachment — PASSED
+### 7. Development feature/provenance attachment — PASSED
 
 Run `32075892988`.
 
 2021-only development standardization:
 
 - 649 eligible players
-- EV mean 88.09960095932205; scale 2.887465116853261
-- sweet-spot mean 0.3470054876008983; scale 0.06391355546209573
+- EV mean `88.09960095932205`; scale `2.887465116853261`
+- sweet-spot mean `0.3470054876008983`; scale `0.06391355546209573`
 
 Paired target contacts:
 
@@ -156,32 +154,30 @@ Paired target contacts:
 - 2022-08-01: 77,859 / 957
 - 2022-09-01: 37,629 / 933
 
-Any-observed-MiLB paired contacts in 2022: 49,247 / 39,401 / 18,400.
-
 ### 8. Frozen 2021 residual fit — PASSED
 
-Persisted result: `docs/current-talent-contact-value-residual-fit-result.json`
+`docs/current-talent-contact-value-residual-fit-result.json`
 
 - 69,382 contacts / 621 players
-- beta EV = `0.020808202510874292`
-- beta sweet-spot = `-0.0032619728296970248`
-- determinant = `3906075044.1483107`
-- 2022 outcomes not accessed
+- beta EV `0.020808202510874292`
+- beta sweet-spot `-0.0032619728296970248`
+- determinant `3906075044.1483107`
+- no 2022 future outcomes or 2023 accessed
 
-### 9. Prediction geometry — PASSED
+### 9. 2022 prediction geometry — PASSED
 
-Persisted result: `docs/current-talent-contact-value-prediction-geometry-result.json`
+`docs/current-talent-contact-value-prediction-geometry-result.json`
 
-- 2022 paired counts unchanged: 97,004 / 77,859 / 37,629
+- paired counts unchanged: 97,004 / 77,859 / 37,629
 - comparator/richer keys identical
 - finite predictions
-- no MSE/MAE/calibration
+- no losses/calibration
 - no coefficient refit
 - no 2023
 
 ### 10. Fixed 2022 development — PASSED ALL GATES
 
-Persisted result: `docs/current-talent-contact-value-development-result.json`
+`docs/current-talent-contact-value-development-result.json`
 
 Equal-fold means:
 
@@ -205,56 +201,157 @@ Calibration mean absolute errors also improved:
 - intercept: baseline `0.009059769936977567`, richer `0.008572858096503674`
 - slope: baseline `0.0037337420889670034`, richer `0.003119243058711215`
 
-All exact non-MLB capability-tier guardrails passed. `eligible_for_fixed_2023_confirmation = true`.
+All exact non-MLB capability-tier guardrails passed. This authorized exactly one fixed 2023 confirmation.
 
-### 11. Authorized confirmation refit — PASSED / FROZEN
+### 11. Authorized confirmation refit — PASSED / FROZEN BEFORE 2023
 
-Persisted result: `docs/current-talent-contact-value-confirmation-refit-result.json`
+Run `32079555373`; artifact digest `sha256:07060a473fc71c8cce15f29e5a69ff68364cc721c4f3d1fe52a3d1c4e7728f44`.
+
+`docs/current-talent-contact-value-confirmation-refit-result.json`
 
 Training snapshots: `2021-07-15` + `2022-07-15` only.
 
-Pooled confirmation standardization:
+Authoritative pooled confirmation standardization:
 
-- 1,718 eligible player-snapshot rows
-- EV mean `89.14153098440633`
-- EV scale `2.7378059749661574`
-- sweet-spot mean `0.3441350187274813`
-- sweet-spot scale `0.06085059101688322`
+- 1,788 eligible player-snapshot rows
+- EV mean `87.56765458046604`
+- EV scale `3.087267010464925`
+- sweet-spot mean `0.34421856089476915`
+- sweet-spot scale `0.0629687444393524`
 
 Frozen confirmation residual fit:
 
-- beta EV `0.019444323416633432`
-- beta sweet-spot `-0.0016659093644997295`
-- determinant `24131877108.23486`
+- beta EV `0.019444311355484883`
+- beta sweet-spot `-0.0016659086163438607`
+- determinant `18569017159.610256`
 - 166,386 future-contact weight
 - 1,597 fitted player-snapshots
 
-No 2023 evidence was accessed during refit.
+This run completed before the first 2023 source workflow began. An earlier handoff/confirmation-contract transcription contained stale standardization literals; the contract was corrected to these run-backed values before any 2023 loss or confirmation decision was computed. This was documentation correction only, not a refit.
 
-## Reusable 2023 infrastructure
+### 12. Confirmation tracking — PASSED SOURCE/MATERIALIZATION
 
-Existing results-only confirmation workflow proves certified 2023 historical source artifacts already exist:
+Run `32079922837` completed all source/materialization steps; its workflow conclusion was failure only because a final branch-push raced later commits. The inspected artifact was accepted and checkpointed.
 
-- MiLB run `31971923778`
-- MLB run `31989561396`
+`docs/current-talent-batted-ball-tracking-confirmation-result.json`
 
-The richer V2 tracking run `32046012977` is authoritative for 2021–22 development tracking, but its MiLB 2022 capture stops at `2022-08-31`. Therefore confirmation tracking must extend 2022 chronology and add 2023 tracking rather than pretending the development artifact is sufficient.
+Canonical BBE rows:
+
+- 2021: 142,201
+- 2022: 171,415
+- 2023: 206,542
+
+2023 MiLB tracking was captured through `2023-08-31`; no tracking imputation.
+
+### 13. 2023 terminal target source — PASSED
+
+Clean run `32082637028` after a narrow mojibake duplicate-identity normalization fix.
+
+`docs/current-talent-contact-value-confirmation-source-result.json`
+
+- 595,794 core terminal contacts
+- 595,619 supported targets
+- supported rate `99.9706%`
+- all six MLB/MiLB source slices contain all nine terminal groups
+- shared target schema
+- no model scoring/refit
+
+### 14. 2023 confirmation chronology — PASSED
+
+Run `32086274717`.
+
+`docs/current-talent-contact-value-confirmation-chronology-result.json`
+
+- 1,732,957 combined valued 2021–23 contacts
+- exact baseline `< cutoff` and future `[cutoff, cutoff+90d)` boundaries
+- future targets: 248,081 / 176,853 / 58,639 for Jul 15 / Aug 1 / Sep 1
+- no losses/features/refit
+
+### 15. 2023 confirmation evidence/baselines — PASSED
+
+Run `32086538491`.
+
+`docs/current-talent-contact-value-confirmation-evidence-result.json`
+
+All three additive baselines are 60-cell / 15-parameter / full-rank / cutoff-safe. The Sep. 1 future surface naturally has no Rookie Complex games remaining; Rookie Complex is present in the baseline history.
+
+### 16. 2023 confirmation feature attachment — PASSED
+
+Run `32086704821`.
+
+`docs/current-talent-contact-value-confirmation-features-result.json`
+
+Paired richer target contacts:
+
+- 2023-07-15: 118,984 / 1,226 players
+- 2023-08-01: 90,949 / 1,191
+- 2023-09-01: 40,885 / 1,158
+
+Any-observed-MiLB paired contacts: 89,957 / 69,153 / 30,933.
+
+All target rows survive attachment; unavailable richer evidence gets exact zero fallback. Frozen confirmation standardization and coefficients match the pre-2023 refit exactly.
+
+### 17. 2023 confirmation prediction geometry — PASSED
+
+Run `32087405934`.
+
+`docs/current-talent-contact-value-confirmation-prediction-geometry-result.json`
+
+- paired rows unchanged: 118,984 / 90,949 / 40,885
+- comparator/richer event keys identical
+- all predictions finite
+- frozen coefficients unchanged
+- no MSE/MAE/calibration/decision computed in this gate
+
+### 18. ONE-SHOT 2023 CONFIRMATION — FAILED / BINDING
+
+Run `32087555990`; artifact digest `sha256:0dbc2de14cb17fd19ec5ac7a03acc04280c56f58ad67e9154365c2ec60ce80e7`.
+
+`docs/current-talent-contact-value-confirmation-result.json`
+
+Challenger 2 **improved MSE in all three folds**:
+
+- Jul 15 delta `-0.0003622675752758264`
+- Aug 1 delta `-0.0003697452826812164`
+- Sep 1 delta `-0.00034878621837869384`
+- equal-fold mean MSE: baseline `0.2033816366639647`, richer `0.2030213703051861`, delta `-0.00036026635877858815`
+
+It also improved any-observed-MiLB mean MSE:
+
+- 190,043 total fold contacts
+- baseline `0.20089396260933756`
+- richer `0.2006303557093879`
+- delta `-0.0002636068999496699`
+
+All meaningful exact non-MLB capability-tier transport guardrails passed.
+
+However, **two hard predeclared confirmation checks failed**:
+
+1. MAE no-worse failed. Richer MAE was worse in all three folds; equal-fold mean baseline `0.3561671497421868`, richer `0.3569228787973761`, delta `+0.0007557290551893359`.
+2. Calibration-intercept guardrail failed. Mean absolute intercept error was baseline `0.006149013705759256` vs richer `0.010010572857580608`, above the allowed `1.25×` baseline error. The calibration-slope guardrail passed.
+
+Final binding decision:
+
+`confirmed = false`
+
+Do **not** tune or rerun Challenger 2 on 2023. Do not integrate this scalar into Current Talent, Performance, Projection, WAR, Player Value, or Overall Ranking. Baseline 2 remains frozen.
 
 ## Governing docs for a new chat
 
 Read in this order:
 
 1. `docs/project-status.md`
-2. `docs/current-talent-batted-ball-contact-value-challenger-plan.md`
-3. `docs/current-talent-contact-value-development-result.json`
-4. `docs/current-talent-contact-value-confirmation-refit-result.json`
-5. `docs/current-talent-contact-value-prediction-geometry-result.json`
-6. `docs/current-talent-contact-value-residual-fit-result.json`
-7. `docs/current-talent-contact-value-feature-attachment-checkpoint.md`
-8. `docs/current-talent-contact-value-baseline-fit-checkpoint.md`
-9. `docs/current-talent-contact-value-chronology-checkpoint.md`
-10. `docs/current-talent-contact-value-source-materialization-checkpoint.md`
-11. `docs/current-talent-contact-value-mlb-source-checkpoint.md`
-12. `docs/current-talent-results-only-baseline-freeze.md`
+2. `docs/current-talent-contact-value-confirmation-result.json`
+3. `docs/current-talent-contact-value-confirmation-contract.md`
+4. `docs/current-talent-contact-value-confirmation-prediction-geometry-result.json`
+5. `docs/current-talent-contact-value-confirmation-features-result.json`
+6. `docs/current-talent-contact-value-confirmation-evidence-result.json`
+7. `docs/current-talent-contact-value-confirmation-chronology-result.json`
+8. `docs/current-talent-contact-value-confirmation-source-result.json`
+9. `docs/current-talent-batted-ball-tracking-confirmation-result.json`
+10. `docs/current-talent-contact-value-confirmation-refit-result.json`
+11. `docs/current-talent-contact-value-development-result.json`
+12. `docs/current-talent-batted-ball-contact-value-challenger-plan.md`
+13. `docs/current-talent-results-only-baseline-freeze.md`
 
-Do not redo B1/B2 selection, Challenger-1 development, Challenger-2 2022 selection, or confirmation refit absent a concrete implementation failure. The next confirmation is fixed and one-shot; no 2023 tuning/reselection.
+Do not redo B1/B2 selection, Challenger 1, Challenger 2 development, or Challenger 2 confirmation absent a concrete implementation failure. Any future richer model must be treated as a new challenger with a new frozen design and a genuinely untouched confirmation surface.
