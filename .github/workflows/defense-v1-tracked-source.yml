@@ -1,0 +1,119 @@
+name: Defense v1 tracked source materialization
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-tracked-source.yml"
+      - "docs/defense-v1-tracked-challenger-contract.md"
+      - "scripts/materialize_defense_v1_tracked_source.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and pinned tracking implementation
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+
+      - name: Verify tracked source materializer
+        run: python -m py_compile scripts/materialize_defense_v1_tracked_source.py
+
+      - name: Materialize frozen historical tracked source
+        id: source_run
+        shell: bash
+        run: |
+          set +e
+          mkdir -p reports/generated/defense-v1-tracked-source
+          python scripts/materialize_defense_v1_tracked_source.py 2>&1 \
+            | tee reports/generated/defense-v1-tracked-source/execution.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Upload tracked source artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-tracked-source-2021-2023
+          path: reports/generated/defense-v1-tracked-source/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist source result or failure diagnosis
+        if: always()
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+          MATERIALIZE_EXIT_CODE: ${{ steps.source_run.outputs.exit_code }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          root = Path('reports/generated/defense-v1-tracked-source')
+          source = root / 'report.json'
+          log = root / 'execution.log'
+          if source.exists():
+              result = json.loads(source.read_text())
+          else:
+              tail = ''
+              if log.exists():
+                  tail = '\n'.join(log.read_text(errors='replace').splitlines()[-160:])
+              result = {
+                  'report_schema_version': '0.1',
+                  'gate': 'defense_v1_tracked_source_materialization',
+                  'contract': 'docs/defense-v1-tracked-challenger-contract.md',
+                  'decision': {
+                      'tracked_source_materialized': False,
+                      'tracked_challenger_scoring_authorized_next': False,
+                      '2025_confirmation_authorized': False,
+                      'war_value_authorized': False,
+                  },
+                  'failure': {
+                      'materialize_exit_code': os.environ.get('MATERIALIZE_EXIT_CODE', ''),
+                      'execution_log_tail': tail,
+                  },
+              }
+          result['workflow'] = {'materialize_exit_code': os.environ.get('MATERIALIZE_EXIT_CODE', '')}
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/defense-v1-tracked-source-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-tracked-source-result.json
+          git commit -m "Persist Defense v1 tracked source materialization"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Enforce tracked source materialization success
+        if: always()
+        env:
+          MATERIALIZE_EXIT_CODE: ${{ steps.source_run.outputs.exit_code }}
+        run: test "${MATERIALIZE_EXIT_CODE:-1}" -eq 0
