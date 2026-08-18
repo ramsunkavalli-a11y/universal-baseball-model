@@ -1,0 +1,114 @@
+name: Defense v1 2024 tracking predictor source
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-2024-tracking-predictor.yml"
+      - "scripts/materialize_defense_v1_2024_tracking_predictor.py"
+      - "docs/defense-v1-2025-confirmation-contract.md"
+      - "docs/defense-v1-confirmation-parameters.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  source:
+    name: materialize frozen 2024 MLB tracked-range predictor
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and pinned source dependency
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75"
+
+      - name: Verify frozen parameter authorization and contract hash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          params = json.loads(Path("docs/defense-v1-confirmation-parameters.json").read_text())
+          decision = params.get("decision", {})
+          boundary = params.get("boundary", {})
+          if decision.get("pre_2025_parameters_frozen") is not True:
+              raise SystemExit("Defense v1 parameters are not frozen")
+          if decision.get("2024_mlb_tracking_confirmation_predictor_materialization_authorized") is not True:
+              raise SystemExit("2024 MLB tracking predictor source is not authorized")
+          if decision.get("war_value_authorized") is not False:
+              raise SystemExit("WAR/value boundary changed")
+          if boundary.get("2025_defensive_targets_accessed") is not False:
+              raise SystemExit("2025 defensive target boundary already crossed")
+          if boundary.get("2024_tracking_confirmation_predictor_accessed") is not False:
+              raise SystemExit("binding parameter freeze unexpectedly accessed 2024 confirmation tracking")
+
+          contract = Path("docs/defense-v1-2025-confirmation-contract.md")
+          actual = hashlib.sha256(contract.read_bytes()).hexdigest()
+          if actual != params.get("contract_sha256"):
+              raise SystemExit(f"confirmation contract hash mismatch: {actual} != {params.get('contract_sha256')}")
+          print(f"parameter hash: {params['parameter_hash']}")
+          print(f"confirmation contract verified: {actual}")
+          PY
+
+      - name: Verify source script compiles
+        run: python -m py_compile scripts/materialize_defense_v1_2024_tracking_predictor.py
+
+      - name: Materialize 2024 MLB tracking predictor source
+        run: >-
+          python -u scripts/materialize_defense_v1_2024_tracking_predictor.py
+          --output-root reports/generated/defense-v1-2024-tracking-predictor
+
+      - name: Pin source workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path("reports/generated/defense-v1-2024-tracking-predictor/report.json")
+          result = json.loads(path.read_text())
+          result["source_run_id"] = int(os.environ["SOURCE_RUN_ID"])
+          result["source_sha"] = os.environ["SOURCE_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload certified 2024 MLB tracking predictor source
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2024-tracking-predictor
+          path: reports/generated/defense-v1-2024-tracking-predictor/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist 2024 tracking predictor source result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-2024-tracking-predictor/report.json docs/defense-v1-2024-tracking-predictor-source-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-2024-tracking-predictor-source-result.json
+          git commit -m "Persist Defense v1 2024 tracking predictor source"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
