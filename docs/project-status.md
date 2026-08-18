@@ -1,15 +1,16 @@
 # Project status and handoff
 
-Last updated: 2026-08-17 19:42 PT
+Last updated: 2026-08-17 19:51 PT
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
 ## Active work
 
 - Repo: `ramsunkavalli-a11y/universal-baseball-model`
-- Branch: `source-certification-poc`
-- Draft PR: **#1**
-- Do not infer project state from `main`; the active branch is substantially ahead.
+- Canonical integrated branch: `main`
+- Active development branch: `source-certification-poc`
+- PR **#1** was merged on 2026-08-17, reconciling the active Projection history and the six prior `main` dispatcher commits without a force reset.
+- Treat `main` as the integrated source of truth. Inspect `source-certification-poc` and live Actions only for work newer than the most recent integration into `main`.
 - Work in small verified batches and inspect the current branch head before editing.
 - Prefer certified/reusable public data plus existing repo adapters over rebuilding source cleanup.
 - Fail closed on source ambiguity.
