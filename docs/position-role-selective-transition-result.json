@@ -1,0 +1,71 @@
+{
+  "boundary": {
+    "2025_position_outcomes_scored": false,
+    "2025_position_source_accessed": false,
+    "defense_model_fit": false,
+    "first_challenger_transition_means_refit": false,
+    "team_allocator_fit": false,
+    "threshold_changed_after_contract": false
+  },
+  "candidate": {
+    "formula": "carry_forward if s < 0.65 else s * current_profile + (1 - s) * prior_history_mean_next_profile_by_current_primary_position",
+    "name": "primary_share_thresholded_transition_mean_v1",
+    "new_hyperparameter_search": false,
+    "primary_share_threshold": 0.65
+  },
+  "contract": "docs/position-role-selective-transition-contract.md",
+  "decision": {
+    "2025_position_role_confirmation_authorized": true,
+    "additional_position_role_development_challenger_authorized": false,
+    "candidate_passed_development": true,
+    "defense_model_authorized": false,
+    "team_allocator_authorized": false
+  },
+  "folds": [
+    {
+      "baseline_mean_sse": 0.233661546080976,
+      "baseline_mean_tv": 0.32802389460944437,
+      "baseline_primary_match_rate": 0.6034593209481102,
+      "candidate_mean_sse": 0.2232793817509847,
+      "candidate_mean_tv": 0.32684523313357317,
+      "candidate_primary_match_rate": 0.6034593209481102,
+      "current_season": 2022,
+      "next_season": 2023,
+      "passed": true,
+      "scored_player_count": 3122,
+      "smoothing_active_player_count": 1558,
+      "smoothing_active_rate": 0.49903907751441384,
+      "sse_absolute_improvement": 0.010382164329991311,
+      "sse_relative_improvement": 0.04443249008715087,
+      "tv_absolute_improvement": 0.001178661475871201,
+      "tv_relative_improvement": 0.003593218345494473
+    },
+    {
+      "baseline_mean_sse": 0.2096615273170907,
+      "baseline_mean_tv": 0.3136431378373323,
+      "baseline_primary_match_rate": 0.6168745896257387,
+      "candidate_mean_sse": 0.19998080769101184,
+      "candidate_mean_tv": 0.3126290038769254,
+      "candidate_primary_match_rate": 0.6168745896257387,
+      "current_season": 2023,
+      "next_season": 2024,
+      "passed": true,
+      "scored_player_count": 3046,
+      "smoothing_active_player_count": 1506,
+      "smoothing_active_rate": 0.4944189100459619,
+      "sse_absolute_improvement": 0.00968071962607886,
+      "sse_relative_improvement": 0.046173085496214114,
+      "tv_absolute_improvement": 0.0010141339604068933,
+      "tv_relative_improvement": 0.003233400760493804
+    }
+  ],
+  "gate": "position_role_selective_transition_final_development",
+  "report_schema_version": "0.1",
+  "source": {
+    "artifact_digest": "sha256:4e98081cb1800d45f3668595e4e61a169dbce68a8b565aa1e8f60d7dcd1417e5",
+    "artifact_name": "position-role-transition-challenger-development",
+    "run_id": 32152125644
+  },
+  "source_run_id": 32152791794,
+  "source_sha": "182d4a435a050a1e5334bf97e44be743338e8546"
+}
