@@ -22,9 +22,6 @@ from universal_baseball.current_talent_scoring import (
 )
 from universal_baseball.projection_ridge import (
     PROJECTION_CV_FOLD_COUNT,
-    PROJECTION_DELTA_COLUMNS if False else PROJECTION_FORMS,
-)
-from universal_baseball.projection_ridge import (
     PROJECTION_FORMS,
     PROJECTION_RIDGE_LAMBDAS,
     build_projection_design,
@@ -110,9 +107,13 @@ def main() -> int:
     missing = sorted(required_training - set(training_rows.columns))
     if missing:
         raise RuntimeError(f"2022 Projection selection rows missing fields: {missing}")
-    observed_folds = set(int(value) for value in training_rows.get_column("cv_fold").unique().to_list())
+    observed_folds = set(
+        int(value) for value in training_rows.get_column("cv_fold").unique().to_list()
+    )
     if observed_folds != set(range(PROJECTION_CV_FOLD_COUNT)):
-        raise RuntimeError(f"Projection selection CV fold coverage mismatch: {sorted(observed_folds)}")
+        raise RuntimeError(
+            f"Projection selection CV fold coverage mismatch: {sorted(observed_folds)}"
+        )
 
     configuration_rows: list[dict[str, object]] = []
     fold_score_frames: list[pl.DataFrame] = []
@@ -126,26 +127,38 @@ def main() -> int:
             for cv_fold in range(PROJECTION_CV_FOLD_COUNT):
                 train_rows = training_rows.filter(pl.col("cv_fold") != cv_fold)
                 heldout_rows = training_rows.filter(pl.col("cv_fold") == cv_fold)
-                train_ids = set(int(value) for value in train_rows.get_column("player_id").to_list())
-                heldout_ids = set(int(value) for value in heldout_rows.get_column("player_id").to_list())
+                train_ids = set(
+                    int(value) for value in train_rows.get_column("player_id").to_list()
+                )
+                heldout_ids = set(
+                    int(value) for value in heldout_rows.get_column("player_id").to_list()
+                )
                 if train_ids & heldout_ids:
                     raise RuntimeError("Projection CV train/heldout player overlap")
                 if not heldout_ids:
                     raise RuntimeError(f"Projection CV fold {cv_fold} is empty")
 
                 train_design = full_design.filter(pl.col("player_id").is_in(sorted(train_ids)))
-                heldout_design = full_design.filter(pl.col("player_id").is_in(sorted(heldout_ids)))
+                heldout_design = full_design.filter(
+                    pl.col("player_id").is_in(sorted(heldout_ids))
+                )
                 fit = fit_projection_weighted_ridge(
                     train_design,
-                    train_rows.select("player_id", "future_core_events", *PROJECTION_DELTA_COLUMNS),
+                    train_rows.select(
+                        "player_id", "future_core_events", *PROJECTION_DELTA_COLUMNS
+                    ),
                     form=form,
                     ridge_lambda=float(ridge_lambda),
                     weight_column="future_core_events",
                     response_columns=PROJECTION_DELTA_COLUMNS,
                 )
                 predicted_delta = predict_projection_ridge(fit, heldout_design)
-                candidate_profile = apply_projection_ilr_delta(snapshot_profile, predicted_delta)
-                scoring_pair = build_projection_scoring_pair(snapshot_profile, candidate_profile)
+                candidate_profile = apply_projection_ilr_delta(
+                    snapshot_profile, predicted_delta
+                )
+                scoring_pair = build_projection_scoring_pair(
+                    snapshot_profile, candidate_profile
+                )
 
                 heldout_target_summary = target_summary.filter(
                     pl.col("player_id").is_in(sorted(heldout_ids))
@@ -158,7 +171,9 @@ def main() -> int:
                     heldout_target_summary,
                     translation_offsets,
                 )
-                report = score_current_talent_profiles(projected, heldout_target_profile)
+                report = score_current_talent_profiles(
+                    projected, heldout_target_profile
+                )
                 fold_scores = pooled_model_scores(report.environment_scores).with_columns(
                     pl.lit(form).alias("form"),
                     pl.lit(float(ridge_lambda)).alias("ridge_lambda"),
@@ -182,27 +197,43 @@ def main() -> int:
                     )
                 )
 
-            pooled = pooled_model_scores(pl.concat(config_environment_scores, how="vertical_relaxed"))
+            pooled = pooled_model_scores(
+                pl.concat(config_environment_scores, how="vertical_relaxed")
+            )
             baseline = _model_row(pooled, "baseline0")
             candidate = _model_row(pooled, "baseline1")
             configuration_rows.append(
                 {
                     "form": form,
                     "ridge_lambda": float(ridge_lambda),
-                    "baseline0_log_loss": float(baseline["event_weighted_log_loss"]),
-                    "baseline0_brier": float(baseline["event_weighted_multinomial_brier"]),
-                    "candidate_log_loss": float(candidate["event_weighted_log_loss"]),
-                    "candidate_brier": float(candidate["event_weighted_multinomial_brier"]),
-                    "candidate_minus_baseline_log_loss": float(candidate["event_weighted_log_loss"])
+                    "baseline0_log_loss": float(
+                        baseline["event_weighted_log_loss"]
+                    ),
+                    "baseline0_brier": float(
+                        baseline["event_weighted_multinomial_brier"]
+                    ),
+                    "candidate_log_loss": float(
+                        candidate["event_weighted_log_loss"]
+                    ),
+                    "candidate_brier": float(
+                        candidate["event_weighted_multinomial_brier"]
+                    ),
+                    "candidate_minus_baseline_log_loss": float(
+                        candidate["event_weighted_log_loss"]
+                    )
                     - float(baseline["event_weighted_log_loss"]),
-                    "candidate_minus_baseline_brier": float(candidate["event_weighted_multinomial_brier"])
+                    "candidate_minus_baseline_brier": float(
+                        candidate["event_weighted_multinomial_brier"]
+                    )
                     - float(baseline["event_weighted_multinomial_brier"]),
                     "future_core_events": int(candidate["future_core_events"]),
                     "scored_players": int(candidate["scored_players"]),
                 }
             )
 
-    configuration_scores = pl.DataFrame(configuration_rows).sort(["candidate_log_loss", "candidate_brier"])
+    configuration_scores = pl.DataFrame(configuration_rows).sort(
+        ["candidate_log_loss", "candidate_brier"]
+    )
     selection = select_projection_configuration(configuration_scores)
     fold_scores = pl.concat(fold_score_frames, how="vertical_relaxed").sort(
         ["form", "ridge_lambda", "cv_fold", "model"]
@@ -210,9 +241,9 @@ def main() -> int:
     coefficients = pl.concat(coefficient_frames, how="vertical_relaxed").sort(
         ["form", "ridge_lambda", "cv_fold", "feature", "response"]
     )
-    standardization = pl.concat(standardization_frames, how="vertical_relaxed").sort(
-        ["form", "ridge_lambda", "cv_fold", "feature"]
-    )
+    standardization = pl.concat(
+        standardization_frames, how="vertical_relaxed"
+    ).sort(["form", "ridge_lambda", "cv_fold", "feature"])
 
     storage = {
         "configuration_scores": write_canonical_parquet(
@@ -257,10 +288,16 @@ def main() -> int:
             "candidate_brier": selection.candidate_brier,
             "baseline0_log_loss": selection.baseline0_log_loss,
             "baseline0_brier": selection.baseline0_brier,
-            "candidate_minus_baseline_log_loss": selection.candidate_log_loss - selection.baseline0_log_loss,
-            "candidate_minus_baseline_brier": selection.candidate_brier - selection.baseline0_brier,
+            "candidate_minus_baseline_log_loss": (
+                selection.candidate_log_loss - selection.baseline0_log_loss
+            ),
+            "candidate_minus_baseline_brier": (
+                selection.candidate_brier - selection.baseline0_brier
+            ),
             "early_reject": selection.early_reject,
-            "advances_to_out_of_time_validation": selection.advances_to_out_of_time_validation,
+            "advances_to_out_of_time_validation": (
+                selection.advances_to_out_of_time_validation
+            ),
             "metrics": selection.metrics,
         },
         "storage": storage,
