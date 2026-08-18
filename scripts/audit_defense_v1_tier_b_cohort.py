@@ -79,6 +79,11 @@ def main() -> int:
         raise RuntimeError("binding result says Tier-B transfer was not attempted")
 
     profiles, profile_diag = _load_profiles(args.source_root)
+    profile_counts = {
+        key: value
+        for key, value in profile_diag.items()
+        if key != "catcher"
+    }
     targets = _general_targets()
 
     # Recreate the exact 2024 U1 held-set universe without calling the frozen
@@ -206,7 +211,7 @@ def main() -> int:
         "disposition_counts": dict(sorted(reason_counts.items())),
         "tracked_z_cell_diagnostics": cell_diagnostics,
         "candidate_rows": sorted(rows, key=lambda r: (r["disposition"], r["player_id"])),
-        "source_profile_diagnostics": profile_diag,
+        "source_profile_diagnostics": profile_counts,
         "boundary": {
             "2025_defensive_targets_accessed": False,
             "model_scoring_performed": False,
