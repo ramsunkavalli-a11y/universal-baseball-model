@@ -157,6 +157,7 @@ jobs:
           PY
 
       - name: Upload immutable pre-2025 confirmation inputs
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: playing-time-v1-confirmation-inputs
@@ -166,7 +167,7 @@ jobs:
             reports/generated/playing-time-v1-confirmation-predictors/
             data/quarantine/projection-batting-v1-confirmation-snapshot/
             data/quarantine/playing-time-confirmation-40man-membership/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 14
 
       - name: Persist binding pre-2025 input result
