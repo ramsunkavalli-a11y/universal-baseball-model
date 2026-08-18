@@ -1,6 +1,6 @@
 # Batting Projection v1 Plan
 
-Last updated: 2026-08-17 19:28 PT
+Last updated: 2026-08-17 19:34 PT
 
 Status: **IMPLEMENTATION / DEVELOPMENT-DATA ASSEMBLY — 2025 OUTCOMES QUARANTINED**
 
@@ -38,16 +38,25 @@ Completed / passing deterministic work:
 
 Recent passing runs: `32089050302`, `32089669934`, `32090401492`, `32090635490`, and `32090687671`.
 
-The current blocker is the heavy 2024 MiLB historical-evidence reuse/materialization path. Live-source runs `32089284674`, `32090307461`, `32090635458`, and `32090668312` all failed.
+The remaining blocker is the heavy 2024 MiLB historical-evidence reuse/materialization path. Historical-path runs `32089284674`, `32090307461`, `32090635458`, and `32090668312` failed.
 
-Dedicated source-gap audit run `32091086460` first failed because of an import-path issue. Recovery run `32091704947` corrected that import and reached the official source, then failed closed on a concrete game-level source condition:
+A dedicated source-gap audit initially pursued exact official game feeds. Recovery run `32091704947` demonstrated that `game_pk 755829` returns **404 Not Found** from `https://statsapi.mlb.com/api/v1/game/755829/feed/live`, so that official PBP path cannot adjudicate the row directly.
 
-- `game_pk = 755829`
-- `https://statsapi.mlb.com/api/v1/game/755829/feed/live` -> **404 Not Found**
-- `capture_official_json()` correctly rejected the non-2xx response
-- recovery artifact `9308582512`, digest `sha256:a5847628722d0ae12e80ed90e649d20fd24e6195bf17b96fb61e681b35d273d2`
+Follow-up source-only residual audit `32092166134` then **passed** and narrowed the observed 2024 aggregate discrepancy to exactly two deterministic source-only rows:
 
-The current task is therefore to classify and handle that exact official-source condition, continue the audit beyond it, and obtain a clean certified 2024 evidence artifact. It is **not** time to fit the age curve or score Projection candidates.
+- High-A player `669233`, game `755829`: `PA=1, AB=1`, with no BB/HBP/SO/SF/SH/CI.
+- Single-A player `686541`, game `754395`: `PA=1, AB=1, SO=1`, with no BB/HBP/SF/SH/CI.
+
+For both rows:
+
+- the season aggregate mismatches before removal;
+- the mismatch disappears after removing that exact row;
+- post-removal totals match the official gameLog control;
+- the audit classifies the row as an **exact removable residual**.
+
+Audit artifact `9308734004`; digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
+
+The current task is therefore no longer open-ended source hunting. It is to encode those two exact residuals as explicit provenance-preserving source-quality exclusions, test the rule, and rerun the complete 2024 historical evidence path. It is **not** time to fit the age curve or score Projection candidates.
 
 Machine-readable status:
 
@@ -263,10 +272,11 @@ Playing-time/role probability should then be added as a separate projection chan
 
 1. **DONE:** implement deterministic Projection fold/window and next-year dataset contracts.
 2. **DONE:** add/verify exact-game official outcome and league fallback behavior in fast CI.
-3. **CURRENT:** classify the official 404 for `game_pk 755829`, add the narrowest supported source rule/regression, and rerun the source-gap audit beyond that game.
-4. **NEXT:** obtain a clean certified 2024 MiLB historical evidence artifact and then materialize/chronology-verify the complete 2022–2024 development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
-5. **THEN:** implement and score carry-forward Projection Baseline 0.
-6. **THEN:** implement the simple age/development Baseline 1 and run the frozen three-fold development comparison.
-7. **ONLY IF DEVELOPMENT PASSES:** freeze the confirmation refit/model-selection contract before opening any 2025 outcomes.
+3. **DONE:** isolate the current 2024 aggregate discrepancy to two exact source-only residual rows via run `32092166134`.
+4. **CURRENT:** encode those two exclusions with explicit provenance + deterministic regression coverage, then rerun the full 2024 MiLB historical evidence path.
+5. **NEXT:** require a clean certified 2024 artifact and materialize/chronology-verify the complete 2022–2024 development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
+6. **THEN:** implement and score carry-forward Projection Baseline 0.
+7. **THEN:** implement the simple age/development Baseline 1 and run the frozen three-fold development comparison.
+8. **ONLY IF DEVELOPMENT PASSES:** freeze the confirmation refit/model-selection contract before opening any 2025 outcomes.
 
 No 2025 outcome materialization belongs in the current implementation batch.
