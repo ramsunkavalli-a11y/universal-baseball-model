@@ -1,0 +1,101 @@
+{
+  "baseline0_form": "playing_time_level_hurdle_v1",
+  "baseline0_nb_alpha": 0.8300893722934963,
+  "baseline0_training": {
+    "player_identity_used_as_predictor": false,
+    "source_players_repeated_across_folds": 3963,
+    "training_fold_row_counts": {
+      "projection_2021_to_2022": 4702,
+      "projection_2022_to_2023": 4040,
+      "projection_2023_to_2024": 3985
+    },
+    "training_observation_count": 12727,
+    "unique_source_player_count": 6378
+  },
+  "boundary": {
+    "2025_accessed": false,
+    "2025_target_materialized": false,
+    "batting_rate_modified": false,
+    "form_reselected_after_development": false
+  },
+  "candidate_nb_alpha": 0.7204502914248058,
+  "candidate_training": {
+    "player_identity_used_as_predictor": false,
+    "source_players_repeated_across_folds": 3963,
+    "training_fold_row_counts": {
+      "projection_2021_to_2022": 4702,
+      "projection_2022_to_2023": 4040,
+      "projection_2023_to_2024": 3985
+    },
+    "training_observation_count": 12727,
+    "unique_source_player_count": 6378
+  },
+  "decision": {
+    "2025_confirmation_scoring_authorized_after_source_certification": true,
+    "2025_source_materialization_authorized": true,
+    "parameters_frozen_before_2025": true
+  },
+  "deterministic_reproduction": {
+    "baseline0_max_parameter_difference": 0.0,
+    "candidate_max_parameter_difference": 0.0,
+    "passed": true,
+    "tolerance": 1e-10
+  },
+  "gate": "playing_time_v1_confirmation_refit_freeze",
+  "package_versions": {
+    "numpy": "2.5.2",
+    "polars": "1.43.2",
+    "scikit_learn": "1.7.2",
+    "statsmodels": "0.14.6"
+  },
+  "report_schema_version": "0.1",
+  "selected_form": "playing_time_recent_opportunity_40man_b2_hurdle_v1",
+  "selection_source_run": 32141616127,
+  "source_run_id": 32142220469,
+  "source_sha": "7993b4ee372f40db9053445bb1586765123867c5",
+  "status": "frozen_ready_for_2025_source_materialization",
+  "storage": {
+    "baseline0_coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "e23a52046f96309a841e2d9ac9d7aaeeaac474b9f728d645b98203221273da32",
+      "file_size_bytes": 1460,
+      "path": "reports/generated/playing-time-v1-confirmation-refit/tables/baseline0_coefficients.parquet",
+      "row_count": 9,
+      "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+      "table_name": "playing_time_v1_confirmation_baseline0_coefficients"
+    },
+    "baseline0_standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "5e95ec456fbf2629be5f479dca44804a0827a1eb8c593433c21b658f80ff1c83",
+      "file_size_bytes": 135,
+      "path": "reports/generated/playing-time-v1-confirmation-refit/tables/baseline0_standardization.parquet",
+      "row_count": 0,
+      "schema_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "table_name": "playing_time_v1_confirmation_baseline0_standardization"
+    },
+    "candidate_coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "6f93999f72b32ddc0752c52274598e4c9280171001be0b70f8823cf19e3f37eb",
+      "file_size_bytes": 1707,
+      "path": "reports/generated/playing-time-v1-confirmation-refit/tables/candidate_coefficients.parquet",
+      "row_count": 25,
+      "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+      "table_name": "playing_time_v1_confirmation_candidate_coefficients"
+    },
+    "candidate_standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "bce424d1972ebee3157cc0366044598c6ee685b379beb8ac8b85f7391b16128f",
+      "file_size_bytes": 1381,
+      "path": "reports/generated/playing-time-v1-confirmation-refit/tables/candidate_standardization.parquet",
+      "row_count": 7,
+      "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+      "table_name": "playing_time_v1_confirmation_candidate_standardization"
+    }
+  },
+  "training_target_years": [
+    2022,
+    2023,
+    2024
+  ],
+  "validation_2024_source_run": 32142089669
+}
