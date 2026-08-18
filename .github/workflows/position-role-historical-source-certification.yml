@@ -1,0 +1,105 @@
+name: Position-role historical source certification
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/position-role-historical-source-certification.yml"
+      - "docs/position-role-historical-source-certification-contract.md"
+      - "src/universal_baseball/position_role_source.py"
+      - "tests/test_position_role_source.py"
+      - "scripts/certify_position_role_historical_source.py"
+      - "docs/position-role-historical-source-trigger.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Verify frozen source semantics
+        run: >-
+          python -m py_compile
+          src/universal_baseball/position_role_source.py
+          scripts/certify_position_role_historical_source.py
+          && python -m pytest -q tests/test_position_role_source.py
+
+      - name: Certify 2021-2024 official fielding source
+        id: certify
+        shell: bash
+        run: |
+          set +e
+          python scripts/certify_position_role_historical_source.py
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Upload historical source evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: position-role-historical-source-2021-2024
+          path: |
+            reports/generated/position-role-historical-source/
+            data/quarantine/position-role-historical-source/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding historical source result
+        if: always()
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/position-role-historical-source/report.json')
+          if not source.exists():
+              raise SystemExit('historical position-role source report was not produced')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/position-role-historical-source-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/position-role-historical-source-result.json
+          git commit -m "Persist historical position-role source certification"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Enforce fail-closed historical decision
+        if: always()
+        env:
+          CERTIFY_EXIT_CODE: ${{ steps.certify.outputs.exit_code }}
+        run: |
+          test "${CERTIFY_EXIT_CODE:-1}" -eq 0
