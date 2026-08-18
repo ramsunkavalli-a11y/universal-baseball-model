@@ -1,0 +1,178 @@
+{
+  "boundary": {
+    "defense_projection_fit": false,
+    "playing_time_v1_modified": false,
+    "position_role_v1_modified": false,
+    "production_defense_model_fit": false,
+    "team_allocator_fit": false,
+    "war_value_computed": false
+  },
+  "contract": "docs/defense-sportsdataverse-reuse-poc-contract.md",
+  "decision": {
+    "aaa_tracked_oaa_reuse_feasible": false,
+    "catcher_defense_authorized": false,
+    "mlb_oaa_reuse_candidate": false,
+    "single_a_tracked_oaa_reuse_feasible": false,
+    "tracked_milb_oaa_reuse_feasible_for_tested_tiers": false,
+    "universal_defense_authorized": false,
+    "war_value_authorized": false
+  },
+  "gate": "defense_sportsdataverse_reuse_feasibility_poc",
+  "milb": [
+    {
+      "bip_row_count": 0,
+      "column_count": 0,
+      "hfLevel": "AAA|",
+      "label": "AAA",
+      "oaa_bip_usable_rate": 0.0,
+      "oaa_by_position": [],
+      "oaa_row_count": 0,
+      "oaa_total_opportunities": 0,
+      "passed": false,
+      "pitch_row_count": 0,
+      "required_columns_missing": [
+        "hc_x",
+        "hc_y",
+        "hit_distance_sc",
+        "launch_angle",
+        "launch_speed",
+        "hit_location",
+        "events",
+        "fielder_1",
+        "fielder_2",
+        "fielder_3",
+        "fielder_4",
+        "fielder_5",
+        "fielder_6",
+        "fielder_7",
+        "fielder_8",
+        "fielder_9"
+      ],
+      "required_field_non_null_rate": {
+        "events": null,
+        "fielder_1": null,
+        "fielder_2": null,
+        "fielder_3": null,
+        "fielder_4": null,
+        "fielder_5": null,
+        "fielder_6": null,
+        "fielder_7": null,
+        "fielder_8": null,
+        "fielder_9": null,
+        "hc_x": null,
+        "hc_y": null,
+        "hit_distance_sc": null,
+        "hit_location": null,
+        "launch_angle": null,
+        "launch_speed": null
+      }
+    },
+    {
+      "bip_row_count": 0,
+      "column_count": 0,
+      "hfLevel": "A|",
+      "label": "A",
+      "oaa_bip_usable_rate": 0.0,
+      "oaa_by_position": [],
+      "oaa_row_count": 0,
+      "oaa_total_opportunities": 0,
+      "passed": false,
+      "pitch_row_count": 0,
+      "required_columns_missing": [
+        "hc_x",
+        "hc_y",
+        "hit_distance_sc",
+        "launch_angle",
+        "launch_speed",
+        "hit_location",
+        "events",
+        "fielder_1",
+        "fielder_2",
+        "fielder_3",
+        "fielder_4",
+        "fielder_5",
+        "fielder_6",
+        "fielder_7",
+        "fielder_8",
+        "fielder_9"
+      ],
+      "required_field_non_null_rate": {
+        "events": null,
+        "fielder_1": null,
+        "fielder_2": null,
+        "fielder_3": null,
+        "fielder_4": null,
+        "fielder_5": null,
+        "fielder_6": null,
+        "fielder_7": null,
+        "fielder_8": null,
+        "fielder_9": null,
+        "hc_x": null,
+        "hc_y": null,
+        "hit_distance_sc": null,
+        "hit_location": null,
+        "launch_angle": null,
+        "launch_speed": null
+      }
+    }
+  ],
+  "mlb": {
+    "bip_row_count": 20623,
+    "column_count": 119,
+    "label": "MLB",
+    "oaa_bip_usable_rate": 0.0,
+    "oaa_by_position": [],
+    "oaa_row_count": 0,
+    "oaa_total_opportunities": 0,
+    "oracle": {
+      "matched_fielder_count": 0,
+      "passed": false,
+      "pearson_correlation": null,
+      "savant_columns_missing": [],
+      "savant_row_count": 272
+    },
+    "pitch_row_count": 116355,
+    "required_columns_missing": [
+      "fielder_1"
+    ],
+    "required_field_non_null_rate": {
+      "events": 1.0,
+      "fielder_1": null,
+      "fielder_2": 1.0,
+      "fielder_3": 1.0,
+      "fielder_4": 1.0,
+      "fielder_5": 1.0,
+      "fielder_6": 1.0,
+      "fielder_7": 1.0,
+      "fielder_8": 1.0,
+      "fielder_9": 1.0,
+      "hc_x": 0.9997575522474906,
+      "hc_y": 0.9997575522474906,
+      "hit_distance_sc": 0.9951510449498133,
+      "hit_location": 0.9517044077001406,
+      "launch_angle": 0.9964602628133638,
+      "launch_speed": 0.9955874509043301
+    }
+  },
+  "report_schema_version": "0.1",
+  "source_run_id": 32161048491,
+  "source_sha": "04bc1cafacb806133b2bb0b34670c4ee26fa7cb0",
+  "source_windows": {
+    "milb": {
+      "end": "2024-06-16",
+      "game_type": "R",
+      "start": "2024-06-10"
+    },
+    "mlb": {
+      "end": "2024-06-30",
+      "game_type": "R",
+      "season": 2024,
+      "start": "2024-06-01"
+    }
+  },
+  "upstream": {
+    "inspected_commit": "1dafadb38c5240d8e29a0f818efbabe04cd6c417",
+    "package": "sportsdataverse",
+    "package_version": "0.0.75"
+  }
+}
