@@ -23,9 +23,14 @@ Projection v1 asks whether a leakage-safe age/development adjustment improves ne
 
 ### Live Projection status
 
-Projection contracts and fast deterministic CI are passing, including the next-year dataset contract and exact-game outcome/league fallback behavior. The current implementation blocker is the heavy **2024 MiLB historical-evidence reuse/materialization path**.
+Projection contracts and fast deterministic CI are passing, including the next-year dataset contract and exact-game outcome/league fallback behavior. The remaining implementation work is the heavy **2024 MiLB historical-evidence reuse/materialization path**.
 
-A dedicated recovery audit has isolated a concrete official-source condition: `game_pk 755829` returns **404 Not Found** from the expected Stats API `/feed/live` endpoint. The next step is to classify that exact source condition, encode the narrowest supported handling rule with regression coverage, continue the audit, and only then rerun the full 2024 evidence path.
+An official-feed recovery audit showed that `game_pk 755829` returns **404 Not Found** from the expected Stats API `/feed/live` endpoint. A follow-up source-only residual audit then passed and localized the observed aggregate mismatch to exactly two removable source rows:
+
+- High-A player `669233`, game `755829`: one extra `PA=1, AB=1` row.
+- Single-A player `686541`, game `754395`: one extra `PA=1, AB=1, SO=1` row.
+
+For both cases, removing the exact suspect row eliminates the season mismatch and restores agreement with official gameLog totals. The next step is to encode these as explicit provenance-preserving source-quality exclusions with regression tests, then rerun the full 2024 evidence path.
 
 Machine-readable workflow snapshots:
 
