@@ -3,13 +3,13 @@
   "workflows": {
     "development_evidence": [
       {
-        "conclusion": "",
+        "conclusion": "failure",
         "createdAt": "2026-08-18T03:39:19Z",
         "databaseId": 32096256479,
         "displayTitle": "Rerun Projection development evidence after schema canonicalization",
         "headSha": "2bd6650807d86133986d809b2bda58061fd36282",
-        "status": "in_progress",
-        "updatedAt": "2026-08-18T03:39:24Z",
+        "status": "completed",
+        "updatedAt": "2026-08-18T03:40:56Z",
         "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32096256479"
       },
       {
@@ -85,6 +85,58 @@
         "status": "completed",
         "updatedAt": "2026-08-18T03:17:24Z",
         "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32094181621"
+      }
+    ],
+    "historical_mlb": [
+      {
+        "conclusion": "",
+        "createdAt": "2026-08-18T03:42:59Z",
+        "databaseId": 32096473700,
+        "displayTitle": "Materialize certified 2024 MLB Current Talent evidence",
+        "headSha": "91f0741e08c19497184e497508735bdf7d207364",
+        "status": "in_progress",
+        "updatedAt": "2026-08-18T03:43:03Z",
+        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32096473700"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-17T02:56:58Z",
+        "databaseId": 31989561396,
+        "displayTitle": "Retry 2023 MLB certification from preserved Savant cache",
+        "headSha": "7f462e28c4172d440c1e2aa5c5672beb5c493740",
+        "status": "completed",
+        "updatedAt": "2026-08-17T02:57:53Z",
+        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/31989561396"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-17T02:33:29Z",
+        "databaseId": 31988352942,
+        "displayTitle": "Bootstrap 2023 historical MLB certification",
+        "headSha": "e13c5192ac8a527807c38d61d9fd875f827af1a0",
+        "status": "completed",
+        "updatedAt": "2026-08-17T02:51:06Z",
+        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/31988352942"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-17T02:31:36Z",
+        "databaseId": 31988255280,
+        "displayTitle": "Revalidate 2022 MLB after Savant HBP recovery",
+        "headSha": "5e68ea325214a6325803113c94b3b175c41830dd",
+        "status": "completed",
+        "updatedAt": "2026-08-17T02:32:31Z",
+        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/31988255280"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-17T02:22:17Z",
+        "databaseId": 31987774981,
+        "displayTitle": "Diagnose 2022 MLB residual from preserved cache",
+        "headSha": "8e20386ee7a3831fe8ac082c730a866f45a9703c",
+        "status": "completed",
+        "updatedAt": "2026-08-17T02:23:06Z",
+        "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/31987774981"
       }
     ],
     "projection_contracts": [
