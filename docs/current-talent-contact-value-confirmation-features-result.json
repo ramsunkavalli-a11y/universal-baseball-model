@@ -1,0 +1,70 @@
+{
+  "report_schema_version": "0.1",
+  "gate": "current_talent_contact_value_confirmation_features_pre_scoring",
+  "run_id": 32086704821,
+  "artifact_id": 9306950945,
+  "artifact_sha256": "78833898acd5a71ab70713bce4d4e02a72d247e2a5b7482db9994a600b578347",
+  "tracking_row_count": 520158,
+  "tracking_years": [2021, 2022, 2023],
+  "frozen_standardization": {
+    "fitted_player_snapshot_count": 1788,
+    "mean_exit_velocity": 87.56765458046604,
+    "scale_exit_velocity": 3.087267010464925,
+    "mean_sweet_spot_share": 0.34421856089476915,
+    "scale_sweet_spot_share": 0.0629687444393524
+  },
+  "frozen_residual_fit": {
+    "beta_mean_exit_velocity": 0.019444311355484883,
+    "beta_sweet_spot_share": -0.0016659086163438607,
+    "determinant": 18569017159.610256,
+    "fitted_future_contact_count": 166386,
+    "fitted_player_count": 1597
+  },
+  "folds": [
+    {
+      "cutoff_date": "2023-07-15",
+      "future_target_contact_count": 248081,
+      "paired_richer_target_contact_count": 118984,
+      "paired_player_count": 1226,
+      "any_observed_milb_paired_contact_count": 89957,
+      "zero_fallback_target_contact_count": 129097,
+      "latest_feature_event_date": "2023-07-14",
+      "target_key_coverage_unchanged": true,
+      "zero_fallback_exact": true
+    },
+    {
+      "cutoff_date": "2023-08-01",
+      "future_target_contact_count": 176853,
+      "paired_richer_target_contact_count": 90949,
+      "paired_player_count": 1191,
+      "any_observed_milb_paired_contact_count": 69153,
+      "zero_fallback_target_contact_count": 85904,
+      "latest_feature_event_date": "2023-07-31",
+      "target_key_coverage_unchanged": true,
+      "zero_fallback_exact": true
+    },
+    {
+      "cutoff_date": "2023-09-01",
+      "future_target_contact_count": 58639,
+      "paired_richer_target_contact_count": 40885,
+      "paired_player_count": 1158,
+      "any_observed_milb_paired_contact_count": 30933,
+      "zero_fallback_target_contact_count": 17754,
+      "latest_feature_event_date": "2023-08-31",
+      "target_key_coverage_unchanged": true,
+      "zero_fallback_exact": true
+    }
+  ],
+  "boundary": {
+    "2023_tracking_evidence_accessed": true,
+    "2023_target_evidence_accessed": true,
+    "standardization_refit": false,
+    "richer_coefficients_refit": false,
+    "richer_predictions_computed": false,
+    "confirmation_losses_computed": false,
+    "calibration_computed": false,
+    "confirmation_decision_computed": false,
+    "model_scoring": false,
+    "network_requests_performed": false
+  }
+}
