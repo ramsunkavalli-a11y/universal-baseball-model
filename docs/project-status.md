@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-17 19:38 PT
+Last updated: 2026-08-17 19:42 PT
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
@@ -86,24 +86,15 @@ Recent successful gates include:
 - `32090401492` — exact-game fallback contract
 - `32090635490` — exact-game league fallback contract
 - `32090687671` — combined exact-game outcome + league fallback tests
-- `32092505104` — exact source-residual quarantine policy in fast CI
+- `32092505104` — exact source-residual quarantine policy
+- `32092672387` — source-residual quarantine propagated across evidence grains
+- `32092714174` — cross-grain source quarantine regression gate
 
 The deterministic chronology/dataset/source-authority contracts are not the current blocker.
 
-### 2024 MiLB historical evidence reuse/materialization — NOT YET CLEARED
+### 2024 discrepancy diagnosis — COMPLETE
 
-Earlier historical-path runs failed:
-
-- `32089284674` — certified historical Current Talent path for 2024 MiLB
-- `32090307461` — exact-game official fallback rerun
-- `32090635458` — exact-game league fallback rerun
-- `32090668312` — both exact-game fallbacks rerun
-
-The discrepancy has now been diagnosed and a fail-closed correction policy has been implemented; the full historical path still needs a clean rerun.
-
-### Source discrepancy diagnosis — COMPLETE
-
-Official-feed recovery run `32091704947` showed that `game_pk 755829` returns HTTP 404 from the expected Stats API `/feed/live` surface.
+Earlier historical-path runs failed. Official-feed recovery run `32091704947` showed that `game_pk 755829` returns HTTP 404 from the expected Stats API `/feed/live` surface.
 
 Source-only residual audit `32092166134` then passed and localized the observed aggregate mismatch to two exact source-only rows:
 
@@ -112,9 +103,9 @@ Source-only residual audit `32092166134` then passed and localized the observed 
 
 For each row, removing the exact suspect eliminates the season mismatch and makes the remaining player-game totals match official gameLog totals. Audit artifact `9308734004`, digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
 
-### Exact source-residual quarantine — IMPLEMENTED / CI PASSED
+### Exact source-residual quarantine — IMPLEMENTED / CROSS-GRAIN CI PASSED
 
-Production helper:
+Primary helper:
 
 `src/universal_baseball/current_talent_source_residual_quarantine.py`
 
@@ -122,7 +113,7 @@ Policy:
 
 `single_source_only_exact_season_and_official_residual_v1`
 
-The helper removes a row only when all of the following hold:
+A source row is quarantined only when:
 
 1. there is exactly one source-only positive-PA game for the player/league;
 2. its PA/BB/HBP/SO vector exactly equals the independent season-player residual;
@@ -130,7 +121,26 @@ The helper removes a row only when all of the following hold:
 
 Anything less remains unresolved. No identity, league, or outcome value is guessed or reassigned.
 
-Fast CI run `32092505104` completed **successfully** with this policy and its regression tests included.
+The historical wrapper now propagates any proven quarantined player/game key consistently across:
+
+- outcome rows;
+- player-game contact controls;
+- same-player PBP contact rows.
+
+It also fail-closes missing same-game league identity: if the exact official game endpoint itself returns 404, the unauthorizable PBP game is quarantined rather than inheriting filename-level identity.
+
+Cross-grain implementation commit: `be8eb1b781fcc8560e1ac2caec2413a2cc4ea2c3`.
+
+Fast CI runs `32092672387` and `32092714174` both completed **successfully**.
+
+### Full 2024 historical gate — LAUNCHED
+
+Two post-quarantine historical runs have been launched:
+
+- `32092672369` — **Quarantine exact 2024 source residuals across evidence grains**
+- `32092745178` — **Gate 2024 MiLB on exact source quarantine tests**
+
+At the documentation cutoff they were queued; use `docs/projection-recovery-status.json` for their live status. Their result, not the earlier failed historical runs, is the current gating evidence.
 
 Machine-readable workflow snapshots:
 
@@ -139,13 +149,13 @@ Machine-readable workflow snapshots:
 
 ## Immediate next action
 
-1. Rerun the complete 2024 MiLB historical evidence/materialization path with `single_source_only_exact_season_and_official_residual_v1` active.
-2. Require exact post-quarantine aggregate reconciliation and verify no additional unresolved source-only residuals appear.
-3. Persist the clean certified 2024 artifact with quarantine provenance/metrics.
-4. Materialize and chronology-verify the full 2022–2024 Projection development snapshot/outcome surfaces with explicit opportunity/censoring accounting.
-5. Only then begin Projection Baseline 0 / Baseline 1 development scoring.
+1. Inspect runs `32092672369` and `32092745178` when they complete.
+2. Require exact aggregate reconciliation, successful cross-grain quarantine metrics, and no new unresolved residuals.
+3. If the historical gate passes, persist/accept the clean certified 2024 evidence artifact and move to full 2022–2024 Projection development-surface materialization.
+4. If it fails, debug only the newly exposed exact discrepancy; do not broaden or loosen the quarantine policy without evidence.
+5. Only after the 2022–2024 development surfaces are complete and chronology-verified should Projection Baseline 0 / Baseline 1 scoring begin.
 
-Do not jump ahead to the age curve or 2025 confirmation before the 2024 historical evidence rerun passes.
+Do not jump ahead to the age curve or 2025 confirmation before the quarantined 2024 historical gate passes.
 
 ## Projection v1 model boundary already frozen
 
