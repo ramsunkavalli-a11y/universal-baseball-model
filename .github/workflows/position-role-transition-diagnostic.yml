@@ -1,0 +1,101 @@
+name: Position-role transition diagnostic
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/position-role-transition-diagnostic.yml"
+      - "scripts/diagnose_position_role_transition_challenger.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Verify postmortem code
+        run: python -m py_compile scripts/diagnose_position_role_transition_challenger.py
+
+      - name: Download frozen challenger evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p challenger-source
+          gh run download 32152125644 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-transition-challenger-development \
+            --dir challenger-source
+
+      - name: Run failure postmortem
+        run: >-
+          python scripts/diagnose_position_role_transition_challenger.py
+          --source-root challenger-source
+
+      - name: Verify no new candidate or 2025 access
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('reports/generated/position-role-transition-diagnostic/report.json').read_text())
+          assert report['boundary']['2025_position_source_accessed'] is False
+          assert report['boundary']['new_candidate_scored'] is False
+          assert report['boundary']['hyperparameter_selected'] is False
+          PY
+
+      - name: Upload postmortem evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: position-role-transition-diagnostic
+          path: reports/generated/position-role-transition-diagnostic/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist postmortem result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/position-role-transition-diagnostic/report.json')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/position-role-transition-challenger-diagnostic.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/position-role-transition-challenger-diagnostic.json
+          git commit -m "Persist position-role transition postmortem"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
