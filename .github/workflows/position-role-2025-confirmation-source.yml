@@ -1,0 +1,121 @@
+name: Materialize 2025 position-role confirmation source
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/position-role-2025-confirmation-source.yml"
+      - "docs/position-role-2025-confirmation-source-contract.md"
+      - "scripts/materialize_position_role_2025_confirmation_source.py"
+      - "src/universal_baseball/position_role_source.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Verify source-only implementation
+        run: >-
+          python -m py_compile
+          scripts/materialize_position_role_2025_confirmation_source.py
+          src/universal_baseball/position_role_source.py
+          && python -m pytest -q tests/test_position_role_source.py
+
+      - name: Materialize untouched 2025 source
+        id: materialize
+        shell: bash
+        run: |
+          set +e
+          python scripts/materialize_position_role_2025_confirmation_source.py
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Verify source/scoring separation
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report_path = Path('reports/generated/position-role-2025-confirmation-source/report.json')
+          if not report_path.exists():
+              raise SystemExit('2025 position source report was not produced')
+          report = json.loads(report_path.read_text())
+          boundary = report['boundary']
+          assert boundary['2025_position_source_accessed'] is True
+          assert boundary['2025_position_outcomes_scored'] is False
+          assert boundary['model_parameters_loaded'] is False
+          assert boundary['model_fit'] is False
+          assert boundary['2024_role_profiles_loaded'] is False
+          PY
+
+      - name: Upload immutable 2025 source evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: position-role-2025-confirmation-source
+          path: |
+            reports/generated/position-role-2025-confirmation-source/
+            data/quarantine/position-role-2025-confirmation-source/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding 2025 source result
+        if: always()
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/position-role-2025-confirmation-source/report.json')
+          if not source.exists():
+              raise SystemExit('2025 position source report was not produced')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/position-role-2025-confirmation-source-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/position-role-2025-confirmation-source-result.json
+          git commit -m "Persist untouched 2025 position-role source"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Enforce fail-closed source decision
+        if: always()
+        env:
+          MATERIALIZE_EXIT_CODE: ${{ steps.materialize.outputs.exit_code }}
+        run: |
+          test "${MATERIALIZE_EXIT_CODE:-1}" -eq 0
