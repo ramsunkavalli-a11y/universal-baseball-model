@@ -1,30 +1,156 @@
 #!/usr/bin/env python
-"""Historical MiLB Current Talent materializer with exact-game gameLog fallback.
+"""Historical MiLB Current Talent materializer with exact-game official fallbacks.
 
 This is a thin orchestration wrapper around the certified historical materializer.
-Every source/contact/identity/reconciliation function remains unchanged.  The
-only replaced step is sparse outcome adjudication: if an official player
-``gameLog`` omits a positive-PA source game, exact official game play-by-play may
-confirm that game only when its complete true-PA outcome vector matches source.
+Every source/contact/identity/reconciliation function remains unchanged except
+for two narrow source-authority seams:
 
-The base gameLog adjudicator and exact season-aggregate reconciliation still run
-afterward unchanged.  No model fitting or Projection logic is performed here.
+1. if a player official ``gameLog`` omits a positive-PA source game, exact
+   official game play-by-play may confirm that game only when its complete true-
+   PA outcome vector exactly matches source;
+2. if a regular-season PBP game lacks reusable same-game league identity, the
+   exact official game feed may supply league identity only when both teams agree
+   on one league, both teams agree on the certified sport, and the league belongs
+   to the already-certified era/level league set.
+
+The base gameLog adjudicator, same-game enrichment, league validation, and exact
+season-aggregate reconciliation all run afterward unchanged. Filename level is
+never itself substituted as actual league identity. No model fitting or
+Projection scoring is performed here.
 """
 
 from __future__ import annotations
 
-import json
+import re
 from pathlib import Path
 from typing import Any
 
 import polars as pl
 
 import materialize_current_talent_historical_milb_game_evidence as base
+from universal_baseball.current_talent_era import current_talent_level_spec
 from universal_baseball.current_talent_official_game_fallback import (
     augment_game_log_with_exact_pa_fallback,
     source_only_positive_pa_games,
 )
+from universal_baseball.current_talent_official_game_identity import (
+    augment_game_league_map_with_official_identity,
+    project_official_game_league_identity,
+)
 from universal_baseball.official import project_official_play_by_play
+
+
+_BASE_ENRICH_HISTORICAL_PBP_LEAGUE_ID = base.enrich_historical_pbp_league_id
+_LEVEL_TOKEN = re.compile(r"^(?P<season>\d{4}).*_(?P<level>aaa|aa|a\+|a|rk)_pbp\.csv$", re.I)
+
+
+def _source_asset_spec(source_asset: str):
+    name = Path(str(source_asset)).name
+    match = _LEVEL_TOKEN.match(name)
+    if match is None:
+        raise ValueError(
+            f"cannot derive certified era slice from historical PBP asset name: {name!r}"
+        )
+    season = int(match.group("season"))
+    level = match.group("level").lower()
+    return season, level, current_talent_level_spec(season, level)
+
+
+def _regular_game_ids(frame: pl.DataFrame, *, game_type: str | None) -> set[int]:
+    if "game_pk" not in frame.columns:
+        raise ValueError("historical PBP fallback frame missing game_pk")
+    working = frame
+    if game_type is not None:
+        if "game_type" not in frame.columns:
+            raise ValueError("historical PBP fallback frame missing game_type")
+        working = working.filter(pl.col("game_type").cast(pl.String) == str(game_type))
+    return {
+        int(value)
+        for value in working.get_column("game_pk").cast(pl.Int64, strict=False).drop_nulls().unique().to_list()
+    }
+
+
+def _enrich_historical_pbp_league_id_with_exact_game_fallback(
+    pbp_rows: pl.DataFrame,
+    game_league_map: pl.DataFrame,
+    *,
+    source_asset: str,
+    game_type: str | None = "R",
+):
+    pbp_games = _regular_game_ids(pbp_rows, game_type=game_type)
+    mapped_games = {
+        int(value)
+        for value in game_league_map.get_column("game_pk").cast(pl.Int64).unique().to_list()
+    }
+    missing_games = sorted(pbp_games - mapped_games)
+    if not missing_games:
+        return _BASE_ENRICH_HISTORICAL_PBP_LEAGUE_ID(
+            pbp_rows,
+            game_league_map,
+            source_asset=source_asset,
+            game_type=game_type,
+        )
+
+    season, level, spec = _source_asset_spec(source_asset)
+    identities = []
+    snapshots: list[dict[str, Any]] = []
+    slug = "aplus" if level == "a+" else level
+    raw_dir = (
+        Path("reports/generated/current-talent-historical-milb-game-evidence")
+        / str(season)
+        / slug
+        / "official-game-identity-raw"
+    )
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    session = base.new_official_session()
+    try:
+        for game_id in missing_games:
+            endpoint = f"game/{int(game_id)}/feed/live"
+            capture = base.capture_official_json(endpoint, session=session)
+            raw_path = raw_dir / f"game_{int(game_id)}_feed_live.json"
+            capture.write_raw(raw_path)
+            if not isinstance(capture.data, dict):
+                raise RuntimeError(f"official live feed for game {game_id} is not an object")
+            identity = project_official_game_league_identity(int(game_id), capture.data)
+            identities.append(identity)
+            snapshots.append(
+                {
+                    "game_id": int(game_id),
+                    "endpoint": capture.endpoint,
+                    "url": capture.url,
+                    "retrieved_at_utc": capture.retrieved_at_utc.isoformat(),
+                    "content_sha256": capture.content_sha256,
+                    "raw_path": str(raw_path),
+                    "official_game_date": identity.game_date.isoformat(),
+                    "official_league_id": identity.league_id,
+                    "official_sport_id": identity.sport_id,
+                    "away_team_id": identity.away_team_id,
+                    "home_team_id": identity.home_team_id,
+                }
+            )
+    finally:
+        session.close()
+
+    augmented_map, fallback_metrics = augment_game_league_map_with_official_identity(
+        game_league_map,
+        identities,
+        expected_league_ids=spec.league_ids,
+        expected_sport_id=spec.official_sport_id,
+    )
+    enriched, metrics = _BASE_ENRICH_HISTORICAL_PBP_LEAGUE_ID(
+        pbp_rows,
+        augmented_map,
+        source_asset=source_asset,
+        game_type=game_type,
+    )
+    metrics = dict(metrics)
+    metrics["player_game_same_game_map_original_count"] = int(game_league_map.height)
+    metrics["official_exact_game_identity_fallback"] = fallback_metrics
+    metrics["official_exact_game_identity_snapshots"] = snapshots
+    metrics["league_id_authority"] = (
+        "player_game_same_game_structured_plus_sparse_official_exact_game_team_league"
+    )
+    return enriched, metrics
 
 
 def _adjudicate_outcomes_with_exact_game_fallback(
@@ -113,13 +239,7 @@ def _adjudicate_outcomes_with_exact_game_fallback(
                             ),
                         }
                     )
-                official_pa = (
-                    pl.concat(pa_frames, how="vertical_relaxed")
-                    if pa_frames
-                    else pl.DataFrame(
-                        schema={"game_pk": pl.String, "batter_id": pl.Int64, "event_type": pl.String}
-                    )
-                )
+                official_pa = pl.concat(pa_frames, how="vertical_relaxed")
                 official, fallback_metrics = augment_game_log_with_exact_pa_fallback(
                     corrected,
                     official,
@@ -228,8 +348,9 @@ def _adjudicate_outcomes_with_exact_game_fallback(
     }
 
 
-# Replace only the private sparse outcome-adjudication seam.  All other behavior
-# remains the certified base materializer's implementation.
+# Replace only the two sparse source-authority seams. All other behavior remains
+# the certified base materializer's implementation.
+base.enrich_historical_pbp_league_id = _enrich_historical_pbp_league_id_with_exact_game_fallback
 base._adjudicate_outcomes = _adjudicate_outcomes_with_exact_game_fallback
 
 
