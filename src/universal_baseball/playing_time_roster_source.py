@@ -1,9 +1,10 @@
 """Chronology-safe historical MLB roster source adapter for playing-time work.
 
-This module only retrieves/projects official Stats API roster/transaction evidence.
-It does not infer playing time, role, roster eligibility, options, injury duration,
-or future opportunity. Live source behavior is certified separately before any
-field is authorized as a model predictor.
+This module retrieves/projects official Stats API roster/transaction evidence.
+The certified 40-man feature is deliberately **set membership only**. The source
+can return the same player twice with conflicting row-level status (documented
+for José Buttó on 2022/2023 Mets snapshots), so Active/Minors/IL status is not
+derived from a `40Man` response.
 """
 
 from __future__ import annotations
@@ -29,13 +30,23 @@ ROSTER_SCHEMA: dict[str, pl.DataType] = {
     "status_code": pl.String,
     "status_description": pl.String,
 }
+FORTY_MAN_MEMBERSHIP_SCHEMA: dict[str, pl.DataType] = {
+    "as_of_date": pl.Date,
+    "season": pl.Int64,
+    "team_id": pl.Int64,
+    "player_id": pl.Int64,
+    "on_40man": pl.Boolean,
+    "source_row_count": pl.Int64,
+    "source_status_codes": pl.String,
+    "source_status_conflict": pl.Boolean,
+}
 
 
 def _session(session: requests.Session | None) -> requests.Session:
     if session is not None:
         return session
     created = requests.Session()
-    created.headers["User-Agent"] = "universal-baseball-model-playing-time-source/0.1"
+    created.headers["User-Agent"] = "universal-baseball-model-playing-time-source/0.2"
     return created
 
 
@@ -66,6 +77,15 @@ def _get_json(
             http.close()
 
 
+def _roster_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = payload.get("roster")
+    if not isinstance(rows, list):
+        raise ValueError("Stats API team roster response missing roster list")
+    if any(not isinstance(row, dict) for row in rows):
+        raise ValueError("Stats API roster row must be an object")
+    return rows
+
+
 def project_team_roster_payload(
     payload: dict[str, Any],
     *,
@@ -74,16 +94,18 @@ def project_team_roster_payload(
     as_of_date: date,
     roster_type: str,
 ) -> pl.DataFrame:
+    """Project row-level roster status, failing on duplicate players.
+
+    This remains appropriate for diagnostics such as `active`. It is deliberately
+    *not* the authorized 40-man membership projector because 40Man source rows can
+    contain conflicting status duplicates for one unambiguous member.
+    """
     if roster_type not in SUPPORTED_ROSTER_TYPES:
         raise ValueError(f"unsupported roster type: {roster_type}")
-    rows = payload.get("roster")
-    if not isinstance(rows, list):
-        raise ValueError("Stats API team roster response missing roster list")
+    rows = _roster_rows(payload)
 
     projected: list[dict[str, object]] = []
     for row in rows:
-        if not isinstance(row, dict):
-            raise ValueError("Stats API roster row must be an object")
         person = row.get("person") or {}
         position = row.get("position") or {}
         status = row.get("status") or {}
@@ -104,10 +126,103 @@ def project_team_roster_payload(
                 "status_description": str(status.get("description") or ""),
             }
         )
-    frame = pl.DataFrame(projected, schema=ROSTER_SCHEMA) if projected else pl.DataFrame(schema=ROSTER_SCHEMA)
+    frame = (
+        pl.DataFrame(projected, schema=ROSTER_SCHEMA)
+        if projected
+        else pl.DataFrame(schema=ROSTER_SCHEMA)
+    )
     if frame.group_by("player_id").len().filter(pl.col("len") != 1).height:
         raise ValueError("Stats API roster contains duplicate player IDs within team/date/type")
     return frame.sort("player_id")
+
+
+def project_team_40man_membership_payload(
+    payload: dict[str, Any],
+    *,
+    team_id: int,
+    season: int,
+    as_of_date: date,
+) -> pl.DataFrame:
+    """Project one binary 40-man membership row per player.
+
+    Duplicate source rows are allowed only when identity/team membership is
+    unambiguous. Conflicting source `status` values are preserved as diagnostics
+    but are **not** interpreted. This makes the only authorized fact:
+    `player_id is present in the official team's 40Man membership set as of date`.
+    """
+    rows = _roster_rows(payload)
+    by_player: dict[int, list[dict[str, Any]]] = {}
+    for row in rows:
+        person = row.get("person") or {}
+        player_id = person.get("id")
+        if player_id is None:
+            raise ValueError("Stats API 40Man row missing person.id")
+        parent_team_id = row.get("parentTeamId")
+        if parent_team_id is not None and int(parent_team_id) != int(team_id):
+            raise ValueError(
+                f"Stats API 40Man row parentTeamId mismatch for player {player_id}: "
+                f"{parent_team_id} != {team_id}"
+            )
+        by_player.setdefault(int(player_id), []).append(row)
+
+    projected: list[dict[str, object]] = []
+    for player_id, player_rows in sorted(by_player.items()):
+        identity_tuples = {
+            (
+                str((row.get("person") or {}).get("fullName") or ""),
+                str((row.get("person") or {}).get("link") or ""),
+            )
+            for row in player_rows
+        }
+        if len(identity_tuples) != 1:
+            raise ValueError(f"Stats API 40Man duplicate identity conflict for player {player_id}")
+        status_codes = sorted(
+            {
+                str((row.get("status") or {}).get("code") or "")
+                for row in player_rows
+            }
+        )
+        projected.append(
+            {
+                "as_of_date": as_of_date,
+                "season": int(season),
+                "team_id": int(team_id),
+                "player_id": player_id,
+                "on_40man": True,
+                "source_row_count": len(player_rows),
+                "source_status_codes": ",".join(status_codes),
+                "source_status_conflict": len(status_codes) > 1,
+            }
+        )
+    frame = (
+        pl.DataFrame(projected, schema=FORTY_MAN_MEMBERSHIP_SCHEMA)
+        if projected
+        else pl.DataFrame(schema=FORTY_MAN_MEMBERSHIP_SCHEMA)
+    )
+    if frame.group_by("player_id").len().filter(pl.col("len") != 1).height:
+        raise ValueError("40-man membership projector failed unique player grain")
+    return frame.sort("player_id")
+
+
+def _fetch_roster_payload(
+    team_id: int,
+    *,
+    season: int,
+    as_of_date: date,
+    roster_type: str,
+    session: requests.Session | None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    if roster_type not in SUPPORTED_ROSTER_TYPES:
+        raise ValueError(f"unsupported roster type: {roster_type}")
+    return _get_json(
+        f"{STATS_API_BASE}/teams/{int(team_id)}/roster",
+        params={
+            "rosterType": roster_type,
+            "season": int(season),
+            "date": as_of_date.isoformat(),
+        },
+        session=session,
+    )
 
 
 def fetch_team_roster_as_of(
@@ -118,15 +233,11 @@ def fetch_team_roster_as_of(
     roster_type: str,
     session: requests.Session | None = None,
 ) -> tuple[pl.DataFrame, dict[str, Any]]:
-    if roster_type not in SUPPORTED_ROSTER_TYPES:
-        raise ValueError(f"unsupported roster type: {roster_type}")
-    payload, capture = _get_json(
-        f"{STATS_API_BASE}/teams/{int(team_id)}/roster",
-        params={
-            "rosterType": roster_type,
-            "season": int(season),
-            "date": as_of_date.isoformat(),
-        },
+    payload, capture = _fetch_roster_payload(
+        team_id,
+        season=season,
+        as_of_date=as_of_date,
+        roster_type=roster_type,
         session=session,
     )
     return (
@@ -136,6 +247,31 @@ def fetch_team_roster_as_of(
             season=int(season),
             as_of_date=as_of_date,
             roster_type=roster_type,
+        ),
+        capture,
+    )
+
+
+def fetch_team_40man_membership_as_of(
+    team_id: int,
+    *,
+    season: int,
+    as_of_date: date,
+    session: requests.Session | None = None,
+) -> tuple[pl.DataFrame, dict[str, Any]]:
+    payload, capture = _fetch_roster_payload(
+        team_id,
+        season=season,
+        as_of_date=as_of_date,
+        roster_type="40Man",
+        session=session,
+    )
+    return (
+        project_team_40man_membership_payload(
+            payload,
+            team_id=int(team_id),
+            season=int(season),
+            as_of_date=as_of_date,
         ),
         capture,
     )
