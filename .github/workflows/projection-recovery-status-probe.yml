@@ -1,4 +1,4 @@
-# refresh after frozen Projection selection-rule fast-CI
+# track 2022-only Projection candidate selection
 name: Projection recovery status probe
 
 on:
@@ -39,6 +39,7 @@ jobs:
               "development_evidence": "projection-batting-v1-development-evidence.yml",
               "current_talent_snapshots": "projection-batting-v1-current-talent-snapshots.yml",
               "training_responses": "projection-batting-v1-training-responses.yml",
+              "candidate_selection": "projection-batting-v1-candidate-selection.yml",
           }
           output = {"gate": "projection_recovery_status_probe", "workflows": {}}
           env = dict(os.environ)
