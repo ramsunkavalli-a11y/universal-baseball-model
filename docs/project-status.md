@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-17 21:13 PT
+Last updated: 2026-08-17 21:35 PT
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
@@ -9,8 +9,7 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 - Repo: `ramsunkavalli-a11y/universal-baseball-model`
 - Integrated branch: `main`
 - Active development branch: `source-certification-poc`
-- PR #1 was merged on 2026-08-17; `main` is the integrated source of truth through that merge.
-- Inspect `source-certification-poc` and live Actions for work newer than the latest integration.
+- `source-certification-poc` contains newer work than the latest integration into `main`.
 - Work in small verified batches.
 - Prefer certified/reusable public data and existing adapters over rebuilding source cleanup.
 - Fail closed on source ambiguity.
@@ -18,17 +17,15 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 
 ## Stage summary
 
-### Performance — complete for current downstream batting needs
+### Performance — DONE for current batting pipeline
 
 Completed-2024 affiliated batting Performance materialization is production-shaped and retained.
 
 Primary checkpoint: `docs/performance-2024-affiliated-checkpoint.md`.
 
-Do not reopen Performance/source-foundation work absent a concrete downstream failure.
-
 ### Current Talent — DONE / FROZEN
 
-Frozen universal results-only comparator:
+Retained universal model:
 
 `translated_multiseason_recency_empirical_bayes_v1`
 
@@ -41,159 +38,122 @@ Frozen design:
 - frozen age/current-level Baseline 0 prior;
 - frozen 12-component batting profile.
 
-Richer Challenger 1 is closed after failed development.
+Richer Challenger 1 failed development. Richer Challenger 2 passed development but failed its one-shot 2023 confirmation. Both are closed without rescue tuning.
 
-Richer Challenger 2 (`baseline2_plus_ev_sweet_spot_contact_value_residual_v1`) passed development but failed the one-shot 2023 confirmation. Binding result: `confirmed = false`. Do not tune/rescue/reselect it or integrate it downstream.
-
-Key Current Talent records:
+Key records:
 
 - `docs/current-talent-results-only-baseline-freeze.md`
 - `docs/current-talent-contact-value-confirmation-result.json`
 - `docs/current-talent-challenger2-postmortem.md`
 
-### Projection v1 — ACTIVE
+### Projection v1 batting rate/profile — DONE / FROZEN
 
 Primary question:
 
-> Does a simple leakage-safe age/development adjustment improve next-season batting-rate/profile prediction over carrying frozen Current Talent forward unchanged?
+> Does a simple leakage-safe population age/development adjustment improve next-season batting-profile prediction beyond carrying frozen Current Talent B2 forward unchanged?
 
-Projection v1 is rate/profile only. Zero future opportunity is not bad batting skill; playing time/role remains a separate later channel.
+Binding answer: **no** under the pre-registered development gate.
 
-Untouched confirmation:
+Retained Projection v1 rate model:
 
-- **2025 regular-season outcomes remain quarantined.**
+`frozen_current_talent_carry_forward_v1`
 
-## Projection data/source gates — COMPLETE
+The explicit age/development challenger was selected using only 2022 target outcomes:
 
-### Certified 2024 affiliated MiLB evidence
+- selected form: `projection_age_level_ilr_ridge_v1`;
+- selected ridge lambda: `0.01`;
+- 2022 held-out selection log-loss delta vs carry-forward B2: **-0.001507130**;
+- 2022 Brier delta: **-0.000294739**.
 
-The exact source-residual quarantine work is complete and the final all-level report-level proof passed.
+It then underwent fixed rolling-origin validation without reselection:
 
-Binding 2024 MiLB run:
+#### 2023 OOT validation — PASS
 
-- `32095039114` — **Gate 2024 artifacts on exact reconciliation proof** — success.
+- candidate log loss: `2.253775007`;
+- carry-forward B2: `2.254254788`;
+- delta: **-0.000479781**;
+- Brier delta: **-0.000000686**.
 
-The final gate requires exact aggregate reconciliation, zero unresolved outcome residuals, both independent quarantine proofs for every applied row, and exact cross-grain quarantine-key propagation.
+#### 2024 OOT validation — FAIL
 
-The narrow terminal empty-slice case is accepted only after the pre-existing exact two-ledger quarantine has already proven the removed source row. No identity/outcome values are guessed or reassigned.
+Same form/lambda, refit on all chronologically prior 2022 + 2023 training observations:
 
-### Certified 2024 MLB v2 evidence
+- candidate log loss: `2.256561150`;
+- carry-forward B2: `2.256304269`;
+- delta: **+0.000256881**;
+- Brier delta: **+0.000156946**.
 
-The older 2024 MLB game-evidence bundle used a pre-v2 schema and was not coerced into the new universal contract.
+The frozen development contract required lower log loss in **both** 2023 and 2024. The 2024 reversal is therefore binding: Projection Baseline 1 is rejected and cannot be rescued by tuning on 2024.
 
-Instead, the existing historical MLB materializer was reused for 2024 and certified on the current v2 evidence schema:
+**2025 outcomes were never accessed.** No confirmation is authorized for the rejected challenger. Preserve 2025 as untouched evidence for a future separately pre-registered Projection challenger if useful.
 
-- `32096473700` — **Materialize certified 2024 MLB Current Talent evidence** — success.
-
-Artifact:
-
-- `current-talent-historical-mlb-2024`
-- artifact id `9310382371`
-- digest `sha256:bdca35299b7a82130eae197987aa1d1bb0448c8ef9dc9ee6c6ba3d39e79f2efe`
-
-### Universal schema boundary
-
-Certified component artifacts may contain source-specific extra columns, but universal combination now explicitly projects onto the frozen canonical evidence fields before concatenation.
-
-Fast contract CI:
-
-- `32096179903` — **Gate universal evidence schema in Projection CI** — success.
-
-## Projection development surfaces — COMPLETE / VERIFIED
-
-Final evidence-only materialization:
-
-- `32097702869` — **Align Projection history diagnostics with frozen B2 source epoch** — success.
-
-This materializes all three authorized pre-confirmation folds using certified 2021–2024 MLB + affiliated evidence:
-
-1. `2021-10-15 -> 2022`
-2. `2022-10-15 -> 2023`
-3. `2023-10-15 -> 2024`
-
-The run does **not** fit Projection, score a candidate, or access 2025.
-
-### Frozen B2 history reproduction boundary
-
-Do **not** backfill 2018–2020 merely because the B2 maximum lookback is 1,095 days.
-
-The frozen B2 plan explicitly used current season plus prior **certified** seasons where available, and the certified universal source epoch begins in 2021. The 1,095-day value is a cap, not a command to expand into an unvalidated source era.
-
-Governing record:
-
-- `docs/projection-b2-history-reproduction-contract.md`
-
-Calendar left-censoring remains visible as a diagnostic; it is not a current blocker.
-
-## Projection methodology / model-selection contract — FROZEN BEFORE SCORING
-
-Literature/methodology review:
-
-- `docs/projection-v1-methodology-review.md`
-
-Binding candidate/search/promotion contract:
+Projection v1 governing/results records:
 
 - `docs/projection-batting-v1-development-contract.md`
+- `docs/projection-v1-methodology-review.md`
+- `docs/projection-batting-v1-selection-result.json`
+- `docs/projection-batting-v1-validation-2023-result.json`
+- `docs/projection-batting-v1-validation-2024-result.json`
+- `docs/projection-batting-v1-development-result.json`
+- `docs/projection-batting-v1-development-checkpoint.md`
 
-Key decisions:
+## Projection implementation/source status — COMPLETE
 
-- Baseline 0 = frozen B2 carry-forward.
-- Baseline 1 operates on the 12-part profile through a fixed 11-D ILR representation.
-- Candidate forms are restricted to:
-  - age-only continuous piecewise-linear ridge adjustment;
-  - age + as-of-level main effects with the same ridge adjustment.
-- No age × level interaction, player-specific aging slopes, tracking, scouting, future level, or opportunity features.
-- Lambda grid is frozen at `{0.001, 0.01, 0.1, 1.0}`.
-- `2021 -> 2022` is the **training / candidate-selection fold** using deterministic 5-fold player-held-out CV.
-- `2022 -> 2023` and `2023 -> 2024` are the two **rolling-origin out-of-time validation folds** and cannot choose model form/hyperparameters.
-- 2025 remains untouched confirmation.
-- Future-opportunity selection is reported explicitly rather than imputed into the rate model.
+Key successful evidence/implementation gates:
 
-## Immediate next batch
+- `32095039114` — certified 2024 affiliated MiLB evidence, all levels;
+- `32096473700` — certified 2024 MLB v2 evidence;
+- `32097702869` — complete corrected 2021–2024 Projection development surfaces;
+- `32098903850` — deterministic ILR geometry fast CI;
+- `32099637866` — frozen B2 snapshot reproduction fast CI;
+- `32099733186` — real three-fold B2 October snapshot materialization;
+- `32099909188` — pre-registered ridge primitive CI;
+- `32100066442` — ILR training-response plumbing CI;
+- `32100142102` — real three-fold training-response materialization;
+- `32100338522` — frozen selection-rule CI;
+- `32100650512` — corrected 2022-only candidate selection.
 
-1. Materialize frozen B2 latent profiles + fold-specific pre-snapshot translation artifacts for the three pre-2025 Projection snapshots and verify exact reproduction of the frozen B2 contract.
-2. Implement/test deterministic ILR transform/inverse and the pre-registered ridge age-design contract.
-3. Only after those deterministic tests pass, run **2022-fold candidate selection**. Do not open 2023/2024 validation results to choose form/lambda.
+The 2024 validation result is self-persisted in `docs/projection-batting-v1-validation-2024-result.json`; its failed primary gate closes the explicit age/development challenger without further diagnostics/rescue search.
 
-After candidate selection:
+## ACTIVE NEXT STAGE — playing time / role
 
-- if selected candidate fails to beat carry-forward on held-out 2022 CV log loss, stop and retain Baseline 0;
-- otherwise freeze the selected form/lambda and run the two rolling-origin validation folds exactly as pre-registered.
+Batting-rate skill and opportunity now have a clean boundary:
 
-No 2025 outcome materialization/scoring belongs in the current batch.
+- **rate/profile:** frozen Current Talent B2 carried forward one year;
+- **opportunity/role:** not yet modeled and must be estimated separately.
 
-## Machine-readable/live status
+The next stage should answer questions such as:
 
-- `docs/projection-recovery-status.json` — current Actions registry.
-- `docs/projection-status.json` — Projection checkpoint snapshot.
+- probability a player receives MLB/affiliated batting opportunities over the target horizon;
+- expected PA conditional/unconditional on role as appropriate;
+- probability of MLB role / bench / regular / minors / no affiliated opportunity;
+- how current level, age, roster/organizational context, recent playing time, injuries where legally/publicly supportable, and talent state should influence opportunity without contaminating batting-rate skill.
 
-Recent successful runs include:
+### Immediate next batch
 
-- `32095039114` — certified 2024 MiLB all-level gate
-- `32096179903` — universal evidence schema contract
-- `32096473700` — certified 2024 MLB v2 evidence
-- `32097430956` — complete 2021–2024 development surfaces
-- `32097702874` — history-contract fast CI
-- `32097702869` — corrected-history development-surface materialization
+1. Inventory existing repo work for playing time/role and avoid creating a parallel architecture if one already exists.
+2. Re-read public baseball playing-time/projection methodology and relevant survival/hazard/zero-inflated/count-model literature before freezing the first contract.
+3. Define the exact estimand(s), chronology, target grain, baseline, and validation/confirmation periods **before fitting/scoring**.
+4. Keep rate skill fixed while this channel is developed; do not reopen Current Talent or the rejected Projection aging challenger.
 
 ## Governing read order
 
 1. `docs/project-status.md`
-2. `docs/projection-batting-v1-development-contract.md`
-3. `docs/projection-v1-methodology-review.md`
-4. `docs/projection-batting-v1-plan.md`
-5. `docs/projection-b2-history-reproduction-contract.md`
-6. `docs/projection-recovery-status.json`
-7. `docs/current-talent-results-only-baseline-freeze.md`
-8. `docs/current-talent-contact-value-confirmation-result.json`
-9. `docs/current-talent-challenger2-postmortem.md`
-10. `docs/performance-2024-affiliated-checkpoint.md`
+2. `docs/projection-batting-v1-development-checkpoint.md`
+3. `docs/projection-batting-v1-development-result.json`
+4. `docs/projection-batting-v1-development-contract.md`
+5. `docs/projection-v1-methodology-review.md`
+6. `docs/current-talent-results-only-baseline-freeze.md`
+7. `docs/current-talent-contact-value-confirmation-result.json`
+8. `docs/current-talent-challenger2-postmortem.md`
+9. `docs/performance-2024-affiliated-checkpoint.md`
 
 ## Working rules
 
-- Do not redo settled Current Talent selection/confirmation work absent a concrete implementation failure.
-- Do not broaden source quarantine policies because a workflow fails; inspect the exact failing contract.
+- Do not redo settled Current Talent or Projection v1 selection/validation absent a concrete implementation failure.
+- Do not tune the rejected Projection age/development model on 2024 or expose 2025 as a rescue set.
+- Preserve 2025 Projection outcomes as untouched evidence until a future challenger has its own predeclared contract.
 - Preserve immutable raw/source evidence and provenance.
 - Reuse certified artifacts where scope matches.
-- Do not alter the pre-registered Projection candidate family/grid after seeing 2023/2024 validation outcomes.
-- Keep 2025 quarantined until the selected Projection model has passed development and the final confirmation refit is persisted and reproducible.
+- Keep opportunity separate from rate skill.
+- Update this handoff whenever the active stage or binding result changes.
