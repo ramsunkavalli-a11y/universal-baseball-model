@@ -1,0 +1,87 @@
+{
+  "boundary": {
+    "2025_outcomes_accessed": true,
+    "2025_target_materialized": true,
+    "batting_rate_modified": false,
+    "candidate_vs_baseline_scores_computed": false,
+    "model_parameters_loaded": false,
+    "model_predictions_computed": false,
+    "model_refit": false
+  },
+  "confirmation_input_run_id": 32144363818,
+  "fold": "projection_2024_to_2025_confirmation",
+  "gate": "playing_time_v1_2025_confirmation_target_source",
+  "pagination": {
+    "103": {
+      "complete": true,
+      "page_count": 1,
+      "reported_total_splits": 425,
+      "returned_split_count": 425
+    },
+    "104": {
+      "complete": true,
+      "page_count": 1,
+      "reported_total_splits": 385,
+      "returned_split_count": 385
+    }
+  },
+  "report_schema_version": "0.1",
+  "season": 2025,
+  "source": "official_mlb_stats_api_bulk_regular_season_hitting",
+  "source_capture_records": [
+    {
+      "capture_path": "data/quarantine/playing-time-v1-confirmation-target-2025/league_103/offset_0.json",
+      "league_id": 103,
+      "offset": 0,
+      "requested_limit": 500,
+      "response_byte_count": 435962,
+      "response_sha256": "81e15b55d499657882c95619d1404524b73b06f9c3beb241061a0e3932635b6e",
+      "returned_split_count": 425,
+      "season": 2025,
+      "total_splits": 425
+    },
+    {
+      "capture_path": "data/quarantine/playing-time-v1-confirmation-target-2025/league_104/offset_0.json",
+      "league_id": 104,
+      "offset": 0,
+      "requested_limit": 500,
+      "response_byte_count": 395892,
+      "response_sha256": "6c830a23f37fa5a1b7cb7cff0b56010139b2392f841d5ced40ba55e0e0d6dae8",
+      "returned_split_count": 385,
+      "season": 2025,
+      "total_splits": 385
+    }
+  ],
+  "source_contract": {
+    "gameType": "R",
+    "group": "hitting",
+    "league_ids": [
+      103,
+      104
+    ],
+    "playerPool": "ALL",
+    "sportIds": 1,
+    "stats": "season"
+  },
+  "source_player_league_rows": 810,
+  "source_run_id": 32144918922,
+  "source_sha": "0de504dba614d9f29763edd84e00b3e0368d0502",
+  "source_total_mlb_pa": 182926,
+  "source_unique_players": 765,
+  "status": "source_certified_target_materialized_unscored",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "baad65a3a3221d8518142b4b2e790d089e290b9f24022d97e2757fa31f1a77d1",
+    "file_size_bytes": 7551,
+    "path": "reports/generated/playing-time-v1-confirmation-target-2025/tables/projection_2024_to_2025_confirmation/next_year_mlb_pa_targets.parquet",
+    "row_count": 3759,
+    "schema_sha256": "2bc0002a833a8a594ca6f5d4c8a572ecb8859c3e0833210e08b44bfd287cf2e5",
+    "table_name": "playing_time_v1_2025_confirmation_mlb_pa_targets"
+  },
+  "target_player_count": 3759,
+  "target_positive_mean_mlb_pa": 274.82930513595164,
+  "target_positive_player_count": 662,
+  "target_positive_rate": 0.17611066773077946,
+  "target_total_mlb_pa": 181937,
+  "target_zero_player_count": 3097
+}
