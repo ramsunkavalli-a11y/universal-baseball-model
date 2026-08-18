@@ -1,4 +1,4 @@
-# probe refresh: confirmation prediction geometry rerun
+# probe refresh: one-shot 2023 confirmation
 name: Current Talent confirmation status probe
 
 on:
@@ -41,6 +41,7 @@ jobs:
               "contact_value_confirmation_evidence": "current-talent-contact-value-confirmation-evidence.yml",
               "contact_value_confirmation_features": "current-talent-contact-value-confirmation-features.yml",
               "contact_value_confirmation_prediction_geometry": "current-talent-contact-value-confirmation-prediction-geometry.yml",
+              "contact_value_2023_confirmation": "current-talent-contact-value-confirmation.yml",
           }
           output = {
               "gate": "current_talent_confirmation_source_status_probe",
