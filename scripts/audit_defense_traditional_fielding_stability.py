@@ -171,6 +171,7 @@ def main() -> int:
             abbreviation = str(position.get("abbreviation") or "").strip()
             if abbreviation in {"P", "DH", ""}:
                 continue
+            is_catcher = abbreviation == "C"
             rows.append(
                 {
                     "season": season,
@@ -183,10 +184,10 @@ def main() -> int:
                     "errors": _integer(stat.get("errors"), field="errors"),
                     "throwing_errors": _integer(stat.get("throwingErrors"), field="throwingErrors"),
                     "double_plays": _integer(stat.get("doublePlays"), field="doublePlays"),
-                    "caught_stealing": _integer(stat.get("caughtStealing"), field="caughtStealing"),
-                    "stolen_bases": _integer(stat.get("stolenBases"), field="stolenBases"),
-                    "passed_balls": _integer(stat.get("passedBall"), field="passedBall"),
-                    "catcher_interference": _integer(stat.get("catchersInterference"), field="catchersInterference"),
+                    "caught_stealing": _integer(stat.get("caughtStealing"), field="caughtStealing") if is_catcher else 0,
+                    "stolen_bases": _integer(stat.get("stolenBases"), field="stolenBases") if is_catcher else 0,
+                    "passed_balls": _integer(stat.get("passedBall"), field="passedBall") if is_catcher else 0,
+                    "catcher_interference": _integer(stat.get("catchersInterference"), field="catchersInterference") if is_catcher else 0,
                 }
             )
 
