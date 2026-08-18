@@ -1,8 +1,8 @@
 # Playing time / role — current status
 
-Last updated: 2026-08-17
+Last updated: 2026-08-18
 
-Status: **ACTIVE — PRE-REGISTERED DEVELOPMENT CHAIN LAUNCHED; 2025 REMAINS UNTOUCHED.**
+Status: **PLAYING TIME v1 DONE / FROZEN — CANDIDATE CONFIRMED ON ONE-SHOT 2025 HOLDOUT.**
 
 Canonical broader handoff remains `docs/project-status.md`.
 
@@ -11,140 +11,137 @@ Canonical broader handoff remains `docs/project-status.md`.
 - Current Talent: `translated_multiseason_recency_empirical_bayes_v1`.
 - One-year batting-rate Projection: `frozen_current_talent_carry_forward_v1`.
 - Explicit Projection age/development challenger is closed and must not be rescued.
-- Playing time is a separate opportunity channel; zero future MLB PA never changes batting-rate skill.
+- Playing time remains a separate opportunity channel; zero future MLB PA never changes batting-rate skill.
 
-## Methodology
+## Frozen Playing Time v1
 
-Governing review:
+Production model:
 
-`docs/playing-time-role-methodology-review.md`
+`playing_time_recent_opportunity_40man_b2_hurdle_v1`
 
-Key architecture:
+Architecture:
 
-1. model `P(next-season MLB PA > 0)` separately from positive PA amount;
-2. use a zero-truncated NB2 positive-count component;
-3. evaluate the resulting full hurdle distribution;
-4. keep team/role allocation separate from individual portable opportunity;
-5. use historical roster facts only when exactly reproducible.
+1. L2 logistic participation model for `P(next-season MLB PA > 0)`;
+2. zero-truncated NB2 positive-count model for `MLB PA | MLB PA > 0`;
+3. unconditional opportunity distribution from the two components.
 
-## Target feasibility — PASS
+Frozen predictor families:
 
-Binding target result:
+- as-of level tier;
+- age;
+- current-season MLB PA;
+- current-season MiLB PA;
+- certified binary 40-man membership at the exact October 15 snapshot;
+- four compact frozen-B2 batting-skill summaries.
 
-`docs/playing-time-v1-target-surface-result.json`
+No future team, future level, future role, 2025 roster/transaction information, player identity, or future batting-rate information is a predictor.
 
-Target:
+## Development chain — COMPLETE
 
-`next-calendar-year regular-season MLB PA`
-
-including explicit zero for every frozen B2 October snapshot player.
-
-Observed development distribution:
-
-- `2021 -> 2022`: 4,702 players; 85.43% zero MLB PA; positive PA mean 264.7; positive variance/mean 170.7.
-- `2022 -> 2023`: 4,040 players; 84.06% zero; positive mean 282.4; variance/mean 165.3.
-- `2023 -> 2024`: 3,985 players; 83.81% zero; positive mean 280.9; variance/mean 166.8.
-
-This is the empirical reason v1 uses a two-part/hurdle architecture instead of one all-player PA regression.
-
-## Historical 40-man source — PASS FOR MEMBERSHIP ONLY
-
-Initial raw-row audit exposed one exact source anomaly: team 121 (Mets) duplicated José Buttó in both 2022 and 2023 `40Man` responses with the same identity/team membership but conflicting row-level statuses (`Active` and `Reassigned to Minors`).
-
-Diagnostic:
-
-`docs/playing-time-roster-duplicate-diagnostic-result.json`
-
-The source rule was therefore narrowed and certified as:
-
-**authorized:** binary `on_40man` membership at the exact snapshot date.
-
-**not authorized from the 40Man response:** active/minors assignment, IL status, option status, future role.
-
-Final certification:
-
-`docs/playing-time-historical-40man-membership-result.json`
-
-It passed across all 30 MLB teams at all three Oct. 15 development snapshots, with historical date sensitivity proven and no cross-team membership conflict.
-
-## Frozen development contract
+Governing contract:
 
 `docs/playing-time-role-v1-development-contract.md`
 
-Target folds:
+Binding chain:
 
-- `2021-10-15 -> 2022`: candidate selection only;
-- `2022-10-15 -> 2023`: OOT validation 1;
-- `2023-10-15 -> 2024`: OOT validation 2;
-- `2024-10-15 -> 2025`: untouched confirmation only after full development promotion + exact refit freeze.
+- `2021-10-15 -> 2022`: candidate selection;
+- `2022-10-15 -> 2023`: fixed OOT validation — PASS;
+- `2023-10-15 -> 2024`: fixed OOT validation — PASS;
+- development closeout: selected form refit on all authorized 2022–2024 responses and parameters/package versions frozen before 2025 — PASS.
 
-Model family:
+Key records:
 
-- participation: L2 logistic, fixed `C=1.0`;
-- positive PA: zero-truncated NB2 (`p=2`);
-- primary score: full hurdle negative log likelihood per snapshot player.
+- `docs/playing-time-v1-selection-result.json`
+- `docs/playing-time-v1-validation-2023-result.json`
+- `docs/playing-time-v1-validation-2024-result.json`
+- `docs/playing-time-v1-development-result.json`
+- `docs/playing-time-v1-confirmation-refit-result.json`
 
-Frozen nested forms:
+## 2025 confirmation — PASS / BINDING
 
-1. `playing_time_level_hurdle_v1` — level tier only (B0);
-2. `playing_time_recent_opportunity_hurdle_v1` — + age/current MLB PA/current MiLB PA;
-3. `playing_time_recent_opportunity_40man_hurdle_v1` — + certified binary 40-man membership;
-4. `playing_time_recent_opportunity_40man_b2_hurdle_v1` — + compact frozen-B2 skill summary.
+Confirmation contract:
 
-No prior-season PA feature is allowed because the 2021 selection snapshot lacks a certified pre-2021 universal season.
+`docs/playing-time-v1-confirmation-contract.md`
 
-## Implementation
+The 2025 target was isolated from scoring first:
 
-Pre-model/model primitives:
+- pre-2025 predictor/input gate: run `32144363818`;
+- isolated 2025 MLB-PA target source/materialization: run `32144918922`;
+- one-shot frozen confirmation score: run `32146445795`.
 
-- `src/universal_baseball/playing_time_roster_source.py`
-- `src/universal_baseball/playing_time_model.py`
-- `src/universal_baseball/playing_time_selection.py`
-- `scripts/materialize_playing_time_v1_target_surface.py`
-- `scripts/materialize_playing_time_v1_predictor_surface.py`
-- `scripts/materialize_playing_time_v1_candidate_selection.py`
-- `scripts/materialize_playing_time_v1_validation_2023.py`
-- `scripts/materialize_playing_time_v1_validation_2024.py`
-- `scripts/fit_playing_time_v1_confirmation_refit.py`
+The source workflow persisted the completed-2025 regular-season MLB PA target before loading any model parameters. The scoring workflow then reconstructed the exact pre-2025 frozen B0 and candidate coefficients and did **not** refit either model.
 
-Pinned modeling dependencies:
+Confirmation population:
 
-`requirements-playing-time.txt`
+- 3,759 frozen 2024-10-15 snapshot players;
+- 662 with positive 2025 MLB PA;
+- 3,097 with zero 2025 MLB PA.
 
-The synthetic model-contract gate self-persists to:
+### Binding scores
 
-`docs/playing-time-v1-model-contracts-ci-result.json`
+Baseline 0 — `playing_time_level_hurdle_v1`:
 
-## Binding development workflow chain
+- full hurdle NLL: `1.339572023`;
+- participation log loss: `0.192781040`;
+- positive-count NLL: `6.511763297`;
+- unconditional PA MAE: `39.0475`;
+- unconditional PA RMSE: `97.6879`;
+- participation Brier: `0.0593648`;
+- predicted mean PA: `39.2659` vs observed `48.4004`.
 
-1. `playing-time-v1-candidate-selection.yml`
-   - refuses to run unless the synthetic model-contract gate is green;
-   - rebuilds the source-safe predictor/target surfaces from pinned evidence;
-   - re-certifies exact historical binary 40-man membership;
-   - scores **2022 only** using deterministic five-fold player-held-out CV;
-   - persists `docs/playing-time-v1-selection-result.json`.
+Confirmed candidate:
 
-2. `playing-time-v1-validation-2023.yml`
-   - if B0 was selected, closes without 2023 candidate scoring;
-   - otherwise fits the frozen selected form on 2022 responses and scores 2023 once;
-   - persists `docs/playing-time-v1-validation-2023-result.json`.
+- full hurdle NLL: `1.283609009`;
+- candidate minus B0 full NLL: **`-0.055963014`**;
+- participation log loss: `0.152517438`;
+- positive-count NLL: `6.422618149`;
+- unconditional PA MAE: `30.6525`;
+- unconditional PA RMSE: `78.7272`;
+- participation Brier: `0.0451916`;
+- predicted mean PA: `48.1512` vs observed `48.4004`.
 
-3. `playing-time-v1-validation-2024.yml`
-   - checks the binding 2023 result **before downloading any artifact containing 2024 candidate outcomes**;
-   - if 2023 does not authorize 2024, writes a skipped closeout result with `2024_candidate_scores_accessed=false`;
-   - otherwise runs the fixed rolling-origin 2024 gate and all predeclared promotion diagnostics;
-   - persists `docs/playing-time-v1-validation-2024-result.json`.
+Participation calibration converged with finite parameters for both models. The candidate passed **all six predeclared confirmation gates**.
 
-4. `playing-time-v1-development-closeout.yml`
-   - if development fails, freezes B0 and stops;
-   - if development passes, refits the exact selected model on all authorized 2022–2024 response folds, verifies deterministic parameter reproduction, and freezes package versions/parameters before 2025;
-   - persists `docs/playing-time-v1-development-result.json` and `docs/playing-time-v1-development-checkpoint.md`;
-   - only a passed, frozen refit can authorize a later 2025 source/materialization gate.
+Binding result:
 
-## Hard boundary
+`docs/playing-time-v1-confirmation-result.json`
 
-**2025 opportunity outcomes have not been accessed.**
+## Historical 40-man source boundary — FROZEN
 
-Do not create/materialize the 2025 playing-time target unless `docs/playing-time-v1-development-result.json` explicitly shows development promotion passed and the confirmation refit is frozen.
+Authorized semantic:
 
-Do not tune a failed feature form on 2023/2024. Do not infer roster status beyond binary 40-man membership from the certified source.
+**binary membership in the requested team's official MLB Stats API `40Man` endpoint at the exact snapshot date.**
+
+Not authorized:
+
+- active/minors assignment;
+- IL status;
+- option status;
+- future role;
+- row-level status interpretation;
+- `parentTeamId` as a membership veto.
+
+The confirmation gate exposed a Boston/Bryan Mata row whose `parentTeamId` reflected non-authoritative assignment metadata despite presence in Boston's official 40Man response. The projector now preserves that metadata diagnostically while membership is defined by endpoint presence; cross-team membership conflicts still fail closed.
+
+## Hard freeze
+
+Do not:
+
+- refit, recalibrate, reselect, rescue, or rescore Playing Time v1 against 2025;
+- change its confirmation thresholds after seeing 2025;
+- use 2025 playing-time outcomes to modify Current Talent or batting-rate Projection;
+- infer unavailable roster semantics from the 40Man source.
+
+The confirmed pre-2025 parameter package is the production Playing Time v1 model.
+
+## ACTIVE NEXT LAYER — role / position / team-allocation coherence
+
+Playing Time v1 estimates **portable individual MLB opportunity**. It intentionally does not force all player forecasts into a finite team/position allocation.
+
+The next layer is separate and must preserve the frozen individual opportunity model while deciding what additional role/position/team context is needed for coherent downstream value/WAR calculations.
+
+Before fitting anything new:
+
+1. inventory existing repo/source support for player position/role and team association at chronology-safe snapshots;
+2. define the exact coherence problem and whether the first version is a deterministic allocation/constraint layer or requires a separately validated statistical model;
+3. freeze its inputs, outputs, chronology, and validation checks before using future outcomes.
