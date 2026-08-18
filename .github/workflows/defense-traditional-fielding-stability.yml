@@ -1,0 +1,82 @@
+name: Defense traditional fielding stability screen
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-traditional-fielding-stability.yml"
+      - "docs/defense-traditional-fielding-stability-contract.md"
+      - "scripts/audit_defense_traditional_fielding_stability.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+      - name: Verify screen script
+        run: python -m py_compile scripts/audit_defense_traditional_fielding_stability.py
+      - name: Download certified 2021-2024 fielding source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p historical-source
+          gh run download 32148467330 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-historical-source-2021-2024 \
+            --dir historical-source
+      - name: Run frozen adjacent-year stability screen
+        run: >-
+          python scripts/audit_defense_traditional_fielding_stability.py
+          --source-root historical-source
+      - name: Upload stability evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-traditional-fielding-stability
+          path: reports/generated/defense-traditional-fielding-stability/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Persist stability result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/defense-traditional-fielding-stability/report.json')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/defense-traditional-fielding-stability-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-traditional-fielding-stability-result.json
+          git commit -m "Persist traditional fielding stability screen"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
