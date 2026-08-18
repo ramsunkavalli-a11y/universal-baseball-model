@@ -1,0 +1,880 @@
+{
+  "boundary": {
+    "2025_accessed": false,
+    "feature_weights_selected": false,
+    "regression_model_fit": false,
+    "tracked_range_or_framing_model_modified": false,
+    "untracked_player_defense_imputed": false
+  },
+  "catcher_features": [
+    {
+      "expected_direction": "positive",
+      "feature": "caught_stealing_pct",
+      "folds": [
+        {
+          "input_year": 2021,
+          "pair_count": 60,
+          "pearson": 0.1881744559496501,
+          "signed_spearman": 0.18336922586795407,
+          "spearman": 0.18336922586795407,
+          "target_year": 2022
+        },
+        {
+          "input_year": 2022,
+          "pair_count": 66,
+          "pearson": 0.1793034140752869,
+          "signed_spearman": 0.20032570168982738,
+          "spearman": 0.20032570168982738,
+          "target_year": 2023
+        },
+        {
+          "input_year": 2023,
+          "pair_count": 71,
+          "pearson": 0.2635198258299064,
+          "signed_spearman": 0.2677164047491003,
+          "spearman": 0.2677164047491003,
+          "target_year": 2024
+        }
+      ],
+      "folds_meeting_signed_spearman_0_05": 3,
+      "pooled": {
+        "pair_count": 197,
+        "pearson": 0.18814881459560837,
+        "signed_spearman": 0.20327585792320974,
+        "spearman": 0.20327585792320974
+      },
+      "savant_target_support": true,
+      "target": "catcher_throwing_cs_aa_per_throw"
+    },
+    {
+      "expected_direction": "negative",
+      "feature": "passed_balls_per_9",
+      "folds": [
+        {
+          "input_year": 2021,
+          "pair_count": 59,
+          "pearson": -0.41815018437645146,
+          "signed_spearman": 0.21618936294564586,
+          "spearman": -0.21618936294564586,
+          "target_year": 2022
+        },
+        {
+          "input_year": 2022,
+          "pair_count": 65,
+          "pearson": -0.2688774779971836,
+          "signed_spearman": 0.16136363636363635,
+          "spearman": -0.16136363636363635,
+          "target_year": 2023
+        },
+        {
+          "input_year": 2023,
+          "pair_count": 69,
+          "pearson": -0.2831257519286461,
+          "signed_spearman": 0.13749885870834086,
+          "spearman": -0.13749885870834086,
+          "target_year": 2024
+        }
+      ],
+      "folds_meeting_signed_spearman_0_05": 3,
+      "pooled": {
+        "pair_count": 193,
+        "pearson": -0.304748716981844,
+        "signed_spearman": 0.1524228598489092,
+        "spearman": -0.1524228598489092
+      },
+      "savant_target_support": true,
+      "target": "catcher_blocking_blocks_above_average_per_game"
+    },
+    {
+      "direct_target_available": false,
+      "feature": "catcher_interference_per_9",
+      "reason": "no direct Savant catcher-interference defensive target in the frozen source set",
+      "savant_target_support": false
+    }
+  ],
+  "contract": "docs/defense-traditional-to-savant-target-contract.md",
+  "decision": {
+    "defense_projection_authorized": false,
+    "defense_v1_traditional_challenger_supported_features": [
+      "caught_stealing_pct",
+      "errors_per_9",
+      "fielding_pct",
+      "passed_balls_per_9",
+      "range_factor_per_9",
+      "throwing_errors_per_9"
+    ],
+    "tier_c_fallback_frozen": false,
+    "traditional_feature_target_signal_established": true,
+    "war_value_authorized": false
+  },
+  "gate": "defense_traditional_to_next_year_savant_targets",
+  "general_range_features": [
+    {
+      "expected_direction": "positive",
+      "feature": "fielding_pct",
+      "folds": [
+        {
+          "expected_direction": "positive",
+          "input_year": 2021,
+          "pair_count": 167,
+          "pearson": 0.07520458557653162,
+          "position_counts": [
+            {
+              "len": 26,
+              "position": "1B"
+            },
+            {
+              "len": 27,
+              "position": "2B"
+            },
+            {
+              "len": 26,
+              "position": "3B"
+            },
+            {
+              "len": 25,
+              "position": "CF"
+            },
+            {
+              "len": 17,
+              "position": "LF"
+            },
+            {
+              "len": 13,
+              "position": "RF"
+            },
+            {
+              "len": 33,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 167,
+          "signed_spearman": 0.0857712669574248,
+          "spearman": 0.0857712669574248,
+          "target_year": 2022
+        },
+        {
+          "expected_direction": "positive",
+          "input_year": 2022,
+          "pair_count": 159,
+          "pearson": 0.08149758489590915,
+          "position_counts": [
+            {
+              "len": 20,
+              "position": "1B"
+            },
+            {
+              "len": 26,
+              "position": "2B"
+            },
+            {
+              "len": 28,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 14,
+              "position": "LF"
+            },
+            {
+              "len": 13,
+              "position": "RF"
+            },
+            {
+              "len": 31,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 159,
+          "signed_spearman": 0.06193429401305691,
+          "spearman": 0.06193429401305691,
+          "target_year": 2023
+        },
+        {
+          "expected_direction": "positive",
+          "input_year": 2023,
+          "pair_count": 164,
+          "pearson": 0.2407299469767794,
+          "position_counts": [
+            {
+              "len": 25,
+              "position": "1B"
+            },
+            {
+              "len": 31,
+              "position": "2B"
+            },
+            {
+              "len": 31,
+              "position": "3B"
+            },
+            {
+              "len": 24,
+              "position": "CF"
+            },
+            {
+              "len": 9,
+              "position": "LF"
+            },
+            {
+              "len": 15,
+              "position": "RF"
+            },
+            {
+              "len": 29,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 164,
+          "signed_spearman": 0.21864499790929912,
+          "spearman": 0.21864499790929912,
+          "target_year": 2024
+        }
+      ],
+      "folds_meeting_signed_spearman_0_05": 3,
+      "pooled": {
+        "pair_count": 490,
+        "pearson": 0.13264692468147377,
+        "signed_spearman": 0.12908627678013043,
+        "spearman": 0.12908627678013043
+      },
+      "savant_target_support": true
+    },
+    {
+      "expected_direction": "positive",
+      "feature": "range_factor_per_9",
+      "folds": [
+        {
+          "expected_direction": "positive",
+          "input_year": 2021,
+          "pair_count": 185,
+          "pearson": 0.17268757517582625,
+          "position_counts": [
+            {
+              "len": 26,
+              "position": "1B"
+            },
+            {
+              "len": 27,
+              "position": "2B"
+            },
+            {
+              "len": 27,
+              "position": "3B"
+            },
+            {
+              "len": 32,
+              "position": "CF"
+            },
+            {
+              "len": 22,
+              "position": "LF"
+            },
+            {
+              "len": 17,
+              "position": "RF"
+            },
+            {
+              "len": 34,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 185,
+          "signed_spearman": 0.12796167222178625,
+          "spearman": 0.12796167222178625,
+          "target_year": 2022
+        },
+        {
+          "expected_direction": "positive",
+          "input_year": 2022,
+          "pair_count": 164,
+          "pearson": 0.3284755716800175,
+          "position_counts": [
+            {
+              "len": 20,
+              "position": "1B"
+            },
+            {
+              "len": 26,
+              "position": "2B"
+            },
+            {
+              "len": 29,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 15,
+              "position": "LF"
+            },
+            {
+              "len": 14,
+              "position": "RF"
+            },
+            {
+              "len": 33,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 164,
+          "signed_spearman": 0.2882120713366147,
+          "spearman": 0.2882120713366147,
+          "target_year": 2023
+        },
+        {
+          "expected_direction": "positive",
+          "input_year": 2023,
+          "pair_count": 174,
+          "pearson": 0.2240917719061715,
+          "position_counts": [
+            {
+              "len": 25,
+              "position": "1B"
+            },
+            {
+              "len": 32,
+              "position": "2B"
+            },
+            {
+              "len": 33,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 11,
+              "position": "LF"
+            },
+            {
+              "len": 16,
+              "position": "RF"
+            },
+            {
+              "len": 30,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 174,
+          "signed_spearman": 0.262103306526404,
+          "spearman": 0.262103306526404,
+          "target_year": 2024
+        }
+      ],
+      "folds_meeting_signed_spearman_0_05": 3,
+      "pooled": {
+        "pair_count": 523,
+        "pearson": 0.238640847944024,
+        "signed_spearman": 0.22771632086076798,
+        "spearman": 0.22771632086076798
+      },
+      "savant_target_support": true
+    },
+    {
+      "expected_direction": "negative",
+      "feature": "errors_per_9",
+      "folds": [
+        {
+          "expected_direction": "negative",
+          "input_year": 2021,
+          "pair_count": 185,
+          "pearson": -0.04733113511594538,
+          "position_counts": [
+            {
+              "len": 26,
+              "position": "1B"
+            },
+            {
+              "len": 27,
+              "position": "2B"
+            },
+            {
+              "len": 27,
+              "position": "3B"
+            },
+            {
+              "len": 32,
+              "position": "CF"
+            },
+            {
+              "len": 22,
+              "position": "LF"
+            },
+            {
+              "len": 17,
+              "position": "RF"
+            },
+            {
+              "len": 34,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 185,
+          "signed_spearman": 0.07243345692006846,
+          "spearman": -0.07243345692006846,
+          "target_year": 2022
+        },
+        {
+          "expected_direction": "negative",
+          "input_year": 2022,
+          "pair_count": 164,
+          "pearson": -0.024692673721770156,
+          "position_counts": [
+            {
+              "len": 20,
+              "position": "1B"
+            },
+            {
+              "len": 26,
+              "position": "2B"
+            },
+            {
+              "len": 29,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 15,
+              "position": "LF"
+            },
+            {
+              "len": 14,
+              "position": "RF"
+            },
+            {
+              "len": 33,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 164,
+          "signed_spearman": 0.008960810997309516,
+          "spearman": -0.008960810997309516,
+          "target_year": 2023
+        },
+        {
+          "expected_direction": "negative",
+          "input_year": 2023,
+          "pair_count": 174,
+          "pearson": -0.18150668475476017,
+          "position_counts": [
+            {
+              "len": 25,
+              "position": "1B"
+            },
+            {
+              "len": 32,
+              "position": "2B"
+            },
+            {
+              "len": 33,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 11,
+              "position": "LF"
+            },
+            {
+              "len": 16,
+              "position": "RF"
+            },
+            {
+              "len": 30,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 174,
+          "signed_spearman": 0.1594512457087735,
+          "spearman": -0.1594512457087735,
+          "target_year": 2024
+        }
+      ],
+      "folds_meeting_signed_spearman_0_05": 2,
+      "pooled": {
+        "pair_count": 523,
+        "pearson": -0.08487193429091487,
+        "signed_spearman": 0.08413680930966544,
+        "spearman": -0.08413680930966544
+      },
+      "savant_target_support": true
+    },
+    {
+      "expected_direction": "negative",
+      "feature": "throwing_errors_per_9",
+      "folds": [
+        {
+          "expected_direction": "negative",
+          "input_year": 2021,
+          "pair_count": 185,
+          "pearson": -0.02597531502950762,
+          "position_counts": [
+            {
+              "len": 26,
+              "position": "1B"
+            },
+            {
+              "len": 27,
+              "position": "2B"
+            },
+            {
+              "len": 27,
+              "position": "3B"
+            },
+            {
+              "len": 32,
+              "position": "CF"
+            },
+            {
+              "len": 22,
+              "position": "LF"
+            },
+            {
+              "len": 17,
+              "position": "RF"
+            },
+            {
+              "len": 34,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 185,
+          "signed_spearman": 0.06469397071630843,
+          "spearman": -0.06469397071630843,
+          "target_year": 2022
+        },
+        {
+          "expected_direction": "negative",
+          "input_year": 2022,
+          "pair_count": 164,
+          "pearson": -0.08354642939543677,
+          "position_counts": [
+            {
+              "len": 20,
+              "position": "1B"
+            },
+            {
+              "len": 26,
+              "position": "2B"
+            },
+            {
+              "len": 29,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 15,
+              "position": "LF"
+            },
+            {
+              "len": 14,
+              "position": "RF"
+            },
+            {
+              "len": 33,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 164,
+          "signed_spearman": 0.0744401092162597,
+          "spearman": -0.0744401092162597,
+          "target_year": 2023
+        },
+        {
+          "expected_direction": "negative",
+          "input_year": 2023,
+          "pair_count": 174,
+          "pearson": -0.17258838514430355,
+          "position_counts": [
+            {
+              "len": 25,
+              "position": "1B"
+            },
+            {
+              "len": 32,
+              "position": "2B"
+            },
+            {
+              "len": 33,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 11,
+              "position": "LF"
+            },
+            {
+              "len": 16,
+              "position": "RF"
+            },
+            {
+              "len": 30,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 174,
+          "signed_spearman": 0.15642488376947708,
+          "spearman": -0.15642488376947708,
+          "target_year": 2024
+        }
+      ],
+      "folds_meeting_signed_spearman_0_05": 3,
+      "pooled": {
+        "pair_count": 523,
+        "pearson": -0.09280578722068705,
+        "signed_spearman": 0.09907449995054016,
+        "spearman": -0.09907449995054016
+      },
+      "savant_target_support": true
+    },
+    {
+      "expected_direction": "positive",
+      "feature": "double_plays_per_9",
+      "folds": [
+        {
+          "expected_direction": "positive",
+          "input_year": 2021,
+          "pair_count": 185,
+          "pearson": -0.011728317810518082,
+          "position_counts": [
+            {
+              "len": 26,
+              "position": "1B"
+            },
+            {
+              "len": 27,
+              "position": "2B"
+            },
+            {
+              "len": 27,
+              "position": "3B"
+            },
+            {
+              "len": 32,
+              "position": "CF"
+            },
+            {
+              "len": 22,
+              "position": "LF"
+            },
+            {
+              "len": 17,
+              "position": "RF"
+            },
+            {
+              "len": 34,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 185,
+          "signed_spearman": 0.029528333885926804,
+          "spearman": 0.029528333885926804,
+          "target_year": 2022
+        },
+        {
+          "expected_direction": "positive",
+          "input_year": 2022,
+          "pair_count": 164,
+          "pearson": 0.005635109936358648,
+          "position_counts": [
+            {
+              "len": 20,
+              "position": "1B"
+            },
+            {
+              "len": 26,
+              "position": "2B"
+            },
+            {
+              "len": 29,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 15,
+              "position": "LF"
+            },
+            {
+              "len": 14,
+              "position": "RF"
+            },
+            {
+              "len": 33,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 164,
+          "signed_spearman": 0.036520415516641265,
+          "spearman": 0.036520415516641265,
+          "target_year": 2023
+        },
+        {
+          "expected_direction": "positive",
+          "input_year": 2023,
+          "pair_count": 174,
+          "pearson": 0.038534372528414046,
+          "position_counts": [
+            {
+              "len": 25,
+              "position": "1B"
+            },
+            {
+              "len": 32,
+              "position": "2B"
+            },
+            {
+              "len": 33,
+              "position": "3B"
+            },
+            {
+              "len": 27,
+              "position": "CF"
+            },
+            {
+              "len": 11,
+              "position": "LF"
+            },
+            {
+              "len": 16,
+              "position": "RF"
+            },
+            {
+              "len": 30,
+              "position": "SS"
+            }
+          ],
+          "pre_standardization_pair_count": 174,
+          "signed_spearman": 0.04102840044877317,
+          "spearman": 0.04102840044877317,
+          "target_year": 2024
+        }
+      ],
+      "folds_meeting_signed_spearman_0_05": 0,
+      "pooled": {
+        "pair_count": 523,
+        "pearson": 0.010438623431282988,
+        "signed_spearman": 0.03718351462111864,
+        "spearman": 0.03718351462111864
+      },
+      "savant_target_support": false
+    }
+  ],
+  "report_schema_version": "0.1",
+  "source": {
+    "capture_page_count": 224,
+    "historical_source_run_id": 32148467330,
+    "player_season_position_count": 39723,
+    "primary_player_season_count": 15701,
+    "savant_target_summary": {
+      "2022": {
+        "blocking": {
+          "columns": [
+            "player_id",
+            "target_pitches",
+            "target_blocking_rate"
+          ],
+          "row_count": 70
+        },
+        "oaa": {
+          "columns": [
+            "player_id",
+            "target_position",
+            "target_success_diff"
+          ],
+          "row_count": 270
+        },
+        "throwing": {
+          "columns": [
+            "player_id",
+            "target_attempts",
+            "target_throwing_rate"
+          ],
+          "row_count": 72
+        }
+      },
+      "2023": {
+        "blocking": {
+          "columns": [
+            "player_id",
+            "target_pitches",
+            "target_blocking_rate"
+          ],
+          "row_count": 70
+        },
+        "oaa": {
+          "columns": [
+            "player_id",
+            "target_position",
+            "target_success_diff"
+          ],
+          "row_count": 261
+        },
+        "throwing": {
+          "columns": [
+            "player_id",
+            "target_attempts",
+            "target_throwing_rate"
+          ],
+          "row_count": 72
+        }
+      },
+      "2024": {
+        "blocking": {
+          "columns": [
+            "player_id",
+            "target_pitches",
+            "target_blocking_rate"
+          ],
+          "row_count": 70
+        },
+        "oaa": {
+          "columns": [
+            "player_id",
+            "target_position",
+            "target_success_diff"
+          ],
+          "row_count": 272
+        },
+        "throwing": {
+          "columns": [
+            "player_id",
+            "target_attempts",
+            "target_throwing_rate"
+          ],
+          "row_count": 72
+        }
+      }
+    },
+    "target_years": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "source_run_id": 32166062569,
+  "source_sha": "5f5812a524ea481892fec36a06486a9709e0fb30",
+  "workflow": {
+    "audit_exit_code": "0"
+  }
+}
