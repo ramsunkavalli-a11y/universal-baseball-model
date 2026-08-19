@@ -1,0 +1,86 @@
+{
+  "boundary": {
+    "2025_framing_predictor_accessed": false,
+    "2025_framing_target_accessed": true,
+    "2025_nonframing_defense_target_accessed": false,
+    "catcher_blocking_modified": false,
+    "catcher_throwing_modified": false,
+    "confirmation_interpreted": false,
+    "general_range_modified": false,
+    "model_fit": false,
+    "model_parameters_loaded": false,
+    "model_scoring": false,
+    "run_value_conversion_performed": false,
+    "tracked_framing_predictor_modified": false,
+    "war_calculated": false
+  },
+  "contract": "docs/defense-v1-framing-2025-confirmation-contract.md",
+  "decision": {
+    "2025_framing_target_source_materialized": true,
+    "framing_confirmation_scoring_authorized_next": true,
+    "war_value_authorized": false
+  },
+  "diagnostics": {
+    "eligible_row_count": 57,
+    "embedded_year_columns_checked": [],
+    "embedded_year_values": {},
+    "id_column": "id",
+    "local_minimum_pitches": 1000,
+    "source_minimum_called_pitches": 1,
+    "source_row_count": 57,
+    "target_formula": "1000 * rv_tot / pitches",
+    "target_mean": -0.05564029675608177,
+    "target_population_sd": 1.0069306537582137,
+    "target_standardization": "within target season, population sd ddof=0",
+    "year": 2025
+  },
+  "gate": "defense_v1_repaired_framing_2025_target_source",
+  "report_schema_version": "0.1",
+  "source": {
+    "endpoint": "https://baseballsavant.mlb.com/leaderboard/catcher-framing",
+    "known_invalid_prior_transport": "SportsDataverse 0.0.75 generic year query parameter",
+    "provider": "Baseball Savant catcher-framing leaderboard",
+    "query": {
+      "raw_csv_sha256": "563d210a95dd740d2b0404381d32e7d71af3ff3ac2cbfa60876bd5d0088ac96c",
+      "requested_params": {
+        "csv": "true",
+        "min": 1,
+        "seasonEnd": 2025,
+        "seasonStart": 2025,
+        "sortColumn": "rv_tot",
+        "sortDirection": "desc",
+        "team": "",
+        "type": "catcher"
+      },
+      "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing?type=catcher&seasonStart=2025&seasonEnd=2025&team=&min=1&sortColumn=rv_tot&sortDirection=desc&csv=true",
+      "source_row_count": 57,
+      "year": 2025
+    },
+    "transport": "direct framing-specific CSV query semantics"
+  },
+  "source_run_id": 32210994629,
+  "source_sha": "c55b28bf79af894ea0a7bb65a12d303c71ad4f9e",
+  "status": "source_materialized",
+  "storage": {
+    "raw_csv": {
+      "file_size_bytes": 13567,
+      "path": "reports/generated/defense-v1-2025-framing-target-source/raw/catcher-framing-2025.csv",
+      "sha256": "563d210a95dd740d2b0404381d32e7d71af3ff3ac2cbfa60876bd5d0088ac96c",
+      "table_name": "framing_2025_raw_csv"
+    },
+    "raw_parquet": {
+      "file_size_bytes": 13134,
+      "path": "reports/generated/defense-v1-2025-framing-target-source/raw/catcher-framing-2025.parquet",
+      "row_count": 57,
+      "sha256": "c411a09b44b026b00c1888a1c8d66442b8eb1c8a759008a695f6019936ac4702",
+      "table_name": "framing_2025_raw"
+    },
+    "target": {
+      "file_size_bytes": 4592,
+      "path": "reports/generated/defense-v1-2025-framing-target-source/tables/catcher_framing_target_2025.parquet",
+      "row_count": 57,
+      "sha256": "336d4a7ef5f0b905bdd5c78f39747aa51545315f77ba1284a675e326a92903ec",
+      "table_name": "framing_2025_target"
+    }
+  }
+}
