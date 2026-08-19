@@ -1,6 +1,11 @@
 name: Defense v1 2024 framing predictor segmented recovery
 
 on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-2024-framing-predictor-segmented-recovery.yml"
   workflow_dispatch:
 
 permissions:
