@@ -64,25 +64,71 @@ jobs:
           tests/test_mlb_season_stats.py
 
       - name: Run predeclared steal selection and held-out confirmation
-        run: >-
-          python scripts/select_player_value_v1_steal_projection.py
-          --output docs/player-value-v1-steal-projection-selection-result.json
+        id: selection
+        run: |
+          set +e
+          log_path="/tmp/player-value-v1-steal-selection.log"
+          diagnostic_path="docs/player-value-v1-steal-projection-selection-diagnostic.json"
+          result_path="docs/player-value-v1-steal-projection-selection-result.json"
+          python scripts/select_player_value_v1_steal_projection.py \
+            --output "$result_path" >"$log_path" 2>&1
+          status=$?
+          cat "$log_path" || true
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          if [ "$status" -ne 0 ]; then
+            python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
 
-      - name: Persist steal selection result
+          log_path = Path("/tmp/player-value-v1-steal-selection.log")
+          diagnostic_path = Path("docs/player-value-v1-steal-projection-selection-diagnostic.json")
+          log_text = log_path.read_text(errors="replace") if log_path.exists() else ""
+          payload = {
+              "status": "player_value_v1_steal_projection_selection_failed",
+              "verified_source_commit": str(os.environ.get("GITHUB_SHA") or "").strip() or None,
+              "exit_code": int(os.environ.get("SELECTION_EXIT_CODE", "1")),
+              "log_tail": log_text[-12000:],
+          }
+          diagnostic_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+          PY
+          else
+            rm -f "$diagnostic_path"
+          fi
+          exit 0
+        env:
+          SELECTION_EXIT_CODE: ${{ steps.selection.outputs.exit_code }}
+
+      - name: Persist steal selection result or failure diagnostic
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/player-value-v1-steal-projection-selection-result.json
-          if git diff --cached --quiet; then
-            echo "Steal projection selection result unchanged; validation succeeded."
-            exit 0
-          fi
-          git commit -m "Materialize steal projection selection"
-          for attempt in 1 2 3; do
-            git fetch origin source-certification-poc
-            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
-            git rebase --abort || true
-            sleep $((attempt * 2))
+          for path in \
+            docs/player-value-v1-steal-projection-selection-result.json \
+            docs/player-value-v1-steal-projection-selection-diagnostic.json
+          do
+            if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then
+              git add -A -- "$path"
+            fi
           done
+          if git diff --cached --quiet; then
+            echo "Steal projection selection materialization unchanged."
+          else
+            git commit -m "Materialize steal projection selection"
+            for attempt in 1 2 3; do
+              git fetch origin source-certification-poc
+              if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then
+                break
+              fi
+              git rebase --abort || true
+              if [ "$attempt" -eq 3 ]; then exit 1; fi
+              sleep $((attempt * 2))
+            done
+          fi
+
+      - name: Fail workflow when selection did not complete
+        if: steps.selection.outputs.exit_code != '0'
+        run: |
+          echo "Steal selection failed; persisted diagnostic JSON for inspection."
           exit 1
