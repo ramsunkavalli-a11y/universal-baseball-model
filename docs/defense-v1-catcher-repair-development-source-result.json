@@ -1,0 +1,350 @@
+{
+  "boundary": {
+    "2025_catcher_target_accessed": false,
+    "2025_defense_confirmation_accessed": false,
+    "general_range_modified": false,
+    "model_fit": false,
+    "model_scoring": false,
+    "source_thresholds_changed_from_original_contract": false,
+    "war_calculated": false
+  },
+  "contract": "docs/defense-v1-catcher-source-repair-contract.md",
+  "decision": {
+    "repaired_2022_2024_targets_materialized": true,
+    "repaired_2025_target_materialization_authorized": false,
+    "repaired_catcher_development_authorized_next": true,
+    "war_value_authorized": false,
+    "year_specific_source_certified": true
+  },
+  "diagnostic": "docs/savant-catcher-year-filter-diagnostic.json",
+  "diagnostics": [
+    {
+      "eligible_row_count": 79,
+      "exposure_column": "sb_attempts",
+      "kind": "throwing",
+      "minimum_exposure": 10,
+      "source_row_count": 79,
+      "target_column": "cs_aa_per_throw",
+      "target_mean": -0.0013971256682908443,
+      "target_population_sd": 0.09862043184683973,
+      "year": 2022
+    },
+    {
+      "eligible_row_count": 84,
+      "exposure_column": "pitches",
+      "kind": "blocking",
+      "minimum_exposure": 500,
+      "source_row_count": 84,
+      "target_column": "blocks_above_average_per_game",
+      "target_mean": -0.026177836927646456,
+      "target_population_sd": 0.12487234655732729,
+      "year": 2022
+    },
+    {
+      "eligible_row_count": 78,
+      "exposure_column": "sb_attempts",
+      "kind": "throwing",
+      "minimum_exposure": 10,
+      "source_row_count": 78,
+      "target_column": "cs_aa_per_throw",
+      "target_mean": 0.0010862601403263251,
+      "target_population_sd": 0.08157100896127309,
+      "year": 2023
+    },
+    {
+      "eligible_row_count": 77,
+      "exposure_column": "pitches",
+      "kind": "blocking",
+      "minimum_exposure": 500,
+      "source_row_count": 77,
+      "target_column": "blocks_above_average_per_game",
+      "target_mean": -0.015319671612206607,
+      "target_population_sd": 0.10641525202590453,
+      "year": 2023
+    },
+    {
+      "eligible_row_count": 79,
+      "exposure_column": "sb_attempts",
+      "kind": "throwing",
+      "minimum_exposure": 10,
+      "source_row_count": 79,
+      "target_column": "cs_aa_per_throw",
+      "target_mean": -0.0034206457154135617,
+      "target_population_sd": 0.09068228167987795,
+      "year": 2024
+    },
+    {
+      "eligible_row_count": 79,
+      "exposure_column": "pitches",
+      "kind": "blocking",
+      "minimum_exposure": 500,
+      "source_row_count": 79,
+      "target_column": "blocks_above_average_per_game",
+      "target_mean": -0.002870266110610837,
+      "target_population_sd": 0.0965708493080334,
+      "year": 2024
+    }
+  ],
+  "gate": "defense_v1_catcher_repair_development_source",
+  "report_schema_version": "0.1",
+  "source": {
+    "provider": "Baseball Savant catcher leaderboards",
+    "queries": [
+      {
+        "endpoint": "catcher-throwing",
+        "kind": "throwing",
+        "raw_csv_sha256": "3f70ff5e88e89f15dbd06862fd2871734ecc0219afa1f3c360846398226a2bdb",
+        "requested_params": {
+          "csv": "true",
+          "game_type": "Regular",
+          "n": 10,
+          "season_end": 2022,
+          "season_start": 2022,
+          "split": "no",
+          "target_base": "All",
+          "team": "",
+          "type": "Cat",
+          "with_team_only": 1
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=10&season_start=2022&season_end=2022&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+        "source_row_count": 79,
+        "year": 2022
+      },
+      {
+        "endpoint": "catcher-blocking",
+        "kind": "blocking",
+        "raw_csv_sha256": "dfd0b1266e166093ef26d2aa55c9336e93ff93e057dd2f73379b0651579ccec0",
+        "requested_params": {
+          "csv": "true",
+          "game_type": "Regular",
+          "n": 500,
+          "season_end": 2022,
+          "season_start": 2022,
+          "split": "no",
+          "team": "",
+          "type": "Cat",
+          "with_team_only": 1
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=500&season_start=2022&season_end=2022&split=no&team=&type=Cat&with_team_only=1&csv=true",
+        "source_row_count": 84,
+        "year": 2022
+      },
+      {
+        "endpoint": "catcher-throwing",
+        "kind": "throwing",
+        "raw_csv_sha256": "7d43f5dafb6679846426071e61ac4ba8cd2fc7631dfb6ca8a87db09e80e65f30",
+        "requested_params": {
+          "csv": "true",
+          "game_type": "Regular",
+          "n": 10,
+          "season_end": 2023,
+          "season_start": 2023,
+          "split": "no",
+          "target_base": "All",
+          "team": "",
+          "type": "Cat",
+          "with_team_only": 1
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=10&season_start=2023&season_end=2023&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+        "source_row_count": 78,
+        "year": 2023
+      },
+      {
+        "endpoint": "catcher-blocking",
+        "kind": "blocking",
+        "raw_csv_sha256": "b68a33ad7bb9af2c046300392655f36a0d64f86b251215cfe3f11beec6a22240",
+        "requested_params": {
+          "csv": "true",
+          "game_type": "Regular",
+          "n": 500,
+          "season_end": 2023,
+          "season_start": 2023,
+          "split": "no",
+          "team": "",
+          "type": "Cat",
+          "with_team_only": 1
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=500&season_start=2023&season_end=2023&split=no&team=&type=Cat&with_team_only=1&csv=true",
+        "source_row_count": 77,
+        "year": 2023
+      },
+      {
+        "endpoint": "catcher-throwing",
+        "kind": "throwing",
+        "raw_csv_sha256": "d47579ac7ad7edcc763928752bf31c4a0add4e8484aa90a4769532efb7d4cead",
+        "requested_params": {
+          "csv": "true",
+          "game_type": "Regular",
+          "n": 10,
+          "season_end": 2024,
+          "season_start": 2024,
+          "split": "no",
+          "target_base": "All",
+          "team": "",
+          "type": "Cat",
+          "with_team_only": 1
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=10&season_start=2024&season_end=2024&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+        "source_row_count": 79,
+        "year": 2024
+      },
+      {
+        "endpoint": "catcher-blocking",
+        "kind": "blocking",
+        "raw_csv_sha256": "a5a6ee7dd567316ed40bd917861f8aff0b9a7df3dab7993e6a8d3407bf6b8f71",
+        "requested_params": {
+          "csv": "true",
+          "game_type": "Regular",
+          "n": 500,
+          "season_end": 2024,
+          "season_start": 2024,
+          "split": "no",
+          "team": "",
+          "type": "Cat",
+          "with_team_only": 1
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=500&season_start=2024&season_end=2024&split=no&team=&type=Cat&with_team_only=1&csv=true",
+        "source_row_count": 79,
+        "year": 2024
+      }
+    ],
+    "transport": "direct current-UI CSV query semantics"
+  },
+  "source_run_id": 32206603934,
+  "source_sha": "3ad138d132e850f0b9e3a5e714cb334046ecf1e0",
+  "status": "source_materialized_ready_for_repaired_development",
+  "storage": {
+    "all_targets": {
+      "file_size_bytes": 12380,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/tables/catcher_repair_development_targets_2022_2024.parquet",
+      "row_count": 476,
+      "sha256": "c8221d8c56970df2a1f21e8e578fcd7d8305a85c0bf17250fd64b4db26e5cc4c",
+      "table_name": "catcher_repair_development_targets_2022_2024"
+    },
+    "raw_csv_blocking_2022": {
+      "file_size_bytes": 17486,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-blocking-2022.csv",
+      "sha256": "dfd0b1266e166093ef26d2aa55c9336e93ff93e057dd2f73379b0651579ccec0",
+      "table_name": "catcher_repair_raw_csv_blocking_2022"
+    },
+    "raw_csv_blocking_2023": {
+      "file_size_bytes": 16062,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-blocking-2023.csv",
+      "sha256": "b68a33ad7bb9af2c046300392655f36a0d64f86b251215cfe3f11beec6a22240",
+      "table_name": "catcher_repair_raw_csv_blocking_2023"
+    },
+    "raw_csv_blocking_2024": {
+      "file_size_bytes": 16470,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-blocking-2024.csv",
+      "sha256": "a5a6ee7dd567316ed40bd917861f8aff0b9a7df3dab7993e6a8d3407bf6b8f71",
+      "table_name": "catcher_repair_raw_csv_blocking_2024"
+    },
+    "raw_csv_throwing_2022": {
+      "file_size_bytes": 25878,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-throwing-2022.csv",
+      "sha256": "3f70ff5e88e89f15dbd06862fd2871734ecc0219afa1f3c360846398226a2bdb",
+      "table_name": "catcher_repair_raw_csv_throwing_2022"
+    },
+    "raw_csv_throwing_2023": {
+      "file_size_bytes": 25784,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-throwing-2023.csv",
+      "sha256": "7d43f5dafb6679846426071e61ac4ba8cd2fc7631dfb6ca8a87db09e80e65f30",
+      "table_name": "catcher_repair_raw_csv_throwing_2023"
+    },
+    "raw_csv_throwing_2024": {
+      "file_size_bytes": 26047,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-throwing-2024.csv",
+      "sha256": "d47579ac7ad7edcc763928752bf31c4a0add4e8484aa90a4769532efb7d4cead",
+      "table_name": "catcher_repair_raw_csv_throwing_2024"
+    },
+    "raw_parquet_blocking_2022": {
+      "file_size_bytes": 13711,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-blocking-2022.parquet",
+      "row_count": 84,
+      "sha256": "6a676f610832a4dfd97c999b91486e3fcca28a3366b520fe6cff008a6cc99d9c",
+      "table_name": "catcher_repair_raw_blocking_2022"
+    },
+    "raw_parquet_blocking_2023": {
+      "file_size_bytes": 13107,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-blocking-2023.parquet",
+      "row_count": 77,
+      "sha256": "f00774e1313923369a8b34c83c8a226bcc821d13084bfd6db8090766b9f4f3d9",
+      "table_name": "catcher_repair_raw_blocking_2023"
+    },
+    "raw_parquet_blocking_2024": {
+      "file_size_bytes": 13282,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-blocking-2024.parquet",
+      "row_count": 79,
+      "sha256": "7ee0ba22c24a3a9a84d865fa596a5b8ac29dd10fc3a07ff1ef8eca061dd6676d",
+      "table_name": "catcher_repair_raw_blocking_2024"
+    },
+    "raw_parquet_throwing_2022": {
+      "file_size_bytes": 20036,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-throwing-2022.parquet",
+      "row_count": 79,
+      "sha256": "5411587a335d4fdcc2d272867ab05f1b41ba345ae80a831d033224dde34a35ef",
+      "table_name": "catcher_repair_raw_throwing_2022"
+    },
+    "raw_parquet_throwing_2023": {
+      "file_size_bytes": 19928,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-throwing-2023.parquet",
+      "row_count": 78,
+      "sha256": "9bbb5991509c85ba8e345ea5e18ce2467d0b34c991480a7bda121c580d5cb519",
+      "table_name": "catcher_repair_raw_throwing_2023"
+    },
+    "raw_parquet_throwing_2024": {
+      "file_size_bytes": 20114,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/raw/catcher-throwing-2024.parquet",
+      "row_count": 79,
+      "sha256": "dc358878b357c5016884cb0fd880354553adeb55396aea8c5fd2955df8f79b65",
+      "table_name": "catcher_repair_raw_throwing_2024"
+    },
+    "targets_blocking_2022": {
+      "file_size_bytes": 4697,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/tables/catcher_blocking_targets_2022.parquet",
+      "row_count": 84,
+      "sha256": "2ec074f7ee442253fab243d0a48bd5ad3a69ddcdf4c6611f9942bb895ff0665e",
+      "table_name": "catcher_repair_targets_blocking_2022"
+    },
+    "targets_blocking_2023": {
+      "file_size_bytes": 4547,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/tables/catcher_blocking_targets_2023.parquet",
+      "row_count": 77,
+      "sha256": "0468502ebc777216dc43b242bd16a087ae6b8867ace7fa546c06318eb2787515",
+      "table_name": "catcher_repair_targets_blocking_2023"
+    },
+    "targets_blocking_2024": {
+      "file_size_bytes": 4590,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/tables/catcher_blocking_targets_2024.parquet",
+      "row_count": 79,
+      "sha256": "a984ea4027dd38358b0f3c4a7c99aaad16645e82f9f1bc6b6be8ad1ec2426e43",
+      "table_name": "catcher_repair_targets_blocking_2024"
+    },
+    "targets_throwing_2022": {
+      "file_size_bytes": 4568,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/tables/catcher_throwing_targets_2022.parquet",
+      "row_count": 79,
+      "sha256": "45a141a3324e149ac9e3bc68fe4b4ca68d814724b1e238a914b088c5cc1c0d7f",
+      "table_name": "catcher_repair_targets_throwing_2022"
+    },
+    "targets_throwing_2023": {
+      "file_size_bytes": 4574,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/tables/catcher_throwing_targets_2023.parquet",
+      "row_count": 78,
+      "sha256": "826637b94944628654b1284270248528e56a0215d29953badd48e42539c9f949",
+      "table_name": "catcher_repair_targets_throwing_2023"
+    },
+    "targets_throwing_2024": {
+      "file_size_bytes": 4580,
+      "path": "reports/generated/defense-v1-catcher-repair-development-source/tables/catcher_throwing_targets_2024.parquet",
+      "row_count": 79,
+      "sha256": "fd62a6fb881543ad3496a76512201dc21514eb6b3a99c36a8d08fc09a73ff5f2",
+      "table_name": "catcher_repair_targets_throwing_2024"
+    }
+  },
+  "years": [
+    2022,
+    2023,
+    2024
+  ]
+}
