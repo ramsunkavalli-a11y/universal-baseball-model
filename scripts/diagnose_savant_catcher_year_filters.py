@@ -15,6 +15,24 @@ import requests
 
 YEARS = (2022, 2023, 2024, 2025)
 ENDPOINTS = ("catcher-throwing", "catcher-blocking")
+TARGET_MIN = {"catcher-throwing": 10, "catcher-blocking": 500}
+
+
+def _ui_params(endpoint: str, year: int, n: object) -> dict[str, object]:
+    params: dict[str, object] = {
+        "game_type": "Regular",
+        "n": n,
+        "season_start": year,
+        "season_end": year,
+        "split": "no",
+        "team": "",
+        "type": "Cat",
+        "with_team_only": 1,
+        "csv": "true",
+    }
+    if endpoint == "catcher-throwing":
+        params["target_base"] = "All"
+    return params
 
 
 def _params(style: str, endpoint: str, year: int) -> dict[str, object]:
@@ -28,21 +46,12 @@ def _params(style: str, endpoint: str, year: int) -> dict[str, object]:
         return {"seasonStart": year, "seasonEnd": year, "min": 0, "csv": "true"}
     if style == "camel_range_minq":
         return {"seasonStart": year, "seasonEnd": year, "min": "q", "csv": "true"}
-    if style in {"ui_snake_all", "ui_snake_qualified"}:
-        params: dict[str, object] = {
-            "game_type": "Regular",
-            "n": 0 if style == "ui_snake_all" else "q",
-            "season_start": year,
-            "season_end": year,
-            "split": "no",
-            "team": "",
-            "type": "Cat",
-            "with_team_only": 1,
-            "csv": "true",
-        }
-        if endpoint == "catcher-throwing":
-            params["target_base"] = "All"
-        return params
+    if style == "ui_snake_all":
+        return _ui_params(endpoint, year, 0)
+    if style == "ui_snake_qualified":
+        return _ui_params(endpoint, year, "q")
+    if style == "ui_snake_target_min":
+        return _ui_params(endpoint, year, TARGET_MIN[endpoint])
     raise ValueError(style)
 
 
@@ -54,6 +63,7 @@ STYLES = (
     "camel_range_minq",
     "ui_snake_all",
     "ui_snake_qualified",
+    "ui_snake_target_min",
 )
 
 
@@ -92,11 +102,25 @@ def fingerprint(text: str) -> dict:
     }
 
 
+def _year_specific(results: dict, endpoint: str, style: str) -> bool:
+    item = results[endpoint][style]
+    if item["distinct_year_payload_count"] != len(YEARS):
+        return False
+    return all(
+        str(year) in item["years"][str(year)]["observed_start_years"]
+        and (
+            not item["years"][str(year)]["observed_end_years"]
+            or str(year) in item["years"][str(year)]["observed_end_years"]
+        )
+        for year in YEARS
+    )
+
+
 def main() -> int:
     out = Path("reports/generated/savant-catcher-year-filter-diagnostic.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     session = requests.Session()
-    session.headers.update({"User-Agent": "universal-baseball-model-source-diagnostic/0.2"})
+    session.headers.update({"User-Agent": "universal-baseball-model-source-diagnostic/0.3"})
     results = {}
     for endpoint in ENDPOINTS:
         url = f"https://baseballsavant.mlb.com/leaderboard/{endpoint}"
@@ -121,25 +145,20 @@ def main() -> int:
             }
         results[endpoint] = endpoint_results
 
-    ui_all_clean = all(
-        results[endpoint]["ui_snake_all"]["distinct_year_payload_count"] == len(YEARS)
-        and all(
-            str(year) in results[endpoint]["ui_snake_all"]["years"][str(year)]["observed_start_years"]
-            and str(year) in results[endpoint]["ui_snake_all"]["years"][str(year)]["observed_end_years"]
-            for year in YEARS
-        )
-        for endpoint in ENDPOINTS
-    )
+    target_min_clean = all(_year_specific(results, endpoint, "ui_snake_target_min") for endpoint in ENDPOINTS)
+    qualified_clean = all(_year_specific(results, endpoint, "ui_snake_qualified") for endpoint in ENDPOINTS)
     report = {
-        "report_schema_version": "0.2",
+        "report_schema_version": "0.3",
         "gate": "savant_catcher_year_filter_diagnostic",
-        "status": "ui_snake_query_certified" if ui_all_clean else "diagnostic_complete_query_not_certified",
+        "status": "target_min_query_certified" if target_min_clean else "diagnostic_complete_query_not_certified",
         "years": list(YEARS),
+        "target_minimums": TARGET_MIN,
         "results": results,
         "decision": {
             "legacy_year_query_is_year_specific": all(results[e]["year_min0"]["distinct_year_payload_count"] == len(YEARS) for e in ENDPOINTS),
-            "ui_snake_all_query_is_year_specific": ui_all_clean,
-            "catcher_source_repair_authorized_if_true": ui_all_clean,
+            "ui_snake_qualified_query_is_year_specific": qualified_clean,
+            "ui_snake_target_min_query_is_year_specific": target_min_clean,
+            "catcher_source_repair_authorized": target_min_clean,
         },
         "boundary": {"model_fit": False, "model_scoring": False, "war_calculated": False},
     }
@@ -150,7 +169,7 @@ def main() -> int:
             item = results[endpoint][style]
             counts = [item["years"][str(y)]["row_count"] for y in YEARS]
             print(f"  {style}: distinct={item['distinct_year_payload_count']} rows={counts}")
-    print(f"ui_snake_all certified={ui_all_clean}")
+    print(f"target-min query certified={target_min_clean}")
     return 0
 
 
