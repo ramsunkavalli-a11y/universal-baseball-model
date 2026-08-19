@@ -5,6 +5,7 @@ import pytest
 
 from universal_baseball.player_value_steal_sources import (
     _project_milb_frame,
+    _project_milb_frame_with_report,
     project_mlb_steal_splits,
 )
 
@@ -62,8 +63,8 @@ def test_project_mlb_steal_split_fails_on_missing_required_count() -> None:
         )
 
 
-def test_project_milb_frame_uses_standardized_release_fields() -> None:
-    frame = pl.DataFrame(
+def _milb_frame(*, caught_stealing=4) -> pl.DataFrame:
+    return pl.DataFrame(
         {
             "season": [2023],
             "team_id": [1],
@@ -79,11 +80,13 @@ def test_project_milb_frame_uses_standardized_release_fields() -> None:
             "batting_IBB": [1],
             "batting_HBP": [2],
             "batting_SB": [15],
-            "batting_CS": [4],
+            "batting_CS": [caught_stealing],
         }
     )
 
-    rows = _project_milb_frame(frame, season=2023, tier="AAA")
+
+def test_project_milb_frame_uses_standardized_release_fields() -> None:
+    rows = _project_milb_frame(_milb_frame(), season=2023, tier="AAA")
 
     row = rows[0]
     assert row.environment_id == "MILB:112"
@@ -94,23 +97,22 @@ def test_project_milb_frame_uses_standardized_release_fields() -> None:
     assert row.attempts == 19
 
 
-def test_project_milb_frame_fails_closed_when_sb_cs_missing() -> None:
-    frame = pl.DataFrame(
-        {
-            "season": [2023],
-            "team_id": [1],
-            "team_league_id": [112],
-            "player_id": [456],
-            "batting_PA": [180],
-            "batting_H": [45],
-            "batting_2B": [9],
-            "batting_3B": [2],
-            "batting_HR": [6],
-            "batting_BB": [18],
-            "batting_IBB": [1],
-            "batting_HBP": [2],
-        }
+def test_project_milb_frame_reports_and_excludes_incomplete_required_row() -> None:
+    rows, report = _project_milb_frame_with_report(
+        _milb_frame(caught_stealing=None), season=2023, tier="AAA"
     )
+
+    assert rows == []
+    assert report == {
+        "source_row_count": 1,
+        "projected_row_count": 0,
+        "dropped_incomplete_required_stat_rows": 1,
+        "dropped_invalid_identity_or_season_rows": 0,
+    }
+
+
+def test_project_milb_frame_fails_closed_when_sb_cs_columns_missing() -> None:
+    frame = _milb_frame().drop(["batting_SB", "batting_CS"])
 
     with pytest.raises(ValueError, match="missing required standardized columns"):
         _project_milb_frame(frame, season=2023, tier="AAA")
