@@ -1,0 +1,78 @@
+name: Player Value v1 runs per win verify
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/player-value-v1-runs-per-win-verify.yml"
+      - "src/universal_baseball/player_value_runs_per_win.py"
+      - "tests/test_player_value_runs_per_win.py"
+      - "docs/player-value-v1-runs-per-win-contract.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Verify runs-per-win implementation
+        run: >-
+          python -m py_compile src/universal_baseball/player_value_runs_per_win.py
+          && python -m pytest -q tests/test_player_value_runs_per_win.py
+
+      - name: Persist verification record
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('docs/player-value-v1-runs-per-win-verification.json')
+          data = {
+              'schema_version': '0.1',
+              'status': 'player_value_v1_runs_per_win_implementation_verified',
+              'convention_id': 'fangraphs_tango_league_rpw_v1',
+              'source_run_id': int(os.environ['SOURCE_RUN_ID']),
+              'source_sha': os.environ['SOURCE_SHA'],
+              'tests': ['tests/test_player_value_runs_per_win.py'],
+              'boundary': {
+                  'reference_environment_materialized': False,
+                  'pre_war_sensitivities_completed': False,
+                  'war_value_calculated': False,
+              },
+          }
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/player-value-v1-runs-per-win-verification.json
+          git commit -m "Verify runs per win implementation"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
