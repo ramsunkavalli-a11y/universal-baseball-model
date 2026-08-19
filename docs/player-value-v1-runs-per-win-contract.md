@@ -4,9 +4,15 @@ Last updated: 2026-08-19
 
 ## Status
 
-**FROZEN METHOD.** Position-player runs are converted to wins with the public FanGraphs league-wide hitter runs-per-win convention.
+**FROZEN METHOD — RETAINED AFTER WAR LITERATURE REVIEW.**
 
-No player-specific runs-to-wins adjustment is used in v1. This keeps the already-frozen batting, Defense, positional, and replacement run components additive on one common run scale before the final division to wins.
+Position-player runs are converted to wins with the public FanGraphs/Tango league-wide hitter runs-per-win convention.
+
+The broader literature review reopened replacement level and added required baserunning, MLB-reference centering, and park-neutrality gates, but it did **not** identify a reason to reopen the runs-per-win method.
+
+Binding literature record: `docs/player-value-v1-war-literature-review.md`.
+
+Implementation verification: `docs/player-value-v1-runs-per-win-verification.json`, Actions run `32275833614`.
 
 ## Binding public convention
 
@@ -14,7 +20,7 @@ For the MLB reference environment:
 
 `RPW = 9 * (MLB_runs_scored / MLB_innings_pitched) * 1.5 + 3`
 
-Equivalent form using MLB runs per nine innings:
+Equivalent form:
 
 `RPW = 1.5 * MLB_runs_per_9_innings + 3`
 
@@ -28,34 +34,41 @@ Use the **latest completed certified MLB regular season available to the Player 
 
 Requirements:
 
-- pool the AL and NL into one MLB run environment;
+- pool AL and NL into one MLB run environment;
 - use actual regular-season MLB runs scored;
 - use actual regular-season MLB innings pitched;
 - do not use a partial current season when a completed-season reference is required;
-- persist the source season and source provenance with the calculated RPW.
+- persist the source season and provenance with calculated RPW.
 
 The same RPW applies to every position player in the same Player Value snapshot.
 
-## Why this form is binding
+A 2024 MLB reference materialization has been certified from MLB Stats API evidence at 21,343 runs over 43,116 1/3 innings, implying approximately `9.68263` runs per win. Preserve the exact materialized value from the certified artifact when production code consumes it rather than rounding this documentation value.
 
-The project needs a transparent forward-looking conversion after all component runs are calculated. A single league-wide RPW:
+## Why this form remains binding
 
-- preserves the additive run decomposition already frozen upstream;
-- avoids making the run-to-win conversion itself a player-quality model;
-- adapts to the MLB run environment without fitting to final rankings;
-- has an established public methodology and a simple deterministic implementation.
+The public literature supports retaining one league-wide position-player conversion because it:
 
-Baseball-Reference's player-specific PythagenPat conversion remains informative methodology context but is not binding for v1 because it makes runs-to-wins depend on each player's own contribution and therefore breaks the simple common divisor used by the current Player Value architecture.
+- preserves the additive run decomposition;
+- adapts to the league scoring environment;
+- does not make the conversion itself a player-quality model;
+- is transparent and deterministic;
+- integrates directly with the FanGraphs-style replacement allocation now predeclared for the reopened replacement gate.
+
+Baseball-Reference's player-aware PythagenPat conversion remains an informative sensitivity. It is not binding for v1 because it makes wins conversion depend on the individual player's contribution and therefore removes the simple common divisor used by this projected-value architecture.
 
 ## Final WAR formula boundary
 
-Once the required pre-WAR sensitivities are completed, position-player v1 may calculate:
+The old formula omitting baserunning and league/reference centering is superseded.
 
-`runs_above_replacement = batting_runs + defense_runs + positional_adjustment_runs + replacement_runs`
+Once every pre-WAR gate is frozen, the intended decomposable form is:
+
+`runs_above_replacement = batting_runs + baserunning_runs + gidp_runs_if_separate + defense_runs + positional_adjustment_runs + mlb_reference_centering_runs + replacement_runs`
 
 `WAR = runs_above_replacement / RPW`
 
-No baserunning term is silently imputed. If baserunning is not modeled in v1, it must remain an explicit omitted component/coverage limitation in persisted output and documentation.
+No baserunning, GIDP, centering, park, or replacement term may be silently absorbed into another component.
+
+A park term is **not** automatically required: the park-neutrality audit must first determine whether the frozen batting projection already removes the relevant context. If a correction is justified, it must remain explicit.
 
 ## Validation requirements
 
@@ -74,12 +87,21 @@ It must persist:
 - reference season;
 - convention ID/source provenance.
 
+## Required sensitivities before final WAR freeze
+
+Without retuning the binding method from ranking outcomes, final QA should include:
+
+1. Baseball-Reference player-aware/PythagenPat runs-to-wins comparison if practical;
+2. Baseball-Reference positional-adjustment schedule sensitivity;
+3. alternate recent certified MLB batting reference season when available;
+4. replacement-level allocation sensitivities required by the reopened replacement contract.
+
 ## Boundary
 
-The runs-per-win **method** is closed by this contract. The exact MLB reference-environment materialization must be verified before final WAR aggregation.
+Runs-per-win **method is closed**. WAR/value aggregation remains unauthorized until:
 
-Before WAR is frozen, also complete the previously required non-binding sensitivities:
-
-1. Baseball-Reference current raw positional-adjustment schedule;
-2. alternate recent certified MLB batting reference season when available;
-3. FanGraphs-style replacement-allocation sensitivity using the frozen RPW and relevant MLB PA.
+- replacement level is refrozen;
+- baserunning/GIDP is resolved;
+- MLB-reference centering is frozen;
+- park neutrality is audited;
+- required sensitivities are completed.
