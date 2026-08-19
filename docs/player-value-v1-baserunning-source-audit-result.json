@@ -1412,12 +1412,433 @@
     "provider": "MLB Stats API",
     "stats": "season"
   },
+  "mlb_statcast_advancement": {
+    "all_audited_seasons_usable": true,
+    "captures": [
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2019&season_end=2019&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 155686,
+        "response_sha256": "e74b796ff141d41769c7f189f98ca21b368e83ff133e5f86f0649f9b6aebb6ec",
+        "row_count": 659,
+        "season": 2019
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2020&season_end=2020&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 120727,
+        "response_sha256": "30cbc63237cf1c4f6f16185595d61d52586eca12adb616791c12d563e7722bc8",
+        "row_count": 517,
+        "season": 2020
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2021&season_end=2021&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 159119,
+        "response_sha256": "ffc34eb933553ea5536d17462965d43d2a1785bfdc9e26007bd96e06724771a3",
+        "row_count": 680,
+        "season": 2021
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2022&season_end=2022&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 147311,
+        "response_sha256": "faf3db3337e40fdade1099086da537d1f046a57f6f07e11601a752b1c011be39",
+        "row_count": 625,
+        "season": 2022
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2023&season_end=2023&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 143564,
+        "response_sha256": "64798cec13385b3caeae89a5f01c642d97783628efd7061f041287f9a1c820a5",
+        "row_count": 611,
+        "season": 2023
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2024&season_end=2024&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 142396,
+        "response_sha256": "51edc407bebb2d202a43e2e5b0ac29714178f905db0ff42d893637f85a94ab2d",
+        "row_count": 608,
+        "season": 2024
+      }
+    ],
+    "endpoint": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value",
+    "provider": "Baseball Savant",
+    "query_contract": {
+      "game_type": "Regular",
+      "minimum_opportunities": 1,
+      "one_season_per_request": true,
+      "runner_type": "Run",
+      "season_end": 2024,
+      "season_start": 2019
+    },
+    "season_audits": {
+      "2019": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 659,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 659,
+        "run_decomposition": {
+          "checked_rows": 659,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      },
+      "2020": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 517,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 517,
+        "run_decomposition": {
+          "checked_rows": 517,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 2.220446049250313e-16
+        }
+      },
+      "2021": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 680,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 680,
+        "run_decomposition": {
+          "checked_rows": 680,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 4.440892098500626e-16
+        }
+      },
+      "2022": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 625,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 625,
+        "run_decomposition": {
+          "checked_rows": 625,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 4.440892098500626e-16
+        }
+      },
+      "2023": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 611,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 611,
+        "run_decomposition": {
+          "checked_rows": 611,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      },
+      "2024": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 608,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 608,
+        "run_decomposition": {
+          "checked_rows": 608,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      }
+    },
+    "source_role": "runner-level non-steal advancement run value and opportunity evidence"
+  },
   "notes": [
     "Missing source fields remain missing; the audit does not zero-fill them.",
     "MiLB inventory establishes historical asset availability, not yet per-file baserunning field completeness.",
+    "Savant run-value decomposition and opportunity-count identities are diagnostic only; the source gate requires complete finite fields and unique runner rows.",
     "This artifact audits source semantics only and does not select baserunning model parameters."
   ],
   "season": 2024,
   "status": "player_value_v1_baserunning_source_audit_materialized",
-  "verified_source_commit": "fb5883cf3fad9f7501616e366310bd6f53818f6f"
+  "verified_source_commit": "4da555e8b7ee2804946452e3da80afd47625f20d"
 }
