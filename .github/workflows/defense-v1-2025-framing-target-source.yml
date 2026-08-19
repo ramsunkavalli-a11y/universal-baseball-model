@@ -1,0 +1,154 @@
+name: Defense v1 repaired 2025 framing target source
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-2025-framing-target-source.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  source:
+    name: materialize repaired 2025 framing target
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify frozen repaired framing prerequisites
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          params = json.loads(Path("docs/defense-v1-framing-repair-parameters.json").read_text())
+          predictor = json.loads(Path("docs/defense-v1-2024-framing-predictor-source-result.json").read_text())
+          historical = json.loads(Path("docs/defense-v1-framing-repair-development-source-result.json").read_text())
+
+          if params.get("parameter_hash") != "sha256:e75ebd58d868b6cb6d51f2d0e48d49c1735a4cfa80661b6280269311a7875086":
+              raise SystemExit("repaired framing parameter hash changed")
+          if params.get("decision", {}).get("repaired_pre_2025_framing_parameters_frozen") is not True:
+              raise SystemExit("repaired framing parameters are not frozen")
+          if params.get("boundary", {}).get("2025_framing_target_accessed") is not False:
+              raise SystemExit("parameter freeze crossed 2025 target boundary")
+
+          if predictor.get("status") != "source_materialized":
+              raise SystemExit(f"2024 framing predictor not certified: {predictor.get('status')}")
+          if predictor.get("decision", {}).get("2024_mlb_framing_confirmation_predictor_materialized") is not True:
+              raise SystemExit("2024 framing predictor decision missing")
+          if predictor.get("decision", {}).get("2025_framing_target_materialization_authorized_next") is not True:
+              raise SystemExit("2025 framing target is not authorized next")
+          if predictor.get("boundary", {}).get("2025_framing_target_accessed") is not False:
+              raise SystemExit("2024 predictor source crossed 2025 target boundary")
+          if predictor.get("boundary", {}).get("model_fit") is not False or predictor.get("boundary", {}).get("model_scoring_performed") is not False:
+              raise SystemExit("2024 predictor source performed model work")
+
+          if historical.get("decision", {}).get("year_specific_source_certified") is not True:
+              raise SystemExit("historical repaired framing query is not certified")
+          if historical.get("boundary", {}).get("2025_framing_target_accessed") is not False:
+              raise SystemExit("historical repaired source crossed 2025 boundary")
+          print("repaired framing 2025 target prerequisites verified")
+          PY
+
+      - name: Verify source materializer compiles
+        run: python -m py_compile scripts/materialize_defense_v1_2025_framing_target.py
+
+      - name: Materialize repaired 2025 framing target only
+        run: >-
+          python -u scripts/materialize_defense_v1_2025_framing_target.py
+          --output-root reports/generated/defense-v1-2025-framing-target-source
+
+      - name: Verify year-specific 2025 payload and frozen target construction
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report_path = Path("reports/generated/defense-v1-2025-framing-target-source/report.json")
+          report = json.loads(report_path.read_text())
+          historical = json.loads(Path("docs/defense-v1-framing-repair-development-source-result.json").read_text())
+          if report.get("status") != "source_materialized":
+              raise SystemExit("2025 framing target source did not materialize")
+          query = report.get("source", {}).get("query", {})
+          expected = {
+              "type": "catcher",
+              "seasonStart": 2025,
+              "seasonEnd": 2025,
+              "team": "",
+              "min": 1,
+              "sortColumn": "rv_tot",
+              "sortDirection": "desc",
+              "csv": "true",
+          }
+          if query.get("requested_params") != expected:
+              raise SystemExit(f"unexpected 2025 framing query: {query.get('requested_params')}")
+          new_hash = query.get("raw_csv_sha256")
+          old_hashes = {q.get("raw_csv_sha256") for q in historical.get("source", {}).get("queries", [])}
+          if not new_hash or new_hash in old_hashes:
+              raise SystemExit("2025 framing payload is missing or duplicates a repaired historical payload")
+          diag = report.get("diagnostics", {})
+          if diag.get("local_minimum_pitches") != 1000:
+              raise SystemExit("2025 framing local minimum changed")
+          if diag.get("target_formula") != "1000 * rv_tot / pitches":
+              raise SystemExit("2025 framing target formula changed")
+          if int(diag.get("eligible_row_count", 0)) < 30:
+              print("warning: raw target has fewer than 30 eligible catchers; scorer will apply the frozen population gate")
+          boundary = report.get("boundary", {})
+          for key in ("model_parameters_loaded", "model_fit", "model_scoring", "confirmation_interpreted", "run_value_conversion_performed", "war_calculated"):
+              if boundary.get(key) is not False:
+                  raise SystemExit(f"source-only boundary violation: {key}={boundary.get(key)}")
+          print("2025 framing target source validation passed")
+          PY
+
+      - name: Pin source workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-2025-framing-target-source/report.json")
+          result = json.loads(path.read_text())
+          result["source_run_id"] = int(os.environ["SOURCE_RUN_ID"])
+          result["source_sha"] = os.environ["SOURCE_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload repaired 2025 framing target source
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-framing-target-source
+          path: reports/generated/defense-v1-2025-framing-target-source/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding repaired 2025 framing target result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-2025-framing-target-source/report.json docs/defense-v1-2025-framing-target-source-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-2025-framing-target-source-result.json
+          git commit -m "Persist repaired 2025 framing target source"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
