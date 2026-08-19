@@ -76,6 +76,7 @@ jobs:
           cat "$log_path" || true
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
           if [ "$status" -ne 0 ]; then
+            export SELECTION_EXIT_CODE="$status"
             python - <<'PY'
           import json
           import os
@@ -87,7 +88,7 @@ jobs:
           payload = {
               "status": "player_value_v1_steal_projection_selection_failed",
               "verified_source_commit": str(os.environ.get("GITHUB_SHA") or "").strip() or None,
-              "exit_code": int(os.environ.get("SELECTION_EXIT_CODE", "1")),
+              "exit_code": int(os.environ["SELECTION_EXIT_CODE"]),
               "log_tail": log_text[-12000:],
           }
           diagnostic_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
@@ -96,8 +97,6 @@ jobs:
             rm -f "$diagnostic_path"
           fi
           exit 0
-        env:
-          SELECTION_EXIT_CODE: ${{ steps.selection.outputs.exit_code }}
 
       - name: Persist steal selection result or failure diagnostic
         run: |
