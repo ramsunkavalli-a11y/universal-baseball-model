@@ -4,16 +4,30 @@ Status: **BINDING ADDENDUM — PREDECLARED BEFORE MODEL FITTING**
 
 This addendum resolves the qualitative guardrails left open in `docs/player-value-v1-steal-projection-selection-contract.md`. It does not change the candidate grid, scoring objectives, or chronology.
 
+## Leave-one-player-out environment baselines
+
+All retrospective development and confirmation environment rates are **leave-one-player-out (LOO)** for the player being scored or used as evidence.
+
+For each player-season-environment row:
+
+- subtract that player's counts from the relevant season-environment aggregate before calculating the baseline attempt rate or success rate;
+- if a MiLB actual-league baseline falls through to level × season, subtract that player's full contribution within the level × season before calculating the fallback baseline;
+- a player traded between AL and NL is aggregated to one MLB player-season before the pooled MLB LOO baseline is calculated.
+
+This prevents a target player's realized SB/CS outcomes from leaking into the target environment expectation used to score that same player. It also keeps evidence-season residuals from being mechanically pulled toward a baseline partly created by the player himself.
+
+This LOO rule applies only to retrospective model diagnostics. Final production MLB reference rates use the full certified MLB population because no player outcome is being retrospectively predicted there.
+
 ## Sparse-environment fallback
 
-For affiliated MiLB:
+For affiliated MiLB, thresholds are evaluated **after the player's own contribution has been removed**:
 
-- use an actual `league_id × season` attempt baseline when that environment has at least **500** total portable steal-opportunity-proxy events;
-- use an actual `league_id × season` success baseline when that environment has at least **25** total steal attempts;
-- otherwise fall back to the corresponding `level × season` baseline;
+- use an actual `league_id × season` attempt baseline when the LOO environment has at least **500** total portable steal-opportunity-proxy events;
+- use an actual `league_id × season` success baseline when the LOO environment has at least **25** total steal attempts;
+- otherwise fall back to the corresponding LOO `level × season` baseline;
 - the level × season fallback itself must have positive exposure for the channel or the affected row is unscoreable.
 
-MLB remains one pooled AL+NL baseline and is not subject to this fallback hierarchy.
+MLB remains one pooled AL+NL baseline and is not subject to this fallback hierarchy, but its retrospective baseline is still leave-one-player-out.
 
 These thresholds are source-quality guards, not hyperparameters in the candidate grid. They may not be changed after candidate results are visible.
 
