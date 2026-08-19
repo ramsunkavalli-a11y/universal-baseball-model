@@ -1,0 +1,165 @@
+{
+  "boundary": {
+    "age_reopened": false,
+    "live_source_query_performed_by_scorer": false,
+    "model_fit": false,
+    "model_reselection": false,
+    "playing_time_v1_modified": false,
+    "position_role_v1_modified": false,
+    "recalibration": false,
+    "run_value_conversion_performed": false,
+    "threshold_movement": false,
+    "tracked_framing_reopened": false,
+    "tracked_milb_t1_reopened": false,
+    "traditional_feature_search_reopened": false,
+    "war_value_calculated": false
+  },
+  "catcher": {
+    "catcher_blocking_C2_vs_B0": {
+      "b0": {
+        "calibration_intercept": null,
+        "calibration_slope": null,
+        "mae": 0.7748480312332369,
+        "mse": 1.0081127142759803,
+        "pearson": null,
+        "player_count": 69,
+        "spearman": null
+      },
+      "candidate": {
+        "calibration_intercept": -0.20035822114980098,
+        "calibration_slope": 1.5227049487309636,
+        "mae": 0.7844771243691303,
+        "mse": 0.9732280729984688,
+        "pearson": 0.24006491939719482,
+        "player_count": 69,
+        "spearman": 0.09663865546218489
+      },
+      "coverage_identical": true,
+      "finite": true,
+      "passed": false,
+      "player_count": 69,
+      "status": "failed"
+    },
+    "catcher_throwing_C1_vs_B0": {
+      "b0": {
+        "calibration_intercept": null,
+        "calibration_slope": null,
+        "mae": 0.8108382584225283,
+        "mse": 1.0020186595655416,
+        "pearson": null,
+        "player_count": 71,
+        "spearman": null
+      },
+      "candidate": {
+        "calibration_intercept": 0.18134967960247764,
+        "calibration_slope": 1.797523183515817,
+        "mae": 0.7722230359253506,
+        "mse": 0.9454805142832026,
+        "pearson": 0.2901660753377032,
+        "player_count": 71,
+        "spearman": 0.24637183002154456
+      },
+      "coverage_identical": true,
+      "finite": true,
+      "passed": true,
+      "player_count": 71,
+      "status": "confirmed"
+    }
+  },
+  "contract": "docs/defense-v1-2025-confirmation-contract.md",
+  "contract_sha256": "5229fb29730f29ab5421978dfe580f5a426e9f6c7b4740d3ab7ffad54bb831aa",
+  "decision": {
+    "additional_defense_v1_tuning_authorized": false,
+    "catcher_blocking_c2_confirmed": false,
+    "catcher_throwing_c1_confirmed": true,
+    "defense_v1_final_confirmation_complete": true,
+    "defense_v1_frozen": true,
+    "final_catcher_blocking": "B0_neutral",
+    "final_catcher_throwing": "C1",
+    "final_general_range": "T1_for_eligible_MLB_tracking__U1_elsewhere",
+    "run_value_conversion_authorized_next": true,
+    "t1_mlb_confirmed": true,
+    "tracked_framing": "closed_not_retained",
+    "tracked_milb_t1": "closed_not_retained",
+    "u1_confirmed": true,
+    "war_value_authorized": false
+  },
+  "gate": "defense_v1_2025_one_shot_confirmation",
+  "general_range": {
+    "t1_vs_u1": {
+      "finite": true,
+      "passed": true,
+      "player_count": 135,
+      "status": "confirmed",
+      "t1": {
+        "calibration_intercept": -0.039335761902515434,
+        "calibration_slope": 0.8261584172832184,
+        "mae": 0.759244230355732,
+        "mse": 0.9155844351095499,
+        "pearson": 0.23693371123577192,
+        "player_count": 135,
+        "spearman": 0.2747365728700154
+      },
+      "u1": {
+        "calibration_intercept": -0.011006768945136804,
+        "calibration_slope": 0.9122162015822921,
+        "mae": 0.7689253183867086,
+        "mse": 0.916393829439576,
+        "pearson": 0.22552968317991381,
+        "player_count": 135,
+        "spearman": 0.23750152600295704
+      }
+    },
+    "u1_vs_b0": {
+      "b0": {
+        "calibration_intercept": null,
+        "calibration_slope": null,
+        "mae": 0.8164843984953492,
+        "mse": 1.010189848372242,
+        "pearson": null,
+        "player_count": 161,
+        "spearman": null
+      },
+      "coverage_identical": true,
+      "finite": true,
+      "passed": true,
+      "player_count": 161,
+      "status": "confirmed",
+      "u1": {
+        "calibration_intercept": 0.04346021358504426,
+        "calibration_slope": 0.7372456207140536,
+        "mae": 0.7910745288178679,
+        "mse": 0.9781703281378479,
+        "pearson": 0.18577361529657704,
+        "player_count": 161,
+        "spearman": 0.21670127444911413
+      }
+    }
+  },
+  "package_versions": {
+    "numpy": "2.5.2",
+    "polars": "1.43.2",
+    "python": "3.12.13"
+  },
+  "parameter_hash": "sha256:cba6b7ebe4b2598db2c4d9ef360b0784f23a94ad61385f87149b08c46e0390d5",
+  "report_schema_version": "0.1",
+  "scoring_run_id": 32205199301,
+  "scoring_sha": "e4649a52fec59d6d70a15f18010db2804c1dc395",
+  "source": {
+    "historical_run_id": 32148467330,
+    "target_source_run_id": 32201584187,
+    "target_source_sha": "9733a15bdb4a48b6193de49e5ff42bf854d0334f",
+    "tracking_source_run_id": 32198857540,
+    "tracking_source_sha": "0471363219002d73450c34783aed7963825039fb"
+  },
+  "status": "confirmation_complete_defense_v1_frozen",
+  "storage": {
+    "scored_rows": {
+      "file_size_bytes": 11867,
+      "path": "reports/generated/defense-v1-2025-confirmation/tables/scored_confirmation_rows.parquet",
+      "row_count": 436,
+      "sha256": "8468a619410068e4d37384e4af536e7231f695edc8d65f8b78ea5548cda63779",
+      "table_name": "defense_v1_2025_confirmation_scored_rows"
+    }
+  }
+}
