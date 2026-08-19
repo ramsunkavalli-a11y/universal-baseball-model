@@ -2,9 +2,9 @@
 
 Last updated: 2026-08-19
 
-Status: **OBSERVED EXPOSURE SOURCE FROZEN; FORWARD EXPOSURE BRIDGE NOT YET SELECTED.**
+Status: **OBSERVED EXPOSURE SOURCE FROZEN; TOTAL-OUTS DEVELOPMENT BASELINE RETAINED; POSITION ALLOCATION STILL OPEN.**
 
-This contract fixes what counts as observed defensive exposure and prevents Player Value from silently substituting batting playing time or start-share probabilities for defensive opportunities. It does not yet select the production mapping from frozen projected Playing Time / Position-Role outputs to future defensive exposure.
+This contract fixes what counts as observed defensive exposure and prevents Player Value from silently substituting batting playing time or start-share probabilities for defensive opportunities. It also records the completed predeclared total-defensive-outs development diagnostic. The full production bridge is not yet frozen because position allocation and component-native opportunity mappings remain open.
 
 ## 1. Canonical observed defensive exposure
 
@@ -96,6 +96,32 @@ At minimum, candidate evaluation must compare against simple persistence baselin
 
 Because 2025 Position/Role outcomes have already been accessed for the upstream confirmation, Player Value must not describe 2025 defensive-exposure outcomes as an untouched holdout. Any later confirmation sample must be genuinely unopened for this exposure-mapping question or the method must be frozen on development evidence without pretending otherwise.
 
+### 6A. Completed total-defensive-outs development diagnostic
+
+The first total-outs bridge diagnostic is complete under the predeclared contract:
+
+- contract: `docs/player-value-v1-defensive-exposure-diagnostic-contract.md`;
+- binding result: `docs/player-value-v1-defensive-exposure-diagnostic-result.json`;
+- source run: `32261447127`;
+- development folds: 2022 inputs -> 2023 and 2023 inputs -> 2024;
+- 2025 accessed: false.
+
+Three fixed forms were tested on the exact frozen Playing Time validation populations:
+
+- `B0_raw_persistence`: prior-season MLB defensive outs;
+- `P1_projected_pa_global_scale`: frozen projected MLB PA multiplied by one contemporaneous population-level outs/PA scale;
+- `H1_fixed_50_50_hybrid`: fixed 50/50 blend of B0 and P1.
+
+The binding recommendation is **`B0_raw_persistence`**. Neither challenger satisfied all preregistered gates. Both challengers improved equal-fold mean RMSE and entrant MAE, but neither improved equal-fold mean MAE. H1 came closest but its 2022->2023 MAE was about 2.20% worse than B0, just outside the frozen 2% fold guardrail. The threshold and 50/50 weight may not be moved after seeing the result.
+
+Equal-fold means:
+
+- B0: MAE `151.8143`, RMSE `473.4592`;
+- P1: MAE `180.2195`, RMSE `427.4569`;
+- H1: MAE `152.5628`, RMSE `430.7028`.
+
+This is a retained **total-outs development baseline**, not the completed production exposure bridge. Position allocation is still a separate open gate, and component-native opportunity denominators remain separate.
+
 ## 7. Component-specific opportunity denominators remain separate
 
 `fielding_outs` is the canonical general seasonal defensive-exposure source, but it does not automatically imply that every Defense component should be multiplied by outs.
@@ -130,10 +156,12 @@ The by-position projected outs must reconcile to projected total defensive outs 
 ## Binding boundaries
 
 - Official `fielding_outs` is the canonical observed defensive-exposure unit.
+- The total-outs development diagnostic retains `B0_raw_persistence`; do not retune its challenger thresholds or blend after result access.
 - `role_probability` and `defensive_probability` are distinct fields with distinct semantics.
 - Do not use PA x role share as a production defensive-outs shortcut without validation.
 - Do not refit Playing Time or Position/Role.
 - Do not use 2025 as an allegedly untouched exposure holdout.
+- Full production defensive exposure is not frozen until position allocation is selected.
 - Do not convert Defense skill to seasonal runs until the forward exposure bridge and component-native opportunity mappings are frozen.
 - Positional adjustment remains a separate layer.
 - Replacement level, runs per win, and WAR/value remain closed.
