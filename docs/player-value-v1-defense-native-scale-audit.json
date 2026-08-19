@@ -1,0 +1,410 @@
+{
+  "architecture_contract": "docs/player-value-v1-architecture-contract.md",
+  "boundary": {
+    "2025_confirmation_residuals_used_for_scaling": false,
+    "2025_defense_confirmation_targets_accessed": false,
+    "model_fit": false,
+    "run_conversion_selected": false,
+    "upstream_model_modified": false,
+    "war_calculated": false
+  },
+  "catcher_throwing": {
+    "by_year": {
+      "2022": {
+        "count": 72,
+        "max": 0.2460797889378774,
+        "mean": 0.00840748222825426,
+        "median": -0.0018281393828505,
+        "min": -0.1951403020050916,
+        "population_sd": 0.08437247596956092,
+        "q10": -0.08826412263566795,
+        "q90": 0.12769947864965758
+      },
+      "2023": {
+        "count": 72,
+        "max": 0.2460797889378774,
+        "mean": 0.00840748222825426,
+        "median": -0.0018281393828505,
+        "min": -0.1951403020050916,
+        "population_sd": 0.08437247596956092,
+        "q10": -0.08826412263566795,
+        "q90": 0.12769947864965758
+      },
+      "2024": {
+        "count": 72,
+        "max": 0.2460797889378774,
+        "mean": 0.00840748222825426,
+        "median": -0.0018281393828505,
+        "min": -0.1951403020050916,
+        "population_sd": 0.08437247596956092,
+        "q10": -0.08826412263566795,
+        "q90": 0.12769947864965758
+      }
+    },
+    "candidate_reference_rule": "median of 2022-2024 population SDs",
+    "candidate_rule_status": "diagnostic_only_not_selected",
+    "native_target": "Savant cs_aa_per_throw",
+    "pre_2025_scale_stability": {
+      "candidate_status": "diagnostic_only_not_frozen",
+      "coefficient_of_variation": 0.0,
+      "diagnostic_candidate_reference_sd": 0.08437247596956092,
+      "max_to_min_ratio": 1.0,
+      "max_yearly_sd": 0.08437247596956092,
+      "mean_yearly_sd": 0.08437247596956092,
+      "median_yearly_sd": 0.08437247596956092,
+      "min_yearly_sd": 0.08437247596956092,
+      "yearly_population_sds": [
+        0.08437247596956092,
+        0.08437247596956092,
+        0.08437247596956092
+      ]
+    }
+  },
+  "decision": {
+    "defense_run_conversion_frozen": false,
+    "defensive_exposure_mapping_frozen": false,
+    "native_scale_audit_complete": true,
+    "positional_adjustment_frozen": false,
+    "replacement_level_frozen": false,
+    "war_value_authorized": false
+  },
+  "gate": "player_value_v1_defense_native_scale_audit",
+  "general_range": {
+    "by_year_position": {
+      "2022:1B": {
+        "count": 35,
+        "max": 4.0,
+        "mean": -0.8571428571428571,
+        "median": -1.0,
+        "min": -5.0,
+        "population_sd": 2.016260430214554,
+        "q10": -3.0,
+        "q90": 2.0
+      },
+      "2022:2B": {
+        "count": 52,
+        "max": 7.0,
+        "mean": 0.019230769230769232,
+        "median": 0.0,
+        "min": -9.0,
+        "population_sd": 2.522898094037769,
+        "q10": -2.8999999999999995,
+        "q90": 2.0
+      },
+      "2022:3B": {
+        "count": 40,
+        "max": 4.0,
+        "mean": 0.175,
+        "median": 0.0,
+        "min": -3.0,
+        "population_sd": 1.759083568225228,
+        "q10": -2.0,
+        "q90": 3.0
+      },
+      "2022:CF": {
+        "count": 42,
+        "max": 6.0,
+        "mean": 1.4285714285714286,
+        "median": 1.5,
+        "min": -2.0,
+        "population_sd": 1.8662778992633737,
+        "q10": -1.0,
+        "q90": 4.0
+      },
+      "2022:LF": {
+        "count": 30,
+        "max": 3.0,
+        "mean": -1.1,
+        "median": -1.0,
+        "min": -6.0,
+        "population_sd": 2.071231517720798,
+        "q10": -4.0,
+        "q90": 2.0
+      },
+      "2022:RF": {
+        "count": 32,
+        "max": 6.0,
+        "mean": -0.40625,
+        "median": -1.0,
+        "min": -9.0,
+        "population_sd": 2.935338300349723,
+        "q10": -3.0,
+        "q90": 2.900000000000002
+      },
+      "2022:SS": {
+        "count": 39,
+        "max": 5.0,
+        "mean": 0.23076923076923078,
+        "median": 0.0,
+        "min": -4.0,
+        "population_sd": 1.9409426531051859,
+        "q10": -2.1999999999999997,
+        "q90": 3.0
+      },
+      "2023:1B": {
+        "count": 29,
+        "max": 3.0,
+        "mean": -0.8275862068965517,
+        "median": -1.0,
+        "min": -4.0,
+        "population_sd": 1.9130940009214064,
+        "q10": -3.1999999999999997,
+        "q90": 2.0
+      },
+      "2023:2B": {
+        "count": 50,
+        "max": 4.0,
+        "mean": -0.16,
+        "median": 0.0,
+        "min": -4.0,
+        "population_sd": 1.9734234213670416,
+        "q10": -3.0,
+        "q90": 2.1000000000000014
+      },
+      "2023:3B": {
+        "count": 40,
+        "max": 4.0,
+        "mean": -0.15,
+        "median": 0.0,
+        "min": -6.0,
+        "population_sd": 2.3404059476936903,
+        "q10": -3.0999999999999996,
+        "q90": 3.0
+      },
+      "2023:CF": {
+        "count": 40,
+        "max": 5.0,
+        "mean": 1.55,
+        "median": 2.0,
+        "min": -2.0,
+        "population_sd": 1.627114009527298,
+        "q10": -0.09999999999999964,
+        "q90": 3.1000000000000014
+      },
+      "2023:LF": {
+        "count": 24,
+        "max": 3.0,
+        "mean": -0.9583333333333334,
+        "median": -0.5,
+        "min": -8.0,
+        "population_sd": 2.457627017176438,
+        "q10": -3.0,
+        "q90": 1.0
+      },
+      "2023:RF": {
+        "count": 33,
+        "max": 3.0,
+        "mean": -0.36363636363636365,
+        "median": 0.0,
+        "min": -6.0,
+        "population_sd": 1.7549614830994253,
+        "q10": -2.0,
+        "q90": 1.8000000000000007
+      },
+      "2023:SS": {
+        "count": 45,
+        "max": 3.0,
+        "mean": 0.17777777777777778,
+        "median": 0.0,
+        "min": -4.0,
+        "population_sd": 1.829254722422816,
+        "q10": -2.0,
+        "q90": 2.6000000000000014
+      },
+      "2024:1B": {
+        "count": 31,
+        "max": 5.0,
+        "mean": -0.5483870967741935,
+        "median": -1.0,
+        "min": -5.0,
+        "population_sd": 2.2119719661850024,
+        "q10": -3.0,
+        "q90": 2.0
+      },
+      "2024:2B": {
+        "count": 46,
+        "max": 4.0,
+        "mean": 0.1956521739130435,
+        "median": 0.0,
+        "min": -4.0,
+        "population_sd": 1.8012020770849877,
+        "q10": -2.0,
+        "q90": 3.0
+      },
+      "2024:3B": {
+        "count": 46,
+        "max": 3.0,
+        "mean": -0.43478260869565216,
+        "median": 0.0,
+        "min": -6.0,
+        "population_sd": 2.173478217382607,
+        "q10": -3.0,
+        "q90": 2.0
+      },
+      "2024:CF": {
+        "count": 41,
+        "max": 6.0,
+        "mean": 1.7804878048780488,
+        "median": 2.0,
+        "min": -4.0,
+        "population_sd": 2.4743779225311995,
+        "q10": -2.0,
+        "q90": 5.0
+      },
+      "2024:LF": {
+        "count": 32,
+        "max": 4.0,
+        "mean": -0.65625,
+        "median": -1.0,
+        "min": -5.0,
+        "population_sd": 2.0707694071286644,
+        "q10": -3.0,
+        "q90": 1.9000000000000021
+      },
+      "2024:RF": {
+        "count": 31,
+        "max": 3.0,
+        "mean": -0.8064516129032258,
+        "median": -1.0,
+        "min": -4.0,
+        "population_sd": 2.0227632782697915,
+        "q10": -4.0,
+        "q90": 2.0
+      },
+      "2024:SS": {
+        "count": 45,
+        "max": 4.0,
+        "mean": 0.5333333333333333,
+        "median": 0.0,
+        "min": -4.0,
+        "population_sd": 1.6138291249213605,
+        "q10": -1.0,
+        "q90": 3.0
+      }
+    },
+    "candidate_reference_rule": "median of 2022-2024 position-specific population SDs",
+    "candidate_rule_status": "diagnostic_only_not_selected",
+    "native_target": "Savant diff_success_rate_formatted / Success Rate Added",
+    "pre_2025_scale_stability": {
+      "1B": {
+        "candidate_status": "diagnostic_only_not_frozen",
+        "coefficient_of_variation": 0.06054923239497877,
+        "diagnostic_candidate_reference_sd": 2.016260430214554,
+        "max_to_min_ratio": 1.156227537758023,
+        "max_yearly_sd": 2.2119719661850024,
+        "mean_yearly_sd": 2.047108799106988,
+        "median_yearly_sd": 2.016260430214554,
+        "min_yearly_sd": 1.9130940009214064,
+        "yearly_population_sds": [
+          2.016260430214554,
+          1.9130940009214064,
+          2.2119719661850024
+        ]
+      },
+      "2B": {
+        "candidate_status": "diagnostic_only_not_frozen",
+        "coefficient_of_variation": 0.1466084445272441,
+        "diagnostic_candidate_reference_sd": 1.9734234213670416,
+        "max_to_min_ratio": 1.4006746528522513,
+        "max_yearly_sd": 2.522898094037769,
+        "mean_yearly_sd": 2.099174530829933,
+        "median_yearly_sd": 1.9734234213670416,
+        "min_yearly_sd": 1.8012020770849877,
+        "yearly_population_sds": [
+          2.522898094037769,
+          1.9734234213670416,
+          1.8012020770849877
+        ]
+      },
+      "3B": {
+        "candidate_status": "diagnostic_only_not_frozen",
+        "coefficient_of_variation": 0.11687609017899583,
+        "diagnostic_candidate_reference_sd": 2.173478217382607,
+        "max_to_min_ratio": 1.3304688816205414,
+        "max_yearly_sd": 2.3404059476936903,
+        "mean_yearly_sd": 2.0909892444338416,
+        "median_yearly_sd": 2.173478217382607,
+        "min_yearly_sd": 1.759083568225228,
+        "yearly_population_sds": [
+          1.759083568225228,
+          2.3404059476936903,
+          2.173478217382607
+        ]
+      },
+      "CF": {
+        "candidate_status": "diagnostic_only_not_frozen",
+        "coefficient_of_variation": 0.17929185047216326,
+        "diagnostic_candidate_reference_sd": 1.8662778992633737,
+        "max_to_min_ratio": 1.520715763027598,
+        "max_yearly_sd": 2.4743779225311995,
+        "mean_yearly_sd": 1.9892566104406237,
+        "median_yearly_sd": 1.8662778992633737,
+        "min_yearly_sd": 1.627114009527298,
+        "yearly_population_sds": [
+          1.8662778992633737,
+          1.627114009527298,
+          2.4743779225311995
+        ]
+      },
+      "LF": {
+        "candidate_status": "diagnostic_only_not_frozen",
+        "coefficient_of_variation": 0.08284903558575102,
+        "diagnostic_candidate_reference_sd": 2.071231517720798,
+        "max_to_min_ratio": 1.1868182950337245,
+        "max_yearly_sd": 2.457627017176438,
+        "mean_yearly_sd": 2.1998759806753,
+        "median_yearly_sd": 2.071231517720798,
+        "min_yearly_sd": 2.0707694071286644,
+        "yearly_population_sds": [
+          2.071231517720798,
+          2.457627017176438,
+          2.0707694071286644
+        ]
+      },
+      "RF": {
+        "candidate_status": "diagnostic_only_not_frozen",
+        "coefficient_of_variation": 0.22580597199721253,
+        "diagnostic_candidate_reference_sd": 2.0227632782697915,
+        "max_to_min_ratio": 1.6725941444399353,
+        "max_yearly_sd": 2.935338300349723,
+        "mean_yearly_sd": 2.2376876872396467,
+        "median_yearly_sd": 2.0227632782697915,
+        "min_yearly_sd": 1.7549614830994253,
+        "yearly_population_sds": [
+          2.935338300349723,
+          1.7549614830994253,
+          2.0227632782697915
+        ]
+      },
+      "SS": {
+        "candidate_status": "diagnostic_only_not_frozen",
+        "coefficient_of_variation": 0.07564795817688089,
+        "diagnostic_candidate_reference_sd": 1.829254722422816,
+        "max_to_min_ratio": 1.20269402945604,
+        "max_yearly_sd": 1.9409426531051859,
+        "mean_yearly_sd": 1.7946755001497874,
+        "median_yearly_sd": 1.829254722422816,
+        "min_yearly_sd": 1.6138291249213605,
+        "yearly_population_sds": [
+          1.9409426531051859,
+          1.829254722422816,
+          1.6138291249213605
+        ]
+      }
+    },
+    "raw_unit_note": "raw numeric source scale preserved by frozen development target materialization; interpret exact display units from the source contract before final conversion"
+  },
+  "report_schema_version": "0.1",
+  "source": {
+    "2025_data_used": false,
+    "defense_parameter_freeze_run_id": 32198603779,
+    "development_target_years": [
+      2022,
+      2023,
+      2024
+    ],
+    "development_targets_sha256": "1c0a6361420c282db0a9e2c1400341be6cbd5305802422232cffae27a22eae61",
+    "parameter_hash": "sha256:cba6b7ebe4b2598db2c4d9ef360b0784f23a94ad61385f87149b08c46e0390d5"
+  },
+  "status": "diagnostic_complete_no_scale_frozen"
+}
