@@ -1,0 +1,657 @@
+{
+  "confirmation_candidate_ids_inspected": [
+    "A0_neutral",
+    "A2_k25"
+  ],
+  "confirmation_passed": true,
+  "confirmation_scores": [
+    {
+      "candidate_id": "A0_neutral",
+      "equal_year_mean_primary": 0.0032647343977582704,
+      "yearly": {
+        "2024": {
+          "correlation": null,
+          "exposure": 12931.0,
+          "observation_count": 601,
+          "player_rmse": 0.09969040171526342,
+          "score": 0.0032647343977582704,
+          "weighted_mae": 0.04211942745986464
+        }
+      }
+    },
+    {
+      "candidate_id": "A2_k25",
+      "equal_year_mean_primary": 0.0023445732494996718,
+      "yearly": {
+        "2024": {
+          "correlation": 0.36146398110862094,
+          "exposure": 12931.0,
+          "observation_count": 601,
+          "player_rmse": 0.09357334188009894,
+          "score": 0.0023445732494996718,
+          "weighted_mae": 0.034707284636260535
+        }
+      }
+    }
+  ],
+  "confirmation_target_season": 2024,
+  "contracts": [
+    "docs/player-value-v1-baserunning-source-audit-contract.md",
+    "docs/player-value-v1-advancement-projection-selection-contract.md"
+  ],
+  "development_scores": [
+    {
+      "candidate_id": "A0_neutral",
+      "equal_year_mean_primary": 0.0035781987760809303,
+      "yearly": {
+        "2022": {
+          "correlation": null,
+          "exposure": 12840.0,
+          "observation_count": 620,
+          "player_rmse": 0.09469818229591073,
+          "score": 0.0038468525794172655,
+          "weighted_mae": 0.044858103271221354
+        },
+        "2023": {
+          "correlation": null,
+          "exposure": 13467.0,
+          "observation_count": 605,
+          "player_rmse": 0.1073111179331485,
+          "score": 0.003309544972744595,
+          "weighted_mae": 0.04104093689268506
+        }
+      }
+    },
+    {
+      "candidate_id": "A1_k225",
+      "equal_year_mean_primary": 0.00332183229959242,
+      "yearly": {
+        "2022": {
+          "correlation": 0.3322001266535713,
+          "exposure": 12840.0,
+          "observation_count": 620,
+          "player_rmse": 0.09328561546012494,
+          "score": 0.0035916997300780634,
+          "weighted_mae": 0.042723048076011155
+        },
+        "2023": {
+          "correlation": 0.2770403950591298,
+          "exposure": 13467.0,
+          "observation_count": 605,
+          "player_rmse": 0.1060257230224488,
+          "score": 0.003051964869106777,
+          "weighted_mae": 0.03896027311208701
+        }
+      }
+    },
+    {
+      "candidate_id": "A1_k25",
+      "equal_year_mean_primary": 0.0028368849256206422,
+      "yearly": {
+        "2022": {
+          "correlation": 0.3501051453508111,
+          "exposure": 12840.0,
+          "observation_count": 620,
+          "player_rmse": 0.08933963521434968,
+          "score": 0.0030878995537886407,
+          "weighted_mae": 0.038768212190388764
+        },
+        "2023": {
+          "correlation": 0.2968891184175182,
+          "exposure": 13467.0,
+          "observation_count": 605,
+          "player_rmse": 0.10271423024763411,
+          "score": 0.0025858702974526433,
+          "weighted_mae": 0.03581186237854587
+        }
+      }
+    },
+    {
+      "candidate_id": "A1_k75",
+      "equal_year_mean_primary": 0.0030571085025331976,
+      "yearly": {
+        "2022": {
+          "correlation": 0.3406004504162317,
+          "exposure": 12840.0,
+          "observation_count": 620,
+          "player_rmse": 0.09150952689615294,
+          "score": 0.0033206360472758565,
+          "weighted_mae": 0.04050605923025132
+        },
+        "2023": {
+          "correlation": 0.2862019963283999,
+          "exposure": 13467.0,
+          "observation_count": 605,
+          "player_rmse": 0.10447127541225897,
+          "score": 0.002793580957790539,
+          "weighted_mae": 0.03707311259831454
+        }
+      }
+    },
+    {
+      "candidate_id": "A2_k225",
+      "equal_year_mean_primary": 0.0032426295494164276,
+      "yearly": {
+        "2022": {
+          "correlation": 0.3701965982666195,
+          "exposure": 12840.0,
+          "observation_count": 620,
+          "player_rmse": 0.09281647858643068,
+          "score": 0.0035090698134121532,
+          "weighted_mae": 0.04210152435085682
+        },
+        "2023": {
+          "correlation": 0.3033935734631169,
+          "exposure": 13467.0,
+          "observation_count": 605,
+          "player_rmse": 0.10559840909951956,
+          "score": 0.0029761892854207024,
+          "weighted_mae": 0.03837555666099364
+        }
+      }
+    },
+    {
+      "candidate_id": "A2_k25",
+      "equal_year_mean_primary": 0.0026695655379876298,
+      "yearly": {
+        "2022": {
+          "correlation": 0.3934133959817859,
+          "exposure": 12840.0,
+          "observation_count": 620,
+          "player_rmse": 0.08812030140884035,
+          "score": 0.0028888700121331478,
+          "weighted_mae": 0.03762648122149678
+        },
+        "2023": {
+          "correlation": 0.3229515170523665,
+          "exposure": 13467.0,
+          "observation_count": 605,
+          "player_rmse": 0.1019345130585953,
+          "score": 0.0024502610638421113,
+          "weighted_mae": 0.034896963843414786
+        }
+      }
+    },
+    {
+      "candidate_id": "A2_k75",
+      "equal_year_mean_primary": 0.0029285818069299295,
+      "yearly": {
+        "2022": {
+          "correlation": 0.38187074453477715,
+          "exposure": 12840.0,
+          "observation_count": 620,
+          "player_rmse": 0.09063573549010338,
+          "score": 0.0031802727375091822,
+          "weighted_mae": 0.039483155717103084
+        },
+        "2023": {
+          "correlation": 0.3138978906154313,
+          "exposure": 13467.0,
+          "observation_count": 605,
+          "player_rmse": 0.10375370894625914,
+          "score": 0.0026768908763506764,
+          "weighted_mae": 0.03636747794399407
+        }
+      }
+    }
+  ],
+  "development_selection": {
+    "catastrophic_development_years": [],
+    "development_baseline_score": 0.0035781987760809303,
+    "development_passed": true,
+    "development_player_specific_winner": "A2_k25",
+    "development_selected_score": 0.0026695655379876298,
+    "selected_candidate_id": "A2_k25"
+  },
+  "development_target_seasons": [
+    2022,
+    2023
+  ],
+  "firewall": {
+    "all_candidate_target_seasons": [
+      2022,
+      2023
+    ],
+    "confirmation_alternatives_inspected": false,
+    "confirmation_only_scores_a0_and_preselected_winner": true,
+    "live_source_hashes_required_to_match_certified_audit": true,
+    "uses_2025_for_selection": false
+  },
+  "frozen_candidate_id": "A2_k25",
+  "mlb_2024_advancement_reference": {
+    "nonsteal_advancement_opportunities": 12931.0,
+    "nonsteal_advancement_runs": -0.5907092039999433,
+    "note": "Final production opportunity rate per MLB PA remains a separate post-selection materialization using the certified MLB PA reference.",
+    "observed_runs_per_opportunity": -4.56816335936852e-05,
+    "runner_row_count": 608
+  },
+  "notes": [
+    "This gate tests persistence of source-defined non-steal advancement run value; it does not refit Statcast's event model.",
+    "Realized target advancement opportunities are used only as retrospective scoring exposure.",
+    "MiLB-only players remain neutral for this channel unless a separately certified translation is later predeclared."
+  ],
+  "source": {
+    "captures": [
+      {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2019&season_end=2019&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 155686,
+        "response_sha256": "e74b796ff141d41769c7f189f98ca21b368e83ff133e5f86f0649f9b6aebb6ec",
+        "row_count": 659,
+        "season": 2019
+      },
+      {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2020&season_end=2020&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 120727,
+        "response_sha256": "30cbc63237cf1c4f6f16185595d61d52586eca12adb616791c12d563e7722bc8",
+        "row_count": 517,
+        "season": 2020
+      },
+      {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2021&season_end=2021&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 159119,
+        "response_sha256": "ffc34eb933553ea5536d17462965d43d2a1785bfdc9e26007bd96e06724771a3",
+        "row_count": 680,
+        "season": 2021
+      },
+      {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2022&season_end=2022&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 147311,
+        "response_sha256": "faf3db3337e40fdade1099086da537d1f046a57f6f07e11601a752b1c011be39",
+        "row_count": 625,
+        "season": 2022
+      },
+      {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2023&season_end=2023&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 143564,
+        "response_sha256": "64798cec13385b3caeae89a5f01c642d97783628efd7061f041287f9a1c820a5",
+        "row_count": 611,
+        "season": 2023
+      },
+      {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2024&season_end=2024&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 142396,
+        "response_sha256": "51edc407bebb2d202a43e2e5b0ac29714178f905db0ff42d893637f85a94ab2d",
+        "row_count": 608,
+        "season": 2024
+      }
+    ],
+    "certified_audit": "docs/player-value-v1-baserunning-source-audit-result.json",
+    "endpoint": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value",
+    "player_season_row_count": 3700,
+    "provider": "Baseball Savant",
+    "scoreable_rows_by_season": {
+      "2019": 652,
+      "2020": 506,
+      "2021": 669,
+      "2022": 620,
+      "2023": 605,
+      "2024": 601
+    },
+    "season_audits": {
+      "2019": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 659,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 659,
+        "run_decomposition": {
+          "checked_rows": 659,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      },
+      "2020": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 517,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 517,
+        "run_decomposition": {
+          "checked_rows": 517,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 2.220446049250313e-16
+        }
+      },
+      "2021": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 680,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 680,
+        "run_decomposition": {
+          "checked_rows": 680,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 4.440892098500626e-16
+        }
+      },
+      "2022": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 625,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 625,
+        "run_decomposition": {
+          "checked_rows": 625,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 4.440892098500626e-16
+        }
+      },
+      "2023": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 611,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 611,
+        "run_decomposition": {
+          "checked_rows": 611,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      },
+      "2024": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 608,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 608,
+        "run_decomposition": {
+          "checked_rows": 608,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      }
+    }
+  },
+  "source_seasons": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "status": "player_value_v1_advancement_projection_selection_completed",
+  "verified_source_commit": "0a505953e065bbf14189dcef6e1d9e403603178f"
+}
