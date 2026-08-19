@@ -7,6 +7,10 @@ from typing import Any
 
 
 MLB_BASERUNNING_SOURCE_FIELDS = (
+    "hits",
+    "doubles",
+    "triples",
+    "homeRuns",
     "stolenBases",
     "caughtStealing",
     "groundIntoDoublePlay",
@@ -35,6 +39,8 @@ def audit_mlb_baserunning_splits(
     field_nonnull_rows = {field: 0 for field in MLB_BASERUNNING_SOURCE_FIELDS}
     gidp_checked_rows = 0
     gidp_violation_rows = 0
+    hit_identity_checked_rows = 0
+    hit_identity_violation_rows = 0
 
     for split in splits:
         stat = split.get("stat") or {}
@@ -54,10 +60,22 @@ def audit_mlb_baserunning_splits(
             if gidp > opportunities:
                 gidp_violation_rows += 1
 
+        hit_components = [parsed[field] for field in ("hits", "doubles", "triples", "homeRuns")]
+        if all(value is not None for value in hit_components):
+            hits, doubles, triples, home_runs = (int(value) for value in hit_components)
+            hit_identity_checked_rows += 1
+            if hits - doubles - triples - home_runs < 0:
+                hit_identity_violation_rows += 1
+
     if gidp_violation_rows:
         raise ValueError(
             "MLB baserunning source violates groundIntoDoublePlay <= gidpOpp "
             f"in {gidp_violation_rows} rows"
+        )
+    if hit_identity_violation_rows:
+        raise ValueError(
+            "MLB baserunning source implies negative singles in "
+            f"{hit_identity_violation_rows} rows"
         )
 
     row_count = len(splits)
@@ -74,6 +92,10 @@ def audit_mlb_baserunning_splits(
         },
         "gidp_opportunity_identity": {
             "checked_rows": gidp_checked_rows,
+            "violation_rows": 0,
+        },
+        "singles_identity": {
+            "checked_rows": hit_identity_checked_rows,
             "violation_rows": 0,
         },
     }
