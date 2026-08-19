@@ -6,11 +6,13 @@ Last updated: 2026-08-19
 
 Define the downstream Player Value architecture while preserving the already-frozen upstream batting, playing-time, role, and Defense decisions.
 
-This document freezes **layer boundaries and evidence reuse**. Batting projected runs, Defense runs/exposure, and positional adjustment are now frozen. Replacement level is the active gate. Runs per win and WAR/value aggregation remain closed.
+This document freezes **layer boundaries and evidence reuse**. It has been revised after a broader public WAR-methodology review identified three required pre-WAR corrections: replacement level must be reopened, baserunning must be modeled, and the average-relative components require an explicit MLB-reference centering layer. A park-neutrality audit is also required before adding any park correction.
+
+Binding literature record: `docs/player-value-v1-war-literature-review.md`.
 
 ## Status
 
-**ARCHITECTURE FROZEN — BATTING RUNS / DEFENSE / POSITIONAL ADJUSTMENT FROZEN AND VERIFIED — REPLACEMENT-LEVEL GATE ACTIVE.**
+**ARCHITECTURE FROZEN — BATTING / DEFENSE / POSITION FROZEN — RUNS PER WIN FROZEN — REPLACEMENT REOPENED — BASERUNNING / CENTERING / PARK AUDIT REQUIRED — WAR CLOSED.**
 
 WAR/value is not yet authorized.
 
@@ -33,14 +35,7 @@ Implementation: `src/universal_baseball/player_value_batting_runs.py`.
 
 Verification: `docs/player-value-v1-batting-runs-verification.json`, Actions run `32275192829`.
 
-The existing Performance value infrastructure remains the run-value foundation:
-
-- contextual event value uses the frozen RE24/state-transition definition;
-- certified league-season core-bin values remain upstream evidence;
-- frozen Projection v1 supplies a 12-part mutually exclusive core-bin composition;
-- frozen Playing Time v1 supplies expected MLB PA.
-
-Projection probabilities are conditional on a core event, not shares of all PA. Player Value therefore creates one pooled certified MLB reference environment from the latest certified MLB Performance materialization available to the snapshot:
+The frozen batting conversion is:
 
 `coverage_mlb = aggregate MLB core events / aggregate MLB PA`
 
@@ -50,15 +45,13 @@ Projection probabilities are conditional on a core event, not shares of all PA. 
 
 `RV_ref_core = sum_b(P_ref[b] * V_mlb[b])`
 
-For player `i`:
-
 `RV_i_core = sum_b(P_i[b] * V_mlb[b])`
 
 `Rbat_i = projected_expected_mlb_pa_i * coverage_mlb * (RV_i_core - RV_ref_core)`
 
-The same MLB coverage is applied to every player. Do not project player-specific `core_events / PA` in v1; source/taxonomy coverage is not an authorized talent dimension.
+Projection probabilities are a 12-part mutually exclusive composition conditional on a core event. The same MLB coverage is applied to every player; source/taxonomy coverage is not a projected talent dimension.
 
-Batting runs are above the pooled MLB reference only. Replacement credit, position, league centering, and runs-per-win are not part of this layer.
+Batting runs are average-relative inside the pooled MLB reference. Replacement, baserunning, position, centering, and runs per win remain separate layers.
 
 ## 2. Defensive skill -> runs — FROZEN
 
@@ -69,35 +62,27 @@ Defense skill hierarchy remains frozen:
 - catcher blocking: repaired C2 when eligible; otherwise B0 neutral;
 - catcher framing: eligible tracked MLB catcher -> F1; otherwise F0 neutral; MiLB framing F0.
 
-Tracked MiLB range/framing remain closed for v1.
+The common frozen conversion is:
 
-The common frozen conversion form is:
-
-`component_runs = frozen_skill_z * projected_native_opportunities * run_rate_per_z_opportunity`.
-
-Each component/position has its own pre-2025 calibration to a public run-valued target. There is no arbitrary universal `runs per z` constant. Neutral B0/F0 skill maps to zero modeled component runs.
+`component_runs = frozen_skill_z * projected_native_opportunities * run_rate_per_z_opportunity`
 
 Binding parameters: `docs/player-value-v1-defense-native-run-conversion-parameters.json`.
 
 ## 3. Defensive exposure — FROZEN
 
-Observed general defensive exposure is official `fielding_outs` over:
-
-`C, 1B, 2B, 3B, SS, LF, CF, RF`.
+Observed general defensive exposure uses official `fielding_outs` over `C, 1B, 2B, 3B, SS, LF, CF, RF`.
 
 Forward bridge:
 
-- projected total defensive outs = `B0_raw_persistence` = prior-season MLB defensive outs;
-- projected position shares = `S0_prior_defensive_share_persistence` = prior-season defensive-out shares;
+- projected total defensive outs = prior-season MLB defensive outs;
+- projected position shares = prior defensive-out shares;
 - projected position outs = frozen total x frozen position share.
 
-Catcher opportunities are independently frozen:
+Catcher native opportunities remain frozen:
 
 - throwing `sb_attempts`: fixed 50/50 raw-persistence / frozen-Playing-Time-ratio hybrid;
-- blocking Savant `pitches`: fixed 50/50 raw-persistence / frozen-Playing-Time-ratio hybrid;
+- blocking Savant `pitches`: fixed 50/50 hybrid;
 - framing Savant `pitches`: raw persistence.
-
-Do not reopen rejected projected-PA general-outs, Position/Role-normalized defensive-share, or catcher-opportunity challengers.
 
 ## 4. Positional adjustment — FROZEN
 
@@ -119,21 +104,19 @@ Use the fixed FanGraphs 162-game schedule:
 - RF -7.5
 - DH -17.5
 
-For non-DH positions:
+Non-DH:
 
 `Rpos[p] = schedule_runs[p] * projected_position_fielding_outs[p] / 4374`
 
-For DH:
+DH:
 
 `Rpos[DH] = -17.5 * projected_DH_role_events / 162`
 
-DH role events use frozen raw prior-season persistence. Do not renormalize player exposure and do not league-center inside Rpos.
-
-Position-relative Defense skill must remain separate from positional difficulty.
+Do not league-center inside the positional layer itself. Any aggregate imbalance is handled by the separate MLB-reference centering layer.
 
 ## 5. Neutral Defense fallback semantics
 
-B0/F0 neutral means zero modeled adjustment for that specific defensive component on its defined position-relative skill scale. It does not mean the player is certainly average, does not erase uncertainty, and does not authorize a downstream rescue model.
+B0/F0 neutral means zero modeled adjustment for that specific defensive component on its defined position-relative skill scale. It does not mean certainty of average ability and does not authorize a downstream rescue model.
 
 ## 6. Confirmation-period firewall
 
@@ -143,26 +126,86 @@ Player Value may use frozen confirmation decisions to know which upstream compon
 
 Any genuinely new held-out period must be identified before outcomes are opened for that downstream gate.
 
-## 7. Replacement level — ACTIVE
+## 7. Replacement level — REOPENED / ACTIVE
 
-Replacement level is separate from batting skill, defensive skill/runs, positional adjustment, and playing-time forecasting.
+Binding contract: `docs/player-value-v1-replacement-level-contract.md`.
 
-The replacement-level gate may now open because batting runs, Defense runs/exposure, and positional adjustment all have frozen production definitions.
+The prior fixed `20.5 runs / 600 projected MLB PA` convention was implemented and verified in Actions run `32275638045`, but the literature review showed that it was too literal a representation of Baseball-Reference's final replacement accounting. That convention is superseded for final WAR while its implementation/verification remain as provenance.
 
-The gate must:
+Predeclared binding candidate:
 
-1. research established public replacement-level conventions and authoritative methodology;
-2. predeclare the v1 replacement form and exposure/population assumptions before final ranking outcomes are inspected;
-3. implement and verify replacement runs separately from the runs-per-win choice;
-4. preserve replacement runs as an explicit output field.
+`WARrep_pool_ref = 570 * (MLB_games_ref / 2430)`
 
-No replacement-level choice may retroactively alter batting, Defense, position, or Playing Time.
+`replacement_runs_per_pa_ref = WARrep_pool_ref * RPW_ref / MLB_PA_ref`
 
-## 8. Runs per win remains closed
+`Rrep_i = projected_expected_mlb_pa_i * replacement_runs_per_pa_ref`
 
-Runs per win opens only after replacement level is frozen. It must remain an explicit convention and must not be hidden inside replacement credit or component scales.
+This follows the FanGraphs position-player allocation. Baseball-Reference's 590-WAR / 59% allocation and the legacy 20.5/600 form are required sensitivities.
 
-## 9. WAR/value remains closed
+Replacement is not refrozen until completed-reference-season MLB games, PA, RPW, and the resulting rate are materialized and verified.
+
+## 8. Runs per win — FROZEN METHOD
+
+Binding contract: `docs/player-value-v1-runs-per-win-contract.md`.
+
+Implementation verification: `docs/player-value-v1-runs-per-win-verification.json`, Actions run `32275833614`.
+
+Binding convention:
+
+`RPW = 1.5 * MLB_runs_per_9_innings + 3`
+
+Use one completed certified pooled MLB run environment and one common position-player RPW for the snapshot.
+
+The 2024 certified MLB reference environment contains 21,343 runs over 43,116 1/3 innings, approximately `9.68263` runs per win; production should consume the exact persisted value rather than a rounded documentation number.
+
+Baseball-Reference/PythagenPat remains a sensitivity, not the binding v1 divisor.
+
+## 9. Baserunning / GIDP — REQUIRED / ACTIVE AFTER REPLACEMENT REFRESH
+
+Both FanGraphs and Baseball-Reference include baserunning in position-player WAR. Baseball-Reference also preserves a separate GIDP run term.
+
+Player Value v1 must not silently omit these components.
+
+The baserunning gate must audit available public evidence and predeclare a universal hierarchy before final rankings are inspected. Preferred investigation order:
+
+1. MLB Statcast Baserunning Run Value / underlying opportunities;
+2. comparable affiliated MiLB advancement evidence where available;
+3. SB/CS-based run value as a lower-information fallback;
+4. neutral fallback when evidence is insufficient.
+
+GIDP avoidance must be audited for whether it can be modeled separately without double-counting the frozen batting taxonomy or baserunning term.
+
+## 10. MLB-reference centering — REQUIRED
+
+The final average-relative components cannot be assumed to sum exactly to zero merely because each component was designed around an average baseline.
+
+Use a fixed certified MLB reference population, never the loaded universal ranking population.
+
+Candidate form after the relevant components freeze:
+
+`Ravg_raw_ref = aggregate(Rbat + Rbr + Rdp_if_separate + Rdef + Rpos)`
+
+`centering_runs_per_pa = -Ravg_raw_ref / aggregate_reference_MLB_PA`
+
+`Rlg_i = projected_expected_mlb_pa_i * centering_runs_per_pa`
+
+The exact reference population and exposure semantics must be predeclared before this gate freezes.
+
+This layer is especially important in the universal-DH era because a fixed positional schedule including DH is not automatically zero-sum.
+
+## 11. Park-neutrality audit — REQUIRED
+
+Traditional WAR batting is park-adjusted because observed offense inherits park context. Player Value v1 already translates a projected core-event composition through one pooled MLB RE24 value environment, so an additional park adjustment could double-correct context.
+
+Before adding any park term:
+
+1. test whether frozen batting/current-talent outputs retain systematic park/team residuals;
+2. document the result;
+3. add an explicit park correction only if a concrete residual-context problem is demonstrated.
+
+No park correction is authorized merely because traditional WAR includes one.
+
+## 12. WAR/value remains closed
 
 No WAR calculation is authorized until:
 
@@ -170,19 +213,27 @@ No WAR calculation is authorized until:
 2. defensive run conversion — **DONE**;
 3. defensive/catcher opportunity forecasts — **DONE**;
 4. positional adjustment — **DONE**;
-5. replacement level — **ACTIVE / NOT YET FROZEN**;
-6. runs per win — **CLOSED**.
+5. runs per win method — **DONE**;
+6. replacement level — **REOPENED / ACTIVE**;
+7. baserunning/GIDP — **REQUIRED**;
+8. MLB-reference centering — **REQUIRED**;
+9. park-neutrality audit — **REQUIRED**;
+10. required sensitivities — **NOT COMPLETE**.
 
-## 10. Required final Player Value decomposition
+## 13. Required final Player Value decomposition
 
 Future player-season output must preserve separate fields for at least:
 
 - projected batting runs above MLB reference;
+- projected baserunning runs;
+- projected GIDP runs if modeled separately;
 - projected general-defense runs;
 - projected catcher-throwing runs;
 - projected catcher-blocking runs;
 - projected catcher-framing runs;
 - positional adjustment runs;
+- MLB-reference centering/league-adjustment runs;
+- explicit park adjustment if the audit justifies one;
 - replacement runs;
 - runs above replacement;
 - runs-per-win convention;
@@ -195,24 +246,33 @@ Future player-season output must preserve separate fields for at least:
 
 Do not collapse these into one opaque value before persistence.
 
-## 11. Required sensitivities before final WAR freeze
+Intended final form:
 
-The final pre-WAR QA must include, without retuning the binding choices:
+`RAR = Rbat + Rbr + Rdp_if_separate + Rdef + Rpos + Rlg + Rpark_if_required + Rrep`
 
-- positional adjustment under the current raw Baseball-Reference schedule versus the binding FanGraphs schedule;
-- batting runs under an alternate recent certified MLB reference season when available;
-- any sensitivity explicitly required by the eventual replacement-level contract.
+`WAR = RAR / RPW`
 
-Sensitivities are diagnostics, not a license to choose the version that produces preferred player rankings.
+## 14. Required sensitivities before final WAR freeze
+
+Without retuning binding choices from player rankings, final QA must include:
+
+- Baseball-Reference current raw positional schedule versus binding FanGraphs schedule;
+- alternate recent certified MLB batting reference season when available;
+- replacement 570-WAR vs 590-WAR allocation;
+- legacy 20.5/600 replacement comparison;
+- Baseball-Reference/PythagenPat runs-to-wins comparison if practical;
+- any additional sensitivity predeclared by the baserunning or centering contracts.
+
+Sensitivities are diagnostics, not a license to choose the version that produces preferred rankings.
 
 ## Binding boundaries
 
-- Do not refit Current Talent, Projection, Playing Time, Position/Role, or Defense.
-- Do not reopen batting run conversion or positional adjustment absent a concrete implementation failure.
+- Do not refit Current Talent, Projection, Playing Time, Position/Role, Defense, batting-run conversion, or positional adjustment absent a concrete implementation failure.
 - Do not tune downstream decisions to already-accessed 2025 confirmation residuals.
 - Do not assign arbitrary defensive `runs per z` values.
 - Do not make Performance source/taxonomy coverage a player batting-talent term.
 - Do not hide positional difficulty inside Defense skill.
+- Do not center against the universal ranking population.
+- Do not add a park adjustment without evidence of residual park context.
+- Do not use the superseded 20.5/600 replacement implementation for final WAR.
 - Do not calculate WAR yet.
-- Replacement-level research/selection is authorized now.
-- Runs-per-win selection opens only after replacement level freezes.
