@@ -1,0 +1,142 @@
+{
+  "audit_contract": "docs/player-value-v1-baserunning-source-audit-contract.md",
+  "captures": [
+    {
+      "group": "hitting",
+      "league_id": 103,
+      "offset": 0,
+      "response_sha256": "ca0cd722b53015e04fef4237fe7a54e7bcf023b33f1b8aee50395796e3fe0718",
+      "returned_split_count": 391,
+      "season": 2024,
+      "total_splits": 391
+    },
+    {
+      "group": "hitting",
+      "league_id": 104,
+      "offset": 0,
+      "response_sha256": "c21bb79c89d5c95055b8004e12d632e885551153d629441a129219be5fb1b0dc",
+      "returned_split_count": 389,
+      "season": 2024,
+      "total_splits": 389
+    }
+  ],
+  "mlb_leagues": {
+    "103": {
+      "fields": {
+        "caughtStealing": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "gidpOpp": {
+          "complete": false,
+          "missing_rows": 391,
+          "nonnull_rows": 0,
+          "present_rows": 0
+        },
+        "groundIntoDoublePlay": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "stolenBases": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        }
+      },
+      "gidp_opportunity_identity": {
+        "checked_rows": 0,
+        "violation_rows": 0
+      },
+      "row_count": 391
+    },
+    "104": {
+      "fields": {
+        "caughtStealing": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "gidpOpp": {
+          "complete": false,
+          "missing_rows": 389,
+          "nonnull_rows": 0,
+          "present_rows": 0
+        },
+        "groundIntoDoublePlay": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "stolenBases": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        }
+      },
+      "gidp_opportunity_identity": {
+        "checked_rows": 0,
+        "violation_rows": 0
+      },
+      "row_count": 389
+    }
+  },
+  "mlb_pooled": {
+    "fields": {
+      "caughtStealing": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "gidpOpp": {
+        "complete": false,
+        "missing_rows": 780,
+        "nonnull_rows": 0,
+        "present_rows": 0
+      },
+      "groundIntoDoublePlay": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "stolenBases": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      }
+    },
+    "gidp_opportunity_identity": {
+      "checked_rows": 0,
+      "violation_rows": 0
+    },
+    "row_count": 780
+  },
+  "mlb_source": {
+    "endpoint": "https://statsapi.mlb.com/api/v1/stats",
+    "game_type": "R",
+    "group": "hitting",
+    "league_ids": [
+      103,
+      104
+    ],
+    "player_pool": "ALL",
+    "provider": "MLB Stats API",
+    "stats": "season"
+  },
+  "notes": [
+    "Missing source fields remain missing; the audit does not zero-fill them.",
+    "This artifact audits source semantics only and does not select baserunning model parameters."
+  ],
+  "season": 2024,
+  "status": "player_value_v1_baserunning_source_audit_materialized"
+}
