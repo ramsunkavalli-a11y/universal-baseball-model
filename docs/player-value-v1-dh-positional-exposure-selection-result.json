@@ -1,0 +1,381 @@
+{
+  "boundary": {
+    "2025_outcomes_accessed": false,
+    "current_talent_refit": false,
+    "defense_refit": false,
+    "general_defensive_exposure_changed": false,
+    "playing_time_refit": false,
+    "position_role_refit": false,
+    "positional_adjustment_runs_calculated": false,
+    "positional_run_schedule_selected": false,
+    "projection_refit": false,
+    "replacement_level_selected": false,
+    "runs_per_win_selected": false,
+    "war_value_calculated": false
+  },
+  "contract": "docs/player-value-v1-dh-positional-exposure-selection-contract.md",
+  "contract_git_blob_sha1": "3f872dc62b90dca23160933ecc2ab08b0a7385fe",
+  "contract_sha256": "a154be37992f135df9ac8fca8688b0a1283a598fe8ce9a87ed294cffabb9ce8b",
+  "equal_fold_means": {
+    "B0_raw_dh_role_event_persistence": {
+      "mae": 1.2846434744130466,
+      "rmse": 6.312973613184298
+    },
+    "H1_fixed_50_50_B0_P1_hybrid": {
+      "mae": 1.2851692998196083,
+      "rmse": 6.075071419830172
+    },
+    "P1_frozen_role_share_playing_time_ratio": {
+      "mae": 1.412618462930228,
+      "rmse": 6.693234612622895
+    },
+    "R1_frozen_role_share_persistent_volume": {
+      "mae": 1.3025041758704923,
+      "rmse": 6.1017440864014105
+    }
+  },
+  "folds": {
+    "2022_to_2023": {
+      "diagnostics": {
+        "P1_fallback_to_R1_count": 2498,
+        "observed_dh_positive": 328,
+        "playing_time_available": 3122,
+        "playing_time_missing": 0,
+        "position_role_players": 3122,
+        "prior_dh_positive": 335,
+        "prior_role_source_missing": 2499
+      },
+      "metrics": {
+        "B0_raw_dh_role_event_persistence": {
+          "entrant_dh": {
+            "mae": 6.51063829787234,
+            "n": 94,
+            "rmse": 16.39083812585815
+          },
+          "exit_dh": {
+            "mae": 5.237623762376238,
+            "n": 101,
+            "rmse": 7.949718221545981
+          },
+          "incumbent_dh": {
+            "mae": 10.552238805970148,
+            "n": 335,
+            "rmse": 18.351704951498803
+          },
+          "mae": 1.3283151825752724,
+          "n": 3122,
+          "observed_mean": 1.523062139654068,
+          "predicted_mean": 1.4817424727738628,
+          "rmse": 6.650345706359447,
+          "target_positive": {
+            "mae": 11.03048780487805,
+            "n": 328,
+            "rmse": 20.037617062938786
+          }
+        },
+        "H1_fixed_50_50_B0_P1_hybrid": {
+          "entrant_dh": {
+            "mae": 6.2124427603377335,
+            "n": 94,
+            "rmse": 15.97514739840868
+          },
+          "exit_dh": {
+            "mae": 5.274104929042464,
+            "n": 101,
+            "rmse": 7.152633117866343
+          },
+          "incumbent_dh": {
+            "mae": 9.939161002856718,
+            "n": 335,
+            "rmse": 17.121359377962627
+          },
+          "mae": 1.3195817319962437,
+          "n": 3122,
+          "observed_mean": 1.523062139654068,
+          "predicted_mean": 1.374557805830492,
+          "rmse": 6.2679674234804175,
+          "target_positive": {
+            "mae": 10.307634017059325,
+            "n": 328,
+            "rmse": 18.88866146283721
+          }
+        },
+        "P1_frozen_role_share_playing_time_ratio": {
+          "entrant_dh": {
+            "mae": 6.421779926823218,
+            "n": 94,
+            "rmse": 15.688728116434635
+          },
+          "exit_dh": {
+            "mae": 5.310586095708691,
+            "n": 101,
+            "rmse": 6.949109142670144
+          },
+          "incumbent_dh": {
+            "mae": 10.645080706802423,
+            "n": 335,
+            "rmse": 18.984683391817388
+          },
+          "mae": 1.46766193902218,
+          "n": 3122,
+          "observed_mean": 1.523062139654068,
+          "predicted_mean": 1.267373138887121,
+          "rmse": 6.83220863575704,
+          "target_positive": {
+            "mae": 11.077378519004927,
+            "n": 328,
+            "rmse": 20.585899604925054
+          }
+        },
+        "R1_frozen_role_share_persistent_volume": {
+          "entrant_dh": {
+            "mae": 5.999404171371132,
+            "n": 94,
+            "rmse": 15.364927703303744
+          },
+          "exit_dh": {
+            "mae": 5.170825684858988,
+            "n": 101,
+            "rmse": 6.964819054636188
+          },
+          "incumbent_dh": {
+            "mae": 10.383651940911978,
+            "n": 335,
+            "rmse": 17.821403545860296
+          },
+          "mae": 1.3658376429299806,
+          "n": 3122,
+          "observed_mean": 1.523062139654068,
+          "predicted_mean": 1.5494413941174838,
+          "rmse": 6.432876881783392,
+          "target_positive": {
+            "mae": 10.732359750437931,
+            "n": 328,
+            "rmse": 19.41908221354118
+          }
+        }
+      }
+    },
+    "2023_to_2024": {
+      "diagnostics": {
+        "P1_fallback_to_R1_count": 2458,
+        "observed_dh_positive": 304,
+        "playing_time_available": 3045,
+        "playing_time_missing": 1,
+        "position_role_players": 3046,
+        "prior_dh_positive": 300,
+        "prior_role_source_missing": 2457
+      },
+      "metrics": {
+        "B0_raw_dh_role_event_persistence": {
+          "entrant_dh": {
+            "mae": 5.79047619047619,
+            "n": 105,
+            "rmse": 9.736529155710468
+          },
+          "exit_dh": {
+            "mae": 5.2772277227722775,
+            "n": 101,
+            "rmse": 8.244410047401995
+          },
+          "incumbent_dh": {
+            "mae": 10.573333333333334,
+            "n": 300,
+            "rmse": 18.14864549583063
+          },
+          "mae": 1.2409717662508208,
+          "n": 3046,
+          "observed_mean": 1.5807616546290217,
+          "predicted_mean": 1.4461588969139856,
+          "rmse": 5.97560152000915,
+          "target_positive": {
+            "mae": 10.680921052631579,
+            "n": 304,
+            "rmse": 18.308485953096636
+          }
+        },
+        "H1_fixed_50_50_B0_P1_hybrid": {
+          "entrant_dh": {
+            "mae": 5.411379076898089,
+            "n": 105,
+            "rmse": 9.53015417339995
+          },
+          "exit_dh": {
+            "mae": 4.999029011722691,
+            "n": 101,
+            "rmse": 7.23649320306698
+          },
+          "incumbent_dh": {
+            "mae": 10.311052060440145,
+            "n": 300,
+            "rmse": 17.848559275621163
+          },
+          "mae": 1.2507568676429728,
+          "n": 3046,
+          "observed_mean": 1.5807616546290217,
+          "predicted_mean": 1.3161958347089588,
+          "rmse": 5.882175416179925,
+          "target_positive": {
+            "mae": 10.383580562573524,
+            "n": 304,
+            "rmse": 18.120464341079757
+          }
+        },
+        "P1_frozen_role_share_playing_time_ratio": {
+          "entrant_dh": {
+            "mae": 5.524812666656331,
+            "n": 105,
+            "rmse": 9.55698279923445
+          },
+          "exit_dh": {
+            "mae": 4.720830300673106,
+            "n": 101,
+            "rmse": 6.698082145970297
+          },
+          "incumbent_dh": {
+            "mae": 10.8615936154739,
+            "n": 300,
+            "rmse": 20.010484925065214
+          },
+          "mae": 1.3575749868382763,
+          "n": 3046,
+          "observed_mean": 1.5807616546290217,
+          "predicted_mean": 1.1862327725039317,
+          "rmse": 6.55426058948875,
+          "target_positive": {
+            "mae": 11.058485375898359,
+            "n": 304,
+            "rmse": 20.292663711678127
+          }
+        },
+        "R1_frozen_role_share_persistent_volume": {
+          "entrant_dh": {
+            "mae": 5.275657463325288,
+            "n": 105,
+            "rmse": 9.445657741702455
+          },
+          "exit_dh": {
+            "mae": 5.199332163685008,
+            "n": 101,
+            "rmse": 7.337373939793273
+          },
+          "incumbent_dh": {
+            "mae": 10.157651193402966,
+            "n": 300,
+            "rmse": 17.48310782976608
+          },
+          "mae": 1.239170708811004,
+          "n": 3046,
+          "observed_mean": 1.5807616546290217,
+          "predicted_mean": 1.4718652280326394,
+          "rmse": 5.77061129101943,
+          "target_positive": {
+            "mae": 10.118772510321904,
+            "n": 304,
+            "rmse": 17.73603253219031
+          }
+        }
+      }
+    }
+  },
+  "provenance": {
+    "fielding_role_source": {
+      "artifact_digest": "sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3",
+      "artifact_name": "position-role-historical-source-2021-2024",
+      "run_id": 32148467330
+    },
+    "playing_time_selection": {
+      "artifact_digest": "sha256:a8719576ef7ed7377a6376556d34e1fd377d5e27ca88535543a43c615f4cb5d8",
+      "artifact_name": "playing-time-v1-candidate-selection",
+      "run_id": 32141616127
+    },
+    "playing_time_validation_2023": {
+      "artifact_digest": "sha256:738c631f5b4fbaa7875219ee452996e487799c4a323b0cafa57a7500583c5b39",
+      "artifact_name": "playing-time-v1-validation-2023",
+      "run_id": 32141934868
+    },
+    "playing_time_validation_2024": {
+      "artifact_digest": "sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366",
+      "artifact_name": "playing-time-v1-validation-2024",
+      "run_id": 32142089669
+    },
+    "position_role": {
+      "artifact_digest": "sha256:4e98081cb1800d45f3668595e4e61a169dbce68a8b565aa1e8f60d7dcd1417e5",
+      "artifact_name": "position-role-transition-challenger-development",
+      "run_id": 32152125644
+    }
+  },
+  "role_semantics": "games_started by position when total starts > 0; otherwise games_played fallback",
+  "schema_version": "0.1",
+  "selection": {
+    "challenger_evaluations": {
+      "H1_fixed_50_50_B0_P1_hybrid": {
+        "entrant_mae_guard": true,
+        "equal_fold_mae_strictly_lower": false,
+        "equal_fold_rmse_strictly_lower": true,
+        "fold_overall_mae_guard": true,
+        "passes": false,
+        "per_fold": {
+          "2022_to_2023": {
+            "entrant_mae_strictly_lower": true,
+            "overall_mae_within_2pct": true,
+            "target_positive_mae_within_2pct": true
+          },
+          "2023_to_2024": {
+            "entrant_mae_strictly_lower": true,
+            "overall_mae_within_2pct": true,
+            "target_positive_mae_within_2pct": true
+          }
+        },
+        "target_positive_mae_guard": true
+      },
+      "P1_frozen_role_share_playing_time_ratio": {
+        "entrant_mae_guard": true,
+        "equal_fold_mae_strictly_lower": false,
+        "equal_fold_rmse_strictly_lower": false,
+        "fold_overall_mae_guard": false,
+        "passes": false,
+        "per_fold": {
+          "2022_to_2023": {
+            "entrant_mae_strictly_lower": true,
+            "overall_mae_within_2pct": false,
+            "target_positive_mae_within_2pct": true
+          },
+          "2023_to_2024": {
+            "entrant_mae_strictly_lower": true,
+            "overall_mae_within_2pct": false,
+            "target_positive_mae_within_2pct": false
+          }
+        },
+        "target_positive_mae_guard": false
+      },
+      "R1_frozen_role_share_persistent_volume": {
+        "entrant_mae_guard": true,
+        "equal_fold_mae_strictly_lower": false,
+        "equal_fold_rmse_strictly_lower": true,
+        "fold_overall_mae_guard": false,
+        "passes": false,
+        "per_fold": {
+          "2022_to_2023": {
+            "entrant_mae_strictly_lower": true,
+            "overall_mae_within_2pct": false,
+            "target_positive_mae_within_2pct": true
+          },
+          "2023_to_2024": {
+            "entrant_mae_strictly_lower": true,
+            "overall_mae_within_2pct": true,
+            "target_positive_mae_within_2pct": true
+          }
+        },
+        "target_positive_mae_guard": true
+      }
+    },
+    "passing_challengers": [],
+    "reason": "no challenger passed all predeclared gates",
+    "selected_form": "B0_raw_dh_role_event_persistence",
+    "selected_formula": "projected_dh_role_events = prior_dh_role_events"
+  },
+  "source_run_id": 32270141291,
+  "source_sha": "81ca6bc6996c5750ddb8181b8f10a45552876d38",
+  "status": "player_value_v1_dh_positional_exposure_frozen"
+}
