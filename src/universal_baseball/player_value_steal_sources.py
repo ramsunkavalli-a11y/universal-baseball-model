@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict
 from hashlib import sha256
 import io
+import math
 from typing import Any, Iterable
 
 import polars as pl
@@ -60,7 +61,7 @@ def _integer_count(value: Any, label: str) -> int:
     if value is None or str(value).strip() == "":
         raise ValueError(f"missing required steal source count {label}")
     numeric = float(str(value))
-    if not numeric.is_integer() or numeric < 0:
+    if not math.isfinite(numeric) or not numeric.is_integer() or numeric < 0:
         raise ValueError(f"invalid steal source count {label}: {value!r}")
     return int(numeric)
 
@@ -124,28 +125,44 @@ def fetch_mlb_steal_stints(
     return stints, captures
 
 
-def _project_milb_frame(
+def _project_milb_frame_with_report(
     frame: pl.DataFrame,
     *,
     season: int,
     tier: str,
-) -> list[StealStint]:
+) -> tuple[list[StealStint], dict[str, Any]]:
+    """Project complete MiLB rows and report, rather than impute, missing evidence.
+
+    Required columns are a file-level contract: an asset missing one fails closed.
+    Individual player rows with missing/non-finite/non-integral required values are
+    excluded from the diagnostic and counted. This implements the selection
+    contract's complete-case eligibility rule without turning missing counts into
+    zero or allowing one sparse row to invalidate an otherwise usable release.
+    """
+
     standardized, _ = standardize_armstjc_season_stats(frame, "batting")
     missing = sorted(set(MILB_REQUIRED_STEAL_COLUMNS) - set(standardized.columns))
     if missing:
         raise ValueError(f"MiLB steal source missing required standardized columns: {missing}")
 
     rows: list[StealStint] = []
+    dropped_incomplete = 0
+    dropped_invalid_identity_or_season = 0
+    source_rows = standardized.height
     for raw in standardized.to_dicts():
-        row_season = _integer_count(raw.get("season"), "season")
+        try:
+            row_season = _integer_count(raw.get("season"), "season")
+            league_id = _integer_count(raw.get("league_id"), "league_id")
+            player_id = _integer_count(raw.get("player_id"), "player_id")
+        except (TypeError, ValueError, OverflowError):
+            dropped_invalid_identity_or_season += 1
+            continue
         if row_season != int(season):
             raise ValueError(
                 f"MiLB steal asset season mismatch: expected {season}, found {row_season}"
             )
-        league_id = _integer_count(raw.get("league_id"), "league_id")
-        player_id = _integer_count(raw.get("player_id"), "player_id")
-        rows.append(
-            StealStint(
+        try:
+            row = StealStint(
                 season=row_season,
                 source="MiLB",
                 environment_id=f"MILB:{league_id}",
@@ -169,7 +186,26 @@ def _project_milb_frame(
                     raw.get("batting_caught_stealing"), "batting_caught_stealing"
                 ),
             )
-        )
+        except (TypeError, ValueError, OverflowError):
+            dropped_incomplete += 1
+            continue
+        rows.append(row)
+
+    return rows, {
+        "source_row_count": source_rows,
+        "projected_row_count": len(rows),
+        "dropped_incomplete_required_stat_rows": dropped_incomplete,
+        "dropped_invalid_identity_or_season_rows": dropped_invalid_identity_or_season,
+    }
+
+
+def _project_milb_frame(
+    frame: pl.DataFrame,
+    *,
+    season: int,
+    tier: str,
+) -> list[StealStint]:
+    rows, _ = _project_milb_frame_with_report(frame, season=season, tier=tier)
     return rows
 
 
@@ -202,12 +238,14 @@ def fetch_milb_steal_stints(
         frame = pl.read_csv(
             io.BytesIO(content),
             infer_schema_length=10000,
-            null_values=["", "NA", "N/A", "null", "None"],
+            null_values=["", "NA", "N/A", "null", "None", "NaN", "nan"],
         )
         tier = TIER_BY_ASSET_LEVEL[asset.filename_level]
-        projected = _project_milb_frame(frame, season=asset.year, tier=tier)
+        projected, projection_report = _project_milb_frame_with_report(
+            frame, season=asset.year, tier=tier
+        )
         if not projected:
-            raise RuntimeError(f"MiLB steal asset has no projected rows: {asset.name}")
+            raise RuntimeError(f"MiLB steal asset has no complete projected rows: {asset.name}")
         stints.extend(projected)
         captures.append(
             {
@@ -219,7 +257,7 @@ def fetch_milb_steal_stints(
                 "size_bytes_metadata": asset.size_bytes,
                 "response_byte_count": len(content),
                 "response_sha256": sha256(content).hexdigest(),
-                "projected_row_count": len(projected),
+                **projection_report,
                 "updated_at_utc": asset.updated_at_utc.isoformat(),
             }
         )
