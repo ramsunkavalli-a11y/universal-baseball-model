@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import asdict
 import json
+import os
 from pathlib import Path
 
 import requests
@@ -46,9 +47,11 @@ def main() -> None:
             all_captures.extend(captures)
 
     pooled = audit_mlb_baserunning_splits(all_splits)
+    source_commit = str(os.environ.get("GITHUB_SHA") or "").strip() or None
     payload = {
         "status": "player_value_v1_baserunning_source_audit_materialized",
         "season": args.season,
+        "verified_source_commit": source_commit,
         "mlb_source": {
             "provider": "MLB Stats API",
             "endpoint": MLB_STATS_URL,
