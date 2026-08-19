@@ -1,0 +1,171 @@
+{
+  "boundary": {
+    "2025_defensive_targets_accessed": false,
+    "catcher_blocking_modified": false,
+    "catcher_throwing_modified": false,
+    "framing_feature_search_reopened": false,
+    "general_range_modified": false,
+    "live_source_query_performed": false,
+    "playing_time_v1_modified": false,
+    "position_role_v1_modified": false,
+    "regularization_reselected": false,
+    "run_value_conversion_performed": false,
+    "thresholds_changed": false,
+    "tracked_framing_predictor_modified": false,
+    "war_calculated": false
+  },
+  "catcher_tracked_framing_repaired": {
+    "folds": [
+      {
+        "f0": {
+          "calibration_intercept": null,
+          "calibration_slope": null,
+          "mae": 0.8067730774487867,
+          "mse": 0.9821542999717024,
+          "pearson": null,
+          "player_count": 51,
+          "spearman": null
+        },
+        "f1": {
+          "calibration_intercept": -0.046558895014710486,
+          "calibration_slope": 0.8773090225119414,
+          "mae": 0.676571857548546,
+          "mse": 0.7336632913343231,
+          "pearson": 0.5095539617766918,
+          "player_count": 51,
+          "spearman": 0.48986425339366513
+        },
+        "f1_coefficients": [
+          -0.11721076674520911,
+          0.7162073934728515
+        ],
+        "f1_mse_relative_vs_f0": -0.25300607923270185,
+        "player_count": 51,
+        "target_year": 2022,
+        "train_catcher_count": 106
+      },
+      {
+        "f0": {
+          "calibration_intercept": null,
+          "calibration_slope": null,
+          "mae": 0.8614159491602766,
+          "mse": 0.9584893425471367,
+          "pearson": null,
+          "player_count": 52,
+          "spearman": null
+        },
+        "f1": {
+          "calibration_intercept": -0.12951127571941548,
+          "calibration_slope": 1.0213166266566382,
+          "mae": 0.586335906658002,
+          "mse": 0.6086052624675102,
+          "pearson": 0.6173201682115267,
+          "player_count": 52,
+          "spearman": 0.6104328523862375
+        },
+        "f1_coefficients": [
+          -0.08648339646327567,
+          0.6905527754716261
+        ],
+        "f1_mse_relative_vs_f0": -0.3650370062016833,
+        "player_count": 52,
+        "target_year": 2023,
+        "train_catcher_count": 105
+      },
+      {
+        "f0": {
+          "calibration_intercept": null,
+          "calibration_slope": null,
+          "mae": 0.8222139278509873,
+          "mse": 1.012112093088832,
+          "pearson": null,
+          "player_count": 54,
+          "spearman": null
+        },
+        "f1": {
+          "calibration_intercept": 0.1857652841917128,
+          "calibration_slope": 1.12275205796106,
+          "mae": 0.6309883587975891,
+          "mse": 0.6046663568889535,
+          "pearson": 0.6598189754773541,
+          "player_count": 54,
+          "spearman": 0.6120449780827139
+        },
+        "f1_coefficients": [
+          -0.18297508857232594,
+          0.6684149545817861
+        ],
+        "f1_mse_relative_vs_f0": -0.4025697736269588,
+        "player_count": 54,
+        "target_year": 2024,
+        "train_catcher_count": 103
+      }
+    ],
+    "pooled": {
+      "f0": {
+        "calibration_intercept": null,
+        "calibration_slope": null,
+        "mae": 0.8301822191730946,
+        "mse": 0.9846201792216872,
+        "pearson": null,
+        "player_count": 157,
+        "spearman": null
+      },
+      "f1": {
+        "calibration_intercept": -0.0005944499507674802,
+        "calibration_slope": 0.9768014055449286,
+        "mae": 0.6310063901672723,
+        "mse": 0.6478744253399015,
+        "pearson": 0.5848247447397164,
+        "player_count": 157,
+        "spearman": 0.5789139104062913
+      },
+      "f1_mse_improvement_vs_f0": 0.3420057408817004,
+      "folds_mse_better_than_f0": 3,
+      "worst_fold_mse_relative_vs_f0": -0.25300607923270185
+    },
+    "tier_a_gate": {
+      "all_fold_counts_ge_20": true,
+      "finite": true,
+      "passed": true
+    },
+    "tier_b_transfer": {
+      "attempted": true,
+      "passed": false,
+      "player_count": 2,
+      "status": "insufficient_transfer_evidence"
+    }
+  },
+  "contract": "docs/defense-v1-framing-source-repair-contract.md",
+  "decision": {
+    "2025_framing_confirmation_authorized": false,
+    "additional_framing_development_challenger_authorized": false,
+    "framing_parameter_freeze_authorized_next": true,
+    "framing_repair_development_closed": true,
+    "milb_tracked_framing_transfer_authorized": false,
+    "mlb_framing_family_after_repair": "F1",
+    "old_invalid_target_result_preserved_as_audit_history": true,
+    "tier_a_tracked_framing_passed": true,
+    "tier_b_tracked_framing_transfer_passed": false,
+    "war_value_authorized": false
+  },
+  "development_run_id": 32208413006,
+  "development_sha": "295373e24d64b2ca4a0e49453f3ffdfc9290c787",
+  "gate": "defense_v1_framing_source_repair_development",
+  "report_schema_version": "0.1",
+  "source": {
+    "capture_page_count": 224,
+    "eligible_tracked_framing_z_count": 430,
+    "historical_fielding_source_run_id": 32148467330,
+    "player_season_position_count": 39723,
+    "primary_player_season_count": 15701,
+    "raw_position_split_count": 53225,
+    "repaired_target_combined_sha256": "a4316109b6ff62219d51a08753e66d700fe8d7df8f7ce701c8fb98bc6876a0b8",
+    "repaired_target_source_run_id": 32208273343,
+    "repaired_target_source_sha": "035602dd610f76c7309fcc78c23cf71f25346df6",
+    "tracked_framing_sha256": "1071b9d8209d6e9ba9d8c2b42ac7b99e3329387704e2910797b58f1a148cbc79",
+    "tracked_source_run_id": 32182019495,
+    "tracked_source_sha": "5438e905d24e2167432a52253320ccbc978186b8"
+  },
+  "status": "repaired_framing_development_scored"
+}
