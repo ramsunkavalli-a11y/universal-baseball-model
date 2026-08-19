@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-18
+Last updated: 2026-08-19
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
@@ -11,7 +11,7 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 - Active branch: `source-certification-poc`
 - Work in small verified batches.
 - Prefer certified/reusable public data and existing adapters over rebuilding source cleanup.
-- Keep Performance, Current Talent, Projection, Playing Time, Position/Role, Defense, positional adjustment, run conversion, WAR/value, and final ranking separate.
+- Keep Performance, Current Talent, Projection, Playing Time, Position/Role, Defense, defensive exposure, positional adjustment, run conversion, WAR/value, and final ranking separate.
 
 ## Frozen upstream stages
 
@@ -103,28 +103,53 @@ The repaired source contract is `docs/defense-v1-catcher-source-repair-contract.
 ## Player Value v1 architecture
 
 Architecture contract: `docs/player-value-v1-architecture-contract.md`.
+Defense exposure contract: `docs/player-value-v1-defense-exposure-contract.md`.
 
 The downstream architecture remains frozen:
 
 - reuse the existing Performance RE24/bin-value infrastructure for batting;
 - Defense skill and defensive runs are separate layers;
 - no arbitrary `runs per z` conversion;
-- use frozen Playing Time + full Position/Role share vector for exposure;
+- use frozen Playing Time + Position/Role only through separately validated exposure mappings;
 - positional adjustment remains separate from position-relative Defense skill;
 - replacement level and runs per win remain separate later decisions;
 - preserve each value component separately in final outputs.
 
+### Defensive exposure — total-outs diagnostic complete
+
+The canonical observed defensive exposure unit is official Stats API `fielding_outs` over `C, 1B, 2B, 3B, SS, LF, CF, RF`.
+
+The first predeclared total-outs development diagnostic is complete:
+
+- contract: `docs/player-value-v1-defensive-exposure-diagnostic-contract.md`;
+- binding result: `docs/player-value-v1-defensive-exposure-diagnostic-result.json`;
+- workflow run: `32261447127`;
+- folds: 2022 -> 2023 and 2023 -> 2024;
+- 2025 accessed: false.
+
+Candidates were raw prior-year defensive-outs persistence (B0), frozen Playing Time projected PA times one global source-year outs/PA scale (P1), and a fixed 50/50 hybrid (H1). **B0 was retained under the frozen recommendation rule.**
+
+Equal-fold means:
+
+- B0: MAE `151.8143`, RMSE `473.4592`;
+- P1: MAE `180.2195`, RMSE `427.4569`;
+- H1: MAE `152.5628`, RMSE `430.7028`.
+
+P1 and H1 improved RMSE and entrant error but failed the preregistered overall-MAE requirements. H1 narrowly missed the 2022 -> 2023 fold guardrail: its MAE was about 2.20% worse than B0 versus an allowed 2%. **Do not retune the gate or blend weight after result access.**
+
+This does **not** freeze the full exposure bridge. Position allocation and component-native opportunities are still open.
+
 ## ACTIVE STAGE
 
-**Defense native run conversion + defensive exposure/positional-adjustment work.**
+**Defensive position allocation, then Defense native run conversion / positional-adjustment work.**
 
-Defense skill development is closed. All three catcher channels are now available for downstream run-conversion research under their final repaired hierarchies.
+Defense skill development is closed. Total defensive-outs development retains raw prior-year persistence. The next gate is how projected total outs are distributed across defensive positions without pretending the frozen start-share Position/Role vector is already an outs-share forecast.
 
 ### Immediate next batch
 
-1. Reconcile the final Defense skill hierarchy into one production handoff/table contract without refitting any skill model.
-2. Finish the audit of frozen Playing Time output semantics and map projected playing time/position shares to defensive opportunities/exposures.
-3. Define and validate native-unit run conversion separately for range, throwing, blocking, and framing; do not use an arbitrary runs-per-z constant.
+1. Predeclare and run a by-position defensive-out-share allocation diagnostic on pre-2025 folds, comparing prior defensive-out-share persistence against a deterministic mapping from frozen Position/Role forecasts and any fixed predeclared hybrid.
+2. Keep total exposure volume fixed to the retained B0 total-outs baseline while separately scoring share allocation and resulting per-position outs.
+3. After position allocation is resolved, define and validate native-unit run conversion separately for range, throwing, blocking, and framing; do not use an arbitrary runs-per-z constant.
 4. Keep positional adjustment separate from position-relative Defense skill.
 5. Only after those pieces are frozen should replacement level / runs-per-win / WAR-value aggregation be opened.
 
@@ -135,6 +160,8 @@ Defense skill development is closed. All three catcher channels are now availabl
 - Do not use 2025 confirmation residuals for tuning.
 - Do not refit Current Talent, Projection, Playing Time, or Position/Role.
 - Preserve invalid-source artifacts as audit history.
+- Total defensive-outs development baseline is `B0_raw_persistence`; do not reopen its thresholds after result access.
+- Full defensive exposure is not frozen until position allocation is selected.
 - Run-conversion and positional-adjustment work are authorized next.
 - **WAR/value calculation is not authorized yet.**
 
@@ -150,12 +177,15 @@ Defense skill development is closed. All three catcher channels are now availabl
 8. `docs/defense-v1-catcher-source-repair-contract.md`
 9. `docs/defense-v1-framing-2025-confirmation-contract.md`
 10. `docs/player-value-v1-architecture-contract.md`
-11. `docs/player-value-v1-defense-native-scale-audit.json`
-12. `docs/position-role-2025-confirmation-result.json`
-13. `docs/playing-time-v1-confirmation-result.json`
-14. `docs/projection-batting-v1-development-result.json`
-15. `docs/current-talent-results-only-baseline-freeze.md`
-16. `docs/performance-2024-affiliated-checkpoint.md`
+11. `docs/player-value-v1-defense-exposure-contract.md`
+12. `docs/player-value-v1-defensive-exposure-diagnostic-contract.md`
+13. `docs/player-value-v1-defensive-exposure-diagnostic-result.json`
+14. `docs/player-value-v1-defense-native-scale-audit.json`
+15. `docs/position-role-2025-confirmation-result.json`
+16. `docs/playing-time-v1-confirmation-result.json`
+17. `docs/projection-batting-v1-development-result.json`
+18. `docs/current-talent-results-only-baseline-freeze.md`
+19. `docs/performance-2024-affiliated-checkpoint.md`
 
 ## Working rules
 
