@@ -4,19 +4,24 @@
     "model_scoring": false,
     "war_calculated": false
   },
+  "decision": {
+    "catcher_source_repair_authorized_if_true": false,
+    "legacy_year_query_is_year_specific": false,
+    "ui_snake_all_query_is_year_specific": false
+  },
   "gate": "savant_catcher_year_filter_diagnostic",
-  "report_schema_version": "0.1",
+  "report_schema_version": "0.2",
   "results": {
     "catcher-blocking": {
-      "season_range_min0": {
+      "camel_range_min0": {
         "all_year_payloads_identical": true,
         "distinct_year_payload_count": 1,
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -35,7 +40,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -44,13 +52,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?seasonStart=2022&seasonEnd=2022&min=0&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -69,7 +114,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -78,13 +126,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?seasonStart=2023&seasonEnd=2023&min=0&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -103,7 +188,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -112,13 +200,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?seasonStart=2024&seasonEnd=2024&min=0&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -137,7 +262,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -146,19 +274,56 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?seasonStart=2025&seasonEnd=2025&min=0&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           }
         }
       },
-      "season_range_minq": {
+      "camel_range_minq": {
         "all_year_payloads_identical": true,
         "distinct_year_payload_count": 1,
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -177,7 +342,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -186,13 +354,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?seasonStart=2022&seasonEnd=2022&min=q&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -211,7 +416,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -220,13 +428,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?seasonStart=2023&seasonEnd=2023&min=q&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -245,7 +490,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -254,13 +502,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?seasonStart=2024&seasonEnd=2024&min=q&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -279,7 +564,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -288,7 +576,688 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?seasonStart=2025&seasonEnd=2025&min=q&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
+          }
+        }
+      },
+      "ui_snake_all": {
+        "all_year_payloads_identical": false,
+        "distinct_year_payload_count": 4,
+        "years": {
+          "2022": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "69c5495ee03a6fa8e485659685bd494a309a0f93836bca0fcc869472e9d04e13",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "pitches",
+              "catcher_blocking_runs",
+              "blocks_above_average",
+              "n_pbwp",
+              "x_pbwp",
+              "blocks_above_average_per_game",
+              "freq_pbwp_easy",
+              "freq_pbwp_medium",
+              "freq_pbwp_tough",
+              "diff_pbwp_easy",
+              "diff_pbwp_medium",
+              "diff_pbwp_tough"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2022"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": 0,
+              "season_end": 2022,
+              "season_start": 2022,
+              "split": "no",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=0&season_start=2022&season_end=2022&split=no&team=&type=Cat&with_team_only=1&csv=true",
+            "row_count": 66,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "3288",
+                "player_id": "668939",
+                "player_name": "Rutschman, Adley",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "",
+                "pitches": "3610",
+                "player_id": "624431",
+                "player_name": "Trevino, Jose",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "",
+                "pitches": "5116",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "",
+                "pitches": "2662",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "",
+                "pitches": "3064",
+                "player_id": "621512",
+                "player_name": "Nido, Tom\u00e1s",
+                "start_year": "2022"
+              }
+            ],
+            "sha256": "6849eb5388704ba86eaf8e745ad714274f6874983d8eb33bf08b0b06229e5f8f"
+          },
+          "2023": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "87b1541cf70f3a53837d7cb6a31fa9a41ebbfc81ff441836724a66313bd15296",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "pitches",
+              "catcher_blocking_runs",
+              "blocks_above_average",
+              "n_pbwp",
+              "x_pbwp",
+              "blocks_above_average_per_game",
+              "freq_pbwp_easy",
+              "freq_pbwp_medium",
+              "freq_pbwp_tough",
+              "diff_pbwp_easy",
+              "diff_pbwp_medium",
+              "diff_pbwp_tough"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2023"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": 0,
+              "season_end": 2023,
+              "season_start": 2023,
+              "split": "no",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=0&season_start=2023&season_end=2023&split=no&team=&type=Cat&with_team_only=1&csv=true",
+            "row_count": 68,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "4051",
+                "player_id": "669221",
+                "player_name": "Murphy, Sean",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "",
+                "pitches": "3380",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "",
+                "pitches": "3817",
+                "player_id": "663743",
+                "player_name": "Fortes, Nick",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "",
+                "pitches": "5098",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "",
+                "pitches": "3674",
+                "player_id": "672515",
+                "player_name": "Moreno, Gabriel",
+                "start_year": "2023"
+              }
+            ],
+            "sha256": "590d7998bc0af0910218a07c59f966f9318c1329e59f4a8e1a1820f31897b704"
+          },
+          "2024": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "347bf0f33b7d479581ffcb5a59fe4b770e887f2efabdbc148e8ab42f138fda66",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "pitches",
+              "catcher_blocking_runs",
+              "blocks_above_average",
+              "n_pbwp",
+              "x_pbwp",
+              "blocks_above_average_per_game",
+              "freq_pbwp_easy",
+              "freq_pbwp_medium",
+              "freq_pbwp_tough",
+              "diff_pbwp_easy",
+              "diff_pbwp_medium",
+              "diff_pbwp_tough"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2024"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": 0,
+              "season_end": 2024,
+              "season_start": 2024,
+              "split": "no",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=0&season_start=2024&season_end=2024&split=no&team=&type=Cat&with_team_only=1&csv=true",
+            "row_count": 66,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "2977",
+                "player_id": "643376",
+                "player_name": "Jansen, Danny",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "",
+                "pitches": "3895",
+                "player_id": "665804",
+                "player_name": "Amaya, Miguel",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "",
+                "pitches": "2432",
+                "player_id": "669221",
+                "player_name": "Murphy, Sean",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "",
+                "pitches": "3026",
+                "player_id": "607732",
+                "player_name": "Stallings, Jacob",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "",
+                "pitches": "3833",
+                "player_id": "668939",
+                "player_name": "Rutschman, Adley",
+                "start_year": "2024"
+              }
+            ],
+            "sha256": "65fe1175e3e7ec386a269c552d9fadcc8dd24d27ae952adede4aad04e77c8494"
+          },
+          "2025": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "fbc414859093ecd50fddaa5abd203fbb8d21a88aab22070a258fa22e97d183f1",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "pitches",
+              "catcher_blocking_runs",
+              "blocks_above_average",
+              "n_pbwp",
+              "x_pbwp",
+              "blocks_above_average_per_game",
+              "freq_pbwp_easy",
+              "freq_pbwp_medium",
+              "freq_pbwp_tough",
+              "diff_pbwp_easy",
+              "diff_pbwp_medium",
+              "diff_pbwp_tough"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2025"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": 0,
+              "season_end": 2025,
+              "season_start": 2025,
+              "split": "no",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=0&season_start=2025&season_end=2025&split=no&team=&type=Cat&with_team_only=1&csv=true",
+            "row_count": 65,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "4432",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "",
+                "pitches": "3149",
+                "player_id": "643376",
+                "player_name": "Jansen, Danny",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "",
+                "pitches": "2565",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "",
+                "pitches": "4432",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "",
+                "pitches": "3064",
+                "player_id": "669221",
+                "player_name": "Murphy, Sean",
+                "start_year": "2025"
+              }
+            ],
+            "sha256": "5916f108d0ff4ef39a7f9ebda7f06cf52f91f093a5eb5344c27e4b96810942ae"
+          }
+        }
+      },
+      "ui_snake_qualified": {
+        "all_year_payloads_identical": false,
+        "distinct_year_payload_count": 4,
+        "years": {
+          "2022": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "69c5495ee03a6fa8e485659685bd494a309a0f93836bca0fcc869472e9d04e13",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "pitches",
+              "catcher_blocking_runs",
+              "blocks_above_average",
+              "n_pbwp",
+              "x_pbwp",
+              "blocks_above_average_per_game",
+              "freq_pbwp_easy",
+              "freq_pbwp_medium",
+              "freq_pbwp_tough",
+              "diff_pbwp_easy",
+              "diff_pbwp_medium",
+              "diff_pbwp_tough"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2022"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": "q",
+              "season_end": 2022,
+              "season_start": 2022,
+              "split": "no",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=q&season_start=2022&season_end=2022&split=no&team=&type=Cat&with_team_only=1&csv=true",
+            "row_count": 66,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "3288",
+                "player_id": "668939",
+                "player_name": "Rutschman, Adley",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "",
+                "pitches": "3610",
+                "player_id": "624431",
+                "player_name": "Trevino, Jose",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "",
+                "pitches": "5116",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "",
+                "pitches": "2662",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "",
+                "pitches": "3064",
+                "player_id": "621512",
+                "player_name": "Nido, Tom\u00e1s",
+                "start_year": "2022"
+              }
+            ],
+            "sha256": "6849eb5388704ba86eaf8e745ad714274f6874983d8eb33bf08b0b06229e5f8f"
+          },
+          "2023": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "87b1541cf70f3a53837d7cb6a31fa9a41ebbfc81ff441836724a66313bd15296",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "pitches",
+              "catcher_blocking_runs",
+              "blocks_above_average",
+              "n_pbwp",
+              "x_pbwp",
+              "blocks_above_average_per_game",
+              "freq_pbwp_easy",
+              "freq_pbwp_medium",
+              "freq_pbwp_tough",
+              "diff_pbwp_easy",
+              "diff_pbwp_medium",
+              "diff_pbwp_tough"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2023"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": "q",
+              "season_end": 2023,
+              "season_start": 2023,
+              "split": "no",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=q&season_start=2023&season_end=2023&split=no&team=&type=Cat&with_team_only=1&csv=true",
+            "row_count": 68,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "4051",
+                "player_id": "669221",
+                "player_name": "Murphy, Sean",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "",
+                "pitches": "3380",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "",
+                "pitches": "3817",
+                "player_id": "663743",
+                "player_name": "Fortes, Nick",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "",
+                "pitches": "5098",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "",
+                "pitches": "3674",
+                "player_id": "672515",
+                "player_name": "Moreno, Gabriel",
+                "start_year": "2023"
+              }
+            ],
+            "sha256": "590d7998bc0af0910218a07c59f966f9318c1329e59f4a8e1a1820f31897b704"
+          },
+          "2024": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "347bf0f33b7d479581ffcb5a59fe4b770e887f2efabdbc148e8ab42f138fda66",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "pitches",
+              "catcher_blocking_runs",
+              "blocks_above_average",
+              "n_pbwp",
+              "x_pbwp",
+              "blocks_above_average_per_game",
+              "freq_pbwp_easy",
+              "freq_pbwp_medium",
+              "freq_pbwp_tough",
+              "diff_pbwp_easy",
+              "diff_pbwp_medium",
+              "diff_pbwp_tough"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2024"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": "q",
+              "season_end": 2024,
+              "season_start": 2024,
+              "split": "no",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=q&season_start=2024&season_end=2024&split=no&team=&type=Cat&with_team_only=1&csv=true",
+            "row_count": 66,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "2977",
+                "player_id": "643376",
+                "player_name": "Jansen, Danny",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "",
+                "pitches": "3895",
+                "player_id": "665804",
+                "player_name": "Amaya, Miguel",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "",
+                "pitches": "2432",
+                "player_id": "669221",
+                "player_name": "Murphy, Sean",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "",
+                "pitches": "3026",
+                "player_id": "607732",
+                "player_name": "Stallings, Jacob",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "",
+                "pitches": "3833",
+                "player_id": "668939",
+                "player_name": "Rutschman, Adley",
+                "start_year": "2024"
+              }
+            ],
+            "sha256": "65fe1175e3e7ec386a269c552d9fadcc8dd24d27ae952adede4aad04e77c8494"
+          },
+          "2025": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "fbc414859093ecd50fddaa5abd203fbb8d21a88aab22070a258fa22e97d183f1",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "pitches",
+              "catcher_blocking_runs",
+              "blocks_above_average",
+              "n_pbwp",
+              "x_pbwp",
+              "blocks_above_average_per_game",
+              "freq_pbwp_easy",
+              "freq_pbwp_medium",
+              "freq_pbwp_tough",
+              "diff_pbwp_easy",
+              "diff_pbwp_medium",
+              "diff_pbwp_tough"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2025"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": "q",
+              "season_end": 2025,
+              "season_start": 2025,
+              "split": "no",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=q&season_start=2025&season_end=2025&split=no&team=&type=Cat&with_team_only=1&csv=true",
+            "row_count": 65,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "4432",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "",
+                "pitches": "3149",
+                "player_id": "643376",
+                "player_name": "Jansen, Danny",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "",
+                "pitches": "2565",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "",
+                "pitches": "4432",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "",
+                "pitches": "3064",
+                "player_id": "669221",
+                "player_name": "Murphy, Sean",
+                "start_year": "2025"
+              }
+            ],
+            "sha256": "5916f108d0ff4ef39a7f9ebda7f06cf52f91f093a5eb5344c27e4b96810942ae"
           }
         }
       },
@@ -298,9 +1267,9 @@
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -319,7 +1288,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -327,13 +1299,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2022&min=0&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -352,7 +1361,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -360,13 +1372,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2023&min=0&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -385,7 +1434,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -393,13 +1445,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2024&min=0&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -418,7 +1507,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -426,6 +1518,43 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2025&min=0&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           }
         }
@@ -436,9 +1565,9 @@
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -457,7 +1586,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -465,13 +1597,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2022&min=q&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -490,7 +1659,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -498,13 +1670,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2023&min=q&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -523,7 +1732,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -531,13 +1743,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2024&min=q&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -556,7 +1805,10 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -564,6 +1816,43 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2025&min=q&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           }
         }
@@ -574,9 +1863,9 @@
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -595,20 +1884,60 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "year": 2022
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2022&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -627,20 +1956,60 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "year": 2023
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2023&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -659,20 +2028,60 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "year": 2024
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2024&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "8890411079e366b95a7a4098c81c1ba0b53aecc0057d90dd077967f4857282df",
+            "canonical_rows_sha256": "fb82161fc0e304f2037744ec2447b2cb51e020e577f6b882f5fdc476502bcee2",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -691,28 +2100,68 @@
               "diff_pbwp_tough"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "year": 2025
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?year=2025&csv=true",
             "row_count": 70,
+            "sample": [
+              {
+                "end_year": "",
+                "pitches": "1835",
+                "player_id": "672386",
+                "player_name": "Kirk, Alejandro",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2415",
+                "player_id": "663728",
+                "player_name": "Raleigh, Cal",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "4038",
+                "player_id": "663886",
+                "player_name": "Stephenson, Tyler",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "3413",
+                "player_id": "693307",
+                "player_name": "Dingler, Dillon",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "",
+                "pitches": "2224",
+                "player_id": "666023",
+                "player_name": "Fermin, Freddy",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "b5fc75de61bc985d540cced3383b5c762d204e851e24842c417b828054545f30"
           }
         }
       }
     },
     "catcher-throwing": {
-      "season_range_min0": {
+      "camel_range_min0": {
         "all_year_payloads_identical": true,
         "distinct_year_payload_count": 1,
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -737,7 +2186,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -746,13 +2200,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?seasonStart=2022&seasonEnd=2022&min=0&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -777,7 +2268,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -786,13 +2282,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?seasonStart=2023&seasonEnd=2023&min=0&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -817,7 +2350,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -826,13 +2364,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?seasonStart=2024&seasonEnd=2024&min=0&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -857,7 +2432,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -866,19 +2446,56 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?seasonStart=2025&seasonEnd=2025&min=0&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           }
         }
       },
-      "season_range_minq": {
+      "camel_range_minq": {
         "all_year_payloads_identical": true,
         "distinct_year_payload_count": 1,
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -903,7 +2520,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -912,13 +2534,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?seasonStart=2022&seasonEnd=2022&min=q&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -943,7 +2602,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -952,13 +2616,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?seasonStart=2023&seasonEnd=2023&min=q&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -983,7 +2684,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -992,13 +2698,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?seasonStart=2024&seasonEnd=2024&min=q&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1023,7 +2766,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -1032,7 +2780,760 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?seasonStart=2025&seasonEnd=2025&min=q&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
+          }
+        }
+      },
+      "ui_snake_all": {
+        "all_year_payloads_identical": false,
+        "distinct_year_payload_count": 4,
+        "years": {
+          "2022": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "952121a21527c8103b4b40ca6aa8cd1817051f5d87639ce0dba9992edde03b6e",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "sb_attempts",
+              "catcher_stealing_runs",
+              "caught_stealing_above_average",
+              "n_cs",
+              "rate_cs",
+              "est_cs_pct",
+              "cs_aa_per_throw",
+              "seasonal_runner_speed",
+              "runner_distance_from_second",
+              "pop_time",
+              "exchange_time",
+              "arm_strength",
+              "n_xcs_with_flight_over_xcs",
+              "n_xcs_with_exchange_over_xcs",
+              "n_xcs_with_accuracy_over_xcs",
+              "n_xcs_with_ground_other_over_xcs",
+              "n_xcs_with_onfly_other_over_xcs",
+              "n_xcs_with_untracked_other_over_xcs"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [
+              "2022"
+            ],
+            "observed_start_years": [
+              "2022"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": 0,
+              "season_end": 2022,
+              "season_start": 2022,
+              "split": "no",
+              "target_base": "All",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=0&season_start=2022&season_end=2022&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+            "row_count": 65,
+            "sample": [
+              {
+                "end_year": "2022",
+                "player_id": "435559",
+                "player_name": "Suzuki, Kurt",
+                "sb_attempts": "27",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "2022",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "21",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "2022",
+                "player_id": "519222",
+                "player_name": "Romine, Austin",
+                "sb_attempts": "28",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "2022",
+                "player_id": "521692",
+                "player_name": "Perez, Salvador",
+                "sb_attempts": "25",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "2022",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "25",
+                "start_year": "2022"
+              }
+            ],
+            "sha256": "475d446b9f7c88af1f63596b99421e0abb271967dfb3c235ac711197371518b3"
+          },
+          "2023": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "e3420db2d315fbc83bb9f19c19711b69ed899b5bfc8ed149a43a4f82f30955f1",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "sb_attempts",
+              "catcher_stealing_runs",
+              "caught_stealing_above_average",
+              "n_cs",
+              "rate_cs",
+              "est_cs_pct",
+              "cs_aa_per_throw",
+              "seasonal_runner_speed",
+              "runner_distance_from_second",
+              "pop_time",
+              "exchange_time",
+              "arm_strength",
+              "n_xcs_with_flight_over_xcs",
+              "n_xcs_with_exchange_over_xcs",
+              "n_xcs_with_accuracy_over_xcs",
+              "n_xcs_with_ground_other_over_xcs",
+              "n_xcs_with_onfly_other_over_xcs",
+              "n_xcs_with_untracked_other_over_xcs"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [
+              "2023"
+            ],
+            "observed_start_years": [
+              "2023"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": 0,
+              "season_end": 2023,
+              "season_start": 2023,
+              "split": "no",
+              "target_base": "All",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=0&season_start=2023&season_end=2023&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+            "row_count": 67,
+            "sample": [
+              {
+                "end_year": "2023",
+                "player_id": "518595",
+                "player_name": "d'Arnaud, Travis",
+                "sb_attempts": "50",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "2023",
+                "player_id": "518735",
+                "player_name": "Grandal, Yasmani",
+                "sb_attempts": "94",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "2023",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "29",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "2023",
+                "player_id": "543877",
+                "player_name": "V\u00e1zquez, Christian",
+                "sb_attempts": "51",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "2023",
+                "player_id": "553869",
+                "player_name": "D\u00edaz, Elias",
+                "sb_attempts": "71",
+                "start_year": "2023"
+              }
+            ],
+            "sha256": "c822d5051971f644ccc74524ac4679bd113570494e9573bdb6195214e2520cda"
+          },
+          "2024": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "d9abac371cc527cabe7bff60f55fc15ba2547943f99a6bf525198f09dfa5987d",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "sb_attempts",
+              "catcher_stealing_runs",
+              "caught_stealing_above_average",
+              "n_cs",
+              "rate_cs",
+              "est_cs_pct",
+              "cs_aa_per_throw",
+              "seasonal_runner_speed",
+              "runner_distance_from_second",
+              "pop_time",
+              "exchange_time",
+              "arm_strength",
+              "n_xcs_with_flight_over_xcs",
+              "n_xcs_with_exchange_over_xcs",
+              "n_xcs_with_accuracy_over_xcs",
+              "n_xcs_with_ground_other_over_xcs",
+              "n_xcs_with_onfly_other_over_xcs",
+              "n_xcs_with_untracked_other_over_xcs"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [
+              "2024"
+            ],
+            "observed_start_years": [
+              "2024"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": 0,
+              "season_end": 2024,
+              "season_start": 2024,
+              "split": "no",
+              "target_base": "All",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=0&season_start=2024&season_end=2024&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+            "row_count": 66,
+            "sample": [
+              {
+                "end_year": "2024",
+                "player_id": "518595",
+                "player_name": "d'Arnaud, Travis",
+                "sb_attempts": "49",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "2024",
+                "player_id": "542194",
+                "player_name": "Bethancourt, Christian",
+                "sb_attempts": "32",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "2024",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "43",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "2024",
+                "player_id": "543877",
+                "player_name": "V\u00e1zquez, Christian",
+                "sb_attempts": "43",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "2024",
+                "player_id": "553869",
+                "player_name": "D\u00edaz, Elias",
+                "sb_attempts": "48",
+                "start_year": "2024"
+              }
+            ],
+            "sha256": "538ba154b242292a8f80dce101f55741d6453e7ea8be314ba7bcaa877a1febca"
+          },
+          "2025": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "a4cdc67209a0c7b9bb7114db5245ddc1ed3e58586d89775c4b4f51310213c0f1",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "sb_attempts",
+              "catcher_stealing_runs",
+              "caught_stealing_above_average",
+              "n_cs",
+              "rate_cs",
+              "est_cs_pct",
+              "cs_aa_per_throw",
+              "seasonal_runner_speed",
+              "runner_distance_from_second",
+              "pop_time",
+              "exchange_time",
+              "arm_strength",
+              "n_xcs_with_flight_over_xcs",
+              "n_xcs_with_exchange_over_xcs",
+              "n_xcs_with_accuracy_over_xcs",
+              "n_xcs_with_ground_other_over_xcs",
+              "n_xcs_with_onfly_other_over_xcs",
+              "n_xcs_with_untracked_other_over_xcs"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [
+              "2025"
+            ],
+            "observed_start_years": [
+              "2025"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": 0,
+              "season_end": 2025,
+              "season_start": 2025,
+              "split": "no",
+              "target_base": "All",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=0&season_start=2025&season_end=2025&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+            "row_count": 63,
+            "sample": [
+              {
+                "end_year": "2025",
+                "player_id": "521692",
+                "player_name": "Perez, Salvador",
+                "sb_attempts": "25",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "2025",
+                "player_id": "553869",
+                "player_name": "D\u00edaz, Elias",
+                "sb_attempts": "38",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "2025",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "30",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "2025",
+                "player_id": "607732",
+                "player_name": "Stallings, Jacob",
+                "sb_attempts": "47",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "2025",
+                "player_id": "608348",
+                "player_name": "Kelly, Carson",
+                "sb_attempts": "51",
+                "start_year": "2025"
+              }
+            ],
+            "sha256": "ee4ca53f32a7aaa5a4dc780d8b093668fe1e41925b21b47b828e8086f28c518b"
+          }
+        }
+      },
+      "ui_snake_qualified": {
+        "all_year_payloads_identical": false,
+        "distinct_year_payload_count": 4,
+        "years": {
+          "2022": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "952121a21527c8103b4b40ca6aa8cd1817051f5d87639ce0dba9992edde03b6e",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "sb_attempts",
+              "catcher_stealing_runs",
+              "caught_stealing_above_average",
+              "n_cs",
+              "rate_cs",
+              "est_cs_pct",
+              "cs_aa_per_throw",
+              "seasonal_runner_speed",
+              "runner_distance_from_second",
+              "pop_time",
+              "exchange_time",
+              "arm_strength",
+              "n_xcs_with_flight_over_xcs",
+              "n_xcs_with_exchange_over_xcs",
+              "n_xcs_with_accuracy_over_xcs",
+              "n_xcs_with_ground_other_over_xcs",
+              "n_xcs_with_onfly_other_over_xcs",
+              "n_xcs_with_untracked_other_over_xcs"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [
+              "2022"
+            ],
+            "observed_start_years": [
+              "2022"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": "q",
+              "season_end": 2022,
+              "season_start": 2022,
+              "split": "no",
+              "target_base": "All",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=q&season_start=2022&season_end=2022&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+            "row_count": 65,
+            "sample": [
+              {
+                "end_year": "2022",
+                "player_id": "435559",
+                "player_name": "Suzuki, Kurt",
+                "sb_attempts": "27",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "2022",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "21",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "2022",
+                "player_id": "519222",
+                "player_name": "Romine, Austin",
+                "sb_attempts": "28",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "2022",
+                "player_id": "521692",
+                "player_name": "Perez, Salvador",
+                "sb_attempts": "25",
+                "start_year": "2022"
+              },
+              {
+                "end_year": "2022",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "25",
+                "start_year": "2022"
+              }
+            ],
+            "sha256": "475d446b9f7c88af1f63596b99421e0abb271967dfb3c235ac711197371518b3"
+          },
+          "2023": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "e3420db2d315fbc83bb9f19c19711b69ed899b5bfc8ed149a43a4f82f30955f1",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "sb_attempts",
+              "catcher_stealing_runs",
+              "caught_stealing_above_average",
+              "n_cs",
+              "rate_cs",
+              "est_cs_pct",
+              "cs_aa_per_throw",
+              "seasonal_runner_speed",
+              "runner_distance_from_second",
+              "pop_time",
+              "exchange_time",
+              "arm_strength",
+              "n_xcs_with_flight_over_xcs",
+              "n_xcs_with_exchange_over_xcs",
+              "n_xcs_with_accuracy_over_xcs",
+              "n_xcs_with_ground_other_over_xcs",
+              "n_xcs_with_onfly_other_over_xcs",
+              "n_xcs_with_untracked_other_over_xcs"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [
+              "2023"
+            ],
+            "observed_start_years": [
+              "2023"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": "q",
+              "season_end": 2023,
+              "season_start": 2023,
+              "split": "no",
+              "target_base": "All",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=q&season_start=2023&season_end=2023&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+            "row_count": 67,
+            "sample": [
+              {
+                "end_year": "2023",
+                "player_id": "518595",
+                "player_name": "d'Arnaud, Travis",
+                "sb_attempts": "50",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "2023",
+                "player_id": "518735",
+                "player_name": "Grandal, Yasmani",
+                "sb_attempts": "94",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "2023",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "29",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "2023",
+                "player_id": "543877",
+                "player_name": "V\u00e1zquez, Christian",
+                "sb_attempts": "51",
+                "start_year": "2023"
+              },
+              {
+                "end_year": "2023",
+                "player_id": "553869",
+                "player_name": "D\u00edaz, Elias",
+                "sb_attempts": "71",
+                "start_year": "2023"
+              }
+            ],
+            "sha256": "c822d5051971f644ccc74524ac4679bd113570494e9573bdb6195214e2520cda"
+          },
+          "2024": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "d9abac371cc527cabe7bff60f55fc15ba2547943f99a6bf525198f09dfa5987d",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "sb_attempts",
+              "catcher_stealing_runs",
+              "caught_stealing_above_average",
+              "n_cs",
+              "rate_cs",
+              "est_cs_pct",
+              "cs_aa_per_throw",
+              "seasonal_runner_speed",
+              "runner_distance_from_second",
+              "pop_time",
+              "exchange_time",
+              "arm_strength",
+              "n_xcs_with_flight_over_xcs",
+              "n_xcs_with_exchange_over_xcs",
+              "n_xcs_with_accuracy_over_xcs",
+              "n_xcs_with_ground_other_over_xcs",
+              "n_xcs_with_onfly_other_over_xcs",
+              "n_xcs_with_untracked_other_over_xcs"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [
+              "2024"
+            ],
+            "observed_start_years": [
+              "2024"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": "q",
+              "season_end": 2024,
+              "season_start": 2024,
+              "split": "no",
+              "target_base": "All",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=q&season_start=2024&season_end=2024&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+            "row_count": 66,
+            "sample": [
+              {
+                "end_year": "2024",
+                "player_id": "518595",
+                "player_name": "d'Arnaud, Travis",
+                "sb_attempts": "49",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "2024",
+                "player_id": "542194",
+                "player_name": "Bethancourt, Christian",
+                "sb_attempts": "32",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "2024",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "43",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "2024",
+                "player_id": "543877",
+                "player_name": "V\u00e1zquez, Christian",
+                "sb_attempts": "43",
+                "start_year": "2024"
+              },
+              {
+                "end_year": "2024",
+                "player_id": "553869",
+                "player_name": "D\u00edaz, Elias",
+                "sb_attempts": "48",
+                "start_year": "2024"
+              }
+            ],
+            "sha256": "538ba154b242292a8f80dce101f55741d6453e7ea8be314ba7bcaa877a1febca"
+          },
+          "2025": {
+            "body_kind": "csv",
+            "canonical_rows_sha256": "a4cdc67209a0c7b9bb7114db5245ddc1ed3e58586d89775c4b4f51310213c0f1",
+            "columns": [
+              "player_id",
+              "player_name",
+              "team_name",
+              "start_year",
+              "end_year",
+              "sb_attempts",
+              "catcher_stealing_runs",
+              "caught_stealing_above_average",
+              "n_cs",
+              "rate_cs",
+              "est_cs_pct",
+              "cs_aa_per_throw",
+              "seasonal_runner_speed",
+              "runner_distance_from_second",
+              "pop_time",
+              "exchange_time",
+              "arm_strength",
+              "n_xcs_with_flight_over_xcs",
+              "n_xcs_with_exchange_over_xcs",
+              "n_xcs_with_accuracy_over_xcs",
+              "n_xcs_with_ground_other_over_xcs",
+              "n_xcs_with_onfly_other_over_xcs",
+              "n_xcs_with_untracked_other_over_xcs"
+            ],
+            "content_type": "text/csv; charset=utf-8",
+            "observed_end_years": [
+              "2025"
+            ],
+            "observed_start_years": [
+              "2025"
+            ],
+            "requested_params": {
+              "csv": "true",
+              "game_type": "Regular",
+              "n": "q",
+              "season_end": 2025,
+              "season_start": 2025,
+              "split": "no",
+              "target_base": "All",
+              "team": "",
+              "type": "Cat",
+              "with_team_only": 1
+            },
+            "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=q&season_start=2025&season_end=2025&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+            "row_count": 63,
+            "sample": [
+              {
+                "end_year": "2025",
+                "player_id": "521692",
+                "player_name": "Perez, Salvador",
+                "sb_attempts": "25",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "2025",
+                "player_id": "553869",
+                "player_name": "D\u00edaz, Elias",
+                "sb_attempts": "38",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "2025",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "30",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "2025",
+                "player_id": "607732",
+                "player_name": "Stallings, Jacob",
+                "sb_attempts": "47",
+                "start_year": "2025"
+              },
+              {
+                "end_year": "2025",
+                "player_id": "608348",
+                "player_name": "Kelly, Carson",
+                "sb_attempts": "51",
+                "start_year": "2025"
+              }
+            ],
+            "sha256": "ee4ca53f32a7aaa5a4dc780d8b093668fe1e41925b21b47b828e8086f28c518b"
           }
         }
       },
@@ -1042,9 +3543,9 @@
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1069,7 +3570,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -1077,13 +3583,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2022&min=0&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1108,7 +3651,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -1116,13 +3664,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2023&min=0&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1147,7 +3732,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -1155,13 +3745,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2024&min=0&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1186,7 +3813,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": 0,
@@ -1194,6 +3826,43 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2025&min=0&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           }
         }
@@ -1204,9 +3873,9 @@
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1231,7 +3900,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -1239,13 +3913,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2022&min=q&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1270,7 +3981,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -1278,13 +3994,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2023&min=q&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1309,7 +4062,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -1317,13 +4075,50 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2024&min=q&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1348,7 +4143,12 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "min": "q",
@@ -1356,6 +4156,43 @@
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2025&min=q&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           }
         }
@@ -1366,9 +4203,9 @@
         "years": {
           "2022": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1393,20 +4230,62 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "year": 2022
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2022&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2023": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1431,20 +4310,62 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "year": 2023
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2023&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2024": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1469,20 +4390,62 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "year": 2024
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2024&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           },
           "2025": {
             "body_kind": "csv",
-            "canonical_rows_sha256": "f48fa9a69147ae1d640ea2865f548bc59f2a564b37ce6b868293ec40d7c7bee8",
+            "canonical_rows_sha256": "240c3df6a7629d717f02cec90a72cb342c665536f36e5214b3613f5834d7efbf",
             "columns": [
-              "\ufeff\"player_id\"",
+              "player_id",
               "player_name",
               "team_name",
               "start_year",
@@ -1507,20 +4470,62 @@
               "n_xcs_with_untracked_other_over_xcs"
             ],
             "content_type": "text/csv; charset=utf-8",
-            "player_ids_head": [],
+            "observed_end_years": [
+              "2026"
+            ],
+            "observed_start_years": [
+              "2026"
+            ],
             "requested_params": {
               "csv": "true",
               "year": 2025
             },
             "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?year=2025&csv=true",
             "row_count": 72,
+            "sample": [
+              {
+                "end_year": "2026",
+                "player_id": "506702",
+                "player_name": "Le\u00f3n, Sandy",
+                "sb_attempts": "16",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543309",
+                "player_name": "Higashioka, Kyle",
+                "sb_attempts": "35",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "543510",
+                "player_name": "McCann, James",
+                "sb_attempts": "27",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "592663",
+                "player_name": "Realmuto, J.T.",
+                "sb_attempts": "54",
+                "start_year": "2026"
+              },
+              {
+                "end_year": "2026",
+                "player_id": "595978",
+                "player_name": "Hedges, Austin",
+                "sb_attempts": "33",
+                "start_year": "2026"
+              }
+            ],
             "sha256": "ffa3bc1e144250b048dfb4f889024b330f4e1c59bc4a96213047ddcb91f1ae12"
           }
         }
       }
     }
   },
-  "status": "diagnostic_complete",
+  "status": "diagnostic_complete_query_not_certified",
   "years": [
     2022,
     2023,
