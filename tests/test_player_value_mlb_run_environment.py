@@ -21,33 +21,57 @@ def test_invalid_baseball_innings_notation_is_rejected(value: object) -> None:
         innings_pitched_to_outs(value)
 
 
-def test_completed_regular_season_games_counts_only_regular_final_games() -> None:
+def test_completed_regular_season_games_use_final_coded_state_and_unique_game_pk() -> None:
     payload = {
         "dates": [
             {
                 "games": [
-                    {"gameType": "R", "status": {"abstractGameState": "Final"}},
-                    {"gameType": "R", "status": {"abstractGameState": "Final"}},
-                    {"gameType": "S", "status": {"abstractGameState": "Final"}},
+                    {
+                        "gamePk": 1,
+                        "gameType": "R",
+                        "status": {"abstractGameState": "Final", "codedGameState": "D"},
+                    },
+                    {
+                        "gamePk": 2,
+                        "gameType": "R",
+                        "status": {"abstractGameState": "Final", "codedGameState": "F"},
+                    },
+                    {
+                        "gamePk": 3,
+                        "gameType": "S",
+                        "status": {"abstractGameState": "Final", "codedGameState": "F"},
+                    },
                 ]
-            }
+            },
+            {
+                "games": [
+                    {
+                        "gamePk": 1,
+                        "gameType": "R",
+                        "status": {"abstractGameState": "Final", "codedGameState": "F"},
+                    }
+                ]
+            },
         ]
     }
     assert count_completed_regular_season_games(payload) == 2
 
 
-def test_incomplete_regular_season_schedule_is_rejected() -> None:
+def test_schedule_without_completed_regular_season_games_is_rejected() -> None:
     payload = {
         "dates": [
             {
                 "games": [
-                    {"gameType": "R", "status": {"abstractGameState": "Final"}},
-                    {"gameType": "R", "status": {"abstractGameState": "Preview"}},
+                    {
+                        "gamePk": 1,
+                        "gameType": "R",
+                        "status": {"abstractGameState": "Final", "codedGameState": "D"},
+                    }
                 ]
             }
         ]
     }
-    with pytest.raises(RuntimeError, match="not complete"):
+    with pytest.raises(RuntimeError, match="no completed regular-season games"):
         count_completed_regular_season_games(payload)
 
 
