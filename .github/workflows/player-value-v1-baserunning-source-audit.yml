@@ -8,8 +8,10 @@ on:
       - ".github/workflows/player-value-v1-baserunning-source-audit.yml"
       - "src/universal_baseball/player_value_baserunning_sources.py"
       - "src/universal_baseball/season_stats.py"
+      - "src/universal_baseball/mlb_season_stats.py"
       - "tests/test_player_value_baserunning_sources.py"
       - "tests/test_season_stats.py"
+      - "tests/test_mlb_season_stats.py"
       - "scripts/audit_player_value_v1_baserunning_sources.py"
       - "docs/player-value-v1-baserunning-source-audit-contract.md"
   workflow_dispatch:
@@ -41,7 +43,7 @@ jobs:
       - name: Verify source adapters
         run: >-
           python -m py_compile src/universal_baseball/player_value_baserunning_sources.py scripts/audit_player_value_v1_baserunning_sources.py
-          && python -m pytest -q tests/test_player_value_baserunning_sources.py tests/test_season_stats.py
+          && python -m pytest -q tests/test_player_value_baserunning_sources.py tests/test_season_stats.py tests/test_mlb_season_stats.py
 
       - name: Materialize 2024 MLB baserunning source audit
         run: >-
