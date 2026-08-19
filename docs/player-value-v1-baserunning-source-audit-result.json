@@ -1224,6 +1224,12 @@
           "nonnull_rows": 391,
           "present_rows": 391
         },
+        "doubles": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
         "gidpOpp": {
           "complete": false,
           "missing_rows": 391,
@@ -1236,7 +1242,25 @@
           "nonnull_rows": 391,
           "present_rows": 391
         },
+        "hits": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "homeRuns": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
         "stolenBases": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "triples": {
           "complete": true,
           "missing_rows": 0,
           "nonnull_rows": 391,
@@ -1247,11 +1271,21 @@
         "checked_rows": 0,
         "violation_rows": 0
       },
-      "row_count": 391
+      "row_count": 391,
+      "singles_identity": {
+        "checked_rows": 391,
+        "violation_rows": 0
+      }
     },
     "104": {
       "fields": {
         "caughtStealing": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "doubles": {
           "complete": true,
           "missing_rows": 0,
           "nonnull_rows": 389,
@@ -1269,7 +1303,25 @@
           "nonnull_rows": 389,
           "present_rows": 389
         },
+        "hits": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "homeRuns": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
         "stolenBases": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "triples": {
           "complete": true,
           "missing_rows": 0,
           "nonnull_rows": 389,
@@ -1280,12 +1332,22 @@
         "checked_rows": 0,
         "violation_rows": 0
       },
-      "row_count": 389
+      "row_count": 389,
+      "singles_identity": {
+        "checked_rows": 389,
+        "violation_rows": 0
+      }
     }
   },
   "mlb_pooled": {
     "fields": {
       "caughtStealing": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "doubles": {
         "complete": true,
         "missing_rows": 0,
         "nonnull_rows": 780,
@@ -1303,7 +1365,25 @@
         "nonnull_rows": 780,
         "present_rows": 780
       },
+      "hits": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "homeRuns": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
       "stolenBases": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "triples": {
         "complete": true,
         "missing_rows": 0,
         "nonnull_rows": 780,
@@ -1314,7 +1394,11 @@
       "checked_rows": 0,
       "violation_rows": 0
     },
-    "row_count": 780
+    "row_count": 780,
+    "singles_identity": {
+      "checked_rows": 780,
+      "violation_rows": 0
+    }
   },
   "mlb_source": {
     "endpoint": "https://statsapi.mlb.com/api/v1/stats",
@@ -1335,5 +1419,5 @@
   ],
   "season": 2024,
   "status": "player_value_v1_baserunning_source_audit_materialized",
-  "verified_source_commit": "f8c16d1f602e94d4d728ac1a1574026809755d70"
+  "verified_source_commit": "420fe05316993035ffe492fdaa503677627ecb4a"
 }
