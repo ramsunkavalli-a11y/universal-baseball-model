@@ -56,6 +56,26 @@ The MiLB release extractor explicitly exposes `stolenBases`, `caughtStealing`, `
 
 For MLB, the preferred evidence is the public Baseball Savant / Statcast baserunning advancement value or its public opportunity-level inputs. This source must be captured through a dedicated baserunning adapter with exact provenance rather than mixed into the existing pitch-detail Savant adapter.
 
+The frozen source-audit surface is the public runner-level regular-season CSV from:
+
+`https://baseballsavant.mlb.com/leaderboard/baserunning-run-value`
+
+Use one season per request with runner type, minimum one opportunity, no year split, and the CSV response. The implementation may use a thin `requests` adapter rather than taking a package dependency, but it must follow the already-public reusable client semantics documented by SportsDataverse / Savant helper projects instead of reverse-engineering a new event model.
+
+Normalize CSV header case only. Required fields for this gate are:
+
+- `player_id`;
+- `runner_runs_tot`;
+- `runner_runs_xb`;
+- `runner_runs_sbx`;
+- `n_runner_moved`;
+- `n_runner_moved_xb`;
+- `n_runner_moved_sbx`.
+
+`runner_runs_xb` and `n_runner_moved_xb` are the candidate **non-steal advancement** evidence. `runner_runs_sbx` remains source-validation evidence only at this stage because the portable steal channel is selected separately. Do not add `runner_runs_tot` to the portable steal component; that would double-count stolen-base value.
+
+Audit completed seasons **2019 through 2024**. This window is source certification only; it is wide enough to support a later three-prior-season chronological diagnostic for a 2022 target without opening 2025 evidence.
+
 No comparable public affiliated-MiLB advancement-value source has been certified. Until one is found and validated, MiLB-only players receive **no invented non-steal advancement differentiation**. A neutral fallback is preferable to a weak proxy chosen after looking at player rankings.
 
 ## 4. Candidate decomposition
@@ -89,6 +109,18 @@ Before fitting any baserunning candidate, persist a machine-readable source audi
 - missingness rates and supported player-season counts;
 - no silent zero-filling;
 - explicit result for whether MLB `gidpOpp` is actually available from the official bulk source.
+
+For the Savant advancement surface also persist:
+
+- exact request parameters and season;
+- response byte count and SHA-256;
+- normalized required-field coverage;
+- finite run values;
+- nonnegative integer opportunity counts;
+- duplicate `player_id` diagnostics;
+- diagnostic-only checks of total-vs-component run values and opportunity counts.
+
+The Savant source gate passes a season only when all required fields are complete, runner IDs are unique, and non-steal advancement opportunity evidence is present. Arithmetic decomposition is recorded as a diagnostic because displayed/served component rounding may differ; it is not silently repaired.
 
 The source audit may expand the evidence schema. It may not select baserunning model coefficients.
 
