@@ -1,0 +1,116 @@
+name: Player Value v1 DH positional-exposure selection
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/player-value-v1-dh-positional-exposure-selection.yml"
+      - "scripts/select_player_value_v1_dh_positional_exposure.py"
+      - "docs/player-value-v1-dh-positional-exposure-selection-contract.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install -r requirements-playing-time.txt
+
+      - name: Verify selection implementation
+        run: python -m py_compile scripts/select_player_value_v1_dh_positional_exposure.py
+
+      - name: Download exact frozen upstream artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/position-role inputs/playing-time-selection inputs/validation-2023 inputs/validation-2024 inputs/fielding
+          gh run download 32152125644 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-transition-challenger-development \
+            --dir inputs/position-role
+          gh run download 32141616127 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name playing-time-v1-candidate-selection \
+            --dir inputs/playing-time-selection
+          gh run download 32141934868 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name playing-time-v1-validation-2023 \
+            --dir inputs/validation-2023
+          gh run download 32142089669 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name playing-time-v1-validation-2024 \
+            --dir inputs/validation-2024
+          gh run download 32148467330 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-historical-source-2021-2024 \
+            --dir inputs/fielding
+
+      - name: Run pre-2025 DH positional-exposure selection
+        run: >-
+          python scripts/select_player_value_v1_dh_positional_exposure.py
+          --position-role-root inputs/position-role
+          --playing-time-selection-root inputs/playing-time-selection
+          --validation-2023-root inputs/validation-2023
+          --validation-2024-root inputs/validation-2024
+          --fielding-root inputs/fielding
+
+      - name: Pin workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('reports/generated/player-value-v1-dh-positional-exposure-selection/result.json')
+          data = json.loads(path.read_text())
+          data['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          data['source_sha'] = os.environ['SOURCE_SHA']
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload selection artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: player-value-v1-dh-positional-exposure-selection
+          path: reports/generated/player-value-v1-dh-positional-exposure-selection/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding DH exposure result
+        run: |
+          set -euo pipefail
+          cp reports/generated/player-value-v1-dh-positional-exposure-selection/result.json \
+            docs/player-value-v1-dh-positional-exposure-selection-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/player-value-v1-dh-positional-exposure-selection-result.json
+          git commit -m "Freeze DH positional exposure"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
