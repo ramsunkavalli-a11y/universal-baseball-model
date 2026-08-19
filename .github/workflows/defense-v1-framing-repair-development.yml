@@ -1,0 +1,161 @@
+name: Defense v1 framing repair development
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-framing-repair-development.yml"
+      - "scripts/develop_defense_v1_framing_repair.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  develop:
+    name: rerun frozen framing F0-F1 gate on repaired targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and frozen Defense dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75"
+
+      - name: Verify original framing evaluator is unchanged
+        run: |
+          set -euo pipefail
+          observed="$(git hash-object scripts/audit_defense_v1_tracked_challenger.py)"
+          expected="c599c95dd90a8982954cca2c34b641e8a62a2d0a"
+          test "$observed" = "$expected" || { echo "tracked challenger blob changed: $observed"; exit 1; }
+          python - <<'PY'
+          from pathlib import Path
+          text = Path("scripts/audit_defense_v1_tracked_challenger.py").read_text()
+          required = [
+              "counts_ok = all(int(fold[\"player_count\"]) >= 20 for fold in folds)",
+              "folds_better >= 2",
+              "improvement >= 0.02",
+              "worst_relative <= 0.05",
+              "f1_pooled[\"spearman\"] >= 0.10",
+          ]
+          missing = [value for value in required if value not in text]
+          if missing:
+              raise SystemExit(f"original framing gate signatures missing: {missing}")
+          print("original framing evaluator and gate verified")
+          PY
+
+      - name: Resolve certified source runs
+        id: sources
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          repair = json.loads(Path("docs/defense-v1-framing-repair-development-source-result.json").read_text())
+          if repair.get("status") != "source_materialized_ready_for_repaired_framing_development":
+              raise SystemExit("repaired framing target source is not certified")
+          if repair.get("decision", {}).get("year_specific_source_certified") is not True:
+              raise SystemExit("repaired framing source did not certify year specificity")
+          if repair.get("boundary", {}).get("2025_framing_target_accessed") is not False:
+              raise SystemExit("repaired framing source crossed 2025 boundary")
+
+          tracked = json.loads(Path("docs/defense-v1-tracked-source-result.json").read_text())
+          if tracked.get("decision", {}).get("tracked_source_materialized") is not True:
+              raise SystemExit("tracked source is not certified")
+          if tracked.get("boundary", {}).get("2025_source_accessed") is not False:
+              raise SystemExit("tracked source crossed 2025 boundary")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              handle.write(f"repair_run_id={int(repair['source_run_id'])}\n")
+              handle.write(f"tracked_run_id={int(tracked['source_run_id'])}\n")
+          print("certified source runs resolved")
+          PY
+
+      - name: Download certified historical fielding source
+        uses: actions/download-artifact@v7
+        with:
+          name: position-role-historical-source-2021-2024
+          path: inputs/historical
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32148467330
+
+      - name: Download certified tracked framing source
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-tracked-source-2021-2023
+          path: inputs/tracked
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.sources.outputs.tracked_run_id }}
+
+      - name: Download corrected 2022-2024 framing targets
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-framing-repair-development-source
+          path: inputs/repaired-targets
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.sources.outputs.repair_run_id }}
+
+      - name: Verify repaired framing scorer compiles
+        run: python -m py_compile scripts/develop_defense_v1_framing_repair.py
+
+      - name: Run exact original framing development gate
+        run: >-
+          python -u scripts/develop_defense_v1_framing_repair.py
+          --historical-root inputs/historical
+          --tracked-root inputs/tracked
+          --repaired-source-root inputs/repaired-targets
+          --output reports/generated/defense-v1-framing-repair-development/result.json
+
+      - name: Pin workflow metadata
+        env:
+          DEVELOPMENT_RUN_ID: ${{ github.run_id }}
+          DEVELOPMENT_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-framing-repair-development/result.json")
+          result = json.loads(path.read_text())
+          result["development_run_id"] = int(os.environ["DEVELOPMENT_RUN_ID"])
+          result["development_sha"] = os.environ["DEVELOPMENT_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload repaired framing development result
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-framing-repair-development
+          path: reports/generated/defense-v1-framing-repair-development/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding repaired framing development result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-framing-repair-development/result.json docs/defense-v1-framing-repair-development-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-framing-repair-development-result.json
+          git commit -m "Persist repaired framing development result"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
