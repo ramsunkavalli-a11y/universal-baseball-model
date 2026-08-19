@@ -1,6 +1,11 @@
 name: Defense v1 2025 one-shot confirmation
 
 on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-2025-confirmation.yml"
   workflow_dispatch:
 
 permissions:
