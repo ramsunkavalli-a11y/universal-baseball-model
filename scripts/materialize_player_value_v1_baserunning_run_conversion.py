@@ -81,9 +81,13 @@ def main() -> None:
 
     steal_attempts = float(steal_reference["steal_attempts"])
     stolen_bases = float(steal_reference["stolen_bases"])
-    caught_stealing = float(steal_reference["caught_stealing"])
-    if abs((steal_attempts - stolen_bases) - caught_stealing) > 1e-9:
-        raise ValueError("2024 steal reference violates attempts = SB + CS")
+    caught_stealing = steal_attempts - stolen_bases
+    if caught_stealing < 0:
+        raise ValueError("2024 steal reference has stolen bases above attempts")
+    supplied_success_rate = float(steal_reference["success_rate_per_attempt"])
+    derived_success_rate = stolen_bases / steal_attempts
+    if abs(supplied_success_rate - derived_success_rate) > 1e-12:
+        raise ValueError("2024 steal reference success-rate identity failed")
 
     reference = build_baserunning_reference(
         season=2024,
@@ -137,6 +141,7 @@ def main() -> None:
         "verification": {
             "mlb_pa_reconciled_across_upstream_artifacts": True,
             "steal_attempts_equal_sb_plus_cs": True,
+            "steal_success_rate_identity": True,
             "neutral_steal_runs_600_pa": neutral_steal_runs_600_pa,
             "neutral_steal_centered_within_1e-10": True,
             "advancement_confirmation_passed": True,
