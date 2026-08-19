@@ -37,6 +37,9 @@ _REQUIRED_FIELDS = (
     "strikeOuts",
     "sacBunts",
     "sacFlies",
+    "stolenBases",
+    "caughtStealing",
+    "groundIntoDoublePlay",
 )
 
 MLB_BATTING_BACKBONE_SCHEMA: dict[str, pl.DataType] = {
@@ -52,6 +55,9 @@ MLB_BATTING_BACKBONE_SCHEMA: dict[str, pl.DataType] = {
     "batting_strike_outs": pl.Int64,
     "batting_sac_bunts": pl.Int64,
     "batting_sac_flies": pl.Int64,
+    "batting_stolen_bases": pl.Int64,
+    "batting_caught_stealing": pl.Int64,
+    "batting_ground_into_double_play": pl.Int64,
     "batting_balls_in_play": pl.Int64,
     "simple_pa_accounting_residual": pl.Int64,
 }
@@ -159,6 +165,11 @@ def project_mlb_hitting_splits(
         strikeouts = _integer_like(stat.get("strikeOuts"), field="strikeOuts")
         sac_bunts = _integer_like(stat.get("sacBunts"), field="sacBunts")
         sac_flies = _integer_like(stat.get("sacFlies"), field="sacFlies")
+        stolen_bases = _integer_like(stat.get("stolenBases"), field="stolenBases")
+        caught_stealing = _integer_like(stat.get("caughtStealing"), field="caughtStealing")
+        ground_into_double_play = _integer_like(
+            stat.get("groundIntoDoublePlay"), field="groundIntoDoublePlay"
+        )
         broad_contacts = at_bats - strikeouts + sac_bunts + sac_flies
         if broad_contacts < 0:
             raise ValueError(f"negative derived broad contacts for MLBAM {player_id}")
@@ -184,6 +195,9 @@ def project_mlb_hitting_splits(
                 "batting_strike_outs": strikeouts,
                 "batting_sac_bunts": sac_bunts,
                 "batting_sac_flies": sac_flies,
+                "batting_stolen_bases": stolen_bases,
+                "batting_caught_stealing": caught_stealing,
+                "batting_ground_into_double_play": ground_into_double_play,
                 "batting_balls_in_play": broad_contacts,
                 "simple_pa_accounting_residual": simple_residual,
             }
