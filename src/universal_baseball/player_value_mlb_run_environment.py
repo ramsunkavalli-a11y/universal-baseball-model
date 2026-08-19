@@ -82,7 +82,15 @@ def innings_pitched_to_outs(value: Any) -> int:
 
 
 def count_completed_regular_season_games(payload: Mapping[str, Any]) -> int:
-    """Count final regular-season games and reject an incomplete season payload."""
+    """Count unique completed regular-season games in a schedule payload.
+
+    Stats API preserves postponed schedule entries and marks their abstract state
+    as ``Final`` even though their coded state is ``D``. Rescheduled games can
+    therefore appear once as postponed and again as the eventual final game with
+    the same ``gamePk``. Completed game authority is ``codedGameState == 'F'``;
+    count unique gamePk values so stale postponed schedule rows cannot inflate
+    the league game denominator.
+    """
 
     regular_games: list[Mapping[str, Any]] = []
     for date_block in payload.get("dates") or []:
@@ -92,17 +100,17 @@ def count_completed_regular_season_games(payload: Mapping[str, Any]) -> int:
     if not regular_games:
         raise RuntimeError("MLB schedule payload contains no regular-season games")
 
-    completed = [
-        game
-        for game in regular_games
-        if str((game.get("status") or {}).get("abstractGameState") or "") == "Final"
-    ]
-    if len(completed) != len(regular_games):
-        raise RuntimeError(
-            "MLB reference schedule is not complete: "
-            f"final={len(completed)}, regular={len(regular_games)}"
-        )
-    return len(completed)
+    completed_game_pks: set[int] = set()
+    for game in regular_games:
+        status = game.get("status") or {}
+        if str(status.get("codedGameState") or "") != "F":
+            continue
+        game_pk = _integer_count(game.get("gamePk"), "schedule gamePk")
+        completed_game_pks.add(game_pk)
+
+    if not completed_game_pks:
+        raise RuntimeError("MLB schedule payload contains no completed regular-season games")
+    return len(completed_game_pks)
 
 
 def _fetch_group_splits(
