@@ -15,12 +15,20 @@ def test_mlb_baserunning_source_audit_accepts_complete_counts() -> None:
     result = audit_mlb_baserunning_splits(
         [
             _split(
+                hits=20,
+                doubles=5,
+                triples=1,
+                homeRuns=4,
                 stolenBases=8,
                 caughtStealing=2,
                 groundIntoDoublePlay=4,
                 gidpOpp=23,
             ),
             _split(
+                hits="0",
+                doubles="0",
+                triples="0",
+                homeRuns="0",
                 stolenBases="0",
                 caughtStealing="0",
                 groundIntoDoublePlay="0",
@@ -31,8 +39,13 @@ def test_mlb_baserunning_source_audit_accepts_complete_counts() -> None:
 
     assert result["row_count"] == 2
     assert result["fields"]["stolenBases"]["complete"] is True
+    assert result["fields"]["hits"]["complete"] is True
     assert result["fields"]["gidpOpp"]["complete"] is True
     assert result["gidp_opportunity_identity"] == {
+        "checked_rows": 2,
+        "violation_rows": 0,
+    }
+    assert result["singles_identity"] == {
         "checked_rows": 2,
         "violation_rows": 0,
     }
@@ -53,6 +66,7 @@ def test_mlb_baserunning_source_audit_reports_missing_gidp_opportunity() -> None
         "complete": False,
     }
     assert result["gidp_opportunity_identity"]["checked_rows"] == 0
+    assert result["singles_identity"]["checked_rows"] == 0
 
 
 def test_mlb_baserunning_source_audit_rejects_gidp_above_opportunities() -> None:
@@ -64,6 +78,23 @@ def test_mlb_baserunning_source_audit_rejects_gidp_above_opportunities() -> None
                     caughtStealing=1,
                     groundIntoDoublePlay=5,
                     gidpOpp=4,
+                )
+            ]
+        )
+
+
+def test_mlb_baserunning_source_audit_rejects_negative_singles_identity() -> None:
+    with pytest.raises(ValueError, match="negative singles"):
+        audit_mlb_baserunning_splits(
+            [
+                _split(
+                    hits=5,
+                    doubles=3,
+                    triples=1,
+                    homeRuns=2,
+                    stolenBases=0,
+                    caughtStealing=0,
+                    groundIntoDoublePlay=0,
                 )
             ]
         )
