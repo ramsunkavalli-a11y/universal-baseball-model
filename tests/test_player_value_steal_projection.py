@@ -57,7 +57,14 @@ def test_candidate_grid_is_predeclared_seven_models() -> None:
 
 
 def test_attempt_multiplier_uses_environment_expected_attempts_and_shrinkage() -> None:
-    target = _row(1, 2023, attempts=4.0, expected_attempts=4.0)
+    target = _row(
+        1,
+        2023,
+        attempts=4.0,
+        successes=3.0,
+        expected_attempts=4.0,
+        expected_successes=3.0,
+    )
     history = [_row(1, 2022, attempts=10.0, expected_attempts=5.0)]
 
     value = attempt_multiplier(target, history, _candidate("B1_k5"))
