@@ -6,6 +6,11 @@ on:
       - source-certification-poc
     paths:
       - ".github/workflows/defense-v1-2025-confirmation.yml"
+      - "scripts/confirm_defense_v1_2025.py"
+      - "scripts/write_workflow_checkpoint.py"
+      - "docs/defense-v1-confirmation-parameters.json"
+      - "docs/defense-v1-2024-tracking-predictor-source-result.json"
+      - "docs/defense-v1-2025-target-source-result.json"
   workflow_dispatch:
 
 permissions:
@@ -26,6 +31,16 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+
+      - name: Start durable checkpoint
+        run: >-
+          python scripts/write_workflow_checkpoint.py
+          --path reports/checkpoints/defense-v1-2025-confirmation.json
+          --workflow defense-v1-2025-confirmation
+          --stage confirmation
+          --status started
+          --current-step preflight
+          --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
 
       - name: Install frozen scoring dependencies
         run: >-
@@ -53,6 +68,10 @@ jobs:
               raise SystemExit("2024 tracking predictor materialization flag missing")
           if tracking.get("boundary", {}).get("2025_source_accessed") is not False:
               raise SystemExit("2024 tracking source crossed 2025 boundary")
+          if tracking.get("boundary", {}).get("model_fit") is not False:
+              raise SystemExit("2024 tracking source performed a fit")
+          if tracking.get("boundary", {}).get("model_scoring_performed") is not False:
+              raise SystemExit("2024 tracking source performed scoring")
 
           if targets.get("status") != "certified_source_ready_for_confirmation_scoring":
               raise SystemExit(f"2025 target source not certified: {targets.get('status')}")
@@ -62,6 +81,10 @@ jobs:
               raise SystemExit("2025 target source performed a fit")
           if targets.get("boundary", {}).get("model_scoring") is not False:
               raise SystemExit("2025 target source performed scoring")
+          if targets.get("boundary", {}).get("run_value_conversion_performed") is not False:
+              raise SystemExit("2025 target source crossed run-value boundary")
+          if targets.get("boundary", {}).get("war_value_authorized") is not False:
+              raise SystemExit("2025 target source crossed WAR/value boundary")
 
           tracking_run = int(tracking["source_run_id"])
           target_run = int(targets["source_run_id"])
@@ -71,6 +94,29 @@ jobs:
           print(f"tracking source run={tracking_run}")
           print(f"target source run={target_run}")
           PY
+
+      - name: Checkpoint source certification
+        env:
+          TRACKING_RUN_ID: ${{ steps.sources.outputs.tracking_run_id }}
+          TARGET_RUN_ID: ${{ steps.sources.outputs.target_run_id }}
+        run: >-
+          python scripts/write_workflow_checkpoint.py
+          --path reports/checkpoints/defense-v1-2025-confirmation.json
+          --workflow defense-v1-2025-confirmation
+          --stage confirmation
+          --status step_complete
+          --current-step download_inputs
+          --last-completed-step verify_certified_sources
+          --inputs-json "{\"historical_run_id\":32148467330,\"tracking_run_id\":${TRACKING_RUN_ID},\"target_run_id\":${TARGET_RUN_ID}}"
+          --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
+      - name: Upload source-cert checkpoint
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-confirmation-checkpoint-source-cert
+          path: reports/checkpoints/defense-v1-2025-confirmation.json
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Download certified historical fielding source
         uses: actions/download-artifact@v7
@@ -98,6 +144,26 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           run-id: ${{ steps.sources.outputs.target_run_id }}
+
+      - name: Checkpoint downloaded inputs
+        run: >-
+          python scripts/write_workflow_checkpoint.py
+          --path reports/checkpoints/defense-v1-2025-confirmation.json
+          --workflow defense-v1-2025-confirmation
+          --stage confirmation
+          --status step_complete
+          --current-step frozen_scoring
+          --last-completed-step download_certified_inputs
+          --outputs-json '{"historical_downloaded":true,"tracking_downloaded":true,"targets_downloaded":true}'
+          --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
+      - name: Upload input checkpoint
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-confirmation-checkpoint-inputs
+          path: reports/checkpoints/defense-v1-2025-confirmation.json
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Verify frozen scorer compiles
         run: python -m py_compile scripts/confirm_defense_v1_2025.py
@@ -131,6 +197,18 @@ jobs:
           path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
           PY
 
+      - name: Checkpoint completed scoring
+        run: >-
+          python scripts/write_workflow_checkpoint.py
+          --path reports/checkpoints/defense-v1-2025-confirmation.json
+          --workflow defense-v1-2025-confirmation
+          --stage confirmation
+          --status step_complete
+          --current-step persist_binding_result
+          --last-completed-step frozen_one_shot_scoring
+          --outputs-json '{"report_created":true,"scored_rows_created":true}'
+          --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
       - name: Upload frozen confirmation result
         uses: actions/upload-artifact@v7
         with:
@@ -154,3 +232,35 @@ jobs:
             sleep $((attempt * 2))
           done
           exit 1
+
+      - name: Final durable checkpoint
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          STATUS=failed
+          LAST_COMPLETED="unknown_before_failure"
+          if [ "$JOB_STATUS" = "success" ]; then
+            STATUS=completed
+            LAST_COMPLETED="persist_binding_result"
+          fi
+          python scripts/write_workflow_checkpoint.py \
+            --path reports/checkpoints/defense-v1-2025-confirmation.json \
+            --workflow defense-v1-2025-confirmation \
+            --stage confirmation \
+            --status "$STATUS" \
+            --current-step job_finished \
+            --last-completed-step "$LAST_COMPLETED" \
+            --error "GitHub Actions job status: $JOB_STATUS" \
+            --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
+      - name: Upload final checkpoint and partial outputs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-confirmation-checkpoint-final
+          path: |
+            reports/checkpoints/defense-v1-2025-confirmation.json
+            reports/generated/defense-v1-2025-confirmation/
+          if-no-files-found: warn
+          retention-days: 30
