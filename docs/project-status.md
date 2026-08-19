@@ -17,104 +17,121 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 
 - **Performance:** completed-2024 affiliated batting materialization retained.
 - **Current Talent:** frozen at `translated_multiseason_recency_empirical_bayes_v1`.
-- **Projection v1 batting rate/profile:** frozen at `frozen_current_talent_carry_forward_v1`.
+- **Projection v1 batting:** frozen at `frozen_current_talent_carry_forward_v1`.
 - **Playing Time v1:** frozen and 2025-confirmed at `playing_time_recent_opportunity_40man_b2_hurdle_v1`.
 - **Position / Role v1:** frozen and 2025-confirmed at `primary_share_thresholded_transition_mean_v1`.
-- **Defense v1:** **DONE / FROZEN / 2025-CONFIRMED**. See below.
 
-## Defense v1 — DONE / FROZEN / 2025-CONFIRMED
+## Defense v1 status — GENERAL RANGE FROZEN; CATCHER CHANNEL QUARANTINED
 
-Binding result: `docs/defense-v1-2025-confirmation-result.json`.
+A concrete source implementation failure was discovered while beginning Player Value run-conversion work.
 
-Frozen parameter package: `docs/defense-v1-confirmation-parameters.json`.
+### General range remains valid and frozen
 
-Frozen confirmation contract: `docs/defense-v1-2025-confirmation-contract.md`.
+Binding general-range confirmation remains in `docs/defense-v1-2025-confirmation-result.json`:
 
-Canonical parameter hash:
+- universal general range confirmed on 161 rows;
+- tracked MLB range confirmed incrementally on 135 eligible tracked rows;
+- final general hierarchy remains tracked MLB range when eligible, otherwise universal range, then declared neutral fallback when universal evidence is insufficient;
+- tracked MiLB range, tracked framing, age, and rejected traditional-feature paths remain closed.
 
-`sha256:cba6b7ebe4b2598db2c4d9ef360b0784f23a94ad61385f87149b08c46e0390d5`
+**Do not reopen or rerun general range.**
 
-### Final retained Defense-v1 components
+### Catcher source failure
 
-General range:
+The pre-2025 Defense target artifact contained exactly the same catcher-throwing target distribution for 2022, 2023, and 2024. It also matched the subsequently materialized nominal 2025 target distribution. Historical blocking pulls likewise returned the same 70-row payload for every requested year.
 
-- **U1 confirmed** on 161 identical 2024-input -> 2025-target rows.
-- U1 MSE `0.978170` vs B0 `1.010190`.
-- U1 Spearman `0.216701`.
-- **T1 confirmed** on 135 eligible MLB tracked rows.
-- T1 MSE `0.915584` vs U1 `0.916394` on the identical tracked population.
-- T1 Spearman `0.274737` vs U1 `0.237502`.
-- Final hierarchy: eligible MLB with eligible tracking -> **T1**; otherwise eligible general-range row -> **U1**; insufficient U1 evidence -> declared neutral position-relative B0 fallback.
+Direct source diagnostic: `docs/savant-catcher-year-filter-diagnostic.json`.
 
-Catcher throwing:
+The diagnostic showed that both Savant catcher leaderboards returned identical 2022-2025 payloads when queried with the legacy/generated `year=...` form used by the pinned SportsDataverse catcher wrapper and with tested camelCase season parameters.
 
-- **C1 confirmed** on 71 catchers.
-- C1 MSE `0.945481` vs B0 `1.002019`.
-- C1 MAE `0.772223` vs B0 `0.810838`.
-- C1 Spearman `0.246372`.
-- Final throwing component: **C1** when eligible; otherwise neutral B0.
+The current Savant UI instead uses snake_case `season_start` / `season_end` plus the current catcher leaderboard parameters. A second diagnostic run is testing that exact query shape now.
 
-Catcher blocking:
+### Quarantined catcher results
 
-- **C2 failed the frozen confirmation gate** on 69 catchers.
-- C2 MSE improved (`0.973228` vs B0 `1.008113`) and MAE remained within tolerance (`0.784477` vs `0.774848`), but Spearman was `0.096639`, below the preregistered `0.10` minimum.
-- No rescue tuning or threshold movement is allowed.
-- Final blocking component: **B0 neutral**.
+Until the repair completes, the following are **historical audit evidence, not binding production evidence**:
 
-Closed paths remain closed:
+- prior catcher-throwing development selection;
+- prior catcher-blocking development selection;
+- catcher portions of `docs/defense-v1-confirmation-parameters.json`;
+- prior 2025 catcher throwing confirmation pass;
+- prior 2025 catcher blocking confirmation failure.
 
-- tracked framing F1;
-- tracked MiLB T1;
-- age A1;
-- rejected traditional-feature search.
+This does not imply those model ideas are wrong. Their target source was not year-specific, so the evidence is invalid.
 
-### Confirmation provenance
+### Catcher source repair contract
 
-- historical fielding source run: `32148467330`;
-- 2024 MLB tracking source run: `32198857540`;
-- 2025 target-source run: `32201584187`;
-- one-shot scoring run: `32205199301`;
-- scoring SHA: `e4649a52fec59d6d70a15f18010db2804c1dc395`;
-- scored-row artifact: 436 rows, SHA-256 `8468a619410068e4d37384e4af536e7231f695edc8d65f8b78ea5548cda63779`.
+Binding repair contract: `docs/defense-v1-catcher-source-repair-contract.md`.
 
-The scoring workflow completed successfully and performed no fitting, reselection, recalibration, threshold movement, live source query, run-value conversion, or WAR calculation.
+The repair is source-only in scope:
 
-### Important methodology note
+1. certify truly year-specific Savant catcher query semantics;
+2. materialize corrected 2022-2024 catcher targets only;
+3. rerun the **exact original preregistered C1/C2 catcher development search and gates** with no new features/families/thresholds;
+4. refit/freeze any surviving catcher component on corrected pre-2025 targets;
+5. only then materialize corrected 2025 catcher targets separately;
+6. run one-shot catcher confirmation under the original frozen confirmation rules.
 
-The earlier Tier-B tracked-MiLB transfer gate returned zero qualifying players because the frozen candidate universe contained only three non-MLB players before tracking availability was applied; the >=30-player criterion was therefore impossible by construction. The independent audit confirmed this was not a join bug. Keep the result as `insufficient_transfer_evidence`; do not reinterpret it as evidence that tracked MiLB range is ineffective.
+No repaired 2025 catcher outcome may enter development/refit.
 
-## ACTIVE STAGE — post-Defense run conversion / positional adjustment design
+## Player Value v1 architecture
 
-Defense development and confirmation are closed. **Do not refit, reselect, or rescue any Defense-v1 component.**
+Architecture contract: `docs/player-value-v1-architecture-contract.md`.
 
-The binding confirmation result authorizes **run-value conversion next**, but **WAR/value is not yet authorized**.
+The downstream architecture is frozen even while the catcher source is repaired:
+
+- reuse the existing Performance RE24/bin-value infrastructure for batting;
+- Defense skill and defensive runs are separate layers;
+- no arbitrary `runs per z` conversion;
+- use frozen Playing Time + full Position/Role share vector for exposure;
+- positional adjustment remains separate from position-relative Defense skill;
+- replacement level and runs per win remain separate later decisions;
+- preserve each value component separately in final outputs.
+
+### Defensive run conversion research
+
+Public Statcast methodology supports a native-unit route rather than arbitrary z-score scaling:
+
+- range: convert predicted position-relative success-rate skill to cumulative OAA-like value using projected opportunities, then use Statcast fielding run values;
+- catcher throwing: convert predicted CS-above-average-per-throw skill using projected steal attempts, then use Statcast throwing run value;
+- catcher blocking already has a native Statcast blocks-to-runs convention, but its model channel cannot be used until the source repair decides whether a blocking model survives.
+
+The pre-2025 native-scale audit is persisted at `docs/player-value-v1-defense-native-scale-audit.json`. General-range scale diagnostics are usable; catcher scale diagnostics are quarantined because they exposed the source failure.
+
+## ACTIVE STAGE
+
+**Defense catcher source repair + Player Value exposure/positional-adjustment research.**
+
+These can proceed in parallel where independent, but WAR/value aggregation remains closed.
 
 ### Immediate next batch
 
-1. Inspect the repo for existing run-conversion and positional-adjustment contracts/scripts/data sources before implementing anything new.
-2. Define and freeze the run-conversion / positional-adjustment methodology and source boundaries without changing frozen Defense skill estimates.
-3. Only after that stage is certified should the project authorize WAR/value aggregation.
+1. Resolve the current-UI snake_case Savant catcher query diagnostic.
+2. If it certifies, materialize corrected 2022-2024 catcher targets under the repair contract and rerun the original catcher development gate.
+3. In parallel, finish the audit of frozen Playing Time output semantics and define the pre-2025 defensive-opportunity exposure mapping.
+4. Do not open repaired 2025 catcher targets until repaired catcher development and parameter freeze are complete.
 
 ## Binding boundaries
 
-- **Do not refit/reselect Defense v1.**
-- No rescue for C2 blocking, tracked framing, tracked MiLB range, age, or rejected traditional features.
-- Do not use 2025 confirmation outcomes to retune coefficients or thresholds.
-- **Run-value conversion is authorized next; WAR/value calculation is not yet authorized.**
-- Playing Time v1 and Position/Role v1 remain frozen and untouched.
-- Preserve missingness/coverage explicitly; neutral B0 is a declared fallback, not observed average talent evidence.
+- **General Defense remains frozen.**
+- **Catcher Defense is quarantined pending source repair.**
+- No new catcher features, model families, thresholds, or rescue tuning.
+- Do not use prior invalid catcher confirmation residuals for tuning.
+- Do not refit Current Talent, Projection, Playing Time, or Position/Role.
+- General-range run-conversion research and positional-adjustment research may continue.
+- Catcher run conversion is blocked until repaired confirmation completes.
+- **WAR/value calculation is not authorized yet.**
 
 ## Governing read order
 
 1. `docs/project-status.md`
-2. `docs/defense-v1-2025-confirmation-result.json`
-3. `docs/defense-v1-2025-confirmation-contract.md`
-4. `docs/defense-v1-confirmation-parameters.json`
-5. `docs/defense-v1-2025-target-source-result.json`
-6. `docs/defense-v1-2024-tracking-predictor-source-result.json`
-7. `docs/defense-v1-development-checkpoint.md`
-8. `docs/defense-v1-tracked-challenger-result.json`
-9. `docs/defense-v1-tier-b-cohort-audit.json`
+2. `docs/defense-v1-catcher-source-repair-contract.md`
+3. `docs/savant-catcher-year-filter-diagnostic.json`
+4. `docs/player-value-v1-architecture-contract.md`
+5. `docs/player-value-v1-defense-native-scale-audit.json`
+6. `docs/defense-v1-2025-confirmation-result.json` — general result remains binding; catcher portion quarantined
+7. `docs/defense-v1-development-contract.md`
+8. `docs/defense-v1-2025-confirmation-contract.md`
+9. `docs/defense-v1-confirmation-parameters.json` — general parameters binding; catcher portion quarantined
 10. `docs/position-role-2025-confirmation-result.json`
 11. `docs/playing-time-v1-confirmation-result.json`
 12. `docs/projection-batting-v1-development-result.json`
@@ -123,9 +140,9 @@ The binding confirmation result authorizes **run-value conversion next**, but **
 
 ## Working rules
 
-- Do not redo settled Current Talent, Projection v1, Playing Time v1, Position/Role v1, or Defense absent a concrete implementation failure.
+- Do not redo settled work absent a concrete implementation failure.
+- Repair only the scope affected by a verified implementation failure.
 - Do not tune rejected models against held-out failure periods.
-- Preserve immutable raw/source evidence and provenance.
+- Preserve immutable raw/source evidence and provenance, including invalid-source artifacts for audit history.
 - Reuse certified artifacts where scope matches.
-- Keep batting skill, opportunity, position/role, defensive skill, positional adjustment, run conversion, and value separate.
 - Freeze exact model/source decisions before opening a held-out confirmation period.
