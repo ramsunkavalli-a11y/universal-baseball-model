@@ -1,0 +1,126 @@
+name: Defense v1 2025 target source
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  source:
+    name: materialize frozen 2025 defensive targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and pinned source dependency
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75"
+
+      - name: Verify frozen authorization and required predictor-source certification
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          params_path = Path("docs/defense-v1-confirmation-parameters.json")
+          contract_path = Path("docs/defense-v1-2025-confirmation-contract.md")
+          tracking_path = Path("docs/defense-v1-2024-tracking-predictor-source-result.json")
+
+          params = json.loads(params_path.read_text())
+          decision = params.get("decision", {})
+          boundary = params.get("boundary", {})
+          if decision.get("pre_2025_parameters_frozen") is not True:
+              raise SystemExit("Defense v1 parameters are not frozen")
+          if decision.get("2025_defensive_target_source_materialization_authorized") is not True:
+              raise SystemExit("2025 defensive target source is not authorized")
+          if decision.get("war_value_authorized") is not False:
+              raise SystemExit("WAR/value boundary changed")
+          if boundary.get("2025_defensive_targets_accessed") is not False:
+              raise SystemExit("binding parameter freeze unexpectedly accessed 2025 targets")
+
+          actual_contract_sha = hashlib.sha256(contract_path.read_bytes()).hexdigest()
+          if actual_contract_sha != params.get("contract_sha256"):
+              raise SystemExit(
+                  f"confirmation contract hash mismatch: {actual_contract_sha} != {params.get('contract_sha256')}"
+              )
+
+          if not tracking_path.exists():
+              raise SystemExit("2024 tracking predictor source has not been certified yet")
+          tracking = json.loads(tracking_path.read_text())
+          if tracking.get("status") != "source_materialized":
+              raise SystemExit(f"2024 tracking predictor source status is not clean: {tracking.get('status')}")
+          tracking_decision = tracking.get("decision", {})
+          tracking_boundary = tracking.get("boundary", {})
+          if tracking_decision.get("2024_mlb_tracking_confirmation_predictor_materialized") is not True:
+              raise SystemExit("2024 tracking predictor materialization did not certify")
+          if tracking_boundary.get("2025_source_accessed") is not False:
+              raise SystemExit("2024 tracking source crossed the 2025 source boundary")
+          if tracking_boundary.get("2025_defensive_targets_accessed") is not False:
+              raise SystemExit("2024 tracking source crossed the 2025 target boundary")
+          if tracking_boundary.get("model_fit") is not False or tracking_boundary.get("model_scoring_performed") is not False:
+              raise SystemExit("2024 tracking source was not source-only")
+
+          print(f"confirmation contract verified: {actual_contract_sha}")
+          print(f"2024 tracking source run: {tracking.get('source_run_id')}")
+          PY
+
+      - name: Verify target materializer compiles
+        run: python -m py_compile scripts/materialize_defense_v1_2025_targets.py
+
+      - name: Materialize completed-2025 defensive target source
+        run: >-
+          python -u scripts/materialize_defense_v1_2025_targets.py
+          --output-root reports/generated/defense-v1-2025-target-source
+
+      - name: Pin target-source workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path("reports/generated/defense-v1-2025-target-source/report.json")
+          result = json.loads(path.read_text())
+          result["source_run_id"] = int(os.environ["SOURCE_RUN_ID"])
+          result["source_sha"] = os.environ["SOURCE_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload certified 2025 defensive target source
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-target-source
+          path: reports/generated/defense-v1-2025-target-source/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist 2025 defensive target source result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-2025-target-source/report.json docs/defense-v1-2025-target-source-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-2025-target-source-result.json
+          git commit -m "Persist Defense v1 2025 target source"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
