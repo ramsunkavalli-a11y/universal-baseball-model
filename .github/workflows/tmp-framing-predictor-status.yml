@@ -1,0 +1,64 @@
+name: Temporary framing predictor status probe
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/tmp-framing-predictor-status.yml"
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Query workflow run status
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/defense-v1-2024-framing-predictor.yml/runs?branch=source-certification-poc&per_page=10" \
+            > docs/tmp-framing-predictor-status.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("docs/tmp-framing-predictor-status.json")
+          data = json.loads(p.read_text())
+          wanted = "06fcd704d88392b1efc203bea549d0248b3c23d5"
+          rows = [
+              {
+                  "id": r.get("id"),
+                  "head_sha": r.get("head_sha"),
+                  "status": r.get("status"),
+                  "conclusion": r.get("conclusion"),
+                  "created_at": r.get("created_at"),
+                  "updated_at": r.get("updated_at"),
+                  "run_attempt": r.get("run_attempt"),
+              }
+              for r in data.get("workflow_runs", [])
+              if r.get("head_sha") == wanted
+          ]
+          p.write_text(json.dumps({"target_head_sha": wanted, "matching_runs": rows}, indent=2, sort_keys=True) + "\n")
+          PY
+      - name: Persist temporary status
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/tmp-framing-predictor-status.json
+          git commit -m "Persist temporary framing predictor run status"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
