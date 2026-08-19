@@ -1,4 +1,4 @@
-"""Official MLB Stats API run-environment materialization for Player Value v1."""
+"""Official MLB Stats API reference-environment materialization for Player Value v1."""
 
 from __future__ import annotations
 
@@ -19,6 +19,9 @@ from universal_baseball.player_value_runs_per_win import (
 )
 
 
+MLB_SCHEDULE_URL = "https://statsapi.mlb.com/api/v1/schedule"
+
+
 @dataclass(frozen=True)
 class RunEnvironmentCapture:
     season: int
@@ -31,13 +34,25 @@ class RunEnvironmentCapture:
 
 
 @dataclass(frozen=True)
+class ScheduleCapture:
+    season: int
+    returned_date_count: int
+    returned_game_count: int
+    completed_regular_season_game_count: int
+    response_sha256: str
+
+
+@dataclass(frozen=True)
 class MlbRunEnvironment:
     season: int
     batting_runs_scored: int
+    batting_plate_appearances: int
     pitching_runs_allowed: int
     pitching_outs: int
     innings_pitched: float
+    regular_season_games: int
     captures: tuple[RunEnvironmentCapture, ...]
+    schedule_capture: ScheduleCapture
     runs_per_win: RunsPerWinResult
 
 
@@ -64,6 +79,30 @@ def innings_pitched_to_outs(value: Any) -> int:
     if whole < 0 or frac not in {"0", "1", "2"}:
         raise ValueError(f"invalid inningsPitched: {value!r}")
     return whole * 3 + int(frac)
+
+
+def count_completed_regular_season_games(payload: Mapping[str, Any]) -> int:
+    """Count final regular-season games and reject an incomplete season payload."""
+
+    regular_games: list[Mapping[str, Any]] = []
+    for date_block in payload.get("dates") or []:
+        for game in date_block.get("games") or []:
+            if str(game.get("gameType") or "") == "R":
+                regular_games.append(game)
+    if not regular_games:
+        raise RuntimeError("MLB schedule payload contains no regular-season games")
+
+    completed = [
+        game
+        for game in regular_games
+        if str((game.get("status") or {}).get("abstractGameState") or "") == "Final"
+    ]
+    if len(completed) != len(regular_games):
+        raise RuntimeError(
+            "MLB reference schedule is not complete: "
+            f"final={len(completed)}, regular={len(regular_games)}"
+        )
+    return len(completed)
 
 
 def _fetch_group_splits(
@@ -125,6 +164,37 @@ def _fetch_group_splits(
     return all_splits, captures
 
 
+def _fetch_completed_regular_season_games(
+    session: requests.Session,
+    *,
+    season: int,
+    timeout_seconds: int,
+) -> tuple[int, ScheduleCapture]:
+    response = _statsapi_get_with_retry(
+        session,
+        MLB_SCHEDULE_URL,
+        params={
+            "sportId": 1,
+            "season": int(season),
+            "gameType": "R",
+        },
+        timeout_seconds=timeout_seconds,
+    )
+    payload = response.json()
+    game_count = count_completed_regular_season_games(payload)
+    returned_game_count = sum(
+        len(date_block.get("games") or []) for date_block in payload.get("dates") or []
+    )
+    capture = ScheduleCapture(
+        season=int(season),
+        returned_date_count=len(payload.get("dates") or []),
+        returned_game_count=returned_game_count,
+        completed_regular_season_game_count=game_count,
+        response_sha256=sha256(response.content).hexdigest(),
+    )
+    return game_count, capture
+
+
 def fetch_mlb_run_environment(
     season: int,
     *,
@@ -132,13 +202,14 @@ def fetch_mlb_run_environment(
     session: requests.Session | None = None,
     timeout_seconds: int = 120,
 ) -> MlbRunEnvironment:
-    """Fetch and reconcile completed-regular-season MLB run environment."""
+    """Fetch and reconcile a completed regular-season MLB reference environment."""
 
     if int(season) <= 0:
         raise ValueError("season must be positive")
     owned = session is None
     active = session or requests.Session()
     batting_runs = 0
+    batting_pa = 0
     pitching_runs = 0
     pitching_outs = 0
     captures: list[RunEnvironmentCapture] = []
@@ -163,9 +234,16 @@ def fetch_mlb_run_environment(
             captures.extend(hit_caps)
             captures.extend(pitch_caps)
             if not hitting or not pitching:
-                raise RuntimeError(f"empty MLB run-environment source for league {league_id}")
+                raise RuntimeError(f"empty MLB reference-environment source for league {league_id}")
             batting_runs += sum(
                 _integer_count((split.get("stat") or {}).get("runs"), "hitting runs")
+                for split in hitting
+            )
+            batting_pa += sum(
+                _integer_count(
+                    (split.get("stat") or {}).get("plateAppearances"),
+                    "hitting plateAppearances",
+                )
                 for split in hitting
             )
             pitching_runs += sum(
@@ -176,6 +254,11 @@ def fetch_mlb_run_environment(
                 innings_pitched_to_outs((split.get("stat") or {}).get("inningsPitched"))
                 for split in pitching
             )
+        regular_season_games, schedule_capture = _fetch_completed_regular_season_games(
+            active,
+            season=int(season),
+            timeout_seconds=timeout_seconds,
+        )
     finally:
         if owned:
             active.close()
@@ -185,8 +268,8 @@ def fetch_mlb_run_environment(
             "MLB runs-scored/runs-allowed reconciliation failed: "
             f"batting={batting_runs}, pitching={pitching_runs}"
         )
-    if batting_runs <= 0 or pitching_outs <= 0:
-        raise RuntimeError("MLB run environment must contain positive runs and pitching outs")
+    if batting_runs <= 0 or batting_pa <= 0 or pitching_outs <= 0 or regular_season_games <= 0:
+        raise RuntimeError("MLB reference environment must contain positive runs, PA, outs, and games")
 
     innings = pitching_outs / 3.0
     rpw = calculate_v1_runs_per_win(
@@ -197,9 +280,12 @@ def fetch_mlb_run_environment(
     return MlbRunEnvironment(
         season=int(season),
         batting_runs_scored=batting_runs,
+        batting_plate_appearances=batting_pa,
         pitching_runs_allowed=pitching_runs,
         pitching_outs=pitching_outs,
         innings_pitched=innings,
+        regular_season_games=regular_season_games,
         captures=tuple(captures),
+        schedule_capture=schedule_capture,
         runs_per_win=rpw,
     )
