@@ -2,117 +2,71 @@
 
 Last updated: 2026-08-19
 
-Status: **OBSERVED EXPOSURE SOURCE FROZEN; TOTAL-OUTS DEVELOPMENT BASELINE RETAINED; POSITION ALLOCATION STILL OPEN.**
+Status: **OBSERVED SOURCE FROZEN; V1 GENERAL DEFENSIVE-OUT VOLUME AND POSITION ALLOCATION SELECTED / FROZEN; COMPONENT-NATIVE OPPORTUNITIES STILL OPEN.**
 
-This contract fixes what counts as observed defensive exposure and prevents Player Value from silently substituting batting playing time or start-share probabilities for defensive opportunities. It also records the completed predeclared total-defensive-outs development diagnostic. The full production bridge is not yet frozen because position allocation and component-native opportunity mappings remain open.
+This contract fixes what counts as observed defensive exposure and records the selected Player Value v1 forward bridge for general defensive outs. It prevents batting playing time or start-share probabilities from being silently substituted for defensive opportunities. Catcher-component native opportunities remain separate because throwing, blocking, and framing do not share the same denominator as general fielding outs.
 
 ## 1. Canonical observed defensive exposure
 
-The canonical observed exposure is **official fielding outs** from the already-certified Position/Role historical source:
+The canonical observed exposure is **official fielding outs** from the certified Position/Role historical source:
 
-- source workflow evidence: run `32148467330`;
+- source workflow run: `32148467330`;
 - artifact: `position-role-historical-source-2021-2024`;
-- artifact digest: `sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3`;
+- digest: `sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3`;
 - source builder: `scripts/certify_position_role_historical_source.py`;
 - deterministic projection: `src/universal_baseball/position_role_source.py`.
 
-The source is official MLB Stats API regular-season `fielding` data for the frozen MLB/affiliated league map. Its canonical row grain is:
-
-`season x league_id x team_id x player_id x position_code`.
-
-Relevant canonical fields include:
-
-- `season`;
-- `league_id` / `level_group`;
-- `team_id`;
-- `player_id`;
-- `position_code` / `position_abbreviation`;
-- `games_played`;
-- `games_started`;
-- `source_innings`;
-- `fielding_outs`.
-
-`fielding_outs` is an exact nonnegative integer derived from baseball innings notation by `baseball_innings_to_outs`. The parser accepts only `.0`, `.1`, and `.2` fractional-out suffixes and converts them to `3 * full_innings + remaining_outs`.
-
-For calculations, **outs are the canonical unit**. If defensive innings are displayed, they are the deterministic transform `fielding_outs / 3`; do not perform calculations on decimal baseball-notation strings.
-
-## 2. Position scope
+Source grain is `season x league_id x team_id x player_id x position_code`. Calculations use exact integer `fielding_outs`; displayed defensive innings may be the deterministic transform `fielding_outs / 3`.
 
 Player Value v1 position-player defensive exposure uses:
 
 `C, 1B, 2B, 3B, SS, LF, CF, RF`.
 
-DH has zero defensive outs by source validation and therefore receives no defensive-skill exposure. Pitcher defense is outside this position-player Defense v1 interface and may not be inferred from the existing Position/Role model.
+DH receives zero defensive-skill exposure. Pitcher defense is outside this interface.
 
-When team rows are combined, fielding outs may be summed only across rows that are intentionally in the same downstream player/season/level/position scope. Multi-level evidence must remain identifiable; a future production bridge must not accidentally double-count a player who appeared at multiple affiliated levels.
+## 2. Role share and defensive share remain distinct
 
-## 3. Observed defensive share
-
-Where a descriptive historical defensive position share is needed, use the already-defined quantity:
+Historical defensive position share is:
 
 `defensive_probability = position fielding_outs / player total_defensive_outs`.
 
-The existing `build_batting_role_profiles` implementation computes exactly this field separately from `role_probability`.
-
-This is observed historical evidence only. It is **not** itself a frozen future-position forecast.
-
-## 4. Frozen Position/Role semantics are different
-
-The frozen Position/Role v1 candidate `primary_share_thresholded_transition_mean_v1` forecasts the nine-position batting-role vector:
+The frozen Position/Role model instead forecasts a nine-position batting-role vector over:
 
 `C, 1B, 2B, 3B, SS, LF, CF, RF, DH`.
 
-Its underlying `role_probability` is constructed from:
+Its `role_probability` is constructed from games started, with games played as fallback. It is not the same quantity as `defensive_probability`.
 
-1. `games_started` when the player-season has any starts;
-2. otherwise `games_played` as the explicit fallback.
+The allocation gate explicitly tested a deterministic defensive normalization of frozen Position/Role and rejected it under the preregistered rule. Therefore **do not relabel frozen Position/Role probability as projected defensive-out share** in Player Value v1.
 
-The 2025 confirmation scorer uses that `role_probability` vector. It does **not** score or freeze `defensive_probability` as the forward target.
+## 3. Playing Time semantics remain distinct
 
-Therefore Player Value must not relabel projected `role_probability` as projected defensive-out share without a separately validated mapping.
+Frozen Playing Time v1 forecasts batting opportunity / plate appearances. Projected PA is not defensive outs.
 
-## 5. Frozen Playing Time semantics are different
+The shortcut
 
-Playing Time v1 forecasts batting opportunity / plate-appearance exposure. Projected PA is not defensive outs.
+`projected defensive outs = projected PA x projected role share`
 
-The following shortcut is explicitly **not frozen and not authorized**:
+is not the selected v1 bridge. A projected-PA total-outs challenger was tested and rejected under the frozen development rule.
 
-`projected defensive outs = projected PA x projected position role share`.
+Do not refit Playing Time or Position/Role inside Player Value.
 
-Projected Playing Time and Position/Role may be inputs or constraints in a separately validated exposure bridge, but their upstream parameters may not be refit inside Player Value.
+## 4. Total defensive-outs bridge — FROZEN
 
-## 6. Forward exposure bridge research gate
+Contract: `docs/player-value-v1-defensive-exposure-diagnostic-contract.md`.
 
-Before any Defense skill is converted to a seasonal run total, a forward bridge must be selected using predeclared evidence and persisted separately.
+Binding result: `docs/player-value-v1-defensive-exposure-diagnostic-result.json`.
 
-The bridge must answer two distinct questions:
+Workflow run: `32261447127`.
 
-1. **total defensive exposure** — how many defensive outs/opportunities a player is projected to receive;
-2. **position allocation** — how that exposure is distributed across eligible defensive positions.
+Development folds: 2022 inputs -> 2023 and 2023 inputs -> 2024. 2025 was not accessed.
 
-The bridge should prefer simple, interpretable constructions using already-certified sources, including historical fielding outs plus frozen Playing Time / Position-Role outputs where they add demonstrated value. It must not invent a new general playing-time or role model under another name.
-
-At minimum, candidate evaluation must compare against simple persistence baselines from prior-season observed defensive outs/shares. Any fitted mapping must use only authorized pre-2025 development evidence and must document its training boundary, features, target, coverage, and fallback behavior.
-
-Because 2025 Position/Role outcomes have already been accessed for the upstream confirmation, Player Value must not describe 2025 defensive-exposure outcomes as an untouched holdout. Any later confirmation sample must be genuinely unopened for this exposure-mapping question or the method must be frozen on development evidence without pretending otherwise.
-
-### 6A. Completed total-defensive-outs development diagnostic
-
-The first total-outs bridge diagnostic is complete under the predeclared contract:
-
-- contract: `docs/player-value-v1-defensive-exposure-diagnostic-contract.md`;
-- binding result: `docs/player-value-v1-defensive-exposure-diagnostic-result.json`;
-- source run: `32261447127`;
-- development folds: 2022 inputs -> 2023 and 2023 inputs -> 2024;
-- 2025 accessed: false.
-
-Three fixed forms were tested on the exact frozen Playing Time validation populations:
+Candidates:
 
 - `B0_raw_persistence`: prior-season MLB defensive outs;
-- `P1_projected_pa_global_scale`: frozen projected MLB PA multiplied by one contemporaneous population-level outs/PA scale;
-- `H1_fixed_50_50_hybrid`: fixed 50/50 blend of B0 and P1.
+- `P1_projected_pa_global_scale`: frozen projected MLB PA x one contemporaneous outs/PA scale;
+- `H1_fixed_50_50_hybrid`: fixed 50/50 B0/P1 blend.
 
-The binding recommendation is **`B0_raw_persistence`**. Neither challenger satisfied all preregistered gates. Both challengers improved equal-fold mean RMSE and entrant MAE, but neither improved equal-fold mean MAE. H1 came closest but its 2022->2023 MAE was about 2.20% worse than B0, just outside the frozen 2% fold guardrail. The threshold and 50/50 weight may not be moved after seeing the result.
+Binding selection: **`B0_raw_persistence`**.
 
 Equal-fold means:
 
@@ -120,24 +74,78 @@ Equal-fold means:
 - P1: MAE `180.2195`, RMSE `427.4569`;
 - H1: MAE `152.5628`, RMSE `430.7028`.
 
-This is a retained **total-outs development baseline**, not the completed production exposure bridge. Position allocation is still a separate open gate, and component-native opportunity denominators remain separate.
+P1 and H1 improved RMSE and entrant error but failed the preregistered overall-MAE requirements. H1's 2022->2023 MAE was about 2.20% worse than B0 against an allowed 2%. Do not retune the threshold or blend weight.
 
-## 7. Component-specific opportunity denominators remain separate
+Thus:
 
-`fielding_outs` is the canonical general seasonal defensive-exposure source, but it does not automatically imply that every Defense component should be multiplied by outs.
+`projected_total_defensive_outs = prior_season_mlb_defensive_outs`.
 
-Run conversion must respect each component's native target/opportunity unit:
+## 5. Defensive position allocation — FROZEN
 
-- general range: determine the principled opportunity/exposure mapping for Success Rate Added;
-- catcher throwing: native target is per throw (`cs_aa_per_throw`), so throwing opportunities must be handled explicitly;
-- catcher blocking: native target is per game (`blocks_above_average_per_game`) in the repaired leaderboard, with source pitch eligibility; conversion must preserve the target's actual native denominator rather than blindly use fielding outs;
-- framing: raw target is run value per 1,000 pitches before standardization, so catcher pitch exposure is the natural native interface to research.
+Contract: `docs/player-value-v1-defensive-position-allocation-contract.md`.
 
-Historical fielding outs may be used to estimate or constrain those opportunity counts if validated, but no component receives an arbitrary universal `runs per out` or `runs per z` constant.
+Binding result: `docs/player-value-v1-defensive-position-allocation-result.json`.
 
-## 8. Required future exposure output
+Workflow run: `32266007594`.
 
-The frozen production bridge, once selected, must persist at least:
+The allocation gate kept total projected defensive outs fixed at B0 and compared:
+
+- `S0_prior_defensive_share_persistence`: prior defensive-out shares;
+- `R1_frozen_role_defensive_normalization`: exact frozen Position/Role forecast, DH removed and defensive mass renormalized;
+- `H1_fixed_50_50_share_hybrid`: fixed 50/50 S0/R1 share blend.
+
+Scoring used continuing defenders on the 2022->2023 and 2023->2024 development folds because a position share is undefined when total defensive exposure is zero. Entrant/exit volume error had already been addressed in the separate total-outs gate.
+
+Binding selection: **`S0_prior_defensive_share_persistence`**.
+
+Equal-fold means:
+
+- S0: position-out cell MAE `164.8437`, RMSE `472.8779`, share TV `0.275841`, primary-position match `0.66025`;
+- R1: MAE `167.4807`, RMSE `466.5794`, share TV `0.280707`, primary match `0.65041`;
+- H1: MAE `165.4973`, RMSE `468.6990`, share TV `0.272824`, primary match `0.66121`.
+
+H1 improved RMSE/share TV but failed the required equal-fold position-out MAE improvement. R1 failed additional share-TV/primary-position guardrails. Do not retune the 0.65 upstream Position/Role threshold, 50/50 blend weight, or selection guardrails.
+
+Thus, for a player with positive prior-season MLB defensive outs:
+
+`projected_position_share[p] = prior_position_outs[p] / prior_total_defensive_outs`
+
+and
+
+`projected_position_outs[p] = projected_total_defensive_outs x projected_position_share[p]`.
+
+Because both selected forms are prior-year persistence, this reduces deterministically to prior-year position outs for the eight eligible positions. The explicit two-stage representation is retained because total exposure and position allocation remain conceptually separate interfaces.
+
+Projected position outs must reconcile to projected total defensive outs within deterministic numerical tolerance.
+
+## 6. General v1 defensive-out bridge — CLOSED
+
+The forward general defensive-out bridge is now selected:
+
+1. total defensive outs: `B0_raw_persistence`;
+2. defensive position shares: `S0_prior_defensive_share_persistence`;
+3. position outs: fixed total x fixed share.
+
+The 2025 fielding period was not used to tune either selection, and no untouched-confirmation claim is made for the allocation question because upstream 2025 Position/Role outcomes had already been accessed.
+
+Do not reopen these exposure selections absent a concrete implementation failure.
+
+## 7. Component-native opportunities remain separate
+
+`fielding_outs` is the canonical general seasonal defensive-exposure source, but it is **not** automatically the denominator for every Defense component.
+
+Run conversion must preserve each component's actual native target/opportunity unit:
+
+- **general range:** determine the principled exposure/run mapping for Savant Success Rate Added;
+- **catcher throwing:** native target is `cs_aa_per_throw`; projected throw opportunities must be handled explicitly;
+- **catcher blocking:** repaired native target is `blocks_above_average_per_game` with source pitch eligibility; preserve the target's actual denominator rather than multiplying by fielding outs by default;
+- **framing:** raw target is run value per 1,000 pitches before standardization; projected catcher pitch exposure is the natural native interface to validate.
+
+Historical fielding outs may be used as an input to a separately validated component-opportunity bridge, but no component receives an arbitrary universal `runs per out` or `runs per z` constant.
+
+## 8. Required production exposure output
+
+A production projection surface using the frozen bridge must persist at least:
 
 - player identifier;
 - projection season;
@@ -145,23 +153,23 @@ The frozen production bridge, once selected, must persist at least:
 - projected total defensive outs;
 - projected defensive outs by eligible position;
 - projected defensive position shares;
-- frozen Position/Role share vector used as input, if used;
-- frozen Playing Time exposure used as input, if used;
-- component-specific projected opportunity counts required for run conversion (for example catcher throws/pitches) once those mappings are frozen;
+- total-outs model/provenance = `B0_raw_persistence`;
+- position-allocation model/provenance = `S0_prior_defensive_share_persistence`;
 - fallback/coverage flags;
-- source/model provenance.
-
-The by-position projected outs must reconcile to projected total defensive outs within deterministic numerical tolerance.
+- component-specific projected opportunity counts once separately frozen;
+- source provenance.
 
 ## Binding boundaries
 
-- Official `fielding_outs` is the canonical observed defensive-exposure unit.
-- The total-outs development diagnostic retains `B0_raw_persistence`; do not retune its challenger thresholds or blend after result access.
-- `role_probability` and `defensive_probability` are distinct fields with distinct semantics.
-- Do not use PA x role share as a production defensive-outs shortcut without validation.
+- Official `fielding_outs` is the canonical observed general defensive-exposure unit.
+- Total defensive outs are frozen at `B0_raw_persistence`.
+- Defensive position allocation is frozen at `S0_prior_defensive_share_persistence`.
+- `role_probability` and `defensive_probability` remain distinct.
+- Do not use PA x role share as the v1 production defensive-outs bridge.
 - Do not refit Playing Time or Position/Role.
+- Do not retune rejected exposure challengers after result access.
 - Do not use 2025 as an allegedly untouched exposure holdout.
-- Full production defensive exposure is not frozen until position allocation is selected.
-- Do not convert Defense skill to seasonal runs until the forward exposure bridge and component-native opportunity mappings are frozen.
-- Positional adjustment remains a separate layer.
-- Replacement level, runs per win, and WAR/value remain closed.
+- Component-native catcher opportunity mappings remain open.
+- Do not convert Defense skill to seasonal runs until each needed native conversion/opportunity interface is frozen.
+- Positional adjustment remains separate.
+- Replacement level, runs per win, WAR/value, and final ranking remain closed.
