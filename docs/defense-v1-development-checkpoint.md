@@ -2,139 +2,201 @@
 
 Last updated: 2026-08-18
 
-Status: **PRE-2025 PARAMETERS FROZEN — CONFIRMATION CONTRACT LOCKED; SOURCE MATERIALIZATION NEXT.**
+Status: **DEFENSE V1 SKILL HIERARCHY FINAL AND FROZEN — RUN CONVERSION NEXT.**
 
-This is the active Defense-v1 handoff. Pre-2025 model development is closed, the retained components have been refit on all authorized 2022–2024 development responses, and the one-shot 2025 confirmation rules were frozen before any new confirmation source was opened.
+This is the active Defense-v1 handoff. General range, catcher throwing, catcher blocking, and MLB catcher framing have completed their binding development/source/one-shot confirmation sequences. No further Defense-v1 skill tuning is authorized.
 
-## Binding tracked challenger result
-
-Governing contract: `docs/defense-v1-tracked-challenger-contract.md`.
-
-Binding result: `docs/defense-v1-tracked-challenger-result.json`.
-
-Successful scoring run:
-
-- workflow: `Defense v1 tracked challenger scoring`;
-- run id: `32196115227`;
-- scoring SHA: `ace1df97001b83b91a1a1021637c604ebdea6399`;
-- frozen tracked source run: `32182019495`;
-- frozen tracked source SHA: `5438e905d24e2167432a52253320ccbc978186b8`.
-
-### General tracked range
-
-**Tier A / MLB passed.** T1 = exact U1 + `tracked_range_z`.
-
-- 2022: U1 MSE `0.83749` -> T1 `0.80983` — 3.30% better, n=140;
-- 2023: `0.86863 -> 0.85218` — 1.89% better, n=133;
-- 2024: `0.97975 -> 0.97191` — 0.80% better, n=141;
-- pooled MSE improvement: **1.93%**;
-- pooled Spearman delta: **+0.01180**.
-
-**Tier B / tracked MiLB was not accepted.** The frozen 2023-MiLB -> 2024-MLB diagnostic produced `0` eligible transfer players and therefore `insufficient_transfer_evidence`.
-
-Independent diagnostic: `docs/defense-v1-tier-b-cohort-audit.json`.
-
-That audit independently reproduced the `0` and showed the funnel was 164 U1/2024-target matches -> 3 non-MLB players -> 1 with any matching tracked MiLB row -> 0 meeting the frozen >=100 OAA-opportunity rule. This is a sparse-overlap limitation, not evidence that tracked MiLB range failed and not a reason to reopen the gate.
-
-### Tracked catcher framing
-
-**Failed / closed.** F1 improved pooled MSE 9.37% and beat F0 in two folds, but the 2022 fold was 8.35% worse than F0, breaching the frozen 5% maximum fold-degradation guardrail. No rescue or transfer test is authorized.
-
-## Frozen pre-2025 parameter package
-
-Confirmation contract: `docs/defense-v1-2025-confirmation-contract.md`.
-
-Binding parameter package: `docs/defense-v1-confirmation-parameters.json`.
-
-Successful freeze:
-
-- workflow: `Defense v1 pre-2025 parameter freeze`;
-- binding successful run: `32198466409`;
-- freeze SHA: `38c751b044ed994b3a0f5aebf437a8e732c76699`;
-- parameter hash: `sha256:cba6b7ebe4b2598db2c4d9ef360b0784f23a94ad61385f87149b08c46e0390d5`;
-- confirmation-contract SHA-256: `5229fb29730f29ab5421978dfe580f5a426e9f6c7b4740d3ab7ffad54bb831aa`;
-- deterministic reproduction: passed exactly;
-- SportsDataverse: `0.0.75`;
-- NumPy: `2.5.2`;
-- Polars: `1.43.2`;
-- Python: `3.12.13`.
-
-The freeze reused certified historical fielding run `32148467330` and frozen tracked source run `32182019495`; no 2024 confirmation tracking source and no 2025 defensive target was accessed during parameter fitting.
-
-### Frozen retained forms
-
-General universal U1, lambda `0.0`:
-
-- training rows: 490;
-- coefficient vector including intercept: `[0.02039840, -0.32498386, 0.29206770, -0.36164372, -0.06792589]`;
-- features: `fielding_pct_z`, `range_factor_per_9_z`, `errors_per_9_z`, `throwing_errors_per_9_z`.
-
-MLB tracked T1, lambda `0.0`:
-
-- training rows: 414;
-- coefficient vector including intercept: `[0.01625615, -0.39320465, 0.27778113, -0.45775108, -0.04063339, 0.14944763]`;
-- exact U1 feature set plus `tracked_range_z`;
-- retained for eligible MLB tracking only.
-
-Catcher throwing C1:
-
-- training rows: 197;
-- coefficient vector including intercept: `[-0.05004551, 0.22111291]`;
-- frozen catcher input mean/SD for CS%: `0.25125567 / 0.09338150`.
-
-Catcher blocking C2:
-
-- training rows: 193;
-- coefficient vector including intercept: `[-0.25623850, -0.52647108]`;
-- frozen catcher input mean/SD for PB/9: `0.17241686 / 0.13913792`;
-- prior-season recency weight remains `0.5`, exposure-weighted by fielding outs.
-
-The package also persists all general position × level normalization moments, position/global fallbacks, exact training rows, development targets, historical tracked-range moments, table hashes, source manifests, and coverage rules.
-
-## Frozen production/confirmation fallback hierarchy
+## Final production hierarchy
 
 ### General range
 
-1. eligible MLB row + eligible MLB tracking -> T1;
-2. eligible MLB row without eligible tracking -> U1;
-3. eligible affiliated MiLB row -> U1, regardless of public tracking availability;
-4. insufficient U1 evidence -> explicit `insufficient_evidence` / neutral position-relative B0 for this component.
+Binding original confirmation: `docs/defense-v1-2025-confirmation-result.json`.
 
-Tracked MiLB T1 remains closed for v1.
+1. eligible MLB + eligible certified tracking -> **T1**;
+2. otherwise eligible MLB or affiliated MiLB -> **U1**;
+3. insufficient U1 evidence -> explicit neutral B0.
 
-### Catcher
+2025 confirmation:
 
-- throwing: C1 when eligible; otherwise neutral/insufficient B0;
-- blocking: C2 when eligible; otherwise neutral/insufficient B0;
-- tracked framing: closed / absent, not fabricated as observed average talent.
+- U1 vs B0: n=161, MSE `1.01019 -> 0.97817`, MAE `0.81648 -> 0.79107`, Spearman `0.21670`;
+- T1 vs U1 on identical tracked rows: n=135, MSE `0.91639 -> 0.91558`, MAE `0.76893 -> 0.75924`, Spearman `0.23750 -> 0.27474`.
 
-## Frozen one-shot 2025 confirmation hierarchy
+Tracked MiLB T1 remains closed because the frozen transfer cohort was insufficient. Age and rejected traditional general-defense challengers remain closed.
 
-The governing rules are now immutable in `docs/defense-v1-2025-confirmation-contract.md`.
+General-range parameter package remains `docs/defense-v1-confirmation-parameters.json`, hash:
 
-1. Confirm U1 against neutral B0 on the untouched 2024-input -> 2025 Savant range population.
-2. Only if U1 confirms, test T1 incrementally against U1 on identical eligible 2024 MLB tracked rows. Fewer than 75 tracked rows is insufficient evidence, not a pass.
-3. Confirm C1 throwing against B0 on the frozen catcher population; fewer than 30 is insufficient evidence.
-4. Confirm C2 blocking against B0 on the frozen catcher population; fewer than 30 is insufficient evidence.
-5. Failed/insufficient components fall back exactly as predeclared; there is no 2025 refit, rescue, family substitution, threshold movement, or recalibration.
+`sha256:cba6b7ebe4b2598db2c4d9ef360b0784f23a94ad61385f87149b08c46e0390d5`
+
+Do not use the catcher portion of that old package after the catcher source repair.
+
+## Corrected catcher source repair
+
+Binding contract: `docs/defense-v1-catcher-source-repair-contract.md`.
+
+The original Savant catcher throwing/blocking target source was not year-specific. The exact preregistered catcher development/search space was therefore rerun only after the current-UI snake_case `season_start` / `season_end` query semantics were certified and corrected 2022-2024 targets were materialized.
+
+Prior invalid-source catcher results remain audit history and are not binding.
+
+### Repaired catcher development
+
+Binding result: `docs/defense-v1-catcher-repair-development-result.json`.
+
+Throwing:
+
+- C1 passed;
+- C2 passed and had the lower pooled OOF MSE;
+- selected **C2**;
+- corrected training target folds had 77/74/79 scored rows;
+- C2 pooled MSE `0.94531` vs B0 `1.00636` (about 6.1% better), with pooled Spearman about `0.291`.
+
+Blocking:
+
+- C1 passed;
+- C2 passed and had the lower pooled OOF MSE;
+- selected **C2**;
+- corrected folds had 81/74/79 scored rows;
+- C2 pooled MSE `0.85065` vs B0 `0.95330` (10.77% better), pooled Spearman `0.36154`.
+
+No new catcher family, feature, threshold, or rescue was introduced.
+
+### Repaired catcher parameter freeze
+
+Binding package: `docs/defense-v1-catcher-repair-parameters.json`.
+
+- parameter hash: `sha256:f4790bc1cb4df63d2ba65757455a4b6753e98d25fe552208d893958bdd19f328`;
+- freeze run: `32206935150`;
+- freeze SHA: `78c6eb74dcb3cd3b976c57d72d268d108457662c`;
+- deterministic reproduction: passed;
+- no repaired 2025 target was opened during fitting.
+
+Frozen throwing C2:
+
+- feature: `caught_stealing_pct`;
+- global pre-2025 input mean/SD: `0.2512556726 / 0.0933814954`;
+- coefficients `[0.0239271879, 0.3598147185]`;
+- prior-season recency weight `0.5`;
+- training rows: 230.
+
+Frozen blocking C2:
+
+- feature: `passed_balls_per_9`;
+- global pre-2025 input mean/SD: `0.1724168589 / 0.1391379198`;
+- coefficients `[-0.7000954223, -1.0240357909]`;
+- prior-season recency weight `0.5`;
+- training rows: 234.
+
+**Throwing metadata audit note:** the package's `exposure` field says `fielding_outs`, but the preregistered `_catcher_matrix` implementation actually used `steal_attempts` as the C2 exposure weight for throwing, including the >=10 prior-season steal-attempt eligibility requirement. Those exact implementation semantics generated the frozen coefficients and were used in the 2025 confirmation. The frozen package/hash was not modified after 2025 access.
+
+### Repaired 2025 catcher confirmation
+
+Certified target source: `docs/defense-v1-catcher-repair-2025-source-result.json`.
+
+Binding confirmation: `docs/defense-v1-catcher-repair-2025-confirmation-result.json`.
+
+Run `32211517759`, scoring SHA `efa53c739e16f40a9de5797178d60a577dd744e8`.
+
+Throwing C2 **confirmed**:
+
+- n=79;
+- B0 MSE `1.00000` -> C2 `0.88575`;
+- B0 MAE `0.77838` -> C2 `0.70392`;
+- Spearman `0.35827`.
+
+Blocking C2 **confirmed**:
+
+- n=78;
+- B0 MSE `1.00000` -> C2 `0.83563`;
+- B0 MAE `0.73114` -> C2 `0.67740`;
+- Spearman `0.35975`.
+
+Final catcher throwing/blocking hierarchy:
+
+- eligible throwing -> **C2**, otherwise B0;
+- eligible blocking -> **C2**, otherwise B0.
+
+## Corrected catcher framing repair
+
+The original framing development evidence was invalidated by the SportsDataverse 0.0.75 generic `year=...` framing query. The repair changed the target source only, using Baseball Savant's framing-specific `seasonStart` / `seasonEnd` semantics. The original F0/F1 family and all gates were unchanged.
+
+### Repaired development and freeze
+
+Binding development: `docs/defense-v1-framing-repair-development-result.json`.
+
+Repaired MLB F1 passed the original development gate and was frozen. MiLB transfer evidence remained insufficient and was not accepted.
+
+Binding package: `docs/defense-v1-framing-repair-parameters.json`.
+
+- parameter hash: `sha256:e75ebd58d868b6cb6d51f2d0e48d49c1735a4cfa80661b6280269311a7875086`;
+- freeze run: `32208751394`;
+- freeze SHA: `fb7158e3a5e6048b12f7f42b4469560cfd767bfc`;
+- coefficients `[-0.1287502167, 0.6904170177]`;
+- training rows: 157;
+- predictor: `tracked_framing_z`;
+- tracked source feature requires >=500 takes and is standardized within source season x level, minimum cell n=15.
+
+### Certified 2024 predictor source
+
+Binding result: `docs/defense-v1-2024-framing-predictor-source-result.json`.
+
+A segmented source-only recovery reconstructed the complete 2024 regular-season pitch set before deriving the frozen predictor:
+
+- source run: `32208925985`;
+- 711,898 regular-season pitch rows;
+- 100 catcher framing proxies;
+- 84 eligible 2024 MLB `tracked_framing_z` rows;
+- no 2025 access, fitting, or scoring.
+
+### Repaired 2025 framing confirmation
+
+Certified target source: `docs/defense-v1-2025-framing-target-source-result.json`.
+
+Binding confirmation: `docs/defense-v1-framing-2025-confirmation-result.json`.
+
+Run `32211188620`, scoring SHA `9577d344fce305b158a852e9bb0d4366f01455dd`.
+
+MLB F1 **confirmed**:
+
+- n=48;
+- F0 MSE `0.96655` -> F1 `0.63129`;
+- F0 MAE `0.75272` -> F1 `0.66683`;
+- F1 Pearson `0.59948`;
+- F1 Spearman `0.55145`.
+
+Final framing hierarchy:
+
+1. eligible MLB catcher + eligible certified tracked framing -> **F1**;
+2. MLB without eligible tracked framing -> **F0 neutral**;
+3. affiliated MiLB -> **F0 neutral** because the frozen transfer sample was insufficient.
+
+No additional framing tuning or confirmation rerun is authorized.
+
+## What is closed
+
+Defense-v1 skill development/selection/confirmation is complete.
+
+Do not:
+
+- reopen general U1/T1;
+- reopen tracked MiLB range;
+- refit/reselect catcher throwing or blocking;
+- refit/reselect framing;
+- use 2025 confirmation residuals for tuning;
+- add another Defense-v1 skill challenger;
+- alter Playing Time v1 or Position/Role v1;
+- calculate WAR/value yet.
+
+Preserve all invalid-source catcher/framing artifacts as audit evidence; do not use them for production decisions.
 
 ## Exact next sequence
 
-Parameter fitting is finished. The next work is source-only and then one-shot scoring:
-
-1. Materialize **2024 MLB tracked-range predictor evidence only** under the frozen T1 source rule. No 2025 target and no scorer in that workflow.
-2. Materialize completed-2025 Savant range/throwing/blocking targets in a separate source-only workflow. No model parameters or scorer in that workflow.
-3. Only after both source artifacts certify successfully, score the one-shot 2025 confirmation from the frozen parameter package with no fitting.
-4. Freeze the final confirmed/fallback Defense-v1 component set.
-5. Only after Defense v1 is final may the later run-conversion / positional-adjustment / WAR-value work begin.
+1. Define one production Defense skill output contract that applies the final hierarchy without any fitting.
+2. Audit frozen Playing Time and Position/Role outputs for defensive exposure construction.
+3. Convert each retained Defense skill channel to defensible native run units using component-specific public methodology/exposure; no arbitrary `runs per z` constant.
+4. Develop/freeze positional adjustment separately from position-relative Defense skill.
+5. Only after run conversion and positional adjustment are frozen may replacement level / runs-per-win / WAR-value aggregation open.
 
 ## Binding boundaries
 
-- **Pre-2025 parameter selection and refit are closed.**
-- **2025 defensive targets have not yet been accessed.**
-- Do not refit or reselect against 2025.
-- Do not add another Defense-v1 development challenger.
-- Do not rescue tracked framing, age, rejected traditional features, or Tier-B tracked range.
-- Do not infer proprietary MiLB OAA truth from the public tracked proxy.
-- **Do not calculate WAR/value yet.**
-- Playing Time v1 and Position/Role v1 remain frozen and untouched.
+- **Defense v1 skill hierarchy is frozen.**
+- **Run-conversion and positional-adjustment research are authorized next.**
+- **WAR/value calculation remains unauthorized.**
