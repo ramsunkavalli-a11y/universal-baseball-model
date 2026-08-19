@@ -36,6 +36,17 @@ If it does not beat B0 in 2024, the player-specific candidate fails confirmation
 
 The selected candidate also fails confirmation if it has a catastrophic tier reversal under the definition above in 2024.
 
+## Exact-score tie handling
+
+Candidate primary scores are compared at **8 decimal places** for tie handling only.
+
+If player-specific candidates are tied at that displayed precision:
+
+1. prefer **B1** over B2;
+2. within the same history family, prefer the stronger-shrinkage prior in the order **45, 15, 5**.
+
+This is a deterministic simplicity rule, not permission to disregard a score difference visible beyond the declared tie precision.
+
 ## Numerical safeguards
 
 Probability/log calculations may use a fixed numerical epsilon of `1e-9` solely to prevent `log(0)` or infinite logits. Candidate predictions may not be clipped to improve scoring or ranking behavior.
