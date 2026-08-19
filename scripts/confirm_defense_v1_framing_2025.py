@@ -50,7 +50,7 @@ def main() -> int:
 
     params_report = json.loads(Path("docs/defense-v1-framing-repair-parameters.json").read_text())
     predictor_result = json.loads(Path("docs/defense-v1-2024-framing-predictor-source-result.json").read_text())
-    target_result = json.loads(Path("docs/defense-v1-framing-2025-target-source-result.json").read_text())
+    target_result = json.loads(Path("docs/defense-v1-2025-framing-target-source-result.json").read_text())
 
     if params_report.get("parameter_hash") != EXPECTED_PARAMETER_HASH:
         raise RuntimeError(f"framing parameter hash changed: {params_report.get('parameter_hash')}")
@@ -86,9 +86,9 @@ def main() -> int:
     tb = target_result.get("boundary", {})
     if td.get("2025_framing_target_source_materialized") is not True:
         raise RuntimeError("2025 framing target source did not materialize")
-    if td.get("2025_framing_confirmation_scoring_authorized_next") is not True:
+    if td.get("framing_confirmation_scoring_authorized_next") is not True:
         raise RuntimeError("2025 framing target source did not authorize scoring")
-    if tb.get("model_fit") is not False or tb.get("model_scoring_performed") is not False:
+    if tb.get("model_fit") is not False or tb.get("model_scoring") is not False:
         raise RuntimeError("2025 framing target source was not source-only")
     if tb.get("confirmation_interpreted") is not False:
         raise RuntimeError("2025 framing target source interpreted confirmation")
@@ -97,7 +97,7 @@ def main() -> int:
     predictor_expected = predictor_result["storage"]["tracked_framing_z"]["sha256"]
     if _sha_file(predictor_path) != predictor_expected:
         raise RuntimeError("2024 framing predictor artifact SHA mismatch")
-    target_path = _find_one(args.target_root, "catcher_framing_targets_2025.parquet")
+    target_path = _find_one(args.target_root, "catcher_framing_target_2025.parquet")
     target_expected = target_result["storage"]["target"]["sha256"]
     if _sha_file(target_path) != target_expected:
         raise RuntimeError("2025 framing target artifact SHA mismatch")
