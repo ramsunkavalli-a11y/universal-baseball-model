@@ -1,4 +1,5 @@
 {
+  "batting_plate_appearances": 182449,
   "batting_runs_scored": 21343,
   "captures": [
     {
@@ -43,11 +44,21 @@
   "pitching_outs": 129349,
   "pitching_runs_allowed": 21343,
   "reconciliation": {
-    "batting_runs_equal_pitching_runs": true
+    "batting_runs_equal_pitching_runs": true,
+    "positive_mlb_pa": true,
+    "positive_regular_season_games": true
   },
+  "regular_season_games": 2469,
   "runs_per_win": 9.682629939156854,
   "runs_per_win_convention_id": "fangraphs_tango_league_rpw_v1",
-  "schema_version": "0.1",
+  "schedule_capture": {
+    "completed_regular_season_game_count": 2469,
+    "response_sha256": "9733d248b6a6d1635eb91802f504d70ebedc49b5aa87e7ae962cafb40b18879b",
+    "returned_date_count": 185,
+    "returned_game_count": 2469,
+    "season": 2024
+  },
+  "schema_version": "0.2",
   "season": 2024,
-  "status": "player_value_v1_mlb_run_environment_materialized"
+  "status": "player_value_v1_mlb_reference_environment_materialized"
 }
