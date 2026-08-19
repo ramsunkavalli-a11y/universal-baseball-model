@@ -19,10 +19,11 @@ from universal_baseball.player_value_mlb_centering_assembly import (
 )
 
 EXPECTED_2024_OBSERVED_MLB_PA = 182_449.0
+PLAYING_TIME_PROJECTED_PA_COLUMN = "predicted_expected_mlb_pa"
 REQUIRED_COLUMNS = {
     "player_id",
     "observed_mlb_pa",
-    "projected_expected_mlb_pa",
+    PLAYING_TIME_PROJECTED_PA_COLUMN,
 }
 
 
@@ -58,7 +59,9 @@ def main() -> None:
     source = frame.select(
         pl.col("player_id"),
         pl.col("observed_mlb_pa").cast(pl.Float64),
-        pl.col("projected_expected_mlb_pa").cast(pl.Float64),
+        pl.col(PLAYING_TIME_PROJECTED_PA_COLUMN)
+        .cast(pl.Float64)
+        .alias("projected_expected_mlb_pa"),
     )
     rows = [
         PlayingTimeReferenceCandidate(
@@ -109,6 +112,8 @@ def main() -> None:
         "aggregate_observed_mlb_pa_membership_anchor": observed_reference_pa,
         "aggregate_projected_mlb_pa": summary.aggregate_projected_mlb_pa,
         "playing_time_input_row_count": source.height,
+        "playing_time_projected_pa_input_column": PLAYING_TIME_PROJECTED_PA_COLUMN,
+        "centering_projected_pa_output_field": "projected_expected_mlb_pa",
         "playing_time_source": {
             "run_id": args.playing_time_run_id,
             "artifact_id": args.playing_time_artifact_id,
