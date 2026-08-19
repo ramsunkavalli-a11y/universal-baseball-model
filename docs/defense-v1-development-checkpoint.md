@@ -47,7 +47,7 @@ Throwing:
 - C2 passed and had the lower pooled OOF MSE;
 - selected **C2**;
 - corrected training target folds had 77/74/79 scored rows;
-- C2 pooled MSE `0.94531` vs B0 `1.00636` (about 6.1% better), with pooled Spearman about `0.291`.
+- C2 pooled MSE `0.93853` vs B0 `1.00636` (6.74% better), pooled Spearman `0.27322`.
 
 Blocking:
 
