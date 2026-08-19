@@ -36,6 +36,7 @@ jobs:
           && python -m pip install -e ".[dev]"
 
       - name: Download pinned Playing Time 2024 validation artifact
+        id: download
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -50,6 +51,7 @@ jobs:
           test -f upstream/playing-time/tables/candidate_2024_scored.parquet
 
       - name: Materialize fixed reference membership
+        id: materialize
         env:
           MATERIALIZATION_RUN_ID: ${{ github.run_id }}
           MATERIALIZATION_SOURCE_SHA: ${{ github.sha }}
@@ -67,6 +69,7 @@ jobs:
             --materialization-source-sha "$MATERIALIZATION_SOURCE_SHA"
 
       - name: Upload fixed reference membership artifact
+        id: upload
         uses: actions/upload-artifact@v4
         with:
           name: player-value-v1-mlb-centering-2024-membership
@@ -76,14 +79,45 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: Persist verified membership summary
+      - name: Persist run record and verified summary
+        if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+          DOWNLOAD_OUTCOME: ${{ steps.download.outcome }}
+          MATERIALIZE_OUTCOME: ${{ steps.materialize.outcome }}
+          UPLOAD_OUTCOME: ${{ steps.upload.outcome }}
         run: |
           set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          summary_exists = Path('docs/player-value-v1-mlb-centering-2024-membership.json').exists()
+          record = {
+              'schema_version': '0.1',
+              'status': 'player_value_v1_mlb_centering_2024_membership_run',
+              'run_id': int(os.environ['RUN_ID']),
+              'source_sha': os.environ['SOURCE_SHA'],
+              'steps': {
+                  'download': os.environ.get('DOWNLOAD_OUTCOME', ''),
+                  'materialize': os.environ.get('MATERIALIZE_OUTCOME', ''),
+                  'upload': os.environ.get('UPLOAD_OUTCOME', ''),
+              },
+              'verified_summary_present': summary_exists,
+          }
+          Path('docs/player-value-v1-mlb-centering-2024-membership-run.json').write_text(
+              json.dumps(record, indent=2, sort_keys=True) + '\n'
+          )
+          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/player-value-v1-mlb-centering-2024-membership.json
+          git add docs/player-value-v1-mlb-centering-2024-membership-run.json
+          if test -f docs/player-value-v1-mlb-centering-2024-membership.json; then
+            git add docs/player-value-v1-mlb-centering-2024-membership.json
+          fi
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Verify 2024 MLB centering membership"
+          git commit -m "Record 2024 MLB centering membership run"
           for attempt in 1 2 3; do
             git fetch origin source-certification-poc
             if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
