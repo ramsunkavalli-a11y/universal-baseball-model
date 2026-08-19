@@ -1,0 +1,73 @@
+name: Defense v1 catcher repair 2025 target source
+
+on:
+  push:
+    branches:
+      - source-certification-poc
+    paths:
+      - ".github/workflows/defense-v1-catcher-repair-2025-source.yml"
+      - "scripts/materialize_defense_v1_catcher_repair_2025_source.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  source:
+    name: materialize corrected 2025 catcher targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Verify source materializer compiles
+        run: python -m py_compile scripts/materialize_defense_v1_catcher_repair_2025_source.py
+      - name: Materialize repaired 2025 catcher targets only
+        run: >-
+          python -u scripts/materialize_defense_v1_catcher_repair_2025_source.py
+          --diagnostic docs/savant-catcher-year-filter-diagnostic.json
+          --repaired-parameters docs/defense-v1-catcher-repair-parameters.json
+          --output-root reports/generated/defense-v1-catcher-repair-2025-source
+      - name: Pin source workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-catcher-repair-2025-source/report.json")
+          result = json.loads(path.read_text())
+          result["source_run_id"] = int(os.environ["SOURCE_RUN_ID"])
+          result["source_sha"] = os.environ["SOURCE_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+      - name: Upload repaired 2025 catcher source
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-catcher-repair-2025-source
+          path: reports/generated/defense-v1-catcher-repair-2025-source/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Persist repaired 2025 catcher source result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-catcher-repair-2025-source/report.json docs/defense-v1-catcher-repair-2025-source-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-catcher-repair-2025-source-result.json
+          git commit -m "Persist repaired 2025 catcher source"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
