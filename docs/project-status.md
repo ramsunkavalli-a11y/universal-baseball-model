@@ -31,7 +31,8 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Batting projected runs:** DONE / FROZEN / VERIFIED
 - **Runs per win:** DONE / FROZEN / VERIFIED
 - **Replacement level:** DONE / REFROZEN / VERIFIED
-- **Baserunning / GIDP:** **ACTIVE**
+- **Baserunning:** **ACTIVE — STEAL PROJECTION FROZEN; STATCAST ADVANCEMENT SOURCE CERTIFIED; ADVANCEMENT SELECTION ACTIVE**
+- **GIDP:** **RAW TERM CLOSED AS NON-ADDITIVE; RESIDUAL CANDIDATE UNRESOLVED / BULK MLB OPPORTUNITY SOURCE UNAVAILABLE**
 - **MLB-reference centering:** REQUIRED AFTER BASERUNNING
 - **Park-neutrality audit:** REQUIRED
 - **WAR/value aggregation:** CLOSED
@@ -43,6 +44,8 @@ A broader WAR literature review was completed before final aggregation. It cause
 - Projection batting: `frozen_current_talent_carry_forward_v1`
 - Playing Time: `playing_time_recent_opportunity_40man_b2_hurdle_v1`
 - Position / Role: `primary_share_thresholded_transition_mean_v1`
+- Steal attempt propensity: `B2_k5`
+- Steal success skill: `B2_k45`
 
 Do not reopen these absent a concrete implementation failure.
 
@@ -157,18 +160,59 @@ The earlier 20.5 implementation remains in history/provenance but is **not autho
 
 ## ACTIVE STAGE — Baserunning / GIDP
 
-Public WAR methods make baserunning a real position-player value component. The gate must audit reusable public evidence before choosing a model.
+### Source / overlap gate now established
 
-Preferred investigation order:
+Binding source/overlap contract: `docs/player-value-v1-baserunning-source-audit-contract.md`.
 
-1. MLB Statcast Baserunning Run Value and underlying opportunity data;
-2. comparable affiliated MiLB advancement evidence if available;
-3. SB/CS run value as a lower-information fallback;
-4. neutral fallback with explicit coverage flags.
+The live source audit now establishes:
 
-Audit GIDP avoidance separately and prevent overlap with the frozen batting taxonomy or baserunning term.
+- official 2024 MLB season hitting output has complete `groundIntoDoublePlay` counts but **no `gidpOpp` field in any of 780 pooled AL/NL player rows**;
+- therefore the preferred official bulk source cannot directly support an opportunity-adjusted MLB GIDP residual;
+- public Baseball Savant runner-level baserunning-run-value CSV is certified for **2019–2024** with all required advancement fields complete, zero duplicate runner IDs, and internally consistent component opportunity counts;
+- certified Savant runner-row counts by season are `659, 517, 680, 625, 611, 608` for 2019 through 2024;
+- raw GIDP run value is **not additive** because PA-level RE24 already feeds the frozen ground-ball bin values used in `Rbat`.
 
-Do not inspect final universal ranking outcomes to choose among baserunning methods.
+The source materialization is `docs/player-value-v1-baserunning-source-audit-result.json`.
+
+### Portable steal projection — frozen
+
+The chronological steal gate used 2022–2023 development targets and held out 2024. The frozen player-specific methods are:
+
+- attempt propensity: `B2_k5` — three-season recency empirical Bayes, prior strength 5;
+- success skill: `B2_k45` — three-season recency empirical Bayes, prior strength 45.
+
+Both beat the neutral baseline in development and confirmed on 2024 without a catastrophic tier reversal. Result: `docs/player-value-v1-steal-projection-selection-result.json`.
+
+This freezes **steal behavior projection**, not final steal run conversion or final `Rbr` aggregation.
+
+### Current micro-stage — non-steal advancement selection
+
+The Savant source has passed its source gate, so the next predeclared model gate is now frozen in:
+
+`docs/player-value-v1-advancement-projection-selection-contract.md`
+
+Implement and run the compact `A0/A1/A2` carry-forward diagnostic exactly as declared:
+
+- source seasons: 2019–2024;
+- development targets: 2022 and 2023;
+- held-out confirmation: 2024;
+- no 2025 evidence;
+- candidate prior strengths: 25 / 75 / 225 non-steal advancement opportunities;
+- primary objective: opportunity-weighted squared error of source-defined advancement run-value rate;
+- production opportunity scaling must use a common MLB reference opportunity rate per projected MLB PA, not player batting quality.
+
+Do not inspect alternative 2024 candidates after the development winner is selected.
+
+### GIDP boundary after advancement
+
+Do **not** build a conventional raw GIDP penalty. That would double-count value already inside the frozen RE24 ground-ball bins.
+
+The only still-eligible GIDP term is an opportunity-adjusted residual. The preferred MLB bulk denominator is unavailable. After advancement is resolved, either:
+
+1. open a separate predeclared source/model gate that proves a defensible reusable opportunity denominator and out-of-sample persistence; or
+2. freeze the GIDP residual to neutral/omitted for v1.
+
+Do not create a custom PBP denominator merely to make a familiar WAR component appear in the model.
 
 ## After baserunning
 
@@ -218,8 +262,14 @@ Before final WAR freeze also complete:
 10. `docs/player-value-v1-positional-adjustment-contract.md`
 11. `docs/player-value-v1-defense-production-handoff.md`
 12. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-13. `docs/projection-batting-v1-development-result.json`
-14. `docs/current-talent-results-only-baseline-freeze.md`
+13. `docs/player-value-v1-baserunning-source-audit-contract.md`
+14. `docs/player-value-v1-baserunning-source-audit-result.json`
+15. `docs/player-value-v1-steal-projection-selection-contract.md`
+16. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+17. `docs/player-value-v1-steal-projection-selection-result.json`
+18. `docs/player-value-v1-advancement-projection-selection-contract.md`
+19. `docs/projection-batting-v1-development-result.json`
+20. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
