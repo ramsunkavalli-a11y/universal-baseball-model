@@ -1,0 +1,53 @@
+{
+  "baserunning_formula": "Rbr = Rsteal + Radvance; Rgidp_residual = 0",
+  "contract": "docs/player-value-v1-baserunning-run-conversion-contract.md",
+  "frozen_models": {
+    "gidp_residual": "G0_omitted_v1",
+    "nonsteal_advancement": "A2_k25",
+    "steal_attempt_propensity": "B2_k5",
+    "steal_success_skill": "B2_k45"
+  },
+  "gidp_residual_authorized": false,
+  "notes": [
+    "Steal conversion follows the public FanGraphs wSB opportunity-centering convention with the certified 2024 MLB run environment.",
+    "Non-steal advancement uses source-defined Savant run value and a common 2024 MLB advancement-opportunity rate per projected MLB PA.",
+    "Raw GIDP is non-additive with the frozen RE24 batting bins; the separate residual is explicitly omitted for v1 after the direct opportunity-source audit failed.",
+    "Final MLB-reference centering remains a separate downstream gate."
+  ],
+  "reference": {
+    "advancement_opportunities": 12931.0,
+    "advancement_opportunities_per_pa": 0.0708746005733109,
+    "caught_stealing": 961.0,
+    "league_steal_runs_per_opportunity": 0.007892608603861519,
+    "outs": 129349.0,
+    "plate_appearances": 182449.0,
+    "run_value_caught_stealing": -0.40500641674848664,
+    "run_value_stolen_base": 0.2,
+    "runs": 21343.0,
+    "runs_per_out": 0.16500320837424332,
+    "season": 2024,
+    "steal_attempt_rate": 0.1081195975627037,
+    "steal_attempts": 4578.0,
+    "steal_opportunities_per_pa": 0.2320758129669113,
+    "steal_opportunity_proxy": 42342.0,
+    "steal_success_probability": 0.790083005679336,
+    "stolen_bases": 3617.0
+  },
+  "schema_version": "0.1",
+  "season": 2024,
+  "status": "player_value_v1_baserunning_run_conversion_frozen",
+  "upstream_artifacts": {
+    "advancement_selection": "docs/player-value-v1-advancement-projection-selection-result.json",
+    "mlb_run_environment": "docs/player-value-v1-mlb-run-environment-2024.json",
+    "steal_selection": "docs/player-value-v1-steal-projection-selection-result.json"
+  },
+  "verification": {
+    "advancement_confirmation_passed": true,
+    "mlb_pa_reconciled_across_upstream_artifacts": true,
+    "neutral_steal_centered_within_1e-10": true,
+    "neutral_steal_runs_600_pa": -4.440892098500626e-16,
+    "steal_attempts_equal_sb_plus_cs": true,
+    "steal_success_rate_identity": true
+  },
+  "verified_source_commit": "056a38ac88408152fc2ce460da2ec1a41609d97e"
+}
