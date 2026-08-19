@@ -117,16 +117,48 @@ Catcher:
 - eligible blocking -> C2, otherwise neutral/insufficient B0;
 - tracked framing remains closed and is not fabricated as average skill.
 
+## Confirmation pipeline execution state
+
+The source/scoring pipeline is now staged behind explicit fail-closed prerequisites.
+
+### 2024 MLB tracking predictor
+
+- source-only materializer: `scripts/materialize_defense_v1_2024_tracking_predictor.py`;
+- workflow: `.github/workflows/defense-v1-2024-tracking-predictor.yml`;
+- launch SHA: `0471363219002d73450c34783aed7963825039fb`;
+- expected binding result: `docs/defense-v1-2024-tracking-predictor-source-result.json`.
+
+As of this handoff, the binding result file has **not yet persisted**. Do not infer success or failure from its absence. Do not open the 2025 target source until the result exists and its source-only boundary, coverage, and hashes are checked.
+
+### 2025 defensive target source — STAGED / NOT LAUNCHED
+
+- materializer: `scripts/materialize_defense_v1_2025_targets.py`;
+- workflow: `.github/workflows/defense-v1-2025-target-source.yml`;
+- materializer staging commit: `78b89481c8cb52e068e34cc455d9698756cfbbe8`;
+- workflow staging commit: `0b2040e1372651622603d041e8962d2fa4e23322`;
+- expected binding result: `docs/defense-v1-2025-target-source-result.json`.
+
+The workflow is manual-only and fails closed unless the certified 2024 tracking result exists, shows no 2025/model access, and the frozen confirmation-contract hash still matches the parameter package. It persists the raw returned leaderboard tables plus canonical 2025 range/throwing/blocking target rows and hashes. It contains no fitting or model scorer.
+
+### One-shot confirmation scorer — STAGED / NOT LAUNCHED
+
+- scorer: `scripts/confirm_defense_v1_2025.py`;
+- workflow: `.github/workflows/defense-v1-2025-confirmation.yml`;
+- scorer staging commit: `b376d541190a29254652d2e3be42372efea2eaef`;
+- workflow staging commit: `2da1c0996e966e9f33251e3440124c466f77fc90`;
+- expected binding result: `docs/defense-v1-2025-confirmation-result.json`.
+
+The scorer is target-offline and contains no fitting path. Its workflow fails closed unless both source-result files certify successfully, downloads the exact historical/tracking/target artifacts by pinned or certified run ID, verifies their hashes, reconstructs predictions from the frozen parameter package, and then applies only the predeclared one-shot gates.
+
 ## Immediate next batch
 
 The frozen parameter package authorizes source materialization, not model changes.
 
-1. Materialize **2024 MLB tracked-range predictor evidence only** under the frozen confirmation contract. This is source-only: no fitting, no scorer, no MiLB tracking, no framing, no 2025 target.
-2. Certify and persist its coverage/hashes.
-3. Only after that source is clean, materialize completed-2025 Savant range/throwing/blocking targets in a separate source-only workflow.
-4. Only after both source artifacts are certified, perform the frozen one-shot 2025 confirmation with no fitting.
-
-The 2024 tracking-predictor workflow is staged on `source-certification-poc`; its binding source result is `docs/defense-v1-2024-tracking-predictor-source-result.json` once the source run succeeds.
+1. Obtain and validate the binding 2024 MLB tracking-predictor result.
+2. Only if that source is clean, launch the staged completed-2025 Savant range/throwing/blocking source workflow and certify its hashes/coverage.
+3. Only after both source artifacts are certified, launch the staged frozen one-shot 2025 confirmation with no fitting.
+4. Freeze the final confirmed/fallback Defense-v1 component set.
+5. Only then begin the separate run-conversion / positional-adjustment / WAR-value layer.
 
 ## Binding one-shot confirmation order
 
@@ -139,6 +171,8 @@ The 2024 tracking-predictor workflow is staged on `source-certification-poc`; it
 ## Binding boundaries
 
 - **Do not refit/reselect Defense v1.**
+- **Do not launch the 2025 target workflow until the 2024 tracking source result is validated.**
+- **Do not launch confirmation until both source artifacts are certified.**
 - **Do not calculate WAR/value yet.**
 - No additional Defense-v1 development challenger.
 - No rescue for tracked framing, age, rejected traditional features, or Tier-B tracked range.
@@ -153,18 +187,20 @@ The 2024 tracking-predictor workflow is staged on `source-certification-poc`; it
 3. `docs/defense-v1-2025-confirmation-contract.md`
 4. `docs/defense-v1-confirmation-parameters.json`
 5. `docs/defense-v1-2024-tracking-predictor-source-result.json` — once materialized
-6. `docs/defense-v1-tracked-challenger-result.json`
-7. `docs/defense-v1-tier-b-cohort-audit.json`
-8. `docs/defense-v1-tracked-challenger-contract.md`
-9. `docs/defense-v1-tracked-source-result.json`
-10. `docs/defense-v1-source-architecture-checkpoint.md`
-11. `docs/defense-v1-universal-development-result.json`
-12. `docs/defense-v1-age-challenger-result.json`
-13. `docs/position-role-2025-confirmation-result.json`
-14. `docs/playing-time-v1-confirmation-result.json`
-15. `docs/projection-batting-v1-development-result.json`
-16. `docs/current-talent-results-only-baseline-freeze.md`
-17. `docs/performance-2024-affiliated-checkpoint.md`
+6. `docs/defense-v1-2025-target-source-result.json` — once materialized
+7. `docs/defense-v1-2025-confirmation-result.json` — once scored
+8. `docs/defense-v1-tracked-challenger-result.json`
+9. `docs/defense-v1-tier-b-cohort-audit.json`
+10. `docs/defense-v1-tracked-challenger-contract.md`
+11. `docs/defense-v1-tracked-source-result.json`
+12. `docs/defense-v1-source-architecture-checkpoint.md`
+13. `docs/defense-v1-universal-development-result.json`
+14. `docs/defense-v1-age-challenger-result.json`
+15. `docs/position-role-2025-confirmation-result.json`
+16. `docs/playing-time-v1-confirmation-result.json`
+17. `docs/projection-batting-v1-development-result.json`
+18. `docs/current-talent-results-only-baseline-freeze.md`
+19. `docs/performance-2024-affiliated-checkpoint.md`
 
 ## Working rules
 
