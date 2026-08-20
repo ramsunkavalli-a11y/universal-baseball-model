@@ -38,6 +38,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Required pre-WAR sensitivities:** **DONE / VERIFIED OR CONTRACTUALLY UNAVAILABLE**
 - **WAR/value aggregation:** **DONE / FROZEN / VERIFIED**
 - **Final ranking:** **DONE / FROZEN / VERIFIED**
+- **Formal forecast uncertainty:** **ACTIVE — PRE-OUTPUT METHOD FROZEN**
 
 ## Frozen upstream models
 
@@ -408,6 +409,16 @@ delta `0.0`, retained all six zero rows, reconciled defense subtotals within
 `7.105427357601002e-15` runs. The final ordering uses unrounded WAR descending
 and ascending MLBAM ID only as a deterministic tie-break.
 
+## Active stage — formal forecast uncertainty
+
+The pre-output method is frozen in
+`docs/player-value-v1-uncertainty-contract.md`. It adds deterministic 80% and
+95% model-based forecast intervals around the final 3,051 point estimates using
+the frozen Playing Time hurdle/NB2 distribution, the B2 empirical-Bayes evidence
+surface, and Defense family residual MSEs. It cannot change point components,
+rank order, population, or any upstream selection. Interval materialization and
+Actions verification are pending.
+
 ## Governing read order
 
 1. `docs/project-status.md`
@@ -424,26 +435,27 @@ and ascending MLBAM ID only as a deterministic tie-break.
 12. `docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`
 13. `docs/player-value-v1-final-aggregation-contract.md`
 14. `docs/player-value-v1-final-2024.json`
-15. `docs/player-value-v1-replacement-level-contract.md`
-16. `docs/player-value-v1-replacement-level-2024.json`
-17. `docs/player-value-v1-replacement-level-verification.json`
-18. `docs/player-value-v1-runs-per-win-contract.md`
-19. `docs/player-value-v1-mlb-run-environment-2024.json`
-20. `docs/player-value-v1-batting-runs-contract.md`
-21. `docs/player-value-v1-positional-adjustment-contract.md`
-22. `docs/player-value-v1-defense-production-handoff.md`
-23. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-24. `docs/player-value-v1-baserunning-source-audit-contract.md`
-25. `docs/player-value-v1-baserunning-source-audit-result.json`
-26. `docs/player-value-v1-steal-projection-selection-contract.md`
-27. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-28. `docs/player-value-v1-steal-projection-selection-result.json`
-29. `docs/player-value-v1-advancement-projection-selection-contract.md`
-30. `docs/player-value-v1-advancement-projection-selection-result.json`
-31. `docs/player-value-v1-baserunning-run-conversion-contract.md`
-32. `docs/player-value-v1-baserunning-run-conversion-2024.json`
-33. `docs/projection-batting-v1-development-result.json`
-34. `docs/current-talent-results-only-baseline-freeze.md`
+15. `docs/player-value-v1-uncertainty-contract.md`
+16. `docs/player-value-v1-replacement-level-contract.md`
+17. `docs/player-value-v1-replacement-level-2024.json`
+18. `docs/player-value-v1-replacement-level-verification.json`
+19. `docs/player-value-v1-runs-per-win-contract.md`
+20. `docs/player-value-v1-mlb-run-environment-2024.json`
+21. `docs/player-value-v1-batting-runs-contract.md`
+22. `docs/player-value-v1-positional-adjustment-contract.md`
+23. `docs/player-value-v1-defense-production-handoff.md`
+24. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+25. `docs/player-value-v1-baserunning-source-audit-contract.md`
+26. `docs/player-value-v1-baserunning-source-audit-result.json`
+27. `docs/player-value-v1-steal-projection-selection-contract.md`
+28. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+29. `docs/player-value-v1-steal-projection-selection-result.json`
+30. `docs/player-value-v1-advancement-projection-selection-contract.md`
+31. `docs/player-value-v1-advancement-projection-selection-result.json`
+32. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+33. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+34. `docs/projection-batting-v1-development-result.json`
+35. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
