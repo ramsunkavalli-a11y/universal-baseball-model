@@ -8,7 +8,7 @@
     "park_audit_opened": false,
     "war_calculated": false
   },
-  "file_count": 380,
+  "file_count": 382,
   "files": [
     {
       "bytes": 30642,
@@ -1282,6 +1282,71 @@
       "path": "catcher-repair-source/tables/catcher_throwing_targets_2024.parquet",
       "rows": 79,
       "sha256": "fd62a6fb881543ad3496a76512201dc21514eb6b3a99c36a8d08fc09a73ff5f2"
+    },
+    {
+      "bytes": 3528,
+      "format": "json",
+      "path": "centering-membership/docs/player-value-v1-mlb-centering-2024-membership.json",
+      "provenance_values": {
+        "materialization.run_id": 32320525700,
+        "materialization.source_sha": "bf02d7b30410811123c9c069116a57f9c702bca8",
+        "official_mlb_membership_source.captures[0].response_sha256": "ca0cd722b53015e04fef4237fe7a54e7bcf023b33f1b8aee50395796e3fe0718",
+        "official_mlb_membership_source.captures[1].response_sha256": "c21bb79c89d5c95055b8004e12d632e885551153d629441a129219be5fb1b0dc",
+        "playing_time_source.artifact_digest": "sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366",
+        "playing_time_source.artifact_id": 9326300207,
+        "playing_time_source.run_id": 32142089669,
+        "playing_time_source.scored_table_sha256": "sha256:9896560f41a738f85d928c973f6e55f6a5a9cf64afe8dc58d2403879a92e3e28",
+        "playing_time_source.source_sha": "3bc9825c74e060fc8ced07b2f2accd6bbcaeb151"
+      },
+      "sha256": "4abc8e49ecaa01a3d0a89102e81c52782a75fed073077cdc17f0d81db2720b79",
+      "top_level_keys": [
+        "aggregate_official_mlb_pa_membership_anchor",
+        "aggregate_projected_mlb_pa",
+        "centering_id",
+        "centering_projected_pa_output_field",
+        "materialization",
+        "membership_definition",
+        "official_mlb_membership_source",
+        "official_only_vs_playing_time_positive_ids",
+        "outside_frozen_playing_time_snapshot_ids",
+        "outside_frozen_playing_time_snapshot_player_count",
+        "playing_time_input_row_count",
+        "playing_time_observed_mlb_pa_diagnostic",
+        "playing_time_positive_observed_pa_player_count",
+        "playing_time_positive_only_vs_official_ids",
+        "playing_time_projected_pa_input_column",
+        "playing_time_source",
+        "reference_player_count",
+        "reference_season",
+        "schema_version",
+        "status",
+        "verification",
+        "zero_exposure_fallback"
+      ]
+    },
+    {
+      "bytes": 7297,
+      "candidate_columns": [
+        "player_id",
+        "projected_expected_mlb_pa"
+      ],
+      "column_diagnostics": {
+        "player_id": {
+          "max": 808982,
+          "min": 444482,
+          "non_null": 651,
+          "unique": 651
+        }
+      },
+      "columns": [
+        "player_id",
+        "projected_expected_mlb_pa",
+        "playing_time_zero_exposure_fallback"
+      ],
+      "format": "parquet",
+      "path": "centering-membership/reports/generated/player-value-v1-mlb-centering-2024-membership.parquet",
+      "rows": 651,
+      "sha256": "5368588c3031e9bee667d3bc11123f8f1782bdcaf711ff811ba94a0a8bd53c56"
     },
     {
       "bytes": 25131914,
@@ -6475,6 +6540,12 @@
         "run_id": 32099733186
       },
       {
+        "artifact_id": 9389597470,
+        "artifact_name": "player-value-v1-mlb-centering-2024-membership",
+        "digest": "sha256:4166264ee2a690abe40d19c72c031710e4fa156e249b511c2c03d267cf689c20",
+        "run_id": 32320525700
+      },
+      {
         "artifact_id": 9326300207,
         "artifact_name": "playing-time-v1-validation-2024",
         "digest": "sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366",
@@ -6535,7 +6606,7 @@
         "run_id": 31955392482
       }
     ],
-    "source_sha": "34f60bc10976618c33ec541b9b5785206ecfc389"
+    "source_sha": "b1231e41b8384c239e44a2d8a94528ae7548c18a"
   },
   "status": "player_value_v1_mlb_centering_source_inventory_completed"
 }
