@@ -38,10 +38,13 @@ jobs:
           set -euo pipefail
           repo="ramsunkavalli-a11y/universal-baseball-model"
           mkdir -p inputs
+          failures=()
           download() {
             local run_id="$1" artifact="$2" dest="$3"
             mkdir -p "inputs/$dest"
-            gh run download "$run_id" --repo "$repo" --name "$artifact" --dir "inputs/$dest"
+            if ! gh run download "$run_id" --repo "$repo" --name "$artifact" --dir "inputs/$dest"; then
+              failures+=("$run_id:$artifact")
+            fi
           }
           download 32099733186 projection-batting-v1-current-talent-snapshots batting-b2
           download 32142089669 playing-time-v1-validation-2024 playing-time
@@ -54,9 +57,13 @@ jobs:
 
           perf_runs="$(gh run list --repo "$repo" --workflow mlb-full-season-performance-source.yml --branch source-certification-poc --status success --limit 20 --json databaseId,createdAt,headSha)"
           perf_count="$(jq 'length' <<<"$perf_runs")"
-          test "$perf_count" -ge 1
-          perf_run="$(jq -r '.[0].databaseId' <<<"$perf_runs")"
-          download "$perf_run" mlb-performance-live-gates mlb-performance
+          if [ "$perf_count" -ge 1 ]; then
+            perf_run="$(jq -r '.[0].databaseId' <<<"$perf_runs")"
+            download "$perf_run" mlb-performance-live-gates mlb-performance
+          else
+            perf_run=0
+            failures+=("unresolved:mlb-performance-live-gates")
+          fi
 
           jq -n \
             --argjson performance_candidates "$perf_runs" \
@@ -73,6 +80,10 @@ jobs:
                 {run_id:32206603934,artifact_name:"defense-v1-catcher-repair-development-source",artifact_id:9349341632,digest:"sha256:ca28db646381969c41dc02ae263f19ed233f88611a2083bdd6e4b9ad1c67c6a1"},
                 {run_id:32208273343,artifact_name:"defense-v1-framing-repair-development-source",artifact_id:9349835242,digest:"sha256:13b7a44cd26e81b75b564257a0f374d20a4a3553ffe8d55ee270546b1a25dddb"}
               ]}' > source-manifest.json
+          if [ "${#failures[@]}" -gt 0 ]; then
+            printf '%s\n' "${failures[@]}" | jq -R . | jq -s '{failed_artifacts:.}' > source-download-failure.json
+            exit 1
+          fi
       - name: Materialize source inventory
         if: steps.sources.outcome == 'success'
         run: >-
@@ -84,13 +95,18 @@ jobs:
         if: always()
         env:
           SOURCE_OUTCOME: ${{ steps.sources.outcome }}
+          SOURCE_RUN_ID: ${{ github.run_id }}
         run: |
           set -euo pipefail
           if [ ! -f docs/player-value-v1-mlb-centering-source-inventory.json ]; then
+            failure_details='{}'
+            if [ -f source-download-failure.json ]; then failure_details="$(cat source-download-failure.json)"; fi
             jq -n \
               --arg outcome "$SOURCE_OUTCOME" \
               --arg source_sha "$GITHUB_SHA" \
-              '{schema_version:"0.1",status:"player_value_v1_mlb_centering_source_inventory_failed",source_sha:$source_sha,source_download_outcome:$outcome,boundary:{model_fit:false,model_selection:false,model_scoring:false,component_runs_calculated:false,centering_constant_calculated:false,park_audit_opened:false,war_calculated:false}}' \
+              --argjson run_id "$SOURCE_RUN_ID" \
+              --argjson failure_details "$failure_details" \
+              '{schema_version:"0.1",status:"player_value_v1_mlb_centering_source_inventory_failed",source_run_id:$run_id,source_sha:$source_sha,source_download_outcome:$outcome,failure_details:$failure_details,boundary:{model_fit:false,model_selection:false,model_scoring:false,component_runs_calculated:false,centering_constant_calculated:false,park_audit_opened:false,war_calculated:false}}' \
               > docs/player-value-v1-mlb-centering-source-inventory.json
           fi
           git config user.name "github-actions[bot]"
