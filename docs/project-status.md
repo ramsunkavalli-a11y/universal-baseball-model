@@ -35,8 +35,8 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **GIDP:** **RAW TERM NON-ADDITIVE; RESIDUAL OMITTED FOR v1**
 - **MLB-reference centering:** **DONE / FROZEN / VERIFIED**
 - **Park-neutrality audit:** **DONE / FROZEN / VERIFIED — `Rpark = 0`**
-- **Required pre-WAR sensitivities:** **ACTIVE**
-- **WAR/value aggregation:** CLOSED
+- **Required pre-WAR sensitivities:** **DONE / VERIFIED OR CONTRACTUALLY UNAVAILABLE**
+- **WAR/value aggregation:** **ACTIVE — pre-outcome method/population frozen**
 - **Final ranking:** CLOSED
 
 ## Frozen upstream models
@@ -354,7 +354,7 @@ This is diagnostic only. The binding `9.682629939156854` common RPW, frozen comp
 
 Replacement sensitivities were already completed in `docs/player-value-v1-replacement-level-2024.json`. Remaining sensitivity work is the alternate recent MLB batting/centering reference only if a full comparable frozen surface exists, plus any other explicitly predeclared baserunning/centering sensitivity that is actually feasible from frozen inputs.
 
-## WAR remains closed
+## WAR aggregation — ACTIVE
 
 Intended final decomposable form:
 
@@ -362,13 +362,26 @@ Intended final decomposable form:
 
 `WAR = RAR / RPW`
 
-Before final WAR freeze also complete:
+Completed before the final WAR freeze:
 
 - Baseball-Reference positional sensitivity;
 - alternate recent certified MLB batting reference when available;
 - replacement sensitivities above;
 - PythagenPat run-to-win sensitivity if practical;
 - any baserunning/centering sensitivities predeclared before outcomes.
+
+The alternate recent centering sensitivity was closed as unavailable by
+`docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`; Actions run
+**`32383260384`** passed and uploaded artifact **`9411870714`**, digest
+`sha256:0755279274cfa0440f29cf48db4186d70b0cc28f99a71afaf0c287f76e03cc18`.
+The frozen surface has 2023 B2, baserunning, defense, position, and DH machinery,
+but lacks both a certified official 2023 positive-PA cohort/outside-snapshot audit
+and the certified 2023 MLB batting run-reference tables. The centering contract
+forbids manufacturing a partial alternative, so no alternate constant was computed.
+
+The pre-outcome final method and 3,051-player complete-component population are
+now frozen in `docs/player-value-v1-final-aggregation-contract.md`. Final numerical
+materialization and Actions verification are the active gate.
 
 ## Governing read order
 
@@ -383,26 +396,28 @@ Before final WAR freeze also complete:
 9. `docs/player-value-v1-mlb-centering-verification.json`
 10. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md`
 11. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json`
-12. `docs/player-value-v1-replacement-level-contract.md`
-13. `docs/player-value-v1-replacement-level-2024.json`
-14. `docs/player-value-v1-replacement-level-verification.json`
-15. `docs/player-value-v1-runs-per-win-contract.md`
-16. `docs/player-value-v1-mlb-run-environment-2024.json`
-17. `docs/player-value-v1-batting-runs-contract.md`
-18. `docs/player-value-v1-positional-adjustment-contract.md`
-19. `docs/player-value-v1-defense-production-handoff.md`
-20. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-21. `docs/player-value-v1-baserunning-source-audit-contract.md`
-22. `docs/player-value-v1-baserunning-source-audit-result.json`
-23. `docs/player-value-v1-steal-projection-selection-contract.md`
-24. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-25. `docs/player-value-v1-steal-projection-selection-result.json`
-26. `docs/player-value-v1-advancement-projection-selection-contract.md`
-27. `docs/player-value-v1-advancement-projection-selection-result.json`
-28. `docs/player-value-v1-baserunning-run-conversion-contract.md`
-29. `docs/player-value-v1-baserunning-run-conversion-2024.json`
-30. `docs/projection-batting-v1-development-result.json`
-31. `docs/current-talent-results-only-baseline-freeze.md`
+12. `docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`
+13. `docs/player-value-v1-final-aggregation-contract.md`
+14. `docs/player-value-v1-replacement-level-contract.md`
+15. `docs/player-value-v1-replacement-level-2024.json`
+16. `docs/player-value-v1-replacement-level-verification.json`
+17. `docs/player-value-v1-runs-per-win-contract.md`
+18. `docs/player-value-v1-mlb-run-environment-2024.json`
+19. `docs/player-value-v1-batting-runs-contract.md`
+20. `docs/player-value-v1-positional-adjustment-contract.md`
+21. `docs/player-value-v1-defense-production-handoff.md`
+22. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+23. `docs/player-value-v1-baserunning-source-audit-contract.md`
+24. `docs/player-value-v1-baserunning-source-audit-result.json`
+25. `docs/player-value-v1-steal-projection-selection-contract.md`
+26. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+27. `docs/player-value-v1-steal-projection-selection-result.json`
+28. `docs/player-value-v1-advancement-projection-selection-contract.md`
+29. `docs/player-value-v1-advancement-projection-selection-result.json`
+30. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+31. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+32. `docs/projection-batting-v1-development-result.json`
+33. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
@@ -413,4 +428,4 @@ Before final WAR freeze also complete:
 - Do not tune downstream decisions to already-accessed 2025 confirmation residuals.
 - Do not center against the universal ranking population.
 - Do not add park adjustment without evidence of residual park context.
-- Do not calculate final WAR yet.
+- Do not revise the frozen final aggregation method or population from ranking outcomes.
