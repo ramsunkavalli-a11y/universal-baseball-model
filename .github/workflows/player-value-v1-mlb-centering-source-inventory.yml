@@ -30,6 +30,8 @@ jobs:
       - name: Verify inventory implementation
         run: python -m py_compile scripts/inventory_player_value_v1_mlb_centering_sources.py
       - name: Download exact frozen artifacts
+        id: sources
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -72,14 +74,25 @@ jobs:
                 {run_id:32208273343,artifact_name:"defense-v1-framing-repair-development-source",artifact_id:9349835242,digest:"sha256:13b7a44cd26e81b75b564257a0f374d20a4a3553ffe8d55ee270546b1a25dddb"}
               ]}' > source-manifest.json
       - name: Materialize source inventory
+        if: steps.sources.outcome == 'success'
         run: >-
           python scripts/inventory_player_value_v1_mlb_centering_sources.py
           --input-root inputs
           --source-manifest source-manifest.json
           --output docs/player-value-v1-mlb-centering-source-inventory.json
       - name: Persist source inventory
+        if: always()
+        env:
+          SOURCE_OUTCOME: ${{ steps.sources.outcome }}
         run: |
           set -euo pipefail
+          if [ ! -f docs/player-value-v1-mlb-centering-source-inventory.json ]; then
+            jq -n \
+              --arg outcome "$SOURCE_OUTCOME" \
+              --arg source_sha "$GITHUB_SHA" \
+              '{schema_version:"0.1",status:"player_value_v1_mlb_centering_source_inventory_failed",source_sha:$source_sha,source_download_outcome:$outcome,boundary:{model_fit:false,model_selection:false,model_scoring:false,component_runs_calculated:false,centering_constant_calculated:false,park_audit_opened:false,war_calculated:false}}' \
+              > docs/player-value-v1-mlb-centering-source-inventory.json
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/player-value-v1-mlb-centering-source-inventory.json
@@ -91,4 +104,9 @@ jobs:
             sleep $((attempt * 2))
           done
           exit 1
+      - name: Enforce source inventory success
+        if: always()
+        env:
+          SOURCE_OUTCOME: ${{ steps.sources.outcome }}
+        run: test "$SOURCE_OUTCOME" = success
 
