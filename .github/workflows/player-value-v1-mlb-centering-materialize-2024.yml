@@ -110,11 +110,11 @@ jobs:
       - name: Download recertified advancement history
         uses: actions/download-artifact@v7
         with:
-          artifact-ids: "9409946231"
+          artifact-ids: "9410189065"
           path: inputs/advancement-recertified
           github-token: ${{ github.token }}
           repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: "32378320744"
+          run-id: "32378956567"
 
       - name: Materialize 651-player numerical centering reference
         id: centering
