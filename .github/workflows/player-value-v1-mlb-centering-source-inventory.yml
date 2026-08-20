@@ -113,70 +113,25 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32208273343"
 
-      - name: Resolve frozen MLB performance source
-        id: performance_source
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          repo="ramsunkavalli-a11y/universal-baseball-model"
-          gh run list \
-            --repo "$repo" \
-            --workflow mlb-full-season-performance-source.yml \
-            --branch source-certification-poc \
-            --status success \
-            --limit 20 \
-            --json databaseId,createdAt,headSha \
-            > performance-runs.json
-          test "$(jq 'length' performance-runs.json)" -ge 1
-          run_id="$(jq -r '.[0].databaseId' performance-runs.json)"
-          gh api "repos/$repo/actions/runs/$run_id/artifacts?per_page=100" > performance-artifacts.json
-          mapfile -t artifact_ids < <(
-            jq -r '.artifacts[] | select(.name == "mlb-performance-live-gates" and (.expired | not)) | .id' \
-              performance-artifacts.json
-          )
-          if [ "${#artifact_ids[@]}" -ne 1 ]; then
-            jq '{run_id:'"$run_id"', matching_artifacts:[.artifacts[] | select(.name == "mlb-performance-live-gates") | {id,name,expired,created_at,expires_at}]}' \
-              performance-artifacts.json
-            exit 1
-          fi
-          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
-          echo "artifact_id=${artifact_ids[0]}" >> "$GITHUB_OUTPUT"
       - name: Download frozen MLB performance source
         id: performance_download
-        if: steps.performance_source.outcome == 'success'
         continue-on-error: true
         uses: actions/download-artifact@v7
         with:
-          artifact-ids: ${{ steps.performance_source.outputs.artifact_id }}
+          artifact-ids: "9265954750"
           path: inputs/mlb-performance
           github-token: ${{ github.token }}
           repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: ${{ steps.performance_source.outputs.run_id }}
+          run-id: "31955392482"
 
       - name: Write immutable source manifest
         if: always()
-        env:
-          PERF_RUN_ID: ${{ steps.performance_source.outputs.run_id }}
-          PERF_ARTIFACT_ID: ${{ steps.performance_source.outputs.artifact_id }}
         run: |
           set -euo pipefail
-          if [ -f performance-runs.json ]; then
-            cp performance-runs.json /tmp/performance-runs.json
-          else
-            printf '[]\n' > /tmp/performance-runs.json
-          fi
           jq -n \
-            --slurpfile performance_candidates /tmp/performance-runs.json \
-            --arg performance_run "$PERF_RUN_ID" \
-            --arg performance_artifact "$PERF_ARTIFACT_ID" \
             --arg source_sha "$GITHUB_SHA" \
             '{source_sha:$source_sha,
-              resolved_mlb_performance_run_id:(if $performance_run == "" then null else ($performance_run|tonumber) end),
-              resolved_mlb_performance_artifact_id:(if $performance_artifact == "" then null else ($performance_artifact|tonumber) end),
-              mlb_performance_successful_run_candidates:$performance_candidates[0],
-              artifacts:([
+              artifacts:[
                 {run_id:32099733186,artifact_name:"projection-batting-v1-current-talent-snapshots",artifact_id:9311172007,digest:"sha256:40430b67a492aec81e570cd67e74ae3ca7b809cb3ce538082237be244c450d44"},
                 {run_id:32142089669,artifact_name:"playing-time-v1-validation-2024",artifact_id:9326300207,digest:"sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366"},
                 {run_id:32148467330,artifact_name:"position-role-historical-source-2021-2024",artifact_id:9328803363,digest:"sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3"},
@@ -184,13 +139,9 @@ jobs:
                 {run_id:32182019495,artifact_name:"defense-v1-tracked-source-2021-2023",artifact_id:9342409616,digest:"sha256:a177f04655cc497534c85f47d94aa597b273358154eb76999b4a0bc9d5584de4"},
                 {run_id:32198857540,artifact_name:"defense-v1-2024-tracking-predictor",artifact_id:9347665525,digest:"sha256:3eb8fce7e7c18b87c6d40057896ad0654703e42c129d94c584eda82948e1ab33"},
                 {run_id:32206603934,artifact_name:"defense-v1-catcher-repair-development-source",artifact_id:9349341632,digest:"sha256:ca28db646381969c41dc02ae263f19ed233f88611a2083bdd6e4b9ad1c67c6a1"},
-                {run_id:32208273343,artifact_name:"defense-v1-framing-repair-development-source",artifact_id:9349835242,digest:"sha256:13b7a44cd26e81b75b564257a0f374d20a4a3553ffe8d55ee270546b1a25dddb"}
-              ] + (if $performance_run == "" or $performance_artifact == "" then [] else [{
-                run_id:($performance_run|tonumber),
-                artifact_name:"mlb-performance-live-gates",
-                artifact_id:($performance_artifact|tonumber),
-                digest:null
-              }] end))}' > source-manifest.json
+                {run_id:32208273343,artifact_name:"defense-v1-framing-repair-development-source",artifact_id:9349835242,digest:"sha256:13b7a44cd26e81b75b564257a0f374d20a4a3553ffe8d55ee270546b1a25dddb"},
+                {run_id:31955392482,artifact_name:"mlb-batting-performance-2024",artifact_id:9265954750,digest:"sha256:72743db08743ce5d7d1a0f48f3ab702cc6dba3e17345530d3883a38f9955299f"}
+              ]}' > source-manifest.json
 
       - name: Materialize source inventory
         id: materialize
@@ -203,7 +154,6 @@ jobs:
           steps.defense_predictor.outcome == 'success' &&
           steps.catcher_repair.outcome == 'success' &&
           steps.framing_repair.outcome == 'success' &&
-          steps.performance_source.outcome == 'success' &&
           steps.performance_download.outcome == 'success'
         run: >-
           python scripts/inventory_player_value_v1_mlb_centering_sources.py
@@ -223,7 +173,6 @@ jobs:
           DEFENSE_PREDICTOR: ${{ steps.defense_predictor.outcome }}
           CATCHER_REPAIR: ${{ steps.catcher_repair.outcome }}
           FRAMING_REPAIR: ${{ steps.framing_repair.outcome }}
-          PERFORMANCE_SOURCE: ${{ steps.performance_source.outcome }}
           PERFORMANCE_DOWNLOAD: ${{ steps.performance_download.outcome }}
           MATERIALIZE: ${{ steps.materialize.outcome }}
         run: |
@@ -240,7 +189,6 @@ jobs:
               --arg defense_predictor "$DEFENSE_PREDICTOR" \
               --arg catcher_repair "$CATCHER_REPAIR" \
               --arg framing_repair "$FRAMING_REPAIR" \
-              --arg performance_source "$PERFORMANCE_SOURCE" \
               --arg performance_download "$PERFORMANCE_DOWNLOAD" \
               --arg materialize "$MATERIALIZE" \
               '{schema_version:"0.2",
@@ -256,7 +204,6 @@ jobs:
                   defense_predictor:$defense_predictor,
                   catcher_repair:$catcher_repair,
                   framing_repair:$framing_repair,
-                  performance_source_resolution:$performance_source,
                   performance_download:$performance_download,
                   materialize:$materialize
                 },
