@@ -34,7 +34,8 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Baserunning:** **DONE / FROZEN / VERIFIED**
 - **GIDP:** **RAW TERM NON-ADDITIVE; RESIDUAL OMITTED FOR v1**
 - **MLB-reference centering:** **DONE / FROZEN / VERIFIED**
-- **Park-neutrality audit:** **ACTIVE**
+- **Park-neutrality audit:** **DONE / FROZEN / VERIFIED — `Rpark = 0`**
+- **Required pre-WAR sensitivities:** **ACTIVE**
 - **WAR/value aggregation:** CLOSED
 - **Final ranking:** CLOSED
 
@@ -301,11 +302,30 @@ All 651 component rows are explicit. The six outside-snapshot members remain pre
 
 Legacy advancement-selection run **`32378956317`**, triggered by the shared projection-helper edit, failed at its intentional original-byte hash lock for the already-adjudicated 2019 Savant drift. Its 18 code tests passed before that source lock fired. This does not supersede or invalidate the successful re-certification; the frozen model remains `A2_k25`.
 
-## ACTIVE STAGE — park-neutrality audit
+## COMPLETED STAGE — park-neutrality audit
 
 Binding pre-outcome contract: `docs/player-value-v1-park-neutrality-audit-contract.md`.
 
-Test whether frozen batting/current-talent outputs retain systematic park/team residuals. Add an explicit park correction only if evidence demonstrates remaining context; do not blindly copy a conventional park adjustment and risk double-correction.
+Verified result: `docs/player-value-v1-park-neutrality-audit-result.json`.
+
+Actions run **`32381035435`** passed all workflow steps, downloaded the four exact frozen source artifacts, and uploaded diagnostic artifact **`9411024828`** with digest `sha256:9a85d711b2d68ac553df35055b0d7c74edd90c07563b00925e6f911ba2171738`.
+
+The predeclared primary test compared each same-team incumbent's 2023 home-minus-away signal with the frozen B2 projection minus 2024 away-only performance. It retained 251 players, 28 teams, and 55,988 away PA after all player/team exposure gates. Results were decisively below every material retained-context threshold:
+
+- full-season retention slope: `-0.012703125674` versus required `>= 0.25`;
+- fitted retained-context weighted SD: `0.072080770764` runs/600 PA versus required `>= 1.0`;
+- one-sided 10,000-permutation p-value: `0.549945005499` versus required `<= 0.05`;
+- first-/second-half slopes: `-0.047819950981` / `0.05284180674`, failing the same-positive-sign gate.
+
+Realized 2024 venue context remained visible as expected: the 30 primary venues had a weighted residual SD of `3.799161849204` runs/600 PA. That secondary diagnostic does not show retained prior-park bias because it uses realized venue outcomes; it was predeclared as non-decisional. The primary out-of-time away-only retention test failed four of five gates, so no park-correction design gate opens and **`Rpark = 0` is frozen for Player Value v1**.
+
+The audit reproduced the binding 645-player / 181,190-PA positive-observed-PA diagnostic before context assignment. One four-PA player-game for MLBAM `643376` was excluded because its frozen rows map the batter to both teams, making a single batting-team assignment false; the final contextual diagnostic surface is 645 players / 181,186 PA. This exclusion affects only the park audit, not the 651-player centering cohort or its frozen denominator.
+
+No live Savant source was fetched, no B2 probability was changed, realized 2024 data were used only as audit targets, numerical centering was unchanged, and no 2025 data or WAR result was accessed.
+
+## ACTIVE STAGE — required pre-WAR sensitivities
+
+Park neutrality is resolved. WAR remains closed until the already-listed positional, batting-reference, replacement, runs-per-win, and baserunning/centering sensitivity obligations are either completed from comparable frozen surfaces or explicitly documented as unavailable under their contracts.
 
 ## WAR remains closed
 
@@ -330,24 +350,27 @@ Before final WAR freeze also complete:
 3. `docs/player-value-v1-architecture-contract.md`
 4. `docs/player-value-v1-mlb-centering-contract.md`
 5. `docs/player-value-v1-mlb-centering-2024-membership.json`
-6. `docs/player-value-v1-mlb-centering-verification.json`
-7. `docs/player-value-v1-replacement-level-contract.md`
-8. `docs/player-value-v1-replacement-level-2024.json`
-9. `docs/player-value-v1-replacement-level-verification.json`
-10. `docs/player-value-v1-runs-per-win-contract.md`
-11. `docs/player-value-v1-mlb-run-environment-2024.json`
-12. `docs/player-value-v1-batting-runs-contract.md`
-13. `docs/player-value-v1-positional-adjustment-contract.md`
-14. `docs/player-value-v1-defense-production-handoff.md`
-15. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-16. `docs/player-value-v1-baserunning-source-audit-contract.md`
-17. `docs/player-value-v1-baserunning-source-audit-result.json`
-18. `docs/player-value-v1-steal-projection-selection-contract.md`
-19. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-20. `docs/player-value-v1-steal-projection-selection-result.json`
-21. `docs/player-value-v1-advancement-projection-selection-contract.md`
-22. `docs/player-value-v1-advancement-projection-selection-result.json`
-23. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+6. `docs/player-value-v1-mlb-centering-2024.json`
+7. `docs/player-value-v1-park-neutrality-audit-contract.md`
+8. `docs/player-value-v1-park-neutrality-audit-result.json`
+9. `docs/player-value-v1-mlb-centering-verification.json`
+10. `docs/player-value-v1-replacement-level-contract.md`
+11. `docs/player-value-v1-replacement-level-2024.json`
+12. `docs/player-value-v1-replacement-level-verification.json`
+13. `docs/player-value-v1-runs-per-win-contract.md`
+14. `docs/player-value-v1-mlb-run-environment-2024.json`
+15. `docs/player-value-v1-batting-runs-contract.md`
+16. `docs/player-value-v1-positional-adjustment-contract.md`
+17. `docs/player-value-v1-defense-production-handoff.md`
+18. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+19. `docs/player-value-v1-baserunning-source-audit-contract.md`
+20. `docs/player-value-v1-baserunning-source-audit-result.json`
+21. `docs/player-value-v1-steal-projection-selection-contract.md`
+22. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+23. `docs/player-value-v1-steal-projection-selection-result.json`
+24. `docs/player-value-v1-advancement-projection-selection-contract.md`
+25. `docs/player-value-v1-advancement-projection-selection-result.json`
+26. `docs/player-value-v1-baserunning-run-conversion-contract.md`
 24. `docs/player-value-v1-baserunning-run-conversion-2024.json`
 25. `docs/projection-batting-v1-development-result.json`
 26. `docs/current-talent-results-only-baseline-freeze.md`
