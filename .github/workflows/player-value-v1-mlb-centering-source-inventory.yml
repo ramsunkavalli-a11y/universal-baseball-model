@@ -72,6 +72,26 @@ jobs:
           github-token: ${{ github.token }}
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32266007594"
+      - name: Download frozen catcher native opportunities
+        id: catcher_opportunities
+        continue-on-error: true
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9371426672"
+          path: inputs/catcher-opportunities
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32269076231"
+      - name: Download frozen DH positional exposure
+        id: dh_exposure
+        continue-on-error: true
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9371840453"
+          path: inputs/dh-exposure
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32270141291"
       - name: Download frozen tracked defense source
         id: defense_tracked
         continue-on-error: true
@@ -136,6 +156,8 @@ jobs:
                 {run_id:32142089669,artifact_name:"playing-time-v1-validation-2024",artifact_id:9326300207,digest:"sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366"},
                 {run_id:32148467330,artifact_name:"position-role-historical-source-2021-2024",artifact_id:9328803363,digest:"sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3"},
                 {run_id:32266007594,artifact_name:"player-value-v1-defensive-position-allocation",artifact_id:9370211679,digest:"sha256:68f31b337ece8b40403a944663ed20f068da4e99b961bfcfa4a4ed51eb128ede"},
+                {run_id:32269076231,artifact_name:"player-value-v1-catcher-native-opportunity-selection",artifact_id:9371426672,digest:"sha256:edc6c4fef7f0d17e063917f3defca48243ae60466a0e665c200c7989bfb42486"},
+                {run_id:32270141291,artifact_name:"player-value-v1-dh-positional-exposure-selection",artifact_id:9371840453,digest:"sha256:dd6237bfb496992cdca53fd88f362bf51dd90ff9e9371a324144536b414668b1"},
                 {run_id:32182019495,artifact_name:"defense-v1-tracked-source-2021-2023",artifact_id:9342409616,digest:"sha256:a177f04655cc497534c85f47d94aa597b273358154eb76999b4a0bc9d5584de4"},
                 {run_id:32198857540,artifact_name:"defense-v1-2024-tracking-predictor",artifact_id:9347665525,digest:"sha256:3eb8fce7e7c18b87c6d40057896ad0654703e42c129d94c584eda82948e1ab33"},
                 {run_id:32206603934,artifact_name:"defense-v1-catcher-repair-development-source",artifact_id:9349341632,digest:"sha256:ca28db646381969c41dc02ae263f19ed233f88611a2083bdd6e4b9ad1c67c6a1"},
@@ -150,6 +172,8 @@ jobs:
           steps.playing_time.outcome == 'success' &&
           steps.fielding_history.outcome == 'success' &&
           steps.position_allocation.outcome == 'success' &&
+          steps.catcher_opportunities.outcome == 'success' &&
+          steps.dh_exposure.outcome == 'success' &&
           steps.defense_tracked.outcome == 'success' &&
           steps.defense_predictor.outcome == 'success' &&
           steps.catcher_repair.outcome == 'success' &&
@@ -169,6 +193,8 @@ jobs:
           PLAYING_TIME: ${{ steps.playing_time.outcome }}
           FIELDING_HISTORY: ${{ steps.fielding_history.outcome }}
           POSITION_ALLOCATION: ${{ steps.position_allocation.outcome }}
+          CATCHER_OPPORTUNITIES: ${{ steps.catcher_opportunities.outcome }}
+          DH_EXPOSURE: ${{ steps.dh_exposure.outcome }}
           DEFENSE_TRACKED: ${{ steps.defense_tracked.outcome }}
           DEFENSE_PREDICTOR: ${{ steps.defense_predictor.outcome }}
           CATCHER_REPAIR: ${{ steps.catcher_repair.outcome }}
@@ -185,6 +211,8 @@ jobs:
               --arg playing_time "$PLAYING_TIME" \
               --arg fielding_history "$FIELDING_HISTORY" \
               --arg position_allocation "$POSITION_ALLOCATION" \
+              --arg catcher_opportunities "$CATCHER_OPPORTUNITIES" \
+              --arg dh_exposure "$DH_EXPOSURE" \
               --arg defense_tracked "$DEFENSE_TRACKED" \
               --arg defense_predictor "$DEFENSE_PREDICTOR" \
               --arg catcher_repair "$CATCHER_REPAIR" \
@@ -200,6 +228,8 @@ jobs:
                   playing_time:$playing_time,
                   fielding_history:$fielding_history,
                   position_allocation:$position_allocation,
+                  catcher_opportunities:$catcher_opportunities,
+                  dh_exposure:$dh_exposure,
                   defense_tracked:$defense_tracked,
                   defense_predictor:$defense_predictor,
                   catcher_repair:$catcher_repair,
