@@ -2,15 +2,16 @@
   "boundary": {
     "numerical_reference_materialized": false,
     "park_adjustment_selected": false,
+    "reference_membership_materialized": true,
     "replacement_in_centering": false,
     "war_value_calculated": false
   },
   "centering_id": "fixed_2024_mlb_projected_component_reference_v1",
   "reference_season": 2024,
   "schema_version": "0.1",
-  "source_run_id": 32303055610,
-  "source_sha": "c78e29e83954f99530dfd0dd9459f682d2cb87da",
-  "status": "player_value_v1_mlb_centering_implementation_verified",
+  "source_run_id": 32320525700,
+  "source_sha": "bf02d7b30410811123c9c069116a57f9c702bca8",
+  "status": "player_value_v1_mlb_centering_implementation_and_membership_verified",
   "tests": [
     "tests/test_player_value_mlb_centering.py",
     "tests/test_player_value_mlb_centering_assembly.py"
