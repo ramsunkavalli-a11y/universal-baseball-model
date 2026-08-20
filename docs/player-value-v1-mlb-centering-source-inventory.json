@@ -1,8 +1,21 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "status": "player_value_v1_mlb_centering_source_inventory_failed",
-  "source_sha": "29373a48d22c7452f8a6b16565d5efafaba61702",
-  "source_download_outcome": "failure",
+  "source_run_id": 32337432564,
+  "source_sha": "4eb551b6a1912f82795f359b981c91b8442ad2ea",
+  "outcomes": {
+    "batting_b2": "success",
+    "playing_time": "success",
+    "fielding_history": "success",
+    "position_allocation": "success",
+    "defense_tracked": "success",
+    "defense_predictor": "success",
+    "catcher_repair": "success",
+    "framing_repair": "success",
+    "performance_source_resolution": "failure",
+    "performance_download": "skipped",
+    "materialize": "skipped"
+  },
   "boundary": {
     "model_fit": false,
     "model_selection": false,
