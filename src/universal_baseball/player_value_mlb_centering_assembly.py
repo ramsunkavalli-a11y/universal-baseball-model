@@ -19,11 +19,19 @@ REFERENCE_SEASON = 2024
 
 @dataclass(frozen=True, slots=True)
 class PlayingTimeReferenceCandidate:
-    """Playing Time evidence used only for cohort membership and exposure."""
+    """Playing Time evidence used only for cohort reconciliation and exposure."""
 
     player_id: int
     observed_mlb_pa: float
     projected_expected_mlb_pa: float
+
+
+@dataclass(frozen=True, slots=True)
+class OfficialMLBReferenceCandidate:
+    """Official pooled MLB PA evidence used only to define fixed membership."""
+
+    player_id: int
+    official_mlb_pa: float
 
 
 @dataclass(frozen=True, slots=True)
@@ -79,10 +87,12 @@ def select_fixed_2024_mlb_reference_members(
     *,
     expected_player_count: int = EXPECTED_2024_MLB_REFERENCE_PLAYER_COUNT,
 ) -> tuple[FixedMLBReferenceMember, ...]:
-    """Select the fixed positive-observed-PA 2024 MLB reference cohort.
+    """Select a positive-observed-PA cohort from Playing Time evidence.
 
-    Observed 2024 PA is used *only* as the membership predicate. The exposure
-    retained for centering is frozen projected expected MLB PA.
+    This legacy helper remains useful for isolated validation. Production 2024
+    centering membership must use :func:`reconcile_fixed_2024_mlb_reference_members`
+    so the cohort is anchored to official MLB PA rather than the Playing Time
+    target's observed-PA accounting.
     """
 
     if int(expected_player_count) <= 0:
@@ -121,6 +131,85 @@ def select_fixed_2024_mlb_reference_members(
             "fixed 2024 MLB reference cohort count mismatch: "
             f"expected {int(expected_player_count)}, got {len(members)}"
         )
+    return tuple(members)
+
+
+def reconcile_fixed_2024_mlb_reference_members(
+    playing_time_rows: Iterable[PlayingTimeReferenceCandidate],
+    official_rows: Iterable[OfficialMLBReferenceCandidate],
+    *,
+    expected_player_count: int = EXPECTED_2024_MLB_REFERENCE_PLAYER_COUNT,
+) -> tuple[FixedMLBReferenceMember, ...]:
+    """Anchor membership to official MLB PA and attach frozen projected PA.
+
+    Official pooled MLB PA defines the binding positive-PA cohort. The Playing
+    Time target is required to identify exactly the same players, but its
+    ``observed_mlb_pa`` values are not treated as official PA accounting. Frozen
+    projected expected MLB PA remains the only exposure carried into centering.
+    """
+
+    if int(expected_player_count) <= 0:
+        raise ValueError("expected_player_count must be positive")
+
+    playing_time_by_id: dict[int, PlayingTimeReferenceCandidate] = {}
+    playing_time_positive_ids: set[int] = set()
+    for index, row in enumerate(playing_time_rows):
+        player_id = _positive_player_id(row.player_id)
+        if player_id in playing_time_by_id:
+            raise ValueError(f"duplicate Playing Time player_id: {player_id}")
+        observed_pa = _finite_nonnegative(
+            row.observed_mlb_pa,
+            field=f"playing_time_rows[{index}].observed_mlb_pa",
+        )
+        projected_pa = _finite_nonnegative(
+            row.projected_expected_mlb_pa,
+            field=f"playing_time_rows[{index}].projected_expected_mlb_pa",
+        )
+        normalized = PlayingTimeReferenceCandidate(
+            player_id=player_id,
+            observed_mlb_pa=observed_pa,
+            projected_expected_mlb_pa=projected_pa,
+        )
+        playing_time_by_id[player_id] = normalized
+        if observed_pa > 0.0:
+            playing_time_positive_ids.add(player_id)
+
+    official_positive_ids: set[int] = set()
+    seen_official_ids: set[int] = set()
+    for index, row in enumerate(official_rows):
+        player_id = _positive_player_id(row.player_id)
+        if player_id in seen_official_ids:
+            raise ValueError(f"duplicate official MLB player_id: {player_id}")
+        seen_official_ids.add(player_id)
+        official_pa = _finite_nonnegative(
+            row.official_mlb_pa,
+            field=f"official_rows[{index}].official_mlb_pa",
+        )
+        if official_pa > 0.0:
+            official_positive_ids.add(player_id)
+
+    if len(official_positive_ids) != int(expected_player_count):
+        raise ValueError(
+            "official 2024 MLB positive-PA cohort count mismatch: "
+            f"expected {int(expected_player_count)}, got {len(official_positive_ids)}"
+        )
+
+    missing_from_playing_time = sorted(official_positive_ids - playing_time_positive_ids)
+    extra_in_playing_time = sorted(playing_time_positive_ids - official_positive_ids)
+    if missing_from_playing_time or extra_in_playing_time:
+        raise ValueError(
+            "Playing Time positive-PA cohort does not reconcile exactly to official MLB membership; "
+            f"missing_from_playing_time={missing_from_playing_time[:10]}, "
+            f"extra_in_playing_time={extra_in_playing_time[:10]}"
+        )
+
+    members = [
+        FixedMLBReferenceMember(
+            player_id=player_id,
+            projected_expected_mlb_pa=playing_time_by_id[player_id].projected_expected_mlb_pa,
+        )
+        for player_id in sorted(official_positive_ids)
+    ]
     return tuple(members)
 
 
