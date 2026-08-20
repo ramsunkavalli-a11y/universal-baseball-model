@@ -7,6 +7,7 @@ from dataclasses import dataclass
 
 PITCHING_DEVELOPMENT_SEASONS = (2021, 2022, 2023, 2024)
 PITCHING_FILENAME_LEVELS = ("aaa", "aa", "a+", "a", "rk")
+FROZEN_2024_MLB_PITCHING_BF = 182_449
 
 # The 2024 hashes were recovered from successful all-level certification run
 # 31925028241, artifact 9257560686.  The 2021-2023 hashes were captured by the
@@ -34,6 +35,20 @@ FROZEN_2021_2024_MILB_PITCHING_SHA256 = {
     "2024_a+_season_pitching_stats.csv": "a04435ae10e10778b18c8da429386cf102ac750aa2bdd6ced3ab511b6242e832",
     "2024_a_season_pitching_stats.csv": "c83051b3991e067feb4356992c2dc7a8eea97004f5548f9e1d0a8579b19711b0",
     "2024_rk_season_pitching_stats.csv": "bda8ce69aaa9201ea410ee1ffa66243a830af2987c7ba28c4f9f25ef1f2b713a",
+}
+
+# Exact official Stats API response bytes captured on 2026-08-20 before any
+# Pitching v1 candidate scoring.  Each AL/NL season result fit in one page at
+# the frozen 500-row limit.  Drift must be investigated rather than accepted.
+FROZEN_2021_2024_MLB_PITCHING_RESPONSE_SHA256 = {
+    (2021, 103, 0): "37b5006d1ad03145f0d045d304fbcca5943ce317a86ac30a77da9363911e20c2",
+    (2021, 104, 0): "5439c180f3415e22ad1fad97eb0551e5ca56f9faae30eb11d732e51077721b7d",
+    (2022, 103, 0): "316507e1ffc256c9ea5258300b5d37555f2368520f9b6e8dba3f3fa7c2f6b429",
+    (2022, 104, 0): "a5101d1880923d4210403f55dbcddd213babc5297f6b79fc4a8d4e57f34c7795",
+    (2023, 103, 0): "5a8bfaafc1ea33f299d821b7dfd9a80aff2d271dc74cbcdb781cf24bd284d10e",
+    (2023, 104, 0): "773f9ef2415d30408fc364aac39726af0a089985da5d3c60430a9fec25ff07b0",
+    (2024, 103, 0): "ff6307660fe6131056eac934f41527833a7dad3d96c39491865dff6c88ba4883",
+    (2024, 104, 0): "5094e265b2616f8feb81099d75814b1116b372349ac985f214bfedc89b02dd4c",
 }
 
 
@@ -67,5 +82,25 @@ def validate_frozen_pitching_sha(asset_name: str, observed_sha256: str) -> None:
     if observed_sha256.lower() != expected:
         raise ValueError(
             f"frozen Pitching v1 source byte drift for {asset_name}: "
+            f"expected {expected}, observed {observed_sha256.lower()}"
+        )
+
+
+def validate_frozen_mlb_pitching_response_sha(
+    *,
+    season: int,
+    league_id: int,
+    offset: int,
+    observed_sha256: str,
+) -> None:
+    """Fail if an official pre-2025 MLB pitching response changed bytes."""
+
+    key = (int(season), int(league_id), int(offset))
+    expected = FROZEN_2021_2024_MLB_PITCHING_RESPONSE_SHA256.get(key)
+    if expected is None:
+        raise ValueError(f"unexpected Pitching v1 MLB source capture: {key}")
+    if observed_sha256.lower() != expected:
+        raise ValueError(
+            f"frozen Pitching v1 MLB source byte drift for {key}: "
             f"expected {expected}, observed {observed_sha256.lower()}"
         )

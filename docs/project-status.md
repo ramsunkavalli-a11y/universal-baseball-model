@@ -95,6 +95,16 @@ The verified inventory contains 26,488 player/actual-league/season rows,
 quarantine and were not uploaded; 2025 was not accessed. Exact evidence is
 frozen in `docs/pitching-v1-source-inventory-result.json`.
 
+The official MLB pitching source gate is now staged against the same bulk,
+paginated AL/NL Stats API contract already used for batting. Before any
+Pitching v1 candidate scoring, it froze eight exact 2021–2024 response hashes.
+Local reproduction produced 3,713 player/actual-league/season rows, 18,565
+five-bin profile rows, 1,569 distinct pitchers, and 730,423 BF with unique
+canonical grains. The 2024 pitching total is exactly 182,449 BF, independently
+reproducing the existing official MLB PA accounting anchor; no historical
+count change was accepted. This batch remains provisional until the protected
+main-branch workflow reproduces every response hash and total.
+
 ## Defense v1 — frozen
 
 Final skill hierarchy:

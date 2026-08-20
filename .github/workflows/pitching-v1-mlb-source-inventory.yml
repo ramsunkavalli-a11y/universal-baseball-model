@@ -1,0 +1,44 @@
+name: Pitching v1 MLB source inventory
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify official MLB pitching source contracts
+        run: >-
+          python -m pytest -q
+          tests/test_mlb_season_stats.py
+          tests/test_pitching_performance.py
+          tests/test_pitching_source_inventory.py
+
+      - name: Materialize frozen pre-2025 official MLB pitching inventory
+        run: python scripts/inventory_pitching_v1_mlb_sources.py
+
+      - name: Upload derived inventory and provenance
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pitching-v1-mlb-source-inventory
+          path: reports/generated/pitching-v1-mlb-source-inventory/
+          if-no-files-found: error
+          retention-days: 14

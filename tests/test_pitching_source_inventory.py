@@ -7,7 +7,10 @@ import pytest
 
 from universal_baseball.pitching_source_inventory import (
     FROZEN_2021_2024_MILB_PITCHING_SHA256,
+    FROZEN_2021_2024_MLB_PITCHING_RESPONSE_SHA256,
+    FROZEN_2024_MLB_PITCHING_BF,
     expected_pitching_source_specs,
+    validate_frozen_mlb_pitching_response_sha,
     validate_frozen_pitching_sha,
 )
 
@@ -42,6 +45,40 @@ def test_validate_frozen_pitching_sha_rejects_drift_or_unknown_asset() -> None:
         validate_frozen_pitching_sha(
             "2024_win_season_pitching_stats.csv",
             "0" * 64,
+        )
+
+
+def test_frozen_mlb_pitching_captures_are_complete_and_pre_2025() -> None:
+    assert set(FROZEN_2021_2024_MLB_PITCHING_RESPONSE_SHA256) == {
+        (season, league_id, 0)
+        for season in (2021, 2022, 2023, 2024)
+        for league_id in (103, 104)
+    }
+    assert FROZEN_2024_MLB_PITCHING_BF == 182_449
+
+
+def test_validate_frozen_mlb_pitching_response_sha_fails_closed() -> None:
+    for key, digest in FROZEN_2021_2024_MLB_PITCHING_RESPONSE_SHA256.items():
+        validate_frozen_mlb_pitching_response_sha(
+            season=key[0],
+            league_id=key[1],
+            offset=key[2],
+            observed_sha256=digest.upper(),
+        )
+
+    with pytest.raises(ValueError, match="byte drift"):
+        validate_frozen_mlb_pitching_response_sha(
+            season=2024,
+            league_id=103,
+            offset=0,
+            observed_sha256="0" * 64,
+        )
+    with pytest.raises(ValueError, match="unexpected Pitching v1 MLB"):
+        validate_frozen_mlb_pitching_response_sha(
+            season=2025,
+            league_id=103,
+            offset=0,
+            observed_sha256="0" * 64,
         )
 
 
