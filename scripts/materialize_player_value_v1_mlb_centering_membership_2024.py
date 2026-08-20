@@ -119,6 +119,14 @@ def main() -> None:
 
     playing_time_positive = source.filter(pl.col("observed_mlb_pa") > 0.0)
     playing_time_positive_pa = float(playing_time_positive["observed_mlb_pa"].sum())
+    playing_time_positive_ids = set(playing_time_positive["player_id"].to_list())
+    official_positive_ids = set(official_reference["player_id"].to_list())
+    official_only_vs_playing_time_positive = sorted(
+        official_positive_ids - playing_time_positive_ids
+    )
+    playing_time_positive_only_vs_official = sorted(
+        playing_time_positive_ids - official_positive_ids
+    )
 
     membership = pl.DataFrame(
         {
@@ -136,16 +144,19 @@ def main() -> None:
     membership.write_parquet(args.output_membership_parquet)
 
     result = {
-        "schema_version": "0.2",
+        "schema_version": "0.3",
         "status": "player_value_v1_mlb_centering_2024_membership_verified",
         "centering_id": "fixed_2024_mlb_projected_component_reference_v1",
         "reference_season": 2024,
-        "membership_definition": "positive official 2024 MLB PA from pooled AL/NL MLB Stats API season hitting; exact player-set reconciliation to Playing Time positive-PA target",
+        "membership_definition": "positive official 2024 MLB PA from pooled AL/NL MLB Stats API season hitting; Playing Time supplies projected exposure but does not override official membership",
         "reference_player_count": summary.reference_player_count,
         "aggregate_official_mlb_pa_membership_anchor": official_reference_pa,
         "playing_time_observed_mlb_pa_diagnostic": playing_time_positive_pa,
         "aggregate_projected_mlb_pa": summary.aggregate_projected_mlb_pa,
         "playing_time_input_row_count": source.height,
+        "playing_time_positive_observed_pa_player_count": len(playing_time_positive_ids),
+        "official_only_vs_playing_time_positive_ids": official_only_vs_playing_time_positive,
+        "playing_time_positive_only_vs_official_ids": playing_time_positive_only_vs_official,
         "playing_time_projected_pa_input_column": PLAYING_TIME_PROJECTED_PA_COLUMN,
         "centering_projected_pa_output_field": "projected_expected_mlb_pa",
         "official_mlb_membership_source": {
@@ -191,7 +202,11 @@ def main() -> None:
                 rel_tol=0.0,
                 abs_tol=1e-9,
             ),
-            "playing_time_positive_pa_membership_matches_official": True,
+            "all_official_members_have_playing_time_projected_pa_rows": True,
+            "playing_time_positive_pa_membership_matches_official": not (
+                official_only_vs_playing_time_positive
+                or playing_time_positive_only_vs_official
+            ),
             "playing_time_observed_pa_used_as_official_anchor": False,
             "membership_unique_by_player_id": membership["player_id"].n_unique()
             == membership.height,
