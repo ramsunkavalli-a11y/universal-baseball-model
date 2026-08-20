@@ -39,11 +39,11 @@ jobs:
       - name: Download frozen numerical centering components
         uses: actions/download-artifact@v7
         with:
-          artifact-ids: "9410315587"
+          artifact-ids: "9412396481"
           path: inputs/centering
           github-token: ${{ github.token }}
           repository: ramsunkavalli-a11y/universal-baseball-model
-          run-id: "32379246845"
+          run-id: "32384563289"
       - name: Download frozen defensive position allocation
         uses: actions/download-artifact@v7
         with:
@@ -82,4 +82,3 @@ jobs:
             reports/generated/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.parquet
           if-no-files-found: error
           retention-days: 90
-

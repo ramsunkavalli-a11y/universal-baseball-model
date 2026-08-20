@@ -35,7 +35,7 @@ not available).
 ## Frozen 2024 adaptation
 
 The comparison must consume the exact 651-player numerical-centering component
-artifact from Actions run `32379246845`, artifact `9410315587`. No component is
+artifact from corrected Actions run `32384563289`, artifact `9412396481`. No component is
 refit or replayed.
 
 For every positive-projected-PA player:
@@ -85,4 +85,3 @@ Freeze `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json` and
 upload the complete 651-player comparison table. Report aggregate and player
 difference distributions, but do not select, tune, or replace the binding RPW
 from those outcomes.
-

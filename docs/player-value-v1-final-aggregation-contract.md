@@ -44,7 +44,7 @@ For each scored player, consume without refitting:
 - `Rbr`: frozen `B2_k5` steal-attempt, `B2_k45` steal-success, and `A2_k25` advancement machinery;
 - `Rdef`: frozen T1/U1/B0 general range plus repaired C2 throwing/blocking and F1/F0 framing, each converted with its native frozen opportunity rate;
 - `Rpos`: binding FanGraphs schedule over frozen S0 position-outs allocation and B0 DH-role exposure;
-- `Rlg = projected_expected_mlb_pa * 0.0006808538968791225` from the verified 2024 MLB centering record;
+- `Rlg = projected_expected_mlb_pa * 0.0010024718324441579` from the corrected verified 2024 MLB centering record;
 - `Rpark = 0.0` from the verified park-neutrality audit;
 - `Rrep = projected_expected_mlb_pa * 0.030237643566893475` from the refrozen replacement record.
 
@@ -83,4 +83,3 @@ be used to order players.
 The Baseball-Reference positional and PythagenPat outputs and replacement
 alternatives remain diagnostic sidecars. They do not replace any binding field
 in the final v1 ranking.
-

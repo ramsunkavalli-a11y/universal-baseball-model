@@ -179,8 +179,8 @@ def main() -> None:
         },
         "inputs": {
             "centering_components": {
-                "run_id": 32379246845,
-                "artifact_id": 9410315587,
+                "run_id": 32384563289,
+                "artifact_id": 9412396481,
                 "sha256": _sha256(args.centering_components),
             },
             "position_allocation": {
@@ -239,4 +239,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
