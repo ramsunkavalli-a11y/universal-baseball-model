@@ -63,7 +63,7 @@ jobs:
 
       - name: Upload fixed reference membership artifact
         id: upload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: player-value-v1-mlb-centering-2024-membership
           path: |
