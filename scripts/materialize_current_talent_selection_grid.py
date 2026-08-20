@@ -177,7 +177,8 @@ def main() -> int:
                 raise ValueError(
                     f"selection-grid predictor membership changed by half-life at {cutoff}"
                 )
-            assert ages is not None
+            if ages is None:
+                raise RuntimeError("selection-grid age surface was not initialized")
 
             baseline_context = (
                 validation.predictor_summary.select(

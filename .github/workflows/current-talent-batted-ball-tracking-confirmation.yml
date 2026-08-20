@@ -1,11 +1,6 @@
 name: Current Talent batted-ball tracking confirmation
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-batted-ball-tracking-confirmation.yml"
   workflow_dispatch:
 
 permissions:

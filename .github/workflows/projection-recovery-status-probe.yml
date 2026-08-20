@@ -1,12 +1,7 @@
-# refresh after quarantined 2024 source gate launch
+# refresh live frozen Projection 2023 out-of-time validation
 name: Projection recovery status probe
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-recovery-status-probe.yml"
   workflow_dispatch:
 
 permissions:
@@ -16,6 +11,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check out branch
         uses: actions/checkout@v7
@@ -34,7 +30,13 @@ jobs:
               "recovery_audit": "projection-2024-exact-game-source-gap-audit-recovery.yml",
               "exact_game_audit_original": "projection-2024-exact-game-source-gap-audit.yml",
               "historical_milb_2024": "projection-current-talent-historical-milb-2024.yml",
+              "historical_mlb": "current-talent-historical-mlb-season.yml",
               "projection_contracts": "projection-validation-contracts-ci.yml",
+              "development_evidence": "projection-batting-v1-development-evidence.yml",
+              "current_talent_snapshots": "projection-batting-v1-current-talent-snapshots.yml",
+              "training_responses": "projection-batting-v1-training-responses.yml",
+              "candidate_selection": "projection-batting-v1-candidate-selection.yml",
+              "validation_2023": "projection-batting-v1-validation-2023.yml",
           }
           output = {"gate": "projection_recovery_status_probe", "workflows": {}}
           env = dict(os.environ)

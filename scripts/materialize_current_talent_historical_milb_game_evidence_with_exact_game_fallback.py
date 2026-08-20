@@ -45,6 +45,7 @@ from universal_baseball.current_talent_official_game_identity import (
     project_official_game_league_identity,
 )
 from universal_baseball.current_talent_source_residual_quarantine import (
+    exact_residual_quarantine_is_terminal,
     quarantine_single_source_only_exact_residual,
 )
 from universal_baseball.official import project_official_play_by_play
@@ -285,6 +286,55 @@ def _adjudicate_outcomes_with_exact_game_fallback(
             if residual_quarantine.get("applied"):
                 game_id, quarantine_player = residual_quarantine["quarantined_player_game_key"]
                 _QUARANTINED_PLAYER_GAME_KEYS.add((int(game_id), int(quarantine_player)))
+
+            if exact_residual_quarantine_is_terminal(
+                corrected,
+                official,
+                residual_quarantine,
+                player_id=player_id,
+                league_id=league_id,
+            ):
+                fallback_metrics = {
+                    "source_only_game_log_gap_count": 0,
+                    "exact_game_pbp_confirmed_count": 0,
+                    "confirmed_game_ids": [],
+                }
+                zero_totals = dict(
+                    residual_quarantine["source_totals_after_candidate_removal"]
+                )
+                metrics = {
+                    "policy": "residual_triggered_official_game_log_v2",
+                    "player_id": int(player_id),
+                    "league_id": int(league_id),
+                    "classification": "exact_source_residual_quarantine_resolved_all_positive_pa",
+                    "source_positive_pa_game_count": 0,
+                    "official_positive_pa_game_count": 0,
+                    "overlay_existing_game_count": 0,
+                    "insert_official_only_positive_pa_game_count": 0,
+                    "source_only_positive_pa_game_count": 0,
+                    "changed_field_count": 0,
+                    "source_totals": zero_totals,
+                    "official_totals": dict(residual_quarantine["official_game_log_totals"]),
+                    "corrected_totals": zero_totals,
+                    "retrospective_corrected_history": True,
+                    "vintage_information_set": False,
+                    "source_only_exact_residual_quarantine": residual_quarantine,
+                    "game_log_gap_fallback": fallback_metrics,
+                }
+                adjudications.append(metrics)
+                snapshots.append(
+                    {
+                        "league_id": league_id,
+                        "player_id": player_id,
+                        "endpoint": capture.endpoint,
+                        "url": capture.url,
+                        "retrieved_at_utc": capture.retrieved_at_utc.isoformat(),
+                        "content_sha256": capture.content_sha256,
+                        "raw_path": str(raw_path),
+                        "exact_game_fallback_snapshots": [],
+                    }
+                )
+                continue
 
             source_only_games = source_only_positive_pa_games(
                 corrected,

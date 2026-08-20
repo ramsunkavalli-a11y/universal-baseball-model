@@ -2,15 +2,6 @@ name: Current Talent outcome residual case diagnostic
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-outcome-residual-case.yml"
-      - "scripts/diagnose_current_talent_outcome_residual_case.py"
-      - "scripts/diagnose_current_talent_2021_rk_team_residuals.py"
-      - "scripts/diagnose_current_talent_2021_dsl_lad_bautista_boxscores.py"
-
 permissions:
   contents: read
 

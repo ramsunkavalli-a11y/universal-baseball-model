@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
-from typing import Any, Iterable
+from typing import Any
 
 import polars as pl
 
@@ -28,7 +28,6 @@ from universal_baseball.current_talent_batted_ball_capability import (
     build_player_tracking_capability,
 )
 from universal_baseball.current_talent_batted_ball_quality import (
-    TRACKED_FEATURE_SCHEMA,
     build_batted_ball_quality_features,
 )
 from universal_baseball.current_talent_batted_ball_reconciliation import (
@@ -40,7 +39,6 @@ from universal_baseball.current_talent_batted_ball_standardization import (
     standardize_batted_ball_quality_features,
 )
 from universal_baseball.current_talent_contact_value_evidence import (
-    CONTACT_VALUE_FROZEN_CUTOFFS,
     CONTACT_VALUE_TARGET_KEY,
 )
 

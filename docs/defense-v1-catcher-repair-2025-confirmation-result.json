@@ -1,0 +1,111 @@
+{
+  "boundary": {
+    "framing_modified": false,
+    "general_range_modified": false,
+    "live_source_query_performed_by_scorer": false,
+    "model_fit": false,
+    "model_reselection": false,
+    "playing_time_v1_modified": false,
+    "position_role_v1_modified": false,
+    "recalibration": false,
+    "rescue_attempted": false,
+    "run_value_conversion_performed": false,
+    "threshold_movement": false,
+    "war_value_calculated": false
+  },
+  "catcher_blocking_C2_vs_B0": {
+    "b0": {
+      "calibration_intercept": null,
+      "calibration_slope": null,
+      "mae": 0.7311419046523415,
+      "mse": 1.0000000000000002,
+      "pearson": null,
+      "player_count": 78,
+      "spearman": null
+    },
+    "candidate": {
+      "calibration_intercept": -0.20163843158820727,
+      "calibration_slope": 1.768129300828297,
+      "mae": 0.677402154428371,
+      "mse": 0.8356326927222233,
+      "pearson": 0.4675848850103219,
+      "player_count": 78,
+      "spearman": 0.3597541698807521
+    },
+    "coverage_identical": true,
+    "finite": true,
+    "passed": true,
+    "player_count": 78,
+    "status": "confirmed"
+  },
+  "catcher_throwing_C2_vs_B0": {
+    "b0": {
+      "calibration_intercept": null,
+      "calibration_slope": null,
+      "mae": 0.7783773703720769,
+      "mse": 0.9999999999999998,
+      "pearson": null,
+      "player_count": 79,
+      "spearman": null
+    },
+    "candidate": {
+      "calibration_intercept": 0.16793307836554255,
+      "calibration_slope": 1.5955797675596362,
+      "mae": 0.7039158607092162,
+      "mse": 0.8857455501180346,
+      "pearson": 0.3816033168120827,
+      "player_count": 79,
+      "spearman": 0.35826654252454165
+    },
+    "coverage_identical": true,
+    "finite": true,
+    "passed": true,
+    "player_count": 79,
+    "status": "confirmed"
+  },
+  "confirmation_run_id": 32211517759,
+  "confirmation_sha": "efa53c739e16f40a9de5797178d60a577dd744e8",
+  "contract": "docs/defense-v1-catcher-source-repair-contract.md",
+  "decision": {
+    "additional_catcher_tuning_authorized": false,
+    "catcher_run_conversion_authorized_after_defense_handoff_reconciled": true,
+    "catcher_source_repair_complete": true,
+    "final_catcher_blocking": "C2",
+    "final_catcher_throwing": "C2",
+    "repaired_blocking_c2_confirmed": true,
+    "repaired_catcher_confirmation_complete": true,
+    "repaired_throwing_c2_confirmed": true,
+    "war_value_authorized": false
+  },
+  "gate": "defense_v1_repaired_catcher_2025_one_shot_confirmation",
+  "implementation_audit": {
+    "blocking_fitted_c2_exposure_actually_used": "fielding_outs",
+    "parameter_hash_modified_after_2025_access": false,
+    "scoring_construction": "exact preregistered develop_defense_v1_universal._catcher_matrix C2 semantics",
+    "throwing_fitted_c2_exposure_actually_used": "steal_attempts",
+    "throwing_parameter_exposure_label": "fielding_outs"
+  },
+  "package_versions": {
+    "numpy": "2.5.2",
+    "polars": "1.43.2",
+    "python": "3.12.14"
+  },
+  "parameter_hash": "sha256:f4790bc1cb4df63d2ba65757455a4b6753e98d25fe552208d893958bdd19f328",
+  "report_schema_version": "0.1",
+  "source": {
+    "historical_run_id": 32148467330,
+    "parameter_freeze_run_id": 32206935150,
+    "parameter_freeze_sha": "78c6eb74dcb3cd3b976c57d72d268d108457662c",
+    "target_source_run_id": 32207093006,
+    "target_source_sha": "34e84f3ce644445db99a12ab5d190a678ed06f91"
+  },
+  "status": "confirmation_complete",
+  "storage": {
+    "scored_rows": {
+      "file_size_bytes": 8746,
+      "path": "reports/generated/defense-v1-catcher-repair-2025-confirmation/tables/scored_repaired_catcher_confirmation_rows.parquet",
+      "row_count": 157,
+      "sha256": "2f5bc4f639ce83f13032708ccf709c3f9ae95b60ee9eb9f239f7b34eb5ae634e"
+    }
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "boundary": {
+    "2025_confirmation_residuals_used": false,
+    "2025_data_accessed": false,
+    "catcher_opportunity_forecast_selected": false,
+    "defense_refit": false,
+    "defense_rescored": false,
+    "general_defensive_exposure_changed": false,
+    "playing_time_refit": false,
+    "position_role_refit": false,
+    "positional_adjustment_calculated": false,
+    "war_value_calculated": false
+  },
+  "calibration_provenance": {
+    "artifact_digest": "sha256:d78d857ebe608d5fe86e29cc57db66bb2d1e68fd0636683148ff97e0f4ffb934",
+    "artifact_name": "player-value-v1-defense-native-run-rate-calibration",
+    "contract_sha256": "276481bc343245ce0b8ea82373286faa347a17d8d0bda13915865d743f72ad0b",
+    "result": "docs/player-value-v1-defense-native-run-rate-calibration-result.json",
+    "source_run_id": 32267920355,
+    "source_sha": "f2bddb23e38b5a42a413cc20fc1f6feb5fbeaa0f",
+    "target_years": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "catcher_blocking": {
+    "calibration_source": "median_2022_2024_pitches_through_origin_slope",
+    "gate": {
+      "all_positive": true,
+      "coefficient_of_variation": 0.05499232636383195,
+      "cv_limit": 0.1,
+      "cv_pass": true,
+      "max_to_min_ratio": 1.1443391961135212,
+      "passes": true,
+      "ratio_limit": 1.25,
+      "ratio_pass": true
+    },
+    "n_pbwp_rejected_as_native_opportunity": true,
+    "native_opportunity": "projected_blocking_pitches",
+    "pitches_rmse_lower_than_n_pbwp_every_year": true,
+    "public_methodology": "40 blocking chances per game; 0.25 runs per block saved",
+    "rmse_year_checks": {
+      "2022": true,
+      "2023": true,
+      "2024": true
+    },
+    "run_rate_per_z_opportunity": 0.0006466287170316754
+  },
+  "catcher_framing": {
+    "calibration_source": "median_2022_2024_through_origin_slope",
+    "gate": {
+      "all_positive": true,
+      "coefficient_of_variation": 0.06146932783236556,
+      "cv_limit": 0.1,
+      "cv_pass": true,
+      "max_to_min_ratio": 1.1629866369604247,
+      "passes": true,
+      "ratio_limit": 1.25,
+      "ratio_pass": true
+    },
+    "native_opportunity": "projected_framing_pitches",
+    "native_source_identity": "target_raw = 1000 * rv_tot / pitches; rv_tot is seasonal runs",
+    "run_rate_per_z_opportunity": 0.001189541187787062
+  },
+  "catcher_opportunity_forecasting_frozen": false,
+  "catcher_throwing": {
+    "calibration_source": "median_2022_2024_through_origin_slope",
+    "gate": {
+      "all_positive": true,
+      "coefficient_of_variation": 0.0769161849598984,
+      "cv_limit": 0.1,
+      "cv_pass": true,
+      "max_to_min_ratio": 1.2081083209806316,
+      "passes": true,
+      "ratio_limit": 1.25,
+      "ratio_pass": true
+    },
+    "native_opportunity": "projected_sb_attempts",
+    "public_run_identity": "catcher_stealing_runs = 0.65 * caught_stealing_above_average",
+    "run_rate_per_z_opportunity": 0.05862747110425751,
+    "source_identity": "caught_stealing_above_average = cs_aa_per_throw * sb_attempts"
+  },
+  "contract": "docs/player-value-v1-defense-native-run-conversion-selection-contract.md",
+  "contract_sha256": "577dabe03ab669036132cafa141a54e41b912af00269d8377cad08764d72006a",
+  "formula": "component_runs = frozen_skill_z * projected_native_opportunities * run_rate_per_z_opportunity",
+  "general_range": {
+    "T1_U1_share_same_conversion_rule": true,
+    "multi_position_rule": "calculate by projected position outs and sum",
+    "parameters_by_position": {
+      "1B": {
+        "calibration_source": "position_1B_median_2022_2024",
+        "group": "IF",
+        "group_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.06284774714649503,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.162503275692555,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "native_opportunity": "projected_mlb_defensive_outs_at_position",
+        "position_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.0434067958336794,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.1118347001346673,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "run_rate_per_z_opportunity": 0.0014221370829147768,
+        "used_group_fallback": false
+      },
+      "2B": {
+        "calibration_source": "position_2B_median_2022_2024",
+        "group": "IF",
+        "group_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.06284774714649503,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.162503275692555,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "native_opportunity": "projected_mlb_defensive_outs_at_position",
+        "position_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.1171773425345556,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.313131289114566,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "run_rate_per_z_opportunity": 0.002430213267969069,
+        "used_group_fallback": false
+      },
+      "3B": {
+        "calibration_source": "position_3B_median_2022_2024",
+        "group": "IF",
+        "group_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.06284774714649503,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.162503275692555,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "native_opportunity": "projected_mlb_defensive_outs_at_position",
+        "position_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.10770635456349896,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.2541984160279547,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "run_rate_per_z_opportunity": 0.0018120617732267537,
+        "used_group_fallback": false
+      },
+      "CF": {
+        "calibration_source": "group_OF_median_2022_2024",
+        "group": "OF",
+        "group_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.10960861804524032,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.309068717565439,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "native_opportunity": "projected_mlb_defensive_outs_at_position",
+        "position_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.17116431865144968,
+          "cv_limit": 0.15,
+          "cv_pass": false,
+          "max_to_min_ratio": 1.4576261748357033,
+          "passes": false,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "run_rate_per_z_opportunity": 0.0022070977120912877,
+        "used_group_fallback": true
+      },
+      "LF": {
+        "calibration_source": "position_LF_median_2022_2024",
+        "group": "OF",
+        "group_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.10960861804524032,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.309068717565439,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "native_opportunity": "projected_mlb_defensive_outs_at_position",
+        "position_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.12209137455867212,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.3146583835210528,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "run_rate_per_z_opportunity": 0.0021198415668483013,
+        "used_group_fallback": false
+      },
+      "RF": {
+        "calibration_source": "group_OF_median_2022_2024",
+        "group": "OF",
+        "group_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.10960861804524032,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.309068717565439,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "native_opportunity": "projected_mlb_defensive_outs_at_position",
+        "position_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.3352240204978207,
+          "cv_limit": 0.15,
+          "cv_pass": false,
+          "max_to_min_ratio": 2.163315172648505,
+          "passes": false,
+          "ratio_limit": 1.5,
+          "ratio_pass": false
+        },
+        "run_rate_per_z_opportunity": 0.0022070977120912877,
+        "used_group_fallback": true
+      },
+      "SS": {
+        "calibration_source": "position_SS_median_2022_2024",
+        "group": "IF",
+        "group_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.06284774714649503,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.162503275692555,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "native_opportunity": "projected_mlb_defensive_outs_at_position",
+        "position_gate": {
+          "all_positive": true,
+          "coefficient_of_variation": 0.10468057751788924,
+          "cv_limit": 0.15,
+          "cv_pass": true,
+          "max_to_min_ratio": 1.291449204480791,
+          "passes": true,
+          "ratio_limit": 1.5,
+          "ratio_pass": true
+        },
+        "run_rate_per_z_opportunity": 0.002042627635059078,
+        "used_group_fallback": false
+      }
+    }
+  },
+  "intercept": 0.0,
+  "neutral_skill_maps_to_zero_runs": true,
+  "positional_adjustment_frozen": false,
+  "replacement_level_frozen": false,
+  "runs_per_win_frozen": false,
+  "schema_version": "0.1",
+  "source_run_id": 32268659408,
+  "source_sha": "1bc2685807ca97e0b02a38fdfb1e99064b69d2db",
+  "status": "player_value_v1_defense_native_run_conversion_frozen",
+  "unresolved_components": [],
+  "war_value_authorized": false
+}

@@ -1,0 +1,135 @@
+name: Playing-time v1 predictor surface
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify predictor-surface materializer
+        run: python -m py_compile scripts/materialize_playing_time_v1_predictor_surface.py
+
+      - name: Seed immutable certified 2021-2024 universal evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo="ramsunkavalli-a11y/universal-baseball-model"
+          mkdir -p seeded
+
+          download() {
+            local run_id="$1"
+            local artifact="$2"
+            local dest="$3"
+            mkdir -p "$dest"
+            gh run download "$run_id" --repo "$repo" --name "$artifact" --dir "$dest"
+          }
+
+          for level in aaa aa 'a+' a rk; do
+            download 31979609553 "current-talent-historical-milb-full-season-2021-${level}" "seeded/2021/milb/${level}"
+            download 31971662070 "current-talent-historical-milb-full-season-${level}" "seeded/2022/milb/${level}"
+            download 31971923778 "current-talent-historical-milb-full-season-2023-${level}" "seeded/2023/milb/${level}"
+            download 32095039114 "current-talent-historical-milb-full-season-2024-${level}" "seeded/2024/milb/${level}"
+          done
+
+          download 31986504169 "current-talent-historical-mlb-2021" "seeded/2021/mlb"
+          download 31988255280 "current-talent-historical-mlb-2022" "seeded/2022/mlb"
+          download 31989561396 "current-talent-historical-mlb-2023" "seeded/2023/mlb"
+          download 32096473700 "current-talent-historical-mlb-2024" "seeded/2024/mlb"
+
+      - name: Download immutable frozen B2 snapshots
+        uses: actions/download-artifact@v7
+        with:
+          name: projection-batting-v1-current-talent-snapshots
+          path: inputs/current-talent-snapshots
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: 32099733186
+          github-token: ${{ github.token }}
+
+      - name: Download certified historical 40-man membership
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          source_run_id="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path('docs/playing-time-historical-40man-membership-result.json').read_text())
+          run_id = result.get('source_run_id')
+          if not run_id:
+              raise SystemExit('certified 40-man membership result lacks source_run_id')
+          if not result.get('acceptance', {}).get('accepted_for_playing_time_feature_contract'):
+              raise SystemExit('40-man membership source is not accepted for feature use')
+          print(int(run_id))
+          PY
+          )"
+          mkdir -p inputs/40man-membership
+          gh run download "$source_run_id" \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name playing-time-historical-40man-membership \
+            --dir inputs/40man-membership
+          echo "Using certified 40-man membership source run ${source_run_id}"
+
+      - name: Materialize chronology-safe predictor surface
+        run: >-
+          python scripts/materialize_playing_time_v1_predictor_surface.py
+          --evidence-root seeded
+          --snapshot-root inputs/current-talent-snapshots
+          --membership-root inputs/40man-membership
+
+      - name: Pin workflow run ID into predictor report
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('reports/generated/playing-time-v1-predictor-surface/report.json')
+          data = json.loads(path.read_text())
+          data['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload predictor-surface artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: playing-time-v1-predictor-surface
+          path: reports/generated/playing-time-v1-predictor-surface/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Persist predictor-surface result
+        run: |
+          set -euo pipefail
+          cp reports/generated/playing-time-v1-predictor-surface/report.json docs/playing-time-v1-predictor-surface-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/playing-time-v1-predictor-surface-result.json
+          git commit -m "Persist playing-time v1 predictor-surface result"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

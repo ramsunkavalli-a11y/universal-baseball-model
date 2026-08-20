@@ -1,0 +1,32 @@
+{
+  "gate": "projection_batting_v1_2022_candidate_selection",
+  "status": "selected_and_eligible_for_out_of_time_validation",
+  "selection_source_run": 32100650512,
+  "selection_artifact_id": 9311436954,
+  "selection_artifact_digest": "sha256:9c1402ea735634451e2eae00b043e7cb3ff4fe5941a4cc9e32479a7bb044812b",
+  "authorized_target_years_used_for_model_selection": [2022],
+  "selected_form": "projection_age_level_ilr_ridge_v1",
+  "selected_lambda": 0.01,
+  "candidate_log_loss": 2.255059192831225,
+  "baseline0_log_loss": 2.2565663226183426,
+  "candidate_minus_baseline_log_loss": -0.0015071297871176448,
+  "candidate_brier": 0.8693166438467639,
+  "baseline0_brier": 0.8696113833417425,
+  "candidate_minus_baseline_brier": -0.00029473949497860197,
+  "candidate_configuration_count": 8,
+  "log_loss_tie_eligible_count": 1,
+  "brier_tie_eligible_count": 1,
+  "early_reject": false,
+  "advances_to_out_of_time_validation": true,
+  "next_authorized_gate": "projection_2022_to_2023_out_of_time_validation",
+  "boundaries": {
+    "2023_candidate_scores_accessed_during_selection": false,
+    "2024_candidate_scores_accessed_during_selection": false,
+    "2025_accessed": false,
+    "future_level_used_as_predictor": false,
+    "playing_time_modeled": false,
+    "form_or_lambda_may_change_after_this_record": false
+  },
+  "governing_contract": "docs/projection-batting-v1-development-contract.md",
+  "methodology_review": "docs/projection-v1-methodology-review.md"
+}

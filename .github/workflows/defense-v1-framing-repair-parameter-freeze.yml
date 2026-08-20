@@ -1,0 +1,147 @@
+name: Defense v1 framing repair parameter freeze
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  freeze:
+    name: freeze repaired MLB framing F1 before 2025
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and frozen Defense dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75"
+
+      - name: Resolve and verify repaired framing gates
+        id: gates
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          source = json.loads(Path("docs/defense-v1-framing-repair-development-source-result.json").read_text())
+          dev = json.loads(Path("docs/defense-v1-framing-repair-development-result.json").read_text())
+          tracked = json.loads(Path("docs/defense-v1-tracked-source-result.json").read_text())
+
+          if int(source.get("source_run_id")) != 32208273343:
+              raise SystemExit(f"unexpected repaired framing source run {source.get('source_run_id')}")
+          if source.get("decision", {}).get("year_specific_source_certified") is not True:
+              raise SystemExit("repaired framing source not certified")
+          if source.get("boundary", {}).get("2025_framing_target_accessed") is not False:
+              raise SystemExit("repaired framing source crossed 2025 boundary")
+
+          d = dev.get("decision", {})
+          if d.get("tier_a_tracked_framing_passed") is not True:
+              raise SystemExit("repaired MLB framing F1 did not pass")
+          if d.get("mlb_framing_family_after_repair") != "F1":
+              raise SystemExit("repaired MLB framing family is not F1")
+          if d.get("framing_parameter_freeze_authorized_next") is not True:
+              raise SystemExit("framing parameter freeze is not authorized")
+          if d.get("tier_b_tracked_framing_transfer_passed") is not False:
+              raise SystemExit("tracked MiLB framing transfer state changed")
+          if dev.get("boundary", {}).get("2025_defensive_targets_accessed") is not False:
+              raise SystemExit("repaired framing development crossed 2025 boundary")
+
+          if int(tracked.get("source_run_id")) != 32182019495:
+              raise SystemExit("tracked framing source run changed")
+          if tracked.get("boundary", {}).get("2025_source_accessed") is not False:
+              raise SystemExit("tracked framing source crossed 2025 boundary")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as h:
+              h.write(f"repaired_source_run={int(source['source_run_id'])}\n")
+              h.write(f"tracked_run={int(tracked['source_run_id'])}\n")
+          print("repaired framing pre-freeze gates verified")
+          PY
+
+      - name: Download certified historical fielding source
+        uses: actions/download-artifact@v7
+        with:
+          name: position-role-historical-source-2021-2024
+          path: inputs/historical
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32148467330
+
+      - name: Download certified tracked framing source
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-tracked-source-2021-2023
+          path: inputs/tracked
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.gates.outputs.tracked_run }}
+
+      - name: Download repaired framing targets
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-framing-repair-development-source
+          path: inputs/repaired-targets
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.gates.outputs.repaired_source_run }}
+
+      - name: Verify freeze script compiles
+        run: python -m py_compile scripts/freeze_defense_v1_framing_repair_parameters.py
+
+      - name: Freeze repaired framing parameters
+        run: >-
+          python -u scripts/freeze_defense_v1_framing_repair_parameters.py
+          --historical-root inputs/historical
+          --tracked-root inputs/tracked
+          --repaired-source-root inputs/repaired-targets
+          --output-root reports/generated/defense-v1-framing-repair-parameter-freeze
+
+      - name: Pin freeze workflow metadata
+        env:
+          FREEZE_RUN_ID: ${{ github.run_id }}
+          FREEZE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-framing-repair-parameter-freeze/report.json")
+          result = json.loads(path.read_text())
+          result["freeze_run_id"] = int(os.environ["FREEZE_RUN_ID"])
+          result["freeze_sha"] = os.environ["FREEZE_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload repaired framing parameter package
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-framing-repair-parameter-freeze
+          path: reports/generated/defense-v1-framing-repair-parameter-freeze/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding repaired framing parameter result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-framing-repair-parameter-freeze/report.json docs/defense-v1-framing-repair-parameters.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-framing-repair-parameters.json
+          git commit -m "Persist repaired framing parameter freeze"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

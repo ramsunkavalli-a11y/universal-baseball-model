@@ -1,0 +1,132 @@
+name: One-shot 2025 position-role confirmation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  confirm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Enforce one-shot guard
+        run: |
+          test ! -f docs/position-role-2025-confirmation-result.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Verify scorer has no fitting path
+        run: |
+          python -m py_compile scripts/score_position_role_2025_confirmation.py
+          if grep -q "fit_primary_destination_means" scripts/score_position_role_2025_confirmation.py; then
+            echo "confirmation scorer must not call the fitting function"
+            exit 1
+          fi
+
+      - name: Download frozen 2024 role profiles
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p historical-source
+          gh run download 32149415617 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-batting-profile-stability-2021-2024 \
+            --dir historical-source
+
+      - name: Download frozen pre-2025 parameters
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p parameter-source
+          gh run download 32153160537 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-confirmation-parameters \
+            --dir parameter-source
+
+      - name: Download untouched 2025 source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p source-2025
+          gh run download 32153492066 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-2025-confirmation-source \
+            --dir source-2025
+
+      - name: Run one-shot frozen confirmation score
+        run: >-
+          python scripts/score_position_role_2025_confirmation.py
+          --historical-root historical-source
+          --parameter-root parameter-source
+          --source-root source-2025
+
+      - name: Verify binding boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('reports/generated/position-role-2025-confirmation/report.json').read_text())
+          boundary = report['boundary']
+          assert boundary['2025_position_outcomes_scored'] is True
+          assert boundary['fitting_function_called'] is False
+          assert boundary['parameters_refit'] is False
+          assert boundary['threshold_changed'] is False
+          assert boundary['candidate_reselected'] is False
+          assert report['inputs']['parameter_hash'] == 'sha256:6b6cc7dd5cc7acb7d4396e60dccab12420fdb1828936a318383362d53a9e3def'
+          assert report['decision']['position_role_v1_frozen'] is True
+          assert report['decision']['additional_2025_tuning_authorized'] is False
+          PY
+
+      - name: Upload binding confirmation evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: position-role-2025-confirmation
+          path: reports/generated/position-role-2025-confirmation/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding confirmation result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/position-role-2025-confirmation/report.json')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/position-role-2025-confirmation-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/position-role-2025-confirmation-result.json
+          git commit -m "Persist one-shot 2025 position-role confirmation"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

@@ -1,14 +1,6 @@
 name: Current Talent contact-value MLB source
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "src/universal_baseball/current_talent_contact_value_mlb_source.py"
-      - "scripts/materialize_current_talent_contact_value_mlb_source.py"
-      - "tests/test_current_talent_contact_value_mlb_source.py"
-      - ".github/workflows/current-talent-contact-value-mlb-source.yml"
   workflow_dispatch:
 
 permissions:

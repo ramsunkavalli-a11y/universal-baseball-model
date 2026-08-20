@@ -1,13 +1,6 @@
 name: Projection 2024 exact-game source-gap audit
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "scripts/audit_projection_2024_exact_game_source_gaps.py"
-      - ".github/workflows/projection-2024-exact-game-source-gap-audit.yml"
-      - "src/universal_baseball/current_talent_official_game_identity.py"
   workflow_dispatch:
 
 permissions:

@@ -1,0 +1,93 @@
+name: Defense v1 catcher repair development source
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  source:
+    name: materialize corrected 2022-2024 catcher targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify certified source-repair gate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          diagnostic = json.loads(Path("docs/savant-catcher-year-filter-diagnostic.json").read_text())
+          if diagnostic.get("report_schema_version") != "0.3":
+              raise SystemExit("catcher query diagnostic schema is not 0.3")
+          if diagnostic.get("status") != "target_min_query_certified":
+              raise SystemExit(f"target-min source query not certified: {diagnostic.get('status')}")
+          decision = diagnostic.get("decision", {})
+          if decision.get("ui_snake_target_min_query_is_year_specific") is not True:
+              raise SystemExit("target-min query did not prove year specificity")
+          if decision.get("catcher_source_repair_authorized") is not True:
+              raise SystemExit("catcher source repair not authorized")
+          if diagnostic.get("target_minimums") != {"catcher-blocking": 500, "catcher-throwing": 10}:
+              raise SystemExit(f"unexpected certified target minimums: {diagnostic.get('target_minimums')}")
+          print("certified catcher target-min source query verified")
+          PY
+
+      - name: Verify materializer compiles
+        run: python -m py_compile scripts/materialize_defense_v1_catcher_repair_development_source.py
+
+      - name: Materialize corrected pre-2025 catcher targets
+        run: >-
+          python -u scripts/materialize_defense_v1_catcher_repair_development_source.py
+          --output-root reports/generated/defense-v1-catcher-repair-development-source
+
+      - name: Pin workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-catcher-repair-development-source/report.json")
+          result = json.loads(path.read_text())
+          result["source_run_id"] = int(os.environ["SOURCE_RUN_ID"])
+          result["source_sha"] = os.environ["SOURCE_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload repaired development source
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-catcher-repair-development-source
+          path: reports/generated/defense-v1-catcher-repair-development-source/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding repaired development source result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-catcher-repair-development-source/report.json docs/defense-v1-catcher-repair-development-source-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-catcher-repair-development-source-result.json
+          git commit -m "Persist repaired catcher development source"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

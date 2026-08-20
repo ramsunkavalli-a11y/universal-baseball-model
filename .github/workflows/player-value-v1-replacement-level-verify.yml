@@ -1,0 +1,91 @@
+name: Player Value v1 replacement level verify
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Verify replacement-level implementation
+        run: >-
+          python -m py_compile src/universal_baseball/player_value_replacement_level.py
+          scripts/materialize_player_value_v1_replacement_level.py
+          && python -m pytest -q tests/test_player_value_replacement_level.py
+
+      - name: Materialize revised replacement reference
+        run: >-
+          python scripts/materialize_player_value_v1_replacement_level.py
+          --reference-environment docs/player-value-v1-mlb-run-environment-2024.json
+          --output docs/player-value-v1-replacement-level-2024.json
+
+      - name: Persist verification record
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          materialized_path = Path('docs/player-value-v1-replacement-level-2024.json')
+          materialized = json.loads(materialized_path.read_text())
+          binding = materialized['binding']
+          sensitivities = materialized['sensitivities']
+          path = Path('docs/player-value-v1-replacement-level-verification.json')
+          data = {
+              'schema_version': '0.2',
+              'status': 'player_value_v1_replacement_level_refreeze_verified',
+              'convention_id': materialized['convention_id'],
+              'reference_season': materialized['reference_season'],
+              'position_player_war_allocation': binding['position_player_war_allocation'],
+              'replacement_runs_per_pa': binding['replacement_runs_per_pa'],
+              'replacement_runs_per_600_pa': binding['replacement_runs_per_600_pa'],
+              'sensitivities': sensitivities,
+              'reference_artifact': str(materialized_path),
+              'source_run_id': int(os.environ['SOURCE_RUN_ID']),
+              'source_sha': os.environ['SOURCE_SHA'],
+              'tests': ['tests/test_player_value_replacement_level.py'],
+              'boundary': {
+                  'runs_per_win_frozen': True,
+                  'baserunning_frozen': False,
+                  'mlb_reference_centering_frozen': False,
+                  'park_neutrality_audited': False,
+                  'war_value_calculated': False,
+              },
+          }
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            docs/player-value-v1-replacement-level-2024.json \
+            docs/player-value-v1-replacement-level-verification.json
+          git commit -m "Refreeze revised replacement level"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

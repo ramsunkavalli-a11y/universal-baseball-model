@@ -1,16 +1,6 @@
 name: Current Talent contact-value Challenger 2 development
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "src/universal_baseball/current_talent_contact_value.py"
-      - "src/universal_baseball/current_talent_contact_value_prediction.py"
-      - "src/universal_baseball/current_talent_contact_value_scoring.py"
-      - "scripts/evaluate_current_talent_contact_value_development.py"
-      - "tests/test_current_talent_contact_value_scoring.py"
-      - ".github/workflows/current-talent-contact-value-development.yml"
   workflow_dispatch:
 
 permissions:

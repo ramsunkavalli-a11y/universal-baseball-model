@@ -1,0 +1,157 @@
+name: Playing-time v1 2024 validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and playing-time dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install -r requirements-playing-time.txt
+
+      - name: Resolve 2024 authorization before any 2024 artifact access
+        id: gate
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          selection_path = Path('docs/playing-time-v1-selection-result.json')
+          validation_path = Path('docs/playing-time-v1-validation-2023-result.json')
+          if not selection_path.exists() or not validation_path.exists():
+              raise SystemExit('playing-time selection/2023 binding result missing')
+          selection = json.loads(selection_path.read_text())
+          validation = json.loads(validation_path.read_text())
+          authorized = bool(validation.get('decision', {}).get('2024_validation_authorized'))
+          run_id = selection.get('source_run_id')
+          if not run_id:
+              raise SystemExit('playing-time selection result lacks source_run_id')
+          print(f"authorized={'true' if authorized else 'false'}")
+          print(f"selection_run_id={int(run_id)}")
+          reason = validation.get('decision', {}).get('reason_if_stopped') or validation.get('status')
+          print(f"reason={str(reason).replace(chr(10), ' ')}")
+          PY
+
+      - name: Verify 2024 validation implementation
+        if: steps.gate.outputs.authorized == 'true'
+        run: >-
+          python -m py_compile
+          src/universal_baseball/playing_time_model.py
+          src/universal_baseball/playing_time_selection.py
+          scripts/materialize_playing_time_v1_validation_2024.py
+          && python -m pytest -q
+          tests/test_playing_time_model.py
+          tests/test_playing_time_selection.py
+
+      - name: Download immutable selection artifact only when authorized
+        if: steps.gate.outputs.authorized == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SELECTION_RUN_ID: ${{ steps.gate.outputs.selection_run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/selection
+          gh run download "$SELECTION_RUN_ID" \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name playing-time-v1-candidate-selection \
+            --dir inputs/selection
+
+      - name: Run fixed rolling-origin 2024 validation
+        if: steps.gate.outputs.authorized == 'true'
+        run: >-
+          python scripts/materialize_playing_time_v1_validation_2024.py
+          --selection-artifact-root inputs/selection
+
+      - name: Persist skipped report without 2024 access
+        if: steps.gate.outputs.authorized != 'true'
+        env:
+          STOP_REASON: ${{ steps.gate.outputs.reason }}
+        run: |
+          mkdir -p reports/generated/playing-time-v1-validation-2024
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = {
+              "report_schema_version": "0.1",
+              "gate": "playing_time_v1_out_of_time_validation_2024",
+              "status": "skipped_not_authorized_after_2023",
+              "reason": os.environ.get("STOP_REASON", "2023 gate did not authorize 2024"),
+              "decision": {
+                  "development_promotion_passed": False,
+                  "2025_confirmation_authorized": False,
+                  "retain_baseline0_if_failed": True,
+              },
+              "boundary": {
+                  "2024_candidate_scores_accessed": False,
+                  "2025_accessed": False,
+                  "batting_rate_modified": False,
+              },
+          }
+          Path('reports/generated/playing-time-v1-validation-2024/report.json').write_text(
+              json.dumps(report, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+
+      - name: Pin 2024 workflow metadata
+        if: always()
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('reports/generated/playing-time-v1-validation-2024/report.json')
+          if not path.exists():
+              raise SystemExit('2024 playing-time validation report was not produced')
+          data = json.loads(path.read_text())
+          data['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          data['source_sha'] = os.environ['SOURCE_SHA']
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload 2024 validation artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playing-time-v1-validation-2024
+          path: reports/generated/playing-time-v1-validation-2024/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Persist binding 2024 validation result
+        if: always()
+        run: |
+          set -euo pipefail
+          test -f reports/generated/playing-time-v1-validation-2024/report.json
+          cp reports/generated/playing-time-v1-validation-2024/report.json docs/playing-time-v1-validation-2024-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/playing-time-v1-validation-2024-result.json
+          git commit -m "Persist playing-time v1 2024 validation result"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

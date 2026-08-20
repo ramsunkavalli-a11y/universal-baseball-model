@@ -2,11 +2,6 @@ name: Current Talent development selection checkpoint
 
 on:
   # One-time self-documenting run; restore/remove after the checkpoint is committed.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-baseline-selection-persist.yml
   workflow_dispatch:
 
 permissions:

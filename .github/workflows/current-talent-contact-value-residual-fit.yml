@@ -1,13 +1,6 @@
 name: Current Talent contact-value residual fit
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "src/universal_baseball/current_talent_contact_value.py"
-      - "scripts/fit_current_talent_contact_value_residual.py"
-      - ".github/workflows/current-talent-contact-value-residual-fit.yml"
   workflow_dispatch:
 
 permissions:

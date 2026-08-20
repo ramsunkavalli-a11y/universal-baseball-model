@@ -1,0 +1,107 @@
+{
+  "baseline0_metrics": {
+    "mean_full_negative_log_likelihood": 1.2700799021462057,
+    "observed_mean_mlb_pa": 45.02277227722772,
+    "participation_brier": 0.07135435534071707,
+    "participation_log_loss": 0.22239087373250255,
+    "positive_count_negative_log_likelihood": 6.572459122346835,
+    "positive_players": 644,
+    "predicted_mean_mlb_pa": 29.04791803357379,
+    "scored_players": 4040,
+    "unconditional_mlb_pa_mae": 38.85309580185704,
+    "unconditional_mlb_pa_rmse": 103.15543264197845
+  },
+  "boundary": {
+    "2024_candidate_scores_accessed": false,
+    "2025_accessed": false,
+    "batting_rate_modified": false,
+    "form_reselected_on_2023": false
+  },
+  "candidate_metrics": {
+    "mean_full_negative_log_likelihood": 1.1968266835056143,
+    "observed_mean_mlb_pa": 45.02277227722772,
+    "participation_brier": 0.047762802761468326,
+    "participation_log_loss": 0.16154136624041998,
+    "positive_count_negative_log_likelihood": 6.494647021353081,
+    "positive_players": 644,
+    "predicted_mean_mlb_pa": 42.484769898614566,
+    "scored_players": 4040,
+    "unconditional_mlb_pa_mae": 30.423953168235627,
+    "unconditional_mlb_pa_rmse": 79.19763141424953
+  },
+  "candidate_minus_baseline0_full_nll": -0.07325321864059142,
+  "decision": {
+    "2024_validation_authorized": true,
+    "passes_required_2023_full_nll_gate": true,
+    "reason_if_stopped": null
+  },
+  "gate": "playing_time_v1_out_of_time_validation_2023",
+  "report_schema_version": "0.1",
+  "selected_form": "playing_time_recent_opportunity_40man_b2_hurdle_v1",
+  "selection_source_run": 32141616127,
+  "source_run_id": 32141934868,
+  "source_sha": "2783fb303f745700499e8e1ba464f34cdb6da797",
+  "status": "scored",
+  "storage": {
+    "baseline0_coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "a8ba43194fdebbd636d1830f9be620bd63fc5d2079403f8e2a8241b1139e1a41",
+      "file_size_bytes": 1460,
+      "path": "reports/generated/playing-time-v1-validation-2023/tables/baseline0_coefficients.parquet",
+      "row_count": 9,
+      "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+      "table_name": "playing_time_v1_2023_baseline0_coefficients"
+    },
+    "baseline0_scored": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "885c8f1cc37cc5b2e823b2c092a6ea8dad5f7c1967d2da20cd5687c903d00b5c",
+      "file_size_bytes": 27635,
+      "path": "reports/generated/playing-time-v1-validation-2023/tables/baseline0_scored.parquet",
+      "row_count": 4040,
+      "schema_sha256": "1d4335fa0cd952b3a6ab834cc672a1961def387a4f7d2c2e49c0236cd8604d50",
+      "table_name": "playing_time_v1_2023_baseline0_scored"
+    },
+    "baseline0_standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "5e95ec456fbf2629be5f479dca44804a0827a1eb8c593433c21b658f80ff1c83",
+      "file_size_bytes": 135,
+      "path": "reports/generated/playing-time-v1-validation-2023/tables/baseline0_standardization.parquet",
+      "row_count": 0,
+      "schema_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "table_name": "playing_time_v1_2023_baseline0_standardization"
+    },
+    "candidate_coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "5ba323be1166f4cc31e6f246b339dcbaf95112890e9ac9bcb4449d5fef0b5ea4",
+      "file_size_bytes": 1707,
+      "path": "reports/generated/playing-time-v1-validation-2023/tables/candidate_coefficients.parquet",
+      "row_count": 25,
+      "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+      "table_name": "playing_time_v1_2023_candidate_coefficients"
+    },
+    "candidate_scored": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "57a1d19890e1b655a06acaab767ba08d9bf2a12df165522aa0bf1b856636b6b3",
+      "file_size_bytes": 169180,
+      "path": "reports/generated/playing-time-v1-validation-2023/tables/candidate_scored.parquet",
+      "row_count": 4040,
+      "schema_sha256": "1d4335fa0cd952b3a6ab834cc672a1961def387a4f7d2c2e49c0236cd8604d50",
+      "table_name": "playing_time_v1_2023_candidate_scored"
+    },
+    "candidate_standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "727141b80dff39d710d7a05d77ebebe0fd8cde693ee06fa489f2693797ef4465",
+      "file_size_bytes": 1381,
+      "path": "reports/generated/playing-time-v1-validation-2023/tables/candidate_standardization.parquet",
+      "row_count": 7,
+      "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+      "table_name": "playing_time_v1_2023_candidate_standardization"
+    }
+  },
+  "training_fold": "projection_2021_to_2022",
+  "training_target_years": [
+    2022
+  ],
+  "validation_fold": "projection_2022_to_2023",
+  "validation_target_year": 2023
+}

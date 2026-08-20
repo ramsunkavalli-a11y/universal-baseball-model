@@ -1,0 +1,81 @@
+{
+  "boundary": {
+    "2025_framing_target_accessed": false,
+    "2025_source_accessed": false,
+    "model_fit": false,
+    "model_parameters_loaded": false,
+    "model_scoring_performed": false,
+    "run_value_conversion_performed": false,
+    "tracked_milb_2024_accessed": false,
+    "war_calculated": false
+  },
+  "contract": "docs/defense-v1-framing-2025-confirmation-contract.md",
+  "decision": {
+    "2024_mlb_framing_confirmation_predictor_materialized": true,
+    "2025_framing_target_materialization_authorized_next": true,
+    "2025_framing_target_source_materialized": false,
+    "confirmation_scoring_authorized": false,
+    "war_value_authorized": false
+  },
+  "diagnostics": {
+    "column_count": 119,
+    "eligible_framing_catcher_count": 84,
+    "eligible_take_row_count": 351858,
+    "framing_proxy_catcher_count": 100,
+    "framing_total_takes": 351858,
+    "mean": -0.9493435851909595,
+    "pitch_row_count": 711898,
+    "population_sd": 1.3923748478766806,
+    "tracked_framing_z_catcher_count": 84
+  },
+  "feature_contract": {
+    "formula": "tracked_framing_per_1000_takes = 1000 * framing_runs / takes",
+    "minimum_eligible_catchers": 15,
+    "minimum_takes": 500,
+    "source_level": "MLB_only",
+    "standardization": "2024 x MLB mean 0 / population SD 1"
+  },
+  "gate": "defense_v1_2024_mlb_framing_confirmation_predictor_source",
+  "query": {
+    "bounded_envelope_note": "dates bracket the full 2024 season; game_type R is the binding regular-season filter",
+    "chunk_days": 7,
+    "end": "2024-10-15",
+    "game_type": "R",
+    "season": 2024,
+    "source": "Baseball Savant MLB Statcast CSV via SportsDataverse",
+    "start": "2024-03-01"
+  },
+  "report_schema_version": "0.1",
+  "source_run_id": 32208925985,
+  "source_sha": "06fcd704d88392b1efc203bea549d0248b3c23d5",
+  "status": "source_materialized",
+  "storage": {
+    "framing_proxy": {
+      "file_size_bytes": 5625,
+      "path": "reports/generated/defense-v1-2024-framing-predictor/tables/tracked_framing_proxy_2024_mlb.parquet",
+      "row_count": 100,
+      "sha256": "e290f367850a1195bf1cf0af28795db89049812e3b7283329c1c652d5a3ae4a6",
+      "table_name": "defense_v1_2024_mlb_tracked_framing_proxy"
+    },
+    "moments": {
+      "file_size_bytes": 2142,
+      "path": "reports/generated/defense-v1-2024-framing-predictor/tables/tracked_framing_moments_2024_mlb.parquet",
+      "row_count": 1,
+      "sha256": "13b60b82c54bd561f9f02a51302f06b63ec65a0d906f9cd02db5fbcdc3887aae",
+      "table_name": "defense_v1_2024_mlb_tracked_framing_moments"
+    },
+    "tracked_framing_z": {
+      "file_size_bytes": 6178,
+      "path": "reports/generated/defense-v1-2024-framing-predictor/tables/tracked_framing_z_2024_mlb.parquet",
+      "row_count": 84,
+      "sha256": "5c149892c295a0f4cc3ab0ee1ab9b05c95aabbbcb6fa19cd6b9d4a917a73e332",
+      "table_name": "defense_v1_2024_mlb_tracked_framing_z"
+    }
+  },
+  "upstream": {
+    "framing_function": "mlb_catcher_framing",
+    "package": "sportsdataverse",
+    "package_version": "0.0.75",
+    "search_function": "mlb_statcast_search"
+  }
+}

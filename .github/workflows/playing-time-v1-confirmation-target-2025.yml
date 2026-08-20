@@ -1,0 +1,115 @@
+name: Playing-time v1 2025 confirmation target
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  target:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Require binding pre-2025 input authorization
+        id: inputs
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          result = json.loads(Path('docs/playing-time-v1-confirmation-inputs-result.json').read_text())
+          if result.get('status') != 'ready_to_open_2025_confirmation_target':
+              raise SystemExit(f"confirmation inputs are not ready: {result}")
+          if not result.get('2025_source_access_authorized_next'):
+              raise SystemExit('confirmation input gate does not authorize 2025 source access')
+          if result.get('2025_outcomes_accessed') or result.get('2025_target_materialized'):
+              raise SystemExit('pre-2025 input record unexpectedly claims 2025 access')
+          run_id = result.get('source_run_id')
+          if not run_id:
+              raise SystemExit('confirmation input record lacks source_run_id')
+          print(f"input_run_id={int(run_id)}")
+          PY
+
+      - name: Verify target source code before opening 2025
+        run: >-
+          python -m py_compile
+          scripts/materialize_playing_time_v1_confirmation_target_2025.py
+          src/universal_baseball/mlb_season_stats.py
+          && python -m pytest -q tests/test_mlb_season_stats.py
+
+      - name: Download immutable frozen confirmation inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INPUT_RUN_ID: ${{ steps.inputs.outputs.input_run_id }}
+        run: |
+          mkdir -p inputs/confirmation
+          gh run download "$INPUT_RUN_ID" \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name playing-time-v1-confirmation-inputs \
+            --dir inputs/confirmation
+
+      - name: Materialize untouched 2025 MLB-PA confirmation target
+        run: >-
+          python scripts/materialize_playing_time_v1_confirmation_target_2025.py
+          --confirmation-input-root inputs/confirmation
+
+      - name: Pin target-source workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+          INPUT_RUN_ID: ${{ steps.inputs.outputs.input_run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('reports/generated/playing-time-v1-confirmation-target-2025/report.json')
+          data = json.loads(path.read_text())
+          data['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          data['source_sha'] = os.environ['SOURCE_SHA']
+          data['confirmation_input_run_id'] = int(os.environ['INPUT_RUN_ID'])
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload immutable 2025 target source before any model scoring
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playing-time-v1-confirmation-target-2025
+          path: |
+            reports/generated/playing-time-v1-confirmation-target-2025/
+            data/quarantine/playing-time-v1-confirmation-target-2025/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Persist binding unscored 2025 target result
+        run: |
+          set -euo pipefail
+          cp reports/generated/playing-time-v1-confirmation-target-2025/report.json docs/playing-time-v1-confirmation-target-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/playing-time-v1-confirmation-target-result.json
+          git commit -m "Persist untouched playing-time 2025 target source"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

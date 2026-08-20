@@ -1,0 +1,141 @@
+name: Player Value v1 final WAR 2024
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install and test final aggregation
+        run: >-
+          python -m pip install --upgrade pip &&
+          python -m pip install -e ".[dev]" &&
+          python -m pytest -q
+          tests/test_player_value_final_aggregation.py
+          tests/test_player_value_defense_projection.py
+          tests/test_player_value_mlb_centering.py
+          tests/test_player_value_mlb_centering_assembly.py
+      - name: Download frozen B2 batting profiles
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9311172007"
+          path: inputs/batting-b2
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32099733186"
+      - name: Download frozen Playing Time surface
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9326300207"
+          path: inputs/playing-time
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32142089669"
+      - name: Download frozen MLB batting performance
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9265954750"
+          path: inputs/mlb-performance
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31955392482"
+      - name: Download frozen fielding history
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9328803363"
+          path: inputs/fielding-history
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32148467330"
+      - name: Download frozen tracked defense
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9342409616"
+          path: inputs/defense-tracked
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32182019495"
+      - name: Download frozen position allocation
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9370211679"
+          path: inputs/position-allocation
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32266007594"
+      - name: Download frozen DH exposure
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9371840453"
+          path: inputs/dh-exposure
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32270141291"
+      - name: Download frozen catcher opportunities
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9371426672"
+          path: inputs/catcher-opportunities
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32269076231"
+      - name: Download recertified advancement history
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9410189065"
+          path: inputs/advancement-recertified
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32378956567"
+      - name: Download corrected numerical centering components
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9412396481"
+          path: inputs/centering-components
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32384563289"
+      - name: Materialize final 3,051-player WAR surface
+        run: >-
+          python scripts/materialize_player_value_v1_final_2024.py
+          --input-root inputs
+          --centering-components inputs/centering-components/reports/generated/player-value-v1-mlb-centering-2024-components.parquet
+          --output-json docs/player-value-v1-final-2024.json
+          --output-table reports/generated/player-value-v1-final-2024.parquet
+      - name: Persist final verified result
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/player-value-v1-final-2024.json
+          git commit -m "Freeze final Player Value v1 WAR"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+      - name: Upload complete final ranking table
+        uses: actions/upload-artifact@v7
+        with:
+          name: player-value-v1-final-2024
+          path: |
+            docs/player-value-v1-final-2024.json
+            reports/generated/player-value-v1-final-2024.parquet
+          if-no-files-found: error
+          retention-days: 90
+

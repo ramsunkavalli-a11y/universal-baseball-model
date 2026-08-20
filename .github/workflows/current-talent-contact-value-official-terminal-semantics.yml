@@ -1,15 +1,6 @@
 name: Current Talent contact-value official terminal semantics
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "scripts/audit_current_talent_contact_value_official_terminal_semantics.py"
-      - "src/universal_baseball/current_talent_contact_value_source.py"
-      - "src/universal_baseball/official.py"
-      - "src/universal_baseball/event_types.py"
-      - ".github/workflows/current-talent-contact-value-official-terminal-semantics.yml"
   workflow_dispatch:
 
 permissions:

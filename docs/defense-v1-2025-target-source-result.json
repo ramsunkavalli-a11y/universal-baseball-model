@@ -1,0 +1,156 @@
+{
+  "boundary": {
+    "2025_defensive_targets_accessed": true,
+    "2025_predictor_used": false,
+    "2025_target_source_materialized": true,
+    "confirmation_interpreted": false,
+    "frozen_model_parameters_loaded_by_materializer": false,
+    "model_fit": false,
+    "model_scoring": false,
+    "run_value_conversion_performed": false,
+    "war_value_authorized": false
+  },
+  "contract": "docs/defense-v1-2025-confirmation-contract.md",
+  "decision": {
+    "confirmation_scoring_authorized_only_after_required_predictor_source_certification": true,
+    "target_source_certified": true,
+    "war_value_authorized": false
+  },
+  "gate": "defense_v1_2025_target_source_materialization",
+  "report_schema_version": "0.1",
+  "season": 2025,
+  "source": {
+    "package": "sportsdataverse",
+    "package_version": "0.0.75",
+    "queries": [
+      {
+        "function": "mlb_statcast_leaderboard_outs_above_average",
+        "surface": "Outs Above Average leaderboard",
+        "year": 2025
+      },
+      {
+        "function": "mlb_statcast_leaderboard_catcher_throwing",
+        "surface": "Catcher Throwing leaderboard",
+        "year": 2025
+      },
+      {
+        "function": "mlb_statcast_leaderboard_catcher_blocking",
+        "surface": "Catcher Blocking leaderboard",
+        "year": 2025
+      }
+    ],
+    "raw_row_counts": {
+      "blocking": 70,
+      "general": 256,
+      "throwing": 72
+    }
+  },
+  "source_run_id": 32201584187,
+  "source_sha": "9733a15bdb4a48b6193de49e5ff42bf854d0334f",
+  "status": "certified_source_ready_for_confirmation_scoring",
+  "storage": {
+    "blocking_targets": {
+      "column_count": 8,
+      "file_size_bytes": 4467,
+      "path": "reports/generated/defense-v1-2025-target-source/tables/catcher_blocking_targets_2025.parquet",
+      "row_count": 70,
+      "sha256": "ba1775f0a98b2b4201952dd0783cee42cbf158b83a868722d21929f258323258",
+      "table_name": "defense_v1_2025_catcher_blocking_targets"
+    },
+    "general_target_moments": {
+      "column_count": 4,
+      "file_size_bytes": 1672,
+      "path": "reports/generated/defense-v1-2025-target-source/tables/general_range_target_moments_2025.parquet",
+      "row_count": 7,
+      "sha256": "5a4cbbbd92a1493951870a1390109ec154acf6cc96fd85849b3bbdabcd49ea3f",
+      "table_name": "defense_v1_2025_general_range_target_moments"
+    },
+    "general_targets": {
+      "column_count": 8,
+      "file_size_bytes": 4834,
+      "path": "reports/generated/defense-v1-2025-target-source/tables/general_range_targets_2025.parquet",
+      "row_count": 256,
+      "sha256": "2d054a2c1a054f509047b75552b967738e2f7158e827750222c0b05a812375de",
+      "table_name": "defense_v1_2025_general_range_targets"
+    },
+    "raw_blocking": {
+      "column_count": 17,
+      "file_size_bytes": 12453,
+      "path": "reports/generated/defense-v1-2025-target-source/raw/catcher_blocking_leaderboard_2025.parquet",
+      "row_count": 70,
+      "sha256": "9f8ae35724ba3430e7fa4b841669aa880dcca7af3ee46b6cb0342de2f2de7e0c",
+      "table_name": "defense_v1_2025_raw_catcher_blocking_leaderboard"
+    },
+    "raw_general": {
+      "column_count": 16,
+      "file_size_bytes": 13021,
+      "path": "reports/generated/defense-v1-2025-target-source/raw/oaa_leaderboard_2025.parquet",
+      "row_count": 256,
+      "sha256": "37d8412a28fe612bd87296db4d729e5a374ec54817859a2b6acc9a71b0a305c8",
+      "table_name": "defense_v1_2025_raw_oaa_leaderboard"
+    },
+    "raw_throwing": {
+      "column_count": 23,
+      "file_size_bytes": 18964,
+      "path": "reports/generated/defense-v1-2025-target-source/raw/catcher_throwing_leaderboard_2025.parquet",
+      "row_count": 72,
+      "sha256": "664139178b577ce477f57eaa199c566638b014eac9b99b2dd019761ee8cb36ac",
+      "table_name": "defense_v1_2025_raw_catcher_throwing_leaderboard"
+    },
+    "throwing_targets": {
+      "column_count": 8,
+      "file_size_bytes": 4494,
+      "path": "reports/generated/defense-v1-2025-target-source/tables/catcher_throwing_targets_2025.parquet",
+      "row_count": 72,
+      "sha256": "63d69ac4c99d05fdedf254583d6ca4f139d1a3c1045488c431bd31b4b89b3396",
+      "table_name": "defense_v1_2025_catcher_throwing_targets"
+    }
+  },
+  "targets": {
+    "catcher_blocking": {
+      "canonical_row_count": 70,
+      "count": 70,
+      "exposure_column": "pitches",
+      "mean": -0.004711830622492829,
+      "minimum_exposure": 500.0,
+      "sd": 0.10243703635571988,
+      "standardization": "within eligible 2025 catchers, population SD",
+      "target_column": "blocks_above_average_per_game",
+      "target_z_column": "blocking_target_z"
+    },
+    "catcher_throwing": {
+      "canonical_row_count": 72,
+      "count": 72,
+      "exposure_column": "sb_attempts",
+      "mean": 0.008407482228254258,
+      "minimum_exposure": 10.0,
+      "sd": 0.08437247596956092,
+      "standardization": "within eligible 2025 catchers, population SD",
+      "target_column": "cs_aa_per_throw",
+      "target_z_column": "throwing_target_z"
+    },
+    "general_range": {
+      "canonical_row_count": 256,
+      "position_counts": {
+        "1B": 29,
+        "2B": 49,
+        "3B": 43,
+        "CF": 33,
+        "LF": 30,
+        "RF": 31,
+        "SS": 41
+      },
+      "positions": [
+        "1B",
+        "2B",
+        "3B",
+        "CF",
+        "LF",
+        "RF",
+        "SS"
+      ],
+      "standardization": "within 2025 x target position, population SD",
+      "target_column": "diff_success_rate_formatted"
+    }
+  }
+}

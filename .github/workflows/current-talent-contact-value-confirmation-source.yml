@@ -1,11 +1,6 @@
 name: Current Talent contact-value 2023 confirmation source
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-contact-value-confirmation-source.yml"
   workflow_dispatch:
 
 permissions:

@@ -1,0 +1,56 @@
+{
+  "gate": "projection_batting_v1_development_decision",
+  "status": "baseline1_rejected_baseline0_retained",
+  "projection_v1_rate_model": "frozen_current_talent_carry_forward_v1",
+  "frozen_current_talent_starting_state": "translated_multiseason_recency_empirical_bayes_v1",
+  "selected_challenger": {
+    "form": "projection_age_level_ilr_ridge_v1",
+    "ridge_lambda": 0.01,
+    "selection_target_year": 2022,
+    "selection_source_run": 32100650512,
+    "selection_log_loss_delta": -0.0015071297871176448,
+    "selection_brier_delta": -0.00029473949497860197
+  },
+  "out_of_time_validation": {
+    "2023": {
+      "candidate_log_loss": 2.2537750066119404,
+      "baseline0_log_loss": 2.254254787743332,
+      "candidate_minus_baseline_log_loss": -0.0004797811313914657,
+      "candidate_brier": 0.8698579276773327,
+      "baseline0_brier": 0.8698586134916922,
+      "candidate_minus_baseline_brier": -6.858143595245281e-07,
+      "passes_required_log_loss_gate": true
+    },
+    "2024": {
+      "candidate_log_loss": 2.2565611500726166,
+      "baseline0_log_loss": 2.256304268929953,
+      "candidate_minus_baseline_log_loss": 0.00025688114266353423,
+      "candidate_brier": 0.8704899917201651,
+      "baseline0_brier": 0.8703330453219306,
+      "candidate_minus_baseline_brier": 0.00015694639823449208,
+      "passes_required_log_loss_gate": false
+    }
+  },
+  "decision": {
+    "development_promotion_passed": false,
+    "reason": "The frozen candidate must beat carry-forward B2 on log loss in both out-of-time validation folds. It improved 2023 but reversed on 2024, so the pre-registered development promotion rule fails.",
+    "baseline1_confirmation_authorized": false,
+    "retain_baseline0": true,
+    "rescue_tuning_authorized": false,
+    "full_diagnostics_required_after_failed_binding_gate": false
+  },
+  "boundary": {
+    "2025_accessed": false,
+    "2025_confirmation_run": false,
+    "candidate_reselected_after_validation": false,
+    "form_or_lambda_changed_after_selection": false,
+    "future_level_used_as_predictor": false,
+    "playing_time_modeled": false
+  },
+  "governing_contract": "docs/projection-batting-v1-development-contract.md",
+  "methodology_review": "docs/projection-v1-methodology-review.md",
+  "selection_checkpoint": "docs/projection-batting-v1-selection-checkpoint.md",
+  "validation_2023_result": "docs/projection-batting-v1-validation-2023-result.json",
+  "validation_2024_result": "docs/projection-batting-v1-validation-2024-result.json",
+  "next_stage": "playing_time_role"
+}

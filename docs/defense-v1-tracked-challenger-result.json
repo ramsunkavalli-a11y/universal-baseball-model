@@ -1,0 +1,318 @@
+{
+  "boundary": {
+    "2025_defensive_targets_accessed": false,
+    "age_reopened": false,
+    "playing_time_v1_modified": false,
+    "position_role_v1_modified": false,
+    "run_value_conversion_performed": false,
+    "traditional_feature_search_reopened": false
+  },
+  "catcher_tracked_framing": {
+    "folds": [
+      {
+        "f0": {
+          "calibration_intercept": null,
+          "calibration_slope": null,
+          "mae": 0.8551106239565479,
+          "mse": 1.1293163199975824,
+          "pearson": null,
+          "player_count": 24,
+          "spearman": null
+        },
+        "f1": {
+          "calibration_intercept": -0.32169853127279135,
+          "calibration_slope": -0.2180108367233332,
+          "mae": 0.8927441646007531,
+          "mse": 1.2235966654810086,
+          "pearson": -0.0719899245800939,
+          "player_count": 24,
+          "spearman": -0.06434782608695652
+        },
+        "f1_coefficients": [
+          -0.31726828554218256,
+          0.4519286002714668
+        ],
+        "f1_mse_relative_vs_f0": 0.08348444436154794,
+        "player_count": 24,
+        "target_year": 2022,
+        "train_catcher_count": 71
+      },
+      {
+        "f0": {
+          "calibration_intercept": null,
+          "calibration_slope": null,
+          "mae": 0.8780546622576287,
+          "mse": 1.136514017729646,
+          "pearson": null,
+          "player_count": 30,
+          "spearman": null
+        },
+        "f1": {
+          "calibration_intercept": 0.12623197013955434,
+          "calibration_slope": 1.8671874375277497,
+          "mae": 0.8335534313036711,
+          "mse": 0.9605199582614147,
+          "pearson": 0.3940770252563518,
+          "player_count": 30,
+          "spearman": 0.3619577308120133
+        },
+        "f1_coefficients": [
+          -0.27286817714360234,
+          0.2736236396209709
+        ],
+        "f1_mse_relative_vs_f0": -0.15485427959771703,
+        "player_count": 30,
+        "target_year": 2023,
+        "train_catcher_count": 65
+      },
+      {
+        "f0": {
+          "calibration_intercept": null,
+          "calibration_slope": null,
+          "mae": 0.823482575127843,
+          "mse": 1.0226270926320036,
+          "pearson": null,
+          "player_count": 41,
+          "spearman": null
+        },
+        "f1": {
+          "calibration_intercept": 0.21200276270211452,
+          "calibration_slope": 1.6190709903130105,
+          "mae": 0.7854296970990663,
+          "mse": 0.8604674804202607,
+          "pearson": 0.3859170455148267,
+          "player_count": 41,
+          "spearman": 0.3674216027874565
+        },
+        "f1_coefficients": [
+          -0.30296722663534287,
+          0.2618326510304863
+        ],
+        "f1_mse_relative_vs_f0": -0.1585715979755454,
+        "player_count": 41,
+        "target_year": 2024,
+        "train_catcher_count": 54
+      }
+    ],
+    "pooled": {
+      "f0": {
+        "calibration_intercept": null,
+        "calibration_slope": null,
+        "mae": 0.848706109715027,
+        "mse": 1.085544452734142,
+        "pearson": null,
+        "player_count": 95,
+        "spearman": null
+      },
+      "f1": {
+        "calibration_intercept": -0.018176575684923337,
+        "calibration_slope": 0.8822566149336921,
+        "mae": 0.8277376891641045,
+        "mse": 0.9838008991222877,
+        "pearson": 0.22877290205251666,
+        "player_count": 95,
+        "spearman": 0.24101127541594108
+      },
+      "f1_mse_improvement_vs_f0": 0.0937258288737919,
+      "folds_mse_better_than_f0": 2,
+      "worst_fold_mse_relative_vs_f0": 0.08348444436154794
+    },
+    "tier_a_gate": {
+      "all_fold_counts_ge_20": true,
+      "finite": true,
+      "passed": false
+    },
+    "tier_b_transfer": {
+      "attempted": false,
+      "passed": false,
+      "player_count": 0,
+      "status": "not_attempted_tier_a_failed"
+    }
+  },
+  "contract": "docs/defense-v1-tracked-challenger-contract.md",
+  "decision": {
+    "2025_confirmation_authorized": false,
+    "additional_development_challenger_authorized": false,
+    "defense_v1_frozen": false,
+    "final_refit_and_parameter_freeze_authorized_next": true,
+    "pre_2025_defense_development_closed": true,
+    "tier_a_tracked_framing_passed": false,
+    "tier_a_tracked_range_passed": true,
+    "tier_b_tracked_framing_transfer_passed": false,
+    "tier_b_tracked_range_transfer_passed": false,
+    "war_value_authorized": false
+  },
+  "gate": "defense_v1_final_tracked_incremental_challenger",
+  "general_tracked_range": {
+    "folds": [
+      {
+        "player_count": 140,
+        "t1": {
+          "calibration_intercept": 0.01832352377562576,
+          "calibration_slope": 0.6568658936969486,
+          "mae": 0.7141115113637718,
+          "mse": 0.8098342210257797,
+          "pearson": 0.21370319162860998,
+          "player_count": 140,
+          "spearman": 0.18823158785411673
+        },
+        "t1_coefficients": [
+          0.012564002828309462,
+          -1.0236603526192096,
+          0.37564873967399914,
+          -1.0598412257918362,
+          -0.1286483889759057,
+          0.11856122938593101
+        ],
+        "t1_mse_relative_vs_u1": -0.033026475598117506,
+        "target_year": 2022,
+        "train_player_count": 274,
+        "u1": {
+          "calibration_intercept": 0.03225739589738246,
+          "calibration_slope": 0.5031501499503407,
+          "mae": 0.7300647421618708,
+          "mse": 0.8374936858035481,
+          "pearson": 0.1708022324632288,
+          "player_count": 140,
+          "spearman": 0.16778395119363465
+        },
+        "u1_coefficients": [
+          0.009640898620445763,
+          -1.0359443570786182,
+          0.4033340263010042,
+          -1.1028743785144266,
+          -0.1468362596737833
+        ]
+      },
+      {
+        "player_count": 133,
+        "t1": {
+          "calibration_intercept": -0.09677087381332278,
+          "calibration_slope": 1.2359457425862597,
+          "mae": 0.7274028264274343,
+          "mse": 0.8521831337600775,
+          "pearson": 0.3701180187764703,
+          "player_count": 133,
+          "spearman": 0.33398240577502664
+        },
+        "t1_coefficients": [
+          0.02795840275122169,
+          -0.07961942789798798,
+          0.18327047815438438,
+          -0.20263835559709145,
+          -0.011565658277205315,
+          0.15261826835728867
+        ],
+        "t1_mse_relative_vs_u1": -0.018931025333286496,
+        "target_year": 2023,
+        "train_player_count": 281,
+        "u1": {
+          "calibration_intercept": -0.1324963860713718,
+          "calibration_slope": 1.4581108940211354,
+          "mae": 0.7361918711317914,
+          "mse": 0.868627136078357,
+          "pearson": 0.35931898681491625,
+          "player_count": 133,
+          "spearman": 0.34197993675577915
+        },
+        "u1_coefficients": [
+          0.039336210226309884,
+          0.022339832983113282,
+          0.19595460462992442,
+          -0.13996483968218978,
+          -0.0016393006394143789
+        ]
+      },
+      {
+        "player_count": 141,
+        "t1": {
+          "calibration_intercept": 0.09887115997271863,
+          "calibration_slope": 0.5686404550934078,
+          "mae": 0.7841341050646721,
+          "mse": 0.9719149136336035,
+          "pearson": 0.1855597967714461,
+          "player_count": 141,
+          "spearman": 0.21939451699513918
+        },
+        "t1_coefficients": [
+          0.004126347408687267,
+          0.08956089875380838,
+          0.26221708843832814,
+          0.05843640568016512,
+          -0.003938914078338166,
+          0.1634279917406437
+        ],
+        "t1_mse_relative_vs_u1": -0.007995999150853295,
+        "target_year": 2024,
+        "train_player_count": 273,
+        "u1": {
+          "calibration_intercept": 0.09494781902418624,
+          "calibration_slope": 0.5303584744248223,
+          "mae": 0.7870636982071711,
+          "mse": 0.97974898569124,
+          "pearson": 0.15243024908675087,
+          "player_count": 141,
+          "spearman": 0.19652744905519215
+        },
+        "u1_coefficients": [
+          0.014498968595276744,
+          0.09135784036906604,
+          0.2896550112419563,
+          0.01868109023777903,
+          -0.005634579187588981
+        ]
+      }
+    ],
+    "pooled": {
+      "folds_mse_better_than_u1": 3,
+      "t1": {
+        "calibration_intercept": 0.020236854501612046,
+        "calibration_slope": 0.7813333926395747,
+        "mae": 0.7422297012557864,
+        "mse": 0.878640460280284,
+        "pearson": 0.24908252845073237,
+        "player_count": 414,
+        "spearman": 0.24791094594985105
+      },
+      "t1_mse_improvement_vs_u1": 0.019314029095386848,
+      "t1_spearman_delta_vs_u1": 0.011797938316046919,
+      "u1": {
+        "calibration_intercept": 0.023459140669102728,
+        "calibration_slope": 0.7225489088730428,
+        "mae": 0.7514458072715007,
+        "mse": 0.8959447635105869,
+        "pearson": 0.21279873550006767,
+        "player_count": 414,
+        "spearman": 0.23611300763380413
+      },
+      "worst_fold_mse_relative_vs_u1": -0.007995999150853295
+    },
+    "tier_a_gate": {
+      "all_fold_counts_ge_75": true,
+      "finite": true,
+      "passed": true
+    },
+    "tier_b_transfer": {
+      "attempted": true,
+      "passed": false,
+      "player_count": 0,
+      "status": "insufficient_transfer_evidence"
+    }
+  },
+  "report_schema_version": "0.1",
+  "scoring_run_id": 32196115227,
+  "scoring_sha": "ace1df97001b83b91a1a1021637c604ebdea6399",
+  "source": {
+    "capture_page_count": 224,
+    "eligible_framing_z_count": 430,
+    "eligible_range_z_count": 1303,
+    "historical_fielding_source_run_id": 32148467330,
+    "player_season_position_count": 39723,
+    "primary_player_season_count": 15701,
+    "raw_position_split_count": 53225,
+    "tracked_framing_file_sha256": "1071b9d8209d6e9ba9d8c2b42ac7b99e3329387704e2910797b58f1a148cbc79",
+    "tracked_range_file_sha256": "a65cb6f7506d5e100c9f0b088fb276eecc1dab5599592dd477bfcc030d850a3e",
+    "tracked_source_run_id": 32182019495,
+    "tracked_source_sha": "5438e905d24e2167432a52253320ccbc978186b8"
+  }
+}

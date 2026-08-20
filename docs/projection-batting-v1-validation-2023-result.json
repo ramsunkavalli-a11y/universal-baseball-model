@@ -1,0 +1,82 @@
+{
+  "boundary": {
+    "2024_candidate_scores_accessed": false,
+    "2025_accessed": false,
+    "form_or_lambda_reselected_on_2023": false,
+    "future_level_used_as_predictor": false,
+    "playing_time_modeled": false
+  },
+  "decision": {
+    "2024_validation_authorized": true,
+    "passes_required_2023_log_loss_gate": true,
+    "reason_if_stopped": null
+  },
+  "frozen_form": "projection_age_level_ilr_ridge_v1",
+  "frozen_lambda": 0.01,
+  "gate": "projection_batting_v1_out_of_time_validation_2023",
+  "report_schema_version": "0.1",
+  "scores": {
+    "baseline0_brier": 0.8698586134916922,
+    "baseline0_log_loss": 2.254254787743332,
+    "candidate_brier": 0.8698579276773327,
+    "candidate_log_loss": 2.2537750066119404,
+    "candidate_minus_baseline_brier": -6.858143595245281e-07,
+    "candidate_minus_baseline_log_loss": -0.0004797811313914657,
+    "future_core_events": 851058,
+    "scored_players": 3121
+  },
+  "selection_source_run": 32100650512,
+  "storage": {
+    "aggregate_scores": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "60ae33a3e500b8f7463d77efd3d49db1b8cf08569c5195d7cf4d7868ff646ac8",
+      "file_size_bytes": 2136,
+      "path": "reports/generated/projection-batting-v1-validation-2023/tables/aggregate_scores.parquet",
+      "row_count": 2,
+      "schema_sha256": "4925b08e7431cc7bc2073ae0bcb677200cdf2a1ff8789f363f813674d33d6d78",
+      "table_name": "projection_v1_2023_validation_aggregate_scores"
+    },
+    "candidate_profile": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "91dabe080b7c6c40670a0c405eaf8c6c68cf7d98622e8d4aa31b665bd2b6bd3e",
+      "file_size_bytes": 379629,
+      "path": "reports/generated/projection-batting-v1-validation-2023/tables/candidate_latent_profile.parquet",
+      "row_count": 48480,
+      "schema_sha256": "f8b701424dcc9ff6c606e5f55edf7ad2625921b55b1fd06659922cbe58aea7cf",
+      "table_name": "projection_v1_2023_validation_candidate_latent_profile"
+    },
+    "coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "eae2f386cce73024e3bea7c4c311d3e2ae47e96cb89e5c789b5be2e504aadbe5",
+      "file_size_bytes": 2920,
+      "path": "reports/generated/projection-batting-v1-validation-2023/tables/coefficients.parquet",
+      "row_count": 143,
+      "schema_sha256": "d0694cf7eb25366693d99fbf154fc5b0c95bd68e4ea4a6c1850981df819aeb40",
+      "table_name": "projection_v1_2023_validation_coefficients"
+    },
+    "environment_scores": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "98f9aa269f7a779926e86921c31e5d82528ac0c367baf34c2bb0bf1258ce59b5",
+      "file_size_bytes": 177096,
+      "path": "reports/generated/projection-batting-v1-validation-2023/tables/environment_scores.parquet",
+      "row_count": 9820,
+      "schema_sha256": "49650507f7e3c6201c645efbbf16313ae45bdf66c4697b92759c0acf1e7ae1bc",
+      "table_name": "projection_v1_2023_validation_environment_scores"
+    },
+    "standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "8200211811596cdb981d60222875966a962151cd244507abd0cc3dc6e73901de",
+      "file_size_bytes": 1928,
+      "path": "reports/generated/projection-batting-v1-validation-2023/tables/standardization.parquet",
+      "row_count": 13,
+      "schema_sha256": "3b655082bcc7c3d734ff76c763773a819b800bc857437adb6d25c4b8375f384f",
+      "table_name": "projection_v1_2023_validation_standardization"
+    }
+  },
+  "training_fold": "projection_2021_to_2022",
+  "training_target_years": [
+    2022
+  ],
+  "validation_fold": "projection_2022_to_2023",
+  "validation_target_year": 2023
+}

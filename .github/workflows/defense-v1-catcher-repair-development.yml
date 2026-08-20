@@ -1,0 +1,114 @@
+name: Defense v1 catcher repair development
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  develop:
+    name: rerun frozen catcher development gate on repaired targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and frozen Defense dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75"
+
+      - name: Resolve repaired source run
+        id: source
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          result = json.loads(Path("docs/defense-v1-catcher-repair-development-source-result.json").read_text())
+          if result.get("status") != "source_materialized_ready_for_repaired_development":
+              raise SystemExit("repaired catcher development source is not certified")
+          if result.get("boundary", {}).get("2025_catcher_target_accessed") is not False:
+              raise SystemExit("repaired source crossed 2025 boundary")
+          run_id = int(result["source_run_id"])
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              handle.write(f"run_id={run_id}\n")
+          print(f"repaired source run={run_id}")
+          PY
+
+      - name: Download certified historical fielding source
+        uses: actions/download-artifact@v7
+        with:
+          name: position-role-historical-source-2021-2024
+          path: inputs/historical
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32148467330
+
+      - name: Download corrected 2022-2024 catcher target source
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-catcher-repair-development-source
+          path: inputs/repaired-targets
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.source.outputs.run_id }}
+
+      - name: Verify repaired development scorer compiles
+        run: python -m py_compile scripts/develop_defense_v1_catcher_repair.py
+
+      - name: Run exact original catcher development gate
+        run: >-
+          python -u scripts/develop_defense_v1_catcher_repair.py
+          --historical-root inputs/historical
+          --repaired-source-root inputs/repaired-targets
+          --repaired-source-result docs/defense-v1-catcher-repair-development-source-result.json
+          --output reports/generated/defense-v1-catcher-repair-development/result.json
+
+      - name: Pin workflow metadata
+        env:
+          DEVELOPMENT_RUN_ID: ${{ github.run_id }}
+          DEVELOPMENT_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-catcher-repair-development/result.json")
+          result = json.loads(path.read_text())
+          result["development_run_id"] = int(os.environ["DEVELOPMENT_RUN_ID"])
+          result["development_sha"] = os.environ["DEVELOPMENT_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload repaired catcher development result
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-catcher-repair-development
+          path: reports/generated/defense-v1-catcher-repair-development/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding repaired catcher development result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-catcher-repair-development/result.json docs/defense-v1-catcher-repair-development-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-catcher-repair-development-result.json
+          git commit -m "Persist repaired catcher development result"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

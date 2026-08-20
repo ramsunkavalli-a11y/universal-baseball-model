@@ -12,7 +12,6 @@ for old AAA plus current AAA/Rookie samples.
 
 from __future__ import annotations
 
-from collections import Counter
 import json
 from pathlib import Path
 from typing import Any

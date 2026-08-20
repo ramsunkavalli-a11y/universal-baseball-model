@@ -2,11 +2,6 @@
 name: Projection v1 status probe
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-status-probe.yml"
   workflow_dispatch:
 
 permissions:
@@ -16,6 +11,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check out branch
         uses: actions/checkout@v7

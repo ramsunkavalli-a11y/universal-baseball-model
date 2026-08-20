@@ -2,14 +2,6 @@ name: Current Talent 2021 Rookie raw PBP sequence
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-2021-rk-raw-sequence.yml"
-      - "scripts/diagnose_raw_2021_rk_pbp_sequence.py"
-      - "scripts/diagnose_2021_rk_contact_false_positive_signature.py"
-
 permissions:
   contents: read
 

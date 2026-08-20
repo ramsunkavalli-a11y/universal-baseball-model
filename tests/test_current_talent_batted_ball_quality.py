@@ -222,7 +222,7 @@ def test_project_complete_tracked_bbe_rejects_duplicate_pitch_key() -> None:
     )
     raw = _raw([row, {**row, "launch_speed": 99.0, "launch_angle": 19.0}])
 
-    with pytest.raises(ValueError, match="duplicate result-producing EV\+LA rows"):
+    with pytest.raises(ValueError, match=r"duplicate result-producing EV\+LA rows"):
         project_complete_tracked_bbe(raw)
 
 

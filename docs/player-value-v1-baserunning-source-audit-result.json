@@ -1,0 +1,1844 @@
+{
+  "audit_contract": "docs/player-value-v1-baserunning-source-audit-contract.md",
+  "captures": [
+    {
+      "group": "hitting",
+      "league_id": 103,
+      "offset": 0,
+      "response_sha256": "ca0cd722b53015e04fef4237fe7a54e7bcf023b33f1b8aee50395796e3fe0718",
+      "returned_split_count": 391,
+      "season": 2024,
+      "total_splits": 391
+    },
+    {
+      "group": "hitting",
+      "league_id": 104,
+      "offset": 0,
+      "response_sha256": "c21bb79c89d5c95055b8004e12d632e885551153d629441a129219be5fb1b0dc",
+      "returned_split_count": 389,
+      "season": 2024,
+      "total_splits": 389
+    }
+  ],
+  "milb_source": {
+    "available_levels_by_year": {
+      "2005": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk"
+      ],
+      "2006": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa"
+      ],
+      "2007": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk"
+      ],
+      "2008": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2009": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2010": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2011": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2012": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2013": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2014": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2015": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2016": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2017": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2018": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2019": [
+        "a",
+        "a+",
+        "a-",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2020": [
+        "win"
+      ],
+      "2021": [
+        "a",
+        "a+",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2022": [
+        "a",
+        "a+",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2023": [
+        "a",
+        "a+",
+        "aa",
+        "aaa",
+        "rk",
+        "win"
+      ],
+      "2024": [
+        "a",
+        "a+",
+        "aa",
+        "aaa",
+        "rk"
+      ]
+    },
+    "available_years_through_season": [
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "provider": "armstjc/milb-data-repository",
+    "recognized_nonempty_assets_through_season": [
+      {
+        "asset_id": 120719478,
+        "filename_level": "a",
+        "name": "2005_a_season_batting_stats.csv",
+        "size_bytes": 164819,
+        "updated_at_utc": "2023-08-09T04:22:17+00:00",
+        "year": 2005
+      },
+      {
+        "asset_id": 120718548,
+        "filename_level": "a+",
+        "name": "2005_a+_season_batting_stats.csv",
+        "size_bytes": 174935,
+        "updated_at_utc": "2023-08-09T04:08:45+00:00",
+        "year": 2005
+      },
+      {
+        "asset_id": 120715519,
+        "filename_level": "a-",
+        "name": "2005_a-_season_batting_stats.csv",
+        "size_bytes": 106296,
+        "updated_at_utc": "2023-08-09T03:30:51+00:00",
+        "year": 2005
+      },
+      {
+        "asset_id": 120705613,
+        "filename_level": "aa",
+        "name": "2005_aa_season_batting_stats.csv",
+        "size_bytes": 233118,
+        "updated_at_utc": "2023-08-09T01:55:55+00:00",
+        "year": 2005
+      },
+      {
+        "asset_id": 120253672,
+        "filename_level": "aaa",
+        "name": "2005_aaa_season_batting_stats.csv",
+        "size_bytes": 353683,
+        "updated_at_utc": "2023-08-05T20:16:00+00:00",
+        "year": 2005
+      },
+      {
+        "asset_id": 120722909,
+        "filename_level": "rk",
+        "name": "2005_rk_season_batting_stats.csv",
+        "size_bytes": 224235,
+        "updated_at_utc": "2023-08-09T04:58:52+00:00",
+        "year": 2005
+      },
+      {
+        "asset_id": 120719479,
+        "filename_level": "a",
+        "name": "2006_a_season_batting_stats.csv",
+        "size_bytes": 162830,
+        "updated_at_utc": "2023-08-09T04:22:18+00:00",
+        "year": 2006
+      },
+      {
+        "asset_id": 120718549,
+        "filename_level": "a+",
+        "name": "2006_a+_season_batting_stats.csv",
+        "size_bytes": 177508,
+        "updated_at_utc": "2023-08-09T04:08:46+00:00",
+        "year": 2006
+      },
+      {
+        "asset_id": 120715523,
+        "filename_level": "a-",
+        "name": "2006_a-_season_batting_stats.csv",
+        "size_bytes": 106728,
+        "updated_at_utc": "2023-08-09T03:30:52+00:00",
+        "year": 2006
+      },
+      {
+        "asset_id": 120705614,
+        "filename_level": "aa",
+        "name": "2006_aa_season_batting_stats.csv",
+        "size_bytes": 238232,
+        "updated_at_utc": "2023-08-09T01:55:56+00:00",
+        "year": 2006
+      },
+      {
+        "asset_id": 120253673,
+        "filename_level": "aaa",
+        "name": "2006_aaa_season_batting_stats.csv",
+        "size_bytes": 361721,
+        "updated_at_utc": "2023-08-05T20:16:00+00:00",
+        "year": 2006
+      },
+      {
+        "asset_id": 120719480,
+        "filename_level": "a",
+        "name": "2007_a_season_batting_stats.csv",
+        "size_bytes": 159952,
+        "updated_at_utc": "2023-08-09T04:22:18+00:00",
+        "year": 2007
+      },
+      {
+        "asset_id": 120718551,
+        "filename_level": "a+",
+        "name": "2007_a+_season_batting_stats.csv",
+        "size_bytes": 181498,
+        "updated_at_utc": "2023-08-09T04:08:46+00:00",
+        "year": 2007
+      },
+      {
+        "asset_id": 120715524,
+        "filename_level": "a-",
+        "name": "2007_a-_season_batting_stats.csv",
+        "size_bytes": 110275,
+        "updated_at_utc": "2023-08-09T03:30:52+00:00",
+        "year": 2007
+      },
+      {
+        "asset_id": 120705589,
+        "filename_level": "aa",
+        "name": "2007_aa_season_batting_stats.csv",
+        "size_bytes": 229818,
+        "updated_at_utc": "2023-08-09T01:55:48+00:00",
+        "year": 2007
+      },
+      {
+        "asset_id": 120253660,
+        "filename_level": "aaa",
+        "name": "2007_aaa_season_batting_stats.csv",
+        "size_bytes": 362963,
+        "updated_at_utc": "2023-08-05T20:15:55+00:00",
+        "year": 2007
+      },
+      {
+        "asset_id": 120722910,
+        "filename_level": "rk",
+        "name": "2007_rk_season_batting_stats.csv",
+        "size_bytes": 398845,
+        "updated_at_utc": "2023-08-09T04:58:52+00:00",
+        "year": 2007
+      },
+      {
+        "asset_id": 120719481,
+        "filename_level": "a",
+        "name": "2008_a_season_batting_stats.csv",
+        "size_bytes": 167957,
+        "updated_at_utc": "2023-08-09T04:22:19+00:00",
+        "year": 2008
+      },
+      {
+        "asset_id": 120718522,
+        "filename_level": "a+",
+        "name": "2008_a+_season_batting_stats.csv",
+        "size_bytes": 185428,
+        "updated_at_utc": "2023-08-09T04:08:37+00:00",
+        "year": 2008
+      },
+      {
+        "asset_id": 120715525,
+        "filename_level": "a-",
+        "name": "2008_a-_season_batting_stats.csv",
+        "size_bytes": 111044,
+        "updated_at_utc": "2023-08-09T03:30:52+00:00",
+        "year": 2008
+      },
+      {
+        "asset_id": 120705591,
+        "filename_level": "aa",
+        "name": "2008_aa_season_batting_stats.csv",
+        "size_bytes": 236482,
+        "updated_at_utc": "2023-08-09T01:55:48+00:00",
+        "year": 2008
+      },
+      {
+        "asset_id": 120253661,
+        "filename_level": "aaa",
+        "name": "2008_aaa_season_batting_stats.csv",
+        "size_bytes": 368387,
+        "updated_at_utc": "2023-08-05T20:15:56+00:00",
+        "year": 2008
+      },
+      {
+        "asset_id": 120722911,
+        "filename_level": "rk",
+        "name": "2008_rk_season_batting_stats.csv",
+        "size_bytes": 413325,
+        "updated_at_utc": "2023-08-09T04:58:53+00:00",
+        "year": 2008
+      },
+      {
+        "asset_id": 174475832,
+        "filename_level": "win",
+        "name": "2008_win_season_batting_stats.csv",
+        "size_bytes": 223697,
+        "updated_at_utc": "2024-06-18T11:41:03+00:00",
+        "year": 2008
+      },
+      {
+        "asset_id": 120719482,
+        "filename_level": "a",
+        "name": "2009_a_season_batting_stats.csv",
+        "size_bytes": 171711,
+        "updated_at_utc": "2023-08-09T04:22:19+00:00",
+        "year": 2009
+      },
+      {
+        "asset_id": 120718524,
+        "filename_level": "a+",
+        "name": "2009_a+_season_batting_stats.csv",
+        "size_bytes": 175837,
+        "updated_at_utc": "2023-08-09T04:08:37+00:00",
+        "year": 2009
+      },
+      {
+        "asset_id": 120715526,
+        "filename_level": "a-",
+        "name": "2009_a-_season_batting_stats.csv",
+        "size_bytes": 110352,
+        "updated_at_utc": "2023-08-09T03:30:53+00:00",
+        "year": 2009
+      },
+      {
+        "asset_id": 120705594,
+        "filename_level": "aa",
+        "name": "2009_aa_season_batting_stats.csv",
+        "size_bytes": 244265,
+        "updated_at_utc": "2023-08-09T01:55:49+00:00",
+        "year": 2009
+      },
+      {
+        "asset_id": 120253662,
+        "filename_level": "aaa",
+        "name": "2009_aaa_season_batting_stats.csv",
+        "size_bytes": 375704,
+        "updated_at_utc": "2023-08-05T20:15:56+00:00",
+        "year": 2009
+      },
+      {
+        "asset_id": 120722912,
+        "filename_level": "rk",
+        "name": "2009_rk_season_batting_stats.csv",
+        "size_bytes": 413468,
+        "updated_at_utc": "2023-08-09T04:58:54+00:00",
+        "year": 2009
+      },
+      {
+        "asset_id": 174475834,
+        "filename_level": "win",
+        "name": "2009_win_season_batting_stats.csv",
+        "size_bytes": 207734,
+        "updated_at_utc": "2024-06-18T11:41:03+00:00",
+        "year": 2009
+      },
+      {
+        "asset_id": 120719483,
+        "filename_level": "a",
+        "name": "2010_a_season_batting_stats.csv",
+        "size_bytes": 166205,
+        "updated_at_utc": "2023-08-09T04:22:20+00:00",
+        "year": 2010
+      },
+      {
+        "asset_id": 120718525,
+        "filename_level": "a+",
+        "name": "2010_a+_season_batting_stats.csv",
+        "size_bytes": 196893,
+        "updated_at_utc": "2023-08-09T04:08:38+00:00",
+        "year": 2010
+      },
+      {
+        "asset_id": 120715527,
+        "filename_level": "a-",
+        "name": "2010_a-_season_batting_stats.csv",
+        "size_bytes": 109671,
+        "updated_at_utc": "2023-08-09T03:30:53+00:00",
+        "year": 2010
+      },
+      {
+        "asset_id": 120705597,
+        "filename_level": "aa",
+        "name": "2010_aa_season_batting_stats.csv",
+        "size_bytes": 254518,
+        "updated_at_utc": "2023-08-09T01:55:49+00:00",
+        "year": 2010
+      },
+      {
+        "asset_id": 120253664,
+        "filename_level": "aaa",
+        "name": "2010_aaa_season_batting_stats.csv",
+        "size_bytes": 376596,
+        "updated_at_utc": "2023-08-05T20:15:57+00:00",
+        "year": 2010
+      },
+      {
+        "asset_id": 120722914,
+        "filename_level": "rk",
+        "name": "2010_rk_season_batting_stats.csv",
+        "size_bytes": 415171,
+        "updated_at_utc": "2023-08-09T04:58:55+00:00",
+        "year": 2010
+      },
+      {
+        "asset_id": 174475835,
+        "filename_level": "win",
+        "name": "2010_win_season_batting_stats.csv",
+        "size_bytes": 228365,
+        "updated_at_utc": "2024-06-18T11:41:03+00:00",
+        "year": 2010
+      },
+      {
+        "asset_id": 120719484,
+        "filename_level": "a",
+        "name": "2011_a_season_batting_stats.csv",
+        "size_bytes": 161372,
+        "updated_at_utc": "2023-08-09T04:22:20+00:00",
+        "year": 2011
+      },
+      {
+        "asset_id": 120718526,
+        "filename_level": "a+",
+        "name": "2011_a+_season_batting_stats.csv",
+        "size_bytes": 181641,
+        "updated_at_utc": "2023-08-09T04:08:38+00:00",
+        "year": 2011
+      },
+      {
+        "asset_id": 120715528,
+        "filename_level": "a-",
+        "name": "2011_a-_season_batting_stats.csv",
+        "size_bytes": 107600,
+        "updated_at_utc": "2023-08-09T03:30:53+00:00",
+        "year": 2011
+      },
+      {
+        "asset_id": 120705598,
+        "filename_level": "aa",
+        "name": "2011_aa_season_batting_stats.csv",
+        "size_bytes": 242244,
+        "updated_at_utc": "2023-08-09T01:55:50+00:00",
+        "year": 2011
+      },
+      {
+        "asset_id": 120253668,
+        "filename_level": "aaa",
+        "name": "2011_aaa_season_batting_stats.csv",
+        "size_bytes": 367074,
+        "updated_at_utc": "2023-08-05T20:15:57+00:00",
+        "year": 2011
+      },
+      {
+        "asset_id": 120722916,
+        "filename_level": "rk",
+        "name": "2011_rk_season_batting_stats.csv",
+        "size_bytes": 413920,
+        "updated_at_utc": "2023-08-09T04:58:55+00:00",
+        "year": 2011
+      },
+      {
+        "asset_id": 174475836,
+        "filename_level": "win",
+        "name": "2011_win_season_batting_stats.csv",
+        "size_bytes": 226853,
+        "updated_at_utc": "2024-06-18T11:41:04+00:00",
+        "year": 2011
+      },
+      {
+        "asset_id": 120719485,
+        "filename_level": "a",
+        "name": "2012_a_season_batting_stats.csv",
+        "size_bytes": 166522,
+        "updated_at_utc": "2023-08-09T04:22:21+00:00",
+        "year": 2012
+      },
+      {
+        "asset_id": 120718528,
+        "filename_level": "a+",
+        "name": "2012_a+_season_batting_stats.csv",
+        "size_bytes": 184812,
+        "updated_at_utc": "2023-08-09T04:08:39+00:00",
+        "year": 2012
+      },
+      {
+        "asset_id": 120715529,
+        "filename_level": "a-",
+        "name": "2012_a-_season_batting_stats.csv",
+        "size_bytes": 113596,
+        "updated_at_utc": "2023-08-09T03:30:54+00:00",
+        "year": 2012
+      },
+      {
+        "asset_id": 120705599,
+        "filename_level": "aa",
+        "name": "2012_aa_season_batting_stats.csv",
+        "size_bytes": 254293,
+        "updated_at_utc": "2023-08-09T01:55:50+00:00",
+        "year": 2012
+      },
+      {
+        "asset_id": 120253669,
+        "filename_level": "aaa",
+        "name": "2012_aaa_season_batting_stats.csv",
+        "size_bytes": 391159,
+        "updated_at_utc": "2023-08-05T20:15:58+00:00",
+        "year": 2012
+      },
+      {
+        "asset_id": 120722917,
+        "filename_level": "rk",
+        "name": "2012_rk_season_batting_stats.csv",
+        "size_bytes": 404587,
+        "updated_at_utc": "2023-08-09T04:58:56+00:00",
+        "year": 2012
+      },
+      {
+        "asset_id": 174475838,
+        "filename_level": "win",
+        "name": "2012_win_season_batting_stats.csv",
+        "size_bytes": 230964,
+        "updated_at_utc": "2024-06-18T11:41:04+00:00",
+        "year": 2012
+      },
+      {
+        "asset_id": 120719486,
+        "filename_level": "a",
+        "name": "2013_a_season_batting_stats.csv",
+        "size_bytes": 167973,
+        "updated_at_utc": "2023-08-09T04:22:22+00:00",
+        "year": 2013
+      },
+      {
+        "asset_id": 120718529,
+        "filename_level": "a+",
+        "name": "2013_a+_season_batting_stats.csv",
+        "size_bytes": 175544,
+        "updated_at_utc": "2023-08-09T04:08:40+00:00",
+        "year": 2013
+      },
+      {
+        "asset_id": 120715530,
+        "filename_level": "a-",
+        "name": "2013_a-_season_batting_stats.csv",
+        "size_bytes": 110108,
+        "updated_at_utc": "2023-08-09T03:30:54+00:00",
+        "year": 2013
+      },
+      {
+        "asset_id": 120705601,
+        "filename_level": "aa",
+        "name": "2013_aa_season_batting_stats.csv",
+        "size_bytes": 244285,
+        "updated_at_utc": "2023-08-09T01:55:51+00:00",
+        "year": 2013
+      },
+      {
+        "asset_id": 120253670,
+        "filename_level": "aaa",
+        "name": "2013_aaa_season_batting_stats.csv",
+        "size_bytes": 372558,
+        "updated_at_utc": "2023-08-05T20:15:59+00:00",
+        "year": 2013
+      },
+      {
+        "asset_id": 120722921,
+        "filename_level": "rk",
+        "name": "2013_rk_season_batting_stats.csv",
+        "size_bytes": 418896,
+        "updated_at_utc": "2023-08-09T04:58:57+00:00",
+        "year": 2013
+      },
+      {
+        "asset_id": 174475839,
+        "filename_level": "win",
+        "name": "2013_win_season_batting_stats.csv",
+        "size_bytes": 230268,
+        "updated_at_utc": "2024-06-18T11:41:04+00:00",
+        "year": 2013
+      },
+      {
+        "asset_id": 120719466,
+        "filename_level": "a",
+        "name": "2014_a_season_batting_stats.csv",
+        "size_bytes": 167800,
+        "updated_at_utc": "2023-08-09T04:22:11+00:00",
+        "year": 2014
+      },
+      {
+        "asset_id": 120718530,
+        "filename_level": "a+",
+        "name": "2014_a+_season_batting_stats.csv",
+        "size_bytes": 181349,
+        "updated_at_utc": "2023-08-09T04:08:40+00:00",
+        "year": 2014
+      },
+      {
+        "asset_id": 120715531,
+        "filename_level": "a-",
+        "name": "2014_a-_season_batting_stats.csv",
+        "size_bytes": 120300,
+        "updated_at_utc": "2023-08-09T03:30:54+00:00",
+        "year": 2014
+      },
+      {
+        "asset_id": 120705602,
+        "filename_level": "aa",
+        "name": "2014_aa_season_batting_stats.csv",
+        "size_bytes": 250315,
+        "updated_at_utc": "2023-08-09T01:55:51+00:00",
+        "year": 2014
+      },
+      {
+        "asset_id": 120253671,
+        "filename_level": "aaa",
+        "name": "2014_aaa_season_batting_stats.csv",
+        "size_bytes": 375855,
+        "updated_at_utc": "2023-08-05T20:15:59+00:00",
+        "year": 2014
+      },
+      {
+        "asset_id": 120722891,
+        "filename_level": "rk",
+        "name": "2014_rk_season_batting_stats.csv",
+        "size_bytes": 428613,
+        "updated_at_utc": "2023-08-09T04:58:43+00:00",
+        "year": 2014
+      },
+      {
+        "asset_id": 174475841,
+        "filename_level": "win",
+        "name": "2014_win_season_batting_stats.csv",
+        "size_bytes": 237070,
+        "updated_at_utc": "2024-06-18T11:41:05+00:00",
+        "year": 2014
+      },
+      {
+        "asset_id": 120719468,
+        "filename_level": "a",
+        "name": "2015_a_season_batting_stats.csv",
+        "size_bytes": 173054,
+        "updated_at_utc": "2023-08-09T04:22:12+00:00",
+        "year": 2015
+      },
+      {
+        "asset_id": 120718533,
+        "filename_level": "a+",
+        "name": "2015_a+_season_batting_stats.csv",
+        "size_bytes": 183962,
+        "updated_at_utc": "2023-08-09T04:08:41+00:00",
+        "year": 2015
+      },
+      {
+        "asset_id": 120715532,
+        "filename_level": "a-",
+        "name": "2015_a-_season_batting_stats.csv",
+        "size_bytes": 115159,
+        "updated_at_utc": "2023-08-09T03:30:55+00:00",
+        "year": 2015
+      },
+      {
+        "asset_id": 120705603,
+        "filename_level": "aa",
+        "name": "2015_aa_season_batting_stats.csv",
+        "size_bytes": 264261,
+        "updated_at_utc": "2023-08-09T01:55:52+00:00",
+        "year": 2015
+      },
+      {
+        "asset_id": 120249211,
+        "filename_level": "aaa",
+        "name": "2015_aaa_season_batting_stats.csv",
+        "size_bytes": 390998,
+        "updated_at_utc": "2023-08-05T19:51:34+00:00",
+        "year": 2015
+      },
+      {
+        "asset_id": 120722893,
+        "filename_level": "rk",
+        "name": "2015_rk_season_batting_stats.csv",
+        "size_bytes": 432942,
+        "updated_at_utc": "2023-08-09T04:58:44+00:00",
+        "year": 2015
+      },
+      {
+        "asset_id": 174475842,
+        "filename_level": "win",
+        "name": "2015_win_season_batting_stats.csv",
+        "size_bytes": 241378,
+        "updated_at_utc": "2024-06-18T11:41:05+00:00",
+        "year": 2015
+      },
+      {
+        "asset_id": 120719469,
+        "filename_level": "a",
+        "name": "2016_a_season_batting_stats.csv",
+        "size_bytes": 170749,
+        "updated_at_utc": "2023-08-09T04:22:12+00:00",
+        "year": 2016
+      },
+      {
+        "asset_id": 120718536,
+        "filename_level": "a+",
+        "name": "2016_a+_season_batting_stats.csv",
+        "size_bytes": 187893,
+        "updated_at_utc": "2023-08-09T04:08:41+00:00",
+        "year": 2016
+      },
+      {
+        "asset_id": 120715533,
+        "filename_level": "a-",
+        "name": "2016_a-_season_batting_stats.csv",
+        "size_bytes": 118700,
+        "updated_at_utc": "2023-08-09T03:30:55+00:00",
+        "year": 2016
+      },
+      {
+        "asset_id": 120705604,
+        "filename_level": "aa",
+        "name": "2016_aa_season_batting_stats.csv",
+        "size_bytes": 259389,
+        "updated_at_utc": "2023-08-09T01:55:52+00:00",
+        "year": 2016
+      },
+      {
+        "asset_id": 120249214,
+        "filename_level": "aaa",
+        "name": "2016_aaa_season_batting_stats.csv",
+        "size_bytes": 409445,
+        "updated_at_utc": "2023-08-05T19:51:35+00:00",
+        "year": 2016
+      },
+      {
+        "asset_id": 120722895,
+        "filename_level": "rk",
+        "name": "2016_rk_season_batting_stats.csv",
+        "size_bytes": 442632,
+        "updated_at_utc": "2023-08-09T04:58:45+00:00",
+        "year": 2016
+      },
+      {
+        "asset_id": 174475844,
+        "filename_level": "win",
+        "name": "2016_win_season_batting_stats.csv",
+        "size_bytes": 236466,
+        "updated_at_utc": "2024-06-18T11:41:06+00:00",
+        "year": 2016
+      },
+      {
+        "asset_id": 120719471,
+        "filename_level": "a",
+        "name": "2017_a_season_batting_stats.csv",
+        "size_bytes": 177055,
+        "updated_at_utc": "2023-08-09T04:22:13+00:00",
+        "year": 2017
+      },
+      {
+        "asset_id": 120718538,
+        "filename_level": "a+",
+        "name": "2017_a+_season_batting_stats.csv",
+        "size_bytes": 199068,
+        "updated_at_utc": "2023-08-09T04:08:42+00:00",
+        "year": 2017
+      },
+      {
+        "asset_id": 120715534,
+        "filename_level": "a-",
+        "name": "2017_a-_season_batting_stats.csv",
+        "size_bytes": 119203,
+        "updated_at_utc": "2023-08-09T03:30:56+00:00",
+        "year": 2017
+      },
+      {
+        "asset_id": 120705605,
+        "filename_level": "aa",
+        "name": "2017_aa_season_batting_stats.csv",
+        "size_bytes": 259829,
+        "updated_at_utc": "2023-08-09T01:55:53+00:00",
+        "year": 2017
+      },
+      {
+        "asset_id": 120249215,
+        "filename_level": "aaa",
+        "name": "2017_aaa_season_batting_stats.csv",
+        "size_bytes": 397402,
+        "updated_at_utc": "2023-08-05T19:51:35+00:00",
+        "year": 2017
+      },
+      {
+        "asset_id": 120722897,
+        "filename_level": "rk",
+        "name": "2017_rk_season_batting_stats.csv",
+        "size_bytes": 445110,
+        "updated_at_utc": "2023-08-09T04:58:45+00:00",
+        "year": 2017
+      },
+      {
+        "asset_id": 174475846,
+        "filename_level": "win",
+        "name": "2017_win_season_batting_stats.csv",
+        "size_bytes": 225547,
+        "updated_at_utc": "2024-06-18T11:41:06+00:00",
+        "year": 2017
+      },
+      {
+        "asset_id": 120719473,
+        "filename_level": "a",
+        "name": "2018_a_season_batting_stats.csv",
+        "size_bytes": 177282,
+        "updated_at_utc": "2023-08-09T04:22:14+00:00",
+        "year": 2018
+      },
+      {
+        "asset_id": 120718539,
+        "filename_level": "a+",
+        "name": "2018_a+_season_batting_stats.csv",
+        "size_bytes": 191621,
+        "updated_at_utc": "2023-08-09T04:08:42+00:00",
+        "year": 2018
+      },
+      {
+        "asset_id": 120715538,
+        "filename_level": "a-",
+        "name": "2018_a-_season_batting_stats.csv",
+        "size_bytes": 127373,
+        "updated_at_utc": "2023-08-09T03:30:56+00:00",
+        "year": 2018
+      },
+      {
+        "asset_id": 120705607,
+        "filename_level": "aa",
+        "name": "2018_aa_season_batting_stats.csv",
+        "size_bytes": 263434,
+        "updated_at_utc": "2023-08-09T01:55:53+00:00",
+        "year": 2018
+      },
+      {
+        "asset_id": 120249216,
+        "filename_level": "aaa",
+        "name": "2018_aaa_season_batting_stats.csv",
+        "size_bytes": 309942,
+        "updated_at_utc": "2023-08-05T19:51:36+00:00",
+        "year": 2018
+      },
+      {
+        "asset_id": 120722898,
+        "filename_level": "rk",
+        "name": "2018_rk_season_batting_stats.csv",
+        "size_bytes": 501930,
+        "updated_at_utc": "2023-08-09T04:58:46+00:00",
+        "year": 2018
+      },
+      {
+        "asset_id": 174475848,
+        "filename_level": "win",
+        "name": "2018_win_season_batting_stats.csv",
+        "size_bytes": 240365,
+        "updated_at_utc": "2024-06-18T11:41:06+00:00",
+        "year": 2018
+      },
+      {
+        "asset_id": 120719474,
+        "filename_level": "a",
+        "name": "2019_a_season_batting_stats.csv",
+        "size_bytes": 180459,
+        "updated_at_utc": "2023-08-09T04:22:14+00:00",
+        "year": 2019
+      },
+      {
+        "asset_id": 120718543,
+        "filename_level": "a+",
+        "name": "2019_a+_season_batting_stats.csv",
+        "size_bytes": 196276,
+        "updated_at_utc": "2023-08-09T04:08:43+00:00",
+        "year": 2019
+      },
+      {
+        "asset_id": 120715516,
+        "filename_level": "a-",
+        "name": "2019_a-_season_batting_stats.csv",
+        "size_bytes": 127617,
+        "updated_at_utc": "2023-08-09T03:30:51+00:00",
+        "year": 2019
+      },
+      {
+        "asset_id": 120705608,
+        "filename_level": "aa",
+        "name": "2019_aa_season_batting_stats.csv",
+        "size_bytes": 260842,
+        "updated_at_utc": "2023-08-09T01:55:53+00:00",
+        "year": 2019
+      },
+      {
+        "asset_id": 120249205,
+        "filename_level": "aaa",
+        "name": "2019_aaa_season_batting_stats.csv",
+        "size_bytes": 412512,
+        "updated_at_utc": "2023-08-05T19:51:32+00:00",
+        "year": 2019
+      },
+      {
+        "asset_id": 120722899,
+        "filename_level": "rk",
+        "name": "2019_rk_season_batting_stats.csv",
+        "size_bytes": 433049,
+        "updated_at_utc": "2023-08-09T04:58:48+00:00",
+        "year": 2019
+      },
+      {
+        "asset_id": 174475850,
+        "filename_level": "win",
+        "name": "2019_win_season_batting_stats.csv",
+        "size_bytes": 258978,
+        "updated_at_utc": "2024-06-18T11:41:07+00:00",
+        "year": 2019
+      },
+      {
+        "asset_id": 174475851,
+        "filename_level": "win",
+        "name": "2020_win_season_batting_stats.csv",
+        "size_bytes": 185127,
+        "updated_at_utc": "2024-06-18T11:41:07+00:00",
+        "year": 2020
+      },
+      {
+        "asset_id": 120719475,
+        "filename_level": "a",
+        "name": "2021_a_season_batting_stats.csv",
+        "size_bytes": 216312,
+        "updated_at_utc": "2023-08-09T04:22:15+00:00",
+        "year": 2021
+      },
+      {
+        "asset_id": 120718545,
+        "filename_level": "a+",
+        "name": "2021_a+_season_batting_stats.csv",
+        "size_bytes": 200407,
+        "updated_at_utc": "2023-08-09T04:08:44+00:00",
+        "year": 2021
+      },
+      {
+        "asset_id": 120705609,
+        "filename_level": "aa",
+        "name": "2021_aa_season_batting_stats.csv",
+        "size_bytes": 216761,
+        "updated_at_utc": "2023-08-09T01:55:54+00:00",
+        "year": 2021
+      },
+      {
+        "asset_id": 120249206,
+        "filename_level": "aaa",
+        "name": "2021_aaa_season_batting_stats.csv",
+        "size_bytes": 361446,
+        "updated_at_utc": "2023-08-05T19:51:32+00:00",
+        "year": 2021
+      },
+      {
+        "asset_id": 120722906,
+        "filename_level": "rk",
+        "name": "2021_rk_season_batting_stats.csv",
+        "size_bytes": 470954,
+        "updated_at_utc": "2023-08-09T04:58:49+00:00",
+        "year": 2021
+      },
+      {
+        "asset_id": 174475852,
+        "filename_level": "win",
+        "name": "2021_win_season_batting_stats.csv",
+        "size_bytes": 209098,
+        "updated_at_utc": "2024-06-18T11:41:07+00:00",
+        "year": 2021
+      },
+      {
+        "asset_id": 120719476,
+        "filename_level": "a",
+        "name": "2022_a_season_batting_stats.csv",
+        "size_bytes": 225169,
+        "updated_at_utc": "2023-08-09T04:22:16+00:00",
+        "year": 2022
+      },
+      {
+        "asset_id": 120718546,
+        "filename_level": "a+",
+        "name": "2022_a+_season_batting_stats.csv",
+        "size_bytes": 191881,
+        "updated_at_utc": "2023-08-09T04:08:44+00:00",
+        "year": 2022
+      },
+      {
+        "asset_id": 120705610,
+        "filename_level": "aa",
+        "name": "2022_aa_season_batting_stats.csv",
+        "size_bytes": 188648,
+        "updated_at_utc": "2023-08-09T01:55:54+00:00",
+        "year": 2022
+      },
+      {
+        "asset_id": 120249208,
+        "filename_level": "aaa",
+        "name": "2022_aaa_season_batting_stats.csv",
+        "size_bytes": 265553,
+        "updated_at_utc": "2023-08-05T19:51:33+00:00",
+        "year": 2022
+      },
+      {
+        "asset_id": 120722907,
+        "filename_level": "rk",
+        "name": "2022_rk_season_batting_stats.csv",
+        "size_bytes": 480835,
+        "updated_at_utc": "2023-08-09T04:58:50+00:00",
+        "year": 2022
+      },
+      {
+        "asset_id": 174475857,
+        "filename_level": "win",
+        "name": "2022_win_season_batting_stats.csv",
+        "size_bytes": 269549,
+        "updated_at_utc": "2024-06-18T11:41:08+00:00",
+        "year": 2022
+      },
+      {
+        "asset_id": 128504211,
+        "filename_level": "a",
+        "name": "2023_a_season_batting_stats.csv",
+        "size_bytes": 217995,
+        "updated_at_utc": "2023-10-01T01:43:49+00:00",
+        "year": 2023
+      },
+      {
+        "asset_id": 128504210,
+        "filename_level": "a+",
+        "name": "2023_a+_season_batting_stats.csv",
+        "size_bytes": 189789,
+        "updated_at_utc": "2023-10-01T01:43:48+00:00",
+        "year": 2023
+      },
+      {
+        "asset_id": 128504212,
+        "filename_level": "aa",
+        "name": "2023_aa_season_batting_stats.csv",
+        "size_bytes": 193925,
+        "updated_at_utc": "2023-10-01T01:43:49+00:00",
+        "year": 2023
+      },
+      {
+        "asset_id": 128504213,
+        "filename_level": "aaa",
+        "name": "2023_aaa_season_batting_stats.csv",
+        "size_bytes": 241207,
+        "updated_at_utc": "2023-10-01T01:43:50+00:00",
+        "year": 2023
+      },
+      {
+        "asset_id": 128504215,
+        "filename_level": "rk",
+        "name": "2023_rk_season_batting_stats.csv",
+        "size_bytes": 476348,
+        "updated_at_utc": "2023-10-01T01:43:51+00:00",
+        "year": 2023
+      },
+      {
+        "asset_id": 174475829,
+        "filename_level": "win",
+        "name": "2023_win_season_batting_stats.csv",
+        "size_bytes": 251715,
+        "updated_at_utc": "2024-06-18T11:41:02+00:00",
+        "year": 2023
+      },
+      {
+        "asset_id": 203282268,
+        "filename_level": "a",
+        "name": "2024_a_season_batting_stats.csv",
+        "size_bytes": 216102,
+        "updated_at_utc": "2024-11-01T02:15:36+00:00",
+        "year": 2024
+      },
+      {
+        "asset_id": 203282267,
+        "filename_level": "a+",
+        "name": "2024_a+_season_batting_stats.csv",
+        "size_bytes": 186547,
+        "updated_at_utc": "2024-11-01T02:15:36+00:00",
+        "year": 2024
+      },
+      {
+        "asset_id": 203282269,
+        "filename_level": "aa",
+        "name": "2024_aa_season_batting_stats.csv",
+        "size_bytes": 183499,
+        "updated_at_utc": "2024-11-01T02:15:36+00:00",
+        "year": 2024
+      },
+      {
+        "asset_id": 203282270,
+        "filename_level": "aaa",
+        "name": "2024_aaa_season_batting_stats.csv",
+        "size_bytes": 228357,
+        "updated_at_utc": "2024-11-01T02:15:37+00:00",
+        "year": 2024
+      },
+      {
+        "asset_id": 203282271,
+        "filename_level": "rk",
+        "name": "2024_rk_season_batting_stats.csv",
+        "size_bytes": 404124,
+        "updated_at_utc": "2024-11-01T02:15:37+00:00",
+        "year": 2024
+      }
+    ],
+    "release_tag": "season_player_batting"
+  },
+  "mlb_leagues": {
+    "103": {
+      "fields": {
+        "caughtStealing": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "doubles": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "gidpOpp": {
+          "complete": false,
+          "missing_rows": 391,
+          "nonnull_rows": 0,
+          "present_rows": 0
+        },
+        "groundIntoDoublePlay": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "hits": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "homeRuns": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "stolenBases": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        },
+        "triples": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 391,
+          "present_rows": 391
+        }
+      },
+      "gidp_opportunity_identity": {
+        "checked_rows": 0,
+        "violation_rows": 0
+      },
+      "row_count": 391,
+      "singles_identity": {
+        "checked_rows": 391,
+        "violation_rows": 0
+      }
+    },
+    "104": {
+      "fields": {
+        "caughtStealing": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "doubles": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "gidpOpp": {
+          "complete": false,
+          "missing_rows": 389,
+          "nonnull_rows": 0,
+          "present_rows": 0
+        },
+        "groundIntoDoublePlay": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "hits": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "homeRuns": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "stolenBases": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        },
+        "triples": {
+          "complete": true,
+          "missing_rows": 0,
+          "nonnull_rows": 389,
+          "present_rows": 389
+        }
+      },
+      "gidp_opportunity_identity": {
+        "checked_rows": 0,
+        "violation_rows": 0
+      },
+      "row_count": 389,
+      "singles_identity": {
+        "checked_rows": 389,
+        "violation_rows": 0
+      }
+    }
+  },
+  "mlb_pooled": {
+    "fields": {
+      "caughtStealing": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "doubles": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "gidpOpp": {
+        "complete": false,
+        "missing_rows": 780,
+        "nonnull_rows": 0,
+        "present_rows": 0
+      },
+      "groundIntoDoublePlay": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "hits": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "homeRuns": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "stolenBases": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      },
+      "triples": {
+        "complete": true,
+        "missing_rows": 0,
+        "nonnull_rows": 780,
+        "present_rows": 780
+      }
+    },
+    "gidp_opportunity_identity": {
+      "checked_rows": 0,
+      "violation_rows": 0
+    },
+    "row_count": 780,
+    "singles_identity": {
+      "checked_rows": 780,
+      "violation_rows": 0
+    }
+  },
+  "mlb_source": {
+    "endpoint": "https://statsapi.mlb.com/api/v1/stats",
+    "game_type": "R",
+    "group": "hitting",
+    "league_ids": [
+      103,
+      104
+    ],
+    "player_pool": "ALL",
+    "provider": "MLB Stats API",
+    "stats": "season"
+  },
+  "mlb_statcast_advancement": {
+    "all_audited_seasons_usable": true,
+    "captures": [
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2019&season_end=2019&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 155686,
+        "response_sha256": "e74b796ff141d41769c7f189f98ca21b368e83ff133e5f86f0649f9b6aebb6ec",
+        "row_count": 659,
+        "season": 2019
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2020&season_end=2020&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 120727,
+        "response_sha256": "30cbc63237cf1c4f6f16185595d61d52586eca12adb616791c12d563e7722bc8",
+        "row_count": 517,
+        "season": 2020
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2021&season_end=2021&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 159119,
+        "response_sha256": "ffc34eb933553ea5536d17462965d43d2a1785bfdc9e26007bd96e06724771a3",
+        "row_count": 680,
+        "season": 2021
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2022&season_end=2022&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 147311,
+        "response_sha256": "faf3db3337e40fdade1099086da537d1f046a57f6f07e11601a752b1c011be39",
+        "row_count": 625,
+        "season": 2022
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2023&season_end=2023&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 143564,
+        "response_sha256": "64798cec13385b3caeae89a5f01c642d97783628efd7061f041287f9a1c820a5",
+        "row_count": 611,
+        "season": 2023
+      },
+      {
+        "content_type": "text/csv; charset=utf-8",
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2024&season_end=2024&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "response_bytes": 142396,
+        "response_sha256": "51edc407bebb2d202a43e2e5b0ac29714178f905db0ff42d893637f85a94ab2d",
+        "row_count": 608,
+        "season": 2024
+      }
+    ],
+    "endpoint": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value",
+    "provider": "Baseball Savant",
+    "query_contract": {
+      "game_type": "Regular",
+      "minimum_opportunities": 1,
+      "one_season_per_request": true,
+      "runner_type": "Run",
+      "season_end": 2024,
+      "season_start": 2019
+    },
+    "season_audits": {
+      "2019": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 659,
+            "present_rows": 659
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 659,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 659,
+        "run_decomposition": {
+          "checked_rows": 659,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      },
+      "2020": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 517,
+            "present_rows": 517
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 517,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 517,
+        "run_decomposition": {
+          "checked_rows": 517,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 2.220446049250313e-16
+        }
+      },
+      "2021": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 680,
+            "present_rows": 680
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 680,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 680,
+        "run_decomposition": {
+          "checked_rows": 680,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 4.440892098500626e-16
+        }
+      },
+      "2022": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 625,
+            "present_rows": 625
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 625,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 625,
+        "run_decomposition": {
+          "checked_rows": 625,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 4.440892098500626e-16
+        }
+      },
+      "2023": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 611,
+            "present_rows": 611
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 611,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 611,
+        "run_decomposition": {
+          "checked_rows": 611,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      },
+      "2024": {
+        "advancement_source_usable": true,
+        "duplicate_player_id_rows": 0,
+        "fields": {
+          "n_runner_moved": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "n_runner_moved_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "n_runner_moved_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "player_id": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_sbx": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_tot": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          },
+          "runner_runs_xb": {
+            "complete": true,
+            "missing_rows": 0,
+            "nonnull_rows": 608,
+            "present_rows": 608
+          }
+        },
+        "opportunity_identity": {
+          "checked_rows": 608,
+          "identity_is_diagnostic_only": true,
+          "violation_rows": 0
+        },
+        "row_count": 608,
+        "run_decomposition": {
+          "checked_rows": 608,
+          "identity_is_diagnostic_only": true,
+          "max_abs_delta": 8.881784197001252e-16
+        }
+      }
+    },
+    "source_role": "runner-level non-steal advancement run value and opportunity evidence"
+  },
+  "notes": [
+    "Missing source fields remain missing; the audit does not zero-fill them.",
+    "MiLB inventory establishes historical asset availability, not yet per-file baserunning field completeness.",
+    "Savant run-value decomposition and opportunity-count identities are diagnostic only; the source gate requires complete finite fields and unique runner rows.",
+    "This artifact audits source semantics only and does not select baserunning model parameters."
+  ],
+  "season": 2024,
+  "status": "player_value_v1_baserunning_source_audit_materialized",
+  "verified_source_commit": "4da555e8b7ee2804946452e3da80afd47625f20d"
+}

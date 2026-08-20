@@ -1,0 +1,94 @@
+name: Player Value v1 park neutrality audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install and test audit implementation
+        run: >-
+          python -m pip install --upgrade pip &&
+          python -m pip install -e ".[dev]" &&
+          python -m pytest -q tests/test_player_value_park_neutrality.py
+
+      - name: Download frozen B2 projection
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9311172007"
+          path: inputs/b2
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32099733186"
+      - name: Download certified 2023 MLB game evidence
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9274868338"
+          path: inputs/mlb-2023
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31989561396"
+      - name: Download certified 2024 MLB game evidence
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9310382371"
+          path: inputs/mlb-2024
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32096473700"
+      - name: Download frozen 2024 MLB batting performance
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9265954750"
+          path: inputs/performance
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31955392482"
+
+      - name: Audit retained prior-home context
+        run: >-
+          python scripts/audit_player_value_v1_park_neutrality.py
+          --b2-root inputs/b2/tables/projection_2023_to_2024
+          --mlb-2023-root inputs/mlb-2023
+          --mlb-2024-root inputs/mlb-2024
+          --performance-root inputs/performance
+          --output-json docs/player-value-v1-park-neutrality-audit-result.json
+          --output-root reports/generated/player-value-v1-park-neutrality-audit
+
+      - name: Persist verified audit result
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/player-value-v1-park-neutrality-audit-result.json
+          git commit -m "Freeze Player Value v1 park neutrality audit"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Upload park audit diagnostics
+        uses: actions/upload-artifact@v7
+        with:
+          name: player-value-v1-park-neutrality-audit
+          path: |
+            docs/player-value-v1-park-neutrality-audit-result.json
+            reports/generated/player-value-v1-park-neutrality-audit/
+          if-no-files-found: error
+          retention-days: 90

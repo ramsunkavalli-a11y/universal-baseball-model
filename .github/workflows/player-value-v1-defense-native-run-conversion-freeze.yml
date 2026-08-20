@@ -1,0 +1,68 @@
+name: Player Value v1 Defense native run-conversion freeze
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify freeze implementation
+        run: python -m py_compile scripts/freeze_player_value_v1_defense_native_run_conversion.py
+
+      - name: Apply predeclared run-conversion selection
+        run: python scripts/freeze_player_value_v1_defense_native_run_conversion.py
+
+      - name: Pin workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('reports/generated/player-value-v1-defense-native-run-conversion/parameters.json')
+          data = json.loads(path.read_text())
+          data['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          data['source_sha'] = os.environ['SOURCE_SHA']
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload frozen parameters
+        uses: actions/upload-artifact@v7
+        with:
+          name: player-value-v1-defense-native-run-conversion
+          path: reports/generated/player-value-v1-defense-native-run-conversion/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist frozen parameters
+        run: |
+          set -euo pipefail
+          cp reports/generated/player-value-v1-defense-native-run-conversion/parameters.json \
+            docs/player-value-v1-defense-native-run-conversion-parameters.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/player-value-v1-defense-native-run-conversion-parameters.json
+          git commit -m "Freeze Defense native run conversion"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

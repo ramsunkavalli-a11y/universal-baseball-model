@@ -1,0 +1,116 @@
+name: Playing-time v1 one-shot 2025 confirmation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  confirm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install frozen playing-time environment
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install -r requirements-playing-time.txt
+
+      - name: Verify confirmation code and frozen decision tests
+        run: >-
+          python -m py_compile
+          src/universal_baseball/playing_time_confirmation.py
+          scripts/score_playing_time_v1_confirmation_2025.py
+          && python -m pytest -q
+          tests/test_playing_time_confirmation.py
+          tests/test_playing_time_model.py
+
+      - name: Require binding pre-score state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          refit = json.loads(Path('docs/playing-time-v1-confirmation-refit-result.json').read_text())
+          inputs = json.loads(Path('docs/playing-time-v1-confirmation-inputs-result.json').read_text())
+          target = json.loads(Path('docs/playing-time-v1-confirmation-target-result.json').read_text())
+          if refit.get('status') != 'frozen_ready_for_2025_source_materialization':
+              raise SystemExit('pre-2025 refit is not frozen')
+          if inputs.get('status') != 'ready_to_open_2025_confirmation_target':
+              raise SystemExit('pre-2025 confirmation inputs are not binding')
+          if target.get('status') != 'source_certified_target_materialized_unscored':
+              raise SystemExit('2025 target is not certified/materialized/unscored')
+          boundary = target.get('boundary', {})
+          if boundary.get('model_parameters_loaded') or boundary.get('model_predictions_computed'):
+              raise SystemExit('2025 target source gate was contaminated by model access')
+          if boundary.get('candidate_vs_baseline_scores_computed') or boundary.get('model_refit'):
+              raise SystemExit('2025 target was already scored/refit')
+          print('Binding one-shot confirmation pre-score state: PASS')
+          PY
+
+      - name: Download frozen pre-2025 parameters and confirmation data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo="ramsunkavalli-a11y/universal-baseball-model"
+          mkdir -p frozen-refit frozen-inputs frozen-target
+          gh run download 32142220469 --repo "$repo" --name "playing-time-v1-confirmation-refit" --dir frozen-refit
+          gh run download 32144363818 --repo "$repo" --name "playing-time-v1-confirmation-inputs" --dir frozen-inputs
+          gh run download 32144918922 --repo "$repo" --name "playing-time-v1-confirmation-target-2025" --dir frozen-target
+
+      - name: Score frozen B0 and candidate exactly once
+        run: >-
+          python scripts/score_playing_time_v1_confirmation_2025.py
+          --refit-root frozen-refit
+          --input-root frozen-inputs
+          --target-root frozen-target
+
+      - name: Upload binding confirmation evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: playing-time-v1-confirmation-2025
+          path: reports/generated/playing-time-v1-confirmation-2025/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding 2025 confirmation result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/playing-time-v1-confirmation-2025/report.json')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/playing-time-v1-confirmation-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/playing-time-v1-confirmation-result.json
+          git commit -m "Persist one-shot playing-time 2025 confirmation"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

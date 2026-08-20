@@ -1,0 +1,317 @@
+{
+  "boundary": {
+    "2025_accessed": false,
+    "defense_refit": false,
+    "playing_time_refit": false,
+    "position_allocation_selected": false,
+    "position_role_refit": false,
+    "positional_adjustment_calculated": false,
+    "run_conversion_performed": false,
+    "war_value_calculated": false
+  },
+  "contract": {
+    "path": "docs/player-value-v1-defensive-exposure-diagnostic-contract.md",
+    "sha256": "43c543e6ab0d128bbb68baa5ac5ccefb3eae6d751dd5ec47394df6a261e3ead9"
+  },
+  "equal_fold_means": {
+    "B0_raw_persistence": {
+      "mae": 151.8115145595488,
+      "rmse": 473.5224592674524
+    },
+    "H1_fixed_50_50_hybrid": {
+      "mae": 152.5591018709913,
+      "rmse": 430.693415798877
+    },
+    "P1_projected_pa_global_scale": {
+      "mae": 174.11131561859997,
+      "rmse": 466.2459673803211
+    }
+  },
+  "fold_metrics": {
+    "projection_2022_to_2023": {
+      "B0_raw_persistence": {
+        "mae": 152.13143564356434,
+        "n": 4040,
+        "observed_mean_outs": 253.18539603960397,
+        "predicted_mean_outs": 255.8930693069307,
+        "rmse": 472.85994226620636,
+        "subgroups": {
+          "entrant": {
+            "mae": 803.4297520661157,
+            "n": 121,
+            "rmse": 1170.2784192286879
+          },
+          "exit": {
+            "mae": 615.3353658536586,
+            "n": 164,
+            "rmse": 972.6807594252584
+          },
+          "incumbent": {
+            "mae": 758.6451612903226,
+            "n": 682,
+            "rmse": 1039.9739309838972
+          },
+          "target_positive": {
+            "mae": 803.906103286385,
+            "n": 639,
+            "rmse": 1082.054696490516
+          }
+        }
+      },
+      "H1_fixed_50_50_hybrid": {
+        "mae": 155.4741735647921,
+        "n": 4040,
+        "observed_mean_outs": 253.18539603960397,
+        "predicted_mean_outs": 248.5744184431159,
+        "rmse": 430.8400087280073,
+        "subgroups": {
+          "entrant": {
+            "mae": 738.8858013183649,
+            "n": 121,
+            "rmse": 1113.8396525069763
+          },
+          "exit": {
+            "mae": 654.7806549754165,
+            "n": 164,
+            "rmse": 861.6901184578106
+          },
+          "incumbent": {
+            "mae": 741.738277814278,
+            "n": 682,
+            "rmse": 935.3389507632629
+          },
+          "target_positive": {
+            "mae": 763.51589986368,
+            "n": 639,
+            "rmse": 988.9843038152234
+          }
+        }
+      },
+      "P1_projected_pa_global_scale": {
+        "mae": 179.40270916509118,
+        "n": 4040,
+        "observed_mean_outs": 253.18539603960397,
+        "predicted_mean_outs": 241.2557675793011,
+        "rmse": 471.71904564059383,
+        "subgroups": {
+          "entrant": {
+            "mae": 691.4975296873605,
+            "n": 121,
+            "rmse": 1065.791662228352
+          },
+          "exit": {
+            "mae": 694.2259440971743,
+            "n": 164,
+            "rmse": 856.9740075683301
+          },
+          "incumbent": {
+            "mae": 843.7328392800548,
+            "n": 682,
+            "rmse": 1047.9317229954306
+          },
+          "target_positive": {
+            "mae": 853.2769055543528,
+            "n": 639,
+            "rmse": 1094.8368921982033
+          }
+        }
+      }
+    },
+    "projection_2023_to_2024": {
+      "B0_raw_persistence": {
+        "mae": 151.49159347553325,
+        "n": 3985,
+        "observed_mean_outs": 257.95934755332496,
+        "predicted_mean_outs": 259.49711417816815,
+        "rmse": 474.1849762686984,
+        "subgroups": {
+          "entrant": {
+            "mae": 658.0153846153846,
+            "n": 130,
+            "rmse": 1043.8018748048664
+          },
+          "exit": {
+            "mae": 578.3687943262412,
+            "n": 141,
+            "rmse": 830.6060762483677
+          },
+          "incumbent": {
+            "mae": 800.8531684698609,
+            "n": 647,
+            "rmse": 1079.809710467157
+          },
+          "target_positive": {
+            "mae": 820.9811320754717,
+            "n": 636,
+            "rmse": 1120.6719584092305
+          }
+        }
+      },
+      "H1_fixed_50_50_hybrid": {
+        "mae": 149.6440301771905,
+        "n": 3985,
+        "observed_mean_outs": 257.95934755332496,
+        "predicted_mean_outs": 252.77013926157142,
+        "rmse": 430.54682286974673,
+        "subgroups": {
+          "entrant": {
+            "mae": 602.9188737932327,
+            "n": 130,
+            "rmse": 982.0352314153159
+          },
+          "exit": {
+            "mae": 625.8462136560373,
+            "n": 141,
+            "rmse": 814.4979113308099
+          },
+          "incumbent": {
+            "mae": 754.0716173515032,
+            "n": 647,
+            "rmse": 970.5098339602476
+          },
+          "target_positive": {
+            "mae": 751.6029463742792,
+            "n": 636,
+            "rmse": 1004.105684496127
+          }
+        }
+      },
+      "P1_projected_pa_global_scale": {
+        "mae": 168.81992207210877,
+        "n": 3985,
+        "observed_mean_outs": 257.95934755332496,
+        "predicted_mean_outs": 246.04316434497466,
+        "rmse": 460.7728891200483,
+        "subgroups": {
+          "entrant": {
+            "mae": 562.214839321151,
+            "n": 130,
+            "rmse": 927.6260172875132
+          },
+          "exit": {
+            "mae": 673.3236329858335,
+            "n": 141,
+            "rmse": 890.5534279695366
+          },
+          "incumbent": {
+            "mae": 833.8858112403108,
+            "n": 647,
+            "rmse": 1053.796755216782
+          },
+          "target_positive": {
+            "mae": 813.9519131025602,
+            "n": 636,
+            "rmse": 1062.8993064985973
+          }
+        }
+      }
+    }
+  },
+  "gate": "player_value_v1_total_defensive_exposure_development_diagnostic",
+  "recommendation": {
+    "challenger_evaluations": {
+      "H1_fixed_50_50_hybrid": {
+        "entrant_mae_strictly_lower_each_fold": true,
+        "equal_fold_mean_mae_strictly_lower": false,
+        "equal_fold_mean_rmse_strictly_lower": true,
+        "fold_specific_overall_mae_within_2pct": false,
+        "passes": false,
+        "per_fold": {
+          "projection_2022_to_2023": {
+            "entrant_mae_strictly_lower_than_B0": true,
+            "overall_mae_within_2pct_of_B0": false
+          },
+          "projection_2023_to_2024": {
+            "entrant_mae_strictly_lower_than_B0": true,
+            "overall_mae_within_2pct_of_B0": true
+          }
+        }
+      },
+      "P1_projected_pa_global_scale": {
+        "entrant_mae_strictly_lower_each_fold": true,
+        "equal_fold_mean_mae_strictly_lower": false,
+        "equal_fold_mean_rmse_strictly_lower": true,
+        "fold_specific_overall_mae_within_2pct": false,
+        "passes": false,
+        "per_fold": {
+          "projection_2022_to_2023": {
+            "entrant_mae_strictly_lower_than_B0": true,
+            "overall_mae_within_2pct_of_B0": false
+          },
+          "projection_2023_to_2024": {
+            "entrant_mae_strictly_lower_than_B0": true,
+            "overall_mae_within_2pct_of_B0": false
+          }
+        }
+      }
+    },
+    "full_production_bridge_frozen": false,
+    "position_allocation_still_open": true,
+    "reason": "no challenger satisfied all predeclared recommendation gates",
+    "recommended_total_outs_form": "B0_raw_persistence"
+  },
+  "report_schema_version": "0.1",
+  "source_outs_per_pa": {
+    "projection_2022_to_2023": 5.678641267330213,
+    "projection_2023_to_2024": 5.616912180072133
+  },
+  "source_run_id": 32261447127,
+  "source_sha": "2b6cba9bbed99c55f3df2e531cc370c213011554",
+  "sources": {
+    "historical_fielding": {
+      "artifact": "position-role-historical-source-2021-2024",
+      "file_sha256": "a30811e1c46c51479bf55f5326a844fdceafed34b48fbb010201b7aa3efc6c9b",
+      "run_id": 32148467330
+    },
+    "playing_time_selection": {
+      "artifact": "playing-time-v1-candidate-selection",
+      "run_id": 32141616127
+    },
+    "playing_time_validation_2023": {
+      "artifact": "playing-time-v1-validation-2023",
+      "run_id": 32141934868
+    },
+    "playing_time_validation_2024": {
+      "artifact": "playing-time-v1-validation-2024",
+      "run_id": 32142089669
+    }
+  },
+  "status": "diagnostic_complete_not_production_frozen",
+  "storage": {
+    "scored_total_defensive_outs": {
+      "file_sha256": "33db547df2280f7dcc9dde30a2d8a9ef170019886620a2d40710f44b8fa85b38",
+      "file_size_bytes": 226119,
+      "path": "reports/generated/player-value-v1-defensive-exposure-diagnostic/tables/scored_total_defensive_outs.parquet",
+      "row_count": 8025
+    }
+  },
+  "target": {
+    "excluded_positions": [
+      "DH",
+      "P"
+    ],
+    "folds": [
+      {
+        "name": "projection_2022_to_2023",
+        "source_year": 2022,
+        "target_year": 2023
+      },
+      {
+        "name": "projection_2023_to_2024",
+        "source_year": 2023,
+        "target_year": 2024
+      }
+    ],
+    "positions": [
+      "C",
+      "1B",
+      "2B",
+      "3B",
+      "SS",
+      "LF",
+      "CF",
+      "RF"
+    ],
+    "unit": "MLB fielding_outs"
+  }
+}

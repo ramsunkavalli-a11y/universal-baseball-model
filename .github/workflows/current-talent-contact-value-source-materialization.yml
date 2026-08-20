@@ -1,14 +1,6 @@
 name: Current Talent contact-value source materialization
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "scripts/materialize_current_talent_contact_value_source.py"
-      - "src/universal_baseball/current_talent_contact_value_source.py"
-      - "src/universal_baseball/current_talent_contact_value_materialization.py"
-      - ".github/workflows/current-talent-contact-value-source-materialization.yml"
   workflow_dispatch:
 
 permissions:

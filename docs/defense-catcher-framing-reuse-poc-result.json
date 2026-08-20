@@ -1,0 +1,108 @@
+{
+  "boundary": {
+    "blocking_scored": false,
+    "defense_projection_fit": false,
+    "playing_time_v1_modified": false,
+    "position_role_v1_modified": false,
+    "throwing_scored": false
+  },
+  "contract": "docs/defense-catcher-framing-reuse-poc-contract.md",
+  "decision": {
+    "aaa_framing_execution_feasible": true,
+    "catcher_blocking_authorized": false,
+    "catcher_throwing_authorized": false,
+    "mlb_framing_reuse_candidate": true,
+    "production_catcher_framing_authorized": false,
+    "tracked_milb_framing_execution_feasible": true,
+    "tracked_non_aaa_framing_execution_feasible": true,
+    "universal_defense_authorized": false,
+    "war_value_authorized": false
+  },
+  "gate": "defense_catcher_framing_reuse_poc",
+  "milb": {
+    "aaa": {
+      "delta_run_exp_non_null_rate": 0.9984864319434935,
+      "eligible_take_count": 14298,
+      "execution_error": null,
+      "fielder_2_non_null_rate_on_eligible_takes": 1.0,
+      "framing_output_catcher_count": 72,
+      "framing_output_finite": true,
+      "framing_output_total_takes": 14298,
+      "label": "AAA",
+      "passed": true,
+      "pitch_row_count": 27749,
+      "positive_take_catcher_count": 72,
+      "required_columns_missing": []
+    },
+    "observed_non_aaa_home_teams": [
+      "CLR",
+      "DBT",
+      "DUN",
+      "FTM",
+      "JUP"
+    ],
+    "pool_pitch_row_count": 35352,
+    "source_window": {
+      "end": "2024-06-16",
+      "season": 2024,
+      "start": "2024-06-10"
+    },
+    "tracked_non_aaa": {
+      "delta_run_exp_non_null_rate": 0.9955280810206497,
+      "eligible_take_count": 3183,
+      "execution_error": null,
+      "fielder_2_non_null_rate_on_eligible_takes": 1.0,
+      "framing_output_catcher_count": 20,
+      "framing_output_finite": true,
+      "framing_output_total_takes": 3183,
+      "label": "tracked_non_aaa",
+      "passed": true,
+      "pitch_row_count": 7603,
+      "positive_take_catcher_count": 20,
+      "required_columns_missing": []
+    },
+    "transport": {
+      "minors": "true",
+      "server_level_filter": false
+    }
+  },
+  "mlb": {
+    "execution": {
+      "delta_run_exp_non_null_rate": 0.9970521249623996,
+      "eligible_take_count": 57321,
+      "execution_error": null,
+      "fielder_2_non_null_rate_on_eligible_takes": 1.0,
+      "framing_output_catcher_count": 81,
+      "framing_output_finite": true,
+      "framing_output_total_takes": 57321,
+      "label": "MLB",
+      "passed": true,
+      "pitch_row_count": 116355,
+      "positive_take_catcher_count": 81,
+      "required_columns_missing": []
+    },
+    "oracle": {
+      "candidate_catcher_count": 51,
+      "execution_error": null,
+      "frozen_minimum_correlation": 0.5,
+      "matched_catcher_count": 33,
+      "minimum_takes_per_catcher": 500,
+      "passed": true,
+      "pearson_correlation": 0.575397527746603,
+      "savant_row_count": 60
+    },
+    "source_window": {
+      "end": "2024-06-30",
+      "season": 2024,
+      "start": "2024-06-01"
+    }
+  },
+  "report_schema_version": "0.1",
+  "source_run_id": 32164124311,
+  "source_sha": "9be7219cdf8053c85396de6f3f0b486136ee2711",
+  "upstream": {
+    "function": "mlb_catcher_framing",
+    "package": "sportsdataverse",
+    "package_version": "0.0.75"
+  }
+}

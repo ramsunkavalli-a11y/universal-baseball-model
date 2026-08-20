@@ -12,6 +12,7 @@ on:
           - "2021"
           - "2022"
           - "2023"
+          - "2024"
 
 permissions:
   contents: read
@@ -22,7 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      TARGET_SEASON: ${{ inputs.season }}
+      # Push is used only to stage the Projection-required 2024 certification.
+      # Manual dispatch keeps the explicit season selector for all supported eras.
+      TARGET_SEASON: ${{ inputs.season || '2024' }}
 
     steps:
       - name: Check out repository

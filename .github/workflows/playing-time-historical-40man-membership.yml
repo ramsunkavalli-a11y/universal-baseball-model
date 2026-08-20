@@ -1,0 +1,73 @@
+name: Playing-time historical 40-man membership
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify membership source rule before live calls
+        run: >-
+          python -m py_compile
+          src/universal_baseball/playing_time_roster_source.py
+          scripts/audit_playing_time_historical_40man_membership.py
+          && python -m pytest -q tests/test_playing_time_roster_source.py
+
+      - name: Certify historical binary 40-man membership
+        id: live_certification
+        continue-on-error: true
+        run: python scripts/audit_playing_time_historical_40man_membership.py
+
+      - name: Upload membership certification and captures
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playing-time-historical-40man-membership
+          path: |
+            reports/generated/playing-time-historical-40man-membership/
+            data/quarantine/playing-time-historical-40man-membership/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Persist binding membership result
+        if: always()
+        run: |
+          set -euo pipefail
+          test -f reports/generated/playing-time-historical-40man-membership/report.json
+          cp reports/generated/playing-time-historical-40man-membership/report.json docs/playing-time-historical-40man-membership-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/playing-time-historical-40man-membership-result.json
+          git commit -m "Persist historical 40-man membership certification"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Enforce membership certification
+        if: always()
+        env:
+          CERTIFICATION_OUTCOME: ${{ steps.live_certification.outcome }}
+        run: test "$CERTIFICATION_OUTCOME" = "success"

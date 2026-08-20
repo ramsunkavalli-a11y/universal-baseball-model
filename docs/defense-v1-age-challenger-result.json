@@ -1,0 +1,2406 @@
+{
+  "boundary": {
+    "2025_defensive_targets_accessed": false,
+    "catcher_models_modified": false,
+    "playing_time_v1_modified": false,
+    "position_role_v1_modified": false,
+    "run_value_conversion_performed": false,
+    "tracked_evidence_used": false
+  },
+  "challenger": {
+    "age_anchor_date": "July 1 of input season",
+    "age_c_formula": "(age_years - 27.0) / 5.0",
+    "lambda": 0.0,
+    "name": "U1_plus_quadratic_age_v1",
+    "terms": [
+      "age_c",
+      "age_c2"
+    ]
+  },
+  "contract": "docs/defense-v1-age-challenger-contract.md",
+  "decision": {
+    "2025_confirmation_authorized": false,
+    "additional_age_tuning_authorized": false,
+    "age_challenger_passed": false,
+    "defense_v1_frozen": false,
+    "selected_general_range_form": "U1",
+    "tracked_incremental_challenger_authorized_next": true,
+    "war_value_authorized": false
+  },
+  "folds": [
+    {
+      "a1": {
+        "calibration_intercept": -0.0057216479851432845,
+        "calibration_slope": 0.3427280171482248,
+        "mae": 0.7541670291363612,
+        "mse": 0.888542598860239,
+        "pearson": 0.12631521487172548,
+        "player_count": 167,
+        "spearman": 0.13616934608614958
+      },
+      "a1_coefficients": [
+        -0.04695150416937071,
+        -0.5672692842180617,
+        0.3430100208971533,
+        -0.6215389157872295,
+        -0.13340204138260817,
+        -0.04268576987787351,
+        0.1269581203521833
+      ],
+      "a1_mse_relative_vs_u1": 0.037854503233672475,
+      "player_count": 167,
+      "target_year": 2022,
+      "train_player_count": 323,
+      "u1": {
+        "calibration_intercept": -0.0063560899235438105,
+        "calibration_slope": 0.48052658580781904,
+        "mae": 0.7439193213620152,
+        "mse": 0.8561340689776668,
+        "pearson": 0.16646107520592696,
+        "player_count": 167,
+        "spearman": 0.16140021313746652
+      },
+      "u1_coefficients": [
+        0.019955471247046754,
+        -0.5758166297089491,
+        0.34828373635240395,
+        -0.6115345838843267,
+        -0.14087059037211436
+      ]
+    },
+    {
+      "a1": {
+        "calibration_intercept": -0.042812427969143946,
+        "calibration_slope": 1.275959560724871,
+        "mae": 0.7270989317613193,
+        "mse": 0.8480708660073875,
+        "pearson": 0.3195172016934107,
+        "player_count": 159,
+        "spearman": 0.3115872995710541
+      },
+      "a1_coefficients": [
+        0.01185995317170712,
+        -0.2328299527176924,
+        0.2319466376712324,
+        -0.3306984954561463,
+        -0.013387410962342819,
+        0.07732803581550185,
+        -0.004050257212383722
+      ],
+      "a1_mse_relative_vs_u1": 0.010228622152154875,
+      "player_count": 159,
+      "target_year": 2023,
+      "train_player_count": 331,
+      "u1": {
+        "calibration_intercept": -0.053915766152122034,
+        "calibration_slope": 1.3801336391924992,
+        "mae": 0.7255189047236829,
+        "mse": 0.839484100342245,
+        "pearson": 0.33959601683564206,
+        "player_count": 159,
+        "spearman": 0.32588572075884353
+      },
+      "u1_coefficients": [
+        0.01739966112229441,
+        -0.22756844820874328,
+        0.23078006783001195,
+        -0.33363454472697507,
+        -0.018599682819763142
+      ]
+    },
+    {
+      "a1": {
+        "calibration_intercept": 0.06313834257557936,
+        "calibration_slope": 0.5291702785178263,
+        "mae": 0.799009412217682,
+        "mse": 0.9913544582809393,
+        "pearson": 0.14907504542070008,
+        "player_count": 164,
+        "spearman": 0.19505764165642056
+      },
+      "a1_coefficients": [
+        0.06134274849145869,
+        -0.1717222178326147,
+        0.3055751217162528,
+        -0.10872274046299779,
+        -0.08374619555681173,
+        0.06287143691415627,
+        -0.08931572134369926
+      ],
+      "a1_mse_relative_vs_u1": 0.018268377857453756,
+      "player_count": 164,
+      "target_year": 2024,
+      "train_player_count": 326,
+      "u1": {
+        "calibration_intercept": 0.0626704308721038,
+        "calibration_slope": 0.6572847687119906,
+        "mae": 0.7920200689491174,
+        "mse": 0.9735689331400585,
+        "pearson": 0.17771917913463067,
+        "player_count": 164,
+        "spearman": 0.23026893578540156
+      },
+      "u1_coefficients": [
+        0.01630037103275196,
+        -0.15585035374488593,
+        0.29810201056276114,
+        -0.11316622092763971,
+        -0.07254476188033356
+      ]
+    }
+  ],
+  "gate": "defense_v1_age_incremental_challenger",
+  "incumbent": {
+    "family": "U1",
+    "lambda": 0.0
+  },
+  "pooled": {
+    "a1": {
+      "calibration_intercept": 0.02084658958630091,
+      "calibration_slope": 0.6107372649810915,
+      "mae": 0.760392178815351,
+      "mse": 0.9098204344140991,
+      "pearson": 0.18574059576724655,
+      "player_count": 490,
+      "spearman": 0.20935765171364018
+    },
+    "a1_mse_improvement_vs_u1": -0.022228740311897435,
+    "a1_spearman_delta_vs_u1": -0.0239170645149914,
+    "folds_mse_better_than_u1": 0,
+    "u1": {
+      "calibration_intercept": 0.016523066520971057,
+      "calibration_slope": 0.7467987983060753,
+      "mae": 0.75404759964526,
+      "mse": 0.8900360540992999,
+      "pearson": 0.21729878979296743,
+      "player_count": 490,
+      "spearman": 0.23327471622863158
+    },
+    "worst_fold_mse_relative_vs_u1": 0.037854503233672475
+  },
+  "report_schema_version": "0.1",
+  "source": {
+    "birth_date_records": [
+      {
+        "birth_date": "1987-08-14",
+        "error": null,
+        "player_id": 444482,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/444482"
+      },
+      {
+        "birth_date": "1985-10-07",
+        "error": null,
+        "player_id": 446334,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/446334"
+      },
+      {
+        "birth_date": "1987-12-17",
+        "error": null,
+        "player_id": 456781,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/456781"
+      },
+      {
+        "birth_date": "1984-11-23",
+        "error": null,
+        "player_id": 457759,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/457759"
+      },
+      {
+        "birth_date": "1983-09-10",
+        "error": null,
+        "player_id": 458015,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/458015"
+      },
+      {
+        "birth_date": "1988-08-26",
+        "error": null,
+        "player_id": 462101,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/462101"
+      },
+      {
+        "birth_date": "1986-04-08",
+        "error": null,
+        "player_id": 467793,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/467793"
+      },
+      {
+        "birth_date": "1988-04-20",
+        "error": null,
+        "player_id": 474832,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/474832"
+      },
+      {
+        "birth_date": "1984-06-09",
+        "error": null,
+        "player_id": 493329,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/493329"
+      },
+      {
+        "birth_date": "1989-02-24",
+        "error": null,
+        "player_id": 500743,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/500743"
+      },
+      {
+        "birth_date": "1989-01-05",
+        "error": null,
+        "player_id": 500871,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/500871"
+      },
+      {
+        "birth_date": "1988-03-08",
+        "error": null,
+        "player_id": 502054,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/502054"
+      },
+      {
+        "birth_date": "1987-09-10",
+        "error": null,
+        "player_id": 502671,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/502671"
+      },
+      {
+        "birth_date": "1990-05-06",
+        "error": null,
+        "player_id": 514888,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/514888"
+      },
+      {
+        "birth_date": "1990-05-23",
+        "error": null,
+        "player_id": 514917,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/514917"
+      },
+      {
+        "birth_date": "1990-03-17",
+        "error": null,
+        "player_id": 516416,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/516416"
+      },
+      {
+        "birth_date": "1988-10-09",
+        "error": null,
+        "player_id": 516782,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/516782"
+      },
+      {
+        "birth_date": "1985-12-08",
+        "error": null,
+        "player_id": 518626,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/518626"
+      },
+      {
+        "birth_date": "1989-09-12",
+        "error": null,
+        "player_id": 518692,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/518692"
+      },
+      {
+        "birth_date": "1988-07-13",
+        "error": null,
+        "player_id": 518934,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/518934"
+      },
+      {
+        "birth_date": "1989-08-08",
+        "error": null,
+        "player_id": 519203,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/519203"
+      },
+      {
+        "birth_date": "1991-06-12",
+        "error": null,
+        "player_id": 541645,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/541645"
+      },
+      {
+        "birth_date": "1991-05-15",
+        "error": null,
+        "player_id": 542364,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/542364"
+      },
+      {
+        "birth_date": "1990-06-30",
+        "error": null,
+        "player_id": 542583,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/542583"
+      },
+      {
+        "birth_date": "1987-01-21",
+        "error": null,
+        "player_id": 543063,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543063"
+      },
+      {
+        "birth_date": "1990-01-05",
+        "error": null,
+        "player_id": 543068,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543068"
+      },
+      {
+        "birth_date": "1989-09-16",
+        "error": null,
+        "player_id": 543257,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543257"
+      },
+      {
+        "birth_date": "1987-07-08",
+        "error": null,
+        "player_id": 543281,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543281"
+      },
+      {
+        "birth_date": "1989-10-02",
+        "error": null,
+        "player_id": 543305,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543305"
+      },
+      {
+        "birth_date": "1989-10-24",
+        "error": null,
+        "player_id": 543333,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543333"
+      },
+      {
+        "birth_date": "1990-06-06",
+        "error": null,
+        "player_id": 543685,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543685"
+      },
+      {
+        "birth_date": "1990-09-17",
+        "error": null,
+        "player_id": 543760,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543760"
+      },
+      {
+        "birth_date": "1989-09-19",
+        "error": null,
+        "player_id": 543807,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543807"
+      },
+      {
+        "birth_date": "1990-10-10",
+        "error": null,
+        "player_id": 543939,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/543939"
+      },
+      {
+        "birth_date": "1990-02-18",
+        "error": null,
+        "player_id": 544369,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/544369"
+      },
+      {
+        "birth_date": "1991-03-18",
+        "error": null,
+        "player_id": 544725,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/544725"
+      },
+      {
+        "birth_date": "1991-07-16",
+        "error": null,
+        "player_id": 545121,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/545121"
+      },
+      {
+        "birth_date": "1991-08-07",
+        "error": null,
+        "player_id": 545361,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/545361"
+      },
+      {
+        "birth_date": "1992-10-16",
+        "error": null,
+        "player_id": 547180,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/547180"
+      },
+      {
+        "birth_date": "1987-01-29",
+        "error": null,
+        "player_id": 547989,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/547989"
+      },
+      {
+        "birth_date": "1991-07-18",
+        "error": null,
+        "player_id": 553993,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/553993"
+      },
+      {
+        "birth_date": "1991-10-11",
+        "error": null,
+        "player_id": 570482,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/570482"
+      },
+      {
+        "birth_date": "1991-04-16",
+        "error": null,
+        "player_id": 571448,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/571448"
+      },
+      {
+        "birth_date": "1990-08-17",
+        "error": null,
+        "player_id": 571657,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/571657"
+      },
+      {
+        "birth_date": "1991-08-24",
+        "error": null,
+        "player_id": 571771,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/571771"
+      },
+      {
+        "birth_date": "1990-08-25",
+        "error": null,
+        "player_id": 571970,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/571970"
+      },
+      {
+        "birth_date": "1990-12-10",
+        "error": null,
+        "player_id": 571976,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/571976"
+      },
+      {
+        "birth_date": "1987-12-05",
+        "error": null,
+        "player_id": 572041,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/572041"
+      },
+      {
+        "birth_date": "1991-09-18",
+        "error": null,
+        "player_id": 572138,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/572138"
+      },
+      {
+        "birth_date": "1991-03-26",
+        "error": null,
+        "player_id": 572191,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/572191"
+      },
+      {
+        "birth_date": "1991-03-28",
+        "error": null,
+        "player_id": 572233,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/572233"
+      },
+      {
+        "birth_date": "1990-01-05",
+        "error": null,
+        "player_id": 578428,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/578428"
+      },
+      {
+        "birth_date": "1989-02-15",
+        "error": null,
+        "player_id": 592192,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/592192"
+      },
+      {
+        "birth_date": "1992-03-04",
+        "error": null,
+        "player_id": 592206,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/592206"
+      },
+      {
+        "birth_date": "1992-08-21",
+        "error": null,
+        "player_id": 592273,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/592273"
+      },
+      {
+        "birth_date": "1992-05-17",
+        "error": null,
+        "player_id": 592325,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/592325"
+      },
+      {
+        "birth_date": "1992-07-06",
+        "error": null,
+        "player_id": 592518,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/592518"
+      },
+      {
+        "birth_date": "1992-01-28",
+        "error": null,
+        "player_id": 592669,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/592669"
+      },
+      {
+        "birth_date": "1991-12-05",
+        "error": null,
+        "player_id": 592885,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/592885"
+      },
+      {
+        "birth_date": "1989-01-24",
+        "error": null,
+        "player_id": 593160,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/593160"
+      },
+      {
+        "birth_date": "1992-10-01",
+        "error": null,
+        "player_id": 593428,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/593428"
+      },
+      {
+        "birth_date": "1993-07-05",
+        "error": null,
+        "player_id": 593871,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/593871"
+      },
+      {
+        "birth_date": "1988-09-04",
+        "error": null,
+        "player_id": 594807,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/594807"
+      },
+      {
+        "birth_date": "1990-04-22",
+        "error": null,
+        "player_id": 595281,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/595281"
+      },
+      {
+        "birth_date": "1993-02-20",
+        "error": null,
+        "player_id": 595777,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/595777"
+      },
+      {
+        "birth_date": "1992-12-01",
+        "error": null,
+        "player_id": 595879,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/595879"
+      },
+      {
+        "birth_date": "1993-11-14",
+        "error": null,
+        "player_id": 596019,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/596019"
+      },
+      {
+        "birth_date": "1994-02-03",
+        "error": null,
+        "player_id": 596059,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/596059"
+      },
+      {
+        "birth_date": "1992-12-13",
+        "error": null,
+        "player_id": 596103,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/596103"
+      },
+      {
+        "birth_date": "1993-02-10",
+        "error": null,
+        "player_id": 596146,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/596146"
+      },
+      {
+        "birth_date": "1992-08-26",
+        "error": null,
+        "player_id": 596748,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/596748"
+      },
+      {
+        "birth_date": "1991-05-19",
+        "error": null,
+        "player_id": 596847,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/596847"
+      },
+      {
+        "birth_date": "1993-11-24",
+        "error": null,
+        "player_id": 600869,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/600869"
+      },
+      {
+        "birth_date": "1994-02-28",
+        "error": null,
+        "player_id": 602074,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/602074"
+      },
+      {
+        "birth_date": "1994-06-03",
+        "error": null,
+        "player_id": 602104,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/602104"
+      },
+      {
+        "birth_date": "1990-03-15",
+        "error": null,
+        "player_id": 605113,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/605113"
+      },
+      {
+        "birth_date": "1993-05-19",
+        "error": null,
+        "player_id": 605119,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/605119"
+      },
+      {
+        "birth_date": "1992-08-14",
+        "error": null,
+        "player_id": 605137,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/605137"
+      },
+      {
+        "birth_date": "1992-10-07",
+        "error": null,
+        "player_id": 605141,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/605141"
+      },
+      {
+        "birth_date": "1993-09-25",
+        "error": null,
+        "player_id": 605353,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/605353"
+      },
+      {
+        "birth_date": "1994-08-04",
+        "error": null,
+        "player_id": 606115,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/606115"
+      },
+      {
+        "birth_date": "1994-02-04",
+        "error": null,
+        "player_id": 606132,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/606132"
+      },
+      {
+        "birth_date": "1992-10-15",
+        "error": null,
+        "player_id": 606192,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/606192"
+      },
+      {
+        "birth_date": "1993-10-12",
+        "error": null,
+        "player_id": 606466,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/606466"
+      },
+      {
+        "birth_date": "1993-03-27",
+        "error": null,
+        "player_id": 607043,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/607043"
+      },
+      {
+        "birth_date": "1990-05-09",
+        "error": null,
+        "player_id": 607054,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/607054"
+      },
+      {
+        "birth_date": "1993-06-30",
+        "error": null,
+        "player_id": 607208,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/607208"
+      },
+      {
+        "birth_date": "1992-09-17",
+        "error": null,
+        "player_id": 608070,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/608070"
+      },
+      {
+        "birth_date": "1994-03-30",
+        "error": null,
+        "player_id": 608324,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/608324"
+      },
+      {
+        "birth_date": "1993-11-19",
+        "error": null,
+        "player_id": 608336,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/608336"
+      },
+      {
+        "birth_date": "1994-04-27",
+        "error": null,
+        "player_id": 608369,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/608369"
+      },
+      {
+        "birth_date": "1993-08-17",
+        "error": null,
+        "player_id": 608385,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/608385"
+      },
+      {
+        "birth_date": "1994-02-11",
+        "error": null,
+        "player_id": 621020,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/621020"
+      },
+      {
+        "birth_date": "1994-09-22",
+        "error": null,
+        "player_id": 621043,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/621043"
+      },
+      {
+        "birth_date": "1994-05-30",
+        "error": null,
+        "player_id": 621433,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/621433"
+      },
+      {
+        "birth_date": "1993-12-14",
+        "error": null,
+        "player_id": 621493,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/621493"
+      },
+      {
+        "birth_date": "1991-08-27",
+        "error": null,
+        "player_id": 621550,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/621550"
+      },
+      {
+        "birth_date": "1990-04-26",
+        "error": null,
+        "player_id": 621563,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/621563"
+      },
+      {
+        "birth_date": "1994-03-29",
+        "error": null,
+        "player_id": 621566,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/621566"
+      },
+      {
+        "birth_date": "1991-01-15",
+        "error": null,
+        "player_id": 622110,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/622110"
+      },
+      {
+        "birth_date": "1994-09-28",
+        "error": null,
+        "player_id": 622534,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/622534"
+      },
+      {
+        "birth_date": "1995-06-23",
+        "error": null,
+        "player_id": 622761,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/622761"
+      },
+      {
+        "birth_date": "1994-07-14",
+        "error": null,
+        "player_id": 623205,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/623205"
+      },
+      {
+        "birth_date": "1994-10-19",
+        "error": null,
+        "player_id": 623993,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/623993"
+      },
+      {
+        "birth_date": "1994-12-07",
+        "error": null,
+        "player_id": 624413,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/624413"
+      },
+      {
+        "birth_date": "1995-05-30",
+        "error": null,
+        "player_id": 624414,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/624414"
+      },
+      {
+        "birth_date": "1995-04-11",
+        "error": null,
+        "player_id": 624415,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/624415"
+      },
+      {
+        "birth_date": "1991-12-14",
+        "error": null,
+        "player_id": 624428,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/624428"
+      },
+      {
+        "birth_date": "1996-03-06",
+        "error": null,
+        "player_id": 624641,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/624641"
+      },
+      {
+        "birth_date": "1987-10-09",
+        "error": null,
+        "player_id": 628450,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/628450"
+      },
+      {
+        "birth_date": "1993-04-03",
+        "error": null,
+        "player_id": 628451,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/628451"
+      },
+      {
+        "birth_date": "1994-01-21",
+        "error": null,
+        "player_id": 630105,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/630105"
+      },
+      {
+        "birth_date": "1996-05-11",
+        "error": null,
+        "player_id": 640492,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/640492"
+      },
+      {
+        "birth_date": "1993-06-23",
+        "error": null,
+        "player_id": 641313,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/641313"
+      },
+      {
+        "birth_date": "1995-07-13",
+        "error": null,
+        "player_id": 641355,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/641355"
+      },
+      {
+        "birth_date": "1995-01-11",
+        "error": null,
+        "player_id": 641487,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/641487"
+      },
+      {
+        "birth_date": "1995-05-25",
+        "error": null,
+        "player_id": 641584,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/641584"
+      },
+      {
+        "birth_date": "1994-09-27",
+        "error": null,
+        "player_id": 641645,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/641645"
+      },
+      {
+        "birth_date": "1994-12-14",
+        "error": null,
+        "player_id": 641857,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/641857"
+      },
+      {
+        "birth_date": "1995-06-22",
+        "error": null,
+        "player_id": 641933,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/641933"
+      },
+      {
+        "birth_date": "1995-06-15",
+        "error": null,
+        "player_id": 642086,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/642086"
+      },
+      {
+        "birth_date": "1995-03-16",
+        "error": null,
+        "player_id": 642133,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/642133"
+      },
+      {
+        "birth_date": "1995-03-10",
+        "error": null,
+        "player_id": 642165,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/642165"
+      },
+      {
+        "birth_date": "1995-07-22",
+        "error": null,
+        "player_id": 642350,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/642350"
+      },
+      {
+        "birth_date": "1995-11-20",
+        "error": null,
+        "player_id": 642708,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/642708"
+      },
+      {
+        "birth_date": "1995-09-02",
+        "error": null,
+        "player_id": 642715,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/642715"
+      },
+      {
+        "birth_date": "1996-02-22",
+        "error": null,
+        "player_id": 642731,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/642731"
+      },
+      {
+        "birth_date": "1994-07-06",
+        "error": null,
+        "player_id": 643217,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/643217"
+      },
+      {
+        "birth_date": "1991-10-31",
+        "error": null,
+        "player_id": 643393,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/643393"
+      },
+      {
+        "birth_date": "1995-03-23",
+        "error": null,
+        "player_id": 643396,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/643396"
+      },
+      {
+        "birth_date": "1992-04-08",
+        "error": null,
+        "player_id": 643446,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/643446"
+      },
+      {
+        "birth_date": "1997-01-07",
+        "error": null,
+        "player_id": 645277,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/645277"
+      },
+      {
+        "birth_date": "1997-05-19",
+        "error": null,
+        "player_id": 645302,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/645302"
+      },
+      {
+        "birth_date": "1996-10-24",
+        "error": null,
+        "player_id": 646240,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/646240"
+      },
+      {
+        "birth_date": "1997-06-22",
+        "error": null,
+        "player_id": 647304,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/647304"
+      },
+      {
+        "birth_date": "1996-12-20",
+        "error": null,
+        "player_id": 647351,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/647351"
+      },
+      {
+        "birth_date": "1996-12-13",
+        "error": null,
+        "player_id": 650402,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/650402"
+      },
+      {
+        "birth_date": "1991-08-08",
+        "error": null,
+        "player_id": 650490,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/650490"
+      },
+      {
+        "birth_date": "1997-02-26",
+        "error": null,
+        "player_id": 650859,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/650859"
+      },
+      {
+        "birth_date": "1993-04-28",
+        "error": null,
+        "player_id": 656305,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/656305"
+      },
+      {
+        "birth_date": "1993-03-17",
+        "error": null,
+        "player_id": 656555,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/656555"
+      },
+      {
+        "birth_date": "1995-04-29",
+        "error": null,
+        "player_id": 656716,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/656716"
+      },
+      {
+        "birth_date": "1994-10-01",
+        "error": null,
+        "player_id": 656775,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/656775"
+      },
+      {
+        "birth_date": "1996-06-29",
+        "error": null,
+        "player_id": 656896,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/656896"
+      },
+      {
+        "birth_date": "1993-03-05",
+        "error": null,
+        "player_id": 656941,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/656941"
+      },
+      {
+        "birth_date": "1995-08-23",
+        "error": null,
+        "player_id": 657041,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/657041"
+      },
+      {
+        "birth_date": "1996-05-15",
+        "error": null,
+        "player_id": 657077,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/657077"
+      },
+      {
+        "birth_date": "1993-08-02",
+        "error": null,
+        "player_id": 657557,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/657557"
+      },
+      {
+        "birth_date": "1994-07-15",
+        "error": null,
+        "player_id": 657656,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/657656"
+      },
+      {
+        "birth_date": "1995-05-27",
+        "error": null,
+        "player_id": 660162,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/660162"
+      },
+      {
+        "birth_date": "1997-12-18",
+        "error": null,
+        "player_id": 660670,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/660670"
+      },
+      {
+        "birth_date": "1998-01-10",
+        "error": null,
+        "player_id": 660757,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/660757"
+      },
+      {
+        "birth_date": "1997-10-07",
+        "error": null,
+        "player_id": 660821,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/660821"
+      },
+      {
+        "birth_date": "1997-05-13",
+        "error": null,
+        "player_id": 663538,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663538"
+      },
+      {
+        "birth_date": "1997-04-02",
+        "error": null,
+        "player_id": 663586,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663586"
+      },
+      {
+        "birth_date": "1997-03-05",
+        "error": null,
+        "player_id": 663611,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663611"
+      },
+      {
+        "birth_date": "1997-02-18",
+        "error": null,
+        "player_id": 663624,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663624"
+      },
+      {
+        "birth_date": "1997-01-28",
+        "error": null,
+        "player_id": 663647,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663647"
+      },
+      {
+        "birth_date": "1997-01-17",
+        "error": null,
+        "player_id": 663656,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663656"
+      },
+      {
+        "birth_date": "1996-12-15",
+        "error": null,
+        "player_id": 663697,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663697"
+      },
+      {
+        "birth_date": "1996-11-01",
+        "error": null,
+        "player_id": 663757,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663757"
+      },
+      {
+        "birth_date": "1996-09-13",
+        "error": null,
+        "player_id": 663845,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663845"
+      },
+      {
+        "birth_date": "1996-08-09",
+        "error": null,
+        "player_id": 663898,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663898"
+      },
+      {
+        "birth_date": "1995-07-07",
+        "error": null,
+        "player_id": 663993,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/663993"
+      },
+      {
+        "birth_date": "1994-08-12",
+        "error": null,
+        "player_id": 664023,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664023"
+      },
+      {
+        "birth_date": "1994-07-13",
+        "error": null,
+        "player_id": 664034,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664034"
+      },
+      {
+        "birth_date": "1994-07-06",
+        "error": null,
+        "player_id": 664040,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664040"
+      },
+      {
+        "birth_date": "1994-06-03",
+        "error": null,
+        "player_id": 664056,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664056"
+      },
+      {
+        "birth_date": "1994-05-31",
+        "error": null,
+        "player_id": 664058,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664058"
+      },
+      {
+        "birth_date": "1994-10-17",
+        "error": null,
+        "player_id": 664702,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664702"
+      },
+      {
+        "birth_date": "1997-03-03",
+        "error": null,
+        "player_id": 664728,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664728"
+      },
+      {
+        "birth_date": "1996-08-03",
+        "error": null,
+        "player_id": 664761,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664761"
+      },
+      {
+        "birth_date": "1994-01-01",
+        "error": null,
+        "player_id": 664774,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664774"
+      },
+      {
+        "birth_date": "1997-07-30",
+        "error": null,
+        "player_id": 664983,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/664983"
+      },
+      {
+        "birth_date": "1993-07-30",
+        "error": null,
+        "player_id": 665120,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665120"
+      },
+      {
+        "birth_date": "1997-09-22",
+        "error": null,
+        "player_id": 665161,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665161"
+      },
+      {
+        "birth_date": "1999-02-13",
+        "error": null,
+        "player_id": 665482,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665482"
+      },
+      {
+        "birth_date": "1999-01-02",
+        "error": null,
+        "player_id": 665487,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665487"
+      },
+      {
+        "birth_date": "1999-03-16",
+        "error": null,
+        "player_id": 665489,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665489"
+      },
+      {
+        "birth_date": "1998-11-19",
+        "error": null,
+        "player_id": 665506,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665506"
+      },
+      {
+        "birth_date": "1998-10-25",
+        "error": null,
+        "player_id": 665742,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665742"
+      },
+      {
+        "birth_date": "1998-09-08",
+        "error": null,
+        "player_id": 665750,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665750"
+      },
+      {
+        "birth_date": "1998-10-04",
+        "error": null,
+        "player_id": 665833,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665833"
+      },
+      {
+        "birth_date": "1998-12-28",
+        "error": null,
+        "player_id": 665839,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665839"
+      },
+      {
+        "birth_date": "1998-02-01",
+        "error": null,
+        "player_id": 665862,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665862"
+      },
+      {
+        "birth_date": "1999-02-15",
+        "error": null,
+        "player_id": 665923,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665923"
+      },
+      {
+        "birth_date": "1998-09-04",
+        "error": null,
+        "player_id": 665926,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/665926"
+      },
+      {
+        "birth_date": "1998-02-02",
+        "error": null,
+        "player_id": 666139,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666139"
+      },
+      {
+        "birth_date": "1997-09-15",
+        "error": null,
+        "player_id": 666149,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666149"
+      },
+      {
+        "birth_date": "1997-09-29",
+        "error": null,
+        "player_id": 666152,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666152"
+      },
+      {
+        "birth_date": "1998-05-13",
+        "error": null,
+        "player_id": 666160,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666160"
+      },
+      {
+        "birth_date": "1998-03-05",
+        "error": null,
+        "player_id": 666182,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666182"
+      },
+      {
+        "birth_date": "1999-04-30",
+        "error": null,
+        "player_id": 666397,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666397"
+      },
+      {
+        "birth_date": "1995-06-29",
+        "error": null,
+        "player_id": 666915,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666915"
+      },
+      {
+        "birth_date": "1993-03-02",
+        "error": null,
+        "player_id": 666969,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666969"
+      },
+      {
+        "birth_date": "1993-10-10",
+        "error": null,
+        "player_id": 666971,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/666971"
+      },
+      {
+        "birth_date": "1995-02-28",
+        "error": null,
+        "player_id": 668227,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668227"
+      },
+      {
+        "birth_date": "1998-10-06",
+        "error": null,
+        "player_id": 668472,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668472"
+      },
+      {
+        "birth_date": "1997-11-10",
+        "error": null,
+        "player_id": 668709,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668709"
+      },
+      {
+        "birth_date": "1998-08-16",
+        "error": null,
+        "player_id": 668731,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668731"
+      },
+      {
+        "birth_date": "1995-01-27",
+        "error": null,
+        "player_id": 668804,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668804"
+      },
+      {
+        "birth_date": "1999-12-11",
+        "error": null,
+        "player_id": 668901,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668901"
+      },
+      {
+        "birth_date": "1999-06-05",
+        "error": null,
+        "player_id": 668904,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668904"
+      },
+      {
+        "birth_date": "1999-11-21",
+        "error": null,
+        "player_id": 668930,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668930"
+      },
+      {
+        "birth_date": "1994-06-30",
+        "error": null,
+        "player_id": 668942,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/668942"
+      },
+      {
+        "birth_date": "1997-12-18",
+        "error": null,
+        "player_id": 669016,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669016"
+      },
+      {
+        "birth_date": "1995-06-29",
+        "error": null,
+        "player_id": 669222,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669222"
+      },
+      {
+        "birth_date": "1995-05-09",
+        "error": null,
+        "player_id": 669242,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669242"
+      },
+      {
+        "birth_date": "1998-07-29",
+        "error": null,
+        "player_id": 669261,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669261"
+      },
+      {
+        "birth_date": "1994-11-13",
+        "error": null,
+        "player_id": 669289,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669289"
+      },
+      {
+        "birth_date": "1998-06-29",
+        "error": null,
+        "player_id": 669304,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669304"
+      },
+      {
+        "birth_date": "2000-05-10",
+        "error": null,
+        "player_id": 669357,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669357"
+      },
+      {
+        "birth_date": "1996-04-10",
+        "error": null,
+        "player_id": 669394,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669394"
+      },
+      {
+        "birth_date": "1998-10-08",
+        "error": null,
+        "player_id": 669397,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669397"
+      },
+      {
+        "birth_date": "1998-02-08",
+        "error": null,
+        "player_id": 669707,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669707"
+      },
+      {
+        "birth_date": "1995-07-05",
+        "error": null,
+        "player_id": 669720,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669720"
+      },
+      {
+        "birth_date": "1998-08-16",
+        "error": null,
+        "player_id": 669911,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/669911"
+      },
+      {
+        "birth_date": "1995-03-13",
+        "error": null,
+        "player_id": 670032,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/670032"
+      },
+      {
+        "birth_date": "1999-02-18",
+        "error": null,
+        "player_id": 670623,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/670623"
+      },
+      {
+        "birth_date": "1996-07-10",
+        "error": null,
+        "player_id": 670764,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/670764"
+      },
+      {
+        "birth_date": "1995-08-14",
+        "error": null,
+        "player_id": 670770,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/670770"
+      },
+      {
+        "birth_date": "2000-01-15",
+        "error": null,
+        "player_id": 671213,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/671213"
+      },
+      {
+        "birth_date": "1998-12-30",
+        "error": null,
+        "player_id": 671221,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/671221"
+      },
+      {
+        "birth_date": "2000-05-16",
+        "error": null,
+        "player_id": 671277,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/671277"
+      },
+      {
+        "birth_date": "2001-03-07",
+        "error": null,
+        "player_id": 671739,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/671739"
+      },
+      {
+        "birth_date": "1999-07-16",
+        "error": null,
+        "player_id": 672279,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/672279"
+      },
+      {
+        "birth_date": "1999-07-16",
+        "error": null,
+        "player_id": 672284,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/672284"
+      },
+      {
+        "birth_date": "2000-02-27",
+        "error": null,
+        "player_id": 672356,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/672356"
+      },
+      {
+        "birth_date": "2000-03-03",
+        "error": null,
+        "player_id": 672580,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/672580"
+      },
+      {
+        "birth_date": "1999-10-22",
+        "error": null,
+        "player_id": 672695,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/672695"
+      },
+      {
+        "birth_date": "1997-08-03",
+        "error": null,
+        "player_id": 673357,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/673357"
+      },
+      {
+        "birth_date": "1995-10-17",
+        "error": null,
+        "player_id": 673490,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/673490"
+      },
+      {
+        "birth_date": "1994-08-18",
+        "error": null,
+        "player_id": 673548,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/673548"
+      },
+      {
+        "birth_date": "1998-02-12",
+        "error": null,
+        "player_id": 673962,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/673962"
+      },
+      {
+        "birth_date": "1996-03-30",
+        "error": null,
+        "player_id": 676116,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/676116"
+      },
+      {
+        "birth_date": "1998-04-05",
+        "error": null,
+        "player_id": 676480,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/676480"
+      },
+      {
+        "birth_date": "1996-06-18",
+        "error": null,
+        "player_id": 676694,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/676694"
+      },
+      {
+        "birth_date": "1995-04-19",
+        "error": null,
+        "player_id": 676801,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/676801"
+      },
+      {
+        "birth_date": "2001-03-01",
+        "error": null,
+        "player_id": 677551,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/677551"
+      },
+      {
+        "birth_date": "2001-01-13",
+        "error": null,
+        "player_id": 677587,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/677587"
+      },
+      {
+        "birth_date": "2000-12-29",
+        "error": null,
+        "player_id": 677594,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/677594"
+      },
+      {
+        "birth_date": "2001-05-17",
+        "error": null,
+        "player_id": 677870,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/677870"
+      },
+      {
+        "birth_date": "2000-04-28",
+        "error": null,
+        "player_id": 677950,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/677950"
+      },
+      {
+        "birth_date": "2000-06-14",
+        "error": null,
+        "player_id": 677951,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/677951"
+      },
+      {
+        "birth_date": "1999-11-02",
+        "error": null,
+        "player_id": 678009,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/678009"
+      },
+      {
+        "birth_date": "1999-07-26",
+        "error": null,
+        "player_id": 678225,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/678225"
+      },
+      {
+        "birth_date": "2001-08-01",
+        "error": null,
+        "player_id": 678662,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/678662"
+      },
+      {
+        "birth_date": "2000-12-31",
+        "error": null,
+        "player_id": 678894,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/678894"
+      },
+      {
+        "birth_date": "2000-08-14",
+        "error": null,
+        "player_id": 679032,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/679032"
+      },
+      {
+        "birth_date": "1999-08-26",
+        "error": null,
+        "player_id": 679529,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/679529"
+      },
+      {
+        "birth_date": "1999-08-06",
+        "error": null,
+        "player_id": 680574,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/680574"
+      },
+      {
+        "birth_date": "1997-09-05",
+        "error": null,
+        "player_id": 680757,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/680757"
+      },
+      {
+        "birth_date": "1996-09-05",
+        "error": null,
+        "player_id": 680776,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/680776"
+      },
+      {
+        "birth_date": "1999-10-19",
+        "error": null,
+        "player_id": 680869,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/680869"
+      },
+      {
+        "birth_date": "1997-01-16",
+        "error": null,
+        "player_id": 680977,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/680977"
+      },
+      {
+        "birth_date": "1997-10-06",
+        "error": null,
+        "player_id": 681082,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/681082"
+      },
+      {
+        "birth_date": "2001-10-16",
+        "error": null,
+        "player_id": 682622,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/682622"
+      },
+      {
+        "birth_date": "2002-01-11",
+        "error": null,
+        "player_id": 682829,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/682829"
+      },
+      {
+        "birth_date": "2000-10-03",
+        "error": null,
+        "player_id": 682928,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/682928"
+      },
+      {
+        "birth_date": "2000-09-28",
+        "error": null,
+        "player_id": 682985,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/682985"
+      },
+      {
+        "birth_date": "2001-04-28",
+        "error": null,
+        "player_id": 683011,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/683011"
+      },
+      {
+        "birth_date": "1999-11-13",
+        "error": null,
+        "player_id": 683146,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/683146"
+      },
+      {
+        "birth_date": "1998-04-03",
+        "error": null,
+        "player_id": 683734,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/683734"
+      },
+      {
+        "birth_date": "1997-10-10",
+        "error": null,
+        "player_id": 686469,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/686469"
+      },
+      {
+        "birth_date": "1998-05-14",
+        "error": null,
+        "player_id": 686668,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/686668"
+      },
+      {
+        "birth_date": "1998-03-22",
+        "error": null,
+        "player_id": 686681,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/686681"
+      },
+      {
+        "birth_date": "1998-02-02",
+        "error": null,
+        "player_id": 686823,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/686823"
+      },
+      {
+        "birth_date": "2001-01-31",
+        "error": null,
+        "player_id": 687263,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/687263"
+      },
+      {
+        "birth_date": "1999-05-08",
+        "error": null,
+        "player_id": 689172,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/689172"
+      },
+      {
+        "birth_date": "2002-03-21",
+        "error": null,
+        "player_id": 691026,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/691026"
+      },
+      {
+        "birth_date": "2002-03-25",
+        "error": null,
+        "player_id": 691718,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/691718"
+      },
+      {
+        "birth_date": "1999-05-27",
+        "error": null,
+        "player_id": 693304,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/693304"
+      },
+      {
+        "birth_date": "2002-02-14",
+        "error": null,
+        "player_id": 694384,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/694384"
+      },
+      {
+        "birth_date": "1999-07-27",
+        "error": null,
+        "player_id": 696285,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/696285"
+      },
+      {
+        "birth_date": "2000-04-24",
+        "error": null,
+        "player_id": 700242,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/700242"
+      },
+      {
+        "birth_date": "2000-06-14",
+        "error": null,
+        "player_id": 702358,
+        "resolved": true,
+        "status_code": 200,
+        "url": "https://statsapi.mlb.com/api/v1/people/702358"
+      }
+    ],
+    "capture_page_count": 224,
+    "historical_source_run_id": 32148467330,
+    "player_season_position_count": 39723,
+    "primary_player_season_count": 15701,
+    "raw_position_split_count": 53225,
+    "requested_birth_date_player_count": 276,
+    "resolved_birth_date_player_count": 276
+  },
+  "source_run_id": 32167442644,
+  "source_sha": "39459d96bf5d3f5969e422e2fb504dc9c5fa570f",
+  "workflow": {
+    "audit_exit_code": "0"
+  }
+}

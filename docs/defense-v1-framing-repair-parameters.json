@@ -1,0 +1,109 @@
+{
+  "boundary": {
+    "2025_confirmation_residuals_used": false,
+    "2025_framing_target_accessed": false,
+    "catcher_blocking_modified": false,
+    "catcher_throwing_modified": false,
+    "development_threshold_changed": false,
+    "general_range_modified": false,
+    "live_source_query_performed": false,
+    "new_candidate_family_added": false,
+    "run_value_conversion_performed": false,
+    "tracked_framing_predictor_redefined": false,
+    "war_calculated": false
+  },
+  "contract": "docs/defense-v1-framing-2025-confirmation-contract.md",
+  "decision": {
+    "2024_framing_confirmation_predictor_materialization_authorized_next": true,
+    "2025_framing_confirmation_authorized_after_source_certification": true,
+    "2025_framing_target_materialization_authorized": false,
+    "additional_framing_development_authorized": false,
+    "repaired_pre_2025_framing_parameters_frozen": true,
+    "tracked_milb_framing_authorized": false,
+    "war_value_authorized": false
+  },
+  "deterministic_reproduction": {
+    "comparison": "exact parameter and training-row object equality",
+    "passed": true
+  },
+  "freeze_run_id": 32208751394,
+  "freeze_sha": "fb7158e3a5e6048b12f7f42b4469560cfd767bfc",
+  "gate": "defense_v1_framing_repair_pre_2025_parameter_freeze",
+  "package_versions": {
+    "numpy": "2.5.2",
+    "polars": "1.43.2",
+    "python": "3.12.13"
+  },
+  "parameter_hash": "sha256:e75ebd58d868b6cb6d51f2d0e48d49c1735a4cfa80661b6280269311a7875086",
+  "parameters": {
+    "coefficients": [
+      -0.1287502167460898,
+      0.6904170177134922
+    ],
+    "component": "catcher_framing",
+    "coverage_fallback": {
+      "affiliated_milb": "F0_neutral",
+      "eligible_mlb_with_tracking": "F1",
+      "mlb_without_eligible_tracking": "F0_neutral",
+      "tracked_milb_f1": "closed_for_v1_insufficient_transfer_evidence"
+    },
+    "family": "F1",
+    "lambda": 0.0,
+    "model_name": "defense_v1_repaired_framing_pre_2025_parameter_package",
+    "predictor": "tracked_framing_z",
+    "predictor_construction": {
+      "eligible_levels_for_f1": [
+        "MLB"
+      ],
+      "input_catcher_minimum_fielding_outs": 300,
+      "minimum_standardization_cell_count": 15,
+      "minimum_takes": 500,
+      "source_feature": "tracked_framing_per_1000_takes",
+      "standardization": "within source season x level_group; population sd ddof=0"
+    },
+    "scope": "MLB_only",
+    "target_construction": {
+      "minimum_pitches": 1000,
+      "raw_target": "1000 * rv_tot / pitches",
+      "source": "repaired Baseball Savant catcher-framing year-specific leaderboard",
+      "standardization": "within target season; population sd ddof=0"
+    },
+    "training_input_years": [
+      2021,
+      2022,
+      2023
+    ],
+    "training_row_count": 157,
+    "training_target_years": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "report_schema_version": "0.1",
+  "source": {
+    "historical_run_id": 32148467330,
+    "repaired_development_run_id": 32208413006,
+    "repaired_development_sha": "295373e24d64b2ca4a0e49453f3ffdfc9290c787",
+    "repaired_target_combined_sha256": "a4316109b6ff62219d51a08753e66d700fe8d7df8f7ce701c8fb98bc6876a0b8",
+    "repaired_target_source_run_id": 32208273343,
+    "repaired_target_source_sha": "035602dd610f76c7309fcc78c23cf71f25346df6",
+    "target_rows": {
+      "2022": 60,
+      "2023": 63,
+      "2024": 58
+    },
+    "tracked_framing_sha256": "1071b9d8209d6e9ba9d8c2b42ac7b99e3329387704e2910797b58f1a148cbc79",
+    "tracked_source_run_id": 32182019495,
+    "tracked_source_sha": "5438e905d24e2167432a52253320ccbc978186b8"
+  },
+  "status": "repaired_framing_parameters_frozen_ready_for_2024_predictor_source",
+  "storage": {
+    "training_rows": {
+      "file_size_bytes": 4841,
+      "path": "reports/generated/defense-v1-framing-repair-parameter-freeze/tables/training_rows.parquet",
+      "row_count": 157,
+      "sha256": "c34d4b54c64000fba8b42e6102dc9e21de71e41a4ef11148857ed12f0d0cb582"
+    }
+  }
+}

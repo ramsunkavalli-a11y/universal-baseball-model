@@ -16,7 +16,6 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-import polars as pl
 import requests
 
 from universal_baseball.armstjc_assets import fetch_pbp_asset_inventory

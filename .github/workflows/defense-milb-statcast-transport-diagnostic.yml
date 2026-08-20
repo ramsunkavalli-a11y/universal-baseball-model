@@ -1,0 +1,65 @@
+name: Defense MiLB Statcast transport diagnostic
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project and pinned reuse dependency
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+      - name: Verify script
+        run: python -m py_compile scripts/diagnose_defense_milb_statcast_transport.py
+      - name: Run frozen transport diagnostic
+        run: python scripts/diagnose_defense_milb_statcast_transport.py
+      - name: Upload diagnostic evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-milb-statcast-transport-diagnostic
+          path: reports/generated/defense-milb-statcast-transport-diagnostic/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Persist diagnostic result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/defense-milb-statcast-transport-diagnostic/report.json')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/defense-milb-statcast-transport-diagnostic-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-milb-statcast-transport-diagnostic-result.json
+          git commit -m "Persist MiLB defense transport diagnostic"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

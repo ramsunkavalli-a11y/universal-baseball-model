@@ -1,0 +1,100 @@
+name: Defense v1 framing repair development source
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  source:
+    name: materialize corrected 2022-2024 framing targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify framing source-repair boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          contract = Path("docs/defense-v1-framing-source-repair-contract.md").read_text()
+          required = [
+              "seasonStart",
+              "seasonEnd",
+              "pitches >= 1000",
+              "1000 * rv_tot / pitches",
+              "minimum 20 catchers",
+              "pooled F1 MSE improvement versus F0 at least 2%",
+              "worst-fold F1 MSE degradation versus F0 no more than 5%",
+              "pooled F1 Spearman at least 0.10",
+          ]
+          missing = [value for value in required if value not in contract]
+          if missing:
+              raise SystemExit(f"framing repair contract missing frozen terms: {missing}")
+
+          old = Path("scripts/audit_defense_v1_tracked_challenger.py").read_text()
+          if "mlb_statcast_leaderboard_catcher_framing(year=year)" not in old:
+              raise SystemExit("prior framing target transport signature changed")
+          if "pitches < 1000" not in old or "1000.0 * rv / pitches" not in old:
+              raise SystemExit("prior framing target construction signature changed")
+          print("framing source-repair boundary verified")
+          PY
+
+      - name: Verify materializer compiles
+        run: python -m py_compile scripts/materialize_defense_v1_framing_repair_development_source.py
+
+      - name: Materialize corrected pre-2025 framing targets
+        run: >-
+          python -u scripts/materialize_defense_v1_framing_repair_development_source.py
+          --output-root reports/generated/defense-v1-framing-repair-development-source
+
+      - name: Pin workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-framing-repair-development-source/report.json")
+          result = json.loads(path.read_text())
+          result["source_run_id"] = int(os.environ["SOURCE_RUN_ID"])
+          result["source_sha"] = os.environ["SOURCE_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload repaired framing development source
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-framing-repair-development-source
+          path: reports/generated/defense-v1-framing-repair-development-source/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding repaired framing source result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-framing-repair-development-source/report.json docs/defense-v1-framing-repair-development-source-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-framing-repair-development-source-result.json
+          git commit -m "Persist repaired framing development source"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

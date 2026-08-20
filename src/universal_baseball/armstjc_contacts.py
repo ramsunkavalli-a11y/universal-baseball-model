@@ -34,6 +34,14 @@ CONTACT_RESOLUTION_POLICY = "non_null_field_consensus_v1"
 CERTIFIED_FALSE_POSITIVE_CONTACT_POLICY = "certified_raw_false_positive_contact_exclusion_v1"
 
 
+def _optional_text(row: dict[str, Any], name: str) -> str | None:
+    value = row.get(name)
+    if value is None:
+        return None
+    stripped = str(value).strip()
+    return stripped if stripped else None
+
+
 @dataclass(frozen=True)
 class CertifiedFalsePositiveContact:
     source_asset: str
@@ -185,23 +193,17 @@ def _certified_false_positive_mask(
                 f"rows={candidate.height}"
             )
         row = candidate.row(0, named=True)
-
-        def text(name: str) -> str | None:
-            value = row.get(name)
-            if value is None:
-                return None
-            stripped = str(value).strip()
-            return stripped if stripped else None
+        type_code = _optional_text(row, "type")
 
         observed = {
-            "game_date": text("game_date"),
+            "game_date": _optional_text(row, "game_date"),
             "league_id": int(float(row["league_id"])) if row.get("league_id") is not None else None,
             "batter_id": int(float(row["batter"])) if row.get("batter") is not None else None,
             "pitcher_id": int(float(row["pitcher"])) if row.get("pitcher") is not None else None,
-            "type_code": text("type").upper() if text("type") is not None else None,
-            "hit_location": text("hit_location"),
-            "result_description": text("description"),
-            "bb_type": text("bb_type"),
+            "type_code": type_code.upper() if type_code is not None else None,
+            "hit_location": _optional_text(row, "hit_location"),
+            "result_description": _optional_text(row, "description"),
+            "bb_type": _optional_text(row, "bb_type"),
             "hc_x": row.get("hc_x"),
             "hc_y": row.get("hc_y"),
             "hit_distance_sc": row.get("hit_distance_sc"),

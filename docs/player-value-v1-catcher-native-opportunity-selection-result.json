@@ -1,0 +1,594 @@
+{
+  "boundary": {
+    "2025_data_accessed": false,
+    "defense_refit": false,
+    "defense_rescored": false,
+    "general_defensive_exposure_changed": false,
+    "playing_time_refit": false,
+    "position_role_refit": false,
+    "positional_adjustment_calculated": false,
+    "replacement_level_selected": false,
+    "run_conversion_changed": false,
+    "runs_per_win_selected": false,
+    "war_value_calculated": false
+  },
+  "components": {
+    "catcher_blocking": {
+      "equal_fold_means": {
+        "B0_raw_persistence": {
+          "mae": 1103.3777056277056,
+          "rmse": 1395.0589522619794
+        },
+        "H1_fixed_50_50_hybrid": {
+          "mae": 1023.8685175176211,
+          "rmse": 1269.4635913369675
+        },
+        "P1_playing_time_ratio": {
+          "mae": 1157.051948389916,
+          "rmse": 1429.0456189353936
+        }
+      },
+      "folds": {
+        "2022_to_2023": {
+          "diagnostics": {
+            "P1_zero_pa_fallback_count": 0,
+            "playing_time_joined_rows": 84,
+            "source_eligible_rows": 84,
+            "target_positive_count": 68,
+            "target_zero_count": 16
+          },
+          "metrics": {
+            "B0_raw_persistence": {
+              "continuing": {
+                "mae": 1034.9117647058824,
+                "n": 68,
+                "rmse": 1374.8857385679898
+              },
+              "exit": {
+                "mae": 1426.0,
+                "n": 16,
+                "rmse": 1654.7512275263614
+              },
+              "mae": 1109.404761904762,
+              "n": 84,
+              "observed_mean": 1892.3690476190477,
+              "predicted_mean": 2194.035714285714,
+              "rmse": 1432.4153760427907
+            },
+            "H1_fixed_50_50_hybrid": {
+              "continuing": {
+                "mae": 1029.3670264520047,
+                "n": 68,
+                "rmse": 1348.598993522442
+              },
+              "exit": {
+                "mae": 1256.8516369695644,
+                "n": 16,
+                "rmse": 1365.4968637601698
+              },
+              "mae": 1072.6974284553492,
+              "n": 84,
+              "observed_mean": 1892.3690476190477,
+              "predicted_mean": 2050.565075942045,
+              "rmse": 1351.8339203143382
+            },
+            "P1_playing_time_ratio": {
+              "continuing": {
+                "mae": 1224.735595117646,
+                "n": 68,
+                "rmse": 1569.0895412647694
+              },
+              "exit": {
+                "mae": 1087.7032739391288,
+                "n": 16,
+                "rmse": 1289.4349564159054
+              },
+              "mae": 1198.6342006074524,
+              "n": 84,
+              "observed_mean": 1892.3690476190477,
+              "predicted_mean": 1907.0944375983759,
+              "rmse": 1519.7945323521828
+            }
+          }
+        },
+        "2023_to_2024": {
+          "diagnostics": {
+            "P1_zero_pa_fallback_count": 0,
+            "playing_time_joined_rows": 77,
+            "source_eligible_rows": 77,
+            "target_positive_count": 69,
+            "target_zero_count": 8
+          },
+          "metrics": {
+            "B0_raw_persistence": {
+              "continuing": {
+                "mae": 1044.2028985507247,
+                "n": 69,
+                "rmse": 1326.2289351412135
+              },
+              "exit": {
+                "mae": 1555.75,
+                "n": 8,
+                "rmse": 1603.7255064380563
+              },
+              "mae": 1097.3506493506493,
+              "n": 77,
+              "observed_mean": 2195.7272727272725,
+              "predicted_mean": 2500.4805194805194,
+              "rmse": 1357.7025284811677
+            },
+            "H1_fixed_50_50_hybrid": {
+              "continuing": {
+                "mae": 903.4657023299728,
+                "n": 69,
+                "rmse": 1117.753936779365
+              },
+              "exit": {
+                "mae": 1592.3645307354511,
+                "n": 8,
+                "rmse": 1669.6131768589162
+              },
+              "mae": 975.039606579893,
+              "n": 77,
+              "observed_mean": 2195.7272727272725,
+              "predicted_mean": 2380.5663565639334,
+              "rmse": 1187.093262359597
+            },
+            "P1_playing_time_ratio": {
+              "continuing": {
+                "mae": 1055.932378456609,
+                "n": 69,
+                "rmse": 1260.6225801922194
+              },
+              "exit": {
+                "mae": 1628.9790614709023,
+                "n": 8,
+                "rmse": 1879.4031817144248
+              },
+              "mae": 1115.4696961723798,
+              "n": 77,
+              "observed_mean": 2195.7272727272725,
+              "predicted_mean": 2260.6521936473464,
+              "rmse": 1338.296705518604
+            }
+          }
+        }
+      },
+      "selected_formula": "projected_pitches = 0.5 * prior_pitches + 0.5 * (prior_pitches * projected_expected_mlb_pa / source_year_mlb_pa); zero-PA fallback collapses to prior_pitches",
+      "selection": {
+        "challenger_evaluations": {
+          "H1_fixed_50_50_hybrid": {
+            "continuing_mae_guard": true,
+            "equal_fold_mae_strictly_lower": true,
+            "equal_fold_rmse_strictly_lower": true,
+            "fold_mae_guard": true,
+            "passes": true,
+            "per_fold": {
+              "2022_to_2023": {
+                "continuing_mae_within_2pct": true,
+                "overall_mae_within_2pct": true
+              },
+              "2023_to_2024": {
+                "continuing_mae_within_2pct": true,
+                "overall_mae_within_2pct": true
+              }
+            }
+          },
+          "P1_playing_time_ratio": {
+            "continuing_mae_guard": false,
+            "equal_fold_mae_strictly_lower": false,
+            "equal_fold_rmse_strictly_lower": false,
+            "fold_mae_guard": false,
+            "passes": false,
+            "per_fold": {
+              "2022_to_2023": {
+                "continuing_mae_within_2pct": false,
+                "overall_mae_within_2pct": false
+              },
+              "2023_to_2024": {
+                "continuing_mae_within_2pct": true,
+                "overall_mae_within_2pct": true
+              }
+            }
+          }
+        },
+        "reason": "only challenger passing all predeclared gates",
+        "selected_form": "H1_fixed_50_50_hybrid"
+      }
+    },
+    "catcher_framing": {
+      "equal_fold_means": {
+        "B0_raw_persistence": {
+          "mae": 2227.684523809524,
+          "rmse": 2794.0522498569508
+        },
+        "H1_fixed_50_50_hybrid": {
+          "mae": 2054.938844124076,
+          "rmse": 2525.898663163982
+        },
+        "P1_playing_time_ratio": {
+          "mae": 2340.386945974853,
+          "rmse": 2858.8332784989743
+        }
+      },
+      "folds": {
+        "2022_to_2023": {
+          "diagnostics": {
+            "P1_zero_pa_fallback_count": 0,
+            "playing_time_joined_rows": 60,
+            "source_eligible_rows": 60,
+            "target_positive_count": 44,
+            "target_zero_count": 16
+          },
+          "metrics": {
+            "B0_raw_persistence": {
+              "continuing": {
+                "mae": 1511.7727272727273,
+                "n": 44,
+                "rmse": 1888.5952571831122
+              },
+              "exit": {
+                "mae": 4286.6875,
+                "n": 16,
+                "rmse": 4479.098032807498
+              },
+              "mae": 2251.75,
+              "n": 60,
+              "observed_mean": 4131.466666666666,
+              "predicted_mean": 5312.016666666666,
+              "rmse": 2822.3393281696895
+            },
+            "H1_fixed_50_50_hybrid": {
+              "continuing": {
+                "mae": 1575.6361090058745,
+                "n": 44,
+                "rmse": 2051.3077533791234
+              },
+              "exit": {
+                "mae": 3639.865196140929,
+                "n": 16,
+                "rmse": 3777.1433341760553
+              },
+              "mae": 2126.0971989085556,
+              "n": 60,
+              "observed_mean": 4131.466666666666,
+              "predicted_mean": 4745.818104434788,
+              "rmse": 2624.9285140418438
+            },
+            "P1_playing_time_ratio": {
+              "continuing": {
+                "mae": 2187.6913624975136,
+                "n": 44,
+                "rmse": 2875.4792162844938
+              },
+              "exit": {
+                "mae": 2993.0428922818583,
+                "n": 16,
+                "rmse": 3340.2685133624996
+              },
+              "mae": 2402.451770440005,
+              "n": 60,
+              "observed_mean": 4131.466666666666,
+              "predicted_mean": 4179.619542202908,
+              "rmse": 3006.457083474042
+            }
+          }
+        },
+        "2023_to_2024": {
+          "diagnostics": {
+            "P1_zero_pa_fallback_count": 0,
+            "playing_time_joined_rows": 63,
+            "source_eligible_rows": 63,
+            "target_positive_count": 46,
+            "target_zero_count": 17
+          },
+          "metrics": {
+            "B0_raw_persistence": {
+              "continuing": {
+                "mae": 1590.3478260869565,
+                "n": 46,
+                "rmse": 2127.3330313063248
+              },
+              "exit": {
+                "mae": 3863.0588235294117,
+                "n": 17,
+                "rmse": 4012.778720391087
+              },
+              "mae": 2203.6190476190477,
+              "n": 63,
+              "observed_mean": 4357.68253968254,
+              "predicted_mean": 5410.158730158731,
+              "rmse": 2765.765171544212
+            },
+            "H1_fixed_50_50_hybrid": {
+              "continuing": {
+                "mae": 1418.1413399329874,
+                "n": 46,
+                "rmse": 1755.911213471558
+              },
+              "exit": {
+                "mae": 3514.3334818515955,
+                "n": 17,
+                "rmse": 3672.010972506887
+              },
+              "mae": 1983.7804893395962,
+              "n": 63,
+              "observed_mean": 4357.68253968254,
+              "predicted_mean": 4991.547613769805,
+              "rmse": 2426.8688122861204
+            },
+            "P1_playing_time_ratio": {
+              "continuing": {
+                "mae": 1950.4120711338467,
+                "n": 46,
+                "rmse": 2333.476437912927
+              },
+              "exit": {
+                "mae": 3165.608140173779,
+                "n": 17,
+                "rmse": 3536.5005453045
+              },
+              "mae": 2278.3221215097014,
+              "n": 63,
+              "observed_mean": 4357.68253968254,
+              "predicted_mean": 4572.9364973808815,
+              "rmse": 2711.2094735239066
+            }
+          }
+        }
+      },
+      "selected_formula": "projected_pitches = prior_pitches",
+      "selection": {
+        "challenger_evaluations": {
+          "H1_fixed_50_50_hybrid": {
+            "continuing_mae_guard": false,
+            "equal_fold_mae_strictly_lower": true,
+            "equal_fold_rmse_strictly_lower": true,
+            "fold_mae_guard": true,
+            "passes": false,
+            "per_fold": {
+              "2022_to_2023": {
+                "continuing_mae_within_2pct": false,
+                "overall_mae_within_2pct": true
+              },
+              "2023_to_2024": {
+                "continuing_mae_within_2pct": true,
+                "overall_mae_within_2pct": true
+              }
+            }
+          },
+          "P1_playing_time_ratio": {
+            "continuing_mae_guard": false,
+            "equal_fold_mae_strictly_lower": false,
+            "equal_fold_rmse_strictly_lower": false,
+            "fold_mae_guard": false,
+            "passes": false,
+            "per_fold": {
+              "2022_to_2023": {
+                "continuing_mae_within_2pct": false,
+                "overall_mae_within_2pct": false
+              },
+              "2023_to_2024": {
+                "continuing_mae_within_2pct": false,
+                "overall_mae_within_2pct": false
+              }
+            }
+          }
+        },
+        "reason": "no challenger passed all predeclared gates",
+        "selected_form": "B0_raw_persistence"
+      }
+    },
+    "catcher_throwing": {
+      "equal_fold_means": {
+        "B0_raw_persistence": {
+          "mae": 19.250649139889646,
+          "rmse": 23.946827266045283
+        },
+        "H1_fixed_50_50_hybrid": {
+          "mae": 18.4813613901796,
+          "rmse": 22.68387367677806
+        },
+        "P1_playing_time_ratio": {
+          "mae": 20.737311875774445,
+          "rmse": 25.528137528031493
+        }
+      },
+      "folds": {
+        "2022_to_2023": {
+          "diagnostics": {
+            "P1_zero_pa_fallback_count": 0,
+            "playing_time_joined_rows": 79,
+            "source_eligible_rows": 79,
+            "target_positive_count": 62,
+            "target_zero_count": 17
+          },
+          "metrics": {
+            "B0_raw_persistence": {
+              "continuing": {
+                "mae": 19.758064516129032,
+                "n": 62,
+                "rmse": 24.316130316075935
+              },
+              "exit": {
+                "mae": 20.41176470588235,
+                "n": 17,
+                "rmse": 22.830578050449073
+              },
+              "mae": 19.89873417721519,
+              "n": 79,
+              "observed_mean": 32.734177215189874,
+              "predicted_mean": 30.582278481012658,
+              "rmse": 24.00421903844342
+            },
+            "H1_fixed_50_50_hybrid": {
+              "continuing": {
+                "mae": 20.055417991964458,
+                "n": 62,
+                "rmse": 25.101441451482568
+              },
+              "exit": {
+                "mae": 19.18190775336036,
+                "n": 17,
+                "rmse": 20.79192172394726
+              },
+              "mae": 19.86744743429016,
+              "n": 79,
+              "observed_mean": 32.734177215189874,
+              "predicted_mean": 29.183225961122936,
+              "rmse": 24.23886267932522
+            },
+            "P1_playing_time_ratio": {
+              "continuing": {
+                "mae": 22.42292062036699,
+                "n": 62,
+                "rmse": 28.60871641104356
+              },
+              "exit": {
+                "mae": 17.952050800838368,
+                "n": 17,
+                "rmse": 21.397942726055085
+              },
+              "mae": 21.460834709835513,
+              "n": 79,
+              "observed_mean": 32.734177215189874,
+              "predicted_mean": 27.784173441233214,
+              "rmse": 27.218817901873802
+            }
+          }
+        },
+        "2023_to_2024": {
+          "diagnostics": {
+            "P1_zero_pa_fallback_count": 0,
+            "playing_time_joined_rows": 78,
+            "source_eligible_rows": 78,
+            "target_positive_count": 68,
+            "target_zero_count": 10
+          },
+          "metrics": {
+            "B0_raw_persistence": {
+              "continuing": {
+                "mae": 17.485294117647058,
+                "n": 68,
+                "rmse": 23.02268702056862
+              },
+              "exit": {
+                "mae": 26.2,
+                "n": 10,
+                "rmse": 29.10670025956223
+              },
+              "mae": 18.602564102564102,
+              "n": 78,
+              "observed_mean": 38.42307692307692,
+              "predicted_mean": 41.69230769230769,
+              "rmse": 23.88943549364715
+            },
+            "H1_fixed_50_50_hybrid": {
+              "continuing": {
+                "mae": 15.74475553730991,
+                "n": 68,
+                "rmse": 19.852095378832313
+              },
+              "exit": {
+                "mae": 26.27881004563116,
+                "n": 10,
+                "rmse": 28.323726604641376
+              },
+              "mae": 17.095275346069045,
+              "n": 78,
+              "observed_mean": 38.42307692307692,
+              "predicted_mean": 39.75043609425528,
+              "rmse": 21.1288846742309
+            },
+            "P1_playing_time_ratio": {
+              "continuing": {
+                "mae": 19.080872710897356,
+                "n": 68,
+                "rmse": 22.54544365681134
+              },
+              "exit": {
+                "mae": 26.357620091262323,
+                "n": 10,
+                "rmse": 31.236680906687035
+              },
+              "mae": 20.01378904171338,
+              "n": 78,
+              "observed_mean": 38.42307692307692,
+              "predicted_mean": 37.80856449620287,
+              "rmse": 23.83745715418918
+            }
+          }
+        }
+      },
+      "selected_formula": "projected_sb_attempts = 0.5 * prior_sb_attempts + 0.5 * (prior_sb_attempts * projected_expected_mlb_pa / source_year_mlb_pa); zero-PA fallback collapses to prior_sb_attempts",
+      "selection": {
+        "challenger_evaluations": {
+          "H1_fixed_50_50_hybrid": {
+            "continuing_mae_guard": true,
+            "equal_fold_mae_strictly_lower": true,
+            "equal_fold_rmse_strictly_lower": true,
+            "fold_mae_guard": true,
+            "passes": true,
+            "per_fold": {
+              "2022_to_2023": {
+                "continuing_mae_within_2pct": true,
+                "overall_mae_within_2pct": true
+              },
+              "2023_to_2024": {
+                "continuing_mae_within_2pct": true,
+                "overall_mae_within_2pct": true
+              }
+            }
+          },
+          "P1_playing_time_ratio": {
+            "continuing_mae_guard": false,
+            "equal_fold_mae_strictly_lower": false,
+            "equal_fold_rmse_strictly_lower": false,
+            "fold_mae_guard": false,
+            "passes": false,
+            "per_fold": {
+              "2022_to_2023": {
+                "continuing_mae_within_2pct": false,
+                "overall_mae_within_2pct": false
+              },
+              "2023_to_2024": {
+                "continuing_mae_within_2pct": false,
+                "overall_mae_within_2pct": false
+              }
+            }
+          }
+        },
+        "reason": "only challenger passing all predeclared gates",
+        "selected_form": "H1_fixed_50_50_hybrid"
+      }
+    }
+  },
+  "contract": "docs/player-value-v1-catcher-native-opportunity-selection-contract.md",
+  "contract_sha256": "f7d8dfc15ca3df26a1b19c94b2d37b310dd4a0b1c7391c540ddb846aef952d30",
+  "playing_time_provenance": {
+    "selection": {
+      "artifact_digest": "sha256:a8719576ef7ed7377a6376556d34e1fd377d5e27ca88535543a43c615f4cb5d8",
+      "artifact_name": "playing-time-v1-candidate-selection",
+      "run_id": 32141616127
+    },
+    "validation_2023": {
+      "artifact_digest": "sha256:738c631f5b4fbaa7875219ee452996e487799c4a323b0cafa57a7500583c5b39",
+      "artifact_name": "playing-time-v1-validation-2023",
+      "run_id": 32141934868
+    },
+    "validation_2024": {
+      "artifact_digest": "sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366",
+      "artifact_name": "playing-time-v1-validation-2024",
+      "run_id": 32142089669
+    }
+  },
+  "run_conversion_provenance": {
+    "parameters": "docs/player-value-v1-defense-native-run-conversion-parameters.json",
+    "source_run_id": 32268659408,
+    "source_sha": "1bc2685807ca97e0b02a38fdfb1e99064b69d2db"
+  },
+  "schema_version": "0.1",
+  "source_run_id": 32269076231,
+  "source_sha": "afb34fc9e829b430efe70cd2e50ed09e04f2117e",
+  "status": "player_value_v1_catcher_native_opportunity_forecasts_frozen"
+}

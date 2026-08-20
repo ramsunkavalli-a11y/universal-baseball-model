@@ -30,6 +30,10 @@ def test_standardize_batting_season_stats_maps_grain_and_outcomes() -> None:
             "batting_SH": [0],
             "batting_SF": [0],
             "batting_CI": [0],
+            "batting_SB": [8],
+            "batting_CS": [2],
+            "batting_GiDP_Opp": [23],
+            "batting_GiDP": [4],
         }
     )
 
@@ -41,8 +45,33 @@ def test_standardize_batting_season_stats_maps_grain_and_outcomes() -> None:
     assert standardized.get_column("batting_base_on_balls").to_list() == [29]
     assert standardized.get_column("batting_hit_by_pitch").to_list() == [7]
     assert standardized.get_column("batting_strike_outs").to_list() == [34]
+    assert standardized.get_column("batting_stolen_bases").to_list() == [8]
+    assert standardized.get_column("batting_caught_stealing").to_list() == [2]
+    assert standardized.get_column("batting_gidp_opportunities").to_list() == [23]
+    assert standardized.get_column("batting_ground_into_double_play").to_list() == [4]
     assert "team_league_id" not in standardized.columns
     assert report["rename_count"] > 0
+
+
+def test_standardize_batting_season_stats_leaves_missing_baserunning_visible() -> None:
+    raw = pl.DataFrame(
+        {
+            "season": [2026],
+            "team_id": [102],
+            "team_league_id": [112],
+            "player_id": [672284],
+            "batting_PA": [155],
+        }
+    )
+
+    standardized, report = standardize_armstjc_season_stats(raw, "batting")
+
+    assert "batting_stolen_bases" not in standardized.columns
+    assert "batting_caught_stealing" not in standardized.columns
+    assert "batting_gidp_opportunities" not in standardized.columns
+    assert "batting_ground_into_double_play" not in standardized.columns
+    assert "batting_stolen_bases" in report["absent_optional_columns"]
+    assert "batting_gidp_opportunities" in report["absent_optional_columns"]
 
 
 def test_standardize_pitching_season_stats_does_not_invent_missing_sac_bunts() -> None:

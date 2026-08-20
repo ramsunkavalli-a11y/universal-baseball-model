@@ -1,197 +1,547 @@
 # Project status and handoff
 
-Last updated: 2026-08-17 19:51 PT
+Last updated: 2026-08-20
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
 ## Active work
 
 - Repo: `ramsunkavalli-a11y/universal-baseball-model`
-- Canonical integrated branch: `main`
-- Active development branch: `source-certification-poc`
-- PR **#1** was merged on 2026-08-17, reconciling the active Projection history and the six prior `main` dispatcher commits without a force reset.
-- Treat `main` as the integrated source of truth. Inspect `source-certification-poc` and live Actions only for work newer than the most recent integration into `main`.
-- Work in small verified batches and inspect the current branch head before editing.
-- Prefer certified/reusable public data plus existing repo adapters over rebuilding source cleanup.
-- Fail closed on source ambiguity.
-- Keep Performance, Current Talent, Projection, and Player Value / Overall Ranking separate.
+- Active branch: `source-certification-poc`
+- `main` is behind active work; use the active branch.
+- Work in small verified batches and inspect branch head before editing.
+- Prefer certified/reusable public data, mature parsers, and existing adapters over rebuilding raw-source cleanup.
+- Preserve every Player Value component as an explicit layer with provenance.
 
-## Stage summary
+## Governing methodology record
 
-### Performance — completed for current downstream needs
+`docs/player-value-v1-war-literature-review.md`
 
-Completed-2024 affiliated batting Performance materialization is production-shaped and retained for downstream reuse.
+A broader WAR literature review was completed before final aggregation. It caused one material course correction: fixed 20.5 replacement runs/600 PA was superseded by a FanGraphs league-WAR-pool construction. It also promoted baserunning, MLB-reference centering, and a park-neutrality audit to required pre-WAR gates.
 
-Primary checkpoint: `docs/performance-2024-affiliated-checkpoint.md`.
+## Current state
 
-Do not reopen Performance/source-foundation work unless Projection exposes a concrete implementation or coverage failure.
+- **Performance:** DONE / FROZEN
+- **Current Talent:** DONE / FROZEN
+- **Projection v1 batting:** DONE / FROZEN
+- **Playing Time v1:** DONE / FROZEN
+- **Position / Role v1:** DONE / FROZEN
+- **Defense v1:** DONE / FROZEN
+- **Positional adjustment:** DONE / FROZEN / VERIFIED
+- **Batting projected runs:** DONE / FROZEN / VERIFIED
+- **Runs per win:** DONE / FROZEN / VERIFIED
+- **Replacement level:** DONE / REFROZEN / VERIFIED
+- **Baserunning:** **DONE / FROZEN / VERIFIED**
+- **GIDP:** **RAW TERM NON-ADDITIVE; RESIDUAL OMITTED FOR v1**
+- **MLB-reference centering:** **DONE / FROZEN / VERIFIED**
+- **Park-neutrality audit:** **DONE / FROZEN / VERIFIED — `Rpark = 0`**
+- **Required pre-WAR sensitivities:** **DONE / VERIFIED OR CONTRACTUALLY UNAVAILABLE**
+- **WAR/value aggregation:** **DONE / FROZEN / VERIFIED**
+- **Final ranking:** **DONE / FROZEN / VERIFIED**
+- **Formal forecast uncertainty:** **DONE / FROZEN / VERIFIED**
 
-### Current Talent — DONE / FROZEN
+## Frozen upstream models
 
-Universal results-only **Current Talent Baseline 2** is frozen and retained:
+- Current Talent: `translated_multiseason_recency_empirical_bayes_v1`
+- Projection batting: `frozen_current_talent_carry_forward_v1`
+- Playing Time: `playing_time_recent_opportunity_40man_b2_hurdle_v1`
+- Position / Role: `primary_share_thresholded_transition_mean_v1`
+- Steal attempt propensity: `B2_k5`
+- Steal success skill: `B2_k45`
+- Non-steal advancement: `A2_k25`
 
-`translated_multiseason_recency_empirical_bayes_v1`
+Do not reopen these absent a concrete implementation failure.
 
-Frozen design:
+## Defense v1 — frozen
 
-- 1,095-day eligible results history
-- 180-day exponential half-life
-- EB prior strength 100 effective core events
-- training-only MLB-anchored level translation
-- frozen age/current-level Baseline 0 prior
-- frozen 12-component profile
-- 90-day future target used for Current Talent validation
+Final skill hierarchy:
 
-Richer Challenger 1 failed fixed development and is closed.
+- general range: tracked MLB T1 -> affiliated U1 -> neutral B0;
+- catcher throwing: repaired C2 -> B0;
+- catcher blocking: repaired C2 -> B0;
+- framing: eligible MLB F1 -> F0; MiLB framing remains F0.
 
-Richer Challenger 2 (`baseline2_plus_ev_sweet_spot_contact_value_residual_v1`) passed all frozen 2022 development gates but **failed the one-shot 2023 confirmation**. It improved MSE in all three confirmation folds but failed the predeclared MAE no-worse and calibration-intercept guardrails. Binding result: `confirmed = false`.
+Important catcher throwing implementation: fitted repaired C2 weights by **steal attempts** and requires original steal-attempt eligibility, despite an older metadata-only `fielding_outs` label.
 
-Do **not** tune, rescue, reselect, or rerun Challenger 2 against 2023. Do not integrate its scalar into Current Talent, Performance, Projection, WAR, Player Value, or Overall Ranking.
+General defensive exposure is prior-season MLB defensive-out persistence with prior-position shares. Catcher opportunity forecasts remain:
 
-Key Current Talent records:
+- throwing `sb_attempts`: fixed 50/50 persistence / Playing-Time-ratio hybrid;
+- blocking pitches: fixed 50/50 hybrid;
+- framing pitches: raw persistence.
 
-- `docs/current-talent-results-only-baseline-freeze.md`
-- `docs/current-talent-contact-value-confirmation-result.json`
-- `docs/current-talent-contact-value-confirmation-contract.md`
-- `docs/current-talent-challenger2-postmortem.md`
+Native run conversion:
 
-Older Current Talent development/checkpoint files are historical evidence, not active tasks.
+`component_runs = frozen_skill_z * projected_native_opportunities * run_rate_per_z_opportunity`
 
-### Projection v1 — ACTIVE STAGE
+Binding parameters: `docs/player-value-v1-defense-native-run-conversion-parameters.json`.
 
-Governing plan: `docs/projection-batting-v1-plan.md`.
+Key verification records include runs `32266007594`, `32266817048`, `32267920355`, `32268659408`, and `32269076231`.
 
-Primary question:
+## Positional adjustment — frozen / verified
 
-> Does a simple leakage-safe age/development adjustment improve next-season batting-rate/profile prediction over carrying frozen Current Talent forward unchanged?
+Binding FanGraphs 162-game schedule:
 
-Projection v1 remains rate/profile only. Playing time/role, defense, WAR/value, and final ranking remain separate future channels.
+- C `+12.5`
+- 1B `-12.5`
+- 2B `+2.5`
+- 3B `+2.5`
+- SS `+7.5`
+- LF `-7.5`
+- CF `+2.5`
+- RF `-7.5`
+- DH `-17.5`
 
-Chronological design:
+Non-DH:
 
-- `2021-10-15` snapshot -> 2022 outcomes
-- `2022-10-15` snapshot -> 2023 outcomes
-- `2023-10-15` snapshot -> 2024 outcomes
-- **2025 regular-season outcomes remain quarantined as the untouched confirmation period**
+`Rpos[p] = schedule_runs[p] * projected_position_fielding_outs[p] / 4374`
 
-No 2025 outcome table may be opened for feature choice, hyperparameter selection, threshold setting, rescue tuning, or development scoring.
+DH:
 
-## Projection implementation status
+`Rpos[DH] = -17.5 * projected_DH_role_events / 162`
 
-### Deterministic contracts / fast CI — PASSING
+Verification: Actions run `32270697293`.
 
-Recent successful gates include:
+Do not center inside the positional layer. Baseball-Reference's raw current schedule remains a final sensitivity.
 
-- `32089050302` — next-year dataset contract
-- `32089669934` — Projection development-evidence materializer compiles in CI
-- `32090401492` — exact-game fallback contract
-- `32090635490` — exact-game league fallback contract
-- `32090687671` — combined exact-game outcome + league fallback tests
-- `32092505104` — exact source-residual quarantine policy
-- `32092672387` — source-residual quarantine propagated across evidence grains
-- `32092714174` — cross-grain source quarantine regression gate
+## Batting projected runs — frozen / verified
 
-The deterministic chronology/dataset/source-authority contracts are not the current blocker.
+The 12 projected batting bins are a mutually exclusive simplex conditional on a core event. Player Value uses one pooled certified MLB reference environment and common core-event coverage:
 
-### 2024 discrepancy diagnosis — COMPLETE
+`Rbat_i = projected_expected_mlb_pa_i * coverage_mlb * (RV_i_core - RV_ref_core)`
 
-Earlier historical-path runs failed. Official-feed recovery run `32091704947` showed that `game_pk 755829` returns HTTP 404 from the expected Stats API `/feed/live` surface.
+Verification: Actions run `32275192829`.
 
-Source-only residual audit `32092166134` then passed and localized the observed aggregate mismatch to two exact source-only rows:
+Do not add player-specific taxonomy/source coverage as talent.
 
-1. **High-A** — player `669233`, game `755829`: extra `PA=1, AB=1` row.
-2. **Single-A** — player `686541`, game `754395`: extra `PA=1, AB=1, SO=1` row.
+## Runs per win — frozen / verified
 
-For each row, removing the exact suspect eliminates the season mismatch and makes the remaining player-game totals match official gameLog totals. Audit artifact `9308734004`, digest `sha256:574f6f7bd6eb0278ea3a654cb97762ce7fbed07c912e32261f2da5883435a466`.
+Binding method:
 
-### Exact source-residual quarantine — IMPLEMENTED / CROSS-GRAIN CI PASSED
+`RPW = 1.5 * MLB_runs_per_9_innings + 3`
 
-Primary helper:
+2024 certified MLB reference:
 
-`src/universal_baseball/current_talent_source_residual_quarantine.py`
+- runs: `21343`
+- innings: `43116.333333333336`
+- RPW: `9.682629939156854`
 
-Policy:
+Verification: Actions run `32275833614`.
 
-`single_source_only_exact_season_and_official_residual_v1`
+Baseball-Reference/PythagenPat remains a non-binding sensitivity.
 
-A source row is quarantined only when:
+## Replacement level — refrozen / verified
 
-1. there is exactly one source-only positive-PA game for the player/league;
-2. its PA/BB/HBP/SO vector exactly equals the independent season-player residual;
-3. removing its complete PA/AB/BB/HBP/SO/SF/SH/CI vector makes the remaining player-game totals exactly equal the official gameLog aggregate.
+Binding contract: `docs/player-value-v1-replacement-level-contract.md`.
 
-Anything less remains unresolved. No identity, league, or outcome value is guessed or reassigned.
+Binding convention: `fangraphs_570_war_pool_projected_pa_v1`.
 
-The historical wrapper now propagates any proven quarantined player/game key consistently across:
+`WARrep_pool_ref = 570 * (MLB_games_ref / 2430)`
 
-- outcome rows;
-- player-game contact controls;
-- same-player PBP contact rows.
+`replacement_runs_per_pa_ref = WARrep_pool_ref * RPW_ref / MLB_PA_ref`
 
-It also fail-closes missing same-game league identity: if the exact official game endpoint itself returns 404, the unauthorizable PBP game is quarantined rather than inheriting filename-level identity.
+`Rrep_i = projected_expected_mlb_pa_i * replacement_runs_per_pa_ref`
 
-Cross-grain implementation commit: `be8eb1b781fcc8560e1ac2caec2413a2cc4ea2c3`.
+2024 certified reference:
 
-Fast CI runs `32092672387` and `32092714174` both completed **successfully**.
+- completed MLB games: `2429`
+- MLB PA: `182449`
+- RPW: `9.682629939156854`
+- prorated position-player replacement pool: `569.7654320987654 WAR`
+- replacement runs/PA: `0.030237643566893475`
+- replacement runs/600 PA: `18.142586140136086`
 
-### Full 2024 historical gate — LAUNCHED
+Materialization: `docs/player-value-v1-replacement-level-2024.json`.
 
-Two post-quarantine historical runs have been launched:
+Verification: Actions run `32280808517`.
 
-- `32092672369` — **Quarantine exact 2024 source residuals across evidence grains**
-- `32092745178` — **Gate 2024 MiLB on exact source quarantine tests**
+Required replacement sensitivities already materialized:
 
-At the documentation cutoff they were queued; use `docs/projection-recovery-status.json` for their live status. Their result, not the earlier failed historical runs, is the current gating evidence.
+- 590-WAR position-player allocation: `18.779168109965422` runs/600 PA;
+- legacy fixed convention: `20.5` runs/600 PA.
 
-Machine-readable workflow snapshots:
+The earlier 20.5 implementation remains in history/provenance but is **not authorized for final WAR**.
 
-- `docs/projection-status.json`
-- `docs/projection-recovery-status.json`
+## Baserunning / GIDP — frozen / verified
 
-## Immediate next action
+### Source / overlap gate
 
-1. Inspect runs `32092672369` and `32092745178` when they complete.
-2. Require exact aggregate reconciliation, successful cross-grain quarantine metrics, and no new unresolved residuals.
-3. If the historical gate passes, persist/accept the clean certified 2024 evidence artifact and move to full 2022–2024 Projection development-surface materialization.
-4. If it fails, debug only the newly exposed exact discrepancy; do not broaden or loosen the quarantine policy without evidence.
-5. Only after the 2022–2024 development surfaces are complete and chronology-verified should Projection Baseline 0 / Baseline 1 scoring begin.
+Binding source/overlap contract: `docs/player-value-v1-baserunning-source-audit-contract.md`.
 
-Do not jump ahead to the age curve or 2025 confirmation before the quarantined 2024 historical gate passes.
+The live source audit established:
 
-## Projection v1 model boundary already frozen
+- official 2024 MLB season hitting output has complete `groundIntoDoublePlay` counts but **no `gidpOpp` field in any of 780 pooled AL/NL player rows**;
+- therefore the preferred official bulk source cannot directly support an opportunity-adjusted MLB GIDP residual;
+- public Baseball Savant runner-level baserunning-run-value CSV is certified for **2019–2024** with all required advancement fields complete, zero duplicate runner IDs, and internally consistent component opportunity counts;
+- certified Savant runner-row counts by season are `659, 517, 680, 625, 611, 608` for 2019 through 2024;
+- raw GIDP run value is **not additive** because PA-level RE24 already feeds the frozen ground-ball bin values used in `Rbat`.
 
-Baseline 0:
+Source materialization: `docs/player-value-v1-baserunning-source-audit-result.json`.
 
-- carry frozen Current Talent Baseline 2 forward unchanged to the next season.
+### Portable steal projection
 
-Baseline 1 starting family:
+The chronological steal gate used 2022–2023 development targets and held out 2024. Frozen methods:
 
-- learn one-year change in the common Current Talent profile;
-- predictors available only at the October 15 snapshot;
-- age + current level/environment + frozen Current Talent profile + evidence strength/uncertainty as needed;
-- transparent, low-dimensional smoothing/pooling;
-- no future level, role, playing time, tracking, scouting grades, or prospect rankings.
+- attempt propensity: `B2_k5` — three-season recency empirical Bayes, prior strength 5;
+- success skill: `B2_k45` — three-season recency empirical Bayes, prior strength 45.
 
-Before any 2025 scoring, freeze and persist the exact candidate forms, hyperparameter/search grid, promotion thresholds, calibration tolerances, and confirmation refit rule.
+Both beat the neutral baseline in development and confirmed on 2024. Result: `docs/player-value-v1-steal-projection-selection-result.json`.
 
-## Governing read order for a new chat
+### Non-steal advancement projection
+
+The predeclared Savant persistence gate used 2019–2024 source seasons, 2022–2023 development targets, and held out 2024. Frozen method:
+
+- advancement rate: `A2_k25` — up to three prior MLB Savant seasons with `1.00 / 0.50 / 0.25` recency weights and a prior of 25 non-steal advancement opportunities.
+
+Development equal-year primary score improved from `0.0035781987760809303` for `A0_neutral` to `0.0026695655379876298` for `A2_k25`. On held-out 2024 it improved from `0.0032647343977582704` to `0.0023445732494996718`, so the preselected player-specific method confirmed without opening alternative 2024 candidates.
+
+Result: `docs/player-value-v1-advancement-projection-selection-result.json`.
+
+### Run conversion and final v1 baserunning definition
+
+Binding contract: `docs/player-value-v1-baserunning-run-conversion-contract.md`.
+
+Materialization: `docs/player-value-v1-baserunning-run-conversion-2024.json`.
+
+Verified 2024 reference constants include:
+
+- MLB PA: `182449`;
+- steal opportunity proxy: `42342`;
+- steal attempts: `4578`;
+- stolen bases: `3617`;
+- caught stealing: `961`;
+- common steal opportunity rate: `0.2320758129669113` per MLB PA;
+- common steal attempt rate: `0.1081195975627037` per portable steal opportunity;
+- MLB steal success probability: `0.790083005679336`;
+- Savant non-steal advancement opportunities: `12931`;
+- common advancement opportunity rate: `0.0708746005733109` per MLB PA.
+
+Frozen production form:
+
+`Rbr_i = Rsteal_i + Radvance_i`
+
+Steal opportunity exposure and advancement opportunity exposure both scale from **common fixed MLB reference rates per projected MLB PA**, not from the player's projected batting outcomes.
+
+The steal conversion uses the public wSB-style opportunity-centering convention with `runSB = +0.2` and the certified 2024 MLB runs/out environment. Mechanical verification shows a neutral steal player produces `-2.220446049250313e-16` runs at 600 PA, effectively zero within the `1e-10` tolerance.
+
+For advancement, the source-defined frozen `A2_k25` rate is multiplied by the common reference advancement-opportunity rate. MiLB-only/unsupported advancement history remains neutral rather than receiving an invented proxy.
+
+### GIDP decision for v1
+
+Do **not** build a conventional raw GIDP penalty. It would double-count value already present inside the frozen RE24 ground-ball bins.
+
+The separate opportunity-adjusted residual is also now **omitted for v1**:
+
+`Rgidp_residual_i = 0`
+
+The preferred official MLB bulk opportunity denominator is unavailable, and this project will not create a custom play-by-play denominator solely to force a familiar WAR component into the model. Reopen only through a new predeclared gate if a mature, reproducible direct source or reusable implementation is certified first.
+
+## COMPLETED STAGE — fixed-reference MLB centering
+
+Binding contract: `docs/player-value-v1-mlb-centering-contract.md`.
+
+### Membership / exposure gate — VERIFIED
+
+The fixed reference population is now anchored to the certified pooled 2024 MLB Stats API population, not to the Playing Time validation target:
+
+- official positive-PA reference players: **651**;
+- official pooled MLB PA membership anchor: **182,449**;
+- frozen Playing Time 2023-10-15 snapshot rows: **3,985**;
+- Playing Time target players with positive observed 2024 PA: **645**;
+- Playing Time observed-PA diagnostic total: **181,190**;
+- aggregate frozen projected reference PA after membership reconciliation: **148,948.26306286638**.
+
+Six official 2024 MLB hitters are outside the frozen eligible Playing Time/B2 snapshot and therefore have no authorized chronology-safe Playing Time prediction row: `543518`, `593934`, `622491`, `656555`, `666158`, `808982`. They remain in the official 651-player reference cohort with the predeclared structural fallback `projected_expected_mlb_pa = 0.0`; realized 2024 PA is not used to backfill exposure.
+
+Binding membership materialization: `docs/player-value-v1-mlb-centering-2024-membership.json`.
+
+Verification Actions run: **`32320525700`**. Tests, source-artifact download, membership materialization, and artifact upload all passed.
+
+### Numerical centering reference — FROZEN / VERIFIED
+
+With the v1 GIDP residual omitted, assemble the existing frozen historical 2024 component surfaces for the fixed 651-player membership:
+
+`Ravg_raw_ref = aggregate(Rbat + Rbr + Rdef + Rpos)`
+
+Then:
+
+`centering_runs_per_pa = -Ravg_raw_ref / 148948.26306286638`
+
+`Rlg_i = projected_expected_mlb_pa_i * centering_runs_per_pa`
+
+Do **not** use 182,449 observed official PA as the centering denominator; it is the membership/accounting anchor. The numerical centering denominator is frozen projected reference PA.
+
+Before freezing the constant, reuse the existing frozen batting/B2, baserunning, Defense, defensive-position allocation, and DH-role artifacts. Do not build a ranking-specific player population, refit an upstream model, or use 2024 realized component outcomes as projected values. The six outside-snapshot members must remain explicit zero-exposure/fallback rows rather than being dropped.
+
+The concrete numerical materializer and immutable input/column map are now present:
+
+- `scripts/materialize_player_value_v1_mlb_centering_2024.py`;
+- `src/universal_baseball/player_value_defense_projection.py`;
+- `docs/player-value-v1-mlb-centering-source-map-2024.json`;
+- `.github/workflows/player-value-v1-mlb-centering-materialize-2024.yml`.
+
+Verified artifact-only component aggregates for the 651-player reference are:
+
+- `Rbat = 258.49014809587965` runs;
+- `Rdef = 28.094732669019656` runs;
+- `Rpos = -470.90992226794697` runs;
+- projected centering exposure remains exactly `148948.26306286638` PA.
+
+The Savant byte drift was resolved through the narrow, predeclared source re-certification in `docs/player-value-v1-advancement-source-recertification-contract.md`. Actions run **`32378956567`** froze 3,700 projection-relevant player-season rows in artifact **`9410189065`** with canonical model-input SHA-256 `dfbd52dfaccd1cc20d2bf710c27755f169a7873fcd0efb45339debbb3ad4bbc8`. The largest primary-score relative drift was `0.0002302112248237264`, below the `0.001` gate; `A2_k25` remained the unique development winner and retained its 2024 confirmation verdict. No model was refit or reselected.
+
+The first numerical materialization exposed a concrete integration contradiction during final component-subtotal QA: the catcher-opportunity artifact uses component keys `catcher_throwing`, `catcher_blocking`, and `catcher_framing`, while the materializer had looked up the shorter model-family labels. That made all catcher opportunities zero despite C2/F1 eligibility. Commit `21b1151` corrected only this schema mapping; no model, coefficient, exposure formula, population, or source was changed.
+
+Corrected numerical materialization Actions run **`32384563289`** passed every workflow step and refroze `docs/player-value-v1-mlb-centering-2024.json`. Its component artifact is **`9412396481`**, digest `sha256:d7f7a055002597200805f40ef4ccbef75fd9c0db773294133873abc80b8714b7`. The verified reference is:
+
+- `Rbat = 258.49014809587965` runs;
+- `Rbr = 35.008603291041524` runs;
+- `Rdef = 28.094732669019656` runs;
+- `Rpos = -470.90992226794697` runs;
+- raw total `Ravg_raw_ref = -149.31643821200615` runs;
+- `centering_runs_per_pa = 0.0010024718324441579`;
+- aggregate `Rlg = 149.31643821200612` runs;
+- post-centering residual `= -2.842170943040401e-14` runs, within the binding `1e-10` tolerance.
+
+All 651 component rows are explicit. The six outside-snapshot members remain present with projected exposure and all four components equal to zero. Replacement and realized 2024 player components are excluded, and the official `182,449` PA accounting anchor is preserved without being used as the centering denominator. The obsolete fail-closed blocker was removed by the verified workflow.
+
+Legacy advancement-selection run **`32378956317`**, triggered by the shared projection-helper edit, failed at its intentional original-byte hash lock for the already-adjudicated 2019 Savant drift. Its 18 code tests passed before that source lock fired. This does not supersede or invalidate the successful re-certification; the frozen model remains `A2_k25`.
+
+## COMPLETED STAGE — park-neutrality audit
+
+Binding pre-outcome contract: `docs/player-value-v1-park-neutrality-audit-contract.md`.
+
+Verified result: `docs/player-value-v1-park-neutrality-audit-result.json`.
+
+Actions run **`32381035435`** passed all workflow steps, downloaded the four exact frozen source artifacts, and uploaded diagnostic artifact **`9411024828`** with digest `sha256:9a85d711b2d68ac553df35055b0d7c74edd90c07563b00925e6f911ba2171738`.
+
+The predeclared primary test compared each same-team incumbent's 2023 home-minus-away signal with the frozen B2 projection minus 2024 away-only performance. It retained 251 players, 28 teams, and 55,988 away PA after all player/team exposure gates. Results were decisively below every material retained-context threshold:
+
+- full-season retention slope: `-0.012703125674` versus required `>= 0.25`;
+- fitted retained-context weighted SD: `0.072080770764` runs/600 PA versus required `>= 1.0`;
+- one-sided 10,000-permutation p-value: `0.549945005499` versus required `<= 0.05`;
+- first-/second-half slopes: `-0.047819950981` / `0.05284180674`, failing the same-positive-sign gate.
+
+Realized 2024 venue context remained visible as expected: the 30 primary venues had a weighted residual SD of `3.799161849204` runs/600 PA. That secondary diagnostic does not show retained prior-park bias because it uses realized venue outcomes; it was predeclared as non-decisional. The primary out-of-time away-only retention test failed four of five gates, so no park-correction design gate opens and **`Rpark = 0` is frozen for Player Value v1**.
+
+The audit reproduced the binding 645-player / 181,190-PA positive-observed-PA diagnostic before context assignment. One four-PA player-game for MLBAM `643376` was excluded because its frozen rows map the batter to both teams, making a single batting-team assignment false; the final contextual diagnostic surface is 645 players / 181,186 PA. This exclusion affects only the park audit, not the 651-player centering cohort or its frozen denominator.
+
+No live Savant source was fetched, no B2 probability was changed, realized 2024 data were used only as audit targets, numerical centering was unchanged, and no 2025 data or WAR result was accessed.
+
+## COMPLETED STAGE — required pre-WAR sensitivities
+
+Park neutrality and every predeclared sensitivity are resolved. Comparable frozen surfaces were materialized; the one alternate-season sensitivity lacking a complete surface was explicitly closed as unavailable under its predeclared contract.
+
+### Baseball-Reference positional schedule — DONE / VERIFIED
+
+`docs/player-value-v1-positional-adjustment-sensitivity-2024.json` applies the documented Baseball-Reference raw schedule to the exact frozen 3,046-player position/DH exposure surface. Actions run **`32381604496`** passed and uploaded artifact **`9411231308`**, digest `sha256:8f16bd1e4686c306e70586c103824ac85749fd01655952a29ee5385191756aa1`.
+
+- binding FanGraphs aggregate: `-473.74028349337` positional runs;
+- Baseball-Reference sensitivity aggregate: `-440.9744444444445` runs;
+- aggregate difference: `+32.76583904892546` runs;
+- player median / mean absolute difference: `0.0` / `0.06353248512895247` runs;
+- player range: `-2.1774759945130313` to `+2.1908367626886136` runs.
+
+This is diagnostic only. The binding `fangraphs_fixed_162_game_v1` schedule and all frozen exposures remain unchanged. Companion implementation verification run **`32381604402`** also passed.
+
+### Baseball-Reference player-aware/PythagenPat conversion — DONE / VERIFIED
+
+`docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json` applies the pre-outcome method in `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md` to the corrected exact 651-player numerical-centering component surface. Actions run **`32384803016`** passed and uploaded artifact **`9412468709`**, digest `sha256:6e863c22ef7648c8420c99e0ddad17050fd2c7ecc70a191702f32f97f8aea957`.
+
+- binding common-divisor aggregate: `465.1468161753401` WAR;
+- player-aware PythagenPat aggregate: `478.08987545054936` WAR;
+- aggregate sensitivity difference: `+12.943059275209217` WAR;
+- player median / mean absolute difference: `+0.01279717756736326` / `0.02255035452526801` WAR;
+- player range: `-0.06789256135656863` to `+0.12783583765981366` WAR;
+- all 651 rows, the `148948.26306286638` projected-PA denominator, and the six explicit zero-exposure rows reconciled.
+
+This is diagnostic only. The binding `9.682629939156854` common RPW, frozen components, centering, and replacement rate remain unchanged.
+
+Replacement sensitivities were already completed in `docs/player-value-v1-replacement-level-2024.json`. No predeclared sensitivity remains open.
+
+## Final WAR aggregation and ranking — DONE / FROZEN / VERIFIED
+
+Intended final decomposable form:
+
+`RAR = Rbat + Rbr + Rdef + Rpos + Rlg + Rpark_if_required + Rrep`
+
+`WAR = RAR / RPW`
+
+Completed before the final WAR freeze:
+
+- Baseball-Reference positional sensitivity;
+- alternate recent certified MLB batting reference when available;
+- replacement sensitivities above;
+- PythagenPat run-to-win sensitivity if practical;
+- any baserunning/centering sensitivities predeclared before outcomes.
+
+The alternate recent centering sensitivity was closed as unavailable by
+`docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`; Actions run
+**`32383260384`** passed and uploaded artifact **`9411870714`**, digest
+`sha256:0755279274cfa0440f29cf48db4186d70b0cc28f99a71afaf0c287f76e03cc18`.
+The frozen surface has 2023 B2, baserunning, defense, position, and DH machinery,
+but lacks both a certified official 2023 positive-PA cohort/outside-snapshot audit
+and the certified 2023 MLB batting run-reference tables. The centering contract
+forbids manufacturing a partial alternative, so no alternate constant was computed.
+
+The pre-outcome final method and 3,051-player complete-component population are
+frozen in `docs/player-value-v1-final-aggregation-contract.md`. Actions run
+**`32385002209`** passed every step and uploaded final artifact **`9412571491`**,
+digest `sha256:e1dd002d03cccf61345b806a323ec67acacf83a99c8badc7cfe1d3da8f164b71`.
+The workflow froze `docs/player-value-v1-final-2024.json` and the complete ranked
+Parquet table.
+
+Final aggregate values across 3,051 rows:
+
+- projected component surface: 3,045 complete frozen players plus the six explicit zero rows;
+- `Rbat = -147.189347986084` runs;
+- `Rbr = 33.16264877734028` runs;
+- general range / catcher throwing / blocking / framing = `73.28812216345528` / `-21.476703642600523` / `20.44617985788917` / `-53.60093988024389` runs;
+- `Rdef = 18.656658498500054` runs after exact subtotal reconciliation;
+- `Rpos = -473.74028349336993` runs;
+- `Rlg = 166.21292938234564` runs;
+- `Rpark = 0.0` runs;
+- `Rrep = 5013.494795777783` runs;
+- `RAR = 4610.597400956516` runs;
+- aggregate `WAR = 476.17201420774313` at binding RPW `9.682629939156854`.
+
+Mechanical QA reproduced all 651 corrected centering rows with maximum component
+delta `0.0`, retained all six zero rows, reconciled defense subtotals within
+`1.7763568394002505e-15` runs, and reconciled the RAR identity within
+`7.105427357601002e-15` runs. The final ordering uses unrounded WAR descending
+and ascending MLBAM ID only as a deterministic tie-break.
+
+## Formal forecast uncertainty — DONE / FROZEN / VERIFIED
+
+The pre-output method was frozen in
+`docs/player-value-v1-uncertainty-contract.md` at commit `9d6e5ad`, before any
+interval result was materialized. It adds deterministic equal-tail 80% and 95%
+model-based forecast intervals around the final 3,051 point estimates using the
+frozen Playing Time hurdle/NB2 distribution, the B2 empirical-Bayes evidence
+surface, and Defense family residual MSEs. It does not change point components,
+rank order, population, or any upstream selection.
+
+Actions run **`32388953065`** passed all steps, including 33 focused tests in
+the workflow's selected suites, exact frozen-artifact downloads, the complete
+3,051-player simulation, and a byte-for-byte deterministic rerun. Artifact
+**`9414064136`**, digest
+`sha256:412baa74c72532e76f97f09da742a657d15c7b3d70407c0926337946aae146f3`,
+contains the complete Parquet interval table and the frozen result
+`docs/player-value-v1-uncertainty-2024.json`.
+
+Mechanical QA verified:
+
+- all 3,051 rows and the original point rank/WAR are unchanged;
+- all six outside-snapshot structural-zero rows retain zero-width intervals;
+- Playing Time expected-PA reconciliation delta is exactly `0.0`;
+- maximum batting point reproduction delta is
+  `9.381384558082573e-15` runs;
+- maximum point-WAR identity delta is exactly `0.0`;
+- maximum component variance-share sum residual is
+  `2.220446049250313e-16`;
+- every interval is finite and nested.
+
+Across players, mean 80% / 95% interval widths are
+`0.4837201039184545` / `0.9595463558223047` WAR; 95th-percentile widths are
+`3.0470708095058248` / `5.679540011257353` WAR. The median variance share is
+`0.686922382072843` Playing Time, `0.2676183130576742` batting, and `0.0`
+Defense. The hurdle model produces zero-width 80% / 95% intervals for 2,273 /
+1,848 low-participation rows because the corresponding central interval is
+entirely at zero; no cap, floor, or post-result repair was applied.
+
+These intervals are conditional on the frozen v1 uncertainty surfaces. They do
+not invent independent baserunning-skill, future position/DH-mix, league-constant,
+source-revision, or cross-component covariance error. Those omissions are
+explicit in the result and remain possible v2 gates.
+
+## Repository integration audit — DONE / VERIFIED
+
+A full integration audit was completed on 2026-08-20. Packaging now exposes an
+explicit `playing-time` extra, the `dev` extra includes every runtime imported by
+the complete test suite, PR CI runs Ruff before tests, warnings are promoted to
+errors, and repository-level tests enforce JSON parsing, local Markdown-link
+resolution, unique workflow names, dependency coverage, workflow lifecycle, and
+the frozen Player Value arithmetic.
+
+The audit also caught a post-freeze reproducibility defect. Cleanup-only edits
+triggered eight historical writer workflows. All eight runs completed
+mechanically, but they rewrote frozen provenance and several numerical surfaces.
+In particular, Defense run `32391048359` refit against live Savant leaderboard
+responses even though its inputs were described as frozen. Comparison with the
+original immutable freeze artifact from run `32198603779`, artifact
+`9346716010`, digest
+`sha256:b45493f8014c52eafbea0ab4dca18e99394ca7d11318052b60204198fc711acf`,
+showed:
+
+- three 2022 general-range target rows changed by exactly `-1.0` raw run;
+- 65 of 72 catcher-throwing rows changed, with maximum absolute raw drift
+  `0.03209811233209861`;
+- 44 of 70 catcher-blocking rows changed, with maximum absolute raw drift
+  `0.057441866089979005`;
+- the catcher responses were repeated across requested target years, confirming
+  that this superseded live target path is not an acceptable frozen source.
+
+Those bot-written result changes were rejected and the pre-audit binding files
+were restored exactly. The accepted Defense parameter package remains the
+original run `32198603779` freeze, while the repaired catcher machinery remains
+the later production authority documented elsewhere in this handoff. No final
+Player Value component, WAR, rank, interval, or binding population changed.
+
+Because every v1 gate is complete, all 211 historical research/materialization
+workflows are now manual-only. `.github/workflows/ci.yml` is the sole automatic
+workflow, runs on pull requests and `main`, and supports explicit branch-level
+manual verification. The lifecycle policy is frozen in
+`docs/workflow-lifecycle.md`; a manual historical rerun is diagnostic and cannot
+silently redefine a binding v1 result.
+
+Branch-level integration run `32392573145` verified the archived lifecycle on
+commit `e1535d36ee35ecb2bd873451589bc0c9c0ee7626`: project installation, Ruff,
+and all `798` tests completed successfully.
+
+## Governing read order
 
 1. `docs/project-status.md`
-2. `docs/projection-batting-v1-plan.md`
-3. `docs/projection-recovery-status.json`
-4. `docs/projection-status.json`
-5. `docs/current-talent-results-only-baseline-freeze.md`
-6. `docs/current-talent-contact-value-confirmation-result.json`
-7. `docs/current-talent-challenger2-postmortem.md`
-8. `docs/performance-2024-affiliated-checkpoint.md`
-9. `docs/canonical-data-contract.md`
-10. `docs/source-certification-current.md`
+2. `docs/player-value-v1-war-literature-review.md`
+3. `docs/player-value-v1-architecture-contract.md`
+4. `docs/player-value-v1-mlb-centering-contract.md`
+5. `docs/player-value-v1-mlb-centering-2024-membership.json`
+6. `docs/player-value-v1-mlb-centering-2024.json`
+7. `docs/player-value-v1-park-neutrality-audit-contract.md`
+8. `docs/player-value-v1-park-neutrality-audit-result.json`
+9. `docs/player-value-v1-mlb-centering-verification.json`
+10. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md`
+11. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json`
+12. `docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`
+13. `docs/player-value-v1-final-aggregation-contract.md`
+14. `docs/player-value-v1-final-2024.json`
+15. `docs/player-value-v1-uncertainty-contract.md`
+16. `docs/player-value-v1-uncertainty-2024.json`
+17. `docs/player-value-v1-replacement-level-contract.md`
+18. `docs/player-value-v1-replacement-level-2024.json`
+19. `docs/player-value-v1-replacement-level-verification.json`
+20. `docs/player-value-v1-runs-per-win-contract.md`
+21. `docs/player-value-v1-mlb-run-environment-2024.json`
+22. `docs/player-value-v1-batting-runs-contract.md`
+23. `docs/player-value-v1-positional-adjustment-contract.md`
+24. `docs/player-value-v1-defense-production-handoff.md`
+25. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+26. `docs/player-value-v1-baserunning-source-audit-contract.md`
+27. `docs/player-value-v1-baserunning-source-audit-result.json`
+28. `docs/player-value-v1-steal-projection-selection-contract.md`
+29. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+30. `docs/player-value-v1-steal-projection-selection-result.json`
+31. `docs/player-value-v1-advancement-projection-selection-contract.md`
+32. `docs/player-value-v1-advancement-projection-selection-result.json`
+33. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+34. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+35. `docs/projection-batting-v1-development-result.json`
+36. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
-- Do not redo settled Current Talent selection/confirmation work absent a concrete implementation failure.
-- Do not treat workflow failure alone as evidence for a broad rewrite; inspect the exact failing source contract first.
-- Preserve immutable raw/source evidence and provenance.
-- Reuse certified artifacts where their scope matches the Projection fold.
-- Keep confirmation data quarantined until all development decisions are frozen.
-- Update this handoff whenever the live blocker or recommended next batch changes.
+- Work in small verified batches.
+- Preserve immutable source evidence and provenance.
+- Reuse certified artifacts where scope matches.
+- Freeze exact model/source decisions before opening genuinely unused confirmation evidence.
+- Do not tune downstream decisions to already-accessed 2025 confirmation residuals.
+- Do not center against the universal ranking population.
+- Do not add park adjustment without evidence of residual park context.
+- Do not revise the frozen final aggregation method or population from ranking outcomes.

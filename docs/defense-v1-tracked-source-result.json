@@ -1,0 +1,182 @@
+{
+  "boundary": {
+    "2025_defensive_targets_accessed": false,
+    "2025_source_accessed": false,
+    "model_fit": false,
+    "source_filters_changed_from_contract": false
+  },
+  "contract": "docs/defense-v1-tracked-challenger-contract.md",
+  "decision": {
+    "2025_confirmation_authorized": false,
+    "tracked_challenger_scoring_authorized_next": true,
+    "tracked_source_materialized": true,
+    "war_value_authorized": false
+  },
+  "diagnostics": [
+    {
+      "bip_row_count": 121706,
+      "column_count": 119,
+      "eligible_framing_catcher_count": 90,
+      "eligible_range_player_position_count": 346,
+      "framing_catcher_row_count": 116,
+      "framing_total_takes": 353246,
+      "level_group": "MLB",
+      "pitch_row_count": 712320,
+      "range_player_position_row_count": 1413,
+      "range_total_opportunities": 110174,
+      "season": 2021
+    },
+    {
+      "bip_row_count": 124267,
+      "column_count": 119,
+      "eligible_framing_catcher_count": 91,
+      "eligible_range_player_position_count": 338,
+      "framing_catcher_row_count": 120,
+      "framing_total_takes": 350896,
+      "level_group": "MLB",
+      "pitch_row_count": 710210,
+      "range_player_position_row_count": 1417,
+      "range_total_opportunities": 113697,
+      "season": 2022
+    },
+    {
+      "bip_row_count": 124234,
+      "column_count": 119,
+      "eligible_framing_catcher_count": 84,
+      "eligible_range_player_position_count": 327,
+      "framing_catcher_row_count": 102,
+      "framing_total_takes": 358480,
+      "level_group": "MLB",
+      "pitch_row_count": 720684,
+      "range_player_position_row_count": 1327,
+      "range_total_opportunities": 113271,
+      "season": 2023
+    },
+    {
+      "bip_row_count": 112475,
+      "column_count": 119,
+      "eligible_framing_catcher_count": 123,
+      "eligible_range_player_position_count": 306,
+      "framing_catcher_row_count": 173,
+      "framing_total_takes": 359266,
+      "level_group": "AAA",
+      "pitch_row_count": 691656,
+      "range_player_position_row_count": 2068,
+      "range_total_opportunities": 101180,
+      "season": 2023
+    },
+    {
+      "bip_row_count": 30399,
+      "column_count": 119,
+      "eligible_framing_catcher_count": 42,
+      "eligible_range_player_position_count": 57,
+      "framing_catcher_row_count": 68,
+      "framing_total_takes": 85233,
+      "level_group": "TRACKED_NON_AAA",
+      "pitch_row_count": 192847,
+      "range_player_position_row_count": 647,
+      "range_total_opportunities": 22927,
+      "season": 2023
+    }
+  ],
+  "execution_shape": "four_parallel_frozen_source_segments_then_hash_verified_aggregation",
+  "gate": "defense_v1_tracked_source_materialization",
+  "queries": [
+    {
+      "chunk_days": 7,
+      "end": "2021-10-03",
+      "game_type": "R",
+      "level_group": "MLB",
+      "season": 2021,
+      "source": "Baseball Savant MLB Statcast CSV via SportsDataverse",
+      "start": "2021-04-01"
+    },
+    {
+      "chunk_days": 7,
+      "end": "2022-10-05",
+      "game_type": "R",
+      "level_group": "MLB",
+      "season": 2022,
+      "source": "Baseball Savant MLB Statcast CSV via SportsDataverse",
+      "start": "2022-04-07"
+    },
+    {
+      "chunk_days": 7,
+      "end": "2023-10-01",
+      "game_type": "R",
+      "level_group": "MLB",
+      "season": 2023,
+      "source": "Baseball Savant MLB Statcast CSV via SportsDataverse",
+      "start": "2023-03-30"
+    },
+    {
+      "chunk_days": 7,
+      "client_level_classification": "official 2023 AAA home-team abbreviation membership",
+      "end": "2023-09-30",
+      "game_type": "R",
+      "level_group": "AAA",
+      "minors": "true",
+      "season": 2023,
+      "server_level_filter": false,
+      "source": "Baseball Savant MiLB Statcast CSV via SportsDataverse",
+      "start": "2023-03-31"
+    },
+    {
+      "chunk_days": 7,
+      "client_level_classification": "official 2023 AAA home-team abbreviation membership",
+      "end": "2023-09-30",
+      "game_type": "R",
+      "level_group": "TRACKED_NON_AAA",
+      "minors": "true",
+      "season": 2023,
+      "server_level_filter": false,
+      "source": "Baseball Savant MiLB Statcast CSV via SportsDataverse",
+      "start": "2023-03-31"
+    }
+  ],
+  "report_schema_version": "0.2",
+  "segment_inputs": [
+    {
+      "framing_sha256": "dc943c24e6e792faf190836fbad6aa9ecd76c880cbf3a5842f36f5fbcd981e12",
+      "range_sha256": "178420b68428cf5404ce6911c9081fe71dff2a6f0fff16359230ef2cca447579",
+      "segment": "mlb-2021"
+    },
+    {
+      "framing_sha256": "953b0c227320e5d1e762a3500115987585bf94bb228baaa6eb045850600d32f0",
+      "range_sha256": "12fe70a8ec245228deb354db800d543a9d351e2efceaf7c95e7a8244b5a64afe",
+      "segment": "mlb-2022"
+    },
+    {
+      "framing_sha256": "cd9115dd500d541e38b1733ffa3092d5ccbd706e52e20f1ae0c21a10cfa59656",
+      "range_sha256": "4b00b61f7887440a07e915bdc61970f79757748505550f8900655042c6fc04f5",
+      "segment": "mlb-2023"
+    },
+    {
+      "framing_sha256": "2d25b179f6481bc64e2b612c94e334f39fd47dd78f7ac1f8dd400f17163849f1",
+      "range_sha256": "1a00194fe12cd2407dae96b0a1e2239b93fb748a2c7be08c573a2afbecaf7b26",
+      "segment": "milb-2023"
+    }
+  ],
+  "source_run_id": 32182019495,
+  "source_sha": "5438e905d24e2167432a52253320ccbc978186b8",
+  "storage": {
+    "framing": {
+      "file_size_bytes": 18910,
+      "path": "reports/generated/defense-v1-tracked-source/tables/tracked_framing_proxy_2021_2023.parquet",
+      "row_count": 579,
+      "sha256": "1071b9d8209d6e9ba9d8c2b42ac7b99e3329387704e2910797b58f1a148cbc79"
+    },
+    "range": {
+      "file_size_bytes": 133438,
+      "path": "reports/generated/defense-v1-tracked-source/tables/tracked_range_proxy_2021_2023.parquet",
+      "row_count": 6872,
+      "sha256": "a65cb6f7506d5e100c9f0b088fb276eecc1dab5599592dd477bfcc030d850a3e"
+    }
+  },
+  "upstream": {
+    "framing_function": "mlb_catcher_framing",
+    "package": "sportsdataverse",
+    "package_version": "0.0.75",
+    "range_function": "mlb_fielding_oaa"
+  }
+}

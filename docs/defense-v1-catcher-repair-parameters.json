@@ -1,0 +1,113 @@
+{
+  "boundary": {
+    "2025_catcher_target_accessed": false,
+    "2025_confirmation_residuals_used": false,
+    "development_threshold_changed": false,
+    "general_range_loaded_for_fit": false,
+    "general_range_modified": false,
+    "new_candidate_family_added": false,
+    "war_calculated": false
+  },
+  "contract": "docs/defense-v1-catcher-source-repair-contract.md",
+  "decision": {
+    "additional_catcher_development_authorized": false,
+    "general_range_reopened": false,
+    "repaired_2025_catcher_confirmation_authorized_after_source_certification": true,
+    "repaired_2025_catcher_target_materialization_authorized_next": true,
+    "repaired_pre_2025_catcher_parameters_frozen": true,
+    "war_value_authorized": false
+  },
+  "deterministic_reproduction": {
+    "comparison": "exact parameter and training-row object equality",
+    "passed": true
+  },
+  "freeze_run_id": 32206935150,
+  "freeze_sha": "78c6eb74dcb3cd3b976c57d72d268d108457662c",
+  "gate": "defense_v1_catcher_repair_pre_2025_parameter_freeze",
+  "package_versions": {
+    "numpy": "2.5.2",
+    "polars": "1.43.2",
+    "python": "3.12.13"
+  },
+  "parameter_hash": "sha256:f4790bc1cb4df63d2ba65757455a4b6753e98d25fe552208d893958bdd19f328",
+  "parameters": {
+    "catcher_blocking": {
+      "coefficients": [
+        -0.7000954222726304,
+        -1.0240357908940403
+      ],
+      "component": "blocking",
+      "exposure": "fielding_outs",
+      "family": "C2",
+      "feature": "passed_balls_per_9",
+      "lambda": 0.0,
+      "normalization": {
+        "count": 1765,
+        "feature": "passed_balls_per_9",
+        "mean": 0.17241685888606925,
+        "sd": 0.1391379197614434
+      },
+      "prior_season_recency_weight": 0.5,
+      "training_row_count": 234
+    },
+    "catcher_throwing": {
+      "coefficients": [
+        0.02392718786649104,
+        0.35981471853404956
+      ],
+      "component": "throwing",
+      "exposure": "fielding_outs",
+      "family": "C2",
+      "feature": "caught_stealing_pct",
+      "lambda": 0.0,
+      "normalization": {
+        "count": 1758,
+        "feature": "caught_stealing_pct",
+        "mean": 0.251255672552965,
+        "sd": 0.09338149541489442
+      },
+      "prior_season_recency_weight": 0.5,
+      "training_row_count": 230
+    },
+    "model_name": "defense_v1_repaired_catcher_pre_2025_parameter_package",
+    "training_input_years": [
+      2021,
+      2022,
+      2023
+    ],
+    "training_target_years": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "report_schema_version": "0.1",
+  "source": {
+    "historical_run_id": 32148467330,
+    "repaired_development_run_id": 32206746839,
+    "repaired_development_sha": "615cbcd4a50a11fd8c68c2cdbcf909a0bf728a0a",
+    "repaired_target_source_run_id": 32206603934,
+    "repaired_target_source_sha": "3ad138d132e850f0b9e3a5e714cb334046ecf1e0",
+    "target_rows": {
+      "blocking": {
+        "2022": 84,
+        "2023": 77,
+        "2024": 79
+      },
+      "throwing": {
+        "2022": 79,
+        "2023": 78,
+        "2024": 79
+      }
+    }
+  },
+  "status": "repaired_catcher_parameters_frozen_ready_for_2025_source",
+  "storage": {
+    "training_rows": {
+      "file_size_bytes": 2401,
+      "path": "reports/generated/defense-v1-catcher-repair-parameter-freeze/tables/training_rows.parquet",
+      "row_count": 464,
+      "sha256": "ed157cf532089e4ac5810a475fced32334e5968dde1767d0f0562b4677811f23"
+    }
+  }
+}

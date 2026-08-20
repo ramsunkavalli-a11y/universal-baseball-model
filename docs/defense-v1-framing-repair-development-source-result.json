@@ -1,0 +1,205 @@
+{
+  "boundary": {
+    "2025_defense_confirmation_accessed": false,
+    "2025_framing_target_accessed": false,
+    "catcher_blocking_modified": false,
+    "catcher_throwing_modified": false,
+    "framing_target_local_eligibility_changed": false,
+    "general_range_modified": false,
+    "model_fit": false,
+    "model_scoring": false,
+    "source_thresholds_changed_from_original_contract": false,
+    "tracked_framing_predictor_modified": false,
+    "war_calculated": false
+  },
+  "contract": "docs/defense-v1-framing-source-repair-contract.md",
+  "decision": {
+    "repaired_2022_2024_framing_targets_materialized": true,
+    "repaired_2025_framing_target_materialization_authorized": false,
+    "repaired_framing_development_authorized_next": true,
+    "war_value_authorized": false,
+    "year_specific_source_certified": true
+  },
+  "diagnostics": [
+    {
+      "eligible_row_count": 60,
+      "embedded_year_columns_checked": [],
+      "embedded_year_values": {},
+      "id_column": "id",
+      "local_minimum_pitches": 1000,
+      "source_minimum_called_pitches": 1,
+      "source_row_count": 60,
+      "target_formula": "1000 * rv_tot / pitches",
+      "target_mean": -0.027413726957029858,
+      "target_population_sd": 1.2742810113448868,
+      "target_standardization": "within target season, population sd ddof=0",
+      "year": 2022
+    },
+    {
+      "eligible_row_count": 63,
+      "embedded_year_columns_checked": [],
+      "embedded_year_values": {},
+      "id_column": "id",
+      "local_minimum_pitches": 1000,
+      "source_minimum_called_pitches": 1,
+      "source_row_count": 63,
+      "target_formula": "1000 * rv_tot / pitches",
+      "target_mean": 0.06087016282353013,
+      "target_population_sd": 1.1942370319817492,
+      "target_standardization": "within target season, population sd ddof=0",
+      "year": 2023
+    },
+    {
+      "eligible_row_count": 58,
+      "embedded_year_columns_checked": [],
+      "embedded_year_values": {},
+      "id_column": "id",
+      "local_minimum_pitches": 1000,
+      "source_minimum_called_pitches": 1,
+      "source_row_count": 58,
+      "target_formula": "1000 * rv_tot / pitches",
+      "target_mean": -0.008438725442936935,
+      "target_population_sd": 1.093267262180075,
+      "target_standardization": "within target season, population sd ddof=0",
+      "year": 2024
+    }
+  ],
+  "gate": "defense_v1_framing_repair_development_source",
+  "report_schema_version": "0.1",
+  "source": {
+    "endpoint": "https://baseballsavant.mlb.com/leaderboard/catcher-framing",
+    "known_invalid_prior_transport": "SportsDataverse 0.0.75 generic year query parameter",
+    "provider": "Baseball Savant catcher-framing leaderboard",
+    "queries": [
+      {
+        "endpoint": "catcher-framing",
+        "raw_csv_sha256": "a933359b1e50eeb6262e54c8938836f348a659236e2c9b1a1beb76185478c48c",
+        "requested_params": {
+          "csv": "true",
+          "min": 1,
+          "seasonEnd": 2022,
+          "seasonStart": 2022,
+          "sortColumn": "rv_tot",
+          "sortDirection": "desc",
+          "team": "",
+          "type": "catcher"
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing?type=catcher&seasonStart=2022&seasonEnd=2022&team=&min=1&sortColumn=rv_tot&sortDirection=desc&csv=true",
+        "source_row_count": 60,
+        "year": 2022
+      },
+      {
+        "endpoint": "catcher-framing",
+        "raw_csv_sha256": "f24db2cdc65bfa6acfa6f488ebd9ffa351ca18cf4314a651ab6821a9a752cd5d",
+        "requested_params": {
+          "csv": "true",
+          "min": 1,
+          "seasonEnd": 2023,
+          "seasonStart": 2023,
+          "sortColumn": "rv_tot",
+          "sortDirection": "desc",
+          "team": "",
+          "type": "catcher"
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing?type=catcher&seasonStart=2023&seasonEnd=2023&team=&min=1&sortColumn=rv_tot&sortDirection=desc&csv=true",
+        "source_row_count": 63,
+        "year": 2023
+      },
+      {
+        "endpoint": "catcher-framing",
+        "raw_csv_sha256": "c04e9165c2cc5bdbda96dc888d033e19a2dbd0ab504872ee76cf124132ca346c",
+        "requested_params": {
+          "csv": "true",
+          "min": 1,
+          "seasonEnd": 2024,
+          "seasonStart": 2024,
+          "sortColumn": "rv_tot",
+          "sortDirection": "desc",
+          "team": "",
+          "type": "catcher"
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing?type=catcher&seasonStart=2024&seasonEnd=2024&team=&min=1&sortColumn=rv_tot&sortDirection=desc&csv=true",
+        "source_row_count": 58,
+        "year": 2024
+      }
+    ],
+    "transport": "direct framing-specific CSV query semantics"
+  },
+  "source_run_id": 32208273343,
+  "source_sha": "035602dd610f76c7309fcc78c23cf71f25346df6",
+  "status": "source_materialized_ready_for_repaired_framing_development",
+  "storage": {
+    "all_targets": {
+      "file_size_bytes": 8042,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/tables/catcher_framing_targets_2022_2024.parquet",
+      "row_count": 181,
+      "sha256": "a4316109b6ff62219d51a08753e66d700fe8d7df8f7ce701c8fb98bc6876a0b8",
+      "table_name": "framing_repair_targets_2022_2024"
+    },
+    "raw_csv_2022": {
+      "file_size_bytes": 14246,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/raw/catcher-framing-2022.csv",
+      "sha256": "a933359b1e50eeb6262e54c8938836f348a659236e2c9b1a1beb76185478c48c",
+      "table_name": "framing_repair_raw_csv_2022"
+    },
+    "raw_csv_2023": {
+      "file_size_bytes": 14998,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/raw/catcher-framing-2023.csv",
+      "sha256": "f24db2cdc65bfa6acfa6f488ebd9ffa351ca18cf4314a651ab6821a9a752cd5d",
+      "table_name": "framing_repair_raw_csv_2023"
+    },
+    "raw_csv_2024": {
+      "file_size_bytes": 13711,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/raw/catcher-framing-2024.csv",
+      "sha256": "c04e9165c2cc5bdbda96dc888d033e19a2dbd0ab504872ee76cf124132ca346c",
+      "table_name": "framing_repair_raw_csv_2024"
+    },
+    "raw_parquet_2022": {
+      "file_size_bytes": 13364,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/raw/catcher-framing-2022.parquet",
+      "row_count": 60,
+      "sha256": "f5c06fe345cfeaa3c708dd75334068e613d90ee5a778daf115ec814c7c511572",
+      "table_name": "framing_repair_raw_2022"
+    },
+    "raw_parquet_2023": {
+      "file_size_bytes": 13719,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/raw/catcher-framing-2023.parquet",
+      "row_count": 63,
+      "sha256": "0be762fa2b28fb0e77c7f00dfad0b329ec3cffc71791fd24671275e1ecd95a81",
+      "table_name": "framing_repair_raw_2023"
+    },
+    "raw_parquet_2024": {
+      "file_size_bytes": 13263,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/raw/catcher-framing-2024.parquet",
+      "row_count": 58,
+      "sha256": "96d2c178339eb8c8c708024135f19b3f1bd7bb5a348da8793be511f5e0945b38",
+      "table_name": "framing_repair_raw_2024"
+    },
+    "targets_2022": {
+      "file_size_bytes": 4677,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/tables/catcher_framing_targets_2022.parquet",
+      "row_count": 60,
+      "sha256": "2086456b25b26381ff7fed83092c8aadbaff1e295102ce3931b65660f328889e",
+      "table_name": "framing_repair_targets_2022"
+    },
+    "targets_2023": {
+      "file_size_bytes": 4771,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/tables/catcher_framing_targets_2023.parquet",
+      "row_count": 63,
+      "sha256": "54d42f1293e4ea2abdd353f146d8e01acf137fffc6ec30273aada0a6e8070181",
+      "table_name": "framing_repair_targets_2023"
+    },
+    "targets_2024": {
+      "file_size_bytes": 4626,
+      "path": "reports/generated/defense-v1-framing-repair-development-source/tables/catcher_framing_targets_2024.parquet",
+      "row_count": 58,
+      "sha256": "4b4123955623623d1718478debc4dfb901cc1f3df5f63f8f5c662b1784f0989f",
+      "table_name": "framing_repair_targets_2024"
+    }
+  },
+  "years": [
+    2022,
+    2023,
+    2024
+  ]
+}

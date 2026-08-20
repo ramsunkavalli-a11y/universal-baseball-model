@@ -1,0 +1,145 @@
+name: Player Value v1 steal projection selection
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Run and capture steal selection pipeline
+        id: pipeline
+        shell: bash
+        run: |
+          set +e
+          log_path="/tmp/player-value-v1-steal-selection.log"
+          diagnostic_path="docs/player-value-v1-steal-projection-selection-diagnostic.json"
+          result_path="docs/player-value-v1-steal-projection-selection-result.json"
+          : > "$log_path"
+
+          run_stage() {
+            stage="$1"
+            shift
+            echo "=== $stage ===" | tee -a "$log_path"
+            "$@" >>"$log_path" 2>&1
+            return $?
+          }
+
+          failure_stage=""
+          run_stage "install" python -m pip install --upgrade pip
+          status=$?
+          if [ "$status" -eq 0 ]; then
+            run_stage "install-project" python -m pip install -e ".[dev]"
+            status=$?
+          else
+            failure_stage="install"
+          fi
+          if [ "$status" -ne 0 ] && [ -z "$failure_stage" ]; then
+            failure_stage="install-project"
+          fi
+
+          if [ "$status" -eq 0 ]; then
+            run_stage "compile" python -m py_compile \
+              src/universal_baseball/player_value_steal_projection.py \
+              src/universal_baseball/player_value_steal_data.py \
+              src/universal_baseball/player_value_steal_sources.py \
+              scripts/select_player_value_v1_steal_projection.py
+            status=$?
+            if [ "$status" -ne 0 ]; then failure_stage="compile"; fi
+          fi
+
+          if [ "$status" -eq 0 ]; then
+            run_stage "tests" python -m pytest -q \
+              tests/test_player_value_steal_projection.py \
+              tests/test_player_value_steal_data.py \
+              tests/test_player_value_steal_sources.py \
+              tests/test_player_value_baserunning_sources.py \
+              tests/test_season_stats.py \
+              tests/test_mlb_season_stats.py
+            status=$?
+            if [ "$status" -ne 0 ]; then failure_stage="tests"; fi
+          fi
+
+          if [ "$status" -eq 0 ]; then
+            echo "=== selection ===" | tee -a "$log_path"
+            python scripts/select_player_value_v1_steal_projection.py \
+              --output "$result_path" >>"$log_path" 2>&1
+            status=$?
+            if [ "$status" -ne 0 ]; then failure_stage="selection"; fi
+          fi
+
+          cat "$log_path" || true
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          if [ "$status" -ne 0 ]; then
+            export PIPELINE_EXIT_CODE="$status"
+            export PIPELINE_FAILURE_STAGE="$failure_stage"
+            python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          log_path = Path("/tmp/player-value-v1-steal-selection.log")
+          diagnostic_path = Path("docs/player-value-v1-steal-projection-selection-diagnostic.json")
+          log_text = log_path.read_text(errors="replace") if log_path.exists() else ""
+          payload = {
+              "status": "player_value_v1_steal_projection_selection_failed",
+              "verified_source_commit": str(os.environ.get("GITHUB_SHA") or "").strip() or None,
+              "failure_stage": str(os.environ.get("PIPELINE_FAILURE_STAGE") or "unknown"),
+              "exit_code": int(os.environ["PIPELINE_EXIT_CODE"]),
+              "log_tail": log_text[-12000:],
+          }
+          diagnostic_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+          PY
+          else
+            rm -f "$diagnostic_path"
+          fi
+          exit 0
+
+      - name: Persist steal selection result or failure diagnostic
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for path in \
+            docs/player-value-v1-steal-projection-selection-result.json \
+            docs/player-value-v1-steal-projection-selection-diagnostic.json
+          do
+            if [ -e "$path" ] || git ls-files --error-unmatch "$path" >/dev/null 2>&1; then
+              git add -A -- "$path"
+            fi
+          done
+          if git diff --cached --quiet; then
+            echo "Steal projection selection materialization unchanged."
+          else
+            git commit -m "Materialize steal projection selection"
+            for attempt in 1 2 3; do
+              git fetch origin source-certification-poc
+              if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then
+                break
+              fi
+              git rebase --abort || true
+              if [ "$attempt" -eq 3 ]; then exit 1; fi
+              sleep $((attempt * 2))
+            done
+          fi
+
+      - name: Fail workflow when pipeline did not complete
+        if: steps.pipeline.outputs.exit_code != '0'
+        run: |
+          echo "Steal selection pipeline failed; persisted diagnostic JSON for inspection."
+          exit 1

@@ -1,12 +1,6 @@
 name: Current Talent contact-value 2023 confirmation prediction geometry
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "scripts/materialize_current_talent_contact_value_confirmation_prediction_geometry.py"
-      - ".github/workflows/current-talent-contact-value-confirmation-prediction-geometry.yml"
   workflow_dispatch:
 
 permissions:

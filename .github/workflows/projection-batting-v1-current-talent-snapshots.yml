@@ -1,0 +1,86 @@
+name: Projection batting v1 frozen Current Talent snapshots
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Verify frozen B2 snapshot code before source downloads
+        run: >-
+          python -m py_compile
+          src/universal_baseball/projection_current_talent.py
+          scripts/materialize_projection_batting_v1_current_talent_snapshots.py
+          && python -m pytest -q tests/test_projection_current_talent.py
+
+      - name: Seed immutable certified 2021-2024 evidence artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo="ramsunkavalli-a11y/universal-baseball-model"
+          mkdir -p seeded
+
+          download() {
+            local run_id="$1"
+            local artifact="$2"
+            local dest="$3"
+            mkdir -p "$dest"
+            gh run download "$run_id" --repo "$repo" --name "$artifact" --dir "$dest"
+          }
+
+          for level in aaa aa 'a+' a rk; do
+            download 31979609553 "current-talent-historical-milb-full-season-2021-${level}" "seeded/2021/milb/${level}"
+            download 31971662070 "current-talent-historical-milb-full-season-${level}" "seeded/2022/milb/${level}"
+            download 31971923778 "current-talent-historical-milb-full-season-2023-${level}" "seeded/2023/milb/${level}"
+            download 32095039114 "current-talent-historical-milb-full-season-2024-${level}" "seeded/2024/milb/${level}"
+          done
+
+          download 31986504169 "current-talent-historical-mlb-2021" "seeded/2021/mlb"
+          download 31988255280 "current-talent-historical-mlb-2022" "seeded/2022/mlb"
+          download 31989561396 "current-talent-historical-mlb-2023" "seeded/2023/mlb"
+          download 32096473700 "current-talent-historical-mlb-2024" "seeded/2024/mlb"
+
+      - name: Verify expected pinned evidence files
+        run: |
+          set -euo pipefail
+          for year in 2021 2022 2023 2024; do
+            for slug in aaa aa aplus a rk; do
+              test "$(find "seeded/${year}/milb" -type f -name "current_talent_game_summary_${year}_${slug}.parquet" | wc -l)" -eq 1
+              test "$(find "seeded/${year}/milb" -type f -name "current_talent_game_profile_${year}_${slug}.parquet" | wc -l)" -eq 1
+            done
+            test "$(find "seeded/${year}/mlb" -type f -name "current_talent_game_summary_${year}_mlb.parquet" | wc -l)" -eq 1
+            test "$(find "seeded/${year}/mlb" -type f -name "current_talent_game_profile_${year}_mlb.parquet" | wc -l)" -eq 1
+          done
+
+      - name: Materialize frozen B2 October snapshots
+        run: >-
+          python scripts/materialize_projection_batting_v1_current_talent_snapshots.py
+          --input-root seeded
+
+      - name: Upload frozen B2 Projection snapshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: projection-batting-v1-current-talent-snapshots
+          path: reports/generated/projection-batting-v1-current-talent-snapshots/
+          if-no-files-found: warn
+          retention-days: 14

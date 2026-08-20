@@ -2,11 +2,6 @@ name: Current Talent simple-baseline selection grid
 
 on:
   # One-time bootstrap for the predeclared development grid; restore to manual-only after resolution.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - .github/workflows/current-talent-baseline-selection-grid.yml
   workflow_dispatch:
 
 permissions:

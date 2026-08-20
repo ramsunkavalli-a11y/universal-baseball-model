@@ -23,6 +23,9 @@ def _split(player_id: int, **overrides):
         "strikeOuts": 20,
         "sacBunts": 1,
         "sacFlies": 2,
+        "stolenBases": 8,
+        "caughtStealing": 2,
+        "groundIntoDoublePlay": 4,
     }
     stat.update(overrides)
     return {
@@ -42,6 +45,9 @@ def test_mlb_bulk_projection_matches_performance_backbone_contract() -> None:
     assert row["batting_base_on_balls"] == 10
     assert row["batting_hit_by_pitch"] == 2
     assert row["batting_strike_outs"] == 20
+    assert row["batting_stolen_bases"] == 8
+    assert row["batting_caught_stealing"] == 2
+    assert row["batting_ground_into_double_play"] == 4
     assert row["batting_balls_in_play"] == 68  # AB - SO + SH + SF
     assert row["simple_pa_accounting_residual"] == 0
 
@@ -57,6 +63,13 @@ def test_missing_required_field_fails_loudly() -> None:
     split = _split(101)
     del split["stat"]["hitByPitch"]
     with pytest.raises(ValueError, match="missing fields"):
+        project_mlb_hitting_splits([split], season=2024, league_id=103)
+
+
+def test_missing_certified_baserunning_field_fails_loudly() -> None:
+    split = _split(101)
+    del split["stat"]["caughtStealing"]
+    with pytest.raises(ValueError, match="caughtStealing"):
         project_mlb_hitting_splits([split], season=2024, league_id=103)
 
 

@@ -1,0 +1,148 @@
+{
+  "boundary": {
+    "2025_defensive_targets_accessed": false,
+    "2025_source_accessed": false,
+    "model_fit": false,
+    "model_parameters_loaded": false,
+    "model_scoring_performed": false,
+    "run_value_conversion_performed": false,
+    "source_filters_changed_from_contract": false,
+    "tracked_framing_2024_derived": false,
+    "tracked_milb_2024_accessed": false
+  },
+  "contract": "docs/defense-v1-2025-confirmation-contract.md",
+  "decision": {
+    "2024_mlb_tracking_confirmation_predictor_materialized": true,
+    "2025_defensive_target_source_materialized": false,
+    "confirmation_scoring_authorized": false,
+    "war_value_authorized": false
+  },
+  "diagnostics": {
+    "bip_row_count": 124203,
+    "column_count": 119,
+    "eligible_raw_player_position_count": 355,
+    "pitch_row_count": 711898,
+    "position_cells": [
+      {
+        "eligible_player_count": 34,
+        "mean": 0.019795138337785057,
+        "position_abbreviation": "1B",
+        "sd": 2.1559054442665757,
+        "tracked_z_available": true
+      },
+      {
+        "eligible_player_count": 44,
+        "mean": -0.09650052952405132,
+        "position_abbreviation": "2B",
+        "sd": 2.2035827572506204,
+        "tracked_z_available": true
+      },
+      {
+        "eligible_player_count": 45,
+        "mean": 0.2569956434064574,
+        "position_abbreviation": "3B",
+        "sd": 2.840566308597917,
+        "tracked_z_available": true
+      },
+      {
+        "eligible_player_count": 61,
+        "mean": -0.2390606957979141,
+        "position_abbreviation": "CF",
+        "sd": 2.0050801582808506,
+        "tracked_z_available": true
+      },
+      {
+        "eligible_player_count": 57,
+        "mean": 0.010546045797694586,
+        "position_abbreviation": "LF",
+        "sd": 1.9416150186985865,
+        "tracked_z_available": true
+      },
+      {
+        "eligible_player_count": 67,
+        "mean": 0.19863289393608421,
+        "position_abbreviation": "RF",
+        "sd": 2.2068550309555905,
+        "tracked_z_available": true
+      },
+      {
+        "eligible_player_count": 47,
+        "mean": 0.07530300527547354,
+        "position_abbreviation": "SS",
+        "sd": 2.584774671274685,
+        "tracked_z_available": true
+      }
+    ],
+    "proxy_player_position_row_count": 1190,
+    "proxy_total_opportunities": 112437.0,
+    "scored_tracked_z_player_position_count": 355,
+    "scored_unique_player_count": 299,
+    "unavailable_positions": []
+  },
+  "feature_contract": {
+    "degenerate_or_small_cell_behavior": "feature unavailable; no pooling across position or level",
+    "formula": "tracked_oaa_per_100 = 100 * oaa / opportunities",
+    "minimum_eligible_players_per_position": 20,
+    "minimum_opportunities": 100,
+    "positions": [
+      "1B",
+      "2B",
+      "3B",
+      "SS",
+      "LF",
+      "CF",
+      "RF"
+    ],
+    "standardization": "2024 x MLB x position mean 0 / population SD 1"
+  },
+  "gate": "defense_v1_2024_mlb_tracking_confirmation_predictor_source",
+  "query": {
+    "bounded_envelope_note": "dates intentionally bracket the full season; game_type R is the binding regular-season filter",
+    "chunk_days": 7,
+    "end": "2024-10-15",
+    "game_type": "R",
+    "season": 2024,
+    "source": "Baseball Savant MLB Statcast CSV via SportsDataverse",
+    "start": "2024-03-01"
+  },
+  "report_schema_version": "0.1",
+  "source_run_id": 32198857540,
+  "source_sha": "0471363219002d73450c34783aed7963825039fb",
+  "status": "source_materialized",
+  "storage": {
+    "moments": {
+      "file_size_bytes": 1960,
+      "path": "reports/generated/defense-v1-2024-tracking-predictor/tables/tracked_range_moments_2024_mlb.parquet",
+      "row_count": 7,
+      "sha256": "9b901897d16797b429fa7bbc422943f909cb5c1f506962e3891406db7fa71e94",
+      "table_name": "defense_v1_2024_mlb_tracked_range_moments"
+    },
+    "range_proxy": {
+      "file_size_bytes": 27088,
+      "path": "reports/generated/defense-v1-2024-tracking-predictor/tables/tracked_range_proxy_2024_mlb.parquet",
+      "row_count": 1190,
+      "sha256": "7ce2acdfad85561950ba074e848a33d9d9b6950227e1e88f0950379bdd11d56d",
+      "table_name": "defense_v1_2024_mlb_tracked_range_proxy"
+    },
+    "raw_bip": {
+      "file_size_bytes": 25131914,
+      "path": "reports/generated/defense-v1-2024-tracking-predictor/raw/statcast_bip_2024_mlb.parquet",
+      "row_count": 124203,
+      "sha256": "68b1bb7ef726795930cd23cc0559ffab5cecd4f8f13190d2cea16f4baf07a3bc",
+      "table_name": "defense_v1_2024_mlb_statcast_bip"
+    },
+    "tracked_range_z": {
+      "file_size_bytes": 13333,
+      "path": "reports/generated/defense-v1-2024-tracking-predictor/tables/tracked_range_z_2024_mlb.parquet",
+      "row_count": 355,
+      "sha256": "7ec73c4face1a2dac3ffaade88961de75d5a65ff741eef134ea0edb67e683cc1",
+      "table_name": "defense_v1_2024_mlb_tracked_range_z"
+    }
+  },
+  "upstream": {
+    "package": "sportsdataverse",
+    "package_version": "0.0.75",
+    "range_function": "mlb_fielding_oaa",
+    "search_function": "mlb_statcast_search"
+  }
+}

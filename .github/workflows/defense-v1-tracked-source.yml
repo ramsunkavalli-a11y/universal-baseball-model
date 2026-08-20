@@ -1,0 +1,125 @@
+name: Defense v1 tracked source materialization
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  segment:
+    name: materialize ${{ matrix.segment }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        segment:
+          - mlb-2021
+          - mlb-2022
+          - mlb-2023
+          - milb-2023
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and pinned tracking implementation
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+
+      - name: Verify frozen segmented materializer
+        run: >-
+          python -m py_compile
+          scripts/materialize_defense_v1_tracked_source.py
+          scripts/materialize_defense_v1_tracked_source_segment.py
+
+      - name: Materialize frozen source segment
+        run: >-
+          python -u scripts/materialize_defense_v1_tracked_source_segment.py
+          --segment "${{ matrix.segment }}"
+
+      - name: Upload source segment
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-tracked-source-${{ matrix.segment }}
+          path: reports/generated/defense-v1-tracked-source-segments/
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate:
+    name: aggregate frozen tracked source
+    needs: segment
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and pinned tracking implementation
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+
+      - name: Download all successful frozen source segments
+        uses: actions/download-artifact@v7
+        with:
+          pattern: defense-v1-tracked-source-*
+          path: inputs/segments
+          merge-multiple: true
+
+      - name: Verify and aggregate exact segment artifacts
+        run: >-
+          python -u scripts/aggregate_defense_v1_tracked_source_segments.py
+          --segment-root inputs/segments
+
+      - name: Pin aggregate workflow metadata
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('reports/generated/defense-v1-tracked-source/report.json')
+          result = json.loads(path.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
+          PY
+
+      - name: Upload verified aggregate tracked source
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-tracked-source-2021-2023
+          path: reports/generated/defense-v1-tracked-source/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding tracked source result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-tracked-source/report.json docs/defense-v1-tracked-source-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-tracked-source-result.json
+          git commit -m "Persist Defense v1 tracked source materialization"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

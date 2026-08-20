@@ -9,7 +9,7 @@ Stats API representation against another.
 
 from __future__ import annotations
 
-from collections import Counter, defaultdict
+from collections import defaultdict
 import csv
 from io import TextIOWrapper
 import json

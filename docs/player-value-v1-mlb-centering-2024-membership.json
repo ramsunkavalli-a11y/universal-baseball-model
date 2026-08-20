@@ -1,0 +1,96 @@
+{
+  "aggregate_official_mlb_pa_membership_anchor": 182449.0,
+  "aggregate_projected_mlb_pa": 148948.26306286638,
+  "centering_id": "fixed_2024_mlb_projected_component_reference_v1",
+  "centering_projected_pa_output_field": "projected_expected_mlb_pa",
+  "materialization": {
+    "run_id": 32320525700,
+    "source_sha": "bf02d7b30410811123c9c069116a57f9c702bca8"
+  },
+  "membership_definition": "positive official 2024 MLB PA from pooled AL/NL MLB Stats API season hitting; frozen Playing Time projected exposure where available; explicit zero projected exposure for official members outside the frozen 2023-10-15 B2 snapshot",
+  "official_mlb_membership_source": {
+    "adapter": "universal_baseball.mlb_season_stats.fetch_mlb_hitting_backbone",
+    "captures": [
+      {
+        "league_id": 103,
+        "offset": 0,
+        "requested_limit": 500,
+        "response_byte_count": 401605,
+        "response_sha256": "ca0cd722b53015e04fef4237fe7a54e7bcf023b33f1b8aee50395796e3fe0718",
+        "returned_split_count": 391,
+        "season": 2024,
+        "total_splits": 391
+      },
+      {
+        "league_id": 104,
+        "offset": 0,
+        "requested_limit": 500,
+        "response_byte_count": 399805,
+        "response_sha256": "c21bb79c89d5c95055b8004e12d632e885551153d629441a129219be5fb1b0dc",
+        "returned_split_count": 389,
+        "season": 2024,
+        "total_splits": 389
+      }
+    ],
+    "league_ids": [
+      103,
+      104
+    ],
+    "pooled_player_rows": 742,
+    "positive_pa_player_rows": 651,
+    "provider": "MLB Stats API",
+    "season": 2024
+  },
+  "official_only_vs_playing_time_positive_ids": [
+    543518,
+    593934,
+    622491,
+    656555,
+    666158,
+    808982
+  ],
+  "outside_frozen_playing_time_snapshot_ids": [
+    543518,
+    593934,
+    622491,
+    656555,
+    666158,
+    808982
+  ],
+  "outside_frozen_playing_time_snapshot_player_count": 6,
+  "playing_time_input_row_count": 3985,
+  "playing_time_observed_mlb_pa_diagnostic": 181190.0,
+  "playing_time_positive_observed_pa_player_count": 645,
+  "playing_time_positive_only_vs_official_ids": [],
+  "playing_time_projected_pa_input_column": "predicted_expected_mlb_pa",
+  "playing_time_source": {
+    "artifact_digest": "sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366",
+    "artifact_id": 9326300207,
+    "run_id": 32142089669,
+    "scored_table_sha256": "sha256:9896560f41a738f85d928c973f6e55f6a5a9cf64afe8dc58d2403879a92e3e28",
+    "source_sha": "3bc9825c74e060fc8ced07b2f2accd6bbcaeb151"
+  },
+  "reference_player_count": 651,
+  "reference_season": 2024,
+  "schema_version": "0.4",
+  "status": "player_value_v1_mlb_centering_2024_membership_verified",
+  "verification": {
+    "aggregate_projected_mlb_pa_positive": true,
+    "all_official_members_have_projected_pa_or_explicit_zero_fallback": true,
+    "expected_official_mlb_pa": 182449.0,
+    "expected_reference_player_count": 651,
+    "membership_unique_by_player_id": true,
+    "numerical_centering_constant_materialized": false,
+    "official_mlb_pa_matches": true,
+    "player_count_matches": true,
+    "playing_time_observed_pa_used_as_official_anchor": false,
+    "projected_mlb_pa_nonnegative_and_finite": true,
+    "realized_pa_used_for_exposure": false
+  },
+  "zero_exposure_fallback": {
+    "future_information_used": false,
+    "realized_2024_pa_used": false,
+    "reason": "official positive-PA member absent from frozen 2023-10-15 eligible B2 snapshot; no authorized chronology-safe Playing Time prediction exists",
+    "value": 0.0
+  }
+}

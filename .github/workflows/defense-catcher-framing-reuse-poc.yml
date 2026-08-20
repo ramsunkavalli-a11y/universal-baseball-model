@@ -1,0 +1,65 @@
+name: Defense catcher framing reuse POC
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project and pinned reuse dependency
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
+      - name: Verify script
+        run: python -m py_compile scripts/audit_defense_catcher_framing_reuse.py
+      - name: Run frozen framing reuse POC
+        run: python scripts/audit_defense_catcher_framing_reuse.py
+      - name: Upload evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-catcher-framing-reuse-poc
+          path: reports/generated/defense-catcher-framing-reuse-poc/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Persist result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/defense-catcher-framing-reuse-poc/report.json')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/defense-catcher-framing-reuse-poc-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-catcher-framing-reuse-poc-result.json
+          git commit -m "Persist catcher framing reuse POC"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

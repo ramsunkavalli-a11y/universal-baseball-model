@@ -1,0 +1,132 @@
+{
+  "boundary": {
+    "confirmation_interpreted": false,
+    "general_range_accessed": false,
+    "general_range_modified": false,
+    "model_fit": false,
+    "model_parameters_loaded_by_source_materializer": false,
+    "model_scoring": false,
+    "war_calculated": false
+  },
+  "contract": "docs/defense-v1-catcher-source-repair-contract.md",
+  "decision": {
+    "general_range_reopened": false,
+    "repaired_2025_catcher_target_source_certified": true,
+    "repaired_catcher_confirmation_authorized_next": true,
+    "war_value_authorized": false
+  },
+  "diagnostics": {
+    "blocking": {
+      "eligible_row_count": 78,
+      "exposure_column": "pitches",
+      "kind": "blocking",
+      "minimum_exposure": 500,
+      "source_row_count": 78,
+      "target_column": "blocks_above_average_per_game",
+      "target_mean": -0.010278654489916944,
+      "target_population_sd": 0.10610556766918103,
+      "year": 2025
+    },
+    "throwing": {
+      "eligible_row_count": 79,
+      "exposure_column": "sb_attempts",
+      "kind": "throwing",
+      "minimum_exposure": 10,
+      "source_row_count": 79,
+      "target_column": "cs_aa_per_throw",
+      "target_mean": -0.0040409016740523915,
+      "target_population_sd": 0.08754608637571844,
+      "year": 2025
+    }
+  },
+  "gate": "defense_v1_catcher_repair_2025_target_source",
+  "repaired_parameter_hash": "sha256:f4790bc1cb4df63d2ba65757455a4b6753e98d25fe552208d893958bdd19f328",
+  "report_schema_version": "0.1",
+  "season": 2025,
+  "source": {
+    "provider": "Baseball Savant catcher leaderboards",
+    "queries": [
+      {
+        "endpoint": "catcher-throwing",
+        "kind": "throwing",
+        "requested_params": {
+          "csv": "true",
+          "game_type": "Regular",
+          "n": 10,
+          "season_end": 2025,
+          "season_start": 2025,
+          "split": "no",
+          "target_base": "All",
+          "team": "",
+          "type": "Cat",
+          "with_team_only": 1
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=10&season_start=2025&season_end=2025&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+        "source_row_count": 79
+      },
+      {
+        "endpoint": "catcher-blocking",
+        "kind": "blocking",
+        "requested_params": {
+          "csv": "true",
+          "game_type": "Regular",
+          "n": 500,
+          "season_end": 2025,
+          "season_start": 2025,
+          "split": "no",
+          "team": "",
+          "type": "Cat",
+          "with_team_only": 1
+        },
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=500&season_start=2025&season_end=2025&split=no&team=&type=Cat&with_team_only=1&csv=true",
+        "source_row_count": 78
+      }
+    ],
+    "transport": "direct certified current-UI CSV query semantics"
+  },
+  "source_run_id": 32207093006,
+  "source_sha": "34e84f3ce644445db99a12ab5d190a678ed06f91",
+  "status": "repaired_2025_catcher_source_certified_ready_for_confirmation",
+  "storage": {
+    "raw_blocking": {
+      "file_size_bytes": 13172,
+      "path": "reports/generated/defense-v1-catcher-repair-2025-source/raw/catcher-blocking-2025.parquet",
+      "row_count": 78,
+      "sha256": "aead23fbca5217d61e2b902abcf0dd5b0bc2ac4da3d02f4b83b24b5f8c3bcc30",
+      "table_name": "catcher_repair_2025_raw_blocking"
+    },
+    "raw_csv_blocking": {
+      "file_size_bytes": 16234,
+      "path": "reports/generated/defense-v1-catcher-repair-2025-source/raw/catcher-blocking-2025.csv",
+      "sha256": "5ffd734696a3e6aff89baa2dcc3c948a39a9096f0f3033df384432c156f0f938",
+      "table_name": "catcher_repair_2025_raw_csv_blocking"
+    },
+    "raw_csv_throwing": {
+      "file_size_bytes": 25912,
+      "path": "reports/generated/defense-v1-catcher-repair-2025-source/raw/catcher-throwing-2025.csv",
+      "sha256": "59ed99b0617f7e6eeb836f3a7168e1d2b20bab62c7dbef5f32f1fdd14526646c",
+      "table_name": "catcher_repair_2025_raw_csv_throwing"
+    },
+    "raw_throwing": {
+      "file_size_bytes": 19988,
+      "path": "reports/generated/defense-v1-catcher-repair-2025-source/raw/catcher-throwing-2025.parquet",
+      "row_count": 79,
+      "sha256": "d02b981b8622ad02051d648dcfc4b9a52f9ad5d1c832a305eafb97a9cd2d5f76",
+      "table_name": "catcher_repair_2025_raw_throwing"
+    },
+    "targets_blocking": {
+      "file_size_bytes": 4571,
+      "path": "reports/generated/defense-v1-catcher-repair-2025-source/tables/catcher_blocking_targets_2025.parquet",
+      "row_count": 78,
+      "sha256": "61f1378da5ef3a6a1a7ef3f21e8ae46e454988b21a5da147ff3410592a62c17e",
+      "table_name": "catcher_repair_2025_targets_blocking"
+    },
+    "targets_throwing": {
+      "file_size_bytes": 4589,
+      "path": "reports/generated/defense-v1-catcher-repair-2025-source/tables/catcher_throwing_targets_2025.parquet",
+      "row_count": 79,
+      "sha256": "9aeeac02817b70a672306d720762753fa9165248f2a38ef93acfeccca0bdecc6",
+      "table_name": "catcher_repair_2025_targets_throwing"
+    }
+  }
+}

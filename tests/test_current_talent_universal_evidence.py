@@ -2,6 +2,8 @@ import polars as pl
 import pytest
 
 from universal_baseball.current_talent_universal_evidence import (
+    PROFILE_CANONICAL_COLUMNS,
+    SUMMARY_CANONICAL_COLUMNS,
     combine_universal_player_game_evidence,
 )
 
@@ -65,7 +67,44 @@ def test_universal_evidence_combines_mlb_and_milb_without_translation() -> None:
     assert metrics["total_expected_contacts"] == 4
     assert metrics["total_observed_contacts"] == 4
     assert metrics["total_unknown_contacts"] == 2
+    assert metrics["universal_schema_policy"] == "project_required_current_talent_fields_before_concat_v1"
     assert set(summary.get_column("league_id").to_list()) == {117, 103}
+
+
+def test_universal_evidence_projects_source_specific_extra_columns_and_order() -> None:
+    aaa_summary = _summary(117, "AAA", 1, 10).with_columns(
+        pl.lit("source-audit").alias("source_only_provenance")
+    )
+    mlb_summary = _summary(103, "MLB", 2, 20).select(
+        "source_capability_tier",
+        *[column for column in _summary(103, "MLB", 2, 20).columns if column != "source_capability_tier"],
+    )
+    aaa_profile = _profile(117, "AAA", 1, 10).with_columns(
+        pl.lit(123).alias("source_only_diagnostic")
+    )
+    mlb_profile = _profile(103, "MLB", 2, 20).select(
+        "occurrence_count",
+        *[column for column in _profile(103, "MLB", 2, 20).columns if column != "occurrence_count"],
+    )
+
+    summary, profile, _ = combine_universal_player_game_evidence(
+        [aaa_summary, mlb_summary],
+        [aaa_profile, mlb_profile],
+        expected_seasons={2024},
+    )
+
+    assert summary.columns == list(SUMMARY_CANONICAL_COLUMNS)
+    assert profile.columns == list(PROFILE_CANONICAL_COLUMNS)
+    assert "source_only_provenance" not in summary.columns
+    assert "source_only_diagnostic" not in profile.columns
+
+
+def test_universal_evidence_rejects_component_missing_canonical_field() -> None:
+    with pytest.raises(ValueError, match="missing canonical fields"):
+        combine_universal_player_game_evidence(
+            [_summary(117, "AAA", 1, 10).drop("source_capability_tier")],
+            [_profile(117, "AAA", 1, 10)],
+        )
 
 
 def test_universal_evidence_rejects_wrong_level_label() -> None:

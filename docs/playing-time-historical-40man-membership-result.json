@@ -1,0 +1,107 @@
+{
+  "acceptance": {
+    "accepted_for_playing_time_feature_contract": true,
+    "all_30_teams_succeeded_each_snapshot": true,
+    "historical_date_parameter_changes_membership": true,
+    "no_cross_team_duplicate_membership_within_snapshot": true
+  },
+  "authorized_semantic": "binary_team_40man_membership_as_of_date",
+  "date_sensitivity_control": {
+    "early_date": "2021-04-01",
+    "early_membership_count": 43,
+    "late_date": "2021-10-15",
+    "late_membership_count": 45,
+    "membership_sets_differ": true,
+    "season": 2021,
+    "symmetric_difference_player_count": 20,
+    "symmetric_difference_player_ids": [
+      431148,
+      453265,
+      543022,
+      543351,
+      572125,
+      592178,
+      592717,
+      593974,
+      605538,
+      606625,
+      608678,
+      623485,
+      641793,
+      642731,
+      644433,
+      669214,
+      669674,
+      670768,
+      672744,
+      676845
+    ],
+    "team_id": 137
+  },
+  "gate": "playing_time_historical_40man_membership_certification",
+  "interpretation": "Binary 40-man membership is the only certified roster fact from this gate. Duplicate source rows with conflicting status remain visible diagnostics and are collapsed only because membership itself is identical and identity/team checks pass. Row-level status is explicitly not authorized.",
+  "queried_2025": false,
+  "report_schema_version": "0.1",
+  "season_reports": [
+    {
+      "conflicting_status_player_ids": [],
+      "cross_team_duplicate_player_count": 0,
+      "failed_team_ids": [],
+      "membership_player_rows": 1345,
+      "mlb_team_count": 30,
+      "players_with_conflicting_source_status_rows": 0,
+      "players_with_duplicate_source_rows": 0,
+      "season": 2021,
+      "snapshot_date": "2021-10-15",
+      "successful_team_count": 30,
+      "team_membership_count_max": 52,
+      "team_membership_count_min": 39
+    },
+    {
+      "conflicting_status_player_ids": [
+        676130
+      ],
+      "cross_team_duplicate_player_count": 0,
+      "failed_team_ids": [],
+      "membership_player_rows": 1333,
+      "mlb_team_count": 30,
+      "players_with_conflicting_source_status_rows": 1,
+      "players_with_duplicate_source_rows": 1,
+      "season": 2022,
+      "snapshot_date": "2022-10-15",
+      "successful_team_count": 30,
+      "team_membership_count_max": 50,
+      "team_membership_count_min": 40
+    },
+    {
+      "conflicting_status_player_ids": [
+        676130
+      ],
+      "cross_team_duplicate_player_count": 0,
+      "failed_team_ids": [],
+      "membership_player_rows": 1339,
+      "mlb_team_count": 30,
+      "players_with_conflicting_source_status_rows": 1,
+      "players_with_duplicate_source_rows": 1,
+      "season": 2023,
+      "snapshot_date": "2023-10-15",
+      "successful_team_count": 30,
+      "team_membership_count_max": 52,
+      "team_membership_count_min": 39
+    }
+  ],
+  "snapshots": [
+    "2021-10-15",
+    "2022-10-15",
+    "2023-10-15"
+  ],
+  "source": "official_mlb_stats_api_40Man",
+  "source_errors": [],
+  "unauthorized_semantics": [
+    "active_status_from_40Man_response",
+    "minor_league_assignment_status_from_40Man_response",
+    "injured_list_status_from_40Man_response",
+    "option_status",
+    "future_roster_role"
+  ]
+}

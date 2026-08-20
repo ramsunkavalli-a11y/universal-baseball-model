@@ -1,0 +1,127 @@
+name: Defense v1 repaired catcher 2025 confirmation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  confirm:
+    name: run frozen one-shot repaired catcher confirmation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and frozen dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75"
+
+      - name: Resolve frozen repaired catcher prerequisites
+        id: sources
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          params = json.loads(Path("docs/defense-v1-catcher-repair-parameters.json").read_text())
+          source = json.loads(Path("docs/defense-v1-catcher-repair-2025-source-result.json").read_text())
+          expected = "sha256:f4790bc1cb4df63d2ba65757455a4b6753e98d25fe552208d893958bdd19f328"
+          if params.get("parameter_hash") != expected:
+              raise SystemExit("repaired catcher parameter hash changed")
+          if params.get("decision", {}).get("repaired_pre_2025_catcher_parameters_frozen") is not True:
+              raise SystemExit("repaired catcher parameters are not frozen")
+          if params.get("boundary", {}).get("2025_catcher_target_accessed") is not False:
+              raise SystemExit("parameter freeze crossed 2025 boundary")
+          if source.get("status") != "repaired_2025_catcher_source_certified_ready_for_confirmation":
+              raise SystemExit("repaired 2025 catcher source is not certified")
+          if source.get("repaired_parameter_hash") != expected:
+              raise SystemExit("repaired 2025 source parameter hash mismatch")
+          if source.get("decision", {}).get("repaired_catcher_confirmation_authorized_next") is not True:
+              raise SystemExit("repaired catcher confirmation is not authorized")
+          boundary = source.get("boundary", {})
+          for key in ("model_fit", "model_scoring", "confirmation_interpreted", "general_range_accessed", "general_range_modified", "war_calculated"):
+              if boundary.get(key) is not False:
+                  raise SystemExit(f"source-only boundary violation {key}={boundary.get(key)}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as h:
+              h.write(f"target_run={int(source['source_run_id'])}\n")
+          print("repaired catcher confirmation prerequisites verified")
+          PY
+
+      - name: Download certified historical fielding source
+        uses: actions/download-artifact@v7
+        with:
+          name: position-role-historical-source-2021-2024
+          path: inputs/historical
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32148467330
+
+      - name: Download certified repaired 2025 catcher targets
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-catcher-repair-2025-source
+          path: inputs/target
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.sources.outputs.target_run }}
+
+      - name: Verify scorer compiles
+        run: python -m py_compile scripts/confirm_defense_v1_catcher_repair_2025.py
+
+      - name: Run frozen one-shot repaired catcher confirmation
+        run: >-
+          python -u scripts/confirm_defense_v1_catcher_repair_2025.py
+          --historical-root inputs/historical
+          --target-root inputs/target
+          --output-root reports/generated/defense-v1-catcher-repair-2025-confirmation
+
+      - name: Pin confirmation metadata
+        env:
+          CONFIRMATION_RUN_ID: ${{ github.run_id }}
+          CONFIRMATION_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("reports/generated/defense-v1-catcher-repair-2025-confirmation/report.json")
+          result = json.loads(path.read_text())
+          result["confirmation_run_id"] = int(os.environ["CONFIRMATION_RUN_ID"])
+          result["confirmation_sha"] = os.environ["CONFIRMATION_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload repaired catcher confirmation result
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-catcher-repair-2025-confirmation
+          path: reports/generated/defense-v1-catcher-repair-2025-confirmation/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding repaired catcher confirmation result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-catcher-repair-2025-confirmation/report.json docs/defense-v1-catcher-repair-2025-confirmation-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-catcher-repair-2025-confirmation-result.json
+          git commit -m "Persist Defense v1 repaired catcher 2025 confirmation"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

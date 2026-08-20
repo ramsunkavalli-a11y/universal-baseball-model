@@ -61,6 +61,43 @@ def _sum_vector(frame: pl.DataFrame) -> dict[str, int]:
     return {field: int(row[field] or 0) for field in OUTCOME_FIELDS}
 
 
+def exact_residual_quarantine_is_terminal(
+    resolved_outcomes: pl.DataFrame,
+    official_game_log: pl.DataFrame,
+    quarantine_metrics: Mapping[str, Any],
+    *,
+    player_id: int,
+    league_id: int,
+) -> bool:
+    """Return true only when a proven quarantine exhausts both positive-PA ledgers.
+
+    This is an orchestration guard for the narrow case where the exact residual
+    row was the player's only reusable positive-PA source evidence and the
+    official gameLog also contains no positive-PA row for that player/league.
+    The quarantine must already have passed both independent residual checks;
+    this helper never turns an unproven residual into an accepted omission.
+    """
+
+    if not quarantine_metrics.get("applied"):
+        return False
+    if int(quarantine_metrics.get("player_id", -1)) != int(player_id):
+        raise ValueError("terminal residual quarantine player mismatch")
+    if int(quarantine_metrics.get("league_id", -1)) != int(league_id):
+        raise ValueError("terminal residual quarantine league mismatch")
+
+    remaining_source = _target_positive(
+        resolved_outcomes,
+        player_id=player_id,
+        league_id=league_id,
+    )
+    remaining_official = _target_positive(
+        official_game_log,
+        player_id=player_id,
+        league_id=league_id,
+    )
+    return remaining_source.is_empty() and remaining_official.is_empty()
+
+
 def quarantine_single_source_only_exact_residual(
     resolved_outcomes: pl.DataFrame,
     official_game_log: pl.DataFrame,

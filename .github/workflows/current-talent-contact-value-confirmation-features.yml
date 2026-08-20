@@ -1,12 +1,6 @@
 name: Current Talent contact-value 2023 confirmation features
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "scripts/materialize_current_talent_contact_value_confirmation_features.py"
-      - ".github/workflows/current-talent-contact-value-confirmation-features.yml"
   workflow_dispatch:
 
 permissions:

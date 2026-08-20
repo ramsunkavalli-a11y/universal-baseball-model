@@ -1,0 +1,33 @@
+{
+  "boundary": {
+    "baserunning_frozen": false,
+    "mlb_reference_centering_frozen": false,
+    "park_neutrality_audited": false,
+    "runs_per_win_frozen": true,
+    "war_value_calculated": false
+  },
+  "convention_id": "fangraphs_570_war_pool_projected_pa_v1",
+  "position_player_war_allocation": 570.0,
+  "reference_artifact": "docs/player-value-v1-replacement-level-2024.json",
+  "reference_season": 2024,
+  "replacement_runs_per_600_pa": 18.142586140136086,
+  "replacement_runs_per_pa": 0.030237643566893475,
+  "schema_version": "0.2",
+  "sensitivities": {
+    "baseball_reference_590_war_pool": {
+      "position_player_war_allocation": 590.0,
+      "replacement_runs_per_600_pa": 18.779168109965422,
+      "replacement_runs_per_pa": 0.031298613516609036,
+      "replacement_war_pool": 589.7572016460905
+    },
+    "legacy_fixed_20_5_runs_per_600_pa": {
+      "replacement_runs_per_600_pa": 20.5
+    }
+  },
+  "source_run_id": 32280986401,
+  "source_sha": "837d43f422132accbfb0de6c583720ffde47143e",
+  "status": "player_value_v1_replacement_level_refreeze_verified",
+  "tests": [
+    "tests/test_player_value_replacement_level.py"
+  ]
+}

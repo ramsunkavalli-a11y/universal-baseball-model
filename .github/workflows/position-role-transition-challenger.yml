@@ -1,0 +1,105 @@
+name: Position-role transition challenger
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Verify frozen challenger implementation
+        run: >-
+          python -m py_compile
+          src/universal_baseball/position_role_transition.py
+          scripts/score_position_role_transition_challenger.py
+          && python -m pytest -q
+          tests/test_position_role_profile.py
+          tests/test_position_role_transition.py
+
+      - name: Download frozen 2021-2024 role-profile evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p stability-source
+          gh run download 32149415617 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-batting-profile-stability-2021-2024 \
+            --dir stability-source
+
+      - name: Score chronology-safe development folds
+        run: >-
+          python scripts/score_position_role_transition_challenger.py
+          --source-root stability-source
+
+      - name: Verify frozen boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('reports/generated/position-role-transition-challenger/report.json').read_text())
+          boundary = report['boundary']
+          assert boundary['2025_position_source_accessed'] is False
+          assert boundary['2025_position_outcomes_scored'] is False
+          assert boundary['hyperparameter_search'] is False
+          assert boundary['training_uses_only_prior_transitions'] is True
+          assert len(report['folds']) == 2
+          assert [(f['current_season'], f['next_season']) for f in report['folds']] == [(2022, 2023), (2023, 2024)]
+          PY
+
+      - name: Upload challenger evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: position-role-transition-challenger-development
+          path: reports/generated/position-role-transition-challenger/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding development result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/position-role-transition-challenger/report.json')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/position-role-transition-challenger-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/position-role-transition-challenger-result.json
+          git commit -m "Persist position-role transition challenger result"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

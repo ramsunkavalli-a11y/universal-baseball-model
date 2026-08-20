@@ -1,0 +1,127 @@
+{
+  "baseline0_metrics": {
+    "coverage_identical": true,
+    "form": "playing_time_level_hurdle_v1",
+    "mean_full_negative_log_likelihood": 1.3395720227015593,
+    "observed_mean_mlb_pa": 48.40037243947859,
+    "participation_brier": 0.05936481353346664,
+    "participation_log_loss": 0.1927810402997013,
+    "positive_count_negative_log_likelihood": 6.511763297354357,
+    "positive_players": 662,
+    "predicted_mean_mlb_pa": 39.265873958038405,
+    "scored_players": 3759,
+    "unconditional_mlb_pa_mae": 39.04746210195726,
+    "unconditional_mlb_pa_rmse": 97.68785926856143
+  },
+  "baseline0_participation_calibration": {
+    "converged": true,
+    "finite_parameters": true,
+    "identifiable": true,
+    "intercept": 0.8264837803848802,
+    "reason": null,
+    "slope": 1.4344219487944725
+  },
+  "boundary": {
+    "2025_outcomes_accessed": true,
+    "2025_target_source_changed": false,
+    "batting_rate_modified": false,
+    "form_reselected": false,
+    "frozen_pre_2025_parameters_loaded": true,
+    "level_strata_used_for_selection": false,
+    "model_refit": false,
+    "rescue_tuning": false,
+    "threshold_changed": false
+  },
+  "candidate_metrics": {
+    "coverage_identical": true,
+    "form": "playing_time_recent_opportunity_40man_b2_hurdle_v1",
+    "mean_full_negative_log_likelihood": 1.2836090086321996,
+    "observed_mean_mlb_pa": 48.40037243947859,
+    "participation_brier": 0.04519158175166325,
+    "participation_log_loss": 0.15251743775625348,
+    "positive_count_negative_log_likelihood": 6.422618149430032,
+    "positive_players": 662,
+    "predicted_mean_mlb_pa": 48.151168865234446,
+    "scored_players": 3759,
+    "unconditional_mlb_pa_mae": 30.652483821066618,
+    "unconditional_mlb_pa_rmse": 78.72720932688935
+  },
+  "candidate_minus_baseline0_full_nll": -0.05596301406935966,
+  "candidate_participation_calibration": {
+    "converged": true,
+    "finite_parameters": true,
+    "identifiable": true,
+    "intercept": 0.18281417498276517,
+    "reason": null,
+    "slope": 1.104508357202962
+  },
+  "confirmation_contract": "docs/playing-time-v1-confirmation-contract.md",
+  "decision": {
+    "baseline_calibration_gate_pass": true,
+    "candidate_calibration_gate_pass": true,
+    "candidate_mae_limit": 39.82841134399641,
+    "confirmed": true,
+    "gates": {
+      "candidate_full_nll_strictly_lower_than_b0": true,
+      "candidate_participation_log_loss_no_worse_than_b0": true,
+      "candidate_positive_count_nll_no_worse_than_b0": true,
+      "candidate_unconditional_pa_mae_within_2pct_of_b0": true,
+      "identical_scored_player_coverage": true,
+      "participation_calibration_converged_with_finite_parameters_where_identifiable": true
+    },
+    "mae_worse_tolerance": 0.02,
+    "production_model_decision": "candidate"
+  },
+  "fold": "projection_2024_to_2025_confirmation",
+  "forms": {
+    "baseline0": "playing_time_level_hurdle_v1",
+    "candidate": "playing_time_recent_opportunity_40man_b2_hurdle_v1"
+  },
+  "gate": "playing_time_v1_2025_confirmation_one_shot",
+  "package_versions": {
+    "numpy": "2.5.2",
+    "polars": "1.43.2",
+    "scikit_learn": "1.7.2",
+    "statsmodels": "0.14.6"
+  },
+  "positive_2025_player_count": 662,
+  "report_schema_version": "0.1",
+  "scored_player_count": 3759,
+  "source_records": {
+    "isolated_2025_target_run": 32144918922,
+    "pre_2025_inputs_run": 32144363818,
+    "pre_2025_refit_run": 32142220469
+  },
+  "source_run_id": 32146445795,
+  "source_sha": "5ac0456d20741c240ab8acad962707b6dbdae925",
+  "status": "confirmed_candidate",
+  "storage": {
+    "baseline0_scores": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "82ce9f1f4f2048810da5730db6ea0a59f584a4edc9b12415b5dc588a3c4d7c0c",
+      "file_size_bytes": 26714,
+      "path": "reports/generated/playing-time-v1-confirmation-2025/tables/baseline0_scores.parquet",
+      "row_count": 3759,
+      "schema_sha256": "1d4335fa0cd952b3a6ab834cc672a1961def387a4f7d2c2e49c0236cd8604d50",
+      "table_name": "playing_time_v1_2025_confirmation_baseline0_scores"
+    },
+    "candidate_scores": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "252cb412462b4957b491ba41815e60e0b67cd44577aa9447ba8ddf30f0266cd8",
+      "file_size_bytes": 158347,
+      "path": "reports/generated/playing-time-v1-confirmation-2025/tables/candidate_scores.parquet",
+      "row_count": 3759,
+      "schema_sha256": "1d4335fa0cd952b3a6ab834cc672a1961def387a4f7d2c2e49c0236cd8604d50",
+      "table_name": "playing_time_v1_2025_confirmation_candidate_scores"
+    },
+    "diagnostic_strata": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "5da342ab5c3ac612104db1687f25c50499456c690f72086b6b25c7620b2efb38",
+      "file_size_bytes": 2892,
+      "path": "reports/generated/playing-time-v1-confirmation-2025/tables/diagnostic_level_strata.parquet",
+      "row_count": 4,
+      "schema_sha256": "b4e3e74c8a92ad3fad38c3f3afb5ae34faae48f83b77ed1be5e54cc48c05c3c5",
+      "table_name": "playing_time_v1_2025_confirmation_level_strata"
+    }
+  }
+}

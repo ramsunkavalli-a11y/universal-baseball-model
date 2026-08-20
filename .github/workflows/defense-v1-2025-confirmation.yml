@@ -1,0 +1,256 @@
+name: Defense v1 2025 one-shot confirmation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  confirm:
+    name: score frozen Defense v1 on certified 2025 targets
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Start durable checkpoint
+        run: >-
+          python scripts/write_workflow_checkpoint.py
+          --path reports/checkpoints/defense-v1-2025-confirmation.json
+          --workflow defense-v1-2025-confirmation
+          --stage confirmation
+          --status started
+          --current-step preflight
+          --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
+      - name: Install frozen scoring dependencies
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+          && python -m pip install "sportsdataverse==0.0.75"
+
+      - name: Resolve and verify certified source runs
+        id: sources
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          tracking_path = Path("docs/defense-v1-2024-tracking-predictor-source-result.json")
+          targets_path = Path("docs/defense-v1-2025-target-source-result.json")
+          if not tracking_path.exists() or not targets_path.exists():
+              raise SystemExit("required certified Defense confirmation source results are missing")
+
+          tracking = json.loads(tracking_path.read_text())
+          targets = json.loads(targets_path.read_text())
+          if tracking.get("status") != "source_materialized":
+              raise SystemExit(f"2024 tracking source not certified: {tracking.get('status')}")
+          if tracking.get("decision", {}).get("2024_mlb_tracking_confirmation_predictor_materialized") is not True:
+              raise SystemExit("2024 tracking predictor materialization flag missing")
+          if tracking.get("boundary", {}).get("2025_source_accessed") is not False:
+              raise SystemExit("2024 tracking source crossed 2025 boundary")
+          if tracking.get("boundary", {}).get("model_fit") is not False:
+              raise SystemExit("2024 tracking source performed a fit")
+          if tracking.get("boundary", {}).get("model_scoring_performed") is not False:
+              raise SystemExit("2024 tracking source performed scoring")
+
+          if targets.get("status") != "certified_source_ready_for_confirmation_scoring":
+              raise SystemExit(f"2025 target source not certified: {targets.get('status')}")
+          if targets.get("decision", {}).get("target_source_certified") is not True:
+              raise SystemExit("2025 target source certification flag missing")
+          if targets.get("boundary", {}).get("model_fit") is not False:
+              raise SystemExit("2025 target source performed a fit")
+          if targets.get("boundary", {}).get("model_scoring") is not False:
+              raise SystemExit("2025 target source performed scoring")
+          if targets.get("boundary", {}).get("run_value_conversion_performed") is not False:
+              raise SystemExit("2025 target source crossed run-value boundary")
+          if targets.get("boundary", {}).get("war_value_authorized") is not False:
+              raise SystemExit("2025 target source crossed WAR/value boundary")
+
+          tracking_run = int(tracking["source_run_id"])
+          target_run = int(targets["source_run_id"])
+          with open(Path(__import__('os').environ['GITHUB_OUTPUT']), 'a', encoding='utf-8') as handle:
+              handle.write(f"tracking_run_id={tracking_run}\n")
+              handle.write(f"target_run_id={target_run}\n")
+          print(f"tracking source run={tracking_run}")
+          print(f"target source run={target_run}")
+          PY
+
+      - name: Checkpoint source certification
+        env:
+          TRACKING_RUN_ID: ${{ steps.sources.outputs.tracking_run_id }}
+          TARGET_RUN_ID: ${{ steps.sources.outputs.target_run_id }}
+        run: >-
+          python scripts/write_workflow_checkpoint.py
+          --path reports/checkpoints/defense-v1-2025-confirmation.json
+          --workflow defense-v1-2025-confirmation
+          --stage confirmation
+          --status step_complete
+          --current-step download_inputs
+          --last-completed-step verify_certified_sources
+          --inputs-json "{\"historical_run_id\":32148467330,\"tracking_run_id\":${TRACKING_RUN_ID},\"target_run_id\":${TARGET_RUN_ID}}"
+          --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
+      - name: Upload source-cert checkpoint
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-confirmation-checkpoint-source-cert
+          path: reports/checkpoints/defense-v1-2025-confirmation.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Download certified historical fielding source
+        uses: actions/download-artifact@v7
+        with:
+          name: position-role-historical-source-2021-2024
+          path: inputs/historical
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 32148467330
+
+      - name: Download certified 2024 MLB tracking predictor
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-2024-tracking-predictor
+          path: inputs/tracking
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.sources.outputs.tracking_run_id }}
+
+      - name: Download certified 2025 defensive target source
+        uses: actions/download-artifact@v7
+        with:
+          name: defense-v1-2025-target-source
+          path: inputs/targets
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.sources.outputs.target_run_id }}
+
+      - name: Checkpoint downloaded inputs
+        run: >-
+          python scripts/write_workflow_checkpoint.py
+          --path reports/checkpoints/defense-v1-2025-confirmation.json
+          --workflow defense-v1-2025-confirmation
+          --stage confirmation
+          --status step_complete
+          --current-step frozen_scoring
+          --last-completed-step download_certified_inputs
+          --outputs-json '{"historical_downloaded":true,"tracking_downloaded":true,"targets_downloaded":true}'
+          --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
+      - name: Upload input checkpoint
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-confirmation-checkpoint-inputs
+          path: reports/checkpoints/defense-v1-2025-confirmation.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Verify frozen scorer compiles
+        run: python -m py_compile scripts/confirm_defense_v1_2025.py
+
+      - name: Run frozen one-shot confirmation
+        run: >-
+          python -u scripts/confirm_defense_v1_2025.py
+          --historical-root inputs/historical
+          --tracking-root inputs/tracking
+          --target-root inputs/targets
+          --parameter-result docs/defense-v1-confirmation-parameters.json
+          --tracking-result docs/defense-v1-2024-tracking-predictor-source-result.json
+          --target-result docs/defense-v1-2025-target-source-result.json
+          --confirmation-contract docs/defense-v1-2025-confirmation-contract.md
+          --output-root reports/generated/defense-v1-2025-confirmation
+
+      - name: Pin confirmation workflow metadata
+        env:
+          SCORING_RUN_ID: ${{ github.run_id }}
+          SCORING_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path("reports/generated/defense-v1-2025-confirmation/report.json")
+          result = json.loads(path.read_text())
+          result["scoring_run_id"] = int(os.environ["SCORING_RUN_ID"])
+          result["scoring_sha"] = os.environ["SCORING_SHA"]
+          path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Checkpoint completed scoring
+        run: >-
+          python scripts/write_workflow_checkpoint.py
+          --path reports/checkpoints/defense-v1-2025-confirmation.json
+          --workflow defense-v1-2025-confirmation
+          --stage confirmation
+          --status step_complete
+          --current-step persist_binding_result
+          --last-completed-step frozen_one_shot_scoring
+          --outputs-json '{"report_created":true,"scored_rows_created":true}'
+          --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
+      - name: Upload frozen confirmation result
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-confirmation
+          path: reports/generated/defense-v1-2025-confirmation/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding Defense v1 confirmation result
+        run: |
+          set -euo pipefail
+          cp reports/generated/defense-v1-2025-confirmation/report.json docs/defense-v1-2025-confirmation-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/defense-v1-2025-confirmation-result.json
+          git commit -m "Persist Defense v1 2025 confirmation"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Final durable checkpoint
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          STATUS=failed
+          LAST_COMPLETED="unknown_before_failure"
+          if [ "$JOB_STATUS" = "success" ]; then
+            STATUS=completed
+            LAST_COMPLETED="persist_binding_result"
+          fi
+          python scripts/write_workflow_checkpoint.py \
+            --path reports/checkpoints/defense-v1-2025-confirmation.json \
+            --workflow defense-v1-2025-confirmation \
+            --stage confirmation \
+            --status "$STATUS" \
+            --current-step job_finished \
+            --last-completed-step "$LAST_COMPLETED" \
+            --error "GitHub Actions job status: $JOB_STATUS" \
+            --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
+
+      - name: Upload final checkpoint and partial outputs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: defense-v1-2025-confirmation-checkpoint-final
+          path: |
+            reports/checkpoints/defense-v1-2025-confirmation.json
+            reports/generated/defense-v1-2025-confirmation/
+          if-no-files-found: warn
+          retention-days: 30

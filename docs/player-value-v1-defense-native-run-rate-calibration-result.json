@@ -1,0 +1,1046 @@
+{
+  "boundary": {
+    "2025_confirmation_residuals_used": false,
+    "2025_data_accessed": false,
+    "defense_refit": false,
+    "defense_rescored": false,
+    "playing_time_refit": false,
+    "position_role_refit": false,
+    "positional_adjustment_calculated": false,
+    "replacement_level_selected": false,
+    "run_conversion_selected": false,
+    "runs_per_win_selected": false,
+    "war_value_calculated": false
+  },
+  "catcher_blocking": {
+    "by_year": {
+      "2022": {
+        "calibrations": {
+          "n_pbwp": {
+            "n": 84,
+            "opportunity_field": "n_pbwp",
+            "opportunity_mean": 20.226190476190474,
+            "opportunity_median": 19.5,
+            "run_mae": 0.4678175000135355,
+            "run_rmse": 0.6380657799142511,
+            "run_target_mean": -0.03571428571428571,
+            "run_target_population_sd": 1.5464739353293546,
+            "through_origin_slope": 0.060841401952006706,
+            "x_mean": -0.12830215941422551,
+            "x_mean_abs": 14.46050320903817,
+            "x_median": 1.10670591541156,
+            "x_population_sd": 23.16083086159509
+          },
+          "pitches": {
+            "n": 84,
+            "opportunity_field": "pitches",
+            "opportunity_mean": 2194.035714285714,
+            "opportunity_median": 2187.5,
+            "run_mae": 0.4081320139562428,
+            "run_rmse": 0.4870175385549461,
+            "run_target_mean": -0.03571428571428571,
+            "run_target_population_sd": 1.5464739353293546,
+            "through_origin_slope": 0.0006829116037479894,
+            "x_mean": 477.62033429170725,
+            "x_mean_abs": 1513.3978532815217,
+            "x_median": 133.04368596457417,
+            "x_population_sd": 2096.217933475282
+          }
+        },
+        "identities": {
+          "blocks_above_average_equals_rate_times_n_pbwp_over_40": {
+            "mae": 4.431238015368329,
+            "max_abs_error": 25.5241127872423,
+            "mean_error": 0.10887557792978668,
+            "n": 84,
+            "rmse": 6.21332999407964
+          },
+          "catcher_blocking_runs_equals_0_25_times_blocks_aa": {
+            "mae": 0.25595238095238093,
+            "max_abs_error": 0.5,
+            "mean_error": -0.05952380952380952,
+            "n": 84,
+            "rmse": 0.32043497223082784
+          }
+        },
+        "n": 84,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=500&season_start=2022&season_end=2022&split=no&team=&type=Cat&with_team_only=1&csv=true",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2022
+      },
+      "2023": {
+        "calibrations": {
+          "n_pbwp": {
+            "n": 77,
+            "opportunity_field": "n_pbwp",
+            "opportunity_mean": 22.532467532467532,
+            "opportunity_median": 22.0,
+            "run_mae": 0.40115664845819615,
+            "run_rmse": 0.5784812699770517,
+            "run_target_mean": -0.012987012987012988,
+            "run_target_population_sd": 1.5583333295752564,
+            "through_origin_slope": 0.05970492262800171,
+            "x_mean": -1.0233060218065428,
+            "x_mean_abs": 15.687260295589683,
+            "x_median": 2.257295793038074,
+            "x_population_sd": 24.214950307334743
+          },
+          "pitches": {
+            "n": 77,
+            "opportunity_field": "pitches",
+            "opportunity_mean": 2500.4805194805194,
+            "opportunity_median": 2335.0,
+            "run_mae": 0.3161228072957527,
+            "run_rmse": 0.38745801168331906,
+            "run_target_mean": -0.012987012987012988,
+            "run_target_population_sd": 1.5583333295752564,
+            "through_origin_slope": 0.0006466287170316754,
+            "x_mean": 348.7190185736573,
+            "x_mean_abs": 1679.6934961600693,
+            "x_median": 249.29841858150857,
+            "x_population_sd": 2308.148429147959
+          }
+        },
+        "identities": {
+          "blocks_above_average_equals_rate_times_n_pbwp_over_40": {
+            "mae": 4.231983627538651,
+            "max_abs_error": 18.650828365375435,
+            "mean_error": -0.027608904675532,
+            "n": 77,
+            "rmse": 5.925221924578099
+          },
+          "catcher_blocking_runs_equals_0_25_times_blocks_aa": {
+            "mae": 0.2564935064935065,
+            "max_abs_error": 0.5,
+            "mean_error": -0.003246753246753247,
+            "n": 77,
+            "rmse": 0.3210676183990151
+          }
+        },
+        "n": 77,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=500&season_start=2023&season_end=2023&split=no&team=&type=Cat&with_team_only=1&csv=true",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2023
+      },
+      "2024": {
+        "calibrations": {
+          "n_pbwp": {
+            "n": 79,
+            "opportunity_field": "n_pbwp",
+            "opportunity_mean": 20.126582278481013,
+            "opportunity_median": 16.0,
+            "run_mae": 0.4700588964432978,
+            "run_rmse": 0.6368599502906546,
+            "run_target_mean": 0.06329113924050633,
+            "run_target_population_sd": 1.5617401212676787,
+            "through_origin_slope": 0.05250354386443885,
+            "x_mean": -4.585851308924146,
+            "x_mean_abs": 15.944364364753906,
+            "x_median": -1.0204770956558387,
+            "x_population_sd": 26.79701689589234
+          },
+          "pitches": {
+            "n": 79,
+            "opportunity_field": "pitches",
+            "opportunity_mean": 2352.9493670886077,
+            "opportunity_median": 2138.0,
+            "run_mae": 0.2851986753149889,
+            "run_rmse": 0.3249553859298203,
+            "run_target_mean": 0.06329113924050633,
+            "run_target_population_sd": 1.5617401212676787,
+            "through_origin_slope": 0.0005967737590981223,
+            "x_mean": 27.608957928958997,
+            "x_mean_abs": 1779.722644246666,
+            "x_median": -117.06330111594835,
+            "x_population_sd": 2561.7425382765396
+          }
+        },
+        "identities": {
+          "blocks_above_average_equals_rate_times_n_pbwp_over_40": {
+            "mae": 4.315806595524456,
+            "max_abs_error": 25.68052340931212,
+            "mean_error": -0.06363672161076776,
+            "n": 79,
+            "rmse": 6.1717105642410806
+          },
+          "catcher_blocking_runs_equals_0_25_times_blocks_aa": {
+            "mae": 0.2974683544303797,
+            "max_abs_error": 0.5,
+            "mean_error": 0.08227848101265822,
+            "n": 79,
+            "rmse": 0.3535533905932738
+          }
+        },
+        "n": 79,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=500&season_start=2024&season_end=2024&split=no&team=&type=Cat&with_team_only=1&csv=true",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2024
+      }
+    },
+    "calibration_forms": {
+      "n_pbwp": "catcher_blocking_runs ~ 0 + slope * (target_z * n_pbwp)",
+      "pitches": "catcher_blocking_runs ~ 0 + slope * (target_z * pitches)"
+    },
+    "stability_by_opportunity": {
+      "n_pbwp": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.06400298712933097,
+        "max_to_min_ratio": 1.1588056247992655,
+        "mean_slope": 0.057683289481482415,
+        "median_slope": 0.05970492262800171,
+        "population_sd": 0.0036919028342607915,
+        "slopes": [
+          0.060841401952006706,
+          0.05970492262800171,
+          0.05250354386443885
+        ],
+        "year_count": 3
+      },
+      "pitches": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.05499232636383195,
+        "max_to_min_ratio": 1.1443391961135212,
+        "mean_slope": 0.0006421046932925956,
+        "median_slope": 0.0006466287170316754,
+        "population_sd": 3.531083085329464e-05,
+        "slopes": [
+          0.0006829116037479894,
+          0.0006466287170316754,
+          0.0005967737590981223
+        ],
+        "year_count": 3
+      }
+    }
+  },
+  "catcher_framing": {
+    "by_year": {
+      "2022": {
+        "calibration": {
+          "n": 60,
+          "opportunity_field": "pitches",
+          "opportunity_mean": 5312.016666666666,
+          "opportunity_median": 5158.5,
+          "run_mae": 0.144226626301475,
+          "run_rmse": 0.15140413333401023,
+          "run_target_mean": 0.32621500645865353,
+          "run_target_population_sd": 6.758063903849563,
+          "through_origin_slope": 0.001270512082929805,
+          "x_mean": 370.2771812097124,
+          "x_mean_abs": 4187.784072010434,
+          "x_median": 670.0859174445801,
+          "x_population_sd": 5311.133527791559
+        },
+        "identity": "target_raw = 1000 * rv_tot / pitches by construction",
+        "n": 60,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing?type=catcher&seasonStart=2022&seasonEnd=2022&team=&min=1&sortColumn=rv_tot&sortDirection=desc&csv=true",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2022
+      },
+      "2023": {
+        "calibration": {
+          "n": 63,
+          "opportunity_field": "pitches",
+          "opportunity_mean": 5410.158730158731,
+          "opportunity_median": 4889.0,
+          "run_mae": 0.3287105990451354,
+          "run_rmse": 0.3510366756722377,
+          "run_target_mean": 0.1750369016583775,
+          "run_target_population_sd": 6.938268090883706,
+          "through_origin_slope": 0.001189541187787062,
+          "x_mean": -129.18736985697976,
+          "x_mean_abs": 4776.437084314668,
+          "x_median": -127.76468193814812,
+          "x_population_sd": 5825.682149533658
+        },
+        "identity": "target_raw = 1000 * rv_tot / pitches by construction",
+        "n": 63,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing?type=catcher&seasonStart=2023&seasonEnd=2023&team=&min=1&sortColumn=rv_tot&sortDirection=desc&csv=true",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2023
+      },
+      "2024": {
+        "calibration": {
+          "n": 58,
+          "opportunity_field": "pitches",
+          "opportunity_mean": 5647.431034482759,
+          "opportunity_median": 5672.5,
+          "run_mae": 0.04541947585905199,
+          "run_rmse": 0.04835793989240769,
+          "run_target_mean": 0.3811192615788301,
+          "run_target_population_sd": 6.336617681024387,
+          "through_origin_slope": 0.0010924563039265939,
+          "x_mean": 390.44008982765,
+          "x_mean_abs": 4505.73820482074,
+          "x_median": 81.23092415948614,
+          "x_population_sd": 5797.520533103414
+        },
+        "identity": "target_raw = 1000 * rv_tot / pitches by construction",
+        "n": 58,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing?type=catcher&seasonStart=2024&seasonEnd=2024&team=&min=1&sortColumn=rv_tot&sortDirection=desc&csv=true",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2024
+      }
+    },
+    "calibration_form": "rv_tot ~ 0 + slope * (target_z * pitches)",
+    "stability": {
+      "all_positive": true,
+      "coefficient_of_variation": 0.06146932783236556,
+      "max_to_min_ratio": 1.1629866369604247,
+      "mean_slope": 0.001184169858214487,
+      "median_slope": 0.001189541187787062,
+      "population_sd": 7.279012522379215e-05,
+      "slopes": [
+        0.001270512082929805,
+        0.001189541187787062,
+        0.0010924563039265939
+      ],
+      "year_count": 3
+    }
+  },
+  "catcher_throwing": {
+    "by_year": {
+      "2022": {
+        "calibration": {
+          "n": 79,
+          "opportunity_field": "sb_attempts",
+          "opportunity_mean": 30.582278481012658,
+          "opportunity_median": 28.0,
+          "run_mae": 0.027874128924111244,
+          "run_rmse": 0.03053297282623176,
+          "run_target_mean": 0.04222341683479684,
+          "run_target_population_sd": 1.903325302507997,
+          "through_origin_slope": 0.0640531587852359,
+          "x_mean": 1.0943651661885785,
+          "x_mean_abs": 20.980631738031853,
+          "x_median": 0.4024115072717651,
+          "x_population_sd": 29.698108061359545
+        },
+        "identities": {
+          "catcher_stealing_runs_equals_0_65_times_cs_aa": {
+            "mae": 2.9600091716667546e-16,
+            "max_abs_error": 3.552713678800501e-15,
+            "mean_error": -9.626617365420661e-17,
+            "n": 79,
+            "rmse": 5.529763310789785e-16
+          },
+          "caught_stealing_above_average_equals_rate_times_attempts": {
+            "mae": 3.9226709082088204e-16,
+            "max_abs_error": 1.7763568394002505e-15,
+            "mean_error": 2.1607188612166814e-17,
+            "n": 79,
+            "rmse": 5.987636878290949e-16
+          }
+        },
+        "n": 79,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=10&season_start=2022&season_end=2022&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2022
+      },
+      "2023": {
+        "calibration": {
+          "n": 78,
+          "opportunity_field": "sb_attempts",
+          "opportunity_mean": 41.69230769230769,
+          "opportunity_median": 38.5,
+          "run_mae": 0.02952664090532064,
+          "run_rmse": 0.033417493526015224,
+          "run_target_mean": 0.0619298076403531,
+          "run_target_population_sd": 2.3115280953334025,
+          "through_origin_slope": 0.05301938383575028,
+          "x_mean": 0.6111569843100175,
+          "x_mean_abs": 30.843990596174052,
+          "x_median": -2.4579494931885453,
+          "x_population_sd": 43.60459951597236
+        },
+        "identities": {
+          "catcher_stealing_runs_equals_0_65_times_cs_aa": {
+            "mae": 4.0232240615923643e-16,
+            "max_abs_error": 6.217248937900877e-15,
+            "mean_error": -1.2022968091193101e-16,
+            "n": 78,
+            "rmse": 8.454964814885309e-16
+          },
+          "caught_stealing_above_average_equals_rate_times_attempts": {
+            "mae": 4.948409915446662e-16,
+            "max_abs_error": 1.7763568394002505e-15,
+            "mean_error": 6.098220219395391e-17,
+            "n": 78,
+            "rmse": 6.869955367166883e-16
+          }
+        },
+        "n": 78,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=10&season_start=2023&season_end=2023&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2023
+      },
+      "2024": {
+        "calibration": {
+          "n": 79,
+          "opportunity_field": "sb_attempts",
+          "opportunity_mean": 42.392405063291136,
+          "opportunity_median": 40.0,
+          "run_mae": 0.09338180845531713,
+          "run_rmse": 0.10600517537353199,
+          "run_target_mean": 0.029082758671287935,
+          "run_target_population_sd": 2.3078998898408205,
+          "through_origin_slope": 0.05862747110425751,
+          "x_mean": 2.088859792516476,
+          "x_mean_abs": 29.528797183988893,
+          "x_median": 0.9887935001572483,
+          "x_population_sd": 39.271571009378775
+        },
+        "identities": {
+          "catcher_stealing_runs_equals_0_65_times_cs_aa": {
+            "mae": 3.471203633954603e-16,
+            "max_abs_error": 1.7763568394002505e-15,
+            "mean_error": 1.0276589705786655e-16,
+            "n": 79,
+            "rmse": 5.325094999762534e-16
+          },
+          "caught_stealing_above_average_equals_rate_times_attempts": {
+            "mae": 5.25950591096158e-16,
+            "max_abs_error": 1.7763568394002505e-15,
+            "mean_error": -7.764534444372139e-17,
+            "n": 79,
+            "rmse": 7.287114173180323e-16
+          }
+        },
+        "n": 79,
+        "response_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=10&season_start=2024&season_end=2024&split=no&team=&type=Cat&with_team_only=1&csv=true&target_base=All",
+        "target_standardization": "within target year; population sd ddof=0",
+        "year": 2024
+      }
+    },
+    "calibration_form": "catcher_stealing_runs ~ 0 + slope * (target_z * sb_attempts)",
+    "stability": {
+      "all_positive": true,
+      "coefficient_of_variation": 0.0769161849598984,
+      "max_to_min_ratio": 1.2081083209806316,
+      "mean_slope": 0.05856667124174789,
+      "median_slope": 0.05862747110425751,
+      "population_sd": 0.004504724917715843,
+      "slopes": [
+        0.0640531587852359,
+        0.05301938383575028,
+        0.05862747110425751
+      ],
+      "year_count": 3
+    }
+  },
+  "contract": "docs/player-value-v1-defense-native-run-rate-calibration-contract.md",
+  "contract_sha256": "276481bc343245ce0b8ea82373286faa347a17d8d0bda13915865d743f72ad0b",
+  "decision": {
+    "diagnostic_complete": true,
+    "future_catcher_opportunity_forecast_selected": false,
+    "future_standardization_rule_selected": false,
+    "positional_adjustment_selected": false,
+    "production_run_scale_selected": false,
+    "war_value_authorized": false
+  },
+  "gate": "player_value_v1_defense_native_run_rate_calibration_diagnostic",
+  "general_range": {
+    "by_year": {
+      "2022": {
+        "by_position": {
+          "1B": {
+            "n": 34,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2692.0882352941176,
+            "opportunity_median": 2826.0,
+            "run_mae": 2.371171380493656,
+            "run_rmse": 2.7355122878928158,
+            "run_target_mean": -1.911764705882353,
+            "run_target_population_sd": 4.104285042409038,
+            "through_origin_slope": 0.0013316297221913282,
+            "x_mean": 332.10701012846835,
+            "x_mean_abs": 2001.9029843685053,
+            "x_median": 0.0,
+            "x_population_sd": 2688.9586796835965
+          },
+          "2B": {
+            "n": 52,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 1844.7884615384614,
+            "opportunity_median": 1637.0,
+            "run_mae": 1.3561681026347396,
+            "run_rmse": 1.9265827506925188,
+            "run_target_mean": 0.5384615384615384,
+            "run_target_population_sd": 5.253063349723951,
+            "through_origin_slope": 0.0024945007285256744,
+            "x_mean": 233.96305159388174,
+            "x_mean_abs": 1280.506472386032,
+            "x_median": 0.0,
+            "x_population_sd": 1957.037595173535
+          },
+          "3B": {
+            "n": 40,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2306.175,
+            "opportunity_median": 2265.0,
+            "run_mae": 1.2763291911998775,
+            "run_rmse": 1.6465084843908677,
+            "run_target_mean": 0.65,
+            "run_target_population_sd": 4.92214384186403,
+            "through_origin_slope": 0.0017916802061074995,
+            "x_mean": 70.26699561123444,
+            "x_mean_abs": 1975.5639090117904,
+            "x_median": -133.6970145054011,
+            "x_population_sd": 2613.3109070995974
+          },
+          "CF": {
+            "n": 42,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2127.3333333333335,
+            "opportunity_median": 1973.0,
+            "run_mae": 3.337468370148872,
+            "run_rmse": 3.5473128256784827,
+            "run_target_mean": 3.5714285714285716,
+            "run_target_population_sd": 4.326787311085923,
+            "through_origin_slope": 0.0022177602641349106,
+            "x_mean": 105.49390980767757,
+            "x_mean_abs": 1558.4349952724783,
+            "x_median": 56.720996856322955,
+            "x_population_sd": 1957.0552408293315
+          },
+          "LF": {
+            "n": 30,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2221.3,
+            "opportunity_median": 2144.0,
+            "run_mae": 2.0063413538056447,
+            "run_rmse": 2.241251335462627,
+            "run_target_mean": -2.033333333333333,
+            "run_target_population_sd": 3.978972508352153,
+            "through_origin_slope": 0.0016164671230404328,
+            "x_mean": -30.93328749192813,
+            "x_mean_abs": 1739.6880241720962,
+            "x_median": 117.70774918888833,
+            "x_population_sd": 2391.2355511200003
+          },
+          "RF": {
+            "n": 32,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2075.34375,
+            "opportunity_median": 2012.5,
+            "run_mae": 1.5977567454440025,
+            "run_rmse": 2.513273523757783,
+            "run_target_mean": -0.71875,
+            "run_target_population_sd": 6.281094525439018,
+            "through_origin_slope": 0.0030907583510534045,
+            "x_mean": -80.17103225698459,
+            "x_mean_abs": 1391.5749212197566,
+            "x_median": -264.7799573587141,
+            "x_population_sd": 1875.1895118761017
+          },
+          "SS": {
+            "n": 39,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2742.5641025641025,
+            "opportunity_median": 2937.0,
+            "run_mae": 1.868552225517899,
+            "run_rmse": 2.358208708166985,
+            "run_target_mean": 1.0769230769230769,
+            "run_target_population_sd": 6.240416715969746,
+            "through_origin_slope": 0.0023398195974398614,
+            "x_mean": 168.8238194493546,
+            "x_mean_abs": 1997.833935111244,
+            "x_median": -269.9194221362605,
+            "x_population_sd": 2506.1353468390507
+          }
+        },
+        "eligible_target_count": 269,
+        "joined_count": 269,
+        "opportunity": "official target-year MLB fielding_outs at matching position",
+        "pooled_groups": {
+          "IF": {
+            "n": 165,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2343.4363636363637,
+            "opportunity_median": 2308.0,
+            "run_mae": 1.79450845464424,
+            "run_rmse": 2.4274412079996526,
+            "run_target_mean": 0.18787878787878787,
+            "run_target_population_sd": 5.332107297094823,
+            "through_origin_slope": 0.001958541213534222,
+            "x_mean": 199.10621703166055,
+            "x_mean_abs": 1767.206774923715,
+            "x_median": 0.0,
+            "x_population_sd": 2417.7183505321855
+          },
+          "OF": {
+            "n": 104,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2138.4423076923076,
+            "opportunity_median": 2007.0,
+            "run_mae": 2.489257191729228,
+            "run_rmse": 3.145851221840281,
+            "run_target_mean": 0.6346153846153846,
+            "run_target_population_sd": 5.510580194756287,
+            "through_origin_slope": 0.0022070977120912877,
+            "x_mean": 9.012236105202918,
+            "x_mean_abs": 1559.3779615926844,
+            "x_median": -40.33033403392303,
+            "x_population_sd": 2069.975514855217
+          }
+        },
+        "public_run_target": "fielding_runs_prevented",
+        "source_row_count": 269,
+        "target_standardization": "within target year x position; population sd ddof=0",
+        "year": 2022
+      },
+      "2023": {
+        "by_position": {
+          "1B": {
+            "n": 29,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2872.7586206896553,
+            "opportunity_median": 2959.0,
+            "run_mae": 2.188795375081245,
+            "run_rmse": 2.7907846450465654,
+            "run_target_mean": -1.6551724137931034,
+            "run_target_population_sd": 4.633281864115591,
+            "through_origin_slope": 0.0014221370829147768,
+            "x_mean": 309.4145760941637,
+            "x_mean_abs": 2239.1780750045723,
+            "x_median": -202.52830014482058,
+            "x_population_sd": 2832.357689255278
+          },
+          "2B": {
+            "n": 50,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 1952.46,
+            "opportunity_median": 1656.0,
+            "run_mae": 1.2117635026471907,
+            "run_rmse": 1.502183034603334,
+            "run_target_mean": 0.5,
+            "run_target_population_sd": 5.671860364994893,
+            "through_origin_slope": 0.002430213267969069,
+            "x_mean": 140.95991614779868,
+            "x_mean_abs": 1653.865442490339,
+            "x_median": 98.87386451754756,
+            "x_population_sd": 2255.535384123293
+          },
+          "3B": {
+            "n": 40,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2236.05,
+            "opportunity_median": 2222.0,
+            "run_mae": 1.1944999903558613,
+            "run_rmse": 1.5382162334315332,
+            "run_target_mean": 0.45,
+            "run_target_population_sd": 5.0791239402085875,
+            "through_origin_slope": 0.0022471224765286653,
+            "x_mean": 459.5088561332659,
+            "x_mean_abs": 1603.5111863976838,
+            "x_median": 84.62949316997077,
+            "x_population_sd": 2114.0573125168225
+          },
+          "CF": {
+            "n": 40,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2331.025,
+            "opportunity_median": 2368.5,
+            "run_mae": 3.732640653908593,
+            "run_rmse": 4.172304797787391,
+            "run_target_mean": 4.375,
+            "run_target_population_sd": 3.7662149434146746,
+            "through_origin_slope": 0.0020726804553174638,
+            "x_mean": 309.91721104111036,
+            "x_mean_abs": 1600.984312334983,
+            "x_median": 612.8134341273669,
+            "x_population_sd": 1899.7348471613725
+          },
+          "LF": {
+            "n": 24,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2594.0,
+            "opportunity_median": 2434.0,
+            "run_mae": 1.8870964656083042,
+            "run_rmse": 2.1259532178737275,
+            "run_target_mean": -2.0416666666666665,
+            "run_target_population_sd": 5.660382544983647,
+            "through_origin_slope": 0.0021198415668483013,
+            "x_mean": -142.65115531490105,
+            "x_mean_abs": 1986.8957237950754,
+            "x_median": 170.5744323298337,
+            "x_population_sd": 2651.6791685289145
+          },
+          "RF": {
+            "n": 33,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2382.909090909091,
+            "opportunity_median": 2305.0,
+            "run_mae": 1.2812242034030201,
+            "run_rmse": 1.6841556454596496,
+            "run_target_mean": -1.0606060606060606,
+            "run_target_population_sd": 3.8292288482257733,
+            "through_origin_slope": 0.0014287138509131096,
+            "x_mean": -0.8131216889493605,
+            "x_mean_abs": 1804.0376153065995,
+            "x_median": 267.0869288250456,
+            "x_population_sd": 2518.9220777239784
+          },
+          "SS": {
+            "n": 45,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2387.266666666667,
+            "opportunity_median": 2529.0,
+            "run_mae": 1.4900861094399507,
+            "run_rmse": 1.9972228604984033,
+            "run_target_mean": 1.1555555555555554,
+            "run_target_population_sd": 5.549596804395616,
+            "through_origin_slope": 0.002042627635059078,
+            "x_mean": 339.5173433698264,
+            "x_mean_abs": 1903.374633591494,
+            "x_median": -170.46407938705175,
+            "x_population_sd": 2574.9228122560257
+          }
+        },
+        "eligible_target_count": 261,
+        "joined_count": 261,
+        "opportunity": "official target-year MLB fielding_outs at matching position",
+        "pooled_groups": {
+          "IF": {
+            "n": 164,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2303.670731707317,
+            "opportunity_median": 2272.5,
+            "run_mae": 1.5774552415684915,
+            "run_rmse": 2.1379116135508736,
+            "run_target_mean": 0.2865853658536585,
+            "run_target_population_sd": 5.407498456752978,
+            "through_origin_slope": 0.002033645604098981,
+            "x_mean": 302.9247147017897,
+            "x_mean_abs": 1813.5472089461832,
+            "x_median": 57.98469018983977,
+            "x_population_sd": 2427.6115765035643
+          },
+          "OF": {
+            "n": 97,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2413.742268041237,
+            "opportunity_median": 2336.0,
+            "run_mae": 2.5692768415119733,
+            "run_rmse": 3.137828878078045,
+            "run_target_mean": 0.9381443298969072,
+            "run_target_population_sd": 5.214599712800196,
+            "through_origin_slope": 0.0018318908095053211,
+            "x_mean": 92.22915152939652,
+            "x_mean_abs": 1765.5475378309166,
+            "x_median": 352.2522861399504,
+            "x_population_sd": 2328.6706224568848
+          }
+        },
+        "public_run_target": "fielding_runs_prevented",
+        "source_row_count": 261,
+        "target_standardization": "within target year x position; population sd ddof=0",
+        "year": 2023
+      },
+      "2024": {
+        "by_position": {
+          "1B": {
+            "n": 31,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2836.8064516129034,
+            "opportunity_median": 2869.0,
+            "run_mae": 1.5995713874203266,
+            "run_rmse": 1.9559352129213214,
+            "run_target_mean": -1.1290322580645162,
+            "run_target_population_sd": 4.78399168925181,
+            "through_origin_slope": 0.0014805521328630058,
+            "x_mean": 307.73081047609,
+            "x_mean_abs": 2371.607278586199,
+            "x_median": -257.4442289474322,
+            "x_population_sd": 3030.2390268895315
+          },
+          "2B": {
+            "n": 46,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2113.7391304347825,
+            "opportunity_median": 1895.5,
+            "run_mae": 1.2218199171608692,
+            "run_rmse": 1.4800652643534,
+            "run_target_mean": 1.0869565217391304,
+            "run_target_population_sd": 4.675682172765631,
+            "through_origin_slope": 0.0018996582818521495,
+            "x_mean": 246.71142250359335,
+            "x_mean_abs": 1581.791263252166,
+            "x_median": -171.89607382558123,
+            "x_population_sd": 2391.157521199421
+          },
+          "3B": {
+            "n": 46,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2075.4347826086955,
+            "opportunity_median": 1772.0,
+            "run_mae": 1.5626996750491227,
+            "run_rmse": 1.9802555842541558,
+            "run_target_mean": -0.391304347826087,
+            "run_target_population_sd": 4.570597244151137,
+            "through_origin_slope": 0.0018120617732267537,
+            "x_mean": 495.8461356677793,
+            "x_mean_abs": 1762.5351509836044,
+            "x_median": 423.1946473950652,
+            "x_population_sd": 2229.0371438563857
+          },
+          "CF": {
+            "n": 41,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2335.682926829268,
+            "opportunity_median": 2400.0,
+            "run_mae": 3.770420993372171,
+            "run_rmse": 4.32223463138118,
+            "run_target_mean": 4.926829268292683,
+            "run_target_population_sd": 6.189646130010432,
+            "through_origin_slope": 0.003021193283741119,
+            "x_mean": 384.7150388403433,
+            "x_mean_abs": 1828.7578592468597,
+            "x_median": 178.84761310558196,
+            "x_population_sd": 2159.1615171929225
+          },
+          "LF": {
+            "n": 32,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2244.84375,
+            "opportunity_median": 2246.5,
+            "run_mae": 1.8263114498876083,
+            "run_rmse": 2.1541088380111697,
+            "run_target_mean": -1.25,
+            "run_target_population_sd": 4.743416490252569,
+            "through_origin_slope": 0.0021251020549912622,
+            "x_mean": 70.61207245420849,
+            "x_mean_abs": 1679.4313804194683,
+            "x_median": 201.37942704348825,
+            "x_population_sd": 2072.615825554113
+          },
+          "RF": {
+            "n": 31,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2222.6129032258063,
+            "opportunity_median": 2225.0,
+            "run_mae": 1.7715077696144699,
+            "run_rmse": 2.101683188275133,
+            "run_target_mean": -1.6129032258064515,
+            "run_target_population_sd": 4.217302450426894,
+            "through_origin_slope": 0.0018244370490840998,
+            "x_mean": -35.685412789170506,
+            "x_mean_abs": 1689.3674427201765,
+            "x_median": -179.60100743542884,
+            "x_population_sd": 2190.1117040577847
+          },
+          "SS": {
+            "n": 45,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2454.7555555555555,
+            "opportunity_median": 2140.0,
+            "run_mae": 1.4697558818854632,
+            "run_rmse": 1.9607252050584267,
+            "run_target_mean": 1.6222222222222222,
+            "run_target_population_sd": 5.225105586977332,
+            "through_origin_slope": 0.0018117782637688431,
+            "x_mean": 243.6836079054325,
+            "x_mean_abs": 1984.918942490949,
+            "x_median": -166.56038477004077,
+            "x_population_sd": 2808.6281960630813
+          }
+        },
+        "eligible_target_count": 272,
+        "joined_count": 272,
+        "opportunity": "official target-year MLB fielding_outs at matching position",
+        "pooled_groups": {
+          "IF": {
+            "n": 168,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2328.0178571428573,
+            "opportunity_median": 2205.0,
+            "run_mae": 1.5009537839492864,
+            "run_rmse": 1.8927647919055968,
+            "run_target_mean": 0.4166666666666667,
+            "run_target_population_sd": 4.937003943335263,
+            "through_origin_slope": 0.0017493676332975903,
+            "x_mean": 325.3753878356333,
+            "x_mean_abs": 1885.0011494232756,
+            "x_median": -152.6154715481464,
+            "x_population_sd": 2597.078170252998
+          },
+          "OF": {
+            "n": 104,
+            "opportunity_field": "fielding_outs",
+            "opportunity_mean": 2274.028846153846,
+            "opportunity_median": 2264.5,
+            "run_mae": 2.773729081816275,
+            "run_rmse": 3.378572712380155,
+            "run_target_mean": 1.0769230769230769,
+            "run_target_population_sd": 6.082276123314091,
+            "through_origin_slope": 0.0023980709527190447,
+            "x_mean": 162.7562991781198,
+            "x_mean_abs": 1741.2621839122087,
+            "x_median": -19.31248739117953,
+            "x_population_sd": 2150.1594108807044
+          }
+        },
+        "public_run_target": "fielding_runs_prevented",
+        "source_row_count": 272,
+        "target_standardization": "within target year x position; population sd ddof=0",
+        "year": 2024
+      }
+    },
+    "calibration_form": "fielding_runs_prevented ~ 0 + slope * (target_z * target_year_position_fielding_outs)",
+    "stability_by_group": {
+      "IF": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.06284774714649503,
+        "max_to_min_ratio": 1.162503275692555,
+        "mean_slope": 0.0019138514836435977,
+        "median_slope": 0.001958541213534222,
+        "population_sd": 0.00012028125411997721,
+        "slopes": [
+          0.001958541213534222,
+          0.002033645604098981,
+          0.0017493676332975903
+        ],
+        "year_count": 3
+      },
+      "OF": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.10960861804524032,
+        "max_to_min_ratio": 1.309068717565439,
+        "mean_slope": 0.0021456864914385513,
+        "median_slope": 0.0022070977120912877,
+        "population_sd": 0.00023518573108491998,
+        "slopes": [
+          0.0022070977120912877,
+          0.0018318908095053211,
+          0.0023980709527190447
+        ],
+        "year_count": 3
+      }
+    },
+    "stability_by_position": {
+      "1B": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.0434067958336794,
+        "max_to_min_ratio": 1.1118347001346673,
+        "mean_slope": 0.0014114396459897038,
+        "median_slope": 0.0014221370829147768,
+        "population_sd": 6.126607254503581e-05,
+        "slopes": [
+          0.0013316297221913282,
+          0.0014221370829147768,
+          0.0014805521328630058
+        ],
+        "year_count": 3
+      },
+      "2B": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.1171773425345556,
+        "max_to_min_ratio": 1.313131289114566,
+        "mean_slope": 0.0022747907594489643,
+        "median_slope": 0.002430213267969069,
+        "population_sd": 0.00026655393601439316,
+        "slopes": [
+          0.0024945007285256744,
+          0.002430213267969069,
+          0.0018996582818521495
+        ],
+        "year_count": 3
+      },
+      "3B": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.10770635456349896,
+        "max_to_min_ratio": 1.2541984160279547,
+        "mean_slope": 0.0019502881519543062,
+        "median_slope": 0.0018120617732267537,
+        "population_sd": 0.00021005842719538164,
+        "slopes": [
+          0.0017916802061074995,
+          0.0022471224765286653,
+          0.0018120617732267537
+        ],
+        "year_count": 3
+      },
+      "CF": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.17116431865144968,
+        "max_to_min_ratio": 1.4576261748357033,
+        "mean_slope": 0.002437211334397831,
+        "median_slope": 0.0022177602641349106,
+        "population_sd": 0.0004171636174617952,
+        "slopes": [
+          0.0022177602641349106,
+          0.0020726804553174638,
+          0.003021193283741119
+        ],
+        "year_count": 3
+      },
+      "LF": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.12209137455867212,
+        "max_to_min_ratio": 1.3146583835210528,
+        "mean_slope": 0.0019538035816266653,
+        "median_slope": 0.0021198415668483013,
+        "population_sd": 0.0002385425648984563,
+        "slopes": [
+          0.0016164671230404328,
+          0.0021198415668483013,
+          0.0021251020549912622
+        ],
+        "year_count": 3
+      },
+      "RF": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.3352240204978207,
+        "max_to_min_ratio": 2.163315172648505,
+        "mean_slope": 0.002114636417016871,
+        "median_slope": 0.0018244370490840998,
+        "population_sd": 0.0007088769216035017,
+        "slopes": [
+          0.0030907583510534045,
+          0.0014287138509131096,
+          0.0018244370490840998
+        ],
+        "year_count": 3
+      },
+      "SS": {
+        "all_positive": true,
+        "coefficient_of_variation": 0.10468057751788924,
+        "max_to_min_ratio": 1.291449204480791,
+        "mean_slope": 0.002064741832089261,
+        "median_slope": 0.002042627635059078,
+        "population_sd": 0.00021613836740844852,
+        "slopes": [
+          0.0023398195974398614,
+          0.002042627635059078,
+          0.0018117782637688431
+        ],
+        "year_count": 3
+      }
+    }
+  },
+  "public_methodology_constants": {
+    "catcher_blocking_runs_per_block_aa": 0.25,
+    "catcher_framing_run_field": "rv_tot",
+    "catcher_throwing_runs_per_cs_aa": 0.65,
+    "infield_oaa_runs_per_out": 0.75,
+    "outfield_oaa_runs_per_out": 0.9
+  },
+  "report_schema_version": "0.1",
+  "source_run_id": 32267920355,
+  "source_sha": "f2bddb23e38b5a42a413cc20fc1f6feb5fbeaa0f",
+  "sources": {
+    "catcher_framing": "repaired direct Baseball Savant framing-specific year semantics",
+    "catcher_throwing_blocking": "repaired direct Baseball Savant year-specific CSV semantics",
+    "fielding": {
+      "artifact_digest": "sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3",
+      "artifact_name": "position-role-historical-source-2021-2024",
+      "run_id": 32148467330
+    },
+    "general_range": "sportsdataverse==0.0.75 Savant OAA leaderboard"
+  },
+  "status": "diagnostic_complete_no_production_run_scale_selected",
+  "years": [
+    2022,
+    2023,
+    2024
+  ]
+}

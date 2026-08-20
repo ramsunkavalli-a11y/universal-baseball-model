@@ -1,0 +1,187 @@
+{
+  "actions_run_id": 32381035435,
+  "boundary": {
+    "2025_data_accessed": false,
+    "b2_refit_or_reselected": false,
+    "centering_changed": false,
+    "live_savant_fetched": false,
+    "park_correction_applied": false,
+    "realized_2024_used_as_projection_input": false,
+    "war_calculated": false
+  },
+  "common_value_reference": {
+    "bin_run_values": {
+      "BB_HBP": 0.32431243348476557,
+      "CENTER_GB": -0.09134645022824854,
+      "CENTER_LD": 0.24989798302498817,
+      "CENTER_OFFB": 0.02236694549275535,
+      "IFFB": -0.23873702937691296,
+      "K": -0.2700324539544278,
+      "OPPO_GB": -0.002564137883368278,
+      "OPPO_LD": 0.19004890338051375,
+      "OPPO_OFFB": -0.08175416683683649,
+      "PULL_GB": -0.08047087670632916,
+      "PULL_LD": 0.3740532497464802,
+      "PULL_OFFB": 0.4435746820307191
+    },
+    "core_event_rate_per_pa": 0.9739488843457623,
+    "reference_run_value_per_core_event": 0.001056940412199169,
+    "season": 2024
+  },
+  "contract": "docs/player-value-v1-park-neutrality-audit-contract.md",
+  "decision": {
+    "Rpark_frozen_zero": true,
+    "park_correction_design_authorized": false,
+    "reason": "at least one predeclared retained-context gate failed"
+  },
+  "inputs": {
+    "b2": {
+      "artifact_id": 9311172007,
+      "run_id": 32099733186
+    },
+    "centering_run_id": 32379246845,
+    "mlb_2023": {
+      "artifact_id": 9274868338,
+      "digest": "sha256:4fde9a0a8774135bcea775bb369a3c4d484d53938a818c4c2bce803878e03d54",
+      "run_id": 31989561396
+    },
+    "mlb_2024": {
+      "artifact_id": 9310382371,
+      "digest": "sha256:bdca35299b7a82130eae197987aa1d1bb0448c8ef9dc9ee6c6ba3d39e79f2efe",
+      "run_id": 32096473700
+    },
+    "performance": {
+      "artifact_id": 9265954750,
+      "run_id": 31955392482
+    }
+  },
+  "primary_retained_prior_home_context": {
+    "all_gates_pass": false,
+    "eligible_2024_away_pa": 55988,
+    "eligible_2024_away_pa_before_team_minimums": 57700,
+    "eligible_player_count": 251,
+    "eligible_player_count_before_team_minimums": 258,
+    "eligible_team_count": 28,
+    "first_half_weighted_line": {
+      "fitted_weighted_sd": 0.271342582377,
+      "intercept": 0.19704672484,
+      "slope": -0.047819950981
+    },
+    "full_season_weighted_line": {
+      "fitted_weighted_sd": 0.072080770764,
+      "intercept": 0.08785267111,
+      "slope": -0.012703125674
+    },
+    "gates": {
+      "at_least_20_teams": true,
+      "both_split_half_slopes_positive": false,
+      "fitted_weighted_sd_at_least_1_run_per_600_pa": false,
+      "one_sided_permutation_p_at_most_0_05": false,
+      "retention_slope_at_least_0_25": false
+    },
+    "global_projection_minus_away_observed_runs_per_600_pa_removed": 0.392202088285,
+    "permutation": {
+      "iterations": 10000,
+      "one_sided_p_value": 0.549945005499,
+      "seed": 20240820
+    },
+    "second_half_weighted_line": {
+      "fitted_weighted_sd": 0.299837871096,
+      "intercept": -0.050876712452,
+      "slope": 0.05284180674
+    }
+  },
+  "schema_version": "0.1",
+  "season_input_audits": {
+    "2023": {
+      "ambiguous_or_missing_context_core_events": 0,
+      "ambiguous_or_missing_context_pa": 0,
+      "ambiguous_or_missing_context_player_game_count": 0,
+      "b2_modeled_before_context_pa": 184104,
+      "b2_modeled_before_context_player_count": 656,
+      "b2_modeled_before_context_player_game_count": 48763,
+      "included_core_events": 179597,
+      "included_game_count": 2430,
+      "included_pa": 184104,
+      "included_player_count": 656,
+      "included_player_game_count": 48763,
+      "positive_pa_player_game_count": 48763
+    },
+    "2024": {
+      "ambiguous_or_missing_context_core_events": 4,
+      "ambiguous_or_missing_context_pa": 4,
+      "ambiguous_or_missing_context_player_game_count": 1,
+      "b2_modeled_before_context_pa": 181190,
+      "b2_modeled_before_context_player_count": 645,
+      "b2_modeled_before_context_player_game_count": 48460,
+      "included_core_events": 176453,
+      "included_game_count": 2429,
+      "included_pa": 181186,
+      "included_player_count": 645,
+      "included_player_game_count": 48459,
+      "positive_pa_player_game_count": 48794
+    }
+  },
+  "secondary_realized_context_diagnostics": {
+    "batting_team_count": 30,
+    "interpretation": "Realized venue and home/away effects are descriptive only; the primary prior-home retention test controls the park-correction decision.",
+    "largest_absolute_primary_venue_residuals": [
+      {
+        "centered_residual_runs_per_600_pa": -10.776479857616,
+        "eligible_pa": 5844,
+        "game_count": 81,
+        "player_count": 302,
+        "residual_runs": -96.310021700492,
+        "venue_id": 680,
+        "venue_name": "T-Mobile Park"
+      },
+      {
+        "centered_residual_runs_per_600_pa": 9.616534554478,
+        "eligible_pa": 6100,
+        "game_count": 79,
+        "player_count": 303,
+        "residual_runs": 106.800038656253,
+        "venue_id": 19,
+        "venue_name": "Coors Field"
+      },
+      {
+        "centered_residual_runs_per_600_pa": -6.292623418418,
+        "eligible_pa": 6000,
+        "game_count": 81,
+        "player_count": 328,
+        "residual_runs": -54.042361378544,
+        "venue_id": 4705,
+        "venue_name": "Truist Park"
+      },
+      {
+        "centered_residual_runs_per_600_pa": 4.816407457225,
+        "eligible_pa": 6111,
+        "game_count": 81,
+        "player_count": 309,
+        "residual_runs": 58.103334404378,
+        "venue_id": 10,
+        "venue_name": "Oakland Coliseum"
+      },
+      {
+        "centered_residual_runs_per_600_pa": 4.786770021627,
+        "eligible_pa": 6241,
+        "game_count": 81,
+        "player_count": 312,
+        "residual_runs": 59.031094538281,
+        "venue_id": 15,
+        "venue_name": "Chase Field"
+      }
+    ],
+    "median_absolute_team_home_away_residual_runs_per_600_pa": 3.898146661504,
+    "modeled_core_events": 176453,
+    "modeled_game_count": 2429,
+    "modeled_pa": 181186,
+    "modeled_player_count": 645,
+    "modeled_player_game_count": 48459,
+    "primary_venue_count_at_least_2500_pa": 30,
+    "primary_venue_weighted_residual_sd_runs_per_600_pa": 3.799161849204,
+    "venue_count": 35
+  },
+  "source_commit": "a232e3a1e19ec7f65f6a5f0825a59135de79c526",
+  "status": "player_value_v1_park_neutrality_audit_frozen_verified"
+}

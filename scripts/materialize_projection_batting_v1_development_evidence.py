@@ -13,9 +13,12 @@ It deliberately does NOT:
 - infer playing time or future role;
 - access 2025 evidence.
 
-A central output is history-coverage accounting. Projection Baseline 0 must be
-the actual frozen 1,095-day Baseline-2 Current Talent estimator, so early folds
-may require older certified evidence rather than silently shortening history.
+A central output is history-coverage accounting. Projection Baseline 0 must
+reproduce the frozen Baseline-2 rule: current season plus prior *certified*
+seasons where available, capped at 1,095 days and weighted with the frozen
+180-day half-life. The certified universal B2 source epoch begins in 2021, so
+calendar left-censoring before that epoch is reported but is not permission to
+extend B2 into an unvalidated pre-2021 source era.
 """
 
 from __future__ import annotations
@@ -38,6 +41,8 @@ from universal_baseball.storage import write_canonical_parquet
 
 
 SOURCE_SEASONS = (2021, 2022, 2023, 2024)
+FROZEN_B2_CERTIFIED_SOURCE_START_SEASON = 2021
+FROZEN_B2_HISTORY_POLICY = "current_plus_prior_certified_seasons_up_to_1095d_v1"
 LEVEL_SLUGS = ("aaa", "aa", "aplus", "a", "rk")
 WINDOW = EvidenceWindow(
     label="projection_v1_frozen_b2_1095d_180d",
@@ -132,27 +137,60 @@ def _history_coverage(summary: pl.DataFrame, *, snapshot_date) -> dict[str, Any]
     pre_snapshot = summary.filter(pl.col("game_date") < pl.lit(snapshot_date))
     if pre_snapshot.is_empty():
         raise RuntimeError(f"no predictor evidence before Projection snapshot {snapshot_date}")
+
     observed_start = pre_snapshot.get_column("game_date").min()
     observed_end = pre_snapshot.get_column("game_date").max()
     source_left_censored = observed_start > requested_start
     missing_leading_calendar_days = max((observed_start - requested_start).days, 0)
     requested_window = pre_snapshot.filter(pl.col("game_date") >= pl.lit(requested_start))
+
+    observed_certified_seasons = sorted(
+        int(value) for value in pre_snapshot.get_column("season").cast(pl.Int64).unique().to_list()
+    )
+    expected_certified_seasons = [
+        int(season)
+        for season in SOURCE_SEASONS
+        if FROZEN_B2_CERTIFIED_SOURCE_START_SEASON <= int(season) <= int(snapshot_date.year)
+    ]
+    frozen_b2_certified_history_policy_satisfied = (
+        observed_certified_seasons == expected_certified_seasons
+    )
+    if not frozen_b2_certified_history_policy_satisfied:
+        raise RuntimeError(
+            "Projection snapshot does not contain the expected frozen-B2 certified seasons: "
+            f"snapshot={snapshot_date}, observed={observed_certified_seasons}, "
+            f"expected={expected_certified_seasons}"
+        )
+
+    prior_certified_seasons = [
+        season for season in observed_certified_seasons if season < int(snapshot_date.year)
+    ]
     return {
+        "history_policy": FROZEN_B2_HISTORY_POLICY,
+        "certified_source_start_season": FROZEN_B2_CERTIFIED_SOURCE_START_SEASON,
         "requested_history_start": requested_start.isoformat(),
         "requested_history_end_exclusive": snapshot_date.isoformat(),
         "earliest_available_pre_snapshot_event": observed_start.isoformat(),
         "latest_available_pre_snapshot_event": observed_end.isoformat(),
+        "calendar_max_lookback_fully_observed": not bool(source_left_censored),
         "source_left_censored_by_calendar": bool(source_left_censored),
         "leading_calendar_days_without_certified_source_surface": int(missing_leading_calendar_days),
+        "observed_certified_seasons_before_snapshot": observed_certified_seasons,
+        "expected_certified_seasons_through_snapshot": expected_certified_seasons,
+        "prior_certified_seasons_before_snapshot": prior_certified_seasons,
+        "prior_certified_season_count": len(prior_certified_seasons),
         "available_player_game_rows_inside_requested_window": int(requested_window.height),
         "available_plate_appearances_inside_requested_window": int(
             requested_window.get_column("batting_plate_appearances").sum() or 0
         ),
-        "frozen_b2_full_history_proven": not source_left_censored,
+        "frozen_b2_certified_history_policy_satisfied": True,
+        "pre_2021_backfill_authorized": False,
+        "history_extension_required_for_frozen_b2_reproduction": False,
         "interpretation": (
-            "Calendar censoring is a source-coverage diagnostic, not an assertion that baseball "
-            "events actually occurred in every uncovered day. Any early fold that is not proven "
-            "full-history must be adjudicated before Baseline-2 probabilities are materialized."
+            "The 1,095-day value is a maximum cap, not a requirement to invent or backfill "
+            "uncertified pre-2021 evidence. Frozen B2 was developed and confirmed on the "
+            "certified 2021-source-epoch bundle: current season plus prior certified seasons "
+            "where available. Calendar left-censoring remains visible as a diagnostic."
         ),
     }
 
@@ -233,8 +271,12 @@ def main() -> int:
             }
         )
 
+    frozen_b2_history_contract_satisfied = all(
+        bool(row["history_coverage"]["frozen_b2_certified_history_policy_satisfied"])
+        for row in fold_reports
+    )
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "gate": "projection_batting_v1_development_evidence_pre_model",
         "source_seasons": list(SOURCE_SEASONS),
         "window": {
@@ -242,13 +284,18 @@ def main() -> int:
             "lookback_days": WINDOW.lookback_days,
             "half_life_days": WINDOW.half_life_days,
         },
+        "frozen_b2_history_contract": {
+            "policy": FROZEN_B2_HISTORY_POLICY,
+            "certified_source_start_season": FROZEN_B2_CERTIFIED_SOURCE_START_SEASON,
+            "satisfied": frozen_b2_history_contract_satisfied,
+            "pre_2021_backfill_authorized": False,
+            "history_extension_required_before_frozen_b2": False,
+            "governing_record": "docs/projection-b2-history-reproduction-contract.md",
+        },
         "source_components": source_reports,
         "universal_source_metrics": universal_metrics,
         "folds": fold_reports,
-        "history_extension_required_before_frozen_b2": any(
-            not bool(row["history_coverage"]["frozen_b2_full_history_proven"])
-            for row in fold_reports
-        ),
+        "history_extension_required_before_frozen_b2": False,
         "boundary": {
             "accessed_2025": False,
             "baseline2_probabilities_materialized": False,
@@ -271,6 +318,8 @@ def main() -> int:
         "",
         f"- Universal player-games, 2021-2024: {universal_summary.height:,}",
         f"- Universal PA, 2021-2024: {universal_metrics['total_plate_appearances']:,}",
+        f"- Frozen B2 certified-history contract satisfied: {frozen_b2_history_contract_satisfied}",
+        "- Pre-2021 backfill authorized: False",
         "- 2025 accessed: False",
         "- Projection model fit/scored: False",
         "",
@@ -285,9 +334,12 @@ def main() -> int:
                 f"- Target players: {metrics['target_player_count']:,}",
                 f"- Scored players: {metrics['scored_player_count']:,}",
                 f"- Future PA: {metrics['future_plate_appearances']:,}",
-                f"- Requested B2 history start: {coverage['requested_history_start']}",
+                f"- Requested max-history start: {coverage['requested_history_start']}",
                 f"- Earliest certified event: {coverage['earliest_available_pre_snapshot_event']}",
-                f"- Full frozen-B2 history proven: {coverage['frozen_b2_full_history_proven']}",
+                f"- Certified seasons: {coverage['observed_certified_seasons_before_snapshot']}",
+                f"- Prior certified seasons: {coverage['prior_certified_seasons_before_snapshot']}",
+                f"- Calendar full 1,095-day span observed: {coverage['calendar_max_lookback_fully_observed']}",
+                f"- Frozen B2 certified-history policy satisfied: {coverage['frozen_b2_certified_history_policy_satisfied']}",
                 "",
             ]
         )

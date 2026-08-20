@@ -1,0 +1,98 @@
+name: Final selective position-role challenger
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: >-
+          python -m pip install --upgrade pip
+          && python -m pip install -e ".[dev]"
+
+      - name: Verify frozen selective scorer
+        run: python -m py_compile scripts/score_position_role_selective_transition.py
+
+      - name: Download frozen first-challenger predictions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p challenger-source
+          gh run download 32152125644 \
+            --repo ramsunkavalli-a11y/universal-baseball-model \
+            --name position-role-transition-challenger-development \
+            --dir challenger-source
+
+      - name: Score final development challenger
+        run: >-
+          python scripts/score_position_role_selective_transition.py
+          --source-root challenger-source
+
+      - name: Verify frozen boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('reports/generated/position-role-selective-transition/report.json').read_text())
+          assert report['candidate']['primary_share_threshold'] == 0.65
+          assert report['boundary']['2025_position_source_accessed'] is False
+          assert report['boundary']['2025_position_outcomes_scored'] is False
+          assert report['boundary']['first_challenger_transition_means_refit'] is False
+          assert report['boundary']['threshold_changed_after_contract'] is False
+          assert report['decision']['additional_position_role_development_challenger_authorized'] is False
+          PY
+
+      - name: Upload final development evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: position-role-selective-transition-development
+          path: reports/generated/position-role-selective-transition/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist binding final-development result
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          source = Path('reports/generated/position-role-selective-transition/report.json')
+          result = json.loads(source.read_text())
+          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
+          result['source_sha'] = os.environ['SOURCE_SHA']
+          Path('docs/position-role-selective-transition-result.json').write_text(
+              json.dumps(result, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/position-role-selective-transition-result.json
+          git commit -m "Persist final selective position-role result"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1

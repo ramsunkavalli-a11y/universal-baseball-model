@@ -4,88 +4,96 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 ## Start here
 
-**`main` now contains the latest integrated project state.** New chats, coding agents, and contributors should read [`docs/project-status.md`](docs/project-status.md) first.
-
-Active Projection development may continue on `source-certification-poc`, but completed work is merged back to `main`. PR **#1** was merged on 2026-08-17 to reconcile the full active history with the default branch.
+Read [`docs/project-status.md`](docs/project-status.md) first. `main` is the latest integrated branch; active work newer than the last integration is on `source-certification-poc`.
 
 ## Current stage
 
-The project has completed the first batting **Performance** and **Current Talent** stages far enough to support downstream Projection work.
+- **Performance:** retained.
+- **Current Talent:** frozen at `translated_multiseason_recency_empirical_bayes_v1`.
+- **Projection v1 batting:** frozen at `frozen_current_talent_carry_forward_v1`.
+- **Playing Time v1:** frozen and 2025-confirmed at `playing_time_recent_opportunity_40man_b2_hurdle_v1`.
+- **Position / Role v1:** frozen and 2025-confirmed at `primary_share_thresholded_transition_mean_v1`.
+- **Defense v1 general range:** frozen and 2025-confirmed; tracked MLB range when eligible, universal range otherwise.
+- **Defense v1 catcher channel:** repaired, frozen, and verified with corrected throwing, blocking, and framing sources.
+- **Player Value v1:** all batting, baserunning, Defense, position, centering, park, replacement, and runs-to-wins layers are frozen and verified.
+- **WAR/value and Overall Ranking:** final 3,051-player 2024 point-estimate table is frozen and verified.
+- **Forecast uncertainty:** deterministic 80% and 95% interval sidecar is frozen and verified; point rank remains binding.
 
-- **Performance:** completed-2024 affiliated batting materialization is production-shaped and frozen for downstream reuse.
-- **Current Talent:** finished and frozen. The retained universal model is `translated_multiseason_recency_empirical_bayes_v1` (Baseline 2).
-- **Projection v1:** active work.
-- **Player Value / WAR / Overall Ranking:** later stages; not yet implemented.
+## Player Value v1 result
 
-Two richer Current Talent batted-ball challengers were tested under predeclared chronological contracts. Challenger 1 failed development. Challenger 2 passed development but failed the single fixed 2023 confirmation because MAE and calibration-intercept guardrails deteriorated despite lower MSE in all three folds. Challenger 2 is closed without rescue tuning. Baseline 2 remains the production Current Talent model.
+Final aggregation contract: [`docs/player-value-v1-final-aggregation-contract.md`](docs/player-value-v1-final-aggregation-contract.md).
 
-Projection v1 asks whether a leakage-safe age/development adjustment improves next-season batting-rate/profile prediction over carrying frozen Current Talent forward unchanged. Development uses 2022–2024 target seasons; **2025 outcomes remain quarantined as the untouched confirmation period**.
+Frozen point result: [`docs/player-value-v1-final-2024.json`](docs/player-value-v1-final-2024.json).
 
-### Live Projection status
+Forecast-uncertainty result: [`docs/player-value-v1-uncertainty-2024.json`](docs/player-value-v1-uncertainty-2024.json).
 
-Projection contracts and source-authority logic are passing fast CI. The 2024 MiLB discrepancy was localized to two exact source-only residual rows:
+The final additive form is:
 
-- High-A player `669233`, game `755829`: one extra `PA=1, AB=1` row.
-- Single-A player `686541`, game `754395`: one extra `PA=1, AB=1, SO=1` row.
+`RAR = Rbat + Rbr + Rdef + Rpos + Rlg + Rpark + Rrep`
 
-The fail-closed policy `single_source_only_exact_season_and_official_residual_v1` is implemented. It applies only when a single source-only positive-PA game exactly equals the independent season residual and its full removal makes the remaining player-game totals exactly match official gameLog.
+`WAR = RAR / RPW`
 
-That quarantine is now propagated consistently across outcome rows, player-game contact controls, and same-player PBP contacts. Missing same-game league identity also fails closed: if the exact official game endpoint is 404, the unauthorizable PBP game is quarantined rather than inheriting filename-level identity.
+The verified population contains 3,045 players with complete frozen component surfaces plus six mandated official-MLB structural-zero rows. The final aggregate is `4610.597400956516` runs above replacement and `476.17201420774313` WAR at `9.682629939156854` runs per win. Ranking uses unrounded WAR descending and MLBAM player ID ascending only as the deterministic tie-break.
 
-Cross-grain fast CI passed in runs `32092672387` and `32092714174`. The full quarantined 2024 historical gates are now launched:
+Key boundaries:
 
-- `32092672369` — Quarantine exact 2024 source residuals across evidence grains.
-- `32092745178` — Gate 2024 MiLB on exact source quarantine tests.
+- reuse the existing Performance RE24/bin-value foundation for batting;
+- keep defensive skill separate from run conversion;
+- do not assign arbitrary `runs per z` constants;
+- use frozen Playing Time and the full Position/Role share vector for exposure;
+- keep positional adjustment separate from position-relative Defense skill;
+- keep replacement level, MLB centering, park, and runs per win explicit;
+- preserve every component, fallback flag, and provenance field;
+- do not refit or reselect frozen upstream models from ranking or interval outcomes.
 
-Use `docs/projection-recovery-status.json` for their live state. Their result is the current Projection gate.
-
-Machine-readable workflow snapshots:
-
-- [`docs/projection-status.json`](docs/projection-status.json)
-- [`docs/projection-recovery-status.json`](docs/projection-recovery-status.json)
-
-Human handoff and modeling contract:
-
-- [`docs/project-status.md`](docs/project-status.md)
-- [`docs/projection-batting-v1-plan.md`](docs/projection-batting-v1-plan.md)
+The repaired catcher integration and its superseded source history are documented in [`docs/project-status.md`](docs/project-status.md) and the Defense production handoff.
 
 ## Core principles
 
-- Keep **Performance**, **Current Talent**, **Projection**, and **Player Value / Overall Ranking** separate.
-- Use a common evaluation language across levels while allowing different evidence/models where coverage differs.
+- Keep Performance, Current Talent, Projection, Playing Time, Position/Role, Defense, positional adjustment, run conversion, and Player Value separate.
 - Prefer mature public datasets, parsers, and packages over rebuilding raw-source cleanup.
-- Treat MLB/official sources as reconciliation authority, not necessarily the first working dataset.
 - Preserve uncertainty, coverage, provenance, and measurement quality.
 - Validate chronologically and prevent hindsight leakage.
-- Keep production logic in `src/`; notebooks are for exploration only.
 - Fail closed on unresolved source ambiguity.
+- Promote only on fixed out-of-time evidence; do not rescue a challenger after a frozen gate fails.
+- Repair only the scope affected by a concrete implementation failure.
 
 ## Current milestone documents
 
-- [`docs/project-status.md`](docs/project-status.md) — canonical live handoff and next action.
-- [`docs/projection-batting-v1-plan.md`](docs/projection-batting-v1-plan.md) — frozen Projection v1 design and 2025 quarantine.
-- [`docs/projection-status.json`](docs/projection-status.json) — persisted Projection workflow status.
-- [`docs/projection-recovery-status.json`](docs/projection-recovery-status.json) — focused recovery/source-gap workflow status.
-- [`docs/current-talent-results-only-baseline-freeze.md`](docs/current-talent-results-only-baseline-freeze.md) — frozen Current Talent Baseline 2.
-- [`docs/current-talent-contact-value-confirmation-result.json`](docs/current-talent-contact-value-confirmation-result.json) — binding Challenger 2 failure/closeout.
-- [`docs/current-talent-challenger2-postmortem.md`](docs/current-talent-challenger2-postmortem.md) — methodological lessons and closeout.
+- [`docs/project-status.md`](docs/project-status.md) — canonical live handoff.
+- [`docs/player-value-v1-final-aggregation-contract.md`](docs/player-value-v1-final-aggregation-contract.md) — frozen final population and arithmetic.
+- [`docs/player-value-v1-final-2024.json`](docs/player-value-v1-final-2024.json) — verified point-estimate ranking summary.
+- [`docs/player-value-v1-uncertainty-contract.md`](docs/player-value-v1-uncertainty-contract.md) — frozen forecast-interval method.
+- [`docs/player-value-v1-uncertainty-2024.json`](docs/player-value-v1-uncertainty-2024.json) — verified interval summary.
+- [`docs/player-value-v1-mlb-centering-2024.json`](docs/player-value-v1-mlb-centering-2024.json) — verified fixed-reference numerical centering.
+- [`docs/player-value-v1-park-neutrality-audit-result.json`](docs/player-value-v1-park-neutrality-audit-result.json) — verified `Rpark = 0` decision.
+- [`docs/player-value-v1-defense-production-handoff.md`](docs/player-value-v1-defense-production-handoff.md) — frozen repaired Defense machinery.
+- [`docs/position-role-2025-confirmation-result.json`](docs/position-role-2025-confirmation-result.json) — frozen Position / Role v1 confirmation.
+- [`docs/playing-time-v1-confirmation-result.json`](docs/playing-time-v1-confirmation-result.json) — frozen Playing Time v1 confirmation.
+- [`docs/projection-batting-v1-development-result.json`](docs/projection-batting-v1-development-result.json) — frozen Projection v1 decision.
+- [`docs/current-talent-results-only-baseline-freeze.md`](docs/current-talent-results-only-baseline-freeze.md) — frozen Current Talent baseline.
 - [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — completed-2024 affiliated batting Performance checkpoint.
-
-Older Current Talent development/confirmation files are historical evidence. Do not treat them as active work queues.
 
 ## Development workflow
 
+Install the complete local development environment and run the same checks as
+the pull-request CI job:
+
+```bash
+python -m pip install -e ".[dev]"
+python -m ruff check src scripts tests
+python -m pytest
+```
+
+Install `.[playing-time]` instead when only the Playing Time model's
+scikit-learn/statsmodels runtime is needed.
+
+Historical certification and materialization workflows are retained for audit
+and explicit manual use, but they do not run automatically after the v1 freeze.
+See [`docs/workflow-lifecycle.md`](docs/workflow-lifecycle.md).
+
 1. Reuse certified public work and existing repo adapters before rebuilding source ingestion.
-2. Work in small verified batches, usually 2–3 steps.
-3. Verify each batch before expanding scope.
-4. Keep heavy live-source certification/validation workflows manual after their gate passes; keep deterministic regression tests in normal CI.
-5. Update `docs/project-status.md` whenever a major gate, blocker, or recommended next action changes.
-6. Do not open quarantined confirmation data before the model form, search space, refit rule, and promotion gates are frozen.
-
-## Foundation references
-
-- [`docs/source-audit.md`](docs/source-audit.md) — public source/package audit.
-- [`docs/source-certification-plan.md`](docs/source-certification-plan.md) — source certification rules.
-- [`docs/source-certification-current.md`](docs/source-certification-current.md) — detailed source-certification snapshot.
-- [`docs/canonical-data-contract.md`](docs/canonical-data-contract.md) — canonical grains, provenance, and storage semantics.
-- [`docs/adr/`](docs/adr/) — accepted architectural decisions.
+2. Work in small verified batches and verify each batch before expanding scope.
+3. Freeze model form/search space/validation rules before opening held-out outcomes.
+4. Preserve invalid-source artifacts as audit evidence rather than rewriting history.
+5. Update `docs/project-status.md` whenever a major gate or blocker changes.
