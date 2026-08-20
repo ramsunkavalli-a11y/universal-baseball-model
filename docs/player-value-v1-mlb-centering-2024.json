@@ -223,7 +223,7 @@
     }
   },
   "components_artifact": "reports/generated/player-value-v1-mlb-centering-2024-components.parquet",
-  "materialization_run_id": 32379246845,
+  "materialization_run_id": 32384563289,
   "membership": {
     "official_observed_pa_anchor": 182449,
     "official_positive_pa_player_count": 651,
@@ -240,14 +240,14 @@
   "reference": {
     "aggregate_baserunning_runs": 35.008603291041524,
     "aggregate_batting_runs": 258.49014809587965,
-    "aggregate_centering_runs": 101.41200533972925,
-    "aggregate_defense_runs": 75.99916554129656,
+    "aggregate_centering_runs": 149.31643821200612,
+    "aggregate_defense_runs": 28.094732669019656,
     "aggregate_positional_runs": -470.90992226794697,
     "aggregate_projected_mlb_pa": 148948.26306286638,
-    "aggregate_raw_above_average_runs": -101.41200533972923,
+    "aggregate_raw_above_average_runs": -149.31643821200615,
     "centering_id": "fixed_2024_mlb_projected_component_reference_v1",
-    "centering_runs_per_pa": 0.0006808538968791225,
-    "post_centering_residual_runs": 1.4210854715202004e-14,
+    "centering_runs_per_pa": 0.0010024718324441579,
+    "post_centering_residual_runs": -2.842170943040401e-14,
     "reference_player_count": 651,
     "reference_season": 2024,
     "tolerance_runs": 1e-10
@@ -265,5 +265,5 @@
     "residual_within_tolerance": true,
     "six_zero_exposure_rows_explicit_and_zero": true
   },
-  "verified_source_commit": "bbb863279a3ebe29dfadea12b4f8c9fa6a430865"
+  "verified_source_commit": "21b115122cba432f57cd3ccff74c2986d109ae70"
 }
