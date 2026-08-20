@@ -33,8 +33,8 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Replacement level:** DONE / REFROZEN / VERIFIED
 - **Baserunning:** **DONE / FROZEN / VERIFIED**
 - **GIDP:** **RAW TERM NON-ADDITIVE; RESIDUAL OMITTED FOR v1**
-- **MLB-reference centering:** **BLOCKED FAIL-CLOSED — MEMBERSHIP/EXPOSURE VERIFIED; NUMERICAL MATERIALIZER IMPLEMENTED; FROZEN ADVANCEMENT SOURCE BYTES NOT RECOVERABLE FROM LIVE ENDPOINT**
-- **Park-neutrality audit:** REQUIRED AFTER CENTERING, **NOT OPENED**
+- **MLB-reference centering:** **DONE / FROZEN / VERIFIED**
+- **Park-neutrality audit:** **ACTIVE**
 - **WAR/value aggregation:** CLOSED
 - **Final ranking:** CLOSED
 
@@ -233,7 +233,7 @@ The separate opportunity-adjusted residual is also now **omitted for v1**:
 
 The preferred official MLB bulk opportunity denominator is unavailable, and this project will not create a custom play-by-play denominator solely to force a familiar WAR component into the model. Reopen only through a new predeclared gate if a mature, reproducible direct source or reusable implementation is certified first.
 
-## ACTIVE STAGE — fixed-reference MLB centering
+## COMPLETED STAGE — fixed-reference MLB centering
 
 Binding contract: `docs/player-value-v1-mlb-centering-contract.md`.
 
@@ -254,7 +254,7 @@ Binding membership materialization: `docs/player-value-v1-mlb-centering-2024-mem
 
 Verification Actions run: **`32320525700`**. Tests, source-artifact download, membership materialization, and artifact upload all passed.
 
-### Numerical centering reference — IMPLEMENTED, FAIL-CLOSED ON FROZEN SOURCE DRIFT
+### Numerical centering reference — FROZEN / VERIFIED
 
 With the v1 GIDP residual omitted, assemble the existing frozen historical 2024 component surfaces for the fixed 651-player membership:
 
@@ -284,13 +284,24 @@ Verified artifact-only component aggregates for the 651-player reference are:
 - `Rpos = -470.90992226794697` runs;
 - projected centering exposure remains exactly `148948.26306286638` PA.
 
-Numerical materialization Actions run **`32375033120`** passed all **37** focused tests and downloaded all eight pinned inputs with the expected artifact digests. It then failed closed while replaying frozen `Rbr`: the current Baseball Savant 2019–2024 advancement CSV responses no longer match the certified byte hashes, and replaying the live rows changes the frozen development scores for all seven advancement candidates (`A0_neutral`, `A1_k25`, `A1_k75`, `A1_k225`, `A2_k25`, `A2_k75`, `A2_k225`). For example, the equal-year A0 score is now `0.0035782250149714433` versus frozen `0.0035781987760809303`.
+The Savant byte drift was resolved through the narrow, predeclared source re-certification in `docs/player-value-v1-advancement-source-recertification-contract.md`. Actions run **`32378956567`** froze 3,700 projection-relevant player-season rows in artifact **`9410189065`** with canonical model-input SHA-256 `dfbd52dfaccd1cc20d2bf710c27755f169a7873fcd0efb45339debbb3ad4bbc8`. The largest primary-score relative drift was `0.0002302112248237264`, below the `0.001` gate; `A2_k25` remained the unique development winner and retained its 2024 confirmation verdict. No model was refit or reselected.
 
-The workflow persisted the exact failure in `docs/player-value-v1-mlb-centering-2024-blocker.json`, including certified/live hashes and byte counts for every season. No model was refit or reselected, no live advancement values were accepted, and no centering constant was frozen. Resolution requires recovering the certified Savant CSV bytes (or an equivalent projection-ready frozen advancement-history artifact produced from those exact bytes); substituting the changed live endpoint would violate the frozen baserunning contract.
+Final numerical materialization Actions run **`32379246845`** passed every workflow step and froze `docs/player-value-v1-mlb-centering-2024.json`. Its component artifact is **`9410315587`**, digest `sha256:d4180d36e78cd46b0e3df4479c8c708e855cb2ebf7b5ec6c49a21ed3d8955597`. The verified reference is:
 
-### After numerical centering — park-neutrality audit
+- `Rbat = 258.49014809587965` runs;
+- `Rbr = 35.008603291041524` runs;
+- `Rdef = 75.99916554129656` runs;
+- `Rpos = -470.90992226794697` runs;
+- raw total `Ravg_raw_ref = -101.41200533972923` runs;
+- `centering_runs_per_pa = 0.0006808538968791225`;
+- aggregate `Rlg = 101.41200533972925` runs;
+- post-centering residual `= 1.4210854715202004e-14` runs, within the binding `1e-10` tolerance.
 
-Only after `docs/player-value-v1-mlb-centering-2024.json` is materialized and the centering residual verifies to the contract tolerance may the park-neutrality audit open.
+All 651 component rows are explicit. The six outside-snapshot members remain present with projected exposure and all four components equal to zero. Replacement and realized 2024 player components are excluded, and the official `182,449` PA accounting anchor is preserved without being used as the centering denominator. The obsolete fail-closed blocker was removed by the verified workflow.
+
+Legacy advancement-selection run **`32378956317`**, triggered by the shared projection-helper edit, failed at its intentional original-byte hash lock for the already-adjudicated 2019 Savant drift. Its 18 code tests passed before that source lock fired. This does not supersede or invalidate the successful re-certification; the frozen model remains `A2_k25`.
+
+## ACTIVE STAGE — park-neutrality audit
 
 Test whether frozen batting/current-talent outputs retain systematic park/team residuals. Add an explicit park correction only if evidence demonstrates remaining context; do not blindly copy a conventional park adjustment and risk double-correction.
 
