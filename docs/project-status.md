@@ -33,8 +33,8 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Replacement level:** DONE / REFROZEN / VERIFIED
 - **Baserunning:** **DONE / FROZEN / VERIFIED**
 - **GIDP:** **RAW TERM NON-ADDITIVE; RESIDUAL OMITTED FOR v1**
-- **MLB-reference centering:** **ACTIVE — MEMBERSHIP/EXPOSURE GATE VERIFIED; NUMERICAL FOUR-COMPONENT REFERENCE STILL REQUIRED**
-- **Park-neutrality audit:** REQUIRED NEXT, **NOT YET OPEN**
+- **MLB-reference centering:** **BLOCKED FAIL-CLOSED — MEMBERSHIP/EXPOSURE VERIFIED; NUMERICAL MATERIALIZER IMPLEMENTED; FROZEN ADVANCEMENT SOURCE BYTES NOT RECOVERABLE FROM LIVE ENDPOINT**
+- **Park-neutrality audit:** REQUIRED AFTER CENTERING, **NOT OPENED**
 - **WAR/value aggregation:** CLOSED
 - **Final ranking:** CLOSED
 
@@ -254,7 +254,7 @@ Binding membership materialization: `docs/player-value-v1-mlb-centering-2024-mem
 
 Verification Actions run: **`32320525700`**. Tests, source-artifact download, membership materialization, and artifact upload all passed.
 
-### Numerical centering reference — ACTIVE NEXT
+### Numerical centering reference — IMPLEMENTED, FAIL-CLOSED ON FROZEN SOURCE DRIFT
 
 With the v1 GIDP residual omitted, assemble the existing frozen historical 2024 component surfaces for the fixed 651-player membership:
 
@@ -269,6 +269,24 @@ Then:
 Do **not** use 182,449 observed official PA as the centering denominator; it is the membership/accounting anchor. The numerical centering denominator is frozen projected reference PA.
 
 Before freezing the constant, reuse the existing frozen batting/B2, baserunning, Defense, defensive-position allocation, and DH-role artifacts. Do not build a ranking-specific player population, refit an upstream model, or use 2024 realized component outcomes as projected values. The six outside-snapshot members must remain explicit zero-exposure/fallback rows rather than being dropped.
+
+The concrete numerical materializer and immutable input/column map are now present:
+
+- `scripts/materialize_player_value_v1_mlb_centering_2024.py`;
+- `src/universal_baseball/player_value_defense_projection.py`;
+- `docs/player-value-v1-mlb-centering-source-map-2024.json`;
+- `.github/workflows/player-value-v1-mlb-centering-materialize-2024.yml`.
+
+Verified artifact-only component aggregates for the 651-player reference are:
+
+- `Rbat = 258.49014809587965` runs;
+- `Rdef = 75.99916554129656` runs;
+- `Rpos = -470.90992226794697` runs;
+- projected centering exposure remains exactly `148948.26306286638` PA.
+
+Numerical materialization Actions run **`32374740570`** passed all **37** focused tests and downloaded all eight pinned inputs with the expected artifact digests. It then failed closed while replaying frozen `Rbr`: the current Baseball Savant 2019–2024 advancement CSV responses no longer match the certified byte hashes, and replaying the live rows changes the frozen development scores for all seven advancement candidates (`A0_neutral`, `A1_k25`, `A1_k75`, `A1_k225`, `A2_k25`, `A2_k75`, `A2_k225`). For example, the equal-year A0 score is now `0.0035782250149714433` versus frozen `0.0035781987760809303`.
+
+The workflow persisted the exact failure in `docs/player-value-v1-mlb-centering-2024-blocker.json`. No model was refit or reselected, no live advancement values were accepted, and no centering constant was frozen. Resolution requires recovering the certified Savant CSV bytes (or an equivalent projection-ready frozen advancement-history artifact produced from those exact bytes); substituting the changed live endpoint would violate the frozen baserunning contract.
 
 ### After numerical centering — park-neutrality audit
 
