@@ -25,7 +25,7 @@ jobs:
           python -m pip install -e ".[dev]" &&
           python -m pytest -q tests/test_player_value_positional_adjustment.py
       - name: Download frozen defensive position allocation
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9370211679"
           path: inputs/position-allocation
@@ -33,7 +33,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32266007594"
       - name: Download frozen DH exposure
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9371840453"
           path: inputs/dh-exposure

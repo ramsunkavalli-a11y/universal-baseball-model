@@ -27,7 +27,7 @@ jobs:
           tests/test_player_value_pythagenpat_sensitivity.py
           tests/test_player_value_runs_per_win.py
       - name: Download frozen numerical centering components
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9412396481"
           path: inputs/centering
@@ -35,7 +35,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32384563289"
       - name: Download frozen defensive position allocation
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9370211679"
           path: inputs/position-allocation

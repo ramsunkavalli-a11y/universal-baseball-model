@@ -38,7 +38,7 @@ jobs:
           tests/test_current_talent_reconciliation.py
 
       - name: Download certified 2024 AAA Performance
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: batting-performance-aaa-2024
           path: certified-inputs/aaa
@@ -47,7 +47,7 @@ jobs:
           github-token: ${{ github.token }}
 
       - name: Download certified 2024 MLB Performance
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: mlb-batting-performance-2024
           path: certified-inputs/mlb

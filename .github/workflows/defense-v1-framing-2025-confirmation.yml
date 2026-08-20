@@ -58,7 +58,7 @@ jobs:
           PY
 
       - name: Download certified historical fielding source
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: position-role-historical-source-2021-2024
           path: inputs/historical
@@ -67,7 +67,7 @@ jobs:
           run-id: 32148467330
 
       - name: Download certified 2024 framing predictor
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: defense-v1-2024-framing-predictor
           path: inputs/predictor
@@ -76,7 +76,7 @@ jobs:
           run-id: ${{ steps.sources.outputs.predictor_run }}
 
       - name: Download certified 2025 framing target
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: defense-v1-2025-framing-target-source
           path: inputs/target

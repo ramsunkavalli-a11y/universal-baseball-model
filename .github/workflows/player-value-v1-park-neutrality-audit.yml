@@ -26,7 +26,7 @@ jobs:
           python -m pytest -q tests/test_player_value_park_neutrality.py
 
       - name: Download frozen B2 projection
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9311172007"
           path: inputs/b2
@@ -34,7 +34,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32099733186"
       - name: Download certified 2023 MLB game evidence
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9274868338"
           path: inputs/mlb-2023
@@ -42,7 +42,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "31989561396"
       - name: Download certified 2024 MLB game evidence
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9310382371"
           path: inputs/mlb-2024
@@ -50,7 +50,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32096473700"
       - name: Download frozen 2024 MLB batting performance
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9265954750"
           path: inputs/performance
