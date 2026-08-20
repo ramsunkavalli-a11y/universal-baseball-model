@@ -29,6 +29,22 @@ POSITIONAL_RUNS_PER_162 = MappingProxyType(
 FULL_SEASON_DEFENSIVE_OUTS = 1458.0 * 3.0
 FULL_SEASON_DH_ROLE_EVENTS = 162.0
 SCHEDULE_ID = "fangraphs_fixed_162_game_v1"
+BREF_POSITIONAL_RUNS_PER_150 = MappingProxyType(
+    {
+        "C": 9.0,
+        "1B": -9.5,
+        "2B": 3.0,
+        "3B": 2.0,
+        "SS": 7.0,
+        "LF": -7.0,
+        "CF": 2.5,
+        "RF": -7.0,
+        "DH": -15.0,
+    }
+)
+BREF_FULL_SEASON_DEFENSIVE_OUTS = 1350.0 * 3.0
+BREF_FULL_SEASON_DH_ROLE_EVENTS = 150.0
+BREF_SENSITIVITY_SCHEDULE_ID = "baseball_reference_current_raw_150_game_sensitivity_v1"
 
 
 @dataclass(frozen=True, slots=True)
@@ -54,25 +70,15 @@ def _nonnegative_float(value: object, *, field: str) -> float:
     return numeric
 
 
-def calculate_v1_positional_adjustment(
+def _calculate_positional_adjustment(
     projected_defensive_outs_by_position: Mapping[str, object],
     *,
     projected_dh_role_events: object,
+    schedule: Mapping[str, float],
+    full_season_defensive_outs: float,
+    full_season_dh_role_events: float,
+    schedule_id: str,
 ) -> PositionalAdjustmentResult:
-    """Calculate frozen v1 raw positional-adjustment runs.
-
-    Parameters
-    ----------
-    projected_defensive_outs_by_position:
-        Mapping containing projected MLB defensive outs for C, 1B, 2B, 3B, SS,
-        LF, CF, and RF. Missing eligible positions are treated as zero. Any
-        unknown position key is rejected so pitcher/DH exposure cannot leak into
-        the defensive-out interface.
-    projected_dh_role_events:
-        Frozen projected DH role-equivalent games. For v1 this is raw prior-year
-        DH role-event persistence from the binding DH exposure gate.
-    """
-
     unknown = sorted(set(projected_defensive_outs_by_position) - set(DEFENSIVE_POSITIONS))
     if unknown:
         raise ValueError(f"unsupported defensive position keys: {unknown}")
@@ -91,22 +97,56 @@ def calculate_v1_positional_adjustment(
 
     runs: dict[str, float] = {
         position: (
-            POSITIONAL_RUNS_PER_162[position]
+            schedule[position]
             * outs[position]
-            / FULL_SEASON_DEFENSIVE_OUTS
+            / full_season_defensive_outs
         )
         for position in DEFENSIVE_POSITIONS
     }
     runs["DH"] = (
-        POSITIONAL_RUNS_PER_162["DH"]
+        schedule["DH"]
         * dh_events
-        / FULL_SEASON_DH_ROLE_EVENTS
+        / full_season_dh_role_events
     )
 
     return PositionalAdjustmentResult(
-        schedule_id=SCHEDULE_ID,
+        schedule_id=schedule_id,
         runs_by_position=MappingProxyType(runs),
         total_runs=float(sum(runs.values())),
         projected_defensive_outs_by_position=MappingProxyType(outs),
         projected_dh_role_events=dh_events,
+    )
+
+
+def calculate_v1_positional_adjustment(
+    projected_defensive_outs_by_position: Mapping[str, object],
+    *,
+    projected_dh_role_events: object,
+) -> PositionalAdjustmentResult:
+    """Calculate the binding FanGraphs-schedule positional adjustment."""
+
+    return _calculate_positional_adjustment(
+        projected_defensive_outs_by_position,
+        projected_dh_role_events=projected_dh_role_events,
+        schedule=POSITIONAL_RUNS_PER_162,
+        full_season_defensive_outs=FULL_SEASON_DEFENSIVE_OUTS,
+        full_season_dh_role_events=FULL_SEASON_DH_ROLE_EVENTS,
+        schedule_id=SCHEDULE_ID,
+    )
+
+
+def calculate_bref_positional_sensitivity(
+    projected_defensive_outs_by_position: Mapping[str, object],
+    *,
+    projected_dh_role_events: object,
+) -> PositionalAdjustmentResult:
+    """Calculate the required non-binding Baseball-Reference raw sensitivity."""
+
+    return _calculate_positional_adjustment(
+        projected_defensive_outs_by_position,
+        projected_dh_role_events=projected_dh_role_events,
+        schedule=BREF_POSITIONAL_RUNS_PER_150,
+        full_season_defensive_outs=BREF_FULL_SEASON_DEFENSIVE_OUTS,
+        full_season_dh_role_events=BREF_FULL_SEASON_DH_ROLE_EVENTS,
+        schedule_id=BREF_SENSITIVITY_SCHEDULE_ID,
     )
