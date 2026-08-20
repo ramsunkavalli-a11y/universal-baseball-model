@@ -76,6 +76,20 @@ separate layers. The first implementation gate is synthetic-data validation of
 the exact BF profile followed by an inventory of immutable 2021–2024 pitching
 source artifacts. The 2025 confirmation surface remains untouched.
 
+Foundation PR `#7` merged at
+`f4235e7bd6c1711ab79b610ceaf8ebb53e2f3d1f`. Required CI run
+`32398705507` and CodeQL run `32398705518` passed. The synthetic universal
+Performance implementation now enforces exact positive-BF accounting for `K`,
+`UBB`, `HBP`, `HR`, and `OTHER_BF`.
+
+The next source-inventory batch pins all 20 predeclared 2021–2024 affiliated
+pitching assets before outcome scoring. Local reproduction matched all five
+previously certified 2024 hashes and all 20 newly frozen hashes, producing
+26,488 player/actual-league/season rows, 132,440 long-profile rows, 8,497
+distinct pitchers, 14 actual leagues, and 3,073,606 BF with unique canonical
+grains. Raw source CSVs remain in ignored quarantine and are not uploaded. This
+batch remains provisional until the protected GitHub workflow reproduces it.
+
 ## Defense v1 — frozen
 
 Final skill hierarchy:

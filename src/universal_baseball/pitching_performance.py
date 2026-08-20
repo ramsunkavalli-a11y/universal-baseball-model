@@ -56,15 +56,20 @@ def _validated_counts(frame: pl.DataFrame) -> pl.DataFrame:
         raise ValueError(f"pitching Performance source missing required fields: {missing}")
 
     working = frame.select(
-        *(
-            pl.col(column).cast(pl.Int64, strict=False).alias(column)
-            for column in PITCHING_GRAIN
-        ),
+        *(_integer_like(column) for column in PITCHING_GRAIN),
         *(_integer_like(column) for column in _COUNT_COLUMNS),
     )
     required_order = [*PITCHING_GRAIN, *_COUNT_COLUMNS]
-    if working.filter(pl.any_horizontal(*(pl.col(column).is_null() for column in required_order))).height:
-        raise ValueError("pitching Performance identifiers and counts must be finite integers")
+    invalid_integer_counts = {
+        column: working.get_column(column).null_count()
+        for column in required_order
+        if working.get_column(column).null_count()
+    }
+    if invalid_integer_counts:
+        raise ValueError(
+            "pitching Performance identifiers and counts must be finite integers; "
+            f"invalid/null counts by field={invalid_integer_counts}"
+        )
     if working.filter(pl.any_horizontal(*(pl.col(column) < 0 for column in _COUNT_COLUMNS))).height:
         raise ValueError("pitching Performance counts must be nonnegative")
     if working.filter(pl.col("pitching_games_started") > pl.col("pitching_games_played")).height:
