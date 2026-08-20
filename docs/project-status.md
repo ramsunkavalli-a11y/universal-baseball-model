@@ -12,8 +12,12 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
   `#2` at merge commit `dcaf8f7a2382e836fb6624c16e06319c3e6518f5`.
 - Start new work from current `main` on a focused feature branch and merge it
   through a passing pull request.
-- Public v1 release target: `v1.0.0`; frozen v1 scientific outputs must not be
-  rewritten by release or maintenance work.
+- Public position-player release `v1.0.0` was published from merge commit
+  `b204572d9bd394c77bc40650c31750a0d6a9443d`; its frozen scientific outputs
+  must not be rewritten by later release or maintenance work.
+- Pitching v1 is the active post-release model program. Its methodology review
+  and development contract must be frozen before any pitching candidate or 2025
+  confirmation outcome is scored.
 - Work in small verified batches and inspect branch head before editing.
 - Prefer certified/reusable public data, mature parsers, and existing adapters over rebuilding raw-source cleanup.
 - Preserve every Player Value component as an explicit layer with provenance.
@@ -44,6 +48,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **WAR/value aggregation:** **DONE / FROZEN / VERIFIED**
 - **Final ranking:** **DONE / FROZEN / VERIFIED**
 - **Formal forecast uncertainty:** **DONE / FROZEN / VERIFIED**
+- **Pitching v1:** **ACTIVE — PRE-OUTCOME METHODOLOGY / FOUNDATION**
 
 ## Frozen upstream models
 
@@ -56,6 +61,20 @@ A broader WAR literature review was completed before final aggregation. It cause
 - Non-steal advancement: `A2_k25`
 
 Do not reopen these absent a concrete implementation failure.
+
+## Active post-v1 program — Pitching v1
+
+Pitching v1 begins from the completed position-player v1 release without
+rewriting it. The pre-outcome methodology review is
+`docs/pitching-v1-methodology-review.md`; the binding development contract is
+`docs/pitching-v1-development-contract.md`.
+
+The universal rate profile is frozen as `K`, unintentional walk, HBP, HR and a
+neutral residual BF component. Rate talent, one-year Projection, future
+workload, starter/reliever role, leverage, replacement and run conversion remain
+separate layers. The first implementation gate is synthetic-data validation of
+the exact BF profile followed by an inventory of immutable 2021–2024 pitching
+source artifacts. The 2025 confirmation surface remains untouched.
 
 ## Defense v1 — frozen
 

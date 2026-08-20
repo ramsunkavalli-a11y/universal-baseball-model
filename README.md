@@ -20,6 +20,8 @@ focused pull-request branch.
 - **Player Value v1:** all batting, baserunning, Defense, position, centering, park, replacement, and runs-to-wins layers are frozen and verified.
 - **WAR/value and Overall Ranking:** final 3,051-player 2024 point-estimate table is frozen and verified.
 - **Forecast uncertainty:** deterministic 80% and 95% interval sidecar is frozen and verified; point rank remains binding.
+- **Pitching v1:** active pre-outcome program; methodology and development
+  contracts are frozen before candidate scoring.
 
 ## Player Value v1 result
 
