@@ -33,8 +33,8 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Replacement level:** DONE / REFROZEN / VERIFIED
 - **Baserunning:** **DONE / FROZEN / VERIFIED**
 - **GIDP:** **RAW TERM NON-ADDITIVE; RESIDUAL OMITTED FOR v1**
-- **MLB-reference centering:** **ACTIVE**
-- **Park-neutrality audit:** REQUIRED NEXT
+- **MLB-reference centering:** **ACTIVE — MEMBERSHIP/EXPOSURE GATE VERIFIED; NUMERICAL FOUR-COMPONENT REFERENCE STILL REQUIRED**
+- **Park-neutrality audit:** REQUIRED NEXT, **NOT YET OPEN**
 - **WAR/value aggregation:** CLOSED
 - **Final ranking:** CLOSED
 
@@ -235,21 +235,44 @@ The preferred official MLB bulk opportunity denominator is unavailable, and this
 
 ## ACTIVE STAGE — fixed-reference MLB centering
 
-Use a fixed certified MLB reference population, not the loaded universal ranking population.
+Binding contract: `docs/player-value-v1-mlb-centering-contract.md`.
 
-With the v1 GIDP residual omitted, the intended above-average reference total is:
+### Membership / exposure gate — VERIFIED
+
+The fixed reference population is now anchored to the certified pooled 2024 MLB Stats API population, not to the Playing Time validation target:
+
+- official positive-PA reference players: **651**;
+- official pooled MLB PA membership anchor: **182,449**;
+- frozen Playing Time 2023-10-15 snapshot rows: **3,985**;
+- Playing Time target players with positive observed 2024 PA: **645**;
+- Playing Time observed-PA diagnostic total: **181,190**;
+- aggregate frozen projected reference PA after membership reconciliation: **148,948.26306286638**.
+
+Six official 2024 MLB hitters are outside the frozen eligible Playing Time/B2 snapshot and therefore have no authorized chronology-safe Playing Time prediction row: `543518`, `593934`, `622491`, `656555`, `666158`, `808982`. They remain in the official 651-player reference cohort with the predeclared structural fallback `projected_expected_mlb_pa = 0.0`; realized 2024 PA is not used to backfill exposure.
+
+Binding membership materialization: `docs/player-value-v1-mlb-centering-2024-membership.json`.
+
+Verification Actions run: **`32320525700`**. Tests, source-artifact download, membership materialization, and artifact upload all passed.
+
+### Numerical centering reference — ACTIVE NEXT
+
+With the v1 GIDP residual omitted, assemble the existing frozen historical 2024 component surfaces for the fixed 651-player membership:
 
 `Ravg_raw_ref = aggregate(Rbat + Rbr + Rdef + Rpos)`
 
 Then:
 
-`centering_runs_per_pa = -Ravg_raw_ref / aggregate_reference_MLB_PA`
+`centering_runs_per_pa = -Ravg_raw_ref / 148948.26306286638`
 
 `Rlg_i = projected_expected_mlb_pa_i * centering_runs_per_pa`
 
-Before materializing a centering constant, identify and reuse the existing frozen component/reference assembly rather than building a parallel ranking-specific population. Replacement runs are **not** part of this centering total.
+Do **not** use 182,449 observed official PA as the centering denominator; it is the membership/accounting anchor. The numerical centering denominator is frozen projected reference PA.
 
-### After centering — park-neutrality audit
+Before freezing the constant, reuse the existing frozen batting/B2, baserunning, Defense, defensive-position allocation, and DH-role artifacts. Do not build a ranking-specific player population, refit an upstream model, or use 2024 realized component outcomes as projected values. The six outside-snapshot members must remain explicit zero-exposure/fallback rows rather than being dropped.
+
+### After numerical centering — park-neutrality audit
+
+Only after `docs/player-value-v1-mlb-centering-2024.json` is materialized and the centering residual verifies to the contract tolerance may the park-neutrality audit open.
 
 Test whether frozen batting/current-talent outputs retain systematic park/team residuals. Add an explicit park correction only if evidence demonstrates remaining context; do not blindly copy a conventional park adjustment and risk double-correction.
 
@@ -274,26 +297,29 @@ Before final WAR freeze also complete:
 1. `docs/project-status.md`
 2. `docs/player-value-v1-war-literature-review.md`
 3. `docs/player-value-v1-architecture-contract.md`
-4. `docs/player-value-v1-replacement-level-contract.md`
-5. `docs/player-value-v1-replacement-level-2024.json`
-6. `docs/player-value-v1-replacement-level-verification.json`
-7. `docs/player-value-v1-runs-per-win-contract.md`
-8. `docs/player-value-v1-mlb-run-environment-2024.json`
-9. `docs/player-value-v1-batting-runs-contract.md`
-10. `docs/player-value-v1-positional-adjustment-contract.md`
-11. `docs/player-value-v1-defense-production-handoff.md`
-12. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-13. `docs/player-value-v1-baserunning-source-audit-contract.md`
-14. `docs/player-value-v1-baserunning-source-audit-result.json`
-15. `docs/player-value-v1-steal-projection-selection-contract.md`
-16. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-17. `docs/player-value-v1-steal-projection-selection-result.json`
-18. `docs/player-value-v1-advancement-projection-selection-contract.md`
-19. `docs/player-value-v1-advancement-projection-selection-result.json`
-20. `docs/player-value-v1-baserunning-run-conversion-contract.md`
-21. `docs/player-value-v1-baserunning-run-conversion-2024.json`
-22. `docs/projection-batting-v1-development-result.json`
-23. `docs/current-talent-results-only-baseline-freeze.md`
+4. `docs/player-value-v1-mlb-centering-contract.md`
+5. `docs/player-value-v1-mlb-centering-2024-membership.json`
+6. `docs/player-value-v1-mlb-centering-verification.json`
+7. `docs/player-value-v1-replacement-level-contract.md`
+8. `docs/player-value-v1-replacement-level-2024.json`
+9. `docs/player-value-v1-replacement-level-verification.json`
+10. `docs/player-value-v1-runs-per-win-contract.md`
+11. `docs/player-value-v1-mlb-run-environment-2024.json`
+12. `docs/player-value-v1-batting-runs-contract.md`
+13. `docs/player-value-v1-positional-adjustment-contract.md`
+14. `docs/player-value-v1-defense-production-handoff.md`
+15. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+16. `docs/player-value-v1-baserunning-source-audit-contract.md`
+17. `docs/player-value-v1-baserunning-source-audit-result.json`
+18. `docs/player-value-v1-steal-projection-selection-contract.md`
+19. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+20. `docs/player-value-v1-steal-projection-selection-result.json`
+21. `docs/player-value-v1-advancement-projection-selection-contract.md`
+22. `docs/player-value-v1-advancement-projection-selection-result.json`
+23. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+24. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+25. `docs/projection-batting-v1-development-result.json`
+26. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
