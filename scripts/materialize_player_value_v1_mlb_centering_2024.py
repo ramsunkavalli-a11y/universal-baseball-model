@@ -15,7 +15,6 @@ from typing import Any, Iterable
 import polars as pl
 import requests
 
-from universal_baseball.performance_season import ALL_CORE_BINS
 from universal_baseball.player_value_advancement_projection import (
     AdvancementCandidate,
     PlayerSeasonAdvancementSummary,

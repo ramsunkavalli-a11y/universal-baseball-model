@@ -82,7 +82,6 @@ def main() -> None:
         .alias("primary_share_bin"),
     )
 
-    mean_probability_cols = [f"mean_next_{position}" for position in BATTING_ROLE_POSITIONS]
     mean_rows: list[dict[str, object]] = []
     for row in means.iter_rows(named=True):
         values = sorted(

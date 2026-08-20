@@ -94,7 +94,7 @@ def test_contract_rejects_covered_uncovered_pa_mismatch() -> None:
     summary = _summary().with_columns(
         pl.lit(17).alias("core_profile_uncovered_pa_count")
     )
-    with pytest.raises(ValueError, match="covered \+ uncovered"):
+    with pytest.raises(ValueError, match=r"covered \+ uncovered"):
         validate_batting_performance_contract(summary, _profile(), _values())
 
 

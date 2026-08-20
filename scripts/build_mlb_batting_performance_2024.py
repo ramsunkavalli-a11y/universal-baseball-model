@@ -412,7 +412,7 @@ def main() -> int:
         f"- Unknown contacts: {unknown_contacts:,} ({unknown_contacts / total_contacts if total_contacts else 0:.3%})",
         f"- Net Savant contact residual vs aggregate: {contact_residual:+,}",
         f"- AL/NL certified bin-value rows: {bin_values.height:,}",
-        f"- Contextual peer prior strength: 5 prior-equivalent occurrences",
+        "- Contextual peer prior strength: 5 prior-equivalent occurrences",
         f"- Outcome reconciliation mismatches: {reconciliation['mismatch_row_count']:,}",
         f"- DuckDB unique summary keys: {duckdb_metrics['summary_unique_keys']:,}/{duckdb_metrics['summary_rows']:,}",
         "",

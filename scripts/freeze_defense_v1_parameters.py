@@ -7,7 +7,6 @@ import argparse
 from hashlib import sha256
 from importlib.metadata import version
 import json
-import math
 from pathlib import Path
 import platform
 from typing import Any, Mapping

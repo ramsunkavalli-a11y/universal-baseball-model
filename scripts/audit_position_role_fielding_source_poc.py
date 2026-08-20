@@ -427,7 +427,7 @@ def main() -> int:
                 f"{fielding.get('missing_position_split_count')}",
                 f"- Duplicate player/team/position keys: "
                 f"{fielding.get('player_team_position_duplicate_key_count')}",
-                f"- Observed positions: "
+                "- Observed positions: "
                 + ", ".join(
                     sorted(
                         {

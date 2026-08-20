@@ -92,7 +92,10 @@ def materialize_contact_value_target_contacts(
         pl.col("game_pk").cast(pl.Int64),
         pl.col("at_bat_index").cast(pl.Int64),
         pl.col("pitch_number").cast(pl.Int64),
-        pl.col("game_date").cast(pl.Date, strict=False).alias("event_date"),
+        pl.col("game_date")
+        .cast(pl.String)
+        .str.to_date(strict=False)
+        .alias("event_date"),
     )
     if dates.filter(pl.col("event_date").is_null()).height:
         raise ValueError("authorized historical contacts contain unparseable game dates")

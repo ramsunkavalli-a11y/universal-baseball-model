@@ -1,5 +1,4 @@
 from datetime import date
-import math
 
 import polars as pl
 import pytest

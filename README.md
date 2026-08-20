@@ -76,6 +76,18 @@ The repaired catcher integration and its superseded source history are documente
 
 ## Development workflow
 
+Install the complete local development environment and run the same checks as
+the pull-request CI job:
+
+```bash
+python -m pip install -e ".[dev]"
+python -m ruff check src scripts tests
+python -m pytest
+```
+
+Install `.[playing-time]` instead when only the Playing Time model's
+scikit-learn/statsmodels runtime is needed.
+
 1. Reuse certified public work and existing repo adapters before rebuilding source ingestion.
 2. Work in small verified batches and verify each batch before expanding scope.
 3. Freeze model form/search space/validation rules before opening held-out outcomes.

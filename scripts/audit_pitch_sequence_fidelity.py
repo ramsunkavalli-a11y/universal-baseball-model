@@ -28,7 +28,6 @@ import json
 from pathlib import Path
 from typing import Any
 
-import polars as pl
 
 import audit_milb_bin_value_stability as stability
 from universal_baseball.certification import download_file, read_quarantined_csv

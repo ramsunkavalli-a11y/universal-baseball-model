@@ -58,7 +58,6 @@ from universal_baseball.current_talent_batted_ball_scoring import (
     relabel_richer_pair_model,
 )
 from universal_baseball.current_talent_batted_ball_standardization import (
-    BattedBallFeatureStandardization,
     fit_batted_ball_feature_standardization,
     standardize_batted_ball_quality_features,
 )
@@ -507,12 +506,6 @@ def _non_mlb_guardrails(capability: pl.DataFrame) -> tuple[dict[str, object], li
     # combined any-MiLB-evidence cohort. Players may have mixed MLB/MiLB tracked
     # histories; they qualify because some observed richer evidence came from MiLB.
     # A cohort with <1000 future events is insufficient to establish transport.
-    all_scores = non_mlb.group_by(["as_of_date", "model", "player_id"]).agg(
-        pl.col("future_core_events").max().alias("future_core_events"),
-        pl.col("event_weighted_log_loss").mean().alias("event_weighted_log_loss"),
-        pl.col("event_weighted_multinomial_brier").mean().alias("event_weighted_multinomial_brier"),
-    ) if False else None
-
     # Build the combined cohort from per-tier aggregate rows without summing them,
     # because players can appear in multiple source tiers. The caller supplies a
     # separate combined cohort below; this function only returns per-tier failures.

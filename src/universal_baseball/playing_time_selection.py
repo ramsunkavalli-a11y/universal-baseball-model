@@ -108,7 +108,8 @@ def select_playing_time_form(form_results: pl.DataFrame) -> PlayingTimeSelection
     )
     ranked = mae_eligible.with_columns(
         pl.col("form")
-        .map_elements(lambda value: PT_FORM_COMPLEXITY[str(value)], return_dtype=pl.Int64)
+        .cast(pl.String)
+        .replace_strict(PT_FORM_COMPLEXITY, return_dtype=pl.Int64)
         .alias("_complexity")
     ).sort("_complexity")
     selected = ranked.row(0, named=True)
