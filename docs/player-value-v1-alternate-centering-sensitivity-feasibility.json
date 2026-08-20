@@ -1,0 +1,76 @@
+{
+  "actions_run_id": 32383260384,
+  "available_surface_keys": [
+    "batting_profile",
+    "baserunning_projection",
+    "defense_projection",
+    "position_and_dh_projection"
+  ],
+  "boundary": {
+    "binding_2024_centering_changed": false,
+    "model_refit": false,
+    "realized_outcomes_used_as_projection": false,
+    "war_calculated": false
+  },
+  "candidate_reference_season": 2023,
+  "complete_comparable_surface": false,
+  "contract": "docs/player-value-v1-mlb-centering-contract.md",
+  "decision": {
+    "alternate_centering_constant_materialized": false,
+    "new_source_certification_required_to_reopen": true,
+    "partial_season_manufactured": false,
+    "sensitivity_obligation_closed_as_unavailable": true
+  },
+  "evidence": {
+    "baserunning_projection": {
+      "available": true
+    },
+    "batting_profile": {
+      "artifact_digest": "sha256:40430b67a492aec81e570cd67e74ae3ca7b809cb3ce538082237be244c450d44",
+      "artifact_id": 9311172007,
+      "available": true,
+      "run_id": 32099733186
+    },
+    "defense_projection": {
+      "available": true
+    },
+    "mlb_batting_run_reference": {
+      "available": false,
+      "reason": "the frozen centering inventory contains only the certified 2024 MLB batting conversion tables",
+      "required_paths": [
+        "docs/player-value-v1-mlb-batting-reference-2023.json",
+        "reports/generated/batting_performance_summary_2023_mlb.parquet",
+        "reports/generated/batting_performance_bins_2023_mlb.parquet",
+        "reports/generated/league_bin_values_2023_mlb.parquet"
+      ]
+    },
+    "official_positive_pa_membership": {
+      "available": false,
+      "reason": "no certified 2023 cohort includes an audited outside-snapshot fallback",
+      "required_path": "docs/player-value-v1-mlb-centering-2023-membership.json"
+    },
+    "position_and_dh_projection": {
+      "available": true,
+      "dh_artifact_id": 9371840453,
+      "dh_run_id": 32270141291,
+      "position_artifact_id": 9370211679,
+      "position_run_id": 32266007594
+    },
+    "projected_pa_with_outside_snapshot_fallback": {
+      "available": false,
+      "playing_time_artifact_digest": "sha256:738c631f5b4fbaa7875219ee452996e487799c4a323b0cafa57a7500583c5b39",
+      "playing_time_artifact_id": 9326237253,
+      "playing_time_run_id": 32141934868,
+      "reason": "snapshot-player projections exist, but cannot define exposure for uncatalogued official members without the missing membership audit"
+    }
+  },
+  "missing_surface_keys": [
+    "official_positive_pa_membership",
+    "projected_pa_with_outside_snapshot_fallback",
+    "mlb_batting_run_reference"
+  ],
+  "schema_version": "0.1",
+  "scope": "artifacts frozen in the numerical-centering source inventory and committed repository records",
+  "source_commit": "f3fdb16a730f23b4a58ff8ab588c8aabf9a1e3a4",
+  "status": "player_value_v1_alternate_centering_sensitivity_unavailable_verified"
+}
