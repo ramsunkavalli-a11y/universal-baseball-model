@@ -109,7 +109,7 @@ jobs:
           retention-days: 30
 
       - name: Download certified historical fielding source
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: position-role-historical-source-2021-2024
           path: inputs/historical
@@ -118,7 +118,7 @@ jobs:
           run-id: 32148467330
 
       - name: Download certified 2024 MLB tracking predictor
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: defense-v1-2024-tracking-predictor
           path: inputs/tracking
@@ -127,7 +127,7 @@ jobs:
           run-id: ${{ steps.sources.outputs.tracking_run_id }}
 
       - name: Download certified 2025 defensive target source
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: defense-v1-2025-target-source
           path: inputs/targets

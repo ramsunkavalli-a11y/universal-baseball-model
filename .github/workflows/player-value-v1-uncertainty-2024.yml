@@ -29,7 +29,7 @@ jobs:
           tests/test_player_value_batting_runs.py
           tests/test_player_value_defense_projection.py
       - name: Download verified final Player Value table
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9412571491"
           path: inputs/final
@@ -37,7 +37,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32385002209"
       - name: Download frozen B2 batting profiles
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9311172007"
           path: inputs/b2
@@ -45,7 +45,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32099733186"
       - name: Download frozen Playing Time surface
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9326300207"
           path: inputs/playing-time
@@ -53,7 +53,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32142089669"
       - name: Download certified MLB batting performance
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9265954750"
           path: inputs/mlb-performance
@@ -61,7 +61,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "31955392482"
       - name: Download frozen catcher opportunities
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9371426672"
           path: inputs/catcher-opportunities
