@@ -95,15 +95,18 @@ The verified inventory contains 26,488 player/actual-league/season rows,
 quarantine and were not uploaded; 2025 was not accessed. Exact evidence is
 frozen in `docs/pitching-v1-source-inventory-result.json`.
 
-The official MLB pitching source gate is now staged against the same bulk,
-paginated AL/NL Stats API contract already used for batting. Before any
-Pitching v1 candidate scoring, it froze eight exact 2021–2024 response hashes.
-Local reproduction produced 3,713 player/actual-league/season rows, 18,565
-five-bin profile rows, 1,569 distinct pitchers, and 730,423 BF with unique
-canonical grains. The 2024 pitching total is exactly 182,449 BF, independently
-reproducing the existing official MLB PA accounting anchor; no historical
-count change was accepted. This batch remains provisional until the protected
-main-branch workflow reproduces every response hash and total.
+Official MLB source-gate PR `#10` merged at
+`00626ac2e9d7872bf6eb29f71eb1aa9f78da6ce9`; required CI run
+`32400877440` and CodeQL run `32400877280` passed. Independent main-branch
+workflow run `32401078749` reproduced all eight frozen 2021–2024 AL/NL Stats
+API responses. Its artifact `9418496412` has digest
+`sha256:a4134ef752218a7650f8ccbf6d4a01bd9b6929049c0742f5e4eec0d9f613d86f`.
+The verified official inventory contains 3,713 player/actual-league/season
+rows, 18,565 five-bin profile rows, 1,569 distinct pitchers, and 730,423 BF
+with unique canonical grains. The 2024 pitching total is exactly 182,449 BF,
+independently reproducing the existing official MLB PA accounting anchor; no
+historical count change was accepted and 2025 was not accessed. Exact evidence
+is frozen in `docs/pitching-v1-mlb-source-inventory-result.json`.
 
 ## Defense v1 — frozen
 

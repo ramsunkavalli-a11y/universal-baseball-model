@@ -1,0 +1,80 @@
+{
+  "artifact": {
+    "created_at_utc": "2026-08-20T18:04:17Z",
+    "digest": "sha256:a4134ef752218a7650f8ccbf6d4a01bd9b6929049c0742f5e4eec0d9f613d86f",
+    "expires_at_utc": "2026-09-03T18:04:15Z",
+    "id": 9418496412,
+    "name": "pitching-v1-mlb-source-inventory",
+    "size_bytes": 152871
+  },
+  "combined": {
+    "all_eight_frozen_response_hashes_reproduced": true,
+    "capture_count": 8,
+    "distinct_actual_league_count": 2,
+    "distinct_player_count": 1569,
+    "official_2024_bf_anchor_reproduced": 182449,
+    "profile_grain_unique": true,
+    "profile_row_count": 18565,
+    "summary_grain_unique": true,
+    "summary_row_count": 3713,
+    "total_batters_faced": 730423
+  },
+  "confirmation_2025_accessed": false,
+  "outputs": {
+    "pitching-v1-mlb-source-inventory.json": {
+      "sha256": "6865caaeccbea09f6c63e9ddd7a0170c72283af3fd65a6d422e437190a04accd"
+    },
+    "pitching_v1_mlb_performance_profile_2021_2024.parquet": {
+      "sha256": "e5735fc92d80872802f406e2e2e5efb7ff7edeaa64846e1d86cd65787489c637"
+    },
+    "pitching_v1_mlb_performance_summary_2021_2024.parquet": {
+      "sha256": "caa0855917c143653d09caa185f9e35ceab73bd6d3f0361506bde502c1f21a97"
+    }
+  },
+  "report_schema_version": 1,
+  "seasonal": [
+    {
+      "distinct_player_count": 909,
+      "profile_row_count": 4840,
+      "season": 2021,
+      "summary_row_count": 968,
+      "total_batters_faced": 181818
+    },
+    {
+      "distinct_player_count": 871,
+      "profile_row_count": 4580,
+      "season": 2022,
+      "summary_row_count": 916,
+      "total_batters_faced": 182052
+    },
+    {
+      "distinct_player_count": 863,
+      "profile_row_count": 4580,
+      "season": 2023,
+      "summary_row_count": 916,
+      "total_batters_faced": 184104
+    },
+    {
+      "distinct_player_count": 855,
+      "profile_row_count": 4565,
+      "season": 2024,
+      "summary_row_count": 913,
+      "total_batters_faced": 182449
+    }
+  ],
+  "seasons": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "source_family": "official MLB Stats API bulk season pitching",
+  "source_inventory_merge_commit": "00626ac2e9d7872bf6eb29f71eb1aa9f78da6ce9",
+  "status": "verified",
+  "verification": {
+    "actions_run_id": 32401078749,
+    "actions_run_url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32401078749",
+    "conclusion": "success",
+    "workflow": "Pitching v1 MLB source inventory"
+  }
+}

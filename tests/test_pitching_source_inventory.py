@@ -107,3 +107,30 @@ def test_frozen_source_inventory_result_records_verified_pre_2025_gate() -> None
     }
     assert result["verification"]["actions_run_id"] == 32399807939
     assert result["artifact"]["id"] == 9418056648
+
+
+def test_frozen_mlb_source_result_records_verified_official_anchor() -> None:
+    result_path = (
+        Path(__file__).resolve().parents[1]
+        / "docs"
+        / "pitching-v1-mlb-source-inventory-result.json"
+    )
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+
+    assert result["status"] == "verified"
+    assert result["seasons"] == [2021, 2022, 2023, 2024]
+    assert result["confirmation_2025_accessed"] is False
+    assert result["combined"] == {
+        "all_eight_frozen_response_hashes_reproduced": True,
+        "capture_count": 8,
+        "distinct_actual_league_count": 2,
+        "distinct_player_count": 1569,
+        "official_2024_bf_anchor_reproduced": 182449,
+        "profile_grain_unique": True,
+        "profile_row_count": 18565,
+        "summary_grain_unique": True,
+        "summary_row_count": 3713,
+        "total_batters_faced": 730423,
+    }
+    assert result["verification"]["actions_run_id"] == 32401078749
+    assert result["artifact"]["id"] == 9418496412
