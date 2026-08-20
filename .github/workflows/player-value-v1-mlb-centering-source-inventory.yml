@@ -1,0 +1,94 @@
+name: Player Value v1 MLB centering source inventory
+
+on:
+  push:
+    branches: [source-certification-poc]
+    paths:
+      - ".github/workflows/player-value-v1-mlb-centering-source-inventory.yml"
+      - "scripts/inventory_player_value_v1_mlb_centering_sources.py"
+      - "docs/player-value-v1-mlb-centering-source-inventory-contract.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Verify inventory implementation
+        run: python -m py_compile scripts/inventory_player_value_v1_mlb_centering_sources.py
+      - name: Download exact frozen artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo="ramsunkavalli-a11y/universal-baseball-model"
+          mkdir -p inputs
+          download() {
+            local run_id="$1" artifact="$2" dest="$3"
+            mkdir -p "inputs/$dest"
+            gh run download "$run_id" --repo "$repo" --name "$artifact" --dir "inputs/$dest"
+          }
+          download 32099733186 projection-batting-v1-current-talent-snapshots batting-b2
+          download 32142089669 playing-time-v1-validation-2024 playing-time
+          download 32148467330 position-role-historical-source-2021-2024 fielding-history
+          download 32266007594 player-value-v1-defensive-position-allocation position-allocation
+          download 32182019495 defense-v1-tracked-source-2021-2023 defense-tracked
+          download 32198857540 defense-v1-2024-tracking-predictor defense-2024-predictor
+          download 32206603934 defense-v1-catcher-repair-development-source catcher-repair-source
+          download 32208273343 defense-v1-framing-repair-development-source framing-repair-source
+
+          perf_runs="$(gh run list --repo "$repo" --workflow mlb-full-season-performance-source.yml --branch source-certification-poc --status success --limit 20 --json databaseId,createdAt,headSha)"
+          perf_count="$(jq 'length' <<<"$perf_runs")"
+          test "$perf_count" -ge 1
+          perf_run="$(jq -r '.[0].databaseId' <<<"$perf_runs")"
+          download "$perf_run" mlb-performance-live-gates mlb-performance
+
+          jq -n \
+            --argjson performance_candidates "$perf_runs" \
+            --argjson performance_run "$perf_run" \
+            --arg source_sha "${GITHUB_SHA}" \
+            '{source_sha:$source_sha, resolved_mlb_performance_run_id:$performance_run, mlb_performance_successful_run_candidates:$performance_candidates,
+              artifacts:[
+                {run_id:32099733186,artifact_name:"projection-batting-v1-current-talent-snapshots",artifact_id:9311172007,digest:"sha256:40430b67a492aec81e570cd67e74ae3ca7b809cb3ce538082237be244c450d44"},
+                {run_id:32142089669,artifact_name:"playing-time-v1-validation-2024",artifact_id:9326300207,digest:"sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366"},
+                {run_id:32148467330,artifact_name:"position-role-historical-source-2021-2024",artifact_id:9328803363,digest:"sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3"},
+                {run_id:32266007594,artifact_name:"player-value-v1-defensive-position-allocation",artifact_id:9370211679,digest:"sha256:68f31b337ece8b40403a944663ed20f068da4e99b961bfcfa4a4ed51eb128ede"},
+                {run_id:32182019495,artifact_name:"defense-v1-tracked-source-2021-2023",artifact_id:9342409616,digest:"sha256:a177f04655cc497534c85f47d94aa597b273358154eb76999b4a0bc9d5584de4"},
+                {run_id:32198857540,artifact_name:"defense-v1-2024-tracking-predictor",artifact_id:9347665525,digest:"sha256:3eb8fce7e7c18b87c6d40057896ad0654703e42c129d94c584eda82948e1ab33"},
+                {run_id:32206603934,artifact_name:"defense-v1-catcher-repair-development-source",artifact_id:9349341632,digest:"sha256:ca28db646381969c41dc02ae263f19ed233f88611a2083bdd6e4b9ad1c67c6a1"},
+                {run_id:32208273343,artifact_name:"defense-v1-framing-repair-development-source",artifact_id:9349835242,digest:"sha256:13b7a44cd26e81b75b564257a0f374d20a4a3553ffe8d55ee270546b1a25dddb"}
+              ]}' > source-manifest.json
+      - name: Materialize source inventory
+        run: >-
+          python scripts/inventory_player_value_v1_mlb_centering_sources.py
+          --input-root inputs
+          --source-manifest source-manifest.json
+          --output docs/player-value-v1-mlb-centering-source-inventory.json
+      - name: Persist source inventory
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/player-value-v1-mlb-centering-source-inventory.json
+          git commit -m "Inventory frozen MLB centering sources"
+          for attempt in 1 2 3; do
+            git fetch origin source-certification-poc
+            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          exit 1
+
