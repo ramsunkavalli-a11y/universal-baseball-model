@@ -14,35 +14,39 @@ Read [`docs/project-status.md`](docs/project-status.md) first. `main` is the lat
 - **Playing Time v1:** frozen and 2025-confirmed at `playing_time_recent_opportunity_40man_b2_hurdle_v1`.
 - **Position / Role v1:** frozen and 2025-confirmed at `primary_share_thresholded_transition_mean_v1`.
 - **Defense v1 general range:** frozen and 2025-confirmed; tracked MLB range when eligible, universal range otherwise.
-- **Defense v1 catcher channel:** **quarantined for source repair** after discovering that the legacy Savant catcher query returned the same payload for multiple requested seasons.
-- **Player Value architecture:** frozen; run-conversion/exposure/positional-adjustment research active where independent of the catcher repair.
-- **WAR/value and Overall Ranking:** not authorized yet.
+- **Defense v1 catcher channel:** repaired, frozen, and verified with corrected throwing, blocking, and framing sources.
+- **Player Value v1:** all batting, baserunning, Defense, position, centering, park, replacement, and runs-to-wins layers are frozen and verified.
+- **WAR/value and Overall Ranking:** final 3,051-player 2024 point-estimate table is frozen and verified.
+- **Forecast uncertainty:** deterministic 80% and 95% interval sidecar is frozen and verified; point rank remains binding.
 
-## Catcher source repair
+## Player Value v1 result
 
-Binding contract: [`docs/defense-v1-catcher-source-repair-contract.md`](docs/defense-v1-catcher-source-repair-contract.md).
+Final aggregation contract: [`docs/player-value-v1-final-aggregation-contract.md`](docs/player-value-v1-final-aggregation-contract.md).
 
-The repair changes only the broken catcher target source. It preserves the original preregistered C1/C2 candidate families, development folds, eligibility, promotion thresholds, and one-shot confirmation rules.
+Frozen point result: [`docs/player-value-v1-final-2024.json`](docs/player-value-v1-final-2024.json).
 
-The prior catcher development and 2025 confirmation results remain in the repo as audit evidence but are not binding until rerun against genuinely year-specific targets.
+Forecast-uncertainty result: [`docs/player-value-v1-uncertainty-2024.json`](docs/player-value-v1-uncertainty-2024.json).
 
-**General Defense is unaffected and must not be reopened.**
+The final additive form is:
 
-## Player Value v1
+`RAR = Rbat + Rbr + Rdef + Rpos + Rlg + Rpark + Rrep`
 
-Architecture contract: [`docs/player-value-v1-architecture-contract.md`](docs/player-value-v1-architecture-contract.md).
+`WAR = RAR / RPW`
 
-Key rules:
+The verified population contains 3,045 players with complete frozen component surfaces plus six mandated official-MLB structural-zero rows. The final aggregate is `4610.597400956516` runs above replacement and `476.17201420774313` WAR at `9.682629939156854` runs per win. Ranking uses unrounded WAR descending and MLBAM player ID ascending only as the deterministic tie-break.
+
+Key boundaries:
 
 - reuse the existing Performance RE24/bin-value foundation for batting;
 - keep defensive skill separate from run conversion;
 - do not assign arbitrary `runs per z` constants;
 - use frozen Playing Time and the full Position/Role share vector for exposure;
 - keep positional adjustment separate from position-relative Defense skill;
-- keep replacement level and runs per win as later explicit decisions;
-- do not calculate WAR until every component is independently frozen.
+- keep replacement level, MLB centering, park, and runs per win explicit;
+- preserve every component, fallback flag, and provenance field;
+- do not refit or reselect frozen upstream models from ranking or interval outcomes.
 
-The Defense native-scale audit is at [`docs/player-value-v1-defense-native-scale-audit.json`](docs/player-value-v1-defense-native-scale-audit.json). Its general-range diagnostics remain usable; its catcher diagnostics are quarantined because they exposed the source problem.
+The repaired catcher integration and its superseded source history are documented in [`docs/project-status.md`](docs/project-status.md) and the Defense production handoff.
 
 ## Core principles
 
@@ -57,11 +61,13 @@ The Defense native-scale audit is at [`docs/player-value-v1-defense-native-scale
 ## Current milestone documents
 
 - [`docs/project-status.md`](docs/project-status.md) — canonical live handoff.
-- [`docs/defense-v1-catcher-source-repair-contract.md`](docs/defense-v1-catcher-source-repair-contract.md) — active catcher repair gate.
-- [`docs/savant-catcher-year-filter-diagnostic.json`](docs/savant-catcher-year-filter-diagnostic.json) — direct source diagnostic.
-- [`docs/player-value-v1-architecture-contract.md`](docs/player-value-v1-architecture-contract.md) — frozen downstream architecture.
-- [`docs/player-value-v1-defense-native-scale-audit.json`](docs/player-value-v1-defense-native-scale-audit.json) — pre-2025 native-scale diagnostic.
-- [`docs/defense-v1-2025-confirmation-result.json`](docs/defense-v1-2025-confirmation-result.json) — general Defense result remains binding; catcher portion quarantined.
+- [`docs/player-value-v1-final-aggregation-contract.md`](docs/player-value-v1-final-aggregation-contract.md) — frozen final population and arithmetic.
+- [`docs/player-value-v1-final-2024.json`](docs/player-value-v1-final-2024.json) — verified point-estimate ranking summary.
+- [`docs/player-value-v1-uncertainty-contract.md`](docs/player-value-v1-uncertainty-contract.md) — frozen forecast-interval method.
+- [`docs/player-value-v1-uncertainty-2024.json`](docs/player-value-v1-uncertainty-2024.json) — verified interval summary.
+- [`docs/player-value-v1-mlb-centering-2024.json`](docs/player-value-v1-mlb-centering-2024.json) — verified fixed-reference numerical centering.
+- [`docs/player-value-v1-park-neutrality-audit-result.json`](docs/player-value-v1-park-neutrality-audit-result.json) — verified `Rpark = 0` decision.
+- [`docs/player-value-v1-defense-production-handoff.md`](docs/player-value-v1-defense-production-handoff.md) — frozen repaired Defense machinery.
 - [`docs/position-role-2025-confirmation-result.json`](docs/position-role-2025-confirmation-result.json) — frozen Position / Role v1 confirmation.
 - [`docs/playing-time-v1-confirmation-result.json`](docs/playing-time-v1-confirmation-result.json) — frozen Playing Time v1 confirmation.
 - [`docs/projection-batting-v1-development-result.json`](docs/projection-batting-v1-development-result.json) — frozen Projection v1 decision.
