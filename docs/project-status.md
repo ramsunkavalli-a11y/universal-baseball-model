@@ -339,7 +339,20 @@ Park neutrality is resolved. WAR remains closed until the already-listed positio
 
 This is diagnostic only. The binding `fangraphs_fixed_162_game_v1` schedule and all frozen exposures remain unchanged. Companion implementation verification run **`32381604402`** also passed.
 
-Replacement sensitivities were already completed in `docs/player-value-v1-replacement-level-2024.json`. Remaining sensitivity work is the alternate recent MLB batting reference if a full comparable frozen surface exists, the PythagenPat runs-per-win comparison if practical, and any feasible predeclared baserunning/centering sensitivity.
+### Baseball-Reference player-aware/PythagenPat conversion — DONE / VERIFIED
+
+`docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json` applies the pre-outcome method in `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md` to the exact 651-player numerical-centering component surface. Actions run **`32382624096`** passed and uploaded artifact **`9411624967`**, digest `sha256:a08d7ce0129d1db736c979fcc971fca61da52778ccdf3efd18f0337cb10586d9`.
+
+- binding common-divisor aggregate: `465.1468161753402` WAR;
+- player-aware PythagenPat aggregate: `477.9803621205956` WAR;
+- aggregate sensitivity difference: `+12.833545945255509` WAR;
+- player median / mean absolute difference: `+0.013543074681223954` / `0.022448545991792267` WAR;
+- player range: `-0.06846760327663248` to `+0.1277806560791115` WAR;
+- all 651 rows, the `148948.26306286638` projected-PA denominator, and the six explicit zero-exposure rows reconciled.
+
+This is diagnostic only. The binding `9.682629939156854` common RPW, frozen components, centering, and replacement rate remain unchanged.
+
+Replacement sensitivities were already completed in `docs/player-value-v1-replacement-level-2024.json`. Remaining sensitivity work is the alternate recent MLB batting/centering reference only if a full comparable frozen surface exists, plus any other explicitly predeclared baserunning/centering sensitivity that is actually feasible from frozen inputs.
 
 ## WAR remains closed
 
@@ -368,26 +381,28 @@ Before final WAR freeze also complete:
 7. `docs/player-value-v1-park-neutrality-audit-contract.md`
 8. `docs/player-value-v1-park-neutrality-audit-result.json`
 9. `docs/player-value-v1-mlb-centering-verification.json`
-10. `docs/player-value-v1-replacement-level-contract.md`
-11. `docs/player-value-v1-replacement-level-2024.json`
-12. `docs/player-value-v1-replacement-level-verification.json`
-13. `docs/player-value-v1-runs-per-win-contract.md`
-14. `docs/player-value-v1-mlb-run-environment-2024.json`
-15. `docs/player-value-v1-batting-runs-contract.md`
-16. `docs/player-value-v1-positional-adjustment-contract.md`
-17. `docs/player-value-v1-defense-production-handoff.md`
-18. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-19. `docs/player-value-v1-baserunning-source-audit-contract.md`
-20. `docs/player-value-v1-baserunning-source-audit-result.json`
-21. `docs/player-value-v1-steal-projection-selection-contract.md`
-22. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-23. `docs/player-value-v1-steal-projection-selection-result.json`
-24. `docs/player-value-v1-advancement-projection-selection-contract.md`
-25. `docs/player-value-v1-advancement-projection-selection-result.json`
-26. `docs/player-value-v1-baserunning-run-conversion-contract.md`
-24. `docs/player-value-v1-baserunning-run-conversion-2024.json`
-25. `docs/projection-batting-v1-development-result.json`
-26. `docs/current-talent-results-only-baseline-freeze.md`
+10. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md`
+11. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json`
+12. `docs/player-value-v1-replacement-level-contract.md`
+13. `docs/player-value-v1-replacement-level-2024.json`
+14. `docs/player-value-v1-replacement-level-verification.json`
+15. `docs/player-value-v1-runs-per-win-contract.md`
+16. `docs/player-value-v1-mlb-run-environment-2024.json`
+17. `docs/player-value-v1-batting-runs-contract.md`
+18. `docs/player-value-v1-positional-adjustment-contract.md`
+19. `docs/player-value-v1-defense-production-handoff.md`
+20. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+21. `docs/player-value-v1-baserunning-source-audit-contract.md`
+22. `docs/player-value-v1-baserunning-source-audit-result.json`
+23. `docs/player-value-v1-steal-projection-selection-contract.md`
+24. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+25. `docs/player-value-v1-steal-projection-selection-result.json`
+26. `docs/player-value-v1-advancement-projection-selection-contract.md`
+27. `docs/player-value-v1-advancement-projection-selection-result.json`
+28. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+29. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+30. `docs/projection-batting-v1-development-result.json`
+31. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
