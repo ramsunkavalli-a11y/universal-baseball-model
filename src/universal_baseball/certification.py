@@ -16,6 +16,7 @@ from pathlib import Path
 import time
 from typing import Any
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 import polars as pl
@@ -97,6 +98,14 @@ def download_file(
 ) -> dict[str, Any]:
     """Download to a temporary file, then atomically promote it."""
 
+    scheme = urlparse(url).scheme.lower()
+    if scheme not in {"http", "https"}:
+        raise ValueError("source downloads require an http or https URL")
+    if attempts < 1:
+        raise ValueError("download attempts must be at least one")
+    if timeout_seconds <= 0:
+        raise ValueError("download timeout_seconds must be positive")
+
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary = destination.with_suffix(destination.suffix + ".part")
     if temporary.exists():
@@ -109,12 +118,13 @@ def download_file(
                 url,
                 headers={"User-Agent": "universal-baseball-model/source-certification"},
             )
-            with urlopen(request, timeout=timeout_seconds) as response, temporary.open(
-                "wb"
-            ) as output:
+            with urlopen(request, timeout=timeout_seconds) as response:
                 resolved_url = response.geturl()
-                while chunk := response.read(1024 * 1024):
-                    output.write(chunk)
+                if urlparse(resolved_url).scheme.lower() not in {"http", "https"}:
+                    raise RuntimeError("source download resolved to a non-http URL")
+                with temporary.open("wb") as output:
+                    while chunk := response.read(1024 * 1024):
+                        output.write(chunk)
 
             temporary.replace(destination)
             return {

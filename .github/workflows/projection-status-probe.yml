@@ -16,6 +16,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check out branch
         uses: actions/checkout@v7

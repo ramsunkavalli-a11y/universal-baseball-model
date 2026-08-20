@@ -9,6 +9,7 @@ or WAR aggregation.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 from types import MappingProxyType
 from typing import Mapping
 
@@ -65,7 +66,7 @@ def _nonnegative_float(value: object, *, field: str) -> float:
         raise ValueError(f"{field} must be numeric; got {value!r}") from exc
     if numeric < 0.0:
         raise ValueError(f"{field} must be nonnegative; got {numeric}")
-    if numeric != numeric or numeric in {float("inf"), float("-inf")}:
+    if not math.isfinite(numeric):
         raise ValueError(f"{field} must be finite; got {numeric}")
     return numeric
 

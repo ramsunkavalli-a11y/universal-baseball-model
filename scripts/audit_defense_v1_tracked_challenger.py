@@ -232,7 +232,8 @@ def _evaluate_range(
         "passed": False,
     }
     if tier_a_passed:
-        assert held_2024 is not None
+        if held_2024 is None:
+            raise RuntimeError("Tier A passed without a held-2024 range fit")
         x_transfer, y_transfer, z_transfer, _ = _range_subset(
             held_2024["x_hold_all"],
             held_2024["y_hold_all"],
@@ -432,7 +433,8 @@ def _evaluate_framing(
         "passed": False,
     }
     if tier_a_passed:
-        assert held_2024 is not None
+        if held_2024 is None:
+            raise RuntimeError("Tier A passed without a held-2024 framing fit")
         z_transfer, y_transfer, _ = _framing_rows_for_year(2024, targets, tracked, catcher_index, mode="MILB_TRANSFER")
         transfer["attempted"] = True
         transfer["player_count"] = int(len(y_transfer))

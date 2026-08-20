@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import polars as pl
+import pytest
 
-from universal_baseball.certification import ReleaseSpec, build_release_report
+import universal_baseball.certification as certification
+from universal_baseball.certification import ReleaseSpec, build_release_report, download_file
 
 
 def _spec() -> ReleaseSpec:
@@ -135,3 +137,49 @@ def test_unknown_expected_level_is_reported_as_missing_taxonomy_rule() -> None:
         "no level-taxonomy rule defined" in warning
         for warning in report["assessment"]["warnings"]
     )
+
+
+@pytest.mark.parametrize(
+    ("url", "attempts", "timeout", "message"),
+    [
+        ("file:///private/source.csv", 1, 60, "http or https"),
+        ("https://example.invalid/source.csv", 0, 60, "attempts"),
+        ("https://example.invalid/source.csv", 1, 0, "timeout_seconds"),
+    ],
+)
+def test_download_rejects_unsafe_or_invalid_transport_settings(
+    tmp_path, url: str, attempts: int, timeout: int, message: str
+) -> None:
+    with pytest.raises(ValueError, match=message):
+        download_file(
+            url,
+            tmp_path / "source.csv",
+            attempts=attempts,
+            timeout_seconds=timeout,
+        )
+
+
+def test_download_rejects_a_non_http_resolved_url_without_writing(
+    tmp_path, monkeypatch
+) -> None:
+    class RedirectedResponse:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        @staticmethod
+        def geturl() -> str:
+            return "file:///private/source.csv"
+
+    monkeypatch.setattr(
+        certification,
+        "urlopen",
+        lambda *_args, **_kwargs: RedirectedResponse(),
+    )
+    destination = tmp_path / "source.csv"
+    with pytest.raises(RuntimeError, match="resolved to a non-http URL"):
+        download_file("https://example.invalid/source.csv", destination)
+    assert not destination.exists()
+    assert not destination.with_suffix(".csv.part").exists()

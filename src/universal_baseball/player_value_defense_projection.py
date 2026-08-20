@@ -357,8 +357,7 @@ def predict_catcher_c2_skill(
         and prior.get(feature) is not None
         and (component != "throwing" or int(prior["steal_attempts"]) >= 10)
     )
-    if prior_eligible:
-        assert prior is not None
+    if prior_eligible and prior is not None:
         prior_z = (float(prior[feature]) - mean) / sd
         prior_exposure = float(prior["steal_attempts"] if component == "throwing" else prior["fielding_outs"])
         prior_weight = float(parameters["prior_season_recency_weight"])

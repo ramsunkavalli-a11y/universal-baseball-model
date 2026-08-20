@@ -100,6 +100,16 @@ def test_unknown_historical_availability_stays_null() -> None:
 
 
 def test_snapshot_rejects_fake_or_inconsistent_time_provenance() -> None:
+    with pytest.raises(ValueError, match="retrieved_at_utc is required"):
+        SourceSnapshot.build(
+            source_name="source",
+            source_role="role",
+            upstream_locator="thing",
+            content_sha256=DIGEST,
+            retrieved_at_utc=None,  # type: ignore[arg-type]
+            raw_object_key="raw/thing",
+        )
+
     with pytest.raises(ValueError, match="timezone-aware"):
         SourceSnapshot.build(
             source_name="source",

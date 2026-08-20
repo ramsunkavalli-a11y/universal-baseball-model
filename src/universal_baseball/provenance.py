@@ -124,7 +124,8 @@ class SourceSnapshot:
         knowledge = _require_aware_utc(
             knowledge_available_at_utc, "knowledge_available_at_utc"
         )
-        assert retrieved is not None
+        if retrieved is None:
+            raise ValueError("retrieved_at_utc is required")
 
         if published is not None and knowledge is not None and knowledge < published:
             raise ValueError(

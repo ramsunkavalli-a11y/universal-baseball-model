@@ -193,7 +193,8 @@ def main() -> int:
                     raise ValueError("2023 confirmation predictor membership changed by half-life")
 
             validation, window = validation_by_half_life[half_life]
-            assert ages is not None
+            if ages is None:
+                raise RuntimeError("confirmation age surface was not initialized")
             offsets = offsets_by_variant[str(spec["translation_variant"])]
             translated = build_translated_player_evidence(
                 summary,

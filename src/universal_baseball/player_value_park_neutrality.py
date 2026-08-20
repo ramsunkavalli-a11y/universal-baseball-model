@@ -35,7 +35,10 @@ def weighted_mean(values: Sequence[float], weights: Sequence[float]) -> float:
     total = math.fsum(float(weight) for weight in weights)
     if total <= 0:
         raise ValueError("weights must have positive total")
-    return math.fsum(float(value) * float(weight) for value, weight in zip(values, weights)) / total
+    return math.fsum(
+        float(value) * float(weight)
+        for value, weight in zip(values, weights, strict=True)
+    ) / total
 
 
 def weighted_slope(
@@ -51,13 +54,13 @@ def weighted_slope(
     y_mean = weighted_mean(y, weights)
     denominator = math.fsum(
         float(weight) * (float(value) - x_mean) ** 2
-        for value, weight in zip(x, weights)
+        for value, weight in zip(x, weights, strict=True)
     )
     if denominator <= 0:
         raise ValueError("weighted slope requires nonconstant x")
     numerator = math.fsum(
         float(weight) * (float(x_value) - x_mean) * (float(y_value) - y_mean)
-        for x_value, y_value, weight in zip(x, y, weights)
+        for x_value, y_value, weight in zip(x, y, weights, strict=True)
     )
     slope = numerator / denominator
     intercept = y_mean - slope * x_mean
@@ -67,7 +70,7 @@ def weighted_slope(
     fitted_sd = math.sqrt(
         math.fsum(
             float(weight) * (value - fitted_mean) ** 2
-            for value, weight in zip(fitted, weights)
+            for value, weight in zip(fitted, weights, strict=True)
         )
         / weight_total
     )
