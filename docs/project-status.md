@@ -492,6 +492,10 @@ manual verification. The lifecycle policy is frozen in
 `docs/workflow-lifecycle.md`; a manual historical rerun is diagnostic and cannot
 silently redefine a binding v1 result.
 
+Branch-level integration run `32392573145` verified the archived lifecycle on
+commit `e1535d36ee35ecb2bd873451589bc0c9c0ee7626`: project installation, Ruff,
+and all `798` tests completed successfully.
+
 ## Governing read order
 
 1. `docs/project-status.md`
