@@ -9,8 +9,10 @@ from universal_baseball.player_value_mlb_centering import (
 )
 from universal_baseball.player_value_mlb_centering_assembly import (
     FixedMLBReferenceMember,
+    OfficialMLBReferenceCandidate,
     PlayingTimeReferenceCandidate,
     assemble_fixed_mlb_reference_components,
+    reconcile_fixed_2024_mlb_reference_members,
     select_fixed_2024_mlb_reference_members,
     summarize_fixed_mlb_reference_membership,
 )
@@ -39,6 +41,46 @@ def test_membership_uses_observed_pa_only_as_positive_cohort_predicate() -> None
     assert summary.aggregate_projected_mlb_pa == pytest.approx(760.0)
 
 
+def test_official_membership_reconciliation_ignores_pa_accounting_difference() -> None:
+    official = [
+        OfficialMLBReferenceCandidate(1, 510.0),
+        OfficialMLBReferenceCandidate(2, 305.0),
+        OfficialMLBReferenceCandidate(3, 0.0),
+    ]
+    members = reconcile_fixed_2024_mlb_reference_members(
+        _playing_time_rows(),
+        official,
+        expected_player_count=2,
+    )
+    assert members == (
+        FixedMLBReferenceMember(1, 480.0),
+        FixedMLBReferenceMember(2, 280.0),
+    )
+
+
+def test_official_membership_reconciliation_fails_on_player_set_difference() -> None:
+    official = [
+        OfficialMLBReferenceCandidate(1, 510.0),
+        OfficialMLBReferenceCandidate(3, 5.0),
+    ]
+    with pytest.raises(ValueError, match="does not reconcile exactly"):
+        reconcile_fixed_2024_mlb_reference_members(
+            _playing_time_rows(),
+            official,
+            expected_player_count=2,
+        )
+
+
+def test_official_membership_count_is_fail_closed() -> None:
+    official = [OfficialMLBReferenceCandidate(1, 510.0)]
+    with pytest.raises(ValueError, match="official 2024 MLB positive-PA cohort count mismatch"):
+        reconcile_fixed_2024_mlb_reference_members(
+            _playing_time_rows(),
+            official,
+            expected_player_count=2,
+        )
+
+
 def test_membership_count_is_fail_closed() -> None:
     with pytest.raises(ValueError, match="cohort count mismatch"):
         select_fixed_2024_mlb_reference_members(
@@ -51,6 +93,19 @@ def test_duplicate_playing_time_player_is_rejected_even_outside_cohort() -> None
     rows = _playing_time_rows() + [PlayingTimeReferenceCandidate(3, 0.0, 50.0)]
     with pytest.raises(ValueError, match="duplicate Playing Time player_id"):
         select_fixed_2024_mlb_reference_members(rows, expected_player_count=2)
+
+
+def test_duplicate_official_player_is_rejected() -> None:
+    official = [
+        OfficialMLBReferenceCandidate(1, 500.0),
+        OfficialMLBReferenceCandidate(1, 10.0),
+    ]
+    with pytest.raises(ValueError, match="duplicate official MLB player_id"):
+        reconcile_fixed_2024_mlb_reference_members(
+            _playing_time_rows(),
+            official,
+            expected_player_count=1,
+        )
 
 
 @pytest.mark.parametrize(
@@ -122,7 +177,7 @@ def test_explicit_neutral_fallback_is_valid_component_evidence() -> None:
 
 def test_nonfinite_component_is_rejected() -> None:
     member = (FixedMLBReferenceMember(1, 200.0),)
-    with pytest.raises(ValueError, match="batting_runs\[1\] must be finite"):
+    with pytest.raises(ValueError, match="batting_runs\\[1\\] must be finite"):
         assemble_fixed_mlb_reference_components(
             member,
             batting_runs_by_player={1: math.nan},
