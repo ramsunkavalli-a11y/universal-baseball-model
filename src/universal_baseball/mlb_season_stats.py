@@ -1,4 +1,4 @@
-"""Bulk MLB season-hitting backbone for the Performance layer.
+"""Bulk MLB season-stat backbones for the Performance layers.
 
 The Stats API ``/stats`` endpoint supports ``playerPool=ALL`` with pagination
 and league filtering. Completed-2024 certification established that AL (103) and
@@ -6,8 +6,8 @@ NL (104) player-season rows sum exactly to the MLB-wide result for every player
 and required standard count. This module promotes that bulk path into production
 without introducing per-player requests.
 
-The canonical output intentionally mirrors the standardized affiliated MiLB
-batting backbone consumed by :mod:`universal_baseball.performance_season`.
+The canonical outputs intentionally mirror the standardized affiliated MiLB
+backbones consumed by the batting and pitching Performance layers.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ MLB_LEAGUE_IDS = (103, 104)
 MLB_STATSAPI_RETRYABLE_STATUS_CODES = frozenset({429, 500, 502, 503, 504})
 MLB_STATSAPI_RETRY_BACKOFF_SECONDS = (2, 4, 8, 16)
 MLB_STATSAPI_RETRY_ATTEMPTS = 5
-_REQUIRED_FIELDS = (
+_HITTING_REQUIRED_FIELDS = (
     "plateAppearances",
     "atBats",
     "baseOnBalls",
@@ -40,6 +40,17 @@ _REQUIRED_FIELDS = (
     "stolenBases",
     "caughtStealing",
     "groundIntoDoublePlay",
+)
+
+_PITCHING_REQUIRED_FIELDS = (
+    "gamesPlayed",
+    "gamesStarted",
+    "battersFaced",
+    "strikeOuts",
+    "baseOnBalls",
+    "intentionalWalks",
+    "hitBatsmen",
+    "homeRuns",
 )
 
 MLB_BATTING_BACKBONE_SCHEMA: dict[str, pl.DataType] = {
@@ -60,6 +71,21 @@ MLB_BATTING_BACKBONE_SCHEMA: dict[str, pl.DataType] = {
     "batting_ground_into_double_play": pl.Int64,
     "batting_balls_in_play": pl.Int64,
     "simple_pa_accounting_residual": pl.Int64,
+}
+
+MLB_PITCHING_BACKBONE_SCHEMA: dict[str, pl.DataType] = {
+    "season": pl.Int64,
+    "league_id": pl.Int64,
+    "player_id": pl.Int64,
+    "player_name": pl.String,
+    "pitching_games_played": pl.Int64,
+    "pitching_games_started": pl.Int64,
+    "pitching_batters_faced": pl.Int64,
+    "pitching_strike_outs": pl.Int64,
+    "pitching_base_on_balls": pl.Int64,
+    "pitching_intentional_walks": pl.Int64,
+    "pitching_hit_batsmen": pl.Int64,
+    "pitching_home_runs": pl.Int64,
 }
 
 
@@ -152,7 +178,7 @@ def project_mlb_hitting_splits(
         person = split.get("player") or split.get("person") or {}
         stat = split.get("stat") or {}
         player_id = _integer_like(person.get("id"), field="player.id")
-        missing = [field for field in _REQUIRED_FIELDS if field not in stat]
+        missing = [field for field in _HITTING_REQUIRED_FIELDS if field not in stat]
         if missing:
             raise ValueError(
                 f"MLB bulk hitting split for {player_id} missing fields: {missing}"
@@ -212,6 +238,74 @@ def project_mlb_hitting_splits(
     )
     if not duplicates.is_empty():
         raise ValueError("MLB bulk hitting projection has duplicate player-league-season keys")
+    return result
+
+
+def project_mlb_pitching_splits(
+    splits: list[Mapping[str, Any]],
+    *,
+    season: int,
+    league_id: int,
+) -> pl.DataFrame:
+    """Project one league-filtered Stats API season result to pitching counts."""
+
+    if int(league_id) not in MLB_LEAGUE_IDS:
+        raise ValueError(f"unsupported MLB actual league_id: {league_id}")
+    rows: list[dict[str, Any]] = []
+    for split in splits:
+        person = split.get("player") or split.get("person") or {}
+        stat = split.get("stat") or {}
+        player_id = _integer_like(person.get("id"), field="player.id")
+        missing = [field for field in _PITCHING_REQUIRED_FIELDS if field not in stat]
+        if missing:
+            raise ValueError(
+                f"MLB bulk pitching split for {player_id} missing fields: {missing}"
+            )
+        row = {
+            "season": int(season),
+            "league_id": int(league_id),
+            "player_id": player_id,
+            "player_name": str(person.get("fullName") or ""),
+            "pitching_games_played": _integer_like(
+                stat.get("gamesPlayed"), field="gamesPlayed"
+            ),
+            "pitching_games_started": _integer_like(
+                stat.get("gamesStarted"), field="gamesStarted"
+            ),
+            "pitching_batters_faced": _integer_like(
+                stat.get("battersFaced"), field="battersFaced"
+            ),
+            "pitching_strike_outs": _integer_like(
+                stat.get("strikeOuts"), field="strikeOuts"
+            ),
+            "pitching_base_on_balls": _integer_like(
+                stat.get("baseOnBalls"), field="baseOnBalls"
+            ),
+            "pitching_intentional_walks": _integer_like(
+                stat.get("intentionalWalks"), field="intentionalWalks"
+            ),
+            "pitching_hit_batsmen": _integer_like(
+                stat.get("hitBatsmen"), field="hitBatsmen"
+            ),
+            "pitching_home_runs": _integer_like(
+                stat.get("homeRuns"), field="homeRuns"
+            ),
+        }
+        if row["pitching_games_started"] > row["pitching_games_played"]:
+            raise ValueError(f"MLB pitching GS exceeds G for MLBAM {player_id}")
+        if row["pitching_intentional_walks"] > row["pitching_base_on_balls"]:
+            raise ValueError(f"MLB pitching IBB exceeds BB for MLBAM {player_id}")
+        rows.append(row)
+    if not rows:
+        return pl.DataFrame(schema=MLB_PITCHING_BACKBONE_SCHEMA)
+    result = pl.DataFrame(rows, schema=MLB_PITCHING_BACKBONE_SCHEMA).sort(
+        ["league_id", "player_id"]
+    )
+    duplicates = result.group_by(["season", "league_id", "player_id"]).len().filter(
+        pl.col("len") > 1
+    )
+    if not duplicates.is_empty():
+        raise ValueError("MLB bulk pitching projection has duplicate player-league-season keys")
     return result
 
 
@@ -305,6 +399,100 @@ def fetch_mlb_hitting_backbone(
     )
     if not duplicates.is_empty():
         raise RuntimeError("MLB bulk hitting backbone contains duplicate canonical keys")
+    return combined, captures
+
+
+def fetch_mlb_pitching_backbone(
+    season: int,
+    *,
+    league_ids: tuple[int, ...] = MLB_LEAGUE_IDS,
+    page_limit: int = 500,
+    session: requests.Session | None = None,
+    timeout_seconds: int = 120,
+) -> tuple[pl.DataFrame, list[MlbBulkStatsCapture]]:
+    """Fetch completed regular-season pitching counts at actual AL/NL grain."""
+
+    if page_limit <= 0:
+        raise ValueError("page_limit must be positive")
+    owned = session is None
+    active = session or requests.Session()
+    captures: list[MlbBulkStatsCapture] = []
+    frames: list[pl.DataFrame] = []
+    try:
+        for league_id in league_ids:
+            offset = 0
+            splits_for_league: list[Mapping[str, Any]] = []
+            while True:
+                params = {
+                    "stats": "season",
+                    "group": "pitching",
+                    "season": int(season),
+                    "sportIds": 1,
+                    "leagueId": int(league_id),
+                    "playerPool": "ALL",
+                    "gameType": "R",
+                    "limit": int(page_limit),
+                    "offset": int(offset),
+                }
+                response = _statsapi_get_with_retry(
+                    active,
+                    MLB_STATS_URL,
+                    params=params,
+                    timeout_seconds=timeout_seconds,
+                )
+                content = response.content
+                payload = response.json()
+                groups = payload.get("stats") or []
+                if len(groups) != 1:
+                    raise RuntimeError(
+                        f"expected one MLB pitching stats group for league {league_id}, "
+                        f"found {len(groups)}"
+                    )
+                group = groups[0]
+                splits = group.get("splits") or []
+                total = group.get("totalSplits")
+                total_int = int(total) if total is not None else None
+                captures.append(
+                    MlbBulkStatsCapture(
+                        season=int(season),
+                        league_id=int(league_id),
+                        offset=int(offset),
+                        requested_limit=int(page_limit),
+                        response_bytes=content,
+                        response_sha256=sha256(content).hexdigest(),
+                        returned_split_count=len(splits),
+                        total_splits=total_int,
+                    )
+                )
+                splits_for_league.extend(splits)
+                if total_int is not None and len(splits_for_league) >= total_int:
+                    break
+                if not splits or len(splits) < page_limit:
+                    break
+                offset += len(splits)
+                if offset > 5000:
+                    raise RuntimeError("MLB bulk pitching pagination exceeded safety bound")
+            frames.append(
+                project_mlb_pitching_splits(
+                    splits_for_league,
+                    season=int(season),
+                    league_id=int(league_id),
+                )
+            )
+    finally:
+        if owned:
+            active.close()
+
+    if not frames:
+        return pl.DataFrame(schema=MLB_PITCHING_BACKBONE_SCHEMA), captures
+    combined = pl.concat(frames, how="vertical_relaxed").sort(
+        ["season", "league_id", "player_id"]
+    )
+    duplicates = combined.group_by(["season", "league_id", "player_id"]).len().filter(
+        pl.col("len") > 1
+    )
+    if not duplicates.is_empty():
+        raise RuntimeError("MLB bulk pitching backbone contains duplicate canonical keys")
     return combined, captures
 
 

@@ -8,9 +8,12 @@ import requests
 import universal_baseball.mlb_season_stats as mlb_season_stats
 from universal_baseball.mlb_season_stats import (
     MLB_BATTING_BACKBONE_SCHEMA,
+    MLB_PITCHING_BACKBONE_SCHEMA,
     capture_manifest,
     project_mlb_hitting_splits,
+    project_mlb_pitching_splits,
 )
+from universal_baseball.pitching_performance import build_pitching_performance
 
 
 def _split(player_id: int, **overrides):
@@ -30,6 +33,24 @@ def _split(player_id: int, **overrides):
     stat.update(overrides)
     return {
         "player": {"id": player_id, "fullName": f"Player {player_id}"},
+        "stat": stat,
+    }
+
+
+def _pitching_split(player_id: int, **overrides):
+    stat = {
+        "gamesPlayed": 20,
+        "gamesStarted": 12,
+        "battersFaced": 300,
+        "strikeOuts": 80,
+        "baseOnBalls": 25,
+        "intentionalWalks": 2,
+        "hitBatsmen": 4,
+        "homeRuns": 10,
+    }
+    stat.update(overrides)
+    return {
+        "player": {"id": player_id, "fullName": f"Pitcher {player_id}"},
         "stat": stat,
     }
 
@@ -83,6 +104,46 @@ def test_duplicate_player_league_season_is_rejected() -> None:
 def test_unknown_actual_league_is_rejected() -> None:
     with pytest.raises(ValueError, match="unsupported MLB actual league"):
         project_mlb_hitting_splits([_split(101)], season=2024, league_id=999)
+
+
+def test_mlb_pitching_projection_matches_universal_performance_contract() -> None:
+    frame = project_mlb_pitching_splits(
+        [_pitching_split(201)], season=2024, league_id=103
+    )
+    assert frame.schema == MLB_PITCHING_BACKBONE_SCHEMA
+    row = frame.to_dicts()[0]
+    assert row["pitching_batters_faced"] == 300
+    assert row["pitching_games_started"] == 12
+    assert row["pitching_intentional_walks"] == 2
+
+    performance = build_pitching_performance(frame)
+    summary = performance.summary.to_dicts()[0]
+    assert summary["pitching_unintentional_walks"] == 23
+    assert summary["pitching_other_batters_faced"] == 183
+    assert summary["pitching_profile_event_count"] == 300
+
+
+def test_mlb_pitching_projection_fails_on_missing_or_inconsistent_counts() -> None:
+    missing = _pitching_split(201)
+    del missing["stat"]["hitBatsmen"]
+    with pytest.raises(ValueError, match="missing fields.*hitBatsmen"):
+        project_mlb_pitching_splits([missing], season=2024, league_id=103)
+
+    with pytest.raises(ValueError, match="IBB exceeds BB"):
+        project_mlb_pitching_splits(
+            [_pitching_split(201, baseOnBalls=1, intentionalWalks=2)],
+            season=2024,
+            league_id=103,
+        )
+
+
+def test_mlb_pitching_projection_rejects_duplicate_canonical_grain() -> None:
+    with pytest.raises(ValueError, match="duplicate"):
+        project_mlb_pitching_splits(
+            [_pitching_split(201), _pitching_split(201)],
+            season=2024,
+            league_id=104,
+        )
 
 
 def test_capture_manifest_is_stable_json() -> None:
