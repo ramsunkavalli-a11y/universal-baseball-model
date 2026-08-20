@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "status": "player_value_v1_mlb_centering_2024_source_map_frozen",
+  "reference_season": 2024,
+  "membership": {
+    "artifact": {"run_id": 32320525700, "artifact_id": 9389597470, "name": "player-value-v1-mlb-centering-2024-membership", "digest": "sha256:4166264ee2a690abe40d19c72c031710e4fa156e249b511c2c03d267cf689c20"},
+    "path": "reports/generated/player-value-v1-mlb-centering-2024-membership.parquet",
+    "columns": ["player_id", "projected_expected_mlb_pa", "playing_time_zero_exposure_fallback"],
+    "required_player_count": 651,
+    "required_projected_pa": 148948.26306286638,
+    "official_observed_pa_anchor": 182449,
+    "zero_exposure_player_ids": [543518, 593934, 622491, 656555, 666158, 808982]
+  },
+  "components": {
+    "Rbat": {
+      "projection_artifact": {"run_id": 32099733186, "artifact_id": 9311172007, "name": "projection-batting-v1-current-talent-snapshots", "digest": "sha256:40430b67a492aec81e570cd67e74ae3ca7b809cb3ce538082237be244c450d44"},
+      "projection_path": "tables/projection_2023_to_2024/frozen_b2_profile.parquet",
+      "projection_columns": ["player_id", "core_bin", "baseline2_latent_probability"],
+      "reference_artifact": {"run_id": 31955392482, "artifact_id": 9265954750, "name": "mlb-batting-performance-2024", "digest": "sha256:72743db08743ce5d7d1a0f48f3ab702cc6dba3e17345530d3883a38f9955299f"},
+      "reference_paths": ["tables/batting_performance_summary_2024_mlb.parquet", "tables/batting_performance_bins_2024_mlb.parquet", "tables/league_bin_values_2024_mlb.parquet"],
+      "model": "projection_2023_to_2024 frozen B2 composition; pooled certified 2024 MLB RE24 conversion"
+    },
+    "Rbr": {
+      "models": {"steal_attempt": "B2_k5", "steal_success": "B2_k45", "advancement": "A2_k25", "gidp_residual": "G0_omitted_v1"},
+      "frozen_results": ["docs/player-value-v1-steal-projection-selection-result.json", "docs/player-value-v1-advancement-projection-selection-result.json", "docs/player-value-v1-baserunning-source-audit-result.json", "docs/player-value-v1-baserunning-run-conversion-2024.json"],
+      "history_seasons": [2019, 2020, 2021, 2022, 2023],
+      "rule": "replay certified immutable MLB/MiLB steal captures and hash-certified Savant advancement captures; apply frozen skills to the common 2024 MLB reference"
+    },
+    "Rdef": {
+      "fielding_artifact": {"run_id": 32148467330, "artifact_id": 9328803363, "name": "position-role-historical-source-2021-2024", "digest": "sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3"},
+      "fielding_path": "data/queries/fielding/**/fielding_offset_*.json",
+      "tracked_artifact": {"run_id": 32182019495, "artifact_id": 9342409616, "name": "defense-v1-tracked-source-2021-2023", "digest": "sha256:a177f04655cc497534c85f47d94aa597b273358154eb76999b4a0bc9d5584de4"},
+      "tracked_paths": ["tables/tracked_range_proxy_2021_2023.parquet", "tables/tracked_framing_proxy_2021_2023.parquet"],
+      "models": {"general_range": "T1 -> U1 -> B0", "catcher_throwing": "repaired C2 -> B0", "catcher_blocking": "repaired C2 -> B0", "catcher_framing": "repaired F1 -> F0"},
+      "parameter_docs": ["docs/defense-v1-confirmation-parameters.json", "docs/defense-v1-catcher-repair-parameters.json", "docs/defense-v1-framing-repair-parameters.json", "docs/player-value-v1-defense-native-run-conversion-parameters.json"]
+    },
+    "Rpos": {
+      "position_artifact": {"run_id": 32266007594, "artifact_id": 9370211679, "name": "player-value-v1-defensive-position-allocation", "digest": "sha256:68f31b337ece8b40403a944663ed20f068da4e99b961bfcfa4a4ed51eb128ede"},
+      "position_path": "allocation_scored.parquet",
+      "position_filter": {"current_season": 2023, "next_season": 2024},
+      "position_columns": ["S0_predicted_outs_C", "S0_predicted_outs_1B", "S0_predicted_outs_2B", "S0_predicted_outs_3B", "S0_predicted_outs_SS", "S0_predicted_outs_LF", "S0_predicted_outs_CF", "S0_predicted_outs_RF"],
+      "dh_artifact": {"run_id": 32270141291, "artifact_id": 9371840453, "name": "player-value-v1-dh-positional-exposure-selection", "digest": "sha256:dd6237bfb496992cdca53fd88f362bf51dd90ff9e9371a324144536b414668b1"},
+      "dh_path": "scored_dh_exposure.parquet",
+      "dh_filter": {"source_year": 2023, "target_year": 2024},
+      "dh_column": "B0_raw_dh_role_event_persistence"
+    },
+    "catcher_opportunities": {
+      "artifact": {"run_id": 32269076231, "artifact_id": 9371426672, "name": "player-value-v1-catcher-native-opportunity-selection", "digest": "sha256:edc6c4fef7f0d17e063917f3defca48243ae60466a0e665c200c7989bfb42486"},
+      "path": "scored_opportunities.parquet",
+      "filter": {"source_year": 2023, "target_year": 2024},
+      "columns": {"throwing": "H1_fixed_50_50_hybrid", "blocking": "H1_fixed_50_50_hybrid", "framing": "B0_raw_persistence"}
+    }
+  },
+  "boundaries": {
+    "replacement_included": false,
+    "realized_2024_player_components_used": false,
+    "zero_exposure_components_forced_to_zero": true,
+    "centering_denominator": "sum(projected_expected_mlb_pa)",
+    "residual_tolerance_runs": 1e-10
+  }
+}
