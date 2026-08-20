@@ -73,7 +73,7 @@ jobs:
 
       - name: Upload source materialization report
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: current-talent-contact-value-source-${{ matrix.season }}-${{ matrix.slug }}
           path: reports/generated/current-talent-contact-value-source-materialization/${{ matrix.season }}/${{ matrix.slug }}/
