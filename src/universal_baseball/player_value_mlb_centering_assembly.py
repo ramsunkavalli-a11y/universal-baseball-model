@@ -2,7 +2,7 @@
 
 The centering arithmetic lives in :mod:`player_value_mlb_centering`. This module
 owns the stricter data-boundary checks needed to turn the frozen 2024 Playing
-Time cohort plus already-produced component values into reference rows.
+Time exposure surface plus official MLB membership into reference rows.
 """
 
 from __future__ import annotations
@@ -13,13 +13,13 @@ from typing import Iterable, Mapping
 
 from universal_baseball.player_value_mlb_centering import ReferencePlayerComponents
 
-EXPECTED_2024_MLB_REFERENCE_PLAYER_COUNT = 645
+EXPECTED_2024_MLB_REFERENCE_PLAYER_COUNT = 651
 REFERENCE_SEASON = 2024
 
 
 @dataclass(frozen=True, slots=True)
 class PlayingTimeReferenceCandidate:
-    """Playing Time evidence used only for cohort reconciliation and exposure."""
+    """Playing Time evidence used for projected exposure and source diagnostics."""
 
     player_id: int
     observed_mlb_pa: float
@@ -28,7 +28,7 @@ class PlayingTimeReferenceCandidate:
 
 @dataclass(frozen=True, slots=True)
 class OfficialMLBReferenceCandidate:
-    """Official pooled MLB PA evidence used only to define fixed membership."""
+    """Official pooled MLB PA evidence used to define fixed membership."""
 
     player_id: int
     official_mlb_pa: float
@@ -89,10 +89,10 @@ def select_fixed_2024_mlb_reference_members(
 ) -> tuple[FixedMLBReferenceMember, ...]:
     """Select a positive-observed-PA cohort from Playing Time evidence.
 
-    This legacy helper remains useful for isolated validation. Production 2024
-    centering membership must use :func:`reconcile_fixed_2024_mlb_reference_members`
-    so the cohort is anchored to official MLB PA rather than the Playing Time
-    target's observed-PA accounting.
+    This helper remains useful for isolated Playing Time validation. Production
+    2024 centering membership must use
+    :func:`reconcile_fixed_2024_mlb_reference_members`, because the Playing Time
+    target's observed-PA accounting is not the official membership authority.
     """
 
     if int(expected_player_count) <= 0:
@@ -142,17 +142,16 @@ def reconcile_fixed_2024_mlb_reference_members(
 ) -> tuple[FixedMLBReferenceMember, ...]:
     """Anchor membership to official MLB PA and attach frozen projected PA.
 
-    Official pooled MLB PA defines the binding positive-PA cohort. The Playing
-    Time target is required to identify exactly the same players, but its
-    ``observed_mlb_pa`` values are not treated as official PA accounting. Frozen
-    projected expected MLB PA remains the only exposure carried into centering.
+    Positive pooled official MLB PA defines the binding cohort. Playing Time is
+    required to provide one finite projected-PA exposure row for every official
+    member. Its own ``observed_mlb_pa`` field is validated and retained only as a
+    diagnostic; it may not override official membership or official PA totals.
     """
 
     if int(expected_player_count) <= 0:
         raise ValueError("expected_player_count must be positive")
 
     playing_time_by_id: dict[int, PlayingTimeReferenceCandidate] = {}
-    playing_time_positive_ids: set[int] = set()
     for index, row in enumerate(playing_time_rows):
         player_id = _positive_player_id(row.player_id)
         if player_id in playing_time_by_id:
@@ -165,14 +164,11 @@ def reconcile_fixed_2024_mlb_reference_members(
             row.projected_expected_mlb_pa,
             field=f"playing_time_rows[{index}].projected_expected_mlb_pa",
         )
-        normalized = PlayingTimeReferenceCandidate(
+        playing_time_by_id[player_id] = PlayingTimeReferenceCandidate(
             player_id=player_id,
             observed_mlb_pa=observed_pa,
             projected_expected_mlb_pa=projected_pa,
         )
-        playing_time_by_id[player_id] = normalized
-        if observed_pa > 0.0:
-            playing_time_positive_ids.add(player_id)
 
     official_positive_ids: set[int] = set()
     seen_official_ids: set[int] = set()
@@ -194,23 +190,22 @@ def reconcile_fixed_2024_mlb_reference_members(
             f"expected {int(expected_player_count)}, got {len(official_positive_ids)}"
         )
 
-    missing_from_playing_time = sorted(official_positive_ids - playing_time_positive_ids)
-    extra_in_playing_time = sorted(playing_time_positive_ids - official_positive_ids)
-    if missing_from_playing_time or extra_in_playing_time:
+    missing_exposure_rows = sorted(official_positive_ids - set(playing_time_by_id))
+    if missing_exposure_rows:
         raise ValueError(
-            "Playing Time positive-PA cohort does not reconcile exactly to official MLB membership; "
-            f"missing_from_playing_time={missing_from_playing_time[:10]}, "
-            f"extra_in_playing_time={extra_in_playing_time[:10]}"
+            "official MLB centering members are missing Playing Time projected-PA rows: "
+            f"{missing_exposure_rows[:10]}"
         )
 
-    members = [
+    return tuple(
         FixedMLBReferenceMember(
             player_id=player_id,
-            projected_expected_mlb_pa=playing_time_by_id[player_id].projected_expected_mlb_pa,
+            projected_expected_mlb_pa=playing_time_by_id[
+                player_id
+            ].projected_expected_mlb_pa,
         )
         for player_id in sorted(official_positive_ids)
-    ]
-    return tuple(members)
+    )
 
 
 def summarize_fixed_mlb_reference_membership(
