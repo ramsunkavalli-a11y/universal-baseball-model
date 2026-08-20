@@ -24,21 +24,21 @@
     "comparison": "exact canonical parameter object equality",
     "passed": true
   },
-  "freeze_run_id": 32198603779,
-  "freeze_sha": "f228bc1e3f8e8099f1c6054f6a551b8c5bff6fdb",
+  "freeze_run_id": 32391048359,
+  "freeze_sha": "2a1d6253077be17972b5cfc26051018190cec6ef",
   "gate": "defense_v1_pre_2025_parameter_freeze",
   "package_versions": {
     "numpy": "2.5.2",
     "polars": "1.43.2",
-    "python": "3.12.13",
+    "python": "3.12.14",
     "sportsdataverse": "0.0.75"
   },
-  "parameter_hash": "sha256:cba6b7ebe4b2598db2c4d9ef360b0784f23a94ad61385f87149b08c46e0390d5",
+  "parameter_hash": "sha256:b11158e72ae709f52d04d4e8a41153f45cf942fc35e96de1f672688a20bd9af1",
   "parameters": {
     "catcher_blocking": {
       "coefficients": [
-        -0.256238499226307,
-        -0.5264710753321524
+        -0.241204790693702,
+        -0.5036410494484914
       ],
       "eligibility": {
         "minimum_fielding_outs": 300
@@ -60,8 +60,8 @@
     },
     "catcher_throwing": {
       "coefficients": [
-        -0.05004551398089254,
-        0.22111290883166904
+        -0.04841108974050486,
+        0.22049759934000124
       ],
       "eligibility": {
         "minimum_fielding_outs": 300,
@@ -1396,12 +1396,12 @@
       },
       "tracked_mlb": {
         "coefficients": [
-          0.016256147749734745,
-          -0.39320465259785464,
-          0.27778113033036755,
-          -0.4577510831781501,
-          -0.040633388200580815,
-          0.149447628966463
+          0.015486775831362655,
+          -0.47288782609501984,
+          0.287917140149959,
+          -0.5342762534280694,
+          -0.04673664846925375,
+          0.14741571137445078
         ],
         "definition": "exact U1 features plus tracked_range_z on MLB tracked-eligible rows",
         "family": "T1",
@@ -1420,11 +1420,11 @@
       },
       "universal": {
         "coefficients": [
-          0.020398397612022133,
-          -0.324983859004553,
-          0.292067704715924,
-          -0.3616437248651945,
-          -0.06792588856959772
+          0.02056505380754289,
+          -0.3759400891966754,
+          0.29846081905730837,
+          -0.4096582557250001,
+          -0.07210480397119551
         ],
         "family": "U1",
         "lambda": 0.0,
@@ -1526,14 +1526,14 @@
       "file_size_bytes": 1620,
       "path": "reports/generated/defense-v1-parameter-freeze/tables/coefficients.parquet",
       "row_count": 15,
-      "sha256": "c686cd4231bbea77d8767df921d85497fbf6880929b2705ecba35dcc1d1de440",
+      "sha256": "3b83e08fe98f73d10de51524e3d735c61820da98e8395ab9319501f800deefab",
       "table_name": "defense_v1_frozen_coefficients"
     },
     "development_targets": {
-      "file_size_bytes": 10554,
+      "file_size_bytes": 10557,
       "path": "reports/generated/defense-v1-parameter-freeze/tables/development_targets.parquet",
       "row_count": 1229,
-      "sha256": "1c0a6361420c282db0a9e2c1400341be6cbd5305802422232cffae27a22eae61",
+      "sha256": "92e807afad06056ec4aa450486bf4657fe0b31e1683019468c046d33ae8e428c",
       "table_name": "defense_v1_frozen_development_targets"
     },
     "general_normalization": {
