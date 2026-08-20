@@ -36,8 +36,8 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **MLB-reference centering:** **DONE / FROZEN / VERIFIED**
 - **Park-neutrality audit:** **DONE / FROZEN / VERIFIED — `Rpark = 0`**
 - **Required pre-WAR sensitivities:** **DONE / VERIFIED OR CONTRACTUALLY UNAVAILABLE**
-- **WAR/value aggregation:** **ACTIVE — pre-outcome method/population frozen**
-- **Final ranking:** CLOSED
+- **WAR/value aggregation:** **DONE / FROZEN / VERIFIED**
+- **Final ranking:** **DONE / FROZEN / VERIFIED**
 
 ## Frozen upstream models
 
@@ -281,22 +281,24 @@ The concrete numerical materializer and immutable input/column map are now prese
 Verified artifact-only component aggregates for the 651-player reference are:
 
 - `Rbat = 258.49014809587965` runs;
-- `Rdef = 75.99916554129656` runs;
+- `Rdef = 28.094732669019656` runs;
 - `Rpos = -470.90992226794697` runs;
 - projected centering exposure remains exactly `148948.26306286638` PA.
 
 The Savant byte drift was resolved through the narrow, predeclared source re-certification in `docs/player-value-v1-advancement-source-recertification-contract.md`. Actions run **`32378956567`** froze 3,700 projection-relevant player-season rows in artifact **`9410189065`** with canonical model-input SHA-256 `dfbd52dfaccd1cc20d2bf710c27755f169a7873fcd0efb45339debbb3ad4bbc8`. The largest primary-score relative drift was `0.0002302112248237264`, below the `0.001` gate; `A2_k25` remained the unique development winner and retained its 2024 confirmation verdict. No model was refit or reselected.
 
-Final numerical materialization Actions run **`32379246845`** passed every workflow step and froze `docs/player-value-v1-mlb-centering-2024.json`. Its component artifact is **`9410315587`**, digest `sha256:d4180d36e78cd46b0e3df4479c8c708e855cb2ebf7b5ec6c49a21ed3d8955597`. The verified reference is:
+The first numerical materialization exposed a concrete integration contradiction during final component-subtotal QA: the catcher-opportunity artifact uses component keys `catcher_throwing`, `catcher_blocking`, and `catcher_framing`, while the materializer had looked up the shorter model-family labels. That made all catcher opportunities zero despite C2/F1 eligibility. Commit `21b1151` corrected only this schema mapping; no model, coefficient, exposure formula, population, or source was changed.
+
+Corrected numerical materialization Actions run **`32384563289`** passed every workflow step and refroze `docs/player-value-v1-mlb-centering-2024.json`. Its component artifact is **`9412396481`**, digest `sha256:d7f7a055002597200805f40ef4ccbef75fd9c0db773294133873abc80b8714b7`. The verified reference is:
 
 - `Rbat = 258.49014809587965` runs;
 - `Rbr = 35.008603291041524` runs;
-- `Rdef = 75.99916554129656` runs;
+- `Rdef = 28.094732669019656` runs;
 - `Rpos = -470.90992226794697` runs;
-- raw total `Ravg_raw_ref = -101.41200533972923` runs;
-- `centering_runs_per_pa = 0.0006808538968791225`;
-- aggregate `Rlg = 101.41200533972925` runs;
-- post-centering residual `= 1.4210854715202004e-14` runs, within the binding `1e-10` tolerance.
+- raw total `Ravg_raw_ref = -149.31643821200615` runs;
+- `centering_runs_per_pa = 0.0010024718324441579`;
+- aggregate `Rlg = 149.31643821200612` runs;
+- post-centering residual `= -2.842170943040401e-14` runs, within the binding `1e-10` tolerance.
 
 All 651 component rows are explicit. The six outside-snapshot members remain present with projected exposure and all four components equal to zero. Replacement and realized 2024 player components are excluded, and the official `182,449` PA accounting anchor is preserved without being used as the centering denominator. The obsolete fail-closed blocker was removed by the verified workflow.
 
@@ -323,9 +325,9 @@ The audit reproduced the binding 645-player / 181,190-PA positive-observed-PA di
 
 No live Savant source was fetched, no B2 probability was changed, realized 2024 data were used only as audit targets, numerical centering was unchanged, and no 2025 data or WAR result was accessed.
 
-## ACTIVE STAGE — required pre-WAR sensitivities
+## COMPLETED STAGE — required pre-WAR sensitivities
 
-Park neutrality is resolved. WAR remains closed until the already-listed positional, batting-reference, replacement, runs-per-win, and baserunning/centering sensitivity obligations are either completed from comparable frozen surfaces or explicitly documented as unavailable under their contracts.
+Park neutrality and every predeclared sensitivity are resolved. Comparable frozen surfaces were materialized; the one alternate-season sensitivity lacking a complete surface was explicitly closed as unavailable under its predeclared contract.
 
 ### Baseball-Reference positional schedule — DONE / VERIFIED
 
@@ -341,20 +343,20 @@ This is diagnostic only. The binding `fangraphs_fixed_162_game_v1` schedule and 
 
 ### Baseball-Reference player-aware/PythagenPat conversion — DONE / VERIFIED
 
-`docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json` applies the pre-outcome method in `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md` to the exact 651-player numerical-centering component surface. Actions run **`32382624096`** passed and uploaded artifact **`9411624967`**, digest `sha256:a08d7ce0129d1db736c979fcc971fca61da52778ccdf3efd18f0337cb10586d9`.
+`docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json` applies the pre-outcome method in `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md` to the corrected exact 651-player numerical-centering component surface. Actions run **`32384803016`** passed and uploaded artifact **`9412468709`**, digest `sha256:6e863c22ef7648c8420c99e0ddad17050fd2c7ecc70a191702f32f97f8aea957`.
 
-- binding common-divisor aggregate: `465.1468161753402` WAR;
-- player-aware PythagenPat aggregate: `477.9803621205956` WAR;
-- aggregate sensitivity difference: `+12.833545945255509` WAR;
-- player median / mean absolute difference: `+0.013543074681223954` / `0.022448545991792267` WAR;
-- player range: `-0.06846760327663248` to `+0.1277806560791115` WAR;
+- binding common-divisor aggregate: `465.1468161753401` WAR;
+- player-aware PythagenPat aggregate: `478.08987545054936` WAR;
+- aggregate sensitivity difference: `+12.943059275209217` WAR;
+- player median / mean absolute difference: `+0.01279717756736326` / `0.02255035452526801` WAR;
+- player range: `-0.06789256135656863` to `+0.12783583765981366` WAR;
 - all 651 rows, the `148948.26306286638` projected-PA denominator, and the six explicit zero-exposure rows reconciled.
 
 This is diagnostic only. The binding `9.682629939156854` common RPW, frozen components, centering, and replacement rate remain unchanged.
 
-Replacement sensitivities were already completed in `docs/player-value-v1-replacement-level-2024.json`. Remaining sensitivity work is the alternate recent MLB batting/centering reference only if a full comparable frozen surface exists, plus any other explicitly predeclared baserunning/centering sensitivity that is actually feasible from frozen inputs.
+Replacement sensitivities were already completed in `docs/player-value-v1-replacement-level-2024.json`. No predeclared sensitivity remains open.
 
-## WAR aggregation — ACTIVE
+## Final WAR aggregation and ranking — DONE / FROZEN / VERIFIED
 
 Intended final decomposable form:
 
@@ -380,8 +382,31 @@ and the certified 2023 MLB batting run-reference tables. The centering contract
 forbids manufacturing a partial alternative, so no alternate constant was computed.
 
 The pre-outcome final method and 3,051-player complete-component population are
-now frozen in `docs/player-value-v1-final-aggregation-contract.md`. Final numerical
-materialization and Actions verification are the active gate.
+frozen in `docs/player-value-v1-final-aggregation-contract.md`. Actions run
+**`32385002209`** passed every step and uploaded final artifact **`9412571491`**,
+digest `sha256:e1dd002d03cccf61345b806a323ec67acacf83a99c8badc7cfe1d3da8f164b71`.
+The workflow froze `docs/player-value-v1-final-2024.json` and the complete ranked
+Parquet table.
+
+Final aggregate values across 3,051 rows:
+
+- projected component surface: 3,045 complete frozen players plus the six explicit zero rows;
+- `Rbat = -147.189347986084` runs;
+- `Rbr = 33.16264877734028` runs;
+- general range / catcher throwing / blocking / framing = `73.28812216345528` / `-21.476703642600523` / `20.44617985788917` / `-53.60093988024389` runs;
+- `Rdef = 18.656658498500054` runs after exact subtotal reconciliation;
+- `Rpos = -473.74028349336993` runs;
+- `Rlg = 166.21292938234564` runs;
+- `Rpark = 0.0` runs;
+- `Rrep = 5013.494795777783` runs;
+- `RAR = 4610.597400956516` runs;
+- aggregate `WAR = 476.17201420774313` at binding RPW `9.682629939156854`.
+
+Mechanical QA reproduced all 651 corrected centering rows with maximum component
+delta `0.0`, retained all six zero rows, reconciled defense subtotals within
+`1.7763568394002505e-15` runs, and reconciled the RAR identity within
+`7.105427357601002e-15` runs. The final ordering uses unrounded WAR descending
+and ascending MLBAM ID only as a deterministic tie-break.
 
 ## Governing read order
 
@@ -398,26 +423,27 @@ materialization and Actions verification are the active gate.
 11. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json`
 12. `docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`
 13. `docs/player-value-v1-final-aggregation-contract.md`
-14. `docs/player-value-v1-replacement-level-contract.md`
-15. `docs/player-value-v1-replacement-level-2024.json`
-16. `docs/player-value-v1-replacement-level-verification.json`
-17. `docs/player-value-v1-runs-per-win-contract.md`
-18. `docs/player-value-v1-mlb-run-environment-2024.json`
-19. `docs/player-value-v1-batting-runs-contract.md`
-20. `docs/player-value-v1-positional-adjustment-contract.md`
-21. `docs/player-value-v1-defense-production-handoff.md`
-22. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-23. `docs/player-value-v1-baserunning-source-audit-contract.md`
-24. `docs/player-value-v1-baserunning-source-audit-result.json`
-25. `docs/player-value-v1-steal-projection-selection-contract.md`
-26. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-27. `docs/player-value-v1-steal-projection-selection-result.json`
-28. `docs/player-value-v1-advancement-projection-selection-contract.md`
-29. `docs/player-value-v1-advancement-projection-selection-result.json`
-30. `docs/player-value-v1-baserunning-run-conversion-contract.md`
-31. `docs/player-value-v1-baserunning-run-conversion-2024.json`
-32. `docs/projection-batting-v1-development-result.json`
-33. `docs/current-talent-results-only-baseline-freeze.md`
+14. `docs/player-value-v1-final-2024.json`
+15. `docs/player-value-v1-replacement-level-contract.md`
+16. `docs/player-value-v1-replacement-level-2024.json`
+17. `docs/player-value-v1-replacement-level-verification.json`
+18. `docs/player-value-v1-runs-per-win-contract.md`
+19. `docs/player-value-v1-mlb-run-environment-2024.json`
+20. `docs/player-value-v1-batting-runs-contract.md`
+21. `docs/player-value-v1-positional-adjustment-contract.md`
+22. `docs/player-value-v1-defense-production-handoff.md`
+23. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+24. `docs/player-value-v1-baserunning-source-audit-contract.md`
+25. `docs/player-value-v1-baserunning-source-audit-result.json`
+26. `docs/player-value-v1-steal-projection-selection-contract.md`
+27. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+28. `docs/player-value-v1-steal-projection-selection-result.json`
+29. `docs/player-value-v1-advancement-projection-selection-contract.md`
+30. `docs/player-value-v1-advancement-projection-selection-result.json`
+31. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+32. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+33. `docs/projection-batting-v1-development-result.json`
+34. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
