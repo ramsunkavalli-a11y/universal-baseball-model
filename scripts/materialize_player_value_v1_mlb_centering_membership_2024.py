@@ -111,6 +111,26 @@ def main() -> None:
             f"expected {EXPECTED_2024_OFFICIAL_MLB_PA}, got {official_reference_pa}"
         )
 
+    official_positive_ids = set(official_reference["player_id"].to_list())
+    playing_time_ids = set(source["player_id"].to_list())
+    outside_frozen_playing_time_snapshot_ids = sorted(
+        official_positive_ids - playing_time_ids
+    )
+
+    # The frozen 2023-10-15 Playing Time validation surface is defined on the
+    # eligible B2 snapshot population only. An official 2024 MLB hitter outside
+    # that snapshot has no chronology-safe model row to score. Keep the player in
+    # the official reference cohort, but assign zero projected exposure rather
+    # than dropping the player or backfilling from realized/future information.
+    playing_time_rows.extend(
+        PlayingTimeReferenceCandidate(
+            player_id=player_id,
+            observed_mlb_pa=0.0,
+            projected_expected_mlb_pa=0.0,
+        )
+        for player_id in outside_frozen_playing_time_snapshot_ids
+    )
+
     members = reconcile_fixed_2024_mlb_reference_members(
         playing_time_rows,
         official_rows,
@@ -120,7 +140,6 @@ def main() -> None:
     playing_time_positive = source.filter(pl.col("observed_mlb_pa") > 0.0)
     playing_time_positive_pa = float(playing_time_positive["observed_mlb_pa"].sum())
     playing_time_positive_ids = set(playing_time_positive["player_id"].to_list())
-    official_positive_ids = set(official_reference["player_id"].to_list())
     official_only_vs_playing_time_positive = sorted(
         official_positive_ids - playing_time_positive_ids
     )
@@ -134,6 +153,10 @@ def main() -> None:
             "projected_expected_mlb_pa": [
                 row.projected_expected_mlb_pa for row in members
             ],
+            "playing_time_zero_exposure_fallback": [
+                row.player_id in set(outside_frozen_playing_time_snapshot_ids)
+                for row in members
+            ],
         }
     ).sort("player_id")
     if membership["player_id"].n_unique() != EXPECTED_2024_MLB_REFERENCE_PLAYER_COUNT:
@@ -144,21 +167,31 @@ def main() -> None:
     membership.write_parquet(args.output_membership_parquet)
 
     result = {
-        "schema_version": "0.3",
+        "schema_version": "0.4",
         "status": "player_value_v1_mlb_centering_2024_membership_verified",
         "centering_id": "fixed_2024_mlb_projected_component_reference_v1",
         "reference_season": 2024,
-        "membership_definition": "positive official 2024 MLB PA from pooled AL/NL MLB Stats API season hitting; Playing Time supplies projected exposure but does not override official membership",
+        "membership_definition": "positive official 2024 MLB PA from pooled AL/NL MLB Stats API season hitting; frozen Playing Time projected exposure where available; explicit zero projected exposure for official members outside the frozen 2023-10-15 B2 snapshot",
         "reference_player_count": summary.reference_player_count,
         "aggregate_official_mlb_pa_membership_anchor": official_reference_pa,
         "playing_time_observed_mlb_pa_diagnostic": playing_time_positive_pa,
         "aggregate_projected_mlb_pa": summary.aggregate_projected_mlb_pa,
         "playing_time_input_row_count": source.height,
         "playing_time_positive_observed_pa_player_count": len(playing_time_positive_ids),
+        "outside_frozen_playing_time_snapshot_player_count": len(
+            outside_frozen_playing_time_snapshot_ids
+        ),
+        "outside_frozen_playing_time_snapshot_ids": outside_frozen_playing_time_snapshot_ids,
         "official_only_vs_playing_time_positive_ids": official_only_vs_playing_time_positive,
         "playing_time_positive_only_vs_official_ids": playing_time_positive_only_vs_official,
         "playing_time_projected_pa_input_column": PLAYING_TIME_PROJECTED_PA_COLUMN,
         "centering_projected_pa_output_field": "projected_expected_mlb_pa",
+        "zero_exposure_fallback": {
+            "value": 0.0,
+            "reason": "official positive-PA member absent from frozen 2023-10-15 eligible B2 snapshot; no authorized chronology-safe Playing Time prediction exists",
+            "realized_2024_pa_used": False,
+            "future_information_used": False,
+        },
         "official_mlb_membership_source": {
             "provider": "MLB Stats API",
             "adapter": "universal_baseball.mlb_season_stats.fetch_mlb_hitting_backbone",
@@ -202,11 +235,7 @@ def main() -> None:
                 rel_tol=0.0,
                 abs_tol=1e-9,
             ),
-            "all_official_members_have_playing_time_projected_pa_rows": True,
-            "playing_time_positive_pa_membership_matches_official": not (
-                official_only_vs_playing_time_positive
-                or playing_time_positive_only_vs_official
-            ),
+            "all_official_members_have_projected_pa_or_explicit_zero_fallback": True,
             "playing_time_observed_pa_used_as_official_anchor": False,
             "membership_unique_by_player_id": membership["player_id"].n_unique()
             == membership.height,
