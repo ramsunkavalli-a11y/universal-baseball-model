@@ -1,22 +1,27 @@
 # Workflow lifecycle after the v1 freeze
 
-Status: **FROZEN — INTEGRATION CI AUTOMATIC; HISTORICAL WORKFLOWS MANUAL-ONLY**
+Status: **FROZEN — INTEGRATION/SECURITY CHECKS AUTOMATIC; HISTORICAL WORKFLOWS MANUAL-ONLY**
 
 Player Value v1 and every upstream v1 gate are complete. The repository keeps
 its historical source, diagnostic, development, confirmation, and
 materialization workflows as executable audit evidence, but ordinary branch
 changes must not rerun them or rewrite frozen result documents.
 
-## Automatic workflow
+## Automatic workflows
 
-`.github/workflows/ci.yml` is the only automatic workflow. It runs for pull
-requests into `main` and pushes to `main`, installs `.[dev]`, runs the configured
-Ruff checks, and executes the complete test suite. It can also be dispatched
-manually on any branch for pre-merge verification.
+Exactly two non-writing workflows are automatic:
+
+- `.github/workflows/ci.yml` runs for pull requests into `main` and pushes to
+  `main`, installs `.[dev]`, runs Ruff, and executes the complete test suite;
+- `.github/workflows/codeql.yml` runs CodeQL for pull requests and pushes to
+  `main`, plus a weekly scheduled scan.
+
+Both can also be dispatched manually. Neither workflow may materialize or
+commit scientific results.
 
 ## Historical workflows
 
-Every other workflow is `workflow_dispatch` only. Manual execution is allowed
+Every historical workflow is `workflow_dispatch` only. Manual execution is allowed
 for an explicit audit, source diagnostic, or reproduction attempt. A manual run:
 
 - does not by itself supersede a frozen result;

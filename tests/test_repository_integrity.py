@@ -25,7 +25,13 @@ def test_all_documented_json_is_parseable() -> None:
 
 def test_all_local_markdown_links_resolve() -> None:
     failures: list[str] = []
-    markdown_paths = [ROOT / "README.md", *sorted((ROOT / "docs").rglob("*.md"))]
+    markdown_paths = sorted(
+        {
+            *ROOT.glob("*.md"),
+            *(ROOT / ".github").glob("*.md"),
+            *(ROOT / "docs").rglob("*.md"),
+        }
+    )
     for path in markdown_paths:
         text = path.read_text(encoding="utf-8")
         for match in LOCAL_LINK.finditer(text):
@@ -54,17 +60,31 @@ def test_workflow_names_are_present_and_unique() -> None:
     assert names
 
 
-def test_only_integration_ci_has_automatic_triggers() -> None:
+def test_only_integration_and_security_checks_have_automatic_triggers() -> None:
+    automatic_workflows = {"ci.yml", "codeql.yml"}
     for path in sorted((ROOT / ".github" / "workflows").glob("*.y*ml")):
         text = path.read_text(encoding="utf-8")
         has_push = re.search(r"(?m)^  push:\s*$", text) is not None
         has_pull_request = re.search(r"(?m)^  pull_request:\s*$", text) is not None
         has_dispatch = re.search(r"(?m)^  workflow_dispatch:\s*$", text) is not None
-        if path.name == "ci.yml":
-            assert has_push and has_pull_request
+        if path.name in automatic_workflows:
+            assert has_push and has_pull_request and has_dispatch
         else:
             assert not has_push and not has_pull_request, path.relative_to(ROOT)
             assert has_dispatch, path.relative_to(ROOT)
+
+
+def test_public_release_files_are_present() -> None:
+    required = (
+        "LICENSE",
+        "NOTICE.md",
+        "CONTRIBUTING.md",
+        ".github/SECURITY.md",
+        ".github/dependabot.yml",
+        ".github/workflows/codeql.yml",
+    )
+    for relative_path in required:
+        assert (ROOT / relative_path).is_file(), relative_path
 
 
 def test_dev_extra_covers_every_imported_model_runtime() -> None:
