@@ -82,13 +82,18 @@ Foundation PR `#7` merged at
 Performance implementation now enforces exact positive-BF accounting for `K`,
 `UBB`, `HBP`, `HR`, and `OTHER_BF`.
 
-The next source-inventory batch pins all 20 predeclared 2021–2024 affiliated
-pitching assets before outcome scoring. Local reproduction matched all five
-previously certified 2024 hashes and all 20 newly frozen hashes, producing
-26,488 player/actual-league/season rows, 132,440 long-profile rows, 8,497
-distinct pitchers, 14 actual leagues, and 3,073,606 BF with unique canonical
-grains. Raw source CSVs remain in ignored quarantine and are not uploaded. This
-batch remains provisional until the protected GitHub workflow reproduces it.
+Source-inventory PR `#8` merged at
+`3e384dbf2ef3edf0dc38b4a1611769694f6e21f7`; required CI run
+`32399605124` and CodeQL run `32399605319` passed. Independent main-branch
+workflow run `32399807939` then reproduced all five previously certified 2024
+hashes and all 20 frozen 2021–2024 affiliated MiLB pitching source hashes. Its
+artifact `9418056648` has digest
+`sha256:74131ff186058d8fddd6609ff32ae1369bed3d4eec97e00f4301b0b4137bb45e`.
+The verified inventory contains 26,488 player/actual-league/season rows,
+132,440 long-profile rows, 8,497 distinct pitchers, 14 actual leagues, and
+3,073,606 BF with unique canonical grains. Raw source CSVs remain in ignored
+quarantine and were not uploaded; 2025 was not accessed. Exact evidence is
+frozen in `docs/pitching-v1-source-inventory-result.json`.
 
 ## Defense v1 — frozen
 
