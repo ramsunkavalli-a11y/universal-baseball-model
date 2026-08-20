@@ -1,14 +1,6 @@
 name: Defense v1 catcher repair development source
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-catcher-repair-development-source.yml"
-      - "scripts/materialize_defense_v1_catcher_repair_development_source.py"
-      - "docs/defense-v1-catcher-source-repair-contract.md"
-      - "docs/savant-catcher-year-filter-diagnostic.json"
   workflow_dispatch:
 
 permissions:

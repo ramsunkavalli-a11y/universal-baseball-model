@@ -1,14 +1,6 @@
 name: Freeze position-role confirmation parameters
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-confirmation-parameter-freeze.yml"
-      - "docs/position-role-2025-confirmation-contract.md"
-      - "scripts/freeze_position_role_confirmation_parameters.py"
-      - "src/universal_baseball/position_role_transition.py"
   workflow_dispatch:
 
 permissions:

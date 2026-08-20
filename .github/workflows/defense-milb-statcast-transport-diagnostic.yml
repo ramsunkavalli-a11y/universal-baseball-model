@@ -1,13 +1,6 @@
 name: Defense MiLB Statcast transport diagnostic
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-milb-statcast-transport-diagnostic.yml"
-      - "docs/defense-milb-statcast-transport-diagnostic-contract.md"
-      - "scripts/diagnose_defense_milb_statcast_transport.py"
   workflow_dispatch:
 
 permissions:

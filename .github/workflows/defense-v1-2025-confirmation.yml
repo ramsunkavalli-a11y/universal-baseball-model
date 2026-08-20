@@ -1,16 +1,6 @@
 name: Defense v1 2025 one-shot confirmation
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-2025-confirmation.yml"
-      - "scripts/confirm_defense_v1_2025.py"
-      - "scripts/write_workflow_checkpoint.py"
-      - "docs/defense-v1-confirmation-parameters.json"
-      - "docs/defense-v1-2024-tracking-predictor-source-result.json"
-      - "docs/defense-v1-2025-target-source-result.json"
   workflow_dispatch:
 
 permissions:

@@ -1,15 +1,6 @@
 name: Player Value v1 MLB run environment
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-mlb-run-environment.yml"
-      - "src/universal_baseball/player_value_mlb_run_environment.py"
-      - "src/universal_baseball/player_value_runs_per_win.py"
-      - "tests/test_player_value_mlb_run_environment.py"
-      - "scripts/materialize_player_value_v1_mlb_run_environment.py"
   workflow_dispatch:
 
 permissions:

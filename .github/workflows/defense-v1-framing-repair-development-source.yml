@@ -1,13 +1,6 @@
 name: Defense v1 framing repair development source
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-framing-repair-development-source.yml"
-      - "scripts/materialize_defense_v1_framing_repair_development_source.py"
-      - "docs/defense-v1-framing-source-repair-contract.md"
   workflow_dispatch:
 
 permissions:

@@ -1,12 +1,6 @@
 name: Position-role transition diagnostic
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-transition-diagnostic.yml"
-      - "scripts/diagnose_position_role_transition_challenger.py"
   workflow_dispatch:
 
 permissions:

@@ -1,16 +1,6 @@
 name: Playing-time v1 2023 validation
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-v1-validation-2023.yml"
-      - "docs/playing-time-v1-selection-result.json"
-      - "scripts/materialize_playing_time_v1_validation_2023.py"
-      - "src/universal_baseball/playing_time_model.py"
-      - "src/universal_baseball/playing_time_selection.py"
-      - "docs/playing-time-validation-2023-trigger.txt"
   workflow_dispatch:
 
 permissions:

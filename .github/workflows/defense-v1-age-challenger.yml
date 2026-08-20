@@ -1,13 +1,6 @@
 name: Defense v1 age challenger
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-age-challenger.yml"
-      - "docs/defense-v1-age-challenger-contract.md"
-      - "scripts/audit_defense_v1_age_challenger.py"
   workflow_dispatch:
 
 permissions:

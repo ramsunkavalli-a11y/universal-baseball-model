@@ -1,13 +1,6 @@
 name: Defense catcher framing reuse POC
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-catcher-framing-reuse-poc.yml"
-      - "docs/defense-catcher-framing-reuse-poc-contract.md"
-      - "scripts/audit_defense_catcher_framing_reuse.py"
   workflow_dispatch:
 
 permissions:

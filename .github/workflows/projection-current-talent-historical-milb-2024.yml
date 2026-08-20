@@ -1,28 +1,6 @@
 name: Projection reuse Current Talent historical MiLB 2024
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-current-talent-historical-milb-2024.yml"
-      - "scripts/materialize_current_talent_historical_milb_game_evidence.py"
-      - "scripts/materialize_current_talent_historical_milb_game_evidence_with_exact_game_fallback.py"
-      - "scripts/materialize_current_talent_historical_milb_game_evidence_projection_gate.py"
-      - "src/universal_baseball/current_talent_era.py"
-      - "src/universal_baseball/current_talent_identity_corrections.py"
-      - "src/universal_baseball/current_talent_milb_source.py"
-      - "src/universal_baseball/current_talent_milb_evidence.py"
-      - "src/universal_baseball/current_talent_official_outcomes.py"
-      - "src/universal_baseball/current_talent_official_game_fallback.py"
-      - "src/universal_baseball/current_talent_official_game_identity.py"
-      - "src/universal_baseball/current_talent_source_residual_quarantine.py"
-      - "src/universal_baseball/current_talent_evidence_quarantine.py"
-      - "src/universal_baseball/current_talent_season_reconciliation.py"
-      - "tests/test_current_talent_official_game_fallback.py"
-      - "tests/test_current_talent_official_game_identity.py"
-      - "tests/test_current_talent_source_residual_quarantine.py"
-      - "tests/test_current_talent_evidence_quarantine.py"
   workflow_dispatch:
 
 permissions:

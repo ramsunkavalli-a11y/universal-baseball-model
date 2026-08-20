@@ -1,14 +1,6 @@
 name: Projection batting v1 frozen Current Talent snapshots
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-batting-v1-current-talent-snapshots.yml"
-      - "src/universal_baseball/projection_current_talent.py"
-      - "scripts/materialize_projection_batting_v1_current_talent_snapshots.py"
-      - "tests/test_projection_current_talent.py"
   workflow_dispatch:
 
 permissions:

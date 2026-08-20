@@ -1,14 +1,6 @@
 name: Player Value v1 positional adjustment verify
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-positional-adjustment-verify.yml"
-      - "src/universal_baseball/player_value_positional_adjustment.py"
-      - "tests/test_player_value_positional_adjustment.py"
-      - "docs/player-value-v1-positional-adjustment-contract.md"
   workflow_dispatch:
 
 permissions:

@@ -1,17 +1,6 @@
 name: Projection batting v1 2024 validation
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-batting-v1-validation-2024.yml"
-      - "docs/projection-batting-v1-selection-result.json"
-      - "docs/projection-batting-v1-validation-2023-result.json"
-      - "scripts/materialize_projection_batting_v1_validation_2024.py"
-      - "src/universal_baseball/projection_ridge.py"
-      - "src/universal_baseball/projection_training.py"
-      - "src/universal_baseball/projection_selection.py"
   workflow_dispatch:
 
 permissions:

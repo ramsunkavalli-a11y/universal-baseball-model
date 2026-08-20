@@ -1,12 +1,7 @@
 name: Temporary framing predictor status probe
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/tmp-framing-predictor-status.yml"
-
+  workflow_dispatch:
 permissions:
   contents: write
   actions: read

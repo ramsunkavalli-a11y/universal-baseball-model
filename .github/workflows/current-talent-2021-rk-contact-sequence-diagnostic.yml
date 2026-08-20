@@ -2,14 +2,6 @@ name: Current Talent 2021 Rookie contact sequence diagnostic
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-2021-rk-contact-sequence-diagnostic.yml"
-      - "scripts/diagnose_current_talent_2021_rk_contact_sequence_coverage.py"
-      - "scripts/diagnose_raw_2021_rk_pbp_sequence.py"
-
 permissions:
   contents: read
 

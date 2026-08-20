@@ -1,15 +1,15 @@
 {
   "baseline0_metrics": {
-    "mean_full_negative_log_likelihood": 1.270079902145539,
+    "mean_full_negative_log_likelihood": 1.2700799021462057,
     "observed_mean_mlb_pa": 45.02277227722772,
-    "participation_brier": 0.07135435534071702,
-    "participation_log_loss": 0.22239087373250244,
-    "positive_count_negative_log_likelihood": 6.57245912234265,
+    "participation_brier": 0.07135435534071707,
+    "participation_log_loss": 0.22239087373250255,
+    "positive_count_negative_log_likelihood": 6.572459122346835,
     "positive_players": 644,
-    "predicted_mean_mlb_pa": 29.047918037635565,
+    "predicted_mean_mlb_pa": 29.04791803357379,
     "scored_players": 4040,
-    "unconditional_mlb_pa_mae": 38.85309580191966,
-    "unconditional_mlb_pa_rmse": 103.15543263845372
+    "unconditional_mlb_pa_mae": 38.85309580185704,
+    "unconditional_mlb_pa_rmse": 103.15543264197845
   },
   "boundary": {
     "2024_candidate_scores_accessed": false,
@@ -18,18 +18,18 @@
     "form_reselected_on_2023": false
   },
   "candidate_metrics": {
-    "mean_full_negative_log_likelihood": 1.1968266835056265,
+    "mean_full_negative_log_likelihood": 1.1968266835056143,
     "observed_mean_mlb_pa": 45.02277227722772,
-    "participation_brier": 0.04776280276146831,
+    "participation_brier": 0.047762802761468326,
     "participation_log_loss": 0.16154136624041998,
-    "positive_count_negative_log_likelihood": 6.494647021353161,
+    "positive_count_negative_log_likelihood": 6.494647021353081,
     "positive_players": 644,
-    "predicted_mean_mlb_pa": 42.484769898610054,
+    "predicted_mean_mlb_pa": 42.484769898614566,
     "scored_players": 4040,
-    "unconditional_mlb_pa_mae": 30.423953168232096,
-    "unconditional_mlb_pa_rmse": 79.19763141422835
+    "unconditional_mlb_pa_mae": 30.423953168235627,
+    "unconditional_mlb_pa_rmse": 79.19763141424953
   },
-  "candidate_minus_baseline0_full_nll": -0.07325321863991241,
+  "candidate_minus_baseline0_full_nll": -0.07325321864059142,
   "decision": {
     "2024_validation_authorized": true,
     "passes_required_2023_full_nll_gate": true,
@@ -38,14 +38,14 @@
   "gate": "playing_time_v1_out_of_time_validation_2023",
   "report_schema_version": "0.1",
   "selected_form": "playing_time_recent_opportunity_40man_b2_hurdle_v1",
-  "selection_source_run": 32144327152,
-  "source_run_id": 32391048330,
-  "source_sha": "2a1d6253077be17972b5cfc26051018190cec6ef",
+  "selection_source_run": 32141616127,
+  "source_run_id": 32141934868,
+  "source_sha": "2783fb303f745700499e8e1ba464f34cdb6da797",
   "status": "scored",
   "storage": {
     "baseline0_coefficients": {
       "canonical_schema_version": "0.1",
-      "file_sha256": "99f3a43bc75db7b35dbd026ca50a3b16326dffd4f1d9b7308c88dbc93a71172c",
+      "file_sha256": "a8ba43194fdebbd636d1830f9be620bd63fc5d2079403f8e2a8241b1139e1a41",
       "file_size_bytes": 1460,
       "path": "reports/generated/playing-time-v1-validation-2023/tables/baseline0_coefficients.parquet",
       "row_count": 9,
@@ -54,8 +54,8 @@
     },
     "baseline0_scored": {
       "canonical_schema_version": "0.1",
-      "file_sha256": "14ea622d4df6a2d37a82d1b5f763174a2295e140e96a545f122c422485886781",
-      "file_size_bytes": 27511,
+      "file_sha256": "885c8f1cc37cc5b2e823b2c092a6ea8dad5f7c1967d2da20cd5687c903d00b5c",
+      "file_size_bytes": 27635,
       "path": "reports/generated/playing-time-v1-validation-2023/tables/baseline0_scored.parquet",
       "row_count": 4040,
       "schema_sha256": "1d4335fa0cd952b3a6ab834cc672a1961def387a4f7d2c2e49c0236cd8604d50",
@@ -72,7 +72,7 @@
     },
     "candidate_coefficients": {
       "canonical_schema_version": "0.1",
-      "file_sha256": "024199ff04bfe383a39db7aa12f79ce8d0572ff837d3e49adfa68e5f2ce77e1d",
+      "file_sha256": "5ba323be1166f4cc31e6f246b339dcbaf95112890e9ac9bcb4449d5fef0b5ea4",
       "file_size_bytes": 1707,
       "path": "reports/generated/playing-time-v1-validation-2023/tables/candidate_coefficients.parquet",
       "row_count": 25,
@@ -81,8 +81,8 @@
     },
     "candidate_scored": {
       "canonical_schema_version": "0.1",
-      "file_sha256": "72ea32f2474aca68f9229cb418aef6501e2e206f1a7470023ff3c8b4652c679e",
-      "file_size_bytes": 169172,
+      "file_sha256": "57a1d19890e1b655a06acaab767ba08d9bf2a12df165522aa0bf1b856636b6b3",
+      "file_size_bytes": 169180,
       "path": "reports/generated/playing-time-v1-validation-2023/tables/candidate_scored.parquet",
       "row_count": 4040,
       "schema_sha256": "1d4335fa0cd952b3a6ab834cc672a1961def387a4f7d2c2e49c0236cd8604d50",

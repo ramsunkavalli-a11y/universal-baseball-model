@@ -2,11 +2,6 @@
 name: Projection recovery status probe
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-recovery-status-probe.yml"
   workflow_dispatch:
 
 permissions:

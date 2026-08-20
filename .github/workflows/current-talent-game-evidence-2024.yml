@@ -2,25 +2,6 @@ name: Current Talent 2024 player-game evidence POC
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-game-evidence-2024.yml"
-      - "scripts/materialize_current_talent_game_evidence_2024.py"
-      - "src/universal_baseball/armstjc_assets.py"
-      - "src/universal_baseball/player_game_stats.py"
-      - "src/universal_baseball/current_talent_evidence.py"
-      - "src/universal_baseball/current_talent_milb_evidence.py"
-      - "src/universal_baseball/current_talent_mlb_evidence.py"
-      - "src/universal_baseball/current_talent_universal_evidence.py"
-      - "src/universal_baseball/current_talent_reconciliation.py"
-      - "tests/test_current_talent_evidence.py"
-      - "tests/test_current_talent_milb_evidence.py"
-      - "tests/test_current_talent_mlb_evidence.py"
-      - "tests/test_current_talent_universal_evidence.py"
-      - "tests/test_current_talent_reconciliation.py"
-
 permissions:
   contents: read
   actions: read

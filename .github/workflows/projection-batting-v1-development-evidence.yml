@@ -1,14 +1,6 @@
 name: Projection batting v1 development evidence
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-batting-v1-development-evidence.yml"
-      - "src/universal_baseball/current_talent_universal_evidence.py"
-      - "scripts/materialize_projection_batting_v1_development_evidence.py"
-      - "tests/test_current_talent_universal_evidence.py"
   workflow_dispatch:
 
 permissions:

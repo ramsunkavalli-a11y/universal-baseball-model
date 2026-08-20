@@ -1,13 +1,6 @@
 name: Player Value v1 defensive exposure diagnostic
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-defensive-exposure-diagnostic.yml"
-      - "scripts/diagnose_player_value_v1_defensive_exposure_bridge.py"
-      - "docs/player-value-v1-defensive-exposure-diagnostic-contract.md"
   workflow_dispatch:
 
 permissions:

@@ -1,11 +1,6 @@
 name: Current Talent historical MLB season
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-historical-mlb-season.yml"
   workflow_dispatch:
     inputs:
       season:

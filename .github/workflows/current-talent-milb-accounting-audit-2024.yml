@@ -2,13 +2,6 @@ name: Current Talent 2024 MiLB accounting audit
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-milb-accounting-audit-2024.yml"
-      - "scripts/audit_current_talent_milb_game_accounting_2024.py"
-
 permissions:
   contents: read
 

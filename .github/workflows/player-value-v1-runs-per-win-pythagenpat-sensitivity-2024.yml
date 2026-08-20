@@ -1,16 +1,6 @@
 name: Player Value v1 PythagenPat sensitivity 2024
 
 on:
-  push:
-    branches: [source-certification-poc]
-    paths:
-      - ".github/workflows/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.yml"
-      - "scripts/materialize_player_value_v1_pythagenpat_sensitivity.py"
-      - "src/universal_baseball/player_value_pythagenpat_sensitivity.py"
-      - "tests/test_player_value_pythagenpat_sensitivity.py"
-      - "docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md"
-      - "docs/player-value-v1-mlb-run-environment-2024.json"
-      - "docs/player-value-v1-replacement-level-2024.json"
   workflow_dispatch:
 
 permissions:

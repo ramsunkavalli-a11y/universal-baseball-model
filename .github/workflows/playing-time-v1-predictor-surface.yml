@@ -1,13 +1,6 @@
 name: Playing-time v1 predictor surface
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-v1-predictor-surface.yml"
-      - "scripts/materialize_playing_time_v1_predictor_surface.py"
-      - "docs/playing-time-historical-40man-membership-result.json"
   workflow_dispatch:
 
 permissions:

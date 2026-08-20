@@ -1,14 +1,6 @@
 name: Current Talent contact-value baseline fits
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "src/universal_baseball/current_talent_contact_value_baseline.py"
-      - "scripts/audit_current_talent_contact_value_baseline_fits.py"
-      - "tests/test_current_talent_contact_value_baseline.py"
-      - ".github/workflows/current-talent-contact-value-baseline-fits.yml"
   workflow_dispatch:
 
 permissions:

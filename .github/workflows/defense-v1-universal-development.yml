@@ -1,13 +1,6 @@
 name: Defense v1 universal development
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-universal-development.yml"
-      - "docs/defense-v1-development-contract.md"
-      - "scripts/develop_defense_v1_universal.py"
   workflow_dispatch:
 
 permissions:

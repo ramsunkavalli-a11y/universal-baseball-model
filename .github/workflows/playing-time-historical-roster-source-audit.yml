@@ -2,14 +2,6 @@
 name: Playing-time historical roster source audit
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-historical-roster-source-audit.yml"
-      - "src/universal_baseball/playing_time_roster_source.py"
-      - "scripts/audit_playing_time_historical_roster_source.py"
-      - "tests/test_playing_time_roster_source.py"
   workflow_dispatch:
 
 permissions:

@@ -1,13 +1,6 @@
 name: Player Value v1 catcher native-opportunity selection
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-catcher-native-opportunity-selection.yml"
-      - "scripts/select_player_value_v1_catcher_native_opportunities.py"
-      - "docs/player-value-v1-catcher-native-opportunity-selection-contract.md"
   workflow_dispatch:
 
 permissions:

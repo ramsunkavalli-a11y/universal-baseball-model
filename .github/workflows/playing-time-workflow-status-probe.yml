@@ -1,12 +1,6 @@
 name: Playing-time workflow status probe
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-workflow-status-probe.yml"
-      - "docs/playing-time-workflow-status-trigger.txt"
   workflow_dispatch:
 
 permissions:

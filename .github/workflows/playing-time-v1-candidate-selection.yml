@@ -1,23 +1,6 @@
 name: Playing-time v1 2022 candidate selection
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-v1-candidate-selection.yml"
-      - "requirements-playing-time.txt"
-      - "src/universal_baseball/playing_time_model.py"
-      - "src/universal_baseball/playing_time_selection.py"
-      - "src/universal_baseball/playing_time_roster_source.py"
-      - "scripts/materialize_playing_time_v1_target_surface.py"
-      - "scripts/materialize_playing_time_v1_predictor_surface.py"
-      - "scripts/materialize_playing_time_v1_candidate_selection.py"
-      - "scripts/audit_playing_time_historical_40man_membership.py"
-      - "tests/test_playing_time_model.py"
-      - "tests/test_playing_time_selection.py"
-      - "tests/test_playing_time_roster_source.py"
-      - "docs/playing-time-selection-trigger.txt"
   workflow_dispatch:
 
 permissions:

@@ -1,13 +1,6 @@
 name: Player Value v1 DH positional-exposure selection
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-dh-positional-exposure-selection.yml"
-      - "scripts/select_player_value_v1_dh_positional_exposure.py"
-      - "docs/player-value-v1-dh-positional-exposure-selection-contract.md"
   workflow_dispatch:
 
 permissions:

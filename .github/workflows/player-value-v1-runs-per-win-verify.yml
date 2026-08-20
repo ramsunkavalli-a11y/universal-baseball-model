@@ -1,14 +1,6 @@
 name: Player Value v1 runs per win verify
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-runs-per-win-verify.yml"
-      - "src/universal_baseball/player_value_runs_per_win.py"
-      - "tests/test_player_value_runs_per_win.py"
-      - "docs/player-value-v1-runs-per-win-contract.md"
   workflow_dispatch:
 
 permissions:

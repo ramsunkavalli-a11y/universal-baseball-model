@@ -1,19 +1,6 @@
 name: Player Value v1 baserunning source audit
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-baserunning-source-audit.yml"
-      - "src/universal_baseball/player_value_baserunning_sources.py"
-      - "src/universal_baseball/season_stats.py"
-      - "src/universal_baseball/mlb_season_stats.py"
-      - "tests/test_player_value_baserunning_sources.py"
-      - "tests/test_season_stats.py"
-      - "tests/test_mlb_season_stats.py"
-      - "scripts/audit_player_value_v1_baserunning_sources.py"
-      - "docs/player-value-v1-baserunning-source-audit-contract.md"
   workflow_dispatch:
 
 permissions:

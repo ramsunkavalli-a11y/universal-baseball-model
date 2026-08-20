@@ -1,12 +1,6 @@
 name: Defense v1 catcher repair parameter freeze
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-catcher-repair-parameter-freeze.yml"
-      - "scripts/freeze_defense_v1_catcher_repair_parameters.py"
   workflow_dispatch:
 
 permissions:

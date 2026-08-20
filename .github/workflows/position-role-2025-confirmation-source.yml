@@ -1,14 +1,6 @@
 name: Materialize 2025 position-role confirmation source
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-2025-confirmation-source.yml"
-      - "docs/position-role-2025-confirmation-source-contract.md"
-      - "scripts/materialize_position_role_2025_confirmation_source.py"
-      - "src/universal_baseball/position_role_source.py"
   workflow_dispatch:
 
 permissions:

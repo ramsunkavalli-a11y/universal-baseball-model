@@ -1,15 +1,6 @@
 name: Current Talent contact-value combined chronology
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "src/universal_baseball/current_talent_contact_value.py"
-      - "src/universal_baseball/current_talent_contact_value_evidence.py"
-      - "scripts/audit_current_talent_contact_value_chronology.py"
-      - "tests/test_current_talent_contact_value_evidence.py"
-      - ".github/workflows/current-talent-contact-value-chronology.yml"
   workflow_dispatch:
 
 permissions:

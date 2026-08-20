@@ -1,16 +1,6 @@
 name: Batting position-role profile stability
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-batting-profile-stability.yml"
-      - "docs/position-role-batting-profile-stability-contract.md"
-      - "src/universal_baseball/position_role_profile.py"
-      - "tests/test_position_role_profile.py"
-      - "scripts/audit_position_role_batting_profile_stability.py"
-      - "docs/position-role-batting-profile-stability-trigger.txt"
   workflow_dispatch:
 
 permissions:

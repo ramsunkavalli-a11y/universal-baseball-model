@@ -54,6 +54,19 @@ def test_workflow_names_are_present_and_unique() -> None:
     assert names
 
 
+def test_only_integration_ci_has_automatic_triggers() -> None:
+    for path in sorted((ROOT / ".github" / "workflows").glob("*.y*ml")):
+        text = path.read_text(encoding="utf-8")
+        has_push = re.search(r"(?m)^  push:\s*$", text) is not None
+        has_pull_request = re.search(r"(?m)^  pull_request:\s*$", text) is not None
+        has_dispatch = re.search(r"(?m)^  workflow_dispatch:\s*$", text) is not None
+        if path.name == "ci.yml":
+            assert has_push and has_pull_request
+        else:
+            assert not has_push and not has_pull_request, path.relative_to(ROOT)
+            assert has_dispatch, path.relative_to(ROOT)
+
+
 def test_dev_extra_covers_every_imported_model_runtime() -> None:
     project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     extras = project["project"]["optional-dependencies"]

@@ -1,14 +1,6 @@
 name: Defense v1 2024 framing predictor source
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-2024-framing-predictor.yml"
-      - "scripts/materialize_defense_v1_2024_framing_predictor.py"
-      - "docs/defense-v1-framing-repair-parameters.json"
-      - "docs/defense-v1-framing-2025-confirmation-contract.md"
   workflow_dispatch:
 
 permissions:

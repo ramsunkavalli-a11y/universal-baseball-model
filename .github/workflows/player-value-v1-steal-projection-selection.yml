@@ -1,27 +1,6 @@
 name: Player Value v1 steal projection selection
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-steal-projection-selection.yml"
-      - "src/universal_baseball/player_value_steal_projection.py"
-      - "src/universal_baseball/player_value_steal_data.py"
-      - "src/universal_baseball/player_value_steal_sources.py"
-      - "src/universal_baseball/player_value_baserunning_sources.py"
-      - "src/universal_baseball/season_stats.py"
-      - "src/universal_baseball/season_stat_assets.py"
-      - "src/universal_baseball/mlb_season_stats.py"
-      - "src/universal_baseball/player_value_mlb_run_environment.py"
-      - "tests/test_player_value_steal_projection.py"
-      - "tests/test_player_value_steal_data.py"
-      - "tests/test_player_value_steal_sources.py"
-      - "tests/test_player_value_baserunning_sources.py"
-      - "scripts/select_player_value_v1_steal_projection.py"
-      - "docs/player-value-v1-baserunning-source-audit-contract.md"
-      - "docs/player-value-v1-steal-projection-selection-contract.md"
-      - "docs/player-value-v1-steal-projection-diagnostic-thresholds.md"
   workflow_dispatch:
 
 permissions:

@@ -1,18 +1,6 @@
 name: Playing-time v1 confirmation inputs
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-v1-confirmation-inputs.yml"
-      - "docs/playing-time-v1-confirmation-contract.md"
-      - "src/universal_baseball/projection_current_talent.py"
-      - "tests/test_projection_current_talent.py"
-      - "scripts/materialize_projection_batting_v1_confirmation_snapshot.py"
-      - "scripts/audit_playing_time_confirmation_40man_membership.py"
-      - "scripts/materialize_playing_time_v1_confirmation_predictors.py"
-      - "docs/playing-time-confirmation-inputs-trigger.txt"
   workflow_dispatch:
 
 permissions:

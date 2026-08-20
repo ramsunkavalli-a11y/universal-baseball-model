@@ -1,18 +1,6 @@
 name: Projection batting v1 2022 candidate selection
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-batting-v1-candidate-selection.yml"
-      - "src/universal_baseball/projection_ridge.py"
-      - "src/universal_baseball/projection_training.py"
-      - "src/universal_baseball/projection_selection.py"
-      - "scripts/materialize_projection_batting_v1_candidate_selection.py"
-      - "tests/test_projection_ridge.py"
-      - "tests/test_projection_training.py"
-      - "tests/test_projection_selection.py"
   workflow_dispatch:
 
 permissions:

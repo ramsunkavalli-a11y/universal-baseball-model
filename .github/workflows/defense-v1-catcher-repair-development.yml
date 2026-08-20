@@ -1,12 +1,6 @@
 name: Defense v1 catcher repair development
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-catcher-repair-development.yml"
-      - "scripts/develop_defense_v1_catcher_repair.py"
   workflow_dispatch:
 
 permissions:

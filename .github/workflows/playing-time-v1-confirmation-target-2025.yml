@@ -1,16 +1,6 @@
 name: Playing-time v1 2025 confirmation target
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-v1-confirmation-target-2025.yml"
-      - "docs/playing-time-v1-confirmation-inputs-result.json"
-      - "docs/playing-time-v1-confirmation-contract.md"
-      - "scripts/materialize_playing_time_v1_confirmation_target_2025.py"
-      - "src/universal_baseball/mlb_season_stats.py"
-      - "docs/playing-time-confirmation-target-2025-trigger.txt"
   workflow_dispatch:
 
 permissions:

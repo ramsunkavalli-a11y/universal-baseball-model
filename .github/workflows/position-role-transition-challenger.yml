@@ -1,15 +1,6 @@
 name: Position-role transition challenger
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-transition-challenger.yml"
-      - "docs/position-role-transition-challenger-contract.md"
-      - "src/universal_baseball/position_role_transition.py"
-      - "tests/test_position_role_transition.py"
-      - "scripts/score_position_role_transition_challenger.py"
   workflow_dispatch:
 
 permissions:

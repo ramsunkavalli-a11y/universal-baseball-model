@@ -1,12 +1,6 @@
 name: Current Talent contact-value event-source audit
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "scripts/audit_current_talent_contact_value_event_source.py"
-      - ".github/workflows/current-talent-contact-value-event-source-audit.yml"
   workflow_dispatch:
 
 permissions:

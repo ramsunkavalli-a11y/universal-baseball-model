@@ -1,14 +1,6 @@
 name: Current Talent contact-value richer features
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "src/universal_baseball/current_talent_contact_value_features.py"
-      - "scripts/audit_current_talent_contact_value_features.py"
-      - "tests/test_current_talent_contact_value_features.py"
-      - ".github/workflows/current-talent-contact-value-features.yml"
   workflow_dispatch:
 
 permissions:

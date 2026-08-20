@@ -1,18 +1,6 @@
 name: Player Value v1 baserunning run conversion
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-baserunning-run-conversion.yml"
-      - "src/universal_baseball/player_value_baserunning_runs.py"
-      - "tests/test_player_value_baserunning_runs.py"
-      - "scripts/materialize_player_value_v1_baserunning_run_conversion.py"
-      - "docs/player-value-v1-baserunning-run-conversion-contract.md"
-      - "docs/player-value-v1-mlb-run-environment-2024.json"
-      - "docs/player-value-v1-steal-projection-selection-result.json"
-      - "docs/player-value-v1-advancement-projection-selection-result.json"
   workflow_dispatch:
 
 permissions:

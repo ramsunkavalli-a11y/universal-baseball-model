@@ -1,13 +1,6 @@
 name: Final selective position-role challenger
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-selective-transition.yml"
-      - "docs/position-role-selective-transition-contract.md"
-      - "scripts/score_position_role_selective_transition.py"
   workflow_dispatch:
 
 permissions:

@@ -1,13 +1,6 @@
 name: Player Value v1 Defense native run-conversion freeze
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-defense-native-run-conversion-freeze.yml"
-      - "scripts/freeze_player_value_v1_defense_native_run_conversion.py"
-      - "docs/player-value-v1-defense-native-run-conversion-selection-contract.md"
   workflow_dispatch:
 
 permissions:

@@ -1,16 +1,6 @@
 name: Player Value v1 replacement level verify
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-replacement-level-verify.yml"
-      - "src/universal_baseball/player_value_replacement_level.py"
-      - "tests/test_player_value_replacement_level.py"
-      - "scripts/materialize_player_value_v1_replacement_level.py"
-      - "docs/player-value-v1-replacement-level-contract.md"
-      - "docs/player-value-v1-mlb-run-environment-2024.json"
   workflow_dispatch:
 
 permissions:

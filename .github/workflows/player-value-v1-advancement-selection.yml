@@ -1,19 +1,6 @@
 name: Player Value v1 advancement selection
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-advancement-selection.yml"
-      - "src/universal_baseball/player_value_baserunning_sources.py"
-      - "src/universal_baseball/player_value_advancement_projection.py"
-      - "tests/test_player_value_baserunning_sources.py"
-      - "tests/test_player_value_advancement_projection.py"
-      - "scripts/select_player_value_v1_advancement_projection.py"
-      - "docs/player-value-v1-baserunning-source-audit-contract.md"
-      - "docs/player-value-v1-baserunning-source-audit-result.json"
-      - "docs/player-value-v1-advancement-projection-selection-contract.md"
   workflow_dispatch:
 
 permissions:

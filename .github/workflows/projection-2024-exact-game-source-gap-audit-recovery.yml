@@ -1,11 +1,6 @@
 name: Projection 2024 exact-game source-gap audit recovery
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-2024-exact-game-source-gap-audit-recovery.yml"
   workflow_dispatch:
 
 permissions:

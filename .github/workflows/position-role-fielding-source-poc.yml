@@ -1,14 +1,6 @@
 name: Position-role 2024 fielding source POC
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-fielding-source-poc.yml"
-      - "scripts/audit_position_role_fielding_source_poc.py"
-      - "docs/position-role-coherence-readiness.md"
-      - "docs/position-role-fielding-source-poc-trigger.txt"
   workflow_dispatch:
 
 permissions:

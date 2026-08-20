@@ -1,13 +1,6 @@
 name: Defense universal fielding source audit
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-universal-fielding-source-audit.yml"
-      - "docs/defense-universal-fielding-source-audit-contract.md"
-      - "scripts/audit_defense_universal_fielding_source.py"
   workflow_dispatch:
 
 permissions:

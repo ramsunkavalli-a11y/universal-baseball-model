@@ -1,12 +1,6 @@
 name: Savant catcher year-filter diagnostic
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/savant-catcher-year-filter-diagnostic.yml"
-      - "scripts/diagnose_savant_catcher_year_filters.py"
   workflow_dispatch:
 
 permissions:

@@ -1,13 +1,6 @@
 name: Defense v1 framing repair parameter freeze
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-framing-repair-parameter-freeze.yml"
-      - "scripts/freeze_defense_v1_framing_repair_parameters.py"
-      - "docs/defense-v1-framing-2025-confirmation-contract.md"
   workflow_dispatch:
 
 permissions:

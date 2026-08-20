@@ -1,14 +1,6 @@
 name: Player Value v1 batting runs verify
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-batting-runs-verify.yml"
-      - "src/universal_baseball/player_value_batting_runs.py"
-      - "tests/test_player_value_batting_runs.py"
-      - "docs/player-value-v1-batting-runs-contract.md"
   workflow_dispatch:
 
 permissions:

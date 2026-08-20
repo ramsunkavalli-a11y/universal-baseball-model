@@ -1,15 +1,6 @@
 name: Player Value v1 park neutrality audit
 
 on:
-  push:
-    branches: [source-certification-poc]
-    paths:
-      - ".github/workflows/player-value-v1-park-neutrality-audit.yml"
-      - "docs/player-value-v1-park-neutrality-audit-contract.md"
-      - "docs/player-value-v1-mlb-centering-2024.json"
-      - "scripts/audit_player_value_v1_park_neutrality.py"
-      - "src/universal_baseball/player_value_park_neutrality.py"
-      - "tests/test_player_value_park_neutrality.py"
   workflow_dispatch:
 
 permissions:

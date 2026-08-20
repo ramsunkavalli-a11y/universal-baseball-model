@@ -1,12 +1,6 @@
 name: Defense v1 catcher repair 2025 target source
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-catcher-repair-2025-source.yml"
-      - "scripts/materialize_defense_v1_catcher_repair_2025_source.py"
   workflow_dispatch:
 
 permissions:

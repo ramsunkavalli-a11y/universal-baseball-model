@@ -1,16 +1,6 @@
 name: Position-role historical source certification
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-historical-source-certification.yml"
-      - "docs/position-role-historical-source-certification-contract.md"
-      - "src/universal_baseball/position_role_source.py"
-      - "tests/test_position_role_source.py"
-      - "scripts/certify_position_role_historical_source.py"
-      - "docs/position-role-historical-source-trigger.txt"
   workflow_dispatch:
 
 permissions:

@@ -452,6 +452,46 @@ not invent independent baserunning-skill, future position/DH-mix, league-constan
 source-revision, or cross-component covariance error. Those omissions are
 explicit in the result and remain possible v2 gates.
 
+## Repository integration audit — DONE / VERIFIED
+
+A full integration audit was completed on 2026-08-20. Packaging now exposes an
+explicit `playing-time` extra, the `dev` extra includes every runtime imported by
+the complete test suite, PR CI runs Ruff before tests, warnings are promoted to
+errors, and repository-level tests enforce JSON parsing, local Markdown-link
+resolution, unique workflow names, dependency coverage, workflow lifecycle, and
+the frozen Player Value arithmetic.
+
+The audit also caught a post-freeze reproducibility defect. Cleanup-only edits
+triggered eight historical writer workflows. All eight runs completed
+mechanically, but they rewrote frozen provenance and several numerical surfaces.
+In particular, Defense run `32391048359` refit against live Savant leaderboard
+responses even though its inputs were described as frozen. Comparison with the
+original immutable freeze artifact from run `32198603779`, artifact
+`9346716010`, digest
+`sha256:b45493f8014c52eafbea0ab4dca18e99394ca7d11318052b60204198fc711acf`,
+showed:
+
+- three 2022 general-range target rows changed by exactly `-1.0` raw run;
+- 65 of 72 catcher-throwing rows changed, with maximum absolute raw drift
+  `0.03209811233209861`;
+- 44 of 70 catcher-blocking rows changed, with maximum absolute raw drift
+  `0.057441866089979005`;
+- the catcher responses were repeated across requested target years, confirming
+  that this superseded live target path is not an acceptable frozen source.
+
+Those bot-written result changes were rejected and the pre-audit binding files
+were restored exactly. The accepted Defense parameter package remains the
+original run `32198603779` freeze, while the repaired catcher machinery remains
+the later production authority documented elsewhere in this handoff. No final
+Player Value component, WAR, rank, interval, or binding population changed.
+
+Because every v1 gate is complete, all 211 historical research/materialization
+workflows are now manual-only. `.github/workflows/ci.yml` is the sole automatic
+workflow, runs on pull requests and `main`, and supports explicit branch-level
+manual verification. The lifecycle policy is frozen in
+`docs/workflow-lifecycle.md`; a manual historical rerun is diagnostic and cannot
+silently redefine a binding v1 result.
+
 ## Governing read order
 
 1. `docs/project-status.md`

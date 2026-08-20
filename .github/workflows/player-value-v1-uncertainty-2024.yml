@@ -1,16 +1,6 @@
 name: Player Value v1 uncertainty 2024
 
 on:
-  push:
-    branches: [source-certification-poc]
-    paths:
-      - ".github/workflows/player-value-v1-uncertainty-2024.yml"
-      - "scripts/materialize_player_value_v1_uncertainty_2024.py"
-      - "src/universal_baseball/player_value_uncertainty.py"
-      - "tests/test_player_value_uncertainty.py"
-      - "docs/player-value-v1-uncertainty-contract.md"
-      - "docs/player-value-v1-final-2024.json"
-      - "docs/player-value-v1-defense-native-run-conversion-parameters.json"
   workflow_dispatch:
 
 permissions:

@@ -1,12 +1,6 @@
 name: One-shot 2025 position-role confirmation
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/position-role-2025-confirmation.yml"
-      - "scripts/score_position_role_2025_confirmation.py"
   workflow_dispatch:
 
 permissions:

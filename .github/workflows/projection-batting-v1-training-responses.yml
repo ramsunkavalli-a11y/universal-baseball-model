@@ -1,14 +1,6 @@
 name: Projection batting v1 training responses
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/projection-batting-v1-training-responses.yml"
-      - "src/universal_baseball/projection_training.py"
-      - "scripts/materialize_projection_batting_v1_training_responses.py"
-      - "tests/test_projection_training.py"
   workflow_dispatch:
 
 permissions:

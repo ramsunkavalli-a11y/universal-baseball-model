@@ -1,13 +1,6 @@
 name: Player Value v1 defensive position allocation
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-defensive-position-allocation.yml"
-      - "scripts/diagnose_player_value_v1_defensive_position_allocation.py"
-      - "docs/player-value-v1-defensive-position-allocation-contract.md"
   workflow_dispatch:
 
 permissions:

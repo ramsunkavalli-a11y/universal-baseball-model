@@ -88,6 +88,10 @@ python -m pytest
 Install `.[playing-time]` instead when only the Playing Time model's
 scikit-learn/statsmodels runtime is needed.
 
+Historical certification and materialization workflows are retained for audit
+and explicit manual use, but they do not run automatically after the v1 freeze.
+See [`docs/workflow-lifecycle.md`](docs/workflow-lifecycle.md).
+
 1. Reuse certified public work and existing repo adapters before rebuilding source ingestion.
 2. Work in small verified batches and verify each batch before expanding scope.
 3. Freeze model form/search space/validation rules before opening held-out outcomes.

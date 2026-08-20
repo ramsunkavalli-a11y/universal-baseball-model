@@ -1,15 +1,6 @@
 name: Defense v1 tracked source materialization
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-tracked-source.yml"
-      - "docs/defense-v1-tracked-challenger-contract.md"
-      - "scripts/materialize_defense_v1_tracked_source.py"
-      - "scripts/materialize_defense_v1_tracked_source_segment.py"
-      - "scripts/aggregate_defense_v1_tracked_source_segments.py"
   workflow_dispatch:
 
 permissions:

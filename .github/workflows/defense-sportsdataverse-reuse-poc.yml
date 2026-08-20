@@ -1,13 +1,6 @@
 name: Defense SportsDataverse reuse POC
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-sportsdataverse-reuse-poc.yml"
-      - "docs/defense-sportsdataverse-reuse-poc-contract.md"
-      - "scripts/audit_defense_sportsdataverse_reuse.py"
   workflow_dispatch:
 
 permissions:

@@ -2,17 +2,6 @@ name: Current Talent historical source inventory
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/current-talent-historical-inventory.yml"
-      - "scripts/audit_current_talent_historical_inventory.py"
-      - "src/universal_baseball/current_talent_history.py"
-      - "tests/test_current_talent_history.py"
-      - "src/universal_baseball/armstjc_assets.py"
-      - "src/universal_baseball/player_game_stats.py"
-
 permissions:
   contents: read
 

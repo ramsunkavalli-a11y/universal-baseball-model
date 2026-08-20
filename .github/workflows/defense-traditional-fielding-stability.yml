@@ -1,13 +1,6 @@
 name: Defense traditional fielding stability screen
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-traditional-fielding-stability.yml"
-      - "docs/defense-traditional-fielding-stability-contract.md"
-      - "scripts/audit_defense_traditional_fielding_stability.py"
   workflow_dispatch:
 
 permissions:

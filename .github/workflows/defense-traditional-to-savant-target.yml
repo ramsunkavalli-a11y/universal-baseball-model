@@ -1,13 +1,6 @@
 name: Defense traditional fielding to Savant target test
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-traditional-to-savant-target.yml"
-      - "docs/defense-traditional-to-savant-target-contract.md"
-      - "scripts/audit_defense_traditional_to_savant_targets.py"
   workflow_dispatch:
 
 permissions:

@@ -1,14 +1,6 @@
 name: Defense v1 tracked challenger scoring
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-tracked-challenger.yml"
-      - "scripts/audit_defense_v1_tracked_challenger.py"
-      - "docs/defense-v1-tracked-challenger-contract.md"
-      - "docs/defense-v1-tracked-source-result.json"
   workflow_dispatch:
 
 permissions:

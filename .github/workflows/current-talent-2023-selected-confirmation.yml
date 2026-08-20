@@ -6,12 +6,6 @@ on:
   # Note: commits pushed by a workflow's GITHUB_TOKEN do not trigger a second
   # workflow, so an explicit workflow-file update/dispatch may be needed when the
   # selected-candidate checkpoint itself was persisted by GitHub Actions.
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - docs/current-talent-development-selected-candidate.json
-      - .github/workflows/current-talent-2023-selected-confirmation.yml
   workflow_dispatch:
 
 permissions:

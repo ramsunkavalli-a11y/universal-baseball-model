@@ -1,21 +1,6 @@
 name: Player Value v1 alternate centering sensitivity feasibility
 
 on:
-  push:
-    branches: [source-certification-poc]
-    paths:
-      - ".github/workflows/player-value-v1-alternate-centering-sensitivity-feasibility.yml"
-      - "scripts/audit_player_value_v1_alternate_centering_sensitivity.py"
-      - "src/universal_baseball/player_value_centering_sensitivity_feasibility.py"
-      - "tests/test_player_value_centering_sensitivity_feasibility.py"
-      - "docs/player-value-v1-mlb-centering-contract.md"
-      - "docs/player-value-v1-mlb-centering-source-inventory.json"
-      - "docs/playing-time-v1-validation-2023-result.json"
-      - "docs/player-value-v1-defensive-position-allocation-result.json"
-      - "docs/player-value-v1-dh-positional-exposure-selection-result.json"
-      - "docs/player-value-v1-catcher-native-opportunity-selection-result.json"
-      - "docs/player-value-v1-steal-projection-selection-result.json"
-      - "docs/player-value-v1-advancement-projection-selection-result.json"
   workflow_dispatch:
 
 permissions:

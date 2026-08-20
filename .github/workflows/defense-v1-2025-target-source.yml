@@ -1,15 +1,6 @@
 name: Defense v1 2025 target source
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-2025-target-source.yml"
-      - "scripts/materialize_defense_v1_2025_targets.py"
-      - "docs/defense-v1-2025-confirmation-contract.md"
-      - "docs/defense-v1-confirmation-parameters.json"
-      - "docs/defense-v1-2024-tracking-predictor-source-result.json"
   workflow_dispatch:
 
 permissions:

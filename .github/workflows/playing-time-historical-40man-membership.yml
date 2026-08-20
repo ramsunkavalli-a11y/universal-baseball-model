@@ -1,14 +1,6 @@
 name: Playing-time historical 40-man membership
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-historical-40man-membership.yml"
-      - "src/universal_baseball/playing_time_roster_source.py"
-      - "scripts/audit_playing_time_historical_40man_membership.py"
-      - "tests/test_playing_time_roster_source.py"
   workflow_dispatch:
 
 permissions:

@@ -1,13 +1,6 @@
 name: Player Value v1 advancement source recertification
 
 on:
-  push:
-    branches: [source-certification-poc]
-    paths:
-      - ".github/workflows/player-value-v1-advancement-source-recertification.yml"
-      - "scripts/recertify_player_value_v1_advancement_history.py"
-      - "tests/test_player_value_advancement_source_recertification.py"
-      - "docs/player-value-v1-advancement-source-recertification-contract.md"
   workflow_dispatch:
 
 permissions:

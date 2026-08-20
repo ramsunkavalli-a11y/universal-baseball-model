@@ -1,14 +1,6 @@
 name: Current Talent terminal-PA duplicate audit
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - scripts/audit_current_talent_terminal_pa_duplicates.py
-      - .github/workflows/current-talent-terminal-pa-duplicate-audit.yml
-      - src/universal_baseball/armstjc_assets.py
-      - src/universal_baseball/certification.py
   workflow_dispatch:
 
 permissions:

@@ -1,13 +1,6 @@
 name: Player Value v1 Defense native run-rate calibration
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-defense-native-run-rate-calibration.yml"
-      - "scripts/audit_player_value_v1_defense_native_run_rate_calibration.py"
-      - "docs/player-value-v1-defense-native-run-rate-calibration-contract.md"
   workflow_dispatch:
 
 permissions:

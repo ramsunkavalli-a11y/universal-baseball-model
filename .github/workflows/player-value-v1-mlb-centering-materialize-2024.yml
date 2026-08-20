@@ -1,20 +1,6 @@
 name: Player Value v1 MLB centering numerical materialization
 
 on:
-  push:
-    branches: [source-certification-poc]
-    paths:
-      - ".github/workflows/player-value-v1-mlb-centering-materialize-2024.yml"
-      - "scripts/materialize_player_value_v1_mlb_centering_2024.py"
-      - "src/universal_baseball/player_value_advancement_projection.py"
-      - "src/universal_baseball/player_value_defense_projection.py"
-      - "src/universal_baseball/player_value_mlb_centering.py"
-      - "src/universal_baseball/player_value_mlb_centering_assembly.py"
-      - "tests/test_player_value_defense_projection.py"
-      - "tests/test_player_value_mlb_centering.py"
-      - "tests/test_player_value_mlb_centering_assembly.py"
-      - "docs/player-value-v1-advancement-source-recertification-result.json"
-      - "docs/player-value-v1-mlb-centering-source-map-2024.json"
   workflow_dispatch:
 
 permissions:

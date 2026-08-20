@@ -1,16 +1,6 @@
 name: Playing-time v1 one-shot 2025 confirmation
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-v1-confirmation-score-2025.yml"
-      - "scripts/score_playing_time_v1_confirmation_2025.py"
-      - "src/universal_baseball/playing_time_confirmation.py"
-      - "tests/test_playing_time_confirmation.py"
-      - "docs/playing-time-v1-confirmation-contract.md"
-      - "docs/playing-time-v1-confirmation-score-trigger.txt"
   workflow_dispatch:
 
 permissions:

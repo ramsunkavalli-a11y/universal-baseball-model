@@ -2,12 +2,6 @@ name: Current Talent contact-value 2023 confirmation chronology
 
 # Triggered after accepted 2023 source + tracking checkpoints are persisted.
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - "scripts/audit_current_talent_contact_value_confirmation_chronology.py"
-      - ".github/workflows/current-talent-contact-value-confirmation-chronology.yml"
   workflow_dispatch:
 
 permissions:

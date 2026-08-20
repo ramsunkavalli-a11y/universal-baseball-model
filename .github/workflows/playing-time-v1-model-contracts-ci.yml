@@ -1,15 +1,6 @@
 name: Playing-time v1 model contracts CI
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-v1-model-contracts-ci.yml"
-      - "requirements-playing-time.txt"
-      - "src/universal_baseball/playing_time_model.py"
-      - "tests/test_playing_time_model.py"
-      - "docs/playing-time-model-ci-trigger.txt"
   workflow_dispatch:
 
 permissions:

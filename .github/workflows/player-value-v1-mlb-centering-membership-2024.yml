@@ -1,13 +1,6 @@
 name: Player Value v1 MLB centering membership 2024
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/player-value-v1-mlb-centering-membership-2024.yml"
-      - "scripts/materialize_player_value_v1_mlb_centering_membership_2024.py"
-      - "src/universal_baseball/player_value_mlb_centering_assembly.py"
   workflow_dispatch:
 
 permissions:

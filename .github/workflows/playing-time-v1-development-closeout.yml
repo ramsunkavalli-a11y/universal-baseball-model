@@ -1,17 +1,6 @@
 name: Playing-time v1 development closeout
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/playing-time-v1-development-closeout.yml"
-      - "docs/playing-time-v1-selection-result.json"
-      - "docs/playing-time-v1-validation-2023-result.json"
-      - "docs/playing-time-v1-validation-2024-result.json"
-      - "scripts/fit_playing_time_v1_confirmation_refit.py"
-      - "src/universal_baseball/playing_time_model.py"
-      - "docs/playing-time-development-closeout-trigger.txt"
   workflow_dispatch:
 
 permissions:

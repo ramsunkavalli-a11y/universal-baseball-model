@@ -1,12 +1,6 @@
 name: Defense v1 Tier-B cohort audit
 
 on:
-  push:
-    branches:
-      - source-certification-poc
-    paths:
-      - ".github/workflows/defense-v1-tier-b-cohort-audit.yml"
-      - "scripts/audit_defense_v1_tier_b_cohort.py"
   workflow_dispatch:
 
 permissions:

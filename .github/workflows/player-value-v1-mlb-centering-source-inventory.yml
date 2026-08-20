@@ -1,12 +1,6 @@
 name: Player Value v1 MLB centering source inventory
 
 on:
-  push:
-    branches: [source-certification-poc]
-    paths:
-      - ".github/workflows/player-value-v1-mlb-centering-source-inventory.yml"
-      - "scripts/inventory_player_value_v1_mlb_centering_sources.py"
-      - "docs/player-value-v1-mlb-centering-source-inventory-contract.md"
   workflow_dispatch:
 
 permissions:
