@@ -327,6 +327,20 @@ No live Savant source was fetched, no B2 probability was changed, realized 2024 
 
 Park neutrality is resolved. WAR remains closed until the already-listed positional, batting-reference, replacement, runs-per-win, and baserunning/centering sensitivity obligations are either completed from comparable frozen surfaces or explicitly documented as unavailable under their contracts.
 
+### Baseball-Reference positional schedule — DONE / VERIFIED
+
+`docs/player-value-v1-positional-adjustment-sensitivity-2024.json` applies the documented Baseball-Reference raw schedule to the exact frozen 3,046-player position/DH exposure surface. Actions run **`32381604496`** passed and uploaded artifact **`9411231308`**, digest `sha256:8f16bd1e4686c306e70586c103824ac85749fd01655952a29ee5385191756aa1`.
+
+- binding FanGraphs aggregate: `-473.74028349337` positional runs;
+- Baseball-Reference sensitivity aggregate: `-440.9744444444445` runs;
+- aggregate difference: `+32.76583904892546` runs;
+- player median / mean absolute difference: `0.0` / `0.06353248512895247` runs;
+- player range: `-2.1774759945130313` to `+2.1908367626886136` runs.
+
+This is diagnostic only. The binding `fangraphs_fixed_162_game_v1` schedule and all frozen exposures remain unchanged. Companion implementation verification run **`32381604402`** also passed.
+
+Replacement sensitivities were already completed in `docs/player-value-v1-replacement-level-2024.json`. Remaining sensitivity work is the alternate recent MLB batting reference if a full comparable frozen surface exists, the PythagenPat runs-per-win comparison if practical, and any feasible predeclared baserunning/centering sensitivity.
+
 ## WAR remains closed
 
 Intended final decomposable form:
