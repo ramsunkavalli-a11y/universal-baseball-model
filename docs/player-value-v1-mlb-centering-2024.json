@@ -5,11 +5,11 @@
       "advancement_recertified_source": {
         "canonical_sha256": "dfbd52dfaccd1cc20d2bf710c27755f169a7873fcd0efb45339debbb3ad4bbc8",
         "immutable_artifact": {
-          "artifact_id": 9409946231,
-          "digest": "f22eeb5749ced709f461c6a8c5a473a8d6fc0eee4fadbeeba5f56c84a51b3a49",
+          "artifact_id": 9410189065,
+          "digest": "1d551680c26d12d795aac29ca9f8151c6983074637cc3b054d150f4ddbad79b4",
           "name": "player-value-v1-advancement-history-recertified-2019-2024",
           "retention_days": 90,
-          "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32378320744/artifacts/9409946231"
+          "url": "https://github.com/ramsunkavalli-a11y/universal-baseball-model/actions/runs/32378956567/artifacts/9410189065"
         },
         "invariance_audit": {
           "confirmation": [
@@ -180,7 +180,7 @@
           "relative_primary_score_drift_limit": 0.001
         },
         "row_count": 3700,
-        "source_run_id": 32378320744
+        "source_run_id": 32378956567
       },
       "all_capture_hashes_reconciled": true,
       "models": {
@@ -223,7 +223,7 @@
     }
   },
   "components_artifact": "reports/generated/player-value-v1-mlb-centering-2024-components.parquet",
-  "materialization_run_id": 32378956515,
+  "materialization_run_id": 32379246845,
   "membership": {
     "official_observed_pa_anchor": 182449,
     "official_positive_pa_player_count": 651,
@@ -254,7 +254,7 @@
   },
   "schema_version": "0.1",
   "source_map": "docs/player-value-v1-mlb-centering-source-map-2024.json",
-  "source_map_sha256": "08797d5955a28241c139750701b3bbfda668eebf102bab806a805f210e9d9751",
+  "source_map_sha256": "d0ae1c5629a78f0a3b54fbb201464600b4f1d07de6679e321b04dec972e5ecef",
   "status": "player_value_v1_mlb_centering_2024_frozen_verified",
   "verification": {
     "all_651_component_rows_explicit": true,
@@ -265,5 +265,5 @@
     "residual_within_tolerance": true,
     "six_zero_exposure_rows_explicit_and_zero": true
   },
-  "verified_source_commit": "4d705b20b21507edac01cfd8cc17eb7cfa5ee84c"
+  "verified_source_commit": "bbb863279a3ebe29dfadea12b4f8c9fa6a430865"
 }
