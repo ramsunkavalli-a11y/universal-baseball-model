@@ -45,6 +45,11 @@ LEVEL_RANK = {
 }
 POSITION_ORDER = {"C": 2, "1B": 3, "2B": 4, "3B": 5, "SS": 6, "LF": 7, "CF": 8, "RF": 9}
 GENERAL_POSITIONS = frozenset({"1B", "2B", "3B", "SS", "LF", "CF", "RF"})
+CATCHER_OPPORTUNITY_COMPONENT_KEYS = {
+    "throwing": "catcher_throwing",
+    "blocking": "catcher_blocking",
+    "framing": "catcher_framing",
+}
 GENERAL_FEATURES = (
     "fielding_pct",
     "range_factor_per_9",

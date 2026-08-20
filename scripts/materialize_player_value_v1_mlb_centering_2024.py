@@ -31,6 +31,7 @@ from universal_baseball.player_value_batting_runs import (
     calculate_v1_projected_batting_runs,
 )
 from universal_baseball.player_value_defense_projection import (
+    CATCHER_OPPORTUNITY_COMPONENT_KEYS,
     GENERAL_POSITIONS,
     load_frozen_fielding_profiles,
     predict_catcher_c2_skill,
@@ -272,7 +273,9 @@ def _defense_runs(
             ("framing", framing_skill, framing_family, "B0_raw_persistence", "catcher_framing"),
         )
         for component, skill, family, column, conversion_key in component_specs:
-            row = opportunity_by_key.get((pid, component))
+            row = opportunity_by_key.get(
+                (pid, CATCHER_OPPORTUNITY_COMPONENT_KEYS[component])
+            )
             projected_opportunity = float(row[column]) if row is not None else 0.0
             total += skill * projected_opportunity * float(conversion[conversion_key]["run_rate_per_z_opportunity"])
             family_counts[f"{component}_{family}"] = family_counts.get(f"{component}_{family}", 0) + 1

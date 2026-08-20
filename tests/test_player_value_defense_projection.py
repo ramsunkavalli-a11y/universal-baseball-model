@@ -1,10 +1,19 @@
 from __future__ import annotations
 
 from universal_baseball.player_value_defense_projection import (
+    CATCHER_OPPORTUNITY_COMPONENT_KEYS,
     predict_catcher_c2_skill,
     predict_framing_skill,
     predict_general_range_skill,
 )
+
+
+def test_catcher_opportunity_component_keys_match_frozen_artifact_schema() -> None:
+    assert CATCHER_OPPORTUNITY_COMPONENT_KEYS == {
+        "throwing": "catcher_throwing",
+        "blocking": "catcher_blocking",
+        "framing": "catcher_framing",
+    }
 
 
 def _general_parameters() -> dict[str, object]:
