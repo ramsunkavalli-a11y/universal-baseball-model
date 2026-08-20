@@ -1,0 +1,415 @@
+{
+  "actions_run_id": 32388953065,
+  "aggregate": {
+    "median_absolute_simulated_mean_minus_point_war": 0.00026862632286325187,
+    "median_war": 296.1664076216077,
+    "point_war": 476.172014207743,
+    "simulated_mean_war": 476.66272404470976,
+    "zero_width_80_player_count": 2273,
+    "zero_width_95_player_count": 1848
+  },
+  "boundary": {
+    "2025_outcomes_accessed": false,
+    "interval_driven_cap_or_floor": false,
+    "point_model_changed": false,
+    "ranking_changed": false,
+    "upstream_refit_or_reselection": false
+  },
+  "contract": "docs/player-value-v1-uncertainty-contract.md",
+  "distributions": {
+    "batting_variance_share": {
+      "maximum": 0.9999976814663156,
+      "mean": 0.3814315612451718,
+      "median": 0.2676183130576742,
+      "minimum": 0.0,
+      "p05": 0.0848057222448142,
+      "p95": 0.9627377262278267
+    },
+    "defense_variance_share": {
+      "maximum": 0.960914050158258,
+      "mean": 0.03710631849618956,
+      "median": 0.0,
+      "minimum": 0.0,
+      "p05": 0.0,
+      "p95": 0.2675919203703009
+    },
+    "interval_80_width_war": {
+      "maximum": 14.526965347732085,
+      "mean": 0.4837201039184545,
+      "median": 0.0,
+      "minimum": 0.0,
+      "p05": 0.0,
+      "p95": 3.0470708095058248
+    },
+    "interval_95_width_war": {
+      "maximum": 24.039221291049802,
+      "mean": 0.9595463558223047,
+      "median": 0.0,
+      "minimum": 0.0,
+      "p05": 0.0,
+      "p95": 5.679540011257353
+    },
+    "playing_time_variance_share": {
+      "maximum": 0.9510327377710892,
+      "mean": 0.5794955519203889,
+      "median": 0.686922382072843,
+      "minimum": 0.0,
+      "p05": 0.02041841656064389,
+      "p95": 0.9070431782893813
+    }
+  },
+  "inputs": {
+    "b2": {
+      "artifact_id": 9311172007,
+      "player_count": 3985,
+      "profile_row_count": 47820,
+      "run_id": 32099733186,
+      "sha256": "30b1d3cd84b731cd5e5160a5d2530b19a25882d5d11d49f141300ca9b790d93c"
+    },
+    "catcher_opportunities": {
+      "artifact_id": 9371426672,
+      "player_count": 79,
+      "row_count": 218,
+      "run_id": 32269076231,
+      "sha256": "aba598733598eafe4a7cc573da0245e7e3c972a3d441979640f60c0b1adc2bff"
+    },
+    "defense_conversion_sha256": "c96336ce5af0dbf76599ab1aaec7c8803b6e84e914b9ca3196e3bbb7c0474af8",
+    "final_json": {
+      "sha256": "9bf3f36e4d7e5324881e2e1ed94927d210d2c784f843b6919762b6de53cf8578"
+    },
+    "final_table": {
+      "artifact_id": 9412571491,
+      "run_id": 32385002209,
+      "sha256": "e35a5210bfb0e8af57120d0bea75b706ee05c665a9d44393b7ac842312232db0"
+    },
+    "mlb_performance": {
+      "artifact_id": 9265954750,
+      "run_id": 31955392482
+    },
+    "playing_time": {
+      "artifact_id": 9326300207,
+      "coefficients_sha256": "397fb5c0dc59e4066b7d2797f09d7f4bf71e54b723dadc7f5d9e8e836be261bd",
+      "nb2_alpha": 0.7461189032566083,
+      "player_count": 3985,
+      "run_id": 32142089669,
+      "scored_sha256": "9896560f41a738f85d928c973f6e55f6a5a9cf64afe8dc58d2403879a92e3e28"
+    }
+  },
+  "population": {
+    "nonstructural_count": 3045,
+    "player_count": 3051,
+    "structural_zero_count": 6
+  },
+  "qa": {
+    "all_3051_rows_preserved": true,
+    "intervals_nested_and_finite": true,
+    "maximum_batting_point_reproduction_delta_runs": 9.381384558082573e-15,
+    "maximum_playing_time_identity_delta_pa": 0.0,
+    "maximum_point_war_identity_delta": 0.0,
+    "maximum_variance_share_sum_residual": 2.220446049250313e-16,
+    "point_rank_and_war_unchanged": true,
+    "six_structural_zero_intervals_preserved": true,
+    "tolerance": 1e-10
+  },
+  "reference_season": 2024,
+  "schema_version": "0.1",
+  "simulation": {
+    "batting_distribution": "moment-matched normal Dirichlet-multinomial",
+    "bit_generator": "PCG64",
+    "defense_distribution": "independent normal native-z residuals",
+    "draws_per_player": 20000,
+    "master_seed": 20240820,
+    "nb2_alpha": 0.7461189032566083,
+    "player_seed": "SeedSequence([20240820, player_id])",
+    "playing_time_distribution": "Bernoulli hurdle + zero-truncated NB2"
+  },
+  "source_commit": "9314f5e101315502167820f812487ee4ab859958",
+  "status": "player_value_v1_forecast_uncertainty_2024_frozen_verified",
+  "top_25": [
+    {
+      "median_war": 5.312483598106838,
+      "player_id": 650333,
+      "point_war": 7.132831266834665,
+      "rank": 1,
+      "war_p025": 0.12676138990377417,
+      "war_p10": 0.993611831950724,
+      "war_p90": 15.52057717968281,
+      "war_p975": 24.165982680953576
+    },
+    {
+      "median_war": 4.707834300579746,
+      "player_id": 605141,
+      "point_war": 6.1899991591697106,
+      "rank": 2,
+      "war_p025": 0.14993646798253052,
+      "war_p10": 0.8908432040990374,
+      "war_p90": 13.454745775953159,
+      "war_p975": 20.706551407552936
+    },
+    {
+      "median_war": 4.426277727579205,
+      "player_id": 608324,
+      "point_war": 5.892225348157299,
+      "rank": 3,
+      "war_p025": 0.12309200206346084,
+      "war_p10": 0.8657632766894894,
+      "war_p90": 12.723968167428719,
+      "war_p975": 20.47845519286999
+    },
+    {
+      "median_war": 4.28737643481192,
+      "player_id": 663656,
+      "point_war": 5.799268193646081,
+      "rank": 4,
+      "war_p025": 0.1277684343542634,
+      "war_p10": 0.8079897901764103,
+      "war_p90": 12.770405584941585,
+      "war_p975": 19.414309308962174
+    },
+    {
+      "median_war": 4.020790455467738,
+      "player_id": 680757,
+      "point_war": 5.365507844302536,
+      "rank": 5,
+      "war_p025": 0.0,
+      "war_p10": 0.6775027829535427,
+      "war_p90": 11.801574867228354,
+      "war_p975": 18.351311040160443
+    },
+    {
+      "median_war": 3.8932307599823623,
+      "player_id": 668939,
+      "point_war": 5.203631723191337,
+      "rank": 6,
+      "war_p025": 0.0,
+      "war_p10": 0.6587125317465805,
+      "war_p90": 11.546273026866487,
+      "war_p975": 18.342625998453663
+    },
+    {
+      "median_war": 3.827830043929739,
+      "player_id": 670623,
+      "point_war": 5.098744374018125,
+      "rank": 7,
+      "war_p025": 0.0,
+      "war_p10": 0.6541343252034941,
+      "war_p90": 11.288834013859512,
+      "war_p975": 17.520325285561256
+    },
+    {
+      "median_war": 3.423405321273864,
+      "player_id": 669257,
+      "point_war": 4.681964130906102,
+      "rank": 8,
+      "war_p025": 0.0,
+      "war_p10": 0.5628099077081471,
+      "war_p90": 10.382384291769583,
+      "war_p975": 16.409554998639738
+    },
+    {
+      "median_war": 3.4058543042611507,
+      "player_id": 608070,
+      "point_war": 4.6460763005173,
+      "rank": 9,
+      "war_p025": 0.0,
+      "war_p10": 0.5106571488230205,
+      "war_p90": 10.125824604295765,
+      "war_p975": 15.865734383680133
+    },
+    {
+      "median_war": 3.288854595051527,
+      "player_id": 672695,
+      "point_war": 4.43054405072547,
+      "rank": 10,
+      "war_p025": 0.0,
+      "war_p10": 0.5166207977511436,
+      "war_p90": 9.916724593779787,
+      "war_p975": 15.621831988069854
+    },
+    {
+      "median_war": 3.1134542382692953,
+      "player_id": 645277,
+      "point_war": 4.300481434665055,
+      "rank": 11,
+      "war_p025": 0.0,
+      "war_p10": 0.4689715513293102,
+      "war_p90": 9.755626181484663,
+      "war_p975": 15.697493594186591
+    },
+    {
+      "median_war": 3.1041094104358287,
+      "player_id": 663538,
+      "point_war": 4.276880471309272,
+      "rank": 12,
+      "war_p025": 0.0,
+      "war_p10": 0.3713617135487528,
+      "war_p90": 9.68584727931158,
+      "war_p975": 15.422466430244203
+    },
+    {
+      "median_war": 3.0586517567852987,
+      "player_id": 672386,
+      "point_war": 4.251194860641639,
+      "rank": 13,
+      "war_p025": 0.0,
+      "war_p10": 0.3436688687749843,
+      "war_p90": 9.731106686725406,
+      "war_p975": 15.812416855749339
+    },
+    {
+      "median_war": 3.029998951404368,
+      "player_id": 660670,
+      "point_war": 4.186012962492606,
+      "rank": 14,
+      "war_p025": 0.0,
+      "war_p10": 0.4796840614312623,
+      "war_p90": 9.391488310441334,
+      "war_p975": 15.140402840437828
+    },
+    {
+      "median_war": 2.949889055024695,
+      "player_id": 660688,
+      "point_war": 4.17076837975825,
+      "rank": 15,
+      "war_p025": 0.0,
+      "war_p10": 0.36073427848882333,
+      "war_p90": 9.456386934859992,
+      "war_p975": 15.85197788532017
+    },
+    {
+      "median_war": 3.0151161302700062,
+      "player_id": 543760,
+      "point_war": 4.16759669056876,
+      "rank": 16,
+      "war_p025": 0.0,
+      "war_p10": 0.38303611306179414,
+      "war_p90": 9.491915674874068,
+      "war_p975": 15.188046328705052
+    },
+    {
+      "median_war": 3.007574441506924,
+      "player_id": 641487,
+      "point_war": 4.104070512659468,
+      "rank": 17,
+      "war_p025": 0.0,
+      "war_p10": 0.4609208381442043,
+      "war_p90": 9.137723245495575,
+      "war_p975": 14.348863328135188
+    },
+    {
+      "median_war": 2.807432971172874,
+      "player_id": 686469,
+      "point_war": 3.8095307656251207,
+      "rank": 18,
+      "war_p025": 0.0,
+      "war_p10": 0.3697044944257884,
+      "war_p90": 8.619072783420004,
+      "war_p975": 13.43804887482045
+    },
+    {
+      "median_war": 2.7316945353181197,
+      "player_id": 677951,
+      "point_war": 3.7668488673996334,
+      "rank": 19,
+      "war_p025": 0.0,
+      "war_p10": 0.40574868842723766,
+      "war_p90": 8.457882966676872,
+      "war_p975": 13.452105691124144
+    },
+    {
+      "median_war": 2.5501745124403685,
+      "player_id": 673490,
+      "point_war": 3.5771306957236444,
+      "rank": 20,
+      "war_p025": 0.0,
+      "war_p10": 0.17320389152178273,
+      "war_p90": 8.177995950699454,
+      "war_p975": 13.174213675710856
+    },
+    {
+      "median_war": 2.5555525580055054,
+      "player_id": 670770,
+      "point_war": 3.549782914713519,
+      "rank": 21,
+      "war_p025": 0.0,
+      "war_p10": 0.2783209327137166,
+      "war_p90": 8.137942444208157,
+      "war_p975": 12.926857167187343
+    },
+    {
+      "median_war": 2.4288253661923944,
+      "player_id": 650402,
+      "point_war": 3.415248896944301,
+      "rank": 22,
+      "war_p025": 0.0,
+      "war_p10": 0.330290699765532,
+      "war_p90": 7.693320842452686,
+      "war_p975": 12.440830452648889
+    },
+    {
+      "median_war": 2.448505896627577,
+      "player_id": 665742,
+      "point_war": 3.4034322968243256,
+      "rank": 23,
+      "war_p025": 0.0,
+      "war_p10": 0.35488051776905244,
+      "war_p90": 7.728132975967779,
+      "war_p975": 12.31413896573336
+    },
+    {
+      "median_war": 2.4548160897131606,
+      "player_id": 596019,
+      "point_war": 3.4023979882519106,
+      "rank": 24,
+      "war_p025": 0.0,
+      "war_p10": 0.1902597155323851,
+      "war_p90": 7.943755745559527,
+      "war_p975": 12.787283030264684
+    },
+    {
+      "median_war": 2.2345854220616883,
+      "player_id": 669221,
+      "point_war": 3.245595003761716,
+      "rank": 25,
+      "war_p025": 0.0,
+      "war_p10": 0.04711450792182064,
+      "war_p90": 7.568271695007409,
+      "war_p975": 12.427787064294124
+    }
+  ],
+  "uncertainty_id": "player_value_v1_forecast_uncertainty_2024",
+  "variance_sources": {
+    "catcher_mse": {
+      "blocking": {
+        "B0": 0.9532962787607702,
+        "C2": 0.8506475669670914
+      },
+      "framing": {
+        "F0": 0.9846201792216872,
+        "F1": 0.6478744253399015
+      },
+      "throwing": {
+        "B0": 1.0063647479219435,
+        "C2": 0.9385276019479529
+      }
+    },
+    "general_range_mse": {
+      "B0": 0.9304792055721907,
+      "T1": 0.878640460280284,
+      "U1": 0.8900360540992999
+    },
+    "modeled": [
+      "playing_time_hurdle_and_positive_count",
+      "batting_finite_season_core_event_outcomes",
+      "batting_b2_posterior_profile",
+      "defense_native_skill_residuals"
+    ],
+    "not_modeled": [
+      "independent_baserunning_skill_error",
+      "future_position_and_dh_mix_error",
+      "park_centering_replacement_and_rpw_parameter_error",
+      "source_revision_error",
+      "cross_component_covariance"
+    ]
+  }
+}
