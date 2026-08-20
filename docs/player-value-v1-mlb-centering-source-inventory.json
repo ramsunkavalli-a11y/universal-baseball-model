@@ -8,7 +8,7 @@
     "park_audit_opened": false,
     "war_calculated": false
   },
-  "file_count": 376,
+  "file_count": 380,
   "files": [
     {
       "bytes": 30642,
@@ -337,6 +337,87 @@
       "path": "batting-b2/tables/projection_2023_to_2024/translation_offsets.parquet",
       "rows": 72,
       "sha256": "6225b892cb96dbe3da524d593ee358a83535740cfa8469612eacfd24a78128b4"
+    },
+    {
+      "bytes": 19744,
+      "format": "json",
+      "path": "catcher-opportunities/result.json",
+      "provenance_values": {
+        "contract_sha256": "f7d8dfc15ca3df26a1b19c94b2d37b310dd4a0b1c7391c540ddb846aef952d30",
+        "playing_time_provenance.selection.artifact_digest": "sha256:a8719576ef7ed7377a6376556d34e1fd377d5e27ca88535543a43c615f4cb5d8",
+        "playing_time_provenance.selection.artifact_name": "playing-time-v1-candidate-selection",
+        "playing_time_provenance.selection.run_id": 32141616127,
+        "playing_time_provenance.validation_2023.artifact_digest": "sha256:738c631f5b4fbaa7875219ee452996e487799c4a323b0cafa57a7500583c5b39",
+        "playing_time_provenance.validation_2023.artifact_name": "playing-time-v1-validation-2023",
+        "playing_time_provenance.validation_2023.run_id": 32141934868,
+        "playing_time_provenance.validation_2024.artifact_digest": "sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366",
+        "playing_time_provenance.validation_2024.artifact_name": "playing-time-v1-validation-2024",
+        "playing_time_provenance.validation_2024.run_id": 32142089669,
+        "run_conversion_provenance.source_run_id": 32268659408,
+        "run_conversion_provenance.source_sha": "1bc2685807ca97e0b02a38fdfb1e99064b69d2db",
+        "source_run_id": 32269076231,
+        "source_sha": "afb34fc9e829b430efe70cd2e50ed09e04f2117e"
+      },
+      "sha256": "801d3542349d03cb6258ed157354cb3c91ac5db375f3fba88fbe5c3b56699631",
+      "top_level_keys": [
+        "boundary",
+        "components",
+        "contract",
+        "contract_sha256",
+        "playing_time_provenance",
+        "run_conversion_provenance",
+        "schema_version",
+        "source_run_id",
+        "source_sha",
+        "status"
+      ]
+    },
+    {
+      "bytes": 17235,
+      "candidate_columns": [
+        "player_id",
+        "prior_opportunity",
+        "current_season_mlb_pa",
+        "predicted_expected_mlb_pa",
+        "observed_opportunity",
+        "source_year",
+        "target_year",
+        "P1_zero_pa_fallback",
+        "fold"
+      ],
+      "column_diagnostics": {
+        "player_id": {
+          "max": 691016,
+          "min": 425877,
+          "non_null": 441,
+          "unique": 106
+        },
+        "target_year": {
+          "max": 2024,
+          "min": 2023,
+          "non_null": 441,
+          "unique": 2
+        }
+      },
+      "columns": [
+        "player_id",
+        "prior_opportunity",
+        "current_season_mlb_pa",
+        "predicted_expected_mlb_pa",
+        "observed_opportunity",
+        "component",
+        "source_year",
+        "target_year",
+        "B0_raw_persistence",
+        "P1_zero_pa_fallback",
+        "P1_playing_time_ratio",
+        "H1_fixed_50_50_hybrid",
+        "fold"
+      ],
+      "format": "parquet",
+      "path": "catcher-opportunities/scored_opportunities.parquet",
+      "rows": 441,
+      "sha256": "aba598733598eafe4a7cc573da0245e7e3c972a3d441979640f60c0b1adc2bff"
     },
     {
       "bytes": 17486,
@@ -1575,6 +1656,99 @@
       "path": "defense-tracked/tables/tracked_range_proxy_2021_2023.parquet",
       "rows": 6872,
       "sha256": "a65cb6f7506d5e100c9f0b088fb276eecc1dab5599592dd477bfcc030d850a3e"
+    },
+    {
+      "bytes": 12195,
+      "format": "json",
+      "path": "dh-exposure/result.json",
+      "provenance_values": {
+        "contract_sha256": "a154be37992f135df9ac8fca8688b0a1283a598fe8ce9a87ed294cffabb9ce8b",
+        "provenance.fielding_role_source.artifact_digest": "sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3",
+        "provenance.fielding_role_source.artifact_name": "position-role-historical-source-2021-2024",
+        "provenance.fielding_role_source.run_id": 32148467330,
+        "provenance.playing_time_selection.artifact_digest": "sha256:a8719576ef7ed7377a6376556d34e1fd377d5e27ca88535543a43c615f4cb5d8",
+        "provenance.playing_time_selection.artifact_name": "playing-time-v1-candidate-selection",
+        "provenance.playing_time_selection.run_id": 32141616127,
+        "provenance.playing_time_validation_2023.artifact_digest": "sha256:738c631f5b4fbaa7875219ee452996e487799c4a323b0cafa57a7500583c5b39",
+        "provenance.playing_time_validation_2023.artifact_name": "playing-time-v1-validation-2023",
+        "provenance.playing_time_validation_2023.run_id": 32141934868,
+        "provenance.playing_time_validation_2024.artifact_digest": "sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366",
+        "provenance.playing_time_validation_2024.artifact_name": "playing-time-v1-validation-2024",
+        "provenance.playing_time_validation_2024.run_id": 32142089669,
+        "provenance.position_role.artifact_digest": "sha256:4e98081cb1800d45f3668595e4e61a169dbce68a8b565aa1e8f60d7dcd1417e5",
+        "provenance.position_role.artifact_name": "position-role-transition-challenger-development",
+        "provenance.position_role.run_id": 32152125644,
+        "source_run_id": 32270141291,
+        "source_sha": "81ca6bc6996c5750ddb8181b8f10a45552876d38"
+      },
+      "sha256": "937a83bc9439610691b1c0ac8e3117c8b04ba23bd282acb12819ebe16cb5f21a",
+      "top_level_keys": [
+        "boundary",
+        "contract",
+        "contract_git_blob_sha1",
+        "contract_sha256",
+        "equal_fold_means",
+        "folds",
+        "provenance",
+        "role_semantics",
+        "schema_version",
+        "selection",
+        "source_run_id",
+        "source_sha",
+        "status"
+      ]
+    },
+    {
+      "bytes": 160921,
+      "candidate_columns": [
+        "player_id",
+        "frozen_projected_dh_role_probability",
+        "prior_dh_role_events",
+        "observed_dh_role_events",
+        "current_season_mlb_pa",
+        "predicted_expected_mlb_pa",
+        "B0_raw_dh_role_event_persistence",
+        "source_year",
+        "target_year",
+        "fold"
+      ],
+      "column_diagnostics": {
+        "player_id": {
+          "max": 815806,
+          "min": 408234,
+          "non_null": 6168,
+          "unique": 3864
+        },
+        "target_year": {
+          "max": 2024,
+          "min": 2023,
+          "non_null": 6168,
+          "unique": 2
+        }
+      },
+      "columns": [
+        "player_id",
+        "frozen_projected_dh_role_probability",
+        "current_primary_share",
+        "prior_total_role_events",
+        "prior_dh_role_events",
+        "observed_total_role_events",
+        "observed_dh_role_events",
+        "current_season_mlb_pa",
+        "predicted_expected_mlb_pa",
+        "B0_raw_dh_role_event_persistence",
+        "R1_frozen_role_share_persistent_volume",
+        "P1_fallback_to_R1",
+        "P1_frozen_role_share_playing_time_ratio",
+        "H1_fixed_50_50_B0_P1_hybrid",
+        "source_year",
+        "target_year",
+        "fold"
+      ],
+      "format": "parquet",
+      "path": "dh-exposure/scored_dh_exposure.parquet",
+      "rows": 6168,
+      "sha256": "b0ccc9ec1b1b74d2de432806eae7f4d7064d36355340abb6ee769d9854e1ba1e"
     },
     {
       "bytes": 382791,
@@ -6319,6 +6493,18 @@
         "run_id": 32266007594
       },
       {
+        "artifact_id": 9371426672,
+        "artifact_name": "player-value-v1-catcher-native-opportunity-selection",
+        "digest": "sha256:edc6c4fef7f0d17e063917f3defca48243ae60466a0e665c200c7989bfb42486",
+        "run_id": 32269076231
+      },
+      {
+        "artifact_id": 9371840453,
+        "artifact_name": "player-value-v1-dh-positional-exposure-selection",
+        "digest": "sha256:dd6237bfb496992cdca53fd88f362bf51dd90ff9e9371a324144536b414668b1",
+        "run_id": 32270141291
+      },
+      {
         "artifact_id": 9342409616,
         "artifact_name": "defense-v1-tracked-source-2021-2023",
         "digest": "sha256:a177f04655cc497534c85f47d94aa597b273358154eb76999b4a0bc9d5584de4",
@@ -6349,7 +6535,7 @@
         "run_id": 31955392482
       }
     ],
-    "source_sha": "c4d1ec2d0e3dad82ca78d0ff9e05ea403e7cf655"
+    "source_sha": "34f60bc10976618c33ec541b9b5785206ecfc389"
   },
   "status": "player_value_v1_mlb_centering_source_inventory_completed"
 }
