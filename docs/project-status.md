@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-19
+Last updated: 2026-08-20
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
