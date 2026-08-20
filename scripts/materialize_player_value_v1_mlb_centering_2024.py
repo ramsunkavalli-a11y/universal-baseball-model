@@ -81,6 +81,14 @@ EXPECTED_OFFICIAL_PA = 182449
 ZERO_EXPOSURE_IDS = (543518, 593934, 622491, 656555, 666158, 808982)
 
 
+class FrozenSourceDriftError(ValueError):
+    """A live source no longer reproduces its certified frozen model inputs."""
+
+    def __init__(self, message: str, *, details: dict[str, Any]) -> None:
+        super().__init__(message)
+        self.details = details
+
+
 def _load_json(path: Path) -> dict[str, Any]:
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
@@ -314,7 +322,7 @@ def _advancement_history(
 ) -> tuple[list[PlayerSeasonAdvancementSummary], list[dict[str, Any]]]:
     audit = _load_json(source_audit_path)
     certified = {
-        int(row["season"]): str(row["response_sha256"])
+        int(row["season"]): row
         for row in audit["mlb_statcast_advancement"]["captures"]
     }
     summaries: list[PlayerSeasonAdvancementSummary] = []
@@ -342,9 +350,11 @@ def _advancement_history(
         captures.append(
             {
                 "season": season,
-                "certified_response_sha256": certified[season],
+                "certified_response_bytes": int(certified[season]["response_bytes"]),
+                "certified_response_sha256": str(certified[season]["response_sha256"]),
+                "live_response_bytes": len(response.content),
                 "live_response_sha256": digest,
-                "byte_hash_matches": digest == certified[season],
+                "byte_hash_matches": digest == str(certified[season]["response_sha256"]),
                 "row_count": len(rows),
             }
         )
@@ -368,10 +378,22 @@ def _advancement_history(
             if development[candidate_id] != expected_development.get(candidate_id)
         ]
         first = changed[0]
-        raise ValueError(
-            "Savant byte drift changed frozen advancement development scores: "
-            f"candidates={changed}; first_actual={development[first]}; "
-            f"first_expected={expected_development.get(first)}"
+        raise FrozenSourceDriftError(
+            "Baseball Savant advancement history no longer reproduces the frozen "
+            f"development scores for {len(changed)} candidates",
+            details={
+                "source": "Baseball Savant baserunning-run-value CSV",
+                "captures": captures,
+                "changed_candidates": changed,
+                "first_changed_candidate": first,
+                "first_actual": development[first],
+                "first_expected": expected_development.get(first),
+                "authorized_resolution": (
+                    "recover the certified CSV bytes or an equivalent projection-ready "
+                    "advancement-history artifact produced from those exact bytes"
+                ),
+                "changed_live_rows_accepted": False,
+            },
         )
     candidates = {row.candidate_id: row for row in advancement_candidates()}
     confirmation = {
@@ -578,6 +600,7 @@ if __name__ == "__main__":
                         "source_commit": str(os.environ.get("GITHUB_SHA") or "").strip() or None,
                         "exception_type": type(exc).__name__,
                         "failure": str(exc),
+                        "failure_details": getattr(exc, "details", None),
                         "boundary": {
                             "centering_json_frozen": False,
                             "park_neutrality_audit_opened": False,
