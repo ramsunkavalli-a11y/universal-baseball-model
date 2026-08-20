@@ -1,0 +1,129 @@
+{
+  "actions_run_id": 32381604496,
+  "aggregate": {
+    "baseball_reference_sensitivity_positional_runs": -440.9744444444445,
+    "fangraphs_positional_runs": -473.74028349337,
+    "sensitivity_minus_binding_runs": 32.76583904892546
+  },
+  "binding_schedule": {
+    "schedule_id": "fangraphs_fixed_162_game_v1",
+    "values": {
+      "1B": -12.5,
+      "2B": 2.5,
+      "3B": 2.5,
+      "C": 12.5,
+      "CF": 2.5,
+      "DH": -17.5,
+      "LF": -7.5,
+      "RF": -7.5,
+      "SS": 7.5
+    }
+  },
+  "boundary": {
+    "binding_schedule_changed": false,
+    "exposure_refit": false,
+    "league_centering_applied": false,
+    "war_calculated": false
+  },
+  "contract": "docs/player-value-v1-positional-adjustment-contract.md",
+  "difference_distribution_runs": {
+    "maximum": 2.1908367626886136,
+    "mean": 0.010757005597152152,
+    "mean_absolute": 0.06353248512895247,
+    "median": 0.0,
+    "minimum": -2.1774759945130313,
+    "p05": -0.004135802469135641,
+    "p95": 0.15956790123456782
+  },
+  "inputs": {
+    "dh_exposure": {
+      "artifact_id": 9371840453,
+      "run_id": 32270141291
+    },
+    "player_count": 3046,
+    "position_allocation": {
+      "artifact_id": 9370211679,
+      "run_id": 32266007594
+    }
+  },
+  "largest_absolute_player_differences": [
+    {
+      "baseball_reference_sensitivity_positional_runs": -10.034814814814816,
+      "fangraphs_positional_runs": -12.22565157750343,
+      "player_id": 621566,
+      "sensitivity_minus_binding_runs": 2.1908367626886136
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": 7.613333333333333,
+      "fangraphs_positional_runs": 9.790809327846365,
+      "player_id": 592663,
+      "sensitivity_minus_binding_runs": -2.1774759945130313
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": -9.91753086419753,
+      "fangraphs_positional_runs": -12.082761774119799,
+      "player_id": 663993,
+      "sensitivity_minus_binding_runs": 2.1652309099222684
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": -10.114938271604938,
+      "fangraphs_positional_runs": -12.254229538180155,
+      "player_id": 679529,
+      "sensitivity_minus_binding_runs": 2.139291266575217
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": -9.699382716049383,
+      "fangraphs_positional_runs": -11.816986739826246,
+      "player_id": 518692,
+      "sensitivity_minus_binding_runs": 2.117604023776863
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": -9.57037037037037,
+      "fangraphs_positional_runs": -11.659807956104252,
+      "player_id": 664034,
+      "sensitivity_minus_binding_runs": 2.089437585733883
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": -9.613827160493827,
+      "fangraphs_positional_runs": -11.657521719250113,
+      "player_id": 572233,
+      "sensitivity_minus_binding_runs": 2.043694558756286
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": -9.74320987654321,
+      "fangraphs_positional_runs": -11.746113397347964,
+      "player_id": 624413,
+      "sensitivity_minus_binding_runs": 2.002903520804754
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": -9.450864197530866,
+      "fangraphs_positional_runs": -11.403749428440786,
+      "player_id": 683734,
+      "sensitivity_minus_binding_runs": 1.9528852309099207
+    },
+    {
+      "baseball_reference_sensitivity_positional_runs": -10.216049382716049,
+      "fangraphs_positional_runs": -12.156492912665753,
+      "player_id": 502671,
+      "sensitivity_minus_binding_runs": 1.9404435299497038
+    }
+  ],
+  "reference_season": 2024,
+  "schema_version": "0.1",
+  "sensitivity_schedule": {
+    "schedule_id": "baseball_reference_current_raw_150_game_sensitivity_v1",
+    "values": {
+      "1B": -9.5,
+      "2B": 3.0,
+      "3B": 2.0,
+      "C": 9.0,
+      "CF": 2.5,
+      "DH": -15.0,
+      "LF": -7.0,
+      "RF": -7.0,
+      "SS": 7.0
+    }
+  },
+  "source_commit": "37745d15141ad7ccf2ef08d222690890595f9d86",
+  "status": "player_value_v1_positional_adjustment_sensitivity_2024_frozen_verified"
+}
