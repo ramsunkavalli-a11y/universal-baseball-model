@@ -1,0 +1,15 @@
+{
+  "boundary": {
+    "centering_json_frozen": false,
+    "model_refit": false,
+    "model_reselection": false,
+    "park_neutrality_audit_opened": false,
+    "replacement_included": false
+  },
+  "exception_type": "ValueError",
+  "failure": "Savant byte drift changed frozen advancement development scores: candidates=['A0_neutral', 'A1_k225', 'A1_k25', 'A1_k75', 'A2_k225', 'A2_k25', 'A2_k75']; first_actual={'candidate_id': 'A0_neutral', 'yearly': {2022: {'score': 0.0038470573367900772, 'exposure': 12840.0, 'observation_count': 620, 'weighted_mae': 0.04485959385207416, 'player_rmse': 0.09469961682685854, 'correlation': None}, 2023: {'score': 0.00330939269315281, 'exposure': 13467.0, 'observation_count': 605, 'weighted_mae': 0.04104095911324032, 'player_rmse': 0.10730976677117915, 'correlation': None}}, 'equal_year_mean_primary': 0.0035782250149714433}; first_expected={'candidate_id': 'A0_neutral', 'equal_year_mean_primary': 0.0035781987760809303, 'yearly': {'2022': {'correlation': None, 'exposure': 12840.0, 'observation_count': 620, 'player_rmse': 0.09469818229591073, 'score': 0.0038468525794172655, 'weighted_mae': 0.044858103271221354}, '2023': {'correlation': None, 'exposure': 13467.0, 'observation_count': 605, 'player_rmse': 0.1073111179331485, 'score': 0.003309544972744595, 'weighted_mae': 0.04104093689268506}}}",
+  "materialization_run_id": 32374740570,
+  "schema_version": "0.1",
+  "source_commit": "2bb31141b6389e8b4efc23dfd5376ef1945e752a",
+  "status": "player_value_v1_mlb_centering_2024_failed_closed"
+}
