@@ -58,12 +58,28 @@ def test_official_membership_reconciliation_ignores_pa_accounting_difference() -
     )
 
 
-def test_official_membership_reconciliation_fails_on_player_set_difference() -> None:
+def test_official_membership_can_include_playing_time_zero_observed_pa_row() -> None:
     official = [
         OfficialMLBReferenceCandidate(1, 510.0),
         OfficialMLBReferenceCandidate(3, 5.0),
     ]
-    with pytest.raises(ValueError, match="does not reconcile exactly"):
+    members = reconcile_fixed_2024_mlb_reference_members(
+        _playing_time_rows(),
+        official,
+        expected_player_count=2,
+    )
+    assert members == (
+        FixedMLBReferenceMember(1, 480.0),
+        FixedMLBReferenceMember(3, 125.0),
+    )
+
+
+def test_official_member_missing_playing_time_exposure_fails_closed() -> None:
+    official = [
+        OfficialMLBReferenceCandidate(1, 510.0),
+        OfficialMLBReferenceCandidate(4, 5.0),
+    ]
+    with pytest.raises(ValueError, match="missing Playing Time projected-PA rows"):
         reconcile_fixed_2024_mlb_reference_members(
             _playing_time_rows(),
             official,
