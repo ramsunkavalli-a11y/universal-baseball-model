@@ -38,7 +38,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Required pre-WAR sensitivities:** **DONE / VERIFIED OR CONTRACTUALLY UNAVAILABLE**
 - **WAR/value aggregation:** **DONE / FROZEN / VERIFIED**
 - **Final ranking:** **DONE / FROZEN / VERIFIED**
-- **Formal forecast uncertainty:** **ACTIVE — PRE-OUTPUT METHOD FROZEN**
+- **Formal forecast uncertainty:** **DONE / FROZEN / VERIFIED**
 
 ## Frozen upstream models
 
@@ -409,15 +409,48 @@ delta `0.0`, retained all six zero rows, reconciled defense subtotals within
 `7.105427357601002e-15` runs. The final ordering uses unrounded WAR descending
 and ascending MLBAM ID only as a deterministic tie-break.
 
-## Active stage — formal forecast uncertainty
+## Formal forecast uncertainty — DONE / FROZEN / VERIFIED
 
-The pre-output method is frozen in
-`docs/player-value-v1-uncertainty-contract.md`. It adds deterministic 80% and
-95% model-based forecast intervals around the final 3,051 point estimates using
-the frozen Playing Time hurdle/NB2 distribution, the B2 empirical-Bayes evidence
-surface, and Defense family residual MSEs. It cannot change point components,
-rank order, population, or any upstream selection. Interval materialization and
-Actions verification are pending.
+The pre-output method was frozen in
+`docs/player-value-v1-uncertainty-contract.md` at commit `9d6e5ad`, before any
+interval result was materialized. It adds deterministic equal-tail 80% and 95%
+model-based forecast intervals around the final 3,051 point estimates using the
+frozen Playing Time hurdle/NB2 distribution, the B2 empirical-Bayes evidence
+surface, and Defense family residual MSEs. It does not change point components,
+rank order, population, or any upstream selection.
+
+Actions run **`32388953065`** passed all steps, including 33 focused tests in
+the workflow's selected suites, exact frozen-artifact downloads, the complete
+3,051-player simulation, and a byte-for-byte deterministic rerun. Artifact
+**`9414064136`**, digest
+`sha256:412baa74c72532e76f97f09da742a657d15c7b3d70407c0926337946aae146f3`,
+contains the complete Parquet interval table and the frozen result
+`docs/player-value-v1-uncertainty-2024.json`.
+
+Mechanical QA verified:
+
+- all 3,051 rows and the original point rank/WAR are unchanged;
+- all six outside-snapshot structural-zero rows retain zero-width intervals;
+- Playing Time expected-PA reconciliation delta is exactly `0.0`;
+- maximum batting point reproduction delta is
+  `9.381384558082573e-15` runs;
+- maximum point-WAR identity delta is exactly `0.0`;
+- maximum component variance-share sum residual is
+  `2.220446049250313e-16`;
+- every interval is finite and nested.
+
+Across players, mean 80% / 95% interval widths are
+`0.4837201039184545` / `0.9595463558223047` WAR; 95th-percentile widths are
+`3.0470708095058248` / `5.679540011257353` WAR. The median variance share is
+`0.686922382072843` Playing Time, `0.2676183130576742` batting, and `0.0`
+Defense. The hurdle model produces zero-width 80% / 95% intervals for 2,273 /
+1,848 low-participation rows because the corresponding central interval is
+entirely at zero; no cap, floor, or post-result repair was applied.
+
+These intervals are conditional on the frozen v1 uncertainty surfaces. They do
+not invent independent baserunning-skill, future position/DH-mix, league-constant,
+source-revision, or cross-component covariance error. Those omissions are
+explicit in the result and remain possible v2 gates.
 
 ## Governing read order
 
@@ -436,26 +469,27 @@ Actions verification are pending.
 13. `docs/player-value-v1-final-aggregation-contract.md`
 14. `docs/player-value-v1-final-2024.json`
 15. `docs/player-value-v1-uncertainty-contract.md`
-16. `docs/player-value-v1-replacement-level-contract.md`
-17. `docs/player-value-v1-replacement-level-2024.json`
-18. `docs/player-value-v1-replacement-level-verification.json`
-19. `docs/player-value-v1-runs-per-win-contract.md`
-20. `docs/player-value-v1-mlb-run-environment-2024.json`
-21. `docs/player-value-v1-batting-runs-contract.md`
-22. `docs/player-value-v1-positional-adjustment-contract.md`
-23. `docs/player-value-v1-defense-production-handoff.md`
-24. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-25. `docs/player-value-v1-baserunning-source-audit-contract.md`
-26. `docs/player-value-v1-baserunning-source-audit-result.json`
-27. `docs/player-value-v1-steal-projection-selection-contract.md`
-28. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-29. `docs/player-value-v1-steal-projection-selection-result.json`
-30. `docs/player-value-v1-advancement-projection-selection-contract.md`
-31. `docs/player-value-v1-advancement-projection-selection-result.json`
-32. `docs/player-value-v1-baserunning-run-conversion-contract.md`
-33. `docs/player-value-v1-baserunning-run-conversion-2024.json`
-34. `docs/projection-batting-v1-development-result.json`
-35. `docs/current-talent-results-only-baseline-freeze.md`
+16. `docs/player-value-v1-uncertainty-2024.json`
+17. `docs/player-value-v1-replacement-level-contract.md`
+18. `docs/player-value-v1-replacement-level-2024.json`
+19. `docs/player-value-v1-replacement-level-verification.json`
+20. `docs/player-value-v1-runs-per-win-contract.md`
+21. `docs/player-value-v1-mlb-run-environment-2024.json`
+22. `docs/player-value-v1-batting-runs-contract.md`
+23. `docs/player-value-v1-positional-adjustment-contract.md`
+24. `docs/player-value-v1-defense-production-handoff.md`
+25. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+26. `docs/player-value-v1-baserunning-source-audit-contract.md`
+27. `docs/player-value-v1-baserunning-source-audit-result.json`
+28. `docs/player-value-v1-steal-projection-selection-contract.md`
+29. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+30. `docs/player-value-v1-steal-projection-selection-result.json`
+31. `docs/player-value-v1-advancement-projection-selection-contract.md`
+32. `docs/player-value-v1-advancement-projection-selection-result.json`
+33. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+34. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+35. `docs/projection-batting-v1-development-result.json`
+36. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
