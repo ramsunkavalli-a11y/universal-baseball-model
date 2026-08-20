@@ -42,6 +42,16 @@ jobs:
           github-token: ${{ github.token }}
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32099733186"
+      - name: Download verified MLB centering membership
+        id: centering_membership
+        continue-on-error: true
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9389597470"
+          path: inputs/centering-membership
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32320525700"
       - name: Download frozen playing-time validation
         id: playing_time
         continue-on-error: true
@@ -153,6 +163,7 @@ jobs:
             '{source_sha:$source_sha,
               artifacts:[
                 {run_id:32099733186,artifact_name:"projection-batting-v1-current-talent-snapshots",artifact_id:9311172007,digest:"sha256:40430b67a492aec81e570cd67e74ae3ca7b809cb3ce538082237be244c450d44"},
+                {run_id:32320525700,artifact_name:"player-value-v1-mlb-centering-2024-membership",artifact_id:9389597470,digest:"sha256:4166264ee2a690abe40d19c72c031710e4fa156e249b511c2c03d267cf689c20"},
                 {run_id:32142089669,artifact_name:"playing-time-v1-validation-2024",artifact_id:9326300207,digest:"sha256:979386377b5c2fa7f8f411bcd3284c6f4e68d532a5585e002b493f3cfffe0366"},
                 {run_id:32148467330,artifact_name:"position-role-historical-source-2021-2024",artifact_id:9328803363,digest:"sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3"},
                 {run_id:32266007594,artifact_name:"player-value-v1-defensive-position-allocation",artifact_id:9370211679,digest:"sha256:68f31b337ece8b40403a944663ed20f068da4e99b961bfcfa4a4ed51eb128ede"},
@@ -169,6 +180,7 @@ jobs:
         id: materialize
         if: >-
           steps.batting_b2.outcome == 'success' &&
+          steps.centering_membership.outcome == 'success' &&
           steps.playing_time.outcome == 'success' &&
           steps.fielding_history.outcome == 'success' &&
           steps.position_allocation.outcome == 'success' &&
@@ -190,6 +202,7 @@ jobs:
         env:
           SOURCE_RUN_ID: ${{ github.run_id }}
           BATTING_B2: ${{ steps.batting_b2.outcome }}
+          CENTERING_MEMBERSHIP: ${{ steps.centering_membership.outcome }}
           PLAYING_TIME: ${{ steps.playing_time.outcome }}
           FIELDING_HISTORY: ${{ steps.fielding_history.outcome }}
           POSITION_ALLOCATION: ${{ steps.position_allocation.outcome }}
@@ -208,6 +221,7 @@ jobs:
               --arg source_sha "$GITHUB_SHA" \
               --argjson run_id "$SOURCE_RUN_ID" \
               --arg batting_b2 "$BATTING_B2" \
+              --arg centering_membership "$CENTERING_MEMBERSHIP" \
               --arg playing_time "$PLAYING_TIME" \
               --arg fielding_history "$FIELDING_HISTORY" \
               --arg position_allocation "$POSITION_ALLOCATION" \
@@ -225,6 +239,7 @@ jobs:
                 source_sha:$source_sha,
                 outcomes:{
                   batting_b2:$batting_b2,
+                  centering_membership:$centering_membership,
                   playing_time:$playing_time,
                   fielding_history:$fielding_history,
                   position_allocation:$position_allocation,
