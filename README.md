@@ -4,7 +4,9 @@ A public-data baseball player evaluation and projection system covering MLB thro
 
 ## Start here
 
-Read [`docs/project-status.md`](docs/project-status.md) first. `main` is the latest integrated branch; active work newer than the last integration is on `source-certification-poc`.
+Read [`docs/project-status.md`](docs/project-status.md) first. Protected `main`
+is the canonical integrated branch; start new work from current `main` on a
+focused pull-request branch.
 
 ## Current stage
 
@@ -91,6 +93,14 @@ scikit-learn/statsmodels runtime is needed.
 Historical certification and materialization workflows are retained for audit
 and explicit manual use, but they do not run automatically after the v1 freeze.
 See [`docs/workflow-lifecycle.md`](docs/workflow-lifecycle.md).
+
+## License and data rights
+
+Original project code and documentation are licensed under the
+[MIT License](LICENSE). That license does not grant rights to third-party data,
+names, marks, or upstream materials. See [NOTICE.md](NOTICE.md) and
+[`config/source-policies.json`](config/source-policies.json) before
+redistributing data or source-derived artifacts.
 
 1. Reuse certified public work and existing repo adapters before rebuilding source ingestion.
 2. Work in small verified batches and verify each batch before expanding scope.

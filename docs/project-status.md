@@ -7,8 +7,13 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 ## Active work
 
 - Repo: `ramsunkavalli-a11y/universal-baseball-model`
-- Active branch: `source-certification-poc`
-- `main` is behind active work; use the active branch.
+- Canonical branch: protected `main`.
+- The completed `source-certification-poc` program was integrated through PR
+  `#2` at merge commit `dcaf8f7a2382e836fb6624c16e06319c3e6518f5`.
+- Start new work from current `main` on a focused feature branch and merge it
+  through a passing pull request.
+- Public v1 release target: `v1.0.0`; frozen v1 scientific outputs must not be
+  rewritten by release or maintenance work.
 - Work in small verified batches and inspect branch head before editing.
 - Prefer certified/reusable public data, mature parsers, and existing adapters over rebuilding raw-source cleanup.
 - Preserve every Player Value component as an explicit layer with provenance.
