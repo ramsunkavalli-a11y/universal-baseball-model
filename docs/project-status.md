@@ -303,6 +303,8 @@ Legacy advancement-selection run **`32378956317`**, triggered by the shared proj
 
 ## ACTIVE STAGE — park-neutrality audit
 
+Binding pre-outcome contract: `docs/player-value-v1-park-neutrality-audit-contract.md`.
+
 Test whether frozen batting/current-talent outputs retain systematic park/team residuals. Add an explicit park correction only if evidence demonstrates remaining context; do not blindly copy a conventional park adjustment and risk double-correction.
 
 ## WAR remains closed
