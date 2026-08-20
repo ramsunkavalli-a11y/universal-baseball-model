@@ -19,6 +19,7 @@ from universal_baseball.player_value_advancement_projection import (
     AdvancementCandidateScore,
     PlayerSeasonAdvancementSummary,
     advancement_candidates,
+    canonical_advancement_model_input_sha256,
     confirmation_passes,
     score_all_candidates,
     score_candidate,
@@ -45,26 +46,6 @@ def _load_json(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ValueError(f"expected JSON object: {path}")
     return value
-
-
-def canonical_model_input_sha256(
-    rows: Iterable[PlayerSeasonAdvancementSummary],
-) -> str:
-    """Hash exact IEEE-754 inputs independently of Parquet encoding."""
-
-    materialized = sorted(rows, key=lambda row: (row.season, row.player_id))
-    lines = [
-        ",".join(
-            (
-                str(row.season),
-                str(row.player_id),
-                float(row.runs_xb).hex(),
-                float(row.opportunities_xb).hex(),
-            )
-        )
-        for row in materialized
-    ]
-    return hashlib.sha256(("\n".join(lines) + "\n").encode("ascii")).hexdigest()
 
 
 def relative_score_drift(current: float, frozen: float) -> float:
@@ -254,8 +235,8 @@ def main() -> None:
         PlayerSeasonAdvancementSummary(**row)
         for row in pl.read_parquet(args.output_table).to_dicts()
     ]
-    canonical_hash = canonical_model_input_sha256(history)
-    if canonical_model_input_sha256(roundtrip) != canonical_hash:
+    canonical_hash = canonical_advancement_model_input_sha256(history)
+    if canonical_advancement_model_input_sha256(roundtrip) != canonical_hash:
         raise ValueError("Parquet roundtrip changed canonical advancement model inputs")
 
     all_drifts = [

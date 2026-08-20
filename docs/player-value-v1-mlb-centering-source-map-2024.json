@@ -22,9 +22,13 @@
     },
     "Rbr": {
       "models": {"steal_attempt": "B2_k5", "steal_success": "B2_k45", "advancement": "A2_k25", "gidp_residual": "G0_omitted_v1"},
-      "frozen_results": ["docs/player-value-v1-steal-projection-selection-result.json", "docs/player-value-v1-advancement-projection-selection-result.json", "docs/player-value-v1-baserunning-source-audit-result.json", "docs/player-value-v1-baserunning-run-conversion-2024.json"],
+      "frozen_results": ["docs/player-value-v1-steal-projection-selection-result.json", "docs/player-value-v1-advancement-projection-selection-result.json", "docs/player-value-v1-baserunning-source-audit-result.json", "docs/player-value-v1-baserunning-run-conversion-2024.json", "docs/player-value-v1-advancement-source-recertification-result.json"],
+      "advancement_artifact": {"run_id": 32378320744, "artifact_id": 9409946231, "name": "player-value-v1-advancement-history-recertified-2019-2024", "digest": "sha256:f22eeb5749ced709f461c6a8c5a473a8d6fc0eee4fadbeeba5f56c84a51b3a49"},
+      "advancement_path": "player-value-v1-advancement-history-recertified-2019-2024.parquet",
+      "advancement_columns": ["season", "player_id", "runs_xb", "opportunities_xb"],
+      "advancement_canonical_model_input_sha256": "dfbd52dfaccd1cc20d2bf710c27755f169a7873fcd0efb45339debbb3ad4bbc8",
       "history_seasons": [2019, 2020, 2021, 2022, 2023],
-      "rule": "replay certified immutable MLB/MiLB steal captures and hash-certified Savant advancement captures; apply frozen skills to the common 2024 MLB reference"
+      "rule": "replay certified immutable MLB/MiLB steal captures; consume the immutable recertified Savant advancement table without another live fetch; apply frozen skills to the common 2024 MLB reference"
     },
     "Rdef": {
       "fielding_artifact": {"run_id": 32148467330, "artifact_id": 9328803363, "name": "position-role-historical-source-2021-2024", "digest": "sha256:908022d38b3652db1c2b68a7ba2768954c32f8973f0ace85c9557d30522adaf3"},

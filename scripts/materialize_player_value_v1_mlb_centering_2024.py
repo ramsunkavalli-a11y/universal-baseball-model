@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict
+from dataclasses import asdict, fields
 import hashlib
 import json
 import math
@@ -19,20 +19,12 @@ from universal_baseball.performance_season import ALL_CORE_BINS
 from universal_baseball.player_value_advancement_projection import (
     AdvancementCandidate,
     PlayerSeasonAdvancementSummary,
-    advancement_candidates,
+    canonical_advancement_model_input_sha256,
     projected_advancement_rate,
-    score_all_candidates as score_all_advancement_candidates,
-    score_candidate as score_advancement_candidate,
 )
 from universal_baseball.player_value_baserunning_runs import (
     BaserunningReference,
     project_baserunning_runs,
-)
-from universal_baseball.player_value_baserunning_sources import (
-    SAVANT_BASERUNNING_RUN_VALUE_URL,
-    audit_savant_baserunning_rows,
-    parse_savant_baserunning_csv,
-    savant_baserunning_query_params,
 )
 from universal_baseball.player_value_batting_runs import (
     build_v1_mlb_batting_reference,
@@ -74,19 +66,10 @@ from universal_baseball.player_value_steal_projection import (
 
 REFERENCE_SEASON = 2024
 HISTORY_SEASONS = (2019, 2020, 2021, 2022, 2023)
-ADVANCEMENT_SOURCE_SEASONS = (*HISTORY_SEASONS, 2024)
 EXPECTED_PLAYER_COUNT = 651
 EXPECTED_PROJECTED_PA = 148948.26306286638
 EXPECTED_OFFICIAL_PA = 182449
 ZERO_EXPOSURE_IDS = (543518, 593934, 622491, 656555, 666158, 808982)
-
-
-class FrozenSourceDriftError(ValueError):
-    """A live source no longer reproduces its certified frozen model inputs."""
-
-    def __init__(self, message: str, *, details: dict[str, Any]) -> None:
-        super().__init__(message)
-        self.details = details
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -315,111 +298,46 @@ def _assert_capture_hashes(actual: list[dict[str, Any]], expected: list[dict[str
         raise ValueError(f"{label} steal captures differ from the frozen selection result")
 
 
-def _advancement_history(
-    source_audit_path: Path,
-    selection_path: Path,
-    session: requests.Session,
-) -> tuple[list[PlayerSeasonAdvancementSummary], list[dict[str, Any]]]:
-    audit = _load_json(source_audit_path)
-    certified = {
-        int(row["season"]): row
-        for row in audit["mlb_statcast_advancement"]["captures"]
+def _frozen_advancement_history(
+    table_path: Path,
+    recertification_path: Path,
+) -> tuple[list[PlayerSeasonAdvancementSummary], dict[str, Any]]:
+    recertification = _load_json(recertification_path)
+    if (
+        recertification["status"]
+        != "player_value_v1_advancement_source_recertification_frozen_verified"
+        or recertification["frozen_candidate_id"] != "A2_k25"
+        or not recertification["invariance_audit"]["passes"]
+    ):
+        raise ValueError("advancement recertification is not frozen and verified")
+    frame = pl.read_parquet(table_path)
+    required = {"season", "player_id", "runs_xb", "opportunities_xb"}
+    if set(frame.columns) != required:
+        raise ValueError("recertified advancement table columns changed")
+    rows = [PlayerSeasonAdvancementSummary(**row) for row in frame.to_dicts()]
+    model_input = recertification["model_input"]
+    if len(rows) != int(model_input["row_count"]):
+        raise ValueError("recertified advancement table row count changed")
+    digest = canonical_advancement_model_input_sha256(rows)
+    if digest != str(model_input["canonical_sha256"]):
+        raise ValueError("recertified advancement canonical model-input hash changed")
+    if len({(row.season, row.player_id) for row in rows}) != len(rows):
+        raise ValueError("recertified advancement table has duplicate player-season keys")
+    return rows, {
+        "source_run_id": recertification["source_run_id"],
+        "immutable_artifact": recertification["immutable_artifact"],
+        "canonical_sha256": digest,
+        "row_count": len(rows),
+        "invariance_audit": recertification["invariance_audit"],
     }
-    summaries: list[PlayerSeasonAdvancementSummary] = []
-    captures: list[dict[str, Any]] = []
-    for season in ADVANCEMENT_SOURCE_SEASONS:
-        response = session.get(
-            SAVANT_BASERUNNING_RUN_VALUE_URL,
-            params=savant_baserunning_query_params(season),
-            timeout=120,
-        )
-        response.raise_for_status()
-        digest = hashlib.sha256(response.content).hexdigest()
-        rows = parse_savant_baserunning_csv(response.content.decode("utf-8-sig"))
-        if not audit_savant_baserunning_rows(rows)["advancement_source_usable"]:
-            raise ValueError(f"Savant advancement capture is unusable for {season}")
-        summaries.extend(
-            PlayerSeasonAdvancementSummary(
-                player_id=int(float(row["player_id"])),
-                season=season,
-                runs_xb=float(row["runner_runs_xb"]),
-                opportunities_xb=float(row["n_runner_moved_xb"]),
-            )
-            for row in rows
-        )
-        captures.append(
-            {
-                "season": season,
-                "certified_response_bytes": int(certified[season]["response_bytes"]),
-                "certified_response_sha256": str(certified[season]["response_sha256"]),
-                "live_response_bytes": len(response.content),
-                "live_response_sha256": digest,
-                "byte_hash_matches": digest == str(certified[season]["response_sha256"]),
-                "row_count": len(rows),
-            }
-        )
-
-    # Savant can change non-model CSV bytes (for example names). Fail closed
-    # unless every frozen development and confirmation score still reproduces.
-    frozen = _load_json(selection_path)
-    development = {
-        score.candidate_id: asdict(score)
-        for score in score_all_advancement_candidates(
-            summaries, target_years=(2022, 2023)
-        )
-    }
-    expected_development = {
-        row["candidate_id"]: row for row in frozen["development_scores"]
-    }
-    if development != expected_development:
-        changed = [
-            candidate_id
-            for candidate_id in sorted(development)
-            if development[candidate_id] != expected_development.get(candidate_id)
-        ]
-        first = changed[0]
-        raise FrozenSourceDriftError(
-            "Baseball Savant advancement history no longer reproduces the frozen "
-            f"development scores for {len(changed)} candidates",
-            details={
-                "source": "Baseball Savant baserunning-run-value CSV",
-                "captures": captures,
-                "changed_candidates": changed,
-                "first_changed_candidate": first,
-                "first_actual": development[first],
-                "first_expected": expected_development.get(first),
-                "authorized_resolution": (
-                    "recover the certified CSV bytes or an equivalent projection-ready "
-                    "advancement-history artifact produced from those exact bytes"
-                ),
-                "changed_live_rows_accepted": False,
-            },
-        )
-    candidates = {row.candidate_id: row for row in advancement_candidates()}
-    confirmation = {
-        candidate_id: asdict(
-            score_advancement_candidate(
-                summaries,
-                candidates[candidate_id],
-                target_years=(2024,),
-            )
-        )
-        for candidate_id in ("A0_neutral", frozen["frozen_candidate_id"])
-    }
-    expected_confirmation = {
-        row["candidate_id"]: row for row in frozen["confirmation_scores"]
-    }
-    if confirmation != expected_confirmation:
-        raise ValueError("Savant byte drift changed frozen advancement confirmation scores")
-    return summaries, captures
 
 
 def _baserunning_runs(
     members: Iterable[FixedMLBReferenceMember],
     *,
     steal_selection_path: Path,
-    advancement_audit_path: Path,
-    advancement_selection_path: Path,
+    advancement_history_path: Path,
+    advancement_recertification_path: Path,
     conversion_path: Path,
 ) -> tuple[dict[int, float], dict[str, Any]]:
     selection = _load_json(steal_selection_path)
@@ -427,14 +345,17 @@ def _baserunning_runs(
         session.headers.setdefault("User-Agent", "universal-baseball-model-mlb-centering/0.1")
         mlb_stints, mlb_captures = fetch_mlb_steal_stints(HISTORY_SEASONS, session=session)
         milb_stints, milb_captures = fetch_milb_steal_stints(HISTORY_SEASONS, session=session)
-        advancement, advancement_captures = _advancement_history(
-            advancement_audit_path, advancement_selection_path, session
-        )
+    advancement, advancement_source = _frozen_advancement_history(
+        advancement_history_path, advancement_recertification_path
+    )
     _assert_capture_hashes(mlb_captures, selection["source"]["mlb_captures"], label="MLB")
     _assert_capture_hashes(milb_captures, selection["source"]["milb_captures"], label="MiLB")
     steal_history, environment_audit = build_loo_player_season_summaries([*mlb_stints, *milb_stints])
     conversion = _load_json(conversion_path)
-    reference = BaserunningReference(**conversion["reference"])
+    reference_values = conversion["reference"]
+    reference = BaserunningReference(
+        **{field.name: reference_values[field.name] for field in fields(BaserunningReference)}
+    )
     attempt_candidate = StealCandidate("B2_k5", "B2", 5.0)
     success_candidate = StealCandidate("B2_k45", "B2", 45.0)
     advancement_candidate = AdvancementCandidate("A2_k25", "A2", 25.0)
@@ -469,8 +390,7 @@ def _baserunning_runs(
         "steal_environment_audit": asdict(environment_audit),
         "steal_history_rows": len(steal_history),
         "advancement_history_rows": len(advancement),
-        "advancement_capture_replay": advancement_captures,
-        "advancement_frozen_selection_scores_reproduced_exactly": True,
+        "advancement_recertified_source": advancement_source,
         "all_capture_hashes_reconciled": True,
     }
 
@@ -513,8 +433,11 @@ def main() -> None:
     baserunning, baserunning_audit = _baserunning_runs(
         members,
         steal_selection_path=Path("docs/player-value-v1-steal-projection-selection-result.json"),
-        advancement_audit_path=Path("docs/player-value-v1-baserunning-source-audit-result.json"),
-        advancement_selection_path=Path("docs/player-value-v1-advancement-projection-selection-result.json"),
+        advancement_history_path=root
+        / "advancement-recertified/player-value-v1-advancement-history-recertified-2019-2024.parquet",
+        advancement_recertification_path=Path(
+            "docs/player-value-v1-advancement-source-recertification-result.json"
+        ),
         conversion_path=Path("docs/player-value-v1-baserunning-run-conversion-2024.json"),
     )
     assembled = assemble_fixed_mlb_reference_components(

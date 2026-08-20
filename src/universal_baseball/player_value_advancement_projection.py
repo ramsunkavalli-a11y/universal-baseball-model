@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 import math
 from typing import Iterable, Literal
 
@@ -65,6 +66,26 @@ class AdvancementSelectionResult:
     development_selected_score: float
     development_passed: bool
     catastrophic_development_years: tuple[int, ...]
+
+
+def canonical_advancement_model_input_sha256(
+    rows: Iterable[PlayerSeasonAdvancementSummary],
+) -> str:
+    """Hash exact IEEE-754 model inputs independently of table encoding."""
+
+    materialized = sorted(rows, key=lambda row: (row.season, row.player_id))
+    lines = [
+        ",".join(
+            (
+                str(row.season),
+                str(row.player_id),
+                float(row.runs_xb).hex(),
+                float(row.opportunities_xb).hex(),
+            )
+        )
+        for row in materialized
+    ]
+    return hashlib.sha256(("\n".join(lines) + "\n").encode("ascii")).hexdigest()
 
 
 def advancement_candidates() -> tuple[AdvancementCandidate, ...]:

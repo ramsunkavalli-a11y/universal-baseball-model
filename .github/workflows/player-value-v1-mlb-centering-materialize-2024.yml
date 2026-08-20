@@ -6,12 +6,14 @@ on:
     paths:
       - ".github/workflows/player-value-v1-mlb-centering-materialize-2024.yml"
       - "scripts/materialize_player_value_v1_mlb_centering_2024.py"
+      - "src/universal_baseball/player_value_advancement_projection.py"
       - "src/universal_baseball/player_value_defense_projection.py"
       - "src/universal_baseball/player_value_mlb_centering.py"
       - "src/universal_baseball/player_value_mlb_centering_assembly.py"
       - "tests/test_player_value_defense_projection.py"
       - "tests/test_player_value_mlb_centering.py"
       - "tests/test_player_value_mlb_centering_assembly.py"
+      - "docs/player-value-v1-advancement-source-recertification-result.json"
       - "docs/player-value-v1-mlb-centering-source-map-2024.json"
   workflow_dispatch:
 
@@ -37,6 +39,7 @@ jobs:
           python -m pip install -e ".[dev]" &&
           python -m pytest -q
           tests/test_player_value_defense_projection.py
+          tests/test_player_value_advancement_source_recertification.py
           tests/test_player_value_mlb_centering.py
           tests/test_player_value_mlb_centering_assembly.py
 
@@ -104,6 +107,14 @@ jobs:
           github-token: ${{ github.token }}
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32269076231"
+      - name: Download recertified advancement history
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9409946231"
+          path: inputs/advancement-recertified
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32378320744"
 
       - name: Materialize 651-player numerical centering reference
         id: centering
@@ -123,7 +134,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ "${{ steps.centering.outcome }}" = "success" ]; then
-            rm -f docs/player-value-v1-mlb-centering-2024-blocker.json
+            git rm -f --ignore-unmatch docs/player-value-v1-mlb-centering-2024-blocker.json
             git add docs/player-value-v1-mlb-centering-2024.json
           else
             git add docs/player-value-v1-mlb-centering-2024-blocker.json
