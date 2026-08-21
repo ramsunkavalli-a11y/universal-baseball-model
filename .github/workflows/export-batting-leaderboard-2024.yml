@@ -6,6 +6,10 @@ on:
     paths:
       - ".github/workflows/export-batting-leaderboard-2024.yml"
       - "scripts/export_batting_leaderboard_2024.py"
+  pull_request:
+    paths:
+      - ".github/workflows/export-batting-leaderboard-2024.yml"
+      - "scripts/export_batting_leaderboard_2024.py"
   workflow_dispatch:
 
 permissions:
@@ -48,6 +52,7 @@ jobs:
           --output-csv reports/generated/batting-leaderboard-2024.csv
           --output-json docs/batting-leaderboard-2024.json
       - name: Persist human-readable exports
+        if: github.event_name == 'push'
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
