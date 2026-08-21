@@ -1,0 +1,72 @@
+name: Export pure batting leaderboard 2024
+
+on:
+  push:
+    branches: [export-batting-leaderboard]
+    paths:
+      - ".github/workflows/export-batting-leaderboard-2024.yml"
+      - "scripts/export_batting_leaderboard_2024.py"
+  pull_request:
+    paths:
+      - ".github/workflows/export-batting-leaderboard-2024.yml"
+      - "scripts/export_batting_leaderboard_2024.py"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project
+        run: python -m pip install -e ".[dev]"
+      - name: Download frozen B2 batting profiles
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9311172007"
+          path: inputs/batting-b2
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "32099733186"
+      - name: Download frozen MLB batting performance
+        uses: actions/download-artifact@v7
+        with:
+          artifact-ids: "9265954750"
+          path: inputs/mlb-performance
+          github-token: ${{ github.token }}
+          repository: ramsunkavalli-a11y/universal-baseball-model
+          run-id: "31955392482"
+      - name: Export pure batting leaderboard
+        run: >-
+          python scripts/export_batting_leaderboard_2024.py
+          --b2-profile inputs/batting-b2/tables/projection_2023_to_2024/frozen_b2_profile.parquet
+          --performance-root inputs/mlb-performance
+          --output-csv reports/generated/batting-leaderboard-2024.csv
+          --output-json docs/batting-leaderboard-2024.json
+      - name: Persist human-readable exports
+        if: github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/generated/batting-leaderboard-2024.csv docs/batting-leaderboard-2024.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Export frozen 2024 pure batting leaderboard"
+          git push origin HEAD:export-batting-leaderboard
+      - name: Upload leaderboard artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: batting-leaderboard-2024
+          path: |
+            reports/generated/batting-leaderboard-2024.csv
+            docs/batting-leaderboard-2024.json
+          if-no-files-found: error
+          retention-days: 90
