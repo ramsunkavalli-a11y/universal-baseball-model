@@ -1,0 +1,51 @@
+{
+  "contract_schema_version": "0.1",
+  "contract_id": "hitter_v2_stage2b_disclosed_scoring_v1",
+  "recorded_date": "2026-08-24",
+  "status": "frozen_before_stage2b_candidate_fit_or_score",
+  "parent_development_contract_sha256": "e86506de418d3e09fd83fbe75661865b14eb86f98b31bfed291398b72903c8cf",
+  "selection_folds": ["V2023", "V2024"],
+  "training_diagnostic_fold": "V2022",
+  "weighting_views": ["player", "pa"],
+  "per_fold_gate": {
+    "metrics": ["terminal_log_loss", "terminal_brier_score"],
+    "baseline": "metric-wise lower loss of B0_ONE_YEAR_EB and B1_MARCEL_345_K1200",
+    "rule": "candidate minus baseline must be less than -1e-8 in both metrics and both weighting views in V2023 and V2024"
+  },
+  "pooled_gate": {
+    "folds": ["V2023", "V2024"],
+    "metrics": [
+      "terminal_log_loss",
+      "terminal_brier_score",
+      "woba_rmse",
+      "runs_per_600_rmse"
+    ],
+    "baseline": "metric-wise lower loss of B0_ONE_YEAR_EB and B1_MARCEL_345_K1200",
+    "rule": "candidate minus baseline must be less than -1e-8 in every metric and both weighting views"
+  },
+  "calibration_gate": {
+    "surface": "pooled V2023 and V2024 identical player-fold rows",
+    "distance": "(woba_calibration_intercept / 0.005)^2 + ((woba_calibration_slope - 1) / 0.10)^2",
+    "rule": "candidate distance must be less than C0 distance by more than 1e-8 in both weighting views"
+  },
+  "supported_level_reversal_gate": {
+    "support": "at least 100 evaluation-overlap players and 10000 target PA in a fold-level cell",
+    "rate_reversal": "woba_rmse exceeds the metric-wise strongest baseline by more than 0.002 and runs_per_600_rmse exceeds it by more than 0.5",
+    "proper_score_reversal": "terminal_log_loss and terminal_brier_score each exceed their metric-wise strongest baseline by more than 0.0005",
+    "rule": "neither reversal may occur for any supported level in V2023 or V2024, in either weighting view"
+  },
+  "richer_ablation_gate": {
+    "surface": "pooled V2023 and V2024 identical player-fold rows",
+    "comparators": "D1 versus D0 and D2 versus D0",
+    "proper_scores": "both terminal proper scores must improve by more than 1e-8 in both weighting views",
+    "rate_guardrail": "woba_rmse may worsen by no more than 0.25 percent in either weighting view"
+  },
+  "selection_rule": "among candidates that pass the overall gate and any required richer ablation, select the first in D0, D1, D2 simplicity order",
+  "hyperparameter_search": false,
+  "post_result_retuning": false,
+  "development_can_promote_to_production": false,
+  "protected_2026_access_authorized": false,
+  "tracking_authorized": false,
+  "stage3_authorized": false,
+  "full_war_authorized": false
+}

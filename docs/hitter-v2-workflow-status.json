@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2b_implementation_verified_before_candidate_fit_or_score",
+  "status": "stage2b_scorer_frozen_before_candidate_fit_or_score",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -59,6 +59,13 @@
       "sha256": "e86506de418d3e09fd83fbe75661865b14eb86f98b31bfed291398b72903c8cf",
       "human_readable_path": "docs/hitter-v2-stage2b-development-contract.md",
       "human_readable_sha256": "9672d7814f4c8e62746bb1ef8ab3bd18cb039fd609648f40e397d8e8c2890453",
+      "frozen_before_candidate_fit_or_score": true
+    },
+    "stage2b_scoring_contract": {
+      "path": "docs/hitter-v2-stage2b-scoring-contract.json",
+      "sha256": "54aef9af80d72298fc4eb2e7761eeb2a8c85247dbd71644f9fb63ea3ca6d143b",
+      "validation_module_sha256": "8a4c4731b096d7b68bf9c8671eea9c95ae0ad8f792293c61af8267f86548aec6",
+      "scoring_command_sha256": "ce14ed118421b3b623a4f2c8d9de97ca1ee0a811fb0d58bb55f354cf24f97d09",
       "frozen_before_candidate_fit_or_score": true
     }
   },
@@ -365,8 +372,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 875,
-      "duration_seconds": 9.68
+      "passed": 881,
+      "duration_seconds": 9.63
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -386,11 +393,12 @@
     "stage2_candidate_promoted": false,
     "stage2b_development_authorized": true,
     "stage2b_contract_frozen": true,
+    "stage2b_scorer_frozen": true,
     "stage2b_candidate_fit": false,
     "stage2b_candidate_scored": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "commit_stage2b_implementation_then_run_pre_registered_disclosed_development_fit_and_score"
+    "next_gate": "commit_stage2b_scorer_then_run_pre_registered_disclosed_development_fit_and_score"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
