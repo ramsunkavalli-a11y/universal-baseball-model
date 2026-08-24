@@ -359,6 +359,15 @@
     "stage3_authorized": false,
     "full_war_authorized": false
   },
+  "stage2b_contact_direction_literature_review": {
+    "documentation_only": true,
+    "path": "docs/hitter-v2-contact-direction-literature-review.md",
+    "sha256": "ccd8466f521c531b5bfb2241b7175af3632f47da8638615925f5d7aa6dc8bd48",
+    "conclusion": "pulled_air_is_valuable_and_partly_repeatable_but_broad_direction_offsets_are_not_validated",
+    "candidate_or_gate_changed": false,
+    "new_model_authorized": false,
+    "protected_2026_opened": false
+  },
   "stage2_gidp_opportunity_source": {
     "accepted": true,
     "candidate_fit": false,
@@ -431,7 +440,7 @@
     "stage2b_candidate_scored": true,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "review_stage2b_failure_and_stop_without_retuning_or_protected_confirmation_access"
+    "next_gate": "review_stage2b_failure_and_contact_direction_literature_before_any_new_versioned_contract"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
