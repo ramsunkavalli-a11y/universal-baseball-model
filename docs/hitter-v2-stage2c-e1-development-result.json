@@ -1,0 +1,93 @@
+{
+  "result_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2c_e1",
+  "recorded_date": "2026-08-24",
+  "status": "failed_frozen_disclosed_development_gate",
+  "execution": {
+    "commit": "59832379317099970d318230aa7bb69f95c6bae2",
+    "command": ".venv\\Scripts\\python.exe scripts/score_hitter_v2_stage2c_e1_development.py",
+    "successful_run_count": 1,
+    "scoring_contract_sha256": "49d4fbab9cab3b7b93f6a714617adc94e7acfcace695aee0d55ded63d8b9e2cb",
+    "generated_report_path": "reports/generated/hitter-v2-stage2c-e1-development/report.json",
+    "generated_report_sha256": "fc200c1bbbe5cb7cc3b83b3ee30ebc52fda5af1932e25b2338d741dece0991d2",
+    "generated_report_size_bytes": 327618
+  },
+  "fit": {
+    "V2022": {
+      "origin_count": 0,
+      "offb_per_contact_coefficient": 0.0,
+      "pull_offb_per_offb_coefficient": 0.0
+    },
+    "V2023": {
+      "origin_count": 1,
+      "training_events": 555609,
+      "training_rows": 3163,
+      "offb_per_contact_coefficient": 0.0017591393544689631,
+      "pull_offb_per_offb_coefficient": 0.0007803604814357848,
+      "converged": true
+    },
+    "V2024": {
+      "origin_count": 2,
+      "training_events": 1111432,
+      "training_rows": 6325,
+      "offb_per_contact_coefficient": 0.0009646729110691856,
+      "pull_offb_per_offb_coefficient": 0.00017287737545022418,
+      "converged": true
+    }
+  },
+  "gate": {
+    "overall_pass": false,
+    "terminal_proper_scores_all_four_views_pass": true,
+    "pooled_woba_and_runs_rmse_both_views_pass": true,
+    "supported_level_reversal_pass": true,
+    "hr_conditional_log_loss_all_four_views_pass": false,
+    "hr_conditional_log_loss": {
+      "V2023_player_candidate_minus_C0": -2.4821120492291016e-08,
+      "V2023_player_pass": true,
+      "V2023_pa_candidate_minus_C0": 2.120645364867002e-08,
+      "V2023_pa_pass": false,
+      "V2024_player_candidate_minus_C0": 1.1595250232199206e-08,
+      "V2024_player_pass": false,
+      "V2024_pa_candidate_minus_C0": 6.252952902685571e-08,
+      "V2024_pa_pass": false
+    },
+    "pooled_candidate_minus_strongest_simple_baseline": {
+      "player_woba_rmse": -0.0006218086737734274,
+      "player_runs_per_600_rmse": -0.3127285869774177,
+      "pa_woba_rmse": -0.0007025354032857978,
+      "pa_runs_per_600_rmse": -0.353328786229234
+    }
+  },
+  "interpretation": {
+    "primary": "the_pulled_air_increment_did_not_add_repeatable_future_HR_information_beyond_the_outcome_only_C0_offset",
+    "effect_size": "fitted_coefficients_and_prediction_changes_were_extremely_small_and_three_of_four_HR_log_loss_views_worsened",
+    "baseline_context": "E1_beat_B0_on_terminal_proper_scores_and_pooled_rate_RMSE_because_it_inherits_the_C0_outcome_model;_the_required_incremental_comparison_against_C0_failed",
+    "not_concluded": "the_result_does_not_show_that_pulled_air_is_not_valuable_descriptively_or_that_richer_measurement_cannot_help"
+  },
+  "post_result_reporting_note": {
+    "gate_affected": false,
+    "issue": "the_auxiliary_coverage_table_inner_joined_the_feature_artifact_and_labeled_joint_zero_evidence_as_exact_fallback",
+    "correct_evaluation_overlap": {"V2023": 3172, "V2024": 3088},
+    "feature_present": {"V2023": 3169, "V2024": 3088},
+    "exact_E1_equals_C0": {"V2023": 3, "V2024": 0},
+    "reason_no_rerun": "the_frozen_decisional_metrics_used_full_prediction_target_overlap_and_the_one_pass_result_is_preserved"
+  },
+  "artifact_hashes": {
+    "V2022_fit": "9df6caa327a7f10004c67de603ccb267d3dbb05af9eff2b6ae93024e5e7c4471",
+    "V2023_fit": "75e474b4f6d3f71382b759a6de58a9e66abb52fba423a02aae8ab7cf43fe8a88",
+    "V2024_fit": "09f6ab0816340328c272598865cc175976d2dc15cfc1e043a0aedd7ed65f85ef",
+    "V2022_predictions": "46654d556b3fd1804584029075b23c10b291d85e4d7c8b7bcbb4550ac3289c2d",
+    "V2023_predictions": "d63459b22a52eec8e3a0d5cb4049994f9cecf2e953ff1fee2a72d2d5d57d2795",
+    "V2024_predictions": "fe3815c9503fcc0769dabccb75fa5eeca6fc9308dea98a3b48fc40b7f813ad1f"
+  },
+  "authorization": {
+    "e2_authorized": false,
+    "post_result_retuning_allowed": false,
+    "protected_2026_opened": false,
+    "tracking_authorized": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false,
+    "next_gate": "documentation_and_independent_design_review_only"
+  }
+}
