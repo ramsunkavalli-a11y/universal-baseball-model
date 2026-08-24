@@ -1,0 +1,81 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "recorded_date": "2026-08-23",
+  "status": "forecast_membership_leakage_prevented_before_candidate_fit",
+  "implementation_commit": "b0e1a8e70f1ce96989931871aa74c89869d40629",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "superseded_generated_report": {
+    "sha256": "0b47c0aa8654f84b78c457f77672c61e661f39149649e15b784b500ac0325c24",
+    "reason": "it froze target tables but did not separately freeze a forecast population derived only from predictor history"
+  },
+  "corrected_generated_report": {
+    "path": "reports/generated/hitter-v2-stage2-prescore/report.json",
+    "schema_version": "0.2",
+    "sha256": "445cf12e4fce1299b105bb56281a9102644edf5fd83171585a4dfe9035104d66"
+  },
+  "membership_policy": "freeze every forecast population from accepted pre-cutoff evidence, create predictions for that population, then join target outcomes only for evaluation",
+  "folds": [
+    {
+      "fold_id": "V2022",
+      "forecast_players": 4705,
+      "forecast_population_sha256": "5decf652d00a655f01b4fcc7317615162ffac3c426f3fe632257919de70cbd49",
+      "target_players": 4039,
+      "evaluation_overlap_players": 3176,
+      "evaluation_overlap_hitter_talent_pa": 868768,
+      "target_only_players_excluded_from_forecast": 863,
+      "evaluation_overlap_sha256": "2e7566371fdf8cb8fbdb939d3745ed29eb4434eda8799722073a2271cf325133"
+    },
+    {
+      "fold_id": "V2023",
+      "forecast_players": 5568,
+      "forecast_population_sha256": "d77724c4a1a382a1035b3d6834b01541c0ed8722fdffef3513548a3d8807f6c3",
+      "target_players": 3985,
+      "evaluation_overlap_players": 3172,
+      "evaluation_overlap_hitter_talent_pa": 871748,
+      "target_only_players_excluded_from_forecast": 813,
+      "evaluation_overlap_sha256": "069d545d1ae8c7be81eeac1019694c718f2c968fe2d640666c2ab60f351fddfe"
+    },
+    {
+      "fold_id": "V2024",
+      "forecast_players": 6381,
+      "forecast_population_sha256": "4dcb0afa8dfa99457e68334fda242b4f2423a83f89b21b17b090f5725604dcb1",
+      "target_players": 3759,
+      "evaluation_overlap_players": 3088,
+      "evaluation_overlap_hitter_talent_pa": 878877,
+      "target_only_players_excluded_from_forecast": 671,
+      "evaluation_overlap_sha256": "59e9e01fa3dc03b602d2f9af4d6adce0e696d5face1e7a58ec7f2477ab929d93"
+    }
+  ],
+  "age_source": {
+    "status": "ready",
+    "repository": "chadwickbureau/register",
+    "snapshot_commit": "2e8e73355f9c77b963115377bd98c784cfeec10f",
+    "archive_sha256": "940c2be6e497351bf6c5a8b65d62d6742483521ef6e23181252aef86c2cb97ce",
+    "generated_report_sha256": "2a8d2aa6d5280b94356ce2c07284a18f7b80e090172086635edd82ae35023efe",
+    "exact_birth_date_coverage": {"V2022": 1.0, "V2023": 1.0, "V2024": 1.0},
+    "membership_rule": "derived for pre-cutoff forecast populations only"
+  },
+  "c1_source_readiness": {
+    "age": "ready",
+    "movement_pairs": {
+      "status": "ready_for_training_only_translation_fit",
+      "adjacent_season_pairs_2021_2023": 6297,
+      "same_level": 3619,
+      "promotions": 2310,
+      "demotions": 368,
+      "distinct_players": 3911
+    },
+    "park_context": "not_present_in_current_canonical_player_game_table_source_enrichment_required",
+    "gidp_opportunities": "not_present_in_current_canonical_player_game_table_source_enrichment_required",
+    "c1_fit_allowed": false
+  },
+  "validation": {
+    "ruff": {"status": "passed", "command": "python -m ruff check src scripts tests"},
+    "pytest": {"status": "passed", "command": "python -m pytest", "passed": 843, "duration_seconds": 9.62}
+  },
+  "next_step": "materialize chronology-safe park context and observed GIDP opportunities before C1 fit or any validation scoring"
+}

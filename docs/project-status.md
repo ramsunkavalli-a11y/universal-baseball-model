@@ -103,6 +103,8 @@ Stage 2's pre-score evaluation freeze is recorded in:
 - `docs/hitter-v2-stage2-neutral-evaluation-contract.json`;
 - `docs/hitter-v2-stage2-prescore-checkpoint.md`;
 - `docs/hitter-v2-stage2-prescore-result.json`;
+- `docs/hitter-v2-stage2-forecast-membership-correction.md`;
+- `docs/hitter-v2-stage2-forecast-membership-correction.json`;
 - `reports/generated/hitter-v2-stage2-prescore/report.json` (ignored generated
   evidence, identified by a committed SHA-256).
 
@@ -147,9 +149,18 @@ invariants.
 The neutral weights and exact folds are now frozen. All folds use the common
 FanGraphs 2016–2020 mean environment (`wOBA=0.3188`, scale `1.193`), which
 predates every disclosed target. The training populations are not filtered by
-future participant membership. Ruff and all 837 tests pass. Candidate scoring
-has still not started; B0/B1/C0/C1 implementation and the remaining
-candidate-specific invariants are next.
+future participant membership. Ruff and all 843 tests pass. Candidate scoring
+has still not started. B0, B1 and C0 are implemented; C1 source enrichment and
+its remaining invariants are next.
+
+Before fitting, a forecast-membership invariant found that target rosters must
+not be used to decide who receives a forecast. The original pre-score report is
+preserved but superseded by schema `0.2`. Corrected forecast populations are
+defined only from prior evidence (4,705 / 5,568 / 6,381 players), then joined
+to target outcomes for evaluation (3,176 / 3,172 / 3,088 overlaps). The pinned
+Chadwick snapshot supplies exact birth dates for 100% of those forecast
+populations. C1 remains unfit because park context and observed GIDP
+opportunities still require source enrichment. No candidate has been scored.
 
 ## Paused post-v1 program — Pitching v1
 
