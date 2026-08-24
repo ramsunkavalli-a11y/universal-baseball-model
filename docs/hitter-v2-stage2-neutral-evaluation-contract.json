@@ -1,0 +1,45 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "recorded_date": "2026-08-23",
+  "status": "frozen_before_candidate_scoring",
+  "source": {
+    "publisher": "FanGraphs",
+    "name": "Guts! wOBA and FIP Constants",
+    "url": "https://www.fangraphs.com/tools/guts",
+    "methodology_url": "https://library.fangraphs.com/offense/woba/",
+    "accessed_date": "2026-08-23"
+  },
+  "neutral_pool": {
+    "policy": "unweighted arithmetic mean of published 2016-2020 MLB constants",
+    "reason": "the pool predates every disclosed target season and supplies one common neutral evaluation scale",
+    "seasons": [2016, 2017, 2018, 2019, 2020],
+    "annual_constants": [
+      {"season": 2016, "woba": 0.318, "scale": 1.212, "UBB": 0.691, "HBP": 0.721, "1B": 0.878, "2B": 1.242, "3B": 1.569, "HR": 2.015},
+      {"season": 2017, "woba": 0.321, "scale": 1.185, "UBB": 0.693, "HBP": 0.723, "1B": 0.877, "2B": 1.232, "3B": 1.552, "HR": 1.980},
+      {"season": 2018, "woba": 0.315, "scale": 1.226, "UBB": 0.690, "HBP": 0.720, "1B": 0.880, "2B": 1.247, "3B": 1.578, "HR": 2.031},
+      {"season": 2019, "woba": 0.320, "scale": 1.157, "UBB": 0.690, "HBP": 0.719, "1B": 0.870, "2B": 1.217, "3B": 1.529, "HR": 1.940},
+      {"season": 2020, "woba": 0.320, "scale": 1.185, "UBB": 0.699, "HBP": 0.728, "1B": 0.883, "2B": 1.238, "3B": 1.558, "HR": 1.979}
+    ],
+    "frozen_mean": {
+      "woba": 0.3188,
+      "scale": 1.193,
+      "UBB": 0.6926,
+      "HBP": 0.7222,
+      "1B": 0.8776,
+      "2B": 1.2352,
+      "3B": 1.5572,
+      "HR": 1.989
+    }
+  },
+  "denominator": "UBB + HBP + K + HR + 3B + 2B + 1B + ROE + FC_REACH + SF + MULTI_OUT + OTHER_OUT",
+  "woba_formula": "sum(outcome_probability * frozen_weight)",
+  "neutral_batting_runs_per_600_formula": "((woba - 0.3188) / 1.193) * 600",
+  "zero_weight_outcomes": ["K", "ROE", "FC_REACH", "SF", "MULTI_OUT", "OTHER_OUT"],
+  "excluded_from_hitter_talent_denominator": ["IBB", "SH_OR_SPECIAL"],
+  "target_season_constants_allowed_for_selection": false,
+  "protected_2026_opened": false,
+  "candidate_fit": false,
+  "candidate_scored": false
+}
