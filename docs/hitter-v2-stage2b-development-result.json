@@ -1,0 +1,86 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2b",
+  "recorded_date": "2026-08-24",
+  "status": "stage2b_candidates_failed_disclosed_development",
+  "scorer_freeze_commit": "406062de4e31a618fad7aaa59636dcdced347f48",
+  "execution_commit": "80bf4495838932c1433b4ecb4d3fe900e5f872fe",
+  "candidate_fit": true,
+  "candidate_scored": true,
+  "selection_folds": ["V2023", "V2024"],
+  "training_diagnostic_fold": "V2022",
+  "evaluation_player_fold_rows": 6260,
+  "evaluation_pa": 1750625,
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2b-development/report.json",
+    "sha256": "1b54190d21304fe25c14e1751ab5bc4fb2e8e33cb4d77869a6db7ce846830428",
+    "size_bytes": 368999,
+    "deterministic_rerun_exact_sha256_match": true
+  },
+  "generated_tables": {
+    "count": 18,
+    "total_size_bytes": 4855515
+  },
+  "candidate_results": {
+    "D0_NODE_CALIBRATED_C0": {
+      "overall_development_pass": false,
+      "pooled_prediction_gate_both_views": true,
+      "per_fold_failure": "V2023 PA-weighted Brier score was 0.000015541777880767604 worse than B0",
+      "calibration_improvement_vs_c0": false,
+      "supported_level_reversal_pass": false
+    },
+    "D1_TRAJECTORY_RESIDUAL": {
+      "overall_development_pass": false,
+      "per_fold_proper_score_gate_all_views": true,
+      "pooled_prediction_gate_both_views": true,
+      "richer_ablation_vs_d0": true,
+      "pooled_pa_woba_rmse": 0.04021537160424287,
+      "pooled_pa_strongest_baseline_woba_rmse": 0.04069734328530998,
+      "pooled_player_woba_rmse": 0.05637920288645687,
+      "pooled_player_strongest_baseline_woba_rmse": 0.05712741992148295,
+      "calibration_improvement_vs_c0": false,
+      "pooled_pa_calibration_distance_candidate": 718.1265170057079,
+      "pooled_pa_calibration_distance_c0": 548.0404901964461,
+      "pooled_player_calibration_distance_candidate": 346.3389899379575,
+      "pooled_player_calibration_distance_c0": 211.80229291311306,
+      "supported_level_reversal_pass": false,
+      "material_reversal": {
+        "fold": "V2023",
+        "level": "aaa",
+        "weighting": "pa",
+        "players": 498,
+        "target_pa": 171610,
+        "woba_rmse_delta_vs_strongest_baseline": 0.002078469959728761,
+        "runs_per_600_rmse_delta_vs_strongest_baseline": 1.0453327542642548,
+        "rate_reversal": true,
+        "proper_score_reversal": false
+      }
+    },
+    "D2_DIRECTION_TRAJECTORY_RESIDUAL": {
+      "overall_development_pass": false,
+      "per_fold_failure": "V2023 PA-weighted Brier score was 0.000021163903712539955 worse than B0",
+      "pooled_prediction_gate_both_views": true,
+      "richer_ablation_vs_d0": false,
+      "pooled_pa_proper_scores_both_worse_than_d0": true,
+      "pooled_pa_woba_rmse_relative_worsening_vs_d0": 0.008027431704681494,
+      "pooled_player_woba_rmse_relative_worsening_vs_d0": 0.0037524176587134346,
+      "calibration_improvement_vs_c0": false,
+      "supported_level_reversal_pass": false
+    }
+  },
+  "scientific_interpretation": {
+    "contact_shape_is_useless": false,
+    "trajectory_added_incremental_proper_score_signal": true,
+    "direction_within_trajectory_added_supported_incremental_value": false,
+    "rolling_node_recalibration_improved_calibration": false,
+    "candidate_generalized_without_supported_level_reversal": false
+  },
+  "selected_development_candidate": null,
+  "post_result_retuning_performed": false,
+  "protected_2026_opened": false,
+  "tracking_authorized": false,
+  "stage3_authorized": false,
+  "full_war_authorized": false,
+  "next_authorized_gate": "review_failure_and_design_a_new_versioned_candidate_contract_without_using_protected_2026"
+}
