@@ -216,7 +216,7 @@ def test_player_season_movement_and_age_pipeline_is_chronology_safe() -> None:
         movement, first_pass, ridge_penalty=10.0
     )
     assert coefficients.height == len(HITTER_TALENT_OUTCOMES)
-    offsets, fallback = age_change_offsets(0.0, coefficients)
+    offsets, fallback = age_change_offsets((25.0, 25.0), coefficients)
     assert fallback is None
     assert set(offsets) == set(HITTER_TALENT_OUTCOMES)
     adjusted_movement = remove_age_from_movement_observations(

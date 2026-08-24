@@ -189,7 +189,12 @@ translations anchored at MLB, one fixed age/translation separation pass, and
 an opportunity-adjusted GIDP decomposition to C0. Missing enrichment produces
 an explicit zero offset or exact C0 component fallback, never a zero-valued
 observation. The search grid is unchanged from the development contract and
-cannot expand after scoring.
+cannot expand after scoring. A pre-fit review superseded contract schema `0.1`
+with `0.2`: the absolute-age hinge basis is now explicitly centered
+componentwise on the league-season-level median-age hinge basis. This prevents
+the 20/24/28/32 knots from collapsing under an ambiguous scalar
+age-minus-median interpretation. The superseded SHA-256 is retained in the
+contract; no C1 fit, prediction, or score preceded the amendment.
 
 ## Paused post-v1 program — Pitching v1
 

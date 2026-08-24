@@ -42,8 +42,10 @@
     },
     "stage2_c1_implementation_contract": {
       "path": "docs/hitter-v2-stage2-c1-implementation-contract.json",
-      "sha256": "6acd333331c1e19eaf1e46778acf7f85e9f6077142804de9cb2345eaa742a242",
-      "git_blob": "52ca3d47b7eb55e1807126d0bb3aaa9f3a876ab0"
+      "sha256": "e0e5a9e66db762e3898d4429fe34b62170f347ee56220083631992a254730755",
+      "git_blob": "a833228bd035228d760000dfc3438274b296316f",
+      "superseded_pre_fit_sha256": "6acd333331c1e19eaf1e46778acf7f85e9f6077142804de9cb2345eaa742a242",
+      "amendment_timing": "before_any_c1_fit_prediction_or_score"
     },
     "external_validity_record": {
       "path": "docs/hitter-v2-v1-external-validity-result.json",
@@ -171,7 +173,8 @@
     "age_source_exact_coverage_rate": {"V2022": 1.0, "V2023": 1.0, "V2024": 1.0},
     "c1_source_open_items": [],
     "c1_implementation_contract_frozen": true,
-    "c1_implemented": false
+    "c1_implemented": true,
+    "c1_unscored_materialization_implemented": true
   },
   "stage2_gidp_opportunity_source": {
     "accepted": true,

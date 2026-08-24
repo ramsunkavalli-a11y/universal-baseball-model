@@ -1,5 +1,5 @@
 {
-  "record_schema_version": "0.1",
+  "record_schema_version": "0.2",
   "program": "hitter_v2",
   "stage": 2,
   "recorded_date": "2026-08-24",
@@ -54,14 +54,19 @@
     "fallback": "zero translation only for a disconnected level, with explicit disconnected_level fallback"
   },
   "age_adjustment": {
-    "age_definition": "July 1 age relative to the league-season-level median age",
+    "age_definition": "July 1 absolute age represented by a hinge basis centered componentwise on the league-season-level median-age hinge basis",
     "basis_knots": [20, 24, 28, 32],
-    "basis": "continuous piecewise-linear hinge basis",
+    "basis": "centered_phi = phi(player_absolute_age) - phi(league_season_level_median_absolute_age), where phi(age) = [age, max(age-20,0), max(age-24,0), max(age-28,0), max(age-32,0)]",
     "ridge_penalty_grid": [1, 10, 100],
     "fit_population": "same-player adjacent-season residuals after first-pass park and movement adjustment",
     "separation_policy": "one fixed refit: raw movement, ridge age residual, then movement re-estimated after removing fitted age change",
-    "forecast_application": "one-year change in the fitted relative-age basis",
+    "forecast_application": "one-year change from centered_phi(target_age-1, latest_context_median_extrapolated_to_cutoff) to centered_phi(target_age, latest_context_median_extrapolated_to_cutoff+1)",
     "fallback": "zero age offset with an explicit missing_age flag"
+  },
+  "amendment_provenance": {
+    "superseded_record_schema_version": "0.1",
+    "superseded_sha256": "6acd333331c1e19eaf1e46778acf7f85e9f6077142804de9cb2345eaa742a242",
+    "reason": "pre-fit ambiguity review found that applying absolute knots directly to a scalar age-minus-median value would collapse the intended hinge terms; no C1 fit, prediction, or score had been run"
   },
   "gidp_adjustment": {
     "opportunity_rate": "GIDP opportunities / accepted PA",

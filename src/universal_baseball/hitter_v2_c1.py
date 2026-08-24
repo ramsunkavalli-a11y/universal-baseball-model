@@ -368,12 +368,18 @@ def neutralize_player_season_parks(
 
 
 def relative_age_basis(relative_age: float) -> np.ndarray:
-    """Return the frozen continuous piecewise-linear relative-age basis."""
+    """Return the continuous piecewise-linear absolute-age hinge basis."""
 
     value = float(relative_age)
     if not isfinite(value):
         raise ValueError("relative age must be finite")
     return np.asarray([value, *[max(value - knot, 0.0) for knot in AGE_KNOTS]])
+
+
+def centered_age_basis(age_years: float, context_median_age: float) -> np.ndarray:
+    """Center the absolute-age hinge basis on its chronology-safe context."""
+
+    return relative_age_basis(age_years) - relative_age_basis(context_median_age)
 
 
 def attach_relative_ages(
@@ -445,6 +451,9 @@ def build_adjacent_movement_observations(
         for column in ("relative_age",):
             row[f"source_{column}"] = source.get(column)
             row[f"destination_{column}"] = destination.get(column)
+        for column in ("age_years", "context_median_age"):
+            row[f"source_{column}"] = source.get(column)
+            row[f"destination_{column}"] = destination.get(column)
         for outcome in HITTER_TALENT_OUTCOMES:
             source_probability = max(
                 float(source[f"{probability_prefix}{outcome}"]), PROBABILITY_FLOOR
@@ -467,6 +476,10 @@ def build_adjacent_movement_observations(
                 "pair_weight": pl.Float64,
                 "source_relative_age": pl.Float64,
                 "destination_relative_age": pl.Float64,
+                "source_age_years": pl.Float64,
+                "destination_age_years": pl.Float64,
+                "source_context_median_age": pl.Float64,
+                "destination_context_median_age": pl.Float64,
                 **{
                     f"delta_{outcome}": pl.Float64
                     for outcome in HITTER_TALENT_OUTCOMES
@@ -487,8 +500,10 @@ def fit_ridge_age_offsets(
     if not isfinite(ridge_penalty) or ridge_penalty <= 0.0:
         raise ValueError("age ridge penalty must be finite and positive")
     usable = movement_observations.filter(
-        pl.col("source_relative_age").is_not_null()
-        & pl.col("destination_relative_age").is_not_null()
+        pl.col("source_age_years").is_not_null()
+        & pl.col("destination_age_years").is_not_null()
+        & pl.col("source_context_median_age").is_not_null()
+        & pl.col("destination_context_median_age").is_not_null()
         & (pl.col("pair_weight") > 0)
     )
     if usable.is_empty():
@@ -501,8 +516,14 @@ def fit_ridge_age_offsets(
     rows = list(usable.iter_rows(named=True))
     for row in rows:
         design.append(
-            relative_age_basis(float(row["destination_relative_age"]))
-            - relative_age_basis(float(row["source_relative_age"]))
+            centered_age_basis(
+                float(row["destination_age_years"]),
+                float(row["destination_context_median_age"]),
+            )
+            - centered_age_basis(
+                float(row["source_age_years"]),
+                float(row["source_context_median_age"]),
+            )
         )
         weights.append(float(row["pair_weight"]))
     matrix = np.vstack(design)
@@ -545,18 +566,21 @@ def fit_ridge_age_offsets(
 
 
 def age_change_offsets(
-    relative_age: float | None,
+    target_age_context: tuple[float, float] | None,
     age_coefficients: pl.DataFrame,
 ) -> tuple[dict[str, float], str | None]:
-    """Evaluate the frozen one-year change in the fitted relative-age basis."""
+    """Evaluate the centered absolute-age basis change into target year."""
 
-    if relative_age is None:
+    if target_age_context is None:
         return (
             {outcome: 0.0 for outcome in HITTER_TALENT_OUTCOMES},
             "missing_age",
         )
-    change = relative_age_basis(float(relative_age) + 1.0) - relative_age_basis(
-        float(relative_age)
+    target_age, cutoff_context_median = map(float, target_age_context)
+    change = centered_age_basis(
+        target_age, cutoff_context_median + 1.0
+    ) - centered_age_basis(
+        target_age - 1.0, cutoff_context_median
     )
     by_outcome = {
         str(row["outcome"]): row for row in age_coefficients.iter_rows(named=True)
@@ -604,12 +628,19 @@ def remove_age_from_movement_observations(
     }
     rows: list[dict[str, object]] = []
     for row in movement_observations.iter_rows(named=True):
-        source_age = row.get("source_relative_age")
-        destination_age = row.get("destination_relative_age")
+        source_age = row.get("source_age_years")
+        destination_age = row.get("destination_age_years")
+        source_median = row.get("source_context_median_age")
+        destination_median = row.get("destination_context_median_age")
         basis_change = None
-        if source_age is not None and destination_age is not None:
-            basis_change = relative_age_basis(float(destination_age)) - relative_age_basis(
-                float(source_age)
+        if all(
+            value is not None
+            for value in (source_age, destination_age, source_median, destination_median)
+        ):
+            basis_change = centered_age_basis(
+                float(destination_age), float(destination_median)
+            ) - centered_age_basis(
+                float(source_age), float(source_median)
             )
         adjusted = dict(row)
         for outcome in HITTER_TALENT_OUTCOMES:
@@ -964,8 +995,10 @@ def fit_c1_adjustments(
         0
         if movement.is_empty()
         else movement.filter(
-            pl.col("source_relative_age").is_not_null()
-            & pl.col("destination_relative_age").is_not_null()
+            pl.col("source_age_years").is_not_null()
+            & pl.col("destination_age_years").is_not_null()
+            & pl.col("source_context_median_age").is_not_null()
+            & pl.col("destination_context_median_age").is_not_null()
         ).height
     )
     if complete_age_pairs:
@@ -1005,7 +1038,7 @@ def predict_c1_hierarchical_pbp(
     fit: C1AdjustmentFit,
     gidp_rates: pl.DataFrame,
     *,
-    target_relative_ages: Mapping[int, float | None] | None = None,
+    target_age_contexts: Mapping[int, tuple[float, float] | None] | None = None,
 ) -> pl.DataFrame:
     """Apply frozen C1 adjustments to an unscored C0 forecast population."""
 
@@ -1022,7 +1055,7 @@ def predict_c1_hierarchical_pbp(
     gidp_map = {
         int(row["player_id"]): row for row in gidp_rates.iter_rows(named=True)
     }
-    ages = target_relative_ages or {}
+    ages = target_age_contexts or {}
     rows: list[dict[str, object]] = []
     for row in c0_predictions.sort("player_id").iter_rows(named=True):
         player_id = int(row["player_id"])
@@ -1051,10 +1084,10 @@ def predict_c1_hierarchical_pbp(
             ages.get(player_id), fit.age_coefficients
         )
         combined = combine_offsets(park_offsets, translation_offsets, age_offsets)
-        adjusted = apply_log_probability_offsets(probability, combined)
+        pre_gidp = apply_log_probability_offsets(probability, combined)
         gidp = gidp_map.get(player_id)
         adjusted, gidp_fallback = adjust_multi_out_for_gidp(
-            adjusted,
+            pre_gidp,
             opportunity_rate=(
                 None if gidp is None else gidp["gidp_opportunity_rate"]
             ),
@@ -1087,6 +1120,10 @@ def predict_c1_hierarchical_pbp(
                     fit.age_fit_fallback_reason or age_fallback
                 ),
                 "gidp_fallback_reason": gidp_fallback,
+                **{
+                    f"pre_gidp_p_{outcome}": pre_gidp[outcome]
+                    for outcome in HITTER_TALENT_OUTCOMES
+                },
                 **{
                     f"p_{outcome}": adjusted[outcome]
                     for outcome in HITTER_TALENT_OUTCOMES
