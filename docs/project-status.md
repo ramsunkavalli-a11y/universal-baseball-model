@@ -16,9 +16,10 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
   `b204572d9bd394c77bc40650c31750a0d6a9443d`; its frozen scientific outputs
   must not be rewritten by later release or maintenance work.
 - Hitter v2 is the active post-release model program. Stage 1 universal
-  terminal-PA materialization is complete on local branch
-  `hitter-v2-pbp-outcomes` and awaits review; no Hitter v2 candidate or
-  protected confirmation outcome has been scored.
+  terminal-PA materialization is pushed on branch
+  `hitter-v2-pbp-outcomes`. Stage 2's disclosed 2024 source-readiness
+  checkpoint passed; no Hitter v2 candidate or protected confirmation outcome
+  has been scored.
 - New Pitching v1 development is paused. Completed foundation/source work is
   preserved unchanged for later resumption.
 - Work in small verified batches and inspect branch head before editing.
@@ -36,7 +37,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Position-player v1:** **DONE / FROZEN / HISTORICAL PROTOTYPE**
 - **Hitter v2 Stage 0:** **DONE LOCALLY — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN**
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
-- **Hitter v2 Stage 2:** **AUTHORIZED / SOURCE READINESS IN PROGRESS — SCORING NOT STARTED**
+- **Hitter v2 Stage 2:** **AUTHORIZED / DISCLOSED 2024 SOURCE READY — PRE-SCORE FREEZE IN PROGRESS**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -89,6 +90,14 @@ Stage 1 is recorded in:
 - `reports/generated/hitter-v2-stage1-universal/report.json` (ignored generated
   evidence, identified by a committed SHA-256).
 
+Stage 2 source readiness is recorded in:
+
+- `docs/hitter-v2-stage2-authorization.json`;
+- `docs/hitter-v2-stage2-source-readiness-checkpoint.md`;
+- `docs/hitter-v2-stage2-source-readiness-result.json`;
+- `reports/generated/hitter-v2-stage2-2024-universal/report.json` (ignored
+  generated evidence, identified by a committed SHA-256).
+
 The clean `main` baseline reproduced Ruff and all 819 tests. The immutable v1
 pure-batting export reproduced all 3,985 player rows with maximum runs/600 delta
 `0.0`. The attached independent external-validity audit is preserved as
@@ -119,6 +128,13 @@ PBP-only development and disclosed rolling-origin validation. Before any score,
 the disclosed 2024 terminal-outcome target and neutral historical weights must
 be checksum-frozen and all pre-score invariants must pass. Tracking, 2026
 access, baserunning, defense, playing time and WAR remain unauthorized.
+
+The disclosed 2024 source is now checksum-frozen: 243,735 player-games and
+966,808 official PA, of which 960,362 PA (99.3332699%) are model-ready. The
+remaining 1,614 player-games / 6,446 PA remain explicitly failed closed. MLB
+has zero blocking reconciliation mismatches. Candidate scoring is still closed
+while neutral historical wOBA/run weights, the exact three fold manifests and
+the pre-score scientific invariants are frozen.
 
 ## Paused post-v1 program — Pitching v1
 

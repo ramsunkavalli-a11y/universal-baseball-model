@@ -1,0 +1,97 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "recorded_date": "2026-08-23",
+  "status": "disclosed_2024_source_ready_pre_score_open_items_remain",
+  "accepted": true,
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "scope": "2024_disclosed_validation_terminal_outcomes_only",
+  "contract": {
+    "path": "docs/hitter-v2-development-contract.md",
+    "sha256": "4f0e0bde4ac903145ea133f4cb57027f2566668cf36f3847621a42646393fe40",
+    "contract_commit": "d1c2471517c5398d3224cba305771c4c696430aa"
+  },
+  "implementation_commit": "cd7a527a27c343598ffb389368d9dffb825fd9a1",
+  "chronology": {
+    "validation_fold": "V2024",
+    "predictor_seasons": [2021, 2022, 2023],
+    "target_season": 2024,
+    "target_membership_used_as_predictor": false,
+    "target_playing_time_used_as_predictor": false,
+    "target_environment_used_as_predictor": false,
+    "2025_role": "diagnostic_only_not_opened_in_this_batch",
+    "2026_role": "protected_one_shot_confirmation_unopened"
+  },
+  "certified_upstream_artifacts": {
+    "milb_2024_aaa": "6f5c68af415c8333847c6d70bbdf742af00df68c524686d2b2cb19dd0eaa7012",
+    "milb_2024_aa": "55b94c13eeb872273602c8d2716c40de7e0b36bf45f5074dcf29223029f1ccb3",
+    "milb_2024_a_plus": "5e733f8cdbe00bb7a9a3f53ebe1944a10696b45b494cb3aeaf190a46141a226d",
+    "milb_2024_a": "0e071330d4d5157d7e22a4d69fe6f177d1057ab83290defeb204a765183191e4",
+    "milb_2024_rk": "f5bca2c5d66535b5cfd063ee7ff47b624dfac9bec706b5b64c3f8ff5c324f2bf",
+    "mlb_2024": "bdca35299b7a82130eae197987aa1d1bb0448c8ef9dc9ee6c6ba3d39e79f2efe"
+  },
+  "generated_evidence": {
+    "report_path": "reports/generated/hitter-v2-stage2-2024-universal/report.json",
+    "report_sha256": "9d559a9057e00ad9308306c07fe35be5230e03686280352450ff1d9b47e46ac8",
+    "milb_source_report_sha256": "417cea17337eefd0fc3c72d834d4d0b251c5502c0b403b34f368f768f08a2a5f",
+    "mlb_source_report_sha256": "3c9a7cad8da27a72860f87ec521b9f732f1101eb905be40cc0d7fc852778a9c1",
+    "player_game_sha256": "1f4444ea07c8972b40ff5d3216e5a9e3e55aa717525ec81a4d08971bb094f890",
+    "player_season_sha256": "c9e9f29e0c196fc8fc442c6eded69916686deeb93c9d9e6f207518336b37d1ab",
+    "exceptions_sha256": "9f626890171cf758a767b3c6e142b0c0d5052adb8cc644064b0440e45fc5a852"
+  },
+  "totals": {
+    "player_game_rows": 243735,
+    "player_season_rows": 5599,
+    "games": 12895,
+    "players": 3760,
+    "official_pa": 966808,
+    "model_ready_player_game_rows": 242121,
+    "model_ready_official_pa": 960362,
+    "model_ready_pa_rate": 0.9933326989433269,
+    "failed_closed_player_game_rows": 1614,
+    "failed_closed_official_pa": 6446,
+    "official_unique_repairs": 1994,
+    "mlb_blocking_reconciliation_mismatches": 0,
+    "mlb_gidp_definition_diagnostic_mismatches": 5
+  },
+  "source_exceptions": [
+    "MiLB declared historical source-residual player-games remain failed closed.",
+    "Game 774353 has no reusable same-game league authority; its PBP terminal rows remain quarantined.",
+    "One unresolved official snapshot is retained failed closed rather than selected by filename chronology.",
+    "MLB structured and official GIDP definitions differ on five diagnostic rows; the mismatch does not change the exhaustive terminal-PA taxonomy."
+  ],
+  "validation": {
+    "ruff": {
+      "command": "python -m ruff check src scripts tests",
+      "status": "passed"
+    },
+    "pytest": {
+      "command": "python -m pytest",
+      "status": "passed",
+      "passed": 832,
+      "duration_seconds": 30.63
+    },
+    "focused_source_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_outcomes.py -q",
+      "status": "passed",
+      "passed": 10
+    }
+  },
+  "pre_score_open_items": [
+    "Freeze neutral historical wOBA and run-value weights without target-season information.",
+    "Materialize chronology-safe fold manifests for V2022, V2023, and V2024.",
+    "Implement and pass the predeclared scientific invariants before accepting candidate scores."
+  ],
+  "still_closed": {
+    "candidate_scoring_until_pre_score_items_close": true,
+    "tracking_increment": true,
+    "completed_2026_offense": true,
+    "baserunning": true,
+    "defense": true,
+    "playing_time": true,
+    "war": true
+  }
+}

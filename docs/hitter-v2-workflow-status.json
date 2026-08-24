@@ -1,8 +1,8 @@
 {
   "report_schema_version": "0.1",
   "program": "hitter_v2",
-  "stage": 1,
-  "status": "stage2_authorized_source_readiness_in_progress",
+  "stage": 2,
+  "status": "stage2_disclosed_2024_source_ready_pre_score_freeze_in_progress",
   "updated_date": "2026-08-23",
   "repository": {
     "base_branch": "main",
@@ -10,7 +10,9 @@
     "feature_branch": "hitter-v2-pbp-outcomes",
     "contract_commit": "d1c2471517c5398d3224cba305771c4c696430aa",
     "stage1_implementation_commit": "f9abead2550e43112077e101523722ce16ffbf0d",
-    "remote_state_changed": false
+    "stage2_authorization_commit": "43569583887b1b4397a74a0779a13041a3c3bdc1",
+    "stage2_source_implementation_commit": "cd7a527a27c343598ffb389368d9dffb825fd9a1",
+    "remote_state_changed": true
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
@@ -114,6 +116,27 @@
     "exceptions_sha256": "0e53a8732b8b90b60ad7d99d09fbc92d761066e9e80d704d1812ac90b6d26dec",
     "github_authentication_required": false
   },
+  "stage2_disclosed_2024_source": {
+    "accepted": true,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "player_game_rows": 243735,
+    "player_season_rows": 5599,
+    "games": 12895,
+    "players": 3760,
+    "official_pa": 966808,
+    "model_ready_official_pa": 960362,
+    "model_ready_pa_rate": 0.9933326989433269,
+    "failed_closed_player_game_rows": 1614,
+    "failed_closed_official_pa": 6446,
+    "official_unique_repairs": 1994,
+    "mlb_blocking_reconciliation_mismatches": 0,
+    "mlb_gidp_definition_diagnostic_mismatches": 5,
+    "generated_report_sha256": "9d559a9057e00ad9308306c07fe35be5230e03686280352450ff1d9b47e46ac8",
+    "player_game_sha256": "1f4444ea07c8972b40ff5d3216e5a9e3e55aa717525ec81a4d08971bb094f890",
+    "player_season_sha256": "c9e9f29e0c196fc8fc442c6eded69916686deeb93c9d9e6f207518336b37d1ab",
+    "exceptions_sha256": "9f626890171cf758a767b3c6e142b0c0d5052adb8cc644064b0440e45fc5a852"
+  },
   "outcome_access_boundary": {
     "2024": "disclosed_validation",
     "2025": "diagnostic_only_prior_pa_pbp_position_defense_access",
@@ -130,13 +153,13 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 830,
-      "duration_seconds": 9.28
+      "passed": 832,
+      "duration_seconds": 30.63
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_outcomes.py",
       "status": "passed",
-      "passed": 8
+      "passed": 10
     }
   },
   "authorization": {
@@ -144,16 +167,18 @@
     "stage1_source_materialization_complete": true,
     "stage2_candidate_development_authorized": true,
     "stage2_disclosed_validation_scoring_authorized": true,
+    "stage2_disclosed_2024_source_ready": true,
     "stage2_candidate_scoring_started": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "stage2_disclosed_2024_terminal_outcome_source_and_pre_score_invariants"
+    "next_gate": "stage2_neutral_weight_fold_manifest_and_pre_score_invariant_freeze"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
     "MLB terminal-PBP and official GIDP definitions differ on 40 player-league-season rows; this is a retained non-blocking diagnostic.",
     "The historical 99.97 percent figure is conditional on a screened contact slice, not all official PA.",
-    "No Hitter v2 candidate, run value, or future outcome was scored in Stage 1.",
+    "No Hitter v2 candidate or future outcome has been scored through the disclosed 2024 source-readiness checkpoint.",
+    "The disclosed 2024 target cannot be used as predictor history, participant membership, playing time, environment, centering or weight evidence.",
     "2025 is not a pristine confirmation surface."
   ]
 }
