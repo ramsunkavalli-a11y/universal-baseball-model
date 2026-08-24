@@ -172,7 +172,7 @@ def estimate_visitor_park_offsets(
                 },
             }
         )
-    return pl.DataFrame(rows)
+    return pl.DataFrame(rows, infer_schema_length=None)
 
 
 def aggregate_player_park_exposure(
@@ -326,7 +326,7 @@ def estimate_player_season_probabilities(
                 },
             }
         )
-    return pl.DataFrame(rows)
+    return pl.DataFrame(rows, infer_schema_length=None)
 
 
 def neutralize_player_season_parks(
@@ -364,7 +364,7 @@ def neutralize_player_season_parks(
                 },
             }
         )
-    return pl.DataFrame(rows)
+    return pl.DataFrame(rows, infer_schema_length=None)
 
 
 def relative_age_basis(relative_age: float) -> np.ndarray:
@@ -943,7 +943,7 @@ def estimate_player_gidp_rates(
                 "gidp_fallback_reason": None,
             }
         )
-    return pl.DataFrame(rows)
+    return pl.DataFrame(rows, infer_schema_length=None)
 
 
 def fit_c1_adjustments(
@@ -1130,7 +1130,7 @@ def predict_c1_hierarchical_pbp(
                 },
             }
         )
-    result = pl.DataFrame(rows)
+    result = pl.DataFrame(rows, infer_schema_length=None)
     require_probability_columns(result)
     return result
 

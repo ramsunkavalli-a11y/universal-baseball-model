@@ -1,0 +1,80 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "status": "c1_unscored_prescore_invariants_passed",
+  "recorded_date": "2026-08-24",
+  "candidate_fit": true,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "configuration_role": "non_decisional_sentinel",
+  "sentinel_parameters": {
+    "half_life_seasons": 1.0,
+    "component_prior_pa": 800.0,
+    "park_prior_pa": 2000.0,
+    "movement_prior_pa": 500.0,
+    "ridge_penalty": 100.0
+  },
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2-c1-prescore/report.json",
+    "sha256": "9263770a1ac7072344377b1c54519b3fcabd1077d86bf15caa93de1e7311afe4"
+  },
+  "folds": [
+    {
+      "fold_id": "V2022",
+      "target_season": 2022,
+      "predictor_cutoff_season": 2021,
+      "forecast_players": 4705,
+      "movement_pairs": 0,
+      "age_fit_fallback_reason": "insufficient_chronology_safe_adjacent_seasons",
+      "fallback_counts": {"park": 0, "translation": 3923, "age": 4705, "gidp": 1},
+      "maximum_c1_simplex_error": 2.220446049250313e-16,
+      "c1_unscored_prediction_sha256": "f515be257db8656b42353b0485cd94a0519bb40ac974e02a5bf636f8fcad0234",
+      "final_level_offset_sha256": "e4bb5094963f86c4b38ec92c2b0f4156bcbc49ae8a0e442e7c8fc13e86525844",
+      "age_coefficient_sha256": "3c49f28484f1e8f1eea6ced38edc5693c59da074a97374c72ce0dd45fa931988"
+    },
+    {
+      "fold_id": "V2023",
+      "target_season": 2023,
+      "predictor_cutoff_season": 2022,
+      "forecast_players": 5568,
+      "movement_pairs": 3176,
+      "age_fit_fallback_reason": null,
+      "fallback_counts": {"park": 0, "translation": 0, "age": 0, "gidp": 2},
+      "maximum_c1_simplex_error": 2.220446049250313e-16,
+      "c1_unscored_prediction_sha256": "5a7ff61a23343260650f9ec671e93f24b1954b58b924dec160883b905849eb4f",
+      "final_level_offset_sha256": "9b0081abd37bea5531200691ed54f623acacfc2abcc175878d4c14c9a0f95647",
+      "age_coefficient_sha256": "c2f60dd6cf1c6a9bc009207287ccadfd4c377ae5536997ce0edf3c107bd5385d"
+    },
+    {
+      "fold_id": "V2024",
+      "target_season": 2024,
+      "predictor_cutoff_season": 2023,
+      "forecast_players": 6381,
+      "movement_pairs": 6297,
+      "age_fit_fallback_reason": null,
+      "fallback_counts": {"park": 0, "translation": 0, "age": 0, "gidp": 2},
+      "maximum_c1_simplex_error": 2.220446049250313e-16,
+      "c1_unscored_prediction_sha256": "54a37f46548871d21ec27f64ff9a2284fff7d4191ce31f89dcafa2d8c518e754",
+      "final_level_offset_sha256": "b11db1ded5cccfb85332a76e34be731cc07c804246937f4c7d15a4731c3dcadc",
+      "age_coefficient_sha256": "4639456d6dc580bc7641392afdc6e903cd57c1071e847e6175c9c4d3ad7f754a"
+    }
+  ],
+  "invariants": {
+    "predictor_seasons_at_or_before_cutoff": true,
+    "target_outcomes_loaded": false,
+    "evaluation_membership_loaded": false,
+    "forecast_ids_equal_predeclared_populations": true,
+    "probabilities_finite_nonnegative_normalized": true,
+    "zero_offsets_reproduce_c0_exactly": true,
+    "missing_gidp_reproduces_pre_gidp_exactly": true,
+    "mlb_level_offset_exactly_zero": true,
+    "protected_confirmation_opened": false
+  },
+  "gate": {
+    "unscored_prescore_checkpoint_passed": true,
+    "disclosed_scoring_may_begin_after_local_commit": true,
+    "tracking_authorized": false,
+    "stage3_authorized": false
+  }
+}

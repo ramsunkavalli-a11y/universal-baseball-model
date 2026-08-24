@@ -196,6 +196,17 @@ the 20/24/28/32 knots from collapsing under an ambiguous scalar
 age-minus-median interpretation. The superseded SHA-256 is retained in the
 contract; no C1 fit, prediction, or score preceded the amendment.
 
+The C1 unscored checkpoint now passes for the 4,705 / 5,568 / 6,381
+predeclared forecast players. No target outcomes or evaluation membership were
+loaded. All probability, chronology, membership, zero-offset, GIDP fallback,
+and MLB-anchor invariants passed. V2022 correctly exposes the source boundary:
+with only 2021 predictor history it has zero adjacent-season movement pairs, so
+age remains neutral and 3,923 non-MLB histories use the disconnected-level
+fallback. V2023 and V2024 have 3,176 and 6,297 movement pairs and no age or
+translation fallback. These sentinel forecasts are unscored and
+non-decisional; the next authorized gate is frozen-grid training selection and
+disclosed 2022–2024 validation scoring.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
