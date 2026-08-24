@@ -37,7 +37,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Position-player v1:** **DONE / FROZEN / HISTORICAL PROTOTYPE**
 - **Hitter v2 Stage 0:** **DONE LOCALLY — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN**
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
-- **Hitter v2 Stage 2:** **AUTHORIZED / PRE-SCORE EVALUATION GEOMETRY FROZEN — CANDIDATE IMPLEMENTATION IN PROGRESS**
+- **Hitter v2 Stage 2:** **AUTHORIZED / GIDP OPPORTUNITY SOURCE READY — C1 PARK CONTEXT IN PROGRESS; NO CANDIDATE SCORED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -105,6 +105,8 @@ Stage 2's pre-score evaluation freeze is recorded in:
 - `docs/hitter-v2-stage2-prescore-result.json`;
 - `docs/hitter-v2-stage2-forecast-membership-correction.md`;
 - `docs/hitter-v2-stage2-forecast-membership-correction.json`;
+- `docs/hitter-v2-stage2-gidp-opportunity-checkpoint.md`;
+- `docs/hitter-v2-stage2-gidp-opportunity-result.json`;
 - `reports/generated/hitter-v2-stage2-prescore/report.json` (ignored generated
   evidence, identified by a committed SHA-256).
 
@@ -159,8 +161,16 @@ preserved but superseded by schema `0.2`. Corrected forecast populations are
 defined only from prior evidence (4,705 / 5,568 / 6,381 players), then joined
 to target outcomes for evaluation (3,176 / 3,172 / 3,088 overlaps). The pinned
 Chadwick snapshot supplies exact birth dates for 100% of those forecast
-populations. C1 remains unfit because park context and observed GIDP
-opportunities still require source enrichment. No candidate has been scored.
+populations.
+
+The C1 GIDP-opportunity source is now ready on 932,024 exactly reconciled
+player-games and 3,672,168 PA (97.2844% player-game and 97.2954% PA coverage).
+MLB Savant uses direct pre-PA base state; the affiliated MiLB export exposes
+post-play state, so its PA-start occupancy is reconstructed by shifting the
+prior PA's state within each half-inning. All 26,017 excluded player-games are
+retained with explicit failed-closed reasons, including 29 MiLB rows where
+official GIDP exceeds reconstructed opportunity. C1 remains unfit because
+chronology-safe park context is still open. No candidate has been scored.
 
 ## Paused post-v1 program — Pitching v1
 

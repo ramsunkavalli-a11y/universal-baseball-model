@@ -1,0 +1,52 @@
+{
+  "report_schema_version": "0.2",
+  "program": "hitter_v2",
+  "stage": 2,
+  "status": "gidp_opportunity_source_ready",
+  "recorded_date": "2026-08-23",
+  "implementation_commit": "68c244fe88a8bb35bdbc0485122bf7d82baf54b7",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "definition": "runner on first and fewer than two outs at PA start",
+  "source_semantics": {
+    "mlb_savant": "on_1b is direct pre-PA state",
+    "affiliated_milb_pbp": "on_1b is post-play state shifted from the preceding PA within the same half-inning; the first PA starts empty"
+  },
+  "totals": {
+    "canonical_model_ready_player_games": 958041,
+    "opportunity_ready_player_games": 932024,
+    "player_game_coverage": 0.9728435421866078,
+    "opportunity_ready_official_pa": 3672168,
+    "official_pa_coverage": 0.9729543259645307,
+    "opportunity_ready_players": 7054,
+    "opportunity_ready_games": 50563,
+    "gidp_opportunities": 809854,
+    "official_gidp": 59577,
+    "multi_out": 70239
+  },
+  "failed_closed_player_games": {
+    "ambiguous_state": 1,
+    "missing_pbp_identity": 437,
+    "official_gidp_above_reconstructed_opportunity": 29,
+    "pa_identity_reconciliation": 25550
+  },
+  "invariants": {
+    "eligible_rows_have_exact_pa_reconciliation": true,
+    "eligible_rows_have_gidp_not_above_opportunity": true,
+    "candidate_population_or_score_changed": false
+  },
+  "provenance": {
+    "generated_report_sha256": "c3714fa2718b74d3d86c0cb2e2cf8969dbd1f7341d09171abad39acb6c06f4f5",
+    "player_game_artifact_sha256": "d45b73a4e7b41ddd5c3def41c65f5953754abc895d7108f5288cbb9dc0f4bf8a",
+    "raw_manifest_sha256": "72b3bf181fa96e899b1711564ea4df0c318962a0088464bcf0894fdc25c12140",
+    "history_player_game_sha256": "322587b6af6d74b14fe1b5ca925343e0cce9decfaa5252261a6e8b3681345f96",
+    "target_2024_player_game_sha256": "1f4444ea07c8972b40ff5d3216e5a9e3e55aa717525ec81a4d08971bb094f890"
+  },
+  "validation": {
+    "ruff": "passed",
+    "pytest_passed": 847,
+    "pytest_duration_seconds": 9.48
+  },
+  "next_gate": "stage2_c1_park_context_source_enrichment"
+}
