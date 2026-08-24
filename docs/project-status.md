@@ -15,10 +15,10 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 - Public position-player release `v1.0.0` was published from merge commit
   `b204572d9bd394c77bc40650c31750a0d6a9443d`; its frozen scientific outputs
   must not be rewritten by later release or maintenance work.
-- Hitter v2 is the active post-release model program. Stage 0 audit and
-  preregistration are complete on local branch `hitter-v2-pbp-outcomes` and
-  await review; no Hitter v2 candidate or protected confirmation outcome has
-  been scored.
+- Hitter v2 is the active post-release model program. Stage 1 universal
+  terminal-PA materialization is complete on local branch
+  `hitter-v2-pbp-outcomes` and awaits review; no Hitter v2 candidate or
+  protected confirmation outcome has been scored.
 - New Pitching v1 development is paused. Completed foundation/source work is
   preserved unchanged for later resumption.
 - Work in small verified batches and inspect branch head before editing.
@@ -34,8 +34,9 @@ A broader WAR literature review was completed before final aggregation. It cause
 ## Current state
 
 - **Position-player v1:** **DONE / FROZEN / HISTORICAL PROTOTYPE**
-- **Hitter v2 Stage 0:** **DONE LOCALLY / AWAITING REVIEW — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN; NO CANDIDATE SCORED**
-- **Hitter v2 Stage 1+:** **NOT AUTHORIZED**
+- **Hitter v2 Stage 0:** **DONE LOCALLY — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN**
+- **Hitter v2 Stage 1:** **DONE LOCALLY / AWAITING REVIEW — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
+- **Hitter v2 Stage 2+:** **NOT AUTHORIZED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
 - **Projection v1 batting:** DONE / FROZEN
@@ -80,6 +81,13 @@ Stage 0 is frozen in:
 - `docs/hitter-v2-v1-external-validity-result.json`;
 - `docs/hitter-v2-workflow-status.json`.
 
+Stage 1 is recorded in:
+
+- `docs/hitter-v2-stage1-checkpoint.md`;
+- `docs/hitter-v2-stage1-source-result.json`;
+- `reports/generated/hitter-v2-stage1-universal/report.json` (ignored generated
+  evidence, identified by a committed SHA-256).
+
 The clean `main` baseline reproduced Ruff and all 819 tests. The immutable v1
 pure-batting export reproduced all 3,985 player rows with maximum runs/600 delta
 `0.0`. The attached independent external-validity audit is preserved as
@@ -87,18 +95,28 @@ verification evidence; no new official outcome scoring was performed in Stage
 0 and no Hitter v2 candidate was fit or scored.
 
 The universal source contract promotes the existing terminal-contact parser
-(`1B`, `2B`, `3B`, `HR`, `ROE`, `FC_REACH`, `SF`, `MULTI_OUT`, `OUT`) into an
-exhaustive PA foundation joined with UBB, IBB, HBP, K and special outcomes. The
-existing 2021–2022 MiLB source supported 900,742 / 901,015 contacts
-(99.9697008%); 2023 supported 595,619 / 595,794 (99.9706274%). Tracking is an
-optional reliability-weighted increment with exact PBP fallback.
+into the exhaustive 14-outcome PA foundation. Stage 1 materialized 721,636
+player-game rows and 19,074 unique player-league-season rows across 2021–2023.
+It reconciles 2,813,883 / 2,837,295 official PA (99.1748479%) as model-ready;
+5,716 player-games and 23,412 PA with unresolved source ambiguity remain
+retained and failed closed. MLB required-field reconciliation has zero blocking
+mismatches. Coverage is reported by season, league, level, team, capability,
+and source status. The source was reproduced from public checksum-verified
+artifacts without GitHub authentication.
+
+The earlier 99.97% figures described supported contacts inside the screened
+contact-target slice, not all official PA. Stage 1 explicitly corrects that
+denominator interpretation. Tracking remains an optional reliability-weighted
+increment with exact PBP fallback, but no tracking increment or batting model
+was fit or scored in this gate.
 
 2025 is diagnostic-only because PA, PBP, Position/Role and Defense outcomes
 have already been accessed. Completed 2026 offense is the protected one-shot
-confirmation and remains closed. After review, the exact next authorized gate
-is Stage 1 source-only terminal-PA materialization and reconciliation. Stage 2
-candidate scoring, 2026 access, baserunning, defense, playing time and WAR are
-not authorized.
+confirmation and remains closed. Stage 1 now stops for review. After explicit
+approval, the exact next gate is Stage 2 PBP-only baseline/component
+implementation and preregistered rolling-origin validation. Stage 2 candidate
+development/scoring, 2026 access, baserunning, defense, playing time and WAR
+are not currently authorized.
 
 ## Paused post-v1 program — Pitching v1
 

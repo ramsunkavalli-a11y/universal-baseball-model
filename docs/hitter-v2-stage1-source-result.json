@@ -1,0 +1,130 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 1,
+  "status": "source_gate_complete_awaiting_review",
+  "accepted": true,
+  "as_of_date": "2026-08-23",
+  "repository": {
+    "base_commit": "197d21a67d707633cb47d720c84a7b126b9c4320",
+    "feature_branch": "hitter-v2-pbp-outcomes",
+    "implementation_commit": "f9abead2550e43112077e101523722ce16ffbf0d",
+    "remote_state_changed": false
+  },
+  "scope": {
+    "seasons": [2021, 2022, 2023],
+    "levels": ["MLB", "AAA", "AA", "A+", "A", "RK"],
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "target_run_values_attached": false,
+    "protected_2026_opened": false
+  },
+  "taxonomy": [
+    "UBB", "IBB", "HBP", "K", "HR", "3B", "2B", "1B", "ROE",
+    "FC_REACH", "SF", "MULTI_OUT", "OTHER_OUT", "SH_OR_SPECIAL"
+  ],
+  "totals": {
+    "player_game_rows": 721636,
+    "player_season_rows": 19074,
+    "games": 37741,
+    "players": 6391,
+    "official_pa": 2837295,
+    "model_ready_player_game_rows": 715920,
+    "model_ready_official_pa": 2813883,
+    "model_ready_pa_rate": 0.9917484787447198,
+    "failed_closed_player_game_rows": 5716,
+    "failed_closed_official_pa": 23412,
+    "official_unique_repairs": 5836,
+    "mlb_gidp_definition_diagnostic_mismatch_rows": 40
+  },
+  "coverage_by_season": [
+    {"season": 2021, "player_game_rows": 231999, "official_pa": 886178, "model_ready_pa": 879747},
+    {"season": 2022, "player_game_rows": 246238, "official_pa": 974413, "model_ready_pa": 968212},
+    {"season": 2023, "player_game_rows": 243399, "official_pa": 976704, "model_ready_pa": 965924}
+  ],
+  "source_status_totals": [
+    {"source_status": "accepted_exact", "player_game_rows": 710199, "official_pa": 2789474},
+    {"source_status": "accepted_official_unique_repair", "player_game_rows": 5721, "official_pa": 24409},
+    {"source_status": "failed_closed_official_snapshot", "player_game_rows": 1, "official_pa": 6},
+    {"source_status": "failed_closed_pbp_overcount", "player_game_rows": 9, "official_pa": 26},
+    {"source_status": "failed_closed_reconciliation", "player_game_rows": 5706, "official_pa": 23380}
+  ],
+  "model_ready_outcome_counts": {
+    "UBB": 293927,
+    "IBB": 3835,
+    "HBP": 47292,
+    "K": 680620,
+    "HR": 71212,
+    "3B": 15925,
+    "2B": 120884,
+    "1B": 394457,
+    "ROE": 33457,
+    "FC_REACH": 6451,
+    "SF": 20933,
+    "MULTI_OUT": 53989,
+    "OTHER_OUT": 1063569,
+    "SH_OR_SPECIAL": 7332
+  },
+  "artifacts": {
+    "generated_report": {
+      "path": "reports/generated/hitter-v2-stage1-universal/report.json",
+      "sha256": "b7bc41ec87c43dfff9f0bcb6665557f32e3c525978aae46624596afa089d768a"
+    },
+    "player_game": {
+      "path": "reports/generated/hitter-v2-stage1-universal/tables/hitter_v2_player_game_outcomes_2021_2023.parquet",
+      "row_count": 721636,
+      "sha256": "322587b6af6d74b14fe1b5ca925343e0cce9decfaa5252261a6e8b3681345f96",
+      "schema_sha256": "493ed1eba69df2e270d5466f501442293140984fbe49d666e1a39bb06f2b75f9"
+    },
+    "player_season": {
+      "path": "reports/generated/hitter-v2-stage1-universal/tables/hitter_v2_player_season_outcomes_2021_2023.parquet",
+      "row_count": 19074,
+      "sha256": "2be64d9041ccbe282f723d97c0f40af87d15f8f0701b111fdf2fbf74af829bde",
+      "schema_sha256": "a84ba95c4e094fe759cb029cff5a8f2e4a5bfec4ad244499f198a4fdbdf36e51"
+    },
+    "exceptions": {
+      "path": "reports/generated/hitter-v2-stage1-universal/tables/hitter_v2_player_game_exceptions_2021_2023.parquet",
+      "row_count": 5716,
+      "sha256": "0e53a8732b8b90b60ad7d99d09fbc92d761066e9e80d704d1812ac90b6d26dec"
+    }
+  },
+  "source_inputs": {
+    "milb_player_game_sha256": "3cf85a08a1110f9d12f62cb3ecfa6c3eb5a71d7ba6dfe7651a45c06a847cb46f",
+    "milb_source_report_sha256": "09002ba4cb8c520f89b292a3366594594d983bdec0aa19f0e533a5ef2942de1c",
+    "mlb_player_game_sha256": "9ebde6776654fd0dd4571cf55628927dc055031a6ba0acf85dbc7e6e7d85a562",
+    "mlb_source_report_sha256": "f559e6ec08e64f9d058fb44f2f7b1032be5933c8667b60f8b629151964882980"
+  },
+  "authentication": {
+    "github_authentication_required": false,
+    "method": "public_artifact_download_plus_frozen_sha256_verification",
+    "credentials_persisted": false
+  },
+  "validation": {
+    "focused_pytest": {"status": "passed", "passed": 8},
+    "focused_ruff": {"status": "passed"},
+    "full_pytest": {
+      "command": ".venv/Scripts/python.exe -m pytest",
+      "status": "passed",
+      "passed": 830,
+      "duration_seconds": 9.28
+    },
+    "full_ruff": {
+      "command": ".venv/Scripts/python.exe -m ruff check src scripts tests",
+      "status": "passed"
+    }
+  },
+  "limitations": [
+    "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
+    "MLB terminal-PBP and official GIDP definitions differ on 40 player-league-season rows; the diagnostic is retained.",
+    "The 99.97 percent historical contact coverage was conditional on a screened contact slice, not all official PA.",
+    "No batting model, run-value system, or target-season score is part of Stage 1."
+  ],
+  "authorization": {
+    "stage1_complete": true,
+    "stage2_candidate_development_authorized": false,
+    "stage2_candidate_scoring_authorized": false,
+    "2026_confirmation_access_authorized": false,
+    "full_war_authorized": false,
+    "next_gate_after_review": "stage2_pbp_only_baselines_component_candidates_and_preregistered_rolling_origin_validation"
+  }
+}
