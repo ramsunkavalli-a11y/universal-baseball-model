@@ -1,0 +1,50 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2c_source_design",
+  "status": "contact_shape_semantics_and_stability_audited_without_offensive_score",
+  "recorded_date": "2026-08-24",
+  "source": {
+    "path": "reports/generated/hitter-v2-stage2b-contact-shape-source/tables/contact_shape_player_season.parquet",
+    "sha256": "ff963a63d2651f917f0ada23c12e46380a1cce001655d8df24249f90bc5225b0",
+    "seasons": [2021, 2022, 2023, 2024],
+    "events": 2328735
+  },
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2c-shape-stability/report.json",
+    "sha256": "c6b358a98483b39588232107ebf72df53b7cf7f125183f9935cac6215faafd44"
+  },
+  "pair_counts": {
+    "same_level_component_pairs": 71122,
+    "primary_level_transition_component_pairs": 74138
+  },
+  "overall_stability": {
+    "offb_per_contact": {"pairs": 9031, "pearson": 0.1869895902635035, "spearman": 0.2966203782769859},
+    "pull_offb_per_offb": {"pairs": 8683, "pearson": 0.18206109703120124, "spearman": 0.25776633826530787},
+    "gb_per_contact": {"pairs": 9031, "pearson": 0.2668880819433703, "spearman": 0.3652751026277295},
+    "oppo_gb_per_gb": {"pairs": 8896, "pearson": 0.27123666832976867, "spearman": 0.3207825697682569}
+  },
+  "semantics": {
+    "direction": "batter-relative pull/center/opposite from hc_x/hc_y and event batter side",
+    "center_boundary_degrees": 15.0,
+    "trajectory": "Gameday hitData bb_type mapped to IFFB/OFFB/LD/GB",
+    "unknown_side_or_coordinates": "failed_closed_null_direction",
+    "mlb_milb_classifier_code_shared": true,
+    "semantic_equivalence_across_source_systems_proven": false,
+    "season_artifact_retains_batter_side": false
+  },
+  "artifacts": {
+    "overall_sha256": "b0442b5d2cf756df142cea13adeefa17971816ed2a3982be05508b7ddd331008",
+    "by_evidence_sha256": "46b5e86186eba4c0735517ea3a47e93e14f5fbe53975a6c689b60b75e672eb35",
+    "by_level_sha256": "a362c3f14a2f6d811f61f846229b69a07e2a32658745eafa9852769fbd3101d9",
+    "by_transition_sha256": "99389cd6286e391a9d3def7ee7711ff6f090e8215407ba08b4144d7d02d9f084",
+    "same_level_pairs_sha256": "61ed349c715608692f081bc93a06e77c925d24a6845b372736e1600e3969b57b",
+    "transition_pairs_sha256": "913bda5b7e70f0a51f5748800941b5762bf875d967bc040efaf3337374522273"
+  },
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "offensive_target_loaded": false,
+  "protected_2026_opened": false,
+  "tracking_authorized": false,
+  "next_step": "freeze_stage2c_development_contract_before_candidate_implementation"
+}

@@ -20,6 +20,8 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
   the disclosed 2022-2024 promotion gate. Stage 2b now has a frozen, versioned
   calibration/contact-shape contract and verified implementation. All three
   Stage 2b candidates have now failed the frozen disclosed-development gate.
+  Stage 2c has completed a source-only semantics/stability audit and frozen a
+  narrow nested pulled-outfield-fly contract before candidate implementation.
   Protected 2026 outcomes, tracking fusion,
   Stage 3, and full WAR remain closed.
 - New Pitching v1 development is paused. Completed foundation/source work is
@@ -41,6 +43,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
 - **Hitter v2 Stage 2:** **COMPLETE / FAILED PROMOTION GATE — C0 AND C1 PRESERVED AS FAILED CHALLENGERS**
 - **Hitter v2 Stage 2b:** **COMPLETE / FAILED DISCLOSED-DEVELOPMENT GATE — NO CANDIDATE SELECTED**
+- **Hitter v2 Stage 2c:** **SOURCE/DESIGN GATE FROZEN — NO CANDIDATE FIT OR SCORED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -132,6 +135,15 @@ Stage 2b's versioned development boundary is recorded in:
 - `docs/hitter-v2-stage2b-development-contract.json`;
 - `docs/hitter-v2-stage2b-unscored-result.json`;
 - ignored generated diagnostic/source reports identified by committed hashes.
+
+Stage 2c's source/design boundary is recorded in:
+
+- `docs/hitter-v2-stage2c-source-audit.md`;
+- `docs/hitter-v2-stage2c-source-result.json`;
+- `docs/hitter-v2-stage2c-development-contract.md`;
+- `docs/hitter-v2-stage2c-development-contract.json`;
+- `scripts/audit_hitter_v2_stage2c_shape_stability.py`;
+- ignored generated stability tables identified by committed hashes.
 
 The clean `main` baseline reproduced Ruff and all 819 tests. The immutable v1
 pure-batting export reproduced all 3,985 player rows with maximum runs/600 delta
@@ -347,6 +359,19 @@ shares adjusted six contact nodes, while the evidence favors a nested,
 level-aware pulled-air skill aimed first at future HR/XBH, with ground-ball
 direction treated separately. This review changes no candidate or gate and
 does not authorize new modeling.
+
+The Stage 2c source/design audit now measures the exact nested hypotheses
+without loading offense: `OFFB / contact`, `pulled OFFB / OFFB`, `GB / contact`,
+and `opposite GB / GB`. Raw all-player same-level Pearson correlations are only
+0.187, 0.182, 0.267, and 0.271, but stability rises materially with evidence;
+for example, pulled-OFFB persistence is 0.519 at 50-99 OFFB and 0.546 at
+100-199. Cross-level mean shifts remain material, especially at the lowest
+levels. The frozen Stage 2c design therefore uses two separately shrunk,
+league-season-level-centered pulled-fly features only at future HR/XBH nodes.
+Ground-ball direction is a separate secondary ablation and cannot rescue a
+failed power candidate. No offensive target, candidate, tracking field, or
+protected 2026 outcome was opened. Candidate implementation/scoring requires
+a new explicit authorization after review of this source/design gate.
 
 ## Paused post-v1 program — Pitching v1
 

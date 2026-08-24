@@ -1,0 +1,80 @@
+{
+  "contract_schema_version": "0.1",
+  "contract_id": "hitter_v2_stage2c_nested_pulled_offb_v1",
+  "program": "hitter_v2",
+  "stage": "2c",
+  "recorded_date": "2026-08-24",
+  "status": "pre_registered_before_stage2c_candidate_fit_or_score",
+  "development_boundary": {
+    "V2022": "training_origin_identity_diagnostic_only",
+    "V2023": "disclosed_development_evaluation",
+    "V2024": "disclosed_development_evaluation",
+    "2025": "diagnostic_only_never_selects_rejects_promotes_or_reweights",
+    "2026": "protected_one_shot_confirmation_unopened",
+    "development_can_promote_to_production": false
+  },
+  "base_model": {
+    "model_id": "E0_OUTCOME_ONLY_REFERENCE",
+    "implementation": "unchanged C0_NESTED_EB forecast",
+    "role": "frozen_failed_architecture_used_as_offset_and_reference_not_relabelled_as_passed"
+  },
+  "shared_shape_estimator": {
+    "half_life_seasons": 2.0,
+    "beta_prior_denominator_events": 100.0,
+    "center": "historical_league_season_level_rate",
+    "feature": "context_centered_beta_posterior_log_odds",
+    "reliability": "n_eff / (n_eff + 100)",
+    "reliability_application": "reported_but_not_multiplied_again_because_beta_posterior_already_shrinks",
+    "missing_shape": "feature_and_increment_exactly_zero",
+    "fixed_mean_loss_l2_penalty": 1.0,
+    "hyperparameter_search": false
+  },
+  "candidate_ladder": [
+    {
+      "model_id": "E1_NESTED_PULLED_OFFB_POWER",
+      "base": "E0_OUTCOME_ONLY_REFERENCE",
+      "features": ["P(OFFB|classified_contact)", "P(pull|OFFB)"],
+      "affected_contrasts": ["P(HR|contact)", "P(2B_or_3B|non_HR_hit)"],
+      "coefficients_per_contrast": 2,
+      "forbidden_effects": ["K", "UBB", "IBB", "HBP", "total_reach", "ROE", "FC_REACH", "SF", "MULTI_OUT", "OTHER_OUT", "SH_OR_SPECIAL"]
+    },
+    {
+      "model_id": "E2_SEPARATE_GROUND_DIRECTION",
+      "base": "E1_NESTED_PULLED_OFFB_POWER",
+      "features": ["P(GB|classified_contact)", "P(opposite|GB)"],
+      "affected_contrasts": ["P(reach|non_HR_contact)"],
+      "coefficients_per_contrast": 2,
+      "cannot_rescue_failed_e1": true
+    }
+  ],
+  "fit_protocol": {
+    "V2022": "all increments equal zero",
+    "V2023": "fit coefficients only on V2022 forecast-target pairs",
+    "V2024": "fit coefficients only on pooled V2022 and V2023 forecast-target pairs",
+    "confirmation_refit": "V2022 through V2024 only after separate authorization",
+    "player_identity_predictor": false,
+    "target_membership_predictor": false,
+    "tracking_availability_predictor": false,
+    "missingness_predictor": false
+  },
+  "reporting": {
+    "selection_folds": ["V2023", "V2024"],
+    "weighting_views": ["pa", "player"],
+    "metrics": ["terminal_log_loss", "terminal_brier", "hr_conditional_log_loss", "hr_conditional_brier", "woba_mae", "woba_rmse", "runs_per_600_mae", "runs_per_600_rmse", "woba_pearson", "woba_spearman", "calibration", "coverage", "evidence_bands", "supported_subgroups"],
+    "identical_overlap_required": true
+  },
+  "development_advance_rule": {
+    "strict_improvement_tolerance": 1e-8,
+    "e1_each_fold_view": "improve total terminal log loss and Brier versus strongest simple outcome baseline and HR conditional log loss versus E0",
+    "e1_pooled": "improve wOBA and runs_per_600 RMSE versus strongest simple outcome baseline",
+    "subgroups": "no material supported-level reversal under frozen Stage 2 thresholds",
+    "e2_ablation": "improve both total proper scores versus E1 on identical rows and wOBA RMSE degradation no greater than 0.25 percent",
+    "simplicity": "least complex candidate clearing every applicable rule",
+    "failure": "document and stop without tuning on disclosed results"
+  },
+  "protected_confirmation_gate": {
+    "authorized_now": false,
+    "requirements": ["development candidate selected", "implementation and coefficients frozen", "refit protocol and source hashes frozen", "confirmation scorer committed", "explicit review authorization"]
+  },
+  "downstream_authorization": {"tracking": false, "stage3": false, "full_war": false}
+}

@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2b_candidates_failed_disclosed_development",
+  "status": "stage2c_source_and_development_contract_frozen_unscored",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "active_stage2b_failed_no_candidate_selected",
+    "hitter_v2": "active_stage2c_source_design_frozen_no_candidate_fit_or_scored",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -66,6 +66,13 @@
       "sha256": "54aef9af80d72298fc4eb2e7761eeb2a8c85247dbd71644f9fb63ea3ca6d143b",
       "validation_module_sha256": "8a4c4731b096d7b68bf9c8671eea9c95ae0ad8f792293c61af8267f86548aec6",
       "scoring_command_sha256": "ce14ed118421b3b623a4f2c8d9de97ca1ee0a811fb0d58bb55f354cf24f97d09",
+      "frozen_before_candidate_fit_or_score": true
+    },
+    "stage2c_development_contract": {
+      "path": "docs/hitter-v2-stage2c-development-contract.json",
+      "sha256": "93d97941c5d0511ba7a72af973e8bd3c4d0fededb625f4889fe3df6c70282043",
+      "human_readable_path": "docs/hitter-v2-stage2c-development-contract.md",
+      "human_readable_sha256": "892a68234bc440806b084f7b03a22e4ee591c2de8f6816e803346b13e6c27527",
       "frozen_before_candidate_fit_or_score": true
     }
   },
@@ -368,6 +375,25 @@
     "new_model_authorized": false,
     "protected_2026_opened": false
   },
+  "stage2c_source_and_design": {
+    "source_audit_complete": true,
+    "source_audit_path": "docs/hitter-v2-stage2c-source-audit.md",
+    "source_audit_sha256": "cb0a578590b869c639d30c565f05ff85091efc3b8303cfa71b4bc7fd02137509",
+    "source_result_path": "docs/hitter-v2-stage2c-source-result.json",
+    "source_result_sha256": "788d0048302aa349aaf0abe3acf403b50e90a1617998cc6bb8682688a38244ad",
+    "audit_script_path": "scripts/audit_hitter_v2_stage2c_shape_stability.py",
+    "audit_script_sha256": "f184c3e6eadc76d60cbe913b8849ee7e4bf766d930cb8098ef968a8de96af3f4",
+    "generated_report_sha256": "c6b358a98483b39588232107ebf72df53b7cf7f125183f9935cac6215faafd44",
+    "same_level_component_pairs": 71122,
+    "primary_level_transition_component_pairs": 74138,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "offensive_target_loaded": false,
+    "contract_frozen": true,
+    "candidate_implementation_authorized": false,
+    "protected_2026_opened": false,
+    "tracking_authorized": false
+  },
   "stage2_gidp_opportunity_source": {
     "accepted": true,
     "candidate_fit": false,
@@ -415,7 +441,7 @@
       "command": "python -m pytest",
       "status": "passed",
       "passed": 881,
-      "duration_seconds": 9.72
+      "duration_seconds": 9.81
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -438,9 +464,14 @@
     "stage2b_scorer_frozen": true,
     "stage2b_candidate_fit": true,
     "stage2b_candidate_scored": true,
+    "stage2c_source_audit_complete": true,
+    "stage2c_contract_frozen": true,
+    "stage2c_candidate_implementation_authorized": false,
+    "stage2c_candidate_fit": false,
+    "stage2c_candidate_scored": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "review_stage2b_failure_and_contact_direction_literature_before_any_new_versioned_contract"
+    "next_gate": "review_stage2c_source_and_development_contract_before_candidate_implementation"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -456,6 +487,9 @@
     "C1 materially worsened pooled future wOBA/runs, proper scores, correlations, calibration, and supported-subgroup results.",
     "Tracking fusion, protected 2026 confirmation, Stage 3, and full WAR remain unauthorized because no PBP-only batting candidate passed.",
     "Stage 2b uses V2022-V2024 only as disclosed development evidence and cannot promote a candidate without independent protected confirmation.",
-    "The contact-shape auxiliary covers 97.1073 percent of terminal-contact events; missing evidence must produce an exact zero residual rather than a zero-filled shape vector."
+    "The contact-shape auxiliary covers 97.1073 percent of terminal-contact events; missing evidence must produce an exact zero residual rather than a zero-filled shape vector.",
+    "Raw universal contact-shape stability is weak in small samples and varies by level transition; Stage 2c therefore requires smooth evidence shrinkage and historical league-season-level centering.",
+    "The player-season shape artifact does not retain batting side, so switch-hitter side-specific contact profiles are deferred.",
+    "Shared classifier code does not prove raw coordinate and trajectory measurement equivalence across MLB and MiLB source systems."
   ]
 }
