@@ -1,8 +1,14 @@
 from datetime import date
+from pathlib import Path
+import sys
 
 import polars as pl
 import pytest
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+
+from materialize_hitter_v2_stage1_milb import _overlay_adjudicated_outcomes
+from universal_baseball.current_talent_milb_evidence import OUTCOME_FIELDS
 from universal_baseball.hitter_v2_outcomes import (
     OFFICIAL_BATTING_FIELDS,
     TERMINAL_OUTCOMES,
@@ -234,3 +240,38 @@ def test_projector_rejects_partial_schema_and_preserves_dates() -> None:
         project_official_player_game_outcomes(_official_raw().drop("batting_IBB"), source_asset="x")
     resolved = _resolved(_official_raw())
     assert resolved.item(0, "game_date") == date(2022, 6, 1)
+
+
+def test_declared_missing_adjudication_is_retained_fail_closed() -> None:
+    resolved = _resolved(_official_raw()).with_columns(
+        pl.lit("certified_source").alias("outcome_resolution")
+    )
+    adjudicated = resolved.clear().select(
+        "game_id",
+        "player_id",
+        *OUTCOME_FIELDS,
+    ).with_columns(pl.lit("official_game_log").alias("outcome_authority"))
+
+    overlaid = _overlay_adjudicated_outcomes(
+        resolved,
+        adjudicated,
+        expected_missing_player_games=1,
+    )
+
+    assert overlaid.item(0, "batting_PA") == 17
+    assert (
+        overlaid.item(0, "outcome_resolution")
+        == "unresolved_missing_certified_adjudication"
+    )
+
+
+def test_undeclared_missing_adjudication_fails_closed() -> None:
+    resolved = _resolved(_official_raw())
+    adjudicated = resolved.clear().select(
+        "game_id",
+        "player_id",
+        *OUTCOME_FIELDS,
+    ).with_columns(pl.lit("official_game_log").alias("outcome_authority"))
+
+    with pytest.raises(RuntimeError, match="differ from the declared quarantine"):
+        _overlay_adjudicated_outcomes(resolved, adjudicated)

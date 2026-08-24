@@ -17,10 +17,17 @@ from typing import Any
 import zipfile
 
 import polars as pl
+import materialize_current_talent_historical_milb_game_evidence as historical
+import materialize_current_talent_historical_milb_game_evidence_projection_gate as historical_projection_gate
 from universal_baseball.current_talent_identity_corrections import (
     HISTORICAL_PLAYER_GAME_IDENTITY_CORRECTIONS,
 )
 from universal_baseball.current_talent_milb_evidence import OUTCOME_FIELDS
+from universal_baseball.current_talent_contact_value_source import (
+    attach_narrative_terminal_groups,
+    project_terminal_pa_descriptions,
+)
+from universal_baseball.current_talent_era import current_talent_level_spec
 from universal_baseball.certification import download_file, read_quarantined_csv
 from universal_baseball.hitter_v2_outcomes import (
     OFFICIAL_BATTING_FIELDS,
@@ -40,7 +47,12 @@ OWNER = "ramsunkavalli-a11y"
 REPO = "universal-baseball-model"
 CONTACT_RUN_2021_2022 = 32070152452
 CONTACT_RUN_2023 = 32082637028
-HISTORICAL_RUNS = {2021: 31979609553, 2022: 31971662070, 2023: 31971923778}
+HISTORICAL_RUNS = {
+    2021: 31979609553,
+    2022: 31971662070,
+    2023: 31971923778,
+    2024: 32095039114,
+}
 LEVELS = ("aaa", "aa", "a+", "a", "rk")
 EXPECTED_ARTIFACT_SHA256 = {
     (CONTACT_RUN_2021_2022, "current-talent-contact-value-source-2021-aaa"): "fd6a51a42d6f112168bfba2505acaa1f9547bb268528002cd92349a77d1e2543",
@@ -69,6 +81,11 @@ EXPECTED_ARTIFACT_SHA256 = {
     (31971923778, "current-talent-historical-milb-full-season-2023-a+"): "ffc25a0d442a69aa328d1079e25e67bc1246350d136857038265bc6956f4f0d5",
     (31971923778, "current-talent-historical-milb-full-season-2023-a"): "ea6d5fd8d478828750e1cc3ae08b05a814ef5533cf00da8994fe8f1d177f926d",
     (31971923778, "current-talent-historical-milb-full-season-2023-rk"): "96c4a2508e4e2c02fdc062e9d083ba5d4e06a189ecb0f2077725d8898efbb6f4",
+    (32095039114, "current-talent-historical-milb-full-season-2024-aaa"): "6f5c68af415c8333847c6d70bbdf742af00df68c524686d2b2cb19dd0eaa7012",
+    (32095039114, "current-talent-historical-milb-full-season-2024-aa"): "55b94c13eeb872273602c8d2716c40de7e0b36bf45f5074dcf29223029f1ccb3",
+    (32095039114, "current-talent-historical-milb-full-season-2024-a+"): "5e733f8cdbe00bb7a9a3f53ebe1944a10696b45b494cb3aeaf190a46141a226d",
+    (32095039114, "current-talent-historical-milb-full-season-2024-a"): "0e071330d4d5157d7e22a4d69fe6f177d1057ab83290defeb204a765183191e4",
+    (32095039114, "current-talent-historical-milb-full-season-2024-rk"): "f5bca2c5d66535b5cfd063ee7ff47b624dfac9bec706b5b64c3f8ff5c324f2bf",
 }
 
 
@@ -203,7 +220,10 @@ def _apply_identity_corrections(frame: pl.DataFrame, *, season: int) -> pl.DataF
 
 
 def _overlay_adjudicated_outcomes(
-    resolved: pl.DataFrame, adjudicated: pl.DataFrame
+    resolved: pl.DataFrame,
+    adjudicated: pl.DataFrame,
+    *,
+    expected_missing_player_games: int = 0,
 ) -> pl.DataFrame:
     duplicate_keys = (
         adjudicated.group_by(["game_id", "player_id"])
@@ -241,15 +261,23 @@ def _overlay_adjudicated_outcomes(
     missing = joined.filter(
         pl.col("batting_PA").is_not_null() & pl.col("adjudicated_batting_PA").is_null()
     )
-    if not missing.is_empty():
+    if missing.height != expected_missing_player_games:
         raise RuntimeError(
-            f"{missing.height} resolved player-games lack certified adjudication coverage"
+            "resolved player-games lacking certified adjudication coverage differ from "
+            f"the declared quarantine: {missing.height} != {expected_missing_player_games}"
         )
     return joined.with_columns(
         *[
-            pl.col(f"adjudicated_{field}").alias(field)
+            pl.coalesce(pl.col(f"adjudicated_{field}"), pl.col(field)).alias(field)
             for field in OUTCOME_FIELDS
-        ]
+        ],
+        pl.when(
+            pl.col("batting_PA").is_not_null()
+            & pl.col("adjudicated_batting_PA").is_null()
+        )
+        .then(pl.lit("unresolved_missing_certified_adjudication"))
+        .otherwise(pl.col("outcome_resolution"))
+        .alias("outcome_resolution"),
     ).drop([f"adjudicated_{field}" for field in OUTCOME_FIELDS])
 
 
@@ -351,6 +379,181 @@ def _load_projected_terminal_outcomes(
     }
 
 
+def _load_reconstructed_terminal_outcomes_2024(
+    *,
+    level: str,
+    game_leagues: pl.DataFrame,
+    work_root: Path,
+    pbp_asset_names: list[str],
+    player_game_asset_names: list[str],
+) -> tuple[pl.DataFrame, dict[str, Any]]:
+    """Rebuild the disclosed 2024 terminal-PA source without model scoring."""
+
+    season = 2024
+    if historical_projection_gate.gate.base is not historical:
+        raise RuntimeError("certified 2024 sparse-game source wrapper is not active")
+    slug = level.replace("+", "plus")
+    source_root = work_root / "reconstructed-terminal-source" / str(season) / slug
+    spec = current_talent_level_spec(season, level)
+    player_game_dir = source_root / "player-game"
+    player_game_dir.mkdir(parents=True, exist_ok=True)
+    map_frames: list[pl.DataFrame] = []
+    control_frames: list[pl.DataFrame] = []
+    outcome_frames: list[pl.DataFrame] = []
+    for asset_name in player_game_asset_names:
+        path = player_game_dir / asset_name
+        if not path.exists() or path.stat().st_size <= 0:
+            download_file(
+                "https://github.com/armstjc/milb-data-repository/releases/download/"
+                f"game_player_stats/{asset_name}",
+                path,
+                timeout_seconds=300,
+            )
+        raw = read_quarantined_csv(path)
+        map_frames.append(raw.select("game_id", "league_id", "game_type"))
+        control_frames.append(
+            historical.project_player_game_batting(
+                raw,
+                source_asset=asset_name,
+                season=season,
+                game_type=historical.GAME_TYPE,
+            )
+        )
+        outcome_frames.append(
+            historical.project_milb_player_game_outcomes(
+                raw,
+                source_asset=asset_name,
+                season=season,
+                game_type=historical.GAME_TYPE,
+            )
+        )
+    game_league_map, league_map_metrics = historical.derive_player_game_league_map(
+        pl.concat(map_frames, how="vertical_relaxed"),
+        game_type=historical.GAME_TYPE,
+    )
+    controls, control_metrics = historical.resolve_player_game_contact_controls(
+        pl.concat(control_frames, how="vertical_relaxed")
+    )
+    outcomes, outcome_metrics = historical.resolve_milb_player_game_outcomes(
+        pl.concat(outcome_frames, how="vertical_relaxed")
+    )
+    outcomes, controls, _identity_evidence, identity_metrics = (
+        historical.apply_historical_player_game_identity_corrections(
+            outcomes, controls, season=season
+        )
+    )
+
+    pbp_dir = source_root / "pbp"
+    pbp_dir.mkdir(parents=True, exist_ok=True)
+    raw_frames: list[pl.DataFrame] = []
+    projected_frames: list[pl.DataFrame] = []
+    enrichment_metrics: list[dict[str, Any]] = []
+    raw_paths: list[Path] = []
+    for asset_name in pbp_asset_names:
+        path = pbp_dir / asset_name
+        if not path.exists() or path.stat().st_size <= 0:
+            download_file(
+                "https://github.com/armstjc/milb-data-repository/releases/download/"
+                f"pbp/{asset_name}",
+                path,
+                timeout_seconds=600,
+            )
+        raw = read_quarantined_csv(path)
+        enriched, enrichment = historical.enrich_historical_pbp_league_id(
+            raw,
+            game_league_map,
+            source_asset=asset_name,
+            game_type=historical.GAME_TYPE,
+        )
+        raw_frames.append(raw)
+        raw_paths.append(path)
+        enrichment_metrics.append(enrichment)
+        projected_frames.append(
+            historical.project_armstjc_contact_observations(
+                enriched,
+                source_asset=asset_name,
+                season=season,
+                game_type=historical.GAME_TYPE,
+            )
+        )
+    observations = pl.concat(projected_frames, how="vertical_relaxed")
+    resolved_contacts = historical.resolve_armstjc_contact_observations(
+        observations, contacts_only=False
+    )
+    contact_resolution = historical.contact_resolution_metrics(
+        observations, resolved_contacts
+    )
+    contacts = resolved_contacts.filter(pl.col("source_is_in_play") == True)  # noqa: E712
+    contact_coverage = historical.validate_expected_actual_leagues(
+        contacts,
+        league_column="league_id",
+        expected_league_ids=spec.league_ids,
+        label=f"{season} {level} reconstructed Hitter v2 contacts",
+    )
+    participant_contacts, participant_metrics = (
+        historical._apply_participant_authority(
+            contacts, controls
+        )
+    )
+    player_game_metrics = {
+        "asset_names": player_game_asset_names,
+        "game_league_map": league_map_metrics,
+        "contact_controls": control_metrics,
+        "outcomes": outcome_metrics,
+        "identity_corrections": identity_metrics,
+    }
+    contact_metrics = {
+        "asset_names": pbp_asset_names,
+        "league_id_enrichment": enrichment_metrics,
+        "resolution": contact_resolution,
+        "league_coverage": contact_coverage,
+    }
+    overlay = participant_contacts.select(
+        "game_pk",
+        "at_bat_index",
+        pl.col("batter_mlbam_id").alias("player_id"),
+        "league_id",
+    ).unique()
+    if not raw_frames:
+        raise RuntimeError(f"2024 {level} has no reusable PBP frames")
+    raw_pbp = pl.concat(raw_frames, how="diagonal_relaxed")
+    terminal_pas_all = attach_narrative_terminal_groups(
+        project_terminal_pa_descriptions(raw_pbp, game_type=historical.GAME_TYPE)
+    )
+    authorized_games = game_leagues.select("game_pk").unique()
+    unauthorized_terminal_pas = terminal_pas_all.join(
+        authorized_games, on="game_pk", how="anti"
+    )
+    terminal_pas = terminal_pas_all.join(
+        authorized_games, on="game_pk", how="inner", validate="m:1"
+    )
+    projected = project_terminal_pa_identities(raw_pbp, terminal_pas, overlay)
+    counts, metrics = aggregate_projected_terminal_pas(projected, game_leagues)
+    return counts, {
+        **metrics,
+        "source_method": "reconstructed_from_checksum_frozen_2024_history_and_public_pbp",
+        "player_game_authority": player_game_metrics,
+        "contact_resolution": contact_metrics,
+        "participant_authority": participant_metrics,
+        "terminal_pa_without_game_authority_quarantine": {
+            "terminal_pa_count": unauthorized_terminal_pas.height,
+            "game_ids": sorted(
+                int(value)
+                for value in unauthorized_terminal_pas["game_pk"].unique().to_list()
+            ),
+            "policy": "retain_source_exclusion_no_filename_level_imputation",
+        },
+        "raw_pbp_assets": [
+            {
+                "name": path.name,
+                "size_bytes": path.stat().st_size,
+                "sha256": sha256(path.read_bytes()).hexdigest(),
+            }
+            for path in raw_paths
+        ],
+    }
+
+
 def _coverage(frame: pl.DataFrame, dimensions: list[str]) -> list[dict[str, Any]]:
     return (
         frame.group_by(dimensions)
@@ -380,13 +583,32 @@ def main() -> int:
     resolution: list[dict[str, Any]] = []
     for season in seasons:
         for level in levels:
+            slug = level.replace("+", "plus")
+            history_run = HISTORICAL_RUNS[season]
+            history_name = _historical_artifact_name(season, level)
+            history_zip, history_provenance = _artifact_bytes(
+                run_id=history_run,
+                name=history_name,
+                work_root=args.work_root,
+            )
+            history_report = _read_matching_json(history_zip, "report.json")
+            adjudicated = _read_matching_parquet(
+                history_zip,
+                f"current_talent_outcomes_{season}_{slug}_adjudicated.parquet",
+            )
+            if season == 2024:
+                contact_report = history_report
+                contact_provenance = {
+                    "method": "public_pbp_reconstruction",
+                    "historical_source_artifact": history_provenance,
+                }
+            else:
                 contact_run, contact_name = _contact_artifact_name(season, level)
                 contact_zip, contact_provenance = _artifact_bytes(
                     run_id=contact_run,
                     name=contact_name,
                     work_root=args.work_root,
                 )
-                slug = level.replace("+", "plus")
                 contact_report = _read_matching_json(
                     contact_zip, _contact_report_suffix(season, slug)
                 )
@@ -399,35 +621,60 @@ def main() -> int:
                     f"terminal_pas_{season}_{slug}.parquet",
                 )
 
-                observations, player_game_provenance = _load_official_observations(
-                    season=season,
-                    level=level,
-                    work_root=args.work_root,
-                    asset_names=list(contact_report["player_game_source"]["asset_names"]),
+            observations, player_game_provenance = _load_official_observations(
+                season=season,
+                level=level,
+                work_root=args.work_root,
+                asset_names=list(contact_report["player_game_source"]["asset_names"]),
+            )
+            resolved, metrics = resolve_official_player_game_outcomes(observations)
+            hard_unresolved = (
+                metrics["unresolved_player_game_count"]
+                - metrics["positive_pa_team_identity_conflict_player_game_count"]
+            )
+            if hard_unresolved and season != 2024:
+                raise RuntimeError(
+                    f"{season} {level} has unresolved official snapshots: {metrics}"
                 )
-                resolved, metrics = resolve_official_player_game_outcomes(observations)
-                hard_unresolved = (
-                    metrics["unresolved_player_game_count"]
-                    - metrics["positive_pa_team_identity_conflict_player_game_count"]
-                )
-                if hard_unresolved:
-                    raise RuntimeError(
-                        f"{season} {level} has unresolved official snapshots: {metrics}"
-                    )
-                resolved = _apply_identity_corrections(resolved, season=season)
+            metrics["retained_failed_closed_unresolved_official_snapshot_count"] = (
+                hard_unresolved if season == 2024 else 0
+            )
+            resolved = _apply_identity_corrections(resolved, season=season)
 
-                history_run = HISTORICAL_RUNS[season]
-                history_name = _historical_artifact_name(season, level)
-                history_zip, history_provenance = _artifact_bytes(
-                    run_id=history_run,
-                    name=history_name,
-                    work_root=args.work_root,
+            declared_missing = (
+                int(
+                    history_report["outcome_adjudication"].get(
+                        "source_only_exact_residual_quarantine_count", 0
+                    )
                 )
-                adjudicated = _read_matching_parquet(
-                    history_zip,
-                    f"current_talent_outcomes_{season}_{slug}_adjudicated.parquet",
+                if season == 2024
+                else 0
+            )
+            resolved = _overlay_adjudicated_outcomes(
+                resolved,
+                adjudicated,
+                expected_missing_player_games=declared_missing,
+            )
+            metrics["declared_adjudication_quarantine_player_game_count"] = (
+                declared_missing
+            )
+            if season == 2024:
+                contact_counts, pbp_provenance = (
+                    _load_reconstructed_terminal_outcomes_2024(
+                        level=level,
+                        game_leagues=resolved.select(
+                            pl.col("game_id").alias("game_pk"), "league_id"
+                        ),
+                        work_root=args.work_root,
+                        pbp_asset_names=list(
+                            contact_report["contact_source"]["asset_names"]
+                        ),
+                        player_game_asset_names=list(
+                            contact_report["player_game_source"]["asset_names"]
+                        ),
+                    )
                 )
-                resolved = _overlay_adjudicated_outcomes(resolved, adjudicated)
+            else:
                 contact_counts, pbp_provenance = _load_projected_terminal_outcomes(
                     season=season,
                     level=level,
@@ -439,43 +686,50 @@ def main() -> int:
                     work_root=args.work_root,
                     asset_names=list(contact_report["contact_source"]["asset_names"]),
                 )
-                player_games = assemble_player_game_outcomes(
-                    resolved, contact_counts, season=season, level_group=level
-                )
-                frames.append(player_games)
-                resolution.append({"season": season, "level": level, **metrics})
-                provenance.append(
+            player_games = assemble_player_game_outcomes(
+                resolved, contact_counts, season=season, level_group=level
+            )
+            slice_dir = args.report_root / "slices"
+            slice_dir.mkdir(parents=True, exist_ok=True)
+            write_canonical_parquet(
+                player_games,
+                slice_dir / f"hitter_v2_player_game_outcomes_{season}_{slug}_milb.parquet",
+                table_name=f"hitter_v2_player_game_outcomes_{season}_{slug}_milb",
+            )
+            frames.append(player_games)
+            resolution.append({"season": season, "level": level, **metrics})
+            provenance.append(
+                {
+                    "season": season,
+                    "level": level,
+                    "contact_artifact": contact_provenance,
+                    "pbp_terminal_identity_source": pbp_provenance,
+                    "historical_adjudication_artifact": history_provenance,
+                    "player_game_release": player_game_provenance,
+                }
+            )
+            print(
+                json.dumps(
                     {
                         "season": season,
                         "level": level,
-                        "contact_artifact": contact_provenance,
-                        "pbp_terminal_identity_source": pbp_provenance,
-                        "historical_adjudication_artifact": history_provenance,
-                        "player_game_release": player_game_provenance,
-                    }
-                )
-                print(
-                    json.dumps(
-                        {
-                            "season": season,
-                            "level": level,
-                            "rows": player_games.height,
-                            "pa": int(player_games.get_column("batting_PA").sum()),
-                            "accepted": int(
-                                player_games.filter(
-                                    pl.col("source_status").str.starts_with("accepted")
-                                ).height
-                            ),
-                            "failed_closed": int(
-                                player_games.filter(
-                                    ~pl.col("source_status").str.starts_with("accepted")
-                                ).height
-                            ),
-                        },
-                        sort_keys=True,
-                    ),
-                    flush=True,
-                )
+                        "rows": player_games.height,
+                        "pa": int(player_games.get_column("batting_PA").sum()),
+                        "accepted": int(
+                            player_games.filter(
+                                pl.col("source_status").str.starts_with("accepted")
+                            ).height
+                        ),
+                        "failed_closed": int(
+                            player_games.filter(
+                                ~pl.col("source_status").str.starts_with("accepted")
+                            ).height
+                        ),
+                    },
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
 
     player_games = pl.concat(frames, how="vertical_relaxed").sort(
         ["season", "league_id", "game_id", "player_id"]
@@ -484,20 +738,21 @@ def main() -> int:
     player_seasons = aggregate_player_season_outcomes(player_games)
     exceptions = player_games.filter(~pl.col("source_status").str.starts_with("accepted"))
     model_ready = player_games.filter(pl.col("source_status").str.starts_with("accepted"))
+    season_token = str(seasons[0]) if len(seasons) == 1 else f"{seasons[0]}_{seasons[-1]}"
 
     player_game_artifact = write_canonical_parquet(
         player_games,
-        args.report_root / "tables" / "hitter_v2_player_game_outcomes_2021_2023_milb.parquet",
+        args.report_root / "tables" / f"hitter_v2_player_game_outcomes_{season_token}_milb.parquet",
         table_name="hitter_v2_player_game_outcomes_milb",
     ).as_record()
     player_season_artifact = write_canonical_parquet(
         player_seasons,
-        args.report_root / "tables" / "hitter_v2_player_season_outcomes_2021_2023_milb.parquet",
+        args.report_root / "tables" / f"hitter_v2_player_season_outcomes_{season_token}_milb.parquet",
         table_name="hitter_v2_player_season_outcomes_milb",
     ).as_record()
     exception_artifact = write_canonical_parquet(
         exceptions,
-        args.report_root / "tables" / "hitter_v2_player_game_exceptions_2021_2023_milb.parquet",
+        args.report_root / "tables" / f"hitter_v2_player_game_exceptions_{season_token}_milb.parquet",
         table_name="hitter_v2_player_game_exceptions_milb",
     ).as_record()
     status_counts = (
@@ -512,8 +767,8 @@ def main() -> int:
     report = {
         "report_schema_version": "0.1",
         "program": "hitter_v2",
-        "stage": 1,
-        "scope": "affiliated_milb_2021_2023_source_only",
+        "stage": 2 if seasons == [2024] else 1,
+        "scope": f"affiliated_milb_{season_token}_source_only",
         "candidate_fit": False,
         "candidate_scored": False,
         "protected_2026_opened": False,

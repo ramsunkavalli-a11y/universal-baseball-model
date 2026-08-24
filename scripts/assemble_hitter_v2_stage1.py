@@ -110,19 +110,23 @@ def main() -> int:
         raise RuntimeError("universal Hitter v2 player-season key is not unique")
     exceptions = player_games.filter(~pl.col("modeling_eligible"))
     model_ready = player_games.filter(pl.col("modeling_eligible"))
+    seasons = sorted(int(value) for value in player_games["season"].unique().to_list())
+    season_token = (
+        str(seasons[0]) if len(seasons) == 1 else f"{seasons[0]}_{seasons[-1]}"
+    )
     game_artifact = write_canonical_parquet(
         player_games,
-        table_dir / "hitter_v2_player_game_outcomes_2021_2023.parquet",
+        table_dir / f"hitter_v2_player_game_outcomes_{season_token}.parquet",
         table_name="hitter_v2_player_game_outcomes",
     ).as_record()
     season_artifact = write_canonical_parquet(
         player_seasons,
-        table_dir / "hitter_v2_player_season_outcomes_2021_2023.parquet",
+        table_dir / f"hitter_v2_player_season_outcomes_{season_token}.parquet",
         table_name="hitter_v2_player_season_outcomes",
     ).as_record()
     exception_artifact = write_canonical_parquet(
         exceptions,
-        table_dir / "hitter_v2_player_game_exceptions_2021_2023.parquet",
+        table_dir / f"hitter_v2_player_game_exceptions_{season_token}.parquet",
         table_name="hitter_v2_player_game_exceptions",
     ).as_record()
     milb_report = json.loads(args.milb_report.read_text(encoding="utf-8"))
@@ -132,9 +136,13 @@ def main() -> int:
     report = {
         "report_schema_version": "0.1",
         "program": "hitter_v2",
-        "stage": 1,
-        "status": "stage1_source_gate_complete_awaiting_review",
-        "scope": "affiliated_pbp_and_mlb_2021_2023_source_only",
+        "stage": 2 if seasons == [2024] else 1,
+        "status": (
+            "stage2_disclosed_validation_source_complete"
+            if seasons == [2024]
+            else "stage1_source_gate_complete_awaiting_review"
+        ),
+        "scope": f"affiliated_pbp_and_mlb_{season_token}_source_only",
         "accepted": True,
         "candidate_fit": False,
         "candidate_scored": False,

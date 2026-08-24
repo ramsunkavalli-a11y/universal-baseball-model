@@ -49,6 +49,11 @@ ARTIFACTS = {
         "name": "current-talent-historical-mlb-2023",
         "sha256": "4fde9a0a8774135bcea775bb369a3c4d484d53938a818c4c2bce803878e03d54",
     },
+    2024: {
+        "run_id": 32096473700,
+        "name": "current-talent-historical-mlb-2024",
+        "sha256": "bdca35299b7a82130eae197987aa1d1bb0448c8ef9dc9ee6c6ba3d39e79f2efe",
+    },
 }
 OFFICIAL_FIELD_MAP = {
     "batting_PA": "plateAppearances",
@@ -246,26 +251,29 @@ def main() -> int:
     comparison = _reconcile(player_games, pl.concat(official_frames, how="vertical_relaxed"))
     mismatches = comparison.filter(pl.col("has_mismatch"))
     blocking_mismatches = comparison.filter(pl.col("has_blocking_mismatch"))
+    season_token = (
+        str(seasons[0]) if len(seasons) == 1 else f"{seasons[0]}_{seasons[-1]}"
+    )
     game_artifact = write_canonical_parquet(
         player_games,
-        table_dir / "hitter_v2_player_game_outcomes_2021_2023_mlb.parquet",
+        table_dir / f"hitter_v2_player_game_outcomes_{season_token}_mlb.parquet",
         table_name="hitter_v2_player_game_outcomes_mlb",
     ).as_record()
     season_artifact = write_canonical_parquet(
         player_seasons,
-        table_dir / "hitter_v2_player_season_outcomes_2021_2023_mlb.parquet",
+        table_dir / f"hitter_v2_player_season_outcomes_{season_token}_mlb.parquet",
         table_name="hitter_v2_player_season_outcomes_mlb",
     ).as_record()
     comparison_artifact = write_canonical_parquet(
         comparison,
-        table_dir / "hitter_v2_official_season_reconciliation_2021_2023_mlb.parquet",
+        table_dir / f"hitter_v2_official_season_reconciliation_{season_token}_mlb.parquet",
         table_name="hitter_v2_official_season_reconciliation_mlb",
     ).as_record()
     report = {
         "report_schema_version": "0.1",
         "program": "hitter_v2",
-        "stage": 1,
-        "scope": "mlb_2021_2023_source_only",
+        "stage": 2 if seasons == [2024] else 1,
+        "scope": f"mlb_{season_token}_source_only",
         "candidate_fit": False,
         "candidate_scored": False,
         "protected_2026_opened": False,
