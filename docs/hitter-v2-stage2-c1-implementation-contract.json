@@ -1,0 +1,94 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "recorded_date": "2026-08-24",
+  "status": "frozen_before_c1_fit_or_disclosed_scoring",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "model_id": "C1_HIERARCHICAL_PBP",
+  "estimand": "one-year-ahead neutral-MLB-equivalent terminal-outcome probabilities conditional on a future PA",
+  "inputs": {
+    "terminal_player_game": {
+      "path": "reports/generated/hitter-v2-stage1-universal/tables/hitter_v2_player_game_outcomes_2021_2023.parquet",
+      "sha256": "322587b6af6d74b14fe1b5ca925343e0cce9decfaa5252261a6e8b3681345f96"
+    },
+    "gidp_opportunities": {
+      "path": "reports/generated/hitter-v2-stage2-gidp-opportunities/tables/hitter_v2_player_game_gidp_opportunities_2021_2024.parquet",
+      "sha256": "d45b73a4e7b41ddd5c3def41c65f5953754abc895d7108f5288cbb9dc0f4bf8a",
+      "allowed_seasons_per_fold": "season <= predictor_cutoff"
+    },
+    "park_context": {
+      "path": "reports/generated/hitter-v2-stage2-park-context/tables/hitter_v2_player_game_park_context_2021_2023.parquet",
+      "sha256": "8639ab2b2b03fcad5e9ba9d50a79d48ed8f3616ad626f56c3fc85d4e16da30cf",
+      "allowed_seasons_per_fold": "season <= predictor_cutoff"
+    },
+    "ages": {
+      "path_template": "reports/generated/hitter-v2-stage2-age/tables/{fold}/forecast_player_ages.parquet",
+      "source_commit": "2e8e73355f9c77b963115377bd98c784cfeec10f",
+      "forecast_population_coverage": 1.0
+    }
+  },
+  "base_model": {
+    "model_id": "C0_NESTED_EB",
+    "recency_half_life_grid": [1.0, 2.0, 3.0],
+    "component_prior_pa_grid": [50, 100, 200, 400, 800]
+  },
+  "park_adjustment": {
+    "estimation_population": "accepted visitor player-games only, identified by canonical batting team == official away team",
+    "reason": "rotating visiting hitters reduce persistent home-roster confounding",
+    "component_scale": "additive log-probability residuals followed by softmax normalization",
+    "reference": "same league-season-level visiting-hitter outcome distribution",
+    "partial_pooling_prior_pa_grid": [500, 1000, 2000],
+    "player_adjustment": "subtract the PA-weighted mean historical venue offset from the C0 log-probability vector",
+    "fallback": "zero park offset when venue context is unavailable or below support; never impute a missing venue ID"
+  },
+  "movement_translation": {
+    "pairs": "same-player adjacent accepted seasons after park neutralization",
+    "pair_weight": "minimum of source-season and destination-season hitter talent PA",
+    "component_scale": "destination minus source additive log-probability residual",
+    "partial_pooling_prior_mover_pa_grid": [100, 250, 500],
+    "level_solution": "weighted least squares over observed directed level pairs with MLB fixed to zero for each terminal component",
+    "forecast_application": "translate the player's latest evidenced level to the MLB anchor",
+    "fallback": "zero translation only for a disconnected level, with explicit disconnected_level fallback"
+  },
+  "age_adjustment": {
+    "age_definition": "July 1 age relative to the league-season-level median age",
+    "basis_knots": [20, 24, 28, 32],
+    "basis": "continuous piecewise-linear hinge basis",
+    "ridge_penalty_grid": [1, 10, 100],
+    "fit_population": "same-player adjacent-season residuals after first-pass park and movement adjustment",
+    "separation_policy": "one fixed refit: raw movement, ridge age residual, then movement re-estimated after removing fitted age change",
+    "forecast_application": "one-year change in the fitted relative-age basis",
+    "fallback": "zero age offset with an explicit missing_age flag"
+  },
+  "gidp_adjustment": {
+    "opportunity_rate": "GIDP opportunities / accepted PA",
+    "conversion_rate": "official GIDP / GIDP opportunities",
+    "non_gidp_multi_out_rate": "max(MULTI_OUT - official GIDP, 0) / accepted PA",
+    "pooling": "separate empirical-Bayes estimates using the selected component prior PA",
+    "terminal_multi_out": "opportunity_rate * conversion_rate + non_gidp_multi_out_rate",
+    "simplex_policy": "replace MULTI_OUT mass and rescale the other non-reach out mass without changing upstream K, UBB, HBP, HR, or reach branches",
+    "fallback": "retain the C0 terminal MULTI_OUT probability exactly when opportunity evidence is unavailable"
+  },
+  "search_policy": {
+    "selection_data": "training-origin folds strictly before each disclosed target",
+    "primary_component_metric": "terminal event log loss",
+    "tie_break": "shorter recency half-life, stronger pooling prior, larger ridge penalty",
+    "grid_expansion_after_scoring_allowed": false
+  },
+  "required_pre_score_invariants": [
+    "all predictors and fitted offsets use seasons at or before predictor cutoff",
+    "target membership and target outcomes cannot change fitted offsets or forecast membership",
+    "probabilities are finite nonnegative and sum to one",
+    "zero park age and translation offsets reproduce C0 exactly",
+    "missing park context produces an explicit zero offset rather than a literal zero-valued venue observation",
+    "movement translations are anchored at MLB zero and use no player identity coefficient",
+    "GIDP opportunity fallback reproduces the unadjusted C0 MULTI_OUT probability exactly",
+    "different terminal HR histories remain distinguishable after all adjustments"
+  ],
+  "scoring_gate": "closed until implementation, unscored fold predictions, invariant report, commands, and hashes are committed locally",
+  "tracking_gate": "closed",
+  "stage3_gate": "closed"
+}

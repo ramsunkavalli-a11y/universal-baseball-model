@@ -37,7 +37,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Position-player v1:** **DONE / FROZEN / HISTORICAL PROTOTYPE**
 - **Hitter v2 Stage 0:** **DONE LOCALLY — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN**
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
-- **Hitter v2 Stage 2:** **AUTHORIZED / ALL C1 SOURCES READY — C1 IMPLEMENTATION NEXT; NO CANDIDATE SCORED**
+- **Hitter v2 Stage 2:** **AUTHORIZED / C1 IMPLEMENTATION CONTRACT FROZEN — IMPLEMENTATION IN PROGRESS; NO CANDIDATE SCORED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -109,6 +109,7 @@ Stage 2's pre-score evaluation freeze is recorded in:
 - `docs/hitter-v2-stage2-gidp-opportunity-result.json`;
 - `docs/hitter-v2-stage2-park-context-checkpoint.md`;
 - `docs/hitter-v2-stage2-park-context-result.json`;
+- `docs/hitter-v2-stage2-c1-implementation-contract.json`;
 - `reports/generated/hitter-v2-stage2-prescore/report.json` (ignored generated
   evidence, identified by a committed SHA-256).
 
@@ -181,6 +182,14 @@ The remaining 1,446 player-games are retained and failed closed for absent,
 missing, or conflicting official venue context. C1 now has all declared source
 inputs but remains unfit and unscored pending implementation and its
 candidate-specific invariant freeze.
+
+The exact C1 estimator is now frozen before fit or score. It adds separately
+pooled visiting-hitter venue residuals, adjacent-season player-movement
+translations anchored at MLB, one fixed age/translation separation pass, and
+an opportunity-adjusted GIDP decomposition to C0. Missing enrichment produces
+an explicit zero offset or exact C0 component fallback, never a zero-valued
+observation. The search grid is unchanged from the development contract and
+cannot expand after scoring.
 
 ## Paused post-v1 program — Pitching v1
 

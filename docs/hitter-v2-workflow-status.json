@@ -2,8 +2,8 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2_all_c1_sources_ready_c1_implementation_next",
-  "updated_date": "2026-08-23",
+  "status": "stage2_c1_implementation_contract_frozen_implementation_in_progress",
+  "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
     "base_commit": "197d21a67d707633cb47d720c84a7b126b9c4320",
@@ -39,6 +39,11 @@
       "path": "docs/hitter-v2-development-contract.md",
       "sha256": "4f0e0bde4ac903145ea133f4cb57027f2566668cf36f3847621a42646393fe40",
       "git_blob": "f7a69512eac6cca3ec84326217161cd3445f0e83"
+    },
+    "stage2_c1_implementation_contract": {
+      "path": "docs/hitter-v2-stage2-c1-implementation-contract.json",
+      "sha256": "6acd333331c1e19eaf1e46778acf7f85e9f6077142804de9cb2345eaa742a242",
+      "git_blob": "52ca3d47b7eb55e1807126d0bb3aaa9f3a876ab0"
     },
     "external_validity_record": {
       "path": "docs/hitter-v2-v1-external-validity-result.json",
@@ -164,7 +169,9 @@
     "candidate_fit": false,
     "candidate_scored": false,
     "age_source_exact_coverage_rate": {"V2022": 1.0, "V2023": 1.0, "V2024": 1.0},
-    "c1_source_open_items": []
+    "c1_source_open_items": [],
+    "c1_implementation_contract_frozen": true,
+    "c1_implemented": false
   },
   "stage2_gidp_opportunity_source": {
     "accepted": true,
@@ -213,7 +220,7 @@
       "command": "python -m pytest",
       "status": "passed",
       "passed": 850,
-      "duration_seconds": 9.53
+      "duration_seconds": 17.07
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_outcomes.py",
@@ -231,7 +238,7 @@
     "stage2_candidate_scoring_started": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "stage2_c1_implementation_and_candidate_specific_invariant_freeze"
+    "next_gate": "stage2_c1_implementation_and_unscored_invariant_materialization"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
