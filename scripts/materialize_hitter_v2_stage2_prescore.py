@@ -18,6 +18,7 @@ from universal_baseball.hitter_v2_evaluation import (
     NEUTRAL_WOBA_WEIGHTS,
     ROLLING_ORIGIN_FOLDS,
     aggregate_target_players,
+    build_forecast_population,
     rolling_origin_slices,
 )
 from universal_baseball.storage import sha256_file, write_canonical_parquet
@@ -102,6 +103,13 @@ def main() -> int:
     for fold in ROLLING_ORIGIN_FOLDS:
         training, target = rolling_origin_slices(source, fold)
         target_players = aggregate_target_players(target)
+        forecast_players = build_forecast_population(training)
+        evaluation_players = target_players.join(
+            forecast_players.select("player_id"),
+            on="player_id",
+            how="inner",
+            validate="1:1",
+        )
         fold_root = table_root / fold.fold_id.lower()
         train_artifact = write_canonical_parquet(
             training,
@@ -117,6 +125,16 @@ def main() -> int:
             target_players,
             fold_root / "target_players.parquet",
             table_name=f"hitter_v2_{fold.fold_id.lower()}_target_players",
+        ).as_record()
+        forecast_artifact = write_canonical_parquet(
+            forecast_players,
+            fold_root / "forecast_population.parquet",
+            table_name=f"hitter_v2_{fold.fold_id.lower()}_forecast_population",
+        ).as_record()
+        evaluation_artifact = write_canonical_parquet(
+            evaluation_players,
+            fold_root / "evaluation_players.parquet",
+            table_name=f"hitter_v2_{fold.fold_id.lower()}_evaluation_players",
         ).as_record()
         fold_records.append(
             {
@@ -137,17 +155,33 @@ def main() -> int:
                     "key_storage": target_artifact,
                     "player_storage": player_artifact,
                 },
+                "forecast_population": {
+                    "players": forecast_players.height,
+                    "definition": "unique players in full accepted pre-cutoff history",
+                    "storage": forecast_artifact,
+                },
+                "evaluation_overlap": {
+                    "players": evaluation_players.height,
+                    "hitter_talent_pa": int(
+                        evaluation_players["hitter_talent_pa"].sum()
+                    ),
+                    "target_only_players": target_players.height
+                    - evaluation_players.height,
+                    "storage": evaluation_artifact,
+                },
                 "chronology_checks": {
                     "training_max_season_at_or_before_cutoff": True,
                     "target_is_exact_declared_season": True,
                     "training_population_not_joined_to_target_membership": True,
+                    "forecast_population_defined_without_target_membership": True,
+                    "target_join_occurs_only_after_forecast_eligibility_freezes": True,
                     "target_environment_not_attached_to_training": True,
                 },
             }
         )
 
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "program": "hitter_v2",
         "stage": 2,
         "status": "prescore_fold_and_neutral_evaluation_geometry_frozen",
@@ -183,7 +217,7 @@ def main() -> int:
             "target_mutation_training_isolation_tested": True,
             "source_reconciliation_inherited": True,
             "tracking_invariants_deferred_tracking_gate_closed": True,
-            "terminal_history_distinction_deferred_candidate_implementation": True,
+            "terminal_history_distinction_tested_in_candidate_implementation": True,
         },
         "next_step": "implement_predeclared_b0_b1_c0_c1_without_scoring_protected_2026",
     }

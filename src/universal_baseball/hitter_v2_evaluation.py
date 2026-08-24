@@ -201,3 +201,20 @@ def aggregate_target_players(target: pl.DataFrame) -> pl.DataFrame:
     if players.filter(total != pl.col("hitter_talent_pa")).height:
         raise ValueError("target-player outcomes do not reconcile to hitter-talent PA")
     return players
+
+
+def build_forecast_population(training: pl.DataFrame) -> pl.DataFrame:
+    """Define forecast eligibility exclusively from pre-cutoff evidence."""
+
+    eligible = eligible_player_seasons(training)
+    return (
+        eligible.group_by("player_id")
+        .agg(
+            pl.col("season").min().alias("first_evidence_season"),
+            pl.col("season").max().alias("last_evidence_season"),
+            pl.col("hitter_talent_pa").sum().alias("prior_hitter_talent_pa"),
+            pl.col("league_id").n_unique().alias("prior_league_count"),
+            pl.col("level_group").n_unique().alias("prior_level_count"),
+        )
+        .sort("player_id")
+    )

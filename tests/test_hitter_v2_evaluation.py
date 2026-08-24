@@ -7,6 +7,7 @@ from universal_baseball.hitter_v2_evaluation import (
     NEUTRAL_WOBA_WEIGHTS,
     ROLLING_ORIGIN_FOLDS,
     aggregate_target_players,
+    build_forecast_population,
     move_probability_mass,
     probability_vector_to_woba,
     rolling_origin_slices,
@@ -116,6 +117,9 @@ def test_target_membership_and_outcomes_cannot_change_training_slice() -> None:
     altered_training, _ = rolling_origin_slices(altered, fold)
 
     assert training.equals(altered_training)
+    assert build_forecast_population(training).equals(
+        build_forecast_population(altered_training)
+    )
 
 
 def test_target_player_aggregation_is_exhaustive_and_primary_level_is_stable() -> None:
