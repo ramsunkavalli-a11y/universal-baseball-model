@@ -1,0 +1,107 @@
+{
+  "report_schema_version": "0.1",
+  "gate": "hitter_v2_stage0_v1_external_validity_verification",
+  "status": "verified_from_attached_independent_review_without_new_outcome_scoring",
+  "date": "2026-08-23",
+  "repository": {
+    "reviewed_main_commit": "197d21a67d707633cb47d720c84a7b126b9c4320",
+    "branch": "hitter-v2-pbp-outcomes"
+  },
+  "boundary": {
+    "hitter_v2_candidate_fit": false,
+    "hitter_v2_candidate_scored": false,
+    "new_official_outcome_materialization_performed": false,
+    "2025_offense_accessed_by_this_stage0": false,
+    "2026_offense_accessed_by_this_stage0": false,
+    "protected_confirmation_opened": false,
+    "network_execution_note": "A code path hard-limited to 2021-2024 was denied at the runtime authorization boundary and was not retried or worked around."
+  },
+  "verification_source": {
+    "title": "Universal Baseball Model: independent review and hitter-first redesign",
+    "path_outside_repository": "user-attached universal-baseball-model-review.md",
+    "sha256": "b91da4855f9bd5ded8902f1f1ad9015013a0fe06c956648a3dd674550e2a7277",
+    "review_date": "2026-08-23",
+    "source_description": "Official MLB annual hitting outcomes and published 2024 FanGraphs wOBA constants as disclosed in the attached review.",
+    "raw_official_response_hashes_available_in_attachment": false
+  },
+  "woba_contract": {
+    "season": 2024,
+    "weights": {
+      "ubb": 0.689,
+      "hbp": 0.720,
+      "single": 0.882,
+      "double": 1.254,
+      "triple": 1.590,
+      "home_run": 2.050,
+      "scale": 1.242
+    },
+    "denominator": "AB + BB - IBB + HBP + SF",
+    "methodology_url": "https://library.fangraphs.com/offense/woba/",
+    "constants_url": "https://www.fangraphs.com/tools/guts"
+  },
+  "frozen_v1_leaderboard_reproduction": {
+    "status": "reproduced_exactly_from_local_immutable_artifacts",
+    "player_count": 3985,
+    "rate_basis_pa": 600,
+    "same_player_ids": true,
+    "same_top_20_order": true,
+    "maximum_absolute_runs_per_600_delta": 0.0,
+    "reproduced_json_sha256": "82c53f4b3e499e4ca285b0004065bb25cc96b49143071f9c09826dd21e8f7c78",
+    "reproduced_csv_sha256": "a21e404fc64a10031ba4d2eafa92420b143e5129bf21276e84139e457a8f0e0c",
+    "inputs": {
+      "frozen_b2_profile_sha256": "30b1d3cd84b731cd5e5160a5d2530b19a25882d5d11d49f141300ca9b790d93c",
+      "batting_performance_summary_sha256": "1888144f3ea7884a3c60f6a87d08f9d72fd6e7b86585c52f7b6f708a267d2e03",
+      "batting_performance_bins_sha256": "0f77e3ae7613125e41541a968c4f87c44df327586b07f586f6e89fe29c7c92bf",
+      "league_bin_values_sha256": "499b90f1ef695d885a802a17ca4b0ba450733b8b972b56ae8ef8e9638f5962c7"
+    }
+  },
+  "external_validity": {
+    "all_2024_cohort": {
+      "rule": "official 2024 MLB PA >= 200 and frozen v1 batting score present",
+      "player_count": 363,
+      "v1_score_pearson_with_actual_woba": 0.192,
+      "v1_score_spearman_with_actual_woba": 0.170,
+      "v1_score_spearman_with_actual_hr_rate": -0.012,
+      "v1_score_spearman_with_actual_k_rate": -0.540,
+      "v1_top_20_overlap_actual_woba_top_20": 3
+    },
+    "prior_mlb_history_subset": {
+      "rule": "same 2024 cohort with 2021-2023 MLB history",
+      "player_count": 344,
+      "v1_score": {
+        "pearson_with_actual_woba": 0.185,
+        "spearman_with_actual_woba": 0.160
+      },
+      "raw_2023_woba": {
+        "pearson_with_actual_woba": 0.308,
+        "spearman_with_actual_woba": 0.286
+      },
+      "marcel_style_outcome_baseline": {
+        "pearson_with_actual_woba": 0.458,
+        "spearman_with_actual_woba": 0.383,
+        "season_weights_oldest_to_newest": [3, 4, 5],
+        "regression_prior_pa": 1200
+      }
+    }
+  },
+  "implementation": {
+    "code": [
+      "src/universal_baseball/hitter_v2_stage0.py",
+      "scripts/audit_hitter_v2_stage0.py"
+    ],
+    "tests": "tests/test_hitter_v2_stage0.py",
+    "outcome_code_executed_in_this_stage0": false,
+    "offline_leaderboard_code_executed_in_this_stage0": true
+  },
+  "limitations": [
+    "The attached review did not expose raw official-response hashes, so this record verifies its disclosed method and numbers but cannot byte-audit those external responses.",
+    "The 2024 cohort has already been inspected and is validation evidence, not protected confirmation.",
+    "The Marcel-style benchmark is a competence floor and does not establish universal MiLB translation quality."
+  ],
+  "decision": {
+    "v1_construct_valid_for_hitter_v2": false,
+    "terminal_outcome_rebuild_required": true,
+    "hitter_v2_candidate_scoring_authorized": false,
+    "next_authorized_gate_after_review": "stage1_source_only_terminal_pa_materialization"
+  }
+}
