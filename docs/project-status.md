@@ -227,6 +227,15 @@ larger ridge—before the first selection or score. Schema `0.3` expressed the
 same preferences in a different order; its hash is retained and it produced no
 selection.
 
+Training-origin component selection is now frozen. V2022 had no earlier origin
+and therefore uses the literal tie default (`3`-season half-life, `800` PA
+prior) for every node. V2023 selected from V2022 only; V2024 selected from
+V2022–V2023 only. The complete 135-row grids for each selectable fold are
+retained under generated-report SHA-256
+`a1cc7ffe900a77925ca0d0743be4b2e116832fd0c18fcd545a623a21a4db9358`.
+Final validation remains unscored. The component choices and grid are now
+immutable; C1 park/movement/age adjustment selection is next.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without

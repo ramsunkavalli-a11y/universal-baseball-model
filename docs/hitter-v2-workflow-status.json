@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2_scoring_harness_implementation_in_progress",
+  "status": "stage2_component_selection_frozen_c1_adjustment_selection_next",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -191,6 +191,15 @@
     "evaluation_membership_loaded": false,
     "protected_2026_opened": false
   },
+  "stage2_component_selection": {
+    "training_origin_candidate_scoring_started": true,
+    "final_validation_scored": false,
+    "generated_report_sha256": "a1cc7ffe900a77925ca0d0743be4b2e116832fd0c18fcd545a623a21a4db9358",
+    "grid_rows": {"V2022": 0, "V2023": 135, "V2024": 135},
+    "parameters_frozen": true,
+    "grid_expansion_allowed": false,
+    "protected_2026_opened": false
+  },
   "stage2_gidp_opportunity_source": {
     "accepted": true,
     "candidate_fit": false,
@@ -238,7 +247,7 @@
       "command": "python -m pytest",
       "status": "passed",
       "passed": 863,
-      "duration_seconds": 9.43
+      "duration_seconds": 9.48
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_model.py tests/test_hitter_v2_c1.py",
@@ -253,10 +262,10 @@
     "stage2_disclosed_validation_scoring_authorized": true,
     "stage2_disclosed_2024_source_ready": true,
     "stage2_prescore_evaluation_frozen": true,
-    "stage2_candidate_scoring_started": false,
+    "stage2_candidate_scoring_started": true,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "stage2_training_origin_grid_selection_and_disclosed_validation_scoring"
+    "next_gate": "stage2_c1_adjustment_training_origin_selection"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

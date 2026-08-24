@@ -1,0 +1,62 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "status": "nested_component_training_origin_selection_frozen",
+  "recorded_date": "2026-08-24",
+  "candidate_scored_on_training_origins": true,
+  "final_validation_scored": false,
+  "protected_2026_opened": false,
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2-component-selection/report.json",
+    "sha256": "a1cc7ffe900a77925ca0d0743be4b2e116832fd0c18fcd545a623a21a4db9358"
+  },
+  "tie_rule": "within 1e-8 choose larger component prior PA, then longer half-life",
+  "folds": {
+    "V2022": {
+      "selection_origin_folds": [],
+      "selection_source": "no_earlier_origin_literal_tie_default",
+      "all_components": {"half_life_seasons": 3.0, "component_prior_pa": 800.0}
+    },
+    "V2023": {
+      "selection_origin_folds": ["V2022"],
+      "grid_rows": 135,
+      "grid_sha256": "a46b492ceac957e5157b1a0909457e94c4d5f00b19efe9ff173ec4973c5a9433",
+      "selected": {
+        "plate_appearance": {"half_life_seasons": 3.0, "component_prior_pa": 100.0},
+        "non_k": {"half_life_seasons": 3.0, "component_prior_pa": 100.0},
+        "non_k_non_ubb": {"half_life_seasons": 3.0, "component_prior_pa": 200.0},
+        "contact": {"half_life_seasons": 3.0, "component_prior_pa": 100.0},
+        "non_hr_contact": {"half_life_seasons": 3.0, "component_prior_pa": 800.0},
+        "reach": {"half_life_seasons": 3.0, "component_prior_pa": 400.0},
+        "hit_in_play": {"half_life_seasons": 3.0, "component_prior_pa": 200.0},
+        "non_hit_reach": {"half_life_seasons": 3.0, "component_prior_pa": 800.0},
+        "non_reach": {"half_life_seasons": 3.0, "component_prior_pa": 800.0}
+      }
+    },
+    "V2024": {
+      "selection_origin_folds": ["V2022", "V2023"],
+      "grid_rows": 135,
+      "grid_sha256": "fff2ad43e7c5d4c83bfdcd438507f9d16c219e4fb4b7802da16e697ab986d2c5",
+      "selected": {
+        "plate_appearance": {"half_life_seasons": 1.0, "component_prior_pa": 100.0},
+        "non_k": {"half_life_seasons": 1.0, "component_prior_pa": 100.0},
+        "non_k_non_ubb": {"half_life_seasons": 2.0, "component_prior_pa": 100.0},
+        "contact": {"half_life_seasons": 1.0, "component_prior_pa": 100.0},
+        "non_hr_contact": {"half_life_seasons": 3.0, "component_prior_pa": 800.0},
+        "reach": {"half_life_seasons": 1.0, "component_prior_pa": 400.0},
+        "hit_in_play": {"half_life_seasons": 3.0, "component_prior_pa": 200.0},
+        "non_hit_reach": {"half_life_seasons": 1.0, "component_prior_pa": 800.0},
+        "non_reach": {"half_life_seasons": 3.0, "component_prior_pa": 800.0}
+      }
+    }
+  },
+  "gate": {
+    "component_parameters_frozen": true,
+    "c1_adjustment_selection_next": true,
+    "grid_expansion_allowed": false,
+    "final_validation_opened": false,
+    "tracking_authorized": false,
+    "stage3_authorized": false
+  }
+}
