@@ -15,6 +15,7 @@ from universal_baseball.hitter_v2_c1 import (
     neutralize_player_season_parks,
     remove_age_from_movement_observations,
     solve_level_offsets,
+    select_c1_adjustment_hyperparameters,
 )
 from universal_baseball.hitter_v2_outcomes import HITTER_TALENT_OUTCOMES
 
@@ -250,3 +251,18 @@ def test_gidp_rate_estimator_retains_missing_player_fallback() -> None:
     assert 0.0 < known["gidp_opportunity_rate"] < 1.0
     assert missing["gidp_evidence_available"] is False
     assert missing["gidp_opportunity_rate"] is None
+
+
+def test_c1_selector_uses_larger_pooling_and_ridge_on_tie() -> None:
+    scores = pl.DataFrame(
+        {
+            "park_prior_pa": [500.0, 2000.0, 2000.0],
+            "movement_prior_pa": [500.0, 100.0, 500.0],
+            "ridge_penalty": [100.0, 100.0, 100.0],
+            "event_log_loss": [1.0, 1.0 + 5e-9, 1.0 + 5e-9],
+        }
+    )
+    selected = select_c1_adjustment_hyperparameters(scores)
+    assert selected["movement_prior_pa"] == 500.0
+    assert selected["park_prior_pa"] == 2000.0
+    assert selected["ridge_penalty"] == 100.0

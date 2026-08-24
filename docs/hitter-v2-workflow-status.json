@@ -42,11 +42,12 @@
     },
     "stage2_c1_implementation_contract": {
       "path": "docs/hitter-v2-stage2-c1-implementation-contract.json",
-      "sha256": "41db1066b2f000f5b250bb50f1664a08c826421947bfc10e0ba5b161e5cdec84",
-      "git_blob": "f7f54a3d11176661e3415c9552fc4e4b39004e8f",
+      "sha256": "5b26a045906af4ea47fdf4f27a49a22d298dee603c787c16b69559e1f66d365d",
+      "git_blob": "4e5cc586b2edca9b602fa43a17daf45ffffbe4b5",
       "superseded_pre_fit_sha256": "6acd333331c1e19eaf1e46778acf7f85e9f6077142804de9cb2345eaa742a242",
       "superseded_age_clarification_sha256": "e0e5a9e66db762e3898d4429fe34b62170f347ee56220083631992a254730755",
-      "amendment_timing": "tie_break_corrected_after_nondecisional_sentinel_fit_before_any_score"
+      "superseded_tie_preference_sha256": "41db1066b2f000f5b250bb50f1664a08c826421947bfc10e0ba5b161e5cdec84",
+      "amendment_timing": "literal_tie_order_corrected_after_nondecisional_sentinel_fit_before_any_score"
     },
     "external_validity_record": {
       "path": "docs/hitter-v2-v1-external-validity-result.json",
@@ -236,13 +237,13 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 861,
-      "duration_seconds": 9.44
+      "passed": 863,
+      "duration_seconds": 9.43
     },
     "focused_tests": {
-      "command": "python -m pytest tests/test_hitter_v2_evaluation.py tests/test_hitter_v2_model.py",
+      "command": "python -m pytest tests/test_hitter_v2_model.py tests/test_hitter_v2_c1.py",
       "status": "passed",
-      "passed": 15
+      "passed": 16
     }
   },
   "authorization": {

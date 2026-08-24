@@ -1206,3 +1206,35 @@ def ensure_unique_ids(player_ids: Sequence[int]) -> list[int]:
     """Canonicalize a forecast population independently of target membership."""
 
     return sorted({int(player_id) for player_id in player_ids})
+
+
+def select_c1_adjustment_hyperparameters(
+    selection_scores: pl.DataFrame,
+) -> dict[str, float]:
+    """Apply the frozen whole-C1 event-loss and literal tie-break rule."""
+
+    required = {
+        "park_prior_pa",
+        "movement_prior_pa",
+        "ridge_penalty",
+        "event_log_loss",
+    }
+    missing = sorted(required - set(selection_scores.columns))
+    if missing:
+        raise ValueError(f"C1 selection scores missing columns: {missing}")
+    if selection_scores.is_empty():
+        raise ValueError("C1 selection scores cannot be empty")
+    minimum = float(selection_scores["event_log_loss"].min())
+    tied = selection_scores.filter(
+        pl.col("event_log_loss") <= minimum + 1e-8
+    ).sort(
+        ["movement_prior_pa", "park_prior_pa", "ridge_penalty"],
+        descending=[True, True, True],
+    )
+    winner = tied.row(0, named=True)
+    return {
+        "park_prior_pa": float(winner["park_prior_pa"]),
+        "movement_prior_pa": float(winner["movement_prior_pa"]),
+        "ridge_penalty": float(winner["ridge_penalty"]),
+        "event_log_loss": float(winner["event_log_loss"]),
+    }

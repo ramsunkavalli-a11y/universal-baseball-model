@@ -9,6 +9,7 @@ from universal_baseball.hitter_v2_model import (
     predict_b0_one_year_eb,
     predict_b1_marcel_345_k1200,
     predict_c0_nested_eb,
+    select_component_hyperparameters,
 )
 from universal_baseball.hitter_v2_outcomes import HITTER_TALENT_OUTCOMES
 
@@ -142,3 +143,33 @@ def test_component_specific_history_and_half_life_remain_coherent() -> None:
     assert sum(
         prediction[f"p_{outcome}"] for outcome in HITTER_TALENT_OUTCOMES
     ) == pytest.approx(1.0)
+
+
+def test_component_selector_uses_literal_tie_order() -> None:
+    rows = []
+    for node in NESTED_NODES:
+        rows.extend(
+            [
+                {
+                    "component": node.name,
+                    "half_life_seasons": 3.0,
+                    "component_prior_pa": 50.0,
+                    "event_log_loss": 1.0,
+                },
+                {
+                    "component": node.name,
+                    "half_life_seasons": 1.0,
+                    "component_prior_pa": 800.0,
+                    "event_log_loss": 1.0 + 5e-9,
+                },
+                {
+                    "component": node.name,
+                    "half_life_seasons": 3.0,
+                    "component_prior_pa": 800.0,
+                    "event_log_loss": 1.0 + 5e-9,
+                },
+            ]
+        )
+    selected = select_component_hyperparameters(pl.DataFrame(rows))
+    assert all(value["component_prior_pa"] == 800.0 for value in selected.values())
+    assert all(value["half_life_seasons"] == 3.0 for value in selected.values())

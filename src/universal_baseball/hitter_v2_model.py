@@ -38,6 +38,7 @@ DEFAULT_COMPONENT_PRIOR_PA = {node.name: 200.0 for node in NESTED_NODES}
 MARCEL_REGRESSION_PA = 1200.0
 MARCEL_RECENCY_WEIGHTS = {0: 5.0, 1: 4.0, 2: 3.0}
 MARCEL_POSITIVE_OUTCOMES = ("UBB", "HBP", "1B", "2B", "3B", "HR")
+SELECTION_TOLERANCE = 1e-8
 
 
 def _leaf_counts(counts: Mapping[str, float]) -> dict[str, float]:
@@ -462,3 +463,38 @@ def predict_b1_marcel_345_k1200(
             }
         )
     return pl.DataFrame(rows)
+
+
+def select_component_hyperparameters(
+    selection_scores: pl.DataFrame,
+) -> dict[str, dict[str, float]]:
+    """Apply the literal frozen component score and tie-break rule."""
+
+    required = {"component", "half_life_seasons", "component_prior_pa", "event_log_loss"}
+    missing = sorted(required - set(selection_scores.columns))
+    if missing:
+        raise ValueError(f"component selection scores missing columns: {missing}")
+    expected = {node.name for node in NESTED_NODES}
+    observed = set(str(value) for value in selection_scores["component"].unique())
+    if observed != expected:
+        raise ValueError(
+            f"component score coverage differs: missing={sorted(expected - observed)}, "
+            f"extra={sorted(observed - expected)}"
+        )
+    selected: dict[str, dict[str, float]] = {}
+    for component in sorted(expected):
+        scores = selection_scores.filter(pl.col("component") == component)
+        minimum = float(scores["event_log_loss"].min())
+        tied = scores.filter(
+            pl.col("event_log_loss") <= minimum + SELECTION_TOLERANCE
+        ).sort(
+            ["component_prior_pa", "half_life_seasons"],
+            descending=[True, True],
+        )
+        winner = tied.row(0, named=True)
+        selected[component] = {
+            "half_life_seasons": float(winner["half_life_seasons"]),
+            "component_prior_pa": float(winner["component_prior_pa"]),
+            "event_log_loss": float(winner["event_log_loss"]),
+        }
+    return selected

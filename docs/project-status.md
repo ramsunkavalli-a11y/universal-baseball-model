@@ -221,6 +221,12 @@ Nested C0/C1 histories also support component-specific half-lives and pooling,
 with conditional-node event log loss available for training-only selection.
 No disclosed target score has yet been run.
 
+Contract schema `0.4` records the controlling tie order literally—larger
+component prior, longer half-life, larger movement/park pooling prior, then
+larger ridge—before the first selection or score. Schema `0.3` expressed the
+same preferences in a different order; its hash is retained and it produced no
+selection.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without

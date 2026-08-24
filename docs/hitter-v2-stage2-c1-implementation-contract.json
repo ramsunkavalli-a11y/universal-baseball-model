@@ -1,5 +1,5 @@
 {
-  "record_schema_version": "0.3",
+  "record_schema_version": "0.4",
   "program": "hitter_v2",
   "stage": 2,
   "recorded_date": "2026-08-24",
@@ -73,6 +73,12 @@
       "timing": "after the non-decisional unscored sentinel fit and before any target-outcome score or hyperparameter selection",
       "reason": "the controlling development contract pre-registered longer half-life as the tie preference; the later implementation record's shorter-half-life wording was inconsistent and cannot override it",
       "sentinel_effect": "none; the sentinel configuration was explicitly non-decisional and did not select a candidate"
+    },
+    "tie_order_literal_correction": {
+      "superseded_schema_version": "0.3",
+      "superseded_sha256": "41db1066b2f000f5b250bb50f1664a08c826421947bfc10e0ba5b161e5cdec84",
+      "timing": "before any target-outcome score or hyperparameter selection",
+      "reason": "the development contract's literal priority is larger component prior, then longer half-life, then larger pooling prior and ridge; schema 0.3 named the same preferences but not their controlling order"
     }
   },
   "gidp_adjustment": {
@@ -87,7 +93,7 @@
   "search_policy": {
     "selection_data": "training-origin folds strictly before each disclosed target",
     "primary_component_metric": "terminal event log loss",
-    "tie_break": "longer recency half-life, stronger component and movement/park pooling priors, larger ridge penalty, matching the controlling development contract",
+    "tie_break": "within 1e-8 choose, in order, larger component prior PA, longer recency half-life, larger movement/park pooling prior, and larger ridge penalty, matching the controlling development contract literally",
     "grid_expansion_after_scoring_allowed": false
   },
   "required_pre_score_invariants": [
