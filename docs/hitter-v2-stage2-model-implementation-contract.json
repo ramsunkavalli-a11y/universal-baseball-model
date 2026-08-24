@@ -1,0 +1,56 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "recorded_date": "2026-08-23",
+  "status": "frozen_before_candidate_scoring",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "probability_estimand": ["K", "UBB", "HBP", "HR", "3B", "2B", "1B", "ROE", "FC_REACH", "SF", "MULTI_OUT", "OTHER_OUT"],
+  "nested_tree": [
+    {"node": "plate_appearance", "children": ["K", "NON_K"]},
+    {"node": "non_k", "children": ["UBB", "NON_UBB"]},
+    {"node": "non_k_non_ubb", "children": ["HBP", "CONTACT"]},
+    {"node": "contact", "children": ["HR", "NON_HR"]},
+    {"node": "non_hr_contact", "children": ["REACH", "NON_REACH"]},
+    {"node": "reach", "children": ["HIT", "NON_HIT_REACH"]},
+    {"node": "hit_in_play", "children": ["1B", "2B", "3B"]},
+    {"node": "non_hit_reach", "children": ["ROE", "FC_REACH"]},
+    {"node": "non_reach", "children": ["SF", "MULTI_OUT", "OTHER_OUT"]}
+  ],
+  "b0_one_year_eb": {
+    "history": "predictor cutoff season only",
+    "prior": "player latest league-season-level pooled terminal outcomes; latest-season global pool for unseen players",
+    "component_prior_pa": 200,
+    "missing_history_fallback": "latest predictor-season global pooled prior"
+  },
+  "b1_marcel_345_k1200": {
+    "recency_weights_newest_to_oldest": [5, 4, 3],
+    "regression_pa": 1200,
+    "prior": "latest predictor-season full-population terminal-outcome distribution",
+    "young_age_factor": "1 + (29 - target_age) * 0.006 when target_age <= 29",
+    "old_age_factor": "1 + (29 - target_age) * 0.003 when target_age > 29",
+    "probability_application": "multiply UBB/HBP/1B/2B/3B/HR probability mass by the age factor, leave other mass unchanged, then renormalize",
+    "missing_age_fallback": "factor 1.0 with explicit neutral_missing_age flag"
+  },
+  "c0_nested_eb": {
+    "history": "all accepted history at or before cutoff with fixed seasonal exponential recency",
+    "prior": "player latest league-season-level pooled terminal outcomes; latest-season global pool for unseen players",
+    "recency_half_life_grid": [1.0, 2.0, 3.0],
+    "component_prior_pa_grid": [50, 100, 200, 400, 800],
+    "player_identity_role": "lookup key for prior evidence only; never a fitted predictor"
+  },
+  "c1_hierarchical_pbp": {
+    "implementation_status": "source_enrichment_required",
+    "required_before_fit": [
+      "immutable player birth dates with coverage and neutral missing-age fallback",
+      "game venue/home-away context for chronology-safe park effects",
+      "observed GIDP-opportunity counts for the separate MULTI_OUT component",
+      "chronology-safe movement pairs for level translations"
+    ],
+    "policy": "do not silently downgrade C1 or treat missing enrichment as zero"
+  },
+  "scoring_gate": "closed until implementation invariants and C1 source-enrichment audit are persisted",
+  "tracking_gate": "closed"
+}
