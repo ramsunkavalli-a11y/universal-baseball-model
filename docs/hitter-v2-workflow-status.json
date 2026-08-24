@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2_all_candidate_parameters_frozen_validation_harness_completion_next",
+  "status": "stage2_final_validation_scorer_frozen_ready_for_one_pass_run",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -214,6 +214,23 @@
     "grid_expansion_allowed": false,
     "protected_2026_opened": false
   },
+  "stage2_final_validation_scorer": {
+    "frozen_before_final_validation": true,
+    "validation_module": {
+      "path": "src/universal_baseball/hitter_v2_validation.py",
+      "sha256": "a405475b9ce22d1261954c00ec68650251181d4c75f4c497dbbb5b9e54018d69",
+      "git_blob": "50b34a330e72d30a25d15b5fd6b128ff285d0dc9"
+    },
+    "scoring_command": {
+      "path": "scripts/score_hitter_v2_stage2_final_validation.py",
+      "sha256": "9cb7a8fcb48274f5570d103f0277ca415b611de8116fd20b93bab52259f010f9",
+      "git_blob": "fe1c1c0c694bfcd42c100d004331932b8b370f72"
+    },
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260823,
+    "final_validation_scored": false,
+    "protected_2026_opened": false
+  },
   "stage2_gidp_opportunity_source": {
     "accepted": true,
     "candidate_fit": false,
@@ -260,13 +277,13 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 863,
-      "duration_seconds": 9.42
+      "passed": 869,
+      "duration_seconds": 9.54
     },
     "focused_tests": {
-      "command": "python -m pytest tests/test_hitter_v2_model.py tests/test_hitter_v2_c1.py",
+      "command": "python -m pytest tests/test_hitter_v2_validation.py",
       "status": "passed",
-      "passed": 16
+      "passed": 6
     }
   },
   "authorization": {
@@ -279,7 +296,7 @@
     "stage2_candidate_scoring_started": true,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "stage2_final_validation_harness_completion_then_one_pass_disclosed_scoring"
+    "next_gate": "stage2_one_pass_disclosed_2022_2024_final_validation_scoring"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

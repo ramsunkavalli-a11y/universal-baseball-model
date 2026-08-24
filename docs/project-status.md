@@ -245,6 +245,14 @@ All candidate parameters are now immutable. Final validation has not opened;
 the remaining work is to complete bootstrap, calibration-decile, aggregate,
 and subgroup gate reporting before one-pass disclosed scoring.
 
+The final validation scorer is now complete and frozen before its one-pass
+run. It implements both weighting views, every primary metric, metric-wise
+strongest baselines, pooled relative thresholds, 10,000 paired player
+bootstraps at seed `20260823`, correlation guardrails, wOBA and terminal
+component calibration, ten deterministic predicted-wOBA bins, supported level
+aggregates, and all required subgroup reversals for both C0 and C1. Ruff and
+all 869 tests pass. Final validation and protected 2026 remain unopened.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
