@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 1,
-  "status": "stage1_source_gate_complete_awaiting_review",
+  "status": "stage2_authorized_source_readiness_in_progress",
   "updated_date": "2026-08-23",
   "repository": {
     "base_branch": "main",
@@ -14,7 +14,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "active_stage1_source_gate_complete_awaiting_review",
+    "hitter_v2": "active_stage2_authorized_source_readiness_in_progress",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -142,11 +142,12 @@
   "authorization": {
     "stage0_complete": true,
     "stage1_source_materialization_complete": true,
-    "stage2_candidate_development_authorized": false,
-    "stage2_candidate_scoring_authorized": false,
+    "stage2_candidate_development_authorized": true,
+    "stage2_disclosed_validation_scoring_authorized": true,
+    "stage2_candidate_scoring_started": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate_after_review": "stage2_pbp_only_baselines_component_candidates_and_preregistered_rolling_origin_validation"
+    "next_gate": "stage2_disclosed_2024_terminal_outcome_source_and_pre_score_invariants"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

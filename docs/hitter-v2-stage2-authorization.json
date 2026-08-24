@@ -1,0 +1,40 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "recorded_date": "2026-08-23",
+  "authorization_source": "user instruction: push the Stage 1 branch and keep going",
+  "authorized": {
+    "pbp_only_source_readiness": true,
+    "pbp_only_baseline_implementation": true,
+    "pbp_only_candidate_implementation": true,
+    "disclosed_rolling_origin_scoring": true
+  },
+  "still_closed": {
+    "tracking_increment": true,
+    "completed_2026_offense": true,
+    "baserunning": true,
+    "defense": true,
+    "playing_time": true,
+    "war": true
+  },
+  "frozen_contract": {
+    "path": "docs/hitter-v2-development-contract.md",
+    "sha256": "4f0e0bde4ac903145ea133f4cb57027f2566668cf36f3847621a42646393fe40",
+    "contract_commit": "d1c2471517c5398d3224cba305771c4c696430aa"
+  },
+  "stage1_gate": {
+    "checkpoint_commit": "674cbed941368e14772e4aaa2b53069c70d38ba5",
+    "remote_branch": "origin/hitter-v2-pbp-outcomes",
+    "remote_head_verified": true
+  },
+  "pre_score_requirements": [
+    "Materialize and checksum-freeze the disclosed 2024 terminal-outcome validation target.",
+    "Prove predictor cutoffs and target membership are chronology-safe for V2022, V2023, and V2024.",
+    "Persist neutral historical run-value and wOBA weights that do not use a target season.",
+    "Pass all scientific invariants before accepting any candidate score."
+  ],
+  "candidate_fit_started": false,
+  "candidate_scoring_started": false,
+  "protected_2026_opened": false
+}

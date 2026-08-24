@@ -35,8 +35,9 @@ A broader WAR literature review was completed before final aggregation. It cause
 
 - **Position-player v1:** **DONE / FROZEN / HISTORICAL PROTOTYPE**
 - **Hitter v2 Stage 0:** **DONE LOCALLY — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN**
-- **Hitter v2 Stage 1:** **DONE LOCALLY / AWAITING REVIEW — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
-- **Hitter v2 Stage 2+:** **NOT AUTHORIZED**
+- **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
+- **Hitter v2 Stage 2:** **AUTHORIZED / SOURCE READINESS IN PROGRESS — SCORING NOT STARTED**
+- **Hitter v2 Stage 3+:** **NOT AUTHORIZED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
 - **Projection v1 batting:** DONE / FROZEN
@@ -112,11 +113,12 @@ was fit or scored in this gate.
 
 2025 is diagnostic-only because PA, PBP, Position/Role and Defense outcomes
 have already been accessed. Completed 2026 offense is the protected one-shot
-confirmation and remains closed. Stage 1 now stops for review. After explicit
-approval, the exact next gate is Stage 2 PBP-only baseline/component
-implementation and preregistered rolling-origin validation. Stage 2 candidate
-development/scoring, 2026 access, baserunning, defense, playing time and WAR
-are not currently authorized.
+confirmation and remains closed. Stage 1 was reviewed and pushed at
+`674cbed941368e14772e4aaa2b53069c70d38ba5`. The user then authorized Stage 2
+PBP-only development and disclosed rolling-origin validation. Before any score,
+the disclosed 2024 terminal-outcome target and neutral historical weights must
+be checksum-frozen and all pre-score invariants must pass. Tracking, 2026
+access, baserunning, defense, playing time and WAR remain unauthorized.
 
 ## Paused post-v1 program — Pitching v1
 
