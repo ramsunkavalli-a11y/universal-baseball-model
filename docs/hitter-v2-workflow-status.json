@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2_c1_unscored_checkpoint_passed_scoring_ready",
+  "status": "stage2_scoring_harness_implementation_in_progress",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -236,13 +236,13 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 857,
-      "duration_seconds": 9.47
+      "passed": 861,
+      "duration_seconds": 9.44
     },
     "focused_tests": {
-      "command": "python -m pytest tests/test_hitter_v2_c1.py",
+      "command": "python -m pytest tests/test_hitter_v2_evaluation.py tests/test_hitter_v2_model.py",
       "status": "passed",
-      "passed": 7
+      "passed": 15
     }
   },
   "authorization": {

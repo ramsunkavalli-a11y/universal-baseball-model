@@ -80,7 +80,35 @@ def nested_empirical_bayes_probabilities(
 ) -> dict[str, float]:
     """Estimate one coherent terminal-outcome simplex via nested shrinkage."""
 
-    history = _branch_counts(_leaf_counts(history_counts))
+    histories = {
+        node.name: history_counts for node in NESTED_NODES
+    }
+    return nested_empirical_bayes_probabilities_componentwise(
+        histories,
+        prior_counts,
+        component_prior_pa=component_prior_pa,
+    )
+
+
+def nested_empirical_bayes_probabilities_componentwise(
+    history_counts_by_component: Mapping[str, Mapping[str, float]],
+    prior_counts: Mapping[str, float],
+    *,
+    component_prior_pa: Mapping[str, float] | None = None,
+) -> dict[str, float]:
+    """Estimate a simplex with independently weighted component histories."""
+
+    expected = {node.name for node in NESTED_NODES}
+    observed = set(history_counts_by_component)
+    if observed != expected:
+        raise ValueError(
+            "component histories differ: "
+            f"missing={sorted(expected - observed)}, extra={sorted(observed - expected)}"
+        )
+    histories = {
+        name: _branch_counts(_leaf_counts(counts))
+        for name, counts in history_counts_by_component.items()
+    }
     prior = _branch_counts(_leaf_counts(prior_counts))
     strengths = dict(DEFAULT_COMPONENT_PRIOR_PA)
     if component_prior_pa is not None:
@@ -93,6 +121,7 @@ def nested_empirical_bayes_probabilities(
 
     conditional: dict[tuple[str, str], float] = {}
     for node in NESTED_NODES:
+        history = histories[node.name]
         history_total = sum(history[child] for child in node.children)
         prior_total = sum(prior[child] for child in node.children)
         if prior_total <= 0.0:
@@ -243,35 +272,63 @@ def predict_c0_nested_eb(
     player_ids: Sequence[int],
     *,
     predictor_cutoff_season: int,
-    half_life_seasons: float,
+    half_life_seasons: float | Mapping[str, float],
     component_prior_pa: Mapping[str, float] | None = None,
 ) -> pl.DataFrame:
     """Predict C0 from history only; target rows and target context are not accepted."""
 
-    history = recency_weighted_player_counts(
-        training,
-        predictor_cutoff_season=predictor_cutoff_season,
-        half_life_seasons=half_life_seasons,
-    )
+    if isinstance(half_life_seasons, Mapping):
+        expected = {node.name for node in NESTED_NODES}
+        observed = set(half_life_seasons)
+        if observed != expected:
+            raise ValueError(
+                "component half-lives differ: "
+                f"missing={sorted(expected - observed)}, extra={sorted(observed - expected)}"
+            )
+        component_half_lives = {
+            name: float(value) for name, value in half_life_seasons.items()
+        }
+    else:
+        component_half_lives = {
+            node.name: float(half_life_seasons) for node in NESTED_NODES
+        }
+    histories_by_half_life = {
+        half_life: recency_weighted_player_counts(
+            training,
+            predictor_cutoff_season=predictor_cutoff_season,
+            half_life_seasons=half_life,
+        )
+        for half_life in sorted(set(component_half_lives.values()))
+    }
     player_priors, global_prior = _player_environment_priors(
         training, predictor_cutoff_season=predictor_cutoff_season
     )
     zero = {outcome: 0.0 for outcome in HITTER_TALENT_OUTCOMES}
     rows = []
     for player_id in sorted(set(int(value) for value in player_ids)):
-        counts = history.get(player_id, zero)
-        probabilities = nested_empirical_bayes_probabilities(
-            counts,
+        histories = {
+            node.name: histories_by_half_life[component_half_lives[node.name]].get(
+                player_id, zero
+            )
+            for node in NESTED_NODES
+        }
+        probabilities = nested_empirical_bayes_probabilities_componentwise(
+            histories,
             player_priors.get(player_id, global_prior),
             component_prior_pa=component_prior_pa,
         )
+        evidence_counts = histories_by_half_life[
+            component_half_lives["plate_appearance"]
+        ].get(player_id, zero)
         rows.append(
             {
                 "player_id": player_id,
                 "model_id": "C0_NESTED_EB",
                 "predictor_cutoff_season": predictor_cutoff_season,
-                "prior_history_available": player_id in history,
-                "prior_hitter_talent_pa": sum(counts.values()),
+                "prior_history_available": any(
+                    player_id in history for history in histories_by_half_life.values()
+                ),
+                "prior_hitter_talent_pa": sum(evidence_counts.values()),
                 **{f"p_{outcome}": probabilities[outcome] for outcome in HITTER_TALENT_OUTCOMES},
             }
         )

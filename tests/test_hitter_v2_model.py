@@ -4,6 +4,8 @@ import pytest
 from universal_baseball.hitter_v2_model import (
     marcel_age_factor,
     nested_empirical_bayes_probabilities,
+    nested_empirical_bayes_probabilities_componentwise,
+    NESTED_NODES,
     predict_b0_one_year_eb,
     predict_b1_marcel_345_k1200,
     predict_c0_nested_eb,
@@ -112,3 +114,31 @@ def test_marcel_is_coherent_and_uses_fixed_age_rule() -> None:
     assert unseen["age_fallback"] == "neutral_missing_age"
     for row in (known, unseen):
         assert sum(row[f"p_{outcome}"] for outcome in HITTER_TALENT_OUTCOMES) == pytest.approx(1.0)
+
+
+def test_component_specific_history_and_half_life_remain_coherent() -> None:
+    common = _counts()
+    power = _counts(**{"HR": 20, "OTHER_OUT": 48})
+    histories = {node.name: common for node in NESTED_NODES}
+    histories["contact"] = power
+    probabilities = nested_empirical_bayes_probabilities_componentwise(
+        histories,
+        common,
+        component_prior_pa={"contact": 50.0},
+    )
+    assert sum(probabilities.values()) == pytest.approx(1.0)
+    assert probabilities["HR"] > nested_empirical_bayes_probabilities(
+        common, common, component_prior_pa={"contact": 50.0}
+    )["HR"]
+
+    half_lives = {node.name: 3.0 for node in NESTED_NODES}
+    half_lives["contact"] = 1.0
+    prediction = predict_c0_nested_eb(
+        _history(),
+        [1],
+        predictor_cutoff_season=2021,
+        half_life_seasons=half_lives,
+    ).row(0, named=True)
+    assert sum(
+        prediction[f"p_{outcome}"] for outcome in HITTER_TALENT_OUTCOMES
+    ) == pytest.approx(1.0)

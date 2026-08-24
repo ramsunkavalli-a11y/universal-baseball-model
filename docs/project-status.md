@@ -215,6 +215,12 @@ schema `0.2` hash and timing are preserved. The already-materialized sentinel
 was non-decisional, so no selection or result changed; no target outcome had
 been scored.
 
+The scoring foundation now supports the predeclared PA- and player-weighted
+proper event scores, future wOBA/runs errors, correlations, and calibration.
+Nested C0/C1 histories also support component-specific half-lives and pooling,
+with conditional-node event log loss available for training-only selection.
+No disclosed target score has yet been run.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without

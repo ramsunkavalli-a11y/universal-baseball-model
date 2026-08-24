@@ -11,6 +11,8 @@ from universal_baseball.hitter_v2_evaluation import (
     move_probability_mass,
     probability_vector_to_woba,
     rolling_origin_slices,
+    score_hitter_predictions,
+    score_nested_component_log_loss,
     validate_probability_vector,
     woba_to_neutral_batting_runs_per_600,
 )
@@ -139,3 +141,78 @@ def test_target_player_aggregation_is_exhaustive_and_primary_level_is_stable() -
     assert player["hitter_talent_pa"] == 35
     assert player["OTHER_OUT"] == 35
     assert player["primary_target_league_id"] == 103
+
+
+def _scoring_targets() -> pl.DataFrame:
+    rows = []
+    for player_id, pa, terminal in ((1, 100, "HR"), (2, 10, "OTHER_OUT")):
+        rows.append(
+            {
+                "player_id": player_id,
+                "hitter_talent_pa": pa,
+                **{
+                    outcome: (pa if outcome == terminal else 0)
+                    for outcome in HITTER_TALENT_OUTCOMES
+                },
+            }
+        )
+    return pl.DataFrame(rows)
+
+
+def test_perfect_prediction_improves_proper_scores_and_rate_errors() -> None:
+    targets = _scoring_targets()
+    perfect = targets.select("player_id").with_columns(
+        *[
+            pl.when(pl.col("player_id") == 1)
+            .then(pl.lit(1.0 if outcome == "HR" else 0.0))
+            .otherwise(pl.lit(1.0 if outcome == "OTHER_OUT" else 0.0))
+            .alias(f"p_{outcome}")
+            for outcome in HITTER_TALENT_OUTCOMES
+        ]
+    )
+    uniform = targets.select("player_id").with_columns(
+        *[
+            pl.lit(1.0 / len(HITTER_TALENT_OUTCOMES)).alias(f"p_{outcome}")
+            for outcome in HITTER_TALENT_OUTCOMES
+        ]
+    )
+    perfect_score = score_hitter_predictions(perfect, targets, weighting="pa")
+    uniform_score = score_hitter_predictions(uniform, targets, weighting="pa")
+    assert perfect_score["terminal_log_loss"] < uniform_score["terminal_log_loss"]
+    assert perfect_score["terminal_brier_score"] < uniform_score["terminal_brier_score"]
+    assert perfect_score["woba_rmse"] == pytest.approx(0.0)
+    assert perfect_score["runs_per_600_rmse"] == pytest.approx(0.0)
+
+
+def test_player_and_pa_weighting_are_distinct() -> None:
+    targets = _scoring_targets()
+    predictions = targets.select("player_id").with_columns(
+        *[
+            pl.lit(1.0 / len(HITTER_TALENT_OUTCOMES)).alias(f"p_{outcome}")
+            for outcome in HITTER_TALENT_OUTCOMES
+        ]
+    )
+    player_score = score_hitter_predictions(
+        predictions, targets, weighting="player"
+    )
+    pa_score = score_hitter_predictions(predictions, targets, weighting="pa")
+    assert player_score["players"] == pa_score["players"] == 2
+    assert player_score["woba_rmse"] != pa_score["woba_rmse"]
+
+
+def test_nested_component_scorer_uses_only_conditional_parent_events() -> None:
+    targets = _scoring_targets()
+    perfect = targets.select("player_id").with_columns(
+        *[
+            pl.when(pl.col("player_id") == 1)
+            .then(pl.lit(1.0 if outcome == "HR" else 0.0))
+            .otherwise(pl.lit(1.0 if outcome == "OTHER_OUT" else 0.0))
+            .alias(f"p_{outcome}")
+            for outcome in HITTER_TALENT_OUTCOMES
+        ]
+    )
+    result = score_nested_component_log_loss(
+        perfect, targets, component="contact"
+    )
+    assert result["events"] == 110
+    assert result["event_log_loss"] == pytest.approx(0.0)
