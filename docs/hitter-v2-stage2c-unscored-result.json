@@ -1,0 +1,50 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2c",
+  "status": "implementation_and_unscored_features_materialized",
+  "recorded_date": "2026-08-24",
+  "contract": {
+    "schema_version": "0.3",
+    "path": "docs/hitter-v2-stage2c-development-contract.json",
+    "sha256": "53c30e0819dee62b5420cd365cd2f9b140fa4972cded0fae6637b517cc9e35ec",
+    "superseded_schema_0_1_sha256": "93d97941c5d0511ba7a72af973e8bd3c4d0fededb625f4889fe3df6c70282043",
+    "superseded_schema_0_2_sha256": "a2e8e262dfdd0143332136edacac611e4ff4a29e6fa265a26b45fc181b6bf772"
+  },
+  "implementation": {
+    "module_path": "src/universal_baseball/hitter_v2_stage2c.py",
+    "module_sha256": "cac0af2abd4cfe88e9b19f6601e7d1d89c657ec7883c73f1d47686c4f147b068",
+    "materializer_path": "scripts/materialize_hitter_v2_stage2c_unscored.py",
+    "materializer_sha256": "3eb3cc8be64fb82667de66d12a448d1da84cbfa687243ccac688de0c8c439374",
+    "tests_path": "tests/test_hitter_v2_stage2c.py",
+    "tests_sha256": "5ad97b39bfeede34c2dedd645b040bb24ef65c05e91ecbcff60e60d8eba952cb"
+  },
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2c-unscored/report.json",
+    "sha256": "47d069f33dece03bf163eeefcc90f3a687d9f82453e240cbea82766d9161ae1a",
+    "deterministic_consecutive_rerun_exact": true
+  },
+  "folds": {
+    "V2022": {"forecast_players": 4705, "supported_players": 4481, "fallback_players": 224, "power_feature_sha256": "4a7c8e23442c3f9ce6f87a4256c08ca184044d9d8e15527d028357c66ff7d016", "ground_feature_sha256": "7ed9d82709259c8f3761bbf7748c0421c7933df10c4d2f980bec42f238a3231f"},
+    "V2023": {"forecast_players": 5568, "supported_players": 5323, "fallback_players": 245, "power_feature_sha256": "8401c217c40e1ac61f0194d876e8709e7bd6e7d302f748b6e73872739f0ac13a", "ground_feature_sha256": "4061c245a45aa7899873d36542495b6ba54d1a6cd7fa22ae9b5c942a5a1e02cc"},
+    "V2024": {"forecast_players": 6381, "supported_players": 6132, "fallback_players": 249, "power_feature_sha256": "184684988ce691f4567b80f368cae7a8c54e8981f0f4fc8f21e4ef40b9c1c4d0", "ground_feature_sha256": "5ef0427804e42a09ccc5fdf00a41e46ab64b0444ca7b831c4a98dd6594d58c41"}
+  },
+  "invariants_passed": [
+    "chronology_future_row_invariance",
+    "zero_increment_exact_base_fallback",
+    "missing_shape_exact_base_fallback",
+    "single_empirical_bayes_shrinkage",
+    "power_node_scope",
+    "ground_node_scope",
+    "ground_requires_e1_base",
+    "xbh_two_base_three_base_mix_preserved",
+    "probability_simplex"
+  ],
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "target_outcomes_loaded": false,
+  "protected_2026_opened": false,
+  "tracking_loaded": false,
+  "scoring_authorized": false,
+  "next_gate": "review_unscored_implementation_before_freezing_or_running_stage2c_scorer"
+}

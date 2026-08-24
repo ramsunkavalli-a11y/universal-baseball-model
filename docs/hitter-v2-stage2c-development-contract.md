@@ -1,6 +1,6 @@
 # Hitter v2 Stage 2c nested pulled-fly development contract
 
-Status: **PRE-REGISTERED BEFORE STAGE 2c CANDIDATE FIT OR SCORE**  
+Status: **SCHEMA 0.3 PRE-REGISTERED BEFORE STAGE 2c CANDIDATE FIT OR SCORE**
 Date: 2026-08-24  
 Machine contract: `docs/hitter-v2-stage2c-development-contract.json`
 
@@ -45,14 +45,32 @@ log odds are the only shape features; reliability is reported for provenance.
 Missing evidence equals the context prior, making both features and the
 increment exactly zero.
 
+Schema 0.2 clarifies the previously frozen but underspecified multiseason
+operation: compute the context-centered Beta-posterior log-odds residual within
+each player-season-league-level, then average those residuals using that
+component's denominator multiplied by the two-season recency weight. The
+superseded schema 0.1 SHA-256 is preserved in the machine contract. This
+clarification occurred during implementation before any candidate fit, target
+load, or score.
+
+Schema 0.3 additionally removes an ambiguity in the phrase “total reach.” E1
+must leave the nested `P(REACH | non-HR contact)` branch unchanged; changing
+the authorized HR contrast necessarily changes the derived unconditional
+terminal reach total. It also makes the already-declared E2-on-E1 ordering an
+executable invariant. Schema 0.2's SHA-256 is preserved in the machine
+contract. No candidate fit, target load, or score preceded this clarification.
+
 E1 can alter only:
 
 - `P(HR | contact)`; and
 - the conditional extra-base-hit contrast within non-HR hits (`2B/3B` versus
   `1B`).
 
-It cannot alter K, UBB, IBB, HBP, total reach probability, ROE, FC_REACH, SF,
-MULTI_OUT, OTHER_OUT, or SH/special outcomes. At each affected binary contrast,
+It cannot alter K, UBB, IBB, HBP, `P(REACH | non-HR contact)`, the composition
+of ROE versus FC_REACH, the composition of non-reach outs, or SH/special
+outcomes. Changing `P(HR | contact)` necessarily changes unconditional terminal
+reach probability; the frozen restriction is on the unaffected nested branch,
+not that derived terminal total. At each affected binary contrast,
 the frozen E0 log odds are an offset. Two coefficients (OFFB tendency and pull
 within OFFB) are fit with fixed mean-loss L2 penalty `1.0`; there is no
 hyperparameter search.

@@ -1,10 +1,13 @@
 {
-  "contract_schema_version": "0.1",
+  "contract_schema_version": "0.3",
   "contract_id": "hitter_v2_stage2c_nested_pulled_offb_v1",
   "program": "hitter_v2",
   "stage": "2c",
   "recorded_date": "2026-08-24",
   "status": "pre_registered_before_stage2c_candidate_fit_or_score",
+  "superseded_contract_sha256": "93d97941c5d0511ba7a72af973e8bd3c4d0fededb625f4889fe3df6c70282043",
+  "superseded_schema_0_2_sha256": "a2e8e262dfdd0143332136edacac611e4ff4a29e6fa265a26b45fc181b6bf772",
+  "amendment_timing": "aggregation_and_nested_reach_scope_clarified_during_implementation_before_any_candidate_fit_or_score",
   "development_boundary": {
     "V2022": "training_origin_identity_diagnostic_only",
     "V2023": "disclosed_development_evaluation",
@@ -22,6 +25,7 @@
     "half_life_seasons": 2.0,
     "beta_prior_denominator_events": 100.0,
     "center": "historical_league_season_level_rate",
+    "multiseason_aggregation": "compute each player-season context-centered beta-posterior log-odds residual, then average by component-denominator times two-season recency weight",
     "feature": "context_centered_beta_posterior_log_odds",
     "reliability": "n_eff / (n_eff + 100)",
     "reliability_application": "reported_but_not_multiplied_again_because_beta_posterior_already_shrinks",
@@ -36,7 +40,8 @@
       "features": ["P(OFFB|classified_contact)", "P(pull|OFFB)"],
       "affected_contrasts": ["P(HR|contact)", "P(2B_or_3B|non_HR_hit)"],
       "coefficients_per_contrast": 2,
-      "forbidden_effects": ["K", "UBB", "IBB", "HBP", "total_reach", "ROE", "FC_REACH", "SF", "MULTI_OUT", "OTHER_OUT", "SH_OR_SPECIAL"]
+      "forbidden_effects": ["K", "UBB", "IBB", "HBP", "P(REACH|non_HR_contact)", "ROE_vs_FC_REACH_composition", "non_reach_out_composition", "SH_OR_SPECIAL"],
+      "derived_terminal_reach_note": "changing P(HR|contact) necessarily changes unconditional terminal reach probability"
     },
     {
       "model_id": "E2_SEPARATE_GROUND_DIRECTION",

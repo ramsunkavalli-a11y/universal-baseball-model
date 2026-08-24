@@ -20,8 +20,9 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
   the disclosed 2022-2024 promotion gate. Stage 2b now has a frozen, versioned
   calibration/contact-shape contract and verified implementation. All three
   Stage 2b candidates have now failed the frozen disclosed-development gate.
-  Stage 2c has completed a source-only semantics/stability audit and frozen a
-  narrow nested pulled-outfield-fly contract before candidate implementation.
+  Stage 2c has completed a source-only semantics/stability audit, frozen a
+  narrow nested pulled-outfield-fly contract, and verified its unscored
+  implementation without loading offensive targets.
   Protected 2026 outcomes, tracking fusion,
   Stage 3, and full WAR remain closed.
 - New Pitching v1 development is paused. Completed foundation/source work is
@@ -43,7 +44,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
 - **Hitter v2 Stage 2:** **COMPLETE / FAILED PROMOTION GATE — C0 AND C1 PRESERVED AS FAILED CHALLENGERS**
 - **Hitter v2 Stage 2b:** **COMPLETE / FAILED DISCLOSED-DEVELOPMENT GATE — NO CANDIDATE SELECTED**
-- **Hitter v2 Stage 2c:** **SOURCE/DESIGN GATE FROZEN — NO CANDIDATE FIT OR SCORED**
+- **Hitter v2 Stage 2c:** **UNSCORED IMPLEMENTATION VERIFIED — NO CANDIDATE FIT OR SCORED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -143,6 +144,10 @@ Stage 2c's source/design boundary is recorded in:
 - `docs/hitter-v2-stage2c-development-contract.md`;
 - `docs/hitter-v2-stage2c-development-contract.json`;
 - `scripts/audit_hitter_v2_stage2c_shape_stability.py`;
+- `docs/hitter-v2-stage2c-unscored-checkpoint.md`;
+- `docs/hitter-v2-stage2c-unscored-result.json`;
+- `src/universal_baseball/hitter_v2_stage2c.py`;
+- `scripts/materialize_hitter_v2_stage2c_unscored.py`;
 - ignored generated stability tables identified by committed hashes.
 
 The clean `main` baseline reproduced Ruff and all 819 tests. The immutable v1
@@ -370,8 +375,20 @@ levels. The frozen Stage 2c design therefore uses two separately shrunk,
 league-season-level-centered pulled-fly features only at future HR/XBH nodes.
 Ground-ball direction is a separate secondary ablation and cannot rescue a
 failed power candidate. No offensive target, candidate, tracking field, or
-protected 2026 outcome was opened. Candidate implementation/scoring requires
-a new explicit authorization after review of this source/design gate.
+protected 2026 outcome was opened. Candidate scoring requires a separate
+explicit authorization after review of the unscored implementation gate.
+
+The Stage 2c unscored implementation is now verified for the same 4,705 / 5,568
+/ 6,381 forecast populations. Shape features are available for 4,481 / 5,323 /
+6,132 players; 224 / 245 / 249 players take the exact outcome-only fallback.
+Contract schemas 0.2-0.3 clarify before fit that season/context EB residuals
+are averaged by component opportunities times recency and that E1 preserves
+the nested non-HR reach branch. Reliability is reported but not multiplied a
+second time. Synthetic invariants prove that the power layer
+can change only HR and XBH contrasts, the ground layer only non-HR reach, and
+zero/missing increments reproduce the base exactly. No target outcome was
+loaded and no coefficient was fit or scored. The next gate is review before
+freezing or running any Stage 2c scorer.
 
 ## Paused post-v1 program — Pitching v1
 
