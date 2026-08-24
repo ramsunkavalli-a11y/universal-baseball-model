@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2b_contract_frozen_before_candidate_fit_or_score",
+  "status": "stage2b_implementation_verified_before_candidate_fit_or_score",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "active_stage2b_contract_frozen_candidate_unfit_unscored",
+    "hitter_v2": "active_stage2b_implemented_candidate_unfit_unscored",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -307,6 +307,18 @@
     "stage3_authorized": false,
     "full_war_authorized": false
   },
+  "stage2b_unscored_implementation": {
+    "implemented": true,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "target_outcomes_loaded": false,
+    "generated_report_sha256": "7b4bedff7d87f3180a097f7e85f94f2c94992f592a7e5f7fe224a2d376d332ac",
+    "forecast_players": {"V2022": 4705, "V2023": 5568, "V2024": 6381},
+    "shape_supported_players": {"V2022": 4481, "V2023": 5323, "V2024": 6132},
+    "identity_and_zero_residual_exact_fallback": true,
+    "chronology_invariants_passed": true,
+    "protected_2026_opened": false
+  },
   "stage2_gidp_opportunity_source": {
     "accepted": true,
     "candidate_fit": false,
@@ -353,8 +365,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 869,
-      "duration_seconds": 9.65
+      "passed": 875,
+      "duration_seconds": 9.68
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -378,7 +390,7 @@
     "stage2b_candidate_scored": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "implement_stage2b_candidates_and_unscored_invariants"
+    "next_gate": "commit_stage2b_implementation_then_run_pre_registered_disclosed_development_fit_and_score"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

@@ -1,0 +1,57 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2b",
+  "status": "implementation_and_unscored_features_verified_before_fit_or_score",
+  "recorded_date": "2026-08-24",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "target_outcomes_loaded": false,
+  "protected_2026_opened": false,
+  "development_contract_sha256": "e86506de418d3e09fd83fbe75661865b14eb86f98b31bfed291398b72903c8cf",
+  "contact_shape_player_season_sha256": "ff963a63d2651f917f0ada23c12e46380a1cce001655d8df24249f90bc5225b0",
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2b-unscored/report.json",
+    "sha256": "7b4bedff7d87f3180a097f7e85f94f2c94992f592a7e5f7fe224a2d376d332ac",
+    "size_bytes": 8045
+  },
+  "folds": {
+    "V2022": {
+      "predictor_cutoff_season": 2021,
+      "forecast_players": 4705,
+      "shape_supported_players": 4481,
+      "shape_fallback_players": 224,
+      "shape_coverage_rate": 0.9523910733262486
+    },
+    "V2023": {
+      "predictor_cutoff_season": 2022,
+      "forecast_players": 5568,
+      "shape_supported_players": 5323,
+      "shape_fallback_players": 245,
+      "shape_coverage_rate": 0.9559985632183908
+    },
+    "V2024": {
+      "predictor_cutoff_season": 2023,
+      "forecast_players": 6381,
+      "shape_supported_players": 6132,
+      "shape_fallback_players": 249,
+      "shape_coverage_rate": 0.9609779031499764
+    }
+  },
+  "scientific_invariants": {
+    "identity_calibration_exact_base_fallback": true,
+    "zero_shape_residual_exact_base_fallback": true,
+    "future_shape_rows_cannot_affect_prior_cutoff_features": true,
+    "missing_shape_is_omitted_not_zero_filled": true,
+    "supported_reliability_is_strictly_between_zero_and_one": true,
+    "shape_residual_cannot_change_k_ubb_or_hbp_branches": true,
+    "probabilities_remain_exhaustive_and_normalized": true
+  },
+  "validation": {
+    "ruff": "passed",
+    "pytest": "passed",
+    "pytest_passed": 875,
+    "pytest_duration_seconds": 9.68
+  },
+  "next_step": "commit_and_push_implementation_then_run_pre_registered_disclosed_development_fit_and_score"
+}

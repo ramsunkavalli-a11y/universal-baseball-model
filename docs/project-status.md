@@ -18,8 +18,8 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
 - Hitter v2 is the active post-release model program on branch
   `hitter-v2-pbp-outcomes`. Its two frozen PBP-only Stage 2 candidates failed
   the disclosed 2022-2024 promotion gate. Stage 2b now has a frozen, versioned
-  calibration/contact-shape contract and accepted auxiliary source, but no new
-  candidate has been fit or scored. Protected 2026 outcomes, tracking fusion,
+  calibration/contact-shape contract, accepted auxiliary source, and verified
+  unscored implementation. No new candidate has been fit or scored. Protected 2026 outcomes, tracking fusion,
   Stage 3, and full WAR remain closed.
 - New Pitching v1 development is paused. Completed foundation/source work is
   preserved unchanged for later resumption.
@@ -39,7 +39,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 0:** **DONE LOCALLY — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN**
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
 - **Hitter v2 Stage 2:** **COMPLETE / FAILED PROMOTION GATE — C0 AND C1 PRESERVED AS FAILED CHALLENGERS**
-- **Hitter v2 Stage 2b:** **AUTHORIZED / CONTRACT AND CONTACT-SHAPE SOURCE FROZEN — NO CANDIDATE FIT OR SCORED**
+- **Hitter v2 Stage 2b:** **IMPLEMENTED / UNSCORED INVARIANTS PASS — NO CANDIDATE FIT OR SCORED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -129,6 +129,7 @@ Stage 2b's versioned development boundary is recorded in:
 - `docs/hitter-v2-stage2b-contact-shape-source-result.json`;
 - `docs/hitter-v2-stage2b-development-contract.md`;
 - `docs/hitter-v2-stage2b-development-contract.json`;
+- `docs/hitter-v2-stage2b-unscored-result.json`;
 - ignored generated diagnostic/source reports identified by committed hashes.
 
 The clean `main` baseline reproduced Ruff and all 819 tests. The immutable v1
@@ -295,6 +296,15 @@ shrunk reliability, and returns the exact outcome-only forecast when absent.
 The constants and development advance rule are frozen with no hyperparameter
 search. V2022-V2024 are disclosed development evidence only; even a successful
 result cannot promote without a later one-shot protected confirmation.
+
+The Stage 2b implementation and unscored checkpoint are now complete. Identity
+node calibration and a zero shape residual reproduce C0 probabilities exactly.
+Shape evidence covers 4,481 / 4,705, 5,323 / 5,568, and 6,132 / 6,381 forecast
+players in V2022 / V2023 / V2024; every unsupported player takes an exact base
+fallback. Future shape rows cannot affect an earlier cutoff, supported
+reliability remains strictly between zero and one, and shape residuals cannot
+alter K, UBB, or HBP branches. Ruff and all 875 tests pass. No target outcomes
+were loaded and no Stage 2b coefficient was fit or scored at this checkpoint.
 
 ## Paused post-v1 program — Pitching v1
 
