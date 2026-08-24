@@ -1,0 +1,44 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "status": "c1_adjustment_training_origin_selection_frozen",
+  "recorded_date": "2026-08-24",
+  "candidate_scored_on_training_origins": true,
+  "final_validation_scored": false,
+  "protected_2026_opened": false,
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2-c1-adjustment-selection/report.json",
+    "sha256": "f1cd77c12d7cf529c6a6bc430ba9e9386c851e2bede41604c850d6d56deffb71"
+  },
+  "component_selection_file_sha256": "60744ce90cea6ec5a7f974aabf5a00b30f255ebab0d5262f9d766d975e715565",
+  "folds": {
+    "V2022": {
+      "selection_origin_folds": [],
+      "selection_source": "no_earlier_origin_literal_tie_default",
+      "selected": {"park_prior_pa": 2000.0, "movement_prior_pa": 500.0, "ridge_penalty": 100.0}
+    },
+    "V2023": {
+      "selection_origin_folds": ["V2022"],
+      "grid_rows": 27,
+      "grid_sha256": "80e4d899aed4ec624e06fa9bc3c27e9e379ec2cf93ed9b2a059edaaf53f6cd07",
+      "selected": {"park_prior_pa": 2000.0, "movement_prior_pa": 500.0, "ridge_penalty": 100.0},
+      "training_origin_event_log_loss": 1.7128537076111598
+    },
+    "V2024": {
+      "selection_origin_folds": ["V2022", "V2023"],
+      "grid_rows": 27,
+      "grid_sha256": "5b3f68ec7b87492e7f3d6cfcb2618eec8167563530436895ef318267791a5653",
+      "selected": {"park_prior_pa": 2000.0, "movement_prior_pa": 500.0, "ridge_penalty": 1.0},
+      "training_origin_event_log_loss": 1.719516789692563
+    }
+  },
+  "gate": {
+    "all_candidate_parameters_frozen": true,
+    "grid_expansion_allowed": false,
+    "final_validation_opened": false,
+    "final_validation_harness_completion_next": true,
+    "tracking_authorized": false,
+    "stage3_authorized": false
+  }
+}

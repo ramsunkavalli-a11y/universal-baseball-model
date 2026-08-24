@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2_component_selection_frozen_c1_adjustment_selection_next",
+  "status": "stage2_all_candidate_parameters_frozen_validation_harness_completion_next",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -200,6 +200,20 @@
     "grid_expansion_allowed": false,
     "protected_2026_opened": false
   },
+  "stage2_c1_adjustment_selection": {
+    "training_origin_candidate_scoring_complete": true,
+    "final_validation_scored": false,
+    "generated_report_sha256": "f1cd77c12d7cf529c6a6bc430ba9e9386c851e2bede41604c850d6d56deffb71",
+    "grid_rows": {"V2022": 0, "V2023": 27, "V2024": 27},
+    "selected": {
+      "V2022": {"park_prior_pa": 2000.0, "movement_prior_pa": 500.0, "ridge_penalty": 100.0},
+      "V2023": {"park_prior_pa": 2000.0, "movement_prior_pa": 500.0, "ridge_penalty": 100.0},
+      "V2024": {"park_prior_pa": 2000.0, "movement_prior_pa": 500.0, "ridge_penalty": 1.0}
+    },
+    "all_candidate_parameters_frozen": true,
+    "grid_expansion_allowed": false,
+    "protected_2026_opened": false
+  },
   "stage2_gidp_opportunity_source": {
     "accepted": true,
     "candidate_fit": false,
@@ -247,7 +261,7 @@
       "command": "python -m pytest",
       "status": "passed",
       "passed": 863,
-      "duration_seconds": 9.48
+      "duration_seconds": 9.42
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_model.py tests/test_hitter_v2_c1.py",
@@ -265,7 +279,7 @@
     "stage2_candidate_scoring_started": true,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "stage2_c1_adjustment_training_origin_selection"
+    "next_gate": "stage2_final_validation_harness_completion_then_one_pass_disclosed_scoring"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

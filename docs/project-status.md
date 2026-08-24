@@ -236,6 +236,15 @@ retained under generated-report SHA-256
 Final validation remains unscored. The component choices and grid are now
 immutable; C1 park/movement/age adjustment selection is next.
 
+C1 adjustment selection is also frozen. V2022 uses the no-origin default;
+V2023 selected park/movement/age priors `2000/500/100`; V2024 selected
+`2000/500/1`, each strictly from earlier-origin PA-weighted terminal log loss.
+The two complete 27-row grids are bound by generated-report SHA-256
+`f1cd77c12d7cf529c6a6bc430ba9e9386c851e2bede41604c850d6d56deffb71`.
+All candidate parameters are now immutable. Final validation has not opened;
+the remaining work is to complete bootstrap, calibration-decile, aggregate,
+and subgroup gate reporting before one-pass disclosed scoring.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
