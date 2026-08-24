@@ -1,0 +1,130 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 0,
+  "status": "stage0_complete_awaiting_review",
+  "updated_date": "2026-08-23",
+  "repository": {
+    "base_branch": "main",
+    "base_commit": "197d21a67d707633cb47d720c84a7b126b9c4320",
+    "feature_branch": "hitter-v2-pbp-outcomes",
+    "contract_commit": "d1c2471517c5398d3224cba305771c4c696430aa",
+    "remote_state_changed": false
+  },
+  "program_state": {
+    "position_player_v1": "frozen_historical_prototype_preserved",
+    "hitter_v2": "active_stage0_complete_awaiting_review",
+    "pitching_v1": "paused_foundation_preserved"
+  },
+  "contracts": {
+    "methodology_review": {
+      "path": "docs/hitter-v2-methodology-review.md",
+      "sha256": "77f2f8c8d993c2815e8b50e517219953801689abd1f32ecb042f249e17df35ef",
+      "git_blob": "d1b2bddf0e6ebf1846bd40eb9c84d5cea91002b4"
+    },
+    "source_contract": {
+      "path": "docs/hitter-v2-source-contract.md",
+      "sha256": "77492fdc45e8997bf6cb98931ac96f49178629b2f4907edcd14f2ea096f29f0d",
+      "git_blob": "83bda73b09faa44c33cb95a4e807dcfe73a4e09f"
+    },
+    "development_contract": {
+      "path": "docs/hitter-v2-development-contract.md",
+      "sha256": "4f0e0bde4ac903145ea133f4cb57027f2566668cf36f3847621a42646393fe40",
+      "git_blob": "f7a69512eac6cca3ec84326217161cd3445f0e83"
+    },
+    "external_validity_record": {
+      "path": "docs/hitter-v2-v1-external-validity-result.json",
+      "sha256": "d0e8f1f878405b66000672953a975a2ef661cec12db0b1494b1e35d2491a5a0b",
+      "git_blob": "2ff2683cc26c0ddd8c736a1ab44a30f5f8f17ba0"
+    }
+  },
+  "baseline_reproduction": {
+    "branch": "main",
+    "commit": "197d21a67d707633cb47d720c84a7b126b9c4320",
+    "python": "3.12.13",
+    "ruff": {
+      "command": "python -m ruff check src scripts tests",
+      "status": "passed"
+    },
+    "pytest": {
+      "command": "python -m pytest",
+      "status": "passed",
+      "passed": 819,
+      "duration_seconds": 24.05
+    },
+    "leaderboard": {
+      "status": "exact_reproduction",
+      "player_count": 3985,
+      "same_player_ids": true,
+      "same_top_20_order": true,
+      "maximum_absolute_runs_per_600_delta": 0.0,
+      "json_sha256": "82c53f4b3e499e4ca285b0004065bb25cc96b49143071f9c09826dd21e8f7c78",
+      "csv_sha256": "a21e404fc64a10031ba4d2eafa92420b143e5129bf21276e84139e457a8f0e0c"
+    }
+  },
+  "source_audit": {
+    "terminal_contact_2021_2022": {
+      "supported": 900742,
+      "core_terminal": 901015,
+      "supported_rate": 0.9996970083738894
+    },
+    "terminal_contact_2023": {
+      "supported": 595619,
+      "core_terminal": 595794,
+      "supported_rate": 0.9997062743162906
+    },
+    "tracking_model_bbe": {
+      "2021": 142201,
+      "2022": 171415,
+      "2023": 206542
+    },
+    "pr11": {
+      "ref": "origin/export-batting-leaderboard",
+      "head": "b22a368",
+      "committed_csv_data_rows": 20,
+      "exporter_expected_players": 3985,
+      "companion_json_committed": false,
+      "automatic_writing_workflow": true,
+      "canonical_merge_recommended": false,
+      "remote_state_changed": false
+    }
+  },
+  "outcome_access_boundary": {
+    "2024": "disclosed_validation",
+    "2025": "diagnostic_only_prior_pa_pbp_position_defense_access",
+    "2026": "protected_one_shot_confirmation_unopened",
+    "hitter_v2_candidate_fit": false,
+    "hitter_v2_candidate_scored": false,
+    "protected_confirmation_opened": false
+  },
+  "validation": {
+    "post_change_full_ruff": {
+      "command": "python -m ruff check src scripts tests",
+      "status": "passed"
+    },
+    "post_change_full_pytest": {
+      "command": "python -m pytest",
+      "status": "passed",
+      "passed": 822,
+      "duration_seconds": 9.19
+    },
+    "focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_stage0.py tests/test_repository_integrity.py",
+      "status": "passed",
+      "passed": 10
+    }
+  },
+  "authorization": {
+    "stage0_complete": true,
+    "stage1_source_materialization_authorized": false,
+    "stage2_candidate_scoring_authorized": false,
+    "2026_confirmation_access_authorized": false,
+    "full_war_authorized": false,
+    "next_gate_after_review": "stage1_source_only_terminal_pa_materialization_reconciliation_and_invariants"
+  },
+  "limitations": [
+    "New official-outcome scoring was not executed in this Stage 0; the attached independent review is the verification source for the disclosed external-validity numbers.",
+    "Stage 1 must still materialize the exhaustive joined PA table and prove independent official reconciliation.",
+    "2025 is not a pristine confirmation surface."
+  ]
+}
