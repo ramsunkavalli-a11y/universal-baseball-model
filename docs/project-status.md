@@ -37,7 +37,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Position-player v1:** **DONE / FROZEN / HISTORICAL PROTOTYPE**
 - **Hitter v2 Stage 0:** **DONE LOCALLY — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN**
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
-- **Hitter v2 Stage 2:** **AUTHORIZED / GIDP OPPORTUNITY SOURCE READY — C1 PARK CONTEXT IN PROGRESS; NO CANDIDATE SCORED**
+- **Hitter v2 Stage 2:** **AUTHORIZED / ALL C1 SOURCES READY — C1 IMPLEMENTATION NEXT; NO CANDIDATE SCORED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -107,6 +107,8 @@ Stage 2's pre-score evaluation freeze is recorded in:
 - `docs/hitter-v2-stage2-forecast-membership-correction.json`;
 - `docs/hitter-v2-stage2-gidp-opportunity-checkpoint.md`;
 - `docs/hitter-v2-stage2-gidp-opportunity-result.json`;
+- `docs/hitter-v2-stage2-park-context-checkpoint.md`;
+- `docs/hitter-v2-stage2-park-context-result.json`;
 - `reports/generated/hitter-v2-stage2-prescore/report.json` (ignored generated
   evidence, identified by a committed SHA-256).
 
@@ -169,8 +171,16 @@ MLB Savant uses direct pre-PA base state; the affiliated MiLB export exposes
 post-play state, so its PA-start occupancy is reconstructed by shifting the
 prior PA's state within each half-inning. All 26,017 excluded player-games are
 retained with explicit failed-closed reasons, including 29 MiLB rows where
-official GIDP exceeds reconstructed opportunity. C1 remains unfit because
-chronology-safe park context is still open. No candidate has been scored.
+official GIDP exceeds reconstructed opportunity.
+
+Chronology-safe park context is also ready. Completed official 2021–2023
+schedules cover 714,474 player-games and 2,808,923 PA (99.7980% and 99.8237%)
+across 185 venues. The capture stops before the 2024 target and uses the
+existing `codedGameState == F` authority to ignore stale postponed entries.
+The remaining 1,446 player-games are retained and failed closed for absent,
+missing, or conflicting official venue context. C1 now has all declared source
+inputs but remains unfit and unscored pending implementation and its
+candidate-specific invariant freeze.
 
 ## Paused post-v1 program — Pitching v1
 

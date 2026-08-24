@@ -1,0 +1,47 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "status": "historical_park_context_source_ready",
+  "recorded_date": "2026-08-23",
+  "implementation_commit": "67ecda4449d10838e7d81d26bb972f2871d56ff3",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "source": {
+    "provider": "MLB Stats API official schedule",
+    "seasons": [2021, 2022, 2023],
+    "sport_ids": [1, 11, 12, 13, 14, 16],
+    "completed_game_authority": "codedGameState == F",
+    "target_season_metadata_opened": false,
+    "offline_replay_supported": true
+  },
+  "totals": {
+    "canonical_model_ready_player_games": 715920,
+    "park_ready_player_games": 714474,
+    "player_game_coverage": 0.9979802212537714,
+    "canonical_model_ready_pa": 2813883,
+    "park_ready_pa": 2808923,
+    "pa_coverage": 0.9982373112172752,
+    "canonical_games": 37737,
+    "park_ready_games": 37668,
+    "venues": 185
+  },
+  "failed_closed_player_games": {
+    "game_absent_from_official_schedule": 59,
+    "schedule_venue_conflict_or_missing": 1387
+  },
+  "provenance": {
+    "generated_report_sha256": "340f9bdbb0bea25e34fb9ae1b114fc337dc6dbc69fe8d9210c870ab92a4bb617",
+    "game_venues_sha256": "b816b6f6c8be7eb5b7458c6215a18e7ef84c35c26830ecada5f170d0da97bbe6",
+    "player_game_park_context_sha256": "8639ab2b2b03fcad5e9ba9d50a79d48ed8f3616ad626f56c3fc85d4e16da30cf",
+    "capture_manifest_sha256": "0e2c9dc539b39acfc989b87b08175cc21693f7f94e04123d72b87c707ccaa751",
+    "history_player_game_sha256": "322587b6af6d74b14fe1b5ca925343e0cce9decfaa5252261a6e8b3681345f96"
+  },
+  "validation": {
+    "ruff": "passed",
+    "pytest_passed": 850,
+    "pytest_duration_seconds": 9.53
+  },
+  "next_gate": "stage2_c1_implementation_and_candidate_specific_invariant_freeze"
+}
