@@ -314,6 +314,17 @@ distance, the existing supported-level reversal thresholds, and the 0.25%
 richer-model wOBA-RMSE guardrail. The executable scorer and tests are committed
 as a separate pre-result gate; no disclosed result can redefine these rules.
 
+The first scoring execution at commit `406062d` stopped during the V2023
+calibration fit, before any V2023 prediction or score, because the deterministic
+optimizer reached its 2,000-iteration ceiling. V2022's identity training
+diagnostic had run; it is explicitly non-selecting. A diagnostic using the same
+authorized V2022 training origin showed all nine convex node fits converging in
+1,541-2,689 iterations under the unchanged objective. The repair raises only
+the numerical ceiling to 20,000; the model, penalty, features, folds, metrics,
+and gates do not change. The incident is preserved in
+`docs/hitter-v2-stage2b-scoring-execution-incident.json` and the repair must be
+committed before restarting the scorer.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -819,45 +830,46 @@ and all `798` tests completed successfully.
 8. `docs/hitter-v2-stage2b-contact-shape-source-result.json`
 9. `docs/hitter-v2-stage2b-unscored-result.json`
 10. `docs/hitter-v2-stage2b-scoring-contract.json`
-11. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
-12. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
-13. `docs/hitter-v2-stage2-final-validation-result.json`
-14. `docs/hitter-v2-v1-external-validity-result.json`
-15. `docs/player-value-v1-war-literature-review.md`
-16. `docs/player-value-v1-architecture-contract.md`
-17. `docs/player-value-v1-mlb-centering-contract.md`
-18. `docs/player-value-v1-mlb-centering-2024-membership.json`
-19. `docs/player-value-v1-mlb-centering-2024.json`
-20. `docs/player-value-v1-park-neutrality-audit-contract.md`
-21. `docs/player-value-v1-park-neutrality-audit-result.json`
-22. `docs/player-value-v1-mlb-centering-verification.json`
-23. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md`
-24. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json`
-25. `docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`
-26. `docs/player-value-v1-final-aggregation-contract.md`
-27. `docs/player-value-v1-final-2024.json`
-28. `docs/player-value-v1-uncertainty-contract.md`
-29. `docs/player-value-v1-uncertainty-2024.json`
-30. `docs/player-value-v1-replacement-level-contract.md`
-31. `docs/player-value-v1-replacement-level-2024.json`
-32. `docs/player-value-v1-replacement-level-verification.json`
-33. `docs/player-value-v1-runs-per-win-contract.md`
-34. `docs/player-value-v1-mlb-run-environment-2024.json`
-35. `docs/player-value-v1-batting-runs-contract.md`
-36. `docs/player-value-v1-positional-adjustment-contract.md`
-37. `docs/player-value-v1-defense-production-handoff.md`
-38. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-39. `docs/player-value-v1-baserunning-source-audit-contract.md`
-40. `docs/player-value-v1-baserunning-source-audit-result.json`
-41. `docs/player-value-v1-steal-projection-selection-contract.md`
-42. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-43. `docs/player-value-v1-steal-projection-selection-result.json`
-44. `docs/player-value-v1-advancement-projection-selection-contract.md`
-45. `docs/player-value-v1-advancement-projection-selection-result.json`
-46. `docs/player-value-v1-baserunning-run-conversion-contract.md`
-47. `docs/player-value-v1-baserunning-run-conversion-2024.json`
-48. `docs/projection-batting-v1-development-result.json`
-49. `docs/current-talent-results-only-baseline-freeze.md`
+11. `docs/hitter-v2-stage2b-scoring-execution-incident.json`
+12. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+13. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
+14. `docs/hitter-v2-stage2-final-validation-result.json`
+15. `docs/hitter-v2-v1-external-validity-result.json`
+16. `docs/player-value-v1-war-literature-review.md`
+17. `docs/player-value-v1-architecture-contract.md`
+18. `docs/player-value-v1-mlb-centering-contract.md`
+19. `docs/player-value-v1-mlb-centering-2024-membership.json`
+20. `docs/player-value-v1-mlb-centering-2024.json`
+21. `docs/player-value-v1-park-neutrality-audit-contract.md`
+22. `docs/player-value-v1-park-neutrality-audit-result.json`
+23. `docs/player-value-v1-mlb-centering-verification.json`
+24. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md`
+25. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json`
+26. `docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`
+27. `docs/player-value-v1-final-aggregation-contract.md`
+28. `docs/player-value-v1-final-2024.json`
+29. `docs/player-value-v1-uncertainty-contract.md`
+30. `docs/player-value-v1-uncertainty-2024.json`
+31. `docs/player-value-v1-replacement-level-contract.md`
+32. `docs/player-value-v1-replacement-level-2024.json`
+33. `docs/player-value-v1-replacement-level-verification.json`
+34. `docs/player-value-v1-runs-per-win-contract.md`
+35. `docs/player-value-v1-mlb-run-environment-2024.json`
+36. `docs/player-value-v1-batting-runs-contract.md`
+37. `docs/player-value-v1-positional-adjustment-contract.md`
+38. `docs/player-value-v1-defense-production-handoff.md`
+39. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+40. `docs/player-value-v1-baserunning-source-audit-contract.md`
+41. `docs/player-value-v1-baserunning-source-audit-result.json`
+42. `docs/player-value-v1-steal-projection-selection-contract.md`
+43. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+44. `docs/player-value-v1-steal-projection-selection-result.json`
+45. `docs/player-value-v1-advancement-projection-selection-contract.md`
+46. `docs/player-value-v1-advancement-projection-selection-result.json`
+47. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+48. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+49. `docs/projection-batting-v1-development-result.json`
+50. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 

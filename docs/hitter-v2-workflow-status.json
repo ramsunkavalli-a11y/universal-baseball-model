@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2b_scorer_frozen_before_candidate_fit_or_score",
+  "status": "stage2b_numerical_repair_pending_before_scoring_restart",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "active_stage2b_implemented_candidate_unfit_unscored",
+    "hitter_v2": "active_stage2b_scoring_started_numerical_incident_recorded",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -300,8 +300,10 @@
   "stage2b_candidate_development": {
     "authorized": true,
     "contract_frozen": true,
-    "candidate_fit": false,
+    "candidate_fit": true,
     "candidate_scored": false,
+    "training_diagnostic_v2022_scored": true,
+    "selection_folds_scored": false,
     "candidate_ladder": [
       "D0_NODE_CALIBRATED_C0",
       "D1_TRAJECTORY_RESIDUAL",
@@ -324,6 +326,16 @@
     "shape_supported_players": {"V2022": 4481, "V2023": 5323, "V2024": 6132},
     "identity_and_zero_residual_exact_fallback": true,
     "chronology_invariants_passed": true,
+    "protected_2026_opened": false
+  },
+  "stage2b_scoring_execution_incident": {
+    "execution_commit": "406062de4e31a618fad7aaa59636dcdced347f48",
+    "v2022_training_diagnostic_scored": true,
+    "v2023_selection_fold_scored": false,
+    "v2024_selection_fold_scored": false,
+    "cause": "optimizer_iteration_ceiling_before_v2023_prediction",
+    "repair": "increase_numerical_iteration_ceiling_only_from_2000_to_20000",
+    "model_or_gate_changed": false,
     "protected_2026_opened": false
   },
   "stage2_gidp_opportunity_source": {
@@ -373,7 +385,7 @@
       "command": "python -m pytest",
       "status": "passed",
       "passed": 881,
-      "duration_seconds": 9.63
+      "duration_seconds": 9.43
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -394,11 +406,11 @@
     "stage2b_development_authorized": true,
     "stage2b_contract_frozen": true,
     "stage2b_scorer_frozen": true,
-    "stage2b_candidate_fit": false,
+    "stage2b_candidate_fit": true,
     "stage2b_candidate_scored": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "commit_stage2b_scorer_then_run_pre_registered_disclosed_development_fit_and_score"
+    "next_gate": "commit_numerical_convergence_repair_then_restart_frozen_disclosed_development_scorer"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

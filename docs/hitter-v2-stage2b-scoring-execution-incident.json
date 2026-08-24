@@ -1,0 +1,39 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2b",
+  "recorded_date": "2026-08-24",
+  "execution_commit": "406062de4e31a618fad7aaa59636dcdced347f48",
+  "status": "incomplete_numerical_convergence_incident_before_selection_fold_score",
+  "command": ".venv\\Scripts\\python.exe scripts/score_hitter_v2_stage2b_development.py",
+  "observed_boundary": {
+    "V2022": "identity training diagnostic fit and score completed in memory; unpromotable by contract",
+    "V2023": "node calibration fit stopped at the 2000-iteration ceiling before prediction or score",
+    "V2024": "not reached",
+    "protected_2026_opened": false
+  },
+  "error": "node-offset optimizer did not converge",
+  "root_cause": "the fixed-step backtracking optimizer required more than 2000 iterations for several convex node fits even though the objective continued descending",
+  "diagnostic": {
+    "data": "V2022 C0 forecast-target pairs already authorized as the V2023 training origin",
+    "max_iterations": 20000,
+    "all_nine_nodes_converged": true,
+    "iterations_range": [1541, 2689],
+    "final_gradient_max_abs_range": [5.682301061924811e-7, 9.258473206751939e-7],
+    "stopping_rule": "penalized objective improvement at or below 1e-12"
+  },
+  "repair": {
+    "type": "optimizer_mechanics_only",
+    "old_maximum_iterations": 2000,
+    "new_maximum_iterations": 20000,
+    "candidate_family_changed": false,
+    "features_changed": false,
+    "l2_penalty_changed": false,
+    "folds_changed": false,
+    "metrics_or_gates_changed": false,
+    "post_result_model_tuning": false
+  },
+  "pre_repair_estimator_sha256": "1b46980e07268bb8c791390a1a42dc0b4cb899d1eeee25ca4e7633e57075184d",
+  "post_repair_estimator_sha256": "60a45e48af91c693be476fbf6ae8bfaaf8410e627b3aa187826a1e58feec0fcf",
+  "next_step": "commit_and_push_numerical_repair_before_restarting_the_frozen_scorer"
+}

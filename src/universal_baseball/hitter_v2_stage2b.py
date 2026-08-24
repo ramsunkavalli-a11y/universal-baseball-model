@@ -24,7 +24,9 @@ FIXED_MEAN_LOSS_L2_PENALTY = 0.01
 FIXED_SHAPE_HALF_LIFE_SEASONS = 2.0
 FIXED_SHAPE_PRIOR_EVENTS = 200.0
 FIXED_SHAPE_RELIABILITY_K = 200.0
-DEFAULT_MAX_ITERATIONS = 2_000
+# This ceiling governs numerical completion only; objective convergence still
+# stops the deterministic optimizer, usually long before the ceiling.
+DEFAULT_MAX_ITERATIONS = 20_000
 DEFAULT_GRADIENT_TOLERANCE = 1e-8
 DEFAULT_OBJECTIVE_TOLERANCE = 1e-12
 MIN_BACKTRACK_STEP = 2.0**-30
