@@ -11,9 +11,13 @@ import polars as pl
 
 from universal_baseball.hitter_v2_outcomes import HITTER_TALENT_OUTCOMES
 from universal_baseball.hitter_v2_stage2c import (
+    E1_MODEL_ID,
+    E2_MODEL_ID,
+    E3_MODEL_ID,
     FEATURES,
     GROUND_MODE,
-    POWER_MODE,
+    HR_MODE,
+    XBH_MODE,
     apply_stage2c_residual,
     build_stage2c_features,
     zero_stage2c_fit,
@@ -23,8 +27,9 @@ from universal_baseball.storage import sha256_file, write_canonical_parquet
 
 FOLDS = {"V2022": 2021, "V2023": 2022, "V2024": 2023}
 MODES = {
-    POWER_MODE: "E1_NESTED_PULLED_OFFB_POWER",
-    GROUND_MODE: "E2_SEPARATE_GROUND_DIRECTION",
+    HR_MODE: E1_MODEL_ID,
+    XBH_MODE: E2_MODEL_ID,
+    GROUND_MODE: E3_MODEL_ID,
 }
 
 
@@ -64,6 +69,11 @@ def _probabilities(frame: pl.DataFrame) -> list[list[float]]:
 
 def main() -> int:
     args = _parse_args()
+    contract = json.loads(args.contract.read_text(encoding="utf-8"))
+    if contract.get("contract_schema_version") != "0.4":
+        raise ValueError("Stage 2c materializer requires contract schema 0.4")
+    if contract.get("implementation_state", {}).get("scoring_authorized") is not False:
+        raise ValueError("Stage 2c schema 0.4 must remain unscored at this gate")
     history = pl.read_parquet(args.shape_history)
     fold_records: list[dict[str, object]] = []
     for fold_id, cutoff in FOLDS.items():
@@ -75,7 +85,7 @@ def main() -> int:
         base = pl.read_parquet(base_path).sort("player_id")
         player_ids = [int(value) for value in base["player_id"].to_list()]
         mode_records: dict[str, object] = {}
-        zero_power_base = base
+        zero_ladder_base = base
         for mode, model_id in MODES.items():
             features = build_stage2c_features(
                 history,
@@ -92,15 +102,14 @@ def main() -> int:
             if not features.equals(features_cut):
                 raise ValueError(f"{fold_id} {mode} features depend on future rows")
             zero = apply_stage2c_residual(
-                zero_power_base if mode == GROUND_MODE else base,
+                zero_ladder_base,
                 features,
                 zero_stage2c_fit(mode),
                 model_id=model_id,
             )
             if _probabilities(base) != _probabilities(zero):
                 raise ValueError(f"{fold_id} {mode} zero increment changed base")
-            if mode == POWER_MODE:
-                zero_power_base = zero
+            zero_ladder_base = zero
             artifact = write_canonical_parquet(
                 features,
                 args.report_root / "tables" / fold_id.lower() / f"{mode}.parquet",
@@ -146,7 +155,7 @@ def main() -> int:
         )
 
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "program": "hitter_v2",
         "stage": "2c",
         "status": "implementation_and_unscored_features_materialized",
@@ -163,11 +172,14 @@ def main() -> int:
             "zero_increment_exact_base_fallback": True,
             "missing_shape_is_omitted_not_zero_filled": True,
             "beta_posterior_not_multiplied_by_reliability_twice": True,
-            "power_changes_only_hr_and_xbh_contrasts": "covered_by_synthetic_test",
+            "e1_changes_only_hr_contrast": "covered_by_synthetic_test",
+            "e2_changes_only_xbh_contrast": "covered_by_synthetic_test",
+            "e2_requires_e1_base": "covered_by_synthetic_test",
             "ground_changes_only_non_hr_reach_contrast": "covered_by_synthetic_test",
+            "e3_requires_passing_air_base": "covered_by_synthetic_test",
             "probabilities_exhaustive_and_normalized": "covered_by_synthetic_test",
         },
-        "next_step": "commit_unscored_implementation_before_any_stage2c_fit_or_score",
+        "next_step": "review_schema_0_4_unscored_implementation_before_any_scorer_is_frozen_or_run",
     }
     args.report_root.mkdir(parents=True, exist_ok=True)
     (args.report_root / "report.json").write_text(

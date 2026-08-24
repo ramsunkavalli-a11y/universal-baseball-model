@@ -877,8 +877,15 @@ Tango/Chamberlain/Judge/direct-PBP review separates completed-play value from
 forecastable player talent and narrows the first pulled-air test to future HR
 only. Non-HR XBH and ground-direction effects are separate, ordered ablations
 that cannot rescue a failed HR test. The prior schema 0.3 unscored
-implementation is superseded and may not be scored; schema 0.4 implementation
-and a new unscored checkpoint are required first.
+implementation is superseded and may not be scored.
+
+Schema 0.4 is now implemented and verified target-free. E1 can alter only the
+HR/contact contrast; E2 requires E1 during fitting and prediction and can alter
+only non-HR XBH composition; E3 requires E1 or E2 and can alter only non-HR
+reach. The chained zero-increment ladder exactly reproduces C0 for all 4,705,
+5,568, and 6,381 V2022-V2024 forecasts, including 224, 245, and 249 exact
+missing-shape fallbacks. The generated report reproduced byte-for-byte. No
+scorer is frozen or authorized.
 
 A source-only scan of 113 disclosed 2021-2024 affiliated PBP files found
 `hit_distance_sc` on 360,929 / 1,954,502 classified batted-ball PAs (18.47%).
@@ -886,9 +893,9 @@ It co-occurred with exit velocity on 99.936% of those PAs and had zero or near-
 zero coverage in High-A and AA versus 96.97% in 2024 AAA. Distance is therefore
 a later capability-aware tracking/enriched-PBP residual, not part of the
 universal PBP base. No offensive target, evaluation membership, candidate
-score, or protected 2026 outcome was opened. The exact next gate is review,
-then schema 0.4 implementation and target-free verification if authorized.
-Ruff and the full 888-test suite pass after this documentation/source gate.
+score, or protected 2026 outcome was opened. The exact next gate is review of
+the schema 0.4 unscored implementation before any scorer may be authorized or
+frozen. Ruff and all 890 tests pass after implementation.
 
 Because every v1 gate is complete, all 211 historical research/materialization
 workflows are now manual-only. `.github/workflows/ci.yml` is the sole automatic

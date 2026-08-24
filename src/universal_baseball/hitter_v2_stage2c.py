@@ -30,21 +30,40 @@ from universal_baseball.performance_season import CONTACT_CORE_BINS
 FIXED_HALF_LIFE_SEASONS = 2.0
 FIXED_PRIOR_EVENTS = 100.0
 FIXED_L2_PENALTY = 1.0
-POWER_MODE = "nested_pulled_offb_power"
+HR_MODE = "nested_pulled_offb_hr"
+XBH_MODE = "pulled_offb_xbh_ablation"
 GROUND_MODE = "separate_ground_direction"
-FEATURES = {
-    POWER_MODE: (
-        ("offb_per_contact", ("PULL_OFFB", "CENTER_OFFB", "OPPO_OFFB"), CONTACT_CORE_BINS),
-        ("pull_offb_per_offb", ("PULL_OFFB",), ("PULL_OFFB", "CENTER_OFFB", "OPPO_OFFB")),
+PULLED_OFFB_FEATURES = (
+    (
+        "offb_per_contact",
+        ("PULL_OFFB", "CENTER_OFFB", "OPPO_OFFB"),
+        CONTACT_CORE_BINS,
     ),
+    (
+        "pull_offb_per_offb",
+        ("PULL_OFFB",),
+        ("PULL_OFFB", "CENTER_OFFB", "OPPO_OFFB"),
+    ),
+)
+FEATURES = {
+    HR_MODE: PULLED_OFFB_FEATURES,
+    XBH_MODE: PULLED_OFFB_FEATURES,
     GROUND_MODE: (
         ("gb_per_contact", ("PULL_GB", "CENTER_GB", "OPPO_GB"), CONTACT_CORE_BINS),
         ("oppo_gb_per_gb", ("OPPO_GB",), ("PULL_GB", "CENTER_GB", "OPPO_GB")),
     ),
 }
 CONTRASTS = {
-    POWER_MODE: ("hr_per_contact", "xbh_per_hit"),
+    HR_MODE: ("hr_per_contact",),
+    XBH_MODE: ("xbh_per_hit",),
     GROUND_MODE: ("reach_per_non_hr_contact",),
+}
+E1_MODEL_ID = "E1_NESTED_PULLED_OFFB_POWER"
+E2_MODEL_ID = "E2_PULLED_OFFB_XBH_ABLATION"
+E3_MODEL_ID = "E3_SEPARATE_GROUND_DIRECTION"
+REQUIRED_BASE_MODELS = {
+    XBH_MODE: frozenset((E1_MODEL_ID,)),
+    GROUND_MODE: frozenset((E1_MODEL_ID, E2_MODEL_ID)),
 }
 
 
@@ -288,6 +307,19 @@ def _contrast_probability(row: Mapping[str, object], contrast: str) -> float:
     raise ValueError(f"unsupported Stage 2c contrast: {contrast}")
 
 
+def _validate_required_base_models(predictions: pl.DataFrame, mode: str) -> None:
+    required_bases = REQUIRED_BASE_MODELS.get(mode)
+    if required_bases is None:
+        return
+    if "model_id" not in predictions.columns:
+        raise ValueError(f"Stage 2c {mode} residual requires model_id provenance")
+    if predictions.filter(~pl.col("model_id").is_in(sorted(required_bases))).height:
+        allowed = ", ".join(sorted(required_bases))
+        raise ValueError(
+            f"Stage 2c {mode} residual requires base model in: {allowed}"
+        )
+
+
 def fit_stage2c_residual(
     origin_examples: Sequence[tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]],
     *,
@@ -310,6 +342,7 @@ def fit_stage2c_residual(
         counts: list[tuple[float, float]] = []
         feature_rows: list[list[float]] = []
         for prediction, target, features in origin_examples:
+            _validate_required_base_models(prediction, mode)
             joined = target.join(prediction, on="player_id", how="inner").join(
                 features, on="player_id", how="inner"
             )
@@ -407,10 +440,7 @@ def apply_stage2c_residual(
     mode = str(fit.metrics["shape_mode"])
     if mode not in FEATURES:
         raise ValueError(f"unsupported Stage 2c mode: {mode}")
-    if mode == GROUND_MODE and predictions.filter(
-        pl.col("model_id") != "E1_NESTED_PULLED_OFFB_POWER"
-    ).height:
-        raise ValueError("Stage 2c ground residual must be applied on E1 predictions")
+    _validate_required_base_models(predictions, mode)
     coefficient = _coefficient_map(fit, mode)
     names = [component[0] for component in FEATURES[mode]]
     feature_map = {
@@ -443,13 +473,14 @@ def apply_stage2c_residual(
             [float(feature_row[f"shape_feature_{name}"]) for name in names]
         )
         adjusted = {node: dict(values) for node, values in conditional.items()}
-        if mode == POWER_MODE:
+        if mode == HR_MODE:
             hr_increment = sum(
                 coefficient[("hr_per_contact", name)] * vector[index]
                 for index, name in enumerate(names)
             )
             hr = _sigmoid(_logit(conditional["contact"]["HR"]) + hr_increment)
             adjusted["contact"] = {"HR": hr, "NON_HR": 1.0 - hr}
+        elif mode == XBH_MODE:
             xbh_increment = sum(
                 coefficient[("xbh_per_hit", name)] * vector[index]
                 for index, name in enumerate(names)

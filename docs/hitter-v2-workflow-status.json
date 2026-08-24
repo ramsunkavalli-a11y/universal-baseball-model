@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2c_schema_0_4_design_frozen_pending_implementation",
+  "status": "stage2c_schema_0_4_unscored_implementation_verified",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "active_stage2c_schema_0_4_design_frozen_no_candidate_fit_or_scored",
+    "hitter_v2": "active_stage2c_schema_0_4_unscored_implementation_verified_no_candidate_fit_or_scored",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -397,7 +397,7 @@
     "protected_2026_opened": false,
     "tracking_authorized": false
   },
-  "stage2c_unscored_implementation": {
+  "stage2c_schema_0_3_unscored_implementation": {
     "implemented": true,
     "contract_schema": "0.3",
     "status": "superseded_before_fit_or_score_by_schema_0_4",
@@ -413,6 +413,34 @@
     "candidate_fit": false,
     "candidate_scored": false,
     "target_outcomes_loaded": false,
+    "protected_2026_opened": false,
+    "tracking_loaded": false,
+    "scoring_authorized": false
+  },
+  "stage2c_schema_0_4_unscored_implementation": {
+    "implemented": true,
+    "contract_schema": "0.4",
+    "checkpoint_path": "docs/hitter-v2-stage2c-unscored-checkpoint.md",
+    "checkpoint_sha256": "30f4889ac0c14cc427cc427edb3462918618f7707df55fd14210e73a9e38dc2f",
+    "result_path": "docs/hitter-v2-stage2c-unscored-result.json",
+    "result_sha256": "3a0efcd2cb40997d509ec551127e00c0f658157011a5384d22b1cc765f7cd8e1",
+    "module_sha256": "4443c20c024262c98fbcd0c3c2204b4b2c4beb7f02583ecb7caf7b0b2a7b36a2",
+    "materializer_sha256": "552d9a24b7ca47f217e73c3d18e3f130e70db9d162cae3032872a9e04857e566",
+    "tests_sha256": "86460c41cf2514b0d2a67efd3e7d5e79403d2b094d6b2daef8aca3a721f436eb",
+    "generated_report_sha256": "2ed7ceb2fde23d2da46dd2b5b47c3c7339200ec3dab93e8a9fab88c366a7c901",
+    "deterministic_rerun_exact": true,
+    "forecast_players": {"V2022": 4705, "V2023": 5568, "V2024": 6381},
+    "shape_supported_players": {"V2022": 4481, "V2023": 5323, "V2024": 6132},
+    "exact_fallback_players": {"V2022": 224, "V2023": 245, "V2024": 249},
+    "e1_hr_only_scope": true,
+    "e2_xbh_only_scope": true,
+    "e2_fit_and_prediction_base_order_enforced": true,
+    "e3_ground_only_scope": true,
+    "e3_fit_and_prediction_base_order_enforced": true,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "target_outcomes_loaded": false,
+    "evaluation_membership_loaded": false,
     "protected_2026_opened": false,
     "tracking_loaded": false,
     "scoring_authorized": false
@@ -490,13 +518,18 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 888,
-      "duration_seconds": 11.88
+      "passed": 890,
+      "duration_seconds": 9.60
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
       "status": "passed",
       "passed": 6
+    },
+    "stage2c_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_stage2c.py",
+      "status": "passed",
+      "passed": 9
     }
   },
   "authorization": {
@@ -518,12 +551,12 @@
     "stage2c_contract_frozen": true,
     "stage2c_candidate_implementation_authorized": true,
     "stage2c_schema_0_3_unscored_implementation_superseded": true,
-    "stage2c_schema_0_4_implementation_complete": false,
+    "stage2c_schema_0_4_implementation_complete": true,
     "stage2c_candidate_fit": false,
     "stage2c_candidate_scored": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "review_schema_0_4_then_implement_and_verify_without_loading_targets_before_any_scorer_is_frozen_or_run"
+    "next_gate": "review_schema_0_4_unscored_implementation_before_authorizing_or_freezing_any_scorer"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -544,6 +577,6 @@
     "The player-season shape artifact does not retain batting side, so switch-hitter side-specific contact profiles are deferred.",
     "Shared classifier code does not prove raw coordinate and trajectory measurement equivalence across MLB and MiLB source systems.",
     "hit_distance_sc covers only 18.47 percent of affiliated classified batted-ball PA and is almost perfectly co-available with exit velocity; it is not a universal PBP feature.",
-    "The schema 0.3 Stage 2c implementation is superseded before fit or score; schema 0.4 must be implemented and verified target-free before scoring can be considered."
+    "The schema 0.3 Stage 2c implementation is superseded before fit or score; schema 0.4 is verified target-free but must be reviewed before scoring can be considered."
   ]
 }

@@ -4,9 +4,13 @@ import pytest
 from universal_baseball.hitter_v2_outcomes import HITTER_TALENT_OUTCOMES
 from universal_baseball.hitter_v2_stage2b import NodeOffsetFit
 from universal_baseball.hitter_v2_stage2c import (
+    E1_MODEL_ID,
+    E2_MODEL_ID,
+    E3_MODEL_ID,
     FIXED_PRIOR_EVENTS,
     GROUND_MODE,
-    POWER_MODE,
+    HR_MODE,
+    XBH_MODE,
     Stage2cFit,
     apply_stage2c_residual,
     build_stage2c_features,
@@ -96,13 +100,13 @@ def test_stage2c_features_are_chronology_safe_and_nested() -> None:
         history.filter(pl.col("season") <= 2022),
         [1, 2, 999],
         predictor_cutoff_season=2022,
-        mode=POWER_MODE,
+        mode=HR_MODE,
     ).sort("player_id")
     with_future = build_stage2c_features(
         history,
         [1, 2, 999],
         predictor_cutoff_season=2022,
-        mode=POWER_MODE,
+        mode=HR_MODE,
     ).sort("player_id")
 
     assert before.equals(with_future)
@@ -120,13 +124,13 @@ def test_stage2c_features_are_chronology_safe_and_nested() -> None:
 def test_zero_and_missing_stage2c_features_are_exact_fallbacks() -> None:
     base = pl.DataFrame([_prediction(1), _prediction(999)]).sort("player_id")
     features = build_stage2c_features(
-        _shape_history(), [1, 999], predictor_cutoff_season=2022, mode=POWER_MODE
+        _shape_history(), [1, 999], predictor_cutoff_season=2022, mode=HR_MODE
     )
     adjusted = apply_stage2c_residual(
         base,
         features,
-        zero_stage2c_fit(POWER_MODE),
-        model_id="E1_NESTED_PULLED_OFFB_POWER",
+        zero_stage2c_fit(HR_MODE),
+        model_id=E1_MODEL_ID,
     ).sort("player_id")
 
     for outcome in HITTER_TALENT_OUTCOMES:
@@ -137,28 +141,63 @@ def test_zero_and_missing_stage2c_features_are_exact_fallbacks() -> None:
     ]
 
 
-def test_power_residual_changes_only_hr_and_xbh_contrasts() -> None:
+def test_e1_residual_changes_only_hr_contrast() -> None:
     base = pl.DataFrame([_prediction(1)])
     features = build_stage2c_features(
-        _shape_history(), [1], predictor_cutoff_season=2022, mode=POWER_MODE
+        _shape_history(), [1], predictor_cutoff_season=2022, mode=HR_MODE
     )
     fit = _fit(
-        POWER_MODE,
+        HR_MODE,
         {
             ("hr_per_contact", "offb_per_contact"): 1.0,
             ("hr_per_contact", "pull_offb_per_offb"): 2.0,
-            ("xbh_per_hit", "offb_per_contact"): 1.0,
-            ("xbh_per_hit", "pull_offb_per_offb"): 2.0,
         },
     )
     adjusted = apply_stage2c_residual(
-        base, features, fit, model_id="E1_NESTED_PULLED_OFFB_POWER"
+        base, features, fit, model_id=E1_MODEL_ID
     ).row(0, named=True)
     original = base.row(0, named=True)
 
     for outcome in ("K", "UBB", "HBP"):
         assert adjusted[f"p_{outcome}"] == pytest.approx(original[f"p_{outcome}"])
     assert adjusted["p_HR"] > original["p_HR"]
+    old_hit_mix = [
+        original[f"p_{value}"]
+        / sum(original[f"p_{x}"] for x in ("1B", "2B", "3B"))
+        for value in ("1B", "2B", "3B")
+    ]
+    new_hit_mix = [
+        adjusted[f"p_{value}"]
+        / sum(adjusted[f"p_{x}"] for x in ("1B", "2B", "3B"))
+        for value in ("1B", "2B", "3B")
+    ]
+    assert new_hit_mix == pytest.approx(old_hit_mix)
+
+
+def test_e2_residual_changes_only_xbh_contrast() -> None:
+    base = pl.DataFrame([_prediction(1)]).with_columns(
+        pl.lit(E1_MODEL_ID).alias("model_id")
+    )
+    features = build_stage2c_features(
+        _shape_history(), [1], predictor_cutoff_season=2022, mode=XBH_MODE
+    )
+    fit = _fit(
+        XBH_MODE,
+        {
+            ("xbh_per_hit", "offb_per_contact"): 1.0,
+            ("xbh_per_hit", "pull_offb_per_offb"): 2.0,
+        },
+    )
+    adjusted = apply_stage2c_residual(
+        base, features, fit, model_id=E2_MODEL_ID
+    ).row(0, named=True)
+    original = base.row(0, named=True)
+
+    for outcome in ("K", "UBB", "HBP", "HR"):
+        assert adjusted[f"p_{outcome}"] == pytest.approx(original[f"p_{outcome}"])
+    assert adjusted["p_2B"] + adjusted["p_3B"] > (
+        original["p_2B"] + original["p_3B"]
+    )
     old_triple_share = original["p_3B"] / (original["p_2B"] + original["p_3B"])
     new_triple_share = adjusted["p_3B"] / (adjusted["p_2B"] + adjusted["p_3B"])
     assert new_triple_share == pytest.approx(old_triple_share)
@@ -167,7 +206,7 @@ def test_power_residual_changes_only_hr_and_xbh_contrasts() -> None:
 
 def test_ground_residual_cannot_change_hr_or_hit_mix() -> None:
     base = pl.DataFrame([_prediction(2)]).with_columns(
-        pl.lit("E1_NESTED_PULLED_OFFB_POWER").alias("model_id")
+        pl.lit(E2_MODEL_ID).alias("model_id")
     )
     features = build_stage2c_features(
         _shape_history(), [2], predictor_cutoff_season=2022, mode=GROUND_MODE
@@ -180,7 +219,7 @@ def test_ground_residual_cannot_change_hr_or_hit_mix() -> None:
         },
     )
     adjusted = apply_stage2c_residual(
-        base, features, fit, model_id="E2_SEPARATE_GROUND_DIRECTION"
+        base, features, fit, model_id=E3_MODEL_ID
     ).row(0, named=True)
     original = base.row(0, named=True)
 
@@ -194,7 +233,7 @@ def test_ground_residual_cannot_change_hr_or_hit_mix() -> None:
 def test_stage2c_fit_uses_explicit_prior_origin_only() -> None:
     base = pl.DataFrame([_prediction(1), _prediction(2)])
     features = build_stage2c_features(
-        _shape_history(), [1, 2], predictor_cutoff_season=2022, mode=POWER_MODE
+        _shape_history(), [1, 2], predictor_cutoff_season=2022, mode=HR_MODE
     )
     targets = pl.DataFrame(
         [
@@ -202,11 +241,11 @@ def test_stage2c_fit_uses_explicit_prior_origin_only() -> None:
             {"player_id": 2, "K": 2000, "UBB": 800, "HBP": 100, "HR": 100, "3B": 10, "2B": 200, "1B": 2100, "ROE": 150, "FC_REACH": 100, "SF": 250, "MULTI_OUT": 200, "OTHER_OUT": 3990},
         ]
     )
-    fit = fit_stage2c_residual([(base, targets, features)], mode=POWER_MODE)
+    fit = fit_stage2c_residual([(base, targets, features)], mode=HR_MODE)
 
     assert fit.metrics["fit_origin_count"] == 1
     assert fit.metrics["zero_increment_fallback"] is False
-    assert fit.coefficients.height == 4
+    assert fit.coefficients.height == 2
 
 
 def test_stage2c_does_not_accept_stage2b_fit_surface() -> None:
@@ -214,21 +253,46 @@ def test_stage2c_does_not_accept_stage2b_fit_surface() -> None:
         apply_stage2c_residual(
             pl.DataFrame([_prediction(1)]),
             build_stage2c_features(
-                _shape_history(), [1], predictor_cutoff_season=2022, mode=POWER_MODE
+                _shape_history(), [1], predictor_cutoff_season=2022, mode=HR_MODE
             ),
-            NodeOffsetFit(pl.DataFrame(), {"shape_mode": POWER_MODE}),  # type: ignore[arg-type]
+            NodeOffsetFit(pl.DataFrame(), {"shape_mode": HR_MODE}),  # type: ignore[arg-type]
             model_id="wrong",
         )
 
 
-def test_ground_residual_rejects_non_e1_base() -> None:
+def test_e2_residual_rejects_non_e1_base() -> None:
+    features = build_stage2c_features(
+        _shape_history(), [2], predictor_cutoff_season=2022, mode=XBH_MODE
+    )
+    with pytest.raises(ValueError, match="requires base model"):
+        apply_stage2c_residual(
+            pl.DataFrame([_prediction(2)]),
+            features,
+            zero_stage2c_fit(XBH_MODE),
+            model_id=E2_MODEL_ID,
+        )
+
+    with pytest.raises(ValueError, match="requires base model"):
+        fit_stage2c_residual(
+            [
+                (
+                    pl.DataFrame([_prediction(2)]),
+                    pl.DataFrame(schema={"player_id": pl.Int64}),
+                    features,
+                )
+            ],
+            mode=XBH_MODE,
+        )
+
+
+def test_ground_residual_rejects_non_air_base() -> None:
     features = build_stage2c_features(
         _shape_history(), [2], predictor_cutoff_season=2022, mode=GROUND_MODE
     )
-    with pytest.raises(ValueError, match="must be applied on E1"):
+    with pytest.raises(ValueError, match="requires base model"):
         apply_stage2c_residual(
             pl.DataFrame([_prediction(2)]),
             features,
             zero_stage2c_fit(GROUND_MODE),
-            model_id="E2_SEPARATE_GROUND_DIRECTION",
+            model_id=E3_MODEL_ID,
         )

@@ -1,31 +1,27 @@
-# Hitter v2 Stage 2c unscored implementation checkpoint
+# Hitter v2 Stage 2c schema 0.4 unscored implementation checkpoint
 
 Status: **IMPLEMENTED AND VERIFIED WITHOUT CANDIDATE FIT OR SCORE**  
 Date: 2026-08-24  
 Generated report SHA-256:
-`47d069f33dece03bf163eeefcc90f3a687d9f82453e240cbea82766d9161ae1a`
+`2ed7ceb2fde23d2da46dd2b5b47c3c7339200ec3dab93e8a9fab88c366a7c901`
 
 ## Outcome
 
-The narrow Stage 2c candidate machinery is implemented. It does not load an
-offensive target and cannot score or promote a candidate.
+The schema 0.4 ladder is implemented in the predeclared order. The module has
+no source loader, scorer, promotion path, tracking route, leaderboard, or WAR
+assembly, and the materializer loads no offensive target.
 
-The power surface separately estimates `OFFB / classified contact` and
-`pulled OFFB / OFFB`. Its residual can change only `HR / contact` and
-`2B-or-3B / hit`; it preserves upstream K, UBB, HBP, total-contact structure,
-and the 2B-to-3B mix. The ground surface separately estimates `GB / classified
-contact` and `opposite GB / GB`. Its residual can change only reach versus out
-within non-HR contact.
+1. `E1_NESTED_PULLED_OFFB_POWER` uses the two shrunk pulled-air features and
+   can change only `P(HR | contact)`.
+2. `E2_PULLED_OFFB_XBH_ABLATION` reuses the same features, requires E1 as its
+   base during both fitting and prediction, and can change only
+   `P(2B/3B | non-HR hit)`.
+3. `E3_SEPARATE_GROUND_DIRECTION` requires an E1 or E2 air candidate as its
+   base during fitting and prediction and can change only reach versus out
+   within non-HR contact.
 
-## Pre-fit clarification
-
-Contract schemas 0.2-0.3 freeze the multiseason operation and exact nested
-reach scope before any fit or score.
-Within each player-season-league-level, the feature is the difference between
-the player's Beta-posterior log odds and that context's log odds. These
-residuals are averaged using component opportunities times the fixed two-season
-recency weight. The 100-event Beta prior performs the shrinkage; the reported
-reliability is not multiplied into the feature a second time.
+This supersedes the schema 0.3 implementation before any Stage 2c candidate fit
+or score. It does not erase the earlier checkpoint or its hashes.
 
 ## Unscored coverage
 
@@ -35,27 +31,31 @@ reliability is not multiplied into the feature a second time.
 | V2023 | 5,568 | 5,323 | 245 |
 | V2024 | 6,381 | 6,132 | 249 |
 
+E1 and E2 intentionally have identical evidence coverage because they use the
+same pulled-air features. They remain separate models because their permitted
+outcome contrasts, base requirements, fitted coefficients, diagnostics, and
+advance rules differ.
+
 Among shape-supported players, pulled-OFFB opportunity is positive for 4,154,
-4,986, and 5,794 players; the remaining supported players receive a literal
-zero centered pulled-OFFB feature because they have classified contact but no
-OFFB opportunity. This is not a zero-valued observation: the first-stage OFFB
-feature and its evidence remain present, while the conditional pull component
-stays at its context prior.
+4,986, and 5,794 players. A supported player with no OFFB opportunity retains
+the first-stage OFFB feature while the conditional pull residual remains at
+the context prior; missingness is not treated as observed zero talent.
 
 ## Invariants
 
 - future shape rows cannot change features at an earlier cutoff;
-- zero-increment fits reproduce every base probability exactly;
-- players without classified shape evidence take the exact base fallback;
+- the chained E1/E2/E3 zero-increment ladder reproduces every C0 probability;
+- players without classified shape evidence take the exact current-base
+  fallback at each step;
 - empirical-Bayes shrinkage is applied once, not twice;
-- only the contract-authorized conditional contrasts can change;
-- the ground residual rejects any base other than E1;
-- 2B/3B composition is preserved by the power contrast;
+- E1 cannot change XBH composition or any non-HR conditional branch;
+- E2 cannot change HR, reach, or 2B-versus-3B composition;
+- E2 rejects a non-E1 base during fitting and prediction;
+- E3 cannot change HR or hit composition and rejects a non-air base;
 - terminal probabilities remain exhaustive and normalized; and
-- the feature builder and materializer have no target, tracking, 2026,
-  leaderboard, or WAR input.
+- distance, EV/LA, target outcomes, evaluation membership, and protected 2026
+  outcomes are absent from this gate.
 
 The generated report reproduced byte-for-byte across consecutive executions.
-The next gate is review and explicit authorization to freeze a scorer and run
-the disclosed Stage 2c development folds. Protected 2026, tracking, Stage 3,
-and WAR remain unauthorized.
+The next gate is review. Freezing or running a scorer is not authorized by this
+checkpoint. Protected 2026, tracking, Stage 3, and WAR remain unauthorized.

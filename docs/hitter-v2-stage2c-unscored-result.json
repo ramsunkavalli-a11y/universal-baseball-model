@@ -1,50 +1,59 @@
 {
-  "report_schema_version": "0.1",
+  "report_schema_version": "0.2",
   "program": "hitter_v2",
   "stage": "2c",
-  "status": "implementation_and_unscored_features_materialized",
+  "status": "schema_0_4_implementation_and_unscored_features_materialized",
   "recorded_date": "2026-08-24",
   "contract": {
-    "schema_version": "0.3",
+    "schema_version": "0.4",
     "path": "docs/hitter-v2-stage2c-development-contract.json",
-    "sha256": "53c30e0819dee62b5420cd365cd2f9b140fa4972cded0fae6637b517cc9e35ec",
+    "sha256": "f3a7883f295f3303f7421feb4ae4e83d2f2109812f81fa56f44d996dae60f424",
     "superseded_schema_0_1_sha256": "93d97941c5d0511ba7a72af973e8bd3c4d0fededb625f4889fe3df6c70282043",
-    "superseded_schema_0_2_sha256": "a2e8e262dfdd0143332136edacac611e4ff4a29e6fa265a26b45fc181b6bf772"
+    "superseded_schema_0_2_sha256": "a2e8e262dfdd0143332136edacac611e4ff4a29e6fa265a26b45fc181b6bf772",
+    "superseded_schema_0_3_sha256": "53c30e0819dee62b5420cd365cd2f9b140fa4972cded0fae6637b517cc9e35ec"
   },
   "implementation": {
     "module_path": "src/universal_baseball/hitter_v2_stage2c.py",
-    "module_sha256": "cac0af2abd4cfe88e9b19f6601e7d1d89c657ec7883c73f1d47686c4f147b068",
+    "module_sha256": "4443c20c024262c98fbcd0c3c2204b4b2c4beb7f02583ecb7caf7b0b2a7b36a2",
     "materializer_path": "scripts/materialize_hitter_v2_stage2c_unscored.py",
-    "materializer_sha256": "3eb3cc8be64fb82667de66d12a448d1da84cbfa687243ccac688de0c8c439374",
+    "materializer_sha256": "552d9a24b7ca47f217e73c3d18e3f130e70db9d162cae3032872a9e04857e566",
     "tests_path": "tests/test_hitter_v2_stage2c.py",
-    "tests_sha256": "5ad97b39bfeede34c2dedd645b040bb24ef65c05e91ecbcff60e60d8eba952cb"
+    "tests_sha256": "86460c41cf2514b0d2a67efd3e7d5e79403d2b094d6b2daef8aca3a721f436eb"
   },
+  "candidate_ladder": [
+    {"model_id": "E1_NESTED_PULLED_OFFB_POWER", "mode": "nested_pulled_offb_hr", "affected_contrast": "P(HR|contact)"},
+    {"model_id": "E2_PULLED_OFFB_XBH_ABLATION", "mode": "pulled_offb_xbh_ablation", "required_base": "E1_NESTED_PULLED_OFFB_POWER", "affected_contrast": "P(2B_or_3B|non_HR_hit)"},
+    {"model_id": "E3_SEPARATE_GROUND_DIRECTION", "mode": "separate_ground_direction", "required_base": "E1_or_E2_air_candidate", "affected_contrast": "P(reach|non_HR_contact)"}
+  ],
   "generated_report": {
     "path": "reports/generated/hitter-v2-stage2c-unscored/report.json",
-    "sha256": "47d069f33dece03bf163eeefcc90f3a687d9f82453e240cbea82766d9161ae1a",
+    "sha256": "2ed7ceb2fde23d2da46dd2b5b47c3c7339200ec3dab93e8a9fab88c366a7c901",
     "deterministic_consecutive_rerun_exact": true
   },
   "folds": {
-    "V2022": {"forecast_players": 4705, "supported_players": 4481, "fallback_players": 224, "power_feature_sha256": "4a7c8e23442c3f9ce6f87a4256c08ca184044d9d8e15527d028357c66ff7d016", "ground_feature_sha256": "7ed9d82709259c8f3761bbf7748c0421c7933df10c4d2f980bec42f238a3231f"},
-    "V2023": {"forecast_players": 5568, "supported_players": 5323, "fallback_players": 245, "power_feature_sha256": "8401c217c40e1ac61f0194d876e8709e7bd6e7d302f748b6e73872739f0ac13a", "ground_feature_sha256": "4061c245a45aa7899873d36542495b6ba54d1a6cd7fa22ae9b5c942a5a1e02cc"},
-    "V2024": {"forecast_players": 6381, "supported_players": 6132, "fallback_players": 249, "power_feature_sha256": "184684988ce691f4567b80f368cae7a8c54e8981f0f4fc8f21e4ef40b9c1c4d0", "ground_feature_sha256": "5ef0427804e42a09ccc5fdf00a41e46ab64b0444ca7b831c4a98dd6594d58c41"}
+    "V2022": {"forecast_players": 4705, "supported_players": 4481, "fallback_players": 224, "hr_feature_sha256": "fd62b206b3d059b18f264c3a3755687bff01cc4471deae371d76c5dacc18eb51", "xbh_feature_sha256": "cc279fc76c5dcd479980e6b116c2bf004a19cacec64afe5a8db81d179a799e27", "ground_feature_sha256": "7ed9d82709259c8f3761bbf7748c0421c7933df10c4d2f980bec42f238a3231f"},
+    "V2023": {"forecast_players": 5568, "supported_players": 5323, "fallback_players": 245, "hr_feature_sha256": "9c24598db3078e77f9a2c558a9d0d874f4fa66e39f313ebd892a359d7e81002e", "xbh_feature_sha256": "d310d9e3112622b7d03946570a2422b3f2e4af4380fbd5bbd89c3fccb7965e64", "ground_feature_sha256": "4061c245a45aa7899873d36542495b6ba54d1a6cd7fa22ae9b5c942a5a1e02cc"},
+    "V2024": {"forecast_players": 6381, "supported_players": 6132, "fallback_players": 249, "hr_feature_sha256": "08fdf33258304e6cfe629a3a7eb3350f52a43779aa0897bbb70272702e49a7c7", "xbh_feature_sha256": "805fd31cf89569f2296fc68528e9cd4a25672fb58f12768a40a5b5591e49f46d", "ground_feature_sha256": "5ef0427804e42a09ccc5fdf00a41e46ab64b0444ca7b831c4a98dd6594d58c41"}
   },
   "invariants_passed": [
     "chronology_future_row_invariance",
-    "zero_increment_exact_base_fallback",
+    "zero_increment_exact_base_fallback_across_e1_e2_e3_chain",
     "missing_shape_exact_base_fallback",
     "single_empirical_bayes_shrinkage",
-    "power_node_scope",
-    "ground_node_scope",
-    "ground_requires_e1_base",
+    "e1_hr_only_scope",
+    "e2_xbh_only_scope",
+    "e2_requires_e1_during_fit_and_prediction",
+    "e3_ground_only_scope",
+    "e3_requires_e1_or_e2_during_fit_and_prediction",
     "xbh_two_base_three_base_mix_preserved",
     "probability_simplex"
   ],
   "candidate_fit": false,
   "candidate_scored": false,
   "target_outcomes_loaded": false,
+  "evaluation_membership_loaded": false,
   "protected_2026_opened": false,
   "tracking_loaded": false,
   "scoring_authorized": false,
-  "next_gate": "review_unscored_implementation_before_freezing_or_running_stage2c_scorer"
+  "next_gate": "review_schema_0_4_unscored_implementation_before_any_scorer_is_frozen_or_run"
 }
