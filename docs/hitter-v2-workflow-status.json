@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2_final_validation_scorer_frozen_ready_for_one_pass_run",
+  "status": "stage2_pbp_candidates_failed_disclosed_validation_stage3_closed",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "active_stage2_c1_unscored_checkpoint_passed",
+    "hitter_v2": "stage2_pbp_candidates_failed_no_candidate_promoted",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -193,7 +193,7 @@
   },
   "stage2_component_selection": {
     "training_origin_candidate_scoring_started": true,
-    "final_validation_scored": false,
+    "final_validation_scored": true,
     "generated_report_sha256": "a1cc7ffe900a77925ca0d0743be4b2e116832fd0c18fcd545a623a21a4db9358",
     "grid_rows": {"V2022": 0, "V2023": 135, "V2024": 135},
     "parameters_frozen": true,
@@ -202,7 +202,7 @@
   },
   "stage2_c1_adjustment_selection": {
     "training_origin_candidate_scoring_complete": true,
-    "final_validation_scored": false,
+    "final_validation_scored": true,
     "generated_report_sha256": "f1cd77c12d7cf529c6a6bc430ba9e9386c851e2bede41604c850d6d56deffb71",
     "grid_rows": {"V2022": 0, "V2023": 27, "V2024": 27},
     "selected": {
@@ -228,8 +228,32 @@
     },
     "bootstrap_resamples": 10000,
     "bootstrap_seed": 20260823,
-    "final_validation_scored": false,
+    "final_validation_scored": true,
     "protected_2026_opened": false
+  },
+  "stage2_final_validation": {
+    "execution_commit": "7c066b8816739e4dc58b39329fa2d678ad766fc3",
+    "command": ".venv\\Scripts\\python.exe scripts/score_hitter_v2_stage2_final_validation.py",
+    "result_record": {
+      "path": "docs/hitter-v2-stage2-final-validation-result.json",
+      "sha256": "45197428bb0a92cfbecb62a7824c064785ce45a14be0a7b3a8b6ed32b0949024"
+    },
+    "checkpoint": {
+      "path": "docs/hitter-v2-stage2-final-validation-checkpoint.md",
+      "sha256": "e1a0b58318a711fc336bdcdba10d3080a5aa3eee3f514d5468c3321f1b79c8d1"
+    },
+    "generated_report_sha256": "4695d9a7c6b13b67271c52f1bcd2efaf195d64bc423a4c39e7c72934fb8150c9",
+    "generated_report_size_bytes": 914337,
+    "evaluation_players_by_fold": {"V2022": 3176, "V2023": 3172, "V2024": 3088},
+    "evaluation_pa_by_fold": {"V2022": 868768, "V2023": 871748, "V2024": 878877},
+    "c0_promotion_pass": false,
+    "c1_promotion_pass": false,
+    "promoted_candidates": [],
+    "tracking_authorized": false,
+    "protected_2026_opened": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false,
+    "retuning_on_disclosed_validation_allowed": false
   },
   "stage2_gidp_opportunity_source": {
     "accepted": true,
@@ -266,7 +290,7 @@
     "2025": "diagnostic_only_prior_pa_pbp_position_defense_access",
     "2026": "protected_one_shot_confirmation_unopened",
     "hitter_v2_candidate_fit": true,
-    "hitter_v2_candidate_scored": false,
+    "hitter_v2_candidate_scored": true,
     "protected_confirmation_opened": false
   },
   "validation": {
@@ -278,7 +302,7 @@
       "command": "python -m pytest",
       "status": "passed",
       "passed": 869,
-      "duration_seconds": 9.54
+      "duration_seconds": 9.42
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -294,19 +318,24 @@
     "stage2_disclosed_2024_source_ready": true,
     "stage2_prescore_evaluation_frozen": true,
     "stage2_candidate_scoring_started": true,
+    "stage2_disclosed_validation_scoring_complete": true,
+    "stage2_candidate_promoted": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "stage2_one_pass_disclosed_2022_2024_final_validation_scoring"
+    "next_gate": "review_failed_stage2_pbp_results_only"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
     "MLB terminal-PBP and official GIDP definitions differ on 40 player-league-season rows; this is a retained non-blocking diagnostic.",
     "The historical 99.97 percent figure is conditional on a screened contact slice, not all official PA.",
-    "The C1 sentinel has been fitted without target outcomes, but no Hitter v2 candidate or future outcome has been scored through the unscored C1 checkpoint.",
+    "C0 and C1 are documented failed challengers on disclosed 2022-2024 validation and cannot be rescued by tuning on those results.",
     "The disclosed 2024 target cannot be used as predictor history, participant membership, playing time, environment, centering or weight evidence.",
     "GIDP opportunity modeling fails closed for 26017 player-games with identity, PA, state, or official-definition conflicts; those rows are never imputed as zero.",
     "Historical park context fails closed for 1446 player-games with absent, missing, or conflicting official venue metadata.",
     "2025 is not a pristine confirmation surface.",
-    "V2022 has no chronology-safe adjacent-season all-level pairs, so its age effect is neutral and 3923 non-MLB forecasts use the disconnected-level translation fallback."
+    "V2022 has no chronology-safe adjacent-season all-level pairs, so its age effect is neutral and 3923 non-MLB forecasts use the disconnected-level translation fallback.",
+    "C0 improved pooled future wOBA/runs modestly but failed the frozen per-fold, proper-score, calibration, pooled player-RMSE, and subgroup gates.",
+    "C1 materially worsened pooled future wOBA/runs, proper scores, correlations, calibration, and supported-subgroup results.",
+    "Tracking fusion, protected 2026 confirmation, Stage 3, and full WAR remain unauthorized because no PBP-only batting candidate passed."
   ]
 }

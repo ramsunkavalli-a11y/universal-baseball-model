@@ -1,0 +1,196 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "status": "pbp_candidates_failed_disclosed_validation",
+  "recorded_date": "2026-08-24",
+  "scientific_outcome": "No pre-registered PBP-only candidate passed the disclosed 2022-2024 promotion gate.",
+  "execution": {
+    "branch": "hitter-v2-pbp-outcomes",
+    "commit_before_scoring": "7c066b8816739e4dc58b39329fa2d678ad766fc3",
+    "command": ".venv\\Scripts\\python.exe scripts/score_hitter_v2_stage2_final_validation.py",
+    "scorer_frozen_before_outcome_access": true,
+    "candidate_parameters_frozen_before_outcome_access": true,
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260823
+  },
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2-final-validation/report.json",
+    "sha256": "4695d9a7c6b13b67271c52f1bcd2efaf195d64bc423a4c39e7c72934fb8150c9",
+    "file_size_bytes": 914337
+  },
+  "folds": {
+    "V2022": {
+      "predictor_cutoff_season": 2021,
+      "forecast_players": 4705,
+      "evaluation_players": 3176,
+      "evaluation_pa": 868768,
+      "C0_NESTED_EB": {
+        "primary_gate_all_views": false,
+        "calibration_gate_pass": false,
+        "subgroup_reversal_gate_pass": false
+      },
+      "C1_HIERARCHICAL_PBP": {
+        "primary_gate_all_views": false,
+        "calibration_gate_pass": false,
+        "subgroup_reversal_gate_pass": false
+      }
+    },
+    "V2023": {
+      "predictor_cutoff_season": 2022,
+      "forecast_players": 5568,
+      "evaluation_players": 3172,
+      "evaluation_pa": 871748,
+      "C0_NESTED_EB": {
+        "primary_gate_all_views": true,
+        "calibration_gate_pass": false,
+        "subgroup_reversal_gate_pass": false
+      },
+      "C1_HIERARCHICAL_PBP": {
+        "primary_gate_all_views": false,
+        "calibration_gate_pass": false,
+        "subgroup_reversal_gate_pass": false
+      }
+    },
+    "V2024": {
+      "predictor_cutoff_season": 2023,
+      "forecast_players": 6381,
+      "evaluation_players": 3088,
+      "evaluation_pa": 878877,
+      "C0_NESTED_EB": {
+        "primary_gate_all_views": true,
+        "calibration_gate_pass": false,
+        "subgroup_reversal_gate_pass": true
+      },
+      "C1_HIERARCHICAL_PBP": {
+        "primary_gate_all_views": false,
+        "calibration_gate_pass": false,
+        "subgroup_reversal_gate_pass": false
+      }
+    }
+  },
+  "candidate_results": {
+    "C0_NESTED_EB": {
+      "promotion_pass": false,
+      "per_fold_primary_pass": false,
+      "pooled_relative_pass": false,
+      "bootstrap_pass": true,
+      "correlation_pass": true,
+      "calibration_pass": false,
+      "subgroup_reversal_pass": false,
+      "pooled_pa_weighted": {
+        "woba_mae": {
+          "candidate": 0.030977345872701796,
+          "strongest_baseline": 0.031337305040299586,
+          "baseline_id": "B0_ONE_YEAR_EB",
+          "relative_improvement": 0.011486602537610828,
+          "required": 0.005,
+          "pass": true
+        },
+        "woba_rmse": {
+          "candidate": 0.039936849867139274,
+          "strongest_baseline": 0.040408897081214375,
+          "baseline_id": "B0_ONE_YEAR_EB",
+          "relative_improvement": 0.011681764368039393,
+          "required": 0.01,
+          "pass": true
+        },
+        "terminal_brier_score": {
+          "candidate": 0.755666715137132,
+          "strongest_baseline": 0.7555156912229012,
+          "baseline_id": "B1_MARCEL_345_K1200",
+          "relative_improvement": -0.00019989513915505587,
+          "required": 0.0025,
+          "pass": false
+        },
+        "terminal_log_loss": {
+          "candidate": 1.7076380903792594,
+          "strongest_baseline": 1.7083806848147798,
+          "baseline_id": "B1_MARCEL_345_K1200",
+          "relative_improvement": 0.0004346773773088484,
+          "required": 0.0025,
+          "pass": false
+        }
+      },
+      "pooled_player_weighted": {
+        "woba_mae_relative_improvement": 0.007868840005383265,
+        "woba_mae_pass": true,
+        "woba_rmse_relative_improvement": 0.006522881072520044,
+        "woba_rmse_required": 0.01,
+        "woba_rmse_pass": false,
+        "terminal_brier_relative_improvement": 0.00006604069669910556,
+        "terminal_brier_pass": false,
+        "terminal_log_loss_relative_improvement": 0.000685065731587667,
+        "terminal_log_loss_pass": false
+      },
+      "paired_player_bootstrap": {
+        "paired_rows": 9436,
+        "woba_candidate_minus_baseline_rmse": -0.00039178102895925243,
+        "woba_ci90": [-0.0005170789867107378, -0.00026798240495864815],
+        "runs_per_600_candidate_minus_baseline_rmse": -0.19703991397783227,
+        "runs_per_600_ci90": [-0.26005648954437266, -0.1347774040026753]
+      },
+      "diagnosis": [
+        "V2022 did not strictly beat the strongest baseline in either weighting view.",
+        "Pooled proper-score improvements missed the predeclared 0.25 percent threshold in both weighting views.",
+        "Player-weighted pooled wOBA/runs RMSE improvement was below the predeclared 1 percent threshold.",
+        "Calibration and supported-subgroup reversal guardrails failed."
+      ]
+    },
+    "C1_HIERARCHICAL_PBP": {
+      "promotion_pass": false,
+      "per_fold_primary_pass": false,
+      "pooled_relative_pass": false,
+      "bootstrap_pass": false,
+      "correlation_pass": false,
+      "calibration_pass": false,
+      "subgroup_reversal_pass": false,
+      "pooled_pa_weighted": {
+        "woba_mae_relative_improvement": -0.15367005932627453,
+        "woba_rmse_relative_improvement": -0.14943666875220785,
+        "terminal_brier_relative_improvement": -0.0021675907832000205,
+        "terminal_log_loss_relative_improvement": -0.0029372353848341275
+      },
+      "pooled_player_weighted": {
+        "woba_mae_relative_improvement": -0.09130001427046139,
+        "woba_rmse_relative_improvement": -0.05518979391301776,
+        "terminal_brier_relative_improvement": -0.002981871754475378,
+        "terminal_log_loss_relative_improvement": -0.004351633187328466
+      },
+      "paired_player_bootstrap": {
+        "paired_rows": 9436,
+        "woba_candidate_minus_baseline_rmse": 0.0033148410965796807,
+        "woba_ci90": [0.0027129395986711696, 0.003920507104094981],
+        "runs_per_600_candidate_minus_baseline_rmse": 1.6671455640803075,
+        "runs_per_600_ci90": [1.3644289683174313, 1.971755458891024]
+      },
+      "diagnosis": [
+        "The hierarchical enrichment was worse than the strongest simple baseline on every pooled primary metric in both weighting views.",
+        "Correlations, calibration, supported-subgroup reversals, and paired bootstrap evidence all failed the predeclared guardrails."
+      ]
+    }
+  },
+  "post_record_validation": {
+    "ruff": {
+      "command": ".venv\\Scripts\\python.exe -m ruff check src scripts tests",
+      "status": "passed"
+    },
+    "pytest": {
+      "command": ".venv\\Scripts\\python.exe -m pytest",
+      "status": "passed",
+      "passed": 869,
+      "duration_seconds": 9.42
+    }
+  },
+  "decision": {
+    "promoted_candidates": [],
+    "pbp_candidate_development_result": "failed",
+    "tracking_authorized": false,
+    "protected_2026_opened": false,
+    "protected_2026_authorized": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false,
+    "retuning_on_disclosed_validation_allowed": false,
+    "next_authorized_gate": "review_only"
+  }
+}
