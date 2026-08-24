@@ -1,5 +1,5 @@
 {
-  "contract_schema_version": "0.3",
+  "contract_schema_version": "0.4",
   "contract_id": "hitter_v2_stage2c_nested_pulled_offb_v1",
   "program": "hitter_v2",
   "stage": "2c",
@@ -7,7 +7,8 @@
   "status": "pre_registered_before_stage2c_candidate_fit_or_score",
   "superseded_contract_sha256": "93d97941c5d0511ba7a72af973e8bd3c4d0fededb625f4889fe3df6c70282043",
   "superseded_schema_0_2_sha256": "a2e8e262dfdd0143332136edacac611e4ff4a29e6fa265a26b45fc181b6bf772",
-  "amendment_timing": "aggregation_and_nested_reach_scope_clarified_during_implementation_before_any_candidate_fit_or_score",
+  "superseded_schema_0_3_sha256": "53c30e0819dee62b5420cd365cd2f9b140fa4972cded0fae6637b517cc9e35ec",
+  "amendment_timing": "hr_and_xbh_split_after_target_free_literature_and_distance_source_audits_before_any_candidate_fit_or_score",
   "development_boundary": {
     "V2022": "training_origin_identity_diagnostic_only",
     "V2023": "disclosed_development_evaluation",
@@ -38,14 +39,22 @@
       "model_id": "E1_NESTED_PULLED_OFFB_POWER",
       "base": "E0_OUTCOME_ONLY_REFERENCE",
       "features": ["P(OFFB|classified_contact)", "P(pull|OFFB)"],
-      "affected_contrasts": ["P(HR|contact)", "P(2B_or_3B|non_HR_hit)"],
+      "affected_contrasts": ["P(HR|contact)"],
       "coefficients_per_contrast": 2,
-      "forbidden_effects": ["K", "UBB", "IBB", "HBP", "P(REACH|non_HR_contact)", "ROE_vs_FC_REACH_composition", "non_reach_out_composition", "SH_OR_SPECIAL"],
+      "forbidden_effects": ["K", "UBB", "IBB", "HBP", "P(REACH|non_HR_contact)", "P(2B_or_3B|non_HR_hit)", "ROE_vs_FC_REACH_composition", "non_reach_out_composition", "SH_OR_SPECIAL"],
       "derived_terminal_reach_note": "changing P(HR|contact) necessarily changes unconditional terminal reach probability"
     },
     {
-      "model_id": "E2_SEPARATE_GROUND_DIRECTION",
+      "model_id": "E2_PULLED_OFFB_XBH_ABLATION",
       "base": "E1_NESTED_PULLED_OFFB_POWER",
+      "features": ["P(OFFB|classified_contact)", "P(pull|OFFB)"],
+      "affected_contrasts": ["P(2B_or_3B|non_HR_hit)"],
+      "coefficients_per_contrast": 2,
+      "cannot_rescue_failed_e1": true
+    },
+    {
+      "model_id": "E3_SEPARATE_GROUND_DIRECTION",
+      "base": "least_complex_passing_air_candidate",
       "features": ["P(GB|classified_contact)", "P(opposite|GB)"],
       "affected_contrasts": ["P(reach|non_HR_contact)"],
       "coefficients_per_contrast": 2,
@@ -73,9 +82,22 @@
     "e1_each_fold_view": "improve total terminal log loss and Brier versus strongest simple outcome baseline and HR conditional log loss versus E0",
     "e1_pooled": "improve wOBA and runs_per_600 RMSE versus strongest simple outcome baseline",
     "subgroups": "no material supported-level reversal under frozen Stage 2 thresholds",
-    "e2_ablation": "improve both total proper scores versus E1 on identical rows and wOBA RMSE degradation no greater than 0.25 percent",
+    "e2_ablation": "after E1 passes, improve both total proper scores and conditional XBH proper score versus E1 on identical rows and wOBA RMSE degradation no greater than 0.25 percent",
+    "e3_ablation": "after E1 passes, improve both total proper scores and non-HR reach proper scores versus the least complex passing air candidate with no material supported-level reversal",
     "simplicity": "least complex candidate clearing every applicable rule",
     "failure": "document and stop without tuning on disclosed results"
+  },
+  "richer_data_boundary": {
+    "hit_distance_sc_role": "excluded_from_universal_pbp_candidates_tracking_or_enriched_pbp_only",
+    "distance_audit_coverage": 0.1846654544226611,
+    "distance_with_exit_velocity_rate": 0.9993599849277836,
+    "tracking_candidate_authorized_now": false,
+    "future_requirement": "freeze passing PBP-only base first; compare on identical overlap with venue calibration, evidence reliability, smooth zero limit, and exact PBP fallback"
+  },
+  "implementation_state": {
+    "schema_0_3_unscored_implementation": "superseded_before_fit_or_score",
+    "schema_0_4_implementation_complete": false,
+    "scoring_authorized": false
   },
   "protected_confirmation_gate": {
     "authorized_now": false,

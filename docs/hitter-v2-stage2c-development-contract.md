@@ -1,14 +1,15 @@
 # Hitter v2 Stage 2c nested pulled-fly development contract
 
-Status: **SCHEMA 0.3 PRE-REGISTERED BEFORE STAGE 2c CANDIDATE FIT OR SCORE**
+Status: **SCHEMA 0.4 PRE-REGISTERED BEFORE STAGE 2c CANDIDATE FIT OR SCORE**
 Date: 2026-08-24  
 Machine contract: `docs/hitter-v2-stage2c-development-contract.json`
 
 ## Question
 
 Does a player's shrunk tendency to hit outfield flies—and to pull those flies—
-add out-of-time information about future HR and extra-base-hit skill beyond the
-frozen outcome-only forecast?
+add out-of-time information about future HR skill beyond the frozen
+outcome-only forecast? Only after that narrow test passes may the same evidence
+be tested separately against extra-base-hit composition.
 
 Stage 2b did not test that narrow question. It let ten shape percentages adjust
 six contact nodes simultaneously. Stage 2c separates opportunity from direction
@@ -60,11 +61,17 @@ terminal reach total. It also makes the already-declared E2-on-E1 ordering an
 executable invariant. Schema 0.2's SHA-256 is preserved in the machine
 contract. No candidate fit, target load, or score preceded this clarification.
 
-E1 can alter only:
+Schema 0.4 follows a second practitioner/PBP literature pass and a target-free
+distance-source audit. It splits HR and non-HR XBH into separate ablations,
+because the public evidence is strongest for pulled-air HR power and does not
+justify letting one coefficient pair move both contrasts at once. The prior
+schema 0.3 JSON SHA-256 is
+`53c30e0819dee62b5420cd365cd2f9b140fa4972cded0fae6637b517cc9e35ec`.
+The already-built schema 0.3 unscored implementation is superseded and cannot
+be scored. No offensive target, evaluation membership, or protected 2026
+outcome was loaded before this amendment.
 
-- `P(HR | contact)`; and
-- the conditional extra-base-hit contrast within non-HR hits (`2B/3B` versus
-  `1B`).
+E1 can alter only `P(HR | contact)`.
 
 It cannot alter K, UBB, IBB, HBP, `P(REACH | non-HR contact)`, the composition
 of ROE versus FC_REACH, the composition of non-reach outs, or SH/special
@@ -75,10 +82,15 @@ the frozen E0 log odds are an offset. Two coefficients (OFFB tendency and pull
 within OFFB) are fit with fixed mean-loss L2 penalty `1.0`; there is no
 hyperparameter search.
 
-`E2_SEPARATE_GROUND_DIRECTION` is a secondary ablation built on E1. It adds
+`E2_PULLED_OFFB_XBH_ABLATION` is built only on a passing E1. It uses the same
+two pulled-air features but can alter only the conditional extra-base-hit
+contrast within non-HR hits (`2B/3B` versus `1B`). It cannot rescue failed E1.
+
+`E3_SEPARATE_GROUND_DIRECTION` is a secondary ablation built on the least
+complex passing air candidate. It adds
 `P(GB | classified contact)` and `P(opposite | GB)` under the same shrinkage,
 centering, reliability, and penalty. It may alter only the non-HR-contact
-reach-versus-out contrast. E2 cannot advance unless E1 independently passes;
+reach-versus-out contrast. E3 cannot advance unless E1 independently passes;
 ground-ball direction cannot rescue failed pulled-fly power evidence.
 
 No full ten-bin vector, player name/identity, tracking availability, target
@@ -86,7 +98,7 @@ membership, or missingness flag is a predictor.
 
 ## Chronology-safe fit
 
-- V2022: E1/E2 equal their immediate base; no earlier forecast-target origin
+- V2022: E1/E2/E3 equal their immediate base; no earlier forecast-target origin
   exists.
 - V2023: coefficients use only V2022 forecast-target pairs.
 - V2024: coefficients use only pooled V2022-V2023 forecast-target pairs.
@@ -111,10 +123,24 @@ fold/view, improve pooled wOBA and runs/600 RMSE over the strongest simple
 baseline, and have no material supported-level reversal under the already
 frozen Stage 2 thresholds. Strict improvement tolerance is `1e-8`.
 
-E2 additionally must improve both total proper scores over E1 on identical
-rows and worsen pooled wOBA RMSE by no more than 0.25%. The least complex
-candidate clearing every applicable rule is selected. A failure is preserved
-and stops; constants cannot be tuned on the disclosed result.
+E2 additionally must improve both total proper scores and the conditional XBH
+proper score over E1 on identical rows and worsen pooled wOBA RMSE by no more
+than 0.25%. E3 is judged separately against the selected air candidate and
+must improve both total proper scores and non-HR reach proper scores without a
+material level reversal. The least complex candidate clearing every applicable
+rule is selected. A failure is preserved and stops; constants cannot be tuned
+on the disclosed result.
+
+## Distance and richer-data boundary
+
+The source-only audit found distance for 18.47% of affiliated classified
+batted-ball PAs, with 99.936% of distance-bearing PAs also carrying exit
+velocity and extreme level/season coverage differences. `hit_distance_sc` is
+therefore tracking/enriched PBP, not a universal PBP feature. It is excluded
+from E1-E3. After a PBP-only candidate passes and freezes, a separate contract
+may test an air-distance residual conditional on the PBP HR forecast, using
+venue calibration, identical overlap, evidence-derived reliability, and exact
+fallback. Tracking availability can never be a talent predictor.
 
 Even a disclosed-development pass authorizes only preparation of a frozen 2026
 confirmation package. It does not authorize opening 2026, tracking fusion,

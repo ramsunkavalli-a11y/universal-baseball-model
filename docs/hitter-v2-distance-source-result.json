@@ -1,0 +1,76 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2c_source_audit",
+  "audit": "hit_distance_sc_availability",
+  "recorded_date": "2026-08-24",
+  "decision": "optional_tracking_or_enriched_pbp_only_not_universal_pbp",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "target_outcomes_loaded": false,
+  "evaluation_membership_loaded": false,
+  "protected_2026_opened": false,
+  "source": {
+    "seasons": [2021, 2022, 2023, 2024],
+    "files": 113,
+    "bytes": 10456254677,
+    "raw_rows": 19075375,
+    "canonical_pa": 3126822,
+    "classified_batted_ball_pa": 1954502
+  },
+  "distance": {
+    "pa": 360929,
+    "coverage_of_classified_batted_ball_pa": 0.1846654544226611,
+    "pa_with_exit_velocity": 360698,
+    "rate_with_exit_velocity": 0.9993599849277836,
+    "pa_without_exit_velocity": 231,
+    "observed_minimum_feet": 0.0,
+    "observed_maximum_feet": 543.0,
+    "provisional_implausible_pa": 0
+  },
+  "integrity": {
+    "raw_distance_rows": 666896,
+    "pa_with_multiple_distance_rows": 292649,
+    "pa_with_conflicting_distances": 15,
+    "pa_with_conflicting_batted_ball_types": 0,
+    "canonical_grain": ["game_pk", "at_bat_number"]
+  },
+  "selected_level_coverage": {
+    "2021_AAA": 0.0,
+    "2022_AAA": 0.3672891453607972,
+    "2023_AAA": 0.9839288904770412,
+    "2024_AAA": 0.9696652905009125,
+    "2024_AA": 0.0004670064884092964,
+    "2024_HIGH_A": 0.0,
+    "2024_SINGLE_A": 0.2793331472615239,
+    "2024_ROOKIE_COMPLEX": 0.007026170785512289
+  },
+  "fallback_contract": {
+    "missing_distance": "exact_pbp_prediction",
+    "missing_value_imputation": "never_literal_zero",
+    "availability_as_talent_predictor": false,
+    "tracking_reliability_limit_at_zero_evidence": 0.0
+  },
+  "artifacts": {
+    "generated_report": {
+      "path": "reports/generated/hitter-v2-distance-source-audit/report.json",
+      "sha256": "42f21f1f93ec85ce723e08d5cad07ed4c383be1187f7b0f5869e413fce40b5f4"
+    },
+    "file_audit": {
+      "path": "reports/generated/hitter-v2-distance-source-audit/tables/distance_source_file_audit.parquet",
+      "sha256": "55c575e06116aedd7d36d9283cd931d773fa40451ef0af64399cdcc988092b33"
+    },
+    "coverage": {
+      "path": "reports/generated/hitter-v2-distance-source-audit/tables/distance_coverage_by_season_level.parquet",
+      "sha256": "4abba80d2e7775fb0203d15648739b65e8f5684ade74f52cecf106b8ec67257c"
+    },
+    "batted_ball_type_coverage": {
+      "path": "reports/generated/hitter-v2-distance-source-audit/tables/distance_coverage_by_season_level_batted_ball_type.parquet",
+      "sha256": "fb26c9ac13e289f695a2626f578ea9a5483dde7acc44e659359dcfa5c9d6c6f7"
+    },
+    "audit_script": {
+      "path": "scripts/audit_hitter_v2_distance_source.py",
+      "sha256": "435f54e3f286a4e25b3fb9cfa8263b578300741eacf509f5a655580593e05de2"
+    }
+  }
+}

@@ -279,3 +279,41 @@ Ideas deferred until a PBP-only candidate passes:
 - protected 2026 confirmation;
 - baserunning, defense, opportunity, and WAR assembly.
 
+## Second practitioner/PBP pass
+
+The follow-up review of Tom Tango, Alex Chamberlain, Jonathan Judge, direct
+PBP models, and public minor-league distance work narrows the plan further.
+
+- Tango's predictive-wOBA framing distinguishes an estimate of a completed
+  play from a forecast of player talent. Coarse EV/launch-angle bins can improve
+  future contact-value prediction, but that result does not license adding
+  every descriptive coordinate to a player projection.
+  <https://tangotiger.com/index.php/site/article/introducing-predictive-woba>
+- Chamberlain's spray-angle work is the clearest warning for Stage 2c: adding
+  horizontal angle can improve event description while making future xwOBA
+  prediction worse. His launch-angle and pitch-location work also shows that
+  contact shape partly reflects the pitch/opportunity distribution faced.
+  <https://fantasy.fangraphs.com/quantifying-the-benefit-of-spray-angle-to-xwoba/>
+  <https://fantasy.fangraphs.com/launch-angle-pitch-location-and-what-pitchers-cannot-control/>
+- Judge's DRC work supports estimating separately regularized outcome
+  probabilities with contextual mixed effects. DRC is deliberately
+  backward-looking, however; its architecture is useful, but its completed-
+  season estimates are not a substitute for rolling-origin projection.
+  <https://sabr.org/latest/judge-the-performance-case-for-drc/>
+- A published PBP multinomial model directly estimates strikeout, groundout,
+  flyout, walk, HBP, 1B, 2B, 3B, and HR probabilities with batter, pitcher,
+  stadium, home, and platoon effects under regularization. This supports the
+  Hitter v2 terminal-outcome backbone and contextual partial pooling, not a
+  single shape score.
+  <https://pmc.ncbi.nlm.nih.gov/articles/PMC6521856/>
+- Public minor-league distance work reported meaningful AAA-to-MLB association
+  and improvement after venue adjustment, but the key unresolved test was
+  incremental value conditional on prior HR rate. The repository audit now
+  shows its distance field is tracking-like, so distance belongs in a later
+  residual comparison after the universal PBP base freezes.
+  <https://tht.fangraphs.com/scouting-the-minors-pitch-by-pitch-power/>
+
+This pass changes the proposed order: pulled-air evidence should first affect
+HR only; an XBH contrast is a separate ablation; ground direction is later and
+separate; and distance/EV/LA are capability-aware residuals rather than members
+of the universal base candidate.
