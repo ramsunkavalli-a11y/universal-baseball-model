@@ -1,0 +1,71 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2b_contact_shape_source_audit",
+  "recorded_date": "2026-08-24",
+  "status": "contact_shape_source_accepted_for_auxiliary_development",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2b-contact-shape-source/report.json",
+    "sha256": "dc29103dbdb914768fc600d01d60a0238962348b9f357121978e8b9f45eece45"
+  },
+  "source_seasons": [2021, 2022, 2023, 2024],
+  "contact_bins": [
+    "IFFB",
+    "PULL_OFFB",
+    "CENTER_OFFB",
+    "OPPO_OFFB",
+    "PULL_LD",
+    "CENTER_LD",
+    "OPPO_LD",
+    "PULL_GB",
+    "CENTER_GB",
+    "OPPO_GB"
+  ],
+  "source_summary": {
+    "player_game_bin_rows": 2035339,
+    "player_season_bin_rows": 207396,
+    "shape_contact_events": 2328735,
+    "players": 6793,
+    "games": 50563,
+    "leagues": 16
+  },
+  "coverage": {
+    "positive_terminal_contact_player_games": 908956,
+    "profile_covered_player_games": 903673,
+    "player_game_coverage_rate": 0.9941878374750813,
+    "terminal_contact_count": 2385073,
+    "shape_contact_count_on_covered_rows": 2316081,
+    "event_coverage_rate": 0.9710734220713579,
+    "exact_count_player_games": 842064,
+    "exact_count_rate_among_covered": 0.9318237902427094,
+    "covered_players": 6792
+  },
+  "artifacts": {
+    "player_game": {
+      "path": "reports/generated/hitter-v2-stage2b-contact-shape-source/tables/contact_shape_player_game.parquet",
+      "sha256": "1673c4ec70b9027edf0694c28a0ad60f027767113bca7adbc7af31c05b544ad4",
+      "rows": 2035339
+    },
+    "player_season": {
+      "path": "reports/generated/hitter-v2-stage2b-contact-shape-source/tables/contact_shape_player_season.parquet",
+      "sha256": "ff963a63d2651f917f0ada23c12e46380a1cce001655d8df24249f90bc5225b0",
+      "rows": 207396
+    },
+    "coverage": {
+      "path": "reports/generated/hitter-v2-stage2b-contact-shape-source/tables/contact_shape_coverage.parquet",
+      "sha256": "07854d567c39c9c7290b518caae8354a0f0d288e6a5fe48560678abf8fa0cc21",
+      "rows": 25
+    }
+  },
+  "contract": {
+    "role": "optional_pbp_auxiliary_only",
+    "terminal_outcome_replacement": false,
+    "availability_as_talent_predictor": false,
+    "missing_value_policy": "No literal-zero imputation; reliability becomes zero and the residual disappears.",
+    "fallback": "Exact outcome-only forecast.",
+    "chronology": "Only shape seasons at or before the predictor cutoff may enter a forecast."
+  }
+}

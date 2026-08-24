@@ -1,0 +1,53 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2_post_failure_diagnostic",
+  "recorded_date": "2026-08-24",
+  "status": "disclosed_failure_diagnosed_no_new_candidate_scored",
+  "post_result_diagnostic": true,
+  "candidate_fit": false,
+  "new_candidate_scored": false,
+  "protected_2026_opened": false,
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2-failure-diagnostic/report.json",
+    "sha256": "4bc111aa4c7f6e5b4916320341e7c95509f82bba625b4f6122dc361cfe759cec"
+  },
+  "component_delta_artifact": {
+    "path": "reports/generated/hitter-v2-stage2-failure-diagnostic/tables/component_score_deltas.parquet",
+    "sha256": "5d8446efce2fa5a293ebae881c739f2ca2ef3004d8c0fa6025e61cc67a5fc69d",
+    "rows": 108
+  },
+  "findings": {
+    "v2022_c0_is_exactly_b0": true,
+    "v2022_c0_b0_maximum_absolute_probability_delta": 0.0,
+    "v2022_c0_b0_players": 4705,
+    "c0_vs_b0_pa_log_loss_delta": {
+      "V2022": 0.0,
+      "V2023": -0.0012571033132869197,
+      "V2024": -0.0017518933522158175
+    },
+    "c1_vs_c0_pa_log_loss_delta": {
+      "V2022": 0.00037722236956336,
+      "V2023": 0.01109662489623709,
+      "V2024": 0.005789048919018325
+    },
+    "c1_vs_c0_pa_brier_delta": {
+      "V2022": 0.00011957021893332535,
+      "V2023": 0.0034914808441824643,
+      "V2024": 0.0008493619977207506
+    },
+    "c1_primary_damage_components": [
+      "OTHER_OUT",
+      "UBB",
+      "ROE",
+      "HBP"
+    ],
+    "contact_direction_used_by_scored_c1": false
+  },
+  "interpretation": [
+    "The original every-fold strict-improvement gate was impossible for C0 in V2022 because C0 and B0 were exactly identical with one source season.",
+    "C0 improved proper scores over B0 in V2023 and V2024 and remains a useful architectural starting point, but it is still a documented failed v1 challenger.",
+    "C1 degradation came from its combined contextual adjustments rather than contact direction or trajectory, which were absent from the scored implementation.",
+    "The disclosed folds can support a versioned development study but cannot independently promote its result."
+  ]
+}

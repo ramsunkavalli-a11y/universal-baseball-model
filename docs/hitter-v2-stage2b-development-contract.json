@@ -1,0 +1,157 @@
+{
+  "contract_schema_version": "0.1",
+  "contract_id": "hitter_v2_stage2b_calibration_shape_v1",
+  "program": "hitter_v2",
+  "stage": "2b",
+  "recorded_date": "2026-08-24",
+  "status": "pre_registered_before_stage2b_candidate_fit_or_score",
+  "prior_failed_candidates_unchanged": [
+    "C0_NESTED_EB",
+    "C1_HIERARCHICAL_PBP"
+  ],
+  "development_boundary": {
+    "V2022": "training_origin_and_identity_diagnostic_only",
+    "V2023": "disclosed_development_evaluation",
+    "V2024": "disclosed_development_evaluation",
+    "2025": "diagnostic_only_never_promotes_selects_or_reweights",
+    "2026": "protected_one_shot_confirmation_unopened",
+    "development_can_promote_to_production": false
+  },
+  "base_model": {
+    "model_id": "C0_NESTED_EB",
+    "role": "frozen_failed_v1_architecture_reused_as_offset_not_relabelled_as_passed",
+    "c1_contextual_adjustments_used": false
+  },
+  "candidate_ladder": [
+    {
+      "model_id": "D0_NODE_CALIBRATED_C0",
+      "increment": "nested-node multinomial offset calibration",
+      "affected_nodes": [
+        "plate_appearance",
+        "non_k",
+        "non_k_non_ubb",
+        "contact",
+        "non_hr_contact",
+        "reach",
+        "hit_in_play",
+        "non_hit_reach",
+        "non_reach"
+      ],
+      "features": "intercept plus frozen base-node log probabilities",
+      "identity_anchor": "zero intercept and unit log-probability coefficient",
+      "fixed_mean_loss_l2_penalty": 0.01
+    },
+    {
+      "model_id": "D1_TRAJECTORY_RESIDUAL",
+      "base": "D0_NODE_CALIBRATED_C0",
+      "increment": "contact-conditional multinomial offset residual",
+      "shape_groups": ["IFFB", "OFFB", "LD", "GB"],
+      "affected_nodes": [
+        "contact",
+        "non_hr_contact",
+        "reach",
+        "hit_in_play",
+        "non_hit_reach",
+        "non_reach"
+      ],
+      "fixed_shape_half_life_seasons": 2.0,
+      "fixed_shape_prior_events": 200.0,
+      "fixed_reliability_k": 200.0,
+      "fixed_mean_loss_l2_penalty": 0.01
+    },
+    {
+      "model_id": "D2_DIRECTION_TRAJECTORY_RESIDUAL",
+      "base": "D0_NODE_CALIBRATED_C0",
+      "increment": "contact-conditional multinomial offset residual",
+      "shape_groups": [
+        "IFFB",
+        "PULL_OFFB",
+        "CENTER_OFFB",
+        "OPPO_OFFB",
+        "PULL_LD",
+        "CENTER_LD",
+        "OPPO_LD",
+        "PULL_GB",
+        "CENTER_GB",
+        "OPPO_GB"
+      ],
+      "affected_nodes": [
+        "contact",
+        "non_hr_contact",
+        "reach",
+        "hit_in_play",
+        "non_hit_reach",
+        "non_reach"
+      ],
+      "fixed_shape_half_life_seasons": 2.0,
+      "fixed_shape_prior_events": 200.0,
+      "fixed_reliability_k": 200.0,
+      "fixed_mean_loss_l2_penalty": 0.01
+    }
+  ],
+  "fit_protocol": {
+    "V2022": "all D candidates equal their immediate base because no earlier forecast-target origin exists",
+    "V2023": "fit coefficients only on V2022 forecast-target pairs",
+    "V2024": "fit coefficients only on pooled V2022 and V2023 forecast-target pairs",
+    "confirmation_refit": "fit coefficients on V2022 through V2024 only after development method is frozen",
+    "hyperparameter_search": false,
+    "player_identity_predictor": false,
+    "target_membership_predictor": false
+  },
+  "shape_feature_contract": {
+    "transform": "context-centered log ratios of Dirichlet-shrunk shape probabilities",
+    "reliability": "n_eff / (n_eff + 200)",
+    "availability_feature": false,
+    "missing_shape": "all residual features and the applied increment are exactly zero",
+    "upstream_pa_nodes_affected": false,
+    "terminal_outcomes_remain_primary": true
+  },
+  "development_reporting": {
+    "folds": ["V2022", "V2023", "V2024"],
+    "selection_folds": ["V2023", "V2024"],
+    "weighting_views": ["pa", "player"],
+    "metrics": [
+      "terminal_log_loss",
+      "terminal_brier_score",
+      "woba_mae",
+      "woba_rmse",
+      "runs_per_600_mae",
+      "runs_per_600_rmse",
+      "woba_pearson",
+      "woba_spearman",
+      "calibration",
+      "supported_subgroups"
+    ],
+    "required_ablations": [
+      "D0 versus C0",
+      "D1 versus D0",
+      "D2 versus D0",
+      "D2 versus D1 on identical rows"
+    ]
+  },
+  "development_advance_rule": {
+    "scope": "authorizes only freezing a future confirmation package, never production",
+    "each_v2023_v2024_fold": "candidate must improve both proper event scores in PA and player views versus the strongest simple outcome baseline",
+    "pooled_v2023_v2024": "candidate must improve both proper event scores and wOBA/runs RMSE versus the strongest simple outcome baseline",
+    "calibration": "no material supported-level reversal and calibration must improve versus C0",
+    "richer_ablation": "D1 or D2 may advance over D0 only if both proper event scores improve on identical rows and wOBA RMSE does not worsen by more than 0.25 percent",
+    "simplicity_rule": "choose the least complex candidate that clears every rule",
+    "failure": "document and stop; do not tune fixed constants on the disclosed result"
+  },
+  "protected_confirmation_gate": {
+    "authorized_now": false,
+    "requirements_before_access": [
+      "development candidate selected and frozen",
+      "all coefficients and refit protocol frozen",
+      "eligible population and source hashes frozen",
+      "confirmation scorer frozen and committed",
+      "explicit review authorization"
+    ],
+    "failure_is_final_for_candidate": true
+  },
+  "downstream_authorization": {
+    "tracking": false,
+    "stage3": false,
+    "full_war": false
+  }
+}
