@@ -37,7 +37,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Position-player v1:** **DONE / FROZEN / HISTORICAL PROTOTYPE**
 - **Hitter v2 Stage 0:** **DONE LOCALLY — SOURCE AUDIT AND DEVELOPMENT CONTRACT FROZEN**
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
-- **Hitter v2 Stage 2:** **AUTHORIZED / DISCLOSED 2024 SOURCE READY — PRE-SCORE FREEZE IN PROGRESS**
+- **Hitter v2 Stage 2:** **AUTHORIZED / PRE-SCORE EVALUATION GEOMETRY FROZEN — CANDIDATE IMPLEMENTATION IN PROGRESS**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -98,6 +98,14 @@ Stage 2 source readiness is recorded in:
 - `reports/generated/hitter-v2-stage2-2024-universal/report.json` (ignored
   generated evidence, identified by a committed SHA-256).
 
+Stage 2's pre-score evaluation freeze is recorded in:
+
+- `docs/hitter-v2-stage2-neutral-evaluation-contract.json`;
+- `docs/hitter-v2-stage2-prescore-checkpoint.md`;
+- `docs/hitter-v2-stage2-prescore-result.json`;
+- `reports/generated/hitter-v2-stage2-prescore/report.json` (ignored generated
+  evidence, identified by a committed SHA-256).
+
 The clean `main` baseline reproduced Ruff and all 819 tests. The immutable v1
 pure-batting export reproduced all 3,985 player rows with maximum runs/600 delta
 `0.0`. The attached independent external-validity audit is preserved as
@@ -133,8 +141,15 @@ The disclosed 2024 source is now checksum-frozen: 243,735 player-games and
 966,808 official PA, of which 960,362 PA (99.3332699%) are model-ready. The
 remaining 1,614 player-games / 6,446 PA remain explicitly failed closed. MLB
 has zero blocking reconciliation mismatches. Candidate scoring is still closed
-while neutral historical wOBA/run weights, the exact three fold manifests and
-the pre-score scientific invariants are frozen.
+pending the separate pre-score evaluation freeze and candidate-specific
+invariants.
+
+The neutral weights and exact folds are now frozen. All folds use the common
+FanGraphs 2016–2020 mean environment (`wOBA=0.3188`, scale `1.193`), which
+predates every disclosed target. The training populations are not filtered by
+future participant membership. Ruff and all 837 tests pass. Candidate scoring
+has still not started; B0/B1/C0/C1 implementation and the remaining
+candidate-specific invariants are next.
 
 ## Paused post-v1 program — Pitching v1
 

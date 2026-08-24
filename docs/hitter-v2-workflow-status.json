@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2_disclosed_2024_source_ready_pre_score_freeze_in_progress",
+  "status": "stage2_prescore_evaluation_frozen_candidate_implementation_in_progress",
   "updated_date": "2026-08-23",
   "repository": {
     "base_branch": "main",
@@ -12,6 +12,7 @@
     "stage1_implementation_commit": "f9abead2550e43112077e101523722ce16ffbf0d",
     "stage2_authorization_commit": "43569583887b1b4397a74a0779a13041a3c3bdc1",
     "stage2_source_implementation_commit": "cd7a527a27c343598ffb389368d9dffb825fd9a1",
+    "stage2_prescore_implementation_commit": "16e25061018ab644aeccd9301c9c84b621f503fc",
     "remote_state_changed": true
   },
   "program_state": {
@@ -137,6 +138,16 @@
     "player_season_sha256": "c9e9f29e0c196fc8fc442c6eded69916686deeb93c9d9e6f207518336b37d1ab",
     "exceptions_sha256": "9f626890171cf758a767b3c6e142b0c0d5052adb8cc644064b0440e45fc5a852"
   },
+  "stage2_prescore_evaluation": {
+    "accepted": true,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "neutral_pool_seasons": [2016, 2017, 2018, 2019, 2020],
+    "neutral_woba": 0.3188,
+    "neutral_woba_scale": 1.193,
+    "fold_target_players": {"V2022": 4039, "V2023": 3985, "V2024": 3759},
+    "generated_report_sha256": "0b47c0aa8654f84b78c457f77672c61e661f39149649e15b784b500ac0325c24"
+  },
   "outcome_access_boundary": {
     "2024": "disclosed_validation",
     "2025": "diagnostic_only_prior_pa_pbp_position_defense_access",
@@ -153,8 +164,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 832,
-      "duration_seconds": 30.63
+      "passed": 837,
+      "duration_seconds": 9.23
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_outcomes.py",
@@ -168,10 +179,11 @@
     "stage2_candidate_development_authorized": true,
     "stage2_disclosed_validation_scoring_authorized": true,
     "stage2_disclosed_2024_source_ready": true,
+    "stage2_prescore_evaluation_frozen": true,
     "stage2_candidate_scoring_started": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "stage2_neutral_weight_fold_manifest_and_pre_score_invariant_freeze"
+    "next_gate": "stage2_b0_b1_c0_c1_implementation_and_candidate_specific_invariants"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

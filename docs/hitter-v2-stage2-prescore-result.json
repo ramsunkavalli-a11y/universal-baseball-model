@@ -1,0 +1,101 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": 2,
+  "recorded_date": "2026-08-23",
+  "status": "neutral_evaluation_and_fold_geometry_frozen_candidate_implementation_next",
+  "implementation_commit": "16e25061018ab644aeccd9301c9c84b621f503fc",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "neutral_evaluation": {
+    "contract_path": "docs/hitter-v2-stage2-neutral-evaluation-contract.json",
+    "file_sha256": "1208d9f22655d8654f6b93ccfadf04fd30a2d4e0c4a689a0d3a42f5d446f2649",
+    "canonical_json_sha256": "9026bee0d3b28c5f93dadea6e77b5a6818ca4a5baede2c9d1cd8c7f84e0a0b21",
+    "source_pool_seasons": [2016, 2017, 2018, 2019, 2020],
+    "woba": 0.3188,
+    "woba_scale": 1.193,
+    "weights": {
+      "UBB": 0.6926,
+      "HBP": 0.7222,
+      "1B": 0.8776,
+      "2B": 1.2352,
+      "3B": 1.5572,
+      "HR": 1.989
+    }
+  },
+  "folds": [
+    {
+      "fold_id": "V2022",
+      "predictor_cutoff_season": 2021,
+      "target_season": 2022,
+      "training_rows": 6876,
+      "training_players": 4705,
+      "training_hitter_talent_pa": 875644,
+      "target_rows": 6165,
+      "target_players": 4039,
+      "target_hitter_talent_pa": 964697,
+      "training_sha256": "9d63aa2c1d1b6b7b214a285637ca9b45e4c710ad77ff9bac23472f77e7df2fb4",
+      "target_keys_sha256": "7a760ed532da14b6a73f12762ecc38d5dc96f27aa233b7922608a7d232c8ce4e",
+      "target_players_sha256": "da71d79e7ac3b301aa7e1ff68c15293ce1a1309d49b1655b5cb13e3b678e96a0"
+    },
+    {
+      "fold_id": "V2023",
+      "predictor_cutoff_season": 2022,
+      "target_season": 2023,
+      "training_rows": 13041,
+      "training_players": 5568,
+      "training_hitter_talent_pa": 1840341,
+      "target_rows": 6014,
+      "target_players": 3985,
+      "target_hitter_talent_pa": 962375,
+      "training_sha256": "f777d1a9c19546f4579fa2b0f708252b2a6782ceeb5f4065fa6373fa38c03a8c",
+      "target_keys_sha256": "a3b63ff20f212bee747d062eb1b66985ea503161d2b657053fd9b81ef60780eb",
+      "target_players_sha256": "3d6e51c1b35f0dd18a89a70dc7e671255d2fe95c45aecf62a14d9f124fedebd5"
+    },
+    {
+      "fold_id": "V2024",
+      "predictor_cutoff_season": 2023,
+      "target_season": 2024,
+      "training_rows": 19055,
+      "training_players": 6381,
+      "training_hitter_talent_pa": 2802716,
+      "target_rows": 5597,
+      "target_players": 3759,
+      "target_hitter_talent_pa": 956151,
+      "training_sha256": "f6703f5d2f6027b8a8143b1f62ce754e924cbabb23164f23d82055a421eb36d9",
+      "target_keys_sha256": "661003ace4ec652cf2a12628e9b6fa2b604dfcffc5bf6e6bc33783be7ce9feb9",
+      "target_players_sha256": "f68fe47a1baf214afe4077aaa6e9052ed67ca39c5591c9db20ffb7bebbd153e6"
+    }
+  ],
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2-prescore/report.json",
+    "sha256": "0b47c0aa8654f84b78c457f77672c61e661f39149649e15b784b500ac0325c24"
+  },
+  "scientific_invariants_passed": [
+    "probability vectors are finite, nonnegative, exhaustive and normalized",
+    "moving coherent out probability to 1B, 2B, 3B and HR increases value in strict order",
+    "increasing HR probability while maintaining the simplex increases wOBA and runs",
+    "target outcome mutation cannot change the full-population training slice",
+    "target player aggregation reconciles exactly to hitter-talent PA"
+  ],
+  "validation": {
+    "ruff": {"status": "passed", "command": "python -m ruff check src scripts tests"},
+    "pytest": {"status": "passed", "command": "python -m pytest", "passed": 837, "duration_seconds": 9.23}
+  },
+  "open_before_candidate_scoring": [
+    "Implement B0_ONE_YEAR_EB, B1_MARCEL_345_K1200, C0_NESTED_EB and C1_HIERARCHICAL_PBP.",
+    "Prove that distinct terminal hit/HR histories change contact-quality estimates after sufficient evidence.",
+    "Prove prediction output is independent of target rows and normalized for every eligible player.",
+    "Persist the complete fixed hyperparameter search before opening validation scores."
+  ],
+  "still_closed": {
+    "candidate_scoring_until_implementation_invariants_pass": true,
+    "tracking_increment": true,
+    "completed_2026_offense": true,
+    "baserunning": true,
+    "defense": true,
+    "playing_time": true,
+    "war": true
+  }
+}
