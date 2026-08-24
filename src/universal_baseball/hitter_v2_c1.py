@@ -244,12 +244,27 @@ def estimate_player_season_probabilities(
     training: pl.DataFrame,
     *,
     predictor_cutoff_season: int,
-    component_prior_pa: float,
+    component_prior_pa: float | Mapping[str, float],
 ) -> pl.DataFrame:
     """Estimate pooled terminal simplexes at the player-season grain."""
 
     _check_cutoff(training, predictor_cutoff_season)
-    if not isfinite(component_prior_pa) or component_prior_pa <= 0.0:
+    if isinstance(component_prior_pa, Mapping):
+        expected_priors = {
+            "plate_appearance", "non_k", "non_k_non_ubb", "contact",
+            "non_hr_contact", "reach", "hit_in_play", "non_hit_reach",
+            "non_reach",
+        }
+        if set(component_prior_pa) != expected_priors:
+            raise ValueError("component prior mapping does not cover nested nodes")
+        priors = {name: float(value) for name, value in component_prior_pa.items()}
+    else:
+        priors = {name: float(component_prior_pa) for name in (
+            "plate_appearance", "non_k", "non_k_non_ubb", "contact",
+            "non_hr_contact", "reach", "hit_in_play", "non_hit_reach",
+            "non_reach",
+        )}
+    if any(not isfinite(value) or value <= 0.0 for value in priors.values()):
         raise ValueError("component prior PA must be finite and positive")
     required = {
         "player_id",
@@ -293,17 +308,6 @@ def estimate_player_season_probabilities(
         how="left",
         validate="1:1",
     )
-    priors = {name: float(component_prior_pa) for name in (
-        "plate_appearance",
-        "non_k",
-        "non_k_non_ubb",
-        "contact",
-        "non_hr_contact",
-        "reach",
-        "hit_in_play",
-        "non_hit_reach",
-        "non_reach",
-    )}
     rows: list[dict[str, object]] = []
     for row in joined.sort(["player_id", "season"]).iter_rows(named=True):
         counts = {outcome: float(row[outcome]) for outcome in HITTER_TALENT_OUTCOMES}
@@ -952,7 +956,7 @@ def fit_c1_adjustments(
     historical_ages: pl.DataFrame,
     *,
     predictor_cutoff_season: int,
-    component_prior_pa: float,
+    component_prior_pa: float | Mapping[str, float],
     park_prior_pa: float,
     movement_prior_pa: float,
     ridge_penalty: float,
