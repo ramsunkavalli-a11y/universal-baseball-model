@@ -11,8 +11,8 @@ zero-offset, and exact GIDP-fallback invariants passed. The generated report is
 identified by SHA-256
 `9263770a1ac7072344377b1c54519b3fcabd1077d86bf15caa93de1e7311afe4`.
 
-The materialized configuration is a non-decisional sentinel using the frozen
-tie-break edge of the grid: half-life `1`, component prior `800` PA, park prior
+The materialized configuration is a non-decisional conservative sentinel:
+half-life `1`, component prior `800` PA, park prior
 `2,000` PA, movement prior `500` mover PA, and age ridge `100`. These artifacts
 prove implementation behavior; they do not select or promote a model.
 

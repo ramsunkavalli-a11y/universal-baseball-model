@@ -207,6 +207,14 @@ translation fallback. These sentinel forecasts are unscored and
 non-decisional; the next authorized gate is frozen-grid training selection and
 disclosed 2022–2024 validation scoring.
 
+A final pre-score consistency check found that the C1 implementation record's
+tie wording conflicted with the controlling development contract. Schema `0.3`
+now restores the pre-registered rule: ties choose the longer half-life, then
+stronger component/movement/park pooling and the larger ridge penalty. The
+schema `0.2` hash and timing are preserved. The already-materialized sentinel
+was non-decisional, so no selection or result changed; no target outcome had
+been scored.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
