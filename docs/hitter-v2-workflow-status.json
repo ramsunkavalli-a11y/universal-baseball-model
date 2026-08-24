@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2c_schema_0_4_unscored_implementation_verified",
+  "status": "stage2c_e1_scorer_frozen_before_fit_or_score",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "active_stage2c_schema_0_4_unscored_implementation_verified_no_candidate_fit_or_scored",
+    "hitter_v2": "active_stage2c_e1_scorer_frozen_no_candidate_fit_or_scored",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -445,6 +445,22 @@
     "tracking_loaded": false,
     "scoring_authorized": false
   },
+  "stage2c_e1_prescore": {
+    "authorized": true,
+    "scorer_frozen": true,
+    "scoring_contract_path": "docs/hitter-v2-stage2c-e1-scoring-contract.json",
+    "scoring_contract_sha256": "49d4fbab9cab3b7b93f6a714617adc94e7acfcace695aee0d55ded63d8b9e2cb",
+    "checkpoint_path": "docs/hitter-v2-stage2c-e1-prescore-checkpoint.md",
+    "checkpoint_sha256": "13dcf7d880d3a12c20a880bdfa6739753160f868669da881a747041166371bcf",
+    "candidate": "E1_NESTED_PULLED_OFFB_POWER",
+    "e2_authorized": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false,
+    "tracking_authorized": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -552,11 +568,12 @@
     "stage2c_candidate_implementation_authorized": true,
     "stage2c_schema_0_3_unscored_implementation_superseded": true,
     "stage2c_schema_0_4_implementation_complete": true,
+    "stage2c_e1_scorer_frozen": true,
     "stage2c_candidate_fit": false,
     "stage2c_candidate_scored": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "review_schema_0_4_unscored_implementation_before_authorizing_or_freezing_any_scorer"
+    "next_gate": "run_frozen_stage2c_e1_scorer_once_on_disclosed_V2022_V2024_outcomes"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

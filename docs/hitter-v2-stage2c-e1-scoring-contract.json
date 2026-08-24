@@ -1,0 +1,99 @@
+{
+  "contract_schema_version": "0.1",
+  "contract_id": "hitter_v2_stage2c_e1_scoring_v1",
+  "program": "hitter_v2",
+  "stage": "2c_e1",
+  "recorded_date": "2026-08-24",
+  "status": "frozen_before_any_stage2c_candidate_fit_or_score",
+  "parent_development_contract": {
+    "path": "docs/hitter-v2-stage2c-development-contract.json",
+    "sha256": "f3a7883f295f3303f7421feb4ae4e83d2f2109812f81fa56f44d996dae60f424",
+    "required_schema": "0.4"
+  },
+  "candidate_boundary": {
+    "candidate": "E1_NESTED_PULLED_OFFB_POWER",
+    "reference": "C0_NESTED_EB",
+    "permitted_contrast": "P(HR|contact)_only",
+    "e2_fit_or_score_forbidden_at_this_gate": true,
+    "e3_fit_or_score_forbidden_at_this_gate": true,
+    "tracking_forbidden": true,
+    "stage3_forbidden": true,
+    "war_forbidden": true,
+    "protected_2026_forbidden": true
+  },
+  "chronology": {
+    "V2022": "zero_fit_training_origin_diagnostic_only",
+    "V2023": "fit_on_V2022_then_score_once",
+    "V2024": "fit_on_pooled_V2022_V2023_then_score_once",
+    "selection_folds": ["V2023", "V2024"],
+    "target_season_excluded_from_fit": true
+  },
+  "comparators": {
+    "simple_outcome_baselines": ["B0_ONE_YEAR_EB", "B1_MARCEL_345_K1200"],
+    "component_ablation": "C0_NESTED_EB",
+    "strongest_simple_baseline_selected_separately_per_metric_fold_and_weighting": true
+  },
+  "weighting_views": {
+    "player": "equal_weight_per_evaluable_player",
+    "pa": "target_hitter_talent_pa_for_terminal_and_rate_metrics",
+    "hr_conditional_pa": "target_contact_event_count_not_total_pa"
+  },
+  "promotion_gate": {
+    "strict_improvement_tolerance": 1e-8,
+    "all_conditions_required": [
+      "terminal_log_loss_and_brier_both_beat_the_metricwise_strongest_B0_or_B1_in_each_selection_fold_and_weighting_view",
+      "HR_conditional_log_loss_beats_C0_in_each_selection_fold_and_weighting_view",
+      "pooled_selection_fold_wOBA_RMSE_and_batting_runs_per_600_RMSE_both_beat_the_metricwise_strongest_B0_or_B1_in_both_weighting_views",
+      "no_material_supported_level_reversal"
+    ],
+    "hr_conditional_brier": "reported_non_gating",
+    "correlations_mae_and_calibration": "reported_non_gating",
+    "supported_level_minimum_players": 100,
+    "supported_level_minimum_target_pa": 10000,
+    "material_level_reversal": {
+      "rate_pair": "wOBA_RMSE_worse_by_at_least_0.002_and_runs_per_600_RMSE_worse_by_at_least_0.5",
+      "proper_score_pair": "log_loss_worse_by_at_least_0.0005_and_brier_worse_by_at_least_0.0005"
+    }
+  },
+  "non_gating_diagnostics": {
+    "evidence_bands_joint_minimum_events": ["none", "1_24", "25_49", "50_99", "100_199", "200_plus"],
+    "level_transition_groups": ["same_level", "promotion", "demotion", "unclassified"],
+    "coverage_and_exact_fallback": true,
+    "target_level_metrics": true,
+    "pooled_calibration": true
+  },
+  "failure_policy": {
+    "failed_e1_cannot_be_rescued_by_e2": true,
+    "no_post_result_retuning_or_hyperparameter_expansion": true,
+    "on_failure": "persist_failure_and_stop",
+    "on_pass": "freeze_a_separate_E2_scorer_before_any_E2_fit_or_score"
+  },
+  "frozen_implementation": {
+    "model_module": {
+      "path": "src/universal_baseball/hitter_v2_stage2c.py",
+      "sha256": "4443c20c024262c98fbcd0c3c2204b4b2c4beb7f02583ecb7caf7b0b2a7b36a2"
+    },
+    "validation_module": {
+      "path": "src/universal_baseball/hitter_v2_stage2c_validation.py",
+      "sha256": "f0e721e70fef1882aa7378bbcf11b0decc35048bf5fb32561dcbac4c1880a4b1"
+    },
+    "scoring_command": {
+      "path": "scripts/score_hitter_v2_stage2c_e1_development.py",
+      "sha256": "ca7847da3ec28cf04ce06995991dcf64c7e523340ef00a53d67c13ddb440f560"
+    },
+    "model_tests": {
+      "path": "tests/test_hitter_v2_stage2c.py",
+      "sha256": "86460c41cf2514b0d2a67efd3e7d5e79403d2b094d6b2daef8aca3a721f436eb"
+    },
+    "validation_tests": {
+      "path": "tests/test_hitter_v2_stage2c_validation.py",
+      "sha256": "0d8ea2f1c03b4b130b1a818b894910b4821e8a44fc9837bbbf955612711d519f"
+    }
+  },
+  "execution": {
+    "command": ".venv\\Scripts\\python.exe scripts/score_hitter_v2_stage2c_e1_development.py",
+    "run_count_before_freeze": 0,
+    "candidate_fit_before_freeze": false,
+    "candidate_score_before_freeze": false
+  }
+}

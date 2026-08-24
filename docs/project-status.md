@@ -21,8 +21,9 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
   calibration/contact-shape contract and verified implementation. All three
   Stage 2b candidates have now failed the frozen disclosed-development gate.
   Stage 2c has completed a source-only semantics/stability audit, frozen a
-  narrow nested pulled-outfield-fly contract, and verified its unscored
-  implementation without loading offensive targets.
+  narrow nested pulled-outfield-fly contract, verified its unscored
+  implementation without loading offensive targets, and frozen the E1-only
+  scorer before any Stage 2c candidate fit or score.
   Protected 2026 outcomes, tracking fusion,
   Stage 3, and full WAR remain closed.
 - New Pitching v1 development is paused. Completed foundation/source work is
@@ -44,7 +45,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 1:** **DONE / PUSHED — UNIVERSAL TERMINAL-PA SOURCE GATE PASSED; NO CANDIDATE SCORED**
 - **Hitter v2 Stage 2:** **COMPLETE / FAILED PROMOTION GATE — C0 AND C1 PRESERVED AS FAILED CHALLENGERS**
 - **Hitter v2 Stage 2b:** **COMPLETE / FAILED DISCLOSED-DEVELOPMENT GATE — NO CANDIDATE SELECTED**
-- **Hitter v2 Stage 2c:** **UNSCORED IMPLEMENTATION VERIFIED — NO CANDIDATE FIT OR SCORED**
+- **Hitter v2 Stage 2c:** **E1 SCORER FROZEN — NO CANDIDATE FIT OR SCORED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
