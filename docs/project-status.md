@@ -624,6 +624,13 @@ No source was materialized, no candidate was fit or scored, and no disclosed or
 protected target was opened. The next gate is review followed by explicit
 authorization for source materialization and real-data fit without scoring.
 
+On 2026-08-25 the user explicitly authorized that fit-only gate. The binding
+record is `docs/hitter-v2-stage2f-H0-fit-authorization.json`. Historical
+predictor-source auditing, chronology-safe materialization, H0 fitting, and
+non-evaluative numerical/coverage diagnostics are open. Validation-outcome
+loading, metric or comparator scoring, H1, tracking, protected 2026, Stage 3,
+and WAR remain closed.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without

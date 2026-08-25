@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_target_free_implementation_complete_stopped_for_review",
+  "status": "stage2f_H0_source_materialization_and_fit_authorized",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_target_free_implementation_complete",
+    "hitter_v2": "stage2f_H0_source_materialization_and_fit_active",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -824,6 +824,17 @@
     "protected_2026_opened": false,
     "next_gate": "review_then_explicitly_authorize_source_materialization_and_fit_without_scoring"
   },
+  "stage2f_H0_fit_authorization": {
+    "path": "docs/hitter-v2-stage2f-H0-fit-authorization.json",
+    "authorized_parent_commit": "375161b",
+    "source_materialization_authorized": true,
+    "real_data_fit_authorized": true,
+    "fit_only_diagnostics_authorized": true,
+    "candidate_scoring_authorized": false,
+    "H1_authorized": false,
+    "protected_2026_opened": false,
+    "next_gate": "audit_and_materialize_historical_predictors_fit_H0_then_stop_before_scoring"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -1039,10 +1050,11 @@
     "stage2f_contract_frozen": true,
     "stage2f_target_free_implementation_authorized": true,
     "stage2f_target_free_implementation_complete": true,
-    "stage2f_candidate_fit_authorized": false,
+    "stage2f_source_materialization_authorized": true,
+    "stage2f_candidate_fit_authorized": true,
     "stage2f_candidate_scoring_authorized": false,
     "stage2f_H1_authorized": false,
-    "next_gate": "review_then_explicitly_authorize_stage2f_source_materialization_and_real_data_fit_without_scoring"
+    "next_gate": "materialize_stage2f_historical_predictors_and_fit_H0_then_stop_before_scoring"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

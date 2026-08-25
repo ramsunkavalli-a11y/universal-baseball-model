@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2f_H0_source_and_fit_authorization",
+  "date": "2026-08-25",
+  "authorization_source": "explicit_user_instruction_go_for_it_after_target_free_H0_checkpoint",
+  "branch": "hitter-v2-pbp-outcomes",
+  "authorized_parent_commit": "375161b",
+  "contract_path": "docs/hitter-v2-stage2f-development-contract.json",
+  "contract_sha256": "00f113b893b2dee340ed230cb1b9753262a422197408313e74dbc829b7aa8f9a",
+  "target_free_checkpoint_path": "docs/hitter-v2-stage2f-H0-target-free-checkpoint.json",
+  "target_free_checkpoint_sha256": "ac6ba0a9b2d5b7bb8aa614db6f6999ac28810204459d2befdf6ed80c930fd4b5",
+  "current_gate": {
+    "historical_predictor_source_audit_open": true,
+    "chronology_safe_source_materialization_open": true,
+    "real_data_H0_fit_open": true,
+    "fit_only_diagnostics_open": true,
+    "candidate_scoring_open": false
+  },
+  "fit_only_diagnostics": [
+    "row_and_evidence_counts",
+    "chronology_and_uniqueness_invariants",
+    "convergence_and_numerical_health",
+    "translation_path_coverage",
+    "parameter_and_artifact_hashes"
+  ],
+  "immutable_boundaries": {
+    "disclosed_validation_outcome_loading": false,
+    "candidate_metric_computation": false,
+    "candidate_comparator_scoring": false,
+    "H1_contact_increment": false,
+    "tracking": false,
+    "protected_2026_access": false,
+    "stage3": false,
+    "full_WAR": false
+  },
+  "required_stop": "commit_and_report_H0_source_and_fit_checkpoint_then_request_review_before_any_validation_outcome_loading_or_scoring"
+}
