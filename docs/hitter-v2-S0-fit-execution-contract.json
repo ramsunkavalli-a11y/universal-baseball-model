@@ -10,11 +10,18 @@
   "preregistration_path": "docs/hitter-v2-stability-increment-ladder-contract.json",
   "preregistration_sha256": "d40ce5a4d5b68155efb6ad3ff5e1ee6a067f2d68d789a6c0036380ffb8f7b4b2",
   "runner_path": "scripts/fit_hitter_v2_S0.py",
-  "runner_sha256": "7ce74ddf7594325a42b4f81eca768bdc05ca5f2488d95e9eef8ec29a6dce07f1",
+  "runner_sha256": "3abdecdc6cc0aa1dbaa476ce9bdf539ea79b16191f215865d0a10cd49072f822",
   "implementation_path": "src/universal_baseball/hitter_v2_s0.py",
   "implementation_sha256": "e7182c13e476e610f2e35c4abab7744c5a9ca75bcc3fa02682a991ce979b2b77",
   "test_path": "tests/test_hitter_v2_s0.py",
   "test_sha256": "073e800870babecc695581e996d771bc1b080f1484b2038eb9ecc21f51014063",
+  "execution_amendment": {
+    "incident_path": "docs/hitter-v2-S0-fit-execution-incident.json",
+    "incident_sha256": "50f45caf7804675a7734058cb00ee7a0dc2607424f648f5af269fbeb69e1fdf8",
+    "superseded_contract_sha256": "e5ae01b4c6632696ba7d7fe03f51eedd5f42939a196d0e1570b92e6229577d54",
+    "first_execution_artifact_written": false,
+    "scientific_or_selection_change": false
+  },
   "weight_grid_C0": [0.5, 0.625, 0.75, 0.875, 1.0],
   "selection_metric": "arithmetic mean of player-weighted and PA-weighted terminal log loss across strictly earlier training origins",
   "tie_rule": "within 1e-8 choose the larger C0 weight",
@@ -26,6 +33,7 @@
     {"path": "docs/hitter-v2-stage2-component-selection-result.json", "sha256": "60744ce90cea6ec5a7f974aabf5a00b30f255ebab0d5262f9d766d975e715565"},
     {"path": "src/universal_baseball/hitter_v2_s0.py", "sha256": "e7182c13e476e610f2e35c4abab7744c5a9ca75bcc3fa02682a991ce979b2b77"},
     {"path": "tests/test_hitter_v2_s0.py", "sha256": "073e800870babecc695581e996d771bc1b080f1484b2038eb9ecc21f51014063"},
+    {"path": "tests/test_hitter_v2_S0_fit_runner.py", "sha256": "aa8ffb3b7fd9f4dbf5ee66f299fa1bff543d91b3a23083d9ee5cc81bcfcf0207"},
     {"path": "reports/generated/hitter-v2-stage2-age/tables/v2022/forecast_player_ages.parquet", "sha256": "418c478eef4ca21cfe3f70ea34ed0633dc843d75a2803c4440d33818bb2147fb"},
     {"path": "reports/generated/hitter-v2-stage2-age/tables/v2023/forecast_player_ages.parquet", "sha256": "e3c32773ceba495c238e49a8fb723d16fcfebcaecd8f19e0d61ce46d435cfc86"}
   ],

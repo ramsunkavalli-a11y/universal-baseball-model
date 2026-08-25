@@ -11,6 +11,7 @@ import polars as pl
 
 from universal_baseball.hitter_v2_evaluation import score_hitter_predictions
 from universal_baseball.hitter_v2_model import (
+    NESTED_NODES,
     predict_b1_marcel_345_k1200,
     predict_c0_nested_eb,
 )
@@ -94,7 +95,12 @@ def _verify_execution_contract(contract: dict[str, object], runner: Path) -> Non
 def _component_parameters(
     selection: dict[str, object], fold_id: str
 ) -> tuple[dict[str, float], dict[str, float]]:
-    selected = selection["folds"][fold_id]["selected"]
+    fold = selection["folds"][fold_id]
+    if "selected" in fold:
+        selected = fold["selected"]
+    else:
+        default = fold["all_components"]
+        selected = {node.name: default for node in NESTED_NODES}
     return (
         {
             component: float(values["half_life_seasons"])

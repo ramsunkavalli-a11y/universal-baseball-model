@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "S0_target_free_fit",
+  "date": "2026-08-25",
+  "incident": "first execution stopped before artifact creation because V2022 stores its frozen no-origin default under all_components rather than selected",
+  "superseded_contract_sha256": "e5ae01b4c6632696ba7d7fe03f51eedd5f42939a196d0e1570b92e6229577d54",
+  "report_written": false,
+  "prediction_artifact_written": false,
+  "selection_artifact_written": false,
+  "scientific_or_selection_change": false,
+  "correction": "expand the frozen V2022 all_components default across the nine nested nodes",
+  "corrected_runner_sha256": "3abdecdc6cc0aa1dbaa476ce9bdf539ea79b16191f215865d0a10cd49072f822",
+  "regression_test_path": "tests/test_hitter_v2_S0_fit_runner.py",
+  "regression_test_sha256": "aa8ffb3b7fd9f4dbf5ee66f299fa1bff543d91b3a23083d9ee5cc81bcfcf0207",
+  "disclosed_validation_outcomes_loaded": false,
+  "protected_confirmation_opened": false
+}
