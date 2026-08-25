@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2d_J0_real_data_fit_failed_closed_unscored",
+  "status": "stage2e_J0R_contract_frozen_before_implementation",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2d_J0_failed_method_review_complete_next_new_contract_review",
+    "hitter_v2": "stage2e_J0R_contract_frozen_next_target_free_implementation_review",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -84,6 +84,13 @@
       "human_readable_path": "docs/hitter-v2-stage2d-development-contract.md",
       "human_readable_sha256": "fa7d7fb510db00855b16c6fc6566221802df9e0371fd3f562410da8a43c14416",
       "frozen_before_event_label_implementation_candidate_fit_or_score": true
+    },
+    "stage2e_development_contract": {
+      "path": "docs/hitter-v2-stage2e-development-contract.json",
+      "sha256": "a475bc153b1e062976cb796a4983c6244d934b4755218475e961c4ae6e5f7026",
+      "human_readable_path": "docs/hitter-v2-stage2e-development-contract.md",
+      "human_readable_sha256": "30465bdb1f15faffc469913ef6a629cc8089651f03b99ea5959359ff6cbb0cd2",
+      "frozen_before_candidate_implementation_fit_or_score": true
     }
   },
   "baseline_reproduction": {
@@ -657,12 +664,30 @@
     "J0_rerun_allowed": false,
     "recommended_distinct_candidate": "J0R_FIXED_INFORMATION_SHRINKAGE",
     "recommended_scale": "component_prior_PA_and_predictor_history_Fisher_information",
-    "new_candidate_contract_frozen": false,
+    "new_candidate_contract_frozen": true,
     "new_candidate_implemented": false,
     "new_candidate_fit": false,
     "new_candidate_scored": false,
     "protected_2026_opened": false,
-    "next_gate": "review_and_freeze_distinct_target_free_candidate_contract_only"
+    "next_gate": "review_contract_then_authorize_target_free_implementation_and_numerical_certification_only"
+  },
+  "stage2e_J0R_contract": {
+    "accepted": true,
+    "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+    "contract_path": "docs/hitter-v2-stage2e-development-contract.json",
+    "contract_sha256": "a475bc153b1e062976cb796a4983c6244d934b4755218475e961c4ae6e5f7026",
+    "human_readable_path": "docs/hitter-v2-stage2e-development-contract.md",
+    "human_readable_sha256": "30465bdb1f15faffc469913ef6a629cc8089651f03b99ea5959359ff6cbb0cd2",
+    "J0_failure_final": true,
+    "estimated_variance_iteration": false,
+    "matched_contextual_uncontextual_penalty": true,
+    "candidate_implemented": false,
+    "numerical_certification_executed": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "forecast_targets_loaded": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_contract_then_authorize_target_free_implementation_and_numerical_certification_only"
   },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
@@ -737,8 +762,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 935,
-      "duration_seconds": 10.23
+      "passed": 941,
+      "duration_seconds": 10.27
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -784,6 +809,18 @@
       "command": "python -m pytest tests/test_hitter_v2_stage2d_fit_incident.py",
       "status": "passed",
       "passed": 2
+    },
+    "stage2e_contract_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_stage2e_contract.py",
+      "status": "passed",
+      "passed": 6
+    },
+    "stage2e_contract_status_transition_incident": {
+      "initial_full_suite": "1_failed_940_passed",
+      "cause": "older_incident_test_expected_successor_contract_to_remain_unfrozen",
+      "correction": "require_contract_frozen_while_implementation_fit_and_scoring_remain_closed",
+      "contract_changed_after_failure": false,
+      "final_full_suite": "941_passed"
     }
   },
   "authorization": {
@@ -825,7 +862,12 @@
     "joint_contextual_candidate_fit_attempted": true,
     "joint_contextual_candidate_fit_completed": false,
     "joint_contextual_candidate_scoring_authorized": false,
-    "next_gate": "review_and_freeze_distinct_target_free_candidate_contract_only"
+    "stage2e_contract_frozen": true,
+    "stage2e_candidate_implementation_authorized": false,
+    "stage2e_numerical_certification_authorized": false,
+    "stage2e_real_data_fit_authorized": false,
+    "stage2e_candidate_scoring_authorized": false,
+    "next_gate": "review_contract_then_authorize_target_free_implementation_and_numerical_certification_only"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -856,7 +898,8 @@
     "MiLB terminal-sequence versus official player-game PA mismatches are usually plus or minus one and cannot be resolved to an individual PA from aggregated outcome authority, so 26345 mismatched player-games fail closed.",
     "Pitcher evidence counts based on outcome-ready rows are distinct from raw matchup availability and are not themselves pitcher-quality estimates.",
     "The terminal-outcome label sidecar passes every frozen source threshold, but 39923 non-exact player-game reconciliation rows remain failed closed to the exact B1 outcome-only forecast.",
-    "The first source-only label attempt failed because the literal phrase called out on strikes was not recognized; the target-free correction and failed report hash are preserved, and no model fit or score preceded the amendment."
-    ,"The frozen J0 full-data fit failed closed because a binary-component batter-variance iteration did not converge within 20 iterations; no artifact was published, no target was loaded, and rescue tuning or scoring is unauthorized."
+    "The first source-only label attempt failed because the literal phrase called out on strikes was not recognized; the target-free correction and failed report hash are preserved, and no model fit or score preceded the amendment.",
+    "The frozen J0 full-data fit failed closed because a binary-component batter-variance iteration did not converge within 20 iterations; no artifact was published, no target was loaded, and rescue tuning or scoring is unauthorized.",
+    "Stage 2e J0R is contract-only: fixed-information shrinkage and numerical observability requirements are frozen, but implementation, certification, fitting, and scoring remain unauthorized."
   ]
 }

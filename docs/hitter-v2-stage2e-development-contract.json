@@ -1,0 +1,188 @@
+{
+  "contract_schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2e",
+  "status": "pre_registered_before_candidate_implementation_fit_or_score",
+  "frozen_date": "2026-08-24",
+  "candidate": {
+    "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+    "identity": "distinct_successor_not_a_J0_amendment_or_rerun",
+    "scientific_question": "Does chronology-safe pitcher quality and observed platoon context improve the frozen B1 terminal-outcome forecast when player shrinkage is fixed from prior information rather than iteratively estimated?",
+    "base_model": "B1_MARCEL_345_K1200",
+    "J0_JOINT_CONTEXTUAL_NESTED_status": "final_documented_numerical_failure",
+    "J0_artifacts_reused": false,
+    "J0_partial_parameters_reused": false
+  },
+  "provenance": {
+    "stage2d_contract_path": "docs/hitter-v2-stage2d-development-contract.json",
+    "stage2d_contract_sha256": "5f9e51f61a89d17426159107534e5dfed491110e98b1317c59d0d59779e9a952",
+    "J0_incident_path": "docs/hitter-v2-stage2d-j0-fit-incident.json",
+    "J0_incident_sha256": "0666274b2a1acaa9729cceaa904233b4183502e96fc217a459dcde7f0be8000c",
+    "post_J0_review_path": "docs/hitter-v2-post-j0-numerical-method-review.md",
+    "post_J0_review_sha256": "8271ad78d66a1c790a329cc974dcb8fe1892eb19be3732927a5b99c9ca3264b5",
+    "terminal_label_result_sha256": "9f8fc229c3f7a76b8b5f756f128fda10f3bbd7e65f4d9db8d91863eff6b73f6e",
+    "event_input_sha256": "a6cd82a5ac8c9382dc474a968bad6b5e6b48599b7ccfc1c6cfbe7a9a1cba515d",
+    "event_input_schema_sha256": "5dd04538a5e025c7f9073af855624094e66c5e44c37c6e3c78424857bf5f792d"
+  },
+  "source_and_chronology": {
+    "certified_input_pa": 3657915,
+    "source_seasons": [2021, 2022, 2023, 2024],
+    "forecast_development_origins": {
+      "D2022": {"maximum_predictor_season": 2021},
+      "D2023": {"maximum_predictor_season": 2022},
+      "D2024": {"maximum_predictor_season": 2023}
+    },
+    "full_history_refit_before_promotion": false,
+    "same_date_pitcher_evidence_excluded": true,
+    "target_year_membership_environment_or_outcomes_allowed": false,
+    "2025_role": "not_pristine_not_used_by_this_contract",
+    "protected_2026_opened": false
+  },
+  "terminal_nodes": {
+    "binary": ["K", "UBB", "HBP", "HR", "NON_HR_REACH"],
+    "multinomial": "HIT_COMPOSITION_1B_reference_with_2B_and_3B_contrasts",
+    "prior_pa": {
+      "K": 200.0,
+      "UBB": 400.0,
+      "HBP": 1000.0,
+      "HR": 400.0,
+      "NON_HR_REACH": 800.0,
+      "HIT_COMPOSITION": 800.0
+    },
+    "denominators_and_responses": "identical_to_frozen_stage2d_contract"
+  },
+  "fixed_information_shrinkage": {
+    "estimated_variance_iteration": false,
+    "binary_pooled_rate": "eligible predictor-history successes divided by eligible predictor-history events at the development origin",
+    "binary_rate_clip": [1e-6, 0.999999],
+    "binary_formula": "sigma_logit = clip(sqrt(1 / (prior_PA * p * (1 - p))), 0.05, 1.25)",
+    "hit_composition_rates": "predictor-history 1B_2B_3B shares with each share clipped to at least 1e-6 and renormalized",
+    "hit_composition_formula": "sigma_j_vs_1B = clip(sqrt(1 / (prior_PA * p_j) + 1 / (prior_PA * p_1B)), 0.05, 1.25) for j in {2B,3B}",
+    "bounds": [0.05, 1.25],
+    "contextual_and_uncontextual_scale_identity": true,
+    "scale_selected_from_validation_metrics": false,
+    "scale_changed_after_candidate_score": false,
+    "nondecisional_sensitivity": {
+      "allowed": true,
+      "prior_pa_multipliers": [0.5, 2.0],
+      "may_select_production_scale": false,
+      "may_rescue_primary_candidate": false
+    }
+  },
+  "matched_models": {
+    "uncontextual": "league_season_level intercept plus batter effect",
+    "contextual": "same rows, league_season_level intercept, batter effect, observed platoon cell, and strictly-prior same-node pitcher residual",
+    "increment": "contextual_batter_effect_minus_uncontextual_batter_effect",
+    "identical_event_rows": true,
+    "identical_batter_penalty_within_each_pair": true,
+    "league_season_level_effect_sd": 0.35,
+    "platoon_effect_sd": 0.20,
+    "pitcher_coefficient_prior_mean": 1.0,
+    "pitcher_coefficient_prior_sd": 0.25,
+    "pitcher_coefficient_bounds": [0.0, 1.5],
+    "player_identity_predictor": false,
+    "player_names_predictor_or_gate": false
+  },
+  "optimizer": {
+    "family": "deterministic_penalized_grouped_Newton_with_backtracking",
+    "maximum_iterations": 500,
+    "parameter_tolerance": 1e-8,
+    "per_event_objective_improvement_tolerance": 1e-8,
+    "minimum_backtracking_step": 5.960464477539063e-8,
+    "variance_outer_loop": false,
+    "warm_start_across_contextual_pair": false,
+    "nonconvergence": "fail_closed_entire_candidate_origin_no_partial_artifact"
+  },
+  "numerical_certification_before_real_fit": {
+    "implementation_namespace": "src/universal_baseball/hitter_v2_stage2e.py",
+    "real_outcomes_loaded": false,
+    "forecast_targets_loaded": false,
+    "required_tests": [
+      "binary_grouped_and_event_objective_effect_equivalence_on_synthetic_data",
+      "deterministic_repeat_hash_equality",
+      "simulated_recovery_at_event_rates_0.01_0.05_0.25_0.60",
+      "low_and_high_player_evidence_recovery",
+      "all_four_platoon_cells",
+      "same_date_and_future_row_invariance",
+      "zero_context_exact_B1_fallback",
+      "probability_simplex_and_nested_isolation",
+      "intentional_nonconvergence_names_node_and_phase",
+      "intentional_failure_publishes_incident_but_no_candidate",
+      "source_shape_runtime_and_memory_observation_with_synthetic_responses"
+    ],
+    "synthetic_seeds": [20260824, 20260825],
+    "source_shape_policy": "retain certified keys_and_group_structure_drop_canonical_outcome_and_all_response_columns_then_generate_responses_from_seeded_parameters",
+    "source_shape_result_is_model_evidence": false,
+    "real_fit_authorized_by_certification": false
+  },
+  "required_observability": {
+    "durable_before_or_during_each_node": [
+      "node",
+      "development_origin",
+      "phase",
+      "event_count",
+      "player_count",
+      "league_season_level_count",
+      "platoon_cell_count",
+      "pooled_rate",
+      "prior_pa",
+      "derived_batter_sd",
+      "input_key_sha256"
+    ],
+    "per_optimizer_iteration": [
+      "iteration",
+      "penalized_objective",
+      "per_event_objective_improvement",
+      "maximum_parameter_change",
+      "accepted_step_size"
+    ],
+    "completion": [
+      "convergence_reason",
+      "boundary_hits",
+      "nonfinite_audit",
+      "contextual_uncontextual_row_identity",
+      "contextual_uncontextual_key_hash_identity",
+      "exact_B1_fallback_audit"
+    ],
+    "incident_write_policy": "atomic_separate_incident_written_even_when_no_candidate_artifact_is_accepted"
+  },
+  "forecast_application": {
+    "base_probabilities": "B1_MARCEL_345_K1200",
+    "context_available": "apply only the corresponding nested-node batter-effect contrast",
+    "context_missing_failed_or_zero": "return every B1 terminal probability exactly",
+    "probabilities_exhaustive_normalized": true,
+    "tracking_contact_shape_distance_lineup_physical_demographic_inputs": false
+  },
+  "evaluation": {
+    "scoring_contract": "inherit_frozen_stage2d_folds_metrics_subgroups_tolerances_and_promotion_rule_without_change",
+    "candidate_scoring_authorized": false,
+    "proper_score_and_future_rate_gate_required": true,
+    "strongest_simple_outcome_baseline_comparator_required": true,
+    "every_required_fold_and_weighting_view_must_pass": true,
+    "supported_level_reversal_guardrail_required": true,
+    "post_result_retuning": false,
+    "J1_authorized": false,
+    "J1_may_be_considered_only_after": "J0R_passes_every_frozen_promotion_gate"
+  },
+  "failure_policy": {
+    "J0_may_be_rescued_or_relabelled": false,
+    "J0R_failure_final_for_candidate": true,
+    "partial_node_candidate_allowed": false,
+    "failed_origin_may_be_scored": false,
+    "tolerance_or_prior_change_after_fit_failure": false,
+    "new_candidate_after_failure_requires_new_contract": true
+  },
+  "authorization": {
+    "contract_frozen": true,
+    "candidate_implementation_authorized": false,
+    "numerical_certification_execution_authorized": false,
+    "real_data_fit_authorized": false,
+    "candidate_scoring_authorized": false,
+    "J1_authorized": false,
+    "tracking_authorized": false,
+    "protected_2026_access_authorized": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false,
+    "next_gate": "review_contract_then_authorize_target_free_implementation_and_numerical_certification_only"
+  }
+}

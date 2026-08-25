@@ -33,14 +33,14 @@ def test_J0_fit_incident_failed_closed_without_score_or_artifact() -> None:
     assert incident["candidate_scoring_authorized"] is False
 
 
-def test_post_J0_review_preserves_failure_and_keeps_next_fit_closed() -> None:
+def test_post_J0_review_preserves_failure_and_keeps_execution_closed() -> None:
     workflow = json.loads(
         (ROOT / "docs/hitter-v2-workflow-status.json").read_text(encoding="utf-8")
     )
     review = workflow["post_J0_numerical_method_review"]
     assert review["J0_failure_final"] is True
     assert review["J0_rerun_allowed"] is False
-    assert review["new_candidate_contract_frozen"] is False
+    assert review["new_candidate_contract_frozen"] is True
     assert review["new_candidate_implemented"] is False
     assert review["new_candidate_fit"] is False
     assert review["new_candidate_scored"] is False
