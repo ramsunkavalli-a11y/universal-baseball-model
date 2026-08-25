@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_fit_only_complete_stopped_for_review",
+  "status": "stage2f_H0_training_origin_selection_authorized",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_fit_only_complete",
+    "hitter_v2": "stage2f_H0_training_origin_selection_active",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -851,6 +851,15 @@
     "protected_2026_opened": false,
     "next_gate": "review_then_explicitly_authorize_training_origin_configuration_selection_and_final_parameter_freeze_without_validation_outcome_loading"
   },
+  "stage2f_H0_selection_authorization": {
+    "path": "docs/hitter-v2-stage2f-H0-selection-authorization.json",
+    "authorized_parent_commit": "0b8d847",
+    "training_origin_selection_authorized": true,
+    "final_parameter_freeze_authorized": true,
+    "disclosed_validation_scoring_authorized": false,
+    "protected_2026_opened": false,
+    "next_gate": "select_on_strictly_earlier_origins_refit_and_freeze_then_stop_before_disclosed_scoring"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -1070,10 +1079,10 @@
     "stage2f_candidate_fit_authorized": true,
     "stage2f_source_materialization_complete": true,
     "stage2f_sentinel_fit_complete": true,
-    "stage2f_training_origin_selection_authorized": false,
+    "stage2f_training_origin_selection_authorized": true,
     "stage2f_candidate_scoring_authorized": false,
     "stage2f_H1_authorized": false,
-    "next_gate": "review_then_explicitly_authorize_stage2f_training_origin_configuration_selection_and_final_parameter_freeze_without_validation_outcome_loading"
+    "next_gate": "select_stage2f_configuration_on_strictly_earlier_origins_refit_and_freeze_then_stop_before_disclosed_scoring"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

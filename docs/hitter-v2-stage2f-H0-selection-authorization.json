@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2f_H0_training_origin_selection_authorization",
+  "date": "2026-08-25",
+  "authorization_source": "explicit_user_instruction_go_for_it_after_H0_fit_only_checkpoint",
+  "branch": "hitter-v2-pbp-outcomes",
+  "authorized_parent_commit": "0b8d847",
+  "contract_path": "docs/hitter-v2-stage2f-development-contract.json",
+  "contract_sha256": "00f113b893b2dee340ed230cb1b9753262a422197408313e74dbc829b7aa8f9a",
+  "fit_checkpoint_path": "docs/hitter-v2-stage2f-H0-fit-checkpoint.json",
+  "fit_checkpoint_sha256": "d8f0d14114a531c26d0018450c12e626e2ebf7cce9cde42e3ac3d5afda283d16",
+  "current_gate": {
+    "strictly_earlier_training_origin_outcomes_open": true,
+    "frozen_grid_selection_open": true,
+    "final_parameter_refit_and_freeze_open": true,
+    "prescore_invariants_open": true,
+    "disclosed_validation_scoring_open": false
+  },
+  "allowed_origin_semantics": "an_origin_season_may_be_used_only_when_it_is_contained_in_the_outer_folds_predictor_history_and_is_strictly_before_that_outer_target",
+  "immutable_boundaries": {
+    "target_tables_from_stage2_prescore": false,
+    "evaluation_player_tables": false,
+    "V2022_V2024_candidate_comparison": false,
+    "promotion_decision": false,
+    "H1_contact_increment": false,
+    "tracking": false,
+    "protected_2026_access": false,
+    "stage3": false,
+    "full_WAR": false
+  },
+  "required_stop": "commit_and_report_selected_configuration_and_frozen_prescore_artifacts_then_request_review_before_any_disclosed_validation_scoring"
+}

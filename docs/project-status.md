@@ -643,6 +643,14 @@ no validation outcome or metric was opened. Training-origin configuration
 selection and final parameter freeze are the next closed review gate; disclosed
 validation scoring must remain a later separate authorization.
 
+On 2026-08-25 the user explicitly authorized training-origin selection and the
+final parameter freeze only. The binding scope is recorded in
+`docs/hitter-v2-stage2f-H0-selection-authorization.json`. An origin may be used
+only when its season already belongs to the outer fold's predictor history and
+is strictly earlier than that outer target. Stage 2 target/evaluation tables,
+the disclosed comparison, promotion, H1, tracking, protected 2026, Stage 3,
+and WAR remain closed.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
