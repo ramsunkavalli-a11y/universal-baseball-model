@@ -91,7 +91,7 @@ def test_workflow_records_contract_hash_and_closed_boundary() -> None:
     )
     authorization = workflow["authorization"]
     assert authorization["stage2e_contract_frozen"] is True
-    assert authorization["stage2e_candidate_implementation_authorized"] is False
-    assert authorization["stage2e_numerical_certification_authorized"] is False
+    assert authorization["stage2e_candidate_implementation_authorized"] is True
+    assert authorization["stage2e_numerical_certification_authorized"] is True
     assert authorization["stage2e_real_data_fit_authorized"] is False
     assert authorization["stage2e_candidate_scoring_authorized"] is False

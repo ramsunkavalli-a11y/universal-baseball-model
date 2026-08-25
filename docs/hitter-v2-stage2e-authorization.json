@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2e",
+  "authorized_date": "2026-08-24",
+  "authorization_source": "explicit_user_instruction_push_this_all_the_way_to_the_comparison_to_Marcel",
+  "branch": "hitter-v2-pbp-outcomes",
+  "authorized_parent_commit": "5c9cfa2",
+  "contract_path": "docs/hitter-v2-stage2e-development-contract.json",
+  "contract_sha256": "a475bc153b1e062976cb796a4983c6244d934b4755218475e961c4ae6e5f7026",
+  "program_authorization": {
+    "target_free_implementation": true,
+    "synthetic_numerical_certification": true,
+    "real_data_fold_fit_conditional_on_certification_pass": true,
+    "disclosed_comparison_conditional_on_fit_and_frozen_scorer": true
+  },
+  "current_gate": {
+    "target_free_implementation_authorized": true,
+    "numerical_certification_authorized": true,
+    "real_data_fit_open": false,
+    "candidate_scoring_open": false
+  },
+  "immutable_boundaries": {
+    "J0_rerun_or_rescue": false,
+    "post_comparison_retuning": false,
+    "J1_authorized": false,
+    "tracking_authorized": false,
+    "protected_2026_access_authorized": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false
+  },
+  "required_sequence": [
+    "commit_target_free_implementation",
+    "execute_and_commit_numerical_certification",
+    "open_real_data_fit_only_if_certification_passes",
+    "commit_complete_fit_and_frozen_scorer_before_loading_evaluation_targets",
+    "execute_one_disclosed_comparison_without_retuning",
+    "stop_at_frozen_promotion_decision"
+  ]
+}

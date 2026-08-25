@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2e_J0R_contract_frozen_before_implementation",
+  "status": "stage2e_J0R_target_free_implementation_authorized",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2e_J0R_contract_frozen_next_target_free_implementation_review",
+    "hitter_v2": "stage2e_J0R_target_free_implementation_and_certification_active",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -689,6 +689,17 @@
     "protected_2026_opened": false,
     "next_gate": "review_contract_then_authorize_target_free_implementation_and_numerical_certification_only"
   },
+  "stage2e_authorization": {
+    "path": "docs/hitter-v2-stage2e-authorization.json",
+    "sha256": "9a9c2d30b83ec18d47080dddf7c0cd37b5b4c64ebe3131d4ca52b5aaff0e23c3",
+    "authorized_parent_commit": "5c9cfa2",
+    "target_free_implementation_authorized": true,
+    "numerical_certification_authorized": true,
+    "real_data_fit_open": false,
+    "candidate_scoring_open": false,
+    "protected_2026_access_authorized": false,
+    "next_gate": "implement_and_certify_J0R_without_real_outcomes_or_forecast_targets"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -762,8 +773,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 941,
-      "duration_seconds": 10.27
+      "passed": 942,
+      "duration_seconds": 10.45
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -815,6 +826,11 @@
       "status": "passed",
       "passed": 6
     },
+    "stage2e_authorization_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_stage2e_contract.py tests/test_hitter_v2_stage2e_authorization.py",
+      "status": "passed",
+      "passed": 7
+    },
     "stage2e_contract_status_transition_incident": {
       "initial_full_suite": "1_failed_940_passed",
       "cause": "older_incident_test_expected_successor_contract_to_remain_unfrozen",
@@ -863,11 +879,11 @@
     "joint_contextual_candidate_fit_completed": false,
     "joint_contextual_candidate_scoring_authorized": false,
     "stage2e_contract_frozen": true,
-    "stage2e_candidate_implementation_authorized": false,
-    "stage2e_numerical_certification_authorized": false,
+    "stage2e_candidate_implementation_authorized": true,
+    "stage2e_numerical_certification_authorized": true,
     "stage2e_real_data_fit_authorized": false,
     "stage2e_candidate_scoring_authorized": false,
-    "next_gate": "review_contract_then_authorize_target_free_implementation_and_numerical_certification_only"
+    "next_gate": "implement_and_certify_J0R_without_real_outcomes_or_forecast_targets"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
