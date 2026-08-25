@@ -1,0 +1,142 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "source_only_terminal_outcome_label_sidecar_materialization_and_reconciliation",
+  "recorded_date": "2026-08-24",
+  "accepted": true,
+  "contract": {
+    "path": "docs/hitter-v2-stage2d-development-contract.json",
+    "sha256": "5f9e51f61a89d17426159107534e5dfed491110e98b1317c59d0d59779e9a952"
+  },
+  "implementation": {
+    "module": "src/universal_baseball/hitter_v2_event_labels.py",
+    "module_sha256": "94a92a58ca531733dedfaee2b0c29181c87c57929529bf24f35d42e192c731a0",
+    "script": "scripts/materialize_hitter_v2_terminal_outcome_labels.py",
+    "script_sha256": "73cebf576c21a8aae7fc34c8faa7275da5e98be8f61c4516c6e4cdb18cf4106f",
+    "command": ".venv\\Scripts\\python.exe scripts/materialize_hitter_v2_terminal_outcome_labels.py"
+  },
+  "source_semantic_amendment": {
+    "initial_attempt_accepted": false,
+    "initial_generated_report_sha256": "ac8e0d46b38800f94aaab323a0731ea78af35f13b04b760a23bc642e0f540931",
+    "initial_context_label_ready_pa": 2989895,
+    "initial_context_label_ready_rate": 0.7847491378611187,
+    "diagnosis": "the literal source phrase called out on strikes was absent from the conservative strikeout pattern",
+    "correction": "recognize the literal phrase called out on strikes as K",
+    "correction_timing": "after_source_only_failed_attempt_before_candidate_implementation_fit_score_or_target_evaluation",
+    "totals_used_to_assign_individual_labels": false,
+    "runner_only_records_forced_into_hitter_taxonomy": false,
+    "post_correction_generated_report_sha256": "7c1af79fe0c71293508e17164cebbae5a810d6fb94be612d5f0f1a0f2c060c27"
+  },
+  "source_boundary": {
+    "seasons": [2021, 2022, 2023, 2024],
+    "forecast_targets_loaded": false,
+    "candidate_implemented": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false
+  },
+  "taxonomy": [
+    "UBB",
+    "IBB",
+    "HBP",
+    "K",
+    "HR",
+    "3B",
+    "2B",
+    "1B",
+    "ROE",
+    "FC_REACH",
+    "SF",
+    "MULTI_OUT",
+    "OTHER_OUT",
+    "SH_OR_SPECIAL"
+  ],
+  "totals": {
+    "sidecar_pa": 3810001,
+    "direct_labeled_pa": 3796988,
+    "direct_label_rate": 0.9965845153321482,
+    "context_label_ready_pa": 3657915,
+    "context_label_ready_rate": 0.9600824251752165,
+    "exact_direct_label_player_games": 929254,
+    "failed_closed_player_games": 39923,
+    "unresolved_direct_label_pa": 13013,
+    "structured_event_conflict_pa": 0
+  },
+  "coverage_gate": {
+    "overall_minimum": 0.9,
+    "overall_observed": 0.9600824251752165,
+    "mlb_through_single_a_cell_minimum": 0.9,
+    "lowest_observed_mlb_through_single_a_cell": {
+      "season": 2024,
+      "level_group": "a",
+      "rate": 0.9425757331614567
+    },
+    "rookie_complex_cell_minimum": 0.85,
+    "lowest_observed_rookie_complex_cell": {
+      "season": 2024,
+      "level_group": "rk",
+      "rate": 0.9367099382847415
+    },
+    "failed_cells": [],
+    "passed": true
+  },
+  "coverage_by_season_level": [
+    {"season": 2021, "level_group": "MLB", "sidecar_pa": 181818, "direct_label_rate": 1.0, "context_label_ready_rate": 1.0},
+    {"season": 2021, "level_group": "aaa", "sidecar_pa": 146193, "direct_label_rate": 0.9976059045234724, "context_label_ready_rate": 0.9583564192539998},
+    {"season": 2021, "level_group": "aa", "sidecar_pa": 129887, "direct_label_rate": 0.9962505870487424, "context_label_ready_rate": 0.9524740736178371},
+    {"season": 2021, "level_group": "a+", "sidecar_pa": 134296, "direct_label_rate": 0.9962024185381545, "context_label_ready_rate": 0.9526046941085363},
+    {"season": 2021, "level_group": "a", "sidecar_pa": 136330, "direct_label_rate": 0.9957529523949241, "context_label_ready_rate": 0.9486099904643145},
+    {"season": 2021, "level_group": "rk", "sidecar_pa": 160066, "direct_label_rate": 0.9933839791086176, "context_label_ready_rate": 0.9458723276648383},
+    {"season": 2022, "level_group": "MLB", "sidecar_pa": 182052, "direct_label_rate": 1.0, "context_label_ready_rate": 1.0},
+    {"season": 2022, "level_group": "aaa", "sidecar_pa": 172055, "direct_label_rate": 0.9971869460346982, "context_label_ready_rate": 0.9583389032576792},
+    {"season": 2022, "level_group": "aa", "sidecar_pa": 156955, "direct_label_rate": 0.9963237870727278, "context_label_ready_rate": 0.9528654709948712},
+    {"season": 2022, "level_group": "a+", "sidecar_pa": 147267, "direct_label_rate": 0.9964078849979968, "context_label_ready_rate": 0.9548439229426824},
+    {"season": 2022, "level_group": "a", "sidecar_pa": 149936, "direct_label_rate": 0.9958782413829901, "context_label_ready_rate": 0.9520662149183652},
+    {"season": 2022, "level_group": "rk", "sidecar_pa": 168796, "direct_label_rate": 0.9941527050404038, "context_label_ready_rate": 0.9519064432806464},
+    {"season": 2023, "level_group": "MLB", "sidecar_pa": 184104, "direct_label_rate": 1.0, "context_label_ready_rate": 1.0},
+    {"season": 2023, "level_group": "aaa", "sidecar_pa": 174093, "direct_label_rate": 0.9969613941973543, "context_label_ready_rate": 0.9602798504247729},
+    {"season": 2023, "level_group": "aa", "sidecar_pa": 156056, "direct_label_rate": 0.9961360024606551, "context_label_ready_rate": 0.9521133439278208},
+    {"season": 2023, "level_group": "a+", "sidecar_pa": 147177, "direct_label_rate": 0.9959640432948083, "context_label_ready_rate": 0.9513918615000985},
+    {"season": 2023, "level_group": "a", "sidecar_pa": 148229, "direct_label_rate": 0.995027963488926, "context_label_ready_rate": 0.9447206686950597},
+    {"season": 2023, "level_group": "rk", "sidecar_pa": 165102, "direct_label_rate": 0.9946093929813086, "context_label_ready_rate": 0.9516722995481581},
+    {"season": 2024, "level_group": "MLB", "sidecar_pa": 182449, "direct_label_rate": 1.0, "context_label_ready_rate": 1.0},
+    {"season": 2024, "level_group": "aaa", "sidecar_pa": 172800, "direct_label_rate": 0.9972337962962963, "context_label_ready_rate": 0.9521006944444445},
+    {"season": 2024, "level_group": "aa", "sidecar_pa": 153314, "direct_label_rate": 0.9961255984450214, "context_label_ready_rate": 0.9468867813767823},
+    {"season": 2024, "level_group": "a+", "sidecar_pa": 147617, "direct_label_rate": 0.9956915531408984, "context_label_ready_rate": 0.9446405224330531},
+    {"season": 2024, "level_group": "a", "sidecar_pa": 148944, "direct_label_rate": 0.9951122569556343, "context_label_ready_rate": 0.9425757331614567},
+    {"season": 2024, "level_group": "rk", "sidecar_pa": 164465, "direct_label_rate": 0.9936521448332472, "context_label_ready_rate": 0.9367099382847415}
+  ],
+  "reconciliation_status": [
+    {"status": "exact_direct_labels", "player_games": 929254, "sidecar_pa": 3657915},
+    {"status": "direct_outcome_count_mismatch", "player_games": 21529, "sidecar_pa": 83378},
+    {"status": "unresolved_direct_label", "player_games": 12866, "sidecar_pa": 64273},
+    {"status": "sidecar_without_player_game_authority", "player_games": 3806, "sidecar_pa": 3810},
+    {"status": "prior_source_or_matchup_not_ready", "player_games": 197, "sidecar_pa": 625},
+    {"status": "player_game_without_sidecar", "player_games": 1525, "sidecar_pa": 0}
+  ],
+  "storage": {
+    "sidecar": {
+      "path": "reports/generated/hitter-v2-terminal-outcome-label-sidecar/tables/hitter_v2_terminal_outcome_label_sidecar_2021_2024.parquet",
+      "row_count": 3810001,
+      "file_size_bytes": 26160825,
+      "file_sha256": "f8ef0a06bbeb47685c758f80202afee0514ddfc251188c31a55513a9ac5f2c3a",
+      "schema_sha256": "fac3d8185e81c6abfc85afd0af5b2608f1a5d0107a8bcd0fe6e70737d7efc7e9"
+    },
+    "reconciliation": {
+      "path": "reports/generated/hitter-v2-terminal-outcome-label-sidecar/tables/hitter_v2_terminal_outcome_label_reconciliation_2021_2024.parquet",
+      "row_count": 969177,
+      "file_size_bytes": 6174496,
+      "file_sha256": "178f15b3bd1c44d9ac2c141ff51c8bb1c76373ddff20e5328eff83e57e91efc2",
+      "schema_sha256": "fe41a585f47b4e388bf95b927d7d66ab1f269de856186584678b87ec66bfb8f4"
+    },
+    "generated_report_sha256": "7c1af79fe0c71293508e17164cebbae5a810d6fb94be612d5f0f1a0f2c060c27"
+  },
+  "authorization": {
+    "label_source_gate_complete": true,
+    "J0_implementation_authorized": false,
+    "candidate_fit_authorized": false,
+    "candidate_scoring_authorized": false,
+    "protected_2026_access_authorized": false,
+    "next_gate": "review_label_gate_then_authorize_J0_implementation_only"
+  }
+}

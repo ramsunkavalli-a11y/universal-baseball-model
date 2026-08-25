@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2d_joint_contextual_contract_frozen",
+  "status": "terminal_outcome_label_source_gate_passed",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2d_contract_frozen_next_terminal_outcome_label_sidecar_only",
+    "hitter_v2": "terminal_outcome_label_gate_passed_next_J0_implementation_review_only",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -556,12 +556,40 @@
     "base_model": "B1_MARCEL_345_K1200",
     "first_candidate": "J0_JOINT_CONTEXTUAL_NESTED",
     "second_candidate": "J1_CONTEXTUAL_COMPONENT_DEVELOPMENT_only_after_J0_passes",
-    "event_label_sidecar_implemented": false,
+    "event_label_sidecar_implemented": true,
     "candidate_implemented": false,
     "candidate_fit": false,
     "candidate_scored": false,
     "protected_2026_opened": false,
-    "next_gate": "source_only_terminal_outcome_label_sidecar_materialization_and_reconciliation"
+    "next_gate": "review_label_gate_then_authorize_J0_implementation_only"
+  },
+  "terminal_outcome_label_sidecar": {
+    "accepted": true,
+    "checkpoint_path": "docs/hitter-v2-terminal-outcome-label-sidecar-checkpoint.md",
+    "checkpoint_sha256": "569cb90f02c1217e2192490f7d6999926df2f149597a2660407327697c9e88dd",
+    "result_path": "docs/hitter-v2-terminal-outcome-label-sidecar-result.json",
+    "result_sha256": "9f8fc229c3f7a76b8b5f756f128fda10f3bbd7e65f4d9db8d91863eff6b73f6e",
+    "module_path": "src/universal_baseball/hitter_v2_event_labels.py",
+    "module_sha256": "94a92a58ca531733dedfaee2b0c29181c87c57929529bf24f35d42e192c731a0",
+    "script_path": "scripts/materialize_hitter_v2_terminal_outcome_labels.py",
+    "script_sha256": "73cebf576c21a8aae7fc34c8faa7275da5e98be8f61c4516c6e4cdb18cf4106f",
+    "generated_report_sha256": "7c1af79fe0c71293508e17164cebbae5a810d6fb94be612d5f0f1a0f2c060c27",
+    "initial_failed_report_sha256": "ac8e0d46b38800f94aaab323a0731ea78af35f13b04b760a23bc642e0f540931",
+    "sidecar_pa": 3810001,
+    "direct_labeled_pa": 3796988,
+    "direct_label_rate": 0.9965845153321482,
+    "context_label_ready_pa": 3657915,
+    "context_label_ready_rate": 0.9600824251752165,
+    "exact_direct_label_player_games": 929254,
+    "failed_closed_player_games": 39923,
+    "sidecar_sha256": "f8ef0a06bbeb47685c758f80202afee0514ddfc251188c31a55513a9ac5f2c3a",
+    "reconciliation_sha256": "178f15b3bd1c44d9ac2c141ff51c8bb1c76373ddff20e5328eff83e57e91efc2",
+    "forecast_targets_loaded": false,
+    "candidate_implemented": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_label_gate_then_authorize_J0_implementation_only"
   },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
@@ -636,8 +664,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 903,
-      "duration_seconds": 10.07
+      "passed": 918,
+      "duration_seconds": 11.54
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -663,6 +691,11 @@
       "command": "python -m pytest tests/test_hitter_v2_stage2d_contract.py",
       "status": "passed",
       "passed": 4
+    },
+    "terminal_outcome_label_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_event_labels.py tests/test_hitter_v2_event_label_result.py",
+      "status": "passed",
+      "passed": 15
     }
   },
   "authorization": {
@@ -696,10 +729,11 @@
     "matchup_context_sidecar_certified": true,
     "joint_contextual_candidate_contract_frozen": true,
     "terminal_outcome_label_sidecar_authorized": true,
+    "terminal_outcome_label_sidecar_certified": true,
     "joint_contextual_candidate_implementation_authorized": false,
     "joint_contextual_candidate_fit_authorized": false,
     "joint_contextual_candidate_scoring_authorized": false,
-    "next_gate": "source_only_terminal_outcome_label_sidecar_materialization_and_reconciliation"
+    "next_gate": "review_label_gate_then_authorize_J0_implementation_only"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -728,6 +762,7 @@
     "The matchup sidecar reconciles 3691876 PAs to exact accepted player-games; all other rows retain the universal batting baseline but must receive a neutral opponent-context fallback.",
     "MiLB terminal-sequence versus official player-game PA mismatches are usually plus or minus one and cannot be resolved to an individual PA from aggregated outcome authority, so 26345 mismatched player-games fail closed.",
     "Pitcher evidence counts based on outcome-ready rows are distinct from raw matchup availability and are not themselves pitcher-quality estimates.",
-    "The certified matchup sidecar does not carry individual terminal-outcome labels, so J0 cannot be implemented or fit until a deterministic 14-category PA label sidecar passes the frozen coverage and exact player-game reconciliation gate."
+    "The terminal-outcome label sidecar passes every frozen source threshold, but 39923 non-exact player-game reconciliation rows remain failed closed to the exact B1 outcome-only forecast.",
+    "The first source-only label attempt failed because the literal phrase called out on strikes was not recognized; the target-free correction and failed report hash are preserved, and no model fit or score preceded the amendment."
   ]
 }
