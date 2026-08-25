@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "terminal_outcome_label_source_gate_passed",
+  "status": "stage2d_J0_implementation_and_inputs_complete_unfit",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "terminal_outcome_label_gate_passed_next_J0_implementation_review_only",
+    "hitter_v2": "stage2d_J0_prefit_package_frozen_next_real_data_fit_review_only",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -557,11 +557,11 @@
     "first_candidate": "J0_JOINT_CONTEXTUAL_NESTED",
     "second_candidate": "J1_CONTEXTUAL_COMPONENT_DEVELOPMENT_only_after_J0_passes",
     "event_label_sidecar_implemented": true,
-    "candidate_implemented": false,
+    "candidate_implemented": true,
     "candidate_fit": false,
     "candidate_scored": false,
     "protected_2026_opened": false,
-    "next_gate": "review_label_gate_then_authorize_J0_implementation_only"
+    "next_gate": "review_and_authorize_J0_real_data_fit_only"
   },
   "terminal_outcome_label_sidecar": {
     "accepted": true,
@@ -585,11 +585,35 @@
     "sidecar_sha256": "f8ef0a06bbeb47685c758f80202afee0514ddfc251188c31a55513a9ac5f2c3a",
     "reconciliation_sha256": "178f15b3bd1c44d9ac2c141ff51c8bb1c76373ddff20e5328eff83e57e91efc2",
     "forecast_targets_loaded": false,
-    "candidate_implemented": false,
+    "candidate_implemented": true,
     "candidate_fit": false,
     "candidate_scored": false,
     "protected_2026_opened": false,
-    "next_gate": "review_label_gate_then_authorize_J0_implementation_only"
+    "next_gate": "review_and_authorize_J0_real_data_fit_only"
+  },
+  "stage2d_J0_prefit_implementation": {
+    "accepted": true,
+    "checkpoint_path": "docs/hitter-v2-stage2d-implementation-checkpoint.md",
+    "checkpoint_sha256": "cae746798d57a19d77a52931a95f9691a935de3676a924057f481dd443729963",
+    "input_result_path": "docs/hitter-v2-stage2d-input-result.json",
+    "input_result_sha256": "b9f0d549712842e8bd927261f4c32ca03c736ff81bdca898df8569c92a1dbe7b",
+    "fit_execution_contract_path": "docs/hitter-v2-stage2d-j0-fit-execution-contract.json",
+    "fit_execution_contract_sha256": "5d0ef4898b3a59103d5e7138efa18aca63eea8672df5d1dfbdc36b063af38806",
+    "module_path": "src/universal_baseball/hitter_v2_stage2d.py",
+    "module_sha256": "fb87a41d41fb8fe33406935efb73546f49a0196bf075ffd06050aae7a3b554a1",
+    "materialization_script_path": "scripts/materialize_hitter_v2_stage2d_inputs.py",
+    "materialization_script_sha256": "f54c8f9d471becddf2fde9420d55121cdc27593d04ed3fe8913157c142dda1a8",
+    "event_input_pa": 3657915,
+    "event_input_sha256": "a6cd82a5ac8c9382dc474a968bad6b5e6b48599b7ccfc1c6cfbe7a9a1cba515d",
+    "event_input_schema_sha256": "5dd04538a5e025c7f9073af855624094e66c5e44c37c6e3c78424857bf5f792d",
+    "all_four_platoon_cells_present": true,
+    "same_date_excluded": true,
+    "zero_evidence_exact_neutral": true,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "forecast_targets_loaded": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_and_authorize_J0_real_data_fit_only"
   },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
@@ -664,8 +688,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 918,
-      "duration_seconds": 11.54
+      "passed": 930,
+      "duration_seconds": 10.19
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -696,6 +720,11 @@
       "command": "python -m pytest tests/test_hitter_v2_event_labels.py tests/test_hitter_v2_event_label_result.py",
       "status": "passed",
       "passed": 15
+    },
+    "stage2d_J0_prefit_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_stage2d.py tests/test_hitter_v2_stage2d_execution_contract.py",
+      "status": "passed",
+      "passed": 12
     }
   },
   "authorization": {
@@ -730,10 +759,12 @@
     "joint_contextual_candidate_contract_frozen": true,
     "terminal_outcome_label_sidecar_authorized": true,
     "terminal_outcome_label_sidecar_certified": true,
-    "joint_contextual_candidate_implementation_authorized": false,
+    "joint_contextual_candidate_implementation_authorized": true,
+    "joint_contextual_candidate_implementation_complete": true,
+    "joint_contextual_candidate_fit_execution_contract_frozen": true,
     "joint_contextual_candidate_fit_authorized": false,
     "joint_contextual_candidate_scoring_authorized": false,
-    "next_gate": "review_label_gate_then_authorize_J0_implementation_only"
+    "next_gate": "review_and_authorize_J0_real_data_fit_only"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -757,7 +788,8 @@
     "Stage 2c E1 failed its frozen incremental HR gate in three of four required fold/weighting views; E2 cannot rescue it, retuning is forbidden, and the ladder is stopped.",
     "The independent design review found Stage 2c regularization was not invariant to feature rescaling and recommended a new joint contextual outcome architecture; this diagnosis cannot be used to repair or rescore E1.",
     "Raw 2021-2024 affiliated PBP has complete batter, pitcher, batter-side, and pitcher-hand fields, but 762 of 3811570 PAs contain at least one within-PA matchup conflict and must fail closed.",
-    "The existing Hitter v2 Stage 1 terminal artifacts do not retain pitcher identity or pitcher hand; a one-to-one matchup sidecar must be certified before any opponent-context candidate is authorized.",
+    "The existing Hitter v2 Stage 1 terminal artifacts do not retain pitcher identity or pitcher hand; Stage 2d therefore uses the separately certified one-to-one matchup sidecar.",
+    "Hit-composition pitcher context is the sparsest J0 node: only 143349 of 684479 eligible hit events have at least 100 strictly prior pitcher hits, so the frozen shrinkage and exact neutral fallback are material safeguards.",
     "Strictly prior-date pitcher evidence is sparse in rookie/complex leagues, so any eventual opponent effect requires smooth shrinkage and exact neutral fallback rather than a hard evidence cutoff.",
     "The matchup sidecar reconciles 3691876 PAs to exact accepted player-games; all other rows retain the universal batting baseline but must receive a neutral opponent-context fallback.",
     "MiLB terminal-sequence versus official player-game PA mismatches are usually plus or minus one and cannot be resolved to an individual PA from aggregated outcome authority, so 26345 mismatched player-games fail closed.",

@@ -1,0 +1,53 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "stage2d_J0_chronology_safe_input_materialization",
+  "accepted": true,
+  "source_seasons": [2021, 2022, 2023, 2024],
+  "chronology_policy": "strictly_before_game_date_same_day_excluded",
+  "recency_half_life_seasons": 2.0,
+  "provenance": {
+    "stage2d_contract_sha256": "5f9e51f61a89d17426159107534e5dfed491110e98b1317c59d0d59779e9a952",
+    "terminal_label_result_sha256": "9f8fc229c3f7a76b8b5f756f128fda10f3bbd7e65f4d9db8d91863eff6b73f6e",
+    "terminal_label_sidecar_sha256": "f8ef0a06bbeb47685c758f80202afee0514ddfc251188c31a55513a9ac5f2c3a",
+    "implementation_module_sha256": "fb87a41d41fb8fe33406935efb73546f49a0196bf075ffd06050aae7a3b554a1",
+    "materialization_script_sha256": "f54c8f9d471becddf2fde9420d55121cdc27593d04ed3fe8913157c142dda1a8",
+    "generated_report_sha256": "a41402860ff47126308ec0fd2d685d3a655b4e48bd15534f343e2a70bbdd9100"
+  },
+  "input_pa": 3657915,
+  "platoon_cells": {
+    "L_vs_L": 251790,
+    "L_vs_R": 1221365,
+    "R_vs_L": 591767,
+    "R_vs_R": 1592993
+  },
+  "node_coverage": {
+    "K": {"eligible_pa": 3645122, "prior_pitcher_1_pa": 3576720, "prior_pitcher_50_pa": 3209226, "prior_pitcher_100_pa": 2829391, "zero_evidence_pa": 68280},
+    "UBB": {"eligible_pa": 2764886, "prior_pitcher_1_pa": 2712500, "prior_pitcher_50_pa": 2339260, "prior_pitcher_100_pa": 1962215, "zero_evidence_pa": 52124},
+    "HBP": {"eligible_pa": 2382437, "prior_pitcher_1_pa": 2338522, "prior_pitcher_50_pa": 1964582, "prior_pitcher_100_pa": 1601159, "zero_evidence_pa": 43457},
+    "HR": {"eligible_pa": 2321000, "prior_pitcher_1_pa": 2278420, "prior_pitcher_50_pa": 1905346, "prior_pitcher_100_pa": 1545890, "zero_evidence_pa": 42064},
+    "NON_HR_REACH": {"eligible_pa": 2231126, "prior_pitcher_1_pa": 2189937, "prior_pitcher_50_pa": 1817035, "prior_pitcher_100_pa": 1458455, "zero_evidence_pa": 40641},
+    "HIT_COMPOSITION": {"eligible_pa": 684479, "prior_pitcher_1_pa": 666310, "prior_pitcher_50_pa": 329875, "prior_pitcher_100_pa": 143349, "zero_evidence_pa": 17178}
+  },
+  "storage": {
+    "event_inputs": {
+      "path": "reports/generated/hitter-v2-stage2d-inputs/tables/hitter_v2_stage2d_j0_event_inputs_2021_2024.parquet",
+      "row_count": 3657915,
+      "file_size_bytes": 66378802,
+      "file_sha256": "a6cd82a5ac8c9382dc474a968bad6b5e6b48599b7ccfc1c6cfbe7a9a1cba515d",
+      "schema_sha256": "5dd04538a5e025c7f9073af855624094e66c5e44c37c6e3c78424857bf5f792d"
+    }
+  },
+  "invariants": {
+    "all_four_platoon_cells_present": true,
+    "all_context_residuals_non_null": true,
+    "zero_evidence_residual_is_exactly_zero": true,
+    "same_date_excluded": true,
+    "joins_preserve_certified_cohort": true
+  },
+  "forecast_targets_loaded": false,
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "next_gate": "review_and_authorize_J0_real_data_fit_only"
+}

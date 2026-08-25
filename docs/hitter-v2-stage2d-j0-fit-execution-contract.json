@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "stage2d_J0_real_data_fit_execution",
+  "status": "frozen_before_real_data_fit_or_score",
+  "frozen_date": "2026-08-24",
+  "candidate": "J0_JOINT_CONTEXTUAL_NESTED",
+  "base_forecast": "B1_MARCEL_345_K1200",
+  "provenance": {
+    "stage2d_development_contract_sha256": "5f9e51f61a89d17426159107534e5dfed491110e98b1317c59d0d59779e9a952",
+    "terminal_label_result_sha256": "9f8fc229c3f7a76b8b5f756f128fda10f3bbd7e65f4d9db8d91863eff6b73f6e",
+    "event_input_result_path": "docs/hitter-v2-stage2d-input-result.json",
+    "event_input_sha256": "a6cd82a5ac8c9382dc474a968bad6b5e6b48599b7ccfc1c6cfbe7a9a1cba515d",
+    "event_input_schema_sha256": "5dd04538a5e025c7f9073af855624094e66c5e44c37c6e3c78424857bf5f792d",
+    "implementation_path": "src/universal_baseball/hitter_v2_stage2d.py",
+    "implementation_sha256": "fb87a41d41fb8fe33406935efb73546f49a0196bf075ffd06050aae7a3b554a1"
+  },
+  "cohort": {
+    "rows": 3657915,
+    "source_seasons": [2021, 2022, 2023, 2024],
+    "matched_contextual_and_uncontextual_rows": true,
+    "current_date_pitcher_evidence_excluded": true,
+    "failed_closed_rows_return_exact_B1": true
+  },
+  "nodes": ["K", "UBB", "HBP", "HR", "NON_HR_REACH", "HIT_COMPOSITION"],
+  "fit_functions": {
+    "binary": "fit_matched_binary_context_models",
+    "hit_composition": "fit_matched_hit_composition_context_models",
+    "application": "apply_j0_context_increment"
+  },
+  "model": {
+    "binary_link": "logit",
+    "hit_composition_link": "additive_log_ratio_with_1B_reference",
+    "contextual_terms": ["league_season_level", "platoon_cell", "strict_prior_pitcher_same_node_residual"],
+    "uncontextual_terms": ["league_season_level"],
+    "increment": "contextual_batter_effect_minus_uncontextual_batter_effect",
+    "league_season_level_effect_sd": 0.35,
+    "platoon_effect_sd": 0.20,
+    "pitcher_coefficient_prior_mean": 1.0,
+    "pitcher_coefficient_prior_sd": 0.25,
+    "pitcher_coefficient_bounds": [0.0, 1.5],
+    "batter_effect_sd_initial": 0.35,
+    "batter_effect_sd_bounds": [0.05, 1.25],
+    "batter_variance_method": "deterministic_laplace_em_marginal_likelihood_on_uncontextual_history",
+    "same_batter_effect_sd_used_in_both_matched_fits": true
+  },
+  "execution_controls": {
+    "optimizer_max_iterations": 500,
+    "optimizer_tolerance": 1e-8,
+    "variance_max_iterations": 20,
+    "variance_relative_tolerance": 0.01,
+    "random_seed": null,
+    "deterministic": true
+  },
+  "failure_policy": {
+    "nonconvergence": "fail_closed_no_candidate_artifact",
+    "nonfinite_parameter": "fail_closed_no_candidate_artifact",
+    "row_or_key_mismatch": "fail_closed_no_candidate_artifact",
+    "zero_or_failed_context": "exact_B1_prediction",
+    "post_result_retuning": false
+  },
+  "required_fit_outputs": [
+    "node_parameters_and_effects",
+    "node_convergence_diagnostics",
+    "batter_variance_estimates",
+    "cohort_and_key_hashes",
+    "exact_fallback_audit",
+    "artifact_hashes_and_exact_command"
+  ],
+  "real_data_fit_authorized": false,
+  "candidate_scoring_authorized": false,
+  "forecast_targets_loaded": false,
+  "protected_2026_opened": false,
+  "next_gate": "review_and_authorize_J0_real_data_fit_only"
+}
