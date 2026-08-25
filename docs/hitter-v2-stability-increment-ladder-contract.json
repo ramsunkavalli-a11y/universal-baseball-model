@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "post_H0_distinct_candidate_preregistration",
+  "date": "2026-08-25",
+  "status": "preregistered_before_candidate_fit",
+  "scientific_claim": "a stable PBP outcome core can exceed the strongest simple outcome forecast, after which narrowly scoped context or contact-quality residuals may add value without replacing terminal outcomes",
+  "permanent_references": [
+    "B1_MARCEL_345_K1200",
+    "C0_NESTED_EB",
+    "H0_NEUTRAL_HIERARCHICAL_OUTCOMES_documented_failure"
+  ],
+  "development_folds": ["V2022", "V2023", "V2024"],
+  "protected_confirmation_season": 2026,
+  "protected_confirmation_opened": false,
+  "candidate_ladder": [
+    {
+      "order": 1,
+      "model_id": "S0_C0_MARCEL_STABILITY_BLEND",
+      "purpose": "reduce fold sensitivity without adding new predictors",
+      "change_from_C0": "one global convex probability blend with Marcel",
+      "fixed_weight_grid_C0": [0.5, 0.625, 0.75, 0.875, 1.0],
+      "selection": "choose one weight by mean training-origin player-and-PA terminal log loss; ties within 1e-8 choose the larger C0 weight",
+      "restrictions": ["one weight for every player and outcome", "no subgroup-specific weights", "no target-season context", "probability simplex preserved"]
+    },
+    {
+      "order": 2,
+      "model_id": "L0_COMMON_COMPONENT_TRANSLATION_RESIDUAL",
+      "prerequisite": "S0 passes its disclosed development gate",
+      "change_from_core": "ALL-age mover translation residual on common nested links only",
+      "eligible_links": ["plate_appearance_K", "non_k_UBB", "contact_HR", "non_hr_contact_reach", "hit_in_play_2B_vs_1B"],
+      "ineligible_rare_links": ["HBP", "3B", "ROE", "FC_REACH", "SF", "MULTI_OUT"],
+      "rare_policy": "retain core conditional shares exactly; absolute mass may move only as required by an eligible parent link and simplex coherence",
+      "prior_mover_pa_grid": [1000, 2000, 4000],
+      "link_delta_caps": [0.1, 0.2],
+      "fallback": "zero residual when an eligible level path lacks support"
+    },
+    {
+      "order": 3,
+      "model_id": "A0_AGING_ONLY_RESIDUAL",
+      "prerequisite": "evaluate separately against the same passing core; do not combine with L0",
+      "features": ["age_relative_to_level", "one_year_age_change"],
+      "coefficient_prior_sd_grid": [0.01, 0.025, 0.05],
+      "restrictions": ["common links only", "no age-by-level translation cells", "no physical or demographic inputs"]
+    },
+    {
+      "order": 4,
+      "model_id": "D0_CONTACT_SHAPE_RESIDUAL",
+      "prerequisite": "universal outcome core passes",
+      "targets": ["future_HR_link_residual", "future_XBH_given_hit_link_residual"],
+      "features": ["pulled_fly_ball_rate", "opposite_field_fly_ball_rate", "pulled_ground_ball_rate", "opposite_field_ground_ball_rate", "other_direction_trajectory_rates"],
+      "model_form": "regularized low-dimensional residual with all ten bins retained compositionally",
+      "restrictions": ["terminal outcomes remain the base", "direction bins never receive direct run values", "no player identity predictor"]
+    },
+    {
+      "order": 5,
+      "model_id": "T0_TRACKING_RESIDUAL",
+      "prerequisite": "PBP-only core passes",
+      "target": "the same future terminal-outcome and wOBA residual",
+      "reliability_inputs": ["tracked_event_count", "recency", "source_quality", "empirical_stability"],
+      "fallback": "missing tracking sets increment and reliability to zero and returns the exact PBP prediction",
+      "overlap_rule": "PBP-only and fused scores use identical players and outcomes"
+    }
+  ],
+  "combination_policy": "no increments are automatically stacked; each passes separately and any proposed combination requires a new preregistration",
+  "primary_metrics": ["terminal_log_loss", "terminal_brier_score", "woba_rmse", "runs_per_600_rmse"],
+  "weighting_views": ["player", "pa"],
+  "correlation_guardrails": ["woba_pearson", "woba_spearman", "runs_per_600_pearson", "runs_per_600_spearman"],
+  "subgroups": ["level", "age_band", "evidence_band", "movement_band", "K_band", "power_band"],
+  "development_promotion_rule": {
+    "fold_rule": "strictly beat the strongest of C0 and Marcel on all four primary metrics in every required fold and both views",
+    "strict_tolerance": 1e-8,
+    "pooled_relative_improvement_minimum": {"terminal_log_loss": 0.0025, "terminal_brier_score": 0.0025, "woba_rmse": 0.01, "runs_per_600_rmse": 0.01},
+    "correlation_decline_maximum": 0.01,
+    "supported_subgroup_reversal": "forbidden under the already-frozen Stage 2f material-reversal thresholds",
+    "calibration": "must pass component, wOBA-decile, and level aggregate guardrails",
+    "failure": "final for that candidate; no rescue on validation results"
+  },
+  "scientific_invariants": [
+    "probabilities are finite nonnegative exhaustive and normalized",
+    "out_to_1B_to_2B_to_3B_to_HR mass movement raises value monotonically",
+    "target-season outcomes context membership parks priors and run values cannot affect predictors",
+    "player names and identities are not predictors",
+    "contact-shape and tracking comparisons preserve identical cohorts",
+    "removing tracking returns the exact PBP prediction",
+    "tracking reliability converges smoothly to zero with evidence"
+  ],
+  "candidate_fit_authorized": false,
+  "candidate_scoring_authorized": false,
+  "stage3_authorized": false,
+  "full_war_authorized": false,
+  "next_authorized_gate": "review_this_contract_then_explicitly_authorize_S0_target_free_implementation_and_fit"
+}

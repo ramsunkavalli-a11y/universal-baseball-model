@@ -711,6 +711,18 @@ only to write a distinct one-increment-at-a-time contract. H0 rescue, candidate
 fit/score, H1, tracking fit, protected confirmation, Stage 3, and WAR remain
 closed.
 
+The authorized post-H0 diagnostic is complete. Raw C0 beat Marcel on future
+wOBA and runs/600 RMSE in every disclosed fold/view and beat both proper scores
+in 2023-2024, while losing those scores in 2022. The H0 ablation attributed the
+failure to its additions: age-conditioned translation and development degraded
+future rate accuracy, and 2024 calibration severely damaged proper scores and
+PA-weighted rate accuracy through rare-outcome distortions. The replacement
+plan is preregistered in `docs/hitter-v2-stability-increment-ladder-contract.json`:
+first test one global C0/Marcel stability blend, then test level, aging, contact
+shape, and tracking only as separate residual increments. No new candidate has
+been fit or scored, and the protected confirmation season remains sealed.
+The post-H0 checkpoint passed all 993 repository tests and canonical lint.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1305,7 +1317,11 @@ and all `798` tests completed successfully.
 67. `docs/hitter-v2-stage2f-H0-comparison-result.md`
 68. `docs/hitter-v2-stage2f-H0-comparison-result.json`
 69. `docs/hitter-v2-post-H0-diagnostic-authorization.json`
-70. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+70. `docs/hitter-v2-post-H0-diagnostic-contract.json`
+71. `docs/hitter-v2-post-H0-diagnostic-result.md`
+72. `docs/hitter-v2-post-H0-diagnostic-result.json`
+73. `docs/hitter-v2-stability-increment-ladder-contract.json`
+74. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

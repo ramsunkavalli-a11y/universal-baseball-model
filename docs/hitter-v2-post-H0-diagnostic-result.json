@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "post_H0_diagnostic",
+  "date": "2026-08-25",
+  "status": "complete_diagnostic_only",
+  "generated_report_path": "reports/generated/hitter-v2-post-H0-diagnostic/report.json",
+  "generated_report_sha256": "02269c941585240decf46ec4a30e86f99236fe5ab10ee9046d2576c2a65a4f4d",
+  "generated_report_size_bytes": 160726,
+  "findings": {
+    "raw_C0_rate_metrics": "C0 beat Marcel on future wOBA and runs_per_600 RMSE in every fold and both weighting views",
+    "raw_C0_proper_scores": "C0 lost both proper scores in V2022 but beat both in V2023 and V2024 in both views",
+    "raw_C0_subgroups": {
+      "V2022_player": "22_of_24_woba_RMSE_wins",
+      "V2022_pa": "22_of_24_woba_RMSE_wins",
+      "V2023_player": "23_of_25_woba_RMSE_wins",
+      "V2023_pa": "17_of_25_woba_RMSE_wins",
+      "V2024_player": "23_of_25_woba_RMSE_wins",
+      "V2024_pa": "24_of_25_woba_RMSE_wins"
+    },
+    "recurring_C0_gaps": ["age_30_plus", "AAA", "demotions", "very_low_prior_evidence"],
+    "age_translation": "worsened all four primary metrics in V2023 and V2024 in both views",
+    "development": "worsened future wOBA and runs_per_600 RMSE in V2023 and V2024 in both views; only V2023 player-weighted Brier improved",
+    "calibration": "available only in V2024; improved player-weighted rate RMSE but materially worsened PA-weighted rate RMSE and catastrophically worsened proper scores, led by FC_REACH, 3B, SF, HR, and HBP",
+    "diagnosis": "C0 contains useful future outcome signal; H0 failed through unstable transformation layers and rare-outcome calibration, not through absence of PBP outcome signal"
+  },
+  "decisions": {
+    "H0_rescue": false,
+    "age_conditioned_translation_advances": false,
+    "H0_development_advances": false,
+    "H0_calibration_advances": false,
+    "C0_and_Marcel_remain_permanent_references": true,
+    "next_candidate_policy": "C0 stability core plus exactly one separately gated increment"
+  },
+  "validation": {
+    "focused_tests": "3_passed",
+    "full_tests": "993_passed",
+    "canonical_lint": "passed_src_scripts_tests"
+  },
+  "protected_confirmation_opened": false,
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "next_gate": "review_distinct_candidate_preregistration_before_any_fit"
+}
