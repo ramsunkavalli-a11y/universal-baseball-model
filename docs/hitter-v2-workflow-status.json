@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_scorer_frozen_before_one_shot_disclosed_validation",
+  "status": "stage2f_H0_scorer_refrozen_after_report_free_numerical_incident",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_scorer_frozen_ready_for_one_shot_disclosed_validation",
+    "hitter_v2": "stage2f_H0_scorer_refrozen_ready_for_disclosed_validation",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -890,15 +890,25 @@
   },
   "stage2f_H0_scoring_contract": {
     "path": "docs/hitter-v2-stage2f-H0-scoring-contract.json",
-    "sha256": "e247bb3290fe8039313a091a7be499eaef1c54496cead8770b8fbbe376894ee6",
+    "sha256": "076b4c9204298c7c52e2a94843f4f987e05f03dafe2df8fe9d0f3e1542adac4e",
     "runner_path": "scripts/score_hitter_v2_stage2f_H0.py",
     "runner_sha256": "c45f9949b0b53885d525d136b9e0cf98eaf4bd7a27828e6cfe9641b2f7cba09f",
     "validation_module_path": "src/universal_baseball/hitter_v2_stage2f_scoring.py",
-    "validation_module_sha256": "dd3b008c68c8ca262260f1eee486e5ed93f32dd7dd73a4ff3ffd2fb2555e4f12",
+    "validation_module_sha256": "64468b25bae4e3aae617687c8db43e0625060ea69d75c5d4180a48dc32ad43be",
     "frozen_before_target_access": true,
     "candidate_scored": false,
     "protected_2026_opened": false,
     "next_gate": "commit_scorer_then_execute_the_disclosed_comparison_exactly_once"
+  },
+  "stage2f_H0_scoring_execution_incident": {
+    "path": "docs/hitter-v2-stage2f-H0-scoring-execution-incident.json",
+    "sha256": "f98ae13fabb95c8f3844b64c35abb3ac9691d04954ea62099ff31721e82bb3b9",
+    "first_execution_report_written": false,
+    "promotion_result_available": false,
+    "partial_metrics_used": false,
+    "model_or_gate_changed": false,
+    "numerical_reconciliation_amendment": true,
+    "scorer_refrozen": true
   },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,

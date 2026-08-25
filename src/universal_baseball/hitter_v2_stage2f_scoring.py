@@ -70,13 +70,19 @@ def translate_target_to_reference(
             for component, value in probability_links(probabilities).items()
         }
         translated = probabilities_from_links(links)
+        translated_counts = {
+            outcome: translated[outcome] * evidence
+            for outcome in HITTER_TALENT_OUTCOMES
+        }
+        translated_counts["OTHER_OUT"] = evidence - sum(
+            translated_counts[outcome]
+            for outcome in HITTER_TALENT_OUTCOMES
+            if outcome != "OTHER_OUT"
+        )
         rows.append(
             {
                 **row,
-                **{
-                    outcome: translated[outcome] * evidence
-                    for outcome in HITTER_TALENT_OUTCOMES
-                },
+                **translated_counts,
             }
         )
     return pl.DataFrame(rows, infer_schema_length=None).sort("player_id")

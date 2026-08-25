@@ -14,11 +14,19 @@
   "runner_path": "scripts/score_hitter_v2_stage2f_H0.py",
   "runner_sha256": "c45f9949b0b53885d525d136b9e0cf98eaf4bd7a27828e6cfe9641b2f7cba09f",
   "validation_module_path": "src/universal_baseball/hitter_v2_stage2f_scoring.py",
-  "validation_module_sha256": "dd3b008c68c8ca262260f1eee486e5ed93f32dd7dd73a4ff3ffd2fb2555e4f12",
+  "validation_module_sha256": "64468b25bae4e3aae617687c8db43e0625060ea69d75c5d4180a48dc32ad43be",
   "synthetic_test_path": "tests/test_hitter_v2_stage2f_scoring.py",
-  "synthetic_test_sha256": "56f77e826b6c7eefb729d8a77f99d7f116d5eef89f557b5d2b73a54f14a7cc57",
+  "synthetic_test_sha256": "29d776d79eb13d6703e3fc9802bbd848db28716994d371b80c00b9fd14e76be8",
   "contract_test_path": "tests/test_hitter_v2_stage2f_scoring_contract.py",
   "contract_test_sha256": "87bdfacb4cf04e3ee46fcc9d82984fcb68657e8312af76a6aa22175e940e0282",
+  "execution_amendment": {
+    "incident_path": "docs/hitter-v2-stage2f-H0-scoring-execution-incident.json",
+    "incident_sha256": "f98ae13fabb95c8f3844b64c35abb3ac9691d04954ea62099ff31721e82bb3b9",
+    "superseded_contract_sha256": "e247bb3290fe8039313a091a7be499eaef1c54496cead8770b8fbbe376894ee6",
+    "first_execution_report_written": false,
+    "scientific_or_gate_change": false,
+    "correction": "exact_fractional_count_reconciliation_by_assigning_machine_residual_to_OTHER_OUT"
+  },
   "reference_target_policy": "translate_disclosed_terminal_outcome_mass_with_the_fold_training_frozen_ALL_age_band_level_offsets",
   "comparators": [
     "REFERENCE_B0_ONE_YEAR_EB",

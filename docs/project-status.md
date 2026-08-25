@@ -681,6 +681,15 @@ tests pass, canonical lint passes, and all 988 repository tests pass. The next
 action is the authorized one-shot run; no model or acceptance rule may change
 after this checkpoint.
 
+The first execution stopped before writing a report because the translated
+target's fractional counts differed from PA by machine roundoff and an older
+diagnostic required exact equality. The incident is preserved in
+`docs/hitter-v2-stage2f-H0-scoring-execution-incident.json`. No metric or
+promotion result was published or used. The numerical-only amendment assigns
+that residual to `OTHER_OUT`, leaves PA and substantive probability mass
+unchanged, and adds an exact reconciliation invariant. Model parameters and
+acceptance rules remain frozen.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1271,7 +1280,8 @@ and all `798` tests completed successfully.
 63. `docs/hitter-v2-stage2f-H0-selection-checkpoint.json`
 64. `docs/hitter-v2-stage2f-H0-scoring-authorization.json`
 65. `docs/hitter-v2-stage2f-H0-scoring-contract.json`
-66. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+66. `docs/hitter-v2-stage2f-H0-scoring-execution-incident.json`
+67. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

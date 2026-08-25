@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2f_H0_disclosed_validation_comparison_execution",
+  "date": "2026-08-25",
+  "status": "first_execution_failed_before_report_numerical_reconciliation_amendment_required",
+  "frozen_scorer_commit": "3e540a5",
+  "superseded_scoring_contract_sha256": "e247bb3290fe8039313a091a7be499eaef1c54496cead8770b8fbbe376894ee6",
+  "failure": "build_player_scoring_surface_rejected_fractional_reference_target_because_legacy_diagnostic_required_exact_horizontal_sum_equality",
+  "cause": "probability_to_fractional_count_multiplication_left_machine_roundoff_in_the_translated_target_simplex",
+  "scientific_change": false,
+  "correction": "assign_only_the_floating_point_reconciliation_residual_to_OTHER_OUT_so_fractional_counts_sum_exactly_to_the_unchanged_PA_denominator",
+  "target_PA_or_substantive_outcome_mass_changed": false,
+  "report_written": false,
+  "promotion_result_available": false,
+  "partial_metrics_inspected_or_used": false,
+  "model_parameters_changed": false,
+  "acceptance_rules_changed": false,
+  "protected_confirmation_opened": false,
+  "required_sequence": "test_the_exact_reconciliation_invariant_refreeze_validation_and_contract_hashes_commit_then_execute_once"
+}

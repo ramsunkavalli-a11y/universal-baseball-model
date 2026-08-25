@@ -49,6 +49,10 @@ def test_target_translation_uses_only_frozen_all_offsets() -> None:
     after = translate_target_to_reference(before, offsets)
     assert after["HR"][0] > before["HR"][0]
     assert sum(float(after[outcome][0]) for outcome in HITTER_TALENT_OUTCOMES) == pytest.approx(100.0)
+    assert after.select(
+        pl.sum_horizontal(*[pl.col(outcome) for outcome in HITTER_TALENT_OUTCOMES])
+        == pl.col("hitter_talent_pa")
+    ).item()
     assert after["primary_target_level_group"][0] == "AA"
 
 
