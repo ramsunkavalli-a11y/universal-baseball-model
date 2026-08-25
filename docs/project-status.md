@@ -567,6 +567,12 @@ implementation, event input, three Marcel base files, and cutoff seasons before
 execution. It can persist fits and predictions but has no target path or scoring
 operation.
 
+The exact runner then completed all three fits without loading targets. Every
+node converged, forecast membership remained identical to B1, and the largest
+probability-sum error was `4.44e-16`. Prediction, increment, batter-effect, and
+fixed-effect hashes for V2022-V2024 are frozen in
+`docs/hitter-v2-stage2e-fit-result.json`. No post-fit tuning is permitted.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1138,7 +1144,8 @@ and all `798` tests completed successfully.
 44. `docs/hitter-v2-stage2e-certification-result.json`
 45. `docs/hitter-v2-stage2e-fit-authorization.json`
 46. `docs/hitter-v2-stage2e-fit-execution-contract.json`
-47. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+47. `docs/hitter-v2-stage2e-fit-result.json`
+48. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

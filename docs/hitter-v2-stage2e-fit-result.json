@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2e_J0R_chronology_safe_fit",
+  "date": "2026-08-24",
+  "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+  "runner_commit": "d8bfac5",
+  "accepted": true,
+  "generated_report_sha256": "f8abca0d1a778caf012abc81405ee33e9a89be7a8c67244609bdc8e83bbacde2",
+  "folds": {
+    "V2022": {
+      "predictor_cutoff_season": 2021,
+      "training_rows": 854294,
+      "forecast_players": 4705,
+      "predictions_sha256": "7c2b285f16c8509aabb403d830869398d0ab51f32942c73255ec36210aecf385",
+      "context_increments_sha256": "9ce3fdba1a209c666befd718466b34f6134da745b9ed007386e41524bdbfe398",
+      "batter_effects_sha256": "7824e1e5bf959ba5a6d711ebf7e43f393cace9110b0e97db7ef6a9bcda140ed0",
+      "fixed_effects_sha256": "84a26460ceda7756b61dc3dfb228d4e1cb1e76062af8bf7fc9006c67dda15f40"
+    },
+    "V2023": {
+      "predictor_cutoff_season": 2022,
+      "training_rows": 1794834,
+      "forecast_players": 5568,
+      "predictions_sha256": "4fb206ff26503794f4b0ba75dd2f42359395deff6a3557ade01c5f8ee180d0bd",
+      "context_increments_sha256": "982ad7825d94d782ec41aa6b9f5a0680b25f96ba3da21db3652df6605caf6f29",
+      "batter_effects_sha256": "99dc050f475ac875f0ce57785912badf2193b6a1cde37306638a54b6b68c029d",
+      "fixed_effects_sha256": "deea3bd5055995751d821351f8bbff4d5f15880304a73e47f7020fdce569f240"
+    },
+    "V2024": {
+      "predictor_cutoff_season": 2023,
+      "training_rows": 2731880,
+      "forecast_players": 6381,
+      "predictions_sha256": "a32078ed7a660c0408bad54273acaddca6223a901ba7835a796e7a04b91810aa",
+      "context_increments_sha256": "b618f341c8c2232b3cec4d69e88230ad746ce5a6c8f025f092819639242e2fc3",
+      "batter_effects_sha256": "25d8355b166d42c49cecf6c1f8416816c2ef2a6186408ea36b9e7f9b8ebb8c58",
+      "fixed_effects_sha256": "0b7097dc93816244e606e6663633768f5c7b33cc352fff0b7a63347d7b738c26"
+    }
+  },
+  "all_nodes_converged": true,
+  "maximum_probability_simplex_delta": 4.440892098500626e-16,
+  "forecast_membership_unchanged": true,
+  "forecast_targets_loaded": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "post_fit_tuning": false,
+  "next_gate": "freeze_exact_scoring_contract_and_runner_before_target_access"
+}
