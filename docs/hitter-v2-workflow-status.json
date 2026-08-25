@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_failed_final_disclosed_development_gate",
+  "status": "post_H0_diagnostic_authorized_before_execution",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_failed_final_H1_tracking_stage3_and_WAR_closed",
+    "hitter_v2": "post_H0_diagnostic_and_distinct_preregistration_active",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -926,6 +926,16 @@
     "protected_2026_opened": false,
     "next_gate": "review_final_failure_then_require_a_distinct_preregistered_candidate_contract"
   },
+  "post_H0_diagnostic_authorization": {
+    "path": "docs/hitter-v2-post-H0-diagnostic-authorization.json",
+    "authorized_parent_commit": "e880e55",
+    "disclosed_diagnostic_authorized": true,
+    "distinct_contract_design_authorized": true,
+    "new_candidate_fit_authorized": false,
+    "new_candidate_scoring_authorized": false,
+    "protected_2026_opened": false,
+    "next_gate": "freeze_and_execute_diagnostic_then_preregister_distinct_increment_ladder_and_stop_before_fit"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -1181,7 +1191,9 @@
     "stage2f_H0_development_gate_pass": false,
     "stage2f_H0_failure_final": true,
     "stage2f_H1_authorized": false,
-    "next_gate": "review_final_failure_then_require_a_distinct_preregistered_candidate_contract_before_more_model_work"
+    "post_H0_diagnostic_authorized": true,
+    "new_candidate_fit_authorized": false,
+    "next_gate": "freeze_and_execute_post_H0_diagnostic_then_preregister_distinct_candidate_and_stop_before_fit"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

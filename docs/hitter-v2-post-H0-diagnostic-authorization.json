@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "post_H0_failure_diagnostic",
+  "date": "2026-08-25",
+  "status": "authorized_before_diagnostic_implementation_or_execution",
+  "authorization_source": "explicit_user_instruction_do_all_10_after_H0_failure_next_steps",
+  "branch": "hitter-v2-pbp-outcomes",
+  "authorized_parent_commit": "e880e55",
+  "H0_result_path": "docs/hitter-v2-stage2f-H0-comparison-result.json",
+  "H0_result_sha256": "5df308a15a8d741b5bb1070fc657c6b12242b32230bc8c7fa90b2e47586018af",
+  "diagnostics": {
+    "raw_C0_vs_Marcel_by_terminal_outcome": true,
+    "raw_C0_vs_Marcel_by_frozen_subgroup": true,
+    "reference_C0_ALL_translation": true,
+    "age_conditioned_translation_increment": true,
+    "forward_development_increment": true,
+    "calibration_increment": true
+  },
+  "fixed_H0_ablation_order": [
+    "L0_reference_C0_ALL_translation",
+    "L1_C0_age_conditioned_translation",
+    "L2_C0_age_conditioned_translation_plus_development",
+    "L3_full_H0_plus_calibration"
+  ],
+  "allowed_use_of_disclosed_outcomes": "diagnosis_and_distinct_future_contract_design_only",
+  "immutable_boundaries": {
+    "H0_rescue_or_retuning": false,
+    "candidate_selection": false,
+    "new_candidate_fit": false,
+    "new_candidate_score": false,
+    "H1": false,
+    "tracking_fit": false,
+    "protected_confirmation_access": false,
+    "stage3": false,
+    "full_WAR": false
+  },
+  "required_sequence": [
+    "implement_and_test_diagnostic",
+    "freeze_runner_and_input_hashes",
+    "commit_before_execution",
+    "execute_once_on_disclosed_2022_2024",
+    "document_findings",
+    "preregister_a_distinct_one_increment_at_a_time_candidate_ladder",
+    "stop_before_candidate_fit"
+  ]
+}

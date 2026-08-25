@@ -702,6 +702,15 @@ challenger. H1 cannot rescue it, and tracking, protected confirmation, Stage 3,
 and WAR remain closed. Further batting work requires a distinct preregistered
 candidate contract after review.
 
+On 2026-08-25 the user authorized all ten post-H0 next steps through a new
+preregistration boundary. The binding diagnostic scope is
+`docs/hitter-v2-post-H0-diagnostic-authorization.json`: compare raw C0 with
+Marcel by outcome and frozen subgroup, isolate H0's translation, development,
+and calibration layers in a predeclared order, then use the disclosed findings
+only to write a distinct one-increment-at-a-time contract. H0 rescue, candidate
+fit/score, H1, tracking fit, protected confirmation, Stage 3, and WAR remain
+closed.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1295,7 +1304,8 @@ and all `798` tests completed successfully.
 66. `docs/hitter-v2-stage2f-H0-scoring-execution-incident.json`
 67. `docs/hitter-v2-stage2f-H0-comparison-result.md`
 68. `docs/hitter-v2-stage2f-H0-comparison-result.json`
-69. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+69. `docs/hitter-v2-post-H0-diagnostic-authorization.json`
+70. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
