@@ -561,6 +561,12 @@ protected 2026 field was loaded. The conditional authorization now opens only
 the V2022-V2024 chronology-safe fit gate. Scoring remains closed until the fits,
 prediction hashes, and exact scorer are committed frozen.
 
+The fit-only execution package is frozen in
+`docs/hitter-v2-stage2e-fit-execution-contract.json`. It binds the exact runner,
+implementation, event input, three Marcel base files, and cutoff seasons before
+execution. It can persist fits and predictions but has no target path or scoring
+operation.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1131,7 +1137,8 @@ and all `798` tests completed successfully.
 43. `docs/hitter-v2-stage2e-implementation-checkpoint.json`
 44. `docs/hitter-v2-stage2e-certification-result.json`
 45. `docs/hitter-v2-stage2e-fit-authorization.json`
-46. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+46. `docs/hitter-v2-stage2e-fit-execution-contract.json`
+47. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

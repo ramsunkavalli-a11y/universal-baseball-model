@@ -731,6 +731,15 @@
     "candidate_scoring_open": false,
     "next_gate": "fit_V2022_V2023_V2024_without_loading_evaluation_targets"
   },
+  "stage2e_fit_execution_contract": {
+    "path": "docs/hitter-v2-stage2e-fit-execution-contract.json",
+    "runner_path": "scripts/fit_hitter_v2_stage2e_j0r.py",
+    "runner_sha256": "fa4c81a646f966e7e9b2e624bdba092c81c9d8746f3173c8a0a6efc995568af4",
+    "frozen_before_fit": true,
+    "forecast_targets_loaded": false,
+    "candidate_scoring_authorized": false,
+    "next_gate": "execute_exact_chronology_safe_fit_runner"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",

@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2e_J0R_fit_execution",
+  "date": "2026-08-24",
+  "status": "frozen_before_chronology_safe_fit",
+  "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+  "runner_path": "scripts/fit_hitter_v2_stage2e_j0r.py",
+  "runner_sha256": "fa4c81a646f966e7e9b2e624bdba092c81c9d8746f3173c8a0a6efc995568af4",
+  "runner_test_path": "tests/test_hitter_v2_stage2e_fit_runner.py",
+  "runner_test_sha256": "51cac802002ffe7df2c3aeb61b7ba7fd0e5ccab8b6b5ccd9059c84171873b7cd",
+  "fit_authorization_sha256": "69ec2805f277e62318c6da20ffdb4ae53332c0ea37cdf00606382918615c76ec",
+  "implementation_sha256": "0beb260b149e74a226dfe841b79b3b1e4ef897d801bbf56db332ee99847999ed",
+  "event_input_sha256": "a6cd82a5ac8c9382dc474a968bad6b5e6b48599b7ccfc1c6cfbe7a9a1cba515d",
+  "folds": {
+    "V2022": {
+      "predictor_cutoff_season": 2021,
+      "base_prediction_sha256": "1d751597de8c6f6df5fc17f22762d70135eb507ce209554074d141f88a133872"
+    },
+    "V2023": {
+      "predictor_cutoff_season": 2022,
+      "base_prediction_sha256": "0913b053d66d1a43bcd4e2f3d8bd54880dd01411cf9aba0dd6cbf10e770980a8"
+    },
+    "V2024": {
+      "predictor_cutoff_season": 2023,
+      "base_prediction_sha256": "096872097d30b72e59f5cc0c0c5980e2ff3e78d86eefc4ebe3f6175541eed476"
+    }
+  },
+  "fit_outputs": [
+    "predictions",
+    "context_increments",
+    "batter_effects",
+    "fixed_effects",
+    "node_iteration_diagnostics"
+  ],
+  "forecast_targets_loaded": false,
+  "candidate_scoring_authorized": false,
+  "protected_2026_opened": false,
+  "post_fit_tuning_authorized": false,
+  "next_gate": "execute_exact_fit_runner_then_freeze_artifact_hashes_and_scorer"
+}
