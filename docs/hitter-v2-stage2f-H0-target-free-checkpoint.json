@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2f_H0_target_free_implementation",
+  "date": "2026-08-25",
+  "status": "implemented_and_stopped_before_source_materialization_or_fit",
+  "branch": "hitter-v2-pbp-outcomes",
+  "authorized_parent_commit": "5a2b7d5",
+  "authorization_commit": "0dc9f80",
+  "authorization_path": "docs/hitter-v2-stage2f-authorization.json",
+  "contract_path": "docs/hitter-v2-stage2f-development-contract.json",
+  "contract_sha256": "00f113b893b2dee340ed230cb1b9753262a422197408313e74dbc829b7aa8f9a",
+  "implementation": {
+    "path": "src/universal_baseball/hitter_v2_stage2f.py",
+    "sha256": "1d7715db34cc03df787c651a56420e1013968d5c19322abfef0da8a4ac6a5114",
+    "capabilities": [
+      "nested_terminal_simplex_link_round_trip",
+      "partially_pooled_adjacent_level_and_age_band_mover_translation_to_MLB",
+      "nonzero_global_component_fallback_for_disconnected_edges",
+      "age_relative_to_level_piecewise_forward_development",
+      "training_origin_calibration_shrunk_to_identity",
+      "exact_untranslated_base_fallback",
+      "common_reference_level_permanent_baseline_wrapper"
+    ]
+  },
+  "synthetic_invariants": {
+    "path": "tests/test_hitter_v2_stage2f.py",
+    "sha256": "5c98510c956ccb0aeaa04e510e46a527ebd8403c7cedb1258d31286f04a5bcfe",
+    "focused_result": "15_passed_including_authorization_and_contract_tests",
+    "real_player_rows": 0,
+    "protected_outcomes_opened": false
+  },
+  "validation": {
+    "ruff": "passed",
+    "ruff_command": "python -m ruff check src scripts tests",
+    "full_pytest": "968_passed",
+    "pytest_command": "python -m pytest -q",
+    "temporary_directory_policy": "workspace_local_due_to_windows_system_temp_permission_error",
+    "model_or_test_failures": 0
+  },
+  "execution_boundaries": {
+    "real_source_materialized": false,
+    "real_data_fit": false,
+    "candidate_scored": false,
+    "disclosed_target_opened": false,
+    "H1_contact_increment": false,
+    "tracking": false,
+    "protected_2026_opened": false,
+    "stage3": false,
+    "full_WAR": false
+  },
+  "next_gate": "review_target_free_H0_implementation_then_explicitly_authorize_source_materialization_and_real_data_fit_without_scoring"
+}

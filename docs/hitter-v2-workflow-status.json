@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_target_free_implementation_authorized",
+  "status": "stage2f_H0_target_free_implementation_complete_stopped_for_review",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_target_free_implementation_active",
+    "hitter_v2": "stage2f_H0_target_free_implementation_complete",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -806,7 +806,23 @@
     "candidate_scoring_open": false,
     "H1_authorized": false,
     "protected_2026_opened": false,
-    "next_gate": "implement_H0_primitives_and_synthetic_invariants_then_stop_for_review"
+    "next_gate": "target_free_implementation_complete_stop_for_review"
+  },
+  "stage2f_H0_target_free_checkpoint": {
+    "path": "docs/hitter-v2-stage2f-H0-target-free-checkpoint.json",
+    "sha256": "ac6ba0a9b2d5b7bb8aa614db6f6999ac28810204459d2befdf6ed80c930fd4b5",
+    "human_readable_path": "docs/hitter-v2-stage2f-H0-target-free-checkpoint.md",
+    "human_readable_sha256": "79a53fc3c1046419b39b8c565d768dc5b936f7c488eb32f7d8239d9531ed256b",
+    "implementation_path": "src/universal_baseball/hitter_v2_stage2f.py",
+    "implementation_sha256": "1d7715db34cc03df787c651a56420e1013968d5c19322abfef0da8a4ac6a5114",
+    "synthetic_test_path": "tests/test_hitter_v2_stage2f.py",
+    "synthetic_test_sha256": "5c98510c956ccb0aeaa04e510e46a527ebd8403c7cedb1258d31286f04a5bcfe",
+    "target_free_implementation_complete": true,
+    "real_source_materialized": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_then_explicitly_authorize_source_materialization_and_fit_without_scoring"
   },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
@@ -958,6 +974,17 @@
       "focused_postmortem_and_contract_tests": "4_passed",
       "candidate_fit": false,
       "candidate_scored": false
+    },
+    "stage2f_H0_target_free_validation": {
+      "ruff": "passed",
+      "ruff_command": "python -m ruff check src scripts tests",
+      "pytest": "968_passed",
+      "focused_authorization_contract_and_synthetic_tests": "15_passed",
+      "temporary_directory_policy": "workspace_local_due_to_windows_system_temp_permission_error",
+      "real_player_rows": 0,
+      "candidate_fit": false,
+      "candidate_scored": false,
+      "protected_2026_opened": false
     }
   },
   "authorization": {
@@ -1011,10 +1038,11 @@
     "stage2e_J0R_failure_final": true,
     "stage2f_contract_frozen": true,
     "stage2f_target_free_implementation_authorized": true,
+    "stage2f_target_free_implementation_complete": true,
     "stage2f_candidate_fit_authorized": false,
     "stage2f_candidate_scoring_authorized": false,
     "stage2f_H1_authorized": false,
-    "next_gate": "implement_H0_primitives_and_synthetic_invariants_then_stop_for_review"
+    "next_gate": "review_then_explicitly_authorize_stage2f_source_materialization_and_real_data_fit_without_scoring"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -1048,6 +1076,7 @@
     "The first source-only label attempt failed because the literal phrase called out on strikes was not recognized; the target-free correction and failed report hash are preserved, and no model fit or score preceded the amendment.",
     "The frozen J0 full-data fit failed closed because a binary-component batter-variance iteration did not converge within 20 iterations; no artifact was published, no target was loaded, and rescue tuning or scoring is unauthorized.",
     "Stage 2e J0R passed numerical certification and fit successfully but failed the frozen disclosed comparison; it cannot be retuned, and J1, protected 2026, tracking, Stage 3, and WAR remain closed."
-    ,"The Stage 2e postmortem found broad C0 outcome-shrinkage signal but a construct gap from mixing talent with realized future level; Stage 2f therefore freezes a neutral-reference hierarchical outcome candidate while leaving all execution gates closed."
+    ,"The Stage 2e postmortem found broad C0 outcome-shrinkage signal but a construct gap from mixing talent with realized future level; Stage 2f therefore freezes a neutral-reference hierarchical outcome candidate while leaving all execution gates closed.",
+    "Stage 2f H0 currently has synthetic target-free implementation evidence only; real-source materialization, fitting, scoring, and empirical usefulness remain untested and closed pending review."
   ]
 }

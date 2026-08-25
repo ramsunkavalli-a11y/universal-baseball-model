@@ -613,6 +613,17 @@ synthetic invariants only. The authorization is recorded in
 `docs/hitter-v2-stage2f-authorization.json`. Real source fitting, disclosed
 target scoring, H1, tracking, protected 2026, Stage 3, and WAR remain closed.
 
+That target-free checkpoint is now implemented and documented in
+`docs/hitter-v2-stage2f-H0-target-free-checkpoint.md` and its machine-readable
+companion. It includes nested probability links, partially pooled mover-based
+translations to MLB by component and broad age band, a nonzero disconnected-edge fallback with wider
+uncertainty, forward age-relative-to-level development, earlier-origin
+calibration, exact no-increment fallback, and common-reference wrappers for the
+permanent baselines. Synthetic invariants pass without any real player rows.
+No source was materialized, no candidate was fit or scored, and no disclosed or
+protected target was opened. The next gate is review followed by explicit
+authorization for source materialization and real-data fit without scoring.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
