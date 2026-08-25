@@ -552,6 +552,15 @@ certified design shape, removes every real response/target field, and generates
 seeded synthetic responses. Real-data fitting remains closed until this exact
 implementation passes the preregistered numerical certification.
 
+That exact implementation passed certification on the full 3,657,915-row
+source shape. All six component fits converged; seeded recovery passed at 1%,
+5%, 25%, and 60% event rates; high-evidence player-effect recovery correlated
+0.940 with truth; deterministic reruns matched; and grouped versus event-level
+fits agreed to floating-point precision. No real response, forecast target, or
+protected 2026 field was loaded. The conditional authorization now opens only
+the V2022-V2024 chronology-safe fit gate. Scoring remains closed until the fits,
+prediction hashes, and exact scorer are committed frozen.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1120,7 +1129,9 @@ and all `798` tests completed successfully.
 41. `docs/hitter-v2-stage2e-development-contract.json`
 42. `docs/hitter-v2-stage2e-authorization.json`
 43. `docs/hitter-v2-stage2e-implementation-checkpoint.json`
-44. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+44. `docs/hitter-v2-stage2e-certification-result.json`
+45. `docs/hitter-v2-stage2e-fit-authorization.json`
+46. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

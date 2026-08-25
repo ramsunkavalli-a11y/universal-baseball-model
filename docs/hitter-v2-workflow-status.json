@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2e_J0R_target_free_implementation_complete_certification_pending",
+  "status": "stage2e_J0R_certified_real_fold_fit_open",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -712,6 +712,25 @@
     "candidate_scored": false,
     "next_gate": "execute_target_free_numerical_certification"
   },
+  "stage2e_numerical_certification": {
+    "path": "docs/hitter-v2-stage2e-certification-result.json",
+    "sha256": "5544cb386623610b0104c0060b6b15770b9ebc99febc30d68837dfd8facd248d",
+    "accepted": true,
+    "source_shape_rows": 3657915,
+    "all_six_nodes_converged": true,
+    "event_rate_regime_recovery_pass": true,
+    "player_evidence_recovery_pass": true,
+    "real_outcomes_loaded": false,
+    "forecast_targets_loaded": false,
+    "protected_2026_opened": false
+  },
+  "stage2e_fit_authorization": {
+    "path": "docs/hitter-v2-stage2e-fit-authorization.json",
+    "chronology_safe_fold_fit_open": true,
+    "forecast_targets_open": false,
+    "candidate_scoring_open": false,
+    "next_gate": "fit_V2022_V2023_V2024_without_loading_evaluation_targets"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -894,9 +913,9 @@
     "stage2e_candidate_implementation_authorized": true,
     "stage2e_candidate_implementation_complete": true,
     "stage2e_numerical_certification_authorized": true,
-    "stage2e_real_data_fit_authorized": false,
+    "stage2e_real_data_fit_authorized": true,
     "stage2e_candidate_scoring_authorized": false,
-    "next_gate": "execute_target_free_numerical_certification"
+    "next_gate": "fit_V2022_V2023_V2024_without_loading_evaluation_targets"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -929,6 +948,6 @@
     "The terminal-outcome label sidecar passes every frozen source threshold, but 39923 non-exact player-game reconciliation rows remain failed closed to the exact B1 outcome-only forecast.",
     "The first source-only label attempt failed because the literal phrase called out on strikes was not recognized; the target-free correction and failed report hash are preserved, and no model fit or score preceded the amendment.",
     "The frozen J0 full-data fit failed closed because a binary-component batter-variance iteration did not converge within 20 iterations; no artifact was published, no target was loaded, and rescue tuning or scoring is unauthorized.",
-    "Stage 2e J0R target-free implementation is frozen; numerical certification is pending, and real fitting and scoring remain closed."
+    "Stage 2e J0R passed target-free numerical certification; chronology-safe V2022-V2024 fitting is open, while scoring and protected 2026 remain closed."
   ]
 }

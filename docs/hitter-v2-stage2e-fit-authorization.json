@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2e_fit_authorization",
+  "date": "2026-08-24",
+  "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+  "authorization_source": "conditional_user_authorization_recorded_before_certification",
+  "authorizing_record": "docs/hitter-v2-stage2e-authorization.json",
+  "authorizing_record_sha256": "9a9c2d30b83ec18d47080dddf7c0cd37b5b4c64ebe3131d4ca52b5aaff0e23c3",
+  "certification_result": "docs/hitter-v2-stage2e-certification-result.json",
+  "certification_result_sha256": "5544cb386623610b0104c0060b6b15770b9ebc99febc30d68837dfd8facd248d",
+  "certification_accepted": true,
+  "current_gate": {
+    "chronology_safe_v2022_v2023_v2024_fit_open": true,
+    "forecast_targets_open": false,
+    "candidate_scoring_open": false
+  },
+  "required_before_scoring": [
+    "complete_all_three_fits_without_loading_targets",
+    "persist_predictions_and_diagnostics",
+    "freeze_fit_artifact_hashes",
+    "commit_the_exact_scoring_runner_and_scoring_contract"
+  ],
+  "immutable_boundaries": {
+    "post_fit_parameter_change": false,
+    "J0_rerun_or_rescue": false,
+    "protected_2026_access_authorized": false,
+    "J1_authorized": false,
+    "tracking_authorized": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false
+  }
+}

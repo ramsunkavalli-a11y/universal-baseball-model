@@ -80,7 +80,7 @@ def test_stage2e_provenance_hashes_match_preserved_evidence() -> None:
         assert provenance[hash_key] == _sha256(ROOT / provenance[path_key])
 
 
-def test_workflow_records_contract_hash_and_closed_boundary() -> None:
+def test_workflow_records_contract_hash_and_gated_boundary() -> None:
     workflow = json.loads(
         (ROOT / "docs/hitter-v2-workflow-status.json").read_text(encoding="utf-8")
     )
@@ -93,5 +93,11 @@ def test_workflow_records_contract_hash_and_closed_boundary() -> None:
     assert authorization["stage2e_contract_frozen"] is True
     assert authorization["stage2e_candidate_implementation_authorized"] is True
     assert authorization["stage2e_numerical_certification_authorized"] is True
-    assert authorization["stage2e_real_data_fit_authorized"] is False
+    certification = workflow["stage2e_numerical_certification"]
+    assert certification["sha256"] == _sha256(ROOT / certification["path"])
+    assert certification["accepted"] is True
+    fit_authorization = workflow["stage2e_fit_authorization"]
+    assert fit_authorization["chronology_safe_fold_fit_open"] is True
+    assert fit_authorization["forecast_targets_open"] is False
+    assert authorization["stage2e_real_data_fit_authorized"] is True
     assert authorization["stage2e_candidate_scoring_authorized"] is False
