@@ -1321,7 +1321,8 @@ and all `798` tests completed successfully.
 71. `docs/hitter-v2-post-H0-diagnostic-result.md`
 72. `docs/hitter-v2-post-H0-diagnostic-result.json`
 73. `docs/hitter-v2-stability-increment-ladder-contract.json`
-74. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+74. `docs/hitter-v2-stability-increment-ladder-checkpoint.json`
+75. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
