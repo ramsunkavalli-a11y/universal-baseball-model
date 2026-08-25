@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2f_H0_disclosed_validation_scoring_authorization",
+  "date": "2026-08-25",
+  "authorization_source": "explicit_user_instruction_go_for_it_after_frozen_H0_selection_checkpoint",
+  "branch": "hitter-v2-pbp-outcomes",
+  "authorized_parent_commit": "aec8b45",
+  "contract_path": "docs/hitter-v2-stage2f-development-contract.json",
+  "contract_sha256": "00f113b893b2dee340ed230cb1b9753262a422197408313e74dbc829b7aa8f9a",
+  "selection_checkpoint_path": "docs/hitter-v2-stage2f-H0-selection-checkpoint.json",
+  "selection_checkpoint_sha256": "cc5f4b44d8daa90d67dfbf3e95799f7153d05d124bfe888eb18386a04257d011",
+  "current_gate": {
+    "frozen_scorer_implementation_open": true,
+    "scorer_tests_and_hash_freeze_open": true,
+    "one_disclosed_V2022_V2024_comparison_open_only_after_scorer_commit": true,
+    "post_result_documentation_open": true,
+    "model_parameter_changes_open": false
+  },
+  "immutable_boundaries": {
+    "post_result_retuning": false,
+    "grid_expansion": false,
+    "H1_contact_increment": false,
+    "tracking": false,
+    "protected_2026_access": false,
+    "stage3": false,
+    "full_WAR": false
+  },
+  "required_sequence": [
+    "implement_and_test_scorer_without_loading_validation_targets",
+    "freeze_input_and_runner_hashes_in_scoring_contract",
+    "commit_scorer_and_scoring_contract",
+    "execute_disclosed_comparison_exactly_once",
+    "document_pass_or_failure_without_retuning",
+    "stop_for_review"
+  ],
+  "required_stop": "commit_and_report_the_frozen_promotion_decision_then_stop_before_H1_tracking_protected_2026_stage3_or_WAR"
+}

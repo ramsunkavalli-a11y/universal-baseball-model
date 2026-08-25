@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_configuration_selected_and_parameters_frozen_before_disclosed_validation",
+  "status": "stage2f_H0_disclosed_validation_authorized_scorer_not_yet_frozen",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_frozen_stopped_before_disclosed_validation",
+    "hitter_v2": "stage2f_H0_disclosed_validation_authorized_scorer_freeze_active",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -877,6 +877,17 @@
     "protected_2026_opened": false,
     "next_gate": "review_then_explicitly_authorize_one_frozen_disclosed_validation_comparison_without_retuning"
   },
+  "stage2f_H0_scoring_authorization": {
+    "path": "docs/hitter-v2-stage2f-H0-scoring-authorization.json",
+    "authorized_parent_commit": "aec8b45",
+    "frozen_scorer_implementation_authorized": true,
+    "one_disclosed_comparison_authorized_after_scorer_commit": true,
+    "post_result_retuning_authorized": false,
+    "H1_authorized": false,
+    "tracking_authorized": false,
+    "protected_2026_opened": false,
+    "next_gate": "freeze_and_commit_scorer_then_execute_exactly_once_and_stop_at_result"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -1108,9 +1119,10 @@
     "stage2f_training_origin_selection_authorized": true,
     "stage2f_training_origin_selection_complete": true,
     "stage2f_final_parameters_frozen": true,
-    "stage2f_candidate_scoring_authorized": false,
+    "stage2f_candidate_scoring_authorized": true,
+    "stage2f_candidate_scoring_started": false,
     "stage2f_H1_authorized": false,
-    "next_gate": "review_then_explicitly_authorize_one_frozen_disclosed_validation_comparison_without_retuning"
+    "next_gate": "freeze_and_commit_scorer_then_execute_exactly_once_and_stop_at_result"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

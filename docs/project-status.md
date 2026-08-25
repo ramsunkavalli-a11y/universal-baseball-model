@@ -665,6 +665,14 @@ no H0/Marcel comparison was computed, and no promotion decision was made. The
 next gate is review followed by separate authorization for one frozen disclosed
 validation comparison without retuning.
 
+On 2026-08-25 the user explicitly authorized that one-shot disclosed
+comparison. The binding record is
+`docs/hitter-v2-stage2f-H0-scoring-authorization.json`. The scorer and all
+input hashes must be frozen and committed before any validation target is
+loaded. After that commit, exactly one V2022-V2024 comparison against the
+permanent wrapped baselines is open. Model changes, retuning, grid expansion,
+H1, tracking, protected 2026, Stage 3, and WAR remain closed.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1253,7 +1261,8 @@ and all `798` tests completed successfully.
 61. `docs/hitter-v2-stage2f-H0-selection-authorization.json`
 62. `docs/hitter-v2-stage2f-H0-selection-checkpoint.md`
 63. `docs/hitter-v2-stage2f-H0-selection-checkpoint.json`
-64. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+64. `docs/hitter-v2-stage2f-H0-scoring-authorization.json`
+65. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
