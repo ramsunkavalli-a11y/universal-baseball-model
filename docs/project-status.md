@@ -608,6 +608,11 @@ and is limited to five predeclared, evidence-shrunk contact contrasts with exact
 H0 fallback. Implementation, fitting, scoring, H1, tracking, protected 2026,
 Stage 3, and WAR are not authorized.
 
+On 2026-08-25 the user explicitly authorized target-free H0 implementation and
+synthetic invariants only. The authorization is recorded in
+`docs/hitter-v2-stage2f-authorization.json`. Real source fitting, disclosed
+target scoring, H1, tracking, protected 2026, Stage 3, and WAR remain closed.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1187,7 +1192,8 @@ and all `798` tests completed successfully.
 52. `docs/hitter-v2-stage2e-postmortem-result.json`
 53. `docs/hitter-v2-stage2f-development-contract.md`
 54. `docs/hitter-v2-stage2f-development-contract.json`
-55. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+55. `docs/hitter-v2-stage2f-authorization.json`
+56. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
