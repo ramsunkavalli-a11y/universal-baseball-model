@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "post_H0_disclosed_diagnostic",
+  "date": "2026-08-25",
+  "status": "frozen_before_diagnostic_execution",
+  "authorization_path": "docs/hitter-v2-post-H0-diagnostic-authorization.json",
+  "authorization_sha256": "2fca2aa7adee3f56e4b06111c799f5dfe89b50dfa06ddde6228f36d707dec975",
+  "final_H0_result_path": "docs/hitter-v2-stage2f-H0-comparison-result.json",
+  "final_H0_result_sha256": "5df308a15a8d741b5bb1070fc657c6b12242b32230bc8c7fa90b2e47586018af",
+  "frozen_scoring_contract_path": "docs/hitter-v2-stage2f-H0-scoring-contract.json",
+  "frozen_scoring_contract_sha256": "2a2147b8436e0909d33e7af9c508fae35a7a44a80f98846959e9dbc9b2419010",
+  "selection_report_path": "reports/generated/hitter-v2-stage2f-H0-selection/report.json",
+  "selection_report_sha256": "5d9d45d4343edefda5ddc83ba35baa8f5c95ced80f53a0283bb9257703513a7b",
+  "runner_path": "scripts/diagnose_hitter_v2_post_H0.py",
+  "runner_sha256": "ab2b8af56b3172f7546af17a457380dbdd43a674ee1b46bdd1a5d7f4fb347923",
+  "test_path": "tests/test_hitter_v2_post_H0_diagnostic.py",
+  "test_sha256": "0a604294a18c1dbdf5861fd449cc7af12742a73a2018b4e4b4543f3cd21a87d4",
+  "folds": ["V2022", "V2023", "V2024"],
+  "raw_reference_comparison": {
+    "models": ["C0_NESTED_EB", "B1_MARCEL_345_K1200"],
+    "views": ["player", "pa"],
+    "diagnostics": ["overall_primary_metrics", "marginal_outcome_bias_and_proper_scores", "frozen_supported_subgroups"]
+  },
+  "H0_ablation_order": [
+    "L0_REFERENCE_WRAPPED_C0",
+    "L1_AGE_TRANSLATION_ONLY",
+    "L2_PLUS_DEVELOPMENT",
+    "L3_PLUS_CALIBRATION_H0"
+  ],
+  "interpretation_policy": "attribute each consecutive metric and marginal-outcome change descriptively; do not choose, refit, rescue, or score a new candidate",
+  "diagnostic_execution_authorized": true,
+  "candidate_fit_authorized": false,
+  "candidate_scoring_authorized": false,
+  "protected_confirmation_access_authorized": false,
+  "stage3_authorized": false,
+  "full_war_authorized": false,
+  "next_gate": "execute_once_document_findings_and_preregister_distinct_increment_ladder"
+}
