@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2e_J0R_disclosed_comparison",
+  "date": "2026-08-24",
+  "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+  "scorer_commit": "c022b8b",
+  "generated_report_sha256": "cd8383c56f2ac7d63d3c78270c2b7ca82b04a217e50ad7c03863cf56238a09d9",
+  "scoring_contract_sha256": "ded7e590ddd810eb0e471a6d4e3f7c00126ba97947dffedc046ea0299dfc689c",
+  "candidate_scored": true,
+  "promotion_pass": false,
+  "candidate_failure_final": true,
+  "pooled_metrics": {
+    "player": {
+      "J0R": {
+        "terminal_log_loss": 1.712039859702086,
+        "terminal_brier_score": 0.7574934223175627,
+        "woba_rmse": 0.06183107505510234,
+        "runs_per_600_rmse": 31.09693632276731
+      },
+      "Marcel": {
+        "terminal_log_loss": 1.71188904533625,
+        "terminal_brier_score": 0.757460625431614,
+        "woba_rmse": 0.0617764487853233,
+        "runs_per_600_rmse": 31.069462926399
+      },
+      "strongest_rate_comparator_C0": {
+        "woba_rmse": 0.0596707932543232,
+        "runs_per_600_rmse": 30.0104576300033
+      }
+    },
+    "pa": {
+      "J0R": {
+        "terminal_log_loss": 1.7085196636014517,
+        "terminal_brier_score": 0.7555445307027705,
+        "woba_rmse": 0.04223563429295992,
+        "runs_per_600_rmse": 21.241727221941282
+      },
+      "Marcel": {
+        "terminal_log_loss": 1.70838068481478,
+        "terminal_brier_score": 0.755515691222901,
+        "woba_rmse": 0.0421687383804739,
+        "runs_per_600_rmse": 21.2080830077823
+      },
+      "strongest_rate_comparator_C0": {
+        "woba_rmse": 0.0399368498671393,
+        "runs_per_600_rmse": 20.0855908803718
+      }
+    }
+  },
+  "fold_gates": {
+    "V2022": {
+      "primary": false,
+      "calibration": false,
+      "correlation": true,
+      "supported_subgroups": false,
+      "matched_context_ablation": true
+    },
+    "V2023": {
+      "primary": false,
+      "calibration": false,
+      "correlation": false,
+      "supported_subgroups": false,
+      "matched_context_ablation": true
+    },
+    "V2024": {
+      "primary": false,
+      "calibration": false,
+      "correlation": false,
+      "supported_subgroups": false,
+      "matched_context_ablation": true
+    }
+  },
+  "scientific_interpretation": "pitcher_and_platoon_context_improved_in_sample_matched_event_likelihood_but_the_resulting_batter_adjustment_did_not_improve_and_slightly_worsened_future_forecasts",
+  "post_result_tuning": false,
+  "J1_authorized": false,
+  "tracking_authorized": false,
+  "protected_2026_opened": false,
+  "stage3_authorized": false,
+  "full_war_authorized": false,
+  "next_gate": "review_final_failure_and_design_a_distinct_preregistered_candidate_if_explicitly_authorized"
+}

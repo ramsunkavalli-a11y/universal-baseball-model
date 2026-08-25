@@ -579,6 +579,16 @@ all fit, comparator, training, age, and target hashes; inherits the Stage 2d
 fold, metric, calibration, context-ablation, and subgroup gates; and keeps 2026,
 J1, tracking, Stage 3, and WAR closed.
 
+The one-shot comparison is complete and J0R failed. Although the contextual
+model improved matched training-event likelihood in every node and fold, its
+future forecasts were slightly worse than Marcel on pooled log loss, Brier,
+wOBA RMSE, and runs/600 RMSE in both player- and PA-weighted views. Against the
+strongest metric-wise comparator, every fold/view primary gate failed; all
+three folds failed calibration and supported-subgroup guardrails, and V2023 and
+V2024 also failed the correlation guardrail. J0R is a final documented failure:
+no retuning, J1, protected 2026 access, tracking, Stage 3, or WAR is authorized.
+Exact results are in `docs/hitter-v2-stage2e-comparison-result.json`.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1152,7 +1162,8 @@ and all `798` tests completed successfully.
 46. `docs/hitter-v2-stage2e-fit-execution-contract.json`
 47. `docs/hitter-v2-stage2e-fit-result.json`
 48. `docs/hitter-v2-stage2e-scoring-contract.json`
-49. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+49. `docs/hitter-v2-stage2e-comparison-result.json`
+50. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
