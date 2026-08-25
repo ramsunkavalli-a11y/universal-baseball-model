@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2e_J0R_fit_complete_scorer_freeze_pending",
+  "status": "stage2e_J0R_scorer_frozen_disclosed_comparison_open",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -750,6 +750,15 @@
     "post_fit_tuning": false,
     "next_gate": "freeze_exact_scoring_contract_and_runner_before_target_access"
   },
+  "stage2e_scoring_contract": {
+    "path": "docs/hitter-v2-stage2e-scoring-contract.json",
+    "runner_path": "scripts/score_hitter_v2_stage2e_j0r.py",
+    "runner_sha256": "572ebd453083938d9186a25b775d23512c8879c846afa02494cc2f225d05d862",
+    "frozen_before_target_access": true,
+    "candidate_scoring_authorized": true,
+    "protected_2026_access_authorized": false,
+    "next_gate": "execute_one_disclosed_comparison_and_stop_at_decision"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -934,8 +943,8 @@
     "stage2e_numerical_certification_authorized": true,
     "stage2e_real_data_fit_authorized": true,
     "stage2e_real_data_fit_complete": true,
-    "stage2e_candidate_scoring_authorized": false,
-    "next_gate": "freeze_exact_scoring_contract_and_runner_before_target_access"
+    "stage2e_candidate_scoring_authorized": true,
+    "next_gate": "execute_one_disclosed_comparison_and_stop_at_decision"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

@@ -100,4 +100,9 @@ def test_workflow_records_contract_hash_and_gated_boundary() -> None:
     assert fit_authorization["chronology_safe_fold_fit_open"] is True
     assert fit_authorization["forecast_targets_open"] is False
     assert authorization["stage2e_real_data_fit_authorized"] is True
-    assert authorization["stage2e_candidate_scoring_authorized"] is False
+    scoring = workflow["stage2e_scoring_contract"]
+    scoring_contract = json.loads((ROOT / scoring["path"]).read_text(encoding="utf-8"))
+    assert scoring_contract["status"] == "frozen_before_first_target_access"
+    assert scoring["runner_sha256"] == _sha256(ROOT / scoring["runner_path"])
+    assert scoring["protected_2026_access_authorized"] is False
+    assert authorization["stage2e_candidate_scoring_authorized"] is True

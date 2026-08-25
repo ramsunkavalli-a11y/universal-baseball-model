@@ -573,6 +573,12 @@ probability-sum error was `4.44e-16`. Prediction, increment, batter-effect, and
 fixed-effect hashes for V2022-V2024 are frozen in
 `docs/hitter-v2-stage2e-fit-result.json`. No post-fit tuning is permitted.
 
+The one-shot disclosed comparison is now frozen before target access in
+`docs/hitter-v2-stage2e-scoring-contract.json`. It binds the exact scorer and
+all fit, comparator, training, age, and target hashes; inherits the Stage 2d
+fold, metric, calibration, context-ablation, and subgroup gates; and keeps 2026,
+J1, tracking, Stage 3, and WAR closed.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1145,7 +1151,8 @@ and all `798` tests completed successfully.
 45. `docs/hitter-v2-stage2e-fit-authorization.json`
 46. `docs/hitter-v2-stage2e-fit-execution-contract.json`
 47. `docs/hitter-v2-stage2e-fit-result.json`
-48. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+48. `docs/hitter-v2-stage2e-scoring-contract.json`
+49. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2e_J0R_disclosed_comparison",
+  "date": "2026-08-24",
+  "status": "frozen_before_first_target_access",
+  "authorization_source": "conditional_user_authorization_recorded_in_docs/hitter-v2-stage2e-authorization.json",
+  "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+  "runner_path": "scripts/score_hitter_v2_stage2e_j0r.py",
+  "runner_sha256": "572ebd453083938d9186a25b775d23512c8879c846afa02494cc2f225d05d862",
+  "runner_test_sha256": "54c2492e9a64026febe9fae59b71b3dee230b0301fc93d7d9f7f99c7b69ed0b0",
+  "fit_result_sha256": "b4cc1da5db21c5988e12a43a436fcfcaaab28d9f1ac8bf65460129dbaf90daea",
+  "fit_report_sha256": "f8abca0d1a778caf012abc81405ee33e9a89be7a8c67244609bdc8e83bbacde2",
+  "event_input_sha256": "a6cd82a5ac8c9382dc474a968bad6b5e6b48599b7ccfc1c6cfbe7a9a1cba515d",
+  "comparators": ["B0_ONE_YEAR_EB", "B1_MARCEL_345_K1200", "C0_NESTED_EB"],
+  "metric_wise_comparator": true,
+  "folds": {
+    "V2022": {
+      "prediction_sha256": {
+        "B0_ONE_YEAR_EB": "c0e45b758326085d369b99b8108873eed65241d822dc8daf05d12206baaf9dd2",
+        "B1_MARCEL_345_K1200": "1d751597de8c6f6df5fc17f22762d70135eb507ce209554074d141f88a133872",
+        "C0_NESTED_EB": "01abd3f24d44c70d6c8fb7f4a8dec03609fad6223422017aa566a5748d3c0837",
+        "J0R_FIXED_INFORMATION_SHRINKAGE": "7c2b285f16c8509aabb403d830869398d0ab51f32942c73255ec36210aecf385"
+      },
+      "target_sha256": "da71d79e7ac3b301aa7e1ff68c15293ce1a1309d49b1655b5cb13e3b678e96a0",
+      "training_sha256": "9d63aa2c1d1b6b7b214a285637ca9b45e4c710ad77ff9bac23472f77e7df2fb4",
+      "age_sha256": "418c478eef4ca21cfe3f70ea34ed0633dc843d75a2803c4440d33818bb2147fb"
+    },
+    "V2023": {
+      "prediction_sha256": {
+        "B0_ONE_YEAR_EB": "617f68866940f1b3d924a127fcb2dd906c2f0fa89b3d9f1ca93a811664a3c7a4",
+        "B1_MARCEL_345_K1200": "0913b053d66d1a43bcd4e2f3d8bd54880dd01411cf9aba0dd6cbf10e770980a8",
+        "C0_NESTED_EB": "a87f8e7b8764b4c0f87a4194f73f1164f97ea22997ac7a230113c673e485bd89",
+        "J0R_FIXED_INFORMATION_SHRINKAGE": "4fb206ff26503794f4b0ba75dd2f42359395deff6a3557ade01c5f8ee180d0bd"
+      },
+      "target_sha256": "3d6e51c1b35f0dd18a89a70dc7e671255d2fe95c45aecf62a14d9f124fedebd5",
+      "training_sha256": "f777d1a9c19546f4579fa2b0f708252b2a6782ceeb5f4065fa6373fa38c03a8c",
+      "age_sha256": "e3c32773ceba495c238e49a8fb723d16fcfebcaecd8f19e0d61ce46d435cfc86"
+    },
+    "V2024": {
+      "prediction_sha256": {
+        "B0_ONE_YEAR_EB": "5196aed385580e40da374dbdcc08b160a5c6962d6fc36063c6a9a04f57d6bdfd",
+        "B1_MARCEL_345_K1200": "096872097d30b72e59f5cc0c0c5980e2ff3e78d86eefc4ebe3f6175541eed476",
+        "C0_NESTED_EB": "07094de3caf766aec094282b2e8a4a12c914b28161c4e5ef43dcab5c7b4ca934",
+        "J0R_FIXED_INFORMATION_SHRINKAGE": "a32078ed7a660c0408bad54273acaddca6223a901ba7835a796e7a04b91810aa"
+      },
+      "target_sha256": "f68fe47a1baf214afe4077aaa6e9052ed67ca39c5591c9db20ffb7bebbd153e6",
+      "training_sha256": "f6703f5d2f6027b8a8143b1f62ce754e924cbabb23164f23d82055a421eb36d9",
+      "age_sha256": "54e9e6d6f4af219e17d1e0ff4f797c0371e64cce49ff6197f36e5bd81a6d23fb"
+    }
+  },
+  "promotion_rule": {
+    "per_fold_and_weighting": "improve log loss, Brier, wOBA RMSE, and runs/600 RMSE by more than 1e-8 versus metric-wise comparator",
+    "pooled_proper_relative_minimum": 0.0025,
+    "pooled_rate_rmse_relative_minimum": 0.01,
+    "correlation_maximum_decline": 0.01,
+    "woba_calibration_intercept_absolute_max": 0.005,
+    "woba_calibration_slope_range": [0.9, 1.1],
+    "terminal_component_slope_range": [0.8, 1.2],
+    "predicted_decile_absolute_woba_error_max": 0.01,
+    "supported_subgroup_rate_reversal": "woba_rmse_delta_gt_0.002_and_runs_per_600_rmse_delta_gt_0.5",
+    "supported_subgroup_proper_reversal": "log_loss_delta_gt_0.0005_and_brier_delta_gt_0.0005",
+    "matched_context_ablation": "contextual_unpenalized_event_log_loss_improves_by_more_than_1e-8_in_every_node_fold",
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260824,
+    "all_applicable_rules_required": true
+  },
+  "subgroups": {
+    "standard": ["level", "age", "evidence", "movement", "K", "power"],
+    "context": ["context_readiness", "dominant_platoon_cell", "median_K_pitcher_evidence_band", "dominant_source_system"],
+    "level_support": [100, 10000],
+    "other_support": [50, 5000]
+  },
+  "candidate_scoring_authorized": true,
+  "post_result_tuning_authorized": false,
+  "protected_2026_access_authorized": false,
+  "J1_authorized": false,
+  "tracking_authorized": false,
+  "stage3_authorized": false,
+  "full_war_authorized": false,
+  "next_gate": "execute_once_and_stop_at_promotion_decision"
+}
