@@ -101,6 +101,7 @@ def _verify_contract(contract: dict[str, object], runner: Path) -> None:
 def age_translation_only(
     wrapped_c0: pl.DataFrame,
     ages: pl.DataFrame,
+    player_context: pl.DataFrame,
     offsets: pl.DataFrame | None,
 ) -> pl.DataFrame:
     """Replace the ALL translation on wrapped C0 with its frozen age-band form."""
@@ -114,6 +115,11 @@ def age_translation_only(
         for row in offsets.iter_rows(named=True)
     }
     joined = wrapped_c0.join(
+        player_context.select("player_id", "level_group"),
+        on="player_id",
+        how="left",
+        validate="1:1",
+    ).join(
         ages.select("player_id", "age_years"), on="player_id", how="left", validate="1:1"
     )
     rows: list[dict[str, object]] = []
@@ -123,7 +129,7 @@ def age_translation_only(
         }
         links = probability_links(probabilities)
         age_band = translation_age_band(row["age_years"])
-        level = str(row["prior_level"])
+        level = str(row["level_group"])
         adjusted = {
             component: value
             + lookup.get((component, level, age_band), lookup.get((component, level, "ALL"), 0.0))
@@ -133,7 +139,11 @@ def age_translation_only(
         translated = probabilities_from_links(adjusted)
         rows.append(
             {
-                **{key: value for key, value in row.items() if key != "age_years"},
+                **{
+                    key: value
+                    for key, value in row.items()
+                    if key not in ("age_years", "level_group")
+                },
                 "model_id": "L1_AGE_TRANSLATION_ONLY",
                 **{f"p_{outcome}": translated[outcome] for outcome in HITTER_TALENT_OUTCOMES},
             }
@@ -247,9 +257,17 @@ def main() -> int:
         offsets = pl.read_parquet(offsets_path) if offsets_path.exists() else None
         reference_target = translate_target_to_reference(target, offsets)
         l0 = pl.read_parquet(root / "reference_wrapped_c0.parquet")
+        context = (
+            training.sort(
+                ["player_id", "season", "hitter_talent_pa", "league_id"],
+                descending=[False, True, True, False],
+            )
+            .unique("player_id", keep="first", maintain_order=True)
+            .select("player_id", "level_group")
+        )
         layers = {
             "L0_REFERENCE_WRAPPED_C0": l0,
-            "L1_AGE_TRANSLATION_ONLY": age_translation_only(l0, ages, offsets),
+            "L1_AGE_TRANSLATION_ONLY": age_translation_only(l0, ages, context, offsets),
             "L2_PLUS_DEVELOPMENT": pl.read_parquet(root / "h0_precal_predictions.parquet"),
             "L3_PLUS_CALIBRATION_H0": pl.read_parquet(root / "h0_predictions.parquet"),
         }

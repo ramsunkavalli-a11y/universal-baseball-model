@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "post_H0_disclosed_diagnostic",
+  "date": "2026-08-25",
+  "incident": "first execution stopped before report creation because the reference-wrapped C0 artifact does not retain prior_level",
+  "superseded_contract_sha256": "04c98c6dd95cea7a2ee5113d1a208db37fb586663d1742f88cc2604d7d62a047",
+  "report_written": false,
+  "outcome_metrics_persisted": false,
+  "scientific_question_changed": false,
+  "ablation_order_changed": false,
+  "correction": "reattach each player's latest chronology-safe level_group from the already-frozen training table before replacing ALL translation offsets with age-band offsets",
+  "corrected_runner_sha256": "db35a0364c09299f01eb1f4e889f5ce649b941cc4c17cb525aead81e275dc48f",
+  "corrected_test_sha256": "bd9e545a5120e63ba57d38fc91d292744d5bc9a971abb9e2879cfe965a46897e",
+  "protected_confirmation_opened": false,
+  "candidate_fit": false,
+  "candidate_scored": false
+}

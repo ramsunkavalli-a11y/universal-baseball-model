@@ -33,7 +33,10 @@ def test_age_translation_replaces_all_offset_without_changing_simplex() -> None:
         }
     )
     result = MODULE.age_translation_only(
-        pl.DataFrame([row]), pl.DataFrame({"player_id": [1], "age_years": [20.0]}), offsets
+        pl.DataFrame([row]),
+        pl.DataFrame({"player_id": [1], "age_years": [20.0]}),
+        pl.DataFrame({"player_id": [1], "level_group": ["AAA"]}),
+        offsets,
     )
     assert result["model_id"][0] == "L1_AGE_TRANSLATION_ONLY"
     assert abs(sum(result[f"p_{outcome}"][0] for outcome in HITTER_TALENT_OUTCOMES) - 1.0) < 1e-12
