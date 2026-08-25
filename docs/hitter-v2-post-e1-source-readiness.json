@@ -1,0 +1,134 @@
+{
+  "record_schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "post_e1_independent_design_review",
+  "recorded_date": "2026-08-24",
+  "status": "source_readiness_review_only_no_candidate_authorized",
+  "inputs": [
+    {
+      "input": "terminal_pa_outcomes",
+      "tier": "universal_pbp",
+      "repo_status": "certified_and_materialized",
+      "recommended_role": "primary_player_skill_measurement",
+      "next_action": "reuse"
+    },
+    {
+      "input": "game_date_player_game_league_level",
+      "tier": "universal_pbp_official",
+      "repo_status": "certified_and_materialized",
+      "recommended_role": "chronology_recency_and_environment_identity",
+      "next_action": "reuse"
+    },
+    {
+      "input": "birth_date_age_relative_to_level",
+      "tier": "official_identity_metadata",
+      "repo_status": "existing_exact_age_overlay_with_complete_stage2_fold_coverage",
+      "recommended_role": "hierarchical_development_prior",
+      "next_action": "reuse_but_redesign_component_specific_age_effects"
+    },
+    {
+      "input": "park_venue",
+      "tier": "official_metadata",
+      "repo_status": "existing_stage2_source_with_99_8237_percent_official_pa_coverage",
+      "recommended_role": "nuisance_context_not_player_talent",
+      "next_action": "separate_from_failed_combined_C1_adjustment"
+    },
+    {
+      "input": "batter_side",
+      "tier": "universal_pbp",
+      "repo_status": "canonical_pitch_and_sequence_field",
+      "recommended_role": "platoon_and_side_specific_process_context",
+      "next_action": "audit_coverage_and_authority_by_level_season"
+    },
+    {
+      "input": "pitcher_hand",
+      "tier": "universal_pbp",
+      "repo_status": "canonical_pitch_and_sequence_field",
+      "recommended_role": "platoon_context",
+      "next_action": "audit_coverage_and_authority_by_level_season"
+    },
+    {
+      "input": "pitcher_identity",
+      "tier": "universal_pbp",
+      "repo_status": "canonical_source_and_official_sequence_field",
+      "recommended_role": "grouping_key_for_prior_only_cross_fitted_opponent_quality",
+      "next_action": "audit_identity_coverage_and_chronology"
+    },
+    {
+      "input": "direction_trajectory",
+      "tier": "universal_pbp_auxiliary",
+      "repo_status": "materialized_at_97_1073_percent_of_terminal_contacts_but_cross_source_measurement_equivalence_unproven",
+      "recommended_role": "optional_side_specific_latent_skill_measurement_after_base_freeze",
+      "next_action": "do_not_repair_or_rescore_E1"
+    },
+    {
+      "input": "exit_velocity_launch_angle",
+      "tier": "tracking_optional",
+      "repo_status": "reconciled_2021_2023_artifacts_for_1252_1265_1369_players_and_prior_forward_EV_signal",
+      "recommended_role": "reliability_weighted_increment",
+      "next_action": "defer_until_pbp_base_passes"
+    },
+    {
+      "input": "estimated_distance",
+      "tier": "tracking_or_enriched_pbp_optional",
+      "repo_status": "360929_of_1954502_classified_batted_ball_pa_18_4665_percent_and_99_936_percent_coavailable_with_EV",
+      "recommended_role": "optional_air_power_residual",
+      "next_action": "defer_until_pbp_base_passes"
+    },
+    {
+      "input": "pitch_type_location_speed_movement",
+      "tier": "tracking_or_enriched_pbp_optional",
+      "repo_status": "canonical_pitch_schema_fields_exist_but_universal_coverage_not_certified",
+      "recommended_role": "optional_opponent_and_process_context",
+      "next_action": "future_capability_audit"
+    },
+    {
+      "input": "prior_lineup_slot",
+      "tier": "official_boxscore_metadata",
+      "repo_status": "observed_in_diagnostic_scripts_not_a_certified_model_artifact",
+      "recommended_role": "separate_lagged_team_level_centered_organizational_belief_prior_for_sparse_players",
+      "next_action": "source_and_endogeneity_audit_before_any_model_use"
+    },
+    {
+      "input": "games_pa_continuity",
+      "tier": "official_aggregate",
+      "repo_status": "available_from_existing_player_game_and_season_tables",
+      "recommended_role": "opportunity_and_durability_not_neutral_batting_rate",
+      "next_action": "reserve_for_mlb_opportunity_product"
+    },
+    {
+      "input": "height_weight",
+      "tier": "metadata_optional",
+      "repo_status": "no_certified_hitter_v2_source_pipeline",
+      "recommended_role": "at_most_low_weight_aging_or_similarity_prior",
+      "next_action": "defer"
+    },
+    {
+      "input": "country_of_origin",
+      "tier": "metadata_excluded",
+      "repo_status": "no_certified_hitter_v2_source_pipeline",
+      "recommended_role": "not_a_talent_predictor",
+      "next_action": "exclude_absent_specific_transition_mechanism_and_fairness_review"
+    },
+    {
+      "input": "sprint_speed",
+      "tier": "tracking_optional",
+      "repo_status": "no_certified_hitter_v2_source_pipeline_found",
+      "recommended_role": "possible_non_hr_reach_and_baserunning_increment",
+      "next_action": "defer"
+    }
+  ],
+  "design_findings": {
+    "next_architecture": "joint_contextual_nested_terminal_outcome_model",
+    "regularization_requirement": "effect_size_prior_must_be_invariant_to_predictor_rescaling",
+    "disclosed_2022_2024_role": "development_and_model_criticism_only",
+    "protected_2026_opened": false,
+    "new_candidate_fit": false,
+    "new_candidate_scored": false,
+    "stage2d_contract_frozen": false,
+    "tracking_authorized": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false
+  },
+  "next_gate": "source_only_matchup_context_readiness_audit"
+}
