@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "post_H0_diagnostic_complete_distinct_candidate_preregistered_before_fit",
+  "status": "S0_target_free_fit_authorized_before_implementation",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -953,6 +953,14 @@
     "candidate_fit_authorized": false,
     "candidate_scoring_authorized": false,
     "next_gate": "review_then_explicitly_authorize_S0_target_free_implementation_and_fit"
+  },
+  "S0_fit_authorization": {
+    "path": "docs/hitter-v2-S0-fit-authorization.json",
+    "authorized_parent_commit": "eaf6cf00a1dab3cf28669ce6d0ee5997b5a020b0",
+    "target_free_implementation_and_fit_authorized": true,
+    "disclosed_validation_scoring_authorized": false,
+    "protected_2026_opened": false,
+    "stop_boundary": "freeze_S0_fit_artifacts_and_stop_before_scoring"
   },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,

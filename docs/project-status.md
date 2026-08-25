@@ -723,6 +723,11 @@ shape, and tracking only as separate residual increments. No new candidate has
 been fit or scored, and the protected confirmation season remains sealed.
 The post-H0 checkpoint passed all 993 repository tests and canonical lint.
 
+On 2026-08-25 the user authorized target-free implementation and fitting of
+the preregistered S0 global C0/Marcel stability blend. Disclosed validation
+scoring, later ladder increments, protected 2026 access, Stage 3, and WAR are
+not authorized. The required stop is a hashed S0 fit checkpoint before scoring.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without

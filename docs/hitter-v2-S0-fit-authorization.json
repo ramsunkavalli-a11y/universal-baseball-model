@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "S0_target_free_implementation_and_fit",
+  "date": "2026-08-25",
+  "status": "authorized_before_implementation",
+  "user_authorization": "go for it",
+  "authorized_parent_commit": "eaf6cf00a1dab3cf28669ce6d0ee5997b5a020b0",
+  "preregistration_path": "docs/hitter-v2-stability-increment-ladder-contract.json",
+  "preregistration_sha256": "d40ce5a4d5b68155efb6ad3ff5e1ee6a067f2d68d789a6c0036380ffb8f7b4b2",
+  "authorized": {
+    "S0_target_free_implementation": true,
+    "S0_training_origin_weight_selection": true,
+    "S0_full_population_fit": true,
+    "artifact_freeze_and_tests": true
+  },
+  "not_authorized": {
+    "disclosed_validation_scoring": false,
+    "post_fit_weight_change": false,
+    "L0_translation_fit": false,
+    "A0_aging_fit": false,
+    "D0_contact_shape_fit": false,
+    "T0_tracking_fit": false,
+    "protected_2026_access": false,
+    "stage3": false,
+    "full_WAR": false
+  },
+  "stop_boundary": "freeze_S0_fit_artifacts_and_report_without_loading_disclosed_target_tables"
+}
