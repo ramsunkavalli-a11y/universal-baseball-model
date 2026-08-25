@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "matchup_context_source_audit_complete",
+  "status": "matchup_context_sidecar_materialization_complete",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "matchup_source_capable_next_sidecar_materialization_only",
+    "hitter_v2": "matchup_sidecar_certified_next_joint_candidate_preregistration_only",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -517,6 +517,29 @@
     "candidate_scored": false,
     "protected_2026_opened": false
   },
+  "matchup_context_sidecar_materialization": {
+    "accepted": true,
+    "checkpoint_path": "docs/hitter-v2-matchup-context-sidecar-checkpoint.md",
+    "checkpoint_sha256": "c3c5a186b03f03394826482683f96aa0aa8f898992c36b85f7f4be3b9d102dd6",
+    "result_path": "docs/hitter-v2-matchup-context-sidecar-result.json",
+    "result_sha256": "bece9733fa8f348cb50324c26024c51422807e559a30369fff18198bf5462709",
+    "module_path": "src/universal_baseball/hitter_v2_matchup_context.py",
+    "module_sha256": "d30abc8ad73429601da5e3af8fb622b65ecd1224daa20b4f876b3d8bcac44747",
+    "script_path": "scripts/materialize_hitter_v2_matchup_context_sidecar.py",
+    "script_sha256": "851f8fee35a5aed13f026e1b035ec9acf553fb9c6823a9b6b1f4f0cc6f1f57cf",
+    "generated_report_sha256": "1dbb821701783e5ba0863c746b06ce2e9e94019bb29b0298f68dbf8154af749e",
+    "sidecar_pa": 3810001,
+    "matchup_ready_pa": 3809992,
+    "modeling_join_ready_pa": 3691876,
+    "source_conflict_pa": 9,
+    "exact_accepted_player_games": 937255,
+    "failed_closed_player_games": 31922,
+    "sidecar_sha256": "c18e6e09b3a015d5b973f537f928b9afc5b2dd0eaae11f4ee7ddcf882e440b53",
+    "reconciliation_sha256": "625e2f93f8303a86e92b1e5cb0f8c45371acb2ec820c0653f671ed52047053ef",
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -590,8 +613,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 894,
-      "duration_seconds": 11.28
+      "passed": 899,
+      "duration_seconds": 11.14
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -607,6 +630,11 @@
       "command": "python -m pytest tests/test_hitter_v2_matchup_context_source_audit.py",
       "status": "passed",
       "passed": 1
+    },
+    "matchup_sidecar_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_matchup_context.py",
+      "status": "passed",
+      "passed": 5
     }
   },
   "authorization": {
@@ -637,8 +665,9 @@
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
     "matchup_context_source_audit_complete": true,
-    "matchup_context_sidecar_certified": false,
-    "next_gate": "source_only_matchup_context_sidecar_materialization_and_reconciliation"
+    "matchup_context_sidecar_certified": true,
+    "joint_contextual_candidate_contract_frozen": false,
+    "next_gate": "pre_register_joint_contextual_candidate_contract_no_fit_or_scoring"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -663,6 +692,9 @@
     "The independent design review found Stage 2c regularization was not invariant to feature rescaling and recommended a new joint contextual outcome architecture; this diagnosis cannot be used to repair or rescore E1.",
     "Raw 2021-2024 affiliated PBP has complete batter, pitcher, batter-side, and pitcher-hand fields, but 762 of 3811570 PAs contain at least one within-PA matchup conflict and must fail closed.",
     "The existing Hitter v2 Stage 1 terminal artifacts do not retain pitcher identity or pitcher hand; a one-to-one matchup sidecar must be certified before any opponent-context candidate is authorized.",
-    "Strictly prior-date pitcher evidence is sparse in rookie/complex leagues, so any eventual opponent effect requires smooth shrinkage and exact neutral fallback rather than a hard evidence cutoff."
+    "Strictly prior-date pitcher evidence is sparse in rookie/complex leagues, so any eventual opponent effect requires smooth shrinkage and exact neutral fallback rather than a hard evidence cutoff.",
+    "The matchup sidecar reconciles 3691876 PAs to exact accepted player-games; all other rows retain the universal batting baseline but must receive a neutral opponent-context fallback.",
+    "MiLB terminal-sequence versus official player-game PA mismatches are usually plus or minus one and cannot be resolved to an individual PA from aggregated outcome authority, so 26345 mismatched player-games fail closed.",
+    "Pitcher evidence counts based on outcome-ready rows are distinct from raw matchup availability and are not themselves pitcher-quality estimates."
   ]
 }

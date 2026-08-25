@@ -434,15 +434,30 @@ prior-date pitcher history reaches 88.85% of PAs at 50 prior BF and 79.83% at
 leagues. Same-day evidence, outcomes, targets, candidate predictions, and 2026
 were not used.
 
-The PBP source is therefore capable, but the existing Hitter v2 terminal
-artifacts dropped pitcher identity and pitcher hand. No opponent-context
-candidate is authorized yet. The exact next gate is source-only materialization
-and one-to-one reconciliation of a matchup-preserving PA sidecar, with conflict
-flags, provenance, strictly prior-date evidence, and exact neutral fallback.
-It may not fit or score a hitter, repair E1, open 2026, authorize tracking, or
-proceed to Stage 3/WAR. See
-`docs/hitter-v2-matchup-context-source-audit.md` and
-`docs/hitter-v2-matchup-context-source-result.json`.
+The matchup sidecar is now materialized and reconciled. It contains 3,810,001
+unique certified terminal PAs; 3,809,992 have conflict-free terminal batter,
+pitcher and handedness context. Of those, 3,691,876 also belong to one of
+937,255 accepted player-games whose sidecar PA count exactly equals the existing
+Hitter v2 outcome authority. All four MLB seasons reconcile at 100%. MiLB
+modeling-join readiness ranges from 94.50% to 97.14%; most rejected games differ
+from official authority by exactly one terminal sequence, which cannot be
+assigned to an individual PA from aggregated player-game outcomes.
+
+The sidecar therefore fails closed for 31,922 player-game reconciliation rows.
+Those PAs and players remain in the universal batting baseline and receive an
+exact neutral opponent-context fallback; none is dropped or zero-filled. The
+artifact separately records raw matchup history and strictly prior-date
+outcome-ready pitcher evidence, excluding the entire current date. It does not
+estimate pitcher quality.
+
+No candidate was fitted or scored and protected 2026 remains closed. The exact
+next gate is pre-registration of the joint contextual candidate family,
+standardized/effect-unit priors, prior-only pitcher-quality construction,
+platoon terms, folds, metrics, subgroup guardrails, fallback identity, and
+promotion rule. The contract must be frozen and hashed before any fit or score.
+E1 cannot be repaired or rescored; tracking, Stage 3, and WAR remain
+unauthorized. See `docs/hitter-v2-matchup-context-sidecar-checkpoint.md` and
+`docs/hitter-v2-matchup-context-sidecar-result.json`.
 
 ## Paused post-v1 program — Pitching v1
 
@@ -995,45 +1010,47 @@ and all `798` tests completed successfully.
 24. `docs/hitter-v2-post-e1-source-readiness.json`
 25. `docs/hitter-v2-matchup-context-source-audit.md`
 26. `docs/hitter-v2-matchup-context-source-result.json`
-27. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
-28. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
-29. `docs/hitter-v2-stage2-final-validation-result.json`
-30. `docs/hitter-v2-v1-external-validity-result.json`
-31. `docs/player-value-v1-war-literature-review.md`
-32. `docs/player-value-v1-architecture-contract.md`
-33. `docs/player-value-v1-mlb-centering-contract.md`
-34. `docs/player-value-v1-mlb-centering-2024-membership.json`
-35. `docs/player-value-v1-mlb-centering-2024.json`
-36. `docs/player-value-v1-park-neutrality-audit-contract.md`
-37. `docs/player-value-v1-park-neutrality-audit-result.json`
-38. `docs/player-value-v1-mlb-centering-verification.json`
-39. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md`
-40. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json`
-41. `docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`
-42. `docs/player-value-v1-final-aggregation-contract.md`
-43. `docs/player-value-v1-final-2024.json`
-44. `docs/player-value-v1-uncertainty-contract.md`
-45. `docs/player-value-v1-uncertainty-2024.json`
-46. `docs/player-value-v1-replacement-level-contract.md`
-47. `docs/player-value-v1-replacement-level-2024.json`
-48. `docs/player-value-v1-replacement-level-verification.json`
-49. `docs/player-value-v1-runs-per-win-contract.md`
-50. `docs/player-value-v1-mlb-run-environment-2024.json`
-51. `docs/player-value-v1-batting-runs-contract.md`
-52. `docs/player-value-v1-positional-adjustment-contract.md`
-53. `docs/player-value-v1-defense-production-handoff.md`
-54. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
-55. `docs/player-value-v1-baserunning-source-audit-contract.md`
-56. `docs/player-value-v1-baserunning-source-audit-result.json`
-57. `docs/player-value-v1-steal-projection-selection-contract.md`
-58. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
-59. `docs/player-value-v1-steal-projection-selection-result.json`
-60. `docs/player-value-v1-advancement-projection-selection-contract.md`
-61. `docs/player-value-v1-advancement-projection-selection-result.json`
-62. `docs/player-value-v1-baserunning-run-conversion-contract.md`
-63. `docs/player-value-v1-baserunning-run-conversion-2024.json`
-64. `docs/projection-batting-v1-development-result.json`
-65. `docs/current-talent-results-only-baseline-freeze.md`
+27. `docs/hitter-v2-matchup-context-sidecar-checkpoint.md`
+28. `docs/hitter-v2-matchup-context-sidecar-result.json`
+29. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+30. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
+31. `docs/hitter-v2-stage2-final-validation-result.json`
+32. `docs/hitter-v2-v1-external-validity-result.json`
+33. `docs/player-value-v1-war-literature-review.md`
+34. `docs/player-value-v1-architecture-contract.md`
+35. `docs/player-value-v1-mlb-centering-contract.md`
+36. `docs/player-value-v1-mlb-centering-2024-membership.json`
+37. `docs/player-value-v1-mlb-centering-2024.json`
+38. `docs/player-value-v1-park-neutrality-audit-contract.md`
+39. `docs/player-value-v1-park-neutrality-audit-result.json`
+40. `docs/player-value-v1-mlb-centering-verification.json`
+41. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-contract.md`
+42. `docs/player-value-v1-runs-per-win-pythagenpat-sensitivity-2024.json`
+43. `docs/player-value-v1-alternate-centering-sensitivity-feasibility.json`
+44. `docs/player-value-v1-final-aggregation-contract.md`
+45. `docs/player-value-v1-final-2024.json`
+46. `docs/player-value-v1-uncertainty-contract.md`
+47. `docs/player-value-v1-uncertainty-2024.json`
+48. `docs/player-value-v1-replacement-level-contract.md`
+49. `docs/player-value-v1-replacement-level-2024.json`
+50. `docs/player-value-v1-replacement-level-verification.json`
+51. `docs/player-value-v1-runs-per-win-contract.md`
+52. `docs/player-value-v1-mlb-run-environment-2024.json`
+53. `docs/player-value-v1-batting-runs-contract.md`
+54. `docs/player-value-v1-positional-adjustment-contract.md`
+55. `docs/player-value-v1-defense-production-handoff.md`
+56. `docs/player-value-v1-defense-native-run-conversion-parameters.json`
+57. `docs/player-value-v1-baserunning-source-audit-contract.md`
+58. `docs/player-value-v1-baserunning-source-audit-result.json`
+59. `docs/player-value-v1-steal-projection-selection-contract.md`
+60. `docs/player-value-v1-steal-projection-diagnostic-thresholds.md`
+61. `docs/player-value-v1-steal-projection-selection-result.json`
+62. `docs/player-value-v1-advancement-projection-selection-contract.md`
+63. `docs/player-value-v1-advancement-projection-selection-result.json`
+64. `docs/player-value-v1-baserunning-run-conversion-contract.md`
+65. `docs/player-value-v1-baserunning-run-conversion-2024.json`
+66. `docs/projection-batting-v1-development-result.json`
+67. `docs/current-talent-results-only-baseline-freeze.md`
 
 ## Working rules
 
