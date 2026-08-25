@@ -58,7 +58,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 2b:** **COMPLETE / FAILED DISCLOSED-DEVELOPMENT GATE — NO CANDIDATE SELECTED**
 - **Hitter v2 Stage 2c:** **E1 FAILED FROZEN GATE — LADDER STOPPED; E2 NOT AUTHORIZED**
 - **Hitter v2 post-E1 review:** **DONE — NEXT GATE IS SOURCE-ONLY MATCHUP-CONTEXT READINESS**
-- **Hitter v2 Stage 2f H0:** **TRAINING-ORIGIN CONFIGURATION SELECTED / PARAMETERS FROZEN — STOPPED BEFORE DISCLOSED VALIDATION**
+- **Hitter v2 Stage 2f H0:** **FAILED FINAL DISCLOSED-DEVELOPMENT GATE — NO RETUNING; H1 CLOSED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -690,6 +690,18 @@ that residual to `OTHER_OUT`, leaves PA and substantive probability mass
 unchanged, and adds an exact reconciliation invariant. Model parameters and
 acceptance rules remain frozen.
 
+The completed frozen comparison is documented in
+`docs/hitter-v2-stage2f-H0-comparison-result.md` and its machine-readable
+companion. H0 failed every fold and both weighting views: it did not improve
+any of the four primary metrics over the metric-wise strongest wrapped
+baseline. V2023 was close but still uniformly worse; V2024 materially collapsed
+rare-outcome probabilities and failed rate, proper-score, correlation,
+calibration, and subgroup guardrails. Pooled player-weighted wOBA/runs RMSE was
+0.51% worse and pooled PA-weighted RMSE was 3.92% worse. H0 is a final failed
+challenger. H1 cannot rescue it, and tracking, protected confirmation, Stage 3,
+and WAR remain closed. Further batting work requires a distinct preregistered
+candidate contract after review.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1281,7 +1293,9 @@ and all `798` tests completed successfully.
 64. `docs/hitter-v2-stage2f-H0-scoring-authorization.json`
 65. `docs/hitter-v2-stage2f-H0-scoring-contract.json`
 66. `docs/hitter-v2-stage2f-H0-scoring-execution-incident.json`
-67. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+67. `docs/hitter-v2-stage2f-H0-comparison-result.md`
+68. `docs/hitter-v2-stage2f-H0-comparison-result.json`
+69. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

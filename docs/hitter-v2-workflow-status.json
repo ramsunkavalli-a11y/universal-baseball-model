@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_scorer_refrozen_after_report_free_numerical_incident",
+  "status": "stage2f_H0_failed_final_disclosed_development_gate",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_scorer_refrozen_ready_for_disclosed_validation",
+    "hitter_v2": "stage2f_H0_failed_final_H1_tracking_stage3_and_WAR_closed",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -911,6 +911,21 @@
     "numerical_reconciliation_amendment": true,
     "scorer_refrozen": true
   },
+  "stage2f_H0_comparison_result": {
+    "path": "docs/hitter-v2-stage2f-H0-comparison-result.json",
+    "sha256": "5df308a15a8d741b5bb1070fc657c6b12242b32230bc8c7fa90b2e47586018af",
+    "human_readable_path": "docs/hitter-v2-stage2f-H0-comparison-result.md",
+    "human_readable_sha256": "1f93dead8ce402c845a78ea218b60a4cffb7199bc7c093dfb0ffbb6e02759c61",
+    "generated_report_path": "reports/generated/hitter-v2-stage2f-H0-comparison/report.json",
+    "generated_report_sha256": "cde2b669cc0d1381195eb328a25aff5f47f81a1c4c74a4c94fcd7ceb81f65ea3",
+    "candidate_scored": true,
+    "development_gate_pass": false,
+    "candidate_promoted": false,
+    "post_result_retuning_authorized": false,
+    "H1_authorized": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_final_failure_then_require_a_distinct_preregistered_candidate_contract"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -1089,6 +1104,15 @@
       "scorer_frozen_before_target_access": true,
       "candidate_scored": false,
       "protected_2026_opened": false
+    },
+    "stage2f_H0_final_comparison_validation": {
+      "ruff": "passed",
+      "ruff_command": "python -m ruff check src scripts tests",
+      "pytest": "990_passed",
+      "frozen_comparison_completed": true,
+      "development_gate_pass": false,
+      "post_result_retuning": false,
+      "protected_2026_opened": false
     }
   },
   "authorization": {
@@ -1151,10 +1175,13 @@
     "stage2f_training_origin_selection_complete": true,
     "stage2f_final_parameters_frozen": true,
     "stage2f_candidate_scoring_authorized": true,
-    "stage2f_candidate_scoring_started": false,
+    "stage2f_candidate_scoring_started": true,
     "stage2f_scorer_frozen": true,
+    "stage2f_candidate_scoring_complete": true,
+    "stage2f_H0_development_gate_pass": false,
+    "stage2f_H0_failure_final": true,
     "stage2f_H1_authorized": false,
-    "next_gate": "commit_scorer_then_execute_the_disclosed_comparison_exactly_once_and_stop_at_result"
+    "next_gate": "review_final_failure_then_require_a_distinct_preregistered_candidate_contract_before_more_model_work"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -1190,6 +1217,7 @@
     "Stage 2e J0R passed numerical certification and fit successfully but failed the frozen disclosed comparison; it cannot be retuned, and J1, protected 2026, tracking, Stage 3, and WAR remain closed."
     ,"The Stage 2e postmortem found broad C0 outcome-shrinkage signal but a construct gap from mixing talent with realized future level; Stage 2f therefore freezes a neutral-reference hierarchical outcome candidate while leaving all execution gates closed.",
     "Stage 2f H0 real historical predictor materialization, training-origin configuration selection, and final parameter freeze are complete; disclosed validation scoring and empirical usefulness remain untested and closed pending review.",
-    "V2022 has no training origin, and V2023 cannot identify translation, development, or calibration priors from its lone 2022 origin, so those fold surfaces use the preregistered conservative tie defaults rather than claimed empirical winners."
+    "V2022 has no training origin, and V2023 cannot identify translation, development, or calibration priors from its lone 2022 origin, so those fold surfaces use the preregistered conservative tie defaults rather than claimed empirical winners.",
+    "Stage 2f H0 failed every primary fold/weighting comparison; V2024 rare-outcome probabilities collapsed and pooled player/PA rate RMSE worsened by 0.51/3.92 percent, so H0 is final, H1 cannot rescue it, and no retuning is authorized."
   ]
 }
