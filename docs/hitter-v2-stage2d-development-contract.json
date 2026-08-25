@@ -1,0 +1,366 @@
+{
+  "contract_schema_version": "0.1",
+  "contract_id": "hitter_v2_stage2d_joint_contextual_nested_v1",
+  "program": "hitter_v2",
+  "stage": "2d",
+  "recorded_date": "2026-08-24",
+  "status": "pre_registered_before_event_label_implementation_candidate_fit_or_score",
+  "scientific_question": "Does chronology-safe pitcher and platoon context improve future neutral batting outcomes beyond strong outcome-only projection, with exact outcome-only fallback?",
+  "parent_evidence": {
+    "post_e1_design_review": "docs/hitter-v2-post-e1-independent-design-review.md",
+    "matchup_source_result": "docs/hitter-v2-matchup-context-source-result.json",
+    "matchup_sidecar_result": "docs/hitter-v2-matchup-context-sidecar-result.json",
+    "matchup_sidecar_sha256": "c18e6e09b3a015d5b973f537f928b9afc5b2dd0eaae11f4ee7ddcf882e440b53",
+    "matchup_reconciliation_sha256": "625e2f93f8303a86e92b1e5cb0f8c45371acb2ec820c0653f671ed52047053ef"
+  },
+  "immutable_prior_results": {
+    "failed_candidates": [
+      "C0_NESTED_EB",
+      "C1_HIERARCHICAL_PBP",
+      "D0_NODE_CALIBRATED_C0",
+      "D1_TRAJECTORY_RESIDUAL",
+      "D2_DIRECTION_TRAJECTORY_RESIDUAL",
+      "E1_NESTED_PULLED_OFFB_POWER"
+    ],
+    "e1_repair_or_rescore_allowed": false,
+    "disclosed_2022_2024_can_be_relabelled_confirmation": false
+  },
+  "development_boundary": {
+    "D2022": "disclosed_development_evaluation_only_predictors_through_2021",
+    "D2023": "disclosed_development_evaluation_only_predictors_through_2022",
+    "D2024": "disclosed_development_evaluation_only_predictors_through_2023",
+    "2025": "diagnostic_only_never_selects_rejects_promotes_or_reweights",
+    "2026": "protected_one_shot_confirmation_unopened",
+    "development_success_can_only_authorize_freezing_a_confirmation_package": true,
+    "development_can_promote_to_production": false
+  },
+  "estimand": {
+    "name": "neutral_batting_talent",
+    "definition": "future terminal-outcome probabilities, wOBA, and batting runs per 600 conditional on a future PA in neutral pitcher, platoon, league, level, and park context",
+    "separate_products": [
+      "current_talent_measurement",
+      "one_year_projection",
+      "mlb_opportunity",
+      "complete_hitter_rate_value",
+      "expected_mlb_war"
+    ]
+  },
+  "pre_fit_event_label_gate": {
+    "required": true,
+    "purpose": "attach one exhaustive terminal outcome to each context-eligible PA without fitting a model",
+    "mlb_policy": "reuse structured Savant true-PA event mapping and official two-strike substitution batter authority",
+    "milb_policy": "deterministic structured-event_or_narrative terminal taxonomy followed by exact player-game reconciliation",
+    "taxonomy": [
+      "UBB",
+      "IBB",
+      "HBP",
+      "K",
+      "HR",
+      "3B",
+      "2B",
+      "1B",
+      "ROE",
+      "FC_REACH",
+      "SF",
+      "MULTI_OUT",
+      "OTHER_OUT",
+      "SH_OR_SPECIAL"
+    ],
+    "forbidden_repairs": [
+      "assigning_labels_to_force_player_game_totals",
+      "choosing_duplicate_rows_by_file_order",
+      "using player_names",
+      "using model_predictions",
+      "using_target_season_information_after_forecast_cutoff"
+    ],
+    "failure_policy": "an unresolved or nonreconciling player-game receives no contextual increment and retains the exact outcome-only forecast",
+    "coverage_required_to_authorize_fit": {
+      "overall_context_label_pa_rate": 0.90,
+      "each_mlb_aaa_aa_high_a_single_a_cell": 0.90,
+      "each_rookie_complex_cell": 0.85
+    },
+    "source_amendment_rule": "target-free source-semantic corrections require a new version and hash before any fit; no correction is allowed after a candidate score"
+  },
+  "universal_base": {
+    "model_id": "B1_MARCEL_345_K1200",
+    "role": "strong outcome-only forecast and exact fallback",
+    "recency_weights_oldest_to_newest": [3, 4, 5],
+    "regression_pa": 1200,
+    "fallback_identity": "if context labels, matchup context, or fitted context effects are absent, every terminal probability equals B1 exactly",
+    "coverage_policy": "no player is dropped because matchup context is absent or failed closed"
+  },
+  "nested_nodes": [
+    {
+      "node": "K",
+      "numerator": ["K"],
+      "denominator": "hitter_talent_pa",
+      "pitcher_prior_pa": 200
+    },
+    {
+      "node": "UBB",
+      "numerator": ["UBB"],
+      "denominator": "non_K_non_IBB_hitter_talent_pa",
+      "pitcher_prior_pa": 400
+    },
+    {
+      "node": "HBP",
+      "numerator": ["HBP"],
+      "denominator": "non_K_non_BB_hbp_eligible_pa",
+      "pitcher_prior_pa": 1000
+    },
+    {
+      "node": "HR",
+      "numerator": ["HR"],
+      "denominator": "contact_pa",
+      "pitcher_prior_pa": 400
+    },
+    {
+      "node": "NON_HR_REACH",
+      "numerator": ["1B", "2B", "3B", "ROE", "FC_REACH"],
+      "denominator": "non_HR_ball_in_play",
+      "pitcher_prior_pa": 800
+    },
+    {
+      "node": "HIT_COMPOSITION",
+      "numerator": ["1B", "2B", "3B"],
+      "denominator": "non_HR_hit_in_play",
+      "form": "three_category_multinomial",
+      "pitcher_prior_pa": 800
+    }
+  ],
+  "unchanged_base_nodes": {
+    "IBB": "not neutral batting talent; retain B1 conditional probability",
+    "ROE_vs_FC_REACH": "retain B1 conditional composition",
+    "SF_MULTI_OUT_OTHER_OUT": "retain B1 conditional composition; GIDP remains a separate opportunity model",
+    "SH_OR_SPECIAL": "retain B1 explicit policy"
+  },
+  "pitcher_quality_feature": {
+    "unit": "natural_log_odds_residual_for_the_same_batter_outcome_node",
+    "event_information_boundary": "only outcome-ready PAs with game_date strictly before the current PA game_date",
+    "same_day_events_allowed": false,
+    "future_events_allowed": false,
+    "current_pa_allowed": false,
+    "recency_half_life_seasons": 2.0,
+    "prior_center": "chronology-safe league-season-level event rate using only earlier dates plus previous-season carry",
+    "prior_strength_by_node": "fixed in nested_nodes",
+    "zero_evidence": "pitcher residual exactly zero",
+    "reliability": "implicit in beta_or_dirichlet posterior; no second multiplication",
+    "identity_role": "pitcher ID is a grouping key only and is never a transferable named feature",
+    "model_coefficient": {
+      "prior_mean": 1.0,
+      "prior_sd": 0.25,
+      "constraint": [0.0, 1.5]
+    }
+  },
+  "event_context_model": {
+    "model_id": "J0_JOINT_CONTEXTUAL_NESTED",
+    "likelihood": "penalized binomial per binary node and penalized multinomial for hit composition",
+    "linear_predictor": "league_season_level intercept + batter random effect + pitcher_prior_log_odds coefficient + observed batter_side_by_pitcher_hand effect",
+    "platoon_cells": ["L_vs_L", "L_vs_R", "R_vs_L", "R_vs_R"],
+    "platoon_center": "weighted sum-to-zero within node and training origin",
+    "platoon_prior_log_odds_sd": 0.20,
+    "league_season_level_prior_log_odds_sd": 0.35,
+    "batter_effect_prior": "zero-mean Gaussian with component variance estimated by deterministic marginal maximum likelihood from predictor history only",
+    "batter_effect_sd_bounds": [0.05, 1.25],
+    "batter_effect_optimizer_failure": "use node-specific context increment zero and preserve B1; never choose a value from evaluation results",
+    "matched_uncontextual_model": "fit the same events, player effects, and penalties without pitcher or platoon terms",
+    "context_increment": "contextual batter effect minus matched-uncontextual batter effect on identical event rows",
+    "increment_application": "add recency-precision-weighted context increment to the corresponding B1 nested-node logit",
+    "double_shrinkage": false,
+    "zero_context_evidence": "context increment exactly zero",
+    "player_identity_as_predictor": false,
+    "player_identity_as_random_effect_group": true,
+    "names_available_to_model": false
+  },
+  "candidate_ladder": [
+    {
+      "model_id": "J0_JOINT_CONTEXTUAL_NESTED",
+      "base": "B1_MARCEL_345_K1200",
+      "increment": "pitcher_and_platoon_neutralization_only",
+      "must_pass_before_next_candidate": true
+    },
+    {
+      "model_id": "J1_CONTEXTUAL_COMPONENT_DEVELOPMENT",
+      "base": "J0_JOINT_CONTEXTUAL_NESTED",
+      "increment": "component_specific_age_relative_to_level_and_level_transition projection",
+      "authorized_only_if_j0_passes": true,
+      "cannot_rescue_failed_j0": true
+    }
+  ],
+  "multiseason_projection": {
+    "context_increment_recency_weights_oldest_to_newest": [3, 4, 5],
+    "weighting": "node opportunity count times recency weight times inverse posterior variance",
+    "missing_season": "no pseudo-zero; omit missing measurement",
+    "no_context_history": "exact B1 forecast",
+    "neutral_future_context": "pitcher and platoon nuisance effects are set to their centered zero values"
+  },
+  "j1_forward_development": {
+    "fit_pairs": "only adjacent-season player pairs fully before the forecast target",
+    "V2022": "J1 equals J0 because no earlier disclosed transition pairs exist",
+    "predictors": [
+      "prior_context_adjusted_component_log_odds",
+      "age_relative_to_level",
+      "absolute_age_piecewise_linear_20_24_28_32",
+      "origin_level",
+      "destination_level",
+      "component_evidence"
+    ],
+    "continuous_predictor_transform": "training-origin mean zero and unit variance; store mean and scale",
+    "scale_invariance_test": "multiplying any raw continuous predictor by a positive constant must not change fitted predictions beyond 1e-12",
+    "standardized_age_coefficient_prior_sd": 0.10,
+    "level_transition_log_odds_prior_sd": 0.15,
+    "partial_pooling": "all transition cells shrink to adjacent-direction and global means; no hard support cutoff",
+    "target_membership_or_destination_level_from_target": false,
+    "missing_or_disconnected_path": "J0 forecast with wider uncertainty"
+  },
+  "excluded_from_stage2d": [
+    "park_effects",
+    "venue_handedness_effects",
+    "contact_direction_or_trajectory",
+    "exit_velocity",
+    "launch_angle",
+    "estimated_distance",
+    "barrels_or_hard_hit",
+    "bat_speed",
+    "pitch_type_location_speed_or_movement",
+    "lineup_slot",
+    "height",
+    "weight",
+    "country_of_origin",
+    "tracking_availability",
+    "target_season_membership_playing_time_or_park"
+  ],
+  "fit_protocol": {
+    "hyperparameter_search": false,
+    "variance_components": "estimated from predictor-history likelihood only, never evaluation metrics",
+    "D2022": "fit using source and outcomes dated through 2021 only",
+    "D2023": "fit using source and outcomes dated through 2022 only",
+    "D2024": "fit using source and outcomes dated through 2023 only",
+    "forecast_population": "identical to B1 forecast population",
+    "context_comparison_cohort": "contextual and matched-uncontextual event models use identical labeled PAs",
+    "random_seed": 20260824,
+    "post_score_refit_or_tuning": false
+  },
+  "evaluation": {
+    "folds": ["D2022", "D2023", "D2024"],
+    "weighting_views": ["pa", "player"],
+    "primary_metrics": [
+      "terminal_log_loss",
+      "terminal_brier_score",
+      "future_woba_mae",
+      "future_woba_rmse",
+      "future_runs_per_600_mae",
+      "future_runs_per_600_rmse"
+    ],
+    "secondary_metrics": [
+      "woba_pearson",
+      "woba_spearman",
+      "component_log_loss",
+      "component_brier",
+      "calibration_intercept",
+      "calibration_slope",
+      "predicted_decile_calibration",
+      "league_level_aggregate_calibration",
+      "coverage"
+    ],
+    "metric_wise_comparator": "lowest loss among B0_ONE_YEAR_EB, B1_MARCEL_345_K1200, and frozen failed C0_NESTED_EB on identical forecast-target rows",
+    "context_ablation_comparator": "matched-uncontextual model on identical context-labeled PA rows",
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260824
+  },
+  "support_and_subgroups": {
+    "level_support": "at least 100 players and 10000 target hitter-talent PA in fold-level cell",
+    "other_support": "at least 50 players and 5000 target hitter-talent PA",
+    "required": [
+      "MLB",
+      "AAA",
+      "AA",
+      "HIGH_A",
+      "SINGLE_A",
+      "ROOKIE_COMPLEX",
+      "age_band",
+      "prior_evidence_band",
+      "promotion_demotion_stayer",
+      "high_low_K",
+      "high_low_power",
+      "matchup_context_ready_vs_fallback",
+      "batter_side_pitcher_hand_cell",
+      "prior_outcome_ready_pitcher_pa_0_1_49_50_99_100_199_200_plus",
+      "ARMSTJC_PBP_vs_BASEBALL_SAVANT"
+    ]
+  },
+  "development_advance_rule": {
+    "scope": "eligibility to freeze a future 2026 confirmation package only",
+    "per_fold_proper_scores": "J0 must improve terminal log loss and Brier by more than 1e-8 versus the metric-wise comparator in every fold and weighting view",
+    "pooled_proper_scores": "J0 must improve terminal log loss and Brier by at least 0.25 percent relative in both weighting views",
+    "per_fold_rate_value": "J0 must improve wOBA RMSE and runs_per_600 RMSE by more than 1e-8 versus the metric-wise comparator in every fold and weighting view",
+    "pooled_rate_value": "J0 must improve wOBA RMSE and runs_per_600 RMSE by at least 1.0 percent relative in both weighting views",
+    "matched_context_ablation": "pitcher_and_platoon contextual likelihood must improve node log loss versus the matched-uncontextual model on identical event rows in every supported node-fold",
+    "calibration": {
+      "woba_intercept_absolute_max": 0.005,
+      "woba_slope_range": [0.90, 1.10],
+      "terminal_component_slope_range": [0.80, 1.20],
+      "maximum_predicted_decile_absolute_woba_error": 0.010
+    },
+    "correlation_guardrail": "neither Pearson nor Spearman may decline by more than 0.01 versus the metric-wise comparator in any fold/view",
+    "supported_subgroup_rate_reversal": "woba_rmse worse by more than 0.002 and runs_per_600_rmse worse by more than 0.5",
+    "supported_subgroup_proper_reversal": "terminal log loss and Brier each worse by more than 0.0005",
+    "j1_ablation": "J1 is evaluated only after J0 passes; J1 must improve both proper scores and wOBA/runs RMSE versus J0 in every fold/view with no material supported subgroup reversal",
+    "selection": "least complex candidate clearing every applicable rule",
+    "failure": "document and stop without tuning; a failed J0 forbids J1"
+  },
+  "scientific_invariants": [
+    "terminal probabilities are exhaustive nonnegative and normalized",
+    "removing matchup context returns B1 probabilities exactly",
+    "a failed-closed sidecar row returns B1 probabilities exactly",
+    "as context evidence approaches zero the context increment converges smoothly to zero",
+    "pitcher features for a PA are unchanged by adding same-date or future pitcher events",
+    "contextual and matched-uncontextual fits use identical PA outcome rows",
+    "rescaling a continuous J1 predictor cannot change predictions",
+    "target-year outcomes membership parks run values and centering cannot affect predictors",
+    "player and pitcher names are unavailable to the estimator",
+    "moving coherent probability from an out to 1B 2B 3B or HR increases value in that order",
+    "J1 equals J0 in D2022",
+    "contact shape and tracking cannot alter J0 or J1"
+  ],
+  "required_persistence": [
+    "contract and implementation hashes",
+    "source and label hashes",
+    "training and target keys",
+    "all variance components and fixed effects",
+    "context evidence and fallback reasons",
+    "matched context ablation rows",
+    "all metrics calibration and subgroups",
+    "failed candidates",
+    "exact commands dependency versions and deterministic artifact hashes"
+  ],
+  "implementation_state": {
+    "event_label_sidecar_implemented": false,
+    "candidate_implemented": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "scorer_frozen": false
+  },
+  "protected_confirmation_gate": {
+    "authorized_now": false,
+    "requirements": [
+      "event label gate passes",
+      "J0 and any authorized J1 development result passes",
+      "selected implementation coefficients and refit protocol frozen",
+      "eligible population and source hashes frozen",
+      "one-shot confirmation scorer frozen and committed",
+      "explicit review authorization"
+    ],
+    "failure_is_final_for_candidate": true
+  },
+  "downstream_authorization": {
+    "event_label_source_materialization": true,
+    "candidate_implementation_after_label_gate": false,
+    "candidate_fit": false,
+    "candidate_scoring": false,
+    "tracking": false,
+    "stage3": false,
+    "full_war": false
+  },
+  "next_gate": "source_only_terminal_outcome_label_sidecar_materialization_and_reconciliation"
+}

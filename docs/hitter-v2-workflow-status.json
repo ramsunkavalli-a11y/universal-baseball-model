@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "matchup_context_sidecar_materialization_complete",
+  "status": "stage2d_joint_contextual_contract_frozen",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "matchup_sidecar_certified_next_joint_candidate_preregistration_only",
+    "hitter_v2": "stage2d_contract_frozen_next_terminal_outcome_label_sidecar_only",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -77,6 +77,13 @@
       "superseded_schema_0_2_sha256": "a2e8e262dfdd0143332136edacac611e4ff4a29e6fa265a26b45fc181b6bf772",
       "superseded_schema_0_3_sha256": "53c30e0819dee62b5420cd365cd2f9b140fa4972cded0fae6637b517cc9e35ec",
       "frozen_before_candidate_fit_or_score": true
+    },
+    "stage2d_development_contract": {
+      "path": "docs/hitter-v2-stage2d-development-contract.json",
+      "sha256": "5f9e51f61a89d17426159107534e5dfed491110e98b1317c59d0d59779e9a952",
+      "human_readable_path": "docs/hitter-v2-stage2d-development-contract.md",
+      "human_readable_sha256": "fa7d7fb510db00855b16c6fc6566221802df9e0371fd3f562410da8a43c14416",
+      "frozen_before_event_label_implementation_candidate_fit_or_score": true
     }
   },
   "baseline_reproduction": {
@@ -540,6 +547,22 @@
     "candidate_scored": false,
     "protected_2026_opened": false
   },
+  "stage2d_joint_contextual_contract": {
+    "accepted": true,
+    "contract_path": "docs/hitter-v2-stage2d-development-contract.json",
+    "contract_sha256": "5f9e51f61a89d17426159107534e5dfed491110e98b1317c59d0d59779e9a952",
+    "human_readable_path": "docs/hitter-v2-stage2d-development-contract.md",
+    "human_readable_sha256": "fa7d7fb510db00855b16c6fc6566221802df9e0371fd3f562410da8a43c14416",
+    "base_model": "B1_MARCEL_345_K1200",
+    "first_candidate": "J0_JOINT_CONTEXTUAL_NESTED",
+    "second_candidate": "J1_CONTEXTUAL_COMPONENT_DEVELOPMENT_only_after_J0_passes",
+    "event_label_sidecar_implemented": false,
+    "candidate_implemented": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false,
+    "next_gate": "source_only_terminal_outcome_label_sidecar_materialization_and_reconciliation"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -613,8 +636,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 899,
-      "duration_seconds": 11.14
+      "passed": 903,
+      "duration_seconds": 10.07
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -635,6 +658,11 @@
       "command": "python -m pytest tests/test_hitter_v2_matchup_context.py",
       "status": "passed",
       "passed": 5
+    },
+    "stage2d_contract_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_stage2d_contract.py",
+      "status": "passed",
+      "passed": 4
     }
   },
   "authorization": {
@@ -666,8 +694,12 @@
     "full_war_authorized": false,
     "matchup_context_source_audit_complete": true,
     "matchup_context_sidecar_certified": true,
-    "joint_contextual_candidate_contract_frozen": false,
-    "next_gate": "pre_register_joint_contextual_candidate_contract_no_fit_or_scoring"
+    "joint_contextual_candidate_contract_frozen": true,
+    "terminal_outcome_label_sidecar_authorized": true,
+    "joint_contextual_candidate_implementation_authorized": false,
+    "joint_contextual_candidate_fit_authorized": false,
+    "joint_contextual_candidate_scoring_authorized": false,
+    "next_gate": "source_only_terminal_outcome_label_sidecar_materialization_and_reconciliation"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -695,6 +727,7 @@
     "Strictly prior-date pitcher evidence is sparse in rookie/complex leagues, so any eventual opponent effect requires smooth shrinkage and exact neutral fallback rather than a hard evidence cutoff.",
     "The matchup sidecar reconciles 3691876 PAs to exact accepted player-games; all other rows retain the universal batting baseline but must receive a neutral opponent-context fallback.",
     "MiLB terminal-sequence versus official player-game PA mismatches are usually plus or minus one and cannot be resolved to an individual PA from aggregated outcome authority, so 26345 mismatched player-games fail closed.",
-    "Pitcher evidence counts based on outcome-ready rows are distinct from raw matchup availability and are not themselves pitcher-quality estimates."
+    "Pitcher evidence counts based on outcome-ready rows are distinct from raw matchup availability and are not themselves pitcher-quality estimates.",
+    "The certified matchup sidecar does not carry individual terminal-outcome labels, so J0 cannot be implemented or fit until a deterministic 14-category PA label sidecar passes the frozen coverage and exact player-game reconciliation gate."
   ]
 }
