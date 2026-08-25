@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_disclosed_validation_authorized_scorer_not_yet_frozen",
+  "status": "stage2f_H0_scorer_frozen_before_one_shot_disclosed_validation",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_disclosed_validation_authorized_scorer_freeze_active",
+    "hitter_v2": "stage2f_H0_scorer_frozen_ready_for_one_shot_disclosed_validation",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -888,6 +888,18 @@
     "protected_2026_opened": false,
     "next_gate": "freeze_and_commit_scorer_then_execute_exactly_once_and_stop_at_result"
   },
+  "stage2f_H0_scoring_contract": {
+    "path": "docs/hitter-v2-stage2f-H0-scoring-contract.json",
+    "sha256": "e247bb3290fe8039313a091a7be499eaef1c54496cead8770b8fbbe376894ee6",
+    "runner_path": "scripts/score_hitter_v2_stage2f_H0.py",
+    "runner_sha256": "c45f9949b0b53885d525d136b9e0cf98eaf4bd7a27828e6cfe9641b2f7cba09f",
+    "validation_module_path": "src/universal_baseball/hitter_v2_stage2f_scoring.py",
+    "validation_module_sha256": "dd3b008c68c8ca262260f1eee486e5ed93f32dd7dd73a4ff3ffd2fb2555e4f12",
+    "frozen_before_target_access": true,
+    "candidate_scored": false,
+    "protected_2026_opened": false,
+    "next_gate": "commit_scorer_then_execute_the_disclosed_comparison_exactly_once"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -1058,6 +1070,14 @@
       "deterministic_clean_rerun_identical": true,
       "candidate_accuracy_metrics_computed": false,
       "protected_2026_opened": false
+    },
+    "stage2f_H0_prescore_validation": {
+      "ruff": "passed",
+      "pytest": "988_passed",
+      "focused_scoring_authorization_synthetic_and_contract_tests": "8_passed",
+      "scorer_frozen_before_target_access": true,
+      "candidate_scored": false,
+      "protected_2026_opened": false
     }
   },
   "authorization": {
@@ -1121,8 +1141,9 @@
     "stage2f_final_parameters_frozen": true,
     "stage2f_candidate_scoring_authorized": true,
     "stage2f_candidate_scoring_started": false,
+    "stage2f_scorer_frozen": true,
     "stage2f_H1_authorized": false,
-    "next_gate": "freeze_and_commit_scorer_then_execute_exactly_once_and_stop_at_result"
+    "next_gate": "commit_scorer_then_execute_the_disclosed_comparison_exactly_once_and_stop_at_result"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",

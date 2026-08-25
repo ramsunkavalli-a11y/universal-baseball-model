@@ -673,6 +673,14 @@ loaded. After that commit, exactly one V2022-V2024 comparison against the
 permanent wrapped baselines is open. Model changes, retuning, grid expansion,
 H1, tracking, protected 2026, Stage 3, and WAR remain closed.
 
+The disclosed-comparison scorer is now frozen before target loading in
+`docs/hitter-v2-stage2f-H0-scoring-contract.json`. It hashes the selected H0,
+all three wrapped baselines, each target/training/age input, the target
+translation offsets, and the raw Marcel diagnostic. Synthetic and contract
+tests pass, canonical lint passes, and all 988 repository tests pass. The next
+action is the authorized one-shot run; no model or acceptance rule may change
+after this checkpoint.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1262,7 +1270,8 @@ and all `798` tests completed successfully.
 62. `docs/hitter-v2-stage2f-H0-selection-checkpoint.md`
 63. `docs/hitter-v2-stage2f-H0-selection-checkpoint.json`
 64. `docs/hitter-v2-stage2f-H0-scoring-authorization.json`
-65. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+65. `docs/hitter-v2-stage2f-H0-scoring-contract.json`
+66. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
