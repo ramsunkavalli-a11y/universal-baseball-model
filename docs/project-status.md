@@ -545,6 +545,13 @@ protected 2026, Stage 3, and WAR remain unauthorized. The conditional sequence
 through a single disclosed Marcel comparison is recorded in
 `docs/hitter-v2-stage2e-authorization.json`.
 
+The target-free J0R implementation and certification runner are now frozen in
+`docs/hitter-v2-stage2e-implementation-checkpoint.json`. Focused lint passed and
+all seven implementation/certification tests passed. The runner loads only the
+certified design shape, removes every real response/target field, and generates
+seeded synthetic responses. Real-data fitting remains closed until this exact
+implementation passes the preregistered numerical certification.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1112,7 +1119,8 @@ and all `798` tests completed successfully.
 40. `docs/hitter-v2-stage2e-development-contract.md`
 41. `docs/hitter-v2-stage2e-development-contract.json`
 42. `docs/hitter-v2-stage2e-authorization.json`
-43. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+43. `docs/hitter-v2-stage2e-implementation-checkpoint.json`
+44. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

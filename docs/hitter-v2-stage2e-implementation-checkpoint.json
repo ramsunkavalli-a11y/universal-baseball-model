@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2e_target_free_implementation",
+  "date": "2026-08-24",
+  "branch": "hitter-v2-pbp-outcomes",
+  "parent_commit": "4f8dd01",
+  "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+  "contract_sha256": "a475bc153b1e062976cb796a4983c6244d934b4755218475e961c4ae6e5f7026",
+  "authorization_sha256": "9a9c2d30b83ec18d47080dddf7c0cd37b5b4c64ebe3131d4ca52b5aaff0e23c3",
+  "files": {
+    "implementation": {
+      "path": "src/universal_baseball/hitter_v2_stage2e.py",
+      "sha256": "0beb260b149e74a226dfe841b79b3b1e4ef897d801bbf56db332ee99847999ed"
+    },
+    "certification_runner": {
+      "path": "scripts/certify_hitter_v2_stage2e_numerics.py",
+      "sha256": "bb24b49a0e3151fbaf428d01fb392ddb4dc8191a0a1ade6ff71dc5be08124734"
+    },
+    "implementation_tests": {
+      "path": "tests/test_hitter_v2_stage2e.py",
+      "sha256": "c723c45f141e09e51e72e869666a6050ee8a75ad8fa1c6788325a54cb0703e38"
+    },
+    "certification_tests": {
+      "path": "tests/test_hitter_v2_stage2e_certification.py",
+      "sha256": "26aa2d962d7fbabaa0c05faba9b3bf222c45281072c2b2b568411302c670045c"
+    }
+  },
+  "checks": {
+    "fixed_information_shrinkage": true,
+    "matched_contextual_uncontextual_penalty": true,
+    "durable_iteration_trace": true,
+    "intentional_nonconvergence_fail_closed": true,
+    "grouped_event_equivalence_check": true,
+    "event_rate_regimes": [0.01, 0.05, 0.25, 0.6],
+    "low_high_evidence_recovery_check": true
+  },
+  "focused_validation": {
+    "ruff": "passed",
+    "pytest": "7_passed"
+  },
+  "real_outcomes_loaded": false,
+  "forecast_targets_loaded": false,
+  "protected_2026_opened": false,
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "next_gate": "execute_target_free_numerical_certification"
+}

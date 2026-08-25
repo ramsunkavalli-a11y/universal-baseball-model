@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2e_J0R_target_free_implementation_authorized",
+  "status": "stage2e_J0R_target_free_implementation_complete_certification_pending",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -700,6 +700,18 @@
     "protected_2026_access_authorized": false,
     "next_gate": "implement_and_certify_J0R_without_real_outcomes_or_forecast_targets"
   },
+  "stage2e_implementation": {
+    "path": "docs/hitter-v2-stage2e-implementation-checkpoint.json",
+    "model_id": "J0R_FIXED_INFORMATION_SHRINKAGE",
+    "implementation_complete": true,
+    "focused_tests_passed": 7,
+    "real_outcomes_loaded": false,
+    "forecast_targets_loaded": false,
+    "protected_2026_opened": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "next_gate": "execute_target_free_numerical_certification"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -880,10 +892,11 @@
     "joint_contextual_candidate_scoring_authorized": false,
     "stage2e_contract_frozen": true,
     "stage2e_candidate_implementation_authorized": true,
+    "stage2e_candidate_implementation_complete": true,
     "stage2e_numerical_certification_authorized": true,
     "stage2e_real_data_fit_authorized": false,
     "stage2e_candidate_scoring_authorized": false,
-    "next_gate": "implement_and_certify_J0R_without_real_outcomes_or_forecast_targets"
+    "next_gate": "execute_target_free_numerical_certification"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -916,6 +929,6 @@
     "The terminal-outcome label sidecar passes every frozen source threshold, but 39923 non-exact player-game reconciliation rows remain failed closed to the exact B1 outcome-only forecast.",
     "The first source-only label attempt failed because the literal phrase called out on strikes was not recognized; the target-free correction and failed report hash are preserved, and no model fit or score preceded the amendment.",
     "The frozen J0 full-data fit failed closed because a binary-component batter-variance iteration did not converge within 20 iterations; no artifact was published, no target was loaded, and rescue tuning or scoring is unauthorized.",
-    "Stage 2e J0R is contract-only: fixed-information shrinkage and numerical observability requirements are frozen, but implementation, certification, fitting, and scoring remain unauthorized."
+    "Stage 2e J0R target-free implementation is frozen; numerical certification is pending, and real fitting and scoring remain closed."
   ]
 }
