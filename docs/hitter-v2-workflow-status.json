@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "post_e1_independent_design_review_complete",
+  "status": "matchup_context_source_audit_complete",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "post_e1_design_review_complete_next_matchup_source_audit_only",
+    "hitter_v2": "matchup_source_capable_next_sidecar_materialization_only",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -494,6 +494,29 @@
     "stage3_authorized": false,
     "full_war_authorized": false
   },
+  "matchup_context_source_audit": {
+    "source_capable": true,
+    "sidecar_certified": false,
+    "audit_path": "docs/hitter-v2-matchup-context-source-audit.md",
+    "audit_sha256": "1d4f5b7723730010cad09184b32d167a9893dcdb31af91b1c71ccedac98b8aae",
+    "result_path": "docs/hitter-v2-matchup-context-source-result.json",
+    "result_sha256": "089f75ea7cb8c144ef1b45e5cd63a72f2fdb6125c6edff667455f55f3a54e304",
+    "script_path": "scripts/audit_hitter_v2_matchup_context_source.py",
+    "script_sha256": "696116c822cb7d12629c354cc1f4a88219f0f3e83c32c8a2fd93cff42857457d",
+    "generated_report_sha256": "a575f3bfdab9fb08a1fc3d134cc8b3e9ce78923272498fc011523791bf158513",
+    "source_seasons": [2021, 2022, 2023, 2024],
+    "canonical_pa": 3811570,
+    "complete_matchup_pa": 3811570,
+    "conflict_free_matchup_pa": 3810808,
+    "conflict_free_matchup_rate": 0.9998000823807512,
+    "prior_50_pa_rate": 0.8884588240541299,
+    "prior_100_pa_rate": 0.7983009625954659,
+    "terminal_outcomes_loaded": false,
+    "forecast_targets_loaded": false,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -567,8 +590,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 893,
-      "duration_seconds": 9.55
+      "passed": 894,
+      "duration_seconds": 11.28
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -579,6 +602,11 @@
       "command": "python -m pytest tests/test_hitter_v2_stage2c.py tests/test_hitter_v2_stage2c_validation.py",
       "status": "passed",
       "passed": 12
+    },
+    "matchup_source_audit_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_matchup_context_source_audit.py",
+      "status": "passed",
+      "passed": 1
     }
   },
   "authorization": {
@@ -608,7 +636,9 @@
     "stage2c_e2_authorized": false,
     "2026_confirmation_access_authorized": false,
     "full_war_authorized": false,
-    "next_gate": "source_only_matchup_context_readiness_audit"
+    "matchup_context_source_audit_complete": true,
+    "matchup_context_sidecar_certified": false,
+    "next_gate": "source_only_matchup_context_sidecar_materialization_and_reconciliation"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -630,6 +660,9 @@
     "Shared classifier code does not prove raw coordinate and trajectory measurement equivalence across MLB and MiLB source systems.",
     "hit_distance_sc covers only 18.47 percent of affiliated classified batted-ball PA and is almost perfectly co-available with exit velocity; it is not a universal PBP feature.",
     "Stage 2c E1 failed its frozen incremental HR gate in three of four required fold/weighting views; E2 cannot rescue it, retuning is forbidden, and the ladder is stopped.",
-    "The independent design review found Stage 2c regularization was not invariant to feature rescaling and recommended a new joint contextual outcome architecture; this diagnosis cannot be used to repair or rescore E1."
+    "The independent design review found Stage 2c regularization was not invariant to feature rescaling and recommended a new joint contextual outcome architecture; this diagnosis cannot be used to repair or rescore E1.",
+    "Raw 2021-2024 affiliated PBP has complete batter, pitcher, batter-side, and pitcher-hand fields, but 762 of 3811570 PAs contain at least one within-PA matchup conflict and must fail closed.",
+    "The existing Hitter v2 Stage 1 terminal artifacts do not retain pitcher identity or pitcher hand; a one-to-one matchup sidecar must be certified before any opponent-context candidate is authorized.",
+    "Strictly prior-date pitcher evidence is sparse in rookie/complex leagues, so any eventual opponent effect requires smooth shrinkage and exact neutral fallback rather than a hard evidence cutoff."
   ]
 }
