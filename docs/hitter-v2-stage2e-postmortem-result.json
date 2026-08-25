@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "stage2e_failure_postmortem",
+  "date": "2026-08-24",
+  "accepted": true,
+  "contract_sha256": "5350951fb3a18c45b987e4095cfeb83180f43bde1472e93c53e690f6bffaf48e",
+  "generated_report_sha256": "1ec4b9f951ecb44a11edf0c1b6363bfb291da94f40f5a13c8a56115216067278",
+  "findings": {
+    "C0_supported_subgroup_woba_rmse_wins_vs_Marcel": {
+      "V2022_player": "22_of_24",
+      "V2022_pa": "22_of_24",
+      "V2023_player": "23_of_25",
+      "V2023_pa": "17_of_25",
+      "V2024_player": "23_of_25",
+      "V2024_pa": "24_of_25"
+    },
+    "C0_recurring_weaknesses": [
+      "age_30_plus",
+      "AAA",
+      "demotions",
+      "very_low_prior_evidence_in_PA_weighted_views"
+    ],
+    "C0_component_pattern": "V2022_default_parameters_won_only_6_of_12_marginal_components; chronology-selected V2023-V2024 C0 won 11_or_12_of_12 in most views",
+    "J0R_component_pattern": "J0R_won_only_3_to_5_of_12_marginal_components_per_fold_view; recurring_largest_losses_were_UBB_K_and_HBP",
+    "J0R_supported_subgroup_pattern": "J0R_woba_RMSE_wins_vs_Marcel_ranged_from_3_to_8_supported_cells_per_fold_view",
+    "construct_gap": "raw_next_year_affiliated_wOBA_mixes_player_talent_with_realized_target_level_and_level_environment",
+    "primary_diagnosis": "C0_contains_useful_component_shrinkage_signal_but_lacks_common_reference_level_translation_forward_development_and_reliable_out_of_sample_calibration",
+    "opponent_context_diagnosis": "pitcher_and_platoon_context_is_descriptive_but_not_a_stable_player_talent_increment_under_J0R"
+  },
+  "ideas_advancing": [
+    "common_reference_level_terminal_outcome_target",
+    "chronology_safe_mover_based_level_translation",
+    "age_relative_to_level_forward_development",
+    "component_specific_hierarchical_calibration",
+    "contact_shape_only_as_a_separate_residual_increment_after_the_outcome_model_passes"
+  ],
+  "ideas_deferred": [
+    "opponent_context_player_adjustment",
+    "estimated_distance_or_tracking",
+    "lineup_slot_physical_demographic_and_durability_inputs",
+    "J1_rescue",
+    "WAR_components"
+  ],
+  "protected_2026_opened": false,
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "next_gate": "review_H0_contract_then_authorize_target_free_implementation_only"
+}

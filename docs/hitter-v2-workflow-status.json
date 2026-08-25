@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2e_J0R_failed_disclosed_comparison_stopped",
+  "status": "stage2f_H0_contract_frozen_review_required",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2e_J0R_failed_disclosed_comparison_stopped",
+    "hitter_v2": "stage2f_H0_contract_frozen_execution_closed",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -771,6 +771,32 @@
     "protected_2026_opened": false,
     "next_gate": "review_final_failure_before_any_distinct_new_candidate_contract"
   },
+  "stage2e_failure_postmortem": {
+    "contract_path": "docs/hitter-v2-stage2e-postmortem-contract.json",
+    "generated_report_sha256": "1ec4b9f951ecb44a11edf0c1b6363bfb291da94f40f5a13c8a56115216067278",
+    "result_path": "docs/hitter-v2-stage2e-postmortem-result.json",
+    "result_sha256": "e5a1266460c0b50da03cc0f48bef7ab0c6fd1ac592206d160bd9bb2a4c084cac",
+    "human_readable_path": "docs/hitter-v2-stage2e-postmortem.md",
+    "human_readable_sha256": "7191a115a04f9947d30328bddf603825477064dc9f7fe3f2546222a293a1a7e5",
+    "diagnostic_only": true,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false
+  },
+  "stage2f_H0_contract": {
+    "model_id": "H0_NEUTRAL_HIERARCHICAL_OUTCOMES",
+    "path": "docs/hitter-v2-stage2f-development-contract.json",
+    "sha256": "00f113b893b2dee340ed230cb1b9753262a422197408313e74dbc829b7aa8f9a",
+    "human_readable_path": "docs/hitter-v2-stage2f-development-contract.md",
+    "human_readable_sha256": "9e30e2f64efb3f03135c4c690e02be77109d68096c48b05171d70769d593d726",
+    "contract_frozen": true,
+    "target_free_implementation_authorized": false,
+    "candidate_fit_authorized": false,
+    "candidate_scoring_authorized": false,
+    "H1_authorized": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_then_explicitly_authorize_target_free_H0_implementation_only"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -914,6 +940,13 @@
       "pytest": "952_passed",
       "temporary_directory_policy": "workspace_local_due_to_windows_system_temp_permission_error",
       "model_or_test_failures": 0
+    },
+    "stage2e_postmortem_and_stage2f_contract_validation": {
+      "ruff": "passed",
+      "pytest": "956_passed",
+      "focused_postmortem_and_contract_tests": "4_passed",
+      "candidate_fit": false,
+      "candidate_scored": false
     }
   },
   "authorization": {
@@ -965,7 +998,12 @@
     "stage2e_candidate_scoring_complete": true,
     "stage2e_candidate_promoted": false,
     "stage2e_J0R_failure_final": true,
-    "next_gate": "review_final_failure_before_any_distinct_new_candidate_contract"
+    "stage2f_contract_frozen": true,
+    "stage2f_target_free_implementation_authorized": false,
+    "stage2f_candidate_fit_authorized": false,
+    "stage2f_candidate_scoring_authorized": false,
+    "stage2f_H1_authorized": false,
+    "next_gate": "review_then_explicitly_authorize_target_free_H0_implementation_only"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -999,5 +1037,6 @@
     "The first source-only label attempt failed because the literal phrase called out on strikes was not recognized; the target-free correction and failed report hash are preserved, and no model fit or score preceded the amendment.",
     "The frozen J0 full-data fit failed closed because a binary-component batter-variance iteration did not converge within 20 iterations; no artifact was published, no target was loaded, and rescue tuning or scoring is unauthorized.",
     "Stage 2e J0R passed numerical certification and fit successfully but failed the frozen disclosed comparison; it cannot be retuned, and J1, protected 2026, tracking, Stage 3, and WAR remain closed."
+    ,"The Stage 2e postmortem found broad C0 outcome-shrinkage signal but a construct gap from mixing talent with realized future level; Stage 2f therefore freezes a neutral-reference hierarchical outcome candidate while leaving all execution gates closed."
   ]
 }

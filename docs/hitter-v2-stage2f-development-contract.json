@@ -1,0 +1,130 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2f",
+  "date": "2026-08-24",
+  "status": "frozen_before_candidate_implementation_fit_or_score",
+  "candidate_ladder": [
+    {
+      "model_id": "H0_NEUTRAL_HIERARCHICAL_OUTCOMES",
+      "role": "required_universal_PBP_outcome_base",
+      "must_pass_before_next_candidate": true
+    },
+    {
+      "model_id": "H1_CONTACT_SHAPE_INCREMENT",
+      "role": "optional_low_dimensional_PBP_contact_residual",
+      "authorized_only_if_H0_passes": true,
+      "cannot_rescue_failed_H0": true
+    }
+  ],
+  "target_construct": {
+    "product": "neutral_batting_talent_conditional_on_future_PA",
+    "reference_environment": "neutral_MLB_reference_level",
+    "terminal_taxonomy": ["UBB", "HBP", "K", "HR", "3B", "2B", "1B", "ROE", "FC_REACH", "SF", "MULTI_OUT", "OTHER_OUT"],
+    "history_translation": "translate_each_observed_component_to_reference_level_using_only_parameters_fitted_strictly_before_forecast_date",
+    "evaluation_translation": "target_outcomes_may_be_translated_to_the_same_reference_level_for_scoring_only_using_training_frozen_parameters",
+    "target_level_as_predictor": false,
+    "target_membership_playing_time_park_or_environment_as_predictor": false,
+    "target_year_run_values": false
+  },
+  "H0_model": {
+    "form": "nested_component_empirical_Bayes_projection_on_reference_level_links",
+    "components": ["K", "UBB", "HBP", "HR_given_contact", "reach_given_non_HR_BIP", "1B_2B_3B_given_hit_in_play", "MULTI_OUT_given_opportunity"],
+    "base_signal": "C0_style_component_specific_recency_and_shrinkage",
+    "level_translation": "hierarchical_adjacent_season_player_mover_contrasts_by_component_origin_level_destination_level_and_age_band",
+    "translation_anchor": "MLB",
+    "translation_partial_pooling": "specific_transition_to_adjacent_direction_to_global_component",
+    "disconnected_level_fallback": "global_adjacent_level_path_with_widened_uncertainty_never_literal_zero",
+    "development": "component_specific_forward_change_with_age_relative_to_level_and_piecewise_absolute_age_knots_20_24_28_32",
+    "development_pairs": "adjacent_player_seasons_both_strictly_before_target",
+    "V2022_policy": "unlearnable_age_or_translation_terms_are_neutral_not_estimated_from_V2022_target",
+    "calibration": "training_origin_component_intercept_and_slope_shrunk_to_0_and_1",
+    "player_identity_predictor": false,
+    "player_identity_grouping_key": true,
+    "names_available": false,
+    "opponent_context_increment": false
+  },
+  "frozen_search": {
+    "selection_only_on_origins_earlier_than_scored_fold": true,
+    "component_half_life_seasons": [1.0, 2.0, 3.0],
+    "component_prior_PA": [100, 200, 400, 800],
+    "translation_prior_mover_PA": [250, 500, 1000],
+    "development_prior_SD_on_standardized_link": [0.05, 0.1],
+    "calibration_slope_prior_SD": [0.1, 0.2],
+    "selection_metric": "component_event_log_loss_on_strictly_earlier_training_origins",
+    "tie_tolerance": 1e-8,
+    "tie_rule": "larger_shrinkage_then_simpler_effect_structure_then_longer_half_life",
+    "grid_expansion_after_any_disclosed_score": false,
+    "post_score_tuning": false
+  },
+  "permanent_comparators": [
+    "reference_level_wrapped_B0_ONE_YEAR_EB",
+    "reference_level_wrapped_B1_MARCEL_345_K1200",
+    "reference_level_wrapped_C0_NESTED_EB",
+    "unwrapped_B1_MARCEL_345_K1200_as_raw_target_diagnostic_only"
+  ],
+  "H1_contact_increment": {
+    "authorized_now": false,
+    "base": "H0_NEUTRAL_HIERARCHICAL_OUTCOMES",
+    "universal_PBP_only": true,
+    "predeclared_contrasts": [
+      "pulled_air_share",
+      "opposite_field_air_share",
+      "pulled_ground_share",
+      "opposite_field_ground_share",
+      "line_drive_share"
+    ],
+    "targets": ["future_HR_given_contact", "future_extra_base_hit_given_contact", "future_reference_level_wOBA"],
+    "form": "regularized_residual_increment_to_H0_links",
+    "evidence_reliability": "smooth_event_count_and_recency_shrinkage_to_zero",
+    "missing_shape": "exact_H0_prediction",
+    "identical_overlap_comparison": true,
+    "all_ten_percentages_as_unrestricted_multinomial_adjustment": false,
+    "estimated_distance_tracking_or_physical_inputs": false
+  },
+  "evaluation": {
+    "development_folds": ["V2022", "V2023", "V2024"],
+    "disclosure": "all_three_are_disclosed_development_evidence_not_confirmation",
+    "weighting_views": ["player", "pa"],
+    "primary_metrics": ["terminal_log_loss", "terminal_brier_score", "reference_level_wOBA_RMSE", "reference_level_runs_per_600_RMSE"],
+    "secondary_metrics": ["MAE", "Pearson", "Spearman", "calibration_intercept", "calibration_slope", "predicted_deciles", "level_aggregate_calibration"],
+    "required_subgroups": ["MLB", "AAA", "AA", "HIGH_A", "SINGLE_A", "ROOKIE_COMPLEX", "age", "prior_evidence", "promotion", "demotion", "stayer", "high_low_K", "high_low_power", "translation_path_quality"],
+    "development_pass": "improve_all_four_primary_metrics_versus_metric_wise_strongest_wrapped_baseline_in_every_fold_and_weighting_view_with_no_material_supported_subgroup_reversal",
+    "pooled_proper_relative_minimum": 0.0025,
+    "pooled_rate_RMSE_relative_minimum": 0.01,
+    "correlation_maximum_decline": 0.01,
+    "wOBA_calibration_intercept_absolute_max": 0.005,
+    "wOBA_calibration_slope_range": [0.9, 1.1],
+    "terminal_component_slope_range": [0.8, 1.2],
+    "predicted_decile_absolute_wOBA_error_max": 0.01,
+    "protected_confirmation_required_for_promotion": true
+  },
+  "scientific_invariants": [
+    "all_terminal_probabilities_are_nonnegative_exhaustive_and_normalized",
+    "target_year_level_membership_or_outcomes_cannot_affect_prediction_translation_development_or_calibration",
+    "removing_level_age_and_shape_inputs_returns_the_declared_outcome_base_exactly",
+    "moving_probability_mass_from_out_to_1B_2B_3B_HR_increases_value_in_that_order",
+    "players_with_different_terminal_HR_histories_receive_different_power_estimates_after_sufficient_evidence",
+    "a_disconnected_translation_path_never_becomes_zero_skill",
+    "H1_with_zero_or_missing_contact_evidence_equals_H0_exactly",
+    "H1_overlap_comparison_cannot_change_players_targets_or_weights"
+  ],
+  "failure_policy": {
+    "H0_failure_final": true,
+    "H1_after_H0_failure": false,
+    "retuning_on_V2022_V2024_results": false,
+    "new_candidate_after_failure_requires_new_contract": true
+  },
+  "authorization": {
+    "contract_frozen": true,
+    "target_free_implementation_authorized": false,
+    "candidate_fit_authorized": false,
+    "candidate_scoring_authorized": false,
+    "H1_authorized": false,
+    "tracking_authorized": false,
+    "protected_2026_access_authorized": false,
+    "stage3_authorized": false,
+    "full_WAR_authorized": false,
+    "next_gate": "review_contract_then_explicitly_authorize_target_free_H0_implementation_only"
+  }
+}

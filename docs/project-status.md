@@ -589,6 +589,25 @@ V2024 also failed the correlation guardrail. J0R is a final documented failure:
 no retuning, J1, protected 2026 access, tracking, Stage 3, or WAR is authorized.
 Exact results are in `docs/hitter-v2-stage2e-comparison-result.json`.
 
+The frozen diagnostic-only postmortem confirms that C0 has broad useful signal
+but lacks a valid common-level target, forward development, and stable
+calibration. Across the three folds it beat Marcel on future-wOBA RMSE in 17 to
+24 of 24/25 supported subgroup cells per view, with recurring weaknesses among
+older players, AAA, demotions, and low-evidence rows. J0R improved only three to
+eight supported cells and repeatedly harmed UBB, K, and HBP component scores.
+The exact diagnostic and interpretation are recorded in
+`docs/hitter-v2-stage2e-postmortem-result.json` and
+`docs/hitter-v2-stage2e-postmortem.md`.
+
+The distinct Stage 2f contract is now frozen. `H0_NEUTRAL_HIERARCHICAL_OUTCOMES`
+retains component-specific outcome shrinkage while placing history and scoring
+outcomes on a chronology-safe neutral MLB reference scale, learning partially
+pooled level translations from movers, and modeling forward age-relative-to-
+level development. `H1_CONTACT_SHAPE_INCREMENT` remains closed unless H0 passes
+and is limited to five predeclared, evidence-shrunk contact contrasts with exact
+H0 fallback. Implementation, fitting, scoring, H1, tracking, protected 2026,
+Stage 3, and WAR are not authorized.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1163,7 +1182,12 @@ and all `798` tests completed successfully.
 47. `docs/hitter-v2-stage2e-fit-result.json`
 48. `docs/hitter-v2-stage2e-scoring-contract.json`
 49. `docs/hitter-v2-stage2e-comparison-result.json`
-50. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+50. `docs/hitter-v2-stage2e-postmortem-contract.json`
+51. `docs/hitter-v2-stage2e-postmortem.md`
+52. `docs/hitter-v2-stage2e-postmortem-result.json`
+53. `docs/hitter-v2-stage2f-development-contract.md`
+54. `docs/hitter-v2-stage2f-development-contract.json`
+55. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
