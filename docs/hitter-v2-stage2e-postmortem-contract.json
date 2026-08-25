@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "stage2e_failure_postmortem",
+  "date": "2026-08-24",
+  "status": "frozen_before_diagnostic_execution",
+  "runner_path": "scripts/diagnose_hitter_v2_stage2e_failure.py",
+  "runner_sha256": "ddfe93f37b0382de53aa96be59d3063cd8d7cb020276e4bc4de257dee182371d",
+  "test_sha256": "82e3af7acad0e1519670463b9477105185b9bb56786208ccbf714f5616b3aafb",
+  "comparison_result_sha256": "73f3364dfa3f670cd18d5f0acb6d31fa001cd751861f4ca36c2ea3b3acbf7916",
+  "models": [
+    "B1_MARCEL_345_K1200",
+    "C0_NESTED_EB",
+    "J0R_FIXED_INFORMATION_SHRINKAGE"
+  ],
+  "diagnostics": [
+    "terminal_component_rate_bias",
+    "terminal_component_binary_log_loss_and_brier",
+    "component_calibration",
+    "level_age_evidence_movement_K_power_subgroups"
+  ],
+  "use_of_disclosed_2022_2024": "diagnostic_only",
+  "candidate_selection": false,
+  "candidate_fit": false,
+  "candidate_scoring": false,
+  "post_result_rescue": false,
+  "protected_2026_access_authorized": false,
+  "next_gate": "execute_postmortem_then_freeze_distinct_candidate_contract_without_fit"
+}
