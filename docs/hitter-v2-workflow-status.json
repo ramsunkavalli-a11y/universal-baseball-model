@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2f_H0_source_materialization_and_fit_authorized",
+  "status": "stage2f_H0_fit_only_complete_stopped_for_review",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2f_H0_source_materialization_and_fit_active",
+    "hitter_v2": "stage2f_H0_fit_only_complete",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -835,6 +835,22 @@
     "protected_2026_opened": false,
     "next_gate": "audit_and_materialize_historical_predictors_fit_H0_then_stop_before_scoring"
   },
+  "stage2f_H0_fit_checkpoint": {
+    "path": "docs/hitter-v2-stage2f-H0-fit-checkpoint.json",
+    "sha256": "d8f0d14114a531c26d0018450c12e626e2ebf7cce9cde42e3ac3d5afda283d16",
+    "human_readable_path": "docs/hitter-v2-stage2f-H0-fit-checkpoint.md",
+    "human_readable_sha256": "6aa17e34b1acf33c780ae00e18a13fac4ea184cc7460302e26a8bbb00f4484c3",
+    "generated_report_path": "reports/generated/hitter-v2-stage2f-H0-fit/report.json",
+    "generated_report_sha256": "adeb95c1141b10441d7459d9adde18ec125460bf804a5c3a560a6af1abdfa8b9",
+    "source_materialization_complete": true,
+    "sentinel_fit_complete": true,
+    "forecast_rows": 16654,
+    "all_probability_invariants_passed": true,
+    "candidate_metrics_computed": false,
+    "validation_outcomes_loaded": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_then_explicitly_authorize_training_origin_configuration_selection_and_final_parameter_freeze_without_validation_outcome_loading"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -1052,9 +1068,12 @@
     "stage2f_target_free_implementation_complete": true,
     "stage2f_source_materialization_authorized": true,
     "stage2f_candidate_fit_authorized": true,
+    "stage2f_source_materialization_complete": true,
+    "stage2f_sentinel_fit_complete": true,
+    "stage2f_training_origin_selection_authorized": false,
     "stage2f_candidate_scoring_authorized": false,
     "stage2f_H1_authorized": false,
-    "next_gate": "materialize_stage2f_historical_predictors_and_fit_H0_then_stop_before_scoring"
+    "next_gate": "review_then_explicitly_authorize_stage2f_training_origin_configuration_selection_and_final_parameter_freeze_without_validation_outcome_loading"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -1089,6 +1108,6 @@
     "The frozen J0 full-data fit failed closed because a binary-component batter-variance iteration did not converge within 20 iterations; no artifact was published, no target was loaded, and rescue tuning or scoring is unauthorized.",
     "Stage 2e J0R passed numerical certification and fit successfully but failed the frozen disclosed comparison; it cannot be retuned, and J1, protected 2026, tracking, Stage 3, and WAR remain closed."
     ,"The Stage 2e postmortem found broad C0 outcome-shrinkage signal but a construct gap from mixing talent with realized future level; Stage 2f therefore freezes a neutral-reference hierarchical outcome candidate while leaving all execution gates closed.",
-    "Stage 2f H0 currently has synthetic target-free implementation evidence only; real-source materialization, fitting, scoring, and empirical usefulness remain untested and closed pending review."
+    "Stage 2f H0 real historical predictor materialization and a conservative sentinel fit are complete, but configuration selection, validation scoring, and empirical usefulness remain untested and closed pending review."
   ]
 }

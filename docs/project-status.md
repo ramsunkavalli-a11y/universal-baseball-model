@@ -631,6 +631,18 @@ non-evaluative numerical/coverage diagnostics are open. Validation-outcome
 loading, metric or comparator scoring, H1, tracking, protected 2026, Stage 3,
 and WAR remain closed.
 
+The authorized fit-only gate is complete. The source audit and findings are in
+`docs/hitter-v2-stage2f-H0-fit-checkpoint.md` and its machine-readable
+companion. Certified predictor artifacts were reused without reacquisition;
+their hashes match prior checkpoints. V2022 correctly uses the exact C0
+fallback, V2023 fits translation/development from 3,176 adjacent pairs, and
+V2024 fits translation/development from 6,297 pairs plus calibration from a
+strictly earlier origin. All 16,654 forecasts are finite and normalized on
+unchanged populations. These are fit-health findings, not accuracy evidence:
+no validation outcome or metric was opened. Training-origin configuration
+selection and final parameter freeze are the next closed review gate; disclosed
+validation scoring must remain a later separate authorization.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without

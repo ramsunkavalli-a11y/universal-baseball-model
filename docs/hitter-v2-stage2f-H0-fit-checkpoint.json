@@ -1,0 +1,112 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2f_H0_fit_only",
+  "date": "2026-08-25",
+  "status": "historical_predictor_sources_materialized_and_fit_complete_stopped_before_configuration_selection_or_validation",
+  "authorization_path": "docs/hitter-v2-stage2f-H0-fit-authorization.json",
+  "authorization_sha256": "c456aa30854375daab770174d19ee8f19efe8e24863232b5590ff808e7383b83",
+  "authorized_parent_commit": "375161b",
+  "authorization_commit": "626d51a",
+  "configuration_role": "non_decisional_conservative_fit_sentinel",
+  "configuration": {
+    "component_prior_pa": 800.0,
+    "translation_prior_mover_pa": 1000.0,
+    "development_prior_sd": 0.05,
+    "calibration_prior_sd": 0.1
+  },
+  "source_audit": {
+    "stage1_player_games_sha256": "322587b6af6d74b14fe1b5ca925343e0cce9decfaa5252261a6e8b3681345f96",
+    "park_context_sha256": "8639ab2b2b03fcad5e9ba9d50a79d48ed8f3616ad626f56c3fc85d4e16da30cf",
+    "chadwick_register_sha256": "940c2be6e497351bf6c5a8b65d62d6742483521ef6e23181252aef86c2cb97ce",
+    "all_hashes_match_prior_certification": true,
+    "source_reacquired": false,
+    "validation_tables_loaded": false
+  },
+  "implementation": {
+    "module_path": "src/universal_baseball/hitter_v2_stage2f_fit.py",
+    "module_sha256": "12d24ee7b3ee08ab1327f6ba22d95e592fb136bac93575a4ee50b09044bd14db",
+    "runner_path": "scripts/fit_hitter_v2_stage2f_H0.py",
+    "runner_sha256": "236271279b52a621364ffc1530dd5990ab46d84864333c9f1cef13a8da08702f",
+    "test_path": "tests/test_hitter_v2_stage2f_fit.py",
+    "test_sha256": "9c837dcef84936391094dc039e4c5fc38b80a62aca360233a4dc5016e8574afe"
+  },
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2f-H0-fit/report.json",
+    "sha256": "adeb95c1141b10441d7459d9adde18ec125460bf804a5c3a560a6af1abdfa8b9",
+    "deterministic_clean_rerun_identical": true,
+    "artifact_count": 37,
+    "artifact_bytes": 18084691
+  },
+  "folds": [
+    {
+      "fold_id": "V2022",
+      "predictor_cutoff_season": 2021,
+      "forecast_players": 4705,
+      "player_seasons": 4705,
+      "adjacent_pairs": 0,
+      "translation_fitted": false,
+      "development_fitted": false,
+      "calibration_fitted": false,
+      "fallback": "exact_untranslated_C0_base"
+    },
+    {
+      "fold_id": "V2023",
+      "predictor_cutoff_season": 2022,
+      "forecast_players": 5568,
+      "player_seasons": 8744,
+      "adjacent_pairs": 3176,
+      "translation_pair_rows": 15268,
+      "development_pair_rows": 34936,
+      "translation_fitted": true,
+      "development_fitted": true,
+      "calibration_fitted": false
+    },
+    {
+      "fold_id": "V2024",
+      "predictor_cutoff_season": 2023,
+      "forecast_players": 6381,
+      "player_seasons": 12729,
+      "adjacent_pairs": 6297,
+      "translation_pair_rows": 29447,
+      "development_pair_rows": 69267,
+      "calibration_origin_rows": 34892,
+      "translation_fitted": true,
+      "development_fitted": true,
+      "calibration_fitted": true
+    }
+  ],
+  "invariants": {
+    "all_forecast_populations_unchanged": true,
+    "all_probabilities_finite_nonnegative_and_normalized": true,
+    "maximum_simplex_error": 4.440892098500626e-16,
+    "compiled_application_matches_audited_primitive": true,
+    "future_source_rows_fail_closed": true,
+    "validation_loader_absent_from_fit_runner": true
+  },
+  "validation": {
+    "ruff": "passed",
+    "pytest": "973_passed",
+    "focused_fit_tests": "19_passed"
+  },
+  "performance_incident": {
+    "initial_run_stopped": true,
+    "cause": "repeated_parameter_table_scans_during_application",
+    "scientific_change": false,
+    "correction": "compile_immutable_fit_tables_to_dictionary_maps_once_per_fold",
+    "equivalence_test_passed": true,
+    "partial_result_used": false
+  },
+  "closed": {
+    "training_origin_configuration_selection": true,
+    "validation_outcome_loading": true,
+    "candidate_metrics": true,
+    "comparator_scoring": true,
+    "H1": true,
+    "tracking": true,
+    "protected_2026": true,
+    "stage3": true,
+    "full_WAR": true
+  },
+  "next_gate": "review_then_explicitly_authorize_training_origin_configuration_selection_and_final_parameter_freeze_without_validation_outcome_loading"
+}
