@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "S0_one_shot_disclosed_comparison",
+  "date": "2026-08-25",
+  "status": "authorized_before_scoring_implementation",
+  "user_authorization": "keep going",
+  "authorized_parent_commit": "d68acdd490f299b4c846b055e7ee570f15ad076a",
+  "fit_checkpoint_path": "docs/hitter-v2-S0-fit-checkpoint.json",
+  "fit_checkpoint_sha256": "d4097c5f3718c345c8cd0b0fd09441b2d840f8fbb9114d045d7d01e1fe231b86",
+  "preregistration_sha256": "d40ce5a4d5b68155efb6ad3ff5e1ee6a067f2d68d789a6c0036380ffb8f7b4b2",
+  "authorized": {
+    "freeze_scoring_runner_and_contract": true,
+    "one_shot_disclosed_V2022_V2024_comparison": true,
+    "result_documentation": true
+  },
+  "not_authorized": {
+    "post_result_weight_change": false,
+    "S0_rescue": false,
+    "later_increment_fit": false,
+    "protected_2026_access": false,
+    "stage3": false,
+    "full_WAR": false
+  },
+  "known_gate_consequence": "V2022 S0 equals C0 under the preregistered no-origin fallback and therefore cannot satisfy strict improvement over C0",
+  "stop_boundary": "document_S0_pass_or_final_failure_without_retuning"
+}

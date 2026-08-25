@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "S0_target_free_fit_complete_frozen_unscored",
+  "status": "S0_one_shot_disclosed_scoring_authorized_before_execution",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -970,6 +970,13 @@
     "disclosed_validation_scoring_authorized": false,
     "protected_2026_opened": false,
     "next_gate": "review_then_separately_authorize_one_shot_disclosed_S0_comparison"
+  },
+  "S0_scoring_authorization": {
+    "path": "docs/hitter-v2-S0-scoring-authorization.json",
+    "authorized_parent_commit": "d68acdd490f299b4c846b055e7ee570f15ad076a",
+    "one_shot_disclosed_scoring_authorized": true,
+    "post_result_retuning_authorized": false,
+    "protected_2026_opened": false
   },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,

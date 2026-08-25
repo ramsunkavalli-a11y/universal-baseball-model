@@ -737,6 +737,12 @@ Disclosed scoring requires separate authorization, and protected 2026 remains
 sealed.
 The S0 fit checkpoint passed all 999 repository tests and canonical lint.
 
+The user then authorized S0's one-shot disclosed 2022-2024 comparison. The
+authorization preserves the frozen weights and acknowledges that V2022 S0 is
+identical to C0, making the strict every-fold improvement gate impossible in
+that fold. The comparison must still run unchanged; no rescue or protected
+2026 access is authorized.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
