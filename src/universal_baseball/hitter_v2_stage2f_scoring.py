@@ -74,18 +74,33 @@ def translate_target_to_reference(
             outcome: translated[outcome] * evidence
             for outcome in HITTER_TALENT_OUTCOMES
         }
-        translated_counts["OTHER_OUT"] = evidence - sum(
-            translated_counts[outcome]
-            for outcome in HITTER_TALENT_OUTCOMES
-            if outcome != "OTHER_OUT"
-        )
         rows.append(
             {
                 **row,
                 **translated_counts,
             }
         )
-    return pl.DataFrame(rows, infer_schema_length=None).sort("player_id")
+    return (
+        pl.DataFrame(rows, infer_schema_length=None)
+        .with_columns(
+            (
+                pl.col("hitter_talent_pa")
+                - pl.sum_horizontal(
+                    *[
+                        pl.col(outcome)
+                        for outcome in HITTER_TALENT_OUTCOMES
+                        if outcome != "OTHER_OUT"
+                    ]
+                )
+            ).alias("OTHER_OUT")
+        )
+        .with_columns(
+            pl.sum_horizontal(
+                *[pl.col(outcome) for outcome in HITTER_TALENT_OUTCOMES]
+            ).alias("hitter_talent_pa")
+        )
+        .sort("player_id")
+    )
 
 
 def strongest_baseline(
