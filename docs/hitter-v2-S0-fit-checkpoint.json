@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "S0_target_free_fit",
+  "date": "2026-08-25",
+  "status": "fit_complete_frozen_unscored",
+  "model_id": "S0_C0_MARCEL_STABILITY_BLEND",
+  "execution_contract_path": "docs/hitter-v2-S0-fit-execution-contract.json",
+  "execution_contract_sha256": "01a3c7507aa08322dfcdcca4f53717279e4f3675e494032a6066ef8fa50b8516",
+  "generated_report_path": "reports/generated/hitter-v2-S0-fit/report.json",
+  "generated_report_sha256": "468843006afe74e67ba9e3e7b58bf6af05f08180cf8aa44869a5eaf35c40a2e3",
+  "generated_report_size_bytes": 7229,
+  "folds": {
+    "V2022": {
+      "training_origins": [],
+      "selection_source": "no_earlier_origin_preregistered_pure_C0_fallback",
+      "c0_weight": 1.0,
+      "marcel_weight": 0.0,
+      "forecast_players": 4705,
+      "prediction_path": "reports/generated/hitter-v2-S0-fit/tables/v2022/s0_predictions.parquet",
+      "prediction_sha256": "9139e9ac526b344b18bca0f133e9f131cf5ffa2452f6165b0f59646851c17e3b"
+    },
+    "V2023": {
+      "training_origins": [2022],
+      "c0_weight": 0.875,
+      "marcel_weight": 0.125,
+      "selected_training_origin_loss": 1.707130356384478,
+      "pure_C0_training_origin_loss": 1.7072963230186118,
+      "absolute_loss_improvement_vs_C0": 0.0001659666341338,
+      "forecast_players": 5568,
+      "selection_path": "reports/generated/hitter-v2-S0-fit/tables/v2023/weight_selection_scores.parquet",
+      "selection_sha256": "0bdde53aea60daeb042779f8a4fc839a6941d324e285829c4442ef99436cf6fd",
+      "prediction_path": "reports/generated/hitter-v2-S0-fit/tables/v2023/s0_predictions.parquet",
+      "prediction_sha256": "7986a652895d67deecb3b805014e0910c5b158424ada346641b1671e9e818bf1"
+    },
+    "V2024": {
+      "training_origins": [2022, 2023],
+      "c0_weight": 0.875,
+      "marcel_weight": 0.125,
+      "selected_training_origin_loss": 1.71125439580201,
+      "pure_C0_training_origin_loss": 1.7113717628115075,
+      "absolute_loss_improvement_vs_C0": 0.0001173670094975,
+      "forecast_players": 6381,
+      "selection_path": "reports/generated/hitter-v2-S0-fit/tables/v2024/weight_selection_scores.parquet",
+      "selection_sha256": "3c6376155880deaa5a2973dc16629b8cfe5b49b4b0a131f7b7efc2356b53c711",
+      "prediction_path": "reports/generated/hitter-v2-S0-fit/tables/v2024/s0_predictions.parquet",
+      "prediction_sha256": "8fb48d5d0226537310e678565b80820b05463db462aea4bb738a492bbb8c4409"
+    }
+  },
+  "invariants": {
+    "forecast_population_unchanged": true,
+    "probabilities_finite": true,
+    "probabilities_nonnegative": true,
+    "maximum_simplex_error": 6.661338147750939e-16,
+    "one_global_weight_per_fold": true,
+    "disclosed_validation_outcomes_loaded": false,
+    "disclosed_validation_metrics_computed": false,
+    "protected_confirmation_opened": false
+  },
+  "interpretation": "the same interior weight was selected in both folds with training origins, but the training-origin gain over pure C0 is small and is not a promotion result",
+  "validation": {
+    "full_tests": "999_passed",
+    "canonical_lint": "passed_src_scripts_tests"
+  },
+  "candidate_scored": false,
+  "next_gate": "review_then_separately_authorize_one_shot_disclosed_S0_comparison"
+}

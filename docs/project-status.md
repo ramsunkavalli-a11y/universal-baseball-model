@@ -728,6 +728,15 @@ the preregistered S0 global C0/Marcel stability blend. Disclosed validation
 scoring, later ladder increments, protected 2026 access, Stage 3, and WAR are
 not authorized. The required stop is a hashed S0 fit checkpoint before scoring.
 
+S0 target-free fitting is complete and frozen. V2022 used the preregistered
+pure-C0 no-origin fallback; V2023 and V2024 independently selected the same
+87.5% C0 / 12.5% Marcel blend. All forecast players were retained and the
+probability invariants passed. The training-origin improvement over pure C0 was
+small, so this is an unscored challenger rather than evidence of promotion.
+Disclosed scoring requires separate authorization, and protected 2026 remains
+sealed.
+The S0 fit checkpoint passed all 999 repository tests and canonical lint.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1327,7 +1336,11 @@ and all `798` tests completed successfully.
 72. `docs/hitter-v2-post-H0-diagnostic-result.json`
 73. `docs/hitter-v2-stability-increment-ladder-contract.json`
 74. `docs/hitter-v2-stability-increment-ladder-checkpoint.json`
-75. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+75. `docs/hitter-v2-S0-fit-authorization.json`
+76. `docs/hitter-v2-S0-fit-execution-contract.json`
+77. `docs/hitter-v2-S0-fit-checkpoint.md`
+78. `docs/hitter-v2-S0-fit-checkpoint.json`
+79. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

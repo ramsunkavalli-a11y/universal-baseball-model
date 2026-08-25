@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "S0_target_free_fit_authorized_before_implementation",
+  "status": "S0_target_free_fit_complete_frozen_unscored",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -962,6 +962,15 @@
     "protected_2026_opened": false,
     "stop_boundary": "freeze_S0_fit_artifacts_and_stop_before_scoring"
   },
+  "S0_fit_checkpoint": {
+    "path": "docs/hitter-v2-S0-fit-checkpoint.json",
+    "status": "fit_complete_frozen_unscored",
+    "selected_C0_weights": {"V2022": 1.0, "V2023": 0.875, "V2024": 0.875},
+    "disclosed_validation_outcomes_loaded": false,
+    "disclosed_validation_scoring_authorized": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_then_separately_authorize_one_shot_disclosed_S0_comparison"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -1219,7 +1228,7 @@
     "stage2f_H1_authorized": false,
     "post_H0_diagnostic_authorized": true,
     "new_candidate_fit_authorized": false,
-    "next_gate": "review_preregistered_S0_stability_blend_then_require_explicit_fit_authorization"
+    "next_gate": "review_frozen_S0_fit_then_require_separate_one_shot_scoring_authorization"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
