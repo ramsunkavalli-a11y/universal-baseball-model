@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-24
+Last updated: 2026-08-25
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
@@ -58,6 +58,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 2b:** **COMPLETE / FAILED DISCLOSED-DEVELOPMENT GATE — NO CANDIDATE SELECTED**
 - **Hitter v2 Stage 2c:** **E1 FAILED FROZEN GATE — LADDER STOPPED; E2 NOT AUTHORIZED**
 - **Hitter v2 post-E1 review:** **DONE — NEXT GATE IS SOURCE-ONLY MATCHUP-CONTEXT READINESS**
+- **Hitter v2 Stage 2f H0:** **TRAINING-ORIGIN CONFIGURATION SELECTED / PARAMETERS FROZEN — STOPPED BEFORE DISCLOSED VALIDATION**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -651,6 +652,19 @@ is strictly earlier than that outer target. Stage 2 target/evaluation tables,
 the disclosed comparison, promotion, H1, tracking, protected 2026, Stage 3,
 and WAR remain closed.
 
+That selection gate is complete and documented in
+`docs/hitter-v2-stage2f-H0-selection-checkpoint.md` and its machine-readable
+companion. Component-specific half-lives and prior strengths were selected on
+strictly earlier origins. The common-reference surface retained the strongest
+translation shrinkage and tighter development shrinkage in V2024; its
+calibration prior was tied and resolved by the frozen conservative tie-break.
+Observed event targets were held fixed across candidates, all 16,654 prescore
+forecasts pass probability and membership invariants, and a clean rerun
+reproduced the exact report hash. No disclosed validation outcome was loaded,
+no H0/Marcel comparison was computed, and no promotion decision was made. The
+next gate is review followed by separate authorization for one frozen disclosed
+validation comparison without retuning.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1231,7 +1245,15 @@ and all `798` tests completed successfully.
 53. `docs/hitter-v2-stage2f-development-contract.md`
 54. `docs/hitter-v2-stage2f-development-contract.json`
 55. `docs/hitter-v2-stage2f-authorization.json`
-56. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+56. `docs/hitter-v2-stage2f-H0-target-free-checkpoint.md`
+57. `docs/hitter-v2-stage2f-H0-target-free-checkpoint.json`
+58. `docs/hitter-v2-stage2f-H0-fit-authorization.json`
+59. `docs/hitter-v2-stage2f-H0-fit-checkpoint.md`
+60. `docs/hitter-v2-stage2f-H0-fit-checkpoint.json`
+61. `docs/hitter-v2-stage2f-H0-selection-authorization.json`
+62. `docs/hitter-v2-stage2f-H0-selection-checkpoint.md`
+63. `docs/hitter-v2-stage2f-H0-selection-checkpoint.json`
+64. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

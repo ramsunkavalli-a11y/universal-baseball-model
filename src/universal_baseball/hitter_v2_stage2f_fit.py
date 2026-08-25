@@ -268,7 +268,7 @@ def materialize_h0_fit_sources(
     historical_ages: pl.DataFrame,
     *,
     predictor_cutoff_season: int,
-    component_prior_pa: float,
+    component_prior_pa: float | Mapping[str, float],
 ) -> H0FitSources:
     """Materialize park-neutral, one-row-per-player-season H0 fit sources."""
 
@@ -284,20 +284,26 @@ def materialize_h0_fit_sources(
         if frame.filter(pl.col("season") > predictor_cutoff_season).height:
             raise ValueError(f"{label} source crosses the predictor cutoff")
 
-    priors = {
-        name: float(component_prior_pa)
-        for name in (
-            "plate_appearance",
-            "non_k",
-            "non_k_non_ubb",
-            "contact",
-            "non_hr_contact",
-            "reach",
-            "hit_in_play",
-            "non_hit_reach",
-            "non_reach",
-        )
-    }
+    component_names = (
+        "plate_appearance",
+        "non_k",
+        "non_k_non_ubb",
+        "contact",
+        "non_hr_contact",
+        "reach",
+        "hit_in_play",
+        "non_hit_reach",
+        "non_reach",
+    )
+    if isinstance(component_prior_pa, Mapping) and set(component_prior_pa) != set(
+        component_names
+    ):
+        raise ValueError("H0 source component priors do not cover nested nodes")
+    priors = (
+        {name: float(component_prior_pa[name]) for name in component_names}
+        if isinstance(component_prior_pa, Mapping)
+        else {name: float(component_prior_pa) for name in component_names}
+    )
     player_seasons = estimate_player_season_probabilities(
         training,
         predictor_cutoff_season=predictor_cutoff_season,

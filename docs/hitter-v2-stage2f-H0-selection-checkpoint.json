@@ -1,0 +1,144 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "2f_H0_training_origin_selection",
+  "date": "2026-08-25",
+  "status": "configuration_selected_and_final_parameters_frozen_stopped_before_disclosed_validation_scoring",
+  "authorization": {
+    "path": "docs/hitter-v2-stage2f-H0-selection-authorization.json",
+    "sha256": "c64a17c720dcb03fc4500681f40021390c7689d69a318c5a967441b7096e5fd8",
+    "authorization_commit": "bee0f06",
+    "authorized_parent_commit": "0b8d847"
+  },
+  "selection_design": {
+    "origin_rule": "origin_season_must_be_in_outer_predictor_history_and_strictly_before_outer_target",
+    "component_metric": "event_log_loss_on_strictly_earlier_training_origins",
+    "surface_metric": "nested_event_log_loss_with_raw_observed_target_fixed_across_candidates",
+    "surface_comparison_scale": "candidate_reference_predictions_backtranslated_to_the_observed_scoring_level_using_training_frozen_translation",
+    "tie_tolerance": 1e-08,
+    "tie_rule": "larger_shrinkage_then_simpler_effect_structure_then_longer_half_life",
+    "component_grid": {
+      "half_life_seasons": [1.0, 2.0, 3.0],
+      "component_prior_pa": [100.0, 200.0, 400.0, 800.0],
+      "configurations_per_component": 12
+    },
+    "surface_grid": {
+      "translation_prior_mover_pa": [250.0, 500.0, 1000.0],
+      "development_prior_sd": [0.05, 0.1],
+      "calibration_prior_sd": [0.1, 0.2],
+      "configurations": 12
+    }
+  },
+  "selected_folds": [
+    {
+      "fold_id": "V2022",
+      "training_origin_seasons": [],
+      "component_default": {"half_life_seasons": 3.0, "component_prior_pa": 800.0},
+      "surface": {"translation_prior_mover_pa": 1000.0, "development_prior_sd": 0.05, "calibration_prior_sd": 0.1},
+      "selection_evidence": "none_conservative_defaults_only",
+      "forecast_players": 4705
+    },
+    {
+      "fold_id": "V2023",
+      "training_origin_seasons": [2022],
+      "component_half_life_and_prior_pa": {
+        "plate_appearance": [3.0, 100.0],
+        "non_k": [3.0, 100.0],
+        "non_k_non_ubb": [3.0, 200.0],
+        "contact": [3.0, 100.0],
+        "non_hr_contact": [3.0, 800.0],
+        "reach": [3.0, 400.0],
+        "hit_in_play": [3.0, 200.0],
+        "non_hit_reach": [3.0, 800.0],
+        "non_reach": [3.0, 800.0]
+      },
+      "surface": {"translation_prior_mover_pa": 1000.0, "development_prior_sd": 0.05, "calibration_prior_sd": 0.1},
+      "surface_event_log_loss": 0.3809634672535676,
+      "surface_interpretation": "all_surface_settings_tied_because_the_only_origin_has_no_prior_adjacent_pair_to_identify_the_surfaces",
+      "forecast_players": 5568
+    },
+    {
+      "fold_id": "V2024",
+      "training_origin_seasons": [2022, 2023],
+      "component_half_life_and_prior_pa": {
+        "plate_appearance": [1.0, 100.0],
+        "non_k": [1.0, 100.0],
+        "non_k_non_ubb": [2.0, 100.0],
+        "contact": [1.0, 100.0],
+        "non_hr_contact": [3.0, 800.0],
+        "reach": [1.0, 400.0],
+        "hit_in_play": [3.0, 200.0],
+        "non_hit_reach": [1.0, 800.0],
+        "non_reach": [3.0, 800.0]
+      },
+      "surface": {"translation_prior_mover_pa": 1000.0, "development_prior_sd": 0.05, "calibration_prior_sd": 0.1},
+      "surface_event_log_loss": 0.3818505259188169,
+      "surface_interpretation": "strongest_translation_shrinkage_and_tighter_development_effect_won; calibration_prior_was_exactly_tied_and_resolved_conservatively",
+      "forecast_players": 6381
+    }
+  ],
+  "implementation": {
+    "fit_module_path": "src/universal_baseball/hitter_v2_stage2f_fit.py",
+    "fit_module_sha256": "37701876b4b51f653529f99edd9871145a5701ce1fe858ec80c695436970f8a5",
+    "selection_module_path": "src/universal_baseball/hitter_v2_stage2f_selection.py",
+    "selection_module_sha256": "6cebdcf600422d15ec4d23a0658afaef7d6cfc197f4aec06d23a774b4737d3a8",
+    "runner_path": "scripts/select_hitter_v2_stage2f_H0.py",
+    "runner_sha256": "ac88762f7d889156a325ff9bb722df11cdd724f5b5c54caeba4a3ca98e0272a6",
+    "test_path": "tests/test_hitter_v2_stage2f_selection.py",
+    "test_sha256": "c2b55a32c1240ee611fcaf0aa942cfd26edf7b53a585f2a1c3b1614482cc57b5"
+  },
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-stage2f-H0-selection/report.json",
+    "sha256": "5d9d45d4343edefda5ddc83ba35baa8f5c95ced80f53a0283bb9257703513a7b",
+    "deterministic_clean_rerun_identical": true,
+    "artifact_count_including_report": 31,
+    "artifact_bytes_including_report": 7972941
+  },
+  "invariants": {
+    "forecast_rows": 16654,
+    "forecast_populations_unchanged": true,
+    "all_probabilities_finite_nonnegative_and_normalized": true,
+    "maximum_simplex_error": 4.440892098500626e-16,
+    "fixed_target_across_surface_candidates": true,
+    "vectorized_score_matches_audited_primitive": true,
+    "future_training_rows_fail_closed": true,
+    "validation_loader_absent_from_runner": true
+  },
+  "prefreeze_incidents": [
+    {
+      "issue": "repeated_dataframe_scans_made_surface_evaluation_too_slow",
+      "correction": "compile_immutable_surface_parameters_once_per_configuration",
+      "partial_winner_used": false
+    },
+    {
+      "issue": "row_wise_likelihood_evaluation_made_the_frozen_grid_too_slow",
+      "correction": "vectorize_the_identical_nested_likelihood",
+      "equivalence_test_passed": true,
+      "partial_winner_used": false
+    },
+    {
+      "issue": "an_initial_prefreeze_run_translated_the_response_with_each_candidate_translation_configuration",
+      "scientific_risk": "candidate_specific_response_targets_would_make_surface_scores_noncomparable",
+      "correction": "hold_raw_observed_events_fixed_and_backtranslate_each_candidate_prediction_to_the_observed_level",
+      "protected_or_disclosed_outcome_used": false,
+      "prefreeze_result_accepted": false
+    }
+  ],
+  "validation": {
+    "ruff": "passed",
+    "focused_selection_and_authorization_tests": "7_passed",
+    "pytest": "980_passed"
+  },
+  "closed": {
+    "disclosed_validation_outcomes_loaded": false,
+    "candidate_accuracy_metrics_computed": false,
+    "Marcel_or_other_comparator_scored": false,
+    "promotion_decision_made": false,
+    "H1": true,
+    "tracking": true,
+    "protected_2026": true,
+    "stage3": true,
+    "full_WAR": true
+  },
+  "next_gate": "review_then_explicitly_authorize_one_frozen_disclosed_validation_comparison_without_retuning"
+}
