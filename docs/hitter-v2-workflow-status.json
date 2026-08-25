@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "stage2d_J0_real_data_fit_authorized_unexecuted",
+  "status": "stage2d_J0_real_data_fit_failed_closed_unscored",
   "updated_date": "2026-08-24",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2d_J0_fit_only_authorized_next_execute_and_audit",
+    "hitter_v2": "stage2d_J0_fit_failed_closed_next_independent_method_review",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -621,11 +621,33 @@
     "authorization_sha256": "d3afb846d24131f80605ab2bc40efdde18879d37c38573035f67bb02bc0c9146",
     "runner_path": "scripts/fit_hitter_v2_stage2d_j0.py",
     "runner_sha256": "3c11fc777b36aab96cf67fbf8927e1db3e629d55714e10b2a2f9441bc8b21e9e",
-    "candidate_fit": false,
+    "candidate_fit_attempted": true,
+    "candidate_fit_completed": false,
     "candidate_scored": false,
     "post_fit_tuning_authorized": false,
     "protected_2026_opened": false,
-    "next_gate": "execute_and_audit_frozen_J0_fit_only"
+    "next_gate": "independent_method_and_observability_review"
+  },
+  "stage2d_J0_fit_incident": {
+    "status": "failed_closed",
+    "incident_path": "docs/hitter-v2-stage2d-j0-fit-incident.json",
+    "incident_sha256": "0666274b2a1acaa9729cceaa904233b4183502e96fc217a459dcde7f0be8000c",
+    "checkpoint_path": "docs/hitter-v2-stage2d-j0-fit-failure-checkpoint.md",
+    "checkpoint_sha256": "65f6a74d43b96796051d58fba54407e1d58b41b8a38907660a1c6b1d440499d5",
+    "execution_commit": "b093edf",
+    "exit_code": 1,
+    "exception": "J0 batter variance marginal-likelihood iteration did not converge",
+    "failing_family": "binary_context_node",
+    "failing_node": "not_identified_by_frozen_runner",
+    "result_directory_created": false,
+    "model_artifacts_published": false,
+    "candidate_fit_completed": false,
+    "candidate_scored": false,
+    "forecast_targets_loaded": false,
+    "protected_2026_opened": false,
+    "rerun_attempted": false,
+    "rescue_tuning_allowed": false,
+    "next_gate": "independent_method_and_observability_review_before_any_new_candidate_contract"
   },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
@@ -700,8 +722,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 933,
-      "duration_seconds": 10.21
+      "passed": 934,
+      "duration_seconds": 10.68
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -742,6 +764,11 @@
       "command": "python -m pytest tests/test_hitter_v2_stage2d_fit_authorization.py tests/test_hitter_v2_stage2d.py tests/test_hitter_v2_stage2d_execution_contract.py",
       "status": "passed",
       "passed": 15
+    },
+    "stage2d_J0_fit_incident_focused_tests": {
+      "command": "python -m pytest tests/test_hitter_v2_stage2d_fit_incident.py",
+      "status": "passed",
+      "passed": 1
     }
   },
   "authorization": {
@@ -780,8 +807,10 @@
     "joint_contextual_candidate_implementation_complete": true,
     "joint_contextual_candidate_fit_execution_contract_frozen": true,
     "joint_contextual_candidate_fit_authorized": true,
+    "joint_contextual_candidate_fit_attempted": true,
+    "joint_contextual_candidate_fit_completed": false,
     "joint_contextual_candidate_scoring_authorized": false,
-    "next_gate": "execute_and_audit_frozen_J0_fit_only"
+    "next_gate": "independent_method_and_observability_review_before_any_new_candidate_contract"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -813,5 +842,6 @@
     "Pitcher evidence counts based on outcome-ready rows are distinct from raw matchup availability and are not themselves pitcher-quality estimates.",
     "The terminal-outcome label sidecar passes every frozen source threshold, but 39923 non-exact player-game reconciliation rows remain failed closed to the exact B1 outcome-only forecast.",
     "The first source-only label attempt failed because the literal phrase called out on strikes was not recognized; the target-free correction and failed report hash are preserved, and no model fit or score preceded the amendment."
+    ,"The frozen J0 full-data fit failed closed because a binary-component batter-variance iteration did not converge within 20 iterations; no artifact was published, no target was loaded, and rescue tuning or scoring is unauthorized."
   ]
 }

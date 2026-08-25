@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "stage2d_J0_real_data_fit",
+  "status": "failed_closed",
+  "attempted_date": "2026-08-24",
+  "branch": "hitter-v2-pbp-outcomes",
+  "execution_commit": "b093edf",
+  "command": ".venv\\Scripts\\python.exe scripts/fit_hitter_v2_stage2d_j0.py",
+  "exit_code": 1,
+  "observed_process_start": "2026-08-24T19:58:49-07:00",
+  "failure_observed_before": "2026-08-24T20:10:25-07:00",
+  "fit_execution_contract_sha256": "5d0ef4898b3a59103d5e7138efa18aca63eea8672df5d1dfbdc36b063af38806",
+  "fit_authorization_sha256": "d3afb846d24131f80605ab2bc40efdde18879d37c38573035f67bb02bc0c9146",
+  "runner_sha256": "3c11fc777b36aab96cf67fbf8927e1db3e629d55714e10b2a2f9441bc8b21e9e",
+  "implementation_sha256": "fb87a41d41fb8fe33406935efb73546f49a0196bf075ffd06050aae7a3b554a1",
+  "event_input_sha256": "a6cd82a5ac8c9382dc474a968bad6b5e6b48599b7ccfc1c6cfbe7a9a1cba515d",
+  "exception_type": "ValueError",
+  "exception_message": "J0 batter variance marginal-likelihood iteration did not converge",
+  "exception_source": "src/universal_baseball/hitter_v2_stage2d.py:789",
+  "failing_family": "binary_context_node",
+  "failing_node": "not_identified_by_frozen_runner",
+  "failure_condition": {
+    "variance_method": "deterministic_laplace_em_marginal_likelihood",
+    "variance_max_iterations": 20,
+    "variance_relative_tolerance": 0.01,
+    "converged": false
+  },
+  "artifact_audit": {
+    "result_directory_created": false,
+    "model_artifacts_published": false,
+    "partial_fit_accepted": false
+  },
+  "scientific_boundary": {
+    "candidate_fit_attempted": true,
+    "candidate_fit_completed": false,
+    "candidate_scored": false,
+    "forecast_targets_loaded": false,
+    "protected_2026_opened": false,
+    "tolerance_changed_after_failure": false,
+    "rerun_attempted": false,
+    "rescue_tuning_allowed": false
+  },
+  "diagnosis": "The frozen deterministic batter-variance estimator did not satisfy its predeclared convergence rule on at least one binary component. The all-or-nothing runner correctly withheld every result artifact. The runner did not emit the active node before calling the fitter, so attributing the failure to a specific node would be unsupported.",
+  "next_gate": "independent_method_and_observability_review_before_any_new_candidate_contract",
+  "candidate_scoring_authorized": false
+}
