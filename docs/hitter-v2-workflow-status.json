@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "stage2d_J0_fit_failed_closed_next_independent_method_review",
+    "hitter_v2": "stage2d_J0_failed_method_review_complete_next_new_contract_review",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -649,6 +649,21 @@
     "rescue_tuning_allowed": false,
     "next_gate": "independent_method_and_observability_review_before_any_new_candidate_contract"
   },
+  "post_J0_numerical_method_review": {
+    "complete": true,
+    "path": "docs/hitter-v2-post-j0-numerical-method-review.md",
+    "sha256": "8271ad78d66a1c790a329cc974dcb8fe1892eb19be3732927a5b99c9ca3264b5",
+    "J0_failure_final": true,
+    "J0_rerun_allowed": false,
+    "recommended_distinct_candidate": "J0R_FIXED_INFORMATION_SHRINKAGE",
+    "recommended_scale": "component_prior_PA_and_predictor_history_Fisher_information",
+    "new_candidate_contract_frozen": false,
+    "new_candidate_implemented": false,
+    "new_candidate_fit": false,
+    "new_candidate_scored": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_and_freeze_distinct_target_free_candidate_contract_only"
+  },
   "stage2c_distance_source_audit": {
     "accepted_for_future_optional_richer_channel_only": true,
     "source_audit_path": "docs/hitter-v2-distance-source-audit.md",
@@ -722,8 +737,8 @@
     "post_change_full_pytest": {
       "command": "python -m pytest",
       "status": "passed",
-      "passed": 934,
-      "duration_seconds": 10.68
+      "passed": 935,
+      "duration_seconds": 10.23
     },
     "focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_validation.py",
@@ -768,7 +783,7 @@
     "stage2d_J0_fit_incident_focused_tests": {
       "command": "python -m pytest tests/test_hitter_v2_stage2d_fit_incident.py",
       "status": "passed",
-      "passed": 1
+      "passed": 2
     }
   },
   "authorization": {
@@ -810,7 +825,7 @@
     "joint_contextual_candidate_fit_attempted": true,
     "joint_contextual_candidate_fit_completed": false,
     "joint_contextual_candidate_scoring_authorized": false,
-    "next_gate": "independent_method_and_observability_review_before_any_new_candidate_contract"
+    "next_gate": "review_and_freeze_distinct_target_free_candidate_contract_only"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
