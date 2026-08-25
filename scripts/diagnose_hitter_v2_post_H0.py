@@ -13,6 +13,7 @@ import polars as pl
 from universal_baseball.hitter_v2_evaluation import score_hitter_predictions
 from universal_baseball.hitter_v2_outcomes import HITTER_TALENT_OUTCOMES
 from universal_baseball.hitter_v2_stage2f import (
+    normalize_level,
     probabilities_from_links,
     probability_links,
     translation_age_band,
@@ -129,7 +130,7 @@ def age_translation_only(
         }
         links = probability_links(probabilities)
         age_band = translation_age_band(row["age_years"])
-        level = str(row["level_group"])
+        level = normalize_level(row["level_group"])
         adjusted = {
             component: value
             + lookup.get((component, level, age_band), lookup.get((component, level, "ALL"), 0.0))

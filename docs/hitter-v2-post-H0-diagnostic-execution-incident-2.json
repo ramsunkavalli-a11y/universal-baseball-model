@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "post_H0_disclosed_diagnostic",
+  "date": "2026-08-25",
+  "incident": "the first written diagnostic report treated source level labels such as aaa as distinct from canonical translation labels such as AAA, making L1 falsely equal L0",
+  "superseded_contract_sha256": "977b934f394b82c9799ac1467657f8f9be4395779bbd771907addca54fc07483",
+  "superseded_report_sha256": "831fe0021d1c4e68dce72ab7b4f2140dfc38584f2305b9223ad5402fe307a2d4",
+  "scientific_question_changed": false,
+  "ablation_order_changed": false,
+  "correction": "normalize chronology-safe source level_group with the existing frozen normalize_level function before translation lookup",
+  "protected_confirmation_opened": false,
+  "candidate_fit": false,
+  "candidate_scored": false
+}
