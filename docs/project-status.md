@@ -31,7 +31,10 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
   are now frozen. The authorized real-data J0 fit failed closed when its frozen
   batter-variance estimator did not converge. A distinct Stage 2e J0R contract
   is now frozen before implementation; scoring remains unauthorized.
-  Protected 2026 outcomes, tracking fusion,
+  A bounded historical source expansion audit now shows representative
+  2017-2019 MiLB files are compatible with the existing fail-closed readers;
+  full backfill and all model use remain closed pending review. Protected 2026
+  outcomes, tracking fusion,
   Stage 3, and full WAR remain closed. Stage 2d's terminal labels are now
   certified, J0's pre-fit mechanics and chronology-safe inputs are implemented,
   and its real-data execution contract is frozen. J0 was attempted once, failed
@@ -59,6 +62,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 2c:** **E1 FAILED FROZEN GATE — LADDER STOPPED; E2 NOT AUTHORIZED**
 - **Hitter v2 post-E1 review:** **DONE — NEXT GATE IS SOURCE-ONLY MATCHUP-CONTEXT READINESS**
 - **Hitter v2 Stage 2f H0:** **FAILED FINAL DISCLOSED-DEVELOPMENT GATE — NO RETUNING; H1 CLOSED**
+- **Hitter v2 historical expansion:** **REPRESENTATIVE SOURCE COMPATIBILITY PASSED — FULL MATERIALIZATION NOT AUTHORIZED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -751,6 +755,27 @@ Its dependent L0 translation residual and all later increments remain closed;
 further fitting requires a distinct preregistered candidate.
 The final S0 checkpoint passed all 1,003 repository tests and canonical lint.
 
+On 2026-08-25 the user authorized a source-only investigation of pre-2021
+history, explicitly distinguishing the shortened 2020 MLB season from the
+absence of a 2020 MiLB season. The public source inventory found exact paired
+PBP/player-game period coverage at every current level in 2017 and 2019, but in
+2018 only AAA and AA have full parity; the lower levels remain incomplete.
+
+Nine bounded regular-season MiLB sample pairs spanning 2017-2019 then passed
+the existing historical schema, terminal-PA, same-game league-authority, and
+official player-game compatibility checks. The samples covered 91,680 terminal
+PAs and 91,274 official PA. One conflicting positive-PA team identity remained
+failed closed. The pilot also proved that filename periods can be exhibition-
+or postseason-only, so `game_type` is a required scope gate.
+
+This is source compatibility, not predictive validation. No candidate was fit
+or scored and protected 2026 payloads remain sealed. Full materialization is
+not authorized. The exact next gate after review is separate source-only
+authorization for a full 2019 MiLB backfill plus independent 2020 MLB source
+certification; 2017 follows only after the 2019 workflow passes, and 2018 lower
+levels remain excluded pending another official authority.
+The checkpoint passed canonical lint and all 1,007 repository tests.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1359,6 +1384,10 @@ and all `798` tests completed successfully.
 81. `docs/hitter-v2-S0-comparison-result.md`
 82. `docs/hitter-v2-S0-comparison-result.json`
 83. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+84. `docs/hitter-v2-historical-expansion-authorization.json`
+85. `docs/hitter-v2-historical-expansion-source-contract.md`
+86. `docs/hitter-v2-historical-expansion-audit-result.md`
+87. `docs/hitter-v2-historical-expansion-audit-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

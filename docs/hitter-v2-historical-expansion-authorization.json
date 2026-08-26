@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "historical_source_expansion",
+  "authorized_date": "2026-08-25",
+  "authorized_by": "user",
+  "authorization_basis": "Use the cleanup lessons from the certified 2021-2025 sources to investigate older history; recognize that MLB played a shortened 2020 season while MiLB did not.",
+  "parent_commit": "91661ee1154b2bfabd2a144ae6fbcd7977bebf39",
+  "authorized_actions": [
+    "inventory public filename-level source metadata for 2017-2020",
+    "download bounded representative 2017-2019 MiLB PBP and player-game pairs into quarantine",
+    "audit schema, terminal-PA semantics, identity authority, and official player-game reconciliation readiness",
+    "define a separate 2020 MLB source lane",
+    "write contracts, audit evidence, tests, and status documentation"
+  ],
+  "not_authorized": [
+    "bulk historical materialization",
+    "candidate fitting or scoring",
+    "opening or using protected 2026 outcome or participant data",
+    "tracking fusion",
+    "Stage 3 baserunning",
+    "WAR assembly"
+  ],
+  "protected_target_policy": {
+    "protected_season": 2026,
+    "outcome_payload_access": "forbidden",
+    "participant_membership_access": "forbidden",
+    "incidental_public_release_filename_metadata": "may be returned by an unfiltered inventory endpoint but must not be downloaded, analyzed, or used"
+  },
+  "stop_condition": "Stop after the historical source audit and certification plan; require a distinct authorization before full backfill or any model use."
+}

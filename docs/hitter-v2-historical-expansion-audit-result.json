@@ -1,0 +1,97 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "historical_source_expansion_audit",
+  "result_date": "2026-08-25",
+  "status": "representative_milb_compatibility_passed_full_materialization_not_authorized",
+  "authorization_path": "docs/hitter-v2-historical-expansion-authorization.json",
+  "source_contract_path": "docs/hitter-v2-historical-expansion-source-contract.md",
+  "parent_commit": "91661ee1154b2bfabd2a144ae6fbcd7977bebf39",
+  "frozen_input_sha256": {
+    "authorization": "b112bfb9d6abbeffab676946387aed69470da149b1783bcbebaaaaa8658b1ff2d",
+    "source_contract": "386f376b442362246b3523433186e20c9f2debac9934d2886e89e0a1c726e12e",
+    "audit_script": "ecae78fb295463896717f5d25ddb9d3046b7b9e02c515e35f6ff7d6e268589d9"
+  },
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_outcome_payload_accessed": false,
+  "inventory": {
+    "command": ".venv/Scripts/python.exe scripts/audit_current_talent_historical_inventory.py --report-root reports/generated/hitter-v2-historical-expansion-inventory",
+    "generated_report_path": "reports/generated/hitter-v2-historical-expansion-inventory/report.json",
+    "generated_report_sha256": "91e6cc5f7ff777eb574f0bbdcefe714fc5aab01b7852826e8386fff51f23c492",
+    "generated_report_bytes": 66140,
+    "recognized_pbp_assets": 624,
+    "recognized_player_game_assets": 615,
+    "findings": {
+      "2017": "all five current filename levels have exact PBP/player-game period parity",
+      "2018": "AAA and AA have exact period parity; High-A and A have 1/6 common-period coverage and rookie has 1/4",
+      "2019": "all five current filename levels have exact PBP/player-game period parity",
+      "2020_milb": "no PBP or player-game asset cells, consistent with no affiliated MiLB season"
+    },
+    "protected_metadata_note": "The public release endpoint returned filename-level metadata outside the requested years, including protected-season labels. No protected asset content, outcome row, participant membership, or result was downloaded, opened, analyzed, or used."
+  },
+  "representative_audit": {
+    "command": ".venv/Scripts/python.exe scripts/audit_hitter_v2_historical_expansion.py",
+    "generated_report_path": "reports/generated/hitter-v2-historical-expansion-audit/report.json",
+    "generated_report_sha256": "f576586d0404328e3774eaf294c7b853a7703441dbe14e4e3d3e3c7fb2b5e731",
+    "generated_report_bytes": 87026,
+    "selection": {
+      "2017": ["AAA period 9", "rookie period 9"],
+      "2018": ["AAA period 3", "AA period 9"],
+      "2019": ["AAA period 9", "AA period 9", "High-A period 9", "A period 9", "rookie period 8"]
+    },
+    "pilot_exclusions": [
+      "2019 AAA period 3 contained exhibition game_type E only",
+      "2019 AAA period 10 contained postseason game_type W only",
+      "2019 rookie period 9 contained postseason game_type W only"
+    ],
+    "sample_pair_count": 9,
+    "compatible_sample_pair_count": 9,
+    "pbp_row_count": 292669,
+    "player_game_row_count": 95351,
+    "terminal_pa_count": 91680,
+    "official_pa_count": 91274,
+    "resolved_player_game_count": 78692,
+    "same_game_league_authority_missing_game_count": 0,
+    "raw_pitch_key_duplicate_row_count": 2737,
+    "repeated_terminal_snapshot_row_count": 1051,
+    "declared_schema_alias_action_count": 18,
+    "terminal_description_missing_count": 0,
+    "terminal_status_counts": {
+      "supported_narrative_fallback": 59430,
+      "unsupported_narrative_result": 31211,
+      "unsupported_bunt": 1003,
+      "unsupported_special_result": 31,
+      "ambiguous_narrative_groups": 5
+    },
+    "official_resolution_counts": {
+      "consensus": 78672,
+      "componentwise_dominance": 19,
+      "unresolved_positive_pa_team_identity": 1
+    },
+    "interpretation": "The historical samples are structurally compatible with the existing terminal-PA and official player-game readers. Unsupported non-contact narratives are expected at this source-audit step because exhaustive PA assembly uses official outcomes for BB, HBP, K, and special events. The one conflicting positive-PA team identity was retained as a failed-closed exception."
+  },
+  "mlb_2020": {
+    "season_played": true,
+    "season_character": "shortened MLB regular season",
+    "current_hitter_v2_artifact_registry_support": false,
+    "status": "separate_source_lane_requires_checksum_pinned_materialization_and_exact_player_game_and_season_reconciliation",
+    "milb_zero_row_policy": "observation_gap_not_zero_talent"
+  },
+  "validation": {
+    "ruff_command": ".venv/Scripts/python.exe -m ruff check src scripts tests",
+    "ruff_status": "passed",
+    "pytest_command": ".venv/Scripts/python.exe -m pytest",
+    "pytest_status": "passed",
+    "pytest_passed": 1007,
+    "pytest_duration_seconds": 10.73
+  },
+  "decision": {
+    "2019": "recommended_first_full_source-only backfill after separate authorization",
+    "2017": "recommended_second full source-only backfill after 2019 workflow certification",
+    "2018": "AAA and AA only initially; lower levels excluded pending another official authority",
+    "2020_mlb": "certify separately before use",
+    "model_use": "not authorized"
+  },
+  "next_gate": "review_then_separately_authorize_full_2019_milb_source_materialization_and_2020_mlb_source_certification_without_model_fit_or_score"
+}

@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "S0_failed_final_distinct_preregistration_required",
+  "status": "historical_source_sample_compatible_full_materialization_requires_review",
   "updated_date": "2026-08-25",
   "repository": {
     "base_branch": "main",
@@ -21,7 +21,7 @@
   },
   "program_state": {
     "position_player_v1": "frozen_historical_prototype_preserved",
-    "hitter_v2": "post_H0_diagnostic_complete_stability_increment_ladder_preregistered_before_fit",
+    "hitter_v2": "S0_failed_historical_source_expansion_sample_audited_no_model_use",
     "pitching_v1": "paused_foundation_preserved"
   },
   "contracts": {
@@ -1176,7 +1176,30 @@
       "development_gate_pass": false,
       "post_result_retuning": false,
       "protected_2026_opened": false
+    },
+    "historical_source_expansion_validation": {
+      "ruff": "passed",
+      "ruff_command": ".venv/Scripts/python.exe -m ruff check src scripts tests",
+      "pytest": "1007_passed",
+      "representative_sample_pairs": 9,
+      "candidate_fit": false,
+      "candidate_scored": false,
+      "protected_2026_opened": false
     }
+  },
+  "historical_source_expansion": {
+    "authorization_path": "docs/hitter-v2-historical-expansion-authorization.json",
+    "source_contract_path": "docs/hitter-v2-historical-expansion-source-contract.md",
+    "result_path": "docs/hitter-v2-historical-expansion-audit-result.json",
+    "representative_milb_compatibility_passed": true,
+    "sample_pair_count": 9,
+    "sample_terminal_pa_count": 91680,
+    "sample_official_pa_count": 91274,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "protected_2026_opened": false,
+    "full_historical_materialization_authorized": false,
+    "next_gate": "review_then_separately_authorize_full_2019_milb_and_2020_mlb_source_certification"
   },
   "authorization": {
     "stage0_complete": true,
@@ -1246,7 +1269,10 @@
     "stage2f_H1_authorized": false,
     "post_H0_diagnostic_authorized": true,
     "new_candidate_fit_authorized": false,
-    "next_gate": "review_final_S0_failure_then_require_a_distinct_preregistered_candidate"
+    "historical_source_sample_audit_authorized": true,
+    "historical_source_sample_audit_complete": true,
+    "full_historical_materialization_authorized": false,
+    "next_gate": "review_historical_source_audit_then_require_separate_source_only_materialization_authorization"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -1283,6 +1309,8 @@
     ,"The Stage 2e postmortem found broad C0 outcome-shrinkage signal but a construct gap from mixing talent with realized future level; Stage 2f therefore freezes a neutral-reference hierarchical outcome candidate while leaving all execution gates closed.",
     "Stage 2f H0 real historical predictor materialization, training-origin configuration selection, and final parameter freeze are complete; disclosed validation scoring and empirical usefulness remain untested and closed pending review.",
     "V2022 has no training origin, and V2023 cannot identify translation, development, or calibration priors from its lone 2022 origin, so those fold surfaces use the preregistered conservative tie defaults rather than claimed empirical winners.",
-    "Stage 2f H0 failed every primary fold/weighting comparison; V2024 rare-outcome probabilities collapsed and pooled player/PA rate RMSE worsened by 0.51/3.92 percent, so H0 is final, H1 cannot rescue it, and no retuning is authorized."
+    "Stage 2f H0 failed every primary fold/weighting comparison; V2024 rare-outcome probabilities collapsed and pooled player/PA rate RMSE worsened by 0.51/3.92 percent, so H0 is final, H1 cannot rescue it, and no retuning is authorized.",
+    "Historical MiLB source compatibility is established only on nine bounded 2017-2019 samples; full-season completeness, exception rates, and predictive incremental value remain untested.",
+    "The 2020 MLB source is not registered in the current Hitter v2 artifact lane and requires separate certification; the missing 2020 MiLB season must remain an observation gap rather than a zero."
   ]
 }
