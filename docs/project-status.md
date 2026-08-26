@@ -743,6 +743,14 @@ identical to C0, making the strict every-fold improvement gate impossible in
 that fold. The comparison must still run unchanged; no rescue or protected
 2026 access is authorized.
 
+S0 then failed the frozen one-shot comparison in all three folds and failed the
+pooled gate. The 12.5% Marcel increment improved terminal log loss in 2023-2024
+but generally worsened future wOBA/runs and Brier score, so the global blend
+diluted C0's useful player-level signal. S0 is a final failure with no retuning.
+Its dependent L0 translation residual and all later increments remain closed;
+further fitting requires a distinct preregistered candidate.
+The final S0 checkpoint passed all 1,003 repository tests and canonical lint.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1346,7 +1354,11 @@ and all `798` tests completed successfully.
 76. `docs/hitter-v2-S0-fit-execution-contract.json`
 77. `docs/hitter-v2-S0-fit-checkpoint.md`
 78. `docs/hitter-v2-S0-fit-checkpoint.json`
-79. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
+79. `docs/hitter-v2-S0-scoring-authorization.json`
+80. `docs/hitter-v2-S0-scoring-contract.json`
+81. `docs/hitter-v2-S0-comparison-result.md`
+82. `docs/hitter-v2-S0-comparison-result.json`
+83. `docs/hitter-v2-stage2-failure-diagnostic-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
