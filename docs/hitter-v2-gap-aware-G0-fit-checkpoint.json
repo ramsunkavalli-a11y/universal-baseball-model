@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "gap_aware_G0_target_free_fit",
+  "date": "2026-08-26",
+  "status": "fit_complete_frozen_unscored",
+  "model_id": "G0_GAP_AWARE_HISTORICAL_C0",
+  "contract_commit": "e597588",
+  "candidate_fit": true,
+  "candidate_scored": false,
+  "target_outcomes_loaded": false,
+  "protected_2026_opened": false,
+  "hyperparameter_search": false,
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-gap-aware-G0-fit/report.json",
+    "sha256": "392fcdbac750e90770b003114e4d38d0854b0ea24ab272ed0626f0c367dad86f",
+    "bytes": 8840
+  },
+  "folds": {
+    "V2022": {
+      "forecast_players": 4705,
+      "prediction_sha256": "fc039792e49379c742fe9dccf8030170e60fcf361fca4b251842eb8e143a241e",
+      "recomputed_C0_maximum_probability_delta": 0.0,
+      "2020_milb_rows": 0
+    },
+    "V2023": {
+      "forecast_players": 5568,
+      "prediction_sha256": "978ecd6a860de10341a210204fbbd26b924a6b2e980419d1de956c908c062931",
+      "recomputed_C0_maximum_probability_delta": 0.0,
+      "2020_milb_rows": 0
+    },
+    "V2024": {
+      "forecast_players": 6381,
+      "prediction_sha256": "733f2b70d6c6e7215c51cac953c4fbf5c9e360fcb6929b99b620369295056f23",
+      "recomputed_C0_maximum_probability_delta": 0.0,
+      "2020_milb_rows": 0
+    }
+  },
+  "invariants": {
+    "forecast_population_unchanged": true,
+    "probability_simplex_passed": true,
+    "all_probabilities_finite_nonnegative": true,
+    "frozen_C0_reproduction_exact": true,
+    "missing_2020_milb_not_constructed": true
+  },
+  "next_gate": "commit_implementation_then_freeze_one_shot_disclosed_scorer_before_any_target_load"
+}
