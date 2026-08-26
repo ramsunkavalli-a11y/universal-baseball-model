@@ -45,7 +45,7 @@ def test_actual_league_assignment_follows_batting_team() -> None:
     ]
 
 
-@pytest.mark.parametrize("season", [2020, 2021, 2022, 2023, 2024])
+@pytest.mark.parametrize("season", [2019, 2020, 2021, 2022, 2023, 2024])
 def test_season_scoped_savant_team_alias_maps_to_oakland_authority(season: int) -> None:
     teams = [MlbTeamLeague(133, "OAK", 103, "American League")]
     savant = (
@@ -68,7 +68,7 @@ def test_savant_alias_does_not_apply_outside_certified_seasons() -> None:
         _savant()
         .head(1)
         .with_columns(
-            pl.lit(2019).alias("game_year"),
+            pl.lit(2018).alias("game_year"),
             pl.lit("ATH").alias("batting_team"),
         )
     )

@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "historical_2019_mlb_source_certification",
+  "incident_date": "2026-08-26",
+  "implementation_commit": "9d2a2a71e15418436314003d4c6854b3d35633dc",
+  "stage": "season_scoped_team_league_assignment",
+  "failure": "Baseball Savant returned historical 2019 Oakland batting-team rows as ATH while the official season-specific MLB team authority returned OAK.",
+  "failure_policy": "The unknown abbreviation hard-failed after raw source capture but before player-game evidence or reconciliation artifacts were produced.",
+  "source_evidence": {
+    "savant_abbreviation": "ATH",
+    "official_abbreviation": "OAK",
+    "official_team_id": 133,
+    "official_league_id": 103
+  },
+  "correction": "Extend the existing explicit season-scoped ATH-to-OAK display alias to 2019. Preserve unknown-team hard failure and do not use fuzzy matching.",
+  "scientific_contract_changed": false,
+  "model_changed": false,
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false
+}

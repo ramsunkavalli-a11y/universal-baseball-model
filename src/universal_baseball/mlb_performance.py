@@ -28,6 +28,7 @@ MLB_LEAGUE_IDS = frozenset({103, 104})
 # season-specific official team authority correctly uses ``OAK``. The alias is
 # therefore certified explicitly for each historical season currently in scope.
 SAVANT_TEAM_ABBREVIATION_ALIASES: dict[tuple[int, str], str] = {
+    (2019, "ATH"): "OAK",
     (2020, "ATH"): "OAK",
     (2021, "ATH"): "OAK",
     (2022, "ATH"): "OAK",
