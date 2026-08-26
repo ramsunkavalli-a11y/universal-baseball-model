@@ -260,8 +260,8 @@ def _persist_bulk_captures(
 def main() -> int:
     args = _parse_args()
     season = int(args.season)
-    if season < 2020:
-        raise ValueError("historical MLB source certification supports season >= 2020")
+    if season < 2019:
+        raise ValueError("historical MLB source certification supports season >= 2019")
 
     work_dir = args.work_root / str(season)
     report_dir = args.report_root / str(season)
