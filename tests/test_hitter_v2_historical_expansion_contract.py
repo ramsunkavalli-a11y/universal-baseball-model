@@ -48,7 +48,7 @@ def test_historical_expansion_result_is_compatible_but_not_model_authority() -> 
     assert payload["decision"]["model_use"] == "not authorized"
 
 
-def test_workflow_status_keeps_full_historical_materialization_closed() -> None:
+def test_workflow_status_distinguishes_completed_source_from_model_use() -> None:
     payload = json.loads(
         (ROOT / "docs" / "hitter-v2-workflow-status.json").read_text(
             encoding="utf-8"
@@ -57,5 +57,7 @@ def test_workflow_status_keeps_full_historical_materialization_closed() -> None:
     expansion = payload["historical_source_expansion"]
     assert expansion["representative_milb_compatibility_passed"] is True
     assert expansion["candidate_fit"] is False
-    assert expansion["full_historical_materialization_authorized"] is False
+    assert expansion["full_2019_milb_materialization_complete"] is True
+    assert expansion["mlb_2020_source_certification_complete"] is True
+    assert expansion["historical_model_use_authorized"] is False
     assert payload["authorization"]["2026_confirmation_access_authorized"] is False

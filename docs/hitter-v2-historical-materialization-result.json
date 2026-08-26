@@ -1,0 +1,108 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "historical_source_materialization",
+  "result_date": "2026-08-25",
+  "status": "2019_milb_materialized_2020_mlb_certified_model_use_not_authorized",
+  "authorization_commit": "9ea191c2d38b4d3bd506a60c369a6b2f213045f1",
+  "implementation_commit": "b5308aed64616ad17c59dfd024ca50e957724a8b",
+  "pinned_inventory_correction_commit": "14e225600ea9e9b775c63c421b34f8b9088019e2",
+  "mlb_alias_certification_commit": "dfeb8a21af34a63e660bc41b171fe2944d8e9847",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "model_use_authorized": false,
+  "protected_2026_opened": false,
+  "frozen_input_sha256": {
+    "authorization": "18d51da425d2cebe9b8478a36a75175793428177058590b270019314fc56a3bd",
+    "execution_contract": "aa7fad2cc3b16f85f34cfa06e5068e101dea94c6628cc4d40fc671c97754c6d5",
+    "milb_materializer": "ef4679d17e81a7bb5fb99d083937a29c864ecf15a36e11c15bdf6e698d1768b5",
+    "mlb_materializer": "2cbb2d27cfb79061a0194214f04bbd1fb59ffd49026319b57d7d9abcbd5fa07d",
+    "mlb_team_alias_module": "a3e5f5955f463a68bef24c93bea6a5c31fad2ce3fee8c49e44f31b4e263d922e"
+  },
+  "milb_2019": {
+    "status": "accepted_source_materialization",
+    "command": ".venv/Scripts/python.exe scripts/materialize_hitter_v2_historical_milb.py",
+    "generated_report_path": "reports/generated/hitter-v2-historical-materialization/milb/report.json",
+    "generated_report_sha256": "ffd39306f5ea215fc287f4a24afc3f95fc06dada3aac4ac43b3cc316df40e83f",
+    "generated_report_bytes": 125484,
+    "source_inventory_report_sha256": "91e6cc5f7ff777eb574f0bbdcefe714fc5aab01b7852826e8386fff51f23c492",
+    "totals": {
+      "pbp_rows": 3722608,
+      "player_game_source_rows": 673343,
+      "terminal_pa": 895950,
+      "official_pa": 893333,
+      "accounted_pa": 890279,
+      "player_game_rows": 225197,
+      "model_ready_player_game_rows": 221241,
+      "failed_closed_player_game_rows": 3956,
+      "model_ready_rate": 0.9824331585234262,
+      "player_season_rows": 5778,
+      "games": 11835,
+      "players": 4538,
+      "actual_league_count": 14
+    },
+    "source_status_counts": {
+      "accepted_exact": 217555,
+      "accepted_official_unique_repair": 3686,
+      "failed_closed_official_snapshot": 1,
+      "failed_closed_pbp_overcount": 154,
+      "failed_closed_reconciliation": 3801
+    },
+    "failed_closed_pa": {
+      "official_snapshot": 1,
+      "pbp_overcount": 280,
+      "reconciliation_official_pa": 15183,
+      "reconciliation_accounted_pa": 12129
+    },
+    "actual_leagues_by_filename_level": {
+      "aaa": [112, 117, 125],
+      "aa": [109, 111, 113],
+      "a+": [110, 122, 123],
+      "a": [116, 118],
+      "rk": [121, 124, 130]
+    },
+    "scientific_interpretation": "The pre-reorganization actual-league topology differs materially from the post-2021 map, validating the contract's same-game league authority rule. Failed rows remain excluded rather than imputed."
+  },
+  "mlb_2020": {
+    "status": "accepted_exact_official_outcome_reconciliation",
+    "command": ".venv/Scripts/python.exe scripts/materialize_current_talent_historical_mlb_game_evidence.py --season 2020 --work-root data/quarantine/hitter-v2-historical-materialization/mlb --report-root reports/generated/hitter-v2-historical-materialization/mlb",
+    "generated_report_path": "reports/generated/hitter-v2-historical-materialization/mlb/2020/report.json",
+    "generated_report_sha256": "f342d06016b650d4d3203684b306f196915e9b42b117b3a0d7ad4d49d2e21287",
+    "generated_report_bytes": 16358,
+    "regular_season_first_date": "2020-07-23",
+    "regular_season_last_date": "2020-09-27",
+    "official_schedule_games": 900,
+    "observed_games": 898,
+    "savant_chunk_count": 17,
+    "plate_appearances": 66506,
+    "player_game_rows": 17963,
+    "players": 581,
+    "actual_league_ids": [103, 104],
+    "exact_outcome_reconciliation": true,
+    "outcome_mismatch_rows": 0,
+    "pa_accounting_residual": 0,
+    "physical_contact_residual": 1,
+    "physical_contact_residual_policy": "diagnostic_only_not_an_outcome_mismatch",
+    "source_semantic_amendment": "Savant's current historical display uses ATH for 2020 Oakland while official season authority uses OAK; an explicit 2020 ATH-to-OAK alias was certified after the first run failed closed."
+  },
+  "execution_incidents": [
+    "docs/hitter-v2-historical-materialization-execution-incident.json",
+    "docs/hitter-v2-historical-mlb-2020-execution-incident.json"
+  ],
+  "validation": {
+    "ruff_command": ".venv/Scripts/python.exe -m ruff check src scripts tests",
+    "ruff_status": "passed",
+    "pytest_command": ".venv/Scripts/python.exe -m pytest",
+    "pytest_status": "passed",
+    "pytest_passed": 1015,
+    "pytest_duration_seconds": 10.69
+  },
+  "decision": {
+    "2019_milb_source_ready_for_later_contract": true,
+    "2020_mlb_source_ready_for_later_contract": true,
+    "2017_milb_next_source_gate": "eligible_for_separate_full_materialization_authorization",
+    "2018_lower_levels": "remain_excluded_pending_independent_official_authority",
+    "historical_model_use": "not_authorized"
+  },
+  "next_gate": "review_then_separately_authorize_full_2017_milb_source_materialization_or_freeze_a_historical_model_integration_contract_before_any_fit_or_score"
+}

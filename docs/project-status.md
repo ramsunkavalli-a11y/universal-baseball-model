@@ -31,9 +31,9 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
   are now frozen. The authorized real-data J0 fit failed closed when its frozen
   batter-variance estimator did not converge. A distinct Stage 2e J0R contract
   is now frozen before implementation; scoring remains unauthorized.
-  A bounded historical source expansion audit now shows representative
-  2017-2019 MiLB files are compatible with the existing fail-closed readers;
-  full backfill and all model use remain closed pending review. Protected 2026
+  Full 2019 MiLB source materialization and independent 2020 MLB source
+  certification now pass; historical model use remains closed pending a new
+  chronology/evaluation contract. Protected 2026
   outcomes, tracking fusion,
   Stage 3, and full WAR remain closed. Stage 2d's terminal labels are now
   certified, J0's pre-fit mechanics and chronology-safe inputs are implemented,
@@ -62,7 +62,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 2c:** **E1 FAILED FROZEN GATE — LADDER STOPPED; E2 NOT AUTHORIZED**
 - **Hitter v2 post-E1 review:** **DONE — NEXT GATE IS SOURCE-ONLY MATCHUP-CONTEXT READINESS**
 - **Hitter v2 Stage 2f H0:** **FAILED FINAL DISCLOSED-DEVELOPMENT GATE — NO RETUNING; H1 CLOSED**
-- **Hitter v2 historical expansion:** **REPRESENTATIVE SOURCE COMPATIBILITY PASSED — FULL MATERIALIZATION NOT AUTHORIZED**
+- **Hitter v2 historical expansion:** **2019 MiLB MATERIALIZED / 2020 MLB CERTIFIED — MODEL USE NOT AUTHORIZED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -776,6 +776,25 @@ certification; 2017 follows only after the 2019 workflow passes, and 2018 lower
 levels remain excluded pending another official authority.
 The checkpoint passed canonical lint and all 1,007 repository tests.
 
+The user then authorized the next source-only gate. Full 2019 MiLB execution
+processed 3,722,608 PBP rows into 895,950 terminal PAs and reconciled 893,333
+official PA. It retained 221,241 model-ready and 3,956 failed-closed player-game
+rows. The 14 observed actual leagues demonstrate that pre-reorganization league
+topology cannot inherit the post-2021 level map.
+
+The separate shortened 2020 MLB lane also passed. Seventeen schedule-bounded
+Savant chunks produced 66,506 PA, which reconciled exactly to official AL/NL
+season totals. One physical-contact residual remains diagnostic. The first run
+failed closed on Savant's retrospective `ATH` display versus official 2020
+`OAK`; the existing season-scoped alias was extended explicitly to 2020 and
+unknown teams still hard-fail.
+
+No model was fit or scored, and protected 2026 remained sealed. The historical
+artifacts are not authorized predictors. The exact next gate after review is
+either full 2017 MiLB source materialization or a distinct preregistered
+historical-integration contract before any fit or comparison with Marcel.
+This checkpoint passed canonical lint and all 1,015 repository tests.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1388,6 +1407,12 @@ and all `798` tests completed successfully.
 85. `docs/hitter-v2-historical-expansion-source-contract.md`
 86. `docs/hitter-v2-historical-expansion-audit-result.md`
 87. `docs/hitter-v2-historical-expansion-audit-result.json`
+88. `docs/hitter-v2-historical-materialization-authorization.json`
+89. `docs/hitter-v2-historical-materialization-execution-contract.md`
+90. `docs/hitter-v2-historical-materialization-execution-incident.json`
+91. `docs/hitter-v2-historical-mlb-2020-execution-incident.json`
+92. `docs/hitter-v2-historical-materialization-result.md`
+93. `docs/hitter-v2-historical-materialization-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`
