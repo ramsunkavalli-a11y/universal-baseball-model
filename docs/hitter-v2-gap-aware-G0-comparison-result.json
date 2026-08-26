@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "gap_aware_G0_one_shot_disclosed_comparison",
+  "date": "2026-08-26",
+  "status": "failed_final_useful_developmental_signal_not_promoted",
+  "model_id": "G0_GAP_AWARE_HISTORICAL_C0",
+  "contract_commit": "e597588",
+  "implementation_commit": "7d7260441981fc5bbf6307aec85521ab2cf86516",
+  "scorer_commit": "41359d8",
+  "candidate_fit": true,
+  "candidate_scored": true,
+  "promotion_pass": false,
+  "post_result_retuning_authorized": false,
+  "later_increment_fit_authorized": false,
+  "protected_2026_opened": false,
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-gap-aware-G0-comparison/report.json",
+    "sha256": "79eadcd1f8d905727acfe8d1e340a5940c13ac4ab8bd37233914da676ea177a1",
+    "bytes": 817494
+  },
+  "fold_findings": {
+    "V2022": {
+      "primary_pass": false,
+      "result": "G0 improved all four primary metrics versus frozen C0 in both views and improved rate RMSE versus every baseline, but Marcel retained better log loss and Brier score.",
+      "calibration_pass": false,
+      "correlation_pass": false,
+      "supported_subgroup_reversal_pass": false
+    },
+    "V2023": {
+      "primary_pass": false,
+      "result": "G0 improved seven of eight primary metric-view cells versus C0; player-weighted Brier worsened by 0.0000580.",
+      "calibration_pass": false,
+      "correlation_pass": true,
+      "supported_subgroup_reversal_pass": true
+    },
+    "V2024": {
+      "primary_pass": false,
+      "result": "G0 improved proper scores in both views but worsened player/PA wOBA RMSE by 0.00000747/0.00002462 and runs per 600 RMSE by 0.00376/0.01238.",
+      "calibration_pass": false,
+      "correlation_pass": true,
+      "supported_subgroup_reversal_pass": true
+    }
+  },
+  "pooled_relative_improvement_vs_metric_wise_strongest_baseline": {
+    "player": {
+      "terminal_log_loss": 0.000301052756744107,
+      "terminal_brier_score": 0.000204482275784553,
+      "woba_rmse": 0.00177404573998276,
+      "runs_per_600_rmse": 0.00177404573998276
+    },
+    "pa": {
+      "terminal_log_loss": 0.000390339517988158,
+      "terminal_brier_score": 0.000080037699894854,
+      "woba_rmse": 0.00417264251139048,
+      "runs_per_600_rmse": 0.00417264251139048
+    }
+  },
+  "required_pooled_minimum": {
+    "terminal_log_loss": 0.0025,
+    "terminal_brier_score": 0.0025,
+    "woba_rmse": 0.01,
+    "runs_per_600_rmse": 0.01
+  },
+  "decision": {
+    "scientific_promotion": "failed",
+    "developmental_interpretation": "Older demonstrated outcomes add real signal and make the outcome backbone modestly better on average, but indiscriminate inclusion is not uniformly beneficial and does not yet clear the strict gate.",
+    "G1_or_later_increment": "closed_cannot_rescue_failed_G0",
+    "next_gate": "review_then_preregister_a_distinct_candidate_or_explicitly_choose_a_non_promoted_developmental_forecast_product"
+  },
+  "validation": {
+    "ruff_status": "passed",
+    "pytest_status": "passed",
+    "pytest_passed": 1029
+  }
+}

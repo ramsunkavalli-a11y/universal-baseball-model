@@ -63,6 +63,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 post-E1 review:** **DONE — NEXT GATE IS SOURCE-ONLY MATCHUP-CONTEXT READINESS**
 - **Hitter v2 Stage 2f H0:** **FAILED FINAL DISCLOSED-DEVELOPMENT GATE — NO RETUNING; H1 CLOSED**
 - **Hitter v2 historical expansion:** **2019 MiLB + MLB / 2020 MLB CERTIFIED; BRIDGE AUDITED — MODEL USE NOT AUTHORIZED**
+- **Hitter v2 gap-aware G0:** **FAILED STRICT PROMOTION GATE — MODEST POOLED GAINS; NO RETUNING OR RESCUE INCREMENTS**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -820,6 +821,28 @@ run produced 20 setup errors because pytest could not read the default Windows
 temporary root; the identical suite passed when directed to a writable temporary
 directory.
 
+The user then authorized a return to the batter model. A new contract froze
+`G0_GAP_AWARE_HISTORICAL_C0`: the existing C0 outcome estimator with accepted
+2019 MiLB and certified 2019-2020 MLB terminal outcomes appended as older
+recency evidence. The cached MLB sources now retain explicit 1B/2B/3B/HR
+history and reconcile exactly to official PA, BB, IBB, HBP, K, H, 2B, 3B, HR,
+and SH totals. No 2020 MiLB evidence was constructed.
+
+G0 reproduced frozen C0 exactly when older history was removed, retained every
+forecast cohort, and was committed before its scorer opened disclosed targets.
+Its one-shot comparison then failed every fold and the pooled minimum gate.
+Nevertheless, it improved every pooled primary metric in both weighting views
+and improved all four V2022 metrics versus C0. It remained behind Marcel on
+V2022 proper scores, slightly worsened V2023 player-weighted Brier, slightly
+worsened V2024 rate RMSE, and failed calibration in all folds. The pooled gains
+were only 0.008%-0.039% on proper scores and 0.177%-0.417% on rate RMSE, below
+the frozen 0.25%/1% minimums.
+
+G0 is therefore useful developmental evidence but is not promoted. Retuning is
+forbidden. Its G1 opponent, G2 contact-process, G3 lineup, and G4 physical
+increments cannot rescue it. Protected 2026, Stage 3, and WAR remain closed.
+The final checkpoint passed canonical lint and all 1,029 repository tests.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1443,6 +1466,14 @@ and all `798` tests completed successfully.
 96. `docs/hitter-v2-historical-mlb-2019-execution-incident.json`
 97. `docs/hitter-v2-historical-bridge-audit-result.md`
 98. `docs/hitter-v2-historical-bridge-audit-result.json`
+99. `docs/hitter-v2-gap-aware-outcome-core-authorization.json`
+100. `docs/hitter-v2-gap-aware-outcome-core-contract.md`
+101. `docs/hitter-v2-gap-aware-outcome-core-contract.json`
+102. `docs/hitter-v2-gap-aware-historical-mlb-source-result.json`
+103. `docs/hitter-v2-gap-aware-G0-fit-checkpoint.json`
+104. `docs/hitter-v2-gap-aware-G0-scoring-contract.json`
+105. `docs/hitter-v2-gap-aware-G0-comparison-result.md`
+106. `docs/hitter-v2-gap-aware-G0-comparison-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

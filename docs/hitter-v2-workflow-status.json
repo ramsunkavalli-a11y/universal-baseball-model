@@ -2,7 +2,7 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "historical_bridge_support_audited_model_use_closed",
+  "status": "gap_aware_G0_failed_final_developmental_signal_preserved",
   "updated_date": "2026-08-26",
   "repository": {
     "base_branch": "main",
@@ -1207,6 +1207,15 @@
       "candidate_fit": false,
       "candidate_scored": false,
       "protected_2026_opened": false
+    },
+    "gap_aware_G0_validation": {
+      "ruff": "passed",
+      "ruff_command": ".venv/Scripts/python.exe -m ruff check src scripts tests",
+      "pytest": "1029_passed",
+      "candidate_fit": true,
+      "candidate_scored": true,
+      "promotion_pass": false,
+      "protected_2026_opened": false
     }
   },
   "historical_source_expansion": {
@@ -1249,6 +1258,29 @@
     "historical_model_use_authorized": false,
     "protected_2026_opened": false,
     "next_gate": "review_then_choose_more_pre_2020_source_history_or_preregister_a_gap_aware_historical_integration_experiment_before_any_fit_or_score"
+  },
+  "gap_aware_G0": {
+    "authorization_path": "docs/hitter-v2-gap-aware-outcome-core-authorization.json",
+    "contract_path": "docs/hitter-v2-gap-aware-outcome-core-contract.json",
+    "contract_commit": "e597588",
+    "historical_mlb_source_result_path": "docs/hitter-v2-gap-aware-historical-mlb-source-result.json",
+    "implementation_commit": "7d7260441981fc5bbf6307aec85521ab2cf86516",
+    "fit_checkpoint_path": "docs/hitter-v2-gap-aware-G0-fit-checkpoint.json",
+    "scoring_contract_path": "docs/hitter-v2-gap-aware-G0-scoring-contract.json",
+    "scorer_commit": "41359d8",
+    "comparison_result_path": "docs/hitter-v2-gap-aware-G0-comparison-result.json",
+    "candidate_fit": true,
+    "candidate_scored": true,
+    "fold_primary_pass": {"V2022": false, "V2023": false, "V2024": false},
+    "pooled_gate_pass": false,
+    "promotion_pass": false,
+    "modest_pooled_improvement_all_primary_metric_views": true,
+    "post_result_retuning_authorized": false,
+    "later_increment_fit_authorized": false,
+    "protected_2026_opened": false,
+    "stage3_authorized": false,
+    "full_war_authorized": false,
+    "next_gate": "review_then_preregister_a_distinct_candidate_or_choose_a_non_promoted_developmental_forecast_product"
   },
   "authorization": {
     "stage0_complete": true,
@@ -1328,8 +1360,14 @@
     "mlb_2019_source_certification_complete": true,
     "historical_bridge_support_audit_authorized": true,
     "historical_bridge_support_audit_complete": true,
+    "gap_aware_G0_contract_frozen": true,
+    "gap_aware_historical_mlb_outcomes_certified": true,
+    "gap_aware_G0_fit_complete": true,
+    "gap_aware_G0_scoring_complete": true,
+    "gap_aware_G0_promoted": false,
+    "gap_aware_G1_or_later_increment_authorized": false,
     "historical_model_use_authorized": false,
-    "next_gate": "review_bridge_support_then_require_separate_source_or_gap_aware_model_integration_authorization"
+    "next_gate": "review_failed_G0_then_require_a_distinct_candidate_or_explicit_developmental_product_decision"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -1370,6 +1408,7 @@
     "The complete 2019 MiLB source has a 98.2433 percent player-game readiness rate; 3956 source exceptions remain failed closed and historical artifacts are not authorized predictors.",
     "The 2020 MLB source is now independently certified, but the missing 2020 MiLB season must remain an observation gap rather than a zero and shortened-season reliability is not yet defined for model use.",
     "Pre-reorganization 2019 actual-league membership differs from the post-2021 topology, so later translations must use certified historical league-season identities rather than filename-level inheritance.",
-    "The 2019-2021 history provides substantial same-player and MiLB-to-MLB support, but 2020 contains no MiLB season; two-year reappearance cannot be treated as an adjacent-year translation pair, and historical model use remains closed."
+    "The 2019-2021 history provides substantial same-player and MiLB-to-MLB support, but 2020 contains no MiLB season; two-year reappearance cannot be treated as an adjacent-year translation pair, and historical model use remains closed.",
+    "Gap-aware G0 improved every pooled primary metric in both weighting views but failed every strict fold, calibration in all folds, and the frozen pooled minimums; it cannot be retuned or rescued by context, contact, lineup, or physical increments."
   ]
 }
