@@ -26,8 +26,9 @@ MLB_LEAGUE_IDS = frozenset({103, 104})
 # rather than fuzzy-matching team strings. Full-season source gates observed
 # Oakland rows emitted as ``ATH`` even in historical seasons where the
 # season-specific official team authority correctly uses ``OAK``. The alias is
-# therefore certified explicitly for the 2021-2024 seasons currently in scope.
+# therefore certified explicitly for each historical season currently in scope.
 SAVANT_TEAM_ABBREVIATION_ALIASES: dict[tuple[int, str], str] = {
+    (2020, "ATH"): "OAK",
     (2021, "ATH"): "OAK",
     (2022, "ATH"): "OAK",
     (2023, "ATH"): "OAK",
