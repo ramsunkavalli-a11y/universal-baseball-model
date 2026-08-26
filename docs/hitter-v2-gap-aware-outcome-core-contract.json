@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "gap_aware_outcome_core",
+  "date": "2026-08-26",
+  "status": "frozen_before_new_source_materialization_candidate_fit_or_score",
+  "scientific_question": "Does adding certified pre-2021 terminal-outcome history to the existing interpretable C0 backbone improve future batting projection beyond frozen C0 and Marcel without pretending that a 2020 MiLB season occurred?",
+  "candidate": {
+    "model_id": "G0_GAP_AWARE_HISTORICAL_C0",
+    "base": "C0_NESTED_EB",
+    "change_from_base": "append accepted 2019 MiLB, certified 2019 MLB, and certified 2020 MLB terminal-outcome history before applying the already-frozen C0 estimator",
+    "new_predictors": [],
+    "new_fitted_effects": [],
+    "hyperparameter_search": false,
+    "component_half_lives_and_prior_strengths": "reuse_the_frozen_fold_specific_C0_values_exactly",
+    "forecast_population": "unchanged_frozen_pre_target_population",
+    "environment_prior": "most_recent_available_player_league_season_under_existing_C0_logic",
+    "identity": "player_id_grouping_key_only_never_predictor"
+  },
+  "historical_source_policy": {
+    "2019_milb": "accepted_modeling_eligible_terminal_outcomes_only",
+    "2019_mlb": "terminal_outcomes_rebuilt_from_certified_cached_savant_regular_season_source_and_reconciled_to_certified_official_totals",
+    "2020_mlb": "terminal_outcomes_rebuilt_under_the_same_rule",
+    "2020_milb": "missing_observation_gap_never_zero_never_imputed",
+    "2019_to_2021": "ordinary_recency_evidence_allowed_but_never_labeled_as_an_adjacent_development_or_translation_pair",
+    "target_year_information": "forbidden_from_predictors_priors_population_parks_weights_or_centering"
+  },
+  "terminal_taxonomy": ["UBB", "HBP", "K", "HR", "3B", "2B", "1B", "ROE", "FC_REACH", "SF", "MULTI_OUT", "OTHER_OUT"],
+  "permanent_comparators": ["B0_ONE_YEAR_EB", "B1_MARCEL_345_K1200", "C0_NESTED_EB"],
+  "development_folds": ["V2022", "V2023", "V2024"],
+  "disclosure": "all_development_fold_outcomes_are_already_disclosed_and_cannot_support_confirmation_or_post_score_tuning",
+  "primary_metrics": ["terminal_log_loss", "terminal_brier_score", "woba_rmse", "runs_per_600_rmse"],
+  "weighting_views": ["player", "pa"],
+  "promotion_rule": {
+    "fold_rule": "strictly_beat_the_metric_wise_strongest_permanent_comparator_on_all_four_primary_metrics_in_every_fold_and_both_views",
+    "strict_tolerance": 1e-8,
+    "pooled_relative_improvement_minimum": {"terminal_log_loss": 0.0025, "terminal_brier_score": 0.0025, "woba_rmse": 0.01, "runs_per_600_rmse": 0.01},
+    "correlation_decline_maximum": 0.01,
+    "supported_subgroup_reversal": "forbidden_under_frozen_stage2f_thresholds",
+    "failure": "final_no_rescue_or_retuning_on_disclosed_results"
+  },
+  "scientific_invariants": [
+    "probabilities_are_finite_nonnegative_exhaustive_and_normalized",
+    "removing_pre_2021_history_returns_exact_frozen_C0",
+    "2020_milb_is_absent_not_zero",
+    "two_year_reappearance_is_not_an_adjacent_pair",
+    "different_terminal_HR_and_XBH_histories_change_power_after_sufficient_evidence",
+    "forecast_and_evaluation_cohorts_are_identical_across_G0_and_comparators",
+    "protected_2026_is_not_opened"
+  ],
+  "later_increment_ladder": [
+    {
+      "order": 1,
+      "model_id": "G1_PRIOR_OPPONENT_QUALITY_RESIDUAL",
+      "prerequisite": "G0_passes",
+      "inputs": ["strictly_prior_pitcher_quality", "pitcher_hand", "pitcher_age_relative_to_level"],
+      "role": "context_adjustment_not_substitute_for_batter_outcomes",
+      "fallback": "exact_G0"
+    },
+    {
+      "order": 2,
+      "model_id": "G2_CONTACT_PROCESS_RESIDUAL",
+      "prerequisite": "G0_passes_and_new_contract",
+      "inputs": ["pulled_air", "opposite_air", "pulled_ground", "opposite_ground", "line_drive"],
+      "targets": ["HR_given_contact_residual", "XBH_given_hit_residual", "non_HR_reach_residual"],
+      "fallback": "exact_G0"
+    },
+    {
+      "order": 3,
+      "model_id": "G3_LAGGED_LINEUP_BELIEF_PRIOR",
+      "prerequisite": "separate_source_and_endogeneity_audit",
+      "role": "small_team_level_centered_sparse_player_prior_only",
+      "fallback": "exact_G0"
+    },
+    {
+      "order": 4,
+      "model_id": "G4_PHYSICAL_SIMILARITY_PRIOR",
+      "prerequisite": "separate_metadata_vintage_and_stability_audit",
+      "inputs": ["height", "age_relative_to_level"],
+      "excluded": ["raw_country_as_talent_predictor", "stale_weight_without_vintage"],
+      "fallback": "exact_G0"
+    }
+  ],
+  "durability_policy": "games_and_PA_continuity_are_reserved_for_the_opportunity_model_not_neutral_batting_rate",
+  "combination_policy": "increments_are_never_automatically_stacked_and_each_requires_a_new_preregistration",
+  "candidate_fit_authorized": true,
+  "candidate_scoring_authorized_only_after_implementation_hash_freeze": true,
+  "protected_2026_access_authorized": false,
+  "stage3_authorized": false,
+  "full_war_authorized": false
+}
