@@ -16,3 +16,6 @@ def test_historical_milb_materializer_is_frozen_to_2019_source_only() -> None:
     assert '"protected_2026_opened": False' in text
     assert '"model_use_authorized": False' in text
     assert "the frozen historical materialization gate authorizes 2019 only" in text
+    assert "PINNED_PERIODS" in text
+    assert "source_inventory_report_sha256" in text
+    assert "fetch_pbp_asset_inventory" not in text

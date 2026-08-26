@@ -4,16 +4,14 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import dataclass
 from datetime import UTC, datetime
 import json
-import os
 from pathlib import Path
 from typing import Any
 
 import polars as pl
-import requests
 
-from universal_baseball.armstjc_assets import ArmstjcAsset, fetch_pbp_asset_inventory
 from universal_baseball.certification import download_file, sha256_file
 from universal_baseball.current_talent_contact_value_source import (
     attach_narrative_terminal_groups,
@@ -30,10 +28,6 @@ from universal_baseball.hitter_v2_outcomes import (
     project_terminal_pa_identities,
     resolve_official_player_game_outcomes,
 )
-from universal_baseball.player_game_stats import (
-    ArmstjcPlayerGameAsset,
-    fetch_player_game_asset_inventory,
-)
 from universal_baseball.storage import write_canonical_parquet
 
 
@@ -45,6 +39,13 @@ LEVEL_GROUP = {
     "a+": "HIGH_A",
     "a": "SINGLE_A",
     "rk": "ROOKIE_COMPLEX",
+}
+PINNED_PERIODS = {
+    "aaa": (3, 4, 5, 6, 7, 8, 9, 10),
+    "aa": (4, 5, 6, 7, 8, 9),
+    "a+": (4, 5, 6, 7, 8, 9),
+    "a": (4, 5, 6, 7, 8, 9),
+    "rk": (6, 7, 8, 9),
 }
 PBP_COLUMNS = (
     "game_pk",
@@ -66,6 +67,14 @@ PLAYER_GAME_COLUMNS = (
 )
 
 
+@dataclass(frozen=True, slots=True)
+class HistoricalAssetSpec:
+    name: str
+    filename_period: int
+    browser_download_url: str
+    family: str
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--season", type=int, default=SEASON)
@@ -83,13 +92,22 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _github_session() -> requests.Session:
-    session = requests.Session()
-    session.headers["User-Agent"] = "universal-baseball-model-hitter-v2-history/0.1"
-    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-    if token:
-        session.headers["Authorization"] = f"Bearer {token}"
-    return session
+def _pinned_assets(level: str, family: str) -> list[HistoricalAssetSpec]:
+    if family not in {"pbp", "game_player_stats"}:
+        raise ValueError(f"unsupported historical asset family: {family}")
+    suffix = "pbp" if family == "pbp" else "player_game_stats"
+    return [
+        HistoricalAssetSpec(
+            name=f"{SEASON}_{period}_{level}_{suffix}.csv",
+            filename_period=period,
+            browser_download_url=(
+                "https://github.com/armstjc/milb-data-repository/releases/download/"
+                f"{family}/{SEASON}_{period}_{level}_{suffix}.csv"
+            ),
+            family=family,
+        )
+        for period in PINNED_PERIODS[level]
+    ]
 
 
 def _download(asset: Any, destination: Path) -> dict[str, Any]:
@@ -102,19 +120,13 @@ def _download(asset: Any, destination: Path) -> dict[str, Any]:
         )
     else:
         retrieval = "reused_local_quarantine"
-    if destination.stat().st_size != int(asset.size_bytes):
-        raise RuntimeError(
-            f"source size mismatch for {asset.name}: "
-            f"{destination.stat().st_size} != {asset.size_bytes}"
-        )
     return {
-        "asset_id": int(asset.asset_id),
+        "selection_authority": "sha256_pinned_2019_inventory_period_set",
         "name": asset.name,
+        "family": asset.family,
         "filename_period": int(asset.filename_period),
         "size_bytes": destination.stat().st_size,
         "sha256": sha256_file(destination),
-        "created_at_utc": asset.created_at_utc.isoformat(),
-        "updated_at_utc": asset.updated_at_utc.isoformat(),
         "retrieval": retrieval,
     }
 
@@ -133,7 +145,7 @@ def _scan_text_columns(path: Path, columns: tuple[str, ...]) -> pl.DataFrame:
 
 
 def _load_player_games(
-    assets: list[ArmstjcPlayerGameAsset],
+    assets: list[HistoricalAssetSpec],
     *,
     root: Path,
 ) -> tuple[pl.DataFrame, pl.DataFrame, dict[str, Any]]:
@@ -171,7 +183,7 @@ def _load_player_games(
 
 
 def _load_terminal_contacts(
-    assets: list[ArmstjcAsset],
+    assets: list[HistoricalAssetSpec],
     *,
     league_map: pl.DataFrame,
     root: Path,
@@ -240,28 +252,11 @@ def main() -> int:
     table_root = args.report_root / "tables"
     table_root.mkdir(parents=True, exist_ok=True)
 
-    session = _github_session()
-    try:
-        pbp_inventory = fetch_pbp_asset_inventory(session=session)
-        player_game_inventory = fetch_player_game_asset_inventory(session=session)
-    finally:
-        session.close()
-
     frames: list[pl.DataFrame] = []
     provenance: list[dict[str, Any]] = []
     for level in levels:
-        pbp_assets = [
-            row
-            for row in pbp_inventory
-            if row.year == SEASON and row.filename_level == level
-        ]
-        player_game_assets = [
-            row
-            for row in player_game_inventory
-            if row.year == SEASON and row.filename_level == level
-        ]
-        if not pbp_assets or not player_game_assets:
-            raise RuntimeError(f"missing full 2019 source family for {level}")
+        pbp_assets = _pinned_assets(level, "pbp")
+        player_game_assets = _pinned_assets(level, "game_player_stats")
         if {row.filename_period for row in pbp_assets} != {
             row.filename_period for row in player_game_assets
         }:
@@ -348,6 +343,7 @@ def main() -> int:
         "program": "hitter_v2",
         "scope": "2019_milb_full_source_only",
         "authorization_commit": "9ea191c2d38b4d3bd506a60c369a6b2f213045f1",
+        "source_inventory_report_sha256": "91e6cc5f7ff777eb574f0bbdcefe714fc5aab01b7852826e8386fff51f23c492",
         "candidate_fit": False,
         "candidate_scored": False,
         "protected_2026_opened": False,

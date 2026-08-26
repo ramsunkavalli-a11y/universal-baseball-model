@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "historical_source_materialization",
+  "incident_date": "2026-08-25",
+  "implementation_commit": "b5308aed64616ad17c59dfd024ca50e957724a8b",
+  "stage": "2019_milb_pre_payload_inventory",
+  "failure": "GitHub public release asset pagination returned HTTP 403 rate limit exceeded while requesting player-game metadata page 4.",
+  "source_payload_downloaded_before_failure": false,
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "correction": "Replace the unnecessary live metadata lookup with the previously audited and hash-pinned 2019 filename period matrix, then download those exact public release filenames directly and pin their bytes and SHA-256 in the materialization report.",
+  "inventory_authority": {
+    "path": "reports/generated/hitter-v2-historical-expansion-inventory/report.json",
+    "sha256": "91e6cc5f7ff777eb574f0bbdcefe714fc5aab01b7852826e8386fff51f23c492"
+  },
+  "scientific_contract_changed": false,
+  "scope_changed": false,
+  "target_access_changed": false
+}
