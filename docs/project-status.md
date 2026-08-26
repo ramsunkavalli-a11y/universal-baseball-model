@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-08-25
+Last updated: 2026-08-26
 
 This is the **canonical start-here file for a new chat, coding agent, or contributor**.
 
@@ -31,9 +31,9 @@ This is the **canonical start-here file for a new chat, coding agent, or contrib
   are now frozen. The authorized real-data J0 fit failed closed when its frozen
   batter-variance estimator did not converge. A distinct Stage 2e J0R contract
   is now frozen before implementation; scoring remains unauthorized.
-  Full 2019 MiLB source materialization and independent 2020 MLB source
-  certification now pass; historical model use remains closed pending a new
-  chronology/evaluation contract. Protected 2026
+  Full 2019 MiLB materialization, independent 2019/2020 MLB certification, and
+  the target-free 2019-2021 bridge-support audit now pass. Historical model use
+  remains closed pending a new chronology/evaluation contract. Protected 2026
   outcomes, tracking fusion,
   Stage 3, and full WAR remain closed. Stage 2d's terminal labels are now
   certified, J0's pre-fit mechanics and chronology-safe inputs are implemented,
@@ -62,7 +62,7 @@ A broader WAR literature review was completed before final aggregation. It cause
 - **Hitter v2 Stage 2c:** **E1 FAILED FROZEN GATE — LADDER STOPPED; E2 NOT AUTHORIZED**
 - **Hitter v2 post-E1 review:** **DONE — NEXT GATE IS SOURCE-ONLY MATCHUP-CONTEXT READINESS**
 - **Hitter v2 Stage 2f H0:** **FAILED FINAL DISCLOSED-DEVELOPMENT GATE — NO RETUNING; H1 CLOSED**
-- **Hitter v2 historical expansion:** **2019 MiLB MATERIALIZED / 2020 MLB CERTIFIED — MODEL USE NOT AUTHORIZED**
+- **Hitter v2 historical expansion:** **2019 MiLB + MLB / 2020 MLB CERTIFIED; BRIDGE AUDITED — MODEL USE NOT AUTHORIZED**
 - **Hitter v2 Stage 3+:** **NOT AUTHORIZED — NO PBP-ONLY BATTING CANDIDATE PASSED**
 - **Performance v1:** DONE / FROZEN
 - **Current Talent v1:** DONE / FROZEN
@@ -795,6 +795,31 @@ either full 2017 MiLB source materialization or a distinct preregistered
 historical-integration contract before any fit or comparison with Marcel.
 This checkpoint passed canonical lint and all 1,015 repository tests.
 
+The next source-only audit certified 2019 MLB at exact official outcome
+reconciliation: 186,517 PA, 51,646 player-game rows, and 990 players. The
+first execution stopped on the same retrospective Oakland `ATH` versus
+official `OAK` semantic seen in 2020; a season-scoped 2019 alias was added and
+unknown teams continue to fail closed. Four physical-contact rows remain a
+diagnostic, not an outcome-accounting mismatch.
+
+The frozen bridge audit then found 574 same-player links from 2019 to 2020,
+539 from 2020 to 2021, and 2,854 two-year reappearances from 2019 to 2021.
+Among model-ready 2019 minor leaguers, 402 reached MLB in 2020 and 608 reached
+MLB by 2021; 534 players have evidence in all three observed seasons. This is
+substantial historical support, but not complete identification: 2020 has MLB
+only, so the bridge cannot independently estimate every adjacent MiLB-level
+translation. The 2019-to-2021 pairs are explicitly barred from masquerading as
+one-year pairs.
+
+No candidate was fit or scored and protected 2026 remained sealed. Historical
+model use remains unauthorized. The next gate after review is either additional
+pre-2020 source history or a separately preregistered gap-aware integration
+experiment with the Marcel comparison frozen before any fit or score.
+This checkpoint passed canonical lint and all 1,021 repository tests. An initial
+run produced 20 setup errors because pytest could not read the default Windows
+temporary root; the identical suite passed when directed to a writable temporary
+directory.
+
 ## Paused post-v1 program — Pitching v1
 
 Pitching v1 began from the completed position-player v1 release without
@@ -1413,6 +1438,11 @@ and all `798` tests completed successfully.
 91. `docs/hitter-v2-historical-mlb-2020-execution-incident.json`
 92. `docs/hitter-v2-historical-materialization-result.md`
 93. `docs/hitter-v2-historical-materialization-result.json`
+94. `docs/hitter-v2-historical-bridge-audit-authorization.json`
+95. `docs/hitter-v2-historical-bridge-audit-contract.md`
+96. `docs/hitter-v2-historical-mlb-2019-execution-incident.json`
+97. `docs/hitter-v2-historical-bridge-audit-result.md`
+98. `docs/hitter-v2-historical-bridge-audit-result.json`
 44. `docs/hitter-v2-stage2-final-validation-checkpoint.md`
 45. `docs/hitter-v2-stage2-final-validation-result.json`
 46. `docs/hitter-v2-v1-external-validity-result.json`

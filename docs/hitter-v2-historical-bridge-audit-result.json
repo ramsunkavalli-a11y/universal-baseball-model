@@ -1,0 +1,91 @@
+{
+  "report_schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "historical_bridge_support_audit",
+  "result_date": "2026-08-26",
+  "status": "2019_mlb_certified_bridge_support_measured_model_use_not_authorized",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "historical_model_use_authorized": false,
+  "protected_2026_opened": false,
+  "mlb_2019": {
+    "status": "accepted_exact_official_outcome_reconciliation",
+    "generated_report_path": "reports/generated/hitter-v2-historical-materialization/mlb/2019/report.json",
+    "generated_report_sha256": "29ab0ad94330b89af769846ae31ae9601ed96b17a29e817986899ca264b80365",
+    "generated_report_bytes": 35854,
+    "plate_appearances": 186517,
+    "player_game_rows": 51646,
+    "players": 990,
+    "savant_chunk_count": 49,
+    "exact_outcome_reconciliation": true,
+    "outcome_mismatch_rows": 0,
+    "physical_contact_residual": 4,
+    "physical_contact_residual_policy": "diagnostic_only_not_an_outcome_mismatch",
+    "source_semantic_amendment": "Current Savant emits ATH for 2019 Oakland while the official 2019 team authority emits OAK; an explicit season-scoped 2019 ATH-to-OAK alias was certified after the first run failed closed."
+  },
+  "bridge": {
+    "generated_report_path": "reports/generated/hitter-v2-historical-bridge-support/report.json",
+    "generated_report_sha256": "2768568fd9f50078cc8f31394b296230fb3d186348f992948345085cc433ceed",
+    "generated_report_bytes": 8230,
+    "identity": "integer_player_id_only_no_names",
+    "season_players": {
+      "2019": 4976,
+      "2020": 581,
+      "2021": 4710
+    },
+    "comparisons": {
+      "2019_to_2020": {
+        "scope": "adjacent_calendar_destination_mlb_only",
+        "origin_players": 4976,
+        "destination_players": 581,
+        "matched_players": 574,
+        "origin_player_match_rate": 0.11535369774919614,
+        "matched_origin_pa": 256740,
+        "matched_destination_pa": 65816,
+        "transitions": {"ambiguous": 358, "promotion": 44, "same": 172},
+        "origin_evidence_bands": {"lt100": 11, "100_299": 79, "300_599": 401, "600_plus": 83}
+      },
+      "2020_to_2021": {
+        "scope": "adjacent_calendar_origin_mlb_only",
+        "origin_players": 581,
+        "destination_players": 4710,
+        "matched_players": 539,
+        "origin_player_match_rate": 0.927710843373494,
+        "matched_origin_pa": 63821,
+        "matched_destination_pa": 201727,
+        "transitions": {"ambiguous": 302, "demotion": 32, "same": 205},
+        "origin_evidence_bands": {"lt100": 241, "100_299": 298}
+      },
+      "2019_to_2021": {
+        "scope": "two_year_reappearance_never_adjacent_fitter_input",
+        "origin_players": 4976,
+        "destination_players": 4710,
+        "matched_players": 2854,
+        "origin_player_match_rate": 0.5735530546623794,
+        "matched_origin_pa": 747171,
+        "matched_destination_pa": 640162,
+        "transitions": {"ambiguous": 1682, "demotion": 25, "promotion": 354, "same": 793},
+        "origin_evidence_bands": {"lt100": 708, "100_299": 994, "300_599": 1068, "600_plus": 84}
+      }
+    },
+    "specific_support": {
+      "model_ready_2019_milb_players": 4535,
+      "2019_milb_reaching_2020_mlb": 402,
+      "2019_milb_reaching_2021_mlb": 608,
+      "players_present_2019_2020_2021": 534
+    }
+  },
+  "decision": {
+    "support_exists": true,
+    "clean_all_level_adjacent_bridge_exists": false,
+    "scientific_use": "History can add prior-season evidence and MLB-transition support, but the missing 2020 MiLB season prevents this bridge alone from identifying one-year translations across every minor-league level.",
+    "next_gate": "review_then_choose_more_pre_2020_source_history_or_preregister_a_gap_aware_historical_integration_experiment_before_any_fit_or_score"
+  },
+  "validation": {
+    "ruff_status": "passed",
+    "pytest_status": "passed",
+    "pytest_passed": 1021,
+    "initial_environmental_run": "1001_passed_20_setup_errors_due_unreadable_default_windows_temp_root",
+    "corrected_execution": "identical_suite_with_explicit_writable_basetemp"
+  }
+}

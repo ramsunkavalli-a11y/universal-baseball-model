@@ -2,8 +2,8 @@
   "report_schema_version": "0.1",
   "program": "hitter_v2",
   "stage": 2,
-  "status": "historical_2019_milb_materialized_2020_mlb_certified_model_use_closed",
-  "updated_date": "2026-08-25",
+  "status": "historical_bridge_support_audited_model_use_closed",
+  "updated_date": "2026-08-26",
   "repository": {
     "base_branch": "main",
     "base_commit": "197d21a67d707633cb47d720c84a7b126b9c4320",
@@ -1195,6 +1195,18 @@
       "candidate_fit": false,
       "candidate_scored": false,
       "protected_2026_opened": false
+    },
+    "historical_bridge_support_validation": {
+      "ruff": "passed",
+      "ruff_command": ".venv/Scripts/python.exe -m ruff check src scripts tests",
+      "pytest": "1021_passed",
+      "pytest_command": ".venv/Scripts/python.exe -m pytest -q --basetemp=<writable_workspace>/pytest-bridge-final -p no:cacheprovider",
+      "initial_environmental_run": "1001_passed_20_setup_errors_due_unreadable_default_windows_temp_root",
+      "mlb_2019_exact_outcome_reconciliation": true,
+      "bridge_report_generated": true,
+      "candidate_fit": false,
+      "candidate_scored": false,
+      "protected_2026_opened": false
     }
   },
   "historical_source_expansion": {
@@ -1214,7 +1226,29 @@
     "mlb_2020_source_certification_complete": true,
     "historical_model_use_authorized": false,
     "materialization_result_path": "docs/hitter-v2-historical-materialization-result.json",
-    "next_gate": "review_then_authorize_2017_source_materialization_or_freeze_historical_model_integration_contract"
+    "next_gate": "review_target_free_bridge_support_then_choose_more_pre_2020_history_or_a_gap_aware_integration_contract"
+  },
+  "historical_bridge_support": {
+    "authorization_path": "docs/hitter-v2-historical-bridge-audit-authorization.json",
+    "contract_path": "docs/hitter-v2-historical-bridge-audit-contract.md",
+    "result_path": "docs/hitter-v2-historical-bridge-audit-result.json",
+    "mlb_2019_exact_outcome_reconciliation": true,
+    "mlb_2019_plate_appearances": 186517,
+    "matched_players": {
+      "2019_to_2020": 574,
+      "2020_to_2021": 539,
+      "2019_to_2021_two_year": 2854
+    },
+    "model_ready_2019_milb_reaching_mlb": {
+      "2020": 402,
+      "2021": 608
+    },
+    "players_present_2019_2020_2021": 534,
+    "candidate_fit": false,
+    "candidate_scored": false,
+    "historical_model_use_authorized": false,
+    "protected_2026_opened": false,
+    "next_gate": "review_then_choose_more_pre_2020_source_history_or_preregister_a_gap_aware_historical_integration_experiment_before_any_fit_or_score"
   },
   "authorization": {
     "stage0_complete": true,
@@ -1290,8 +1324,12 @@
     "full_2019_milb_materialization_complete": true,
     "mlb_2020_source_certification_authorized": true,
     "mlb_2020_source_certification_complete": true,
+    "mlb_2019_source_certification_authorized": true,
+    "mlb_2019_source_certification_complete": true,
+    "historical_bridge_support_audit_authorized": true,
+    "historical_bridge_support_audit_complete": true,
     "historical_model_use_authorized": false,
-    "next_gate": "review_historical_materialization_then_require_separate_2017_source_or_model_integration_authorization"
+    "next_gate": "review_bridge_support_then_require_separate_source_or_gap_aware_model_integration_authorization"
   },
   "limitations": [
     "MiLB ambiguous non-hit terminal results remain failed closed and excluded from model-ready counts.",
@@ -1331,6 +1369,7 @@
     "Stage 2f H0 failed every primary fold/weighting comparison; V2024 rare-outcome probabilities collapsed and pooled player/PA rate RMSE worsened by 0.51/3.92 percent, so H0 is final, H1 cannot rescue it, and no retuning is authorized.",
     "The complete 2019 MiLB source has a 98.2433 percent player-game readiness rate; 3956 source exceptions remain failed closed and historical artifacts are not authorized predictors.",
     "The 2020 MLB source is now independently certified, but the missing 2020 MiLB season must remain an observation gap rather than a zero and shortened-season reliability is not yet defined for model use.",
-    "Pre-reorganization 2019 actual-league membership differs from the post-2021 topology, so later translations must use certified historical league-season identities rather than filename-level inheritance."
+    "Pre-reorganization 2019 actual-league membership differs from the post-2021 topology, so later translations must use certified historical league-season identities rather than filename-level inheritance.",
+    "The 2019-2021 history provides substantial same-player and MiLB-to-MLB support, but 2020 contains no MiLB season; two-year reappearance cannot be treated as an adjacent-year translation pair, and historical model use remains closed."
   ]
 }
