@@ -5,6 +5,10 @@ This intentionally reuses the already-certified MLB source adapters rather than
 rebuilding the 2024 contextual Performance/value pipeline. Historical Current
 Talent needs chronology-safe player-game outcomes/profile evidence; bulk official
 season totals provide the independent accounting gate.
+
+The separately authorized Hitter v2 historical expansion permits the shortened
+2020 MLB regular season through this same source contract. It does not imply a
+2020 MiLB season or authorize model use.
 """
 
 from __future__ import annotations
@@ -256,8 +260,8 @@ def _persist_bulk_captures(
 def main() -> int:
     args = _parse_args()
     season = int(args.season)
-    if season < 2021:
-        raise ValueError("initial historical MLB Current Talent gate is post-reorganization, season >= 2021")
+    if season < 2020:
+        raise ValueError("historical MLB source certification supports season >= 2020")
 
     work_dir = args.work_root / str(season)
     report_dir = args.report_root / str(season)
@@ -325,6 +329,10 @@ def main() -> int:
     report = {
         "report_schema_version": "0.2",
         "accepted": bool(reconciliation_metrics["exact_outcome_reconciliation"]),
+        "candidate_fit": False,
+        "candidate_scored": False,
+        "model_use_authorized": False,
+        "protected_2026_opened": False,
         "scope": {
             "season": season,
             "level_group": "MLB",
