@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "historical_source_materialization",
+  "authorized_date": "2026-08-25",
+  "authorized_by": "user",
+  "authorization_message": "go for next step",
+  "parent_commit": "fd73ee9667185e7db6ce79062989e1568e627ee6",
+  "authorized_actions": [
+    "download and quarantine every public 2019 MiLB PBP and player-game asset at AAA, AA, High-A, A, and rookie",
+    "materialize exhaustive 2019 Hitter v2 player-game and player-season terminal outcomes with fail-closed exceptions",
+    "download and quarantine 2020 MLB regular-season schedule, Savant PBP, team authority, and official hitting totals",
+    "certify 2020 MLB player-game evidence against official season totals",
+    "persist source vintages, hashes, coverage, exceptions, commands, and validation results"
+  ],
+  "not_authorized": [
+    "using historical artifacts as model predictors",
+    "fitting or scoring any candidate",
+    "estimating translations, aging, priors, or hyperparameters",
+    "opening or using protected 2026 outcome or participant data",
+    "tracking fusion",
+    "Stage 3 baserunning",
+    "WAR assembly"
+  ],
+  "execution_order": [
+    "freeze this authorization and implementation boundary locally",
+    "materialize 2019 MiLB by level with actual same-game league authority",
+    "certify 2020 MLB as a separate shortened-season lane",
+    "stop for review before any model use"
+  ],
+  "failure_policy": "Retain source defects and failed-closed rows; do not repair a failed source gate with model assumptions or target outcomes.",
+  "stop_condition": "Stop after source artifacts and certification evidence are frozen and validated."
+}
