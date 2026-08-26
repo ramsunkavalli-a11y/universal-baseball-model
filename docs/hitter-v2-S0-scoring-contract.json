@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "stage": "S0_one_shot_disclosed_comparison",
+  "date": "2026-08-25",
+  "status": "frozen_before_first_disclosed_S0_score",
+  "authorization_path": "docs/hitter-v2-S0-scoring-authorization.json",
+  "authorization_sha256": "c0c2912051ffb24cb1a9903eafe892ab5974cf0fbffbb9d9ade80daba4b8ec62",
+  "fit_checkpoint_path": "docs/hitter-v2-S0-fit-checkpoint.json",
+  "fit_checkpoint_sha256": "d4097c5f3718c345c8cd0b0fd09441b2d840f8fbb9114d045d7d01e1fe231b86",
+  "preregistration_sha256": "d40ce5a4d5b68155efb6ad3ff5e1ee6a067f2d68d789a6c0036380ffb8f7b4b2",
+  "runner_path": "scripts/score_hitter_v2_S0.py",
+  "runner_sha256": "1f442702746ee3795d1513e82440fbadef690b23e5bcb686caf827dfd88868c9",
+  "test_path": "tests/test_hitter_v2_S0_scoring.py",
+  "test_sha256": "1aa8d7b4c3d772f1f5547e59dbe90b40d3af0a881688b53ac969293d90f949c6",
+  "comparators": ["C0_NESTED_EB", "B1_MARCEL_345_K1200"],
+  "candidate": "S0_C0_MARCEL_STABILITY_BLEND",
+  "primary_metrics": ["terminal_log_loss", "terminal_brier_score", "woba_rmse", "runs_per_600_rmse"],
+  "weighting_views": ["player", "pa"],
+  "fold_rule": "strict improvement by more than 1e-8 over the metric-wise strongest comparator in every fold and both views",
+  "pooled_relative_minimum": {"terminal_log_loss": 0.0025, "terminal_brier_score": 0.0025, "woba_rmse": 0.01, "runs_per_600_rmse": 0.01},
+  "correlation_decline_maximum": 0.01,
+  "calibration_and_subgroup_rules": "unchanged from the preregistered stability increment ladder and frozen Stage 2f definitions",
+  "known_V2022_identity": "S0 equals C0 exactly and therefore cannot pass strict improvement in V2022",
+  "folds": {
+    "V2022": {"inputs": [
+      {"path": "reports/generated/hitter-v2-S0-fit/tables/v2022/s0_predictions.parquet", "sha256": "9139e9ac526b344b18bca0f133e9f131cf5ffa2452f6165b0f59646851c17e3b"},
+      {"path": "reports/generated/hitter-v2-stage2-final-validation/tables/v2022/c0_nested_eb_predictions.parquet", "sha256": "01abd3f24d44c70d6c8fb7f4a8dec03609fad6223422017aa566a5748d3c0837"},
+      {"path": "reports/generated/hitter-v2-stage2-final-validation/tables/v2022/b1_marcel_345_k1200_predictions.parquet", "sha256": "1d751597de8c6f6df5fc17f22762d70135eb507ce209554074d141f88a133872"},
+      {"path": "reports/generated/hitter-v2-stage2-prescore/tables/v2022/target_players.parquet", "sha256": "da71d79e7ac3b301aa7e1ff68c15293ce1a1309d49b1655b5cb13e3b678e96a0"},
+      {"path": "reports/generated/hitter-v2-stage2-prescore/tables/v2022/training_player_league_seasons.parquet", "sha256": "9d63aa2c1d1b6b7b214a285637ca9b45e4c710ad77ff9bac23472f77e7df2fb4"},
+      {"path": "reports/generated/hitter-v2-stage2-age/tables/v2022/forecast_player_ages.parquet", "sha256": "418c478eef4ca21cfe3f70ea34ed0633dc843d75a2803c4440d33818bb2147fb"}
+    ]},
+    "V2023": {"inputs": [
+      {"path": "reports/generated/hitter-v2-S0-fit/tables/v2023/s0_predictions.parquet", "sha256": "7986a652895d67deecb3b805014e0910c5b158424ada346641b1671e9e818bf1"},
+      {"path": "reports/generated/hitter-v2-stage2-final-validation/tables/v2023/c0_nested_eb_predictions.parquet", "sha256": "a87f8e7b8764b4c0f87a4194f73f1164f97ea22997ac7a230113c673e485bd89"},
+      {"path": "reports/generated/hitter-v2-stage2-final-validation/tables/v2023/b1_marcel_345_k1200_predictions.parquet", "sha256": "0913b053d66d1a43bcd4e2f3d8bd54880dd01411cf9aba0dd6cbf10e770980a8"},
+      {"path": "reports/generated/hitter-v2-stage2-prescore/tables/v2023/target_players.parquet", "sha256": "3d6e51c1b35f0dd18a89a70dc7e671255d2fe95c45aecf62a14d9f124fedebd5"},
+      {"path": "reports/generated/hitter-v2-stage2-prescore/tables/v2023/training_player_league_seasons.parquet", "sha256": "f777d1a9c19546f4579fa2b0f708252b2a6782ceeb5f4065fa6373fa38c03a8c"},
+      {"path": "reports/generated/hitter-v2-stage2-age/tables/v2023/forecast_player_ages.parquet", "sha256": "e3c32773ceba495c238e49a8fb723d16fcfebcaecd8f19e0d61ce46d435cfc86"}
+    ]},
+    "V2024": {"inputs": [
+      {"path": "reports/generated/hitter-v2-S0-fit/tables/v2024/s0_predictions.parquet", "sha256": "8fb48d5d0226537310e678565b80820b05463db462aea4bb738a492bbb8c4409"},
+      {"path": "reports/generated/hitter-v2-stage2-final-validation/tables/v2024/c0_nested_eb_predictions.parquet", "sha256": "07094de3caf766aec094282b2e8a4a12c914b28161c4e5ef43dcab5c7b4ca934"},
+      {"path": "reports/generated/hitter-v2-stage2-final-validation/tables/v2024/b1_marcel_345_k1200_predictions.parquet", "sha256": "096872097d30b72e59f5cc0c0c5980e2ff3e78d86eefc4ebe3f6175541eed476"},
+      {"path": "reports/generated/hitter-v2-stage2-prescore/tables/v2024/target_players.parquet", "sha256": "f68fe47a1baf214afe4077aaa6e9052ed67ca39c5591c9db20ffb7bebbd153e6"},
+      {"path": "reports/generated/hitter-v2-stage2-prescore/tables/v2024/training_player_league_seasons.parquet", "sha256": "f6703f5d2f6027b8a8143b1f62ce754e924cbabb23164f23d82055a421eb36d9"},
+      {"path": "reports/generated/hitter-v2-stage2-age/tables/v2024/forecast_player_ages.parquet", "sha256": "54e9e6d6f4af219e17d1e0ff4f797c0371e64cce49ff6197f36e5bd81a6d23fb"}
+    ]}
+  },
+  "one_shot_scoring_authorized": true,
+  "post_result_retuning_authorized": false,
+  "later_increment_fit_authorized": false,
+  "protected_confirmation_access_authorized": false,
+  "stage3_authorized": false,
+  "full_war_authorized": false,
+  "failure_policy": "a failed S0 is final and requires a distinct preregistered candidate"
+}
