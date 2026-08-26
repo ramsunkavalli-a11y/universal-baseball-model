@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "historical_bridge_support_audit",
+  "authorized_date": "2026-08-26",
+  "authorized_by": "user",
+  "authorization_message": "ok go for it",
+  "parent_commit": "2657992029bd0075e37a2817a3f82d500acd85aa",
+  "authorized_actions": [
+    "certify the 2019 MLB source with the existing schedule-bounded Savant and official-season reconciliation contract",
+    "combine accepted 2019 MiLB and MLB identity/exposure evidence with certified 2020 MLB and frozen 2021 universal evidence",
+    "measure same-player reappearance, adjacent-season support, two-year gap support, promotions, demotions, and level transitions",
+    "persist source hashes, coverage tables, and a recommendation about additional historical source work"
+  ],
+  "not_authorized": [
+    "fitting or scoring a model candidate",
+    "estimating aging, translation, shrinkage, or calibration parameters",
+    "treating 2019-to-2021 as an adjacent-season pair",
+    "imputing a 2020 MiLB season or zero talent",
+    "opening or using protected 2026 outcome or participant data",
+    "tracking fusion, Stage 3, or WAR"
+  ],
+  "stop_condition": "Stop after source certification and descriptive bridge-support evidence are frozen and validated."
+}
