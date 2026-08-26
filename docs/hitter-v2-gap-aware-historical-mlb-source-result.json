@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "program": "hitter_v2",
+  "gate": "gap_aware_historical_mlb_terminal_outcomes",
+  "date": "2026-08-26",
+  "status": "accepted_exact_official_terminal_outcomes",
+  "candidate_fit": false,
+  "candidate_scored": false,
+  "protected_2026_opened": false,
+  "seasons": {
+    "2019": {
+      "players": 990,
+      "player_league_rows": 1026,
+      "terminal_pa": 186517,
+      "hitter_talent_pa": 184927,
+      "official_exact": true,
+      "official_exact_fields": ["PA", "BB", "IBB", "HBP", "K", "H", "2B", "3B", "HR", "SH"],
+      "terminal_SF_minus_official_SF_diagnostic": -11,
+      "multi_out_minus_official_GIDP_diagnostic": 409
+    },
+    "2020": {
+      "players": 581,
+      "player_league_rows": 603,
+      "terminal_pa": 66506,
+      "hitter_talent_pa": 66143,
+      "official_exact": true,
+      "official_exact_fields": ["PA", "BB", "IBB", "HBP", "K", "H", "2B", "3B", "HR", "SH"],
+      "terminal_SF_minus_official_SF_diagnostic": -3,
+      "multi_out_minus_official_GIDP_diagnostic": 153
+    }
+  },
+  "generated_report": {
+    "path": "reports/generated/hitter-v2-gap-aware-history/mlb/report.json",
+    "sha256": "3c389eef13fd742ff8aaf71c1f69b8c8f6d3cb84eb5ebf51bc44deaa57d114cd",
+    "bytes": 23014
+  },
+  "outcome_table": {
+    "path": "reports/generated/hitter-v2-gap-aware-history/mlb/tables/hitter_v2_historical_mlb_outcomes_2019_2020.parquet",
+    "rows": 1629,
+    "sha256": "9bf388c22b8707a040f0f2e33ec5ea02a7ac586e03137c64562f48ee4b9dae11"
+  },
+  "interpretation": "The certified cached MLB sources now retain demonstrated HR and extra-base-hit outcomes for historical model input. Sac-fly double plays and all multi-out events follow the terminal taxonomy, so SF and GIDP comparisons remain declared diagnostics rather than being forced to incompatible official categories."
+}
