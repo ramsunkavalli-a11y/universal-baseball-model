@@ -27,10 +27,15 @@ promote a model. Protected main and the v1 release are unchanged until integrati
 ## Next modeling task
 
 Retain the unchanged MLB-conditional transport component as a developmental
-reference. Stop global calibration searches. Build MLB-arrival, retention, and
-exposure labels including non-arrivals. Verify apparent zeros with complete official
-MLB participation records before treating missing model-ready PBP as no appearance.
-Freeze one simple opportunity baseline before adding age/development alternatives.
+reference. Stop global calibration searches. O2026D now supplies certified MLB
+batting-PA labels including zeros and a fixed level-aware opportunity benchmark.
+It improves pooled any-PA Brier error by 10.0%, with modest playing-time gains.
+[Results, population correction, and limitations](hitter-v2-O2026D-result.md).
+
+Next audit cohort omissions and prior-date role/age/roster availability, then
+predeclare one player-specific alternative. Prior-season-active coverage does
+not yet cover inactive or entirely new players. Do not describe this as a complete
+prospect model or convert its outputs to career value.
 
 The 2022–2024 seasons are disclosed development evidence. Protected 2026 remains
 closed. Do not claim long-term value or publish a model from these findings.

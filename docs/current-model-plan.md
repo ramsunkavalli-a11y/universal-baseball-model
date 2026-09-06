@@ -38,16 +38,22 @@ Keep coherent probabilities and use event-score guardrails to detect harmful tra
 
 ## Next sequence
 
+O2026D is now complete: official MLB batting-PA labels include non-arrivals,
+and a frozen level-aware opportunity baseline improves pooled any-PA Brier error
+by 10.0% over prior-exposure-only means, with improvement in both active years.
+Playing-time gains are modest. [Results and scope](hitter-v2-O2026D-result.md).
+This is a prior-season-active cohort, not complete roster/no-history coverage.
+
 1. Keep the competition-normalized ability component; stop global calibration
    experiments. C2026C is closed and all results are preserved.
 2. The completed error audit finds much larger optimism among brief MLB call-ups
    than among players with 100+ MLB PA. This motivates the opportunity cohort;
    observed future PA remains diagnostic, never a predictor or exclusion rule.
-3. Build an MLB-arrival/retention/exposure target that includes non-arrivals and
-   no-history cases. Conditional performance among MLB participants cannot substitute
-   for this. Verify zero labels against complete official MLB participation, rather
-   than treating missing model-ready PBP as zero. Use earlier cohorts to avoid
-   protected outcomes. Freeze one simple opportunity baseline before alternatives.
+3. Keep O2026D as the opportunity benchmark. Audit the participants outside its
+   cohort and prior-date roster, role, and age availability. Expand inactive and
+   no-history coverage explicitly; the full prospect denominator remains unverified.
+   Then freeze one player-specific opportunity alternative. Preserve verified
+   official batting-PA zero labels and evaluate against the same baseline.
 4. Specify the long-term value horizon and label availability, then compose value
    only after component behavior is understood. Do not attach unvalidated WAR labels.
 5. Define prospective confirmation before examining its outcomes. The repeatedly

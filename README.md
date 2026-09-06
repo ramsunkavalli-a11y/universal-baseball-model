@@ -13,9 +13,12 @@ reduced pooled wOBA error by 29% relative to G0 in disclosed 2022–2024 tests. 
 does not establish MLB arrival, playing time, career value, or production readiness.
 
 The latest [MLB calibration experiment](docs/hitter-v2-C2026C-result.md) rejected
-both proposed corrections. Errors concentrate among brief MLB call-ups. The next
-distinct task is an explicit MLB-arrival/retention/exposure cohort, with verified
-zero labels and only information available at the forecast cutoff.
+both proposed corrections. Errors concentrate among brief MLB call-ups. The new
+[opportunity benchmark](docs/hitter-v2-O2026D-result.md) includes verified zero MLB
+batting-PA outcomes and improves participation probability error by 10.0% over a
+prior-exposure-only reference. Playing-time improvements are modest; inactive and
+no-history player coverage remains incomplete. The next task is auditing those
+omissions and prior-date role/age availability before a player-specific alternative.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value
