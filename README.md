@@ -1,111 +1,35 @@
 # Universal Baseball Model
 
-A public-data baseball player evaluation and projection system covering MLB through affiliated minor leagues.
+Public-data baseball research working toward credible prospect evaluation across
+MLB and affiliated minor leagues.
 
-## Start here
+**Current priority: get the model right before building a public tool.** Read the
+[current model plan](docs/current-model-plan.md) and
+[status and handoff](docs/project-status.md).
 
-Read [`docs/project-status.md`](docs/project-status.md) first. Protected `main`
-is the canonical integrated branch; start new work from current `main` on a
-focused pull-request branch.
+Competition-normalized historical outcomes are a promising MLB-conditional batting
+component. Among prior-minor players subsequently observed in MLB, that component
+reduced pooled wOBA error by 29% relative to G0 in disclosed 2022–2024 tests. This
+does not establish MLB arrival, playing time, career value, or production readiness.
 
-## Current stage
+The latest [MLB calibration experiment](docs/hitter-v2-C2026C-result.md) rejected
+both proposed corrections. Errors concentrate among brief MLB call-ups. The next
+distinct task is an explicit MLB-arrival/retention/exposure cohort, with verified
+zero labels and only information available at the forecast cutoff.
 
-- **Performance:** retained.
-- **Current Talent:** frozen at `translated_multiseason_recency_empirical_bayes_v1`.
-- **Projection v1 batting:** frozen at `frozen_current_talent_carry_forward_v1`.
-- **Playing Time v1:** frozen and 2025-confirmed at `playing_time_recent_opportunity_40man_b2_hurdle_v1`.
-- **Position / Role v1:** frozen and 2025-confirmed at `primary_share_thresholded_transition_mean_v1`.
-- **Defense v1 general range:** frozen and 2025-confirmed; tracked MLB range when eligible, universal range otherwise.
-- **Defense v1 catcher channel:** repaired, frozen, and verified with corrected throwing, blocking, and framing sources.
-- **Player Value v1:** all batting, baserunning, Defense, position, centering, park, replacement, and runs-to-wins layers are frozen and verified.
-- **WAR/value and Overall Ranking:** final 3,051-player 2024 point-estimate table is frozen and verified.
-- **Forecast uncertainty:** deterministic 80% and 95% interval sidecar is frozen and verified; point rank remains binding.
-- **Pitching v1:** active pre-outcome program; methodology and development
-  contracts are frozen before candidate scoring.
+The three questions stay separate: batting ability against MLB competition,
+probability and amount of MLB opportunity, and development over the selected value
+horizon. Website work is paused. Published v1 and all earlier failed gates remain
+historical records, not current model-readiness claims. Protected 2026 outcomes
+remain closed; repeatedly inspected years are development evidence.
 
-## Player Value v1 result
+## Development
 
-Final aggregation contract: [`docs/player-value-v1-final-aggregation-contract.md`](docs/player-value-v1-final-aggregation-contract.md).
+Install the package with its development dependencies and run `pytest` and
+`ruff check src scripts tests`. Tests import the current checkout. Older research
+integration tests require the hash-bound generated artifacts named in their
+contracts; these are not part of a fresh source-only clone.
 
-Frozen point result: [`docs/player-value-v1-final-2024.json`](docs/player-value-v1-final-2024.json).
-
-Forecast-uncertainty result: [`docs/player-value-v1-uncertainty-2024.json`](docs/player-value-v1-uncertainty-2024.json).
-
-The final additive form is:
-
-`RAR = Rbat + Rbr + Rdef + Rpos + Rlg + Rpark + Rrep`
-
-`WAR = RAR / RPW`
-
-The verified population contains 3,045 players with complete frozen component surfaces plus six mandated official-MLB structural-zero rows. The final aggregate is `4610.597400956516` runs above replacement and `476.17201420774313` WAR at `9.682629939156854` runs per win. Ranking uses unrounded WAR descending and MLBAM player ID ascending only as the deterministic tie-break.
-
-Key boundaries:
-
-- reuse the existing Performance RE24/bin-value foundation for batting;
-- keep defensive skill separate from run conversion;
-- do not assign arbitrary `runs per z` constants;
-- use frozen Playing Time and the full Position/Role share vector for exposure;
-- keep positional adjustment separate from position-relative Defense skill;
-- keep replacement level, MLB centering, park, and runs per win explicit;
-- preserve every component, fallback flag, and provenance field;
-- do not refit or reselect frozen upstream models from ranking or interval outcomes.
-
-The repaired catcher integration and its superseded source history are documented in [`docs/project-status.md`](docs/project-status.md) and the Defense production handoff.
-
-## Core principles
-
-- Keep Performance, Current Talent, Projection, Playing Time, Position/Role, Defense, positional adjustment, run conversion, and Player Value separate.
-- Prefer mature public datasets, parsers, and packages over rebuilding raw-source cleanup.
-- Preserve uncertainty, coverage, provenance, and measurement quality.
-- Validate chronologically and prevent hindsight leakage.
-- Fail closed on unresolved source ambiguity.
-- Promote only on fixed out-of-time evidence; do not rescue a challenger after a frozen gate fails.
-- Repair only the scope affected by a concrete implementation failure.
-
-## Current milestone documents
-
-- [`docs/project-status.md`](docs/project-status.md) — canonical live handoff.
-- [`docs/player-value-v1-final-aggregation-contract.md`](docs/player-value-v1-final-aggregation-contract.md) — frozen final population and arithmetic.
-- [`docs/player-value-v1-final-2024.json`](docs/player-value-v1-final-2024.json) — verified point-estimate ranking summary.
-- [`docs/player-value-v1-uncertainty-contract.md`](docs/player-value-v1-uncertainty-contract.md) — frozen forecast-interval method.
-- [`docs/player-value-v1-uncertainty-2024.json`](docs/player-value-v1-uncertainty-2024.json) — verified interval summary.
-- [`docs/player-value-v1-mlb-centering-2024.json`](docs/player-value-v1-mlb-centering-2024.json) — verified fixed-reference numerical centering.
-- [`docs/player-value-v1-park-neutrality-audit-result.json`](docs/player-value-v1-park-neutrality-audit-result.json) — verified `Rpark = 0` decision.
-- [`docs/player-value-v1-defense-production-handoff.md`](docs/player-value-v1-defense-production-handoff.md) — frozen repaired Defense machinery.
-- [`docs/position-role-2025-confirmation-result.json`](docs/position-role-2025-confirmation-result.json) — frozen Position / Role v1 confirmation.
-- [`docs/playing-time-v1-confirmation-result.json`](docs/playing-time-v1-confirmation-result.json) — frozen Playing Time v1 confirmation.
-- [`docs/projection-batting-v1-development-result.json`](docs/projection-batting-v1-development-result.json) — frozen Projection v1 decision.
-- [`docs/current-talent-results-only-baseline-freeze.md`](docs/current-talent-results-only-baseline-freeze.md) — frozen Current Talent baseline.
-- [`docs/performance-2024-affiliated-checkpoint.md`](docs/performance-2024-affiliated-checkpoint.md) — completed-2024 affiliated batting Performance checkpoint.
-
-## Development workflow
-
-Install the complete local development environment and run the same checks as
-the pull-request CI job:
-
-```bash
-python -m pip install -e ".[dev]"
-python -m ruff check src scripts tests
-python -m pytest
-```
-
-Install `.[playing-time]` instead when only the Playing Time model's
-scikit-learn/statsmodels runtime is needed.
-
-Historical certification and materialization workflows are retained for audit
-and explicit manual use, but they do not run automatically after the v1 freeze.
-See [`docs/workflow-lifecycle.md`](docs/workflow-lifecycle.md).
-
-## License and data rights
-
-Original project code and documentation are licensed under the
-[MIT License](LICENSE). That license does not grant rights to third-party data,
-names, marks, or upstream materials. See [NOTICE.md](NOTICE.md) and
-[`config/source-policies.json`](config/source-policies.json) before
-redistributing data or source-derived artifacts.
-
-1. Reuse certified public work and existing repo adapters before rebuilding source ingestion.
-2. Work in small verified batches and verify each batch before expanding scope.
-3. Freeze model form/search space/validation rules before opening held-out outcomes.
-4. Preserve invalid-source artifacts as audit evidence rather than rewriting history.
-5. Update `docs/project-status.md` whenever a major gate or blocker changes.
+The new runners and contracts preserve every tested result. Saved prediction
+surfaces and input manifests provide reproducibility without rewriting source
+certificates or tuning failed candidates. See each contract for exact scope.

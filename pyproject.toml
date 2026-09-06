@@ -38,6 +38,7 @@ Documentation = "https://github.com/ramsunkavalli-a11y/universal-baseball-model/
 where = ["src"]
 
 [tool.pytest.ini_options]
+pythonpath = ["src"]
 addopts = "-ra"
 testpaths = ["tests"]
 filterwarnings = [
