@@ -1,11 +1,16 @@
 # Universal Baseball Model
 
-Public-data baseball research working toward credible prospect evaluation across
-MLB and affiliated minor leagues.
+Public-data baseball research working toward a trade-value estimate for every
+player, refreshed after each game and material transaction, beginning with MLB
+organizations and affiliated players. The valuation/update system is not yet built.
 
 **Current priority: get the model right before building a public tool.** Read the
 [current model plan](docs/current-model-plan.md) and
 [status and handoff](docs/project-status.md).
+
+The [trade-value direction review](docs/trade-value-direction-review.md) maps
+existing model work to career production, team rights/costs, uncertainty and
+continuous updates. Those layers define the destination; batting is one component.
 
 Competition-normalized historical outcomes are a promising MLB-conditional batting
 component. Among prior-minor players subsequently observed in MLB, that component

@@ -7,6 +7,13 @@ Updated 2026-09-06. This is the current start-here document.
 The user has prioritized model quality and paused interface development.
 Read [the current model plan](current-model-plan.md).
 
+The clarified end goal is every-player trade value updated with each game.
+The [direction review](trade-value-direction-review.md) finds useful foundations
+but missing career/control/cost and continuous-update integration. It also identifies
+older opportunity/roster models to reuse before building another challenger.
+The broader roadmap now includes pitcher and whole-player value integration;
+website work remains paused. No new valuation model was fitted in this review.
+
 This review branch builds on `hitter-v2-pbp-outcomes` at `b3d55cc`. It contains
 model code, experiment records, and the plan. It does not change a website or
 promote a model. Protected main and the v1 release are unchanged until integration.

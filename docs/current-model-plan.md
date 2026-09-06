@@ -5,10 +5,15 @@ work. This is the active plan; earlier experiment contracts remain historical re
 
 ## Goal
 
-Build toward KATOH-style prospect evaluation by answering three distinct questions:
-MLB batting ability, probability and amount of MLB opportunity, and development
-over the chosen value horizon. A useful first model needs material predictive
-evidence and honest uncertainty, not perfect reconciliation of every source row.
+Build a comparable trade-value estimate for every player, updated after each game
+and material transaction. The recommended common measure is expected remaining
+surplus value of transferable team rights, with projected MLB wins and uncertainty
+shown separately. KATOH-style prospect production is one component of that goal.
+
+Read the [repo and literature direction review](trade-value-direction-review.md).
+It governs the broader sequence: player/rights coverage; reuse of existing models;
+career paths and control/cost data; integrated research valuation; historical
+game-by-game replay. Next-season batting refinement alone cannot deliver the goal.
 
 ## What we have learned
 
@@ -38,6 +43,13 @@ Keep coherent probabilities and use event-score guardrails to detect harmful tra
 
 ## Next sequence
 
+**Direction correction:** the sequence below is the batting/opportunity workstream,
+not the whole project roadmap. Before another opportunity challenger, inventory
+the existing `playing_time_model.py` and dated 40-man source adapter; reuse and
+revalidate them on repaired inputs. In the broader plan, define the player-rights
+universe, career horizon and financial/control sources now. Restore pitching and
+whole-player integration to the roadmap; they cannot remain indefinitely deferred.
+
 O2026D is now complete: official MLB batting-PA labels include non-arrivals,
 and a frozen level-aware opportunity baseline improves pooled any-PA Brier error
 by 10.0% over prior-exposure-only means, with improvement in both active years.
@@ -61,7 +73,8 @@ This is a prior-season-active cohort, not complete roster/no-history coverage.
 
 ## What can wait
 
-Website changes, presentation polish, pitching, and full defensive/value integration
-are paused. Quarantine bounded data exceptions; stop only for identity, leakage,
+Website changes and presentation polish are paused. Pitching, defense and value
+integration remain required modeling milestones. Quarantine bounded data exceptions;
+stop only for identity, leakage,
 denominator, coverage, scale, or material forecast errors. Track known omissions,
 including the players outside the original G0 forecast population.
