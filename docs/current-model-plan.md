@@ -23,6 +23,13 @@ Career production is the main modeling effort. The financial/control layer must
 have a clear interface, but should not displace batting/pitching development.
 Recover the existing richer opportunity model before designing another challenger.
 
+**Recovery completed for 2024:** original forecasts were found and hash-verified.
+All 3,985 player IDs and official PA targets match O2026D. The recovered model
+improves participation Brier by 12.6% and PA RMSE by 12.5%; lower-level exceptions
+remain. [Verified comparison and next step](recovered-opportunity-comparison.md).
+Next recover its dated feature pipeline and resolve B2-dependent inputs before
+integration. O2026D remains the simple benchmark; no release promotion occurred.
+
 - v1's batting representation is not a sound product foundation.
 - G0's terminal-outcome history is useful but mixes competition levels.
 - Two final-output calibration fixes failed; do not revisit their tuning.

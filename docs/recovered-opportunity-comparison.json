@@ -1,0 +1,198 @@
+{
+  "status": "recovered_frozen_forecast_comparison",
+  "year": 2024,
+  "refit": false,
+  "protected_2026_opened": false,
+  "release_ready": false,
+  "identical_player_ids": true,
+  "identical_official_PA_targets": true,
+  "old_published_scores_reproduced": true,
+  "input_hashes": {
+    "old": "9896560f41a738f85d928c973f6e55f6a5a9cf64afe8dc58d2403879a92e3e28",
+    "new": "2ae19143027c0be283181d6c2e35c1ad43cd4fee01781bc31d223cfd31c647a9",
+    "labels": "9939ee3590014b5e5b92eae5e79b98a9f9f1049e6e80740c70da88198411a8c4"
+  },
+  "scores": {
+    "all": {
+      "players": 3985,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 0.04610317051599582,
+          "log_loss": 0.15545064965752378,
+          "pa_rmse": 75.1962097005376,
+          "pa_mae": 27.858539843742257,
+          "participation_bias": -0.0035740995716281227
+        },
+        "O2026D_LEVEL": {
+          "brier": 0.05275695242196619,
+          "log_loss": 0.17817677943088397,
+          "pa_rmse": 85.92215444912574,
+          "pa_mae": 32.68006424834298,
+          "participation_bias": -0.00803679052325327
+        }
+      }
+    },
+    "no_prior_MLB_PA": {
+      "players": 3329,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 0.030004109960475894,
+          "log_loss": 0.10565249079393721,
+          "pa_rmse": 29.44887156090276,
+          "pa_mae": 6.30941582913189,
+          "participation_bias": -0.0036784551646050815
+        },
+        "O2026D_LEVEL": {
+          "brier": 0.03400649298610372,
+          "log_loss": 0.12177659074528224,
+          "pa_rmse": 31.561273552848974,
+          "pa_mae": 7.772889504504714,
+          "participation_bias": -0.0013981680869538605
+        }
+      }
+    },
+    "prior_MLB_PA": {
+      "players": 656,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 0.12780099458509012,
+          "log_loss": 0.40816112352471845,
+          "pa_rmse": 173.0555476145121,
+          "pa_mae": 137.2137743630074,
+          "participation_bias": -0.0030445267529996276
+        },
+        "O2026D_LEVEL": {
+          "brier": 0.14790981745548168,
+          "log_loss": 0.4643905418308352,
+          "pa_rmse": 199.47974935564977,
+          "pa_mae": 159.07638242248566,
+          "participation_bias": -0.04172577541721781
+        }
+      }
+    },
+    "origin_RK": {
+      "players": 1453,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 3.636501130654671e-05,
+          "log_loss": 0.0032993903630266852,
+          "pa_rmse": 0.7621740422451887,
+          "pa_mae": 0.34598055770640096,
+          "participation_bias": 0.0032805519331041643
+        },
+        "O2026D_LEVEL": {
+          "brier": 9.829984313695714e-07,
+          "log_loss": 0.0009919545978934405,
+          "pa_rmse": 0.09463739483768364,
+          "pa_mae": 0.09463739483768363,
+          "participation_bias": 0.0009914627735672034
+        }
+      }
+    },
+    "origin_A": {
+      "players": 658,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 0.005131796832720912,
+          "log_loss": 0.027206342325449072,
+          "pa_rmse": 6.943178337080939,
+          "pa_mae": 1.6035776935115023,
+          "participation_bias": 0.007435175529983237
+        },
+        "O2026D_LEVEL": {
+          "brier": 0.004547091197430386,
+          "log_loss": 0.029799074450349763,
+          "pa_rmse": 5.077644094957899,
+          "pa_mae": 0.8664211816206944,
+          "participation_bias": 0.0029338759956189526
+        }
+      }
+    },
+    "origin_MLB": {
+      "players": 419,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 0.08675310491523908,
+          "log_loss": 0.2981608751962829,
+          "pa_rmse": 189.27037003683407,
+          "pa_mae": 151.53626722559574,
+          "participation_bias": -0.07863953095219804
+        },
+        "O2026D_LEVEL": {
+          "brier": 0.09891485219231105,
+          "log_loss": 0.3542510165384586,
+          "pa_rmse": 221.01516735825473,
+          "pa_mae": 186.59219748706508,
+          "participation_bias": -0.017011606676964892
+        }
+      }
+    },
+    "origin_A+": {
+      "players": 471,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 0.022158538129388096,
+          "log_loss": 0.09390083554012997,
+          "pa_rmse": 39.31566812944155,
+          "pa_mae": 8.457150245248064,
+          "participation_bias": 0.016050996511938045
+        },
+        "O2026D_LEVEL": {
+          "brier": 0.025397654427746785,
+          "log_loss": 0.1259063410621,
+          "pa_rmse": 41.66193380018126,
+          "pa_mae": 10.429573652190175,
+          "participation_bias": 0.02316308159344892
+        }
+      }
+    },
+    "origin_AAA": {
+      "players": 501,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 0.1776940464833732,
+          "log_loss": 0.5517585592092951,
+          "pa_rmse": 100.71051487709924,
+          "pa_mae": 60.37323737977961,
+          "participation_bias": 0.0023038382190230127
+        },
+        "O2026D_LEVEL": {
+          "brier": 0.20082167635779627,
+          "log_loss": 0.5970633947342311,
+          "pa_rmse": 109.61493950465173,
+          "pa_mae": 60.8898725495793,
+          "participation_bias": -0.08656922447933248
+        }
+      }
+    },
+    "origin_AA": {
+      "players": 483,
+      "models": {
+        "OLD_SELECTED": {
+          "brier": 0.09209241019107178,
+          "log_loss": 0.31301721123624926,
+          "pa_rmse": 58.99547624629305,
+          "pa_mae": 24.294848331943864,
+          "participation_bias": 0.000691401477536703
+        },
+        "O2026D_LEVEL": {
+          "brier": 0.11019412616480802,
+          "log_loss": 0.3770673740813461,
+          "pa_rmse": 65.91144408773049,
+          "pa_mae": 32.96512768703963,
+          "participation_bias": 0.008678130809533594
+        }
+      }
+    }
+  },
+  "paired_player_bootstrap_brier_old_minus_new": {
+    "mean": -0.006653781905970358,
+    "interval95": [
+      -0.009951890107089132,
+      -0.0032635545241176765
+    ],
+    "draws": 1000,
+    "seed": 260906
+  },
+  "limitation": "One disclosed year; different original model-selection histories; no new promotion."
+}

@@ -20,6 +20,10 @@ promote a model. Protected main and the v1 release are unchanged until integrati
 
 ## Completed research
 
+- Recovered the original 2024 opportunity forecast and verified exact IDs and
+  official targets against O2026D. Its lower errors support reuse of the older
+  model, with documented subgroup limits. [Comparison](recovered-opportunity-comparison.md).
+
 - Tango-focused review executed: saved translation forecasts still improve
   common-MLB-centered absolute error; historical-support subgroups remain
   descriptive and selection risk remains. The old richer opportunity model has

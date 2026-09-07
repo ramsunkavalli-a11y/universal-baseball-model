@@ -48,6 +48,12 @@ terminal-outcome adaptation. Do not label comparisons as beating original Marcel
 
 ## Completed: identify the older opportunity model worth recovering
 
+**Subsequent update:** the original 2024 scored artifact was found in an older
+centering-inputs archive and verified. The identical-target comparison is now
+[complete](recovered-opportunity-comparison.md). The initial inventory below is
+retained to explain why recovery was prioritized; its missing-file limitation is
+resolved for the 2024 scored surface, not the entire feature pipeline.
+
 The existing `playing_time_model.py` already implements participation and positive
 PA distributions with age, prior MLB/MiLB PA, dated 40-man membership and optional
 B2 features. The old selected model's published results are:
