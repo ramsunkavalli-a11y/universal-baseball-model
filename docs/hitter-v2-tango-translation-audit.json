@@ -1,0 +1,1313 @@
+{
+  "status": "post_result_diagnostic_only",
+  "candidate_fit": false,
+  "protected_2026_opened": false,
+  "centering_is_evaluation_only": true,
+  "folds": [
+    {
+      "year": 2022,
+      "groups": [
+        {
+          "group": "all",
+          "players": 685,
+          "pa": 180401,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.03319584502988481,
+                "rmse": 0.04530217379778925,
+                "bias": 0.021707509369854758
+              },
+              "common_MLB_centered": {
+                "mae": 0.029212019249927897,
+                "rmse": 0.039762683357172604,
+                "bias": -2.2212592008796772e-17
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.029109986675067152,
+                "rmse": 0.03975426969981632,
+                "bias": 0.013153209759724964
+              },
+              "common_MLB_centered": {
+                "mae": 0.02766235921064376,
+                "rmse": 0.037515263991906134,
+                "bias": 1.5443104694340404e-17
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.03733139678610546,
+                "rmse": 0.04949986446728048,
+                "bias": 0.02663851716406279
+              },
+              "common_MLB_centered": {
+                "mae": 0.03164835358149591,
+                "rmse": 0.04172080998229862,
+                "bias": 6.0960961213891995e-18
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        },
+        {
+          "group": "prior_minor",
+          "players": 302,
+          "pa": 41027,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.051231286130885734,
+                "rmse": 0.06565367431512274,
+                "bias": 0.04327686611519722
+              },
+              "common_MLB_centered": {
+                "mae": 0.040030764715767636,
+                "rmse": 0.05387722116749668,
+                "bias": 0.021569356745342435
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.036682246496375824,
+                "rmse": 0.05010617767994767,
+                "bias": 0.012789657935377646
+              },
+              "common_MLB_centered": {
+                "mae": 0.03624311542140538,
+                "rmse": 0.048447764257182224,
+                "bias": -0.0003635518243473026
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.06104002992604269,
+                "rmse": 0.0738057102499546,
+                "bias": 0.05544881782740979
+              },
+              "common_MLB_centered": {
+                "mae": 0.04322058642629597,
+                "rmse": 0.056592798935513215,
+                "bias": 0.028810300663347013
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        },
+        {
+          "group": "minor_no_recorded_MLB",
+          "players": 158,
+          "pa": 19146,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.04692138784891208,
+                "rmse": 0.06175691880643673,
+                "bias": 0.03661218422566751
+              },
+              "common_MLB_centered": {
+                "mae": 0.03898478428290136,
+                "rmse": 0.05191930584328048,
+                "bias": 0.014904674855812738
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03853078455055904,
+                "rmse": 0.05083877082527329,
+                "bias": 0.011665399190716512
+              },
+              "common_MLB_centered": {
+                "mae": 0.03835247260103747,
+                "rmse": 0.04950467312320266,
+                "bias": -0.0014878105690084363
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.06443463836531667,
+                "rmse": 0.07620689676427922,
+                "bias": 0.05860217328957539
+              },
+              "common_MLB_centered": {
+                "mae": 0.04576882243754209,
+                "rmse": 0.05826621416472935,
+                "bias": 0.031963656125512586
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        },
+        {
+          "group": "minor_with_recorded_MLB",
+          "players": 144,
+          "pa": 21881,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.05500247174884959,
+                "rmse": 0.06888276073631998,
+                "bias": 0.04910850084198919
+              },
+              "common_MLB_centered": {
+                "mae": 0.04094600356991772,
+                "rmse": 0.05553381137078055,
+                "bias": 0.02740099147213442
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03506476513878741,
+                "rmse": 0.04945625328576779,
+                "bias": 0.013773390759530199
+              },
+              "common_MLB_centered": {
+                "mae": 0.034397415839062875,
+                "rmse": 0.04750367691583279,
+                "bias": 0.0006201809998052504
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.05806972814923455,
+                "rmse": 0.07163866686300226,
+                "bias": 0.0526896137837819
+              },
+              "common_MLB_centered": {
+                "mae": 0.04099086535909985,
+                "rmse": 0.05508686616893411,
+                "bias": 0.026051096619719105
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        },
+        {
+          "group": "minor_with_translation_pair_history",
+          "players": 198,
+          "pa": 30902,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.0506126771803147,
+                "rmse": 0.06458952402727423,
+                "bias": 0.04285218863118346
+              },
+              "common_MLB_centered": {
+                "mae": 0.039591190632489025,
+                "rmse": 0.05275029862144639,
+                "bias": 0.021144679261328684
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03598258564851465,
+                "rmse": 0.04879294917555518,
+                "bias": 0.012077878025121001
+              },
+              "common_MLB_centered": {
+                "mae": 0.0357217153358111,
+                "rmse": 0.047286711558302025,
+                "bias": -0.001075331734603948
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.061142191007099306,
+                "rmse": 0.07342232315225791,
+                "bias": 0.055763221295873494
+              },
+              "common_MLB_centered": {
+                "mae": 0.04335913955297937,
+                "rmse": 0.055942372836228,
+                "bias": 0.029124704131810692
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        },
+        {
+          "group": "minor_without_translation_pair_history",
+          "players": 104,
+          "pa": 10125,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.05311931119661864,
+                "rmse": 0.06879981046472423,
+                "bias": 0.04457300276813477
+              },
+              "common_MLB_centered": {
+                "mae": 0.041372366525296106,
+                "rmse": 0.05717947300002521,
+                "bias": 0.022865493398279996
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03881764595520111,
+                "rmse": 0.05391679260348075,
+                "bias": 0.014962045371106125
+              },
+              "common_MLB_centered": {
+                "mae": 0.03783445423079148,
+                "rmse": 0.05183077858983713,
+                "bias": 0.0018088356113811765
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.06072822926166634,
+                "rmse": 0.07496370318546842,
+                "bias": 0.054489242915561446
+              },
+              "common_MLB_centered": {
+                "mae": 0.04279771544152848,
+                "rmse": 0.05853325658677413,
+                "bias": 0.027850725751498648
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_1-300",
+          "players": 5,
+          "pa": 210,
+          "supported": false,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.05101627041947304,
+                "rmse": 0.08270467600824034,
+                "bias": 0.005797186631902013
+              },
+              "common_MLB_centered": {
+                "mae": 0.0669351106240332,
+                "rmse": 0.08402139269500784,
+                "bias": -0.01591032273795276
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.06418696058806639,
+                "rmse": 0.07740173927232945,
+                "bias": -0.018780606860436967
+              },
+              "common_MLB_centered": {
+                "mae": 0.07383264774519803,
+                "rmse": 0.08159709977851849,
+                "bias": -0.03193381662016191
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.035832336287227075,
+                "rmse": 0.0785125703146083,
+                "bias": 0.025521985988824457
+              },
+              "common_MLB_centered": {
+                "mae": 0.05044505603141794,
+                "rmse": 0.07425697657767813,
+                "bias": -0.0011165311752383365
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_301-1000",
+          "players": 279,
+          "pa": 35814,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.053397815556532315,
+                "rmse": 0.0677073154789771,
+                "bias": 0.04591392016074548
+              },
+              "common_MLB_centered": {
+                "mae": 0.0414579819475093,
+                "rmse": 0.05533663188358839,
+                "bias": 0.024206410790890722
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03724045491328755,
+                "rmse": 0.05113564570755565,
+                "bias": 0.01581669224479593
+              },
+              "common_MLB_centered": {
+                "mae": 0.03577260120659154,
+                "rmse": 0.04870093066164494,
+                "bias": 0.0026634824850709825
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.0636195938818634,
+                "rmse": 0.07629082319995624,
+                "bias": 0.05846602665198483
+              },
+              "common_MLB_centered": {
+                "mae": 0.04510769655254189,
+                "rmse": 0.05843803378160621,
+                "bias": 0.03182750948792204
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_1001+",
+          "players": 18,
+          "pa": 5003,
+          "supported": false,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.0357311998724987,
+                "rmse": 0.04736753159324725,
+                "bias": 0.02597270443305161
+              },
+              "common_MLB_centered": {
+                "mae": 0.028684718227993945,
+                "rmse": 0.039840852935118444,
+                "bias": 0.0042651950631968395
+              },
+              "full_cohort_mean_error_removed": 0.021707509369854747
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03153180352165442,
+                "rmse": 0.04022987866393518,
+                "bias": -0.007554225964359595
+              },
+              "common_MLB_centered": {
+                "mae": 0.038033480062889626,
+                "rmse": 0.04461137412881871,
+                "bias": -0.020707435724084542
+              },
+              "full_cohort_mean_error_removed": 0.013153209759724964
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.04363229699587871,
+                "rmse": 0.052412003613915965,
+                "bias": 0.03510628691451209
+              },
+              "common_MLB_centered": {
+                "mae": 0.029408453570320084,
+                "rmse": 0.039828003545843496,
+                "bias": 0.008467769750449295
+              },
+              "full_cohort_mean_error_removed": 0.0266385171640628
+            }
+          }
+        }
+      ],
+      "input_hashes": {
+        "history": "e113f1223353243853cbde7155576bc3ba4bcf43036772823c7167cf6483ea4b",
+        "target": "7a760ed532da14b6a73f12762ecc38d5dc96f27aa233b7922608a7d232c8ce4e",
+        "G0": "fc039792e49379c742fe9dccf8030170e60fcf361fca4b251842eb8e143a241e",
+        "TRANSPORT": "7a9b71d8d40a6e36af8605b0b01cafc1cdf7046e98d92d3f565ea8a05cb5357f",
+        "MARCEL_ADAPTED": "1d751597de8c6f6df5fc17f22762d70135eb507ce209554074d141f88a133872"
+      }
+    },
+    {
+      "year": 2023,
+      "groups": [
+        {
+          "group": "all",
+          "players": 653,
+          "pa": 182393,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.030772607575794652,
+                "rmse": 0.041813193015661436,
+                "bias": 0.015184929920375173
+              },
+              "common_MLB_centered": {
+                "mae": 0.029423682675168893,
+                "rmse": 0.03895845240096497,
+                "bias": -7.353940048061836e-18
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.02736658330985297,
+                "rmse": 0.036040659635933156,
+                "bias": 0.0018626537980385468
+              },
+              "common_MLB_centered": {
+                "mae": 0.02745528001735988,
+                "rmse": 0.035992494604039804,
+                "bias": -2.311044693288633e-17
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.032649557573679114,
+                "rmse": 0.044442920116839695,
+                "bias": 0.01637597326256396
+              },
+              "common_MLB_centered": {
+                "mae": 0.030983111030244325,
+                "rmse": 0.04131586436486092,
+                "bias": 9.402065714522734e-20
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        },
+        {
+          "group": "prior_minor",
+          "players": 279,
+          "pa": 45743,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.04926557247308651,
+                "rmse": 0.06194530950311923,
+                "bias": 0.04346594410075077
+              },
+              "common_MLB_centered": {
+                "mae": 0.039298644393925185,
+                "rmse": 0.0524189740069209,
+                "bias": 0.028281014180375583
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03308409362090082,
+                "rmse": 0.045023158398484586,
+                "bias": 0.006168746769180981
+              },
+              "common_MLB_centered": {
+                "mae": 0.03294266586883912,
+                "rmse": 0.044805957105600085,
+                "bias": 0.004306092971142409
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.05338188718277885,
+                "rmse": 0.06669575277098597,
+                "bias": 0.04887130099468973
+              },
+              "common_MLB_centered": {
+                "mae": 0.042591661082723276,
+                "rmse": 0.05581993999632373,
+                "bias": 0.03249532773212577
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        },
+        {
+          "group": "minor_no_recorded_MLB",
+          "players": 109,
+          "pa": 14315,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.05832310535311315,
+                "rmse": 0.07050444447393578,
+                "bias": 0.05196441956912114
+              },
+              "common_MLB_centered": {
+                "mae": 0.047217927619534,
+                "rmse": 0.06019390873040931,
+                "bias": 0.03677948964874595
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.036595776345729185,
+                "rmse": 0.048872523965328124,
+                "bias": 0.013700315612174411
+              },
+              "common_MLB_centered": {
+                "mae": 0.036116408685108875,
+                "rmse": 0.04838341852426544,
+                "bias": 0.011837661814135836
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.0663227804527163,
+                "rmse": 0.07795398061997877,
+                "bias": 0.06115902339622071
+              },
+              "common_MLB_centered": {
+                "mae": 0.053568568438670326,
+                "rmse": 0.06589323585159686,
+                "bias": 0.04478305013365676
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        },
+        {
+          "group": "minor_with_recorded_MLB",
+          "players": 170,
+          "pa": 31428,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.04513999708879282,
+                "rmse": 0.05762688389217004,
+                "bias": 0.03959501129148127
+              },
+              "common_MLB_centered": {
+                "mae": 0.035691525284386225,
+                "rmse": 0.04846591483190159,
+                "bias": 0.02441008137110609
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.031484572868517025,
+                "rmse": 0.0431561656895832,
+                "bias": 0.0027382259601110115
+              },
+              "common_MLB_centered": {
+                "mae": 0.031497071863019435,
+                "rmse": 0.04307810792304054,
+                "bias": 0.0008755721620724419
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.047487497238806756,
+                "rmse": 0.06088156838367681,
+                "bias": 0.04327442094575514
+              },
+              "common_MLB_centered": {
+                "mae": 0.03759183835138874,
+                "rmse": 0.05057090416861534,
+                "bias": 0.026898447683191183
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        },
+        {
+          "group": "minor_with_translation_pair_history",
+          "players": 222,
+          "pa": 38494,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.04850579899552766,
+                "rmse": 0.06121557767208681,
+                "bias": 0.04302298471171686
+              },
+              "common_MLB_centered": {
+                "mae": 0.038537187332876005,
+                "rmse": 0.05168488203322527,
+                "bias": 0.027838054791341684
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.032679959096266496,
+                "rmse": 0.044273697466386465,
+                "bias": 0.005329648524845904
+              },
+              "common_MLB_centered": {
+                "mae": 0.03258827463925959,
+                "rmse": 0.0440882658581899,
+                "bias": 0.0034669947268073345
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.053226356341543615,
+                "rmse": 0.06674011385372997,
+                "bias": 0.04891174911005102
+              },
+              "common_MLB_centered": {
+                "mae": 0.04256491974019258,
+                "rmse": 0.05586108042458707,
+                "bias": 0.03253577584748705
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        },
+        {
+          "group": "minor_without_translation_pair_history",
+          "players": 57,
+          "pa": 7249,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.053300159346469,
+                "rmse": 0.06568467841746685,
+                "bias": 0.045818169058878935
+              },
+              "common_MLB_centered": {
+                "mae": 0.043342171516014785,
+                "rmse": 0.056156635431752706,
+                "bias": 0.03063323913850375
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.035230148854901895,
+                "rmse": 0.048810558521446626,
+                "bias": 0.010624567960715581
+              },
+              "common_MLB_centered": {
+                "mae": 0.03482457178571516,
+                "rmse": 0.04843924358015741,
+                "bias": 0.008761914162677008
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.054207794784173355,
+                "rmse": 0.06645968823755342,
+                "bias": 0.04865651140264706
+              },
+              "common_MLB_centered": {
+                "mae": 0.04273366428859668,
+                "rmse": 0.05560096403274169,
+                "bias": 0.032280538140083095
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_1-300",
+          "players": 5,
+          "pa": 678,
+          "supported": false,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.05367777871284915,
+                "rmse": 0.057739408296909885,
+                "bias": 0.05367777871284915
+              },
+              "common_MLB_centered": {
+                "mae": 0.03900641927554401,
+                "rmse": 0.043979935778624434,
+                "bias": 0.038492848792473965
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.022941626778460317,
+                "rmse": 0.02777342814469318,
+                "bias": 0.02050375408858952
+              },
+              "common_MLB_centered": {
+                "mae": 0.021254798707670223,
+                "rmse": 0.02642820461600565,
+                "bias": 0.01864110029055095
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.06128467244797002,
+                "rmse": 0.0640448481136192,
+                "bias": 0.06128467244797002
+              },
+              "common_MLB_centered": {
+                "mae": 0.04490869918540606,
+                "rmse": 0.04860784664400252,
+                "bias": 0.04490869918540606
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_301-1000",
+          "players": 108,
+          "pa": 15883,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.052800314358279296,
+                "rmse": 0.06824357134527195,
+                "bias": 0.04557778161839253
+              },
+              "common_MLB_centered": {
+                "mae": 0.04386325622311931,
+                "rmse": 0.059191015256042194,
+                "bias": 0.030392851698017344
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03803955415704842,
+                "rmse": 0.051159175493892456,
+                "bias": 0.008845791573992894
+              },
+              "common_MLB_centered": {
+                "mae": 0.037951159776137035,
+                "rmse": 0.05087020170829209,
+                "bias": 0.006983137775954321
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.05980007722374613,
+                "rmse": 0.07470534235589406,
+                "bias": 0.05419819651006651
+              },
+              "common_MLB_centered": {
+                "mae": 0.04937183445092692,
+                "rmse": 0.06382761348312715,
+                "bias": 0.037822223247502576
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_1001+",
+          "players": 166,
+          "pa": 29182,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.04723919384266103,
+                "rmse": 0.058332082980152654,
+                "bias": 0.04207926946708252
+              },
+              "common_MLB_centered": {
+                "mae": 0.03682103487254803,
+                "rmse": 0.048531149641994446,
+                "bias": 0.026894339546707346
+              },
+              "full_cohort_mean_error_removed": 0.015184929920375172
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03062261095430985,
+                "rmse": 0.041653835130968445,
+                "bias": 0.0043786488458931105
+              },
+              "common_MLB_centered": {
+                "mae": 0.030488223582692167,
+                "rmse": 0.04149939332668718,
+                "bias": 0.002515995047854539
+              },
+              "full_cohort_mean_error_removed": 0.001862653798038547
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.04970502470486495,
+                "rmse": 0.061967332795404874,
+                "bias": 0.04568360490408409
+              },
+              "common_MLB_centered": {
+                "mae": 0.0388475569966155,
+                "rmse": 0.051106710412420764,
+                "bias": 0.029307631641520136
+              },
+              "full_cohort_mean_error_removed": 0.016375973262563955
+            }
+          }
+        }
+      ],
+      "input_hashes": {
+        "history": "d3192eaada656be955bc51ad1fa3906e2a041b16ff4c3e2e5416ba5de1edecf9",
+        "target": "a3b63ff20f212bee747d062eb1b66985ea503161d2b657053fd9b81ef60780eb",
+        "G0": "978ecd6a860de10341a210204fbbd26b924a6b2e980419d1de956c908c062931",
+        "TRANSPORT": "f83281a26ec20f941205400f2ae7c7d9861d40b406f9058107bad8f098bc05a6",
+        "MARCEL_ADAPTED": "0913b053d66d1a43bcd4e2f3d8bd54880dd01411cf9aba0dd6cbf10e770980a8"
+      }
+    },
+    {
+      "year": 2024,
+      "groups": [
+        {
+          "group": "all",
+          "players": 649,
+          "pa": 181229,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.03634690217797714,
+                "rmse": 0.04817069506420642,
+                "bias": 0.026738933433438635
+              },
+              "common_MLB_centered": {
+                "mae": 0.029703170562832417,
+                "rmse": 0.040068008458256296,
+                "bias": -3.9302328752599536e-18
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.028880555636146905,
+                "rmse": 0.038190857106776624,
+                "bias": 0.012548938740413544
+              },
+              "common_MLB_centered": {
+                "mae": 0.026687933263995416,
+                "rmse": 0.03607028836923235,
+                "bias": 8.436448154652831e-18
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.03781082558466767,
+                "rmse": 0.05012432699314675,
+                "bias": 0.029192640091461636
+              },
+              "common_MLB_centered": {
+                "mae": 0.030720395036909053,
+                "rmse": 0.040746017241029685,
+                "bias": -3.1374100366299285e-17
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        },
+        {
+          "group": "prior_minor",
+          "players": 279,
+          "pa": 41110,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.058899944391507926,
+                "rmse": 0.07260230461756105,
+                "bias": 0.056055434199689426
+              },
+              "common_MLB_centered": {
+                "mae": 0.040985508615460096,
+                "rmse": 0.05466571274247687,
+                "bias": 0.02931650076625079
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.034642405097262734,
+                "rmse": 0.04702136657312017,
+                "bias": 0.012790771803277558
+              },
+              "common_MLB_centered": {
+                "mae": 0.03311977685438792,
+                "rmse": 0.045248906664255614,
+                "bias": 0.00024183306286402329
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.061072239255914325,
+                "rmse": 0.07455996699109281,
+                "bias": 0.05819081630797331
+              },
+              "common_MLB_centered": {
+                "mae": 0.041408284780684146,
+                "rmse": 0.05489910563031439,
+                "bias": 0.028998176216511646
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        },
+        {
+          "group": "minor_no_recorded_MLB",
+          "players": 107,
+          "pa": 11639,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.06812785191165126,
+                "rmse": 0.082049674441768,
+                "bias": 0.06398851531757749
+              },
+              "common_MLB_centered": {
+                "mae": 0.04859092072322947,
+                "rmse": 0.06344407248904685,
+                "bias": 0.03724958188413886
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03878042238297504,
+                "rmse": 0.05460559562490061,
+                "bias": 0.019627574645851048
+              },
+              "common_MLB_centered": {
+                "mae": 0.035119598190818176,
+                "rmse": 0.051445470873085195,
+                "bias": 0.007078635905437513
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.07490954999009944,
+                "rmse": 0.088134844583415,
+                "bias": 0.07235560303100644
+              },
+              "common_MLB_centered": {
+                "mae": 0.05153640748236536,
+                "rmse": 0.06629825721301162,
+                "bias": 0.04316296293954479
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        },
+        {
+          "group": "minor_with_recorded_MLB",
+          "players": 172,
+          "pa": 29471,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.05525556124784302,
+                "rmse": 0.06851335282136348,
+                "bias": 0.05292241763659013
+              },
+              "common_MLB_centered": {
+                "mae": 0.037981898574323804,
+                "rmse": 0.050782596146117326,
+                "bias": 0.026183484203151496
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.033008175407452205,
+                "rmse": 0.04366476090531481,
+                "bias": 0.010090709087906076
+              },
+              "common_MLB_centered": {
+                "mae": 0.032329986194596545,
+                "rmse": 0.042553869718816716,
+                "bias": -0.0024582296525074558
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.05560746169033525,
+                "rmse": 0.0684613750982011,
+                "bias": 0.05259670845043937
+              },
+              "common_MLB_centered": {
+                "mae": 0.03740837910646651,
+                "rmse": 0.04968195403028922,
+                "bias": 0.02340406835897772
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        },
+        {
+          "group": "minor_with_translation_pair_history",
+          "players": 244,
+          "pa": 38281,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.05865838282514065,
+                "rmse": 0.0721655830671414,
+                "bias": 0.05635008635439497
+              },
+              "common_MLB_centered": {
+                "mae": 0.040575624667981036,
+                "rmse": 0.053938479071818264,
+                "bias": 0.029611152920956327
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.034383491184179674,
+                "rmse": 0.04626033282537798,
+                "bias": 0.012999967974709106
+              },
+              "common_MLB_centered": {
+                "mae": 0.032911509977391416,
+                "rmse": 0.044398453274201694,
+                "bias": 0.0004510292342955709
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.06090026195980388,
+                "rmse": 0.07430199688304173,
+                "bias": 0.05875038033518918
+              },
+              "common_MLB_centered": {
+                "mae": 0.04097108987606944,
+                "rmse": 0.0542479452107988,
+                "bias": 0.029557740243727516
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        },
+        {
+          "group": "minor_without_translation_pair_history",
+          "players": 35,
+          "pa": 2829,
+          "supported": false,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.062168667729120296,
+                "rmse": 0.0782726565719572,
+                "bias": 0.05206830831270364
+              },
+              "common_MLB_centered": {
+                "mae": 0.04653190924941058,
+                "rmse": 0.06369519030554137,
+                "bias": 0.025329374879265
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03814593408514987,
+                "rmse": 0.056317198545395825,
+                "bias": 0.009960005229021253
+              },
+              "common_MLB_centered": {
+                "mae": 0.035937968554035506,
+                "rmse": 0.055489888489397884,
+                "bias": -0.0025889335113922726
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.06339937353389363,
+                "rmse": 0.07796685022140519,
+                "bias": 0.05061899922566482
+              },
+              "common_MLB_centered": {
+                "mae": 0.04732424736235814,
+                "rmse": 0.06305264083753373,
+                "bias": 0.021426359134203158
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_1-300",
+          "players": 3,
+          "pa": 788,
+          "supported": false,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.06007536574643172,
+                "rmse": 0.06085513638041488,
+                "bias": 0.06007536574643172
+              },
+              "common_MLB_centered": {
+                "mae": 0.033336432312993075,
+                "rmse": 0.03472197825110375,
+                "bias": 0.033336432312993075
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.015118422435057604,
+                "rmse": 0.01600620788602993,
+                "bias": 0.015118422435057604
+              },
+              "common_MLB_centered": {
+                "mae": 0.005808576480556131,
+                "rmse": 0.005851003368909901,
+                "bias": 0.0025694836946440463
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.08129600681291387,
+                "rmse": 0.08159697061785533,
+                "bias": 0.08129600681291387
+              },
+              "common_MLB_centered": {
+                "mae": 0.05210336672145221,
+                "rmse": 0.0525717197169347,
+                "bias": 0.05210336672145221
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_301-1000",
+          "players": 42,
+          "pa": 4612,
+          "supported": false,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.06823850849568061,
+                "rmse": 0.08151153697663852,
+                "bias": 0.059552402836958895
+              },
+              "common_MLB_centered": {
+                "mae": 0.05301371511149101,
+                "rmse": 0.06460933176356368,
+                "bias": 0.03281346940352025
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.04577107794151852,
+                "rmse": 0.058218290320416324,
+                "bias": 0.01654991692870312
+              },
+              "common_MLB_centered": {
+                "mae": 0.042608496043618035,
+                "rmse": 0.05595960510893975,
+                "bias": 0.004000978188289596
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.07489628109162128,
+                "rmse": 0.08941954401620966,
+                "bias": 0.07004940370766478
+              },
+              "common_MLB_centered": {
+                "mae": 0.055213101333060025,
+                "rmse": 0.06897978707895346,
+                "bias": 0.04085676361620312
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        },
+        {
+          "group": "minor_history_PA_1001+",
+          "players": 234,
+          "pa": 35710,
+          "supported": true,
+          "models": {
+            "G0": {
+              "raw": {
+                "mae": 0.05766791723731794,
+                "rmse": 0.07161256801443218,
+                "bias": 0.055515089046681315
+              },
+              "common_MLB_centered": {
+                "mae": 0.03960083720035647,
+                "rmse": 0.0536143816306621,
+                "bias": 0.028776155613242673
+              },
+              "full_cohort_mean_error_removed": 0.026738933433438642
+            },
+            "TRANSPORT": {
+              "raw": {
+                "mae": 0.03363594917959569,
+                "rmse": 0.04584711562048785,
+                "bias": 0.012253909131300368
+              },
+              "common_MLB_centered": {
+                "mae": 0.03249696120033723,
+                "rmse": 0.04418016256410188,
+                "bias": -0.0002950296091131662
+              },
+              "full_cohort_mean_error_removed": 0.012548938740413546
+            },
+            "MARCEL_ADAPTED": {
+              "raw": {
+                "mae": 0.05884057278206396,
+                "rmse": 0.07225123570005484,
+                "bias": 0.05614940787321357
+              },
+              "common_MLB_centered": {
+                "mae": 0.03938936743235362,
+                "rmse": 0.05285974257326343,
+                "bias": 0.02695676778175191
+              },
+              "full_cohort_mean_error_removed": 0.02919264009146164
+            }
+          }
+        }
+      ],
+      "input_hashes": {
+        "history": "c8bdf232a2b3689d1a7792eaf7ad2ed22c4949197ac5e34c8321f632ebf729b6",
+        "target": "661003ace4ec652cf2a12628e9b6fa2b604dfcffc5bf6e6bc33783be7ce9feb9",
+        "G0": "733f2b70d6c6e7215c51cac953c4fbf5c9e360fcb6929b99b620369295056f23",
+        "TRANSPORT": "8dc2245b42cc509f5c86bd91844160f1b04ca6999bc2e9f0538c54700bf252ea",
+        "MARCEL_ADAPTED": "096872097d30b72e59f5cc0c0c5980e2ff3e78d86eefc4ebe3f6175541eed476"
+      }
+    }
+  ]
+}

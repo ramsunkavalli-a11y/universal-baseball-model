@@ -17,6 +17,12 @@ game-by-game replay. Next-season batting refinement alone cannot deliver the goa
 
 ## What we have learned
 
+The active production-focused execution sequence and completed Tango-style
+diagnostic are in [Tango-focused model work](tango-focused-model-work.md).
+Career production is the main modeling effort. The financial/control layer must
+have a clear interface, but should not displace batting/pitching development.
+Recover the existing richer opportunity model before designing another challenger.
+
 - v1's batting representation is not a sound product foundation.
 - G0's terminal-outcome history is useful but mixes competition levels.
 - Two final-output calibration fixes failed; do not revisit their tuning.

@@ -20,6 +20,12 @@ promote a model. Protected main and the v1 release are unchanged until integrati
 
 ## Completed research
 
+- Tango-focused review executed: saved translation forecasts still improve
+  common-MLB-centered absolute error; historical-support subgroups remain
+  descriptive and selection risk remains. The old richer opportunity model has
+  promising recorded results and should be recovered for an identical-target
+  comparison. [Evidence and next work](tango-focused-model-work.md).
+
 - C2026A: two all-level output-calibration candidates failed.
   [Result](hitter-v2-C2026A-result.md).
 - T2026B: one competition-normalized history candidate failed its prospective
