@@ -27,9 +27,9 @@ promote a model. Protected main and the v1 release remain unchanged until integr
   closed on ownership conflicts. Certified dated 40-man membership is connected as
   one narrow evidence family. A separate candidate inventory unions broad discovery
   sources with provenance while preventing candidate presence from asserting an owner.
-- The official `fullRoster` source was tested as a broader affiliation source and
-  rejected for direct rights use after 16 cross-organization conflicts appeared in a
-  2024-10-15 snapshot. This prevents a superficially broad but invalid denominator.
+- The official `fullRoster` source is the primary player-discovery source: 7,891
+  players, with 99.80% having one candidate organization. Its 16 cross-organization
+  outliers prevent using it alone as final rights proof, not using it as the denominator.
   A chronology-safe official transaction ledger is now implemented for reconciliation;
   ownership-changing state transitions remain a separate, not-yet-authorized gate.
 - The career-outcome panel makes completed-season absence an observed zero and later
@@ -40,7 +40,7 @@ promote a model. Protected main and the v1 release remain unchanged until integr
   2018–2024 fold; equal-fold log loss was 0.98044 versus 0.98500.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
-[full-roster rejection](affiliated-full-roster-source-result.md),
+[full-roster source decision](affiliated-full-roster-source-result.md),
 [transaction ledger](rights-transaction-ledger-contract.md),
 [career panel](career-outcome-panel-contract.md),
 [career inventory](career-mlb-outcome-inventory-result.md),
@@ -71,11 +71,11 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 ## Next modeling task
 
-The blocking P0 task is a defensible dated affiliated-player/rights denominator beyond
-the 40-man roster. Next combine candidate discovery with transaction or other dated
-ownership authority; do not use `fullRoster` team presence directly. That denominator
-then supports real non-arrival, inactivity and attrition labels rather than survivor-
-only modeling.
+The main candidate denominator is now selected. The blocking P0 task is final team
+control: accept uncontested `fullRoster` organizations provisionally, strengthen them
+with 40-man evidence, and replay dated ownership-changing transactions for outliers.
+Unresolved paths stay unknown. The completed denominator then supports real non-arrival,
+inactivity and attrition labels rather than survivor-only modeling.
 
 In parallel, reconnect the recovered opportunity pipeline and its frozen B2 inputs,
 then declare population-prior fallbacks for inactive/no-history players. Retain O2026D
@@ -96,7 +96,7 @@ artifacts; hashes bind the inputs. They reject overwriting an inspected candidat
 run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
-Current verification: Ruff passes across `src`, `scripts` and `tests`; 1,084 tests
+Current verification: Ruff passes across `src`, `scripts` and `tests`; 1,087 tests
 pass. Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

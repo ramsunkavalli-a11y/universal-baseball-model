@@ -20,7 +20,7 @@ import requests
 
 
 STATS_API_BASE = "https://statsapi.mlb.com/api/v1"
-SUPPORTED_ROSTER_TYPES = frozenset({"40Man", "active"})
+SUPPORTED_ROSTER_TYPES = frozenset({"40Man", "active", "fullRoster"})
 ROSTER_SCHEMA: dict[str, pl.DataType] = {
     "as_of_date": pl.Date,
     "season": pl.Int64,
@@ -44,6 +44,16 @@ FORTY_MAN_MEMBERSHIP_SCHEMA: dict[str, pl.DataType] = {
     "source_status_conflict": pl.Boolean,
     "source_parent_team_ids": pl.String,
     "source_parent_team_id_mismatch": pl.Boolean,
+}
+FULL_ROSTER_CANDIDATE_SCHEMA: dict[str, pl.DataType] = {
+    "as_of_date": pl.Date,
+    "season": pl.Int64,
+    "candidate_organization_id": pl.Int64,
+    "player_id": pl.Int64,
+    "player_name": pl.String,
+    "source_row_count": pl.Int64,
+    "source_status_codes": pl.String,
+    "source_status_conflict": pl.Boolean,
 }
 
 
@@ -216,6 +226,66 @@ def project_team_40man_membership_payload(
     return frame.sort("player_id")
 
 
+def project_team_full_roster_candidates_payload(
+    payload: dict[str, Any],
+    *,
+    team_id: int,
+    season: int,
+    as_of_date: date,
+) -> pl.DataFrame:
+    """Project broad player candidates, not organization-rights evidence.
+
+    Duplicate source rows for one player are collapsed after identity checks. The
+    requested team is preserved only as a candidate organization; the same player
+    may legitimately appear in another organization's season-wide response and
+    must be reconciled later with transactions or stronger dated evidence.
+    """
+
+    by_player: dict[int, list[dict[str, Any]]] = {}
+    for row in _roster_rows(payload):
+        person = row.get("person") or {}
+        player_id = person.get("id")
+        if player_id is None:
+            raise ValueError("Stats API fullRoster row missing person.id")
+        by_player.setdefault(int(player_id), []).append(row)
+
+    projected: list[dict[str, object]] = []
+    for player_id, player_rows in sorted(by_player.items()):
+        identities = {
+            (
+                str((row.get("person") or {}).get("fullName") or ""),
+                str((row.get("person") or {}).get("link") or ""),
+            )
+            for row in player_rows
+        }
+        if len(identities) != 1:
+            raise ValueError(
+                f"Stats API fullRoster duplicate identity conflict for player {player_id}"
+            )
+        player_name = next(iter(identities))[0]
+        status_codes = sorted(
+            {str((row.get("status") or {}).get("code") or "") for row in player_rows}
+        )
+        projected.append(
+            {
+                "as_of_date": as_of_date,
+                "season": int(season),
+                "candidate_organization_id": int(team_id),
+                "player_id": player_id,
+                "player_name": player_name,
+                "source_row_count": len(player_rows),
+                "source_status_codes": ",".join(status_codes),
+                "source_status_conflict": len(status_codes) > 1,
+            }
+        )
+    result = (
+        pl.DataFrame(projected, schema=FULL_ROSTER_CANDIDATE_SCHEMA)
+        if projected
+        else pl.DataFrame(schema=FULL_ROSTER_CANDIDATE_SCHEMA)
+    )
+    return result.sort("player_id")
+
+
 def _fetch_roster_payload(
     team_id: int,
     *,
@@ -277,6 +347,31 @@ def fetch_team_40man_membership_as_of(
         as_of_date=as_of_date,
         roster_type="40Man",
         session=session,
+    )
+
+
+def fetch_team_full_roster_candidates_as_of(
+    team_id: int,
+    *,
+    season: int,
+    as_of_date: date,
+    session: requests.Session | None = None,
+) -> tuple[pl.DataFrame, dict[str, Any]]:
+    payload, capture = _fetch_roster_payload(
+        team_id,
+        season=season,
+        as_of_date=as_of_date,
+        roster_type="fullRoster",
+        session=session,
+    )
+    return (
+        project_team_full_roster_candidates_payload(
+            payload,
+            team_id=int(team_id),
+            season=int(season),
+            as_of_date=as_of_date,
+        ),
+        capture,
     )
     return (
         project_team_40man_membership_payload(

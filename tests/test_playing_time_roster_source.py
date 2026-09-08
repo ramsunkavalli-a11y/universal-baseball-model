@@ -6,6 +6,7 @@ import pytest
 
 from universal_baseball.playing_time_roster_source import (
     project_team_40man_membership_payload,
+    project_team_full_roster_candidates_payload,
     project_team_roster_payload,
 )
 
@@ -123,4 +124,34 @@ def test_project_team_roster_payload_rejects_unknown_roster_type() -> None:
             season=2022,
             as_of_date=date(2022, 10, 15),
             roster_type="futureRoster",
+        )
+
+
+def test_full_roster_projector_collapses_duplicate_candidate_rows() -> None:
+    payload = _payload()
+    payload["roster"].append(payload["roster"][0])  # type: ignore[index,union-attr]
+    candidates = project_team_full_roster_candidates_payload(
+        payload,
+        team_id=137,
+        season=2024,
+        as_of_date=date(2024, 10, 15),
+    )
+    assert candidates.height == 2
+    assert candidates.filter(candidates["player_id"] == 1).item(0, "source_row_count") == 2
+
+
+def test_full_roster_projector_rejects_duplicate_identity_conflict() -> None:
+    payload = _payload()
+    payload["roster"].append(  # type: ignore[index,union-attr]
+        {
+            "person": {"id": 1, "fullName": "Different", "link": "/api/v1/people/1"},
+            "status": {"code": "A"},
+        }
+    )
+    with pytest.raises(ValueError, match="duplicate identity conflict"):
+        project_team_full_roster_candidates_payload(
+            payload,
+            team_id=137,
+            season=2024,
+            as_of_date=date(2024, 10, 15),
         )

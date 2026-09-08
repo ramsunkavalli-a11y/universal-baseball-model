@@ -66,9 +66,10 @@ not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and
 revalidate them on repaired inputs. The player-rights contract, dated 40-man adapter,
 censored career-outcome panel and first pitcher-component baseline are now implemented.
-The broader official `fullRoster` source failed the ownership-conflict gate, so the
-next denominator work must reconcile candidates through dated transactions or another
-rights authority. Financial/control sources and whole-player integration remain open.
+The broader official `fullRoster` source is now the primary candidate denominator:
+99.80% of players have one candidate organization. Its 0.20% multi-team outliers must
+be reconciled through dated transactions or another rights authority. Financial/control
+sources and whole-player integration remain open.
 
 O2026D is now complete: official MLB batting-PA labels include non-arrivals,
 and a frozen level-aware opportunity baseline improves pooled any-PA Brier error

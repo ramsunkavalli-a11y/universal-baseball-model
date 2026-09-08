@@ -13,11 +13,13 @@ from universal_baseball.player_rights_universe import (
     RIGHTS_EVIDENCE_SCHEMA,
     build_player_candidate_inventory,
     build_player_rights_universe,
+    project_full_roster_to_player_candidates,
     project_40man_membership_to_rights_evidence,
     required_players_from_candidate_inventory,
     validate_player_rights_universe,
 )
 from universal_baseball.playing_time_roster_source import FORTY_MAN_MEMBERSHIP_SCHEMA
+from universal_baseball.playing_time_roster_source import FULL_ROSTER_CANDIDATE_SCHEMA
 
 
 CUTOFF = date(2025, 3, 20)
@@ -289,3 +291,23 @@ def test_empty_candidate_inventory_preserves_declared_schema() -> None:
     )
     assert result.is_empty()
     assert result.schema == PLAYER_CANDIDATE_INVENTORY_SCHEMA
+
+
+def test_full_roster_adapter_creates_candidates_without_rights_claim() -> None:
+    source = pl.DataFrame(
+        {
+            "as_of_date": [CUTOFF],
+            "season": [2025],
+            "candidate_organization_id": [137],
+            "player_id": [1],
+            "player_name": ["Player 1"],
+            "source_row_count": [1],
+            "source_status_codes": ["A"],
+            "source_status_conflict": [False],
+        },
+        schema=FULL_ROSTER_CANDIDATE_SCHEMA,
+    )
+    candidate = project_full_roster_to_player_candidates(source).row(0, named=True)
+    assert candidate["candidate_scope"] == "affiliated_full_roster"
+    assert candidate["source_snapshot_id"].endswith("team:137")
+    assert "rights_state" not in candidate

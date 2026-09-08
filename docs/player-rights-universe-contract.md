@@ -51,9 +51,10 @@ and free-agent sources still require explicit dated adapters and a reconciliatio
 Until those exist, missing rows remain honest `prior_only` records rather than inferred
 free agents or zero-value players.
 
-The official `fullRoster` endpoint was audited and rejected as direct dated rights
-evidence: its 2024-10-15 responses contained 16 cross-organization player conflicts.
-It may supply candidates only after transaction-based ownership reconciliation; see
+The official `fullRoster` endpoint is the primary candidate-discovery source. Its
+2024-10-15 responses cover 7,891 players, with 99.80% assigned to one candidate
+organization and 16 cross-organization outliers. Unique assignments are provisional;
+40-man and transaction evidence finalizes control. See
 `affiliated-full-roster-source-result.md`.
 
 Implementation: `src/universal_baseball/player_rights_universe.py`

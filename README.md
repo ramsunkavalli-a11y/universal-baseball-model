@@ -26,8 +26,8 @@ batting-PA outcomes and improves participation probability error by 10.0% over a
 prior-exposure-only reference. Playing-time improvements are modest; inactive and
 no-history player coverage remains incomplete. The recovered richer opportunity
 forecast improves 2024 participation Brier by 12.6% and PA RMSE by 12.5% on identical
-targets. The next blocking task is a dated affiliated-player/rights denominator beyond
-the 40-man roster; the official `fullRoster` source failed its ownership-conflict gate.
+targets. The official `fullRoster` source now supplies the broad player denominator;
+the next blocking task is final team control for its 0.20% multi-team outliers.
 
 Phase 1 foundations now include a [rights-universe contract](docs/player-rights-universe-contract.md),
 a censored [career-outcome panel](docs/career-outcome-panel-contract.md), a real

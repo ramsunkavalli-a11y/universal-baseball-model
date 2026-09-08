@@ -11,7 +11,10 @@ from datetime import date
 
 import polars as pl
 
-from universal_baseball.playing_time_roster_source import FORTY_MAN_MEMBERSHIP_SCHEMA
+from universal_baseball.playing_time_roster_source import (
+    FORTY_MAN_MEMBERSHIP_SCHEMA,
+    FULL_ROSTER_CANDIDATE_SCHEMA,
+)
 
 
 RIGHTS_STATES = frozenset({"organization_controlled", "free_agent", "unknown"})
@@ -151,6 +154,40 @@ def build_player_candidate_inventory(
         .sort("player_id")
     )
     return inventory
+
+
+def project_full_roster_to_player_candidates(frame: pl.DataFrame) -> pl.DataFrame:
+    """Adapt broad official full-roster membership to candidate discovery only."""
+
+    result = _conform(frame, FULL_ROSTER_CANDIDATE_SCHEMA, "full_roster_candidates")
+    required = [
+        "as_of_date",
+        "season",
+        "candidate_organization_id",
+        "player_id",
+        "source_row_count",
+    ]
+    if result.filter(pl.any_horizontal([pl.col(c).is_null() for c in required])).height:
+        raise ValueError("full_roster_candidates has null required values")
+    if result.filter(
+        (pl.col("candidate_organization_id") <= 0)
+        | (pl.col("player_id") <= 0)
+        | (pl.col("source_row_count") <= 0)
+    ).height:
+        raise ValueError("full_roster_candidates has invalid identifiers or row counts")
+    return result.select(
+        pl.col("as_of_date"),
+        pl.col("player_id"),
+        pl.col("player_name"),
+        pl.lit("affiliated_full_roster").alias("candidate_scope"),
+        pl.concat_str(
+            pl.lit("official_mlb_stats_api_fullRoster:"),
+            pl.col("as_of_date").dt.to_string("%Y-%m-%d"),
+            pl.lit(":team:"),
+            pl.col("candidate_organization_id"),
+        ).alias("source_snapshot_id"),
+        pl.col("as_of_date").alias("observed_at_date"),
+    ).cast(PLAYER_CANDIDATE_SCHEMA, strict=True)
 
 
 def required_players_from_candidate_inventory(inventory: pl.DataFrame) -> pl.DataFrame:

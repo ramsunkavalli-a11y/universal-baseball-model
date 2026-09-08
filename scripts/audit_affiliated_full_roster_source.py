@@ -1,21 +1,30 @@
 #!/usr/bin/env python3
 """Audit official full-roster responses as a dated affiliated-player source.
 
-The endpoint describes ``fullRoster`` as active and inactive players. This audit
-does not authorize organization-rights evidence unless all team calls succeed,
-players are unique across organizations, and a within-season early/late control
-demonstrates that the requested date changes membership.
+The endpoint describes ``fullRoster`` as active and inactive players. The source
+is accepted for primary candidate discovery when all teams succeed and a date
+control changes membership. Cross-organization rows are retained as reconciliation
+outliers and do not prevent candidate coverage.
 """
 
 from __future__ import annotations
 
 from datetime import date
+from hashlib import sha256
 import json
 from pathlib import Path
 
+import polars as pl
 import requests
 
-from universal_baseball.playing_time_roster_source import fetch_mlb_teams
+from universal_baseball.player_rights_universe import (
+    build_player_candidate_inventory,
+    project_full_roster_to_player_candidates,
+)
+from universal_baseball.playing_time_roster_source import (
+    fetch_mlb_teams,
+    fetch_team_full_roster_candidates_as_of,
+)
 
 
 SNAPSHOT = date(2024, 10, 15)
@@ -61,12 +70,21 @@ def main() -> int:
     team_counts: dict[int, int] = {}
     duplicate_counts: dict[int, int] = {}
     organizations_by_player: dict[int, list[int]] = {}
+    source_frames: list[pl.DataFrame] = []
     try:
         teams, _ = fetch_mlb_teams(SNAPSHOT.year, session=session)
         for team_id in teams.get_column("team_id").to_list():
             try:
-                player_ids, duplicate_count = _profile_ids(
-                    _fetch(session, int(team_id), SNAPSHOT)
+                source_frame, _ = fetch_team_full_roster_candidates_as_of(
+                    int(team_id),
+                    season=SNAPSHOT.year,
+                    as_of_date=SNAPSHOT,
+                    session=session,
+                )
+                source_frames.append(source_frame)
+                player_ids = set(source_frame.get_column("player_id").to_list())
+                duplicate_count = int(
+                    source_frame.get_column("source_row_count").sum() - source_frame.height
                 )
                 team_counts[int(team_id)] = len(player_ids)
                 duplicate_counts[int(team_id)] = duplicate_count
@@ -91,12 +109,22 @@ def main() -> int:
         if len(set(team_ids)) > 1
     }
     date_difference = sorted(early ^ late)
-    accepted = bool(
-        len(team_counts) == 30
-        and not errors
-        and not conflicts
-        and date_difference
+    accepted = bool(len(team_counts) == 30 and not errors and date_difference)
+    combined_source = pl.concat(source_frames).sort(
+        ["candidate_organization_id", "player_id"]
     )
+    generic_candidates = project_full_roster_to_player_candidates(combined_source)
+    inventory = build_player_candidate_inventory(
+        generic_candidates,
+        as_of_date=SNAPSHOT,
+    )
+    table_root = REPORT_ROOT / "tables"
+    table_root.mkdir(parents=True, exist_ok=True)
+    source_path = table_root / "full_roster_candidates.parquet"
+    inventory_path = table_root / "player_candidate_inventory.parquet"
+    combined_source.write_parquet(source_path)
+    inventory.write_parquet(inventory_path)
+    uncontested = len(organizations_by_player) - len(conflicts)
     report = {
         "gate": "affiliated_full_roster_source_feasibility",
         "source": "official_mlb_stats_api_fullRoster",
@@ -125,11 +153,23 @@ def main() -> int:
             "symmetric_difference_player_ids": date_difference,
         },
         "errors": errors,
-        "accepted_as_dated_affiliation_evidence": accepted,
+        "accepted_as_primary_candidate_discovery_source": accepted,
+        "accepted_as_direct_rights_evidence": False,
+        "uncontested_candidate_organization_count": uncontested,
+        "uncontested_candidate_organization_rate": (
+            uncontested / len(organizations_by_player) if organizations_by_player else None
+        ),
+        "outputs": {
+            "full_roster_candidates_sha256": sha256(source_path.read_bytes()).hexdigest(),
+            "player_candidate_inventory_sha256": sha256(
+                inventory_path.read_bytes()
+            ).hexdigest(),
+        },
         "interpretation": (
-            "Acceptance supports only dated presence in the requested MLB organization's "
-            "official full roster. Row status, option state, level and future role remain "
-            "unauthorized. Rejection means the source cannot define the universal denominator."
+            "Accepted as the primary player-candidate source. A unique organization entry is "
+            "provisional and must be strengthened by 40-man or transaction evidence before "
+            "final rights valuation. Multi-organization players require reconciliation. Row "
+            "status, option state, level and future role remain unauthorized."
         ),
     }
     (REPORT_ROOT / "report.json").write_text(
