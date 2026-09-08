@@ -86,14 +86,14 @@ def test_classifier_preserves_rehab_and_reviews_generic_status_change() -> None:
             (2, "SC", "Roster status changed.", date(2024, 5, 2)),
         )
     )
-    assert result.get_column("action").to_list() == ["preserve_state", "review"]
+    assert result.get_column("action").to_list() == ["preserve_state", "preserve_state"]
 
 
 def test_materializer_replays_only_accepted_events_and_closes_release() -> None:
     events = classify_control_transactions(
         _transactions(
             (1, "OPT", "Optioned to El Paso.", date(2024, 4, 1)),
-            (2, "SC", "Roster status changed.", date(2024, 4, 10)),
+            (2, "SU", "Suspended.", date(2024, 4, 10)),
             (3, "RE", "Recalled from El Paso.", date(2024, 4, 21)),
             (4, "REL", "Released.", date(2024, 5, 1)),
         )
@@ -105,6 +105,32 @@ def test_materializer_replays_only_accepted_events_and_closes_release() -> None:
         (date(2024, 4, 21), date(2024, 4, 30), "mlb_active"),
     ]
     assert result.review_events.get_column("transaction_id").to_list() == [2]
+
+
+def test_mlb_paid_lists_continue_service_and_minor_il_stays_minor() -> None:
+    transactions = _transactions(
+            (1, "SC", "San Diego Padres placed Player Ten on the paternity list.", date(2024, 5, 1)),
+            (2, "SC", "El Paso placed Player Ten on the 60-day injured list.", date(2024, 5, 2)),
+        ).with_columns(
+            pl.when(pl.col("transaction_id") == 2)
+            .then(pl.lit(4904))
+            .otherwise(pl.col("to_team_id"))
+            .alias("to_team_id")
+        )
+    result = classify_control_transactions(
+        transactions,
+        mlb_team_ids={135},
+    )
+    assert result.get_column("target_state").to_list() == ["mlb_service_list", "pro_injured"]
+
+
+def test_minor_inactive_lists_do_not_enter_manual_review() -> None:
+    transactions = _transactions(
+        (1, "SC", "El Paso placed Player Ten on the temporarily inactive list.", date(2024, 5, 1)),
+        (2, "SC", "El Paso placed Player Ten on the 7-day injured list.", date(2024, 5, 2)),
+    ).with_columns(pl.lit(4904).alias("to_team_id"))
+    result = classify_control_transactions(transactions, mlb_team_ids={135})
+    assert result.get_column("target_state").to_list() == ["pro_inactive", "pro_injured"]
 
 
 def test_materializer_can_begin_at_first_known_transition() -> None:

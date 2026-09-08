@@ -26,9 +26,11 @@ ROSTER_STATES = frozenset(
     {
         "mlb_active",
         "mlb_injured",
+        "mlb_service_list",
         "minors_optioned",
         "pro_active",
         "pro_injured",
+        "pro_inactive",
         "service_excluded",
     }
 )
@@ -196,7 +198,10 @@ def calculate_control_years(
     for (player_id, season), by_state in sorted(grouped.items()):
         window = window_map[season]
         service_base = _clip(
-            by_state["mlb_active"] + by_state["mlb_injured"], window
+            by_state["mlb_active"]
+            + by_state["mlb_injured"]
+            + by_state["mlb_service_list"],
+            window,
         )
         service_intervals = _subtract(
             service_base, _clip(by_state["service_excluded"], window)

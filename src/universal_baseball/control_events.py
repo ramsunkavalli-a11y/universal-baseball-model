@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date, timedelta
+import re
 
 import polars as pl
 
@@ -57,8 +58,20 @@ def _conform(frame: pl.DataFrame, schema: dict[str, pl.DataType], label: str) ->
     return frame.select(list(schema)).cast(schema, strict=True)
 
 
-def _classify(type_code: str, description: str) -> tuple[str, str | None, str, str]:
+def _classify(
+    type_code: str,
+    description: str,
+    *,
+    from_team_id: int | None,
+    to_team_id: int | None,
+    mlb_team_ids: set[int] | None,
+) -> tuple[str, str | None, str, str]:
     text = " ".join(description.lower().split())
+    team_ids_supplied = mlb_team_ids is not None
+    is_mlb_event = bool(
+        mlb_team_ids
+        and ({value for value in (from_team_id, to_team_id) if value is not None} & mlb_team_ids)
+    )
 
     if "rehab assignment" in text:
         return (
@@ -67,23 +80,64 @@ def _classify(type_code: str, description: str) -> tuple[str, str | None, str, s
             "description.rehab_assignment.v1",
             "A rehabilitation assignment does not end the MLB injured-list state.",
         )
-    if "injured list" in text and any(
-        phrase in text for phrase in ("activated from", "reinstated from")
+    if re.search(
+        r"\b(?:activated|reinstated)\b.*\bfrom the (?:7|10|15|60)-day injured list",
+        text,
     ):
         return (
             "set_state",
-            "mlb_active",
-            "description.mlb_il_activated.v1",
-            "Activated or reinstated from the MLB injured list.",
+            "mlb_active" if is_mlb_event or not team_ids_supplied else "pro_active",
+            "description.il_activated.v2",
+            "Activated or reinstated from a specifically identified injured list.",
         )
-    if "injured list" in text and any(
-        marker in text for marker in ("10-day", "15-day", "60-day")
-    ) and any(phrase in text for phrase in ("placed on", "transferred to")):
+    injured_match = re.search(
+        r"\b(?:placed\b.*\bon|transferred\b.*\bto) the "
+        r"(?:(?P<days>7|10|15|60)-day|full-season) injured list",
+        text,
+    )
+    if injured_match:
         return (
             "set_state",
-            "mlb_injured",
-            "description.mlb_il_placement.v1",
-            "Placed on or transferred to a specifically identified MLB injured list.",
+            "mlb_injured" if is_mlb_event or not team_ids_supplied else "pro_injured",
+            "description.il_placement.v2",
+            "Placed on or transferred to a specifically identified injured list.",
+        )
+    if any(
+        list_name in text
+        for list_name in (
+            "temporarily inactive list",
+            "development list",
+            "administrative leave",
+            "restricted list",
+            "reserve list",
+        )
+    ) and not is_mlb_event:
+        return (
+            "set_state",
+            "pro_inactive",
+            "description.minor_inactive_list.v1",
+            "Placed on a specifically identified non-active minor-league list.",
+        )
+    if any(list_name in text for list_name in ("paternity list", "bereavement list")):
+        if re.search(r"\b(?:activated|reinstated)\b.*\bfrom\b", text) and is_mlb_event:
+            return "set_state", "mlb_active", "description.mlb_paid_list_activated.v1", "Returned from an MLB paid service list."
+        if "placed" in text and is_mlb_event:
+            return "set_state", "mlb_service_list", "description.mlb_paid_list_placement.v1", "Placed on an MLB list that continues service accrual."
+    if type_code == "SC" and "roster status changed" in text:
+        return "preserve_state", None, "description.generic_status_preserve.v1", "Generic status text does not establish a new control state."
+    if type_code == "SC" and "activated" in text:
+        return (
+            "set_state",
+            "mlb_active" if is_mlb_event else "pro_active",
+            "description.generic_activation.v1",
+            "Activation changes the active state at the identified level.",
+        )
+    if type_code == "SC" and "reassigned" in text and "minor leagues" in text:
+        return (
+            "set_state",
+            "pro_active",
+            "description.reassigned_to_minors.v1",
+            "Reassigned to the minor leagues without treating the event as an option.",
         )
 
     transitions = {
@@ -111,6 +165,7 @@ def _classify(type_code: str, description: str) -> tuple[str, str | None, str, s
         "SFA",
         "SGN",
         "TR",
+        "ASG",
     }
     if type_code in preserves:
         return (
@@ -127,14 +182,20 @@ def _classify(type_code: str, description: str) -> tuple[str, str | None, str, s
     )
 
 
-def classify_control_transactions(transactions: pl.DataFrame) -> pl.DataFrame:
+def classify_control_transactions(
+    transactions: pl.DataFrame, *, mlb_team_ids: set[int] | None = None
+) -> pl.DataFrame:
     """Translate raw transactions with a versioned, fail-closed grammar."""
 
     source = _conform(transactions, RIGHTS_TRANSACTION_SCHEMA, "rights_transactions")
     rows: list[dict[str, object]] = []
     for row in source.iter_rows(named=True):
         action, target, rule_id, reason = _classify(
-            str(row["type_code"]), str(row["description"])
+            str(row["type_code"]),
+            str(row["description"]),
+            from_team_id=row["from_team_id"],
+            to_team_id=row["to_team_id"],
+            mlb_team_ids=mlb_team_ids,
         )
         rows.append(
             {

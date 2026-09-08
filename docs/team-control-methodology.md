@@ -2,15 +2,18 @@
 
 **Status:** CBA calculation layer, conservative StatsAPI transaction materializer and
 batched official opening-state construction implemented; contract join and broad
-historical validation remain open.
+league-wide validation remain open. A dated baseline can now be advanced with
+post-snapshot StatsAPI service and later option years.
 
 ## Decision
 
 Official MLB roster, person, schedule and transaction responses are the scalable
-source for player identity, organization candidates, dated roster states and the
-inputs to CBA calculations. FanGraphs and other sources are reserved for contract
-terms and bounded exception checks. A missing or ambiguous history receives a review
-flag; it is not silently treated as zero service or unused options.
+source for player identity, organization candidates, dated roster states and forward
+CBA calculations. FanGraphs or another verified service source supplies a dated
+accumulated-service/options baseline where the retained StatsAPI history is incomplete.
+It also supplies contract terms and bounded exception checks. A missing or ambiguous
+history receives a review flag; it is not silently treated as zero service or unused
+options.
 
 ## Implemented rules
 
@@ -89,6 +92,18 @@ name matching linked 182 of 187 depth-chart rows to the 295 StatsAPI `fullRoster
 candidates returned on 2026-09-08. The five unmatched rows form a small transaction
 and identity exception queue. Name matching is never promoted to canonical identity or
 ownership evidence.
+
+### Historical-replay decision
+
+A from-zero 2000–2026 StatsAPI replay was rejected as the accumulated-service source.
+Among 54 Padres players joined by stable FanGraphs and MLBAM IDs, only 2 results were
+exact, 5 were within five days, and the median absolute error was 136 days. The feed's
+retained roster history materially undercounted veteran service. Phase one therefore
+uses a verified dated baseline, then calculates forward changes from StatsAPI. The
+baseline is staged by `control_baseline.py`; stable ID links are accepted, exact-name
+validation links require review, and unresolved identities remain unavailable. The
+forward roll starts the day after the snapshot, caps service by official season, and
+does not charge an option year twice when a midseason baseline already reflects it.
 
 ## References
 
