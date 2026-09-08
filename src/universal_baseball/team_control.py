@@ -14,13 +14,22 @@ from math import ceil
 
 import polars as pl
 
+from universal_baseball.cba_rules import CBA_2022_2026
 
-SERVICE_DAYS_PER_YEAR = 172
-OPTION_DAYS_PER_YEAR = 20
-FULL_PRO_SEASON_ACTIVE_DAYS = 90
-FULL_PRO_SEASON_MIN_ACTIVE_DAYS = 30
-SUPER_TWO_MIN_CURRENT_DAYS = 86
-SUPER_TWO_SHARE = 0.22
+
+SERVICE_DAYS_PER_YEAR = CBA_2022_2026.service_days_per_year
+OPTION_DAYS_PER_YEAR = CBA_2022_2026.option_days_per_year
+FULL_PRO_SEASON_ACTIVE_DAYS = CBA_2022_2026.full_pro_season_active_days
+FULL_PRO_SEASON_MIN_ACTIVE_DAYS = CBA_2022_2026.full_pro_season_min_active_days
+STANDARD_OPTION_YEARS = CBA_2022_2026.standard_option_years
+FOURTH_OPTION_FULL_SEASONS_THRESHOLD = (
+    CBA_2022_2026.fourth_option_full_seasons_threshold
+)
+STANDARD_ARBITRATION_SERVICE_YEARS = CBA_2022_2026.standard_arbitration_service_years
+FREE_AGENCY_SERVICE_YEARS = CBA_2022_2026.free_agency_service_years
+SUPER_TWO_MIN_SERVICE_YEARS = CBA_2022_2026.super_two_min_service_years
+SUPER_TWO_MIN_CURRENT_DAYS = CBA_2022_2026.super_two_min_current_days
+SUPER_TWO_SHARE = CBA_2022_2026.super_two_share
 
 ROSTER_STATES = frozenset(
     {
@@ -273,7 +282,9 @@ def _super_two_cutoff(
     pool = [
         row
         for row in totals
-        if 2 * SERVICE_DAYS_PER_YEAR <= int(row["service_days"]) < 3 * SERVICE_DAYS_PER_YEAR
+        if SUPER_TWO_MIN_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR
+        <= int(row["service_days"])
+        < STANDARD_ARBITRATION_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR
         and int(row["current_service_days"]) >= SUPER_TWO_MIN_CURRENT_DAYS
     ]
     if not pool:
@@ -318,8 +329,11 @@ def build_super_two_pool(
     ).height:
         raise ValueError("super two service input has invalid values")
     pool = source.filter(
-        (pl.col("service_days") >= 2 * SERVICE_DAYS_PER_YEAR)
-        & (pl.col("service_days") < 3 * SERVICE_DAYS_PER_YEAR)
+        (pl.col("service_days") >= SUPER_TWO_MIN_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR)
+        & (
+            pl.col("service_days")
+            < STANDARD_ARBITRATION_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR
+        )
         & (pl.col("current_service_days") >= SUPER_TWO_MIN_CURRENT_DAYS)
     ).sort(["service_days", "player_id"], descending=[True, False])
     if pool.is_empty():
@@ -414,8 +428,9 @@ def build_team_control_summary(
         option_years = int(row["option_years"])
         full_seasons = int(row["full_seasons"])
         allowed_options = 4 if option_years >= 4 or (
-            option_years >= 3 and full_seasons < 5
-        ) else 3
+            option_years >= STANDARD_OPTION_YEARS
+            and full_seasons < FOURTH_OPTION_FULL_SEASONS_THRESHOLD
+        ) else STANDARD_OPTION_YEARS
         remaining_options = max(allowed_options - option_years, 0)
         rule5_year = _rule5_year(row["birth_date"], row["first_pro_contract_date"])
         if bool(row["on_40man"]):
@@ -427,15 +442,17 @@ def build_team_control_summary(
         else:
             rule5_status = "not_yet_eligible"
 
-        if service_days >= 6 * SERVICE_DAYS_PER_YEAR:
+        if service_days >= FREE_AGENCY_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR:
             eligibility = "free_agent_eligible"
-        elif service_days >= 3 * SERVICE_DAYS_PER_YEAR:
+        elif service_days >= STANDARD_ARBITRATION_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR:
             eligibility = "arbitration_eligible"
         elif player_id in super_two_ids:
             eligibility = "super_two_eligible"
         elif (
             not super_two_pool_complete
-            and 2 * SERVICE_DAYS_PER_YEAR <= service_days < 3 * SERVICE_DAYS_PER_YEAR
+            and SUPER_TWO_MIN_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR
+            <= service_days
+            < STANDARD_ARBITRATION_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR
             and int(row["current_service_days"]) >= SUPER_TWO_MIN_CURRENT_DAYS
         ):
             eligibility = "super_two_candidate"

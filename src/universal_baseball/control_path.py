@@ -6,7 +6,11 @@ from datetime import date
 
 import polars as pl
 
-from universal_baseball.team_control import SERVICE_DAYS_PER_YEAR
+from universal_baseball.team_control import (
+    FREE_AGENCY_SERVICE_YEARS,
+    SERVICE_DAYS_PER_YEAR,
+    STANDARD_ARBITRATION_SERVICE_YEARS,
+)
 
 
 CONTROL_PATH_SCHEMA: dict[str, pl.DataType] = {
@@ -23,9 +27,9 @@ CONTROL_PATH_SCHEMA: dict[str, pl.DataType] = {
 
 
 def _statutory_status(service_days: int, *, super_two_next_year: bool) -> str:
-    if service_days >= 6 * SERVICE_DAYS_PER_YEAR:
+    if service_days >= FREE_AGENCY_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR:
         return "free_agent_eligible"
-    if service_days >= 3 * SERVICE_DAYS_PER_YEAR:
+    if service_days >= STANDARD_ARBITRATION_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR:
         return "arbitration_eligible"
     if super_two_next_year:
         return "super_two_eligible"

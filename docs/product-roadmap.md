@@ -151,3 +151,10 @@ bounded DFA/waiver, suspension, restricted-list and fourth-option exceptions.
 `audit_team_control_source.py` is the
 repeatable team source audit and writes source captures plus the exception report.
 Contract terms remain an overlay and never rewrite the underlying CBA arithmetic.
+
+Contract Economics v0 now supplies the downstream Step 7 interface. It accepts dated
+annual WAR estimates and named economic assumptions, values guarantees, tender rights,
+club options and player options, reports optionality separately, and fails closed on
+mutual/vesting triggers. The official 2022–2026 minimum schedule is versioned in
+`cba_rules.py`. A league-wide dollar output remains blocked on validated multi-year WAR
+coverage and an ex-ante free-agent market fit; neither is replaced by a hidden default.

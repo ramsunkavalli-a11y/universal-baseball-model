@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Updated 2026-09-07. This is the current start-here document.
+Updated 2026-09-08. This is the current start-here document.
 
 ## Active plan
 
@@ -14,11 +14,11 @@ The [direction review](trade-value-direction-review.md) finds useful foundations
 but missing career/control/cost and continuous-update integration. It also identifies
 older opportunity/roster models to reuse before building another challenger.
 The broader roadmap now includes pitcher and whole-player value integration;
-website work remains paused. No new valuation model has been promoted.
+website work remains paused. No player dollar ranking has been promoted.
 
-This work builds on the recovered-opportunity commit `7c2a874`. It contains model
-foundations, experiment records, and the plan. It does not change a website or
-promote a model. Protected main and the v1 release remain unchanged until integration.
+This work builds on the recovered-opportunity commit `7c2a874`. Main now contains the
+current model foundations, experiment records and plan. It does not change a website
+or promote a player ranking; the public v1 release remains historical.
 
 ## Phase 1 foundation progress
 
@@ -52,6 +52,12 @@ promote a model. Protected main and the v1 release remain unchanged until integr
   through 2031 and a complete 133-player Super Two pool. The calculated cutoff is
   `2.144` (488 days), with 30 selected because the cutoff is tied. FanGraphs supplies
   the 2026 opening balance; StatsAPI supplies in-season service through the as-of date.
+- Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
+  value and later trade value separate. It values guaranteed, tender, club-option and
+  player-option states, preserves optionality premium, discounts future values and
+  fails closed on unresolved option triggers. Official 2022–2026 minimum salaries live
+  in a versioned CBA ruleset; market price and arbitration shares remain named caller
+  assumptions rather than hidden constants.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -85,11 +91,11 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 ## Next modeling task
 
-The main candidate denominator and phase-one control/cost path are now built. Phase two
-should resolve only the 21 multi-organization ownership cases and the bounded opening-
-state/transaction exceptions, then add granular fourth-option, suspension and special
-CBA rulings. Unresolved paths stay unknown. The completed denominator can now support
-real non-arrival, inactivity and attrition labels rather than survivor-only modeling.
+The main candidate denominator, phase-one control/cost path and static economics engine
+are now built. The blocking valuation inputs are a validated multi-year whole-player
+WAR surface and a chronologically fitted free-agent market function. In parallel,
+resolve the 21 multi-organization ownership cases and bounded contract/CBA exceptions.
+Do not publish dollar rankings from placeholder market or arbitration assumptions.
 
 In parallel, reconnect the recovered opportunity pipeline and its frozen B2 inputs,
 then declare population-prior fallbacks for inactive/no-history players. Retain O2026D

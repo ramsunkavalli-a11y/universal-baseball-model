@@ -2,7 +2,9 @@
 
 Public-data baseball research working toward a trade-value estimate for every
 player, refreshed after each game and material transaction, beginning with MLB
-organizations and affiliated players. The valuation/update system is not yet built.
+organizations and affiliated players. The team-control/payroll foundation and a
+first static contract-economics engine are now built; a validated every-player
+multi-year WAR input and market-price fit are still required before dollar rankings.
 
 **Current priority: get the model right before building a public tool.** The
 [authoritative product roadmap](docs/product-roadmap.md) defines the active Phase 1
@@ -27,12 +29,14 @@ prior-exposure-only reference. Playing-time improvements are modest; inactive an
 no-history player coverage remains incomplete. The recovered richer opportunity
 forecast improves 2024 participation Brier by 12.6% and PA RMSE by 12.5% on identical
 targets. The official `fullRoster` source now supplies the broad player denominator;
-the next blocking task is final team control for its 0.20% multi-team outliers.
+the remaining 0.20% multi-team outliers stay explicit ownership reviews.
 
 Phase 1 foundations now include a [rights-universe contract](docs/player-rights-universe-contract.md),
 a censored [career-outcome panel](docs/career-outcome-panel-contract.md), a real
 2015–2024 MLB outcome inventory, and a transparent pitcher-component baseline. See the
 [current status](docs/project-status.md) for results and boundaries.
+The [Contract Economics v0 methodology](docs/contract-economics-v0-methodology.md)
+defines the new downstream valuation boundary and its remaining data gaps.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value
