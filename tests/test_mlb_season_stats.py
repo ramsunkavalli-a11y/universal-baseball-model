@@ -20,6 +20,10 @@ def _split(player_id: int, **overrides):
     stat = {
         "plateAppearances": 100,
         "atBats": 85,
+        "hits": 24,
+        "doubles": 5,
+        "triples": 1,
+        "homeRuns": 4,
         "baseOnBalls": 10,
         "intentionalWalks": 1,
         "hitByPitch": 2,
@@ -63,6 +67,10 @@ def test_mlb_bulk_projection_matches_performance_backbone_contract() -> None:
     assert row["league_id"] == 103
     assert row["player_id"] == 101
     assert row["batting_plate_appearances"] == 100
+    assert row["batting_hits"] == 24
+    assert row["batting_doubles"] == 5
+    assert row["batting_triples"] == 1
+    assert row["batting_home_runs"] == 4
     assert row["batting_base_on_balls"] == 10
     assert row["batting_hit_by_pitch"] == 2
     assert row["batting_strike_outs"] == 20

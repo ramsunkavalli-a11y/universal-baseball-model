@@ -1,7 +1,9 @@
 # Current model plan
 
-Updated 2026-09-06. The user wants the model made credible before further interface
-work. This is the active plan; earlier experiment contracts remain historical records.
+Updated 2026-09-07. The user wants the model made credible before further interface
+work. The [product roadmap](product-roadmap.md) is now the authoritative active plan;
+this document retains detailed evidence from the current hitter/opportunity workstream.
+Earlier experiment contracts remain historical records.
 
 ## Goal
 
@@ -9,6 +11,9 @@ Build a comparable trade-value estimate for every player, updated after each gam
 and material transaction. The recommended common measure is expected remaining
 surplus value of transferable team rights, with projected MLB wins and uncertainty
 shown separately. KATOH-style prospect production is one component of that goal.
+
+Execution now follows the roadmap's ten steps: eight Phase 1 foundations leading to a
+complete universal research valuation and two Phase 2 granular-improvement steps.
 
 Read the [repo and literature direction review](trade-value-direction-review.md).
 It governs the broader sequence: player/rights coverage; reuse of existing models;
@@ -59,9 +64,11 @@ Keep coherent probabilities and use event-score guardrails to detect harmful tra
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and
-revalidate them on repaired inputs. In the broader plan, define the player-rights
-universe, career horizon and financial/control sources now. Restore pitching and
-whole-player integration to the roadmap; they cannot remain indefinitely deferred.
+revalidate them on repaired inputs. The player-rights contract, dated 40-man adapter,
+censored career-outcome panel and first pitcher-component baseline are now implemented.
+The broader official `fullRoster` source failed the ownership-conflict gate, so the
+next denominator work must reconcile candidates through dated transactions or another
+rights authority. Financial/control sources and whole-player integration remain open.
 
 O2026D is now complete: official MLB batting-PA labels include non-arrivals,
 and a frozen level-aware opportunity baseline improves pooled any-PA Brier error

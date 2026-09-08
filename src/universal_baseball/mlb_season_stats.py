@@ -31,6 +31,10 @@ MLB_STATSAPI_RETRY_ATTEMPTS = 5
 _HITTING_REQUIRED_FIELDS = (
     "plateAppearances",
     "atBats",
+    "hits",
+    "doubles",
+    "triples",
+    "homeRuns",
     "baseOnBalls",
     "intentionalWalks",
     "hitByPitch",
@@ -60,6 +64,10 @@ MLB_BATTING_BACKBONE_SCHEMA: dict[str, pl.DataType] = {
     "player_name": pl.String,
     "batting_plate_appearances": pl.Int64,
     "batting_at_bats": pl.Int64,
+    "batting_hits": pl.Int64,
+    "batting_doubles": pl.Int64,
+    "batting_triples": pl.Int64,
+    "batting_home_runs": pl.Int64,
     "batting_base_on_balls": pl.Int64,
     "batting_intentional_walks": pl.Int64,
     "batting_hit_by_pitch": pl.Int64,
@@ -185,6 +193,10 @@ def project_mlb_hitting_splits(
             )
         plate_appearances = _integer_like(stat.get("plateAppearances"), field="plateAppearances")
         at_bats = _integer_like(stat.get("atBats"), field="atBats")
+        hits = _integer_like(stat.get("hits"), field="hits")
+        doubles = _integer_like(stat.get("doubles"), field="doubles")
+        triples = _integer_like(stat.get("triples"), field="triples")
+        home_runs = _integer_like(stat.get("homeRuns"), field="homeRuns")
         base_on_balls = _integer_like(stat.get("baseOnBalls"), field="baseOnBalls")
         intentional_walks = _integer_like(stat.get("intentionalWalks"), field="intentionalWalks")
         hit_by_pitch = _integer_like(stat.get("hitByPitch"), field="hitByPitch")
@@ -199,6 +211,8 @@ def project_mlb_hitting_splits(
         broad_contacts = at_bats - strikeouts + sac_bunts + sac_flies
         if broad_contacts < 0:
             raise ValueError(f"negative derived broad contacts for MLBAM {player_id}")
+        if hits > at_bats or doubles + triples + home_runs > hits:
+            raise ValueError(f"invalid MLB hitting result counts for MLBAM {player_id}")
         simple_residual = (
             at_bats
             + base_on_balls
@@ -215,6 +229,10 @@ def project_mlb_hitting_splits(
                 "player_name": str(person.get("fullName") or ""),
                 "batting_plate_appearances": plate_appearances,
                 "batting_at_bats": at_bats,
+                "batting_hits": hits,
+                "batting_doubles": doubles,
+                "batting_triples": triples,
+                "batting_home_runs": home_runs,
                 "batting_base_on_balls": base_on_balls,
                 "batting_intentional_walks": intentional_walks,
                 "batting_hit_by_pitch": hit_by_pitch,
