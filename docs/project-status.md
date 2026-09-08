@@ -44,9 +44,14 @@ promote a model. Protected main and the v1 release remain unchanged until integr
   as a bounded exception layer. Broad comparison coverage is 95.2% and 98.4%; Rule 5
   year agreement is 180/186 where both values are available.
 - All 30 payroll workbooks normalize into 915 player records, 3,720 annual terms, 180
-  clauses and 417 other payments. Stable IDs automatically attach 870 players; the 45
-  remaining exact-name matches form the bounded identity queue. Payroll liabilities
-  for former roster members remain separate from current team control.
+  clauses and 417 other payments. Stable IDs attach 870 players; current official
+  roster entries corroborate the remaining 45 exact-name identities. Payroll identity
+  review is now zero, while liabilities for former roster members remain separate from
+  current team control.
+- The 2026-09-08 league build contains 8,399 affiliated players, 8,335 future-path rows
+  through 2031 and a complete 133-player Super Two pool. The calculated cutoff is
+  `2.144` (488 days), with 30 selected because the cutoff is tied. FanGraphs supplies
+  the 2026 opening balance; StatsAPI supplies in-season service through the as-of date.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -80,12 +85,11 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 ## Next modeling task
 
-The main candidate denominator is now selected. The blocking P0 task is final team
-control: accept uncontested `fullRoster` organizations provisionally, strengthen them
-with 40-man evidence, apply dated FanGraphs service/options baselines, calculate Rule 5
-and forward changes from StatsAPI, and replay ownership-changing transactions only for
-outliers. Unresolved paths stay unknown. The completed denominator then supports real
-non-arrival, inactivity and attrition labels rather than survivor-only modeling.
+The main candidate denominator and phase-one control/cost path are now built. Phase two
+should resolve only the 21 multi-organization ownership cases and the bounded opening-
+state/transaction exceptions, then add granular fourth-option, suspension and special
+CBA rulings. Unresolved paths stay unknown. The completed denominator can now support
+real non-arrival, inactivity and attrition labels rather than survivor-only modeling.
 
 In parallel, reconnect the recovered opportunity pipeline and its frozen B2 inputs,
 then declare population-prior fallbacks for inactive/no-history players. Retain O2026D

@@ -98,6 +98,10 @@ def build_control_baselines(
         match_status = str(row["match_status"] or "unmatched")
         if match_status == "matched_stable_id":
             baseline_status = "accepted_stable_identity"
+        elif match_status == "stable_id_outside_statsapi_candidates":
+            baseline_status = "accepted_stable_identity_outside_expected_team"
+        elif match_status == "matched_official_roster_confirmed_name":
+            baseline_status = "accepted_official_roster_confirmed_identity"
         elif match_status == "matched_validation_only":
             baseline_status = "review_name_only_identity"
         else:
@@ -120,7 +124,15 @@ def build_control_baselines(
     result = pl.DataFrame(rows, schema=CONTROL_BASELINE_SCHEMA).sort(
         ["baseline_status", "player_name"]
     )
-    accepted = result.filter(pl.col("baseline_status") == "accepted_stable_identity")
+    accepted = result.filter(
+        pl.col("baseline_status").is_in(
+            [
+                "accepted_stable_identity",
+                "accepted_official_roster_confirmed_identity",
+                "accepted_stable_identity_outside_expected_team",
+            ]
+        )
+    )
     if (
         accepted.drop_nulls("player_id")
         .group_by("player_id")
@@ -150,7 +162,15 @@ def advance_control_baselines(
     windows = season_windows.select(list(SEASON_WINDOW_SCHEMA)).cast(
         SEASON_WINDOW_SCHEMA, strict=True
     )
-    accepted = source.filter(pl.col("baseline_status") == "accepted_stable_identity")
+    accepted = source.filter(
+        pl.col("baseline_status").is_in(
+            [
+                "accepted_stable_identity",
+                "accepted_official_roster_confirmed_identity",
+                "accepted_stable_identity_outside_expected_team",
+            ]
+        )
+    )
     if accepted.filter(
         pl.col("player_id").is_null() | pl.col("service_days").is_null()
     ).height:

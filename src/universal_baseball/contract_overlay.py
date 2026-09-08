@@ -61,7 +61,11 @@ def build_contract_overlay(
     players = players.with_columns(
         pl.when(
             pl.col("identity_match_status").is_in(
-                ["matched_stable_id", "stable_id_outside_statsapi_candidates"]
+                [
+                    "matched_stable_id",
+                    "stable_id_outside_statsapi_candidates",
+                    "matched_official_roster_confirmed_name",
+                ]
             )
         )
         .then(pl.lit("accepted_contract_overlay"))

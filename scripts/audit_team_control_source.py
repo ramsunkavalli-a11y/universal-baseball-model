@@ -69,7 +69,7 @@ def main() -> int:
         people.transactions.select(
             "transaction_id", "type_code", "type_description", "description"
         ),
-        on="transaction_id",
+        on=["player_id", "transaction_id"],
     )
     report = {
         "report_schema_version": 1,

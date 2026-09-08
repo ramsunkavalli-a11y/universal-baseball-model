@@ -9,6 +9,7 @@ from universal_baseball.team_control import (
     CONTROL_PLAYER_SCHEMA,
     CONTROL_STINT_SCHEMA,
     SEASON_WINDOW_SCHEMA,
+    build_super_two_pool,
     build_team_control_summary,
     calculate_control_years,
 )
@@ -211,4 +212,33 @@ def test_future_stint_fails_chronology_check() -> None:
             _stints([_stint(1, "mlb_active", "2025-09-28", "2025-09-29")]),
             _windows(),
             as_of_date=CUTOFF,
+        )
+
+
+def test_super_two_pool_uses_complete_league_rank_and_keeps_cutoff_ties() -> None:
+    service = pl.DataFrame(
+        {
+            "player_id": [1, 2, 3, 4, 5, 6],
+            "service_days": [500, 490, 490, 470, 450, 300],
+            "current_service_days": [100, 100, 100, 100, 100, 100],
+        }
+    )
+
+    result = build_super_two_pool(
+        service, as_of_date=CUTOFF, pool_complete=True
+    )
+
+    assert result.get_column("cutoff_days").unique().to_list() == [490]
+    assert result.filter(pl.col("selected")).get_column("player_id").to_list() == [1, 2, 3]
+    assert result.get_column("cutoff_tie").all()
+
+
+def test_super_two_pool_rejects_team_only_input() -> None:
+    with pytest.raises(ValueError, match="complete league-wide"):
+        build_super_two_pool(
+            pl.DataFrame(
+                {"player_id": [1], "service_days": [400], "current_service_days": [100]}
+            ),
+            as_of_date=CUTOFF,
+            pool_complete=False,
         )

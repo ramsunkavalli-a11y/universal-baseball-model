@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from datetime import date
 
 import polars as pl
 
@@ -99,6 +100,52 @@ def match_control_reference_players(
                 "match_status": status,
             }
         )
+    return pl.DataFrame(rows, schema=CONTROL_VALIDATION_MATCH_SCHEMA).sort(
+        ["match_status", "reference_player_name"]
+    )
+
+
+def confirm_name_matches_with_current_roster_entries(
+    identity_matches: pl.DataFrame,
+    roster_entries: pl.DataFrame,
+    *,
+    expected_team_id: int,
+    as_of_date: date,
+) -> pl.DataFrame:
+    """Promote a unique name match only with matching current official roster detail."""
+
+    matches = identity_matches.select(list(CONTROL_VALIDATION_MATCH_SCHEMA)).cast(
+        CONTROL_VALIDATION_MATCH_SCHEMA, strict=True
+    )
+    required = {
+        "player_id",
+        "team_id",
+        "parent_org_id",
+        "start_date",
+        "end_date",
+        "source_snapshot_id",
+    }
+    missing = sorted(required - set(roster_entries.columns))
+    if missing:
+        raise ValueError(f"roster entries missing identity confirmation fields: {missing}")
+    rows: list[dict[str, object]] = []
+    for row in matches.iter_rows(named=True):
+        if row["match_status"] != "matched_validation_only" or row["player_id"] is None:
+            rows.append(row)
+            continue
+        evidence = roster_entries.filter(
+            (pl.col("player_id") == int(row["player_id"]))
+            & (pl.col("start_date") <= pl.lit(as_of_date))
+            & (pl.col("end_date").is_null() | (pl.col("end_date") >= pl.lit(as_of_date)))
+            & (
+                (pl.col("team_id") == int(expected_team_id))
+                | (pl.col("parent_org_id") == int(expected_team_id))
+            )
+        )
+        if evidence.height:
+            row["match_method"] = "unique_name_plus_current_official_roster_entry"
+            row["match_status"] = "matched_official_roster_confirmed_name"
+        rows.append(row)
     return pl.DataFrame(rows, schema=CONTROL_VALIDATION_MATCH_SCHEMA).sort(
         ["match_status", "reference_player_name"]
     )

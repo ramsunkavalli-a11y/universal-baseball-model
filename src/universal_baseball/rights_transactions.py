@@ -112,6 +112,11 @@ def project_transaction_payload(
         (pl.col("transaction_id") <= 0) | (pl.col("player_id") <= 0)
     ).height:
         raise ValueError("transaction payload has non-positive identity")
-    if result.group_by("transaction_id").len().filter(pl.col("len") > 1).height:
-        raise ValueError("transaction payload has duplicate transaction_id")
+    if (
+        result.group_by(["transaction_id", "player_id"])
+        .len()
+        .filter(pl.col("len") > 1)
+        .height
+    ):
+        raise ValueError("transaction payload has duplicate transaction-player identity")
     return result.sort(["player_id", "effective_date", "transaction_id"])

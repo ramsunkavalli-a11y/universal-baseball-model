@@ -1,9 +1,8 @@
 # StatsAPI team-control methodology
 
-**Status:** CBA calculation layer, conservative StatsAPI transaction materializer and
-batched official opening-state construction implemented; contract join and broad
-league-wide validation remain open. A dated baseline can now be advanced with
-post-snapshot StatsAPI service and later option years.
+**Status:** Phase-one league build completed through the unified control/payroll table,
+future control paths and league-wide Super Two calculation. Granular exception work is
+deferred to phase two.
 
 ## Decision
 
@@ -67,8 +66,9 @@ fourth-option rulings and Super Two cutoff ties remain bounded review cases.
 The later payroll join owns guaranteed salaries, contract years, club/player/mutual
 options, opt-outs, buyouts, retained/deferred money, incentives and no-trade clauses.
 Those terms may override the statutory path but never rewrite the underlying CBA
-calculation. `contract_overlay.py` accepts a payroll row only after a stable ID match;
-name-only and unresolved identities stay in a separate review table.
+calculation. `contract_overlay.py` accepts a payroll row after a stable ID match or an
+exact-name match corroborated by a current official roster entry in the expected
+organization. Uncorroborated and ambiguous identities stay in a separate review table.
 
 ## Phase-one completion gates
 
@@ -99,8 +99,31 @@ vesting option remains contingent until its trigger is independently confirmed.
 
 Stable FanGraphs-to-MLBAM links attach 870 of 915 player records (95.1%), including 68
 payroll liabilities for players outside the current StatsAPI organization candidates.
-The remaining 45 are unique exact-name validations and stay in the identity review
-queue. No payroll row is unmatched or ambiguous.
+Current official roster entries in the expected organization corroborate the remaining
+45 unique exact-name matches. All 915 payroll identities therefore attach, with zero
+unmatched or ambiguous payroll rows.
+
+## League-wide phase-one result
+
+The reproducible 2026-09-08 build uses the FanGraphs `2026 MLB Service Time` value as
+the 2026 opening balance dated 2026-03-24, then adds StatsAPI roster-state service
+through 2026-09-08. It does not treat the FanGraphs value as an in-season total.
+
+The unified table contains 8,399 affiliated players and 915 payroll records. All 1,427
+nonzero FanGraphs service references resolve to player identities with no conflicting
+baselines. Twenty-one players with multiple full-roster organization candidates remain
+explicit ownership reviews rather than guessed assignments.
+
+The league-wide Super Two pool contains 133 players. The top-22% calculation selects
+30 players at a 488-day (`2.144`) cutoff; Randy Rodríguez and Iván Herrera are tied at
+the cutoff and both remain selected. Future paths through 2031 contain 8,335 rows and
+are labeled as full-service future scenarios, with contract terms overriding statutory
+labels only for the applicable organization and year.
+
+Generated artifacts are written to
+`reports/generated/league-control/2026-09-08/`. The remaining opening-state,
+transaction and multi-organization reviews belong to phase two and do not silently
+change phase-one results.
 
 ## Depth-chart validation sample
 

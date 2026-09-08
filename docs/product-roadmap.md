@@ -137,15 +137,17 @@ The full 30-team FanGraphs snapshot now imports cleanly: 5,437 player rows with 
 unparsed service/options/Rule 5 control values. Legitimate two-way-player duplicates
 are combined by stable FanGraphs ID while conflicting duplicates still fail closed.
 The 30 payroll files also import cleanly: 915 player rows, 3,720 annual terms, 180
-clauses and 417 other payments. Stable IDs attach 870 players; 45 exact-name matches
-remain for bounded identity review. FanGraphs is the primary manual baseline, but
-source disagreements stay visible and require corroboration rather than automatic
-override.
+clauses and 417 other payments. Stable IDs attach 870 players; current official roster
+entries corroborate the remaining 45 exact-name matches. Payroll identity review is
+zero. FanGraphs is the primary manual baseline, but source disagreements stay visible
+and require corroboration rather than automatic override.
 
-Immediate priorities are: apply the verified service/options baseline-plus-forward
-roll; calculate Rule 5 from StatsAPI; ingest the uploaded payroll terms through stable
-IDs; resolve only the bounded DFA/waiver, suspension and restricted-list exceptions;
-run the Super Two pool league-wide; then repeat payroll import for all clubs.
+Phase one is complete through the requested boundary: the 2026-09-08 unified table has
+8,399 players; the future full-service scenario has 8,335 rows through 2031; and the
+complete 133-player Super Two pool selects 30 at a tied `2.144` cutoff. The service
+method uses the FanGraphs value as the 2026 opening balance and adds StatsAPI in-season
+days. Phase two priorities are the 21 multi-organization ownership reviews followed by
+bounded DFA/waiver, suspension, restricted-list and fourth-option exceptions.
 `audit_team_control_source.py` is the
 repeatable team source audit and writes source captures plus the exception report.
 Contract terms remain an overlay and never rewrite the underlying CBA arithmetic.

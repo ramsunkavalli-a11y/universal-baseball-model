@@ -95,6 +95,17 @@ TEAM_CONTROL_SUMMARY_SCHEMA: dict[str, pl.DataType] = {
     "source_snapshot_ids": pl.String,
 }
 
+SUPER_TWO_POOL_SCHEMA: dict[str, pl.DataType] = {
+    "as_of_date": pl.Date,
+    "player_id": pl.Int64,
+    "service_days": pl.Int64,
+    "current_service_days": pl.Int64,
+    "pool_rank": pl.Int64,
+    "cutoff_days": pl.Int64,
+    "selected": pl.Boolean,
+    "cutoff_tie": pl.Boolean,
+}
+
 
 Interval = tuple[date, date]
 
@@ -273,6 +284,60 @@ def _super_two_cutoff(
     selected = {int(row["player_id"]) for row in pool if int(row["service_days"]) >= cutoff}
     cutoff_tie = sum(int(row["service_days"]) == cutoff for row in pool) > 1
     return cutoff, selected, cutoff_tie
+
+
+def build_super_two_pool(
+    service: pl.DataFrame,
+    *,
+    as_of_date: date,
+    pool_complete: bool,
+) -> pl.DataFrame:
+    """Rank the league-wide two-to-three-year pool under the published 22% rule."""
+
+    required = {"player_id", "service_days", "current_service_days"}
+    missing = sorted(required - set(service.columns))
+    if missing:
+        raise ValueError(f"super two service input missing columns: {missing}")
+    if not pool_complete:
+        raise ValueError("Super Two requires an explicitly complete league-wide pool")
+    source = service.select(sorted(required)).cast(
+        {
+            "player_id": pl.Int64,
+            "service_days": pl.Int64,
+            "current_service_days": pl.Int64,
+        },
+        strict=True,
+    )
+    if source.group_by("player_id").len().filter(pl.col("len") > 1).height:
+        raise ValueError("super two service input has duplicate players")
+    if source.filter(
+        (pl.col("player_id") <= 0)
+        | (pl.col("service_days") < 0)
+        | (pl.col("current_service_days") < 0)
+        | (pl.col("current_service_days") > SERVICE_DAYS_PER_YEAR)
+    ).height:
+        raise ValueError("super two service input has invalid values")
+    pool = source.filter(
+        (pl.col("service_days") >= 2 * SERVICE_DAYS_PER_YEAR)
+        & (pl.col("service_days") < 3 * SERVICE_DAYS_PER_YEAR)
+        & (pl.col("current_service_days") >= SUPER_TWO_MIN_CURRENT_DAYS)
+    ).sort(["service_days", "player_id"], descending=[True, False])
+    if pool.is_empty():
+        return pl.DataFrame(schema=SUPER_TWO_POOL_SCHEMA)
+    slots = max(1, ceil(pool.height * SUPER_TWO_SHARE))
+    cutoff = int(pool.item(slots - 1, "service_days"))
+    cutoff_tie = pool.filter(pl.col("service_days") == cutoff).height > 1
+    return (
+        pool.with_row_index("pool_rank", offset=1)
+        .with_columns(
+            pl.lit(as_of_date).cast(pl.Date).alias("as_of_date"),
+            pl.lit(cutoff).cast(pl.Int64).alias("cutoff_days"),
+            (pl.col("service_days") >= cutoff).alias("selected"),
+            pl.lit(cutoff_tie).alias("cutoff_tie"),
+        )
+        .select(list(SUPER_TWO_POOL_SCHEMA))
+        .cast(SUPER_TWO_POOL_SCHEMA, strict=True)
+    )
 
 
 def build_team_control_summary(

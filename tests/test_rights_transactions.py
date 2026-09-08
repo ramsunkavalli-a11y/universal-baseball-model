@@ -52,13 +52,28 @@ def test_transaction_projection_rejects_future_effective_event() -> None:
         )
 
 
-def test_transaction_projection_rejects_duplicate_ids() -> None:
-    with pytest.raises(ValueError, match="duplicate transaction_id"):
+def test_transaction_projection_rejects_duplicate_player_event_ids() -> None:
+    with pytest.raises(ValueError, match="duplicate transaction-player identity"):
         project_transaction_payload(
             {"transactions": [_row(), _row()]},
             as_of_date=CUTOFF,
             source_snapshot_id="snapshot",
         )
+
+
+def test_transaction_projection_allows_shared_event_id_for_multiple_players() -> None:
+    result = project_transaction_payload(
+        {
+            "transactions": [
+                _row(),
+                _row(person={"id": 700001, "fullName": "Other Player"}),
+            ]
+        },
+        as_of_date=CUTOFF,
+        source_snapshot_id="snapshot",
+    )
+
+    assert result.height == 2
 
 
 def test_transaction_projection_allows_empty_result_with_stable_schema() -> None:
