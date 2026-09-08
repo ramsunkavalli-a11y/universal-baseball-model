@@ -30,6 +30,8 @@ promote a model. Protected main and the v1 release remain unchanged until integr
 - The official `fullRoster` source was tested as a broader affiliation source and
   rejected for direct rights use after 16 cross-organization conflicts appeared in a
   2024-10-15 snapshot. This prevents a superficially broad but invalid denominator.
+  A chronology-safe official transaction ledger is now implemented for reconciliation;
+  ownership-changing state transitions remain a separate, not-yet-authorized gate.
 - The career-outcome panel makes completed-season absence an observed zero and later
   seasons right-censored. A real official 2015–2024 inventory contains 10,585 batting
   player-seasons, 8,095 pitching player-seasons and 3,777 distinct MLB players.
@@ -39,6 +41,7 @@ promote a model. Protected main and the v1 release remain unchanged until integr
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster rejection](affiliated-full-roster-source-result.md),
+[transaction ledger](rights-transaction-ledger-contract.md),
 [career panel](career-outcome-panel-contract.md),
 [career inventory](career-mlb-outcome-inventory-result.md),
 [pitcher baseline](pitcher-component-baseline-result.md).
@@ -93,7 +96,7 @@ artifacts; hashes bind the inputs. They reject overwriting an inspected candidat
 run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
-Current verification: Ruff passes across `src`, `scripts` and `tests`; 1,079 tests
+Current verification: Ruff passes across `src`, `scripts` and `tests`; 1,084 tests
 pass. Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

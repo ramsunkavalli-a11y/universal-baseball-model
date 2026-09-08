@@ -116,3 +116,8 @@ attrition labels. In parallel, connect the recovered richer opportunity pipeline
 declare universal fallbacks for inactive/no-history players. The first integrated model
 should be deliberately simple; granular feature research begins only after the complete
 Phase 1 path exists.
+
+The transaction source is projected into a chronology-safe ledger, but transaction
+codes do not yet drive rights-state changes. The next rights gate must authorize only
+ownership-changing events, resolve minor-league team IDs to dated parent organizations,
+and validate replayed owners against conflict-free 40-man snapshots.
