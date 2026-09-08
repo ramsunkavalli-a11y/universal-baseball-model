@@ -132,6 +132,20 @@ The Giants run also exposed and fixed a blank-FanGraphs-ID join defect: baseline
 are now joined on both FanGraphs ID and reference player name, preventing blank IDs
 from multiplying prospect rows.
 
+### League-wide depth-chart inventory
+
+All 30 FanGraphs 2026 depth-chart workbooks were normalized from one dated local
+snapshot on 2026-09-08. They contain 5,437 unique team-player rows, 1,724 service-time
+values, 1,307 option counts, 835 current Rule 5-eligible labels and 2,884 future Rule 5
+dates. No control value was unparsed.
+
+Six organizations list at least one two-way player in both position-player and pitcher
+sections. The importer now combines repeated rows only when the nonblank FanGraphs ID
+and player name agree and the control values do not conflict. Same-name players with
+different FanGraphs IDs remain separate, as required for the two Jared Jones records
+in the Pirates workbook. Conflicting duplicate IDs and duplicate blank-ID names still
+fail closed.
+
 ## References
 
 - MLB Service Time glossary: https://www.mlb.com/glossary/transactions/service-time

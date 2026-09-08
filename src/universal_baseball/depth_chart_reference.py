@@ -111,17 +111,47 @@ def normalize_fangraphs_depth_chart(
                     "source_snapshot_id": source_snapshot_id,
                 }
             )
-    result = pl.DataFrame(rows, schema=DEPTH_CHART_REFERENCE_SCHEMA)
-    duplicate_ids = (
-        result.filter(pl.col("fangraphs_id") != "")
-        .group_by("fangraphs_id")
+    by_id: dict[str, dict[str, object]] = {}
+    collapsed: list[dict[str, object]] = []
+    for row in rows:
+        fangraphs_id = str(row["fangraphs_id"])
+        if not fangraphs_id:
+            collapsed.append(row)
+            continue
+        existing = by_id.get(fangraphs_id)
+        if existing is None:
+            by_id[fangraphs_id] = row
+            collapsed.append(row)
+            continue
+        if existing["player_name"] != row["player_name"]:
+            raise ValueError("depth chart has conflicting duplicate FanGraphs IDs")
+        for field in (
+            "reference_service_time",
+            "reference_options_remaining",
+            "reference_rule5_status",
+            "reference_rule5_year",
+            "how_acquired",
+            "first_pro_year_text",
+        ):
+            old = existing[field]
+            new = row[field]
+            if old in (None, ""):
+                existing[field] = new
+            elif new not in (None, "") and old != new:
+                raise ValueError("depth chart has conflicting repeated-player values")
+        sections = set(str(existing["depth_chart_section"]).split(", "))
+        sections.add(str(row["depth_chart_section"]))
+        existing["depth_chart_section"] = ", ".join(sorted(sections))
+
+    result = pl.DataFrame(collapsed, schema=DEPTH_CHART_REFERENCE_SCHEMA)
+    duplicate_blank_names = (
+        result.filter(pl.col("fangraphs_id") == "")
+        .group_by("player_name")
         .len()
         .filter(pl.col("len") > 1)
     )
-    if duplicate_ids.height:
-        raise ValueError("depth chart has duplicate nonblank FanGraphs IDs")
-    if result.group_by("player_name").len().filter(pl.col("len") > 1).height:
-        raise ValueError("depth chart has duplicate player names")
+    if duplicate_blank_names.height:
+        raise ValueError("depth chart has duplicate names without FanGraphs IDs")
     return result.sort(["depth_chart_section", "player_name"])
 
 

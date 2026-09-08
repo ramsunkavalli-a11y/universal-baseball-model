@@ -133,6 +133,9 @@ historical replay was rejected after materially undercounting service and missin
 many option years, so `control_baseline.py` stages verified dated service/options and
 StatsAPI calculates forward changes. Rule 5 calculation remains StatsAPI-native: the
 calculated year matched 180 of 186 comparable rows across the two clubs.
+The full 30-team FanGraphs snapshot now imports cleanly: 5,437 player rows with zero
+unparsed service/options/Rule 5 control values. Legitimate two-way-player duplicates
+are combined by stable FanGraphs ID while conflicting duplicates still fail closed.
 
 Immediate priorities are: apply the verified service/options baseline-plus-forward
 roll; calculate Rule 5 from StatsAPI; ingest the uploaded payroll terms through stable

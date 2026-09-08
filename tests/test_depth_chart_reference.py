@@ -50,7 +50,7 @@ def test_depth_chart_normalizes_options_rule5_and_service_reference() -> None:
     assert rule_five["reference_rule5_status"] == "rule5_eligible"
 
 
-def test_depth_chart_rejects_duplicate_stable_ids() -> None:
+def test_depth_chart_rejects_conflicting_duplicate_stable_ids() -> None:
     sheets = {
         "A": pl.DataFrame({"PLAYER": ["One"], "playerId": ["10"]}),
         "B": pl.DataFrame({"PLAYER": ["Two"], "playerId": ["10"]}),
@@ -60,6 +60,48 @@ def test_depth_chart_rejects_duplicate_stable_ids() -> None:
             sheets, team_name="Padres", season=2026, source_snapshot_id="fg:test"
         )
     except ValueError as exc:
-        assert "duplicate nonblank FanGraphs IDs" in str(exc)
+        assert "conflicting duplicate FanGraphs IDs" in str(exc)
     else:
         raise AssertionError("duplicate FanGraphs ID should fail")
+
+
+def test_depth_chart_collapses_same_two_way_player_across_sections() -> None:
+    sheets = {
+        "Low-A (PP)": pl.DataFrame(
+            {
+                "POSITION PLAYERS": ["Two Way"],
+                "Options or R5 Status": ["Dec'29"],
+                "playerId": ["sa10"],
+            }
+        ),
+        "Low-A (PT)": pl.DataFrame(
+            {
+                "PITCHERS": ["Two Way"],
+                "Options or R5 Status": ["Dec'29"],
+                "playerId": ["sa10"],
+            }
+        ),
+    }
+
+    result = normalize_fangraphs_depth_chart(
+        sheets, team_name="Athletics", season=2026, source_snapshot_id="fg:test"
+    )
+
+    assert result.height == 1
+    assert result.row(0, named=True)["depth_chart_section"] == "Low-A (PP), Low-A (PT)"
+
+
+def test_depth_chart_allows_same_name_when_stable_ids_differ() -> None:
+    sheets = {
+        "MLB": pl.DataFrame({"PLAYER": ["Jared Jones"], "playerId": ["10"]}),
+        "High-A": pl.DataFrame(
+            {"POSITION PLAYERS": ["Jared Jones"], "playerId": ["sa20"]}
+        ),
+    }
+
+    result = normalize_fangraphs_depth_chart(
+        sheets, team_name="Pirates", season=2026, source_snapshot_id="fg:test"
+    )
+
+    assert result.height == 2
+    assert set(result.get_column("fangraphs_id").to_list()) == {"10", "sa20"}
