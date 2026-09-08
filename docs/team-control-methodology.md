@@ -62,7 +62,8 @@ fourth-option rulings and Super Two cutoff ties remain bounded review cases.
 The later payroll join owns guaranteed salaries, contract years, club/player/mutual
 options, opt-outs, buyouts, retained/deferred money, incentives and no-trade clauses.
 Those terms may override the statutory path but never rewrite the underlying CBA
-calculation.
+calculation. `contract_overlay.py` accepts a payroll row only after a stable ID match;
+name-only and unresolved identities stay in a separate review table.
 
 ## Phase-one completion gates
 
@@ -80,7 +81,11 @@ calculation.
 The 2026 Padres payroll sample successfully normalized 38 player records, 146 annual
 terms, 14 explicit option/opt-out clauses and 14 other payments. All annual values and
 all recognized clause language parsed. Service-time values in this workbook remain
-validation references only; they do not replace the StatsAPI calculation.
+validation references only; they do not replace the forward StatsAPI calculation. Of
+the 38 player contracts, 34 attached automatically through stable IDs. Four remained
+in the identity review table: two name-only newer-player matches and two stable IDs
+outside the current official candidate pool because the workbook lists them as no
+longer on the 40-man roster.
 
 ## Depth-chart validation sample
 
