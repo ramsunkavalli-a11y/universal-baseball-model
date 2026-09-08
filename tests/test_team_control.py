@@ -137,6 +137,7 @@ def test_summary_calculates_service_options_rule5_and_eligibility() -> None:
     assert summary["cba_eligibility_class"] == "super_two_eligible"
     assert summary["option_years_allowed"] == 4
     assert summary["options_remaining"] == 1
+    assert "fourth_option_requires_milb_calendar_validation" in summary["review_reasons"]
     assert summary["rule5_eligibility_year"] == 2022
     assert summary["rule5_status"] == "eligible_next_rule5_draft"
 

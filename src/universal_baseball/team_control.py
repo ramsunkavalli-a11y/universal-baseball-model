@@ -379,6 +379,8 @@ def build_team_control_summary(
             reasons.append("missing_rule5_inputs")
         if option_years > allowed_options:
             reasons.append("option_year_count_conflict")
+        if allowed_options == 4 and option_years == 3:
+            reasons.append("fourth_option_requires_milb_calendar_validation")
         if eligibility == "super_two_candidate":
             reasons.append("super_two_pool_incomplete")
         if cutoff_tie and player_id in super_two_ids and service_days == cutoff:

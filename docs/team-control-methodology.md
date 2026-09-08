@@ -34,6 +34,11 @@ The output includes service in `Y.DDD` form, used/allowed/remaining option years
 professional seasons, Rule 5 year/status, statutory eligibility, the Super Two cutoff,
 confidence and explicit review reasons.
 
+Phase one uses official MLB season windows consistently for day arithmetic. A player
+who appears to qualify for a fourth option is always flagged for a final check against
+the applicable minor-league calendar. That small edge group is deferred rather than
+claiming false precision from a single league calendar.
+
 ## Source boundary
 
 StatsAPI person `rosterEntries` are fetched in bounded batches and interpreted by
@@ -66,6 +71,24 @@ calculation.
 3. Run the service/Super Two calculation league-wide before assigning a cutoff.
 4. Import the 30 team payroll files and overlay only unique contract terms.
 5. Publish coverage, ambiguity and exception counts beside every result.
+
+## Payroll sample result
+
+The 2026 Padres payroll sample successfully normalized 38 player records, 146 annual
+terms, 14 explicit option/opt-out clauses and 14 other payments. All annual values and
+all recognized clause language parsed. Service-time values in this workbook remain
+validation references only; they do not replace the StatsAPI calculation.
+
+## Depth-chart validation sample
+
+The 2026 Padres depth-chart sample normalized 187 players: 186 FanGraphs IDs, 62
+service-time references, 37 option counts, 33 Rule 5-eligible labels and 93 future
+Rule 5 dates, with no unparsed control values. The pinned Chadwick snapshot directly
+linked 54 players to MLBAM IDs. For validation only, unique accent-insensitive exact
+name matching linked 182 of 187 depth-chart rows to the 295 StatsAPI `fullRoster`
+candidates returned on 2026-09-08. The five unmatched rows form a small transaction
+and identity exception queue. Name matching is never promoted to canonical identity or
+ownership evidence.
 
 ## References
 
