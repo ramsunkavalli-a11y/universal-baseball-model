@@ -35,6 +35,7 @@ def test_baseline_requires_stable_identity_before_acceptance() -> None:
     matches = pl.DataFrame(
         {
             "fangraphs_id": ["10", "20"],
+            "reference_player_name": ["Stable", "Name Only"],
             "player_id": [101, 202],
             "match_status": ["matched_stable_id", "matched_validation_only"],
         }
@@ -63,6 +64,7 @@ def test_forward_roll_adds_service_but_only_later_season_option_years() -> None:
     matches = pl.DataFrame(
         {
             "fangraphs_id": ["10"],
+            "reference_player_name": ["Stable"],
             "player_id": [101],
             "match_status": ["matched_stable_id"],
         }
@@ -113,3 +115,32 @@ def test_forward_roll_adds_service_but_only_later_season_option_years() -> None:
     assert result["service_time"] == "2.099"
     assert result["new_option_years"] == 1
     assert result["options_remaining"] == 1
+
+
+def test_blank_fangraphs_ids_join_by_player_name_without_multiplying_rows() -> None:
+    references = pl.DataFrame(
+        {
+            "fangraphs_id": ["", ""],
+            "player_name": ["First Prospect", "Second Prospect"],
+            "reference_service_time": ["", ""],
+            "reference_options_remaining": [None, None],
+            "reference_rule5_status": ["rule5_not_yet_eligible"] * 2,
+            "reference_rule5_year": [2028, 2029],
+            "source_snapshot_id": ["fg:test"] * 2,
+        }
+    )
+    matches = pl.DataFrame(
+        {
+            "fangraphs_id": ["", ""],
+            "reference_player_name": ["First Prospect", "Second Prospect"],
+            "player_id": [101, 202],
+            "match_status": ["matched_validation_only"] * 2,
+        }
+    )
+
+    result = build_control_baselines(
+        references, matches, baseline_as_of_date=date(2026, 9, 8)
+    )
+
+    assert result.height == 2
+    assert set(result.get_column("player_id").to_list()) == {101, 202}

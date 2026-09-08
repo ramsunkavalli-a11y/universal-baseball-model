@@ -75,14 +75,22 @@ def build_control_baselines(
         "reference_rule5_year",
         "source_snapshot_id",
     }
-    match_fields = {"fangraphs_id", "player_id", "match_status"}
+    match_fields = {
+        "fangraphs_id",
+        "reference_player_name",
+        "player_id",
+        "match_status",
+    }
     if reference_fields - set(references.columns):
         raise ValueError("control references missing baseline fields")
     if match_fields - set(identity_matches.columns):
         raise ValueError("identity matches missing baseline fields")
     joined = references.join(
-        identity_matches.select("fangraphs_id", "player_id", "match_status"),
-        on="fangraphs_id",
+        identity_matches.select(
+            "fangraphs_id", "reference_player_name", "player_id", "match_status"
+        ),
+        left_on=["fangraphs_id", "player_name"],
+        right_on=["fangraphs_id", "reference_player_name"],
         how="left",
     )
     rows: list[dict[str, object]] = []

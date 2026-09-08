@@ -69,9 +69,8 @@ name-only and unresolved identities stay in a separate review table.
 
 1. Materialize a full MLB organization from `fullRoster`, people roster entries and
    transactions using saved source captures.
-2. Compare calculated service, options and Rule 5 results with the Padres FanGraphs
-   depth-chart sample; use differences to improve general rules or create narrow
-   exceptions.
+2. Compare calculated service, options and Rule 5 results with at least two FanGraphs
+   depth-chart samples; use one team as the working sample and another as a holdout.
 3. Run the service/Super Two calculation league-wide before assigning a cutoff.
 4. Import the 30 team payroll files and overlay only unique contract terms.
 5. Publish coverage, ambiguity and exception counts beside every result.
@@ -109,6 +108,29 @@ baseline is staged by `control_baseline.py`; stable ID links are accepted, exact
 validation links require review, and unresolved identities remain unavailable. The
 forward roll starts the day after the snapshot, caps service by official season, and
 does not charge an option year twice when a midseason baseline already reflects it.
+
+### Two-team holdout result
+
+The 2026 Giants depth chart was added as a second-team holdout on 2026-09-08. Exact
+normalized-name links were used only to measure the feed and never as production
+identity. StatsAPI candidates covered 178 of 187 Padres rows (95.2%) and 185 of 188
+Giants rows (98.4%).
+
+The holdout confirmed that accumulated service and option history need a dated
+external baseline. Raw from-zero service matched only 3 of 59 comparable Padres rows
+and 1 of 61 Giants rows; median absolute error was 104 and 121 days, respectively.
+Raw option counts matched 24 of 35 Padres rows and 30 of 51 Giants rows. These fields
+must not be initialized from missing StatsAPI history.
+
+Rule 5 is materially different and is suitable for the scalable CBA calculation path.
+For rows with both values available, the calculated eligibility year matched 86 of 90
+Padres references and 94 of 96 Giants references. Current Rule 5 eligibility matched
+27 of 30 Padres labels and all 27 Giants labels. Phase one therefore uses FanGraphs
+for the dated service/options baseline, StatsAPI for forward service/options changes
+and the Rule 5 calculation, and a small transaction/identity queue for exceptions.
+The Giants run also exposed and fixed a blank-FanGraphs-ID join defect: baseline rows
+are now joined on both FanGraphs ID and reference player name, preventing blank IDs
+from multiplying prospect rows.
 
 ## References
 
