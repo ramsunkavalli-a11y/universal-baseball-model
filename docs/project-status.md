@@ -25,7 +25,8 @@ promote a model. Protected main and the v1 release remain unchanged until integr
 - The player-rights universe contract now preserves every required player, represents
   missing evidence as `unknown / prior_only`, rejects future observations and fails
   closed on ownership conflicts. Certified dated 40-man membership is connected as
-  one narrow evidence family.
+  one narrow evidence family. A separate candidate inventory unions broad discovery
+  sources with provenance while preventing candidate presence from asserting an owner.
 - The official `fullRoster` source was tested as a broader affiliation source and
   rejected for direct rights use after 16 cross-organization conflicts appeared in a
   2024-10-15 snapshot. This prevents a superficially broad but invalid denominator.
@@ -92,7 +93,7 @@ artifacts; hashes bind the inputs. They reject overwriting an inspected candidat
 run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
-Current verification: Ruff passes across `src`, `scripts` and `tests`; 1,076 tests
+Current verification: Ruff passes across `src`, `scripts` and `tests`; 1,079 tests
 pass. Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

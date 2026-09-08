@@ -108,10 +108,11 @@ justify worse calibration or coverage for sparse players.
 
 ## Immediate execution order
 
-The player-rights universe contract, its certified 40-man adapter, the MLB career-
-outcome inventory and the first pitcher-component baseline are implemented. Continue
-Step 1 by adding dated reserve-list/affiliation, transaction and free-agent evidence;
-this unlocks honest non-arrival and attrition labels. In parallel, connect the recovered
-richer opportunity pipeline and declare universal fallbacks for inactive/no-history
-players. The first integrated model should be deliberately simple; granular feature
-research begins only after the complete Phase 1 path exists.
+The player-candidate inventory, rights-universe contract, certified 40-man adapter,
+MLB career-outcome inventory and first pitcher-component baseline are implemented.
+Continue Step 1 by reconciling candidate discovery against dated transaction,
+reserve-list/affiliation and free-agent evidence; this unlocks honest non-arrival and
+attrition labels. In parallel, connect the recovered richer opportunity pipeline and
+declare universal fallbacks for inactive/no-history players. The first integrated model
+should be deliberately simple; granular feature research begins only after the complete
+Phase 1 path exists.

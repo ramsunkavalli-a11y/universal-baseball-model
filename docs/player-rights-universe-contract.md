@@ -25,6 +25,12 @@ The builder begins from a separately supplied required-player denominator. Right
 evidence cannot silently add or remove players. Players without rights evidence remain
 as `unknown / prior_only / missing_rights_evidence` records.
 
+Candidate discovery is a separate audited layer. It unions dated sources into one row
+per player while retaining all candidate scopes and snapshot IDs, then projects the
+required denominator. Candidate presence never asserts an owner. This allows a broad
+but ownership-ambiguous source to prevent omission without converting ambiguity into
+false organization control.
+
 ## Conflict and chronology rules
 
 - Evidence after the requested cutoff is rejected.

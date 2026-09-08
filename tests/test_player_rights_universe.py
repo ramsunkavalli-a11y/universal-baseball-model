@@ -6,11 +6,15 @@ import polars as pl
 import pytest
 
 from universal_baseball.player_rights_universe import (
+    PLAYER_CANDIDATE_INVENTORY_SCHEMA,
+    PLAYER_CANDIDATE_SCHEMA,
     PLAYER_RIGHTS_UNIVERSE_SCHEMA,
     REQUIRED_PLAYER_SCHEMA,
     RIGHTS_EVIDENCE_SCHEMA,
+    build_player_candidate_inventory,
     build_player_rights_universe,
     project_40man_membership_to_rights_evidence,
+    required_players_from_candidate_inventory,
     validate_player_rights_universe,
 )
 from universal_baseball.playing_time_roster_source import FORTY_MAN_MEMBERSHIP_SCHEMA
@@ -43,6 +47,28 @@ def _controlled(player_id: int, *, snapshot: str = "snapshot-a") -> dict[str, ob
         "roster_scope": "reserve_list",
         "source_snapshot_id": snapshot,
         "observed_at_date": CUTOFF,
+    }
+
+
+def _candidates(rows: list[dict[str, object]]) -> pl.DataFrame:
+    return pl.DataFrame(rows, schema=PLAYER_CANDIDATE_SCHEMA)
+
+
+def _candidate(
+    player_id: int,
+    *,
+    source: str,
+    scope: str = "affiliated_full_roster",
+    observed: date = CUTOFF,
+    name: str | None = None,
+) -> dict[str, object]:
+    return {
+        "as_of_date": CUTOFF,
+        "player_id": player_id,
+        "player_name": name,
+        "candidate_scope": scope,
+        "source_snapshot_id": source,
+        "observed_at_date": observed,
     }
 
 
@@ -217,3 +243,49 @@ def test_40man_adapter_rejects_negative_membership_rows() -> None:
             membership,
             expected_as_of_date=CUTOFF,
         )
+
+
+def test_candidate_inventory_unions_sources_without_asserting_rights() -> None:
+    inventory = build_player_candidate_inventory(
+        _candidates(
+            [
+                _candidate(1, source="b", scope="transaction", name="Old Name"),
+                _candidate(1, source="a", scope="mlb_40man", name="Current Name"),
+                _candidate(2, source="c", name=None),
+            ]
+        ),
+        as_of_date=CUTOFF,
+    )
+    assert inventory.schema == PLAYER_CANDIDATE_INVENTORY_SCHEMA
+    assert inventory.get_column("player_id").to_list() == [1, 2]
+    row = inventory.row(0, named=True)
+    assert row["candidate_scopes"] == "mlb_40man,transaction"
+    assert row["source_snapshot_ids"] == "a,b"
+    assert row["player_name"] == "Current Name"
+    required = required_players_from_candidate_inventory(inventory)
+    assert required.get_column("player_id").to_list() == [1, 2]
+
+
+def test_candidate_inventory_rejects_future_observation() -> None:
+    with pytest.raises(ValueError, match="future observations"):
+        build_player_candidate_inventory(
+            _candidates(
+                [
+                    _candidate(
+                        1,
+                        source="future",
+                        observed=date(2025, 3, 21),
+                    )
+                ]
+            ),
+            as_of_date=CUTOFF,
+        )
+
+
+def test_empty_candidate_inventory_preserves_declared_schema() -> None:
+    result = build_player_candidate_inventory(
+        pl.DataFrame(schema=PLAYER_CANDIDATE_SCHEMA),
+        as_of_date=CUTOFF,
+    )
+    assert result.is_empty()
+    assert result.schema == PLAYER_CANDIDATE_INVENTORY_SCHEMA

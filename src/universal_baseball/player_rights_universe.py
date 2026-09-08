@@ -40,6 +40,24 @@ RIGHTS_EVIDENCE_SCHEMA: dict[str, pl.DataType] = {
     "observed_at_date": pl.Date,
 }
 
+PLAYER_CANDIDATE_SCHEMA: dict[str, pl.DataType] = {
+    "as_of_date": pl.Date,
+    "player_id": pl.Int64,
+    "player_name": pl.String,
+    "candidate_scope": pl.String,
+    "source_snapshot_id": pl.String,
+    "observed_at_date": pl.Date,
+}
+
+PLAYER_CANDIDATE_INVENTORY_SCHEMA: dict[str, pl.DataType] = {
+    "as_of_date": pl.Date,
+    "player_id": pl.Int64,
+    "player_name": pl.String,
+    "candidate_scopes": pl.String,
+    "source_snapshot_ids": pl.String,
+    "last_observed_date": pl.Date,
+}
+
 REQUIRED_PLAYER_SCHEMA: dict[str, pl.DataType] = {
     "player_id": pl.Int64,
     "player_name": pl.String,
@@ -68,6 +86,84 @@ _SCOPE_PRIORITY = {
     "free_agent": 6,
     "unknown": 7,
 }
+
+
+def build_player_candidate_inventory(
+    candidates: pl.DataFrame,
+    *,
+    as_of_date: date,
+) -> pl.DataFrame:
+    """Union dated candidate sources without asserting ownership.
+
+    Candidate discovery and rights evidence are intentionally separate. A broad
+    source may safely keep a player in the denominator even when it cannot name
+    a unique controlling organization. All contributing source IDs and scopes
+    remain visible on the consolidated row.
+    """
+
+    result = _conform(candidates, PLAYER_CANDIDATE_SCHEMA, "player_candidates")
+    required = [
+        "as_of_date",
+        "player_id",
+        "candidate_scope",
+        "source_snapshot_id",
+        "observed_at_date",
+    ]
+    if result.filter(pl.any_horizontal([pl.col(c).is_null() for c in required])).height:
+        raise ValueError("player_candidates has null required values")
+    if result.filter(pl.col("as_of_date") != pl.lit(as_of_date)).height:
+        raise ValueError("player_candidates contains an unexpected as_of_date")
+    if result.filter(pl.col("observed_at_date") > pl.col("as_of_date")).height:
+        raise ValueError("player_candidates contains future observations")
+    if result.filter(
+        (pl.col("player_id") <= 0)
+        | (pl.col("candidate_scope").str.strip_chars() == "")
+        | (pl.col("source_snapshot_id").str.strip_chars() == "")
+    ).height:
+        raise ValueError("player_candidates has invalid identity or source metadata")
+    if result.is_empty():
+        return pl.DataFrame(schema=PLAYER_CANDIDATE_INVENTORY_SCHEMA)
+
+    inventory = (
+        result.sort(
+            ["player_id", "observed_at_date", "source_snapshot_id"],
+            descending=[False, True, False],
+        )
+        .group_by("player_id", maintain_order=True)
+        .agg(
+            pl.col("player_name")
+            .drop_nulls()
+            .filter(pl.col("player_name").str.strip_chars() != "")
+            .first()
+            .fill_null("")
+            .alias("player_name"),
+            pl.col("candidate_scope").unique().sort().str.join(",").alias("candidate_scopes"),
+            pl.col("source_snapshot_id")
+            .unique()
+            .sort()
+            .str.join(",")
+            .alias("source_snapshot_ids"),
+            pl.col("observed_at_date").max().alias("last_observed_date"),
+            pl.lit(as_of_date).cast(pl.Date).alias("as_of_date"),
+        )
+        .select(list(PLAYER_CANDIDATE_INVENTORY_SCHEMA))
+        .cast(PLAYER_CANDIDATE_INVENTORY_SCHEMA, strict=True)
+        .sort("player_id")
+    )
+    return inventory
+
+
+def required_players_from_candidate_inventory(inventory: pl.DataFrame) -> pl.DataFrame:
+    """Project the frozen rights-universe denominator from its audited inventory."""
+
+    result = _conform(
+        inventory,
+        PLAYER_CANDIDATE_INVENTORY_SCHEMA,
+        "player_candidate_inventory",
+    )
+    if result.group_by(["as_of_date", "player_id"]).len().filter(pl.col("len") > 1).height:
+        raise ValueError("player_candidate_inventory violates as_of_date + player_id grain")
+    return _validate_required_players(result.select(list(REQUIRED_PLAYER_SCHEMA)))
 
 
 def project_40man_membership_to_rights_evidence(
