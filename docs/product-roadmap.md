@@ -121,3 +121,13 @@ The transaction source is projected into a chronology-safe ledger, but transacti
 codes do not yet drive rights-state changes. The next rights gate must authorize only
 ownership-changing events, resolve minor-league team IDs to dated parent organizations,
 and validate replayed owners against conflict-free 40-man snapshots.
+
+The CBA arithmetic boundary is now implemented in `team_control.py`: dated StatsAPI
+roster-state intervals produce service time, option-year usage/fourth-option
+eligibility, Rule 5 timing, arbitration/Super Two/free-agency eligibility and explicit
+confidence flags. `roster_entry_source.py` creates season-opening states from batched
+official person history, and `control_events.py` materializes intervals with a narrow,
+fail-closed transaction grammar; unclear evidence goes to review. Next, validate one
+full organization against the Padres depth-chart sample, run the eligibility pool
+league-wide, and join external contract terms without replacing the statutory
+calculation.

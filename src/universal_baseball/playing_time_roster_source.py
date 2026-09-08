@@ -348,6 +348,15 @@ def fetch_team_40man_membership_as_of(
         roster_type="40Man",
         session=session,
     )
+    return (
+        project_team_40man_membership_payload(
+            payload,
+            team_id=int(team_id),
+            season=int(season),
+            as_of_date=as_of_date,
+        ),
+        capture,
+    )
 
 
 def fetch_team_full_roster_candidates_as_of(
@@ -366,15 +375,6 @@ def fetch_team_full_roster_candidates_as_of(
     )
     return (
         project_team_full_roster_candidates_payload(
-            payload,
-            team_id=int(team_id),
-            season=int(season),
-            as_of_date=as_of_date,
-        ),
-        capture,
-    )
-    return (
-        project_team_40man_membership_payload(
             payload,
             team_id=int(team_id),
             season=int(season),

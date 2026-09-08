@@ -4,7 +4,10 @@ from datetime import date
 
 import pytest
 
+import universal_baseball.playing_time_roster_source as roster_source
 from universal_baseball.playing_time_roster_source import (
+    fetch_team_40man_membership_as_of,
+    fetch_team_full_roster_candidates_as_of,
     project_team_40man_membership_payload,
     project_team_full_roster_candidates_payload,
     project_team_roster_payload,
@@ -155,3 +158,18 @@ def test_full_roster_projector_rejects_duplicate_identity_conflict() -> None:
             season=2024,
             as_of_date=date(2024, 10, 15),
         )
+
+
+def test_roster_fetch_helpers_use_the_matching_projector(monkeypatch: pytest.MonkeyPatch) -> None:
+    def fake_fetch(*args: object, **kwargs: object) -> tuple[dict[str, object], dict[str, object]]:
+        return _payload(), {"requested_url": "test"}
+
+    monkeypatch.setattr(roster_source, "_fetch_roster_payload", fake_fetch)
+    forty_man, _ = fetch_team_40man_membership_as_of(
+        137, season=2024, as_of_date=date(2024, 10, 15)
+    )
+    full_roster, _ = fetch_team_full_roster_candidates_as_of(
+        137, season=2024, as_of_date=date(2024, 10, 15)
+    )
+    assert "on_40man" in forty_man.columns
+    assert "candidate_organization_id" in full_roster.columns
