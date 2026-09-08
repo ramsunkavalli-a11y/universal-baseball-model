@@ -124,6 +124,54 @@ def mlbam_crosswalk(people: pl.DataFrame) -> pl.DataFrame:
     return people.filter(pl.col("key_mlbam").is_not_null())
 
 
+FANGRAPHS_MLBAM_CROSSWALK_SCHEMA: dict[str, pl.DataType] = {
+    "fangraphs_id": pl.String,
+    "player_id": pl.Int64,
+    "crosswalk_status": pl.String,
+}
+
+
+def build_fangraphs_mlbam_crosswalk(
+    people: pl.DataFrame, fangraphs_ids: Iterable[str]
+) -> pl.DataFrame:
+    """Resolve FanGraphs IDs to MLBAM IDs without falling back to player names."""
+
+    required = {"key_fangraphs", "key_mlbam"}
+    missing = sorted(required - set(people.columns))
+    if missing:
+        raise ValueError(f"Chadwick people frame missing crosswalk fields: {missing}")
+    requested = sorted({str(value).strip() for value in fangraphs_ids if str(value).strip()})
+    rows: list[dict[str, object]] = []
+    for fangraphs_id in requested:
+        matches = people.filter(pl.col("key_fangraphs") == fangraphs_id).select(
+            "key_mlbam"
+        )
+        mlbam_ids = sorted(
+            {int(value) for value in matches.get_column("key_mlbam").drop_nulls().to_list()}
+        )
+        if len(mlbam_ids) == 1:
+            player_id = mlbam_ids[0]
+            status = "matched_unique"
+        elif not mlbam_ids:
+            player_id = None
+            status = "missing_mlbam"
+        else:
+            player_id = None
+            status = "ambiguous_mlbam"
+        rows.append(
+            {
+                "fangraphs_id": fangraphs_id,
+                "player_id": player_id,
+                "crosswalk_status": status,
+            }
+        )
+    return (
+        pl.DataFrame(rows, schema=FANGRAPHS_MLBAM_CROSSWALK_SCHEMA)
+        if rows
+        else pl.DataFrame(schema=FANGRAPHS_MLBAM_CROSSWALK_SCHEMA)
+    ).sort("fangraphs_id")
+
+
 def build_mlbam_age_as_of(
     people: pl.DataFrame,
     mlbam_ids: Iterable[int],

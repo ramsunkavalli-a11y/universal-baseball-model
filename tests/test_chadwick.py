@@ -12,6 +12,7 @@ import pytest
 from universal_baseball.chadwick import (
     CROSSWALK_COLUMNS,
     build_mlbam_age_as_of,
+    build_fangraphs_mlbam_crosswalk,
     profile_mlbam_coverage,
     read_chadwick_people_archive,
 )
@@ -186,3 +187,21 @@ def test_age_as_of_fails_closed_on_invalid_complete_or_future_birth_date() -> No
     )
     with pytest.raises(ValueError, match="birth date is after as-of date"):
         build_mlbam_age_as_of(future, [102], as_of_date=date(2021, 8, 1))
+
+
+def test_fangraphs_crosswalk_reports_unique_missing_and_ambiguous_ids() -> None:
+    people = pl.DataFrame(
+        {
+            "key_fangraphs": ["10", "20", "20", "30"],
+            "key_mlbam": [101, 201, 202, None],
+        }
+    )
+    result = build_fangraphs_mlbam_crosswalk(people, ["10", "20", "30", "40"])
+    assert result.filter(pl.col("fangraphs_id") == "10").row(0, named=True) == {
+        "fangraphs_id": "10",
+        "player_id": 101,
+        "crosswalk_status": "matched_unique",
+    }
+    assert result.filter(pl.col("fangraphs_id") == "20").item(0, "crosswalk_status") == "ambiguous_mlbam"
+    assert result.filter(pl.col("fangraphs_id") == "30").item(0, "crosswalk_status") == "missing_mlbam"
+    assert result.filter(pl.col("fangraphs_id") == "40").item(0, "crosswalk_status") == "missing_mlbam"
