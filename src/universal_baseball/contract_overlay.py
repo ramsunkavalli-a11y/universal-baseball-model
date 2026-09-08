@@ -10,6 +10,8 @@ from universal_baseball.contract_terms import PayrollNormalization
 
 
 CONTRACT_PLAYER_OVERLAY_SCHEMA: dict[str, pl.DataType] = {
+    "season": pl.Int64,
+    "team_name": pl.String,
     "player_id": pl.Int64,
     "fangraphs_id": pl.String,
     "player_name": pl.String,
@@ -22,6 +24,8 @@ CONTRACT_PLAYER_OVERLAY_SCHEMA: dict[str, pl.DataType] = {
 }
 
 CONTRACT_YEAR_OVERLAY_SCHEMA: dict[str, pl.DataType] = {
+    "season": pl.Int64,
+    "team_name": pl.String,
     "player_id": pl.Int64,
     "fangraphs_id": pl.String,
     "player_name": pl.String,
@@ -55,7 +59,11 @@ def build_contract_overlay(
         pl.col("match_status").fill_null("unmatched").alias("identity_match_status")
     )
     players = players.with_columns(
-        pl.when(pl.col("identity_match_status") == "matched_stable_id")
+        pl.when(
+            pl.col("identity_match_status").is_in(
+                ["matched_stable_id", "stable_id_outside_statsapi_candidates"]
+            )
+        )
         .then(pl.lit("accepted_contract_overlay"))
         .otherwise(pl.lit("review_identity_before_overlay"))
         .alias("overlay_status")
@@ -83,6 +91,8 @@ def build_contract_overlay(
         year = int(term["payroll_year"])
         year_rows.append(
             {
+                "season": int(term["season"]),
+                "team_name": str(term["team_name"]),
                 "player_id": player["player_id"],
                 "fangraphs_id": str(term["fangraphs_id"]),
                 "player_name": str(term["player_name"]),

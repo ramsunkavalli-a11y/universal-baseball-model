@@ -15,6 +15,11 @@ It also supplies contract terms and bounded exception checks. A missing or ambig
 history receives a review flag; it is not silently treated as zero service or unused
 options.
 
+FanGraphs is the primary external baseline, not an infallible authority. Its manually
+maintained values retain source provenance. A material disagreement with CBA arithmetic,
+StatsAPI transactions or another credible source remains visible and enters review;
+the pipeline does not silently replace either side.
+
 ## Implemented rules
 
 `team_control.py` accepts inclusive, dated roster-state intervals and official season
@@ -78,13 +83,24 @@ name-only and unresolved identities stay in a separate review table.
 ## Payroll sample result
 
 The 2026 Padres payroll sample successfully normalized 38 player records, 146 annual
-terms, 14 explicit option/opt-out clauses and 14 other payments. All annual values and
-all recognized clause language parsed. Service-time values in this workbook remain
-validation references only; they do not replace the forward StatsAPI calculation. Of
-the 38 player contracts, 34 attached automatically through stable IDs. Four remained
-in the identity review table: two name-only newer-player matches and two stable IDs
-outside the current official candidate pool because the workbook lists them as no
-longer on the 40-man roster.
+terms, 14 explicit option/opt-out clauses and 14 other payments. Service-time values
+in this workbook remain baseline evidence; StatsAPI owns changes after the dated
+snapshot. Thirty-six contracts attach through stable IDs. Two newer-player exact-name
+matches remain in identity review. Stable IDs outside the current official candidate
+pool now attach as payroll liabilities without implying current roster control.
+
+### League-wide payroll inventory
+
+All 30 FanGraphs 2026 payroll workbooks normalized on 2026-09-08: 915 player records,
+3,720 annual terms, 180 structured clauses and 417 other payments. Annual term labels
+and recognized clause language have no remaining parse reviews. The clause layer now
+preserves vesting options, fallback club options and already-declined opt-outs; a
+vesting option remains contingent until its trigger is independently confirmed.
+
+Stable FanGraphs-to-MLBAM links attach 870 of 915 player records (95.1%), including 68
+payroll liabilities for players outside the current StatsAPI organization candidates.
+The remaining 45 are unique exact-name validations and stay in the identity review
+queue. No payroll row is unmatched or ambiguous.
 
 ## Depth-chart validation sample
 

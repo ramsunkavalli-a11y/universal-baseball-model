@@ -70,3 +70,53 @@ def test_other_payments_keep_contingency_and_negative_trade_credit() -> None:
     assert result.other_payments.get_column("amount_dollars").to_list() == [500_000, -2_000_000]
     assert result.other_payments.get_column("payment_type").to_list() == ["buyout", "trade_credit"]
     assert result.other_payments.get_column("is_contingent").to_list() == [True, False]
+
+
+def test_empty_no_longer_on_40man_section_may_be_omitted() -> None:
+    sheets = _sheets()
+    del sheets["No Longer On 40-Man Roster"]
+
+    result = normalize_fangraphs_payroll(
+        sheets, team_name="Tigers", season=2026, source_snapshot_id="fg:tigers:2026"
+    )
+
+    assert result.players.height == 3
+    assert "No Longer On 40-Man Roster" not in set(
+        result.players.get_column("payroll_section").to_list()
+    )
+
+
+def test_vesting_fallback_and_declined_opt_out_are_structured() -> None:
+    sheets = _sheets()
+    sheets["Guaranteed"] = pl.concat(
+        [
+            _player_sheet(
+                "Vesting Player",
+                "50",
+                "3 yr, $37M (2026-28), 2029 vesting option; $9M club option if option doesn't vest",
+            ),
+            _player_sheet(
+                "Declined Player",
+                "60",
+                "3 yr, $49.5M (2025-27; 2026 opt out declined)",
+            ),
+        ]
+    )
+
+    result = normalize_fangraphs_payroll(
+        sheets, team_name="Test", season=2026, source_snapshot_id="fg:test:2026"
+    )
+
+    by_player = {
+        row["player_name"]: row["clause_type"]
+        for row in result.clauses.iter_rows(named=True)
+    }
+    assert result.players.filter(
+        pl.col("clause_parse_status") == "review_unparsed_clause"
+    ).is_empty()
+    assert set(
+        result.clauses.filter(pl.col("player_name") == "Vesting Player").get_column(
+            "clause_type"
+        )
+    ) == {"vesting_option", "fallback_club_option"}
+    assert by_player["Declined Player"] == "declined_opt_out"

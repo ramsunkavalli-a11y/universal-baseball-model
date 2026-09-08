@@ -33,26 +33,30 @@ def _payroll():
     )
 
 
-def test_contract_overlay_accepts_only_stable_identity_and_keeps_clauses() -> None:
+def test_contract_overlay_accepts_stable_identity_and_keeps_clauses() -> None:
     matches = pl.DataFrame(
         {
             "fangraphs_id": ["10", "20", "30", "40"],
-            "player_id": [101, 202, None, None],
+            "player_id": [101, 202, None, 404],
             "match_status": [
                 "matched_stable_id",
                 "matched_validation_only",
                 "unmatched",
-                "unmatched",
+                "stable_id_outside_statsapi_candidates",
             ],
         }
     )
     result = build_contract_overlay(_payroll(), matches)
     stable = result.players.filter(pl.col("fangraphs_id") == "10").row(0, named=True)
     review = result.players.filter(pl.col("fangraphs_id") == "20").row(0, named=True)
+    outside = result.players.filter(pl.col("fangraphs_id") == "40").row(0, named=True)
     stable_2027 = result.year_terms.filter(
         (pl.col("fangraphs_id") == "10") & (pl.col("payroll_year") == 2027)
     ).row(0, named=True)
     assert stable["overlay_status"] == "accepted_contract_overlay"
+    assert stable["team_name"] == "Padres"
     assert review["overlay_status"] == "review_identity_before_overlay"
+    assert outside["overlay_status"] == "accepted_contract_overlay"
     assert stable_2027["clause_types"] == "club_option"
-    assert result.unresolved_players.height == 3
+    assert stable_2027["team_name"] == "Padres"
+    assert result.unresolved_players.height == 2

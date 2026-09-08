@@ -136,6 +136,11 @@ calculated year matched 180 of 186 comparable rows across the two clubs.
 The full 30-team FanGraphs snapshot now imports cleanly: 5,437 player rows with zero
 unparsed service/options/Rule 5 control values. Legitimate two-way-player duplicates
 are combined by stable FanGraphs ID while conflicting duplicates still fail closed.
+The 30 payroll files also import cleanly: 915 player rows, 3,720 annual terms, 180
+clauses and 417 other payments. Stable IDs attach 870 players; 45 exact-name matches
+remain for bounded identity review. FanGraphs is the primary manual baseline, but
+source disagreements stay visible and require corroboration rather than automatic
+override.
 
 Immediate priorities are: apply the verified service/options baseline-plus-forward
 roll; calculate Rule 5 from StatsAPI; ingest the uploaded payroll terms through stable

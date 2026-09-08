@@ -18,6 +18,9 @@ PLAYER_SECTIONS = frozenset(
         "No Longer On 40-Man Roster",
     }
 )
+REQUIRED_PLAYER_SECTIONS = frozenset(
+    {"Guaranteed", "Eligible For Arb", "Not Yet Eligible For Arb"}
+)
 
 PAYROLL_PLAYER_SCHEMA: dict[str, pl.DataType] = {
     "season": pl.Int64,
@@ -121,6 +124,13 @@ OPTION_PATTERN = re.compile(
     re.IGNORECASE,
 )
 OPT_OUT_YEAR_PATTERN = re.compile(r"(?:can|may) opt out after (?P<year>20\d{2})", re.IGNORECASE)
+VESTING_OPTION_PATTERN = re.compile(
+    r"(?P<start>20\d{2})(?:-(?P<end>\d{2}|20\d{2}))?\s+vesting options?",
+    re.IGNORECASE,
+)
+DECLINED_OPT_OUT_PATTERN = re.compile(
+    r"(?P<year>20\d{2})\s+opt out declined", re.IGNORECASE
+)
 
 
 def _full_year(start: int, end_text: str | None) -> int:
@@ -166,6 +176,48 @@ def _clauses(
                 "source_snapshot_id": source_snapshot_id,
             }
         )
+    vesting_ranges: list[tuple[int, int]] = []
+    for match in VESTING_OPTION_PATTERN.finditer(contract_text):
+        start = int(match.group("start"))
+        end = _full_year(start, match.group("end"))
+        vesting_ranges.append((start, end))
+        rows.append(
+            {
+                "fangraphs_id": fangraphs_id,
+                "player_name": player_name,
+                "clause_type": "vesting_option",
+                "start_year": start,
+                "end_year": end,
+                "raw_contract_text": contract_text,
+                "source_snapshot_id": source_snapshot_id,
+            }
+        )
+    if "club option if option doesn't vest" in lowered and len(vesting_ranges) == 1:
+        start, end = vesting_ranges[0]
+        rows.append(
+            {
+                "fangraphs_id": fangraphs_id,
+                "player_name": player_name,
+                "clause_type": "fallback_club_option",
+                "start_year": start,
+                "end_year": end,
+                "raw_contract_text": contract_text,
+                "source_snapshot_id": source_snapshot_id,
+            }
+        )
+    for match in DECLINED_OPT_OUT_PATTERN.finditer(contract_text):
+        year = int(match.group("year"))
+        rows.append(
+            {
+                "fangraphs_id": fangraphs_id,
+                "player_name": player_name,
+                "clause_type": "declined_opt_out",
+                "start_year": year,
+                "end_year": year,
+                "raw_contract_text": contract_text,
+                "source_snapshot_id": source_snapshot_id,
+            }
+        )
     if "opt out after each year" in lowered:
         rows.append(
             {
@@ -200,13 +252,13 @@ def normalize_fangraphs_payroll(
 
     if not team_name.strip() or not source_snapshot_id.strip():
         raise ValueError("team_name and source_snapshot_id must be nonblank")
-    missing_sections = sorted(PLAYER_SECTIONS - set(sheets))
+    missing_sections = sorted(REQUIRED_PLAYER_SECTIONS - set(sheets))
     if missing_sections:
         raise ValueError(f"payroll workbook missing player sections: {missing_sections}")
     player_rows: list[dict[str, object]] = []
     year_rows: list[dict[str, object]] = []
     clause_rows: list[dict[str, object]] = []
-    for section in sorted(PLAYER_SECTIONS):
+    for section in sorted(PLAYER_SECTIONS & set(sheets)):
         frame = sheets[section].rename({column: str(column) for column in sheets[section].columns})
         required = {"Player", "Service Time", "Contract", "AAV", "playerId"}
         missing = sorted(required - set(frame.columns))

@@ -43,6 +43,10 @@ promote a model. Protected main and the v1 release remain unchanged until integr
   service/options baseline, StatsAPI for forward changes and Rule 5, and transactions
   as a bounded exception layer. Broad comparison coverage is 95.2% and 98.4%; Rule 5
   year agreement is 180/186 where both values are available.
+- All 30 payroll workbooks normalize into 915 player records, 3,720 annual terms, 180
+  clauses and 417 other payments. Stable IDs automatically attach 870 players; the 45
+  remaining exact-name matches form the bounded identity queue. Payroll liabilities
+  for former roster members remain separate from current team control.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
