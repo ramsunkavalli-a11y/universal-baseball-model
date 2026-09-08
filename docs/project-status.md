@@ -38,6 +38,11 @@ promote a model. Protected main and the v1 release remain unchanged until integr
 - A transparent pitcher component baseline now separates K, UBB, HBP, HR and other-BF
   rate skill from opportunity. It beat a global population comparator in every rolling
   2018–2024 fold; equal-fold log loss was 0.98044 versus 0.98500.
+- Team-control arithmetic and the conservative StatsAPI replay are implemented. A
+  Padres working sample plus Giants holdout confirms FanGraphs as the dated
+  service/options baseline, StatsAPI for forward changes and Rule 5, and transactions
+  as a bounded exception layer. Broad comparison coverage is 95.2% and 98.4%; Rule 5
+  year agreement is 180/186 where both values are available.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -73,9 +78,10 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main candidate denominator is now selected. The blocking P0 task is final team
 control: accept uncontested `fullRoster` organizations provisionally, strengthen them
-with 40-man evidence, and replay dated ownership-changing transactions for outliers.
-Unresolved paths stay unknown. The completed denominator then supports real non-arrival,
-inactivity and attrition labels rather than survivor-only modeling.
+with 40-man evidence, apply dated FanGraphs service/options baselines, calculate Rule 5
+and forward changes from StatsAPI, and replay ownership-changing transactions only for
+outliers. Unresolved paths stay unknown. The completed denominator then supports real
+non-arrival, inactivity and attrition labels rather than survivor-only modeling.
 
 In parallel, reconnect the recovered opportunity pipeline and its frozen B2 inputs,
 then declare population-prior fallbacks for inactive/no-history players. Retain O2026D

@@ -127,15 +127,17 @@ roster-state intervals produce service time, option-year usage/fourth-option
 eligibility, Rule 5 timing, arbitration/Super Two/free-agency eligibility and explicit
 confidence flags. `roster_entry_source.py` creates season-opening states from batched
 official person history, and `control_events.py` materializes intervals with a narrow,
-fail-closed transaction grammar; unclear evidence goes to review. The Padres audit now
-shows 182/187 broad depth-chart coverage and only 19/1,205 current-season transactions
-requiring review. A from-zero historical replay was rejected after materially
-undercounting service, so `control_baseline.py` stages a verified dated starting
-snapshot and StatsAPI calculates forward changes.
+fail-closed transaction grammar; unclear evidence goes to review. The Padres/Giants
+holdout now shows 178/187 and 185/188 broad depth-chart coverage. A from-zero
+historical replay was rejected after materially undercounting service and missing too
+many option years, so `control_baseline.py` stages verified dated service/options and
+StatsAPI calculates forward changes. Rule 5 calculation remains StatsAPI-native: the
+calculated year matched 180 of 186 comparable rows across the two clubs.
 
-Immediate priorities are: ingest the uploaded payroll baseline through stable IDs;
-apply the implemented baseline-plus-forward roll; resolve only the bounded DFA/waiver,
-suspension and restricted-list exceptions; run the Super Two pool league-wide; then
-repeat the payroll import for all clubs. `audit_team_control_source.py` is the
+Immediate priorities are: apply the verified service/options baseline-plus-forward
+roll; calculate Rule 5 from StatsAPI; ingest the uploaded payroll terms through stable
+IDs; resolve only the bounded DFA/waiver, suspension and restricted-list exceptions;
+run the Super Two pool league-wide; then repeat payroll import for all clubs.
+`audit_team_control_source.py` is the
 repeatable team source audit and writes source captures plus the exception report.
 Contract terms remain an overlay and never rewrite the underlying CBA arithmetic.
