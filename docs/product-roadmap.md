@@ -219,6 +219,9 @@ Five source conflicts or linked multi-year option structures are now machine-blo
 rather than relying on a prose audit. Two Imai seasons are corrected to player
 opt-outs from official MLB reporting; the correction is fail-closed against the
 expected prior state.
+Four of 13 vesting rows now have exact trigger definitions and a reusable evaluator.
+It consumes StatsAPI-ready PA or pitching outs, does not treat missing evidence as
+zero and keeps additional medical/contract conditions pending.
 Fully specified mutual options use the conservative normal-expiration outcome.
 Post-2026 minimum salaries and unchanged service rules are clearly marked as a 3%
 planning scenario until a successor CBA supplies facts.

@@ -139,6 +139,9 @@ or promote a player ranking; the public v1 release remains historical.
   later dollar-term fill cannot silently value the wrong option type.
   Official MLB reporting corrects Tatsuya Imai's 2027–2028 states to player opt-outs;
   a current official report confirms FanGraphs' Pivetta club-option conversion.
+  Four of 13 vesting rows now have sourced, machine-readable triggers. The evaluator
+  uses StatsAPI-ready PA or pitching outs and resolves only reached simple thresholds
+  or misses after season completion; medical and other conditions remain pending.
   Twenty-nine fully specified mutual options now use the conservative normal-expiration
   outcome instead of waiting for a separate decision model.
   The post-2026 minimum and unchanged service rules are explicitly a planning scenario,
@@ -215,7 +218,8 @@ The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-Next, resolve the 58 contract review rows. Current role and late-season injury return
+Next, finish the nine missing vesting definitions and the remaining explicit option
+terms within the 58 contract review rows. Current role and late-season injury return
 now have narrow Phase 1 baselines. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit

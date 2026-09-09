@@ -84,6 +84,12 @@ sensitivity work; a current rest-of-season estimate cannot select a full-season 
 - `vesting_option` and unknown states: no value is invented. They enter review until the
   trigger model exists.
 
+Vesting thresholds are represented as exact counting-stat conditions. Pitching
+thresholds use outs rather than displayed decimal innings. A simple reached threshold
+can resolve before season end; a missed threshold resolves only after season completion.
+Medical, awards and linked fallback conditions remain pending until their own evidence
+is available.
+
 A dated review-only overlay can block a player-season when reliable sources disagree
 about its legal option structure or when multiple years share one linked decision.
 These records add provenance and a specific review reason; they never overwrite the
