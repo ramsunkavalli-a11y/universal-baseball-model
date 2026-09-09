@@ -2,8 +2,8 @@
 
 Skill rates are intentionally separate from future participation and workload.
 The hitter baseline is Marcel-class offense plus primary-position value. The frozen
-Player Value v1 baserunning model may be supplied; defense otherwise remains a
-league-average zero fallback. The pitcher baseline converts the selected five-part BF forecast to
+Player Value v1 baserunning and defense models may be supplied; missing components
+otherwise remain league-average zero fallbacks. The pitcher baseline converts the selected five-part BF forecast to
 runs, with conservative component aging based on Tango's regressed adjacent-
 season curves.
 """
@@ -140,6 +140,7 @@ def build_hitter_conditional_war_rates(
     runs_per_win: float,
     affiliated_profiles: pl.DataFrame | None = None,
     baserunning_rates: pl.DataFrame | None = None,
+    defense_rates: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build universal conditional hitter WAR/600 rates."""
 
@@ -197,6 +198,29 @@ def build_hitter_conditional_war_rates(
         }
         if set(baserunning_lookup) != expected_keys:
             raise ValueError("baserunning rates do not exactly cover hitter player-years")
+    defense_lookup: dict[tuple[int, int], dict[str, object]] = {}
+    if defense_rates is not None:
+        required_defense = {
+            "player_id", "season", "defense_runs_per_600",
+            "defense_evidence_tier", "defense_model_id",
+        }
+        if missing := sorted(required_defense - set(defense_rates.columns)):
+            raise ValueError(f"defense rates missing columns: {missing}")
+        if defense_rates.group_by("player_id", "season").len().filter(
+            pl.col("len") != 1
+        ).height:
+            raise ValueError("defense rates violate player-season grain")
+        defense_lookup = {
+            (int(row["player_id"]), int(row["season"])): row
+            for row in defense_rates.iter_rows(named=True)
+        }
+        expected_keys = {
+            (int(player_id), int(season))
+            for player_id in players.get_column("player_id")
+            for season in forecast_seasons
+        }
+        if set(defense_lookup) != expected_keys:
+            raise ValueError("defense rates do not exactly cover hitter player-years")
     rows: list[dict[str, object]] = []
     for row in joined.iter_rows(named=True):
         mlb_evidence = float(row.get("weighted_pa") or 0.0)
@@ -234,8 +258,14 @@ def build_hitter_conditional_war_rates(
                 float(baserunning["baserunning_runs_per_600"])
                 if baserunning is not None else 0.0
             )
+            defense = defense_lookup.get((int(row["player_id"]), int(season)))
+            defense_runs = (
+                float(defense["defense_runs_per_600"])
+                if defense is not None else 0.0
+            )
             war = (
-                batting_runs + baserunning_runs + position_runs + replacement_runs
+                batting_runs + baserunning_runs + defense_runs
+                + position_runs + replacement_runs
             ) / rpw
             rows.append({
                 "player_id": int(row["player_id"]), "season": int(season),
@@ -250,7 +280,15 @@ def build_hitter_conditional_war_rates(
                     str(baserunning["baserunning_model_id"])
                     if baserunning is not None else "league_average_zero_fallback"
                 ),
-                "defense_runs_per_600": 0.0,
+                "defense_runs_per_600": defense_runs,
+                "defense_evidence_tier": (
+                    str(defense["defense_evidence_tier"])
+                    if defense is not None else "population_neutral"
+                ),
+                "defense_model_id": (
+                    str(defense["defense_model_id"])
+                    if defense is not None else "league_average_zero_fallback"
+                ),
                 "positional_runs_per_600": position_runs,
                 "replacement_runs_per_600": replacement_runs,
                 "primary_position": position, "target_age": age,
@@ -259,9 +297,13 @@ def build_hitter_conditional_war_rates(
                 "evidence_tier": evidence_tier,
                 "talent_model_id": HITTER_RATE_MODEL_ID,
                 "missing_component_policy": (
-                    "league_average_defense"
-                    if baserunning_rates is not None
-                    else "league_average_defense_and_baserunning"
+                    "none"
+                    if baserunning_rates is not None and defense_rates is not None
+                    else (
+                        "league_average_defense"
+                        if baserunning_rates is not None
+                        else "league_average_defense_and_baserunning"
+                    )
                 ),
             })
     return pl.DataFrame(rows).sort(["player_id", "season"])

@@ -104,6 +104,38 @@ def test_hitter_rates_add_supplied_baserunning_runs() -> None:
     assert supplied.item(0, "missing_component_policy") == "league_average_defense"
 
 
+def test_hitter_rates_add_supplied_defense_runs() -> None:
+    players = pl.DataFrame(
+        {"player_id": [1], "age_years": [27.0], "position_code": ["6"]}
+    )
+    baserunning = pl.DataFrame(
+        {
+            "player_id": [1], "season": [2027],
+            "baserunning_runs_per_600": [0.0],
+            "baserunning_evidence_tier": ["test"],
+            "baserunning_model_id": ["test"],
+        }
+    )
+    result = build_hitter_conditional_war_rates(
+        players, _hitting_history(), current_season=2026,
+        forecast_seasons=(2027,), reference_plate_appearances=1200,
+        runs_per_win=10.0, baserunning_rates=baserunning,
+        defense_rates=pl.DataFrame(
+            {
+                "player_id": [1], "season": [2027],
+                "defense_runs_per_600": [6.0],
+                "defense_evidence_tier": ["frozen_u1_adjacent_year"],
+                "defense_model_id": ["test_defense"],
+            }
+        ),
+    )
+    assert result.item(0, "defense_runs_per_600") == 6.0
+    assert result.item(0, "defense_evidence_tier") == (
+        "frozen_u1_adjacent_year"
+    )
+    assert result.item(0, "missing_component_policy") == "none"
+
+
 def test_pitcher_rates_cover_history_and_prior_players_and_age_components() -> None:
     players = pl.DataFrame({"player_id": [1, 2], "age_years": [25.0, None]})
     result = build_pitcher_conditional_war_rates(

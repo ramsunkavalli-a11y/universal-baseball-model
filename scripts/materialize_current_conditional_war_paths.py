@@ -58,6 +58,10 @@ def _args() -> argparse.Namespace:
         default=Path("reports/generated/current-baserunning-rates"),
     )
     parser.add_argument(
+        "--defense-root", type=Path,
+        default=Path("reports/generated/current-defense-rates"),
+    )
+    parser.add_argument(
         "--output-root", type=Path,
         default=Path("reports/generated/current-conditional-war-paths"),
     )
@@ -180,6 +184,10 @@ def main() -> int:
         args.baserunning_root / args.as_of_date.isoformat()
         / "tables/hitter_baserunning_rates.parquet"
     )
+    defense_rates = pl.read_parquet(
+        args.defense_root / args.as_of_date.isoformat()
+        / "tables/hitter-defense-rates.parquet"
+    )
     hitter_rates = build_hitter_conditional_war_rates(
         hitter_players, hitting, current_season=args.as_of_date.year,
         forecast_seasons=seasons,
@@ -187,6 +195,7 @@ def main() -> int:
         runs_per_win=float(reference["runs_per_win"]),
         affiliated_profiles=hitter_profiles,
         baserunning_rates=baserunning_rates,
+        defense_rates=defense_rates,
     )
     pitcher_rates = build_pitcher_conditional_war_rates(
         pitcher_players, pitching, current_season=args.as_of_date.year,
@@ -235,6 +244,9 @@ def main() -> int:
         "baserunning": baserunning_rates.group_by(
             "baserunning_evidence_tier"
         ).len().sort("baserunning_evidence_tier").to_dicts(),
+        "defense": defense_rates.group_by(
+            "defense_evidence_tier"
+        ).len().sort("defense_evidence_tier").to_dicts(),
         "current_team_depth_used": False,
         "current_season_included": False,
         "control_missing_policy": "null; never inferred uncontrolled",
@@ -248,7 +260,7 @@ def main() -> int:
             },
         },
         "limitations": [
-            "Hitter defense remains a league-average zero fallback.",
+            "Catcher defense and defense beyond the adjacent year remain neutral.",
             "Players without recent MLB rate history receive an explicit population prior.",
             "Pitcher contact quality and role-specific replacement/leverage are deferred.",
             "2032 and identities outside the dated control source retain null controlled WAR.",

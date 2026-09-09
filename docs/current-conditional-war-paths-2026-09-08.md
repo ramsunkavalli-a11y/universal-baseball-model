@@ -26,6 +26,9 @@ forecast universe.
 - The frozen Player Value v1 steal and non-steal advancement models now supply hitter
   baserunning. Recent evidence fades through the frozen three-season lookback and then
   returns to the centered neutral fallback.
+- Frozen U1 general-range defense now supplies 2027 value for 1,519 hitters using
+  official current fielding evidence and prior MLB position outs. Expected defense is
+  centered to zero by position. Unsupported players and 2028–2032 remain neutral.
 
 ## Materialized result
 
@@ -40,9 +43,9 @@ remaining unsupported rows use the pure population prior.
 
 Observed broad plausibility ranges before any clipping:
 
-- hitter conditional WAR/600 PA: -1.34 to 4.91;
-- pitcher conditional WAR/800 BF: -3.91 to 7.45;
-- maximum expected annual WAR after participation/workload: 2.10 hitter and 2.31
+- hitter conditional WAR/600 PA: -1.34 to 5.06;
+- pitcher conditional WAR/800 BF: -4.86 to 7.45;
+- maximum expected annual WAR after participation/workload: 2.34 hitter and 2.31
   pitcher.
 
 ## Team-control improvement
@@ -56,21 +59,21 @@ cases remain outside controlled WAR.
 
 ## Known Phase 1 fallbacks
 
-- Hitter defense remains zero runs versus league average. Primary-position,
-  baserunning and replacement value are included.
+- Catcher defense, tracked-range upgrades and defense beyond the adjacent year remain
+  neutral. General 2027 range, primary-position, baserunning and replacement value are
+  included.
 - Pitcher contact quality, leverage and role-specific replacement are deferred.
 - The minor-league translation passed 2024 and 2025 future-MLB component diagnostics;
   lower levels still receive stronger evidence discounts.
-- The 2026 rest-of-season production and unpaid-salary paths remain separate missing
-  inputs; this build begins with full 2027 seasons.
+- The 2026 rest-of-season production and unpaid-base-salary paths are connected through
+  the remaining-rights interface.
 
 ## Next priorities
 
-1. Replace the hitter zero-defense fallback where existing certified component
-   artifacts cover the player.
+1. Add current availability/role without using team-depth blocking.
 2. Retain Tango's regressed adjacent-season curve. The modern 2015–2025 challenger
    failed its later-period test and is deferred to Phase 2.
-3. Build the separate 2026 rest-of-season workload/WAR and unpaid-salary paths.
+3. Extend defense only where native catcher/tracked evidence and aging are supported.
 4. Resolve current-owner/service exceptions. Whole-player WAR now feeds the annual
    contract-economics input table, but dollar rankings wait for the market-price,
    arbitration, future-CBA, buyout and uncertainty inputs to validate.

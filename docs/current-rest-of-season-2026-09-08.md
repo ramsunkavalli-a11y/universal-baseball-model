@@ -8,12 +8,13 @@ The first live current-season path is connected. The official MLB schedule conta
 10.29% of the league schedule.
 
 The model projects 21,596.6 remaining hitter PA and 20,597.7 pitcher BF. Applying the
-existing conditional WAR rates gives 68.80 hitter WAR and 43.45 pitcher WAR, or
-112.25 whole-player WAR. Hitter and pitcher value is added for two-way players.
+existing conditional WAR rates gives 68.78 hitter WAR and 43.45 pitcher WAR, or
+112.23 whole-player WAR. Hitter and pitcher value is added for two-way players.
 
 Current usage is paced to a full season, shrunk with 200 PA/BF toward the existing
 2027 team-neutral opportunity forecast, and multiplied by the remaining schedule
-share. The 2027 conditional WAR rate is used as a short-horizon proxy. This keeps the
+share. The 2027 conditional WAR rate, including supported general defense, is used as
+a short-horizon proxy. This keeps the
 first version consistent with the existing player paths; it does not yet use active
 roster, injured-list or team-depth judgments.
 

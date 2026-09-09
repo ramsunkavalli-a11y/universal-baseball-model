@@ -96,7 +96,7 @@ or promote a player ranking; the public v1 release remains historical.
   evidence to all 2027–2032 opportunity rows: 23,640 hitter and 31,656 pitcher
   player-years. Recent-MLB players receive regressed component estimates; all others
   retain explicit population priors. Hitters include batting, primary position and
-  replacement while missing defense/running remain average-zero fallbacks. Pitchers
+  replacement while missing defense/running begin as average-zero fallbacks. Pitchers
   use the validated five-part BF baseline and a disclosed Tango adjacent-aging
   fallback. No team depth or rate clipping is used.
 - Official 2023–2026 affiliated components now feed a provisional MLB-anchored
@@ -123,13 +123,16 @@ or promote a player ranking; the public v1 release remains historical.
 - The frozen Player Value v1 baserunning models now supply current hitter rates from
   official 2023–2026 steal counts and four league-wide Savant advancement files. In
   2027, 3,776 of 3,940 hitters have recent evidence; the three-year model then fades
-  to its centered neutral fallback by 2030. Defense is now the only blanket-zero
-  hitter component.
+  to its centered neutral fallback by 2030.
+- Frozen U1 general-range defense now covers 1,519 hitters for 2027 using 13,192
+  official current fielding rows, prior MLB position outs and the frozen native run
+  conversion. Expected defense is position-centered to zero. Unsupported hitters,
+  catcher-specific components and 2028–2032 remain explicit neutral fallbacks.
 - A modern pitcher-aging challenger was fit on regressed same-pitcher adjacent MLB
   profiles and tested on 2,442 later-period pairs covering 618,983 BF. It lost to both
   no aging and Tango overall; Tango beat no aging in three of four seasons and remains
   the Phase 1 curve. The failed challenger is closed rather than tuned after inspection.
-- A dated 2026 rest-of-season baseline now projects 112.25 WAR over the final 250
+- A dated 2026 rest-of-season baseline now projects 112.23 WAR over the final 250
   scheduled games. CBA championship-season-day proration produces $535.96 million of
   remaining base salary. Exact current-team matches connect 833 salary rows and
   $500.19 million to the remaining-rights interface; 81 unresolved or conflicting
@@ -169,11 +172,11 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 ## Next modeling task
 
 The main denominator, control/cost path, static economics engine, projection
-guardrails, opportunity paths, conditional-WAR assembly and annual economics-input
-join and current baserunning reuse are now built. Next, replace covered defense
-fallbacks and build the explicit rest-of-season projection. Modern adjacent-season
-pitcher aging has been tested and rejected for Phase 1; revisit it only under a new
-Phase 2 test.
+guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
+current baserunning, supported general defense and the rest-of-season path are now
+built. Next, add a calibrated current availability/role layer and build uncertainty.
+Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
+it only under a new Phase 2 test.
 The main economic blocker is a chronologically fitted free-agent market function.
 In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
@@ -199,7 +202,7 @@ run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, guardrail and remaining-rights tests pass;
-Ruff passes across `src`, `scripts` and `tests`. The current full run has 1,176 passing tests.
+Ruff passes across `src`, `scripts` and `tests`. The current full run has 1,198 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

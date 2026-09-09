@@ -62,14 +62,16 @@ def _mapping(value: Any) -> Mapping[str, Any]:
     return value if isinstance(value, Mapping) else {}
 
 
-def _infer_context(path: Path) -> tuple[int, int]:
+def _infer_context(
+    path: Path, *, expected_seasons: set[int] | frozenset[int] = frozenset(SEASONS)
+) -> tuple[int, int]:
     parts = list(path.parts)
     for index, part in enumerate(parts[:-1]):
         try:
             season = int(part)
         except ValueError:
             continue
-        if season not in SEASONS or index + 1 >= len(parts):
+        if season not in expected_seasons or index + 1 >= len(parts):
             continue
         try:
             league_id = int(parts[index + 1])
@@ -101,7 +103,11 @@ def _innings_to_outs(value: Any) -> int:
     return int(whole) * 3 + int(fraction)
 
 
-def load_frozen_fielding_profiles(source_root: Path) -> tuple[pl.DataFrame, dict[str, int]]:
+def load_frozen_fielding_profiles(
+    source_root: Path,
+    *,
+    expected_seasons: set[int] | frozenset[int] = frozenset(SEASONS),
+) -> tuple[pl.DataFrame, dict[str, int]]:
     """Load the certified fielding capture with the frozen Defense parser semantics."""
 
     paths = sorted(source_root.rglob("fielding_offset_*.json"))
@@ -111,7 +117,7 @@ def load_frozen_fielding_profiles(source_root: Path) -> tuple[pl.DataFrame, dict
     rows: list[dict[str, Any]] = []
     observed_pairs: set[tuple[int, int]] = set()
     for path in paths:
-        season, league_id = _infer_context(path)
+        season, league_id = _infer_context(path, expected_seasons=expected_seasons)
         observed_pairs.add((season, league_id))
         level_group = LEVEL_BY_LEAGUE[league_id]
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -147,7 +153,11 @@ def load_frozen_fielding_profiles(source_root: Path) -> tuple[pl.DataFrame, dict
                 }
             )
 
-    expected_pairs = {(season, league_id) for season in SEASONS for league_id in LEVEL_BY_LEAGUE}
+    expected_pairs = {
+        (season, league_id)
+        for season in expected_seasons
+        for league_id in LEVEL_BY_LEAGUE
+    }
     if observed_pairs != expected_pairs:
         raise RuntimeError(
             "certified source pair mismatch "
@@ -174,6 +184,10 @@ def load_frozen_fielding_profiles(source_root: Path) -> tuple[pl.DataFrame, dict
         raw.group_by(["season", "player_id", "position", "position_order"])
         .agg(
             pl.col("fielding_outs").sum(),
+            pl.col("fielding_outs")
+            .filter(pl.col("level_group") == "MLB")
+            .sum()
+            .alias("mlb_fielding_outs"),
             pl.col("put_outs").sum(),
             pl.col("assists").sum(),
             pl.col("chances").sum(),

@@ -61,8 +61,10 @@ The [current contract-economics input result](docs/current-contract-economics-in
 connects whole-player expected WAR to all 50,100 future control rows while keeping
 missing salaries, buyouts and market assumptions explicit.
 The [current baserunning result](docs/current-baserunning-rates-2026-09-08.md)
-reuses the frozen steal and advancement models in the live hitter path; defense is
-now the remaining average-zero hitter component.
+reuses the frozen steal and advancement models in the live hitter path.
+The [current defense result](docs/current-defense-rates-2026-09-08.md) connects frozen
+general-range skill, MLB position outs and native run conversion for 2027 while
+keeping unsupported catcher and later-year defense neutral.
 The [modern pitcher-aging test](docs/modern-pitcher-aging-result-2026-09-08.md)
 rejected a newly fitted curve on 2022–2025 data and retained Tango's regressed curve.
 The [current rest-of-season result](docs/current-rest-of-season-2026-09-08.md)
