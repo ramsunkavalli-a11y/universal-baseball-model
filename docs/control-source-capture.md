@@ -13,6 +13,12 @@ request URL, HTTP status, retained size and SHA-256 hash, and the build verifies
 all hashes before completing. This makes the parsed source values reusable after
 the live API changes.
 
+Passing `--source-capture-dir` rebuilds the league-control checkpoint entirely
+from that verified archive, with no StatsAPI requests. The 2026-09-08 offline
+rebuild reproduced the live build byte for byte across the league-control table,
+future-control path, contract liabilities, other payments, identity audit, Super
+Two pool, summary and capture manifest.
+
 The boundary is explicit: the existing adapters expose parsed JSON, not the
 server's original response bytes or a trustworthy retrieval timestamp. The
 manifest therefore labels the representation
@@ -21,7 +27,7 @@ manifest therefore labels the representation
 These hashes prove the retained files did not change; they are not hashes of the
 original HTTP byte stream.
 
-This closes current-checkpoint source retention. It does not create historical
+This closes current-checkpoint source retention and offline reconstruction. It does not create historical
 FanGraphs payroll/service snapshots. Historical value replay still requires
 then-known contract terms and a defensible dated opening-service baseline.
 

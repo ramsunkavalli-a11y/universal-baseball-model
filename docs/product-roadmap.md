@@ -127,9 +127,10 @@ coverage and value stability separately. Once checkpoint replay passes, expand t
 interface to completed-game and material-transaction updates.
 
 The current control checkpoint now preserves 230 hash-verified parsed official API
-responses. That closes the live-source retention gap for this checkpoint, but it does
-not backfill the then-known payroll terms or opening service balances needed for a
-historical value replay.
+responses. A no-network reconstruction reproduced every core control artifact byte
+for byte. That closes the source-retention and replay path for this checkpoint, but it
+does not backfill the then-known payroll terms or opening service balances needed for
+a historical value replay.
 
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component

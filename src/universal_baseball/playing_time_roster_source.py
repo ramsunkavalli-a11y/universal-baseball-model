@@ -394,6 +394,12 @@ def fetch_mlb_teams(
         params={"sportId": 1, "season": int(season)},
         session=session,
     )
+    return project_mlb_teams_payload(payload, season=season), capture
+
+
+def project_mlb_teams_payload(payload: dict[str, Any], *, season: int) -> pl.DataFrame:
+    """Project the MLB organization list from a retained official response."""
+
     teams = payload.get("teams")
     if not isinstance(teams, list):
         raise ValueError("Stats API teams response missing teams list")
@@ -409,7 +415,7 @@ def fetch_mlb_teams(
     frame = pl.DataFrame(rows).sort("team_id")
     if frame.group_by("team_id").len().filter(pl.col("len") != 1).height:
         raise ValueError("Stats API MLB team list has duplicate team IDs")
-    return frame, capture
+    return frame
 
 
 def fetch_team_transactions_around(

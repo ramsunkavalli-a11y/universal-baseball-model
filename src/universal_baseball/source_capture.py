@@ -91,3 +91,23 @@ def verify_parsed_json_capture_manifest(destination: Path) -> None:
             raise ValueError(f"capture file is missing: {record['file']}")
         if sha256(path.read_bytes()).hexdigest() != record.get("sha256"):
             raise ValueError(f"capture hash mismatch: {record['file']}")
+
+
+def load_parsed_json_captures(destination: Path) -> dict[str, dict[str, Any]]:
+    """Load only hash-verified captures named by the retained manifest."""
+
+    verify_parsed_json_capture_manifest(destination)
+    manifest = json.loads((destination / "manifest.json").read_text(encoding="utf-8"))
+    captures: dict[str, dict[str, Any]] = {}
+    for record in manifest["records"]:
+        name = str(record["file"])
+        if name in captures:
+            raise ValueError(f"duplicate capture filename in manifest: {name}")
+        captures[name] = {
+            "requested_url": record.get("requested_url", ""),
+            "source_snapshot_id": record.get("source_snapshot_id"),
+            "status_code": int(record["status_code"]),
+            "content_type": record.get("content_type", ""),
+            "payload": json.loads((destination / name).read_text(encoding="utf-8")),
+        }
+    return captures

@@ -60,8 +60,9 @@ or promote a player ranking; the public v1 release remains historical.
   the 2026 opening balance; StatsAPI supplies in-season service through the as-of date.
 - The control build now retains all 230 official responses used by the current
   checkpoint as hash-verified canonical JSON. This makes the parsed source values
-  reproducible after the live API changes. The manifest does not claim original
-  HTTP-byte fidelity or an unavailable retrieval timestamp.
+  reproducible after the live API changes. An offline league rebuild reproduced
+  all core tables, summary and manifest byte for byte. The manifest does not claim
+  original HTTP-byte fidelity or an unavailable retrieval timestamp.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and

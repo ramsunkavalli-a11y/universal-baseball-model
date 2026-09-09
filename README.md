@@ -99,7 +99,8 @@ retains all 8,393 current rights-universe players in one dated value interface, 
 accounting, not historical accuracy or ranking readiness.
 The [control source capture](docs/control-source-capture.md) retains and hash-verifies
 the 230 parsed official responses behind that checkpoint while clearly separating
-parsed-value reproducibility from original HTTP-byte fidelity.
+parsed-value reproducibility from original HTTP-byte fidelity. The same build can now
+run offline from those captures and reproduced all core control outputs byte for byte.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

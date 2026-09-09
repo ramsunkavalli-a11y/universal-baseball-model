@@ -27,7 +27,8 @@ assumptions already disclosed by Contract Economics.
 
 The underlying league-control run now retains 230 hash-verified official source
 responses. They preserve the parsed JSON values used by this checkpoint after the
-live endpoint changes. They do not claim original HTTP-byte fidelity or supply the
+live endpoint changes. A full offline rebuild reproduced every core control output
+byte for byte. The captures do not claim original HTTP-byte fidelity or supply the
 missing historical payroll and service snapshots.
 
 ## Service correction

@@ -3,6 +3,7 @@ import json
 import pytest
 
 from universal_baseball.source_capture import (
+    load_parsed_json_captures,
     persist_parsed_json_captures,
     verify_parsed_json_capture_manifest,
 )
@@ -33,6 +34,9 @@ def test_persist_and_verify_parsed_json_captures(tmp_path) -> None:
         "teams": [{"id": 2, "name": "B"}]
     }
     verify_parsed_json_capture_manifest(destination)
+    loaded = load_parsed_json_captures(destination)
+    assert loaded["teams.json"]["payload"] == {"teams": [{"id": 2, "name": "B"}]}
+    assert loaded["teams.json"]["status_code"] == 200
 
 
 def test_verify_capture_manifest_detects_changed_payload(tmp_path) -> None:

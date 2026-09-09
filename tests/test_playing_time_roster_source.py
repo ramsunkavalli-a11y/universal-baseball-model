@@ -11,7 +11,19 @@ from universal_baseball.playing_time_roster_source import (
     project_team_40man_membership_payload,
     project_team_full_roster_candidates_payload,
     project_team_roster_payload,
+    project_mlb_teams_payload,
 )
+
+
+def test_project_mlb_teams_payload_rebuilds_retained_team_list() -> None:
+    teams = project_mlb_teams_payload(
+        {"teams": [{"id": 137, "name": "San Francisco Giants"}]}, season=2026
+    )
+    assert teams.row(0, named=True) == {
+        "season": 2026,
+        "team_id": 137,
+        "team_name": "San Francisco Giants",
+    }
 
 
 def _payload() -> dict[str, object]:

@@ -30,7 +30,7 @@ from universal_baseball.control_path import (
     project_future_control_path,
     resolve_service_balances,
 )
-from universal_baseball.control_season_source import fetch_season_windows
+from universal_baseball.control_season_source import fetch_season_windows, project_season_window
 from universal_baseball.control_validation import (
     confirm_name_matches_with_current_roster_entries,
     match_control_reference_players,
@@ -39,15 +39,23 @@ from universal_baseball.depth_chart_reference import (
     normalize_fangraphs_depth_chart,
     read_fangraphs_depth_chart_xlsx,
 )
-from universal_baseball.people_control_source import fetch_people_control_evidence
+from universal_baseball.people_control_source import (
+    PeopleControlEvidence,
+    fetch_people_control_evidence,
+    project_people_control_payload,
+)
 from universal_baseball.organization_rights import resolve_current_organizations
 from universal_baseball.playing_time_roster_source import (
     fetch_mlb_teams,
     fetch_team_40man_membership_as_of,
     fetch_team_full_roster_candidates_as_of,
+    project_mlb_teams_payload,
+    project_team_40man_membership_payload,
+    project_team_full_roster_candidates_payload,
 )
 from universal_baseball.roster_entry_source import build_opening_control_states
 from universal_baseball.source_capture import (
+    load_parsed_json_captures,
     persist_parsed_json_captures,
     verify_parsed_json_capture_manifest,
 )
@@ -85,6 +93,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--as-of", type=date.fromisoformat, required=True)
     parser.add_argument("--through-year", type=int, default=2032)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--source-capture-dir",
+        type=Path,
+        help="rebuild from a prior hash-verified source capture instead of live StatsAPI",
+    )
     return parser.parse_args()
 
 
@@ -141,6 +154,24 @@ def _consolidate_baselines(baselines: pl.DataFrame) -> pl.DataFrame:
     ).sort("player_id")
 
 
+def _combine_people_batches(
+    batches: list[PeopleControlEvidence], captures: list[dict[str, object]]
+) -> PeopleControlEvidence:
+    people = pl.concat([batch.people for batch in batches]).sort("player_id")
+    if people.get_column("player_id").n_unique() != people.height:
+        raise ValueError("retained people captures duplicate player identities")
+    return PeopleControlEvidence(
+        people=people,
+        roster_entries=pl.concat(
+            [batch.roster_entries for batch in batches], how="vertical_relaxed"
+        ).sort(["player_id", "start_date", "team_id"]),
+        transactions=pl.concat(
+            [batch.transactions for batch in batches], how="vertical_relaxed"
+        ).sort(["player_id", "effective_date", "transaction_id"]),
+        captures=captures,
+    )
+
+
 def main() -> int:
     args = parse_args()
     if set(TEAM_IDS) != {_depth_file_team(path) for path in args.depth_chart_dir.glob("*.xlsx")}:
@@ -148,25 +179,59 @@ def main() -> int:
     if set(TEAM_IDS) != {_payroll_file_team(path) for path in args.payroll_dir.glob("*.xlsx")}:
         raise ValueError("payroll directory must contain exactly the 30 expected teams")
 
+    retained = (
+        load_parsed_json_captures(args.source_capture_dir)
+        if args.source_capture_dir is not None
+        else None
+    )
     source_captures: list[tuple[str, dict[str, object]]] = []
-    official_teams, teams_capture = fetch_mlb_teams(args.as_of.year)
+    if retained is None:
+        official_teams, teams_capture = fetch_mlb_teams(args.as_of.year)
+    else:
+        teams_capture = retained["mlb-teams.json"]
+        official_teams = project_mlb_teams_payload(
+            teams_capture["payload"], season=args.as_of.year
+        )
     source_captures.append(("mlb-teams.json", teams_capture))
     mlb_team_ids = set(official_teams.get_column("team_id").to_list())
-    window, season_captures = fetch_season_windows([args.as_of.year])
-    source_captures.extend(
-        (f"season-{capture['season']}.json", capture) for capture in season_captures
-    )
+    if retained is None:
+        window, season_captures = fetch_season_windows([args.as_of.year])
+    else:
+        season_capture = retained[f"season-{args.as_of.year}.json"]
+        season_captures = [season_capture]
+        window = project_season_window(
+            season_capture["payload"], season=args.as_of.year
+        )
+    if len(season_captures) != 1:
+        raise ValueError("league control build requires exactly one season capture")
+    source_captures.append((f"season-{args.as_of.year}.json", season_captures[0]))
     baseline_date = window.item(0, "start_date") - timedelta(days=1)
     roster_by_team = {}
     roster_frames = []
     forty_frames = []
     for team_name, team_id in TEAM_IDS.items():
-        roster, roster_capture = fetch_team_full_roster_candidates_as_of(
-            team_id, season=args.as_of.year, as_of_date=args.as_of
-        )
-        forty, forty_capture = fetch_team_40man_membership_as_of(
-            team_id, season=args.as_of.year, as_of_date=args.as_of
-        )
+        if retained is None:
+            roster, roster_capture = fetch_team_full_roster_candidates_as_of(
+                team_id, season=args.as_of.year, as_of_date=args.as_of
+            )
+            forty, forty_capture = fetch_team_40man_membership_as_of(
+                team_id, season=args.as_of.year, as_of_date=args.as_of
+            )
+        else:
+            roster_capture = retained[f"team-{team_id}-full-roster.json"]
+            forty_capture = retained[f"team-{team_id}-40-man.json"]
+            roster = project_team_full_roster_candidates_payload(
+                roster_capture["payload"],
+                team_id=team_id,
+                season=args.as_of.year,
+                as_of_date=args.as_of,
+            )
+            forty = project_team_40man_membership_payload(
+                forty_capture["payload"],
+                team_id=team_id,
+                season=args.as_of.year,
+                as_of_date=args.as_of,
+            )
         source_captures.extend(
             [
                 (f"team-{team_id}-full-roster.json", roster_capture),
@@ -179,9 +244,27 @@ def main() -> int:
     rosters = pl.concat(roster_frames, how="vertical_relaxed")
     forty = pl.concat(forty_frames, how="vertical_relaxed")
     candidate_ids = rosters.get_column("player_id").unique().sort()
-    people = fetch_people_control_evidence(
-        candidate_ids, as_of_date=args.as_of, batch_size=50
-    )
+    if retained is None:
+        people = fetch_people_control_evidence(
+            candidate_ids, as_of_date=args.as_of, batch_size=50
+        )
+    else:
+        people_captures = [
+            retained[name] for name in sorted(retained) if name.startswith("people-")
+        ]
+        people = _combine_people_batches(
+            [
+                project_people_control_payload(
+                    capture["payload"],
+                    as_of_date=args.as_of,
+                    source_snapshot_id=str(capture["source_snapshot_id"]),
+                )
+                for capture in people_captures
+            ],
+            people_captures,
+        )
+        if set(people.people.get_column("player_id")) != set(candidate_ids):
+            raise ValueError("retained people captures differ from retained roster universe")
     source_captures.extend(
         (f"people-{index:03d}.json", capture)
         for index, capture in enumerate(people.captures, start=1)
