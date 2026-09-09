@@ -253,11 +253,14 @@ rights and cost paths are integrated.
 
 The selected B2 hitter-opportunity run is still identified by run `32142220469` and
 its expected candidate hash, but GitHub's short-lived coefficient artifact has expired.
-The surviving confirmation artifact contains scores, not coefficients, and the local
-archive contains only a different 2024 fold fit. Do not silently refit under changed
-inputs. Recover the exact frozen package if an external copy exists; otherwise keep the
-current proven fallback and rerun a newly versioned selection gate. Future selected
-parameter packages must be stored in durable release storage or committed when small.
+The surviving independent 2025 confirmation artifact has now been preserved in
+`model_artifacts/playing-time-v1-confirmation-2025/`, with a hash manifest and tests.
+It contains scores, not coefficients, and the local archive contains only a different
+2024 fold fit. The old run log also contains no coefficient values. Do not silently
+refit under changed inputs. Recover the exact frozen package if an external copy exists;
+otherwise keep the current proven fallback and rerun a newly versioned selection gate.
+All future selected parameter packages must follow
+`docs/playing-time-v1-durable-artifact-policy.md`.
 
 The 2022–2024 seasons are disclosed development evidence. Protected 2026 remains
 closed. Do not claim long-term value or publish a model from these findings.

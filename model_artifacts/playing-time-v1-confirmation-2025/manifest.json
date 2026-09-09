@@ -1,0 +1,41 @@
+{
+  "artifact_id": 9327982686,
+  "artifact_name": "playing-time-v1-confirmation-2025",
+  "archive_digest": "sha256:cdaa5c0e8c8ee448e64fe305ef25c20fa769147e0cbda770579f370cb4cf63f6",
+  "archive_size_bytes": 183558,
+  "created_at_utc": "2026-08-18T14:08:47Z",
+  "original_expiration_utc": "2026-09-17T14:08:45Z",
+  "preserved_at_utc": "2026-09-09T10:12:16Z",
+  "repository": "ramsunkavalli-a11y/universal-baseball-model",
+  "run_id": 32146445795,
+  "source_sha": "5ac0456d20741c240ab8acad962707b6dbdae925",
+  "purpose": "Durable preservation of the independent 2025 playing-time confirmation outputs.",
+  "limitations": [
+    "This package contains validation scores and diagnostic output, not fitted model coefficients or standardization parameters.",
+    "It cannot be used to reconstruct the expired selected B2 production model package.",
+    "A new model fit requires a newly versioned selection and confirmation gate."
+  ],
+  "files": {
+    "report.json": {
+      "bytes": 4914,
+      "sha256": "76b2979018fbb3bbdf18581b0a00f46dcf06b78a7210b277e79aa9a3f3873a14"
+    },
+    "report.md": {
+      "bytes": 714,
+      "sha256": "d68a017fa094fdfa3a374c4a3765adb08e8aed1bc3758ca27e034502af79d2fb"
+    },
+    "tables/baseline0_scores.parquet": {
+      "bytes": 26714,
+      "sha256": "82ce9f1f4f2048810da5730db6ea0a59f584a4edc9b12415b5dc588a3c4d7c0c"
+    },
+    "tables/candidate_scores.parquet": {
+      "bytes": 158347,
+      "sha256": "252cb412462b4957b491ba41815e60e0b67cd44577aa9447ba8ddf30f0266cd8"
+    },
+    "tables/diagnostic_level_strata.parquet": {
+      "bytes": 2892,
+      "sha256": "5da342ab5c3ac612104db1687f25c50499456c690f72086b6b25c7620b2efb38"
+    }
+  },
+  "schema_version": "0.1"
+}
