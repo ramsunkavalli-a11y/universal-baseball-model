@@ -47,6 +47,10 @@ from universal_baseball.playing_time_roster_source import (
     fetch_team_full_roster_candidates_as_of,
 )
 from universal_baseball.roster_entry_source import build_opening_control_states
+from universal_baseball.source_capture import (
+    persist_parsed_json_captures,
+    verify_parsed_json_capture_manifest,
+)
 from universal_baseball.team_control import (
     CONTROL_PLAYER_SCHEMA,
     SERVICE_DAYS_PER_YEAR,
@@ -144,19 +148,30 @@ def main() -> int:
     if set(TEAM_IDS) != {_payroll_file_team(path) for path in args.payroll_dir.glob("*.xlsx")}:
         raise ValueError("payroll directory must contain exactly the 30 expected teams")
 
-    official_teams, _ = fetch_mlb_teams(args.as_of.year)
+    source_captures: list[tuple[str, dict[str, object]]] = []
+    official_teams, teams_capture = fetch_mlb_teams(args.as_of.year)
+    source_captures.append(("mlb-teams.json", teams_capture))
     mlb_team_ids = set(official_teams.get_column("team_id").to_list())
-    window, _ = fetch_season_windows([args.as_of.year])
+    window, season_captures = fetch_season_windows([args.as_of.year])
+    source_captures.extend(
+        (f"season-{capture['season']}.json", capture) for capture in season_captures
+    )
     baseline_date = window.item(0, "start_date") - timedelta(days=1)
     roster_by_team = {}
     roster_frames = []
     forty_frames = []
     for team_name, team_id in TEAM_IDS.items():
-        roster, _ = fetch_team_full_roster_candidates_as_of(
+        roster, roster_capture = fetch_team_full_roster_candidates_as_of(
             team_id, season=args.as_of.year, as_of_date=args.as_of
         )
-        forty, _ = fetch_team_40man_membership_as_of(
+        forty, forty_capture = fetch_team_40man_membership_as_of(
             team_id, season=args.as_of.year, as_of_date=args.as_of
+        )
+        source_captures.extend(
+            [
+                (f"team-{team_id}-full-roster.json", roster_capture),
+                (f"team-{team_id}-40-man.json", forty_capture),
+            ]
         )
         roster_by_team[team_name] = roster
         roster_frames.append(roster)
@@ -166,6 +181,10 @@ def main() -> int:
     candidate_ids = rosters.get_column("player_id").unique().sort()
     people = fetch_people_control_evidence(
         candidate_ids, as_of_date=args.as_of, batch_size=50
+    )
+    source_captures.extend(
+        (f"people-{index:03d}.json", capture)
+        for index, capture in enumerate(people.captures, start=1)
     )
     affiliate_parent_rows = people.people.filter(
         pl.col("current_team_id").is_not_null()
@@ -440,6 +459,10 @@ def main() -> int:
     )
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    capture_manifest = persist_parsed_json_captures(
+        source_captures, args.output_dir / "source-captures"
+    )
+    verify_parsed_json_capture_manifest(args.output_dir / "source-captures")
     unified.write_parquet(args.output_dir / "league-control-snapshot.parquet")
     future.write_parquet(args.output_dir / "future-control-path.parquet")
     contract_years.write_parquet(args.output_dir / "contract-year-liabilities.parquet")
@@ -490,6 +513,11 @@ def main() -> int:
         "super_two_cutoff_tie": super_two.item(0, "cutoff_tie") if super_two.height else None,
         "opening_state_reviews": openings.review_players.height,
         "transaction_reviews": materialized.review_events.height,
+        "source_capture_count": capture_manifest["capture_count"],
+        "source_capture_representation": capture_manifest["representation"],
+        "original_response_bytes_retained": capture_manifest[
+            "original_response_bytes_retained"
+        ],
     }
     (args.output_dir / "summary.json").write_text(
         json.dumps(summary, indent=2, sort_keys=True), encoding="utf-8"

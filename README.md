@@ -97,6 +97,9 @@ The [Phase 1 replay checkpoint](docs/phase1-sequential-replay-current-checkpoint
 retains all 8,393 current rights-universe players in one dated value interface, with
 8,369 available records and 24 explicit reviews. It proves current coverage and
 accounting, not historical accuracy or ranking readiness.
+The [control source capture](docs/control-source-capture.md) retains and hash-verifies
+the 230 parsed official responses behind that checkpoint while clearly separating
+parsed-value reproducibility from original HTTP-byte fidelity.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

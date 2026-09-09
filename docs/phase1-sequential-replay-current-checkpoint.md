@@ -25,6 +25,11 @@ This is a coverage and accounting checkpoint, not validation of the dollar ranki
 The league total includes the named future-market and post-2026 CBA planning
 assumptions already disclosed by Contract Economics.
 
+The underlying league-control run now retains 230 hash-verified official source
+responses. They preserve the parsed JSON values used by this checkpoint after the
+live endpoint changes. They do not claim original HTTP-byte fidelity or supply the
+missing historical payroll and service snapshots.
+
 ## Service correction
 
 The rebuild corrected one safe service-time omission. A player whose official first

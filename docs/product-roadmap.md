@@ -126,6 +126,11 @@ accounting differences or unexplained source changes. Report forecast calibratio
 coverage and value stability separately. Once checkpoint replay passes, expand the same
 interface to completed-game and material-transaction updates.
 
+The current control checkpoint now preserves 230 hash-verified parsed official API
+responses. That closes the live-source retention gap for this checkpoint, but it does
+not backfill the then-known payroll terms or opening service balances needed for a
+historical value replay.
+
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component
 discrepancies for Phase 2. The protected 2026 confirmation forecast is frozen and its

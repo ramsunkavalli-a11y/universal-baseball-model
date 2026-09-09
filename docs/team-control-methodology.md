@@ -126,7 +126,9 @@ contract terms overriding statutory labels only for the applicable organization 
 year.
 
 Generated artifacts are written to
-`reports/generated/league-control/2026-09-08/`. The remaining opening-state,
+`reports/generated/league-control/2026-09-08/`. The build also retains and
+hash-verifies all 230 parsed official API responses used for the checkpoint; see
+the [control source capture](control-source-capture.md). The remaining opening-state,
 transaction and multi-organization reviews belong to phase two and do not silently
 change phase-one results.
 
