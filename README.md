@@ -76,6 +76,9 @@ rejected a newly fitted curve on 2022–2025 data and retained Tango's regressed
 The [current rest-of-season result](docs/current-rest-of-season-2026-09-08.md)
 connects 2026 remaining WAR and day-prorated base salary to the rights interface while
 rejecting unresolved payroll/ownership joins.
+The [integrated current-and-future economics result](docs/current-and-future-contract-economics-2026-09-08.md)
+now values those 2026 remaining rights and the 2027–2032 control path together, with
+discounted point and sensitivity totals while retaining a research-only boundary.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

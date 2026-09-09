@@ -184,6 +184,12 @@ or promote a player ranking; the public v1 release remains historical.
   $508.08 million to the remaining-rights interface; 70 unresolved or conflicting
   rows remain explicit rather than being forced into value. The combined economics
   input contains these 844 current rows plus 50,226 future rows.
+- The combined current-and-future economics run now values all 51,070 annual rows in
+  one path. It produces complete discounted point and sensitivity totals for 8,362
+  players, while the same 16 known contract rows keep 11 players in review. Current
+  partial-season WAR uses FanGraphs' published overall 2026 rate rather than an invalid
+  full-season player tier. The result remains a research scenario because post-2026 CBA
+  rules, opportunity recovery and interval calibration are not final.
 - Ordinary IL and rehab status does not itself supply a return date. Official current
   status and transaction replay agree for 263 players; 261 projected players receive
   the 2022-2025 activation-timing factor. Their 10.92 unadjusted WAR becomes 1.84 WAR.
@@ -228,7 +234,8 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 ## Next modeling task
 
-The main denominator, control/cost path, static economics engine, projection
+The main denominator, control/cost path, integrated current-plus-future economics
+engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.

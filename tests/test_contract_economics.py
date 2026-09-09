@@ -254,6 +254,12 @@ def test_discounting_is_explicit() -> None:
     assert result.annual.item(0, "discounted_contract_value_dollars") == pytest.approx(
         5_000_000 / 1.05
     )
+    assert result.aggregate.item(
+        0, "discounted_contract_value_lower_dollars"
+    ) == pytest.approx(-5_000_000 / 1.05)
+    assert result.aggregate.item(
+        0, "discounted_contract_value_upper_dollars"
+    ) == pytest.approx(15_000_000 / 1.05)
 
 
 def test_tiered_market_uses_mean_war_tier_for_all_sensitivities() -> None:

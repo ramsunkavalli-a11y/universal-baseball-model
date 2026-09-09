@@ -49,6 +49,8 @@ ANNUAL_CONTRACT_ECONOMICS_SCHEMA: dict[str, pl.DataType] = {
     "contract_value_upper_dollars": pl.Float64,
     "discount_factor": pl.Float64,
     "discounted_contract_value_dollars": pl.Float64,
+    "discounted_contract_value_lower_dollars": pl.Float64,
+    "discounted_contract_value_upper_dollars": pl.Float64,
     "decision_at_mean": pl.String,
     "calculation_status": pl.String,
     "review_reason": pl.String,
@@ -68,6 +70,8 @@ AGGREGATE_CONTRACT_ECONOMICS_SCHEMA: dict[str, pl.DataType] = {
     "contract_control_value_dollars": pl.Float64,
     "optionality_premium_dollars": pl.Float64,
     "discounted_contract_value_dollars": pl.Float64,
+    "discounted_contract_value_lower_dollars": pl.Float64,
+    "discounted_contract_value_upper_dollars": pl.Float64,
     "calculation_status": pl.String,
 }
 
@@ -404,6 +408,12 @@ def value_annual_contract_states(
                 "contract_value_upper_dollars": upper_value,
                 "discount_factor": discount_factor,
                 "discounted_contract_value_dollars": None if value is None else value * discount_factor,
+                "discounted_contract_value_lower_dollars": (
+                    None if lower_value is None else lower_value * discount_factor
+                ),
+                "discounted_contract_value_upper_dollars": (
+                    None if upper_value is None else upper_value * discount_factor
+                ),
                 "decision_at_mean": decision,
                 "calculation_status": calculation_status,
                 "review_reason": review_reason,
@@ -437,6 +447,12 @@ def value_annual_contract_states(
                 "contract_control_value_dollars": total("contract_control_value_dollars"),
                 "optionality_premium_dollars": total("optionality_premium_dollars"),
                 "discounted_contract_value_dollars": total("discounted_contract_value_dollars"),
+                "discounted_contract_value_lower_dollars": total(
+                    "discounted_contract_value_lower_dollars"
+                ),
+                "discounted_contract_value_upper_dollars": total(
+                    "discounted_contract_value_upper_dollars"
+                ),
                 "calculation_status": "available" if available else "review",
             }
         )
