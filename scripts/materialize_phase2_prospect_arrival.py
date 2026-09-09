@@ -24,6 +24,7 @@ from universal_baseball.storage import write_canonical_parquet
 
 TRAINING_YEARS = (2018, 2021, 2022, 2023)
 EVALUATION_SPECS = ((2021, (2018,)), (2022, (2018,)), (2023, (2018, 2021)))
+FEATURE_SETS = ("core", "stable_demographics", "all_demographics")
 
 
 def _args() -> argparse.Namespace:
@@ -55,6 +56,12 @@ def _args() -> argparse.Namespace:
         "--output-root", type=Path,
         default=Path("reports/generated/phase2-prospect-arrival"),
     )
+    parser.add_argument(
+        "--demographics-path", type=Path,
+        default=Path(
+            "reports/generated/player-demographics/tables/player-demographics.parquet"
+        ),
+    )
     return parser.parse_args()
 
 
@@ -68,6 +75,7 @@ def _history_stats(root: Path) -> pl.DataFrame:
 def _evaluate(
     cohorts: dict[int, pl.DataFrame], *, player_type: str,
     target_column: str = "arrived_within_horizon", outcome_name: str = "arrival",
+    feature_set: str = "core",
 ) -> tuple[dict[str, object], bool]:
     scores = []
     fold_rows = []
@@ -76,6 +84,7 @@ def _evaluate(
         fit = fit_arrival_model(
             training, player_type=player_type,
             target_column=target_column, outcome_name=outcome_name,
+            feature_set=feature_set,
         )
         scored = predict_arrival(fit, cohorts[evaluation_year]).with_columns(
             pl.lit(evaluation_year).alias("snapshot_year")
@@ -118,6 +127,41 @@ def _evaluate(
     return {"folds": fold_rows, "pooled_model": model, "pooled_baseline": baseline}, passed
 
 
+def _beats(candidate: dict[str, object], incumbent: dict[str, object]) -> bool:
+    candidate_pooled = candidate["pooled_model"]
+    incumbent_pooled = incumbent["pooled_model"]
+    if not (
+        candidate_pooled["brier"] < incumbent_pooled["brier"]
+        and candidate_pooled["log_loss"] < incumbent_pooled["log_loss"]
+    ):
+        return False
+    return all(
+        candidate_row["model"]["brier"] <= incumbent_row["model"]["brier"]
+        and candidate_row["model"]["log_loss"] <= incumbent_row["model"]["log_loss"]
+        for candidate_row, incumbent_row in zip(
+            candidate["folds"], incumbent["folds"], strict=True
+        )
+    )
+
+
+def _select_feature_set(
+    evaluations: dict[str, dict[str, object]],
+) -> str:
+    incumbent = evaluations["core"]
+    # Current StatsAPI height, weight, strike-zone and primary-position values are
+    # not historical vintages. Score the full group, but do not select it from a
+    # historical gate until a cutoff-safe source or invariance audit exists.
+    eligible = [
+        feature_set for feature_set in ("stable_demographics",)
+        if _beats(evaluations[feature_set], incumbent)
+    ]
+    return min(
+        eligible,
+        key=lambda feature_set: evaluations[feature_set]["pooled_model"]["log_loss"],
+        default="core",
+    )
+
+
 def main() -> int:
     args = _args()
     dated = args.as_of_date.isoformat()
@@ -133,6 +177,7 @@ def main() -> int:
     control = pl.read_parquet(
         args.control_root / dated / "league-control-snapshot.parquet"
     )
+    demographics = pl.read_parquet(args.demographics_path)
     output = args.output_root / dated
     output.mkdir(parents=True, exist_ok=True)
     reports: dict[str, object] = {}
@@ -147,24 +192,42 @@ def main() -> int:
                 snapshots, stats, membership, skill,
                 snapshot_year=year, horizon=2,
                 player_type=player_type,
+                demographics=demographics,
             )
             for year in TRAINING_YEARS
         }
-        evaluation, passed = _evaluate(cohorts, player_type=player_type)
-        role_evaluation, role_passed = _evaluate(
-            cohorts, player_type=player_type,
-            target_column="meaningful_role_within_horizon",
-            outcome_name="meaningful_role",
+        evaluations = {
+            feature_set: _evaluate(
+                cohorts, player_type=player_type, feature_set=feature_set
+            )
+            for feature_set in FEATURE_SETS
+        }
+        selected_feature_set = _select_feature_set(
+            {key: value[0] for key, value in evaluations.items()}
         )
+        evaluation, passed = evaluations[selected_feature_set]
+        role_evaluations = {
+            feature_set: _evaluate(
+                cohorts, player_type=player_type,
+                target_column="meaningful_role_within_horizon",
+                outcome_name="meaningful_role", feature_set=feature_set,
+            )
+            for feature_set in FEATURE_SETS
+        }
+        selected_role_feature_set = _select_feature_set(
+            {key: value[0] for key, value in role_evaluations.items()}
+        )
+        role_evaluation, role_passed = role_evaluations[selected_role_feature_set]
         fit = fit_arrival_model(
             pl.concat([cohorts[year] for year in TRAINING_YEARS]),
-            player_type=player_type,
+            player_type=player_type, feature_set=selected_feature_set,
         )
         current_snapshot = pl.read_parquet(
             args.current_root / f"{player_type}_snapshot.parquet"
         )
         predictors = build_current_arrival_predictors(
-            current_snapshot, current_stats, control, skill, player_type=player_type
+            current_snapshot, current_stats, control, skill, player_type=player_type,
+            demographics=demographics,
         )
         scored = predict_arrival(fit, predictors)
         role_fit = fit_arrival_model(
@@ -172,6 +235,7 @@ def main() -> int:
             player_type=player_type,
             target_column="meaningful_role_within_horizon",
             outcome_name="meaningful_role",
+            feature_set=selected_role_feature_set,
         )
         scored = predict_arrival(role_fit, scored)
         selected = (
@@ -191,6 +255,8 @@ def main() -> int:
             ).alias("predicted_six_year_meaningful_role_probability"),
             pl.lit("logistic" if passed else "level_baseline").alias("selected_form"),
             pl.lit(ARRIVAL_MODEL_ID).alias("arrival_model_id"),
+            pl.lit(selected_feature_set).alias("arrival_feature_set"),
+            pl.lit(selected_role_feature_set).alias("meaningful_role_feature_set"),
         )
         path = output / f"{player_type}-arrival-probabilities.parquet"
         storage[player_type] = write_canonical_parquet(
@@ -198,10 +264,18 @@ def main() -> int:
         ).as_record()
         reports[player_type] = {
             "selected_form": "logistic" if passed else "level_baseline",
+            "selected_feature_set": selected_feature_set,
+            "candidate_evaluations": {
+                key: value[0] for key, value in evaluations.items()
+            },
             "gate_passed": passed, "training_cohorts": list(TRAINING_YEARS),
             "training_players": sum(cohorts[year].height for year in TRAINING_YEARS),
             "current_players": scored.height, "evaluation": evaluation,
             "meaningful_role_gate_passed": role_passed,
+            "selected_meaningful_role_feature_set": selected_role_feature_set,
+            "meaningful_role_candidate_evaluations": {
+                key: value[0] for key, value in role_evaluations.items()
+            },
             "meaningful_role_evaluation": role_evaluation,
             "mean_current_six_year_probability": float(
                 scored.get_column("predicted_six_year_arrival_probability").mean()
@@ -231,6 +305,10 @@ def main() -> int:
             ),
             "2018_prior_mlb_history_left_censored": True,
             "six_year_extrapolation_is_constant_two_year_hazard": True,
+            "all_demographics_scored_but_not_selectable": True,
+            "non_vintage_fields": (
+                "height, weight, strike-zone bounds, and current primary position"
+            ),
         },
         "storage": storage,
     }

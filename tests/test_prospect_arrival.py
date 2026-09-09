@@ -1,6 +1,7 @@
 import polars as pl
 
 from universal_baseball.prospect_arrival import (
+    arrival_design,
     build_arrival_cohort,
     six_year_probability,
 )
@@ -42,6 +43,12 @@ def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
     assert result.item(0, "arrived_within_horizon") == 1
     assert result.item(0, "meaningful_role_within_horizon") == 0
     assert result.item(0, "role_tier") == "MIDDLE_INFIELD"
+    assert arrival_design(result, feature_set="stable_demographics").shape[1] > (
+        arrival_design(result, feature_set="core").shape[1]
+    )
+    assert arrival_design(result, feature_set="all_demographics").shape[1] > (
+        arrival_design(result, feature_set="stable_demographics").shape[1]
+    )
 
 
 def test_two_year_probability_converts_to_six_year_windows() -> None:

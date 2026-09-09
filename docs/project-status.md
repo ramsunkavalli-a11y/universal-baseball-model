@@ -29,6 +29,12 @@ enters expected WAR; meaningful-role probability is diagnostic. The top prospect
 is still too crowded because conditional-on-arrival WAR is too generous. Historical
 MLB outcome quality and durable draft/signing evidence are the next P0 work.
 
+The first [demographic feature search](phase2-demographic-feature-search-2026-09-09.md)
+now retains official profiles for 24,328 players and tests stable and full demographic
+groups without outside FV inputs. Some pooled scores improved, but no group won every
+time fold, so none was promoted. Current-recorded physical measurements remain
+exploratory until their historical timing is safe.
+
 This work builds on the recovered-opportunity commit `7c2a874`. Main now contains the
 current model foundations, experiment records and plan. It does not change a website
 or promote a player ranking; the public v1 release remains historical.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from hashlib import sha256
 from math import log
 
 import numpy as np
@@ -15,6 +16,11 @@ from universal_baseball.hitter_opportunity_paths import hitter_level_tier
 ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v1"
 LEVELS = ("A_OR_BELOW", "AA", "AAA", "INACTIVE", "UNKNOWN")
 ROLES = ("C", "MIDDLE_INFIELD", "OUTFIELD", "CORNER", "STARTER", "SWINGMAN")
+COUNTRIES = (
+    "USA", "Dominican Republic", "Venezuela", "Mexico", "Cuba",
+    "Puerto Rico", "Canada", "Colombia", "Panama", "Nicaragua",
+    "Brazil", "Australia", "Japan", "South Korea", "Taiwan",
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -22,6 +28,7 @@ class ArrivalFit:
     player_type: str
     outcome_name: str
     target_column: str
+    feature_set: str
     model: LogisticRegression
     global_rate: float
     level_rates: dict[str, float]
@@ -137,10 +144,53 @@ def _fill_predictor_nulls(frame: pl.DataFrame) -> pl.DataFrame:
         pl.col("prior_affiliated_workload").fill_null(0.0),
         pl.col("prior_affiliated_seasons").fill_null(0.0),
         pl.col("role_tier").fill_null("OTHER"),
+        pl.col("height_inches").fill_null(72.0),
+        pl.col("weight_pounds").fill_null(190.0),
+        pl.col("bat_side").fill_null("U"),
+        pl.col("pitch_hand").fill_null("U"),
+        pl.col("birth_country").fill_null("UNKNOWN"),
+        pl.col("birth_city").fill_null("UNKNOWN"),
+        pl.col("birth_state_province").fill_null("UNKNOWN"),
+        pl.col("strike_zone_top").fill_null(3.4),
+        pl.col("strike_zone_bottom").fill_null(1.6),
+        pl.col("gender").fill_null("UNKNOWN"),
+        pl.col("primary_position_code").fill_null(""),
         *[
             pl.col(f"production_rate_{index}").fill_null(0.0)
             for index in range(1, 5)
         ],
+    )
+
+
+def _join_demographics(
+    frame: pl.DataFrame, demographics: pl.DataFrame | None
+) -> pl.DataFrame:
+    columns = (
+        "height_inches", "weight_pounds", "bat_side", "pitch_hand",
+        "birth_country", "birth_city", "birth_state_province",
+        "strike_zone_top", "strike_zone_bottom", "gender",
+        "primary_position_code",
+    )
+    if demographics is None:
+        return frame.with_columns(
+            pl.lit(None, dtype=pl.Float64).alias("height_inches"),
+            pl.lit(None, dtype=pl.Float64).alias("weight_pounds"),
+            pl.lit(None, dtype=pl.String).alias("bat_side"),
+            pl.lit(None, dtype=pl.String).alias("pitch_hand"),
+            pl.lit(None, dtype=pl.String).alias("birth_country"),
+            pl.lit(None, dtype=pl.String).alias("birth_city"),
+            pl.lit(None, dtype=pl.String).alias("birth_state_province"),
+            pl.lit(None, dtype=pl.Float64).alias("strike_zone_top"),
+            pl.lit(None, dtype=pl.Float64).alias("strike_zone_bottom"),
+            pl.lit(None, dtype=pl.String).alias("gender"),
+            pl.lit(None, dtype=pl.String).alias("primary_position_code"),
+        )
+    required = {"player_id", *columns}
+    if missing := sorted(required - set(demographics.columns)):
+        raise ValueError(f"demographics missing columns: {missing}")
+    return frame.join(
+        demographics.select("player_id", *columns),
+        on="player_id", how="left", validate="m:1",
     )
 
 
@@ -153,6 +203,7 @@ def build_arrival_cohort(
     snapshot_year: int,
     horizon: int,
     player_type: str,
+    demographics: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build a pre-MLB cohort and observed cumulative debut outcome."""
 
@@ -219,7 +270,7 @@ def build_arrival_cohort(
         )
     )
     return (
-        _fill_predictor_nulls(result)
+        _fill_predictor_nulls(_join_demographics(result, demographics))
         .filter(
             ~pl.col("prior_mlb")
             & (pl.col("level_tier") != "MLB")
@@ -230,6 +281,10 @@ def build_arrival_cohort(
             "prior_affiliated_workload", "prior_affiliated_seasons", "role_tier",
             *[f"production_rate_{index}" for index in range(1, 5)],
             "on_40man", "arrived_within_horizon", "meaningful_role_within_horizon",
+            "height_inches", "weight_pounds", "bat_side", "pitch_hand",
+            "birth_country", "strike_zone_top", "strike_zone_bottom", "gender",
+            "birth_city", "birth_state_province",
+            "primary_position_code",
         )
         .sort("player_id")
     )
@@ -242,6 +297,7 @@ def build_current_arrival_predictors(
     skill_stats: pl.DataFrame,
     *,
     player_type: str,
+    demographics: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build current features for players with an official no-debut state."""
 
@@ -267,17 +323,21 @@ def build_current_arrival_predictors(
         )
     )
     return (
-        _fill_predictor_nulls(result)
+        _fill_predictor_nulls(_join_demographics(result, demographics))
         .select(
             "player_id", "age_years", "level_tier", "current_milb_workload",
             "prior_affiliated_workload", "prior_affiliated_seasons", "role_tier",
             *[f"production_rate_{index}" for index in range(1, 5)], "on_40man",
+            "height_inches", "weight_pounds", "bat_side", "pitch_hand",
+            "birth_country", "strike_zone_top", "strike_zone_bottom", "gender",
+            "birth_city", "birth_state_province",
+            "primary_position_code",
         )
         .sort("player_id")
     )
 
 
-def arrival_design(frame: pl.DataFrame) -> np.ndarray:
+def arrival_design(frame: pl.DataFrame, *, feature_set: str = "core") -> np.ndarray:
     """Create the fixed low-dimensional, organization-free arrival design."""
 
     rows = []
@@ -293,6 +353,40 @@ def arrival_design(frame: pl.DataFrame) -> np.ndarray:
         values.extend(float(level == candidate) for candidate in LEVELS[:-1])
         values.extend(float(row["role_tier"] == candidate) for candidate in ROLES)
         values.extend(float(row[f"production_rate_{index}"]) for index in range(1, 5))
+        if feature_set in {"stable_demographics", "all_demographics"}:
+            values.extend(
+                [
+                    float(row["bat_side"] == "L"),
+                    float(row["bat_side"] == "S"),
+                    float(row["pitch_hand"] == "L"),
+                    float(row["bat_side"] == row["pitch_hand"]),
+                    float(row["gender"] != "M"),
+                ]
+            )
+            values.extend(
+                float(row["birth_country"] == country) for country in COUNTRIES
+            )
+        if feature_set == "all_demographics":
+            height = float(row["height_inches"])
+            weight = float(row["weight_pounds"])
+            values.extend(
+                [
+                    (height - 72.0) / 6.0,
+                    (weight - 190.0) / 40.0,
+                    (weight / max(height * height, 1.0) - 0.0367) / 0.008,
+                    (float(row["strike_zone_top"]) - 3.4) / 0.4,
+                    (float(row["strike_zone_bottom"]) - 1.6) / 0.25,
+                ]
+            )
+            values.extend(
+                float(row["primary_position_code"] == code)
+                for code in ("1", "2", "3", "4", "5", "6", "7", "8", "9", "O", "Y")
+            )
+            for field in ("birth_city", "birth_state_province"):
+                bucket = int.from_bytes(
+                    sha256(str(row[field]).encode("utf-8")).digest()[:2], "big"
+                ) % 16
+                values.extend(float(bucket == candidate) for candidate in range(16))
         rows.append(values)
     return np.asarray(rows, dtype=float)
 
@@ -303,22 +397,30 @@ def fit_arrival_model(
     player_type: str,
     target_column: str = "arrived_within_horizon",
     outcome_name: str = "arrival",
+    feature_set: str = "core",
 ) -> ArrivalFit:
     target = frame.get_column(target_column).to_numpy()
     if len(np.unique(target)) != 2:
         raise ValueError("arrival fitting requires both outcomes")
-    model = LogisticRegression(C=1.0, max_iter=2_000).fit(arrival_design(frame), target)
+    model = LogisticRegression(C=1.0, max_iter=2_000).fit(
+        arrival_design(frame, feature_set=feature_set), target
+    )
     global_rate = float(target.mean())
     level_rates: dict[str, float] = {}
     for level in LEVELS:
         cell = frame.filter(pl.col("level_tier") == level)
         successes = float(cell.get_column(target_column).sum())
         level_rates[level] = (successes + 50.0 * global_rate) / (cell.height + 50.0)
-    return ArrivalFit(player_type, outcome_name, target_column, model, global_rate, level_rates)
+    return ArrivalFit(
+        player_type, outcome_name, target_column, feature_set,
+        model, global_rate, level_rates,
+    )
 
 
 def predict_arrival(fit: ArrivalFit, frame: pl.DataFrame) -> pl.DataFrame:
-    probability = fit.model.predict_proba(arrival_design(frame))[:, 1]
+    probability = fit.model.predict_proba(
+        arrival_design(frame, feature_set=fit.feature_set)
+    )[:, 1]
     baseline = [
         fit.level_rates.get(hitter_level_tier(value), fit.global_rate)
         for value in frame.get_column("level_tier")
