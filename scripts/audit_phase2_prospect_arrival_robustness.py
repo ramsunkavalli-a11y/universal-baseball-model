@@ -49,6 +49,7 @@ INCUMBENT = CandidateSpec("core", 1.0)
 OUTCOMES = (
     ("arrival", "arrived_within_horizon"),
     ("meaningful_role", "meaningful_role_within_horizon"),
+    ("established_role", "established_role_within_horizon"),
 )
 
 
@@ -332,6 +333,10 @@ def main() -> int:
             "undrafted_international_path_explicit": True,
             "physical_current_profile_fields_excluded": True,
             "production_values_changed": False,
+            "established_role_definition": {
+                "hitter": "one 400 PA season or two 300 PA seasons within two years",
+                "pitcher": "one 400 BF season or two 200 BF seasons within two years",
+            },
             "fresh_confirmation_still_required": True,
         },
         "results": results,

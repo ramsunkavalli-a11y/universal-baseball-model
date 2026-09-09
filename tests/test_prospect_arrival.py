@@ -44,6 +44,7 @@ def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
     assert result.get_column("player_id").to_list() == [1]
     assert result.item(0, "arrived_within_horizon") == 1
     assert result.item(0, "meaningful_role_within_horizon") == 0
+    assert result.item(0, "established_role_within_horizon") == 0
     assert result.item(0, "role_tier") == "MIDDLE_INFIELD"
     assert arrival_design(result, feature_set="stable_demographics").shape[1] > (
         arrival_design(result, feature_set="core").shape[1]
@@ -151,3 +152,39 @@ def test_baseball_interactions_expand_core_without_current_profile_fields() -> N
     assert arrival_design(cohort, feature_set="baseball_interactions").shape[1] > (
         arrival_design(cohort, feature_set="core").shape[1]
     )
+
+
+def test_established_role_requires_high_or_repeated_future_workload() -> None:
+    snapshots = pl.DataFrame(
+        {"snapshot_year": [2021, 2021, 2021], "player_id": [1, 2, 3],
+         "age_years": [21.0, 21.0, 21.0], "as_of_level_group": ["AA"] * 3}
+    )
+    rows = []
+    for player_id, future in {
+        1: [(2022, 410)], 2: [(2022, 310), (2023, 305)], 3: [(2022, 399)],
+    }.items():
+        rows.append((2021, "hitting", player_id, 12, 100, 0, "SS"))
+        rows.extend((year, "hitting", player_id, 1, pa, 0, "SS") for year, pa in future)
+    stats = pl.DataFrame(
+        rows,
+        schema=["season", "stat_group", "player_id", "sport_id",
+                "plate_appearances", "batters_faced", "position_code"],
+        orient="row",
+    )
+    membership = pl.DataFrame(
+        {"season": [2021] * 3, "player_id": [1, 2, 3], "on_40man": [False] * 3}
+    )
+    skill = pl.DataFrame(
+        {"season": [2021] * 3, "player_id": [1, 2, 3], "sport_id": [12] * 3,
+         "plate_appearances": [100] * 3, "base_on_balls": [10] * 3,
+         "intentional_walks": [0] * 3, "strike_outs": [20] * 3,
+         "home_runs": [2] * 3, "doubles": [4] * 3, "triples": [1] * 3}
+    )
+    result = build_arrival_cohort(
+        snapshots, stats, membership, skill, snapshot_year=2021, horizon=2,
+        player_type="hitter",
+    )
+    established = dict(
+        result.select("player_id", "established_role_within_horizon").iter_rows()
+    )
+    assert established == {1: 1, 2: 1, 3: 0}

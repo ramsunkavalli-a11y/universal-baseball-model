@@ -286,6 +286,27 @@ def build_arrival_cohort(
             pl.lit(1).cast(pl.Int64).alias("meaningful_role_within_horizon")
         )
     )
+    season_workload = future_stats.group_by("player_id", "season").agg(
+        pl.col(workload).sum().alias("mlb_workload")
+    )
+    high_workload = 400
+    repeat_workload = 300 if player_type == "hitter" else 200
+    established_role = (
+        season_workload.group_by("player_id")
+        .agg(
+            pl.col("mlb_workload").max().alias("maximum_mlb_workload"),
+            (pl.col("mlb_workload") >= repeat_workload)
+            .sum().alias("repeat_workload_seasons"),
+        )
+        .filter(
+            (pl.col("maximum_mlb_workload") >= high_workload)
+            | (pl.col("repeat_workload_seasons") >= 2)
+        )
+        .select("player_id")
+        .with_columns(
+            pl.lit(1).cast(pl.Int64).alias("established_role_within_horizon")
+        )
+    )
     on_40man = membership.filter(pl.col("season") == snapshot_year).select(
         "player_id", "on_40man"
     )
@@ -295,11 +316,13 @@ def build_arrival_cohort(
         .join(on_40man, on="player_id", how="left")
         .join(future, on="player_id", how="left")
         .join(meaningful_role, on="player_id", how="left")
+        .join(established_role, on="player_id", how="left")
         .with_columns(
             pl.col("prior_mlb").fill_null(False),
             pl.col("on_40man").fill_null(False),
             pl.col("arrived_within_horizon").fill_null(0),
             pl.col("meaningful_role_within_horizon").fill_null(0),
+            pl.col("established_role_within_horizon").fill_null(0),
             pl.col("as_of_level_group").map_elements(
                 hitter_level_tier, return_dtype=pl.String
             ).alias("level_tier"),
@@ -323,6 +346,7 @@ def build_arrival_cohort(
             "prior_affiliated_workload", "prior_affiliated_seasons", "role_tier",
             *[f"production_rate_{index}" for index in range(1, 5)],
             "on_40man", "arrived_within_horizon", "meaningful_role_within_horizon",
+            "established_role_within_horizon",
             "height_inches", "weight_pounds", "bat_side", "pitch_hand",
             "birth_country", "strike_zone_top", "strike_zone_bottom", "gender",
             "birth_city", "birth_state_province",

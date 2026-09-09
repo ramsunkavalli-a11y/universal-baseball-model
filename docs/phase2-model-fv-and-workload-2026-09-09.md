@@ -89,8 +89,9 @@ information. This is the likely missing evidence for players such as Josuar Gonz
    fringe/meaningful replacement overcorrects and is rejected. Fit regular/impact
    outcome probabilities before changing Model FV.
 3. **P0:** Draft pedigree is now sourced and chronology-tested. Use the supported
-   hitter signal in the regular/impact outcome challenger; keep the smaller pitcher
-   signal in research. International signing bonuses remain a source gap.
+   hitter signal for arrival and meaningful-role odds, but not as a value floor:
+   pedigree was not selected for the stricter established-role outcome. Keep the
+   smaller pitcher signal in research. International signing bonuses remain a gap.
 4. **P1:** Calibrate six-year uncertainty and star probabilities from historical paths.
 5. **P1:** Improve pitcher role transitions and minor-league development paths.
 6. **P2:** Test a portable organization-development effect under the guardrails above.

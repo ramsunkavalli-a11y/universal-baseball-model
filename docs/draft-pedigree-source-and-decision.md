@@ -19,8 +19,9 @@ The model uses era-neutral evidence:
 In the untouched 2023 outer cohort, adding pedigree to the same baseball-interaction
 model improved hitter arrival and meaningful-role log loss with paired 95% intervals
 fully below zero. Pitcher direction was favorable but uncertain. This supports using
-pedigree in the next hitter outcome-quality challenger, while pitcher use remains
-research-only.
+pedigree in the next hitter arrival/role challenger, while pitcher use remains
+research-only. Pedigree was not selected for the stricter established-role outcome,
+so it must not become a fixed WAR bonus or FV floor.
 
 This evidence estimates historical odds; it does not create a fixed WAR bonus or an
 FV floor. International signing bonus is not present in this source and remains a
