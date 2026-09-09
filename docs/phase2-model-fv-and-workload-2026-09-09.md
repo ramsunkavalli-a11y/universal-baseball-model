@@ -79,16 +79,21 @@ information. This is the likely missing evidence for players such as Josuar Gonz
 
 ## Next priorities
 
-1. **P0:** Continue the historical MLB outcome-quality model. The first
+1. **P0:** Add organization-season workload reconciliation. Player projections must
+   compete for a fixed, realistic PA and pitcher BF/innings pool, while preserving an
+   explicit share for replacement players, injuries, trades, and future acquisitions.
+   Skill stays separate; only opportunity is reallocated.
+2. **P0:** Continue the historical MLB outcome-quality model. The first
    [mature workload result](prospect-outcome-quality-workload-result.md) proves that
    full-season workload after any arrival is too generous, but its binary
    fringe/meaningful replacement overcorrects and is rejected. Fit regular/impact
    outcome probabilities before changing Model FV.
-2. **P0:** Add durable draft/signing pedigree and test whether it fixes low-minors
-   under-valuation without making ranked lists an input.
-3. **P1:** Calibrate six-year uncertainty and star probabilities from historical paths.
-4. **P1:** Improve pitcher role transitions and minor-league development paths.
-5. **P2:** Test a portable organization-development effect under the guardrails above.
+3. **P0:** Draft pedigree is now sourced and chronology-tested. Use the supported
+   hitter signal in the regular/impact outcome challenger; keep the smaller pitcher
+   signal in research. International signing bonuses remain a source gap.
+4. **P1:** Calibrate six-year uncertainty and star probabilities from historical paths.
+5. **P1:** Improve pitcher role transitions and minor-league development paths.
+6. **P2:** Test a portable organization-development effect under the guardrails above.
 
 Run the private build with `play-with-results.cmd`. Generated data remain ignored;
 the scripts, tests, and decisions are versioned.

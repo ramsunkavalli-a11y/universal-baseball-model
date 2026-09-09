@@ -40,6 +40,8 @@ FEATURE_SETS = (
     "role_production_interactions",
     "baseball_interactions",
     "baseball_demographics",
+    "draft_pedigree",
+    "baseball_pedigree",
 )
 REGULARIZATION = (0.03, 0.1, 0.3, 1.0)
 PRODUCTION_REGRESSION = (0.0, 50.0, 200.0, 600.0)
@@ -132,6 +134,10 @@ def _subgroup_rows(
         ],
         "bat_side": evaluation.get_column("bat_side").cast(pl.String).to_list(),
         "throw_hand": evaluation.get_column("pitch_hand").cast(pl.String).to_list(),
+        "entry_path": [
+            "rule4_draft" if drafted else "international_or_other"
+            for drafted in evaluation.get_column("rule4_drafted").to_list()
+        ],
     }
     rows: list[dict[str, object]] = []
     for dimension, labels in dimensions.items():
@@ -169,6 +175,7 @@ def main() -> int:
     demographics = pl.read_parquet(
         root / "player-demographics/tables/player-demographics.parquet"
     )
+    draft_history = pl.read_parquet(root / "draft-history/draft-history.parquet")
     normalized = demographics.get_column("birth_country").map_elements(
         normalize_birth_country, return_dtype=pl.String
     )
@@ -215,6 +222,7 @@ def main() -> int:
                 horizon=HORIZON,
                 player_type=player_type,
                 demographics=demographics,
+                draft_history=draft_history,
             )
             for year in (2018, 2021, 2022, 2023)
         }
@@ -319,6 +327,9 @@ def main() -> int:
             "two_year_outcome_embargo": True,
             "player_level_paired_bootstrap": True,
             "country_used_for_arrival_or_role_not_direct_talent": True,
+            "draft_evidence_known_by_snapshot_year_only": True,
+            "draft_dollars_compared_within_draft_year": True,
+            "undrafted_international_path_explicit": True,
             "physical_current_profile_fields_excluded": True,
             "production_values_changed": False,
             "fresh_confirmation_still_required": True,

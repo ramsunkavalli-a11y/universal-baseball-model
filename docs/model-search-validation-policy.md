@@ -22,6 +22,38 @@ pitching, or WAR talent. Expected skill times expected workload is not automatic
 expected production when those quantities are dependent; final assembly must model
 that dependence or simulate joint paths.
 
+## Closed playing-time system
+
+Player-level opportunity estimates are not allowed to create extra league playing
+time. Before WAR or value is finalized, projected workload must be reconciled within
+each organization and season against realistic major-league pools:
+
+- hitter PA compete for a fixed team-season batting pool, with position and catcher
+  availability treated as constraints rather than talent bonuses;
+- pitcher BF or innings compete for a fixed team-season pitching pool, split across
+  starter, swingman, and relief roles;
+- replacement players, external acquisitions, injuries, trades, and unfilled future
+  roster share remain explicit rather than being silently assigned to prospects;
+- increasing one player's allocated workload reduces another player's share or an
+  explicit replacement/external share;
+- reconciliation changes opportunity and uncertainty, never underlying skill.
+
+League- and team-season conservation checks are required alongside player-level error
+metrics. Reject a model that improves individual error by forecasting an impossible
+total PA, BF, or innings pool.
+
+Opportunity must be reported in two distinct views:
+
+1. **Organization-neutral opportunity** uses a typical MLB environment and supports
+   talent, trade, and long-term contract value. A crowded current depth chart cannot
+   make a player less talented or less valuable to another club.
+2. **Current-organization opportunity** allocates the club's fixed PA and pitcher
+   BF/innings pools using its actual roster, positions, roles, options, injuries, and
+   depth. This view supports season and near-term production forecasts.
+
+Organization and depth information may change the second view only. It must never
+enter the underlying skill estimate or the organization-neutral value directly.
+
 ## Eligible evidence
 
 Every predictor must have been available at the forecast cutoff. Include failures,

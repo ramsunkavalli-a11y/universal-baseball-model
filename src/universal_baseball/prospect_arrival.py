@@ -12,6 +12,7 @@ from sklearn.linear_model import LogisticRegression
 
 from universal_baseball.hitter_opportunity_paths import hitter_level_tier
 from universal_baseball.player_demographics import normalize_birth_country
+from universal_baseball.draft_source import draft_pedigree_as_of
 
 
 ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v1"
@@ -158,6 +159,11 @@ def _fill_predictor_nulls(frame: pl.DataFrame) -> pl.DataFrame:
         pl.col("strike_zone_bottom").fill_null(1.6),
         pl.col("gender").fill_null("UNKNOWN"),
         pl.col("primary_position_code").fill_null(""),
+        pl.col("rule4_drafted").fill_null(False),
+        pl.col("draft_pick_quality").fill_null(0.0),
+        pl.col("signing_bonus_percentile").fill_null(0.0),
+        pl.col("signing_bonus_known").fill_null(False),
+        pl.col("high_school_draftee").fill_null(False),
         *[
             pl.col(f"production_rate_{index}").fill_null(0.0)
             for index in range(1, 5)
@@ -197,6 +203,32 @@ def _join_demographics(
     )
 
 
+def _join_pedigree(
+    frame: pl.DataFrame,
+    draft_history: pl.DataFrame | None,
+    *,
+    snapshot_year: int,
+) -> pl.DataFrame:
+    columns = (
+        "rule4_drafted", "draft_pick_quality", "signing_bonus_percentile",
+        "signing_bonus_known", "high_school_draftee",
+    )
+    if draft_history is None:
+        return frame.with_columns(
+            pl.lit(None, dtype=pl.Boolean).alias("rule4_drafted"),
+            pl.lit(None, dtype=pl.Float64).alias("draft_pick_quality"),
+            pl.lit(None, dtype=pl.Float64).alias("signing_bonus_percentile"),
+            pl.lit(None, dtype=pl.Boolean).alias("signing_bonus_known"),
+            pl.lit(None, dtype=pl.Boolean).alias("high_school_draftee"),
+        )
+    return frame.join(
+        draft_pedigree_as_of(draft_history, snapshot_year).select(
+            "player_id", *columns
+        ),
+        on="player_id", how="left", validate="m:1",
+    )
+
+
 def build_arrival_cohort(
     snapshots: pl.DataFrame,
     stats: pl.DataFrame,
@@ -207,6 +239,7 @@ def build_arrival_cohort(
     horizon: int,
     player_type: str,
     demographics: pl.DataFrame | None = None,
+    draft_history: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build a pre-MLB cohort and observed cumulative debut outcome."""
 
@@ -273,7 +306,13 @@ def build_arrival_cohort(
         )
     )
     return (
-        _fill_predictor_nulls(_join_demographics(result, demographics))
+        _fill_predictor_nulls(
+            _join_pedigree(
+                _join_demographics(result, demographics),
+                draft_history,
+                snapshot_year=snapshot_year,
+            )
+        )
         .filter(
             ~pl.col("prior_mlb")
             & (pl.col("level_tier") != "MLB")
@@ -288,6 +327,8 @@ def build_arrival_cohort(
             "birth_country", "strike_zone_top", "strike_zone_bottom", "gender",
             "birth_city", "birth_state_province",
             "primary_position_code",
+            "rule4_drafted", "draft_pick_quality", "signing_bonus_percentile",
+            "signing_bonus_known", "high_school_draftee",
         )
         .sort("player_id")
     )
@@ -301,6 +342,7 @@ def build_current_arrival_predictors(
     *,
     player_type: str,
     demographics: pl.DataFrame | None = None,
+    draft_history: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build current features for players with an official no-debut state."""
 
@@ -326,7 +368,13 @@ def build_current_arrival_predictors(
         )
     )
     return (
-        _fill_predictor_nulls(_join_demographics(result, demographics))
+        _fill_predictor_nulls(
+            _join_pedigree(
+                _join_demographics(result, demographics),
+                draft_history,
+                snapshot_year=snapshot_year,
+            )
+        )
         .select(
             "player_id", "age_years", "level_tier", "current_milb_workload",
             "prior_affiliated_workload", "prior_affiliated_seasons", "role_tier",
@@ -335,6 +383,8 @@ def build_current_arrival_predictors(
             "birth_country", "strike_zone_top", "strike_zone_bottom", "gender",
             "birth_city", "birth_state_province",
             "primary_position_code",
+            "rule4_drafted", "draft_pick_quality", "signing_bonus_percentile",
+            "signing_bonus_known", "high_school_draftee",
         )
         .sort("player_id")
     )
@@ -355,6 +405,7 @@ def arrival_design(
         "all_demographics", "all_interactions", "development_interactions",
         "role_production_interactions", "baseball_interactions",
         "baseball_demographics",
+        "draft_pedigree", "baseball_pedigree",
     }
     if feature_set not in supported:
         raise ValueError(f"unsupported arrival feature set: {feature_set}")
@@ -398,11 +449,11 @@ def arrival_design(
         values.extend(production_rates)
         uses_development = feature_set in {
             "development_interactions", "baseball_interactions",
-            "baseball_demographics",
+            "baseball_demographics", "baseball_pedigree",
         }
         uses_role_production = feature_set in {
             "role_production_interactions", "baseball_interactions",
-            "baseball_demographics",
+            "baseball_demographics", "baseball_pedigree",
         }
         if uses_development:
             values.extend(age_scaled * flag for flag in level_flags)
@@ -416,6 +467,23 @@ def arrival_design(
         if uses_role_production:
             values.extend(
                 rate * flag for flag in role_flags for rate in production_rates
+            )
+        if feature_set in {"draft_pedigree", "baseball_pedigree"}:
+            rule4 = float(bool(row["rule4_drafted"]))
+            international = float(
+                not bool(row["rule4_drafted"])
+                and normalize_birth_country(row["birth_country"]) != "USA"
+            )
+            values.extend(
+                [
+                    rule4,
+                    international,
+                    float(row["draft_pick_quality"]),
+                    float(bool(row["signing_bonus_known"])),
+                    float(row["signing_bonus_percentile"]),
+                    float(bool(row["high_school_draftee"])),
+                    age_scaled * float(row["draft_pick_quality"]),
+                ]
             )
         uses_hands = feature_set in {
             "handedness", "stable_demographics", "stable_interactions",

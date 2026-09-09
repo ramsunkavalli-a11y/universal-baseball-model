@@ -2,6 +2,12 @@
 
 Updated 2026-09-09. This is the current start-here document.
 
+Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
+A nested later-cohort audit supports draft pedigree for hitter arrival and meaningful
+role research; pitcher gains are directionally positive but uncertain. Pre-MLB FV is
+now bracketed: the year-by-year paths are too conservative for true elite prospects,
+while the six-full-seasons override is too generous across the long tail.
+
 ## Active plan
 
 The user has prioritized model quality and paused interface development. Read the
