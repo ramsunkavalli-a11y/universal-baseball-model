@@ -126,6 +126,23 @@ October ownership and service evidence, produces 7,749 usable values, and explai
 all 4,049 material changes without treating the update as an accuracy score.
 Both historical checkpoints now carry the same Phase 1 WAR/value reference ranges as
 the current build; the ranges remain uncalibrated and omit cross-season covariance.
+
+## Play with the current results
+
+On Windows, double-click `play-with-results.cmd`. It builds and opens a private local
+webpage from the generated Phase 1 files already on this computer. The page supports
+player search, team and review filters, sortable results, year-by-year detail and CSV
+export. Nothing is uploaded or published. Rebuild it directly with:
+
+```text
+python scripts/build_results_explorer.py
+```
+
+The builder automatically uses the newest dated checkpoint that has value, annual and
+player-name files, so the same launcher will follow later complete builds.
+
+The viewer deliberately labels these as research estimates. It does not remove review
+rows or turn the Phase 1 reference ranges into calibrated confidence intervals.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Universal Baseball Model — Results</title>
+  <style>
+    :root { --ink:#172126; --muted:#607078; --paper:#f4f1e9; --card:#fffdf8; --line:#d7d2c6; --navy:#173c4d; --orange:#e36c35; --green:#26705a; --red:#a44139; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    header { padding:28px 34px 22px; color:white; background:linear-gradient(120deg,#102f3d,#1d5264); border-bottom:5px solid var(--orange); }
+    header h1 { margin:0 0 4px; font:700 30px/1.15 Georgia,serif; letter-spacing:-.02em; }
+    header p { margin:0; color:#d9e8ec; }
+    main { max-width:1500px; margin:auto; padding:22px 28px 50px; }
+    .warning { background:#fff3dc; border:1px solid #e4b66b; border-left:5px solid var(--orange); padding:12px 15px; margin-bottom:18px; border-radius:7px; }
+    .metrics { display:grid; grid-template-columns:repeat(4,minmax(150px,1fr)); gap:12px; margin-bottom:18px; }
+    .metric { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; box-shadow:0 2px 8px #2632380d; }
+    .metric span { display:block; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+    .metric strong { font:700 25px/1.35 Georgia,serif; }
+    .toolbar { display:grid; grid-template-columns:minmax(240px,2fr) minmax(150px,1fr) minmax(140px,1fr) auto; gap:10px; margin-bottom:12px; }
+    input,select,button { min-height:42px; border:1px solid #aeb8ba; border-radius:7px; background:white; padding:8px 11px; color:var(--ink); font:inherit; }
+    button { cursor:pointer; background:var(--navy); color:white; border-color:var(--navy); font-weight:650; }
+    button:hover,button:focus { background:#245e73; }
+    .layout { display:grid; grid-template-columns:minmax(620px,1.8fr) minmax(330px,1fr); gap:15px; align-items:start; }
+    .panel { background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; box-shadow:0 2px 10px #2632380d; }
+    .table-wrap { overflow:auto; max-height:68vh; }
+    table { width:100%; border-collapse:collapse; white-space:nowrap; }
+    th { position:sticky; top:0; z-index:1; background:#e8e5dc; text-align:right; padding:10px 9px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid #beb9ae; cursor:pointer; }
+    th:nth-child(2),th:nth-child(3),td:nth-child(2),td:nth-child(3) { text-align:left; }
+    td { text-align:right; padding:9px; border-bottom:1px solid #e7e2d8; }
+    tbody tr { cursor:pointer; }
+    tbody tr:hover,tbody tr.active { background:#fff0dc; }
+    .player { font-weight:700; color:var(--navy); }
+    .badge { display:inline-block; border-radius:99px; padding:2px 7px; font-size:11px; font-weight:700; background:#dcebe5; color:var(--green); }
+    .badge.review { background:#f4dfdc; color:var(--red); }
+    .count { color:var(--muted); margin:8px 2px; }
+    #detail { padding:20px; min-height:330px; }
+    #detail h2 { margin:0; color:var(--navy); font:700 25px Georgia,serif; }
+    #detail .sub { color:var(--muted); margin:3px 0 18px; }
+    .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:20px; }
+    .detail-item { padding:10px; border-radius:7px; background:#f1eee6; }
+    .detail-item span { display:block; color:var(--muted); font-size:11px; text-transform:uppercase; }
+    .detail-item strong { font-size:17px; }
+    .years { overflow:auto; }
+    .years table { font-size:12px; }
+    .years th { position:static; cursor:default; }
+    .empty { color:var(--muted); text-align:center; padding:60px 20px; }
+    footer { margin-top:18px; color:var(--muted); font-size:12px; }
+    @media (max-width:1000px) { .layout{grid-template-columns:1fr}.table-wrap{max-height:55vh}.metrics{grid-template-columns:1fr 1fr}.toolbar{grid-template-columns:1fr 1fr} }
+    @media (max-width:620px) { main{padding:15px}.metrics,.toolbar{grid-template-columns:1fr}.table-wrap{max-height:52vh} }
+  </style>
+</head>
+<body>
+  <header><h1>Universal Baseball Model</h1><p>Phase 1 results explorer · __CHECKPOINT__</p></header>
+  <main>
+    <div class="warning" id="warning"></div>
+    <section class="metrics">
+      <div class="metric"><span>Usable players</span><strong id="available"></strong></div>
+      <div class="metric"><span>Total remaining WAR</span><strong id="totalWar"></strong></div>
+      <div class="metric"><span>Total modeled value</span><strong id="totalValue"></strong></div>
+      <div class="metric"><span>Needs review</span><strong id="reviews"></strong></div>
+    </section>
+    <section class="toolbar" aria-label="Result filters">
+      <input id="search" type="search" placeholder="Search player name or MLBAM ID" aria-label="Search players">
+      <select id="team" aria-label="Filter by team"><option value="">All teams</option></select>
+      <select id="status" aria-label="Filter by status"><option value="available">Usable values</option><option value="">All records</option><option value="review">Needs review</option></select>
+      <button id="export">Export view to CSV</button>
+    </section>
+    <div class="count" id="count"></div>
+    <section class="layout">
+      <div class="panel table-wrap">
+        <table><thead><tr>
+          <th data-key="rank">Rank</th><th data-key="name">Player</th><th data-key="team">Team</th>
+          <th data-key="war">WAR</th><th data-key="cost">Cost</th><th data-key="value">Modeled value</th><th data-key="status">Status</th>
+        </tr></thead><tbody id="rows"></tbody></table>
+      </div>
+      <aside class="panel" id="detail"><div class="empty">Select a player to see the yearly path.</div></aside>
+    </section>
+    <footer>Team-neutral research estimates. A range is a Phase 1 sensitivity reference, not a confidence guarantee. Review rows are intentionally unresolved.</footer>
+  </main>
+  <script id="explorer-data" type="application/json">__EXPLORER_DATA__</script>
+  <script>
+    const DATA=JSON.parse(document.getElementById('explorer-data').textContent);
+    const $=id=>document.getElementById(id); let shown=[]; let sortKey='value'; let sortDir=-1;
+    const money=v=>v==null?'—':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',notation:'compact',maximumFractionDigits:1}).format(v);
+    const num=(v,d=1)=>v==null?'—':Number(v).toFixed(d);
+    const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    $('warning').textContent=DATA.meta.warning; $('available').textContent=DATA.meta.available_count.toLocaleString();
+    $('reviews').textContent=DATA.meta.review_count.toLocaleString(); $('totalWar').textContent=num(DATA.meta.total_war);
+    $('totalValue').textContent=money(DATA.meta.total_value);
+    [...new Set(DATA.players.map(p=>p.team))].sort().forEach(t=>$('team').insertAdjacentHTML('beforeend',`<option>${esc(t)}</option>`));
+    function compare(a,b){let x=a[sortKey],y=b[sortKey]; if(x==null)x=sortDir>0?Infinity:-Infinity;if(y==null)y=sortDir>0?Infinity:-Infinity;return (typeof x==='string'?x.localeCompare(y):x-y)*sortDir;}
+    function filter(){const q=$('search').value.trim().toLowerCase(),team=$('team').value,status=$('status').value; shown=DATA.players.filter(p=>(!q||p.name.toLowerCase().includes(q)||String(p.id).includes(q))&&(!team||p.team===team)&&(!status||p.status===status)).sort(compare); render();}
+    function render(){ $('count').textContent=`Showing ${shown.length.toLocaleString()} of ${DATA.meta.player_count.toLocaleString()} players`; $('rows').innerHTML=shown.map(p=>`<tr data-id="${p.id}"><td>${p.rank??'—'}</td><td><span class="player">${esc(p.name)}</span><br><small>MLBAM ${p.id}</small></td><td>${esc(p.team)}</td><td>${num(p.war)}</td><td>${money(p.cost)}</td><td>${money(p.value)}</td><td><span class="badge ${p.status==='available'?'':'review'}">${p.status==='available'?'usable':'review'}</span></td></tr>`).join(''); document.querySelectorAll('tbody tr').forEach(r=>r.onclick=()=>detail(Number(r.dataset.id))); }
+    function detail(id){const p=DATA.players.find(x=>x.id===id);document.querySelectorAll('tbody tr').forEach(r=>r.classList.toggle('active',Number(r.dataset.id)===id)); const years=p.years.map(y=>`<tr><td>${y.season}</td><td>${num(y.projected_war_mean)}</td><td>${num(y.projected_war_lower)}–${num(y.projected_war_upper)}</td><td>${esc(y.control_status)}</td><td>${money(y.salary_cost_dollars)}</td><td>${money(y.discounted_contract_value_dollars)}</td></tr>`).join(''); $('detail').innerHTML=`<h2>${esc(p.name)}</h2><div class="sub">${esc(p.team)} · MLBAM ${p.id} · ${esc(p.rights.replaceAll('_',' '))}</div><div class="detail-grid"><div class="detail-item"><span>Modeled value</span><strong>${money(p.value)}</strong></div><div class="detail-item"><span>Value range</span><strong>${money(p.value_low)} – ${money(p.value_high)}</strong></div><div class="detail-item"><span>Remaining WAR</span><strong>${num(p.war)}</strong></div><div class="detail-item"><span>WAR range</span><strong>${num(p.war_low)} – ${num(p.war_high)}</strong></div><div class="detail-item"><span>Expected cost</span><strong>${money(p.cost)}</strong></div><div class="detail-item"><span>Coverage</span><strong>${esc(p.coverage.replaceAll('_',' '))}</strong></div></div><h3>Year-by-year path</h3><div class="years"><table><thead><tr><th>Year</th><th>WAR</th><th>WAR range</th><th>Control</th><th>Cost</th><th>Value</th></tr></thead><tbody>${years||'<tr><td colspan="6">No annual value rows</td></tr>'}</tbody></table></div>`;}
+    function csv(){const cells=s=>`"${String(s??'').replaceAll('"','""')}"`;const lines=[['Rank','Player','MLBAM ID','Team','WAR','WAR low','WAR high','Cost','Modeled value','Value low','Value high','Status'].map(cells).join(',')];shown.forEach(p=>lines.push([p.rank,p.name,p.id,p.team,p.war,p.war_low,p.war_high,p.cost,p.value,p.value_low,p.value_high,p.status].map(cells).join(',')));const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/csv'}));a.download='universal-baseball-results.csv';a.click();URL.revokeObjectURL(a.href);}
+    ['search','team','status'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',filter));$('export').onclick=csv;
+    document.querySelectorAll('th[data-key]').forEach(th=>th.onclick=()=>{const k=th.dataset.key;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=k==='name'||k==='team'||k==='status'?1:-1}filter();});filter();if(shown.length)detail(shown[0].id);
+  </script>
+</body>
+</html>

@@ -15,6 +15,9 @@ but missing career/control/cost and continuous-update integration. It also ident
 older opportunity/roster models to reuse before building another challenger.
 The broader roadmap now includes pitcher and whole-player value integration;
 website work remains paused. No player dollar ranking has been promoted.
+A private, generated results explorer now makes the current research checkpoint easy
+to inspect without publishing it. It exposes filters, sortable player results,
+year-by-year paths, review rows and CSV export while retaining the model warnings.
 
 This work builds on the recovered-opportunity commit `7c2a874`. Main now contains the
 current model foundations, experiment records and plan. It does not change a website
