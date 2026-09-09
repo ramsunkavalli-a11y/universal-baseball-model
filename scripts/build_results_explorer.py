@@ -14,6 +14,7 @@ REPORT_ROOTS = (
     Path("reports/generated/current-and-future-contract-economics-v2"),
     Path("reports/generated/league-control"),
 )
+PHASE2_ROOT = Path("reports/generated/phase2-current-value")
 
 
 def _args() -> argparse.Namespace:
@@ -45,17 +46,29 @@ def latest_common_date(roots: tuple[Path, ...] = REPORT_ROOTS) -> str:
 
 def main() -> int:
     args = _args()
-    as_of_date = args.as_of_date or latest_common_date()
-    value_path = (
-        Path("reports/generated/phase1-sequential-replay")
-        / as_of_date
-        / "value-records.parquet"
+    phase2_dates = (
+        {child.name for child in PHASE2_ROOT.iterdir() if child.is_dir()}
+        if PHASE2_ROOT.exists()
+        else set()
     )
-    annual_path = (
-        Path("reports/generated/current-and-future-contract-economics-v2")
-        / as_of_date
-        / "annual-contract-economics.parquet"
+    as_of_date = args.as_of_date or (
+        max(phase2_dates) if phase2_dates else latest_common_date()
     )
+    phase2_dated = PHASE2_ROOT / as_of_date
+    if (phase2_dated / "value-records.parquet").exists():
+        value_path = phase2_dated / "value-records.parquet"
+        annual_path = phase2_dated / "annual-contract-economics.parquet"
+    else:
+        value_path = (
+            Path("reports/generated/phase1-sequential-replay")
+            / as_of_date
+            / "value-records.parquet"
+        )
+        annual_path = (
+            Path("reports/generated/current-and-future-contract-economics-v2")
+            / as_of_date
+            / "annual-contract-economics.parquet"
+        )
     names_path = (
         Path("reports/generated/league-control")
         / as_of_date

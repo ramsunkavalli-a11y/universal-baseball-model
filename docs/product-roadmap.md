@@ -81,6 +81,13 @@ reported, and sequential replay passes end-to-end checks. The website remains pa
 
 ## Phase 2: granular improvement
 
+Phase 2 first establishes an independent Model FV layer. Player-level publication
+grades/ranks are validation only. Our projected production and development determine
+the outcome distribution and granular FV; the nearest five-point grade is displayed.
+Talent/FV remains separate from contract status and salary. League role and position
+counts are diagnostics, never fixed quotas. See the
+[current Phase 2 preview](phase2-model-fv-and-workload-2026-09-09.md).
+
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.
 10. Improve defense, two-way-player handling, interval calibration, nonlinear buyer

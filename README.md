@@ -13,6 +13,11 @@ and Phase 2 sequence. Read it first, then the
 [status and handoff](docs/project-status.md). Component-specific plans are historical
 records when they conflict with that sequence.
 
+Phase 2 now has a private [production-based Model FV and workload preview](docs/phase2-model-fv-and-workload-2026-09-09.md).
+It fixes the established-player workload tail, values pre-MLB players over six control
+years after arrival, and keeps Model FV separate from contract surplus. Publication
+player grades are validation only.
+
 The [trade-value direction review](docs/trade-value-direction-review.md) maps
 existing model work to career production, team rights/costs, uncertainty and
 continuous updates. Those layers define the destination; batting is one component.
@@ -130,7 +135,8 @@ the current build; the ranges remain uncalibrated and omit cross-season covarian
 ## Play with the current results
 
 On Windows, double-click `play-with-results.cmd`. It builds and opens a private local
-webpage in Edge, or Chrome if Edge is unavailable, from the generated Phase 1 files
+webpage in Edge, or Chrome if Edge is unavailable, from the newest complete Phase 2
+preview when available, otherwise the retained Phase 1 files
 already on this computer. The page supports
 player search, team and review filters, sortable results, year-by-year detail and CSV
 export. Nothing is uploaded or published. Rebuild it directly with:
@@ -143,7 +149,7 @@ The builder automatically uses the newest dated checkpoint that has value, annua
 player-name files, so the same launcher will follow later complete builds.
 
 The viewer deliberately labels these as research estimates. It does not remove review
-rows or turn the Phase 1 reference ranges into calibrated confidence intervals.
+rows or turn reference ranges into calibrated confidence intervals.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

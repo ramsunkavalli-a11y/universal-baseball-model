@@ -103,6 +103,7 @@ def build_explorer_payload(
         .unique("player_id", keep="first")
         .iter_rows(named=True)
     }
+    phase2 = "expected_controlled_war" in values.columns
     annual_lookup: dict[int, list[dict[str, Any]]] = {}
     annual_columns = [
         "season",
@@ -127,6 +128,8 @@ def build_explorer_payload(
     for row in values.iter_rows(named=True):
         player_id = int(row["player_id"])
         organization_id = row["organization_id"]
+        value_method = row.get("value_method") or "phase1_integrated_value"
+        is_pre_mlb_value = value_method == "model_fv_pre_mlb_benchmark_value"
         players.append(
             {
                 "id": player_id,
@@ -136,14 +139,25 @@ def build_explorer_payload(
                 "rights": row["rights_state"],
                 "status": row["calculation_status"],
                 "coverage": row["coverage_tier"],
-                "war": row["expected_remaining_war"],
+                "war": row.get("expected_controlled_war", row["expected_remaining_war"]),
+                "projection_war": row.get(
+                    "statsapi_projected_war", row["expected_remaining_war"]
+                ),
                 "war_low": row["expected_remaining_war_lower"],
                 "war_high": row["expected_remaining_war_upper"],
                 "cost": row["expected_remaining_cost_dollars"],
                 "value": row["transferable_value_dollars"],
                 "value_low": row["transferable_value_lower_dollars"],
                 "value_high": row["transferable_value_upper_dollars"],
-                "years": annual_lookup.get(player_id, []),
+                "value_method": value_method,
+                "model_fv": row.get("model_fv_display"),
+                "model_fv_granular": row.get("model_fv_granular"),
+                "model_role": row.get("model_role"),
+                "model_player_type": row.get("model_player_type"),
+                "talent_value": row.get("talent_benchmark_value_dollars"),
+                "star_probability": row.get("star_outcome_probability"),
+                "is_pre_mlb_value": is_pre_mlb_value,
+                "years": [] if is_pre_mlb_value else annual_lookup.get(player_id, []),
             }
         )
     players.sort(
@@ -170,8 +184,13 @@ def build_explorer_payload(
             "review_count": values.filter(pl.col("calculation_status") != "available").height,
             "total_war": values.get_column("expected_remaining_war").sum(),
             "total_value": values.get_column("transferable_value_dollars").sum(),
+            "phase": "Phase 2 preview" if phase2 else "Phase 1",
             "warning": (
-                "Research view only. Values use Phase 1 assumptions, uncalibrated "
+                "Private Phase 2 preview. MLB values use corrected market-tier and "
+                "sequential-decision logic. Model FV comes only from our projected "
+                "production; publication player grades are validation only."
+                if phase2
+                else "Research view only. Values use Phase 1 assumptions, uncalibrated "
                 "reference ranges and current CBA planning rules."
             ),
         },

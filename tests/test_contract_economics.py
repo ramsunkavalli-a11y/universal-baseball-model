@@ -310,3 +310,76 @@ def test_tiered_market_rejects_rest_of_season_war_as_tier_input() -> None:
     )
     assert result.reviews.height == 1
     assert "full-season WAR tier" in result.reviews.item(0, "review_reason")
+
+
+def test_market_tier_can_stay_anchored_to_first_full_future_season() -> None:
+    source = pl.concat(
+        [
+            _input(
+                status="guaranteed_contract", war=2.1, salary=1, lower=0.0, upper=3.0
+            ).with_columns(
+                pl.lit(2027).alias("season")
+            ),
+            _input(
+                status="guaranteed_contract", war=1.9, salary=1, lower=0.0, upper=3.0
+            ).with_columns(
+                pl.lit(2028).alias("season")
+            ),
+        ]
+    )
+    assumptions = ContractEconomicsAssumptions(
+        assumptions_id="anchored",
+        market_model_id="tiered",
+        arbitration_model_id="arb",
+        dollars_per_war_by_year={},
+        tiered_dollars_per_war_by_year={
+            2027: {"0-1": 6_000_000, "1-2": 8_000_000, "2+": 12_000_000},
+            2028: {"0-1": 6_000_000, "1-2": 8_000_000, "2+": 12_000_000},
+        },
+        arbitration_share_by_class={},
+        annual_discount_rate=0.1,
+        market_tier_assignment="first_full_future_season",
+    )
+
+    result = value_annual_contract_states(
+        source,
+        cba_ruleset=CBA_2027_2032_PLANNING_SCENARIO,
+        assumptions=assumptions,
+    ).annual
+
+    assert result.get_column("market_war_tier").to_list() == ["2+", "2+"]
+    assert result.get_column("dollars_per_war").to_list() == [12_000_000, 12_000_000]
+
+
+def test_phase2_non_tender_ends_later_incumbent_rights() -> None:
+    source = pl.concat(
+        [
+            _input(status="pre_arbitration", war=0.0).with_columns(
+                pl.lit(2027).alias("season")
+            ),
+            _input(status="pre_arbitration", war=2.0).with_columns(
+                pl.lit(2028).alias("season")
+            ),
+        ]
+    )
+    assumptions = ContractEconomicsAssumptions(
+        assumptions_id="sequential",
+        market_model_id="flat",
+        arbitration_model_id="arb",
+        dollars_per_war_by_year={2027: 10_000_000, 2028: 10_000_000},
+        arbitration_share_by_class={},
+        annual_discount_rate=0.1,
+        sequential_non_tender=True,
+    )
+
+    result = value_annual_contract_states(
+        source,
+        cba_ruleset=CBA_2027_2032_PLANNING_SCENARIO,
+        assumptions=assumptions,
+    ).annual
+
+    assert result.get_column("decision_at_mean").to_list() == [
+        "non_tender",
+        "prior_non_tender_no_incumbent_rights",
+    ]
+    assert result.item(1, "discounted_contract_value_dollars") == 0

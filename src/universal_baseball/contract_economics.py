@@ -89,12 +89,19 @@ class ContractEconomicsAssumptions:
     tiered_dollars_per_war_by_year: Mapping[int, Mapping[str, float]] | None = None
     floor_market_value_at_zero: bool = True
     missing_buyout_share_by_status: Mapping[str, float] | None = None
+    market_tier_assignment: str = "annual_projected_war"
+    sequential_non_tender: bool = False
 
     def validate(self) -> None:
         if not self.assumptions_id or not self.market_model_id:
             raise ValueError("economics assumptions require stable model IDs")
         if not self.arbitration_model_id:
             raise ValueError("arbitration assumptions require a stable model ID")
+        if self.market_tier_assignment not in {
+            "annual_projected_war",
+            "first_full_future_season",
+        }:
+            raise ValueError("unsupported market tier assignment")
         if not isfinite(self.annual_discount_rate) or self.annual_discount_rate < 0:
             raise ValueError("annual discount rate must be finite and nonnegative")
         tiers = self.tiered_dollars_per_war_by_year or {}
@@ -144,7 +151,13 @@ class ContractEconomicsAssumptions:
         except KeyError as exc:
             raise ValueError(f"no dollars-per-WAR assumption for {season}") from exc
 
-    def market_rate(self, season: int, projected_war: float) -> tuple[float, str]:
+    def market_rate(
+        self,
+        season: int,
+        projected_war: float,
+        *,
+        tier_anchor_war: float | None = None,
+    ) -> tuple[float, str]:
         """Return the flat rate or whole-season projected-WAR tier rate."""
 
         if season in self.dollars_per_war_by_year:
@@ -154,7 +167,9 @@ class ContractEconomicsAssumptions:
             season_tiers = tiers[season]
         except KeyError as exc:
             raise ValueError(f"no dollars-per-WAR assumption for {season}") from exc
-        tier = market_war_tier(projected_war)
+        tier = market_war_tier(
+            projected_war if tier_anchor_war is None else tier_anchor_war
+        )
         return float(season_tiers[tier]), tier
 
 
@@ -269,7 +284,19 @@ def value_annual_contract_states(
         raise ValueError("WAR sensitivity bounds must contain the mean")
 
     rows: list[dict[str, object]] = []
-    for source_row in source.iter_rows(named=True):
+    tier_anchor_by_player: dict[int, float] = {}
+    if assumptions.market_tier_assignment == "first_full_future_season":
+        future = source.filter(pl.col("season") > pl.col("as_of_date").dt.year())
+        tier_anchor_by_player = {
+            int(group.item(0, "player_id")): float(
+                group.sort("season").item(0, "projected_war_mean")
+            )
+            for group in future.partition_by("player_id", maintain_order=True)
+        }
+    ended_rights: set[tuple[int, int]] = set()
+    for source_row in source.sort(
+        ["player_id", "organization_id", "season"]
+    ).iter_rows(named=True):
         row = dict(source_row)
         season = int(row["season"])
         status = str(row["control_status"])
@@ -288,7 +315,11 @@ def value_annual_contract_states(
         upper_value: float | None = None
         try:
             mean_war = float(row["projected_war_mean"])
-            rate, market_tier = assumptions.market_rate(season, mean_war)
+            rate, market_tier = assumptions.market_rate(
+                season,
+                mean_war,
+                tier_anchor_war=tier_anchor_by_player.get(int(row["player_id"])),
+            )
             if market_tier != "flat" and season == row["as_of_date"].year:
                 raise ValueError(
                     "tiered market rates require a full-season WAR tier, not current "
@@ -299,6 +330,18 @@ def value_annual_contract_states(
             market = _market_value(mean_war, rate, floor_at_zero=assumptions.floor_market_value_at_zero)
             market_lower = _market_value(lower_war, rate, floor_at_zero=assumptions.floor_market_value_at_zero)
             market_upper = _market_value(upper_war, rate, floor_at_zero=assumptions.floor_market_value_at_zero)
+
+            rights_key = (int(row["player_id"]), int(row["organization_id"]))
+            if assumptions.sequential_non_tender and rights_key in ended_rights:
+                cost = 0.0
+                value = 0.0
+                lower_value = 0.0
+                upper_value = 0.0
+                static = 0.0
+                premium = 0.0
+                salary_basis = "none_prior_non_tender_ended_rights"
+                decision = "prior_non_tender_no_incumbent_rights"
+                raise StopIteration
 
             if row["contract_structure_review_reason"]:
                 raise ValueError(str(row["contract_structure_review_reason"]))
@@ -383,6 +426,10 @@ def value_annual_contract_states(
             _, upper_value, _ = _decision_value(status, market_upper, salary, buyout)
             static = 0.0 if status in {"free_agent", "free_agent_eligible"} else market - salary
             premium = value - static
+            if assumptions.sequential_non_tender and decision == "non_tender":
+                ended_rights.add(rights_key)
+        except StopIteration:
+            pass
         except ValueError as exc:
             calculation_status = "review"
             review_reason = str(exc)

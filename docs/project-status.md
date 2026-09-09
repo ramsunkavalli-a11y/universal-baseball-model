@@ -19,6 +19,16 @@ A private, generated results explorer now makes the current research checkpoint 
 to inspect without publishing it. It exposes filters, sortable player results,
 year-by-year paths, review rows and CSV export while retaining the model warnings.
 
+## Active Phase 2 preview
+
+The [Model FV and workload preview](phase2-model-fv-and-workload-2026-09-09.md)
+is now the active continuation. It removes publication player grades from model inputs,
+corrects six-calendar-year truncation for pre-MLB players, adds a reliability-weighted
+workload anchor for established hitters and pitchers, and separates internal Model FV,
+talent benchmark value and contract surplus. The 2025 workload check improves both
+overall MAE and established-player bias. External Top 100 grades remain validation
+only; the current 6.84-point FV MAE is not publication-ready.
+
 This work builds on the recovered-opportunity commit `7c2a874`. Main now contains the
 current model foundations, experiment records and plan. It does not change a website
 or promote a player ranking; the public v1 release remains historical.
