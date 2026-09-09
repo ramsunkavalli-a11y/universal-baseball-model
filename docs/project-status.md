@@ -58,6 +58,13 @@ or promote a player ranking; the public v1 release remains historical.
   fails closed on unresolved option triggers. Official 2022–2026 minimum salaries live
   in a versioned CBA ruleset; market price and arbitration shares remain named caller
   assumptions rather than hidden constants.
+- Projection v1 now has a common guardrail contract and executable audit. Every player-
+  year must decompose expected WAR into MLB-active probability, conditional WAR rate
+  and conditional PA/BF workload. Current-team depth is forbidden, hitter/pitcher
+  components for two-way players remain separate, controlled WAR is summed directly,
+  and pre-cutoff historical extremes are flagged without clipping. This is an
+  interface and diagnostic layer; it does not claim the missing projection models are
+  complete.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -91,11 +98,13 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 ## Next modeling task
 
-The main candidate denominator, phase-one control/cost path and static economics engine
-are now built. The blocking valuation inputs are a validated multi-year whole-player
-WAR surface and a chronologically fitted free-agent market function. In parallel,
-resolve the 21 multi-organization ownership cases and bounded contract/CBA exceptions.
-Do not publish dollar rankings from placeholder market or arbitration assumptions.
+The main candidate denominator, phase-one control/cost path, static economics engine
+and projection guardrail interface are now built. The next modeling task is to fill
+that interface: finish universal hitter arrival/PA paths, then pitcher arrival/role/BF
+paths, then add component-level aging and whole-player WAR assembly. The later economic
+blocker is a chronologically fitted free-agent market function. In parallel, resolve
+the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
+publish dollar rankings from placeholder market or arbitration assumptions.
 
 In parallel, reconnect the recovered opportunity pipeline and its frozen B2 inputs,
 then declare population-prior fallbacks for inactive/no-history players. Retain O2026D

@@ -158,3 +158,11 @@ club options and player options, reports optionality separately, and fails close
 mutual/vesting triggers. The official 2022–2026 minimum schedule is versioned in
 `cba_rules.py`. A league-wide dollar output remains blocked on validated multi-year WAR
 coverage and an ex-ante free-agent market fit; neither is replaced by a hidden default.
+
+Projection v1 now has a shared hitter/pitcher guardrail boundary in
+`projection_guardrails.py`. It fails on missing player-years, duplicate components,
+team-depth dependence or WAR arithmetic that does not reconcile. It reports PA/BF,
+MLB-active probability, conditional WAR rate, expected WAR and controlled WAR
+separately. Pre-cutoff role distributions flag unusual workload, rate and annual
+WAR without caps. The immediate Step 8 input work is universal hitter participation/PA
+followed by pitcher participation/role/BF and component-level multi-year aging.

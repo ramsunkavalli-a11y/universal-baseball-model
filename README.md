@@ -37,6 +37,9 @@ a censored [career-outcome panel](docs/career-outcome-panel-contract.md), a real
 [current status](docs/project-status.md) for results and boundaries.
 The [Contract Economics v0 methodology](docs/contract-economics-v0-methodology.md)
 defines the new downstream valuation boundary and its remaining data gaps.
+The [Projection v1 guardrails](docs/projection-v1-guardrails.md) define the common
+multi-year hitter/pitcher path identity, universal coverage requirement and historical
+plausibility checks that must be satisfied before those layers connect.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value
