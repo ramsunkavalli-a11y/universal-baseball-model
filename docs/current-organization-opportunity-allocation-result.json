@@ -1,0 +1,180 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundary": "Research current-organization capacity view only. Unassigned workload represents free agents, future acquisitions, replacement players and unresolved ownership. Position and pitching-role constraints are not yet allocated.",
+  "by_season": [
+    {
+      "allocated_controlled_hitter_pa": 159893.7835806772,
+      "allocated_controlled_pitcher_bf": 150467.34152226607,
+      "hitter_oversubscribed_teams": 2,
+      "league_capacity_each_side": 182926.0,
+      "pitcher_oversubscribed_teams": 0,
+      "raw_controlled_hitter_pa": 160266.59816117104,
+      "raw_controlled_pitcher_bf": 150467.34152226607,
+      "season": 2027,
+      "unassigned_hitter_pa": 23032.216419322805,
+      "unassigned_hitter_share": 0.12591002055105782,
+      "unassigned_pitcher_bf": 32458.65847773396,
+      "unassigned_pitcher_share": 0.1774414707462797
+    },
+    {
+      "allocated_controlled_hitter_pa": 151070.7679633663,
+      "allocated_controlled_pitcher_bf": 143897.18071364865,
+      "hitter_oversubscribed_teams": 2,
+      "league_capacity_each_side": 182926.0,
+      "pitcher_oversubscribed_teams": 0,
+      "raw_controlled_hitter_pa": 151626.50523947924,
+      "raw_controlled_pitcher_bf": 143897.18071364865,
+      "season": 2028,
+      "unassigned_hitter_pa": 31855.232036633715,
+      "unassigned_hitter_share": 0.17414272458061575,
+      "unassigned_pitcher_bf": 39028.81928635139,
+      "unassigned_pitcher_share": 0.21335851265731165
+    },
+    {
+      "allocated_controlled_hitter_pa": 145262.5040008102,
+      "allocated_controlled_pitcher_bf": 133280.70937001242,
+      "hitter_oversubscribed_teams": 3,
+      "league_capacity_each_side": 182926.0,
+      "pitcher_oversubscribed_teams": 0,
+      "raw_controlled_hitter_pa": 145588.69071832846,
+      "raw_controlled_pitcher_bf": 133280.70937001242,
+      "season": 2029,
+      "unassigned_hitter_pa": 37663.49599918984,
+      "unassigned_hitter_share": 0.20589471151826336,
+      "unassigned_pitcher_bf": 49645.29062998759,
+      "unassigned_pitcher_share": 0.27139548577013434
+    },
+    {
+      "allocated_controlled_hitter_pa": 132562.95887462382,
+      "allocated_controlled_pitcher_bf": 121955.79791470253,
+      "hitter_oversubscribed_teams": 0,
+      "league_capacity_each_side": 182926.0,
+      "pitcher_oversubscribed_teams": 0,
+      "raw_controlled_hitter_pa": 132562.95887462382,
+      "raw_controlled_pitcher_bf": 121955.79791470253,
+      "season": 2030,
+      "unassigned_hitter_pa": 50363.041125376185,
+      "unassigned_hitter_share": 0.27531920626579154,
+      "unassigned_pitcher_bf": 60970.20208529747,
+      "unassigned_pitcher_share": 0.33330528238357293
+    },
+    {
+      "allocated_controlled_hitter_pa": 107646.26898079697,
+      "allocated_controlled_pitcher_bf": 94714.61042915483,
+      "hitter_oversubscribed_teams": 0,
+      "league_capacity_each_side": 182926.0,
+      "pitcher_oversubscribed_teams": 0,
+      "raw_controlled_hitter_pa": 107646.26898079697,
+      "raw_controlled_pitcher_bf": 94714.61042915483,
+      "season": 2031,
+      "unassigned_hitter_pa": 75279.731019203,
+      "unassigned_hitter_share": 0.4115310618457901,
+      "unassigned_pitcher_bf": 88211.3895708452,
+      "unassigned_pitcher_share": 0.48222444907145623
+    },
+    {
+      "allocated_controlled_hitter_pa": 6641.23913884944,
+      "allocated_controlled_pitcher_bf": 2432.97316251185,
+      "hitter_oversubscribed_teams": 0,
+      "league_capacity_each_side": 182926.0,
+      "pitcher_oversubscribed_teams": 0,
+      "raw_controlled_hitter_pa": 6641.23913884944,
+      "raw_controlled_pitcher_bf": 2432.97316251185,
+      "season": 2032,
+      "unassigned_hitter_pa": 176284.76086115054,
+      "unassigned_hitter_share": 0.9636943947888793,
+      "unassigned_pitcher_bf": 180493.02683748817,
+      "unassigned_pitcher_share": 0.986699686416847
+    }
+  ],
+  "checks": {
+    "current_values_modified": false,
+    "league_seasons_close_to_30_team_capacities": true,
+    "organization_neutral_input_modified": false,
+    "player_opportunity_never_increased": true,
+    "skill_or_war_rate_modified": false,
+    "team_seasons_close_with_explicit_unassigned_share": true
+  },
+  "contract": "docs/current-organization-opportunity-allocation-contract.md",
+  "coverage": {
+    "allocated_controlled_hitter_player_seasons": 16808,
+    "allocated_controlled_pitcher_player_seasons": 22356,
+    "hitter_input_player_seasons": 23640,
+    "pitcher_input_player_seasons": 31656,
+    "team_seasons": 180
+  },
+  "historical_reference": {
+    "full_seasons": [
+      2018,
+      2019,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "median_league_pa_and_bf": 182926.0,
+    "team_capacity": 6097.533333333334,
+    "teams": 30
+  },
+  "oversubscribed_team_seasons": [
+    {
+      "hitter_scale": 0.9767288378725459,
+      "organization_id": 111,
+      "pitcher_scale": 1.0,
+      "raw_hitter_workload": 6242.810795486112,
+      "raw_pitcher_workload": 5126.860157912402,
+      "season": 2027
+    },
+    {
+      "hitter_scale": 0.964026152739399,
+      "organization_id": 138,
+      "pitcher_scale": 1.0,
+      "raw_hitter_workload": 6325.07045167441,
+      "raw_pitcher_workload": 5197.433722727675,
+      "season": 2027
+    },
+    {
+      "hitter_scale": 0.996301082954871,
+      "organization_id": 120,
+      "pitcher_scale": 1.0,
+      "raw_hitter_workload": 6120.171339419824,
+      "raw_pitcher_workload": 6093.753588057769,
+      "season": 2028
+    },
+    {
+      "hitter_scale": 0.9196005416200607,
+      "organization_id": 138,
+      "pitcher_scale": 1.0,
+      "raw_hitter_workload": 6630.632603359832,
+      "raw_pitcher_workload": 5409.0665847537,
+      "season": 2028
+    },
+    {
+      "hitter_scale": 0.9746939014943431,
+      "organization_id": 137,
+      "pitcher_scale": 1.0,
+      "raw_hitter_workload": 6255.8443466045655,
+      "raw_pitcher_workload": 5061.914569091897,
+      "season": 2029
+    },
+    {
+      "hitter_scale": 0.9893815578011025,
+      "organization_id": 138,
+      "pitcher_scale": 1.0,
+      "raw_hitter_workload": 6162.974522069204,
+      "raw_pitcher_workload": 4938.383860273011,
+      "season": 2029
+    },
+    {
+      "hitter_scale": 0.983478218273302,
+      "organization_id": 146,
+      "pitcher_scale": 1.0,
+      "raw_hitter_workload": 6199.967848844488,
+      "raw_pitcher_workload": 5188.235654143402,
+      "season": 2029
+    }
+  ],
+  "report_schema_version": "0.1",
+  "status": "research_current_organization_capacity_layer_complete"
+}

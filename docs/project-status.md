@@ -12,6 +12,14 @@ pedigree-inclusive opportunity model. Its conditional-quality use was already
 rejected for tiny support and severe calibration failure. No values changed. Catcher
 preference, outside FV inputs and non-universal pitch sequences remain excluded.
 
+The first [current-organization capacity layer](current-organization-opportunity-allocation-result.md)
+is also complete. It closes every team-season with an explicit external/replacement
+share and never raises player workload. Only seven of 180 team-seasons exceed the
+fixed 6,097.53 PA/BF team capacity, all on the hitter side; the largest reduction is
+about 8%. This confirms that broad team totals are not the main source of crowded
+prospect values. Position and pitcher-role competition are the next material
+allocation layer. The output remains separate from organization-neutral trade value.
+
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
 quality. A proper hurdle test conditions MLB component quality on meaningful playing
