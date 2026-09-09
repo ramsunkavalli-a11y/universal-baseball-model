@@ -138,6 +138,11 @@ service balances. Official no-debut evidence can cover many remaining affiliated
 players; earlier-debut players without a balance stay review. Historical salary and
 future contract obligations are now the main remaining replay input.
 
+A 30-team Cot's-derived 2025 CSV extract is a viable private retrospective contract
+bridge, but it was assembled after the season and lacks stable IDs. Its next gate is
+unique team/name matching corroborated by the new service baseline; disagreements
+must remain review. It is not authorized as a vintage or primary production source.
+
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component
 discrepancies for Phase 2. The protected 2026 confirmation forecast is frozen and its

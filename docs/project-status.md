@@ -68,6 +68,10 @@ or promote a player ranking; the public v1 release remains historical.
   avoid name matching. Because the pages were retrieved later, they are accepted for
   retrospective event-cutoff replay, not true vintage-information claims. Historical
   contract obligations remain the material Step 8 source gap.
+- A 30-team Cot's-derived 2025 extract has now been inspected as a potential private
+  retrospective contract bridge. It includes 2025–2029 salary/control columns but was
+  created after the season and has names rather than MLBAM IDs. Use requires a
+  same-team name match corroborated by service; it is not vintage or primary authority.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and
