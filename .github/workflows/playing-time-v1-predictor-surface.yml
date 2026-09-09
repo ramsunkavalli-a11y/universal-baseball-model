@@ -58,7 +58,7 @@ jobs:
           download 32096473700 "current-talent-historical-mlb-2024" "seeded/2024/mlb"
 
       - name: Download immutable frozen B2 snapshots
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: projection-batting-v1-current-talent-snapshots
           path: inputs/current-talent-snapshots

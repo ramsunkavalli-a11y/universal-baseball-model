@@ -29,7 +29,7 @@ jobs:
       - name: Download frozen B2 batting profiles
         id: batting_b2
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9311172007"
           path: inputs/batting-b2
@@ -39,7 +39,7 @@ jobs:
       - name: Download verified MLB centering membership
         id: centering_membership
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9389597470"
           path: inputs/centering-membership
@@ -49,7 +49,7 @@ jobs:
       - name: Download frozen playing-time validation
         id: playing_time
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9326300207"
           path: inputs/playing-time
@@ -59,7 +59,7 @@ jobs:
       - name: Download frozen fielding history
         id: fielding_history
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9328803363"
           path: inputs/fielding-history
@@ -69,7 +69,7 @@ jobs:
       - name: Download frozen defensive position allocation
         id: position_allocation
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9370211679"
           path: inputs/position-allocation
@@ -79,7 +79,7 @@ jobs:
       - name: Download frozen catcher native opportunities
         id: catcher_opportunities
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9371426672"
           path: inputs/catcher-opportunities
@@ -89,7 +89,7 @@ jobs:
       - name: Download frozen DH positional exposure
         id: dh_exposure
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9371840453"
           path: inputs/dh-exposure
@@ -99,7 +99,7 @@ jobs:
       - name: Download frozen tracked defense source
         id: defense_tracked
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9342409616"
           path: inputs/defense-tracked
@@ -109,7 +109,7 @@ jobs:
       - name: Download frozen 2024 defense predictor
         id: defense_predictor
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9347665525"
           path: inputs/defense-2024-predictor
@@ -119,7 +119,7 @@ jobs:
       - name: Download repaired catcher source
         id: catcher_repair
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9349341632"
           path: inputs/catcher-repair-source
@@ -129,7 +129,7 @@ jobs:
       - name: Download repaired framing source
         id: framing_repair
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9349835242"
           path: inputs/framing-repair-source
@@ -140,7 +140,7 @@ jobs:
       - name: Download frozen MLB performance source
         id: performance_download
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9265954750"
           path: inputs/mlb-performance

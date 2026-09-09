@@ -31,7 +31,7 @@ jobs:
         run: python -m py_compile scripts/materialize_playing_time_v1_target_surface.py
 
       - name: Download immutable development targets
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: projection-batting-v1-development-evidence
           path: inputs/development-evidence
@@ -40,7 +40,7 @@ jobs:
           github-token: ${{ github.token }}
 
       - name: Download immutable frozen B2 snapshots
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: projection-batting-v1-current-talent-snapshots
           path: inputs/current-talent-snapshots

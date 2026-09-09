@@ -74,7 +74,7 @@ jobs:
           && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
 
       - name: Download all successful frozen source segments
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           pattern: defense-v1-tracked-source-*
           path: inputs/segments
