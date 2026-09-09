@@ -97,9 +97,10 @@ signing evidence is the next candidate prior for young, low-minors players.
 
 An automated demographic feature harness now tests official age-adjacent profile,
 handedness, physical, position and birthplace fields in stable and full groups. The
-first search did not pass the every-period promotion rule, so the core model remains.
-Continue with narrower, baseball-motivated interactions and keep non-vintage physical
-measurements out of selected historical models until their timing is defensible.
+first narrow search produced development leaders, but the core model remains until a
+fresh period confirms them. Continue with nested, baseball-motivated interaction
+searches and keep non-vintage physical measurements out of selected historical models
+until their timing is defensible.
 
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.

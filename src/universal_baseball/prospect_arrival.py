@@ -340,11 +340,19 @@ def build_current_arrival_predictors(
 def arrival_design(frame: pl.DataFrame, *, feature_set: str = "core") -> np.ndarray:
     """Create the fixed low-dimensional, organization-free arrival design."""
 
+    supported = {
+        "core", "handedness", "origin", "stable_demographics",
+        "stable_interactions", "physical", "handedness_physical",
+        "all_demographics", "all_interactions",
+    }
+    if feature_set not in supported:
+        raise ValueError(f"unsupported arrival feature set: {feature_set}")
     rows = []
     for row in frame.iter_rows(named=True):
         level = hitter_level_tier(row["level_tier"])
+        age_scaled = (float(row["age_years"]) - 23.0) / 5.0
         values = [
-            (float(row["age_years"]) - 23.0) / 5.0,
+            age_scaled,
             log(1.0 + float(row["current_milb_workload"])) / log(601.0),
             log(1.0 + float(row["prior_affiliated_workload"])) / log(1801.0),
             min(float(row["prior_affiliated_seasons"]), 6.0) / 6.0,
@@ -353,7 +361,18 @@ def arrival_design(frame: pl.DataFrame, *, feature_set: str = "core") -> np.ndar
         values.extend(float(level == candidate) for candidate in LEVELS[:-1])
         values.extend(float(row["role_tier"] == candidate) for candidate in ROLES)
         values.extend(float(row[f"production_rate_{index}"]) for index in range(1, 5))
-        if feature_set in {"stable_demographics", "all_demographics"}:
+        uses_hands = feature_set in {
+            "handedness", "stable_demographics", "stable_interactions",
+            "handedness_physical", "all_demographics", "all_interactions",
+        }
+        uses_origin = feature_set in {
+            "origin", "stable_demographics", "stable_interactions",
+            "all_demographics", "all_interactions",
+        }
+        uses_physical = feature_set in {
+            "physical", "handedness_physical", "all_demographics", "all_interactions",
+        }
+        if uses_hands:
             values.extend(
                 [
                     float(row["bat_side"] == "L"),
@@ -363,21 +382,46 @@ def arrival_design(frame: pl.DataFrame, *, feature_set: str = "core") -> np.ndar
                     float(row["gender"] != "M"),
                 ]
             )
-            values.extend(
+        if uses_origin:
+            country_flags = [
                 float(row["birth_country"] == country) for country in COUNTRIES
-            )
-        if feature_set == "all_demographics":
-            height = float(row["height_inches"])
-            weight = float(row["weight_pounds"])
+            ]
+            values.extend(country_flags)
+        if feature_set == "stable_interactions":
             values.extend(
                 [
-                    (height - 72.0) / 6.0,
-                    (weight - 190.0) / 40.0,
+                    age_scaled * float(row["bat_side"] == "L"),
+                    age_scaled * float(row["bat_side"] == "S"),
+                    age_scaled * float(row["pitch_hand"] == "L"),
+                ]
+            )
+            values.extend(age_scaled * flag for flag in country_flags)
+        if uses_physical:
+            height = float(row["height_inches"])
+            weight = float(row["weight_pounds"])
+            height_scaled = (height - 72.0) / 6.0
+            weight_scaled = (weight - 190.0) / 40.0
+            values.extend(
+                [
+                    height_scaled,
+                    weight_scaled,
                     (weight / max(height * height, 1.0) - 0.0367) / 0.008,
                     (float(row["strike_zone_top"]) - 3.4) / 0.4,
                     (float(row["strike_zone_bottom"]) - 1.6) / 0.25,
                 ]
             )
+        if feature_set in {"handedness_physical", "all_interactions"}:
+            values.extend(
+                [
+                    height_scaled * float(row["bat_side"] == "L"),
+                    height_scaled * float(row["bat_side"] == "S"),
+                    height_scaled * float(row["pitch_hand"] == "L"),
+                    weight_scaled * float(row["pitch_hand"] == "L"),
+                    age_scaled * height_scaled,
+                    age_scaled * weight_scaled,
+                ]
+            )
+        if feature_set in {"all_demographics", "all_interactions"}:
             values.extend(
                 float(row["primary_position_code"] == code)
                 for code in ("1", "2", "3", "4", "5", "6", "7", "8", "9", "O", "Y")

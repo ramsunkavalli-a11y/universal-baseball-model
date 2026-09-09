@@ -24,7 +24,14 @@ from universal_baseball.storage import write_canonical_parquet
 
 TRAINING_YEARS = (2018, 2021, 2022, 2023)
 EVALUATION_SPECS = ((2021, (2018,)), (2022, (2018,)), (2023, (2018, 2021)))
-FEATURE_SETS = ("core", "stable_demographics", "all_demographics")
+FEATURE_SETS = (
+    "core", "handedness", "origin", "stable_demographics",
+    "stable_interactions", "physical", "handedness_physical",
+    "all_demographics", "all_interactions",
+)
+SELECTABLE_FEATURE_SETS = (
+    "core", "handedness", "origin", "stable_demographics", "stable_interactions",
+)
 
 
 def _args() -> argparse.Namespace:
@@ -152,7 +159,7 @@ def _select_feature_set(
     # not historical vintages. Score the full group, but do not select it from a
     # historical gate until a cutoff-safe source or invariance audit exists.
     eligible = [
-        feature_set for feature_set in ("stable_demographics",)
+        feature_set for feature_set in SELECTABLE_FEATURE_SETS[1:]
         if _beats(evaluations[feature_set], incumbent)
     ]
     return min(
@@ -202,9 +209,10 @@ def main() -> int:
             )
             for feature_set in FEATURE_SETS
         }
-        selected_feature_set = _select_feature_set(
+        research_feature_set = _select_feature_set(
             {key: value[0] for key, value in evaluations.items()}
         )
+        selected_feature_set = "core"
         evaluation, passed = evaluations[selected_feature_set]
         role_evaluations = {
             feature_set: _evaluate(
@@ -214,9 +222,10 @@ def main() -> int:
             )
             for feature_set in FEATURE_SETS
         }
-        selected_role_feature_set = _select_feature_set(
+        research_role_feature_set = _select_feature_set(
             {key: value[0] for key, value in role_evaluations.items()}
         )
+        selected_role_feature_set = "core"
         role_evaluation, role_passed = role_evaluations[selected_role_feature_set]
         fit = fit_arrival_model(
             pl.concat([cohorts[year] for year in TRAINING_YEARS]),
@@ -265,6 +274,7 @@ def main() -> int:
         reports[player_type] = {
             "selected_form": "logistic" if passed else "level_baseline",
             "selected_feature_set": selected_feature_set,
+            "research_leading_feature_set": research_feature_set,
             "candidate_evaluations": {
                 key: value[0] for key, value in evaluations.items()
             },
@@ -273,6 +283,9 @@ def main() -> int:
             "current_players": scored.height, "evaluation": evaluation,
             "meaningful_role_gate_passed": role_passed,
             "selected_meaningful_role_feature_set": selected_role_feature_set,
+            "research_leading_meaningful_role_feature_set": (
+                research_role_feature_set
+            ),
             "meaningful_role_candidate_evaluations": {
                 key: value[0] for key, value in role_evaluations.items()
             },
@@ -306,6 +319,8 @@ def main() -> int:
             "2018_prior_mlb_history_left_censored": True,
             "six_year_extrapolation_is_constant_two_year_hazard": True,
             "all_demographics_scored_but_not_selectable": True,
+            "demographic_search_is_development_only": True,
+            "production_feature_set_remains_core_until_fresh_confirmation": True,
             "non_vintage_fields": (
                 "height, weight, strike-zone bounds, and current primary position"
             ),
