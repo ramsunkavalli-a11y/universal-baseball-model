@@ -80,6 +80,9 @@ The [free-agent market source checkpoint](docs/free-agent-market-source-2026-09-
 accepts public FanGraphs contract facts for 2020–2026 and maps every sampled row to
 MLBAM without names. Historical projected-WAR cells are absent, so signing-time
 forecasts are rebuilt from dated official history before any market price is promoted.
+The [free-agent market result](docs/free-agent-market-result-2026-09-08.md) accepts
+FanGraphs' published 2026 three-tier curve as the main reference, independently checks
+the one-year scale, and keeps future growth separate as an explicit scenario.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

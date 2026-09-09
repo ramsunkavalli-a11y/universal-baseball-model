@@ -163,3 +163,53 @@ def test_discounting_is_explicit() -> None:
     assert result.annual.item(0, "discounted_contract_value_dollars") == pytest.approx(
         5_000_000 / 1.05
     )
+
+
+def test_tiered_market_uses_mean_war_tier_for_all_sensitivities() -> None:
+    assumptions = ContractEconomicsAssumptions(
+        assumptions_id="tier_test",
+        market_model_id="three_tier_test",
+        arbitration_model_id="test",
+        dollars_per_war_by_year={},
+        arbitration_share_by_class={},
+        annual_discount_rate=0.0,
+        tiered_dollars_per_war_by_year={
+            2026: {"0-1": 6_000_000, "1-2": 8_000_000, "2+": 12_000_000}
+        },
+    )
+    source = _input(
+        status="guaranteed_contract", war=2.0, salary=10_000_000,
+        lower=0.5, upper=3.0,
+    ).with_columns(
+        pl.lit(date(2025, 12, 31)).cast(pl.Date).alias("as_of_date")
+    )
+    result = value_annual_contract_states(
+        source,
+        cba_ruleset=CBA_2022_2026,
+        assumptions=assumptions,
+    ).annual.row(0, named=True)
+    assert result["market_war_tier"] == "2+"
+    assert result["dollars_per_war"] == 12_000_000
+    assert result["contract_value_lower_dollars"] == -4_000_000
+    assert result["contract_value_upper_dollars"] == 26_000_000
+
+
+def test_tiered_market_rejects_rest_of_season_war_as_tier_input() -> None:
+    assumptions = ContractEconomicsAssumptions(
+        assumptions_id="tier_test",
+        market_model_id="three_tier_test",
+        arbitration_model_id="test",
+        dollars_per_war_by_year={},
+        arbitration_share_by_class={},
+        annual_discount_rate=0.0,
+        tiered_dollars_per_war_by_year={
+            2026: {"0-1": 6_000_000, "1-2": 8_000_000, "2+": 12_000_000}
+        },
+    )
+    result = value_annual_contract_states(
+        _input(status="current_season_committed", salary=5_000_000),
+        cba_ruleset=CBA_2022_2026,
+        assumptions=assumptions,
+    )
+    assert result.reviews.height == 1
+    assert "full-season WAR tier" in result.reviews.item(0, "review_reason")

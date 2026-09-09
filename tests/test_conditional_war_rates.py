@@ -157,3 +157,32 @@ def test_pitcher_rates_cover_history_and_prior_players_and_age_components() -> N
     assert result.get_column("conditional_war_per_800_bf").is_finite().all()
     assert result.get_column("posterior_concentration").min() > 0.0
     assert result.get_column("posterior_run_rate_variance").min() >= 0.0
+
+
+def test_offseason_rate_cutoff_uses_completed_prior_season() -> None:
+    hitter = build_hitter_conditional_war_rates(
+        pl.DataFrame(
+            {"player_id": [1], "age_years": [28.0], "position_code": ["6"]}
+        ),
+        _hitting_history(),
+        current_season=2026,
+        forecast_seasons=(2026,),
+        reference_plate_appearances=1100,
+        runs_per_win=10.0,
+        evidence_anchor_season=2025,
+        reference_season=2025,
+    )
+    pitcher = build_pitcher_conditional_war_rates(
+        pl.DataFrame({"player_id": [1], "age_years": [28.0]}),
+        _pitching_history(),
+        current_season=2026,
+        forecast_seasons=(2026,),
+        reference_batters_faced=980,
+        runs_per_win=10.0,
+        evidence_anchor_season=2025,
+        reference_season=2025,
+    )
+    assert hitter.item(0, "weighted_history_pa") == 2300.0
+    assert pitcher.item(0, "weighted_history_bf") == 3560.0
+    assert hitter.item(0, "target_age") == 28.0
+    assert pitcher.item(0, "target_age") == 28.0

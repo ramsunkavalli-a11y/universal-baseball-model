@@ -9,6 +9,7 @@ from typing import Mapping
 import polars as pl
 
 from universal_baseball.cba_rules import CBARuleset
+from universal_baseball.free_agent_market import market_war_tier
 
 
 ANNUAL_CONTRACT_ECONOMICS_INPUT_SCHEMA: dict[str, pl.DataType] = {
@@ -34,6 +35,7 @@ ANNUAL_CONTRACT_ECONOMICS_SCHEMA: dict[str, pl.DataType] = {
     "market_model_id": pl.String,
     "arbitration_model_id": pl.String,
     "dollars_per_war": pl.Float64,
+    "market_war_tier": pl.String,
     "fa_equivalent_value_dollars": pl.Float64,
     "salary_cost_dollars": pl.Float64,
     "salary_basis": pl.String,
@@ -77,6 +79,7 @@ class ContractEconomicsAssumptions:
     dollars_per_war_by_year: Mapping[int, float]
     arbitration_share_by_class: Mapping[int, float]
     annual_discount_rate: float
+    tiered_dollars_per_war_by_year: Mapping[int, Mapping[str, float]] | None = None
     floor_market_value_at_zero: bool = True
 
     def validate(self) -> None:
@@ -86,10 +89,23 @@ class ContractEconomicsAssumptions:
             raise ValueError("arbitration assumptions require a stable model ID")
         if not isfinite(self.annual_discount_rate) or self.annual_discount_rate < 0:
             raise ValueError("annual discount rate must be finite and nonnegative")
-        if not self.dollars_per_war_by_year:
+        tiers = self.tiered_dollars_per_war_by_year or {}
+        if not self.dollars_per_war_by_year and not tiers:
             raise ValueError("at least one dated dollars-per-WAR assumption is required")
+        if set(self.dollars_per_war_by_year) & set(tiers):
+            raise ValueError("a season cannot have both flat and tiered market rates")
         if any(not isfinite(float(value)) or float(value) <= 0 for value in self.dollars_per_war_by_year.values()):
             raise ValueError("dollars-per-WAR assumptions must be finite and positive")
+        for season, season_tiers in tiers.items():
+            if set(season_tiers) != {"0-1", "1-2", "2+"}:
+                raise ValueError(
+                    f"tiered market rates for {season} require 0-1, 1-2, and 2+"
+                )
+            if any(
+                not isfinite(float(value)) or float(value) <= 0
+                for value in season_tiers.values()
+            ):
+                raise ValueError("tiered dollars-per-WAR assumptions must be positive")
         if any(
             int(year) not in {1, 2, 3, 4}
             or not isfinite(float(share))
@@ -103,6 +119,19 @@ class ContractEconomicsAssumptions:
             return float(self.dollars_per_war_by_year[season])
         except KeyError as exc:
             raise ValueError(f"no dollars-per-WAR assumption for {season}") from exc
+
+    def market_rate(self, season: int, projected_war: float) -> tuple[float, str]:
+        """Return the flat rate or whole-season projected-WAR tier rate."""
+
+        if season in self.dollars_per_war_by_year:
+            return float(self.dollars_per_war_by_year[season]), "flat"
+        tiers = self.tiered_dollars_per_war_by_year or {}
+        try:
+            season_tiers = tiers[season]
+        except KeyError as exc:
+            raise ValueError(f"no dollars-per-WAR assumption for {season}") from exc
+        tier = market_war_tier(projected_war)
+        return float(season_tiers[tier]), tier
 
 
 @dataclass(frozen=True)
@@ -219,6 +248,7 @@ def value_annual_contract_states(
         review_reason = ""
         salary_basis = ""
         decision = ""
+        market_tier = ""
         rate: float | None = None
         market: float | None = None
         cost: float | None = None
@@ -228,8 +258,13 @@ def value_annual_contract_states(
         lower_value: float | None = None
         upper_value: float | None = None
         try:
-            rate = assumptions.dollars_per_war(season)
             mean_war = float(row["projected_war_mean"])
+            rate, market_tier = assumptions.market_rate(season, mean_war)
+            if market_tier != "flat" and season == row["as_of_date"].year:
+                raise ValueError(
+                    "tiered market rates require a full-season WAR tier, not current "
+                    "rest-of-season WAR"
+                )
             lower_war = mean_war if row["projected_war_lower"] is None else float(row["projected_war_lower"])
             upper_war = mean_war if row["projected_war_upper"] is None else float(row["projected_war_upper"])
             market = _market_value(mean_war, rate, floor_at_zero=assumptions.floor_market_value_at_zero)
@@ -297,6 +332,7 @@ def value_annual_contract_states(
                 "market_model_id": assumptions.market_model_id,
                 "arbitration_model_id": assumptions.arbitration_model_id,
                 "dollars_per_war": rate,
+                "market_war_tier": market_tier,
                 "fa_equivalent_value_dollars": market,
                 "salary_cost_dollars": cost,
                 "salary_basis": salary_basis,

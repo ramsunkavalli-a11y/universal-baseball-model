@@ -196,3 +196,9 @@ IDs to MLBAM using the pinned Chadwick register. Historical tracker pages no lon
 carry their signing-time projected WAR, so realized WAR and current forecasts are
 forbidden substitutes. Phase 1 is rebuilding ex-ante forecasts from StatsAPI history
 and will test the clean one-year market before adopting a dollars-per-WAR assumption.
+
+That market gate is now complete for Phase 1. FanGraphs' published 2026 three-tier
+rates are the main reference; the internal 143-deal one-year reconstruction is an
+independent scale check and does not erase the star premium. Contract economics now
+supports dated tier curves. A 3% annual extension is available only as a named future
+scenario, while official post-2026 CBA costs remain unresolved.

@@ -146,25 +146,38 @@ def build_hitter_conditional_war_rates(
     forecast_seasons: tuple[int, ...],
     reference_plate_appearances: int,
     runs_per_win: float,
+    evidence_anchor_season: int | None = None,
+    reference_season: int | None = None,
     affiliated_profiles: pl.DataFrame | None = None,
     baserunning_rates: pl.DataFrame | None = None,
     defense_rates: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
-    """Build universal conditional hitter WAR/600 rates."""
+    """Build universal conditional hitter WAR/600 rates.
+
+    The optional season arguments support an offseason forecast: player age may be
+    stated in ``current_season`` while evidence and the completed run environment
+    end in the prior year. Defaults preserve the live in-season behavior.
+    """
 
     if set(players.columns) != {"player_id", "age_years", "position_code"}:
         raise ValueError("hitter players require player_id, age_years, and position_code")
     rpw = _finite_positive(runs_per_win, "runs_per_win")
     reference_pa = _finite_positive(reference_plate_appearances, "reference_plate_appearances")
+    anchor = current_season if evidence_anchor_season is None else evidence_anchor_season
+    completed_reference = (
+        current_season - 1 if reference_season is None else reference_season
+    )
+    if completed_reference > anchor:
+        raise ValueError("hitter reference season exceeds evidence cutoff")
     components = _hitter_components(history).filter(
-        pl.col("season").is_between(current_season - 2, current_season)
+        pl.col("season").is_between(anchor - 2, anchor)
     ).with_columns(
-        (current_season - pl.col("season")).replace_strict(
+        (anchor - pl.col("season")).replace_strict(
             {0: 3.0, 1: 2.0, 2: 1.0}, return_dtype=pl.Float64
         ).alias("weight")
     )
     event_columns = ("ubb", "hbp", "single", "double", "triple", "hr", "other")
-    reference = components.filter(pl.col("season") == current_season - 1)
+    reference = components.filter(pl.col("season") == completed_reference)
     reference_total = float(reference.get_column("batting_plate_appearances").sum())
     if reference_total <= 0:
         raise ValueError("hitter rates require a completed reference season")
@@ -338,14 +351,26 @@ def build_pitcher_conditional_war_rates(
     forecast_seasons: tuple[int, ...],
     reference_batters_faced: int,
     runs_per_win: float,
+    evidence_anchor_season: int | None = None,
+    reference_season: int | None = None,
     affiliated_profiles: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
-    """Build universal conditional pitcher WAR/800 BF rates."""
+    """Build universal conditional pitcher WAR/800 BF rates.
+
+    Optional evidence/reference seasons let an offseason forecast use only the
+    completed season while retaining the target-year age supplied by the caller.
+    """
 
     if set(players.columns) != {"player_id", "age_years"}:
         raise ValueError("pitcher players require player_id and age_years")
     rpw = _finite_positive(runs_per_win, "runs_per_win")
     reference_bf = _finite_positive(reference_batters_faced, "reference_batters_faced")
+    anchor = current_season if evidence_anchor_season is None else evidence_anchor_season
+    completed_reference = (
+        current_season - 1 if reference_season is None else reference_season
+    )
+    if completed_reference > anchor:
+        raise ValueError("pitcher reference season exceeds evidence cutoff")
     required = {
         "season", "player_id", "pitching_games_played", "pitching_games_started",
         "pitching_batters_faced", "pitching_strike_outs", "pitching_base_on_balls",
@@ -363,11 +388,12 @@ def build_pitcher_conditional_war_rates(
         pl.col("pitching_home_runs").sum().alias("pitching_hr"),
     )
     base = build_pitcher_component_baseline(
-        players.select("player_id"), standardized,
-        forecast_season=current_season + 1,
+        players.select("player_id"),
+        standardized.filter(pl.col("season") <= anchor),
+        forecast_season=anchor + 1,
         regression_bf=PITCHER_REGRESSION_BF,
     )
-    reference = standardized.filter(pl.col("season") == current_season - 1)
+    reference = standardized.filter(pl.col("season") == completed_reference)
     total_bf = float(reference.get_column("pitching_bf").sum())
     reference_rates = {
         key: float(reference.get_column(column).sum()) / total_bf

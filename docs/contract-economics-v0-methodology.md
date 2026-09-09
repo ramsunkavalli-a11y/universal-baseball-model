@@ -55,8 +55,10 @@ not enter trade value. `current_season_committed` prevents an in-season row from
 receiving a fictional offseason non-tender option.
 
 The free-agent market price, discount rate and arbitration shares are explicit caller
-assumptions with their own model IDs. v0 deliberately has no built-in dollar-per-WAR
-answer. Publishing a default before an ex-ante market fit would create false precision.
+assumptions with their own model IDs. The accepted 2026 market reference is now the
+published FanGraphs three-tier curve: under 1, 1–2 and 2+ full-season projected WAR.
+Future tier growth remains a named scenario. A flat rate remains supported for
+sensitivity work; a current rest-of-season estimate cannot select a full-season tier.
 
 ## Implemented states
 
@@ -108,8 +110,8 @@ The engine can be implemented now, but a league-wide dollar ranking should wait 
 
 1. a validated multi-year whole-player WAR surface covering hitters, pitchers,
    prospects and inactive/no-history players;
-2. a chronologically fitted free-agent market function using information available at
-   signing time;
+2. post-2026 market growth and successor-CBA assumptions beyond the accepted 2026
+   FanGraphs tier reference and the independent one-year signing-time scale check;
 3. an internal historical arbitration dataset and chronological validation;
 4. player-ID-linked buyouts and correct effective years for opt-outs; and
 5. correlated future performance paths for probability-weighted option decisions.
@@ -124,3 +126,5 @@ a trade-value product.
 - MLB, service-time and arbitration definitions:
   https://www.mlb.com/glossary/transactions/service-time
   and https://www.mlb.com/glossary/transactions/salary-arbitration
+- FanGraphs, 2026 free-agent dollars-per-WAR method and three-tier result:
+  https://blogs.fangraphs.com/what-are-teams-paying-for-a-win-in-free-agency-2026-edition/
