@@ -2,6 +2,15 @@
 
 Updated 2026-09-09. This is the current start-here document.
 
+The next feature gate is now frozen before scoring in
+[`prospect-pbp-hurdle-test-plan.md`](prospect-pbp-hurdle-test-plan.md). It tests whether
+pre-cutoff MiLB contact trajectory and spray direction improve next-season meaningful
+MLB opportunity or conditional component quality beyond aggregate results. It does
+not reopen the rejected exit-velocity candidates, does not prefer catchers, keeps
+players with missing PBP in the denominator, and excludes non-universal pitch-sequence
+features. Fresh 2021–2023 certified game-evidence artifacts are being regenerated
+because the original workflow artifacts expired.
+
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
 quality. A proper hurdle test conditions MLB component quality on meaningful playing
