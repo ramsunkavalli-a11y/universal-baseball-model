@@ -158,11 +158,11 @@ and require corroboration rather than automatic override.
 
 The 2026-09-08 refreshed control table has 8,393 players; source membership can move
 with the live official full-roster response. The future full-service scenario now has
-50,226 rows for 8,371 players through 2032, and the complete 133-player Super Two pool
+50,232 rows for 8,372 players through 2032, and the complete 133-player Super Two pool
 selects 30 at a tied `2.144` cutoff. The service method uses FanGraphs as the 2026
-opening balance, adds StatsAPI in-season days, and uses zero opening service only when
-the official player record has no MLB debut. Debuted players with no balance remain
-unresolved. The 21 multi-organization reviews are closed using 15 unique official
+opening balance, adds StatsAPI in-season days, and uses zero opening service when the
+official player record has no MLB debut or first debuts in the current season. Earlier
+debuted players with no balance remain unresolved. The 21 multi-organization reviews are closed using 15 unique official
 40-man memberships and six exact official transactions. Bounded CBA exceptions remain.
 `audit_team_control_source.py` is the
 repeatable team source audit and writes source captures plus the exception report.
@@ -232,11 +232,11 @@ players also advance through arbitration classes 1–4 correctly; previously the
 calculation could reset after the first projected year.
 
 The Phase 1 arbitration baseline now applies FanGraphs' 15%/35%/50%/75% shares to
-prior-season projected WAR value. A full research scenario calculates 50,167 of
-50,226 future annual rows from exact inputs. A separate named Phase 1 buyout estimate
+prior-season projected WAR value. A full research scenario calculates 50,173 of
+50,232 future annual rows from exact inputs. A separate named Phase 1 buyout estimate
 uses observed option-type medians for 43 otherwise complete rows. Official MLB
 reporting also resolves Kyle Tucker's two apparent option conflicts, raising scenario
-coverage to 50,210 and leaving 16 reviews. Three linked Julio Rodriguez years
+coverage to 50,216 and leaving 16 reviews. Three linked Julio Rodriguez years
 remain machine-blocked
 rather than relying on a prose audit. Two Imai seasons are corrected to player
 opt-outs from official MLB reporting; the correction is fail-closed against the

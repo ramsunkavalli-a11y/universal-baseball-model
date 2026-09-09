@@ -49,8 +49,8 @@ or promote a player ranking; the public v1 release remains historical.
   roster entries corroborate the remaining 45 exact-name identities. Payroll identity
   review is now zero, while liabilities for former roster members remain separate from
   current team control.
-- The refreshed 2026-09-08 league build contains 8,393 affiliated players and 50,226
-  future-path rows for 8,371 players through 2032. All 21 multi-organization cases are
+- The refreshed 2026-09-08 league build contains 8,393 affiliated players and 50,232
+  future-path rows for 8,372 players through 2032. All 21 multi-organization cases are
   resolved: 15 by unique official 40-man membership and six by exact transactions.
   Its complete 133-player Super Two
   pool has a calculated cutoff of
@@ -112,7 +112,7 @@ or promote a player ranking; the public v1 release remains historical.
   uncertainty, current remaining rights and contract economics. They add 564.59 future
   WAR through 2030; 2031–2032 are unchanged. The separate remaining-2026 estimate falls
   1.46 WAR. The scenario still
-  has 51,070 annual rows, 8,362 complete player paths and the same 16 contract reviews.
+  has 51,076 annual rows, 8,363 complete player paths and the same 16 contract reviews.
   Its $5.89 billion discounted point total versus the retained $1.66 billion baseline
   is a research sensitivity, not a promoted ranking.
 - The protected 2026 one-year confirmation is now locked before season end. Immutable
@@ -144,10 +144,11 @@ or promote a player ranking; the public v1 release remains historical.
   as the simple Phase 1 rate fallback; longer replay and subgroup calibration are
   Phase 2 rather than blockers to the coherent baseline.
 - Official no-debut evidence now supplies a zero opening service balance only when a
-  FanGraphs opening balance is absent. Debuted players still fail closed. This expands
-  the six-year future-control path from 1,667 to 8,371 players; unresolved service
-  cases remain null rather than becoming free agents.
-- Whole-player expected WAR now joins all 50,226 future-control rows, adding hitter
+  FanGraphs opening balance is absent. A first debut during the current season also
+  proves a zero opening balance; this safely adds Felix Reyes. Earlier debuts without
+  a verified balance still fail closed. The six-year future-control path now covers
+  8,372 players; unresolved service cases remain null rather than becoming free agents.
+- Whole-player expected WAR now joins all 50,232 future-control rows, adding hitter
   and pitcher value for two-way players. Accepted payroll terms supply 610 known
   player-year salaries. The 4,938 projection rows without resolved control stay in the
   talent universe but do not receive invented incumbent rights. All 86 potential
@@ -212,8 +213,8 @@ or promote a player ranking; the public v1 release remains historical.
   $508.08 million to the remaining-rights interface; 70 unresolved or conflicting
   rows remain explicit rather than being forced into value. The combined economics
   input contains these 844 current rows plus 50,226 future rows.
-- The combined current-and-future economics run now values all 51,070 annual rows in
-  one path. It produces complete discounted point and sensitivity totals for 8,362
+- The combined current-and-future economics run now values all 51,076 annual rows in
+  one path. It produces complete discounted point and sensitivity totals for 8,363
   players, while the same 16 known contract rows keep 11 players in review. Current
   partial-season WAR uses FanGraphs' published overall 2026 rate rather than an invalid
   full-season player tier. The result remains a research scenario because post-2026 CBA
@@ -228,6 +229,11 @@ or promote a player ranking; the public v1 release remains historical.
   league total without adding PA/BF or using team depth. It improved 2025 confirmation
   MAE from 14.76 to 12.01 PA and 16.08 to 13.49 BF. The live build keeps 21,596.6 PA
   and 20,597.7 BF unchanged while moving work toward recently used players.
+- The Phase 1 sequential-replay contract and engine are now implemented. The first
+  current checkpoint retains all 8,393 rights-universe players, calculates 8,363 values
+  and keeps 30 review players visible. It validates event cutoffs, true-vintage labels,
+  universe/owner coverage, value bounds and material-change reasons. This proves the
+  present integration interface; it is not yet a historical accuracy result.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -270,9 +276,12 @@ official-status availability boundary and Phase 1 future WAR ranges are now buil
 The one-year confirmation forecast and scoring rule are frozen. Do not inspect partial
 2026 targets or tune the completed gates; run confirmation only after official regular-
 season totals are final. Horizons 5–6 remain on the incumbent until better older
-evidence exists. The next available Phase 1 work is resolving the 16 contract reviews:
-12 future vesting decisions, three linked
-Julio Rodriguez years and one missing option salary. Granular replacement of the
+evidence exists. The next available Phase 1 work is a small completed-season end-to-end
+replay through the new checkpoint interface. Historical performance and roster evidence
+are present; dated historical league-wide payroll/contract snapshots and reliable
+opening service balances are not, so those fields must remain reviews until a source is
+added. In the current snapshot, 16 annual contract reviews remain: 12 future vesting
+decisions, three linked Julio Rodriguez years and one missing option salary. Granular replacement of the
 43 buyout estimates with exact terms is Phase 2. Current role and late-season injury return
 now have narrow Phase 1 baselines. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.

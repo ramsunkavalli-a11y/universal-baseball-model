@@ -26,12 +26,13 @@ CONTROL_PATH_SCHEMA: dict[str, pl.DataType] = {
 }
 
 
-def resolve_service_balances(players: pl.DataFrame) -> pl.DataFrame:
+def resolve_service_balances(players: pl.DataFrame, *, current_season: int) -> pl.DataFrame:
     """Resolve a dated service balance without inventing prior MLB service.
 
     FanGraphs supplies the opening balance when available. A player with no
-    official MLB debut has a zero opening balance; current StatsAPI service is
-    then added. Debuted players lacking the opening balance remain unresolved.
+    official MLB debut, or whose first MLB debut is in the current season, has a
+    zero opening balance; current StatsAPI service is then added. Players who
+    debuted before the current season and lack the opening balance remain unresolved.
     """
 
     required = {"baseline_service_days", "current_service_days", "mlb_debut_date"}
@@ -42,7 +43,10 @@ def resolve_service_balances(players: pl.DataFrame) -> pl.DataFrame:
     ).with_columns(
         pl.when(pl.col("baseline_service_days").is_not_null())
         .then(pl.col("baseline_service_days") + pl.col("current_service_days"))
-        .when(pl.col("mlb_debut_date").is_null())
+        .when(
+            pl.col("mlb_debut_date").is_null()
+            | (pl.col("mlb_debut_date").dt.year() >= current_season)
+        )
         .then(pl.col("current_service_days"))
         .otherwise(pl.lit(None, dtype=pl.Int64))
         .cast(pl.Int64)
@@ -51,6 +55,8 @@ def resolve_service_balances(players: pl.DataFrame) -> pl.DataFrame:
         .then(pl.lit("fangraphs_opening_balance_plus_statsapi_current"))
         .when(pl.col("mlb_debut_date").is_null())
         .then(pl.lit("official_no_mlb_debut_zero_opening_plus_statsapi_current"))
+        .when(pl.col("mlb_debut_date").dt.year() >= current_season)
+        .then(pl.lit("official_current_season_debut_zero_opening_plus_statsapi_current"))
         .otherwise(pl.lit("unresolved_prior_mlb_service"))
         .alias("service_time_basis"),
     )

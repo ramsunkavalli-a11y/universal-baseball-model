@@ -50,7 +50,8 @@ Each checkpoint fails when:
 1. its dates, mode, model or evidence-bundle identity are inconsistent;
 2. player IDs or player-rights rows are duplicated;
 3. its player/owner set differs from the frozen checkpoint universe;
-4. a completed-game or source event crosses the evidence cutoff;
+4. a completed game or predictor event crosses the evidence cutoff (a schedule known at
+   the cutoff may contain future scheduled dates, but those dates are not outcomes);
 5. vintage mode uses missing or future knowledge time;
 6. an available row lacks finite WAR, cost or value estimates;
 7. lower/upper bounds do not contain the point estimate;

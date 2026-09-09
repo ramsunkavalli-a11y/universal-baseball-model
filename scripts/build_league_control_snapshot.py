@@ -355,7 +355,8 @@ def main() -> int:
             .otherwise(pl.lit(None, dtype=pl.Int64))
             .alias("options_remaining"),
             pl.lit(args.as_of).cast(pl.Date).alias("as_of_date"),
-        )
+        ),
+        current_season=args.as_of.year,
     ).with_columns(
             pl.when(pl.col("service_days").is_not_null())
             .then(

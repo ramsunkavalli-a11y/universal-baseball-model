@@ -17,13 +17,13 @@ def test_service_balance_uses_zero_only_before_official_mlb_debut() -> None:
             "mlb_debut_date": [date(2024, 4, 1), None, date(2026, 4, 1)],
         }
     )
-    result = resolve_service_balances(players)
+    result = resolve_service_balances(players, current_season=2026)
     assert result.get_column("current_service_days").to_list() == [0, 0, 12]
-    assert result.get_column("service_days").to_list() == [100, 0, None]
+    assert result.get_column("service_days").to_list() == [100, 0, 12]
     assert result.get_column("service_time_basis").to_list() == [
         "fangraphs_opening_balance_plus_statsapi_current",
         "official_no_mlb_debut_zero_opening_plus_statsapi_current",
-        "unresolved_prior_mlb_service",
+        "official_current_season_debut_zero_opening_plus_statsapi_current",
     ]
 
 
