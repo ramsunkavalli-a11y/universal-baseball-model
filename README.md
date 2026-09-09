@@ -2,9 +2,9 @@
 
 Public-data baseball research working toward a trade-value estimate for every
 player, refreshed after each game and material transaction, beginning with MLB
-organizations and affiliated players. The team-control/payroll foundation and a
-first static contract-economics engine are now built; a validated every-player
-multi-year WAR input and market-price fit are still required before dollar rankings.
+organizations and affiliated players. The team-control/payroll foundation, first
+every-player multi-year WAR input and static contract-economics engine are now
+connected. Uncertainty and market-price fits are still required before dollar rankings.
 
 **Current priority: get the model right before building a public tool.** The
 [authoritative product roadmap](docs/product-roadmap.md) defines the active Phase 1
@@ -57,6 +57,9 @@ WAR coverage without promoting the output to a public ranking.
 The [affiliated translation result](docs/affiliated-level-translation-result.md)
 describes the provisional same-player/same-season bridge that replaces most pure
 minor-league population priors while preserving a fallback.
+The [current contract-economics input result](docs/current-contract-economics-inputs-2026-09-08.md)
+connects whole-player expected WAR to all 50,100 future control rows while keeping
+missing salaries, buyouts and market assumptions explicit.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

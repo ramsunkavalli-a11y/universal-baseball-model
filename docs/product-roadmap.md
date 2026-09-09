@@ -178,5 +178,7 @@ snapshot now has complete 2027–2032 baseline opportunity paths. A first condit
 WAR assembly covers every opportunity row with explicit population priors, primary
 position and replacement value, and no depth input or clipping. Its published Tango
 pitcher aging curve, average-zero hitter defense/running and MLB-only rate evidence are
-Phase 1 fallbacks. Affiliated skill translation, modern aging validation and the
-separate 2026 rest-of-season path are next.
+Phase 1 fallbacks. The validated affiliated translation now replaces most pure
+population priors, and whole-player expected WAR is joined to every future-control
+row. Modern aging validation, covered defense/running reuse, the separate 2026
+rest-of-season path and fitted economic assumptions are next.

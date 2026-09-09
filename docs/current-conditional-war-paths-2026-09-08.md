@@ -68,6 +68,6 @@ cases remain outside controlled WAR.
 2. Fit and validate modern adjacent-season component aging; retain Tango's published
    curve as a sensitivity comparator.
 3. Build the separate 2026 rest-of-season workload/WAR and unpaid-salary paths.
-4. Resolve current-owner/service exceptions, then pass controlled WAR into contract
-   economics. Do not fit or publish dollar rankings until the market-price function
-   and uncertainty paths validate.
+4. Resolve current-owner/service exceptions. Whole-player WAR now feeds the annual
+   contract-economics input table, but dollar rankings wait for the market-price,
+   arbitration, future-CBA, buyout and uncertainty inputs to validate.

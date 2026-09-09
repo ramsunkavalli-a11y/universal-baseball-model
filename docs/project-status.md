@@ -48,8 +48,9 @@ or promote a player ranking; the public v1 release remains historical.
   roster entries corroborate the remaining 45 exact-name identities. Payroll identity
   review is now zero, while liabilities for former roster members remain separate from
   current team control.
-- The 2026-09-08 league build contains 8,399 affiliated players, 8,335 future-path rows
-  through 2031 and a complete 133-player Super Two pool. The calculated cutoff is
+- The refreshed 2026-09-08 league build contains 8,393 affiliated players and 50,100
+  future-path rows for 8,350 players through 2032. Its complete 133-player Super Two
+  pool has a calculated cutoff of
   `2.144` (488 days), with 30 selected because the cutoff is tied. FanGraphs supplies
   the 2026 opening balance; StatsAPI supplies in-season service through the as-of date.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
@@ -113,6 +114,12 @@ or promote a player ranking; the public v1 release remains historical.
   FanGraphs opening balance is absent. Debuted players still fail closed. This expands
   the six-year future-control path from 1,667 to 8,350 players; unresolved ownership
   and service cases remain null rather than becoming free agents.
+- Whole-player expected WAR now joins all 50,100 future-control rows, adding hitter
+  and pitcher value for two-way players. Accepted payroll terms supply 604 known
+  player-year salaries. The 5,064 projection rows without resolved control stay in the
+  talent universe but do not receive invented incumbent rights. Market price,
+  arbitration pay, post-2026 minimums, uncertainty and 151 missing option buyouts
+  remain explicit inputs rather than hidden defaults.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -147,10 +154,11 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 ## Next modeling task
 
 The main denominator, control/cost path, static economics engine, projection
-guardrails, opportunity paths and first conditional-WAR assembly are now built. Next,
-replace covered defense/running fallbacks, fit modern adjacent-season component aging,
-and build the explicit rest-of-season projection. The later economic
-blocker is a chronologically fitted free-agent market function. In parallel, resolve
+guardrails, opportunity paths, conditional-WAR assembly and annual economics-input
+join are now built. Next, replace covered defense/running fallbacks, fit modern
+adjacent-season component aging, and build the explicit rest-of-season projection.
+The main economic blocker is a chronologically fitted free-agent market function.
+In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.
 
