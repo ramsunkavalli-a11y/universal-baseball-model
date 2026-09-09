@@ -156,6 +156,11 @@ def build_explorer_payload(
                 "model_player_type": row.get("model_player_type"),
                 "talent_value": row.get("talent_benchmark_value_dollars"),
                 "star_probability": row.get("star_outcome_probability"),
+                "arrival_probability": row.get("model_arrival_probability"),
+                "arrival_probability_source": row.get("arrival_probability_source"),
+                "meaningful_role_probability": row.get(
+                    "model_meaningful_role_probability"
+                ),
                 "is_pre_mlb_value": is_pre_mlb_value,
                 "years": [] if is_pre_mlb_value else annual_lookup.get(player_id, []),
             }

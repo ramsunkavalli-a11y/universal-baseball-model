@@ -203,6 +203,15 @@ def main() -> int:
                 "model_fv_display": None if fv is None else fv["model_fv_display"],
                 "model_role": None if fv is None else fv["model_role"],
                 "model_player_type": None if fv is None else fv["model_player_type"],
+                "model_arrival_probability": (
+                    None if fv is None else fv["model_arrival_probability"]
+                ),
+                "arrival_probability_source": (
+                    None if fv is None else fv["arrival_probability_source"]
+                ),
+                "model_meaningful_role_probability": (
+                    None if fv is None else fv["model_meaningful_role_probability"]
+                ),
                 "talent_benchmark_value_dollars": (
                     None if fv is None else fv["talent_benchmark_value_dollars"]
                 ),

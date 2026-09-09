@@ -45,6 +45,8 @@ def build_model_fv(
     uncertainty: pl.DataFrame,
     *,
     pre_mlb_player_ids: set[int] | None = None,
+    pre_mlb_arrival_probabilities: dict[tuple[str, int], float] | None = None,
+    pre_mlb_meaningful_role_probabilities: dict[tuple[str, int], float] | None = None,
 ) -> pl.DataFrame:
     """Turn projected six-year production distributions into internal FV grades."""
 
@@ -55,6 +57,10 @@ def build_model_fv(
         raise ValueError("WAR uncertainty has an unexpected schema")
 
     pre_mlb_player_ids = pre_mlb_player_ids or set()
+    pre_mlb_arrival_probabilities = pre_mlb_arrival_probabilities or {}
+    pre_mlb_meaningful_role_probabilities = (
+        pre_mlb_meaningful_role_probabilities or {}
+    )
     hitter = hitter_paths.group_by("player_id").agg(
         pl.col("expected_war").sum().alias("hitter_expected_six_year_war"),
         pl.col("mlb_active_probability").max().alias(
@@ -120,6 +126,8 @@ def build_model_fv(
         player_id = int(row["player_id"])
         expected_war = float(row["expected_six_year_war"])
         outcome_method = "next_six_calendar_years"
+        model_arrival_probability = None
+        model_meaningful_role_probability = None
         if player_id in pre_mlb_player_ids:
             if player_type == "hitter":
                 arrival = float(row["hitter_six_year_arrival_probability"] or 0.0)
@@ -127,8 +135,22 @@ def build_model_fv(
             else:
                 arrival = float(row["pitcher_six_year_arrival_probability"] or 0.0)
                 if_arrived = float(row["pitcher_six_control_year_war_if_arrived"] or 0.0)
+            modeled_arrival = pre_mlb_arrival_probabilities.get(
+                (player_type, player_id)
+            )
+            model_meaningful_role_probability = (
+                pre_mlb_meaningful_role_probabilities.get((player_type, player_id))
+            )
+            if modeled_arrival is not None:
+                arrival = float(modeled_arrival)
+                arrival_source = "historical_two_year_arrival_survival"
+            else:
+                arrival_source = "maximum_annual_probability_fallback"
             expected_war = arrival * if_arrived
+            model_arrival_probability = arrival
             outcome_method = "six_control_years_after_probabilistic_arrival"
+        else:
+            arrival_source = "not_pre_mlb"
         granular = model_fv_from_expected_war(expected_war, player_type)
         if player_type == "hitter":
             role = str(row["primary_position"] or "position_player")
@@ -142,6 +164,11 @@ def build_model_fv(
                 **row,
                 "expected_six_year_war": expected_war,
                 "outcome_method": outcome_method,
+                "model_arrival_probability": model_arrival_probability,
+                "model_meaningful_role_probability": (
+                    model_meaningful_role_probability
+                ),
+                "arrival_probability_source": arrival_source,
                 "model_role": role,
                 "model_fv_granular": granular,
                 "model_fv_display": shown_fv,

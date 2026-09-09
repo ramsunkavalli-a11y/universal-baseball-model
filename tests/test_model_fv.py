@@ -66,3 +66,41 @@ def test_pre_mlb_fv_uses_six_control_years_after_arrival() -> None:
     ).row(0, named=True)
     assert abs(result["expected_six_year_war"] - 1.375) < 1e-12
     assert result["outcome_method"] == "six_control_years_after_probabilistic_arrival"
+    assert result["model_arrival_probability"] == 0.25
+    assert result["arrival_probability_source"] == "maximum_annual_probability_fallback"
+
+
+def test_pre_mlb_fv_prefers_historical_arrival_probability() -> None:
+    hitters = pl.DataFrame(
+        {
+            "player_id": [3, 3], "season": [2027, 2028],
+            "expected_war": [0.1, 0.2], "primary_position": ["CF", "CF"],
+            "mlb_active_probability": [0.2, 0.25],
+            "conditional_war_per_600_pa": [3.0, 3.0],
+        }
+    )
+    pitchers = pl.DataFrame(
+        schema={
+            "player_id": pl.Int64, "season": pl.Int64, "expected_war": pl.Float64,
+            "mlb_active_probability": pl.Float64,
+            "conditional_war_per_800_bf": pl.Float64,
+            "starter_probability_if_active": pl.Float64,
+            "swingman_probability_if_active": pl.Float64,
+            "reliever_probability_if_active": pl.Float64,
+        }
+    )
+    uncertainty = pl.DataFrame(
+        {"player_id": [3, 3], "season": [2027, 2028], "annual_war_variance": [1.0, 1.0]}
+    )
+    result = build_model_fv(
+        hitters,
+        pitchers,
+        uncertainty,
+        pre_mlb_player_ids={3},
+        pre_mlb_arrival_probabilities={("hitter", 3): 0.5},
+        pre_mlb_meaningful_role_probabilities={("hitter", 3): 0.3},
+    ).row(0, named=True)
+    assert abs(result["expected_six_year_war"] - 2.75) < 1e-12
+    assert result["model_arrival_probability"] == 0.5
+    assert result["model_meaningful_role_probability"] == 0.3
+    assert result["arrival_probability_source"] == "historical_two_year_arrival_survival"

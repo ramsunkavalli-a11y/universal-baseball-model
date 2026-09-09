@@ -88,6 +88,13 @@ Talent/FV remains separate from contract status and salary. League role and posi
 counts are diagnostics, never fixed quotas. See the
 [current Phase 2 preview](phase2-model-fv-and-workload-2026-09-09.md).
 
+The first historical arrival and meaningful-role models now pass three time-ordered
+checks for both hitters and pitchers. Organization is deliberately excluded. Arrival
+is integrated, but the prospect distribution remains too optimistic because the
+conditional-on-arrival WAR path does not yet distinguish a fringe debut from a regular
+or impact career. That historical outcome-quality model is the next P0 gate. Draft and
+signing evidence is the next candidate prior for young, low-minors players.
+
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.
 10. Improve defense, two-way-player handling, interval calibration, nonlinear buyer
