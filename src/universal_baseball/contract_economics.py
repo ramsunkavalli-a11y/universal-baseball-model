@@ -119,6 +119,8 @@ def _market_value(war: float, dollars_per_war: float, *, floor_at_zero: bool) ->
 
 def _decision_value(status: str, market_value: float, salary: float, buyout: float) -> tuple[float, float, str]:
     exercise = market_value - salary
+    if status == "current_season_committed":
+        return salary, exercise, "current_season_committed"
     if status in {"pre_arbitration", "arbitration", "arbitration_eligible", "super_two_eligible"}:
         return (salary, exercise, "tender") if exercise >= 0 else (0.0, 0.0, "non_tender")
     if status == "club_option":
@@ -257,7 +259,13 @@ def value_annual_contract_states(
                     )
                     salary_basis = "configured_arbitration_share"
                 buyout = 0.0
-            elif status in {"guaranteed_contract", "club_option", "player_option", "player_opt_out"}:
+            elif status in {
+                "guaranteed_contract",
+                "current_season_committed",
+                "club_option",
+                "player_option",
+                "player_opt_out",
+            }:
                 if known_salary is None:
                     raise ValueError(f"{status} requires a known salary")
                 salary = float(known_salary)

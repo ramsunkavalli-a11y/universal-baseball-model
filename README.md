@@ -47,6 +47,8 @@ The matching [Pitcher Opportunity v1](docs/pitcher-opportunity-v1.md) calculatio
 arrival, BF and role probabilities separate and uses no current-team depth.
 The [historical opportunity source result](docs/opportunity-history-source-result.md)
 records the real 2018–2024 official cohort materialization and its 2020 exclusion.
+The [remaining-rights timeline](docs/remaining-rights-timeline.md) prevents live value
+from counting production already earned or salary already paid.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

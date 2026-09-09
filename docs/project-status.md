@@ -82,6 +82,11 @@ or promote a player ranking; the public v1 release remains historical.
   favor of verified pagination. Excluding the cancelled 2020 MiLB season leaves 74,743
   hitter and 95,360 pitcher zero-inclusive cohort rows across horizons 1–6. Historical
   fits are real; the current 2026 league paths are still pending.
+- The remaining-rights timeline now prevents live valuation from counting WAR already
+  produced or salary already paid. Current-season rows require an explicit remaining
+  salary obligation and cannot receive a fictional midseason non-tender option. Future
+  rows retain full-season production, cost and decision states. Rest-of-season WAR and
+  unpaid salary sources are the remaining live-2026 inputs.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -118,7 +123,8 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 The main candidate denominator, phase-one control/cost path, static economics engine,
 projection guardrails and universal hitter-opportunity calculation are now built. Next,
 build the current hitter/pitcher snapshots and run both six-year league opportunity
-paths; then build component-level aging and whole-player WAR assembly. The
+paths; then build component-level aging, whole-player WAR assembly and the explicit
+rest-of-season projection. The
 later economic
 blocker is a chronologically fitted free-agent market function. In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
@@ -143,8 +149,8 @@ artifacts; hashes bind the inputs. They reject overwriting an inspected candidat
 run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
-Current focused verification: 24 opportunity/guardrail tests pass and Ruff
-passes across `src`, `scripts` and `tests`. The current full run has 1,172 passing tests.
+Current focused verification: opportunity, guardrail and remaining-rights tests pass;
+Ruff passes across `src`, `scripts` and `tests`. The current full run has 1,176 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

@@ -159,6 +159,12 @@ mutual/vesting triggers. The official 2022–2026 minimum schedule is versioned 
 `cba_rules.py`. A league-wide dollar output remains blocked on validated multi-year WAR
 coverage and an ex-ante free-agent market fit; neither is replaced by a hidden default.
 
+The remaining-rights adapter now separates already-earned current-season WAR and paid
+salary from the production and obligations an acquiring club can receive. It requires
+an explicit current remaining-salary amount and treats the active-season commitment as
+already decided. A rest-of-season WAR source and unpaid-salary calculation are still
+needed for live in-season values.
+
 Projection v1 now has a shared hitter/pitcher guardrail boundary in
 `projection_guardrails.py`. It fails on missing player-years, duplicate components,
 team-depth dependence or WAR arithmetic that does not reconcile. It reports PA/BF,

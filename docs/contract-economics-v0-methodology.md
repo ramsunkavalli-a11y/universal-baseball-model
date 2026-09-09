@@ -48,6 +48,12 @@ Each row represents one player, organization and season and supplies:
 - arbitration class when salary must be approximated; and
 - projection and contract source IDs.
 
+For in-season use, rows must first pass through the remaining-rights timeline. Current-
+season projected WAR means only production after the as-of date, and known salary means
+only the unpaid/transferred obligation. Already-produced WAR and already-paid salary do
+not enter trade value. `current_season_committed` prevents an in-season row from
+receiving a fictional offseason non-tender option.
+
 The free-agent market price, discount rate and arbitration shares are explicit caller
 assumptions with their own model IDs. v0 deliberately has no built-in dollar-per-WAR
 answer. Publishing a default before an ex-ante market fit would create false precision.
@@ -55,6 +61,8 @@ answer. Publishing a default before an ex-ante market fit would create false pre
 ## Implemented states
 
 - `guaranteed_contract`: salary is unavoidable and bad performance remains a liability.
+- `current_season_committed`: remaining current-season salary is valued as committed;
+  already-earned production and paid salary are outside the row.
 - `pre_arbitration`: known salary or the applicable CBA minimum; the club may tender or
   non-tender.
 - `arbitration` / `arbitration_eligible` / `super_two_eligible`: known salary when
@@ -116,4 +124,3 @@ a trade-value product.
 - MLB, service-time and arbitration definitions:
   https://www.mlb.com/glossary/transactions/service-time
   and https://www.mlb.com/glossary/transactions/salary-arbitration
-
