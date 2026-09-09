@@ -9,6 +9,11 @@ gains are directionally positive but uncertain. Pre-MLB FV is
 now bracketed: the year-by-year paths are too conservative for true elite prospects,
 while the six-full-seasons override is too generous across the long tail.
 
+The first closed-system audit also finds that aggregate capacity is not exceeded, but
+independent hitter and pitcher paths disagree by as much as 5.4% of the same league
+PA/BF pool. A symmetric league-level reconciliation is specified for research; team
+and role allocation remains the next step before production use.
+
 ## Active plan
 
 The user has prioritized model quality and paused interface development. Read the
