@@ -34,10 +34,12 @@ Fourteen explicit, non-conflicting dollar facts from a dated Spotrac public-opti
 review fill only missing fields; they resolve 13 economics review rows. The small
 overlay keeps page-level provenance, does not redistribute a bulk table, does not
 interpret a dash as zero and cannot override a FanGraphs term or control status.
-Five known structure disagreements are carried as review-only records. They block
+Three linked Julio Rodriguez structure rows are carried as review-only records. They block
 calculation even if the annual salary and buyout fields are otherwise complete.
 Official MLB reporting corrects Tatsuya Imai's 2027 and 2028 states from player option
 to player opt-out; the overlay fails if the expected prior state changes.
+Official MLB reporting also resolves the Kyle Tucker disagreement and corrects his
+2028 and 2029 states to player opt-outs.
 The same fail-closed correction path now consumes final vesting results. Yandy Diaz's
 620 official 2026 PA resolves his 500-PA trigger and changes his 2027 state from
 vesting option to guaranteed contract. Pending or compound triggers remain untouched.
@@ -54,7 +56,7 @@ This table is ready to feed the existing contract-economics engine. It is not ye
 defensible dollar ranking. The remaining large inputs are:
 
 1. official post-2026 CBA minimum-salary rules;
-2. the remaining 54 buyouts, five known structure conflicts and unresolved option
+2. the remaining 54 exact buyouts, three linked structure rows and unresolved option
    triggers; and
 3. Phase 2 internal arbitration validation, empirical interval calibration and
    correlated career paths for option

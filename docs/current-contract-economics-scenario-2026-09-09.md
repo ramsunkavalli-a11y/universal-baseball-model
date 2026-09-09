@@ -5,14 +5,14 @@
 The first full 2027–2032 economics pass now runs all 50,100 controlled player-years
 through the same WAR, market, salary, option and discount rules. The exact-input pass
 produces 50,043 available annual rows and 57 review rows. A named Phase 1 buyout
-estimate then calculates 39 buyout-only exceptions, producing 50,082 scenario rows
-and 18 review rows. At the six-year player aggregate, 8,338 players are complete and
-12 have at least one review year.
+estimate then calculates buyout-only exceptions, producing 50,084 scenario rows and
+16 review rows. At the six-year player aggregate, 8,339 players are complete and 11
+have at least one review year.
 
-The 18 remaining reviews are narrow and visible:
+The 16 remaining reviews are narrow and visible:
 
 - 12 unresolved vesting options;
-- five source conflicts or linked multi-year option structures;
+- three linked Julio Rodriguez option years;
 - one mutual option missing its exercise salary.
 
 ## Named assumptions
@@ -29,7 +29,7 @@ The 18 remaining reviews are narrow and visible:
 - When no buyout is reported, Phase 1 uses the observed median buyout share for that
   option type: 13.0% for club, 18.75% for mutual and 11.9% for player options. The
   13.3% overall median is the player-opt-out fallback because that subgroup has no
-  exact observations. All 39 uses are labeled estimates, not contract facts.
+  exact observations. All 41 uses are labeled estimates, not contract facts.
 - The unsigned post-2026 CBA is represented only by a planning scenario: the 2026
   $780,000 minimum grows 3% annually and the current service rules remain unchanged.
 
@@ -48,12 +48,14 @@ A dated, small Spotrac exception overlay supplies 14 explicit, non-conflicting
 dollar facts that resolve 13 review rows. It never treats a displayed dash as a
 zero and never overrides FanGraphs. Structural disagreements remain review items and
 are recorded in [the secondary option audit](secondary-contract-option-audit-2026-09-09.md).
-Five of those disagreements are also machine-enforced: later term additions cannot
+Three linked Julio Rodriguez years are machine-enforced: later term additions cannot
 silently turn them into calculated rows until the structure is reconciled.
 Two Tatsuya Imai seasons are corrected from player option to player opt-out using
 official MLB reporting. The correction checks the prior status before applying.
 Yandy Diaz's official 2026 total of 620 PA resolves his 500-PA vesting trigger. His
 2027 row is therefore a guaranteed $13M season, not an unresolved vesting option.
+MLB's official Tucker contract report also resolves two apparent source conflicts:
+his 2028 and 2029 rights are player opt-outs, not player options.
 
 Run `scripts/materialize_contract_economics_scenario.py --as-of-date 2026-09-08`
 after rebuilding the current contract-economics inputs.

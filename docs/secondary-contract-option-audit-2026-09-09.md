@@ -17,7 +17,7 @@ The join fails closed when the secondary status conflicts with FanGraphs, when a
 secondary dollar value conflicts with an existing primary value, or when provenance
 is missing. Secondary data can only fill a null field.
 
-Five source disagreements are stored in
+Three linked-structure disagreements are stored in
 `config/secondary-contract-structure-reviews-2026-09-09.json` and joined to the annual
 economics input. The calculator refuses to value those rows even if a later refresh
 fills the missing dollar fields. This keeps the audit boundary in code, not only in
@@ -28,8 +28,6 @@ this document.
 The browser review exposed structural differences that are more important than the
 remaining easy blanks:
 
-- Kyle Tucker is a FanGraphs player option but Spotrac presents opt-outs in 2028–2029.
-  Both rows are blocked.
 - Julio Rodriguez's 2030–2032 option structure is a linked club-option/fallback-player-
   option decision, not three independent player options. All three rows are blocked.
 - Kyle Freeland's 2027 vesting option is shown as voided by Spotrac.
@@ -57,3 +55,6 @@ review; do not turn missing information into zero, free agency or a standard opt
 - Official MLB reporting confirms Tatsuya Imai may opt out after both 2026 and 2027.
   A narrow official-source overlay corrects the 2027 and 2028 states to
   `player_opt_out`. It does not supply or assume a buyout.
+- Official MLB reporting confirms Kyle Tucker may opt out after the second and third
+  years of his four-year deal. The 2028 and 2029 states are corrected from
+  `player_option` to `player_opt_out`; the earlier Spotrac disagreement is closed.

@@ -135,7 +135,7 @@ or promote a player ranking; the public v1 release remains historical.
   basis rows and 388 labeled first-horizon proxies. A complete research scenario now
   calculates 50,043 of 50,100 future annual rows; 57 rows and 49 player aggregates
   remain in review for option buyouts, vesting triggers or one missing salary.
-  Five known source/structure disagreements are machine-enforced review rows, so a
+  Three linked Julio Rodriguez structure rows are machine-enforced reviews, so a
   later dollar-term fill cannot silently value the wrong option type.
   Official MLB reporting corrects Tatsuya Imai's 2027–2028 states to player opt-outs;
   a current official report confirms FanGraphs' Pivetta club-option conversion.
@@ -147,9 +147,10 @@ or promote a player ranking; the public v1 release remains historical.
   Yandy's final result now changes his 2027 state to a guaranteed $13M season before
   economics are calculated; pending triggers do not alter their contract states.
   The exact-input result remains 50,043 of 50,100 rows. A separate named Phase 1
-  buyout estimate uses observed option-type median shares for 39 rows with no reported
-  buyout, raising the research scenario to 50,082 available rows and leaving 18
-  reviews across 12 players. Estimated rows are labeled and do not become source facts.
+  buyout estimate uses observed option-type median shares for 41 rows with no reported
+  buyout. Official MLB reporting also corrects Kyle Tucker's 2028–2029 states to
+  player opt-outs, raising the research scenario to 50,084 available rows and leaving
+  16 reviews across 11 players. Estimated rows are labeled and do not become source facts.
   Twenty-nine fully specified mutual options now use the conservative normal-expiration
   outcome instead of waiting for a separate decision model.
   The post-2026 minimum and unchanged service rules are explicitly a planning scenario,
@@ -226,15 +227,15 @@ The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-Next, resolve the 18 remaining contract reviews, led by future vesting decisions,
-five complex structures and one missing option salary. Granular replacement of the
-39 buyout estimates with exact terms is Phase 2. Current role and late-season injury return
+Next, resolve the 16 remaining contract reviews: 12 future vesting decisions, three
+linked Julio Rodriguez years and one missing option salary. Granular replacement of the
+41 buyout estimates with exact terms is Phase 2. Current role and late-season injury return
 now have narrow Phase 1 baselines. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
 The market-price and Phase 1 arbitration gates are complete. The remaining economic
-blockers are successor-CBA facts and the 18 remaining scenario review rows.
+blockers are successor-CBA facts and the 16 remaining scenario review rows.
 In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.

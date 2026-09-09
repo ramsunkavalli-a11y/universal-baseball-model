@@ -216,9 +216,10 @@ calculation could reset after the first projected year.
 The Phase 1 arbitration baseline now applies FanGraphs' 15%/35%/50%/75% shares to
 prior-season projected WAR value. A full research scenario calculates 50,043 of
 50,100 future annual rows from exact inputs. A separate named Phase 1 buyout estimate
-uses observed option-type medians for 39 otherwise complete rows, raising scenario
-coverage to 50,082 and leaving 18 structural, salary or future-trigger reviews.
-Five source conflicts or linked multi-year option structures are now machine-blocked
+uses observed option-type medians for 41 otherwise complete rows. Official MLB
+reporting also resolves Kyle Tucker's two apparent option conflicts, raising scenario
+coverage to 50,084 and leaving 16 reviews. Three linked Julio Rodriguez years
+remain machine-blocked
 rather than relying on a prose audit. Two Imai seasons are corrected to player
 opt-outs from official MLB reporting; the correction is fail-closed against the
 expected prior state.

@@ -1,4 +1,6 @@
 from datetime import date
+import json
+from pathlib import Path
 
 import polars as pl
 import pytest
@@ -6,6 +8,9 @@ import pytest
 from universal_baseball.contract_economics_inputs import (
     build_future_contract_economics_inputs,
 )
+
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_builds_whole_player_economics_inputs_and_sums_two_way_war() -> None:
@@ -308,3 +313,30 @@ def test_super_two_track_advances_through_four_arbitration_classes() -> None:
     )
     assert result.annual_inputs.get_column("arbitration_class").to_list() == [1, 2, 3, 4]
     assert result.coverage["projected_super_two_track_players"] == 1
+
+
+def test_official_corrections_do_not_overlap_structure_review_queue() -> None:
+    corrections = json.loads(
+        (ROOT / "config/contract-control-corrections-2026-09-09.json").read_text(
+            encoding="utf-8"
+        )
+    )["corrections"]
+    reviews = json.loads(
+        (
+            ROOT / "config/secondary-contract-structure-reviews-2026-09-09.json"
+        ).read_text(encoding="utf-8")
+    )["reviews"]
+    correction_keys = {
+        (row["player_id"], row["organization_id"], row["season"])
+        for row in corrections
+    }
+    review_keys = {
+        (row["player_id"], row["organization_id"], row["season"])
+        for row in reviews
+    }
+    assert correction_keys.isdisjoint(review_keys)
+    tucker = [row for row in corrections if row["player_id"] == 663656]
+    assert [(row["season"], row["corrected_control_status"]) for row in tucker] == [
+        (2028, "player_opt_out"),
+        (2029, "player_opt_out"),
+    ]
