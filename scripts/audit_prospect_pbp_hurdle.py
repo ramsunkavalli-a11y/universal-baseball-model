@@ -43,6 +43,7 @@ class Fit:
     pbp_priors: dict[str, float] | None
     family: str
     contact_regression: float
+    base_feature_set: str
 
 
 def _args() -> argparse.Namespace:
@@ -51,6 +52,12 @@ def _args() -> argparse.Namespace:
     parser.add_argument(
         "--output-json", type=Path,
         default=Path("docs/prospect-pbp-hurdle-test-result.json"),
+    )
+    parser.add_argument(
+        "--base-feature-set", choices=("core", "baseball_pedigree"), default="core"
+    )
+    parser.add_argument(
+        "--outcome", choices=("both", "meaningful_opportunity"), default="both"
     )
     return parser.parse_args()
 
@@ -108,7 +115,7 @@ def _production_priors(frame: pl.DataFrame) -> tuple[float, float, float, float]
 
 def _design(frame: pl.DataFrame, fit: Fit) -> np.ndarray:
     core = arrival_design(
-        frame, feature_set="core", production_priors=fit.production_priors,
+        frame, feature_set=fit.base_feature_set, production_priors=fit.production_priors,
         production_regression=PRODUCTION_REGRESSION,
     )
     if fit.family == "core":
@@ -123,7 +130,7 @@ def _design(frame: pl.DataFrame, fit: Fit) -> np.ndarray:
 
 def _fit(
     training: pl.DataFrame, *, target: str, family: str, c: float,
-    contact_regression: float,
+    contact_regression: float, base_feature_set: str,
 ) -> Fit:
     observed = training.get_column(target).to_numpy()
     if np.unique(observed).size != 2:
@@ -134,6 +141,7 @@ def _fit(
         pbp_priors=None if family == "core" else contact_shape_priors(training),
         family=family,
         contact_regression=contact_regression,
+        base_feature_set=base_feature_set,
     )
     fit.model.fit(_design(training, fit), observed)
     return fit
@@ -174,7 +182,8 @@ def _subgroups(
 
 
 def _evaluate_outcome(
-    cohorts: dict[int, pl.DataFrame], *, target: str, conditioning: str | None
+    cohorts: dict[int, pl.DataFrame], *, target: str, conditioning: str | None,
+    base_feature_set: str,
 ) -> dict[str, object]:
     prepared = {
         year: frame if conditioning is None else frame.filter(pl.col(conditioning) == 1)
@@ -183,7 +192,8 @@ def _evaluate_outcome(
     train = prepared[2021]
     selection = prepared[2022]
     incumbent_selection_fit = _fit(
-        train, target=target, family="core", c=INCUMBENT_C, contact_regression=0.0
+        train, target=target, family="core", c=INCUMBENT_C, contact_regression=0.0,
+        base_feature_set=base_feature_set,
     )
     incumbent_selection_probability = _predict(incumbent_selection_fit, selection)
     selection_observed = selection.get_column(target).to_numpy()
@@ -193,7 +203,10 @@ def _evaluate_outcome(
         for c in REGULARIZATION:
             strengths = CONTACT_REGRESSION if family != "coverage" else (CONTACT_REGRESSION[0],)
             for strength in strengths:
-                fit = _fit(train, target=target, family=family, c=c, contact_regression=strength)
+                fit = _fit(
+                    train, target=target, family=family, c=c,
+                    contact_regression=strength, base_feature_set=base_feature_set,
+                )
                 metrics = proper_scores(selection_observed, _predict(fit, selection))
                 candidates.append({
                     "family": family, "regularization_c": c,
@@ -205,7 +218,8 @@ def _evaluate_outcome(
     combined = pl.concat([prepared[2021], prepared[2022]], how="vertical_relaxed")
     outer = prepared[2023]
     incumbent_fit = _fit(
-        combined, target=target, family="core", c=INCUMBENT_C, contact_regression=0.0
+        combined, target=target, family="core", c=INCUMBENT_C,
+        contact_regression=0.0, base_feature_set=base_feature_set,
     )
     if selected is None:
         candidate_fit = incumbent_fit
@@ -215,6 +229,7 @@ def _evaluate_outcome(
             combined, target=target, family=str(selected["family"]),
             c=float(selected["regularization_c"]),
             contact_regression=float(selected["contact_regression"]),
+            base_feature_set=base_feature_set,
         )
         selected_spec = selected
     observed = outer.get_column(target).to_numpy()
@@ -307,29 +322,35 @@ def main() -> int:
             "minimum_game_date": profile.get_column("game_date").min().isoformat(),
             "maximum_game_date": profile.get_column("game_date").max().isoformat(),
         }
+    meaningful = _evaluate_outcome(
+        cohorts, target="meaningful_role_within_horizon", conditioning=None,
+        base_feature_set=args.base_feature_set,
+    )
+    stacking_check = args.base_feature_set == "baseball_pedigree"
     report = {
         "report_schema_version": "0.1",
         "created_date": date.today().isoformat(),
-        "status": "retrospective_outer_test_not_fresh_confirmation",
-        "plan": "docs/prospect-pbp-hurdle-test-plan.md",
+        "status": (
+            "retrospective_descriptive_stack_not_confirmation"
+            if stacking_check else "retrospective_outer_test_not_fresh_confirmation"
+        ),
+        "plan": (
+            "docs/prospect-pbp-pedigree-stack-plan.md"
+            if stacking_check else "docs/prospect-pbp-hurdle-test-plan.md"
+        ),
         "source_semantics": "retrospective_event_cutoff_corrected_not_vintage",
         "source_metrics": source_metrics,
         "fixed_settings": {
             "origins": list(ORIGINS), "outcome_horizon_years": 1,
             "incumbent_c": INCUMBENT_C,
+            "base_feature_set": args.base_feature_set,
             "production_regression": PRODUCTION_REGRESSION,
             "feature_families": list(FEATURE_FAMILIES),
             "contact_regression": list(CONTACT_REGRESSION),
             "regularization_c": list(REGULARIZATION),
             "neutral_woba_weights": NEUTRAL_WOBA_WEIGHTS,
         },
-        "meaningful_opportunity": _evaluate_outcome(
-            cohorts, target="meaningful_role_within_horizon", conditioning=None
-        ),
-        "positive_component_given_meaningful": _evaluate_outcome(
-            cohorts, target="positive_component_role_within_horizon",
-            conditioning="meaningful_role_within_horizon",
-        ),
+        "meaningful_opportunity": meaningful,
         "binding_interpretation": {
             "outside_fv_used": False,
             "catcher_preference_added": False,
@@ -339,6 +360,12 @@ def main() -> int:
             "fresh_later_confirmation_required": True,
         },
     }
+    if args.outcome == "both":
+        report["positive_component_given_meaningful"] = _evaluate_outcome(
+            cohorts, target="positive_component_role_within_horizon",
+            conditioning="meaningful_role_within_horizon",
+            base_feature_set=args.base_feature_set,
+        )
     args.output_json.write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )

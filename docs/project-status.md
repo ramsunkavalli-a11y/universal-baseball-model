@@ -2,15 +2,15 @@
 
 Updated 2026-09-09. This is the current start-here document.
 
-The frozen [prospect PBP hurdle test](prospect-pbp-hurdle-test-result.md) found a small,
-repeatable contact-shape improvement for next-season meaningful MLB opportunity:
-outer log loss improved `0.022748 -> 0.022371` on 3,168 players, with 17 positives.
-Brier improved only slightly and its paired interval crossed zero. The conditional
-quality cohort contained only 17 players and failed calibration badly, so that use is
-rejected. No values changed. The opportunity challenger next needs a descriptive
-stacking check against the stronger pedigree-inclusive incumbent and then a genuinely
-later confirmation. Catcher preference, outside FV inputs and non-universal pitch
-sequences remain excluded.
+The frozen [prospect PBP hurdle test](prospect-pbp-hurdle-test-result.md) found a small
+contact-shape improvement against a core aggregate comparator, but the required
+[pedigree stacking check](prospect-pbp-pedigree-stack-result.md) produced a mixed
+decision. Log loss improved `0.022501 -> 0.022283`, while Brier worsened
+`0.004800 -> 0.004820`, its paired intervals crossed zero and the supported 300+ PA
+group was worse on both scores. The PBP addition is therefore rejected for the current
+pedigree-inclusive opportunity model. Its conditional-quality use was already
+rejected for tiny support and severe calibration failure. No values changed. Catcher
+preference, outside FV inputs and non-universal pitch sequences remain excluded.
 
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
