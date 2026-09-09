@@ -83,6 +83,7 @@ def test_every_pitcher_gets_arrival_workload_and_role_path() -> None:
         (pl.col("expected_mlb_bf") - pl.col("mlb_active_probability") * pl.col("conditional_mlb_bf")).abs()
         > 1e-12
     ).is_empty()
+    assert paths.get_column("conditional_mlb_bf_variance").min() >= 0.0
 
 
 def test_lower_level_pitcher_can_have_delayed_arrival() -> None:

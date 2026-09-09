@@ -37,6 +37,7 @@ PITCHER_OPPORTUNITY_REFERENCE_SCHEMA: dict[str, pl.DataType] = {
     "positive_count": pl.Int64,
     "mlb_active_probability": pl.Float64,
     "conditional_mlb_bf": pl.Float64,
+    "conditional_mlb_bf_variance": pl.Float64,
     "starter_probability_if_active": pl.Float64,
     "swingman_probability_if_active": pl.Float64,
     "reliever_probability_if_active": pl.Float64,
@@ -64,6 +65,7 @@ PITCHER_OPPORTUNITY_PATH_SCHEMA: dict[str, pl.DataType] = {
     "horizon": pl.Int64,
     "mlb_active_probability": pl.Float64,
     "conditional_mlb_bf": pl.Float64,
+    "conditional_mlb_bf_variance": pl.Float64,
     "expected_mlb_bf": pl.Float64,
     "starter_probability_if_active": pl.Float64,
     "swingman_probability_if_active": pl.Float64,
@@ -203,11 +205,11 @@ def _age_band(value: object, width: int) -> int | None:
 def _summarize(
     group: pl.DataFrame,
     *,
-    parent: tuple[float, float, tuple[float, float, float]] | None,
+    parent: tuple[float, float, float, tuple[float, float, float]] | None,
     participation_prior: float,
     workload_prior: float,
     role_prior: float,
-) -> tuple[float, float, tuple[float, float, float]]:
+) -> tuple[float, float, float, tuple[float, float, float]]:
     n = group.height
     active = group.filter(pl.col("future_mlb_bf") > 0)
     active_n = active.height
@@ -217,23 +219,30 @@ def _summarize(
     if parent is None:
         if active_n == 0:
             raise ValueError("pitcher opportunity horizon has no active pitchers")
+        workload = float(active.get_column("future_mlb_bf").mean())
         return (
             active_n / n,
-            float(active.get_column("future_mlb_bf").mean()),
+            workload,
+            float(active.get_column("future_mlb_bf").var(ddof=0) or 0.0),
             tuple(role_counts[role] / active_n for role in PITCHER_ROLES),
         )
-    parent_probability, parent_bf, parent_roles = parent
+    parent_probability, parent_bf, parent_bf_variance, parent_roles = parent
     probability = (active_n + participation_prior * parent_probability) / (
         n + participation_prior
     )
     workload = (
         float(active.get_column("future_mlb_bf").sum()) + workload_prior * parent_bf
     ) / (active_n + workload_prior)
+    second_moment = (
+        float((active.get_column("future_mlb_bf") ** 2).sum() or 0.0)
+        + workload_prior * (parent_bf_variance + parent_bf * parent_bf)
+    ) / (active_n + workload_prior)
+    workload_variance = max(0.0, second_moment - workload * workload)
     roles = tuple(
         (role_counts[role] + role_prior * parent_roles[index]) / (active_n + role_prior)
         for index, role in enumerate(PITCHER_ROLES)
     )
-    return probability, workload, roles
+    return probability, workload, workload_variance, roles
 
 
 def fit_pitcher_opportunity_fallbacks(
@@ -328,8 +337,8 @@ def fit_pitcher_opportunity_fallbacks(
         role: str,
         age_band: int | None,
         reference_level: str,
-        parent: tuple[float, float, tuple[float, float, float]] | None,
-    ) -> tuple[float, float, tuple[float, float, float]]:
+        parent: tuple[float, float, float, tuple[float, float, float]] | None,
+    ) -> tuple[float, float, float, tuple[float, float, float]]:
         summary = _summarize(
             group,
             parent=parent,
@@ -337,7 +346,7 @@ def fit_pitcher_opportunity_fallbacks(
             workload_prior=workload_prior_active_pitchers,
             role_prior=role_prior_active_pitchers,
         )
-        probability, workload, role_probabilities = summary
+        probability, workload, workload_variance, role_probabilities = summary
         rows.append(
             {
                 "horizon": horizon,
@@ -349,6 +358,7 @@ def fit_pitcher_opportunity_fallbacks(
                 "positive_count": group.filter(pl.col("future_mlb_bf") > 0).height,
                 "mlb_active_probability": probability,
                 "conditional_mlb_bf": workload,
+                "conditional_mlb_bf_variance": workload_variance,
                 "starter_probability_if_active": role_probabilities[0],
                 "swingman_probability_if_active": role_probabilities[1],
                 "reliever_probability_if_active": role_probabilities[2],
@@ -469,6 +479,7 @@ def score_pitcher_opportunity_paths(
             projected_role = max(PITCHER_ROLES, key=lambda value: role_values[value])
             probability = float(reference["mlb_active_probability"])
             workload = float(reference["conditional_mlb_bf"])
+            workload_variance = float(reference["conditional_mlb_bf_variance"])
             output.append(
                 {
                     "as_of_date": as_of_date,
@@ -477,6 +488,7 @@ def score_pitcher_opportunity_paths(
                     "horizon": horizon,
                     "mlb_active_probability": probability,
                     "conditional_mlb_bf": workload,
+                    "conditional_mlb_bf_variance": workload_variance,
                     "expected_mlb_bf": probability * workload,
                     **{
                         f"{role_name}_probability_if_active": role_values[role_name]

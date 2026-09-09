@@ -57,6 +57,14 @@ def _finite_positive(value: object, label: str) -> float:
     return numeric
 
 
+def _weighted_variance(
+    probabilities: Mapping[str, float], values: Mapping[str, float]
+) -> float:
+    mean = sum(probabilities[key] * values[key] for key in probabilities)
+    second = sum(probabilities[key] * values[key] ** 2 for key in probabilities)
+    return max(0.0, second - mean * mean)
+
+
 def _age_index(component: str, age: float) -> float:
     values = _TANGO_COMPONENT_INDEX[component]
     bounded = min(40.0, max(20.0, float(age)))
@@ -253,6 +261,13 @@ def build_hitter_conditional_war_rates(
             aged = {key: value / denominator for key, value in aged_raw.items()}
             woba = sum(aged[key] * woba_weight[key] for key in event_columns)
             batting_runs = (woba - reference_woba) * 600.0 / NEUTRAL_WOBA_SCALE
+            event_run_variance = _weighted_variance(
+                aged,
+                {key: woba_weight[key] / NEUTRAL_WOBA_SCALE for key in event_columns},
+            )
+            posterior_concentration = (
+                evidence / reliability if reliability > 0 else MARCEL_REGRESSION_PA
+            )
             baserunning = baserunning_lookup.get((int(row["player_id"]), int(season)))
             baserunning_runs = (
                 float(baserunning["baserunning_runs_per_600"])
@@ -294,8 +309,14 @@ def build_hitter_conditional_war_rates(
                 "primary_position": position, "target_age": age,
                 "weighted_history_pa": evidence,
                 "reliability": reliability,
+                "posterior_concentration": posterior_concentration,
+                "event_run_variance": event_run_variance,
+                "posterior_run_rate_variance": (
+                    event_run_variance / (posterior_concentration + 1.0)
+                ),
                 "evidence_tier": evidence_tier,
                 "talent_model_id": HITTER_RATE_MODEL_ID,
+                **{f"predicted_{key}_rate": aged[key] for key in event_columns},
                 "missing_component_policy": (
                     "none"
                     if baserunning_rates is not None and defense_rates is not None
@@ -389,6 +410,13 @@ def build_pitcher_conditional_war_rates(
             aged = apply_tango_pitcher_aging(probabilities, current_age=current_age, target_age=target_age)
             woba_allowed = sum(aged[key] * weights[key] for key in aged)
             runs_above_average = -(woba_allowed - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE
+            event_run_variance = _weighted_variance(
+                aged,
+                {key: weights[key] / NEUTRAL_WOBA_SCALE for key in aged},
+            )
+            posterior_concentration = (
+                evidence / reliability if reliability > 0 else PITCHER_REGRESSION_BF
+            )
             war = (runs_above_average + replacement_runs) / rpw
             rows.append({
                 "player_id": int(row["player_id"]), "season": int(season),
@@ -398,6 +426,11 @@ def build_pitcher_conditional_war_rates(
                 "target_age": target_age,
                 "weighted_history_bf": evidence,
                 "reliability": reliability,
+                "posterior_concentration": posterior_concentration,
+                "event_run_variance": event_run_variance,
+                "posterior_run_rate_variance": (
+                    event_run_variance / (posterior_concentration + 1.0)
+                ),
                 "evidence_tier": evidence_tier,
                 "talent_model_id": PITCHER_RATE_MODEL_ID,
                 "aging_source": "tango_adjacent_pitching_regressed_part2",

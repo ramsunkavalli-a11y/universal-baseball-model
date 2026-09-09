@@ -72,6 +72,27 @@ def recover_untruncated_nb2_mean(
     return result
 
 
+def zero_truncated_nb2_variance(
+    positive_truncated_mean: object,
+    *,
+    alpha: object = NB2_ALPHA,
+) -> float:
+    """Return Var[Y | Y>0] for the frozen NB2 positive-workload model."""
+
+    target = _finite_positive(positive_truncated_mean, "positive_truncated_mean")
+    dispersion = _finite_positive(alpha, "alpha")
+    mu = recover_untruncated_nb2_mean(target, alpha=dispersion)
+    size = 1.0 / dispersion
+    probability = size / (size + mu)
+    p_zero = probability**size
+    unconditional_second_moment = mu + dispersion * mu * mu + mu * mu
+    conditional_second_moment = unconditional_second_moment / (1.0 - p_zero)
+    variance = conditional_second_moment - target * target
+    if not math.isfinite(variance) or variance < -1e-9:
+        raise RuntimeError("zero-truncated NB2 variance is invalid")
+    return max(0.0, variance)
+
+
 def sample_hurdle_plate_appearances(
     rng: np.random.Generator,
     *,

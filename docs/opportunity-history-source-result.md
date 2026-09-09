@@ -49,9 +49,15 @@ Population MLB participation declines from 14.8% to 11.3% across hitter horizons
 and from 14.0% to 11.0% for pitchers. These are broad-denominator references, not an
 individual player's path and not promoted performance claims.
 
+The fit now also preserves the positive PA/BF second moment through the same
+population-to-level-to-age/role shrinkage hierarchy. This does not change mean
+opportunity. It supplies observed workload spread to the Phase 1 WAR sensitivity
+calculation without inventing a common variance or cap.
+
 ## Remaining boundary
 
 The cohort source and fallback fits are now real. The 2026-09-08 current snapshot and
 2027–2032 fallback paths are also materialized. The frozen selected one-year hitter
 forecast should be attached if its artifacts are recovered. Conditional WAR rates,
-aging and rest-of-season 2026 production remain separate.
+aging and uncertainty are connected downstream; rest-of-season 2026 production
+remains a separate dated path.

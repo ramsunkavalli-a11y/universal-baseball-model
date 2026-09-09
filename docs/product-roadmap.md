@@ -185,5 +185,7 @@ joined to every future-control row. A modern pitcher-aging challenger failed, so
 Tango sensitivity remains the Phase 1 curve. Frozen general-range defense now covers
 the adjacent season and stays neutral outside its validated scope. Official season-out
 status and unresolved-injury sensitivity now cover the narrow current availability
-boundary. Calibrated return/role, full uncertainty and fitted economic assumptions are
-next.
+boundary. Historical workload spread and posterior rate evidence now produce Phase 1
+future WAR sensitivities for every economics row. Fitted market assumptions and
+calibrated return/role are next; correlated career paths and interval coverage
+refinement are Phase 2.

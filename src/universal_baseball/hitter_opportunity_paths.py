@@ -16,6 +16,7 @@ from typing import Iterable
 import polars as pl
 
 from universal_baseball.projection_guardrails import PROJECTION_PATH_SCHEMA
+from universal_baseball.player_value_uncertainty import zero_truncated_nb2_variance
 
 
 HITTER_OPPORTUNITY_HISTORY_SCHEMA: dict[str, pl.DataType] = {
@@ -61,6 +62,7 @@ HITTER_OPPORTUNITY_REFERENCE_SCHEMA: dict[str, pl.DataType] = {
     "positive_count": pl.Int64,
     "mlb_active_probability": pl.Float64,
     "conditional_mlb_pa": pl.Float64,
+    "conditional_mlb_pa_variance": pl.Float64,
 }
 
 HITTER_OPPORTUNITY_PATH_SCHEMA: dict[str, pl.DataType] = {
@@ -70,6 +72,7 @@ HITTER_OPPORTUNITY_PATH_SCHEMA: dict[str, pl.DataType] = {
     "horizon": pl.Int64,
     "mlb_active_probability": pl.Float64,
     "conditional_mlb_pa": pl.Float64,
+    "conditional_mlb_pa_variance": pl.Float64,
     "expected_mlb_pa": pl.Float64,
     "coverage_tier": pl.String,
     "probability_model_id": pl.String,
@@ -138,6 +141,22 @@ def _age_band(age: object, width: int) -> int | None:
 
 def _smoothed_rate(successes: float, count: int, prior: float, strength: float) -> float:
     return (float(successes) + strength * float(prior)) / (int(count) + strength)
+
+
+def _smoothed_variance(
+    values: pl.Series,
+    *,
+    mean: float,
+    prior_mean: float,
+    prior_variance: float,
+    strength: float,
+) -> float:
+    """Shrink the conditional second moment with the same workload prior."""
+
+    second_sum = float((values.cast(pl.Float64) ** 2).sum() or 0.0)
+    prior_second = prior_variance + prior_mean * prior_mean
+    second = (second_sum + strength * prior_second) / (len(values) + strength)
+    return max(0.0, second - mean * mean)
 
 
 def build_hitter_opportunity_history(
@@ -311,6 +330,9 @@ def fit_hitter_opportunity_fallbacks(
             raise ValueError(f"hitter opportunity horizon {horizon} has no positive MLB PA")
         population_probability = float(horizon_positive_n / horizon_n)
         population_workload = float(horizon_positive.get_column("future_mlb_pa").mean())
+        population_workload_variance = float(
+            horizon_positive.get_column("future_mlb_pa").var(ddof=0) or 0.0
+        )
         rows.append(
             {
                 "horizon": horizon,
@@ -321,6 +343,7 @@ def fit_hitter_opportunity_fallbacks(
                 "positive_count": horizon_positive_n,
                 "mlb_active_probability": population_probability,
                 "conditional_mlb_pa": population_workload,
+                "conditional_mlb_pa_variance": population_workload_variance,
             }
         )
 
@@ -341,6 +364,13 @@ def fit_hitter_opportunity_fallbacks(
                 population_workload,
                 workload_prior_positive_players,
             )
+            level_workload_variance = _smoothed_variance(
+                level_positive.get_column("future_mlb_pa"),
+                mean=level_workload,
+                prior_mean=population_workload,
+                prior_variance=population_workload_variance,
+                strength=workload_prior_positive_players,
+            )
             rows.append(
                 {
                     "horizon": horizon,
@@ -351,6 +381,7 @@ def fit_hitter_opportunity_fallbacks(
                     "positive_count": level_positive_n,
                     "mlb_active_probability": level_probability,
                     "conditional_mlb_pa": level_workload,
+                    "conditional_mlb_pa_variance": level_workload_variance,
                 }
             )
             known_age = level_rows.filter(pl.col("age_band_start").is_not_null())
@@ -359,6 +390,12 @@ def fit_hitter_opportunity_fallbacks(
                 cell_n = cell.height
                 cell_positive = cell.filter(pl.col("active") == 1)
                 cell_positive_n = cell_positive.height
+                cell_workload = _smoothed_rate(
+                    float(cell_positive.get_column("future_mlb_pa").sum()),
+                    cell_positive_n,
+                    level_workload,
+                    workload_prior_positive_players,
+                )
                 rows.append(
                     {
                         "horizon": horizon,
@@ -373,11 +410,13 @@ def fit_hitter_opportunity_fallbacks(
                             level_probability,
                             participation_prior_players,
                         ),
-                        "conditional_mlb_pa": _smoothed_rate(
-                            float(cell_positive.get_column("future_mlb_pa").sum()),
-                            cell_positive_n,
-                            level_workload,
-                            workload_prior_positive_players,
+                        "conditional_mlb_pa": cell_workload,
+                        "conditional_mlb_pa_variance": _smoothed_variance(
+                            cell_positive.get_column("future_mlb_pa"),
+                            mean=cell_workload,
+                            prior_mean=level_workload,
+                            prior_variance=level_workload_variance,
+                            strength=workload_prior_positive_players,
                         ),
                     }
                 )
@@ -459,7 +498,11 @@ def score_hitter_opportunity_paths(
             str(row["level_tier"]),
             row["age_band_start"],
             str(row["reference_level"]),
-        ): (float(row["mlb_active_probability"]), float(row["conditional_mlb_pa"]))
+        ): (
+            float(row["mlb_active_probability"]),
+            float(row["conditional_mlb_pa"]),
+            float(row["conditional_mlb_pa_variance"]),
+        )
         for row in fit.references.iter_rows(named=True)
     }
     rows: list[dict[str, object]] = []
@@ -470,6 +513,9 @@ def score_hitter_opportunity_paths(
         for horizon in fit.horizons:
             if horizon == 1 and player_id in selected:
                 probability, workload = selected[player_id]
+                workload_variance = (
+                    zero_truncated_nb2_variance(workload) if workload > 1.0 else 0.0
+                )
                 coverage = "selected_next_year_model"
                 probability_model = "playing_time_v1:selected_participation"
                 workload_model = "playing_time_v1:selected_positive_pa"
@@ -478,13 +524,13 @@ def score_hitter_opportunity_paths(
                 level_key = (horizon, level, None, "level")
                 population_key = (horizon, "ALL", None, "population")
                 if age_band is not None and age_key in lookup:
-                    probability, workload = lookup[age_key]
+                    probability, workload, workload_variance = lookup[age_key]
                     coverage = "age_level_historical_fallback"
                 elif level_key in lookup:
-                    probability, workload = lookup[level_key]
+                    probability, workload, workload_variance = lookup[level_key]
                     coverage = "level_historical_fallback"
                 else:
-                    probability, workload = lookup[population_key]
+                    probability, workload, workload_variance = lookup[population_key]
                     coverage = "population_historical_fallback"
                 probability_model = "hitter_opportunity_v1:historical_arrival_survival"
                 workload_model = "hitter_opportunity_v1:historical_positive_pa"
@@ -496,6 +542,7 @@ def score_hitter_opportunity_paths(
                     "horizon": horizon,
                     "mlb_active_probability": probability,
                     "conditional_mlb_pa": workload,
+                    "conditional_mlb_pa_variance": workload_variance,
                     "expected_mlb_pa": probability * workload,
                     "coverage_tier": coverage,
                     "probability_model_id": probability_model,

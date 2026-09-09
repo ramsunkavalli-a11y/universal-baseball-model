@@ -43,3 +43,40 @@ def test_builds_whole_player_economics_inputs_and_sums_two_way_war() -> None:
     assert player_one.item(0, "known_salary_dollars") == 5_000_000
     assert result.coverage["projection_rows_without_control"] == 1
     assert result.coverage["control_rows_without_projection"] == 1
+
+
+def test_attaches_exact_whole_player_uncertainty() -> None:
+    hitters = pl.DataFrame(
+        {"player_id": [1], "season": [2027], "expected_war": [1.5]}
+    )
+    pitchers = pl.DataFrame(
+        {"player_id": [1], "season": [2027], "expected_war": [0.5]}
+    )
+    control = pl.DataFrame(
+        {
+            "as_of_date": [date(2026, 9, 8)], "player_id": [1],
+            "organization_id": [100], "control_year": [2027],
+            "service_days_before_year": [700],
+            "control_status": ["arbitration_eligible"],
+            "projection_basis": ["full_service_future_scenario"],
+        }
+    )
+    terms = pl.DataFrame(
+        schema={
+            "player_id": pl.Int64, "organization_id": pl.Int64,
+            "payroll_year": pl.Int64, "amount_dollars": pl.Int64,
+            "overlay_status": pl.String, "source_snapshot_id": pl.String,
+        }
+    )
+    uncertainty = pl.DataFrame(
+        {
+            "player_id": [1], "season": [2027], "projected_war_mean": [2.0],
+            "projected_war_lower": [-0.5], "projected_war_upper": [4.5],
+        }
+    )
+    result = build_future_contract_economics_inputs(
+        hitters, pitchers, control, terms, uncertainty
+    )
+    assert result.annual_inputs.item(0, "projected_war_lower") == -0.5
+    assert result.annual_inputs.item(0, "projected_war_upper") == 4.5
+    assert result.coverage["uncertainty_rows"] == 1

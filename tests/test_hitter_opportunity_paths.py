@@ -141,6 +141,7 @@ def test_every_hitter_gets_every_year_without_team_depth() -> None:
         (pl.col("expected_mlb_pa") - pl.col("mlb_active_probability") * pl.col("conditional_mlb_pa")).abs()
         > 1e-12
     ).is_empty()
+    assert paths.get_column("conditional_mlb_pa_variance").min() >= 0.0
 
 
 def test_selected_model_is_used_only_for_supported_next_year_players() -> None:

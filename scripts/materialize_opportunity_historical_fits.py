@@ -116,7 +116,11 @@ def main() -> int:
     }
     hitter_population = hitter_fit.references.filter(
         pl.col("reference_level") == "population"
-    ).select("horizon", "observation_count", "positive_count", "mlb_active_probability", "conditional_mlb_pa")
+    ).select(
+        "horizon", "observation_count", "positive_count",
+        "mlb_active_probability", "conditional_mlb_pa",
+        "conditional_mlb_pa_variance",
+    )
     pitcher_population = pitcher_fit.references.filter(
         pl.col("reference_level") == "population"
     ).select(
@@ -125,6 +129,7 @@ def main() -> int:
         "positive_count",
         "mlb_active_probability",
         "conditional_mlb_bf",
+        "conditional_mlb_bf_variance",
         "starter_probability_if_active",
         "swingman_probability_if_active",
         "reliever_probability_if_active",

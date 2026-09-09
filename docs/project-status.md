@@ -118,8 +118,13 @@ or promote a player ranking; the public v1 release remains historical.
   and pitcher value for two-way players. Accepted payroll terms supply 604 known
   player-year salaries. The 5,064 projection rows without resolved control stay in the
   talent universe but do not receive invented incumbent rights. Market price,
-  arbitration pay, post-2026 minimums, uncertainty and 151 missing option buyouts
+  arbitration pay, post-2026 minimums and 151 missing option buyouts
   remain explicit inputs rather than hidden defaults.
+- All 55,164 future whole-player seasons now have a Phase 1 uncertainty reference
+  range based on historical positive-workload variance plus event and posterior-rate
+  variance. All 50,100 future economics rows receive the bounds. The median annual
+  width is 0.51 WAR, and opportunity accounts for 56.2% of modeled variance. The
+  range is not yet an out-of-time coverage guarantee or correlated career simulation.
 - The frozen Player Value v1 baserunning models now supply current hitter rates from
   official 2023–2026 steal counts and four league-wide Savant advancement files. In
   2027, 3,776 of 3,940 hitters have recent evidence; the three-year model then fades
@@ -179,9 +184,10 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
-current baserunning, supported general defense, the rest-of-season path and a narrow
-official-status availability boundary are now built. Next, calibrate return/role and
-build full forecast uncertainty.
+current baserunning, supported general defense, the rest-of-season path, a narrow
+official-status availability boundary and Phase 1 future WAR ranges are now built.
+Next, fit the free-agent market function and calibrate return/role. Correlated
+multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
 The main economic blocker is a chronologically fitted free-agent market function.
@@ -210,7 +216,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, guardrail, remaining-rights and current
 availability tests pass; Ruff passes across `src`, `scripts` and `tests`. The current
-full run has 1,200 passing tests.
+full run has 1,203 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

@@ -9,7 +9,9 @@ not used to select or evaluate the historical model. The output contains:
 - 5,276 pitchers and 31,656 pitcher player-years;
 - six full future seasons, 2027–2032;
 - 22 players with both legitimate hitter and pitcher components; and
-- zero team-depth inputs and zero workload caps.
+- zero team-depth inputs and zero workload caps; and
+- positive PA/BF variance retained from the same historical hierarchy for downstream
+  uncertainty.
 
 An initial run incorrectly gave pitcher paths to position players with incidental
 mop-up appearances. Role identity now uses official position evidence. That correction
@@ -23,10 +25,10 @@ role fallbacks. Every player still receives all six seasons.
 
 Generated path hashes:
 
-- hitter paths: `6909019747530178e2863808c9ec12a6adc582a04bad082538730f8af9fdccd1`;
-- pitcher paths: `651393b81e955d4aad582d7c6c44679f5f31c967a60c2a40b40129b76fc2bf5a`.
+- hitter paths: `116de7404d5ec5f2c0ff2eadfcbdc13814b393e872c5cef7b6ec56bed60afee9`;
+- pitcher paths: `d211fe2a07dde0cf08cc02c1b1259388ccfb018e00f24d0a570077a6f252f646`.
 
-These are opportunity paths, not WAR or trade values. The current 2026 remainder is
+These are opportunity paths, not WAR or trade values. Their historical workload
+spread now supports the separate multi-year uncertainty calculation. The current 2026 remainder is
 deliberately absent because a full-season cohort forecast cannot be relabeled as a
-rest-of-season forecast. Next connect multi-year conditional WAR rates and build the
-separate rest-of-season layer.
+rest-of-season forecast.

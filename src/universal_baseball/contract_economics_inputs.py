@@ -11,6 +11,9 @@ from universal_baseball.team_control import SERVICE_DAYS_PER_YEAR
 
 
 PROJECTION_SOURCE_ID = "phase1_hitter_pitcher_expected_war_paths_2026_09_08"
+UNCERTAINTY_PROJECTION_SOURCE_ID = (
+    "phase1_hitter_pitcher_expected_war_with_uncertainty_2026_09_08"
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -45,14 +48,49 @@ def build_future_contract_economics_inputs(
     pitcher_paths: pl.DataFrame,
     control_path: pl.DataFrame,
     contract_years: pl.DataFrame,
+    war_uncertainty: pl.DataFrame | None = None,
 ) -> ContractEconomicsInputBuild:
-    """Build mean-only annual inputs without inventing market assumptions."""
+    """Build annual inputs without inventing market assumptions."""
 
     hitter = _projection_component(hitter_paths, "hitter")
     pitcher = _projection_component(pitcher_paths, "pitcher")
     whole_player = pl.concat([hitter, pitcher]).group_by("player_id", "season").agg(
         pl.col("expected_war").sum().alias("projected_war_mean")
     )
+    projection_source_id = PROJECTION_SOURCE_ID
+    if war_uncertainty is None:
+        whole_player = whole_player.with_columns(
+            pl.lit(None, dtype=pl.Float64).alias("projected_war_lower"),
+            pl.lit(None, dtype=pl.Float64).alias("projected_war_upper"),
+        )
+    else:
+        required_uncertainty = {
+            "player_id", "season", "projected_war_mean",
+            "projected_war_lower", "projected_war_upper",
+        }
+        if missing := sorted(required_uncertainty - set(war_uncertainty.columns)):
+            raise ValueError(f"WAR uncertainty missing economics fields: {missing}")
+        uncertainty = war_uncertainty.select(sorted(required_uncertainty)).rename(
+            {"projected_war_mean": "uncertainty_war_mean"}
+        )
+        if uncertainty.group_by("player_id", "season").len().filter(
+            pl.col("len") != 1
+        ).height:
+            raise ValueError("WAR uncertainty violates player-season grain")
+        projection_keys = set(whole_player.select("player_id", "season").iter_rows())
+        uncertainty_keys = set(uncertainty.select("player_id", "season").iter_rows())
+        if uncertainty_keys != projection_keys:
+            raise ValueError("WAR uncertainty coverage differs from whole-player projections")
+        whole_player = whole_player.join(
+            uncertainty, on=["player_id", "season"], how="inner", validate="1:1"
+        )
+        if whole_player.filter(
+            (pl.col("projected_war_mean") - pl.col("uncertainty_war_mean")).abs()
+            > 1e-10 * pl.max_horizontal(pl.lit(1.0), pl.col("projected_war_mean").abs())
+        ).height:
+            raise ValueError("WAR uncertainty means differ from whole-player projections")
+        whole_player = whole_player.drop("uncertainty_war_mean")
+        projection_source_id = UNCERTAINTY_PROJECTION_SOURCE_ID
     control_required = (
         "as_of_date",
         "player_id",
@@ -104,15 +142,15 @@ def build_future_contract_economics_inputs(
                 "organization_id": int(row["organization_id"]),
                 "season": int(row["season"]),
                 "projected_war_mean": float(row["projected_war_mean"]),
-                "projected_war_lower": None,
-                "projected_war_upper": None,
+                "projected_war_lower": row["projected_war_lower"],
+                "projected_war_upper": row["projected_war_upper"],
                 "control_status": str(row["control_status"]),
                 "known_salary_dollars": row["known_salary_dollars"],
                 "buyout_dollars": None,
                 "arbitration_class": _arbitration_class(
                     str(row["control_status"]), int(row["service_days_before_year"])
                 ),
-                "projection_source_id": PROJECTION_SOURCE_ID,
+                "projection_source_id": projection_source_id,
                 "contract_source_id": str(
                     row["term_source_id"] or row["projection_basis"]
                 ),
@@ -133,6 +171,10 @@ def build_future_contract_economics_inputs(
             "control_rows_without_projection": len(control_keys - projection_keys),
             "known_salary_rows": annual.filter(
                 pl.col("known_salary_dollars").is_not_null()
+            ).height,
+            "uncertainty_rows": annual.filter(
+                pl.col("projected_war_lower").is_not_null()
+                & pl.col("projected_war_upper").is_not_null()
             ).height,
             "option_rows_missing_buyout": annual.filter(
                 pl.col("control_status").is_in(

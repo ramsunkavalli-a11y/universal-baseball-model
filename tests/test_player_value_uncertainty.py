@@ -14,6 +14,7 @@ from universal_baseball.player_value_uncertainty import (
     sample_hurdle_plate_appearances,
     simulate_player_uncertainty,
     structural_zero_uncertainty,
+    zero_truncated_nb2_variance,
 )
 
 
@@ -40,6 +41,9 @@ def test_nb2_truncated_mean_inversion_and_sampling_are_deterministic() -> None:
     assert np.all(first >= 0)
     assert np.all(first[first > 0] >= 1)
     assert first.mean() == pytest.approx(0.6 * target, rel=0.025)
+    assert np.var(first[first > 0]) == pytest.approx(
+        zero_truncated_nb2_variance(target), rel=0.04
+    )
 
 
 def test_batting_variance_declines_with_more_posterior_evidence() -> None:

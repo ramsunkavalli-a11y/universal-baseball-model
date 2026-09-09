@@ -72,6 +72,8 @@ def test_hitter_rates_cover_history_and_prior_players_for_each_year() -> None:
     assert set(result.get_column("evidence_tier")) == {"mlb_history", "population_prior"}
     assert result.filter(pl.col("player_id") == 1).get_column("primary_position").unique().to_list() == ["SS"]
     assert result.get_column("conditional_war_per_600_pa").is_finite().all()
+    assert result.get_column("posterior_concentration").min() > 0.0
+    assert result.get_column("event_run_variance").min() >= 0.0
 
 
 def test_hitter_rates_add_supplied_baserunning_runs() -> None:
@@ -153,3 +155,5 @@ def test_pitcher_rates_cover_history_and_prior_players_and_age_components() -> N
     )
     assert sums.filter((pl.col("sum") - 1.0).abs() > 1e-12).is_empty()
     assert result.get_column("conditional_war_per_800_bf").is_finite().all()
+    assert result.get_column("posterior_concentration").min() > 0.0
+    assert result.get_column("posterior_run_rate_variance").min() >= 0.0

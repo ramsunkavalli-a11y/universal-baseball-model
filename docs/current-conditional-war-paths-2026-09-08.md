@@ -70,10 +70,11 @@ cases remain outside controlled WAR.
 
 ## Next priorities
 
-1. Add current availability/role without using team-depth blocking.
+1. Calibrate current injury return and role without using team-depth blocking; the
+   official-status boundary is already connected.
 2. Retain Tango's regressed adjacent-season curve. The modern 2015–2025 challenger
    failed its later-period test and is deferred to Phase 2.
 3. Extend defense only where native catcher/tracked evidence and aging are supported.
-4. Resolve current-owner/service exceptions. Whole-player WAR now feeds the annual
-   contract-economics input table, but dollar rankings wait for the market-price,
-   arbitration, future-CBA, buyout and uncertainty inputs to validate.
+4. Resolve current-owner/service exceptions. Whole-player WAR and Phase 1 uncertainty
+   now feed the annual contract-economics input table, but dollar rankings wait for
+   market-price, arbitration, future-CBA and buyout inputs to validate.

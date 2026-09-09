@@ -73,6 +73,9 @@ rejecting unresolved payroll/ownership joins.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.
+The [current multi-year uncertainty result](docs/current-war-uncertainty-2026-09-08.md)
+uses historical workload spread and player evidence strength to supply all future
+contract rows with honest Phase 1 WAR sensitivities.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value
