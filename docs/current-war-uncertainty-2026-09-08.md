@@ -28,7 +28,7 @@ clipped, so downside can be negative.
 ## Result
 
 - 55,164 whole-player seasons and all 9,194 players receive a range.
-- All 50,100 future control/economics rows now carry lower and upper WAR inputs.
+- All 50,226 future control/economics rows now carry lower and upper WAR inputs.
 - Whole-player projected WAR remains 4,118.80 across six seasons.
 - Median annual range width is 0.51 WAR; the 90th percentile is 1.55 and the maximum
   is 7.01 WAR.

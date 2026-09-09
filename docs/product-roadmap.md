@@ -144,11 +144,12 @@ and require corroboration rather than automatic override.
 
 The 2026-09-08 refreshed control table has 8,393 players; source membership can move
 with the live official full-roster response. The future full-service scenario now has
-50,100 rows for 8,350 players through 2032, and the complete 133-player Super Two pool
+50,226 rows for 8,371 players through 2032, and the complete 133-player Super Two pool
 selects 30 at a tied `2.144` cutoff. The service method uses FanGraphs as the 2026
 opening balance, adds StatsAPI in-season days, and uses zero opening service only when
 the official player record has no MLB debut. Debuted players with no balance remain
-unresolved. The 21 multi-organization reviews and bounded CBA exceptions remain.
+unresolved. The 21 multi-organization reviews are closed using 15 unique official
+40-man memberships and six exact official transactions. Bounded CBA exceptions remain.
 `audit_team_control_source.py` is the
 repeatable team source audit and writes source captures plus the exception report.
 Contract terms remain an overlay and never rewrite the underlying CBA arithmetic.
@@ -163,7 +164,7 @@ coverage and an ex-ante free-agent market fit; neither is replaced by a hidden d
 The remaining-rights adapter now separates already-earned current-season WAR and paid
 salary from the production and obligations an acquiring club can receive. The dated
 2026 baseline supplies projected remaining WAR and CBA day-prorated base salary. It
-connects 833 exact current-team payroll rows and rejects 81 unresolved or conflicting
+connects 844 exact current-team payroll rows and rejects 70 unresolved or conflicting
 joins. Current availability and recent-role usage now have narrow historical
 baselines; contract exceptions remain before this becomes a live ranking.
 
@@ -214,11 +215,11 @@ players also advance through arbitration classes 1–4 correctly; previously the
 calculation could reset after the first projected year.
 
 The Phase 1 arbitration baseline now applies FanGraphs' 15%/35%/50%/75% shares to
-prior-season projected WAR value. A full research scenario calculates 50,043 of
-50,100 future annual rows from exact inputs. A separate named Phase 1 buyout estimate
-uses observed option-type medians for 41 otherwise complete rows. Official MLB
+prior-season projected WAR value. A full research scenario calculates 50,167 of
+50,226 future annual rows from exact inputs. A separate named Phase 1 buyout estimate
+uses observed option-type medians for 43 otherwise complete rows. Official MLB
 reporting also resolves Kyle Tucker's two apparent option conflicts, raising scenario
-coverage to 50,084 and leaving 16 reviews. Three linked Julio Rodriguez years
+coverage to 50,210 and leaving 16 reviews. Three linked Julio Rodriguez years
 remain machine-blocked
 rather than relying on a prose audit. Two Imai seasons are corrected to player
 opt-outs from official MLB reporting; the correction is fail-closed against the

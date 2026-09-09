@@ -2,11 +2,11 @@
 
 **Status:** complete Phase 1 research calculation; not a publishable ranking
 
-The first full 2027–2032 economics pass now runs all 50,100 controlled player-years
+The first full 2027–2032 economics pass now runs all 50,226 controlled player-years
 through the same WAR, market, salary, option and discount rules. The exact-input pass
-produces 50,043 available annual rows and 57 review rows. A named Phase 1 buyout
-estimate then calculates buyout-only exceptions, producing 50,084 scenario rows and
-16 review rows. At the six-year player aggregate, 8,339 players are complete and 11
+produces 50,167 available annual rows and 59 review rows. A named Phase 1 buyout
+estimate then calculates buyout-only exceptions, producing 50,210 scenario rows and
+16 review rows. At the six-year player aggregate, 8,360 players are complete and 11
 have at least one review year.
 
 The 16 remaining reviews are narrow and visible:
@@ -29,7 +29,7 @@ The 16 remaining reviews are narrow and visible:
 - When no buyout is reported, Phase 1 uses the observed median buyout share for that
   option type: 13.0% for club, 18.75% for mutual and 11.9% for player options. The
   13.3% overall median is the player-opt-out fallback because that subgroup has no
-  exact observations. All 41 uses are labeled estimates, not contract facts.
+  exact observations. All 43 uses are labeled estimates, not contract facts.
 - The unsigned post-2026 CBA is represented only by a planning scenario: the 2026
   $780,000 minimum grows 3% annually and the current service rules remain unchanged.
 

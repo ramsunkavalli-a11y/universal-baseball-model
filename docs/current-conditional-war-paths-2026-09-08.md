@@ -34,8 +34,8 @@ forecast universe.
 
 | Component | Players | Player-years | Translated affiliated | Population prior | Control matched | Control missing |
 |---|---:|---:|---:|---:|---:|---:|
-| Hitters | 3,940 | 23,640 | 18,078 | 990 | 21,552 | 2,088 |
-| Pitchers | 5,276 | 31,656 | 23,322 | 2,346 | 28,656 | 3,000 |
+| Hitters | 3,940 | 23,640 | 18,078 | 990 | 21,582 | 2,058 |
+| Pitchers | 5,276 | 31,656 | 23,322 | 2,346 | 28,752 | 2,904 |
 
 Recent MLB evidence remains the preferred rate source. Players without it now use
 regressed, MLB-anchored affiliated component evidence where available; only the
@@ -53,9 +53,9 @@ Observed broad plausibility ranges before any clipping:
 The control build now preserves official `mlbDebutDate`. When FanGraphs has no opening
 service balance, only a player with no official MLB debut may start from zero; current
 StatsAPI service is then added. A debuted player with missing opening service remains
-unresolved. This increased six-year future-control coverage from 1,667 to 8,350
-players. The 21 multi-organization cases and other unresolved current-owner/service
-cases remain outside controlled WAR.
+unresolved. This increased six-year future-control coverage from 1,667 to 8,371
+players. The dated 40-man/transaction resolver closes all 21 multi-organization cases;
+the remaining missing control rows reflect other service or horizon boundaries.
 
 ## Known Phase 1 fallbacks
 

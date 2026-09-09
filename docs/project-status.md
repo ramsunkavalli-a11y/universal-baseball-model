@@ -30,8 +30,9 @@ or promote a player ranking; the public v1 release remains historical.
 - The official `fullRoster` source is the primary player-discovery source: 7,891
   players, with 99.80% having one candidate organization. Its 16 cross-organization
   outliers prevent using it alone as final rights proof, not using it as the denominator.
-  A chronology-safe official transaction ledger is now implemented for reconciliation;
-  ownership-changing state transitions remain a separate, not-yet-authorized gate.
+  A chronology-safe official transaction ledger now supports a bounded ownership gate:
+  unique 40-man membership is direct evidence, then exact structured acquisition and
+  MLB-rights transactions resolve only the remaining multi-organization cases.
 - The career-outcome panel makes completed-season absence an observed zero and later
   seasons right-censored. A real official 2015–2024 inventory contains 10,585 batting
   player-seasons, 8,095 pitching player-seasons and 3,777 distinct MLB players.
@@ -48,8 +49,10 @@ or promote a player ranking; the public v1 release remains historical.
   roster entries corroborate the remaining 45 exact-name identities. Payroll identity
   review is now zero, while liabilities for former roster members remain separate from
   current team control.
-- The refreshed 2026-09-08 league build contains 8,393 affiliated players and 50,100
-  future-path rows for 8,350 players through 2032. Its complete 133-player Super Two
+- The refreshed 2026-09-08 league build contains 8,393 affiliated players and 50,226
+  future-path rows for 8,371 players through 2032. All 21 multi-organization cases are
+  resolved: 15 by unique official 40-man membership and six by exact transactions.
+  Its complete 133-player Super Two
   pool has a calculated cutoff of
   `2.144` (488 days), with 30 selected because the cutoff is tied. FanGraphs supplies
   the 2026 opening balance; StatsAPI supplies in-season service through the as-of date.
@@ -113,15 +116,15 @@ or promote a player ranking; the public v1 release remains historical.
   Phase 2 rather than blockers to the coherent baseline.
 - Official no-debut evidence now supplies a zero opening service balance only when a
   FanGraphs opening balance is absent. Debuted players still fail closed. This expands
-  the six-year future-control path from 1,667 to 8,350 players; unresolved ownership
-  and service cases remain null rather than becoming free agents.
-- Whole-player expected WAR now joins all 50,100 future-control rows, adding hitter
-  and pitcher value for two-way players. Accepted payroll terms supply 604 known
-  player-year salaries. The 5,064 projection rows without resolved control stay in the
+  the six-year future-control path from 1,667 to 8,371 players; unresolved service
+  cases remain null rather than becoming free agents.
+- Whole-player expected WAR now joins all 50,226 future-control rows, adding hitter
+  and pitcher value for two-way players. Accepted payroll terms supply 610 known
+  player-year salaries. The 4,938 projection rows without resolved control stay in the
   talent universe but do not receive invented incumbent rights. All 86 potential
-  payroll buyouts map to stable player IDs; 83 match projected option years. A small,
-  dated Spotrac exception overlay adds 13 explicit non-conflicting buyouts, reducing
-  missing option buyouts from 151 to 55. The ten projected Super Two cases now advance
+  payroll buyouts map to stable player IDs. With the small dated Spotrac exception
+  overlay, 97 projected option rows carry a buyout and 56 remain missing. The ten
+  projected Super Two cases now advance
   through all four arbitration classes. Arbitration pay, post-2026 minimums and the
   remaining option exceptions stay explicit rather than becoming hidden defaults.
 - The public 2020–2026 FanGraphs tracker supplies 335 reported contracts and all 350
@@ -131,10 +134,10 @@ or promote a player ranking; the public v1 release remains historical.
   identify the multi-year star premium. The published $6.74M/$8.51M/$12.84M tiers
   therefore remain the main 2026 market reference.
 - Arbitration cost now uses the externally tested FanGraphs 15%/35%/50%/75% class
-  shares and prior-season projected WAR value. There are 23,261 true prior-season
-  basis rows and 388 labeled first-horizon proxies. A complete research scenario now
-  calculates 50,043 of 50,100 future annual rows; 57 rows and 49 player aggregates
-  remain in review for option buyouts, vesting triggers or one missing salary.
+  shares and prior-season projected WAR value. There are 23,291 true prior-season
+  basis rows and 393 labeled first-horizon proxies. A complete research scenario now
+  calculates 50,167 of 50,226 future annual rows; 59 rows remain in review for option
+  buyouts, vesting triggers or one missing salary.
   Three linked Julio Rodriguez structure rows are machine-enforced reviews, so a
   later dollar-term fill cannot silently value the wrong option type.
   Official MLB reporting corrects Tatsuya Imai's 2027–2028 states to player opt-outs;
@@ -146,10 +149,10 @@ or promote a player ranking; the public v1 release remains historical.
   pending at 373 of 510 outs. Medical and alternate conditions remain explicit.
   Yandy's final result now changes his 2027 state to a guaranteed $13M season before
   economics are calculated; pending triggers do not alter their contract states.
-  The exact-input result remains 50,043 of 50,100 rows. A separate named Phase 1
-  buyout estimate uses observed option-type median shares for 41 rows with no reported
+  The exact-input result is 50,167 of 50,226 rows. A separate named Phase 1
+  buyout estimate uses observed option-type median shares for 43 rows with no reported
   buyout. Official MLB reporting also corrects Kyle Tucker's 2028–2029 states to
-  player opt-outs, raising the research scenario to 50,084 available rows and leaving
+  player opt-outs, raising the research scenario to 50,210 available rows and leaving
   16 reviews across 11 players. Estimated rows are labeled and do not become source facts.
   Twenty-nine fully specified mutual options now use the conservative normal-expiration
   outcome instead of waiting for a separate decision model.
@@ -157,7 +160,7 @@ or promote a player ranking; the public v1 release remains historical.
   not a claimed successor CBA.
 - All 55,164 future whole-player seasons now have a Phase 1 uncertainty reference
   range based on historical positive-workload variance plus event and posterior-rate
-  variance. All 50,100 future economics rows receive the bounds. The median annual
+  variance. All 50,226 future economics rows receive the bounds. The median annual
   width is 0.51 WAR, and opportunity accounts for 56.2% of modeled variance. The
   range is not yet an out-of-time coverage guarantee or correlated career simulation.
 - The frozen Player Value v1 baserunning models now supply current hitter rates from
@@ -173,19 +176,19 @@ or promote a player ranking; the public v1 release remains historical.
   no aging and Tango overall; Tango beat no aging in three of four seasons and remains
   the Phase 1 curve. The failed challenger is closed rather than tuned after inspection.
 - A dated 2026 rest-of-season baseline projects 114.35 WAR before current availability
-  and 105.13 after 247 official season-out statuses plus the narrow historical
+  and 105.10 after 247 official season-out statuses plus the narrow historical
   injury-return adjustment over the final 250
   scheduled games. CBA championship-season-day proration produces $535.96 million of
-  remaining base salary. Exact current-team matches connect 833 salary rows and
-  $500.19 million to the remaining-rights interface; 81 unresolved or conflicting
+  remaining base salary. Exact current-team matches connect 844 salary rows and
+  $508.08 million to the remaining-rights interface; 70 unresolved or conflicting
   rows remain explicit rather than being forced into value. The combined economics
-  input contains these 833 current rows plus 50,100 future rows.
+  input contains these 844 current rows plus 50,226 future rows.
 - Ordinary IL and rehab status does not itself supply a return date. Official current
   status and transaction replay agree for 263 players; 261 projected players receive
   the 2022-2025 activation-timing factor. Their 10.92 unadjusted WAR becomes 1.84 WAR.
   Unmatched injuries retain their point and zero-to-baseline range. Among matched
-  current rights, the combined 79.51 WAR point has an availability-only 77.82 to
-  87.10 range. Minor assignment is not used as team-depth blocking.
+  current rights, the combined 80.08 WAR point has an availability-only 78.37 to
+  87.72 range. Minor assignment is not used as team-depth blocking.
 - A 30-day official workload challenger now redistributes the existing late-season
   league total without adding PA/BF or using team depth. It improved 2025 confirmation
   MAE from 14.76 to 12.01 PA and 16.08 to 13.49 BF. The live build keeps 21,596.6 PA
@@ -194,6 +197,7 @@ or promote a player ranking; the public v1 release remains historical.
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
 [transaction ledger](rights-transaction-ledger-contract.md),
+[current organization resolution](current-organization-resolution-2026-09-09.md),
 [career panel](career-outcome-panel-contract.md),
 [career inventory](career-mlb-outcome-inventory-result.md),
 [pitcher baseline](pitcher-component-baseline-result.md).
@@ -236,8 +240,8 @@ Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; r
 it only under a new Phase 2 test.
 The market-price and Phase 1 arbitration gates are complete. The remaining economic
 blockers are successor-CBA facts and the 16 remaining scenario review rows.
-In parallel, resolve
-the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
+The 21 multi-organization ownership cases are closed by the dated 40-man/transaction
+resolver. Continue only the bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.
 
 In parallel, reconnect the recovered opportunity pipeline and its frozen B2 inputs,

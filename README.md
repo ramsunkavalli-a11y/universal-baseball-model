@@ -51,6 +51,9 @@ The [remaining-rights timeline](docs/remaining-rights-timeline.md) prevents live
 from counting production already earned or salary already paid.
 The [current opportunity result](docs/current-opportunity-paths-2026-09-08.md) supplies
 complete team-neutral 2027–2032 hitter and pitcher workload paths.
+The [current organization resolver](docs/current-organization-resolution-2026-09-09.md)
+closes season-wide roster conflicts with dated 40-man membership and exact official
+transactions while keeping broad one-team assignments labeled provisional.
 The [current conditional WAR result](docs/current-conditional-war-paths-2026-09-08.md)
 adds the first universal rate baseline, explicit population fallbacks and controlled
 WAR coverage without promoting the output to a public ranking.
@@ -58,7 +61,7 @@ The [affiliated translation result](docs/affiliated-level-translation-result.md)
 describes the provisional same-player/same-season bridge that replaces most pure
 minor-league population priors while preserving a fallback.
 The [current contract-economics input result](docs/current-contract-economics-inputs-2026-09-08.md)
-connects whole-player expected WAR to all 50,100 future control rows while keeping
+connects whole-player expected WAR to all 50,226 future control rows while keeping
 missing salaries, buyouts and market assumptions explicit.
 The [current baserunning result](docs/current-baserunning-rates-2026-09-08.md)
 reuses the frozen steal and advancement models in the live hitter path.

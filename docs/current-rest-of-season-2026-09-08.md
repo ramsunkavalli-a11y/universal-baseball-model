@@ -10,7 +10,7 @@ The first live current-season path is connected. The official MLB schedule conta
 The model projects 21,596.6 remaining hitter PA and 20,597.7 pitcher BF. Applying the
 existing conditional WAR rates gives 69.64 hitter WAR and 44.71 pitcher WAR, or
 114.35 whole-player WAR before current availability. Official season-out and the
-historical injury-return baseline lower the point estimate to 105.13. Hitter and
+historical injury-return baseline lower the point estimate to 105.10. Hitter and
 pitcher value is added for two-way players.
 
 Season-to-date usage is paced to a full season, shrunk with 200 PA/BF toward the
@@ -26,7 +26,7 @@ Official full-season-unavailable statuses set remaining WAR to zero. Exact agree
 between current official injury status and transaction replay uses the 2022-2025
 historical activation-timing factor. Other injured-list and rehab cases keep the
 baseline point. All ordinary injury cases retain a zero-to-baseline sensitivity. The
-league availability-only range is 102.07 to 114.40 WAR; it is not a full interval.
+league availability-only range is 102.02 to 114.42 WAR; it is not a full interval.
 
 ## Salary and rights
 
@@ -35,13 +35,13 @@ million after day proration. The calculation follows the championship-season-day
 method in Article V and the Uniform Player Contract of the
 [2022–2026 Basic Agreement](https://www.mlbplayers.com/_files/ugd/4d23dc_d6dfc2344d2042de973e37de62484da5.pdf).
 
-Exact current-team matches connect 833 rows and $500.19 million to remaining rights.
-The 81 rejected joins remain visible: 48 unresolved current organizations, 30 payroll
+Exact current-team matches connect 844 rows and $508.08 million to remaining rights.
+The 70 rejected joins remain visible: 35 unresolved current organizations, 32 payroll
 and current-organization mismatches, and 3 players without a projection. They are not
 forced into trade value because payroll liability alone does not prove current player
 rights.
 
-The combined annual input now contains 833 current-season rows plus 50,100 future
+The combined annual input now contains 844 current-season rows plus 50,226 future
 control rows. Realized 2026 WAR is unavailable and explicitly null; only projected
 remaining WAR and unpaid base salary enter the rights calculation.
 
@@ -49,6 +49,6 @@ remaining WAR and unpaid base salary enter the rights calculation.
 
 This is a coherent baseline, not a final in-season projection. Current role and
 late-season injury return now have simple historical checks. The main remaining pieces
-are bounded contract exceptions, ownership conflicts and durable recovery of the
+are bounded contract exceptions and durable recovery of the
 selected hitter-opportunity package. Phase 2 can refine daily playing time and injury
 details after the complete value path exists.

@@ -10,18 +10,18 @@ step.
 ## Materialized result
 
 - 55,164 whole-player projection rows for 2027–2032;
-- 50,100 control rows and 50,100 matched economics-input rows;
+- 50,226 control rows and 50,226 matched economics-input rows;
 - zero control rows without a projection;
-- 5,064 projection rows without resolved control, retained in the projection source
+- 4,938 projection rows without resolved control, retained in the projection source
   and excluded from incumbent-rights economics;
-- 605 player-year salaries attached from accepted payroll terms or the narrow
+- 610 player-year salaries attached from accepted payroll terms or the narrow
   secondary overlay;
 - 86 potential buyouts linked to stable player IDs from the same payroll source;
-- 96 of 150 unresolved projected option rows now carry a buyout, leaving 54 without
+- 97 projected option rows now carry a buyout, leaving 56 without
   one; and
 - zero duplicate player/organization/season keys.
 
-The output contains 8,350 players in each of six seasons. All 50,100 rows now carry
+The output contains 8,371 players in each of six seasons. All 50,226 rows now carry
 the Phase 1 moment-based WAR lower and upper sensitivities in addition to the unchanged
 mean. These are not calibrated probabilities or correlated career paths. Free agents
 remain in the table with zero incumbent rights downstream, rather than disappearing
@@ -46,8 +46,8 @@ vesting option to guaranteed contract. Pending or compound triggers remain untou
 The ten projected 2027 Super Two cases now advance through arbitration classes 1–4
 instead of being reset to class 1 when they cross three service years.
 
-Arbitration cost now follows performance with a one-season lag: 23,261 rows use the
-prior projected season and 388 first-horizon rows use a labeled same-season proxy
+Arbitration cost now follows performance with a one-season lag: 23,291 rows use the
+prior projected season and 393 first-horizon rows use a labeled same-season proxy
 because a complete 2026 full-season path is not in this table.
 
 ## Honest boundary
@@ -56,7 +56,7 @@ This table is ready to feed the existing contract-economics engine. It is not ye
 defensible dollar ranking. The remaining large inputs are:
 
 1. official post-2026 CBA minimum-salary rules;
-2. the remaining 54 exact buyouts, three linked structure rows and unresolved option
+2. the remaining 56 exact buyouts, three linked structure rows and unresolved option
    triggers; and
 3. Phase 2 internal arbitration validation, empirical interval calibration and
    correlated career paths for option

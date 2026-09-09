@@ -40,6 +40,7 @@ from universal_baseball.depth_chart_reference import (
     read_fangraphs_depth_chart_xlsx,
 )
 from universal_baseball.people_control_source import fetch_people_control_evidence
+from universal_baseball.organization_rights import resolve_current_organizations
 from universal_baseball.playing_time_roster_source import (
     fetch_mlb_teams,
     fetch_team_40man_membership_as_of,
@@ -281,24 +282,12 @@ def main() -> int:
         pl.col("team_name").replace_strict(TEAM_IDS).cast(pl.Int64).alias("organization_id")
     )
 
-    organizations = (
-        rosters.group_by("player_id")
-        .agg(
-            pl.col("player_name").first(),
-            pl.col("candidate_organization_id").n_unique().alias("organization_count"),
-            pl.col("candidate_organization_id").unique().sort().alias("organization_ids"),
-        )
-        .with_columns(
-            pl.when(pl.col("organization_count") == 1)
-            .then(pl.col("organization_ids").list.first())
-            .otherwise(pl.lit(None, dtype=pl.Int64))
-            .alias("organization_id"),
-            pl.when(pl.col("organization_count") == 1)
-            .then(pl.lit("provisional_unique_full_roster"))
-            .otherwise(pl.lit("review_multiple_full_roster_organizations"))
-            .alias("organization_status"),
-        )
-        .drop("organization_ids")
+    organizations = resolve_current_organizations(
+        rosters,
+        forty,
+        people.transactions,
+        as_of_date=args.as_of,
+        mlb_team_ids=mlb_team_ids,
     )
     on_40man = forty.select("player_id").unique().with_columns(pl.lit(True).alias("on_40man"))
 
@@ -445,6 +434,13 @@ def main() -> int:
         "players": unified.height,
         "unique_organization_players": unified.filter(pl.col("organization_id").is_not_null()).height,
         "multiple_organization_reviews": unified.filter(pl.col("organization_id").is_null()).height,
+        "organization_resolution": {
+            str(row["organization_status"]): int(row["len"])
+            for row in unified.group_by("organization_status")
+            .len()
+            .sort("organization_status")
+            .iter_rows(named=True)
+        },
         "service_baselines": unified.filter(pl.col("baseline_service_days").is_not_null()).height,
         "zero_opening_service_from_official_no_debut": unified.filter(
             pl.col("service_time_basis")
