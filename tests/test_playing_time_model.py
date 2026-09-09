@@ -10,6 +10,9 @@ from universal_baseball.playing_time_model import (
     PT_FORM_B,
     PT_FORM_B0,
     PT_FORM_C,
+    PT_FORM_P,
+    PT_FORM_P0,
+    PT_FORM_PA,
     PT_FORM_U,
     PT_FORM_U0,
     PT_FORM_UA,
@@ -129,6 +132,41 @@ def test_universal_v2_forms_are_nested_without_changing_frozen_v1_forms() -> Non
     assert "age_missing" in ua
     assert "on_40man" not in ua
     assert "on_40man" in u
+
+
+def test_pitcher_v2_uses_bf_and_keeps_unknown_role() -> None:
+    predictors = pl.DataFrame(
+        [
+            {
+                "player_id": 1,
+                "age_years": None,
+                "as_of_level_group": "INACTIVE",
+                "as_of_role": "unknown",
+                "current_season_mlb_bf": 0,
+                "current_season_milb_bf": 25,
+                "on_40man": False,
+            },
+            {
+                "player_id": 2,
+                "age_years": 24.0,
+                "as_of_level_group": "AAA",
+                "as_of_role": "starter",
+                "current_season_mlb_bf": 50,
+                "current_season_milb_bf": 300,
+                "on_40man": True,
+            },
+        ]
+    )
+    assert set(playing_time_feature_names(PT_FORM_P0)) < set(
+        playing_time_feature_names(PT_FORM_PA)
+    ) < set(playing_time_feature_names(PT_FORM_P))
+    design = build_playing_time_design(predictors, form=PT_FORM_P)
+    assert design.item(0, "level_inactive") == 1.0
+    assert design.item(0, "age_missing") == 1.0
+    assert design.item(0, "role_starter") == 0.0
+    assert design.item(1, "role_starter") == 1.0
+    assert design.item(1, "log_current_mlb_bf") == pytest.approx(np.log1p(50))
+    assert design.item(1, "on_40man") == 1.0
 
 
 def test_hurdle_fit_and_score_produce_valid_full_distribution_metrics() -> None:

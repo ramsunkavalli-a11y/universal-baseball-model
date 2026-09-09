@@ -30,14 +30,26 @@ PT_FORM_C = "playing_time_recent_opportunity_40man_b2_hurdle_v1"
 PT_FORM_U0 = "playing_time_universal_level_hurdle_v2"
 PT_FORM_UA = "playing_time_universal_recent_opportunity_hurdle_v2"
 PT_FORM_U = "playing_time_universal_recent_opportunity_40man_hurdle_v2"
+PT_FORM_P0 = "pitcher_opportunity_universal_level_role_hurdle_v2"
+PT_FORM_PA = "pitcher_opportunity_universal_recent_opportunity_hurdle_v2"
+PT_FORM_P = "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2"
 PT_FORMS = (PT_FORM_B0, PT_FORM_A, PT_FORM_B, PT_FORM_C)
 PT_V2_FORMS = (PT_FORM_U0, PT_FORM_UA, PT_FORM_U)
 PT_V2_FORM_COMPLEXITY = {form: index for index, form in enumerate(PT_V2_FORMS)}
+PITCHER_PT_V2_FORMS = (PT_FORM_P0, PT_FORM_PA, PT_FORM_P)
+PITCHER_PT_V2_FORM_COMPLEXITY = {
+    form: index for index, form in enumerate(PITCHER_PT_V2_FORMS)
+}
 PT_FORM_COMPLEXITY = {form: index for index, form in enumerate(PT_FORMS)}
 LOGISTIC_C = 1.0
 LEVEL_TIER_REFERENCE = "MLB"
 LEVEL_TIER_LEVELS = ("AAA", "AA", "A_OR_BELOW")
 CONTINUOUS_BASE = ("age_centered", "log_current_mlb_pa", "log_current_milb_pa")
+PITCHER_CONTINUOUS_BASE = (
+    "age_centered",
+    "log_current_mlb_bf",
+    "log_current_milb_bf",
+)
 B2_TALENT_FEATURES = (
     "b2_bb_hbp_probability",
     "b2_k_probability",
@@ -54,6 +66,11 @@ UNIVERSAL_LEVEL_TIER_LEVELS = (
 )
 UNIVERSAL_LEVEL_DUMMY_FEATURES = tuple(
     f"level_{value.lower()}" for value in UNIVERSAL_LEVEL_TIER_LEVELS
+)
+PITCHER_ROLE_DUMMY_FEATURES = (
+    "role_starter",
+    "role_swingman",
+    "role_reliever",
 )
 B2_ILR_COLUMNS = tuple(f"b2_ilr_{index:02d}" for index in range(11))
 STANDARDIZATION_EPSILON = 1e-12
@@ -144,6 +161,19 @@ def playing_time_level_tier(level_group: object) -> str:
 
 
 def playing_time_feature_names(form: str) -> tuple[str, ...]:
+    if form in PITCHER_PT_V2_FORMS:
+        features = [*UNIVERSAL_LEVEL_DUMMY_FEATURES, *PITCHER_ROLE_DUMMY_FEATURES]
+        if (
+            PITCHER_PT_V2_FORM_COMPLEXITY[form]
+            >= PITCHER_PT_V2_FORM_COMPLEXITY[PT_FORM_PA]
+        ):
+            features.extend((*PITCHER_CONTINUOUS_BASE, "age_missing"))
+        if (
+            PITCHER_PT_V2_FORM_COMPLEXITY[form]
+            >= PITCHER_PT_V2_FORM_COMPLEXITY[PT_FORM_P]
+        ):
+            features.append("on_40man")
+        return tuple(features)
     if form in PT_V2_FORMS:
         features = list(UNIVERSAL_LEVEL_DUMMY_FEATURES)
         if PT_V2_FORM_COMPLEXITY[form] >= PT_V2_FORM_COMPLEXITY[PT_FORM_UA]:
@@ -165,7 +195,11 @@ def playing_time_feature_names(form: str) -> tuple[str, ...]:
 
 def playing_time_continuous_features(form: str) -> tuple[str, ...]:
     features = playing_time_feature_names(form)
-    return tuple(feature for feature in features if feature in {*CONTINUOUS_BASE, *B2_TALENT_FEATURES})
+    return tuple(
+        feature
+        for feature in features
+        if feature in {*CONTINUOUS_BASE, *PITCHER_CONTINUOUS_BASE, *B2_TALENT_FEATURES}
+    )
 
 
 def _b2_talent_summary(row: dict[str, object]) -> dict[str, float]:
@@ -188,14 +222,19 @@ def _b2_talent_summary(row: dict[str, object]) -> dict[str, float]:
 
 
 def build_playing_time_design(predictors: pl.DataFrame, *, form: str) -> pl.DataFrame:
+    pitcher_form = form in PITCHER_PT_V2_FORMS
     required = {
         "player_id",
         "age_years",
         "as_of_level_group",
-        "current_season_mlb_pa",
-        "current_season_milb_pa",
         "on_40man",
     }
+    if pitcher_form:
+        required.update(
+            {"as_of_role", "current_season_mlb_bf", "current_season_milb_bf"}
+        )
+    else:
+        required.update({"current_season_mlb_pa", "current_season_milb_pa"})
     if form == PT_FORM_C:
         required.update(B2_ILR_COLUMNS)
     missing = sorted(required - set(predictors.columns))
@@ -212,11 +251,19 @@ def build_playing_time_design(predictors: pl.DataFrame, *, form: str) -> pl.Data
         age_raw = row["age_years"]
         age_missing = age_raw is None
         age = 25.0 if age_missing else float(age_raw)
-        mlb_pa = int(row["current_season_mlb_pa"])
-        milb_pa = int(row["current_season_milb_pa"])
-        if not isfinite(age) or mlb_pa < 0 or milb_pa < 0:
-            raise ValueError("playing-time predictor age/PA fields are invalid")
-        if form in PT_V2_FORMS:
+        mlb_opportunity = int(
+            row["current_season_mlb_bf"]
+            if pitcher_form
+            else row["current_season_mlb_pa"]
+        )
+        milb_opportunity = int(
+            row["current_season_milb_bf"]
+            if pitcher_form
+            else row["current_season_milb_pa"]
+        )
+        if not isfinite(age) or mlb_opportunity < 0 or milb_opportunity < 0:
+            raise ValueError("playing-time predictor age/opportunity fields are invalid")
+        if form in (*PT_V2_FORMS, *PITCHER_PT_V2_FORMS):
             raw_level = str(row["as_of_level_group"] or "UNKNOWN")
             if raw_level in {"INACTIVE", "UNKNOWN"}:
                 tier = raw_level
@@ -235,16 +282,29 @@ def build_playing_time_design(predictors: pl.DataFrame, *, form: str) -> pl.Data
             "level_aa": 1.0 if tier == "AA" else 0.0,
             "level_a_or_below": 1.0 if tier == "A_OR_BELOW" else 0.0,
             "age_centered": (age - 25.0) / 5.0,
-            "log_current_mlb_pa": log1p(float(mlb_pa)),
-            "log_current_milb_pa": log1p(float(milb_pa)),
+            "log_current_mlb_pa": log1p(float(mlb_opportunity)),
+            "log_current_milb_pa": log1p(float(milb_opportunity)),
+            "log_current_mlb_bf": log1p(float(mlb_opportunity)),
+            "log_current_milb_bf": log1p(float(milb_opportunity)),
             "on_40man": 1.0 if bool(row["on_40man"]) else 0.0,
         }
-        if form in PT_V2_FORMS:
+        if form in (*PT_V2_FORMS, *PITCHER_PT_V2_FORMS):
             values.update(
                 {
                     "level_inactive": 1.0 if tier == "INACTIVE" else 0.0,
                     "level_unknown": 1.0 if tier == "UNKNOWN" else 0.0,
                     "age_missing": 1.0 if age_missing else 0.0,
+                }
+            )
+        if pitcher_form:
+            role = str(row["as_of_role"] or "unknown").strip().lower()
+            if role not in {"starter", "swingman", "reliever", "unknown"}:
+                role = "unknown"
+            values.update(
+                {
+                    "role_starter": 1.0 if role == "starter" else 0.0,
+                    "role_swingman": 1.0 if role == "swingman" else 0.0,
+                    "role_reliever": 1.0 if role == "reliever" else 0.0,
                 }
             )
         if form == PT_FORM_C:
