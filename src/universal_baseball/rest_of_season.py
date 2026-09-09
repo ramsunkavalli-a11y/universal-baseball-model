@@ -88,6 +88,9 @@ def _build_ros_component(
     completed_league_games: int,
     scheduled_league_games: int,
     component: str,
+    recent_counts: pl.DataFrame | None = None,
+    recent_team_games: float | None = None,
+    recent_regression_exposure: float = 25.0,
 ) -> pl.DataFrame:
     if set(players.columns) != {"player_id"}:
         raise ValueError("ROS players require only player_id")
@@ -95,6 +98,12 @@ def _build_ros_component(
         raise ValueError("ROS build requires a partly completed league schedule")
     if regression_exposure <= 0 or denominator <= 0:
         raise ValueError("ROS regression and rate denominator must be positive")
+    if (recent_counts is None) != (recent_team_games is None):
+        raise ValueError("recent counts and recent team games must be supplied together")
+    if recent_team_games is not None and (
+        recent_team_games <= 0 or recent_regression_exposure <= 0
+    ):
+        raise ValueError("recent usage games and regression must be positive")
     observed = current_counts.group_by("player_id").agg(
         pl.col(observed_column).sum().alias("observed_to_date")
     )
@@ -128,8 +137,82 @@ def _build_ros_component(
                 * pl.col("prior_full_season_opportunity")
             )
             * remaining_fraction
-        ).alias("projected_remaining_opportunity")
-    ).with_columns(
+        ).alias("base_projected_remaining_opportunity")
+    )
+    if recent_counts is not None:
+        missing_recent = sorted({"player_id", "workload"} - set(recent_counts.columns))
+        if missing_recent:
+            raise ValueError(f"recent usage input missing fields: {missing_recent}")
+        recent = recent_counts.select(
+            "player_id", pl.col("workload").alias("recent_observed")
+        )
+        if recent.group_by("player_id").len().filter(pl.col("len") != 1).height:
+            raise ValueError("recent usage input violates player grain")
+        assert recent_team_games is not None
+        result = result.join(
+            recent, on="player_id", how="left", validate="1:1"
+        ).with_columns(
+            pl.col("recent_observed").fill_null(0.0),
+        ).with_columns(
+            (
+                pl.col("recent_observed")
+                / (pl.col("recent_observed") + recent_regression_exposure)
+            ).alias("recent_usage_reliability"),
+            (pl.col("recent_observed") * 162.0 / recent_team_games).alias(
+                "recent_full_season_pace"
+            ),
+        ).with_columns(
+            (
+                (
+                    pl.col("recent_usage_reliability")
+                    * pl.col("recent_full_season_pace")
+                    + (1.0 - pl.col("recent_usage_reliability"))
+                    * (
+                        pl.col("base_projected_remaining_opportunity")
+                        / remaining_fraction
+                    )
+                )
+                * remaining_fraction
+            ).alias("unscaled_recent_projected_remaining_opportunity")
+        )
+        base_total = float(
+            result.get_column("base_projected_remaining_opportunity").sum()
+        )
+        recent_total = float(
+            result.get_column(
+                "unscaled_recent_projected_remaining_opportunity"
+            ).sum()
+        )
+        if recent_total <= 0:
+            raise ValueError("recent usage challenger has no positive total")
+        redistribution_scale = base_total / recent_total
+        result = result.with_columns(
+            (
+                pl.col("unscaled_recent_projected_remaining_opportunity")
+                * redistribution_scale
+            ).alias("projected_remaining_opportunity"),
+            pl.lit(redistribution_scale).alias("recent_redistribution_scale"),
+            pl.lit("current_usage_plus_30_day_league_total_redistribution").alias(
+                "workload_model_id"
+            ),
+        )
+    else:
+        result = result.with_columns(
+            pl.col("base_projected_remaining_opportunity").alias(
+                "projected_remaining_opportunity"
+            ),
+            pl.lit(None, dtype=pl.Float64).alias("recent_observed"),
+            pl.lit(None, dtype=pl.Float64).alias("recent_usage_reliability"),
+            pl.lit(None, dtype=pl.Float64).alias("recent_full_season_pace"),
+            pl.lit(None, dtype=pl.Float64).alias(
+                "unscaled_recent_projected_remaining_opportunity"
+            ),
+            pl.lit(None, dtype=pl.Float64).alias("recent_redistribution_scale"),
+            pl.lit("current_usage_blended_with_next_full_season_prior").alias(
+                "workload_model_id"
+            ),
+        )
+    result = result.with_columns(
         (
             pl.col("projected_remaining_opportunity")
             * pl.col("conditional_war_rate") / denominator
@@ -137,15 +220,15 @@ def _build_ros_component(
         pl.lit(as_of_date).alias("as_of_date"),
         pl.lit(int(as_of_date.year)).alias("season"),
         pl.lit(component).alias("component"),
-        pl.lit("current_usage_blended_with_next_full_season_prior").alias(
-            "workload_model_id"
-        ),
         pl.lit("next_full_season_conditional_rate_proxy").alias("rate_basis"),
     )
     return result.select(
         "as_of_date", "season", "player_id", "component", "observed_to_date",
         "current_usage_reliability", "observed_full_season_pace",
-        "prior_full_season_opportunity", "projected_remaining_opportunity",
+        "prior_full_season_opportunity", "base_projected_remaining_opportunity",
+        "recent_observed", "recent_usage_reliability", "recent_full_season_pace",
+        "unscaled_recent_projected_remaining_opportunity",
+        "recent_redistribution_scale", "projected_remaining_opportunity",
         "conditional_war_rate", "projected_remaining_war", "workload_model_id",
         "rate_basis",
     ).sort("player_id")
@@ -160,6 +243,8 @@ def build_hitter_ros_paths(
     as_of_date: date,
     completed_league_games: int,
     scheduled_league_games: int,
+    recent_counts: pl.DataFrame | None = None,
+    recent_team_games: float | None = None,
 ) -> pl.DataFrame:
     return _build_ros_component(
         players, current_counts, next_year_opportunity, next_year_rates,
@@ -168,6 +253,7 @@ def build_hitter_ros_paths(
         denominator=600.0, regression_exposure=200.0,
         completed_league_games=completed_league_games,
         scheduled_league_games=scheduled_league_games, component="hitter",
+        recent_counts=recent_counts, recent_team_games=recent_team_games,
     )
 
 
@@ -180,6 +266,8 @@ def build_pitcher_ros_paths(
     as_of_date: date,
     completed_league_games: int,
     scheduled_league_games: int,
+    recent_counts: pl.DataFrame | None = None,
+    recent_team_games: float | None = None,
 ) -> pl.DataFrame:
     return _build_ros_component(
         players, current_counts, next_year_opportunity, next_year_rates,
@@ -188,6 +276,7 @@ def build_pitcher_ros_paths(
         denominator=800.0, regression_exposure=200.0,
         completed_league_games=completed_league_games,
         scheduled_league_games=scheduled_league_games, component="pitcher",
+        recent_counts=recent_counts, recent_team_games=recent_team_games,
     )
 
 

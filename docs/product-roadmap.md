@@ -164,8 +164,8 @@ The remaining-rights adapter now separates already-earned current-season WAR and
 salary from the production and obligations an acquiring club can receive. The dated
 2026 baseline supplies projected remaining WAR and CBA day-prorated base salary. It
 connects 833 exact current-team payroll rows and rejects 81 unresolved or conflicting
-joins. Current availability/role and contract exceptions remain before this becomes a
-live ranking.
+joins. Current availability and recent-role usage now have narrow historical
+baselines; contract exceptions remain before this becomes a live ranking.
 
 Projection v1 now has a shared hitter/pitcher guardrail boundary in
 `projection_guardrails.py`. It fails on missing player-years, duplicate components,
@@ -188,9 +188,9 @@ status and a 2022-2025 official transaction-based activation reference now cover
 narrow current availability boundary. The fitted point is used only when transaction
 replay agrees with current official injury status; unmatched injuries retain a
 zero-to-baseline sensitivity. Historical workload spread and posterior rate evidence
-now produce Phase 1 future WAR sensitivities for every economics row. Current role
-calibration and the remaining bounded contract exceptions are next; correlated career
-paths and interval coverage refinement are Phase 2.
+now produce Phase 1 future WAR sensitivities for every economics row. The remaining
+bounded contract exceptions are next; correlated career paths and interval coverage
+refinement are Phase 2.
 
 The public 2020–2026 FanGraphs free-agent tracker now supplies 335 reported contract
 rows, including 155 one-year deals. All 350 sampled rows map through stable FanGraphs

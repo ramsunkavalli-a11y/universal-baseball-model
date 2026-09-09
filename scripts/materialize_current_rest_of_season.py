@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import argparse
-from datetime import date
+from datetime import date, timedelta
 import gzip
 from hashlib import sha256
 import json
@@ -19,6 +19,9 @@ from universal_baseball.current_availability import (
     project_current_affiliated_status_payload,
 )
 from universal_baseball.playing_time_roster_source import STATS_API_BASE
+from universal_baseball.mlb_usage_window import (
+    project_mlb_usage_date_range_payload,
+)
 from universal_baseball.remaining_rights import (
     REMAINING_RIGHTS_INPUT_SCHEMA,
     build_remaining_rights_inputs,
@@ -80,7 +83,9 @@ def _args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _schedule(as_of_date: date, output_root: Path) -> tuple[pl.DataFrame, int, int, dict]:
+def _schedule(
+    as_of_date: date, output_root: Path, *, recent_days: int
+) -> tuple[pl.DataFrame, int, int, float, dict]:
     with requests.Session() as session:
         session.headers["User-Agent"] = "universal-baseball-model-rest-of-season/0.1"
         response = session.get(
@@ -99,11 +104,58 @@ def _schedule(as_of_date: date, output_root: Path) -> tuple[pl.DataFrame, int, i
     calendar, completed, scheduled = project_team_schedule_calendar(
         payload, season=as_of_date.year, as_of_date=as_of_date
     )
-    return calendar, completed, scheduled, {
+    recent_start = as_of_date - timedelta(days=recent_days - 1)
+    _, completed_before_recent, _ = project_team_schedule_calendar(
+        payload,
+        season=as_of_date.year,
+        as_of_date=recent_start - timedelta(days=1),
+    )
+    recent_team_games = 2.0 * (completed - completed_before_recent) / 30.0
+    return calendar, completed, scheduled, recent_team_games, {
         "requested_url": response.url,
         "response_bytes": len(response.content),
         "response_sha256": digest,
         "raw_path": raw_path.as_posix(),
+    }
+
+
+def _recent_usage(
+    as_of_date: date,
+    output_root: Path,
+    *,
+    group: str,
+    recent_days: int,
+) -> tuple[pl.DataFrame, dict[str, object]]:
+    start = as_of_date - timedelta(days=recent_days - 1)
+    with requests.Session() as session:
+        session.headers["User-Agent"] = "universal-baseball-model-rest-of-season/0.1"
+        response = session.get(
+            f"{STATS_API_BASE}/stats",
+            params={
+                "stats": "byDateRange",
+                "group": group,
+                "sportIds": 1,
+                "startDate": start.strftime("%m/%d/%Y"),
+                "endDate": as_of_date.strftime("%m/%d/%Y"),
+                "playerPool": "ALL",
+                "gameType": "R",
+                "limit": 5000,
+            },
+            timeout=120,
+        )
+        response.raise_for_status()
+    path = output_root / f"official-mlb-{group}-recent-usage.json"
+    path.write_bytes(response.content)
+    payload = response.json()
+    frame = project_mlb_usage_date_range_payload(payload, group=group)
+    return frame, {
+        "requested_url": response.url,
+        "response_bytes": len(response.content),
+        "response_sha256": sha256(response.content).hexdigest(),
+        "raw_path": path.as_posix(),
+        "start_date": start.isoformat(),
+        "end_date": as_of_date.isoformat(),
+        "players": frame.height,
     }
 
 
@@ -133,8 +185,21 @@ def main() -> int:
     output_root = args.output_root / args.as_of_date.isoformat()
     tables = output_root / "tables"
     tables.mkdir(parents=True, exist_ok=True)
-    calendar, completed, scheduled, schedule_capture = _schedule(
-        args.as_of_date, output_root
+    recent_days = 30
+    calendar, completed, scheduled, recent_team_games, schedule_capture = _schedule(
+        args.as_of_date, output_root, recent_days=recent_days
+    )
+    recent_hitting, recent_hitting_capture = _recent_usage(
+        args.as_of_date,
+        output_root,
+        group="hitting",
+        recent_days=recent_days,
+    )
+    recent_pitching, recent_pitching_capture = _recent_usage(
+        args.as_of_date,
+        output_root,
+        group="pitching",
+        recent_days=recent_days,
     )
     dated_skill = args.mlb_skill_root / args.as_of_date.isoformat() / "tables"
     dated_opportunity = args.opportunity_root / args.as_of_date.isoformat() / "tables"
@@ -160,6 +225,8 @@ def main() -> int:
         as_of_date=args.as_of_date,
         completed_league_games=completed,
         scheduled_league_games=scheduled,
+        recent_counts=recent_hitting,
+        recent_team_games=recent_team_games,
     )
     pitcher_ros = build_pitcher_ros_paths(
         pitcher_players,
@@ -173,6 +240,8 @@ def main() -> int:
         as_of_date=args.as_of_date,
         completed_league_games=completed,
         scheduled_league_games=scheduled,
+        recent_counts=recent_pitching,
+        recent_team_games=recent_team_games,
     )
     whole_player_unadjusted = pl.concat(
         [
@@ -277,6 +346,16 @@ def main() -> int:
     ).len().filter(pl.col("len") != 1).height:
         raise ValueError("current-and-future economics violates annual grain")
     storage = {
+        "recent_hitting_usage": write_canonical_parquet(
+            recent_hitting,
+            tables / "recent-hitting-usage.parquet",
+            table_name="official_recent_mlb_hitting_usage",
+        ).as_record(),
+        "recent_pitching_usage": write_canonical_parquet(
+            recent_pitching,
+            tables / "recent-pitching-usage.parquet",
+            table_name="official_recent_mlb_pitching_usage",
+        ).as_record(),
         "team_calendar": write_canonical_parquet(
             calendar, tables / "team-championship-season-calendar.parquet",
             table_name="team_championship_season_calendar",
@@ -332,6 +411,16 @@ def main() -> int:
             "remaining_fraction": (scheduled - completed) / scheduled,
             "capture": schedule_capture,
         },
+        "recent_usage": {
+            "window_days": recent_days,
+            "average_team_games": recent_team_games,
+            "hitting_capture": recent_hitting_capture,
+            "pitching_capture": recent_pitching_capture,
+            "redistribution_boundary": (
+                "recent usage redistributes the existing baseline league total; it "
+                "does not add workload or use current-team depth"
+            ),
+        },
         "coverage": {
             "hitter_rows": hitter_ros.height,
             "pitcher_rows": pitcher_ros.height,
@@ -357,7 +446,8 @@ def main() -> int:
         },
         "war_method": (
             "season-to-date opportunity pace shrunk to the 2027 unconditional "
-            "opportunity prior; 2027 conditional rate used as a short-horizon proxy"
+            "opportunity prior, then redistributed within the same league total by "
+            "30-day official usage; 2027 conditional rate used as a short-horizon proxy"
         ),
         "totals": {
             "projected_remaining_hitter_pa": hitter_ros.get_column(

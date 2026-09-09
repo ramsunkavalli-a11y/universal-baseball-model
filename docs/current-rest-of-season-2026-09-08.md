@@ -8,23 +8,25 @@ The first live current-season path is connected. The official MLB schedule conta
 10.29% of the league schedule.
 
 The model projects 21,596.6 remaining hitter PA and 20,597.7 pitcher BF. Applying the
-existing conditional WAR rates gives 68.78 hitter WAR and 43.45 pitcher WAR, or
-112.23 whole-player WAR before current availability. Official season-out status lowers
-the point estimate to 112.07. Hitter and pitcher value is added for two-way players.
+existing conditional WAR rates gives 69.64 hitter WAR and 44.71 pitcher WAR, or
+114.35 whole-player WAR before current availability. Official season-out and the
+historical injury-return baseline lower the point estimate to 105.13. Hitter and
+pitcher value is added for two-way players.
 
-Current usage is paced to a full season, shrunk with 200 PA/BF toward the existing
-2027 team-neutral opportunity forecast, and multiplied by the remaining schedule
-share. The 2027 conditional WAR rate, including supported general defense, is used as
-a short-horizon proxy. This keeps the
+Season-to-date usage is paced to a full season, shrunk with 200 PA/BF toward the
+existing 2027 team-neutral opportunity forecast, and multiplied by the remaining
+schedule share. A historically validated 30-day usage signal then redistributes that
+same baseline total among players. The 2027 conditional WAR rate, including supported
+general defense, is used as a short-horizon proxy. This keeps the
 first version consistent with the existing player paths; it does not yet use active
 roster or team-depth blocking. Official injured-list status supplies only the narrow
 availability treatment described below.
 
-Official full-season-unavailable statuses set remaining WAR to zero. Ordinary injured
-list and rehab statuses keep the baseline point but create a zero-to-baseline
-availability sensitivity because the status does not supply a recovery date. The
-league availability-only range is 97.71 to 112.29 WAR; it is not a full forecast
-interval.
+Official full-season-unavailable statuses set remaining WAR to zero. Exact agreement
+between current official injury status and transaction replay uses the 2022-2025
+historical activation-timing factor. Other injured-list and rehab cases keep the
+baseline point. All ordinary injury cases retain a zero-to-baseline sensitivity. The
+league availability-only range is 102.07 to 114.40 WAR; it is not a full interval.
 
 ## Salary and rights
 
@@ -45,7 +47,8 @@ remaining WAR and unpaid base salary enter the rights calculation.
 
 ## Phase 1 boundary
 
-This is a coherent baseline, not a final in-season projection. The main remaining
-pieces are calibrated return/role, full WAR uncertainty, retained salary and special
-contract terms, option buyouts, and fitted free-agent and arbitration prices. Phase 2
-can refine daily playing time and injuries after the complete value path exists.
+This is a coherent baseline, not a final in-season projection. Current role and
+late-season injury return now have simple historical checks. The main remaining pieces
+are bounded contract exceptions, ownership conflicts and durable recovery of the
+selected hitter-opportunity package. Phase 2 can refine daily playing time and injury
+details after the complete value path exists.

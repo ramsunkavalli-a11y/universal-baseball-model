@@ -86,3 +86,40 @@ def test_hitter_ros_blends_current_pace_and_full_season_prior() -> None:
         0, "projected_remaining_opportunity"
     ) == 50.0
     assert result.get_column("projected_remaining_war").is_finite().all()
+
+
+def test_recent_usage_redistributes_but_preserves_baseline_total() -> None:
+    result = build_hitter_ros_paths(
+        pl.DataFrame({"player_id": [1, 2]}),
+        pl.DataFrame(
+            {"player_id": [1, 2], "batting_plate_appearances": [200, 200]}
+        ),
+        pl.DataFrame({"player_id": [1, 2], "expected_mlb_pa": [400.0, 400.0]}),
+        pl.DataFrame(
+            {
+                "player_id": [1, 2],
+                "conditional_war_per_600_pa": [3.0, 3.0],
+            }
+        ),
+        as_of_date=date(2026, 7, 1),
+        completed_league_games=1215,
+        scheduled_league_games=2430,
+        recent_counts=pl.DataFrame(
+            {
+                "player_id": [1, 2],
+                "workload": [100.0, 10.0],
+                "games": [25, 5],
+                "starts": [0, 0],
+            }
+        ),
+        recent_team_games=27.0,
+    )
+    assert result.get_column("projected_remaining_opportunity").sum() == (
+        result.get_column("base_projected_remaining_opportunity").sum()
+    )
+    assert result.filter(pl.col("player_id") == 1).item(
+        0, "projected_remaining_opportunity"
+    ) > result.filter(pl.col("player_id") == 2).item(
+        0, "projected_remaining_opportunity"
+    )
+    assert result.get_column("recent_redistribution_scale").n_unique() == 1

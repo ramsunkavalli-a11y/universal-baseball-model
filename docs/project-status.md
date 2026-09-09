@@ -155,8 +155,8 @@ or promote a player ranking; the public v1 release remains historical.
   profiles and tested on 2,442 later-period pairs covering 618,983 BF. It lost to both
   no aging and Tango overall; Tango beat no aging in three of four seasons and remains
   the Phase 1 curve. The failed challenger is closed rather than tuned after inspection.
-- A dated 2026 rest-of-season baseline projects 112.23 WAR before current availability
-  and 101.31 after 247 official season-out statuses plus the narrow historical
+- A dated 2026 rest-of-season baseline projects 114.35 WAR before current availability
+  and 105.13 after 247 official season-out statuses plus the narrow historical
   injury-return adjustment over the final 250
   scheduled games. CBA championship-season-day proration produces $535.96 million of
   remaining base salary. Exact current-team matches connect 833 salary rows and
@@ -165,10 +165,14 @@ or promote a player ranking; the public v1 release remains historical.
   input contains these 833 current rows plus 50,100 future rows.
 - Ordinary IL and rehab status does not itself supply a return date. Official current
   status and transaction replay agree for 263 players; 261 projected players receive
-  the 2022-2025 activation-timing factor. Their 12.96 unadjusted WAR becomes 2.20 WAR.
+  the 2022-2025 activation-timing factor. Their 10.92 unadjusted WAR becomes 1.84 WAR.
   Unmatched injuries retain their point and zero-to-baseline range. Among matched
-  current rights, the combined 75.94 WAR point has an availability-only 73.88 to
-  85.07 range. Minor assignment is not used as team-depth blocking.
+  current rights, the combined 79.51 WAR point has an availability-only 77.82 to
+  87.10 range. Minor assignment is not used as team-depth blocking.
+- A 30-day official workload challenger now redistributes the existing late-season
+  league total without adding PA/BF or using team depth. It improved 2025 confirmation
+  MAE from 14.76 to 12.01 PA and 16.08 to 13.49 BF. The live build keeps 21,596.6 PA
+  and 20,597.7 BF unchanged while moving work toward recently used players.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -206,8 +210,8 @@ The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-Next, resolve the 71 contract review rows and calibrate current role. Late-season
-injury return now has a narrow Phase 1 baseline. Correlated
+Next, resolve the 71 contract review rows. Current role and late-season injury return
+now have narrow Phase 1 baselines. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
@@ -246,7 +250,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, guardrail, remaining-rights and current
 availability tests pass; Ruff passes across the changed files. The current full run
-has 1,224 passing tests.
+has 1,227 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

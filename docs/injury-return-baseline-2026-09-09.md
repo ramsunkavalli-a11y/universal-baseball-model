@@ -31,9 +31,10 @@ For the 2026-09-08 snapshot:
 - current official injury status and transaction replay agree for 263 players;
 - 261 of those players have a rest-of-season projection and receive the calibrated
   point adjustment;
-- their 12.96 unadjusted WAR becomes 2.20 WAR;
-- the league point estimate moves from 112.23 to 101.31 WAR, while the existing
-  availability range remains 97.71 to 112.29 WAR;
+- after the subsequent current-role update, their 10.92 unadjusted WAR becomes 1.84
+  WAR;
+- the current league point estimate moves from 114.35 to 105.13 WAR, while the
+  availability range is 102.07 to 114.40 WAR;
 - 184 of 188 salary-linked injured players have a transaction-derived start date.
 
 The larger current-status-only population is mainly affiliated minor-league status
@@ -45,4 +46,3 @@ estimate and zero-to-baseline sensitivity.
 Phase 1 uses this simple, auditable activation-timing reference. Phase 2 can add injury
 type, age, recurrence, actual post-activation workload and out-of-time calibration,
 provided each input is available at prediction time and improves a protected test.
-
