@@ -86,6 +86,7 @@ def main() -> int:
     )
     design = build_playing_time_design(predictors, form=fit.form)
     predictions = predict_playing_time_hurdle(fit, design).with_columns(
+        pl.lit(1).cast(pl.Int64).alias("horizon"),
         pl.lit(fit.form).alias("model_id"),
         pl.lit(fit.nb_alpha).alias("model_nb_alpha"),
         pl.lit("provisional_development_candidate_not_2026_confirmed").alias(

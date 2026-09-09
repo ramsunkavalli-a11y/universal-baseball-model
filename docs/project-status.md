@@ -104,12 +104,22 @@ or promote a player ranking; the public v1 release remains historical.
   form won all four rolling folds; pooled Brier error fell 10.5%, BF MAE 15.1% and BF
   RMSE 10.5% against level/role only. Its exact package is committed and remains
   provisional pending protected 2026 confirmation.
-- Both candidates now score the current universe and connect through WAR, uncertainty,
-  current remaining rights and contract economics. Together they add 177.24 future WAR,
-  all in 2027; the separate remaining-2026 estimate falls 1.46 WAR. The scenario still
+- Direct horizon 2–4 models also passed every gate against both their parametric
+  baselines and the incumbent cohort method. Hitter PA MAE improves 12–20% and pitcher
+  BF MAE 6–8%. Incomplete 2003–2008 sources cannot support honest horizon 5–6 tests,
+  so those years retain their labeled historical fallbacks.
+- The selected models now score the current universe and connect through WAR,
+  uncertainty, current remaining rights and contract economics. They add 564.59 future
+  WAR through 2030; 2031–2032 are unchanged. The separate remaining-2026 estimate falls
+  1.46 WAR. The scenario still
   has 51,070 annual rows, 8,362 complete player paths and the same 16 contract reviews.
-  Its $3.50 billion discounted point total versus the retained $1.66 billion baseline
+  Its $5.89 billion discounted point total versus the retained $1.66 billion baseline
   is a research sensitivity, not a promoted ranking.
+- The protected 2026 one-year confirmation is now locked before season end. Immutable
+  selected, U0/P0 and incumbent forecasts cover the exact 2025-10-15 universe of 3,907
+  hitters and 5,206 pitchers. No 2026 outcome file was read. The fixed confirmation
+  rule waits for final official regular-season PA/BF and cannot be changed by subgroup
+  results.
 - The remaining-rights timeline now prevents live valuation from counting WAR already
   produced or salary already paid. Current-season rows require an explicit remaining
   salary obligation and cannot receive a fictional midseason non-tender option. Future
@@ -257,10 +267,10 @@ engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-The top modeling priority is now a separately frozen multi-horizon opportunity gate so
-2028–2032 can move beyond broad historical cohorts without recursively treating a
-one-year forecast as observed evidence. Do not tune the completed one-year gates before
-protected 2026 confirmation. In parallel, resolve the 16 remaining contract reviews:
+The one-year confirmation forecast and scoring rule are frozen. Do not inspect partial
+2026 targets or tune the completed gates; run confirmation only after official regular-
+season totals are final. Horizons 5–6 remain on the incumbent until better older
+evidence exists. The next available Phase 1 work is resolving the 16 contract reviews:
 12 future vesting decisions, three linked
 Julio Rodriguez years and one missing option salary. Granular replacement of the
 43 buyout estimates with exact terms is Phase 2. Current role and late-season injury return

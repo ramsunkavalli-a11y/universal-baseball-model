@@ -89,6 +89,7 @@ def main() -> int:
             "predicted_expected_mlb_pa": "predicted_expected_mlb_bf",
         }
     ).with_columns(
+        pl.lit(1).cast(pl.Int64).alias("horizon"),
         pl.lit(fit.form).alias("model_id"),
         pl.lit(fit.nb_alpha).alias("model_nb_alpha"),
         pl.lit("provisional_development_candidate_not_2026_confirmed").alias(
@@ -197,4 +198,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

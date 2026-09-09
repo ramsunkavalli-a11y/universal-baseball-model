@@ -87,7 +87,11 @@ The [provisional current hitter opportunity v2 integration](docs/current-hitter-
 scores every current hitter and carries the selected development model through the same
 pipeline without overwriting the retained baseline.
 The [combined universal opportunity v2 integration](docs/current-universal-opportunity-v2-2026-09-08.md)
-adds the selected pitcher model and records the full WAR and contract-value sensitivity.
+adds the selected pitcher and direct horizon 2–4 models and records the full WAR and
+contract-value sensitivity. Horizons 5–6 remain labeled historical fallbacks.
+The [protected 2026 confirmation contract](docs/opportunity-v2-2026-confirmation-contract.md)
+now has immutable 2025-snapshot forecasts for selected and benchmark models; evaluation
+waits for final 2026 regular-season outcomes.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

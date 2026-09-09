@@ -42,6 +42,8 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--selected-hitter-next-year", type=Path)
     parser.add_argument("--selected-pitcher-next-year", type=Path)
+    parser.add_argument("--selected-hitter-multihorizon", type=Path)
+    parser.add_argument("--selected-pitcher-multihorizon", type=Path)
     parser.add_argument(
         "--output-root",
         type=Path,
@@ -75,37 +77,67 @@ def main() -> int:
         if args.selected_hitter_next_year is not None
         else None
     )
+    if args.selected_hitter_multihorizon is not None:
+        additional = pl.read_parquet(args.selected_hitter_multihorizon)
+        selected = (
+            additional
+            if selected is None
+            else pl.concat([selected, additional], how="diagonal_relaxed")
+        )
     selected_pitcher = (
         pl.read_parquet(args.selected_pitcher_next_year)
         if args.selected_pitcher_next_year is not None
         else None
     )
+    if args.selected_pitcher_multihorizon is not None:
+        additional = pl.read_parquet(args.selected_pitcher_multihorizon)
+        selected_pitcher = (
+            additional
+            if selected_pitcher is None
+            else pl.concat([selected_pitcher, additional], how="diagonal_relaxed")
+        )
     selected_model_id = "playing_time_v1"
     selected_model_status = "selected"
     if selected is not None:
         if "model_id" in selected.columns:
             model_ids = selected.get_column("model_id").unique().to_list()
-            if len(model_ids) != 1 or model_ids[0] is None:
-                raise ValueError("selected hitter predictions must have one model_id")
-            selected_model_id = str(model_ids[0])
+            if any(value is None for value in model_ids):
+                raise ValueError("selected hitter predictions have null model_id")
+            selected_model_id = (
+                str(model_ids[0])
+                if len(model_ids) == 1
+                else "row_labeled_multiple_hitter_models"
+            )
         if "model_status" in selected.columns:
             model_statuses = selected.get_column("model_status").unique().to_list()
-            if len(model_statuses) != 1 or model_statuses[0] is None:
-                raise ValueError("selected hitter predictions must have one model_status")
-            selected_model_status = str(model_statuses[0])
+            if any(value is None for value in model_statuses):
+                raise ValueError("selected hitter predictions have null model_status")
+            selected_model_status = (
+                str(model_statuses[0])
+                if len(model_statuses) == 1
+                else "row_labeled_multiple_statuses"
+            )
     selected_pitcher_model_id = "pitcher_opportunity_v1"
     selected_pitcher_model_status = "selected"
     if selected_pitcher is not None:
         if "model_id" in selected_pitcher.columns:
             model_ids = selected_pitcher.get_column("model_id").unique().to_list()
-            if len(model_ids) != 1 or model_ids[0] is None:
-                raise ValueError("selected pitcher predictions must have one model_id")
-            selected_pitcher_model_id = str(model_ids[0])
+            if any(value is None for value in model_ids):
+                raise ValueError("selected pitcher predictions have null model_id")
+            selected_pitcher_model_id = (
+                str(model_ids[0])
+                if len(model_ids) == 1
+                else "row_labeled_multiple_pitcher_models"
+            )
         if "model_status" in selected_pitcher.columns:
             statuses = selected_pitcher.get_column("model_status").unique().to_list()
-            if len(statuses) != 1 or statuses[0] is None:
-                raise ValueError("selected pitcher predictions must have one model_status")
-            selected_pitcher_model_status = str(statuses[0])
+            if any(value is None for value in statuses):
+                raise ValueError("selected pitcher predictions have null model_status")
+            selected_pitcher_model_status = (
+                str(statuses[0])
+                if len(statuses) == 1
+                else "row_labeled_multiple_statuses"
+            )
     hitter_fit = HitterOpportunityFit(
         references=pl.read_parquet(args.fit_root / "hitter_references.parquet"),
         horizons=args.horizons,
@@ -166,15 +198,40 @@ def main() -> int:
         "pitcher_player_years": pitcher_paths.height,
         "selected_hitter_model_supplied": selected is not None,
         "selected_hitter_model_id": selected_model_id if selected is not None else None,
+        "selected_hitter_model_ids": (
+            sorted(str(value) for value in selected.get_column("model_id").unique())
+            if selected is not None and "model_id" in selected.columns
+            else []
+        ),
         "selected_hitter_model_status": (
             selected_model_status if selected is not None else None
+        ),
+        "selected_hitter_model_statuses": (
+            sorted(str(value) for value in selected.get_column("model_status").unique())
+            if selected is not None and "model_status" in selected.columns
+            else []
         ),
         "selected_pitcher_model_supplied": selected_pitcher is not None,
         "selected_pitcher_model_id": (
             selected_pitcher_model_id if selected_pitcher is not None else None
         ),
+        "selected_pitcher_model_ids": (
+            sorted(
+                str(value) for value in selected_pitcher.get_column("model_id").unique()
+            )
+            if selected_pitcher is not None and "model_id" in selected_pitcher.columns
+            else []
+        ),
         "selected_pitcher_model_status": (
             selected_pitcher_model_status if selected_pitcher is not None else None
+        ),
+        "selected_pitcher_model_statuses": (
+            sorted(
+                str(value)
+                for value in selected_pitcher.get_column("model_status").unique()
+            )
+            if selected_pitcher is not None and "model_status" in selected_pitcher.columns
+            else []
         ),
         "hitter_coverage": _coverage(hitter_paths),
         "pitcher_coverage": _coverage(pitcher_paths),

@@ -1,0 +1,131 @@
+{
+  "boundary": {
+    "any_2026_outcome_file_read": false,
+    "forecast_rows_are_immutable_confirmation_inputs": true,
+    "names_used": false,
+    "team_depth_or_future_team_used": false
+  },
+  "contract": "docs/opportunity-v2-2026-confirmation-contract.md",
+  "gate": "opportunity_v2_2026_protected_confirmation_forecast_freeze",
+  "hitter_players": 3907,
+  "parametric_baselines": {
+    "hitter": "playing_time_universal_level_hurdle_v2",
+    "pitcher": "pitcher_opportunity_universal_level_role_hurdle_v2"
+  },
+  "pitcher_players": 5206,
+  "report_schema_version": "0.1",
+  "selected_models": {
+    "hitter": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+    "pitcher": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2"
+  },
+  "snapshot_date": "2025-10-15",
+  "source_hashes": {
+    "affiliated_stats_2025": "c0663675bee3ccc7f567808b8e1856143d04b9ddba9f735a71252b9f3d2e3187",
+    "hitter_package_report": "d9d742aad8dc882add6710e384a370bf9dcb5c4996218ceec53edc4325736bf4",
+    "hitter_snapshots": "4480052b8a07fbb21366b54cc341630bbf29cf3be9d52ac1820f026c4efa90b3",
+    "membership": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421",
+    "pitcher_package_report": "98b2e00571ace8452dbe00640d21fbd230cac920590630e8c713b63231cb1b11",
+    "pitcher_snapshots": "3b80e560a6bebe6306f5c7be5c8bec0cb7f94fed5ef5f1edfaf3bd27e53396b3"
+  },
+  "storage": {
+    "hitter_incumbent": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "aa318106c781595d95dc3746a1956544f0d16d983169ffa9c3bac92ed661da47",
+      "file_size_bytes": 16282,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\hitter-incumbent.parquet",
+      "row_count": 3907,
+      "schema_sha256": "f98b304185d6a2599362b26c7668d426fba15b27ef162e66688ed367751985fe",
+      "table_name": "opportunity_v2_2026_confirmation_hitter_incumbent"
+    },
+    "hitter_parametric_baseline": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "a2d42a0ba82a7532fd6250e0f8ee5347bcda76ef90cc74baf4e40c597150730c",
+      "file_size_bytes": 12917,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\hitter-parametric-baseline.parquet",
+      "row_count": 3907,
+      "schema_sha256": "f335b4775d91c7490ac9933931f687a2cc4309905a03926d49d56afb90297318",
+      "table_name": "opportunity_v2_2026_confirmation_hitter_parametric_baseline"
+    },
+    "hitter_selected": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "b83dedcc138fb9ef375eb56c1e3774b1fbe95aa7d189cc94d713a1471712449f",
+      "file_size_bytes": 80950,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\hitter-selected.parquet",
+      "row_count": 3907,
+      "schema_sha256": "f335b4775d91c7490ac9933931f687a2cc4309905a03926d49d56afb90297318",
+      "table_name": "opportunity_v2_2026_confirmation_hitter_selected"
+    },
+    "hitter_u0_coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "9d3fd97fd835ce55bd57aae922dff046a911f4b485c6f8098362cec17bc9dda4",
+      "file_size_bytes": 1525,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\hitter-u0-coefficients.parquet",
+      "row_count": 13,
+      "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+      "table_name": "opportunity_v2_2026_confirmation_hitter_u0_coefficients"
+    },
+    "hitter_u0_standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "5e95ec456fbf2629be5f479dca44804a0827a1eb8c593433c21b658f80ff1c83",
+      "file_size_bytes": 135,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\hitter-u0-standardization.parquet",
+      "row_count": 0,
+      "schema_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "table_name": "opportunity_v2_2026_confirmation_hitter_u0_standardization"
+    },
+    "pitcher_incumbent": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "9b15a2369cd7234d8f359d28c023525095a36dbaab78695c010f8bd4413f5152",
+      "file_size_bytes": 27368,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\pitcher-incumbent.parquet",
+      "row_count": 5206,
+      "schema_sha256": "ba64a5264f3e8d5f420680bd67ae25991831f2b13e17b5b9a110be26f1b1b5ef",
+      "table_name": "opportunity_v2_2026_confirmation_pitcher_incumbent"
+    },
+    "pitcher_p0_coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "caa83621aa7e4fbd6695367e13c5b2064326c0ec0c7c035d89d90e3f014b222d",
+      "file_size_bytes": 1592,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\pitcher-p0-coefficients.parquet",
+      "row_count": 19,
+      "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+      "table_name": "opportunity_v2_2026_confirmation_pitcher_p0_coefficients"
+    },
+    "pitcher_p0_standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "5e95ec456fbf2629be5f479dca44804a0827a1eb8c593433c21b658f80ff1c83",
+      "file_size_bytes": 135,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\pitcher-p0-standardization.parquet",
+      "row_count": 0,
+      "schema_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "table_name": "opportunity_v2_2026_confirmation_pitcher_p0_standardization"
+    },
+    "pitcher_parametric_baseline": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "6319ca84832f1f1956341bfda06938dc7c29e87ad96ad594f1f6cf079dc3e826",
+      "file_size_bytes": 22294,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\pitcher-parametric-baseline.parquet",
+      "row_count": 5206,
+      "schema_sha256": "bf14cb7af4064cae6c6970015a14332856d89b77b189337f7369e962e9e0094f",
+      "table_name": "opportunity_v2_2026_confirmation_pitcher_parametric_baseline"
+    },
+    "pitcher_selected": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "633a1f1f9f0c657aad7e2ca2f9743f8a9e8c8d448ac210af443d286c9a48fbae",
+      "file_size_bytes": 104751,
+      "path": "reports\\generated\\opportunity-v2-2026-confirmation-forecast\\pitcher-selected.parquet",
+      "row_count": 5206,
+      "schema_sha256": "bf14cb7af4064cae6c6970015a14332856d89b77b189337f7369e962e9e0094f",
+      "table_name": "opportunity_v2_2026_confirmation_pitcher_selected"
+    }
+  },
+  "target_season": 2026,
+  "target_status": "not_read_waiting_for_completed_regular_season",
+  "training_snapshot_years": [
+    2018,
+    2021,
+    2022,
+    2023,
+    2024
+  ]
+}

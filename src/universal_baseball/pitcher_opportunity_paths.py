@@ -433,28 +433,41 @@ def fit_pitcher_opportunity_fallbacks(
 
 def _selected_predictions(
     frame: pl.DataFrame | None,
-) -> dict[int, tuple[float, float, float]]:
+) -> dict[tuple[int, int], tuple[float, float, float, str | None, str | None]]:
     if frame is None:
         return {}
     missing = sorted(set(SELECTED_PITCHER_NEXT_YEAR_SCHEMA) - set(frame.columns))
     if missing:
         raise ValueError(f"selected pitcher predictions missing fields: {missing}")
     optional_alpha = "model_nb_alpha" in frame.columns
+    optional_horizon = "horizon" in frame.columns
+    optional_model_id = "model_id" in frame.columns
+    optional_model_status = "model_status" in frame.columns
     schema = {
         **SELECTED_PITCHER_NEXT_YEAR_SCHEMA,
         **({"model_nb_alpha": pl.Float64} if optional_alpha else {}),
+        **({"horizon": pl.Int64} if optional_horizon else {}),
+        **({"model_id": pl.String} if optional_model_id else {}),
+        **({"model_status": pl.String} if optional_model_status else {}),
     }
     selected = frame.select(list(schema)).cast(schema, strict=True)
-    if selected.group_by("player_id").len().filter(pl.col("len") != 1).height or sum(
+    if selected.group_by(
+        ["player_id", "horizon"] if optional_horizon else ["player_id"]
+    ).len().filter(pl.col("len") != 1).height or sum(
         selected.null_count().row(0)
     ):
         raise ValueError("selected pitcher predictions violate player grain")
-    result = {}
+    result: dict[
+        tuple[int, int], tuple[float, float, float, str | None, str | None]
+    ] = {}
     for row in selected.iter_rows(named=True):
         player_id = int(row["player_id"])
         probability = float(row["predicted_any_mlb_bf_probability"])
         workload = float(row["predicted_positive_mlb_bf_mean"])
         alpha = float(row["model_nb_alpha"]) if optional_alpha else NB2_ALPHA
+        horizon = int(row["horizon"]) if optional_horizon else 1
+        model_id = str(row["model_id"]) if optional_model_id else None
+        model_status = str(row["model_status"]) if optional_model_status else None
         if (
             player_id <= 0
             or not isfinite(probability)
@@ -463,9 +476,16 @@ def _selected_predictions(
             or workload < 0.0
             or not isfinite(alpha)
             or alpha <= 0.0
+            or horizon <= 0
         ):
             raise ValueError("selected pitcher predictions contain invalid values")
-        result[player_id] = (probability, workload, alpha)
+        result[(player_id, horizon)] = (
+            probability,
+            workload,
+            alpha,
+            model_id,
+            model_status,
+        )
     return result
 
 
@@ -493,8 +513,10 @@ def score_pitcher_opportunity_paths(
         raise ValueError("pitcher opportunity universe has invalid or duplicate players")
     selected = _selected_predictions(selected_next_year)
     universe_ids = set(players.get_column("player_id").to_list())
-    if set(selected) - universe_ids:
+    if {player_id for player_id, _horizon in selected} - universe_ids:
         raise ValueError("selected pitcher predictions contain players outside the universe")
+    if {horizon for _player_id, horizon in selected} - set(fit.horizons):
+        raise ValueError("selected pitcher predictions contain unsupported horizons")
     lookup = {
         (
             int(row["horizon"]),
@@ -537,18 +559,27 @@ def score_pitcher_opportunity_paths(
             workload_variance = float(reference["conditional_mlb_bf_variance"])
             probability_model = "pitcher_opportunity_v1:historical_arrival_survival"
             workload_model = "pitcher_opportunity_v1:historical_positive_bf"
-            if horizon == 1 and player_id in selected:
-                probability, workload, alpha = selected[player_id]
+            selected_key = (player_id, horizon)
+            if selected_key in selected:
+                probability, workload, alpha, row_model_id, row_model_status = selected[
+                    selected_key
+                ]
                 workload_variance = (
                     zero_truncated_nb2_variance(workload, alpha=alpha)
                     if workload > 1.0
                     else 0.0
                 )
-                coverage = "selected_next_year_model"
-                probability_model = (
-                    f"{selected_model_id}:{selected_model_status}:participation"
+                coverage = (
+                    "selected_next_year_model"
+                    if horizon == 1
+                    else "selected_direct_horizon_model"
                 )
-                workload_model = f"{selected_model_id}:{selected_model_status}:positive_bf"
+                model_id = row_model_id or selected_model_id
+                model_status = row_model_status or selected_model_status
+                probability_model = (
+                    f"{model_id}:{model_status}:participation"
+                )
+                workload_model = f"{model_id}:{model_status}:positive_bf"
             output.append(
                 {
                     "as_of_date": as_of_date,
