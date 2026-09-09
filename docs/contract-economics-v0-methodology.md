@@ -94,6 +94,12 @@ When a contract has alternate paths, a failed primary threshold is not final unt
 every alternative has been evaluated. Compound alternatives are preserved explicitly
 instead of being collapsed into one misleading threshold.
 
+The exact-input layer keeps an unreported buyout null. The named Phase 1 research
+scenario may estimate it as the observed median share of option salary for the same
+option type. Exact source-linked values always take priority, and estimated rows are
+labeled in `salary_basis`. This makes the broad scenario usable without presenting an
+estimate as a contract fact; granular replacement and refitting belong in Phase 2.
+
 A dated review-only overlay can block a player-season when reliable sources disagree
 about its legal option structure or when multiple years share one linked decision.
 These records add provenance and a specific review reason; they never overwrite the

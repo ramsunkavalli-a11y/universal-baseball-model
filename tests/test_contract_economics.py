@@ -167,6 +167,46 @@ def test_mutual_option_without_buyout_fails_closed_and_blocks_aggregate() -> Non
     assert result.aggregate.item(0, "contract_control_value_dollars") is None
 
 
+def test_named_missing_buyout_share_keeps_estimate_explicit() -> None:
+    assumptions = ContractEconomicsAssumptions(
+        assumptions_id="test_buyout_imputation",
+        market_model_id="test_linear_10m_per_war",
+        arbitration_model_id="test",
+        dollars_per_war_by_year={2026: 10_000_000.0},
+        arbitration_share_by_class={},
+        annual_discount_rate=0.0,
+        missing_buyout_share_by_status={"club_option": 0.1},
+    )
+    result = value_annual_contract_states(
+        _input(status="club_option", salary=15_000_000),
+        cba_ruleset=CBA_2022_2026,
+        assumptions=assumptions,
+    )
+    row = result.annual.row(0, named=True)
+    assert row["calculation_status"] == "available"
+    assert row["salary_cost_dollars"] == 1_500_000
+    assert row["salary_basis"] == "known_contract_assumed_club_option_buyout_share"
+    assert row["decision_at_mean"] == "decline_club_option"
+
+
+def test_invalid_missing_buyout_share_fails_closed() -> None:
+    assumptions = ContractEconomicsAssumptions(
+        assumptions_id="bad_buyout_imputation",
+        market_model_id="test",
+        arbitration_model_id="test",
+        dollars_per_war_by_year={2026: 10_000_000.0},
+        arbitration_share_by_class={},
+        annual_discount_rate=0.0,
+        missing_buyout_share_by_status={"guaranteed_contract": 0.1},
+    )
+    with pytest.raises(ValueError, match="missing-buyout shares"):
+        value_annual_contract_states(
+            _input(status="guaranteed_contract", salary=15_000_000),
+            cba_ruleset=CBA_2022_2026,
+            assumptions=assumptions,
+        )
+
+
 def test_source_structure_disagreement_blocks_value() -> None:
     source = _input(status="club_option", salary=10_000_000, buyout=0).with_columns(
         pl.lit("secondary source identifies a player opt-out").alias(

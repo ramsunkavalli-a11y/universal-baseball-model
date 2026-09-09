@@ -84,6 +84,7 @@ class ContractEconomicsAssumptions:
     annual_discount_rate: float
     tiered_dollars_per_war_by_year: Mapping[int, Mapping[str, float]] | None = None
     floor_market_value_at_zero: bool = True
+    missing_buyout_share_by_status: Mapping[str, float] | None = None
 
     def validate(self) -> None:
         if not self.assumptions_id or not self.market_model_id:
@@ -116,6 +117,22 @@ class ContractEconomicsAssumptions:
             for year, share in self.arbitration_share_by_class.items()
         ):
             raise ValueError("arbitration shares require classes 1-4 and values from 0 to 1")
+        buyout_shares = self.missing_buyout_share_by_status or {}
+        supported_option_statuses = {
+            "club_option",
+            "mutual_option",
+            "player_option",
+            "player_opt_out",
+        }
+        if any(
+            status not in supported_option_statuses
+            or not isfinite(float(share))
+            or not 0 <= float(share) <= 1
+            for status, share in buyout_shares.items()
+        ):
+            raise ValueError(
+                "missing-buyout shares require option statuses and values from 0 to 1"
+            )
 
     def dollars_per_war(self, season: int) -> float:
         try:
@@ -335,15 +352,23 @@ def value_annual_contract_states(
                 if known_salary is None:
                     raise ValueError(f"{status} requires a known salary")
                 salary = float(known_salary)
-                if status in {
+                option_statuses = {
                     "club_option",
                     "player_option",
                     "player_opt_out",
                     "mutual_option",
-                } and row["buyout_dollars"] is None:
-                    raise ValueError(f"{status} requires an explicit buyout, including zero")
-                buyout = float(row["buyout_dollars"] or 0)
-                salary_basis = "known_contract"
+                }
+                if status in option_statuses and row["buyout_dollars"] is None:
+                    buyout_shares = assumptions.missing_buyout_share_by_status or {}
+                    if status not in buyout_shares:
+                        raise ValueError(
+                            f"{status} requires an explicit buyout, including zero"
+                        )
+                    buyout = salary * float(buyout_shares[status])
+                    salary_basis = f"known_contract_assumed_{status}_buyout_share"
+                else:
+                    buyout = float(row["buyout_dollars"] or 0)
+                    salary_basis = "known_contract"
             elif status == "vesting_option":
                 raise ValueError(f"{status} requires a future trigger/decision model")
             else:

@@ -1,0 +1,11 @@
+{
+  "snapshot_id": "phase1_observed_option_buyout_share_2026_09_09",
+  "retrieved_date": "2026-09-09",
+  "boundary": "Phase 1 research estimate for option rows with no reported buyout. Exact linked buyouts always take priority. Shares are medians among 93 current source-linked option rows with both salary and buyout; the overall median is used where the option-type sample is empty. Refit and add granular contract facts in Phase 2.",
+  "assumptions": [
+    {"control_status": "club_option", "buyout_share_of_option_salary": 0.13015873015873014, "observed_rows": 60, "basis": "same-status median"},
+    {"control_status": "mutual_option", "buyout_share_of_option_salary": 0.1875, "observed_rows": 29, "basis": "same-status median"},
+    {"control_status": "player_option", "buyout_share_of_option_salary": 0.11904761904761904, "observed_rows": 4, "basis": "same-status median"},
+    {"control_status": "player_opt_out", "buyout_share_of_option_salary": 0.13333333333333333, "observed_rows": 0, "basis": "overall 93-row median fallback"}
+  ]
+}

@@ -43,6 +43,11 @@ def _args() -> argparse.Namespace:
         type=Path,
         default=Path("reports/generated/current-contract-economics-scenario"),
     )
+    parser.add_argument(
+        "--buyout-assumptions",
+        type=Path,
+        default=Path("config/contract-buyout-assumptions-2026-09-09.json"),
+    )
     return parser.parse_args()
 
 
@@ -60,6 +65,11 @@ def main() -> int:
         end_season=end_season,
         annual_growth_rate=MARKET_GROWTH_RATE,
     )
+    buyout_payload = json.loads(args.buyout_assumptions.read_text(encoding="utf-8"))
+    missing_buyout_shares = {
+        str(row["control_status"]): float(row["buyout_share_of_option_salary"])
+        for row in buyout_payload["assumptions"]
+    }
     assumptions = ContractEconomicsAssumptions(
         assumptions_id=(
             "phase1_research_market3pct_nominal_discount10pct_2026_09_09"
@@ -74,6 +84,7 @@ def main() -> int:
         ),
         annual_discount_rate=NOMINAL_DISCOUNT_RATE,
         tiered_dollars_per_war_by_year=market,
+        missing_buyout_share_by_status=missing_buyout_shares,
     )
     result = value_annual_contract_states(
         source,
@@ -100,6 +111,9 @@ def main() -> int:
         ).as_record(),
     }
     available = result.annual.filter(pl.col("calculation_status") == "available")
+    imputed_buyouts = available.filter(
+        pl.col("salary_basis").str.contains("_assumed_.*_buyout_share$")
+    )
     report = {
         "report_schema_version": "0.1",
         "gate": "phase1_future_contract_economics_research_scenario",
@@ -124,6 +138,9 @@ def main() -> int:
         "market_growth_rate": MARKET_GROWTH_RATE,
         "arbitration_model_id": FANGRAPHS_2026_ARBITRATION_MODEL_ID,
         "nominal_discount_rate": NOMINAL_DISCOUNT_RATE,
+        "missing_buyout_assumption_id": buyout_payload["snapshot_id"],
+        "missing_buyout_assumption_rows": imputed_buyouts.height,
+        "missing_buyout_assumption": buyout_payload["boundary"],
         "discount_boundary": (
             "market rates and minimum salaries grow 3%; nominal cash/value is "
             "discounted 10%, equivalent to roughly 7% net before interaction"
