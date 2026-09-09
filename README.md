@@ -65,6 +65,9 @@ reuses the frozen steal and advancement models in the live hitter path; defense 
 now the remaining average-zero hitter component.
 The [modern pitcher-aging test](docs/modern-pitcher-aging-result-2026-09-08.md)
 rejected a newly fitted curve on 2022–2025 data and retained Tango's regressed curve.
+The [current rest-of-season result](docs/current-rest-of-season-2026-09-08.md)
+connects 2026 remaining WAR and day-prorated base salary to the rights interface while
+rejecting unresolved payroll/ownership joins.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

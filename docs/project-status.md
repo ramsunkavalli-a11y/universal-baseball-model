@@ -129,6 +129,12 @@ or promote a player ranking; the public v1 release remains historical.
   profiles and tested on 2,442 later-period pairs covering 618,983 BF. It lost to both
   no aging and Tango overall; Tango beat no aging in three of four seasons and remains
   the Phase 1 curve. The failed challenger is closed rather than tuned after inspection.
+- A dated 2026 rest-of-season baseline now projects 112.25 WAR over the final 250
+  scheduled games. CBA championship-season-day proration produces $535.96 million of
+  remaining base salary. Exact current-team matches connect 833 salary rows and
+  $500.19 million to the remaining-rights interface; 81 unresolved or conflicting
+  rows remain explicit rather than being forced into value. The combined economics
+  input contains these 833 current rows plus 50,100 future rows.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),

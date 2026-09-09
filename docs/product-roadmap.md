@@ -161,10 +161,11 @@ mutual/vesting triggers. The official 2022–2026 minimum schedule is versioned 
 coverage and an ex-ante free-agent market fit; neither is replaced by a hidden default.
 
 The remaining-rights adapter now separates already-earned current-season WAR and paid
-salary from the production and obligations an acquiring club can receive. It requires
-an explicit current remaining-salary amount and treats the active-season commitment as
-already decided. A rest-of-season WAR source and unpaid-salary calculation are still
-needed for live in-season values.
+salary from the production and obligations an acquiring club can receive. The dated
+2026 baseline supplies projected remaining WAR and CBA day-prorated base salary. It
+connects 833 exact current-team payroll rows and rejects 81 unresolved or conflicting
+joins. Current availability/role and contract exceptions remain before this becomes a
+live ranking.
 
 Projection v1 now has a shared hitter/pitcher guardrail boundary in
 `projection_guardrails.py`. It fails on missing player-years, duplicate components,
@@ -181,5 +182,5 @@ pitcher aging curve, average-zero hitter defense/running and MLB-only rate evide
 Phase 1 fallbacks. The validated affiliated translation now replaces most pure
 population priors, frozen baserunning is reused, and whole-player expected WAR is
 joined to every future-control row. A modern pitcher-aging challenger failed, so the
-Tango sensitivity remains the Phase 1 curve. Covered defense reuse, the separate 2026
-rest-of-season path and fitted economic assumptions are next.
+Tango sensitivity remains the Phase 1 curve. Current availability/role, covered
+defense reuse and fitted economic assumptions are next.

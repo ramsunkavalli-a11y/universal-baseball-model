@@ -75,7 +75,6 @@ def build_remaining_rights_inputs(frame: pl.DataFrame) -> RemainingRightsResult:
         "organization_id",
         "season",
         "forecast_scope",
-        "realized_war_to_date",
         "projected_remaining_war_mean",
         "control_status",
         "projection_source_id",
@@ -90,7 +89,8 @@ def build_remaining_rights_inputs(frame: pl.DataFrame) -> RemainingRightsResult:
     for row in source.iter_rows(named=True):
         season = int(row["season"])
         scope = str(row["forecast_scope"])
-        realized = float(row["realized_war_to_date"])
+        realized_raw = row["realized_war_to_date"]
+        realized = None if realized_raw is None else float(realized_raw)
         mean = float(row["projected_remaining_war_mean"])
         lower = row["projected_remaining_war_lower"]
         upper = row["projected_remaining_war_upper"]
@@ -99,7 +99,8 @@ def build_remaining_rights_inputs(frame: pl.DataFrame) -> RemainingRightsResult:
             int(row["player_id"]) <= 0
             or int(row["organization_id"]) <= 0
             or season < as_of_year
-            or any(not isfinite(value) for value in (realized, mean))
+            or not isfinite(mean)
+            or (realized is not None and not isfinite(realized))
             or (lower is not None and not isfinite(float(lower)))
             or (upper is not None and not isfinite(float(upper)))
             or (salary is not None and int(salary) < 0)
@@ -122,7 +123,7 @@ def build_remaining_rights_inputs(frame: pl.DataFrame) -> RemainingRightsResult:
         else:
             if scope != "full_future_season":
                 raise ValueError("future season must use full_future_season scope")
-            if abs(realized) > 1e-12:
+            if realized is None or abs(realized) > 1e-12:
                 raise ValueError("future seasons cannot contain realized WAR")
             economics_status = str(row["control_status"])
         timeline_rows.append(
@@ -131,7 +132,11 @@ def build_remaining_rights_inputs(frame: pl.DataFrame) -> RemainingRightsResult:
                 "war_excluded_as_already_realized": realized,
                 "war_entering_rights_value": mean,
                 "economics_control_status": economics_status,
-                "timeline_status": "remaining_only",
+                "timeline_status": (
+                    "remaining_only_realized_war_unavailable"
+                    if realized is None
+                    else "remaining_only"
+                ),
             }
         )
         economics_rows.append(

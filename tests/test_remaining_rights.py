@@ -83,6 +83,23 @@ def test_current_committed_state_has_no_midseason_non_tender_option() -> None:
     assert valued.item(0, "salary_cost_dollars") == 100_000
 
 
+def test_current_realized_war_may_be_unavailable_without_entering_value() -> None:
+    source = _rows().with_columns(
+        pl.when(pl.col("season") == 2026)
+        .then(pl.lit(None, dtype=pl.Float64))
+        .otherwise(pl.col("realized_war_to_date"))
+        .alias("realized_war_to_date")
+    )
+    result = build_remaining_rights_inputs(source)
+    current = result.timeline.filter(pl.col("season") == 2026)
+    economics = result.economics_inputs.filter(pl.col("season") == 2026)
+    assert current.item(0, "war_excluded_as_already_realized") is None
+    assert current.item(0, "timeline_status") == (
+        "remaining_only_realized_war_unavailable"
+    )
+    assert economics.item(0, "projected_war_mean") == 0.5
+
+
 def test_current_controlled_season_requires_remaining_salary() -> None:
     source = _rows().with_columns(
         pl.when(pl.col("season") == 2026)
@@ -98,6 +115,17 @@ def test_future_season_cannot_contain_realized_war() -> None:
     source = _rows().with_columns(
         pl.when(pl.col("season") == 2027)
         .then(pl.lit(1.0))
+        .otherwise(pl.col("realized_war_to_date"))
+        .alias("realized_war_to_date")
+    )
+    with pytest.raises(ValueError, match="cannot contain realized WAR"):
+        build_remaining_rights_inputs(source)
+
+
+def test_future_season_requires_explicit_zero_realized_war() -> None:
+    source = _rows().with_columns(
+        pl.when(pl.col("season") == 2027)
+        .then(pl.lit(None, dtype=pl.Float64))
         .otherwise(pl.col("realized_war_to_date"))
         .alias("realized_war_to_date")
     )
