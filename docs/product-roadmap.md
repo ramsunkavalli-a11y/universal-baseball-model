@@ -189,3 +189,10 @@ boundary. Historical workload spread and posterior rate evidence now produce Pha
 future WAR sensitivities for every economics row. Fitted market assumptions and
 calibrated return/role are next; correlated career paths and interval coverage
 refinement are Phase 2.
+
+The public 2020–2026 FanGraphs free-agent tracker now supplies 335 reported contract
+rows, including 155 one-year deals. All 350 sampled rows map through stable FanGraphs
+IDs to MLBAM using the pinned Chadwick register. Historical tracker pages no longer
+carry their signing-time projected WAR, so realized WAR and current forecasts are
+forbidden substitutes. Phase 1 is rebuilding ex-ante forecasts from StatsAPI history
+and will test the clean one-year market before adopting a dollars-per-WAR assumption.
