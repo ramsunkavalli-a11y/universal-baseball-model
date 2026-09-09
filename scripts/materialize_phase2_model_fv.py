@@ -65,8 +65,8 @@ def main() -> int:
         "report_schema_version": "0.1", "gate": "phase2_model_fv",
         "as_of_date": dated, "model_fv_id": MODEL_FV_ID, "players": values.height,
         "method": (
-            "our production and arrival distribution mapped to six team-control "
-            "seasons, granular Model FV, and a nearest-five display grade"
+            "our production and conservative maximum annual MLB probability mapped "
+            "to six team-control seasons, granular Model FV, and nearest-five display"
         ),
         "boundaries": {
             "publication_player_grades_used_as_inputs": False,
@@ -74,6 +74,8 @@ def main() -> int:
             "generic_second_risk_discount_used": False,
             "fangraphs_cohort_war_and_dollar_benchmarks_used": True,
             "pre_mlb_calendar_horizon_truncation_used": False,
+            "annual_active_probabilities_treated_as_independent_hazards": False,
+            "role_workload_pa": {"catcher": 450.0, "other_hitter": 550.0},
         },
         "storage": storage,
     }

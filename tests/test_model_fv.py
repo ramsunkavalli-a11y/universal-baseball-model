@@ -64,5 +64,5 @@ def test_pre_mlb_fv_uses_six_control_years_after_arrival() -> None:
     result = build_model_fv(
         hitters, pitchers, uncertainty, pre_mlb_player_ids={3}
     ).row(0, named=True)
-    assert abs(result["expected_six_year_war"] - 2.4) < 1e-12
+    assert abs(result["expected_six_year_war"] - 1.375) < 1e-12
     assert result["outcome_method"] == "six_control_years_after_probabilistic_arrival"

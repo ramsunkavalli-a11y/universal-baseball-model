@@ -17,9 +17,12 @@ FanGraphs' current hitter/pitcher cohort WAR and dollar table supplies only the 
 FV scale and dollar benchmark. Its Top 100 is joined afterward for validation.
 
 For players who have not debuted, six control seasons begin after probabilistic MLB
-arrival. This removes the prior error that truncated distant prospects to the few MLB
-seasons remaining inside a six-calendar-year window. Risk is already present in the
-arrival-weighted outcome and is not discounted again.
+arrival. Annual active probabilities are overlapping marginal forecasts, not
+independent arrival hazards, so the preview conservatively uses their maximum until a
+true arrival/survival model is fitted. Conditional hitter workloads use 450 PA for
+catchers and 550 PA for other positions. This prevents the catcher positional credit
+from being applied as though every catching prospect will receive 600 PA per year.
+Risk is already present in the arrival-weighted outcome and is not discounted again.
 
 ## Workload correction
 
@@ -44,13 +47,17 @@ new pristine confirmation.
 - Logan Webb: 4.58 controlled WAR, 60 displayed Model FV, about $10.2M contract
   surplus. His separate talent benchmark is about $58.8M; his guaranteed salary is
   why those values differ.
-- Josuar Gonzalez: 5.51 arrival-weighted control WAR, 49.0 granular / 50 displayed
-  Model FV, about $34.6M pre-MLB benchmark value. FanGraphs' 50 grade is validation,
-  not an input.
+- Josuar Gonzalez is expected to fall below the earlier 49.0 FV preview because that
+  preview incorrectly accumulated overlapping annual MLB-active probabilities.
 
-Across 91 exactly matched Top 100 players, Model FV is 3.52 points low on average,
-MAE is 6.84 points, and 46.2% are within five points. That is useful but not good
-enough for publication.
+The external Top 100 comparison is rerun after every structural correction. It is
+diagnostic only and is not used to force individual grades or league counts.
+
+After removing the invalid independent-hazard assumption, 70 pre-MLB players grade
+50 or higher, including 22 catchers. The external Top 100 check is now 9.56 FV points
+MAE and 17.6% within five points. That worse external match is accepted because the
+previous improvement came from invalid probability accumulation. The gap makes a
+proper historical arrival/survival model the first priority.
 
 ## Next priorities
 

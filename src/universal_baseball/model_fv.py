@@ -13,7 +13,7 @@ from universal_baseball.prospect_value import (
 )
 
 
-MODEL_FV_ID = "phase2_production_outcome_model_fv_v1"
+MODEL_FV_ID = "phase2_production_outcome_model_fv_v2"
 
 
 def _normal_tail(threshold: float, mean: float, variance: float) -> float:
@@ -57,17 +57,23 @@ def build_model_fv(
     pre_mlb_player_ids = pre_mlb_player_ids or set()
     hitter = hitter_paths.group_by("player_id").agg(
         pl.col("expected_war").sum().alias("hitter_expected_six_year_war"),
-        (1.0 - (1.0 - pl.col("mlb_active_probability")).product()).alias(
+        pl.col("mlb_active_probability").max().alias(
             "hitter_six_year_arrival_probability"
         ),
-        pl.col("conditional_war_per_600_pa").sum().alias(
+        (
+            pl.col("conditional_war_per_600_pa")
+            * pl.when(pl.col("primary_position") == "C")
+            .then(450.0)
+            .otherwise(550.0)
+            / 600.0
+        ).sum().alias(
             "hitter_six_control_year_war_if_arrived"
         ),
         pl.col("primary_position").drop_nulls().first().alias("primary_position"),
     )
     pitcher = pitcher_paths.group_by("player_id").agg(
         pl.col("expected_war").sum().alias("pitcher_expected_six_year_war"),
-        (1.0 - (1.0 - pl.col("mlb_active_probability")).product()).alias(
+        pl.col("mlb_active_probability").max().alias(
             "pitcher_six_year_arrival_probability"
         ),
         (
