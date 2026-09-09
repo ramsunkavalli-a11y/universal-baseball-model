@@ -118,6 +118,9 @@ The [scored 2025 replay](docs/historical-replay-result-2025.md) shows nearly exa
 league workload, lower large-error RMSE but worse individual MAE than simple
 carry-forward, modest component-skill gains and a 6.6% high neutral-WAR point total.
 Its historical checkpoint and the current checkpoint pass the mechanical sequence.
+The [same-model October update](docs/same-model-projection-update-2025.md) permanently
+stores the March opportunity fits, reuses them without refitting, and separates
+shared-player projection movement from player-universe turnover.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

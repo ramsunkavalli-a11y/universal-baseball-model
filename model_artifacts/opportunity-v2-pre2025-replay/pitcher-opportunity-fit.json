@@ -1,0 +1,88 @@
+{
+  "artifact_schema_version": "0.1",
+  "continuous_features": [
+    "age_centered",
+    "log_current_mlb_bf",
+    "log_current_milb_bf"
+  ],
+  "feature_names": [
+    "level_aaa",
+    "level_aa",
+    "level_a_or_below",
+    "level_inactive",
+    "level_unknown",
+    "role_starter",
+    "role_swingman",
+    "role_reliever",
+    "age_centered",
+    "log_current_mlb_bf",
+    "log_current_milb_bf",
+    "age_missing",
+    "on_40man"
+  ],
+  "form": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2",
+  "logistic_coefficients": [
+    1.4251776779125185,
+    0.5011700084079382,
+    -2.2492812675597147,
+    -0.5643414598837746,
+    0.0,
+    0.011630261667888555,
+    -0.5306218317735003,
+    -0.5342021018570029,
+    -0.19843239603288843,
+    1.1001261241903875,
+    0.1093133824065261,
+    -0.016433721977027464,
+    1.8582359775172435
+  ],
+  "logistic_intercept": -2.1594916702334266,
+  "metrics": {
+    "batting_rate_modified": false,
+    "feature_count": 13,
+    "form": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2",
+    "future_level_used": false,
+    "future_team_used": false,
+    "participation_C": 1.0,
+    "participation_model": "sklearn_logistic_l2",
+    "participation_training_players": 20931,
+    "positive_count_model": "statsmodels_zero_truncated_negative_binomial_p2",
+    "positive_count_unidentified_features": [
+      "level_unknown",
+      "role_reliever",
+      "age_missing"
+    ],
+    "positive_training_players": 3129
+  },
+  "nb_alpha": 0.6734365502031545,
+  "nb_coefficients": [
+    4.076432601224136,
+    0.6634712609606549,
+    0.5072517172434546,
+    0.14435891688087277,
+    0.7234721063708268,
+    0.0,
+    0.6546318268902067,
+    0.1672791582776785,
+    0.0,
+    -0.033059396164599936,
+    0.3846759385027855,
+    -0.06309016341885391,
+    0.0,
+    0.2011958771118027
+  ],
+  "participation_training_players": 20931,
+  "positive_training_players": 3129,
+  "standardization": {
+    "means": {
+      "age_centered": -0.33925756055611295,
+      "log_current_milb_bf": 4.100086671749149,
+      "log_current_mlb_bf": 0.7531203037723873
+    },
+    "scales": {
+      "age_centered": 0.7668198066406703,
+      "log_current_milb_bf": 1.933527186641835,
+      "log_current_mlb_bf": 1.8281937961723183
+    }
+  }
+}

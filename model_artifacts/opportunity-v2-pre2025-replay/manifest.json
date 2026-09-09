@@ -1,0 +1,37 @@
+{
+  "artifact_schema_version": "0.1",
+  "model_package_id": "opportunity-v2-pre2025-replay",
+  "status": "retrospective-cutoff-safe-replay-fit-not-production-promotion",
+  "created_by": "scripts/materialize_historical_projection_paths_2025.py",
+  "training_snapshot_years": [2018, 2021, 2022, 2023],
+  "latest_training_target_year": 2024,
+  "artifacts": {
+    "hitter-opportunity-fit.json": {
+      "sha256": "26f7cc8f2a3405263e514d2404aee800272d6b5c357e95e15080854db73a8897"
+    },
+    "pitcher-opportunity-fit.json": {
+      "sha256": "d8a1da763ef203cae411cabf9e89ec247cf29a66b19ed0c74e1bdaa0e33945c6"
+    }
+  },
+  "training_inputs": {
+    "reports/generated/opportunity-history-sources-v2/tables/hitter_snapshots.parquet": "4480052b8a07fbb21366b54cc341630bbf29cf3be9d52ac1820f026c4efa90b3",
+    "reports/generated/opportunity-history-sources-v2/tables/pitcher_snapshots.parquet": "3b80e560a6bebe6306f5c7be5c8bec0cb7f94fed5ef5f1edfaf3bd27e53396b3",
+    "reports/generated/opportunity-40man-history/tables/historical_40man_membership.parquet": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421",
+    "reports/generated/opportunity-history-sources-v2/tables/2018/affiliated_season_stats.parquet": "e8f1a52f48d3f9aee6aca39207e82c39b1a6df9375b7a5025a54fe284a83fd04",
+    "reports/generated/opportunity-history-sources-v2/tables/2019/affiliated_season_stats.parquet": "0dd0a82eecbdbf15f67e74d2312bf8ecac91c2c6ed3645e103f4de82bea59021",
+    "reports/generated/opportunity-history-sources-v2/tables/2021/affiliated_season_stats.parquet": "55b727f4c9437f357f2a685841ff3fdec4c509a4f6d8d870e6fbf851977d9c9e",
+    "reports/generated/opportunity-history-sources-v2/tables/2022/affiliated_season_stats.parquet": "a3fca9b9a7d4df771c3d3aa9d44189cb085df8cb71ada83eae1c363ca62ebddc",
+    "reports/generated/opportunity-history-sources-v2/tables/2023/affiliated_season_stats.parquet": "a68647e3c5338db8ccb79e8c0ff4d721e6863b5fbe0ec22ae11d553882f8cc37",
+    "reports/generated/opportunity-history-sources-v2/tables/2024/affiliated_season_stats.parquet": "1ac6a4a6d045faf4157565103e821c0bb023869e54285025db7fa0dab2861bf5"
+  },
+  "selection_evidence": {
+    "hitter": "docs/hitter-opportunity-v2-development-result.md",
+    "pitcher": "docs/pitcher-opportunity-v2-development-result.md"
+  },
+  "confirmation_evidence": "docs/historical-replay-result-2025.md",
+  "boundaries": {
+    "2025_outcomes_used_to_fit": false,
+    "future_team_or_depth_used": false,
+    "fangraphs_projection_values_used": false
+  }
+}

@@ -326,10 +326,13 @@ season totals are final. Horizons 5–6 remain on the incumbent until better old
 evidence exists. The next available Phase 1 work is a small completed-season end-to-end
 replay through the new checkpoint interface. The 2025 projection, control and value
 paths now run together, outcome scoring is recorded and the first multi-checkpoint
-mechanical sequence passes. The next meaningful replay task is a same-model later
-checkpoint; do not treat the current cross-version delta as stability evidence. The
-948 missing-owner players and bounded contract/service exceptions stay separate rather
-than forced. In the current snapshot, 16
+mechanical sequence passes. The same-model later projection checkpoint now exists:
+the exact pre-2025 opportunity fits are committed and hash-verified, and the October
+15 update uses completed 2025 evidence without refitting. The next replay task is the
+matching October owner/control/economics join, followed by a same-method value
+comparison. Do not treat the current cross-version value delta as stability evidence.
+The 948 missing-owner players and bounded contract/service exceptions stay separate
+rather than forced. In the current snapshot, 16
 annual contract reviews remain: 12 future vesting
 decisions, three linked Julio Rodriguez years and one missing option salary. Granular replacement of the
 43 buyout estimates with exact terms is Phase 2. Current role and late-season injury return

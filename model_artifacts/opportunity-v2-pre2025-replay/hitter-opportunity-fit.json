@@ -1,0 +1,78 @@
+{
+  "artifact_schema_version": "0.1",
+  "continuous_features": [
+    "age_centered",
+    "log_current_mlb_pa",
+    "log_current_milb_pa"
+  ],
+  "feature_names": [
+    "level_aaa",
+    "level_aa",
+    "level_a_or_below",
+    "level_inactive",
+    "level_unknown",
+    "age_centered",
+    "log_current_mlb_pa",
+    "log_current_milb_pa",
+    "age_missing",
+    "on_40man"
+  ],
+  "form": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+  "logistic_coefficients": [
+    2.2937325457365523,
+    1.1969110334709132,
+    -2.3093769363300174,
+    0.01712572837421508,
+    0.0,
+    -0.5449246061133077,
+    1.7549999526436844,
+    0.26043403746038435,
+    0.43048211908800765,
+    1.992368057545439
+  ],
+  "logistic_intercept": -2.9625392859862885,
+  "metrics": {
+    "batting_rate_modified": false,
+    "feature_count": 10,
+    "form": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+    "future_level_used": false,
+    "future_team_used": false,
+    "participation_C": 1.0,
+    "participation_model": "sklearn_logistic_l2",
+    "participation_training_players": 16760,
+    "positive_count_model": "statsmodels_zero_truncated_negative_binomial_p2",
+    "positive_count_unidentified_features": [
+      "level_unknown",
+      "age_missing"
+    ],
+    "positive_training_players": 2613
+  },
+  "nb_alpha": 0.7081357654443526,
+  "nb_coefficients": [
+    4.049219817563899,
+    1.1927520523873278,
+    1.1627388768050926,
+    0.7723309366650982,
+    1.2998967637484953,
+    0.0,
+    -0.23039948906827967,
+    0.701381194844454,
+    -0.0933144480146975,
+    0.0,
+    0.13357907848070047
+  ],
+  "participation_training_players": 16760,
+  "positive_training_players": 2613,
+  "standardization": {
+    "means": {
+      "age_centered": -0.5150596658711217,
+      "log_current_milb_pa": 4.50653956298382,
+      "log_current_mlb_pa": 0.7940777166479085
+    },
+    "scales": {
+      "age_centered": 0.8087159059198208,
+      "log_current_milb_pa": 1.739486044889649,
+      "log_current_mlb_pa": 1.9150261040184342
+    }
+  }
+}

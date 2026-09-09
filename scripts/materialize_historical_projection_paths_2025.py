@@ -37,6 +37,7 @@ from universal_baseball.playing_time_model import (
     build_playing_time_design,
     predict_playing_time_hurdle,
 )
+from universal_baseball.playing_time_fit_artifact import playing_time_fit_to_artifact
 from universal_baseball.storage import sha256_file, write_canonical_parquet
 
 
@@ -58,6 +59,7 @@ POSITION_CODES = {
     "OF": "O",
     "DH": "10",
 }
+FIT_PACKAGE_ROOT = Path("model_artifacts/opportunity-v2-pre2025-replay")
 
 
 def _extend_universes(
@@ -150,7 +152,13 @@ def _hitter_position_players(
 def _fit_selected_predictions(
     snapshots_root: Path,
     membership: pl.DataFrame,
-) -> tuple[pl.DataFrame, pl.DataFrame, dict[str, object]]:
+) -> tuple[
+    pl.DataFrame,
+    pl.DataFrame,
+    dict[str, object],
+    dict[str, object],
+    dict[str, object],
+]:
     hitter_snapshots = pl.read_parquet(snapshots_root / "hitter_snapshots.parquet")
     pitcher_snapshots = pl.read_parquet(snapshots_root / "pitcher_snapshots.parquet")
     hitter_folds = []
@@ -233,7 +241,13 @@ def _fit_selected_predictions(
         "hitter_nb_alpha": hitter_fit.nb_alpha,
         "pitcher_nb_alpha": pitcher_fit.nb_alpha,
     }
-    return hitter_predictions, pitcher_predictions, fit_summary
+    return (
+        hitter_predictions,
+        pitcher_predictions,
+        fit_summary,
+        playing_time_fit_to_artifact(hitter_fit),
+        playing_time_fit_to_artifact(pitcher_fit),
+    )
 
 
 def _coverage(paths: pl.DataFrame) -> list[dict[str, object]]:
@@ -243,6 +257,27 @@ def _coverage(paths: pl.DataFrame) -> list[dict[str, object]]:
         .sort(["horizon", "coverage_tier"])
         .to_dicts()
     )
+
+
+def _verify_durable_fits(
+    hitter_fit_artifact: dict[str, object],
+    pitcher_fit_artifact: dict[str, object],
+) -> tuple[Path, Path]:
+    manifest = json.loads(
+        (FIT_PACKAGE_ROOT / "manifest.json").read_text(encoding="utf-8")
+    )
+    paths = (
+        FIT_PACKAGE_ROOT / "hitter-opportunity-fit.json",
+        FIT_PACKAGE_ROOT / "pitcher-opportunity-fit.json",
+    )
+    expected_payloads = (hitter_fit_artifact, pitcher_fit_artifact)
+    for path, expected_payload in zip(paths, expected_payloads, strict=True):
+        artifact = manifest["artifacts"][path.name]
+        if sha256_file(path) != artifact["sha256"]:
+            raise ValueError(f"durable fit hash differs from manifest: {path}")
+        if json.loads(path.read_text(encoding="utf-8")) != expected_payload:
+            raise ValueError(f"durable fit differs from deterministic refit: {path}")
+    return paths
 
 
 def main() -> int:
@@ -269,8 +304,15 @@ def main() -> int:
     hitter_universe, pitcher_universe = _extend_universes(
         hitter_snapshot, pitcher_snapshot, opening
     )
-    hitter_selected, pitcher_selected, fit_summary = _fit_selected_predictions(
-        source_root, membership
+    (
+        hitter_selected,
+        pitcher_selected,
+        fit_summary,
+        hitter_fit_artifact,
+        pitcher_fit_artifact,
+    ) = _fit_selected_predictions(source_root, membership)
+    hitter_fit_path, pitcher_fit_path = _verify_durable_fits(
+        hitter_fit_artifact, pitcher_fit_artifact
     )
 
     fallback_report = json.loads(
@@ -453,6 +495,17 @@ def main() -> int:
         "checkpoint_date": CHECKPOINT_DATE.isoformat(),
         "forecast_seasons": list(FORECAST_SEASONS),
         "fit": fit_summary,
+        "frozen_fit_artifacts": {
+            "package_manifest": (FIT_PACKAGE_ROOT / "manifest.json").as_posix(),
+            "hitter": {
+                "path": hitter_fit_path.as_posix(),
+                "sha256": sha256_file(hitter_fit_path),
+            },
+            "pitcher": {
+                "path": pitcher_fit_path.as_posix(),
+                "sha256": sha256_file(pitcher_fit_path),
+            },
+        },
         "hitter_players": hitter_universe.height,
         "pitcher_players": pitcher_universe.height,
         "two_component_players": len(

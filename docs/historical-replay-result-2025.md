@@ -56,6 +56,13 @@ a two-checkpoint mechanical sequence. All 3,850 material value deltas have a dec
 reason. Because the model version, evidence and player universe all changed, this
 sequence does not establish value stability under one fixed model.
 
+That projection gap is now closed. The exact March opportunity fits are committed
+as a durable package, and an October 15 checkpoint reuses their verified hashes while
+updating only available 2025 evidence. Shared-player expected-WAR correlations are
+0.689 for hitters and 0.670 for pitchers across 2026–2029. See
+[the same-model update](same-model-projection-update-2025.md). Contract-value
+stability still requires a cutoff-safe October owner/control/economics join.
+
 Reproduce with:
 
 ```text
@@ -63,4 +70,6 @@ python scripts/score_historical_projection_paths_2025.py
 python scripts/score_historical_war_paths_2025.py
 python scripts/materialize_historical_replay_checkpoint_2025.py
 python scripts/materialize_phase1_replay_sequence.py
+python scripts/materialize_same_model_projection_paths_2026.py
+python scripts/compare_same_model_projection_checkpoints_2025.py
 ```
