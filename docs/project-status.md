@@ -71,16 +71,17 @@ or promote a player ranking; the public v1 release remains historical.
   interface and diagnostic layer; it does not claim the missing projection models are
   complete.
 - Hitter Opportunity v1 now implements the first universal forecast input. It preserves
-  zero-MLB outcomes, uses the frozen selected one-year model when supplied, and fills
+  zero-MLB outcomes, can use a frozen selected one-year model when supplied, and fills
   unsupported/later years with horizon-specific age/level cohorts and labeled
   population fallbacks. It never uses team depth or a PA cap and composes directly into
-  the Projection v1 WAR schema. Historical cohorts are now fitted; the current league
-  snapshot and frozen selected-model parameter artifacts remain.
+  the Projection v1 WAR schema. Historical cohorts and the current league snapshot are
+  fitted. The confirmed B2 form's scoring parameters are not available, so the current
+  materialization honestly uses the cohort fallback.
 - Pitcher Opportunity v1 now applies the same separation to MLB arrival, conditional
   BF and starter/swingman/reliever probabilities. Sparse age/level/role cohorts shrink
   through a disclosed hierarchy, all fallback sources remain labeled, and the output
   composes with conditional WAR/800 BF and control seasons. Its historical league panel
-  is now fitted; the current league snapshot remains.
+  and current league snapshot are fitted.
 - The official historical opportunity source is now collected for 2018–2024. Because
   `fullRoster` omits hundreds of players with official affiliated stats each year, the
   cohort denominator is their union. The misleading `totalSplits` field is ignored in

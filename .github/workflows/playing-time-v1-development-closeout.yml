@@ -97,6 +97,15 @@ jobs:
           path.write_text(json.dumps(data, indent=2, sort_keys=True) + '\n')
           PY
 
+      - name: Persist complete scoring package in durable repository storage
+        if: steps.decision.outputs.promoted == 'true'
+        env:
+          SOURCE_RUN_ID: ${{ github.run_id }}
+        run: >-
+          python scripts/persist_playing_time_v1_package.py
+          --refit-root reports/generated/playing-time-v1-confirmation-refit
+          --destination-root model_artifacts/playing-time-v1-refit-${SOURCE_RUN_ID}
+
       - name: Upload confirmation-refit artifact
         if: steps.decision.outputs.promoted == 'true'
         uses: actions/upload-artifact@v7
@@ -182,6 +191,9 @@ jobs:
           git add docs/playing-time-v1-development-result.json docs/playing-time-v1-development-checkpoint.md
           if [ -f docs/playing-time-v1-confirmation-refit-result.json ]; then
             git add docs/playing-time-v1-confirmation-refit-result.json
+          fi
+          if [ -d model_artifacts ]; then
+            git add model_artifacts
           fi
           git commit -m "Persist playing-time v1 development closeout"
           for attempt in 1 2 3; do

@@ -1,8 +1,8 @@
 # Playing time / role — current status
 
-Last updated: 2026-08-18
+Last updated: 2026-09-09
 
-Status: **PLAYING TIME v1 DONE / FROZEN — CANDIDATE CONFIRMED ON ONE-SHOT 2025 HOLDOUT.**
+Status: **B2 FORM CONFIRMED; PRODUCTION SCORING PACKAGE UNAVAILABLE.**
 
 Canonical broader handoff remains `docs/project-status.md`.
 
@@ -13,9 +13,9 @@ Canonical broader handoff remains `docs/project-status.md`.
 - Explicit Projection age/development challenger is closed and must not be rescued.
 - Playing time remains a separate opportunity channel; zero future MLB PA never changes batting-rate skill.
 
-## Frozen Playing Time v1
+## Confirmed Playing Time v1 form
 
-Production model:
+Confirmed model form:
 
 `playing_time_recent_opportunity_40man_b2_hurdle_v1`
 
@@ -132,7 +132,18 @@ Do not:
 - use 2025 playing-time outcomes to modify Current Talent or batting-rate Projection;
 - infer unavailable roster semantics from the 40Man source.
 
-The confirmed pre-2025 parameter package is the production Playing Time v1 model.
+The candidate result remains binding evidence about the B2 form. It is not currently
+an executable production model because the pre-2025 coefficients and standardization
+tables expired from GitHub Actions and no exact copy is present in the repository.
+The old run log does not contain the coefficient values. The independent 2025 scores
+are preserved under `model_artifacts/playing-time-v1-confirmation-2025/`, but scores
+cannot reconstruct the model.
+
+Until the exact package is recovered, current forecasts must use the explicitly labeled
+historical opportunity fallback. If recovery fails, fit a newly versioned candidate and
+rerun the full chronology-safe selection and confirmation process. Do not describe a
+new refit as the original frozen model. Follow
+`docs/playing-time-v1-durable-artifact-policy.md` for every future promoted package.
 
 ## ACTIVE NEXT LAYER — role / position / team-allocation coherence
 

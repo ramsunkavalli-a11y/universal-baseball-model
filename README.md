@@ -28,8 +28,11 @@ batting-PA outcomes and improves participation probability error by 10.0% over a
 prior-exposure-only reference. Playing-time improvements are modest; inactive and
 no-history player coverage remains incomplete. The recovered richer opportunity
 forecast improves 2024 participation Brier by 12.6% and PA RMSE by 12.5% on identical
-targets. The official `fullRoster` source now supplies the broad player denominator;
-the remaining 0.20% multi-team outliers stay explicit ownership reviews.
+targets. Its form was later confirmed on the untouched 2025 test, but the temporary
+scoring-parameter artifact expired; current forecasts therefore retain the labeled
+historical fallback. The official `fullRoster` source supplies the broad player
+denominator, while dated 40-man and transaction evidence now resolves all current
+multi-team ownership conflicts.
 
 Phase 1 foundations now include a [rights-universe contract](docs/player-rights-universe-contract.md),
 a censored [career-outcome panel](docs/career-outcome-panel-contract.md), a real
@@ -90,7 +93,7 @@ The [arbitration cost baseline](docs/arbitration-cost-baseline-2026-09-09.md) ap
 the current FanGraphs class shares to prior-season WAR value, preserving salary lag
 and the four-year Super Two progression.
 The [full contract-economics scenario](docs/current-contract-economics-scenario-2026-09-09.md)
-calculates 50,029 future annual rows and isolates 71 contract exceptions while
+calculates 50,226 future annual rows and isolates 16 contract exceptions while
 keeping the unsigned successor CBA explicitly hypothetical.
 
 The three questions stay separate: batting ability against MLB competition,
