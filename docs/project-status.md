@@ -241,7 +241,7 @@ current baserunning, supported general defense, the rest-of-season path, a narro
 official-status availability boundary and Phase 1 future WAR ranges are now built.
 Next, resolve the 16 remaining contract reviews: 12 future vesting decisions, three
 linked Julio Rodriguez years and one missing option salary. Granular replacement of the
-41 buyout estimates with exact terms is Phase 2. Current role and late-season injury return
+43 buyout estimates with exact terms is Phase 2. Current role and late-season injury return
 now have narrow Phase 1 baselines. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
@@ -282,11 +282,11 @@ artifacts; hashes bind the inputs. They reject overwriting an inspected candidat
 run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
-Current focused verification: opportunity, guardrail, remaining-rights and current
-availability tests pass; Ruff passes across the changed files. The current full run
-has 1,227 passing tests.
-Four pre-existing contract tests fail only because their hash-bound ignored
-research artifacts are absent in this checkout. No new test failure was observed.
+Current focused verification: opportunity, economics, guardrail, remaining-rights and
+current-availability tests pass; Ruff passes across the changed files. The latest full
+run has 1,248 passing tests. Four pre-existing hitter research-contract tests fail only
+because their hash-bound ignored research artifacts are absent in this checkout. No new
+test failure was observed.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).
