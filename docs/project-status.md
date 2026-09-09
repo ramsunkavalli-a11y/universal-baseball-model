@@ -156,17 +156,19 @@ or promote a player ranking; the public v1 release remains historical.
   no aging and Tango overall; Tango beat no aging in three of four seasons and remains
   the Phase 1 curve. The failed challenger is closed rather than tuned after inspection.
 - A dated 2026 rest-of-season baseline projects 112.23 WAR before current availability
-  and 112.07 after 247 official season-out statuses over the final 250
+  and 101.31 after 247 official season-out statuses plus the narrow historical
+  injury-return adjustment over the final 250
   scheduled games. CBA championship-season-day proration produces $535.96 million of
   remaining base salary. Exact current-team matches connect 833 salary rows and
   $500.19 million to the remaining-rights interface; 81 unresolved or conflicting
   rows remain explicit rather than being forced into value. The combined economics
   input contains these 833 current rows plus 50,100 future rows.
-- Ordinary IL and rehab status does not supply a return date. The point estimate stays
-  unchanged while 1,052 rows receive a zero-to-baseline availability sensitivity.
-  Among salary-matched current rights, 188 rows now carry bounds and the combined
-  84.97 WAR point has an availability-only 73.88 to 85.07 range. Minor assignment is
-  not used as team-depth blocking.
+- Ordinary IL and rehab status does not itself supply a return date. Official current
+  status and transaction replay agree for 263 players; 261 projected players receive
+  the 2022-2025 activation-timing factor. Their 12.96 unadjusted WAR becomes 2.20 WAR.
+  Unmatched injuries retain their point and zero-to-baseline range. Among matched
+  current rights, the combined 75.94 WAR point has an availability-only 73.88 to
+  85.07 range. Minor assignment is not used as team-depth blocking.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -204,7 +206,8 @@ The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-Next, resolve the 71 contract review rows and calibrate return/role. Correlated
+Next, resolve the 71 contract review rows and calibrate current role. Late-season
+injury return now has a narrow Phase 1 baseline. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
@@ -221,6 +224,14 @@ as a developmental hitter reference. Stop global calibration searches. Do not co
 the component outputs to career value before participation, pitcher workload, aging,
 rights and cost paths are integrated.
 
+The selected B2 hitter-opportunity run is still identified by run `32142220469` and
+its expected candidate hash, but GitHub's short-lived coefficient artifact has expired.
+The surviving confirmation artifact contains scores, not coefficients, and the local
+archive contains only a different 2024 fold fit. Do not silently refit under changed
+inputs. Recover the exact frozen package if an external copy exists; otherwise keep the
+current proven fallback and rerun a newly versioned selection gate. Future selected
+parameter packages must be stored in durable release storage or committed when small.
+
 The 2022–2024 seasons are disclosed development evidence. Protected 2026 remains
 closed. Do not claim long-term value or publish a model from these findings.
 Preserve original G0/C0/Marcel benchmarks and all failed decisions.
@@ -234,8 +245,8 @@ run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, guardrail, remaining-rights and current
-availability tests pass; Ruff passes across `src`, `scripts` and `tests`. The current
-full run has 1,219 passing tests.
+availability tests pass; Ruff passes across the changed files. The current full run
+has 1,224 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

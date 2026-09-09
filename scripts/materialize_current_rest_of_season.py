@@ -66,6 +66,14 @@ def _args() -> argparse.Namespace:
         default=Path("reports/generated/current-contract-economics-inputs"),
     )
     parser.add_argument(
+        "--injury-return-root", type=Path,
+        default=Path("reports/generated/injury-return-history"),
+    )
+    parser.add_argument(
+        "--current-injury-state-root", type=Path,
+        default=Path("reports/generated/current-injury-return-state-audit"),
+    )
+    parser.add_argument(
         "--output-root", type=Path,
         default=Path("reports/generated/current-rest-of-season"),
     )
@@ -192,6 +200,16 @@ def main() -> int:
     whole_player = apply_current_availability_sensitivity(
         whole_player_unadjusted,
         availability,
+        injury_stints=pl.read_parquet(
+            args.current_injury_state_root
+            / args.as_of_date.isoformat()
+            / "transaction-replayed-current-il.parquet"
+        ),
+        return_references=pl.read_parquet(
+            args.injury_return_root
+            / "tables"
+            / "injury-return-references.parquet"
+        ),
     )
     salary = build_remaining_base_salary(
         pl.read_parquet(dated_control / "contract-year-liabilities.parquet"),
@@ -394,9 +412,10 @@ def main() -> int:
             "realized WAR is unavailable, disclosed as null, and excluded"
         ),
         "availability_policy": (
-            "official full-season unavailability sets remaining WAR to zero; "
-            "ordinary injured-list status leaves the point unchanged and creates "
-            "a zero-to-baseline sensitivity bound"
+            "official full-season unavailability sets remaining WAR to zero; exact "
+            "current-status/transaction IL matches use the historical activation-"
+            "timing factor at the point while retaining a zero-to-baseline bound; "
+            "unmatched injured status leaves the point unchanged with the same bound"
         ),
         "remaining_limitations": [
             "realized 2026 WAR to date is not reported",

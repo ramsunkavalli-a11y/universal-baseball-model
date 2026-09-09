@@ -184,11 +184,13 @@ population priors, frozen baserunning is reused, and whole-player expected WAR i
 joined to every future-control row. A modern pitcher-aging challenger failed, so the
 Tango sensitivity remains the Phase 1 curve. Frozen general-range defense now covers
 the adjacent season and stays neutral outside its validated scope. Official season-out
-status and unresolved-injury sensitivity now cover the narrow current availability
-boundary. Historical workload spread and posterior rate evidence now produce Phase 1
-future WAR sensitivities for every economics row. Fitted market assumptions and
-calibrated return/role are next; correlated career paths and interval coverage
-refinement are Phase 2.
+status and a 2022-2025 official transaction-based activation reference now cover the
+narrow current availability boundary. The fitted point is used only when transaction
+replay agrees with current official injury status; unmatched injuries retain a
+zero-to-baseline sensitivity. Historical workload spread and posterior rate evidence
+now produce Phase 1 future WAR sensitivities for every economics row. Current role
+calibration and the remaining bounded contract exceptions are next; correlated career
+paths and interval coverage refinement are Phase 2.
 
 The public 2020–2026 FanGraphs free-agent tracker now supplies 335 reported contract
 rows, including 155 one-year deals. All 350 sampled rows map through stable FanGraphs
