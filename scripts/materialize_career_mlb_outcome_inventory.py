@@ -2,7 +2,7 @@
 """Materialize completed-season MLB batting and pitching career backbones.
 
 This is an outcome/source inventory, not a fitted model. It deliberately stops
-at 2024 so protected 2026 outcomes and incomplete current seasons cannot enter
+at completed 2025 so protected and incomplete 2026 outcomes cannot enter
 career-label development through this runner.
 """
 
@@ -26,7 +26,7 @@ from universal_baseball.mlb_season_stats import (
 )
 
 
-MAX_AUTHORIZED_OUTCOME_SEASON = 2024
+MAX_AUTHORIZED_OUTCOME_SEASON = 2025
 
 
 def _parse_args() -> argparse.Namespace:

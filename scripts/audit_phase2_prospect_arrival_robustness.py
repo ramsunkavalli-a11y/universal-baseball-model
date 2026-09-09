@@ -50,6 +50,7 @@ OUTCOMES = (
     ("arrival", "arrived_within_horizon"),
     ("meaningful_role", "meaningful_role_within_horizon"),
     ("established_role", "established_role_within_horizon"),
+    ("positive_component_role", "positive_component_role_within_horizon"),
 )
 
 
@@ -76,6 +77,43 @@ def _history_stats(root: Path) -> pl.DataFrame:
     if not paths:
         raise FileNotFoundError("no affiliated history tables")
     return pl.concat([pl.read_parquet(path) for path in paths], how="vertical_relaxed")
+
+
+def _career_component_stats(root: Path, player_type: str) -> pl.DataFrame:
+    tables = root / "career-mlb-outcome-inventory/tables"
+    if player_type == "hitter":
+        source = pl.concat(
+            [
+                pl.read_parquet(tables / "mlb_batting_2015_2024.parquet"),
+                pl.read_parquet(tables / "mlb_batting_2025_2025.parquet"),
+            ]
+        )
+        return source.select(
+            "season", "player_id", pl.lit(1).alias("sport_id"),
+            pl.col("batting_pa").alias("plate_appearances"),
+            pl.col("batting_hits").alias("hits"),
+            pl.col("batting_doubles").alias("doubles"),
+            pl.col("batting_triples").alias("triples"),
+            pl.col("batting_hr").alias("home_runs"),
+            pl.col("batting_bb").alias("base_on_balls"),
+            pl.lit(0).alias("intentional_walks"),
+            pl.col("batting_hbp").alias("hit_by_pitch"),
+        )
+    source = pl.concat(
+        [
+            pl.read_parquet(tables / "mlb_pitching_2015_2024.parquet"),
+            pl.read_parquet(tables / "mlb_pitching_2025_2025.parquet"),
+        ]
+    )
+    return source.select(
+        "season", "player_id", pl.lit(1).alias("sport_id"),
+        pl.col("pitching_bf").alias("batters_faced"),
+        pl.col("pitching_so").alias("strike_outs"),
+        pl.col("pitching_ubb").alias("base_on_balls"),
+        pl.lit(0).alias("intentional_walks"),
+        pl.col("pitching_hbp").alias("hit_batters"),
+        pl.col("pitching_hr").alias("home_runs"),
+    )
 
 
 def _score(
@@ -208,6 +246,7 @@ def main() -> int:
             else "affiliated_pitching_components.parquet"
         )
         skill = pl.read_parquet(root / "phase2-arrival-skill-source/tables" / skill_file)
+        outcome_skill = _career_component_stats(root, player_type)
         snapshots = pl.read_parquet(
             root
             / "opportunity-history-sources-v2/tables"
@@ -224,6 +263,7 @@ def main() -> int:
                 player_type=player_type,
                 demographics=demographics,
                 draft_history=draft_history,
+                outcome_skill_stats=outcome_skill,
             )
             for year in (2018, 2021, 2022, 2023)
         }
@@ -337,6 +377,17 @@ def main() -> int:
                 "hitter": "one 400 PA season or two 300 PA seasons within two years",
                 "pitcher": "one 400 BF season or two 200 BF seasons within two years",
             },
+            "positive_component_role_definition": (
+                "at least 200 future MLB PA/BF in a season and at-least-league-"
+                "average neutral batting wOBA components or fielding-independent "
+                "pitching components"
+            ),
+            "positive_component_is_not_whole_player_war": True,
+            "hitter_outcome_walk_field": (
+                "total BB because the certified career backbone omits IBB; applied "
+                "consistently to player and league rates"
+            ),
+            "shortened_2020_workload_scaled_to_162_games": True,
             "fresh_confirmation_still_required": True,
         },
         "results": results,

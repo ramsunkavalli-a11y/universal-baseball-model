@@ -10,8 +10,8 @@ from scripts.materialize_career_mlb_outcome_inventory import materialize_invento
 def test_inventory_rejects_protected_or_incomplete_outcome_year(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="authorized completed outcome boundary"):
         materialize_inventory(
-            start_season=2024,
-            end_season=2025,
+            start_season=2025,
+            end_season=2026,
             output_dir=tmp_path,
         )
 

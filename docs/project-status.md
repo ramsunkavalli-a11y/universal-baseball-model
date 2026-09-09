@@ -3,9 +3,9 @@
 Updated 2026-09-09. This is the current start-here document.
 
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
-A nested later-cohort audit supports draft pedigree for hitter arrival and meaningful
-role research, but not for the stricter established-role outcome; pitcher arrival
-gains are directionally positive but uncertain. Pre-MLB FV is
+A nested later-cohort audit supports draft pedigree more strongly for arrival than
+quality. The first positive-MLB-component target is now tested and rejected: hitter
+Brier worsened slightly and pitcher uncertainty spans no gain. Pre-MLB FV is
 now bracketed: the year-by-year paths are too conservative for true elite prospects,
 while the six-full-seasons override is too generous across the long tail.
 

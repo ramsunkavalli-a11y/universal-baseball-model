@@ -6,6 +6,7 @@ from universal_baseball.prospect_arrival import (
     build_arrival_cohort,
     fit_arrival_model,
     six_year_probability,
+    _positive_component_roles,
 )
 
 
@@ -35,6 +36,7 @@ def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
             "plate_appearances": [400, 300], "base_on_balls": [40, 30],
             "intentional_walks": [0, 0], "strike_outs": [80, 60],
             "home_runs": [10, 8], "doubles": [20, 15], "triples": [2, 1],
+            "hits": [100, 75], "hit_by_pitch": [2, 1],
         }
     )
     result = build_arrival_cohort(
@@ -144,6 +146,8 @@ def test_baseball_interactions_expand_core_without_current_profile_fields() -> N
          "plate_appearances": [100], "base_on_balls": [10],
          "intentional_walks": [0], "strike_outs": [20], "home_runs": [2],
          "doubles": [4], "triples": [1]}
+    ).with_columns(
+        pl.Series("hits", [25]), pl.Series("hit_by_pitch", [1])
     )
     cohort = build_arrival_cohort(
         snapshots, stats, membership, skill, snapshot_year=2021, horizon=2,
@@ -179,6 +183,8 @@ def test_established_role_requires_high_or_repeated_future_workload() -> None:
          "plate_appearances": [100] * 3, "base_on_balls": [10] * 3,
          "intentional_walks": [0] * 3, "strike_outs": [20] * 3,
          "home_runs": [2] * 3, "doubles": [4] * 3, "triples": [1] * 3}
+    ).with_columns(
+        pl.Series("hits", [25] * 3), pl.Series("hit_by_pitch", [1] * 3)
     )
     result = build_arrival_cohort(
         snapshots, stats, membership, skill, snapshot_year=2021, horizon=2,
@@ -188,3 +194,20 @@ def test_established_role_requires_high_or_repeated_future_workload() -> None:
         result.select("player_id", "established_role_within_horizon").iter_rows()
     )
     assert established == {1: 1, 2: 1, 3: 0}
+
+
+def test_positive_hitter_component_role_is_league_relative_and_workload_gated() -> None:
+    skill = pl.DataFrame(
+        {
+            "season": [2022, 2022, 2022], "player_id": [1, 2, 3],
+            "sport_id": [1, 1, 1], "plate_appearances": [250, 250, 100],
+            "base_on_balls": [50, 5, 40], "intentional_walks": [0, 0, 0],
+            "hit_by_pitch": [0, 0, 0], "hits": [80, 30, 40],
+            "doubles": [20, 5, 10], "triples": [2, 0, 1],
+            "home_runs": [20, 2, 10],
+        }
+    )
+    result = _positive_component_roles(
+        skill, snapshot_year=2021, horizon=2, player_type="hitter"
+    )
+    assert result.get_column("player_id").to_list() == [1]

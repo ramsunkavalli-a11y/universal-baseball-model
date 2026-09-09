@@ -13,6 +13,8 @@ from sklearn.linear_model import LogisticRegression
 from universal_baseball.hitter_opportunity_paths import hitter_level_tier
 from universal_baseball.player_demographics import normalize_birth_country
 from universal_baseball.draft_source import draft_pedigree_as_of
+from universal_baseball.hitter_v2_evaluation import NEUTRAL_WOBA_WEIGHTS
+from universal_baseball.prospect_outcome_quality import SHORTENED_2020_SCALE
 
 
 ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v1"
@@ -23,6 +25,101 @@ COUNTRIES = (
     "Puerto Rico", "Canada", "Colombia", "Panama", "Nicaragua",
     "Brazil", "Australia", "Japan", "South Korea", "Taiwan",
 )
+
+
+def _positive_component_roles(
+    skill_stats: pl.DataFrame,
+    *,
+    snapshot_year: int,
+    horizon: int,
+    player_type: str,
+) -> pl.DataFrame:
+    """Label meaningful future MLB seasons with at-least-average core components."""
+
+    future = skill_stats.filter(
+        (pl.col("sport_id") == 1)
+        & (pl.col("season") > snapshot_year)
+        & (pl.col("season") <= snapshot_year + horizon)
+    )
+    if player_type == "hitter":
+        season = (
+            future.group_by("player_id", "season")
+            .agg(
+                pl.col("plate_appearances").sum().cast(pl.Float64).alias("workload"),
+                (pl.col("base_on_balls") - pl.col("intentional_walks"))
+                .sum().cast(pl.Float64).alias("ubb"),
+                pl.col("hit_by_pitch").sum().cast(pl.Float64).alias("hbp"),
+                (
+                    pl.col("hits") - pl.col("doubles") - pl.col("triples")
+                    - pl.col("home_runs")
+                ).sum().cast(pl.Float64).alias("single"),
+                pl.col("doubles").sum().cast(pl.Float64).alias("double"),
+                pl.col("triples").sum().cast(pl.Float64).alias("triple"),
+                pl.col("home_runs").sum().cast(pl.Float64).alias("hr"),
+            )
+            .with_columns(
+                (
+                    pl.col("ubb") * NEUTRAL_WOBA_WEIGHTS["UBB"]
+                    + pl.col("hbp") * NEUTRAL_WOBA_WEIGHTS["HBP"]
+                    + pl.col("single") * NEUTRAL_WOBA_WEIGHTS["1B"]
+                    + pl.col("double") * NEUTRAL_WOBA_WEIGHTS["2B"]
+                    + pl.col("triple") * NEUTRAL_WOBA_WEIGHTS["3B"]
+                    + pl.col("hr") * NEUTRAL_WOBA_WEIGHTS["HR"]
+                ).alias("component_numerator")
+            )
+        )
+        season = season.with_columns(
+            pl.when(pl.col("season") == 2020)
+            .then(pl.col("workload") * SHORTENED_2020_SCALE)
+            .otherwise(pl.col("workload"))
+            .alias("adjusted_workload"),
+            (pl.col("component_numerator").sum().over("season")
+             / pl.col("workload").sum().over("season")).alias("league_rate"),
+            (pl.col("component_numerator") / pl.col("workload")).alias("player_rate"),
+        )
+        positive = (pl.col("adjusted_workload") >= 200) & (
+            pl.col("player_rate") >= pl.col("league_rate")
+        )
+    else:
+        season = (
+            future.group_by("player_id", "season")
+            .agg(
+                pl.col("batters_faced").sum().cast(pl.Float64).alias("workload"),
+                pl.col("strike_outs").sum().cast(pl.Float64).alias("so"),
+                (pl.col("base_on_balls") - pl.col("intentional_walks"))
+                .sum().cast(pl.Float64).alias("ubb"),
+                pl.col("hit_batters").sum().cast(pl.Float64).alias("hbp"),
+                pl.col("home_runs").sum().cast(pl.Float64).alias("hr"),
+            )
+            .with_columns(
+                (
+                    13.0 * pl.col("hr")
+                    + 3.0 * (pl.col("ubb") + pl.col("hbp"))
+                    - 2.0 * pl.col("so")
+                ).alias("component_numerator")
+            )
+        )
+        season = season.with_columns(
+            pl.when(pl.col("season") == 2020)
+            .then(pl.col("workload") * SHORTENED_2020_SCALE)
+            .otherwise(pl.col("workload"))
+            .alias("adjusted_workload"),
+            (pl.col("component_numerator").sum().over("season")
+             / pl.col("workload").sum().over("season")).alias("league_rate"),
+            (pl.col("component_numerator") / pl.col("workload")).alias("player_rate"),
+        )
+        positive = (pl.col("adjusted_workload") >= 200) & (
+            pl.col("player_rate") <= pl.col("league_rate")
+        )
+    return (
+        season.filter(positive)
+        .select("player_id").unique()
+        .with_columns(
+            pl.lit(1).cast(pl.Int64).alias(
+                "positive_component_role_within_horizon"
+            )
+        )
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -240,6 +337,7 @@ def build_arrival_cohort(
     player_type: str,
     demographics: pl.DataFrame | None = None,
     draft_history: pl.DataFrame | None = None,
+    outcome_skill_stats: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build a pre-MLB cohort and observed cumulative debut outcome."""
 
@@ -277,17 +375,23 @@ def build_arrival_cohort(
         .select("player_id").unique()
         .with_columns(pl.lit(1).cast(pl.Int64).alias("arrived_within_horizon"))
     )
-    meaningful_role = (
+    season_workload = (
         future_stats.group_by("player_id", "season")
-        .agg(pl.col(workload).sum().alias("mlb_workload"))
+        .agg(pl.col(workload).sum().alias("raw_mlb_workload"))
+        .with_columns(
+            pl.when(pl.col("season") == 2020)
+            .then(pl.col("raw_mlb_workload") * SHORTENED_2020_SCALE)
+            .otherwise(pl.col("raw_mlb_workload"))
+            .alias("mlb_workload")
+        )
+    )
+    meaningful_role = (
+        season_workload
         .filter(pl.col("mlb_workload") >= 200)
         .select("player_id").unique()
         .with_columns(
             pl.lit(1).cast(pl.Int64).alias("meaningful_role_within_horizon")
         )
-    )
-    season_workload = future_stats.group_by("player_id", "season").agg(
-        pl.col(workload).sum().alias("mlb_workload")
     )
     high_workload = 400
     repeat_workload = 300 if player_type == "hitter" else 200
@@ -307,6 +411,12 @@ def build_arrival_cohort(
             pl.lit(1).cast(pl.Int64).alias("established_role_within_horizon")
         )
     )
+    positive_component_role = _positive_component_roles(
+        outcome_skill_stats if outcome_skill_stats is not None else skill_stats,
+        snapshot_year=snapshot_year,
+        horizon=horizon,
+        player_type=player_type,
+    )
     on_40man = membership.filter(pl.col("season") == snapshot_year).select(
         "player_id", "on_40man"
     )
@@ -317,12 +427,14 @@ def build_arrival_cohort(
         .join(future, on="player_id", how="left")
         .join(meaningful_role, on="player_id", how="left")
         .join(established_role, on="player_id", how="left")
+        .join(positive_component_role, on="player_id", how="left")
         .with_columns(
             pl.col("prior_mlb").fill_null(False),
             pl.col("on_40man").fill_null(False),
             pl.col("arrived_within_horizon").fill_null(0),
             pl.col("meaningful_role_within_horizon").fill_null(0),
             pl.col("established_role_within_horizon").fill_null(0),
+            pl.col("positive_component_role_within_horizon").fill_null(0),
             pl.col("as_of_level_group").map_elements(
                 hitter_level_tier, return_dtype=pl.String
             ).alias("level_tier"),
@@ -347,6 +459,7 @@ def build_arrival_cohort(
             *[f"production_rate_{index}" for index in range(1, 5)],
             "on_40man", "arrived_within_horizon", "meaningful_role_within_horizon",
             "established_role_within_horizon",
+            "positive_component_role_within_horizon",
             "height_inches", "weight_pounds", "bat_side", "pitch_hand",
             "birth_country", "strike_zone_top", "strike_zone_bottom", "gender",
             "birth_city", "birth_state_province",
