@@ -161,3 +161,27 @@ def test_compact_b2_form_reconstructs_valid_talent_summaries_from_ilr() -> None:
     assert design.get_column("b2_k_probability").min() > 0
     assert design.get_column("b2_non_iffb_offb_probability").min() > 0
     assert design.get_column("b2_ld_probability").min() > 0
+
+
+def test_hurdle_fit_handles_unidentified_positive_count_category() -> None:
+    predictors = _predictors(500).with_columns(
+        pl.when(pl.col("player_id") <= 20)
+        .then(pl.lit("INACTIVE"))
+        .otherwise(pl.col("as_of_level_group"))
+        .alias("as_of_level_group")
+    )
+    targets = _targets(_predictors(500)).with_columns(
+        pl.when(pl.col("player_id") <= 20)
+        .then(pl.lit(0))
+        .otherwise(pl.col("next_year_mlb_pa"))
+        .alias("next_year_mlb_pa")
+    )
+    design = build_playing_time_design(predictors, form=PT_FORM_U)
+
+    fit = fit_playing_time_hurdle(design, targets, form=PT_FORM_U)
+    scored, _ = score_playing_time_hurdle(fit, design, targets)
+
+    assert "level_inactive" in fit.metrics["positive_count_unidentified_features"]
+    inactive_index = fit.feature_names.index("level_inactive") + 1
+    assert fit.nb_coefficients[inactive_index] == 0.0
+    assert scored.height == 500

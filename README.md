@@ -46,6 +46,10 @@ plausibility checks that must be satisfied before those layers connect.
 The [Hitter Opportunity v1](docs/hitter-opportunity-v1.md) implementation supplies
 team-neutral multi-year MLB-arrival and PA paths with explicit inactive/no-history
 fallbacks; its first certified league materialization is still pending.
+The [Hitter Opportunity v2 development result](docs/hitter-opportunity-v2-development-result.md)
+adds a reproducible universal one-year candidate using recent MLB/MiLB opportunity and
+exact-date 40-man membership. It won all four rolling tests, while remaining explicitly
+unconfirmed until protected 2026 outcomes are available.
 The matching [Pitcher Opportunity v1](docs/pitcher-opportunity-v1.md) calculation keeps
 arrival, BF and role probabilities separate and uses no current-team depth.
 The [historical opportunity source result](docs/opportunity-history-source-result.md)

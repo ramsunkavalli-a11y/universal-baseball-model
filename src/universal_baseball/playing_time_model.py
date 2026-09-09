@@ -354,14 +354,31 @@ def fit_playing_time_hurdle(
     y_positive = y_count[positive_mask].astype(np.float64)
     if y_positive.size <= len(feature_names) + 2:
         raise ValueError("playing-time positive-count sample is too small for frozen NB2 form")
-    nb_exog = np.column_stack([np.ones(y_positive.size), x_positive])
+    # A universal denominator can contain a category with no positive outcome in
+    # an early fold. Its conditional-count coefficient is not identifiable. Keep
+    # the feature in the participation model and fix only that all-constant count
+    # column at zero instead of failing the entire universal fit.
+    active_indices: list[int] = []
+    active_matrix = np.ones((y_positive.size, 1), dtype=np.float64)
+    active_rank = int(np.linalg.matrix_rank(active_matrix))
+    for index in range(x_positive.shape[1]):
+        candidate_matrix = np.column_stack([active_matrix, x_positive[:, index]])
+        candidate_rank = int(np.linalg.matrix_rank(candidate_matrix))
+        if candidate_rank > active_rank:
+            active_indices.append(index)
+            active_matrix = candidate_matrix
+            active_rank = candidate_rank
+    nb_active_indices = tuple(active_indices)
+    nb_exog = np.column_stack(
+        [np.ones(y_positive.size), x_positive[:, nb_active_indices]]
+    )
     nb_model = TruncatedLFNegativeBinomialP(y_positive, nb_exog, p=2)
     nb_result = nb_model.fit(method="bfgs", maxiter=1000, disp=0)
     mle_retvals = getattr(nb_result, "mle_retvals", {}) or {}
     if not bool(mle_retvals.get("converged", True)):
         raise RuntimeError("playing-time truncated NB2 did not converge")
     params = np.asarray(nb_result.params, dtype=np.float64)
-    if params.size != len(feature_names) + 2:
+    if params.size != len(nb_active_indices) + 2:
         raise RuntimeError("playing-time truncated NB2 returned unexpected parameter count")
     if not np.all(np.isfinite(params)):
         raise RuntimeError("playing-time truncated NB2 returned non-finite parameters")
@@ -369,6 +386,15 @@ def fit_playing_time_hurdle(
     if not isfinite(alpha) or alpha <= 0.0:
         raise RuntimeError(f"playing-time truncated NB2 alpha must be positive, observed {alpha}")
 
+    nb_coefficients = [0.0] * (len(feature_names) + 1)
+    nb_coefficients[0] = float(params[0])
+    for parameter_index, feature_index in enumerate(nb_active_indices, start=1):
+        nb_coefficients[feature_index + 1] = float(params[parameter_index])
+    unidentified_nb_features = [
+        feature
+        for index, feature in enumerate(feature_names)
+        if index not in nb_active_indices
+    ]
     metrics = {
         "form": form,
         "participation_model": "sklearn_logistic_l2",
@@ -377,6 +403,7 @@ def fit_playing_time_hurdle(
         "participation_training_players": int(y_count.size),
         "positive_training_players": int(y_positive.size),
         "feature_count": len(feature_names),
+        "positive_count_unidentified_features": unidentified_nb_features,
         "future_team_used": False,
         "future_level_used": False,
         "batting_rate_modified": False,
@@ -388,7 +415,7 @@ def fit_playing_time_hurdle(
         standardization=standardization,
         logistic_intercept=float(logistic.intercept_[0]),
         logistic_coefficients=tuple(float(value) for value in logistic.coef_[0]),
-        nb_coefficients=tuple(float(value) for value in params[:-1]),
+        nb_coefficients=tuple(nb_coefficients),
         nb_alpha=alpha,
         participation_training_players=int(y_count.size),
         positive_training_players=int(y_positive.size),

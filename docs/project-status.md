@@ -92,6 +92,13 @@ or promote a player ranking; the public v1 release remains historical.
   classification from 436 players to 22 by excluding incidental mop-up pitching. The
   current hitter run uses historical fallbacks because frozen richer-model parameters
   are absent; no replacement coefficients were invented.
+- A newly versioned universal hitter-opportunity candidate now replaces the expired-
+  artifact dead end without claiming to recreate B2. The precommitted rolling gate
+  retains inactive, unknown-level and missing-age players and uses only level, age,
+  current MLB/MiLB PA and exact-date 40-man membership. It beat the universal level-only
+  model in all four 2022–2025 evaluations; pooled Brier error fell 20.5% and PA RMSE
+  fell 26.1%. Its complete scoring package is committed, but it remains a provisional
+  2026 candidate until a future protected-outcome confirmation.
 - The remaining-rights timeline now prevents live valuation from counting WAR already
   produced or salary already paid. Current-season rows require an explicit remaining
   salary obligation and cannot receive a fictional midseason non-tender option. Future
@@ -252,12 +259,12 @@ The 21 multi-organization ownership cases are closed by the dated 40-man/transac
 resolver. Continue only the bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.
 
-In parallel, reconnect the recovered opportunity pipeline and its frozen B2 inputs,
-then declare population-prior fallbacks for inactive/no-history players. Retain O2026D
-as the simple benchmark and the unchanged T2026B MLB-conditional transport component
-as a developmental hitter reference. Stop global calibration searches. Do not convert
-the component outputs to career value before participation, pitcher workload, aging,
-rights and cost paths are integrated.
+The lost B2 package has now been replaced for forward development by a reproducible
+universal v2 candidate. Next, score the current 2026 snapshot with that package, compare
+its league and coverage behavior to the retained historical fallback, and connect it to
+the current hitter path only under a provisional label. Retain O2026D as a simple
+benchmark and T2026B as a developmental hitter-rate reference. Stop global calibration
+searches.
 
 The selected B2 hitter-opportunity run is still identified by run `32142220469` and
 its expected candidate hash, but GitHub's short-lived coefficient artifact has expired.

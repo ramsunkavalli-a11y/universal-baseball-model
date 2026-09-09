@@ -1,0 +1,195 @@
+{
+  "boundary": {
+    "b2_skill_features_used": false,
+    "future_team_or_depth_used": false,
+    "inactive_or_missing_age_players_dropped": false,
+    "production_promotion": false,
+    "protected_2026_outcomes_used": false
+  },
+  "contract": "docs/hitter-opportunity-v2-development-contract.md",
+  "evaluation_target_years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "excluded_pairs": [
+    "2019_to_2020",
+    "2020_to_2021"
+  ],
+  "final_positive_players": 3278,
+  "final_training_players": 20643,
+  "fold_population": [
+    {
+      "inactive_players": 312,
+      "missing_age_players": 300,
+      "on_40man_players": 593,
+      "players": 4348,
+      "positive_target_players": 634,
+      "snapshot_year": 2018,
+      "target_year": 2019
+    },
+    {
+      "inactive_players": 139,
+      "missing_age_players": 132,
+      "on_40man_players": 586,
+      "players": 4164,
+      "positive_target_players": 685,
+      "snapshot_year": 2021,
+      "target_year": 2022
+    },
+    {
+      "inactive_players": 153,
+      "missing_age_players": 135,
+      "on_40man_players": 598,
+      "players": 4155,
+      "positive_target_players": 647,
+      "snapshot_year": 2022,
+      "target_year": 2023
+    },
+    {
+      "inactive_players": 126,
+      "missing_age_players": 117,
+      "on_40man_players": 596,
+      "players": 4093,
+      "positive_target_players": 647,
+      "snapshot_year": 2023,
+      "target_year": 2024
+    },
+    {
+      "inactive_players": 139,
+      "missing_age_players": 129,
+      "on_40man_players": 590,
+      "players": 3883,
+      "positive_target_players": 665,
+      "snapshot_year": 2024,
+      "target_year": 2025
+    }
+  ],
+  "gate": "hitter_opportunity_v2_rolling_development",
+  "package_versions": {
+    "numpy": "2.5.3",
+    "polars": "1.44.1",
+    "scikit_learn": "1.7.2",
+    "statsmodels": "0.14.6"
+  },
+  "report_schema_version": "0.1",
+  "selected_form": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+  "selected_nb_alpha": 0.7121500990362503,
+  "selection": {
+    "candidate_decisions": [
+      {
+        "eligible": true,
+        "form": "playing_time_universal_recent_opportunity_hurdle_v2",
+        "full_nll_fold_wins": 4,
+        "gates": {
+          "full_nll_wins_at_least_three_of_four_folds": true,
+          "pooled_full_nll_lower_than_u0": true,
+          "pooled_pa_mae_within_two_percent_of_u0": true,
+          "pooled_participation_log_loss_no_worse_than_u0": true
+        },
+        "pooled_full_nll": 1.2109763409459395
+      },
+      {
+        "eligible": true,
+        "form": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+        "full_nll_fold_wins": 4,
+        "gates": {
+          "full_nll_wins_at_least_three_of_four_folds": true,
+          "pooled_full_nll_lower_than_u0": true,
+          "pooled_pa_mae_within_two_percent_of_u0": true,
+          "pooled_participation_log_loss_no_worse_than_u0": true
+        },
+        "pooled_full_nll": 1.2029287071494876
+      }
+    ],
+    "full_nll_tie_tolerance": 0.001,
+    "mae_worse_tolerance": 0.02,
+    "protected_2026_outcomes_used": false,
+    "selected_form": "playing_time_universal_recent_opportunity_40man_hurdle_v2"
+  },
+  "snapshot_years": [
+    2018,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "source_files": {
+    "affiliated_stats_2018": {
+      "path": "reports\\generated\\opportunity-history-sources-v2\\tables\\2018\\affiliated_season_stats.parquet",
+      "sha256": "e8f1a52f48d3f9aee6aca39207e82c39b1a6df9375b7a5025a54fe284a83fd04"
+    },
+    "affiliated_stats_2019": {
+      "path": "reports\\generated\\opportunity-history-sources-v2\\tables\\2019\\affiliated_season_stats.parquet",
+      "sha256": "0dd0a82eecbdbf15f67e74d2312bf8ecac91c2c6ed3645e103f4de82bea59021"
+    },
+    "affiliated_stats_2021": {
+      "path": "reports\\generated\\opportunity-history-sources-v2\\tables\\2021\\affiliated_season_stats.parquet",
+      "sha256": "55b727f4c9437f357f2a685841ff3fdec4c509a4f6d8d870e6fbf851977d9c9e"
+    },
+    "affiliated_stats_2022": {
+      "path": "reports\\generated\\opportunity-history-sources-v2\\tables\\2022\\affiliated_season_stats.parquet",
+      "sha256": "a3fca9b9a7d4df771c3d3aa9d44189cb085df8cb71ada83eae1c363ca62ebddc"
+    },
+    "affiliated_stats_2023": {
+      "path": "reports\\generated\\opportunity-history-sources-v2\\tables\\2023\\affiliated_season_stats.parquet",
+      "sha256": "a68647e3c5338db8ccb79e8c0ff4d721e6863b5fbe0ec22ae11d553882f8cc37"
+    },
+    "affiliated_stats_2024": {
+      "path": "reports\\generated\\opportunity-history-sources-v2\\tables\\2024\\affiliated_season_stats.parquet",
+      "sha256": "1ac6a4a6d045faf4157565103e821c0bb023869e54285025db7fa0dab2861bf5"
+    },
+    "affiliated_stats_2025": {
+      "path": "reports\\generated\\opportunity-history-sources-v2\\tables\\2025\\affiliated_season_stats.parquet",
+      "sha256": "c0663675bee3ccc7f567808b8e1856143d04b9ddba9f735a71252b9f3d2e3187"
+    },
+    "historical_40man_membership": {
+      "path": "reports\\generated\\opportunity-40man-history\\tables\\historical_40man_membership.parquet",
+      "sha256": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421"
+    },
+    "hitter_snapshots": {
+      "path": "reports\\generated\\opportunity-history-sources-v2\\tables\\hitter_snapshots.parquet",
+      "sha256": "4480052b8a07fbb21366b54cc341630bbf29cf3be9d52ac1820f026c4efa90b3"
+    }
+  },
+  "status": "development_selected_not_production_confirmed",
+  "storage": {
+    "fold_metrics": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "4b1664aa16b9f0b2b90c1eb0fab88d571e08fcd68789f791ac4f79783427d016",
+      "file_size_bytes": 6643,
+      "path": "reports\\generated\\hitter-opportunity-v2-development\\tables\\fold_metrics.parquet",
+      "row_count": 12,
+      "schema_sha256": "5ec52bf54336b12dd39d7f31c7deacf9733f4327a6484ada5999006b82d1e7f1",
+      "table_name": "hitter_opportunity_v2_fold_metrics"
+    },
+    "pooled_metrics": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "79db8044605fd2e8ef06c0ecf6f877b06c0e58c07eff07466056806e5b18ea33",
+      "file_size_bytes": 4916,
+      "path": "reports\\generated\\hitter-opportunity-v2-development\\tables\\pooled_metrics.parquet",
+      "row_count": 3,
+      "schema_sha256": "22805076e83a0d61e0afd8b1fbd174cbb8c307bc36af67833d6f16ea8fd9f70c",
+      "table_name": "hitter_opportunity_v2_pooled_metrics"
+    },
+    "selected_coefficients": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "e3979f570b0f4c9acf965c95a276eace01893799c041ead3d18f5eee5d6ffa8b",
+      "file_size_bytes": 1658,
+      "path": "reports\\generated\\hitter-opportunity-v2-development\\tables\\selected_coefficients.parquet",
+      "row_count": 23,
+      "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+      "table_name": "hitter_opportunity_v2_selected_coefficients"
+    },
+    "selected_standardization": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "b30f32573b8e0441aa1c99c881daebdaf638813178d523257256decf01e5ed00",
+      "file_size_bytes": 1268,
+      "path": "reports\\generated\\hitter-opportunity-v2-development\\tables\\selected_standardization.parquet",
+      "row_count": 3,
+      "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+      "table_name": "hitter_opportunity_v2_selected_standardization"
+    }
+  }
+}
