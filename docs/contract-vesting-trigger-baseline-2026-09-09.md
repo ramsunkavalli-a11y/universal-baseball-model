@@ -33,6 +33,7 @@ official schedule calendar. As of 2026-09-08 it finds:
 
 The other ten rows are future-season clauses, not missing current observations. This
 establishes the reusable StatsAPI calculation path but does not yet remove every row
-from economics review. The next integration should translate Yandy Diaz's final
-trigger into the 2027 contract state, then add structured award, multi-season and
-catching-position alternatives as those seasons become relevant.
+from economics review. Yandy Diaz's final trigger now changes his 2027 control state
+from vesting option to guaranteed contract before economics are calculated. The next
+integration should add structured award, multi-season and catching-position
+alternatives as those seasons become relevant.

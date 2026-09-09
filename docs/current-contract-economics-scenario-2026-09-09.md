@@ -3,15 +3,15 @@
 **Status:** complete Phase 1 research calculation; not a publishable ranking
 
 The first full 2027–2032 economics pass now runs all 50,100 controlled player-years
-through the same WAR, market, salary, option and discount rules. It produces 50,042
-available annual rows and 58 review rows. At the six-year player aggregate, 8,300
-players are complete and 50 have at least one review year.
+through the same WAR, market, salary, option and discount rules. It produces 50,043
+available annual rows and 57 review rows. At the six-year player aggregate, 8,301
+players are complete and 49 have at least one review year.
 
-The 58 reviews are narrow and visible:
+The 57 reviews are narrow and visible:
 
 - 25 club options missing a stated buyout;
 - nine player options and two player opt-outs missing a stated buyout;
-- 13 vesting options needing trigger logic;
+- 12 unresolved vesting options;
 - five source conflicts or linked multi-year option structures;
 - three mutual options missing a stated buyout;
 - one mutual option missing its exercise salary.
@@ -49,6 +49,8 @@ Five of those disagreements are also machine-enforced: later term additions cann
 silently turn them into calculated rows until the structure is reconciled.
 Two Tatsuya Imai seasons are corrected from player option to player opt-out using
 official MLB reporting. The correction checks the prior status before applying.
+Yandy Diaz's official 2026 total of 620 PA resolves his 500-PA vesting trigger. His
+2027 row is therefore a guaranteed $13M season, not an unresolved vesting option.
 
 Run `scripts/materialize_contract_economics_scenario.py --as-of-date 2026-09-08`
 after rebuilding the current contract-economics inputs.

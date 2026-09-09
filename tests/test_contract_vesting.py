@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 import polars as pl
@@ -6,6 +5,7 @@ import pytest
 
 from universal_baseball.contract_vesting import evaluate_vesting_triggers
 from universal_baseball.contract_vesting import (
+    build_vesting_control_corrections,
     load_vesting_trigger_config,
     project_statsapi_vesting_observations,
 )
@@ -26,6 +26,16 @@ def _triggers() -> pl.DataFrame:
             "threshold_count": [120, 500, 510],
             "other_conditions": ["clean physical", "", ""],
             "alternative_conditions": ["", "", ""],
+            "vested_control_status": [
+                "guaranteed_contract",
+                "guaranteed_contract",
+                "player_option",
+            ],
+            "unvested_control_status": [
+                "mutual_option",
+                "club_option",
+                "free_agent_eligible",
+            ],
             "vested_contract_effect": ["guaranteed", "guaranteed", "player option"],
             "unvested_contract_effect": ["mutual option", "club option", "free agent"],
             "source_url": ["https://example.test"] * 3,
@@ -110,13 +120,8 @@ def test_invalid_or_duplicate_trigger_fails_closed() -> None:
 
 
 def test_repo_trigger_inventory_is_valid_and_missing_evidence_stays_missing() -> None:
-    payload = json.loads(
-        (ROOT / "config/contract-vesting-triggers-2026-09-09.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    triggers = pl.DataFrame(payload["triggers"]).with_columns(
-        pl.lit(payload["snapshot_id"]).alias("source_snapshot_id")
+    triggers, _ = load_vesting_trigger_config(
+        ROOT / "config/contract-vesting-triggers-2026-09-09.json"
     )
     observations = pl.DataFrame(
         schema={
@@ -197,4 +202,34 @@ def test_repo_trigger_loader_attaches_snapshot_id() -> None:
     assert triggers.height == 13
     assert triggers.get_column("source_snapshot_id").unique().to_list() == [
         payload["snapshot_id"]
+    ]
+
+
+def test_only_final_vesting_result_becomes_control_correction() -> None:
+    observations = pl.DataFrame(
+        {
+            "player_id": [1, 2, 3],
+            "season": [2026, 2026, 2026],
+            "metric": ["pitching_outs", "plate_appearances", "pitching_outs"],
+            "observed_count": [130, 500, 400],
+            "season_complete": [False, False, True],
+        }
+    )
+    evaluated = evaluate_vesting_triggers(_triggers(), observations).rows
+    corrections = build_vesting_control_corrections(evaluated)
+    assert corrections.select(
+        "player_id", "season", "expected_control_status", "corrected_control_status"
+    ).to_dicts() == [
+        {
+            "player_id": 2,
+            "season": 2027,
+            "expected_control_status": "vesting_option",
+            "corrected_control_status": "guaranteed_contract",
+        },
+        {
+            "player_id": 3,
+            "season": 2027,
+            "expected_control_status": "vesting_option",
+            "corrected_control_status": "free_agent_eligible",
+        },
     ]

@@ -208,13 +208,14 @@ scenario, while official post-2026 CBA costs remain unresolved.
 The payroll buyout source is now used instead of left on disk: all 86 contingent
 buyouts map by exact within-workbook identity, and 83 attach to the 151 projected
 option years. A small, dated Spotrac exception overlay supplies 13 more explicit,
-non-conflicting buyouts; the remaining 55 stay in review. Projected 2027 Super Two
+non-conflicting buyouts. After Yandy Diaz's vested year becomes guaranteed, 150 option
+rows remain and 54 lack buyouts. Projected 2027 Super Two
 players also advance through arbitration classes 1–4 correctly; previously the class
 calculation could reset after the first projected year.
 
 The Phase 1 arbitration baseline now applies FanGraphs' 15%/35%/50%/75% shares to
-prior-season projected WAR value. A full research scenario calculates 50,042 of
-50,100 future annual rows and leaves exactly 58 option/salary exceptions in review.
+prior-season projected WAR value. A full research scenario calculates 50,043 of
+50,100 future annual rows and leaves exactly 57 option/salary exceptions in review.
 Five source conflicts or linked multi-year option structures are now machine-blocked
 rather than relying on a prose audit. Two Imai seasons are corrected to player
 opt-outs from official MLB reporting; the correction is fail-closed against the
@@ -223,7 +224,8 @@ All 13 vesting rows now have exact trigger definitions and a reusable evaluator.
 It consumes retained official StatsAPI totals plus the official schedule calendar,
 does not treat missing evidence as zero and keeps additional medical/contract
 conditions pending. The first live pass resolves Yandy Diaz's 2027 vesting trigger,
-while Chapman and Freeland remain correctly pending.
+and applies its guaranteed $13M state to economics, while Chapman and Freeland remain
+correctly pending.
 Fully specified mutual options use the conservative normal-expiration outcome.
 Post-2026 minimum salaries and unchanged service rules are clearly marked as a 3%
 planning scenario until a successor CBA supplies facts.

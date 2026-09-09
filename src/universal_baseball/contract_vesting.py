@@ -20,6 +20,8 @@ VESTING_TRIGGER_SCHEMA: dict[str, pl.DataType] = {
     "threshold_count": pl.Int64,
     "other_conditions": pl.String,
     "alternative_conditions": pl.String,
+    "vested_control_status": pl.String,
+    "unvested_control_status": pl.String,
     "vested_contract_effect": pl.String,
     "unvested_contract_effect": pl.String,
     "source_url": pl.String,
@@ -41,15 +43,57 @@ class VestingTriggerEvaluation:
     coverage: dict[str, int]
 
 
+VESTING_CONTROL_CORRECTION_SCHEMA: dict[str, pl.DataType] = {
+    "player_id": pl.Int64,
+    "player_name": pl.String,
+    "organization_id": pl.Int64,
+    "season": pl.Int64,
+    "expected_control_status": pl.String,
+    "corrected_control_status": pl.String,
+    "reason": pl.String,
+    "source_url": pl.String,
+    "source_snapshot_id": pl.String,
+}
+
+
 def load_vesting_trigger_config(path: Path) -> tuple[pl.DataFrame, dict[str, Any]]:
     """Load the reviewed trigger inventory and attach its source snapshot ID."""
 
     payload = json.loads(path.read_text(encoding="utf-8"))
     snapshot_id = str(payload.get("snapshot_id") or "").strip()
     triggers = payload.get("triggers")
-    if not snapshot_id or not isinstance(triggers, list):
-        raise ValueError("vesting trigger config requires snapshot_id and triggers")
-    rows = pl.DataFrame(triggers).with_columns(
+    outcomes = payload.get("control_status_outcomes")
+    if (
+        not snapshot_id
+        or not isinstance(triggers, list)
+        or not isinstance(outcomes, list)
+    ):
+        raise ValueError(
+            "vesting trigger config requires snapshot_id, triggers and control outcomes"
+        )
+    rows = pl.DataFrame(triggers)
+    control_outcomes = pl.DataFrame(outcomes)
+    outcome_fields = {
+        "player_id",
+        "option_season",
+        "vested_control_status",
+        "unvested_control_status",
+    }
+    if missing_outcomes := sorted(outcome_fields - set(control_outcomes.columns)):
+        raise ValueError(f"vesting control outcomes missing fields: {missing_outcomes}")
+    if control_outcomes.group_by("player_id", "option_season").len().filter(
+        pl.col("len") != 1
+    ).height:
+        raise ValueError("vesting control outcomes violate player-option-season grain")
+    rows = rows.join(
+        control_outcomes.select(sorted(outcome_fields)),
+        on=["player_id", "option_season"],
+        how="inner",
+        validate="1:1",
+    )
+    if rows.height != len(triggers) or rows.height != len(outcomes):
+        raise ValueError("vesting trigger and control-outcome coverage differs")
+    rows = rows.with_columns(
         pl.lit(snapshot_id).alias("source_snapshot_id")
     )
     missing = sorted(set(VESTING_TRIGGER_SCHEMA) - set(rows.columns))
@@ -214,12 +258,22 @@ def evaluate_vesting_triggers(
         "pitching_outs",
         "seasons_with_100_games_caught",
     }
+    supported_control_statuses = {
+        "club_option",
+        "free_agent_eligible",
+        "guaranteed_contract",
+        "mutual_option",
+        "player_option",
+        "review",
+    }
     if source.filter(
         (~pl.col("metric").is_in(supported_metrics))
         | (pl.col("threshold_count") <= 0)
         | (pl.col("option_season") <= pl.col("trigger_season"))
         | (pl.col("vested_contract_effect") == "")
         | (pl.col("unvested_contract_effect") == "")
+        | (~pl.col("vested_control_status").is_in(supported_control_statuses))
+        | (~pl.col("unvested_control_status").is_in(supported_control_statuses))
         | (pl.col("source_url") == "")
         | (pl.col("source_snapshot_id") == "")
     ).height:
@@ -271,3 +325,43 @@ def evaluate_vesting_triggers(
             ).height,
         },
     )
+
+
+def build_vesting_control_corrections(evaluations: pl.DataFrame) -> pl.DataFrame:
+    """Translate only final, representable trigger outcomes into control states."""
+
+    required = set(VESTING_TRIGGER_SCHEMA) | {"trigger_status"}
+    if missing := sorted(required - set(evaluations.columns)):
+        raise ValueError(f"vesting evaluations missing fields: {missing}")
+    final = evaluations.filter(pl.col("trigger_status").is_in(["vested", "not_vested"]))
+    if final.is_empty():
+        return pl.DataFrame(schema=VESTING_CONTROL_CORRECTION_SCHEMA)
+    resolved = final.with_columns(
+        pl.when(pl.col("trigger_status") == "vested")
+        .then(pl.col("vested_control_status"))
+        .otherwise(pl.col("unvested_control_status"))
+        .alias("corrected_control_status")
+    ).filter(pl.col("corrected_control_status") != "review")
+    if resolved.is_empty():
+        return pl.DataFrame(schema=VESTING_CONTROL_CORRECTION_SCHEMA)
+    corrections = resolved.select(
+        "player_id",
+        "player_name",
+        "organization_id",
+        pl.col("option_season").alias("season"),
+        pl.lit("vesting_option").alias("expected_control_status"),
+        "corrected_control_status",
+        pl.concat_str(
+            [
+                pl.lit("contract vesting trigger resolved as "),
+                pl.col("trigger_status"),
+            ]
+        ).alias("reason"),
+        "source_url",
+        "source_snapshot_id",
+    ).cast(VESTING_CONTROL_CORRECTION_SCHEMA, strict=True)
+    if corrections.group_by("player_id", "organization_id", "season").len().filter(
+        pl.col("len") != 1
+    ).height:
+        raise ValueError("resolved vesting corrections violate player-team-season grain")
+    return corrections.sort(["player_id", "organization_id", "season"])

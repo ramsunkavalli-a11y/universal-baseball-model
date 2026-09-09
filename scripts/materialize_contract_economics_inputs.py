@@ -15,6 +15,7 @@ from universal_baseball.contract_economics_inputs import (
     UNCERTAINTY_PROJECTION_SOURCE_ID,
     build_future_contract_economics_inputs,
 )
+from universal_baseball.contract_vesting import build_vesting_control_corrections
 from universal_baseball.storage import write_canonical_parquet
 
 
@@ -52,6 +53,11 @@ def _args() -> argparse.Namespace:
         type=Path,
         default=Path("config/contract-control-corrections-2026-09-09.json"),
     )
+    parser.add_argument(
+        "--contract-vesting-root",
+        type=Path,
+        default=Path("reports/generated/current-contract-vesting"),
+    )
     return parser.parse_args()
 
 
@@ -86,6 +92,16 @@ def main() -> int:
     control_corrections = pl.DataFrame(correction_payload["corrections"]).with_columns(
         pl.lit(correction_payload["snapshot_id"]).alias("source_snapshot_id")
     )
+    vesting_evaluations = pl.read_parquet(
+        args.contract_vesting_root
+        / args.as_of_date.isoformat()
+        / "tables/contract-vesting-evaluations.parquet"
+    )
+    vesting_corrections = build_vesting_control_corrections(vesting_evaluations)
+    if not vesting_corrections.is_empty():
+        control_corrections = pl.concat(
+            [control_corrections, vesting_corrections], how="vertical_relaxed"
+        )
     result = build_future_contract_economics_inputs(
         pl.read_parquet(dated_war_root / "hitter_expected_war_paths.parquet"),
         pl.read_parquet(dated_war_root / "pitcher_expected_war_paths.parquet"),
@@ -135,8 +151,14 @@ def main() -> int:
         "contract_control_corrections": {
             "snapshot_id": correction_payload["snapshot_id"],
             "retrieved_date": correction_payload["retrieved_date"],
-            "rows": len(correction_payload["corrections"]),
+            "rows": control_corrections.height,
+            "official_term_correction_rows": len(correction_payload["corrections"]),
+            "resolved_vesting_rows": vesting_corrections.height,
             "boundary": correction_payload["boundary"],
+            "vesting_boundary": (
+                "Only final, machine-representable vesting outcomes alter control; "
+                "pending and review outcomes do not."
+            ),
         },
         "buyout_link_coverage": buyout_links.coverage,
         "ranking_status": "not_publishable_inputs_only",
@@ -144,7 +166,7 @@ def main() -> int:
             "chronologically fitted free-agent dollars per WAR",
             "chronologically fitted arbitration shares",
             "post-2026 CBA minimum salary rules",
-            "player-ID-linked option buyouts and unresolved option triggers",
+            "remaining player-ID-linked option buyouts and unresolved option triggers",
         ],
         "storage": storage,
     }

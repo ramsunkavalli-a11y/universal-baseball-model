@@ -14,9 +14,11 @@ step.
 - zero control rows without a projection;
 - 5,064 projection rows without resolved control, retained in the projection source
   and excluded from incumbent-rights economics;
-- 604 player-year salaries attached from accepted payroll terms;
+- 605 player-year salaries attached from accepted payroll terms or the narrow
+  secondary overlay;
 - 86 potential buyouts linked to stable player IDs from the same payroll source;
-- 96 of 151 projected option rows now carry a buyout, leaving 55 unresolved; and
+- 96 of 150 unresolved projected option rows now carry a buyout, leaving 54 without
+  one; and
 - zero duplicate player/organization/season keys.
 
 The output contains 8,350 players in each of six seasons. All 50,100 rows now carry
@@ -36,6 +38,9 @@ Five known structure disagreements are carried as review-only records. They bloc
 calculation even if the annual salary and buyout fields are otherwise complete.
 Official MLB reporting corrects Tatsuya Imai's 2027 and 2028 states from player option
 to player opt-out; the overlay fails if the expected prior state changes.
+The same fail-closed correction path now consumes final vesting results. Yandy Diaz's
+620 official 2026 PA resolves his 500-PA trigger and changes his 2027 state from
+vesting option to guaranteed contract. Pending or compound triggers remain untouched.
 The ten projected 2027 Super Two cases now advance through arbitration classes 1–4
 instead of being reset to class 1 when they cross three service years.
 
@@ -49,7 +54,7 @@ This table is ready to feed the existing contract-economics engine. It is not ye
 defensible dollar ranking. The remaining large inputs are:
 
 1. official post-2026 CBA minimum-salary rules;
-2. the remaining 55 buyouts, five known structure conflicts and unresolved option
+2. the remaining 54 buyouts, five known structure conflicts and unresolved option
    triggers; and
 3. Phase 2 internal arbitration validation, empirical interval calibration and
    correlated career paths for option

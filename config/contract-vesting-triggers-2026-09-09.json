@@ -2,6 +2,21 @@
   "snapshot_id": "contract_vesting_triggers_2026_09_09",
   "retrieved_date": "2026-09-09",
   "boundary": "Contract-defined counting-stat triggers only. Pitching thresholds use outs, not rounded innings. Non-stat conditions and future incomplete seasons remain pending.",
+  "control_status_outcomes": [
+    {"player_id": 547973, "option_season": 2027, "vested_control_status": "guaranteed_contract", "unvested_control_status": "mutual_option"},
+    {"player_id": 607536, "option_season": 2027, "vested_control_status": "player_option", "unvested_control_status": "free_agent_eligible"},
+    {"player_id": 650490, "option_season": 2027, "vested_control_status": "guaranteed_contract", "unvested_control_status": "club_option"},
+    {"player_id": 518876, "option_season": 2028, "vested_control_status": "guaranteed_contract", "unvested_control_status": "free_agent_eligible"},
+    {"player_id": 607625, "option_season": 2028, "vested_control_status": "guaranteed_contract", "unvested_control_status": "club_option"},
+    {"player_id": 622491, "option_season": 2028, "vested_control_status": "guaranteed_contract", "unvested_control_status": "review"},
+    {"player_id": 621043, "option_season": 2029, "vested_control_status": "guaranteed_contract", "unvested_control_status": "club_option"},
+    {"player_id": 643511, "option_season": 2029, "vested_control_status": "guaranteed_contract", "unvested_control_status": "club_option"},
+    {"player_id": 621043, "option_season": 2030, "vested_control_status": "guaranteed_contract", "unvested_control_status": "club_option"},
+    {"player_id": 667670, "option_season": 2030, "vested_control_status": "guaranteed_contract", "unvested_control_status": "review"},
+    {"player_id": 621043, "option_season": 2031, "vested_control_status": "guaranteed_contract", "unvested_control_status": "club_option"},
+    {"player_id": 663728, "option_season": 2031, "vested_control_status": "player_option", "unvested_control_status": "free_agent_eligible"},
+    {"player_id": 621043, "option_season": 2032, "vested_control_status": "guaranteed_contract", "unvested_control_status": "club_option"}
+  ],
   "triggers": [
     {"player_id": 547973, "player_name": "Aroldis Chapman", "organization_id": 111, "option_season": 2027, "trigger_season": 2026, "metric": "pitching_outs", "threshold_count": 120, "other_conditions": "postseason physical must show no impairment preventing availability for 2027 Opening Day", "alternative_conditions": "", "vested_contract_effect": "$13M salary becomes guaranteed", "unvested_contract_effect": "$13M mutual option with $300K buyout", "source_url": "https://apnews.com/article/f03604a38b5ebdc30a80c3336b24a7b3"},
     {"player_id": 607536, "player_name": "Kyle Freeland", "organization_id": 115, "option_season": 2027, "trigger_season": 2026, "metric": "pitching_outs", "threshold_count": 510, "other_conditions": "", "alternative_conditions": "", "vested_contract_effect": "$17M player option becomes available", "unvested_contract_effect": "no 2027 option", "source_url": "https://www.mlb.com/news/kyle-freeland-rockies-extension"},

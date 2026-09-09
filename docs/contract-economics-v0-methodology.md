@@ -81,8 +81,9 @@ sensitivity work; a current rest-of-season estimate cannot select a full-season 
   branches; the model does not invent a negotiated extension or valuation disagreement.
 - `free_agent` / `free_agent_eligible`: free-agent-equivalent production is still shown,
   but the incumbent club owns no control value.
-- `vesting_option` and unknown states: no value is invented. They enter review until the
-  trigger model exists.
+- unresolved `vesting_option` and unknown states: no value is invented. They enter
+  review until the trigger model resolves. A final sourced outcome may convert a row
+  to its guaranteed or option state before valuation.
 
 Vesting thresholds are represented as exact counting-stat conditions. Pitching
 thresholds use outs rather than displayed decimal innings. A simple reached threshold
