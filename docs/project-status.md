@@ -80,6 +80,12 @@ or promote a player ranking; the public v1 release remains historical.
   The annual valuation gate accepts 1,308 guaranteed salary rows, routes 1,125
   arbitration rows to the CBA calculation, ends control on 473 free-agent rows and
   holds back 118 option rows. Only seven exact-identity numeric cells remain unclear.
+- The first 2025 historical projection path now covers 3,891 hitters and 5,090
+  pitchers through 2029. The one-year opportunity models were refit using targets
+  only through 2024; later years use pre-2025 historical fallbacks. FanGraphs PA/IP
+  are external scale checks, not model inputs. The full 2025 universe receives
+  183,343 expected hitter PA and 180,383 expected pitcher BF. Eight hitters and 24
+  pitchers added by the Opening Day workbook retain labeled population fallbacks.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and
@@ -302,10 +308,11 @@ The one-year confirmation forecast and scoring rule are frozen. Do not inspect p
 2026 targets or tune the completed gates; run confirmation only after official regular-
 season totals are final. Horizons 5–6 remain on the incumbent until better older
 evidence exists. The next available Phase 1 work is a small completed-season end-to-end
-replay through the new checkpoint interface. Historical performance and roster evidence
-are present; dated historical league-wide payroll/contract snapshots and reliable
-opening service balances are not, so those fields must remain reviews until a source is
-added. In the current snapshot, 16 annual contract reviews remain: 12 future vesting
+replay through the new checkpoint interface. The 2025 cutoff-safe hitter and pitcher
+projection paths are now built. Opening service/options and a gated retrospective
+contract bridge are also present. The next task is their historical control/value join;
+unresolved identities and options must remain reviews. In the current snapshot, 16
+annual contract reviews remain: 12 future vesting
 decisions, three linked Julio Rodriguez years and one missing option salary. Granular replacement of the
 43 buyout estimates with exact terms is Phase 2. Current role and late-season injury return
 now have narrow Phase 1 baselines. Correlated

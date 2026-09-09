@@ -153,6 +153,12 @@ ends control at free agency and blocks unresolved options. It is not authorized 
 vintage or primary production source. The next replay dependency is the historical
 control/value join; bounded identity and option exceptions can remain review.
 
+The cutoff-safe 2025 hitter and pitcher projection paths are now materialized. The
+selected one-year forms use targets only through 2024, while later years use pre-2025
+fallback references. FanGraphs projected PA/IP remain external scale comparators. The
+next replay dependency is therefore the historical control/value join, not another
+projection search or another workbook download.
+
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component
 discrepancies for Phase 2. The protected 2026 confirmation forecast is frozen and its

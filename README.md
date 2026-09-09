@@ -108,6 +108,9 @@ workbooks validate those snapshots, add projected PA/IP, and extend coverage to 
 The [2025 historical contract source audit](docs/historical-contract-source-audit-2025.md)
 now includes a fail-closed annual valuation gate that separates guaranteed salary,
 calculated arbitration, free agency and unresolved options.
+The [first historical projection path](docs/historical-projection-paths-2025.md)
+scores the 2025 Opening Day universe with models trained only through 2024, keeps
+FanGraphs PA/IP as an external scale check and leaves weak fallbacks visible.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

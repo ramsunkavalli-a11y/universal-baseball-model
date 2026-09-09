@@ -158,6 +158,26 @@ def _combined_training(
     return pl.concat(designs), pl.concat(targets)
 
 
+def fit_universal_pitcher_opportunity_form(
+    folds: list[PitcherOpportunityFold], *, form: str
+) -> PlayingTimeHurdleFit:
+    """Fit one declared pitcher form to explicitly supplied chronological folds."""
+
+    if form not in PITCHER_PT_V2_FORMS:
+        raise ValueError(f"unsupported universal pitcher opportunity form: {form}")
+    if not folds or any(
+        fold.target_year <= fold.snapshot_year for fold in folds
+    ):
+        raise ValueError("pitcher opportunity fitting requires valid chronological folds")
+    snapshot_years = [fold.snapshot_year for fold in folds]
+    if snapshot_years != sorted(snapshot_years) or len(set(snapshot_years)) != len(
+        snapshot_years
+    ):
+        raise ValueError("pitcher opportunity fitting folds must be strictly ordered")
+    design, targets = _combined_training(folds, form=form)
+    return fit_playing_time_hurdle(design, targets, form=form)
+
+
 def select_universal_pitcher_opportunity_form(
     fold_metrics: pl.DataFrame, pooled_metrics: pl.DataFrame
 ) -> dict[str, object]:
@@ -272,9 +292,8 @@ def evaluate_universal_pitcher_opportunity_forms(
         fold_metrics, pooled_metrics
     )
     selected_form = str(selection["selected_form"])
-    final_design, final_targets = _combined_training(folds, form=selected_form)
-    final_fit = fit_playing_time_hurdle(
-        final_design, final_targets, form=selected_form
+    final_fit = fit_universal_pitcher_opportunity_form(
+        folds, form=selected_form
     )
     return PitcherOpportunityV2Evaluation(
         selected_form=selected_form,
