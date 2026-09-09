@@ -102,6 +102,12 @@ or promote a player ranking; the public v1 release remains historical.
   players, 7,803 available values and 1,143 reviews. Joined to the September 2026
   current checkpoint, all 3,850 material deltas have declared reasons. Model and
   universe changes mean this proves mechanics, not same-model value stability.
+- The exact March models now also run at an October 15 checkpoint without refitting.
+  Official ownership and service evidence produces 7,749 usable October values. Among
+  5,660 shared usable players, value correlation is 0.691; all 4,049 material changes
+  have declared reasons. Every usable March and October value carries a Phase 1
+  reference range. Median remaining-WAR width narrows from 2.76 to 2.07 WAR. These
+  ranges are not calibrated coverage guarantees and omit cross-season covariance.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and
@@ -323,15 +329,19 @@ official-status availability boundary and Phase 1 future WAR ranges are now buil
 The one-year confirmation forecast and scoring rule are frozen. Do not inspect partial
 2026 targets or tune the completed gates; run confirmation only after official regular-
 season totals are final. Horizons 5–6 remain on the incumbent until better older
-evidence exists. The next available Phase 1 work is a small completed-season end-to-end
-replay through the new checkpoint interface. The 2025 projection, control and value
-paths now run together, outcome scoring is recorded and the first multi-checkpoint
-mechanical sequence passes. The same-model later projection checkpoint now exists:
+evidence exists. The Phase 1 coherent research path is complete under its declared
+boundaries: the 2025 projection, control, value and reference-range paths run together,
+outcome scoring is recorded and the multi-checkpoint sequence passes. The same-model
+later projection checkpoint now exists:
 the exact pre-2025 opportunity fits are committed and hash-verified, and the October
 15 update uses completed 2025 evidence without refitting. The matching October
 owner/control/economics join and same-method value comparison now pass. They resolve
 8,079 owners, produce 7,749 usable values and explain all 4,049 material value moves.
-Do not treat this descriptive update as an outcome-accuracy score.
+Do not treat this descriptive update as an outcome-accuracy score or authorization to
+publish player rankings. The next hard evidence gates are the protected 2026 score
+after the regular season and the successor CBA. Remaining service, Super Two and option
+exceptions should be resolved only when their value impact warrants it; granular
+calibration and component improvements belong in Phase 2.
 The 948 missing-owner players and bounded contract/service exceptions stay separate
 rather than forced. In the current snapshot, 16
 annual contract reviews remain: 12 future vesting

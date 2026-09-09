@@ -114,6 +114,7 @@ def build_historical_replay_economics_inputs(
     pitcher_paths: pl.DataFrame,
     opening_control: pl.DataFrame,
     valuation_terms: pl.DataFrame,
+    war_uncertainty: pl.DataFrame | None = None,
     *,
     as_of_date: date,
     projection_source_id: str,
@@ -177,6 +178,34 @@ def build_historical_replay_economics_inputs(
         )
         for row in whole_player.iter_rows(named=True)
     }
+    uncertainty_lookup: dict[tuple[int, int], dict[str, object]] = {}
+    if war_uncertainty is not None:
+        uncertainty_required = {
+            "player_id",
+            "season",
+            "projected_war_mean",
+            "projected_war_lower",
+            "projected_war_upper",
+        }
+        if missing := sorted(uncertainty_required - set(war_uncertainty.columns)):
+            raise ValueError(f"historical WAR uncertainty missing fields: {missing}")
+        uncertainty = war_uncertainty.select(*sorted(uncertainty_required))
+        if uncertainty.group_by("player_id", "season").len().filter(
+            pl.col("len") != 1
+        ).height:
+            raise ValueError("historical WAR uncertainty violates player-season grain")
+        projection_keys = set(whole_player.select("player_id", "season").iter_rows())
+        uncertainty_keys = set(uncertainty.select("player_id", "season").iter_rows())
+        if uncertainty_keys != projection_keys:
+            raise ValueError("historical WAR uncertainty coverage differs from projections")
+        uncertainty_lookup = {
+            (int(row["player_id"]), int(row["season"])): row
+            for row in uncertainty.iter_rows(named=True)
+        }
+        for key, point in war_lookup.items():
+            row = uncertainty_lookup[key]
+            if abs(float(row["projected_war_mean"]) - point) > 1e-9:
+                raise ValueError("historical WAR uncertainty point differs from projection")
 
     rows: list[dict[str, object]] = []
     reviews: list[dict[str, object]] = []
@@ -222,6 +251,7 @@ def build_historical_replay_economics_inputs(
                     }
                 )
                 continue
+            uncertainty = uncertainty_lookup.get((player_id, int(season)))
             service_days = (
                 None
                 if opening_service is None
@@ -281,8 +311,16 @@ def build_historical_replay_economics_inputs(
                     "organization_id": organization_id,
                     "season": int(season),
                     "projected_war_mean": war,
-                    "projected_war_lower": None,
-                    "projected_war_upper": None,
+                    "projected_war_lower": (
+                        None
+                        if uncertainty is None
+                        else float(uncertainty["projected_war_lower"])
+                    ),
+                    "projected_war_upper": (
+                        None
+                        if uncertainty is None
+                        else float(uncertainty["projected_war_upper"])
+                    ),
                     "control_status": control_status,
                     "known_salary_dollars": known_salary,
                     "buyout_dollars": None,
@@ -327,6 +365,10 @@ def build_historical_replay_economics_inputs(
             ).height,
             "known_salary_rows": annual.filter(
                 pl.col("known_salary_dollars").is_not_null()
+            ).height,
+            "uncertainty_rows": annual.filter(
+                pl.col("projected_war_lower").is_not_null()
+                & pl.col("projected_war_upper").is_not_null()
             ).height,
             "prevaluation_review_rows": annual.filter(
                 pl.col("contract_structure_review_reason") != ""

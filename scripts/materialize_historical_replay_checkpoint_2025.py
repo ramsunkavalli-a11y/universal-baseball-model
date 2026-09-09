@@ -79,6 +79,14 @@ def main() -> int:
         .agg(pl.col("expected_war").sum().alias("expected_remaining_war"))
         .sort("player_id")
     )
+    annual_ranges = annual.group_by("player_id").agg(
+        pl.col("projected_war_mean").sum().alias("annual_expected_remaining_war"),
+        pl.col("projected_war_lower").sum().alias("expected_remaining_war_lower"),
+        pl.col("projected_war_upper").sum().alias("expected_remaining_war_upper"),
+    )
+    whole_player = whole_player.join(
+        annual_ranges, on="player_id", how="left", validate="1:1"
+    )
     if whole_player.get_column("player_id").n_unique() != whole_player.height:
         raise ValueError("historical projection universe violates player grain")
     owner_lookup = {
@@ -123,6 +131,10 @@ def main() -> int:
             }
         )
         expected_war = float(projection["expected_remaining_war"])
+        if available and abs(
+            float(projection["annual_expected_remaining_war"]) - expected_war
+        ) > 1e-9:
+            raise ValueError("historical annual uncertainty point differs from projection")
         record_rows.append(
             {
                 "checkpoint_id": CHECKPOINT_ID,
@@ -145,7 +157,7 @@ def main() -> int:
                     else str(owner["source_snapshot_id"]),
                 ),
                 "coverage_tier": (
-                    "integrated_point_only_no_interval"
+                    "integrated_phase1_reference_range"
                     if available
                     else "review_missing_owner"
                     if owner is None
@@ -153,8 +165,16 @@ def main() -> int:
                 ),
                 "calculation_status": "available" if available else "review",
                 "expected_remaining_war": expected_war if available else None,
-                "expected_remaining_war_lower": expected_war if available else None,
-                "expected_remaining_war_upper": expected_war if available else None,
+                "expected_remaining_war_lower": (
+                    float(projection["expected_remaining_war_lower"])
+                    if available
+                    else None
+                ),
+                "expected_remaining_war_upper": (
+                    float(projection["expected_remaining_war_upper"])
+                    if available
+                    else None
+                ),
                 "expected_remaining_cost_dollars": (
                     float(economics["salary_cost_dollars"]) if available else None
                 ),
@@ -241,8 +261,8 @@ def main() -> int:
         "unknown_rights_players": records.filter(
             pl.col("rights_state") == "unknown_rights"
         ).height,
-        "point_only_players": records.filter(
-            pl.col("coverage_tier") == "integrated_point_only_no_interval"
+        "reference_range_players": records.filter(
+            pl.col("coverage_tier") == "integrated_phase1_reference_range"
         ).height,
         "totals": {
             "expected_remaining_war": float(checkpoint["expected_remaining_war"]),
@@ -258,7 +278,7 @@ def main() -> int:
             "vintage_information_claim": False,
             "missing_rights_valued": False,
             "review_rows_valued": False,
-            "historical_interval_status": "point_only_not_calibrated",
+            "historical_interval_status": "phase1_reference_range_not_calibrated",
             "first_checkpoint_has_delta_ledger_rows": False,
         },
         "storage": storage,

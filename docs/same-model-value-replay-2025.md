@@ -25,6 +25,9 @@ information claim.
   reviews, 1,007 lack an owner and 330 have a control or contract exception.
 - 31,552 annual rows calculate and 764 remain in review. The largest bounded issues
   are 558 missing-service rows, 103 Super Two rows and 97 option rows.
+- Every calculated annual value now carries the existing Phase 1 uncertainty range.
+  Median remaining-WAR width narrows from 2.76 WAR in March to 2.07 WAR in October.
+  The ranges are moment-based references, not empirically calibrated guarantees.
 
 ## Value movement
 
@@ -59,6 +62,8 @@ Reproduce with:
 
 ```text
 python scripts/materialize_historical_people_control_2025.py
+python scripts/materialize_historical_war_uncertainty.py --as-of-date 2025-03-27
+python scripts/materialize_historical_war_uncertainty.py --as-of-date 2025-10-15
 python scripts/materialize_same_model_control_value_2025.py
 python scripts/materialize_same_model_replay_checkpoint_2025.py
 python scripts/materialize_same_model_value_replay_sequence_2025.py

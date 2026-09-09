@@ -49,7 +49,8 @@ March 27 checkpoint:
 - 1,143 reviews, including 948 unknown-rights players and 195 players with a blocked
   control or contract year;
 - no future outcome evidence and no vintage-information claim; and
-- point-only historical bounds, clearly labeled as uncalibrated.
+- Phase 1 reference ranges for every usable value, clearly labeled as
+  uncalibrated and without cross-season covariance.
 
 The historical checkpoint and the September 8, 2026 current checkpoint also pass as
 a two-checkpoint mechanical sequence. All 3,850 material value deltas have a declared
@@ -67,12 +68,17 @@ That join is now complete. The October checkpoint resolves 8,079 owners and prod
 7,749 usable player values. The same-method sequence has 4,049 material value changes
 and zero unexplained changes; 5,660 shared usable players have a 0.691 value
 correlation. See [the value replay](same-model-value-replay-2025.md).
+Both checkpoints now use the same moment-based Phase 1 uncertainty method as the
+live build. Median remaining-WAR range width is 2.76 WAR in March and 2.07 WAR in
+October; these are reference ranges, not coverage guarantees.
 
 Reproduce with:
 
 ```text
 python scripts/score_historical_projection_paths_2025.py
 python scripts/score_historical_war_paths_2025.py
+python scripts/materialize_historical_war_uncertainty.py --as-of-date 2025-03-27
+python scripts/materialize_historical_war_uncertainty.py --as-of-date 2025-10-15
 python scripts/materialize_historical_replay_checkpoint_2025.py
 python scripts/materialize_phase1_replay_sequence.py
 python scripts/materialize_same_model_projection_paths_2026.py

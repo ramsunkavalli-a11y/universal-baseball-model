@@ -215,6 +215,10 @@ def main() -> int:
         Path("reports/generated/injury-return-history/captures/transactions-2025.json"),
     )
     output = Path("reports/generated/historical-control-value/2025-03-27")
+    uncertainty_path = Path(
+        "reports/generated/historical-war-uncertainty/2025-03-27/"
+        "tables/whole-player-war-uncertainty.parquet"
+    )
     hitter_path = projection_root / "tables/hitter-expected-war-paths.parquet"
     pitcher_path = projection_root / "tables/pitcher-expected-war-paths.parquet"
 
@@ -236,6 +240,7 @@ def main() -> int:
         pitcher,
         control_owners,
         terms,
+        pl.read_parquet(uncertainty_path),
         as_of_date=AS_OF_DATE,
         projection_source_id="historical_projection_paths_2025_03_27",
     )
@@ -354,6 +359,7 @@ def main() -> int:
                 roster_path,
                 forty_path,
                 people_path,
+                uncertainty_path,
                 *transaction_paths,
             )
         },

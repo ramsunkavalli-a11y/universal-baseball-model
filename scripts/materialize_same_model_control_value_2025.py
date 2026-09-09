@@ -246,6 +246,10 @@ def main() -> int:
         "historical_40man_membership.parquet"
     )
     output = Path("reports/generated/historical-control-value/2025-10-15")
+    uncertainty_path = Path(
+        "reports/generated/historical-war-uncertainty/2025-10-15/"
+        "tables/whole-player-war-uncertainty.parquet"
+    )
     hitter_path = projection_root / "tables/hitter-expected-war-paths.parquet"
     pitcher_path = projection_root / "tables/pitcher-expected-war-paths.parquet"
     people_path = people_root / "tables/people.parquet"
@@ -282,6 +286,7 @@ def main() -> int:
         pitcher,
         owners,
         pl.read_parquet(term_path),
+        pl.read_parquet(uncertainty_path).filter(pl.col("season") <= THROUGH_YEAR),
         as_of_date=AS_OF_DATE,
         projection_source_id="same_model_projection_paths_2025_10_15",
     )
@@ -362,6 +367,7 @@ def main() -> int:
         term_path,
         roster_path,
         forty_path,
+        uncertainty_path,
     )
     report = {
         "report_schema_version": "0.1",

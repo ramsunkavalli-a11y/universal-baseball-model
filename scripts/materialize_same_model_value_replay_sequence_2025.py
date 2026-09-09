@@ -117,7 +117,7 @@ def main() -> int:
             "forecast_horizon_rolls_forward": True,
             "value_stability_inference": "descriptive_same_method_update_only",
             "accuracy_inference_authorized": False,
-            "historical_checkpoint_interval": "point_only_not_calibrated",
+            "historical_checkpoint_interval": "phase1_reference_range_not_calibrated",
         },
         "source_files": {path.as_posix(): sha256_file(path) for path in input_paths},
         "storage": storage,

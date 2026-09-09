@@ -108,6 +108,14 @@ justify worse calibration or coverage for sparse players.
 
 ## Immediate execution order
 
+The Phase 1 coherent research path is complete under its declared boundaries. Universal
+hitter and pitcher projections now join rights, costs and Phase 1 reference ranges, and
+two 2025 checkpoints pass the same-method replay with no unexplained material changes.
+This is not authorization to publish rankings. The next hard evidence gates are the
+protected 2026 prospective score after the regular season and the successor CBA.
+Resolve service, Super Two and option exceptions by material value impact; leave
+granular range calibration and component refinement for Phase 2.
+
 Steps 1–7 now have a complete Phase 1 research path. The dated rights universe covers
 8,393 players; explicit fallbacks retain inactive, no-history and missing-age players.
 Universal hitter and pitcher opportunity models are separated from conditional skill,
@@ -117,7 +125,7 @@ fallback because the older official source does not provide enough chronology-sa
 validation folds. The integrated output remains a research scenario, not a publishable
 ranking.
 
-The immediate P0 is Step 8: prove the whole path under historical cutoffs. Start with a
+Step 8 now passes at two 2025 historical cutoffs. Continue with a
 small set of dated season checkpoints, not a daily scheduler. At each checkpoint,
 reconstruct the player denominator and allowed evidence, score production and
 opportunity, join the then-known rights/cost state, and persist the resulting value
@@ -178,7 +186,9 @@ the October 15 run updates 2025 evidence without refitting. The remaining replay
 was the matching October control and contract-value state. That state now passes with
 7,749 usable player values and no unexplained material change. The remaining 1,337
 reviews are explicitly separated: 1,007 missing owners plus 330 bounded control or
-contract exceptions.
+contract exceptions. Both checkpoints now carry Phase 1 reference ranges; their median
+remaining-WAR width narrows from 2.76 WAR in March to 2.07 WAR in October. These are
+uncalibrated references without cross-season covariance, not probability guarantees.
 
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component

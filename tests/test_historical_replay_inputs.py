@@ -1,6 +1,7 @@
 from datetime import date
 
 import polars as pl
+import pytest
 
 from universal_baseball.historical_replay_inputs import (
     build_historical_replay_economics_inputs,
@@ -133,3 +134,34 @@ def test_postseason_checkpoint_anchors_service_at_next_forecast_year() -> None:
     assert player_two.item(0, "season") == 2026
     assert player_two.item(0, "control_status") == "super_two_candidate"
     assert player_two.item(1, "control_status") == "arbitration_eligible"
+
+
+def test_historical_join_attaches_complete_war_uncertainty() -> None:
+    hitter, pitcher = _paths()
+    whole = (
+        pl.concat([hitter, pitcher])
+        .group_by("player_id", "season")
+        .agg(pl.col("expected_war").sum().alias("projected_war_mean"))
+        .with_columns(
+            (pl.col("projected_war_mean") - 0.5).alias("projected_war_lower"),
+            (pl.col("projected_war_mean") + 0.5).alias("projected_war_upper"),
+        )
+    )
+    result = build_historical_replay_economics_inputs(
+        hitter,
+        pitcher,
+        _opening(),
+        _terms(),
+        whole,
+        as_of_date=date(2025, 3, 27),
+        projection_source_id="projection",
+    )
+
+    player_one = result.annual_inputs.filter(pl.col("player_id") == 1).sort("season")
+    assert player_one.get_column("projected_war_lower").to_list() == pytest.approx(
+        [0.9, 1.1]
+    )
+    assert player_one.get_column("projected_war_upper").to_list() == pytest.approx(
+        [1.9, 2.1]
+    )
+    assert result.coverage["uncertainty_rows"] == result.annual_inputs.height
