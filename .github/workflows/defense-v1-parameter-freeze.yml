@@ -29,7 +29,7 @@ jobs:
           && python -m pip install "sportsdataverse==0.0.75" "scipy>=1.13,<2"
 
       - name: Download certified historical fielding source
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: position-role-historical-source-2021-2024
           path: inputs/historical
@@ -38,7 +38,7 @@ jobs:
           run-id: 32148467330
 
       - name: Download frozen tracked source aggregate
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: defense-v1-tracked-source-2021-2023
           path: inputs/tracked

@@ -29,7 +29,7 @@ jobs:
           tests/test_player_value_mlb_centering.py
           tests/test_player_value_mlb_centering_assembly.py
       - name: Download frozen B2 batting profiles
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9311172007"
           path: inputs/batting-b2
@@ -37,7 +37,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32099733186"
       - name: Download frozen Playing Time surface
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9326300207"
           path: inputs/playing-time
@@ -45,7 +45,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32142089669"
       - name: Download frozen MLB batting performance
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9265954750"
           path: inputs/mlb-performance
@@ -53,7 +53,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "31955392482"
       - name: Download frozen fielding history
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9328803363"
           path: inputs/fielding-history
@@ -61,7 +61,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32148467330"
       - name: Download frozen tracked defense
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9342409616"
           path: inputs/defense-tracked
@@ -69,7 +69,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32182019495"
       - name: Download frozen position allocation
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9370211679"
           path: inputs/position-allocation
@@ -77,7 +77,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32266007594"
       - name: Download frozen DH exposure
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9371840453"
           path: inputs/dh-exposure
@@ -85,7 +85,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32270141291"
       - name: Download frozen catcher opportunities
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9371426672"
           path: inputs/catcher-opportunities
@@ -93,7 +93,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32269076231"
       - name: Download recertified advancement history
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9410189065"
           path: inputs/advancement-recertified
@@ -101,7 +101,7 @@ jobs:
           repository: ramsunkavalli-a11y/universal-baseball-model
           run-id: "32378956567"
       - name: Download corrected numerical centering components
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: "9412396481"
           path: inputs/centering-components

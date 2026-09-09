@@ -29,7 +29,7 @@ jobs:
         run: python -m pytest
 
       - name: Download certified affiliated Performance artifact
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: affiliated-batting-performance-2024
           path: certified-inputs/affiliated
@@ -38,7 +38,7 @@ jobs:
           github-token: ${{ github.token }}
 
       - name: Download certified MLB Performance artifact
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: mlb-batting-performance-2024
           path: certified-inputs/mlb
