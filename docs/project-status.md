@@ -328,9 +328,10 @@ replay through the new checkpoint interface. The 2025 projection, control and va
 paths now run together, outcome scoring is recorded and the first multi-checkpoint
 mechanical sequence passes. The same-model later projection checkpoint now exists:
 the exact pre-2025 opportunity fits are committed and hash-verified, and the October
-15 update uses completed 2025 evidence without refitting. The next replay task is the
-matching October owner/control/economics join, followed by a same-method value
-comparison. Do not treat the current cross-version value delta as stability evidence.
+15 update uses completed 2025 evidence without refitting. The matching October
+owner/control/economics join and same-method value comparison now pass. They resolve
+8,079 owners, produce 7,749 usable values and explain all 4,049 material value moves.
+Do not treat this descriptive update as an outcome-accuracy score.
 The 948 missing-owner players and bounded contract/service exceptions stay separate
 rather than forced. In the current snapshot, 16
 annual contract reviews remain: 12 future vesting

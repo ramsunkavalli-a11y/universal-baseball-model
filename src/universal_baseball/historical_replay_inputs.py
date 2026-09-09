@@ -155,8 +155,11 @@ def build_historical_replay_economics_inputs(
 
     whole_player = _whole_player_war(hitter_paths, pitcher_paths)
     seasons = sorted(whole_player.get_column("season").unique().to_list())
-    if not seasons or seasons[0] != as_of_date.year:
-        raise ValueError("historical projection seasons must begin in the cutoff year")
+    if not seasons or seasons[0] not in {as_of_date.year, as_of_date.year + 1}:
+        raise ValueError(
+            "historical projection seasons must begin in the cutoff or next year"
+        )
+    service_anchor_year = int(seasons[0])
     terms = valuation_terms.filter(pl.col("player_id").is_not_null()).select(
         *sorted(term_required)
     )
@@ -223,7 +226,7 @@ def build_historical_replay_economics_inputs(
                 None
                 if opening_service is None
                 else int(opening_service)
-                + (int(season) - as_of_date.year) * SERVICE_DAYS_PER_YEAR
+                + (int(season) - service_anchor_year) * SERVICE_DAYS_PER_YEAR
             )
             term = term_lookup.get((player_id, int(season)))
             term_status = "" if term is None else str(term["contract_status"])
@@ -251,7 +254,7 @@ def build_historical_replay_economics_inputs(
                 structure_review = "missing_historical_opening_service"
             else:
                 control_status = _statutory_status(
-                    service_days, super_two_review=int(season) == as_of_date.year
+                    service_days, super_two_review=int(season) == service_anchor_year
                 )
                 if control_status == "super_two_candidate":
                     structure_review = "historical_super_two_status_unresolved"

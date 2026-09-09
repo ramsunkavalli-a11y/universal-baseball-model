@@ -162,9 +162,9 @@ projection search or another workbook download.
 That control/value join is now implemented. It resolves 7,998 of 8,946 projected
 players to an owner and calculates 39,648 of 39,990 owned annual rows. The 948
 missing-owner players remain talent-only; 342 owned rows remain explicit reviews.
-The next P0 is the October 2025 owner/control/economics checkpoint and same-method
-value comparison. Exact option terms and contract identities stay bounded unless they
-materially change that result.
+The October 2025 owner/control/economics checkpoint and same-method value comparison
+are complete. Exact option terms and contract identities stay bounded unless they
+materially change the result.
 
 The frozen 2025 outcome score and mechanical checkpoint are now complete. League PA
 and BF totals are within 1%, both skill-component forecasts beat the population prior,
@@ -175,7 +175,10 @@ universes differ. The next Phase 1 replay evidence should therefore be a later
 checkpoint scored under the same model definition, not another broad component search.
 That projection checkpoint is complete. The March fits are now durable artifacts, and
 the October 15 run updates 2025 evidence without refitting. The remaining replay gap
-is the matching October control and contract-value state.
+was the matching October control and contract-value state. That state now passes with
+7,749 usable player values and no unexplained material change. The remaining 1,337
+reviews are explicitly separated: 1,007 missing owners plus 330 bounded control or
+contract exceptions.
 
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component

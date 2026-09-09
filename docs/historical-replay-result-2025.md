@@ -61,7 +61,12 @@ as a durable package, and an October 15 checkpoint reuses their verified hashes 
 updating only available 2025 evidence. Shared-player expected-WAR correlations are
 0.689 for hitters and 0.670 for pitchers across 2026–2029. See
 [the same-model update](same-model-projection-update-2025.md). Contract-value
-stability still requires a cutoff-safe October owner/control/economics join.
+stability required a cutoff-safe October owner/control/economics join.
+
+That join is now complete. The October checkpoint resolves 8,079 owners and produces
+7,749 usable player values. The same-method sequence has 4,049 material value changes
+and zero unexplained changes; 5,660 shared usable players have a 0.691 value
+correlation. See [the value replay](same-model-value-replay-2025.md).
 
 Reproduce with:
 
@@ -72,4 +77,8 @@ python scripts/materialize_historical_replay_checkpoint_2025.py
 python scripts/materialize_phase1_replay_sequence.py
 python scripts/materialize_same_model_projection_paths_2026.py
 python scripts/compare_same_model_projection_checkpoints_2025.py
+python scripts/materialize_historical_people_control_2025.py
+python scripts/materialize_same_model_control_value_2025.py
+python scripts/materialize_same_model_replay_checkpoint_2025.py
+python scripts/materialize_same_model_value_replay_sequence_2025.py
 ```

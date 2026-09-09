@@ -1,6 +1,7 @@
 # Same-model 2025 projection update
 
-Status: projection stability evidence is complete; contract-value stability is next.
+Status: projection stability evidence is complete and the matching value replay now
+passes.
 
 ## What was held fixed
 
@@ -37,13 +38,13 @@ forward one year, so the same target season can move from a longer-horizon fallb
 to the frozen next-year model. That horizon change is disclosed in the report rather
 than mislabeled as pure parameter stability.
 
-## Next
+## Downstream value result
 
-Attach the October owner, control and contract-cost state to create a second
-same-method value checkpoint. Dated 2025 payroll files would improve that step if
-they already exist, but current 2026 downloads are not substitutes for an October
-2025 contract state. Missing historical terms must stay labeled later-known or in
-review.
+The October owner, service and cost state is now attached. The resulting replay has
+4,049 material value changes and zero unexplained changes. See
+[the same-model value replay](same-model-value-replay-2025.md). A dated 2025 payroll
+archive would still improve a future true-vintage study, but is not required for this
+Phase 1 event-cutoff gate.
 
 Reproduce with:
 

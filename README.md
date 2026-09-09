@@ -121,6 +121,9 @@ Its historical checkpoint and the current checkpoint pass the mechanical sequenc
 The [same-model October update](docs/same-model-projection-update-2025.md) permanently
 stores the March opportunity fits, reuses them without refitting, and separates
 shared-player projection movement from player-universe turnover.
+The [same-model value replay](docs/same-model-value-replay-2025.md) adds official
+October ownership and service evidence, produces 7,749 usable values, and explains
+all 4,049 material changes without treating the update as an accuracy score.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

@@ -114,3 +114,22 @@ def test_historical_join_rejects_unknown_team() -> None:
         assert "unknown teams" in str(exc)
     else:
         raise AssertionError("unknown historical teams must fail closed")
+
+
+def test_postseason_checkpoint_anchors_service_at_next_forecast_year() -> None:
+    hitter, pitcher = _paths()
+    hitter = hitter.with_columns((pl.col("season") + 1).alias("season"))
+    pitcher = pitcher.with_columns((pl.col("season") + 1).alias("season"))
+    result = build_historical_replay_economics_inputs(
+        hitter,
+        pitcher,
+        _opening(),
+        _terms().with_columns((pl.col("payroll_year") + 1).alias("payroll_year")),
+        as_of_date=date(2025, 10, 15),
+        projection_source_id="projection",
+    )
+
+    player_two = result.annual_inputs.filter(pl.col("player_id") == 2).sort("season")
+    assert player_two.item(0, "season") == 2026
+    assert player_two.item(0, "control_status") == "super_two_candidate"
+    assert player_two.item(1, "control_status") == "arbitration_eligible"
