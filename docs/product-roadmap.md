@@ -164,6 +164,7 @@ Projection v1 now has a shared hitter/pitcher guardrail boundary in
 team-depth dependence or WAR arithmetic that does not reconcile. It reports PA/BF,
 MLB-active probability, conditional WAR rate, expected WAR and controlled WAR
 separately. Pre-cutoff role distributions flag unusual workload, rate and annual
-WAR without caps. The universal hitter participation/PA calculation is now implemented
-with explicit historical fallbacks; its certified league materialization is next,
-followed by pitcher participation/role/BF and component-level multi-year aging.
+WAR without caps. Universal hitter participation/PA and pitcher participation/role/BF
+calculations are now implemented with explicit historical fallbacks. Their certified
+league panels and materialized paths are next, followed by component-level multi-year
+aging.

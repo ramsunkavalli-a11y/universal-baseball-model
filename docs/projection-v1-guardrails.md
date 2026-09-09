@@ -26,7 +26,8 @@ The current gaps are material:
 - no fully materialized multi-year WAR path yet covers every player in the rights universe;
 - the universal hitter opportunity calculation is implemented, but its multi-year
   historical snapshot input still needs league materialization and certification;
-- pitcher arrival, survival, role transition and workload are not implemented;
+- pitcher arrival, survival, role transition and BF calculations are implemented, but
+  their zero-inclusive historical league panel still needs materialization;
 - neither hitter nor pitcher has a final component-level multi-year aging layer;
 - the old hitter uncertainty surface is one-year and inherits an unbounded positive-PA
   count distribution without a separate physical-plausibility diagnostic;
@@ -105,8 +106,9 @@ durability and workload should explain them naturally.
 ### Pitchers
 
 1. Keep the existing component-rate baseline.
-2. Add team-neutral MLB arrival/survival, starter/reliever/swingman transition and BF
-   workload models with universal fallbacks.
+2. **Implemented:** team-neutral MLB arrival/survival, starter/reliever/swingman
+   transition and BF workload with universal historical fallbacks. League panel
+   materialization and result review remain.
 3. Fit modern adjacent-season aging separately for K, UBB, HBP, HR and contact, with
    regression and explicit survivor-bias diagnostics.
 4. Convert component rates and workload to runs and WAR, then produce correlated

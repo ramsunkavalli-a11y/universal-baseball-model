@@ -72,6 +72,11 @@ or promote a player ranking; the public v1 release remains historical.
   the Projection v1 WAR schema. A real league run awaits certified historical
   affiliated snapshots and the frozen parameter artifacts, which are absent from this
   checkout.
+- Pitcher Opportunity v1 now applies the same separation to MLB arrival, conditional
+  BF and starter/swingman/reliever probabilities. Sparse age/level/role cohorts shrink
+  through a disclosed hierarchy, all fallback sources remain labeled, and the output
+  composes with conditional WAR/800 BF and control seasons. Its historical league panel
+  is not yet materialized.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -107,9 +112,9 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main candidate denominator, phase-one control/cost path, static economics engine,
 projection guardrails and universal hitter-opportunity calculation are now built. Next,
-materialize/certify the historical hitter snapshots and run the league opportunity
-path; then build pitcher arrival/role/BF paths, component-level aging and whole-player
-WAR assembly. The later economic
+materialize/certify the historical hitter and pitcher snapshots and run both league
+opportunity paths; then build component-level aging and whole-player WAR assembly. The
+later economic
 blocker is a chronologically fitted free-agent market function. In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.
@@ -133,8 +138,8 @@ artifacts; hashes bind the inputs. They reject overwriting an inspected candidat
 run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
-Current focused verification: 19 hitter-opportunity/guardrail tests pass and Ruff
-passes across `src`, `scripts` and `tests`. The current full run has 1,162 passing tests.
+Current focused verification: 24 opportunity/guardrail tests pass and Ruff
+passes across `src`, `scripts` and `tests`. The current full run has 1,167 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 
