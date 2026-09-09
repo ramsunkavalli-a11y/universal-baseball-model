@@ -130,7 +130,8 @@ the current build; the ranges remain uncalibrated and omit cross-season covarian
 ## Play with the current results
 
 On Windows, double-click `play-with-results.cmd`. It builds and opens a private local
-webpage from the generated Phase 1 files already on this computer. The page supports
+webpage in Edge, or Chrome if Edge is unavailable, from the generated Phase 1 files
+already on this computer. The page supports
 player search, team and review filters, sortable results, year-by-year detail and CSV
 export. Nothing is uploaded or published. Rebuild it directly with:
 
