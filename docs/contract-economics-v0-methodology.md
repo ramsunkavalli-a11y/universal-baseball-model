@@ -84,6 +84,12 @@ sensitivity work; a current rest-of-season estimate cannot select a full-season 
 - `vesting_option` and unknown states: no value is invented. They enter review until the
   trigger model exists.
 
+A dated review-only overlay can block a player-season when reliable sources disagree
+about its legal option structure or when multiple years share one linked decision.
+These records add provenance and a specific review reason; they never overwrite the
+primary contract/control source. Adding a salary or buyout later does not remove the
+block. The structure must first be reconciled explicitly.
+
 For tender and option states, `optionality premium` is the modeled control value minus
 the value if the salary/exercise branch were an unavoidable guarantee. It can be
 positive for club rights and negative for player rights.

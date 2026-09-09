@@ -32,6 +32,8 @@ Fourteen explicit, non-conflicting dollar facts from a dated Spotrac public-opti
 review fill only missing fields; they resolve 13 economics review rows. The small
 overlay keeps page-level provenance, does not redistribute a bulk table, does not
 interpret a dash as zero and cannot override a FanGraphs term or control status.
+Seven known structure disagreements are carried as review-only records. They block
+calculation even if the annual salary and buyout fields are otherwise complete.
 The ten projected 2027 Super Two cases now advance through arbitration classes 1–4
 instead of being reset to class 1 when they cross three service years.
 
@@ -45,7 +47,8 @@ This table is ready to feed the existing contract-economics engine. It is not ye
 defensible dollar ranking. The remaining large inputs are:
 
 1. official post-2026 CBA minimum-salary rules;
-2. the remaining 55 buyouts and unresolved option triggers; and
+2. the remaining 55 buyouts, seven known structure conflicts and unresolved option
+   triggers; and
 3. Phase 2 internal arbitration validation, empirical interval calibration and
    correlated career paths for option
    decisions.

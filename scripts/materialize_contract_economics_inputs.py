@@ -42,6 +42,11 @@ def _args() -> argparse.Namespace:
         type=Path,
         default=Path("config/secondary-contract-terms-2026-09-09.json"),
     )
+    parser.add_argument(
+        "--secondary-contract-reviews",
+        type=Path,
+        default=Path("config/secondary-contract-structure-reviews-2026-09-09.json"),
+    )
     return parser.parse_args()
 
 
@@ -62,6 +67,14 @@ def main() -> int:
     secondary_terms = pl.DataFrame(secondary_payload["terms"]).with_columns(
         pl.lit(secondary_payload["snapshot_id"]).alias("source_snapshot_id")
     )
+    secondary_review_payload = json.loads(
+        args.secondary_contract_reviews.read_text(encoding="utf-8")
+    )
+    secondary_reviews = pl.DataFrame(
+        secondary_review_payload["reviews"]
+    ).with_columns(
+        pl.lit(secondary_review_payload["snapshot_id"]).alias("source_snapshot_id")
+    )
     result = build_future_contract_economics_inputs(
         pl.read_parquet(dated_war_root / "hitter_expected_war_paths.parquet"),
         pl.read_parquet(dated_war_root / "pitcher_expected_war_paths.parquet"),
@@ -73,6 +86,7 @@ def main() -> int:
         ),
         option_buyouts=buyout_links.links,
         secondary_contract_terms=secondary_terms,
+        secondary_contract_reviews=secondary_reviews,
     )
     output_root = args.output_root / args.as_of_date.isoformat()
     output_root.mkdir(parents=True, exist_ok=True)
@@ -99,6 +113,12 @@ def main() -> int:
             "retrieved_date": secondary_payload["retrieved_date"],
             "rows": len(secondary_payload["terms"]),
             "boundary": secondary_payload["boundary"],
+        },
+        "secondary_contract_structure_reviews": {
+            "snapshot_id": secondary_review_payload["snapshot_id"],
+            "retrieved_date": secondary_review_payload["retrieved_date"],
+            "rows": len(secondary_review_payload["reviews"]),
+            "boundary": secondary_review_payload["boundary"],
         },
         "buyout_link_coverage": buyout_links.coverage,
         "ranking_status": "not_publishable_inputs_only",

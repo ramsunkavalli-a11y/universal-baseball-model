@@ -27,6 +27,18 @@ SECONDARY_CONTRACT_TERM_SCHEMA: dict[str, pl.DataType] = {
     "source_snapshot_id": pl.String,
 }
 
+SECONDARY_CONTRACT_REVIEW_SCHEMA: dict[str, pl.DataType] = {
+    "player_id": pl.Int64,
+    "player_name": pl.String,
+    "organization_id": pl.Int64,
+    "season": pl.Int64,
+    "expected_primary_control_status": pl.String,
+    "secondary_structure": pl.String,
+    "review_reason": pl.String,
+    "source_url": pl.String,
+    "source_snapshot_id": pl.String,
+}
+
 
 @dataclass(frozen=True, slots=True)
 class ContractEconomicsInputBuild:
@@ -69,6 +81,7 @@ def build_future_contract_economics_inputs(
     war_uncertainty: pl.DataFrame | None = None,
     option_buyouts: pl.DataFrame | None = None,
     secondary_contract_terms: pl.DataFrame | None = None,
+    secondary_contract_reviews: pl.DataFrame | None = None,
 ) -> ContractEconomicsInputBuild:
     """Build annual inputs without inventing market assumptions."""
 
@@ -77,6 +90,7 @@ def build_future_contract_economics_inputs(
     }
     source_linked_buyout_rows = 0
     secondary_term_rows = 0
+    secondary_review_rows = 0
 
     hitter = _projection_component(hitter_paths, "hitter")
     pitcher = _projection_component(pitcher_paths, "pitcher")
@@ -272,6 +286,60 @@ def build_future_contract_economics_inputs(
                 "buyout_dollars"
             ),
         )
+    if secondary_contract_reviews is None:
+        joined = joined.with_columns(
+            pl.lit("").alias("contract_structure_review_reason"),
+            pl.lit(None, dtype=pl.String).alias("structure_review_source_id"),
+        )
+    else:
+        missing_review = sorted(
+            set(SECONDARY_CONTRACT_REVIEW_SCHEMA)
+            - set(secondary_contract_reviews.columns)
+        )
+        if missing_review:
+            raise ValueError(
+                f"secondary contract reviews missing fields: {missing_review}"
+            )
+        reviews = secondary_contract_reviews.select(
+            list(SECONDARY_CONTRACT_REVIEW_SCHEMA)
+        ).cast(SECONDARY_CONTRACT_REVIEW_SCHEMA, strict=True)
+        if reviews.group_by("player_id", "organization_id", "season").len().filter(
+            pl.col("len") != 1
+        ).height:
+            raise ValueError("secondary contract reviews violate player-team-season grain")
+        if reviews.filter(
+            (pl.col("expected_primary_control_status") == "")
+            | (pl.col("secondary_structure") == "")
+            | (pl.col("review_reason") == "")
+            | (pl.col("source_url") == "")
+            | (pl.col("source_snapshot_id") == "")
+        ).height:
+            raise ValueError("secondary contract reviews require structure and provenance")
+        secondary_review_rows = reviews.height
+        joined = joined.join(
+            reviews.select(
+                "player_id",
+                "organization_id",
+                "season",
+                "expected_primary_control_status",
+                pl.col("review_reason").alias("contract_structure_review_reason"),
+                pl.col("source_snapshot_id").alias("structure_review_source_id"),
+            ),
+            on=["player_id", "organization_id", "season"],
+            how="left",
+            validate="m:1",
+        )
+        if joined.filter(
+            pl.col("expected_primary_control_status").is_not_null()
+            & (
+                pl.col("expected_primary_control_status")
+                != pl.col("control_status")
+            )
+        ).height:
+            raise ValueError("secondary review expected primary status does not match")
+        joined = joined.with_columns(
+            pl.col("contract_structure_review_reason").fill_null("")
+        )
     available = joined.filter(pl.col("projected_war_mean").is_not_null())
     rows = []
     for row in available.iter_rows(named=True):
@@ -325,9 +393,13 @@ def build_future_contract_economics_inputs(
                     for value in (
                         str(row["term_source_id"] or row["projection_basis"]),
                         str(row["secondary_contract_source_id"] or ""),
+                        str(row["structure_review_source_id"] or ""),
                     )
                     if value
                 ),
+                "contract_structure_review_reason": row[
+                    "contract_structure_review_reason"
+                ],
             }
         )
     annual = pl.DataFrame(rows, schema=ANNUAL_CONTRACT_ECONOMICS_INPUT_SCHEMA).sort(
@@ -361,6 +433,7 @@ def build_future_contract_economics_inputs(
             ).height,
             "source_linked_buyout_rows": source_linked_buyout_rows,
             "secondary_contract_term_rows": secondary_term_rows,
+            "secondary_contract_review_rows": secondary_review_rows,
             "option_rows_with_buyout": annual.filter(
                 pl.col("buyout_dollars").is_not_null()
             ).height,

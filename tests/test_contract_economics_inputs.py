@@ -185,6 +185,40 @@ def test_secondary_term_fills_only_missing_nonconflicting_fact() -> None:
             ),
         )
 
+    review = pl.DataFrame(
+        {
+            "player_id": [1], "player_name": ["One"],
+            "organization_id": [100], "season": [2027],
+            "expected_primary_control_status": ["club_option"],
+            "secondary_structure": ["player_opt_out"],
+            "review_reason": ["source structure conflict"],
+            "source_url": ["https://example.test/player/one"],
+            "source_snapshot_id": ["review:test"],
+        }
+    )
+    reviewed = build_future_contract_economics_inputs(
+        hitters,
+        pitchers,
+        control,
+        terms,
+        secondary_contract_reviews=review,
+    )
+    assert reviewed.annual_inputs.item(
+        0, "contract_structure_review_reason"
+    ) == "source structure conflict"
+    assert reviewed.coverage["secondary_contract_review_rows"] == 1
+
+    with pytest.raises(ValueError, match="expected primary status"):
+        build_future_contract_economics_inputs(
+            hitters,
+            pitchers,
+            control,
+            terms,
+            secondary_contract_reviews=review.with_columns(
+                pl.lit("player_option").alias("expected_primary_control_status")
+            ),
+        )
+
 
 def test_super_two_track_advances_through_four_arbitration_classes() -> None:
     hitters = pl.DataFrame(

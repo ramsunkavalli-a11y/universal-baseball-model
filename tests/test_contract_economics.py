@@ -56,6 +56,7 @@ def _input(
                 "arbitration_salary_basis_source": "test_prior_season",
                 "projection_source_id": "projection:test",
                 "contract_source_id": "contract:test",
+                "contract_structure_review_reason": "",
             }
         ],
         schema=ANNUAL_CONTRACT_ECONOMICS_INPUT_SCHEMA,
@@ -164,6 +165,21 @@ def test_mutual_option_without_buyout_fails_closed_and_blocks_aggregate() -> Non
     assert "explicit buyout" in result.reviews.item(0, "review_reason")
     assert result.aggregate.item(0, "calculation_status") == "review"
     assert result.aggregate.item(0, "contract_control_value_dollars") is None
+
+
+def test_source_structure_disagreement_blocks_value() -> None:
+    source = _input(status="club_option", salary=10_000_000, buyout=0).with_columns(
+        pl.lit("secondary source identifies a player opt-out").alias(
+            "contract_structure_review_reason"
+        )
+    )
+    result = value_annual_contract_states(
+        source, cba_ruleset=CBA_2022_2026, assumptions=ASSUMPTIONS
+    )
+    assert result.reviews.height == 1
+    assert result.reviews.item(0, "review_reason") == (
+        "secondary source identifies a player opt-out"
+    )
 
 
 def test_post_2026_minimum_requires_a_successor_ruleset() -> None:

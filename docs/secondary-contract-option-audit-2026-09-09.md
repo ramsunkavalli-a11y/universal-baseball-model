@@ -17,16 +17,24 @@ The join fails closed when the secondary status conflicts with FanGraphs, when a
 secondary dollar value conflicts with an existing primary value, or when provenance
 is missing. Secondary data can only fill a null field.
 
+Seven source disagreements are stored in
+`config/secondary-contract-structure-reviews-2026-09-09.json` and joined to the annual
+economics input. The calculator refuses to value those rows even if a later refresh
+fills the missing dollar fields. This keeps the audit boundary in code, not only in
+this document.
+
 ## Findings kept in review
 
 The browser review exposed structural differences that are more important than the
 remaining easy blanks:
 
-- Nick Pivetta is a FanGraphs club option but a Spotrac opt-out.
-- Tatsuya Imai is a FanGraphs player option in 2027 but a Spotrac opt-out; Spotrac
-  presents a player option in 2028.
+- Nick Pivetta is a FanGraphs club option but a Spotrac opt-out. This row is blocked.
+- Tatsuya Imai is a FanGraphs player option in 2027, but official MLB reporting says
+  he can opt out after 2026. This row is blocked.
 - Kyle Tucker is a FanGraphs player option but Spotrac presents opt-outs in 2028–2029.
-- Julio Rodriguez's 2030–2032 option structure is grouped differently by the sources.
+  Both rows are blocked.
+- Julio Rodriguez's 2030–2032 option structure is a linked club-option/fallback-player-
+  option decision, not three independent player options. All three rows are blocked.
 - Kyle Freeland's 2027 vesting option is shown as voided by Spotrac.
 - Isaac Paredes, Kodai Senga, Blake Snell, Edwin Diaz, Tanner Scott, Garrett Crochet,
   Yuki Matsui and Yariel Rodriguez have conditional terms that a simple option label

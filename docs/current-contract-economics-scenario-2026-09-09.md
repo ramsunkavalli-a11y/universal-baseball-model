@@ -9,9 +9,10 @@ players are complete and 50 have at least one review year.
 
 The 58 reviews are narrow and visible:
 
-- 25 club options missing a stated buyout;
-- 16 player options missing a stated buyout;
-- 13 vesting options needing trigger logic; and
+- 24 club options missing a stated buyout;
+- 10 player options missing a stated buyout;
+- 13 vesting options needing trigger logic;
+- seven source conflicts or linked multi-year option structures;
 - three mutual options missing a stated buyout;
 - one mutual option missing its exercise salary.
 
@@ -44,6 +45,8 @@ A dated, small Spotrac exception overlay supplies 14 explicit, non-conflicting
 dollar facts that resolve 13 review rows. It never treats a displayed dash as a
 zero and never overrides FanGraphs. Structural disagreements remain review items and
 are recorded in [the secondary option audit](secondary-contract-option-audit-2026-09-09.md).
+Seven of those disagreements are also machine-enforced: later term additions cannot
+silently turn them into calculated rows until the structure is reconciled.
 
 Run `scripts/materialize_contract_economics_scenario.py --as-of-date 2026-09-08`
 after rebuilding the current contract-economics inputs.

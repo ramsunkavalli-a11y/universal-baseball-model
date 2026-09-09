@@ -28,6 +28,7 @@ ANNUAL_CONTRACT_ECONOMICS_INPUT_SCHEMA: dict[str, pl.DataType] = {
     "arbitration_salary_basis_source": pl.String,
     "projection_source_id": pl.String,
     "contract_source_id": pl.String,
+    "contract_structure_review_reason": pl.String,
 }
 
 ANNUAL_CONTRACT_ECONOMICS_SCHEMA: dict[str, pl.DataType] = {
@@ -277,6 +278,9 @@ def value_annual_contract_states(
             market = _market_value(mean_war, rate, floor_at_zero=assumptions.floor_market_value_at_zero)
             market_lower = _market_value(lower_war, rate, floor_at_zero=assumptions.floor_market_value_at_zero)
             market_upper = _market_value(upper_war, rate, floor_at_zero=assumptions.floor_market_value_at_zero)
+
+            if row["contract_structure_review_reason"]:
+                raise ValueError(str(row["contract_structure_review_reason"]))
 
             known_salary = row["known_salary_dollars"]
             if status in {"free_agent", "free_agent_eligible"}:
