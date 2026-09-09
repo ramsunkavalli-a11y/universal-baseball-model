@@ -68,8 +68,8 @@ cases remain outside controlled WAR.
 
 1. Replace the hitter zero-defense fallback where existing certified component
    artifacts cover the player.
-2. Fit and validate modern adjacent-season component aging; retain Tango's published
-   curve as a sensitivity comparator.
+2. Retain Tango's regressed adjacent-season curve. The modern 2015–2025 challenger
+   failed its later-period test and is deferred to Phase 2.
 3. Build the separate 2026 rest-of-season workload/WAR and unpaid-salary paths.
 4. Resolve current-owner/service exceptions. Whole-player WAR now feeds the annual
    contract-economics input table, but dollar rankings wait for the market-price,

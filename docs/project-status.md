@@ -125,6 +125,10 @@ or promote a player ranking; the public v1 release remains historical.
   2027, 3,776 of 3,940 hitters have recent evidence; the three-year model then fades
   to its centered neutral fallback by 2030. Defense is now the only blanket-zero
   hitter component.
+- A modern pitcher-aging challenger was fit on regressed same-pitcher adjacent MLB
+  profiles and tested on 2,442 later-period pairs covering 618,983 BF. It lost to both
+  no aging and Tango overall; Tango beat no aging in three of four seasons and remains
+  the Phase 1 curve. The failed challenger is closed rather than tuned after inspection.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -161,8 +165,9 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly and annual economics-input
 join and current baserunning reuse are now built. Next, replace covered defense
-fallbacks, fit modern
-adjacent-season component aging, and build the explicit rest-of-season projection.
+fallbacks and build the explicit rest-of-season projection. Modern adjacent-season
+pitcher aging has been tested and rejected for Phase 1; revisit it only under a new
+Phase 2 test.
 The main economic blocker is a chronologically fitted free-agent market function.
 In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not

@@ -180,5 +180,6 @@ position and replacement value, and no depth input or clipping. Its published Ta
 pitcher aging curve, average-zero hitter defense/running and MLB-only rate evidence are
 Phase 1 fallbacks. The validated affiliated translation now replaces most pure
 population priors, frozen baserunning is reused, and whole-player expected WAR is
-joined to every future-control row. Modern aging validation, covered defense reuse, the separate 2026
+joined to every future-control row. A modern pitcher-aging challenger failed, so the
+Tango sensitivity remains the Phase 1 curve. Covered defense reuse, the separate 2026
 rest-of-season path and fitted economic assumptions are next.

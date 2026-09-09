@@ -63,6 +63,8 @@ missing salaries, buyouts and market assumptions explicit.
 The [current baserunning result](docs/current-baserunning-rates-2026-09-08.md)
 reuses the frozen steal and advancement models in the live hitter path; defense is
 now the remaining average-zero hitter component.
+The [modern pitcher-aging test](docs/modern-pitcher-aging-result-2026-09-08.md)
+rejected a newly fitted curve on 2022–2025 data and retained Tango's regressed curve.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value
