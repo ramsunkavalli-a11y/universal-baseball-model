@@ -11,6 +11,10 @@ import polars as pl
 
 from universal_baseball.hitter_opportunity_paths import hitter_level_tier
 from universal_baseball.projection_guardrails import PROJECTION_PATH_SCHEMA
+from universal_baseball.player_value_uncertainty import (
+    NB2_ALPHA,
+    zero_truncated_nb2_variance,
+)
 
 
 PITCHER_ROLES = ("starter", "swingman", "reliever")
@@ -48,6 +52,12 @@ PITCHER_OPPORTUNITY_UNIVERSE_SCHEMA: dict[str, pl.DataType] = {
     "age_years": pl.Float64,
     "as_of_level_group": pl.String,
     "as_of_role": pl.String,
+}
+
+SELECTED_PITCHER_NEXT_YEAR_SCHEMA: dict[str, pl.DataType] = {
+    "player_id": pl.Int64,
+    "predicted_any_mlb_bf_probability": pl.Float64,
+    "predicted_positive_mlb_bf_mean": pl.Float64,
 }
 
 PITCHER_MLB_OUTCOME_SCHEMA: dict[str, pl.DataType] = {
@@ -421,12 +431,53 @@ def fit_pitcher_opportunity_fallbacks(
     )
 
 
+def _selected_predictions(
+    frame: pl.DataFrame | None,
+) -> dict[int, tuple[float, float, float]]:
+    if frame is None:
+        return {}
+    missing = sorted(set(SELECTED_PITCHER_NEXT_YEAR_SCHEMA) - set(frame.columns))
+    if missing:
+        raise ValueError(f"selected pitcher predictions missing fields: {missing}")
+    optional_alpha = "model_nb_alpha" in frame.columns
+    schema = {
+        **SELECTED_PITCHER_NEXT_YEAR_SCHEMA,
+        **({"model_nb_alpha": pl.Float64} if optional_alpha else {}),
+    }
+    selected = frame.select(list(schema)).cast(schema, strict=True)
+    if selected.group_by("player_id").len().filter(pl.col("len") != 1).height or sum(
+        selected.null_count().row(0)
+    ):
+        raise ValueError("selected pitcher predictions violate player grain")
+    result = {}
+    for row in selected.iter_rows(named=True):
+        player_id = int(row["player_id"])
+        probability = float(row["predicted_any_mlb_bf_probability"])
+        workload = float(row["predicted_positive_mlb_bf_mean"])
+        alpha = float(row["model_nb_alpha"]) if optional_alpha else NB2_ALPHA
+        if (
+            player_id <= 0
+            or not isfinite(probability)
+            or not 0.0 <= probability <= 1.0
+            or not isfinite(workload)
+            or workload < 0.0
+            or not isfinite(alpha)
+            or alpha <= 0.0
+        ):
+            raise ValueError("selected pitcher predictions contain invalid values")
+        result[player_id] = (probability, workload, alpha)
+    return result
+
+
 def score_pitcher_opportunity_paths(
     universe: pl.DataFrame,
     fit: PitcherOpportunityFit,
     *,
     as_of_date: date,
     forecast_year: int,
+    selected_next_year: pl.DataFrame | None = None,
+    selected_model_id: str = "pitcher_opportunity_v1",
+    selected_model_status: str = "selected",
 ) -> pl.DataFrame:
     """Score every pitcher-year, preserving role uncertainty and fallback source."""
 
@@ -440,6 +491,10 @@ def score_pitcher_opportunity_paths(
         pl.col("player_id").is_null() | (pl.col("player_id") <= 0)
     ).height or players.group_by("player_id").len().filter(pl.col("len") != 1).height:
         raise ValueError("pitcher opportunity universe has invalid or duplicate players")
+    selected = _selected_predictions(selected_next_year)
+    universe_ids = set(players.get_column("player_id").to_list())
+    if set(selected) - universe_ids:
+        raise ValueError("selected pitcher predictions contain players outside the universe")
     lookup = {
         (
             int(row["horizon"]),
@@ -480,6 +535,20 @@ def score_pitcher_opportunity_paths(
             probability = float(reference["mlb_active_probability"])
             workload = float(reference["conditional_mlb_bf"])
             workload_variance = float(reference["conditional_mlb_bf_variance"])
+            probability_model = "pitcher_opportunity_v1:historical_arrival_survival"
+            workload_model = "pitcher_opportunity_v1:historical_positive_bf"
+            if horizon == 1 and player_id in selected:
+                probability, workload, alpha = selected[player_id]
+                workload_variance = (
+                    zero_truncated_nb2_variance(workload, alpha=alpha)
+                    if workload > 1.0
+                    else 0.0
+                )
+                coverage = "selected_next_year_model"
+                probability_model = (
+                    f"{selected_model_id}:{selected_model_status}:participation"
+                )
+                workload_model = f"{selected_model_id}:{selected_model_status}:positive_bf"
             output.append(
                 {
                     "as_of_date": as_of_date,
@@ -496,8 +565,8 @@ def score_pitcher_opportunity_paths(
                     },
                     "projected_role": projected_role,
                     "coverage_tier": coverage,
-                    "probability_model_id": "pitcher_opportunity_v1:historical_arrival_survival",
-                    "workload_model_id": "pitcher_opportunity_v1:historical_positive_bf",
+                    "probability_model_id": probability_model,
+                    "workload_model_id": workload_model,
                     "role_model_id": "pitcher_opportunity_v1:historical_role_transition",
                     "uses_current_team_depth": False,
                 }

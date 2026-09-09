@@ -90,8 +90,8 @@ or promote a player ranking; the public v1 release remains historical.
 - The dated 2026-09-08 snapshot now produces complete 2027–2032 paths for
   3,940 hitters and 5,276 pitchers. Official position evidence reduced false two-way
   classification from 436 players to 22 by excluding incidental mop-up pitching. The
-  current hitter run uses the new provisional universal model for 2027 and labeled
-  historical fallbacks for 2028–2032. Pitchers still use labeled historical fallbacks.
+  current hitter and pitcher runs use their new provisional universal models for 2027
+  and labeled historical fallbacks for 2028–2032.
 - A newly versioned universal hitter-opportunity candidate now replaces the expired-
   artifact dead end without claiming to recreate B2. The precommitted rolling gate
   retains inactive, unknown-level and missing-age players and uses only level, age,
@@ -99,12 +99,17 @@ or promote a player ranking; the public v1 release remains historical.
   model in all four 2022–2025 evaluations; pooled Brier error fell 20.5% and PA RMSE
   fell 26.1%. Its complete scoring package is committed, but it remains a provisional
   2026 candidate until a future protected-outcome confirmation.
-- The candidate now scores all 3,940 current hitters and is connected through future
-  WAR, uncertainty, current remaining rights and contract economics as a separate v2
-  scenario. It adds 101.46 future WAR to the full universe, all in 2027. The integrated
-  scenario still has 51,070 annual rows, 8,362 complete player paths and the same 16
-  contract reviews. Its $3.01 billion discounted point total is a provisional model
-  sensitivity; the retained $1.66 billion baseline is not overwritten.
+- A matching universal pitcher gate now retains zero outcomes and current role while
+  adding age, current MLB/minor-league BF and exact-date 40-man membership. The selected
+  form won all four rolling folds; pooled Brier error fell 10.5%, BF MAE 15.1% and BF
+  RMSE 10.5% against level/role only. Its exact package is committed and remains
+  provisional pending protected 2026 confirmation.
+- Both candidates now score the current universe and connect through WAR, uncertainty,
+  current remaining rights and contract economics. Together they add 177.24 future WAR,
+  all in 2027; the separate remaining-2026 estimate falls 1.46 WAR. The scenario still
+  has 51,070 annual rows, 8,362 complete player paths and the same 16 contract reviews.
+  Its $3.50 billion discounted point total versus the retained $1.66 billion baseline
+  is a research sensitivity, not a promoted ranking.
 - The remaining-rights timeline now prevents live valuation from counting WAR already
   produced or salary already paid. Current-season rows require an explicit remaining
   salary obligation and cannot receive a fictional midseason non-tender option. Future
@@ -252,10 +257,11 @@ engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-The top modeling priority is now the equivalent universal pitcher opportunity gate:
-precommit a simple zero-inclusive BF/role model, test it on fixed rolling seasons, and
-connect it provisionally only if it beats the current historical fallback. After that,
-resolve the 16 remaining contract reviews: 12 future vesting decisions, three linked
+The top modeling priority is now a separately frozen multi-horizon opportunity gate so
+2028–2032 can move beyond broad historical cohorts without recursively treating a
+one-year forecast as observed evidence. Do not tune the completed one-year gates before
+protected 2026 confirmation. In parallel, resolve the 16 remaining contract reviews:
+12 future vesting decisions, three linked
 Julio Rodriguez years and one missing option salary. Granular replacement of the
 43 buyout estimates with exact terms is Phase 2. Current role and late-season injury return
 now have narrow Phase 1 baselines. Correlated

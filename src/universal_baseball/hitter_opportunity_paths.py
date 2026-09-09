@@ -16,7 +16,10 @@ from typing import Iterable
 import polars as pl
 
 from universal_baseball.projection_guardrails import PROJECTION_PATH_SCHEMA
-from universal_baseball.player_value_uncertainty import zero_truncated_nb2_variance
+from universal_baseball.player_value_uncertainty import (
+    NB2_ALPHA,
+    zero_truncated_nb2_variance,
+)
 
 
 HITTER_OPPORTUNITY_HISTORY_SCHEMA: dict[str, pl.DataType] = {
@@ -433,34 +436,42 @@ def fit_hitter_opportunity_fallbacks(
     )
 
 
-def _selected_predictions(frame: pl.DataFrame | None) -> dict[int, tuple[float, float]]:
+def _selected_predictions(
+    frame: pl.DataFrame | None,
+) -> dict[int, tuple[float, float, float]]:
     if frame is None:
         return {}
     missing = sorted(set(SELECTED_NEXT_YEAR_SCHEMA) - set(frame.columns))
     if missing:
         raise ValueError(f"selected next-year predictions missing fields: {missing}")
-    selected = frame.select(list(SELECTED_NEXT_YEAR_SCHEMA)).cast(
-        SELECTED_NEXT_YEAR_SCHEMA, strict=True
-    )
+    optional_alpha = "model_nb_alpha" in frame.columns
+    schema = {
+        **SELECTED_NEXT_YEAR_SCHEMA,
+        **({"model_nb_alpha": pl.Float64} if optional_alpha else {}),
+    }
+    selected = frame.select(list(schema)).cast(schema, strict=True)
     if (
         selected.group_by("player_id").len().filter(pl.col("len") != 1).height
         or sum(selected.null_count().row(0))
     ):
         raise ValueError("selected next-year predictions violate player grain")
-    result: dict[int, tuple[float, float]] = {}
+    result: dict[int, tuple[float, float, float]] = {}
     for row in selected.iter_rows(named=True):
         player_id = int(row["player_id"])
         probability = float(row["predicted_any_mlb_pa_probability"])
         workload = float(row["predicted_positive_mlb_pa_mean"])
+        alpha = float(row["model_nb_alpha"]) if optional_alpha else NB2_ALPHA
         if (
             player_id <= 0
             or not isfinite(probability)
             or not 0.0 <= probability <= 1.0
             or not isfinite(workload)
             or workload < 0.0
+            or not isfinite(alpha)
+            or alpha <= 0.0
         ):
             raise ValueError("selected next-year predictions contain invalid values")
-        result[player_id] = (probability, workload)
+        result[player_id] = (probability, workload, alpha)
     return result
 
 
@@ -514,9 +525,11 @@ def score_hitter_opportunity_paths(
         age_band = _age_band(player["age_years"], fit.age_band_width)
         for horizon in fit.horizons:
             if horizon == 1 and player_id in selected:
-                probability, workload = selected[player_id]
+                probability, workload, alpha = selected[player_id]
                 workload_variance = (
-                    zero_truncated_nb2_variance(workload) if workload > 1.0 else 0.0
+                    zero_truncated_nb2_variance(workload, alpha=alpha)
+                    if workload > 1.0
+                    else 0.0
                 )
                 coverage = "selected_next_year_model"
                 probability_model = f"{selected_model_id}:{selected_model_status}:participation"

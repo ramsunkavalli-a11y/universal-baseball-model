@@ -41,6 +41,7 @@ def _parse_args() -> argparse.Namespace:
         default=Path("reports/generated/opportunity-historical-fits/tables"),
     )
     parser.add_argument("--selected-hitter-next-year", type=Path)
+    parser.add_argument("--selected-pitcher-next-year", type=Path)
     parser.add_argument(
         "--output-root",
         type=Path,
@@ -74,6 +75,11 @@ def main() -> int:
         if args.selected_hitter_next_year is not None
         else None
     )
+    selected_pitcher = (
+        pl.read_parquet(args.selected_pitcher_next_year)
+        if args.selected_pitcher_next_year is not None
+        else None
+    )
     selected_model_id = "playing_time_v1"
     selected_model_status = "selected"
     if selected is not None:
@@ -87,6 +93,19 @@ def main() -> int:
             if len(model_statuses) != 1 or model_statuses[0] is None:
                 raise ValueError("selected hitter predictions must have one model_status")
             selected_model_status = str(model_statuses[0])
+    selected_pitcher_model_id = "pitcher_opportunity_v1"
+    selected_pitcher_model_status = "selected"
+    if selected_pitcher is not None:
+        if "model_id" in selected_pitcher.columns:
+            model_ids = selected_pitcher.get_column("model_id").unique().to_list()
+            if len(model_ids) != 1 or model_ids[0] is None:
+                raise ValueError("selected pitcher predictions must have one model_id")
+            selected_pitcher_model_id = str(model_ids[0])
+        if "model_status" in selected_pitcher.columns:
+            statuses = selected_pitcher.get_column("model_status").unique().to_list()
+            if len(statuses) != 1 or statuses[0] is None:
+                raise ValueError("selected pitcher predictions must have one model_status")
+            selected_pitcher_model_status = str(statuses[0])
     hitter_fit = HitterOpportunityFit(
         references=pl.read_parquet(args.fit_root / "hitter_references.parquet"),
         horizons=args.horizons,
@@ -113,6 +132,9 @@ def main() -> int:
         pitcher_fit,
         as_of_date=args.as_of_date,
         forecast_year=args.forecast_year,
+        selected_next_year=selected_pitcher,
+        selected_model_id=selected_pitcher_model_id,
+        selected_model_status=selected_pitcher_model_status,
     )
     args.output_root.mkdir(parents=True, exist_ok=True)
     tables = args.output_root / "tables"
@@ -146,6 +168,13 @@ def main() -> int:
         "selected_hitter_model_id": selected_model_id if selected is not None else None,
         "selected_hitter_model_status": (
             selected_model_status if selected is not None else None
+        ),
+        "selected_pitcher_model_supplied": selected_pitcher is not None,
+        "selected_pitcher_model_id": (
+            selected_pitcher_model_id if selected_pitcher is not None else None
+        ),
+        "selected_pitcher_model_status": (
+            selected_pitcher_model_status if selected_pitcher is not None else None
         ),
         "hitter_coverage": _coverage(hitter_paths),
         "pitcher_coverage": _coverage(pitcher_paths),

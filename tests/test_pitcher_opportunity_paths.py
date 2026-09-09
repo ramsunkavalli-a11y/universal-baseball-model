@@ -99,6 +99,48 @@ def test_lower_level_pitcher_can_have_delayed_arrival() -> None:
     assert paths.item(1, "mlb_active_probability") > paths.item(0, "mlb_active_probability")
 
 
+def test_selected_pitcher_model_replaces_only_next_year_bf() -> None:
+    fit = fit_pitcher_opportunity_fallbacks(
+        _history(), forecast_year=2025, horizons=[1, 2]
+    )
+    universe = pl.DataFrame(
+        {
+            "player_id": [1],
+            "age_years": [25.0],
+            "as_of_level_group": ["MLB"],
+            "as_of_role": ["starter"],
+        }
+    )
+    selected = pl.DataFrame(
+        {
+            "player_id": [1],
+            "predicted_any_mlb_bf_probability": [0.75],
+            "predicted_positive_mlb_bf_mean": [640.0],
+            "model_nb_alpha": [0.6],
+        }
+    )
+    paths = score_pitcher_opportunity_paths(
+        universe,
+        fit,
+        as_of_date=date(2024, 12, 31),
+        forecast_year=2025,
+        selected_next_year=selected,
+        selected_model_id="pitcher_test_v2",
+        selected_model_status="provisional",
+    )
+    first = paths.filter(pl.col("horizon") == 1)
+    later = paths.filter(pl.col("horizon") == 2)
+    assert first.item(0, "expected_mlb_bf") == pytest.approx(480.0)
+    assert first.item(0, "coverage_tier") == "selected_next_year_model"
+    assert first.item(0, "probability_model_id") == (
+        "pitcher_test_v2:provisional:participation"
+    )
+    assert first.item(0, "role_model_id") == (
+        "pitcher_opportunity_v1:historical_role_transition"
+    )
+    assert later.item(0, "coverage_tier") != "selected_next_year_model"
+
+
 def test_future_data_and_inconsistent_outcomes_fail() -> None:
     with pytest.raises(ValueError, match="crosses the forecast cutoff"):
         fit_pitcher_opportunity_fallbacks(_history(), forecast_year=2024, horizons=[1, 2])

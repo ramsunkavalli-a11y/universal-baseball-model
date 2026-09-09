@@ -32,7 +32,7 @@ players. It does not use pitch quality, team depth, future team, future level or
 role. The existing historical role-transition probabilities remain a separate input.
 
 The exact coefficients, standardization, metrics and source hashes are stored under
-`model_artifacts/pitcher-opportunity-v2-development-2026-09-09/`. The package may
-generate a labeled provisional current forecast, but completed 2026 outcomes are still
+`model_artifacts/pitcher-opportunity-v2-development-2026-09-09/`. The package now
+scores all 5,276 current pitchers and is connected to the combined current pipeline;
+see `current-universal-opportunity-v2-2026-09-08.md`. Completed 2026 outcomes are still
 required for production confirmation.
-

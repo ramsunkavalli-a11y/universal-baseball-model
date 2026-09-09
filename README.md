@@ -86,6 +86,8 @@ discounted point and sensitivity totals while retaining a research-only boundary
 The [provisional current hitter opportunity v2 integration](docs/current-hitter-opportunity-v2-2026-09-08.md)
 scores every current hitter and carries the selected development model through the same
 pipeline without overwriting the retained baseline.
+The [combined universal opportunity v2 integration](docs/current-universal-opportunity-v2-2026-09-08.md)
+adds the selected pitcher model and records the full WAR and contract-value sensitivity.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

@@ -18,7 +18,7 @@ membership. It does not use team depth or a future team.
   span of -68.29 to +104.53 PA.
 
 The current prediction file SHA-256 is
-`6921502b4082c86055d9cf4fe47b3068147b0181d59994757f0d1e097c312c0b`.
+`380864c9a7dda756fa6f11516a2fde0fee794eae98174f69c48cdf38b518bccf`.
 
 ## Downstream effect
 
@@ -27,10 +27,11 @@ and all pitcher horizons retain the existing labeled historical fallbacks.
 
 Relative to the retained baseline, the provisional scenario adds 101.46 expected WAR
 to the full future player universe. The contract-controlled annual rows add 108.72 WAR,
-all in 2027. The integrated current-plus-future research scenario contains 51,070 rows,
+all in 2027. The isolated hitter-only checkpoint contained 51,070 rows,
 calculates 8,362 player paths, and leaves the same 16 annual contract reviews across
 11 players. Its discounted point total is $3.01 billion, versus $1.66 billion in the
-retained baseline.
+retained baseline. The later combined hitter-and-pitcher result is documented in
+`current-universal-opportunity-v2-2026-09-08.md`.
 
 The $1.35 billion difference is a model sensitivity, not a validated increase in
 league value. It is amplified by player-level market tiers and control status. The
@@ -42,4 +43,3 @@ This run proves that the selected package can score the current universe and pas
 through WAR, uncertainty, current rights, and contract economics without hidden
 fallbacks. It does not provide an untouched outcome confirmation. Completed 2026 MLB
 PA remains the first protected confirmation target.
-
