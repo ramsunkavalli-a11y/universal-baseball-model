@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Updated 2026-09-08. This is the current start-here document.
+Updated 2026-09-09. This is the current start-here document.
 
 ## Active plan
 
@@ -57,8 +57,9 @@ or promote a player ranking; the public v1 release remains historical.
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and
   fails closed on unresolved option triggers. Official 2022–2026 minimum salaries live
-  in a versioned CBA ruleset; market price and arbitration shares remain named caller
-  assumptions rather than hidden constants.
+  in a versioned CBA ruleset. FanGraphs' published 2026 three-tier market curve is now
+  the main reference; future growth and arbitration remain named assumptions rather
+  than hidden constants.
 - Projection v1 now has a common guardrail contract and executable audit. Every player-
   year must decompose expected WAR into MLB-active probability, conditional WAR rate
   and conditional PA/BF workload. Current-team depth is forbidden, hitter/pitcher
@@ -117,9 +118,17 @@ or promote a player ranking; the public v1 release remains historical.
 - Whole-player expected WAR now joins all 50,100 future-control rows, adding hitter
   and pitcher value for two-way players. Accepted payroll terms supply 604 known
   player-year salaries. The 5,064 projection rows without resolved control stay in the
-  talent universe but do not receive invented incumbent rights. Market price,
-  arbitration pay, post-2026 minimums and 151 missing option buyouts
-  remain explicit inputs rather than hidden defaults.
+  talent universe but do not receive invented incumbent rights. All 86 potential
+  payroll buyouts map to stable player IDs; 83 match projected option years, reducing
+  missing option buyouts from 151 to 68. The ten projected Super Two cases now advance
+  through all four arbitration classes. Arbitration pay, post-2026 minimums and the
+  remaining option exceptions stay explicit rather than becoming hidden defaults.
+- The public 2020–2026 FanGraphs tracker supplies 335 reported contracts and all 350
+  sampled rows map to MLBAM through the pinned Chadwick register. An independent 143-
+  deal one-year reconstruction uses only prior StatsAPI history. On 18 clean 2026
+  deals it projects 27.05 WAR versus FanGraphs' 25.40, but the one-year sample does not
+  identify the multi-year star premium. The published $6.74M/$8.51M/$12.84M tiers
+  therefore remain the main 2026 market reference.
 - All 55,164 future whole-player seasons now have a Phase 1 uncertainty reference
   range based on historical positive-workload variance plus event and posterior-rate
   variance. All 50,100 future economics rows receive the bounds. The median annual
@@ -186,11 +195,12 @@ The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-Next, fit the free-agent market function and calibrate return/role. Correlated
+Next, add the arbitration-cost baseline and calibrate return/role. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
-The main economic blocker is a chronologically fitted free-agent market function.
+The main market-price gate is complete. The remaining economic blockers are
+arbitration salary lag, successor-CBA cost rules and the 68 unresolved option buyouts.
 In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.
@@ -216,7 +226,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, guardrail, remaining-rights and current
 availability tests pass; Ruff passes across `src`, `scripts` and `tests`. The current
-full run has 1,203 passing tests.
+full run has 1,216 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

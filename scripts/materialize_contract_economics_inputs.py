@@ -10,6 +10,7 @@ from pathlib import Path
 
 import polars as pl
 
+from universal_baseball.contract_buyouts import link_option_buyouts
 from universal_baseball.contract_economics_inputs import (
     UNCERTAINTY_PROJECTION_SOURCE_ID,
     build_future_contract_economics_inputs,
@@ -43,15 +44,23 @@ def main() -> int:
     args = _args()
     dated_war_root = args.war_root / args.as_of_date.isoformat() / "tables"
     dated_control_root = args.control_root / args.as_of_date.isoformat()
+    contract_years = pl.read_parquet(
+        dated_control_root / "contract-year-liabilities.parquet"
+    )
+    buyout_links = link_option_buyouts(
+        contract_years,
+        pl.read_parquet(dated_control_root / "payroll-other-payments.parquet"),
+    )
     result = build_future_contract_economics_inputs(
         pl.read_parquet(dated_war_root / "hitter_expected_war_paths.parquet"),
         pl.read_parquet(dated_war_root / "pitcher_expected_war_paths.parquet"),
         pl.read_parquet(dated_control_root / "future-control-path.parquet"),
-        pl.read_parquet(dated_control_root / "contract-year-liabilities.parquet"),
+        contract_years,
         pl.read_parquet(
             args.uncertainty_root / args.as_of_date.isoformat()
             / "tables/whole-player-war-uncertainty.parquet"
         ),
+        option_buyouts=buyout_links.links,
     )
     output_root = args.output_root / args.as_of_date.isoformat()
     output_root.mkdir(parents=True, exist_ok=True)
@@ -68,6 +77,11 @@ def main() -> int:
         "coverage": result.coverage,
         "war_policy": "hitter plus pitcher expected WAR; two-way production is summed",
         "salary_policy": "accepted player-linked payroll terms only; missing is null",
+        "buyout_policy": (
+            "contingent option buyouts linked by exact team/name within the same "
+            "FanGraphs payroll workbook; non-contingent paid buyouts are not option rights"
+        ),
+        "buyout_link_coverage": buyout_links.coverage,
         "ranking_status": "not_publishable_inputs_only",
         "remaining_economics_inputs": [
             "chronologically fitted free-agent dollars per WAR",

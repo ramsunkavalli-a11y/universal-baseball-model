@@ -202,3 +202,9 @@ rates are the main reference; the internal 143-deal one-year reconstruction is a
 independent scale check and does not erase the star premium. Contract economics now
 supports dated tier curves. A 3% annual extension is available only as a named future
 scenario, while official post-2026 CBA costs remain unresolved.
+
+The payroll buyout source is now used instead of left on disk: all 86 contingent
+buyouts map by exact within-workbook identity, and 83 attach to the 151 projected
+option years. The remaining 68 stay in review. Projected 2027 Super Two players also
+advance through arbitration classes 1–4 correctly; previously the class calculation
+could reset after the first projected year.
