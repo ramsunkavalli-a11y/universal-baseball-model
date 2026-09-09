@@ -9,14 +9,22 @@ The first live current-season path is connected. The official MLB schedule conta
 
 The model projects 21,596.6 remaining hitter PA and 20,597.7 pitcher BF. Applying the
 existing conditional WAR rates gives 68.78 hitter WAR and 43.45 pitcher WAR, or
-112.23 whole-player WAR. Hitter and pitcher value is added for two-way players.
+112.23 whole-player WAR before current availability. Official season-out status lowers
+the point estimate to 112.07. Hitter and pitcher value is added for two-way players.
 
 Current usage is paced to a full season, shrunk with 200 PA/BF toward the existing
 2027 team-neutral opportunity forecast, and multiplied by the remaining schedule
 share. The 2027 conditional WAR rate, including supported general defense, is used as
 a short-horizon proxy. This keeps the
 first version consistent with the existing player paths; it does not yet use active
-roster, injured-list or team-depth judgments.
+roster or team-depth blocking. Official injured-list status supplies only the narrow
+availability treatment described below.
+
+Official full-season-unavailable statuses set remaining WAR to zero. Ordinary injured
+list and rehab statuses keep the baseline point but create a zero-to-baseline
+availability sensitivity because the status does not supply a recovery date. The
+league availability-only range is 97.71 to 112.29 WAR; it is not a full forecast
+interval.
 
 ## Salary and rights
 
@@ -38,6 +46,6 @@ remaining WAR and unpaid base salary enter the rights calculation.
 ## Phase 1 boundary
 
 This is a coherent baseline, not a final in-season projection. The main remaining
-pieces are current availability/role, WAR uncertainty, retained salary and special
+pieces are calibrated return/role, full WAR uncertainty, retained salary and special
 contract terms, option buyouts, and fitted free-agent and arbitration prices. Phase 2
 can refine daily playing time and injuries after the complete value path exists.

@@ -132,12 +132,18 @@ or promote a player ranking; the public v1 release remains historical.
   profiles and tested on 2,442 later-period pairs covering 618,983 BF. It lost to both
   no aging and Tango overall; Tango beat no aging in three of four seasons and remains
   the Phase 1 curve. The failed challenger is closed rather than tuned after inspection.
-- A dated 2026 rest-of-season baseline now projects 112.23 WAR over the final 250
+- A dated 2026 rest-of-season baseline projects 112.23 WAR before current availability
+  and 112.07 after 247 official season-out statuses over the final 250
   scheduled games. CBA championship-season-day proration produces $535.96 million of
   remaining base salary. Exact current-team matches connect 833 salary rows and
   $500.19 million to the remaining-rights interface; 81 unresolved or conflicting
   rows remain explicit rather than being forced into value. The combined economics
   input contains these 833 current rows plus 50,100 future rows.
+- Ordinary IL and rehab status does not supply a return date. The point estimate stays
+  unchanged while 1,052 rows receive a zero-to-baseline availability sensitivity.
+  Among salary-matched current rights, 188 rows now carry bounds and the combined
+  84.97 WAR point has an availability-only 73.88 to 85.07 range. Minor assignment is
+  not used as team-depth blocking.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -173,8 +179,9 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
-current baserunning, supported general defense and the rest-of-season path are now
-built. Next, add a calibrated current availability/role layer and build uncertainty.
+current baserunning, supported general defense, the rest-of-season path and a narrow
+official-status availability boundary are now built. Next, calibrate return/role and
+build full forecast uncertainty.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
 The main economic blocker is a chronologically fitted free-agent market function.
@@ -201,8 +208,9 @@ artifacts; hashes bind the inputs. They reject overwriting an inspected candidat
 run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
-Current focused verification: opportunity, guardrail and remaining-rights tests pass;
-Ruff passes across `src`, `scripts` and `tests`. The current full run has 1,198 passing tests.
+Current focused verification: opportunity, guardrail, remaining-rights and current
+availability tests pass; Ruff passes across `src`, `scripts` and `tests`. The current
+full run has 1,200 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

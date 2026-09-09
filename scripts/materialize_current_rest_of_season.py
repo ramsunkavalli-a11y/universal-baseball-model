@@ -5,13 +5,19 @@ from __future__ import annotations
 
 import argparse
 from datetime import date
+import gzip
 from hashlib import sha256
 import json
 from pathlib import Path
+import re
 
 import polars as pl
 import requests
 
+from universal_baseball.current_availability import (
+    apply_current_availability_sensitivity,
+    project_current_affiliated_status_payload,
+)
 from universal_baseball.playing_time_roster_source import STATS_API_BASE
 from universal_baseball.remaining_rights import (
     REMAINING_RIGHTS_INPUT_SCHEMA,
@@ -32,6 +38,12 @@ def _args() -> argparse.Namespace:
     parser.add_argument(
         "--current-source-root", type=Path,
         default=Path("reports/generated/opportunity-current-source-2026-09-08/tables/2026"),
+    )
+    parser.add_argument(
+        "--current-capture-root", type=Path,
+        default=Path(
+            "reports/generated/opportunity-current-source-2026-09-08/captures/2026"
+        ),
     )
     parser.add_argument(
         "--mlb-skill-root", type=Path,
@@ -87,6 +99,27 @@ def _schedule(as_of_date: date, output_root: Path) -> tuple[pl.DataFrame, int, i
     }
 
 
+def _availability_statuses(capture_root: Path, as_of_date: date) -> pl.DataFrame:
+    frames = []
+    for path in sorted(capture_root.glob("full-roster-*.json.gz")):
+        match = re.fullmatch(r"full-roster-(\d+)\.json\.gz", path.name)
+        if match is None:
+            raise ValueError(f"unexpected full-roster capture name: {path.name}")
+        with gzip.open(path, "rt", encoding="utf-8") as handle:
+            capture = json.load(handle)
+        payload = capture.get("payload", capture)
+        frames.append(
+            project_current_affiliated_status_payload(
+                payload,
+                organization_id=int(match.group(1)),
+                as_of_date=as_of_date,
+            )
+        )
+    if len(frames) != 30:
+        raise ValueError(f"current availability requires 30 team captures, got {len(frames)}")
+    return pl.concat(frames).sort(["organization_id", "player_id"])
+
+
 def main() -> int:
     args = _args()
     output_root = args.output_root / args.as_of_date.isoformat()
@@ -133,7 +166,7 @@ def main() -> int:
         completed_league_games=completed,
         scheduled_league_games=scheduled,
     )
-    whole_player = pl.concat(
+    whole_player_unadjusted = pl.concat(
         [
             hitter_ros.select("player_id", "projected_remaining_war"),
             pitcher_ros.select("player_id", "projected_remaining_war"),
@@ -153,6 +186,13 @@ def main() -> int:
         "as_of_date", "season", "player_id", "organization_id",
         "organization_status", "projected_remaining_war_mean", "projection_source_id",
     ).sort("player_id")
+    availability = _availability_statuses(
+        args.current_capture_root, args.as_of_date
+    )
+    whole_player = apply_current_availability_sensitivity(
+        whole_player_unadjusted,
+        availability,
+    )
     salary = build_remaining_base_salary(
         pl.read_parquet(dated_control / "contract-year-liabilities.parquet"),
         calendar,
@@ -163,6 +203,8 @@ def main() -> int:
             "player_id",
             "organization_id",
             "projected_remaining_war_mean",
+            "projected_remaining_war_lower",
+            "projected_remaining_war_upper",
         ),
         on="player_id",
         how="left",
@@ -188,8 +230,8 @@ def main() -> int:
         pl.lit("remaining_current_season").alias("forecast_scope"),
         pl.lit(None, dtype=pl.Float64).alias("realized_war_to_date"),
         "projected_remaining_war_mean",
-        pl.lit(None, dtype=pl.Float64).alias("projected_remaining_war_lower"),
-        pl.lit(None, dtype=pl.Float64).alias("projected_remaining_war_upper"),
+        "projected_remaining_war_lower",
+        "projected_remaining_war_upper",
         pl.lit("current_season_committed").alias("control_status"),
         pl.col("remaining_base_salary_dollars").alias(
             "salary_obligation_dollars"
@@ -230,6 +272,11 @@ def main() -> int:
         "whole_player_ros": write_canonical_parquet(
             whole_player, tables / "whole-player-rest-of-season-war.parquet",
             table_name="whole_player_rest_of_season_war",
+        ).as_record(),
+        "current_availability": write_canonical_parquet(
+            availability,
+            tables / "current-availability-status.parquet",
+            table_name="current_availability_status",
         ).as_record(),
         "remaining_base_salary": write_canonical_parquet(
             salary, tables / "remaining-base-salary.parquet",
@@ -278,6 +325,9 @@ def main() -> int:
                 salary.height - rights.timeline.height
             ),
             "current_and_future_economics_rows": combined_economics.height,
+            "availability_status": whole_player.group_by(
+                "availability_category"
+            ).len().sort("availability_category").to_dicts(),
             "salary_rights_join_status": {
                 str(row["rights_join_status"]): int(row["len"])
                 for row in salary_reconciliation.group_by(
@@ -305,11 +355,31 @@ def main() -> int:
             "projected_remaining_whole_player_war": whole_player.get_column(
                 "projected_remaining_war_mean"
             ).sum(),
+            "unadjusted_projected_remaining_whole_player_war": (
+                whole_player.get_column(
+                    "unadjusted_projected_remaining_war"
+                ).sum()
+            ),
+            "availability_lower_whole_player_war": whole_player.get_column(
+                "projected_remaining_war_lower"
+            ).sum(),
+            "availability_upper_whole_player_war": whole_player.get_column(
+                "projected_remaining_war_upper"
+            ).sum(),
             "remaining_base_salary_dollars": salary.get_column(
                 "remaining_base_salary_dollars"
             ).sum(),
             "matched_remaining_base_salary_dollars": rights.timeline.get_column(
                 "salary_obligation_dollars"
+            ).sum(),
+            "matched_rights_projected_war_mean": rights.timeline.get_column(
+                "projected_remaining_war_mean"
+            ).sum(),
+            "matched_rights_availability_lower_war": rights.timeline.get_column(
+                "projected_remaining_war_lower"
+            ).sum(),
+            "matched_rights_availability_upper_war": rights.timeline.get_column(
+                "projected_remaining_war_upper"
             ).sum(),
         },
         "team_depth_used": False,
@@ -320,6 +390,11 @@ def main() -> int:
         "rights_accounting": (
             "only projected WAR and unpaid base salary enter current rights value; "
             "realized WAR is unavailable, disclosed as null, and excluded"
+        ),
+        "availability_policy": (
+            "official full-season unavailability sets remaining WAR to zero; "
+            "ordinary injured-list status leaves the point unchanged and creates "
+            "a zero-to-baseline sensitivity bound"
         ),
         "remaining_limitations": [
             "realized 2026 WAR to date is not reported",
