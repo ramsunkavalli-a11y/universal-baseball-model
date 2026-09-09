@@ -49,6 +49,8 @@ The [historical opportunity source result](docs/opportunity-history-source-resul
 records the real 2018–2024 official cohort materialization and its 2020 exclusion.
 The [remaining-rights timeline](docs/remaining-rights-timeline.md) prevents live value
 from counting production already earned or salary already paid.
+The [current opportunity result](docs/current-opportunity-paths-2026-09-08.md) supplies
+complete team-neutral 2027–2032 hitter and pitcher workload paths.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

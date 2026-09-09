@@ -1,6 +1,6 @@
 # Hitter Opportunity v1
 
-**Status:** historical cohorts fitted; current league path pending
+**Status:** historical cohorts fitted; 2027–2032 current baseline materialized
 **Date:** 2026-09-08
 
 ## What it does

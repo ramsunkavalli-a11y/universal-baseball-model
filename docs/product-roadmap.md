@@ -172,5 +172,6 @@ MLB-active probability, conditional WAR rate, expected WAR and controlled WAR
 separately. Pre-cutoff role distributions flag unusual workload, rate and annual
 WAR without caps. Universal hitter participation/PA and pitcher participation/role/BF
 calculations are now implemented with explicit historical fallbacks, and their
-2018–2024 historical league panels are fitted with 2020 excluded. Current league paths
-are next, followed by component-level multi-year aging.
+2018–2024 historical league panels are fitted with 2020 excluded. The 2026-09-08
+snapshot now has complete 2027–2032 baseline opportunity paths. Component-level
+multi-year aging, WAR assembly and the separate 2026 rest-of-season path are next.

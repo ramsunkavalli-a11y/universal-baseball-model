@@ -80,8 +80,12 @@ or promote a player ranking; the public v1 release remains historical.
   `fullRoster` omits hundreds of players with official affiliated stats each year, the
   cohort denominator is their union. The misleading `totalSplits` field is ignored in
   favor of verified pagination. Excluding the cancelled 2020 MiLB season leaves 74,743
-  hitter and 95,360 pitcher zero-inclusive cohort rows across horizons 1–6. Historical
-  fits are real; the current 2026 league paths are still pending.
+  hitter and 90,727 pitcher zero-inclusive cohort rows across horizons 1–6.
+- The dated 2026-09-08 snapshot now produces complete 2027–2032 baseline paths for
+  3,940 hitters and 5,276 pitchers. Official position evidence reduced false two-way
+  classification from 436 players to 22 by excluding incidental mop-up pitching. The
+  current hitter run uses historical fallbacks because frozen richer-model parameters
+  are absent; no replacement coefficients were invented.
 - The remaining-rights timeline now prevents live valuation from counting WAR already
   produced or salary already paid. Current-season rows require an explicit remaining
   salary obligation and cannot receive a fictional midseason non-tender option. Future
@@ -122,9 +126,8 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main candidate denominator, phase-one control/cost path, static economics engine,
 projection guardrails and universal hitter-opportunity calculation are now built. Next,
-build the current hitter/pitcher snapshots and run both six-year league opportunity
-paths; then build component-level aging, whole-player WAR assembly and the explicit
-rest-of-season projection. The
+build component-level aging, whole-player WAR assembly and the explicit rest-of-season
+projection, then join those rates to the completed six-year opportunity paths. The
 later economic
 blocker is a chronologically fitted free-agent market function. In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not

@@ -318,10 +318,12 @@ def build_opportunity_snapshots(
         pitching = player_stats.filter(pl.col("stat_group") == "pitching")
         reported_ages = player_stats.get_column("reported_age").drop_nulls()
         age = float(reported_ages.median()) if len(reported_ages) else None
-        is_pitcher = bool({"1", "Y"} & codes) or not pitching.is_empty()
-        is_hitter = bool(codes - {"1", "X"}) or (not hitting.is_empty() and not is_pitcher)
-        if "Y" in codes:
-            is_hitter = True
+        informative_codes = codes - {"X"}
+        is_pitcher = bool({"1", "Y"} & informative_codes)
+        is_hitter = bool(informative_codes - {"1"})
+        if not informative_codes:
+            is_pitcher = not pitching.is_empty()
+            is_hitter = not hitting.is_empty()
         if is_hitter:
             hitter_rows.append(
                 {

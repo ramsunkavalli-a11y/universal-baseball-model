@@ -62,6 +62,7 @@ def test_snapshot_builder_keeps_inactive_and_two_way_players() -> None:
             {"snapshot_date": date(2023, 10, 15), "snapshot_year": 2023, "candidate_organization_id": 100, "player_id": 1, "player_name": "Two Way", "position_codes": "Y", "source_row_count": 1},
             {"snapshot_date": date(2023, 10, 15), "snapshot_year": 2023, "candidate_organization_id": 100, "player_id": 2, "player_name": "Inactive Hitter", "position_codes": "6", "source_row_count": 1},
             {"snapshot_date": date(2023, 10, 15), "snapshot_year": 2023, "candidate_organization_id": 100, "player_id": 3, "player_name": "Pitcher", "position_codes": "1", "source_row_count": 1},
+            {"snapshot_date": date(2023, 10, 15), "snapshot_year": 2023, "candidate_organization_id": 100, "player_id": 5, "player_name": "Mop Up Hitter", "position_codes": "6", "source_row_count": 1},
         ],
         schema=HISTORICAL_ROSTER_DETAIL_SCHEMA,
     )
@@ -71,11 +72,12 @@ def test_snapshot_builder_keeps_inactive_and_two_way_players() -> None:
             {"season": 2023, "stat_group": "pitching", "player_id": 1, "player_name": "Two Way", "sport_id": 1, "level_group": "MLB", "team_id": 100, "position_code": "Y", "reported_age": 28.0, "plate_appearances": 0, "games": 20, "starts": 20, "batters_faced": 500},
             {"season": 2023, "stat_group": "pitching", "player_id": 3, "player_name": "Pitcher", "sport_id": 12, "level_group": "AA", "team_id": 101, "position_code": "1", "reported_age": 24.0, "plate_appearances": 0, "games": 30, "starts": 2, "batters_faced": 250},
             {"season": 2023, "stat_group": "hitting", "player_id": 4, "player_name": "Stats Only", "sport_id": 13, "level_group": "HIGH_A", "team_id": 102, "position_code": "6", "reported_age": 21.0, "plate_appearances": 100, "games": 25, "starts": 0, "batters_faced": 0},
+            {"season": 2023, "stat_group": "pitching", "player_id": 5, "player_name": "Mop Up Hitter", "sport_id": 1, "level_group": "MLB", "team_id": 100, "position_code": "6", "reported_age": 30.0, "plate_appearances": 0, "games": 1, "starts": 0, "batters_faced": 3},
         ],
         schema=AFFILIATED_SEASON_STAT_SCHEMA,
     )
     hitters, pitchers = build_opportunity_snapshots(roster, stats)
-    assert hitters.get_column("player_id").to_list() == [1, 2, 4]
+    assert hitters.get_column("player_id").to_list() == [1, 2, 4, 5]
     assert hitters.filter(pl.col("player_id") == 2).item(0, "as_of_level_group") == "INACTIVE"
     assert pitchers.get_column("player_id").to_list() == [1, 3]
     assert pitchers.filter(pl.col("player_id") == 3).item(0, "as_of_role") == "swingman"

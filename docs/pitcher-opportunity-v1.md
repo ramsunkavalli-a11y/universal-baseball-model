@@ -1,6 +1,6 @@
 # Pitcher Opportunity v1
 
-**Status:** historical cohorts fitted; current league path pending
+**Status:** historical cohorts fitted; 2027–2032 current baseline materialized
 **Date:** 2026-09-08
 
 Pitcher Opportunity v1 keeps four questions separate for every forecast year:

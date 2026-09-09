@@ -28,13 +28,17 @@ responses and generated tables remain outside git; the reusable collector is ver
 
 - combined source snapshots: 25,811 hitter rows and 33,879 pitcher rows before the
   stat-identity union correction;
-- corrected zero-inclusive fitted history: 74,743 hitter cohort rows and 95,360 pitcher
+- corrected zero-inclusive fitted history: 74,743 hitter cohort rows and 90,727 pitcher
   cohort rows across horizons 1–6;
 - distinct historical players: 8,513 hitters and 11,565 pitchers;
 - missing age: 7.2% of hitter rows and 11.2% of pitcher rows, retained through explicit
   level/role or population fallback;
 - hitter history SHA-256: `45509422e39d0829aa0a56cd3bcdb1dea1ad41119b8ea140cec2f44224e25ea5`;
-- pitcher history SHA-256: `dee9718de4998caf171c8a4489aeead5d69060f8516b9cc345f4bded2f530680`.
+- pitcher history SHA-256: `49e59475c33bb70f8a2256b583c6bbf166f827482426e666ac6f53d8cbb1bd95`.
+
+Pitcher identity uses official position evidence. Position players' incidental pitching
+does not create a pitcher career path; true two-way position evidence remains eligible
+for both components.
 
 The 2020 snapshot is excluded from fitting because affiliated minor-league play was
 cancelled. Including it would mislabel thousands of players as normally inactive. The
@@ -47,8 +51,7 @@ individual player's path and not promoted performance claims.
 
 ## Remaining boundary
 
-The cohort source and fallback fits are now real. The next gate is to build the current
-2026 hitter/pitcher snapshot with the same source definitions, attach the frozen
-selected one-year hitter forecast where its artifacts are available, score all six
-horizons, and review calibration/coverage by level, age and fallback tier. Conditional
-WAR rates and aging remain separate.
+The cohort source and fallback fits are now real. The 2026-09-08 current snapshot and
+2027–2032 fallback paths are also materialized. The frozen selected one-year hitter
+forecast should be attached if its artifacts are recovered. Conditional WAR rates,
+aging and rest-of-season 2026 production remain separate.
