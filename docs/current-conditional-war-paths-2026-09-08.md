@@ -26,18 +26,18 @@ forecast universe.
 
 ## Materialized result
 
-| Component | Players | Player-years | Rate-history fallback rows | Control matched | Control missing |
-|---|---:|---:|---:|---:|---:|
-| Hitters | 3,940 | 23,640 | 19,068 | 21,552 | 2,088 |
-| Pitchers | 5,276 | 31,656 | 25,668 | 28,656 | 3,000 |
+| Component | Players | Player-years | Translated affiliated | Population prior | Control matched | Control missing |
+|---|---:|---:|---:|---:|---:|---:|
+| Hitters | 3,940 | 23,640 | 18,078 | 990 | 21,552 | 2,088 |
+| Pitchers | 5,276 | 31,656 | 23,322 | 2,346 | 28,656 | 3,000 |
 
-The large rate-history fallback count is expected: this first rate source contains
-recent MLB performance, not translated minor-league skill. These rows receive a
-population skill prior rather than zero talent.
+Recent MLB evidence remains the preferred rate source. Players without it now use
+regressed, MLB-anchored affiliated component evidence where available; only the
+remaining unsupported rows use the pure population prior.
 
 Observed broad plausibility ranges before any clipping:
 
-- hitter conditional WAR/600 PA: -1.19 to 4.91;
+- hitter conditional WAR/600 PA: -1.34 to 4.91;
 - pitcher conditional WAR/800 BF: -3.91 to 7.45;
 - maximum expected annual WAR after participation/workload: 2.10 hitter and 2.31
   pitcher.
@@ -56,14 +56,15 @@ cases remain outside controlled WAR.
 - Hitter defense and baserunning are zero runs versus league average when richer
   artifacts are unavailable. Primary-position and replacement value are included.
 - Pitcher contact quality, leverage and role-specific replacement are deferred.
-- Minor-league performance is not yet translated into conditional WAR rate.
+- The minor-league translation is provisional and still needs rolling historical
+  holdout validation; lower levels receive stronger evidence discounts.
 - The 2026 rest-of-season production and unpaid-salary paths remain separate missing
   inputs; this build begins with full 2027 seasons.
 
 ## Next priorities
 
-1. Translate recent affiliated hitting and pitching component performance to an MLB
-   reference, retaining stronger regression at lower levels.
+1. Validate the new same-player/same-season affiliated translation on rolling
+   historical holdouts without removing its universal fallback.
 2. Replace hitter zero-defense/zero-running fallbacks where existing certified
    component artifacts cover the player.
 3. Fit and validate modern adjacent-season component aging; retain Tango's published
@@ -72,4 +73,3 @@ cases remain outside controlled WAR.
 5. Resolve current-owner/service exceptions, then pass controlled WAR into contract
    economics. Do not fit or publish dollar rankings until the market-price function
    and uncertainty paths validate.
-

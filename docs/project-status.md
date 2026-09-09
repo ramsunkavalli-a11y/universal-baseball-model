@@ -98,6 +98,12 @@ or promote a player ranking; the public v1 release remains historical.
   replacement while missing defense/running remain average-zero fallbacks. Pitchers
   use the validated five-part BF baseline and a disclosed Tango adjacent-aging
   fallback. No team depth or rate clipping is used.
+- Official 2023–2026 affiliated components now feed a provisional MLB-anchored
+  translation fitted on 3,204 hitter and 4,495 pitcher same-player/same-season mover
+  pairs from completed 2023–2025. All six levels connect to MLB. Level-based evidence
+  discounting plus 1,200-PA hitter and 800-BF pitcher priors replaces most pure
+  population fallbacks without allowing raw lower-level rates to dominate a
+  conditional-on-future-MLB estimate.
 - Official no-debut evidence now supplies a zero opening service balance only when a
   FanGraphs opening balance is absent. Debuted players still fail closed. This expands
   the six-year future-control path from 1,667 to 8,350 players; unresolved ownership
@@ -137,8 +143,8 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths and first conditional-WAR assembly are now built. Next,
-translate affiliated hitter/pitcher components to MLB-equivalent rate skill, replace
-covered defense/running fallbacks, fit modern adjacent-season component aging, and
+validate the provisional affiliated translation on rolling historical holdouts,
+replace covered defense/running fallbacks, fit modern adjacent-season component aging, and
 build the explicit rest-of-season projection. The later economic
 blocker is a chronologically fitted free-agent market function. In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not

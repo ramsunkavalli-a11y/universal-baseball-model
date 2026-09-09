@@ -54,6 +54,9 @@ complete team-neutral 2027–2032 hitter and pitcher workload paths.
 The [current conditional WAR result](docs/current-conditional-war-paths-2026-09-08.md)
 adds the first universal rate baseline, explicit population fallbacks and controlled
 WAR coverage without promoting the output to a public ranking.
+The [affiliated translation result](docs/affiliated-level-translation-result.md)
+describes the provisional same-player/same-season bridge that replaces most pure
+minor-league population priors while preserving a fallback.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

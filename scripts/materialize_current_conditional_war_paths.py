@@ -14,10 +14,15 @@ from universal_baseball.conditional_war_rates import (
     build_hitter_conditional_war_rates,
     build_pitcher_conditional_war_rates,
 )
+from universal_baseball.level_component_translation import (
+    build_translated_affiliated_profiles,
+)
 from universal_baseball.storage import write_canonical_parquet
 
 
 NON_CONTROL_STATUSES = {"free_agent", "free_agent_eligible"}
+HITTER_COMPONENTS = ("ubb", "hbp", "single", "double", "triple", "hr", "other")
+PITCHER_COMPONENTS = ("so", "ubb", "hbp", "hr", "other")
 
 
 def _args() -> argparse.Namespace:
@@ -35,6 +40,14 @@ def _args() -> argparse.Namespace:
     parser.add_argument(
         "--opportunity-root", type=Path,
         default=Path("reports/generated/current-opportunity-paths/2026-09-08/tables"),
+    )
+    parser.add_argument(
+        "--affiliated-skill-root", type=Path,
+        default=Path("reports/generated/affiliated-skill-source/tables"),
+    )
+    parser.add_argument(
+        "--translation-root", type=Path,
+        default=Path("reports/generated/affiliated-level-translations/tables"),
     )
     parser.add_argument(
         "--control-path", type=Path,
@@ -96,7 +109,31 @@ def _coverage(frame: pl.DataFrame) -> dict[str, int]:
         "control_matched_player_years": frame.filter(pl.col("control_coverage") == "matched").height,
         "control_missing_player_years": frame.filter(pl.col("control_coverage") == "missing").height,
         "population_prior_player_years": frame.filter(pl.col("evidence_tier") == "population_prior").height,
+        "affiliated_translated_player_years": frame.filter(
+            pl.col("evidence_tier") == "affiliated_translated"
+        ).height,
     }
+
+
+def _hitter_components(frame: pl.DataFrame) -> pl.DataFrame:
+    return frame.with_columns(
+        (pl.col("base_on_balls") - pl.col("intentional_walks")).alias("ubb"),
+        (pl.col("hits") - pl.col("doubles") - pl.col("triples") - pl.col("home_runs")).alias("single"),
+        pl.col("doubles").alias("double"), pl.col("triples").alias("triple"),
+        pl.col("home_runs").alias("hr"), pl.col("hit_by_pitch").alias("hbp"),
+    ).with_columns(
+        (pl.col("plate_appearances") - pl.sum_horizontal(*HITTER_COMPONENTS[:-1])).alias("other")
+    )
+
+
+def _pitcher_components(frame: pl.DataFrame) -> pl.DataFrame:
+    return frame.with_columns(
+        pl.col("strike_outs").alias("so"),
+        (pl.col("base_on_balls") - pl.col("intentional_walks")).alias("ubb"),
+        pl.col("hit_batters").alias("hbp"), pl.col("home_runs").alias("hr"),
+    ).with_columns(
+        (pl.col("batters_faced") - pl.sum_horizontal(*PITCHER_COMPONENTS[:-1])).alias("other")
+    )
 
 
 def main() -> int:
@@ -114,18 +151,40 @@ def main() -> int:
         _position_source(roster), on="player_id", how="left"
     ).with_columns(pl.col("position_code").fill_null(""))
     pitcher_players = pitcher_snapshot.select("player_id", "age_years")
+    affiliated_hitters = _hitter_components(
+        pl.read_parquet(args.affiliated_skill_root / "affiliated_hitting_components.parquet")
+    )
+    affiliated_pitchers = _pitcher_components(
+        pl.read_parquet(args.affiliated_skill_root / "affiliated_pitching_components.parquet")
+    )
+    hitter_profiles = build_translated_affiliated_profiles(
+        hitter_players.select("player_id"), affiliated_hitters,
+        pl.read_parquet(args.translation_root / "hitter_level_offsets.parquet"),
+        exposure_column="plate_appearances", component_columns=HITTER_COMPONENTS,
+        current_season=args.as_of_date.year, reference_season=args.as_of_date.year - 1,
+        regression_exposure=1200.0,
+    )
+    pitcher_profiles = build_translated_affiliated_profiles(
+        pitcher_players.select("player_id"), affiliated_pitchers,
+        pl.read_parquet(args.translation_root / "pitcher_level_offsets.parquet"),
+        exposure_column="batters_faced", component_columns=PITCHER_COMPONENTS,
+        current_season=args.as_of_date.year, reference_season=args.as_of_date.year - 1,
+        regression_exposure=800.0,
+    )
 
     hitter_rates = build_hitter_conditional_war_rates(
         hitter_players, hitting, current_season=args.as_of_date.year,
         forecast_seasons=seasons,
         reference_plate_appearances=int(reference["batting_plate_appearances"]),
         runs_per_win=float(reference["runs_per_win"]),
+        affiliated_profiles=hitter_profiles,
     )
     pitcher_rates = build_pitcher_conditional_war_rates(
         pitcher_players, pitching, current_season=args.as_of_date.year,
         forecast_seasons=seasons,
         reference_batters_faced=int(reference["pitching_batters_faced"]),
         runs_per_win=float(reference["runs_per_win"]),
+        affiliated_profiles=pitcher_profiles,
     )
     hitter_opportunity = pl.read_parquet(args.opportunity_root / "hitter_opportunity_paths.parquet")
     pitcher_opportunity = pl.read_parquet(args.opportunity_root / "pitcher_opportunity_paths.parquet")
@@ -168,6 +227,14 @@ def main() -> int:
         "current_season_included": False,
         "control_missing_policy": "null; never inferred uncontrolled",
         "ranking_status": "not_publishable_baseline",
+        "affiliated_rate_evidence": {
+            "hitter_regression_pa": 1200.0,
+            "pitcher_regression_bf": 800.0,
+            "level_evidence_multipliers": {
+                "MLB": 1.0, "AAA": 0.5, "AA": 0.3, "HIGH_A": 0.2,
+                "SINGLE_A": 0.1, "ROOKIE_COMPLEX": 0.05,
+            },
+        },
         "limitations": [
             "Hitter defense and baserunning are league-average zero fallbacks.",
             "Players without recent MLB rate history receive an explicit population prior.",

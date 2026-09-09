@@ -138,6 +138,7 @@ def build_hitter_conditional_war_rates(
     forecast_seasons: tuple[int, ...],
     reference_plate_appearances: int,
     runs_per_win: float,
+    affiliated_profiles: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build universal conditional hitter WAR/600 rates."""
 
@@ -163,6 +164,8 @@ def build_hitter_conditional_war_rates(
         *((pl.col(column) * pl.col("weight")).sum().alias(f"weighted_{column}") for column in event_columns),
     )
     joined = players.join(weighted, on="player_id", how="left")
+    if affiliated_profiles is not None:
+        joined = joined.join(affiliated_profiles, on="player_id", how="left", validate="1:1")
     woba_weight = {
         "ubb": NEUTRAL_WOBA_WEIGHTS["UBB"], "hbp": NEUTRAL_WOBA_WEIGHTS["HBP"],
         "single": NEUTRAL_WOBA_WEIGHTS["1B"], "double": NEUTRAL_WOBA_WEIGHTS["2B"],
@@ -172,12 +175,27 @@ def build_hitter_conditional_war_rates(
     replacement_runs = 570.0 * rpw * 600.0 / reference_pa
     rows: list[dict[str, object]] = []
     for row in joined.iter_rows(named=True):
-        evidence = float(row.get("weighted_pa") or 0.0)
-        base = {
-            key: (float(row.get(f"weighted_{key}") or 0.0) + MARCEL_REGRESSION_PA * prior[key])
-            / (evidence + MARCEL_REGRESSION_PA)
-            for key in event_columns
-        }
+        mlb_evidence = float(row.get("weighted_pa") or 0.0)
+        affiliated_evidence = float(row.get("weighted_affiliated_exposure") or 0.0)
+        if mlb_evidence > 0:
+            base = {
+                key: (float(row.get(f"weighted_{key}") or 0.0) + MARCEL_REGRESSION_PA * prior[key])
+                / (mlb_evidence + MARCEL_REGRESSION_PA)
+                for key in event_columns
+            }
+            evidence = mlb_evidence
+            reliability = mlb_evidence / (mlb_evidence + MARCEL_REGRESSION_PA)
+            evidence_tier = "mlb_history"
+        elif affiliated_evidence > 0:
+            base = {key: float(row[f"p_{key}"]) for key in event_columns}
+            evidence = affiliated_evidence
+            reliability = float(row["affiliated_reliability"])
+            evidence_tier = "affiliated_translated"
+        else:
+            base = dict(prior)
+            evidence = 0.0
+            reliability = 0.0
+            evidence_tier = "population_prior"
         position_runs, position = _position_runs_per_600(row["position_code"])
         for season in forecast_seasons:
             age = None if row["age_years"] is None else float(row["age_years"]) + season - current_season
@@ -197,8 +215,8 @@ def build_hitter_conditional_war_rates(
                 "replacement_runs_per_600": replacement_runs,
                 "primary_position": position, "target_age": age,
                 "weighted_history_pa": evidence,
-                "reliability": evidence / (evidence + MARCEL_REGRESSION_PA),
-                "evidence_tier": "mlb_history" if evidence > 0 else "population_prior",
+                "reliability": reliability,
+                "evidence_tier": evidence_tier,
                 "talent_model_id": HITTER_RATE_MODEL_ID,
                 "missing_component_policy": "league_average_defense_and_baserunning",
             })
@@ -213,6 +231,7 @@ def build_pitcher_conditional_war_rates(
     forecast_seasons: tuple[int, ...],
     reference_batters_faced: int,
     runs_per_win: float,
+    affiliated_profiles: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build universal conditional pitcher WAR/800 BF rates."""
 
@@ -257,9 +276,27 @@ def build_pitcher_conditional_war_rates(
     weights = {"so": 0.0, "ubb": NEUTRAL_WOBA_WEIGHTS["UBB"], "hbp": NEUTRAL_WOBA_WEIGHTS["HBP"], "hr": NEUTRAL_WOBA_WEIGHTS["HR"], "other": other_weight}
     replacement_runs = PITCHER_WAR_ALLOCATION * rpw * 800.0 / reference_bf
     joined = players.join(base, on="player_id", how="left", validate="1:1")
+    if affiliated_profiles is not None:
+        joined = joined.join(affiliated_profiles, on="player_id", how="left", validate="1:1")
     rows: list[dict[str, object]] = []
     for row in joined.iter_rows(named=True):
-        probabilities = {key: float(row[f"predicted_{key}_rate"]) for key in ("so", "ubb", "hbp", "hr", "other")}
+        mlb_evidence = float(row["weighted_history_bf"])
+        affiliated_evidence = float(row.get("weighted_affiliated_exposure") or 0.0)
+        if mlb_evidence > 0:
+            probabilities = {key: float(row[f"predicted_{key}_rate"]) for key in ("so", "ubb", "hbp", "hr", "other")}
+            evidence = mlb_evidence
+            reliability = float(row["reliability"])
+            evidence_tier = "mlb_history"
+        elif affiliated_evidence > 0:
+            probabilities = {key: float(row[f"p_{key}"]) for key in ("so", "ubb", "hbp", "hr", "other")}
+            evidence = affiliated_evidence
+            reliability = float(row["affiliated_reliability"])
+            evidence_tier = "affiliated_translated"
+        else:
+            probabilities = {key: float(row[f"predicted_{key}_rate"]) for key in ("so", "ubb", "hbp", "hr", "other")}
+            evidence = 0.0
+            reliability = 0.0
+            evidence_tier = "population_prior"
         current_age = None if row["age_years"] is None else float(row["age_years"])
         for season in forecast_seasons:
             target_age = None if current_age is None else current_age + season - current_season
@@ -273,9 +310,9 @@ def build_pitcher_conditional_war_rates(
                 "pitching_runs_above_average_per_800": runs_above_average,
                 "replacement_runs_per_800": replacement_runs,
                 "target_age": target_age,
-                "weighted_history_bf": float(row["weighted_history_bf"]),
-                "reliability": float(row["reliability"]),
-                "evidence_tier": "mlb_history" if float(row["weighted_history_bf"]) > 0 else "population_prior",
+                "weighted_history_bf": evidence,
+                "reliability": reliability,
+                "evidence_tier": evidence_tier,
                 "talent_model_id": PITCHER_RATE_MODEL_ID,
                 "aging_source": "tango_adjacent_pitching_regressed_part2",
                 **{f"predicted_{key}_rate": aged[key] for key in aged},
