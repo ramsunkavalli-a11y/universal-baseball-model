@@ -20,6 +20,15 @@ about 8%. This confirms that broad team totals are not the main source of crowde
 prospect values. Position and pitcher-role competition are the next material
 allocation layer. The output remains separate from organization-neutral trade value.
 
+The new [broad hitter position-capacity diagnostic](current-organization-position-capacity-result.md)
+shows where the crowding actually sits. Catcher exceeds its historical workload share
+in 61 of 180 current team-seasons and loses 10,915 expected PA across the six-year
+view; one catcher group scales to 58.1%. The layer removes another 8,179 PA in 2027
+after the total-team cap, while never scaling a player upward. This supports a
+current-team catcher constraint, not a catcher talent penalty: portable Model FV and
+trade value remain unchanged. Historical replay, flexible multi-position assignment
+and pitcher-role capacity are still required before production integration.
+
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
 quality. A proper hurdle test conditions MLB component quality on meaningful playing

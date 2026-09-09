@@ -73,37 +73,12 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Persist binding 2025 source result
+      - name: Preserve binding result and recovery artifact separately
         if: always()
-        env:
-          SOURCE_RUN_ID: ${{ github.run_id }}
-          SOURCE_SHA: ${{ github.sha }}
         run: |
-          set -euo pipefail
-          python - <<'PY'
-          import json, os
-          from pathlib import Path
-          source = Path('reports/generated/position-role-2025-confirmation-source/report.json')
-          if not source.exists():
-              raise SystemExit('2025 position source report was not produced')
-          result = json.loads(source.read_text())
-          result['source_run_id'] = int(os.environ['SOURCE_RUN_ID'])
-          result['source_sha'] = os.environ['SOURCE_SHA']
-          Path('docs/position-role-2025-confirmation-source-result.json').write_text(
-              json.dumps(result, indent=2, sort_keys=True) + '\n'
-          )
-          PY
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/position-role-2025-confirmation-source-result.json
-          git commit -m "Persist untouched 2025 position-role source"
-          for attempt in 1 2 3; do
-            git fetch origin source-certification-poc
-            if git rebase origin/source-certification-poc && git push origin HEAD:source-certification-poc; then exit 0; fi
-            git rebase --abort || true
-            sleep $((attempt * 2))
-          done
-          exit 1
+          test -f docs/position-role-2025-confirmation-source-result.json
+          test -f reports/generated/position-role-2025-confirmation-source/report.json
+          echo "The committed binding result is immutable; this rerun remains in the uploaded recovery artifact."
 
       - name: Enforce fail-closed source decision
         if: always()

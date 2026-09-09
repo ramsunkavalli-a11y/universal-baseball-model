@@ -1,0 +1,194 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundary": "Research current-organization hitter view only. Primary-position groups are broad constraints, not exact lineup slots. No pitcher role allocation yet.",
+  "checks": {
+    "capacity_shares_sum_to_one": true,
+    "catcher_used_as_capacity_not_talent_bonus": true,
+    "current_player_opportunity_never_increased": true,
+    "current_team_capacity_not_exceeded": true,
+    "historical_missing_fielding_retained_as_dh_flex": true,
+    "organization_neutral_value_changed": false
+  },
+  "contract": "docs/current-organization-position-capacity-contract.md",
+  "current_effect_by_group": [
+    {
+      "allocated_pa": 91297.0169295804,
+      "minimum_scale": 0.5812388895137496,
+      "over_capacity_team_seasons": 61,
+      "position_group": "CATCHER",
+      "raw_pa": 102212.29737563385,
+      "reduction_pa": 10915.280446053453
+    },
+    {
+      "allocated_pa": 115072.77951788809,
+      "minimum_scale": 0.7760608826844242,
+      "over_capacity_team_seasons": 7,
+      "position_group": "CORNER_INFIELD",
+      "raw_pa": 116712.86735344342,
+      "reduction_pa": 1640.0878355553286
+    },
+    {
+      "allocated_pa": 36554.38425778432,
+      "minimum_scale": 0.4888595999346617,
+      "over_capacity_team_seasons": 31,
+      "position_group": "DH_FLEX",
+      "raw_pa": 40657.89577056022,
+      "reduction_pa": 4103.511512775905
+    },
+    {
+      "allocated_pa": 173359.72401629228,
+      "minimum_scale": 0.709396404935431,
+      "over_capacity_team_seasons": 45,
+      "position_group": "MIDDLE_INFIELD",
+      "raw_pa": 181933.08316588038,
+      "reduction_pa": 8573.359149588097
+    },
+    {
+      "allocated_pa": 255690.6011175217,
+      "minimum_scale": 0.6740919145863857,
+      "over_capacity_team_seasons": 26,
+      "position_group": "OUTFIELD",
+      "raw_pa": 261561.37887360604,
+      "reduction_pa": 5870.777756084339
+    }
+  ],
+  "current_effect_by_season": [
+    {
+      "additional_position_capacity_reduction_pa": 8179.319191908144,
+      "position_capped_pa": 151714.4643887691,
+      "reduced_player_rows": 1034,
+      "season": 2027,
+      "team_capped_pa": 159893.78358067723
+    },
+    {
+      "additional_position_capacity_reduction_pa": 7329.142046431953,
+      "position_capped_pa": 143741.62591693434,
+      "reduced_player_rows": 1121,
+      "season": 2028,
+      "team_capped_pa": 151070.7679633663
+    },
+    {
+      "additional_position_capacity_reduction_pa": 8870.190563678509,
+      "position_capped_pa": 136392.31343713164,
+      "reduced_player_rows": 1184,
+      "season": 2029,
+      "team_capped_pa": 145262.50400081015
+    },
+    {
+      "additional_position_capacity_reduction_pa": 5194.529409304319,
+      "position_capped_pa": 127368.42946531952,
+      "reduced_player_rows": 720,
+      "season": 2030,
+      "team_capped_pa": 132562.95887462384
+    },
+    {
+      "additional_position_capacity_reduction_pa": 1529.835488734272,
+      "position_capped_pa": 106116.43349206272,
+      "reduced_player_rows": 328,
+      "season": 2031,
+      "team_capped_pa": 107646.26898079699
+    },
+    {
+      "additional_position_capacity_reduction_pa": 0.0,
+      "position_capped_pa": 6641.239138849439,
+      "reduced_player_rows": 0,
+      "season": 2032,
+      "team_capped_pa": 6641.239138849439
+    }
+  ],
+  "descriptive_2025_stability": {
+    "by_group": [
+      {
+        "mean_absolute_share_error": 0.01961838880059406,
+        "mean_signed_share_error": 0.006793161068456146,
+        "p90_absolute_share_error": 0.04452832586339818,
+        "position_group": "CATCHER",
+        "teams": 30
+      },
+      {
+        "mean_absolute_share_error": 0.05285087855209964,
+        "mean_signed_share_error": -0.017134044740496335,
+        "p90_absolute_share_error": 0.10186276616735168,
+        "position_group": "CORNER_INFIELD",
+        "teams": 30
+      },
+      {
+        "mean_absolute_share_error": 0.04279937288539978,
+        "mean_signed_share_error": 0.016016431413961942,
+        "p90_absolute_share_error": 0.06571100120837439,
+        "position_group": "DH_FLEX",
+        "teams": 30
+      },
+      {
+        "mean_absolute_share_error": 0.033839614573051006,
+        "mean_signed_share_error": 0.005184478284318852,
+        "p90_absolute_share_error": 0.07189769998249651,
+        "position_group": "MIDDLE_INFIELD",
+        "teams": 30
+      },
+      {
+        "mean_absolute_share_error": 0.03535377676851322,
+        "mean_signed_share_error": -0.010860026026240668,
+        "p90_absolute_share_error": 0.07183685212925928,
+        "position_group": "OUTFIELD",
+        "teams": 30
+      }
+    ],
+    "mean_team_total_variation": 0.09223101578982881,
+    "p90_team_total_variation": 0.14326716237536008,
+    "teams": 30
+  },
+  "frozen_capacity_shares": [
+    {
+      "capacity_share": 0.11490703817820656,
+      "position_group": "CATCHER",
+      "raw_median_share": 0.11315748212139673,
+      "share_p10": 0.09308469308469308,
+      "share_p90": 0.14154941515511105,
+      "team_seasons": 120
+    },
+    {
+      "capacity_share": 0.23795268989276316,
+      "position_group": "CORNER_INFIELD",
+      "raw_median_share": 0.23432966056021323,
+      "share_p10": 0.1852381633528823,
+      "share_p90": 0.3010607846438794,
+      "team_seasons": 120
+    },
+    {
+      "capacity_share": 0.06839978596363727,
+      "position_group": "DH_FLEX",
+      "raw_median_share": 0.0673583418387649,
+      "share_p10": 0.004472129052866954,
+      "share_p90": 0.10693542876665528,
+      "team_seasons": 120
+    },
+    {
+      "capacity_share": 0.22861574006582724,
+      "position_group": "MIDDLE_INFIELD",
+      "raw_median_share": 0.22513487362756854,
+      "share_p10": 0.1842791911285062,
+      "share_p90": 0.2942354455728794,
+      "team_seasons": 120
+    },
+    {
+      "capacity_share": 0.3501247458995658,
+      "position_group": "OUTFIELD",
+      "raw_median_share": 0.344793802908262,
+      "share_p10": 0.2776593683394691,
+      "share_p90": 0.39727511998761417,
+      "team_seasons": 120
+    }
+  ],
+  "report_schema_version": "0.1",
+  "source": {
+    "confirmation_source_gate_passed": true,
+    "confirmation_workflow_run": 34417029463,
+    "historical_source_gate_passed": true,
+    "historical_workflow_run": 34416918946,
+    "team_seasons_2021_2025": 150,
+    "workflow_conclusions_failed_only_after_artifact_upload": true,
+    "workflow_failure_reason": "obsolete source-certification-poc persistence branch"
+  },
+  "status": "research_hitter_position_capacity_complete"
+}

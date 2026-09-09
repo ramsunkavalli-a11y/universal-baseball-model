@@ -7,11 +7,38 @@ from dataclasses import dataclass
 import polars as pl
 
 
+POSITION_GROUPS = (
+    "CATCHER", "MIDDLE_INFIELD", "CORNER_INFIELD", "OUTFIELD", "DH_FLEX"
+)
+POSITION_ORDER = {value: index for index, value in enumerate(
+    ("C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH")
+)}
+
+
+def position_group(value: object) -> str:
+    position = str(value or "").upper()
+    if position == "C":
+        return "CATCHER"
+    if position in {"2B", "SS"}:
+        return "MIDDLE_INFIELD"
+    if position in {"1B", "3B"}:
+        return "CORNER_INFIELD"
+    if position in {"LF", "CF", "RF", "OF"}:
+        return "OUTFIELD"
+    return "DH_FLEX"
+
+
 @dataclass(frozen=True, slots=True)
 class TeamOpportunityAllocation:
     hitter: pl.DataFrame
     pitcher: pl.DataFrame
     teams: pl.DataFrame
+
+
+@dataclass(frozen=True, slots=True)
+class PositionCapacityAllocation:
+    players: pl.DataFrame
+    groups: pl.DataFrame
 
 
 def _allocate_side(
@@ -143,3 +170,172 @@ def allocate_current_organization_opportunity(
     if pitcher.filter(pl.col("current_org_expected_mlb_bf") > pl.col("expected_mlb_bf") + tolerance).height:
         raise AssertionError("pitcher allocation increased player opportunity")
     return TeamOpportunityAllocation(hitter=hitter, pitcher=pitcher, teams=teams)
+
+
+def historical_hitter_position_shares(
+    fielding_usage: pl.DataFrame, hitting_stats: pl.DataFrame
+) -> pl.DataFrame:
+    """Attribute team PA to a deterministic observed primary position group."""
+
+    fielding_required = {
+        "season", "level_group", "team_id", "player_id", "position_abbreviation",
+        "games_started", "games_played", "fielding_outs",
+    }
+    hitting_required = {
+        "season", "stat_group", "sport_id", "team_id", "player_id", "plate_appearances"
+    }
+    if missing := sorted(fielding_required - set(fielding_usage.columns)):
+        raise ValueError(f"fielding usage missing fields: {missing}")
+    if missing := sorted(hitting_required - set(hitting_stats.columns)):
+        raise ValueError(f"hitting stats missing fields: {missing}")
+    fielding = (
+        fielding_usage.filter(
+            (pl.col("level_group") == "MLB")
+            & pl.col("position_abbreviation").is_in(list(POSITION_ORDER))
+        )
+        .with_columns(
+            pl.col("position_abbreviation").replace_strict(
+                POSITION_ORDER, return_dtype=pl.Int64
+            ).alias("position_order")
+        )
+        .sort(
+            ["season", "team_id", "player_id", "games_started", "games_played",
+             "fielding_outs", "position_order"],
+            descending=[False, False, False, True, True, True, False],
+        )
+        .unique(["season", "team_id", "player_id"], keep="first", maintain_order=True)
+        .select("season", "team_id", "player_id", "position_abbreviation")
+    )
+    hitting = (
+        hitting_stats.filter(
+            (pl.col("sport_id") == 1)
+            & (pl.col("stat_group") == "hitting")
+            & (pl.col("plate_appearances") > 0)
+        )
+        .group_by("season", "team_id", "player_id")
+        .agg(pl.col("plate_appearances").sum().cast(pl.Float64).alias("plate_appearances"))
+    )
+    attributed = hitting.join(
+        fielding, on=["season", "team_id", "player_id"], how="left", validate="1:1"
+    ).with_columns(
+        pl.col("position_abbreviation").map_elements(
+            position_group, return_dtype=pl.String, skip_nulls=False
+        ).alias("position_group")
+    )
+    totals = attributed.group_by("season", "team_id").agg(
+        pl.col("plate_appearances").sum().alias("team_pa")
+    )
+    grouped = attributed.group_by("season", "team_id", "position_group").agg(
+        pl.col("plate_appearances").sum().alias("position_group_pa")
+    )
+    universe = totals.select("season", "team_id").join(
+        pl.DataFrame({"position_group": POSITION_GROUPS}), how="cross"
+    )
+    return (
+        universe.join(grouped, on=["season", "team_id", "position_group"], how="left")
+        .join(totals, on=["season", "team_id"], how="left", validate="m:1")
+        .with_columns(pl.col("position_group_pa").fill_null(0.0))
+        .with_columns(
+            (pl.col("position_group_pa") / pl.col("team_pa")).alias("position_group_share")
+        )
+        .sort("season", "team_id", "position_group")
+    )
+
+
+def estimate_hitter_position_capacity_shares(
+    historical_shares: pl.DataFrame, *, development_seasons: tuple[int, ...]
+) -> pl.DataFrame:
+    """Freeze normalized median group shares using development seasons only."""
+
+    required = {"season", "position_group", "position_group_share"}
+    if missing := sorted(required - set(historical_shares.columns)):
+        raise ValueError(f"historical position shares missing fields: {missing}")
+    development = historical_shares.filter(pl.col("season").is_in(development_seasons))
+    if development.is_empty():
+        raise ValueError("position-capacity development evidence is empty")
+    medians = development.group_by("position_group").agg(
+        pl.col("position_group_share").median().alias("raw_median_share"),
+        pl.col("position_group_share").quantile(0.1).alias("share_p10"),
+        pl.col("position_group_share").quantile(0.9).alias("share_p90"),
+        pl.len().alias("team_seasons"),
+    )
+    if set(medians.get_column("position_group")) != set(POSITION_GROUPS):
+        raise ValueError("development evidence does not cover every position group")
+    total = float(medians.get_column("raw_median_share").sum())
+    if total <= 0:
+        raise ValueError("position-capacity median shares have zero total")
+    return medians.with_columns(
+        (pl.col("raw_median_share") / total).alias("capacity_share")
+    ).sort("position_group")
+
+
+def allocate_hitter_position_capacity(
+    current_team_hitter: pl.DataFrame,
+    capacity_shares: pl.DataFrame,
+    *,
+    team_capacity: float,
+) -> PositionCapacityAllocation:
+    """Scale down over-cap controlled primary-position groups; never scale up."""
+
+    required = {
+        "player_id", "season", "organization_id", "primary_position",
+        "current_org_expected_mlb_pa",
+    }
+    if missing := sorted(required - set(current_team_hitter.columns)):
+        raise ValueError(f"current team hitter allocation missing fields: {missing}")
+    if set(capacity_shares.get_column("position_group")) != set(POSITION_GROUPS):
+        raise ValueError("capacity shares do not cover every position group")
+    if abs(float(capacity_shares.get_column("capacity_share").sum()) - 1.0) > 1e-12:
+        raise ValueError("position capacity shares must sum to one")
+    players = current_team_hitter.with_columns(
+        pl.col("primary_position").map_elements(
+            position_group, return_dtype=pl.String
+        ).alias("position_group")
+    )
+    totals = players.group_by("season", "organization_id", "position_group").agg(
+        pl.col("current_org_expected_mlb_pa").sum().alias("raw_group_pa")
+    )
+    team_keys = players.select("season", "organization_id").unique()
+    groups = (
+        team_keys.join(capacity_shares.select("position_group", "capacity_share"), how="cross")
+        .join(totals, on=["season", "organization_id", "position_group"], how="left")
+        .with_columns(pl.col("raw_group_pa").fill_null(0.0))
+        .with_columns((pl.col("capacity_share") * team_capacity).alias("group_capacity_pa"))
+        .with_columns(
+            pl.min_horizontal("raw_group_pa", "group_capacity_pa").alias("allocated_group_pa")
+        )
+        .with_columns(
+            pl.when(pl.col("raw_group_pa") > 0)
+            .then(pl.col("allocated_group_pa") / pl.col("raw_group_pa"))
+            .otherwise(1.0).alias("position_group_scale"),
+            (pl.col("group_capacity_pa") - pl.col("allocated_group_pa"))
+            .alias("unassigned_group_pa"),
+        )
+    )
+    group_checks = groups.group_by("season", "organization_id").agg(
+        pl.col("group_capacity_pa").sum().alias("capacity_sum"),
+        pl.col("raw_group_pa").sum().alias("raw_sum"),
+        pl.col("allocated_group_pa").sum().alias("allocated_sum"),
+    )
+    if group_checks.filter((pl.col("capacity_sum") - team_capacity).abs() > 1e-7).height:
+        raise AssertionError("position group capacities do not sum to team capacity")
+    if group_checks.filter(pl.col("allocated_sum") > pl.col("raw_sum") + 1e-7).height:
+        raise AssertionError("position groups increased team opportunity")
+    allocated = players.join(
+        groups.select(
+            "season", "organization_id", "position_group", "position_group_scale"
+        ),
+        on=["season", "organization_id", "position_group"], how="left", validate="m:1",
+    ).with_columns(
+        (pl.col("current_org_expected_mlb_pa") * pl.col("position_group_scale"))
+        .alias("position_capped_expected_mlb_pa")
+    )
+    if allocated.filter(
+        pl.col("position_capped_expected_mlb_pa")
+        > pl.col("current_org_expected_mlb_pa") + 1e-7
+    ).height:
+        raise AssertionError("position capacity increased player opportunity")
+    return PositionCapacityAllocation(
+        players=allocated.sort("season", "organization_id", "player_id"),
+        groups=groups.sort("season", "organization_id", "position_group"),
+    )
