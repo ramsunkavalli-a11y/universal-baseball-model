@@ -106,3 +106,39 @@ CBA_2027_2032_PLANNING_SCENARIO = CBARuleset(
     source_url=CBA_2022_2026.source_url,
     ruleset_kind="research_planning_scenario_not_cba_fact",
 )
+
+
+# Historical replay only. The 2025-2026 values are official CBA facts; later
+# minimums and unchanged eligibility rules are the same explicit 3% continuity
+# assumptions used by the current research scenario.
+CBA_2025_2029_HISTORICAL_REPLAY_SCENARIO = CBARuleset(
+    ruleset_id="historical_2025_replay_official_then_post2026_planning_3pct",
+    effective_start_year=2025,
+    effective_end_year=2029,
+    major_league_minimum_salary=MappingProxyType(
+        {
+            2025: CBA_2022_2026.major_league_minimum_salary[2025],
+            2026: CBA_2022_2026.major_league_minimum_salary[2026],
+            2027: CBA_2027_2032_PLANNING_SCENARIO.major_league_minimum_salary[2027],
+            2028: CBA_2027_2032_PLANNING_SCENARIO.major_league_minimum_salary[2028],
+            2029: CBA_2027_2032_PLANNING_SCENARIO.major_league_minimum_salary[2029],
+        }
+    ),
+    service_days_per_year=CBA_2022_2026.service_days_per_year,
+    option_days_per_year=CBA_2022_2026.option_days_per_year,
+    standard_option_years=CBA_2022_2026.standard_option_years,
+    fourth_option_full_seasons_threshold=(
+        CBA_2022_2026.fourth_option_full_seasons_threshold
+    ),
+    full_pro_season_active_days=CBA_2022_2026.full_pro_season_active_days,
+    full_pro_season_min_active_days=CBA_2022_2026.full_pro_season_min_active_days,
+    standard_arbitration_service_years=(
+        CBA_2022_2026.standard_arbitration_service_years
+    ),
+    free_agency_service_years=CBA_2022_2026.free_agency_service_years,
+    super_two_min_service_years=CBA_2022_2026.super_two_min_service_years,
+    super_two_share=CBA_2022_2026.super_two_share,
+    super_two_min_current_days=CBA_2022_2026.super_two_min_current_days,
+    source_url=CBA_2022_2026.source_url,
+    ruleset_kind="historical_replay_mixed_official_and_planning_scenario",
+)

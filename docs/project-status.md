@@ -86,6 +86,13 @@ or promote a player ranking; the public v1 release remains historical.
   are external scale checks, not model inputs. The full 2025 universe receives
   183,343 expected hitter PA and 180,383 expected pitcher BF. Eight hitters and 24
   pitchers added by the Opening Day workbook retain labeled population fallbacks.
+- The first historical control/value join now connects 7,998 of 8,946 projected
+  players to an incumbent owner. FanGraphs supplies 2,019 Opening Day owners; dated
+  official 40-man and transaction evidence resolve 199; 5,780 use the unique October
+  2024 official full-roster owner. The remaining 948 players stay talent-only. Of
+  39,990 owned annual rows, 39,648 calculate and 342 remain review for 33 missing
+  service balances, 118 option years, 52 2025 Super Two cases and seven unclear
+  contract cells. This is retrospective research evidence, not a ranking.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and
@@ -308,10 +315,10 @@ The one-year confirmation forecast and scoring rule are frozen. Do not inspect p
 2026 targets or tune the completed gates; run confirmation only after official regular-
 season totals are final. Horizons 5–6 remain on the incumbent until better older
 evidence exists. The next available Phase 1 work is a small completed-season end-to-end
-replay through the new checkpoint interface. The 2025 cutoff-safe hitter and pitcher
-projection paths are now built. Opening service/options and a gated retrospective
-contract bridge are also present. The next task is their historical control/value join;
-unresolved identities and options must remain reviews. In the current snapshot, 16
+replay through the new checkpoint interface. The 2025 projection, control and value
+paths now run together. The next task is outcome scoring and checkpoint validation,
+with the 948 missing-owner players and bounded contract/service exceptions reported
+separately rather than forced. In the current snapshot, 16
 annual contract reviews remain: 12 future vesting
 decisions, three linked Julio Rodriguez years and one missing option salary. Granular replacement of the
 43 buyout estimates with exact terms is Phase 2. Current role and late-season injury return

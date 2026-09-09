@@ -109,10 +109,10 @@ def resolve_current_organizations(
         for team_id, parent_id in affiliate_parents.items()
     ):
         raise ValueError("affiliate parent map must contain positive teams and MLB parents")
-    if roster.filter(pl.col("as_of_date") != pl.lit(as_of_date)).height:
-        raise ValueError("full-roster candidates contain an unexpected as_of_date")
-    if forty.filter(pl.col("as_of_date") != pl.lit(as_of_date)).height:
-        raise ValueError("40-man membership contains an unexpected as_of_date")
+    if roster.filter(pl.col("as_of_date") > pl.lit(as_of_date)).height:
+        raise ValueError("full-roster candidates cross the as-of cutoff")
+    if forty.filter(pl.col("as_of_date") > pl.lit(as_of_date)).height:
+        raise ValueError("40-man membership crosses the as-of cutoff")
     if tx.filter(pl.col("effective_date") > pl.lit(as_of_date)).height:
         raise ValueError("transactions cross the as-of cutoff")
 
@@ -124,11 +124,17 @@ def resolve_current_organizations(
         candidate_groups[player_id] = {
             "player_name": names[0] if names else "",
             "teams": teams,
+            "evidence_date": max(group.get_column("as_of_date")),
         }
 
     forty_teams: dict[int, set[int]] = {}
+    forty_dates: dict[int, date] = {}
     for row in forty.filter(pl.col("on_40man")).iter_rows(named=True):
-        forty_teams.setdefault(int(row["player_id"]), set()).add(int(row["team_id"]))
+        player_id = int(row["player_id"])
+        forty_teams.setdefault(player_id, set()).add(int(row["team_id"]))
+        forty_dates[player_id] = max(
+            row["as_of_date"], forty_dates.get(player_id, row["as_of_date"])
+        )
 
     tx_resolutions: dict[int, tuple[date, int, str, int | None]] = {}
     tx_conflicts: set[int] = set()
@@ -163,21 +169,49 @@ def resolve_current_organizations(
     for player_id, candidate in sorted(candidate_groups.items()):
         teams = candidate["teams"]
         direct = forty_teams.get(player_id, set())
+        forty_date = forty_dates.get(player_id)
+        transaction = tx_resolutions.get(player_id)
+        later_transaction = (
+            transaction is not None
+            and (forty_date is None or transaction[0] > forty_date)
+        )
+        later_transaction_conflict = (
+            player_id in tx_conflicts
+            and (
+                forty_date is None
+                or latest_dates[player_id] > forty_date
+            )
+        )
         organization_id: int | None = None
         status: str
         evidence: str
-        if len(direct) == 1:
+        if later_transaction_conflict:
+            status = "review_conflicting_same_day_ownership_transactions"
+            evidence = "official_transaction_conflict"
+        elif later_transaction:
+            assert transaction is not None
+            event_date, transaction_id, state, organization_id = transaction
+            status = (
+                "resolved_official_transaction"
+                if state == "owner"
+                else "resolved_official_release_no_rights"
+            )
+            evidence = f"official_mlb_stats_api_transaction:{transaction_id}:{event_date}"
+        elif len(direct) == 1:
             organization_id = next(iter(direct))
             status = "resolved_official_40man"
-            evidence = f"official_mlb_stats_api_40Man:{as_of_date}:team:{organization_id}"
+            evidence = (
+                f"official_mlb_stats_api_40Man:{forty_dates[player_id]}:"
+                f"team:{organization_id}"
+            )
         elif len(direct) > 1:
             status = "review_multiple_40man_organizations"
             evidence = "official_40man_conflict:" + ",".join(map(str, sorted(direct)))
         elif player_id in tx_conflicts:
             status = "review_conflicting_same_day_ownership_transactions"
             evidence = "official_transaction_conflict"
-        elif player_id in tx_resolutions:
-            event_date, transaction_id, state, organization_id = tx_resolutions[player_id]
+        elif transaction is not None:
+            event_date, transaction_id, state, organization_id = transaction
             status = (
                 "resolved_official_transaction"
                 if state == "owner"
@@ -187,7 +221,10 @@ def resolve_current_organizations(
         elif len(teams) == 1:
             organization_id = int(teams[0])
             status = "provisional_unique_full_roster"
-            evidence = f"official_mlb_stats_api_fullRoster:{as_of_date}:team:{organization_id}"
+            evidence = (
+                f"official_mlb_stats_api_fullRoster:{candidate['evidence_date']}:"
+                f"team:{organization_id}"
+            )
         else:
             status = "review_multiple_full_roster_organizations"
             evidence = "official_full_roster_conflict:" + ",".join(map(str, teams))

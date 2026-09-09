@@ -159,6 +159,13 @@ fallback references. FanGraphs projected PA/IP remain external scale comparators
 next replay dependency is therefore the historical control/value join, not another
 projection search or another workbook download.
 
+That control/value join is now implemented. It resolves 7,998 of 8,946 projected
+players to an owner and calculates 39,648 of 39,990 owned annual rows. The 948
+missing-owner players remain talent-only; 342 owned rows remain explicit reviews.
+The next P0 is to score the 2025 checkpoint against completed outcomes and run the
+checkpoint accounting/coverage gates. Exact option terms and contract identities are
+bounded follow-up work unless they materially change that result.
+
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component
 discrepancies for Phase 2. The protected 2026 confirmation forecast is frozen and its

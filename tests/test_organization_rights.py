@@ -238,3 +238,41 @@ def test_future_transaction_is_rejected() -> None:
             as_of_date=AS_OF,
             mlb_team_ids=MLB_TEAMS,
         )
+
+
+def test_prior_roster_snapshot_is_allowed_and_keeps_its_evidence_date() -> None:
+    candidates = _candidates((1, 100)).with_columns(
+        pl.lit(date(2025, 10, 15)).alias("as_of_date"),
+        pl.lit(2025).alias("season"),
+    )
+    result = resolve_current_organizations(
+        candidates,
+        _forty(),
+        _transactions(),
+        as_of_date=AS_OF,
+        mlb_team_ids=MLB_TEAMS,
+    ).row(0, named=True)
+
+    assert result["organization_id"] == 100
+    assert "2025-10-15" in result["organization_evidence"]
+
+
+def test_transaction_after_prior_40man_snapshot_takes_precedence() -> None:
+    candidates = _candidates((1, 100)).with_columns(
+        pl.lit(date(2025, 10, 15)).alias("as_of_date"),
+        pl.lit(2025).alias("season"),
+    )
+    forty = _forty((1, 100)).with_columns(
+        pl.lit(date(2025, 10, 15)).alias("as_of_date"),
+        pl.lit(2025).alias("season"),
+    )
+    result = resolve_current_organizations(
+        candidates,
+        forty,
+        _transactions((10, 1, "2026-01-10", "TR", 100, 200)),
+        as_of_date=AS_OF,
+        mlb_team_ids=MLB_TEAMS,
+    ).row(0, named=True)
+
+    assert result["organization_id"] == 200
+    assert result["organization_status"] == "resolved_official_transaction"
