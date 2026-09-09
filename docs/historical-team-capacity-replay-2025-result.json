@@ -1,0 +1,377 @@
+{
+  "capacity": {
+    "hitter_position_shares": [
+      {
+        "capacity_share": 0.11490703817820656,
+        "position_group": "CATCHER",
+        "raw_median_share": 0.11315748212139673,
+        "share_p10": 0.09308469308469308,
+        "share_p90": 0.14154941515511105,
+        "team_seasons": 120
+      },
+      {
+        "capacity_share": 0.23795268989276316,
+        "position_group": "CORNER_INFIELD",
+        "raw_median_share": 0.23432966056021323,
+        "share_p10": 0.1852381633528823,
+        "share_p90": 0.3010607846438794,
+        "team_seasons": 120
+      },
+      {
+        "capacity_share": 0.06839978596363727,
+        "position_group": "DH_FLEX",
+        "raw_median_share": 0.0673583418387649,
+        "share_p10": 0.004472129052866954,
+        "share_p90": 0.10693542876665528,
+        "team_seasons": 120
+      },
+      {
+        "capacity_share": 0.22861574006582724,
+        "position_group": "MIDDLE_INFIELD",
+        "raw_median_share": 0.22513487362756854,
+        "share_p10": 0.1842791911285062,
+        "share_p90": 0.2942354455728794,
+        "team_seasons": 120
+      },
+      {
+        "capacity_share": 0.3501247458995658,
+        "position_group": "OUTFIELD",
+        "raw_median_share": 0.344793802908262,
+        "share_p10": 0.2776593683394691,
+        "share_p90": 0.39727511998761417,
+        "team_seasons": 120
+      }
+    ],
+    "league_workload": 182250.5,
+    "pitcher_role_shares": [
+      {
+        "capacity_share": 0.3049237122330348,
+        "pitcher_role": "RELIEVER",
+        "raw_median_share": 0.3024040999872558,
+        "share_p10": 0.21618985695708712,
+        "share_p90": 0.3703206311901964,
+        "team_seasons": 120
+      },
+      {
+        "capacity_share": 0.5732473591645131,
+        "pitcher_role": "STARTER",
+        "raw_median_share": 0.5685105643267684,
+        "share_p10": 0.4921887582541472,
+        "share_p90": 0.6296586282492953,
+        "team_seasons": 120
+      },
+      {
+        "capacity_share": 0.1218289286024523,
+        "pitcher_role": "SWINGMAN",
+        "raw_median_share": 0.12082224513349898,
+        "share_p10": 0.03142301361663923,
+        "share_p90": 0.23292905798305366,
+        "team_seasons": 120
+      }
+    ],
+    "team_workload": 6075.016666666666
+  },
+  "checks": {
+    "capacity_uses_only_pre_outcome_seasons": true,
+    "identical_players_within_each_comparison": true,
+    "organization_neutral_forecasts_modified": false,
+    "outcome_zeros_retained": true,
+    "player_workload_never_increased": true
+  },
+  "chronology": {
+    "capacity_development_seasons": [
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "forecast_refit": false,
+    "outcome_previously_available_for_other_descriptive_checks": true,
+    "outcome_season": 2025
+  },
+  "contract": "docs/historical-team-capacity-replay-2025-contract.md",
+  "coverage": {
+    "hitter_forecast_players": 3891,
+    "pitcher_forecast_players": 5090,
+    "resolved_owner_players": 7998,
+    "scored_hitter_players": 3461,
+    "scored_pitcher_players": 4570,
+    "unresolved_hitter_players": 430,
+    "unresolved_pitcher_players": 520
+  },
+  "decision": {
+    "broad_team_cap": "retain_for_team_context",
+    "hitter_team_cap_evidence": "small_inconclusive_improvement",
+    "next_challenger": "flexible_cross_position_and_cross_role_reallocation",
+    "organization_neutral_value_changed": false,
+    "pitcher_team_cap_evidence": "rmse_and_mae_improved",
+    "rigid_hitter_position_cap": "reject_for_display",
+    "rigid_pitcher_role_cap": "do_not_promote"
+  },
+  "forecast_cutoff": "2025-03-27",
+  "hitter": {
+    "all_players": {
+      "final_capacity": {
+        "actual_total": 182898.0,
+        "mae": 32.42624302785873,
+        "mean_forecast_minus_actual": -7.220799607847268,
+        "players": 3461,
+        "predicted_to_actual_ratio": 0.8633599741781791,
+        "predicted_total": 157906.8125572406,
+        "rmse": 81.48781665782754
+      },
+      "original": {
+        "actual_total": 182898.0,
+        "mae": 32.435172686230636,
+        "mean_forecast_minus_actual": -0.6795943214703911,
+        "players": 3461,
+        "predicted_to_actual_ratio": 0.9871399580825978,
+        "predicted_total": 180545.92405339098,
+        "rmse": 80.07071774844405
+      },
+      "team_cap": {
+        "actual_total": 182898.0,
+        "mae": 32.27557355705394,
+        "mean_forecast_minus_actual": -2.4180863587533326,
+        "players": 3461,
+        "predicted_to_actual_ratio": 0.9542422722629811,
+        "predicted_total": 174529.00311235472,
+        "rmse": 80.03114817445942
+      }
+    },
+    "final_capacity_affected_players": {
+      "final_capacity": {
+        "actual_total": 131501.0,
+        "mae": 33.10389888332268,
+        "mean_forecast_minus_actual": -6.862778834209588,
+        "players": 2432,
+        "predicted_to_actual_ratio": 0.8730786980722754,
+        "predicted_total": 114810.72187520229,
+        "rmse": 81.59991631775087
+      },
+      "original": {
+        "actual_total": 131501.0,
+        "mae": 33.116606756523815,
+        "mean_forecast_minus_actual": 2.446066353352241,
+        "players": 2432,
+        "predicted_to_actual_ratio": 1.0452379325735366,
+        "predicted_total": 137449.83337135264,
+        "rmse": 79.57847433034412
+      }
+    },
+    "final_vs_original_cluster_bootstrap": {
+      "clusters": 30,
+      "delta_definition": "challenger_minus_original; negative_is_better",
+      "mae_delta": {
+        "ci95": [
+          -0.5679439685381746,
+          0.546431653565273
+        ],
+        "point": -0.008929658371904736
+      },
+      "repetitions": 10000,
+      "rmse_delta": {
+        "ci95": [
+          0.256523006145806,
+          2.6657514114581264
+        ],
+        "point": 1.4170989093834834
+      },
+      "seed": 20250901
+    },
+    "team_vs_original_cluster_bootstrap": {
+      "clusters": 30,
+      "delta_definition": "challenger_minus_original; negative_is_better",
+      "mae_delta": {
+        "ci95": [
+          -0.4109278607727257,
+          0.029122660677906847
+        ],
+        "point": -0.15959912917669783
+      },
+      "repetitions": 10000,
+      "rmse_delta": {
+        "ci95": [
+          -0.23156875565642068,
+          0.17817713561125423
+        ],
+        "point": -0.03956957398463601
+      },
+      "seed": 20250801
+    }
+  },
+  "hitter_position_diagnostics": [
+    {
+      "final_mae": 23.52325234099579,
+      "final_rmse": 66.06033685354626,
+      "group": "CATCHER",
+      "mae_delta": -0.0393400764899674,
+      "original_mae": 23.562592417485757,
+      "original_rmse": 65.73429405991058,
+      "players": 618,
+      "reduced_players": 520,
+      "rmse_delta": 0.3260427936356791
+    },
+    {
+      "final_mae": 36.04407253769912,
+      "final_rmse": 86.55580475980234,
+      "group": "CORNER_INFIELD",
+      "mae_delta": 0.5572062176728423,
+      "original_mae": 35.48686632002628,
+      "original_rmse": 82.7596701498504,
+      "players": 721,
+      "reduced_players": 467,
+      "rmse_delta": 3.796134609951949
+    },
+    {
+      "final_mae": 21.635925799879267,
+      "final_rmse": 65.15481839408787,
+      "group": "DH_FLEX",
+      "mae_delta": -0.3558006676970429,
+      "original_mae": 21.99172646757631,
+      "original_rmse": 65.10518978604809,
+      "players": 260,
+      "reduced_players": 204,
+      "rmse_delta": 0.04962860803978231
+    },
+    {
+      "final_mae": 35.512811618506866,
+      "final_rmse": 87.73812913918822,
+      "group": "MIDDLE_INFIELD",
+      "mae_delta": 0.5051905875464655,
+      "original_mae": 35.0076210309604,
+      "original_rmse": 83.90537615997877,
+      "players": 765,
+      "reduced_players": 594,
+      "rmse_delta": 3.8327529792094452
+    },
+    {
+      "final_mae": 35.4689510272345,
+      "final_rmse": 84.8112488201138,
+      "group": "OUTFIELD",
+      "mae_delta": -0.640202086753213,
+      "original_mae": 36.109153113987716,
+      "original_rmse": 85.89287043613557,
+      "players": 1097,
+      "reduced_players": 647,
+      "rmse_delta": -1.0816216160217635
+    }
+  ],
+  "pitcher": {
+    "all_players": {
+      "final_capacity": {
+        "actual_total": 181932.0,
+        "mae": 30.604004420509703,
+        "mean_forecast_minus_actual": -5.24640671571749,
+        "players": 4570,
+        "predicted_to_actual_ratio": 0.8682140651956284,
+        "predicted_total": 157955.92130917107,
+        "rmse": 80.06924380497357
+      },
+      "original": {
+        "actual_total": 181932.0,
+        "mae": 30.995768389926525,
+        "mean_forecast_minus_actual": -1.3727789727543271,
+        "players": 4570,
+        "predicted_to_actual_ratio": 0.9655167870111511,
+        "predicted_total": 175658.40009451273,
+        "rmse": 79.83586005584012
+      },
+      "team_cap": {
+        "actual_total": 181932.0,
+        "mae": 30.804086690473486,
+        "mean_forecast_minus_actual": -2.309787035079918,
+        "players": 4570,
+        "predicted_to_actual_ratio": 0.9419798235037529,
+        "predicted_total": 171376.27324968477,
+        "rmse": 79.48097938754859
+      }
+    },
+    "final_capacity_affected_players": {
+      "final_capacity": {
+        "actual_total": 181932.0,
+        "mae": 30.604004420509703,
+        "mean_forecast_minus_actual": -5.24640671571749,
+        "players": 4570,
+        "predicted_to_actual_ratio": 0.8682140651956284,
+        "predicted_total": 157955.92130917107,
+        "rmse": 80.06924380497357
+      },
+      "original": {
+        "actual_total": 181932.0,
+        "mae": 30.995768389926525,
+        "mean_forecast_minus_actual": -1.3727789727543271,
+        "players": 4570,
+        "predicted_to_actual_ratio": 0.9655167870111511,
+        "predicted_total": 175658.40009451273,
+        "rmse": 79.83586005584012
+      }
+    },
+    "final_vs_original_cluster_bootstrap": {
+      "clusters": 30,
+      "delta_definition": "challenger_minus_original; negative_is_better",
+      "mae_delta": {
+        "ci95": [
+          -0.7073890936524754,
+          -0.1075349933176103
+        ],
+        "point": -0.39176396941682157
+      },
+      "repetitions": 10000,
+      "rmse_delta": {
+        "ci95": [
+          -0.3840973185793807,
+          0.8382371539176129
+        ],
+        "point": 0.23338374913345206
+      },
+      "seed": 20250902
+    },
+    "team_vs_original_cluster_bootstrap": {
+      "clusters": 30,
+      "delta_definition": "challenger_minus_original; negative_is_better",
+      "mae_delta": {
+        "ci95": [
+          -0.3912880085424348,
+          -0.04474711872496063
+        ],
+        "point": -0.1916816994530386
+      },
+      "repetitions": 10000,
+      "rmse_delta": {
+        "ci95": [
+          -0.7206773162848119,
+          -0.06323382585550741
+        ],
+        "point": -0.3548806682915284
+      },
+      "seed": 20250802
+    }
+  },
+  "pitcher_role_diagnostics": [
+    {
+      "final_mae": 19.959835818755494,
+      "final_rmse": 56.43791762771968,
+      "group": "RELIEVER",
+      "mae_delta": -0.3335182017408833,
+      "original_mae": 20.293354020496377,
+      "original_rmse": 55.58723633841893,
+      "players": 3520,
+      "reduced_players": 3520,
+      "rmse_delta": 0.8506812893007449
+    },
+    {
+      "final_mae": 66.28731249496192,
+      "final_rmse": 131.24536563078675,
+      "group": "STARTER",
+      "mae_delta": -0.5870259715304513,
+      "original_mae": 66.87433846649238,
+      "original_rmse": 131.84230200340272,
+      "players": 1050,
+      "reduced_players": 1050,
+      "rmse_delta": -0.5969363726159713
+    }
+  ],
+  "report_schema_version": "0.1",
+  "status": "historical_team_capacity_replay_2025_complete"
+}

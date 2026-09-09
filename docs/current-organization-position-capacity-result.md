@@ -61,9 +61,8 @@ is not lower talent. Before this becomes a production current-team forecast it n
 The source materializations passed. Their GitHub runs were marked failed only after
 artifact upload because an obsolete step still tried to persist results to the old
 `source-certification-poc` branch. That workflow-maintenance defect is now fixed:
-recovery reruns retain immutable binding results and upload new evidence without
-trying to rewrite the old branch. The earlier wrapper failure does not invalidate the
-source data.
+recovery runs `34418483096` and `34418485623` both completed successfully while
+retaining the immutable binding results.
 
 Machine-readable detail:
 [`current-organization-position-capacity-result.json`](current-organization-position-capacity-result.json).

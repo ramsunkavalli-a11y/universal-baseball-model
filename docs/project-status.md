@@ -482,3 +482,11 @@ The prior long status file is preserved in
 - Starter capacity was not exceeded; relief and swingman crowding reduced current-team BF mainly in 2027-2029.
 - This remains a team-context scenario only. It does not change pitcher talent, WAR rate, or portable player value.
 - Next gate: historical roster-construction replay before displaying team-fit adjustments.
+
+### 2025 historical team-capacity replay
+
+- Replayed the frozen 2025 Opening Day forecasts against full-season MLB PA/BF using only 2021-2024 capacity rules.
+- The broad team cap improved pitcher RMSE and MAE with clustered intervals below zero; hitter changes were small and uncertain.
+- Rejected rigid hitter-position caps: they materially worsened RMSE and created a large workload shortfall.
+- Did not promote rigid pitcher-role caps: MAE improved but RMSE did not, and every pitcher was reduced through fractional crowded-role exposure.
+- Next challenger must allow dated, evidence-based multi-position and pitcher-role flexibility before any within-team workload is discarded.
