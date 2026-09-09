@@ -27,6 +27,7 @@ class CBARuleset:
     super_two_share: float
     super_two_min_current_days: int
     source_url: str
+    ruleset_kind: str = "official_cba"
 
     def minimum_salary(self, season: int) -> int:
         """Return the official minimum or fail outside the ruleset's coverage."""
@@ -67,4 +68,41 @@ CBA_2022_2026 = CBARuleset(
         "https://www.mlbplayers.com/_files/ugd/"
         "4d23dc_d6dfc2344d2042de973e37de62484da5.pdf"
     ),
+)
+
+
+# Research continuity only. The successor agreement was not available at the
+# 2026-09-09 cutoff, so these values and unchanged eligibility rules are assumptions,
+# not CBA facts. A signed agreement must create a new official ruleset.
+CBA_2027_2032_PLANNING_SCENARIO = CBARuleset(
+    ruleset_id="post_2026_cba_planning_scenario_3pct",
+    effective_start_year=2027,
+    effective_end_year=2032,
+    major_league_minimum_salary=MappingProxyType(
+        {
+            2027: 803_400,
+            2028: 827_502,
+            2029: 852_327,
+            2030: 877_897,
+            2031: 904_234,
+            2032: 931_361,
+        }
+    ),
+    service_days_per_year=CBA_2022_2026.service_days_per_year,
+    option_days_per_year=CBA_2022_2026.option_days_per_year,
+    standard_option_years=CBA_2022_2026.standard_option_years,
+    fourth_option_full_seasons_threshold=(
+        CBA_2022_2026.fourth_option_full_seasons_threshold
+    ),
+    full_pro_season_active_days=CBA_2022_2026.full_pro_season_active_days,
+    full_pro_season_min_active_days=CBA_2022_2026.full_pro_season_min_active_days,
+    standard_arbitration_service_years=(
+        CBA_2022_2026.standard_arbitration_service_years
+    ),
+    free_agency_service_years=CBA_2022_2026.free_agency_service_years,
+    super_two_min_service_years=CBA_2022_2026.super_two_min_service_years,
+    super_two_share=CBA_2022_2026.super_two_share,
+    super_two_min_current_days=CBA_2022_2026.super_two_min_current_days,
+    source_url=CBA_2022_2026.source_url,
+    ruleset_kind="research_planning_scenario_not_cba_fact",
 )

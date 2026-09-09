@@ -3,7 +3,10 @@ from datetime import date
 import polars as pl
 import pytest
 
-from universal_baseball.cba_rules import CBA_2022_2026
+from universal_baseball.cba_rules import (
+    CBA_2022_2026,
+    CBA_2027_2032_PLANNING_SCENARIO,
+)
 from universal_baseball.contract_economics import (
     ANNUAL_CONTRACT_ECONOMICS_INPUT_SCHEMA,
     ContractEconomicsAssumptions,
@@ -29,6 +32,7 @@ def _input(
     salary: int | None = None,
     buyout: int | None = None,
     arbitration_class: int | None = None,
+    arbitration_basis_war: float | None = None,
     lower: float | None = 0.0,
     upper: float | None = 2.0,
 ) -> pl.DataFrame:
@@ -46,6 +50,10 @@ def _input(
                 "known_salary_dollars": salary,
                 "buyout_dollars": buyout,
                 "arbitration_class": arbitration_class,
+                "arbitration_salary_basis_war": (
+                    war if arbitration_basis_war is None else arbitration_basis_war
+                ),
+                "arbitration_salary_basis_source": "test_prior_season",
                 "projection_source_id": "projection:test",
                 "contract_source_id": "contract:test",
             }
@@ -65,6 +73,13 @@ def _annual(**kwargs: object) -> dict[str, object]:
 def test_cba_ruleset_has_official_2022_2026_minimum_schedule() -> None:
     assert CBA_2022_2026.minimum_salary(2022) == 700_000
     assert CBA_2022_2026.minimum_salary(2026) == 780_000
+
+
+def test_post_2026_rules_are_explicitly_nonofficial_scenario() -> None:
+    scenario = CBA_2027_2032_PLANNING_SCENARIO
+    assert scenario.ruleset_kind == "research_planning_scenario_not_cba_fact"
+    assert scenario.minimum_salary(2027) == 803_400
+    assert scenario.minimum_salary(2032) == 931_361
 
 
 def test_guaranteed_contract_retains_bad_state_liability() -> None:
@@ -87,10 +102,21 @@ def test_pre_arbitration_non_tender_preserves_club_optionality() -> None:
 
 def test_arbitration_approximation_is_explicit_and_tenderable() -> None:
     row = _annual(status="arbitration", war=2.0, arbitration_class=1)
-    assert row["salary_basis"] == "configured_arbitration_share"
+    assert row["salary_basis"] == (
+        "configured_arbitration_share_of_test_prior_season"
+    )
     assert row["salary_cost_dollars"] == 5_000_000
     assert row["contract_control_value_dollars"] == 15_000_000
     assert row["decision_at_mean"] == "tender"
+
+
+def test_arbitration_salary_uses_prior_performance_not_current_projection() -> None:
+    row = _annual(
+        status="arbitration", war=3.0, arbitration_class=1,
+        arbitration_basis_war=1.0, upper=4.0,
+    )
+    assert row["salary_cost_dollars"] == 2_500_000
+    assert row["fa_equivalent_value_dollars"] == 30_000_000
 
 
 def test_club_option_selects_decline_branch_and_buyout() -> None:

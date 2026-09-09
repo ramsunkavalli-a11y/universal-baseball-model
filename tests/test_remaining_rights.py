@@ -21,6 +21,8 @@ def _rows() -> pl.DataFrame:
         "organization_id": 135,
         "buyout_dollars": None,
         "arbitration_class": None,
+        "arbitration_salary_basis_war": None,
+        "arbitration_salary_basis_source": "",
         "projection_source_id": "projection:test",
         "contract_source_id": "contract:test",
     }

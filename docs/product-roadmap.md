@@ -208,3 +208,9 @@ buyouts map by exact within-workbook identity, and 83 attach to the 151 projecte
 option years. The remaining 68 stay in review. Projected 2027 Super Two players also
 advance through arbitration classes 1–4 correctly; previously the class calculation
 could reset after the first projected year.
+
+The Phase 1 arbitration baseline now applies FanGraphs' 15%/35%/50%/75% shares to
+prior-season projected WAR value. A full research scenario calculates 50,000 of
+50,100 future annual rows and leaves exactly 100 option/salary exceptions in review.
+Post-2026 minimum salaries and unchanged service rules are clearly marked as a 3%
+planning scenario until a successor CBA supplies facts.

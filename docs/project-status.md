@@ -129,6 +129,13 @@ or promote a player ranking; the public v1 release remains historical.
   deals it projects 27.05 WAR versus FanGraphs' 25.40, but the one-year sample does not
   identify the multi-year star premium. The published $6.74M/$8.51M/$12.84M tiers
   therefore remain the main 2026 market reference.
+- Arbitration cost now uses the externally tested FanGraphs 15%/35%/50%/75% class
+  shares and prior-season projected WAR value. There are 23,261 true prior-season
+  basis rows and 388 labeled first-horizon proxies. A complete research scenario now
+  calculates 50,000 of 50,100 future annual rows; 100 rows and 87 player aggregates
+  remain in review for option buyouts, mutual/vesting triggers or one missing salary.
+  The post-2026 minimum and unchanged service rules are explicitly a planning scenario,
+  not a claimed successor CBA.
 - All 55,164 future whole-player seasons now have a Phase 1 uncertainty reference
   range based on historical positive-workload variance plus event and posterior-rate
   variance. All 50,100 future economics rows receive the bounds. The median annual
@@ -195,12 +202,12 @@ The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-Next, add the arbitration-cost baseline and calibrate return/role. Correlated
+Next, resolve the 100 contract review rows and calibrate return/role. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
-The main market-price gate is complete. The remaining economic blockers are
-arbitration salary lag, successor-CBA cost rules and the 68 unresolved option buyouts.
+The market-price and Phase 1 arbitration gates are complete. The remaining economic
+blockers are successor-CBA facts and the 100 option/salary review rows.
 In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.
@@ -226,7 +233,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, guardrail, remaining-rights and current
 availability tests pass; Ruff passes across `src`, `scripts` and `tests`. The current
-full run has 1,216 passing tests.
+full run has 1,219 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

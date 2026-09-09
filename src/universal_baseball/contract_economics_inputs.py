@@ -69,6 +69,12 @@ def build_future_contract_economics_inputs(
     whole_player = pl.concat([hitter, pitcher]).group_by("player_id", "season").agg(
         pl.col("expected_war").sum().alias("projected_war_mean")
     )
+    prior_war_lookup = {
+        (int(row["player_id"]), int(row["season"])): float(
+            row["projected_war_mean"]
+        )
+        for row in whole_player.iter_rows(named=True)
+    }
     projection_source_id = PROJECTION_SOURCE_ID
     if war_uncertainty is None:
         whole_player = whole_player.with_columns(
@@ -181,6 +187,13 @@ def build_future_contract_economics_inputs(
     available = joined.filter(pl.col("projected_war_mean").is_not_null())
     rows = []
     for row in available.iter_rows(named=True):
+        status = str(row["control_status"])
+        is_arbitration = status in {
+            "arbitration", "arbitration_eligible", "super_two_eligible"
+        }
+        prior_war = prior_war_lookup.get(
+            (int(row["player_id"]), int(row["season"]) - 1)
+        )
         rows.append(
             {
                 "as_of_date": row["as_of_date"],
@@ -190,7 +203,7 @@ def build_future_contract_economics_inputs(
                 "projected_war_mean": float(row["projected_war_mean"]),
                 "projected_war_lower": row["projected_war_lower"],
                 "projected_war_upper": row["projected_war_upper"],
-                "control_status": str(row["control_status"]),
+                "control_status": status,
                 "known_salary_dollars": row["known_salary_dollars"],
                 "buyout_dollars": (
                     row["buyout_dollars"]
@@ -198,11 +211,25 @@ def build_future_contract_economics_inputs(
                     else None
                 ),
                 "arbitration_class": _arbitration_class(
-                    str(row["control_status"]),
+                    status,
                     int(row["service_days_before_year"]),
                     projected_super_two_track=(
                         int(row["player_id"]) in projected_super_two_players
                     ),
+                ),
+                "arbitration_salary_basis_war": (
+                    prior_war
+                    if is_arbitration and prior_war is not None
+                    else float(row["projected_war_mean"])
+                    if is_arbitration
+                    else None
+                ),
+                "arbitration_salary_basis_source": (
+                    "prior_season_projected_war"
+                    if is_arbitration and prior_war is not None
+                    else "same_season_proxy_first_horizon"
+                    if is_arbitration
+                    else ""
                 ),
                 "projection_source_id": projection_source_id,
                 "contract_source_id": str(
@@ -224,6 +251,14 @@ def build_future_contract_economics_inputs(
             "projection_rows_without_control": len(projection_keys - control_keys),
             "control_rows_without_projection": len(control_keys - projection_keys),
             "projected_super_two_track_players": len(projected_super_two_players),
+            "arbitration_rows_with_prior_season_basis": annual.filter(
+                pl.col("arbitration_salary_basis_source")
+                == "prior_season_projected_war"
+            ).height,
+            "arbitration_rows_with_first_horizon_proxy": annual.filter(
+                pl.col("arbitration_salary_basis_source")
+                == "same_season_proxy_first_horizon"
+            ).height,
             "known_salary_rows": annual.filter(
                 pl.col("known_salary_dollars").is_not_null()
             ).height,

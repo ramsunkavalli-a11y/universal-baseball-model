@@ -31,19 +31,23 @@ buyouts already owed to former players are not attached to transferable option r
 The ten projected 2027 Super Two cases now advance through arbitration classes 1–4
 instead of being reset to class 1 when they cross three service years.
 
+Arbitration cost now follows performance with a one-season lag: 23,261 rows use the
+prior projected season and 388 first-horizon rows use a labeled same-season proxy
+because a complete 2026 full-season path is not in this table.
+
 ## Honest boundary
 
 This table is ready to feed the existing contract-economics engine. It is not yet a
 defensible dollar ranking. The remaining large inputs are:
 
-1. historical arbitration salary shares and salary-lag behavior;
-2. the post-2026 CBA minimum-salary rules;
-3. the remaining 68 buyouts and unresolved option triggers; and
-4. Phase 2 empirical coverage calibration and correlated career paths for option
+1. official post-2026 CBA minimum-salary rules;
+2. the remaining 68 buyouts and unresolved option triggers; and
+3. Phase 2 internal arbitration validation, empirical interval calibration and
+   correlated career paths for option
    decisions.
 
-The 2026 FanGraphs tiered market reference is now implemented separately. Its future
-growth remains a named scenario and does not resolve the missing CBA cost rules.
+The 2026 FanGraphs tiered market and arbitration references are now implemented
+separately. Future growth and post-2026 CBA rules remain named scenarios.
 
 Until those exist, the engine may be tested only with clearly named scenarios. A
 scenario must not be presented as the model's estimate.

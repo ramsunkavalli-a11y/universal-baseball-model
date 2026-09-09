@@ -24,6 +24,8 @@ REMAINING_RIGHTS_INPUT_SCHEMA: dict[str, pl.DataType] = {
     "salary_obligation_dollars": pl.Int64,
     "buyout_dollars": pl.Int64,
     "arbitration_class": pl.Int64,
+    "arbitration_salary_basis_war": pl.Float64,
+    "arbitration_salary_basis_source": pl.String,
     "projection_source_id": pl.String,
     "contract_source_id": pl.String,
 }
@@ -152,6 +154,12 @@ def build_remaining_rights_inputs(frame: pl.DataFrame) -> RemainingRightsResult:
                 "known_salary_dollars": salary,
                 "buyout_dollars": row["buyout_dollars"],
                 "arbitration_class": row["arbitration_class"],
+                "arbitration_salary_basis_war": row[
+                    "arbitration_salary_basis_war"
+                ],
+                "arbitration_salary_basis_source": row[
+                    "arbitration_salary_basis_source"
+                ],
                 "projection_source_id": row["projection_source_id"],
                 "contract_source_id": row["contract_source_id"],
             }

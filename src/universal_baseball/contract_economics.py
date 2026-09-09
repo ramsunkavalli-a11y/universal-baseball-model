@@ -24,6 +24,8 @@ ANNUAL_CONTRACT_ECONOMICS_INPUT_SCHEMA: dict[str, pl.DataType] = {
     "known_salary_dollars": pl.Int64,
     "buyout_dollars": pl.Int64,
     "arbitration_class": pl.Int64,
+    "arbitration_salary_basis_war": pl.Float64,
+    "arbitration_salary_basis_source": pl.String,
     "projection_source_id": pl.String,
     "contract_source_id": pl.String,
 }
@@ -288,11 +290,30 @@ def value_annual_contract_states(
                     arbitration_class = row["arbitration_class"]
                     if arbitration_class is None or int(arbitration_class) not in assumptions.arbitration_share_by_class:
                         raise ValueError("arbitration salary requires a configured arbitration class")
+                    arbitration_basis_war = row["arbitration_salary_basis_war"]
+                    if arbitration_basis_war is None:
+                        raise ValueError("arbitration salary requires a prior-performance WAR basis")
+                    arbitration_rate, _ = assumptions.market_rate(
+                        season, float(arbitration_basis_war)
+                    )
+                    arbitration_market_value = _market_value(
+                        float(arbitration_basis_war),
+                        arbitration_rate,
+                        floor_at_zero=assumptions.floor_market_value_at_zero,
+                    )
                     salary = max(
                         float(cba_ruleset.minimum_salary(season)),
-                        market * float(assumptions.arbitration_share_by_class[int(arbitration_class)]),
+                        arbitration_market_value
+                        * float(
+                            assumptions.arbitration_share_by_class[
+                                int(arbitration_class)
+                            ]
+                        ),
                     )
-                    salary_basis = "configured_arbitration_share"
+                    salary_basis = (
+                        "configured_arbitration_share_of_"
+                        + str(row["arbitration_salary_basis_source"])
+                    )
                 buyout = 0.0
             elif status in {
                 "guaranteed_contract",

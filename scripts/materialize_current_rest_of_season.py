@@ -238,6 +238,8 @@ def main() -> int:
         ),
         pl.lit(None, dtype=pl.Int64).alias("buyout_dollars"),
         pl.lit(None, dtype=pl.Int64).alias("arbitration_class"),
+        pl.lit(None, dtype=pl.Float64).alias("arbitration_salary_basis_war"),
+        pl.lit("").alias("arbitration_salary_basis_source"),
         pl.lit("hitter_plus_pitcher_ros_v1").alias("projection_source_id"),
         pl.col("source_snapshot_id").alias("contract_source_id"),
     ).select(

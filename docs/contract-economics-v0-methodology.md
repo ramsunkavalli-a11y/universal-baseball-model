@@ -69,7 +69,9 @@ sensitivity work; a current rest-of-season estimate cannot select a full-season 
   non-tender.
 - `arbitration` / `arbitration_eligible` / `super_two_eligible`: known salary when
   available, otherwise a transparent configured share of free-agent-equivalent value,
-  never below the applicable minimum; the club may tender or non-tender.
+  never below the applicable minimum; the club may tender or non-tender. The Phase 1
+  FanGraphs shares are 15%/35%/50%/75% for classes 1–4 and apply to prior-season WAR
+  value so salary responds with the correct one-year lag.
 - `club_option`: the club chooses the better of exercising or declining and paying the
   stated buyout.
 - `player_option` / `player_opt_out`: the player is assumed to choose the branch that is
@@ -112,7 +114,8 @@ The engine can be implemented now, but a league-wide dollar ranking should wait 
    prospects and inactive/no-history players;
 2. post-2026 market growth and successor-CBA assumptions beyond the accepted 2026
    FanGraphs tier reference and the independent one-year signing-time scale check;
-3. an internal historical arbitration dataset and chronological validation;
+3. an internal historical arbitration dataset and chronological validation beyond
+   the externally tested FanGraphs Phase 1 baseline;
 4. player-ID-linked buyouts and correct effective years for opt-outs; and
 5. correlated future performance paths for probability-weighted option decisions.
 
@@ -128,3 +131,5 @@ a trade-value product.
   and https://www.mlb.com/glossary/transactions/salary-arbitration
 - FanGraphs, 2026 free-agent dollars-per-WAR method and three-tier result:
   https://blogs.fangraphs.com/what-are-teams-paying-for-a-win-in-free-agency-2026-edition/
+- FanGraphs, 2026 arbitration-share baseline:
+  https://blogs.fangraphs.com/the-details-of-our-new-prospect-valuation-methodology/

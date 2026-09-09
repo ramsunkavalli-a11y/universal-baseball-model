@@ -83,6 +83,12 @@ forecasts are rebuilt from dated official history before any market price is pro
 The [free-agent market result](docs/free-agent-market-result-2026-09-08.md) accepts
 FanGraphs' published 2026 three-tier curve as the main reference, independently checks
 the one-year scale, and keeps future growth separate as an explicit scenario.
+The [arbitration cost baseline](docs/arbitration-cost-baseline-2026-09-09.md) applies
+the current FanGraphs class shares to prior-season WAR value, preserving salary lag
+and the four-year Super Two progression.
+The [full contract-economics scenario](docs/current-contract-economics-scenario-2026-09-09.md)
+calculates 50,000 future annual rows and isolates 100 contract exceptions while
+keeping the unsigned successor CBA explicitly hypothetical.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value
