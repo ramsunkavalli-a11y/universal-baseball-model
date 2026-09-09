@@ -138,6 +138,13 @@ service balances. Official no-debut evidence can cover many remaining affiliated
 players; earlier-debut players without a balance stay review. Historical salary and
 future contract obligations are now the main remaining replay input.
 
+Downloaded member workbooks validate every overlapping 2024–2025 service, option,
+role and identity field and add a 2,065-player 2023 checkpoint. They also retain
+historical projected PA/IP, which is useful as an independent opportunity comparator,
+not as a target or an automatic replacement for the selected model. Public captures
+remain primary where available because they include eight combined additional players
+and fields absent from the workbooks.
+
 A 30-team Cot's-derived 2025 CSV extract is a viable private retrospective contract
 bridge, but it was assembled after the season and lacks stable IDs. Unique team/name
 matching corroborated by service accepts 1,192 of 1,289 players. A fail-closed annual

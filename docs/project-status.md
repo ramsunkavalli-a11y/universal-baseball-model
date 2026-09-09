@@ -67,7 +67,10 @@ or promote a player ranking; the public v1 release remains historical.
   service/options baselines for 2,012 and 2,024 players. They cover all 30 teams and
   avoid name matching. Because the pages were retrieved later, they are accepted for
   retrospective event-cutoff replay, not true vintage-information claims. Historical
-  contract obligations remain the material Step 8 source gap.
+  contract obligations remain the material Step 8 source gap. Member workbooks
+  independently reproduce every overlapping 2024–2025 control field, add Opening Day
+  PA/IP projections, and extend the source back to 2,065 players in 2023. Their raw
+  and normalized bulk data remain private.
 - A 30-team Cot's-derived 2025 extract has now been inspected as a potential private
   retrospective contract bridge. It includes 2025–2029 salary/control columns but was
   created after the season and has names rather than MLBAM IDs. Use requires a

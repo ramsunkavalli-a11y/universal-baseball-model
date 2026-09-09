@@ -103,7 +103,8 @@ parsed-value reproducibility from original HTTP-byte fidelity. The same build ca
 run offline from those captures and reproduced all core control outputs byte for byte.
 The [historical Opening Day control source](docs/historical-opening-day-control-source.md)
 adds MLBAM-keyed 2024 and 2025 service/options snapshots for retrospective replay while
-keeping later-retrieved pages distinct from true vintage evidence.
+keeping later-retrieved pages distinct from true vintage evidence. Private member
+workbooks validate those snapshots, add projected PA/IP, and extend coverage to 2023.
 The [2025 historical contract source audit](docs/historical-contract-source-audit-2025.md)
 now includes a fail-closed annual valuation gate that separates guaranteed salary,
 calculated arbitration, free agency and unresolved options.
