@@ -25,7 +25,14 @@ PT_FORM_B0 = "playing_time_level_hurdle_v1"
 PT_FORM_A = "playing_time_recent_opportunity_hurdle_v1"
 PT_FORM_B = "playing_time_recent_opportunity_40man_hurdle_v1"
 PT_FORM_C = "playing_time_recent_opportunity_40man_b2_hurdle_v1"
+# New-version universal form. It is intentionally outside PT_FORMS so the frozen
+# v1 selection contract cannot silently begin evaluating a post-hoc candidate.
+PT_FORM_U0 = "playing_time_universal_level_hurdle_v2"
+PT_FORM_UA = "playing_time_universal_recent_opportunity_hurdle_v2"
+PT_FORM_U = "playing_time_universal_recent_opportunity_40man_hurdle_v2"
 PT_FORMS = (PT_FORM_B0, PT_FORM_A, PT_FORM_B, PT_FORM_C)
+PT_V2_FORMS = (PT_FORM_U0, PT_FORM_UA, PT_FORM_U)
+PT_V2_FORM_COMPLEXITY = {form: index for index, form in enumerate(PT_V2_FORMS)}
 PT_FORM_COMPLEXITY = {form: index for index, form in enumerate(PT_FORMS)}
 LOGISTIC_C = 1.0
 LEVEL_TIER_REFERENCE = "MLB"
@@ -38,6 +45,16 @@ B2_TALENT_FEATURES = (
     "b2_ld_probability",
 )
 LEVEL_DUMMY_FEATURES = tuple(f"level_{value.lower()}" for value in LEVEL_TIER_LEVELS)
+UNIVERSAL_LEVEL_TIER_LEVELS = (
+    "AAA",
+    "AA",
+    "A_OR_BELOW",
+    "INACTIVE",
+    "UNKNOWN",
+)
+UNIVERSAL_LEVEL_DUMMY_FEATURES = tuple(
+    f"level_{value.lower()}" for value in UNIVERSAL_LEVEL_TIER_LEVELS
+)
 B2_ILR_COLUMNS = tuple(f"b2_ilr_{index:02d}" for index in range(11))
 STANDARDIZATION_EPSILON = 1e-12
 
@@ -127,6 +144,13 @@ def playing_time_level_tier(level_group: object) -> str:
 
 
 def playing_time_feature_names(form: str) -> tuple[str, ...]:
+    if form in PT_V2_FORMS:
+        features = list(UNIVERSAL_LEVEL_DUMMY_FEATURES)
+        if PT_V2_FORM_COMPLEXITY[form] >= PT_V2_FORM_COMPLEXITY[PT_FORM_UA]:
+            features.extend((*CONTINUOUS_BASE, "age_missing"))
+        if PT_V2_FORM_COMPLEXITY[form] >= PT_V2_FORM_COMPLEXITY[PT_FORM_U]:
+            features.append("on_40man")
+        return tuple(features)
     if form not in PT_FORMS:
         raise ValueError(f"unsupported playing-time form: {form}")
     features: list[str] = [*LEVEL_DUMMY_FEATURES]
@@ -185,12 +209,26 @@ def build_playing_time_design(predictors: pl.DataFrame, *, form: str) -> pl.Data
     feature_names = playing_time_feature_names(form)
     rows: list[dict[str, object]] = []
     for row in predictors.iter_rows(named=True):
-        age = float(row["age_years"])
+        age_raw = row["age_years"]
+        age_missing = age_raw is None
+        age = 25.0 if age_missing else float(age_raw)
         mlb_pa = int(row["current_season_mlb_pa"])
         milb_pa = int(row["current_season_milb_pa"])
         if not isfinite(age) or mlb_pa < 0 or milb_pa < 0:
             raise ValueError("playing-time predictor age/PA fields are invalid")
-        tier = playing_time_level_tier(row["as_of_level_group"])
+        if form in PT_V2_FORMS:
+            raw_level = str(row["as_of_level_group"] or "UNKNOWN")
+            if raw_level in {"INACTIVE", "UNKNOWN"}:
+                tier = raw_level
+            else:
+                try:
+                    tier = playing_time_level_tier(raw_level)
+                except ValueError:
+                    tier = "UNKNOWN"
+        else:
+            if age_missing:
+                raise ValueError("legacy playing-time forms require known age")
+            tier = playing_time_level_tier(row["as_of_level_group"])
         values: dict[str, object] = {
             "player_id": int(row["player_id"]),
             "level_aaa": 1.0 if tier == "AAA" else 0.0,
@@ -201,6 +239,14 @@ def build_playing_time_design(predictors: pl.DataFrame, *, form: str) -> pl.Data
             "log_current_milb_pa": log1p(float(milb_pa)),
             "on_40man": 1.0 if bool(row["on_40man"]) else 0.0,
         }
+        if form in PT_V2_FORMS:
+            values.update(
+                {
+                    "level_inactive": 1.0 if tier == "INACTIVE" else 0.0,
+                    "level_unknown": 1.0 if tier == "UNKNOWN" else 0.0,
+                    "age_missing": 1.0 if age_missing else 0.0,
+                }
+            )
         if form == PT_FORM_C:
             values.update(_b2_talent_summary(row))
         rows.append(values)
