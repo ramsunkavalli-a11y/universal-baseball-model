@@ -120,6 +120,11 @@ or promote a player ranking; the public v1 release remains historical.
   talent universe but do not receive invented incumbent rights. Market price,
   arbitration pay, post-2026 minimums, uncertainty and 151 missing option buyouts
   remain explicit inputs rather than hidden defaults.
+- The frozen Player Value v1 baserunning models now supply current hitter rates from
+  official 2023–2026 steal counts and four league-wide Savant advancement files. In
+  2027, 3,776 of 3,940 hitters have recent evidence; the three-year model then fades
+  to its centered neutral fallback by 2030. Defense is now the only blanket-zero
+  hitter component.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -155,7 +160,8 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly and annual economics-input
-join are now built. Next, replace covered defense/running fallbacks, fit modern
+join and current baserunning reuse are now built. Next, replace covered defense
+fallbacks, fit modern
 adjacent-season component aging, and build the explicit rest-of-season projection.
 The main economic blocker is a chronologically fitted free-agent market function.
 In parallel, resolve

@@ -74,6 +74,36 @@ def test_hitter_rates_cover_history_and_prior_players_for_each_year() -> None:
     assert result.get_column("conditional_war_per_600_pa").is_finite().all()
 
 
+def test_hitter_rates_add_supplied_baserunning_runs() -> None:
+    players = pl.DataFrame(
+        {"player_id": [1], "age_years": [27.0], "position_code": ["6"]}
+    )
+    neutral = build_hitter_conditional_war_rates(
+        players, _hitting_history(), current_season=2026,
+        forecast_seasons=(2027,), reference_plate_appearances=1200,
+        runs_per_win=10.0,
+    )
+    supplied = build_hitter_conditional_war_rates(
+        players, _hitting_history(), current_season=2026,
+        forecast_seasons=(2027,), reference_plate_appearances=1200,
+        runs_per_win=10.0,
+        baserunning_rates=pl.DataFrame(
+            {
+                "player_id": [1], "season": [2027],
+                "baserunning_runs_per_600": [5.0],
+                "baserunning_evidence_tier": ["steal_only"],
+                "baserunning_model_id": ["test"],
+            }
+        ),
+    )
+    assert math.isclose(
+        supplied.item(0, "conditional_war_per_600_pa")
+        - neutral.item(0, "conditional_war_per_600_pa"),
+        0.5,
+    )
+    assert supplied.item(0, "missing_component_policy") == "league_average_defense"
+
+
 def test_pitcher_rates_cover_history_and_prior_players_and_age_components() -> None:
     players = pl.DataFrame({"player_id": [1, 2], "age_years": [25.0, None]})
     result = build_pitcher_conditional_war_rates(

@@ -23,6 +23,9 @@ forecast universe.
   Expected WAR is their explicit product; current-team depth is never an input.
 - A missing control record remains null. It is never silently treated as a free-agent
   or zero-value season.
+- The frozen Player Value v1 steal and non-steal advancement models now supply hitter
+  baserunning. Recent evidence fades through the frozen three-season lookback and then
+  returns to the centered neutral fallback.
 
 ## Materialized result
 
@@ -53,8 +56,8 @@ cases remain outside controlled WAR.
 
 ## Known Phase 1 fallbacks
 
-- Hitter defense and baserunning are zero runs versus league average when richer
-  artifacts are unavailable. Primary-position and replacement value are included.
+- Hitter defense remains zero runs versus league average. Primary-position,
+  baserunning and replacement value are included.
 - Pitcher contact quality, leverage and role-specific replacement are deferred.
 - The minor-league translation passed 2024 and 2025 future-MLB component diagnostics;
   lower levels still receive stronger evidence discounts.
@@ -63,8 +66,8 @@ cases remain outside controlled WAR.
 
 ## Next priorities
 
-1. Replace hitter zero-defense/zero-running fallbacks where existing certified
-   component artifacts cover the player.
+1. Replace the hitter zero-defense fallback where existing certified component
+   artifacts cover the player.
 2. Fit and validate modern adjacent-season component aging; retain Tango's published
    curve as a sensitivity comparator.
 3. Build the separate 2026 rest-of-season workload/WAR and unpaid-salary paths.

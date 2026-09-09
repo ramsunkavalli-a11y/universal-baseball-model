@@ -179,6 +179,6 @@ WAR assembly covers every opportunity row with explicit population priors, prima
 position and replacement value, and no depth input or clipping. Its published Tango
 pitcher aging curve, average-zero hitter defense/running and MLB-only rate evidence are
 Phase 1 fallbacks. The validated affiliated translation now replaces most pure
-population priors, and whole-player expected WAR is joined to every future-control
-row. Modern aging validation, covered defense/running reuse, the separate 2026
+population priors, frozen baserunning is reused, and whole-player expected WAR is
+joined to every future-control row. Modern aging validation, covered defense reuse, the separate 2026
 rest-of-season path and fitted economic assumptions are next.

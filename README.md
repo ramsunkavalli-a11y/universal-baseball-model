@@ -60,6 +60,9 @@ minor-league population priors while preserving a fallback.
 The [current contract-economics input result](docs/current-contract-economics-inputs-2026-09-08.md)
 connects whole-player expected WAR to all 50,100 future control rows while keeping
 missing salaries, buyouts and market assumptions explicit.
+The [current baserunning result](docs/current-baserunning-rates-2026-09-08.md)
+reuses the frozen steal and advancement models in the live hitter path; defense is
+now the remaining average-zero hitter component.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value
