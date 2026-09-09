@@ -132,6 +132,12 @@ for byte. That closes the source-retention and replay path for this checkpoint, 
 does not backfill the then-known payroll terms or opening service balances needed for
 a historical value replay.
 
+Historical Opening Day Tracker captures now supply MLBAM-keyed pre-season control
+references for 2,012 players in 2024 and 2,024 in 2025, including 1,634 and 1,615
+service balances. Official no-debut evidence can cover many remaining affiliated
+players; earlier-debut players without a balance stay review. Historical salary and
+future contract obligations are now the main remaining replay input.
+
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component
 discrepancies for Phase 2. The protected 2026 confirmation forecast is frozen and its

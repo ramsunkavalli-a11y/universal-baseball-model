@@ -101,6 +101,9 @@ The [control source capture](docs/control-source-capture.md) retains and hash-ve
 the 230 parsed official responses behind that checkpoint while clearly separating
 parsed-value reproducibility from original HTTP-byte fidelity. The same build can now
 run offline from those captures and reproduced all core control outputs byte for byte.
+The [historical Opening Day control source](docs/historical-opening-day-control-source.md)
+adds MLBAM-keyed 2024 and 2025 service/options snapshots for retrospective replay while
+keeping later-retrieved pages distinct from true vintage evidence.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

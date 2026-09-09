@@ -54,6 +54,15 @@
       "attribution_required": true,
       "redistribution_policy": "no_raw_or_bulk_redistribution_without_review",
       "notes": "Use only a small dated exception overlay when FanGraphs lacks a term and Spotrac shows a non-conflicting explicit dollar fact. Keep page URLs and retrieval date. Do not treat a dash as zero, override contradictions, or commit raw/bulk tables."
+    },
+    {
+      "source_name": "fangraphs_opening_day_tracker",
+      "upstream": "FanGraphs RosterResource Opening Day Tracker",
+      "role": "historical_service_options_and_roster_reference",
+      "license_id": null,
+      "attribution_required": true,
+      "redistribution_policy": "no_raw_or_bulk_redistribution_without_review",
+      "notes": "Use MLBAM-keyed pre-season service, options and roster state as a dated retrospective control baseline. Preserve retrieval date and response hash. Keep raw HTML, workbook downloads and normalized bulk rows private; commit only code, tests and aggregate audit results. A page served later is retrospective evidence, not proof of its original publication state."
     }
   ],
   "policy": {

@@ -21,6 +21,7 @@ _ALLOWED_ROLES = {
     "tracking_enrichment_candidate",
     "historical_mlb_validation_candidate",
     "secondary_contract_exception_corroboration",
+    "historical_service_options_and_roster_reference",
 }
 
 

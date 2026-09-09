@@ -10,6 +10,11 @@ from universal_baseball.source_policy import load_source_policies, source_policy
 
 def test_repo_source_policy_manifest_is_valid() -> None:
     payload = load_source_policies(Path("config/source-policies.json"))
+    opening_day = source_policy_by_name(payload, "fangraphs_opening_day_tracker")
+    assert opening_day["role"] == "historical_service_options_and_roster_reference"
+    assert opening_day["redistribution_policy"] == (
+        "no_raw_or_bulk_redistribution_without_review"
+    )
 
     armstjc = source_policy_by_name(payload, "armstjc_milb_pbp")
     chadwick = source_policy_by_name(payload, "chadwick_register")

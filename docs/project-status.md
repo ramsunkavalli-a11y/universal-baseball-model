@@ -63,6 +63,11 @@ or promote a player ranking; the public v1 release remains historical.
   reproducible after the live API changes. An offline league rebuild reproduced
   all core tables, summary and manifest byte for byte. The manifest does not claim
   original HTTP-byte fidelity or an unavailable retrieval timestamp.
+- Historical FanGraphs Opening Day Tracker captures add MLBAM-keyed 2024 and 2025
+  service/options baselines for 2,012 and 2,024 players. They cover all 30 teams and
+  avoid name matching. Because the pages were retrieved later, they are accepted for
+  retrospective event-cutoff replay, not true vintage-information claims. Historical
+  contract obligations remain the material Step 8 source gap.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and
