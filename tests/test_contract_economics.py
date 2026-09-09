@@ -145,14 +145,23 @@ def test_free_agent_has_market_value_but_no_incumbent_control_value() -> None:
     assert row["decision_at_mean"] == "no_incumbent_rights"
 
 
-def test_unresolved_option_state_fails_closed_and_blocks_aggregate() -> None:
+def test_mutual_option_uses_conservative_expiration_outcome() -> None:
+    row = _annual(
+        status="mutual_option", war=2.0, salary=10_000_000, buyout=1_000_000
+    )
+    assert row["salary_cost_dollars"] == 1_000_000
+    assert row["contract_control_value_dollars"] == -1_000_000
+    assert row["decision_at_mean"] == "decline_mutual_option"
+
+
+def test_mutual_option_without_buyout_fails_closed_and_blocks_aggregate() -> None:
     result = value_annual_contract_states(
-        _input(status="mutual_option", salary=10_000_000, buyout=1_000_000),
+        _input(status="mutual_option", salary=10_000_000),
         cba_ruleset=CBA_2022_2026,
         assumptions=ASSUMPTIONS,
     )
     assert result.reviews.height == 1
-    assert "trigger/decision model" in result.reviews.item(0, "review_reason")
+    assert "explicit buyout" in result.reviews.item(0, "review_reason")
     assert result.aggregate.item(0, "calculation_status") == "review"
     assert result.aggregate.item(0, "contract_control_value_dollars") is None
 

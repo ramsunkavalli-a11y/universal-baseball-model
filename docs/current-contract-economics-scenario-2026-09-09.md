@@ -3,16 +3,17 @@
 **Status:** complete Phase 1 research calculation; not a publishable ranking
 
 The first full 2027–2032 economics pass now runs all 50,100 controlled player-years
-through the same WAR, market, salary, option and discount rules. It produces 50,000
-available annual rows and 100 review rows. At the six-year player aggregate, 8,263
-players are complete and 87 have at least one review year.
+through the same WAR, market, salary, option and discount rules. It produces 50,029
+available annual rows and 71 review rows. At the six-year player aggregate, 8,290
+players are complete and 60 have at least one review year.
 
-The 100 reviews are narrow and visible:
+The 71 reviews are narrow and visible:
 
 - 36 club options missing a stated buyout;
-- 33 mutual options needing a two-party decision rule;
 - 17 player options missing a stated buyout;
 - 13 vesting options needing trigger logic; and
+- three mutual options missing a stated buyout;
+- one mutual option missing its exercise salary; and
 - one club option missing its exercise salary.
 
 ## Named assumptions
@@ -22,6 +23,8 @@ The 100 reviews are narrow and visible:
 - Market prices grow 3% annually.
 - Arbitration uses 15%/35%/50%/75% of prior-season free-agent WAR value for classes
   1–4, with known salaries taking priority.
+- A fully specified mutual option uses the normal expiration outcome and charges its
+  stated buyout. This conservative Phase 1 rule does not invent a negotiated extension.
 - Nominal value and cost are discounted 10% annually. Because the market scenario
   grows 3%, this is roughly a 7% net rate before interaction.
 - The unsigned post-2026 CBA is represented only by a planning scenario: the 2026

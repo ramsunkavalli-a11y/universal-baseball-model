@@ -160,6 +160,11 @@ def _decision_value(status: str, market_value: float, salary: float, buyout: flo
     if status in {"player_option", "player_opt_out"}:
         leave = -buyout
         return (salary, exercise, "player_stays") if exercise <= leave else (buyout, leave, "player_leaves")
+    if status == "mutual_option":
+        # At one shared exercise price, the player and club generally prefer
+        # opposite branches. Phase 1 therefore uses the normal expiration outcome
+        # instead of inventing a negotiated extension or correlated valuation gap.
+        return buyout, -buyout, "decline_mutual_option"
     if status == "guaranteed_contract":
         return salary, exercise, "guaranteed"
     if status in {"free_agent", "free_agent_eligible"}:
@@ -321,15 +326,21 @@ def value_annual_contract_states(
                 "club_option",
                 "player_option",
                 "player_opt_out",
+                "mutual_option",
             }:
                 if known_salary is None:
                     raise ValueError(f"{status} requires a known salary")
                 salary = float(known_salary)
-                if status in {"club_option", "player_option", "player_opt_out"} and row["buyout_dollars"] is None:
+                if status in {
+                    "club_option",
+                    "player_option",
+                    "player_opt_out",
+                    "mutual_option",
+                } and row["buyout_dollars"] is None:
                     raise ValueError(f"{status} requires an explicit buyout, including zero")
                 buyout = float(row["buyout_dollars"] or 0)
                 salary_basis = "known_contract"
-            elif status in {"mutual_option", "vesting_option"}:
+            elif status == "vesting_option":
                 raise ValueError(f"{status} requires a future trigger/decision model")
             else:
                 raise ValueError(f"unsupported control status: {status}")

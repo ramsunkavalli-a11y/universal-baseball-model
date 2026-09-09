@@ -87,7 +87,7 @@ The [arbitration cost baseline](docs/arbitration-cost-baseline-2026-09-09.md) ap
 the current FanGraphs class shares to prior-season WAR value, preserving salary lag
 and the four-year Super Two progression.
 The [full contract-economics scenario](docs/current-contract-economics-scenario-2026-09-09.md)
-calculates 50,000 future annual rows and isolates 100 contract exceptions while
+calculates 50,029 future annual rows and isolates 71 contract exceptions while
 keeping the unsigned successor CBA explicitly hypothetical.
 
 The three questions stay separate: batting ability against MLB competition,

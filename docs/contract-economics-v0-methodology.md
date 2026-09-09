@@ -76,10 +76,13 @@ sensitivity work; a current rest-of-season estimate cannot select a full-season 
   stated buyout.
 - `player_option` / `player_opt_out`: the player is assumed to choose the branch that is
   worse for the club, exposing the adverse optionality.
+- `mutual_option`: Phase 1 uses the normal expiration outcome and charges the stated
+  buyout. At one fixed exercise price, the player and club generally prefer opposite
+  branches; the model does not invent a negotiated extension or valuation disagreement.
 - `free_agent` / `free_agent_eligible`: free-agent-equivalent production is still shown,
   but the incumbent club owns no control value.
-- `mutual_option`, `vesting_option` and unknown states: no value is invented. They enter
-  review until the trigger or negotiated decision model exists.
+- `vesting_option` and unknown states: no value is invented. They enter review until the
+  trigger model exists.
 
 For tender and option states, `optionality premium` is the modeled control value minus
 the value if the salary/exercise branch were an unavoidable guarantee. It can be

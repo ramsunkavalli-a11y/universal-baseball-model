@@ -132,8 +132,10 @@ or promote a player ranking; the public v1 release remains historical.
 - Arbitration cost now uses the externally tested FanGraphs 15%/35%/50%/75% class
   shares and prior-season projected WAR value. There are 23,261 true prior-season
   basis rows and 388 labeled first-horizon proxies. A complete research scenario now
-  calculates 50,000 of 50,100 future annual rows; 100 rows and 87 player aggregates
-  remain in review for option buyouts, mutual/vesting triggers or one missing salary.
+  calculates 50,029 of 50,100 future annual rows; 71 rows and 60 player aggregates
+  remain in review for option buyouts, vesting triggers or two missing salaries.
+  Twenty-nine fully specified mutual options now use the conservative normal-expiration
+  outcome instead of waiting for a separate decision model.
   The post-2026 minimum and unchanged service rules are explicitly a planning scenario,
   not a claimed successor CBA.
 - All 55,164 future whole-player seasons now have a Phase 1 uncertainty reference
@@ -202,12 +204,12 @@ The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-Next, resolve the 100 contract review rows and calibrate return/role. Correlated
+Next, resolve the 71 contract review rows and calibrate return/role. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
 The market-price and Phase 1 arbitration gates are complete. The remaining economic
-blockers are successor-CBA facts and the 100 option/salary review rows.
+blockers are successor-CBA facts and the 71 option/salary review rows.
 In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.
