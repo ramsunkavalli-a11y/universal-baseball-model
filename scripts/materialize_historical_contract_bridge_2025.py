@@ -11,6 +11,7 @@ import polars as pl
 import requests
 
 from universal_baseball.historical_contract_bridge import (
+    build_cots_valuation_terms,
     match_cots_players_to_opening_day,
     parse_cots_team_csv,
 )
@@ -91,6 +92,7 @@ def main() -> int:
     terms = pl.concat(term_frames).sort(["source_record_id", "payroll_year"])
     opening = pl.read_parquet(opening_path)
     identities = match_cots_players_to_opening_day(players, opening)
+    valuation_terms = build_cots_valuation_terms(players, terms, identities)
     output.mkdir(parents=True, exist_ok=True)
     storage = {
         "players": write_canonical_parquet(
@@ -102,13 +104,18 @@ def main() -> int:
         "identity": write_canonical_parquet(
             identities, output / "identity-audit.parquet", table_name="historical_contract_identity_audit"
         ).as_record(),
+        "valuation_terms": write_canonical_parquet(
+            valuation_terms,
+            output / "valuation-ready-terms.parquet",
+            table_name="historical_contract_valuation_terms",
+        ).as_record(),
     }
     status_counts = {
         str(row["match_status"]): int(row["len"])
         for row in identities.group_by("match_status").len().sort("match_status").iter_rows(named=True)
     }
     report = {
-        "report_schema_version": "0.1",
+        "report_schema_version": "0.2",
         "season": 2025,
         "source": "private_retrospective_cots_derived_gist",
         "gist_id": GIST_ID,
@@ -123,6 +130,21 @@ def main() -> int:
         "available_amount_rows": terms.filter(pl.col("term_status") == "available").height,
         "control_state_rows": terms.filter(pl.col("term_status") == "control_state").height,
         "unparsed_term_rows": terms.filter(pl.col("term_status") == "review_unparsed").height,
+        "accepted_guaranteed_salary_rows": valuation_terms.filter(
+            pl.col("valuation_treatment") == "use_known_guaranteed_salary"
+        ).height,
+        "calculated_arbitration_rows": valuation_terms.filter(
+            pl.col("valuation_treatment") == "calculate_arbitration_from_cba_path"
+        ).height,
+        "free_agent_rows": valuation_terms.filter(
+            pl.col("valuation_treatment") == "end_incumbent_control"
+        ).height,
+        "option_review_rows": valuation_terms.filter(
+            pl.col("evidence_status") == "explicit_option_year"
+        ).height,
+        "valuation_review_rows": valuation_terms.filter(
+            pl.col("valuation_treatment") == "review_not_valuation_ready"
+        ).height,
         "replay_mode_boundary": "retrospective_event_cutoff_not_vintage_information_set",
         "authority_boundary": "secondary_private_bridge_not_primary_contract_authority",
         "raw_manifest": manifest,

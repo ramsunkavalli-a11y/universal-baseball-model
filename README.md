@@ -104,6 +104,9 @@ run offline from those captures and reproduced all core control outputs byte for
 The [historical Opening Day control source](docs/historical-opening-day-control-source.md)
 adds MLBAM-keyed 2024 and 2025 service/options snapshots for retrospective replay while
 keeping later-retrieved pages distinct from true vintage evidence.
+The [2025 historical contract source audit](docs/historical-contract-source-audit-2025.md)
+now includes a fail-closed annual valuation gate that separates guaranteed salary,
+calculated arbitration, free agency and unresolved options.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

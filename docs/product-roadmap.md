@@ -139,9 +139,12 @@ players; earlier-debut players without a balance stay review. Historical salary 
 future contract obligations are now the main remaining replay input.
 
 A 30-team Cot's-derived 2025 CSV extract is a viable private retrospective contract
-bridge, but it was assembled after the season and lacks stable IDs. Its next gate is
-unique team/name matching corroborated by the new service baseline; disagreements
-must remain review. It is not authorized as a vintage or primary production source.
+bridge, but it was assembled after the season and lacks stable IDs. Unique team/name
+matching corroborated by service accepts 1,192 of 1,289 players. A fail-closed annual
+gate now accepts explicit guaranteed years, routes arbitration to the CBA calculation,
+ends control at free agency and blocks unresolved options. It is not authorized as a
+vintage or primary production source. The next replay dependency is the historical
+control/value join; bounded identity and option exceptions can remain review.
 
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component

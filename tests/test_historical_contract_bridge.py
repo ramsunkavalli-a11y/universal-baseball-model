@@ -3,6 +3,7 @@ import polars as pl
 from universal_baseball.fangraphs_opening_day_source import OPENING_DAY_CONTROL_SCHEMA
 from universal_baseball.historical_contract_bridge import (
     _cots_service_days,
+    build_cots_valuation_terms,
     match_cots_players_to_opening_day,
     parse_cots_team_csv,
 )
@@ -85,3 +86,98 @@ def test_identity_gate_requires_exact_service() -> None:
     result = match_cots_players_to_opening_day(players, opening)
     assert result.filter(pl.col("player_id") == 545361).height == 1
     assert result.filter(pl.col("match_status") == "review_service_disagreement").height == 1
+
+
+def test_valuation_gate_separates_guarantees_arbitration_and_free_agency() -> None:
+    players, terms = parse_cots_team_csv(
+        CSV, season=2025, team_abbreviation="LAA", source_snapshot_id="cots:test"
+    )
+    identities = pl.DataFrame(
+        {
+            "source_record_id": players.get_column("source_record_id"),
+            "player_id": [545361, 621493],
+            "match_status": ["accepted_team_name_exact_service"] * 2,
+            "match_method": ["team_normalized_name_plus_exact_service"] * 2,
+            "service_day_difference": [0, 0],
+        }
+    )
+    result = build_cots_valuation_terms(players, terms, identities)
+    trout_2026 = result.filter(
+        (pl.col("player_id") == 545361) & (pl.col("payroll_year") == 2026)
+    ).row(0, named=True)
+    assert trout_2026["accepted_salary_dollars"] == 37_120_000
+    assert trout_2026["contract_status"] == "guaranteed_contract"
+    ward = result.filter(pl.col("player_id") == 621493).sort("payroll_year")
+    assert ward.get_column("valuation_treatment").to_list()[:3] == [
+        "use_known_guaranteed_salary",
+        "calculate_arbitration_from_cba_path",
+        "end_incumbent_control",
+    ]
+
+
+def test_valuation_gate_blocks_option_amount_and_unresolved_identity() -> None:
+    option_csv = CSV.replace(
+        "1 y/$7.825M (25)", "1 y/$7.825M (25)+26 cl opt"
+    ).replace("A4,FA", "$12.0,FA")
+    players, terms = parse_cots_team_csv(
+        option_csv, season=2025, team_abbreviation="LAA", source_snapshot_id="cots:test"
+    )
+    identities = pl.DataFrame(
+        {
+            "source_record_id": players.get_column("source_record_id"),
+            "player_id": [545361, None],
+            "match_status": [
+                "accepted_team_name_exact_service",
+                "review_service_disagreement",
+            ],
+            "match_method": [
+                "team_normalized_name_plus_exact_service",
+                "team_normalized_name_only",
+            ],
+            "service_day_difference": [0, 1],
+        }
+    )
+    result = build_cots_valuation_terms(players, terms, identities)
+    ward_2026 = result.filter(
+        (pl.col("source_record_id") == players.row(1, named=True)["source_record_id"])
+        & (pl.col("payroll_year") == 2026)
+    ).row(0, named=True)
+    assert ward_2026["accepted_salary_dollars"] is None
+    assert ward_2026["evidence_status"] == "blocked_identity_gate"
+
+    identities = identities.with_columns(
+        pl.when(pl.col("player_id").is_null()).then(pl.lit(621493)).otherwise(
+            pl.col("player_id")
+        ).alias("player_id"),
+        pl.lit("accepted_team_name_exact_service").alias("match_status"),
+    )
+    accepted = build_cots_valuation_terms(players, terms, identities)
+    option = accepted.filter(
+        (pl.col("player_id") == 621493) & (pl.col("payroll_year") == 2026)
+    ).row(0, named=True)
+    assert option["accepted_salary_dollars"] is None
+    assert option["contract_status"] == "option_unresolved"
+
+
+def test_valuation_gate_accepts_no_slash_guarantee_and_blocks_generic_options() -> None:
+    source = CSV.replace(
+        "1 y/$7.825M (25)", "1 y$7.825M (25)+26-27 opts"
+    ).replace("A4,FA", "$12.0,$13.0")
+    players, terms = parse_cots_team_csv(
+        source, season=2025, team_abbreviation="LAA", source_snapshot_id="cots:test"
+    )
+    identities = pl.DataFrame(
+        {
+            "source_record_id": players.get_column("source_record_id"),
+            "player_id": [545361, 621493],
+            "match_status": ["accepted_team_name_exact_service"] * 2,
+            "match_method": ["team_normalized_name_plus_exact_service"] * 2,
+            "service_day_difference": [0, 0],
+        }
+    )
+    result = build_cots_valuation_terms(players, terms, identities).filter(
+        pl.col("player_id") == 621493
+    )
+    assert result.item(0, "accepted_salary_dollars") == 7_825_000
+    assert result.item(1, "contract_status") == "option_unresolved"
+    assert result.item(2, "contract_status") == "option_unresolved"

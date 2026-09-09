@@ -1,6 +1,6 @@
 # Historical contract source audit: 2025
 
-**Status:** parsed private retrospective bridge; annual valuation interpretation next
+**Status:** parsed private retrospective bridge with a fail-closed valuation gate
 **Audited:** 2026-09-09
 
 A public GitHub gist described as “Cots 2025 Player Contract Data” contains exactly
@@ -36,3 +36,23 @@ Numeric cells are retained as source evidence, not automatically accepted salary
 obligations. In an option year a displayed amount may be a buyout or payroll
 allocation rather than the exercise salary. Contract text and state must agree before
 the economics layer can use it.
+
+## Valuation gate
+
+The implemented annual gate uses only exact-identity rows and makes five distinct
+decisions:
+
+- 1,308 numeric rows inside an explicit guaranteed contract-year range are accepted
+  as known guaranteed salary inputs;
+- 1,125 `A1`–`A4` rows are sent to the existing CBA/arbitration calculation instead
+  of receiving an invented salary;
+- 473 explicit free-agent rows end incumbent control;
+- 118 explicit option years remain review until exercise salary and buyout are
+  separately proven; and
+- 2,939 blank cells defer to the CBA control path rather than becoming zero salary.
+
+There are 610 review rows. Of these, 485 are the five annual cells for the 97 players
+that failed the identity gate, 118 are option years, and only seven are numeric cells
+whose contract text does not prove a guaranteed year. This is sufficient for the
+large Phase 1 pieces; the seven residual terms and individual option economics can be
+handled as bounded exceptions or with the FanGraphs payroll workbooks.
