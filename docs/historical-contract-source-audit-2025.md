@@ -1,6 +1,6 @@
 # Historical contract source audit: 2025
 
-**Status:** viable private retrospective reconstruction input; parser and identity gate next  
+**Status:** parsed private retrospective bridge; annual valuation interpretation next
 **Audited:** 2026-09-09
 
 A public GitHub gist described as “Cots 2025 Player Contract Data” contains exactly
@@ -18,3 +18,21 @@ the MLBAM-keyed FanGraphs Opening Day table plus agreement on service time when 
 sources report it. Ambiguous names, team disagreements and service disagreements
 remain review. Accepted rows can fill the 2025 historical replay contract path;
 FanGraphs remains the primary current contract source.
+
+## Materialized result
+
+The fixed 30-file revision produces 1,289 player rows and 6,445 annual cells.
+Exact team/name/service agreement attaches 1,192 rows (92.5%) to MLBAM. Thirty-seven
+service disagreements and 60 unmatched team/name rows remain review. The parser
+recognizes 1,482 numeric cells and 1,750 arbitration, option or free-agent states;
+no nonblank annual cell is unparsed.
+
+Cot's service cells were exported as spreadsheet numbers, so trailing zeroes were
+lost: for example, `8.16` means `8.160`, not `8.016`. The source-specific parser
+restores the three-place remainder before comparison. This correction raised exact
+identity coverage without relaxing the matching gate.
+
+Numeric cells are retained as source evidence, not automatically accepted salary
+obligations. In an option year a displayed amount may be a buyout or payroll
+allocation rather than the exercise salary. Contract text and state must agree before
+the economics layer can use it.

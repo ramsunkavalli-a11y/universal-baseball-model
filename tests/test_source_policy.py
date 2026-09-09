@@ -15,6 +15,8 @@ def test_repo_source_policy_manifest_is_valid() -> None:
     assert opening_day["redistribution_policy"] == (
         "no_raw_or_bulk_redistribution_without_review"
     )
+    historical_contracts = source_policy_by_name(payload, "cots_derived_2025_gist")
+    assert historical_contracts["role"] == "secondary_historical_contract_reconstruction"
 
     armstjc = source_policy_by_name(payload, "armstjc_milb_pbp")
     chadwick = source_policy_by_name(payload, "chadwick_register")

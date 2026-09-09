@@ -63,6 +63,15 @@
       "attribution_required": true,
       "redistribution_policy": "no_raw_or_bulk_redistribution_without_review",
       "notes": "Use MLBAM-keyed pre-season service, options and roster state as a dated retrospective control baseline. Preserve retrieval date and response hash. Keep raw HTML, workbook downloads and normalized bulk rows private; commit only code, tests and aggregate audit results. A page served later is retrospective evidence, not proof of its original publication state."
+    },
+    {
+      "source_name": "cots_derived_2025_gist",
+      "upstream": "Private retrospective extract described as Cot's 2025 Player Contract Data",
+      "role": "secondary_historical_contract_reconstruction",
+      "license_id": null,
+      "attribution_required": true,
+      "redistribution_policy": "no_raw_or_bulk_redistribution_without_review",
+      "notes": "Use only as a private retrospective bridge for the 2025 replay. Require exact team, normalized name and service agreement before attaching MLBAM. Parsed dollar cells are evidence, not automatically accepted salary obligations; option and adjustment interpretation remains fail-closed."
     }
   ],
   "policy": {

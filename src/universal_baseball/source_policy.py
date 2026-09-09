@@ -22,6 +22,7 @@ _ALLOWED_ROLES = {
     "historical_mlb_validation_candidate",
     "secondary_contract_exception_corroboration",
     "historical_service_options_and_roster_reference",
+    "secondary_historical_contract_reconstruction",
 }
 
 

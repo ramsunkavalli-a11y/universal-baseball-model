@@ -72,6 +72,9 @@ or promote a player ranking; the public v1 release remains historical.
   retrospective contract bridge. It includes 2025–2029 salary/control columns but was
   created after the season and has names rather than MLBAM IDs. Use requires a
   same-team name match corroborated by service; it is not vintage or primary authority.
+  Its implemented parser produces 1,289 players and 6,445 annual terms; 1,192 players
+  attach to MLBAM by exact team/name/service agreement. Ninety-seven remain review.
+  Parsed dollar cells do not enter valuation until contract-state interpretation agrees.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and
