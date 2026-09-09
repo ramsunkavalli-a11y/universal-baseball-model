@@ -119,8 +119,9 @@ or promote a player ranking; the public v1 release remains historical.
   and pitcher value for two-way players. Accepted payroll terms supply 604 known
   player-year salaries. The 5,064 projection rows without resolved control stay in the
   talent universe but do not receive invented incumbent rights. All 86 potential
-  payroll buyouts map to stable player IDs; 83 match projected option years, reducing
-  missing option buyouts from 151 to 68. The ten projected Super Two cases now advance
+  payroll buyouts map to stable player IDs; 83 match projected option years. A small,
+  dated Spotrac exception overlay adds seven explicit non-conflicting buyouts, reducing
+  missing option buyouts from 151 to 61. The ten projected Super Two cases now advance
   through all four arbitration classes. Arbitration pay, post-2026 minimums and the
   remaining option exceptions stay explicit rather than becoming hidden defaults.
 - The public 2020–2026 FanGraphs tracker supplies 335 reported contracts and all 350
@@ -132,8 +133,8 @@ or promote a player ranking; the public v1 release remains historical.
 - Arbitration cost now uses the externally tested FanGraphs 15%/35%/50%/75% class
   shares and prior-season projected WAR value. There are 23,261 true prior-season
   basis rows and 388 labeled first-horizon proxies. A complete research scenario now
-  calculates 50,029 of 50,100 future annual rows; 71 rows and 60 player aggregates
-  remain in review for option buyouts, vesting triggers or two missing salaries.
+  calculates 50,036 of 50,100 future annual rows; 64 rows and 54 player aggregates
+  remain in review for option buyouts, vesting triggers or one missing salary.
   Twenty-nine fully specified mutual options now use the conservative normal-expiration
   outcome instead of waiting for a separate decision model.
   The post-2026 minimum and unchanged service rules are explicitly a planning scenario,
@@ -210,13 +211,13 @@ The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths, conditional-WAR assembly, annual economics-input join,
 current baserunning, supported general defense, the rest-of-season path, a narrow
 official-status availability boundary and Phase 1 future WAR ranges are now built.
-Next, resolve the 71 contract review rows. Current role and late-season injury return
+Next, resolve the 64 contract review rows. Current role and late-season injury return
 now have narrow Phase 1 baselines. Correlated
 multi-year uncertainty and empirical coverage refinement belong in Phase 2.
 Modern adjacent-season pitcher aging has been tested and rejected for Phase 1; revisit
 it only under a new Phase 2 test.
 The market-price and Phase 1 arbitration gates are complete. The remaining economic
-blockers are successor-CBA facts and the 71 option/salary review rows.
+blockers are successor-CBA facts and the 64 option/salary review rows.
 In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.

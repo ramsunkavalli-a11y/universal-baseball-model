@@ -15,6 +15,18 @@ UNCERTAINTY_PROJECTION_SOURCE_ID = (
     "phase1_hitter_pitcher_expected_war_with_uncertainty_2026_09_08"
 )
 
+SECONDARY_CONTRACT_TERM_SCHEMA: dict[str, pl.DataType] = {
+    "player_id": pl.Int64,
+    "player_name": pl.String,
+    "organization_id": pl.Int64,
+    "season": pl.Int64,
+    "expected_control_status": pl.String,
+    "known_salary_dollars": pl.Int64,
+    "buyout_dollars": pl.Int64,
+    "source_url": pl.String,
+    "source_snapshot_id": pl.String,
+}
+
 
 @dataclass(frozen=True, slots=True)
 class ContractEconomicsInputBuild:
@@ -56,6 +68,7 @@ def build_future_contract_economics_inputs(
     contract_years: pl.DataFrame,
     war_uncertainty: pl.DataFrame | None = None,
     option_buyouts: pl.DataFrame | None = None,
+    secondary_contract_terms: pl.DataFrame | None = None,
 ) -> ContractEconomicsInputBuild:
     """Build annual inputs without inventing market assumptions."""
 
@@ -63,6 +76,7 @@ def build_future_contract_economics_inputs(
         "club_option", "player_option", "mutual_option", "vesting_option"
     }
     source_linked_buyout_rows = 0
+    secondary_term_rows = 0
 
     hitter = _projection_component(hitter_paths, "hitter")
     pitcher = _projection_component(pitcher_paths, "pitcher")
@@ -184,6 +198,80 @@ def build_future_contract_economics_inputs(
             how="left",
             validate="m:1",
         )
+    if secondary_contract_terms is None:
+        joined = joined.with_columns(
+            pl.lit(None, dtype=pl.String).alias("secondary_contract_source_id")
+        )
+    else:
+        missing_secondary = sorted(
+            set(SECONDARY_CONTRACT_TERM_SCHEMA)
+            - set(secondary_contract_terms.columns)
+        )
+        if missing_secondary:
+            raise ValueError(
+                f"secondary contract terms missing fields: {missing_secondary}"
+            )
+        secondary = secondary_contract_terms.select(
+            list(SECONDARY_CONTRACT_TERM_SCHEMA)
+        ).cast(SECONDARY_CONTRACT_TERM_SCHEMA, strict=True)
+        if secondary.group_by("player_id", "organization_id", "season").len().filter(
+            pl.col("len") != 1
+        ).height:
+            raise ValueError("secondary contract terms violate player-team-season grain")
+        if secondary.filter(
+            (
+                pl.col("known_salary_dollars").is_null()
+                == pl.col("buyout_dollars").is_null()
+            )
+            | (pl.col("source_url") == "")
+            | (pl.col("source_snapshot_id") == "")
+        ).height:
+            raise ValueError(
+                "secondary contract rows require exactly one dollar fact and provenance"
+            )
+        secondary_term_rows = secondary.height
+        joined = joined.join(
+            secondary.select(
+                "player_id",
+                "organization_id",
+                "season",
+                "expected_control_status",
+                pl.col("known_salary_dollars").alias("secondary_salary_dollars"),
+                pl.col("buyout_dollars").alias("secondary_buyout_dollars"),
+                pl.col("source_snapshot_id").alias("secondary_contract_source_id"),
+            ),
+            on=["player_id", "organization_id", "season"],
+            how="left",
+            validate="m:1",
+        )
+        if joined.filter(
+            pl.col("expected_control_status").is_not_null()
+            & (pl.col("expected_control_status") != pl.col("control_status"))
+        ).height:
+            raise ValueError("secondary contract status conflicts with primary control")
+        if joined.filter(
+            pl.col("secondary_salary_dollars").is_not_null()
+            & pl.col("known_salary_dollars").is_not_null()
+            & (
+                pl.col("secondary_salary_dollars")
+                != pl.col("known_salary_dollars")
+            )
+        ).height:
+            raise ValueError("secondary salary conflicts with primary contract term")
+        if joined.filter(
+            pl.col("secondary_buyout_dollars").is_not_null()
+            & pl.col("buyout_dollars").is_not_null()
+            & (pl.col("secondary_buyout_dollars") != pl.col("buyout_dollars"))
+        ).height:
+            raise ValueError("secondary buyout conflicts with primary contract term")
+        joined = joined.with_columns(
+            pl.coalesce("known_salary_dollars", "secondary_salary_dollars").alias(
+                "known_salary_dollars"
+            ),
+            pl.coalesce("buyout_dollars", "secondary_buyout_dollars").alias(
+                "buyout_dollars"
+            ),
+        )
     available = joined.filter(pl.col("projected_war_mean").is_not_null())
     rows = []
     for row in available.iter_rows(named=True):
@@ -232,8 +320,13 @@ def build_future_contract_economics_inputs(
                     else ""
                 ),
                 "projection_source_id": projection_source_id,
-                "contract_source_id": str(
-                    row["term_source_id"] or row["projection_basis"]
+                "contract_source_id": "+".join(
+                    value
+                    for value in (
+                        str(row["term_source_id"] or row["projection_basis"]),
+                        str(row["secondary_contract_source_id"] or ""),
+                    )
+                    if value
                 ),
             }
         )
@@ -267,6 +360,7 @@ def build_future_contract_economics_inputs(
                 & pl.col("projected_war_upper").is_not_null()
             ).height,
             "source_linked_buyout_rows": source_linked_buyout_rows,
+            "secondary_contract_term_rows": secondary_term_rows,
             "option_rows_with_buyout": annual.filter(
                 pl.col("buyout_dollars").is_not_null()
             ).height,

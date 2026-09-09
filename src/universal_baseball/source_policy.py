@@ -12,6 +12,7 @@ _ALLOWED_REDISTRIBUTION = {
     "attribution_required",
     "review_required_before_public_redistribution",
     "follow_upstream_notice",
+    "no_raw_or_bulk_redistribution_without_review",
 }
 _ALLOWED_ROLES = {
     "historical_bootstrap",
@@ -19,6 +20,7 @@ _ALLOWED_ROLES = {
     "crosswalk",
     "tracking_enrichment_candidate",
     "historical_mlb_validation_candidate",
+    "secondary_contract_exception_corroboration",
 }
 
 

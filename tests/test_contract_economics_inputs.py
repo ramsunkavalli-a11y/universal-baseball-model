@@ -1,6 +1,7 @@
 from datetime import date
 
 import polars as pl
+import pytest
 
 from universal_baseball.contract_economics_inputs import (
     build_future_contract_economics_inputs,
@@ -124,6 +125,65 @@ def test_attaches_only_resolved_option_buyout() -> None:
     assert result.coverage["source_linked_buyout_rows"] == 1
     assert result.coverage["option_rows_with_buyout"] == 1
     assert result.coverage["option_rows_missing_buyout"] == 0
+
+
+def test_secondary_term_fills_only_missing_nonconflicting_fact() -> None:
+    hitters = pl.DataFrame(
+        {"player_id": [1], "season": [2027], "expected_war": [1.5]}
+    )
+    pitchers = pl.DataFrame(
+        schema={"player_id": pl.Int64, "season": pl.Int64, "expected_war": pl.Float64}
+    )
+    control = pl.DataFrame(
+        {
+            "as_of_date": [date(2026, 9, 8)], "player_id": [1],
+            "organization_id": [100], "control_year": [2027],
+            "service_days_before_year": [900], "control_status": ["club_option"],
+            "statutory_status": ["free_agent_eligible"],
+            "projection_basis": ["full_service_future_scenario"],
+        }
+    )
+    terms = pl.DataFrame(
+        {
+            "player_id": [1], "organization_id": [100], "payroll_year": [2027],
+            "amount_dollars": [10_000_000],
+            "overlay_status": ["accepted_contract_overlay"],
+            "source_snapshot_id": ["fg:test"],
+        }
+    )
+    secondary = pl.DataFrame(
+        {
+            "player_id": [1], "player_name": ["One"],
+            "organization_id": [100], "season": [2027],
+            "expected_control_status": ["club_option"],
+            "known_salary_dollars": [None], "buyout_dollars": [2_000_000],
+            "source_url": ["https://example.test/options/2027"],
+            "source_snapshot_id": ["secondary:test"],
+        }
+    )
+    result = build_future_contract_economics_inputs(
+        hitters,
+        pitchers,
+        control,
+        terms,
+        secondary_contract_terms=secondary,
+    )
+    assert result.annual_inputs.item(0, "buyout_dollars") == 2_000_000
+    assert result.annual_inputs.item(0, "contract_source_id") == (
+        "fg:test+secondary:test"
+    )
+    assert result.coverage["secondary_contract_term_rows"] == 1
+
+    with pytest.raises(ValueError, match="status conflicts"):
+        build_future_contract_economics_inputs(
+            hitters,
+            pitchers,
+            control,
+            terms,
+            secondary_contract_terms=secondary.with_columns(
+                pl.lit("player_option").alias("expected_control_status")
+            ),
+        )
 
 
 def test_super_two_track_advances_through_four_arbitration_classes() -> None:

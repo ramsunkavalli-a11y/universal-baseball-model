@@ -3,18 +3,17 @@
 **Status:** complete Phase 1 research calculation; not a publishable ranking
 
 The first full 2027–2032 economics pass now runs all 50,100 controlled player-years
-through the same WAR, market, salary, option and discount rules. It produces 50,029
-available annual rows and 71 review rows. At the six-year player aggregate, 8,290
-players are complete and 60 have at least one review year.
+through the same WAR, market, salary, option and discount rules. It produces 50,036
+available annual rows and 64 review rows. At the six-year player aggregate, 8,296
+players are complete and 54 have at least one review year.
 
-The 71 reviews are narrow and visible:
+The 64 reviews are narrow and visible:
 
-- 36 club options missing a stated buyout;
+- 30 club options missing a stated buyout;
 - 17 player options missing a stated buyout;
 - 13 vesting options needing trigger logic; and
 - three mutual options missing a stated buyout;
-- one mutual option missing its exercise salary; and
-- one club option missing its exercise salary.
+- one mutual option missing its exercise salary.
 
 ## Named assumptions
 
@@ -40,6 +39,11 @@ This result proves the full calculation path works and isolates the remaining co
 exceptions. It does not promote the current top-player order. The WAR surface still
 uses Phase 1 population fallbacks, future market/minimum growth is assumed, and option
 decisions do not yet use correlated career paths.
+
+A dated, small Spotrac exception overlay supplies eight explicit, non-conflicting
+dollar facts that resolve seven review rows. It never treats a displayed dash as a
+zero and never overrides FanGraphs. Structural disagreements remain review items and
+are recorded in [the secondary option audit](secondary-contract-option-audit-2026-09-09.md).
 
 Run `scripts/materialize_contract_economics_scenario.py --as-of-date 2026-09-08`
 after rebuilding the current contract-economics inputs.

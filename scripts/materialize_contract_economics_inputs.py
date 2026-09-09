@@ -37,6 +37,11 @@ def _args() -> argparse.Namespace:
         "--output-root", type=Path,
         default=Path("reports/generated/current-contract-economics-inputs"),
     )
+    parser.add_argument(
+        "--secondary-contract-terms",
+        type=Path,
+        default=Path("config/secondary-contract-terms-2026-09-09.json"),
+    )
     return parser.parse_args()
 
 
@@ -51,6 +56,12 @@ def main() -> int:
         contract_years,
         pl.read_parquet(dated_control_root / "payroll-other-payments.parquet"),
     )
+    secondary_payload = json.loads(
+        args.secondary_contract_terms.read_text(encoding="utf-8")
+    )
+    secondary_terms = pl.DataFrame(secondary_payload["terms"]).with_columns(
+        pl.lit(secondary_payload["snapshot_id"]).alias("source_snapshot_id")
+    )
     result = build_future_contract_economics_inputs(
         pl.read_parquet(dated_war_root / "hitter_expected_war_paths.parquet"),
         pl.read_parquet(dated_war_root / "pitcher_expected_war_paths.parquet"),
@@ -61,6 +72,7 @@ def main() -> int:
             / "tables/whole-player-war-uncertainty.parquet"
         ),
         option_buyouts=buyout_links.links,
+        secondary_contract_terms=secondary_terms,
     )
     output_root = args.output_root / args.as_of_date.isoformat()
     output_root.mkdir(parents=True, exist_ok=True)
@@ -79,8 +91,15 @@ def main() -> int:
         "salary_policy": "accepted player-linked payroll terms only; missing is null",
         "buyout_policy": (
             "contingent option buyouts linked by exact team/name within the same "
-            "FanGraphs payroll workbook; non-contingent paid buyouts are not option rights"
+            "FanGraphs payroll workbook, plus a small fail-closed Spotrac exception "
+            "overlay; non-contingent paid buyouts are not option rights"
         ),
+        "secondary_contract_terms": {
+            "snapshot_id": secondary_payload["snapshot_id"],
+            "retrieved_date": secondary_payload["retrieved_date"],
+            "rows": len(secondary_payload["terms"]),
+            "boundary": secondary_payload["boundary"],
+        },
         "buyout_link_coverage": buyout_links.coverage,
         "ranking_status": "not_publishable_inputs_only",
         "remaining_economics_inputs": [

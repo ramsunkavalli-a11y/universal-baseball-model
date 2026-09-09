@@ -45,6 +45,15 @@
       "attribution_required": true,
       "redistribution_policy": "follow_upstream_notice",
       "notes": "Planned MLB historical validation source. Before bundling any Retrosheet-derived data, preserve the exact upstream notice/citation requirements for the downloaded distribution."
+    },
+    {
+      "source_name": "spotrac_public_mlb_options",
+      "upstream": "Spotrac MLB Options",
+      "role": "secondary_contract_exception_corroboration",
+      "license_id": null,
+      "attribution_required": true,
+      "redistribution_policy": "no_raw_or_bulk_redistribution_without_review",
+      "notes": "Use only a small dated exception overlay when FanGraphs lacks a term and Spotrac shows a non-conflicting explicit dollar fact. Keep page URLs and retrieval date. Do not treat a dash as zero, override contradictions, or commit raw/bulk tables."
     }
   ],
   "policy": {

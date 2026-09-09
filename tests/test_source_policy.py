@@ -14,6 +14,7 @@ def test_repo_source_policy_manifest_is_valid() -> None:
     armstjc = source_policy_by_name(payload, "armstjc_milb_pbp")
     chadwick = source_policy_by_name(payload, "chadwick_register")
     official = source_policy_by_name(payload, "mlb_stats_api_playbyplay")
+    spotrac = source_policy_by_name(payload, "spotrac_public_mlb_options")
 
     assert armstjc["license_id"] == "MIT"
     assert armstjc["attribution_required"] is True
@@ -21,6 +22,10 @@ def test_repo_source_policy_manifest_is_valid() -> None:
     assert chadwick["attribution_required"] is True
     assert official["license_id"] is None
     assert official["redistribution_policy"] == "review_required_before_public_redistribution"
+    assert spotrac["role"] == "secondary_contract_exception_corroboration"
+    assert spotrac["redistribution_policy"] == (
+        "no_raw_or_bulk_redistribution_without_review"
+    )
 
 
 def test_source_policy_validation_rejects_duplicates(tmp_path: Path) -> None:
