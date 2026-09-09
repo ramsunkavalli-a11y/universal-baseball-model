@@ -263,6 +263,11 @@ def main() -> int:
 
     output.mkdir(parents=True, exist_ok=True)
     storage = {
+        "control_owners": write_canonical_parquet(
+            control_owners,
+            output / "historical-control-owners.parquet",
+            table_name="historical_2025_control_owners",
+        ).as_record(),
         "annual_inputs": write_canonical_parquet(
             build.annual_inputs,
             output / "annual-contract-economics-inputs.parquet",

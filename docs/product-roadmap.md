@@ -166,6 +166,14 @@ The next P0 is to score the 2025 checkpoint against completed outcomes and run t
 checkpoint accounting/coverage gates. Exact option terms and contract identities are
 bounded follow-up work unless they materially change that result.
 
+The frozen 2025 outcome score and mechanical checkpoint are now complete. League PA
+and BF totals are within 1%, both skill-component forecasts beat the population prior,
+and neutral WAR is 6.6% high. Workload RMSE improves over 2024 carry-forward while MAE
+does not; FanGraphs is stronger on its narrower projected-player set. The first
+historical-to-current sequence has no unexplained material deltas, but the versions and
+universes differ. The next Phase 1 replay evidence should therefore be a later
+checkpoint scored under the same model definition, not another broad component search.
+
 Do not reopen broad component searches during this replay. Fix material identity,
 chronology, denominator, control, cost or scale failures; record small component
 discrepancies for Phase 2. The protected 2026 confirmation forecast is frozen and its

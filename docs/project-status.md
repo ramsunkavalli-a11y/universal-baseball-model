@@ -93,6 +93,15 @@ or promote a player ranking; the public v1 release remains historical.
   39,990 owned annual rows, 39,648 calculate and 342 remain review for 33 missing
   service balances, 118 option years, 52 2025 Super Two cases and seven unclear
   contract cells. This is retrospective research evidence, not a ranking.
+- The frozen 2025 replay is now scored. Hitter PA is 0.2% high and pitcher BF is
+  0.9% low at league scale. Both models improve RMSE over carrying 2024 workload
+  forward but lose on MAE; FanGraphs is materially better on its projected-player
+  subset. Hitter and pitcher components beat their population log-loss references.
+  Whole-player neutral WAR is 1,061.71 projected versus 995.75 observed, 6.6% high.
+- The March 2025 value output passes the sequential checkpoint contract with 8,946
+  players, 7,803 available values and 1,143 reviews. Joined to the September 2026
+  current checkpoint, all 3,850 material deltas have declared reasons. Model and
+  universe changes mean this proves mechanics, not same-model value stability.
 - Contract Economics v0 now keeps WAR, free-agent-equivalent value, contract/control
   value and later trade value separate. It values guaranteed, tender, club-option and
   player-option states, preserves optionality premium, discounts future values and
@@ -316,9 +325,11 @@ The one-year confirmation forecast and scoring rule are frozen. Do not inspect p
 season totals are final. Horizons 5–6 remain on the incumbent until better older
 evidence exists. The next available Phase 1 work is a small completed-season end-to-end
 replay through the new checkpoint interface. The 2025 projection, control and value
-paths now run together. The next task is outcome scoring and checkpoint validation,
-with the 948 missing-owner players and bounded contract/service exceptions reported
-separately rather than forced. In the current snapshot, 16
+paths now run together, outcome scoring is recorded and the first multi-checkpoint
+mechanical sequence passes. The next meaningful replay task is a same-model later
+checkpoint; do not treat the current cross-version delta as stability evidence. The
+948 missing-owner players and bounded contract/service exceptions stay separate rather
+than forced. In the current snapshot, 16
 annual contract reviews remain: 12 future vesting
 decisions, three linked Julio Rodriguez years and one missing option salary. Granular replacement of the
 43 buyout estimates with exact terms is Phase 2. Current role and late-season injury return

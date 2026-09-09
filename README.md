@@ -114,6 +114,10 @@ FanGraphs PA/IP as an external scale check and leaves weak fallbacks visible.
 The [2025 historical control/value join](docs/historical-control-value-2025.md)
 then connects 7,998 owners and calculates 39,648 of 39,990 owned annual rows while
 retaining missing owners, service, Super Two and contract exceptions as reviews.
+The [scored 2025 replay](docs/historical-replay-result-2025.md) shows nearly exact
+league workload, lower large-error RMSE but worse individual MAE than simple
+carry-forward, modest component-skill gains and a 6.6% high neutral-WAR point total.
+Its historical checkpoint and the current checkpoint pass the mechanical sequence.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.
