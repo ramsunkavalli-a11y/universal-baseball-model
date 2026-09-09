@@ -40,15 +40,14 @@ class OpportunityV2Evaluation:
     final_fit: PlayingTimeHurdleFit
 
 
-def build_universal_hitter_opportunity_fold(
+def build_universal_hitter_opportunity_predictors(
     snapshot: pl.DataFrame,
     current_stats: pl.DataFrame,
-    next_stats: pl.DataFrame,
     membership: pl.DataFrame,
     *,
     snapshot_year: int,
-) -> OpportunityFold:
-    """Create one zero-inclusive snapshot-to-next-season hitter fold."""
+) -> pl.DataFrame:
+    """Build one universal as-of predictor surface without future outcomes."""
 
     required_snapshot = {"snapshot_year", "player_id", "age_years", "as_of_level_group"}
     if required_snapshot - set(snapshot.columns):
@@ -60,39 +59,28 @@ def build_universal_hitter_opportunity_fold(
         pl.col("len") != 1
     ).height:
         raise ValueError("universal opportunity snapshot is empty or has duplicate players")
-
-    def hitter_pa(stats: pl.DataFrame, *, current: bool) -> pl.DataFrame:
-        source = stats.filter(pl.col("stat_group") == "hitting")
-        if current:
-            return source.group_by("player_id").agg(
-                pl.when(pl.col("sport_id") == 1)
-                .then(pl.col("plate_appearances"))
-                .otherwise(0)
-                .sum()
-                .cast(pl.Int64)
-                .alias("current_season_mlb_pa"),
-                pl.when(pl.col("sport_id") != 1)
-                .then(pl.col("plate_appearances"))
-                .otherwise(0)
-                .sum()
-                .cast(pl.Int64)
-                .alias("current_season_milb_pa"),
-            )
-        return source.filter(pl.col("sport_id") == 1).group_by("player_id").agg(
-            pl.col("plate_appearances")
-            .sum()
-            .cast(pl.Int64)
-            .alias("next_year_mlb_pa")
-        )
-
-    current_pa = hitter_pa(current_stats, current=True)
-    future_pa = hitter_pa(next_stats, current=False)
+    current_pa = current_stats.filter(pl.col("stat_group") == "hitting").group_by(
+        "player_id"
+    ).agg(
+        pl.when(pl.col("sport_id") == 1)
+        .then(pl.col("plate_appearances"))
+        .otherwise(0)
+        .sum()
+        .cast(pl.Int64)
+        .alias("current_season_mlb_pa"),
+        pl.when(pl.col("sport_id") != 1)
+        .then(pl.col("plate_appearances"))
+        .otherwise(0)
+        .sum()
+        .cast(pl.Int64)
+        .alias("current_season_milb_pa"),
+    )
     on_40man = membership.filter(pl.col("season") == snapshot_year).select(
         "player_id", "on_40man"
     )
     if on_40man.group_by("player_id").len().filter(pl.col("len") != 1).height:
         raise ValueError("40-man history violates season-player grain")
-    predictors = (
+    return (
         players.join(current_pa, on="player_id", how="left")
         .join(on_40man, on="player_id", how="left")
         .with_columns(
@@ -101,6 +89,33 @@ def build_universal_hitter_opportunity_fold(
             pl.col("on_40man").fill_null(False).cast(pl.Boolean),
         )
         .sort("player_id")
+    )
+
+
+def build_universal_hitter_opportunity_fold(
+    snapshot: pl.DataFrame,
+    current_stats: pl.DataFrame,
+    next_stats: pl.DataFrame,
+    membership: pl.DataFrame,
+    *,
+    snapshot_year: int,
+) -> OpportunityFold:
+    """Create one zero-inclusive snapshot-to-next-season hitter fold."""
+
+    predictors = build_universal_hitter_opportunity_predictors(
+        snapshot,
+        current_stats,
+        membership,
+        snapshot_year=snapshot_year,
+    )
+    players = predictors.select("player_id")
+    future_pa = next_stats.filter(
+        (pl.col("stat_group") == "hitting") & (pl.col("sport_id") == 1)
+    ).group_by("player_id").agg(
+        pl.col("plate_appearances")
+        .sum()
+        .cast(pl.Int64)
+        .alias("next_year_mlb_pa")
     )
     targets = (
         players.select("player_id")

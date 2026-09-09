@@ -471,6 +471,8 @@ def score_hitter_opportunity_paths(
     as_of_date: date,
     forecast_year: int,
     selected_next_year: pl.DataFrame | None = None,
+    selected_model_id: str = "playing_time_v1",
+    selected_model_status: str = "selected",
 ) -> pl.DataFrame:
     """Score every hitter at every fitted horizon with explicit source labels."""
 
@@ -517,8 +519,8 @@ def score_hitter_opportunity_paths(
                     zero_truncated_nb2_variance(workload) if workload > 1.0 else 0.0
                 )
                 coverage = "selected_next_year_model"
-                probability_model = "playing_time_v1:selected_participation"
-                workload_model = "playing_time_v1:selected_positive_pa"
+                probability_model = f"{selected_model_id}:{selected_model_status}:participation"
+                workload_model = f"{selected_model_id}:{selected_model_status}:positive_pa"
             else:
                 age_key = (horizon, level, age_band, "age_level")
                 level_key = (horizon, level, None, "level")

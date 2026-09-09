@@ -458,23 +458,29 @@ def _truncated_nb2_logpmf(y: int, mu: float, alpha: float) -> float:
     return _nb2_logpmf(y, mu, alpha) - log1p(-p0)
 
 
-def score_playing_time_hurdle(
-    fit: PlayingTimeHurdleFit,
-    design: pl.DataFrame,
-    targets: pl.DataFrame,
-) -> tuple[pl.DataFrame, dict[str, Any]]:
-    aligned = _align_design_target(design, targets)
+def predict_playing_time_hurdle(
+    fit: PlayingTimeHurdleFit, design: pl.DataFrame
+) -> pl.DataFrame:
+    """Apply one fitted hurdle model without requiring future outcomes."""
+
+    required = {"player_id", *fit.feature_names}
+    missing = sorted(required - set(design.columns))
+    if missing:
+        raise ValueError(f"playing-time prediction design missing fields: {missing}")
+    source = design.select("player_id", *fit.feature_names).sort("player_id")
+    if source.is_empty() or source.group_by("player_id").len().filter(
+        pl.col("len") != 1
+    ).height:
+        raise ValueError("playing-time prediction design is empty or duplicates players")
     x = _design_matrix(
-        aligned,
+        source,
         feature_names=fit.feature_names,
         continuous_features=fit.continuous_features,
         standardization=fit.standardization,
     )
-    y = np.asarray(aligned.get_column("next_year_mlb_pa").to_numpy(), dtype=np.int64)
     logistic_beta = np.asarray(fit.logistic_coefficients, dtype=np.float64)
     p_participation = _sigmoid(fit.logistic_intercept + x @ logistic_beta)
     p_participation = np.clip(p_participation, 1e-12, 1.0 - 1e-12)
-
     nb_beta = np.asarray(fit.nb_coefficients, dtype=np.float64)
     nb_exog = np.column_stack([np.ones(x.shape[0]), x])
     mu = np.exp(nb_exog @ nb_beta)
@@ -484,7 +490,40 @@ def score_playing_time_hurdle(
     nb_probability = size / (size + mu)
     p_zero_untruncated = np.power(nb_probability, size)
     conditional_positive_mean = mu / (1.0 - p_zero_untruncated)
-    expected_mlb_pa = p_participation * conditional_positive_mean
+    return pl.DataFrame(
+        {
+            "player_id": source.get_column("player_id"),
+            "predicted_any_mlb_pa_probability": p_participation,
+            "predicted_positive_mlb_pa_mean": conditional_positive_mean,
+            "predicted_expected_mlb_pa": p_participation
+            * conditional_positive_mean,
+        }
+    )
+
+
+def score_playing_time_hurdle(
+    fit: PlayingTimeHurdleFit,
+    design: pl.DataFrame,
+    targets: pl.DataFrame,
+) -> tuple[pl.DataFrame, dict[str, Any]]:
+    aligned = _align_design_target(design, targets)
+    predictions = predict_playing_time_hurdle(fit, aligned)
+    y = np.asarray(aligned.get_column("next_year_mlb_pa").to_numpy(), dtype=np.int64)
+    p_participation = predictions.get_column(
+        "predicted_any_mlb_pa_probability"
+    ).to_numpy()
+    conditional_positive_mean = predictions.get_column(
+        "predicted_positive_mlb_pa_mean"
+    ).to_numpy()
+    expected_mlb_pa = predictions.get_column("predicted_expected_mlb_pa").to_numpy()
+    nb_beta = np.asarray(fit.nb_coefficients, dtype=np.float64)
+    x = _design_matrix(
+        aligned,
+        feature_names=fit.feature_names,
+        continuous_features=fit.continuous_features,
+        standardization=fit.standardization,
+    )
+    mu = np.exp(np.column_stack([np.ones(x.shape[0]), x]) @ nb_beta)
 
     rows: list[dict[str, object]] = []
     full_negative_log_likelihood: list[float] = []

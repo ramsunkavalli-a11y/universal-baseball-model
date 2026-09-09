@@ -74,6 +74,19 @@ def main() -> int:
         if args.selected_hitter_next_year is not None
         else None
     )
+    selected_model_id = "playing_time_v1"
+    selected_model_status = "selected"
+    if selected is not None:
+        if "model_id" in selected.columns:
+            model_ids = selected.get_column("model_id").unique().to_list()
+            if len(model_ids) != 1 or model_ids[0] is None:
+                raise ValueError("selected hitter predictions must have one model_id")
+            selected_model_id = str(model_ids[0])
+        if "model_status" in selected.columns:
+            model_statuses = selected.get_column("model_status").unique().to_list()
+            if len(model_statuses) != 1 or model_statuses[0] is None:
+                raise ValueError("selected hitter predictions must have one model_status")
+            selected_model_status = str(model_statuses[0])
     hitter_fit = HitterOpportunityFit(
         references=pl.read_parquet(args.fit_root / "hitter_references.parquet"),
         horizons=args.horizons,
@@ -92,6 +105,8 @@ def main() -> int:
         as_of_date=args.as_of_date,
         forecast_year=args.forecast_year,
         selected_next_year=selected,
+        selected_model_id=selected_model_id,
+        selected_model_status=selected_model_status,
     )
     pitcher_paths = score_pitcher_opportunity_paths(
         pitchers,
@@ -128,6 +143,10 @@ def main() -> int:
         "hitter_player_years": hitter_paths.height,
         "pitcher_player_years": pitcher_paths.height,
         "selected_hitter_model_supplied": selected is not None,
+        "selected_hitter_model_id": selected_model_id if selected is not None else None,
+        "selected_hitter_model_status": (
+            selected_model_status if selected is not None else None
+        ),
         "hitter_coverage": _coverage(hitter_paths),
         "pitcher_coverage": _coverage(pitcher_paths),
         "future_team_or_depth_used": False,

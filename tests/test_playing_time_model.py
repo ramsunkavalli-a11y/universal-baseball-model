@@ -17,6 +17,7 @@ from universal_baseball.playing_time_model import (
     fit_playing_time_hurdle,
     playing_time_feature_names,
     playing_time_level_tier,
+    predict_playing_time_hurdle,
     score_playing_time_hurdle,
 )
 from universal_baseball.projection_composition import projection_profile_to_ilr
@@ -152,6 +153,11 @@ def test_hurdle_fit_and_score_produce_valid_full_distribution_metrics() -> None:
     assert metrics["positive_count_negative_log_likelihood"] > 0
     assert metrics["unconditional_mlb_pa_mae"] >= 0
     assert fit.nb_alpha > 0
+
+    predicted_only = predict_playing_time_hurdle(fit, design)
+    assert predicted_only.get_column("predicted_expected_mlb_pa").to_list() == pytest.approx(
+        scored.get_column("predicted_expected_mlb_pa").to_list()
+    )
 
 
 def test_compact_b2_form_reconstructs_valid_talent_summaries_from_ilr() -> None:

@@ -83,6 +83,9 @@ rejecting unresolved payroll/ownership joins.
 The [integrated current-and-future economics result](docs/current-and-future-contract-economics-2026-09-08.md)
 now values those 2026 remaining rights and the 2027–2032 control path together, with
 discounted point and sensitivity totals while retaining a research-only boundary.
+The [provisional current hitter opportunity v2 integration](docs/current-hitter-opportunity-v2-2026-09-08.md)
+scores every current hitter and carries the selected development model through the same
+pipeline without overwriting the retained baseline.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
 availability sensitivity rather than an invented recovery forecast.

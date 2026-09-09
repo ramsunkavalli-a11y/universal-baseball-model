@@ -161,11 +161,17 @@ def test_selected_model_is_used_only_for_supported_next_year_players() -> None:
         as_of_date=date(2025, 12, 31),
         forecast_year=2026,
         selected_next_year=selected,
+        selected_model_id="playing_time_universal_recent_opportunity_40man_hurdle_v2",
+        selected_model_status="provisional",
     )
     first = paths.filter((pl.col("player_id") == 101) & (pl.col("horizon") == 1))
     later = paths.filter((pl.col("player_id") == 101) & (pl.col("horizon") > 1))
     assert first.item(0, "expected_mlb_pa") == pytest.approx(400.0)
     assert first.item(0, "coverage_tier") == "selected_next_year_model"
+    assert first.item(0, "probability_model_id") == (
+        "playing_time_universal_recent_opportunity_40man_hurdle_v2:"
+        "provisional:participation"
+    )
     assert "selected_next_year_model" not in later.get_column("coverage_tier").to_list()
 
 

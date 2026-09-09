@@ -50,6 +50,8 @@ fallback, but it is development evidence. The exact coefficients, standardizatio
 fold metrics, source hashes and report are permanently stored under
 `model_artifacts/hitter-opportunity-v2-development-2026-09-09/`.
 
-The package may now generate a clearly labeled provisional 2026 forecast. It cannot be
-called B2 or production-confirmed until completed 2026 outcomes pass a separately frozen
+The package now generates a clearly labeled provisional current forecast and has been
+carried through the WAR and contract-economics pipeline. See
+`current-hitter-opportunity-v2-2026-09-08.md`. It cannot be called B2 or
+production-confirmed until completed 2026 outcomes pass a separately frozen
 confirmation gate.
