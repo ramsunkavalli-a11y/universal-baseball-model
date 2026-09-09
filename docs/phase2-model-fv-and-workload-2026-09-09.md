@@ -79,8 +79,11 @@ information. This is the likely missing evidence for players such as Josuar Gonz
 
 ## Next priorities
 
-1. **P0:** Fit the historical MLB outcome-quality model and replace the overly generous
-   conditional-on-arrival WAR assumption.
+1. **P0:** Continue the historical MLB outcome-quality model. The first
+   [mature workload result](prospect-outcome-quality-workload-result.md) proves that
+   full-season workload after any arrival is too generous, but its binary
+   fringe/meaningful replacement overcorrects and is rejected. Fit regular/impact
+   outcome probabilities before changing Model FV.
 2. **P0:** Add durable draft/signing pedigree and test whether it fixes low-minors
    under-valuation without making ranked lists an input.
 3. **P1:** Calibrate six-year uncertainty and star probabilities from historical paths.

@@ -1,6 +1,9 @@
 import polars as pl
 
-from universal_baseball.model_fv import build_model_fv
+from universal_baseball.model_fv import (
+    apply_pre_mlb_outcome_quality_workload,
+    build_model_fv,
+)
 
 
 def test_model_fv_combines_two_way_production_and_keeps_role() -> None:
@@ -104,3 +107,37 @@ def test_pre_mlb_fv_prefers_historical_arrival_probability() -> None:
     assert result["model_arrival_probability"] == 0.5
     assert result["model_meaningful_role_probability"] == 0.3
     assert result["arrival_probability_source"] == "historical_two_year_arrival_survival"
+
+
+def test_outcome_quality_challenger_uses_disjoint_fringe_and_meaningful_paths() -> None:
+    values = pl.DataFrame(
+        {
+            "player_id": [3], "model_player_type": ["hitter"],
+            "model_arrival_probability": [0.5],
+            "model_meaningful_role_probability": [0.2],
+            "expected_six_year_war": [3.0],
+            "hitter_six_control_year_war_if_arrived": [6.0],
+            "pitcher_six_control_year_war_if_arrived": [None],
+            "primary_position": ["CF"], "starter_probability": [None],
+            "reliever_probability": [None], "model_fv_granular": [45.0],
+            "model_fv_display": [45],
+        }
+    )
+    priors = pl.DataFrame(
+        {
+            "player_type": ["hitter", "hitter"],
+            "outcome_tier": ["fringe", "meaningful"],
+            "career_role": ["hitter", "hitter"],
+            "players": [200, 200],
+            "mean_workload": [60.0, 2_000.0],
+        }
+    )
+    result = apply_pre_mlb_outcome_quality_workload(
+        values, priors, pre_mlb_player_ids={3}
+    ).row(0, named=True)
+    expected_workload = 0.3 * 60.0 + 0.2 * 2_000.0
+    assert result["outcome_quality_expected_workload"] == expected_workload
+    assert result["outcome_quality_expected_six_year_war"] == (
+        6.0 / 3_300.0 * expected_workload
+    )
+    assert result["outcome_quality_expected_six_year_war"] < 3.0

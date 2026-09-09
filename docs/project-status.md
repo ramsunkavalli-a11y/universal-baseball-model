@@ -48,6 +48,16 @@ changes production values. The reusable rules now govern all StatsAPI/PBP featur
 searches through the [model-search policy](model-search-validation-policy.md), not
 demographics alone.
 
+The first [mature post-debut workload study](prospect-outcome-quality-workload-result.md)
+now quantifies the larger Model FV flaw. Actual six-calendar-year workload averages
+61 PA for fringe hitter arrivals versus 1,986 PA for hitters with a meaningful season;
+meaningful pitchers average 948 BF as relievers, 1,154 as swingmen and 2,505 as
+starters. The existing preview assumes far more workload after any arrival. A binary
+fringe/meaningful replacement nevertheless overcorrects—hitter 50+ counts fall from
+320 to 18 and external Top-100 diagnostic error worsens—so it is rejected. Production
+values stay unchanged while regular/impact probabilities and durable pedigree are
+built next.
+
 This work builds on the recovered-opportunity commit `7c2a874`. Main now contains the
 current model foundations, experiment records and plan. It does not change a website
 or promote a player ranking; the public v1 release remains historical.

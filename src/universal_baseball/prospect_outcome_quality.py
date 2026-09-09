@@ -1,0 +1,185 @@
+"""Observed post-debut workload paths for prospect outcome-quality priors."""
+
+from __future__ import annotations
+
+import polars as pl
+
+
+SHORTENED_2020_SCALE = 162.0 / 60.0
+
+
+def build_post_debut_workload_paths(
+    people: pl.DataFrame,
+    stats: pl.DataFrame,
+    *,
+    player_type: str,
+    horizon: int = 6,
+    shortened_2020_scale: float = SHORTENED_2020_SCALE,
+) -> pl.DataFrame:
+    """Build complete six-calendar-year MLB workload paths from true debut dates."""
+
+    if player_type not in {"hitter", "pitcher"}:
+        raise ValueError("player_type must be hitter or pitcher")
+    if horizon < 1 or shortened_2020_scale <= 0:
+        raise ValueError("horizon and shortened-season scale must be positive")
+    required_people = {"player_id", "mlb_debut_date"}
+    if missing := sorted(required_people - set(people.columns)):
+        raise ValueError(f"people missing columns: {missing}")
+    workload = "batting_pa" if player_type == "hitter" else "pitching_bf"
+    required_stats = {"season", "player_id", workload}
+    if player_type == "pitcher":
+        required_stats.update({"pitching_games", "pitching_starts"})
+    if missing := sorted(required_stats - set(stats.columns)):
+        raise ValueError(f"stats missing columns: {missing}")
+    minimum_season = int(stats.get_column("season").min())
+    maximum_season = int(stats.get_column("season").max())
+    maximum_complete_debut = maximum_season - horizon + 1
+    eligible = (
+        people.filter(pl.col("mlb_debut_date").is_not_null())
+        .select("player_id", "mlb_debut_date")
+        .with_columns(pl.col("mlb_debut_date").dt.year().alias("debut_year"))
+        .filter(
+            pl.col("debut_year").is_between(
+                minimum_season, maximum_complete_debut, closed="both"
+            )
+        )
+        .unique("player_id")
+    )
+    if eligible.is_empty():
+        raise ValueError("no complete debut cohorts in supplied history")
+    aggregated_expressions: list[pl.Expr] = [pl.col(workload).sum().alias("workload")]
+    if player_type == "pitcher":
+        aggregated_expressions.extend(
+            [
+                pl.col("pitching_games").sum().alias("games"),
+                pl.col("pitching_starts").sum().alias("starts"),
+            ]
+        )
+    season_stats = stats.group_by("player_id", "season").agg(
+        *aggregated_expressions
+    )
+    rows: list[dict[str, object]] = []
+    stats_lookup = {
+        (int(row["player_id"]), int(row["season"])): row
+        for row in season_stats.iter_rows(named=True)
+    }
+    for person in eligible.iter_rows(named=True):
+        player_id = int(person["player_id"])
+        debut_year = int(person["debut_year"])
+        total = 0.0
+        active_seasons = 0
+        meaningful_seasons = 0
+        regular_seasons = 0
+        games = 0.0
+        starts = 0.0
+        for season in range(debut_year, debut_year + horizon):
+            observed = stats_lookup.get((player_id, season), {})
+            raw_workload = float(observed.get("workload") or 0.0)
+            adjusted = raw_workload * (
+                shortened_2020_scale if season == 2020 else 1.0
+            )
+            total += adjusted
+            active_seasons += int(raw_workload > 0)
+            meaningful_seasons += int(adjusted >= 200.0)
+            regular_threshold = 400.0 if player_type == "hitter" else 500.0
+            regular_seasons += int(adjusted >= regular_threshold)
+            games += float(observed.get("games") or 0.0)
+            starts += float(observed.get("starts") or 0.0)
+        if total <= 0:
+            # A true MLB debut can be as a fielder, runner, or the other player type.
+            # It is not evidence for this workload population.
+            continue
+        outcome_tier = "fringe" if meaningful_seasons == 0 else "meaningful"
+        if player_type == "hitter":
+            role = "hitter"
+        elif games <= 0:
+            role = "unknown"
+        elif starts == 0:
+            role = "reliever"
+        elif starts * 2 >= games:
+            role = "starter"
+        else:
+            role = "swingman"
+        rows.append(
+            {
+                "player_id": player_id,
+                "player_type": player_type,
+                "debut_year": debut_year,
+                "window_end_year": debut_year + horizon - 1,
+                "horizon_years": horizon,
+                "active_seasons": active_seasons,
+                "meaningful_seasons": meaningful_seasons,
+                "regular_seasons": regular_seasons,
+                "outcome_tier": outcome_tier,
+                "career_role": role,
+                "adjusted_total_workload": total,
+                "shortened_2020_scale": shortened_2020_scale,
+            }
+        )
+    return pl.DataFrame(rows, infer_schema_length=None).sort(
+        ["player_type", "debut_year", "player_id"]
+    )
+
+
+def summarize_workload_priors(paths: pl.DataFrame) -> pl.DataFrame:
+    """Summarize means and tails without dropping real high-workload careers."""
+
+    required = {
+        "player_type", "outcome_tier", "career_role", "adjusted_total_workload"
+    }
+    if missing := sorted(required - set(paths.columns)):
+        raise ValueError(f"paths missing columns: {missing}")
+    grouped = paths.group_by("player_type", "outcome_tier", "career_role").agg(
+        pl.len().alias("players"),
+        pl.col("adjusted_total_workload").mean().alias("mean_workload"),
+        pl.col("adjusted_total_workload").median().alias("median_workload"),
+        pl.col("adjusted_total_workload").quantile(0.1).alias("p10_workload"),
+        pl.col("adjusted_total_workload").quantile(0.9).alias("p90_workload"),
+        pl.col("active_seasons").mean().alias("mean_active_seasons"),
+    )
+    pooled = (
+        paths.group_by("player_type", "outcome_tier")
+        .agg(
+            pl.len().alias("players"),
+            pl.col("adjusted_total_workload").mean().alias("mean_workload"),
+            pl.col("adjusted_total_workload").median().alias("median_workload"),
+            pl.col("adjusted_total_workload").quantile(0.1).alias("p10_workload"),
+            pl.col("adjusted_total_workload").quantile(0.9).alias("p90_workload"),
+            pl.col("active_seasons").mean().alias("mean_active_seasons"),
+        )
+        .with_columns(pl.lit("ALL").alias("career_role"))
+        .select(grouped.columns)
+    )
+    return (
+        pl.concat([grouped, pooled], how="vertical")
+        .sort("player_type", "outcome_tier", "career_role")
+    )
+
+
+def workload_prior(
+    priors: pl.DataFrame,
+    *,
+    player_type: str,
+    outcome_tier: str,
+    career_role: str,
+    minimum_role_players: int = 30,
+) -> tuple[float, str]:
+    """Use a supported role mean, otherwise regress fully to the pooled tier mean."""
+
+    if minimum_role_players < 1:
+        raise ValueError("minimum_role_players must be positive")
+    cell = priors.filter(
+        (pl.col("player_type") == player_type)
+        & (pl.col("outcome_tier") == outcome_tier)
+        & (pl.col("career_role") == career_role)
+    )
+    if cell.height == 1 and int(cell.item(0, "players")) >= minimum_role_players:
+        return float(cell.item(0, "mean_workload")), "role"
+    pooled = priors.filter(
+        (pl.col("player_type") == player_type)
+        & (pl.col("outcome_tier") == outcome_tier)
+        & (pl.col("career_role") == "ALL")
+    )
+    if pooled.height != 1:
+        raise ValueError("workload priors require one pooled player-type/tier row")
+    return float(pooled.item(0, "mean_workload")), "pooled"
