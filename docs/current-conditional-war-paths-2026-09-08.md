@@ -56,20 +56,18 @@ cases remain outside controlled WAR.
 - Hitter defense and baserunning are zero runs versus league average when richer
   artifacts are unavailable. Primary-position and replacement value are included.
 - Pitcher contact quality, leverage and role-specific replacement are deferred.
-- The minor-league translation is provisional and still needs rolling historical
-  holdout validation; lower levels receive stronger evidence discounts.
+- The minor-league translation passed 2024 and 2025 future-MLB component diagnostics;
+  lower levels still receive stronger evidence discounts.
 - The 2026 rest-of-season production and unpaid-salary paths remain separate missing
   inputs; this build begins with full 2027 seasons.
 
 ## Next priorities
 
-1. Validate the new same-player/same-season affiliated translation on rolling
-   historical holdouts without removing its universal fallback.
-2. Replace hitter zero-defense/zero-running fallbacks where existing certified
+1. Replace hitter zero-defense/zero-running fallbacks where existing certified
    component artifacts cover the player.
-3. Fit and validate modern adjacent-season component aging; retain Tango's published
+2. Fit and validate modern adjacent-season component aging; retain Tango's published
    curve as a sensitivity comparator.
-4. Build the separate 2026 rest-of-season workload/WAR and unpaid-salary paths.
-5. Resolve current-owner/service exceptions, then pass controlled WAR into contract
+3. Build the separate 2026 rest-of-season workload/WAR and unpaid-salary paths.
+4. Resolve current-owner/service exceptions, then pass controlled WAR into contract
    economics. Do not fit or publish dollar rankings until the market-price function
    and uncertainty paths validate.

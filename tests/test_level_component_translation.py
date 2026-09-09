@@ -8,6 +8,7 @@ import pytest
 from universal_baseball.level_component_translation import (
     build_translated_affiliated_profiles,
     fit_same_season_component_translation,
+    score_component_profiles,
     translate_component_probabilities_to_mlb,
 )
 
@@ -83,3 +84,20 @@ def test_translated_profiles_cover_no_history_players_with_population_prior() ->
         pl.col("p_good") + pl.col("p_other")
     ).to_series()
     assert (probability_sums - 1.0).abs().max() < 1e-12
+
+
+def test_component_profile_scorer_reports_proper_scores() -> None:
+    predictions = pl.DataFrame(
+        {"player_id": [1, 2], "p_good": [0.7, 0.4], "p_other": [0.3, 0.6]}
+    )
+    targets = pl.DataFrame(
+        {"player_id": [1, 2], "events": [10, 20], "good": [7, 8], "other": [3, 12]}
+    )
+    score = score_component_profiles(
+        predictions, targets, exposure_column="events",
+        component_columns=("good", "other"),
+    )
+    assert score["players"] == 2
+    assert score["target_exposure"] == 30
+    assert float(score["component_log_loss"]) > 0
+    assert float(score["component_brier_score"]) >= 0

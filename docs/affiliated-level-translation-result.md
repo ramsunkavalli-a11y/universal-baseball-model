@@ -1,6 +1,6 @@
 # Affiliated component translation — Phase 1 result
 
-Status: **provisional universal baseline; historical holdout validation remains**
+Status: **Phase 1 baseline passed two rolling future-MLB diagnostics**
 
 Official StatsAPI component counts are materialized for MLB, AAA, AA, High-A,
 Single-A and Rookie Complex for 2023–2026. The 2026 rows are current predictor
@@ -40,11 +40,28 @@ This reduced pure population-prior coverage to 990 hitter player-years and 2,346
 pitcher player-years. Translated affiliated evidence now supplies 18,078 hitter and
 23,322 pitcher player-years.
 
+## Future-MLB diagnostic
+
+For each target, the fit and player profile used only earlier seasons. The scoring
+population was players with prior affiliated exposure, zero prior MLB exposure and a
+positive MLB target the next year. Target membership never entered the forecast.
+
+| Model | Target | Players | Target PA/BF | Translation minus same model without translation log loss |
+|---|---:|---:|---:|---:|
+| Hitters | 2024 | 130 | 13,449 | -0.004308 |
+| Hitters | 2025 | 112 | 15,300 | -0.002372 |
+| Pitchers | 2024 | 173 | 23,129 | -0.001791 |
+| Pitchers | 2025 | 146 | 17,852 | -0.000900 |
+
+Lower is better. Translation also improved Brier score in all four comparisons and
+beat the MLB population prior in every fold. This is enough to retain the simple
+translation in the broad Phase 1 baseline; it does not close Phase 2 calibration or
+subgroup work.
+
 ## Boundary
 
 This is not a claim that a raw MLE is a complete prospect forecast. Arrival,
-survival and workload remain separate. Same-season movers are selected players, parks
-and leagues are pooled within level, and the translation has not yet won a rolling
-historical holdout. Those are validation and Phase 2 refinement tasks; the universal
-fallback remains in place regardless.
-
+survival and workload remain separate. Same-season movers are selected players, and
+parks and leagues are pooled within level. Only two later-season folds are available
+in this current source window. Longer replay, calibration and subgroup work remain
+Phase 2 tasks; the universal fallback remains in place regardless.

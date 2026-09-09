@@ -104,6 +104,11 @@ or promote a player ranking; the public v1 release remains historical.
   discounting plus 1,200-PA hitter and 800-BF pitcher priors replaces most pure
   population fallbacks without allowing raw lower-level rates to dominate a
   conditional-on-future-MLB estimate.
+- The affiliated translation improved component log loss and Brier score against the
+  same no-translation model in both 2024 and 2025 future-MLB folds for hitters and
+  pitchers, and beat the MLB population prior in all four comparisons. It is retained
+  as the simple Phase 1 rate fallback; longer replay and subgroup calibration are
+  Phase 2 rather than blockers to the coherent baseline.
 - Official no-debut evidence now supplies a zero opening service balance only when a
   FanGraphs opening balance is absent. Debuted players still fail closed. This expands
   the six-year future-control path from 1,667 to 8,350 players; unresolved ownership
@@ -143,9 +148,8 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main denominator, control/cost path, static economics engine, projection
 guardrails, opportunity paths and first conditional-WAR assembly are now built. Next,
-validate the provisional affiliated translation on rolling historical holdouts,
-replace covered defense/running fallbacks, fit modern adjacent-season component aging, and
-build the explicit rest-of-season projection. The later economic
+replace covered defense/running fallbacks, fit modern adjacent-season component aging,
+and build the explicit rest-of-season projection. The later economic
 blocker is a chronologically fitted free-agent market function. In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.

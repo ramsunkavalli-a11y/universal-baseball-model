@@ -303,3 +303,93 @@ def build_translated_affiliated_profiles(
             }
         )
     return pl.DataFrame(output).sort("player_id")
+
+
+def score_component_profiles(
+    predictions: pl.DataFrame,
+    targets: pl.DataFrame,
+    *,
+    exposure_column: str,
+    component_columns: tuple[str, ...],
+) -> dict[str, object]:
+    """Score future component distributions on positive target exposure."""
+
+    prediction_required = {"player_id", *(f"p_{value}" for value in component_columns)}
+    target_required = {"player_id", exposure_column, *component_columns}
+    if missing := sorted(prediction_required - set(predictions.columns)):
+        raise ValueError(f"component predictions missing fields: {missing}")
+    if missing := sorted(target_required - set(targets.columns)):
+        raise ValueError(f"component targets missing fields: {missing}")
+    if predictions.group_by("player_id").len().filter(pl.col("len") != 1).height:
+        raise ValueError("component predictions violate player grain")
+    target = targets.group_by("player_id").agg(
+        pl.col(exposure_column).sum().alias(exposure_column),
+        *(pl.col(column).sum().alias(column) for column in component_columns),
+    ).filter(pl.col(exposure_column) > 0)
+    if target.filter(
+        (pl.sum_horizontal(*component_columns) != pl.col(exposure_column))
+        | pl.any_horizontal(*(pl.col(column) < 0 for column in component_columns))
+    ).height:
+        raise ValueError("component targets do not reconcile to exposure")
+    joined = target.join(
+        predictions.select(*prediction_required), on="player_id", how="inner", validate="1:1"
+    )
+    if joined.is_empty():
+        raise ValueError("component predictions and targets do not overlap")
+    total_exposure = float(joined.get_column(exposure_column).sum())
+    negative_log_likelihood = 0.0
+    brier_total = 0.0
+    calibration: dict[str, dict[str, float]] = {}
+    for component in component_columns:
+        probability_column = f"p_{component}"
+        if joined.filter(
+            ~pl.col(probability_column).is_finite()
+            | (pl.col(probability_column) <= 0)
+            | (pl.col(probability_column) >= 1)
+        ).height:
+            raise ValueError("component predictions contain invalid probability")
+        observed = float(joined.get_column(component).sum())
+        predicted = float(
+            joined.select(
+                (pl.col(probability_column) * pl.col(exposure_column)).sum()
+            ).item()
+        )
+        calibration[component] = {
+            "observed_rate": observed / total_exposure,
+            "predicted_rate": predicted / total_exposure,
+            "rate_bias": (predicted - observed) / total_exposure,
+        }
+        negative_log_likelihood -= float(
+            joined.select(
+                (pl.col(component) * pl.col(probability_column).log()).sum()
+            ).item()
+        )
+    probability_square = pl.sum_horizontal(
+        *(pl.col(f"p_{component}") ** 2 for component in component_columns)
+    )
+    observed_probability = pl.sum_horizontal(
+        *(
+            pl.col(component) * pl.col(f"p_{component}")
+            for component in component_columns
+        )
+    )
+    brier_total = float(
+        joined.select(
+            (
+                pl.col(exposure_column) * (1.0 + probability_square)
+                - 2.0 * observed_probability
+            ).sum()
+        ).item()
+    )
+    probability_sum = pl.sum_horizontal(
+        *(pl.col(f"p_{component}") for component in component_columns)
+    )
+    if joined.filter((probability_sum - 1.0).abs() > 1e-9).height:
+        raise ValueError("component predictions do not sum to one")
+    return {
+        "players": joined.height,
+        "target_exposure": int(total_exposure),
+        "component_log_loss": negative_log_likelihood / total_exposure,
+        "component_brier_score": brier_total / total_exposure,
+        "calibration": calibration,
+    }
