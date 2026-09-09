@@ -1,6 +1,6 @@
 # Phase 2 demographic feature search
 
-**Status:** controlled development search complete; challengers named, none promoted
+**Status:** initial development search complete; superseded by nested robustness audit
 
 ## Source
 
@@ -48,3 +48,15 @@ The next step is to freeze these challenger definitions before the next complete
 outcome period. Further brute-force work should move to a nested selection design so
 the final comparison remains untouched. Physical interactions by hitter/pitcher role
 can continue as exploratory work while their historical timing is audited.
+
+## Subsequent robustness result
+
+The nested design is now implemented and documented in
+[the robustness result](prospect-arrival-nested-robustness-result.md). It normalizes
+equivalent StatsAPI country labels, selects feature/regression combinations only on
+completed earlier outcomes, applies a two-year outcome embargo, reports calibration,
+uses paired player bootstraps, and audits supported subgroups.
+
+That stricter audit rejects demographic interactions for hitter arrival, retains
+hitter meaningful role and pitcher arrival only as promising development results, and
+finds pitcher meaningful role inconclusive. No demographic candidate is promoted.

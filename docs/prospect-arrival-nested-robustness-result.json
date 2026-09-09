@@ -1,0 +1,4400 @@
+{
+  "as_of_date": "2026-09-09",
+  "candidate_grid": {
+    "candidate_count": 20,
+    "feature_sets": [
+      "core",
+      "handedness",
+      "origin",
+      "stable_demographics",
+      "stable_interactions"
+    ],
+    "regularization_c": [
+      0.03,
+      0.1,
+      0.3,
+      1.0
+    ]
+  },
+  "country_normalization": {
+    "normalized_distinct": 66,
+    "raw_distinct": 80,
+    "rows_changed": 313,
+    "source_rows": 24328
+  },
+  "guardrails": {
+    "country_used_for_arrival_or_role_not_direct_talent": true,
+    "fresh_confirmation_still_required": true,
+    "non_arrivals_retained_as_zero_outcomes": true,
+    "physical_current_profile_fields_excluded": true,
+    "player_level_paired_bootstrap": true,
+    "production_values_changed": false,
+    "proper_score_selection": "log_loss_with_brier_no_harm",
+    "same_players_for_every_comparison": true,
+    "two_year_outcome_embargo": true
+  },
+  "horizon_years": 2,
+  "outer_year": 2023,
+  "report_schema_version": "0.1",
+  "results": {
+    "hitter": {
+      "arrival": {
+        "candidate": {
+          "brier": 0.04806532574851564,
+          "feature_set": "stable_interactions",
+          "log_loss": 0.1663053424056461,
+          "model_id": "stable_interactions__c_1",
+          "observed_rate": 0.06502525252525253,
+          "players": 3168,
+          "predicted_rate": 0.11343179870360175,
+          "regularization_c": 1.0
+        },
+        "candidate_calibration": {
+          "intercept": -0.8181475635766803,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.0016148852294294964
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.0,
+              "players": 317,
+              "predicted_rate": 0.004999063331150012
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.008828015725197983
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.013501021701852679
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.019455031033109877
+            },
+            {
+              "bin": 6,
+              "observed_rate": 0.00946372239747634,
+              "players": 317,
+              "predicted_rate": 0.029796894282945723
+            },
+            {
+              "bin": 7,
+              "observed_rate": 0.022082018927444796,
+              "players": 317,
+              "predicted_rate": 0.05530360194541837
+            },
+            {
+              "bin": 8,
+              "observed_rate": 0.050473186119873815,
+              "players": 317,
+              "predicted_rate": 0.12183088038784166
+            },
+            {
+              "bin": 9,
+              "observed_rate": 0.13924050632911392,
+              "players": 316,
+              "predicted_rate": 0.2982879106582758
+            },
+            {
+              "bin": 10,
+              "observed_rate": 0.4177215189873418,
+              "players": 316,
+              "predicted_rate": 0.5827643694369729
+            }
+          ],
+          "slope": 1.0905679709943936
+        },
+        "incumbent": {
+          "brier": 0.04650575814328113,
+          "feature_set": "core",
+          "log_loss": 0.16662725787765406,
+          "model_id": "core__c_1",
+          "observed_rate": 0.06502525252525253,
+          "players": 3168,
+          "predicted_rate": 0.10532903804519307,
+          "regularization_c": 1.0
+        },
+        "incumbent_calibration": {
+          "intercept": -0.6297344810676502,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.0015889323684450736
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.005585620130705542
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.00946372239747634,
+              "players": 317,
+              "predicted_rate": 0.01040552475991595
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.012618296529968454,
+              "players": 317,
+              "predicted_rate": 0.016897415493552694
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.0,
+              "players": 317,
+              "predicted_rate": 0.025047876260634486
+            },
+            {
+              "bin": 6,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.0362043243370338
+            },
+            {
+              "bin": 7,
+              "observed_rate": 0.025236593059936908,
+              "players": 317,
+              "predicted_rate": 0.05472460912771874
+            },
+            {
+              "bin": 8,
+              "observed_rate": 0.05362776025236593,
+              "players": 317,
+              "predicted_rate": 0.10633629563457321
+            },
+            {
+              "bin": 9,
+              "observed_rate": 0.12341772151898735,
+              "players": 316,
+              "predicted_rate": 0.2661585587643568
+            },
+            {
+              "bin": 10,
+              "observed_rate": 0.4177215189873418,
+              "players": 316,
+              "predicted_rate": 0.5321951530251495
+            }
+          ],
+          "slope": 1.1027283696356347
+        },
+        "outer_training_years": [
+          2018,
+          2021
+        ],
+        "outer_year": 2023,
+        "paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.0028422923993795092,
+            "ci_low": 0.00032042633223157803,
+            "difference": 0.0015595676052345036,
+            "probability_candidate_better": 0.005
+          },
+          "log_loss": {
+            "ci_high": 0.003147994756791558,
+            "ci_low": -0.0036077293529664725,
+            "difference": -0.00032191547200798525,
+            "probability_candidate_better": 0.563
+          },
+          "resamples": 2000
+        },
+        "selected_candidate": {
+          "feature_set": "stable_interactions",
+          "model_id": "stable_interactions__c_1",
+          "regularization_c": 1.0
+        },
+        "selection_evaluation_years": [
+          2021
+        ],
+        "selection_scores": [
+          {
+            "brier": 0.06516752204221905,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.22887093519420412,
+            "model_id": "core__c_0.03",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05884611346854984,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.060939710715091105,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.21556765222015498,
+            "model_id": "core__c_0.1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.06004415647632933,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05744563488837616,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.20521675005158307,
+            "model_id": "core__c_0.3",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.06015895525688133,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.05438024044416605,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.19453469995115408,
+            "model_id": "core__c_1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.059211311316665606,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.06511454665324677,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.2286755047499674,
+            "model_id": "handedness__c_0.03",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05884691375393907,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.06084918926711674,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.21532085568820575,
+            "model_id": "handedness__c_0.1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.06000207008405455,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05735619199235814,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.2049785064450745,
+            "model_id": "handedness__c_0.3",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.06017970612473128,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.054394939834954456,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.19468340212027666,
+            "model_id": "handedness__c_1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05934216035694702,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.06494682716041131,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.22691713530502547,
+            "model_id": "origin__c_0.03",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.058253088373323075,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.06058164946509736,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.21302645218021085,
+            "model_id": "origin__c_0.1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.059203500772925854,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05707990949198821,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.2025425154493746,
+            "model_id": "origin__c_0.3",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.0590758863141985,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.054256866126483214,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.19283006150769583,
+            "model_id": "origin__c_1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05786094530231293,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.0649115603379292,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.2268421305313389,
+            "model_id": "stable_demographics__c_0.03",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05827810210557033,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.06056820907435702,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.21303905468728734,
+            "model_id": "stable_demographics__c_0.1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05915314881833941,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05710762116494777,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.2026869033430917,
+            "model_id": "stable_demographics__c_0.3",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05888344539183345,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.054350443694133645,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.19328648889268632,
+            "model_id": "stable_demographics__c_1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.057844170408627375,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.06439472100658397,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.22403772616907391,
+            "model_id": "stable_interactions__c_0.03",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.058039490754316435,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.0598042543043094,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.20934667793106487,
+            "model_id": "stable_interactions__c_0.1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.0589603583306832,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05651233625831499,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.19949486917404835,
+            "model_id": "stable_interactions__c_0.3",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05892715787430829,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.05404217892416857,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.1910747348583977,
+            "model_id": "stable_interactions__c_1",
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.05772820491048322,
+            "regularization_c": 1.0
+          }
+        ],
+        "subgroups": [
+          {
+            "brier_difference": 0.002537140488797482,
+            "candidate_brier": 0.12729206899964804,
+            "candidate_log_loss": 0.40901717578122737,
+            "dimension": "level",
+            "group": "AA",
+            "incumbent_brier": 0.12475492851085056,
+            "incumbent_log_loss": 0.4039028284691962,
+            "log_loss_difference": 0.005114347312031198,
+            "players": 479,
+            "successes": 78,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.013414197388097154,
+            "candidate_brier": 0.18185469803038537,
+            "candidate_log_loss": 0.5422350222354402,
+            "dimension": "level",
+            "group": "AAA",
+            "incumbent_brier": 0.16844050064228822,
+            "incumbent_log_loss": 0.5124724150571389,
+            "log_loss_difference": 0.02976260717830126,
+            "players": 345,
+            "successes": 98,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0003863348633691664,
+            "candidate_brier": 0.012225248306659024,
+            "candidate_log_loss": 0.061585781897081075,
+            "dimension": "level",
+            "group": "A_OR_BELOW",
+            "incumbent_brier": 0.01261158317002819,
+            "incumbent_log_loss": 0.06746669537227465,
+            "log_loss_difference": -0.0058809134751935735,
+            "players": 2336,
+            "successes": 30,
+            "supported": true
+          },
+          {
+            "brier_difference": 2.6482223950742955e-09,
+            "candidate_brier": 6.953462450766266e-09,
+            "candidate_log_loss": 7.854488383614153e-05,
+            "dimension": "level",
+            "group": "INACTIVE",
+            "incumbent_brier": 4.30524005569197e-09,
+            "incumbent_log_loss": 6.431691458223419e-05,
+            "log_loss_difference": 1.4227969253907344e-05,
+            "players": 8,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00030975833809594126,
+            "candidate_brier": 0.0056614205504865334,
+            "candidate_log_loss": 0.03320247992614573,
+            "dimension": "age",
+            "group": "16-19",
+            "incumbent_brier": 0.005971178888582475,
+            "incumbent_log_loss": 0.041237393373571046,
+            "log_loss_difference": -0.008034913447425317,
+            "players": 1188,
+            "successes": 10,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0009327659821564832,
+            "candidate_brier": 0.04904004217741904,
+            "candidate_log_loss": 0.17563481006240075,
+            "dimension": "age",
+            "group": "20-22",
+            "incumbent_brier": 0.04997280815957552,
+            "incumbent_log_loss": 0.18334587197649846,
+            "log_loss_difference": -0.0077110619140977055,
+            "players": 1063,
+            "successes": 83,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.008182567782711939,
+            "candidate_brier": 0.09725625734752688,
+            "candidate_log_loss": 0.31452006365384727,
+            "dimension": "age",
+            "group": "23-25",
+            "incumbent_brier": 0.08907368956481494,
+            "incumbent_log_loss": 0.292233734048505,
+            "log_loss_difference": 0.02228632960534227,
+            "players": 723,
+            "successes": 84,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0019806021194457984,
+            "candidate_brier": 0.11906879103330499,
+            "candidate_log_loss": 0.37790190448846456,
+            "dimension": "age",
+            "group": "26-30",
+            "incumbent_brier": 0.11708818891385919,
+            "incumbent_log_loss": 0.3747601958789626,
+            "log_loss_difference": 0.0031417086095019697,
+            "players": 194,
+            "successes": 29,
+            "supported": true
+          },
+          {
+            "brier_difference": 2.6482223950742955e-09,
+            "candidate_brier": 6.953462450766266e-09,
+            "candidate_log_loss": 7.854488383614153e-05,
+            "dimension": "workload",
+            "group": "0",
+            "incumbent_brier": 4.30524005569197e-09,
+            "incumbent_log_loss": 6.431691458223419e-05,
+            "log_loss_difference": 1.4227969253907344e-05,
+            "players": 8,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.000353854723941476,
+            "candidate_brier": 0.005206481088851874,
+            "candidate_log_loss": 0.031182974451987887,
+            "dimension": "workload",
+            "group": "1-99",
+            "incumbent_brier": 0.004852626364910398,
+            "incumbent_log_loss": 0.03217879336850213,
+            "log_loss_difference": -0.000995818916514242,
+            "players": 899,
+            "successes": 4,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0010285748712427628,
+            "candidate_brier": 0.02337356051575946,
+            "candidate_log_loss": 0.09944777133029248,
+            "dimension": "workload",
+            "group": "100-299",
+            "incumbent_brier": 0.022344985644516698,
+            "incumbent_log_loss": 0.10361531582468471,
+            "log_loss_difference": -0.004167544494392231,
+            "players": 1415,
+            "successes": 31,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0037436894947579513,
+            "candidate_brier": 0.13536257362528648,
+            "candidate_log_loss": 0.4232891322899706,
+            "dimension": "workload",
+            "group": "300+",
+            "incumbent_brier": 0.13161888413052852,
+            "incumbent_log_loss": 0.41646599443366333,
+            "log_loss_difference": 0.006823137856307282,
+            "players": 846,
+            "successes": 171,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.015490998340457515,
+            "candidate_brier": 0.057234272621287365,
+            "candidate_log_loss": 0.16891664441986132,
+            "dimension": "birth_country",
+            "group": "Aruba",
+            "incumbent_brier": 0.04174327428082985,
+            "incumbent_log_loss": 0.13855168894744646,
+            "log_loss_difference": 0.030364955472414856,
+            "players": 5,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.04612459829144412,
+            "candidate_brier": 0.07352112496852087,
+            "candidate_log_loss": 0.2228368996709281,
+            "dimension": "birth_country",
+            "group": "Australia",
+            "incumbent_brier": 0.027396526677076743,
+            "incumbent_log_loss": 0.1166547580172399,
+            "log_loss_difference": 0.1061821416536882,
+            "players": 10,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0006637533518978611,
+            "candidate_brier": 0.0394846976707373,
+            "candidate_log_loss": 0.14585763562206616,
+            "dimension": "birth_country",
+            "group": "Bahamas",
+            "incumbent_brier": 0.03882094431883944,
+            "incumbent_log_loss": 0.14455457906485322,
+            "log_loss_difference": 0.0013030565572129393,
+            "players": 20,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 3.7974277119011806e-05,
+            "candidate_brier": 8.069690289765158e-05,
+            "candidate_log_loss": 0.009023737218749014,
+            "dimension": "birth_country",
+            "group": "Bermuda",
+            "incumbent_brier": 4.272262577863978e-05,
+            "incumbent_log_loss": 0.006557709574646921,
+            "log_loss_difference": 0.002466027644102093,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -1.2076494880802977e-05,
+            "candidate_brier": 2.9446185602620172e-05,
+            "candidate_log_loss": 0.005440792265108303,
+            "dimension": "birth_country",
+            "group": "Brazil",
+            "incumbent_brier": 4.152268048342315e-05,
+            "incumbent_log_loss": 0.00641029067849877,
+            "log_loss_difference": -0.0009694984133904669,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 9.994454529860262e-08,
+            "candidate_brier": 1.0548100499957226e-06,
+            "candidate_log_loss": 0.0010275672252448775,
+            "dimension": "birth_country",
+            "group": "Bulgaria",
+            "incumbent_brier": 9.5486550469712e-07,
+            "incumbent_log_loss": 0.0009776499420813903,
+            "log_loss_difference": 4.991728316348725e-05,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.003954236438334417,
+            "candidate_brier": 0.06041235815655984,
+            "candidate_log_loss": 0.19975005900662876,
+            "dimension": "birth_country",
+            "group": "Canada",
+            "incumbent_brier": 0.06436659459489426,
+            "incumbent_log_loss": 0.20055076815644893,
+            "log_loss_difference": -0.0008007091498201668,
+            "players": 37,
+            "successes": 5,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00680845926394015,
+            "candidate_brier": 0.07140095115353286,
+            "candidate_log_loss": 0.21495448005427006,
+            "dimension": "birth_country",
+            "group": "Colombia",
+            "incumbent_brier": 0.0645924918895927,
+            "incumbent_log_loss": 0.20233786688511146,
+            "log_loss_difference": 0.012616613169158603,
+            "players": 28,
+            "successes": 2,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0004231078903367433,
+            "candidate_brier": 0.0012045020509085173,
+            "candidate_log_loss": 0.03532249538486218,
+            "dimension": "birth_country",
+            "group": "Costa Rica",
+            "incumbent_brier": 0.000781394160571774,
+            "incumbent_log_loss": 0.028351562523918836,
+            "log_loss_difference": 0.0069709328609433435,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.011723083685694052,
+            "candidate_brier": 0.05387900497543558,
+            "candidate_log_loss": 0.17607163229045808,
+            "dimension": "birth_country",
+            "group": "Cuba",
+            "incumbent_brier": 0.04215592128974153,
+            "incumbent_log_loss": 0.14880623217255434,
+            "log_loss_difference": 0.027265400117903738,
+            "players": 87,
+            "successes": 7,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0027620692265257502,
+            "candidate_brier": 0.005935762668020015,
+            "candidate_log_loss": 0.04348923943515227,
+            "dimension": "birth_country",
+            "group": "Curacao",
+            "incumbent_brier": 0.0031736934414942648,
+            "incumbent_log_loss": 0.0343556236525701,
+            "log_loss_difference": 0.00913361578258217,
+            "players": 12,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.001608213121103614,
+            "candidate_brier": 0.01528215944904682,
+            "candidate_log_loss": 0.0661353392234578,
+            "dimension": "birth_country",
+            "group": "Dominican Republic",
+            "incumbent_brier": 0.016890372570150435,
+            "incumbent_log_loss": 0.0775618559183021,
+            "log_loss_difference": -0.011426516694844305,
+            "players": 808,
+            "successes": 16,
+            "supported": true
+          },
+          {
+            "brier_difference": -5.338196289108945e-06,
+            "candidate_brier": 3.59697311332802e-05,
+            "candidate_log_loss": 0.0060155341638004674,
+            "dimension": "birth_country",
+            "group": "Ecuador",
+            "incumbent_brier": 4.1307927422389146e-05,
+            "incumbent_log_loss": 0.006447867240500297,
+            "log_loss_difference": -0.00043233307669982967,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -4.479350958174661e-05,
+            "candidate_brier": 0.00010971527153001466,
+            "candidate_log_loss": 0.010198411558507365,
+            "dimension": "birth_country",
+            "group": "Germany",
+            "incumbent_brier": 0.00015450878111176127,
+            "incumbent_log_loss": 0.011669621529958185,
+            "log_loss_difference": -0.0014712099714508202,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00013091249021310894,
+            "candidate_brier": 0.00023137050090957462,
+            "candidate_log_loss": 0.011915389651922969,
+            "dimension": "birth_country",
+            "group": "Haiti",
+            "incumbent_brier": 0.00036228299112268356,
+            "incumbent_log_loss": 0.014617861934928575,
+            "log_loss_difference": -0.002702472283005606,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00014113789108083363,
+            "candidate_brier": 0.0005514274318336637,
+            "candidate_log_loss": 0.023762599515078735,
+            "dimension": "birth_country",
+            "group": "Italy",
+            "incumbent_brier": 0.0006925653229144974,
+            "incumbent_log_loss": 0.026669116342729643,
+            "log_loss_difference": -0.0029065168276509075,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.001643772389013397,
+            "candidate_brier": 0.0037112557484454737,
+            "candidate_log_loss": 0.06285468808945854,
+            "dimension": "birth_country",
+            "group": "Jamaica",
+            "incumbent_brier": 0.0020674833594320767,
+            "incumbent_log_loss": 0.046535773769962305,
+            "log_loss_difference": 0.01631891431949624,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 1.3407567327747913e-05,
+            "candidate_brier": 5.180009339957427e-05,
+            "candidate_log_loss": 0.0072232531685228925,
+            "dimension": "birth_country",
+            "group": "Japan",
+            "incumbent_brier": 3.8392526071826354e-05,
+            "incumbent_log_loss": 0.006215446203510638,
+            "log_loss_difference": 0.0010078069650122541,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.007811198486568957,
+            "candidate_brier": 0.038290547682913734,
+            "candidate_log_loss": 0.1412523882850936,
+            "dimension": "birth_country",
+            "group": "Mexico",
+            "incumbent_brier": 0.030479349196344777,
+            "incumbent_log_loss": 0.12211825540250329,
+            "log_loss_difference": 0.019134132882590305,
+            "players": 51,
+            "successes": 2,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00017249407354198048,
+            "candidate_brier": 0.0015905838263936107,
+            "candidate_log_loss": 0.034296851669722225,
+            "dimension": "birth_country",
+            "group": "Netherlands",
+            "incumbent_brier": 0.0014180897528516302,
+            "incumbent_log_loss": 0.03164356531328017,
+            "log_loss_difference": 0.002653286356442054,
+            "players": 5,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0013044634234040406,
+            "candidate_brier": 0.007753828452325741,
+            "candidate_log_loss": 0.0826540367848779,
+            "dimension": "birth_country",
+            "group": "New Zealand",
+            "incumbent_brier": 0.0064493650289217,
+            "incumbent_log_loss": 0.07731459615953358,
+            "log_loss_difference": 0.005339440625344319,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.007294773028448134,
+            "candidate_brier": 0.012344981727738995,
+            "candidate_log_loss": 0.07324420425213912,
+            "dimension": "birth_country",
+            "group": "Nicaragua",
+            "incumbent_brier": 0.01963975475618713,
+            "incumbent_log_loss": 0.0966811906248649,
+            "log_loss_difference": -0.023436986372725774,
+            "players": 11,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.005001087098542019,
+            "candidate_brier": 0.012523915406055361,
+            "candidate_log_loss": 0.06005913701632417,
+            "dimension": "birth_country",
+            "group": "Panama",
+            "incumbent_brier": 0.0075228283075133425,
+            "incumbent_log_loss": 0.04789500850413415,
+            "log_loss_difference": 0.012164128512190023,
+            "players": 35,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0018034210749864818,
+            "candidate_brier": 0.045183592668573046,
+            "candidate_log_loss": 0.1509908019097317,
+            "dimension": "birth_country",
+            "group": "Puerto Rico",
+            "incumbent_brier": 0.04698701374355953,
+            "incumbent_log_loss": 0.15698087550086268,
+            "log_loss_difference": -0.00599007359113099,
+            "players": 56,
+            "successes": 4,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00027451576143278393,
+            "candidate_brier": 0.0010141551665057372,
+            "candidate_log_loss": 0.032363909934256876,
+            "dimension": "birth_country",
+            "group": "Saint Martin",
+            "incumbent_brier": 0.0012886709279385212,
+            "incumbent_log_loss": 0.03655824619750005,
+            "log_loss_difference": -0.00419433626324317,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.002236153946790151,
+            "candidate_brier": 0.004070300090751746,
+            "candidate_log_loss": 0.03612492383784513,
+            "dimension": "birth_country",
+            "group": "South Korea",
+            "incumbent_brier": 0.001834146143961595,
+            "incumbent_log_loss": 0.023294216954490854,
+            "log_loss_difference": 0.012830706883354276,
+            "players": 5,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.000609085295377442,
+            "candidate_brier": 0.001253788147899128,
+            "candidate_log_loss": 0.02936404507941498,
+            "dimension": "birth_country",
+            "group": "Spain",
+            "incumbent_brier": 0.0006447028525216861,
+            "incumbent_log_loss": 0.022762172738189965,
+            "log_loss_difference": 0.006601872341225015,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.006226227070682586,
+            "candidate_brier": 0.05821261816637859,
+            "candidate_log_loss": 0.19149487039078913,
+            "dimension": "birth_country",
+            "group": "Taiwan",
+            "incumbent_brier": 0.051986391095696007,
+            "incumbent_log_loss": 0.1842283967559674,
+            "log_loss_difference": 0.007266473634821746,
+            "players": 6,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": 6.6083791704385925e-06,
+            "candidate_brier": 6.941673953940616e-05,
+            "candidate_log_loss": 0.007274878295375328,
+            "dimension": "birth_country",
+            "group": "UNKNOWN",
+            "incumbent_brier": 6.280836036896756e-05,
+            "incumbent_log_loss": 0.006904300191643169,
+            "log_loss_difference": 0.000370578103732159,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.004123575828417908,
+            "candidate_brier": 0.0884953129331,
+            "candidate_log_loss": 0.2938477503697683,
+            "dimension": "birth_country",
+            "group": "USA",
+            "incumbent_brier": 0.0843717371046821,
+            "incumbent_log_loss": 0.284666457201726,
+            "log_loss_difference": 0.009181293168042282,
+            "players": 1238,
+            "successes": 154,
+            "supported": true
+          },
+          {
+            "brier_difference": 7.941346011256855e-07,
+            "candidate_brier": 1.2189589563770738e-05,
+            "candidate_log_loss": 0.0034974682897662046,
+            "dimension": "birth_country",
+            "group": "Uganda",
+            "incumbent_brier": 1.1395454962645052e-05,
+            "incumbent_log_loss": 0.0033814260568218063,
+            "log_loss_difference": 0.00011604223294439837,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.035750809311874604,
+            "candidate_brier": 0.2412061563194586,
+            "candidate_log_loss": 0.6254771448423009,
+            "dimension": "birth_country",
+            "group": "United Kingdom",
+            "incumbent_brier": 0.205455347007584,
+            "incumbent_log_loss": 0.5466609243373797,
+            "log_loss_difference": 0.07881622050492121,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0014189709988654646,
+            "candidate_brier": 0.018705071685610888,
+            "candidate_log_loss": 0.07218956238415265,
+            "dimension": "birth_country",
+            "group": "Venezuela",
+            "incumbent_brier": 0.020124042684476352,
+            "incumbent_log_loss": 0.08362486979071597,
+            "log_loss_difference": -0.011435307406563316,
+            "players": 728,
+            "successes": 14,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0021352607547219654,
+            "candidate_brier": 0.05828164152155219,
+            "candidate_log_loss": 0.1942826479885902,
+            "dimension": "bat_side",
+            "group": "L",
+            "incumbent_brier": 0.05614638076683023,
+            "incumbent_log_loss": 0.19245801963063888,
+            "log_loss_difference": 0.00182462835795133,
+            "players": 898,
+            "successes": 79,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.001871457278045642,
+            "candidate_brier": 0.04506415719947617,
+            "candidate_log_loss": 0.15862082077059972,
+            "dimension": "bat_side",
+            "group": "R",
+            "incumbent_brier": 0.04319269992143053,
+            "incumbent_log_loss": 0.1578921017974294,
+            "log_loss_difference": 0.0007287189731703114,
+            "players": 1927,
+            "successes": 105,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0016998605223072435,
+            "candidate_brier": 0.0381790290424288,
+            "candidate_log_loss": 0.13623086070666798,
+            "dimension": "bat_side",
+            "group": "S",
+            "incumbent_brier": 0.03987888956473604,
+            "incumbent_log_loss": 0.14807513459022736,
+            "log_loss_difference": -0.01184427388355938,
+            "players": 343,
+            "successes": 22,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0035482820813922678,
+            "candidate_brier": 0.0595115242180492,
+            "candidate_log_loss": 0.20045183214590206,
+            "dimension": "throw_hand",
+            "group": "L",
+            "incumbent_brier": 0.05596324213665693,
+            "incumbent_log_loss": 0.196785576912354,
+            "log_loss_difference": 0.003666255233548077,
+            "players": 300,
+            "successes": 23,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0013688319240404284,
+            "candidate_brier": 0.0466638292317902,
+            "candidate_log_loss": 0.16224097727304349,
+            "dimension": "throw_hand",
+            "group": "R",
+            "incumbent_brier": 0.045294997307749774,
+            "incumbent_log_loss": 0.16293956479274072,
+            "log_loss_difference": -0.0006985875196972302,
+            "players": 2865,
+            "successes": 181,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.015159304470200446,
+            "candidate_brier": 0.24187465226794677,
+            "candidate_log_loss": 0.6331250700155585,
+            "dimension": "throw_hand",
+            "group": "S",
+            "incumbent_brier": 0.2570339567381472,
+            "incumbent_log_loss": 0.6725422504999342,
+            "log_loss_difference": -0.0394171804843757,
+            "players": 3,
+            "successes": 2,
+            "supported": false
+          }
+        ]
+      },
+      "meaningful_role": {
+        "candidate": {
+          "brier": 0.017625791667448355,
+          "feature_set": "stable_interactions",
+          "log_loss": 0.07403970824170836,
+          "model_id": "stable_interactions__c_1",
+          "observed_rate": 0.019886363636363636,
+          "players": 3168,
+          "predicted_rate": 0.033491700847481445,
+          "regularization_c": 1.0
+        },
+        "candidate_calibration": {
+          "intercept": -0.503697688891902,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.0009818083877162367
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.0,
+              "players": 317,
+              "predicted_rate": 0.0023492372772104513
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.0,
+              "players": 317,
+              "predicted_rate": 0.00349676863627467
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.004746753252934645
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.0,
+              "players": 317,
+              "predicted_rate": 0.006168534636740155
+            },
+            {
+              "bin": 6,
+              "observed_rate": 0.006309148264984227,
+              "players": 317,
+              "predicted_rate": 0.008245118980304361
+            },
+            {
+              "bin": 7,
+              "observed_rate": 0.006309148264984227,
+              "players": 317,
+              "predicted_rate": 0.012458135272578469
+            },
+            {
+              "bin": 8,
+              "observed_rate": 0.00946372239747634,
+              "players": 317,
+              "predicted_rate": 0.026132645759577137
+            },
+            {
+              "bin": 9,
+              "observed_rate": 0.04113924050632911,
+              "players": 316,
+              "predicted_rate": 0.06622878444772291
+            },
+            {
+              "bin": 10,
+              "observed_rate": 0.12974683544303797,
+              "players": 316,
+              "predicted_rate": 0.20475274905342797
+            }
+          ],
+          "slope": 1.0553360084493646
+        },
+        "incumbent": {
+          "brier": 0.0180364202960199,
+          "feature_set": "core",
+          "log_loss": 0.07886427482168992,
+          "model_id": "core__c_1",
+          "observed_rate": 0.019886363636363636,
+          "players": 3168,
+          "predicted_rate": 0.033585690166491516,
+          "regularization_c": 1.0
+        },
+        "incumbent_calibration": {
+          "intercept": -0.5196138278514477,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.0009770137395637441
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.002694792556038942
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.006309148264984227,
+              "players": 317,
+              "predicted_rate": 0.00453621641614258
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.0031545741324921135,
+              "players": 317,
+              "predicted_rate": 0.006584450478626611
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.0,
+              "players": 317,
+              "predicted_rate": 0.008798397870554801
+            },
+            {
+              "bin": 6,
+              "observed_rate": 0.006309148264984227,
+              "players": 317,
+              "predicted_rate": 0.011674260687133578
+            },
+            {
+              "bin": 7,
+              "observed_rate": 0.0,
+              "players": 317,
+              "predicted_rate": 0.015746200032632864
+            },
+            {
+              "bin": 8,
+              "observed_rate": 0.022082018927444796,
+              "players": 317,
+              "predicted_rate": 0.026569794894886894
+            },
+            {
+              "bin": 9,
+              "observed_rate": 0.028481012658227847,
+              "players": 316,
+              "predicted_rate": 0.07056152896770239
+            },
+            {
+              "bin": 10,
+              "observed_rate": 0.12658227848101267,
+              "players": 316,
+              "predicted_rate": 0.18831900676421617
+            }
+          ],
+          "slope": 1.0345549186095662
+        },
+        "outer_training_years": [
+          2018,
+          2021
+        ],
+        "outer_year": 2023,
+        "paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.00025262243615961736,
+            "ci_low": -0.0010978691504095123,
+            "difference": -0.00041062862857154265,
+            "probability_candidate_better": 0.881
+          },
+          "log_loss": {
+            "ci_high": -0.0024365187014125443,
+            "ci_low": -0.007250681737619047,
+            "difference": -0.0048245665799815695,
+            "probability_candidate_better": 0.9995
+          },
+          "resamples": 2000
+        },
+        "selected_candidate": {
+          "feature_set": "stable_interactions",
+          "model_id": "stable_interactions__c_1",
+          "regularization_c": 1.0
+        },
+        "selection_evaluation_years": [
+          2021
+        ],
+        "selection_scores": [
+          {
+            "brier": 0.02689186819748941,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.12728233244731546,
+            "model_id": "core__c_0.03",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.01012453629710114,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.026527532675649574,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.12099928839068111,
+            "model_id": "core__c_0.1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010405963929363141,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.025899896312390633,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.11701300761517885,
+            "model_id": "core__c_0.3",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010695855044028741,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.02489986500031763,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.11618479306333605,
+            "model_id": "core__c_1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.011111810998032557,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.0268802101560769,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.12696385625915763,
+            "model_id": "handedness__c_0.03",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010190555291625077,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.026505046668404697,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.12064782569467516,
+            "model_id": "handedness__c_0.1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010438699682938823,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.025824836159729643,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.11635570355678826,
+            "model_id": "handedness__c_0.3",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010763202939809065,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.024738029756793026,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.11564534962383026,
+            "model_id": "handedness__c_1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.011179823621406064,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.02688060459830973,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.12685391559087233,
+            "model_id": "origin__c_0.03",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010041681068189702,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.0265172320296449,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.12054947526374415,
+            "model_id": "origin__c_0.1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010361640494517281,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.025912302072431503,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.11671204104164215,
+            "model_id": "origin__c_0.3",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010563130234312492,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.025110283602848865,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.11698427636184765,
+            "model_id": "origin__c_1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010625372401685986,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.026872205686480882,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.12663394715504742,
+            "model_id": "stable_demographics__c_0.03",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010136778912330247,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.02650304790448021,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.12042894479848308,
+            "model_id": "stable_demographics__c_0.1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010349732598132936,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.025849702231077607,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.1164481864348899,
+            "model_id": "stable_demographics__c_0.3",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010602442214188127,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.024926465790076246,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.11644865135574799,
+            "model_id": "stable_demographics__c_1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010776662899446074,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.026857205798471263,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.1261686795793141,
+            "model_id": "stable_interactions__c_0.03",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.01012325499421964,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.026405974625752934,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.11874855509029861,
+            "model_id": "stable_interactions__c_0.1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.010342545509024194,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.025575428585661034,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.11385296694546224,
+            "model_id": "stable_interactions__c_0.3",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.01065023622199012,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.024585276129899296,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.11385833404214431,
+            "model_id": "stable_interactions__c_1",
+            "observed_rate": 0.027607361963190184,
+            "players": 3260,
+            "predicted_rate": 0.01071719711424926,
+            "regularization_c": 1.0
+          }
+        ],
+        "subgroups": [
+          {
+            "brier_difference": -0.002456205411866412,
+            "candidate_brier": 0.04765657155190662,
+            "candidate_log_loss": 0.18451578911698074,
+            "dimension": "level",
+            "group": "AA",
+            "incumbent_brier": 0.05011277696377303,
+            "incumbent_log_loss": 0.19671158938252684,
+            "log_loss_difference": -0.012195800265546092,
+            "players": 479,
+            "successes": 26,
+            "supported": true
+          },
+          {
+            "brier_difference": 9.273742849646993e-06,
+            "candidate_brier": 0.06427174038922666,
+            "candidate_log_loss": 0.23545102283217637,
+            "dimension": "level",
+            "group": "AAA",
+            "incumbent_brier": 0.06426246664637701,
+            "incumbent_log_loss": 0.24067205556516447,
+            "log_loss_difference": -0.005221032732988101,
+            "players": 345,
+            "successes": 26,
+            "supported": true
+          },
+          {
+            "brier_difference": -5.4601434315731424e-05,
+            "candidate_brier": 0.0046392375729210405,
+            "candidate_log_loss": 0.027800349214691513,
+            "dimension": "level",
+            "group": "A_OR_BELOW",
+            "incumbent_brier": 0.004693839007236772,
+            "incumbent_log_loss": 0.03107175785919911,
+            "log_loss_difference": -0.0032714086445075966,
+            "players": 2336,
+            "successes": 11,
+            "supported": true
+          },
+          {
+            "brier_difference": 5.0780972819512874e-08,
+            "candidate_brier": 1.0306079578468359e-07,
+            "candidate_log_loss": 0.000314260009756696,
+            "dimension": "level",
+            "group": "INACTIVE",
+            "incumbent_brier": 5.2279822965170715e-08,
+            "incumbent_log_loss": 0.00021072397655298725,
+            "log_loss_difference": 0.00010353603320370876,
+            "players": 8,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00023571546385986594,
+            "candidate_brier": 0.0020016753833910074,
+            "candidate_log_loss": 0.013617759959100948,
+            "dimension": "age",
+            "group": "16-19",
+            "incumbent_brier": 0.0022373908472508733,
+            "incumbent_log_loss": 0.01743942586460847,
+            "log_loss_difference": -0.0038216659055075215,
+            "players": 1188,
+            "successes": 4,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0012757053829197534,
+            "candidate_brier": 0.027603812046778253,
+            "candidate_log_loss": 0.10787165701572307,
+            "dimension": "age",
+            "group": "20-22",
+            "incumbent_brier": 0.028879517429698007,
+            "incumbent_log_loss": 0.11651295907559253,
+            "log_loss_difference": -0.00864130205986946,
+            "players": 1063,
+            "successes": 35,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0007622754960721345,
+            "candidate_brier": 0.028969902785288517,
+            "candidate_log_loss": 0.12128236891947682,
+            "dimension": "age",
+            "group": "23-25",
+            "incumbent_brier": 0.028207627289216382,
+            "incumbent_log_loss": 0.12024547356110873,
+            "log_loss_difference": 0.0010368953583680812,
+            "players": 723,
+            "successes": 21,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0011128447725030008,
+            "candidate_brier": 0.016352709935664872,
+            "candidate_log_loss": 0.08260398320528226,
+            "dimension": "age",
+            "group": "26-30",
+            "incumbent_brier": 0.017465554708167873,
+            "incumbent_log_loss": 0.09450119497898112,
+            "log_loss_difference": -0.01189721177369886,
+            "players": 194,
+            "successes": 3,
+            "supported": false
+          },
+          {
+            "brier_difference": 5.0780972819512874e-08,
+            "candidate_brier": 1.0306079578468359e-07,
+            "candidate_log_loss": 0.000314260009756696,
+            "dimension": "workload",
+            "group": "0",
+            "incumbent_brier": 5.2279822965170715e-08,
+            "incumbent_log_loss": 0.00021072397655298725,
+            "log_loss_difference": 0.00010353603320370876,
+            "players": 8,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 4.5634617190969465e-06,
+            "candidate_brier": 0.002333334302130325,
+            "candidate_log_loss": 0.018481173288751193,
+            "dimension": "workload",
+            "group": "1-99",
+            "incumbent_brier": 0.002328770840411228,
+            "incumbent_log_loss": 0.01994743955583343,
+            "log_loss_difference": -0.0014662662670822356,
+            "players": 899,
+            "successes": 2,
+            "supported": false
+          },
+          {
+            "brier_difference": -5.18000752338316e-05,
+            "candidate_brier": 0.007621247438462838,
+            "candidate_log_loss": 0.03917328485573472,
+            "dimension": "workload",
+            "group": "100-299",
+            "incumbent_brier": 0.00767304751369667,
+            "incumbent_log_loss": 0.043947819273034275,
+            "log_loss_difference": -0.004774534417299553,
+            "players": 1415,
+            "successes": 11,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0014558833891158765,
+            "candidate_brier": 0.05077632921388881,
+            "candidate_log_loss": 0.19209279996714188,
+            "dimension": "workload",
+            "group": "300+",
+            "incumbent_brier": 0.05223221260300469,
+            "incumbent_log_loss": 0.200616340911659,
+            "log_loss_difference": -0.008523540944517127,
+            "players": 846,
+            "successes": 50,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0036782344273818615,
+            "candidate_brier": 0.005300842734603244,
+            "candidate_log_loss": 0.04011606969498494,
+            "dimension": "birth_country",
+            "group": "Aruba",
+            "incumbent_brier": 0.0016226083072213824,
+            "incumbent_log_loss": 0.026005552672440375,
+            "log_loss_difference": 0.014110517022544566,
+            "players": 5,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0012547260082097955,
+            "candidate_brier": 0.002536980433595318,
+            "candidate_log_loss": 0.030187429700357104,
+            "dimension": "birth_country",
+            "group": "Australia",
+            "incumbent_brier": 0.0037917064418051135,
+            "incumbent_log_loss": 0.03591763139733364,
+            "log_loss_difference": -0.005730201696976533,
+            "players": 10,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00020161409815811198,
+            "candidate_brier": 0.004408090102694053,
+            "candidate_log_loss": 0.040396334099777595,
+            "dimension": "birth_country",
+            "group": "Bahamas",
+            "incumbent_brier": 0.004609704200852165,
+            "incumbent_log_loss": 0.04479887338287329,
+            "log_loss_difference": -0.004402539283095697,
+            "players": 20,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 3.869282445252299e-06,
+            "candidate_brier": 7.1947496194686375e-06,
+            "candidate_log_loss": 0.0026859068645401865,
+            "dimension": "birth_country",
+            "group": "Bermuda",
+            "incumbent_brier": 3.3254671742163385e-06,
+            "incumbent_log_loss": 0.0018252511073179555,
+            "log_loss_difference": 0.000860655757222231,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -3.4712763644867648e-06,
+            "candidate_brier": 5.970887121485007e-06,
+            "candidate_log_loss": 0.002446377253023281,
+            "dimension": "birth_country",
+            "group": "Brazil",
+            "incumbent_brier": 9.442163485971772e-06,
+            "incumbent_log_loss": 0.003057823145455183,
+            "log_loss_difference": -0.0006114458924319018,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -1.121946254302702e-06,
+            "candidate_brier": 8.448094630562382e-07,
+            "candidate_log_loss": 0.0009195578350064107,
+            "dimension": "birth_country",
+            "group": "Bulgaria",
+            "incumbent_brier": 1.96675571735894e-06,
+            "incumbent_log_loss": 0.0014033949789327733,
+            "log_loss_difference": -0.00048383714392636256,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.010669128555919342,
+            "candidate_brier": 0.04104711934961432,
+            "candidate_log_loss": 0.1432192294466314,
+            "dimension": "birth_country",
+            "group": "Canada",
+            "incumbent_brier": 0.030377990793694975,
+            "incumbent_log_loss": 0.11793342563654056,
+            "log_loss_difference": 0.025285803810090837,
+            "players": 37,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.022635199327042096,
+            "candidate_brier": 0.028725559977420073,
+            "candidate_log_loss": 0.10907074679609959,
+            "dimension": "birth_country",
+            "group": "Colombia",
+            "incumbent_brier": 0.006090360650377978,
+            "incumbent_log_loss": 0.04701055948371207,
+            "log_loss_difference": 0.062060187312387514,
+            "players": 28,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 3.341887188821257e-05,
+            "candidate_brier": 0.0008560123594957571,
+            "candidate_log_loss": 0.02969423097378833,
+            "dimension": "birth_country",
+            "group": "Costa Rica",
+            "incumbent_brier": 0.0008225934876075446,
+            "incumbent_log_loss": 0.029100224758156296,
+            "log_loss_difference": 0.0005940062156320342,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0013730065827474124,
+            "candidate_brier": 0.020495583349245786,
+            "candidate_log_loss": 0.08361945334517917,
+            "dimension": "birth_country",
+            "group": "Cuba",
+            "incumbent_brier": 0.019122576766498374,
+            "incumbent_log_loss": 0.07615157747708218,
+            "log_loss_difference": 0.007467875868096996,
+            "players": 87,
+            "successes": 2,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00045945884146791097,
+            "candidate_brier": 0.0007962343999919709,
+            "candidate_log_loss": 0.014422650001031758,
+            "dimension": "birth_country",
+            "group": "Curacao",
+            "incumbent_brier": 0.00033677555852405994,
+            "incumbent_log_loss": 0.012363351593361152,
+            "log_loss_difference": 0.0020592984076706067,
+            "players": 12,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0007251008433804629,
+            "candidate_brier": 0.005239448213617534,
+            "candidate_log_loss": 0.02558822506787515,
+            "dimension": "birth_country",
+            "group": "Dominican Republic",
+            "incumbent_brier": 0.005964549056997997,
+            "incumbent_log_loss": 0.03169522211732962,
+            "log_loss_difference": -0.006106997049454471,
+            "players": 808,
+            "successes": 4,
+            "supported": false
+          },
+          {
+            "brier_difference": -4.906819779439702e-06,
+            "candidate_brier": 1.0357335080520408e-05,
+            "candidate_log_loss": 0.0032234711915301935,
+            "dimension": "birth_country",
+            "group": "Ecuador",
+            "incumbent_brier": 1.526415485996011e-05,
+            "incumbent_log_loss": 0.003914588776261886,
+            "log_loss_difference": -0.0006911175847316921,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -2.478204978554171e-05,
+            "candidate_brier": 1.4711178437232302e-05,
+            "candidate_log_loss": 0.00376908052904816,
+            "dimension": "birth_country",
+            "group": "Germany",
+            "incumbent_brier": 3.9493228222774015e-05,
+            "incumbent_log_loss": 0.005725606410106977,
+            "log_loss_difference": -0.0019565258810588172,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -6.026367431266891e-05,
+            "candidate_brier": 2.560807391945697e-05,
+            "candidate_log_loss": 0.004650045863989313,
+            "dimension": "birth_country",
+            "group": "Haiti",
+            "incumbent_brier": 8.587174823212588e-05,
+            "incumbent_log_loss": 0.007562370469337118,
+            "log_loss_difference": -0.0029123246053478057,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -6.189285594276539e-05,
+            "candidate_brier": 7.818396169042118e-05,
+            "candidate_log_loss": 0.008881493471181591,
+            "dimension": "birth_country",
+            "group": "Italy",
+            "incumbent_brier": 0.00014007681763318657,
+            "incumbent_log_loss": 0.011906001241582706,
+            "log_loss_difference": -0.0030245077704011154,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00023381315785721597,
+            "candidate_brier": 0.0004503080824123167,
+            "candidate_log_loss": 0.02144885462568783,
+            "dimension": "birth_country",
+            "group": "Jamaica",
+            "incumbent_brier": 0.0002164949245551007,
+            "incumbent_log_loss": 0.014823087635932515,
+            "log_loss_difference": 0.006625766989755316,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 2.146994882261754e-06,
+            "candidate_brier": 5.3079622095550195e-06,
+            "candidate_log_loss": 0.0023065595835682537,
+            "dimension": "birth_country",
+            "group": "Japan",
+            "incumbent_brier": 3.1609673272932653e-06,
+            "incumbent_log_loss": 0.0017794933041738567,
+            "log_loss_difference": 0.000527066279394397,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0019669566432231745,
+            "candidate_brier": 0.0022011887056874054,
+            "candidate_log_loss": 0.017438522035670676,
+            "dimension": "birth_country",
+            "group": "Mexico",
+            "incumbent_brier": 0.00416814534891058,
+            "incumbent_log_loss": 0.02986362695034363,
+            "log_loss_difference": -0.012425104914672955,
+            "players": 51,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 2.7112147100324496e-06,
+            "candidate_brier": 7.82131567268337e-05,
+            "candidate_log_loss": 0.008239990843613116,
+            "dimension": "birth_country",
+            "group": "Netherlands",
+            "incumbent_brier": 7.550194201680126e-05,
+            "incumbent_log_loss": 0.008132374403384818,
+            "log_loss_difference": 0.00010761644022829787,
+            "players": 5,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0006012637914560525,
+            "candidate_brier": 0.0011693290418308129,
+            "candidate_log_loss": 0.02879312804751268,
+            "dimension": "birth_country",
+            "group": "New Zealand",
+            "incumbent_brier": 0.0005680652503747604,
+            "incumbent_log_loss": 0.022314324592557087,
+            "log_loss_difference": 0.006478803454955592,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0006535336405261258,
+            "candidate_brier": 0.0018617630991841377,
+            "candidate_log_loss": 0.02619090014925467,
+            "dimension": "birth_country",
+            "group": "Nicaragua",
+            "incumbent_brier": 0.0012082294586580119,
+            "incumbent_log_loss": 0.023897937535584377,
+            "log_loss_difference": 0.0022929626136702942,
+            "players": 11,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.001906805900668232,
+            "candidate_brier": 0.008893737112189487,
+            "candidate_log_loss": 0.03230774101127244,
+            "dimension": "birth_country",
+            "group": "Panama",
+            "incumbent_brier": 0.01080054301285772,
+            "incumbent_log_loss": 0.041068944871104636,
+            "log_loss_difference": -0.008761203859832194,
+            "players": 35,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00010825227828135248,
+            "candidate_brier": 0.010655442241813686,
+            "candidate_log_loss": 0.059179896654815704,
+            "dimension": "birth_country",
+            "group": "Puerto Rico",
+            "incumbent_brier": 0.010547189963532334,
+            "incumbent_log_loss": 0.05668366113639129,
+            "log_loss_difference": 0.002496235518424414,
+            "players": 56,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00013274176664910913,
+            "candidate_brier": 7.273877015921282e-05,
+            "candidate_log_loss": 0.008565280230301271,
+            "dimension": "birth_country",
+            "group": "Saint Martin",
+            "incumbent_brier": 0.00020548053680832193,
+            "incumbent_log_loss": 0.014438325087043869,
+            "log_loss_difference": -0.005873044856742598,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0008834906775518633,
+            "candidate_brier": 0.0009966645281446439,
+            "candidate_log_loss": 0.017565422169519087,
+            "dimension": "birth_country",
+            "group": "South Korea",
+            "incumbent_brier": 0.00011317385059278064,
+            "incumbent_log_loss": 0.006052203629820606,
+            "log_loss_difference": 0.01151321853969848,
+            "players": 5,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 8.01282112279157e-05,
+            "candidate_brier": 0.00022932895832489754,
+            "candidate_log_loss": 0.012081981806402587,
+            "dimension": "birth_country",
+            "group": "Spain",
+            "incumbent_brier": 0.00014920074709698185,
+            "incumbent_log_loss": 0.011256636638682899,
+            "log_loss_difference": 0.0008253451677196887,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.004441473263832348,
+            "candidate_brier": 0.003097404479944168,
+            "candidate_log_loss": 0.03501450297915296,
+            "dimension": "birth_country",
+            "group": "Taiwan",
+            "incumbent_brier": 0.007538877743776516,
+            "incumbent_log_loss": 0.0563697771382742,
+            "log_loss_difference": -0.021355274159121237,
+            "players": 6,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -8.16335748842739e-06,
+            "candidate_brier": 1.1860760946127119e-05,
+            "candidate_log_loss": 0.003019748223330103,
+            "dimension": "birth_country",
+            "group": "UNKNOWN",
+            "incumbent_brier": 2.002411843455451e-05,
+            "incumbent_log_loss": 0.0037624523342479174,
+            "log_loss_difference": -0.0007427041109178143,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0013485663908131065,
+            "candidate_brier": 0.033552828083783785,
+            "candidate_log_loss": 0.1353818882144558,
+            "dimension": "birth_country",
+            "group": "USA",
+            "incumbent_brier": 0.03490139447459689,
+            "incumbent_log_loss": 0.1434711644566492,
+            "log_loss_difference": -0.00808927624219341,
+            "players": 1238,
+            "successes": 51,
+            "supported": true
+          },
+          {
+            "brier_difference": -1.6877587156471116e-06,
+            "candidate_brier": 1.450860491556294e-05,
+            "candidate_log_loss": 0.003816289042533777,
+            "dimension": "birth_country",
+            "group": "Uganda",
+            "incumbent_brier": 1.6196363631210052e-05,
+            "incumbent_log_loss": 0.004032590577473355,
+            "log_loss_difference": -0.00021630153493957778,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.012783816679327088,
+            "candidate_brier": 0.031861020924574324,
+            "candidate_log_loss": 0.15670366488910137,
+            "dimension": "birth_country",
+            "group": "United Kingdom",
+            "incumbent_brier": 0.019077204245247236,
+            "incumbent_log_loss": 0.11775364598979318,
+            "log_loss_difference": 0.038950018899308186,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -7.090683714696278e-05,
+            "candidate_brier": 0.006425543658739143,
+            "candidate_log_loss": 0.031158695072791183,
+            "dimension": "birth_country",
+            "group": "Venezuela",
+            "incumbent_brier": 0.006496450495886106,
+            "incumbent_log_loss": 0.03505882533210538,
+            "log_loss_difference": -0.0039001302593141968,
+            "players": 728,
+            "successes": 4,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0007116658696192414,
+            "candidate_brier": 0.020866674486601736,
+            "candidate_log_loss": 0.08416002711008778,
+            "dimension": "bat_side",
+            "group": "L",
+            "incumbent_brier": 0.021578340356220978,
+            "incumbent_log_loss": 0.0877442586902381,
+            "log_loss_difference": -0.00358423158015031,
+            "players": 898,
+            "successes": 22,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.00026603023486238,
+            "candidate_brier": 0.016208521529600197,
+            "candidate_log_loss": 0.07028490915763151,
+            "dimension": "bat_side",
+            "group": "R",
+            "incumbent_brier": 0.016474551764462577,
+            "incumbent_log_loss": 0.0755323806510608,
+            "log_loss_difference": -0.005247471493429287,
+            "players": 1927,
+            "successes": 34,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.00043485504902844585,
+            "candidate_brier": 0.017103245848304513,
+            "candidate_log_loss": 0.06863869218109994,
+            "dimension": "bat_side",
+            "group": "S",
+            "incumbent_brier": 0.01753810089733296,
+            "incumbent_log_loss": 0.07433463794952092,
+            "log_loss_difference": -0.0056959457684209736,
+            "players": 343,
+            "successes": 7,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.001269555021656682,
+            "candidate_brier": 0.01818202076003278,
+            "candidate_log_loss": 0.07749610276913303,
+            "dimension": "throw_hand",
+            "group": "L",
+            "incumbent_brier": 0.016912465738376098,
+            "incumbent_log_loss": 0.0698288473547166,
+            "log_loss_difference": 0.0076672554144164295,
+            "players": 300,
+            "successes": 5,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0005832520827256209,
+            "candidate_brier": 0.01758211008775374,
+            "candidate_log_loss": 0.07370057982576783,
+            "dimension": "throw_hand",
+            "group": "R",
+            "incumbent_brier": 0.01816536217047936,
+            "incumbent_log_loss": 0.07981663647518697,
+            "log_loss_difference": -0.006116056649419138,
+            "players": 2865,
+            "successes": 58,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.003573594934247534,
+            "candidate_brier": 0.0037187910173638035,
+            "candidate_log_loss": 0.05226789272242869,
+            "dimension": "throw_hand",
+            "group": "S",
+            "incumbent_brier": 0.007292385951611338,
+            "incumbent_log_loss": 0.07290164242933965,
+            "log_loss_difference": -0.02063374970691096,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          }
+        ]
+      }
+    },
+    "pitcher": {
+      "arrival": {
+        "candidate": {
+          "brier": 0.04788668648921842,
+          "feature_set": "stable_interactions",
+          "log_loss": 0.16837009802348746,
+          "model_id": "stable_interactions__c_1",
+          "observed_rate": 0.06777837547068316,
+          "players": 3718,
+          "predicted_rate": 0.07302154355002263,
+          "regularization_c": 1.0
+        },
+        "candidate_calibration": {
+          "intercept": 0.26557545114782555,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.002049310612620956
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.002688172043010753,
+              "players": 372,
+              "predicted_rate": 0.004933467099027929
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.002688172043010753,
+              "players": 372,
+              "predicted_rate": 0.008252838426604101
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.008064516129032258,
+              "players": 372,
+              "predicted_rate": 0.012800245348680172
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.010752688172043012,
+              "players": 372,
+              "predicted_rate": 0.01917847714583338
+            },
+            {
+              "bin": 6,
+              "observed_rate": 0.013440860215053764,
+              "players": 372,
+              "predicted_rate": 0.028740801630523165
+            },
+            {
+              "bin": 7,
+              "observed_rate": 0.04838709677419355,
+              "players": 372,
+              "predicted_rate": 0.0491419232085516
+            },
+            {
+              "bin": 8,
+              "observed_rate": 0.053763440860215055,
+              "players": 372,
+              "predicted_rate": 0.09465458880026302
+            },
+            {
+              "bin": 9,
+              "observed_rate": 0.15633423180592992,
+              "players": 371,
+              "predicted_rate": 0.1511609194187586
+            },
+            {
+              "bin": 10,
+              "observed_rate": 0.38274932614555257,
+              "players": 371,
+              "predicted_rate": 0.3602851298366628
+            }
+          ],
+          "slope": 1.2222610207181552
+        },
+        "incumbent": {
+          "brier": 0.04861139028360982,
+          "feature_set": "core",
+          "log_loss": 0.1720824526435518,
+          "model_id": "core__c_1",
+          "observed_rate": 0.06777837547068316,
+          "players": 3718,
+          "predicted_rate": 0.06842864962860999,
+          "regularization_c": 1.0
+        },
+        "incumbent_calibration": {
+          "intercept": 0.4997294352596558,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.002688172043010753,
+              "players": 372,
+              "predicted_rate": 0.0028062595828354862
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.008064516129032258,
+              "players": 372,
+              "predicted_rate": 0.006786159575267695
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.002688172043010753,
+              "players": 372,
+              "predicted_rate": 0.010343887479421932
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.014907166580500269
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.016129032258064516,
+              "players": 372,
+              "predicted_rate": 0.021413909139662908
+            },
+            {
+              "bin": 6,
+              "observed_rate": 0.016129032258064516,
+              "players": 372,
+              "predicted_rate": 0.03170326638592648
+            },
+            {
+              "bin": 7,
+              "observed_rate": 0.04032258064516129,
+              "players": 372,
+              "predicted_rate": 0.05239069273854786
+            },
+            {
+              "bin": 8,
+              "observed_rate": 0.06182795698924731,
+              "players": 372,
+              "predicted_rate": 0.08470162336407891
+            },
+            {
+              "bin": 9,
+              "observed_rate": 0.15633423180592992,
+              "players": 371,
+              "predicted_rate": 0.13495830375844675
+            },
+            {
+              "bin": 10,
+              "observed_rate": 0.3746630727762803,
+              "players": 371,
+              "predicted_rate": 0.32514416631263166
+            }
+          ],
+          "slope": 1.284658046604445
+        },
+        "outer_training_years": [
+          2018,
+          2021
+        ],
+        "outer_year": 2023,
+        "paired_bootstrap": {
+          "brier": {
+            "ci_high": -2.0007624893133993e-05,
+            "ci_low": -0.001479323658842409,
+            "difference": -0.0007247037943913947,
+            "probability_candidate_better": 0.978
+          },
+          "log_loss": {
+            "ci_high": -0.001448744622413693,
+            "ci_low": -0.006004882911465889,
+            "difference": -0.003712354620064343,
+            "probability_candidate_better": 0.9995
+          },
+          "resamples": 2000
+        },
+        "selected_candidate": {
+          "feature_set": "stable_interactions",
+          "model_id": "stable_interactions__c_1",
+          "regularization_c": 1.0
+        },
+        "selection_evaluation_years": [
+          2021
+        ],
+        "selection_scores": [
+          {
+            "brier": 0.06013801538789148,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.21533914761940567,
+            "model_id": "core__c_0.03",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07782208118387837,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.058587350651467,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.20905898238947296,
+            "model_id": "core__c_0.1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.0783991604234266,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.057270709318789775,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.20383430693499846,
+            "model_id": "core__c_0.3",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08156568379473128,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.056139754903761406,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.19913369923054536,
+            "model_id": "core__c_1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.0894758730718492,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.06013995864830199,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.21531843234573605,
+            "model_id": "handedness__c_0.03",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07768185284160521,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.05861249841026982,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.2092023858320395,
+            "model_id": "handedness__c_0.1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07822644563089716,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05737251428568043,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.2044251524067051,
+            "model_id": "handedness__c_0.3",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08132779487639975,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.056291283048498744,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.2002171545680943,
+            "model_id": "handedness__c_1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08869027190157686,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.059852663039871926,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.2135221262771856,
+            "model_id": "origin__c_0.03",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07756231405035956,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.058272413581663705,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.20733087969563746,
+            "model_id": "origin__c_0.1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07809213035549945,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05694063440139893,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.20227464396383923,
+            "model_id": "origin__c_0.3",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08095209910969628,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.05593945812309233,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.19810745620130238,
+            "model_id": "origin__c_1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08863280449837521,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.05985405297307401,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.21352471874623888,
+            "model_id": "stable_demographics__c_0.03",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07738543114714312,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.05826707903468124,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.2073764219278605,
+            "model_id": "stable_demographics__c_0.1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07786704594449713,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05701895091663665,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.20282633809612105,
+            "model_id": "stable_demographics__c_0.3",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08075094780685231,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.056016432921123946,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.19898142085650486,
+            "model_id": "stable_demographics__c_1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08793176633532258,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.05955997576964683,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.2119941741588063,
+            "model_id": "stable_interactions__c_0.03",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07709864691092339,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.057833948261448116,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.20496926420887715,
+            "model_id": "stable_interactions__c_0.1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07718342209830986,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.05664284678372768,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.20032479268416137,
+            "model_id": "stable_interactions__c_0.3",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08007296111125094,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.05590188684289102,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.19728157542697072,
+            "model_id": "stable_interactions__c_1",
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.08719710513393487,
+            "regularization_c": 1.0
+          }
+        ],
+        "subgroups": [
+          {
+            "brier_difference": -0.0011070743108804598,
+            "candidate_brier": 0.11449271236738731,
+            "candidate_log_loss": 0.3755861564825938,
+            "dimension": "level",
+            "group": "AA",
+            "incumbent_brier": 0.11559978667826777,
+            "incumbent_log_loss": 0.3774710562861693,
+            "log_loss_difference": -0.0018848998035754794,
+            "players": 547,
+            "successes": 88,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0032724152414727314,
+            "candidate_brier": 0.16425344728369165,
+            "candidate_log_loss": 0.4990027710194443,
+            "dimension": "level",
+            "group": "AAA",
+            "incumbent_brier": 0.16752586252516438,
+            "incumbent_log_loss": 0.5051366376788508,
+            "log_loss_difference": -0.006133866659406462,
+            "players": 423,
+            "successes": 116,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.00025707887064649673,
+            "candidate_brier": 0.016758835298992976,
+            "candidate_log_loss": 0.07642059474462827,
+            "dimension": "level",
+            "group": "A_OR_BELOW",
+            "incumbent_brier": 0.017015914169639473,
+            "incumbent_log_loss": 0.0801339267384791,
+            "log_loss_difference": -0.0037133319938508352,
+            "players": 2741,
+            "successes": 48,
+            "supported": true
+          },
+          {
+            "brier_difference": 8.245842058317923e-07,
+            "candidate_brier": 1.5637731305036501e-06,
+            "candidate_log_loss": 0.0010535027280735344,
+            "dimension": "level",
+            "group": "INACTIVE",
+            "incumbent_brier": 7.391889246718579e-07,
+            "incumbent_log_loss": 0.0008571731236947119,
+            "log_loss_difference": 0.00019632960437882246,
+            "players": 7,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0002768932821983006,
+            "candidate_brier": 0.0025717931180716264,
+            "candidate_log_loss": 0.019589649797344167,
+            "dimension": "age",
+            "group": "16-19",
+            "incumbent_brier": 0.002848686400269927,
+            "incumbent_log_loss": 0.02616222201674978,
+            "log_loss_difference": -0.006572572219405614,
+            "players": 932,
+            "successes": 2,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0008667277736752049,
+            "candidate_brier": 0.03839803189862871,
+            "candidate_log_loss": 0.13999093417713912,
+            "dimension": "age",
+            "group": "20-22",
+            "incumbent_brier": 0.03926475967230392,
+            "incumbent_log_loss": 0.14409992169244434,
+            "log_loss_difference": -0.0041089875153052235,
+            "players": 1289,
+            "successes": 69,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0015114860892847665,
+            "candidate_brier": 0.08394716777064808,
+            "candidate_log_loss": 0.28309784613630734,
+            "dimension": "age",
+            "group": "23-25",
+            "incumbent_brier": 0.08545865385993284,
+            "incumbent_log_loss": 0.2861830700917706,
+            "log_loss_difference": -0.0030852239554632344,
+            "players": 1127,
+            "successes": 145,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0010385750117645615,
+            "candidate_brier": 0.08524937293518522,
+            "candidate_log_loss": 0.2925483353790564,
+            "dimension": "age",
+            "group": "26-30",
+            "incumbent_brier": 0.08421079792342066,
+            "incumbent_log_loss": 0.28958445663277993,
+            "log_loss_difference": 0.0029638787462764604,
+            "players": 370,
+            "successes": 36,
+            "supported": true
+          },
+          {
+            "brier_difference": 8.245842058317923e-07,
+            "candidate_brier": 1.5637731305036501e-06,
+            "candidate_log_loss": 0.0010535027280735344,
+            "dimension": "workload",
+            "group": "0",
+            "incumbent_brier": 7.391889246718579e-07,
+            "incumbent_log_loss": 0.0008571731236947119,
+            "log_loss_difference": 0.00019632960437882246,
+            "players": 7,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00041459813756899826,
+            "candidate_brier": 0.015585911908207533,
+            "candidate_log_loss": 0.06922778968198069,
+            "dimension": "workload",
+            "group": "1-99",
+            "incumbent_brier": 0.01600051004577653,
+            "incumbent_log_loss": 0.07233002647421544,
+            "log_loss_difference": -0.0031022367922347444,
+            "players": 1209,
+            "successes": 21,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0006681449789995159,
+            "candidate_brier": 0.04678712867160016,
+            "candidate_log_loss": 0.16686398083083245,
+            "dimension": "workload",
+            "group": "100-299",
+            "incumbent_brier": 0.04745527365059968,
+            "incumbent_log_loss": 0.17163019197729834,
+            "log_loss_difference": -0.004766211146465887,
+            "players": 1915,
+            "successes": 114,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0015565718850624743,
+            "candidate_brier": 0.11857235181833892,
+            "candidate_log_loss": 0.37947483631289786,
+            "dimension": "workload",
+            "group": "300+",
+            "incumbent_brier": 0.12012892370340139,
+            "incumbent_log_loss": 0.3810523663935382,
+            "log_loss_difference": -0.0015775300806403214,
+            "players": 587,
+            "successes": 117,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.000709465955535616,
+            "candidate_brier": 0.00038620119874824434,
+            "candidate_log_loss": 0.0198476707694861,
+            "dimension": "birth_country",
+            "group": "Antigua and Barbuda",
+            "incumbent_brier": 0.0010956671542838602,
+            "incumbent_log_loss": 0.0336610943945778,
+            "log_loss_difference": -0.013813423625091695,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0014030367005899527,
+            "candidate_brier": 0.0008508090755815698,
+            "candidate_log_loss": 0.027258172781796007,
+            "dimension": "birth_country",
+            "group": "Aruba",
+            "incumbent_brier": 0.0022538457761715224,
+            "incumbent_log_loss": 0.04291474523600404,
+            "log_loss_difference": -0.015656572454208033,
+            "players": 4,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.013350009975063054,
+            "candidate_brier": 0.06417071055227376,
+            "candidate_log_loss": 0.17968744600339906,
+            "dimension": "birth_country",
+            "group": "Australia",
+            "incumbent_brier": 0.050820700577210706,
+            "incumbent_log_loss": 0.1575498508501846,
+            "log_loss_difference": 0.02213759515321445,
+            "players": 10,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": -7.083811607949382e-05,
+            "candidate_brier": 0.002190606781112322,
+            "candidate_log_loss": 0.042360066867405795,
+            "dimension": "birth_country",
+            "group": "Bahamas",
+            "incumbent_brier": 0.0022614448971918157,
+            "incumbent_log_loss": 0.04330432375050172,
+            "log_loss_difference": -0.0009442568830959272,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0009087132924381416,
+            "candidate_brier": 0.0001222712918561575,
+            "candidate_log_loss": 0.008961814071803995,
+            "dimension": "birth_country",
+            "group": "Brazil",
+            "incumbent_brier": 0.0010309845842942991,
+            "incumbent_log_loss": 0.027467182413008547,
+            "log_loss_difference": -0.018505368341204552,
+            "players": 8,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.006895414163992475,
+            "candidate_brier": 0.0857616327590349,
+            "candidate_log_loss": 0.2973632547620438,
+            "dimension": "birth_country",
+            "group": "Canada",
+            "incumbent_brier": 0.09265704692302737,
+            "incumbent_log_loss": 0.29650682592658667,
+            "log_loss_difference": 0.0008564288354571126,
+            "players": 34,
+            "successes": 3,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0007779768088747975,
+            "candidate_brier": 0.0004132975245164294,
+            "candidate_log_loss": 0.020539213140687428,
+            "dimension": "birth_country",
+            "group": "China",
+            "incumbent_brier": 0.001191274333391227,
+            "incumbent_log_loss": 0.03512454980431869,
+            "log_loss_difference": -0.014585336663631265,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0009979733272694608,
+            "candidate_brier": 0.02508245855688626,
+            "candidate_log_loss": 0.10567563095611536,
+            "dimension": "birth_country",
+            "group": "Colombia",
+            "incumbent_brier": 0.0240844852296168,
+            "incumbent_log_loss": 0.10356773877820682,
+            "log_loss_difference": 0.0021078921779085352,
+            "players": 46,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0020654481380843193,
+            "candidate_brier": 0.05744084025116425,
+            "candidate_log_loss": 0.2087404673121786,
+            "dimension": "birth_country",
+            "group": "Cuba",
+            "incumbent_brier": 0.05950628838924857,
+            "incumbent_log_loss": 0.21399990851225295,
+            "log_loss_difference": -0.0052594412000743496,
+            "players": 53,
+            "successes": 4,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00011722987479015881,
+            "candidate_brier": 6.441734410332635e-05,
+            "candidate_log_loss": 0.00600788278328406,
+            "dimension": "birth_country",
+            "group": "Curacao",
+            "incumbent_brier": 0.00018164721889348516,
+            "incumbent_log_loss": 0.009556744092960803,
+            "log_loss_difference": -0.003548861309676743,
+            "players": 8,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0003672427813123068,
+            "candidate_brier": 0.017135612951124073,
+            "candidate_log_loss": 0.07097648147843547,
+            "dimension": "birth_country",
+            "group": "Dominican Republic",
+            "incumbent_brier": 0.016768370169811767,
+            "incumbent_log_loss": 0.0736689164626943,
+            "log_loss_difference": -0.0026924349842588347,
+            "players": 1048,
+            "successes": 20,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.00028205811147767303,
+            "candidate_brier": 0.00017274474655386567,
+            "candidate_log_loss": 0.011440819912573378,
+            "dimension": "birth_country",
+            "group": "Germany",
+            "incumbent_brier": 0.0004548028580315387,
+            "incumbent_log_loss": 0.017796963415114508,
+            "log_loss_difference": -0.00635614350254113,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -8.550696949603012e-05,
+            "candidate_brier": 5.8421296669164585e-05,
+            "candidate_log_loss": 0.007672742893359116,
+            "dimension": "birth_country",
+            "group": "Guatemala",
+            "incumbent_brier": 0.0001439282661651947,
+            "incumbent_log_loss": 0.01206955564966734,
+            "log_loss_difference": -0.004396812756308224,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -5.368142137078473e-05,
+            "candidate_brier": 6.196212504968346e-05,
+            "candidate_log_loss": 0.00790274705368494,
+            "dimension": "birth_country",
+            "group": "Iceland",
+            "incumbent_brier": 0.00011564354642046819,
+            "incumbent_log_loss": 0.010812008620508495,
+            "log_loss_difference": -0.002909261566823555,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.007495082126043745,
+            "candidate_brier": 0.17599296228424438,
+            "candidate_log_loss": 0.5631832172092813,
+            "dimension": "birth_country",
+            "group": "Italy",
+            "incumbent_brier": 0.16849788015820064,
+            "incumbent_log_loss": 0.5089687981088035,
+            "log_loss_difference": 0.05421441910047786,
+            "players": 5,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.009626668063972214,
+            "candidate_brier": 0.005189904545555086,
+            "candidate_log_loss": 0.054917388507789065,
+            "dimension": "birth_country",
+            "group": "Japan",
+            "incumbent_brier": 0.0148165726095273,
+            "incumbent_log_loss": 0.09674805151219683,
+            "log_loss_difference": -0.04183066300440776,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0014916573790109758,
+            "candidate_brier": 0.021065299202505248,
+            "candidate_log_loss": 0.08111888985987983,
+            "dimension": "birth_country",
+            "group": "Mexico",
+            "incumbent_brier": 0.022556956581516224,
+            "incumbent_log_loss": 0.09101166429279306,
+            "log_loss_difference": -0.009892774432913226,
+            "players": 94,
+            "successes": 3,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.008007267621865065,
+            "candidate_brier": 0.014012087380310314,
+            "candidate_log_loss": 0.06967645985852598,
+            "dimension": "birth_country",
+            "group": "Netherlands",
+            "incumbent_brier": 0.02201935500217538,
+            "incumbent_log_loss": 0.09453555626851684,
+            "log_loss_difference": -0.024859096409990858,
+            "players": 7,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00023769088067834734,
+            "candidate_brier": 0.0005026000477999441,
+            "candidate_log_loss": 0.022283526264811684,
+            "dimension": "birth_country",
+            "group": "New Zealand",
+            "incumbent_brier": 0.0007402909284782914,
+            "incumbent_log_loss": 0.027464323765626665,
+            "log_loss_difference": -0.005180797500814981,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.01001955335079267,
+            "candidate_brier": 0.023182109528506002,
+            "candidate_log_loss": 0.06842641288474743,
+            "dimension": "birth_country",
+            "group": "Nicaragua",
+            "incumbent_brier": 0.013162556177713333,
+            "incumbent_log_loss": 0.0637845454206307,
+            "log_loss_difference": 0.004641867464116739,
+            "players": 26,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.006408416097625659,
+            "candidate_brier": 0.001657934644327261,
+            "candidate_log_loss": 0.019287495591175218,
+            "dimension": "birth_country",
+            "group": "Panama",
+            "incumbent_brier": 0.008066350741952921,
+            "incumbent_log_loss": 0.05035658379185252,
+            "log_loss_difference": -0.0310690882006773,
+            "players": 41,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.002104358448585454,
+            "candidate_brier": 0.05228612583214217,
+            "candidate_log_loss": 0.1693126649940132,
+            "dimension": "birth_country",
+            "group": "Puerto Rico",
+            "incumbent_brier": 0.050181767383556716,
+            "incumbent_log_loss": 0.17089284058828225,
+            "log_loss_difference": -0.0015801755942690399,
+            "players": 26,
+            "successes": 2,
+            "supported": false
+          },
+          {
+            "brier_difference": -3.0334643380494173e-05,
+            "candidate_brier": 1.9463353534551138e-05,
+            "candidate_log_loss": 0.0044214894808690995,
+            "dimension": "birth_country",
+            "group": "RU1",
+            "incumbent_brier": 4.979799691504531e-05,
+            "incumbent_log_loss": 0.007081786340298233,
+            "log_loss_difference": -0.0026602968594291333,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0015320884765719553,
+            "candidate_brier": 0.0011475678409339247,
+            "candidate_log_loss": 0.03446285128462144,
+            "dimension": "birth_country",
+            "group": "San Marino",
+            "incumbent_brier": 0.00267965631750588,
+            "incumbent_log_loss": 0.05315333573184815,
+            "log_loss_difference": -0.018690484447226707,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.006669225377182269,
+            "candidate_brier": 0.006840781725297913,
+            "candidate_log_loss": 0.08633053798075162,
+            "dimension": "birth_country",
+            "group": "Singapore",
+            "incumbent_brier": 0.013510007102480182,
+            "incumbent_log_loss": 0.12356132348949696,
+            "log_loss_difference": -0.03723078550874534,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0037649936416630026,
+            "candidate_brier": 0.005896965589744371,
+            "candidate_log_loss": 0.0799003956278879,
+            "dimension": "birth_country",
+            "group": "Slovakia",
+            "incumbent_brier": 0.009661959231407374,
+            "incumbent_log_loss": 0.10346815791833275,
+            "log_loss_difference": -0.023567762290444855,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.006094739678594719,
+            "candidate_brier": 0.008510919927231091,
+            "candidate_log_loss": 0.09679138815550557,
+            "dimension": "birth_country",
+            "group": "South Africa",
+            "incumbent_brier": 0.01460565960582581,
+            "incumbent_log_loss": 0.12880415743635729,
+            "log_loss_difference": -0.03201276928085171,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0023810423171184564,
+            "candidate_brier": 0.001397266184358442,
+            "candidate_log_loss": 0.03809234443849123,
+            "dimension": "birth_country",
+            "group": "South Korea",
+            "incumbent_brier": 0.0037783085014768984,
+            "incumbent_log_loss": 0.06244023924239053,
+            "log_loss_difference": -0.024347894803899303,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00024662057733152343,
+            "candidate_brier": 0.00015833567816759934,
+            "candidate_log_loss": 0.012596200104901338,
+            "dimension": "birth_country",
+            "group": "Spain",
+            "incumbent_brier": 0.00040495625549912277,
+            "incumbent_log_loss": 0.020145572343860517,
+            "log_loss_difference": -0.007549372238959179,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.012756694658527398,
+            "candidate_brier": 0.04598185840161037,
+            "candidate_log_loss": 0.16796452868283746,
+            "dimension": "birth_country",
+            "group": "Taiwan",
+            "incumbent_brier": 0.05873855306013777,
+            "incumbent_log_loss": 0.20813861033646755,
+            "log_loss_difference": -0.040174081653630095,
+            "players": 9,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": -4.559857799746426e-07,
+            "candidate_brier": 1.1013458038356679e-06,
+            "candidate_log_loss": 0.0010500012973310054,
+            "dimension": "birth_country",
+            "group": "U.S. Virgin Islands",
+            "incumbent_brier": 1.5573315838103105e-06,
+            "incumbent_log_loss": 0.0012487102353020128,
+            "log_loss_difference": -0.00019870893797100742,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00025909681196951354,
+            "candidate_brier": 0.00017060972844568326,
+            "candidate_log_loss": 0.010391432998874161,
+            "dimension": "birth_country",
+            "group": "UNKNOWN",
+            "incumbent_brier": 0.00042970654041519683,
+            "incumbent_log_loss": 0.016326195924995995,
+            "log_loss_difference": -0.005934762926121833,
+            "players": 7,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0016946203922905828,
+            "candidate_brier": 0.08177375235669153,
+            "candidate_log_loss": 0.2766656221443516,
+            "dimension": "birth_country",
+            "group": "USA",
+            "incumbent_brier": 0.08346837274898211,
+            "incumbent_log_loss": 0.27994293417440425,
+            "log_loss_difference": -0.0032773120300526593,
+            "players": 1675,
+            "successes": 203,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.00010598650338576357,
+            "candidate_brier": 8.301396620095136e-05,
+            "candidate_log_loss": 0.008068483598392151,
+            "dimension": "birth_country",
+            "group": "Uganda",
+            "incumbent_brier": 0.00018900046958671493,
+            "incumbent_log_loss": 0.0125526909696558,
+            "log_loss_difference": -0.004484207371263649,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.006817311668761261,
+            "candidate_brier": 0.32946973671163216,
+            "candidate_log_loss": 0.8592849196827683,
+            "dimension": "birth_country",
+            "group": "United Kingdom",
+            "incumbent_brier": 0.3362870483803934,
+            "incumbent_log_loss": 0.8868186120965017,
+            "log_loss_difference": -0.02753369241373338,
+            "players": 2,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00037358574498539895,
+            "candidate_brier": 0.01569692592975313,
+            "candidate_log_loss": 0.06476291525020725,
+            "dimension": "birth_country",
+            "group": "Venezuela",
+            "incumbent_brier": 0.01532334018476773,
+            "incumbent_log_loss": 0.069002288507004,
+            "log_loss_difference": -0.004239373256796755,
+            "players": 589,
+            "successes": 11,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0006190067278413203,
+            "candidate_brier": 0.06303684479239925,
+            "candidate_log_loss": 0.2184311999500895,
+            "dimension": "bat_side",
+            "group": "L",
+            "incumbent_brier": 0.06365585152024057,
+            "incumbent_log_loss": 0.2226797655391659,
+            "log_loss_difference": -0.0042485655890764085,
+            "players": 771,
+            "successes": 71,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.000650295091019111,
+            "candidate_brier": 0.044281980110605,
+            "candidate_log_loss": 0.15617485373935885,
+            "dimension": "bat_side",
+            "group": "R",
+            "incumbent_brier": 0.044932275201624114,
+            "incumbent_log_loss": 0.159583284728337,
+            "log_loss_difference": -0.0034084309889781395,
+            "players": 2912,
+            "successes": 180,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.009243863295253873,
+            "candidate_brier": 0.01406191285407163,
+            "candidate_log_loss": 0.0802398628798379,
+            "dimension": "bat_side",
+            "group": "S",
+            "incumbent_brier": 0.023305776149325504,
+            "incumbent_log_loss": 0.09742670197461027,
+            "log_loss_difference": -0.017186839094772366,
+            "players": 35,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": 5.0972265201162936e-05,
+            "candidate_brier": 0.0626946463468551,
+            "candidate_log_loss": 0.22059300547283392,
+            "dimension": "throw_hand",
+            "group": "L",
+            "incumbent_brier": 0.06264367408165394,
+            "incumbent_log_loss": 0.22292389324341472,
+            "log_loss_difference": -0.0023308877705807973,
+            "players": 725,
+            "successes": 61,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0009128880905412903,
+            "candidate_brier": 0.04431452564504716,
+            "candidate_log_loss": 0.15577055430819717,
+            "dimension": "throw_hand",
+            "group": "R",
+            "incumbent_brier": 0.04522741373558845,
+            "incumbent_log_loss": 0.15981775993280173,
+            "log_loss_difference": -0.004047205624604561,
+            "players": 2992,
+            "successes": 191,
+            "supported": true
+          },
+          {
+            "brier_difference": -4.243291851144002e-05,
+            "candidate_brier": 2.1035463006515697e-05,
+            "candidate_log_loss": 0.004596993395869758,
+            "dimension": "throw_hand",
+            "group": "S",
+            "incumbent_brier": 6.346838151795572e-05,
+            "incumbent_log_loss": 0.007998608307113452,
+            "log_loss_difference": -0.003401614911243694,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          }
+        ]
+      },
+      "meaningful_role": {
+        "candidate": {
+          "brier": 0.01763115946808146,
+          "feature_set": "stable_interactions",
+          "log_loss": 0.0698497925910046,
+          "model_id": "stable_interactions__c_1",
+          "observed_rate": 0.020441097364174286,
+          "players": 3718,
+          "predicted_rate": 0.018440777709585965,
+          "regularization_c": 1.0
+        },
+        "candidate_calibration": {
+          "intercept": 0.21260456362435337,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.0001926800176716875
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.00041571006316851254
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.0007673638890096544
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.0012767108881445216
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.0019184344510146454
+            },
+            {
+              "bin": 6,
+              "observed_rate": 0.002688172043010753,
+              "players": 372,
+              "predicted_rate": 0.003057168442746336
+            },
+            {
+              "bin": 7,
+              "observed_rate": 0.008064516129032258,
+              "players": 372,
+              "predicted_rate": 0.0073954574185278055
+            },
+            {
+              "bin": 8,
+              "observed_rate": 0.021505376344086023,
+              "players": 372,
+              "predicted_rate": 0.015268529581836549
+            },
+            {
+              "bin": 9,
+              "observed_rate": 0.04043126684636118,
+              "players": 371,
+              "predicted_rate": 0.026077456207149522
+            },
+            {
+              "bin": 10,
+              "observed_rate": 0.1320754716981132,
+              "players": 371,
+              "predicted_rate": 0.12835426119568624
+            }
+          ],
+          "slope": 1.035715199550943
+        },
+        "incumbent": {
+          "brier": 0.017800365374742895,
+          "feature_set": "core",
+          "log_loss": 0.07075036215480159,
+          "model_id": "core__c_1",
+          "observed_rate": 0.020441097364174286,
+          "players": 3718,
+          "predicted_rate": 0.017586346747550177,
+          "regularization_c": 1.0
+        },
+        "incumbent_calibration": {
+          "intercept": 0.5823620969511534,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.0005759487525121357
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.000981600511453981
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.0012924703339263796
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.0016201074787483799
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.002688172043010753,
+              "players": 372,
+              "predicted_rate": 0.002102810793197594
+            },
+            {
+              "bin": 6,
+              "observed_rate": 0.0,
+              "players": 372,
+              "predicted_rate": 0.005985870455488398
+            },
+            {
+              "bin": 7,
+              "observed_rate": 0.013440860215053764,
+              "players": 372,
+              "predicted_rate": 0.010455530269489114
+            },
+            {
+              "bin": 8,
+              "observed_rate": 0.010752688172043012,
+              "players": 372,
+              "predicted_rate": 0.014810088213181617
+            },
+            {
+              "bin": 9,
+              "observed_rate": 0.026954177897574125,
+              "players": 371,
+              "predicted_rate": 0.023654479914868635
+            },
+            {
+              "bin": 10,
+              "observed_rate": 0.1509433962264151,
+              "players": 371,
+              "predicted_rate": 0.11466182853477137
+            }
+          ],
+          "slope": 1.1483859404247436
+        },
+        "outer_training_years": [
+          2018,
+          2021
+        ],
+        "outer_year": 2023,
+        "paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.00024190351298632726,
+            "ci_low": -0.0005705403240519131,
+            "difference": -0.00016920590666143751,
+            "probability_candidate_better": 0.801
+          },
+          "log_loss": {
+            "ci_high": 0.0009034563510129987,
+            "ci_low": -0.0026296201722332967,
+            "difference": -0.0009005695637969647,
+            "probability_candidate_better": 0.8515
+          },
+          "resamples": 2000
+        },
+        "selected_candidate": {
+          "feature_set": "stable_interactions",
+          "model_id": "stable_interactions__c_1",
+          "regularization_c": 1.0
+        },
+        "selection_evaluation_years": [
+          2021
+        ],
+        "selection_scores": [
+          {
+            "brier": 0.02187584725445709,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.09838200690961992,
+            "model_id": "core__c_0.03",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011802658553039979,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.02145129118472945,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.09123810553408102,
+            "model_id": "core__c_0.1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011583250562024113,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.021119877497354344,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.08769473602865614,
+            "model_id": "core__c_0.3",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011240443241168279,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.02075790645565315,
+            "evaluation_year": 2021,
+            "feature_set": "core",
+            "log_loss": 0.08460740498700828,
+            "model_id": "core__c_1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011585737856870622,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.021869795487375478,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.09823976970310967,
+            "model_id": "handedness__c_0.03",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011787668675661753,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.021454901883667554,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.09130225316763502,
+            "model_id": "handedness__c_0.1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011498522666101336,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.02110842250388063,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.08780151915400398,
+            "model_id": "handedness__c_0.3",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011238079957107945,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.020804035150056244,
+            "evaluation_year": 2021,
+            "feature_set": "handedness",
+            "log_loss": 0.0854744361142854,
+            "model_id": "handedness__c_1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011513093917510583,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.021850199925381335,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.09778410042993069,
+            "model_id": "origin__c_0.03",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011790977520715269,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.021422286987756778,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.09083841435767002,
+            "model_id": "origin__c_0.1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011525560874435853,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.021057653625948244,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.0871624369937181,
+            "model_id": "origin__c_0.3",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011341945132168118,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.020696732563494233,
+            "evaluation_year": 2021,
+            "feature_set": "origin",
+            "log_loss": 0.08455530563821322,
+            "model_id": "origin__c_1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011647950400381683,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.02184880356108439,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.09776515197526223,
+            "model_id": "stable_demographics__c_0.03",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011722830792178373,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.02141568925595632,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.0908371373578156,
+            "model_id": "stable_demographics__c_0.1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011457858839684577,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.021052817586458102,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.08735366098894966,
+            "model_id": "stable_demographics__c_0.3",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011299530494657406,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.020716022635413653,
+            "evaluation_year": 2021,
+            "feature_set": "stable_demographics",
+            "log_loss": 0.0851758796091186,
+            "model_id": "stable_demographics__c_1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.01163287014512008,
+            "regularization_c": 1.0
+          },
+          {
+            "brier": 0.021833318496821203,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.09737573251389997,
+            "model_id": "stable_interactions__c_0.03",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011754815052980639,
+            "regularization_c": 0.03
+          },
+          {
+            "brier": 0.02134657896636009,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.0897896289835656,
+            "model_id": "stable_interactions__c_0.1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011403798694490147,
+            "regularization_c": 0.1
+          },
+          {
+            "brier": 0.020891559306802743,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.08558497406374746,
+            "model_id": "stable_interactions__c_0.3",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011293307895504897,
+            "regularization_c": 0.3
+          },
+          {
+            "brier": 0.020534644177760932,
+            "evaluation_year": 2021,
+            "feature_set": "stable_interactions",
+            "log_loss": 0.08329360782692287,
+            "model_id": "stable_interactions__c_1",
+            "observed_rate": 0.02274595779665662,
+            "players": 3649,
+            "predicted_rate": 0.011626233554340748,
+            "regularization_c": 1.0
+          }
+        ],
+        "subgroups": [
+          {
+            "brier_difference": -0.0005570243176326109,
+            "candidate_brier": 0.04855796321921763,
+            "candidate_log_loss": 0.18759354079203067,
+            "dimension": "level",
+            "group": "AA",
+            "incumbent_brier": 0.049114987536850244,
+            "incumbent_log_loss": 0.18852353225398952,
+            "log_loss_difference": -0.0009299914619588512,
+            "players": 547,
+            "successes": 30,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0006851733813926092,
+            "candidate_brier": 0.06881263190641046,
+            "candidate_log_loss": 0.245176686226118,
+            "dimension": "level",
+            "group": "AAA",
+            "incumbent_brier": 0.06949780528780307,
+            "incumbent_log_loss": 0.24267087233082313,
+            "log_loss_difference": 0.0025058138952948616,
+            "players": 423,
+            "successes": 36,
+            "supported": true
+          },
+          {
+            "brier_difference": -1.2620201978319999e-05,
+            "candidate_brier": 0.0036058704196314678,
+            "candidate_log_loss": 0.019471766149826313,
+            "dimension": "level",
+            "group": "A_OR_BELOW",
+            "incumbent_brier": 0.0036184906216097878,
+            "incumbent_log_loss": 0.020894306238179276,
+            "log_loss_difference": -0.0014225400883529637,
+            "players": 2741,
+            "successes": 10,
+            "supported": true
+          },
+          {
+            "brier_difference": 7.221042103493811e-07,
+            "candidate_brier": 1.5578276197214953e-06,
+            "candidate_log_loss": 0.0008589642560721046,
+            "dimension": "level",
+            "group": "INACTIVE",
+            "incumbent_brier": 8.357234093721142e-07,
+            "incumbent_log_loss": 0.000914564833199095,
+            "log_loss_difference": -5.5600577126990345e-05,
+            "players": 7,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 5.7817644248133986e-05,
+            "candidate_brier": 0.00013787495703595161,
+            "candidate_log_loss": 0.0027762951959654785,
+            "dimension": "age",
+            "group": "16-19",
+            "incumbent_brier": 8.005731278781763e-05,
+            "incumbent_log_loss": 0.0044045327950820575,
+            "log_loss_difference": -0.001628237599116579,
+            "players": 932,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -6.393972970240684e-05,
+            "candidate_brier": 0.01417133174474691,
+            "candidate_log_loss": 0.05516214141723691,
+            "dimension": "age",
+            "group": "20-22",
+            "incumbent_brier": 0.014235271474449317,
+            "incumbent_log_loss": 0.05619112226266644,
+            "log_loss_difference": -0.0010289808454295307,
+            "players": 1289,
+            "successes": 21,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0007389919402351411,
+            "candidate_brier": 0.035970418816626853,
+            "candidate_log_loss": 0.13447059310790319,
+            "dimension": "age",
+            "group": "23-25",
+            "incumbent_brier": 0.036709410756861995,
+            "incumbent_log_loss": 0.136862382001731,
+            "log_loss_difference": -0.002391788893827823,
+            "players": 1127,
+            "successes": 49,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.0006277530346619556,
+            "candidate_brier": 0.017888223829870604,
+            "candidate_log_loss": 0.09313962976024329,
+            "dimension": "age",
+            "group": "26-30",
+            "incumbent_brier": 0.01726047079520865,
+            "incumbent_log_loss": 0.08721773192975106,
+            "log_loss_difference": 0.005921897830492226,
+            "players": 370,
+            "successes": 6,
+            "supported": true
+          },
+          {
+            "brier_difference": 7.221042103493811e-07,
+            "candidate_brier": 1.5578276197214953e-06,
+            "candidate_log_loss": 0.0008589642560721046,
+            "dimension": "workload",
+            "group": "0",
+            "incumbent_brier": 8.357234093721142e-07,
+            "incumbent_log_loss": 0.000914564833199095,
+            "log_loss_difference": -5.5600577126990345e-05,
+            "players": 7,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -5.482126181937351e-05,
+            "candidate_brier": 0.002230725203745172,
+            "candidate_log_loss": 0.011077368517611937,
+            "dimension": "workload",
+            "group": "1-99",
+            "incumbent_brier": 0.0022855464655645455,
+            "incumbent_log_loss": 0.01168973823570883,
+            "log_loss_difference": -0.0006123697180968942,
+            "players": 1209,
+            "successes": 3,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00012783940607874293,
+            "candidate_brier": 0.015232883331187339,
+            "candidate_log_loss": 0.06492326062911981,
+            "dimension": "workload",
+            "group": "100-299",
+            "incumbent_brier": 0.015105043925108596,
+            "incumbent_log_loss": 0.06530349320340455,
+            "log_loss_difference": -0.000380232574284739,
+            "players": 1915,
+            "successes": 31,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.0013758878582587064,
+            "candidate_brier": 0.05738453432194524,
+            "candidate_log_loss": 0.20779375376661902,
+            "dimension": "workload",
+            "group": "300+",
+            "incumbent_brier": 0.05876042218020395,
+            "incumbent_log_loss": 0.2109955051554143,
+            "log_loss_difference": -0.0032017513887952764,
+            "players": 587,
+            "successes": 42,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.00010127252457872874,
+            "candidate_brier": 2.0128481682865697e-05,
+            "candidate_log_loss": 0.0044965720921399804,
+            "dimension": "birth_country",
+            "group": "Antigua and Barbuda",
+            "incumbent_brier": 0.00012140100626159443,
+            "incumbent_log_loss": 0.011079362574813295,
+            "log_loss_difference": -0.006582790482673314,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -7.36065952724044e-05,
+            "candidate_brier": 1.9726541114029592e-05,
+            "candidate_log_loss": 0.0037234533411187954,
+            "dimension": "birth_country",
+            "group": "Aruba",
+            "incumbent_brier": 9.333313638643399e-05,
+            "incumbent_log_loss": 0.007860569874478892,
+            "log_loss_difference": -0.004137116533360096,
+            "players": 4,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0024510015013903606,
+            "candidate_brier": 0.001716203679706024,
+            "candidate_log_loss": 0.020273100880143842,
+            "dimension": "birth_country",
+            "group": "Australia",
+            "incumbent_brier": 0.004167205181096385,
+            "incumbent_log_loss": 0.033198543418551676,
+            "log_loss_difference": -0.012925442538407834,
+            "players": 10,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -3.0268281402062326e-05,
+            "candidate_brier": 0.00011416345343394549,
+            "candidate_log_loss": 0.01038431444405492,
+            "dimension": "birth_country",
+            "group": "Bahamas",
+            "incumbent_brier": 0.0001444317348360078,
+            "incumbent_log_loss": 0.011323169949835142,
+            "log_loss_difference": -0.0009388555057802221,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -3.959750455436855e-05,
+            "candidate_brier": 7.4556176030097255e-06,
+            "candidate_log_loss": 0.002194981106109765,
+            "dimension": "birth_country",
+            "group": "Brazil",
+            "incumbent_brier": 4.705312215737827e-05,
+            "incumbent_log_loss": 0.005634998012835716,
+            "log_loss_difference": -0.0034400169067259506,
+            "players": 8,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0003345638497944392,
+            "candidate_brier": 0.02836925984989317,
+            "candidate_log_loss": 0.11520105068294716,
+            "dimension": "birth_country",
+            "group": "Canada",
+            "incumbent_brier": 0.02870382369968761,
+            "incumbent_log_loss": 0.11287103122508803,
+            "log_loss_difference": 0.0023300194578591282,
+            "players": 34,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": -6.8764547108761365e-06,
+            "candidate_brier": 6.974503939346001e-05,
+            "candidate_log_loss": 0.00838641745425824,
+            "dimension": "birth_country",
+            "group": "China",
+            "incumbent_brier": 7.662149410433615e-05,
+            "incumbent_log_loss": 0.008791906233099793,
+            "log_loss_difference": -0.00040548877884155274,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0004304236573778827,
+            "candidate_brier": 0.0003295904011322029,
+            "candidate_log_loss": 0.004598210140410063,
+            "dimension": "birth_country",
+            "group": "Colombia",
+            "incumbent_brier": 0.0007600140585100856,
+            "incumbent_log_loss": 0.00914683738433324,
+            "log_loss_difference": -0.004548627243923177,
+            "players": 46,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00012478679443245542,
+            "candidate_brier": 0.0004577397174156316,
+            "candidate_log_loss": 0.010370774955285818,
+            "dimension": "birth_country",
+            "group": "Cuba",
+            "incumbent_brier": 0.000582526511848087,
+            "incumbent_log_loss": 0.01289316934368288,
+            "log_loss_difference": -0.0025223943883970618,
+            "players": 53,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -9.44652584509401e-06,
+            "candidate_brier": 1.9648612790362143e-06,
+            "candidate_log_loss": 0.0009580300564644702,
+            "dimension": "birth_country",
+            "group": "Curacao",
+            "incumbent_brier": 1.1411387124130224e-05,
+            "incumbent_log_loss": 0.0019586292355747528,
+            "log_loss_difference": -0.0010005991791102826,
+            "players": 8,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00037705410941529923,
+            "candidate_brier": 0.004104178650317564,
+            "candidate_log_loss": 0.02037282481622724,
+            "dimension": "birth_country",
+            "group": "Dominican Republic",
+            "incumbent_brier": 0.0037271245409022644,
+            "incumbent_log_loss": 0.018745468723125703,
+            "log_loss_difference": 0.0016273560931015368,
+            "players": 1048,
+            "successes": 4,
+            "supported": false
+          },
+          {
+            "brier_difference": -2.0460733829963498e-05,
+            "candidate_brier": 4.269637228528349e-06,
+            "candidate_log_loss": 0.0015813916621141416,
+            "dimension": "birth_country",
+            "group": "Germany",
+            "incumbent_brier": 2.4730371058491847e-05,
+            "incumbent_log_loss": 0.0035398022140567358,
+            "log_loss_difference": -0.001958410551942594,
+            "players": 3,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -1.7120234836068614e-06,
+            "candidate_brier": 4.2623673640142755e-07,
+            "candidate_log_loss": 0.0006530812961646398,
+            "dimension": "birth_country",
+            "group": "Guatemala",
+            "incumbent_brier": 2.138260220008289e-06,
+            "incumbent_log_loss": 0.0014633492918645222,
+            "log_loss_difference": -0.0008102679956998824,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -1.0368001251730746e-06,
+            "candidate_brier": 7.921584045779653e-07,
+            "candidate_log_loss": 0.0008904291253308353,
+            "dimension": "birth_country",
+            "group": "Iceland",
+            "incumbent_brier": 1.8289585297510398e-06,
+            "incumbent_log_loss": 0.0013533052371731084,
+            "log_loss_difference": -0.00046287611184227305,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -1.075703645097171e-06,
+            "candidate_brier": 4.3743455859456e-05,
+            "candidate_log_loss": 0.0037856226507832734,
+            "dimension": "birth_country",
+            "group": "Italy",
+            "incumbent_brier": 4.4819159504553173e-05,
+            "incumbent_log_loss": 0.004100382176113378,
+            "log_loss_difference": -0.00031475952533010446,
+            "players": 5,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -9.956972960663258e-05,
+            "candidate_brier": 0.00018820192572821878,
+            "candidate_log_loss": 0.009919411297195627,
+            "dimension": "birth_country",
+            "group": "Japan",
+            "incumbent_brier": 0.00028777165533485136,
+            "incumbent_log_loss": 0.012492222121395294,
+            "log_loss_difference": -0.002572810824199667,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.0007304094082933796,
+            "candidate_brier": 0.010118981175639245,
+            "candidate_log_loss": 0.03770391104846245,
+            "dimension": "birth_country",
+            "group": "Mexico",
+            "incumbent_brier": 0.009388571767345866,
+            "incumbent_log_loss": 0.03626429154948607,
+            "log_loss_difference": 0.0014396194989763772,
+            "players": 94,
+            "successes": 1,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0028345272678222495,
+            "candidate_brier": 0.0015257978888566592,
+            "candidate_log_loss": 0.018386054276390444,
+            "dimension": "birth_country",
+            "group": "Netherlands",
+            "incumbent_brier": 0.0043603251566789085,
+            "incumbent_log_loss": 0.03186927001330108,
+            "log_loss_difference": -0.013483215736910636,
+            "players": 7,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -1.7222969774654622e-05,
+            "candidate_brier": 1.8696805517242283e-05,
+            "candidate_log_loss": 0.003538051091977065,
+            "dimension": "birth_country",
+            "group": "New Zealand",
+            "incumbent_brier": 3.5919775291896904e-05,
+            "incumbent_log_loss": 0.004905108570844723,
+            "log_loss_difference": -0.0013670574788676583,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0013965565929074748,
+            "candidate_brier": 0.0004319804279643254,
+            "candidate_log_loss": 0.007777727568284,
+            "dimension": "birth_country",
+            "group": "Nicaragua",
+            "incumbent_brier": 0.0018285370208718003,
+            "incumbent_log_loss": 0.016889053025218634,
+            "log_loss_difference": -0.009111325456934634,
+            "players": 26,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00036124344466751117,
+            "candidate_brier": 0.0008101573920602943,
+            "candidate_log_loss": 0.010578605305585393,
+            "dimension": "birth_country",
+            "group": "Panama",
+            "incumbent_brier": 0.0011714008367278055,
+            "incumbent_log_loss": 0.013707080895664227,
+            "log_loss_difference": -0.0031284755900788334,
+            "players": 41,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00012559533742063087,
+            "candidate_brier": 0.0009247387110028805,
+            "candidate_log_loss": 0.014501482898622955,
+            "dimension": "birth_country",
+            "group": "Puerto Rico",
+            "incumbent_brier": 0.0007991433735822497,
+            "incumbent_log_loss": 0.013811743275970251,
+            "log_loss_difference": 0.0006897396226527037,
+            "players": 26,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -1.4226299501476776e-05,
+            "candidate_brier": 2.6013986590688004e-06,
+            "candidate_log_loss": 0.0016141872967231135,
+            "dimension": "birth_country",
+            "group": "RU1",
+            "incumbent_brier": 1.6827698160545577e-05,
+            "incumbent_log_loss": 0.004110594674537448,
+            "log_loss_difference": -0.0024964073778143345,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00010961132491035149,
+            "candidate_brier": 3.201543781411404e-05,
+            "candidate_log_loss": 0.005674286967608858,
+            "dimension": "birth_country",
+            "group": "San Marino",
+            "incumbent_brier": 0.00014162676272446554,
+            "incumbent_log_loss": 0.011972084558836896,
+            "log_loss_difference": -0.006297797591228038,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00011296959359900396,
+            "candidate_brier": 0.00010332471687750465,
+            "candidate_log_loss": 0.010216891772400783,
+            "dimension": "birth_country",
+            "group": "Singapore",
+            "incumbent_brier": 0.0002162943104765086,
+            "incumbent_log_loss": 0.014816167027481609,
+            "log_loss_difference": -0.004599275255080826,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -2.0764797549394684e-06,
+            "candidate_brier": 0.00023819951754200193,
+            "candidate_log_loss": 0.015554053221908845,
+            "dimension": "birth_country",
+            "group": "Slovakia",
+            "incumbent_brier": 0.0002402759972969414,
+            "incumbent_log_loss": 0.015622232706058623,
+            "log_loss_difference": -6.817948414977737e-05,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -3.7110525307568686e-05,
+            "candidate_brier": 0.0001497824226372728,
+            "candidate_log_loss": 0.012314070847894425,
+            "dimension": "birth_country",
+            "group": "South Africa",
+            "incumbent_brier": 0.0001868929479448415,
+            "incumbent_log_loss": 0.013765186526509316,
+            "log_loss_difference": -0.001451115678614891,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.00013460048358734467,
+            "candidate_brier": 4.9885188252872344e-05,
+            "candidate_log_loss": 0.007087942201490598,
+            "dimension": "birth_country",
+            "group": "South Korea",
+            "incumbent_brier": 0.000184485671840217,
+            "incumbent_log_loss": 0.01321674683279915,
+            "log_loss_difference": -0.006128804631308552,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -2.0408836596234158e-05,
+            "candidate_brier": 5.689135833866138e-06,
+            "candidate_log_loss": 0.0022916483813885643,
+            "dimension": "birth_country",
+            "group": "Spain",
+            "incumbent_brier": 2.6097972430100295e-05,
+            "incumbent_log_loss": 0.0043770004165525605,
+            "log_loss_difference": -0.0020853520351639962,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.003917625862364198,
+            "candidate_brier": 0.0054418690713075,
+            "candidate_log_loss": 0.04792432588957869,
+            "dimension": "birth_country",
+            "group": "Taiwan",
+            "incumbent_brier": 0.009359494933671698,
+            "incumbent_log_loss": 0.06489433249043318,
+            "log_loss_difference": -0.016970006600854487,
+            "players": 9,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -3.5712585659181792e-09,
+            "candidate_brier": 8.532485893483598e-08,
+            "candidate_log_loss": 0.0002921468626551471,
+            "dimension": "birth_country",
+            "group": "U.S. Virgin Islands",
+            "incumbent_brier": 8.889611750075416e-08,
+            "incumbent_log_loss": 0.0002981989763997542,
+            "log_loss_difference": -6.052113744607092e-06,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -1.6665094977559272e-05,
+            "candidate_brier": 4.664490765938387e-06,
+            "candidate_log_loss": 0.0014767154758891826,
+            "dimension": "birth_country",
+            "group": "UNKNOWN",
+            "incumbent_brier": 2.132958574349766e-05,
+            "incumbent_log_loss": 0.0031455651534057914,
+            "log_loss_difference": -0.0016688496775166088,
+            "players": 7,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0006308759292700181,
+            "candidate_brier": 0.034218226464143846,
+            "candidate_log_loss": 0.13172554539174214,
+            "dimension": "birth_country",
+            "group": "USA",
+            "incumbent_brier": 0.034849102393413864,
+            "incumbent_log_loss": 0.13344608619631643,
+            "log_loss_difference": -0.0017205408045742887,
+            "players": 1675,
+            "successes": 68,
+            "supported": true
+          },
+          {
+            "brier_difference": -1.7227304011511624e-06,
+            "candidate_brier": 5.417137299023682e-07,
+            "candidate_log_loss": 0.0007066540524102083,
+            "dimension": "birth_country",
+            "group": "Uganda",
+            "incumbent_brier": 2.2644441310535308e-06,
+            "incumbent_log_loss": 0.0014940551881339676,
+            "log_loss_difference": -0.0007874011357237593,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 9.650505417566058e-05,
+            "candidate_brier": 0.0004953538284477583,
+            "candidate_log_loss": 0.020601098545583337,
+            "dimension": "birth_country",
+            "group": "United Kingdom",
+            "incumbent_brier": 0.00039884877427209776,
+            "incumbent_log_loss": 0.019543147419944937,
+            "log_loss_difference": 0.0010579511256384004,
+            "players": 2,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 0.00022199496793954545,
+            "candidate_brier": 0.003111335399340097,
+            "candidate_log_loss": 0.01266375434950653,
+            "dimension": "birth_country",
+            "group": "Venezuela",
+            "incumbent_brier": 0.0028893404314005514,
+            "incumbent_log_loss": 0.014699303160618385,
+            "log_loss_difference": -0.0020355488111118546,
+            "players": 589,
+            "successes": 2,
+            "supported": false
+          },
+          {
+            "brier_difference": -0.0009853269500052185,
+            "candidate_brier": 0.020260777736792464,
+            "candidate_log_loss": 0.07634646015263832,
+            "dimension": "bat_side",
+            "group": "L",
+            "incumbent_brier": 0.021246104686797683,
+            "incumbent_log_loss": 0.07885374461778272,
+            "log_loss_difference": -0.0025072844651443937,
+            "players": 771,
+            "successes": 20,
+            "supported": true
+          },
+          {
+            "brier_difference": 1.2325329001416918e-05,
+            "candidate_brier": 0.017101055044575323,
+            "candidate_log_loss": 0.06863004733287512,
+            "dimension": "bat_side",
+            "group": "R",
+            "incumbent_brier": 0.017088729715573906,
+            "incumbent_log_loss": 0.06926246666065218,
+            "log_loss_difference": -0.0006324193277770646,
+            "players": 2912,
+            "successes": 56,
+            "supported": true
+          },
+          {
+            "brier_difference": 0.002705375983847445,
+            "candidate_brier": 0.0038091136416149854,
+            "candidate_log_loss": 0.028220292638247102,
+            "dimension": "bat_side",
+            "group": "S",
+            "incumbent_brier": 0.0011037376577675408,
+            "incumbent_log_loss": 0.016037327869216984,
+            "log_loss_difference": 0.012182964769030118,
+            "players": 35,
+            "successes": 0,
+            "supported": false
+          },
+          {
+            "brier_difference": 3.753492245100326e-05,
+            "candidate_brier": 0.018142790579382284,
+            "candidate_log_loss": 0.07617656331459711,
+            "dimension": "throw_hand",
+            "group": "L",
+            "incumbent_brier": 0.01810525565693128,
+            "incumbent_log_loss": 0.0769478564577751,
+            "log_loss_difference": -0.0007712931431779896,
+            "players": 725,
+            "successes": 15,
+            "supported": true
+          },
+          {
+            "brier_difference": -0.00021935817297265986,
+            "candidate_brier": 0.01751307729597464,
+            "candidate_log_loss": 0.06833985293602693,
+            "dimension": "throw_hand",
+            "group": "R",
+            "incumbent_brier": 0.0177324354689473,
+            "incumbent_log_loss": 0.06927191162591977,
+            "log_loss_difference": -0.0009320586898928368,
+            "players": 2992,
+            "successes": 61,
+            "supported": true
+          },
+          {
+            "brier_difference": -7.262099927900118e-07,
+            "candidate_brier": 4.627185877900555e-07,
+            "candidate_log_loss": 0.0006804656796585513,
+            "dimension": "throw_hand",
+            "group": "S",
+            "incumbent_brier": 1.1889285805800673e-06,
+            "incumbent_log_loss": 0.001090974913362539,
+            "log_loss_difference": -0.0004105092337039877,
+            "players": 1,
+            "successes": 0,
+            "supported": false
+          }
+        ]
+      }
+    }
+  },
+  "status": "retrospective_nested_process_audit_not_confirmation"
+}

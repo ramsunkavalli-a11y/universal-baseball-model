@@ -11,6 +11,7 @@ import polars as pl
 from sklearn.linear_model import LogisticRegression
 
 from universal_baseball.hitter_opportunity_paths import hitter_level_tier
+from universal_baseball.player_demographics import normalize_birth_country
 
 
 ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v1"
@@ -383,8 +384,9 @@ def arrival_design(frame: pl.DataFrame, *, feature_set: str = "core") -> np.ndar
                 ]
             )
         if uses_origin:
+            birth_country = normalize_birth_country(row["birth_country"])
             country_flags = [
-                float(row["birth_country"] == country) for country in COUNTRIES
+                float(birth_country == country) for country in COUNTRIES
             ]
             values.extend(country_flags)
         if feature_set == "stable_interactions":
@@ -442,11 +444,14 @@ def fit_arrival_model(
     target_column: str = "arrived_within_horizon",
     outcome_name: str = "arrival",
     feature_set: str = "core",
+    regularization_c: float = 1.0,
 ) -> ArrivalFit:
+    if regularization_c <= 0:
+        raise ValueError("regularization_c must be positive")
     target = frame.get_column(target_column).to_numpy()
     if len(np.unique(target)) != 2:
         raise ValueError("arrival fitting requires both outcomes")
-    model = LogisticRegression(C=1.0, max_iter=2_000).fit(
+    model = LogisticRegression(C=regularization_c, max_iter=2_000).fit(
         arrival_design(frame, feature_set=feature_set), target
     )
     global_rate = float(target.mean())

@@ -1,8 +1,10 @@
 import polars as pl
+import pytest
 
 from universal_baseball.prospect_arrival import (
     arrival_design,
     build_arrival_cohort,
+    fit_arrival_model,
     six_year_probability,
 )
 
@@ -53,3 +55,44 @@ def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
 
 def test_two_year_probability_converts_to_six_year_windows() -> None:
     assert abs(six_year_probability(0.2) - 0.488) < 1e-12
+
+
+def test_origin_design_normalizes_statsapi_country_aliases() -> None:
+    base = {
+        "age_years": [21.0],
+        "level_tier": ["AA"],
+        "current_milb_workload": [300.0],
+        "prior_affiliated_workload": [600.0],
+        "prior_affiliated_seasons": [2.0],
+        "on_40man": [False],
+        "role_tier": ["STARTER"],
+        "production_rate_1": [0.25],
+        "production_rate_2": [0.08],
+        "production_rate_3": [0.01],
+        "production_rate_4": [0.02],
+        "bat_side": ["R"],
+        "pitch_hand": ["R"],
+        "gender": ["M"],
+        "birth_city": ["UNKNOWN"],
+        "birth_state_province": ["UNKNOWN"],
+        "height_inches": [72.0],
+        "weight_pounds": [190.0],
+        "strike_zone_top": [3.4],
+        "strike_zone_bottom": [1.6],
+        "primary_position_code": ["1"],
+    }
+    alias = arrival_design(
+        pl.DataFrame({**base, "birth_country": ["VEN"]}), feature_set="origin"
+    )
+    canonical = arrival_design(
+        pl.DataFrame({**base, "birth_country": ["Venezuela"]}),
+        feature_set="origin",
+    )
+    assert (alias == canonical).all()
+
+
+def test_arrival_fit_requires_positive_regularization() -> None:
+    with pytest.raises(ValueError, match="regularization_c"):
+        fit_arrival_model(
+            pl.DataFrame(), player_type="hitter", regularization_c=0.0
+        )

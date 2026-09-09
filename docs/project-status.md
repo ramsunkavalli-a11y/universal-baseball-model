@@ -36,6 +36,16 @@ birth-country development leaders, but neither is promoted because the same peri
 were searched to find them. Current-recorded physical measurements remain exploratory
 until their historical timing is safe.
 
+A stricter [nested robustness audit](prospect-arrival-nested-robustness-result.md) now
+supersedes that initial ranking. It normalizes 313 equivalent StatsAPI country labels,
+tests five feature families across four regression strengths, embargoes incomplete
+two-year outcomes, evaluates proper scores/calibration with paired uncertainty, and
+checks supported subgroups. It rejects the apparent hitter-arrival challenger,
+retains hitter meaningful role and pitcher arrival only as development leads, and
+leaves pitcher meaningful role inconclusive. No demographic input changes production
+values. The reusable rules now govern all StatsAPI/PBP feature searches through the
+[model-search policy](model-search-validation-policy.md), not demographics alone.
+
 This work builds on the recovered-opportunity commit `7c2a874`. Main now contains the
 current model foundations, experiment records and plan. It does not change a website
 or promote a player ranking; the public v1 release remains historical.

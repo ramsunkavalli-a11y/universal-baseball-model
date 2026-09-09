@@ -27,6 +27,39 @@ DEMOGRAPHIC_SCHEMA: dict[str, pl.DataType] = {
 
 _HEIGHT = re.compile(r"^\s*(\d+)\s*'\s*(\d+)\s*\"?\s*$")
 
+# StatsAPI currently mixes display names and legacy three-letter baseball codes.
+# Keep the reported value in the source table, but use this canonical form in
+# downstream grouping so one country cannot silently become two model features.
+_BIRTH_COUNTRY_ALIASES = {
+    "BAH": "Bahamas",
+    "CAN": "Canada",
+    "COL": "Colombia",
+    "CUB": "Cuba",
+    "CUW": "Curacao",
+    "DOM": "Dominican Republic",
+    "ESP": "Spain",
+    "HKG": "Hong Kong",
+    "KUW": "Kuwait",
+    "MEX": "Mexico",
+    "NCA": "Nicaragua",
+    "PAN": "Panama",
+    "PUR": "Puerto Rico",
+    "Republic of Korea": "South Korea",
+    "United States of America": "USA",
+    "VEN": "Venezuela",
+}
+
+
+def normalize_birth_country(value: object) -> str:
+    """Return a stable country group without changing the reported source field."""
+
+    if value is None:
+        return "UNKNOWN"
+    reported = str(value).strip()
+    if not reported:
+        return "UNKNOWN"
+    return _BIRTH_COUNTRY_ALIASES.get(reported, reported)
+
 
 def parse_height_inches(value: object) -> float | None:
     if value in (None, ""):

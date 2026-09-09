@@ -28,6 +28,15 @@ Career production is the main modeling effort. The financial/control layer must
 have a clear interface, but should not displace batting/pitching development.
 Recover the existing richer opportunity model before designing another challenger.
 
+All new broad feature searches now follow the binding
+[model-search and validation policy](model-search-validation-policy.md). The framework
+is not limited to demographics: it covers legitimate forecast-date StatsAPI, PBP, and
+derived performance, development, role, workload, process, defense, baserunning, and
+context inputs. It requires time-ordering, an outcome embargo, nested selection,
+regression for sparse evidence, proper scores, calibration, uncertainty, and supported
+subgroup review. Skill, opportunity, workload, and contract value remain separate
+until final assembly.
+
 **Recovery completed for 2024:** original forecasts were found and hash-verified.
 All 3,985 player IDs and official PA targets match O2026D. The recovered model
 improves participation Brier by 12.6% and PA RMSE by 12.5%; lower-level exceptions
