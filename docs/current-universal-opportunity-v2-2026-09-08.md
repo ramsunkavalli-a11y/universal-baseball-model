@@ -37,10 +37,10 @@ player-level allocation.
 - Future whole-player WAR is 4,683.39, up 564.59 from the retained fallback: +177.24
   in 2027, +219.19 in 2028, +86.39 in 2029 and +81.78 in 2030.
 - The v2 prior lowers the separate remaining-2026 estimate by 1.46 WAR.
-- The integrated current-plus-future path has 51,076 annual rows and 8,363 fully
+- The controlled current-plus-future economics path has 50,898 annual rows and 8,332 fully
   calculable player paths.
 - The same 16 annual contract reviews across 11 players remain unresolved.
-- Discounted modeled contract/control value is $5.893 billion, versus $1.66 billion in
+- Discounted modeled contract/control value is $5.888 billion, versus $1.66 billion in
   the retained baseline.
 
 The $4.24 billion difference is a sensitivity to player-level opportunity, market

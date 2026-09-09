@@ -15,7 +15,7 @@ def _payload() -> dict[str, object]:
                 "id": 10,
                 "fullName": "Player Ten",
                 "birthDate": "2000-01-02",
-                "currentTeam": {"id": 135},
+                "currentTeam": {"id": 555, "parentOrgId": 135},
                 "rosterEntries": [
                     {
                         "team": {"id": 135},
@@ -53,6 +53,8 @@ def test_people_control_projection_combines_evidence_and_clips_future_events() -
     )
     person = result.people.row(0, named=True)
     assert person["birth_date"] == date(2000, 1, 2)
+    assert person["current_team_id"] == 555
+    assert person["current_team_parent_org_id"] == 135
     assert person["first_pro_contract_date"] == date(2019, 6, 1)
     assert result.roster_entries.height == 1
     assert result.transactions.get_column("transaction_id").to_list() == [1]

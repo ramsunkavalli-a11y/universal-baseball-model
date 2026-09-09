@@ -10,14 +10,16 @@ labeled `retrospective_event_cutoff`, not a vintage historical reconstruction.
 
 - frozen rights-universe players: **8,393**;
 - value records retained: **8,393**;
-- available player values: **8,363**;
-- review players: **30**;
-- missing control/economics paths: **19**;
+- available player records: **8,369**;
+- controlled player values: **8,332**;
+- talent-only players with no incumbent rights: **37**;
+- review players: **24**;
+- missing control/economics paths: **13**;
 - contract-structure review players: **11**;
 - last completed regular-season game represented: **2026-09-08**;
-- expected remaining WAR on available paths: **4,649.93**;
-- expected remaining cost on available paths: **$17.121 billion**;
-- discounted transferable-rights value: **$5.893 billion**.
+- expected remaining WAR on available paths: **4,652.63**;
+- expected remaining cost on available paths: **$17.119 billion**;
+- discounted transferable-rights value: **$5.888 billion**.
 
 This is a coverage and accounting checkpoint, not validation of the dollar ranking.
 The league total includes the named future-market and post-2026 CBA planning
@@ -32,13 +34,19 @@ days and now reaches the control/economics path. The rule does not apply to the 
 19 missing players because they debuted in earlier seasons and lack a verified opening
 balance.
 
-## Remaining current reviews
+## Rights correction and remaining reviews
 
-The 19 missing paths are retained as reviews rather than dropped. Eighteen are broad
-full-roster assignments for players with prior MLB service but no FanGraphs opening
-balance; one prior-service case is also retained. Their current affiliation and opening
-service require stronger evidence before value is calculated. The separate 11-player
-contract queue remains the known vesting, linked-option and missing-salary work.
+The official season `fullRoster` feed can retain released players. Exact releases now
+override that broad candidate source. Releases by an affiliate are used only when the
+official current-team record supplies one unambiguous MLB parent; 205 mappings pass and
+three conflicted team IDs are ignored. Current affiliate mappings are never applied to
+older-season releases. This resolves 37 players as having talent but no incumbent trade
+rights. A later signing still supersedes a prior release.
+
+The 13 missing paths remain reviews rather than being dropped: 12 players have prior
+MLB service but no verified FanGraphs opening balance, and Adam Maier has conflicting
+same-day ownership transactions. The separate 11-player contract queue remains the
+known vesting, linked-option and missing-salary work.
 
 ## Next replay input
 

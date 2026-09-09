@@ -38,6 +38,11 @@ def _args() -> argparse.Namespace:
         default=Path("reports/generated/current-rest-of-season-v2"),
     )
     parser.add_argument(
+        "--uncertainty-root",
+        type=Path,
+        default=Path("reports/generated/current-war-uncertainty-v2"),
+    )
+    parser.add_argument(
         "--output-root",
         type=Path,
         default=Path("reports/generated/phase1-sequential-replay"),
@@ -87,7 +92,20 @@ def main() -> int:
     annual_path = dated_economics / "annual-contract-economics.parquet"
     aggregate_path = dated_economics / "aggregate-contract-economics.parquet"
     schedule_path = dated_ros / "official-mlb-schedule.json"
-    inputs = [control_path, annual_path, aggregate_path, schedule_path]
+    uncertainty_path = (
+        args.uncertainty_root
+        / args.as_of_date.isoformat()
+        / "tables/whole-player-war-uncertainty.parquet"
+    )
+    ros_war_path = dated_ros / "tables/whole-player-rest-of-season-war.parquet"
+    inputs = [
+        control_path,
+        annual_path,
+        aggregate_path,
+        schedule_path,
+        uncertainty_path,
+        ros_war_path,
+    ]
     for path in inputs:
         if not path.is_file():
             raise FileNotFoundError(path)
@@ -95,6 +113,8 @@ def main() -> int:
     control = pl.read_parquet(control_path)
     annual = pl.read_parquet(annual_path)
     aggregate = pl.read_parquet(aggregate_path)
+    uncertainty = pl.read_parquet(uncertainty_path)
+    ros_war = pl.read_parquet(ros_war_path)
     schedule = json.loads(schedule_path.read_text(encoding="utf-8"))
     last_game = _last_completed_game(schedule, args.as_of_date)
     checkpoint_id = f"phase1-current-{args.as_of_date.isoformat()}"
@@ -119,13 +139,48 @@ def main() -> int:
     aggregate_by_player = {
         int(row["player_id"]): row for row in aggregate.iter_rows(named=True)
     }
+    talent_rows = pl.concat(
+        [
+            uncertainty.select(
+                "player_id",
+                pl.col("projected_war_mean").alias("mean"),
+                pl.col("projected_war_lower").alias("lower"),
+                pl.col("projected_war_upper").alias("upper"),
+                pl.col("uncertainty_model_id").alias("source_id"),
+            ),
+            ros_war.select(
+                "player_id",
+                pl.col("projected_remaining_war_mean").alias("mean"),
+                pl.col("projected_remaining_war_lower").alias("lower"),
+                pl.col("projected_remaining_war_upper").alias("upper"),
+                pl.col("projection_source_id").alias("source_id"),
+            ),
+        ],
+        how="vertical",
+    )
+    talent_by_player = {
+        int(group.item(0, "player_id")): (
+            float(group.get_column("mean").sum()),
+            float(group.get_column("lower").sum()),
+            float(group.get_column("upper").sum()),
+            "+".join(sorted(set(group.get_column("source_id").to_list()))),
+        )
+        for group in talent_rows.partition_by("player_id", maintain_order=True)
+    }
 
     universe_rows: list[dict[str, object]] = []
     record_rows: list[dict[str, object]] = []
     missing_economics: list[dict[str, object]] = []
     for row in control.iter_rows(named=True):
         player_id = int(row["player_id"])
-        rights_state = "controlled" if row["organization_id"] is not None else "unknown_rights"
+        released = row["organization_status"] == "resolved_official_release_no_rights"
+        rights_state = (
+            "no_incumbent_rights"
+            if released
+            else "controlled"
+            if row["organization_id"] is not None
+            else "unknown_rights"
+        )
         universe_rows.append(
             {
                 "checkpoint_id": checkpoint_id,
@@ -135,8 +190,15 @@ def main() -> int:
             }
         )
         economics = aggregate_by_player.get(player_id)
-        status = "review" if economics is None else str(economics["calculation_status"])
-        if economics is None:
+        talent = talent_by_player.get(player_id)
+        status = (
+            "available"
+            if released and talent is not None
+            else "review"
+            if economics is None
+            else str(economics["calculation_status"])
+        )
+        if economics is None and not released:
             missing_economics.append(
                 {
                     "player_id": player_id,
@@ -146,7 +208,7 @@ def main() -> int:
                     "reason": "missing_control_or_economics_path",
                 }
             )
-        war = annual_war.get(player_id)
+        war = talent[:3] if released and talent is not None else annual_war.get(player_id)
         available = status == "available"
         record_rows.append(
             {
@@ -160,9 +222,20 @@ def main() -> int:
                 "last_completed_game_date": last_game,
                 "model_version": MODEL_VERSION,
                 "evidence_bundle_id": evidence_bundle_id,
-                "projection_source_id": projection_sources.get(player_id, "missing_projection_path"),
-                "contract_source_id": contract_sources.get(player_id, "missing_contract_path"),
+                "projection_source_id": (
+                    talent[3]
+                    if released and talent is not None
+                    else projection_sources.get(player_id, "missing_projection_path")
+                ),
+                "contract_source_id": (
+                    str(row["organization_evidence"])
+                    if released
+                    else contract_sources.get(player_id, "missing_contract_path")
+                ),
                 "coverage_tier": (
+                    "talent_only_no_incumbent_rights"
+                    if released
+                    else
                     "integrated_available"
                     if available
                     else "review_missing_or_blocked_economics"
@@ -172,18 +245,30 @@ def main() -> int:
                 "expected_remaining_war_lower": war[1] if available and war else None,
                 "expected_remaining_war_upper": war[2] if available and war else None,
                 "expected_remaining_cost_dollars": (
-                    economics["salary_cost_dollars"] if available else None
+                    0.0
+                    if released
+                    else economics["salary_cost_dollars"]
+                    if available
+                    else None
                 ),
                 "transferable_value_dollars": (
-                    economics["discounted_contract_value_dollars"] if available else None
+                    0.0
+                    if released
+                    else economics["discounted_contract_value_dollars"]
+                    if available
+                    else None
                 ),
                 "transferable_value_lower_dollars": (
-                    economics["discounted_contract_value_lower_dollars"]
+                    0.0
+                    if released
+                    else economics["discounted_contract_value_lower_dollars"]
                     if available
                     else None
                 ),
                 "transferable_value_upper_dollars": (
-                    economics["discounted_contract_value_upper_dollars"]
+                    0.0
+                    if released
+                    else economics["discounted_contract_value_upper_dollars"]
                     if available
                     else None
                 ),
@@ -249,6 +334,13 @@ def main() -> int:
         "last_completed_game_date": last_game.isoformat() if last_game else None,
         "universe_players": control.height,
         "available_players": result.checkpoints.item(0, "available_players"),
+        "controlled_value_players": result.records.filter(
+            (pl.col("rights_state") == "controlled")
+            & (pl.col("calculation_status") == "available")
+        ).height,
+        "no_incumbent_rights_players": result.records.filter(
+            pl.col("rights_state") == "no_incumbent_rights"
+        ).height,
         "review_players": result.checkpoints.item(0, "review_players"),
         "missing_economics_players": len(missing_economics),
         "missing_economics": missing_economics,

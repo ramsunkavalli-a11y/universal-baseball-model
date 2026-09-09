@@ -23,6 +23,7 @@ PEOPLE_CONTROL_SCHEMA: dict[str, pl.DataType] = {
     "birth_date": pl.Date,
     "mlb_debut_date": pl.Date,
     "current_team_id": pl.Int64,
+    "current_team_parent_org_id": pl.Int64,
     "first_pro_contract_date": pl.Date,
     "first_pro_contract_basis": pl.String,
     "source_snapshot_id": pl.String,
@@ -121,6 +122,9 @@ def project_people_control_payload(
                 ),
                 "current_team_id": int(current_team["id"])
                 if current_team.get("id") is not None
+                else None,
+                "current_team_parent_org_id": int(current_team["parentOrgId"])
+                if current_team.get("parentOrgId") is not None
                 else None,
                 "first_pro_contract_date": first_contract,
                 "first_pro_contract_basis": "earliest_statsapi_signing_transaction"

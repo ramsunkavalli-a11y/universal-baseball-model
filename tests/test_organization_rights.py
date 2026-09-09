@@ -176,6 +176,59 @@ def test_unique_full_roster_candidate_remains_provisional() -> None:
     assert result["organization_status"] == "provisional_unique_full_roster"
 
 
+def test_exact_mlb_release_overrides_stale_unique_full_roster_candidate() -> None:
+    result = resolve_current_organizations(
+        _candidates((1, 100)),
+        _forty(),
+        _transactions((10, 1, "2026-08-01", "REL", None, 100)),
+        as_of_date=AS_OF,
+        mlb_team_ids=MLB_TEAMS,
+    ).row(0, named=True)
+    assert result["organization_id"] is None
+    assert result["organization_status"] == "resolved_official_release_no_rights"
+
+
+def test_later_signing_supersedes_prior_release() -> None:
+    result = resolve_current_organizations(
+        _candidates((1, 100)),
+        _forty(),
+        _transactions(
+            (10, 1, "2026-07-01", "REL", None, 100),
+            (11, 1, "2026-08-01", "SFA", None, 200),
+        ),
+        as_of_date=AS_OF,
+        mlb_team_ids=MLB_TEAMS,
+    ).row(0, named=True)
+    assert result["organization_id"] == 200
+    assert result["organization_status"] == "resolved_official_transaction"
+
+
+def test_exact_affiliate_release_uses_official_parent_mapping() -> None:
+    result = resolve_current_organizations(
+        _candidates((1, 100)),
+        _forty(),
+        _transactions((10, 1, "2026-08-01", "REL", None, 999)),
+        as_of_date=AS_OF,
+        mlb_team_ids=MLB_TEAMS,
+        affiliate_parent_organization_ids={999: 100},
+    ).row(0, named=True)
+    assert result["organization_id"] is None
+    assert result["organization_status"] == "resolved_official_release_no_rights"
+
+
+def test_old_affiliate_release_does_not_use_current_parent_mapping() -> None:
+    result = resolve_current_organizations(
+        _candidates((1, 100)),
+        _forty(),
+        _transactions((10, 1, "2025-08-01", "REL", None, 999)),
+        as_of_date=AS_OF,
+        mlb_team_ids=MLB_TEAMS,
+        affiliate_parent_organization_ids={999: 100},
+    ).row(0, named=True)
+    assert result["organization_id"] == 100
+    assert result["organization_status"] == "provisional_unique_full_roster"
+
+
 def test_future_transaction_is_rejected() -> None:
     with pytest.raises(ValueError, match="cross the as-of cutoff"):
         resolve_current_organizations(

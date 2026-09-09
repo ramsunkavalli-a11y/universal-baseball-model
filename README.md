@@ -69,7 +69,7 @@ The [affiliated translation result](docs/affiliated-level-translation-result.md)
 describes the provisional same-player/same-season bridge that replaces most pure
 minor-league population priors while preserving a fallback.
 The [current contract-economics input result](docs/current-contract-economics-inputs-2026-09-08.md)
-connects whole-player expected WAR to all 50,232 future control rows while keeping
+connects whole-player expected WAR to all 50,058 future control rows while keeping
 missing salaries, buyouts and market assumptions explicit.
 The [current baserunning result](docs/current-baserunning-rates-2026-09-08.md)
 reuses the frozen steal and advancement models in the live hitter path.
@@ -95,7 +95,7 @@ now has immutable 2025-snapshot forecasts for selected and benchmark models; eva
 waits for final 2026 regular-season outcomes.
 The [Phase 1 replay checkpoint](docs/phase1-sequential-replay-current-checkpoint.md)
 retains all 8,393 current rights-universe players in one dated value interface, with
-8,363 available values and 30 explicit reviews. It proves current coverage and
+8,369 available records and 24 explicit reviews. It proves current coverage and
 accounting, not historical accuracy or ranking readiness.
 The [current availability boundary](docs/current-availability-status-2026-09-08.md)
 zeroes only official season-out cases and carries unresolved injury returns as an
@@ -114,7 +114,7 @@ The [arbitration cost baseline](docs/arbitration-cost-baseline-2026-09-09.md) ap
 the current FanGraphs class shares to prior-season WAR value, preserving salary lag
 and the four-year Super Two progression.
 The [full contract-economics scenario](docs/current-contract-economics-scenario-2026-09-09.md)
-calculates 50,232 future annual rows and isolates 16 contract exceptions while
+calculates 50,058 future annual rows and isolates 16 contract exceptions while
 keeping the unsigned successor CBA explicitly hypothetical.
 
 The three questions stay separate: batting ability against MLB competition,

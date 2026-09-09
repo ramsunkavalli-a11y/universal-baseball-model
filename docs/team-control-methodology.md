@@ -109,16 +109,21 @@ The reproducible 2026-09-08 build uses the FanGraphs `2026 MLB Service Time` val
 the 2026 opening balance dated 2026-03-24, then adds StatsAPI roster-state service
 through 2026-09-08. It does not treat the FanGraphs value as an in-season total.
 
-The unified table contains 8,399 affiliated players and 915 payroll records. All 1,427
-nonzero FanGraphs service references resolve to player identities with no conflicting
-baselines. Twenty-one players with multiple full-roster organization candidates remain
-explicit ownership reviews rather than guessed assignments.
+The refreshed unified table contains 8,393 player records and 915 payroll records. All
+1,427 nonzero FanGraphs service references resolve to player identities with no
+conflicting baselines. Exact 40-man and acquisition evidence resolves the earlier 21
+multi-organization cases. Because the season `fullRoster` source retains released
+players, exact releases now identify 37 talent-only players with no incumbent rights.
+Current-season affiliate releases require one unambiguous official parent mapping;
+older affiliate releases do not borrow the current mapping. One same-day ownership
+conflict remains in review.
 
 The league-wide Super Two pool contains 133 players. The top-22% calculation selects
 30 players at a 488-day (`2.144`) cutoff; Randy Rodríguez and Iván Herrera are tied at
-the cutoff and both remain selected. Future paths through 2031 contain 8,335 rows and
-are labeled as full-service future scenarios, with contract terms overriding statutory
-labels only for the applicable organization and year.
+the cutoff and both remain selected. Future paths through 2032 contain 50,058 rows for
+8,343 controlled players and are labeled as full-service future scenarios, with
+contract terms overriding statutory labels only for the applicable organization and
+year.
 
 Generated artifacts are written to
 `reports/generated/league-control/2026-09-08/`. The remaining opening-state,

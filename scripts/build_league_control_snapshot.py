@@ -167,6 +167,21 @@ def main() -> int:
     people = fetch_people_control_evidence(
         candidate_ids, as_of_date=args.as_of, batch_size=50
     )
+    affiliate_parent_rows = people.people.filter(
+        pl.col("current_team_id").is_not_null()
+        & pl.col("current_team_parent_org_id").is_in(sorted(mlb_team_ids))
+    ).select("current_team_id", "current_team_parent_org_id").unique()
+    affiliate_parent_counts = affiliate_parent_rows.group_by("current_team_id").len()
+    affiliate_parent_conflicts = affiliate_parent_counts.filter(pl.col("len") > 1).height
+    accepted_affiliate_team_ids = affiliate_parent_counts.filter(
+        pl.col("len") == 1
+    ).get_column("current_team_id").to_list()
+    affiliate_parent_organizations = {
+        int(row["current_team_id"]): int(row["current_team_parent_org_id"])
+        for row in affiliate_parent_rows.filter(
+            pl.col("current_team_id").is_in(accepted_affiliate_team_ids)
+        ).iter_rows(named=True)
+    }
 
     register = read_chadwick_people_archive(args.chadwick_archive)
     baseline_frames = []
@@ -288,6 +303,7 @@ def main() -> int:
         people.transactions,
         as_of_date=args.as_of,
         mlb_team_ids=mlb_team_ids,
+        affiliate_parent_organization_ids=affiliate_parent_organizations,
     )
     on_40man = forty.select("player_id").unique().with_columns(pl.lit(True).alias("on_40man"))
 
@@ -434,7 +450,13 @@ def main() -> int:
         "as_of_date": args.as_of.isoformat(),
         "players": unified.height,
         "unique_organization_players": unified.filter(pl.col("organization_id").is_not_null()).height,
-        "multiple_organization_reviews": unified.filter(pl.col("organization_id").is_null()).height,
+        "no_incumbent_rights_players": unified.filter(
+            pl.col("organization_status") == "resolved_official_release_no_rights"
+        ).height,
+        "multiple_organization_reviews": unified.filter(
+            pl.col("organization_id").is_null()
+            & (pl.col("organization_status") != "resolved_official_release_no_rights")
+        ).height,
         "organization_resolution": {
             str(row["organization_status"]): int(row["len"])
             for row in unified.group_by("organization_status")
@@ -442,6 +464,8 @@ def main() -> int:
             .sort("organization_status")
             .iter_rows(named=True)
         },
+        "accepted_affiliate_parent_mappings": len(affiliate_parent_organizations),
+        "affiliate_parent_mapping_conflicts": affiliate_parent_conflicts,
         "service_baselines": unified.filter(pl.col("baseline_service_days").is_not_null()).height,
         "zero_opening_service_from_official_no_debut": unified.filter(
             pl.col("service_time_basis")
