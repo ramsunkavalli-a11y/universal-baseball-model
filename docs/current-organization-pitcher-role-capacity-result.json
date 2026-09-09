@@ -1,0 +1,150 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundary": "Research current-organization pitcher view only. Role capacities constrain opportunity, not pitcher talent or organization-neutral trade value.",
+  "checks": {
+    "capacity_shares_sum_to_one": true,
+    "current_player_opportunity_never_increased": true,
+    "current_role_probabilities_valid": true,
+    "current_roles_applied_fractionally": true,
+    "current_team_capacity_not_exceeded": true,
+    "organization_neutral_value_changed": false
+  },
+  "contract": "docs/current-organization-pitcher-role-capacity-contract.md",
+  "current_effect_by_role": [
+    {
+      "allocated_bf": 266343.67994517507,
+      "minimum_scale": 0.6318084366988488,
+      "over_capacity_team_seasons": 89,
+      "pitcher_role": "RELIEVER",
+      "raw_bf": 289191.80089415517,
+      "reduction_bf": 22848.120948980097
+    },
+    {
+      "allocated_bf": 258968.55000922372,
+      "minimum_scale": 1.0,
+      "over_capacity_team_seasons": 0,
+      "pitcher_role": "STARTER",
+      "raw_bf": 258968.55000922372,
+      "reduction_bf": 0.0
+    },
+    {
+      "allocated_bf": 95847.64385525756,
+      "minimum_scale": 0.761048730354306,
+      "over_capacity_team_seasons": 39,
+      "pitcher_role": "SWINGMAN",
+      "raw_bf": 98588.26220891747,
+      "reduction_bf": 2740.618353659913
+    }
+  ],
+  "current_effect_by_season": [
+    {
+      "additional_role_capacity_reduction_bf": 8310.441321990162,
+      "reduced_player_rows": 3759,
+      "role_capped_bf": 142156.90020027588,
+      "season": 2027,
+      "team_capped_bf": 150467.34152226604
+    },
+    {
+      "additional_role_capacity_reduction_bf": 7419.715807729546,
+      "reduced_player_rows": 3374,
+      "role_capped_bf": 136477.4649059191,
+      "season": 2028,
+      "team_capped_bf": 143897.18071364865
+    },
+    {
+      "additional_role_capacity_reduction_bf": 5826.456946132879,
+      "reduced_player_rows": 3176,
+      "role_capped_bf": 127454.25242387954,
+      "season": 2029,
+      "team_capped_bf": 133280.70937001242
+    },
+    {
+      "additional_role_capacity_reduction_bf": 3345.54576987341,
+      "reduced_player_rows": 2531,
+      "role_capped_bf": 118610.25214482915,
+      "season": 2030,
+      "team_capped_bf": 121955.79791470256
+    },
+    {
+      "additional_role_capacity_reduction_bf": 686.5794569140417,
+      "reduced_player_rows": 923,
+      "role_capped_bf": 94028.03097224078,
+      "season": 2031,
+      "team_capped_bf": 94714.61042915483
+    },
+    {
+      "additional_role_capacity_reduction_bf": 0.0,
+      "reduced_player_rows": 0,
+      "role_capped_bf": 2432.97316251185,
+      "season": 2032,
+      "team_capped_bf": 2432.97316251185
+    }
+  ],
+  "descriptive_2025_stability": {
+    "by_role": [
+      {
+        "mean_absolute_share_error": 0.05005665519108557,
+        "mean_signed_share_error": -0.015974060977135284,
+        "p90_absolute_share_error": 0.08860380667010131,
+        "pitcher_role": "RELIEVER",
+        "teams": 30
+      },
+      {
+        "mean_absolute_share_error": 0.04547658842925014,
+        "mean_signed_share_error": -0.004140319505087261,
+        "p90_absolute_share_error": 0.0910729912187187,
+        "pitcher_role": "STARTER",
+        "teams": 30
+      },
+      {
+        "mean_absolute_share_error": 0.048381125065848726,
+        "mean_signed_share_error": 0.020114380482222537,
+        "p90_absolute_share_error": 0.08759948190035786,
+        "pitcher_role": "SWINGMAN",
+        "teams": 30
+      }
+    ],
+    "mean_team_total_variation": 0.0719571843430922,
+    "p90_team_total_variation": 0.11120299763017619,
+    "teams": 30
+  },
+  "frozen_capacity_shares": [
+    {
+      "capacity_share": 0.30492371223303477,
+      "pitcher_role": "RELIEVER",
+      "raw_median_share": 0.3024040999872558,
+      "share_p10": 0.21618985695708712,
+      "share_p90": 0.3703206311901964,
+      "team_seasons": 120
+    },
+    {
+      "capacity_share": 0.573247359164513,
+      "pitcher_role": "STARTER",
+      "raw_median_share": 0.5685105643267684,
+      "share_p10": 0.4921887582541472,
+      "share_p90": 0.6296586282492953,
+      "team_seasons": 120
+    },
+    {
+      "capacity_share": 0.12182892860245227,
+      "pitcher_role": "SWINGMAN",
+      "raw_median_share": 0.12082224513349898,
+      "share_p10": 0.03142301361663923,
+      "share_p90": 0.23292905798305366,
+      "team_seasons": 120
+    }
+  ],
+  "report_schema_version": "0.1",
+  "source": {
+    "confirmation_season": 2025,
+    "development_seasons": [
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "source_family": "certified StatsAPI affiliated season stats",
+    "team_seasons_2021_2025": 150
+  },
+  "status": "research_pitcher_role_capacity_complete"
+}

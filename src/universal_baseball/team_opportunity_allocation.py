@@ -10,6 +10,12 @@ import polars as pl
 POSITION_GROUPS = (
     "CATCHER", "MIDDLE_INFIELD", "CORNER_INFIELD", "OUTFIELD", "DH_FLEX"
 )
+PITCHER_ROLE_GROUPS = ("STARTER", "SWINGMAN", "RELIEVER")
+PITCHER_ROLE_PROBABILITIES = {
+    "STARTER": "starter_probability_if_active",
+    "SWINGMAN": "swingman_probability_if_active",
+    "RELIEVER": "reliever_probability_if_active",
+}
 POSITION_ORDER = {value: index for index, value in enumerate(
     ("C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH")
 )}
@@ -38,6 +44,13 @@ class TeamOpportunityAllocation:
 @dataclass(frozen=True, slots=True)
 class PositionCapacityAllocation:
     players: pl.DataFrame
+    groups: pl.DataFrame
+
+
+@dataclass(frozen=True, slots=True)
+class PitcherRoleCapacityAllocation:
+    players: pl.DataFrame
+    components: pl.DataFrame
     groups: pl.DataFrame
 
 
@@ -338,4 +351,195 @@ def allocate_hitter_position_capacity(
     return PositionCapacityAllocation(
         players=allocated.sort("season", "organization_id", "player_id"),
         groups=groups.sort("season", "organization_id", "position_group"),
+    )
+
+
+def historical_pitcher_role_shares(pitching_stats: pl.DataFrame) -> pl.DataFrame:
+    """Attribute observed MLB team BF to mutually exclusive pitcher roles."""
+
+    required = {
+        "season", "stat_group", "sport_id", "team_id", "player_id", "games",
+        "starts", "batters_faced",
+    }
+    if missing := sorted(required - set(pitching_stats.columns)):
+        raise ValueError(f"pitching stats missing fields: {missing}")
+    pitchers = (
+        pitching_stats.filter(
+            (pl.col("sport_id") == 1)
+            & (pl.col("stat_group") == "pitching")
+            & (pl.col("batters_faced") > 0)
+        )
+        .group_by("season", "team_id", "player_id")
+        .agg(
+            pl.col("games").sum().cast(pl.Float64).alias("games"),
+            pl.col("starts").sum().cast(pl.Float64).alias("starts"),
+            pl.col("batters_faced").sum().cast(pl.Float64).alias("batters_faced"),
+        )
+        .with_columns(
+            pl.when(pl.col("starts") <= 0)
+            .then(pl.lit("RELIEVER"))
+            .when((pl.col("games") <= 0) | (2.0 * pl.col("starts") >= pl.col("games")))
+            .then(pl.lit("STARTER"))
+            .otherwise(pl.lit("SWINGMAN"))
+            .alias("pitcher_role")
+        )
+    )
+    totals = pitchers.group_by("season", "team_id").agg(
+        pl.col("batters_faced").sum().alias("team_bf")
+    )
+    grouped = pitchers.group_by("season", "team_id", "pitcher_role").agg(
+        pl.col("batters_faced").sum().alias("role_bf")
+    )
+    universe = totals.select("season", "team_id").join(
+        pl.DataFrame({"pitcher_role": PITCHER_ROLE_GROUPS}), how="cross"
+    )
+    return (
+        universe.join(grouped, on=["season", "team_id", "pitcher_role"], how="left")
+        .join(totals, on=["season", "team_id"], how="left", validate="m:1")
+        .with_columns(pl.col("role_bf").fill_null(0.0))
+        .with_columns((pl.col("role_bf") / pl.col("team_bf")).alias("role_share"))
+        .sort("season", "team_id", "pitcher_role")
+    )
+
+
+def estimate_pitcher_role_capacity_shares(
+    historical_shares: pl.DataFrame, *, development_seasons: tuple[int, ...]
+) -> pl.DataFrame:
+    """Freeze normalized median pitcher-role shares on development seasons."""
+
+    required = {"season", "pitcher_role", "role_share"}
+    if missing := sorted(required - set(historical_shares.columns)):
+        raise ValueError(f"historical pitcher role shares missing fields: {missing}")
+    development = historical_shares.filter(pl.col("season").is_in(development_seasons))
+    if development.is_empty():
+        raise ValueError("pitcher role-capacity development evidence is empty")
+    medians = development.group_by("pitcher_role").agg(
+        pl.col("role_share").median().alias("raw_median_share"),
+        pl.col("role_share").quantile(0.1).alias("share_p10"),
+        pl.col("role_share").quantile(0.9).alias("share_p90"),
+        pl.len().alias("team_seasons"),
+    )
+    if set(medians.get_column("pitcher_role")) != set(PITCHER_ROLE_GROUPS):
+        raise ValueError("development evidence does not cover every pitcher role")
+    total = float(medians.get_column("raw_median_share").sum())
+    if total <= 0:
+        raise ValueError("pitcher role-capacity median shares have zero total")
+    return medians.with_columns(
+        (pl.col("raw_median_share") / total).alias("capacity_share")
+    ).sort("pitcher_role")
+
+
+def allocate_pitcher_role_capacity(
+    current_team_pitcher: pl.DataFrame,
+    capacity_shares: pl.DataFrame,
+    *,
+    team_capacity: float,
+) -> PitcherRoleCapacityAllocation:
+    """Fractionally cap controlled BF by uncertain pitcher role; never scale up."""
+
+    required = {
+        "player_id", "season", "organization_id", "current_org_expected_mlb_bf",
+        *PITCHER_ROLE_PROBABILITIES.values(),
+    }
+    if missing := sorted(required - set(current_team_pitcher.columns)):
+        raise ValueError(f"current team pitcher allocation missing fields: {missing}")
+    if current_team_pitcher.group_by("player_id", "season").len().filter(
+        pl.col("len") > 1
+    ).height:
+        raise ValueError("current team pitcher allocation duplicates a player-season")
+    if set(capacity_shares.get_column("pitcher_role")) != set(PITCHER_ROLE_GROUPS):
+        raise ValueError("capacity shares do not cover every pitcher role")
+    if abs(float(capacity_shares.get_column("capacity_share").sum()) - 1.0) > 1e-12:
+        raise ValueError("pitcher role capacity shares must sum to one")
+    probability_columns = list(PITCHER_ROLE_PROBABILITIES.values())
+    invalid = current_team_pitcher.filter(
+        pl.any_horizontal(
+            *[
+                pl.col(column).is_null()
+                | ~pl.col(column).is_finite()
+                | (pl.col(column) < 0)
+                for column in probability_columns
+            ]
+        )
+        | (pl.sum_horizontal(*[pl.col(column) for column in probability_columns]) - 1.0)
+        .abs()
+        .gt(1e-7)
+    )
+    if not invalid.is_empty():
+        raise ValueError("pitcher role probabilities are invalid or do not sum to one")
+
+    component_frames = []
+    for role, probability_column in PITCHER_ROLE_PROBABILITIES.items():
+        component_frames.append(
+            current_team_pitcher.select(
+                "player_id", "season", "organization_id",
+                pl.lit(role).alias("pitcher_role"),
+                pl.col(probability_column).alias("role_probability"),
+                (pl.col("current_org_expected_mlb_bf") * pl.col(probability_column))
+                .alias("raw_role_bf"),
+            )
+        )
+    components = pl.concat(component_frames)
+    totals = components.group_by("season", "organization_id", "pitcher_role").agg(
+        pl.col("raw_role_bf").sum().alias("raw_group_bf")
+    )
+    team_keys = components.select("season", "organization_id").unique()
+    groups = (
+        team_keys.join(capacity_shares.select("pitcher_role", "capacity_share"), how="cross")
+        .join(totals, on=["season", "organization_id", "pitcher_role"], how="left")
+        .with_columns(pl.col("raw_group_bf").fill_null(0.0))
+        .with_columns((pl.col("capacity_share") * team_capacity).alias("group_capacity_bf"))
+        .with_columns(
+            pl.min_horizontal("raw_group_bf", "group_capacity_bf").alias(
+                "allocated_group_bf"
+            )
+        )
+        .with_columns(
+            pl.when(pl.col("raw_group_bf") > 0)
+            .then(pl.col("allocated_group_bf") / pl.col("raw_group_bf"))
+            .otherwise(1.0)
+            .alias("pitcher_role_scale"),
+            (pl.col("group_capacity_bf") - pl.col("allocated_group_bf")).alias(
+                "unassigned_group_bf"
+            ),
+        )
+    )
+    checks = groups.group_by("season", "organization_id").agg(
+        pl.col("group_capacity_bf").sum().alias("capacity_sum"),
+        pl.col("raw_group_bf").sum().alias("raw_sum"),
+        pl.col("allocated_group_bf").sum().alias("allocated_sum"),
+    )
+    if checks.filter((pl.col("capacity_sum") - team_capacity).abs() > 1e-7).height:
+        raise AssertionError("pitcher role capacities do not sum to team capacity")
+    if checks.filter(pl.col("allocated_sum") > pl.col("raw_sum") + 1e-7).height:
+        raise AssertionError("pitcher role groups increased team opportunity")
+    components = (
+        components.join(
+            groups.select(
+                "season", "organization_id", "pitcher_role", "pitcher_role_scale"
+            ),
+            on=["season", "organization_id", "pitcher_role"], how="left", validate="m:1",
+        )
+        .with_columns(
+            (pl.col("raw_role_bf") * pl.col("pitcher_role_scale")).alias(
+                "allocated_role_bf"
+            )
+        )
+    )
+    player_totals = components.group_by("player_id", "season", "organization_id").agg(
+        pl.col("allocated_role_bf").sum().alias("role_capped_expected_mlb_bf")
+    )
+    players = current_team_pitcher.join(
+        player_totals, on=["player_id", "season", "organization_id"],
+        how="left", validate="1:1",
+    )
+    if players.filter(
+        pl.col("role_capped_expected_mlb_bf")
+        > pl.col("current_org_expected_mlb_bf") + 1e-7
+    ).height:
+        raise AssertionError("pitcher role capacity increased player opportunity")
+    return PitcherRoleCapacityAllocation(
+        players=players.sort("season", "organization_id", "player_id"),
+        components=components.sort("season", "organization_id", "player_id", "pitcher_role"),
+        groups=groups.sort("season", "organization_id", "pitcher_role"),
     )

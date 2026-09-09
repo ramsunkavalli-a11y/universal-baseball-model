@@ -475,3 +475,10 @@ test failure was observed.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).
+### Current-organization pitcher role capacity (research layer)
+
+- Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.
+- Split each current pitcher forecast across starter, swingman, and reliever probabilities instead of forcing a hard role.
+- Starter capacity was not exceeded; relief and swingman crowding reduced current-team BF mainly in 2027-2029.
+- This remains a team-context scenario only. It does not change pitcher talent, WAR rate, or portable player value.
+- Next gate: historical roster-construction replay before displaying team-fit adjustments.
