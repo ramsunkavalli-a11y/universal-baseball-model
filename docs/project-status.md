@@ -2,14 +2,15 @@
 
 Updated 2026-09-09. This is the current start-here document.
 
-The next feature gate is now frozen before scoring in
-[`prospect-pbp-hurdle-test-plan.md`](prospect-pbp-hurdle-test-plan.md). It tests whether
-pre-cutoff MiLB contact trajectory and spray direction improve next-season meaningful
-MLB opportunity or conditional component quality beyond aggregate results. It does
-not reopen the rejected exit-velocity candidates, does not prefer catchers, keeps
-players with missing PBP in the denominator, and excludes non-universal pitch-sequence
-features. Fresh 2021–2023 certified game-evidence artifacts are being regenerated
-because the original workflow artifacts expired.
+The frozen [prospect PBP hurdle test](prospect-pbp-hurdle-test-result.md) found a small,
+repeatable contact-shape improvement for next-season meaningful MLB opportunity:
+outer log loss improved `0.022748 -> 0.022371` on 3,168 players, with 17 positives.
+Brier improved only slightly and its paired interval crossed zero. The conditional
+quality cohort contained only 17 players and failed calibration badly, so that use is
+rejected. No values changed. The opportunity challenger next needs a descriptive
+stacking check against the stronger pedigree-inclusive incumbent and then a genuinely
+later confirmation. Catcher preference, outside FV inputs and non-universal pitch
+sequences remain excluded.
 
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
