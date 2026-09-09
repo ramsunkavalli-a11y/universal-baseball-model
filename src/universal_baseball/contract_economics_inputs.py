@@ -39,6 +39,18 @@ SECONDARY_CONTRACT_REVIEW_SCHEMA: dict[str, pl.DataType] = {
     "source_snapshot_id": pl.String,
 }
 
+CONTRACT_CONTROL_CORRECTION_SCHEMA: dict[str, pl.DataType] = {
+    "player_id": pl.Int64,
+    "player_name": pl.String,
+    "organization_id": pl.Int64,
+    "season": pl.Int64,
+    "expected_control_status": pl.String,
+    "corrected_control_status": pl.String,
+    "reason": pl.String,
+    "source_url": pl.String,
+    "source_snapshot_id": pl.String,
+}
+
 
 @dataclass(frozen=True, slots=True)
 class ContractEconomicsInputBuild:
@@ -82,15 +94,21 @@ def build_future_contract_economics_inputs(
     option_buyouts: pl.DataFrame | None = None,
     secondary_contract_terms: pl.DataFrame | None = None,
     secondary_contract_reviews: pl.DataFrame | None = None,
+    contract_control_corrections: pl.DataFrame | None = None,
 ) -> ContractEconomicsInputBuild:
     """Build annual inputs without inventing market assumptions."""
 
     option_statuses = {
-        "club_option", "player_option", "mutual_option", "vesting_option"
+        "club_option",
+        "player_option",
+        "player_opt_out",
+        "mutual_option",
+        "vesting_option",
     }
     source_linked_buyout_rows = 0
     secondary_term_rows = 0
     secondary_review_rows = 0
+    control_correction_rows = 0
 
     hitter = _projection_component(hitter_paths, "hitter")
     pitcher = _projection_component(pitcher_paths, "pitcher")
@@ -152,6 +170,63 @@ def build_future_contract_economics_inputs(
     control = control_path.select(*control_required).rename({"control_year": "season"})
     if control.group_by("player_id", "season").len().filter(pl.col("len") != 1).height:
         raise ValueError("control path violates player-season grain")
+    if contract_control_corrections is None:
+        control = control.with_columns(
+            pl.lit(None, dtype=pl.String).alias("control_correction_source_id")
+        )
+    else:
+        missing_correction = sorted(
+            set(CONTRACT_CONTROL_CORRECTION_SCHEMA)
+            - set(contract_control_corrections.columns)
+        )
+        if missing_correction:
+            raise ValueError(
+                f"contract control corrections missing fields: {missing_correction}"
+            )
+        corrections = contract_control_corrections.select(
+            list(CONTRACT_CONTROL_CORRECTION_SCHEMA)
+        ).cast(CONTRACT_CONTROL_CORRECTION_SCHEMA, strict=True)
+        if corrections.group_by("player_id", "organization_id", "season").len().filter(
+            pl.col("len") != 1
+        ).height:
+            raise ValueError("contract control corrections violate player-team-season grain")
+        if corrections.filter(
+            (pl.col("expected_control_status") == "")
+            | (pl.col("corrected_control_status") == "")
+            | (pl.col("expected_control_status") == pl.col("corrected_control_status"))
+            | (pl.col("reason") == "")
+            | (pl.col("source_url") == "")
+            | (pl.col("source_snapshot_id") == "")
+        ).height:
+            raise ValueError("contract control corrections require a change and provenance")
+        control_correction_rows = corrections.height
+        control = control.join(
+            corrections.select(
+                "player_id",
+                "organization_id",
+                "season",
+                "expected_control_status",
+                "corrected_control_status",
+                pl.col("source_snapshot_id").alias("control_correction_source_id"),
+            ),
+            on=["player_id", "organization_id", "season"],
+            how="left",
+            validate="1:1",
+        )
+        if control.filter(
+            pl.col("control_correction_source_id").is_not_null()
+        ).height != control_correction_rows:
+            raise ValueError("contract control correction did not match primary control")
+        if control.filter(
+            pl.col("expected_control_status").is_not_null()
+            & (pl.col("expected_control_status") != pl.col("control_status"))
+        ).height:
+            raise ValueError("contract control correction expected status does not match")
+        control = control.with_columns(
+            pl.coalesce("corrected_control_status", "control_status").alias(
+                "control_status"
+            )
+        ).drop("expected_control_status", "corrected_control_status")
     projected_super_two_players = set(
         control.filter(pl.col("statutory_status") == "super_two_eligible")
         .get_column("player_id")
@@ -259,6 +334,10 @@ def build_future_contract_economics_inputs(
             validate="m:1",
         )
         if joined.filter(
+            pl.col("secondary_contract_source_id").is_not_null()
+        ).height != secondary_term_rows:
+            raise ValueError("secondary contract term did not match primary control")
+        if joined.filter(
             pl.col("expected_control_status").is_not_null()
             & (pl.col("expected_control_status") != pl.col("control_status"))
         ).height:
@@ -330,6 +409,10 @@ def build_future_contract_economics_inputs(
             validate="m:1",
         )
         if joined.filter(
+            pl.col("structure_review_source_id").is_not_null()
+        ).height != secondary_review_rows:
+            raise ValueError("secondary contract review did not match primary control")
+        if joined.filter(
             pl.col("expected_primary_control_status").is_not_null()
             & (
                 pl.col("expected_primary_control_status")
@@ -394,6 +477,7 @@ def build_future_contract_economics_inputs(
                         str(row["term_source_id"] or row["projection_basis"]),
                         str(row["secondary_contract_source_id"] or ""),
                         str(row["structure_review_source_id"] or ""),
+                        str(row["control_correction_source_id"] or ""),
                     )
                     if value
                 ),
@@ -434,6 +518,7 @@ def build_future_contract_economics_inputs(
             "source_linked_buyout_rows": source_linked_buyout_rows,
             "secondary_contract_term_rows": secondary_term_rows,
             "secondary_contract_review_rows": secondary_review_rows,
+            "contract_control_correction_rows": control_correction_rows,
             "option_rows_with_buyout": annual.filter(
                 pl.col("buyout_dollars").is_not_null()
             ).height,

@@ -215,8 +215,10 @@ calculation could reset after the first projected year.
 The Phase 1 arbitration baseline now applies FanGraphs' 15%/35%/50%/75% shares to
 prior-season projected WAR value. A full research scenario calculates 50,042 of
 50,100 future annual rows and leaves exactly 58 option/salary exceptions in review.
-Seven source conflicts or linked multi-year option structures are now machine-blocked
-rather than relying on a prose audit.
+Five source conflicts or linked multi-year option structures are now machine-blocked
+rather than relying on a prose audit. Two Imai seasons are corrected to player
+opt-outs from official MLB reporting; the correction is fail-closed against the
+expected prior state.
 Fully specified mutual options use the conservative normal-expiration outcome.
 Post-2026 minimum salaries and unchanged service rules are clearly marked as a 3%
 planning scenario until a successor CBA supplies facts.

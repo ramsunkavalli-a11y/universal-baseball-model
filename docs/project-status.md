@@ -135,8 +135,10 @@ or promote a player ranking; the public v1 release remains historical.
   basis rows and 388 labeled first-horizon proxies. A complete research scenario now
   calculates 50,042 of 50,100 future annual rows; 58 rows and 50 player aggregates
   remain in review for option buyouts, vesting triggers or one missing salary.
-  Seven known source/structure disagreements are machine-enforced review rows, so a
+  Five known source/structure disagreements are machine-enforced review rows, so a
   later dollar-term fill cannot silently value the wrong option type.
+  Official MLB reporting corrects Tatsuya Imai's 2027–2028 states to player opt-outs;
+  a current official report confirms FanGraphs' Pivetta club-option conversion.
   Twenty-nine fully specified mutual options now use the conservative normal-expiration
   outcome instead of waiting for a separate decision model.
   The post-2026 minimum and unchanged service rules are explicitly a planning scenario,

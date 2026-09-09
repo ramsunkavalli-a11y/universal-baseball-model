@@ -219,6 +219,53 @@ def test_secondary_term_fills_only_missing_nonconflicting_fact() -> None:
             ),
         )
 
+    correction = pl.DataFrame(
+        {
+            "player_id": [1], "player_name": ["One"],
+            "organization_id": [100], "season": [2027],
+            "expected_control_status": ["club_option"],
+            "corrected_control_status": ["player_opt_out"],
+            "reason": ["official correction"],
+            "source_url": ["https://example.test/official/one"],
+            "source_snapshot_id": ["official:test"],
+        }
+    )
+    corrected = build_future_contract_economics_inputs(
+        hitters,
+        pitchers,
+        control,
+        terms,
+        contract_control_corrections=correction,
+    )
+    assert corrected.annual_inputs.item(0, "control_status") == "player_opt_out"
+    assert corrected.annual_inputs.item(0, "contract_source_id") == (
+        "fg:test+official:test"
+    )
+    assert corrected.coverage["contract_control_correction_rows"] == 1
+    assert corrected.coverage["option_rows_missing_buyout"] == 1
+
+    with pytest.raises(ValueError, match="correction expected status"):
+        build_future_contract_economics_inputs(
+            hitters,
+            pitchers,
+            control,
+            terms,
+            contract_control_corrections=correction.with_columns(
+                pl.lit("player_option").alias("expected_control_status")
+            ),
+        )
+
+    with pytest.raises(ValueError, match="did not match primary control"):
+        build_future_contract_economics_inputs(
+            hitters,
+            pitchers,
+            control,
+            terms,
+            contract_control_corrections=correction.with_columns(
+                pl.lit(2028).alias("season")
+            ),
+        )
+
 
 def test_super_two_track_advances_through_four_arbitration_classes() -> None:
     hitters = pl.DataFrame(

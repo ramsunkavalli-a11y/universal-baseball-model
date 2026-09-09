@@ -90,6 +90,11 @@ These records add provenance and a specific review reason; they never overwrite 
 primary contract/control source. Adding a salary or buyout later does not remove the
 block. The structure must first be reconciled explicitly.
 
+A separate narrow correction overlay is allowed only for stronger, dated evidence
+such as official MLB reporting. Every correction names the expected prior status and
+fails if that status has changed, so a stale exception cannot silently survive a
+future primary-source refresh.
+
 For tender and option states, `optionality premium` is the modeled control value minus
 the value if the salary/exercise branch were an unavoidable guarantee. It can be
 positive for club rights and negative for player rights.
