@@ -4,8 +4,10 @@ Updated 2026-09-09. This is the current start-here document.
 
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
-quality. The first positive-MLB-component target is now tested and rejected: hitter
-Brier worsened slightly and pitcher uncertainty spans no gain. Pre-MLB FV is
+quality. A proper hurdle test conditions MLB component quality on meaningful playing
+time. Its hitter challenger worsens both outer scores and its pitcher challenger is
+indistinguishable from core. Origin is explicitly rejected as a quality shortcut and
+draft evidence earns no WAR floor. Pre-MLB FV is
 now bracketed: the year-by-year paths are too conservative for true elite prospects,
 while the six-full-seasons override is too generous across the long tail.
 
@@ -440,7 +442,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,358 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,359 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 

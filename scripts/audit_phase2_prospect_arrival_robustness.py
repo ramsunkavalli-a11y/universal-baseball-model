@@ -47,10 +47,14 @@ REGULARIZATION = (0.03, 0.1, 0.3, 1.0)
 PRODUCTION_REGRESSION = (0.0, 50.0, 200.0, 600.0)
 INCUMBENT = CandidateSpec("core", 1.0)
 OUTCOMES = (
-    ("arrival", "arrived_within_horizon"),
-    ("meaningful_role", "meaningful_role_within_horizon"),
-    ("established_role", "established_role_within_horizon"),
-    ("positive_component_role", "positive_component_role_within_horizon"),
+    ("arrival", "arrived_within_horizon", None),
+    ("meaningful_role", "meaningful_role_within_horizon", None),
+    ("established_role", "established_role_within_horizon", None),
+    (
+        "positive_component_given_meaningful",
+        "positive_component_role_within_horizon",
+        "meaningful_role_within_horizon",
+    ),
 )
 
 
@@ -268,16 +272,20 @@ def main() -> int:
             for year in (2018, 2021, 2022, 2023)
         }
         player_results: dict[str, object] = {}
-        for outcome, target in OUTCOMES:
+        for outcome, target, conditioning_column in OUTCOMES:
             selection_rows: list[dict[str, object]] = []
             for evaluation_year, training_years in EVALUATION_SPECS:
                 if evaluation_year not in eligible_years:
                     continue
                 training = pl.concat([cohorts[year] for year in training_years])
+                evaluation = cohorts[evaluation_year]
+                if conditioning_column is not None:
+                    training = training.filter(pl.col(conditioning_column) == 1)
+                    evaluation = evaluation.filter(pl.col(conditioning_column) == 1)
                 for candidate in candidates:
                     metrics, _ = _score(
                         training,
-                        cohorts[evaluation_year],
+                        evaluation,
                         player_type=player_type,
                         outcome=outcome,
                         target=target,
@@ -299,9 +307,17 @@ def main() -> int:
             outer_training = pl.concat(
                 [cohorts[year] for year in outer_training_years]
             )
+            outer_evaluation = cohorts[OUTER_YEAR]
+            if conditioning_column is not None:
+                outer_training = outer_training.filter(
+                    pl.col(conditioning_column) == 1
+                )
+                outer_evaluation = outer_evaluation.filter(
+                    pl.col(conditioning_column) == 1
+                )
             incumbent_metrics, incumbent_probability = _score(
                 outer_training,
-                cohorts[OUTER_YEAR],
+                outer_evaluation,
                 player_type=player_type,
                 outcome=outcome,
                 target=target,
@@ -309,14 +325,15 @@ def main() -> int:
             )
             selected_metrics, selected_probability = _score(
                 outer_training,
-                cohorts[OUTER_YEAR],
+                outer_evaluation,
                 player_type=player_type,
                 outcome=outcome,
                 target=target,
                 candidate=selected,
             )
-            observed = cohorts[OUTER_YEAR].get_column(target).to_numpy()
+            observed = outer_evaluation.get_column(target).to_numpy()
             player_results[outcome] = {
+                "conditioning_column": conditioning_column,
                 "selection_evaluation_years": list(eligible_years),
                 "selection_scores": selection_rows,
                 "selected_candidate": {
@@ -341,7 +358,7 @@ def main() -> int:
                     observed, selected_probability
                 ),
                 "subgroups": _subgroup_rows(
-                    cohorts[OUTER_YEAR],
+                    outer_evaluation,
                     observed,
                     incumbent_probability,
                     selected_probability,
@@ -381,6 +398,11 @@ def main() -> int:
                 "at least 200 future MLB PA/BF in a season and at-least-league-"
                 "average neutral batting wOBA components or fielding-independent "
                 "pitching components"
+            ),
+            "quality_hurdle_factorization": (
+                "P(meaningful role) multiplied later by P(positive components "
+                "given meaningful role); conditional quality is scored only among "
+                "players meeting the observed workload hurdle"
             ),
             "positive_component_is_not_whole_player_war": True,
             "hitter_outcome_walk_field": (
