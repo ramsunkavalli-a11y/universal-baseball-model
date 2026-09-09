@@ -37,14 +37,16 @@ were searched to find them. Current-recorded physical measurements remain explor
 until their historical timing is safe.
 
 A stricter [nested robustness audit](prospect-arrival-nested-robustness-result.md) now
-supersedes that initial ranking. It normalizes 313 equivalent StatsAPI country labels,
-tests five feature families across four regression strengths, embargoes incomplete
-two-year outcomes, evaluates proper scores/calibration with paired uncertainty, and
-checks supported subgroups. It rejects the apparent hitter-arrival challenger,
-retains hitter meaningful role and pitcher arrival only as development leads, and
-leaves pitcher meaningful role inconclusive. No demographic input changes production
-values. The reusable rules now govern all StatsAPI/PBP feature searches through the
-[model-search policy](model-search-validation-policy.md), not demographics alone.
+supersedes that initial ranking. It normalizes 313 equivalent StatsAPI country labels
+and tests 144 combinations across demographics, baseball development/role interactions,
+logistic shrinkage, and production-rate regression. It embargoes incomplete two-year
+outcomes, evaluates proper scores/calibration with paired uncertainty, and checks
+supported subgroups. The wider search removes demographics from the hitter-role and
+pitcher-arrival leads, rejects the apparent hitter-arrival challenger, and leaves every
+candidate research-only because of mixed uncertainty or subgroup damage. No input
+changes production values. The reusable rules now govern all StatsAPI/PBP feature
+searches through the [model-search policy](model-search-validation-policy.md), not
+demographics alone.
 
 This work builds on the recovered-opportunity commit `7c2a874`. Main now contains the
 current model foundations, experiment records and plan. It does not change a website

@@ -36,8 +36,13 @@ FEATURE_SETS = (
     "origin",
     "stable_demographics",
     "stable_interactions",
+    "development_interactions",
+    "role_production_interactions",
+    "baseball_interactions",
+    "baseball_demographics",
 )
 REGULARIZATION = (0.03, 0.1, 0.3, 1.0)
+PRODUCTION_REGRESSION = (0.0, 50.0, 200.0, 600.0)
 INCUMBENT = CandidateSpec("core", 1.0)
 OUTCOMES = (
     ("arrival", "arrived_within_horizon"),
@@ -86,6 +91,7 @@ def _score(
         outcome_name=outcome,
         feature_set=candidate.feature_set,
         regularization_c=candidate.regularization_c,
+        production_regression=candidate.production_regression,
     )
     probability = (
         predict_arrival(fit, evaluation)
@@ -98,6 +104,7 @@ def _score(
             "model_id": candidate.model_id,
             "feature_set": candidate.feature_set,
             "regularization_c": candidate.regularization_c,
+            "production_regression": candidate.production_regression,
         }
     )
     return metrics, probability
@@ -173,9 +180,10 @@ def main() -> int:
         "normalized_distinct": normalized.n_unique(),
     }
     candidates = [
-        CandidateSpec(feature_set, regularization_c)
+        CandidateSpec(feature_set, regularization_c, production_regression)
         for feature_set in FEATURE_SETS
         for regularization_c in REGULARIZATION
+        for production_regression in PRODUCTION_REGRESSION
     ]
     if INCUMBENT not in candidates:
         raise AssertionError("incumbent must be in candidate grid")
@@ -266,6 +274,7 @@ def main() -> int:
                     "model_id": selected.model_id,
                     "feature_set": selected.feature_set,
                     "regularization_c": selected.regularization_c,
+                    "production_regression": selected.production_regression,
                 },
                 "outer_year": OUTER_YEAR,
                 "outer_training_years": list(outer_training_years),
@@ -300,6 +309,7 @@ def main() -> int:
         "candidate_grid": {
             "feature_sets": list(FEATURE_SETS),
             "regularization_c": list(REGULARIZATION),
+            "production_regression": list(PRODUCTION_REGRESSION),
             "candidate_count": len(candidates),
         },
         "guardrails": {

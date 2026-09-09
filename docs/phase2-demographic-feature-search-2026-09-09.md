@@ -57,6 +57,8 @@ equivalent StatsAPI country labels, selects feature/regression combinations only
 completed earlier outcomes, applies a two-year outcome embargo, reports calibration,
 uses paired player bootstraps, and audits supported subgroups.
 
-That stricter audit rejects demographic interactions for hitter arrival, retains
-hitter meaningful role and pitcher arrival only as promising development results, and
-finds pitcher meaningful role inconclusive. No demographic candidate is promoted.
+That stricter audit expands beyond demographics to 144 baseball, demographic,
+interaction, logistic-regularization, and production-rate-regression combinations.
+It rejects demographic interactions for hitter arrival. Baseball-only interactions
+displace demographics for hitter meaningful role and pitcher arrival, while the
+combined pitcher meaningful-role result remains uncertain. No candidate is promoted.

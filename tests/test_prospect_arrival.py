@@ -96,3 +96,58 @@ def test_arrival_fit_requires_positive_regularization() -> None:
         fit_arrival_model(
             pl.DataFrame(), player_type="hitter", regularization_c=0.0
         )
+
+
+def test_rate_regression_requires_training_priors_and_dampens_tiny_samples() -> None:
+    row = pl.DataFrame(
+        {
+            "age_years": [21.0], "level_tier": ["AA"],
+            "current_milb_workload": [1.0], "prior_affiliated_workload": [1.0],
+            "prior_affiliated_seasons": [1.0], "on_40man": [False],
+            "role_tier": ["CORNER"], "production_rate_1": [1.0],
+            "production_rate_2": [1.0], "production_rate_3": [1.0],
+            "production_rate_4": [1.0], "bat_side": ["R"],
+            "pitch_hand": ["R"], "gender": ["M"], "birth_country": ["USA"],
+            "birth_city": ["City"], "birth_state_province": ["State"],
+            "height_inches": [72.0], "weight_pounds": [190.0],
+            "strike_zone_top": [3.4], "strike_zone_bottom": [1.6],
+            "primary_position_code": ["3"],
+        }
+    )
+    with pytest.raises(ValueError, match="priors"):
+        arrival_design(row, production_regression=100.0)
+    raw = arrival_design(row)
+    regressed = arrival_design(
+        row,
+        production_priors=(0.1, 0.1, 0.1, 0.1),
+        production_regression=100.0,
+    )
+    assert (regressed[0, -4:] < raw[0, -4:]).all()
+
+
+def test_baseball_interactions_expand_core_without_current_profile_fields() -> None:
+    snapshots = pl.DataFrame(
+        {"snapshot_year": [2021], "player_id": [1], "age_years": [21.0],
+         "as_of_level_group": ["AA"]}
+    )
+    stats = pl.DataFrame(
+        {"season": [2021], "stat_group": ["hitting"], "player_id": [1],
+         "sport_id": [12], "plate_appearances": [100], "batters_faced": [0],
+         "position_code": ["SS"]}
+    )
+    membership = pl.DataFrame(
+        {"season": [2021], "player_id": [1], "on_40man": [False]}
+    )
+    skill = pl.DataFrame(
+        {"season": [2021], "player_id": [1], "sport_id": [12],
+         "plate_appearances": [100], "base_on_balls": [10],
+         "intentional_walks": [0], "strike_outs": [20], "home_runs": [2],
+         "doubles": [4], "triples": [1]}
+    )
+    cohort = build_arrival_cohort(
+        snapshots, stats, membership, skill, snapshot_year=2021, horizon=2,
+        player_type="hitter",
+    )
+    assert arrival_design(cohort, feature_set="baseball_interactions").shape[1] > (
+        arrival_design(cohort, feature_set="core").shape[1]
+    )

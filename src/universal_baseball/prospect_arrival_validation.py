@@ -14,10 +14,14 @@ class CandidateSpec:
 
     feature_set: str
     regularization_c: float
+    production_regression: float = 0.0
 
     @property
     def model_id(self) -> str:
-        return f"{self.feature_set}__c_{self.regularization_c:g}"
+        base = f"{self.feature_set}__c_{self.regularization_c:g}"
+        if self.production_regression > 0:
+            return f"{base}__rate_reg_{self.production_regression:g}"
+        return base
 
 
 def proper_scores(observed: np.ndarray, probability: np.ndarray) -> dict[str, float]:

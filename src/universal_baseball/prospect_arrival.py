@@ -30,6 +30,8 @@ class ArrivalFit:
     outcome_name: str
     target_column: str
     feature_set: str
+    production_priors: tuple[float, float, float, float]
+    production_regression: float
     model: LogisticRegression
     global_rate: float
     level_rates: dict[str, float]
@@ -338,37 +340,92 @@ def build_current_arrival_predictors(
     )
 
 
-def arrival_design(frame: pl.DataFrame, *, feature_set: str = "core") -> np.ndarray:
+def arrival_design(
+    frame: pl.DataFrame,
+    *,
+    feature_set: str = "core",
+    production_priors: tuple[float, float, float, float] | None = None,
+    production_regression: float = 0.0,
+) -> np.ndarray:
     """Create the fixed low-dimensional, organization-free arrival design."""
 
     supported = {
         "core", "handedness", "origin", "stable_demographics",
         "stable_interactions", "physical", "handedness_physical",
-        "all_demographics", "all_interactions",
+        "all_demographics", "all_interactions", "development_interactions",
+        "role_production_interactions", "baseball_interactions",
+        "baseball_demographics",
     }
     if feature_set not in supported:
         raise ValueError(f"unsupported arrival feature set: {feature_set}")
+    if production_regression < 0:
+        raise ValueError("production_regression cannot be negative")
+    if production_regression > 0 and production_priors is None:
+        raise ValueError("production priors are required when rates are regressed")
+    priors = production_priors or (0.0, 0.0, 0.0, 0.0)
+    if len(priors) != 4 or any(not 0.0 <= prior <= 1.0 for prior in priors):
+        raise ValueError("production priors must contain four probabilities")
     rows = []
     for row in frame.iter_rows(named=True):
         level = hitter_level_tier(row["level_tier"])
         age_scaled = (float(row["age_years"]) - 23.0) / 5.0
+        current_workload = float(row["current_milb_workload"])
+        current_log = log(1.0 + current_workload) / log(601.0)
+        prior_log = log(1.0 + float(row["prior_affiliated_workload"])) / log(1801.0)
+        seasons_scaled = min(float(row["prior_affiliated_seasons"]), 6.0) / 6.0
+        production_rates = [
+            float(row[f"production_rate_{index}"]) for index in range(1, 5)
+        ]
+        if production_regression > 0:
+            production_rates = [
+                (current_workload * rate + production_regression * prior)
+                / (current_workload + production_regression)
+                for rate, prior in zip(production_rates, priors, strict=True)
+            ]
         values = [
             age_scaled,
-            log(1.0 + float(row["current_milb_workload"])) / log(601.0),
-            log(1.0 + float(row["prior_affiliated_workload"])) / log(1801.0),
-            min(float(row["prior_affiliated_seasons"]), 6.0) / 6.0,
+            current_log,
+            prior_log,
+            seasons_scaled,
             float(bool(row["on_40man"])),
         ]
-        values.extend(float(level == candidate) for candidate in LEVELS[:-1])
-        values.extend(float(row["role_tier"] == candidate) for candidate in ROLES)
-        values.extend(float(row[f"production_rate_{index}"]) for index in range(1, 5))
+        level_flags = [float(level == candidate) for candidate in LEVELS[:-1]]
+        role_flags = [
+            float(row["role_tier"] == candidate) for candidate in ROLES
+        ]
+        values.extend(level_flags)
+        values.extend(role_flags)
+        values.extend(production_rates)
+        uses_development = feature_set in {
+            "development_interactions", "baseball_interactions",
+            "baseball_demographics",
+        }
+        uses_role_production = feature_set in {
+            "role_production_interactions", "baseball_interactions",
+            "baseball_demographics",
+        }
+        if uses_development:
+            values.extend(age_scaled * flag for flag in level_flags)
+            values.extend(
+                [
+                    age_scaled * current_log,
+                    age_scaled * prior_log,
+                    age_scaled * seasons_scaled,
+                ]
+            )
+        if uses_role_production:
+            values.extend(
+                rate * flag for flag in role_flags for rate in production_rates
+            )
         uses_hands = feature_set in {
             "handedness", "stable_demographics", "stable_interactions",
             "handedness_physical", "all_demographics", "all_interactions",
+            "baseball_demographics",
         }
         uses_origin = feature_set in {
             "origin", "stable_demographics", "stable_interactions",
             "all_demographics", "all_interactions",
+            "baseball_demographics",
         }
         uses_physical = feature_set in {
             "physical", "handedness_physical", "all_demographics", "all_interactions",
@@ -389,7 +446,7 @@ def arrival_design(frame: pl.DataFrame, *, feature_set: str = "core") -> np.ndar
                 float(birth_country == country) for country in COUNTRIES
             ]
             values.extend(country_flags)
-        if feature_set == "stable_interactions":
+        if feature_set in {"stable_interactions", "baseball_demographics"}:
             values.extend(
                 [
                     age_scaled * float(row["bat_side"] == "L"),
@@ -445,14 +502,36 @@ def fit_arrival_model(
     outcome_name: str = "arrival",
     feature_set: str = "core",
     regularization_c: float = 1.0,
+    production_regression: float = 0.0,
 ) -> ArrivalFit:
     if regularization_c <= 0:
         raise ValueError("regularization_c must be positive")
+    if production_regression < 0:
+        raise ValueError("production_regression cannot be negative")
     target = frame.get_column(target_column).to_numpy()
     if len(np.unique(target)) != 2:
         raise ValueError("arrival fitting requires both outcomes")
+    workload = frame.get_column("current_milb_workload").to_numpy()
+    total_workload = float(workload.sum())
+    production_priors = tuple(
+        float(
+            np.dot(
+                frame.get_column(f"production_rate_{index}").to_numpy(), workload
+            )
+            / total_workload
+        )
+        if total_workload > 0
+        else 0.0
+        for index in range(1, 5)
+    )
+    design = arrival_design(
+        frame,
+        feature_set=feature_set,
+        production_priors=production_priors,
+        production_regression=production_regression,
+    )
     model = LogisticRegression(C=regularization_c, max_iter=2_000).fit(
-        arrival_design(frame, feature_set=feature_set), target
+        design, target
     )
     global_rate = float(target.mean())
     level_rates: dict[str, float] = {}
@@ -462,13 +541,19 @@ def fit_arrival_model(
         level_rates[level] = (successes + 50.0 * global_rate) / (cell.height + 50.0)
     return ArrivalFit(
         player_type, outcome_name, target_column, feature_set,
+        production_priors, production_regression,
         model, global_rate, level_rates,
     )
 
 
 def predict_arrival(fit: ArrivalFit, frame: pl.DataFrame) -> pl.DataFrame:
     probability = fit.model.predict_proba(
-        arrival_design(frame, feature_set=fit.feature_set)
+        arrival_design(
+            frame,
+            feature_set=fit.feature_set,
+            production_priors=fit.production_priors,
+            production_regression=fit.production_regression,
+        )
     )[:, 1]
     baseline = [
         fit.level_rates.get(hitter_level_tier(value), fit.global_rate)
