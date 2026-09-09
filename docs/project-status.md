@@ -65,6 +65,13 @@ or promote a player ranking; the public v1 release remains historical.
   and pre-cutoff historical extremes are flagged without clipping. This is an
   interface and diagnostic layer; it does not claim the missing projection models are
   complete.
+- Hitter Opportunity v1 now implements the first universal forecast input. It preserves
+  zero-MLB outcomes, uses the frozen selected one-year model when supplied, and fills
+  unsupported/later years with horizon-specific age/level cohorts and labeled
+  population fallbacks. It never uses team depth or a PA cap and composes directly into
+  the Projection v1 WAR schema. A real league run awaits certified historical
+  affiliated snapshots and the frozen parameter artifacts, which are absent from this
+  checkout.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -98,10 +105,11 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 ## Next modeling task
 
-The main candidate denominator, phase-one control/cost path, static economics engine
-and projection guardrail interface are now built. The next modeling task is to fill
-that interface: finish universal hitter arrival/PA paths, then pitcher arrival/role/BF
-paths, then add component-level aging and whole-player WAR assembly. The later economic
+The main candidate denominator, phase-one control/cost path, static economics engine,
+projection guardrails and universal hitter-opportunity calculation are now built. Next,
+materialize/certify the historical hitter snapshots and run the league opportunity
+path; then build pitcher arrival/role/BF paths, component-level aging and whole-player
+WAR assembly. The later economic
 blocker is a chronologically fitted free-agent market function. In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.
@@ -125,8 +133,9 @@ artifacts; hashes bind the inputs. They reject overwriting an inspected candidat
 run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
-Current verification: Ruff passes across `src`, `scripts` and `tests`; 1,087 tests
-pass. Four pre-existing contract tests fail only because their hash-bound ignored
+Current focused verification: 19 hitter-opportunity/guardrail tests pass and Ruff
+passes across `src`, `scripts` and `tests`. The current full run has 1,162 passing tests.
+Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 
 The prior long status file is preserved in

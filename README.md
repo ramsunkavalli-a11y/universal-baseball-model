@@ -40,6 +40,9 @@ defines the new downstream valuation boundary and its remaining data gaps.
 The [Projection v1 guardrails](docs/projection-v1-guardrails.md) define the common
 multi-year hitter/pitcher path identity, universal coverage requirement and historical
 plausibility checks that must be satisfied before those layers connect.
+The [Hitter Opportunity v1](docs/hitter-opportunity-v1.md) implementation supplies
+team-neutral multi-year MLB-arrival and PA paths with explicit inactive/no-history
+fallbacks; its first certified league materialization is still pending.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

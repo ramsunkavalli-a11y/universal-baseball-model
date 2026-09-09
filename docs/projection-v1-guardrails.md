@@ -23,8 +23,9 @@ eventual dollar value looks surprising.
 
 The current gaps are material:
 
-- no universal multi-year WAR path covers every player in the rights universe;
-- the hitter opportunity work does not yet cover inactive/no-history players cleanly;
+- no fully materialized multi-year WAR path yet covers every player in the rights universe;
+- the universal hitter opportunity calculation is implemented, but its multi-year
+  historical snapshot input still needs league materialization and certification;
 - pitcher arrival, survival, role transition and workload are not implemented;
 - neither hitter nor pitcher has a final component-level multi-year aging layer;
 - the old hitter uncertainty surface is one-year and inherits an unbounded positive-PA
@@ -92,8 +93,9 @@ durability and workload should explain them naturally.
 
 ### Hitters
 
-1. Extend the selected participation/PA model to the full rights universe with explicit
-   fallbacks.
+1. **Implemented:** extend the selected participation/PA model with horizon-specific,
+   age/level historical fallbacks for inactive, unknown and unsupported players. The
+   league snapshot materialization and result review remain.
 2. Fit component-level adjacent-season aging on context-neutral rates, with regression
    and survivor/attrition checks; do not copy historical Tango coefficients directly.
 3. Assemble batting, baserunning, defense, position and replacement into conditional
@@ -128,4 +130,3 @@ The v1 gate requires:
 This contract adds no player-value cap and authorizes no new protected-2026 model
 evaluation. It defines the common path and diagnostic boundary needed before hitter and
 pitcher work can be integrated with Contract Economics.
-
