@@ -89,6 +89,9 @@ thresholds use outs rather than displayed decimal innings. A simple reached thre
 can resolve before season end; a missed threshold resolves only after season completion.
 Medical, awards and linked fallback conditions remain pending until their own evidence
 is available.
+When a contract has alternate paths, a failed primary threshold is not final until
+every alternative has been evaluated. Compound alternatives are preserved explicitly
+instead of being collapsed into one misleading threshold.
 
 A dated review-only overlay can block a player-season when reliable sources disagree
 about its legal option structure or when multiple years share one linked decision.

@@ -5,6 +5,10 @@ import polars as pl
 import pytest
 
 from universal_baseball.contract_vesting import evaluate_vesting_triggers
+from universal_baseball.contract_vesting import (
+    load_vesting_trigger_config,
+    project_statsapi_vesting_observations,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +25,7 @@ def _triggers() -> pl.DataFrame:
             "metric": ["pitching_outs", "plate_appearances", "pitching_outs"],
             "threshold_count": [120, 500, 510],
             "other_conditions": ["clean physical", "", ""],
+            "alternative_conditions": ["", "", ""],
             "vested_contract_effect": ["guaranteed", "guaranteed", "player option"],
             "unvested_contract_effect": ["mutual option", "club option", "free agent"],
             "source_url": ["https://example.test"] * 3,
@@ -47,6 +52,27 @@ def test_thresholds_resolve_only_when_evidence_is_final_or_irreversible() -> Non
     ]
     assert result.coverage["pending_rows"] == 2
     assert result.coverage["not_vested_rows"] == 1
+
+
+def test_unmeasured_alternative_prevents_false_not_vested_result() -> None:
+    trigger = _triggers().filter(pl.col("player_id") == 3).with_columns(
+        pl.lit("alternate multi-year workload threshold").alias(
+            "alternative_conditions"
+        )
+    )
+    observations = pl.DataFrame(
+        {
+            "player_id": [3],
+            "season": [2026],
+            "metric": ["pitching_outs"],
+            "observed_count": [400],
+            "season_complete": [True],
+        }
+    )
+    result = evaluate_vesting_triggers(trigger, observations)
+    assert result.rows.item(0, "trigger_status") == (
+        "primary_threshold_missed_alternatives_pending"
+    )
 
 
 def test_simple_threshold_can_vest_before_season_end() -> None:
@@ -103,10 +129,72 @@ def test_repo_trigger_inventory_is_valid_and_missing_evidence_stays_missing() ->
     )
     result = evaluate_vesting_triggers(triggers, observations)
     assert result.coverage == {
-        "trigger_rows": 4,
+        "trigger_rows": 13,
         "observed_rows": 0,
         "vested_rows": 0,
         "not_vested_rows": 0,
         "pending_rows": 0,
-        "missing_evidence_rows": 4,
+        "missing_evidence_rows": 13,
     }
+
+
+def test_statsapi_observations_sum_leagues_and_preserve_missing_players() -> None:
+    triggers = _triggers()
+    hitting = pl.DataFrame(
+        {
+            "season": [2026, 2026],
+            "league_id": [103, 104],
+            "player_id": [2, 2],
+            "batting_plate_appearances": [300, 205],
+        }
+    )
+    pitching_payloads = [
+        {
+            "stats": [
+                {
+                    "splits": [
+                        {
+                            "player": {"id": 1},
+                            "stat": {"outs": 121, "gamesPlayed": 45},
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+    observations = project_statsapi_vesting_observations(
+        triggers,
+        hitting,
+        pitching_payloads,
+        season=2026,
+        season_complete=False,
+    )
+    assert observations.to_dicts() == [
+        {
+            "player_id": 1,
+            "season": 2026,
+            "metric": "pitching_outs",
+            "observed_count": 121,
+            "season_complete": False,
+        },
+        {
+            "player_id": 2,
+            "season": 2026,
+            "metric": "plate_appearances",
+            "observed_count": 505,
+            "season_complete": False,
+        },
+    ]
+    result = evaluate_vesting_triggers(triggers, observations)
+    assert result.coverage["observed_rows"] == 2
+    assert result.coverage["missing_evidence_rows"] == 1
+
+
+def test_repo_trigger_loader_attaches_snapshot_id() -> None:
+    triggers, payload = load_vesting_trigger_config(
+        ROOT / "config/contract-vesting-triggers-2026-09-09.json"
+    )
+    assert triggers.height == 13
+    assert triggers.get_column("source_snapshot_id").unique().to_list() == [
+        payload["snapshot_id"]
+    ]

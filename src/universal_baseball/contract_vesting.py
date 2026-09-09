@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import json
+from pathlib import Path
+from typing import Any, Mapping, Sequence
 
 import polars as pl
 
@@ -16,6 +19,7 @@ VESTING_TRIGGER_SCHEMA: dict[str, pl.DataType] = {
     "metric": pl.String,
     "threshold_count": pl.Int64,
     "other_conditions": pl.String,
+    "alternative_conditions": pl.String,
     "vested_contract_effect": pl.String,
     "unvested_contract_effect": pl.String,
     "source_url": pl.String,
@@ -35,6 +39,144 @@ VESTING_OBSERVATION_SCHEMA: dict[str, pl.DataType] = {
 class VestingTriggerEvaluation:
     rows: pl.DataFrame
     coverage: dict[str, int]
+
+
+def load_vesting_trigger_config(path: Path) -> tuple[pl.DataFrame, dict[str, Any]]:
+    """Load the reviewed trigger inventory and attach its source snapshot ID."""
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    snapshot_id = str(payload.get("snapshot_id") or "").strip()
+    triggers = payload.get("triggers")
+    if not snapshot_id or not isinstance(triggers, list):
+        raise ValueError("vesting trigger config requires snapshot_id and triggers")
+    rows = pl.DataFrame(triggers).with_columns(
+        pl.lit(snapshot_id).alias("source_snapshot_id")
+    )
+    missing = sorted(set(VESTING_TRIGGER_SCHEMA) - set(rows.columns))
+    if missing:
+        raise ValueError(f"vesting trigger config missing fields: {missing}")
+    return (
+        rows.select(list(VESTING_TRIGGER_SCHEMA)).cast(
+            VESTING_TRIGGER_SCHEMA, strict=True
+        ),
+        payload,
+    )
+
+
+def _nonnegative_count(value: Any, *, field: str) -> int:
+    if value is None or str(value).strip() == "":
+        raise ValueError(f"missing required count for {field}")
+    number = float(str(value))
+    if not number.is_integer() or number < 0:
+        raise ValueError(f"invalid count for {field}: {value!r}")
+    return int(number)
+
+
+def project_statsapi_vesting_observations(
+    triggers: pl.DataFrame,
+    hitting: pl.DataFrame,
+    pitching_payloads: Sequence[Mapping[str, Any]],
+    *,
+    season: int,
+    season_complete: bool,
+) -> pl.DataFrame:
+    """Project current scalar triggers from retained official MLB source rows.
+
+    League-split rows are summed so a midseason league change cannot lose work.
+    A missing player remains missing evidence; it is never converted to zero.
+    Multi-season catching and non-stat/award clauses remain separate work.
+    """
+
+    required_hitting = {"season", "player_id", "batting_plate_appearances"}
+    missing_hitting = sorted(required_hitting - set(hitting.columns))
+    if missing_hitting:
+        raise ValueError(f"MLB hitting source missing fields: {missing_hitting}")
+    current_triggers = triggers.filter(pl.col("trigger_season") == int(season))
+    if current_triggers.is_empty():
+        return pl.DataFrame(schema=VESTING_OBSERVATION_SCHEMA)
+
+    hitting_counts = (
+        hitting.filter(pl.col("season") == int(season))
+        .group_by("player_id")
+        .agg(pl.col("batting_plate_appearances").sum())
+    )
+    pa_by_player = {
+        int(row["player_id"]): int(row["batting_plate_appearances"])
+        for row in hitting_counts.to_dicts()
+    }
+
+    pitching_rows: list[dict[str, int]] = []
+    for payload in pitching_payloads:
+        groups = payload.get("stats") or []
+        if len(groups) != 1:
+            raise ValueError("expected one official MLB pitching stats group")
+        for split in groups[0].get("splits") or []:
+            player = split.get("player") or split.get("person") or {}
+            stat = split.get("stat") or {}
+            pitching_rows.append(
+                {
+                    "player_id": _nonnegative_count(
+                        player.get("id"), field="player.id"
+                    ),
+                    "pitching_outs": _nonnegative_count(
+                        stat.get("outs"), field="outs"
+                    ),
+                    "games_pitched": _nonnegative_count(
+                        stat.get("gamesPlayed"), field="gamesPlayed"
+                    ),
+                }
+            )
+    pitching = (
+        pl.DataFrame(
+            pitching_rows,
+            schema={
+                "player_id": pl.Int64,
+                "pitching_outs": pl.Int64,
+                "games_pitched": pl.Int64,
+            },
+        )
+        .group_by("player_id")
+        .agg(
+            pl.col("pitching_outs").sum(),
+            pl.col("games_pitched").sum(),
+        )
+    )
+    pitching_by_player = {
+        int(row["player_id"]): {
+            "pitching_outs": int(row["pitching_outs"]),
+            "games_pitched": int(row["games_pitched"]),
+        }
+        for row in pitching.to_dicts()
+    }
+
+    observations: list[dict[str, object]] = []
+    for trigger in current_triggers.select(
+        ["player_id", "trigger_season", "metric"]
+    ).unique().to_dicts():
+        player_id = int(trigger["player_id"])
+        metric = str(trigger["metric"])
+        observed_count: int | None = None
+        if metric == "plate_appearances":
+            observed_count = pa_by_player.get(player_id)
+        elif metric in {"pitching_outs", "games_pitched"}:
+            pitching_counts = pitching_by_player.get(player_id)
+            if pitching_counts is not None:
+                observed_count = pitching_counts[metric]
+        if observed_count is not None:
+            observations.append(
+                {
+                    "player_id": player_id,
+                    "season": int(season),
+                    "metric": metric,
+                    "observed_count": observed_count,
+                    "season_complete": bool(season_complete),
+                }
+            )
+    if not observations:
+        return pl.DataFrame(schema=VESTING_OBSERVATION_SCHEMA)
+    return pl.DataFrame(observations, schema=VESTING_OBSERVATION_SCHEMA).sort(
+        ["player_id", "season", "metric"]
+    )
 
 
 def evaluate_vesting_triggers(
@@ -66,7 +208,12 @@ def evaluate_vesting_triggers(
         pl.col("len") != 1
     ).height:
         raise ValueError("vesting observations violate player-season-metric grain")
-    supported_metrics = {"plate_appearances", "pitching_outs"}
+    supported_metrics = {
+        "games_pitched",
+        "plate_appearances",
+        "pitching_outs",
+        "seasons_with_100_games_caught",
+    }
     if source.filter(
         (~pl.col("metric").is_in(supported_metrics))
         | (pl.col("threshold_count") <= 0)
@@ -94,6 +241,8 @@ def evaluate_vesting_triggers(
             .then(pl.lit("vested"))
             .otherwise(pl.lit("stat_threshold_met_other_conditions_pending"))
         )
+        .when(pl.col("alternative_conditions") != "")
+        .then(pl.lit("primary_threshold_missed_alternatives_pending"))
         .when(pl.col("season_complete"))
         .then(pl.lit("not_vested"))
         .otherwise(pl.lit("pending"))
@@ -110,7 +259,11 @@ def evaluate_vesting_triggers(
             ).height,
             "pending_rows": rows.filter(
                 pl.col("trigger_status").is_in(
-                    ["pending", "stat_threshold_met_other_conditions_pending"]
+                    [
+                        "pending",
+                        "stat_threshold_met_other_conditions_pending",
+                        "primary_threshold_missed_alternatives_pending",
+                    ]
                 )
             ).height,
             "missing_evidence_rows": rows.filter(
