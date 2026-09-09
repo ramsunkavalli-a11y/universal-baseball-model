@@ -8,6 +8,8 @@ from universal_baseball.pitcher_opportunity_paths import (
     PITCHER_CONTROL_SEASON_SCHEMA,
     PITCHER_OPPORTUNITY_HISTORY_SCHEMA,
     PITCHER_OPPORTUNITY_PATH_SCHEMA,
+    PITCHER_MLB_OUTCOME_SCHEMA,
+    build_pitcher_opportunity_history,
     compose_pitcher_projection_paths,
     fit_pitcher_opportunity_fallbacks,
     pitcher_role,
@@ -34,6 +36,22 @@ def test_role_classification_is_explicit() -> None:
     assert pitcher_role(games=30, starts=20) == "starter"
     assert pitcher_role(games=30, starts=5) == "swingman"
     assert pitcher_role(games=30, starts=0) == "reliever"
+
+
+def test_pitcher_history_keeps_zero_and_drops_censored_target() -> None:
+    snapshots = pl.DataFrame(
+        [
+            {"snapshot_year": 2021, "player_id": 1, "age_years": 21.0, "as_of_level_group": "AA", "as_of_role": "starter"},
+            {"snapshot_year": 2022, "player_id": 1, "age_years": 22.0, "as_of_level_group": "AA", "as_of_role": "starter"},
+        ]
+    )
+    outcomes = pl.DataFrame(schema=PITCHER_MLB_OUTCOME_SCHEMA)
+    history = build_pitcher_opportunity_history(
+        snapshots, outcomes, horizons=[1, 2], completed_seasons=[2023]
+    )
+    assert history.height == 2
+    assert history.item(0, "future_mlb_bf") == 0.0
+    assert history.item(0, "future_mlb_games") == 0
 
 
 def test_every_pitcher_gets_arrival_workload_and_role_path() -> None:

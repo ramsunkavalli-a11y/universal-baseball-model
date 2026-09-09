@@ -1,6 +1,6 @@
 # Hitter Opportunity v1
 
-**Status:** implementation complete; league materialization pending historical snapshots
+**Status:** historical cohorts fitted; current league path pending
 **Date:** 2026-09-08
 
 ## What it does
@@ -40,9 +40,10 @@ team-control seasons in the shared Projection v1 schema.
 
 ## Boundary and next action
 
-This is the complete calculation and validation path, not a claimed league forecast.
-The public checkout does not contain the frozen Playing Time v1 coefficient tables or
-the required multi-year historical affiliated snapshots. Do not substitute made-up
-coefficients. Materialize/certify those snapshots, run the league path, inspect broad
-coverage and calibration, and then proceed to hitter aging and conditional WAR-rate
-assembly. Protected 2026 outcomes remain closed.
+The 2018–2024 official source history is now collected and the zero-inclusive fallback
+fit is materialized with 2020 excluded. This is still not a claimed current league
+forecast. The public checkout does not contain the frozen Playing Time v1 coefficient
+tables. Do not substitute made-up coefficients. Build the current snapshot, attach the
+selected model only where its real output is available, inspect broad coverage and
+calibration, and then proceed to hitter aging and conditional WAR-rate assembly.
+Protected 2026 outcomes remain closed.

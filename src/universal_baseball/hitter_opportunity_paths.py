@@ -204,11 +204,13 @@ def build_hitter_opportunity_history(
         pl.DataFrame({"horizon": wanted_horizons}, schema={"horizon": pl.Int64}),
         how="cross",
     ).with_columns((pl.col("snapshot_year") + pl.col("horizon")).alias("target_year"))
-    required_targets = set(grid.get_column("target_year").unique().to_list())
-    missing_complete = sorted(required_targets - complete)
-    if missing_complete:
+    grid = grid.filter(pl.col("target_year").is_in(sorted(complete)))
+    if grid.is_empty():
+        raise ValueError("hitter opportunity has no certified complete target rows")
+    missing_horizons = sorted(set(wanted_horizons) - set(grid["horizon"].unique().to_list()))
+    if missing_horizons:
         raise ValueError(
-            f"hitter opportunity targets are not certified complete: {missing_complete}"
+            f"hitter opportunity has no certified targets for horizons: {missing_horizons}"
         )
     target_outcomes = outcomes.rename(
         {"season": "target_year", "batting_pa": "future_mlb_pa"}

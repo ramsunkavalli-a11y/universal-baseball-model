@@ -109,16 +109,20 @@ def test_history_builder_keeps_non_arrivals_as_observed_zero() -> None:
     ).item(0, "future_mlb_pa") == 125.0
 
 
-def test_history_builder_requires_completed_target_seasons() -> None:
+def test_history_builder_drops_censored_targets_without_calling_them_zero() -> None:
     snapshots = pl.DataFrame(
-        [{"snapshot_year": 2023, "player_id": 1, "age_years": 22.0, "as_of_level_group": "AA"}],
+        [
+            {"snapshot_year": 2021, "player_id": 1, "age_years": 20.0, "as_of_level_group": "AA"},
+            {"snapshot_year": 2023, "player_id": 1, "age_years": 22.0, "as_of_level_group": "AA"},
+        ],
         schema=HITTER_OPPORTUNITY_SNAPSHOT_SCHEMA,
     )
     outcomes = pl.DataFrame(schema=HITTER_MLB_PA_OUTCOME_SCHEMA)
-    with pytest.raises(ValueError, match="not certified complete"):
-        build_hitter_opportunity_history(
-            snapshots, outcomes, horizons=[1, 2], completed_seasons=[2024]
-        )
+    history = build_hitter_opportunity_history(
+        snapshots, outcomes, horizons=[1, 2], completed_seasons=[2023, 2024]
+    )
+    assert history.get_column("horizon").to_list() == [2, 1]
+    assert history.height == 2
 
 
 def test_every_hitter_gets_every_year_without_team_depth() -> None:

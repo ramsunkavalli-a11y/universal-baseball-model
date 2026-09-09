@@ -165,6 +165,6 @@ team-depth dependence or WAR arithmetic that does not reconcile. It reports PA/B
 MLB-active probability, conditional WAR rate, expected WAR and controlled WAR
 separately. Pre-cutoff role distributions flag unusual workload, rate and annual
 WAR without caps. Universal hitter participation/PA and pitcher participation/role/BF
-calculations are now implemented with explicit historical fallbacks. Their certified
-league panels and materialized paths are next, followed by component-level multi-year
-aging.
+calculations are now implemented with explicit historical fallbacks, and their
+2018–2024 historical league panels are fitted with 2020 excluded. Current league paths
+are next, followed by component-level multi-year aging.

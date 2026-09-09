@@ -69,14 +69,19 @@ or promote a player ranking; the public v1 release remains historical.
   zero-MLB outcomes, uses the frozen selected one-year model when supplied, and fills
   unsupported/later years with horizon-specific age/level cohorts and labeled
   population fallbacks. It never uses team depth or a PA cap and composes directly into
-  the Projection v1 WAR schema. A real league run awaits certified historical
-  affiliated snapshots and the frozen parameter artifacts, which are absent from this
-  checkout.
+  the Projection v1 WAR schema. Historical cohorts are now fitted; the current league
+  snapshot and frozen selected-model parameter artifacts remain.
 - Pitcher Opportunity v1 now applies the same separation to MLB arrival, conditional
   BF and starter/swingman/reliever probabilities. Sparse age/level/role cohorts shrink
   through a disclosed hierarchy, all fallback sources remain labeled, and the output
   composes with conditional WAR/800 BF and control seasons. Its historical league panel
-  is not yet materialized.
+  is now fitted; the current league snapshot remains.
+- The official historical opportunity source is now collected for 2018–2024. Because
+  `fullRoster` omits hundreds of players with official affiliated stats each year, the
+  cohort denominator is their union. The misleading `totalSplits` field is ignored in
+  favor of verified pagination. Excluding the cancelled 2020 MiLB season leaves 74,743
+  hitter and 95,360 pitcher zero-inclusive cohort rows across horizons 1–6. Historical
+  fits are real; the current 2026 league paths are still pending.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -112,8 +117,8 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 The main candidate denominator, phase-one control/cost path, static economics engine,
 projection guardrails and universal hitter-opportunity calculation are now built. Next,
-materialize/certify the historical hitter and pitcher snapshots and run both league
-opportunity paths; then build component-level aging and whole-player WAR assembly. The
+build the current hitter/pitcher snapshots and run both six-year league opportunity
+paths; then build component-level aging and whole-player WAR assembly. The
 later economic
 blocker is a chronologically fitted free-agent market function. In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
@@ -139,7 +144,7 @@ run. The local implementation passed its tests before this branch was prepared;
 branch-specific verification is recorded in the pull request.
 
 Current focused verification: 24 opportunity/guardrail tests pass and Ruff
-passes across `src`, `scripts` and `tests`. The current full run has 1,167 passing tests.
+passes across `src`, `scripts` and `tests`. The current full run has 1,172 passing tests.
 Four pre-existing contract tests fail only because their hash-bound ignored
 research artifacts are absent in this checkout. No new test failure was observed.
 

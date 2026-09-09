@@ -24,10 +24,10 @@ eventual dollar value looks surprising.
 The current gaps are material:
 
 - no fully materialized multi-year WAR path yet covers every player in the rights universe;
-- the universal hitter opportunity calculation is implemented, but its multi-year
-  historical snapshot input still needs league materialization and certification;
-- pitcher arrival, survival, role transition and BF calculations are implemented, but
-  their zero-inclusive historical league panel still needs materialization;
+- the universal hitter opportunity calculation and historical fit are implemented, but
+  the current league path still needs materialization and review;
+- pitcher arrival, survival, role transition and BF calculations and historical fit are
+  implemented, but the current league path still needs materialization and review;
 - neither hitter nor pitcher has a final component-level multi-year aging layer;
 - the old hitter uncertainty surface is one-year and inherits an unbounded positive-PA
   count distribution without a separate physical-plausibility diagnostic;

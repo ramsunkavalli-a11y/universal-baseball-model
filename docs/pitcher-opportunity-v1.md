@@ -1,6 +1,6 @@
 # Pitcher Opportunity v1
 
-**Status:** calculation implemented; historical league materialization pending
+**Status:** historical cohorts fitted; current league path pending
 **Date:** 2026-09-08
 
 Pitcher Opportunity v1 keeps four questions separate for every forecast year:
@@ -25,7 +25,8 @@ The implementation rejects future-crossing evidence, inconsistent games/starts/B
 missing horizons and incomplete player-year coverage. It composes directly with
 conditional WAR/800 BF and team-control seasons in the Projection v1 schema.
 
-This is not yet a league result. The next input is a zero-inclusive historical pitcher
-snapshot panel containing dated level, age, recent role and future MLB BF/games/starts.
-After that panel is certified, run broad calibration and coverage checks, then connect
-the existing component-rate baseline and pitcher aging/run conversion.
+The zero-inclusive 2018–2024 historical pitcher panel and six-horizon fallback fit are
+now materialized, excluding the structurally abnormal 2020 snapshot. This is not yet a
+current league result. Build and score the current pitcher snapshot, run broad
+calibration and coverage checks, then connect the existing component-rate baseline and
+pitcher aging/run conversion.

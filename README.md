@@ -45,6 +45,8 @@ team-neutral multi-year MLB-arrival and PA paths with explicit inactive/no-histo
 fallbacks; its first certified league materialization is still pending.
 The matching [Pitcher Opportunity v1](docs/pitcher-opportunity-v1.md) calculation keeps
 arrival, BF and role probabilities separate and uses no current-team depth.
+The [historical opportunity source result](docs/opportunity-history-source-result.md)
+records the real 2018–2024 official cohort materialization and its 2020 exclusion.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

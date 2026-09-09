@@ -49,6 +49,14 @@ PITCHER_OPPORTUNITY_UNIVERSE_SCHEMA: dict[str, pl.DataType] = {
     "as_of_role": pl.String,
 }
 
+PITCHER_MLB_OUTCOME_SCHEMA: dict[str, pl.DataType] = {
+    "season": pl.Int64,
+    "player_id": pl.Int64,
+    "pitching_bf": pl.Float64,
+    "pitching_games": pl.Int64,
+    "pitching_starts": pl.Int64,
+}
+
 PITCHER_OPPORTUNITY_PATH_SCHEMA: dict[str, pl.DataType] = {
     "as_of_date": pl.Date,
     "player_id": pl.Int64,
@@ -87,6 +95,81 @@ class PitcherOpportunityFit:
     references: pl.DataFrame
     horizons: tuple[int, ...]
     age_band_width: int
+
+
+def build_pitcher_opportunity_history(
+    snapshots: pl.DataFrame,
+    mlb_outcomes: pl.DataFrame,
+    *,
+    horizons: Iterable[int],
+    completed_seasons: Iterable[int],
+) -> pl.DataFrame:
+    """Attach future MLB BF/games/starts, retaining completed-season zeros."""
+
+    wanted = tuple(sorted(set(int(value) for value in horizons)))
+    complete = {int(value) for value in completed_seasons}
+    if not wanted or any(value < 1 for value in wanted):
+        raise ValueError("pitcher opportunity horizons must be positive")
+    missing_snapshots = sorted(
+        (set(PITCHER_OPPORTUNITY_UNIVERSE_SCHEMA) | {"snapshot_year"})
+        - set(snapshots.columns)
+    )
+    if missing_snapshots:
+        raise ValueError(f"pitcher opportunity snapshots missing fields: {missing_snapshots}")
+    missing_outcomes = sorted(set(PITCHER_MLB_OUTCOME_SCHEMA) - set(mlb_outcomes.columns))
+    if missing_outcomes:
+        raise ValueError(f"pitcher MLB outcomes missing fields: {missing_outcomes}")
+    snapshot_schema = {"snapshot_year": pl.Int64, **PITCHER_OPPORTUNITY_UNIVERSE_SCHEMA}
+    cohorts = snapshots.select(list(snapshot_schema)).cast(snapshot_schema, strict=True)
+    outcomes = mlb_outcomes.select(list(PITCHER_MLB_OUTCOME_SCHEMA)).cast(
+        PITCHER_MLB_OUTCOME_SCHEMA, strict=True
+    )
+    if cohorts.is_empty() or cohorts.group_by(
+        ["snapshot_year", "player_id"]
+    ).len().filter(pl.col("len") != 1).height:
+        raise ValueError("pitcher opportunity snapshots are empty or violate grain")
+    if outcomes.group_by(["season", "player_id"]).len().filter(pl.col("len") != 1).height:
+        raise ValueError("pitcher MLB outcomes violate season-player grain")
+    if outcomes.filter(
+        (pl.col("pitching_bf") < 0)
+        | (pl.col("pitching_games") < 0)
+        | (pl.col("pitching_starts") < 0)
+        | (pl.col("pitching_starts") > pl.col("pitching_games"))
+    ).height:
+        raise ValueError("pitcher MLB outcomes contain invalid values")
+    grid = cohorts.join(
+        pl.DataFrame({"horizon": wanted}, schema={"horizon": pl.Int64}), how="cross"
+    ).with_columns((pl.col("snapshot_year") + pl.col("horizon")).alias("target_year"))
+    grid = grid.filter(pl.col("target_year").is_in(sorted(complete)))
+    if grid.is_empty():
+        raise ValueError("pitcher opportunity has no certified complete target rows")
+    missing_horizons = sorted(set(wanted) - set(grid["horizon"].unique().to_list()))
+    if missing_horizons:
+        raise ValueError(
+            f"pitcher opportunity has no certified targets for horizons: {missing_horizons}"
+        )
+    targets = outcomes.rename({"season": "target_year"})
+    return (
+        grid.join(targets, on=["target_year", "player_id"], how="left", validate="m:1")
+        .with_columns(
+            pl.col("pitching_bf").fill_null(0.0),
+            pl.col("pitching_games").fill_null(0),
+            pl.col("pitching_starts").fill_null(0),
+        )
+        .select(
+            "snapshot_year",
+            "player_id",
+            "age_years",
+            "as_of_level_group",
+            "as_of_role",
+            "horizon",
+            pl.col("pitching_bf").alias("future_mlb_bf"),
+            pl.col("pitching_games").alias("future_mlb_games"),
+            pl.col("pitching_starts").alias("future_mlb_starts"),
+        )
+        .cast(PITCHER_OPPORTUNITY_HISTORY_SCHEMA, strict=True)
+        .sort(["snapshot_year", "player_id", "horizon"])
+    )
 
 
 def pitcher_role(*, games: int, starts: int) -> str:
