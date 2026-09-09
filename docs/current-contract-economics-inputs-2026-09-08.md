@@ -16,7 +16,7 @@ step.
   and excluded from incumbent-rights economics;
 - 604 player-year salaries attached from accepted payroll terms;
 - 86 potential buyouts linked to stable player IDs from the same payroll source;
-- 90 of 151 projected option rows now carry a buyout, leaving 61 unresolved; and
+- 96 of 151 projected option rows now carry a buyout, leaving 55 unresolved; and
 - zero duplicate player/organization/season keys.
 
 The output contains 8,350 players in each of six seasons. All 50,100 rows now carry
@@ -28,8 +28,8 @@ from the talent universe.
 Buyout descriptions are linked by exact team and player name within the same FanGraphs
 workbook identity table; no fuzzy or cross-source name match is used. Non-contingent
 buyouts already owed to former players are not attached to transferable option rights.
-Eight explicit, non-conflicting dollar facts from a dated Spotrac public-options
-review fill only missing fields; they resolve seven economics review rows. The small
+Fourteen explicit, non-conflicting dollar facts from a dated Spotrac public-options
+review fill only missing fields; they resolve 13 economics review rows. The small
 overlay keeps page-level provenance, does not redistribute a bulk table, does not
 interpret a dash as zero and cannot override a FanGraphs term or control status.
 The ten projected 2027 Super Two cases now advance through arbitration classes 1–4
@@ -45,7 +45,7 @@ This table is ready to feed the existing contract-economics engine. It is not ye
 defensible dollar ranking. The remaining large inputs are:
 
 1. official post-2026 CBA minimum-salary rules;
-2. the remaining 61 buyouts and unresolved option triggers; and
+2. the remaining 55 buyouts and unresolved option triggers; and
 3. Phase 2 internal arbitration validation, empirical interval calibration and
    correlated career paths for option
    decisions.

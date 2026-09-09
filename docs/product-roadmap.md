@@ -207,14 +207,14 @@ scenario, while official post-2026 CBA costs remain unresolved.
 
 The payroll buyout source is now used instead of left on disk: all 86 contingent
 buyouts map by exact within-workbook identity, and 83 attach to the 151 projected
-option years. A small, dated Spotrac exception overlay supplies seven more explicit,
-non-conflicting buyouts; the remaining 61 stay in review. Projected 2027 Super Two
+option years. A small, dated Spotrac exception overlay supplies 13 more explicit,
+non-conflicting buyouts; the remaining 55 stay in review. Projected 2027 Super Two
 players also advance through arbitration classes 1–4 correctly; previously the class
 calculation could reset after the first projected year.
 
 The Phase 1 arbitration baseline now applies FanGraphs' 15%/35%/50%/75% shares to
-prior-season projected WAR value. A full research scenario calculates 50,036 of
-50,100 future annual rows and leaves exactly 64 option/salary exceptions in review.
+prior-season projected WAR value. A full research scenario calculates 50,042 of
+50,100 future annual rows and leaves exactly 58 option/salary exceptions in review.
 Fully specified mutual options use the conservative normal-expiration outcome.
 Post-2026 minimum salaries and unchanged service rules are clearly marked as a 3%
 planning scenario until a successor CBA supplies facts.

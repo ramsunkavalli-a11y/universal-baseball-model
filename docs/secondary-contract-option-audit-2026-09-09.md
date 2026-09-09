@@ -6,9 +6,10 @@ table and does not assume a displayed dash means a zero-dollar buyout.
 
 ## Promoted facts
 
-The public MLB option pages for 2027–2032 supplied eight explicit, non-conflicting
-dollar facts: seven buyouts and one missing option salary. They resolve seven annual
-economics review rows and reduce the review set from 71 to 64. Each promoted fact has
+The public MLB option pages for 2027–2032 and individual contract-detail pages supplied
+14 explicit, non-conflicting dollar facts: 13 buyouts and one missing option salary.
+They resolve 13 annual economics review rows and reduce the review set from 71 to 58.
+Each promoted fact has
 an MLBAM player ID, organization, season, expected FanGraphs control status, page URL
 and snapshot ID in `config/secondary-contract-terms-2026-09-09.json`.
 
@@ -30,8 +31,7 @@ remaining easy blanks:
 - Isaac Paredes, Kodai Senga, Blake Snell, Edwin Diaz, Tanner Scott, Garrett Crochet,
   Yuki Matsui and Yariel Rodriguez have conditional terms that a simple option label
   does not fully describe.
-- Andres Munoz, Michael King, Tatsuya Imai and Ketel Marte have displayed option-dollar
-  differences between sources.
+- Tatsuya Imai and Ketel Marte have displayed option-dollar differences between sources.
 
 These are not overrides. They remain an explicit reconciliation queue until the
 underlying contract language or another reliable contract-detail source resolves the
