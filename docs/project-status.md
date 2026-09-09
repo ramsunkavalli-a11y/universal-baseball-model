@@ -50,15 +50,14 @@ until their historical timing is safe.
 
 A stricter [nested robustness audit](prospect-arrival-nested-robustness-result.md) now
 supersedes that initial ranking. It normalizes 313 equivalent StatsAPI country labels
-and tests 144 combinations across demographics, baseball development/role interactions,
+and tests 176 combinations across demographics, baseball development/role interactions,
 logistic shrinkage, and production-rate regression. It embargoes incomplete two-year
 outcomes, evaluates proper scores/calibration with paired uncertainty, and checks
-supported subgroups. The wider search removes demographics from the hitter-role and
-pitcher-arrival leads, rejects the apparent hitter-arrival challenger, and leaves every
-candidate research-only because of mixed uncertainty or subgroup damage. No input
-changes production values. The reusable rules now govern all StatsAPI/PBP feature
-searches through the [model-search policy](model-search-validation-policy.md), not
-demographics alone.
+supported subgroups. Structured draft evidence materially improves hitter arrival and
+meaningful-role log loss, but is not selected for the stricter established-role
+outcome. Pitcher pedigree gains remain uncertain. No input changes production values.
+The reusable rules now govern all StatsAPI/PBP feature searches through the
+[model-search policy](model-search-validation-policy.md), not demographics alone.
 
 The first [mature post-debut workload study](prospect-outcome-quality-workload-result.md)
 now quantifies the larger Model FV flaw. Actual six-calendar-year workload averages
@@ -441,7 +440,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,248 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,358 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
