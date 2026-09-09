@@ -26,7 +26,10 @@ from universal_baseball.control_events import (
     classify_control_transactions,
     materialize_control_stints,
 )
-from universal_baseball.control_path import project_future_control_path
+from universal_baseball.control_path import (
+    project_future_control_path,
+    resolve_service_balances,
+)
 from universal_baseball.control_season_source import fetch_season_windows
 from universal_baseball.control_validation import (
     confirm_name_matches_with_current_roster_entries,
@@ -339,19 +342,19 @@ def main() -> int:
         rule5_players, empty_years, as_of_date=args.as_of
     ).select("player_id", "rule5_eligibility_year", "rule5_status")
 
-    unified = (
-        organizations.join(on_40man, on="player_id", how="left")
+    unified = resolve_service_balances(
+        organizations.join(
+            people.people.select("player_id", "mlb_debut_date"),
+            on="player_id",
+            how="left",
+        )
+        .join(on_40man, on="player_id", how="left")
         .join(baselines, on="player_id", how="left")
         .join(current_years, on="player_id", how="left")
         .join(rule5, on="player_id", how="left")
         .with_columns(
             pl.col("on_40man").fill_null(False),
-            pl.col("current_service_days").fill_null(0),
             pl.col("current_option_year_used").fill_null(False),
-            pl.when(pl.col("baseline_service_days").is_not_null())
-            .then(pl.col("baseline_service_days") + pl.col("current_service_days"))
-            .otherwise(pl.lit(None, dtype=pl.Int64))
-            .alias("service_days"),
             pl.when(pl.col("baseline_options_remaining").is_not_null())
             .then(
                 pl.max_horizontal(
@@ -443,6 +446,13 @@ def main() -> int:
         "unique_organization_players": unified.filter(pl.col("organization_id").is_not_null()).height,
         "multiple_organization_reviews": unified.filter(pl.col("organization_id").is_null()).height,
         "service_baselines": unified.filter(pl.col("baseline_service_days").is_not_null()).height,
+        "zero_opening_service_from_official_no_debut": unified.filter(
+            pl.col("service_time_basis")
+            == "official_no_mlb_debut_zero_opening_plus_statsapi_current"
+        ).height,
+        "unresolved_prior_mlb_service": unified.filter(
+            pl.col("service_time_basis") == "unresolved_prior_mlb_service"
+        ).height,
         "baseline_as_of_date": baseline_date.isoformat(),
         "baseline_conflicts": baseline_conflicts,
         "service_references": service_reference_total,

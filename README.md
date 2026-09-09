@@ -51,6 +51,9 @@ The [remaining-rights timeline](docs/remaining-rights-timeline.md) prevents live
 from counting production already earned or salary already paid.
 The [current opportunity result](docs/current-opportunity-paths-2026-09-08.md) supplies
 complete team-neutral 2027–2032 hitter and pitcher workload paths.
+The [current conditional WAR result](docs/current-conditional-war-paths-2026-09-08.md)
+adds the first universal rate baseline, explicit population fallbacks and controlled
+WAR coverage without promoting the output to a public ranking.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

@@ -26,6 +26,36 @@ CONTROL_PATH_SCHEMA: dict[str, pl.DataType] = {
 }
 
 
+def resolve_service_balances(players: pl.DataFrame) -> pl.DataFrame:
+    """Resolve a dated service balance without inventing prior MLB service.
+
+    FanGraphs supplies the opening balance when available. A player with no
+    official MLB debut has a zero opening balance; current StatsAPI service is
+    then added. Debuted players lacking the opening balance remain unresolved.
+    """
+
+    required = {"baseline_service_days", "current_service_days", "mlb_debut_date"}
+    if missing := sorted(required - set(players.columns)):
+        raise ValueError(f"service-balance players missing columns: {missing}")
+    return players.with_columns(
+        pl.col("current_service_days").fill_null(0),
+    ).with_columns(
+        pl.when(pl.col("baseline_service_days").is_not_null())
+        .then(pl.col("baseline_service_days") + pl.col("current_service_days"))
+        .when(pl.col("mlb_debut_date").is_null())
+        .then(pl.col("current_service_days"))
+        .otherwise(pl.lit(None, dtype=pl.Int64))
+        .cast(pl.Int64)
+        .alias("service_days"),
+        pl.when(pl.col("baseline_service_days").is_not_null())
+        .then(pl.lit("fangraphs_opening_balance_plus_statsapi_current"))
+        .when(pl.col("mlb_debut_date").is_null())
+        .then(pl.lit("official_no_mlb_debut_zero_opening_plus_statsapi_current"))
+        .otherwise(pl.lit("unresolved_prior_mlb_service"))
+        .alias("service_time_basis"),
+    )
+
+
 def _statutory_status(service_days: int, *, super_two_next_year: bool) -> str:
     if service_days >= FREE_AGENCY_SERVICE_YEARS * SERVICE_DAYS_PER_YEAR:
         return "free_agent_eligible"

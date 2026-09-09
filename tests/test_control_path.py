@@ -2,7 +2,29 @@ from datetime import date
 
 import polars as pl
 
-from universal_baseball.control_path import project_future_control_path
+from universal_baseball.control_path import (
+    project_future_control_path,
+    resolve_service_balances,
+)
+
+
+def test_service_balance_uses_zero_only_before_official_mlb_debut() -> None:
+    players = pl.DataFrame(
+        {
+            "player_id": [1, 2, 3],
+            "baseline_service_days": [100, None, None],
+            "current_service_days": [None, None, 12],
+            "mlb_debut_date": [date(2024, 4, 1), None, date(2026, 4, 1)],
+        }
+    )
+    result = resolve_service_balances(players)
+    assert result.get_column("current_service_days").to_list() == [0, 0, 12]
+    assert result.get_column("service_days").to_list() == [100, 0, None]
+    assert result.get_column("service_time_basis").to_list() == [
+        "fangraphs_opening_balance_plus_statsapi_current",
+        "official_no_mlb_debut_zero_opening_plus_statsapi_current",
+        "unresolved_prior_mlb_service",
+    ]
 
 
 def test_future_path_applies_super_two_then_contract_option() -> None:

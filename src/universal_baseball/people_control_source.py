@@ -21,6 +21,7 @@ PEOPLE_CONTROL_SCHEMA: dict[str, pl.DataType] = {
     "player_id": pl.Int64,
     "player_name": pl.String,
     "birth_date": pl.Date,
+    "mlb_debut_date": pl.Date,
     "current_team_id": pl.Int64,
     "first_pro_contract_date": pl.Date,
     "first_pro_contract_basis": pl.String,
@@ -115,6 +116,9 @@ def project_people_control_payload(
                 "player_id": player_id,
                 "player_name": str(person.get("fullName") or ""),
                 "birth_date": _date_value(person.get("birthDate"), label="birth date"),
+                "mlb_debut_date": _date_value(
+                    person.get("mlbDebutDate"), label="MLB debut date"
+                ),
                 "current_team_id": int(current_team["id"])
                 if current_team.get("id") is not None
                 else None,

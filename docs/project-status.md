@@ -91,6 +91,17 @@ or promote a player ranking; the public v1 release remains historical.
   salary obligation and cannot receive a fictional midseason non-tender option. Future
   rows retain full-season production, cost and decision states. Rest-of-season WAR and
   unpaid salary sources are the remaining live-2026 inputs.
+- A current Phase 1 conditional-WAR baseline now joins recent official MLB skill
+  evidence to all 2027–2032 opportunity rows: 23,640 hitter and 31,656 pitcher
+  player-years. Recent-MLB players receive regressed component estimates; all others
+  retain explicit population priors. Hitters include batting, primary position and
+  replacement while missing defense/running remain average-zero fallbacks. Pitchers
+  use the validated five-part BF baseline and a disclosed Tango adjacent-aging
+  fallback. No team depth or rate clipping is used.
+- Official no-debut evidence now supplies a zero opening service balance only when a
+  FanGraphs opening balance is absent. Debuted players still fail closed. This expands
+  the six-year future-control path from 1,667 to 8,350 players; unresolved ownership
+  and service cases remain null rather than becoming free agents.
 
 Contracts and results: [rights universe](player-rights-universe-contract.md),
 [full-roster source decision](affiliated-full-roster-source-result.md),
@@ -124,11 +135,11 @@ Contracts and results: [rights universe](player-rights-universe-contract.md),
 
 ## Next modeling task
 
-The main candidate denominator, phase-one control/cost path, static economics engine,
-projection guardrails and universal hitter-opportunity calculation are now built. Next,
-build component-level aging, whole-player WAR assembly and the explicit rest-of-season
-projection, then join those rates to the completed six-year opportunity paths. The
-later economic
+The main denominator, control/cost path, static economics engine, projection
+guardrails, opportunity paths and first conditional-WAR assembly are now built. Next,
+translate affiliated hitter/pitcher components to MLB-equivalent rate skill, replace
+covered defense/running fallbacks, fit modern adjacent-season component aging, and
+build the explicit rest-of-season projection. The later economic
 blocker is a chronologically fitted free-agent market function. In parallel, resolve
 the 21 multi-organization ownership cases and bounded contract/CBA exceptions. Do not
 publish dollar rankings from placeholder market or arbitration assumptions.

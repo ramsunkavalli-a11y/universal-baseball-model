@@ -142,12 +142,13 @@ entries corroborate the remaining 45 exact-name matches. Payroll identity review
 zero. FanGraphs is the primary manual baseline, but source disagreements stay visible
 and require corroboration rather than automatic override.
 
-Phase one is complete through the requested boundary: the 2026-09-08 unified table has
-8,399 players; the future full-service scenario has 8,335 rows through 2031; and the
-complete 133-player Super Two pool selects 30 at a tied `2.144` cutoff. The service
-method uses the FanGraphs value as the 2026 opening balance and adds StatsAPI in-season
-days. Phase two priorities are the 21 multi-organization ownership reviews followed by
-bounded DFA/waiver, suspension, restricted-list and fourth-option exceptions.
+The 2026-09-08 refreshed control table has 8,393 players; source membership can move
+with the live official full-roster response. The future full-service scenario now has
+50,100 rows for 8,350 players through 2032, and the complete 133-player Super Two pool
+selects 30 at a tied `2.144` cutoff. The service method uses FanGraphs as the 2026
+opening balance, adds StatsAPI in-season days, and uses zero opening service only when
+the official player record has no MLB debut. Debuted players with no balance remain
+unresolved. The 21 multi-organization reviews and bounded CBA exceptions remain.
 `audit_team_control_source.py` is the
 repeatable team source audit and writes source captures plus the exception report.
 Contract terms remain an overlay and never rewrite the underlying CBA arithmetic.
@@ -173,5 +174,9 @@ separately. Pre-cutoff role distributions flag unusual workload, rate and annual
 WAR without caps. Universal hitter participation/PA and pitcher participation/role/BF
 calculations are now implemented with explicit historical fallbacks, and their
 2018–2024 historical league panels are fitted with 2020 excluded. The 2026-09-08
-snapshot now has complete 2027–2032 baseline opportunity paths. Component-level
-multi-year aging, WAR assembly and the separate 2026 rest-of-season path are next.
+snapshot now has complete 2027–2032 baseline opportunity paths. A first conditional
+WAR assembly covers every opportunity row with explicit population priors, primary
+position and replacement value, and no depth input or clipping. Its published Tango
+pitcher aging curve, average-zero hitter defense/running and MLB-only rate evidence are
+Phase 1 fallbacks. Affiliated skill translation, modern aging validation and the
+separate 2026 rest-of-season path are next.
