@@ -105,8 +105,9 @@ def build_universal_pitcher_opportunity_fold(
     membership: pl.DataFrame,
     *,
     snapshot_year: int,
+    target_year: int | None = None,
 ) -> PitcherOpportunityFold:
-    """Create one zero-inclusive snapshot-to-next-season pitcher BF fold."""
+    """Create one zero-inclusive direct snapshot-to-target pitcher BF fold."""
 
     predictors = build_universal_pitcher_opportunity_predictors(
         snapshot, current_stats, membership, snapshot_year=snapshot_year
@@ -114,17 +115,26 @@ def build_universal_pitcher_opportunity_fold(
     future_bf = next_stats.filter(
         (pl.col("stat_group") == "pitching") & (pl.col("sport_id") == 1)
     ).group_by("player_id").agg(
-        pl.col("batters_faced").sum().cast(pl.Int64).alias("next_year_mlb_pa")
+        pl.col("batters_faced").sum().cast(pl.Int64).alias("next_year_mlb_pa"),
+        pl.col("games").sum().cast(pl.Int64).alias("next_year_mlb_games"),
+        pl.col("starts").sum().cast(pl.Int64).alias("next_year_mlb_starts"),
     )
     targets = (
         predictors.select("player_id")
         .join(future_bf, on="player_id", how="left")
-        .with_columns(pl.col("next_year_mlb_pa").fill_null(0).cast(pl.Int64))
+        .with_columns(
+            pl.col("next_year_mlb_pa").fill_null(0).cast(pl.Int64),
+            pl.col("next_year_mlb_games").fill_null(0).cast(pl.Int64),
+            pl.col("next_year_mlb_starts").fill_null(0).cast(pl.Int64),
+        )
         .sort("player_id")
     )
+    resolved_target_year = snapshot_year + 1 if target_year is None else target_year
+    if resolved_target_year <= snapshot_year:
+        raise ValueError("pitcher opportunity target year must follow snapshot year")
     return PitcherOpportunityFold(
         snapshot_year=snapshot_year,
-        target_year=snapshot_year + 1,
+        target_year=resolved_target_year,
         predictors=predictors,
         targets=targets,
     )
@@ -273,4 +283,3 @@ def evaluate_universal_pitcher_opportunity_forms(
         selection=selection,
         final_fit=final_fit,
     )
-

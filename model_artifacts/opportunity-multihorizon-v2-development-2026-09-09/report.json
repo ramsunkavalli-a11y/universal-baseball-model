@@ -1,0 +1,462 @@
+{
+  "boundary": {
+    "direct_not_recursive": true,
+    "horizons_5_6_retain_incumbent": true,
+    "production_promotion": false,
+    "protected_2026_outcomes_used": false,
+    "team_depth_or_future_team_used": false
+  },
+  "contract": "docs/opportunity-multihorizon-v2-development-contract.md",
+  "evaluated_horizons": [
+    2,
+    3,
+    4
+  ],
+  "evaluation_snapshots": {
+    "2": [
+      2017,
+      2021,
+      2022,
+      2023
+    ],
+    "3": [
+      2015,
+      2016,
+      2021,
+      2022
+    ],
+    "4": [
+      2013,
+      2014,
+      2015,
+      2021
+    ]
+  },
+  "gate": "opportunity_multihorizon_v2_rolling_development",
+  "report_schema_version": "0.1",
+  "selection": [
+    {
+      "candidate_decisions": [
+        {
+          "eligible": true,
+          "form": "playing_time_universal_recent_opportunity_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.2250798801216534,
+          "worst_incumbent_mae_ratio": 0.8354629792019711
+        },
+        {
+          "eligible": true,
+          "form": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.2183359098466007,
+          "worst_incumbent_mae_ratio": 0.8094093048207952
+        }
+      ],
+      "component": "hitter",
+      "final_positive_players": 7580,
+      "final_training_players": 52885,
+      "full_nll_tie_tolerance": 0.001,
+      "horizon": 2,
+      "incumbent_id": "historical_cohort_fallback_v1",
+      "protected_2026_outcomes_used": false,
+      "selected_model": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+      "selected_nb_alpha": 0.8357086525453996
+    },
+    {
+      "candidate_decisions": [
+        {
+          "eligible": true,
+          "form": "playing_time_universal_recent_opportunity_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.230795435381602,
+          "worst_incumbent_mae_ratio": 0.8907333824623176
+        },
+        {
+          "eligible": true,
+          "form": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.2260616403476772,
+          "worst_incumbent_mae_ratio": 0.8728752556131938
+        }
+      ],
+      "component": "hitter",
+      "final_positive_players": 6211,
+      "final_training_players": 44212,
+      "full_nll_tie_tolerance": 0.001,
+      "horizon": 3,
+      "incumbent_id": "historical_cohort_fallback_v1",
+      "protected_2026_outcomes_used": false,
+      "selected_model": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+      "selected_nb_alpha": 0.8976732504107485
+    },
+    {
+      "candidate_decisions": [
+        {
+          "eligible": true,
+          "form": "playing_time_universal_recent_opportunity_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.1890213418792888,
+          "worst_incumbent_mae_ratio": 0.9076634520290963
+        },
+        {
+          "eligible": true,
+          "form": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.1862991633743192,
+          "worst_incumbent_mae_ratio": 0.8965556184459653
+        }
+      ],
+      "component": "hitter",
+      "final_positive_players": 4752,
+      "final_training_players": 35485,
+      "full_nll_tie_tolerance": 0.001,
+      "horizon": 4,
+      "incumbent_id": "historical_cohort_fallback_v1",
+      "protected_2026_outcomes_used": false,
+      "selected_model": "playing_time_universal_recent_opportunity_40man_hurdle_v2",
+      "selected_nb_alpha": 0.9361090578100775
+    },
+    {
+      "candidate_decisions": [
+        {
+          "eligible": true,
+          "form": "pitcher_opportunity_universal_recent_opportunity_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.2011668273489629,
+          "worst_incumbent_mae_ratio": 0.950464597133271
+        },
+        {
+          "eligible": true,
+          "form": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.1916208037189895,
+          "worst_incumbent_mae_ratio": 0.9297263468090943
+        }
+      ],
+      "component": "pitcher",
+      "final_positive_players": 8497,
+      "final_training_players": 60324,
+      "full_nll_tie_tolerance": 0.001,
+      "horizon": 2,
+      "incumbent_id": "historical_cohort_fallback_v1",
+      "protected_2026_outcomes_used": false,
+      "selected_model": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2",
+      "selected_nb_alpha": 0.7228781329651867
+    },
+    {
+      "candidate_decisions": [
+        {
+          "eligible": true,
+          "form": "pitcher_opportunity_universal_recent_opportunity_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.2255708733353923,
+          "worst_incumbent_mae_ratio": 0.9651464391822864
+        },
+        {
+          "eligible": true,
+          "form": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.2196432618582607,
+          "worst_incumbent_mae_ratio": 0.9471878734616508
+        }
+      ],
+      "component": "pitcher",
+      "final_positive_players": 6899,
+      "final_training_players": 49752,
+      "full_nll_tie_tolerance": 0.001,
+      "horizon": 3,
+      "incumbent_id": "historical_cohort_fallback_v1",
+      "protected_2026_outcomes_used": false,
+      "selected_model": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2",
+      "selected_nb_alpha": 0.7630409306675274
+    },
+    {
+      "candidate_decisions": [
+        {
+          "eligible": true,
+          "form": "pitcher_opportunity_universal_recent_opportunity_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.2040990940723388,
+          "worst_incumbent_mae_ratio": 0.9531375391512319
+        },
+        {
+          "eligible": true,
+          "form": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2",
+          "full_nll_fold_wins": 4,
+          "gates": {
+            "every_fold_mae_within_ten_percent_of_incumbent": true,
+            "full_nll_wins_at_least_three_of_four_folds": true,
+            "pooled_brier_no_worse_than_incumbent": true,
+            "pooled_full_nll_lower_than_parametric_baseline": true,
+            "pooled_mae_no_worse_than_incumbent": true,
+            "pooled_mae_within_two_percent_of_parametric_baseline": true,
+            "pooled_participation_log_loss_no_worse": true
+          },
+          "pooled_full_nll": 1.2002900410499244,
+          "worst_incumbent_mae_ratio": 0.9400368182074756
+        }
+      ],
+      "component": "pitcher",
+      "final_positive_players": 5211,
+      "final_training_players": 39256,
+      "full_nll_tie_tolerance": 0.001,
+      "horizon": 4,
+      "incumbent_id": "historical_cohort_fallback_v1",
+      "protected_2026_outcomes_used": false,
+      "selected_model": "pitcher_opportunity_universal_recent_opportunity_40man_hurdle_v2",
+      "selected_nb_alpha": 0.7835534158092118
+    }
+  ],
+  "source_gate_failed_horizons": {
+    "5": "only one chronology-safe evaluation fold",
+    "6": "no chronology-safe evaluation fold"
+  },
+  "source_hashes": {
+    "modern_membership": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421",
+    "modern_report": "a1acfa26eb5b35730422ca0bd9b1ee772eb9686e16e5b39703ca33aa39488b36",
+    "pre2020_membership": "2f92d5e19653e2aa9d815327f89d1eca5311a7f806daab547a044b72b0516b91",
+    "pre2020_report": "b3fe0cbd8e7ad3a624349386f977e0e060b00b516b8d9e64c3dac22748a3bbe8"
+  },
+  "status": "development_only_not_production_confirmed",
+  "storage": {
+    "fold_metrics": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "03cf8b560b75a9d03a52dd9909e0e54a1af6832abaf6b6933afa5e475316222a",
+      "file_size_bytes": 15591,
+      "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\fold_metrics.parquet",
+      "row_count": 96,
+      "schema_sha256": "36c8fcaa45e28f79a2d8b6bf1703f788d58d53a7ee8881af32897595c0047a2d",
+      "table_name": "opportunity_multihorizon_v2_fold_metrics"
+    },
+    "pooled_metrics": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "2ef8de4545783b5b04533aeb4d3792a2b86670f587af5f2038b4c54970d1d751",
+      "file_size_bytes": 9473,
+      "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\pooled_metrics.parquet",
+      "row_count": 24,
+      "schema_sha256": "1f21b5ffc1e4014283e829af0f3104a4ed51f5e6d243e40328ef8ce7c3c8dddb",
+      "table_name": "opportunity_multihorizon_v2_pooled_metrics"
+    },
+    "selected_packages": {
+      "hitter_horizon_2": {
+        "coefficients": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "0bb7a75a13dbdd609b4a251891e036aa59dc4028f781abe5cf20a00dc6ad3ee7",
+          "file_size_bytes": 1658,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\hitter\\horizon-2\\selected_coefficients.parquet",
+          "row_count": 23,
+          "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+          "table_name": "hitter_opportunity_v2_h2_coefficients"
+        },
+        "standardization": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "5202bb1ae29336f6a946873fed3785e96c86e06b18014878582c351a43bff161",
+          "file_size_bytes": 1268,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\hitter\\horizon-2\\selected_standardization.parquet",
+          "row_count": 3,
+          "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+          "table_name": "hitter_opportunity_v2_h2_standardization"
+        }
+      },
+      "hitter_horizon_3": {
+        "coefficients": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "034f04054c6169f4295fc4fe1b0c485e9969ac6e737cfd8d3c966ab53f6dd733",
+          "file_size_bytes": 1658,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\hitter\\horizon-3\\selected_coefficients.parquet",
+          "row_count": 23,
+          "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+          "table_name": "hitter_opportunity_v2_h3_coefficients"
+        },
+        "standardization": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "74969e2e4f65213cae7063bfece59b847e7f4f8c5ba6f884600aec56222a80b7",
+          "file_size_bytes": 1268,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\hitter\\horizon-3\\selected_standardization.parquet",
+          "row_count": 3,
+          "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+          "table_name": "hitter_opportunity_v2_h3_standardization"
+        }
+      },
+      "hitter_horizon_4": {
+        "coefficients": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "83240e521590dc1f6fe48b0e3646e29c02d1584ed199a238fc4cd2ebc8131356",
+          "file_size_bytes": 1658,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\hitter\\horizon-4\\selected_coefficients.parquet",
+          "row_count": 23,
+          "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+          "table_name": "hitter_opportunity_v2_h4_coefficients"
+        },
+        "standardization": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "8b023c0b694c2f2e8d8d3d47685afcc64239b864d10412bca2b07a3e94150da1",
+          "file_size_bytes": 1268,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\hitter\\horizon-4\\selected_standardization.parquet",
+          "row_count": 3,
+          "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+          "table_name": "hitter_opportunity_v2_h4_standardization"
+        }
+      },
+      "pitcher_horizon_2": {
+        "coefficients": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "424079b83b738d12a76cc46b7a63a4520e4db910565b444136e32327181b5eef",
+          "file_size_bytes": 1747,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\pitcher\\horizon-2\\selected_coefficients.parquet",
+          "row_count": 29,
+          "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+          "table_name": "pitcher_opportunity_v2_h2_coefficients"
+        },
+        "standardization": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "bba4ad0012e6cb31b7ae3ecc5b2481bbfdf9e619563da5fa435bdcc56f667606",
+          "file_size_bytes": 1268,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\pitcher\\horizon-2\\selected_standardization.parquet",
+          "row_count": 3,
+          "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+          "table_name": "pitcher_opportunity_v2_h2_standardization"
+        }
+      },
+      "pitcher_horizon_3": {
+        "coefficients": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "7f54b69b84b4300ca63bc210a5d4ddfb6dedf445c08bc3d654391334ed22ac1a",
+          "file_size_bytes": 1753,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\pitcher\\horizon-3\\selected_coefficients.parquet",
+          "row_count": 29,
+          "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+          "table_name": "pitcher_opportunity_v2_h3_coefficients"
+        },
+        "standardization": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "49563ca1d910fbf7aec51a4c1a15e9d084b3055435f8626672d5e4ea8fc61ea9",
+          "file_size_bytes": 1268,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\pitcher\\horizon-3\\selected_standardization.parquet",
+          "row_count": 3,
+          "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+          "table_name": "pitcher_opportunity_v2_h3_standardization"
+        }
+      },
+      "pitcher_horizon_4": {
+        "coefficients": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "ba128822c60569c3fe1c0c40641ff8d1b8421d3ed49a829871fafdacca7e9b6a",
+          "file_size_bytes": 1753,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\pitcher\\horizon-4\\selected_coefficients.parquet",
+          "row_count": 29,
+          "schema_sha256": "526017d24fb272e06ff1682c903664ac60b29f1c282ab94b776487153161b6d7",
+          "table_name": "pitcher_opportunity_v2_h4_coefficients"
+        },
+        "standardization": {
+          "canonical_schema_version": "0.1",
+          "file_sha256": "c3d806881935888255ec2f2c664cd6a5769dbeaf0c4063dba590d48a97179e92",
+          "file_size_bytes": 1268,
+          "path": "reports\\generated\\opportunity-multihorizon-v2-development\\tables\\pitcher\\horizon-4\\selected_standardization.parquet",
+          "row_count": 3,
+          "schema_sha256": "f105ce2c01cdc1deb3d42bba612d4e735dbd3bb887d7ddc5be90e7d68b1e3d14",
+          "table_name": "pitcher_opportunity_v2_h4_standardization"
+        }
+      }
+    }
+  }
+}

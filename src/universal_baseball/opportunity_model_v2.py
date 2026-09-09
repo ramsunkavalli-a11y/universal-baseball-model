@@ -99,8 +99,9 @@ def build_universal_hitter_opportunity_fold(
     membership: pl.DataFrame,
     *,
     snapshot_year: int,
+    target_year: int | None = None,
 ) -> OpportunityFold:
-    """Create one zero-inclusive snapshot-to-next-season hitter fold."""
+    """Create one zero-inclusive direct snapshot-to-target hitter fold."""
 
     predictors = build_universal_hitter_opportunity_predictors(
         snapshot,
@@ -123,9 +124,12 @@ def build_universal_hitter_opportunity_fold(
         .with_columns(pl.col("next_year_mlb_pa").fill_null(0).cast(pl.Int64))
         .sort("player_id")
     )
+    resolved_target_year = snapshot_year + 1 if target_year is None else target_year
+    if resolved_target_year <= snapshot_year:
+        raise ValueError("hitter opportunity target year must follow snapshot year")
     return OpportunityFold(
         snapshot_year=snapshot_year,
-        target_year=snapshot_year + 1,
+        target_year=resolved_target_year,
         predictors=predictors,
         targets=targets,
     )
