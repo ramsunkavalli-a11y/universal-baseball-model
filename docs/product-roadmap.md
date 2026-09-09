@@ -108,14 +108,28 @@ justify worse calibration or coverage for sparse players.
 
 ## Immediate execution order
 
-The player-candidate inventory, rights-universe contract, certified 40-man adapter,
-MLB career-outcome inventory and first pitcher-component baseline are implemented.
-Continue Step 1 by reconciling candidate discovery against dated transaction,
-reserve-list/affiliation and free-agent evidence; this unlocks honest non-arrival and
-attrition labels. In parallel, connect the recovered richer opportunity pipeline and
-declare universal fallbacks for inactive/no-history players. The first integrated model
-should be deliberately simple; granular feature research begins only after the complete
-Phase 1 path exists.
+Steps 1–7 now have a complete Phase 1 research path. The dated rights universe covers
+8,393 players; explicit fallbacks retain inactive, no-history and missing-age players.
+Universal hitter and pitcher opportunity models are separated from conditional skill,
+then joined to whole-player WAR, control, contract and cost paths. Direct opportunity
+models are selected for horizons 1–4; horizons 5–6 retain the labeled historical
+fallback because the older official source does not provide enough chronology-safe
+validation folds. The integrated output remains a research scenario, not a publishable
+ranking.
+
+The immediate P0 is Step 8: prove the whole path under historical cutoffs. Start with a
+small set of dated season checkpoints, not a daily scheduler. At each checkpoint,
+reconstruct the player denominator and allowed evidence, score production and
+opportunity, join the then-known rights/cost state, and persist the resulting value
+record. Fail on future evidence, duplicate player rights, dropped players, WAR/value
+accounting differences or unexplained source changes. Report forecast calibration,
+coverage and value stability separately. Once checkpoint replay passes, expand the same
+interface to completed-game and material-transaction updates.
+
+Do not reopen broad component searches during this replay. Fix material identity,
+chronology, denominator, control, cost or scale failures; record small component
+discrepancies for Phase 2. The protected 2026 confirmation forecast is frozen and its
+evaluator must remain locked until every scheduled regular-season game is complete.
 
 The transaction source is projected into a chronology-safe ledger, but transaction
 codes do not yet drive rights-state changes. The next rights gate must authorize only
@@ -158,8 +172,11 @@ Contract Economics v0 now supplies the downstream Step 7 interface. It accepts d
 annual WAR estimates and named economic assumptions, values guarantees, tender rights,
 club options and player options, reports optionality separately, and fails closed on
 mutual/vesting triggers. The official 2022–2026 minimum schedule is versioned in
-`cba_rules.py`. A league-wide dollar output remains blocked on validated multi-year WAR
-coverage and an ex-ante free-agent market fit; neither is replaced by a hidden default.
+`cba_rules.py`. That former block is now cleared for a named Phase 1 research scenario:
+the FanGraphs 2026 market reference, internal one-year scale check, explicit future
+growth and discount assumptions, and full current/future WAR path produce league-wide
+dollar outputs with review rows retained. These values are inputs to Step 8 replay, not
+final ranking validation.
 
 The remaining-rights adapter now separates already-earned current-season WAR and paid
 salary from the production and obligations an acquiring club can receive. The dated
