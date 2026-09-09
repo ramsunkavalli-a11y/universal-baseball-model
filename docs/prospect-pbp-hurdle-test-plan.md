@@ -46,15 +46,21 @@ workload/history, 40-man state, role and four regressed production rates.
 
 PBP candidates add only pre-cutoff, empirically regressed contact shares:
 
-1. `trajectory`: GB, LD and IFFB shares; OFFB is the omitted fourth category.
-2. `direction`: pull and opposite-field shares; center is omitted.
-3. `combined`: the five trajectory and direction terms above.
+1. `coverage`: contact count and PBP-observed indicator only, to distinguish source
+   availability from contact-shape signal.
+2. `trajectory`: GB, LD and IFFB shares; OFFB is the omitted fourth category.
+3. `direction`: pull and opposite-field shares; center is omitted.
+4. `combined`: the five trajectory and direction terms above.
 
 All candidates also carry contact count and a PBP-observed indicator. Contact shares
 are regressed to training-population rates using pseudo-contact strengths
 `50, 200, 600`. Logistic regularization is selected from `C = 0.03, 0.1, 0.3, 1.0`.
 No additional feature, interaction, cutoff, or threshold may be added after viewing
 the 2022 or 2023 score.
+
+The incumbent is fixed at logistic `C = 1.0` and aggregate production-rate regression
+strength `50`. Every PBP candidate uses that same aggregate-rate regression; only its
+own logistic `C` and contact-share regression strength vary on the grid above.
 
 ## Outcomes
 
