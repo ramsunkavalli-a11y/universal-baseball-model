@@ -113,8 +113,9 @@ use, and uncertified pitch-sequence fields remain excluded.
 The next [pitcher contact testing queue](pitcher-next-contact-testing-queue.md) starts
 with a broad review of reproducible pitcher-projection methods, using Tango as the
 primary framework and other public work from the past two decades as sources of
-testable hypotheses. It then tests pooled non-HR XBH from universal season totals.
-After that, certified event-level tests may add ground versus air, IFFB within air,
+testable hypotheses. The first [pooled non-HR XBH test](pitcher-pooled-xbh-result.md)
+is now rejected: all 800-4,000 BF candidates worsened both 2024 development proper
+scores, so 2025 was not calculated. After that, certified event-level tests may add ground versus air, IFFB within air,
 pulled air, and pulled ground one at a time. A simpler intervening test uses frozen
 lineup bands 1-6 versus 7-9 and strongly regressed same/opposite-side results to test
 future starter potential.
