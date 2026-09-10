@@ -97,6 +97,12 @@ This is evidence that the component rates contain useful signal, not evidence th
 tested combination is ready. Production remains unchanged. Do not tune a rate-only or
 interaction variant on these disclosed years; preserve it for genuinely fresh data.
 
+A narrow [early-history confirmation](prospect-early-history-rate-only-plan.md) is now
+frozen before collecting its required component sources. It fits a rate-only model on
+2003 and tests unchanged 2006 and 2007 cohorts. The two gap years are unused. This is
+the last broad aggregate-rate test: it either supports the stripped hypothesis in an
+untouched old window or closes it, and it cannot by itself justify production use.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still
