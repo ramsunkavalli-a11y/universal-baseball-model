@@ -30,14 +30,17 @@ now passes its time-ordered outer gate. Among 576 arriving hitters, the regresse
 origin-position matrix improved multiclass log loss from 1.489 to 0.811 and Brier from
 0.751 to 0.403. Catchers retained catcher in 85.9% of observed cases. This authorizes
 a private probabilistic-position sensitivity, not a catcher haircut or published change.
+The required [positional-runs validation](prospect-positional-runs-validation-result.md)
+then rejects that sensitivity for value use: MAE worsens from 3.740 to 4.561 runs per
+600 and RMSE from 5.109 to 5.680, with both paired intervals clearly unfavorable.
 
 That [value sensitivity](prospect-position-value-sensitivity-result.md) is complete but
 does not replace the playable default. Applying the two-year destination mix to all
 six years reduces hitter 50+ counts from 86 to 36 and worsens the outside diagnostic.
 The [current-position source audit](prospect-current-position-source-result.md) selects
 official fielding outs first, games role second, and listed position last. The next
-challenger must model transition timing; do not apply the full destination mix
-immediately.
+challenger must target exact player-level positional runs on development data; the
+coarse group mixture is rejected.
 
 The [established-tier prospect test](prospect-established-tier-test-result.md) is also
 rejected. Mature fringe/meaningful/established workload priors are usable, but three

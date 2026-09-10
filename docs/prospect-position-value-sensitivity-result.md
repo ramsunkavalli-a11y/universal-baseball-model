@@ -41,11 +41,12 @@ The outside Top-100 check is diagnostic only and was not used for selection. On 
 
 ## Decision
 
-Do not replace the playable default. Keep this sensitivity as evidence that permanent
-current position is too strong, but the full transition mixture removes too much value
-at once. The next bounded challenger should preserve the validated transition signal
-while estimating when position changes occur across the six-year path, rather than
-applying the two-year destination mix immediately to every year.
+Do not replace the playable default. The follow-on
+[positional-runs validation](prospect-positional-runs-validation-result.md) shows that
+the coarse group mixture predicts the actual run component worse than carrying current
+minor-league usage forward. Future work must target exact player-level positional runs
+directly on development data; do not tune another conversion on the disclosed outer
+group.
 
 No outside FV, organization depth, subjective catcher adjustment, or skill change was
 used. Machine-readable detail:

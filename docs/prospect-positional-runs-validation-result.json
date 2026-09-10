@@ -1,0 +1,113 @@
+{
+  "as_of_date": "2026-09-09",
+  "baseline": {
+    "bias": 0.45447657319270085,
+    "mae": 3.7403359889976713,
+    "rmse": 5.109338853815181
+  },
+  "boundaries": {
+    "current_values_used": false,
+    "organization_or_depth_used": false,
+    "outside_fv_used": false
+  },
+  "by_origin_group": [
+    {
+      "baseline": {
+        "bias": -1.930656073310722,
+        "mae": 5.33992253225071,
+        "rmse": 7.088928302261497
+      },
+      "candidate": {
+        "bias": -0.9284038214388224,
+        "mae": 5.782029489653195,
+        "rmse": 7.0588369118706495
+      },
+      "origin_group": "C",
+      "players": 92
+    },
+    {
+      "baseline": {
+        "bias": 0.8276534206085981,
+        "mae": 3.5478889674825207,
+        "rmse": 4.923621271096703
+      },
+      "candidate": {
+        "bias": 2.6435212507439445,
+        "mae": 6.072616752419645,
+        "rmse": 6.8220728446526655
+      },
+      "origin_group": "CORNER",
+      "players": 105
+    },
+    {
+      "baseline": {
+        "bias": 1.3492407575191767,
+        "mae": 3.3988736045072496,
+        "rmse": 4.680013823068587
+      },
+      "candidate": {
+        "bias": -1.074104814661198,
+        "mae": 3.45217691776329,
+        "rmse": 4.443771017940927
+      },
+      "origin_group": "MIDDLE_INFIELD",
+      "players": 164
+    },
+    {
+      "baseline": {
+        "bias": -4.496650775439353,
+        "mae": 4.545114132413349,
+        "rmse": 6.460941160565421
+      },
+      "candidate": {
+        "bias": 7.6866396974665605,
+        "mae": 8.378905068620442,
+        "rmse": 9.623680346983651
+      },
+      "origin_group": "OTHER",
+      "players": 12
+    },
+    {
+      "baseline": {
+        "bias": 0.9122146838020032,
+        "mae": 3.3432299230629545,
+        "rmse": 4.312346712496142
+      },
+      "candidate": {
+        "bias": 1.0126562221136675,
+        "mae": 3.895683394088399,
+        "rmse": 4.844958647338485
+      },
+      "origin_group": "OUTFIELD",
+      "players": 203
+    }
+  ],
+  "candidate": {
+    "bias": 0.5448129854339917,
+    "mae": 4.560935896508206,
+    "rmse": 5.6804251723015815
+  },
+  "contract": "docs/prospect-positional-runs-validation-plan.md",
+  "decision": {
+    "full_value_change_authorized": false,
+    "positional_run_component_passed": false
+  },
+  "paired_bootstrap": {
+    "mae": {
+      "ci_high": 1.139802603534534,
+      "ci_low": 0.4953937260356267,
+      "difference": 0.8205999075105348,
+      "probability_candidate_better": 0.0
+    },
+    "resamples": 2000,
+    "rmse": {
+      "ci_high": 0.9363901844743171,
+      "ci_low": 0.19735876797239021,
+      "difference": 0.5710863184864001,
+      "probability_candidate_better": 0.0005
+    }
+  },
+  "players": 576,
+  "report_schema_version": "0.1",
+  "status": "prospect_positional_runs_outer_validation_complete"
+}
