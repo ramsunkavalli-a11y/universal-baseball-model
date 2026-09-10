@@ -110,6 +110,19 @@ scores under 800-4,000 BF regression. No 2025 challenger score was calculated. K
 the simpler five-part pitcher profile; extra outcome detail has not earned production
 use, and uncertified pitch-sequence fields remain excluded.
 
+The next [pitcher contact testing queue](pitcher-next-contact-testing-queue.md) starts
+with a broad review of reproducible pitcher-projection methods, using Tango as the
+primary framework and other public work from the past two decades as sources of
+testable hypotheses. It then tests pooled non-HR XBH from universal season totals.
+After that, certified event-level tests may add ground versus air, IFFB within air,
+pulled air, and pulled ground one at a time. A simpler intervening test uses frozen
+lineup bands 1-6 versus 7-9 and strongly regressed same/opposite-side results to test
+future starter potential.
+Batter quality, batter side, pitcher hand, opponent mix, park, level and season are
+required controls. Pulled air is treated as potential future pitcher damage, not
+assumed pitcher talent; each increment must be repeatable and improve later proper
+scores.
+
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
 arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top
