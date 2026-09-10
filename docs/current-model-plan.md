@@ -88,6 +88,14 @@ The next test targets conditional MLB WAR and linked career production, with fai
 retained, earlier-cohort selection, and one untouched later cohort. See the
 [horizon audit](prospect-horizon-extrapolation-result.md).
 
+The first [conditional-quality test](prospect-pitcher-conditional-quality-result.md)
+also rejects the available aggregate-feature challenger. Minor-league component rates,
+age, level, workload, role, hand, origin and official draft pedigree do not beat a
+population mean on later successful pitchers. A tier-quality relationship also
+reverses across periods. The next input class must add genuinely new cutoff-safe
+pitch/process or batted-ball evidence, or a broader mature cohort; do not rescue the
+same features through more tuning.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

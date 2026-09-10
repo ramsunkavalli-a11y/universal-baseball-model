@@ -1,0 +1,324 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundaries": {
+    "current_2026_outcomes_used": false,
+    "failures_retained_in_separate_hurdle_test": true,
+    "failures_used_in_this_conditional_rate_test": false,
+    "outside_fv_used": false,
+    "physical_measurements_used": false,
+    "production_values_changed": false,
+    "stable_demographics_and_official_draft_pedigree_tested": true
+  },
+  "decision": "promote only if outer accuracy improves with a paired interval below zero and no material supported subgroup reversal",
+  "lower_target_is_better_pitching": true,
+  "outer": {
+    "linked_realized_tier_candidate": {
+      "boundary": "uses realized future tier only to test dependence for a latent joint path; it is not an available forecast-date feature",
+      "candidates": [
+        {
+          "alpha": 0.0,
+          "cross_validated_rmse": 0.2772742814667156
+        },
+        {
+          "alpha": 1.0,
+          "cross_validated_rmse": 0.2772523936811366
+        },
+        {
+          "alpha": 10.0,
+          "cross_validated_rmse": 0.27715376659510327
+        },
+        {
+          "alpha": 100.0,
+          "cross_validated_rmse": 0.27713551339770226
+        }
+      ],
+      "metrics": {
+        "bias": 0.0765154001564781,
+        "correlation": -0.1275797586991026,
+        "mae": 0.1559473126239069,
+        "observed_mean": 0.25017274157250685,
+        "players": 225,
+        "predicted_mean": 0.3266881417289849,
+        "rmse": 0.20098149503385068
+      },
+      "paired_mse_bootstrap": {
+        "candidate_minus_baseline_mse": 0.0003764117514430299,
+        "p025": 0.0002114392093641301,
+        "p975": 0.0005480362016832146
+      },
+      "selection": {
+        "alpha": 100.0,
+        "cross_validated_rmse": 0.27713551339770226
+      }
+    },
+    "outcome_years": [
+      2022,
+      2025
+    ],
+    "paired_mse_bootstrap": {
+      "candidate_minus_baseline_mse": 0.00044956476322505424,
+      "p025": -0.0042360614736841485,
+      "p975": 0.00492461471815983
+    },
+    "players": 225,
+    "population_mean_baseline": {
+      "bias": 0.07515357447385512,
+      "correlation": null,
+      "mae": 0.1550589615602919,
+      "observed_mean": 0.25017274157250685,
+      "players": 225,
+      "predicted_mean": 0.325326316046362,
+      "rmse": 0.20004286939203486
+    },
+    "realized_established_tier_bootstrap": {
+      "established_minus_other_mean_rate": -0.0473266829546459,
+      "p025": -0.09597767887591678,
+      "p975": -0.0009427606618362626
+    },
+    "realized_established_tier_descriptive": [
+      {
+        "component_rate_sd": 0.20789809471856824,
+        "established_role_within_horizon": 0,
+        "mean_component_rate": 0.27309989020386866,
+        "mean_future_mlb_bf": 357.12068965517244,
+        "players": 116
+      },
+      {
+        "component_rate_sd": 0.15624919331118406,
+        "established_role_within_horizon": 1,
+        "mean_component_rate": 0.2257732072492227,
+        "mean_future_mlb_bf": 990.743119266055,
+        "players": 109
+      }
+    ],
+    "selected_candidate": {
+      "bias": 0.08953906642931801,
+      "correlation": 0.2764043192815795,
+      "mae": 0.15760913771426308,
+      "observed_mean": 0.25017274157250685,
+      "players": 225,
+      "predicted_mean": 0.3397118080018249,
+      "rmse": 0.2011634021332503
+    },
+    "snapshot": 2021,
+    "subgroups": [
+      {
+        "baseline_rmse": 0.20093640818947303,
+        "candidate_rmse": 0.20212710425267338,
+        "group": "level_tier",
+        "players": 67,
+        "value": "AAA"
+      },
+      {
+        "baseline_rmse": 0.17072502868334424,
+        "candidate_rmse": 0.18240428121030597,
+        "group": "level_tier",
+        "players": 70,
+        "value": "AA"
+      },
+      {
+        "baseline_rmse": 0.21997963982083307,
+        "candidate_rmse": 0.21422982200282062,
+        "group": "level_tier",
+        "players": 88,
+        "value": "A_OR_BELOW"
+      },
+      {
+        "baseline_rmse": 0.20841295154264272,
+        "candidate_rmse": 0.20842483321223498,
+        "group": "pitch_hand",
+        "players": 169,
+        "value": "R"
+      },
+      {
+        "baseline_rmse": 0.17233593098808694,
+        "candidate_rmse": 0.17745707502533936,
+        "group": "pitch_hand",
+        "players": 56,
+        "value": "L"
+      },
+      {
+        "baseline_rmse": 0.23775003004684192,
+        "candidate_rmse": 0.21181809401886809,
+        "group": "role_tier",
+        "players": 50,
+        "value": "RELIEVER"
+      },
+      {
+        "baseline_rmse": 0.19942686473125806,
+        "candidate_rmse": 0.15255529901597847,
+        "group": "role_tier",
+        "players": 27,
+        "value": "SWINGMAN"
+      },
+      {
+        "baseline_rmse": 0.18570147889888397,
+        "candidate_rmse": 0.20522386035048462,
+        "group": "role_tier",
+        "players": 148,
+        "value": "STARTER"
+      }
+    ]
+  },
+  "report_schema_version": "0.1",
+  "selection": {
+    "candidates": [
+      {
+        "alpha": 1.0,
+        "cross_validated_rmse": 0.28194436526857597,
+        "feature_set": "core"
+      },
+      {
+        "alpha": 10.0,
+        "cross_validated_rmse": 0.279576161487927,
+        "feature_set": "core"
+      },
+      {
+        "alpha": 100.0,
+        "cross_validated_rmse": 0.2747902208916571,
+        "feature_set": "core"
+      },
+      {
+        "alpha": 1000.0,
+        "cross_validated_rmse": 0.2757297100056539,
+        "feature_set": "core"
+      },
+      {
+        "alpha": 1.0,
+        "cross_validated_rmse": 0.2872317463120978,
+        "feature_set": "handedness"
+      },
+      {
+        "alpha": 10.0,
+        "cross_validated_rmse": 0.28392485107585574,
+        "feature_set": "handedness"
+      },
+      {
+        "alpha": 100.0,
+        "cross_validated_rmse": 0.2763747861446847,
+        "feature_set": "handedness"
+      },
+      {
+        "alpha": 1000.0,
+        "cross_validated_rmse": 0.2759632946348225,
+        "feature_set": "handedness"
+      },
+      {
+        "alpha": 1.0,
+        "cross_validated_rmse": 0.30571011023536426,
+        "feature_set": "origin"
+      },
+      {
+        "alpha": 10.0,
+        "cross_validated_rmse": 0.2966486353025742,
+        "feature_set": "origin"
+      },
+      {
+        "alpha": 100.0,
+        "cross_validated_rmse": 0.2833379060457651,
+        "feature_set": "origin"
+      },
+      {
+        "alpha": 1000.0,
+        "cross_validated_rmse": 0.27740614560872234,
+        "feature_set": "origin"
+      },
+      {
+        "alpha": 1.0,
+        "cross_validated_rmse": 0.34197541089853745,
+        "feature_set": "stable_interactions"
+      },
+      {
+        "alpha": 10.0,
+        "cross_validated_rmse": 0.3198756422336962,
+        "feature_set": "stable_interactions"
+      },
+      {
+        "alpha": 100.0,
+        "cross_validated_rmse": 0.28689363882948204,
+        "feature_set": "stable_interactions"
+      },
+      {
+        "alpha": 1000.0,
+        "cross_validated_rmse": 0.2757960639008633,
+        "feature_set": "stable_interactions"
+      },
+      {
+        "alpha": 1.0,
+        "cross_validated_rmse": 0.2903334557382368,
+        "feature_set": "baseball_interactions"
+      },
+      {
+        "alpha": 10.0,
+        "cross_validated_rmse": 0.2775553042238626,
+        "feature_set": "baseball_interactions"
+      },
+      {
+        "alpha": 100.0,
+        "cross_validated_rmse": 0.27092156617621127,
+        "feature_set": "baseball_interactions"
+      },
+      {
+        "alpha": 1000.0,
+        "cross_validated_rmse": 0.27366615959182744,
+        "feature_set": "baseball_interactions"
+      },
+      {
+        "alpha": 1.0,
+        "cross_validated_rmse": 0.3679376710891399,
+        "feature_set": "baseball_demographics"
+      },
+      {
+        "alpha": 10.0,
+        "cross_validated_rmse": 0.32481482676527246,
+        "feature_set": "baseball_demographics"
+      },
+      {
+        "alpha": 100.0,
+        "cross_validated_rmse": 0.28277096361834364,
+        "feature_set": "baseball_demographics"
+      },
+      {
+        "alpha": 1000.0,
+        "cross_validated_rmse": 0.27366930101379194,
+        "feature_set": "baseball_demographics"
+      },
+      {
+        "alpha": 1.0,
+        "cross_validated_rmse": 0.29822244766658856,
+        "feature_set": "baseball_pedigree"
+      },
+      {
+        "alpha": 10.0,
+        "cross_validated_rmse": 0.28348383558395085,
+        "feature_set": "baseball_pedigree"
+      },
+      {
+        "alpha": 100.0,
+        "cross_validated_rmse": 0.27319898255790126,
+        "feature_set": "baseball_pedigree"
+      },
+      {
+        "alpha": 1000.0,
+        "cross_validated_rmse": 0.27429344022177854,
+        "feature_set": "baseball_pedigree"
+      }
+    ],
+    "method": "five-fold player cross-validation inside the 2018 snapshot",
+    "selected": {
+      "alpha": 100.0,
+      "cross_validated_rmse": 0.27092156617621127,
+      "feature_set": "baseball_interactions"
+    }
+  },
+  "status": "development_conditional_pitcher_quality_audit_complete",
+  "target": "future MLB (13*HR + 3*(UBB+HBP) - 2*K) per BF among pitchers with at least 200 adjusted BF",
+  "training": {
+    "outcome_years": [
+      2019,
+      2020
+    ],
+    "players": 135,
+    "snapshot": 2018
+  }
+}

@@ -28,6 +28,17 @@ especially for AAA, older, and starter-classified pitchers. The hurdle therefore
 not explain low pitcher values. The next P0 is conditional MLB WAR and linked career
 production, still retaining all failures and zeroes and using time-ordered selection.
 
+The first [conditional-quality audit](prospect-pitcher-conditional-quality-result.md)
+then tests K, UBB, HBP, HR, age, level, workload, role, hand, origin and official draft
+pedigree. A model selected only inside the 2018 cohort fails on 225 later successful
+pitchers: RMSE is 0.20116 versus 0.20004 for the population mean, and the paired interval
+crosses zero. Established pitchers are better in the later cohort, but using the
+earlier cohort's tier relationship makes the later score significantly worse; the
+relationship changed direction. Neither candidate is promoted. The current aggregate
+inputs therefore do not reliably separate quality among successful pitcher prospects.
+The next evidence should be richer, cutoff-safe pitch/process or batted-ball data, or
+broader mature cohorts—not another bonus, FV threshold change, or same-period rescue.
+
 The earlier September 9 stopping point remains useful historical context in
 [the prior handoff](current-cycle-stopping-point-2026-09-09.md).
 
