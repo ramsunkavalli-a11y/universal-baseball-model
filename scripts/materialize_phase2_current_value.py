@@ -49,6 +49,11 @@ def _args() -> argparse.Namespace:
         default=Path("reports/generated/phase2-model-fv"),
     )
     parser.add_argument(
+        "--nested-career-fv-root",
+        type=Path,
+        default=Path("reports/generated/phase2-nested-career-fv"),
+    )
+    parser.add_argument(
         "--war-uncertainty-root",
         type=Path,
         default=Path("reports/generated/phase2-war-uncertainty"),
@@ -123,9 +128,16 @@ def main() -> int:
     phase1 = pl.read_parquet(args.phase1_replay_root / dated / "value-records.parquet")
     control = pl.read_parquet(args.control_root / dated / "league-control-snapshot.parquet")
     model_fv = pl.read_parquet(args.model_fv_root / dated / "model-fv.parquet")
+    nested_fv = pl.read_parquet(
+        args.nested_career_fv_root / dated / "nested-career-model-fv.parquet"
+    )
     fv_by_id = {
         int(row["player_id"]): row
         for row in model_fv.iter_rows(named=True)
+    }
+    nested_fv_by_id = {
+        int(row["player_id"]): row
+        for row in nested_fv.iter_rows(named=True)
     }
     aggregate_by_id = {
         int(row["player_id"]): row for row in economics.aggregate.iter_rows(named=True)
@@ -140,6 +152,7 @@ def main() -> int:
         player_id = int(player["player_id"])
         old = phase1_by_id[player_id]
         fv = fv_by_id.get(player_id)
+        nested = nested_fv_by_id.get(player_id)
         no_debut = player["mlb_debut_date"] is None
         released = old["rights_state"] == "no_incumbent_rights"
         annual = annual_by_id.get(player_id)
@@ -158,14 +171,14 @@ def main() -> int:
             value = lower = upper = cost = controlled_war = 0.0
             method = "no_incumbent_rights"
             coverage = "talent_only_no_incumbent_rights"
-        elif no_debut and fv is not None:
+        elif no_debut and fv is not None and nested is not None:
             status = "available"
-            value = float(fv["talent_benchmark_value_dollars"])
+            value = float(nested["nested_talent_benchmark_value_dollars"])
             lower = upper = None
             cost = None
-            controlled_war = float(fv["expected_six_year_war"])
-            method = "model_fv_pre_mlb_benchmark_value"
-            coverage = "phase2_internal_model_fv_no_contract_interval"
+            controlled_war = float(nested["three_tier_expected_six_year_war"])
+            method = "nested_career_model_fv_pre_mlb_benchmark_value"
+            coverage = "phase2_nested_career_model_fv_no_contract_interval"
         elif no_debut:
             status = "review"
             value = lower = upper = cost = controlled_war = None
@@ -193,14 +206,22 @@ def main() -> int:
                 "coverage_tier": coverage,
                 "expected_remaining_war": controlled_war,
                 "expected_controlled_war": controlled_war,
-                "statsapi_projected_war": None if fv is None else fv["expected_six_year_war"],
+                "statsapi_projected_war": (
+                    None if fv is None else controlled_war if no_debut else fv["expected_six_year_war"]
+                ),
                 "expected_remaining_cost_dollars": cost,
                 "transferable_value_dollars": value,
                 "transferable_value_lower_dollars": lower,
                 "transferable_value_upper_dollars": upper,
                 "value_method": method,
-                "model_fv_granular": None if fv is None else fv["model_fv_granular"],
-                "model_fv_display": None if fv is None else fv["model_fv_display"],
+                "model_fv_granular": (
+                    None if fv is None else nested["three_tier_model_fv_granular"]
+                    if no_debut and nested is not None else fv["model_fv_granular"]
+                ),
+                "model_fv_display": (
+                    None if fv is None else nested["three_tier_model_fv_display"]
+                    if no_debut and nested is not None else fv["model_fv_display"]
+                ),
                 "model_role": None if fv is None else fv["model_role"],
                 "model_player_type": None if fv is None else fv["model_player_type"],
                 "model_arrival_probability": (
@@ -212,11 +233,16 @@ def main() -> int:
                 "model_meaningful_role_probability": (
                     None if fv is None else fv["model_meaningful_role_probability"]
                 ),
+                "model_established_role_probability": (
+                    None if fv is None else fv["model_established_role_probability"]
+                ),
                 "talent_benchmark_value_dollars": (
-                    None if fv is None else fv["talent_benchmark_value_dollars"]
+                    None if fv is None else nested["nested_talent_benchmark_value_dollars"]
+                    if no_debut and nested is not None
+                    else fv["talent_benchmark_value_dollars"]
                 ),
                 "star_outcome_probability": (
-                    None if fv is None else fv["star_outcome_probability"]
+                    None if fv is None or no_debut else fv["star_outcome_probability"]
                 ),
             }
         )
@@ -249,6 +275,24 @@ def main() -> int:
         "internal_model_fv_players": values.filter(
             pl.col("model_fv_granular").is_not_null()
         ).height,
+        "nested_career_pre_mlb_players": values.filter(
+            pl.col("value_method")
+            == "nested_career_model_fv_pre_mlb_benchmark_value"
+        ).height,
+        "nested_probability_ordering_failures": values.filter(
+            pl.col("model_established_role_probability").is_not_null()
+            & (
+                (pl.col("model_meaningful_role_probability") > pl.col("model_arrival_probability"))
+                | (
+                    pl.col("model_established_role_probability")
+                    > pl.col("model_meaningful_role_probability")
+                )
+            )
+        ).height,
+        "pre_mlb_star_probability_nonnull": values.filter(
+            (pl.col("value_method") == "nested_career_model_fv_pre_mlb_benchmark_value")
+            & pl.col("star_outcome_probability").is_not_null()
+        ).height,
         "non_debuted_missing_model_fv": values.filter(
             pl.col("value_method") == "missing_internal_model_fv"
         ).height,
@@ -256,6 +300,8 @@ def main() -> int:
             "publication_player_grades_used_as_inputs": False,
             "model_fv_is_separate_from_contract_status": True,
             "pre_mlb_value_uses_model_fv_benchmark": True,
+            "pre_mlb_value_uses_nested_conditional_career_hurdle": True,
+            "pre_mlb_star_probability_withheld_pending_uncertainty_refit": True,
             "market_tier_anchor_is_current_first_future_year_proxy": True,
             "successor_cba_is_planning_scenario": True,
             "phase2_workload_correction_included": True,

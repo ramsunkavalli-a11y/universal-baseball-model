@@ -53,6 +53,20 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
     assert payload["players"][0]["team"] == "Padres"
     assert payload["players"][0]["years"][0]["season"] == 2027
 
+    nested_values = values.with_columns(
+        pl.lit(3.0).alias("expected_controlled_war"),
+        pl.lit("nested_career_model_fv_pre_mlb_benchmark_value").alias(
+            "value_method"
+        ),
+    )
+    nested = build_explorer_payload(
+        nested_values,
+        annual,
+        pl.DataFrame({"player_id": [1], "player_name": ["A Player"]}),
+    )
+    assert nested["players"][0]["is_pre_mlb_value"] is True
+    assert nested["players"][0]["years"] == []
+
 
 def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     payload = {
@@ -64,6 +78,8 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert "__EXPLORER_DATA__" not in rendered
     assert "<\\/script><script>alert(1)<\\/script>" in rendered
     assert rendered.count('<script id="explorer-data"') == 1
+    assert "Meaningful-role chance" in rendered
+    assert "Established-role chance" in rendered
 
 
 def test_latest_common_date_uses_only_complete_checkpoints(tmp_path) -> None:

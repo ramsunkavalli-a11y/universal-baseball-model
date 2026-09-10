@@ -129,7 +129,7 @@ def build_explorer_payload(
         player_id = int(row["player_id"])
         organization_id = row["organization_id"]
         value_method = row.get("value_method") or "phase1_integrated_value"
-        is_pre_mlb_value = value_method == "model_fv_pre_mlb_benchmark_value"
+        is_pre_mlb_value = value_method.endswith("pre_mlb_benchmark_value")
         players.append(
             {
                 "id": player_id,
@@ -160,6 +160,9 @@ def build_explorer_payload(
                 "arrival_probability_source": row.get("arrival_probability_source"),
                 "meaningful_role_probability": row.get(
                     "model_meaningful_role_probability"
+                ),
+                "established_role_probability": row.get(
+                    "model_established_role_probability"
                 ),
                 "is_pre_mlb_value": is_pre_mlb_value,
                 "years": [] if is_pre_mlb_value else annual_lookup.get(player_id, []),
@@ -193,7 +196,8 @@ def build_explorer_payload(
             "warning": (
                 "Private Phase 2 preview. MLB values use corrected market-tier and "
                 "sequential-decision logic. Model FV comes only from our projected "
-                "production; publication player grades are validation only."
+                "production and a provisional nested career hurdle; publication "
+                "player grades are validation only."
                 if phase2
                 else "Research view only. Values use Phase 1 assumptions, uncalibrated "
                 "reference ranges and current CBA planning rules."

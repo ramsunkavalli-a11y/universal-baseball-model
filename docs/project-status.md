@@ -35,8 +35,13 @@ That [conditional hurdle audit](prospect-conditional-career-hurdle-result.md) no
 passes its structural gate. In the outer period, roughly 30% of arrivals become
 meaningful and 45-48% of meaningful players become established. Core models calibrate
 reasonably; richer interaction and pedigree candidates have no reliable outer gain.
-The next private sensitivity must multiply the core conditional stages and test the
-resulting current value distribution before changing any value.
+The [nested current-value sensitivity](prospect-nested-career-value-result.md) now
+passes the private gate and is the local explorer's pre-MLB default. It has zero
+probability-order violations, keeps Josuar Gonzalez at 45 FV with a lower 1.55 WAR,
+and reduces hitter 50+ counts from 320 to 81 instead of collapsing them to 8 or 17.
+Pitcher prospect values remain compressed (one 50+), and the top hitter ordering still
+needs model-based error review. This is private and provisional; MLB contract values
+and published outputs are unchanged.
 
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than

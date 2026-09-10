@@ -72,7 +72,7 @@ def main() -> int:
         meaningful_role_probabilities.update(
             {
                 (player_type, int(row["player_id"])): float(
-                    row["predicted_six_year_meaningful_role_probability"]
+                    row["predicted_six_year_nested_meaningful_role_probability"]
                 )
                 for row in arrival.iter_rows(named=True)
             }
@@ -80,7 +80,7 @@ def main() -> int:
         established_role_probabilities.update(
             {
                 (player_type, int(row["player_id"])): float(
-                    row["predicted_six_year_established_role_probability"]
+                    row["predicted_six_year_nested_established_role_probability"]
                 )
                 for row in arrival.iter_rows(named=True)
             }

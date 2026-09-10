@@ -262,6 +262,23 @@ def main() -> int:
             feature_set="core",
         )
         scored = predict_arrival(established_fit, scored)
+        combined_training = pl.concat([cohorts[year] for year in TRAINING_YEARS])
+        meaningful_given_arrival_fit = fit_arrival_model(
+            combined_training.filter(pl.col("arrived_within_horizon") == 1),
+            player_type=player_type,
+            target_column="meaningful_role_within_horizon",
+            outcome_name="meaningful_given_arrival",
+            feature_set="core",
+        )
+        scored = predict_arrival(meaningful_given_arrival_fit, scored)
+        established_given_meaningful_fit = fit_arrival_model(
+            combined_training.filter(pl.col("meaningful_role_within_horizon") == 1),
+            player_type=player_type,
+            target_column="established_role_within_horizon",
+            outcome_name="established_given_meaningful",
+            feature_set="core",
+        )
+        scored = predict_arrival(established_given_meaningful_fit, scored)
         selected = (
             "predicted_two_year_arrival_probability"
             if passed else "baseline_two_year_arrival_probability"
@@ -290,6 +307,24 @@ def main() -> int:
             pl.lit(selected_feature_set).alias("arrival_feature_set"),
             pl.lit(selected_role_feature_set).alias("meaningful_role_feature_set"),
             pl.lit("core").alias("established_role_feature_set"),
+        )
+        scored = scored.with_columns(
+            pl.col("predicted_two_year_meaningful_given_arrival_probability")
+            .map_elements(six_year_probability, return_dtype=pl.Float64)
+            .alias("predicted_six_year_meaningful_given_arrival_probability"),
+            pl.col("predicted_two_year_established_given_meaningful_probability")
+            .map_elements(six_year_probability, return_dtype=pl.Float64)
+            .alias("predicted_six_year_established_given_meaningful_probability"),
+        ).with_columns(
+            (
+                pl.col("predicted_six_year_arrival_probability")
+                * pl.col("predicted_six_year_meaningful_given_arrival_probability")
+            ).alias("predicted_six_year_nested_meaningful_role_probability")
+        ).with_columns(
+            (
+                pl.col("predicted_six_year_nested_meaningful_role_probability")
+                * pl.col("predicted_six_year_established_given_meaningful_probability")
+            ).alias("predicted_six_year_nested_established_role_probability")
         )
         path = output / f"{player_type}-arrival-probabilities.parquet"
         storage[player_type] = write_canonical_parquet(
@@ -328,6 +363,24 @@ def main() -> int:
             "mean_current_six_year_established_role_probability": float(
                 scored.get_column(
                     "predicted_six_year_established_role_probability"
+                ).mean()
+            ),
+            "conditional_training_players": {
+                "meaningful_given_arrival": combined_training.filter(
+                    pl.col("arrived_within_horizon") == 1
+                ).height,
+                "established_given_meaningful": combined_training.filter(
+                    pl.col("meaningful_role_within_horizon") == 1
+                ).height,
+            },
+            "mean_current_six_year_nested_meaningful_role_probability": float(
+                scored.get_column(
+                    "predicted_six_year_nested_meaningful_role_probability"
+                ).mean()
+            ),
+            "mean_current_six_year_nested_established_role_probability": float(
+                scored.get_column(
+                    "predicted_six_year_nested_established_role_probability"
                 ).mean()
             ),
         }
