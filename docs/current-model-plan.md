@@ -189,6 +189,13 @@ Because the workload coefficients are strong, the durable package also freezes e
 training feature's minimum, P1, P99 and maximum. The replay must disclose its
 out-of-support share and may not treat extrapolated opportunity as new skill.
 
+The complete historical donor source is also ready: 3,945 six-year paths and 23,670
+annual rows retain actual workload, inactivity, return, role, cumulative state and
+season-relative prior workload together. Birth dates cover 3,091 paths; 854 older
+paths remain available under an explicit missing-age fallback. See the
+[source note](linked-career-state-path-source.md). The remaining step is the actual
+whole-path linked replay, with a guard against counting prior workload twice.
+
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero
 prospect cohort. Future linked-path validation must pair arrival Brier/log loss, a

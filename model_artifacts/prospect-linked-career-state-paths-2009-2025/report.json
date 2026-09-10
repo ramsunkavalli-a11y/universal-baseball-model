@@ -1,0 +1,34 @@
+{
+  "annual_rows": 23670,
+  "created_on": "2026-09-10",
+  "current_2026_used": false,
+  "maximum_window_end_year": 2025,
+  "minimum_debut_year": 2009,
+  "missing_age_paths_retained_for_explicit_fallback": true,
+  "players": 3945,
+  "players_with_age_evidence": 3091,
+  "players_without_age_evidence": 854,
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "runner_path": "scripts/materialize_linked_career_state_paths.py",
+  "runner_sha256": "ab3b24e62b79c6df2060d98884da32bc3ab41725a01224b716660ae37f1dfa4f",
+  "shortened_2020_relative_workload_uses_raw_scale": true,
+  "shortened_2020_state_uses_full_season_equivalent": true,
+  "sources": {
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_batting_2009_2025.parquet": "9cadaff34ee3068ec550f3692fe419187865acb5efb6c0b87edd4e5f415d6da4",
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet": "a401f55b72bbc39ae0d967eed2bd4977fed126b24a27c672f76d98de509af7df",
+    "reports/generated/player-demographics/tables/player-demographics.parquet": "010bb368acc8465dc1c5ba21660dd32bdcf0e9132bc4824e39a491f11189f54f",
+    "reports/generated/prospect-outcome-quality-2009-2025/post-debut-annual-workload-paths.parquet": "dd8db40f740e3322e9748e6575ee6bb9e2d30d230131e7f7eb1305766edce7ec"
+  },
+  "status": "historical_linked_state_path_source_ready_not_promoted",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "60aaaee730f45bddaa480cf1068eb1949695e74be77f61d9d0c7b676f7a3764a",
+    "file_size_bytes": 326144,
+    "path": "model_artifacts\\prospect-linked-career-state-paths-2009-2025\\annual-state-paths.parquet",
+    "row_count": 23670,
+    "schema_sha256": "a03852e0fcb1dddb653cbdce78677f02420feb63262e7c67eb44d99e9457de7b",
+    "table_name": "prospect_linked_annual_career_state_paths_2009_2025"
+  },
+  "whole_six_year_paths_retained": true
+}

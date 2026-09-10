@@ -4,6 +4,7 @@ import pytest
 
 from universal_baseball.prospect_mlb_progression import (
     build_post_arrival_progression_rows,
+    add_observed_annual_career_states,
     predict_progression_from_coefficients,
     progression_design,
     simulate_post_arrival_states,
@@ -47,6 +48,24 @@ def test_progression_rows_use_latest_snapshot_and_prior_season_workload() -> Non
     assert player_one.item(0, "advanced") == 1
     assert player_two.item(0, "prior_workload_vs_active_mean") == 1.5
     assert player_two.item(0, "advanced") == 1
+
+
+def test_observed_path_states_follow_frozen_cumulative_workload_rules() -> None:
+    paths = pl.DataFrame(
+        {
+            "path_player_id": [1] * 4 + [2] * 4,
+            "player_type": ["hitter"] * 4 + ["pitcher"] * 4,
+            "path_year": [1, 2, 3, 4] * 2,
+            "adjusted_workload": [0.0, 100.0, 300.0, 300.0, 50.0, 200.0, 0.0, 200.0],
+        }
+    )
+    labeled = add_observed_annual_career_states(paths)
+    assert labeled.filter(pl.col("player_type") == "hitter")[
+        "observed_career_state"
+    ].to_list() == ["NO_MLB", "FRINGE_MLB", "MEANINGFUL_MLB", "ESTABLISHED_MLB"]
+    assert labeled.filter(pl.col("player_type") == "pitcher")[
+        "observed_career_state"
+    ].to_list() == ["FRINGE_MLB", "MEANINGFUL_MLB", "MEANINGFUL_MLB", "ESTABLISHED_MLB"]
 
 
 def test_progression_design_adds_activity_and_normalized_workload() -> None:

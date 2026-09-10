@@ -58,6 +58,12 @@ The accompanying advancement-destination test selected hitter/pitcher-specific d
 established shares (33.8%/20.7%) after winning both scores in three consecutive
 outcome years; those probabilities are now part of the same durable input package.
 
+The historical donor side of that replay is materialized too: 3,945 complete careers
+and 23,670 annual rows preserve state, workload, inactivity, return and role as whole
+blocks. Raw 2020 workload is used for environment-relative progression while its
+full-season equivalent remains limited to career-state thresholds. Missing historical
+birth dates are explicit for 854 paths rather than imputed or discarded.
+
 The first Phase 2 survivor-bias test is complete. An age-by-prior-workload pitcher
 return model materially improves 2022–2025 probability scores over one population
 rate. Using it to reweight observed adjacent-season pairs slightly improves the fitted
@@ -1073,7 +1079,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,527 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,530 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
@@ -1160,7 +1166,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current verification is 46/46 model-law checks. The latest full suite is
-  1,527 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,530 passing tests plus four known missing-artifact failures; no new failure exists.
 
 The remaining universal event-context candidate is the strongly regressed pitcher
 platoon test. The compact pitcher-contact tables on disk retain pitcher identity and

@@ -45,6 +45,68 @@ SIMULATED_STATE_CODES = {
 }
 
 
+def add_observed_annual_career_states(annual_paths: pl.DataFrame) -> pl.DataFrame:
+    """Label cumulative career state on complete observed annual workload paths."""
+
+    required = {
+        "path_player_id", "player_type", "path_year", "adjusted_workload",
+    }
+    if missing := sorted(required - set(annual_paths.columns)):
+        raise ValueError(f"annual workload paths missing fields: {missing}")
+    source = annual_paths.sort("path_player_id", "player_type", "path_year")
+    if source.filter(
+        pl.col("adjusted_workload").is_null()
+        | ~pl.col("adjusted_workload").is_finite()
+        | (pl.col("adjusted_workload") < 0.0)
+        | ~pl.col("player_type").is_in(["hitter", "pitcher"])
+    ).height:
+        raise ValueError("annual workload paths contain invalid values")
+    group = ["path_player_id", "player_type"]
+    support_threshold = pl.when(pl.col("player_type") == "hitter").then(
+        300.0
+    ).otherwise(200.0)
+    labeled = source.with_columns(
+        (pl.col("adjusted_workload") > 0.0)
+        .cast(pl.Int64)
+        .cum_sum()
+        .over(group)
+        .alias("cumulative_active_seasons"),
+        (pl.col("adjusted_workload") >= 200.0)
+        .cast(pl.Int64)
+        .cum_sum()
+        .over(group)
+        .alias("cumulative_meaningful_seasons"),
+        (pl.col("adjusted_workload") >= 400.0)
+        .cast(pl.Int64)
+        .cum_sum()
+        .over(group)
+        .alias("cumulative_regular_seasons"),
+        (pl.col("adjusted_workload") >= support_threshold)
+        .cast(pl.Int64)
+        .cum_sum()
+        .over(group)
+        .alias("cumulative_established_support_seasons"),
+    ).with_columns(
+        pl.when(
+            (pl.col("cumulative_regular_seasons") >= 1)
+            | (pl.col("cumulative_established_support_seasons") >= 2)
+        )
+        .then(pl.lit("ESTABLISHED_MLB"))
+        .when(pl.col("cumulative_meaningful_seasons") >= 1)
+        .then(pl.lit("MEANINGFUL_MLB"))
+        .when(pl.col("cumulative_active_seasons") >= 1)
+        .then(pl.lit("FRINGE_MLB"))
+        .otherwise(pl.lit("NO_MLB"))
+        .alias("observed_career_state")
+    )
+    order = pl.col("observed_career_state").replace_strict(SIMULATED_STATE_CODES)
+    if labeled.with_columns(order.alias("_order")).filter(
+        pl.col("_order").diff().over(group).fill_null(0) < 0
+    ).height:
+        raise RuntimeError("observed annual career state moved backward")
+    return labeled
+
+
 @dataclass(frozen=True, slots=True)
 class ProgressionFit:
     origin_state: str
