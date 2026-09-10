@@ -1,0 +1,197 @@
+{
+  "boundaries": {
+    "arrival_probability_validated": false,
+    "conditional_on_mlb_debut": true,
+    "conditional_on_observed_career_tier_and_role": true,
+    "current_2026_outcomes_used": false,
+    "outside_fv_used": false,
+    "production_value_changed": false,
+    "war_or_skill_validated": false
+  },
+  "by_outcome_tier": [
+    {
+      "coverage_50": 0.44,
+      "coverage_50_wilson_high": 0.5525322861854451,
+      "coverage_50_wilson_low": 0.3333145749124916,
+      "coverage_80": 0.72,
+      "coverage_80_wilson_high": 0.8089684111882106,
+      "coverage_80_wilson_low": 0.6095930981193548,
+      "median_absolute_error": 587.6999999999998,
+      "outcome_tier_v2": "established",
+      "player_type": "hitter",
+      "players": 75,
+      "target_50_inside_wilson": true,
+      "target_80_inside_wilson": true
+    },
+    {
+      "coverage_50": 0.5,
+      "coverage_50_wilson_high": 0.5935050246958314,
+      "coverage_50_wilson_low": 0.40649497530416856,
+      "coverage_80": 0.7641509433962265,
+      "coverage_80_wilson_high": 0.8348395880288849,
+      "coverage_80_wilson_low": 0.6749861244228658,
+      "median_absolute_error": 17.0,
+      "outcome_tier_v2": "fringe",
+      "player_type": "hitter",
+      "players": 106,
+      "target_50_inside_wilson": true,
+      "target_80_inside_wilson": true
+    },
+    {
+      "coverage_50": 0.29411764705882354,
+      "coverage_50_wilson_high": 0.5313311006653985,
+      "coverage_50_wilson_low": 0.1327998961029523,
+      "coverage_80": 0.7647058823529411,
+      "coverage_80_wilson_high": 0.9044495567791988,
+      "coverage_80_wilson_low": 0.5273820188043501,
+      "median_absolute_error": 150.39999999999998,
+      "outcome_tier_v2": "meaningful_only",
+      "player_type": "hitter",
+      "players": 17,
+      "target_50_inside_wilson": true,
+      "target_80_inside_wilson": true
+    },
+    {
+      "coverage_50": 0.2616822429906542,
+      "coverage_50_wilson_high": 0.35218617771392624,
+      "coverage_50_wilson_low": 0.18769717872491667,
+      "coverage_80": 0.6448598130841121,
+      "coverage_80_wilson_high": 0.7290708361590406,
+      "coverage_80_wilson_low": 0.5506079079663686,
+      "median_absolute_error": 533.0999999999999,
+      "outcome_tier_v2": "established",
+      "player_type": "pitcher",
+      "players": 107,
+      "target_50_inside_wilson": false,
+      "target_80_inside_wilson": false
+    },
+    {
+      "coverage_50": 0.627906976744186,
+      "coverage_50_wilson_high": 0.7562366099034943,
+      "coverage_50_wilson_low": 0.47859809159688477,
+      "coverage_80": 0.8372093023255814,
+      "coverage_80_wilson_high": 0.91883372652938,
+      "coverage_80_wilson_low": 0.7002759410625283,
+      "median_absolute_error": 24.700000000000003,
+      "outcome_tier_v2": "fringe",
+      "player_type": "pitcher",
+      "players": 43,
+      "target_50_inside_wilson": true,
+      "target_80_inside_wilson": true
+    },
+    {
+      "coverage_50": 0.25,
+      "coverage_50_wilson_high": 0.49498316535508774,
+      "coverage_50_wilson_low": 0.10182067491213048,
+      "coverage_80": 0.3125,
+      "coverage_80_wilson_high": 0.5559564416525933,
+      "coverage_80_wilson_low": 0.14164643854782039,
+      "median_absolute_error": 189.7,
+      "outcome_tier_v2": "meaningful_only",
+      "player_type": "pitcher",
+      "players": 16,
+      "target_50_inside_wilson": false,
+      "target_80_inside_wilson": false
+    }
+  ],
+  "by_sample_source": [
+    {
+      "coverage_50": 0.29411764705882354,
+      "coverage_50_wilson_high": 0.5313311006653985,
+      "coverage_50_wilson_low": 0.1327998961029523,
+      "coverage_80": 0.7647058823529411,
+      "coverage_80_wilson_high": 0.9044495567791988,
+      "coverage_80_wilson_low": 0.5273820188043501,
+      "median_absolute_error": 150.39999999999998,
+      "player_type": "hitter",
+      "players": 17,
+      "sample_source": "pooled",
+      "target_50_inside_wilson": true,
+      "target_80_inside_wilson": true
+    },
+    {
+      "coverage_50": 0.47513812154696133,
+      "coverage_50_wilson_high": 0.5476481048666854,
+      "coverage_50_wilson_low": 0.40366151983861165,
+      "coverage_80": 0.7458563535911602,
+      "coverage_80_wilson_high": 0.8037192109249724,
+      "coverage_80_wilson_low": 0.6777745003226467,
+      "median_absolute_error": 52.0,
+      "player_type": "hitter",
+      "players": 181,
+      "sample_source": "role",
+      "target_50_inside_wilson": true,
+      "target_80_inside_wilson": true
+    },
+    {
+      "coverage_50": 0.40963855421686746,
+      "coverage_50_wilson_high": 0.5171423147617564,
+      "coverage_50_wilson_low": 0.31012912673980514,
+      "coverage_80": 0.6987951807228916,
+      "coverage_80_wilson_high": 0.7868931031655867,
+      "coverage_80_wilson_low": 0.593109725530978,
+      "median_absolute_error": 209.95000000000005,
+      "player_type": "pitcher",
+      "players": 83,
+      "sample_source": "pooled",
+      "target_50_inside_wilson": true,
+      "target_80_inside_wilson": false
+    },
+    {
+      "coverage_50": 0.30120481927710846,
+      "coverage_50_wilson_high": 0.40689027446902215,
+      "coverage_50_wilson_low": 0.21310689683441345,
+      "coverage_80": 0.6265060240963856,
+      "coverage_80_wilson_high": 0.7228031266023063,
+      "coverage_80_wilson_low": 0.5190168552955077,
+      "median_absolute_error": 523.65,
+      "player_type": "pitcher",
+      "players": 83,
+      "sample_source": "role",
+      "target_50_inside_wilson": false,
+      "target_80_inside_wilson": false
+    }
+  ],
+  "chronology": {
+    "evaluation_debut_years": [
+      2018,
+      2019
+    ],
+    "training_debut_years": [
+      2015,
+      2017
+    ]
+  },
+  "contract": "docs/prospect-workload-distribution-validation-plan.md",
+  "evaluation_players": 364,
+  "overall": [
+    {
+      "coverage_50": 0.4595959595959596,
+      "coverage_50_wilson_high": 0.5291220173188184,
+      "coverage_50_wilson_low": 0.3916078461419209,
+      "coverage_80": 0.7474747474747475,
+      "coverage_80_wilson_high": 0.8028863699323935,
+      "coverage_80_wilson_low": 0.6826432163705788,
+      "median_absolute_error": 69.0,
+      "player_type": "hitter",
+      "players": 198,
+      "target_50_inside_wilson": true,
+      "target_80_inside_wilson": true
+    },
+    {
+      "coverage_50": 0.35542168674698793,
+      "coverage_50_wilson_high": 0.430749994126534,
+      "coverage_50_wilson_low": 0.2866334979060278,
+      "coverage_80": 0.6626506024096386,
+      "coverage_80_wilson_high": 0.7301732564314659,
+      "coverage_80_wilson_low": 0.5877703150319019,
+      "median_absolute_error": 371.25,
+      "player_type": "pitcher",
+      "players": 166,
+      "target_50_inside_wilson": false,
+      "target_80_inside_wilson": false
+    }
+  ],
+  "report_schema_version": "0.1",
+  "status": "chronology_safe_workload_distribution_check_complete"
+}

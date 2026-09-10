@@ -623,6 +623,13 @@ test failure was observed.
   historical coverage by player type and predeclared probability band, using only
   information available at each forecast date.
 - Neither uncertainty layer uses outside player FV opinions or partial 2026 outcomes.
+- A chronology-safe conditional workload check trained on 2015-2017 debuters and
+  evaluated on 2018-2019 debuters. Hitter P10-P90 coverage was 74.7% (95% Wilson
+  interval 68.3%-80.3%), which retains the 80% target. Pitcher coverage was only
+  66.3% (58.8%-73.0%), so the pitcher workload range is too narrow.
+- Do not fit a pitcher widening factor to the opened later cohort. Keep pitcher ranges
+  descriptive and develop a resampling-based replacement without claiming untouched
+  confirmation until another complete six-year cohort exists.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).
