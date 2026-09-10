@@ -20,6 +20,14 @@ runs behind the skill rate.
 - Model top 50: 49 hitters and 1 pitcher.
 - FanGraphs still-pre-MLB top-50 group: 30 hitters and 12 pitchers.
 
+The audit now assigns one plain-language model-side reason to every row. Among the
+public top 50, ten players are lower primarily because translated pitcher run rates are
+weak and ten because performance evidence is thin. Among model-only top-50 players,
+20 are higher primarily because advanced level and arrival probability produce a large
+workload, while 11 are higher because premium-position value offsets limited offense.
+These buckets define the structural work; they are explanations to test, not excuses or
+public-rank targets.
+
 The low overlap does not itself fail the model. The 49-to-1 model split is a material
 warning because it accompanies an already known compression of translated pitcher
 skill. It must be explained and tested independently of the public ranks.
@@ -90,6 +98,16 @@ Most model-only top-50 hitters are at AA or AAA with high arrival odds. This is 
 baseball logic, but the audit must determine whether proximity, positional runs and
 career workload together crowd out younger high-upside players more than historical
 outcomes support. The test must use historical cohorts, not public rank agreement.
+
+### Open P0: premium-position persistence
+
+The model top 50 contains 23 shortstops and seven catchers, versus 13 shortstops and
+four catchers among the 42 still-eligible public players. This is not evidence for a
+quota or a blanket catcher/shortstop penalty. It does show that 11 model-only top-50
+players are elevated mainly because standard premium-position runs offset limited
+offense. The prior coarse position-transition value candidate failed its proper
+historical score, so the next test must estimate player-level position persistence or
+use stronger defensive evidence. Until then, these rows remain review items.
 
 ## Product files
 

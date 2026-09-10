@@ -1,4 +1,8 @@
-from universal_baseball.prospect_ranking_audit import explain_player, review_flags
+from universal_baseball.prospect_ranking_audit import (
+    difference_reason,
+    explain_player,
+    review_flags,
+)
 
 
 def test_explanation_uses_model_baseball_components() -> None:
@@ -84,3 +88,34 @@ def test_pitcher_explanation_exposes_basic_component_rates() -> None:
     explanation = explain_player(row)
 
     assert "projected K/BB/HR rates: 25%/8%/3%" in explanation
+
+
+def test_difference_reason_traces_pitcher_compression_without_using_public_grade() -> None:
+    row = {
+        "comparison_status": "source_top_50_model_lower",
+        "model_rank": 400,
+        "model_player_type": "pitcher",
+        "conditional_skill_war_rate": 0.4,
+        "skill_reliability": 0.35,
+        "level_tier": "AA",
+        "model_arrival_probability": 0.9,
+        "model_meaningful_role_probability": 0.7,
+    }
+
+    assert difference_reason(row) == (
+        "Model lower: translated pitcher run rate is weak"
+    )
+
+
+def test_difference_reason_identifies_advanced_level_model_preference() -> None:
+    row = {
+        "comparison_status": "model_top_50_only",
+        "model_rank": 10,
+        "model_player_type": "hitter",
+        "level_tier": "AAA",
+        "model_arrival_probability": 0.95,
+    }
+
+    assert difference_reason(row) == (
+        "Model higher: advanced level and high MLB arrival chance"
+    )

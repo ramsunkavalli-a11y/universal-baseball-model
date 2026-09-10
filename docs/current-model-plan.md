@@ -8,6 +8,15 @@ frozen model and FanGraphs top 50 as diagnostic lists, explain large differences
 the model's age/level, skill, opportunity, WAR and value components, and fix only
 general structural rules. Public FV and rank remain prohibited model inputs.
 
+The first audit reduces the active work to four evidence tests, in order: pitcher
+conditional run-rate scale; player-level premium-position persistence; low-evidence
+arrival/role treatment using official draft history; and advanced-level proximity
+versus long-term upside. The current difference counts are 10 public-list pitchers
+lower from translated run rate, 10 public-list players lower from thin evidence, 20
+model-only players higher from level/proximity, and 11 model-only players higher from
+premium-position value despite limited offense. Do not fix these with list quotas,
+named-player overrides, or public FV targets.
+
 Updated 2026-09-10. The user wants the model made credible before further interface
 work. The [product roadmap](product-roadmap.md) is now the authoritative active plan;
 this document retains detailed evidence from the current hitter/opportunity workstream.

@@ -56,6 +56,7 @@ def _write_html(
         ("model_arrival_probability", "MLB chance", "percent"),
         ("model_meaningful_role_probability", "Role chance", "percent"),
         ("expected_six_year_war", "Expected WAR", ""),
+        ("difference_reason", "Main reason", ""),
         ("baseball_explanation", "Model explanation", ""),
     ]
     model_columns = [
@@ -68,6 +69,7 @@ def _write_html(
         ("conditional_skill_war_rate", "WAR rate", ""),
         ("expected_six_year_war", "Expected WAR", ""),
         ("transferable_value_dollars", "Value", "money"),
+        ("difference_reason", "Main reason", ""),
         ("baseball_explanation", "Model explanation", ""),
     ]
     cards = "".join(
@@ -330,6 +332,12 @@ def main() -> int:
             "source_top_50_with_review_flags": flagged_source,
             "model_top_50_with_review_flags": flagged_model,
             "model_top_50_by_player_type": model_type_counts.to_dicts(),
+            "source_top_50_reason_counts": source_top.group_by(
+                "difference_reason"
+            ).len().sort("len", descending=True).to_dicts(),
+            "model_top_50_reason_counts": model_top.group_by(
+                "difference_reason"
+            ).len().sort("len", descending=True).to_dicts(),
         },
         "structural_checks": {
             "model_prospect_pool": model.height,
