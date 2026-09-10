@@ -912,7 +912,14 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current verification is 46/46 model-law checks. The latest full suite is
-  1,450 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,464 passing tests plus four known missing-artifact failures; no new failure exists.
+
+The remaining universal event-context candidate is the strongly regressed pitcher
+platoon test. The compact pitcher-contact tables on disk retain pitcher identity and
+contact shape but not batter side, so they cannot support it. The required 23 MB
+matchup sidecar and its source archives are absent; rebuilding it requires reacquiring
+the streamed multi-GB PBP inputs. Do not infer or impute platoon skill from the compact
+contact totals.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.
