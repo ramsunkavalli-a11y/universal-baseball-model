@@ -42,28 +42,28 @@ The any-debut model beat the level-only baseline in all three historical folds:
 The meaningful-role model also beat its baseline in every fold. Its pooled Brier
 scores are 0.0210 for hitters and 0.0198 for pitchers, versus 0.0222 and 0.0209.
 
-The any-debut probability now enters pre-MLB expected WAR. The meaningful-role
-probability remains a diagnostic until the model separates fringe MLB outcomes from
-regular or impact outcomes. The private viewer shows the arrival probability.
+The any-debut probability now enters pre-MLB expected WAR. Conditional models then
+estimate meaningful given arrival and established given meaningful, preserving the
+required probability ordering by construction. The private viewer shows all three.
 
 ## Important result from the ranking check
 
-The new arrival model is valid, but it does not by itself fix the crowded top of the
-prospect ranking. The current build has 338 pre-MLB players at 50 FV or higher,
-including 73 catchers. Strong minor leaguers often receive a reasonable high arrival
-chance, but the existing conditional WAR model still turns too many arrivals into
-established regulars.
+The nested career model fixes much of the crowded top without a quota. Hitter 50+
+counts fall from 352 to 86. Catchers are 22.9% of modeled hitters and 25.6% of the 50+
+group; shortstops are the larger premium-position concentration. The four 55 FV
+hitters are catchers or shortstops because the current six-year path carries their
+position value forward. Removing real position value is not a valid fix; player-level
+position retention and defense are the next granular tests.
 
-This is not a reason to cap the list or force position quotas. The next model must use
-historical MLB outcomes to estimate, separately:
+Josuar Gonzalez remains 45 FV at 1.83 expected six-year WAR. His median workload-only
+outcome is zero because non-arrival remains more likely than arrival, while the success
+tail is valuable. Publication FV did not set his grade.
 
-- fringe arrival;
-- meaningful MLB role;
-- regular or impact production conditional on reaching MLB.
-
-Draft round, signing bonus, and other durable transaction evidence should then be
-tested as a talent prior for young low-minors players whose statistics contain little
-information. This is the likely missing evidence for players such as Josuar Gonzalez.
+The workload-only mixture covers all 6,719 pre-MLB paths and exactly reproduces point
+WAR. Historical P10-P90 coverage is 74.7% for hitters, with 80% inside the sampling
+interval, but only 66.3% for pitchers. Pitcher ranges are therefore labeled descriptive
+and too narrow. A component-plus-workload research layer exists but remains off the
+screen until end-to-end historical calibration.
 
 ## Guardrails
 
@@ -79,22 +79,19 @@ information. This is the likely missing evidence for players such as Josuar Gonz
 
 ## Next priorities
 
-1. **P0:** Add organization-season workload reconciliation. Player projections must
-   compete for a fixed, realistic PA and pitcher BF/innings pool, while preserving an
-   explicit share for replacement players, injuries, trades, and future acquisitions.
-   Skill stays separate; only opportunity is reallocated.
-2. **P0:** Continue the historical MLB outcome-quality model. The first
-   [mature workload result](prospect-outcome-quality-workload-result.md) proves that
-   full-season workload after any arrival is too generous, but its binary
-   fringe/meaningful replacement overcorrects and is rejected. Fit regular/impact
-   outcome probabilities before changing Model FV.
-3. **P0:** Draft pedigree is now sourced and chronology-tested. Use the supported
-   hitter signal for arrival and meaningful-role research, but not as a value floor:
-   the first positive-component outcome challenger failed. Keep pitcher pedigree in
-   research. International signing bonuses remain a gap.
-4. **P1:** Calibrate six-year uncertainty and star probabilities from historical paths.
-5. **P1:** Improve pitcher role transitions and minor-league development paths.
-6. **P2:** Test a portable organization-development effect under the guardrails above.
+1. **P0:** Build a pitcher workload model relative to the season environment. Separate
+   rotation starters, openers, bulk/swing pitchers, and relievers with start share and
+   BF per start; do not infer rotation workload from one recorded start.
+2. **P0:** Backtest the full prospect distribution, including non-arrival, skill and
+   workload together. Until then, do not call displayed ranges confidence intervals.
+3. **P0:** Add player-level position retention and supported defense uncertainty for
+   premium-position hitters; do not impose catcher or shortstop quotas.
+4. **P1:** Add chronology-safe platoon evidence after the certified matchup sidecar is
+   rematerialized. Times-through-order evidence needs a separate coverage gate.
+5. **P1:** Test durable signing evidence for international amateurs. Draft pedigree
+   remains an arrival prior candidate, never an FV floor.
+6. **P2:** Test portable organization development and flexible team-capacity effects
+   under the existing guardrails.
 
 Run the private build with `play-with-results.cmd`. Generated data remain ignored;
 the scripts, tests, and decisions are versioned.

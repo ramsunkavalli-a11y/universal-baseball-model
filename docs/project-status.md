@@ -1,6 +1,8 @@
 # Project status and handoff
 
-Updated 2026-09-09. This is the current start-here document.
+Updated 2026-09-09. This is the current start-here document. The cycle is at a clean
+stopping point summarized in
+[the September 9 stopping-point handoff](current-cycle-stopping-point-2026-09-09.md).
 
 The frozen [prospect PBP hurdle test](prospect-pbp-hurdle-test-result.md) found a small
 contact-shape improvement against a core aggregate comparator, but the required
@@ -45,8 +47,8 @@ coarse group mixture is rejected.
 The [established-tier prospect test](prospect-established-tier-test-result.md) is also
 rejected. Mature fringe/meaningful/established workload priors are usable, but three
 separately fitted probabilities violate their required ordering and flatten credible
-prospects even more. The next prospect model is one conditional hurdle: arrival,
-meaningful given arrival, then established given meaningful.
+prospects even more. That failure led to one conditional hurdle: arrival, meaningful
+given arrival, then established given meaningful.
 
 That [conditional hurdle audit](prospect-conditional-career-hurdle-result.md) now
 passes its structural gate. In the outer period, roughly 30% of arrivals become
@@ -606,7 +608,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,396 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,408 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
@@ -650,8 +652,11 @@ test failure was observed.
 - The official MLB pitcher-workload environment audit explains the later-cohort
   under-coverage. Active pitchers increased 13.2% from the 2015-2019 era to 2021-2024,
   while mean/median BF per pitcher fell about 13% and P90 BF fell 16.3%. More pitchers
-  also recorded a start. Next model workload relative to the season environment;
-  never boost raw pitcher BF to achieve a preferred prospect-value distribution.
+  also recorded a start, partly because openers and bullpen games make a start count a
+  weak proxy for a rotation role. Next model workload relative to the season
+  environment and distinguish rotation starters, openers, bulk/swing pitchers, and
+  relievers using start share and BF per start. Never boost raw pitcher BF to achieve
+  a preferred prospect-value distribution.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).

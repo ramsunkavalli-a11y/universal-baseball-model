@@ -88,19 +88,28 @@ Talent/FV remains separate from contract status and salary. League role and posi
 counts are diagnostics, never fixed quotas. See the
 [current Phase 2 preview](phase2-model-fv-and-workload-2026-09-09.md).
 
-The first historical arrival and meaningful-role models now pass three time-ordered
-checks for both hitters and pitchers. Organization is deliberately excluded. Arrival
-is integrated, but the prospect distribution remains too optimistic because the
-conditional-on-arrival WAR path does not yet distinguish a fringe debut from a regular
-or impact career. That historical outcome-quality model is the next P0 gate. Draft and
-signing evidence is the next candidate prior for young, low-minors players.
+Historical arrival plus conditional meaningful and established-role hurdles are now
+integrated in the private preview. Organization remains excluded. The nested model
+reduces the hitter 50+ count from 352 to 86 without a quota and keeps Josuar Gonzalez
+at 45 FV with 1.83 expected six-year WAR. Workload-only uncertainty is displayed and
+preserves every point mean. A broader component-plus-workload distribution exists as
+research, but is not presented as calibrated.
+
+The chronology-safe workload check passes its limited hitter target but fails for
+pitchers: nominal 80% coverage is 66.3%. Modern MLB uses about 13% more pitchers than
+2015-2019 while mean/median BF per pitcher is about 13% lower. Openers and bullpen
+games also make a recorded start an unreliable rotation-role label. The next pitcher
+workload model must separate the league environment from player-relative role and use
+start share/BF per start rather than binary starts.
 
 An automated demographic feature harness now tests official age-adjacent profile,
 handedness, physical, position and birthplace fields in stable and full groups. The
-first narrow search produced development leaders, but the core model remains until a
-fresh period confirms them. Continue with nested, baseball-motivated interaction
-searches and keep non-vintage physical measurements out of selected historical models
-until their timing is defensible.
+strict nested search rejected demographic additions to prospect arrival/quality. A
+separate hitter component test also rejected age-for-level and batting-side effects
+after they reversed on 2025. The private pitcher age/hand adjustment remains explicitly
+provisional: its point gain is small, bootstrap intervals cross zero, and the
+left-handed subgroup worsens. Keep non-vintage physical measurements out of selected
+historical models until their timing is defensible.
 
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.

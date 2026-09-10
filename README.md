@@ -18,6 +18,13 @@ It fixes the established-player workload tail, values pre-MLB players over six c
 years after arrival, and keeps Model FV separate from contract surplus. Publication
 player grades are validation only.
 
+The current nested career preview reduces the hitter 50+ group from 352 to 86 without
+using a grade quota. Its workload-only ranges preserve point values exactly. Historical
+coverage is acceptable for hitters but too narrow for pitchers; the viewer labels that
+pitcher limitation. Official totals show why: modern MLB spreads roughly the same BF
+across 13% more pitchers, and opener/bullpen-game starts weaken a simple starter label.
+See the [current stopping point](docs/current-cycle-stopping-point-2026-09-09.md).
+
 The [trade-value direction review](docs/trade-value-direction-review.md) maps
 existing model work to career production, team rights/costs, uncertainty and
 continuous updates. Those layers define the destination; batting is one component.
