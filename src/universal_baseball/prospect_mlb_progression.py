@@ -311,6 +311,7 @@ def simulate_post_arrival_states(
     current = np.zeros(sampled.shape[0], dtype=np.int8)
     for year_index in range(sampled.shape[1]):
         if year_index:
+            starting_state = current.copy()
             prior = sampled[:, year_index - 1]
             relative = prior / environment[year_index - 1]
             scoring = pl.DataFrame(
@@ -323,7 +324,7 @@ def simulate_post_arrival_states(
                     "prior_workload_vs_active_mean": relative,
                 }
             )
-            fringe = current == SIMULATED_STATE_CODES["FRINGE_MLB"]
+            fringe = starting_state == SIMULATED_STATE_CODES["FRINGE_MLB"]
             if np.any(fringe):
                 probability = predict_progression_from_coefficients(
                     scoring.filter(pl.Series(fringe)),
@@ -338,7 +339,7 @@ def simulate_post_arrival_states(
                     SIMULATED_STATE_CODES["ESTABLISHED_MLB"],
                     SIMULATED_STATE_CODES["MEANINGFUL_MLB"],
                 )
-            meaningful = current == SIMULATED_STATE_CODES["MEANINGFUL_MLB"]
+            meaningful = starting_state == SIMULATED_STATE_CODES["MEANINGFUL_MLB"]
             if np.any(meaningful):
                 probability = predict_progression_from_coefficients(
                     scoring.filter(pl.Series(meaningful)),

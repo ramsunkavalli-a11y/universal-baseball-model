@@ -167,11 +167,11 @@ def test_state_simulation_uses_prior_year_and_never_moves_backward() -> None:
             )
     states = simulate_post_arrival_states(
         np.random.default_rng(7),
-        np.array([[100.0, 100.0], [0.0, 100.0]]),
-        np.array([100.0, 100.0]),
+        np.array([[100.0, 100.0, 100.0], [0.0, 100.0, 100.0]]),
+        np.array([100.0, 100.0, 100.0]),
         pl.DataFrame(rows),
         player_type="hitter",
         initial_age_years=22.0,
-        direct_established_probability=1.0,
+        direct_established_probability=0.0,
     )
-    assert states.tolist() == [[1, 3], [0, 1]]
+    assert states.tolist() == [[1, 2, 3], [0, 1, 2]]
