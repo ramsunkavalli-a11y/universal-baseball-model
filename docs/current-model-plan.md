@@ -27,14 +27,18 @@ age/level opportunity tables already provide a first hierarchical, partially poo
 fallback. New work should measure and improve that foundation rather than create a
 parallel system.
 
-The first finer-context measurement is complete. Official league and home-venue
-identity covers all 695 saved affiliated team-seasons. A partially pooled
-league-within-level translation was selected on 2024 and confirmed on 2025, but did
-not pass: hitters lost the selection year and pitchers lost confirmation. Retain the
-level-only translation. The next park candidate must use actual home/away or game
-context; venue identity alone is not a park factor. See the
-[source result](affiliated-team-context-result.md) and
-[league test](affiliated-league-translation-result.md).
+The finer-context source work is complete. Official league and home-venue identity
+covers all 695 saved affiliated team-seasons. A partially pooled league-within-level
+translation did not pass: hitters lost the selection year and pitchers lost
+confirmation, so retain the level-only translation. The replacement park source now
+uses 51,301 actual home/road game results. A 50-game partially pooled venue factor
+improved both MAE and RMSE in untouched 2025 after selection on 2024. That promotes
+the source, not a player-value adjustment: player integration still must be
+cutoff-safe and improve future player component forecasts. See the
+[team source](affiliated-team-context-result.md),
+[game source](affiliated-game-context-result.md),
+[league test](affiliated-league-translation-result.md), and
+[park test](affiliated-park-factor-result.md).
 
 The next injury additions are also resolved. Broad age and recent-IL-recurrence
 cells, partially pooled toward the validated IL-type/elapsed baseline, failed the

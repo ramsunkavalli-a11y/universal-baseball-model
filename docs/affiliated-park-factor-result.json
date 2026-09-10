@@ -1,0 +1,114 @@
+{
+  "boundaries": {
+    "opponent_strength_modeled": false,
+    "outside_fv_used": false,
+    "scheduled_innings_used": true,
+    "team_environment_controlled_by_road_games": true,
+    "weather_or_altitude_feature_used": false
+  },
+  "confirmation": {
+    "baseline_mae": 0.12025613455749275,
+    "baseline_rmse": 0.15265943449864094,
+    "candidate_mae": 0.09726133144191633,
+    "candidate_rmse": 0.12426413873423109,
+    "games": 10358,
+    "observed_mean": 1.0069122948442737,
+    "predicted_mean": 1.0045401518714328,
+    "season": 2025,
+    "venue_team_cells": 204,
+    "venues": 181
+  },
+  "confirmation_season": 2025,
+  "coverage": {
+    "final_factor_venues": 189,
+    "source_games": 51301,
+    "venue_season_team_observations": 1015
+  },
+  "decision": {
+    "current_player_rates_changed": false,
+    "park_factor_source_promoted": true
+  },
+  "development": {
+    "100.0": {
+      "baseline_mae": 0.11115578676071153,
+      "baseline_rmse": 0.1405504391409417,
+      "candidate_mae": 0.08967104336231015,
+      "candidate_rmse": 0.11392058569518511,
+      "games": 10264,
+      "observed_mean": 1.0052164676090678,
+      "predicted_mean": 1.0021672838913718,
+      "season": 2024,
+      "venue_team_cells": 202,
+      "venues": 180
+    },
+    "200.0": {
+      "baseline_mae": 0.11115578676071153,
+      "baseline_rmse": 0.1405504391409417,
+      "candidate_mae": 0.09306892627583895,
+      "candidate_rmse": 0.11727528462272883,
+      "games": 10264,
+      "observed_mean": 1.0052164676090678,
+      "predicted_mean": 1.0016292951518178,
+      "season": 2024,
+      "venue_team_cells": 202,
+      "venues": 180
+    },
+    "25.0": {
+      "baseline_mae": 0.11115578676071153,
+      "baseline_rmse": 0.1405504391409417,
+      "candidate_mae": 0.08931391975169903,
+      "candidate_rmse": 0.11414209519793593,
+      "games": 10264,
+      "observed_mean": 1.0052164676090678,
+      "predicted_mean": 1.0026534866575805,
+      "season": 2024,
+      "venue_team_cells": 202,
+      "venues": 180
+    },
+    "400.0": {
+      "baseline_mae": 0.11115578676071153,
+      "baseline_rmse": 0.1405504391409417,
+      "candidate_mae": 0.09788814145153593,
+      "candidate_rmse": 0.12309644458223629,
+      "games": 10264,
+      "observed_mean": 1.0052164676090678,
+      "predicted_mean": 1.0010514149495702,
+      "season": 2024,
+      "venue_team_cells": 202,
+      "venues": 180
+    },
+    "50.0": {
+      "baseline_mae": 0.11115578676071153,
+      "baseline_rmse": 0.1405504391409417,
+      "candidate_mae": 0.08868516671664164,
+      "candidate_rmse": 0.11332586570799437,
+      "games": 10264,
+      "observed_mean": 1.0052164676090678,
+      "predicted_mean": 1.0025121492777966,
+      "season": 2024,
+      "venue_team_cells": 202,
+      "venues": 180
+    }
+  },
+  "development_season": 2024,
+  "method": "home game total runs per scheduled nine divided by the same team's road-game rate; venue effects partially pooled to 1.0",
+  "prior_game_candidates": [
+    25.0,
+    50.0,
+    100.0,
+    200.0,
+    400.0
+  ],
+  "report_schema_version": "0.1",
+  "selected_prior_games": 50.0,
+  "status": "affiliated_park_factor_outer_test_complete",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "52c7b271189d77b38bdd490148cd011ea82cb054b1487dd7753158d0ba840bd9",
+    "file_size_bytes": 3941,
+    "path": "reports\\generated\\affiliated-park-factors\\park-factors-through-2024.parquet",
+    "row_count": 189,
+    "schema_sha256": "14c85911104967f03b60b50cab9e70e9a376a180580b6b6b14a34839124f2c63",
+    "table_name": "affiliated_park_factors_through_2024"
+  }
+}

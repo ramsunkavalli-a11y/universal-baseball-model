@@ -122,8 +122,11 @@ home-venue identities cover all 695 affiliated team-seasons in the saved 2023–
 component data. A league-within-level model used matched movers and strong partial
 pooling, selected on 2024 and confirmed on 2025. It did not pass: the hitter candidate
 lost 2024 and the pitcher candidate lost 2025. Keep the simpler level translation.
-Park effects remain a separate game-context test; venue identity alone is not a park
-factor.
+The separate game-context source now contains 51,301 official 2021-2025 minor-league
+games. A partially pooled venue factor selected on 2024 improved both error measures
+in untouched 2025. This validates repeatable park environment, not a current player
+adjustment. The next gate is a cutoff-safe player-level component forecast with the
+park correction; venue identity alone remains insufficient.
 
 ## Latest P0 correction: true prospect eligibility
 

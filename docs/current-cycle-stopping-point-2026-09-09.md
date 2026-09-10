@@ -20,6 +20,10 @@ Status: clean handoff; private preview works, publication remains blocked.
   four-year check. Do not add an arbitrary long-horizon decay. The third two-year
   window remains an explicit extrapolation; see
   `docs/prospect-declining-hazard-result.md`.
+- Official 2021-2025 home/road results now provide a reproducible minor-league park
+  source. A 50-game pooled venue factor improved both MAE and RMSE in 2024 selection
+  and untouched 2025 confirmation. This promotes the source only; player rates and
+  values remain unchanged until a cutoff-safe player-level forecast test passes.
 
 - The repo plan now includes lessons from comparable GitHub projection systems:
   component-specific reliability must earn its complexity, attrition belongs in the
@@ -100,7 +104,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,497 passed. Four older research-contract tests fail because their
+Latest full suite: 1,501 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
