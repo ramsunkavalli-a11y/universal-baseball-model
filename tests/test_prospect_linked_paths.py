@@ -1,7 +1,10 @@
 import numpy as np
 import polars as pl
 
-from universal_baseball.prospect_linked_paths import simulate_linked_tail_blocks
+from universal_baseball.prospect_linked_paths import (
+    compile_linked_donor_library,
+    simulate_linked_tail_blocks,
+)
 
 
 def _coefficients() -> pl.DataFrame:
@@ -57,9 +60,11 @@ def test_tail_sampler_preserves_blocks_and_resamples_only_after_divergence() -> 
                     "observed_career_state": state,
                 }
             )
+    donors = pl.DataFrame(rows)
+    library = compile_linked_donor_library(donors, player_type="hitter")
     result = simulate_linked_tail_blocks(
         np.random.default_rng(4),
-        pl.DataFrame(rows),
+        library,
         _coefficients(),
         player_type="hitter",
         initial_age_years=22.0,

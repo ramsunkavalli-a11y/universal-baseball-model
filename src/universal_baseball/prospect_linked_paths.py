@@ -23,17 +23,20 @@ class LinkedPathDraws:
     tail_resamples: int
 
 
-def simulate_linked_tail_blocks(
-    rng: np.random.Generator,
-    donor_paths: pl.DataFrame,
-    coefficients: pl.DataFrame,
-    *,
-    player_type: str,
-    initial_age_years: float,
-    direct_established_probability: float,
-    draws: int,
-) -> LinkedPathDraws:
-    """Sample whole paths, replacing only incompatible remaining tail blocks."""
+@dataclass(frozen=True, slots=True)
+class LinkedDonorLibrary:
+    player_type: str
+    player_ids: np.ndarray
+    adjusted_workload: np.ndarray
+    raw_workload: np.ndarray
+    active_mean_raw_workload: np.ndarray
+    states: np.ndarray
+
+
+def compile_linked_donor_library(
+    donor_paths: pl.DataFrame, *, player_type: str
+) -> LinkedDonorLibrary:
+    """Compile one player-type donor table once for repeated player simulation."""
 
     required = {
         "path_player_id", "player_type", "path_year", "adjusted_workload",
@@ -41,8 +44,6 @@ def simulate_linked_tail_blocks(
     }
     if missing := sorted(required - set(donor_paths.columns)):
         raise ValueError(f"linked donor paths missing fields: {missing}")
-    if draws < 1:
-        raise ValueError("linked path draws must be positive")
     source = donor_paths.filter(pl.col("player_type") == player_type).sort(
         "path_player_id", "path_year"
     )
@@ -57,41 +58,71 @@ def simulate_linked_tail_blocks(
     ).height:
         raise ValueError("linked donor paths must be complete and aligned")
     groups = source.partition_by("path_player_id", maintain_order=True)
-    player_ids = np.asarray(
-        [int(group.item(0, "path_player_id")) for group in groups], dtype=np.int64
-    )
-    adjusted_library = np.stack(
-        [group["adjusted_workload"].to_numpy().astype(float) for group in groups]
-    )
-    raw_library = np.stack(
-        [group["raw_workload"].to_numpy().astype(float) for group in groups]
-    )
-    environment_library = np.stack(
-        [
-            group["active_mean_raw_workload"].to_numpy().astype(float)
-            for group in groups
-        ]
-    )
-    state_library = np.stack(
-        [
-            np.asarray(
-                [SIMULATED_STATE_CODES[str(value)] for value in group["observed_career_state"]],
-                dtype=np.int8,
-            )
-            for group in groups
-        ]
+    library = LinkedDonorLibrary(
+        player_type=player_type,
+        player_ids=np.asarray(
+            [int(group.item(0, "path_player_id")) for group in groups], dtype=np.int64
+        ),
+        adjusted_workload=np.stack(
+            [group["adjusted_workload"].to_numpy().astype(float) for group in groups]
+        ),
+        raw_workload=np.stack(
+            [group["raw_workload"].to_numpy().astype(float) for group in groups]
+        ),
+        active_mean_raw_workload=np.stack(
+            [group["active_mean_raw_workload"].to_numpy().astype(float) for group in groups]
+        ),
+        states=np.stack(
+            [
+                np.asarray(
+                    [SIMULATED_STATE_CODES[str(value)] for value in group["observed_career_state"]],
+                    dtype=np.int8,
+                )
+                for group in groups
+            ]
+        ),
     )
     if (
-        np.any(~np.isfinite(adjusted_library))
-        or np.any(adjusted_library < 0.0)
-        or np.any(~np.isfinite(raw_library))
-        or np.any(raw_library < 0.0)
-        or np.any(~np.isfinite(environment_library))
-        or np.any(environment_library <= 0.0)
+        np.any(~np.isfinite(library.adjusted_workload))
+        or np.any(library.adjusted_workload < 0.0)
+        or np.any(~np.isfinite(library.raw_workload))
+        or np.any(library.raw_workload < 0.0)
+        or np.any(~np.isfinite(library.active_mean_raw_workload))
+        or np.any(library.active_mean_raw_workload <= 0.0)
     ):
         raise ValueError("linked donor workloads are invalid")
+    return library
 
-    chosen = rng.integers(0, len(groups), size=draws)
+
+def simulate_linked_tail_blocks(
+    rng: np.random.Generator,
+    donor_paths: pl.DataFrame | LinkedDonorLibrary,
+    coefficients: pl.DataFrame,
+    *,
+    player_type: str,
+    initial_age_years: float,
+    direct_established_probability: float,
+    draws: int,
+) -> LinkedPathDraws:
+    """Sample whole paths, replacing only incompatible remaining tail blocks."""
+
+    if draws < 1:
+        raise ValueError("linked path draws must be positive")
+    library = (
+        compile_linked_donor_library(donor_paths, player_type=player_type)
+        if isinstance(donor_paths, pl.DataFrame)
+        else donor_paths
+    )
+    if library.player_type != player_type:
+        raise ValueError("compiled donor library has the wrong player type")
+    player_ids = library.player_ids
+    adjusted_library = library.adjusted_workload
+    raw_library = library.raw_workload
+    environment_library = library.active_mean_raw_workload
+    state_library = library.states
+    seasons = adjusted_library.shape[1]
+
+    chosen = rng.integers(0, len(player_ids), size=draws)
     donor_indices = np.repeat(chosen[:, None], seasons, axis=1)
     adjusted = adjusted_library[chosen].copy()
     raw = raw_library[chosen].copy()
