@@ -55,6 +55,7 @@ def build_explorer_payload(
     values: pl.DataFrame,
     annual: pl.DataFrame,
     names: pl.DataFrame,
+    model_details: pl.DataFrame | None = None,
 ) -> dict[str, Any]:
     """Create a compact, browser-ready payload from canonical Phase 1 outputs."""
     required_values = {
@@ -103,6 +104,14 @@ def build_explorer_payload(
         .unique("player_id", keep="first")
         .iter_rows(named=True)
     }
+    detail_lookup = (
+        {
+            int(row["player_id"]): row
+            for row in model_details.iter_rows(named=True)
+        }
+        if model_details is not None
+        else {}
+    )
     phase2 = "expected_controlled_war" in values.columns
     annual_lookup: dict[int, list[dict[str, Any]]] = {}
     annual_columns = [
@@ -130,6 +139,7 @@ def build_explorer_payload(
         organization_id = row["organization_id"]
         value_method = row.get("value_method") or "phase1_integrated_value"
         is_pre_mlb_value = value_method.endswith("pre_mlb_benchmark_value")
+        detail = detail_lookup.get(player_id, {})
         players.append(
             {
                 "id": player_id,
@@ -163,6 +173,17 @@ def build_explorer_payload(
                 ),
                 "established_role_probability": row.get(
                     "model_established_role_probability"
+                ),
+                "model_position": detail.get("primary_position"),
+                "expected_workload": detail.get("three_tier_expected_workload"),
+                "conditional_war_rate": detail.get("conditional_war_rate"),
+                "conditional_war_rate_unit": detail.get("conditional_war_rate_unit"),
+                "batting_runs_per_600": detail.get("batting_runs_per_600"),
+                "baserunning_runs_per_600": detail.get("baserunning_runs_per_600"),
+                "defense_runs_per_600": detail.get("defense_runs_per_600"),
+                "positional_runs_per_600": detail.get("positional_runs_per_600"),
+                "pitching_raa_per_800": detail.get(
+                    "pitching_runs_above_average_per_800"
                 ),
                 "is_pre_mlb_value": is_pre_mlb_value,
                 "years": [] if is_pre_mlb_value else annual_lookup.get(player_id, []),
@@ -224,11 +245,14 @@ def write_explorer(
     annual_path: Path,
     names_path: Path,
     output_path: Path,
+    *,
+    model_details: pl.DataFrame | None = None,
 ) -> dict[str, Any]:
     payload = build_explorer_payload(
         pl.read_parquet(values_path),
         pl.read_parquet(annual_path),
         pl.read_parquet(names_path),
+        model_details,
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(render_explorer_html(payload), encoding="utf-8")

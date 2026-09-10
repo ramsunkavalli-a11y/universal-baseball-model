@@ -63,9 +63,25 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
         nested_values,
         annual,
         pl.DataFrame({"player_id": [1], "player_name": ["A Player"]}),
+        pl.DataFrame(
+            {
+                "player_id": [1],
+                "primary_position": ["C"],
+                "three_tier_expected_workload": [1200.0],
+                "conditional_war_rate": [3.0],
+                "conditional_war_rate_unit": ["WAR per 600 PA"],
+                "batting_runs_per_600": [2.0],
+                "baserunning_runs_per_600": [0.0],
+                "defense_runs_per_600": [0.0],
+                "positional_runs_per_600": [12.5],
+                "pitching_runs_above_average_per_800": [None],
+            }
+        ),
     )
     assert nested["players"][0]["is_pre_mlb_value"] is True
     assert nested["players"][0]["years"] == []
+    assert nested["players"][0]["expected_workload"] == 1200.0
+    assert nested["players"][0]["positional_runs_per_600"] == 12.5
 
 
 def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:

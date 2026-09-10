@@ -139,7 +139,9 @@ webpage in Edge, or Chrome if Edge is unavailable, from the newest complete Phas
 preview when available, otherwise the retained Phase 1 files
 already on this computer. The page supports
 player search, team and review filters, sortable results, year-by-year detail and CSV
-export. Nothing is uploaded or published. Rebuild it directly with:
+export. Pre-MLB detail also shows the arrival/workload and batting, running, defense,
+position, or pitching-rate inputs that drive the projection. Nothing is uploaded or
+published. Rebuild it directly with:
 
 ```text
 python scripts/build_results_explorer.py

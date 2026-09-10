@@ -153,6 +153,12 @@ position-neutral diagnostic 50 to the displayed 55. Both remain 50 without posit
 Do not remove real positional value; the next candidate needs player-level retention
 and defense evidence, since the earlier coarse transition mixture failed validation.
 
+The local explorer now exposes those drivers for every modeled pre-MLB player:
+expected six-year PA/BF, conditional WAR rate, and hitter batting/running/defense/
+position runs or pitcher runs above average. This is display-only transparency and
+does not change a forecast. The launcher still runs all 18 model-law checks before
+opening the page.
+
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
 quality. A proper hurdle test conditions MLB component quality on meaningful playing

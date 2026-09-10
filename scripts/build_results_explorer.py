@@ -51,6 +51,53 @@ def audit_phase2_checkpoint(as_of_date: str, value_path: Path) -> dict[str, obje
     return result
 
 
+def phase2_model_details(as_of_date: str) -> pl.DataFrame:
+    """Assemble display-only component explanations from existing model outputs."""
+
+    generated = Path("reports/generated")
+    path_root = generated / "phase2-conditional-war-paths" / as_of_date / "tables"
+    nested = pl.read_parquet(
+        generated / "phase2-nested-career-fv" / as_of_date
+        / "nested-career-model-fv.parquet"
+    ).select(
+        "player_id", "model_player_type", "primary_position",
+        "three_tier_expected_workload",
+    )
+    hitter = pl.read_parquet(path_root / "hitter_expected_war_paths.parquet").group_by(
+        "player_id"
+    ).agg(
+        pl.col("conditional_war_per_600_pa").mean().alias("conditional_war_rate"),
+        pl.lit("WAR per 600 PA").alias("conditional_war_rate_unit"),
+        pl.col("batting_runs_per_600").mean(),
+        pl.col("baserunning_runs_per_600").mean(),
+        pl.col("defense_runs_per_600").mean(),
+        pl.col("positional_runs_per_600").mean(),
+    )
+    pitcher = pl.read_parquet(
+        path_root / "pitcher_expected_war_paths.parquet"
+    ).group_by("player_id").agg(
+        pl.col("conditional_war_per_800_bf").mean().alias("conditional_war_rate"),
+        pl.lit("WAR per 800 BF").alias("conditional_war_rate_unit"),
+        pl.col("pitching_runs_above_average_per_800").mean(),
+    )
+    return nested.join(hitter, on="player_id", how="left", validate="1:1").join(
+        pitcher,
+        on="player_id",
+        how="left",
+        validate="1:1",
+        suffix="_pitcher",
+    ).with_columns(
+        pl.when(pl.col("model_player_type") == "pitcher")
+        .then(pl.col("conditional_war_rate_pitcher"))
+        .otherwise(pl.col("conditional_war_rate"))
+        .alias("conditional_war_rate"),
+        pl.when(pl.col("model_player_type") == "pitcher")
+        .then(pl.col("conditional_war_rate_unit_pitcher"))
+        .otherwise(pl.col("conditional_war_rate_unit"))
+        .alias("conditional_war_rate_unit"),
+    ).drop("conditional_war_rate_pitcher", "conditional_war_rate_unit_pitcher")
+
+
 def _args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -115,7 +162,14 @@ def main() -> int:
     law_result = None
     if (phase2_dated / "value-records.parquet").exists():
         law_result = audit_phase2_checkpoint(as_of_date, value_path)
-    payload = write_explorer(value_path, annual_path, names_path, args.output)
+    model_details = phase2_model_details(as_of_date) if law_result is not None else None
+    payload = write_explorer(
+        value_path,
+        annual_path,
+        names_path,
+        args.output,
+        model_details=model_details,
+    )
     print(f"Results explorer created: {args.output.resolve()}")
     print(
         f"Players: {payload['meta']['player_count']:,} | "
