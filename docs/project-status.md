@@ -27,6 +27,12 @@ pitcher MAE is always worse, while hitter RMSE is always worse. The next candida
 must model the positive MLB tail conditional on arrival; changing only the horizon
 cannot repair the pooled path.
 
+A fixed blend sensitivity identifies one future hitter candidate: 75% incumbent plus
+25% linked improves point RMSE `0.955 -> 0.945`, MAE `0.310 -> 0.285`, and absolute
+bias. Its paired RMSE evidence is uncertain and the weight was viewed on the exposed
+cohort, so it remains research-only. All pitcher blends improve tail-sensitive RMSE
+but reliably worsen typical-player MAE; none is retained as a clean challenger.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still
@@ -814,7 +820,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,442 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,444 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

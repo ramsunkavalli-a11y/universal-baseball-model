@@ -585,6 +585,27 @@ def main() -> int:
             fresh_confirmation=False,
         ),
     }
+    blend_sensitivity = []
+    for linked_weight in (0.25, 0.5, 0.75):
+        blended = (
+            (1.0 - linked_weight) * incumbent_values
+            + linked_weight * pooled_values
+        )
+        blend_sensitivity.append(
+            {
+                "linked_weight": linked_weight,
+                "scores": continuous_scores(observed_values, blended),
+                "paired_difference_vs_incumbent": (
+                    paired_continuous_bootstrap_difference(
+                        observed_values,
+                        incumbent_values,
+                        blended,
+                        seed=20260930 + int(linked_weight * 100),
+                    )
+                ),
+                "status": "exposed_cohort_sensitivity_not_candidate",
+            }
+        )
     horizon_sensitivity = []
     for horizon in range(1, 5):
         horizon_scored = scored.with_columns(
@@ -717,6 +738,7 @@ def main() -> int:
         "arrival_only_vs_historical_incumbent_paired": pooled_vs_incumbent,
         "linked_vs_historical_incumbent_paired": linked_vs_incumbent,
         "continuous_validation_harness": continuous_validation,
+        "blend_sensitivity": blend_sensitivity,
         "horizon_sensitivity": horizon_sensitivity,
         "zero_baseline": _metrics(evaluated, "zero_prediction"),
         "subgroups": subgroup,
@@ -773,6 +795,9 @@ too much value to the much larger non-arrival group.
 This tradeoff persists at every tested prefix from one through four years: candidate
 MAE is worse at all four horizons, and no horizon has a reliably favorable paired MSE
 interval. The failure is not caused only by extending two-year odds to four years.
+
+Fixed 25%, 50%, and 75% linked blends improve RMSE and mean bias on this exposed
+cohort, but every blend has a reliably worse paired MAE. None is a promotion candidate.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)

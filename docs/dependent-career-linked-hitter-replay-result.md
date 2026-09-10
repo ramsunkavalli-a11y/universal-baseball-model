@@ -24,3 +24,9 @@ that reaches MLB, so it remains rejected.
 The same pattern persists from one through four years: candidate RMSE is worse at
 every prefix. MAE improves after year one because forecasts move toward zero, not
 because the model captures the positive MLB tail.
+
+A fixed 25% linked / 75% incumbent blend is promising development evidence: RMSE
+improves 0.955 to 0.945, MAE
+improves 0.310 to 0.285, and
+absolute bias improves. Its paired MSE interval still crosses zero, and the exposed
+cohort was used to view the weight, so it is not promoted or used in current values.

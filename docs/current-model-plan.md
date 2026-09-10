@@ -140,6 +140,12 @@ path from this evidence: its small RMSE gain comes with a clear MAE loss (`0.154
 absolute bias. Future path candidates must improve the declared integrated target
 without hiding typical-player damage behind a few large tail errors.
 
+A simple exposed-cohort blend sensitivity finds a useful future hitter challenger:
+75% incumbent plus 25% linked improves RMSE, MAE and absolute bias at the point
+estimate, though its RMSE interval crosses zero. Preserve that exact weight for a
+later untouched test; do not tune it further or change current hitter values. No
+pitcher blend is clean because all tested weights worsen MAE.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

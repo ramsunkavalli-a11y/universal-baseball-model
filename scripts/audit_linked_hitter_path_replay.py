@@ -355,6 +355,27 @@ def main() -> int:
             fresh_confirmation=False,
         ),
     }
+    blend_sensitivity = []
+    for linked_weight in (0.25, 0.5, 0.75):
+        blended = (
+            (1.0 - linked_weight) * incumbent_values
+            + linked_weight * candidate_values
+        )
+        blend_sensitivity.append(
+            {
+                "linked_weight": linked_weight,
+                "scores": continuous_scores(observed_values, blended),
+                "paired_difference_vs_incumbent": (
+                    paired_continuous_bootstrap_difference(
+                        observed_values,
+                        incumbent_values,
+                        blended,
+                        seed=20260940 + int(linked_weight * 100),
+                    )
+                ),
+                "status": "exposed_cohort_sensitivity_not_candidate",
+            }
+        )
     horizon_sensitivity = []
     for horizon in range(1, 5):
         horizon_scored = scored.with_columns(
@@ -492,6 +513,7 @@ def main() -> int:
         "metrics": metrics,
         "paired_mse_bootstrap": comparisons,
         "continuous_validation_harness": continuous_validation,
+        "blend_sensitivity": blend_sensitivity,
         "horizon_sensitivity": horizon_sensitivity,
         "subgroups": subgroups,
         "decision": "reject_linked_hitter_replacement_retain_incumbent",
@@ -535,6 +557,12 @@ that reaches MLB, so it remains rejected.
 The same pattern persists from one through four years: candidate RMSE is worse at
 every prefix. MAE improves after year one because forecasts move toward zero, not
 because the model captures the positive MLB tail.
+
+A fixed 25% linked / 75% incumbent blend is promising development evidence: RMSE
+improves {incumbent['rmse']:.3f} to {blend_sensitivity[0]['scores']['rmse']:.3f}, MAE
+improves {incumbent['mae']:.3f} to {blend_sensitivity[0]['scores']['mae']:.3f}, and
+absolute bias improves. Its paired MSE interval still crosses zero, and the exposed
+cohort was used to view the weight, so it is not promoted or used in current values.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)

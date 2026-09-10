@@ -54,3 +54,11 @@ horizon. Pitcher candidate MAE is worse in all four prefixes and no paired MSE i
 is reliably favorable. Hitter candidate RMSE is worse in all four prefixes; its later
 MAE gains come from moving the majority of forecasts toward zero. The linked-path
 failure therefore is not merely long-horizon extrapolation.
+
+A bounded 25%/50%/75% blend sensitivity was then recorded as exposed-cohort research.
+For hitters, the 25% linked blend improves every point diagnostic: RMSE `0.955 ->
+0.945`, MAE `0.310 -> 0.285`, and absolute bias `0.063 -> 0.027`. Its paired MSE
+interval crosses zero and the weight was viewed on development data, so it cannot be
+promoted. Pitcher blends improve RMSE and mean bias, but all three reliably worsen
+MAE. Preserve the 25% hitter blend as a later frozen challenger; redesign the pitcher
+arrival/positive-tail link rather than selecting a compromise after the fact.

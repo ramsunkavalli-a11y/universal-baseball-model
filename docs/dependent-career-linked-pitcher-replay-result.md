@@ -37,3 +37,6 @@ too much value to the much larger non-arrival group.
 This tradeoff persists at every tested prefix from one through four years: candidate
 MAE is worse at all four horizons, and no horizon has a reliably favorable paired MSE
 interval. The failure is not caused only by extending two-year odds to four years.
+
+Fixed 25%, 50%, and 75% linked blends improve RMSE and mean bias on this exposed
+cohort, but every blend has a reliably worse paired MAE. None is a promotion candidate.
