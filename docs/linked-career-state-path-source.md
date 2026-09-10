@@ -21,3 +21,6 @@ This completes the donor-data side of the integration. The next replay must pres
 whole path blocks while applying the prospect-specific transition process. It must not
 sample isolated seasons, multiply the same workload evidence twice, or select a final
 career tier before the simulated years unfold.
+
+The reconstructed year-six state matches the existing frozen terminal tier for all
+3,945 paths. There are zero definition mismatches.

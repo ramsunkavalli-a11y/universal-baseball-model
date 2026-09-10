@@ -123,6 +123,22 @@ def main() -> int:
         pl.col("to_state").replace_strict(SIMULATED_STATE_CODES).alias("_to"),
     ).filter(pl.col("_to") < pl.col("_from")).height:
         raise ValueError("linked donor state moves backward")
+    terminal = paths.filter(pl.col("path_year") == 6).with_columns(
+        pl.col("outcome_tier_v2")
+        .replace_strict(
+            {
+                "fringe": "FRINGE_MLB",
+                "meaningful_only": "MEANINGFUL_MLB",
+                "established": "ESTABLISHED_MLB",
+            }
+        )
+        .alias("expected_terminal_state")
+    )
+    terminal_mismatches = terminal.filter(
+        pl.col("observed_career_state") != pl.col("expected_terminal_state")
+    ).height
+    if terminal_mismatches:
+        raise ValueError("annual states do not reproduce frozen terminal career tiers")
     OUTPUT.mkdir(parents=True, exist_ok=True)
     storage = write_canonical_parquet(
         paths,
@@ -145,6 +161,7 @@ def main() -> int:
         "maximum_window_end_year": int(paths["window_end_year"].max()),
         "current_2026_used": False,
         "whole_six_year_paths_retained": True,
+        "terminal_state_mismatches": terminal_mismatches,
         "missing_age_paths_retained_for_explicit_fallback": True,
         "shortened_2020_state_uses_full_season_equivalent": True,
         "shortened_2020_relative_workload_uses_raw_scale": True,

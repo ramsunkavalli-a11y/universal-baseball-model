@@ -15,6 +15,7 @@ def test_linked_career_state_paths_are_complete_and_hash_bound() -> None:
     report = json.loads((PACKAGE / "report.json").read_text(encoding="utf-8"))
     assert report["current_2026_used"] is False
     assert report["production_changed"] is False
+    assert report["terminal_state_mismatches"] == 0
     assert sha256_file(ROOT / report["runner_path"]) == report["runner_sha256"]
     for path, expected in report["sources"].items():
         assert sha256_file(ROOT / path) == expected
