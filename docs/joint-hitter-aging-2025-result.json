@@ -1,0 +1,54 @@
+{
+  "marcel_aging": {
+    "component_events": 182919,
+    "model_component_log_loss": 1.0415064323714744,
+    "model_minus_population_component_log_loss": -0.0055268628396372204,
+    "observed_total_neutral_war": 612.6166476754299,
+    "observed_total_workload": 182919.0,
+    "players": 3891,
+    "population_component_log_loss": 1.0470332952111117,
+    "positive_workload_players": 667,
+    "predicted_total_war": 643.6778477898467,
+    "war_mae": 0.1651540724339916,
+    "war_rmse": 0.5004149460327847
+  },
+  "method": "invert only the Marcel age multiplier while keeping frozen opportunity, position, replacement and run environment identical",
+  "no_aging": {
+    "component_events": 182919,
+    "model_component_log_loss": 1.041476858844325,
+    "model_minus_population_component_log_loss": -0.005556436366786725,
+    "observed_total_neutral_war": 612.6166476754299,
+    "observed_total_workload": 182919.0,
+    "players": 3891,
+    "population_component_log_loss": 1.0470332952111117,
+    "positive_workload_players": 667,
+    "predicted_total_war": 608.5341304151613,
+    "war_mae": 0.16192784487656522,
+    "war_rmse": 0.4981728993476543
+  },
+  "no_aging_minus_marcel": {
+    "model_component_log_loss": -2.957352714938466e-05,
+    "predicted_total_war": -35.14371737468548,
+    "war_mae": -0.003226227557426381,
+    "war_rmse": -0.0022420466851303944
+  },
+  "nonreturners_retained": true,
+  "outside_fv_used": false,
+  "player_bootstrap": {
+    "mae_delta_no_aging_minus_marcel": {
+      "lower_95": -0.0045748501698131185,
+      "point": -0.0032262275574264088,
+      "upper_95": -0.0019390374396731792
+    },
+    "mse_delta_no_aging_minus_marcel": {
+      "lower_95": -0.00572376134106374,
+      "point": -0.0022388805685467513,
+      "upper_95": 0.001451260986640318
+    }
+  },
+  "population": "all 3,891 hitter rows in the frozen March 27 projection",
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "status": "joint_zero_inclusive_aging_replay_complete",
+  "target_season": 2025
+}

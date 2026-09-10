@@ -111,6 +111,14 @@ rows, while removing 19.0 WAR of aggregate optimism. The paired MAE improvement 
 clear; the MSE interval crosses zero. Retain Tango aging and use this same joint
 scoreboard for any future curve. No current value changed.
 
+The identical hitter replay gives the opposite answer. Removing the generic Marcel
+age multiplier improves component log loss, zero-inclusive WAR MAE and WAR RMSE and
+removes 35.1 WAR of aggregate optimism. The paired MAE gain is clear, while the MSE
+interval crosses zero. Because the counterfactual was constructed after 2025 outcomes
+were disclosed, current values remain unchanged. Freeze no hitter aging as the leading
+simple challenger for the next valid confirmation; any richer curve must beat both it
+and Marcel without dropping non-returners.
+
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.
