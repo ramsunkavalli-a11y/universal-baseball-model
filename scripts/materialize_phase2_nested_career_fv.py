@@ -39,6 +39,14 @@ def main() -> int:
     args = _args()
     dated = args.as_of_date.isoformat()
     root = args.generated_root
+    war_report = json.loads(
+        (root / "phase2-conditional-war-paths" / dated / "report.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    pitcher_adjustment_id = war_report.get("affiliated_rate_evidence", {}).get(
+        "pitcher_demographic_adjustment_id"
+    )
     pre_mlb = (
         pl.read_parquet(root / "league-control" / dated / "league-control-snapshot.parquet")
         .filter(pl.col("mlb_debut_date").is_null())
@@ -156,9 +164,12 @@ def main() -> int:
         "external_fv_check": external_check,
         "boundaries": {
             "outside_fv_used_for_selection": False,
-            "skill_or_role_rates_changed": False,
+            "skill_or_role_rates_changed": pitcher_adjustment_id is not None,
+            "pitcher_demographic_adjustment_id": pitcher_adjustment_id,
             "contracts_or_costs_changed": False,
-            "organization_neutral_product_values_changed": False,
+            "organization_neutral_product_values_changed": (
+                pitcher_adjustment_id is not None
+            ),
             "six_year_conditional_hazards_are_approximate": True,
             "fresh_confirmation_required": True,
         },

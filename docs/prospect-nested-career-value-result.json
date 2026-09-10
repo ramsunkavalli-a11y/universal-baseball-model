@@ -3,14 +3,15 @@
   "boundaries": {
     "contracts_or_costs_changed": false,
     "fresh_confirmation_required": true,
-    "organization_neutral_product_values_changed": false,
+    "organization_neutral_product_values_changed": true,
     "outside_fv_used_for_selection": false,
+    "pitcher_demographic_adjustment_id": "pitcher_affiliated_age_level_hand_2024fit_2025point_confirmed_v1",
     "six_year_conditional_hazards_are_approximate": true,
-    "skill_or_role_rates_changed": false
+    "skill_or_role_rates_changed": true
   },
   "by_player_type": {
     "hitter": {
-      "incumbent_expected_war": 3917.2934421374734,
+      "incumbent_expected_war": 3875.677161232399,
       "incumbent_fv_counts": {
         "40": 1894,
         "45": 930,
@@ -18,10 +19,10 @@
         "55": 75,
         "60": 20
       },
-      "mean_arrival_probability": 0.15219801420101536,
-      "mean_established_probability": 0.07927547694122786,
-      "mean_meaningful_probability": 0.09498450833998212,
-      "nested_expected_war": 1699.2268085599785,
+      "mean_arrival_probability": 0.15730795677923662,
+      "mean_established_probability": 0.08065895915167073,
+      "mean_meaningful_probability": 0.09665964102196323,
+      "nested_expected_war": 1687.1214969477494,
       "nested_fv_counts": {
         "40": 1321,
         "45": 404,
@@ -29,37 +30,37 @@
         "55": 4,
         "60": 0
       },
-      "players": 3379
+      "players": 2870
     },
     "pitcher": {
-      "incumbent_expected_war": 768.6013430928476,
+      "incumbent_expected_war": 558.092681808259,
       "incumbent_fv_counts": {
-        "40": 850,
-        "45": 156,
-        "50": 18,
-        "55": 0,
+        "40": 924,
+        "45": 215,
+        "50": 38,
+        "55": 3,
         "60": 0
       },
-      "mean_arrival_probability": 0.09827373404135115,
-      "mean_established_probability": 0.039604168999155205,
-      "mean_meaningful_probability": 0.05664749367886552,
-      "nested_expected_war": 231.72355854784104,
+      "mean_arrival_probability": 0.1340821207713948,
+      "mean_established_probability": 0.059658530527751906,
+      "mean_meaningful_probability": 0.08041204514132871,
+      "nested_expected_war": 162.67776052038357,
       "nested_fv_counts": {
-        "40": 225,
-        "45": 24,
-        "50": 1,
+        "40": 296,
+        "45": 40,
+        "50": 2,
         "55": 0,
         "60": 0
       },
-      "players": 3340
+      "players": 3849
     }
   },
   "contract": "docs/prospect-nested-career-value-plan.md",
   "external_fv_check": {
-    "incumbent_bias": -6.480158729733081,
-    "incumbent_mae": 9.039866383047299,
-    "nested_bias": -11.599331099707477,
-    "nested_mae": 11.826151846906324,
+    "incumbent_bias": -5.763137575671622,
+    "incumbent_mae": 8.374301322650709,
+    "nested_bias": -10.690152649305283,
+    "nested_mae": 10.916973396504128,
     "players": 76,
     "role": "diagnostic_only_not_model_input"
   },
@@ -86,11 +87,11 @@
   "status": "private_nested_career_value_sensitivity_complete",
   "storage": {
     "canonical_schema_version": "0.1",
-    "file_sha256": "71b9df6ffc9f66760c2703b3fba2d994f9406e8802b5f36c0a7bebff1f7d3816",
-    "file_size_bytes": 1147723,
+    "file_sha256": "f651b0dc12fbccc81ea890700c617ffd56b05a2cc5cd7c3a9326ff6caceda821",
+    "file_size_bytes": 1182530,
     "path": "reports\\generated\\phase2-nested-career-fv\\2026-09-08\\nested-career-model-fv.parquet",
     "row_count": 9194,
-    "schema_sha256": "365ad8305e553fa86d916382eed4aeb99330b95515ad8e85584534f476ad82d9",
+    "schema_sha256": "814f7712f5df5c36279065d27c5f4efe0b7dff0c4783019582043a39c1d75892",
     "table_name": "phase2_nested_career_model_fv"
   }
 }

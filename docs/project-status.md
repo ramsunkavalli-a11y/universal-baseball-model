@@ -59,7 +59,7 @@ The [nested current-value sensitivity](prospect-nested-career-value-result.md) n
 passes the private gate and is the local explorer's pre-MLB default. It has zero
 probability-order violations, keeps Josuar Gonzalez at 45 FV with a lower 1.83 WAR,
 and reduces hitter 50+ counts from 352 to 86 instead of collapsing them to 8 or 17.
-Pitcher prospect values remain compressed (one 50+), and the top hitter ordering still
+Pitcher prospect values remain compressed, and the top hitter ordering still
 needs model-based error review. This is private and provisional; MLB contract values
 and published outputs are unchanged.
 
@@ -93,6 +93,15 @@ passes its frozen point-score gate on 2025: component log loss improves by 0.000
 and Brier by 0.000052 after selection on 2024. Both bootstrap intervals cross zero,
 and the 36-pitcher left-handed subgroup worsens, so this is a cautious private-build
 promotion with explicit provenance—not a demographic law or value floor.
+
+The integration replay exposed and corrected a separate
+[player-type source bug](model-player-type-source-correction.md): exclusive pitchers
+with negative WAR could be mislabeled hitters because missing hitter WAR was filled
+with zero. Player type now follows real path presence, using projected component only
+for actual two-way paths. The demographic [current-impact replay](pitcher-demographic-current-impact-result.md)
+now has zero type switches and zero hitter changes. On identical inputs it moves
+pitcher 45+ counts from 24 to 40 and 50+ from 1 to 2; the private pitcher total moves
+from 68.15 to 162.68 expected WAR across 3,849 players.
 
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
@@ -540,7 +549,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,390 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,394 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 

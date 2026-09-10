@@ -14,7 +14,7 @@ from universal_baseball.prospect_value import (
 from universal_baseball.prospect_outcome_quality import workload_prior
 
 
-MODEL_FV_ID = "phase2_production_outcome_model_fv_v2"
+MODEL_FV_ID = "phase2_production_outcome_model_fv_v3_path_role"
 
 
 def _normal_tail(threshold: float, mean: float, variance: float) -> float:
@@ -67,6 +67,7 @@ def build_model_fv(
         pre_mlb_established_role_probabilities or {}
     )
     hitter = hitter_paths.group_by("player_id").agg(
+        pl.len().alias("hitter_path_rows"),
         pl.col("expected_war").sum().alias("hitter_expected_six_year_war"),
         pl.col("mlb_active_probability").max().alias(
             "hitter_six_year_arrival_probability"
@@ -83,6 +84,7 @@ def build_model_fv(
         pl.col("primary_position").drop_nulls().first().alias("primary_position"),
     )
     pitcher = pitcher_paths.group_by("player_id").agg(
+        pl.len().alias("pitcher_path_rows"),
         pl.col("expected_war").sum().alias("pitcher_expected_six_year_war"),
         pl.col("mlb_active_probability").max().alias(
             "pitcher_six_year_arrival_probability"
@@ -108,6 +110,8 @@ def build_model_fv(
         .with_columns(
             pl.col("hitter_expected_six_year_war").fill_null(0.0),
             pl.col("pitcher_expected_six_year_war").fill_null(0.0),
+            pl.col("hitter_path_rows").fill_null(0),
+            pl.col("pitcher_path_rows").fill_null(0),
             pl.col("six_year_war_variance").fill_null(0.0),
         )
         .with_columns(
@@ -116,6 +120,16 @@ def build_model_fv(
                 + pl.col("pitcher_expected_six_year_war")
             ).alias("expected_six_year_war"),
             pl.when(
+                (pl.col("pitcher_path_rows") > 0)
+                & (pl.col("hitter_path_rows") == 0)
+            )
+            .then(pl.lit("pitcher"))
+            .when(
+                (pl.col("hitter_path_rows") > 0)
+                & (pl.col("pitcher_path_rows") == 0)
+            )
+            .then(pl.lit("hitter"))
+            .when(
                 pl.col("pitcher_expected_six_year_war")
                 > pl.col("hitter_expected_six_year_war")
             )

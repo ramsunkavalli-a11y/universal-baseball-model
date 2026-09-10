@@ -17,6 +17,11 @@ from universal_baseball.conditional_war_rates import (
 from universal_baseball.level_component_translation import (
     build_translated_affiliated_profiles,
 )
+from universal_baseball.pitcher_demographic_adjustment import (
+    PITCHER_DEMOGRAPHIC_ADJUSTMENT_ID,
+    apply_pitcher_demographic_adjustment,
+    build_pitcher_age_level_features,
+)
 from universal_baseball.storage import write_canonical_parquet
 
 
@@ -48,6 +53,17 @@ def _args() -> argparse.Namespace:
     parser.add_argument(
         "--translation-root", type=Path,
         default=Path("reports/generated/affiliated-level-translations/tables"),
+    )
+    parser.add_argument(
+        "--demographics-path", type=Path,
+        default=Path(
+            "reports/generated/player-demographics/tables/player-demographics.parquet"
+        ),
+    )
+    parser.add_argument(
+        "--disable-pitcher-demographic-adjustment",
+        action="store_true",
+        help="Build an audit counterfactual with the promoted private adjustment off",
     )
     parser.add_argument(
         "--control-path", type=Path,
@@ -179,6 +195,21 @@ def main() -> int:
         current_season=args.as_of_date.year, reference_season=args.as_of_date.year - 1,
         regression_exposure=800.0,
     )
+    pitcher_features = build_pitcher_age_level_features(
+        affiliated_pitchers,
+        pl.read_parquet(args.demographics_path),
+        pitcher_players.select("player_id"),
+        current_season=args.as_of_date.year,
+    )
+    if not args.disable_pitcher_demographic_adjustment:
+        pitcher_profiles = apply_pitcher_demographic_adjustment(
+            pitcher_profiles, pitcher_features
+        )
+        demographic_adjustment_count = pitcher_profiles.filter(
+            pl.col("pitcher_demographic_adjustment_applied")
+        ).height
+    else:
+        demographic_adjustment_count = 0
 
     baserunning_rates = pl.read_parquet(
         args.baserunning_root / args.as_of_date.isoformat()
@@ -203,6 +234,14 @@ def main() -> int:
         reference_batters_faced=int(reference["pitching_batters_faced"]),
         runs_per_win=float(reference["runs_per_win"]),
         affiliated_profiles=pitcher_profiles,
+    ).with_columns(
+        pl.when(
+            (pl.col("evidence_tier") == "affiliated_translated")
+            & pl.lit(not args.disable_pitcher_demographic_adjustment)
+        )
+        .then(pl.lit(PITCHER_DEMOGRAPHIC_ADJUSTMENT_ID))
+        .otherwise(None)
+        .alias("pitcher_demographic_adjustment_id")
     )
     hitter_opportunity = pl.read_parquet(args.opportunity_root / "hitter_opportunity_paths.parquet")
     pitcher_opportunity = pl.read_parquet(args.opportunity_root / "pitcher_opportunity_paths.parquet")
@@ -254,6 +293,17 @@ def main() -> int:
         "affiliated_rate_evidence": {
             "hitter_regression_pa": 1200.0,
             "pitcher_regression_bf": 800.0,
+            "pitcher_demographic_adjustment_id": (
+                None if args.disable_pitcher_demographic_adjustment
+                else PITCHER_DEMOGRAPHIC_ADJUSTMENT_ID
+            ),
+            "pitcher_demographic_adjustment_applied_players": (
+                demographic_adjustment_count
+            ),
+            "pitcher_demographic_adjustment_warning": (
+                "small 2025 point-score gain; player-bootstrap intervals cross zero; "
+                "left-handed confirmation subgroup worsened"
+            ),
             "level_evidence_multipliers": {
                 "MLB": 1.0, "AAA": 0.5, "AA": 0.3, "HIGH_A": 0.2,
                 "SINGLE_A": 0.1, "ROOKIE_COMPLEX": 0.05,
