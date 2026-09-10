@@ -88,6 +88,77 @@ def build_workload_holdout_predictions(
     return pl.DataFrame(rows, infer_schema_length=None).sort("player_id")
 
 
+def build_workload_asof_predictions(
+    paths: pl.DataFrame,
+    *,
+    evaluation_years: tuple[int, ...] = (2018, 2019),
+    minimum_role_players: int = 30,
+) -> pl.DataFrame:
+    """Score conditional workload using only fully matured pre-cutoff paths."""
+
+    required = {
+        "player_id", "player_type", "debut_year", "window_end_year",
+        "outcome_tier_v2", "career_role", "adjusted_total_workload",
+    }
+    if missing := sorted(required - set(paths.columns)):
+        raise ValueError(f"workload paths missing fields: {missing}")
+    if not evaluation_years or minimum_role_players < 1:
+        raise ValueError("invalid as-of workload configuration")
+    rows = []
+    for evaluation_year in evaluation_years:
+        training = paths.filter(pl.col("window_end_year") < evaluation_year)
+        evaluation = paths.filter(pl.col("debut_year") == evaluation_year)
+        if training.is_empty() or evaluation.is_empty():
+            raise ValueError(f"empty workload as-of fold {evaluation_year}")
+        maximum_training_end = int(training["window_end_year"].max())
+        if maximum_training_end >= evaluation_year:
+            raise ValueError("workload as-of chronology violation")
+        for row in evaluation.iter_rows(named=True):
+            pooled = training.filter(
+                (pl.col("player_type") == row["player_type"])
+                & (pl.col("outcome_tier_v2") == row["outcome_tier_v2"])
+            )
+            role = pooled.filter(pl.col("career_role") == row["career_role"])
+            selected = role if role.height >= minimum_role_players else pooled
+            source = "role" if role.height >= minimum_role_players else "pooled"
+            if selected.is_empty():
+                raise ValueError(
+                    "missing as-of workload training cell: "
+                    f"{evaluation_year}/{row['player_type']}/"
+                    f"{row['outcome_tier_v2']}/{row['career_role']}"
+                )
+            samples = selected["adjusted_total_workload"].to_numpy()
+            actual = float(row["adjusted_total_workload"])
+            p10, p25, p50, p75, p90 = np.quantile(
+                samples, [0.10, 0.25, 0.50, 0.75, 0.90], method="linear"
+            )
+            rows.append(
+                {
+                    "evaluation_year": evaluation_year,
+                    "player_id": int(row["player_id"]),
+                    "player_type": str(row["player_type"]),
+                    "outcome_tier_v2": str(row["outcome_tier_v2"]),
+                    "career_role": str(row["career_role"]),
+                    "sample_source": source,
+                    "training_players": selected.height,
+                    "maximum_training_window_end": maximum_training_end,
+                    "actual_workload": actual,
+                    "predicted_p10": float(p10),
+                    "predicted_p25": float(p25),
+                    "predicted_p50": float(p50),
+                    "predicted_p75": float(p75),
+                    "predicted_p90": float(p90),
+                    "covered_80": bool(p10 <= actual <= p90),
+                    "covered_50": bool(p25 <= actual <= p75),
+                    "median_error": float(p50) - actual,
+                    "absolute_median_error": abs(actual - float(p50)),
+                }
+            )
+    return pl.DataFrame(rows, infer_schema_length=None).sort(
+        "evaluation_year", "player_type", "player_id"
+    )
+
+
 def summarize_workload_coverage(
     predictions: pl.DataFrame,
     group_columns: list[str],

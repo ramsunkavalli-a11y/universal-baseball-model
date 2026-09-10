@@ -2,6 +2,9 @@
 
 Status: descriptive cohort-stability result; original chronology claim retracted.
 
+Subsequent status: superseded for calibration decisions by the valid as-of replay in
+`docs/prospect-workload-asof-validation-result.md`. Its pitcher range passes there.
+
 The full six-year training paths extend beyond the later cohort's debut date. This
 means the result cannot confirm a deployable forecast as of that date. It remains a
 useful early-versus-late distribution comparison only.
@@ -23,8 +26,8 @@ covers 31.3%. Both role-specific and pooled pitcher sources under-cover.
 
 - Retain the hitter workload distribution only as a labeled empirical reference range;
   do not call it historically confirmed.
-- Treat the current pitcher workload range as descriptive and too narrow, never as an
-  80% confidence interval.
+- Do not use this timing-defective comparison to label the pitcher range too narrow.
+  Use the subsequent as-of replay for calibration evidence.
 - Do not tune a pitcher widening factor on the already opened 2018-2019 evaluation.
   A replacement method must use resampling or earlier internal development and wait
   for a genuinely later complete six-year cohort for confirmation.

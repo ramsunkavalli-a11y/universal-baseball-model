@@ -101,7 +101,7 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert rendered.count('<script id="explorer-data"') == 1
     assert "Meaningful-role chance" in rendered
     assert "Established-role chance" in rendered
-    assert "Pitcher workload ranges under-covered later historical careers" in rendered
+    assert "The conditional workload method passed an as-of replay" in rendered
 
 
 def test_latest_common_date_uses_only_complete_checkpoints(tmp_path) -> None:

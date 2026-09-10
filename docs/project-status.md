@@ -626,9 +626,7 @@ test failure was observed.
   information available at each forecast date.
 - Neither uncertainty layer uses outside player FV opinions or partial 2026 outcomes.
 - A conditional workload cohort-stability check compared 2015-2017 debuters with
-  2018-2019 debuters. Hitter P10-P90 coverage was 74.7% (95% Wilson
-  interval 68.3%-80.3%), which retains the 80% target. Pitcher coverage was only
-  66.3% (58.8%-73.0%), so the pitcher workload range is too narrow.
+  2018-2019 debuters, but it is descriptive only and cannot set calibration status.
 - Timing audit correction: the earlier cohorts' six-year outcomes extend beyond the
   later cohorts' debut dates. This is not a chronology-safe forecast backtest and
   cannot confirm either workload method. The distribution shift remains descriptive.
@@ -637,9 +635,14 @@ test failure was observed.
   people pull resolved exact debut dates for all 5,321 observed players. This is
   enough to rerun the conditional workload check with training windows that truly end
   before each 2018-2019 evaluation cutoff.
-- Do not fit a pitcher widening factor to the opened later cohort. Keep pitcher ranges
-  descriptive and develop a resampling-based replacement without claiming untouched
-  confirmation until another complete six-year cohort exists.
+- That corrected as-of replay passes the conditional workload method. Pitcher P10-P90
+  coverage is 81.1% (95% Wilson interval 76.7%-84.8%) and P25-P75 coverage is 47.7%.
+  Hitter central coverage is 53.2%; its P10-P90 range is conservative at 90.6%.
+  Remove the old pitcher under-coverage warning. This validates conditional workload,
+  not arrival, predicted tier/role, skill, WAR, or end-to-end value.
+- Do not fit a pitcher widening factor. The valid as-of replay supports the current
+  conditional workload range; remaining uncertainty work belongs in arrival, skill,
+  aging, injury, and the tier/role mixture.
 - The first frozen pitcher era diagnostic rejected all eight simple fixes. A one-year
   recency half-life modestly improved overall and established-career CRPS but breached
   the supported fringe-tier safety limit and did not repair coverage. Always pooling

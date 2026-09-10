@@ -19,10 +19,10 @@ of pitchers with a start does not mean there are more traditional starters. Incr
 use of openers and bullpen games gives some relievers a start with very few BF. A
 binary starter label therefore no longer implies the same workload concentration.
 
-This directly supports the prior descriptive cohort result: later established pitchers
-fell below old workload ranges too often. That comparison is not chronology-safe
-validation, but the environment shift still rules out raising pitcher workload merely
-to make prospect values look more familiar.
+This explains why an era-aware check was necessary, but it does not by itself prove
+the conditional range is miscalibrated. The subsequent chronology-safe as-of replay
+finds 81.1% pitcher coverage for the nominal 80% range. The environment shift still
+rules out raising pitcher workload merely to make prospect values look more familiar.
 
 The next candidate should represent each pitcher's workload relative to his season's
 league distribution, forecast the league-wide usage environment separately, and then

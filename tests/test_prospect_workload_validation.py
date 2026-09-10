@@ -4,6 +4,7 @@ import pytest
 
 from universal_baseball.prospect_workload_validation import (
     build_pitcher_workload_era_scores,
+    build_workload_asof_predictions,
     build_workload_holdout_predictions,
     empirical_crps,
     summarize_workload_coverage,
@@ -79,3 +80,23 @@ def test_pitcher_era_scores_never_use_same_or_later_debut_cohort() -> None:
     )
     assert result["predicted_p50"].max() <= 200.0
     assert result["training_players"].max() == 2
+
+
+def test_asof_workload_requires_training_window_to_end_before_evaluation() -> None:
+    paths = pl.DataFrame(
+        {
+            "player_id": [1, 2, 3],
+            "player_type": ["hitter"] * 3,
+            "debut_year": [2010, 2013, 2018],
+            "window_end_year": [2015, 2018, 2023],
+            "outcome_tier_v2": ["fringe"] * 3,
+            "career_role": ["hitter"] * 3,
+            "adjusted_total_workload": [100.0, 10000.0, 100.0],
+        }
+    )
+    result = build_workload_asof_predictions(
+        paths, evaluation_years=(2018,), minimum_role_players=1
+    ).row(0, named=True)
+    assert result["maximum_training_window_end"] == 2015
+    assert result["training_players"] == 1
+    assert result["predicted_p50"] == 100.0
