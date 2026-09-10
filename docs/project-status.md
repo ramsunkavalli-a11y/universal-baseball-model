@@ -644,6 +644,11 @@ test failure was observed.
   improved both frozen 2025 point scores versus the current 1,200-PA prior, but both
   player-bootstrap 95% intervals narrowly crossed zero. Retain 1,200 PA. The result
   argues against applying more shrinkage merely to suppress the prospect top end.
+- The official MLB pitcher-workload environment audit explains the later-cohort
+  under-coverage. Active pitchers increased 13.2% from the 2015-2019 era to 2021-2024,
+  while mean/median BF per pitcher fell about 13% and P90 BF fell 16.3%. More pitchers
+  also recorded a start. Next model workload relative to the season environment;
+  never boost raw pitcher BF to achieve a preferred prospect-value distribution.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).
