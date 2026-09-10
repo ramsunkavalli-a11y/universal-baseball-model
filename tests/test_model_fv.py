@@ -1,7 +1,9 @@
 import polars as pl
+import pytest
 
 from universal_baseball.model_fv import (
     apply_pre_mlb_outcome_quality_workload,
+    apply_pre_mlb_three_tier_workload,
     build_model_fv,
 )
 
@@ -141,3 +143,41 @@ def test_outcome_quality_challenger_uses_disjoint_fringe_and_meaningful_paths() 
         6.0 / 3_300.0 * expected_workload
     )
     assert result["outcome_quality_expected_six_year_war"] < 3.0
+
+
+def test_three_tier_challenger_orders_probabilities_and_uses_disjoint_paths() -> None:
+    values = pl.DataFrame(
+        {
+            "player_id": [3], "model_player_type": ["hitter"],
+            "model_arrival_probability": [0.5],
+            "model_meaningful_role_probability": [0.4],
+            # Deliberately above meaningful; logical ordering must constrain it.
+            "model_established_role_probability": [0.45],
+            "expected_six_year_war": [3.0],
+            "hitter_six_control_year_war_if_arrived": [6.0],
+            "pitcher_six_control_year_war_if_arrived": [None],
+            "primary_position": ["CF"], "starter_probability": [None],
+            "reliever_probability": [None], "model_fv_granular": [45.0],
+            "model_fv_display": [45],
+        }
+    )
+    priors = pl.DataFrame(
+        {
+            "player_type": ["hitter"] * 3,
+            "outcome_tier": ["fringe", "meaningful_only", "established"],
+            "career_role": ["hitter"] * 3,
+            "players": [200, 100, 100],
+            "mean_workload": [60.0, 600.0, 2_500.0],
+        }
+    )
+    result = apply_pre_mlb_three_tier_workload(
+        values, priors, pre_mlb_player_ids={3}
+    ).row(0, named=True)
+    assert result["fringe_probability"] == pytest.approx(0.1)
+    assert result["meaningful_only_probability"] == 0.0
+    assert result["established_probability"] == 0.4
+    expected_workload = 0.1 * 60.0 + 0.4 * 2_500.0
+    assert result["three_tier_expected_workload"] == expected_workload
+    assert result["three_tier_expected_six_year_war"] == (
+        6.0 / 3_300.0 * expected_workload
+    )

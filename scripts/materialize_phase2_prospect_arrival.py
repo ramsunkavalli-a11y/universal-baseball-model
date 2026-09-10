@@ -227,6 +227,13 @@ def main() -> int:
         )
         selected_role_feature_set = "core"
         role_evaluation, role_passed = role_evaluations[selected_role_feature_set]
+        established_evaluation, established_passed = _evaluate(
+            cohorts,
+            player_type=player_type,
+            target_column="established_role_within_horizon",
+            outcome_name="established_role",
+            feature_set="core",
+        )
         fit = fit_arrival_model(
             pl.concat([cohorts[year] for year in TRAINING_YEARS]),
             player_type=player_type, feature_set=selected_feature_set,
@@ -247,6 +254,14 @@ def main() -> int:
             feature_set=selected_role_feature_set,
         )
         scored = predict_arrival(role_fit, scored)
+        established_fit = fit_arrival_model(
+            pl.concat([cohorts[year] for year in TRAINING_YEARS]),
+            player_type=player_type,
+            target_column="established_role_within_horizon",
+            outcome_name="established_role",
+            feature_set="core",
+        )
+        scored = predict_arrival(established_fit, scored)
         selected = (
             "predicted_two_year_arrival_probability"
             if passed else "baseline_two_year_arrival_probability"
@@ -255,6 +270,11 @@ def main() -> int:
             "predicted_two_year_meaningful_role_probability"
             if role_passed else "baseline_two_year_meaningful_role_probability"
         )
+        selected_established = (
+            "predicted_two_year_established_role_probability"
+            if established_passed
+            else "baseline_two_year_established_role_probability"
+        )
         scored = scored.with_columns(
             pl.col(selected).map_elements(
                 six_year_probability, return_dtype=pl.Float64
@@ -262,10 +282,14 @@ def main() -> int:
             pl.col(selected_role).map_elements(
                 six_year_probability, return_dtype=pl.Float64
             ).alias("predicted_six_year_meaningful_role_probability"),
+            pl.col(selected_established).map_elements(
+                six_year_probability, return_dtype=pl.Float64
+            ).alias("predicted_six_year_established_role_probability"),
             pl.lit("logistic" if passed else "level_baseline").alias("selected_form"),
             pl.lit(ARRIVAL_MODEL_ID).alias("arrival_model_id"),
             pl.lit(selected_feature_set).alias("arrival_feature_set"),
             pl.lit(selected_role_feature_set).alias("meaningful_role_feature_set"),
+            pl.lit("core").alias("established_role_feature_set"),
         )
         path = output / f"{player_type}-arrival-probabilities.parquet"
         storage[player_type] = write_canonical_parquet(
@@ -290,12 +314,20 @@ def main() -> int:
                 key: value[0] for key, value in role_evaluations.items()
             },
             "meaningful_role_evaluation": role_evaluation,
+            "established_role_gate_passed": established_passed,
+            "selected_established_role_feature_set": "core",
+            "established_role_evaluation": established_evaluation,
             "mean_current_six_year_probability": float(
                 scored.get_column("predicted_six_year_arrival_probability").mean()
             ),
             "mean_current_six_year_meaningful_role_probability": float(
                 scored.get_column(
                     "predicted_six_year_meaningful_role_probability"
+                ).mean()
+            ),
+            "mean_current_six_year_established_role_probability": float(
+                scored.get_column(
+                    "predicted_six_year_established_role_probability"
                 ).mean()
             ),
         }
@@ -306,8 +338,8 @@ def main() -> int:
         "method": (
             "two-year cumulative MLB debut probability from age, broad level, position "
             "or pitching role, current production, workload, playing history and 40-man "
-            "status; separately models any debut and a meaningful 200 PA/BF MLB season, "
-            "then extrapolates each to three two-year windows"
+            "status; separately models any debut, a meaningful 200 PA/BF MLB season, "
+            "and an established role, then extrapolates each to three two-year windows"
         ),
         "boundaries": {
             "publication_grades_used": False, "future_team_depth_used": False,

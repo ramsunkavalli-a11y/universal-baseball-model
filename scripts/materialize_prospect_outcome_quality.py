@@ -11,6 +11,7 @@ import polars as pl
 
 from universal_baseball.prospect_outcome_quality import (
     build_post_debut_workload_paths,
+    summarize_three_tier_workload_priors,
     summarize_workload_priors,
 )
 from universal_baseball.storage import write_canonical_parquet
@@ -81,6 +82,7 @@ def main() -> int:
     )
     paths = pl.concat([hitter, pitcher], how="vertical_relaxed")
     priors = summarize_workload_priors(paths)
+    three_tier_priors = summarize_three_tier_workload_priors(paths)
     args.output_root.mkdir(parents=True, exist_ok=True)
     storage = {
         "paths": write_canonical_parquet(
@@ -92,6 +94,11 @@ def main() -> int:
             priors,
             args.output_root / "post-debut-workload-priors.parquet",
             table_name="prospect_post_debut_workload_priors",
+        ).as_record(),
+        "three_tier_priors": write_canonical_parquet(
+            three_tier_priors,
+            args.output_root / "post-debut-workload-priors-v2.parquet",
+            table_name="prospect_post_debut_workload_priors_v2",
         ).as_record(),
     }
     report = {
@@ -111,6 +118,7 @@ def main() -> int:
         },
         "players": {"hitter": hitter.height, "pitcher": pitcher.height},
         "priors": priors.to_dicts(),
+        "three_tier_priors": three_tier_priors.to_dicts(),
         "early_late_stability": _stability(paths),
         "storage": storage,
     }

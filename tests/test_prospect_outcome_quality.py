@@ -5,6 +5,7 @@ import pytest
 
 from universal_baseball.prospect_outcome_quality import (
     build_post_debut_workload_paths,
+    summarize_three_tier_workload_priors,
     summarize_workload_priors,
     workload_prior,
 )
@@ -32,6 +33,7 @@ def test_post_debut_paths_keep_zeros_and_scale_shortened_2020() -> None:
     assert result.item(0, "active_seasons") == 3
     assert result.item(0, "meaningful_seasons") == 2
     assert result.item(0, "outcome_tier") == "meaningful"
+    assert result.item(0, "outcome_tier_v2") == "meaningful_only"
 
 
 def test_pitcher_paths_assign_role_and_keep_regular_seasons_diagnostic() -> None:
@@ -53,6 +55,7 @@ def test_pitcher_paths_assign_role_and_keep_regular_seasons_diagnostic() -> None
     assert result.item(0, "career_role") == "starter"
     assert result.item(0, "outcome_tier") == "meaningful"
     assert result.item(0, "regular_seasons") == 2
+    assert result.item(0, "outcome_tier_v2") == "established"
     summary = summarize_workload_priors(result)
     assert summary.height == 2
     value, source = workload_prior(
@@ -64,6 +67,8 @@ def test_pitcher_paths_assign_role_and_keep_regular_seasons_diagnostic() -> None
     )
     assert value == pytest.approx(1370.0)
     assert source == "pooled"
+    three_tier = summarize_three_tier_workload_priors(result)
+    assert set(three_tier.get_column("outcome_tier")) == {"established"}
 
 
 def test_outcome_quality_requires_complete_cohort() -> None:

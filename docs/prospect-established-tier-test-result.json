@@ -1,0 +1,119 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundaries": {
+    "contract_values_changed": false,
+    "current_product_values_changed": false,
+    "fresh_confirmation_required": true,
+    "outside_fv_used_for_selection": false,
+    "publication_grades_used_as_inputs": false,
+    "skill_rates_changed": false
+  },
+  "by_player_type": {
+    "hitter": {
+      "binary_expected_war": 930.6162180434274,
+      "binary_fv_counts": {
+        "40": 838,
+        "45": 162,
+        "50": 17,
+        "55": 1,
+        "60": 0
+      },
+      "incumbent_expected_war": 3813.460286134276,
+      "incumbent_fv_counts": {
+        "40": 1934,
+        "45": 903,
+        "50": 320,
+        "55": 71,
+        "60": 12
+      },
+      "mean_ordered_arrival_probability": 0.1505433246924416,
+      "mean_ordered_established_probability": 0.02711225315569022,
+      "mean_ordered_meaningful_probability": 0.05166054250335641,
+      "players": 3379,
+      "three_tier_expected_war": 732.320477985586,
+      "three_tier_fv_counts": {
+        "40": 638,
+        "45": 122,
+        "50": 8,
+        "55": 0,
+        "60": 0
+      }
+    },
+    "pitcher": {
+      "binary_expected_war": 169.72348734095277,
+      "binary_fv_counts": {
+        "40": 110,
+        "45": 10,
+        "50": 0,
+        "55": 0,
+        "60": 0
+      },
+      "incumbent_expected_war": 768.6013430928476,
+      "incumbent_fv_counts": {
+        "40": 850,
+        "45": 156,
+        "50": 18,
+        "55": 0,
+        "60": 0
+      },
+      "mean_ordered_arrival_probability": 0.09827373404135115,
+      "mean_ordered_established_probability": 0.01447127576445257,
+      "mean_ordered_meaningful_probability": 0.032285217537955636,
+      "players": 3340,
+      "three_tier_expected_war": 124.31853891013183,
+      "three_tier_fv_counts": {
+        "40": 67,
+        "45": 3,
+        "50": 0,
+        "55": 0,
+        "60": 0
+      }
+    }
+  },
+  "contract": "docs/prospect-established-tier-test-plan.md",
+  "external_fv_check": {
+    "binary_bias": -14.454634915162694,
+    "binary_mae": 14.589648528418103,
+    "incumbent_bias": -6.622438011897532,
+    "incumbent_mae": 9.062064531378567,
+    "players": 76,
+    "role": "diagnostic_only_not_model_input",
+    "three_tier_bias": -16.328271953186718,
+    "three_tier_mae": 16.328896285699674
+  },
+  "method": "ordered disjoint fringe, meaningful-only and established probabilities times mature six-calendar-year workload priors and existing WAR rates",
+  "probability_ordering_corrections": {
+    "established_above_meaningful": 294,
+    "meaningful_above_arrival": 248
+  },
+  "report_schema_version": "0.1",
+  "requested_examples": [
+    {
+      "established_probability": 0.023490540138803806,
+      "fringe_probability": 0.10636047910822555,
+      "incumbent_expected_six_year_war": 2.8448814428772926,
+      "meaningful_only_probability": 0.0435713064784069,
+      "model_fv_display": 45,
+      "model_player_type": "hitter",
+      "ordered_arrival_probability": 0.17342232572543625,
+      "ordered_established_probability": 0.023490540138803806,
+      "ordered_meaningful_probability": 0.06706184661721071,
+      "outcome_quality_expected_six_year_war": 0.6947040938275467,
+      "outcome_quality_model_fv_display": 40,
+      "player_id": 829034,
+      "player_name": "Josuar Gonzalez",
+      "three_tier_expected_six_year_war": 0.4632439839854418,
+      "three_tier_model_fv_display": 40
+    }
+  ],
+  "status": "private_three_tier_sensitivity_not_promoted",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "5168c110cd00ec361c8bb0cc5a3165643eb4a9a31b967922a6e31355fc0c7898",
+    "file_size_bytes": 1191490,
+    "path": "reports\\generated\\phase2-established-tier-fv\\2026-09-08\\established-tier-model-fv.parquet",
+    "row_count": 9194,
+    "schema_sha256": "925006be552aaea00d4f8062ff6d45be5fc7f3cf4ca7b68b4dd8c9b119ce5877",
+    "table_name": "phase2_established_tier_model_fv"
+  }
+}

@@ -48,6 +48,7 @@ def build_model_fv(
     pre_mlb_player_ids: set[int] | None = None,
     pre_mlb_arrival_probabilities: dict[tuple[str, int], float] | None = None,
     pre_mlb_meaningful_role_probabilities: dict[tuple[str, int], float] | None = None,
+    pre_mlb_established_role_probabilities: dict[tuple[str, int], float] | None = None,
 ) -> pl.DataFrame:
     """Turn projected six-year production distributions into internal FV grades."""
 
@@ -61,6 +62,9 @@ def build_model_fv(
     pre_mlb_arrival_probabilities = pre_mlb_arrival_probabilities or {}
     pre_mlb_meaningful_role_probabilities = (
         pre_mlb_meaningful_role_probabilities or {}
+    )
+    pre_mlb_established_role_probabilities = (
+        pre_mlb_established_role_probabilities or {}
     )
     hitter = hitter_paths.group_by("player_id").agg(
         pl.col("expected_war").sum().alias("hitter_expected_six_year_war"),
@@ -129,6 +133,7 @@ def build_model_fv(
         outcome_method = "next_six_calendar_years"
         model_arrival_probability = None
         model_meaningful_role_probability = None
+        model_established_role_probability = None
         if player_id in pre_mlb_player_ids:
             if player_type == "hitter":
                 arrival = float(row["hitter_six_year_arrival_probability"] or 0.0)
@@ -141,6 +146,9 @@ def build_model_fv(
             )
             model_meaningful_role_probability = (
                 pre_mlb_meaningful_role_probabilities.get((player_type, player_id))
+            )
+            model_established_role_probability = (
+                pre_mlb_established_role_probabilities.get((player_type, player_id))
             )
             if modeled_arrival is not None:
                 arrival = float(modeled_arrival)
@@ -168,6 +176,9 @@ def build_model_fv(
                 "model_arrival_probability": model_arrival_probability,
                 "model_meaningful_role_probability": (
                     model_meaningful_role_probability
+                ),
+                "model_established_role_probability": (
+                    model_established_role_probability
                 ),
                 "arrival_probability_source": arrival_source,
                 "model_role": role,
@@ -315,6 +326,147 @@ def apply_pre_mlb_outcome_quality_workload(
                 "outcome_quality_model_fv_granular": granular,
                 "outcome_quality_model_fv_display": display_fv(granular),
                 "outcome_quality_workload_source": source,
+            }
+        )
+    return pl.DataFrame(rows, infer_schema_length=None).sort("player_id")
+
+
+def apply_pre_mlb_three_tier_workload(
+    values: pl.DataFrame,
+    workload_priors: pl.DataFrame,
+    *,
+    pre_mlb_player_ids: set[int],
+    minimum_role_players: int = 30,
+) -> pl.DataFrame:
+    """Apply ordered fringe/meaningful-only/established workload probabilities."""
+
+    required = {
+        "player_id", "model_player_type", "model_arrival_probability",
+        "model_meaningful_role_probability", "model_established_role_probability",
+        "expected_six_year_war", "hitter_six_control_year_war_if_arrived",
+        "pitcher_six_control_year_war_if_arrived", "primary_position",
+        "starter_probability", "reliever_probability", "model_fv_granular",
+        "model_fv_display",
+    }
+    if missing := sorted(required - set(values.columns)):
+        raise ValueError(f"Model FV values missing columns: {missing}")
+    rows = []
+    for row in values.iter_rows(named=True):
+        player_id = int(row["player_id"])
+        applicable = player_id in pre_mlb_player_ids and all(
+            row[column] is not None
+            for column in (
+                "model_arrival_probability",
+                "model_meaningful_role_probability",
+                "model_established_role_probability",
+            )
+        )
+        incumbent_war = float(row["expected_six_year_war"])
+        if not applicable:
+            rows.append(
+                {
+                    **row,
+                    "incumbent_expected_six_year_war": incumbent_war,
+                    "ordered_arrival_probability": None,
+                    "ordered_meaningful_probability": None,
+                    "ordered_established_probability": None,
+                    "fringe_probability": None,
+                    "meaningful_only_probability": None,
+                    "established_probability": None,
+                    "three_tier_expected_workload": None,
+                    "three_tier_expected_six_year_war": incumbent_war,
+                    "three_tier_model_fv_granular": row["model_fv_granular"],
+                    "three_tier_model_fv_display": row["model_fv_display"],
+                    "three_tier_workload_source": "not_pre_mlb",
+                }
+            )
+            continue
+        player_type = str(row["model_player_type"])
+        arrival = min(1.0, max(0.0, float(row["model_arrival_probability"])))
+        meaningful = min(
+            arrival, max(0.0, float(row["model_meaningful_role_probability"]))
+        )
+        established = min(
+            meaningful, max(0.0, float(row["model_established_role_probability"]))
+        )
+        tier_probability = {
+            "fringe": arrival - meaningful,
+            "meaningful_only": meaningful - established,
+            "established": established,
+        }
+        if player_type == "hitter":
+            tier_workload = {}
+            tier_sources = {}
+            for tier in tier_probability:
+                tier_workload[tier], tier_sources[tier] = workload_prior(
+                    workload_priors,
+                    player_type="hitter",
+                    outcome_tier=tier,
+                    career_role="hitter",
+                    minimum_role_players=minimum_role_players,
+                )
+            assumed_workload = 6.0 * (
+                450.0 if str(row["primary_position"] or "") == "C" else 550.0
+            )
+            full_war = float(row["hitter_six_control_year_war_if_arrived"] or 0.0)
+            source = ":".join(
+                f"{tier}_{tier_sources[tier]}" for tier in tier_probability
+            )
+        else:
+            starter = min(1.0, max(0.0, float(row["starter_probability"] or 0.0)))
+            reliever = min(1.0, max(0.0, float(row["reliever_probability"] or 0.0)))
+            swingman = max(0.0, 1.0 - starter - reliever)
+            total_role = starter + reliever + swingman
+            roles = {
+                "starter": starter / total_role,
+                "reliever": reliever / total_role,
+                "swingman": swingman / total_role,
+            }
+            tier_workload = {}
+            source_parts = []
+            for tier in tier_probability:
+                tier_workload[tier] = 0.0
+                sources = set()
+                for role, probability in roles.items():
+                    prior, prior_source = workload_prior(
+                        workload_priors,
+                        player_type="pitcher",
+                        outcome_tier=tier,
+                        career_role=role,
+                        minimum_role_players=minimum_role_players,
+                    )
+                    tier_workload[tier] += probability * prior
+                    sources.add(prior_source)
+                source_parts.append(f"{tier}_{'+'.join(sorted(sources))}")
+            assumed_workload = 6.0 * (
+                800.0 * roles["starter"]
+                + 250.0 * roles["reliever"]
+                + 450.0 * roles["swingman"]
+            )
+            full_war = float(row["pitcher_six_control_year_war_if_arrived"] or 0.0)
+            source = ":".join(source_parts)
+        expected_workload = sum(
+            tier_probability[tier] * tier_workload[tier]
+            for tier in tier_probability
+        )
+        rate = full_war / assumed_workload if assumed_workload > 0 else 0.0
+        expected_war = rate * expected_workload
+        granular = model_fv_from_expected_war(expected_war, player_type)
+        rows.append(
+            {
+                **row,
+                "incumbent_expected_six_year_war": incumbent_war,
+                "ordered_arrival_probability": arrival,
+                "ordered_meaningful_probability": meaningful,
+                "ordered_established_probability": established,
+                "fringe_probability": tier_probability["fringe"],
+                "meaningful_only_probability": tier_probability["meaningful_only"],
+                "established_probability": tier_probability["established"],
+                "three_tier_expected_workload": expected_workload,
+                "three_tier_expected_six_year_war": expected_war,
+                "three_tier_model_fv_granular": granular,
+                "three_tier_model_fv_display": display_fv(granular),
+                "three_tier_workload_source": source,
             }
         )
     return pl.DataFrame(rows, infer_schema_length=None).sort("player_id")

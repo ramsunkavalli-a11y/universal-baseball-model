@@ -13,21 +13,23 @@ rejected for tiny support and severe calibration failure. No values changed. Cat
 preference, outside FV inputs and non-universal pitch sequences remain excluded.
 
 The first [current-organization capacity layer](current-organization-opportunity-allocation-result.md)
-is also complete. It closes every team-season with an explicit external/replacement
-share and never raises player workload. Only seven of 180 team-seasons exceed the
-fixed 6,097.53 PA/BF team capacity, all on the hitter side; the largest reduction is
-about 8%. This confirms that broad team totals are not the main source of crowded
-prospect values. Position and pitcher-role competition are the next material
-allocation layer. The output remains separate from organization-neutral trade value.
+is complete and now has a [2025 historical replay](historical-team-capacity-replay-2025-result.md).
+The broad team cap modestly improved pitcher RMSE and MAE and was roughly neutral for
+hitters. Keep it as team context. Rigid primary-position and pitcher-role caps removed
+too much workload: the hitter version clearly worsened RMSE and the pitcher version
+had mixed scores. Both are rejected for display until flexibility can move unused
+capacity across positions or roles. None of these layers changes portable value.
 
-The new [broad hitter position-capacity diagnostic](current-organization-position-capacity-result.md)
-shows where the crowding actually sits. Catcher exceeds its historical workload share
-in 61 of 180 current team-seasons and loses 10,915 expected PA across the six-year
-view; one catcher group scales to 58.1%. The layer removes another 8,179 PA in 2027
-after the total-team cap, while never scaling a player upward. This supports a
-current-team catcher constraint, not a catcher talent penalty: portable Model FV and
-trade value remain unchanged. Historical replay, flexible multi-position assignment
-and pitcher-role capacity are still required before production integration.
+The [broad hitter position-capacity diagnostic](current-organization-position-capacity-result.md)
+still identifies catcher crowding, but the replay proves that primary-position shares
+cannot be used as rigid quotas. Catcher receives no talent bonus or penalty. Flexible
+multi-position assignment is Phase 2 research, not a current valuation input.
+
+The [established-tier prospect test](prospect-established-tier-test-result.md) is also
+rejected. Mature fringe/meaningful/established workload priors are usable, but three
+separately fitted probabilities violate their required ordering and flatten credible
+prospects even more. The next prospect model is one conditional hurdle: arrival,
+meaningful given arrival, then established given meaningful.
 
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than

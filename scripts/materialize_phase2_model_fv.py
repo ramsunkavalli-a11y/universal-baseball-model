@@ -56,6 +56,7 @@ def main() -> int:
     )
     arrival_probabilities: dict[tuple[str, int], float] = {}
     meaningful_role_probabilities: dict[tuple[str, int], float] = {}
+    established_role_probabilities: dict[tuple[str, int], float] = {}
     for player_type in ("hitter", "pitcher"):
         arrival = pl.read_parquet(
             args.arrival_root / dated / f"{player_type}-arrival-probabilities.parquet"
@@ -76,6 +77,14 @@ def main() -> int:
                 for row in arrival.iter_rows(named=True)
             }
         )
+        established_role_probabilities.update(
+            {
+                (player_type, int(row["player_id"])): float(
+                    row["predicted_six_year_established_role_probability"]
+                )
+                for row in arrival.iter_rows(named=True)
+            }
+        )
     values = build_model_fv(
         pl.read_parquet(war_tables / "hitter_expected_war_paths.parquet"),
         pl.read_parquet(war_tables / "pitcher_expected_war_paths.parquet"),
@@ -83,6 +92,7 @@ def main() -> int:
         pre_mlb_player_ids=pre_mlb_ids,
         pre_mlb_arrival_probabilities=arrival_probabilities,
         pre_mlb_meaningful_role_probabilities=meaningful_role_probabilities,
+        pre_mlb_established_role_probabilities=established_role_probabilities,
     )
     output = args.output_root / dated
     output.mkdir(parents=True, exist_ok=True)
@@ -105,6 +115,7 @@ def main() -> int:
             "annual_active_probabilities_treated_as_independent_hazards": False,
             "historical_arrival_model_used": True,
             "meaningful_role_probability_is_diagnostic_only": True,
+            "established_role_probability_is_diagnostic_only": True,
             "role_workload_pa": {"catcher": 450.0, "other_hitter": 550.0},
         },
         "storage": storage,

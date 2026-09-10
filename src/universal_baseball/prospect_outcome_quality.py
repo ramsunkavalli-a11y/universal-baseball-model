@@ -70,6 +70,7 @@ def build_post_debut_workload_paths(
         active_seasons = 0
         meaningful_seasons = 0
         regular_seasons = 0
+        established_support_seasons = 0
         games = 0.0
         starts = 0.0
         for season in range(debut_year, debut_year + horizon):
@@ -81,8 +82,9 @@ def build_post_debut_workload_paths(
             total += adjusted
             active_seasons += int(raw_workload > 0)
             meaningful_seasons += int(adjusted >= 200.0)
-            regular_threshold = 400.0 if player_type == "hitter" else 500.0
-            regular_seasons += int(adjusted >= regular_threshold)
+            regular_seasons += int(adjusted >= 400.0)
+            support_threshold = 300.0 if player_type == "hitter" else 200.0
+            established_support_seasons += int(adjusted >= support_threshold)
             games += float(observed.get("games") or 0.0)
             starts += float(observed.get("starts") or 0.0)
         if total <= 0:
@@ -90,6 +92,12 @@ def build_post_debut_workload_paths(
             # It is not evidence for this workload population.
             continue
         outcome_tier = "fringe" if meaningful_seasons == 0 else "meaningful"
+        if meaningful_seasons == 0:
+            outcome_tier_v2 = "fringe"
+        elif regular_seasons >= 1 or established_support_seasons >= 2:
+            outcome_tier_v2 = "established"
+        else:
+            outcome_tier_v2 = "meaningful_only"
         if player_type == "hitter":
             role = "hitter"
         elif games <= 0:
@@ -110,7 +118,9 @@ def build_post_debut_workload_paths(
                 "active_seasons": active_seasons,
                 "meaningful_seasons": meaningful_seasons,
                 "regular_seasons": regular_seasons,
+                "established_support_seasons": established_support_seasons,
                 "outcome_tier": outcome_tier,
+                "outcome_tier_v2": outcome_tier_v2,
                 "career_role": role,
                 "adjusted_total_workload": total,
                 "shortened_2020_scale": shortened_2020_scale,
@@ -154,6 +164,20 @@ def summarize_workload_priors(paths: pl.DataFrame) -> pl.DataFrame:
         pl.concat([grouped, pooled], how="vertical")
         .sort("player_type", "outcome_tier", "career_role")
     )
+
+
+def summarize_three_tier_workload_priors(paths: pl.DataFrame) -> pl.DataFrame:
+    """Summarize fringe, meaningful-only, and established workload priors."""
+
+    required = {
+        "player_type", "outcome_tier_v2", "career_role", "adjusted_total_workload"
+    }
+    if missing := sorted(required - set(paths.columns)):
+        raise ValueError(f"paths missing columns: {missing}")
+    projected = paths.with_columns(
+        pl.col("outcome_tier_v2").alias("outcome_tier")
+    )
+    return summarize_workload_priors(projected)
 
 
 def workload_prior(
