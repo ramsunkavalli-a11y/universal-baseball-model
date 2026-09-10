@@ -149,6 +149,12 @@ It is not promoted. The path structure remains the preferred replacement, but it
 needs another completed post-2020 cohort or a predeclared pandemic treatment before
 the direct safeguard can be removed.
 
+The follow-up pooled-progression sensitivity does not fix that result. Post-arrival
+hazards reduced to age and elapsed time still lose in 2019 and win in 2021 for both
+groups. This argues against another complexity or regularization search on the same
+paths. Keep the direct safeguard until new cohort evidence or new timing/development
+inputs can distinguish the regimes.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

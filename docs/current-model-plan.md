@@ -126,6 +126,14 @@ or MLB evidence after the initial snapshot, not add a pandemic exception or resc
 tuning. See the [support inventory](prospect-career-transition-support-result.md)
 and [path test](prospect-ordered-transition-path-result.md).
 
+A state-support-driven pooled progression variant also fails to resolve the reversal.
+Keeping the full level/exposure model only for no-MLB arrival and reducing later
+advancement to age plus elapsed time produces effectively the same pattern: worse in
+2019, better in 2021, for both player types. Close model-complexity tuning on these
+cohorts. The next valid transition evidence is a new completed cohort or genuinely
+new timing/development evidence. See the
+[pooled result](prospect-pooled-progression-path-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

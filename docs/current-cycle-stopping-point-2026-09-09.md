@@ -35,6 +35,9 @@ Status: clean handoff; private preview works, publication remains blocked.
   44,208 pitcher annual rows. The ordered path wins both scores for both groups on
   the later 2021 cohort but loses both on the 2019 cohort whose horizon crosses 2020.
   Keep the architecture in research and the current direct safeguard in production.
+- Pooling post-arrival progression down to age and elapsed time leaves the same
+  cohort reversal. This closes further transition-complexity tuning on the disclosed
+  paths; current values remain unchanged.
 
 - The repo plan now includes lessons from comparable GitHub projection systems:
   component-specific reliability must earn its complexity, attrition belongs in the

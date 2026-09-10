@@ -1,0 +1,153 @@
+{
+  "current_2026_used": false,
+  "design": "full level/exposure design for NO_MLB transitions; only age and elapsed time for FRINGE_MLB and MEANINGFUL_MLB advancement",
+  "hitter": {
+    "confirmation": {
+      "direct": {
+        "multiclass_brier": 0.21161925556047526,
+        "multiclass_log_loss": 0.4543182604009705,
+        "players": 3251
+      },
+      "pooled_transition": {
+        "multiclass_brier": 0.20674928724737635,
+        "multiclass_log_loss": 0.4418047147693386,
+        "players": 3251
+      }
+    },
+    "confirmation_delta": {
+      "brier": -0.00486996831309891,
+      "log_loss": -0.012513545631631928
+    },
+    "development_delta": {
+      "brier": 0.0034797595695006678,
+      "log_loss": 0.015705887040245503
+    },
+    "development_grid": {
+      "direct": {
+        "0.03": {
+          "multiclass_brier": 0.20495326527545318,
+          "multiclass_log_loss": 0.46345368950625565,
+          "players": 3304
+        },
+        "0.1": {
+          "multiclass_brier": 0.21693184254215644,
+          "multiclass_log_loss": 1.7520399255036945,
+          "players": 3304
+        },
+        "0.3": {
+          "multiclass_brier": 0.22298858369057353,
+          "multiclass_log_loss": 2.5526486794826257,
+          "players": 3304
+        },
+        "1.0": {
+          "multiclass_brier": 0.22482282283937957,
+          "multiclass_log_loss": 2.6106753862888317,
+          "players": 3304
+        }
+      },
+      "pooled_transition": {
+        "0.03": {
+          "multiclass_brier": 0.20843302484495385,
+          "multiclass_log_loss": 0.47915957654650115,
+          "players": 3304
+        },
+        "0.1": {
+          "multiclass_brier": 0.21947514520964725,
+          "multiclass_log_loss": 0.6234371496278364,
+          "players": 3304
+        },
+        "0.3": {
+          "multiclass_brier": 0.22324123774792887,
+          "multiclass_log_loss": 0.7966669878114496,
+          "players": 3304
+        },
+        "1.0": {
+          "multiclass_brier": 0.2242558176692759,
+          "multiclass_log_loss": 0.9627767686033956,
+          "players": 3304
+        }
+      }
+    },
+    "selected_regularization": {
+      "direct": 0.03,
+      "pooled_transition": 0.03
+    }
+  },
+  "pitcher": {
+    "confirmation": {
+      "direct": {
+        "multiclass_brier": 0.20522235777768266,
+        "multiclass_log_loss": 0.4343341385815694,
+        "players": 3642
+      },
+      "pooled_transition": {
+        "multiclass_brier": 0.20381682241663518,
+        "multiclass_log_loss": 0.4300877726754792,
+        "players": 3642
+      }
+    },
+    "confirmation_delta": {
+      "brier": -0.001405535361047483,
+      "log_loss": -0.004246365906090177
+    },
+    "development_delta": {
+      "brier": 0.0031062448439280743,
+      "log_loss": 0.014507613862153379
+    },
+    "development_grid": {
+      "direct": {
+        "0.03": {
+          "multiclass_brier": 0.22107584781852507,
+          "multiclass_log_loss": 0.47917611594353676,
+          "players": 3762
+        },
+        "0.1": {
+          "multiclass_brier": 0.2300974047593567,
+          "multiclass_log_loss": 0.5366650031239082,
+          "players": 3762
+        },
+        "0.3": {
+          "multiclass_brier": 0.24027043321041172,
+          "multiclass_log_loss": 0.764637228255007,
+          "players": 3762
+        },
+        "1.0": {
+          "multiclass_brier": 0.2452184813842451,
+          "multiclass_log_loss": 2.2538674705983355,
+          "players": 3762
+        }
+      },
+      "pooled_transition": {
+        "0.03": {
+          "multiclass_brier": 0.22418209266245315,
+          "multiclass_log_loss": 0.49368372980569014,
+          "players": 3762
+        },
+        "0.1": {
+          "multiclass_brier": 0.23691893809080075,
+          "multiclass_log_loss": 0.596469614357965,
+          "players": 3762
+        },
+        "0.3": {
+          "multiclass_brier": 0.24349015067395596,
+          "multiclass_log_loss": 0.742303763367079,
+          "players": 3762
+        },
+        "1.0": {
+          "multiclass_brier": 0.2458303896286963,
+          "multiclass_log_loss": 0.9192226879698749,
+          "players": 3762
+        }
+      }
+    },
+    "selected_regularization": {
+      "direct": 0.03,
+      "pooled_transition": 0.03
+    }
+  },
+  "production_changed": false,
+  "promotion_allowed": false,
+  "promotion_boundary": "The rationale is predeclared from support counts, but the 2021 comparison was already disclosed by the prior full-transition audit.",
+  "report_schema_version": "0.1",
+  "status": "pooled_post_arrival_progression_test_complete"
+}

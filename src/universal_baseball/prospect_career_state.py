@@ -59,6 +59,7 @@ class TransitionHazardFit:
     player_type: str
     feature_set: str
     regularization_c: float
+    progression_mode: str
     models: dict[str, LogisticRegression]
 
 
@@ -182,11 +183,13 @@ def build_career_transition_rows(
     return pl.concat(rows, how="vertical").sort(["player_id", "elapsed_year"])
 
 
-def _transition_design(frame: pl.DataFrame, *, feature_set: str) -> np.ndarray:
+def _transition_design(
+    frame: pl.DataFrame, *, feature_set: str, origin_state: str,
+    progression_mode: str,
+) -> np.ndarray:
     aged = frame.with_columns(
         (pl.col("age_years") + pl.col("elapsed_year") - 1).alias("age_years")
     )
-    base = arrival_design(aged, feature_set=feature_set)
     elapsed = aged.get_column("elapsed_year").to_numpy().astype(float)
     time = np.column_stack([
         (elapsed - 1.0) / 3.0,
@@ -194,18 +197,25 @@ def _transition_design(frame: pl.DataFrame, *, feature_set: str) -> np.ndarray:
         elapsed == 3,
         elapsed >= 4,
     ]).astype(float)
+    if progression_mode == "pooled" and origin_state != "NO_MLB":
+        age = ((aged.get_column("age_years").to_numpy() - 23.0) / 5.0)[:, None]
+        return np.column_stack([age, time])
+    base = arrival_design(aged, feature_set=feature_set)
     return np.column_stack([base, time])
 
 
 def fit_transition_hazard_model(
     frame: pl.DataFrame, *, player_type: str,
     feature_set: str = "level_exposure", regularization_c: float = 1.0,
+    progression_mode: str = "full",
 ) -> TransitionHazardFit:
     """Fit a separate forward-only next-state model for each nonterminal state."""
 
     required = {"from_state", "to_state", "elapsed_year", "age_years"}
     if missing := sorted(required - set(frame.columns)):
         raise ValueError(f"transition hazard rows missing fields: {missing}")
+    if progression_mode not in {"full", "pooled"}:
+        raise ValueError("progression mode must be full or pooled")
     models = {}
     for origin in CAREER_STATES[:-1]:
         cell = frame.filter(pl.col("from_state") == origin)
@@ -219,11 +229,14 @@ def fit_transition_hazard_model(
         models[origin] = LogisticRegression(
             C=regularization_c, max_iter=2000
         ).fit(
-            _transition_design(cell, feature_set=feature_set),
+            _transition_design(
+                cell, feature_set=feature_set, origin_state=origin,
+                progression_mode=progression_mode,
+            ),
             cell.get_column("to_state").to_numpy(),
         )
     return TransitionHazardFit(
-        player_type, feature_set, regularization_c, models
+        player_type, feature_set, regularization_c, progression_mode, models
     )
 
 
@@ -238,7 +251,6 @@ def predict_transition_path(
     probabilities[:, 0] = 1.0
     for elapsed_year in range(1, horizon + 1):
         scoring = frame.with_columns(pl.lit(elapsed_year).alias("elapsed_year"))
-        design = _transition_design(scoring, feature_set=fit.feature_set)
         updated = np.zeros_like(probabilities)
         for origin_index, origin in enumerate(CAREER_STATES):
             mass = probabilities[:, origin_index]
@@ -246,6 +258,10 @@ def predict_transition_path(
                 updated[:, origin_index] += mass
                 continue
             model = fit.models[origin]
+            design = _transition_design(
+                scoring, feature_set=fit.feature_set, origin_state=origin,
+                progression_mode=fit.progression_mode,
+            )
             conditional = model.predict_proba(design)
             for class_index, destination in enumerate(model.classes_):
                 destination_index = CAREER_STATE_ORDER[str(destination)]
