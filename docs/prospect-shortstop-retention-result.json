@@ -1,0 +1,504 @@
+{
+  "as_of_date": "2026-09-10",
+  "boundaries": {
+    "future_label_overlap_used": false,
+    "named_player_adjustment_used": false,
+    "non_arrivals_included": false,
+    "organization_or_depth_used": false,
+    "outside_fv_used": false
+  },
+  "chronology": {
+    "destination_horizon_seasons": 1,
+    "development_evaluate_origin": 2023,
+    "development_train_origins": [
+      2021,
+      2022
+    ],
+    "outer_evaluate_origin": 2024,
+    "outer_train_origins": [
+      2021,
+      2022,
+      2023
+    ]
+  },
+  "cohort_players": {
+    "2021": 312,
+    "2022": 371,
+    "2023": 414,
+    "2024": 455
+  },
+  "contract": "docs/prospect-shortstop-retention-plan.md",
+  "decision": {
+    "private_position_sensitivity_authorized": true,
+    "published_value_change_authorized": false
+  },
+  "development": [
+    {
+      "alpha": 1.0,
+      "baseline": {
+        "bias": 0.19014589062540616,
+        "mae": 3.7322611572096003,
+        "rmse": 5.001616378525569
+      },
+      "candidate": {
+        "bias": 0.5542862344587934,
+        "mae": 3.694082758565834,
+        "rmse": 4.852347854842353
+      },
+      "feature_set": "workload",
+      "features": [
+        "baseline_runs",
+        "age",
+        "level_score",
+        "log_exposure"
+      ],
+      "passed": true,
+      "players": 414,
+      "shortstop_baseline": {
+        "bias": 1.5191214300743514,
+        "mae": 3.1378143799072626,
+        "rmse": 4.275616672247799
+      },
+      "shortstop_candidate": {
+        "bias": 0.8230328089618635,
+        "mae": 2.7579397151563696,
+        "rmse": 3.7890961888178882
+      },
+      "shortstop_origin_players": 69
+    },
+    {
+      "alpha": 10.0,
+      "baseline": {
+        "bias": 0.19014589062540616,
+        "mae": 3.7322611572096003,
+        "rmse": 5.001616378525569
+      },
+      "candidate": {
+        "bias": 0.5547180789381858,
+        "mae": 3.704853449865436,
+        "rmse": 4.862096490719742
+      },
+      "feature_set": "workload",
+      "features": [
+        "baseline_runs",
+        "age",
+        "level_score",
+        "log_exposure"
+      ],
+      "passed": true,
+      "players": 414,
+      "shortstop_baseline": {
+        "bias": 1.5191214300743514,
+        "mae": 3.1378143799072626,
+        "rmse": 4.275616672247799
+      },
+      "shortstop_candidate": {
+        "bias": 0.7658946370893346,
+        "mae": 2.7412201948941424,
+        "rmse": 3.7730484193740956
+      },
+      "shortstop_origin_players": 69
+    },
+    {
+      "alpha": 100.0,
+      "baseline": {
+        "bias": 0.19014589062540616,
+        "mae": 3.7322611572096003,
+        "rmse": 5.001616378525569
+      },
+      "candidate": {
+        "bias": 0.5591913041785592,
+        "mae": 3.856860095368415,
+        "rmse": 4.990399161360997
+      },
+      "feature_set": "workload",
+      "features": [
+        "baseline_runs",
+        "age",
+        "level_score",
+        "log_exposure"
+      ],
+      "passed": false,
+      "players": 414,
+      "shortstop_baseline": {
+        "bias": 1.5191214300743514,
+        "mae": 3.1378143799072626,
+        "rmse": 4.275616672247799
+      },
+      "shortstop_candidate": {
+        "bias": 0.2687900214497197,
+        "mae": 2.665691685883261,
+        "rmse": 3.6767351839164553
+      },
+      "shortstop_origin_players": 69
+    },
+    {
+      "alpha": 1.0,
+      "baseline": {
+        "bias": 0.19014589062540616,
+        "mae": 3.7322611572096003,
+        "rmse": 5.001616378525569
+      },
+      "candidate": {
+        "bias": 0.4719943270667387,
+        "mae": 3.4301904302460424,
+        "rmse": 4.510196228771356
+      },
+      "feature_set": "role_detail",
+      "features": [
+        "baseline_runs",
+        "age",
+        "level_score",
+        "log_exposure",
+        "position_count",
+        "share_C",
+        "share_1B",
+        "share_2B",
+        "share_3B",
+        "share_SS",
+        "share_LF",
+        "share_CF",
+        "share_RF",
+        "share_DH"
+      ],
+      "passed": true,
+      "players": 414,
+      "shortstop_baseline": {
+        "bias": 1.5191214300743514,
+        "mae": 3.1378143799072626,
+        "rmse": 4.275616672247799
+      },
+      "shortstop_candidate": {
+        "bias": 0.39278675666314256,
+        "mae": 2.497776821905286,
+        "rmse": 3.4453953824524444
+      },
+      "shortstop_origin_players": 69
+    },
+    {
+      "alpha": 10.0,
+      "baseline": {
+        "bias": 0.19014589062540616,
+        "mae": 3.7322611572096003,
+        "rmse": 5.001616378525569
+      },
+      "candidate": {
+        "bias": 0.47415844823566466,
+        "mae": 3.435049030177744,
+        "rmse": 4.513522546463296
+      },
+      "feature_set": "role_detail",
+      "features": [
+        "baseline_runs",
+        "age",
+        "level_score",
+        "log_exposure",
+        "position_count",
+        "share_C",
+        "share_1B",
+        "share_2B",
+        "share_3B",
+        "share_SS",
+        "share_LF",
+        "share_CF",
+        "share_RF",
+        "share_DH"
+      ],
+      "passed": true,
+      "players": 414,
+      "shortstop_baseline": {
+        "bias": 1.5191214300743514,
+        "mae": 3.1378143799072626,
+        "rmse": 4.275616672247799
+      },
+      "shortstop_candidate": {
+        "bias": 0.3714609930434155,
+        "mae": 2.4959986768687465,
+        "rmse": 3.4433495737419824
+      },
+      "shortstop_origin_players": 69
+    },
+    {
+      "alpha": 100.0,
+      "baseline": {
+        "bias": 0.19014589062540616,
+        "mae": 3.7322611572096003,
+        "rmse": 5.001616378525569
+      },
+      "candidate": {
+        "bias": 0.49049683751791423,
+        "mae": 3.494440228618789,
+        "rmse": 4.558596199055166
+      },
+      "feature_set": "role_detail",
+      "features": [
+        "baseline_runs",
+        "age",
+        "level_score",
+        "log_exposure",
+        "position_count",
+        "share_C",
+        "share_1B",
+        "share_2B",
+        "share_3B",
+        "share_SS",
+        "share_LF",
+        "share_CF",
+        "share_RF",
+        "share_DH"
+      ],
+      "passed": true,
+      "players": 414,
+      "shortstop_baseline": {
+        "bias": 1.5191214300743514,
+        "mae": 3.1378143799072626,
+        "rmse": 4.275616672247799
+      },
+      "shortstop_candidate": {
+        "bias": 0.17294688929449153,
+        "mae": 2.4858302984917766,
+        "rmse": 3.4302292978402953
+      },
+      "shortstop_origin_players": 69
+    }
+  ],
+  "outer": {
+    "baseline": {
+      "bias": 0.01933234596892017,
+      "mae": 4.019837073802945,
+      "rmse": 5.423795104961961
+    },
+    "candidate": {
+      "bias": 0.2637991782106625,
+      "mae": 3.568329983758418,
+      "rmse": 4.934538312011517
+    },
+    "players": 455,
+    "shortstop_baseline": {
+      "bias": 1.7530445354190096,
+      "mae": 3.1037966719402457,
+      "rmse": 4.200262675321694
+    },
+    "shortstop_candidate": {
+      "bias": 0.45122084479481583,
+      "mae": 2.3920577107715637,
+      "rmse": 3.3073453326499496
+    },
+    "shortstop_origin_players": 69
+  },
+  "outer_bootstrap": {
+    "all": {
+      "mae": {
+        "ci_high": -0.22471694319276736,
+        "ci_low": -0.6683506484064649,
+        "difference": -0.44992290704759624,
+        "probability_candidate_better": 1.0
+      },
+      "players": 455,
+      "rmse": {
+        "ci_high": -0.1364214471312774,
+        "ci_low": -0.8331819586225491,
+        "difference": -0.49009387817712513,
+        "probability_candidate_better": 0.997
+      }
+    },
+    "shortstop_origin": {
+      "mae": {
+        "ci_high": -0.33471135620402326,
+        "ci_low": -1.0679795884407726,
+        "difference": -0.7097434400411076,
+        "probability_candidate_better": 0.9995
+      },
+      "players": 69,
+      "rmse": {
+        "ci_high": -0.6130931842380997,
+        "ci_low": -1.1716971324713332,
+        "difference": -0.8994902594826194,
+        "probability_candidate_better": 1.0
+      }
+    }
+  },
+  "outer_by_dominant_position": [
+    {
+      "baseline": {
+        "bias": -0.051115244868178325,
+        "mae": 2.4124214523996335,
+        "rmse": 3.203144502332473
+      },
+      "candidate": {
+        "bias": 1.0253322809683698,
+        "mae": 2.834454833748163,
+        "rmse": 3.7496206328805206
+      },
+      "dominant_position": "1B",
+      "players": 37
+    },
+    {
+      "baseline": {
+        "bias": 0.5162365933408906,
+        "mae": 3.502900223043664,
+        "rmse": 4.458948096612435
+      },
+      "candidate": {
+        "bias": -0.15327630646395163,
+        "mae": 3.4302243855532244,
+        "rmse": 4.206148587033555
+      },
+      "dominant_position": "2B",
+      "players": 51
+    },
+    {
+      "baseline": {
+        "bias": 1.0656216103180103,
+        "mae": 3.5176204233539923,
+        "rmse": 4.708158686181922
+      },
+      "candidate": {
+        "bias": -0.3648533432784121,
+        "mae": 3.6399323851028247,
+        "rmse": 4.41210009446254
+      },
+      "dominant_position": "3B",
+      "players": 54
+    },
+    {
+      "baseline": {
+        "bias": -2.416283176511904,
+        "mae": 6.482412747145017,
+        "rmse": 8.277183122296467
+      },
+      "candidate": {
+        "bias": 0.35054680787174847,
+        "mae": 5.5942882760917465,
+        "rmse": 7.983475097076074
+      },
+      "dominant_position": "C",
+      "players": 76
+    },
+    {
+      "baseline": {
+        "bias": 1.682806163974136,
+        "mae": 4.29453936120487,
+        "rmse": 5.14227089579926
+      },
+      "candidate": {
+        "bias": 0.44996999633916224,
+        "mae": 3.5763345785480687,
+        "rmse": 4.2459890489770125
+      },
+      "dominant_position": "CF",
+      "players": 82
+    },
+    {
+      "baseline": {
+        "bias": -4.983866140350942,
+        "mae": 5.9029847850892185,
+        "rmse": 7.6215432027684065
+      },
+      "candidate": {
+        "bias": 2.130324839199514,
+        "mae": 4.400691748222906,
+        "rmse": 5.2674038981259415
+      },
+      "dominant_position": "DH",
+      "players": 20
+    },
+    {
+      "baseline": {
+        "bias": -0.4037284842476952,
+        "mae": 3.1204883546594626,
+        "rmse": 3.8653355150823843
+      },
+      "candidate": {
+        "bias": -0.24566728245032446,
+        "mae": 2.776557846388952,
+        "rmse": 3.5232187274645903
+      },
+      "dominant_position": "LF",
+      "players": 29
+    },
+    {
+      "baseline": {
+        "bias": -1.0030097261151583,
+        "mae": 2.8009577257460725,
+        "rmse": 4.049670054401165
+      },
+      "candidate": {
+        "bias": -0.5552696520302649,
+        "mae": 2.5731400628578744,
+        "rmse": 4.072027710846695
+      },
+      "dominant_position": "RF",
+      "players": 37
+    },
+    {
+      "baseline": {
+        "bias": 1.7530445354190096,
+        "mae": 3.1037966719402457,
+        "rmse": 4.200262675321694
+      },
+      "candidate": {
+        "bias": 0.45122084479481583,
+        "mae": 2.3920577107715637,
+        "rmse": 3.3073453326499496
+      },
+      "dominant_position": "SS",
+      "players": 69
+    }
+  ],
+  "report_schema_version": "0.1",
+  "selected": {
+    "alpha": 1.0,
+    "development_candidate_passed": true,
+    "feature_set": "role_detail",
+    "features": [
+      "baseline_runs",
+      "age",
+      "level_score",
+      "log_exposure",
+      "position_count",
+      "share_C",
+      "share_1B",
+      "share_2B",
+      "share_3B",
+      "share_SS",
+      "share_LF",
+      "share_CF",
+      "share_RF",
+      "share_DH"
+    ],
+    "standardized_coefficients": {
+      "age": -0.3630043120122175,
+      "baseline_runs": 2.413967144668671,
+      "level_score": -0.024435747179408943,
+      "log_exposure": -0.4519730711583213,
+      "position_count": 0.2462932540554025,
+      "share_1B": -1.629784059758247,
+      "share_2B": -0.22516962612481436,
+      "share_3B": -0.4627575549942911,
+      "share_C": 2.3995762080530647,
+      "share_CF": -0.46341235823524385,
+      "share_DH": 0.20398878119315733,
+      "share_LF": -1.1191343104554385,
+      "share_RF": -1.0352569009113899,
+      "share_SS": 0.7480490214067869
+    }
+  },
+  "shortstop_retention_diagnostic": {
+    "baseline": {
+      "brier": 0.2384001495624131,
+      "log_loss": 0.669873342368642,
+      "mean_probability": 0.448087431693989,
+      "observed_rate": 0.36231884057971014
+    },
+    "candidate": {
+      "brier": 0.17930502106281823,
+      "log_loss": 0.5301226593254148,
+      "mean_probability": 0.3950207748374234,
+      "observed_rate": 0.36231884057971014
+    },
+    "evaluation_players": 69,
+    "training_players": 183
+  },
+  "status": "prospect_shortstop_retention_outer_test_complete"
+}

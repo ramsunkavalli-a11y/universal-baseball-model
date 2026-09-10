@@ -453,3 +453,18 @@ correctly pending.
 Fully specified mutual options use the conservative normal-expiration outcome.
 Post-2026 minimum salaries and unchanged service rules are clearly marked as a 3%
 planning scenario until a successor CBA supplies facts.
+
+### Immediate prospect-ranking roadmap (2026-09-10)
+
+1. Keep the chronology-safe player-level position model as a private sensitivity;
+   resolve its 1B/3B subgroup regressions before promotion.
+2. Rebuild the top-50 casebook with that sensitivity held fixed, so position no longer
+   masks the remaining causes.
+3. For every model-only hitter, separate arrival chance, expected workload, translated
+   batting, running, defense, and position WAR. Flag the first component that makes
+   the ranking implausible under historical outcomes.
+4. Test an entry-path-safe hitter arrival challenger using official draft data for
+   Rule 4 players and a separate neutral path for international players. Never use
+   draft status as a WAR bonus or FV floor.
+5. Keep the pitcher translation repair separate. Pitcher scarcity remains a P0 and
+   cannot be solved by lowering hitters until the list shape looks familiar.

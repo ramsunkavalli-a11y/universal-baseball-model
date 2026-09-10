@@ -99,15 +99,17 @@ baseball logic, but the audit must determine whether proximity, positional runs 
 career workload together crowd out younger high-upside players more than historical
 outcomes support. The test must use historical cohorts, not public rank agreement.
 
-### Open P0: premium-position persistence
+### Tested P0: premium-position persistence
 
 The model top 50 contains 23 shortstops and seven catchers, versus 13 shortstops and
-four catchers among the 42 still-eligible public players. This is not evidence for a
-quota or a blanket catcher/shortstop penalty. It does show that 11 model-only top-50
-players are elevated mainly because standard premium-position runs offset limited
-offense. The prior coarse position-transition value candidate failed its proper
-historical score, so the next test must estimate player-level position persistence or
-use stronger defensive evidence. Until then, these rows remain review items.
+four catchers among the 42 still-eligible public players. This was not handled with a
+quota or blanket penalty. A chronology-safe player-level model using age, level,
+fielding workload, and exact position shares improved the untouched 2024-to-2025
+overall and shortstop errors. Its private current-player sensitivity removes several
+position-driven names and raises the FanGraphs overlap from 10 to 12, but it worsens
+some 1B/3B subgroup errors and leaves the top 50 at 48 hitters and two pitchers.
+Position persistence is now a passing research component, not yet a production
+change. Arrival/workload versus demonstrated skill becomes the leading hitter issue.
 
 ## Product files
 

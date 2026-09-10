@@ -1,6 +1,11 @@
 # Prospect minor-to-MLB position-transition result
 
-Status: passed for a private position-probability sensitivity.
+Status: superseded as a promotion test; retained as a descriptive transition table.
+
+Chronology correction (2026-09-10): this audit's two-season destination labels
+overlap later origin cutoffs. It therefore cannot authorize fitted player-value work.
+The replacement next-season audit in `docs/prospect-shortstop-retention-result.md`
+uses non-overlapping, time-ordered labels and is the controlling result.
 
 ## Outer result
 
@@ -34,10 +39,9 @@ position probabilities, not arrival probabilities and not talent bonuses.
 
 ## Decision
 
-Advance one private sensitivity that mixes future workload and positional adjustment
-over these probabilities. Keep the current-position version beside it. The next gate
-must show how much player WAR and FV actually move and must fail closed if probability
-mass, league positional balance, or named-player arithmetic does not tie out.
+Do not advance this coarse transition table into player value. Its descriptive
+position frequencies remain useful, but only the chronology-safe player-level result
+may authorize a private sensitivity.
 
 This result does not authorize published values, catcher quotas, organization depth,
 or outside FV inputs. It also does not model whether a player reaches MLB; the nested

@@ -1210,6 +1210,21 @@ contact shape but not batter side, so they cannot support it. The required 23 MB
 matchup sidecar and its source archives are absent; rebuilding it requires reacquiring
 the streamed multi-GB PBP inputs. Do not infer or impute platoon skill from the compact
 contact totals.
+
+### Prospect player-level position checkpoint (2026-09-10)
+
+- The older two-season position-transition audit was found to overlap later forecast
+  cutoffs. It remains descriptive and no longer authorizes model promotion.
+- A replacement next-season test uses age, level, fielding workload, and exact
+  position shares. On the untouched 2024-to-2025 group it improved overall MAE from
+  4.020 to 3.568 positional runs and shortstop MAE from 3.104 to 2.392.
+- The private current-player sensitivity moves the top-50 external overlap from 10 to
+  12 and the player-type split from 49/1 to 48/2 hitters/pitchers. Several suspicious
+  shortstop cases leave the top 50 for traceable usage reasons.
+- Do not promote yet. The candidate worsens 1B MAE/RMSE and 3B MAE, and relative
+  movement still admits several unranked high-opportunity hitters. The next P0 is a
+  player-level arrival/workload-versus-skill audit with position held at the passing
+  sensitivity.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.
