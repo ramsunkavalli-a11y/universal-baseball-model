@@ -2,6 +2,17 @@
 
 Updated 2026-09-10. This is the current start-here document.
 
+## Immediate P0: enforce true prospect eligibility
+
+The production arrival training builder has the same limited-window eligibility issue
+found by the broad-history audits. Its 2018 cohort contains 91 former MLB hitters and
+137 former MLB pitchers, including 40 rows incorrectly labeled as later arrivals. The
+[correction plan](prospect-arrival-official-debut-correction-plan.md) is frozen before
+re-fitting: official debut dates become a required cohort input, prior debut is an
+eligibility exclusion only, and all existing model choices remain fixed. Until this is
+re-materialized and the explorer passes, current prospect values retain a known P0
+training-population defect.
+
 ## Reusable search guardrails
 
 The broad feature-search rules are now enforced by a reusable
