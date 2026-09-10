@@ -63,6 +63,12 @@ Pitcher prospect values remain compressed (one 50+), and the top hitter ordering
 needs model-based error review. This is private and provisional; MLB contract values
 and published outputs are unchanged.
 
+The [2025 pitcher-role audit](pitcher-role-2025-audit-result.md) rules out broad role
+suppression as the main pitcher-prospect problem. Predicted starter share is 30.4%
+versus 31.0% observed across 801 active pitchers and 27.5% versus 27.0% among 137 with
+no prior MLB work. Keep the role probabilities; audit translated pitcher WAR rates
+next.
+
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
 arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top
