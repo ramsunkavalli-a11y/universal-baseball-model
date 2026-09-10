@@ -1225,6 +1225,13 @@ contact totals.
   movement still admits several unranked high-opportunity hitters. The next P0 is a
   player-level arrival/workload-versus-skill audit with position held at the passing
   sensitivity.
+- That casebook is now complete. Of 68 remaining disagreement rows, 28 are model-only
+  hitters with below-average translated batting whose arrival and workload still
+  produce top-50 value; 12 are pitcher-translation cases. The earlier linked hitter
+  replay independently found the current batting-plus-replacement mean high (0.211
+  predicted versus 0.144 observed), while its zero-leaning challenger missed the
+  positive tail. The next test is therefore a chronology-safe joint expected-WAR
+  calibration, not another arbitrary arrival haircut.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

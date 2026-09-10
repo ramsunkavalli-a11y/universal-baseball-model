@@ -458,11 +458,13 @@ planning scenario until a successor CBA supplies facts.
 
 1. Keep the chronology-safe player-level position model as a private sensitivity;
    resolve its 1B/3B subgroup regressions before promotion.
-2. Rebuild the top-50 casebook with that sensitivity held fixed, so position no longer
-   masks the remaining causes.
-3. For every model-only hitter, separate arrival chance, expected workload, translated
-   batting, running, defense, and position WAR. Flag the first component that makes
-   the ranking implausible under historical outcomes.
+2. Completed: the rebuilt casebook holds position fixed and separates arrival,
+   workload, translated batting, running, defense, and position for all 68 remaining
+   disagreements.
+3. P0: run a chronology-safe next-season expected batting-plus-replacement WAR test
+   with non-arrivals retained. The 28 model-only hitters with below-average batting
+   and high total opportunity are the required subgroup; preserve the positive MLB
+   tail rather than solving average error by predicting zero.
 4. Test an entry-path-safe hitter arrival challenger using official draft data for
    Rule 4 players and a separate neutral path for international players. Never use
    draft status as a WAR bonus or FV floor.
