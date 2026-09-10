@@ -36,8 +36,15 @@ crosses zero. Established pitchers are better in the later cohort, but using the
 earlier cohort's tier relationship makes the later score significantly worse; the
 relationship changed direction. Neither candidate is promoted. The current aggregate
 inputs therefore do not reliably separate quality among successful pitcher prospects.
-The next evidence should be richer, cutoff-safe pitch/process or batted-ball data, or
-broader mature cohorts—not another bonus, FV threshold change, or same-period rescue.
+The first richer all-level batted-ball test is also complete. A streamed, hash-recorded
+build reduced 84 public 2021-2023 PBP assets to pitcher contact summaries without
+retaining the roughly 7.05 GB raw copy. A heavily regressed ground-ball rate helped
+the 2022-to-2023 outer test, but reversed direction and did not improve the untouched
+2023-to-2024 confirmation. Popup and pulled-air/pulled-ground increments also failed.
+See the [contact increment audit](pitcher-contact-increment-result.md). None enters the
+model. The next evidence should be genuinely new cutoff-safe pitch/process or
+contact-quality data, or broader mature cohorts—not another bonus, FV threshold
+change, or same-period rescue.
 
 The earlier September 9 stopping point remains useful historical context in
 [the prior handoff](current-cycle-stopping-point-2026-09-09.md).
@@ -151,13 +158,14 @@ scores under 800-4,000 BF regression. No 2025 challenger score was calculated. K
 the simpler five-part pitcher profile; extra outcome detail has not earned production
 use, and uncertified pitch-sequence fields remain excluded.
 
-The next [pitcher contact testing queue](pitcher-next-contact-testing-queue.md) starts
+The [pitcher contact testing queue](pitcher-next-contact-testing-queue.md) starts
 with a broad review of reproducible pitcher-projection methods, using Tango as the
 primary framework and other public work from the past two decades as sources of
 testable hypotheses. The first [pooled non-HR XBH test](pitcher-pooled-xbh-result.md)
 is now rejected: all 800-4,000 BF candidates worsened both 2024 development proper
-scores, so 2025 was not calculated. After that, certified event-level tests may add ground versus air, IFFB within air,
-pulled air, and pulled ground one at a time. A simpler intervening test uses frozen
+scores, so 2025 was not calculated. The event-level ground/air, popup, pulled-air and
+pulled-ground sequence has now also been tested and rejected after a favorable first
+outer period reversed in the untouched confirmation. A separate future test may use frozen
 lineup bands 1-6 versus 7-9 and strongly regressed same/opposite-side results to test
 future starter potential.
 Batter quality, batter side, pitcher hand, opponent mix, park, level and season are
@@ -734,7 +742,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,427 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,429 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

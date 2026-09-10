@@ -1,6 +1,21 @@
 # Pitcher event-context readiness
 
-Status: source review complete; no pitcher candidate scored.
+Status: compact contact source built and first candidate scored; candidate rejected.
+
+The reproducible streaming path is now
+`scripts/materialize_pitcher_contact_panel.py`. It downloaded and hashed 84 public
+2021-2023 PBP assets one at a time, retained only compact pitcher contact summaries,
+and deleted each raw asset after processing. Exact asset IDs, sizes, hashes and row
+counts are frozen in `pitcher-contact-increment-result.json`; the raw download totaled
+about 7.05 GB. This avoids requiring that much free disk for a permanent copy.
+
+The first [contact increment audit](pitcher-contact-increment-result.md) used 2021 to
+select among a fixed ground/popup/pull sequence, 2022-to-2023 as the outer test and
+2023-to-2024 as untouched confirmation. The development-selected ground-rate signal
+helped the first later period but did not repeat in confirmation, including after
+season/level outcome adjustment and pre-MLB restriction. It is rejected. This does
+not rule out a later opponent-, park- and handedness-adjusted contact residual; those
+controls would be a new candidate and no longer have an untouched 2022-2024 test.
 
 The earlier matchup-source gate already established 3,691,876 exactly reconciled
 terminal PAs across MLB and every affiliated level in 2021-2024. Those records retain

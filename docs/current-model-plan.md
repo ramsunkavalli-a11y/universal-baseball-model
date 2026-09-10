@@ -96,6 +96,13 @@ reverses across periods. The next input class must add genuinely new cutoff-safe
 pitch/process or batted-ball evidence, or a broader mature cohort; do not rescue the
 same features through more tuning.
 
+The first all-level batted-ball candidate is now rejected too. Ground-ball rate,
+popup rate, pulled-air rate and pulled-ground rate were tested in a fixed order with
+exposure shrinkage. Ground-ball rate improved 2022-to-2023 error, then failed to
+improve 2023-to-2024 error under the unchanged 2021 fit. The later reversal controls;
+no pitcher projection or value changed. Exact PBP asset hashes and results are in the
+[pitcher contact increment audit](pitcher-contact-increment-result.md).
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

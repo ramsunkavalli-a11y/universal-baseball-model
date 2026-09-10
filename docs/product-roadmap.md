@@ -141,6 +141,12 @@ left-handed subgroup worsens, and its current top-end effect is disproportionate
 non-vintage physical measurements out of selected historical models until their timing
 is defensible.
 
+The first universal pitcher batted-ball ablation also failed confirmation. A
+development-selected, strongly regressed ground-ball rate improved one later season
+but did not improve the next untouched season; popup and pull-direction additions did not
+rescue it. This is exactly the unstable descriptive relationship the time-separated
+gate is intended to reject. No production values changed.
+
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.
 10. Improve defense, two-way-player handling, interval calibration, nonlinear buyer

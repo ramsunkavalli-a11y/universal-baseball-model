@@ -1,0 +1,1189 @@
+{
+  "confirmation": "2023 inputs predict 2024; model remains fit on 2021 only",
+  "confirmation_players": 1656,
+  "development": "2021 inputs predict 2022",
+  "development_players": 1632,
+  "eligibility": "pre-MLB input; same-player next-year BF >=100; prior BF >=100; known trajectory >=50",
+  "model_effect": "research signal only; production requires an incremental test against the incumbent translated pitcher projection",
+  "outer": "2022 inputs predict 2023",
+  "outer_players": 1688,
+  "promoted": false,
+  "report_schema_version": 1,
+  "results": {
+    "baseline": {
+      "confirmation": {
+        "bias": 0.009183598125608915,
+        "mae": 0.16466799432649687,
+        "players": 1656,
+        "rmse": 0.20983910414865684
+      },
+      "development": {
+        "alpha": 100.0,
+        "cv_rmse": 0.22256293546776357,
+        "name": "baseline"
+      },
+      "outer": {
+        "bias": 0.006391534988977027,
+        "mae": 0.1769026686620628,
+        "players": 1688,
+        "rmse": 0.22528967293290889
+      }
+    },
+    "ground": {
+      "confirmation": {
+        "bias": 0.012259012927899163,
+        "mae": 0.16547648618773347,
+        "players": 1656,
+        "rmse": 0.21057367752774964
+      },
+      "development": {
+        "alpha": 100.0,
+        "cv_rmse": 0.22132084205471478,
+        "name": "ground"
+      },
+      "outer": {
+        "bias": 0.007523140758324088,
+        "mae": 0.17609220664197361,
+        "players": 1688,
+        "rmse": 0.22415153027506635
+      },
+      "paired_confirmation": {
+        "candidate_minus_baseline_mse": 0.0003088240376498458,
+        "p025": -9.892487159339676e-05,
+        "p975": 0.0007317913919493782
+      },
+      "paired_outer": {
+        "candidate_minus_baseline_mse": -0.0005115282055630602,
+        "p025": -0.0009715930061222735,
+        "p975": -6.303771754541382e-05
+      }
+    },
+    "popup": {
+      "confirmation": {
+        "bias": 0.014894757362992754,
+        "mae": 0.16574709196153922,
+        "players": 1656,
+        "rmse": 0.2106848584234766
+      },
+      "development": {
+        "alpha": 100.0,
+        "cv_rmse": 0.22148968338534394,
+        "name": "popup"
+      },
+      "outer": {
+        "bias": 0.008142100117152511,
+        "mae": 0.1763611109523988,
+        "players": 1688,
+        "rmse": 0.2243943642284131
+      },
+      "paired_confirmation": {
+        "candidate_minus_baseline_mse": 0.00035565993900953157,
+        "p025": -7.896582689910634e-05,
+        "p975": 0.0007915547663215762
+      },
+      "paired_outer": {
+        "candidate_minus_baseline_mse": -0.0004026060327433445,
+        "p025": -0.0008772259280548308,
+        "p975": 5.7088606451836455e-05
+      }
+    },
+    "pulled_air": {
+      "confirmation": {
+        "bias": 0.009256972165280198,
+        "mae": 0.16549638694043212,
+        "players": 1656,
+        "rmse": 0.21042059193902093
+      },
+      "development": {
+        "alpha": 100.0,
+        "cv_rmse": 0.22168921228156538,
+        "name": "pulled_air"
+      },
+      "outer": {
+        "bias": 0.0036236644427411926,
+        "mae": 0.1757645678101882,
+        "players": 1688,
+        "rmse": 0.22409344962225836
+      },
+      "paired_confirmation": {
+        "candidate_minus_baseline_mse": 0.00024437588205711535,
+        "p025": -0.00019063409450900567,
+        "p975": 0.0007009107179592154
+      },
+      "paired_outer": {
+        "candidate_minus_baseline_mse": -0.0005375625666134086,
+        "p025": -0.0010334057045377715,
+        "p975": -6.3463710736435e-05
+      }
+    },
+    "pulled_ground": {
+      "confirmation": {
+        "bias": 0.008460881977390323,
+        "mae": 0.16536152131852241,
+        "players": 1656,
+        "rmse": 0.21013478068101546
+      },
+      "development": {
+        "alpha": 100.0,
+        "cv_rmse": 0.2216740813629271,
+        "name": "pulled_ground"
+      },
+      "outer": {
+        "bias": 0.000986986770512818,
+        "mae": 0.17540582470796612,
+        "players": 1688,
+        "rmse": 0.22378726139329802
+      },
+      "paired_confirmation": {
+        "candidate_minus_baseline_mse": 0.00012417642194762434,
+        "p025": -0.00032416042681933274,
+        "p975": 0.0005983006229956915
+      },
+      "paired_outer": {
+        "candidate_minus_baseline_mse": -0.0006746983683047559,
+        "p025": -0.001194448718006667,
+        "p975": -0.0001897850579060281
+      }
+    }
+  },
+  "selected_contact_path": "ground",
+  "selected_path_subgroups": {
+    "confirmation": [
+      {
+        "candidate_minus_baseline_mse": 0.0007223872309599234,
+        "highest_prior_level": "ROOKIE_COMPLEX",
+        "p025": -7.315811592340466e-05,
+        "p975": 0.0015540496419931737,
+        "players": 379
+      },
+      {
+        "candidate_minus_baseline_mse": 0.00038624145204302547,
+        "highest_prior_level": "SINGLE_A",
+        "p025": -0.0005019825989131693,
+        "p975": 0.0013075739192612995,
+        "players": 321
+      },
+      {
+        "candidate_minus_baseline_mse": 1.4039651272264478e-05,
+        "highest_prior_level": "HIGH_A",
+        "p025": -0.0010022463359897038,
+        "p975": 0.0010741953569240402,
+        "players": 336
+      },
+      {
+        "candidate_minus_baseline_mse": 0.0004083634817134849,
+        "highest_prior_level": "AA",
+        "p025": -0.0005320201332794316,
+        "p975": 0.0013781004454126984,
+        "players": 323
+      },
+      {
+        "candidate_minus_baseline_mse": -7.735484078253892e-05,
+        "highest_prior_level": "AAA",
+        "p025": -0.001180134607842016,
+        "p975": 0.0009968460836838448,
+        "players": 297
+      }
+    ],
+    "outer": [
+      {
+        "candidate_minus_baseline_mse": 0.0003731252678173279,
+        "highest_prior_level": "ROOKIE_COMPLEX",
+        "p025": -0.0003913165006809156,
+        "p975": 0.0011616309214161574,
+        "players": 376
+      },
+      {
+        "candidate_minus_baseline_mse": 0.0008267466065258186,
+        "highest_prior_level": "SINGLE_A",
+        "p025": -0.00018831514844327464,
+        "p975": 0.0018405992904498424,
+        "players": 303
+      },
+      {
+        "candidate_minus_baseline_mse": -0.0016211694561801004,
+        "highest_prior_level": "HIGH_A",
+        "p025": -0.0026916159168122547,
+        "p975": -0.0005162098992654546,
+        "players": 357
+      },
+      {
+        "candidate_minus_baseline_mse": -0.0009938277297642263,
+        "highest_prior_level": "AA",
+        "p025": -0.002039460043700741,
+        "p975": 7.778860027231557e-06,
+        "players": 347
+      },
+      {
+        "candidate_minus_baseline_mse": -0.0010840761160085294,
+        "highest_prior_level": "AAA",
+        "p025": -0.002391414453642239,
+        "p975": 0.00014776319247947385,
+        "players": 305
+      }
+    ]
+  },
+  "shrinkage_contacts": {
+    "direction": 400,
+    "ground": 200,
+    "popup": 400
+  },
+  "source_manifests": [
+    {
+      "asset_count": 26,
+      "assets": [
+        {
+          "asset_id": 122254050,
+          "asset_name": "2021_5_a_pbp.csv",
+          "downloaded_size_bytes": 62851044,
+          "github_size_bytes": 62851044,
+          "level": "a",
+          "positive_contact_observations": 16118,
+          "raw_rows": 111175,
+          "sha256": "f304e7aaea44d58a96b2af745ff9d008cdb8a3399ab4dde64e3b19e7686f9f51",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254067,
+          "asset_name": "2021_5_a+_pbp.csv",
+          "downloaded_size_bytes": 50465258,
+          "github_size_bytes": 50465258,
+          "level": "a+",
+          "positive_contact_observations": 15883,
+          "raw_rows": 105986,
+          "sha256": "5586046248f29b9bd690ea41ca99512e733d43dbb9a50a9e6d0edfe72fa9308d",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254107,
+          "asset_name": "2021_5_aa_pbp.csv",
+          "downloaded_size_bytes": 50492610,
+          "github_size_bytes": 50492610,
+          "level": "aa",
+          "positive_contact_observations": 16046,
+          "raw_rows": 104998,
+          "sha256": "617cdc76221c27a25bcc9acc216448433bc7962846005cbc3fbf87a25cfeae16",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254136,
+          "asset_name": "2021_5_aaa_pbp.csv",
+          "downloaded_size_bytes": 51047589,
+          "github_size_bytes": 51047589,
+          "level": "aaa",
+          "positive_contact_observations": 16956,
+          "raw_rows": 106782,
+          "sha256": "046ba2171af6cf749a084ddc37517ce9057044fce641ba76bb669ba20f447269",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254174,
+          "asset_name": "2021_6_a_pbp.csv",
+          "downloaded_size_bytes": 64518142,
+          "github_size_bytes": 64518142,
+          "level": "a",
+          "positive_contact_observations": 17967,
+          "raw_rows": 115001,
+          "sha256": "a8006d387cf4bbaf322f8686836c2d764d6ea797c9a4a1623faa47441912afd0",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254189,
+          "asset_name": "2021_6_a+_pbp.csv",
+          "downloaded_size_bytes": 55130566,
+          "github_size_bytes": 55130566,
+          "level": "a+",
+          "positive_contact_observations": 18202,
+          "raw_rows": 115220,
+          "sha256": "d69ef325bd76c1bb612304a1f64d7847d59689d3148116730027632e0f46fcff",
+          "year": 2021
+        },
+        {
+          "asset_id": 204077429,
+          "asset_name": "2021_6_aa_pbp.csv",
+          "downloaded_size_bytes": 114355756,
+          "github_size_bytes": 114355756,
+          "level": "aa",
+          "positive_contact_observations": 38594,
+          "raw_rows": 237184,
+          "sha256": "868cac6b5feaae3d0b5f8d417569b055da38ae16cf1c7c54be0e6157efb49b9d",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254230,
+          "asset_name": "2021_6_aaa_pbp.csv",
+          "downloaded_size_bytes": 55167322,
+          "github_size_bytes": 55167322,
+          "level": "aaa",
+          "positive_contact_observations": 19078,
+          "raw_rows": 114962,
+          "sha256": "1a492fe083e2a85bf3a200d154d92e490a229f227d66d179a120078e949d55b2",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254245,
+          "asset_name": "2021_6_rk_pbp.csv",
+          "downloaded_size_bytes": 2334093,
+          "github_size_bytes": 2334093,
+          "level": "rk",
+          "positive_contact_observations": 1332,
+          "raw_rows": 4844,
+          "sha256": "60cca53f2382c52d36fe4451c7ee1418c148447dd20293ff8feff9b1dee865c5",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254247,
+          "asset_name": "2021_7_a_pbp.csv",
+          "downloaded_size_bytes": 67939850,
+          "github_size_bytes": 67939850,
+          "level": "a",
+          "positive_contact_observations": 19750,
+          "raw_rows": 120593,
+          "sha256": "bf6c07af44f2600458a8b17dc7660d4c31030ab28aeb2f9c32b44ff2f9549175",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254425,
+          "asset_name": "2021_7_a+_pbp.csv",
+          "downloaded_size_bytes": 58774728,
+          "github_size_bytes": 58774728,
+          "level": "a+",
+          "positive_contact_observations": 19715,
+          "raw_rows": 122775,
+          "sha256": "f93947f9e56a97746d73ad2ea54bffff0cee93f0cdbbda89bcded47e74d9c3a2",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254493,
+          "asset_name": "2021_7_aa_pbp.csv",
+          "downloaded_size_bytes": 56709582,
+          "github_size_bytes": 56709582,
+          "level": "aa",
+          "positive_contact_observations": 19238,
+          "raw_rows": 117539,
+          "sha256": "b4a4618d52637d5657efca311434f2f50a4fdfa2044dbf56d46ed401be8faaca",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254550,
+          "asset_name": "2021_7_aaa_pbp.csv",
+          "downloaded_size_bytes": 58275023,
+          "github_size_bytes": 58275023,
+          "level": "aaa",
+          "positive_contact_observations": 20296,
+          "raw_rows": 121207,
+          "sha256": "6f6da5b0382f471c1785167218419a66a9f8c0c344a342fdefecccdf0035d2c6",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254597,
+          "asset_name": "2021_7_rk_pbp.csv",
+          "downloaded_size_bytes": 48517362,
+          "github_size_bytes": 48517362,
+          "level": "rk",
+          "positive_contact_observations": 29852,
+          "raw_rows": 99721,
+          "sha256": "e8edc72a647074aac808adf6348a7a393b6ac533c5cc4b60b0dc4e7fcb79d956",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254607,
+          "asset_name": "2021_8_a_pbp.csv",
+          "downloaded_size_bytes": 65199273,
+          "github_size_bytes": 65199273,
+          "level": "a",
+          "positive_contact_observations": 18592,
+          "raw_rows": 115903,
+          "sha256": "2182357c27a3bfeab5263c15c70aab974ffc120387f390b6395ed490584630bb",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254631,
+          "asset_name": "2021_8_a+_pbp.csv",
+          "downloaded_size_bytes": 55191743,
+          "github_size_bytes": 55191743,
+          "level": "a+",
+          "positive_contact_observations": 18528,
+          "raw_rows": 115313,
+          "sha256": "e2b9357d142e11341f5a3e869a58c7e5e04491c17d679ab63d077d9831cb5e8e",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254650,
+          "asset_name": "2021_8_aa_pbp.csv",
+          "downloaded_size_bytes": 52699888,
+          "github_size_bytes": 52699888,
+          "level": "aa",
+          "positive_contact_observations": 18188,
+          "raw_rows": 108964,
+          "sha256": "0be9be957ecafaa0a37e0d86db5a758394ddea2b59c6130a2c926ffec6dd8459",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254678,
+          "asset_name": "2021_8_aaa_pbp.csv",
+          "downloaded_size_bytes": 56433567,
+          "github_size_bytes": 56433567,
+          "level": "aaa",
+          "positive_contact_observations": 19662,
+          "raw_rows": 117438,
+          "sha256": "5e6fad3cf42e2407de8286a7b5b2f551adc5d702248255d5c6e23ccb51db6435",
+          "year": 2021
+        },
+        {
+          "asset_id": 251531205,
+          "asset_name": "2021_8_rk_pbp.csv",
+          "downloaded_size_bytes": 125969256,
+          "github_size_bytes": 125969256,
+          "level": "rk",
+          "positive_contact_observations": 79800,
+          "raw_rows": 257738,
+          "sha256": "4b8e4088a6e1027127c260dc322979dbff09acc80bc3c3ce648d40de92092c24",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254716,
+          "asset_name": "2021_9_a_pbp.csv",
+          "downloaded_size_bytes": 44325653,
+          "github_size_bytes": 44325653,
+          "level": "a",
+          "positive_contact_observations": 11730,
+          "raw_rows": 78309,
+          "sha256": "3a58b1d55cd85da638810f28e50b25b550d4d3a4016f1a15678b91a4f0815e10",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254742,
+          "asset_name": "2021_9_a+_pbp.csv",
+          "downloaded_size_bytes": 35474695,
+          "github_size_bytes": 35474695,
+          "level": "a+",
+          "positive_contact_observations": 11372,
+          "raw_rows": 74350,
+          "sha256": "23880bd279d214ec0dd1e0fe41a3bda112ed5827f3e6dda79ee5d2ddc4cc45b6",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254771,
+          "asset_name": "2021_9_aa_pbp.csv",
+          "downloaded_size_bytes": 33158252,
+          "github_size_bytes": 33158252,
+          "level": "aa",
+          "positive_contact_observations": 10769,
+          "raw_rows": 68700,
+          "sha256": "346188cba48ee16dff32020b78d7fa1339f5033bef240b76f24364008d71070c",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254817,
+          "asset_name": "2021_9_aaa_pbp.csv",
+          "downloaded_size_bytes": 52052078,
+          "github_size_bytes": 52052078,
+          "level": "aaa",
+          "positive_contact_observations": 18057,
+          "raw_rows": 108561,
+          "sha256": "157a59b933130c1ddf1fe1921d824844f7230fa17754a44be27af9fc06f75093",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254855,
+          "asset_name": "2021_9_rk_pbp.csv",
+          "downloaded_size_bytes": 49458684,
+          "github_size_bytes": 49458684,
+          "level": "rk",
+          "positive_contact_observations": 31829,
+          "raw_rows": 100024,
+          "sha256": "9d3af93e5690c292d90c54cf56da1f1ab107a4eceb0411a28a8b69255ce392f8",
+          "year": 2021
+        },
+        {
+          "asset_id": 217972712,
+          "asset_name": "2021_10_aaa_pbp.csv",
+          "downloaded_size_bytes": 10419510,
+          "github_size_bytes": 10419510,
+          "level": "aaa",
+          "positive_contact_observations": 3526,
+          "raw_rows": 21808,
+          "sha256": "fcd3c4250f53cc2964bc6f3a66ea7b8887c9eda079d64a3e552b85c37790f704",
+          "year": 2021
+        },
+        {
+          "asset_id": 122254904,
+          "asset_name": "2021_10_rk_pbp.csv",
+          "downloaded_size_bytes": 2830000,
+          "github_size_bytes": 2830000,
+          "level": "rk",
+          "positive_contact_observations": 1855,
+          "raw_rows": 5736,
+          "sha256": "3123756792435da40270a6078efb44760a12b247252b3a9309891870e2ecc037",
+          "year": 2021
+        }
+      ],
+      "raw_download_bytes": 1379791524,
+      "resolved_contacts": 439034,
+      "years": [
+        2021
+      ]
+    },
+    {
+      "asset_count": 29,
+      "assets": [
+        {
+          "asset_id": 225562415,
+          "asset_name": "2022_4_a_pbp.csv",
+          "downloaded_size_bytes": 104037650,
+          "github_size_bytes": 104037650,
+          "level": "a",
+          "positive_contact_observations": 27418,
+          "raw_rows": 183226,
+          "sha256": "96ad3acb5e6317b2a5af92c1935240ea558fbd75fa4cc1e5d7179536340325cd",
+          "year": 2022
+        },
+        {
+          "asset_id": 125564168,
+          "asset_name": "2022_4_a+_pbp.csv",
+          "downloaded_size_bytes": 83225444,
+          "github_size_bytes": 83225444,
+          "level": "a+",
+          "positive_contact_observations": 26638,
+          "raw_rows": 172852,
+          "sha256": "1226ba6ed36cb1501c9863432df0ae429a614b7b5c39fc5b79dfa061a44b8739",
+          "year": 2022
+        },
+        {
+          "asset_id": 125564219,
+          "asset_name": "2022_4_aa_pbp.csv",
+          "downloaded_size_bytes": 85958692,
+          "github_size_bytes": 85958692,
+          "level": "aa",
+          "positive_contact_observations": 27998,
+          "raw_rows": 179454,
+          "sha256": "0fd5516f112dcb16c9e89c89c70039d579a20a9cc101eafaf02e1c56948c7ab5",
+          "year": 2022
+        },
+        {
+          "asset_id": 125561925,
+          "asset_name": "2022_4_aaa_pbp.csv",
+          "downloaded_size_bytes": 121271730,
+          "github_size_bytes": 121271730,
+          "level": "aaa",
+          "positive_contact_observations": 33618,
+          "raw_rows": 204532,
+          "sha256": "9dd0cb38f12bac7c9e4076cac7930301eaa1d616555d0b269717e1bdfc8fd62c",
+          "year": 2022
+        },
+        {
+          "asset_id": 125561989,
+          "asset_name": "2022_5_a_pbp.csv",
+          "downloaded_size_bytes": 132777222,
+          "github_size_bytes": 132777222,
+          "level": "a",
+          "positive_contact_observations": 36684,
+          "raw_rows": 233846,
+          "sha256": "d0a34c5c3018076e3535b01d700a8f85e061e583f12e05ebbc169ea2e01448c7",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562051,
+          "asset_name": "2022_5_a+_pbp.csv",
+          "downloaded_size_bytes": 106906804,
+          "github_size_bytes": 106906804,
+          "level": "a+",
+          "positive_contact_observations": 35430,
+          "raw_rows": 221362,
+          "sha256": "5059b9c2824c30be4cc34c2da7831116f40f2181f34ad8271a2b17ffc60ab321",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562102,
+          "asset_name": "2022_5_aa_pbp.csv",
+          "downloaded_size_bytes": 108676338,
+          "github_size_bytes": 108676338,
+          "level": "aa",
+          "positive_contact_observations": 37136,
+          "raw_rows": 225834,
+          "sha256": "d910703e4e53421ac84fe837a73c9af18cd381561f641849640166a6722d9ac5",
+          "year": 2022
+        },
+        {
+          "asset_id": 211168624,
+          "asset_name": "2022_5_aaa_pbp.csv",
+          "downloaded_size_bytes": 144743050,
+          "github_size_bytes": 144743050,
+          "level": "aaa",
+          "positive_contact_observations": 40128,
+          "raw_rows": 242866,
+          "sha256": "60b7612a788a908d0f53ccb776ac6baef446f64df97c7ac91fa99904bff6a9d3",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562379,
+          "asset_name": "2022_6_a_pbp.csv",
+          "downloaded_size_bytes": 129549996,
+          "github_size_bytes": 129549996,
+          "level": "a",
+          "positive_contact_observations": 36704,
+          "raw_rows": 228178,
+          "sha256": "6d90224a5315ed55f199a01f9cf4d56c75e51be9fb5835e9553c833f42a3a7db",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562463,
+          "asset_name": "2022_6_a+_pbp.csv",
+          "downloaded_size_bytes": 113559202,
+          "github_size_bytes": 113559202,
+          "level": "a+",
+          "positive_contact_observations": 38676,
+          "raw_rows": 234382,
+          "sha256": "940e1a05d68ad66b681bce02daec2b57dab4cbfeb529c06e2642b2feb04496fe",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562522,
+          "asset_name": "2022_6_aa_pbp.csv",
+          "downloaded_size_bytes": 111524992,
+          "github_size_bytes": 111524992,
+          "level": "aa",
+          "positive_contact_observations": 37864,
+          "raw_rows": 232308,
+          "sha256": "49226f15e9451c69888a26e60bfc75d5ec05ad9c67dfff16e4851fe26bd495ab",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562575,
+          "asset_name": "2022_6_aaa_pbp.csv",
+          "downloaded_size_bytes": 140305232,
+          "github_size_bytes": 140305232,
+          "level": "aaa",
+          "positive_contact_observations": 39624,
+          "raw_rows": 235394,
+          "sha256": "dd067b7f2b16351fb22daf9a06899318bb60868d643feeb1e51c74d1891e3cac",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562650,
+          "asset_name": "2022_6_rk_pbp.csv",
+          "downloaded_size_bytes": 107324058,
+          "github_size_bytes": 107324058,
+          "level": "rk",
+          "positive_contact_observations": 67310,
+          "raw_rows": 219178,
+          "sha256": "9bac4a8845ebe7fdd0811a0cc60bfe093db6eb8da7f149d63355d06a2aef3b82",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562725,
+          "asset_name": "2022_7_a_pbp.csv",
+          "downloaded_size_bytes": 119824904,
+          "github_size_bytes": 119824904,
+          "level": "a",
+          "positive_contact_observations": 34018,
+          "raw_rows": 210304,
+          "sha256": "8157615a3b424a04bcfc0640d9f166535412243b2e085444ec42529dca987a17",
+          "year": 2022
+        },
+        {
+          "asset_id": 210633070,
+          "asset_name": "2022_7_a+_pbp.csv",
+          "downloaded_size_bytes": 105136858,
+          "github_size_bytes": 105136858,
+          "level": "a+",
+          "positive_contact_observations": 35068,
+          "raw_rows": 218118,
+          "sha256": "54440b4542ca8578e632ed5d09d1f84a34a6e8d88064230c9c63d8a7fca1f150",
+          "year": 2022
+        },
+        {
+          "asset_id": 250971469,
+          "asset_name": "2022_7_aa_pbp.csv",
+          "downloaded_size_bytes": 106524812,
+          "github_size_bytes": 106524812,
+          "level": "aa",
+          "positive_contact_observations": 36668,
+          "raw_rows": 221524,
+          "sha256": "df84d4ed6d08c795fb8593c99eca23bc5bd8976e9bc7b61c0639fd7c78482272",
+          "year": 2022
+        },
+        {
+          "asset_id": 125562899,
+          "asset_name": "2022_7_aaa_pbp.csv",
+          "downloaded_size_bytes": 128873852,
+          "github_size_bytes": 128873852,
+          "level": "aaa",
+          "positive_contact_observations": 36826,
+          "raw_rows": 217714,
+          "sha256": "3fb1b696ad3fa1229823028174a5fb3801dc7878be0a3386a0b36938c7f747e8",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563104,
+          "asset_name": "2022_7_rk_pbp.csv",
+          "downloaded_size_bytes": 128703722,
+          "github_size_bytes": 128703722,
+          "level": "rk",
+          "positive_contact_observations": 81918,
+          "raw_rows": 262586,
+          "sha256": "6792e47a261d73bfad20d891b767d71c6942f38f45eda78283803e5d586536da",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563249,
+          "asset_name": "2022_8_a_pbp.csv",
+          "downloaded_size_bytes": 134919628,
+          "github_size_bytes": 134919628,
+          "level": "a",
+          "positive_contact_observations": 38174,
+          "raw_rows": 235958,
+          "sha256": "2853a744cd0a699357c9e8b928222a345f531c0d61242ae270e8bc002fc5155c",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563369,
+          "asset_name": "2022_8_a+_pbp.csv",
+          "downloaded_size_bytes": 111802806,
+          "github_size_bytes": 111802806,
+          "level": "a+",
+          "positive_contact_observations": 37938,
+          "raw_rows": 231162,
+          "sha256": "d7409903657bfe1797688f399a7d073d50aa6572592ed8f19db25275f0e51130",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563535,
+          "asset_name": "2022_8_aa_pbp.csv",
+          "downloaded_size_bytes": 111495274,
+          "github_size_bytes": 111495274,
+          "level": "aa",
+          "positive_contact_observations": 37804,
+          "raw_rows": 232056,
+          "sha256": "d838f0489af742917c4599cdcebe8e18c269576e30e18ced3745d318853a4d5c",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563571,
+          "asset_name": "2022_8_aaa_pbp.csv",
+          "downloaded_size_bytes": 139045316,
+          "github_size_bytes": 139045316,
+          "level": "aaa",
+          "positive_contact_observations": 38894,
+          "raw_rows": 234614,
+          "sha256": "81161d47d4f5e417adc5b2cb7636a727208efdb34ac1b56eaa49ae4012ddd24a",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563657,
+          "asset_name": "2022_8_rk_pbp.csv",
+          "downloaded_size_bytes": 105670998,
+          "github_size_bytes": 105670998,
+          "level": "rk",
+          "positive_contact_observations": 64466,
+          "raw_rows": 213834,
+          "sha256": "e60453a4e98a4e062e2c27fa0c97e3589b869862cb99f510dabc66fd76df8079",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563784,
+          "asset_name": "2022_9_a_pbp.csv",
+          "downloaded_size_bytes": 55696696,
+          "github_size_bytes": 55696696,
+          "level": "a",
+          "positive_contact_observations": 13770,
+          "raw_rows": 98174,
+          "sha256": "70dfc56938cdd59f370859709bebbfd4cd7435b93c1cef93ab7e50f330a4f30d",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563833,
+          "asset_name": "2022_9_a+_pbp.csv",
+          "downloaded_size_bytes": 45687456,
+          "github_size_bytes": 45687456,
+          "level": "a+",
+          "positive_contact_observations": 13104,
+          "raw_rows": 94650,
+          "sha256": "8d7ddd3a6ea43e5a742a7b5cad260bc20779f743d8029039c5285bc73a48a5e3",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563898,
+          "asset_name": "2022_9_aa_pbp.csv",
+          "downloaded_size_bytes": 74621104,
+          "github_size_bytes": 74621104,
+          "level": "aa",
+          "positive_contact_observations": 22746,
+          "raw_rows": 155770,
+          "sha256": "210f7bcac769f1c3a21406909f928c75d607b70c7e3a5b3ee791b8cc2bf5fdd8",
+          "year": 2022
+        },
+        {
+          "asset_id": 125563971,
+          "asset_name": "2022_9_aaa_pbp.csv",
+          "downloaded_size_bytes": 134098600,
+          "github_size_bytes": 134098600,
+          "level": "aaa",
+          "positive_contact_observations": 38228,
+          "raw_rows": 226614,
+          "sha256": "4daa75b7a3f018610b38fca63c9dbb93579dd64a44dd576a62a7029997b91e6e",
+          "year": 2022
+        },
+        {
+          "asset_id": 125564069,
+          "asset_name": "2022_9_rk_pbp.csv",
+          "downloaded_size_bytes": 139150,
+          "github_size_bytes": 139150,
+          "level": "rk",
+          "positive_contact_observations": 0,
+          "raw_rows": 274,
+          "sha256": "dcd924c3ab302f3547f52eac1a994c37e1b370b3daf7854adaccc4a938d5a12c",
+          "year": 2022
+        },
+        {
+          "asset_id": 125564072,
+          "asset_name": "2022_10_aaa_pbp.csv",
+          "downloaded_size_bytes": 931812,
+          "github_size_bytes": 931812,
+          "level": "aaa",
+          "positive_contact_observations": 0,
+          "raw_rows": 1182,
+          "sha256": "2fc6e03368a198cc505f19f01d2d16c644792f005cd8481199020cb323230362",
+          "year": 2022
+        }
+      ],
+      "raw_download_bytes": 2993033398,
+      "resolved_contacts": 497545,
+      "years": [
+        2022
+      ]
+    },
+    {
+      "asset_count": 29,
+      "assets": [
+        {
+          "asset_id": 122234983,
+          "asset_name": "2023_3_aaa_pbp.csv",
+          "downloaded_size_bytes": 3303093,
+          "github_size_bytes": 3303093,
+          "level": "aaa",
+          "positive_contact_observations": 673,
+          "raw_rows": 4291,
+          "sha256": "46dc8e190c023d744f0a544e6e0bef84f7631c63d3263a6e7e24118229d881db",
+          "year": 2023
+        },
+        {
+          "asset_id": 210358051,
+          "asset_name": "2023_4_a_pbp.csv",
+          "downloaded_size_bytes": 111597438,
+          "github_size_bytes": 111597438,
+          "level": "a",
+          "positive_contact_observations": 29488,
+          "raw_rows": 195988,
+          "sha256": "a4555f32aacbf96124d97cdf7202fbfef2a4f7b10ea8ecaceb3b016c134a73f6",
+          "year": 2023
+        },
+        {
+          "asset_id": 143505681,
+          "asset_name": "2023_4_a+_pbp.csv",
+          "downloaded_size_bytes": 85712961,
+          "github_size_bytes": 85712961,
+          "level": "a+",
+          "positive_contact_observations": 27250,
+          "raw_rows": 177674,
+          "sha256": "67ba042b693ca121c2dcb84fbb079c4c2123ccea7376acda7930fb20cb72af44",
+          "year": 2023
+        },
+        {
+          "asset_id": 143688284,
+          "asset_name": "2023_4_aa_pbp.csv",
+          "downloaded_size_bytes": 89713291,
+          "github_size_bytes": 89713291,
+          "level": "aa",
+          "positive_contact_observations": 28490,
+          "raw_rows": 187410,
+          "sha256": "2e484dedb5cd0f959a4fb4d32958c5a44630d0e322066c8a0d6d883bb12da942",
+          "year": 2023
+        },
+        {
+          "asset_id": 143861889,
+          "asset_name": "2023_4_aaa_pbp.csv",
+          "downloaded_size_bytes": 181745607,
+          "github_size_bytes": 181745607,
+          "level": "aaa",
+          "positive_contact_observations": 37670,
+          "raw_rows": 233298,
+          "sha256": "747272682ca4ca8dd4ad4f917e043b1d28136833a12da324b821df0425f7fce1",
+          "year": 2023
+        },
+        {
+          "asset_id": 149280193,
+          "asset_name": "2023_5_a_pbp.csv",
+          "downloaded_size_bytes": 130968363,
+          "github_size_bytes": 130968363,
+          "level": "a",
+          "positive_contact_observations": 36092,
+          "raw_rows": 228216,
+          "sha256": "69b366a799cb2fda426d8e6533885c4b94817b108852425dc0557d01fc7812f3",
+          "year": 2023
+        },
+        {
+          "asset_id": 149511057,
+          "asset_name": "2023_5_a+_pbp.csv",
+          "downloaded_size_bytes": 112140045,
+          "github_size_bytes": 112140045,
+          "level": "a+",
+          "positive_contact_observations": 37726,
+          "raw_rows": 231540,
+          "sha256": "bc7b5c7746ef3aff87bca8acb7517ded9ce05feb3cd09b73ea6b8fd4255de2a4",
+          "year": 2023
+        },
+        {
+          "asset_id": 149680263,
+          "asset_name": "2023_5_aa_pbp.csv",
+          "downloaded_size_bytes": 112275071,
+          "github_size_bytes": 112275071,
+          "level": "aa",
+          "positive_contact_observations": 37120,
+          "raw_rows": 233718,
+          "sha256": "a8aab291eecfab737d34d2a9617235c3852ae2cf13580acfc150c5164e952f4e",
+          "year": 2023
+        },
+        {
+          "asset_id": 149825650,
+          "asset_name": "2023_5_aaa_pbp.csv",
+          "downloaded_size_bytes": 193825019,
+          "github_size_bytes": 193825019,
+          "level": "aaa",
+          "positive_contact_observations": 40476,
+          "raw_rows": 248204,
+          "sha256": "b3b4d64f0be73cfa6ed6078baa3249fec8c808f45542cac95c46e4d614c88a7f",
+          "year": 2023
+        },
+        {
+          "asset_id": 159526341,
+          "asset_name": "2023_6_a_pbp.csv",
+          "downloaded_size_bytes": 128411503,
+          "github_size_bytes": 128411503,
+          "level": "a",
+          "positive_contact_observations": 36380,
+          "raw_rows": 221906,
+          "sha256": "fe075bb40b8209525122f8d85b6d773fdef936e96d66de37610344e6a8a31f33",
+          "year": 2023
+        },
+        {
+          "asset_id": 159524111,
+          "asset_name": "2023_6_a+_pbp.csv",
+          "downloaded_size_bytes": 106123697,
+          "github_size_bytes": 106123697,
+          "level": "a+",
+          "positive_contact_observations": 36268,
+          "raw_rows": 218810,
+          "sha256": "0498b45b593890ea63a7b0f434c212e96b8033b3d5b56453f50fa524c533a93e",
+          "year": 2023
+        },
+        {
+          "asset_id": 159519751,
+          "asset_name": "2023_6_aa_pbp.csv",
+          "downloaded_size_bytes": 109125611,
+          "github_size_bytes": 109125611,
+          "level": "aa",
+          "positive_contact_observations": 36552,
+          "raw_rows": 226930,
+          "sha256": "88d2a4c32800a49274ff134ae39c4633ca124a47a3cde814226a79b2797e137b",
+          "year": 2023
+        },
+        {
+          "asset_id": 203627258,
+          "asset_name": "2023_6_aaa_pbp.csv",
+          "downloaded_size_bytes": 183413830,
+          "github_size_bytes": 183413830,
+          "level": "aaa",
+          "positive_contact_observations": 39128,
+          "raw_rows": 234250,
+          "sha256": "ca44dcf2f9740ce5262661b2a7eb9ba80901a29e8cf97653458f0c4e35360dc9",
+          "year": 2023
+        },
+        {
+          "asset_id": 210161384,
+          "asset_name": "2023_6_rk_pbp.csv",
+          "downloaded_size_bytes": 117036970,
+          "github_size_bytes": 117036970,
+          "level": "rk",
+          "positive_contact_observations": 73246,
+          "raw_rows": 239678,
+          "sha256": "1bb441a3f9cdf3de479c60fe40b67a1b5156f832ca5b266312beae5e26af5926",
+          "year": 2023
+        },
+        {
+          "asset_id": 122234778,
+          "asset_name": "2023_7_a_pbp.csv",
+          "downloaded_size_bytes": 60464087,
+          "github_size_bytes": 60464087,
+          "level": "a",
+          "positive_contact_observations": 17512,
+          "raw_rows": 105862,
+          "sha256": "910df88ec932388a51e8f75552aee560f10f804aedbc3dbb0877c2e07b1f991c",
+          "year": 2023
+        },
+        {
+          "asset_id": 122234794,
+          "asset_name": "2023_7_a+_pbp.csv",
+          "downloaded_size_bytes": 51438444,
+          "github_size_bytes": 51438444,
+          "level": "a+",
+          "positive_contact_observations": 17691,
+          "raw_rows": 105891,
+          "sha256": "0e329cc34390e4f688264d37b0448df3dd92b92279d51d951cc85e325bc34ce5",
+          "year": 2023
+        },
+        {
+          "asset_id": 122234807,
+          "asset_name": "2023_7_aa_pbp.csv",
+          "downloaded_size_bytes": 50925206,
+          "github_size_bytes": 50925206,
+          "level": "aa",
+          "positive_contact_observations": 17299,
+          "raw_rows": 105850,
+          "sha256": "663973bdcf7ddf9246cb6c2aa7ae25e8b7846f3b1be01727c64f43ce7f4f4a49",
+          "year": 2023
+        },
+        {
+          "asset_id": 122234816,
+          "asset_name": "2023_7_aaa_pbp.csv",
+          "downloaded_size_bytes": 86081825,
+          "github_size_bytes": 86081825,
+          "level": "aaa",
+          "positive_contact_observations": 18296,
+          "raw_rows": 110946,
+          "sha256": "247274c17b81a7dc63862995e1e03d82193ee47681ef6c7b9df7be8a2f62b297",
+          "year": 2023
+        },
+        {
+          "asset_id": 250991981,
+          "asset_name": "2023_7_rk_pbp.csv",
+          "downloaded_size_bytes": 126526724,
+          "github_size_bytes": 126526724,
+          "level": "rk",
+          "positive_contact_observations": 81328,
+          "raw_rows": 258610,
+          "sha256": "2a2c8c6fbb21054230c40333cfd15e689a2d04ed3278e75795bc182838dea45c",
+          "year": 2023
+        },
+        {
+          "asset_id": 123907217,
+          "asset_name": "2023_8_a_pbp.csv",
+          "downloaded_size_bytes": 62363152,
+          "github_size_bytes": 62363152,
+          "level": "a",
+          "positive_contact_observations": 18392,
+          "raw_rows": 112796,
+          "sha256": "c97b33a9d73144b75b7a23868a7dbf69a5b36b8e9a20a5f44249e602381b65af",
+          "year": 2023
+        },
+        {
+          "asset_id": 123902548,
+          "asset_name": "2023_8_a+_pbp.csv",
+          "downloaded_size_bytes": 54618172,
+          "github_size_bytes": 54618172,
+          "level": "a+",
+          "positive_contact_observations": 18465,
+          "raw_rows": 112939,
+          "sha256": "0d0f0b1126d5eb4599957b661391c4aa943e98e2717f890410ddecc397e78aba",
+          "year": 2023
+        },
+        {
+          "asset_id": 123894226,
+          "asset_name": "2023_8_aa_pbp.csv",
+          "downloaded_size_bytes": 56798585,
+          "github_size_bytes": 56798585,
+          "level": "aa",
+          "positive_contact_observations": 19347,
+          "raw_rows": 118217,
+          "sha256": "40864cde2a41ed19cbd4052fa8b7d258629a99e31da8d5a6ae831476a8c3d370",
+          "year": 2023
+        },
+        {
+          "asset_id": 123889944,
+          "asset_name": "2023_8_aaa_pbp.csv",
+          "downloaded_size_bytes": 92153773,
+          "github_size_bytes": 92153773,
+          "level": "aaa",
+          "positive_contact_observations": 19375,
+          "raw_rows": 119339,
+          "sha256": "629fb8eb75c6a8684e5e256e6caaf9448645e10c5ac02c7755471438fba8c838",
+          "year": 2023
+        },
+        {
+          "asset_id": 123917166,
+          "asset_name": "2023_8_rk_pbp.csv",
+          "downloaded_size_bytes": 49152387,
+          "github_size_bytes": 49152387,
+          "level": "rk",
+          "positive_contact_observations": 30013,
+          "raw_rows": 99561,
+          "sha256": "aa18f221e4ce08fd4a3c79624a2330cab74977fbfdab67bb7d135d5828622ec9",
+          "year": 2023
+        },
+        {
+          "asset_id": 128426044,
+          "asset_name": "2023_9_a_pbp.csv",
+          "downloaded_size_bytes": 52747135,
+          "github_size_bytes": 52747135,
+          "level": "a",
+          "positive_contact_observations": 12892,
+          "raw_rows": 94664,
+          "sha256": "9d861bb17857115074e4329fab668220541bdc32c323de4f52f2edea91bf5b8c",
+          "year": 2023
+        },
+        {
+          "asset_id": 128423787,
+          "asset_name": "2023_9_a+_pbp.csv",
+          "downloaded_size_bytes": 45085071,
+          "github_size_bytes": 45085071,
+          "level": "a+",
+          "positive_contact_observations": 13426,
+          "raw_rows": 93538,
+          "sha256": "a147cdd841c297d771aab9c6a25ae385e040ec3086087a0d71ce0bf55cb85010",
+          "year": 2023
+        },
+        {
+          "asset_id": 128419654,
+          "asset_name": "2023_9_aa_pbp.csv",
+          "downloaded_size_bytes": 69230897,
+          "github_size_bytes": 69230897,
+          "level": "aa",
+          "positive_contact_observations": 21862,
+          "raw_rows": 144166,
+          "sha256": "d1b77ffa7532b0538fdd654f4ea8a426fd13f5a7f240b6fc48f86218941a1cf7",
+          "year": 2023
+        },
+        {
+          "asset_id": 128417247,
+          "asset_name": "2023_9_aaa_pbp.csv",
+          "downloaded_size_bytes": 154005941,
+          "github_size_bytes": 154005941,
+          "level": "aaa",
+          "positive_contact_observations": 31534,
+          "raw_rows": 199708,
+          "sha256": "7f236fde3a07ba03dc7b88ff2fa6e280dedbbb5a0a0792a3489dc951118cb949",
+          "year": 2023
+        },
+        {
+          "asset_id": 128429128,
+          "asset_name": "2023_9_rk_pbp.csv",
+          "downloaded_size_bytes": 144669,
+          "github_size_bytes": 144669,
+          "level": "rk",
+          "positive_contact_observations": 0,
+          "raw_rows": 284,
+          "sha256": "e5c172949afb20acdc717d37cc7be2a0968bb8b8243aa33f59bf70ca51dcaa59",
+          "year": 2023
+        }
+      ],
+      "raw_download_bytes": 2677128567,
+      "resolved_contacts": 494184,
+      "years": [
+        2023
+      ]
+    }
+  ],
+  "status": "rejected",
+  "target": "next-season component rate above the applicable season-level environment"
+}
