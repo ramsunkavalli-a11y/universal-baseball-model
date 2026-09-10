@@ -31,6 +31,13 @@ separately fitted probabilities violate their required ordering and flatten cred
 prospects even more. The next prospect model is one conditional hurdle: arrival,
 meaningful given arrival, then established given meaningful.
 
+That [conditional hurdle audit](prospect-conditional-career-hurdle-result.md) now
+passes its structural gate. In the outer period, roughly 30% of arrivals become
+meaningful and 45-48% of meaningful players become established. Core models calibrate
+reasonably; richer interaction and pedigree candidates have no reliable outer gain.
+The next private sensitivity must multiply the core conditional stages and test the
+resulting current value distribution before changing any value.
+
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
 quality. A proper hurdle test conditions MLB component quality on meaningful playing
