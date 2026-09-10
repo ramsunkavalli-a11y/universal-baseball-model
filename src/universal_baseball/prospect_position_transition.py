@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import numpy as np
+import polars as pl
 
 
 POSITION_GROUPS = ("C", "MIDDLE_INFIELD", "CORNER", "OUTFIELD", "OTHER")
@@ -24,6 +25,40 @@ def position_group(position: object) -> str | None:
     """Collapse an official batting position to the frozen five-group outcome."""
 
     return POSITION_TO_GROUP.get(str(position or "").upper())
+
+
+def current_fielding_position_groups(fielding: pl.DataFrame) -> pl.DataFrame:
+    """Choose one games-evidence position group from positive official fielding outs."""
+
+    required = {"player_id", "position", "fielding_outs"}
+    if missing := sorted(required - set(fielding.columns)):
+        raise ValueError(f"current fielding profiles missing columns: {missing}")
+    return (
+        fielding.with_columns(
+            pl.col("position").map_elements(
+                position_group, return_dtype=pl.String
+            ).alias("position_group")
+        )
+        .filter(
+            pl.col("position_group").is_not_null() & (pl.col("fielding_outs") > 0)
+        )
+        .group_by("player_id", "position_group")
+        .agg(pl.col("fielding_outs").sum())
+        .with_columns(
+            pl.col("position_group")
+            .replace_strict(
+                {value: index for index, value in enumerate(POSITION_GROUPS)},
+                return_dtype=pl.Int64,
+            )
+            .alias("group_order")
+        )
+        .sort(
+            ["player_id", "fielding_outs", "group_order"],
+            descending=[False, True, False],
+        )
+        .unique("player_id", keep="first", maintain_order=True)
+        .select("player_id", "position_group", "fielding_outs")
+    )
 
 
 def fit_transition_probabilities(

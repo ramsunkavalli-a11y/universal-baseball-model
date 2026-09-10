@@ -1,9 +1,11 @@
 import numpy as np
+import polars as pl
 import pytest
 
 from universal_baseball.prospect_position_transition import (
     POSITION_GROUPS,
     adjust_war_rate_for_position,
+    current_fielding_position_groups,
     fit_transition_probabilities,
     multiclass_scores,
     position_group,
@@ -62,3 +64,22 @@ def test_position_war_rate_replacement_is_identity_or_exact_run_delta() -> None:
         expected_position_runs_per_600=2.5,
         runs_per_win=10.0,
     ) == pytest.approx(2.0)
+
+
+def test_current_fielding_position_group_uses_positive_outs_and_fixed_tie_break() -> None:
+    fielding = pl.DataFrame(
+        {
+            "player_id": [1, 1, 2, 2, 3],
+            "position": ["C", "1B", "SS", "2B", "DH"],
+            "fielding_outs": [30, 60, 45, 45, 0],
+        }
+    )
+
+    assert current_fielding_position_groups(fielding).to_dicts() == [
+        {"player_id": 1, "position_group": "CORNER", "fielding_outs": 60},
+        {
+            "player_id": 2,
+            "position_group": "MIDDLE_INFIELD",
+            "fielding_outs": 90,
+        },
+    ]

@@ -33,10 +33,11 @@ a private probabilistic-position sensitivity, not a catcher haircut or published
 
 That [value sensitivity](prospect-position-value-sensitivity-result.md) is complete but
 does not replace the playable default. Applying the two-year destination mix to all
-six years reduces hitter 50+ counts from 86 to 35 and worsens the outside diagnostic.
-It also exposes 735 games-based versus listed-position disagreements among 2,583
-comparable players. The next challenger must model transition timing and use one
-explicit current-position source; do not apply the full destination mix immediately.
+six years reduces hitter 50+ counts from 86 to 36 and worsens the outside diagnostic.
+The [current-position source audit](prospect-current-position-source-result.md) selects
+official fielding outs first, games role second, and listed position last. The next
+challenger must model transition timing; do not apply the full destination mix
+immediately.
 
 The [established-tier prospect test](prospect-established-tier-test-result.md) is also
 rejected. Mature fringe/meaningful/established workload priors are usable, but three
@@ -499,7 +500,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,389 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,390 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 

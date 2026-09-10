@@ -16,6 +16,7 @@ from universal_baseball.player_value_positional_adjustment import POSITIONAL_RUN
 from universal_baseball.prospect_position_transition import (
     POSITION_GROUPS,
     adjust_war_rate_for_position,
+    current_fielding_position_groups,
     position_group,
 )
 from universal_baseball.prospect_value import numeric_fv
@@ -46,6 +47,13 @@ def _args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--generated-root", type=Path, default=Path("reports/generated")
+    )
+    parser.add_argument(
+        "--current-fielding-path", type=Path,
+        default=Path(
+            "reports/generated/current-defense-rates/2026-09-08/tables/"
+            "current-fielding-profiles.parquet"
+        ),
     )
     parser.add_argument(
         "--output-json", type=Path,
@@ -128,21 +136,37 @@ def main() -> int:
         args.generated_root / "phase2-prospect-arrival" / dated
         / "hitter-arrival-probabilities.parquet"
     ).select("player_id", "role_tier")
+    current_fielding = current_fielding_position_groups(
+        pl.read_parquet(args.current_fielding_path)
+    ).select(
+        "player_id",
+        pl.col("position_group").alias("fielding_position_group"),
+        pl.col("fielding_outs").alias("position_fielding_outs"),
+    )
     values = pl.read_parquet(
         args.generated_root / "phase2-nested-career-fv" / dated
         / "nested-career-model-fv.parquet"
     ).filter(
         (pl.col("model_player_type") == "hitter")
         & pl.col("ordered_arrival_probability").is_not_null()
-    ).join(arrival, on="player_id", how="inner", validate="1:1")
+    ).join(arrival, on="player_id", how="inner", validate="1:1").join(
+        current_fielding, on="player_id", how="left", validate="1:1"
+    )
     path_lookup = {
         int(player_key[0]): frame
         for player_key, frame in paths.group_by("player_id", maintain_order=True)
     }
     rows = []
     for row in values.iter_rows(named=True):
-        origin = str(row["role_tier"])
+        games_origin = row["role_tier"]
         listed_origin = position_group(row["primary_position"])
+        fielding_origin = row["fielding_position_group"]
+        origin = str(fielding_origin or games_origin or listed_origin)
+        origin_source = (
+            "current_fielding_outs" if fielding_origin is not None
+            else "current_games_role" if games_origin is not None
+            else "listed_primary_position"
+        )
 
         def expected_runs(source_group: str) -> float:
             return sum(
@@ -203,8 +227,12 @@ def main() -> int:
                 "player_id": int(row["player_id"]),
                 "player_name": row["player_name"],
                 "origin_group": origin,
+                "origin_source": origin_source,
+                "games_origin_group": games_origin,
                 "listed_origin_group": listed_origin,
-                "origin_source_matches": listed_origin == origin,
+                "games_source_matches": games_origin == origin,
+                "listed_source_matches": listed_origin == origin,
+                "position_fielding_outs": row["position_fielding_outs"],
                 "current_primary_position": row["primary_position"],
                 "expected_destination_position_runs_per_600": expected_position_runs,
                 "incumbent_expected_six_year_war": incumbent,
@@ -301,12 +329,26 @@ def main() -> int:
             ).height,
         },
         "position_source_comparison": {
-            "comparable_players": result.filter(
-                pl.col("listed_origin_group").is_not_null()
+            "fielding_covered_players": result.filter(
+                pl.col("origin_source") == "current_fielding_outs"
             ).height,
-            "mismatched_players": result.filter(
+            "games_comparable_players": result.filter(
+                pl.col("games_origin_group").is_not_null()
+                & (pl.col("origin_source") == "current_fielding_outs")
+            ).height,
+            "games_mismatched_players": result.filter(
+                pl.col("games_origin_group").is_not_null()
+                & (pl.col("origin_source") == "current_fielding_outs")
+                & ~pl.col("games_source_matches")
+            ).height,
+            "listed_comparable_players": result.filter(
                 pl.col("listed_origin_group").is_not_null()
-                & ~pl.col("origin_source_matches")
+                & (pl.col("origin_source") == "current_fielding_outs")
+            ).height,
+            "listed_mismatched_players": result.filter(
+                pl.col("listed_origin_group").is_not_null()
+                & (pl.col("origin_source") == "current_fielding_outs")
+                & ~pl.col("listed_source_matches")
             ).height,
         },
         "fv_changed_players": result.filter(pl.col("fv_delta") != 0).height,

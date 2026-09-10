@@ -11,12 +11,12 @@ and workload remain fixed.
 
 | Measure | Fixed current position | Position probability mix |
 |---|---:|---:|
-| 45+ FV hitters | 404 | 271 |
-| 50+ FV hitters | 86 | 35 |
+| 45+ FV hitters | 404 | 268 |
+| 50+ FV hitters | 86 | 36 |
 | Josuar Gonzalez WAR | 1.83 | 1.37 |
 | Josuar Gonzalez FV | 45 | 45 |
 
-Mean WAR change is -0.141 and median change is -0.031. Seven hundred one players
+Mean WAR change is -0.141 and median change is -0.029. Six hundred ninety-eight players
 cross a five-point FV display boundary. The reduction is not mainly a catcher
 penalty: the 50+ group loses 24 shortstops and 10 catchers. Catchers still comprise
 22 of the top 100 in this sensitivity.
@@ -28,15 +28,16 @@ real MLB players also spend time at less valuable positions.
 
 ## Source disagreement
 
-Among 2,583 players with both labels, 735 (28.5%) have a different games-based minor-
-league group than MLBAM's listed current primary-position group. A second calculation
-using only the listed group produces almost the same aggregate compression: 267 at
-45+ and 37 at 50+. Therefore the large movement is mostly the permanent-position
-assumption, not the source disagreement. The disagreement still needs a single source
-contract before integration.
+The sensitivity now follows the [current-position source hierarchy](prospect-current-position-source-result.md):
+official fielding outs, then the corrected games role, then listed position. Fielding
+outs cover 2,591 players and disagree with the games role for 184 (7.1%). They disagree
+with listed position for 457 of 2,385 comparable players (19.2%). A second calculation
+using only the listed group still produces nearly the same aggregate compression: 267
+at 45+ and 37 at 50+. Therefore the large movement is mostly the permanent-position
+assumption, not the source disagreement.
 
 The outside Top-100 check is diagnostic only and was not used for selection. On the
-56 covered hitters, granular FV MAE worsens from 8.90 to 9.64.
+56 covered hitters, granular FV MAE worsens from 8.90 to 9.65.
 
 ## Decision
 
