@@ -117,6 +117,48 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
         > 1e-8
     ).height:
         raise ValueError("prospect workload uncertainty does not preserve point means")
+    dependent_path = (
+        generated / "phase2-dependent-career-value" / as_of_date
+        / "dependent-career-value.parquet"
+    )
+    if not dependent_path.exists():
+        raise FileNotFoundError(
+            f"Phase 2 dependent career-value research is missing: {dependent_path}"
+        )
+    dependent = pl.read_parquet(dependent_path).select(
+        "player_id",
+        pl.col("mean_discounted_surplus_value_dollars").alias(
+            "research_mean_value_dollars"
+        ),
+        pl.col("p10_discounted_surplus_value_dollars").alias(
+            "research_p10_value_dollars"
+        ),
+        pl.col("median_discounted_surplus_value_dollars").alias(
+            "research_median_value_dollars"
+        ),
+        pl.col("p90_discounted_surplus_value_dollars").alias(
+            "research_p90_value_dollars"
+        ),
+        pl.col("mean_controlled_war").alias("research_mean_controlled_war"),
+        pl.col("p10_controlled_war").alias("research_p10_controlled_war"),
+        pl.col("median_controlled_war").alias("research_median_controlled_war"),
+        pl.col("p90_controlled_war").alias("research_p90_controlled_war"),
+        pl.col("expected_discounted_cost_dollars").alias(
+            "research_expected_cost_dollars"
+        ),
+        pl.col("arrival_probability").alias("research_arrival_probability"),
+        pl.col("bust_probability").alias("research_bust_probability"),
+        pl.col("regular_probability").alias("research_regular_probability"),
+        pl.col("star_probability").alias("research_star_probability"),
+    )
+    details = details.join(dependent, on="player_id", how="left", validate="1:1")
+    research_applicable = details.filter(
+        pl.col("three_tier_expected_workload").is_not_null()
+    )
+    if research_applicable.filter(
+        pl.col("research_mean_value_dollars").is_null()
+    ).height:
+        raise ValueError("dependent career-value research coverage is incomplete")
     return details
 
 

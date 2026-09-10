@@ -79,6 +79,19 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
                 "workload_war_p50": [1.0],
                 "workload_war_p90": [5.0],
                 "workload_only_star_probability": [0.01],
+                "research_mean_value_dollars": [12_000_000.0],
+                "research_p10_value_dollars": [0.0],
+                "research_median_value_dollars": [4_000_000.0],
+                "research_p90_value_dollars": [35_000_000.0],
+                "research_mean_controlled_war": [2.5],
+                "research_p10_controlled_war": [0.0],
+                "research_median_controlled_war": [1.0],
+                "research_p90_controlled_war": [7.0],
+                "research_expected_cost_dollars": [3_000_000.0],
+                "research_arrival_probability": [0.4],
+                "research_bust_probability": [0.65],
+                "research_regular_probability": [0.2],
+                "research_star_probability": [0.02],
             }
         ),
     )
@@ -87,6 +100,8 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
     assert nested["players"][0]["expected_workload"] == 1200.0
     assert nested["players"][0]["positional_runs_per_600"] == 12.5
     assert nested["players"][0]["workload_war_p90"] == 5.0
+    assert nested["players"][0]["research_mean_value"] == 12_000_000.0
+    assert nested["players"][0]["research_value_median"] == 4_000_000.0
 
 
 def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
@@ -102,6 +117,8 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert "Meaningful-role chance" in rendered
     assert "Established-role chance" in rendered
     assert "The conditional workload method passed an as-of replay" in rendered
+    assert "Dependent career simulation (research)" in rendered
+    assert "it does not set the ranking above" in rendered
 
 
 def test_latest_common_date_uses_only_complete_checkpoints(tmp_path) -> None:

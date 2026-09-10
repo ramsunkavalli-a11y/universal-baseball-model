@@ -13,7 +13,8 @@ FV grades, ranks and lists are never predictors or player-level floors.
 
 ## Path state
 
-Every simulated path contains six calendar years and records:
+Every simulated pre-MLB path contains a six-year arrival window followed by the full
+six-year post-debut career shape, requiring up to 11 calendar years, and records:
 
 - no arrival or first MLB season;
 - limited, meaningful-only or established outcome tier;
@@ -54,9 +55,16 @@ under the declared economic scenario.
 
 Use the player's actual starting rights and guaranteed terms when present. For
 pre-MLB players without a guarantee, accrue control from simulated MLB service rather
-than assuming service in every forecast year. Use versioned CBA rules, projected
+than assuming service in every forecast year or truncating late arrivals at an
+arbitrary six-calendar-year display boundary. Use versioned CBA rules, projected
 minimum salary, arbitration logic, explicit Super Two handling, options/buyouts,
 sequential non-tender decisions and present-value discounting.
+
+A club decision may use only information available before that decision. Same-season
+realized WAR can never determine whether the club tendered that season. Until a
+forecast-time non-tender policy is validated, the research engine carries all modeled
+controlled seasons and allows negative annual surplus; it does not grant the club
+perfect hindsight.
 
 Apply the tested market curve path by path. A high-WAR season may receive the declared
 2+ WAR market rate; dispersed low-WAR seasons do not inherit a star rate from an

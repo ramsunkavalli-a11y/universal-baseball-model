@@ -191,6 +191,27 @@ def build_explorer_payload(
                 "workload_only_star_probability": detail.get(
                     "workload_only_star_probability"
                 ),
+                "research_mean_value": detail.get("research_mean_value_dollars"),
+                "research_value_p10": detail.get("research_p10_value_dollars"),
+                "research_value_median": detail.get(
+                    "research_median_value_dollars"
+                ),
+                "research_value_p90": detail.get("research_p90_value_dollars"),
+                "research_mean_war": detail.get("research_mean_controlled_war"),
+                "research_war_p10": detail.get("research_p10_controlled_war"),
+                "research_war_median": detail.get("research_median_controlled_war"),
+                "research_war_p90": detail.get("research_p90_controlled_war"),
+                "research_expected_cost": detail.get(
+                    "research_expected_cost_dollars"
+                ),
+                "research_arrival_probability": detail.get(
+                    "research_arrival_probability"
+                ),
+                "research_bust_probability": detail.get("research_bust_probability"),
+                "research_regular_probability": detail.get(
+                    "research_regular_probability"
+                ),
+                "research_star_probability": detail.get("research_star_probability"),
                 "is_pre_mlb_value": is_pre_mlb_value,
                 "years": [] if is_pre_mlb_value else annual_lookup.get(player_id, []),
             }

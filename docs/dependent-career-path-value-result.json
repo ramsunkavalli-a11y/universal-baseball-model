@@ -1,0 +1,73 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundaries": {
+    "2025_is_development_not_confirmation": true,
+    "2026_partial_outcomes_used": false,
+    "arrival_timing_constant_annual_hazard_provisional": true,
+    "control_accrues_only_in_simulated_active_seasons": true,
+    "forecast_time_non_tender_policy_pending": true,
+    "full_active_season_service_approximation": true,
+    "full_six_year_post_arrival_path_retained": true,
+    "guaranteed_contract_and_option_overlays_pending": true,
+    "historical_failures_and_zero_years_retained": true,
+    "market_value_uses_path_annual_war_tiers": true,
+    "performance_posterior_shock_persistent_across_years": true,
+    "production_values_changed": false,
+    "publication_fv_or_rank_used": false,
+    "same_season_realized_war_never_drives_tender_decision": true,
+    "season_event_noise_independent_conditional_on_path": true,
+    "successor_cba_is_planning_scenario": true,
+    "super_two_simulation_pending": true,
+    "whole_historical_paths_resampled": true
+  },
+  "contract": "docs/dependent-career-path-value-plan.md",
+  "forecast_calendar_years": [
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037
+  ],
+  "historical_annual_rows": 23670,
+  "historical_path_player_components": 3945,
+  "historical_path_players": 2810,
+  "maximum_historical_window_end_year": 2025,
+  "model_id": "dependent_pre_mlb_career_value_research_v1",
+  "players": 6719,
+  "report_schema_version": "0.1",
+  "simulation_draws_per_player": 2048,
+  "source_files": {
+    "reports/generated/phase2-conditional-war-paths/2026-09-08/report.json": "79c36fcec0ccbe0070695d55028450e859a14ae69aea3880532fe4300bbb136b",
+    "reports/generated/phase2-conditional-war-paths/2026-09-08/tables/hitter_conditional_war_rates.parquet": "dcba53388506c901552e390f817faffdd47931b522a3c55c221cc98896115c2a",
+    "reports/generated/phase2-conditional-war-paths/2026-09-08/tables/pitcher_conditional_war_rates.parquet": "43d5396c273043e35cc7b9ab3a9e263871b17b38040f3dd3a052b758ddb2039c",
+    "reports/generated/phase2-current-value/2026-09-08/value-records.parquet": "f9060e42aca28c0a264190d668552dcd4b63f287082888796e9c1b9b0f196c09",
+    "reports/generated/phase2-nested-career-fv/2026-09-08/nested-career-model-fv.parquet": "f651b0dc12fbccc81ea890700c617ffd56b05a2cc5cd7c3a9326ff6caceda821",
+    "reports/generated/prospect-outcome-quality-2009-2025/post-debut-annual-workload-paths.parquet": "dd8db40f740e3322e9748e6575ee6bb9e2d30d230131e7f7eb1305766edce7ec"
+  },
+  "status": "dependent_career_value_research_not_promoted",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "356271fe6d52573846bedb577258c0583360e7ecc0b24221b23bc15123c695f1",
+    "file_size_bytes": 564395,
+    "path": "reports\\generated\\phase2-dependent-career-value\\2026-09-08\\dependent-career-value.parquet",
+    "row_count": 6719,
+    "schema_sha256": "6a0173190c2900780fda40f9bc05a5c07551330d1de37c83d09d6f63577fcca0",
+    "table_name": "phase2_dependent_pre_mlb_career_value"
+  },
+  "summary": {
+    "mean_controlled_war": 0.2534463840318992,
+    "mean_expected_cost_dollars": 596777.2773584197,
+    "mean_star_probability": 0.0008647207313216252,
+    "mean_value_dollars": 1614175.7535795674,
+    "mean_value_to_old_benchmark_ratio": 0.6833229523879132,
+    "mean_war_to_old_point_ratio": 0.9210589262973018,
+    "median_player_median_value_dollars": 0.0,
+    "players_with_zero_median_value": 6498
+  }
+}
