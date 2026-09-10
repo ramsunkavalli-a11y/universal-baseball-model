@@ -19,8 +19,9 @@ of pitchers with a start does not mean there are more traditional starters. Incr
 use of openers and bullpen games gives some relievers a start with very few BF. A
 binary starter label therefore no longer implies the same workload concentration.
 
-This directly supports the prior validation result: later established pitchers fell
-below old workload ranges too often. It also rules out raising pitcher workload merely
+This directly supports the prior descriptive cohort result: later established pitchers
+fell below old workload ranges too often. That comparison is not chronology-safe
+validation, but the environment shift still rules out raising pitcher workload merely
 to make prospect values look more familiar.
 
 The next candidate should represent each pitcher's workload relative to his season's

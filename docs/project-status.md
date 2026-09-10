@@ -655,7 +655,7 @@ test failure was observed.
   player-bootstrap 95% intervals narrowly crossed zero. Retain 1,200 PA. The result
   argues against applying more shrinkage merely to suppress the prospect top end.
 - The official MLB pitcher-workload environment audit explains the later-cohort
-  under-coverage. Active pitchers increased 13.2% from the 2015-2019 era to 2021-2024,
+  distribution shift. Active pitchers increased 13.2% from the 2015-2019 era to 2021-2024,
   while mean/median BF per pitcher fell about 13% and P90 BF fell 16.3%. More pitchers
   also recorded a start, partly because openers and bullpen games make a start count a
   weak proxy for a rotation role. Next model workload relative to the season

@@ -95,12 +95,14 @@ at 45 FV with 1.83 expected six-year WAR. Workload-only uncertainty is displayed
 preserves every point mean. A broader component-plus-workload distribution exists as
 research, but is not presented as calibrated.
 
-The chronology-safe workload check passes its limited hitter target but fails for
-pitchers: nominal 80% coverage is 66.3%. Modern MLB uses about 13% more pitchers than
-2015-2019 while mean/median BF per pitcher is about 13% lower. Openers and bullpen
-games also make a recorded start an unreliable rotation-role label. The next pitcher
-workload model must separate the league environment from player-relative role and use
-start share/BF per start rather than binary starts.
+A descriptive early-versus-late cohort comparison found 74.7% hitter and 66.3%
+pitcher coverage for nominal 80% ranges. It is not chronology-safe confirmation:
+six-year outcomes for the earlier debut cohorts extend into later calendar years.
+Modern MLB uses about 13% more pitchers than 2015-2019 while mean/median BF per pitcher
+is about 13% lower. Openers and bullpen games also make a recorded start an unreliable
+rotation-role label. The next pitcher workload model must separate the league
+environment from player-relative role and use start share/BF per start rather than
+binary starts.
 
 An automated demographic feature harness now tests official age-adjacent profile,
 handedness, physical, position and birthplace fields in stable and full groups. The

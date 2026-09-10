@@ -19,9 +19,10 @@ years after arrival, and keeps Model FV separate from contract surplus. Publicat
 player grades are validation only.
 
 The current nested career preview reduces the hitter 50+ group from 352 to 86 without
-using a grade quota. Its workload-only ranges preserve point values exactly. Historical
-coverage is acceptable for hitters but too narrow for pitchers; the viewer labels that
-pitcher limitation. Official totals show why: modern MLB spreads roughly the same BF
+using a grade quota. Its workload-only ranges preserve point values exactly. A
+descriptive early-versus-late cohort comparison looks steadier for hitters than for
+pitchers, but it is not chronology-safe confirmation. Official totals show why modern
+MLB spreads roughly the same BF
 across 13% more pitchers, and opener/bullpen-game starts weaken a simple starter label.
 See the [current stopping point](docs/current-cycle-stopping-point-2026-09-09.md).
 

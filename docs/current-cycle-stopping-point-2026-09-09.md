@@ -17,7 +17,8 @@ Status: clean handoff; private preview works, publication remains blocked.
 
 ## Accepted or retained
 
-- Hitter conditional workload coverage is usable as a labeled empirical reference.
+- Hitter conditional workload distribution is usable as a labeled empirical reference;
+  it is not historically confirmed.
 - The translated hitter and pitcher component baselines remain.
 - Hitter component regression remains 1,200 PA: a 400-PA challenger improved point
   scores but missed the predeclared bootstrap gate.
@@ -39,11 +40,11 @@ Status: clean handoff; private preview works, publication remains blocked.
 
 ## Main finding to carry forward
 
-Pitcher workload is the most important open modeling issue. Nominal 80% workload
-coverage was only 66.3%. From 2015-2019 to 2021-2024, active MLB pitchers increased
-13.2%, mean/median BF per pitcher fell about 13%, and P90 BF fell 16.3%. More pitchers
-recording a start partly reflects openers and bullpen games, not more traditional
-starters.
+Pitcher workload is the most important open modeling issue. In a descriptive cohort
+comparison, nominal 80% workload coverage was only 66.3%; this was not a chronology-
+safe forecast test. From 2015-2019 to 2021-2024, active MLB pitchers increased 13.2%,
+mean/median BF per pitcher fell about 13%, and P90 BF fell 16.3%. More pitchers recording
+a start partly reflects openers and bullpen games, not more traditional starters.
 
 The next model should forecast the league-wide pitcher usage environment separately,
 then place a player within it using rotation-start share, BF per start, relief/bulk
@@ -58,4 +59,4 @@ failure is present. The private build passes all 18 structural model-law checks.
 
 Protected partial-2026 outcomes remain closed. The next clean statistical stopping
 gate is a frozen pitcher environment/role candidate or a later complete historical
-cohort—not more tuning against the already opened 2018-2019 workload holdout.
+cohort—not more tuning against the already inspected cohort-stability comparison.

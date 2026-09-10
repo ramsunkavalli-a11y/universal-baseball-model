@@ -60,10 +60,12 @@ outcome is zero because non-arrival remains more likely than arrival, while the 
 tail is valuable. Publication FV did not set his grade.
 
 The workload-only mixture covers all 6,719 pre-MLB paths and exactly reproduces point
-WAR. Historical P10-P90 coverage is 74.7% for hitters, with 80% inside the sampling
-interval, but only 66.3% for pitchers. Pitcher ranges are therefore labeled descriptive
-and too narrow. A component-plus-workload research layer exists but remains off the
-screen until end-to-end historical calibration.
+WAR. In a descriptive early-versus-late cohort comparison, P10-P90 coverage is 74.7%
+for hitters and 66.3% for pitchers. This is not chronology-safe confirmation because
+the earlier cohorts' six-year outcomes overlap later calendar years. Pitcher ranges
+are therefore labeled descriptive and potentially too narrow. A component-plus-
+workload research layer exists but remains off the screen until end-to-end historical
+calibration.
 
 ## Guardrails
 
