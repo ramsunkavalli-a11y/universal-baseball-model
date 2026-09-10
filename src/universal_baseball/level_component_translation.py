@@ -212,7 +212,7 @@ def build_translated_affiliated_profiles(
     component_columns: tuple[str, ...],
     current_season: int,
     reference_season: int,
-    regression_exposure: float,
+    regression_exposure: float | dict[str, float],
     pseudocount: float = 0.5,
     level_evidence_multiplier: dict[str, float] | None = None,
 ) -> pl.DataFrame:
@@ -220,7 +220,22 @@ def build_translated_affiliated_profiles(
 
     if set(players.columns) != {"player_id"}:
         raise ValueError("translated profile denominator must contain only player_id")
-    if regression_exposure <= 0 or pseudocount <= 0:
+    component_specific_regression = isinstance(regression_exposure, dict)
+    if component_specific_regression:
+        if set(regression_exposure) != set(component_columns):
+            raise ValueError("component regression exposure must cover every component")
+        regression_by_component = {
+            component: float(regression_exposure[component])
+            for component in component_columns
+        }
+    else:
+        regression_by_component = {
+            component: float(regression_exposure) for component in component_columns
+        }
+    if (
+        any(not math.isfinite(value) or value <= 0 for value in regression_by_component.values())
+        or pseudocount <= 0
+    ):
         raise ValueError("regression exposure and pseudocount must be positive")
     multipliers = level_evidence_multiplier or DEFAULT_LEVEL_EVIDENCE_MULTIPLIER
     if set(multipliers) != set(LEVEL_ORDER) or any(
@@ -286,22 +301,36 @@ def build_translated_affiliated_profiles(
     output = []
     for row in joined.iter_rows(named=True):
         evidence = float(row.get("weighted_exposure") or 0.0)
-        probabilities = {
+        raw_probabilities = {
             component: (
                 float(row.get(f"weighted_{component}") or 0.0)
-                + regression_exposure * prior[component]
+                + regression_by_component[component] * prior[component]
             )
-            / (evidence + regression_exposure)
+            / (evidence + regression_by_component[component])
             for component in component_columns
         }
-        output.append(
-            {
-                "player_id": int(row["player_id"]),
-                "weighted_affiliated_exposure": evidence,
-                "affiliated_reliability": evidence / (evidence + regression_exposure),
-                **{f"p_{component}": probabilities[component] for component in component_columns},
-            }
+        probability_total = sum(raw_probabilities.values())
+        probabilities = {
+            component: raw_probabilities[component] / probability_total
+            for component in component_columns
+        }
+        effective_regression = sum(
+            prior[component] * regression_by_component[component]
+            for component in component_columns
         )
+        result = {
+            "player_id": int(row["player_id"]),
+            "weighted_affiliated_exposure": evidence,
+            "affiliated_reliability": evidence / (evidence + effective_regression),
+            **{f"p_{component}": probabilities[component] for component in component_columns},
+        }
+        if component_specific_regression:
+            result.update({
+                f"affiliated_reliability_{component}": evidence
+                / (evidence + regression_by_component[component])
+                for component in component_columns
+            })
+        output.append(result)
     return pl.DataFrame(output).sort("player_id")
 
 

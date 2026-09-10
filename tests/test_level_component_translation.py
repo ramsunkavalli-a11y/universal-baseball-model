@@ -86,6 +86,44 @@ def test_translated_profiles_cover_no_history_players_with_population_prior() ->
     assert (probability_sums - 1.0).abs().max() < 1e-12
 
 
+def test_component_specific_regression_stays_coherent() -> None:
+    fit = fit_same_season_component_translation(
+        _source(), exposure_column="events", component_columns=("good", "other"),
+        completed_seasons=(2024,), minimum_level_exposure=30,
+    )
+    history = pl.concat([
+        _source().with_columns(pl.lit(2026).alias("season")),
+        pl.DataFrame([{
+            "season": 2025, "player_id": 99, "level_group": "MLB",
+            "events": 100, "good": 50, "other": 50,
+        }]),
+    ], how="vertical_relaxed")
+    profiles = build_translated_affiliated_profiles(
+        pl.DataFrame({"player_id": [1]}), history, fit.offsets,
+        exposure_column="events", component_columns=("good", "other"),
+        current_season=2026, reference_season=2025,
+        regression_exposure={"good": 25.0, "other": 400.0},
+    )
+    assert math.isclose(profiles.item(0, "p_good") + profiles.item(0, "p_other"), 1.0)
+    assert profiles.item(0, "affiliated_reliability_good") > profiles.item(
+        0, "affiliated_reliability_other"
+    )
+
+
+def test_component_specific_regression_requires_complete_mapping() -> None:
+    fit = fit_same_season_component_translation(
+        _source(), exposure_column="events", component_columns=("good", "other"),
+        completed_seasons=(2024,), minimum_level_exposure=30,
+    )
+    with pytest.raises(ValueError, match="cover every component"):
+        build_translated_affiliated_profiles(
+            pl.DataFrame({"player_id": [1]}), _source(), fit.offsets,
+            exposure_column="events", component_columns=("good", "other"),
+            current_season=2024, reference_season=2024,
+            regression_exposure={"good": 100.0},
+        )
+
+
 def test_component_profile_scorer_reports_proper_scores() -> None:
     predictions = pl.DataFrame(
         {"player_id": [1, 2], "p_good": [0.7, 0.4], "p_other": [0.3, 0.6]}

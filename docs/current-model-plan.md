@@ -90,6 +90,14 @@ component shrinkage independently inside the development window and freeze it be
 later-season scoring. Do not change playable values until the joint production gate
 passes. Do not reopen demographic families or use outside FV to repair rankings.
 
+The complete transition denominator is now implemented: 5,018 of 21,742 observed
+source player-seasons have zero MLB workload the next year and can no longer vanish
+from the combined score. The first component-specific affiliated pitcher regression
+also finished and failed: its 2024 gain reversed on 2025 in both proper scores. Retain
+the 800-BF universal pitcher prior, do not search more combinations on those seasons,
+and proceed to attaching cutoff-safe age and incumbent opportunity predictions to the
+joint transition scoreboard.
+
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.
