@@ -207,10 +207,13 @@ def main() -> int:
     membership = pl.read_parquet(args.membership_path)
     skill = pl.read_parquet(args.skill_path)
     demographics = pl.read_parquet(args.demographics_path)
+    debut_dates = pl.read_parquet(
+        "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet"
+    )
     draft_history = pl.read_parquet(args.draft_history_path)
     mlb = pl.read_parquet(args.mlb_path)
     train = build_arrival_cohort(
-        snapshots, stats, membership, skill,
+        snapshots, stats, membership, skill, debut_dates,
         snapshot_year=2018, horizon=2, player_type="pitcher",
         demographics=demographics,
         draft_history=draft_history,
@@ -219,7 +222,7 @@ def main() -> int:
         on="player_id", how="inner", validate="1:1",
     )
     outer = build_arrival_cohort(
-        snapshots, stats, membership, skill,
+        snapshots, stats, membership, skill, debut_dates,
         snapshot_year=2021, horizon=4, player_type="pitcher",
         demographics=demographics,
         draft_history=draft_history,

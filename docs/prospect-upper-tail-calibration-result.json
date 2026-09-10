@@ -1,5 +1,5 @@
 {
-  "as_of_date": "2026-09-09",
+  "as_of_date": "2026-09-08",
   "boundaries": {
     "current_probabilities_changed": false,
     "demographic_or_organization_features_added": false,
@@ -24,508 +24,508 @@
       "arrival": {
         "calibration_parameters": {
           "intercept_only": {
-            "intercept": 0.3949169648172761,
+            "intercept": 0.36338371391650354,
             "slope": 1.0
           },
           "platt_c_1": {
-            "intercept": 0.36819236251209486,
-            "slope": 0.9864819360546732
+            "intercept": 0.3040335595932195,
+            "slope": 0.9696057041931088
           }
         },
         "condition": null,
         "development_candidates": {
           "intercept_only": {
-            "brier": 0.053311279587826096,
-            "log_loss": 0.19043944208467367,
-            "observed_rate": 0.0794478527607362,
-            "players": 3260,
-            "predicted_rate": 0.0794478527607362
+            "brier": 0.05329696346254495,
+            "log_loss": 0.19049354248017833,
+            "observed_rate": 0.07905259920024608,
+            "players": 3251,
+            "predicted_rate": 0.07905259920024606
           },
           "platt_c_1": {
-            "brier": 0.05334363753175564,
-            "log_loss": 0.19043346340527367,
-            "observed_rate": 0.0794478527607362,
-            "players": 3260,
-            "predicted_rate": 0.0794542365638007
+            "brier": 0.05336466903492757,
+            "log_loss": 0.19045085708893028,
+            "observed_rate": 0.07905259920024608,
+            "players": 3251,
+            "predicted_rate": 0.07906927314979757
           }
         },
-        "development_players": 3260,
+        "development_players": 3251,
         "development_raw": {
-          "brier": 0.054452772237220275,
-          "log_loss": 0.19440958573456493,
-          "observed_rate": 0.0794478527607362,
-          "players": 3260,
-          "predicted_rate": 0.060053177939191967
+          "brier": 0.05419740983313746,
+          "log_loss": 0.19384067882300263,
+          "observed_rate": 0.07905259920024608,
+          "players": 3251,
+          "predicted_rate": 0.06122860261260856
         },
         "outer_candidate": {
-          "brier": 0.05261592380299728,
-          "log_loss": 0.18622748747854598,
+          "brier": 0.05030455621883238,
+          "log_loss": 0.180033361473349,
           "observed_rate": 0.06502525252525253,
           "players": 3168,
-          "predicted_rate": 0.13332914858902986
+          "predicted_rate": 0.12627715869368478
         },
         "outer_candidate_calibration": {
-          "intercept": -1.0451301527400123,
+          "intercept": -0.9120305067186036,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.00473186119873817,
+              "observed_rate": 0.0031545741324921135,
               "players": 634,
-              "predicted_rate": 0.005162076640246597
+              "predicted_rate": 0.005344109479759141
             },
             {
               "bin": 2,
-              "observed_rate": 0.007886435331230283,
+              "observed_rate": 0.00946372239747634,
               "players": 634,
-              "predicted_rate": 0.01977391811864409
+              "predicted_rate": 0.01948369365592317
             },
             {
               "bin": 3,
-              "observed_rate": 0.00473186119873817,
+              "observed_rate": 0.0031545741324921135,
               "players": 634,
-              "predicted_rate": 0.04417696699001072
+              "predicted_rate": 0.04222837358453901
             },
             {
               "bin": 4,
-              "observed_rate": 0.03317535545023697,
+              "observed_rate": 0.03475513428120063,
               "players": 633,
-              "predicted_rate": 0.11641348731159533
+              "predicted_rate": 0.10832324527388305
             },
             {
               "bin": 5,
               "observed_rate": 0.27488151658767773,
               "players": 633,
-              "predicted_rate": 0.4816420023902105
+              "predicted_rate": 0.45649890749226724
             }
           ],
-          "slope": 1.1288341335468313
+          "slope": 1.1513821447145052
         },
         "outer_candidate_top_decile": {
-          "minimum_probability": 0.46386597775634236,
+          "minimum_probability": 0.43626121704135845,
           "observed_rate": 0.43217665615141954,
           "players": 317,
-          "predicted_rate": 0.6180749874036476
+          "predicted_rate": 0.5898760658967312
         },
         "outer_candidate_top_one_percent": {
-          "minimum_probability": 0.8016594393844886,
-          "observed_rate": 0.8125,
+          "minimum_probability": 0.7862759400853967,
+          "observed_rate": 0.78125,
           "players": 32,
-          "predicted_rate": 0.9033129954435433
+          "predicted_rate": 0.8972854048484059
         },
         "outer_paired_bootstrap": {
           "brier": {
-            "ci_high": 0.007945881108535804,
-            "ci_low": 0.005555402344017885,
-            "difference": 0.006732144718342978,
+            "ci_high": 0.006121632175955693,
+            "ci_low": 0.004128990616828568,
+            "difference": 0.005108603128591753,
             "probability_candidate_better": 0.0
           },
           "log_loss": {
-            "ci_high": 0.023949960687534928,
-            "ci_low": 0.017969183343979876,
-            "difference": 0.02091432719461805,
+            "ci_high": 0.019576925553727014,
+            "ci_low": 0.014495464889456817,
+            "difference": 0.017016636647166232,
             "probability_candidate_better": 0.0
           },
           "resamples": 2000
         },
         "outer_players": 3168,
         "outer_raw": {
-          "brier": 0.045883779084654304,
-          "log_loss": 0.16531316028392792,
+          "brier": 0.04519595309024064,
+          "log_loss": 0.16301672482618276,
           "observed_rate": 0.06502525252525253,
           "players": 3168,
-          "predicted_rate": 0.1055863652706791
+          "predicted_rate": 0.10191620949983188
         },
         "outer_raw_calibration": {
-          "intercept": -0.6288568497167312,
+          "intercept": -0.5616730972074016,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.00473186119873817,
+              "observed_rate": 0.0031545741324921135,
               "players": 634,
-              "predicted_rate": 0.0033273298549489293
+              "predicted_rate": 0.0033508433699762723
             },
             {
               "bin": 2,
-              "observed_rate": 0.007886435331230283,
+              "observed_rate": 0.00946372239747634,
               "players": 634,
-              "predicted_rate": 0.013007628268018347
+              "predicted_rate": 0.012700360627219295
             },
             {
               "bin": 3,
-              "observed_rate": 0.00473186119873817,
+              "observed_rate": 0.0031545741324921135,
               "players": 634,
-              "predicted_rate": 0.02963531417770618
+              "predicted_rate": 0.028426483614494538
             },
             {
               "bin": 4,
-              "observed_rate": 0.03317535545023697,
+              "observed_rate": 0.03475513428120063,
               "players": 633,
-              "predicted_rate": 0.08164100497860953
+              "predicted_rate": 0.07729341951503127
             },
             {
               "bin": 5,
               "observed_rate": 0.27488151658767773,
               "players": 633,
-              "predicted_rate": 0.4007483355251573
+              "predicted_rate": 0.38822269067399856
             }
           ],
-          "slope": 1.1136338843289983
+          "slope": 1.116442384936149
         },
         "outer_raw_top_decile": {
-          "minimum_probability": 0.37284980224761005,
+          "minimum_probability": 0.35940449412472536,
           "observed_rate": 0.43217665615141954,
           "players": 317,
-          "predicted_rate": 0.5353056327693616
+          "predicted_rate": 0.5208648381404527
         },
         "outer_raw_top_one_percent": {
-          "minimum_probability": 0.7393513453378139,
-          "observed_rate": 0.8125,
+          "minimum_probability": 0.7368948250336931,
+          "observed_rate": 0.78125,
           "players": 32,
-          "predicted_rate": 0.8706079455121144
+          "predicted_rate": 0.8731814720993241
         },
         "passed_outer": false,
         "selected_calibration": "platt_c_1",
         "selected_parameters": {
-          "intercept": 0.36819236251209486,
-          "slope": 0.9864819360546732
+          "intercept": 0.3040335595932195,
+          "slope": 0.9696057041931088
         }
       },
       "established_given_meaningful": {
         "calibration_parameters": {
           "intercept_only": {
-            "intercept": 0.45928771120390377,
+            "intercept": 0.4174757464857716,
             "slope": 1.0
           },
           "platt_c_1": {
-            "intercept": 0.1584197687910816,
-            "slope": 0.27522259876496813
+            "intercept": 0.09443015501786645,
+            "slope": 0.18230458330227128
           }
         },
         "condition": "meaningful_role_within_horizon",
         "development_candidates": {
           "intercept_only": {
-            "brier": 0.25061984640407253,
-            "log_loss": 0.6944448005569831,
-            "observed_rate": 0.5111111111111111,
-            "players": 90,
-            "predicted_rate": 0.5111111111111111
+            "brier": 0.25156619606612785,
+            "log_loss": 0.6963281592168142,
+            "observed_rate": 0.5056179775280899,
+            "players": 89,
+            "predicted_rate": 0.5056179775280898
           },
           "platt_c_1": {
-            "brier": 0.2490628364378968,
-            "log_loss": 0.6912729790084887,
-            "observed_rate": 0.5111111111111111,
-            "players": 90,
-            "predicted_rate": 0.5111001853180586
+            "brier": 0.24964217423541596,
+            "log_loss": 0.6924317448241357,
+            "observed_rate": 0.5056179775280899,
+            "players": 89,
+            "predicted_rate": 0.5056161894494752
           }
         },
-        "development_players": 90,
+        "development_players": 89,
         "development_raw": {
-          "brier": 0.26296917089368393,
-          "log_loss": 0.7201390287651169,
-          "observed_rate": 0.5111111111111111,
-          "players": 90,
-          "predicted_rate": 0.3999542160545373
+          "brier": 0.2618441175929365,
+          "log_loss": 0.7176382523374317,
+          "observed_rate": 0.5056179775280899,
+          "players": 89,
+          "predicted_rate": 0.4041470557305668
         },
         "outer_candidate": {
-          "brier": 0.24996260926714872,
-          "log_loss": 0.6930668183662207,
+          "brier": 0.2497235106912564,
+          "log_loss": 0.6925916726989075,
           "observed_rate": 0.47619047619047616,
           "players": 63,
-          "predicted_rate": 0.5284540825996612
+          "predicted_rate": 0.5161431629819359
         },
         "outer_candidate_calibration": {
-          "intercept": -0.5770325661652407,
+          "intercept": -0.49646575238728746,
           "reliability_bins": [
             {
               "bin": 1,
               "observed_rate": 0.38461538461538464,
               "players": 13,
-              "predicted_rate": 0.5022549918872035
+              "predicted_rate": 0.49921373580553685
             },
             {
               "bin": 2,
-              "observed_rate": 0.38461538461538464,
+              "observed_rate": 0.5384615384615384,
               "players": 13,
-              "predicted_rate": 0.5215554561238288
+              "predicted_rate": 0.5130374749631239
             },
             {
               "bin": 3,
-              "observed_rate": 0.46153846153846156,
+              "observed_rate": 0.38461538461538464,
               "players": 13,
-              "predicted_rate": 0.5287709496722462
+              "predicted_rate": 0.5157269942352093
             },
             {
               "bin": 4,
-              "observed_rate": 0.6666666666666666,
+              "observed_rate": 0.5,
               "players": 12,
-              "predicted_rate": 0.5397376833731659
+              "predicted_rate": 0.5238360022310263
             },
             {
               "bin": 5,
-              "observed_rate": 0.5,
+              "observed_rate": 0.5833333333333334,
               "players": 12,
-              "predicted_rate": 0.5526830694515041
+              "predicted_rate": 0.5306058813366111
             }
           ],
-          "slope": 4.203383979264524
+          "slope": 6.177200556342071
         },
         "outer_candidate_top_decile": {
-          "minimum_probability": 0.551510300219191,
+          "minimum_probability": 0.5299088218481042,
           "observed_rate": 0.5714285714285714,
           "players": 7,
-          "predicted_rate": 0.5547495656734981
+          "predicted_rate": 0.5315788545823942
         },
         "outer_candidate_top_one_percent": {
-          "minimum_probability": 0.5571405402289913,
-          "observed_rate": 0.0,
+          "minimum_probability": 0.5327139658494343,
+          "observed_rate": 1.0,
           "players": 1,
-          "predicted_rate": 0.5571405402289913
+          "predicted_rate": 0.5327139658494343
         },
         "outer_paired_bootstrap": {
           "brier": {
-            "ci_high": 0.025416540573868725,
-            "ci_low": -0.014285572159292395,
-            "difference": 0.005465319912371717,
-            "probability_candidate_better": 0.311
+            "ci_high": 0.022520431315113297,
+            "ci_low": -0.013554728381505189,
+            "difference": 0.004376655935675659,
+            "probability_candidate_better": 0.3355
           },
           "log_loss": {
-            "ci_high": 0.051437971910128485,
-            "ci_low": -0.02932059035817924,
-            "difference": 0.010845413878047196,
-            "probability_candidate_better": 0.318
+            "ci_high": 0.045598893637151805,
+            "ci_low": -0.027733613898769095,
+            "difference": 0.008663072124815145,
+            "probability_candidate_better": 0.3415
           },
           "resamples": 2000
         },
         "outer_players": 63,
         "outer_raw": {
-          "brier": 0.24449728935477702,
-          "log_loss": 0.6822214044881736,
+          "brier": 0.24534685475558074,
+          "log_loss": 0.6839286005740923,
           "observed_rate": 0.47619047619047616,
           "players": 63,
-          "predicted_rate": 0.46046839926016275
+          "predicted_rate": 0.45984331339661255
         },
         "outer_raw_calibration": {
-          "intercept": 0.08873651654703035,
+          "intercept": 0.08653672064704335,
           "reliability_bins": [
             {
               "bin": 1,
               "observed_rate": 0.38461538461538464,
               "players": 13,
-              "predicted_rate": 0.3676016845743467
+              "predicted_rate": 0.3693752057418726
             },
             {
               "bin": 2,
-              "observed_rate": 0.38461538461538464,
+              "observed_rate": 0.5384615384615384,
               "players": 13,
-              "predicted_rate": 0.4348667485625518
+              "predicted_rate": 0.442300204967059
             },
             {
               "bin": 3,
-              "observed_rate": 0.46153846153846156,
+              "observed_rate": 0.38461538461538464,
               "players": 13,
-              "predicted_rate": 0.4608343152007483
+              "predicted_rate": 0.45690914346744255
             },
             {
               "bin": 4,
-              "observed_rate": 0.6666666666666666,
+              "observed_rate": 0.5,
               "players": 12,
-              "predicted_rate": 0.5008130826052875
+              "predicted_rate": 0.5013625382295641
             },
             {
               "bin": 5,
-              "observed_rate": 0.5,
+              "observed_rate": 0.5833333333333334,
               "players": 12,
-              "predicted_rate": 0.5480680361447833
+              "predicted_rate": 0.5385149234115798
             }
           ],
-          "slope": 1.1559741091254265
+          "slope": 1.1246380446068678
         },
         "outer_raw_top_decile": {
-          "minimum_probability": 0.5438109252070606,
+          "minimum_probability": 0.5347047934162542,
           "observed_rate": 0.5714285714285714,
           "players": 7,
-          "predicted_rate": 0.555590305510345
+          "predicted_rate": 0.5438403547106855
         },
         "outer_raw_top_one_percent": {
-          "minimum_probability": 0.5642677379882319,
-          "observed_rate": 0.0,
+          "minimum_probability": 0.5500403550657752,
+          "observed_rate": 1.0,
           "players": 1,
-          "predicted_rate": 0.5642677379882319
+          "predicted_rate": 0.5500403550657752
         },
         "passed_outer": false,
         "selected_calibration": "platt_c_1",
         "selected_parameters": {
-          "intercept": 0.1584197687910816,
-          "slope": 0.27522259876496813
+          "intercept": 0.09443015501786645,
+          "slope": 0.18230458330227128
         }
       },
       "meaningful_given_arrival": {
         "calibration_parameters": {
           "intercept_only": {
-            "intercept": -0.1340483583554134,
+            "intercept": -0.13769988467316205,
             "slope": 1.0
           },
           "platt_c_1": {
-            "intercept": -0.33529248994666777,
-            "slope": 0.5502430725966151
+            "intercept": -0.333872200087286,
+            "slope": 0.5592899720035724
           }
         },
         "condition": "arrived_within_horizon",
         "development_candidates": {
           "intercept_only": {
-            "brier": 0.21920234524425283,
-            "log_loss": 0.6355875626645506,
-            "observed_rate": 0.3474903474903475,
-            "players": 259,
-            "predicted_rate": 0.3474903474903475
+            "brier": 0.21908663022440933,
+            "log_loss": 0.6327598245703864,
+            "observed_rate": 0.3463035019455253,
+            "players": 257,
+            "predicted_rate": 0.3463035019455252
           },
           "platt_c_1": {
-            "brier": 0.21693499007970438,
-            "log_loss": 0.6251991828330016,
-            "observed_rate": 0.3474903474903475,
-            "players": 259,
-            "predicted_rate": 0.34747680586389695
+            "brier": 0.2158168476591911,
+            "log_loss": 0.6218716306569272,
+            "observed_rate": 0.3463035019455253,
+            "players": 257,
+            "predicted_rate": 0.34627234095818715
           }
         },
-        "development_players": 259,
+        "development_players": 257,
         "development_raw": {
-          "brier": 0.22068934236709323,
-          "log_loss": 0.6374229299916377,
-          "observed_rate": 0.3474903474903475,
-          "players": 259,
-          "predicted_rate": 0.3750074306625886
+          "brier": 0.22064714839225344,
+          "log_loss": 0.6346723321488086,
+          "observed_rate": 0.3463035019455253,
+          "players": 257,
+          "predicted_rate": 0.37421946895076685
         },
         "outer_candidate": {
-          "brier": 0.19855111458547384,
-          "log_loss": 0.583328262623152,
+          "brier": 0.19791359945157103,
+          "log_loss": 0.5818372059662865,
           "observed_rate": 0.3058252427184466,
           "players": 206,
-          "predicted_rate": 0.318956658953067
+          "predicted_rate": 0.3153500346366139
         },
         "outer_candidate_calibration": {
-          "intercept": 0.5798818192573499,
+          "intercept": 0.4940332565014433,
           "reliability_bins": [
             {
               "bin": 1,
               "observed_rate": 0.14285714285714285,
               "players": 42,
-              "predicted_rate": 0.21431264177273932
+              "predicted_rate": 0.20434060830272469
             },
             {
               "bin": 2,
-              "observed_rate": 0.21951219512195122,
+              "observed_rate": 0.24390243902439024,
               "players": 41,
-              "predicted_rate": 0.27673206283012847
+              "predicted_rate": 0.2710850350256139
             },
             {
               "bin": 3,
               "observed_rate": 0.2926829268292683,
               "players": 41,
-              "predicted_rate": 0.3234777429513336
+              "predicted_rate": 0.3184856416401026
             },
             {
               "bin": 4,
-              "observed_rate": 0.34146341463414637,
+              "observed_rate": 0.3170731707317073,
               "players": 41,
-              "predicted_rate": 0.35828405076684705
+              "predicted_rate": 0.3552148325212349
             },
             {
               "bin": 5,
               "observed_rate": 0.5365853658536586,
               "players": 41,
-              "predicted_rate": 0.42452908954624596
+              "predicted_rate": 0.430331602677147
             }
           ],
-          "slope": 1.9003535775737943
+          "slope": 1.740784578165854
         },
         "outer_candidate_top_decile": {
-          "minimum_probability": 0.4135873209625173,
+          "minimum_probability": 0.4186782004952556,
           "observed_rate": 0.6190476190476191,
           "players": 21,
-          "predicted_rate": 0.4517653917007975
+          "predicted_rate": 0.4622554835104651
         },
         "outer_candidate_top_one_percent": {
-          "minimum_probability": 0.48119300577356855,
+          "minimum_probability": 0.4966291863820396,
           "observed_rate": 1.0,
           "players": 3,
-          "predicted_rate": 0.5118582263868984
+          "predicted_rate": 0.5311271132756267
         },
         "outer_paired_bootstrap": {
           "brier": {
-            "ci_high": 0.009648638046520365,
-            "ci_low": -0.0035988434367904497,
-            "difference": 0.0029342047680231157,
-            "probability_candidate_better": 0.183
+            "ci_high": 0.0093505097633424,
+            "ci_low": -0.004332233178130585,
+            "difference": 0.002379040941662974,
+            "probability_candidate_better": 0.233
           },
           "log_loss": {
-            "ci_high": 0.02358566219365205,
-            "ci_low": -0.007128138564963259,
-            "difference": 0.008301530164791454,
-            "probability_candidate_better": 0.142
+            "ci_high": 0.02271076909977409,
+            "ci_low": -0.009688405534676646,
+            "difference": 0.006616463866030742,
+            "probability_candidate_better": 0.2075
           },
           "resamples": 2000
         },
         "outer_players": 206,
         "outer_raw": {
-          "brier": 0.19561690981745072,
-          "log_loss": 0.5750267324583606,
+          "brier": 0.19553455850990806,
+          "log_loss": 0.5752207421002559,
           "observed_rate": 0.3058252427184466,
           "players": 206,
-          "predicted_rate": 0.32323567608149795
+          "predicted_rate": 0.3195303246463532
         },
         "outer_raw_calibration": {
-          "intercept": -0.05729824316704151,
+          "intercept": -0.0874934021157104,
           "reliability_bins": [
             {
               "bin": 1,
               "observed_rate": 0.14285714285714285,
               "players": 42,
-              "predicted_rate": 0.1497257831391791
+              "predicted_rate": 0.13989899649782112
             },
             {
               "bin": 2,
-              "observed_rate": 0.21951219512195122,
+              "observed_rate": 0.24390243902439024,
               "players": 41,
-              "predicted_rate": 0.24338164555249342
+              "predicted_rate": 0.2370902002065782
             },
             {
               "bin": 3,
               "observed_rate": 0.2926829268292683,
               "players": 41,
-              "predicted_rate": 0.324971513823012
+              "predicted_rate": 0.31808169156891103
             },
             {
               "bin": 4,
-              "observed_rate": 0.34146341463414637,
+              "observed_rate": 0.3170731707317073,
               "players": 41,
-              "predicted_rate": 0.38946002481158787
+              "predicted_rate": 0.38490674778845413
             },
             {
               "bin": 5,
               "observed_rate": 0.5365853658536586,
               "players": 41,
-              "predicted_rate": 0.5128713616895662
+              "predicted_rate": 0.5220552390760631
             }
           ],
-          "slope": 1.045576562022942
+          "slope": 0.9734769260798731
         },
         "outer_raw_top_decile": {
-          "minimum_probability": 0.49370192815534525,
+          "minimum_probability": 0.5025345900307014,
           "observed_rate": 0.6190476190476191,
           "players": 21,
-          "predicted_rate": 0.5627746450875242
+          "predicted_rate": 0.5791420267491725
         },
         "outer_raw_top_one_percent": {
-          "minimum_probability": 0.6159921337882005,
+          "minimum_probability": 0.6394203233571052,
           "observed_rate": 1.0,
           "players": 3,
-          "predicted_rate": 0.6663267562240628
+          "predicted_rate": 0.6930597925277233
         },
         "passed_outer": false,
         "selected_calibration": "platt_c_1",
         "selected_parameters": {
-          "intercept": -0.33529248994666777,
-          "slope": 0.5502430725966151
+          "intercept": -0.333872200087286,
+          "slope": 0.5592899720035724
         }
       }
     },
@@ -533,508 +533,508 @@
       "arrival": {
         "calibration_parameters": {
           "intercept_only": {
-            "intercept": -0.23306241406921974,
+            "intercept": -0.22213439832764048,
             "slope": 1.0
           },
           "platt_c_1": {
-            "intercept": -0.009726150560172977,
-            "slope": 1.1399318011420356
+            "intercept": -0.03842778830320493,
+            "slope": 1.115758047819735
           }
         },
         "condition": null,
         "development_candidates": {
           "intercept_only": {
-            "brier": 0.05603580673652453,
-            "log_loss": 0.19746598000305024,
-            "observed_rate": 0.07481501781309947,
-            "players": 3649,
-            "predicted_rate": 0.07481501781309947
+            "brier": 0.05563660118251426,
+            "log_loss": 0.1963741701449677,
+            "observed_rate": 0.07468423942888523,
+            "players": 3642,
+            "predicted_rate": 0.07468423942888523
           },
           "platt_c_1": {
-            "brier": 0.05583321898776426,
-            "log_loss": 0.19668267821972735,
-            "observed_rate": 0.07481501781309947,
-            "players": 3649,
-            "predicted_rate": 0.07481845345414356
+            "brier": 0.05547232276058744,
+            "log_loss": 0.19580793162530796,
+            "observed_rate": 0.07468423942888523,
+            "players": 3642,
+            "predicted_rate": 0.07468839635675475
           }
         },
-        "development_players": 3649,
+        "development_players": 3642,
         "development_raw": {
-          "brier": 0.056139754903761406,
-          "log_loss": 0.19913369923054536,
-          "observed_rate": 0.07481501781309947,
-          "players": 3649,
-          "predicted_rate": 0.0894758730718492
+          "brier": 0.055768210001551924,
+          "log_loss": 0.19786978918679568,
+          "observed_rate": 0.07468423942888523,
+          "players": 3642,
+          "predicted_rate": 0.08845804858862125
         },
         "outer_candidate": {
-          "brier": 0.04885852523861851,
-          "log_loss": 0.17168475642539852,
-          "observed_rate": 0.06777837547068316,
-          "players": 3718,
-          "predicted_rate": 0.05569961584116074
+          "brier": 0.048797140959151365,
+          "log_loss": 0.17180376991951096,
+          "observed_rate": 0.06783310901749663,
+          "players": 3715,
+          "predicted_rate": 0.058805115616631556
         },
         "outer_candidate_calibration": {
-          "intercept": 0.5107943373141299,
+          "intercept": 0.42400125454230153,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.005376344086021506,
-              "players": 744,
-              "predicted_rate": 0.002305432562275108
+              "observed_rate": 0.005383580080753701,
+              "players": 743,
+              "predicted_rate": 0.0025062880777811203
             },
             {
               "bin": 2,
-              "observed_rate": 0.0013440860215053765,
-              "players": 744,
-              "predicted_rate": 0.006859057130357762
+              "observed_rate": 0.0013458950201884253,
+              "players": 743,
+              "predicted_rate": 0.007382203743710965
             },
             {
               "bin": 3,
-              "observed_rate": 0.016129032258064516,
-              "players": 744,
-              "predicted_rate": 0.01613902869695782
+              "observed_rate": 0.017496635262449527,
+              "players": 743,
+              "predicted_rate": 0.01727953441877299
             },
             {
               "bin": 4,
-              "observed_rate": 0.05114401076716016,
+              "observed_rate": 0.04979811574697174,
               "players": 743,
-              "predicted_rate": 0.0484848990056963
+              "predicted_rate": 0.05232802872677689
             },
             {
               "bin": 5,
               "observed_rate": 0.2651413189771198,
               "players": 743,
-              "predicted_rate": 0.20490050343788402
+              "predicted_rate": 0.21452952311611578
             }
           ],
-          "slope": 1.1271052594576474
+          "slope": 1.1228062687418323
         },
         "outer_candidate_top_decile": {
-          "minimum_probability": 0.15684247528496498,
+          "minimum_probability": 0.16295248254329797,
           "observed_rate": 0.3736559139784946,
           "players": 372,
-          "predicted_rate": 0.30294485114167
+          "predicted_rate": 0.3160507487534216
         },
         "outer_candidate_top_one_percent": {
-          "minimum_probability": 0.4414590791917037,
-          "observed_rate": 0.7368421052631579,
+          "minimum_probability": 0.46925956180181533,
+          "observed_rate": 0.7631578947368421,
           "players": 38,
-          "predicted_rate": 0.5453102930430864
+          "predicted_rate": 0.5519008491742046
         },
         "outer_paired_bootstrap": {
           "brier": {
-            "ci_high": 0.000574274347372405,
-            "ci_low": -7.30546413130567e-05,
-            "difference": 0.00024713495500870285,
-            "probability_candidate_better": 0.07
+            "ci_high": 0.0004857047683614498,
+            "ci_low": -0.00016003720857052684,
+            "difference": 0.00016174099327114066,
+            "probability_candidate_better": 0.187
           },
           "log_loss": {
-            "ci_high": 0.0016778242426139015,
-            "ci_low": -0.002397630975602761,
-            "difference": -0.0003976962181532734,
-            "probability_candidate_better": 0.6605
+            "ci_high": 0.0011511007858046299,
+            "ci_low": -0.0026245520194820454,
+            "difference": -0.0007799090754922753,
+            "probability_candidate_better": 0.7955
           },
           "resamples": 2000
         },
-        "outer_players": 3718,
+        "outer_players": 3715,
         "outer_raw": {
-          "brier": 0.04861139028360982,
-          "log_loss": 0.1720824526435518,
-          "observed_rate": 0.06777837547068316,
-          "players": 3718,
-          "predicted_rate": 0.06842864962860999
+          "brier": 0.048635399965880226,
+          "log_loss": 0.17258367899500326,
+          "observed_rate": 0.06783310901749663,
+          "players": 3715,
+          "predicted_rate": 0.07101346031696511
         },
         "outer_raw_calibration": {
-          "intercept": 0.4997294352596558,
+          "intercept": 0.38090111763527995,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.005376344086021506,
-              "players": 744,
-              "predicted_rate": 0.004796209579051591
+              "observed_rate": 0.005383580080753701,
+              "players": 743,
+              "predicted_rate": 0.004742185011939162
             },
             {
               "bin": 2,
-              "observed_rate": 0.0013440860215053765,
-              "players": 744,
-              "predicted_rate": 0.0126255270299611
+              "observed_rate": 0.0013458950201884253,
+              "players": 743,
+              "predicted_rate": 0.012603541838482992
             },
             {
               "bin": 3,
-              "observed_rate": 0.016129032258064516,
-              "players": 744,
-              "predicted_rate": 0.026558587762794697
+              "observed_rate": 0.017496635262449527,
+              "players": 743,
+              "predicted_rate": 0.026830982525108425
             },
             {
               "bin": 4,
-              "observed_rate": 0.05114401076716016,
+              "observed_rate": 0.04979811574697174,
               "players": 743,
-              "predicted_rate": 0.06850075249260193
+              "predicted_rate": 0.07124702104843889
             },
             {
               "bin": 5,
               "observed_rate": 0.2651413189771198,
               "players": 743,
-              "predicted_rate": 0.2298792717154024
+              "predicted_rate": 0.23964357116085605
             }
           ],
-          "slope": 1.284658046604445
+          "slope": 1.2525983786034456
         },
         "outer_raw_top_decile": {
-          "minimum_probability": 0.18741161974655157,
+          "minimum_probability": 0.19275533032116474,
           "observed_rate": 0.3736559139784946,
           "players": 372,
-          "predicted_rate": 0.32477391753154006
+          "predicted_rate": 0.3392674294587086
         },
         "outer_raw_top_one_percent": {
-          "minimum_probability": 0.45070236877102526,
-          "observed_rate": 0.7368421052631579,
+          "minimum_probability": 0.4810333861396007,
+          "observed_rate": 0.7631578947368421,
           "players": 38,
-          "predicted_rate": 0.5428530324186367
+          "predicted_rate": 0.5554235288831425
         },
         "passed_outer": false,
         "selected_calibration": "platt_c_1",
         "selected_parameters": {
-          "intercept": -0.009726150560172977,
-          "slope": 1.1399318011420356
+          "intercept": -0.03842778830320493,
+          "slope": 1.115758047819735
         }
       },
       "established_given_meaningful": {
         "calibration_parameters": {
           "intercept_only": {
-            "intercept": 0.5295176482699488,
+            "intercept": 0.7372443330529379,
             "slope": 1.0
           },
           "platt_c_1": {
-            "intercept": 0.2559025551313057,
-            "slope": 0.5862838059344836
+            "intercept": 0.3374221207947596,
+            "slope": 0.5379756568674643
           }
         },
         "condition": "meaningful_role_within_horizon",
         "development_candidates": {
           "intercept_only": {
-            "brier": 0.23969520028014793,
-            "log_loss": 0.6700104450167382,
+            "brier": 0.24193409394383752,
+            "log_loss": 0.6743579638168563,
             "observed_rate": 0.4578313253012048,
             "players": 83,
-            "predicted_rate": 0.45783132530120474
+            "predicted_rate": 0.4578313253012048
           },
           "platt_c_1": {
-            "brier": 0.23673702291557633,
-            "log_loss": 0.6643008777065673,
+            "brier": 0.23644864617665487,
+            "log_loss": 0.6636950482091811,
             "observed_rate": 0.4578313253012048,
             "players": 83,
-            "predicted_rate": 0.45783470113233715
+            "predicted_rate": 0.4578340442123424
           }
         },
         "development_players": 83,
         "development_raw": {
-          "brier": 0.25314372144073394,
-          "log_loss": 0.7009480940185702,
+          "brier": 0.26382630238619376,
+          "log_loss": 0.732330960727699,
           "observed_rate": 0.4578313253012048,
           "players": 83,
-          "predicted_rate": 0.34245517956699595
+          "predicted_rate": 0.30373357763479764
         },
         "outer_candidate": {
-          "brier": 0.22786732557498984,
-          "log_loss": 0.6481894030223948,
+          "brier": 0.23176380437302133,
+          "log_loss": 0.656136494388668,
           "observed_rate": 0.4473684210526316,
           "players": 76,
-          "predicted_rate": 0.5037128532333329
+          "predicted_rate": 0.5285436925561511
         },
         "outer_candidate_calibration": {
-          "intercept": -0.2718677595715698,
+          "intercept": -0.4612744220558729,
           "reliability_bins": [
             {
               "bin": 1,
               "observed_rate": 0.3125,
               "players": 16,
-              "predicted_rate": 0.3539253234079067
+              "predicted_rate": 0.38973276985175564
             },
             {
               "bin": 2,
               "observed_rate": 0.2,
               "players": 15,
-              "predicted_rate": 0.448769170159126
+              "predicted_rate": 0.46144404114295606
             },
             {
               "bin": 3,
               "observed_rate": 0.4666666666666667,
               "players": 15,
-              "predicted_rate": 0.5306807051936847
+              "predicted_rate": 0.5544007792807789
             },
             {
               "bin": 4,
-              "observed_rate": 0.4666666666666667,
+              "observed_rate": 0.4,
               "players": 15,
-              "predicted_rate": 0.5720520798035902
+              "predicted_rate": 0.601564868529518
             },
             {
               "bin": 5,
-              "observed_rate": 0.8,
+              "observed_rate": 0.8666666666666667,
               "players": 15,
-              "predicted_rate": 0.6231228229240521
+              "predicted_rate": 0.6448300654893738
             }
           ],
-          "slope": 1.7579612950168315
+          "slope": 1.8200413516723986
         },
         "outer_candidate_top_decile": {
-          "minimum_probability": 0.6048994062157559,
-          "observed_rate": 1.0,
+          "minimum_probability": 0.6404927333137731,
+          "observed_rate": 0.875,
           "players": 8,
-          "predicted_rate": 0.6435024913527361
+          "predicted_rate": 0.656143313457905
         },
         "outer_candidate_top_one_percent": {
-          "minimum_probability": 0.7059375837062849,
+          "minimum_probability": 0.669306195520978,
           "observed_rate": 1.0,
           "players": 1,
-          "predicted_rate": 0.7059375837062849
+          "predicted_rate": 0.669306195520978
         },
         "outer_paired_bootstrap": {
           "brier": {
-            "ci_high": 0.031110301919587875,
-            "ci_low": -0.01419807046039186,
-            "difference": 0.008928394821969693,
-            "probability_candidate_better": 0.222
+            "ci_high": 0.04091081452745106,
+            "ci_low": -0.014601166718164164,
+            "difference": 0.013757348072624387,
+            "probability_candidate_better": 0.176
           },
           "log_loss": {
-            "ci_high": 0.06686088638774926,
-            "ci_low": -0.04682777685088164,
-            "difference": 0.012970009518929298,
-            "probability_candidate_better": 0.326
+            "ci_high": 0.08846601712887288,
+            "ci_low": -0.048636896486182336,
+            "difference": 0.02149932429175351,
+            "probability_candidate_better": 0.274
           },
           "resamples": 2000
         },
         "outer_players": 76,
         "outer_raw": {
-          "brier": 0.21893893075302012,
-          "log_loss": 0.6352193935034655,
+          "brier": 0.21800645630039697,
+          "log_loss": 0.6346371700969146,
           "observed_rate": 0.4473684210526316,
           "players": 76,
-          "predicted_rate": 0.4103749822230075
+          "predicted_rate": 0.41253307767618796
         },
         "outer_raw_calibration": {
-          "intercept": 0.17780939822121092,
+          "intercept": 0.15268850026241493,
           "reliability_bins": [
             {
               "bin": 1,
               "observed_rate": 0.3125,
               "players": 16,
-              "predicted_rate": 0.19244360267131827
+              "predicted_rate": 0.19308329470393573
             },
             {
               "bin": 2,
               "observed_rate": 0.2,
               "players": 15,
-              "predicted_rate": 0.31285809513423835
+              "predicted_rate": 0.2864392891992578
             },
             {
               "bin": 3,
               "observed_rate": 0.4666666666666667,
               "players": 15,
-              "predicted_rate": 0.44356844100835924
+              "predicted_rate": 0.445178983223442
             },
             {
               "bin": 4,
-              "observed_rate": 0.4666666666666667,
+              "observed_rate": 0.4,
               "players": 15,
-              "predicted_rate": 0.514797801057638
+              "predicted_rate": 0.5346679613208905
             },
             {
               "bin": 5,
-              "observed_rate": 0.8,
+              "observed_rate": 0.8666666666666667,
               "players": 15,
-              "predicted_rate": 0.6027357298802631
+              "predicted_rate": 0.6179258454648973
             }
           ],
-          "slope": 1.0307447045761724
+          "slope": 0.9791239952372257
         },
         "outer_raw_top_decile": {
-          "minimum_probability": 0.5719948444451839,
-          "observed_rate": 1.0,
+          "minimum_probability": 0.6097515274348946,
+          "observed_rate": 0.875,
           "players": 8,
-          "predicted_rate": 0.637383875508841
+          "predicted_rate": 0.6395639394513758
         },
         "outer_raw_top_one_percent": {
-          "minimum_probability": 0.7421593365077868,
+          "minimum_probability": 0.66448637640735,
           "observed_rate": 1.0,
           "players": 1,
-          "predicted_rate": 0.7421593365077868
+          "predicted_rate": 0.66448637640735
         },
         "passed_outer": false,
         "selected_calibration": "platt_c_1",
         "selected_parameters": {
-          "intercept": 0.2559025551313057,
-          "slope": 0.5862838059344836
+          "intercept": 0.3374221207947596,
+          "slope": 0.5379756568674643
         }
       },
       "meaningful_given_arrival": {
         "calibration_parameters": {
           "intercept_only": {
-            "intercept": -0.4309433021787637,
+            "intercept": -0.36464525163893785,
             "slope": 1.0
           },
           "platt_c_1": {
-            "intercept": -0.47691019779970645,
-            "slope": 0.8628407538390086
+            "intercept": -0.4272125101508675,
+            "slope": 0.8422098485966472
           }
         },
         "condition": "arrived_within_horizon",
         "development_candidates": {
           "intercept_only": {
-            "brier": 0.1997583226666743,
-            "log_loss": 0.5856650372403182,
-            "observed_rate": 0.304029304029304,
-            "players": 273,
-            "predicted_rate": 0.304029304029304
+            "brier": 0.20035388180693015,
+            "log_loss": 0.5876499138113348,
+            "observed_rate": 0.30514705882352944,
+            "players": 272,
+            "predicted_rate": 0.30514705882352944
           },
           "platt_c_1": {
-            "brier": 0.19973267316527807,
-            "log_loss": 0.5855089281497541,
-            "observed_rate": 0.304029304029304,
-            "players": 273,
-            "predicted_rate": 0.3040385816368137
+            "brier": 0.20035578164224957,
+            "log_loss": 0.5873518971687811,
+            "observed_rate": 0.30514705882352944,
+            "players": 272,
+            "predicted_rate": 0.3051737773486213
           }
         },
-        "development_players": 273,
+        "development_players": 272,
         "development_raw": {
-          "brier": 0.20863113622645796,
-          "log_loss": 0.6048383362004557,
-          "observed_rate": 0.304029304029304,
-          "players": 273,
-          "predicted_rate": 0.39467757327923286
+          "brier": 0.2068601325419411,
+          "log_loss": 0.6013148716421718,
+          "observed_rate": 0.30514705882352944,
+          "players": 272,
+          "predicted_rate": 0.381328928298037
         },
         "outer_candidate": {
-          "brier": 0.2038235340543405,
-          "log_loss": 0.596751602554097,
+          "brier": 0.20220602475686447,
+          "log_loss": 0.5917489876868983,
           "observed_rate": 0.30158730158730157,
           "players": 252,
-          "predicted_rate": 0.23054825674769688
+          "predicted_rate": 0.24768462119339238
         },
         "outer_candidate_calibration": {
-          "intercept": 0.4086191921442753,
+          "intercept": 0.29625354643909896,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.13725490196078433,
+              "observed_rate": 0.17647058823529413,
               "players": 51,
-              "predicted_rate": 0.11483451622193934
+              "predicted_rate": 0.12426236622855778
             },
             {
               "bin": 2,
-              "observed_rate": 0.2549019607843137,
+              "observed_rate": 0.23529411764705882,
               "players": 51,
-              "predicted_rate": 0.15715987906039527
+              "predicted_rate": 0.1777923800365726
             },
             {
               "bin": 3,
               "observed_rate": 0.32,
               "players": 50,
-              "predicted_rate": 0.232537096015299
+              "predicted_rate": 0.24541973357132643
             },
             {
               "bin": 4,
               "observed_rate": 0.34,
               "players": 50,
-              "predicted_rate": 0.2963543406719746
+              "predicted_rate": 0.31411422665886607
             },
             {
               "bin": 5,
-              "observed_rate": 0.46,
+              "observed_rate": 0.44,
               "players": 50,
-              "predicted_rate": 0.3556374941331374
+              "predicted_rate": 0.38070068939407214
             }
           ],
-          "slope": 1.0202116203161544
+          "slope": 1.009664931918759
         },
         "outer_candidate_top_decile": {
-          "minimum_probability": 0.350763650134641,
-          "observed_rate": 0.5769230769230769,
+          "minimum_probability": 0.3725482375627132,
+          "observed_rate": 0.5384615384615384,
           "players": 26,
-          "predicted_rate": 0.37494753781428614
+          "predicted_rate": 0.3986934636006784
         },
         "outer_candidate_top_one_percent": {
-          "minimum_probability": 0.4047635704603179,
-          "observed_rate": 0.6666666666666666,
+          "minimum_probability": 0.4374493794911954,
+          "observed_rate": 0.3333333333333333,
           "players": 3,
-          "predicted_rate": 0.42363674333390455
+          "predicted_rate": 0.44520201269428455
         },
         "outer_paired_bootstrap": {
           "brier": {
-            "ci_high": 0.014216414623261085,
-            "ci_low": -0.0036084764920050793,
-            "difference": 0.005231153173028265,
-            "probability_candidate_better": 0.124
+            "ci_high": 0.010660959641509444,
+            "ci_low": -0.005029779383249238,
+            "difference": 0.0026958446421945803,
+            "probability_candidate_better": 0.2585
           },
           "log_loss": {
-            "ci_high": 0.034578298646892984,
-            "ci_low": -0.00770987130518728,
-            "difference": 0.013534440443022815,
-            "probability_candidate_better": 0.099
+            "ci_high": 0.02503755203520511,
+            "ci_low": -0.010661024948618914,
+            "difference": 0.007010168079044059,
+            "probability_candidate_better": 0.224
           },
           "resamples": 2000
         },
         "outer_players": 252,
         "outer_raw": {
-          "brier": 0.19859238088131226,
-          "log_loss": 0.5832171621110742,
+          "brier": 0.19951018011466992,
+          "log_loss": 0.5847388196078543,
           "observed_rate": 0.30158730158730157,
           "players": 252,
-          "predicted_rate": 0.29841611140576635
+          "predicted_rate": 0.3061273850897178
         },
         "outer_raw_calibration": {
-          "intercept": -0.07803687296167622,
+          "intercept": -0.13528875562661688,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.13725490196078433,
+              "observed_rate": 0.17647058823529413,
               "players": 51,
-              "predicted_rate": 0.1402498583520909
+              "predicted_rate": 0.14069678325535415
             },
             {
               "bin": 2,
-              "observed_rate": 0.2549019607843137,
+              "observed_rate": 0.23529411764705882,
               "players": 51,
-              "predicted_rate": 0.198814197405071
+              "predicted_rate": 0.21235528182967714
             },
             {
               "bin": 3,
               "observed_rate": 0.32,
               "players": 50,
-              "predicted_rate": 0.30316609128147265
+              "predicted_rate": 0.30433502264303725
             },
             {
               "bin": 4,
               "observed_rate": 0.34,
               "players": 50,
-              "predicted_rate": 0.38939057876688543
+              "predicted_rate": 0.3963951954857972
             },
             {
               "bin": 5,
-              "observed_rate": 0.46,
+              "observed_rate": 0.44,
               "players": 50,
-              "predicted_rate": 0.46561519456439926
+              "predicted_rate": 0.4820386963366117
             }
           ],
-          "slope": 0.8801808707509158
+          "slope": 0.8498035062772641
         },
         "outer_raw_top_decile": {
-          "minimum_probability": 0.4598779905082109,
-          "observed_rate": 0.5769230769230769,
+          "minimum_probability": 0.4721001756824759,
+          "observed_rate": 0.5384615384615384,
           "players": 26,
-          "predicted_rate": 0.48980205207530414
+          "predicted_rate": 0.5045496235273345
         },
         "outer_raw_top_one_percent": {
-          "minimum_probability": 0.5264155540476303,
-          "observed_rate": 0.6666666666666666,
+          "minimum_probability": 0.5519638902964091,
+          "observed_rate": 0.3333333333333333,
           "players": 3,
-          "predicted_rate": 0.5485994357859711
+          "predicted_rate": 0.5611577816786794
         },
         "passed_outer": false,
         "selected_calibration": "platt_c_1",
         "selected_parameters": {
-          "intercept": -0.47691019779970645,
-          "slope": 0.8628407538390086
+          "intercept": -0.4272125101508675,
+          "slope": 0.8422098485966472
         }
       }
     }

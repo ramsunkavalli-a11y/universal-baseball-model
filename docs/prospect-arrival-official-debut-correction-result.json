@@ -1,0 +1,54 @@
+{
+  "status": "complete_and_active_in_private_preview",
+  "as_of_date": "2026-09-08",
+  "model_id": "phase2_pre_mlb_two_year_arrival_v2_official_debut",
+  "training_records": {
+    "hitter": {"before": 13006, "after": 12902, "removed": 104},
+    "pitcher": {"before": 14918, "after": 14764, "removed": 154}
+  },
+  "2018_correction": {
+    "hitter_prior_debuts_removed": 91,
+    "hitter_false_future_arrivals_removed": 12,
+    "pitcher_prior_debuts_removed": 137,
+    "pitcher_false_future_arrivals_removed": 28
+  },
+  "current_mean_six_year_arrival_probability": {
+    "hitter_before": 0.1572532983,
+    "hitter_after": 0.1540843261,
+    "pitcher_before": 0.1261756315,
+    "pitcher_after": 0.1256328043
+  },
+  "pooled_core_evaluation": {
+    "hitter_arrival": {
+      "model_brier": 0.0491671722,
+      "baseline_brier": 0.0571918852,
+      "model_log_loss": 0.1763475486,
+      "baseline_log_loss": 0.2042323395
+    },
+    "pitcher_arrival": {
+      "model_brier": 0.0520167046,
+      "baseline_brier": 0.0591119355,
+      "model_log_loss": 0.1846946831,
+      "baseline_log_loss": 0.2131977315
+    }
+  },
+  "private_preview_model_laws": {"passed": 46, "failed": 0},
+  "corrected_audits": {
+    "feature_combinations": 176,
+    "richer_feature_family_promoted": false,
+    "calibration_layer_promoted": false,
+    "longer_horizon_status": "diagnostic_not_fresh_confirmation"
+  },
+  "tests": {
+    "passed": 1464,
+    "known_missing_artifact_failures": 4,
+    "new_failures": 0
+  },
+  "boundaries": {
+    "official_debut_is_eligibility_only": true,
+    "model_features_changed": false,
+    "model_thresholds_changed": false,
+    "outside_fv_used": false,
+    "downstream_arrival_lineage_enforced": true
+  }
+}

@@ -142,6 +142,9 @@ def main() -> int:
     demographics = pl.read_parquet(
         root / "player-demographics/tables/player-demographics.parquet"
     )
+    debut_dates = pl.read_parquet(
+        root / "career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet"
+    )
     draft = pl.read_parquet(root / "draft-history/draft-history.parquet")
     results = {}
     for player_type in ("hitter", "pitcher"):
@@ -161,6 +164,7 @@ def main() -> int:
                 history,
                 membership,
                 skill,
+                debut_dates,
                 snapshot_year=year,
                 horizon=2,
                 player_type=player_type,

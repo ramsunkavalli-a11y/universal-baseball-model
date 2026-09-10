@@ -543,6 +543,10 @@ def main() -> int:
     )
     demographics_path = root / "player-demographics/tables/player-demographics.parquet"
     demographics = pl.read_parquet(demographics_path)
+    debut_dates_path = (
+        root / "career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet"
+    )
+    debut_dates = pl.read_parquet(debut_dates_path)
     hitting_path = (
         root
         / "career-mlb-outcome-inventory-2009-2025/tables/mlb_hitting_components_2009_2025.parquet"
@@ -557,6 +561,7 @@ def main() -> int:
         *stat_paths,
         membership_path,
         demographics_path,
+        debut_dates_path,
         hitting_path,
         pitching_path,
         environment_path,
@@ -582,6 +587,7 @@ def main() -> int:
                 stats,
                 membership,
                 skill,
+                debut_dates,
                 snapshot_year=origin,
                 horizon=HORIZON,
                 player_type=player_type,

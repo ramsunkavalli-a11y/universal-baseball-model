@@ -196,8 +196,9 @@ def main() -> int:
     membership = pl.read_parquet(args.membership)
     skill = pl.read_parquet(args.skill)
     demographics = pl.read_parquet(args.demographics)
-    train = build_arrival_cohort(snapshots, stats, membership, skill, snapshot_year=2018, horizon=2, player_type="hitter", demographics=demographics)
-    scored = build_arrival_cohort(snapshots, stats, membership, skill, snapshot_year=2021, horizon=2, player_type="hitter", demographics=demographics)
+    debut_dates = pl.read_parquet("reports/generated/career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet")
+    train = build_arrival_cohort(snapshots, stats, membership, skill, debut_dates, snapshot_year=2018, horizon=2, player_type="hitter", demographics=demographics)
+    scored = build_arrival_cohort(snapshots, stats, membership, skill, debut_dates, snapshot_year=2021, horizon=2, player_type="hitter", demographics=demographics)
     for target, outcome, condition in (
         ("arrived_within_horizon", "arrival", None),
         ("meaningful_role_within_horizon", "meaningful_given_arrival", "arrived_within_horizon"),

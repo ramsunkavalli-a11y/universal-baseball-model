@@ -1,3 +1,5 @@
+from datetime import date
+
 import polars as pl
 import pytest
 
@@ -10,6 +12,18 @@ from universal_baseball.prospect_arrival import (
     _primary_hitter_positions,
     _role_tier,
 )
+
+
+def _debut_dates(*rows: tuple[int, str | None]) -> pl.DataFrame:
+    return pl.DataFrame(
+        {
+            "player_id": [row[0] for row in rows],
+            "mlb_debut_date": pl.Series(
+                [date.fromisoformat(row[1]) if row[1] else None for row in rows],
+                dtype=pl.Date,
+            ),
+        }
+    )
 
 
 def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
@@ -42,7 +56,9 @@ def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
         }
     )
     result = build_arrival_cohort(
-        snapshots, stats, membership, skill, snapshot_year=2021, horizon=2,
+        snapshots, stats, membership, skill,
+        _debut_dates((1, "2022-04-01"), (2, "2020-07-01"), (3, None)),
+        snapshot_year=2021, horizon=2,
         player_type="hitter",
     )
     assert result.get_column("player_id").to_list() == [1]
@@ -56,6 +72,60 @@ def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
     assert arrival_design(result, feature_set="all_demographics").shape[1] > (
         arrival_design(result, feature_set="stable_demographics").shape[1]
     )
+
+
+def test_arrival_cohort_excludes_official_prior_debut_outside_stats_window() -> None:
+    snapshots = pl.DataFrame(
+        {"snapshot_year": [2021], "player_id": [7], "age_years": [28.0],
+         "as_of_level_group": ["AAA"]}
+    )
+    stats = pl.DataFrame(
+        {"season": [2021, 2022], "stat_group": ["hitting", "hitting"],
+         "player_id": [7, 7], "sport_id": [11, 1],
+         "plate_appearances": [300, 20], "batters_faced": [0, 0],
+         "position_code": ["3", "3"]}
+    )
+    membership = pl.DataFrame(
+        {"season": [2021], "player_id": [7], "on_40man": [False]}
+    )
+    skill = pl.DataFrame(
+        {"season": [2021], "player_id": [7], "sport_id": [11],
+         "plate_appearances": [300], "base_on_balls": [30],
+         "intentional_walks": [0], "strike_outs": [60], "home_runs": [8],
+         "doubles": [15], "triples": [1], "hits": [75], "hit_by_pitch": [1]}
+    )
+    result = build_arrival_cohort(
+        snapshots, stats, membership, skill, _debut_dates((7, "2019-04-01")),
+        snapshot_year=2021, horizon=2, player_type="hitter",
+    )
+    assert result.is_empty()
+
+
+def test_arrival_cohort_fails_closed_when_future_arrival_lacks_debut_date() -> None:
+    snapshots = pl.DataFrame(
+        {"snapshot_year": [2021], "player_id": [8], "age_years": [21.0],
+         "as_of_level_group": ["AA"]}
+    )
+    stats = pl.DataFrame(
+        {"season": [2021, 2022], "stat_group": ["hitting", "hitting"],
+         "player_id": [8, 8], "sport_id": [12, 1],
+         "plate_appearances": [300, 20], "batters_faced": [0, 0],
+         "position_code": ["6", "6"]}
+    )
+    membership = pl.DataFrame(
+        {"season": [2021], "player_id": [8], "on_40man": [False]}
+    )
+    skill = pl.DataFrame(
+        {"season": [2021], "player_id": [8], "sport_id": [12],
+         "plate_appearances": [300], "base_on_balls": [30],
+         "intentional_walks": [0], "strike_outs": [60], "home_runs": [8],
+         "doubles": [15], "triples": [1], "hits": [75], "hit_by_pitch": [1]}
+    )
+    with pytest.raises(ValueError, match="debut-date coverage"):
+        build_arrival_cohort(
+            snapshots, stats, membership, skill, _debut_dates((8, None)),
+            snapshot_year=2021, horizon=2, player_type="hitter",
+        )
 
 
 def test_two_year_probability_converts_to_six_year_windows() -> None:
@@ -184,7 +254,8 @@ def test_baseball_interactions_expand_core_without_current_profile_fields() -> N
         pl.Series("hits", [25]), pl.Series("hit_by_pitch", [1])
     )
     cohort = build_arrival_cohort(
-        snapshots, stats, membership, skill, snapshot_year=2021, horizon=2,
+        snapshots, stats, membership, skill, _debut_dates((1, None)),
+        snapshot_year=2021, horizon=2,
         player_type="hitter",
     )
     assert arrival_design(cohort, feature_set="baseball_interactions").shape[1] > (
@@ -221,7 +292,9 @@ def test_established_role_requires_high_or_repeated_future_workload() -> None:
         pl.Series("hits", [25] * 3), pl.Series("hit_by_pitch", [1] * 3)
     )
     result = build_arrival_cohort(
-        snapshots, stats, membership, skill, snapshot_year=2021, horizon=2,
+        snapshots, stats, membership, skill,
+        _debut_dates((1, "2022-04-01"), (2, "2022-04-01"), (3, "2022-04-01")),
+        snapshot_year=2021, horizon=2,
         player_type="hitter",
     )
     established = dict(

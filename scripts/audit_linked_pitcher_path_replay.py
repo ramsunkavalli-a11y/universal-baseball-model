@@ -295,11 +295,15 @@ def main() -> int:
     membership = pl.read_parquet(args.membership)
     skill = pl.read_parquet(args.skill)
     demographics = pl.read_parquet(args.demographics)
+    debut_dates = pl.read_parquet(
+        "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet"
+    )
     training = build_arrival_cohort(
         snapshots,
         stats,
         membership,
         skill,
+        debut_dates,
         snapshot_year=2018,
         horizon=2,
         player_type="pitcher",
@@ -310,6 +314,7 @@ def main() -> int:
         stats,
         membership,
         skill,
+        debut_dates,
         snapshot_year=2021,
         horizon=2,
         player_type="pitcher",

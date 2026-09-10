@@ -295,6 +295,9 @@ def main() -> int:
     demographics = pl.read_parquet(
         root / "player-demographics/tables/player-demographics.parquet"
     )
+    debut_dates = pl.read_parquet(
+        root / "career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet"
+    )
     draft = pl.read_parquet(root / "draft-history/draft-history.parquet")
     skill = pl.read_parquet(
         root / "phase2-arrival-skill-source/tables/affiliated_hitting_components.parquet"
@@ -309,7 +312,8 @@ def main() -> int:
         profile, summary = _pbp_source(root, year)
         features = aggregate_prospect_pbp_features(profile, summary, predictor_year=year)
         cohort = build_arrival_cohort(
-            snapshots, stats, membership, skill, snapshot_year=year, horizon=1,
+            snapshots, stats, membership, skill, debut_dates,
+            snapshot_year=year, horizon=1,
             player_type="hitter", demographics=demographics, draft_history=draft,
             outcome_skill_stats=outcome_skill,
         )

@@ -6,7 +6,9 @@ from pathlib import Path
 import pytest
 
 from universal_baseball.projection_lineage import (
+    validate_arrival_source,
     validate_opportunity_source,
+    validate_recorded_arrival_source,
     validate_recorded_opportunity_source,
 )
 
@@ -47,4 +49,43 @@ def test_validate_recorded_source_rejects_changed_artifact(tmp_path: Path) -> No
     with pytest.raises(ValueError, match="artifact hash mismatch"):
         validate_recorded_opportunity_source(
             recorded, expected_model_id="latest"
+        )
+
+
+def _arrival_source(tmp_path: Path, model_id: str = "arrival-v2") -> Path:
+    root = tmp_path / "2026-09-08"
+    root.mkdir()
+    (root / "report.json").write_text(
+        json.dumps({"gate": "arrival", "model_id": model_id}), encoding="utf-8"
+    )
+    (root / "hitter-arrival-probabilities.parquet").write_bytes(b"hitter")
+    (root / "pitcher-arrival-probabilities.parquet").write_bytes(b"pitcher")
+    return root
+
+
+def test_validate_arrival_source_records_exact_artifacts(tmp_path: Path) -> None:
+    source = validate_arrival_source(
+        _arrival_source(tmp_path), expected_model_id="arrival-v2"
+    )
+    assert source["source_model_id"] == "arrival-v2"
+    assert len(source["hitter_sha256"]) == 64
+
+
+def test_validate_arrival_source_rejects_stale_model(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="arrival model lineage mismatch"):
+        validate_arrival_source(
+            _arrival_source(tmp_path, "arrival-v1"),
+            expected_model_id="arrival-v2",
+        )
+
+
+def test_validate_recorded_arrival_rejects_changed_artifact(
+    tmp_path: Path,
+) -> None:
+    root = _arrival_source(tmp_path)
+    recorded = validate_arrival_source(root, expected_model_id="arrival-v2")
+    (root / "pitcher-arrival-probabilities.parquet").write_bytes(b"changed")
+    with pytest.raises(ValueError, match="arrival artifact hash mismatch"):
+        validate_recorded_arrival_source(
+            recorded, expected_model_id="arrival-v2"
         )

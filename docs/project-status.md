@@ -2,16 +2,16 @@
 
 Updated 2026-09-10. This is the current start-here document.
 
-## Immediate P0: enforce true prospect eligibility
+## Latest P0 correction: true prospect eligibility
 
-The production arrival training builder has the same limited-window eligibility issue
-found by the broad-history audits. Its 2018 cohort contains 91 former MLB hitters and
-137 former MLB pitchers, including 40 rows incorrectly labeled as later arrivals. The
-[correction plan](prospect-arrival-official-debut-correction-plan.md) is frozen before
-re-fitting: official debut dates become a required cohort input, prior debut is an
-eligibility exclusion only, and all existing model choices remain fixed. Until this is
-re-materialized and the explorer passes, current prospect values retain a known P0
-training-population defect.
+The production arrival model now requires official StatsAPI debut dates and excludes
+all players who had already debuted by each historical snapshot. The fixed refit
+removed 104 hitter and 154 pitcher cohort records without changing features,
+thresholds, or FV mapping. All outcome gates and all 46 private-preview model laws
+pass. Exact arrival model IDs and file hashes now flow into the downstream value build,
+so the explorer rejects stale or mixed versions. See the
+[frozen plan](prospect-arrival-official-debut-correction-plan.md) and
+[result](prospect-arrival-official-debut-correction-result.md).
 
 ## Reusable search guardrails
 
@@ -20,8 +20,9 @@ The broad feature-search rules are now enforced by a reusable
 It freezes and hashes the complete candidate family and chronology, verifies identical
 outer cohorts, and requires two proper-score wins with paired uncertainty plus
 calibration, subgroup and fresh-confirmation gates before promotion. The existing 176
-prospect combinations were rerun across eight hitter/pitcher outcomes; results did not
-change and remain retrospective evidence. No demographic or PBP input was promoted.
+prospect combinations were rerun across eight hitter/pitcher outcomes after the
+official-debut correction; the promotion decisions did not change and remain
+retrospective evidence. No demographic or PBP input was promoted.
 
 The supplied Brewers payroll workbook also confirms that Gary Sanchez's 2027 mutual
 option salary is `TBD`. It correctly remains review rather than receiving a guessed

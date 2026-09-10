@@ -17,7 +17,7 @@ from universal_baseball.hitter_v2_evaluation import NEUTRAL_WOBA_WEIGHTS
 from universal_baseball.prospect_outcome_quality import SHORTENED_2020_SCALE
 
 
-ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v1"
+ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v2_official_debut"
 LEVELS = ("A_OR_BELOW", "AA", "AAA", "INACTIVE", "UNKNOWN")
 ROLES = ("C", "MIDDLE_INFIELD", "OUTFIELD", "CORNER", "STARTER", "SWINGMAN")
 COUNTRIES = (
@@ -365,6 +365,7 @@ def build_arrival_cohort(
     stats: pl.DataFrame,
     membership: pl.DataFrame,
     skill_stats: pl.DataFrame,
+    debut_dates: pl.DataFrame,
     *,
     snapshot_year: int,
     horizon: int,
@@ -379,6 +380,11 @@ def build_arrival_cohort(
         raise ValueError("player_type must be hitter or pitcher")
     if horizon < 1:
         raise ValueError("arrival horizon must be positive")
+    debut_required = {"player_id", "mlb_debut_date"}
+    if missing := sorted(debut_required - set(debut_dates.columns)):
+        raise ValueError(f"debut dates missing fields: {missing}")
+    if debut_dates.group_by("player_id").len().filter(pl.col("len") != 1).height:
+        raise ValueError("debut dates violate player grain")
     group = "hitting" if player_type == "hitter" else "pitching"
     workload = "plate_appearances" if player_type == "hitter" else "batters_faced"
     players = snapshots.filter(pl.col("snapshot_year") == snapshot_year).select(
@@ -394,6 +400,7 @@ def build_arrival_cohort(
         .select("player_id").unique()
         .with_columns(pl.lit(True).alias("prior_mlb"))
     )
+    official_debut = debut_dates.select("player_id", "mlb_debut_date")
     production = _production_features(
         skill_stats, stats, snapshot_year=snapshot_year, player_type=player_type
     )
@@ -456,6 +463,7 @@ def build_arrival_cohort(
     )
     result = (
         players.join(prior_mlb, on="player_id", how="left")
+        .join(official_debut, on="player_id", how="left", validate="m:1")
         .join(production, on="player_id", how="left")
         .join(on_40man, on="player_id", how="left")
         .join(future, on="player_id", how="left")
@@ -474,6 +482,12 @@ def build_arrival_cohort(
             ).alias("level_tier"),
         )
     )
+    missing_future_debut = result.filter(
+        (pl.col("arrived_within_horizon") == 1)
+        & pl.col("mlb_debut_date").is_null()
+    )
+    if missing_future_debut.height:
+        raise ValueError("future MLB arrivals lack official debut-date coverage")
     return (
         _fill_predictor_nulls(
             _join_pedigree(
@@ -484,6 +498,10 @@ def build_arrival_cohort(
         )
         .filter(
             ~pl.col("prior_mlb")
+            & (
+                pl.col("mlb_debut_date").is_null()
+                | (pl.col("mlb_debut_date").dt.year() > snapshot_year)
+            )
             & (pl.col("level_tier") != "MLB")
             & pl.col("age_years").is_between(16.0, 30.0)
         )

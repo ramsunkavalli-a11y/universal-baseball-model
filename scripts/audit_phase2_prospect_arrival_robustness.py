@@ -220,6 +220,9 @@ def main() -> int:
     demographics = pl.read_parquet(
         root / "player-demographics/tables/player-demographics.parquet"
     )
+    debut_dates = pl.read_parquet(
+        root / "career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet"
+    )
     draft_history = pl.read_parquet(root / "draft-history/draft-history.parquet")
     normalized = demographics.get_column("birth_country").map_elements(
         normalize_birth_country, return_dtype=pl.String
@@ -264,6 +267,7 @@ def main() -> int:
                 stats,
                 membership,
                 skill,
+                debut_dates,
                 snapshot_year=year,
                 horizon=HORIZON,
                 player_type=player_type,

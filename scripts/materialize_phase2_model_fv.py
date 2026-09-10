@@ -11,6 +11,8 @@ from pathlib import Path
 import polars as pl
 
 from universal_baseball.model_fv import MODEL_FV_ID, build_model_fv
+from universal_baseball.projection_lineage import validate_arrival_source
+from universal_baseball.prospect_arrival import ARRIVAL_MODEL_ID
 from universal_baseball.storage import write_canonical_parquet
 
 
@@ -57,6 +59,10 @@ def main() -> int:
     arrival_probabilities: dict[tuple[str, int], float] = {}
     meaningful_role_probabilities: dict[tuple[str, int], float] = {}
     established_role_probabilities: dict[tuple[str, int], float] = {}
+    arrival_source = validate_arrival_source(
+        args.arrival_root / dated,
+        expected_model_id=ARRIVAL_MODEL_ID,
+    )
     for player_type in ("hitter", "pitcher"):
         arrival = pl.read_parquet(
             args.arrival_root / dated / f"{player_type}-arrival-probabilities.parquet"
@@ -102,6 +108,7 @@ def main() -> int:
     report = {
         "report_schema_version": "0.1", "gate": "phase2_model_fv",
         "as_of_date": dated, "model_fv_id": MODEL_FV_ID, "players": values.height,
+        "arrival_source": arrival_source,
         "method": (
             "our production and historical cumulative MLB-arrival probability mapped "
             "to six team-control seasons, granular Model FV, and nearest-five display"

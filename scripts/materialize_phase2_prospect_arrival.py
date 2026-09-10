@@ -69,6 +69,13 @@ def _args() -> argparse.Namespace:
             "reports/generated/player-demographics/tables/player-demographics.parquet"
         ),
     )
+    parser.add_argument(
+        "--debut-dates-path", type=Path,
+        default=Path(
+            "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/"
+            "people-debut-dates.parquet"
+        ),
+    )
     return parser.parse_args()
 
 
@@ -185,6 +192,7 @@ def main() -> int:
         args.control_root / dated / "league-control-snapshot.parquet"
     )
     demographics = pl.read_parquet(args.demographics_path)
+    debut_dates = pl.read_parquet(args.debut_dates_path)
     output = args.output_root / dated
     output.mkdir(parents=True, exist_ok=True)
     reports: dict[str, object] = {}
@@ -196,7 +204,7 @@ def main() -> int:
         skill = hitter_skill if player_type == "hitter" else pitcher_skill
         cohorts = {
             year: build_arrival_cohort(
-                snapshots, stats, membership, skill,
+                snapshots, stats, membership, skill, debut_dates,
                 snapshot_year=year, horizon=2,
                 player_type=player_type,
                 demographics=demographics,
@@ -411,7 +419,8 @@ def main() -> int:
                 "age, broad level, position/role, current and prior workload, "
                 "playing-history length, current production rates, and 40-man status"
             ),
-            "2018_prior_mlb_history_left_censored": True,
+            "official_debut_date_eligibility_enforced": True,
+            "2018_prior_mlb_history_left_censored": False,
             "six_year_extrapolation_is_constant_two_year_hazard": True,
             "all_demographics_scored_but_not_selectable": True,
             "demographic_search_is_development_only": True,

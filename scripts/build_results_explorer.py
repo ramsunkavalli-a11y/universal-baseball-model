@@ -12,8 +12,10 @@ import polars as pl
 from universal_baseball.model_law_audit import audit_private_preview_laws
 from universal_baseball.projection_lineage import (
     PLAYABLE_OPPORTUNITY_MODEL_ID,
+    validate_recorded_arrival_source,
     validate_recorded_opportunity_source,
 )
+from universal_baseball.prospect_arrival import ARRIVAL_MODEL_ID
 from universal_baseball.results_explorer import write_explorer
 
 
@@ -58,6 +60,19 @@ def audit_phase2_checkpoint(
     validate_recorded_opportunity_source(
         recorded_source,
         expected_model_id=PLAYABLE_OPPORTUNITY_MODEL_ID,
+    )
+    model_fv_report = generated / "phase2-model-fv" / as_of_date / "report.json"
+    if not model_fv_report.exists():
+        raise FileNotFoundError(
+            f"Phase 2 model-FV lineage report is missing: {model_fv_report}"
+        )
+    model_fv_metadata = json.loads(model_fv_report.read_text(encoding="utf-8"))
+    recorded_arrival = model_fv_metadata.get("arrival_source")
+    if not isinstance(recorded_arrival, dict):
+        raise ValueError("Phase 2 arrival-model lineage record is missing")
+    validate_recorded_arrival_source(
+        recorded_arrival,
+        expected_model_id=ARRIVAL_MODEL_ID,
     )
     result = audit_private_preview_laws(
         pl.read_parquet(paths["hitter"]),
