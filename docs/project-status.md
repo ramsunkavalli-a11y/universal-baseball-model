@@ -640,6 +640,10 @@ test failure was observed.
   scores, but the selected interaction worsened both untouched 2025 scores and every
   supported demographic split. Stable demographics therefore receive no direct
   hitter skill bonus.
+- The hitter affiliated-component regression audit selected 400 PA on 2024 and
+  improved both frozen 2025 point scores versus the current 1,200-PA prior, but both
+  player-bootstrap 95% intervals narrowly crossed zero. Retain 1,200 PA. The result
+  argues against applying more shrinkage merely to suppress the prospect top end.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).
