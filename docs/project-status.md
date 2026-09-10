@@ -145,6 +145,14 @@ arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader t
 decile was optimistic. Earlier-cohort calibration worsened later proper scores, so no
 manual probability cap or recalibration is applied.
 
+The [hitter top-end position audit](hitter-top-end-position-audit-result.md) finds no
+broad catcher quota: catchers are 22.9% of modeled hitters and 25.6% of 50+ hitters.
+Premium-position persistence is material, however. Standard position runs supply
+3.76 WAR to Caden Bodine and 3.29 to Rainiel Rodriguez, moving each from a
+position-neutral diagnostic 50 to the displayed 55. Both remain 50 without position.
+Do not remove real positional value; the next candidate needs player-level retention
+and defense evidence, since the earlier coarse transition mixture failed validation.
+
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
 quality. A proper hurdle test conditions MLB component quality on meaningful playing
