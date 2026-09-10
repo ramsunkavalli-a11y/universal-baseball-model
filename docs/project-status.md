@@ -22,6 +22,10 @@ the arrival-only linked path improves RMSE `0.558 -> 0.551` but worsens MAE
 `0.154 -> 0.199`, with a wholly unfavorable paired MAE interval. On hitters it
 improves MAE but worsens RMSE and absolute bias. Both remain rejected. This prevents
 one favored error measure from hiding damage elsewhere in the outcome distribution.
+The one- through four-year prefix audit reaches the same decision at every horizon:
+pitcher MAE is always worse, while hitter RMSE is always worse. The next candidate
+must model the positive MLB tail conditional on arrival; changing only the horizon
+cannot repair the pooled path.
 
 ## Current P0: pitcher value funnel
 
@@ -810,7 +814,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,440 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,442 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

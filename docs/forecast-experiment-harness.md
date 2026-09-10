@@ -48,3 +48,9 @@ on 2,841 non-arrivals (`0.289 -> 0.087`) but predicts only `0.185` WAR for arriv
 who actually averaged `1.117`, worsening their RMSE `2.556 -> 2.718`. The next useful
 career challenger must improve the arrival/quality dependence, not choose one side of
 this tradeoff.
+
+A frozen one- through four-year prefix diagnostic shows the same structure at every
+horizon. Pitcher candidate MAE is worse in all four prefixes and no paired MSE interval
+is reliably favorable. Hitter candidate RMSE is worse in all four prefixes; its later
+MAE gains come from moving the majority of forecasts toward zero. The linked-path
+failure therefore is not merely long-horizon extrapolation.

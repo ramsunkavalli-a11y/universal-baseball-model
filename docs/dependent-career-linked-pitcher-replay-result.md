@@ -33,3 +33,7 @@ gain: MAE worsens from 0.154 to
 0.199, and its paired interval is entirely unfavorable.
 The path remains rejected pending a candidate that handles arrivals without adding
 too much value to the much larger non-arrival group.
+
+This tradeoff persists at every tested prefix from one through four years: candidate
+MAE is worse at all four horizons, and no horizon has a reliably favorable paired MSE
+interval. The failure is not caused only by extending two-year odds to four years.

@@ -20,3 +20,7 @@ improves from 0.310 to
 0.220, but RMSE and absolute mean bias worsen. The path
 mostly improves the large non-arrival group while underpredicting the smaller group
 that reaches MLB, so it remains rejected.
+
+The same pattern persists from one through four years: candidate RMSE is worse at
+every prefix. MAE improves after year one because forecasts move toward zero, not
+because the model captures the positive MLB tail.

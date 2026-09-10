@@ -83,34 +83,12 @@ def _path_means(paths: pl.DataFrame, column: str) -> dict[str, dict[int, float]]
     return result
 
 
-def _predict_path(row: dict[str, object], means: dict[str, dict[int, float]], *, pooled: bool) -> float:
-    arrival = float(row["four_year_arrival_probability"])
-    if arrival <= 0:
-        return 0.0
-    meaningful = float(row["four_year_nested_meaningful_probability"])
-    established = float(row["four_year_nested_established_probability"])
-    masses = {
-        "fringe": max(0.0, arrival - meaningful),
-        "meaningful_only": max(0.0, meaningful - established),
-        "established": max(0.0, established),
-    }
-    hazard = 1.0 - (1.0 - arrival) ** 0.25
-    expected = 0.0
-    for offset in range(4):
-        arrival_at_offset = (1.0 - hazard) ** offset * hazard
-        if pooled:
-            expected += arrival_at_offset * means["pooled"][4 - offset]
-        else:
-            expected += arrival_at_offset * sum(
-                masses[tier] / arrival * means[tier][4 - offset] for tier in TIERS
-            )
-    return expected
-
-
-def _predict_incumbent(
+def _predict_path(
     row: dict[str, object],
-    workloads: dict[str, dict[int, float]],
-    rates: dict[int, dict[int, float]],
+    means: dict[str, dict[int, float]],
+    *,
+    pooled: bool,
+    horizon: int = 4,
 ) -> float:
     arrival = float(row["four_year_arrival_probability"])
     if arrival <= 0:
@@ -122,12 +100,43 @@ def _predict_incumbent(
         "meaningful_only": max(0.0, meaningful - established),
         "established": max(0.0, established),
     }
-    hazard = 1.0 - (1.0 - arrival) ** 0.25
+    hazard = 1.0 - (1.0 - arrival) ** (1.0 / horizon)
     expected = 0.0
-    for offset in range(4):
+    for offset in range(horizon):
+        arrival_at_offset = (1.0 - hazard) ** offset * hazard
+        if pooled:
+            expected += arrival_at_offset * means["pooled"][horizon - offset]
+        else:
+            expected += arrival_at_offset * sum(
+                masses[tier] / arrival * means[tier][horizon - offset]
+                for tier in TIERS
+            )
+    return expected
+
+
+def _predict_incumbent(
+    row: dict[str, object],
+    workloads: dict[str, dict[int, float]],
+    rates: dict[int, dict[int, float]],
+    *,
+    horizon: int = 4,
+) -> float:
+    arrival = float(row["four_year_arrival_probability"])
+    if arrival <= 0:
+        return 0.0
+    meaningful = float(row["four_year_nested_meaningful_probability"])
+    established = float(row["four_year_nested_established_probability"])
+    masses = {
+        "fringe": max(0.0, arrival - meaningful),
+        "meaningful_only": max(0.0, meaningful - established),
+        "established": max(0.0, established),
+    }
+    hazard = 1.0 - (1.0 - arrival) ** (1.0 / horizon)
+    expected = 0.0
+    for offset in range(horizon):
         arrival_at_offset = (1.0 - hazard) ** offset * hazard
         for tier in TIERS:
-            for path_year in range(1, 5 - offset):
+            for path_year in range(1, horizon + 1 - offset):
                 expected += (
                     arrival_at_offset
                     * masses[tier]
@@ -346,6 +355,104 @@ def main() -> int:
             fresh_confirmation=False,
         ),
     }
+    horizon_sensitivity = []
+    for horizon in range(1, 5):
+        horizon_scored = scored.with_columns(
+            (
+                1.0
+                - (1.0 - pl.col("predicted_two_year_arrival_probability"))
+                ** (horizon / 2.0)
+            ).alias("four_year_arrival_probability"),
+            (
+                1.0
+                - (
+                    1.0
+                    - pl.col(
+                        "predicted_two_year_meaningful_given_arrival_probability"
+                    )
+                )
+                ** (horizon / 2.0)
+            ).alias("four_year_meaningful_given_arrival_probability"),
+            (
+                1.0
+                - (
+                    1.0
+                    - pl.col(
+                        "predicted_two_year_established_given_meaningful_probability"
+                    )
+                )
+                ** (horizon / 2.0)
+            ).alias("four_year_established_given_meaningful_probability"),
+        ).with_columns(
+            (
+                pl.col("four_year_arrival_probability")
+                * pl.col("four_year_meaningful_given_arrival_probability")
+            ).alias("four_year_nested_meaningful_probability")
+        ).with_columns(
+            (
+                pl.col("four_year_nested_meaningful_probability")
+                * pl.col("four_year_established_given_meaningful_probability")
+            ).alias("four_year_nested_established_probability")
+        )
+        horizon_observed = (
+            observed_paths.filter(pl.col("path_year") <= horizon)
+            .group_by("path_player_id")
+            .agg(
+                pl.col("observed_component_war")
+                .sum()
+                .alias("observed_horizon_component_war")
+            )
+            .rename({"path_player_id": "player_id"})
+        )
+        horizon_frame = (
+            horizon_scored.with_columns(
+                pl.struct(
+                    "four_year_arrival_probability",
+                    "four_year_nested_meaningful_probability",
+                    "four_year_nested_established_probability",
+                )
+                .map_elements(
+                    lambda row, h=horizon: _predict_path(
+                        row, performance_means, pooled=True, horizon=h
+                    ),
+                    return_dtype=pl.Float64,
+                )
+                .alias("candidate_prediction"),
+                pl.struct(
+                    "player_id",
+                    "four_year_arrival_probability",
+                    "four_year_nested_meaningful_probability",
+                    "four_year_nested_established_probability",
+                )
+                .map_elements(
+                    lambda row, h=horizon: _predict_incumbent(
+                        row, workload_means, rate_lookup, horizon=h
+                    ),
+                    return_dtype=pl.Float64,
+                )
+                .alias("incumbent_prediction"),
+            )
+            .join(horizon_observed, on="player_id", how="left", validate="1:1")
+            .with_columns(pl.col("observed_horizon_component_war").fill_null(0.0))
+        )
+        horizon_y = horizon_frame["observed_horizon_component_war"].to_numpy()
+        horizon_incumbent = horizon_frame["incumbent_prediction"].to_numpy()
+        horizon_candidate = horizon_frame["candidate_prediction"].to_numpy()
+        horizon_sensitivity.append(
+            {
+                "horizon_years": horizon,
+                "incumbent": continuous_scores(horizon_y, horizon_incumbent),
+                "arrival_only_candidate": continuous_scores(
+                    horizon_y, horizon_candidate
+                ),
+                "paired_difference": paired_continuous_bootstrap_difference(
+                    horizon_y,
+                    horizon_incumbent,
+                    horizon_candidate,
+                    seed=20260920 + horizon,
+                ),
+            }
+        )
     subgroups = []
     for group in (
         "level_tier",
@@ -385,6 +492,7 @@ def main() -> int:
         "metrics": metrics,
         "paired_mse_bootstrap": comparisons,
         "continuous_validation_harness": continuous_validation,
+        "horizon_sensitivity": horizon_sensitivity,
         "subgroups": subgroups,
         "decision": "reject_linked_hitter_replacement_retain_incumbent",
         "boundaries": {
@@ -423,6 +531,10 @@ improves from {continuous_incumbent['mae']:.3f} to
 {continuous_candidate['mae']:.3f}, but RMSE and absolute mean bias worsen. The path
 mostly improves the large non-arrival group while underpredicting the smaller group
 that reaches MLB, so it remains rejected.
+
+The same pattern persists from one through four years: candidate RMSE is worse at
+every prefix. MAE improves after year one because forecasts move toward zero, not
+because the model captures the positive MLB tail.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)
