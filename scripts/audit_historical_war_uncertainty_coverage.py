@@ -13,6 +13,7 @@ from universal_baseball.war_uncertainty_validation import (
     summarize_binary_probability_calibration,
     summarize_interval_coverage,
     summarize_named_slices,
+    summarize_normal_reference_calibration,
 )
 
 
@@ -140,6 +141,7 @@ def main() -> int:
         }
         components[component] = {
             "all": summarize_interval_coverage(frame),
+            "normal_reference_calibration": summarize_normal_reference_calibration(frame),
             "forecast_participation_calibration": summarize_binary_probability_calibration(
                 frame,
                 probability_column="mlb_active_probability",
@@ -158,6 +160,7 @@ def main() -> int:
         "pitcher": components["pitcher"],
         "whole_player": {
             "all": summarize_interval_coverage(whole),
+            "normal_reference_calibration": summarize_normal_reference_calibration(whole),
             "slices": {
                 "observed_activity": summarize_named_slices(
                     whole, slice_column="observed_activity"

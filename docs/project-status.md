@@ -46,16 +46,37 @@ and pitchers, but both underpredict the observed rate in the 30%–60% forecast 
 No one-season calibration was fitted. Earlier rolling origins are required before a
 monotone calibration challenger can be frozen.
 
+Fixed quantile and PIT checks now show why the aggregate ranges are misleading: the
+moment-normal reference ignores the exact zero-activity mass. A point-preserving
+zero-mass hurdle challenger improves overall 2025 interval score by 17.8% for hitters
+and 20.0% for pitchers, but active-player coverage falls to 67.3% and 60.3%. Do not
+promote either shape from one season. Keep the hurdle structure and conditional-active
+spread as separate targets in the rolling-origin build.
+
 The injury workload hierarchy is now validated out of time. Fit on 2022–2023 and
 scored unchanged on 548 players in 2024–2025, IL type plus elapsed time improves
 return Brier/log loss and remaining-availability MAE/RMSE versus a population-only
 reference in both years. Keep this baseline. Age and prior recurrence are the next
 bounded additions; diagnosis remains deferred until its source is consistent.
 
+Those bounded additions are now tested and rejected. Age band, recent prior IL
+placement, and their combination were partially pooled toward the accepted IL-type/
+elapsed model. None improved Brier, log loss, availability MAE and RMSE together on
+the 2024 selection target, so none was exposed to 2025 for rescue. Keep the simpler
+injury baseline.
+
 The current fallback ladder is now a permanent build check. It certifies complete
 six-year, source-labeled paths for 3,940 hitters and 5,276 pitchers. Sparse players
 remain visible: 165 hitters and 391 pitchers use an explicit population skill prior
 rather than disappearing or becoming zero talent.
+
+The finer minor-league context test is also complete. Official StatsAPI league and
+home-venue identities cover all 695 affiliated team-seasons in the saved 2023–2025
+component data. A league-within-level model used matched movers and strong partial
+pooling, selected on 2024 and confirmed on 2025. It did not pass: the hitter candidate
+lost 2024 and the pitcher candidate lost 2025. Keep the simpler level translation.
+Park effects remain a separate game-context test; venue identity alone is not a park
+factor.
 
 ## Latest P0 correction: true prospect eligibility
 
@@ -880,7 +901,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,408 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,485 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
@@ -967,7 +988,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current verification is 46/46 model-law checks. The latest full suite is
-  1,476 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,485 passing tests plus four known missing-artifact failures; no new failure exists.
 
 The remaining universal event-context candidate is the strongly regressed pitcher
 platoon test. The compact pitcher-contact tables on disk retain pitcher identity and

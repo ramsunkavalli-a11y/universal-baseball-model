@@ -27,6 +27,28 @@ age/level opportunity tables already provide a first hierarchical, partially poo
 fallback. New work should measure and improve that foundation rather than create a
 parallel system.
 
+The first finer-context measurement is complete. Official league and home-venue
+identity covers all 695 saved affiliated team-seasons. A partially pooled
+league-within-level translation was selected on 2024 and confirmed on 2025, but did
+not pass: hitters lost the selection year and pitchers lost confirmation. Retain the
+level-only translation. The next park candidate must use actual home/away or game
+context; venue identity alone is not a park factor. See the
+[source result](affiliated-team-context-result.md) and
+[league test](affiliated-league-translation-result.md).
+
+The next injury additions are also resolved. Broad age and recent-IL-recurrence
+cells, partially pooled toward the validated IL-type/elapsed baseline, failed the
+2024 four-metric gate. They are not promoted and were not tuned against 2025. Keep
+the existing injury hierarchy; diagnosis remains deferred until consistent source
+coverage exists. See the [result](injury-return-age-recurrence-result.md).
+
+The first distribution-shape test confirms that annual WAR cannot be represented by
+one bell curve. A zero-activity mass plus active-player distribution materially
+improves overall interval score, but the current conditional-active spread then
+undercovers. The next rolling-origin uncertainty build must calibrate participation
+and conditional-active shape separately, then combine them. Do not use a global width
+multiplier. See the [hurdle result](war-hurdle-uncertainty-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

@@ -1,0 +1,363 @@
+{
+  "age_coverage_players": 991,
+  "common_cohort_players": 991,
+  "common_cohort_rule": "known stable birth date for all tested families",
+  "confirmation": null,
+  "confirmation_target": 2025,
+  "development_target": 2024,
+  "development_train_seasons": [
+    2022,
+    2023
+  ],
+  "families": {
+    "age": [
+      "age_band"
+    ],
+    "age_and_recent_recurrence": [
+      "age_band",
+      "recent_prior_il_band"
+    ],
+    "recent_recurrence": [
+      "recent_prior_il_band"
+    ]
+  },
+  "gate": "injury_return_age_recent_recurrence",
+  "grid": [
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.1960625929040932,
+        "availability_rmse": 0.2531758957101221,
+        "brier": 0.16839551126059032,
+        "log_loss": 0.5174012429063908,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": 0.00011009233256598083,
+        "availability_rmse": 0.0009552349151558115,
+        "brier": 0.001718630246274111,
+        "log_loss": 0.007388093125556994
+      },
+      "detailed_cells": 46,
+      "family": "age",
+      "prior_players": 10.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.19573024075452722,
+        "availability_rmse": 0.2520764610839075,
+        "brier": 0.16668004548123408,
+        "log_loss": 0.5122724696207576,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.00022225981699999786,
+        "availability_rmse": -0.00014419971105877893,
+        "brier": 3.1644669178654272e-06,
+        "log_loss": 0.002259319839923779
+      },
+      "detailed_cells": 46,
+      "family": "age",
+      "prior_players": 25.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.19566437274211484,
+        "availability_rmse": 0.2519337379160431,
+        "brier": 0.16638578010428076,
+        "log_loss": 0.5107366411902864,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.00028812782941237125,
+        "availability_rmse": -0.00028692287892317925,
+        "brier": -0.00029110091003545224,
+        "log_loss": 0.0007234914094526035
+      },
+      "detailed_cells": 46,
+      "family": "age",
+      "prior_players": 50.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.19570741463502306,
+        "availability_rmse": 0.25199020351801016,
+        "brier": 0.16641351508804997,
+        "log_loss": 0.5101866584417847,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.000245085936504158,
+        "availability_rmse": -0.00023045727695614193,
+        "brier": -0.0002633659262662458,
+        "log_loss": 0.000173508660950894
+      },
+      "detailed_cells": 46,
+      "family": "age",
+      "prior_players": 100.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.1959437442147133,
+        "availability_rmse": 0.25801201056590467,
+        "brier": 0.17194698989136697,
+        "log_loss": 0.5240743753623918,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -8.756356813910404e-06,
+        "availability_rmse": 0.00579134977093837,
+        "brier": 0.005270108877050761,
+        "log_loss": 0.014061225581557979
+      },
+      "detailed_cells": 36,
+      "family": "recent_recurrence",
+      "prior_players": 10.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.1949328979340948,
+        "availability_rmse": 0.2551476803635511,
+        "brier": 0.1691330827016281,
+        "log_loss": 0.5166108722284521,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.0010196026374324207,
+        "availability_rmse": 0.002927019568584821,
+        "brier": 0.002456201687311893,
+        "log_loss": 0.006597722447618359
+      },
+      "detailed_cells": 36,
+      "family": "recent_recurrence",
+      "prior_players": 25.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.1945975741526684,
+        "availability_rmse": 0.2537667508847994,
+        "brier": 0.16784354497761408,
+        "log_loss": 0.5131971672692863,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.001354926418858815,
+        "availability_rmse": 0.0015460900898330854,
+        "brier": 0.0011666639632978704,
+        "log_loss": 0.0031840174884525396
+      },
+      "detailed_cells": 36,
+      "family": "recent_recurrence",
+      "prior_players": 50.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.19472920098217808,
+        "availability_rmse": 0.2529760218874971,
+        "brier": 0.16717154025312292,
+        "log_loss": 0.5113739938443224,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.001223299589349136,
+        "availability_rmse": 0.0007553610925308263,
+        "brier": 0.000494659238806705,
+        "log_loss": 0.0013608440634885755
+      },
+      "detailed_cells": 36,
+      "family": "recent_recurrence",
+      "prior_players": 100.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.1947651145770531,
+        "availability_rmse": 0.25532768520305676,
+        "brier": 0.17053726110935374,
+        "log_loss": 0.5199993077269204,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.0011873859944741272,
+        "availability_rmse": 0.003107024408090464,
+        "brier": 0.00386038009503753,
+        "log_loss": 0.009986157946086593
+      },
+      "detailed_cells": 95,
+      "family": "age_and_recent_recurrence",
+      "prior_players": 10.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.1949166266359111,
+        "availability_rmse": 0.2535283052771525,
+        "brier": 0.16819775901149708,
+        "log_loss": 0.5141199036831355,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.001035873935616105,
+        "availability_rmse": 0.0013076444821861766,
+        "brier": 0.0015208779971808695,
+        "log_loss": 0.004106753902301752
+      },
+      "detailed_cells": 95,
+      "family": "age_and_recent_recurrence",
+      "prior_players": 25.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.19512772631392605,
+        "availability_rmse": 0.2528599447958624,
+        "brier": 0.16736831602052213,
+        "log_loss": 0.5119865382819028,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.000824774257601163,
+        "availability_rmse": 0.0006392840008960787,
+        "brier": 0.0006914350062059149,
+        "log_loss": 0.0019733885010689844
+      },
+      "detailed_cells": 95,
+      "family": "age_and_recent_recurrence",
+      "prior_players": 50.0,
+      "training_players": 463,
+      "validation_players": 244
+    },
+    {
+      "base_il_type_elapsed": {
+        "availability_mae": 0.19595250057152722,
+        "availability_rmse": 0.2522206607949663,
+        "brier": 0.1666768810143162,
+        "log_loss": 0.5100131497808338,
+        "players": 244
+      },
+      "candidate": {
+        "availability_mae": 0.19538033304377064,
+        "availability_rmse": 0.2525177908219917,
+        "brier": 0.16697490155058367,
+        "log_loss": 0.5109193411382889,
+        "players": 244
+      },
+      "candidate_minus_base": {
+        "availability_mae": -0.000572167527756573,
+        "availability_rmse": 0.00029713002702541624,
+        "brier": 0.00029802053626745706,
+        "log_loss": 0.0009061913574550662
+      },
+      "detailed_cells": 95,
+      "family": "age_and_recent_recurrence",
+      "prior_players": 100.0,
+      "training_players": 463,
+      "validation_players": 244
+    }
+  ],
+  "prior_grid": [
+    10.0,
+    25.0,
+    50.0,
+    100.0
+  ],
+  "production_changed": false,
+  "promotion_gate_passed": false,
+  "recurrence_definition": "prior IL placements in [cutoff-365 days, current IL start)",
+  "report_schema_version": "0.1",
+  "selected_development": null,
+  "total_players": 1221
+}

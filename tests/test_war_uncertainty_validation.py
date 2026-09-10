@@ -5,6 +5,7 @@ from universal_baseball.war_uncertainty_validation import (
     summarize_binary_probability_calibration,
     summarize_interval_coverage,
     summarize_named_slices,
+    summarize_normal_reference_calibration,
     wilson_interval,
 )
 
@@ -68,3 +69,25 @@ def test_probability_calibration_uses_fixed_forecast_bands() -> None:
     assert result["brier"] == pytest.approx((0.05**2 + 0.20**2 + 0.50**2 + 0.10**2) / 4)
     assert len(result["fixed_probability_bands"]) == 4
     assert all(row["decision_eligible"] for row in result["fixed_probability_bands"])
+
+
+def test_normal_reference_calibration_reports_fixed_quantiles_and_pit() -> None:
+    result = summarize_normal_reference_calibration(_frame())
+    assert result["positive_variance_players"] == 3
+    assert result["zero_variance_players_excluded"] == 1
+    assert len(result["fixed_pit_bin_counts"]) == 10
+    assert sum(result["fixed_pit_bin_counts"]) == 3
+    assert [row["nominal_quantile"] for row in result["fixed_quantile_calibration"]] == [
+        0.10,
+        0.25,
+        0.50,
+        0.75,
+        0.90,
+    ]
+
+
+def test_normal_reference_calibration_requires_positive_variance() -> None:
+    with pytest.raises(ValueError, match="positive variance"):
+        summarize_normal_reference_calibration(
+            _frame().with_columns(pl.lit(0.0).alias("annual_war_variance"))
+        )
