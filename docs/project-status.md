@@ -632,6 +632,11 @@ test failure was observed.
 - Timing audit correction: the earlier cohorts' six-year outcomes extend beyond the
   later cohorts' debut dates. This is not a chronology-safe forecast backtest and
   cannot confirm either workload method. The distribution shift remains descriptive.
+- The official career backbone is now locally extended to 2009-2025 (generated data),
+  with 3,015,872 batting PA exactly matching pitching BF. A lean batched StatsAPI
+  people pull resolved exact debut dates for all 5,321 observed players. This is
+  enough to rerun the conditional workload check with training windows that truly end
+  before each 2018-2019 evaluation cutoff.
 - Do not fit a pitcher widening factor to the opened later cohort. Keep pitcher ranges
   descriptive and develop a resampling-based replacement without claiming untouched
   confirmation until another complete six-year cohort exists.
