@@ -36,13 +36,13 @@ def _rows(player_type: str) -> pl.DataFrame:
         else "mlb_pitching_2009_2025.parquet"
     )
     column = "batting_pa" if player_type == "hitter" else "pitching_bf"
-    workload = (
-        pl.read_parquet(
-            Path("reports/generated/career-mlb-outcome-inventory-2009-2025/tables")
-            / table
-        )
-        .select("season", "player_id", pl.col(column).alias("mlb_workload"))
-    )
+    selection = ["season", "player_id", pl.col(column).alias("mlb_workload")]
+    if player_type == "pitcher":
+        selection.extend(["pitching_games", "pitching_starts"])
+    workload = pl.read_parquet(
+        Path("reports/generated/career-mlb-outcome-inventory-2009-2025/tables")
+        / table
+    ).select(selection)
     return build_post_arrival_progression_rows(transitions, workload)
 
 

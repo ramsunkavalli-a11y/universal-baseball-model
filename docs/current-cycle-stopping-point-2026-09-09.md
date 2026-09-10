@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,513 passed. Four older research-contract tests fail because their
+Latest full suite: 1,514 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -155,3 +155,8 @@ and both later years, with all later paired intervals below zero. The signal is 
 precise enough for meaningful-to-established progression. Next, carry simulated annual
 workload into the following fringe-state transition while retaining the pooled upper-
 state fallback; do not change current values until that complete path is validated.
+
+The next pitcher-role increment was also closed cleanly. Prior games, starts, start
+share and batters faced per game do not consistently improve career-state advancement
+after total workload is known. Do not add a role bonus to advancement; preserve role
+only in the separate workload and WAR-rate paths.

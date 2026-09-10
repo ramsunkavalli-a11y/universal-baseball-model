@@ -179,6 +179,13 @@ inside a linked career model. It does not authorize using future workload as a k
 input or changing current values. See the
 [post-arrival workload result](prospect-post-arrival-workload-result.md).
 
+A stricter follow-up tested official prior-season games, starts, start share and batters
+faced per game against that accepted workload model. The pitcher-role challenger was
+slightly better in selection but not stable in both later years; it is rejected for
+career-state advancement. Role remains an opportunity/WAR-path input, not an extra
+talent or advancement bonus. See the
+[post-arrival pitcher-role result](prospect-post-arrival-pitcher-role-result.md).
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

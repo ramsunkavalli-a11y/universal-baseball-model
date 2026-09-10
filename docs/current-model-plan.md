@@ -163,6 +163,12 @@ hazard; it must not treat future workload as known today. See the
 [plan](prospect-post-arrival-workload-plan.md) and
 [result](prospect-post-arrival-workload-result.md).
 
+Prior MLB starter/reliever usage does not earn a second career-state effect after total
+workload is known. Start share and batters faced per game improved 2023 selection but
+did not consistently improve 2024/2025 confirmation. Keep role in pitcher opportunity
+and WAR paths, where it already belongs, and exclude it from the advancement hazard to
+avoid double counting. See the [role result](prospect-post-arrival-pitcher-role-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

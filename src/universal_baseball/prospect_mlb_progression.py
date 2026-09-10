@@ -46,11 +46,25 @@ def build_post_arrival_progression_rows(
             raise ValueError(f"transition rows missing fields: {missing}")
     if missing := sorted({"season", "player_id", "mlb_workload"} - set(mlb_workload.columns)):
         raise ValueError(f"MLB workload rows missing fields: {missing}")
-    workload = mlb_workload.group_by("season", "player_id").agg(
-        pl.col("mlb_workload").sum()
-    )
+    role_columns = {"pitching_games", "pitching_starts"}
+    has_pitcher_role = role_columns <= set(mlb_workload.columns)
+    if bool(role_columns & set(mlb_workload.columns)) and not has_pitcher_role:
+        raise ValueError("pitcher role requires both games and starts")
+    aggregations = [pl.col("mlb_workload").sum()]
+    if has_pitcher_role:
+        aggregations.extend(
+            [pl.col("pitching_games").sum(), pl.col("pitching_starts").sum()]
+        )
+    workload = mlb_workload.group_by("season", "player_id").agg(aggregations)
     if workload.filter(pl.col("mlb_workload") < 0).height:
         raise ValueError("MLB workload cannot be negative")
+    if has_pitcher_role and workload.filter(
+        (pl.col("pitching_games") < 0)
+        | (pl.col("pitching_starts") < 0)
+        | (pl.col("pitching_starts") > pl.col("pitching_games"))
+        | ((pl.col("mlb_workload") > 0) & (pl.col("pitching_games") == 0))
+    ).height:
+        raise ValueError("invalid pitcher role workload")
     environment = workload.filter(pl.col("mlb_workload") > 0).group_by("season").agg(
         pl.col("mlb_workload").mean().alias("active_mean_workload")
     )
@@ -94,6 +108,20 @@ def build_post_arrival_progression_rows(
             ),
         )
     )
+    if has_pitcher_role:
+        rows = rows.with_columns(
+            pl.col("pitching_games").fill_null(0),
+            pl.col("pitching_starts").fill_null(0),
+        ).with_columns(
+            pl.when(pl.col("pitching_games") > 0)
+            .then(pl.col("pitching_starts") / pl.col("pitching_games"))
+            .otherwise(0.0)
+            .alias("prior_start_share"),
+            pl.when(pl.col("pitching_games") > 0)
+            .then(pl.col("mlb_workload") / pl.col("pitching_games"))
+            .otherwise(0.0)
+            .alias("prior_bf_per_game"),
+        )
     if rows.filter(
         pl.col("active_mean_workload").is_null()
         | pl.col("prior_workload_vs_active_mean").is_nan()
@@ -106,7 +134,11 @@ def build_post_arrival_progression_rows(
 def progression_design(frame: pl.DataFrame, *, feature_set: str) -> np.ndarray:
     """Create the frozen age/time or age/time/workload progression design."""
 
-    if feature_set not in {"age_elapsed", "age_elapsed_prior_workload"}:
+    if feature_set not in {
+        "age_elapsed",
+        "age_elapsed_prior_workload",
+        "age_elapsed_prior_workload_role",
+    }:
         raise ValueError("unsupported progression feature set")
     elapsed = frame.get_column("elapsed_year").to_numpy().astype(float)
     values = [
@@ -114,12 +146,22 @@ def progression_design(frame: pl.DataFrame, *, feature_set: str) -> np.ndarray:
         (elapsed - 1.0) / 3.0,
         (elapsed >= 3).astype(float),
     ]
-    if feature_set == "age_elapsed_prior_workload":
+    if feature_set in {
+        "age_elapsed_prior_workload",
+        "age_elapsed_prior_workload_role",
+    }:
         relative = frame.get_column("prior_workload_vs_active_mean").to_numpy()
         values.extend(
             [
                 frame.get_column("prior_mlb_active").to_numpy().astype(float),
                 np.asarray([log1p(float(value)) for value in relative]),
+            ]
+        )
+    if feature_set == "age_elapsed_prior_workload_role":
+        values.extend(
+            [
+                frame.get_column("prior_start_share").to_numpy().astype(float),
+                frame.get_column("prior_bf_per_game").to_numpy().astype(float) / 25.0,
             ]
         )
     return np.column_stack(values)

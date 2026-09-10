@@ -1,4 +1,5 @@
 import polars as pl
+import pytest
 
 from universal_baseball.prospect_mlb_progression import (
     build_post_arrival_progression_rows,
@@ -58,3 +59,37 @@ def test_progression_design_adds_activity_and_normalized_workload() -> None:
     assert progression_design(
         frame, feature_set="age_elapsed_prior_workload"
     ).shape == (1, 5)
+
+
+def test_pitcher_role_is_validated_and_added_to_progression_design() -> None:
+    transitions = pl.DataFrame(
+        {
+            "player_id": [1],
+            "snapshot_year": [2019],
+            "elapsed_year": [2],
+            "outcome_year": [2021],
+            "from_state": ["FRINGE_MLB"],
+            "to_state": ["MEANINGFUL_MLB"],
+            "age_years": [23.0],
+        }
+    )
+    workload = pl.DataFrame(
+        {
+            "season": [2020, 2020],
+            "player_id": [1, 2],
+            "mlb_workload": [100.0, 300.0],
+            "pitching_games": [10, 20],
+            "pitching_starts": [5, 0],
+        }
+    )
+    rows = build_post_arrival_progression_rows([transitions], workload)
+    assert rows.item(0, "prior_start_share") == 0.5
+    assert rows.item(0, "prior_bf_per_game") == 10.0
+    assert progression_design(
+        rows, feature_set="age_elapsed_prior_workload_role"
+    ).shape == (1, 7)
+
+    with pytest.raises(ValueError, match="requires both"):
+        build_post_arrival_progression_rows(
+            [transitions], workload.drop("pitching_starts")
+        )

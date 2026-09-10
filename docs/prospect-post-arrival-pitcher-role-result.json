@@ -1,0 +1,273 @@
+{
+  "bootstrap_draws": 2000,
+  "current_2026_used": false,
+  "decisions": {
+    "FRINGE_MLB": {
+      "both_confirmations_paired_gate_passed": false,
+      "development_delta": {
+        "brier": -0.0038469323353417517,
+        "log_loss": -0.009073074261152891
+      },
+      "development_point_gate_passed": true,
+      "linked_simulation_role_input_supported": false
+    },
+    "MEANINGFUL_MLB": {
+      "both_confirmations_paired_gate_passed": false,
+      "development_delta": {
+        "brier": -0.0009402646053183472,
+        "log_loss": -0.004208519375549058
+      },
+      "development_point_gate_passed": true,
+      "linked_simulation_role_input_supported": false
+    }
+  },
+  "development_scores": {
+    "FRINGE_MLB": {
+      "age_elapsed_prior_workload": {
+        "0.03": {
+          "advances": 39,
+          "brier": 0.12065944835255552,
+          "log_loss": 0.3988218974342376,
+          "players": 269
+        },
+        "0.1": {
+          "advances": 39,
+          "brier": 0.11739283883801242,
+          "log_loss": 0.383327238073442,
+          "players": 269
+        },
+        "0.3": {
+          "advances": 39,
+          "brier": 0.11440424092381747,
+          "log_loss": 0.3688491694791275,
+          "players": 269
+        },
+        "1.0": {
+          "advances": 39,
+          "brier": 0.11190101235998606,
+          "log_loss": 0.357244941669271,
+          "players": 269
+        }
+      },
+      "age_elapsed_prior_workload_role": {
+        "0.03": {
+          "advances": 39,
+          "brier": 0.11860328745271285,
+          "log_loss": 0.3909429310441137,
+          "players": 269
+        },
+        "0.1": {
+          "advances": 39,
+          "brier": 0.11380708495459199,
+          "log_loss": 0.3717368392967221,
+          "players": 269
+        },
+        "0.3": {
+          "advances": 39,
+          "brier": 0.11027110875182061,
+          "log_loss": 0.35749387783822056,
+          "players": 269
+        },
+        "1.0": {
+          "advances": 39,
+          "brier": 0.10805408002464431,
+          "log_loss": 0.3481718674081181,
+          "players": 269
+        }
+      }
+    },
+    "MEANINGFUL_MLB": {
+      "age_elapsed_prior_workload": {
+        "0.03": {
+          "advances": 26,
+          "brier": 0.21426430715060532,
+          "log_loss": 0.6201406878359169,
+          "players": 76
+        },
+        "0.1": {
+          "advances": 26,
+          "brier": 0.19485074898548405,
+          "log_loss": 0.5779797359865185,
+          "players": 76
+        },
+        "0.3": {
+          "advances": 26,
+          "brier": 0.1765047606940207,
+          "log_loss": 0.534453543261161,
+          "players": 76
+        },
+        "1.0": {
+          "advances": 26,
+          "brier": 0.1648741132535679,
+          "log_loss": 0.5030536892418328,
+          "players": 76
+        }
+      },
+      "age_elapsed_prior_workload_role": {
+        "0.03": {
+          "advances": 26,
+          "brier": 0.2064901978767171,
+          "log_loss": 0.6039749105005198,
+          "players": 76
+        },
+        "0.1": {
+          "advances": 26,
+          "brier": 0.18539091899900376,
+          "log_loss": 0.5572543877172725,
+          "players": 76
+        },
+        "0.3": {
+          "advances": 26,
+          "brier": 0.17104130349515015,
+          "log_loss": 0.5208445377592712,
+          "players": 76
+        },
+        "1.0": {
+          "advances": 26,
+          "brier": 0.16393384864824956,
+          "log_loss": 0.49884516986628374,
+          "players": 76
+        }
+      }
+    }
+  },
+  "plan": "docs/prospect-post-arrival-pitcher-role-plan.md",
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "rolling_confirmations": [
+    {
+      "cells": {
+        "FRINGE_MLB": {
+          "role_minus_workload": {
+            "brier": {
+              "mean_delta": -0.0028689059718829605,
+              "paired_bootstrap_high": 0.003401504898171595,
+              "paired_bootstrap_low": -0.00931905056778323
+            },
+            "log_loss": {
+              "mean_delta": -0.006441622387251663,
+              "paired_bootstrap_high": 0.00907382551297491,
+              "paired_bootstrap_low": -0.02308852482686582
+            }
+          },
+          "scores": {
+            "age_elapsed_prior_workload": {
+              "advances": 36,
+              "brier": 0.140307707608821,
+              "log_loss": 0.4398296367543804,
+              "players": 189
+            },
+            "age_elapsed_prior_workload_role": {
+              "advances": 36,
+              "brier": 0.13743880163693803,
+              "log_loss": 0.4333880143671288,
+              "players": 189
+            }
+          }
+        },
+        "MEANINGFUL_MLB": {
+          "role_minus_workload": {
+            "brier": {
+              "mean_delta": -0.0029974724998726603,
+              "paired_bootstrap_high": 0.011086273667874375,
+              "paired_bootstrap_low": -0.017250894553504342
+            },
+            "log_loss": {
+              "mean_delta": -0.0026687369933757928,
+              "paired_bootstrap_high": 0.030564901943707524,
+              "paired_bootstrap_low": -0.03525243881408194
+            }
+          },
+          "scores": {
+            "age_elapsed_prior_workload": {
+              "advances": 21,
+              "brier": 0.23948674592496463,
+              "log_loss": 0.6793349178749026,
+              "players": 45
+            },
+            "age_elapsed_prior_workload_role": {
+              "advances": 21,
+              "brier": 0.23648927342509196,
+              "log_loss": 0.6766661808815267,
+              "players": 45
+            }
+          }
+        }
+      },
+      "outcome_year": 2024
+    },
+    {
+      "cells": {
+        "FRINGE_MLB": {
+          "role_minus_workload": {
+            "brier": {
+              "mean_delta": 0.0010554361231478674,
+              "paired_bootstrap_high": 0.005721869362319626,
+              "paired_bootstrap_low": -0.003695548229744915
+            },
+            "log_loss": {
+              "mean_delta": 0.0039910005537316376,
+              "paired_bootstrap_high": 0.015584216616167493,
+              "paired_bootstrap_low": -0.008303379734952217
+            }
+          },
+          "scores": {
+            "age_elapsed_prior_workload": {
+              "advances": 29,
+              "brier": 0.09585981227461925,
+              "log_loss": 0.31506648812284727,
+              "players": 231
+            },
+            "age_elapsed_prior_workload_role": {
+              "advances": 29,
+              "brier": 0.09691524839776709,
+              "log_loss": 0.31905748867657896,
+              "players": 231
+            }
+          }
+        },
+        "MEANINGFUL_MLB": {
+          "role_minus_workload": {
+            "brier": {
+              "mean_delta": -0.0007473936625899662,
+              "paired_bootstrap_high": 0.01390057557041035,
+              "paired_bootstrap_low": -0.01556153285356886
+            },
+            "log_loss": {
+              "mean_delta": -0.0006570240995170218,
+              "paired_bootstrap_high": 0.03321950777936686,
+              "paired_bootstrap_low": -0.03457165334298971
+            }
+          },
+          "scores": {
+            "age_elapsed_prior_workload": {
+              "advances": 28,
+              "brier": 0.23428915133275843,
+              "log_loss": 0.6705429221657911,
+              "players": 67
+            },
+            "age_elapsed_prior_workload_role": {
+              "advances": 28,
+              "brier": 0.23354175767016835,
+              "log_loss": 0.6698858980662743,
+              "players": 67
+            }
+          }
+        }
+      },
+      "outcome_year": 2025
+    }
+  ],
+  "selected_regularization": {
+    "FRINGE_MLB": {
+      "age_elapsed_prior_workload": 1.0,
+      "age_elapsed_prior_workload_role": 1.0
+    },
+    "MEANINGFUL_MLB": {
+      "age_elapsed_prior_workload": 1.0,
+      "age_elapsed_prior_workload_role": 1.0
+    }
+  },
+  "shortened_2020_outcomes_excluded": true,
+  "status": "post_arrival_pitcher_role_test_complete"
+}
