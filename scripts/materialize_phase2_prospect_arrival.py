@@ -277,6 +277,8 @@ def main() -> int:
             target_column="established_role_within_horizon",
             outcome_name="established_given_meaningful",
             feature_set="core",
+            regularization_c=0.1 if player_type == "hitter" else 1.0,
+            production_regression=50.0 if player_type == "hitter" else 0.0,
         )
         scored = predict_arrival(established_given_meaningful_fit, scored)
         selected = (
@@ -372,6 +374,14 @@ def main() -> int:
                 "established_given_meaningful": combined_training.filter(
                     pl.col("meaningful_role_within_horizon") == 1
                 ).height,
+            },
+            "conditional_model_specs": {
+                "meaningful_given_arrival": "core__c_1",
+                "established_given_meaningful": (
+                    "core__c_0.1__rate_reg_50"
+                    if player_type == "hitter"
+                    else "core__c_1"
+                ),
             },
             "mean_current_six_year_nested_meaningful_role_probability": float(
                 scored.get_column(

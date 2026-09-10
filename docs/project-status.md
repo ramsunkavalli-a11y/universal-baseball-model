@@ -35,10 +35,13 @@ That [conditional hurdle audit](prospect-conditional-career-hurdle-result.md) no
 passes its structural gate. In the outer period, roughly 30% of arrivals become
 meaningful and 45-48% of meaningful players become established. Core models calibrate
 reasonably; richer interaction and pedigree candidates have no reliable outer gain.
+One source-contract defect was then corrected: official numeric hitter position codes
+had all fallen into the `OTHER` role. The [position-code correction](prospect-position-code-correction-result.md)
+restores the intended role groups without adding a catcher bonus or quota.
 The [nested current-value sensitivity](prospect-nested-career-value-result.md) now
 passes the private gate and is the local explorer's pre-MLB default. It has zero
-probability-order violations, keeps Josuar Gonzalez at 45 FV with a lower 1.55 WAR,
-and reduces hitter 50+ counts from 320 to 81 instead of collapsing them to 8 or 17.
+probability-order violations, keeps Josuar Gonzalez at 45 FV with a lower 1.83 WAR,
+and reduces hitter 50+ counts from 352 to 86 instead of collapsing them to 8 or 17.
 Pitcher prospect values remain compressed (one 50+), and the top hitter ordering still
 needs model-based error review. This is private and provisional; MLB contract values
 and published outputs are unchanged.
@@ -483,7 +486,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,359 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,385 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 

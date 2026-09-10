@@ -22,32 +22,33 @@ entry paths are explicit; they are not treated as zero-quality draft picks.
 
 ## Outer 2023 result
 
-Earlier-origin selection chose `baseball_pedigree`, `C=1`, and no extra production-
-rate regression for arrival, meaningful role, and hitter established role. Pitcher
+Earlier-origin selection chose `baseball_pedigree`, `C=1`, and no extra production-rate
+regression for hitter arrival, meaningful and established roles and for pitcher
+arrival and meaningful role. Pitcher
 established-role selection used the combined baseball/demographic family. Conditional
 quality instead selected origin plus 50 PA of rate regression for hitters and draft
 pedigree plus 50 BF of regression for pitchers, both with `C=.1`.
 
 | Population / target | Core log loss | Candidate | Core Brier | Candidate |
 |---|---:|---:|---:|---:|
-| Hitters / arrival | .16663 | .15529 | .04651 | .04471 |
-| Hitters / meaningful role | .07642 | .06841 | .01778 | .01706 |
+| Hitters / arrival | .16531 | .15355 | .04588 | .04386 |
+| Hitters / meaningful role | .07620 | .06821 | .01776 | .01709 |
 | Pitchers / arrival | .17208 | .16607 | .04861 | .04703 |
 | Pitchers / meaningful role | .07060 | .06849 | .01772 | .01748 |
-| Hitters / established role | .03896 | .03637 | .00852 | .00831 |
+| Hitters / established role | .03961 | .03693 | .00859 | .00841 |
 | Pitchers / established role | .03540 | .03450 | .00813 | .00796 |
-| Hitters / positive components, given meaningful role | .67428 | .68851 | .24107 | .24782 |
+| Hitters / positive components, given meaningful role | .71584 | .70508 | .26061 | .25588 |
 | Pitchers / positive components, given meaningful role | .69448 | .69373 | .25015 | .25035 |
 
-For arrival, the cleanest incremental comparison holds baseball interactions and
-`C=1` fixed, then adds pedigree. Hitter log loss improves by .00869 and its 95% paired
-interval excludes zero. Pitcher incremental gains are smaller and uncertain. The
+For hitter arrival, the selected baseball-pedigree model improves log loss by .01176 and
+its 95% paired interval excludes zero. Pitcher arrival improves by .00601 with its
+interval also below zero. The
 selected hitter meaningful-role challenger also improves outer log loss with its
 interval below zero, though its Brier interval crosses zero.
 
-Established-role uncertainty is mixed. In the conditional quality test, the selected
-hitter challenger is worse on both outer scores. The pitcher challenger is
-indistinguishable from the core model. Both quality challengers are rejected.
+Established-role uncertainty is mixed. The hitter and pitcher intervals cross zero.
+In the conditional positive-component test, both selected challengers are
+indistinguishable from core. Neither quality challenger is promoted.
 
 ## Limits and decision
 

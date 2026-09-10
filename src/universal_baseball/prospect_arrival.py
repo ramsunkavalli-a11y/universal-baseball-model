@@ -25,6 +25,45 @@ COUNTRIES = (
     "Puerto Rico", "Canada", "Colombia", "Panama", "Nicaragua",
     "Brazil", "Australia", "Japan", "South Korea", "Taiwan",
 )
+HITTER_POSITION_BY_STATSAPI_CODE = {
+    "2": "C",
+    "3": "1B",
+    "4": "2B",
+    "5": "3B",
+    "6": "SS",
+    "7": "LF",
+    "8": "CF",
+    "9": "RF",
+    "10": "DH",
+}
+
+
+def _primary_hitter_positions(
+    basic_stats: pl.DataFrame, *, snapshot_year: int
+) -> pl.DataFrame:
+    """Choose one reproducible, games-weighted position per hitter-season."""
+
+    game_weight = pl.col("games") if "games" in basic_stats.columns else pl.lit(1)
+    return (
+        basic_stats.filter(
+            (pl.col("season") == snapshot_year)
+            & (pl.col("stat_group") == "hitting")
+            & (pl.col("sport_id") != 1)
+            & pl.col("position_code").is_not_null()
+        )
+        .group_by("player_id", "position_code")
+        .agg(game_weight.sum().alias("position_games"))
+        .with_columns(
+            pl.col("position_code").cast(pl.Int64, strict=False).fill_null(99)
+            .alias("position_code_order")
+        )
+        .sort(
+            ["player_id", "position_games", "position_code_order"],
+            descending=[False, True, False],
+        )
+        .unique("player_id", keep="first", maintain_order=True)
+        .select("player_id", pl.col("position_code").alias("position"))
+    )
 
 
 def _positive_component_roles(
@@ -145,6 +184,7 @@ def _role_tier(
             return "STARTER"
         return "RELIEVER" if starts == 0 else "SWINGMAN"
     value = str(position or "").upper()
+    value = HITTER_POSITION_BY_STATSAPI_CODE.get(value, value)
     if value == "C":
         return "C"
     if value in {"2B", "SS"}:
@@ -183,14 +223,8 @@ def _production_features(
             (pl.col("doubles") + pl.col("triples") + pl.col("home_runs"))
             .sum().alias("n4"),
         )
-        position = (
-            basic_stats.filter(
-                (pl.col("season") == snapshot_year)
-                & (pl.col("stat_group") == "hitting")
-                & (pl.col("sport_id") != 1)
-            )
-            .group_by("player_id")
-            .agg(pl.col("position_code").drop_nulls().mode().first().alias("position"))
+        position = _primary_hitter_positions(
+            basic_stats, snapshot_year=snapshot_year
         )
         current = current.join(position, on="player_id", how="left").with_columns(
             pl.col("position").map_elements(

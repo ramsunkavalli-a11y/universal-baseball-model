@@ -272,6 +272,29 @@ def main() -> int:
             "horizon_years": 2,
             "2026_opened": False,
         },
+        "deployment_decision": {
+            "hitter": {
+                "meaningful_given_arrival": {
+                    "model_id": "core__c_1",
+                    "reason": "development-selected interaction model reversed on the outer check",
+                },
+                "established_given_meaningful": {
+                    "model_id": "core__c_0.1__rate_reg_50",
+                    "reason": "development-selected shrinkage within the core feature family improved both outer point scores; uncertainty remains explicit",
+                },
+            },
+            "pitcher": {
+                "meaningful_given_arrival": {
+                    "model_id": "core__c_1",
+                    "reason": "development selection retained the incumbent",
+                },
+                "established_given_meaningful": {
+                    "model_id": "core__c_1",
+                    "reason": "development-selected interaction model reversed on the outer check",
+                },
+            },
+            "richer_feature_family_promoted": False,
+        },
         "results": results,
         "boundaries": {
             "outside_fv_used": False,
@@ -290,4 +313,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

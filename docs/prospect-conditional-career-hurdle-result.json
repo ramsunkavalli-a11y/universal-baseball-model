@@ -38,316 +38,339 @@
     ]
   },
   "contract": "docs/prospect-conditional-career-hurdle-plan.md",
+  "deployment_decision": {
+    "hitter": {
+      "established_given_meaningful": {
+        "model_id": "core__c_0.1__rate_reg_50",
+        "reason": "development-selected shrinkage within the core feature family improved both outer point scores; uncertainty remains explicit"
+      },
+      "meaningful_given_arrival": {
+        "model_id": "core__c_1",
+        "reason": "development-selected interaction model reversed on the outer check"
+      }
+    },
+    "pitcher": {
+      "established_given_meaningful": {
+        "model_id": "core__c_1",
+        "reason": "development-selected interaction model reversed on the outer check"
+      },
+      "meaningful_given_arrival": {
+        "model_id": "core__c_1",
+        "reason": "development selection retained the incumbent"
+      }
+    },
+    "richer_feature_family_promoted": false
+  },
   "report_schema_version": "0.1",
   "results": {
     "hitter": {
       "established_given_meaningful": {
         "candidate": {
-          "brier": 0.23991112103532614,
+          "brier": 0.24449728935477702,
           "feature_set": "core",
-          "log_loss": 0.6728460800587358,
+          "log_loss": 0.6822214044881736,
           "model_id": "core__c_0.1__rate_reg_50",
           "observed_rate": 0.47619047619047616,
           "players": 63,
-          "predicted_rate": 0.45564939027929996,
+          "predicted_rate": 0.46046839926016275,
           "production_regression": 50.0,
           "regularization_c": 0.1
         },
         "candidate_calibration": {
-          "intercept": 0.5396900065537446,
+          "intercept": 0.08873651654703035,
           "reliability_bins": [
             {
               "bin": 1,
               "observed_rate": 0.38461538461538464,
               "players": 13,
-              "predicted_rate": 0.4178610901450251
+              "predicted_rate": 0.3676016845743467
             },
             {
               "bin": 2,
-              "observed_rate": 0.3076923076923077,
+              "observed_rate": 0.38461538461538464,
               "players": 13,
-              "predicted_rate": 0.4225587210794541
+              "predicted_rate": 0.4348667485625518
             },
             {
               "bin": 3,
               "observed_rate": 0.46153846153846156,
               "players": 13,
-              "predicted_rate": 0.43483478709295
+              "predicted_rate": 0.4608343152007483
             },
             {
               "bin": 4,
-              "observed_rate": 0.5833333333333334,
+              "observed_rate": 0.6666666666666666,
               "players": 12,
-              "predicted_rate": 0.4978954760787895
+              "predicted_rate": 0.5008130826052875
             },
             {
               "bin": 5,
-              "observed_rate": 0.6666666666666666,
+              "observed_rate": 0.5,
               "players": 12,
-              "predicted_rate": 0.5127380080436531
+              "predicted_rate": 0.5480680361447833
             }
           ],
-          "slope": 3.5559176311866647
+          "slope": 1.1559741091254265
         },
         "condition": "meaningful_role_within_horizon",
         "development_evaluation_players": 90,
         "development_selection_scores": [
           {
-            "brier": 0.26603181275833887,
+            "brier": 0.26297854882775656,
             "evaluation_year": 2021,
             "feature_set": "core",
-            "log_loss": 0.7270599885519166,
+            "log_loss": 0.720159817430468,
             "model_id": "core__c_0.1",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.40175597831308935,
+            "predicted_rate": 0.3999003540770159,
             "production_regression": 0.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.26602407250992743,
+            "brier": 0.26296917089368393,
             "evaluation_year": 2021,
             "feature_set": "core",
-            "log_loss": 0.7270419747016904,
+            "log_loss": 0.7201390287651169,
             "model_id": "core__c_0.1__rate_reg_50",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.40181807158124533,
+            "predicted_rate": 0.3999542160545373,
             "production_regression": 50.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.28501169791146097,
+            "brier": 0.2828517643451716,
             "evaluation_year": 2021,
             "feature_set": "core",
-            "log_loss": 0.778128449332245,
+            "log_loss": 0.7701914313569497,
             "model_id": "core__c_1",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.3869510414903543,
+            "predicted_rate": 0.38818363949117896,
             "production_regression": 0.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.28486748248137767,
+            "brier": 0.2826859432426349,
             "evaluation_year": 2021,
             "feature_set": "core",
-            "log_loss": 0.7776493784212567,
+            "log_loss": 0.769710366945173,
             "model_id": "core__c_1__rate_reg_50",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.387626202619472,
+            "predicted_rate": 0.3886466100609435,
             "production_regression": 50.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.268380646383012,
+            "brier": 0.26518184708995296,
             "evaluation_year": 2021,
             "feature_set": "baseball_interactions",
-            "log_loss": 0.7326366607992806,
+            "log_loss": 0.7254681021106273,
             "model_id": "baseball_interactions__c_0.1",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.40272630059552816,
+            "predicted_rate": 0.4009877573074735,
             "production_regression": 0.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.2683731387806166,
+            "brier": 0.2651937027613929,
             "evaluation_year": 2021,
             "feature_set": "baseball_interactions",
-            "log_loss": 0.7326182404897865,
+            "log_loss": 0.7254928109445372,
             "model_id": "baseball_interactions__c_0.1__rate_reg_50",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.4027885654112864,
+            "predicted_rate": 0.40104079621420025,
             "production_regression": 50.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.2856853337439297,
+            "brier": 0.28307974730853946,
             "evaluation_year": 2021,
             "feature_set": "baseball_interactions",
-            "log_loss": 0.7820482183666713,
+            "log_loss": 0.7748684342060266,
             "model_id": "baseball_interactions__c_1",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.39274242262099757,
+            "predicted_rate": 0.39484224899664966,
             "production_regression": 0.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.28555180861130014,
+            "brier": 0.2829478893741157,
             "evaluation_year": 2021,
             "feature_set": "baseball_interactions",
-            "log_loss": 0.7815711969560287,
+            "log_loss": 0.7744034979944833,
             "model_id": "baseball_interactions__c_1__rate_reg_50",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.39340568402202175,
+            "predicted_rate": 0.395289919008693,
             "production_regression": 50.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.26673679100208453,
+            "brier": 0.2631867340671177,
             "evaluation_year": 2021,
             "feature_set": "draft_pedigree",
-            "log_loss": 0.7286407816585163,
+            "log_loss": 0.7207049690636574,
             "model_id": "draft_pedigree__c_0.1",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.4006669227354032,
+            "predicted_rate": 0.39903378568807363,
             "production_regression": 0.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.2667246638609999,
+            "brier": 0.2631727429055815,
             "evaluation_year": 2021,
             "feature_set": "draft_pedigree",
-            "log_loss": 0.7286132969700333,
+            "log_loss": 0.720674409315075,
             "model_id": "draft_pedigree__c_0.1__rate_reg_50",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.4007416675542628,
+            "predicted_rate": 0.39910022528891104,
             "production_regression": 50.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.2856835825477927,
+            "brier": 0.2778589631529798,
             "evaluation_year": 2021,
             "feature_set": "draft_pedigree",
-            "log_loss": 0.7809774021560894,
+            "log_loss": 0.7603915973558804,
             "model_id": "draft_pedigree__c_1",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.4172734403211424,
+            "predicted_rate": 0.4167202602479709,
             "production_regression": 0.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.2855317095974353,
+            "brier": 0.27763273867438654,
             "evaluation_year": 2021,
             "feature_set": "draft_pedigree",
-            "log_loss": 0.7804461122618794,
+            "log_loss": 0.7597797382911214,
             "model_id": "draft_pedigree__c_1__rate_reg_50",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.41823239945380886,
+            "predicted_rate": 0.41737059186197956,
             "production_regression": 50.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.2690677066113165,
+            "brier": 0.2653087248823587,
             "evaluation_year": 2021,
             "feature_set": "baseball_pedigree",
-            "log_loss": 0.734157357966633,
+            "log_loss": 0.7258253992320471,
             "model_id": "baseball_pedigree__c_0.1",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.40268207166321346,
+            "predicted_rate": 0.4012658631678786,
             "production_regression": 0.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.26905610973057476,
+            "brier": 0.26532141967752715,
             "evaluation_year": 2021,
             "feature_set": "baseball_pedigree",
-            "log_loss": 0.7341300872404726,
+            "log_loss": 0.7258515551569475,
             "model_id": "baseball_pedigree__c_0.1__rate_reg_50",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.4027563309352673,
+            "predicted_rate": 0.4013253408614822,
             "production_regression": 50.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.28800079078901625,
+            "brier": 0.2797167864995146,
             "evaluation_year": 2021,
             "feature_set": "baseball_pedigree",
-            "log_loss": 0.7885311346498661,
+            "log_loss": 0.7685046440979867,
             "model_id": "baseball_pedigree__c_1",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.4239283292306216,
+            "predicted_rate": 0.42379374444884094,
             "production_regression": 0.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.287869071873173,
+            "brier": 0.2796100501804479,
             "evaluation_year": 2021,
             "feature_set": "baseball_pedigree",
-            "log_loss": 0.7880195895367025,
+            "log_loss": 0.7681130676462188,
             "model_id": "baseball_pedigree__c_1__rate_reg_50",
             "observed_rate": 0.5111111111111111,
             "players": 90,
-            "predicted_rate": 0.42488414403863567,
+            "predicted_rate": 0.42443743299550923,
             "production_regression": 50.0,
             "regularization_c": 1.0
           }
         ],
         "development_training_players": 74,
         "incumbent": {
-          "brier": 0.23885521928813666,
+          "brier": 0.2532577215082024,
           "feature_set": "core",
-          "log_loss": 0.6706647162547013,
+          "log_loss": 0.7027814902115174,
           "model_id": "core__c_1",
           "observed_rate": 0.47619047619047616,
           "players": 63,
-          "predicted_rate": 0.4344055328174323,
+          "predicted_rate": 0.4399880636842298,
           "production_regression": 0.0,
           "regularization_c": 1.0
         },
         "incumbent_calibration": {
-          "intercept": 0.45912955855562715,
+          "intercept": -0.004619221812862867,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.46153846153846156,
+              "observed_rate": 0.38461538461538464,
               "players": 13,
-              "predicted_rate": 0.37406152721782987
+              "predicted_rate": 0.26974014948834923
             },
             {
               "bin": 2,
-              "observed_rate": 0.3076923076923077,
+              "observed_rate": 0.5384615384615384,
               "players": 13,
-              "predicted_rate": 0.38966166769179256
+              "predicted_rate": 0.3975671624737608
             },
             {
               "bin": 3,
               "observed_rate": 0.38461538461538464,
               "players": 13,
-              "predicted_rate": 0.40552959535638633
+              "predicted_rate": 0.44097248391136434
             },
             {
               "bin": 4,
-              "observed_rate": 0.5833333333333334,
+              "observed_rate": 0.5,
               "players": 12,
-              "predicted_rate": 0.481603419702714
+              "predicted_rate": 0.5016384174986083
             },
             {
               "bin": 5,
-              "observed_rate": 0.6666666666666666,
+              "observed_rate": 0.5833333333333334,
               "players": 12,
-              "predicted_rate": 0.5323351048006294
+              "predicted_rate": 0.607662471314001
             }
           ],
-          "slope": 2.0669063412787114
+          "slope": 0.35490508270214643
         },
         "outer_evaluation_players": 63,
         "outer_positives": 30,
         "outer_training_players": 164,
         "paired_bootstrap": {
           "brier": {
-            "ci_high": 0.009878777479379862,
-            "ci_low": -0.008077170336066015,
-            "difference": 0.0010559017471894934,
-            "probability_candidate_better": 0.405
+            "ci_high": 0.0061675386848737985,
+            "ci_low": -0.024493559573514893,
+            "difference": -0.008760432153425394,
+            "probability_candidate_better": 0.864
           },
           "log_loss": {
-            "ci_high": 0.020412087973606396,
-            "ci_low": -0.016523226819055787,
-            "difference": 0.0021813638040346093,
-            "probability_candidate_better": 0.405
+            "ci_high": 0.013207173331560572,
+            "ci_low": -0.0575971615628082,
+            "difference": -0.02056008572334371,
+            "probability_candidate_better": 0.8765
           },
           "resamples": 2000
         },
@@ -359,91 +382,91 @@
         },
         "subgroups": [
           {
-            "brier_delta": -0.001217834015905861,
+            "brier_delta": -0.014968897506914935,
             "dimension": "level",
             "group": "AA",
-            "log_loss_delta": -0.0025006591523177857,
+            "log_loss_delta": -0.03778925215908557,
             "players": 26,
             "positives": 11,
             "supported": false
           },
           {
-            "brier_delta": -0.0016480486149446638,
+            "brier_delta": -0.008926243928910282,
             "dimension": "level",
             "group": "AAA",
-            "log_loss_delta": -0.003440501443496391,
+            "log_loss_delta": -0.018234146183811806,
             "players": 26,
             "positives": 17,
             "supported": false
           },
           {
-            "brier_delta": 0.012821341679550013,
+            "brier_delta": 0.006306041060514328,
             "dimension": "level",
             "group": "A_OR_BELOW",
-            "log_loss_delta": 0.02653600864957717,
+            "log_loss_delta": 0.014665723304062128,
             "players": 11,
             "positives": 2,
             "supported": false
           },
           {
-            "brier_delta": 0.023715126274879206,
+            "brier_delta": 0.026612898497242715,
             "dimension": "age",
             "group": "16-19",
-            "log_loss_delta": 0.048017984551891546,
+            "log_loss_delta": 0.05477506715398439,
             "players": 4,
             "positives": 2,
             "supported": false
           },
           {
-            "brier_delta": 0.0006681636865313867,
+            "brier_delta": -0.008940994473641745,
             "dimension": "age",
             "group": "20-22",
-            "log_loss_delta": 0.001268338071178432,
+            "log_loss_delta": -0.022297873664190893,
             "players": 35,
             "positives": 17,
             "supported": true
           },
           {
-            "brier_delta": -0.001842491880822611,
+            "brier_delta": -0.018464073028306882,
             "dimension": "age",
             "group": "23-25",
-            "log_loss_delta": -0.0034744024296251563,
+            "log_loss_delta": -0.03908987265256292,
             "players": 21,
             "positives": 8,
             "supported": false
           },
           {
-            "brier_delta": -0.004344031519300906,
+            "brier_delta": 0.014107173505711279,
             "dimension": "age",
             "group": "26-30",
-            "log_loss_delta": -0.008691800007501804,
+            "log_loss_delta": 0.028975744921301394,
             "players": 3,
             "positives": 3,
             "supported": false
           },
           {
-            "brier_delta": 0.014448449419736414,
+            "brier_delta": -0.008517980072033166,
             "dimension": "workload",
             "group": "1-99",
-            "log_loss_delta": 0.02967428011201434,
+            "log_loss_delta": -0.014895320415282853,
             "players": 2,
             "positives": 0,
             "supported": false
           },
           {
-            "brier_delta": -0.012457972450029164,
+            "brier_delta": -0.009381943365187384,
             "dimension": "workload",
             "group": "100-299",
-            "log_loss_delta": -0.025841695106604612,
+            "log_loss_delta": -0.020478415389274085,
             "players": 11,
             "positives": 6,
             "supported": false
           },
           {
-            "brier_delta": 0.0034932521636756586,
+            "brier_delta": -0.008633397770093448,
             "dimension": "workload",
             "group": "300+",
-            "log_loss_delta": 0.007246720112056182,
+            "log_loss_delta": -0.020804643809161694,
             "players": 50,
             "positives": 24,
             "supported": true
@@ -452,407 +475,407 @@
       },
       "meaningful_given_arrival": {
         "candidate": {
-          "brier": 0.19331783958564586,
+          "brier": 0.19913261528651635,
           "feature_set": "baseball_interactions",
-          "log_loss": 0.5689167658149048,
-          "model_id": "baseball_interactions__c_1",
+          "log_loss": 0.5837186781789112,
+          "model_id": "baseball_interactions__c_0.1",
           "observed_rate": 0.3058252427184466,
           "players": 206,
-          "predicted_rate": 0.3306949810750941,
+          "predicted_rate": 0.3572861433187423,
           "production_regression": 0.0,
-          "regularization_c": 1.0
+          "regularization_c": 0.1
         },
         "candidate_calibration": {
-          "intercept": -0.14319577076979662,
+          "intercept": -0.14854689620381714,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.09523809523809523,
+              "observed_rate": 0.11904761904761904,
               "players": 42,
-              "predicted_rate": 0.13907746709525803
+              "predicted_rate": 0.19596674234477302
             },
             {
               "bin": 2,
               "observed_rate": 0.2682926829268293,
               "players": 41,
-              "predicted_rate": 0.2330143745556717
+              "predicted_rate": 0.28778778877883177
             },
             {
               "bin": 3,
-              "observed_rate": 0.2682926829268293,
+              "observed_rate": 0.34146341463414637,
               "players": 41,
-              "predicted_rate": 0.3329708879042736
+              "predicted_rate": 0.3570471529173085
             },
             {
               "bin": 4,
-              "observed_rate": 0.34146341463414637,
+              "observed_rate": 0.36585365853658536,
               "players": 41,
-              "predicted_rate": 0.39607985813399915
+              "predicted_rate": 0.42567993573444113
             },
             {
               "bin": 5,
-              "observed_rate": 0.5609756097560976,
+              "observed_rate": 0.43902439024390244,
               "players": 41,
-              "predicted_rate": 0.5570059155882152
+              "predicted_rate": 0.5238837163543074
             }
           ],
-          "slope": 0.9737772214974293
+          "slope": 1.1925650035625242
         },
         "condition": "arrived_within_horizon",
         "development_evaluation_players": 259,
         "development_selection_scores": [
           {
-            "brier": 0.21754748643381844,
+            "brier": 0.2201867311897586,
             "evaluation_year": 2021,
             "feature_set": "core",
-            "log_loss": 0.6260440836207191,
+            "log_loss": 0.6317619383734683,
             "model_id": "core__c_0.1",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.37911891933859426,
+            "predicted_rate": 0.37968651494558864,
             "production_regression": 0.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.21759973550271913,
+            "brier": 0.2202366462600574,
             "evaluation_year": 2021,
             "feature_set": "core",
-            "log_loss": 0.6261619315539632,
+            "log_loss": 0.6318737025195226,
             "model_id": "core__c_0.1__rate_reg_50",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.37928846758300605,
+            "predicted_rate": 0.37984276545593104,
             "production_regression": 50.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.21238845749776744,
+            "brier": 0.22068934236709323,
             "evaluation_year": 2021,
             "feature_set": "core",
-            "log_loss": 0.6156904951099366,
+            "log_loss": 0.6374229299916377,
             "model_id": "core__c_1",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.3710578961055717,
+            "predicted_rate": 0.3750074306625886,
             "production_regression": 0.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.21266864873184504,
+            "brier": 0.221027204300991,
             "evaluation_year": 2021,
             "feature_set": "core",
-            "log_loss": 0.6163601609940563,
+            "log_loss": 0.638147916475389,
             "model_id": "core__c_1__rate_reg_50",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.3723675906808532,
+            "predicted_rate": 0.37614405201883255,
             "production_regression": 50.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.21226801375751336,
+            "brier": 0.2152595207224482,
             "evaluation_year": 2021,
             "feature_set": "baseball_interactions",
-            "log_loss": 0.614565549330102,
+            "log_loss": 0.6215241366028564,
             "model_id": "baseball_interactions__c_0.1",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.3764031212466855,
+            "predicted_rate": 0.3771688078998553,
             "production_regression": 0.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.2123147227063859,
+            "brier": 0.21531841046719866,
             "evaluation_year": 2021,
             "feature_set": "baseball_interactions",
-            "log_loss": 0.6146756790720121,
+            "log_loss": 0.6216590572676638,
             "model_id": "baseball_interactions__c_0.1__rate_reg_50",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.3765691669959251,
+            "predicted_rate": 0.377357900934059,
             "production_regression": 50.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.21071156297487426,
+            "brier": 0.21876969062927945,
             "evaluation_year": 2021,
             "feature_set": "baseball_interactions",
-            "log_loss": 0.6118285736452173,
+            "log_loss": 0.6331439733273599,
             "model_id": "baseball_interactions__c_1",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.3667337291035733,
+            "predicted_rate": 0.3696944233151666,
             "production_regression": 0.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.2109567174704669,
+            "brier": 0.21922337240733603,
             "evaluation_year": 2021,
             "feature_set": "baseball_interactions",
-            "log_loss": 0.612431398404506,
+            "log_loss": 0.6341394884154378,
             "model_id": "baseball_interactions__c_1__rate_reg_50",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.36800846388521535,
+            "predicted_rate": 0.3710557115265106,
             "production_regression": 50.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.21774657989290155,
+            "brier": 0.22093663412046247,
             "evaluation_year": 2021,
             "feature_set": "draft_pedigree",
-            "log_loss": 0.627048477964763,
+            "log_loss": 0.6336571428011444,
             "model_id": "draft_pedigree__c_0.1",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.403760206634362,
+            "predicted_rate": 0.40476772182052406,
             "production_regression": 0.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.21781248140191206,
+            "brier": 0.2209988694042927,
             "evaluation_year": 2021,
             "feature_set": "draft_pedigree",
-            "log_loss": 0.6271934241757806,
+            "log_loss": 0.6337944503060159,
             "model_id": "draft_pedigree__c_0.1__rate_reg_50",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.4039800699796913,
+            "predicted_rate": 0.4049658316260872,
             "production_regression": 50.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.21899936420015106,
+            "brier": 0.22762711096348412,
             "evaluation_year": 2021,
             "feature_set": "draft_pedigree",
-            "log_loss": 0.6300686156016919,
+            "log_loss": 0.6520576136732857,
             "model_id": "draft_pedigree__c_1",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.4163324182925094,
+            "predicted_rate": 0.4187689677940325,
             "production_regression": 0.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.2196949264538307,
+            "brier": 0.22817011809166737,
             "evaluation_year": 2021,
             "feature_set": "draft_pedigree",
-            "log_loss": 0.6315815973637595,
+            "log_loss": 0.6532620763743205,
             "model_id": "draft_pedigree__c_1__rate_reg_50",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.4186405000261717,
+            "predicted_rate": 0.42045576168068854,
             "production_regression": 50.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.21303251229429163,
+            "brier": 0.21657450391236194,
             "evaluation_year": 2021,
             "feature_set": "baseball_pedigree",
-            "log_loss": 0.6170417800790184,
+            "log_loss": 0.6248001896889896,
             "model_id": "baseball_pedigree__c_0.1",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.3994717306308744,
+            "predicted_rate": 0.4005318837813924,
             "production_regression": 0.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.21309234602555094,
+            "brier": 0.21664421223073568,
             "evaluation_year": 2021,
             "feature_set": "baseball_pedigree",
-            "log_loss": 0.6171781661901135,
+            "log_loss": 0.6249596566437208,
             "model_id": "baseball_pedigree__c_0.1__rate_reg_50",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.3996858407883667,
+            "predicted_rate": 0.4007587803009747,
             "production_regression": 50.0,
             "regularization_c": 0.1
           },
           {
-            "brier": 0.21879390406777982,
+            "brier": 0.22718284499866134,
             "evaluation_year": 2021,
             "feature_set": "baseball_pedigree",
-            "log_loss": 0.6294584120256709,
+            "log_loss": 0.6509940867416841,
             "model_id": "baseball_pedigree__c_1",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.41334740104666473,
+            "predicted_rate": 0.41437547375019496,
             "production_regression": 0.0,
             "regularization_c": 1.0
           },
           {
-            "brier": 0.21943769984679964,
+            "brier": 0.22791104011320734,
             "evaluation_year": 2021,
             "feature_set": "baseball_pedigree",
-            "log_loss": 0.630892553641815,
+            "log_loss": 0.6525817916788155,
             "model_id": "baseball_pedigree__c_1__rate_reg_50",
             "observed_rate": 0.3474903474903475,
             "players": 259,
-            "predicted_rate": 0.41567571167188716,
+            "predicted_rate": 0.4164542326294828,
             "production_regression": 50.0,
             "regularization_c": 1.0
           }
         ],
         "development_training_players": 194,
         "incumbent": {
-          "brier": 0.19461510839300214,
+          "brier": 0.19561690981745072,
           "feature_set": "core",
-          "log_loss": 0.5724564562164501,
+          "log_loss": 0.5750267324583606,
           "model_id": "core__c_1",
           "observed_rate": 0.3058252427184466,
           "players": 206,
-          "predicted_rate": 0.32660413744718775,
+          "predicted_rate": 0.32323567608149795,
           "production_regression": 0.0,
           "regularization_c": 1.0
         },
         "incumbent_calibration": {
-          "intercept": -0.020627732036114628,
+          "intercept": -0.05729824316704151,
           "reliability_bins": [
             {
               "bin": 1,
-              "observed_rate": 0.11904761904761904,
+              "observed_rate": 0.14285714285714285,
               "players": 42,
-              "predicted_rate": 0.1646500528007
+              "predicted_rate": 0.1497257831391791
             },
             {
               "bin": 2,
-              "observed_rate": 0.24390243902439024,
+              "observed_rate": 0.21951219512195122,
               "players": 41,
-              "predicted_rate": 0.24437350767521554
+              "predicted_rate": 0.24338164555249342
             },
             {
               "bin": 3,
               "observed_rate": 0.2926829268292683,
               "players": 41,
-              "predicted_rate": 0.31978506320111844
+              "predicted_rate": 0.324971513823012
             },
             {
               "bin": 4,
-              "observed_rate": 0.3170731707317073,
+              "observed_rate": 0.34146341463414637,
               "players": 41,
-              "predicted_rate": 0.3906613664599764
+              "predicted_rate": 0.38946002481158787
             },
             {
               "bin": 5,
-              "observed_rate": 0.5609756097560976,
+              "observed_rate": 0.5365853658536586,
               "players": 41,
-              "predicted_rate": 0.5175007967244524
+              "predicted_rate": 0.5128713616895662
             }
           ],
-          "slope": 1.1279630814449202
+          "slope": 1.045576562022942
         },
         "outer_evaluation_players": 206,
         "outer_positives": 63,
         "outer_training_players": 453,
         "paired_bootstrap": {
           "brier": {
-            "ci_high": 0.003659394681532577,
-            "ci_low": -0.006494978921959722,
-            "difference": -0.0012972688073562785,
-            "probability_candidate_better": 0.6845
+            "ci_high": 0.00887466721096923,
+            "ci_low": -0.002428733352040382,
+            "difference": 0.0035157054690656132,
+            "probability_candidate_better": 0.1175
           },
           "log_loss": {
-            "ci_high": 0.008104229805453007,
-            "ci_low": -0.015447043858722607,
-            "difference": -0.0035396904015453493,
-            "probability_candidate_better": 0.7105
+            "ci_high": 0.02163195557272406,
+            "ci_low": -0.005862842041127112,
+            "difference": 0.008691945720550568,
+            "probability_candidate_better": 0.1175
           },
           "resamples": 2000
         },
         "selected_candidate": {
           "feature_set": "baseball_interactions",
-          "model_id": "baseball_interactions__c_1",
+          "model_id": "baseball_interactions__c_0.1",
           "production_regression": 0.0,
-          "regularization_c": 1.0
+          "regularization_c": 0.1
         },
         "subgroups": [
           {
-            "brier_delta": 0.002597393943341325,
+            "brier_delta": 0.003743847035632797,
             "dimension": "level",
             "group": "AA",
-            "log_loss_delta": 0.00603342362454895,
+            "log_loss_delta": 0.006864340464144969,
             "players": 78,
             "positives": 26,
             "supported": true
           },
           {
-            "brier_delta": -0.0010580674469553575,
+            "brier_delta": 0.003537483024708493,
             "dimension": "level",
             "group": "AAA",
-            "log_loss_delta": -0.004408712381919866,
+            "log_loss_delta": 0.010083151973812376,
             "players": 98,
             "positives": 26,
             "supported": true
           },
           {
-            "brier_delta": -0.012204783069812902,
+            "brier_delta": 0.00285139738089063,
             "dimension": "level",
             "group": "A_OR_BELOW",
-            "log_loss_delta": -0.025590981733500717,
+            "log_loss_delta": 0.008899112293216271,
             "players": 30,
             "positives": 11,
             "supported": true
           },
           {
-            "brier_delta": -0.020339799850265988,
+            "brier_delta": 0.004793464020666965,
             "dimension": "age",
             "group": "16-19",
-            "log_loss_delta": -0.04159635487531688,
+            "log_loss_delta": 0.009887988472233489,
             "players": 10,
             "positives": 4,
             "supported": false
           },
           {
-            "brier_delta": 0.0007302483111155667,
+            "brier_delta": 0.008012424604629587,
             "dimension": "age",
             "group": "20-22",
-            "log_loss_delta": 0.0015620473382099709,
+            "log_loss_delta": 0.017011157342828653,
             "players": 83,
             "positives": 35,
             "supported": true
           },
           {
-            "brier_delta": -0.0008342471945840813,
+            "brier_delta": -0.0018849442171810782,
             "dimension": "age",
             "group": "23-25",
-            "log_loss_delta": -0.0020705085022366676,
+            "log_loss_delta": -0.005192141223868796,
             "players": 84,
             "positives": 21,
             "supported": true
           },
           {
-            "brier_delta": -0.0018749386651815414,
+            "brier_delta": 0.005848439947579373,
             "dimension": "age",
             "group": "26-30",
-            "log_loss_delta": -0.009273789270645594,
+            "log_loss_delta": 0.02468533576073345,
             "players": 29,
             "positives": 3,
             "supported": false
           },
           {
-            "brier_delta": -0.02726766952988996,
+            "brier_delta": -0.024286500793369137,
             "dimension": "workload",
             "group": "1-99",
-            "log_loss_delta": -0.06703535754641066,
+            "log_loss_delta": -0.040963825065423176,
             "players": 4,
             "positives": 2,
             "supported": false
           },
           {
-            "brier_delta": -0.010327605800089568,
+            "brier_delta": 0.00036089360372837387,
             "dimension": "workload",
             "group": "100-299",
-            "log_loss_delta": -0.021758095964382163,
+            "log_loss_delta": 0.011459523895482104,
             "players": 31,
             "positives": 11,
             "supported": true
           },
           {
-            "brier_delta": 0.0009473045824968107,
+            "brier_delta": 0.004737974433248027,
             "dimension": "workload",
             "group": "300+",
-            "log_loss_delta": 0.0012483402477376782,
+            "log_loss_delta": 0.00935175952008882,
             "players": 171,
             "positives": 50,
             "supported": true

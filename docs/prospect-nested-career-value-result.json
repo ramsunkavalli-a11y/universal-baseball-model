@@ -10,24 +10,24 @@
   },
   "by_player_type": {
     "hitter": {
-      "incumbent_expected_war": 3813.460286134276,
+      "incumbent_expected_war": 3917.2934421374734,
       "incumbent_fv_counts": {
-        "40": 1934,
-        "45": 903,
-        "50": 320,
-        "55": 71,
-        "60": 12
+        "40": 1894,
+        "45": 930,
+        "50": 352,
+        "55": 75,
+        "60": 20
       },
-      "mean_arrival_probability": 0.1505433246924416,
-      "mean_established_probability": 0.07924692544272328,
-      "mean_meaningful_probability": 0.09467761663169813,
-      "nested_expected_war": 1686.5876548498584,
+      "mean_arrival_probability": 0.15219801420101536,
+      "mean_established_probability": 0.07927547694122786,
+      "mean_meaningful_probability": 0.09498450833998212,
+      "nested_expected_war": 1699.2268085599785,
       "nested_fv_counts": {
-        "40": 1356,
-        "45": 378,
-        "50": 81,
+        "40": 1321,
+        "45": 404,
+        "50": 86,
         "55": 4,
-        "60": 1
+        "60": 0
       },
       "players": 3379
     },
@@ -56,10 +56,10 @@
   },
   "contract": "docs/prospect-nested-career-value-plan.md",
   "external_fv_check": {
-    "incumbent_bias": -6.622438011897532,
-    "incumbent_mae": 9.062064531378567,
-    "nested_bias": -11.68631621970737,
-    "nested_mae": 11.952871912323682,
+    "incumbent_bias": -6.480158729733081,
+    "incumbent_mae": 9.039866383047299,
+    "nested_bias": -11.599331099707477,
+    "nested_mae": 11.826151846906324,
     "players": 76,
     "role": "diagnostic_only_not_model_input"
   },
@@ -68,26 +68,26 @@
   "report_schema_version": "0.1",
   "requested_examples": [
     {
-      "established_probability": 0.12496759115389537,
-      "fringe_probability": 0.015679440501644243,
-      "incumbent_expected_six_year_war": 2.8448814428772926,
-      "meaningful_only_probability": 0.03277529406989664,
-      "model_fv_display": 45,
+      "established_probability": 0.14954395057742634,
+      "fringe_probability": 0.01671255250995296,
+      "incumbent_expected_six_year_war": 3.277437349667593,
+      "meaningful_only_probability": 0.03353418028953767,
+      "model_fv_display": 50,
       "model_player_type": "hitter",
-      "ordered_arrival_probability": 0.17342232572543625,
-      "ordered_established_probability": 0.12496759115389537,
-      "ordered_meaningful_probability": 0.157742885223792,
+      "ordered_arrival_probability": 0.19979068337691697,
+      "ordered_established_probability": 0.14954395057742634,
+      "ordered_meaningful_probability": 0.183078130866964,
       "player_id": 829034,
       "player_name": "Josuar Gonzalez",
-      "three_tier_expected_six_year_war": 1.5503941201197566,
+      "three_tier_expected_six_year_war": 1.8333582806501036,
       "three_tier_model_fv_display": 45
     }
   ],
   "status": "private_nested_career_value_sensitivity_complete",
   "storage": {
     "canonical_schema_version": "0.1",
-    "file_sha256": "db8f3f499737a7434efa7e16bd40823c5aa955beb4607b05e5cd778bf67c1c5d",
-    "file_size_bytes": 1148451,
+    "file_sha256": "71b9df6ffc9f66760c2703b3fba2d994f9406e8802b5f36c0a7bebff1f7d3816",
+    "file_size_bytes": 1147723,
     "path": "reports\\generated\\phase2-nested-career-fv\\2026-09-08\\nested-career-model-fv.parquet",
     "row_count": 9194,
     "schema_sha256": "365ad8305e553fa86d916382eed4aeb99330b95515ad8e85584534f476ad82d9",

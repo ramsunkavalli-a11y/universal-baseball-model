@@ -7,6 +7,8 @@ from universal_baseball.prospect_arrival import (
     fit_arrival_model,
     six_year_probability,
     _positive_component_roles,
+    _primary_hitter_positions,
+    _role_tier,
 )
 
 
@@ -58,6 +60,38 @@ def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
 
 def test_two_year_probability_converts_to_six_year_windows() -> None:
     assert abs(six_year_probability(0.2) - 0.488) < 1e-12
+
+
+@pytest.mark.parametrize(
+    ("code", "expected"),
+    [("2", "C"), ("4", "MIDDLE_INFIELD"), ("6", "MIDDLE_INFIELD"),
+     ("7", "OUTFIELD"), ("8", "OUTFIELD"), ("9", "OUTFIELD"),
+     ("3", "CORNER"), ("5", "CORNER"), ("10", "OTHER")],
+)
+def test_statsapi_numeric_hitter_position_codes_map_to_model_roles(
+    code: str, expected: str
+) -> None:
+    assert _role_tier(code, player_type="hitter") == expected
+
+
+def test_primary_hitter_position_is_games_weighted_and_deterministic() -> None:
+    stats = pl.DataFrame(
+        {
+            "season": [2025, 2025, 2025, 2025],
+            "stat_group": ["hitting"] * 4,
+            "sport_id": [11] * 4,
+            "player_id": [1, 1, 2, 2],
+            "position_code": ["2", "6", "6", "4"],
+            "games": [8, 20, 12, 12],
+        }
+    )
+
+    result = _primary_hitter_positions(stats, snapshot_year=2025)
+
+    assert result.to_dicts() == [
+        {"player_id": 1, "position": "6"},
+        {"player_id": 2, "position": "4"},
+    ]
 
 
 def test_origin_design_normalizes_statsapi_country_aliases() -> None:
