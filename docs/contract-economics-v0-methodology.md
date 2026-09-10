@@ -85,6 +85,12 @@ sensitivity work; a current rest-of-season estimate cannot select a full-season 
   review until the trigger model resolves. A final sourced outcome may convert a row
   to its guaranteed or option state before valuation.
 
+An aggregate with any review year remains null and unranked. For private inspection,
+the engine also reports a separate subtotal over annual rows that were fully
+calculated. This is not called a floor: an unresolved branch may add either value or
+cost. The subtotal, its year count and the unresolved reasons may be displayed, but
+they cannot fill the complete-value field or determine rank.
+
 Vesting thresholds are represented as exact counting-stat conditions. Pitching
 thresholds use outs rather than displayed decimal innings. A simple reached threshold
 can resolve before season end; a missed threshold resolves only after season completion.

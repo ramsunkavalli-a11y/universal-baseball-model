@@ -158,6 +158,8 @@ def main() -> int:
         annual = annual_by_id.get(player_id)
         aggregate = aggregate_by_id.get(player_id)
         controlled_war = war_lower = war_upper = None
+        calculated_years = review_years = 0
+        calculated_cost = calculated_value = calculated_value_lower = calculated_value_upper = None
         if annual is not None:
             retained = annual.filter(
                 ~pl.col("decision_at_mean").is_in(
@@ -167,6 +169,19 @@ def main() -> int:
             controlled_war = float(retained.get_column("projected_war_mean").sum())
             war_lower = float(retained.get_column("projected_war_lower").sum())
             war_upper = float(retained.get_column("projected_war_upper").sum())
+        if aggregate is not None:
+            calculated_years = int(aggregate["calculated_annual_rows"])
+            review_years = int(aggregate["review_rows"])
+            calculated_cost = float(aggregate["calculated_salary_cost_dollars"])
+            calculated_value = float(
+                aggregate["calculated_discounted_contract_value_dollars"]
+            )
+            calculated_value_lower = float(
+                aggregate["calculated_discounted_contract_value_lower_dollars"]
+            )
+            calculated_value_upper = float(
+                aggregate["calculated_discounted_contract_value_upper_dollars"]
+            )
         if released:
             status = "available"
             value = lower = upper = cost = controlled_war = war_lower = war_upper = 0.0
@@ -214,6 +229,12 @@ def main() -> int:
                     None if fv is None else controlled_war if no_debut else fv["expected_six_year_war"]
                 ),
                 "expected_remaining_cost_dollars": cost,
+                "calculated_contract_years": calculated_years,
+                "review_contract_years": review_years,
+                "calculated_years_cost_dollars": calculated_cost,
+                "calculated_years_value_dollars": calculated_value,
+                "calculated_years_value_lower_dollars": calculated_value_lower,
+                "calculated_years_value_upper_dollars": calculated_value_upper,
                 "transferable_value_dollars": value,
                 "transferable_value_lower_dollars": lower,
                 "transferable_value_upper_dollars": upper,

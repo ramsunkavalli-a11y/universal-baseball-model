@@ -156,6 +156,16 @@ def build_explorer_payload(
                 "war_low": row["expected_remaining_war_lower"],
                 "war_high": row["expected_remaining_war_upper"],
                 "cost": row["expected_remaining_cost_dollars"],
+                "calculated_contract_years": row.get("calculated_contract_years"),
+                "review_contract_years": row.get("review_contract_years"),
+                "calculated_years_cost": row.get("calculated_years_cost_dollars"),
+                "calculated_years_value": row.get("calculated_years_value_dollars"),
+                "calculated_years_value_low": row.get(
+                    "calculated_years_value_lower_dollars"
+                ),
+                "calculated_years_value_high": row.get(
+                    "calculated_years_value_upper_dollars"
+                ),
                 "value": row["transferable_value_dollars"],
                 "value_low": row["transferable_value_lower_dollars"],
                 "value_high": row["transferable_value_upper_dollars"],

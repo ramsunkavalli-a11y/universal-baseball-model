@@ -64,6 +64,12 @@ AGGREGATE_CONTRACT_ECONOMICS_SCHEMA: dict[str, pl.DataType] = {
     "assumptions_id": pl.String,
     "annual_rows": pl.Int64,
     "review_rows": pl.Int64,
+    "calculated_annual_rows": pl.Int64,
+    "calculated_fa_equivalent_value_dollars": pl.Float64,
+    "calculated_salary_cost_dollars": pl.Float64,
+    "calculated_discounted_contract_value_dollars": pl.Float64,
+    "calculated_discounted_contract_value_lower_dollars": pl.Float64,
+    "calculated_discounted_contract_value_upper_dollars": pl.Float64,
     "fa_equivalent_value_dollars": pl.Float64,
     "salary_cost_dollars": pl.Float64,
     "static_surplus_dollars": pl.Float64,
@@ -475,6 +481,7 @@ def value_annual_contract_states(
         first = group.row(0, named=True)
         review_count = group.filter(pl.col("calculation_status") != "available").height
         available = review_count == 0
+        calculated = group.filter(pl.col("calculation_status") == "available")
 
         def total(column: str) -> float | None:
             return float(group.get_column(column).sum()) if available else None
@@ -488,6 +495,26 @@ def value_annual_contract_states(
                 "assumptions_id": first["assumptions_id"],
                 "annual_rows": group.height,
                 "review_rows": review_count,
+                "calculated_annual_rows": calculated.height,
+                "calculated_fa_equivalent_value_dollars": float(
+                    calculated.get_column("fa_equivalent_value_dollars").sum()
+                ),
+                "calculated_salary_cost_dollars": float(
+                    calculated.get_column("salary_cost_dollars").sum()
+                ),
+                "calculated_discounted_contract_value_dollars": float(
+                    calculated.get_column("discounted_contract_value_dollars").sum()
+                ),
+                "calculated_discounted_contract_value_lower_dollars": float(
+                    calculated.get_column(
+                        "discounted_contract_value_lower_dollars"
+                    ).sum()
+                ),
+                "calculated_discounted_contract_value_upper_dollars": float(
+                    calculated.get_column(
+                        "discounted_contract_value_upper_dollars"
+                    ).sum()
+                ),
                 "fa_equivalent_value_dollars": total("fa_equivalent_value_dollars"),
                 "salary_cost_dollars": total("salary_cost_dollars"),
                 "static_surplus_dollars": total("static_surplus_dollars"),

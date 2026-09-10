@@ -184,6 +184,9 @@ and the four-year Super Two progression.
 The [full contract-economics scenario](docs/current-contract-economics-scenario-2026-09-09.md)
 calculates 50,058 future annual rows and isolates 16 contract exceptions while
 keeping the unsigned successor CBA explicitly hypothetical.
+The [contract-review visibility update](docs/contract-review-visibility-result-2026-09-10.md)
+keeps those players unranked but shows the subtotal from calculated contract years and
+the exact unresolved reason in the private explorer.
 
 The three questions stay separate: batting ability against MLB competition,
 probability and amount of MLB opportunity, and development over the selected value

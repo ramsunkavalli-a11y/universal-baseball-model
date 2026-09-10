@@ -188,6 +188,15 @@ option salary is `TBD`. It correctly remains review rather than receiving a gues
 cost. The other remaining option reviews are conditional future branches, not simple
 missing fixed salaries.
 
+The private explorer now preserves a clearly labeled subtotal for fully calculated
+contract years when a later option is unresolved. The full player value remains blank
+and unranked, because that subtotal is neither a floor nor a complete value. All eleven
+option-review players show their calculated-year count, unresolved-year count and the
+exact review reason. A fresh public check found no disclosed exercise salary for Gary
+Sanchez's 2027 mutual option; the official Brewers announcement omits the amount,
+FanGraphs reports `TBD`, and Spotrac has no exercise price. See the
+[contract review visibility result](contract-review-visibility-result-2026-09-10.md).
+
 The harness now covers continuous career WAR as well. On the common pitcher replay,
 the arrival-only linked path improves RMSE `0.558 -> 0.551` but worsens MAE
 `0.154 -> 0.199`, with a wholly unfavorable paired MAE interval. On hitters it

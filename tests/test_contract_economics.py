@@ -165,6 +165,39 @@ def test_mutual_option_without_buyout_fails_closed_and_blocks_aggregate() -> Non
     assert "explicit buyout" in result.reviews.item(0, "review_reason")
     assert result.aggregate.item(0, "calculation_status") == "review"
     assert result.aggregate.item(0, "contract_control_value_dollars") is None
+    assert result.aggregate.item(0, "calculated_annual_rows") == 0
+    assert result.aggregate.item(
+        0, "calculated_discounted_contract_value_dollars"
+    ) == 0
+
+
+def test_reviewed_player_preserves_calculated_year_subtotal_without_ranking() -> None:
+    source = pl.concat(
+        [
+            _input(status="guaranteed_contract", salary=5_000_000),
+            _input(status="vesting_option", salary=12_000_000).with_columns(
+                pl.lit(2027, dtype=pl.Int64).alias("season")
+            ),
+        ]
+    )
+    assumptions = ContractEconomicsAssumptions(
+        assumptions_id="partial_visibility",
+        market_model_id="flat",
+        arbitration_model_id="test",
+        dollars_per_war_by_year={2026: 10_000_000.0, 2027: 10_000_000.0},
+        arbitration_share_by_class={},
+        annual_discount_rate=0.0,
+    )
+    result = value_annual_contract_states(
+        source, cba_ruleset=CBA_2027_2032_PLANNING_SCENARIO, assumptions=assumptions
+    )
+    aggregate = result.aggregate.row(0, named=True)
+    assert aggregate["calculation_status"] == "review"
+    assert aggregate["contract_control_value_dollars"] is None
+    assert aggregate["calculated_annual_rows"] == 1
+    assert aggregate["review_rows"] == 1
+    assert aggregate["calculated_salary_cost_dollars"] == 5_000_000
+    assert aggregate["calculated_discounted_contract_value_dollars"] == 5_000_000
 
 
 def test_named_missing_buyout_share_keeps_estimate_explicit() -> None:

@@ -222,8 +222,6 @@ def main() -> int:
     OUTPUT_JSON.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     def line(name: str) -> str:
         value = report[name]
-        direct = value["confirmation"]["direct_endpoint"]
-        transition = value["confirmation"]["ordered_transition"]
         return (
             f"| {name.title()} | "
             f"{value['development_delta']['transition_minus_direct_log_loss']:+.6f} | "
