@@ -146,6 +146,12 @@ estimate, though its RMSE interval crosses zero. Preserve that exact weight for 
 later untouched test; do not tune it further or change current hitter values. No
 pitcher blend is clean because all tested weights worsen MAE.
 
+The next frozen test is the [conditional-WAR bridge](prospect-conditional-war-bridge-plan.md):
+fit one strongly regressed core model on 2018 and evaluate two-year component WAR on
+the 2021 cohort, with all non-arrivals retained in the end-to-end score. It asks
+whether cutoff-known production, age, level, role and evidence volume can improve the
+positive MLB tail without using demographics as talent or changing arrival odds.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and
