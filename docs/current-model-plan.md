@@ -104,6 +104,13 @@ but it is mostly the previously tested 400-PA challenger and still misses the fr
 pitcher regression searches are now closed on the disclosed 2024–2025 source; broader
 history or a future untouched season is required before revisiting them.
 
+The zero-inclusive pitcher aging replay is now complete on the frozen March 27, 2025
+forecast. Holding opportunity and all other inputs constant, Tango aging improves
+component log loss, WAR MAE and WAR RMSE versus no aging across all 5,090 pitcher
+rows, while removing 19.0 WAR of aggregate optimism. The paired MAE improvement is
+clear; the MSE interval crosses zero. Retain Tango aging and use this same joint
+scoreboard for any future curve. No current value changed.
+
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.

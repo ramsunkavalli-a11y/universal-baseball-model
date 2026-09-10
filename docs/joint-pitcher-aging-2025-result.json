@@ -1,0 +1,54 @@
+{
+  "method": "invert the one-year Tango rate adjustment while keeping the frozen opportunity, role, replacement and run environment identical",
+  "no_aging": {
+    "component_events": 182108,
+    "model_component_log_loss": 0.9675415613224536,
+    "model_minus_population_component_log_loss": -0.003103007765976608,
+    "observed_total_neutral_war": 383.13337633992427,
+    "observed_total_workload": 182108.0,
+    "players": 5090,
+    "population_component_log_loss": 0.9706445690884302,
+    "positive_workload_players": 801,
+    "predicted_total_war": 437.07927580029053,
+    "war_mae": 0.10653489698804336,
+    "war_rmse": 0.30973196821374294
+  },
+  "no_aging_minus_tango": {
+    "model_component_log_loss": 0.0003784936446468157,
+    "predicted_total_war": 19.043727241036038,
+    "war_mae": 0.0010327409406733629,
+    "war_rmse": 0.0015148019350645359
+  },
+  "nonreturners_retained": true,
+  "outside_fv_used": false,
+  "player_bootstrap": {
+    "mae_delta_no_aging_minus_tango": {
+      "lower_95": 0.000583977184996414,
+      "point": 0.001032740940673334,
+      "upper_95": 0.0015053533170413514
+    },
+    "mse_delta_no_aging_minus_tango": {
+      "lower_95": -1.0309668375566003e-05,
+      "point": 0.0009360705447005629,
+      "upper_95": 0.0019059603592181576
+    }
+  },
+  "population": "all 5,090 pitcher rows in the frozen March 27 projection",
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "status": "joint_zero_inclusive_aging_replay_complete",
+  "tango_aging": {
+    "component_events": 182108,
+    "model_component_log_loss": 0.9671630676778068,
+    "model_minus_population_component_log_loss": -0.0034815014106234195,
+    "observed_total_neutral_war": 383.13337633992427,
+    "observed_total_workload": 182108.0,
+    "players": 5090,
+    "population_component_log_loss": 0.9706445690884302,
+    "positive_workload_players": 801,
+    "predicted_total_war": 418.0355485592545,
+    "war_mae": 0.10550215604737,
+    "war_rmse": 0.3082171662786784
+  },
+  "target_season": 2025
+}
