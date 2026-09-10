@@ -119,6 +119,13 @@ were disclosed, current values remain unchanged. Freeze no hitter aging as the l
 simple challenger for the next valid confirmation; any richer curve must beat both it
 and Marcel without dropping non-returners.
 
+That confirmation is now frozen before final 2026 outcomes. The October 15, 2025
+forecast supplies 3,907 identical hitter rows for Marcel and no-aging candidates;
+only the event-rate age adjustment differs. Marcel projects 611.2 hitter WAR and no
+aging 581.5. The hashes and decision rule are locked in
+`model_artifacts/hitter-aging-2026-confirmation-forecast-2026-09-10/`. Do not score it
+until the regular season is complete and official totals have stabilized.
+
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.

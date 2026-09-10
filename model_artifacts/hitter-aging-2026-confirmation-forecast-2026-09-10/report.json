@@ -1,0 +1,39 @@
+{
+  "2026_outcomes_read": false,
+  "contract_path": "docs/hitter-aging-2026-confirmation-contract.md",
+  "contract_sha256": "df52ab0ee64329e821cde9dbd296c41112b1aa7c4eca679c2f3279f8a4a7263a",
+  "forecast_as_of_date": "2025-10-15",
+  "marcel_expected_war": 611.1549651225241,
+  "no_aging_expected_war": 581.4518527489765,
+  "players": 3907,
+  "report_schema_version": "0.1",
+  "runner_path": "scripts/freeze_hitter_aging_2026_confirmation.py",
+  "runner_sha256": "ae4acc3d1755c893b54cc46a64b1118bb06d71e1c916bede51eaf8d30db4b241",
+  "source_files": {
+    "reports/generated/free-agent-historical-skill-source/2025-12-31/report.json": "ac671977128be5421f6b5fa942e6881da923a551def659914e56779bb2488f3b",
+    "reports/generated/free-agent-historical-skill-source/2025-12-31/tables/mlb_hitting_components.parquet": "1577a9a7bebc38decc9248d2955a1fc222fd0e56841c8245713660d280e8035a",
+    "reports/generated/historical-projection-paths/2025-10-15/tables/hitter-expected-war-paths.parquet": "0974ae95ca2158140874833b331d9e4a08913ea40e614b2743baa08ebd43c46f"
+  },
+  "status": "frozen_before_2026_outcome_access",
+  "storage": {
+    "marcel": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "88f2b7296cd31980d970cdfc437d10ee0466a6aaabfb7343baeb8a8046a9584b",
+      "file_size_bytes": 259106,
+      "path": "model_artifacts\\hitter-aging-2026-confirmation-forecast-2026-09-10\\marcel-aging.parquet",
+      "row_count": 3907,
+      "schema_sha256": "3e23324cf3bd732bf273e14d8bf5d7f4545a68840a9f12253214774bbdbcee80",
+      "table_name": "hitter_aging_2026_marcel_forecast"
+    },
+    "no_aging": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "265badca40bd56005edf8f0269b17923cf655c6191b56ef0e27e965b05c6d9da",
+      "file_size_bytes": 248305,
+      "path": "model_artifacts\\hitter-aging-2026-confirmation-forecast-2026-09-10\\no-aging.parquet",
+      "row_count": 3907,
+      "schema_sha256": "3e23324cf3bd732bf273e14d8bf5d7f4545a68840a9f12253214774bbdbcee80",
+      "table_name": "hitter_aging_2026_no_aging_forecast"
+    }
+  },
+  "target_season": 2026
+}
