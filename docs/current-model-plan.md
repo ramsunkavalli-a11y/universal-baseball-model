@@ -266,6 +266,10 @@ or replace it with primary level alone. See
 Development-path features are additionally active only for pitcher established-role
 probability. Their broader use failed selection; see
 `prospect-development-path-result.md`.
+The constant two-year hazard remains the selected longer-horizon form. A tested
+declining-hazard challenger chose a multiplier of 1.0 for every outcome on the 2019
+development cohort and did not lose on the 2021 four-year cohort. Do not impose an
+untested attrition haircut; see `prospect-declining-hazard-result.md`.
 The prior explorer silently joined the older generic opportunity paths. That defect
 reduced projected six-year WAR for 940 debuted pitchers from 1,325.5 to 1,108.1.
 The corrected materializer records both input hashes and the opportunity model ID;

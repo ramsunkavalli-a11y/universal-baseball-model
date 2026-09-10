@@ -15,6 +15,11 @@ Status: clean handoff; private preview works, publication remains blocked.
   tested together. They improve only pitcher established-role probability under the
   fixed gate; the other five outcome models remain simpler. See
   `docs/prospect-development-path-result.md`.
+- A predeclared declining-hazard/exit-risk test selected the existing constant hazard
+  for all six hitter/pitcher outcomes on 2019 and did not lose on the completed 2021
+  four-year check. Do not add an arbitrary long-horizon decay. The third two-year
+  window remains an explicit extrapolation; see
+  `docs/prospect-declining-hazard-result.md`.
 
 - The repo plan now includes lessons from comparable GitHub projection systems:
   component-specific reliability must earn its complexity, attrition belongs in the

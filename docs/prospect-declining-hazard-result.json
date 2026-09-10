@@ -1,0 +1,513 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundaries": {
+    "2019_current_production_components_available": false,
+    "2020_snapshot_excluded_for_missing_cutoff_safe_age_coverage": true,
+    "current_values_changed": false,
+    "future_information_used": false,
+    "outside_fv_used": false,
+    "six_year_extension_tested_directly": false
+  },
+  "decay_candidates": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "method": "fit two-year model on 2018; select second-window decay on 2019; evaluate on 2021 four-year outcomes",
+  "report_schema_version": "0.1",
+  "results": {
+    "hitter": {
+      "arrival": {
+        "confirmation_passed": true,
+        "feature_set": "level_exposure",
+        "folds": {
+          "2019": {
+            "0.0": {
+              "brier": 0.11202962471926356,
+              "log_loss": 0.8202257093790583,
+              "observed_rate": 0.11259079903147699,
+              "players": 3304,
+              "predicted_rate": 0.0009340734433485868
+            },
+            "0.25": {
+              "brier": 0.1118943644490073,
+              "log_loss": 0.795321281519314,
+              "observed_rate": 0.11259079903147699,
+              "players": 3304,
+              "predicted_rate": 0.0011655192558797523
+            },
+            "0.5": {
+              "brier": 0.11176007494195825,
+              "log_loss": 0.7749943281407522,
+              "observed_rate": 0.11259079903147699,
+              "players": 3304,
+              "predicted_rate": 0.0013969650684108915
+            },
+            "0.75": {
+              "brier": 0.11162675619811639,
+              "log_loss": 0.7578285077738184,
+              "observed_rate": 0.11259079903147699,
+              "players": 3304,
+              "predicted_rate": 0.0016284108809420355
+            },
+            "1.0": {
+              "brier": 0.1114944082174817,
+              "log_loss": 0.7429776286242024,
+              "observed_rate": 0.11259079903147699,
+              "players": 3304,
+              "predicted_rate": 0.0018598566934731862
+            }
+          },
+          "2021": {
+            "0.0": {
+              "brier": 0.09561517419567274,
+              "log_loss": 0.36031654701882515,
+              "observed_rate": 0.12826822516148878,
+              "players": 3251,
+              "predicted_rate": 0.06085157797761911
+            },
+            "0.25": {
+              "brier": 0.09373953007988156,
+              "log_loss": 0.3461135058763563,
+              "observed_rate": 0.12826822516148878,
+              "players": 3251,
+              "predicted_rate": 0.07106109948964379
+            },
+            "0.5": {
+              "brier": 0.09255444053169919,
+              "log_loss": 0.3362354618017953,
+              "observed_rate": 0.12826822516148878,
+              "players": 3251,
+              "predicted_rate": 0.08127062100166851
+            },
+            "0.75": {
+              "brier": 0.09205990555112567,
+              "log_loss": 0.3298035610214531,
+              "observed_rate": 0.12826822516148878,
+              "players": 3251,
+              "predicted_rate": 0.09148014251369319
+            },
+            "1.0": {
+              "brier": 0.09225592513816096,
+              "log_loss": 0.3266492710367935,
+              "observed_rate": 0.12826822516148878,
+              "players": 3251,
+              "predicted_rate": 0.10168966402571789
+            }
+          }
+        },
+        "selected_decay": 1.0
+      },
+      "established_role": {
+        "confirmation_passed": true,
+        "feature_set": "core",
+        "folds": {
+          "2019": {
+            "0.0": {
+              "brier": 0.024280474524706358,
+              "log_loss": 0.1573920051240344,
+              "observed_rate": 0.024515738498789345,
+              "players": 3304,
+              "predicted_rate": 0.002036135045083488
+            },
+            "0.25": {
+              "brier": 0.024228034634543667,
+              "log_loss": 0.15242471687411865,
+              "observed_rate": 0.024515738498789345,
+              "players": 3304,
+              "predicted_rate": 0.0025407563240403422
+            },
+            "0.5": {
+              "brier": 0.024177737142291413,
+              "log_loss": 0.14845079352005155,
+              "observed_rate": 0.024515738498789345,
+              "players": 3304,
+              "predicted_rate": 0.0030453776029971866
+            },
+            "0.75": {
+              "brier": 0.024129582047949617,
+              "log_loss": 0.1451636726651025,
+              "observed_rate": 0.024515738498789345,
+              "players": 3304,
+              "predicted_rate": 0.0035499988819540276
+            },
+            "1.0": {
+              "brier": 0.02408356935151828,
+              "log_loss": 0.14238002660361854,
+              "observed_rate": 0.024515738498789345,
+              "players": 3304,
+              "predicted_rate": 0.004054620160910916
+            }
+          },
+          "2021": {
+            "0.0": {
+              "brier": 0.03296308431866497,
+              "log_loss": 0.16645173334577507,
+              "observed_rate": 0.03506613349738542,
+              "players": 3251,
+              "predicted_rate": 0.009951446572909814
+            },
+            "0.25": {
+              "brier": 0.03264843698189283,
+              "log_loss": 0.16106452788559658,
+              "observed_rate": 0.03506613349738542,
+              "players": 3251,
+              "predicted_rate": 0.012295636688398311
+            },
+            "0.5": {
+              "brier": 0.032391114273653536,
+              "log_loss": 0.15705040065841067,
+              "observed_rate": 0.03506613349738542,
+              "players": 3251,
+              "predicted_rate": 0.014639826803886806
+            },
+            "0.75": {
+              "brier": 0.03219111619394707,
+              "log_loss": 0.15400339782577321,
+              "observed_rate": 0.03506613349738542,
+              "players": 3251,
+              "predicted_rate": 0.016984016919375303
+            },
+            "1.0": {
+              "brier": 0.03204844274277346,
+              "log_loss": 0.15167902967780114,
+              "observed_rate": 0.03506613349738542,
+              "players": 3251,
+              "predicted_rate": 0.019328207034863792
+            }
+          }
+        },
+        "selected_decay": 1.0
+      },
+      "meaningful_role": {
+        "confirmation_passed": true,
+        "feature_set": "level_exposure",
+        "folds": {
+          "2019": {
+            "0.0": {
+              "brier": 0.043380576427636514,
+              "log_loss": 0.24988058503966415,
+              "observed_rate": 0.04449152542372881,
+              "players": 3304,
+              "predicted_rate": 0.0048060171473026094
+            },
+            "0.25": {
+              "brier": 0.043171892958802326,
+              "log_loss": 0.24112729665730293,
+              "observed_rate": 0.04449152542372881,
+              "players": 3304,
+              "predicted_rate": 0.005957047763924356
+            },
+            "0.5": {
+              "brier": 0.042984497189441376,
+              "log_loss": 0.23415805728935057,
+              "observed_rate": 0.04449152542372881,
+              "players": 3304,
+              "predicted_rate": 0.007108078380546052
+            },
+            "0.75": {
+              "brier": 0.04281838911955364,
+              "log_loss": 0.22842877646185725,
+              "observed_rate": 0.04449152542372881,
+              "players": 3304,
+              "predicted_rate": 0.008259108997167797
+            },
+            "1.0": {
+              "brier": 0.04267356874913914,
+              "log_loss": 0.2236132799502349,
+              "observed_rate": 0.04449152542372881,
+              "players": 3304,
+              "predicted_rate": 0.0094101396137895
+            }
+          },
+          "2021": {
+            "0.0": {
+              "brier": 0.047475456918349826,
+              "log_loss": 0.214633353558066,
+              "observed_rate": 0.05598277453091356,
+              "players": 3251,
+              "predicted_rate": 0.023055148242575232
+            },
+            "0.25": {
+              "brier": 0.04687726637221045,
+              "log_loss": 0.20769813240440124,
+              "observed_rate": 0.05598277453091356,
+              "players": 3251,
+              "predicted_rate": 0.027783815572731376
+            },
+            "0.5": {
+              "brier": 0.04650745714757206,
+              "log_loss": 0.20280383509067348,
+              "observed_rate": 0.05598277453091356,
+              "players": 3251,
+              "predicted_rate": 0.032512482902887524
+            },
+            "0.75": {
+              "brier": 0.04636602924443467,
+              "log_loss": 0.1994074247938858,
+              "observed_rate": 0.05598277453091356,
+              "players": 3251,
+              "predicted_rate": 0.03724115023304367
+            },
+            "1.0": {
+              "brier": 0.04645298266279829,
+              "log_loss": 0.19719357287585673,
+              "observed_rate": 0.05598277453091356,
+              "players": 3251,
+              "predicted_rate": 0.04196981756319982
+            }
+          }
+        },
+        "selected_decay": 1.0
+      }
+    },
+    "pitcher": {
+      "arrival": {
+        "confirmation_passed": true,
+        "feature_set": "level_exposure",
+        "folds": {
+          "2019": {
+            "0.0": {
+              "brier": 0.1217350319375854,
+              "log_loss": 0.7049543295940841,
+              "observed_rate": 0.12333864965443912,
+              "players": 3762,
+              "predicted_rate": 0.0032798080334117026
+            },
+            "0.25": {
+              "brier": 0.12135164550211582,
+              "log_loss": 0.6782120869119509,
+              "observed_rate": 0.12333864965443912,
+              "players": 3762,
+              "predicted_rate": 0.004089939354967287
+            },
+            "0.5": {
+              "brier": 0.12097297482884886,
+              "log_loss": 0.6564519467448182,
+              "observed_rate": 0.12333864965443912,
+              "players": 3762,
+              "predicted_rate": 0.004900070676522831
+            },
+            "0.75": {
+              "brier": 0.1205990199177845,
+              "log_loss": 0.6381368547556759,
+              "observed_rate": 0.12333864965443912,
+              "players": 3762,
+              "predicted_rate": 0.005710201998078437
+            },
+            "1.0": {
+              "brier": 0.12022978076892278,
+              "log_loss": 0.6223471168886628,
+              "observed_rate": 0.12333864965443912,
+              "players": 3762,
+              "predicted_rate": 0.006520333319634024
+            }
+          },
+          "2021": {
+            "0.0": {
+              "brier": 0.0902968630109079,
+              "log_loss": 0.31107636815641326,
+              "observed_rate": 0.12273476112026359,
+              "players": 3642,
+              "predicted_rate": 0.08636357239234917
+            },
+            "0.25": {
+              "brier": 0.08913744988700348,
+              "log_loss": 0.3045241798435954,
+              "observed_rate": 0.12273476112026359,
+              "players": 3642,
+              "predicted_rate": 0.10223178877455671
+            },
+            "0.5": {
+              "brier": 0.08902762103346923,
+              "log_loss": 0.30224252679085795,
+              "observed_rate": 0.12273476112026359,
+              "players": 3642,
+              "predicted_rate": 0.11810000515676428
+            },
+            "0.75": {
+              "brier": 0.08996737645030518,
+              "log_loss": 0.3035248647580576,
+              "observed_rate": 0.12273476112026359,
+              "players": 3642,
+              "predicted_rate": 0.13396822153897187
+            },
+            "1.0": {
+              "brier": 0.0919567161375113,
+              "log_loss": 0.308235518653523,
+              "observed_rate": 0.12273476112026359,
+              "players": 3642,
+              "predicted_rate": 0.14983643792117943
+            }
+          }
+        },
+        "selected_decay": 1.0
+      },
+      "established_role": {
+        "confirmation_passed": true,
+        "feature_set": "development_path",
+        "folds": {
+          "2019": {
+            "0.0": {
+              "brier": 0.02489010180194941,
+              "log_loss": 0.17262548145572304,
+              "observed_rate": 0.024986709197235512,
+              "players": 3762,
+              "predicted_rate": 0.0007683454958236586
+            },
+            "0.25": {
+              "brier": 0.02486683272002325,
+              "log_loss": 0.1672395431048014,
+              "observed_rate": 0.024986709197235512,
+              "players": 3762,
+              "predicted_rate": 0.0009598015847674369
+            },
+            "0.5": {
+              "brier": 0.02484387503957941,
+              "log_loss": 0.1628704559976336,
+              "observed_rate": 0.024986709197235512,
+              "players": 3762,
+              "predicted_rate": 0.0011512576737112124
+            },
+            "0.75": {
+              "brier": 0.024821228760617896,
+              "log_loss": 0.1592035238019749,
+              "observed_rate": 0.024986709197235512,
+              "players": 3762,
+              "predicted_rate": 0.0013427137626549897
+            },
+            "1.0": {
+              "brier": 0.024798893883138714,
+              "log_loss": 0.1560507648372404,
+              "observed_rate": 0.024986709197235512,
+              "players": 3762,
+              "predicted_rate": 0.0015341698515987717
+            }
+          },
+          "2021": {
+            "0.0": {
+              "brier": 0.027647874066569905,
+              "log_loss": 0.12856140731332624,
+              "observed_rate": 0.029928610653487096,
+              "players": 3642,
+              "predicted_rate": 0.007973581884924443
+            },
+            "0.25": {
+              "brier": 0.02729905355473139,
+              "log_loss": 0.12382117984551393,
+              "observed_rate": 0.029928610653487096,
+              "players": 3642,
+              "predicted_rate": 0.00982525389757445
+            },
+            "0.5": {
+              "brier": 0.027003020365730483,
+              "log_loss": 0.12023612417340543,
+              "observed_rate": 0.029928610653487096,
+              "players": 3642,
+              "predicted_rate": 0.011676925910224456
+            },
+            "0.75": {
+              "brier": 0.026759774499567183,
+              "log_loss": 0.11746696034100583,
+              "observed_rate": 0.029928610653487096,
+              "players": 3642,
+              "predicted_rate": 0.01352859792287446
+            },
+            "1.0": {
+              "brier": 0.02656931595624149,
+              "log_loss": 0.11530893140244883,
+              "observed_rate": 0.029928610653487096,
+              "players": 3642,
+              "predicted_rate": 0.015380269935524465
+            }
+          }
+        },
+        "selected_decay": 1.0
+      },
+      "meaningful_role": {
+        "confirmation_passed": true,
+        "feature_set": "level_exposure",
+        "folds": {
+          "2019": {
+            "0.0": {
+              "brier": 0.0474647585766311,
+              "log_loss": 0.29032926412546617,
+              "observed_rate": 0.04784688995215311,
+              "players": 3762,
+              "predicted_rate": 0.0019151922969777144
+            },
+            "0.25": {
+              "brier": 0.047373439863437,
+              "log_loss": 0.2801218411326815,
+              "observed_rate": 0.04784688995215311,
+              "players": 3762,
+              "predicted_rate": 0.002391111746645106
+            },
+            "0.5": {
+              "brier": 0.04728353454645391,
+              "log_loss": 0.2718551608198185,
+              "observed_rate": 0.04784688995215311,
+              "players": 3762,
+              "predicted_rate": 0.002867031196312501
+            },
+            "0.75": {
+              "brier": 0.04719504262568181,
+              "log_loss": 0.2649295127945613,
+              "observed_rate": 0.04784688995215311,
+              "players": 3762,
+              "predicted_rate": 0.0033429506459798633
+            },
+            "1.0": {
+              "brier": 0.047107964101120725,
+              "log_loss": 0.25898638644270144,
+              "observed_rate": 0.04784688995215311,
+              "players": 3762,
+              "predicted_rate": 0.003818870095647253
+            }
+          },
+          "2021": {
+            "0.0": {
+              "brier": 0.042063178787472254,
+              "log_loss": 0.16326642636663066,
+              "observed_rate": 0.04969796814936848,
+              "players": 3642,
+              "predicted_rate": 0.030746472868548324
+            },
+            "0.25": {
+              "brier": 0.041567532644775876,
+              "log_loss": 0.1596879521525962,
+              "observed_rate": 0.04969796814936848,
+              "players": 3642,
+              "predicted_rate": 0.037341542724730344
+            },
+            "0.5": {
+              "brier": 0.0413766543285616,
+              "log_loss": 0.15796903749566468,
+              "observed_rate": 0.04969796814936848,
+              "players": 3642,
+              "predicted_rate": 0.04393661258091236
+            },
+            "0.75": {
+              "brier": 0.04149054383882943,
+              "log_loss": 0.15765983945381418,
+              "observed_rate": 0.04969796814936848,
+              "players": 3642,
+              "predicted_rate": 0.05053168243709438
+            },
+            "1.0": {
+              "brier": 0.041909201175579364,
+              "log_loss": 0.15850527498962727,
+              "observed_rate": 0.04969796814936848,
+              "players": 3642,
+              "predicted_rate": 0.0571267522932764
+            }
+          }
+        },
+        "selected_decay": 1.0
+      }
+    }
+  },
+  "status": "declining_hazard_time_ordered_audit_complete"
+}
