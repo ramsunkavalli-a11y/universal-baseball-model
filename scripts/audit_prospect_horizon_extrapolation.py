@@ -138,6 +138,22 @@ def main() -> int:
 
     arrival_fit = fit_arrival_model(training, player_type="pitcher")
     scored = predict_arrival(arrival_fit, outer_features)
+    meaningful_direct_fit = fit_arrival_model(
+        training,
+        player_type="pitcher",
+        target_column="meaningful_role_within_horizon",
+        outcome_name="meaningful_role",
+        feature_set="core",
+    )
+    scored = predict_arrival(meaningful_direct_fit, scored)
+    established_direct_fit = fit_arrival_model(
+        training,
+        player_type="pitcher",
+        target_column="established_role_within_horizon",
+        outcome_name="established_role",
+        feature_set="core",
+    )
+    scored = predict_arrival(established_direct_fit, scored)
     meaningful_fit = fit_arrival_model(
         training.filter(pl.col("arrived_within_horizon") == 1),
         player_type="pitcher",
@@ -160,6 +176,8 @@ def main() -> int:
     p_arrival = "predicted_two_year_arrival_probability"
     p_meaningful = "predicted_two_year_meaningful_given_arrival_probability"
     p_established = "predicted_two_year_established_given_meaningful_probability"
+    p_meaningful_direct = "predicted_two_year_meaningful_role_probability"
+    p_established_direct = "predicted_two_year_established_role_probability"
     scored = scored.with_columns(
         (1 - (1 - pl.col(p_arrival)) ** 2).alias("four_year_arrival_probability"),
         (1 - (1 - pl.col(p_meaningful)) ** 2).alias(
@@ -170,6 +188,12 @@ def main() -> int:
         ),
         (pl.col(p_arrival) * pl.col(p_meaningful)).alias(
             "two_year_nested_meaningful_probability"
+        ),
+        (1 - (1 - pl.col(p_meaningful_direct)) ** 2).alias(
+            "four_year_direct_meaningful_probability"
+        ),
+        (1 - (1 - pl.col(p_established_direct)) ** 2).alias(
+            "four_year_direct_established_probability"
         ),
     ).with_columns(
         (
@@ -193,6 +217,16 @@ def main() -> int:
         .then(pl.lit("21_to_23"))
         .otherwise(pl.lit("24_plus"))
         .alias("age_band"),
+        pl.min_horizontal(
+            "four_year_nested_meaningful_probability",
+            "four_year_direct_meaningful_probability",
+        ).alias("four_year_capped_meaningful_probability"),
+    ).with_columns(
+        pl.min_horizontal(
+            "four_year_nested_established_probability",
+            "four_year_direct_established_probability",
+            "four_year_capped_meaningful_probability",
+        ).alias("four_year_capped_established_probability"),
     )
 
     comparisons = {
@@ -214,6 +248,14 @@ def main() -> int:
                 scored, "four_year_nested_meaningful_probability",
                 "meaningful_role_within_horizon_four_year",
             ),
+            "direct_unconditional_four_year_probability": _clean_metrics(
+                scored, "four_year_direct_meaningful_probability",
+                "meaningful_role_within_horizon_four_year",
+            ),
+            "direct_capped_nested_four_year_probability": _clean_metrics(
+                scored, "four_year_capped_meaningful_probability",
+                "meaningful_role_within_horizon_four_year",
+            ),
         },
         "established": {
             "unextrapolated_two_year_probability": _clean_metrics(
@@ -222,6 +264,14 @@ def main() -> int:
             ),
             "constant_hazard_four_year_probability": _clean_metrics(
                 scored, "four_year_nested_established_probability",
+                "established_role_within_horizon_four_year",
+            ),
+            "direct_unconditional_four_year_probability": _clean_metrics(
+                scored, "four_year_direct_established_probability",
+                "established_role_within_horizon_four_year",
+            ),
+            "direct_capped_nested_four_year_probability": _clean_metrics(
+                scored, "four_year_capped_established_probability",
                 "established_role_within_horizon_four_year",
             ),
         },
@@ -280,6 +330,12 @@ def main() -> int:
     arrival = comparisons["arrival"]["constant_hazard_four_year_probability"]
     meaningful = comparisons["meaningful"]["constant_hazard_four_year_probability"]
     established = comparisons["established"]["constant_hazard_four_year_probability"]
+    capped_meaningful = comparisons["meaningful"][
+        "direct_capped_nested_four_year_probability"
+    ]
+    capped_established = comparisons["established"][
+        "direct_capped_nested_four_year_probability"
+    ]
     raw_arrival = comparisons["arrival"]["unextrapolated_two_year_probability"]
     raw_meaningful = comparisons["meaningful"]["unextrapolated_two_year_probability"]
     largest_meaningful_gap = max(
@@ -305,6 +361,13 @@ including non-arrivals.
 | Any MLB arrival | {arrival['observed_rate']:.2%} | {arrival['mean_probability']:.2%} | {arrival['brier']:.5f} | {arrival['log_loss']:.5f} |
 | Meaningful role | {meaningful['observed_rate']:.2%} | {meaningful['mean_probability']:.2%} | {meaningful['brier']:.5f} | {meaningful['log_loss']:.5f} |
 | Established role | {established['observed_rate']:.2%} | {established['mean_probability']:.2%} | {established['brier']:.5f} | {established['log_loss']:.5f} |
+
+The direct-evidence cap lowers meaningful-role Brier from
+{meaningful['brier']:.5f} to {capped_meaningful['brier']:.5f} and log loss from
+{meaningful['log_loss']:.5f} to {capped_meaningful['log_loss']:.5f}. For established
+roles it changes Brier from {established['brier']:.5f} to
+{capped_established['brier']:.5f} and log loss from {established['log_loss']:.5f} to
+{capped_established['log_loss']:.5f}.
 
 The repeated-hazard form is not causing low probabilities. It is more optimistic than
 the outcomes and worsens both Brier and log-loss scores versus leaving the two-year

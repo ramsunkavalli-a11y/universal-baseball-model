@@ -28,6 +28,22 @@
         "players": 3642,
         "positives": 109
       },
+      "direct_capped_nested_four_year_probability": {
+        "brier": 0.027012163009243865,
+        "log_loss": 0.11662960305726038,
+        "mean_probability": 0.015383334849815796,
+        "observed_rate": 0.029928610653487096,
+        "players": 3642,
+        "positives": 109
+      },
+      "direct_unconditional_four_year_probability": {
+        "brier": 0.02701247735670984,
+        "log_loss": 0.1166263869264871,
+        "mean_probability": 0.015466730214817174,
+        "observed_rate": 0.029928610653487096,
+        "players": 3642,
+        "positives": 109
+      },
       "unextrapolated_two_year_probability": {
         "brier": 0.027639815990240013,
         "log_loss": 0.12479457302356897,
@@ -42,6 +58,22 @@
         "brier": 0.045791238666136484,
         "log_loss": 0.17021667854205513,
         "mean_probability": 0.08899559402777388,
+        "observed_rate": 0.04969796814936848,
+        "players": 3642,
+        "positives": 181
+      },
+      "direct_capped_nested_four_year_probability": {
+        "brier": 0.04233508368637962,
+        "log_loss": 0.1608694999741285,
+        "mean_probability": 0.05841125084654799,
+        "observed_rate": 0.04969796814936848,
+        "players": 3642,
+        "positives": 181
+      },
+      "direct_unconditional_four_year_probability": {
+        "brier": 0.0423358126093558,
+        "log_loss": 0.16091681938214739,
+        "mean_probability": 0.058458200328189956,
         "observed_rate": 0.04969796814936848,
         "players": 3642,
         "positives": 181
@@ -84,16 +116,16 @@
         },
         {
           "age_band": "24_plus",
-          "calibration_gap": 0.12851502735244738,
-          "mean_probability": 0.2845843915142971,
+          "calibration_gap": 0.12851502735244744,
+          "mean_probability": 0.28458439151429715,
           "observed_rate": 0.15606936416184972,
           "players": 1038,
           "positives": 162
         },
         {
           "age_band": "under_21",
-          "calibration_gap": 0.019323604098565553,
-          "mean_probability": 0.056128615844845894,
+          "calibration_gap": 0.019323604098565546,
+          "mean_probability": 0.05612861584484589,
           "observed_rate": 0.03680501174628034,
           "players": 1277,
           "positives": 47
@@ -127,16 +159,16 @@
       ],
       "pitch_hand": [
         {
-          "calibration_gap": 0.0347457507904351,
-          "mean_probability": 0.17871462238576583,
+          "calibration_gap": 0.03474575079043507,
+          "mean_probability": 0.1787146223857658,
           "observed_rate": 0.14396887159533073,
           "pitch_hand": "L",
           "players": 771,
           "positives": 111
         },
         {
-          "calibration_gap": 0.031181757721301648,
-          "mean_probability": 0.1482141506157635,
+          "calibration_gap": 0.031181757721301676,
+          "mean_probability": 0.14821415061576354,
           "observed_rate": 0.11703239289446186,
           "pitch_hand": "R",
           "players": 2871,
@@ -145,24 +177,24 @@
       ],
       "role_tier": [
         {
-          "calibration_gap": 0.027413465097311532,
-          "mean_probability": 0.10144184264203701,
+          "calibration_gap": 0.027413465097311546,
+          "mean_probability": 0.10144184264203703,
           "observed_rate": 0.07402837754472548,
           "players": 1621,
           "positives": 120,
           "role_tier": "RELIEVER"
         },
         {
-          "calibration_gap": 0.03897494921589223,
-          "mean_probability": 0.26912659952811346,
+          "calibration_gap": 0.038974949215892174,
+          "mean_probability": 0.2691265995281134,
           "observed_rate": 0.23015165031222123,
           "players": 1121,
           "positives": 258,
           "role_tier": "STARTER"
         },
         {
-          "calibration_gap": 0.032789098610934916,
-          "mean_probability": 0.10927953730609802,
+          "calibration_gap": 0.032789098610934944,
+          "mean_probability": 0.10927953730609805,
           "observed_rate": 0.0764904386951631,
           "players": 889,
           "positives": 68,
@@ -182,16 +214,16 @@
         },
         {
           "age_band": "24_plus",
-          "calibration_gap": 0.0352324999150818,
-          "mean_probability": 0.06413423401912804,
+          "calibration_gap": 0.03523249991508179,
+          "mean_probability": 0.06413423401912803,
           "observed_rate": 0.028901734104046242,
           "players": 1038,
           "positives": 30
         },
         {
           "age_band": "under_21",
-          "calibration_gap": 0.006232421260774555,
-          "mean_probability": 0.014063274823812926,
+          "calibration_gap": 0.006232421260774551,
+          "mean_probability": 0.014063274823812923,
           "observed_rate": 0.007830853563038372,
           "players": 1277,
           "positives": 10
@@ -199,25 +231,25 @@
       ],
       "level_tier": [
         {
-          "calibration_gap": 0.0008986942571090756,
+          "calibration_gap": 0.0008986942571090617,
           "level_tier": "AA",
-          "mean_probability": 0.08309047507902688,
+          "mean_probability": 0.08309047507902687,
           "observed_rate": 0.0821917808219178,
           "players": 511,
           "positives": 42
         },
         {
-          "calibration_gap": 0.06796382200644215,
+          "calibration_gap": 0.06796382200644217,
           "level_tier": "AAA",
-          "mean_probability": 0.14107702955361195,
+          "mean_probability": 0.14107702955361198,
           "observed_rate": 0.07311320754716981,
           "players": 424,
           "positives": 31
         },
         {
-          "calibration_gap": 0.0003902288740101952,
+          "calibration_gap": 0.00039022887401019696,
           "level_tier": "A_OR_BELOW",
-          "mean_probability": 0.013743344601013162,
+          "mean_probability": 0.013743344601013164,
           "observed_rate": 0.013353115727002967,
           "players": 2696,
           "positives": 36
@@ -225,8 +257,8 @@
       ],
       "pitch_hand": [
         {
-          "calibration_gap": 0.019133967040309858,
-          "mean_probability": 0.047668337987132166,
+          "calibration_gap": 0.019133967040309872,
+          "mean_probability": 0.04766833798713218,
           "observed_rate": 0.028534370946822308,
           "pitch_hand": "L",
           "players": 771,
@@ -243,24 +275,24 @@
       ],
       "role_tier": [
         {
-          "calibration_gap": -0.0009095674924192582,
-          "mean_probability": 0.007727076554465381,
+          "calibration_gap": -0.0009095674924192608,
+          "mean_probability": 0.007727076554465378,
           "observed_rate": 0.00863664404688464,
           "players": 1621,
           "positives": 14,
           "role_tier": "RELIEVER"
         },
         {
-          "calibration_gap": 0.033262525377037735,
-          "mean_probability": 0.10730356016740349,
+          "calibration_gap": 0.03326252537703775,
+          "mean_probability": 0.1073035601674035,
           "observed_rate": 0.07404103479036575,
           "players": 1121,
           "positives": 83,
           "role_tier": "STARTER"
         },
         {
-          "calibration_gap": -0.006169776942634374,
-          "mean_probability": 0.007328535768276761,
+          "calibration_gap": -0.006169776942634373,
+          "mean_probability": 0.007328535768276762,
           "observed_rate": 0.013498312710911136,
           "players": 889,
           "positives": 12,
@@ -272,8 +304,8 @@
       "age_band": [
         {
           "age_band": "21_to_23",
-          "calibration_gap": 0.008951297154005583,
-          "mean_probability": 0.09109146294149616,
+          "calibration_gap": 0.00895129715400561,
+          "mean_probability": 0.09109146294149618,
           "observed_rate": 0.08214016578749057,
           "players": 1327,
           "positives": 109
@@ -297,9 +329,9 @@
       ],
       "level_tier": [
         {
-          "calibration_gap": 0.0726993376615124,
+          "calibration_gap": 0.07269933766151238,
           "level_tier": "AA",
-          "mean_probability": 0.19207311456953588,
+          "mean_probability": 0.19207311456953585,
           "observed_rate": 0.11937377690802348,
           "players": 511,
           "positives": 61
@@ -313,9 +345,9 @@
           "positives": 49
         },
         {
-          "calibration_gap": 0.01304795187715363,
+          "calibration_gap": 0.013047951877153616,
           "level_tier": "A_OR_BELOW",
-          "mean_probability": 0.03938326344985393,
+          "mean_probability": 0.03938326344985391,
           "observed_rate": 0.026335311572700297,
           "players": 2696,
           "positives": 71
@@ -323,16 +355,16 @@
       ],
       "pitch_hand": [
         {
-          "calibration_gap": 0.0503659744499743,
-          "mean_probability": 0.10484068262118053,
+          "calibration_gap": 0.050365974449974274,
+          "mean_probability": 0.1048406826211805,
           "observed_rate": 0.054474708171206226,
           "pitch_hand": "L",
           "players": 771,
           "positives": 42
         },
         {
-          "calibration_gap": 0.03632524804884091,
-          "mean_probability": 0.08474043439506174,
+          "calibration_gap": 0.036325248048840894,
+          "mean_probability": 0.08474043439506172,
           "observed_rate": 0.04841518634622083,
           "pitch_hand": "R",
           "players": 2871,
@@ -357,8 +389,8 @@
           "role_tier": "STARTER"
         },
         {
-          "calibration_gap": 0.035693733756259644,
-          "mean_probability": 0.05931578100035413,
+          "calibration_gap": 0.03569373375625964,
+          "mean_probability": 0.059315781000354124,
           "observed_rate": 0.023622047244094488,
           "players": 889,
           "positives": 21,

@@ -14,6 +14,13 @@ including non-arrivals.
 | Meaningful role | 4.97% | 8.90% | 0.04579 | 0.17022 |
 | Established role | 2.99% | 3.83% | 0.02740 | 0.10860 |
 
+The direct-evidence cap lowers meaningful-role Brier from
+0.04579 to 0.04234 and log loss from
+0.17022 to 0.16087. For established
+roles it changes Brier from 0.02740 to
+0.02701 and log loss from 0.10860 to
+0.11663.
+
 The repeated-hazard form is not causing low probabilities. It is more optimistic than
 the outcomes and worsens both Brier and log-loss scores versus leaving the two-year
 arrival probability unchanged (0.09201 versus

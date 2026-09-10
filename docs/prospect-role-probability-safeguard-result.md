@@ -27,4 +27,12 @@ one year-by-year career-state process in which arrival, role progression, worklo
 attrition and return are mutually exclusive transitions. It must replace both the
 repeated-hazard shortcut and this cap only after rolling-origin validation.
 
+An existing cutoff-safe four-year pitcher diagnostic was extended without changing
+its cohort. On 3,642 players, the cap improves meaningful-career Brier from 0.04579 to
+0.04234 and log loss from 0.17022 to 0.16087 versus the compounded conditional form.
+For established careers, Brier improves slightly from 0.02740 to 0.02701 but log loss
+worsens from 0.10860 to 0.11663 because the direct estimate is conservative. This
+supports the safeguard against the large compounding error, but not treating it as a
+calibrated final transition model.
+
 Machine-readable impact: `docs/prospect-role-probability-cap-impact.json`.
