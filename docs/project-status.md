@@ -81,6 +81,14 @@ crosses zero, and many supported groups reverse. The
 family and makes no production change. Do not tune these inputs again against the
 disclosed years. The next tail test needs genuinely richer dated performance evidence.
 
+Official 2008–2017 affiliated component totals are now available and pass an exact
+[source audit](prospect-broad-history-skill-source-audit.md): all 52,841 hitter and
+46,195 pitcher player-season workloads match the earlier pull, with zero accounting
+violations. The next [skill-tail test](prospect-broad-history-skill-tail-plan.md) is
+frozen before scoring. It adds only strongly regressed K/BB/power-type rates to the
+same corrected basic model and must beat both that model and the population-rate
+baseline across old and modern eras.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still
