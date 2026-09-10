@@ -28,12 +28,15 @@ PA and zero neutral WAR. Players outside the frozen denominator are not added.
 No aging replaces Marcel aging only if all of these are true on identical rows:
 
 1. hitter component log loss is lower;
-2. zero-inclusive neutral-WAR MAE is lower and its paired player-bootstrap 95% upper
-   bound for no-aging minus Marcel is at or below zero;
-3. zero-inclusive neutral-WAR RMSE is no more than 1% worse;
-4. absolute aggregate neutral-WAR bias is lower; and
-5. no supported age band with at least 100 positive-PA players has WAR MAE more than
+2. zero-inclusive neutral-WAR squared error is lower and its paired player-bootstrap
+   95% upper bound for no-aging minus Marcel is at or below zero;
+3. absolute aggregate neutral-WAR bias is lower; and
+4. no supported age band with at least 100 positive-PA players has WAR mean squared
+   error more than
    5% worse.
+
+MAE may be reported descriptively but cannot select an expected-WAR forecast because
+it targets the median.
 
 Age bands are diagnostic guardrails, not separate selection opportunities. There is
 no rescue tuning, clipping, blended age weight, threshold search or player exclusion

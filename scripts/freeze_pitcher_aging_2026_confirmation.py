@@ -71,7 +71,9 @@ def main() -> int:
         "storage": storage,
     }
     (OUTPUT_ROOT / "report.json").write_text(
-        json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0

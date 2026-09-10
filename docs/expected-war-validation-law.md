@@ -48,3 +48,9 @@ rate uncertainty improves it to 0.1048. The linked candidate remains slightly be
 at 0.1035, but candidate-minus-incumbent is -0.00133 with a 95% interval of
 [-0.00311, +0.00041]. The methods are not reliably different. The cohort is exposed
 and the expected-WAR MSE interval also crosses zero, so no promotion is authorized.
+
+The protected 2026 hitter and pitcher aging contracts were corrected before any 2026
+outcome was loaded. Their selection gates now use component log loss, paired zero-
+inclusive squared error, aggregate bias and supported age-band squared-error
+guardrails. MAE remains descriptive only. The frozen predictions themselves did not
+change; their reports were regenerated solely to bind the amended contract hashes.

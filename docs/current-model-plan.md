@@ -186,6 +186,12 @@ reliably different. Do not tune this exposed cohort. Keep the linked architectur
 research challenger and require genuinely new evidence plus fresh confirmation before
 any promotion.
 
+The same expected-mean rule now governs the protected 2026 hitter and pitcher aging
+tests. Before any 2026 outcome access, their contracts replaced MAE gates with paired
+zero-inclusive squared error and squared-error age-band guardrails. Component log loss
+and aggregate bias remain. Forecast values are unchanged and re-frozen only to update
+the contract hashes.
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

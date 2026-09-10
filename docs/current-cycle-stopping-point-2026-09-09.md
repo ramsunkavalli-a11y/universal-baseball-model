@@ -175,3 +175,8 @@ after tiered workload, event variance and posterior-rate variance, versus 0.1035
 The linked-minus-incumbent interval crosses zero. Stop tuning this exposed cohort;
 retain the challenger without changing values and wait for genuinely new evidence plus
 fresh confirmation.
+
+The protected 2026 aging gates were also repaired before outcomes. Hitter and pitcher
+forecast parquets are unchanged; their reports now bind amended contracts that use
+paired squared error for expected WAR instead of median-targeting MAE. Component log
+loss, aggregate bias and supported age-band safeguards remain frozen.

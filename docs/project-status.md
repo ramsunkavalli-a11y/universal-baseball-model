@@ -28,6 +28,12 @@ compares Tango with no aging on 5,206. Do not score either until the regular sea
 complete and official totals have stabilized. Their fixed contracts prohibit rescue
 tuning and retain non-returners as zero production.
 
+Before any 2026 outcome access, both aging confirmation contracts were corrected to
+match their expected-WAR target. MAE no longer selects the model because it targets a
+median; paired zero-inclusive squared error and age-band squared-error guardrails take
+its place. Component log loss and aggregate bias remain. The 3,907 hitter and 5,206
+pitcher prediction files are byte-identical; only their contract hashes were re-frozen.
+
 The first Phase 2 survivor-bias test is complete. An age-by-prior-workload pitcher
 return model materially improves 2022–2025 probability scores over one population
 rate. Using it to reweight observed adjacent-season pairs slightly improves the fitted

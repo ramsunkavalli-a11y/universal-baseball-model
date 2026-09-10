@@ -16,13 +16,14 @@ Retain Tango aging only if, after final official 2026 regular-season totals are 
 with missing players set to zero production:
 
 1. component log loss is no worse than no aging;
-2. zero-inclusive neutral-WAR MAE is no worse and its paired player-bootstrap 95%
-   upper bound for Tango minus no-aging is at or below zero;
-3. zero-inclusive WAR RMSE is no more than 1% worse; and
-4. absolute aggregate neutral-WAR bias is no worse.
+2. zero-inclusive neutral-WAR squared error is no worse and its paired player-
+   bootstrap 95% upper bound for Tango minus no-aging is at or below zero; and
+3. absolute aggregate neutral-WAR bias is no worse.
 
 Supported age bands with at least 100 positive-BF pitchers are guardrails: none may
-have WAR MAE more than 5% worse. There is no rescue tuning, blending, clipping,
+have WAR mean squared error more than 5% worse. MAE may be reported descriptively but
+cannot select an expected-WAR forecast because it targets the median. There is no
+rescue tuning, blending, clipping,
 subgroup override or player exclusion after targets are read. Failure selects no
 aging provisionally and requires a separate contract before fitting another curve.
 
