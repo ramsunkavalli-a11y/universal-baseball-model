@@ -25,7 +25,9 @@ REPORT_ROOTS = (
 PHASE2_ROOT = Path("reports/generated/phase2-current-value")
 
 
-def audit_phase2_checkpoint(as_of_date: str, value_path: Path) -> dict[str, object]:
+def audit_phase2_checkpoint(
+    as_of_date: str, value_path: Path, annual_path: Path
+) -> dict[str, object]:
     """Refuse to open a Phase 2 checkpoint that violates model identities."""
 
     generated = Path("reports/generated")
@@ -36,6 +38,7 @@ def audit_phase2_checkpoint(as_of_date: str, value_path: Path) -> dict[str, obje
         "nested": generated / "phase2-nested-career-fv" / as_of_date
         / "nested-career-model-fv.parquet",
         "values": value_path,
+        "annual": annual_path,
     }
     if missing := [path for path in paths.values() if not path.exists()]:
         joined = "\n".join(f"- {path}" for path in missing)
@@ -46,9 +49,10 @@ def audit_phase2_checkpoint(as_of_date: str, value_path: Path) -> dict[str, obje
         raise FileNotFoundError(
             f"Phase 2 projection-lineage report is missing: {conditional_report}"
         )
-    recorded_source = json.loads(
+    conditional_metadata = json.loads(
         conditional_report.read_text(encoding="utf-8")
-    ).get("opportunity_source")
+    )
+    recorded_source = conditional_metadata.get("opportunity_source")
     if not isinstance(recorded_source, dict):
         raise ValueError("Phase 2 projection-lineage record is missing")
     validate_recorded_opportunity_source(
@@ -60,6 +64,10 @@ def audit_phase2_checkpoint(as_of_date: str, value_path: Path) -> dict[str, obje
         pl.read_parquet(paths["pitcher"]),
         pl.read_parquet(paths["nested"]),
         pl.read_parquet(paths["values"]),
+        runs_per_win=float(
+            conditional_metadata["reference_environment"]["runs_per_win"]
+        ),
+        annual_contract_economics=pl.read_parquet(paths["annual"]),
     )
     if result["failed"]:
         failures = ", ".join(
@@ -242,7 +250,7 @@ def main() -> int:
         raise FileNotFoundError(f"Required model outputs are missing:\n{joined}")
     law_result = None
     if (phase2_dated / "value-records.parquet").exists():
-        law_result = audit_phase2_checkpoint(as_of_date, value_path)
+        law_result = audit_phase2_checkpoint(as_of_date, value_path, annual_path)
     model_details = phase2_model_details(as_of_date) if law_result is not None else None
     payload = write_explorer(
         value_path,
