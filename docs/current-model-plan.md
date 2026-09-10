@@ -181,6 +181,9 @@ player-type-specific direct-to-established share beat one pooled share on both p
 scores in 2023, 2024 and 2025. Freeze 33.8% for advancing fringe hitters and 20.7% for
 advancing fringe pitchers; otherwise the successful advance enters meaningful. This
 does not change the separately predicted advancement probability or current rankings.
+The year-by-year state engine is implemented with a strict prior-year boundary and
+monotone states. The remaining P0 work is the workload/performance-pool integration
+and full historical replay; do not switch the playable values before that gate.
 
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero

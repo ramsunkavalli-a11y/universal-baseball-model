@@ -37,6 +37,12 @@ PROGRESSION_FEATURE_NAMES = {
         "prior_bf_per_game_scaled",
     ),
 }
+SIMULATED_STATE_CODES = {
+    "NO_MLB": 0,
+    "FRINGE_MLB": 1,
+    "MEANINGFUL_MLB": 2,
+    "ESTABLISHED_MLB": 3,
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -269,3 +275,86 @@ def predict_progression_from_coefficients(
     ):
         raise RuntimeError("progression equation produced invalid probabilities")
     return probability
+
+
+def simulate_post_arrival_states(
+    rng: np.random.Generator,
+    workloads: np.ndarray,
+    active_mean_workload: np.ndarray,
+    coefficients: pl.DataFrame,
+    *,
+    player_type: str,
+    initial_age_years: float,
+    direct_established_probability: float,
+) -> np.ndarray:
+    """Advance career state using only each draw's previously sampled workload."""
+
+    sampled = np.asarray(workloads, dtype=float)
+    environment = np.asarray(active_mean_workload, dtype=float)
+    if sampled.ndim != 2 or sampled.shape[1] < 1:
+        raise ValueError("simulated workloads must be a nonempty draw-by-year matrix")
+    if environment.shape != (sampled.shape[1],):
+        raise ValueError("active workload environment must align with simulation years")
+    if (
+        np.any(~np.isfinite(sampled))
+        or np.any(sampled < 0.0)
+        or np.any(~np.isfinite(environment))
+        or np.any(environment <= 0.0)
+    ):
+        raise ValueError("workloads and active environments must be finite and valid")
+    if not np.isfinite(initial_age_years):
+        raise ValueError("initial age must be finite")
+    if not 0.0 <= direct_established_probability <= 1.0:
+        raise ValueError("direct-established probability must lie in [0, 1]")
+
+    states = np.zeros(sampled.shape, dtype=np.int8)
+    current = np.zeros(sampled.shape[0], dtype=np.int8)
+    for year_index in range(sampled.shape[1]):
+        if year_index:
+            prior = sampled[:, year_index - 1]
+            relative = prior / environment[year_index - 1]
+            scoring = pl.DataFrame(
+                {
+                    "transition_age_years": np.full(
+                        sampled.shape[0], initial_age_years + year_index
+                    ),
+                    "elapsed_year": np.full(sampled.shape[0], year_index + 1),
+                    "prior_mlb_active": (prior > 0.0).astype(np.int8),
+                    "prior_workload_vs_active_mean": relative,
+                }
+            )
+            fringe = current == SIMULATED_STATE_CODES["FRINGE_MLB"]
+            if np.any(fringe):
+                probability = predict_progression_from_coefficients(
+                    scoring.filter(pl.Series(fringe)),
+                    coefficients,
+                    player_type=player_type,
+                    origin_state="FRINGE_MLB",
+                )
+                targets = np.flatnonzero(fringe)[rng.random(fringe.sum()) < probability]
+                direct = rng.random(targets.size) < direct_established_probability
+                current[targets] = np.where(
+                    direct,
+                    SIMULATED_STATE_CODES["ESTABLISHED_MLB"],
+                    SIMULATED_STATE_CODES["MEANINGFUL_MLB"],
+                )
+            meaningful = current == SIMULATED_STATE_CODES["MEANINGFUL_MLB"]
+            if np.any(meaningful):
+                probability = predict_progression_from_coefficients(
+                    scoring.filter(pl.Series(meaningful)),
+                    coefficients,
+                    player_type=player_type,
+                    origin_state="MEANINGFUL_MLB",
+                )
+                targets = np.flatnonzero(meaningful)[
+                    rng.random(meaningful.sum()) < probability
+                ]
+                current[targets] = SIMULATED_STATE_CODES["ESTABLISHED_MLB"]
+        arrival = (current == SIMULATED_STATE_CODES["NO_MLB"]) & (
+            sampled[:, year_index] > 0.0
+        )
+        current[arrival] = SIMULATED_STATE_CODES["FRINGE_MLB"]
+        states[:, year_index] = current
+    if np.any(np.diff(states, axis=1) < 0):
+        raise RuntimeError("simulated career state moved backward")
+    return states

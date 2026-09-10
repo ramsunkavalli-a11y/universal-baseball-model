@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,526 passed. Four older research-contract tests fail because their
+Latest full suite: 1,527 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -202,3 +202,6 @@ advancement inside each draw. Current rankings still use the prior coherent base
 The stored equation now has a checked callable interface. Conditional on a successful
 fringe advance, the time-ordered destination test uses a 33.8% direct-established
 share for hitters and 20.7% for pitchers; it beat the pooled rule in 2023–2025.
+The state engine itself is implemented and tested with the required one-year lag and
+no backward movement. It is not yet connected to state-conditioned workload and
+performance sampling, so it does not change the private explorer.

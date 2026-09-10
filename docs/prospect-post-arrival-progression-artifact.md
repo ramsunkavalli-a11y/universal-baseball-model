@@ -31,3 +31,9 @@ feed it to the following year's frozen fringe equation. State can move only forw
 The draw's state then controls the eligible historical workload/performance pool.
 This removes the current circular shortcut of selecting an eventual tier first. It
 must be replayed against historical cutoffs before it can change rankings.
+
+The deterministic state engine for that sequence is now implemented and tested. It
+uses no same-year workload to decide that year's state: a draw first arrives as fringe,
+then only its prior-year workload may affect the following transition. The remaining
+integration is to let the simulated state select the appropriate historical workload
+and performance pool, then run the full cutoff replay.
