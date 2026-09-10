@@ -81,6 +81,13 @@ run estimate, but worsened both component log loss and Brier and made the top qu
 too optimistic. Keep the existing talent probabilities. Audit the pitcher-specific
 controlled-WAR-to-FV mapping next.
 
+The [pitcher FV mapping audit](pitcher-fv-mapping-audit-result.md) confirms that the
+grade function is not causing the compression. Displayed 50 begins at 2.6 expected
+six-year WAR, while the current pre-MLB maximum is only 2.664 and the 99th percentile
+is 0.757. Keep the monotonic mapping. The next challenger belongs upstream: test
+chronology-safe age-relative-to-level and stable handedness against later MLB pitcher
+components, with no target high-grade count.
+
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
 arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top

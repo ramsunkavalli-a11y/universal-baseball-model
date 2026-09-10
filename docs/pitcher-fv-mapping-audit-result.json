@@ -1,0 +1,55 @@
+{
+  "affiliated_translated_conditional_war_per_800": {
+    "forecast_season": 2027,
+    "maximum": 2.1321694391782957,
+    "median": 1.3177579594435336,
+    "minimum": -2.733611740483196,
+    "p95": 1.8296823900325094,
+    "players": 4235
+  },
+  "boundaries": {
+    "mapping_is_monotonic": true,
+    "outside_individual_fv_used": false,
+    "target_grade_count_used": false
+  },
+  "contract": "docs/pitcher-fv-mapping-audit-plan.md",
+  "counts_at_or_above_display_grade": {
+    "40": 225,
+    "45": 24,
+    "50": 1,
+    "55": 0,
+    "60": 0
+  },
+  "decision": {
+    "mapping_change_supported": false,
+    "responsible_layer": "expected_controlled_war_before_fv_mapping"
+  },
+  "display_grade_minimum_expected_six_year_war": {
+    "40": 0.25,
+    "45": 0.9999999999999993,
+    "50": 2.5999999999999988,
+    "55": 5.999999999999999,
+    "60": 8.999999999999998
+  },
+  "expected_six_year_war": {
+    "maximum": 2.664421381243488,
+    "median": 0.013339308772470262,
+    "p95": 0.31783899304900615,
+    "p99": 0.756643184485389
+  },
+  "pre_mlb_pitchers": 3278,
+  "report_schema_version": "0.1",
+  "status": "pitcher_fv_mapping_audit_complete",
+  "top_pre_mlb_pitcher": {
+    "ordered_arrival_probability": 0.8961983471332962,
+    "ordered_established_probability": 0.7344744887643221,
+    "ordered_meaningful_probability": 0.7688135551725861,
+    "pitcher_six_control_year_war_if_arrived": 6.25982841173639,
+    "player_id": 824620,
+    "player_name": "Tyson Hardin",
+    "three_tier_expected_six_year_war": 2.664421381243488,
+    "three_tier_expected_workload": 1151.1298886750833,
+    "three_tier_model_fv_display": 50,
+    "three_tier_model_fv_granular": 47.56710560546197
+  }
+}
