@@ -20,10 +20,9 @@ Status: clean handoff; private preview works, publication remains blocked.
   four-year check. Do not add an arbitrary long-horizon decay. The third two-year
   window remains an explicit extrapolation; see
   `docs/prospect-declining-hazard-result.md`.
-- Official 2021-2025 home/road results now provide a reproducible minor-league park
-  source. A 50-game pooled venue factor improved both MAE and RMSE in 2024 selection
-  and untouched 2025 confirmation. This promotes the source only; player rates and
-  values remain unchanged until a cutoff-safe player-level forecast test passes.
+- Official 2021-2025 home/road results showed a repeatable minor-league park signal,
+  but the runs-only test used scheduled rather than actual innings. Treat it as
+  superseded preliminary evidence, not an approved source or player adjustment.
 - Exact home/away component splits then passed a team/venue persistence test, but
   failed the future MLB-player gate. Hitters lost 2025 log loss; pitchers lost 2025
   Brier. Keep the level-only player translation and do not rescue-tune this result.

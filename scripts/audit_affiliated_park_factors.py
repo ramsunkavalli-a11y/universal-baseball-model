@@ -70,7 +70,9 @@ def main() -> int:
         "selected_prior_games": selected,
         "confirmation": confirmation,
         "decision": {
-            "park_factor_source_promoted": promoted,
+            "park_factor_source_promoted": False,
+            "historical_outer_gate_passed": promoted,
+            "superseded_by_component_source": True,
             "current_player_rates_changed": False,
         },
         "coverage": {
@@ -82,6 +84,7 @@ def main() -> int:
         "boundaries": {
             "team_environment_controlled_by_road_games": True,
             "scheduled_innings_used": True,
+            "actual_outs_used": False,
             "opponent_strength_modeled": False,
             "weather_or_altitude_feature_used": False,
             "outside_fv_used": False,
@@ -94,7 +97,7 @@ def main() -> int:
     REPORT_MD.write_text(
         f"""# Affiliated park-factor result
 
-Status: {'source promoted for player-rate integration research' if promoted else 'candidate rejected; level-only translation retained'}.
+Status: {'preliminary outer signal only; superseded by component source' if promoted else 'candidate rejected; level-only translation retained'}.
 
 The test estimates a venue effect from total runs in a team's home games divided by
 total runs in that same team's road games. Venue estimates are shrunk toward neutral.
@@ -108,9 +111,9 @@ The shrinkage amount was selected on 2024, then frozen and checked on 2025.
 Selected prior: {selected if selected is not None else 'none'} games. The source covers
 {games.height:,} official games and {final_factors.height:,} venues in the final fit.
 
-This validates only persistence of the run environment. It does not yet authorize a
-player projection change: the next step must convert the full-game factor to a player
-home/road exposure adjustment and show improvement in translated component rates.
+This shows persistence of the run environment, but scheduled innings do not equal
+actual outs in extra-inning or shortened games. It does not authorize a player
+projection change and is superseded by the exact home/away component source.
 Opponent strength, weather, and altitude are not separately modeled.
 """,
         encoding="utf-8",

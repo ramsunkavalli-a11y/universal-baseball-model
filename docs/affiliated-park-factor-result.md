@@ -1,6 +1,6 @@
 # Affiliated park-factor result
 
-Status: source promoted for player-rate integration research.
+Status: preliminary outer signal only; superseded by component source.
 
 The test estimates a venue effect from total runs in a team's home games divided by
 total runs in that same team's road games. Venue estimates are shrunk toward neutral.
@@ -14,7 +14,7 @@ The shrinkage amount was selected on 2024, then frozen and checked on 2025.
 Selected prior: 50.0 games. The source covers
 51,301 official games and 189 venues in the final fit.
 
-This validates only persistence of the run environment. It does not yet authorize a
-player projection change: the next step must convert the full-game factor to a player
-home/road exposure adjustment and show improvement in translated component rates.
+This shows persistence of the run environment, but scheduled innings do not equal
+actual outs in extra-inning or shortened games. It does not authorize a player
+projection change and is superseded by the exact home/away component source.
 Opponent strength, weather, and altitude are not separately modeled.

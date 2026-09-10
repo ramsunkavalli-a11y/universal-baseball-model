@@ -33,8 +33,8 @@ translation did not pass: hitters lost the selection year and pitchers lost
 confirmation, so retain the level-only translation. The replacement park source now
 uses 51,301 actual home/road game results. A 50-game partially pooled venue factor
 improved both MAE and RMSE in untouched 2025 after selection on 2024. That promotes
-the source, not a player-value adjustment: player integration still must be
-cutoff-safe and improve future player component forecasts. See the
+the existence of a repeatable signal, not an approved source or player adjustment.
+Its scheduled-innings denominator is superseded by exact component splits. See the
 [team source](affiliated-team-context-result.md),
 [game source](affiliated-game-context-result.md),
 [league test](affiliated-league-translation-result.md), and
