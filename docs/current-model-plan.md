@@ -176,6 +176,13 @@ Keep it. Phase 2 may next add age and prior IL recurrence, but both must beat th
 validated baseline and remain cutoff-safe. See the
 [injury-return result](injury-return-out-of-time-result.md).
 
+The playable build's fallback ladder is now enforced by code. All 3,940 hitters and
+5,276 pitchers have complete six-year paths with explicit opportunity, workload and
+talent provenance. Years 1–4 use selected opportunity models; years 5–6 back off to
+partially pooled age/level history, plus pitcher role. Conditional skill backs off
+from MLB history to translated affiliated evidence to a population prior. See the
+[fallback coverage result](current-fallback-coverage-result.md).
+
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.

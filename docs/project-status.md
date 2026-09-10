@@ -46,6 +46,11 @@ return Brier/log loss and remaining-availability MAE/RMSE versus a population-on
 reference in both years. Keep this baseline. Age and prior recurrence are the next
 bounded additions; diagnosis remains deferred until its source is consistent.
 
+The current fallback ladder is now a permanent build check. It certifies complete
+six-year, source-labeled paths for 3,940 hitters and 5,276 pitchers. Sparse players
+remain visible: 165 hitters and 391 pitchers use an explicit population skill prior
+rather than disappearing or becoming zero talent.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes
