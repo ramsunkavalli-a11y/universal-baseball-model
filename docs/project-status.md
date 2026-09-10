@@ -623,14 +623,17 @@ test failure was observed.
   historical coverage by player type and predeclared probability band, using only
   information available at each forecast date.
 - Neither uncertainty layer uses outside player FV opinions or partial 2026 outcomes.
-- A chronology-safe conditional workload check trained on 2015-2017 debuters and
-  evaluated on 2018-2019 debuters. Hitter P10-P90 coverage was 74.7% (95% Wilson
+- A conditional workload cohort-stability check compared 2015-2017 debuters with
+  2018-2019 debuters. Hitter P10-P90 coverage was 74.7% (95% Wilson
   interval 68.3%-80.3%), which retains the 80% target. Pitcher coverage was only
   66.3% (58.8%-73.0%), so the pitcher workload range is too narrow.
+- Timing audit correction: the earlier cohorts' six-year outcomes extend beyond the
+  later cohorts' debut dates. This is not a chronology-safe forecast backtest and
+  cannot confirm either workload method. The distribution shift remains descriptive.
 - Do not fit a pitcher widening factor to the opened later cohort. Keep pitcher ranges
   descriptive and develop a resampling-based replacement without claiming untouched
   confirmation until another complete six-year cohort exists.
-- The first frozen pitcher era test rejected all eight simple fixes. A one-year
+- The first frozen pitcher era diagnostic rejected all eight simple fixes. A one-year
   recency half-life modestly improved overall and established-career CRPS but breached
   the supported fringe-tier safety limit and did not repair coverage. Always pooling
   roles widened coverage but materially worsened CRPS. Next separate the league-wide

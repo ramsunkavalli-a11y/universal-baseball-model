@@ -1,13 +1,18 @@
 # Prospect workload distribution validation plan
 
-Status: frozen before scoring.
+Status: original protocol frozen before scoring; chronology claim retracted after audit.
+
+Correction: a six-year workload path for a 2015-2017 debut cohort contains outcomes
+through 2020-2022. Those outcomes were not all available at a 2018 forecast date.
+The split below is therefore an early-versus-late cohort stability test, not a
+forecast-time backtest. This correction changes no calculated result.
 
 ## Question
 
 Does the empirical six-year workload distribution used by the prospect model retain
 reasonable coverage in later MLB debut cohorts?
 
-## Chronology
+## Cohort split
 
 - Train distributions on players debuting in 2015-2017.
 - Evaluate once on players debuting in 2018-2019.
@@ -30,7 +35,7 @@ fallback threshold may change after scoring.
 
 ## Boundary
 
-This validates workload conditional on eventual MLB debut, career tier, and role. It
+This describes cohort stability conditional on eventual MLB debut, career tier, and role. It
 does not validate prospect arrival probabilities, skill projections, WAR, or the
-combined end-to-end range. A failure changes no production value automatically; it
+combined end-to-end range, and it is not chronology-safe model confirmation. A failure changes no production value automatically; it
 identifies the workload layer that needs a separately frozen replacement test.

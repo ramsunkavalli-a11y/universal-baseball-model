@@ -36,7 +36,7 @@ def main() -> int:
     )
     report = {
         "report_schema_version": "0.1",
-        "status": "chronology_safe_workload_distribution_check_complete",
+        "status": "retrospective_cohort_stability_check_complete",
         "contract": "docs/prospect-workload-distribution-validation-plan.md",
         "chronology": {
             "training_debut_years": [2015, 2017],
@@ -47,6 +47,8 @@ def main() -> int:
         "by_outcome_tier": tiers.to_dicts(),
         "by_sample_source": sources.to_dicts(),
         "boundaries": {
+            "forecast_time_chronology_safe": False,
+            "training_path_outcomes_extend_past_evaluation_debut": True,
             "conditional_on_mlb_debut": True,
             "conditional_on_observed_career_tier_and_role": True,
             "arrival_probability_validated": False,

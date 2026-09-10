@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score the frozen era-aware pitcher workload candidates."""
+"""Diagnose frozen era-aware pitcher workload candidates by retrospective cohort."""
 
 from __future__ import annotations
 
@@ -94,7 +94,7 @@ def main() -> int:
         )
     report = {
         "report_schema_version": "0.1",
-        "status": "retrospective_era_candidate_score_complete",
+        "status": "retrospective_cohort_diagnostic_not_selection_evidence",
         "contract": "docs/pitcher-workload-era-candidate-plan.md",
         "baseline_candidate": BASELINE,
         "research_preferred_candidate": selected,
@@ -103,6 +103,8 @@ def main() -> int:
         "gate_decisions": decisions,
         "boundaries": {
             "retrospective_development_only": True,
+            "forecast_time_chronology_safe": False,
+            "training_path_outcomes_extend_past_evaluation_debut": True,
             "untouched_confirmation": False,
             "current_values_changed": False,
             "outside_fv_used": False,

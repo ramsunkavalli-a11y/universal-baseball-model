@@ -1,4 +1,4 @@
-"""Chronology-safe validation for conditional prospect workload distributions."""
+"""Retrospective cohort diagnostics for conditional prospect workload distributions."""
 
 from __future__ import annotations
 
@@ -170,7 +170,7 @@ def build_pitcher_workload_era_scores(
     evaluation_years: tuple[int, ...] = (2017, 2018, 2019),
     minimum_role_players: int = 30,
 ) -> pl.DataFrame:
-    """Forward-score the frozen pitcher workload era candidate grid."""
+    """Retrospectively score the frozen pitcher workload era candidate grid."""
 
     required = {
         "player_id", "player_type", "debut_year", "outcome_tier_v2",
