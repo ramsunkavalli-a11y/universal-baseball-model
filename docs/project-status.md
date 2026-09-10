@@ -48,6 +48,14 @@ starter role are positive. Conditional pitcher age is also positive in the older
 which is a selection warning rather than an aging claim. Coefficients are diagnostics,
 not causal effects or direct player bonuses.
 
+The unchanged 2018 bridge fit was then applied to the 2022 and 2023 cohorts under the
+precommitted [stability plan](prospect-conditional-war-bridge-stability-plan.md). It
+fails. Hitter end-to-end MAE still improves, but arrived-player RMSE worsens in both
+later cohorts. Pitcher MAE improves, but absolute bias worsens in both and paired MSE
+intervals cross zero. The exact bridge is rejected as a stable replacement. The next
+candidate must model positive-tail probability and magnitude explicitly; do not rescue
+the ridge through recentering, clipping or another penalty search on these cohorts.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still
@@ -835,7 +843,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,446 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,447 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

@@ -182,6 +182,12 @@ arrival odds or using demographics/FV as talent. It misses its frozen gate becau
 absolute mean bias worsens slightly. Preserve the exact form for later confirmation;
 do not tune an outer-cohort calibration or change current values.
 
+The unchanged 2018 fit then fails its frozen 2022/2023 stability extension. Hitter
+arrived-player RMSE worsens in both later cohorts; pitcher absolute bias worsens and
+paired MSE gains are uncertain. Reject the ridge replacement. Its consistent
+typical-player MAE improvement motivates a separate positive-tail hurdle, not
+recalibration, clipping or penalty tuning on the disclosed cohorts.
+
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.
 10. Improve defense, two-way-player handling, interval calibration, nonlinear buyer

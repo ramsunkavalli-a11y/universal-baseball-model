@@ -24,19 +24,19 @@
     "hitter": {
       "cohort_fingerprint": "c37956bc759727bca02847991ed2364159b8e533c1e2d344e73f5211abee7464",
       "conditional_on_observed_arrival_baseline": {
-        "bias": 0.05518121686681442,
-        "mae": 0.9951178990925452,
+        "bias": 0.055181216866814306,
+        "mae": 0.9951178990925454,
         "observed_mean": 0.5536733326387457,
         "players": 259,
         "predicted_mean": 0.6088545495055601,
         "rmse": 1.459210385426083
       },
       "conditional_on_observed_arrival_candidate": {
-        "bias": 0.21732386598969372,
-        "mae": 1.0132589828563956,
+        "bias": 0.2173238659896935,
+        "mae": 1.0132589828563954,
         "observed_mean": 0.5536733326387457,
         "players": 259,
-        "predicted_mean": 0.7709971986284394,
+        "predicted_mean": 0.7709971986284392,
         "rmse": 1.4080671506851228
       },
       "decision_checks": {
@@ -46,33 +46,33 @@
         "end_to_end_rmse_improved": true
       },
       "end_to_end_baseline": {
-        "bias": -0.007424506808485213,
+        "bias": -0.00742450680848522,
         "mae": 0.09091658666949552,
         "observed_mean": 0.04398815740902918,
         "players": 3260,
-        "predicted_mean": 0.036563650600543965,
-        "rmse": 0.4276836041367804
+        "predicted_mean": 0.03656365060054396,
+        "rmse": 0.4276836041367805
       },
       "end_to_end_candidate": {
-        "bias": -0.00895458917365416,
+        "bias": -0.008954589173654175,
         "mae": 0.08435780391552707,
         "observed_mean": 0.04398815740902918,
         "players": 3260,
-        "predicted_mean": 0.03503356823537502,
+        "predicted_mean": 0.035033568235375,
         "rmse": 0.41356391375517343
       },
       "outer_arrivals": 259,
       "paired_difference": {
         "mae": {
-          "ci_high": -0.004724424710890006,
-          "ci_low": -0.008553153596955061,
-          "difference": -0.006558782753968466,
+          "ci_high": -0.004724424710890012,
+          "ci_low": -0.008553153596955068,
+          "difference": -0.006558782753968472,
           "probability_candidate_better": 1.0
         },
         "mse": {
-          "ci_high": -0.005792270233289101,
+          "ci_high": -0.005792270233289103,
           "ci_low": -0.019225709382603096,
-          "difference": -0.01187815448692982,
+          "difference": -0.011878154486929814,
           "probability_candidate_better": 1.0
         },
         "resamples": 2000
@@ -81,74 +81,74 @@
       "promising_development_evidence": false,
       "rate_regression_opportunities": 200.0,
       "ridge_alpha": 100.0,
-      "ridge_coefficient_l2_norm": 0.3651640096487353,
+      "ridge_coefficient_l2_norm": 0.36516400964873524,
       "ridge_conditional_prediction_distribution": {
         "maximum": 2.0598596396877342,
-        "median": 0.3576596029649014,
+        "median": 0.357659602964901,
         "minimum": -0.5543123640206631,
         "negative_predictions": 359,
-        "p01": -0.31368344822024363,
-        "p99": 1.4169294496639167
+        "p01": -0.31368344822024397,
+        "p99": 1.4169294496639162
       },
       "standardized_ridge_coefficients": [
         {
-          "coefficient": 0.21038433607420742,
+          "coefficient": 0.2103843360742077,
           "feature": "production_rate_4"
         },
         {
-          "coefficient": 0.1942210969502052,
+          "coefficient": 0.194221096950205,
           "feature": "production_rate_3"
         },
         {
-          "coefficient": -0.14027296038644455,
+          "coefficient": -0.14027296038644446,
           "feature": "age"
         },
         {
-          "coefficient": -0.10309731136382962,
+          "coefficient": -0.10309731136382955,
           "feature": "level_A_OR_BELOW"
         },
         {
-          "coefficient": 0.07789047879788341,
+          "coefficient": 0.07789047879788333,
           "feature": "role_CORNER"
         },
         {
-          "coefficient": -0.06642278666039364,
+          "coefficient": -0.06642278666039363,
           "feature": "production_rate_2"
         },
         {
-          "coefficient": 0.061397949342594314,
+          "coefficient": 0.061397949342594335,
           "feature": "level_AAA"
         },
         {
-          "coefficient": -0.04957391982836698,
+          "coefficient": -0.04957391982836697,
           "feature": "role_C"
         },
         {
-          "coefficient": 0.032833852862438145,
+          "coefficient": 0.03283385286243816,
           "feature": "production_rate_1"
         },
         {
-          "coefficient": -0.03010229092569549,
+          "coefficient": -0.030102290925695482,
           "feature": "prior_workload"
         },
         {
-          "coefficient": -0.03010229092569548,
+          "coefficient": -0.030102290925695458,
           "feature": "current_workload"
         },
         {
-          "coefficient": -0.02824991408458559,
+          "coefficient": -0.028249914084585583,
           "feature": "on_40man"
         },
         {
-          "coefficient": 0.020819143879101717,
+          "coefficient": 0.02081914387910173,
           "feature": "level_AA"
         },
         {
-          "coefficient": 0.014109591419456854,
+          "coefficient": 0.014109591419456845,
           "feature": "role_MIDDLE_INFIELD"
         },
         {
-          "coefficient": -0.005353864553328968,
+          "coefficient": -0.00535386455332901,
           "feature": "role_OUTFIELD"
         },
         {
@@ -182,7 +182,7 @@
         },
         {
           "arrivals": 122,
-          "baseline_mae": 0.35720435942169854,
+          "baseline_mae": 0.3572043594216985,
           "baseline_rmse": 0.8527096203993252,
           "candidate_mae": 0.32860428691931653,
           "candidate_rmse": 0.8061842964898646,
@@ -204,10 +204,10 @@
         },
         {
           "arrivals": 40,
-          "baseline_mae": 0.07617590566406938,
-          "baseline_rmse": 0.3555080935223331,
+          "baseline_mae": 0.07617590566406937,
+          "baseline_rmse": 0.35550809352233315,
           "candidate_mae": 0.06037647617808348,
-          "candidate_rmse": 0.3326289399608025,
+          "candidate_rmse": 0.33262893996080256,
           "dimension": "role",
           "group": "C",
           "players": 601,
@@ -217,7 +217,7 @@
           "arrivals": 55,
           "baseline_mae": 0.09197142196592836,
           "baseline_rmse": 0.4123690883828329,
-          "candidate_mae": 0.09528145781452949,
+          "candidate_mae": 0.09528145781452947,
           "candidate_rmse": 0.3971692086223602,
           "dimension": "role",
           "group": "CORNER",
@@ -239,7 +239,7 @@
           "arrivals": 2,
           "baseline_mae": 0.029415470668973234,
           "baseline_rmse": 0.15990524249893712,
-          "candidate_mae": 0.027685860168697358,
+          "candidate_mae": 0.027685860168697347,
           "candidate_rmse": 0.16085796722587184,
           "dimension": "role",
           "group": "OTHER",
@@ -248,9 +248,9 @@
         },
         {
           "arrivals": 86,
-          "baseline_mae": 0.09607670300875837,
+          "baseline_mae": 0.09607670300875834,
           "baseline_rmse": 0.5073386167820771,
-          "candidate_mae": 0.09076104236727661,
+          "candidate_mae": 0.0907610423672766,
           "candidate_rmse": 0.4988106336187012,
           "dimension": "role",
           "group": "OUTFIELD",
@@ -261,7 +261,7 @@
           "arrivals": 11,
           "baseline_mae": 0.014047920158768224,
           "baseline_rmse": 0.18130609518058757,
-          "candidate_mae": 0.011895979119497213,
+          "candidate_mae": 0.011895979119497212,
           "candidate_rmse": 0.18072872715105703,
           "dimension": "evidence",
           "group": "1-99",
@@ -271,8 +271,8 @@
         {
           "arrivals": 50,
           "baseline_mae": 0.0415199737491039,
-          "baseline_rmse": 0.16020710429983065,
-          "candidate_mae": 0.031888860013200085,
+          "baseline_rmse": 0.16020710429983062,
+          "candidate_mae": 0.03188886001320008,
           "candidate_rmse": 0.15284372534860405,
           "dimension": "evidence",
           "group": "100-299",
@@ -283,7 +283,7 @@
           "arrivals": 198,
           "baseline_mae": 0.3027606162829364,
           "baseline_rmse": 0.8501916136148701,
-          "candidate_mae": 0.29630775243600044,
+          "candidate_mae": 0.2963077524360004,
           "candidate_rmse": 0.8212782560788842,
           "dimension": "evidence",
           "group": "300+",
@@ -294,7 +294,7 @@
           "arrivals": 31,
           "baseline_mae": 0.1483699064482929,
           "baseline_rmse": 0.6902518132934016,
-          "candidate_mae": 0.14135046314126157,
+          "candidate_mae": 0.14135046314126154,
           "candidate_rmse": 0.6761409414622541,
           "dimension": "hand",
           "group": "L",
@@ -305,7 +305,7 @@
           "arrivals": 228,
           "baseline_mae": 0.0848523020966212,
           "baseline_rmse": 0.38958929543497545,
-          "candidate_mae": 0.07832014042614661,
+          "candidate_mae": 0.0783201404261466,
           "candidate_rmse": 0.3750680507851145,
           "dimension": "hand",
           "group": "R",
@@ -314,24 +314,24 @@
         }
       ],
       "training_arrivals": 194,
-      "training_conditional_mean_war": 0.6088545495055601
+      "training_conditional_mean_war": 0.60885454950556
     },
     "pitcher": {
       "cohort_fingerprint": "fa765b54d69f1d6d2b550c834bb2f6739a24535ba5671fd6c6f1187a5910c52d",
       "conditional_on_observed_arrival_baseline": {
-        "bias": -0.021859587964846064,
-        "mae": 0.519651472791128,
+        "bias": -0.021859587964846227,
+        "mae": 0.5196514727911279,
         "observed_mean": 0.32041930318646134,
         "players": 273,
-        "predicted_mean": 0.2985597152216153,
+        "predicted_mean": 0.2985597152216151,
         "rmse": 0.8198242957635734
       },
       "conditional_on_observed_arrival_candidate": {
-        "bias": -0.10180487079861811,
+        "bias": -0.10180487079861826,
         "mae": 0.5061502249164849,
         "observed_mean": 0.32041930318646134,
         "players": 273,
-        "predicted_mean": 0.21861443238784325,
+        "predicted_mean": 0.21861443238784306,
         "rmse": 0.8002517416232029
       },
       "decision_checks": {
@@ -341,33 +341,33 @@
         "end_to_end_rmse_improved": true
       },
       "end_to_end_baseline": {
-        "bias": 0.002741715307980666,
+        "bias": 0.002741715307980649,
         "mae": 0.05724253151086223,
         "observed_mean": 0.02397217587555603,
         "players": 3649,
-        "predicted_mean": 0.02671389118353669,
+        "predicted_mean": 0.026713891183536675,
         "rmse": 0.23389701836323906
       },
       "end_to_end_candidate": {
-        "bias": -0.009348546226067041,
+        "bias": -0.009348546226067057,
         "mae": 0.04977999801913999,
         "observed_mean": 0.02397217587555603,
         "players": 3649,
-        "predicted_mean": 0.014623629649488986,
-        "rmse": 0.23091415807755325
+        "predicted_mean": 0.014623629649488972,
+        "rmse": 0.23091415807755322
       },
       "outer_arrivals": 273,
       "paired_difference": {
         "mae": {
-          "ci_high": -0.00673052387898148,
-          "ci_low": -0.008162224628312047,
-          "difference": -0.007462533491722236,
+          "ci_high": -0.006730523878981473,
+          "ci_low": -0.00816222462831204,
+          "difference": -0.007462533491722228,
           "probability_candidate_better": 1.0
         },
         "mse": {
-          "ci_high": -0.0001643869074150489,
-          "ci_low": -0.0029287693304204912,
-          "difference": -0.0013864667985481363,
+          "ci_high": -0.00016438690741504857,
+          "ci_low": -0.002928769330420492,
+          "difference": -0.0013864667985481378,
           "probability_candidate_better": 0.991
         },
         "resamples": 2000
@@ -378,64 +378,64 @@
       "ridge_alpha": 100.0,
       "ridge_coefficient_l2_norm": 0.1860294805757886,
       "ridge_conditional_prediction_distribution": {
-        "maximum": 0.6620032999295451,
-        "median": 0.03189357221929817,
-        "minimum": -0.8078945783116097,
+        "maximum": 0.6620032999295449,
+        "median": 0.03189357221929795,
+        "minimum": -0.8078945783116098,
         "negative_predictions": 1608,
-        "p01": -0.4613353610943692,
-        "p99": 0.4707528737317518
+        "p01": -0.4613353610943694,
+        "p99": 0.47075287373175156
       },
       "standardized_ridge_coefficients": [
         {
-          "coefficient": -0.10819902819746409,
+          "coefficient": -0.10819902819746413,
           "feature": "production_rate_4"
         },
         {
-          "coefficient": 0.0918585006889647,
+          "coefficient": 0.09185850068896469,
           "feature": "role_STARTER"
         },
         {
-          "coefficient": -0.06744116209940254,
+          "coefficient": -0.06744116209940255,
           "feature": "production_rate_3"
         },
         {
-          "coefficient": 0.06148819757376945,
+          "coefficient": 0.0614881975737694,
           "feature": "production_rate_1"
         },
         {
-          "coefficient": 0.04720269304902807,
+          "coefficient": 0.047202693049028126,
           "feature": "age"
         },
         {
-          "coefficient": -0.034541162456295876,
+          "coefficient": -0.03454116245629588,
           "feature": "level_A_OR_BELOW"
         },
         {
-          "coefficient": -0.03446850485757495,
+          "coefficient": -0.03446850485757494,
           "feature": "production_rate_2"
         },
         {
-          "coefficient": 0.03017939015096782,
+          "coefficient": 0.030179390150967798,
           "feature": "level_AAA"
         },
         {
-          "coefficient": 0.021824400483143668,
+          "coefficient": 0.021824400483143686,
           "feature": "role_SWINGMAN"
         },
         {
-          "coefficient": 0.00801973960733983,
-          "feature": "prior_workload"
-        },
-        {
-          "coefficient": 0.008019739607339777,
+          "coefficient": 0.00801973960733981,
           "feature": "current_workload"
         },
         {
-          "coefficient": 0.0025394553278578146,
+          "coefficient": 0.008019739607339784,
+          "feature": "prior_workload"
+        },
+        {
+          "coefficient": 0.0025394553278578207,
           "feature": "level_AA"
         },
         {
-          "coefficient": -0.0011830963379512714,
+          "coefficient": -0.001183096337951267,
           "feature": "on_40man"
         },
         {
@@ -467,7 +467,7 @@
         {
           "arrivals": 87,
           "baseline_mae": 0.14549478651105396,
-          "baseline_rmse": 0.4259273628393595,
+          "baseline_rmse": 0.42592736283935956,
           "candidate_mae": 0.12853783890989418,
           "candidate_rmse": 0.4189442588330094,
           "dimension": "level",
@@ -488,9 +488,9 @@
         },
         {
           "arrivals": 78,
-          "baseline_mae": 0.019785137087305726,
+          "baseline_mae": 0.01978513708730572,
           "baseline_rmse": 0.08037795180705479,
-          "candidate_mae": 0.014980677410753401,
+          "candidate_mae": 0.014980677410753398,
           "candidate_rmse": 0.0797964905864637,
           "dimension": "level",
           "group": "A_OR_BELOW",
@@ -499,7 +499,7 @@
         },
         {
           "arrivals": 74,
-          "baseline_mae": 0.03193565669016469,
+          "baseline_mae": 0.03193565669016468,
           "baseline_rmse": 0.1470578867763757,
           "candidate_mae": 0.025235918789082445,
           "candidate_rmse": 0.1457764173328371,
@@ -510,9 +510,9 @@
         },
         {
           "arrivals": 161,
-          "baseline_mae": 0.11419848937646364,
+          "baseline_mae": 0.11419848937646361,
           "baseline_rmse": 0.3654004307084504,
-          "candidate_mae": 0.10508457100272683,
+          "candidate_mae": 0.10508457100272682,
           "candidate_rmse": 0.36027040924479403,
           "dimension": "role",
           "group": "STARTER",
@@ -521,7 +521,7 @@
         },
         {
           "arrivals": 38,
-          "baseline_mae": 0.032188437199060144,
+          "baseline_mae": 0.03218843719906014,
           "baseline_rmse": 0.12732819180823504,
           "candidate_mae": 0.025333809320663,
           "candidate_rmse": 0.12615178993119278,
@@ -532,9 +532,9 @@
         },
         {
           "arrivals": 36,
-          "baseline_mae": 0.024141917573063828,
+          "baseline_mae": 0.024141917573063814,
           "baseline_rmse": 0.13172745248323167,
-          "candidate_mae": 0.019631253990985417,
+          "candidate_mae": 0.019631253990985413,
           "candidate_rmse": 0.13048843280721412,
           "dimension": "evidence",
           "group": "1-99",
@@ -543,9 +543,9 @@
         },
         {
           "arrivals": 117,
-          "baseline_mae": 0.049175552607747884,
+          "baseline_mae": 0.04917555260774787,
           "baseline_rmse": 0.2208704658794983,
-          "candidate_mae": 0.0413115962546062,
+          "candidate_mae": 0.041311596254606196,
           "candidate_rmse": 0.21803298280027736,
           "dimension": "evidence",
           "group": "100-299",
@@ -554,7 +554,7 @@
         },
         {
           "arrivals": 120,
-          "baseline_mae": 0.17995710732437803,
+          "baseline_mae": 0.179957107324378,
           "baseline_rmse": 0.4242563142178892,
           "candidate_mae": 0.16608571993787444,
           "candidate_rmse": 0.4185234992959871,
@@ -567,7 +567,7 @@
           "arrivals": 71,
           "baseline_mae": 0.05891640272582988,
           "baseline_rmse": 0.1708034540929078,
-          "candidate_mae": 0.0521580164436134,
+          "candidate_mae": 0.052158016443613384,
           "candidate_rmse": 0.17225635894541821,
           "dimension": "hand",
           "group": "L",
@@ -576,10 +576,10 @@
         },
         {
           "arrivals": 202,
-          "baseline_mae": 0.05679337315912257,
+          "baseline_mae": 0.05679337315912255,
           "baseline_rmse": 0.24811183292857816,
           "candidate_mae": 0.04914189227576375,
-          "candidate_rmse": 0.24426876600829708,
+          "candidate_rmse": 0.2442687660082971,
           "dimension": "hand",
           "group": "R",
           "players": 2877,
@@ -587,12 +587,13 @@
         }
       ],
       "training_arrivals": 293,
-      "training_conditional_mean_war": 0.2985597152216153
+      "training_conditional_mean_war": 0.2985597152216151
     }
   },
   "sources": {
     "docs/prospect-component-uncertainty-result.json": "040042a58cde3aa6c7fe749949b79a0e3d1fd7344029f5fa006c25cfbe7c29d8",
     "docs/prospect-conditional-war-bridge-plan.md": "8361d38b2614526d4135f3efa3db5e195b930c8660a83df3dfd7275bade210bc",
+    "docs/prospect-conditional-war-bridge-stability-plan.md": "013197b393c22b72c449f3b87b53d4b5fa8b09c649ed52f09be9a0c39ca6d300",
     "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_hitting_components_2009_2025.parquet": "755b78517f52c3875fe7ea2877cbcb34a0cecd1a2fcb17ee05698cc55f2184a6",
     "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet": "a401f55b72bbc39ae0d967eed2bd4977fed126b24a27c672f76d98de509af7df",
     "reports/generated/opportunity-40man-history/tables/historical_40man_membership.parquet": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421",
@@ -609,6 +610,1159 @@
     "reports/generated/phase2-arrival-skill-source/tables/affiliated_hitting_components.parquet": "c7ac4b4a3bf2eac9013edbf010e8d0ac6e843175b0014261fbb3f41d425fccf0",
     "reports/generated/phase2-arrival-skill-source/tables/affiliated_pitching_components.parquet": "3417215721a1f30541be9a7bbc2582b9d382569d1af9b34d0c4f7f592470f6bc",
     "reports/generated/player-demographics/tables/player-demographics.parquet": "010bb368acc8465dc1c5ba21660dd32bdcf0e9132bc4824e39a491f11189f54f"
+  },
+  "stability_passed": false,
+  "stability_protocol": {
+    "evaluation_origins": [
+      2022,
+      2023
+    ],
+    "fit_origin": 2018,
+    "frozen_plan_sha256": "013197b393c22b72c449f3b87b53d4b5fa8b09c649ed52f09be9a0c39ca6d300",
+    "horizon_years": 2,
+    "refit_or_recalibration": false
+  },
+  "stability_results": {
+    "hitter": {
+      "2022": {
+        "cohort_fingerprint": "1e22ed057c482fa40a54bc42607a41df52bbf38ad282c0d391072cc6c23ed689",
+        "conditional_on_observed_arrival_baseline": {
+          "bias": 0.25564942061581436,
+          "mae": 0.7924719730494815,
+          "observed_mean": 0.3532051288897456,
+          "players": 211,
+          "predicted_mean": 0.6088545495055601,
+          "rmse": 0.9902147047241492
+        },
+        "conditional_on_observed_arrival_candidate": {
+          "bias": 0.3664234837124294,
+          "mae": 0.8307301724241888,
+          "observed_mean": 0.3532051288897456,
+          "players": 211,
+          "predicted_mean": 0.719628612602175,
+          "rmse": 1.0238493516194267
+        },
+        "decision_checks": {
+          "absolute_bias_not_worse": true,
+          "arrived_player_rmse_not_worse": false,
+          "end_to_end_mae_improved": true,
+          "end_to_end_rmse_improved": true
+        },
+        "end_to_end_baseline": {
+          "bias": 0.021377559415359997,
+          "mae": 0.0732389760305665,
+          "observed_mean": 0.023260387701540673,
+          "players": 3204,
+          "predicted_mean": 0.044637947116900674,
+          "rmse": 0.2586749925458445
+        },
+        "end_to_end_candidate": {
+          "bias": 0.016154084995308172,
+          "mae": 0.06602284992851447,
+          "observed_mean": 0.023260387701540673,
+          "players": 3204,
+          "predicted_mean": 0.03941447269684885,
+          "rmse": 0.2548983236069208
+        },
+        "outer_arrivals": 211,
+        "paired_difference": {
+          "mae": {
+            "ci_high": -0.005038059020409289,
+            "ci_low": -0.0092569085557494,
+            "difference": -0.007216126102052038,
+            "probability_candidate_better": 1.0
+          },
+          "mse": {
+            "ci_high": 0.0019239165759054886,
+            "ci_low": -0.005988938087807095,
+            "difference": -0.0019395963909741797,
+            "probability_candidate_better": 0.832
+          },
+          "resamples": 2000
+        },
+        "players": 3204,
+        "promising_development_evidence": false,
+        "rate_regression_opportunities": 200.0,
+        "ridge_alpha": 100.0,
+        "ridge_coefficient_l2_norm": 0.36516400964873524,
+        "ridge_conditional_prediction_distribution": {
+          "maximum": 2.0144943117832943,
+          "median": 0.3317898546406759,
+          "minimum": -0.6159562011173303,
+          "negative_predictions": 419,
+          "p01": -0.3445490638777335,
+          "p99": 1.3248696793677672
+        },
+        "standardized_ridge_coefficients": [
+          {
+            "coefficient": 0.2103843360742077,
+            "feature": "production_rate_4"
+          },
+          {
+            "coefficient": 0.194221096950205,
+            "feature": "production_rate_3"
+          },
+          {
+            "coefficient": -0.14027296038644446,
+            "feature": "age"
+          },
+          {
+            "coefficient": -0.10309731136382955,
+            "feature": "level_A_OR_BELOW"
+          },
+          {
+            "coefficient": 0.07789047879788333,
+            "feature": "role_CORNER"
+          },
+          {
+            "coefficient": -0.06642278666039363,
+            "feature": "production_rate_2"
+          },
+          {
+            "coefficient": 0.061397949342594335,
+            "feature": "level_AAA"
+          },
+          {
+            "coefficient": -0.04957391982836697,
+            "feature": "role_C"
+          },
+          {
+            "coefficient": 0.03283385286243816,
+            "feature": "production_rate_1"
+          },
+          {
+            "coefficient": -0.030102290925695482,
+            "feature": "prior_workload"
+          },
+          {
+            "coefficient": -0.030102290925695458,
+            "feature": "current_workload"
+          },
+          {
+            "coefficient": -0.028249914084585583,
+            "feature": "on_40man"
+          },
+          {
+            "coefficient": 0.02081914387910173,
+            "feature": "level_AA"
+          },
+          {
+            "coefficient": 0.014109591419456845,
+            "feature": "role_MIDDLE_INFIELD"
+          },
+          {
+            "coefficient": -0.00535386455332901,
+            "feature": "role_OUTFIELD"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "prior_affiliated_seasons"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "level_INACTIVE"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_STARTER"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_SWINGMAN"
+          }
+        ],
+        "subgroups": [
+          {
+            "arrivals": 83,
+            "baseline_mae": 0.20880169179754762,
+            "baseline_rmse": 0.49894028620674663,
+            "candidate_mae": 0.19577006964207327,
+            "candidate_rmse": 0.4833148382729422,
+            "dimension": "level",
+            "group": "AA",
+            "players": 426,
+            "supported": true
+          },
+          {
+            "arrivals": 88,
+            "baseline_mae": 0.2641398795229835,
+            "baseline_rmse": 0.4425762013921998,
+            "candidate_mae": 0.24357142935426593,
+            "candidate_rmse": 0.4441776556966189,
+            "dimension": "level",
+            "group": "AAA",
+            "players": 395,
+            "supported": true
+          },
+          {
+            "arrivals": 40,
+            "baseline_mae": 0.01747833298565302,
+            "baseline_rmse": 0.11438435159799545,
+            "candidate_mae": 0.013487653495667315,
+            "candidate_rmse": 0.11394568202085488,
+            "dimension": "level",
+            "group": "A_OR_BELOW",
+            "players": 2367,
+            "supported": true
+          },
+          {
+            "arrivals": 25,
+            "baseline_mae": 0.05230396377844538,
+            "baseline_rmse": 0.12439986501345036,
+            "candidate_mae": 0.032951086168592124,
+            "candidate_rmse": 0.11147795361416776,
+            "dimension": "role",
+            "group": "C",
+            "players": 586,
+            "supported": true
+          },
+          {
+            "arrivals": 46,
+            "baseline_mae": 0.07003891915149787,
+            "baseline_rmse": 0.21413433736473506,
+            "candidate_mae": 0.07734916930058189,
+            "candidate_rmse": 0.2303904975596646,
+            "dimension": "role",
+            "group": "CORNER",
+            "players": 726,
+            "supported": true
+          },
+          {
+            "arrivals": 73,
+            "baseline_mae": 0.1191715597596289,
+            "baseline_rmse": 0.4075323364913994,
+            "candidate_mae": 0.10482385751950264,
+            "candidate_rmse": 0.39224067093888715,
+            "dimension": "role",
+            "group": "MIDDLE_INFIELD",
+            "players": 703,
+            "supported": true
+          },
+          {
+            "arrivals": 3,
+            "baseline_mae": 0.01969832891922582,
+            "baseline_rmse": 0.05223542075451471,
+            "candidate_mae": 0.015857725549464453,
+            "candidate_rmse": 0.04658119164497086,
+            "dimension": "role",
+            "group": "OTHER",
+            "players": 152,
+            "supported": false
+          },
+          {
+            "arrivals": 64,
+            "baseline_mae": 0.06401885112539749,
+            "baseline_rmse": 0.23000451639729455,
+            "candidate_mae": 0.05783108162412146,
+            "candidate_rmse": 0.22791529546022257,
+            "dimension": "role",
+            "group": "OUTFIELD",
+            "players": 1037,
+            "supported": true
+          },
+          {
+            "arrivals": 3,
+            "baseline_mae": 0.006890434821440864,
+            "baseline_rmse": 0.020178411750313593,
+            "candidate_mae": 0.003954787513903286,
+            "candidate_rmse": 0.016514377042728973,
+            "dimension": "evidence",
+            "group": "1-99",
+            "players": 877,
+            "supported": false
+          },
+          {
+            "arrivals": 40,
+            "baseline_mae": 0.037817908580591336,
+            "baseline_rmse": 0.1550611056518988,
+            "candidate_mae": 0.026453356425059884,
+            "candidate_rmse": 0.15005454932757015,
+            "dimension": "evidence",
+            "group": "100-299",
+            "players": 1485,
+            "supported": true
+          },
+          {
+            "arrivals": 168,
+            "baseline_mae": 0.2087814548593132,
+            "baseline_rmse": 0.4646409081513239,
+            "candidate_mae": 0.2043371151886146,
+            "candidate_rmse": 0.45962665579517153,
+            "dimension": "evidence",
+            "group": "300+",
+            "players": 826,
+            "supported": true
+          },
+          {
+            "arrivals": 15,
+            "baseline_mae": 0.06749101339921555,
+            "baseline_rmse": 0.23891929947083013,
+            "candidate_mae": 0.06223254763447917,
+            "candidate_rmse": 0.24272133463936785,
+            "dimension": "hand",
+            "group": "L",
+            "players": 302,
+            "supported": true
+          },
+          {
+            "arrivals": 196,
+            "baseline_mae": 0.07381182765725182,
+            "baseline_rmse": 0.2607099947366132,
+            "candidate_mae": 0.06642059075453696,
+            "candidate_rmse": 0.25621061891273045,
+            "dimension": "hand",
+            "group": "R",
+            "players": 2900,
+            "supported": true
+          }
+        ],
+        "training_arrivals": 194,
+        "training_conditional_mean_war": 0.60885454950556
+      },
+      "2023": {
+        "cohort_fingerprint": "a4f2d3b1cfb87baa5d4c63805a2e1a3246b963add0f22cbc0fc2e38ccb665e65",
+        "conditional_on_observed_arrival_baseline": {
+          "bias": 0.23809015489137528,
+          "mae": 0.8591170188194455,
+          "observed_mean": 0.37076439461418464,
+          "players": 206,
+          "predicted_mean": 0.6088545495055603,
+          "rmse": 1.17376203542231
+        },
+        "conditional_on_observed_arrival_candidate": {
+          "bias": 0.3169637962591681,
+          "mae": 0.9067781682958662,
+          "observed_mean": 0.37076439461418464,
+          "players": 206,
+          "predicted_mean": 0.6877281908733528,
+          "rmse": 1.1814574357077863
+        },
+        "decision_checks": {
+          "absolute_bias_not_worse": true,
+          "arrived_player_rmse_not_worse": false,
+          "end_to_end_mae_improved": true,
+          "end_to_end_rmse_improved": true
+        },
+        "end_to_end_baseline": {
+          "bias": 0.025196096857898937,
+          "mae": 0.07978717192728256,
+          "observed_mean": 0.024109048387159736,
+          "players": 3168,
+          "predicted_mean": 0.049305145245058676,
+          "rmse": 0.3041036819619222
+        },
+        "end_to_end_candidate": {
+          "bias": 0.017457474734319335,
+          "mae": 0.0721286039568784,
+          "observed_mean": 0.024109048387159736,
+          "players": 3168,
+          "predicted_mean": 0.04156652312147906,
+          "rmse": 0.29974807310692586
+        },
+        "outer_arrivals": 206,
+        "paired_difference": {
+          "mae": {
+            "ci_high": -0.0055359875832373395,
+            "ci_low": -0.009702412866310817,
+            "difference": -0.007658567970404171,
+            "probability_candidate_better": 1.0
+          },
+          "mse": {
+            "ci_high": 0.0016597321032777279,
+            "ci_low": -0.007825706972636157,
+            "difference": -0.002630142051482963,
+            "probability_candidate_better": 0.8635
+          },
+          "resamples": 2000
+        },
+        "players": 3168,
+        "promising_development_evidence": false,
+        "rate_regression_opportunities": 200.0,
+        "ridge_alpha": 100.0,
+        "ridge_coefficient_l2_norm": 0.36516400964873524,
+        "ridge_conditional_prediction_distribution": {
+          "maximum": 1.8423229510097652,
+          "median": 0.32001740818310054,
+          "minimum": -0.6180905632869831,
+          "negative_predictions": 455,
+          "p01": -0.37771262873015204,
+          "p99": 1.2811297981507892
+        },
+        "standardized_ridge_coefficients": [
+          {
+            "coefficient": 0.2103843360742077,
+            "feature": "production_rate_4"
+          },
+          {
+            "coefficient": 0.194221096950205,
+            "feature": "production_rate_3"
+          },
+          {
+            "coefficient": -0.14027296038644446,
+            "feature": "age"
+          },
+          {
+            "coefficient": -0.10309731136382955,
+            "feature": "level_A_OR_BELOW"
+          },
+          {
+            "coefficient": 0.07789047879788333,
+            "feature": "role_CORNER"
+          },
+          {
+            "coefficient": -0.06642278666039363,
+            "feature": "production_rate_2"
+          },
+          {
+            "coefficient": 0.061397949342594335,
+            "feature": "level_AAA"
+          },
+          {
+            "coefficient": -0.04957391982836697,
+            "feature": "role_C"
+          },
+          {
+            "coefficient": 0.03283385286243816,
+            "feature": "production_rate_1"
+          },
+          {
+            "coefficient": -0.030102290925695482,
+            "feature": "prior_workload"
+          },
+          {
+            "coefficient": -0.030102290925695458,
+            "feature": "current_workload"
+          },
+          {
+            "coefficient": -0.028249914084585583,
+            "feature": "on_40man"
+          },
+          {
+            "coefficient": 0.02081914387910173,
+            "feature": "level_AA"
+          },
+          {
+            "coefficient": 0.014109591419456845,
+            "feature": "role_MIDDLE_INFIELD"
+          },
+          {
+            "coefficient": -0.00535386455332901,
+            "feature": "role_OUTFIELD"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "prior_affiliated_seasons"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "level_INACTIVE"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_STARTER"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_SWINGMAN"
+          }
+        ],
+        "subgroups": [
+          {
+            "arrivals": 78,
+            "baseline_mae": 0.2074442257629144,
+            "baseline_rmse": 0.5202519577188347,
+            "candidate_mae": 0.19013620094075892,
+            "candidate_rmse": 0.5123734205370593,
+            "dimension": "level",
+            "group": "AA",
+            "players": 479,
+            "supported": true
+          },
+          {
+            "arrivals": 98,
+            "baseline_mae": 0.33570381229186713,
+            "baseline_rmse": 0.6388376448171247,
+            "candidate_mae": 0.3183450585053095,
+            "candidate_rmse": 0.6289571456019759,
+            "dimension": "level",
+            "group": "AAA",
+            "players": 345,
+            "supported": true
+          },
+          {
+            "arrivals": 30,
+            "baseline_mae": 0.016087893122688122,
+            "baseline_rmse": 0.09820153440592223,
+            "candidate_mae": 0.011814031316284957,
+            "candidate_rmse": 0.09795334459661437,
+            "dimension": "level",
+            "group": "A_OR_BELOW",
+            "players": 2336,
+            "supported": true
+          },
+          {
+            "arrivals": 34,
+            "baseline_mae": 0.08154446956844597,
+            "baseline_rmse": 0.25625547642176244,
+            "candidate_mae": 0.06229875235467129,
+            "candidate_rmse": 0.2467677240760134,
+            "dimension": "role",
+            "group": "C",
+            "players": 566,
+            "supported": true
+          },
+          {
+            "arrivals": 41,
+            "baseline_mae": 0.06069520947974356,
+            "baseline_rmse": 0.15769851616621092,
+            "candidate_mae": 0.06855143245890231,
+            "candidate_rmse": 0.17855264034001467,
+            "dimension": "role",
+            "group": "CORNER",
+            "players": 714,
+            "supported": true
+          },
+          {
+            "arrivals": 60,
+            "baseline_mae": 0.10399003605988555,
+            "baseline_rmse": 0.35226744705389584,
+            "candidate_mae": 0.09051592311677112,
+            "candidate_rmse": 0.34854481310543234,
+            "dimension": "role",
+            "group": "MIDDLE_INFIELD",
+            "players": 695,
+            "supported": true
+          },
+          {
+            "arrivals": 0,
+            "baseline_mae": 0.0208415505797092,
+            "baseline_rmse": 0.04990868324675001,
+            "candidate_mae": 0.01774966032775648,
+            "candidate_rmse": 0.05053877752906164,
+            "dimension": "role",
+            "group": "OTHER",
+            "players": 160,
+            "supported": false
+          },
+          {
+            "arrivals": 71,
+            "baseline_mae": 0.08486688109097766,
+            "baseline_rmse": 0.38284500173276304,
+            "candidate_mae": 0.07603880784936458,
+            "candidate_rmse": 0.3715074894441662,
+            "dimension": "role",
+            "group": "OUTFIELD",
+            "players": 1033,
+            "supported": true
+          },
+          {
+            "arrivals": 4,
+            "baseline_mae": 0.007813658618457701,
+            "baseline_rmse": 0.027169350321439554,
+            "candidate_mae": 0.005056687710575723,
+            "candidate_rmse": 0.025158300822928678,
+            "dimension": "evidence",
+            "group": "1-99",
+            "players": 899,
+            "supported": false
+          },
+          {
+            "arrivals": 31,
+            "baseline_mae": 0.046776024332505516,
+            "baseline_rmse": 0.22712621938497998,
+            "candidate_mae": 0.03392568035387585,
+            "candidate_rmse": 0.2172421358780683,
+            "dimension": "evidence",
+            "group": "100-299",
+            "players": 1415,
+            "supported": true
+          },
+          {
+            "arrivals": 171,
+            "baseline_mae": 0.21223683710075747,
+            "baseline_rmse": 0.5091542240012917,
+            "candidate_mae": 0.2079799794766608,
+            "candidate_rmse": 0.5068008045215349,
+            "dimension": "evidence",
+            "group": "300+",
+            "players": 846,
+            "supported": true
+          },
+          {
+            "arrivals": 23,
+            "baseline_mae": 0.0774298777758305,
+            "baseline_rmse": 0.2108642955218446,
+            "candidate_mae": 0.07073668703215369,
+            "candidate_rmse": 0.21495046935951845,
+            "dimension": "hand",
+            "group": "L",
+            "players": 300,
+            "supported": true
+          },
+          {
+            "arrivals": 181,
+            "baseline_mae": 0.07979425805538694,
+            "baseline_rmse": 0.31217493498539695,
+            "candidate_mae": 0.07209225804308508,
+            "candidate_rmse": 0.3072556249019382,
+            "dimension": "hand",
+            "group": "R",
+            "players": 2865,
+            "supported": true
+          }
+        ],
+        "training_arrivals": 194,
+        "training_conditional_mean_war": 0.60885454950556
+      }
+    },
+    "pitcher": {
+      "2022": {
+        "cohort_fingerprint": "b6676f6cab1c36c1dd5536ba9f6f1d1da8974ec977df93ef0066823d7127dc89",
+        "conditional_on_observed_arrival_baseline": {
+          "bias": -0.10854852190136172,
+          "mae": 0.5602950045436459,
+          "observed_mean": 0.4071082371229769,
+          "players": 266,
+          "predicted_mean": 0.2985597152216151,
+          "rmse": 0.8673693030394907
+        },
+        "conditional_on_observed_arrival_candidate": {
+          "bias": -0.19147171076329875,
+          "mae": 0.5424871700167491,
+          "observed_mean": 0.4071082371229769,
+          "players": 266,
+          "predicted_mean": 0.21563652635967806,
+          "rmse": 0.860332118898972
+        },
+        "decision_checks": {
+          "absolute_bias_not_worse": false,
+          "arrived_player_rmse_not_worse": true,
+          "end_to_end_mae_improved": true,
+          "end_to_end_rmse_improved": true
+        },
+        "end_to_end_baseline": {
+          "bias": -0.0019633221334710302,
+          "mae": 0.059727705100516684,
+          "observed_mean": 0.02875485689716193,
+          "players": 3766,
+          "predicted_mean": 0.0267915347636909,
+          "rmse": 0.24518896711143678
+        },
+        "end_to_end_candidate": {
+          "bias": -0.014592149644642212,
+          "mae": 0.05133286682036688,
+          "observed_mean": 0.02875485689716193,
+          "players": 3766,
+          "predicted_mean": 0.014162707252519719,
+          "rmse": 0.24308652571790473
+        },
+        "outer_arrivals": 266,
+        "paired_difference": {
+          "mae": {
+            "ci_high": -0.007624257128905473,
+            "ci_low": -0.009179730933680479,
+            "difference": -0.008394838280149796,
+            "probability_candidate_better": 1.0
+          },
+          "mse": {
+            "ci_high": 3.752874222364652e-05,
+            "ci_low": -0.002369735168930588,
+            "difference": -0.0010265706075716704,
+            "probability_candidate_better": 0.971
+          },
+          "resamples": 2000
+        },
+        "players": 3766,
+        "promising_development_evidence": false,
+        "rate_regression_opportunities": 200.0,
+        "ridge_alpha": 100.0,
+        "ridge_coefficient_l2_norm": 0.1860294805757886,
+        "ridge_conditional_prediction_distribution": {
+          "maximum": 0.789870222418162,
+          "median": 0.03364244616155734,
+          "minimum": -0.7974736685215762,
+          "negative_predictions": 1645,
+          "p01": -0.4523075972033214,
+          "p99": 0.4571126092009354
+        },
+        "standardized_ridge_coefficients": [
+          {
+            "coefficient": -0.10819902819746413,
+            "feature": "production_rate_4"
+          },
+          {
+            "coefficient": 0.09185850068896469,
+            "feature": "role_STARTER"
+          },
+          {
+            "coefficient": -0.06744116209940255,
+            "feature": "production_rate_3"
+          },
+          {
+            "coefficient": 0.0614881975737694,
+            "feature": "production_rate_1"
+          },
+          {
+            "coefficient": 0.047202693049028126,
+            "feature": "age"
+          },
+          {
+            "coefficient": -0.03454116245629588,
+            "feature": "level_A_OR_BELOW"
+          },
+          {
+            "coefficient": -0.03446850485757494,
+            "feature": "production_rate_2"
+          },
+          {
+            "coefficient": 0.030179390150967798,
+            "feature": "level_AAA"
+          },
+          {
+            "coefficient": 0.021824400483143686,
+            "feature": "role_SWINGMAN"
+          },
+          {
+            "coefficient": 0.00801973960733981,
+            "feature": "current_workload"
+          },
+          {
+            "coefficient": 0.008019739607339784,
+            "feature": "prior_workload"
+          },
+          {
+            "coefficient": 0.0025394553278578207,
+            "feature": "level_AA"
+          },
+          {
+            "coefficient": -0.001183096337951267,
+            "feature": "on_40man"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "prior_affiliated_seasons"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "level_INACTIVE"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_C"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_MIDDLE_INFIELD"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_OUTFIELD"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_CORNER"
+          }
+        ],
+        "subgroups": [
+          {
+            "arrivals": 107,
+            "baseline_mae": 0.15664900130105733,
+            "baseline_rmse": 0.4218715045426354,
+            "candidate_mae": 0.13609197282417526,
+            "candidate_rmse": 0.4164943703918151,
+            "dimension": "level",
+            "group": "AA",
+            "players": 581,
+            "supported": true
+          },
+          {
+            "arrivals": 102,
+            "baseline_mae": 0.1857710893988962,
+            "baseline_rmse": 0.4622573736663245,
+            "candidate_mae": 0.16900714713989082,
+            "candidate_rmse": 0.45967303646930113,
+            "dimension": "level",
+            "group": "AAA",
+            "players": 448,
+            "supported": true
+          },
+          {
+            "arrivals": 57,
+            "baseline_mae": 0.018581132172986417,
+            "baseline_rmse": 0.09998112349625823,
+            "candidate_mae": 0.01412516661381041,
+            "candidate_rmse": 0.09965149785329137,
+            "dimension": "level",
+            "group": "A_OR_BELOW",
+            "players": 2728,
+            "supported": true
+          },
+          {
+            "arrivals": 68,
+            "baseline_mae": 0.033746582803432915,
+            "baseline_rmse": 0.16437537232268593,
+            "candidate_mae": 0.02699597556953958,
+            "candidate_rmse": 0.16426515879683842,
+            "dimension": "role",
+            "group": "RELIEVER",
+            "players": 1706,
+            "supported": true
+          },
+          {
+            "arrivals": 153,
+            "baseline_mae": 0.11493446205690566,
+            "baseline_rmse": 0.36526029149707034,
+            "candidate_mae": 0.10325556528996725,
+            "candidate_rmse": 0.36012821634379427,
+            "dimension": "role",
+            "group": "STARTER",
+            "players": 1116,
+            "supported": true
+          },
+          {
+            "arrivals": 45,
+            "baseline_mae": 0.04180675556830317,
+            "baseline_rmse": 0.18330563999844168,
+            "candidate_mae": 0.034256414402945155,
+            "candidate_rmse": 0.18432479698099,
+            "dimension": "role",
+            "group": "SWINGMAN",
+            "players": 935,
+            "supported": true
+          },
+          {
+            "arrivals": 20,
+            "baseline_mae": 0.02037250102788905,
+            "baseline_rmse": 0.12352221243633459,
+            "candidate_mae": 0.015878201981556796,
+            "candidate_rmse": 0.12290313345124022,
+            "dimension": "evidence",
+            "group": "1-99",
+            "players": 1201,
+            "supported": true
+          },
+          {
+            "arrivals": 117,
+            "baseline_mae": 0.05104738398060511,
+            "baseline_rmse": 0.21490325366599386,
+            "candidate_mae": 0.04292773069279763,
+            "candidate_rmse": 0.21362933041302387,
+            "dimension": "evidence",
+            "group": "100-299",
+            "players": 1993,
+            "supported": true
+          },
+          {
+            "arrivals": 129,
+            "baseline_mae": 0.1753517519834565,
+            "baseline_rmse": 0.4539835775104628,
+            "candidate_mae": 0.15753713108596146,
+            "candidate_rmse": 0.44887878322928143,
+            "dimension": "evidence",
+            "group": "300+",
+            "players": 563,
+            "supported": true
+          },
+          {
+            "arrivals": 62,
+            "baseline_mae": 0.05903451446711217,
+            "baseline_rmse": 0.18590082337785013,
+            "candidate_mae": 0.050763346969184976,
+            "candidate_rmse": 0.1849503568953254,
+            "dimension": "hand",
+            "group": "L",
+            "players": 758,
+            "supported": true
+          },
+          {
+            "arrivals": 204,
+            "baseline_mae": 0.059921517176752356,
+            "baseline_rmse": 0.25803172594710544,
+            "candidate_mae": 0.05149293320376117,
+            "candidate_rmse": 0.25570204763553095,
+            "dimension": "hand",
+            "group": "R",
+            "players": 3007,
+            "supported": true
+          }
+        ],
+        "training_arrivals": 293,
+        "training_conditional_mean_war": 0.2985597152216151
+      },
+      "2023": {
+        "cohort_fingerprint": "33a00ad56587d24ddf28593ac40ac1e932e88e7dc56698cb81b75d85ccae8c4c",
+        "conditional_on_observed_arrival_baseline": {
+          "bias": -0.08334739231684574,
+          "mae": 0.5884246502425065,
+          "observed_mean": 0.38190710753846085,
+          "players": 252,
+          "predicted_mean": 0.2985597152216151,
+          "rmse": 0.9892155024922248
+        },
+        "conditional_on_observed_arrival_candidate": {
+          "bias": -0.16621043895367288,
+          "mae": 0.5733093541549145,
+          "observed_mean": 0.38190710753846085,
+          "players": 252,
+          "predicted_mean": 0.215696668584788,
+          "rmse": 0.9857597394344315
+        },
+        "decision_checks": {
+          "absolute_bias_not_worse": false,
+          "arrived_player_rmse_not_worse": true,
+          "end_to_end_mae_improved": true,
+          "end_to_end_rmse_improved": true
+        },
+        "end_to_end_baseline": {
+          "bias": -0.00042028352005993004,
+          "mae": 0.05857863645623687,
+          "observed_mean": 0.02588504332966437,
+          "players": 3718,
+          "predicted_mean": 0.02546475980960444,
+          "rmse": 0.2693946715378929
+        },
+        "end_to_end_candidate": {
+          "bias": -0.012965841045108943,
+          "mae": 0.05084941656092711,
+          "observed_mean": 0.02588504332966437,
+          "players": 3718,
+          "predicted_mean": 0.012919202284555429,
+          "rmse": 0.26884292632052137
+        },
+        "outer_arrivals": 252,
+        "paired_difference": {
+          "mae": {
+            "ci_high": -0.007028268318367529,
+            "ci_low": -0.00840634746476045,
+            "difference": -0.007729219895309775,
+            "probability_candidate_better": 1.0
+          },
+          "mse": {
+            "ci_high": 0.0004718525424588547,
+            "ci_low": -0.001154330503590411,
+            "difference": -0.00029697002042797206,
+            "probability_candidate_better": 0.7715
+          },
+          "resamples": 2000
+        },
+        "players": 3718,
+        "promising_development_evidence": false,
+        "rate_regression_opportunities": 200.0,
+        "ridge_alpha": 100.0,
+        "ridge_coefficient_l2_norm": 0.1860294805757886,
+        "ridge_conditional_prediction_distribution": {
+          "maximum": 0.610662199289695,
+          "median": 0.02460402592571123,
+          "minimum": -0.6733936017350471,
+          "negative_predictions": 1681,
+          "p01": -0.4476964819199032,
+          "p99": 0.45665455061520915
+        },
+        "standardized_ridge_coefficients": [
+          {
+            "coefficient": -0.10819902819746413,
+            "feature": "production_rate_4"
+          },
+          {
+            "coefficient": 0.09185850068896469,
+            "feature": "role_STARTER"
+          },
+          {
+            "coefficient": -0.06744116209940255,
+            "feature": "production_rate_3"
+          },
+          {
+            "coefficient": 0.0614881975737694,
+            "feature": "production_rate_1"
+          },
+          {
+            "coefficient": 0.047202693049028126,
+            "feature": "age"
+          },
+          {
+            "coefficient": -0.03454116245629588,
+            "feature": "level_A_OR_BELOW"
+          },
+          {
+            "coefficient": -0.03446850485757494,
+            "feature": "production_rate_2"
+          },
+          {
+            "coefficient": 0.030179390150967798,
+            "feature": "level_AAA"
+          },
+          {
+            "coefficient": 0.021824400483143686,
+            "feature": "role_SWINGMAN"
+          },
+          {
+            "coefficient": 0.00801973960733981,
+            "feature": "current_workload"
+          },
+          {
+            "coefficient": 0.008019739607339784,
+            "feature": "prior_workload"
+          },
+          {
+            "coefficient": 0.0025394553278578207,
+            "feature": "level_AA"
+          },
+          {
+            "coefficient": -0.001183096337951267,
+            "feature": "on_40man"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "prior_affiliated_seasons"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "level_INACTIVE"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_C"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_MIDDLE_INFIELD"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_OUTFIELD"
+          },
+          {
+            "coefficient": 0.0,
+            "feature": "role_CORNER"
+          }
+        ],
+        "subgroups": [
+          {
+            "arrivals": 88,
+            "baseline_mae": 0.147114773241351,
+            "baseline_rmse": 0.4778115982516829,
+            "candidate_mae": 0.12905048303646272,
+            "candidate_rmse": 0.47564934492292277,
+            "dimension": "level",
+            "group": "AA",
+            "players": 547,
+            "supported": true
+          },
+          {
+            "arrivals": 116,
+            "baseline_mae": 0.2053472072819549,
+            "baseline_rmse": 0.5043353148899199,
+            "candidate_mae": 0.18979476084522837,
+            "candidate_rmse": 0.504885530002555,
+            "dimension": "level",
+            "group": "AAA",
+            "players": 423,
+            "supported": true
+          },
+          {
+            "arrivals": 48,
+            "baseline_mae": 0.018408096925652966,
+            "baseline_rmse": 0.11673878445877914,
+            "candidate_mae": 0.013930362245288097,
+            "candidate_rmse": 0.11640812521215663,
+            "dimension": "level",
+            "group": "A_OR_BELOW",
+            "players": 2741,
+            "supported": true
+          },
+          {
+            "arrivals": 65,
+            "baseline_mae": 0.03141847922376265,
+            "baseline_rmse": 0.1797994402199026,
+            "candidate_mae": 0.024967189969687085,
+            "candidate_rmse": 0.17989389823795598,
+            "dimension": "role",
+            "group": "RELIEVER",
+            "players": 1745,
+            "supported": true
+          },
+          {
+            "arrivals": 138,
+            "baseline_mae": 0.11445248740264272,
+            "baseline_rmse": 0.40830952059294584,
+            "candidate_mae": 0.10439393362793839,
+            "candidate_rmse": 0.4078697188431299,
+            "dimension": "role",
+            "group": "STARTER",
+            "players": 1101,
+            "supported": true
+          },
+          {
+            "arrivals": 49,
+            "baseline_mae": 0.0427200097580639,
+            "baseline_rmse": 0.18579963804387467,
+            "candidate_mae": 0.035319599481326264,
+            "candidate_rmse": 0.1833941237624171,
+            "dimension": "role",
+            "group": "SWINGMAN",
+            "players": 865,
+            "supported": true
+          },
+          {
+            "arrivals": 21,
+            "baseline_mae": 0.021730669965900336,
+            "baseline_rmse": 0.2672709674296147,
+            "candidate_mae": 0.017890162823029264,
+            "candidate_rmse": 0.26695094922117346,
+            "dimension": "evidence",
+            "group": "1-99",
+            "players": 1209,
+            "supported": true
+          },
+          {
+            "arrivals": 114,
+            "baseline_mae": 0.05109210897129628,
+            "baseline_rmse": 0.2330192023449536,
+            "candidate_mae": 0.042935219456649236,
+            "candidate_rmse": 0.2323983743715472,
+            "dimension": "evidence",
+            "group": "100-299",
+            "players": 1915,
+            "supported": true
+          },
+          {
+            "arrivals": 117,
+            "baseline_mae": 0.1595851356860219,
+            "baseline_rmse": 0.36797764188139104,
+            "candidate_mae": 0.1451563353667559,
+            "candidate_rmse": 0.36718023476024325,
+            "dimension": "evidence",
+            "group": "300+",
+            "players": 587,
+            "supported": true
+          },
+          {
+            "arrivals": 61,
+            "baseline_mae": 0.06613728378519149,
+            "baseline_rmse": 0.21245614754683534,
+            "candidate_mae": 0.05810539805089761,
+            "candidate_rmse": 0.2114270835261355,
+            "dimension": "hand",
+            "group": "L",
+            "players": 725,
+            "supported": true
+          },
+          {
+            "arrivals": 191,
+            "baseline_mae": 0.05676544761631522,
+            "baseline_rmse": 0.2815063143313609,
+            "candidate_mae": 0.049106436970202644,
+            "candidate_rmse": 0.2810381981299408,
+            "dimension": "hand",
+            "group": "R",
+            "players": 2992,
+            "supported": true
+          }
+        ],
+        "training_arrivals": 293,
+        "training_conditional_mean_war": 0.2985597152216151
+      }
+    }
   },
   "status": "retrospective_development_not_confirmation"
 }

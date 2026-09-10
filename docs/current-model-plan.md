@@ -163,6 +163,12 @@ It must not refit or recenter the 2018 bridge. Later cohorts test whether the sm
 bias failure and accuracy gains persist; they remain retrospective evidence because
 those seasons have been inspected elsewhere.
 
+The unchanged-fit stability extension is complete and fails. Later hitter cohorts
+reverse the arrived-player RMSE gain; later pitcher cohorts retain worse absolute bias
+and uncertain MSE gains. Reject the ridge as a current replacement. Preserve the
+evidence that core features improve typical-player MAE, then move to a predeclared
+positive-tail hurdle rather than tuning this conditional mean.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

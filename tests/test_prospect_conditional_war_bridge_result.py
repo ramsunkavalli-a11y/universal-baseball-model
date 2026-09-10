@@ -54,3 +54,23 @@ def test_conditional_war_bridge_improves_errors_but_respects_frozen_bias_gate() 
             for feature in features
             for token in ("birth", "country", "height", "weight", "draft", "fv")
         )
+
+
+def test_unchanged_bridge_fit_fails_later_stability_gate_as_declared() -> None:
+    report = json.loads(REPORT.read_text(encoding="utf-8"))
+    assert report["stability_protocol"]["fit_origin"] == 2018
+    assert report["stability_protocol"]["evaluation_origins"] == [2022, 2023]
+    assert report["stability_protocol"]["refit_or_recalibration"] is False
+    assert report["stability_protocol"]["frozen_plan_sha256"] == sha256(
+        (ROOT / "docs/prospect-conditional-war-bridge-stability-plan.md").read_bytes()
+    ).hexdigest()
+    assert report["stability_passed"] is False
+    for origin in ("2022", "2023"):
+        hitter = report["stability_results"]["hitter"][origin]
+        pitcher = report["stability_results"]["pitcher"][origin]
+        assert (
+            hitter["conditional_on_observed_arrival_candidate"]["rmse"]
+            > hitter["conditional_on_observed_arrival_baseline"]["rmse"]
+        )
+        assert pitcher["decision_checks"]["absolute_bias_not_worse"] is False
+        assert pitcher["paired_difference"]["mse"]["ci_high"] >= 0

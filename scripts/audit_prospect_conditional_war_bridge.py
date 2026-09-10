@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import dataclass
 from datetime import date
 from hashlib import sha256
 import json
@@ -21,6 +22,7 @@ from universal_baseball.historical_pitcher_performance import (
     build_historical_pitcher_performance_paths,
 )
 from universal_baseball.prospect_arrival import (
+    ArrivalFit,
     arrival_design,
     build_arrival_cohort,
     fit_arrival_model,
@@ -61,6 +63,15 @@ CORE_FEATURE_NAMES = (
     "production_rate_3",
     "production_rate_4",
 )
+
+
+@dataclass(slots=True)
+class BridgeFit:
+    arrival_fit: ArrivalFit
+    scaler: StandardScaler
+    ridge: Ridge
+    conditional_mean: float
+    training_arrivals: int
 
 
 def _args() -> argparse.Namespace:
@@ -260,27 +271,13 @@ def _subgroups(frame: pl.DataFrame) -> list[dict[str, object]]:
     return rows
 
 
-def _fit_and_score(
-    training: pl.DataFrame,
-    evaluation: pl.DataFrame,
-    *,
-    player_type: str,
-) -> dict[str, object]:
+def _fit_bridge(training: pl.DataFrame, *, player_type: str) -> BridgeFit:
     arrival_fit = fit_arrival_model(training, player_type=player_type)
-    scored = predict_arrival(arrival_fit, evaluation)
     training_arrivals = training.filter(pl.col("observed_arrival"))
-    evaluation_arrivals = evaluation.filter(pl.col("observed_arrival"))
-    if training_arrivals.height < 50 or evaluation_arrivals.height < 50:
-        raise ValueError("conditional WAR bridge requires at least 50 arrivals")
-
+    if training_arrivals.height < 50:
+        raise ValueError("conditional WAR bridge requires at least 50 training arrivals")
     x_train = arrival_design(
         training_arrivals,
-        feature_set="core",
-        production_priors=arrival_fit.production_priors,
-        production_regression=RATE_REGRESSION,
-    )
-    x_outer = arrival_design(
-        scored,
         feature_set="core",
         production_priors=arrival_fit.production_priors,
         production_regression=RATE_REGRESSION,
@@ -292,15 +289,37 @@ def _fit_and_score(
     )
     if len(ridge.coef_) != len(CORE_FEATURE_NAMES):
         raise ValueError("core conditional-WAR feature names do not match the design")
-    conditional_candidate = ridge.predict(scaler.transform(x_outer))
     conditional_mean = float(
         training_arrivals["observed_two_year_component_war"].mean()
     )
+    return BridgeFit(
+        arrival_fit=arrival_fit,
+        scaler=scaler,
+        ridge=ridge,
+        conditional_mean=conditional_mean,
+        training_arrivals=training_arrivals.height,
+    )
+
+
+def _score_bridge(evaluation: pl.DataFrame, fit: BridgeFit) -> dict[str, object]:
+    scored = predict_arrival(fit.arrival_fit, evaluation)
+    evaluation_arrivals = evaluation.filter(pl.col("observed_arrival"))
+    if evaluation_arrivals.height < 50:
+        raise ValueError("conditional WAR bridge requires at least 50 outer arrivals")
+    x_outer = arrival_design(
+        scored,
+        feature_set="core",
+        production_priors=fit.arrival_fit.production_priors,
+        production_regression=RATE_REGRESSION,
+    )
+    conditional_candidate = fit.ridge.predict(fit.scaler.transform(x_outer))
     probability = scored["predicted_two_year_arrival_probability"].to_numpy()
     scored = scored.with_columns(
-        pl.Series("pooled_conditional_war", np.full(scored.height, conditional_mean)),
+        pl.Series(
+            "pooled_conditional_war", np.full(scored.height, fit.conditional_mean)
+        ),
         pl.Series("ridge_conditional_war", conditional_candidate),
-        pl.Series("pooled_prediction", probability * conditional_mean),
+        pl.Series("pooled_prediction", probability * fit.conditional_mean),
         pl.Series("ridge_prediction", probability * conditional_candidate),
     )
     y = scored["observed_two_year_component_war"].to_numpy()
@@ -309,7 +328,7 @@ def _fit_and_score(
     arrived = scored["observed_arrival"].to_numpy()
     outer_conditional_candidate = conditional_candidate[arrived]
     outer_conditional_y = y[arrived]
-    outer_conditional_baseline = np.full(arrived.sum(), conditional_mean)
+    outer_conditional_baseline = np.full(arrived.sum(), fit.conditional_mean)
     end_to_end_baseline = continuous_scores(y, baseline)
     end_to_end_candidate = continuous_scores(y, candidate)
     conditional_baseline = continuous_scores(
@@ -335,9 +354,9 @@ def _fit_and_score(
     }
     return {
         "players": scored.height,
-        "training_arrivals": training_arrivals.height,
+        "training_arrivals": fit.training_arrivals,
         "outer_arrivals": evaluation_arrivals.height,
-        "training_conditional_mean_war": conditional_mean,
+        "training_conditional_mean_war": fit.conditional_mean,
         "ridge_alpha": RIDGE_ALPHA,
         "rate_regression_opportunities": RATE_REGRESSION,
         "end_to_end_baseline": end_to_end_baseline,
@@ -352,12 +371,12 @@ def _fit_and_score(
             y,
             {"pooled": baseline, "ridge": candidate},
         ),
-        "ridge_coefficient_l2_norm": float(np.linalg.norm(ridge.coef_)),
+        "ridge_coefficient_l2_norm": float(np.linalg.norm(fit.ridge.coef_)),
         "standardized_ridge_coefficients": sorted(
             (
                 {"feature": feature, "coefficient": float(coefficient)}
                 for feature, coefficient in zip(
-                    CORE_FEATURE_NAMES, ridge.coef_, strict=True
+                    CORE_FEATURE_NAMES, fit.ridge.coef_, strict=True
                 )
             ),
             key=lambda row: abs(row["coefficient"]),
@@ -387,6 +406,9 @@ def main() -> int:
     membership = pl.read_parquet(membership_path)
     environment_path = Path("docs/prospect-component-uncertainty-result.json")
     plan_path = Path("docs/prospect-conditional-war-bridge-plan.md")
+    stability_plan_path = Path(
+        "docs/prospect-conditional-war-bridge-stability-plan.md"
+    )
     runs_per_win = float(
         json.loads(environment_path.read_text(encoding="utf-8"))["runs_per_win"]
     )
@@ -410,8 +432,10 @@ def main() -> int:
         pitching_path,
         environment_path,
         plan_path,
+        stability_plan_path,
     ]
     results = {}
+    stability_results = {}
     for player_type in ("hitter", "pitcher"):
         snapshot_path = history_root / f"{player_type}_snapshots.parquet"
         skill_path = (
@@ -422,7 +446,7 @@ def main() -> int:
         snapshots = pl.read_parquet(snapshot_path)
         skill = pl.read_parquet(skill_path)
         cohorts = {}
-        for origin in (TRAINING_ORIGIN, OUTER_ORIGIN):
+        for origin in (TRAINING_ORIGIN, OUTER_ORIGIN, 2022, 2023):
             cohort = build_arrival_cohort(
                 snapshots,
                 stats,
@@ -462,11 +486,12 @@ def main() -> int:
                 raise ValueError(
                     f"{player_type} {origin} workload and arrival labels disagree"
                 )
-        results[player_type] = _fit_and_score(
-            cohorts[TRAINING_ORIGIN],
-            cohorts[OUTER_ORIGIN],
-            player_type=player_type,
-        )
+        fit = _fit_bridge(cohorts[TRAINING_ORIGIN], player_type=player_type)
+        results[player_type] = _score_bridge(cohorts[OUTER_ORIGIN], fit)
+        stability_results[player_type] = {
+            str(origin): _score_bridge(cohorts[origin], fit)
+            for origin in (2022, 2023)
+        }
         sources.extend([snapshot_path, skill_path])
 
     protocol = {
@@ -482,12 +507,26 @@ def main() -> int:
     protocol["fingerprint"] = sha256(
         json.dumps(protocol, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
+    stability_passed = all(
+        all(result["decision_checks"].values())
+        for years in stability_results.values()
+        for result in years.values()
+    )
     report = {
         "report_schema_version": 1,
         "as_of_date": args.as_of_date.isoformat(),
         "status": "retrospective_development_not_confirmation",
         "protocol": protocol,
         "results": results,
+        "stability_protocol": {
+            "fit_origin": TRAINING_ORIGIN,
+            "evaluation_origins": [2022, 2023],
+            "horizon_years": HORIZON,
+            "refit_or_recalibration": False,
+            "frozen_plan_sha256": sha256_file(stability_plan_path),
+        },
+        "stability_results": stability_results,
+        "stability_passed": stability_passed,
         "boundaries": {
             "all_non_arrivals_retained": True,
             "demographics_used_as_talent": False,
@@ -511,6 +550,10 @@ def main() -> int:
         f"{row['feature']} ({row['coefficient']:+.3f})"
         for row in pitcher["standardized_ridge_coefficients"][:5]
     )
+    hitter_2022 = stability_results["hitter"]["2022"]
+    hitter_2023 = stability_results["hitter"]["2023"]
+    pitcher_2022 = stability_results["pitcher"]["2022"]
+    pitcher_2023 = stability_results["pitcher"]["2023"]
     markdown = f"""# Prospect conditional-WAR bridge result
 
 Status: **retrospective development; no production change**.
@@ -536,6 +579,20 @@ form for later confirmation; do not recalibrate it on this exposed cohort.
 Largest standardized hitter coefficients: {hitter_drivers}. Largest standardized
 pitcher coefficients: {pitcher_drivers}. These are predictive diagnostics, not causal
 effects or player bonuses.
+
+## Unchanged-fit stability extension
+
+| Type / origin | Baseline RMSE | Ridge RMSE | Baseline MAE | Ridge MAE | Arrived-player RMSE change |
+|---|---:|---:|---:|---:|---:|
+| Hitter 2022 | {hitter_2022['end_to_end_baseline']['rmse']:.3f} | {hitter_2022['end_to_end_candidate']['rmse']:.3f} | {hitter_2022['end_to_end_baseline']['mae']:.3f} | {hitter_2022['end_to_end_candidate']['mae']:.3f} | {hitter_2022['conditional_on_observed_arrival_baseline']['rmse']:.3f} to {hitter_2022['conditional_on_observed_arrival_candidate']['rmse']:.3f} |
+| Hitter 2023 | {hitter_2023['end_to_end_baseline']['rmse']:.3f} | {hitter_2023['end_to_end_candidate']['rmse']:.3f} | {hitter_2023['end_to_end_baseline']['mae']:.3f} | {hitter_2023['end_to_end_candidate']['mae']:.3f} | {hitter_2023['conditional_on_observed_arrival_baseline']['rmse']:.3f} to {hitter_2023['conditional_on_observed_arrival_candidate']['rmse']:.3f} |
+| Pitcher 2022 | {pitcher_2022['end_to_end_baseline']['rmse']:.3f} | {pitcher_2022['end_to_end_candidate']['rmse']:.3f} | {pitcher_2022['end_to_end_baseline']['mae']:.3f} | {pitcher_2022['end_to_end_candidate']['mae']:.3f} | {pitcher_2022['conditional_on_observed_arrival_baseline']['rmse']:.3f} to {pitcher_2022['conditional_on_observed_arrival_candidate']['rmse']:.3f} |
+| Pitcher 2023 | {pitcher_2023['end_to_end_baseline']['rmse']:.3f} | {pitcher_2023['end_to_end_candidate']['rmse']:.3f} | {pitcher_2023['end_to_end_baseline']['mae']:.3f} | {pitcher_2023['end_to_end_candidate']['mae']:.3f} | {pitcher_2023['conditional_on_observed_arrival_baseline']['rmse']:.3f} to {pitcher_2023['conditional_on_observed_arrival_candidate']['rmse']:.3f} |
+
+Stability gate: **{stability_passed}**. Hitter arrived-player RMSE worsens in both
+later cohorts. Pitcher absolute bias worsens in both, and later paired MSE intervals
+cross zero. The unchanged bridge is rejected as a stable replacement; its typical-row
+MAE signal remains useful evidence for a later positive-tail model.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)
