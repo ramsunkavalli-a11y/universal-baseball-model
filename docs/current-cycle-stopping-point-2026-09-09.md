@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,511 passed. Four older research-contract tests fail because their
+Latest full suite: 1,513 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -148,3 +148,10 @@ improve hitters. A joint pitcher version wins both later proper-score comparison
 favorable paired intervals, but misses the earlier development Brier requirement. It
 is retained only as an unchanged future-confirmation candidate; current values did not
 move.
+
+The follow-up post-arrival test provides the next build direction. Prior-season MLB
+workload improves fringe-to-higher progression for both player types across selection
+and both later years, with all later paired intervals below zero. The signal is not
+precise enough for meaningful-to-established progression. Next, carry simulated annual
+workload into the following fringe-state transition while retaining the pooled upper-
+state fallback; do not change current values until that complete path is validated.

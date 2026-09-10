@@ -169,6 +169,16 @@ selection period. The frozen consistency gate rejects it. Keep it unchanged for 
 confirmation; no current probability, FV or value changed. See the
 [development-state result](prospect-development-state-result.md).
 
+The missing dynamic signal is now identified. An annual post-arrival replay adds only
+the preceding season's official MLB workload, normalized to that season's active-player
+environment. For fringe MLB players it improves both proper scores in 2023 selection
+and in the 2024 and 2025 later tests for hitters and pitchers; all eight later paired
+intervals are favorable. Meaningful-to-established improvements remain uncertain.
+This supports carrying simulated realized workload into the next year's fringe hazard
+inside a linked career model. It does not authorize using future workload as a known
+input or changing current values. See the
+[post-arrival workload result](prospect-post-arrival-workload-result.md).
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

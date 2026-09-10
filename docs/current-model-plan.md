@@ -152,6 +152,17 @@ tune or promote it on these disclosed cohorts. See the
 [plan](prospect-development-state-plan.md) and
 [result](prospect-development-state-result.md).
 
+The first genuinely time-updated post-arrival input passes. Prior-season official MLB
+PA/BF, normalized to the active-player workload environment for that season, improves
+fringe-to-higher advancement for hitters and pitchers in the 2023 selection outcome
+and both later 2024/2025 outcomes. Every later paired log-loss and Brier interval is
+below zero. Meaningful-to-established point estimates also improve, but the smaller
+samples are uncertain, so retain the pooled fallback there. The next linked career
+simulator must carry sampled realized workload into the following year's fringe-state
+hazard; it must not treat future workload as known today. See the
+[plan](prospect-post-arrival-workload-plan.md) and
+[result](prospect-post-arrival-workload-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

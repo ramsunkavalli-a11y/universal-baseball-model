@@ -47,5 +47,5 @@ Sources:
 
 - targeted contract/explorer tests: 24 passed;
 - private-preview model laws: 46 passed; and
-- full suite: 1,511 passed, with the same four older missing generated-artifact
+- full suite: 1,513 passed, with the same four older missing generated-artifact
   failures (S0 age input, S0 predictions, G0 predictions and stage2f H0 report).
