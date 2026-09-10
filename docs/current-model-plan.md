@@ -198,6 +198,11 @@ whole-path linked replay, with a guard against counting prior workload twice. Fo
 the [locked replay plan](prospect-linked-career-state-replay-plan.md), including its
 origin-specific refit rule.
 
+The whole-tail sampler is implemented. It keeps a donor career intact until the
+simulated state conflicts, then replaces only the remaining tail from a donor in the
+required state and keeps donor identity available for the matching role/performance
+join. It does not yet constitute a scored replay or change current values.
+
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero
 prospect cohort. Future linked-path validation must pair arrival Brier/log loss, a

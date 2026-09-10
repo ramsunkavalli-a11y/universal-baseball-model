@@ -1079,7 +1079,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,530 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,531 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
@@ -1166,7 +1166,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current verification is 46/46 model-law checks. The latest full suite is
-  1,530 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,531 passing tests plus four known missing-artifact failures; no new failure exists.
 
 The remaining universal event-context candidate is the strongly regressed pitcher
 platoon test. The compact pitcher-contact tables on disk retain pitcher identity and
