@@ -56,6 +56,12 @@ intervals cross zero. The exact bridge is rejected as a stable replacement. The 
 candidate must model positive-tail probability and magnitude explicitly; do not rescue
 the ridge through recentering, clipping or another penalty search on these cohorts.
 
+The fixed conditional-WAR outcome inventory supports a separate material-positive
+hurdle at `0.25` component WAR over two seasons. The 2018 arrived-player training
+cohort contains 69 hitter and 114 pitcher positives; every 2021-2023 outer cohort has
+at least 51 hitter and 68 pitcher positives. The `1+` and `2+` WAR tails are too sparse
+for the first universal hurdle. This inventory selects support, not a winning model.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still

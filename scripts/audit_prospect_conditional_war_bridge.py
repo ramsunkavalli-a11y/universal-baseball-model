@@ -72,6 +72,7 @@ class BridgeFit:
     ridge: Ridge
     conditional_mean: float
     training_arrivals: int
+    training_outcome_threshold_counts: dict[str, int]
 
 
 def _args() -> argparse.Namespace:
@@ -292,12 +293,17 @@ def _fit_bridge(training: pl.DataFrame, *, player_type: str) -> BridgeFit:
     conditional_mean = float(
         training_arrivals["observed_two_year_component_war"].mean()
     )
+    training_y = training_arrivals["observed_two_year_component_war"].to_numpy()
     return BridgeFit(
         arrival_fit=arrival_fit,
         scaler=scaler,
         ridge=ridge,
         conditional_mean=conditional_mean,
         training_arrivals=training_arrivals.height,
+        training_outcome_threshold_counts={
+            f"war_at_least_{threshold:g}": int((training_y >= threshold).sum())
+            for threshold in (0.0, 0.25, 0.5, 1.0, 2.0)
+        },
     )
 
 
@@ -352,11 +358,21 @@ def _score_bridge(evaluation: pl.DataFrame, fit: BridgeFit) -> dict[str, object]
             conditional_score["rmse"] <= conditional_baseline["rmse"]
         ),
     }
+    outcome_thresholds = {
+        f"war_at_least_{threshold:g}": {
+            "all_players": int((y >= threshold).sum()),
+            "arrived_players": int((outer_conditional_y >= threshold).sum()),
+        }
+        for threshold in (0.0, 0.25, 0.5, 1.0, 2.0)
+    }
     return {
         "players": scored.height,
         "training_arrivals": fit.training_arrivals,
         "outer_arrivals": evaluation_arrivals.height,
         "training_conditional_mean_war": fit.conditional_mean,
+        "training_outcome_threshold_counts": (
+            fit.training_outcome_threshold_counts
+        ),
         "ridge_alpha": RIDGE_ALPHA,
         "rate_regression_opportunities": RATE_REGRESSION,
         "end_to_end_baseline": end_to_end_baseline,
@@ -366,6 +382,7 @@ def _score_bridge(evaluation: pl.DataFrame, fit: BridgeFit) -> dict[str, object]
         "paired_difference": paired,
         "decision_checks": decision_checks,
         "promising_development_evidence": all(decision_checks.values()),
+        "observed_outcome_threshold_counts": outcome_thresholds,
         "cohort_fingerprint": common_continuous_cohort_fingerprint(
             scored["player_id"].to_numpy(),
             y,
