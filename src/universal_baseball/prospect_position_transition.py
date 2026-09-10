@@ -91,3 +91,30 @@ def multiclass_scores(
         "brier": float(np.square(probability - one_hot).sum(axis=1).mean()),
         "accuracy": float((probability.argmax(axis=1) == observed).mean()),
     }
+
+
+def adjust_war_rate_for_position(
+    current_war_per_600: float,
+    *,
+    current_position_runs_per_600: float,
+    expected_position_runs_per_600: float,
+    runs_per_win: float,
+) -> float:
+    """Replace only the positional-run component of a WAR-per-600 rate."""
+
+    values = np.asarray(
+        [
+            current_war_per_600,
+            current_position_runs_per_600,
+            expected_position_runs_per_600,
+            runs_per_win,
+        ],
+        dtype=float,
+    )
+    if not np.isfinite(values).all() or runs_per_win <= 0:
+        raise ValueError("position-rate inputs must be finite and runs_per_win positive")
+    return float(
+        current_war_per_600
+        + (expected_position_runs_per_600 - current_position_runs_per_600)
+        / runs_per_win
+    )

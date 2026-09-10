@@ -3,6 +3,7 @@ import pytest
 
 from universal_baseball.prospect_position_transition import (
     POSITION_GROUPS,
+    adjust_war_rate_for_position,
     fit_transition_probabilities,
     multiclass_scores,
     position_group,
@@ -46,3 +47,18 @@ def test_multiclass_score_rewards_correct_destination_probability() -> None:
     assert multiclass_scores(["C", "OUTFIELD"], candidate)["log_loss"] < (
         multiclass_scores(["C", "OUTFIELD"], baseline)["log_loss"]
     )
+
+
+def test_position_war_rate_replacement_is_identity_or_exact_run_delta() -> None:
+    assert adjust_war_rate_for_position(
+        3.0,
+        current_position_runs_per_600=12.5,
+        expected_position_runs_per_600=12.5,
+        runs_per_win=10.0,
+    ) == pytest.approx(3.0)
+    assert adjust_war_rate_for_position(
+        3.0,
+        current_position_runs_per_600=12.5,
+        expected_position_runs_per_600=2.5,
+        runs_per_win=10.0,
+    ) == pytest.approx(2.0)

@@ -31,6 +31,13 @@ origin-position matrix improved multiclass log loss from 1.489 to 0.811 and Brie
 0.751 to 0.403. Catchers retained catcher in 85.9% of observed cases. This authorizes
 a private probabilistic-position sensitivity, not a catcher haircut or published change.
 
+That [value sensitivity](prospect-position-value-sensitivity-result.md) is complete but
+does not replace the playable default. Applying the two-year destination mix to all
+six years reduces hitter 50+ counts from 86 to 35 and worsens the outside diagnostic.
+It also exposes 735 games-based versus listed-position disagreements among 2,583
+comparable players. The next challenger must model transition timing and use one
+explicit current-position source; do not apply the full destination mix immediately.
+
 The [established-tier prospect test](prospect-established-tier-test-result.md) is also
 rejected. Mature fringe/meaningful/established workload priors are usable, but three
 separately fitted probabilities violate their required ordering and flatten credible
@@ -492,7 +499,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,385 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,389 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
