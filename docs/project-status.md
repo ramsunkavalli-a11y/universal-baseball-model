@@ -630,6 +630,11 @@ test failure was observed.
 - Do not fit a pitcher widening factor to the opened later cohort. Keep pitcher ranges
   descriptive and develop a resampling-based replacement without claiming untouched
   confirmation until another complete six-year cohort exists.
+- The first frozen pitcher era test rejected all eight simple fixes. A one-year
+  recency half-life modestly improved overall and established-career CRPS but breached
+  the supported fringe-tier safety limit and did not repair coverage. Always pooling
+  roles widened coverage but materially worsened CRPS. Next separate the league-wide
+  pitcher-usage environment from a player's role-relative workload distribution.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).

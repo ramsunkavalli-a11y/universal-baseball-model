@@ -1,8 +1,11 @@
+import numpy as np
 import polars as pl
 import pytest
 
 from universal_baseball.prospect_workload_validation import (
+    build_pitcher_workload_era_scores,
     build_workload_holdout_predictions,
+    empirical_crps,
     summarize_workload_coverage,
     wilson_interval,
 )
@@ -50,3 +53,29 @@ def test_coverage_summary_reports_declared_targets() -> None:
     assert result["coverage_80"] == 0.75
     assert result["coverage_50"] == 0.5
     assert result["median_absolute_error"] == 2.5
+
+
+def test_empirical_crps_is_zero_for_perfect_point_distribution() -> None:
+    assert empirical_crps(
+        samples=np.array([2.0]),
+        weights=np.array([1.0]),
+        observed=2.0,
+    ) == 0.0
+
+
+def test_pitcher_era_scores_never_use_same_or_later_debut_cohort() -> None:
+    paths = pl.DataFrame(
+        {
+            "player_id": [1, 2, 3],
+            "player_type": ["pitcher"] * 3,
+            "debut_year": [2015, 2016, 2017],
+            "outcome_tier_v2": ["fringe"] * 3,
+            "career_role": ["reliever"] * 3,
+            "adjusted_total_workload": [100.0, 200.0, 10000.0],
+        }
+    )
+    result = build_pitcher_workload_era_scores(
+        paths, evaluation_years=(2017,), minimum_role_players=1
+    )
+    assert result["predicted_p50"].max() <= 200.0
+    assert result["training_players"].max() == 2
