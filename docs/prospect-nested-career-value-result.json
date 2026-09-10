@@ -12,43 +12,43 @@
   },
   "by_player_type": {
     "hitter": {
-      "incumbent_expected_war": 3803.003766646957,
+      "incumbent_expected_war": 3728.5967202968036,
       "incumbent_fv_counts": {
-        "40": 1894,
-        "45": 913,
-        "50": 337,
-        "55": 72,
-        "60": 20
+        "40": 1904,
+        "45": 843,
+        "50": 328,
+        "55": 80,
+        "60": 24
       },
-      "mean_arrival_probability": 0.1541378656389307,
-      "mean_established_probability": 0.026634452692167097,
-      "mean_meaningful_probability": 0.052226893087348104,
-      "nested_expected_war": 711.0839815315379,
+      "mean_arrival_probability": 0.15367906182618052,
+      "mean_established_probability": 0.025616411476077603,
+      "mean_meaningful_probability": 0.05372080999396217,
+      "nested_expected_war": 695.3231257462535,
       "nested_fv_counts": {
-        "40": 633,
-        "45": 118,
-        "50": 9,
+        "40": 545,
+        "45": 119,
+        "50": 12,
         "55": 0,
         "60": 0
       },
       "players": 2870
     },
     "pitcher": {
-      "incumbent_expected_war": 297.99666985768073,
+      "incumbent_expected_war": 273.7314581778595,
       "incumbent_fv_counts": {
-        "40": 845,
-        "45": 155,
-        "50": 19,
-        "55": 0,
+        "40": 756,
+        "45": 131,
+        "50": 18,
+        "55": 1,
         "60": 0
       },
-      "mean_arrival_probability": 0.13358594228498022,
-      "mean_established_probability": 0.02309612095153289,
-      "mean_meaningful_probability": 0.04729837717294401,
-      "nested_expected_war": 24.366276288487015,
+      "mean_arrival_probability": 0.12750636238722407,
+      "mean_established_probability": 0.022404315152368712,
+      "mean_meaningful_probability": 0.04535526455716475,
+      "nested_expected_war": 23.46667135041733,
       "nested_fv_counts": {
-        "40": 66,
-        "45": 4,
+        "40": 59,
+        "45": 7,
         "50": 0,
         "55": 0,
         "60": 0
@@ -58,10 +58,10 @@
   },
   "contract": "docs/prospect-nested-career-value-plan.md",
   "external_fv_check": {
-    "incumbent_bias": -6.601928356890961,
-    "incumbent_mae": 9.099121618088176,
-    "nested_bias": -16.621043263464593,
-    "nested_mae": 16.621043263464593,
+    "incumbent_bias": -6.601837176972947,
+    "incumbent_mae": 9.302814506529854,
+    "nested_bias": -17.03484756627238,
+    "nested_mae": 17.03484756627238,
     "players": 76,
     "role": "diagnostic_only_not_model_input"
   },
@@ -71,25 +71,25 @@
   "requested_examples": [
     {
       "established_probability": 0.026833607690718186,
-      "fringe_probability": 0.11763837414859635,
-      "incumbent_expected_six_year_war": 3.1824679776776184,
-      "meaningful_only_probability": 0.049529423603219325,
+      "fringe_probability": 0.10525355482348686,
+      "incumbent_expected_six_year_war": 2.584891265508185,
+      "meaningful_only_probability": 0.02548631251904998,
       "model_fv_display": 45,
       "model_player_type": "hitter",
-      "ordered_arrival_probability": 0.19400140544253386,
+      "ordered_arrival_probability": 0.15757347503325503,
       "ordered_established_probability": 0.026833607690718186,
-      "ordered_meaningful_probability": 0.07636303129393751,
+      "ordered_meaningful_probability": 0.05231992020976817,
       "player_id": 829034,
       "player_name": "Josuar Gonzalez",
-      "three_tier_expected_six_year_war": 0.5270815880906617,
+      "three_tier_expected_six_year_war": 0.4331888560929254,
       "three_tier_model_fv_display": 40
     }
   ],
   "status": "private_nested_career_value_sensitivity_complete",
   "storage": {
     "canonical_schema_version": "0.1",
-    "file_sha256": "9250871cd106dcae1e04aca343406a028a764c94379b17e6ba358d1adeb94a1f",
-    "file_size_bytes": 1189669,
+    "file_sha256": "51dd808235bb40d42903d951a41d8587dd07fe719424fcbedf4e15ed948aa8ca",
+    "file_size_bytes": 1186702,
     "path": "reports\\generated\\phase2-nested-career-fv\\2026-09-08\\nested-career-model-fv.parquet",
     "row_count": 9194,
     "schema_sha256": "814f7712f5df5c36279065d27c5f4efe0b7dff0c4783019582043a39c1d75892",

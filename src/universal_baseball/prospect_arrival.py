@@ -17,7 +17,7 @@ from universal_baseball.hitter_v2_evaluation import NEUTRAL_WOBA_WEIGHTS
 from universal_baseball.prospect_outcome_quality import SHORTENED_2020_SCALE
 
 
-ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v2_official_debut"
+ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v3_primary_level"
 LEVELS = ("A_OR_BELOW", "AA", "AAA", "INACTIVE", "UNKNOWN")
 ROLES = ("C", "MIDDLE_INFIELD", "OUTFIELD", "CORNER", "STARTER", "SWINGMAN")
 COUNTRIES = (
@@ -36,6 +36,64 @@ HITTER_POSITION_BY_STATSAPI_CODE = {
     "9": "RF",
     "10": "DH",
 }
+
+
+def _primary_affiliated_level(
+    skill_stats: pl.DataFrame, *, snapshot_year: int, player_type: str
+) -> pl.DataFrame:
+    """Return the level carrying the most current-season workload.
+
+    A short promotion or rehab appearance must not make a full season look like it
+    was played at the highest level reached.  Ties favor the more advanced level,
+    but workload always wins first.
+    """
+
+    workload = "plate_appearances" if player_type == "hitter" else "batters_faced"
+    if "level_group" not in skill_stats.columns:
+        # Older fixtures and imported sources may not carry an explicit level.
+        # The caller then retains the chronology-safe snapshot level.
+        return pl.DataFrame(
+            schema={
+                "player_id": pl.Int64,
+                "primary_level_tier": pl.String,
+                "primary_level_workload_share": pl.Float64,
+            }
+        )
+    level_order = {"A_OR_BELOW": 1, "AA": 2, "AAA": 3, "MLB": 4, "UNKNOWN": 0}
+    by_level = (
+        skill_stats.filter(
+            (pl.col("season") == snapshot_year)
+            & (pl.col("sport_id") != 1)
+            & (pl.col(workload) > 0)
+        )
+        .with_columns(
+            pl.col("level_group").map_elements(
+                hitter_level_tier, return_dtype=pl.String
+            ).alias("primary_level_tier")
+        )
+        .group_by("player_id", "primary_level_tier")
+        .agg(pl.col(workload).sum().cast(pl.Float64).alias("primary_level_workload"))
+        .with_columns(
+            pl.col("primary_level_workload").sum().over("player_id")
+            .alias("current_affiliated_workload"),
+            pl.col("primary_level_tier").replace_strict(
+                level_order, default=0
+            ).alias("primary_level_order"),
+        )
+        .sort(
+            ["player_id", "primary_level_workload", "primary_level_order"],
+            descending=[False, True, True],
+        )
+        .unique("player_id", keep="first", maintain_order=True)
+    )
+    return by_level.select(
+        "player_id",
+        "primary_level_tier",
+        (
+            pl.col("primary_level_workload")
+            / pl.col("current_affiliated_workload").clip(1.0, None)
+        ).alias("primary_level_workload_share"),
+    )
 
 
 def _primary_hitter_positions(
@@ -259,15 +317,21 @@ def _production_features(
         .clip(0.0, 1.0).alias(f"production_rate_{index}")
         for index in range(1, 5)
     ]
+    primary_level = _primary_affiliated_level(
+        skill_stats, snapshot_year=snapshot_year, player_type=player_type
+    )
     return (
         current.with_columns(*rates)
         .join(playing_history, on="player_id", how="left")
+        .join(primary_level, on="player_id", how="left", validate="1:1")
         .select(
             "player_id",
             "current_milb_workload",
             "prior_affiliated_workload",
             "prior_affiliated_seasons",
             "role_tier",
+            "primary_level_tier",
+            "primary_level_workload_share",
             *[f"production_rate_{index}" for index in range(1, 5)],
         )
     )
@@ -278,6 +342,8 @@ def _fill_predictor_nulls(frame: pl.DataFrame) -> pl.DataFrame:
         pl.col("current_milb_workload").fill_null(0.0),
         pl.col("prior_affiliated_workload").fill_null(0.0),
         pl.col("prior_affiliated_seasons").fill_null(0.0),
+        pl.col("primary_level_workload_share").fill_null(0.0),
+        pl.col("primary_level_tier").fill_null(pl.col("level_tier")),
         pl.col("role_tier").fill_null("OTHER"),
         pl.col("height_inches").fill_null(72.0),
         pl.col("weight_pounds").fill_null(190.0),
@@ -507,6 +573,8 @@ def build_arrival_cohort(
         )
         .select(
             "player_id", "age_years", "level_tier", "current_milb_workload",
+            "primary_level_tier",
+            "primary_level_workload_share",
             "prior_affiliated_workload", "prior_affiliated_seasons", "role_tier",
             *[f"production_rate_{index}" for index in range(1, 5)],
             "on_40man", "arrived_within_horizon", "meaningful_role_within_horizon",
@@ -566,6 +634,8 @@ def build_current_arrival_predictors(
         )
         .select(
             "player_id", "age_years", "level_tier", "current_milb_workload",
+            "primary_level_tier",
+            "primary_level_workload_share",
             "prior_affiliated_workload", "prior_affiliated_seasons", "role_tier",
             *[f"production_rate_{index}" for index in range(1, 5)], "on_40man",
             "height_inches", "weight_pounds", "bat_side", "pitch_hand",
@@ -595,6 +665,7 @@ def arrival_design(
         "role_production_interactions", "baseball_interactions",
         "baseball_demographics",
         "draft_pedigree", "baseball_pedigree",
+        "level_exposure",
     }
     if feature_set not in supported:
         raise ValueError(f"unsupported arrival feature set: {feature_set}")
@@ -636,6 +707,20 @@ def arrival_design(
         values.extend(level_flags)
         values.extend(role_flags)
         values.extend(production_rates)
+        if feature_set == "level_exposure":
+            primary_level = hitter_level_tier(row["primary_level_tier"])
+            primary_flags = [
+                float(primary_level == candidate) for candidate in LEVELS[:-1]
+            ]
+            primary_share = float(row["primary_level_workload_share"])
+            values.extend(primary_flags)
+            values.extend(
+                [
+                    primary_share,
+                    float(primary_level != level),
+                    *[age_scaled * flag for flag in primary_flags],
+                ]
+            )
         uses_development = feature_set in {
             "development_interactions", "baseball_interactions",
             "baseball_demographics", "baseball_pedigree",

@@ -1,0 +1,37 @@
+{
+  "status": "promoted_to_private_playable_build",
+  "as_of_date": "2026-09-10",
+  "model_id": "phase2_pre_mlb_two_year_arrival_v3_primary_level",
+  "method": "highest level plus workload-weighted primary level and primary-level workload share",
+  "current_level_disagreements": {
+    "hitter": {"players": 2871, "disagreements": 336, "share": 0.1170323929, "at_least_75_percent_primary_workload": 182},
+    "pitcher": {"players": 4117, "disagreements": 357, "share": 0.0867136264, "at_least_75_percent_primary_workload": 192}
+  },
+  "pooled_time_ordered_scores": {
+    "hitter_arrival": {"core_brier": 0.0491671722, "candidate_brier": 0.0484543461, "core_log_loss": 0.1763475486, "candidate_log_loss": 0.1737781481, "promoted": true},
+    "hitter_meaningful": {"core_brier": 0.0200437983, "candidate_brier": 0.0195361664, "core_log_loss": 0.0858266228, "candidate_log_loss": 0.0828995409, "promoted": true},
+    "hitter_established": {"core_brier": 0.0106038103, "candidate_brier": 0.0102658453, "core_log_loss": 0.0505357845, "candidate_log_loss": 0.0485017932, "promoted": false},
+    "pitcher_arrival": {"core_brier": 0.0520167046, "candidate_brier": 0.0509492523, "core_log_loss": 0.1846946831, "candidate_log_loss": 0.1801581469, "promoted": true},
+    "pitcher_meaningful": {"core_brier": 0.0190168716, "candidate_brier": 0.0188232046, "core_log_loss": 0.0769707995, "candidate_log_loss": 0.0756997664, "promoted": true},
+    "pitcher_established": {"core_brier": 0.0089866735, "candidate_brier": 0.0088814188, "core_log_loss": 0.0389994438, "candidate_log_loss": 0.0382024442, "promoted": true}
+  },
+  "named_check": {
+    "player_id": 692232,
+    "player_name": "Fernando Gonzalez",
+    "highest_level": "AAA",
+    "primary_level": "A_OR_BELOW",
+    "primary_level_workload_share": 0.8975609756,
+    "six_year_arrival_probability": 0.3945079139,
+    "six_year_meaningful_role_probability": 0.1468476869,
+    "six_year_established_role_probability": 0.1027290771,
+    "nested_expected_war": 1.4015619636,
+    "display_fv": 45
+  },
+  "boundaries": {
+    "outside_fv_used": false,
+    "player_exception_used": false,
+    "organization_depth_used": false,
+    "primary_level_only_candidate_rejected": true,
+    "position_transition_changed": false
+  }
+}

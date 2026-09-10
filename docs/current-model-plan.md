@@ -256,6 +256,13 @@ from MLB history to translated affiliated evidence to a population prior. See th
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.
+
+The prospect-arrival step now uses both highest level reached and a PA/BF-weighted
+primary level with workload share. This is the production default because it improved
+both pooled proper scores without losing either score in any required time-ordered
+fold for arrival and meaningful roles. Do not revert to highest-level-only labeling
+or replace it with primary level alone. See
+`prospect-primary-level-exposure-result.md`.
 The prior explorer silently joined the older generic opportunity paths. That defect
 reduced projected six-year WAR for 940 debuted pitchers from 1,325.5 to 1,108.1.
 The corrected materializer records both input hashes and the opportunity model ID;

@@ -9,9 +9,31 @@ from universal_baseball.prospect_arrival import (
     fit_arrival_model,
     six_year_probability,
     _positive_component_roles,
+    _primary_affiliated_level,
     _primary_hitter_positions,
     _role_tier,
 )
+
+
+def test_primary_affiliated_level_uses_workload_not_highest_level_touched() -> None:
+    skill = pl.DataFrame(
+        {
+            "season": [2026, 2026, 2026, 2026],
+            "player_id": [1, 1, 1, 2],
+            "sport_id": [11, 14, 16, 12],
+            "level_group": ["AAA", "SINGLE_A", "ROOKIE_COMPLEX", "AA"],
+            "plate_appearances": [21, 168, 16, 100],
+            "batters_faced": [0, 0, 0, 0],
+        }
+    )
+
+    result = _primary_affiliated_level(
+        skill, snapshot_year=2026, player_type="hitter"
+    )
+
+    first = result.filter(pl.col("player_id") == 1).row(0, named=True)
+    assert first["primary_level_tier"] == "A_OR_BELOW"
+    assert first["primary_level_workload_share"] == pytest.approx(184 / 205)
 
 
 def _debut_dates(*rows: tuple[int, str | None]) -> pl.DataFrame:
@@ -67,6 +89,9 @@ def test_arrival_cohort_excludes_prior_mlb_and_keeps_future_debut() -> None:
     assert result.item(0, "established_role_within_horizon") == 0
     assert result.item(0, "role_tier") == "MIDDLE_INFIELD"
     assert arrival_design(result, feature_set="stable_demographics").shape[1] > (
+        arrival_design(result, feature_set="core").shape[1]
+    )
+    assert arrival_design(result, feature_set="level_exposure").shape[1] > (
         arrival_design(result, feature_set="core").shape[1]
     )
     assert arrival_design(result, feature_set="all_demographics").shape[1] > (

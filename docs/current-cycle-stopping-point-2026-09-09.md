@@ -4,6 +4,14 @@ Status: clean handoff; private preview works, publication remains blocked.
 
 ## September 10 continuation
 
+- The playable prospect-arrival model now distinguishes highest level touched from
+  workload-weighted primary level. The combined exposure model beat the old core on
+  both pooled proper scores without losing either score in any required time-ordered
+  fold for hitter and pitcher arrival and meaningful-role outcomes. See
+  `docs/prospect-primary-level-exposure-result.md`.
+- A primary-level-only replacement was rejected because it made aggregate historical
+  accuracy worse. Highest level remains evidence; it no longer stands alone.
+
 - The repo plan now includes lessons from comparable GitHub projection systems:
   component-specific reliability must earn its complexity, attrition belongs in the
   score, and downstream WAR matters more than an isolated component gain.

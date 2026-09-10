@@ -25,12 +25,13 @@ from universal_baseball.storage import write_canonical_parquet
 TRAINING_YEARS = (2018, 2021, 2022, 2023)
 EVALUATION_SPECS = ((2021, (2018,)), (2022, (2018,)), (2023, (2018, 2021)))
 FEATURE_SETS = (
-    "core", "handedness", "origin", "stable_demographics",
+    "core", "level_exposure", "handedness", "origin", "stable_demographics",
     "stable_interactions", "physical", "handedness_physical",
     "all_demographics", "all_interactions",
 )
 SELECTABLE_FEATURE_SETS = (
-    "core", "handedness", "origin", "stable_demographics", "stable_interactions",
+    "core", "level_exposure", "handedness", "origin", "stable_demographics",
+    "stable_interactions",
 )
 
 
@@ -220,7 +221,11 @@ def main() -> int:
         research_feature_set = _select_feature_set(
             {key: value[0] for key, value in evaluations.items()}
         )
-        selected_feature_set = "core"
+        selected_feature_set = (
+            "level_exposure"
+            if _beats(evaluations["level_exposure"][0], evaluations["core"][0])
+            else "core"
+        )
         evaluation, passed = evaluations[selected_feature_set]
         role_evaluations = {
             feature_set: _evaluate(
@@ -233,15 +238,36 @@ def main() -> int:
         research_role_feature_set = _select_feature_set(
             {key: value[0] for key, value in role_evaluations.items()}
         )
-        selected_role_feature_set = "core"
-        role_evaluation, role_passed = role_evaluations[selected_role_feature_set]
-        established_evaluation, established_passed = _evaluate(
-            cohorts,
-            player_type=player_type,
-            target_column="established_role_within_horizon",
-            outcome_name="established_role",
-            feature_set="core",
+        selected_role_feature_set = (
+            "level_exposure"
+            if _beats(
+                role_evaluations["level_exposure"][0],
+                role_evaluations["core"][0],
+            )
+            else "core"
         )
+        role_evaluation, role_passed = role_evaluations[selected_role_feature_set]
+        established_evaluations = {
+            feature_set: _evaluate(
+                cohorts,
+                player_type=player_type,
+                target_column="established_role_within_horizon",
+                outcome_name="established_role",
+                feature_set=feature_set,
+            )
+            for feature_set in ("core", "level_exposure")
+        }
+        selected_established_feature_set = (
+            "level_exposure"
+            if _beats(
+                established_evaluations["level_exposure"][0],
+                established_evaluations["core"][0],
+            )
+            else "core"
+        )
+        established_evaluation, established_passed = established_evaluations[
+            selected_established_feature_set
+        ]
         fit = fit_arrival_model(
             pl.concat([cohorts[year] for year in TRAINING_YEARS]),
             player_type=player_type, feature_set=selected_feature_set,
@@ -267,7 +293,7 @@ def main() -> int:
             player_type=player_type,
             target_column="established_role_within_horizon",
             outcome_name="established_role",
-            feature_set="core",
+            feature_set=selected_established_feature_set,
         )
         scored = predict_arrival(established_fit, scored)
         combined_training = pl.concat([cohorts[year] for year in TRAINING_YEARS])
@@ -316,7 +342,9 @@ def main() -> int:
             pl.lit(ARRIVAL_MODEL_ID).alias("arrival_model_id"),
             pl.lit(selected_feature_set).alias("arrival_feature_set"),
             pl.lit(selected_role_feature_set).alias("meaningful_role_feature_set"),
-            pl.lit("core").alias("established_role_feature_set"),
+            pl.lit(selected_established_feature_set).alias(
+                "established_role_feature_set"
+            ),
         )
         scored = scored.with_columns(
             pl.col("predicted_two_year_meaningful_given_arrival_probability")
@@ -360,8 +388,11 @@ def main() -> int:
             },
             "meaningful_role_evaluation": role_evaluation,
             "established_role_gate_passed": established_passed,
-            "selected_established_role_feature_set": "core",
+            "selected_established_role_feature_set": selected_established_feature_set,
             "established_role_evaluation": established_evaluation,
+            "established_role_candidate_evaluations": {
+                key: value[0] for key, value in established_evaluations.items()
+            },
             "mean_current_six_year_probability": float(
                 scored.get_column("predicted_six_year_arrival_probability").mean()
             ),
@@ -407,7 +438,8 @@ def main() -> int:
         "as_of_date": dated, "model_id": ARRIVAL_MODEL_ID,
         "hitter": reports["hitter"], "pitcher": reports["pitcher"],
         "method": (
-            "two-year cumulative MLB debut probability from age, broad level, position "
+            "two-year cumulative MLB debut probability from age, highest level, "
+            "workload-weighted primary level and share, position "
             "or pitching role, current production, workload, playing history and 40-man "
             "status; separately models any debut, a meaningful 200 PA/BF MLB season, "
             "and an established role, then extrapolates each to three two-year windows"
@@ -416,10 +448,12 @@ def main() -> int:
             "publication_grades_used": False, "future_team_depth_used": False,
             "organization_feature_used": False,
             "features": (
-                "age, broad level, position/role, current and prior workload, "
+                "age, highest and workload-weighted primary level, primary-level "
+                "share, position/role, current and prior workload, "
                 "playing-history length, current production rates, and 40-man status"
             ),
             "official_debut_date_eligibility_enforced": True,
+            "brief_higher_level_appearance_can_set_level": False,
             "2018_prior_mlb_history_left_censored": False,
             "six_year_extrapolation_is_constant_two_year_hazard": True,
             "all_demographics_scored_but_not_selectable": True,
