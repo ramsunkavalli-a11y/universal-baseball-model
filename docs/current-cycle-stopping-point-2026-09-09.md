@@ -1,6 +1,27 @@
-# Current cycle stopping point — 2026-09-09
+# Current cycle stopping point — updated 2026-09-10
 
 Status: clean handoff; private preview works, publication remains blocked.
+
+## September 10 continuation
+
+- The repo plan now includes lessons from comparable GitHub projection systems:
+  component-specific reliability must earn its complexity, attrition belongs in the
+  score, and downstream WAR matters more than an isolated component gain.
+- The complete next-season denominator is implemented and tested. It retains 5,018
+  observed non-returners instead of silently removing them from aging evaluation.
+- Component-specific pitcher shrinkage failed 2025 stability; keep 800 BF.
+- Component-specific hitter shrinkage improved point scores but missed the fixed
+  uncertainty gate; keep 1,200 PA.
+- Tango pitcher aging beat no aging in the frozen 2025 joint replay. Retain it.
+- The generic Marcel hitter age adjustment lost to no aging in the same type of replay.
+  No current value changed; no aging is the frozen 2026 challenger.
+- Both 2026 aging comparisons are stored as immutable, hash-checked forecasts. Do not
+  open partial 2026 results or alter their gates.
+
+Next: after the completed regular season, run the already frozen opportunity and aging
+confirmations. Before then, useful model work requires broader historical affiliated
+data or a genuinely new cutoff-safe process source; do not mine more 2024–2025
+shrinkage combinations.
 
 ## What is now in place
 

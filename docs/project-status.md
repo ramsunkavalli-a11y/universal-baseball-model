@@ -2,6 +2,32 @@
 
 Updated 2026-09-10. This is the current start-here document.
 
+## Latest model-method block: aging, attrition and shrinkage
+
+The [GitHub implementation review](github-projection-methods-review-2026-09-10.md)
+is incorporated into the active plan. A new complete next-season transition table
+retains inactivity and right censoring: 5,018 of 21,742 observed MLB source
+player-seasons have zero MLB workload the next year. Conditional skill remains
+separate, but future aging changes must also pass this zero-inclusive production
+score.
+
+Component-specific affiliated shrinkage does not change production. The pitcher
+candidate improved 2024 and reversed on 2025, so the 800-BF prior remains. The hitter
+candidate improved both point scores but mostly reproduced the simpler 400-PA result
+and narrowly missed its Brier uncertainty gate, so 1,200 PA remains.
+
+The joint 2025 replay supports Tango pitcher aging over no aging: it improves component
+loss and zero-inclusive WAR MAE and removes 19.0 WAR of optimism. The generic Marcel
+hitter age multiplier fails the parallel diagnostic; no aging improves every point
+metric and removes 35.1 WAR of optimism. Current values remain unchanged because the
+counterfactuals were created after 2025 outcomes were disclosed.
+
+Protected 2026 confirmation forecasts are now hash-frozen before final outcomes. The
+hitter test compares Marcel with no aging on 3,907 identical rows; the pitcher test
+compares Tango with no aging on 5,206. Do not score either until the regular season is
+complete and official totals have stabilized. Their fixed contracts prohibit rescue
+tuning and retain non-returners as zero production.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes
