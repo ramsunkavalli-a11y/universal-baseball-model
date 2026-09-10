@@ -1,0 +1,495 @@
+{
+  "as_of_date": "2026-09-09",
+  "boundaries": {
+    "non_arrivals_included": false,
+    "organization_or_depth_used": false,
+    "outside_fv_used": false,
+    "subjective_position_adjustment_used": false
+  },
+  "chronology": {
+    "destination_horizon_years": 2,
+    "development_evaluate_origin_year": 2022,
+    "development_train_origin_years": [
+      2021
+    ],
+    "outer_evaluate_origin_year": 2023,
+    "outer_train_origin_years": [
+      2021,
+      2022
+    ]
+  },
+  "cohort_players": {
+    "2021": 601,
+    "2022": 585,
+    "2023": 576
+  },
+  "contract": "docs/prospect-position-transition-plan.md",
+  "decision": {
+    "private_transition_sensitivity_authorized": true,
+    "published_value_change_authorized": false
+  },
+  "development": [
+    {
+      "baseline": {
+        "accuracy": 0.3572649572649573,
+        "brier": 0.7530923375060962,
+        "log_loss": 1.4824050746909059,
+        "players": 585
+      },
+      "candidate": {
+        "accuracy": 0.7299145299145299,
+        "brier": 0.4042664044180715,
+        "log_loss": 0.8209195086095614,
+        "players": 585
+      },
+      "marginal": {
+        "C": 0.15327257663628832,
+        "CORNER": 0.18309859154929578,
+        "MIDDLE_INFIELD": 0.22618061309030654,
+        "OTHER": 0.043910521955260975,
+        "OUTFIELD": 0.39353769676884837
+      },
+      "prior_weight": 10.0,
+      "transition_counts": {
+        "C": {
+          "C": 89,
+          "CORNER": 1,
+          "MIDDLE_INFIELD": 1,
+          "OTHER": 3,
+          "OUTFIELD": 4
+        },
+        "CORNER": {
+          "C": 2,
+          "CORNER": 68,
+          "MIDDLE_INFIELD": 23,
+          "OTHER": 10,
+          "OUTFIELD": 11
+        },
+        "MIDDLE_INFIELD": {
+          "C": 0,
+          "CORNER": 32,
+          "MIDDLE_INFIELD": 109,
+          "OTHER": 1,
+          "OUTFIELD": 21
+        },
+        "OTHER": {
+          "C": 1,
+          "CORNER": 1,
+          "MIDDLE_INFIELD": 1,
+          "OTHER": 1,
+          "OUTFIELD": 2
+        },
+        "OUTFIELD": {
+          "C": 0,
+          "CORNER": 8,
+          "MIDDLE_INFIELD": 2,
+          "OTHER": 11,
+          "OUTFIELD": 199
+        }
+      },
+      "transition_probabilities": {
+        "C": {
+          "C": 0.8382659793181749,
+          "CORNER": 0.026212832550860724,
+          "MIDDLE_INFIELD": 0.030201908619472827,
+          "OTHER": 0.031843566847709344,
+          "OUTFIELD": 0.07347571266378226
+        },
+        "CORNER": {
+          "C": 0.02848972392228132,
+          "CORNER": 0.5631531122217174,
+          "MIDDLE_INFIELD": 0.20372424299115374,
+          "OTHER": 0.08418633241574686,
+          "OUTFIELD": 0.12044658844910068
+        },
+        "MIDDLE_INFIELD": {
+          "C": 0.008859686510768112,
+          "CORNER": 0.1955548318814622,
+          "MIDDLE_INFIELD": 0.6431318273462605,
+          "OTHER": 0.008318527280650924,
+          "OUTFIELD": 0.14413512698085829
+        },
+        "OTHER": {
+          "C": 0.15829536039768022,
+          "CORNER": 0.17693661971830987,
+          "MIDDLE_INFIELD": 0.20386288318144158,
+          "OTHER": 0.08994407622203811,
+          "OUTFIELD": 0.37096106048053024
+        },
+        "OUTFIELD": {
+          "C": 0.0066640250711429705,
+          "CORNER": 0.04274341702388242,
+          "MIDDLE_INFIELD": 0.01852959187349159,
+          "OTHER": 0.04973524008501135,
+          "OUTFIELD": 0.8823277259464717
+        }
+      }
+    },
+    {
+      "baseline": {
+        "accuracy": 0.3572649572649573,
+        "brier": 0.7530923375060962,
+        "log_loss": 1.4824050746909059,
+        "players": 585
+      },
+      "candidate": {
+        "accuracy": 0.7299145299145299,
+        "brier": 0.4114503892690254,
+        "log_loss": 0.842817509877948,
+        "players": 585
+      },
+      "marginal": {
+        "C": 0.15327257663628832,
+        "CORNER": 0.18309859154929578,
+        "MIDDLE_INFIELD": 0.22618061309030654,
+        "OTHER": 0.043910521955260975,
+        "OUTFIELD": 0.39353769676884837
+      },
+      "prior_weight": 25.0,
+      "transition_counts": {
+        "C": {
+          "C": 89,
+          "CORNER": 1,
+          "MIDDLE_INFIELD": 1,
+          "OTHER": 3,
+          "OUTFIELD": 4
+        },
+        "CORNER": {
+          "C": 2,
+          "CORNER": 68,
+          "MIDDLE_INFIELD": 23,
+          "OTHER": 10,
+          "OUTFIELD": 11
+        },
+        "MIDDLE_INFIELD": {
+          "C": 0,
+          "CORNER": 32,
+          "MIDDLE_INFIELD": 109,
+          "OTHER": 1,
+          "OUTFIELD": 21
+        },
+        "OTHER": {
+          "C": 1,
+          "CORNER": 1,
+          "MIDDLE_INFIELD": 1,
+          "OTHER": 1,
+          "OUTFIELD": 2
+        },
+        "OUTFIELD": {
+          "C": 0,
+          "CORNER": 8,
+          "MIDDLE_INFIELD": 2,
+          "OTHER": 11,
+          "OUTFIELD": 199
+        }
+      },
+      "transition_probabilities": {
+        "C": {
+          "C": 0.7547301985033106,
+          "CORNER": 0.04534524218481622,
+          "MIDDLE_INFIELD": 0.05410175062811109,
+          "OTHER": 0.03331514673887418,
+          "OUTFIELD": 0.11250766194488789
+        },
+        "CORNER": {
+          "C": 0.04195549939501588,
+          "CORNER": 0.5221400344513122,
+          "MIDDLE_INFIELD": 0.20614759228242924,
+          "OTHER": 0.07984002193439946,
+          "OUTFIELD": 0.14991685193684323
+        },
+        "MIDDLE_INFIELD": {
+          "C": 0.02038199157397451,
+          "CORNER": 0.19456098291878932,
+          "MIDDLE_INFIELD": 0.609864443230094,
+          "OTHER": 0.011158314089795342,
+          "OUTFIELD": 0.16403426818734687
+        },
+        "OTHER": {
+          "C": 0.15586498115829703,
+          "CORNER": 0.1799182189913676,
+          "MIDDLE_INFIELD": 0.21466178475024722,
+          "OTHER": 0.06766977577037175,
+          "OUTFIELD": 0.3818852393297164
+        },
+        "OUTFIELD": {
+          "C": 0.015640058840437582,
+          "CORNER": 0.051336590974417944,
+          "MIDDLE_INFIELD": 0.031242919703092505,
+          "OTHER": 0.049378624689312346,
+          "OUTFIELD": 0.8524018057927397
+        }
+      }
+    },
+    {
+      "baseline": {
+        "accuracy": 0.3572649572649573,
+        "brier": 0.7530923375060962,
+        "log_loss": 1.4824050746909059,
+        "players": 585
+      },
+      "candidate": {
+        "accuracy": 0.7299145299145299,
+        "brier": 0.4278251117746194,
+        "log_loss": 0.8819471929163916,
+        "players": 585
+      },
+      "marginal": {
+        "C": 0.15327257663628832,
+        "CORNER": 0.18309859154929578,
+        "MIDDLE_INFIELD": 0.22618061309030654,
+        "OTHER": 0.043910521955260975,
+        "OUTFIELD": 0.39353769676884837
+      },
+      "prior_weight": 50.0,
+      "transition_counts": {
+        "C": {
+          "C": 89,
+          "CORNER": 1,
+          "MIDDLE_INFIELD": 1,
+          "OTHER": 3,
+          "OUTFIELD": 4
+        },
+        "CORNER": {
+          "C": 2,
+          "CORNER": 68,
+          "MIDDLE_INFIELD": 23,
+          "OTHER": 10,
+          "OUTFIELD": 11
+        },
+        "MIDDLE_INFIELD": {
+          "C": 0,
+          "CORNER": 32,
+          "MIDDLE_INFIELD": 109,
+          "OTHER": 1,
+          "OUTFIELD": 21
+        },
+        "OTHER": {
+          "C": 1,
+          "CORNER": 1,
+          "MIDDLE_INFIELD": 1,
+          "OTHER": 1,
+          "OUTFIELD": 2
+        },
+        "OUTFIELD": {
+          "C": 0,
+          "CORNER": 8,
+          "MIDDLE_INFIELD": 2,
+          "OTHER": 11,
+          "OUTFIELD": 199
+        }
+      },
+      "transition_probabilities": {
+        "C": {
+          "C": 0.6531326272419893,
+          "CORNER": 0.06861438903692425,
+          "MIDDLE_INFIELD": 0.08316912604402248,
+          "OTHER": 0.03510490606596654,
+          "OUTFIELD": 0.15997895161109743
+        },
+        "CORNER": {
+          "C": 0.058924566047648876,
+          "CORNER": 0.4704568876674682,
+          "MIDDLE_INFIELD": 0.2092014064299715,
+          "OTHER": 0.0743629640107503,
+          "OUTFIELD": 0.1870541758441611
+        },
+        "MIDDLE_INFIELD": {
+          "C": 0.03597947808363575,
+          "CORNER": 0.19321563181908352,
+          "MIDDLE_INFIELD": 0.5648311298334053,
+          "OTHER": 0.015002469942549525,
+          "OUTFIELD": 0.1909712903213259
+        },
+        "OTHER": {
+          "C": 0.1547076577109717,
+          "CORNER": 0.1813380281690141,
+          "MIDDLE_INFIELD": 0.21980411883063083,
+          "OTHER": 0.05706296603148302,
+          "OUTFIELD": 0.38708722925790034
+        },
+        "OUTFIELD": {
+          "C": 0.02838381048820154,
+          "CORNER": 0.06353677621283256,
+          "MIDDLE_INFIELD": 0.04929270612783455,
+          "OTHER": 0.048872318880603886,
+          "OUTFIELD": 0.8099143882905275
+        }
+      }
+    }
+  ],
+  "development_candidate_passed": true,
+  "outer": {
+    "baseline": {
+      "accuracy": 0.3697916666666667,
+      "brier": 0.7510787106217692,
+      "log_loss": 1.4885889803548136,
+      "players": 576
+    },
+    "candidate": {
+      "accuracy": 0.7517361111111112,
+      "brier": 0.402937517648452,
+      "log_loss": 0.8114211549684716,
+      "players": 576
+    },
+    "marginal": {
+      "C": 0.14850652082456878,
+      "CORNER": 0.19899032393773664,
+      "MIDDLE_INFIELD": 0.22675641564997898,
+      "OTHER": 0.05006310475389146,
+      "OUTFIELD": 0.37568363483382416
+    },
+    "prior_weight": 10.0,
+    "transition_counts": {
+      "C": {
+        "C": 165,
+        "CORNER": 2,
+        "MIDDLE_INFIELD": 1,
+        "OTHER": 5,
+        "OUTFIELD": 6
+      },
+      "CORNER": {
+        "C": 5,
+        "CORNER": 133,
+        "MIDDLE_INFIELD": 39,
+        "OTHER": 20,
+        "OUTFIELD": 22
+      },
+      "MIDDLE_INFIELD": {
+        "C": 0,
+        "CORNER": 78,
+        "MIDDLE_INFIELD": 216,
+        "OTHER": 6,
+        "OUTFIELD": 38
+      },
+      "OTHER": {
+        "C": 6,
+        "CORNER": 6,
+        "MIDDLE_INFIELD": 4,
+        "OTHER": 8,
+        "OUTFIELD": 8
+      },
+      "OUTFIELD": {
+        "C": 0,
+        "CORNER": 17,
+        "MIDDLE_INFIELD": 9,
+        "OTHER": 20,
+        "OUTFIELD": 372
+      }
+    },
+    "transition_probabilities": {
+      "C": {
+        "C": 0.8808733608901889,
+        "CORNER": 0.021110599150144797,
+        "MIDDLE_INFIELD": 0.017288699240739627,
+        "OTHER": 0.029103867976396372,
+        "OUTFIELD": 0.05162347274253038
+      },
+      "CORNER": {
+        "C": 0.028319062044740995,
+        "CORNER": 0.5894755599972811,
+        "MIDDLE_INFIELD": 0.18020770374017375,
+        "OTHER": 0.08952240632113062,
+        "OUTFIELD": 0.11247526789667353
+      },
+      "MIDDLE_INFIELD": {
+        "C": 0.004267428759326689,
+        "CORNER": 0.22985604379131427,
+        "MIDDLE_INFIELD": 0.6272056441278729,
+        "OTHER": 0.01867997427453711,
+        "OUTFIELD": 0.11999090904694897
+      },
+      "OTHER": {
+        "C": 0.178215838291564,
+        "CORNER": 0.1902357914137468,
+        "MIDDLE_INFIELD": 0.14922771801189974,
+        "OTHER": 0.20239597732235512,
+        "OUTFIELD": 0.2799246749604343
+      },
+      "OUTFIELD": {
+        "C": 0.003469778523938523,
+        "CORNER": 0.044368932802283566,
+        "MIDDLE_INFIELD": 0.026326084477803244,
+        "OTHER": 0.04789867067181989,
+        "OUTFIELD": 0.8779365335241548
+      }
+    }
+  },
+  "outer_candidate_calibration": [
+    {
+      "bin": 1,
+      "mean_probability": 0.008993647008954834,
+      "observed_rate": 0.008680555555555556,
+      "predictions": 576
+    },
+    {
+      "bin": 2,
+      "mean_probability": 0.02683513358319685,
+      "observed_rate": 0.029513888888888888,
+      "predictions": 576
+    },
+    {
+      "bin": 3,
+      "mean_probability": 0.05618513511554993,
+      "observed_rate": 0.06944444444444445,
+      "predictions": 576
+    },
+    {
+      "bin": 4,
+      "mean_probability": 0.16601174220286838,
+      "observed_rate": 0.140625,
+      "predictions": 576
+    },
+    {
+      "bin": 5,
+      "mean_probability": 0.74197434208943,
+      "observed_rate": 0.7517361111111112,
+      "predictions": 576
+    }
+  ],
+  "outer_paired_bootstrap": {
+    "brier": {
+      "ci_high": -0.3068193928662317,
+      "ci_low": -0.3893175203027998,
+      "difference": -0.3481411929733172,
+      "probability_candidate_better": 1.0
+    },
+    "log_loss": {
+      "ci_high": -0.6031284301896497,
+      "ci_low": -0.7478510241639817,
+      "difference": -0.6771678253863418,
+      "probability_candidate_better": 1.0
+    },
+    "resamples": 2000
+  },
+  "outer_retention_by_origin": [
+    {
+      "origin_group": "C",
+      "players": 92,
+      "retention_rate": 0.8586956521739131
+    },
+    {
+      "origin_group": "CORNER",
+      "players": 105,
+      "retention_rate": 0.6571428571428571
+    },
+    {
+      "origin_group": "MIDDLE_INFIELD",
+      "players": 164,
+      "retention_rate": 0.6585365853658537
+    },
+    {
+      "origin_group": "OTHER",
+      "players": 12,
+      "retention_rate": 0.4166666666666667
+    },
+    {
+      "origin_group": "OUTFIELD",
+      "players": 203,
+      "retention_rate": 0.8374384236453202
+    }
+  ],
+  "report_schema_version": "0.1",
+  "selected_prior_weight": 10.0,
+  "status": "prospect_position_transition_outer_test_complete"
+}

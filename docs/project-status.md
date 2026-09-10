@@ -25,6 +25,12 @@ still identifies catcher crowding, but the replay proves that primary-position s
 cannot be used as rigid quotas. Catcher receives no talent bonus or penalty. Flexible
 multi-position assignment is Phase 2 research, not a current valuation input.
 
+The [minor-to-MLB position-transition test](prospect-position-transition-result.md)
+now passes its time-ordered outer gate. Among 576 arriving hitters, the regressed
+origin-position matrix improved multiclass log loss from 1.489 to 0.811 and Brier from
+0.751 to 0.403. Catchers retained catcher in 85.9% of observed cases. This authorizes
+a private probabilistic-position sensitivity, not a catcher haircut or published change.
+
 The [established-tier prospect test](prospect-established-tier-test-result.md) is also
 rejected. Mature fringe/meaningful/established workload priors are usable, but three
 separately fitted probabilities violate their required ordering and flatten credible
