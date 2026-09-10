@@ -29,9 +29,9 @@ confirmed only if it:
 
 1. has lower full-distribution negative log likelihood than U0/P0;
 2. has participation log loss no worse than U0/P0;
-3. has opportunity MAE no more than 2% worse than U0/P0;
+3. has expected-opportunity mean squared error no more than 2% worse than U0/P0;
 4. has participation Brier error no worse than the incumbent historical cohort;
-5. has opportunity MAE no worse than the incumbent; and
+5. has expected-opportunity mean squared error no worse than the incumbent; and
 6. has absolute league-mean opportunity error no worse than the incumbent.
 
 There is no rescue tuning, player exclusion, cap or subgroup override after targets are
@@ -39,9 +39,11 @@ read. Subgroups may diagnose a result but cannot change it. A failed component r
 its prior production baseline. A passing component may be called confirmed only for
 the one-year opportunity task; multi-horizon packages remain development evidence.
 
+Opportunity MAE may be reported descriptively but cannot select this expected-PA/BF
+forecast because it targets the conditional median rather than the conditional mean.
+
 ## Timing and boundary
 
 Do not run the target join on partial 2026 totals. Run it only after the scheduled MLB
 regular season is complete and official totals have stabilized. Postseason statistics
 are excluded. Team depth, future team and names are forbidden.
-

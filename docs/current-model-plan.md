@@ -192,6 +192,11 @@ zero-inclusive squared error and squared-error age-band guardrails. Component lo
 and aggregate bias remain. Forecast values are unchanged and re-frozen only to update
 the contract hashes.
 
+The protected 2026 opportunity confirmation is corrected on the same pre-outcome
+boundary. Full hurdle-count likelihood remains the primary distribution score;
+expected PA/BF now uses mean squared error and aggregate bias rather than a median-
+targeting MAE veto. The 3,907 hitter and 5,206 pitcher forecast rows are unchanged.
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

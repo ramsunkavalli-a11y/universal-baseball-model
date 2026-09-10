@@ -180,3 +180,7 @@ The protected 2026 aging gates were also repaired before outcomes. Hitter and pi
 forecast parquets are unchanged; their reports now bind amended contracts that use
 paired squared error for expected WAR instead of median-targeting MAE. Component log
 loss, aggregate bias and supported age-band safeguards remain frozen.
+
+The protected 2026 opportunity gate now follows the same rule without changing any
+forecast row: full hurdle-count likelihood remains primary, and expected PA/BF is
+guarded by mean squared error plus aggregate bias. MAE remains descriptive only.

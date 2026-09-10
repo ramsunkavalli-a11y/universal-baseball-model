@@ -41,6 +41,9 @@ def test_fixed_confirmation_rule_passes_better_selected_model() -> None:
     assert result.confirmed is True
     assert all(result.gates.values())
     assert result.metrics.height == 3
+    assert "opportunity_mse" in result.metrics.columns
+    assert "mse_no_worse_than_incumbent" in result.gates
+    assert "mae_no_worse_than_incumbent" not in result.gates
 
 
 def test_fixed_confirmation_rule_fails_worse_selected_model() -> None:
@@ -62,4 +65,3 @@ def test_fixed_confirmation_rule_fails_worse_selected_model() -> None:
 
     assert result.confirmed is False
     assert not all(result.gates.values())
-

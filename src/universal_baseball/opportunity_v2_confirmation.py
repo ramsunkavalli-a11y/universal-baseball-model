@@ -138,6 +138,10 @@ def _metrics(
             abs(expected[index] - observed[index]) for index in range(count)
         )
         / count,
+        "opportunity_mse": sum(
+            (expected[index] - observed[index]) ** 2 for index in range(count)
+        )
+        / count,
         "observed_mean_opportunity": mean_observed,
         "predicted_mean_opportunity": mean_predicted,
         "absolute_mean_error": abs(mean_predicted - mean_observed),
@@ -185,17 +189,17 @@ def evaluate_opportunity_confirmation(
             float(selected_metrics["participation_log_loss"])
             <= float(baseline_metrics["participation_log_loss"])
         ),
-        "mae_within_two_percent_of_parametric_baseline": (
-            float(selected_metrics["opportunity_mae"])
-            <= float(baseline_metrics["opportunity_mae"]) * 1.02
+        "mse_within_two_percent_of_parametric_baseline": (
+            float(selected_metrics["opportunity_mse"])
+            <= float(baseline_metrics["opportunity_mse"]) * 1.02
         ),
         "brier_no_worse_than_incumbent": (
             float(selected_metrics["participation_brier"])
             <= float(incumbent_metrics["participation_brier"])
         ),
-        "mae_no_worse_than_incumbent": (
-            float(selected_metrics["opportunity_mae"])
-            <= float(incumbent_metrics["opportunity_mae"])
+        "mse_no_worse_than_incumbent": (
+            float(selected_metrics["opportunity_mse"])
+            <= float(incumbent_metrics["opportunity_mse"])
         ),
         "absolute_mean_error_no_worse_than_incumbent": (
             float(selected_metrics["absolute_mean_error"])

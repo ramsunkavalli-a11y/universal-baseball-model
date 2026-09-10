@@ -34,6 +34,11 @@ median; paired zero-inclusive squared error and age-band squared-error guardrail
 its place. Component log loss and aggregate bias remain. The 3,907 hitter and 5,206
 pitcher prediction files are byte-identical; only their contract hashes were re-frozen.
 
+The protected 2026 opportunity evaluator is corrected too. Its frozen forecasts are
+unchanged. Full hurdle-count likelihood and participation scores still test the
+distribution; expected PA/BF now uses mean squared error and aggregate bias. MAE is
+retained only as a description of typical absolute error.
+
 The first Phase 2 survivor-bias test is complete. An age-by-prior-workload pitcher
 return model materially improves 2022–2025 probability scores over one population
 rate. Using it to reweight observed adjacent-season pairs slightly improves the fitted

@@ -54,3 +54,8 @@ outcome was loaded. Their selection gates now use component log loss, paired zer
 inclusive squared error, aggregate bias and supported age-band squared-error
 guardrails. MAE remains descriptive only. The frozen predictions themselves did not
 change; their reports were regenerated solely to bind the amended contract hashes.
+
+The protected 2026 opportunity confirmation follows the same rule. Its full hurdle-
+count negative log likelihood remains the primary distribution score, while expected
+PA/BF is guarded by mean squared error and aggregate bias. MAE is descriptive only.
+The already-frozen 2026 opportunity predictions did not change.
