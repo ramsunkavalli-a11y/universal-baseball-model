@@ -4,6 +4,7 @@ import polars as pl
 import pytest
 
 from universal_baseball.prospect_outcome_quality import (
+    build_post_debut_annual_workload_paths,
     build_post_debut_workload_paths,
     summarize_three_tier_workload_priors,
     summarize_workload_priors,
@@ -69,6 +70,37 @@ def test_pitcher_paths_assign_role_and_keep_regular_seasons_diagnostic() -> None
     assert source == "pooled"
     three_tier = summarize_three_tier_workload_priors(result)
     assert set(three_tier.get_column("outcome_tier")) == {"established"}
+
+    annual = build_post_debut_annual_workload_paths(
+        people, stats, player_type="pitcher", horizon=6
+    )
+    assert annual.get_column("path_year").to_list() == [1, 2, 3, 4, 5, 6]
+    assert annual.get_column("annual_role").to_list() == [
+        "starter", "starter", "inactive", "inactive", "inactive", "reliever"
+    ]
+    assert annual.get_column("adjusted_workload").sum() == pytest.approx(1370.0)
+
+
+def test_annual_paths_keep_inactive_years_and_later_return() -> None:
+    people = pl.DataFrame(
+        {"player_id": [1], "mlb_debut_date": [date(2016, 4, 1)]}
+    )
+    stats = pl.DataFrame(
+        {
+            "season": [2016, 2019, 2021],
+            "player_id": [1, 1, 999],
+            "batting_pa": [10, 25, 1],
+        }
+    )
+    annual = build_post_debut_annual_workload_paths(
+        people, stats, player_type="hitter", horizon=6
+    )
+    assert annual.get_column("adjusted_workload").to_list() == [
+        10.0, 0.0, 0.0, 25.0, 0.0, 0.0
+    ]
+    assert annual.get_column("active").to_list() == [
+        True, False, False, True, False, False
+    ]
 
 
 def test_outcome_quality_requires_complete_cohort() -> None:

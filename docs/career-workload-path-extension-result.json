@@ -1,8 +1,11 @@
 {
+  "annual_rows": 23670,
   "boundaries": {
+    "annual_sequence_and_zero_years_retained": true,
     "current_2026_outcomes_used": false,
     "current_values_changed": false,
     "exact_official_debut_dates": true,
+    "pitcher_annual_role_transitions_retained": true,
     "shortened_2020_scaled_162_over_60": true,
     "six_calendar_year_paths": true
   },
@@ -21,12 +24,23 @@
   ],
   "status": "extended_mature_workload_paths_complete",
   "storage": {
-    "canonical_schema_version": "0.1",
-    "file_sha256": "2cb26070366e1964fcecc6e028e65e1b1e2b0e17a347435a915ebd336b0e437f",
-    "file_size_bytes": 33751,
-    "path": "reports\\generated\\prospect-outcome-quality-2009-2025\\post-debut-workload-paths.parquet",
-    "row_count": 3945,
-    "schema_sha256": "f4445d7a4a43e1b2666fb87a070cf95203f3aad8a8a037b6b0debebc1baa5772",
-    "table_name": "extended_prospect_post_debut_workload_paths"
+    "annual_paths": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "dd8db40f740e3322e9748e6575ee6bb9e2d30d230131e7f7eb1305766edce7ec",
+      "file_size_bytes": 85290,
+      "path": "reports\\generated\\prospect-outcome-quality-2009-2025\\post-debut-annual-workload-paths.parquet",
+      "row_count": 23670,
+      "schema_sha256": "ac24ab911fbd9ffa5af4e2c6108a8f1ba3df0a08a1584d1a7ddecab6c8649fce",
+      "table_name": "extended_prospect_post_debut_annual_workload_paths"
+    },
+    "career_summaries": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "2cb26070366e1964fcecc6e028e65e1b1e2b0e17a347435a915ebd336b0e437f",
+      "file_size_bytes": 33751,
+      "path": "reports\\generated\\prospect-outcome-quality-2009-2025\\post-debut-workload-paths.parquet",
+      "row_count": 3945,
+      "schema_sha256": "f4445d7a4a43e1b2666fb87a070cf95203f3aad8a8a037b6b0debebc1baa5772",
+      "table_name": "extended_prospect_post_debut_workload_paths"
+    }
   }
 }

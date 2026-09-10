@@ -131,6 +131,110 @@ def build_post_debut_workload_paths(
     )
 
 
+def build_post_debut_annual_workload_paths(
+    people: pl.DataFrame,
+    stats: pl.DataFrame,
+    *,
+    player_type: str,
+    horizon: int = 6,
+    shortened_2020_scale: float = SHORTENED_2020_SCALE,
+) -> pl.DataFrame:
+    """Retain each mature player's complete ordered post-debut workload vector."""
+
+    summaries = build_post_debut_workload_paths(
+        people,
+        stats,
+        player_type=player_type,
+        horizon=horizon,
+        shortened_2020_scale=shortened_2020_scale,
+    )
+    workload = "batting_pa" if player_type == "hitter" else "pitching_bf"
+    aggregations: list[pl.Expr] = [pl.col(workload).sum().alias("workload")]
+    if player_type == "pitcher":
+        aggregations.extend(
+            pl.col(column).sum().alias(output)
+            for column, output in (
+                ("pitching_games", "games"),
+                ("pitching_starts", "starts"),
+            )
+        )
+    season_stats = stats.group_by("player_id", "season").agg(*aggregations)
+    lookup = {
+        (int(row["player_id"]), int(row["season"])): row
+        for row in season_stats.iter_rows(named=True)
+    }
+    rows: list[dict[str, object]] = []
+    for summary in summaries.iter_rows(named=True):
+        player_id = int(summary["player_id"])
+        debut_year = int(summary["debut_year"])
+        for path_year in range(1, horizon + 1):
+            season = debut_year + path_year - 1
+            observed = lookup.get((player_id, season), {})
+            raw_workload = float(observed.get("workload") or 0.0)
+            adjusted_workload = raw_workload * (
+                shortened_2020_scale if season == 2020 else 1.0
+            )
+            games = float(observed.get("games") or 0.0)
+            starts = float(observed.get("starts") or 0.0)
+            if raw_workload <= 0:
+                annual_role = "inactive"
+            elif player_type == "hitter":
+                annual_role = "hitter"
+            elif games <= 0:
+                annual_role = "unknown"
+            elif starts == 0:
+                annual_role = "reliever"
+            elif starts * 2 >= games:
+                annual_role = "starter"
+            else:
+                annual_role = "swingman"
+            rows.append(
+                {
+                    "path_player_id": player_id,
+                    "player_type": player_type,
+                    "debut_year": debut_year,
+                    "window_end_year": int(summary["window_end_year"]),
+                    "outcome_tier_v2": str(summary["outcome_tier_v2"]),
+                    "career_role": str(summary["career_role"]),
+                    "path_year": path_year,
+                    "source_season": season,
+                    "adjusted_workload": adjusted_workload,
+                    "active": raw_workload > 0,
+                    "annual_role": annual_role,
+                    "games": games,
+                    "starts": starts,
+                    "shortened_2020_scale": shortened_2020_scale,
+                }
+            )
+    result = pl.DataFrame(rows, infer_schema_length=None).sort(
+        ["player_type", "debut_year", "path_player_id", "path_year"]
+    )
+    path_checks = result.group_by("path_player_id", "player_type").agg(
+        pl.len().alias("years"),
+        pl.col("path_year").n_unique().alias("unique_years"),
+        pl.col("adjusted_workload").sum().alias("annual_total"),
+    ).join(
+        summaries.select(
+            pl.col("player_id").alias("path_player_id"),
+            "player_type",
+            "adjusted_total_workload",
+        ),
+        on=["path_player_id", "player_type"],
+        how="inner",
+        validate="1:1",
+    )
+    if path_checks.height != summaries.height or path_checks.filter(
+        (pl.col("years") != horizon)
+        | (pl.col("unique_years") != horizon)
+        | (
+            (pl.col("annual_total") - pl.col("adjusted_total_workload")).abs()
+            > 1e-8
+        )
+    ).height:
+        raise RuntimeError("annual workload paths do not reconcile to career summaries")
+    return result
+
+
 def summarize_workload_priors(paths: pl.DataFrame) -> pl.DataFrame:
     """Summarize means and tails without dropping real high-workload careers."""
 

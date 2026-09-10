@@ -10,6 +10,7 @@ from pathlib import Path
 import polars as pl
 
 from universal_baseball.prospect_outcome_quality import (
+    build_post_debut_annual_workload_paths,
     build_post_debut_workload_paths,
 )
 from universal_baseball.storage import write_canonical_parquet
@@ -43,22 +44,47 @@ def main() -> int:
         player_type="pitcher",
     )
     paths = pl.concat([hitter, pitcher], how="vertical_relaxed")
+    annual_paths = pl.concat(
+        [
+            build_post_debut_annual_workload_paths(
+                people,
+                pl.read_parquet(tables / "mlb_batting_2009_2025.parquet"),
+                player_type="hitter",
+            ),
+            build_post_debut_annual_workload_paths(
+                people,
+                pl.read_parquet(tables / "mlb_pitching_2009_2025.parquet"),
+                player_type="pitcher",
+            ),
+        ],
+        how="vertical_relaxed",
+    )
     args.output_root.mkdir(parents=True, exist_ok=True)
-    storage = write_canonical_parquet(
-        paths,
-        args.output_root / "post-debut-workload-paths.parquet",
-        table_name="extended_prospect_post_debut_workload_paths",
-    ).as_record()
+    storage = {
+        "career_summaries": write_canonical_parquet(
+            paths,
+            args.output_root / "post-debut-workload-paths.parquet",
+            table_name="extended_prospect_post_debut_workload_paths",
+        ).as_record(),
+        "annual_paths": write_canonical_parquet(
+            annual_paths,
+            args.output_root / "post-debut-annual-workload-paths.parquet",
+            table_name="extended_prospect_post_debut_annual_workload_paths",
+        ).as_record(),
+    }
     report = {
         "report_schema_version": "0.1",
         "status": "extended_mature_workload_paths_complete",
         "source_seasons": [2009, 2025],
         "complete_debut_years": [2009, 2020],
         "players": {"hitter": hitter.height, "pitcher": pitcher.height},
+        "annual_rows": annual_paths.height,
         "storage": storage,
         "boundaries": {
             "exact_official_debut_dates": True,
             "six_calendar_year_paths": True,
+            "annual_sequence_and_zero_years_retained": True,
+            "pitcher_annual_role_transitions_retained": True,
             "shortened_2020_scaled_162_over_60": True,
             "current_2026_outcomes_used": False,
             "current_values_changed": False,
