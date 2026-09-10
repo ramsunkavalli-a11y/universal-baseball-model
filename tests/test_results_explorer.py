@@ -132,6 +132,8 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert "Known contract years only" in rendered
     assert "does not receive a rank" in rendered
     assert "Why this player is unranked" in rendered
+    assert "Linked-path status:" in rendered
+    assert "does not set the rank or main value" in rendered
 
 
 def test_latest_common_date_uses_only_complete_checkpoints(tmp_path) -> None:
