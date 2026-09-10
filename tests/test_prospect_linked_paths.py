@@ -53,6 +53,7 @@ def test_tail_sampler_preserves_blocks_and_resamples_only_after_divergence() -> 
                     "path_year": year,
                     "adjusted_workload": workload,
                     "raw_workload": workload,
+                    "active_mean_raw_workload": float(player_id * 200 + 100),
                     "observed_career_state": state,
                 }
             )
@@ -60,7 +61,6 @@ def test_tail_sampler_preserves_blocks_and_resamples_only_after_divergence() -> 
         np.random.default_rng(4),
         pl.DataFrame(rows),
         _coefficients(),
-        np.array([300.0, 300.0, 300.0]),
         player_type="hitter",
         initial_age_years=22.0,
         direct_established_probability=1.0,
@@ -68,6 +68,14 @@ def test_tail_sampler_preserves_blocks_and_resamples_only_after_divergence() -> 
     )
     assert result.adjusted_workload.shape == (32, 3)
     assert result.donor_player_ids.shape == (32, 3)
+    assert result.workload_vs_active_mean.shape == (32, 3)
+    donor_environment = np.vectorize({1: 300.0, 2: 500.0, 3: 700.0}.get)(
+        result.donor_player_ids
+    )
+    assert np.allclose(
+        result.workload_vs_active_mean,
+        result.raw_workload / donor_environment,
+    )
     assert result.tail_resamples > 0
     assert (np.diff(result.states, axis=1) >= 0).all()
     changed = result.donor_player_ids[:, 1] != result.donor_player_ids[:, 0]

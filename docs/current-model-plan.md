@@ -202,6 +202,9 @@ The whole-tail sampler is implemented. It keeps a donor career intact until the
 simulated state conflicts, then replaces only the remaining tail from a donor in the
 required state and keeps donor identity available for the matching role/performance
 join. It does not yet constitute a scored replay or change current values.
+Each selected or replacement tail now carries its own source-season MLB environment.
+Progression uses donor raw workload divided by that matching environment, avoiding an
+era-mixing error as league pitcher usage changes.
 
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero

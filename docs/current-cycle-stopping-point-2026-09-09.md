@@ -216,3 +216,5 @@ blocks and labels the 854 paths without birth-date evidence for a pooled fallbac
 The whole-tail resampling primitive is implemented and tested. Next supply the
 origin-specific fits, attach role/performance by returned donor identity, and score
 the disclosed 2021–2025 replay against both existing path baselines.
+The sampler carries the selected donor season's active-player environment with every
+tail, so relative workload never divides an older path by an unrelated modern mean.

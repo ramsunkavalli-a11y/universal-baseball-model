@@ -17,6 +17,7 @@ from universal_baseball.prospect_mlb_progression import (
 class LinkedPathDraws:
     adjusted_workload: np.ndarray
     raw_workload: np.ndarray
+    workload_vs_active_mean: np.ndarray
     states: np.ndarray
     donor_player_ids: np.ndarray
     tail_resamples: int
@@ -26,7 +27,6 @@ def simulate_linked_tail_blocks(
     rng: np.random.Generator,
     donor_paths: pl.DataFrame,
     coefficients: pl.DataFrame,
-    active_mean_raw_workload: np.ndarray,
     *,
     player_type: str,
     initial_age_years: float,
@@ -37,7 +37,7 @@ def simulate_linked_tail_blocks(
 
     required = {
         "path_player_id", "player_type", "path_year", "adjusted_workload",
-        "raw_workload", "observed_career_state",
+        "raw_workload", "active_mean_raw_workload", "observed_career_state",
     }
     if missing := sorted(required - set(donor_paths.columns)):
         raise ValueError(f"linked donor paths missing fields: {missing}")
@@ -56,12 +56,6 @@ def simulate_linked_tail_blocks(
         (pl.col("rows") != seasons) | (pl.col("years") != seasons)
     ).height:
         raise ValueError("linked donor paths must be complete and aligned")
-    environment = np.asarray(active_mean_raw_workload, dtype=float)
-    if environment.shape != (seasons,) or np.any(
-        ~np.isfinite(environment) | (environment <= 0.0)
-    ):
-        raise ValueError("linked path environment is invalid")
-
     groups = source.partition_by("path_player_id", maintain_order=True)
     player_ids = np.asarray(
         [int(group.item(0, "path_player_id")) for group in groups], dtype=np.int64
@@ -72,6 +66,12 @@ def simulate_linked_tail_blocks(
     raw_library = np.stack(
         [group["raw_workload"].to_numpy().astype(float) for group in groups]
     )
+    environment_library = np.stack(
+        [
+            group["active_mean_raw_workload"].to_numpy().astype(float)
+            for group in groups
+        ]
+    )
     state_library = np.stack(
         [
             np.asarray(
@@ -81,13 +81,21 @@ def simulate_linked_tail_blocks(
             for group in groups
         ]
     )
-    if np.any(~np.isfinite(adjusted_library)) or np.any(adjusted_library < 0.0):
+    if (
+        np.any(~np.isfinite(adjusted_library))
+        or np.any(adjusted_library < 0.0)
+        or np.any(~np.isfinite(raw_library))
+        or np.any(raw_library < 0.0)
+        or np.any(~np.isfinite(environment_library))
+        or np.any(environment_library <= 0.0)
+    ):
         raise ValueError("linked donor workloads are invalid")
 
     chosen = rng.integers(0, len(groups), size=draws)
     donor_indices = np.repeat(chosen[:, None], seasons, axis=1)
     adjusted = adjusted_library[chosen].copy()
     raw = raw_library[chosen].copy()
+    environment = environment_library[chosen].copy()
     states = np.zeros((draws, seasons), dtype=np.int8)
     states[:, 0] = state_library[chosen, 0]
     tail_resamples = 0
@@ -102,7 +110,7 @@ def simulate_linked_tail_blocks(
                 "elapsed_year": np.full(draws, year_index + 1),
                 "prior_mlb_active": (raw[:, year_index - 1] > 0.0).astype(np.int8),
                 "prior_workload_vs_active_mean": (
-                    raw[:, year_index - 1] / environment[year_index - 1]
+                    raw[:, year_index - 1] / environment[:, year_index - 1]
                 ),
             }
         )
@@ -152,6 +160,9 @@ def simulate_linked_tail_blocks(
                 donor_indices[target, year_index:] = replacement
                 adjusted[target, year_index:] = adjusted_library[replacement, year_index:]
                 raw[target, year_index:] = raw_library[replacement, year_index:]
+                environment[target, year_index:] = environment_library[
+                    replacement, year_index:
+                ]
             tail_resamples += targets.size
         states[:, year_index] = desired
     if np.any(np.diff(states, axis=1) < 0):
@@ -159,6 +170,7 @@ def simulate_linked_tail_blocks(
     return LinkedPathDraws(
         adjusted_workload=adjusted,
         raw_workload=raw,
+        workload_vs_active_mean=raw / environment,
         states=states,
         donor_player_ids=player_ids[donor_indices],
         tail_resamples=tail_resamples,
