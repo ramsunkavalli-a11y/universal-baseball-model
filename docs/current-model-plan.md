@@ -61,9 +61,11 @@ workload uncertainty fixed. Rolling prior-origin performance scaling raises
 conditional-WAR coverage from 71.8% to 81.5% for hitters and from 71.4% to 80.7% for
 pitchers while improving pooled interval score. The exact workload/performance mixture
 is implemented and improves the 2025 overall score without changing point estimates.
-The immediate P0 is rolling confirmation of that combined mixture, followed by a
-simulation-based whole-player combination. See the
-[conditional result](rolling-conditional-war-uncertainty-result.md).
+The combined mixture then improved interval score in every 2022–2025 origin for both
+components and is now in the private playable build. The 2023–2025 pooled improvement
+is 19.5% for hitters and 19.2% for pitchers. Point WAR and Model FV do not change; only
+WAR and contract-value ranges change. See the
+[combined result](rolling-combined-war-uncertainty-result.md).
 
 ## Goal
 

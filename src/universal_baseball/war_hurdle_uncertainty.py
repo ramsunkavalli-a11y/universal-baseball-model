@@ -11,7 +11,10 @@ import polars as pl
 from universal_baseball.player_value_uncertainty import (
     sample_hurdle_plate_appearances,
 )
-from universal_baseball.war_uncertainty_paths import COMPONENT_UNCERTAINTY_SCHEMA
+from universal_baseball.war_uncertainty_paths import (
+    COMPONENT_UNCERTAINTY_SCHEMA,
+    WHOLE_PLAYER_UNCERTAINTY_SCHEMA,
+)
 
 
 UNCERTAINTY_MODEL_ID = "zero_mass_active_normal_war_reference_v1"
@@ -177,7 +180,7 @@ def build_component_simulated_war_uncertainty(
     conditional_war_rate_column: str,
     workload_unit: float,
     runs_per_win: float,
-    nb_alpha: float,
+    nb_alpha: float | None = None,
     performance_standard_deviation_multiplier: float = 1.0,
     draws: int = 4_096,
     master_seed: int = 20250910,
@@ -199,12 +202,9 @@ def build_component_simulated_war_uncertainty(
     }
     if missing := sorted(required - set(paths.columns)):
         raise ValueError(f"{component} simulated uncertainty missing fields: {missing}")
-    scales = (
-        workload_unit,
-        runs_per_win,
-        nb_alpha,
-        performance_standard_deviation_multiplier,
-    )
+    scales = (workload_unit, runs_per_win, performance_standard_deviation_multiplier)
+    if nb_alpha is not None:
+        scales += (nb_alpha,)
     if any(not math.isfinite(value) or value <= 0 for value in scales) or draws <= 0:
         raise ValueError("simulated uncertainty scales and draws must be positive")
 
@@ -232,13 +232,28 @@ def build_component_simulated_war_uncertainty(
         rng = np.random.Generator(
             np.random.PCG64(np.random.SeedSequence([master_seed, player_id, season]))
         )
-        sampled_workload = sample_hurdle_plate_appearances(
-            rng,
-            draws=draws,
-            participation_probability=active_probability,
-            positive_truncated_mean=workload,
-            alpha=nb_alpha,
-        )
+        if nb_alpha is not None:
+            sampled_workload = sample_hurdle_plate_appearances(
+                rng,
+                draws=draws,
+                participation_probability=active_probability,
+                positive_truncated_mean=workload,
+                alpha=nb_alpha,
+            )
+            workload_distribution = "zero_truncated_nb2"
+        else:
+            participates = rng.random(draws) < active_probability
+            sampled_workload = np.zeros(draws, dtype=np.float64)
+            active_draws = int(participates.sum())
+            if workload_variance == 0:
+                sampled_workload[participates] = workload
+            elif active_draws:
+                shape = workload * workload / workload_variance
+                scale = workload_variance / workload
+                sampled_workload[participates] = rng.gamma(
+                    shape, scale, size=active_draws
+                )
+            workload_distribution = "moment_matched_gamma"
         pair_count = np.maximum(
             0.0, sampled_workload * sampled_workload - sampled_workload
         )
@@ -251,6 +266,8 @@ def build_component_simulated_war_uncertainty(
         )
         war = sampled_workload * war_rate + performance_noise
         quantiles = np.quantile(war, [0.10, 0.90], method="linear")
+        lower = min(float(quantiles[0]), point)
+        upper = max(float(quantiles[1]), point)
 
         active_pair_count = max(
             0.0, workload_variance + workload * workload - workload
@@ -275,16 +292,71 @@ def build_component_simulated_war_uncertainty(
                 "horizon": int(row["horizon"]),
                 "projection_component": component,
                 "projected_war_mean": point,
-                "projected_war_lower": float(quantiles[0]),
-                "projected_war_upper": float(quantiles[1]),
+                "projected_war_lower": lower,
+                "projected_war_upper": upper,
                 "annual_war_variance": opportunity_variance
                 + total_performance_variance,
                 "opportunity_war_variance": opportunity_variance,
                 "performance_war_variance": total_performance_variance,
                 "central_reference_coverage": CENTRAL_COVERAGE,
-                "uncertainty_model_id": SIMULATED_UNCERTAINTY_MODEL_ID,
+                "uncertainty_model_id": (
+                    f"{SIMULATED_UNCERTAINTY_MODEL_ID}:{workload_distribution}"
+                ),
             }
         )
     return pl.DataFrame(rows, schema=COMPONENT_UNCERTAINTY_SCHEMA).sort(
+        "player_id", "season"
+    )
+
+
+def build_whole_player_from_component_intervals(
+    components: pl.DataFrame,
+) -> pl.DataFrame:
+    """Preserve simulated single-component ranges; moment-combine two-way players."""
+
+    missing = sorted(set(COMPONENT_UNCERTAINTY_SCHEMA) - set(components.columns))
+    if missing:
+        raise ValueError(f"component uncertainty missing fields: {missing}")
+    source = components.select(list(COMPONENT_UNCERTAINTY_SCHEMA)).cast(
+        COMPONENT_UNCERTAINTY_SCHEMA, strict=True
+    )
+    rows = []
+    z80 = NormalDist().inv_cdf(0.90)
+    for group in source.partition_by("as_of_date", "player_id", "season"):
+        if group.height == 1:
+            row = group.row(0, named=True)
+            lower = float(row["projected_war_lower"])
+            upper = float(row["projected_war_upper"])
+            model_id = str(row["uncertainty_model_id"])
+        else:
+            variance = float(group.get_column("annual_war_variance").sum())
+            mean = float(group.get_column("projected_war_mean").sum())
+            spread = z80 * math.sqrt(variance)
+            lower, upper = mean - spread, mean + spread
+            model_id = f"{SIMULATED_UNCERTAINTY_MODEL_ID}:two_way_independent_moments"
+        rows.append(
+            {
+                "as_of_date": group.item(0, "as_of_date"),
+                "player_id": int(group.item(0, "player_id")),
+                "season": int(group.item(0, "season")),
+                "projected_war_mean": float(
+                    group.get_column("projected_war_mean").sum()
+                ),
+                "projected_war_lower": lower,
+                "projected_war_upper": upper,
+                "annual_war_variance": float(
+                    group.get_column("annual_war_variance").sum()
+                ),
+                "opportunity_war_variance": float(
+                    group.get_column("opportunity_war_variance").sum()
+                ),
+                "performance_war_variance": float(
+                    group.get_column("performance_war_variance").sum()
+                ),
+                "central_reference_coverage": CENTRAL_COVERAGE,
+                "uncertainty_model_id": model_id,
+            }
+        )
+    return pl.DataFrame(rows, schema=WHOLE_PLAYER_UNCERTAINTY_SCHEMA).sort(
         "player_id", "season"
     )

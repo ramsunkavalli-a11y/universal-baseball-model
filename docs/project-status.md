@@ -68,11 +68,12 @@ workload. Do not widen the workload model to compensate.
 That downstream split is now measured. Conditional performance ranges cover only
 71.8% of hitter and 71.4% of pitcher outcomes over the rolling 2023–2025 evaluation.
 A scale learned from prior origins raises those results to 81.5% and 80.7% and improves
-pooled interval score, with no change to means. Exact simulation of the resulting
-zero-activity/workload/performance mixture improves 2025 overall interval score versus
-the current bell-curve range for both components. The simulator is implemented, but
-the playable whole-player range remains unchanged until the combined mixture receives
-rolling confirmation and two-way players are combined by simulation.
+pooled interval score, with no change to means. The complete exact mixture then improves
+overall interval score in every 2022–2025 origin for both components. It is now in the
+private playable build and its revised uncertainty flows through contract-value low/high
+sensitivity. Point WAR, Model FV, salary and contract status are unchanged. The 22
+two-way players retain the prior independent-moments combination as a small explicit
+exception. See the [combined result](rolling-combined-war-uncertainty-result.md).
 
 The injury workload hierarchy is now validated out of time. Fit on 2022–2023 and
 scored unchanged on 548 players in 2024–2025, IL type plus elapsed time improves

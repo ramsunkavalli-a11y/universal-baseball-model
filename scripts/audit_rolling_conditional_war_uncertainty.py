@@ -17,6 +17,7 @@ from universal_baseball.historical_war_scoring import (
     score_hitter_neutral_war,
     score_pitcher_neutral_war,
 )
+from universal_baseball.storage import write_canonical_parquet
 from universal_baseball.war_uncertainty_validation import (
     summarize_interval_coverage,
     summarize_named_slices,
@@ -56,6 +57,7 @@ def _active_interval(
     rates: pl.DataFrame,
     *,
     workload_column: str,
+    rate_column: str,
 ) -> pl.DataFrame:
     source = scored.join(
         rates.select(
@@ -63,11 +65,12 @@ def _active_interval(
             "event_run_variance",
             "posterior_run_rate_variance",
             "evidence_tier",
+            rate_column,
         ),
         on="player_id",
         how="inner",
         validate="1:1",
-    ).filter(pl.col(workload_column) > 0)
+    )
     return source.with_columns(
         (
             (
@@ -128,7 +131,10 @@ def _fold(target: int, component: str, history: pl.DataFrame) -> pl.DataFrame:
             runs_per_win=RUNS_PER_WIN,
         )
         result = _active_interval(
-            scored, rates, workload_column="batting_plate_appearances"
+            scored,
+            rates,
+            workload_column="batting_plate_appearances",
+            rate_column="conditional_war_per_600_pa",
         )
     else:
         universe = pl.read_parquet(SOURCE / "pitcher_snapshots.parquet").filter(
@@ -172,12 +178,16 @@ def _fold(target: int, component: str, history: pl.DataFrame) -> pl.DataFrame:
             runs_per_win=RUNS_PER_WIN,
         )
         result = _active_interval(
-            scored, rates, workload_column="pitching_batters_faced"
+            scored,
+            rates,
+            workload_column="pitching_batters_faced",
+            rate_column="conditional_war_per_800_bf",
         )
     return result.with_columns(pl.lit(target).alias("target_season"))
 
 
-def _report(frame: pl.DataFrame) -> dict[str, object]:
+def _report(frame: pl.DataFrame, *, workload_column: str) -> dict[str, object]:
+    frame = frame.filter(pl.col(workload_column) > 0)
     calibrated_frames = []
     scale_rows = []
     for target in TARGETS:
@@ -268,8 +278,8 @@ def main() -> int:
         "report_schema_version": "0.1",
         "gate": "rolling_conditional_war_performance_uncertainty",
         "targets": list(TARGETS),
-        "hitter": _report(hitters),
-        "pitcher": _report(pitchers),
+        "hitter": _report(hitters, workload_column="batting_plate_appearances"),
+        "pitcher": _report(pitchers, workload_column="pitching_batters_faced"),
         "production_changed": False,
         "boundaries": {
             "observed_workload_used_only_to_isolate_rate_error": True,
@@ -278,6 +288,20 @@ def main() -> int:
             "runs_per_win": RUNS_PER_WIN,
             "nominal_central_coverage": 0.80,
         },
+    }
+    tables = OUTPUT / "tables"
+    tables.mkdir(parents=True, exist_ok=True)
+    report["storage"] = {
+        "hitter": write_canonical_parquet(
+            hitters,
+            tables / "hitter-rolling-conditional-war.parquet",
+            table_name="hitter_rolling_conditional_war_uncertainty",
+        ).as_record(),
+        "pitcher": write_canonical_parquet(
+            pitchers,
+            tables / "pitcher-rolling-conditional-war.parquet",
+            table_name="pitcher_rolling_conditional_war_uncertainty",
+        ).as_record(),
     }
     OUTPUT.mkdir(parents=True, exist_ok=True)
     (OUTPUT / "report.json").write_text(

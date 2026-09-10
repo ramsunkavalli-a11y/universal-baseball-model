@@ -1,6 +1,6 @@
 # Zero-mass WAR uncertainty diagnostic
 
-Status: exact mixture implemented; not yet promoted to whole-player playable ranges.
+Status: exact mixture promoted after rolling confirmation.
 
 The current Phase 1 range is a bell curve around expected WAR. That is structurally
 wrong for players with a meaningful chance of no MLB activity: the real forecast has
@@ -37,9 +37,12 @@ improves the current moment-normal interval score to 0.789 for hitters and 0.512
 pitchers, with no point-estimate change. See the
 [rolling conditional result](rolling-conditional-war-uncertainty-result.md).
 
-The remaining promotion gate is a rolling-origin test of the combined mixture and a
-correct simulation-based combination for two-way players. Do not add a second workload
-width correction: conditional workload already meets its coverage target.
+The rolling combined gate subsequently passed: interval score improved in every
+2022–2025 origin for both components. The private playable build now uses the exact
+zero mass and simulated positive distribution. Only the 22 two-way players retain an
+independent-moments combination. Do not add a second workload width correction:
+conditional workload already meets its coverage target. See the
+[combined result](rolling-combined-war-uncertainty-result.md).
 
 Reproduce with:
 
