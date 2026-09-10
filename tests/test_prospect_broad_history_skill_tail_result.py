@@ -22,6 +22,9 @@ def test_skill_tail_preserves_frozen_method_and_statistical_laws() -> None:
     assert protocol["frozen_plan_sha256"] == sha256(
         (ROOT / "docs/prospect-broad-history-skill-tail-plan.md").read_bytes()
     ).hexdigest()
+    assert protocol["cohort_correction_sha256"] == sha256(
+        (ROOT / "docs/prospect-broad-history-pre-mlb-cohort-correction.md").read_bytes()
+    ).hexdigest()
     assert all(report["law_checks"].values())
 
 
@@ -32,7 +35,7 @@ def test_skill_rates_help_basic_model_but_do_not_clear_gate() -> None:
     for player_type in ("hitter", "pitcher"):
         result = report["results"][player_type]
         assert result["gate_passed"] is False
-        assert all(value is False for value in result["candidate_beats_constant"].values())
+        assert result["candidate_beats_constant"]["modern"] is False
         assert sum(
             row["both_scores_improved"] for row in result["by_origin"].values()
         ) >= 5
@@ -56,4 +59,3 @@ def test_skill_rate_directions_are_baseball_coherent_but_not_causal() -> None:
     assert coefficients["hitter"]["rate_3"] > 0  # home runs
     assert coefficients["pitcher"]["rate_1"] > 0  # strikeouts
     assert coefficients["pitcher"]["rate_2"] < 0  # unintentional walks
-

@@ -75,7 +75,7 @@ from training because their outcomes overlap the first evaluation snapshot. One 
 was then fitted on 2008–2010 and applied unchanged to 2013–2017 and 2021–2023. Basic
 age, level, workload and role
 improve both probability scores in only 1/5 old hitter years and 0/3 modern hitter
-years; pitchers improve in 2/5 old years and 0/3 modern years. Pooled uncertainty
+years; pitchers improve in 4/5 old years and 0/3 modern years. Pooled uncertainty
 crosses zero, and many supported groups reverse. The
 [full result](prospect-broad-history-positive-tail-result.md) rejects this basic tail
 family and makes no production change. Do not tune these inputs again against the
@@ -92,16 +92,26 @@ baseline across old and modern eras.
 That test is now complete and rejected. The skill rates improve both scores over the
 basic model in 5/8 hitter years and 6/8 pitcher years, with sensible leading
 directions, but the pooled intervals are not consistently favorable, supported groups
-reverse, and neither full candidate beats the population-rate baseline in either era.
-This is evidence that the component rates contain useful signal, not evidence that the
-tested combination is ready. Production remains unchanged. Do not tune a rate-only or
-interaction variant on these disclosed years; preserve it for genuinely fresh data.
+reverse, and the population-rate gate fails. The pitcher candidate beats the constant
+in the old era, but not the modern era; the hitter candidate beats it in neither. This
+is evidence that the component rates
+contain useful signal, not evidence that the tested combination is ready. Production
+remains unchanged. Do not tune a rate-only or interaction variant on these disclosed
+years; preserve it for genuinely fresh data.
 
 A narrow [early-history confirmation](prospect-early-history-rate-only-plan.md) is now
 frozen before collecting its required component sources. It fits a rate-only model on
 2003 and tests unchanged 2006 and 2007 cohorts. The two gap years are unused. This is
 the last broad aggregate-rate test: it either supports the stripped hypothesis in an
 untouched old window or closes it, and it cannot by itself justify production use.
+
+The early-history test is complete and rejects the simple rate-only family. Hitter
+rates improve both proper scores in both 2006 and 2007, but pooled intervals cross zero
+and supported low-level and AAA groups reverse. Pitcher rates improve 2007 but worsen
+2006; their pooled intervals also cross zero. The full official-debut source covers all
+2,446 requested early-outcome players, so prior major leaguers are excluded. Preserve
+the positive hitter direction as uncertain research evidence, but do not fit another
+rate subset or change production values.
 
 ## Current P0: pitcher value funnel
 

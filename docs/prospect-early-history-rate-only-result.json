@@ -1,0 +1,829 @@
+{
+  "status": "prospect_early_history_rate_only_tested",
+  "as_of_date": "2026-09-10",
+  "decision": "reject_rate_only_family",
+  "decision_reasons": [
+    "hitter: 2/2 origins improve both scores; pooled_interval_pass=False; supported_reversals=2",
+    "pitcher: 1/2 origins improve both scores; pooled_interval_pass=False; supported_reversals=3"
+  ],
+  "production_changed": false,
+  "protocol": {
+    "training_origin": 2003,
+    "unused_gap_origins": [
+      2004,
+      2005
+    ],
+    "evaluation_origins": [
+      2006,
+      2007
+    ],
+    "horizon_years": 2,
+    "threshold_component_war": 0.25,
+    "logistic_c": 0.1,
+    "regression_opportunities": 200.0,
+    "frozen_plan_sha256": "06e64b529472976a2b673eb29ff88a9cb6a9d921e9ffdb51d1f856af5b0da69a"
+  },
+  "law_checks": {
+    "training_outcomes_end_before_first_evaluation_snapshot": true,
+    "gap_origins_unused": true,
+    "official_debut_coverage_complete": true,
+    "rate_means_and_scaler_training_only": true,
+    "no_evaluation_refit": true,
+    "negative_component_war_retained": true,
+    "no_basic_or_demographic_features": true,
+    "no_outside_fv": true,
+    "production_unchanged": true
+  },
+  "results": {
+    "hitter": {
+      "training": {
+        "players": 185,
+        "positive_players": 65,
+        "baseline_rate": 0.35135135135135137,
+        "rate_priors": {
+          "rate_1": 0.08325652995665618,
+          "rate_2": 0.18133110269613245,
+          "rate_3": 0.015125256289528695,
+          "rate_4": 0.06607260924445513
+        },
+        "regression_opportunities": 200.0
+      },
+      "standardized_coefficients": [
+        {
+          "feature": "rate_1",
+          "coefficient": 0.03213751734143139
+        },
+        {
+          "feature": "rate_2",
+          "coefficient": -0.24201299470361368
+        },
+        {
+          "feature": "rate_3",
+          "coefficient": 0.11189815440966086
+        },
+        {
+          "feature": "rate_4",
+          "coefficient": 0.42242189951394976
+        }
+      ],
+      "by_origin": {
+        "2006": {
+          "players": 194,
+          "positive_players": 59,
+          "negative_war_players": 100,
+          "baseline": {
+            "players": 194,
+            "observed_rate": 0.30412371134020616,
+            "predicted_rate": 0.3513513513513514,
+            "brier": 0.21386292952188743,
+            "log_loss": 0.6193236900297742
+          },
+          "candidate": {
+            "players": 194,
+            "observed_rate": 0.30412371134020616,
+            "predicted_rate": 0.35355280261921257,
+            "brier": 0.21058499685559579,
+            "log_loss": 0.6122701859666945
+          },
+          "candidate_calibration": {
+            "intercept": -0.4394181171861258,
+            "slope": 0.6383535755309142,
+            "reliability_bins": [
+              {
+                "bin": 1,
+                "players": 20,
+                "predicted_rate": 0.18247263486824955,
+                "observed_rate": 0.35
+              },
+              {
+                "bin": 2,
+                "players": 20,
+                "predicted_rate": 0.23298925883151383,
+                "observed_rate": 0.25
+              },
+              {
+                "bin": 3,
+                "players": 20,
+                "predicted_rate": 0.26457511460522987,
+                "observed_rate": 0.2
+              },
+              {
+                "bin": 4,
+                "players": 20,
+                "predicted_rate": 0.30044438866535456,
+                "observed_rate": 0.2
+              },
+              {
+                "bin": 5,
+                "players": 19,
+                "predicted_rate": 0.3301858053302685,
+                "observed_rate": 0.15789473684210525
+              },
+              {
+                "bin": 6,
+                "players": 19,
+                "predicted_rate": 0.35775973568803987,
+                "observed_rate": 0.3684210526315789
+              },
+              {
+                "bin": 7,
+                "players": 19,
+                "predicted_rate": 0.40399631721121027,
+                "observed_rate": 0.3157894736842105
+              },
+              {
+                "bin": 8,
+                "players": 19,
+                "predicted_rate": 0.43892611270844656,
+                "observed_rate": 0.3684210526315789
+              },
+              {
+                "bin": 9,
+                "players": 19,
+                "predicted_rate": 0.4826339176547533,
+                "observed_rate": 0.3157894736842105
+              },
+              {
+                "bin": 10,
+                "players": 19,
+                "predicted_rate": 0.5643726255504549,
+                "observed_rate": 0.5263157894736842
+              }
+            ]
+          },
+          "paired_bootstrap": {
+            "resamples": 2000,
+            "brier": {
+              "difference": -0.0032779326662916806,
+              "ci_low": -0.017948977286598146,
+              "ci_high": 0.011448070418923036,
+              "probability_candidate_better": 0.684
+            },
+            "log_loss": {
+              "difference": -0.007053504063079751,
+              "ci_low": -0.03949674027880807,
+              "ci_high": 0.026562105290195395,
+              "probability_candidate_better": 0.6705
+            }
+          },
+          "both_scores_improved": true
+        },
+        "2007": {
+          "players": 186,
+          "positive_players": 57,
+          "negative_war_players": 90,
+          "baseline": {
+            "players": 186,
+            "observed_rate": 0.3064516129032258,
+            "predicted_rate": 0.35135135135135137,
+            "brier": 0.2145550083649473,
+            "log_loss": 0.6207509368905009
+          },
+          "candidate": {
+            "players": 186,
+            "observed_rate": 0.3064516129032258,
+            "predicted_rate": 0.3732886981660834,
+            "brier": 0.21319514177048884,
+            "log_loss": 0.6181480658022103
+          },
+          "candidate_calibration": {
+            "intercept": -0.47704797500762935,
+            "slope": 0.6561918170460757,
+            "reliability_bins": [
+              {
+                "bin": 1,
+                "players": 19,
+                "predicted_rate": 0.20456538244082673,
+                "observed_rate": 0.3157894736842105
+              },
+              {
+                "bin": 2,
+                "players": 19,
+                "predicted_rate": 0.24283288261575212,
+                "observed_rate": 0.21052631578947367
+              },
+              {
+                "bin": 3,
+                "players": 19,
+                "predicted_rate": 0.28148211556892794,
+                "observed_rate": 0.2631578947368421
+              },
+              {
+                "bin": 4,
+                "players": 19,
+                "predicted_rate": 0.31629623660195216,
+                "observed_rate": 0.3157894736842105
+              },
+              {
+                "bin": 5,
+                "players": 19,
+                "predicted_rate": 0.35317402949281235,
+                "observed_rate": 0.15789473684210525
+              },
+              {
+                "bin": 6,
+                "players": 19,
+                "predicted_rate": 0.38946132172744385,
+                "observed_rate": 0.2631578947368421
+              },
+              {
+                "bin": 7,
+                "players": 18,
+                "predicted_rate": 0.4241337905579592,
+                "observed_rate": 0.16666666666666666
+              },
+              {
+                "bin": 8,
+                "players": 18,
+                "predicted_rate": 0.45864095976151353,
+                "observed_rate": 0.4444444444444444
+              },
+              {
+                "bin": 9,
+                "players": 18,
+                "predicted_rate": 0.5048437435478318,
+                "observed_rate": 0.4444444444444444
+              },
+              {
+                "bin": 10,
+                "players": 18,
+                "predicted_rate": 0.5825631982651909,
+                "observed_rate": 0.5
+              }
+            ]
+          },
+          "paired_bootstrap": {
+            "resamples": 2000,
+            "brier": {
+              "difference": -0.0013598665944585175,
+              "ci_low": -0.01748003767770953,
+              "ci_high": 0.013813684370653577,
+              "probability_candidate_better": 0.5615
+            },
+            "log_loss": {
+              "difference": -0.0026028710882905455,
+              "ci_low": -0.037081723074919706,
+              "ci_high": 0.030655197059579278,
+              "probability_candidate_better": 0.557
+            }
+          },
+          "both_scores_improved": true
+        }
+      },
+      "pooled": {
+        "players": 269,
+        "rows": 380,
+        "resamples": 2000,
+        "brier": {
+          "difference": -0.003371893597049844,
+          "ci_low": -0.015605288510506639,
+          "ci_high": 0.00897216784292009,
+          "probability_candidate_better": 0.6985
+        },
+        "log_loss": {
+          "difference": -0.006804645313848672,
+          "ci_low": -0.033894243175268936,
+          "ci_high": 0.020677602517523343,
+          "probability_candidate_better": 0.6875
+        }
+      },
+      "subgroups": [
+        {
+          "dimension": "age",
+          "group": "16-20",
+          "rows": 42,
+          "positive_rows": 21,
+          "supported": false,
+          "brier_difference": -0.004539254394706399,
+          "log_loss_difference": -0.004851299020403896,
+          "material_reversal": false
+        },
+        {
+          "dimension": "age",
+          "group": "21-24",
+          "rows": 260,
+          "positive_rows": 74,
+          "supported": true,
+          "brier_difference": -0.004562594390183617,
+          "log_loss_difference": -0.010430873574337203,
+          "material_reversal": false
+        },
+        {
+          "dimension": "age",
+          "group": "25-30",
+          "rows": 78,
+          "positive_rows": 21,
+          "supported": false,
+          "brier_difference": 0.0062572961819940915,
+          "log_loss_difference": 0.01363163945545029,
+          "material_reversal": false
+        },
+        {
+          "dimension": "level",
+          "group": "AA",
+          "rows": 141,
+          "positive_rows": 47,
+          "supported": true,
+          "brier_difference": -0.009707561638429186,
+          "log_loss_difference": -0.020609274983549277,
+          "material_reversal": false
+        },
+        {
+          "dimension": "level",
+          "group": "AAA",
+          "rows": 134,
+          "positive_rows": 35,
+          "supported": true,
+          "brier_difference": 0.0011716609927902167,
+          "log_loss_difference": 0.0022886883716372137,
+          "material_reversal": true
+        },
+        {
+          "dimension": "level",
+          "group": "A_OR_BELOW",
+          "rows": 105,
+          "positive_rows": 34,
+          "supported": true,
+          "brier_difference": 0.003075328515759586,
+          "log_loss_difference": 0.007111521144967116,
+          "material_reversal": true
+        },
+        {
+          "dimension": "role",
+          "group": "C",
+          "rows": 63,
+          "positive_rows": 14,
+          "supported": false,
+          "brier_difference": 0.0006334103040492606,
+          "log_loss_difference": -0.0001701701161538241,
+          "material_reversal": false
+        },
+        {
+          "dimension": "role",
+          "group": "CORNER",
+          "rows": 89,
+          "positive_rows": 29,
+          "supported": false,
+          "brier_difference": 0.0073342665897105485,
+          "log_loss_difference": 0.015536553997866982,
+          "material_reversal": false
+        },
+        {
+          "dimension": "role",
+          "group": "MIDDLE_INFIELD",
+          "rows": 106,
+          "positive_rows": 21,
+          "supported": true,
+          "brier_difference": -0.005190394505153735,
+          "log_loss_difference": -0.01467759308902926,
+          "material_reversal": false
+        },
+        {
+          "dimension": "role",
+          "group": "OTHER",
+          "rows": 9,
+          "positive_rows": 4,
+          "supported": false,
+          "brier_difference": 0.015981153740772518,
+          "log_loss_difference": 0.04316631676377262,
+          "material_reversal": false
+        },
+        {
+          "dimension": "role",
+          "group": "OUTFIELD",
+          "rows": 113,
+          "positive_rows": 48,
+          "supported": true,
+          "brier_difference": -0.01039962181937937,
+          "log_loss_difference": -0.018205472412290594,
+          "material_reversal": false
+        }
+      ],
+      "gate_passed": false
+    },
+    "pitcher": {
+      "training": {
+        "players": 185,
+        "positive_players": 71,
+        "baseline_rate": 0.3837837837837838,
+        "rate_priors": {
+          "rate_1": 0.17952648328029458,
+          "rate_2": 0.08391176127559606,
+          "rate_3": 0.013360769089788234,
+          "rate_4": 0.015796664389609957
+        },
+        "regression_opportunities": 200.0
+      },
+      "standardized_coefficients": [
+        {
+          "feature": "rate_1",
+          "coefficient": 0.3573335721868221
+        },
+        {
+          "feature": "rate_2",
+          "coefficient": -0.13255571100795085
+        },
+        {
+          "feature": "rate_3",
+          "coefficient": 0.09527907584516533
+        },
+        {
+          "feature": "rate_4",
+          "coefficient": 0.038666304541269146
+        }
+      ],
+      "by_origin": {
+        "2006": {
+          "players": 215,
+          "positive_players": 78,
+          "negative_war_players": 80,
+          "baseline": {
+            "players": 215,
+            "observed_rate": 0.3627906976744186,
+            "predicted_rate": 0.3837837837837838,
+            "brier": 0.2316143170197224,
+            "log_loss": 0.6559455095468434
+          },
+          "candidate": {
+            "players": 215,
+            "observed_rate": 0.3627906976744186,
+            "predicted_rate": 0.40089206608762623,
+            "brier": 0.23396467633391044,
+            "log_loss": 0.6605449724887476
+          },
+          "candidate_calibration": {
+            "intercept": -0.39178611005245767,
+            "slope": 0.42188120467904505,
+            "reliability_bins": [
+              {
+                "bin": 1,
+                "players": 22,
+                "predicted_rate": 0.2663221042716812,
+                "observed_rate": 0.2727272727272727
+              },
+              {
+                "bin": 2,
+                "players": 22,
+                "predicted_rate": 0.3082980931757909,
+                "observed_rate": 0.36363636363636365
+              },
+              {
+                "bin": 3,
+                "players": 22,
+                "predicted_rate": 0.33896690520363587,
+                "observed_rate": 0.4090909090909091
+              },
+              {
+                "bin": 4,
+                "players": 22,
+                "predicted_rate": 0.36230069458995273,
+                "observed_rate": 0.4090909090909091
+              },
+              {
+                "bin": 5,
+                "players": 22,
+                "predicted_rate": 0.3845969186017324,
+                "observed_rate": 0.3181818181818182
+              },
+              {
+                "bin": 6,
+                "players": 21,
+                "predicted_rate": 0.40669787475003616,
+                "observed_rate": 0.42857142857142855
+              },
+              {
+                "bin": 7,
+                "players": 21,
+                "predicted_rate": 0.42942771995248175,
+                "observed_rate": 0.3333333333333333
+              },
+              {
+                "bin": 8,
+                "players": 21,
+                "predicted_rate": 0.4652862813067532,
+                "observed_rate": 0.23809523809523808
+              },
+              {
+                "bin": 9,
+                "players": 21,
+                "predicted_rate": 0.497658476290064,
+                "observed_rate": 0.2857142857142857
+              },
+              {
+                "bin": 10,
+                "players": 21,
+                "predicted_rate": 0.5657453839053411,
+                "observed_rate": 0.5714285714285714
+              }
+            ]
+          },
+          "paired_bootstrap": {
+            "resamples": 2000,
+            "brier": {
+              "difference": 0.0023503593141880217,
+              "ci_low": -0.009540088112847345,
+              "ci_high": 0.014278886455008848,
+              "probability_candidate_better": 0.348
+            },
+            "log_loss": {
+              "difference": 0.004599462941903993,
+              "ci_low": -0.020439246307165565,
+              "ci_high": 0.02935236275649579,
+              "probability_candidate_better": 0.359
+            }
+          },
+          "both_scores_improved": false
+        },
+        "2007": {
+          "players": 210,
+          "positive_players": 80,
+          "negative_war_players": 75,
+          "baseline": {
+            "players": 210,
+            "observed_rate": 0.38095238095238093,
+            "predicted_rate": 0.3837837837837838,
+            "brier": 0.23583568124108664,
+            "log_loss": 0.6645454038659931
+          },
+          "candidate": {
+            "players": 210,
+            "observed_rate": 0.38095238095238093,
+            "predicted_rate": 0.38840176066299725,
+            "brier": 0.22996349348675943,
+            "log_loss": 0.6532394711010083
+          },
+          "candidate_calibration": {
+            "intercept": -0.11627004218623863,
+            "slope": 0.8101523731175868,
+            "reliability_bins": [
+              {
+                "bin": 1,
+                "players": 21,
+                "predicted_rate": 0.24888666302464257,
+                "observed_rate": 0.2857142857142857
+              },
+              {
+                "bin": 2,
+                "players": 21,
+                "predicted_rate": 0.2939635615549287,
+                "observed_rate": 0.23809523809523808
+              },
+              {
+                "bin": 3,
+                "players": 21,
+                "predicted_rate": 0.3190214659315463,
+                "observed_rate": 0.42857142857142855
+              },
+              {
+                "bin": 4,
+                "players": 21,
+                "predicted_rate": 0.3465035141952398,
+                "observed_rate": 0.2857142857142857
+              },
+              {
+                "bin": 5,
+                "players": 21,
+                "predicted_rate": 0.36521569538770793,
+                "observed_rate": 0.42857142857142855
+              },
+              {
+                "bin": 6,
+                "players": 21,
+                "predicted_rate": 0.38440121135143307,
+                "observed_rate": 0.38095238095238093
+              },
+              {
+                "bin": 7,
+                "players": 21,
+                "predicted_rate": 0.41755963191681245,
+                "observed_rate": 0.3333333333333333
+              },
+              {
+                "bin": 8,
+                "players": 21,
+                "predicted_rate": 0.4487458456948625,
+                "observed_rate": 0.38095238095238093
+              },
+              {
+                "bin": 9,
+                "players": 21,
+                "predicted_rate": 0.49253237896600816,
+                "observed_rate": 0.42857142857142855
+              },
+              {
+                "bin": 10,
+                "players": 21,
+                "predicted_rate": 0.5671876386067911,
+                "observed_rate": 0.6190476190476191
+              }
+            ]
+          },
+          "paired_bootstrap": {
+            "resamples": 2000,
+            "brier": {
+              "difference": -0.005872187754327209,
+              "ci_low": -0.018759677740016016,
+              "ci_high": 0.006128971460339703,
+              "probability_candidate_better": 0.827
+            },
+            "log_loss": {
+              "difference": -0.011305932764984893,
+              "ci_low": -0.0389520968505622,
+              "ci_high": 0.014870256778653201,
+              "probability_candidate_better": 0.7955
+            }
+          },
+          "both_scores_improved": true
+        }
+      },
+      "pooled": {
+        "players": 327,
+        "rows": 425,
+        "resamples": 2000,
+        "brier": {
+          "difference": -0.0020390440974450857,
+          "ci_low": -0.011589665555867238,
+          "ci_high": 0.007228922860984613,
+          "probability_candidate_better": 0.6835
+        },
+        "log_loss": {
+          "difference": -0.003966744141548397,
+          "ci_low": -0.02413495658341676,
+          "ci_high": 0.016041657530957897,
+          "probability_candidate_better": 0.6685
+        }
+      },
+      "subgroups": [
+        {
+          "dimension": "age",
+          "group": "16-20",
+          "rows": 46,
+          "positive_rows": 16,
+          "supported": false,
+          "brier_difference": -0.015718425511283517,
+          "log_loss_difference": -0.03232856098955676,
+          "material_reversal": false
+        },
+        {
+          "dimension": "age",
+          "group": "21-24",
+          "rows": 285,
+          "positive_rows": 111,
+          "supported": true,
+          "brier_difference": 0.002698721346695939,
+          "log_loss_difference": 0.0068867565274075854,
+          "material_reversal": true
+        },
+        {
+          "dimension": "age",
+          "group": "25-30",
+          "rows": 94,
+          "positive_rows": 31,
+          "supported": false,
+          "brier_difference": -0.008233193469655214,
+          "log_loss_difference": -0.01979758673328745,
+          "material_reversal": false
+        },
+        {
+          "dimension": "level",
+          "group": "AA",
+          "rows": 165,
+          "positive_rows": 68,
+          "supported": true,
+          "brier_difference": -0.005740846166238963,
+          "log_loss_difference": -0.011578469953779418,
+          "material_reversal": false
+        },
+        {
+          "dimension": "level",
+          "group": "AAA",
+          "rows": 127,
+          "positive_rows": 44,
+          "supported": true,
+          "brier_difference": -0.010055654690976922,
+          "log_loss_difference": -0.022809240385432496,
+          "material_reversal": false
+        },
+        {
+          "dimension": "level",
+          "group": "A_OR_BELOW",
+          "rows": 133,
+          "positive_rows": 46,
+          "supported": true,
+          "brier_difference": 0.01125169614530232,
+          "log_loss_difference": 0.025728268595383914,
+          "material_reversal": true
+        },
+        {
+          "dimension": "role",
+          "group": "RELIEVER",
+          "rows": 122,
+          "positive_rows": 49,
+          "supported": true,
+          "brier_difference": 0.0095096364080549,
+          "log_loss_difference": 0.019222224612443144,
+          "material_reversal": true
+        },
+        {
+          "dimension": "role",
+          "group": "STARTER",
+          "rows": 242,
+          "positive_rows": 87,
+          "supported": true,
+          "brier_difference": -0.005680679733241597,
+          "log_loss_difference": -0.010686316590596032,
+          "material_reversal": false
+        },
+        {
+          "dimension": "role",
+          "group": "SWINGMAN",
+          "rows": 61,
+          "positive_rows": 22,
+          "supported": false,
+          "brier_difference": -0.008414480691746249,
+          "log_loss_difference": -0.018760395671004782,
+          "material_reversal": false
+        }
+      ],
+      "gate_passed": false
+    }
+  },
+  "sources": [
+    {
+      "path": "docs\\early-career-debut-date-source-result.json",
+      "sha256": "b86b37668a6347623f15bdd5d53e97bf42cb2623fa06cff0bd60e1398b28dbc9"
+    },
+    {
+      "path": "docs\\prospect-broad-history-pre-mlb-cohort-correction.md",
+      "sha256": "930a922a09f7b91c8e1bdfcef9d0845c99fbd50e7fd0febbaa923bd9f5f9c775"
+    },
+    {
+      "path": "docs\\prospect-component-uncertainty-result.json",
+      "sha256": "040042a58cde3aa6c7fe749949b79a0e3d1fd7344029f5fa006c25cfbe7c29d8"
+    },
+    {
+      "path": "docs\\prospect-early-history-rate-only-plan.md",
+      "sha256": "06e64b529472976a2b673eb29ff88a9cb6a9d921e9ffdb51d1f856af5b0da69a"
+    },
+    {
+      "path": "reports\\generated\\affiliated-skill-source-2003-2007\\report.json",
+      "sha256": "18d28d41c6f2a282bf302ab2b44c5203942443ccb1ba6784283abe3d2564790a"
+    },
+    {
+      "path": "reports\\generated\\affiliated-skill-source-2003-2007\\tables\\affiliated_hitting_components.parquet",
+      "sha256": "8f47dc84f60bd9e542c6ea5ba76c4727aa7c3ef180703d9c0e3c3368947380f0"
+    },
+    {
+      "path": "reports\\generated\\affiliated-skill-source-2003-2007\\tables\\affiliated_pitching_components.parquet",
+      "sha256": "4eb6f7d29044f03c79f4c148039e853c80d1db4ad2f964b7b7b290ce1bd49418"
+    },
+    {
+      "path": "reports\\generated\\career-mlb-outcome-inventory-2004-2009\\report.json",
+      "sha256": "2ab1806b5bdbf45f6d9cdf02c04d5ff033afc886560419ae5cbbb659d03e0c5e"
+    },
+    {
+      "path": "reports\\generated\\career-mlb-outcome-inventory-2004-2009\\tables\\mlb_hitting_components_2004_2009.parquet",
+      "sha256": "15605c60ef866b688555a7a2877de1fdd7f090bb8cf2320e3aa10cbde2954db2"
+    },
+    {
+      "path": "reports\\generated\\career-mlb-outcome-inventory-2004-2009\\tables\\mlb_pitching_2004_2009.parquet",
+      "sha256": "98e78ac91aea743b90e96a7d812515f2a65526c62dfcebd3ea50d9e7e1e0755e"
+    },
+    {
+      "path": "reports\\generated\\career-mlb-outcome-inventory-2004-2009\\tables\\people-debut-dates.parquet",
+      "sha256": "7f0080449163d40cf5448a45f5cf3754ed23f1de0bf44f881ae7d4dda4f5eb81"
+    },
+    {
+      "path": "reports\\generated\\opportunity-history-sources-2003-2007\\report.json",
+      "sha256": "3b85c32e248906f2aca6f828719c526fcb7ae2998861baa0fd0fadbb52209ca3"
+    },
+    {
+      "path": "reports\\generated\\opportunity-history-sources-2003-2007\\tables\\2003\\affiliated_season_stats.parquet",
+      "sha256": "910a955e4f042bcff9e2bcc804f740dc68a38782e8bd8719d425a4ef58ccb46f"
+    },
+    {
+      "path": "reports\\generated\\opportunity-history-sources-2003-2007\\tables\\2004\\affiliated_season_stats.parquet",
+      "sha256": "7cd9fb36a09943daf56f08778efec404cd4e67b5f814caeafe979eb0d9babd22"
+    },
+    {
+      "path": "reports\\generated\\opportunity-history-sources-2003-2007\\tables\\2005\\affiliated_season_stats.parquet",
+      "sha256": "575bd81ea75712aba95ad0640d759c3a35bf6ed5aac91227adef61fb7933a855"
+    },
+    {
+      "path": "reports\\generated\\opportunity-history-sources-2003-2007\\tables\\2006\\affiliated_season_stats.parquet",
+      "sha256": "b6b655c662d24517419b0dc5723f4864544abf27c60b6ea6615e57d3db280ef2"
+    },
+    {
+      "path": "reports\\generated\\opportunity-history-sources-2003-2007\\tables\\2007\\affiliated_season_stats.parquet",
+      "sha256": "8fc933dc10ee95627ac2bec4726cb409c071689d41e0b35a10001d9edc673ef5"
+    },
+    {
+      "path": "reports\\generated\\opportunity-history-sources-2003-2007\\tables\\hitter_snapshots.parquet",
+      "sha256": "5f982a4a92ae18d7cd2b3d0b67a927ca1fe5e558d1a96ed735ba6916b456cece"
+    },
+    {
+      "path": "reports\\generated\\opportunity-history-sources-2003-2007\\tables\\pitcher_snapshots.parquet",
+      "sha256": "2597d6a6ed3afe00105a3bcc460a8e468b463687ae8b8cb7c459b5d4cc56d0c4"
+    }
+  ]
+}

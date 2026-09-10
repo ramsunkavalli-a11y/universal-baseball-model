@@ -24,6 +24,9 @@ def test_broad_history_tail_test_preserves_frozen_protocol() -> None:
     assert protocol["chronology_correction_sha256"] == sha256(
         (ROOT / "docs/prospect-broad-history-positive-tail-chronology-correction.md").read_bytes()
     ).hexdigest()
+    assert protocol["cohort_correction_sha256"] == sha256(
+        (ROOT / "docs/prospect-broad-history-pre-mlb-cohort-correction.md").read_bytes()
+    ).hexdigest()
     forbidden = ("birth", "country", "height", "weight", "draft", "fv", "team")
     features = [
         feature

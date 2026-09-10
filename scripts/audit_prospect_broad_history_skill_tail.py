@@ -135,7 +135,7 @@ def _markdown(report: dict[str, object]) -> str:
     lines = [
         "# Prospect broad-history skill-tail result", "",
         f"**Decision:** `{report['decision']}`", "",
-        "The fixed candidate adds strongly regressed current-season component rates to the basic model. Negative differences favor the skill candidate.", "",
+        "The fixed candidate adds strongly regressed current-season component rates to the basic model. Official debut dates enforce a true pre-MLB cohort. Negative differences favor the skill candidate.", "",
         "| Type | Era | Origins better | Brier difference (95% interval) | Log-loss difference (95% interval) | Candidate beats constant |", "|---|---|---:|---:|---:|---:|",
     ]
     for player_type in ("hitter", "pitcher"):
@@ -172,10 +172,13 @@ def main() -> int:
         "pitcher": root / "career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet",
     }
     runs_per_win = float(json.loads(RUNS_PER_WIN_SOURCE.read_text(encoding="utf-8"))["runs_per_win"])
+    debut_path = root / "career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet"
+    debut_dates = pl.read_parquet(debut_path)
     results = {}
     reasons = []
     overall = True
-    sources = [PLAN_PATH, SOURCE_AUDIT_PATH, RUNS_PER_WIN_SOURCE, old_skill_root / "report.json", modern_skill_root / "report.json", *stat_paths]
+    cohort_correction = Path("docs/prospect-broad-history-pre-mlb-cohort-correction.md")
+    sources = [PLAN_PATH, SOURCE_AUDIT_PATH, cohort_correction, RUNS_PER_WIN_SOURCE, debut_path, old_skill_root / "report.json", modern_skill_root / "report.json", *stat_paths]
     for player_type in ("hitter", "pitcher"):
         snapshot_paths = [old_snapshots / f"{player_type}_snapshots.parquet", modern_snapshots / f"{player_type}_snapshots.parquet"]
         snapshots = pl.concat([pl.read_parquet(path) for path in snapshot_paths], how="vertical_relaxed")
@@ -185,7 +188,7 @@ def main() -> int:
         sources.extend([*snapshot_paths, old_skill_paths[player_type], modern_skill_paths[player_type], component_paths[player_type]])
         cohorts = {}
         for origin in (*TRAIN_ORIGINS, *OLD_ORIGINS, *MODERN_ORIGINS):
-            base = _cohort(snapshots, stats, components, player_type=player_type, origin=origin, runs_per_win=runs_per_win)
+            base = _cohort(snapshots, stats, components, debut_dates, player_type=player_type, origin=origin, runs_per_win=runs_per_win)
             skill = old_skill if origin <= 2017 else modern_skill
             cohorts[origin] = _attach_counts(base, skill, player_type=player_type, origin=origin)
         training = pl.concat([cohorts[origin].filter(pl.col("arrived")) for origin in TRAIN_ORIGINS])
@@ -245,8 +248,8 @@ def main() -> int:
         "decision": "support_skill_tail_but_do_not_promote" if overall else "reject_aggregate_skill_tail",
         "decision_reasons": reasons,
         "production_changed": False,
-        "protocol": {"training_origins": list(TRAIN_ORIGINS), "old_evaluation_origins": list(OLD_ORIGINS), "modern_evaluation_origins": list(MODERN_ORIGINS), "horizon_years": HORIZON, "threshold_component_war": THRESHOLD, "logistic_c": LOGISTIC_C, "regression_opportunities": REGRESSION_OPPORTUNITIES, "frozen_plan_sha256": sha256_file(PLAN_PATH)},
-        "law_checks": {"training_outcomes_end_before_first_evaluation_snapshot": max(TRAIN_ORIGINS) + HORIZON < min(OLD_ORIGINS), "rates_regressed_to_training_only": True, "no_evaluation_refit": True, "negative_component_war_retained": all(results[player_type]["by_origin"][str(origin)]["negative_war_players"] > 0 for player_type in ("hitter", "pitcher") for origin in (*OLD_ORIGINS, *MODERN_ORIGINS)), "no_outside_fv": True, "no_demographic_talent_effect": True, "no_organization_effect": True, "production_unchanged": True},
+        "protocol": {"training_origins": list(TRAIN_ORIGINS), "old_evaluation_origins": list(OLD_ORIGINS), "modern_evaluation_origins": list(MODERN_ORIGINS), "horizon_years": HORIZON, "threshold_component_war": THRESHOLD, "logistic_c": LOGISTIC_C, "regression_opportunities": REGRESSION_OPPORTUNITIES, "frozen_plan_sha256": sha256_file(PLAN_PATH), "cohort_correction_sha256": sha256_file(cohort_correction)},
+        "law_checks": {"training_outcomes_end_before_first_evaluation_snapshot": max(TRAIN_ORIGINS) + HORIZON < min(OLD_ORIGINS), "official_pre_mlb_eligibility_enforced": True, "rates_regressed_to_training_only": True, "no_evaluation_refit": True, "negative_component_war_retained": all(results[player_type]["by_origin"][str(origin)]["negative_war_players"] > 0 for player_type in ("hitter", "pitcher") for origin in (*OLD_ORIGINS, *MODERN_ORIGINS)), "no_outside_fv": True, "no_demographic_talent_effect": True, "no_organization_effect": True, "production_unchanged": True},
         "results": results,
         "sources": [{"path": str(path), "sha256": sha256_file(path)} for path in sorted(set(sources), key=str)],
     }

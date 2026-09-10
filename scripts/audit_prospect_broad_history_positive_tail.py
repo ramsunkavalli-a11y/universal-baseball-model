@@ -40,6 +40,9 @@ PLAN_PATH = Path("docs/prospect-broad-history-positive-tail-plan.md")
 CORRECTION_PATH = Path(
     "docs/prospect-broad-history-positive-tail-chronology-correction.md"
 )
+COHORT_CORRECTION_PATH = Path(
+    "docs/prospect-broad-history-pre-mlb-cohort-correction.md"
+)
 LEVELS = ("A_OR_BELOW", "AA", "AAA", "INACTIVE", "UNKNOWN")
 HITTER_ROLES = ("C", "MIDDLE_INFIELD", "OUTFIELD", "CORNER", "OTHER")
 PITCHER_ROLES = ("STARTER", "SWINGMAN", "RELIEVER", "OTHER")
@@ -169,6 +172,7 @@ def _cohort(
     snapshots: pl.DataFrame,
     stats: pl.DataFrame,
     components: pl.DataFrame,
+    debut_dates: pl.DataFrame,
     *,
     player_type: str,
     origin: int,
@@ -184,6 +188,11 @@ def _cohort(
             (pl.col("stat_group") == group) & (pl.col("sport_id") == 1)
             & (pl.col("season") <= origin) & (pl.col(workload) > 0)
         ).select("player_id").unique().with_columns(pl.lit(True).alias("prior_mlb"))
+    )
+    official_prior_mlb = (
+        debut_dates.filter(pl.col("mlb_debut_date").dt.year() <= origin)
+        .select("player_id").unique()
+        .with_columns(pl.lit(True).alias("official_prior_mlb"))
     )
     affiliated = stats.filter(
         (pl.col("stat_group") == group) & (pl.col("sport_id") != 1)
@@ -217,17 +226,19 @@ def _cohort(
     ).join(role, on="player_id", how="left")
     base = (
         players.join(prior_mlb, on="player_id", how="left")
+        .join(official_prior_mlb, on="player_id", how="left")
         .join(history, on="player_id", how="left")
         .join(current_workload, on="player_id", how="left")
         .with_columns(
             pl.col("prior_mlb").fill_null(False),
+            pl.col("official_prior_mlb").fill_null(False),
             pl.col("prior_workload").fill_null(0.0),
             pl.col("prior_seasons").fill_null(0.0),
             pl.col("current_workload").fill_null(0.0),
             pl.col("role").fill_null("OTHER"),
             pl.col("as_of_level_group").map_elements(hitter_level_tier, return_dtype=pl.String).alias("level"),
         )
-        .filter(~pl.col("prior_mlb") & (pl.col("level") != "MLB") & pl.col("age_years").is_between(16.0, 30.0))
+        .filter(~pl.col("prior_mlb") & ~pl.col("official_prior_mlb") & (pl.col("level") != "MLB") & pl.col("age_years").is_between(16.0, 30.0))
     )
     outcome = _outcomes(base, components, player_type=player_type, origin=origin, runs_per_win=runs_per_win)
     return (
@@ -326,7 +337,7 @@ def _subgroups(frame: pl.DataFrame) -> list[dict[str, object]]:
 
 
 def _markdown(report: dict[str, object]) -> str:
-    lines = ["# Prospect broad-history positive-tail result", "", f"**Decision:** `{report['decision']}`", "", "The fixed basic StatsAPI feature set was fitted once on 2008–2010 and then left unchanged. A pre-scoring correction removed 2011–2012 because their outcomes overlap the first evaluation snapshot.", "", "| Type | Era | Origins better | Brier difference (95% interval) | Log-loss difference (95% interval) |", "|---|---|---:|---:|---:|"]
+    lines = ["# Prospect broad-history positive-tail result", "", f"**Decision:** `{report['decision']}`", "", "The fixed basic StatsAPI feature set was fitted once on 2008–2010 and then left unchanged. A pre-scoring correction removed 2011–2012 because their outcomes overlap the first evaluation snapshot. A later source audit superseded the first scores by excluding every player whose official MLB debut preceded the snapshot.", "", "| Type | Era | Origins better | Brier difference (95% interval) | Log-loss difference (95% interval) |", "|---|---|---:|---:|---:|"]
     for player_type in ("hitter", "pitcher"):
         item = report["results"][player_type]
         for era in ("old", "modern"):
@@ -356,15 +367,17 @@ def main() -> int:
         "pitcher": root / "career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet",
     }
     runs_per_win = float(json.loads(RUNS_PER_WIN_SOURCE.read_text(encoding="utf-8"))["runs_per_win"])
+    debut_path = root / "career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet"
+    debut_dates = pl.read_parquet(debut_path)
     results: dict[str, object] = {}
-    all_sources = [PLAN_PATH, CORRECTION_PATH, RUNS_PER_WIN_SOURCE, *stat_paths]
+    all_sources = [PLAN_PATH, CORRECTION_PATH, COHORT_CORRECTION_PATH, RUNS_PER_WIN_SOURCE, debut_path, *stat_paths]
     overall_pass = True
     reasons = []
     for player_type in ("hitter", "pitcher"):
         snapshots = pl.concat([pl.read_parquet(path) for path in snapshot_paths[player_type]], how="vertical_relaxed")
         components = pl.read_parquet(component_paths[player_type])
         all_sources.extend([*snapshot_paths[player_type], component_paths[player_type]])
-        cohorts = {origin: _cohort(snapshots, stats, components, player_type=player_type, origin=origin, runs_per_win=runs_per_win) for origin in (*TRAIN_ORIGINS, *OLD_ORIGINS, *MODERN_ORIGINS)}
+        cohorts = {origin: _cohort(snapshots, stats, components, debut_dates, player_type=player_type, origin=origin, runs_per_win=runs_per_win) for origin in (*TRAIN_ORIGINS, *OLD_ORIGINS, *MODERN_ORIGINS)}
         training = pl.concat([cohorts[x].filter(pl.col("arrived")) for x in TRAIN_ORIGINS])
         counts = training.group_by("player_id").len().rename({"len": "player_rows"})
         training = training.join(counts, on="player_id", validate="m:1").with_columns((1 / pl.col("player_rows")).alias("weight"))
@@ -410,9 +423,9 @@ def main() -> int:
         "decision": "support_basic_tail_family_but_do_not_promote" if overall_pass else "reject_basic_tail_family",
         "decision_reasons": reasons,
         "production_changed": False,
-        "protocol": {"training_origins": list(TRAIN_ORIGINS), "old_evaluation_origins": list(OLD_ORIGINS), "modern_evaluation_origins": list(MODERN_ORIGINS), "horizon_years": HORIZON, "threshold_component_war": THRESHOLD, "logistic_c": LOGISTIC_C, "features": {player_type: list(_feature_names(player_type)) for player_type in ("hitter", "pitcher")}, "subgroup_support": "at least 100 rows, 20 positives, and 20 negatives", "frozen_plan_sha256": sha256_file(PLAN_PATH), "chronology_correction_sha256": sha256_file(CORRECTION_PATH)},
+        "protocol": {"training_origins": list(TRAIN_ORIGINS), "old_evaluation_origins": list(OLD_ORIGINS), "modern_evaluation_origins": list(MODERN_ORIGINS), "horizon_years": HORIZON, "threshold_component_war": THRESHOLD, "logistic_c": LOGISTIC_C, "features": {player_type: list(_feature_names(player_type)) for player_type in ("hitter", "pitcher")}, "subgroup_support": "at least 100 rows, 20 positives, and 20 negatives", "frozen_plan_sha256": sha256_file(PLAN_PATH), "chronology_correction_sha256": sha256_file(CORRECTION_PATH), "cohort_correction_sha256": sha256_file(COHORT_CORRECTION_PATH)},
         "runs_per_win": runs_per_win,
-        "law_checks": {"training_outcomes_end_before_first_evaluation_snapshot": max(TRAIN_ORIGINS) + HORIZON < min(OLD_ORIGINS), "all_targets_after_snapshot": True, "shortened_2020_outside_evaluation_targets": True, "negative_component_war_retained": all(results[player_type]["by_origin"][str(origin)]["negative_war_players"] > 0 for player_type in ("hitter", "pitcher") for origin in (*OLD_ORIGINS, *MODERN_ORIGINS)), "no_evaluation_refit": True, "no_outside_fv": True, "no_organization_effect": True, "production_unchanged": True},
+        "law_checks": {"training_outcomes_end_before_first_evaluation_snapshot": max(TRAIN_ORIGINS) + HORIZON < min(OLD_ORIGINS), "official_pre_mlb_eligibility_enforced": True, "all_targets_after_snapshot": True, "shortened_2020_outside_evaluation_targets": True, "negative_component_war_retained": all(results[player_type]["by_origin"][str(origin)]["negative_war_players"] > 0 for player_type in ("hitter", "pitcher") for origin in (*OLD_ORIGINS, *MODERN_ORIGINS)), "no_evaluation_refit": True, "no_outside_fv": True, "no_organization_effect": True, "production_unchanged": True},
         "results": results,
         "sources": [{"path": str(path), "sha256": sha256_file(path)} for path in sorted(set(all_sources), key=str)],
     }

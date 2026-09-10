@@ -191,9 +191,17 @@ Official 2008–2017 component totals were then added under a frozen Tango-style
 200-opportunity regression. They improve the basic candidate in 5/8 hitter and 6/8
 pitcher evaluation years, but uncertainty and subgroup gates fail and the complete
 candidate does not beat the population-rate baseline. Reject the tested combination.
-The useful forward hypothesis is that regressed component rates may work after
-removing unstable basic effects, but these outcomes are now disclosed and cannot be
-used to validate that change.
+The exception is old-era pitchers, where the candidate beats the constant; it still
+fails modern transport. The useful forward hypothesis is that regressed component
+rates may work after removing unstable basic effects, but these outcomes are now
+disclosed and cannot be used to validate that change.
+
+The untouched 2006–2007 rate-only confirmation is complete. Hitters improve both
+scores in both years, but uncertainty crosses zero and supported level groups reverse.
+Pitchers improve only one of two years. Reject the simple aggregate rate-only family
+without another subset or shrinkage search. The next valid prospect-quality advance
+requires either genuinely new pitch/contact evidence across levels or future seasons;
+current production values stay unchanged.
 
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
