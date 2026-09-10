@@ -103,6 +103,13 @@ now has zero type switches and zero hitter changes. On identical inputs it moves
 pitcher 45+ counts from 24 to 40 and 50+ from 1 to 2; the private pitcher total moves
 from 68.15 to 162.68 expected WAR across 3,849 players.
 
+The [pitcher contact-component expansion](pitcher-contact-components-result.md)
+was rejected before confirmation. Saved official data can split contact into singles,
+doubles and triples, but every richer profile worsened both 2024 development proper
+scores under 800-4,000 BF regression. No 2025 challenger score was calculated. Keep
+the simpler five-part pitcher profile; extra outcome detail has not earned production
+use, and uncertified pitch-sequence fields remain excluded.
+
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
 arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top
