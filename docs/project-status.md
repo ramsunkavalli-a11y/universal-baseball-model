@@ -635,6 +635,11 @@ test failure was observed.
   the supported fringe-tier safety limit and did not repair coverage. Always pooling
   roles widened coverage but materially worsened CRPS. Next separate the league-wide
   pitcher-usage environment from a player's role-relative workload distribution.
+- A parallel frozen hitter demographic component test rejected age-for-level,
+  batting side, and their interactions. Every family improved the 2024 development
+  scores, but the selected interaction worsened both untouched 2025 scores and every
+  supported demographic split. Stable demographics therefore receive no direct
+  hitter skill bonus.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).

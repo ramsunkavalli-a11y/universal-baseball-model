@@ -1,0 +1,417 @@
+{
+  "boundaries": {
+    "birth_country_used": false,
+    "current_2026_outcomes_used": false,
+    "current_physical_measurements_used": false,
+    "current_values_changed": false,
+    "outside_fv_used": false
+  },
+  "confirmation_2025": {
+    "candidate_minus_incumbent_brier": 0.00021397811538559353,
+    "candidate_minus_incumbent_log_loss": 0.0006227923051589368,
+    "candidate_score": {
+      "calibration": {
+        "double": {
+          "observed_rate": 0.040392156862745096,
+          "predicted_rate": 0.040439843077417915,
+          "rate_bias": 4.7686214672817754e-05
+        },
+        "hbp": {
+          "observed_rate": 0.011830065359477124,
+          "predicted_rate": 0.011176112448697475,
+          "rate_bias": -0.0006539529107796497
+        },
+        "hr": {
+          "observed_rate": 0.025555555555555557,
+          "predicted_rate": 0.025881259399995474,
+          "rate_bias": 0.00032570384443991783
+        },
+        "other": {
+          "observed_rate": 0.698954248366013,
+          "predicted_rate": 0.7048289126837965,
+          "rate_bias": 0.005874664317783445
+        },
+        "single": {
+          "observed_rate": 0.1434640522875817,
+          "predicted_rate": 0.14000853922149908,
+          "rate_bias": -0.00345551306608262
+        },
+        "triple": {
+          "observed_rate": 0.00392156862745098,
+          "predicted_rate": 0.005035173934049106,
+          "rate_bias": 0.001113605306598125
+        },
+        "ubb": {
+          "observed_rate": 0.07588235294117647,
+          "predicted_rate": 0.0726301592345446,
+          "rate_bias": -0.0032521937066318667
+        }
+      },
+      "component_brier_score": 0.48202195577607665,
+      "component_log_loss": 1.0181336904068912,
+      "players": 112,
+      "target_exposure": 15300
+    },
+    "incumbent_score": {
+      "calibration": {
+        "double": {
+          "observed_rate": 0.040392156862745096,
+          "predicted_rate": 0.04126741620055021,
+          "rate_bias": 0.0008752593378051113
+        },
+        "hbp": {
+          "observed_rate": 0.011830065359477124,
+          "predicted_rate": 0.012635036177597973,
+          "rate_bias": 0.0008049708181208498
+        },
+        "hr": {
+          "observed_rate": 0.025555555555555557,
+          "predicted_rate": 0.025980281126583234,
+          "rate_bias": 0.0004247255710276783
+        },
+        "other": {
+          "observed_rate": 0.698954248366013,
+          "predicted_rate": 0.699964962316394,
+          "rate_bias": 0.0010107139503810199
+        },
+        "single": {
+          "observed_rate": 0.1434640522875817,
+          "predicted_rate": 0.13976714295252107,
+          "rate_bias": -0.0036969093350606367
+        },
+        "triple": {
+          "observed_rate": 0.00392156862745098,
+          "predicted_rate": 0.004825658936784088,
+          "rate_bias": 0.0009040903093331073
+        },
+        "ubb": {
+          "observed_rate": 0.07588235294117647,
+          "predicted_rate": 0.07555950228956936,
+          "rate_bias": -0.00032285065160710943
+        }
+      },
+      "component_brier_score": 0.48180797766069106,
+      "component_log_loss": 1.0175108981017322,
+      "players": 112,
+      "target_exposure": 15300
+    },
+    "player_bootstrap": {
+      "component_brier": {
+        "lower_95": -6.697852027803188e-06,
+        "median": 0.0002152418616056111,
+        "upper_95": 0.00044917730515146257
+      },
+      "component_log_loss": {
+        "lower_95": -0.00022072547711597697,
+        "median": 0.0006242039828206914,
+        "upper_95": 0.0014995167852165365
+      }
+    },
+    "subgroups": [
+      {
+        "brier_delta": 0.00018583016264761372,
+        "group": "younger_for_level",
+        "log_loss_delta": 0.0010376887063630422,
+        "players": 50,
+        "target_pa": 8125
+      },
+      {
+        "brier_delta": 0.0002458529747578757,
+        "group": "older_for_level",
+        "log_loss_delta": 0.0001529618856776808,
+        "players": 62,
+        "target_pa": 7175
+      },
+      {
+        "brier_delta": 4.592114450574365e-05,
+        "group": "right_handed",
+        "log_loss_delta": 0.00019138749353670833,
+        "players": 54,
+        "target_pa": 7509
+      },
+      {
+        "brier_delta": 0.0005284306644272881,
+        "group": "left_handed",
+        "log_loss_delta": 0.0018168817904460819,
+        "players": 51,
+        "target_pa": 6651
+      },
+      {
+        "brier_delta": -0.000513639524385879,
+        "group": "switch_hitter",
+        "log_loss_delta": -0.0035021817616552246,
+        "players": 7,
+        "target_pa": 1140
+      }
+    ]
+  },
+  "contract": "docs/hitter-age-level-batting-side-plan.md",
+  "decision": {
+    "promoted": false,
+    "selected_family": "age_side_interaction"
+  },
+  "development_2024": {
+    "scores": {
+      "age_and_side": {
+        "calibration": {
+          "double": {
+            "observed_rate": 0.03970555431630605,
+            "predicted_rate": 0.042556294093067125,
+            "rate_bias": 0.002850739776761079
+          },
+          "hbp": {
+            "observed_rate": 0.009368726299353113,
+            "predicted_rate": 0.011036718184976209,
+            "rate_bias": 0.0016679918856230965
+          },
+          "hr": {
+            "observed_rate": 0.02364488066027214,
+            "predicted_rate": 0.02855952890883389,
+            "rate_bias": 0.0049146482485617525
+          },
+          "other": {
+            "observed_rate": 0.7126180385158748,
+            "predicted_rate": 0.6955345014210255,
+            "rate_bias": -0.017083537094849333
+          },
+          "single": {
+            "observed_rate": 0.1393412149602201,
+            "predicted_rate": 0.1397100507684595,
+            "rate_bias": 0.00036883580823939986
+          },
+          "triple": {
+            "observed_rate": 0.004610008179046769,
+            "predicted_rate": 0.004907392979793692,
+            "rate_bias": 0.00029738480074692296
+          },
+          "ubb": {
+            "observed_rate": 0.07071157706892706,
+            "predicted_rate": 0.07769551364384407,
+            "rate_bias": 0.006983936574917006
+          }
+        },
+        "component_brier_score": 0.4657045312181032,
+        "component_log_loss": 0.9870170207751242,
+        "players": 130,
+        "target_exposure": 13449
+      },
+      "age_relative": {
+        "calibration": {
+          "double": {
+            "observed_rate": 0.03970555431630605,
+            "predicted_rate": 0.04339174665476717,
+            "rate_bias": 0.0036861923384611246
+          },
+          "hbp": {
+            "observed_rate": 0.009368726299353113,
+            "predicted_rate": 0.011398235367518555,
+            "rate_bias": 0.0020295090681654434
+          },
+          "hr": {
+            "observed_rate": 0.02364488066027214,
+            "predicted_rate": 0.0292905805152081,
+            "rate_bias": 0.005645699854935958
+          },
+          "other": {
+            "observed_rate": 0.7126180385158748,
+            "predicted_rate": 0.6933649595995112,
+            "rate_bias": -0.019253078916363582
+          },
+          "single": {
+            "observed_rate": 0.1393412149602201,
+            "predicted_rate": 0.13869888424303742,
+            "rate_bias": -0.0006423307171826593
+          },
+          "triple": {
+            "observed_rate": 0.004610008179046769,
+            "predicted_rate": 0.004814074171586336,
+            "rate_bias": 0.00020406599253956688
+          },
+          "ubb": {
+            "observed_rate": 0.07071157706892706,
+            "predicted_rate": 0.07904151944837118,
+            "rate_bias": 0.008329942379444122
+          }
+        },
+        "component_brier_score": 0.46581047398268444,
+        "component_log_loss": 0.9876605719065307,
+        "players": 130,
+        "target_exposure": 13449
+      },
+      "age_side_interaction": {
+        "calibration": {
+          "double": {
+            "observed_rate": 0.03970555431630605,
+            "predicted_rate": 0.04261228214776082,
+            "rate_bias": 0.002906727831454777
+          },
+          "hbp": {
+            "observed_rate": 0.009368726299353113,
+            "predicted_rate": 0.010999734623830085,
+            "rate_bias": 0.0016310083244769728
+          },
+          "hr": {
+            "observed_rate": 0.02364488066027214,
+            "predicted_rate": 0.02857828287894695,
+            "rate_bias": 0.00493340221867481
+          },
+          "other": {
+            "observed_rate": 0.7126180385158748,
+            "predicted_rate": 0.6960250937709151,
+            "rate_bias": -0.01659294474495959
+          },
+          "single": {
+            "observed_rate": 0.1393412149602201,
+            "predicted_rate": 0.13906072594382635,
+            "rate_bias": -0.00028048901639373384
+          },
+          "triple": {
+            "observed_rate": 0.004610008179046769,
+            "predicted_rate": 0.004923039793083776,
+            "rate_bias": 0.00031303161403700735
+          },
+          "ubb": {
+            "observed_rate": 0.07071157706892706,
+            "predicted_rate": 0.07780084084163691,
+            "rate_bias": 0.007089263772709846
+          }
+        },
+        "component_brier_score": 0.4655116324213028,
+        "component_log_loss": 0.9864466759541222,
+        "players": 130,
+        "target_exposure": 13449
+      },
+      "batting_side": {
+        "calibration": {
+          "double": {
+            "observed_rate": 0.03970555431630605,
+            "predicted_rate": 0.04236591678861605,
+            "rate_bias": 0.0026603624723100044
+          },
+          "hbp": {
+            "observed_rate": 0.009368726299353113,
+            "predicted_rate": 0.011634251404414011,
+            "rate_bias": 0.002265525105060899
+          },
+          "hr": {
+            "observed_rate": 0.02364488066027214,
+            "predicted_rate": 0.028037580646205488,
+            "rate_bias": 0.00439269998593335
+          },
+          "other": {
+            "observed_rate": 0.7126180385158748,
+            "predicted_rate": 0.6950881461864876,
+            "rate_bias": -0.017529892329387113
+          },
+          "single": {
+            "observed_rate": 0.1393412149602201,
+            "predicted_rate": 0.13978621961465534,
+            "rate_bias": 0.0004450046544352528
+          },
+          "triple": {
+            "observed_rate": 0.004610008179046769,
+            "predicted_rate": 0.004874764956408827,
+            "rate_bias": 0.00026475677736205824
+          },
+          "ubb": {
+            "observed_rate": 0.07071157706892706,
+            "predicted_rate": 0.07821312040321267,
+            "rate_bias": 0.007501543334285606
+          }
+        },
+        "component_brier_score": 0.4657160856160751,
+        "component_log_loss": 0.9873524950516588,
+        "players": 130,
+        "target_exposure": 13449
+      },
+      "incumbent": {
+        "calibration": {
+          "double": {
+            "observed_rate": 0.03970555431630605,
+            "predicted_rate": 0.04337566961438873,
+            "rate_bias": 0.0036701152980826864
+          },
+          "hbp": {
+            "observed_rate": 0.009368726299353113,
+            "predicted_rate": 0.012139940385517722,
+            "rate_bias": 0.0027712140861646107
+          },
+          "hr": {
+            "observed_rate": 0.02364488066027214,
+            "predicted_rate": 0.028779592037017673,
+            "rate_bias": 0.005134711376745534
+          },
+          "other": {
+            "observed_rate": 0.7126180385158748,
+            "predicted_rate": 0.6920806701987471,
+            "rate_bias": -0.020537368317127713
+          },
+          "single": {
+            "observed_rate": 0.1393412149602201,
+            "predicted_rate": 0.13851125469333467,
+            "rate_bias": -0.000829960266885432
+          },
+          "triple": {
+            "observed_rate": 0.004610008179046769,
+            "predicted_rate": 0.004761669387109345,
+            "rate_bias": 0.00015166120806257543
+          },
+          "ubb": {
+            "observed_rate": 0.07071157706892706,
+            "predicted_rate": 0.08035120368388478,
+            "rate_bias": 0.009639626614957727
+          }
+        },
+        "component_brier_score": 0.46583982453082784,
+        "component_log_loss": 0.9880736774038835,
+        "players": 130,
+        "target_exposure": 13449
+      }
+    },
+    "selected_coefficients": {
+      "age_relative": {
+        "double": -0.012493370692835187,
+        "hbp": 0.14539508526475964,
+        "hr": -0.0576484847467684,
+        "single": 0.04830309261433238,
+        "triple": -0.012110953145823248,
+        "ubb": 0.022762120659235698
+      },
+      "age_x_left": {
+        "double": 0.009998510327270175,
+        "hbp": 0.08252714149811245,
+        "hr": 0.02288335048543999,
+        "single": -0.16739088344314373,
+        "triple": -0.025885976178111395,
+        "ubb": 0.01211151910906855
+      },
+      "age_x_switch": {
+        "double": -0.04817372431053162,
+        "hbp": 0.039697770141711816,
+        "hr": 0.022464430630899816,
+        "single": -0.06524866536210437,
+        "triple": 0.01860315879713978,
+        "ubb": 0.0042120375562483565
+      },
+      "left_handed": {
+        "double": -0.05965497064190364,
+        "hbp": -0.09980059966290436,
+        "hr": -0.061494569506860684,
+        "single": -0.062307880645115866,
+        "triple": 0.05245121341443576,
+        "ubb": -0.06644799647369166
+      },
+      "switch_hitter": {
+        "double": -0.08523373395608567,
+        "hbp": -0.07530884056217017,
+        "hr": -0.13685412069562095,
+        "single": 0.042932312211701164,
+        "triple": 0.002642368125063456,
+        "ubb": -0.040262457392208524
+      }
+    },
+    "selected_family": "age_side_interaction"
+  },
+  "report_schema_version": "0.1",
+  "status": "hitter_age_level_batting_side_test_complete"
+}
