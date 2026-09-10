@@ -128,6 +128,17 @@ Gonzalez falls from 4.09 to 1.63 WAR. This is an immediate consistency safeguard
 a substitute for P0: replace it with one validated year-by-year career-state transition
 model. See the [impact result](prospect-role-probability-safeguard-result.md).
 
+The first replacement pieces are now validated and durable. Prior-year MLB workload
+improves fringe advancement for hitters and pitchers in selection and two later years;
+pitcher role adds no repeatable signal after workload. A separate time-ordered test
+supports hitter/pitcher-specific destinations after a successful fringe advance. The
+frozen equations, destination probabilities and monotone state engine are implemented.
+Next connect state to whole historical workload/performance paths and replay it at
+historical cutoffs. Do not sample isolated seasons independently: that would discard
+the real within-career dependence this P0 is designed to retain. Do not select the
+eventual tier before the simulated years unfold: that is the circular shortcut being
+replaced. No current ranking changes until the linked replay passes.
+
 A descriptive early-versus-late cohort comparison found 74.7% hitter and 66.3%
 pitcher coverage for nominal 80% ranges. It is not chronology-safe confirmation:
 six-year outcomes for the earlier debut cohorts extend into later calendar years.

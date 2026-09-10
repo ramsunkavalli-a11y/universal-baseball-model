@@ -10,6 +10,7 @@ end-to-end replay is still required before dollar rankings.
 **Current priority: get the model right before building a public tool.** The
 [authoritative product roadmap](docs/product-roadmap.md) defines the active Phase 1
 and Phase 2 sequence. Read it first, then the
+[current model plan](docs/current-model-plan.md) and
 [status and handoff](docs/project-status.md). Component-specific plans are historical
 records when they conflict with that sequence.
 
