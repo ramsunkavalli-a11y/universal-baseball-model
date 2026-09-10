@@ -21,6 +21,9 @@ DEBUT = Path(
 PATHS = Path(
     "reports/generated/prospect-outcome-quality-2009-2025/post-debut-pitcher-performance-paths.parquet"
 )
+SNAPSHOTS = Path(
+    "reports/generated/opportunity-history-sources-v2/tables/pitcher_snapshots.parquet"
+)
 CONTRACT = Path("docs/prospect-pitcher-linked-2026-confirmation-contract.md")
 ENVIRONMENT = Path("docs/prospect-component-uncertainty-result.json")
 
@@ -35,8 +38,15 @@ def main() -> int:
         raise ValueError("runs per win must be positive")
     if debut.get_column("mlb_debut_date").max().year > 2025:
         raise ValueError("forecast freeze refuses any 2026 debut outcome")
+    snapshot = pl.read_parquet(SNAPSHOTS).filter(pl.col("snapshot_year") == 2025)
     prospects = (
-        opportunity.join(debut, on="player_id", how="left", validate="1:1")
+        opportunity.join(
+            snapshot.select("player_id", "age_years", "as_of_level_group", "as_of_role"),
+            on="player_id",
+            how="inner",
+            validate="1:1",
+        )
+        .join(debut, on="player_id", how="left", validate="1:1")
         .filter(pl.col("mlb_debut_date").is_null())
         .drop("mlb_debut_date")
         .join(
@@ -111,7 +121,7 @@ def main() -> int:
         "runner_sha256": sha256_file(Path(__file__)),
         "sources": {
             path.as_posix(): sha256_file(path)
-            for path in (OPPORTUNITY, INCUMBENT, DEBUT, PATHS, ENVIRONMENT)
+            for path in (OPPORTUNITY, INCUMBENT, DEBUT, PATHS, ENVIRONMENT, SNAPSHOTS)
         },
         "storage": storage,
     }

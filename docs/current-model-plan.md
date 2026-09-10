@@ -202,7 +202,10 @@ A genuinely prospective pitcher-prospect linked-path test is now frozen for fina
 the incumbent's frozen opportunity/Tango rate uncertainty, and 1,659 cutoff-valid
 positive first-year historical pitcher paths. No 2026 outcome was read. After official
 regular-season totals stabilize, compare the two complete distributions by CRPS and
-their expected WAR by paired squared error under the fixed contract.
+their expected WAR by paired squared error under the fixed contract. The hash-bound
+evaluator is implemented and refuses partial schedules, changed forecast files, a
+changed contract, or incomplete target columns. It needs only final all-MLB 2026
+StatsAPI pitcher totals and the completed schedule report.
 
 ## Goal
 
