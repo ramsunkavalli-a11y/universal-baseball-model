@@ -1,0 +1,255 @@
+{
+  "as_of_date": "2026-09-10",
+  "boundaries": {
+    "baserunning_used": false,
+    "defense_used": false,
+    "outside_fv_used": false,
+    "position_used": false,
+    "production_values_changed": false,
+    "subgroups_used_for_selection": false
+  },
+  "decision": "reject_linked_hitter_replacement_retain_incumbent",
+  "forecast_snapshot": 2021,
+  "metrics": {
+    "arrival_only": {
+      "bias": -0.08303817611024507,
+      "mae": 0.21966457834618186,
+      "observed_mean": 0.14353341662763872,
+      "players": 3260,
+      "predicted_mean": 0.06049524051739364,
+      "rmse": 0.9776829939801199
+    },
+    "historical_incumbent": {
+      "bias": 0.06316457258512294,
+      "mae": 0.30965957408019423,
+      "observed_mean": 0.14353341662763872,
+      "players": 3260,
+      "predicted_mean": 0.2066979892127616,
+      "rmse": 0.9552876279024322
+    },
+    "tier_linked": {
+      "bias": -0.030316372898826792,
+      "mae": 0.2504449836907031,
+      "observed_mean": 0.14353341662763872,
+      "players": 3260,
+      "predicted_mean": 0.1132170437288119,
+      "rmse": 0.9600966450759668
+    },
+    "zero": {
+      "bias": -0.14353341662763872,
+      "mae": 0.18218692433425585,
+      "observed_mean": 0.14353341662763872,
+      "players": 3260,
+      "predicted_mean": 0.0,
+      "rmse": 1.0038575345093108
+    }
+  },
+  "outcome_seasons": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "paired_mse_bootstrap": {
+    "arrival_only_vs_incumbent": {
+      "candidate_minus_baseline_mse": 0.043289584694475636,
+      "p025": -0.06261311854260462,
+      "p975": 0.16760847820444377
+    },
+    "arrival_only_vs_zero": {
+      "candidate_minus_baseline_mse": -0.05186591287318059,
+      "p025": -0.07588611088431743,
+      "p975": -0.03086549934384472
+    },
+    "tier_linked_vs_arrival_only": {
+      "candidate_minus_baseline_mse": -0.034078468831804265,
+      "p025": -0.0822742311362397,
+      "p975": 0.007309709824948813
+    },
+    "tier_linked_vs_incumbent": {
+      "candidate_minus_baseline_mse": 0.009211115862671381,
+      "p025": -0.05935731759385756,
+      "p975": 0.08342656285046066
+    }
+  },
+  "path_library_cutoff": "window_end_year <= 2021",
+  "report_schema_version": 1,
+  "scope": "batting_plus_replacement_only",
+  "sources": {
+    "docs/prospect-component-uncertainty-result.json": "040042a58cde3aa6c7fe749949b79a0e3d1fd7344029f5fa006c25cfbe7c29d8",
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_hitting_components_2009_2025.parquet": "755b78517f52c3875fe7ea2877cbcb34a0cecd1a2fcb17ee05698cc55f2184a6",
+    "reports/generated/opportunity-40man-history/tables/historical_40man_membership.parquet": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421",
+    "reports/generated/opportunity-history-sources-v2/tables/2018/affiliated_season_stats.parquet": "e8f1a52f48d3f9aee6aca39207e82c39b1a6df9375b7a5025a54fe284a83fd04",
+    "reports/generated/opportunity-history-sources-v2/tables/2019/affiliated_season_stats.parquet": "0dd0a82eecbdbf15f67e74d2312bf8ecac91c2c6ed3645e103f4de82bea59021",
+    "reports/generated/opportunity-history-sources-v2/tables/2020/affiliated_season_stats.parquet": "332e1edc158ecfde8e503378d99f249681348c6174c0c60642c0f6ef09201a5d",
+    "reports/generated/opportunity-history-sources-v2/tables/2021/affiliated_season_stats.parquet": "55b727f4c9437f357f2a685841ff3fdec4c509a4f6d8d870e6fbf851977d9c9e",
+    "reports/generated/opportunity-history-sources-v2/tables/2022/affiliated_season_stats.parquet": "a3fca9b9a7d4df771c3d3aa9d44189cb085df8cb71ada83eae1c363ca62ebddc",
+    "reports/generated/opportunity-history-sources-v2/tables/2023/affiliated_season_stats.parquet": "a68647e3c5338db8ccb79e8c0ff4d721e6863b5fbe0ec22ae11d553882f8cc37",
+    "reports/generated/opportunity-history-sources-v2/tables/2024/affiliated_season_stats.parquet": "1ac6a4a6d045faf4157565103e821c0bb023869e54285025db7fa0dab2861bf5",
+    "reports/generated/opportunity-history-sources-v2/tables/2025/affiliated_season_stats.parquet": "c0663675bee3ccc7f567808b8e1856143d04b9ddba9f735a71252b9f3d2e3187",
+    "reports/generated/opportunity-history-sources-v2/tables/hitter_snapshots.parquet": "4480052b8a07fbb21366b54cc341630bbf29cf3be9d52ac1820f026c4efa90b3",
+    "reports/generated/phase2-arrival-skill-source/tables/affiliated_hitting_components.parquet": "c7ac4b4a3bf2eac9013edbf010e8d0ac6e843175b0014261fbb3f41d425fccf0",
+    "reports/generated/player-demographics/tables/player-demographics.parquet": "010bb368acc8465dc1c5ba21660dd32bdcf0e9132bc4824e39a491f11189f54f",
+    "reports/generated/prospect-outcome-quality-2009-2025/post-debut-hitter-performance-paths.parquet": "976128d5e882e8c3430ef56f48743445c4c970d00b1b87f61d9c5cf19067e48c"
+  },
+  "status": "development_replay_complete_not_promoted",
+  "subgroups": [
+    {
+      "arrival_only_predicted_mean": 0.012994656619520172,
+      "arrival_only_rmse": 0.6182513529001884,
+      "group": "level_tier",
+      "incumbent_predicted_mean": 0.051169739604305126,
+      "incumbent_rmse": 0.6142604838698518,
+      "observed_mean": 0.0733552452122599,
+      "players": 2403,
+      "tier_linked_predicted_mean": 0.01870797430684091,
+      "tier_linked_rmse": 0.6175172305511701,
+      "value": "A_OR_BELOW"
+    },
+    {
+      "arrival_only_predicted_mean": 0.2654577187965905,
+      "arrival_only_rmse": 1.7877893598083563,
+      "group": "level_tier",
+      "incumbent_predicted_mean": 0.9454732286305654,
+      "incumbent_rmse": 1.758060832094723,
+      "observed_mean": 0.4143165726453098,
+      "players": 409,
+      "tier_linked_predicted_mean": 0.5760081787427583,
+      "tier_linked_rmse": 1.7374886671790815,
+      "value": "AAA"
+    },
+    {
+      "arrival_only_predicted_mean": 0.1298986115571557,
+      "arrival_only_rmse": 1.4192954845996328,
+      "group": "level_tier",
+      "incumbent_predicted_mean": 0.3714254335884155,
+      "incumbent_rmse": 1.3488509779680053,
+      "observed_mean": 0.27644978676269216,
+      "players": 442,
+      "tier_linked_predicted_mean": 0.20032173300387304,
+      "tier_linked_rmse": 1.3899887250668534,
+      "value": "AA"
+    },
+    {
+      "arrival_only_predicted_mean": 0.06559773654955733,
+      "arrival_only_rmse": 1.3465472645954528,
+      "group": "bat_side",
+      "incumbent_predicted_mean": 0.22876289246241285,
+      "incumbent_rmse": 1.2600513536781122,
+      "observed_mean": 0.27652609277115053,
+      "players": 891,
+      "tier_linked_predicted_mean": 0.12811531929915398,
+      "tier_linked_rmse": 1.3009003767864875,
+      "value": "L"
+    },
+    {
+      "arrival_only_predicted_mean": 0.05901332364131681,
+      "arrival_only_rmse": 0.8000235628511138,
+      "group": "bat_side",
+      "incumbent_predicted_mean": 0.1959812854269882,
+      "incumbent_rmse": 0.8057629089771532,
+      "observed_mean": 0.09498985051830479,
+      "players": 2022,
+      "tier_linked_predicted_mean": 0.10648529927758939,
+      "tier_linked_rmse": 0.7939437561676298,
+      "value": "R"
+    },
+    {
+      "arrival_only_predicted_mean": 0.05602870437551887,
+      "arrival_only_rmse": 0.771257163878678,
+      "group": "bat_side",
+      "incumbent_predicted_mean": 0.21248861243868286,
+      "incumbent_rmse": 0.8446039772479158,
+      "observed_mean": 0.08491271411814043,
+      "players": 347,
+      "tier_linked_predicted_mean": 0.11418887008961069,
+      "tier_linked_rmse": 0.8009062105872975,
+      "value": "S"
+    },
+    {
+      "arrival_only_predicted_mean": 0.042118702959923926,
+      "arrival_only_rmse": 0.08712368930900709,
+      "group": "observed_arrival_group",
+      "incumbent_predicted_mean": 0.13184609162496447,
+      "incumbent_rmse": 0.2886220396291187,
+      "observed_mean": 0.0,
+      "players": 2841,
+      "tier_linked_predicted_mean": 0.07248103546079153,
+      "tier_linked_rmse": 0.18624270267377785,
+      "value": "did_not_arrive"
+    },
+    {
+      "arrival_only_predicted_mean": 0.1850960596123135,
+      "arrival_only_rmse": 2.717639736250943,
+      "group": "observed_arrival_group",
+      "incumbent_predicted_mean": 0.7142260108044841,
+      "incumbent_rmse": 2.556441531663575,
+      "observed_mean": 1.116751642496664,
+      "players": 419,
+      "tier_linked_predicted_mean": 0.3894246797418093,
+      "tier_linked_rmse": 2.633761453995119,
+      "value": "arrived"
+    },
+    {
+      "arrival_only_predicted_mean": 0.002685589158223875,
+      "arrival_only_rmse": 0.5695315000426716,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.011507404506519875,
+      "incumbent_rmse": 0.569133502069905,
+      "observed_mean": 0.030240017481349957,
+      "players": 652,
+      "tier_linked_predicted_mean": 0.0039190125489772555,
+      "tier_linked_rmse": 0.5694119979494057,
+      "value": "0"
+    },
+    {
+      "arrival_only_predicted_mean": 0.007624035832832079,
+      "arrival_only_rmse": 0.42542528032616755,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.03370940054746872,
+      "incumbent_rmse": 0.42435913633285294,
+      "observed_mean": 0.04230111202430861,
+      "players": 652,
+      "tier_linked_predicted_mean": 0.011635177816577417,
+      "tier_linked_rmse": 0.42521496556774263,
+      "value": "1"
+    },
+    {
+      "arrival_only_predicted_mean": 0.014386422925037664,
+      "arrival_only_rmse": 0.46625080257014045,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.062062287036539224,
+      "incumbent_rmse": 0.4668870334125618,
+      "observed_mean": 0.04642381988556741,
+      "players": 652,
+      "tier_linked_predicted_mean": 0.022000009894060073,
+      "tier_linked_rmse": 0.46600874772748185,
+      "value": "2"
+    },
+    {
+      "arrival_only_predicted_mean": 0.038262423379042926,
+      "arrival_only_rmse": 0.8339521490411169,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.1285900894763567,
+      "incumbent_rmse": 0.828452566050813,
+      "observed_mean": 0.1540283178529834,
+      "players": 652,
+      "tier_linked_predicted_mean": 0.05470272424940407,
+      "tier_linked_rmse": 0.8330285327982454,
+      "value": "3"
+    },
+    {
+      "arrival_only_predicted_mean": 0.2395177312918316,
+      "arrival_only_rmse": 1.8333306813340047,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.7976207644969235,
+      "incumbent_rmse": 1.7761085226372852,
+      "observed_mean": 0.44467381589398414,
+      "players": 652,
+      "tier_linked_predicted_mean": 0.47382829413504074,
+      "tier_linked_rmse": 1.786837810117245,
+      "value": "4"
+    }
+  ],
+  "training_snapshot": 2018
+}

@@ -121,6 +121,13 @@ is promoted. Prespecified subgroup diagnostics are retained as failure checks, n
 new model-selection opportunities. The next P0 is genuinely later confirmation.
 Current rankings stay unchanged.
 
+The same linked-path replacement is rejected for hitters. A cutoff-safe 2021 replay
+of batting-plus-replacement WAR finds incumbent RMSE 0.955, tier-linked RMSE 0.960
+and arrival-only RMSE 0.978 on 3,260 players. This test restores intentional walks
+from the original StatsAPI captures and excludes unavailable historical defense,
+running and position inputs from both sides. Do not transfer the pitcher decision to
+hitters or use the disclosed subgroup results for post-hoc tuning.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

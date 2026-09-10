@@ -81,6 +81,18 @@ non-arrivals and some low-probability groups; the incumbent remains better for t
 The next valid gate is a predeclared genuinely later confirmation; do not tune a
 role fix on these disclosed subgroups and call it confirmation.
 
+The hitter side has now received the same structural test rather than assuming the
+pitcher result transfers. Original hashed StatsAPI captures restore intentional walks
+and support 2,147 [historical hitter performance paths](historical-hitter-performance-paths-result.md).
+The [cutoff-safe hitter replay](dependent-career-linked-hitter-replay-result.md) scores
+batting plus replacement only across 3,260 pre-MLB hitters. Observed 2022-2025 mean
+WAR is 0.144. The historical incumbent predicts 0.207 with 0.955 RMSE; tier-linked
+paths predict 0.113 with 0.960 RMSE, and an arrival-only pool predicts 0.060 with
+0.978 RMSE. Neither linked version beats the incumbent, and paired intervals cross
+zero. The hitter replacement is rejected. This is evidence against applying the
+pitcher fix indiscriminately. Defense, running, position and current values are
+unchanged.
+
 The earlier September 9 stopping point remains useful historical context in
 [the prior handoff](current-cycle-stopping-point-2026-09-09.md).
 
@@ -777,7 +789,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,432 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,435 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

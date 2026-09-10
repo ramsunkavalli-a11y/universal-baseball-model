@@ -30,6 +30,7 @@ PITCHER_RATE_MODEL_ID = "pitcher_321_components_tango_aging_phase1_v1"
 MARCEL_REGRESSION_PA = 1200.0
 PITCHER_REGRESSION_BF = 200.0
 PITCHER_WAR_ALLOCATION = 430.0
+HITTER_WAR_ALLOCATION = 570.0
 HITTER_RECENCY_WEIGHTS = {1: 3.0, 2: 2.0, 3: 1.0}
 
 # Cumulative component shapes from Tango's more-regressed adjacent-pitching
@@ -195,7 +196,7 @@ def build_hitter_conditional_war_rates(
         "triple": NEUTRAL_WOBA_WEIGHTS["3B"], "hr": NEUTRAL_WOBA_WEIGHTS["HR"], "other": 0.0,
     }
     reference_woba = sum(prior[key] * woba_weight[key] for key in event_columns)
-    replacement_runs = 570.0 * rpw * 600.0 / reference_pa
+    replacement_runs = HITTER_WAR_ALLOCATION * rpw * 600.0 / reference_pa
     baserunning_lookup: dict[tuple[int, int], dict[str, object]] = {}
     if baserunning_rates is not None:
         required_baserunning = {

@@ -161,6 +161,12 @@ and improves RMSE from 0.558 to 0.551, but the paired interval crosses zero. Ret
 both results and require genuinely later confirmation before promotion. Do not tune
 to the disclosed level, role, hand, arrival, or probability-band diagnostics.
 
+The parallel hitter test rejects the same replacement: the incumbent has lower
+overall RMSE than either linked historical construction. Keep hitter skill and
+workload separate in the current model. A future hitter challenger must add a
+predeclared reason the dependence should help and must separately source vintage
+defense, running and position if it intends to forecast whole-player WAR.
+
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.
 10. Improve defense, two-way-player handling, interval calibration, nonlinear buyer
