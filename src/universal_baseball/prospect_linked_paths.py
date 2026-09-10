@@ -206,3 +206,33 @@ def simulate_linked_tail_blocks(
         donor_player_ids=player_ids[donor_indices],
         tail_resamples=tail_resamples,
     )
+
+
+def gather_linked_donor_values(
+    draws: LinkedPathDraws,
+    donor_values: pl.DataFrame,
+    *,
+    value_column: str,
+) -> np.ndarray:
+    """Gather an annual donor value using the exact donor identity for each tail."""
+
+    required = {"path_player_id", "path_year", value_column}
+    if missing := sorted(required - set(donor_values.columns)):
+        raise ValueError(f"linked donor values missing fields: {missing}")
+    if donor_values.select("path_player_id", "path_year").n_unique() != donor_values.height:
+        raise ValueError("linked donor values violate player-year grain")
+    lookup = {
+        (int(row["path_player_id"]), int(row["path_year"])): float(row[value_column])
+        for row in donor_values.iter_rows(named=True)
+    }
+    result = np.empty(draws.donor_player_ids.shape, dtype=float)
+    for year_index in range(result.shape[1]):
+        path_year = year_index + 1
+        for draw_index, player_id in enumerate(draws.donor_player_ids[:, year_index]):
+            key = (int(player_id), path_year)
+            if key not in lookup:
+                raise ValueError(f"missing linked donor value for {key}")
+            result[draw_index, year_index] = lookup[key]
+    if np.any(~np.isfinite(result)):
+        raise ValueError("linked donor values are nonfinite")
+    return result

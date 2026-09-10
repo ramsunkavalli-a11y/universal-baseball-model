@@ -225,3 +225,8 @@ That terminal-state replay is now scored on 3,251 hitters and 3,642 pitchers. Pi
 win log loss and Brier clearly; hitters lose Brier clearly despite better log loss.
 Reject the universal candidate, retain the pitcher branch for the next WAR replay and
 leave the playable explorer unchanged.
+
+The WAR join primitive is ready: every simulated player-year now retrieves performance
+from the exact donor identity and path year returned by tail resampling, with strict
+player-year and finite-value checks. This prevents workload from one donor being paired
+with performance from another.

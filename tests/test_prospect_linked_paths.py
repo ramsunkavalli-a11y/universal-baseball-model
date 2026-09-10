@@ -3,6 +3,7 @@ import polars as pl
 
 from universal_baseball.prospect_linked_paths import (
     compile_linked_donor_library,
+    gather_linked_donor_values,
     simulate_linked_tail_blocks,
 )
 
@@ -89,3 +90,18 @@ def test_tail_sampler_preserves_blocks_and_resamples_only_after_divergence() -> 
         result.donor_player_ids[changed, 2]
         == result.donor_player_ids[changed, 1]
     ).all()
+    performance = pl.DataFrame(
+        {
+            "path_player_id": [player_id for player_id in (1, 2, 3) for _ in range(3)],
+            "path_year": [1, 2, 3] * 3,
+            "war_rate": [player_id * 10 + year for player_id in (1, 2, 3) for year in (1, 2, 3)],
+        }
+    )
+    gathered = gather_linked_donor_values(
+        result, performance, value_column="war_rate"
+    )
+    assert gathered.shape == result.donor_player_ids.shape
+    assert np.array_equal(
+        gathered.astype(int),
+        result.donor_player_ids * 10 + np.arange(1, 4),
+    )
