@@ -159,6 +159,13 @@ position runs or pitcher runs above average. This is display-only transparency a
 does not change a forecast. The launcher still runs all 18 model-law checks before
 opening the page.
 
+The first [nested prospect uncertainty layer](prospect-nested-workload-uncertainty-result.md)
+now adds empirical workload-only P10/P50/P90 outcomes for all 6,719 prospect paths.
+Every weighted mean reproduces its point WAR (maximum difference `3.6e-15`), so no
+central value changes. The explorer labels these as workload outcomes, not full
+confidence intervals; skill-rate, aging, injury, defense and position-retention
+uncertainty are still missing.
+
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
 quality. A proper hurdle test conditions MLB component quality on meaningful playing

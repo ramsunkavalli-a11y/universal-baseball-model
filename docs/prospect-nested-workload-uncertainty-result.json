@@ -1,0 +1,44 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundaries": {
+    "current_2026_outcomes_used": false,
+    "outside_fv_used": false,
+    "production_value_changed": false,
+    "skill_rate_uncertainty_included": false,
+    "workload_uncertainty_only": true
+  },
+  "by_player_type": [
+    {
+      "mean_p10_war": -0.09759692256944215,
+      "mean_p50_war": 0.005836325086479443,
+      "mean_p90_war": 0.1797972690381637,
+      "mean_point_war": 0.04226494167845768,
+      "mean_workload_only_star_probability": 0.0,
+      "player_type": "pitcher",
+      "players": 3849
+    },
+    {
+      "mean_p10_war": -0.015524922208157809,
+      "mean_p50_war": 0.11448617063075614,
+      "mean_p90_war": 1.5419927712377144,
+      "mean_point_war": 0.5878472114800519,
+      "mean_workload_only_star_probability": 0.000864402698414122,
+      "player_type": "hitter",
+      "players": 2870
+    }
+  ],
+  "contract": "docs/prospect-nested-workload-uncertainty-plan.md",
+  "maximum_absolute_mean_difference": 3.552713678800501e-15,
+  "players": 6719,
+  "report_schema_version": "0.1",
+  "status": "prospect_nested_workload_uncertainty_complete",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "b7d10c229f13d301bc944dba99edcaf1cd37bf7fb715caefd17c5ac3f81d74d7",
+    "file_size_bytes": 144562,
+    "path": "reports\\generated\\phase2-prospect-workload-uncertainty\\2026-09-08\\prospect-workload-uncertainty.parquet",
+    "row_count": 6719,
+    "schema_sha256": "093791318430b616e0dd2e2f0b0869bdd48a521b36c547cf98047c50a8c4ae14",
+    "table_name": "phase2_prospect_workload_uncertainty"
+  }
+}

@@ -185,6 +185,12 @@ def build_explorer_payload(
                 "pitching_raa_per_800": detail.get(
                     "pitching_runs_above_average_per_800"
                 ),
+                "workload_war_p10": detail.get("workload_war_p10"),
+                "workload_war_p50": detail.get("workload_war_p50"),
+                "workload_war_p90": detail.get("workload_war_p90"),
+                "workload_only_star_probability": detail.get(
+                    "workload_only_star_probability"
+                ),
                 "is_pre_mlb_value": is_pre_mlb_value,
                 "years": [] if is_pre_mlb_value else annual_lookup.get(player_id, []),
             }

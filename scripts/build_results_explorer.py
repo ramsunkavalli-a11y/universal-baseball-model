@@ -61,7 +61,7 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
         / "nested-career-model-fv.parquet"
     ).select(
         "player_id", "model_player_type", "primary_position",
-        "three_tier_expected_workload",
+        "three_tier_expected_workload", "three_tier_expected_six_year_war",
     )
     hitter = pl.read_parquet(path_root / "hitter_expected_war_paths.parquet").group_by(
         "player_id"
@@ -80,7 +80,7 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
         pl.lit("WAR per 800 BF").alias("conditional_war_rate_unit"),
         pl.col("pitching_runs_above_average_per_800").mean(),
     )
-    return nested.join(hitter, on="player_id", how="left", validate="1:1").join(
+    details = nested.join(hitter, on="player_id", how="left", validate="1:1").join(
         pitcher,
         on="player_id",
         how="left",
@@ -96,6 +96,28 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
         .otherwise(pl.col("conditional_war_rate_unit"))
         .alias("conditional_war_rate_unit"),
     ).drop("conditional_war_rate_pitcher", "conditional_war_rate_unit_pitcher")
+    uncertainty_path = (
+        generated / "phase2-prospect-workload-uncertainty" / as_of_date
+        / "prospect-workload-uncertainty.parquet"
+    )
+    if not uncertainty_path.exists():
+        raise FileNotFoundError(
+            f"Phase 2 prospect workload uncertainty is missing: {uncertainty_path}"
+        )
+    uncertainty = pl.read_parquet(uncertainty_path)
+    details = details.join(uncertainty, on="player_id", how="left", validate="1:1")
+    applicable = details.filter(pl.col("three_tier_expected_workload").is_not_null())
+    if applicable.filter(pl.col("workload_war_mean").is_null()).height:
+        raise ValueError("prospect workload uncertainty coverage is incomplete")
+    if applicable.filter(
+        (
+            pl.col("workload_war_mean")
+            - pl.col("three_tier_expected_six_year_war")
+        ).abs()
+        > 1e-8
+    ).height:
+        raise ValueError("prospect workload uncertainty does not preserve point means")
+    return details
 
 
 def _args() -> argparse.Namespace:

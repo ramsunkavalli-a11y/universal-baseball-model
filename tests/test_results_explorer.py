@@ -75,6 +75,10 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
                 "defense_runs_per_600": [0.0],
                 "positional_runs_per_600": [12.5],
                 "pitching_runs_above_average_per_800": [None],
+                "workload_war_p10": [0.0],
+                "workload_war_p50": [1.0],
+                "workload_war_p90": [5.0],
+                "workload_only_star_probability": [0.01],
             }
         ),
     )
@@ -82,6 +86,7 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
     assert nested["players"][0]["years"] == []
     assert nested["players"][0]["expected_workload"] == 1200.0
     assert nested["players"][0]["positional_runs_per_600"] == 12.5
+    assert nested["players"][0]["workload_war_p90"] == 5.0
 
 
 def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
