@@ -20,6 +20,13 @@ It governs the broader sequence: player/rights coverage; reuse of existing model
 career paths and control/cost data; integrated research valuation; historical
 game-by-game replay. Next-season batting refinement alone cannot deliver the goal.
 
+The [GitHub projection-method review](github-projection-methods-review-2026-09-10.md)
+now governs the next model-development block. Its immediate P0 is a joint score of
+aging, return/attrition and workload that retains non-returners, followed by
+component-specific shrinkage selected with walk-forward tests. This does not merge
+skill and opportunity models: it evaluates their product on the production target
+that ultimately enters WAR and value.
+
 ## What we have learned
 
 The active production-focused execution sequence and completed Tango-style
@@ -75,6 +82,13 @@ terminal event equally under log loss need not optimize the batting-value estima
 Keep coherent probabilities and use event-score guardrails to detect harmful tradeoffs.
 
 ## Next sequence
+
+**Current research P0 (2026-09-10):** build the complete next-season transition
+scoreboard, including observed inactivity, and compare the incumbent separate
+skill/opportunity bundle with simple baselines. Then tune hitter and pitcher
+component shrinkage independently inside the development window and freeze it before
+later-season scoring. Do not change playable values until the joint production gate
+passes. Do not reopen demographic families or use outside FV to repair rankings.
 
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
