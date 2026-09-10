@@ -141,6 +141,14 @@ left-handed subgroup worsens, and its current top-end effect is disproportionate
 non-vintage physical measurements out of selected historical models until their timing
 is defensible.
 
+The reusable search layer now records hashes for the complete candidate family and
+the exact outer cohort, enforces observable time origins and identical player rows,
+and supplies a conservative promotion gate across both proper scores, paired
+uncertainty, calibration, supported subgroups and fresh confirmation. The 176-model
+prospect search has been rerun through it with unchanged results. Use this same layer
+for later PBP and derived-feature ablations instead of creating one-off selection
+rules.
+
 The first universal pitcher batted-ball ablation also failed confirmation. A
 development-selected, strongly regressed ground-ball rate improved one later season
 but did not improve the next untouched season; popup and pull-direction additions did not

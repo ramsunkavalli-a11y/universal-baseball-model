@@ -37,6 +37,12 @@ regression for sparse evidence, proper scores, calibration, uncertainty, and sup
 subgroup review. Skill, opportunity, workload, and contract value remain separate
 until final assembly.
 
+That policy now has a reusable [experiment harness](forecast-experiment-harness.md).
+Future age, level, handedness, origin, role, performance, PBP and context families use
+the same frozen-family, chronology, common-cohort and promotion checks. This enables
+broad testing without converting the winning noise from a large search into a player
+value adjustment.
+
 **Recovery completed for 2024:** original forecasts were found and hash-verified.
 All 3,985 player IDs and official PA targets match O2026D. The recovered model
 improves participation Brier by 12.6% and PA RMSE by 12.5%; lower-level exceptions

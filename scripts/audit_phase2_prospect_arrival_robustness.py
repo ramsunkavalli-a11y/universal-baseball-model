@@ -19,7 +19,9 @@ from universal_baseball.prospect_arrival import (
 )
 from universal_baseball.prospect_arrival_validation import (
     CandidateSpec,
+    ForecastExperimentProtocol,
     calibration_diagnostics,
+    common_cohort_fingerprint,
     completed_evaluation_years,
     paired_bootstrap_difference,
     proper_scores,
@@ -332,7 +334,22 @@ def main() -> int:
                 candidate=selected,
             )
             observed = outer_evaluation.get_column(target).to_numpy()
+            protocol = ForecastExperimentProtocol(
+                name=f"prospect-{player_type}-{outcome}",
+                target=target,
+                player_universe=(
+                    "all affiliated pre-MLB players age 16-30 in the dated snapshot; "
+                    "failures and non-arrivals retained"
+                ),
+                horizon=HORIZON,
+                incumbent_id=INCUMBENT.model_id,
+                candidate_ids=tuple(candidate.model_id for candidate in candidates),
+                selection_origins=eligible_years,
+                outer_origin=OUTER_YEAR,
+                outcome_available_through=args.as_of_date.year - 1,
+            )
             player_results[outcome] = {
+                "experiment_protocol": protocol.as_dict(include_candidate_ids=False),
                 "conditioning_column": conditioning_column,
                 "selection_evaluation_years": list(eligible_years),
                 "selection_scores": selection_rows,
@@ -350,6 +367,14 @@ def main() -> int:
                     observed,
                     incumbent_probability,
                     selected_probability,
+                ),
+                "outer_cohort_fingerprint": common_cohort_fingerprint(
+                    outer_evaluation.get_column("player_id").to_numpy(),
+                    observed,
+                    {
+                        INCUMBENT.model_id: incumbent_probability,
+                        selected.model_id: selected_probability,
+                    },
                 ),
                 "incumbent_calibration": calibration_diagnostics(
                     observed, incumbent_probability

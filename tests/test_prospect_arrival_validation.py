@@ -2,9 +2,12 @@ import numpy as np
 import pytest
 
 from universal_baseball.prospect_arrival_validation import (
+    ForecastExperimentProtocol,
     calibration_diagnostics,
+    common_cohort_fingerprint,
     completed_evaluation_years,
     paired_bootstrap_difference,
+    promotion_gate,
     proper_scores,
     select_nested_candidate,
 )
@@ -66,3 +69,71 @@ def test_calibration_diagnostics_preserve_every_row_in_bins() -> None:
     assert sum(cell["players"] for cell in result["reliability_bins"]) == 22
     assert result["intercept"] is not None
     assert result["slope"] is not None
+
+
+def test_experiment_protocol_freezes_family_and_observable_chronology() -> None:
+    protocol = ForecastExperimentProtocol(
+        name="arrival-angle-search",
+        target="two-year MLB arrival",
+        player_universe="all pre-MLB affiliated players",
+        horizon=2,
+        incumbent_id="core",
+        candidate_ids=("core", "hand", "origin"),
+        selection_origins=(2018, 2021),
+        outer_origin=2023,
+        outcome_available_through=2025,
+    )
+    assert protocol.as_dict()["candidate_count"] == 3
+    assert len(protocol.fingerprint) == 64
+
+    with pytest.raises(ValueError, match="fully observable"):
+        ForecastExperimentProtocol(
+            name="leaky",
+            target="arrival",
+            player_universe="prospects",
+            horizon=3,
+            incumbent_id="core",
+            candidate_ids=("core",),
+            selection_origins=(2021,),
+            outer_origin=2023,
+            outcome_available_through=2025,
+        ).validate()
+
+
+def test_common_cohort_fingerprint_rejects_row_mismatch_and_duplicates() -> None:
+    ids = np.array([11, 12, 13])
+    observed = np.array([0.0, 1.0, 0.0])
+    predictions = {
+        "core": np.array([0.1, 0.6, 0.2]),
+        "candidate": np.array([0.2, 0.7, 0.1]),
+    }
+    assert len(common_cohort_fingerprint(ids, observed, predictions)) == 64
+    with pytest.raises(ValueError, match="common evaluation cohort"):
+        common_cohort_fingerprint(
+            ids, observed, {"candidate": np.array([0.2, 0.7])}
+        )
+    with pytest.raises(ValueError, match="unique"):
+        common_cohort_fingerprint(
+            np.array([11, 11, 13]), observed, predictions
+        )
+
+
+def test_promotion_requires_both_scores_and_fresh_supported_confirmation() -> None:
+    favorable = {
+        "log_loss": {"difference": -0.01, "ci_high": -0.001},
+        "brier": {"difference": -0.005, "ci_high": -0.0001},
+    }
+    assert promotion_gate(
+        favorable,
+        calibration_review_passed=True,
+        subgroup_review_passed=True,
+        fresh_confirmation=True,
+    )["promote"]
+    held = promotion_gate(
+        favorable,
+        calibration_review_passed=True,
+        subgroup_review_passed=True,
+        fresh_confirmation=False,
+    )
+    assert not held["promote"]
+    assert held["reasons"] == ["fresh confirmation is still required"]

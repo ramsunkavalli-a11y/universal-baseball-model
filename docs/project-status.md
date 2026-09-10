@@ -2,6 +2,21 @@
 
 Updated 2026-09-10. This is the current start-here document.
 
+## Reusable search guardrails
+
+The broad feature-search rules are now enforced by a reusable
+[forecast experiment harness](forecast-experiment-harness.md), not only written policy.
+It freezes and hashes the complete candidate family and chronology, verifies identical
+outer cohorts, and requires two proper-score wins with paired uncertainty plus
+calibration, subgroup and fresh-confirmation gates before promotion. The existing 176
+prospect combinations were rerun across eight hitter/pitcher outcomes; results did not
+change and remain retrospective evidence. No demographic or PBP input was promoted.
+
+The supplied Brewers payroll workbook also confirms that Gary Sanchez's 2027 mutual
+option salary is `TBD`. It correctly remains review rather than receiving a guessed
+cost. The other remaining option reviews are conditional future branches, not simple
+missing fixed salaries.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still
@@ -789,7 +804,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,435 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,438 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

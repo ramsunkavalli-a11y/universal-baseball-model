@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from hashlib import sha256
+import json
 
 import numpy as np
 from sklearn.linear_model import LogisticRegression
@@ -22,6 +24,144 @@ class CandidateSpec:
         if self.production_regression > 0:
             return f"{base}__rate_reg_{self.production_regression:g}"
         return base
+
+
+@dataclass(frozen=True, slots=True)
+class ForecastExperimentProtocol:
+    """Frozen identity and chronology for one bounded forecast experiment.
+
+    The protocol is deliberately model-agnostic.  It can guard demographic,
+    performance, play-by-play, role, or workload candidate families without
+    allowing the family or evaluation dates to change after an outer result is
+    seen.
+    """
+
+    name: str
+    target: str
+    player_universe: str
+    horizon: int
+    incumbent_id: str
+    candidate_ids: tuple[str, ...]
+    selection_origins: tuple[int, ...]
+    outer_origin: int
+    outcome_available_through: int
+
+    def validate(self) -> None:
+        if not self.name.strip() or not self.target.strip() or not self.player_universe.strip():
+            raise ValueError("experiment name, target, and player universe are required")
+        if self.horizon < 1:
+            raise ValueError("experiment horizon must be positive")
+        if not self.candidate_ids:
+            raise ValueError("candidate family must not be empty")
+        if len(set(self.candidate_ids)) != len(self.candidate_ids):
+            raise ValueError("candidate IDs must be unique")
+        if self.incumbent_id not in self.candidate_ids:
+            raise ValueError("incumbent must be part of the frozen candidate family")
+        if tuple(sorted(set(self.selection_origins))) != self.selection_origins:
+            raise ValueError("selection origins must be unique and increasing")
+        if not self.selection_origins:
+            raise ValueError("at least one selection origin is required")
+        if any(origin >= self.outer_origin for origin in self.selection_origins):
+            raise ValueError("selection origins must precede the outer origin")
+        if any(
+            origin + self.horizon > self.outcome_available_through
+            for origin in (*self.selection_origins, self.outer_origin)
+        ):
+            raise ValueError("an evaluation outcome is not fully observable")
+
+    @property
+    def fingerprint(self) -> str:
+        """Stable hash proving which family and chronology were evaluated."""
+
+        self.validate()
+        payload = {
+            "candidate_ids": self.candidate_ids,
+            "horizon": self.horizon,
+            "incumbent_id": self.incumbent_id,
+            "name": self.name,
+            "outcome_available_through": self.outcome_available_through,
+            "outer_origin": self.outer_origin,
+            "player_universe": self.player_universe,
+            "selection_origins": self.selection_origins,
+            "target": self.target,
+        }
+        return sha256(
+            json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()
+
+    def as_dict(self, *, include_candidate_ids: bool = True) -> dict[str, object]:
+        self.validate()
+        result: dict[str, object] = {
+            "name": self.name,
+            "target": self.target,
+            "player_universe": self.player_universe,
+            "horizon": self.horizon,
+            "incumbent_id": self.incumbent_id,
+            "candidate_count": len(self.candidate_ids),
+            "selection_origins": list(self.selection_origins),
+            "outer_origin": self.outer_origin,
+            "outcome_available_through": self.outcome_available_through,
+            "fingerprint": self.fingerprint,
+        }
+        if include_candidate_ids:
+            result["candidate_ids"] = list(self.candidate_ids)
+        return result
+
+
+def common_cohort_fingerprint(
+    player_ids: np.ndarray, observed: np.ndarray, predictions: dict[str, np.ndarray]
+) -> str:
+    """Validate identical rows and return a stable evaluation-cohort hash."""
+
+    ids = np.asarray(player_ids)
+    y = np.asarray(observed, dtype=float)
+    if ids.ndim != 1 or ids.size == 0 or y.shape != ids.shape:
+        raise ValueError("player IDs and outcomes must be equal nonempty vectors")
+    if np.unique(ids).size != ids.size:
+        raise ValueError("evaluation player IDs must be unique")
+    if not predictions:
+        raise ValueError("at least one prediction vector is required")
+    for model_id, probability in predictions.items():
+        if np.asarray(probability).shape != y.shape:
+            raise ValueError(f"{model_id} does not use the common evaluation cohort")
+        proper_scores(y, np.asarray(probability, dtype=float))
+    rows = sorted((str(player_id), int(outcome)) for player_id, outcome in zip(ids, y))
+    return sha256(
+        json.dumps(rows, separators=(",", ":")).encode()
+    ).hexdigest()
+
+
+def promotion_gate(
+    paired_difference: dict[str, object],
+    *,
+    calibration_review_passed: bool,
+    subgroup_review_passed: bool,
+    fresh_confirmation: bool,
+) -> dict[str, object]:
+    """Apply conservative, predeclared gates to an outer comparison.
+
+    Point-score wins alone are insufficient. Both proper-score paired intervals,
+    calibration, supported subgroups, and a genuinely fresh confirmation must pass.
+    """
+
+    reasons: list[str] = []
+    for score in ("log_loss", "brier"):
+        result = paired_difference.get(score)
+        if not isinstance(result, dict):
+            raise ValueError(f"paired result is missing {score}")
+        difference = float(result["difference"])
+        ci_high = float(result["ci_high"])
+        if difference >= 0:
+            reasons.append(f"{score} point estimate did not improve")
+        if ci_high >= 0:
+            reasons.append(f"{score} paired interval includes no improvement")
+    if not calibration_review_passed:
+        reasons.append("calibration review did not pass")
+    if not subgroup_review_passed:
+        reasons.append("supported-subgroup review did not pass")
+    if not fresh_confirmation:
+        reasons.append("fresh confirmation is still required")
+    return {"promote": not reasons, "reasons": reasons}
 
 
 def proper_scores(observed: np.ndarray, probability: np.ndarray) -> dict[str, float]:
