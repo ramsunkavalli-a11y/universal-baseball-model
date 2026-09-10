@@ -69,6 +69,12 @@ versus 31.0% observed across 801 active pitchers and 27.5% versus 27.0% among 13
 no prior MLB work. Keep the role probabilities; audit translated pitcher WAR rates
 next.
 
+The [pitcher affiliated-rate regression audit](pitcher-affiliated-regression-audit-result.md)
+rejects weakening the 800-BF prior. A 600-BF candidate won narrowly in 2024 but made
+2025 component log loss worse, with both bootstrap intervals spanning zero. Keep 800
+BF. The arriving cohort's implied run rate was too pessimistic overall, so a frozen
+component-profile calibration is the next targeted test.
+
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
 arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top
