@@ -1,6 +1,6 @@
 # Zero-mass WAR uncertainty diagnostic
 
-Status: promising structure, not promoted.
+Status: exact mixture implemented; not yet promoted to whole-player playable ranges.
 
 The current Phase 1 range is a bell curve around expected WAR. That is structurally
 wrong for players with a meaningful chance of no MLB activity: the real forecast has
@@ -28,6 +28,18 @@ Do not choose between these ranges from one disclosed season. The next candidate
 retain the exact zero mass, widen or reshape the active distribution separately, and
 be selected and confirmed over rolling forecast origins. A global width multiplier
 would mix two different problems and violate the model's skill/opportunity separation.
+
+That next component test is now complete. Rolling prior-origin scaling supports a
+1.207 hitter and 1.245 pitcher performance standard-deviation adjustment while leaving
+participation and workload untouched. An exact simulation now combines the frozen
+zero-truncated workload model with that scaled performance distribution. On 2025 it
+improves the current moment-normal interval score to 0.789 for hitters and 0.512 for
+pitchers, with no point-estimate change. See the
+[rolling conditional result](rolling-conditional-war-uncertainty-result.md).
+
+The remaining promotion gate is a rolling-origin test of the combined mixture and a
+correct simulation-based combination for two-way players. Do not add a second workload
+width correction: conditional workload already meets its coverage target.
 
 Reproduce with:
 

@@ -53,6 +53,27 @@ and 20.0% for pitchers, but active-player coverage falls to 67.3% and 60.3%. Do 
 promote either shape from one season. Keep the hurdle structure and conditional-active
 spread as separate targets in the rolling-origin build.
 
+The first rolling-origin probability layer is now complete. Snapshot-only opportunity
+forecasts for 2022–2025 were recalibrated using only prior scored origins. The added
+intercept/slope layer worsened pooled 2023–2025 Brier and log loss for hitters and was
+effectively neutral but slightly worse for pitchers. Retain raw participation
+probabilities; use the fixed calibration bands for monitoring rather than tuning.
+
+The same rolling replay clears conditional workload uncertainty. The current
+P10–P90 positive-workload distribution covers 81.8% of active hitter outcomes and
+80.1% of active pitcher outcomes across 2022–2025. The active-WAR undercoverage is
+therefore downstream in performance/rate uncertainty or its combination with
+workload. Do not widen the workload model to compensate.
+
+That downstream split is now measured. Conditional performance ranges cover only
+71.8% of hitter and 71.4% of pitcher outcomes over the rolling 2023–2025 evaluation.
+A scale learned from prior origins raises those results to 81.5% and 80.7% and improves
+pooled interval score, with no change to means. Exact simulation of the resulting
+zero-activity/workload/performance mixture improves 2025 overall interval score versus
+the current bell-curve range for both components. The simulator is implemented, but
+the playable whole-player range remains unchanged until the combined mixture receives
+rolling confirmation and two-way players are combined by simulation.
+
 The injury workload hierarchy is now validated out of time. Fit on 2022–2023 and
 scored unchanged on 548 players in 2024–2025, IL type plus elapsed time improves
 return Brier/log loss and remaining-availability MAE/RMSE versus a population-only

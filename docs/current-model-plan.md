@@ -49,6 +49,22 @@ undercovers. The next rolling-origin uncertainty build must calibrate participat
 and conditional-active shape separately, then combine them. Do not use a global width
 multiplier. See the [hurdle result](war-hurdle-uncertainty-result.md).
 
+Rolling 2022–2025 participation replays now reject a blanket logistic calibration
+layer. Raw probabilities beat the recalibrated version on pooled 2023–2025 proper
+scores for both hitters and pitchers. Keep raw participation probabilities and move
+the uncertainty work to the conditional-active distribution. See the
+[rolling result](rolling-opportunity-calibration-result.md).
+
+Within that distribution, the conditional positive-workload model already achieves
+81.8% hitter and 80.1% pitcher coverage against an 80% target over 2022–2025. Hold
+workload uncertainty fixed. Rolling prior-origin performance scaling raises
+conditional-WAR coverage from 71.8% to 81.5% for hitters and from 71.4% to 80.7% for
+pitchers while improving pooled interval score. The exact workload/performance mixture
+is implemented and improves the 2025 overall score without changing point estimates.
+The immediate P0 is rolling confirmation of that combined mixture, followed by a
+simulation-based whole-player combination. See the
+[conditional result](rolling-conditional-war-uncertainty-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game
