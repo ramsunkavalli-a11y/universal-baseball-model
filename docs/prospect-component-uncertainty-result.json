@@ -1,0 +1,51 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundaries": {
+    "component_rate_uncertainty_included": true,
+    "current_2026_outcomes_used": false,
+    "outside_fv_used": false,
+    "position_defense_running_uncertainty_included": false,
+    "production_value_changed": false,
+    "workload_uncertainty_included": true
+  },
+  "by_player_type": [
+    {
+      "mean_component_p10": -0.1518389699364474,
+      "mean_component_p50": 0.006134372228869599,
+      "mean_component_p90": 0.21875975785543939,
+      "mean_component_star_probability": 5.621031745746451e-06,
+      "mean_component_width": 0.3705987277918868,
+      "mean_point_war": 0.04226494167845768,
+      "mean_workload_only_width": 0.2773941916076058,
+      "player_type": "pitcher",
+      "players": 3849
+    },
+    {
+      "mean_component_p10": -0.032943273149983826,
+      "mean_component_p50": 0.08353305736560876,
+      "mean_component_p90": 1.5106798874236516,
+      "mean_component_star_probability": 0.0024777697522757125,
+      "mean_component_width": 1.5436231605736357,
+      "mean_point_war": 0.5878472114800519,
+      "mean_workload_only_width": 1.5575176934458725,
+      "player_type": "hitter",
+      "players": 2870
+    }
+  ],
+  "contract": "docs/prospect-component-uncertainty-plan.md",
+  "maximum_absolute_mean_difference": 3.552713678800501e-15,
+  "normal_quadrature_nodes": 41,
+  "players": 6719,
+  "report_schema_version": "0.1",
+  "runs_per_win": 9.773975623911781,
+  "status": "research_only_component_uncertainty_complete",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "ea779a9813d848faab021288cbe800d35bf6058da31505eccb8b4bee2ca9bc4d",
+    "file_size_bytes": 216104,
+    "path": "reports\\generated\\phase2-prospect-component-uncertainty\\2026-09-08\\prospect-component-uncertainty.parquet",
+    "row_count": 6719,
+    "schema_sha256": "6c81d3885ee351df7a7c480a84759e72e7b1239404ab1448172822b79e395b4d",
+    "table_name": "phase2_prospect_component_uncertainty"
+  }
+}

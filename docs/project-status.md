@@ -610,6 +610,20 @@ run has 1,396 passing tests. Four pre-existing hitter research-contract tests fa
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
+### Prospect uncertainty research
+
+- The accepted private-preview range varies MLB arrival and six-year workload while
+  holding skill fixed. It covers all 6,719 pre-MLB paths and exactly preserves point
+  values.
+- A second research-only layer now combines that mixture with the model's existing
+  event and posterior rate variance. It also preserves every point mean, but P10-P90
+  does not widen consistently because the career distribution contains a large exact
+  non-arrival mass.
+- Do not expose the component layer as a calibrated confidence interval. Next test its
+  historical coverage by player type and predeclared probability band, using only
+  information available at each forecast date.
+- Neither uncertainty layer uses outside player FV opinions or partial 2026 outcomes.
+
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).
 ### Current-organization pitcher role capacity (research layer)
