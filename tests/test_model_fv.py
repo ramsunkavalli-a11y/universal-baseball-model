@@ -5,7 +5,16 @@ from universal_baseball.model_fv import (
     apply_pre_mlb_outcome_quality_workload,
     apply_pre_mlb_three_tier_workload,
     build_model_fv,
+    cap_nested_role_probabilities,
 )
+
+
+def test_nested_role_probabilities_cannot_exceed_direct_estimates() -> None:
+    meaningful, established = cap_nested_role_probabilities(
+        0.61, 0.19, 0.10, 0.39, 0.34
+    )
+    assert meaningful == 0.19
+    assert established == 0.10
 
 
 def test_model_fv_combines_two_way_production_and_keeps_role() -> None:

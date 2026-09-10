@@ -10,7 +10,11 @@ from pathlib import Path
 
 import polars as pl
 
-from universal_baseball.model_fv import MODEL_FV_ID, build_model_fv
+from universal_baseball.model_fv import (
+    MODEL_FV_ID,
+    build_model_fv,
+    cap_nested_role_probabilities,
+)
 from universal_baseball.projection_lineage import validate_arrival_source
 from universal_baseball.prospect_arrival import ARRIVAL_MODEL_ID
 from universal_baseball.storage import write_canonical_parquet
@@ -59,6 +63,7 @@ def main() -> int:
     arrival_probabilities: dict[tuple[str, int], float] = {}
     meaningful_role_probabilities: dict[tuple[str, int], float] = {}
     established_role_probabilities: dict[tuple[str, int], float] = {}
+    role_probability_cap_counts = {"meaningful": 0, "established": 0}
     arrival_source = validate_arrival_source(
         args.arrival_root / dated,
         expected_model_id=ARRIVAL_MODEL_ID,
@@ -75,22 +80,29 @@ def main() -> int:
                 for row in arrival.iter_rows(named=True)
             }
         )
-        meaningful_role_probabilities.update(
-            {
-                (player_type, int(row["player_id"])): float(
-                    row["predicted_six_year_nested_meaningful_role_probability"]
-                )
-                for row in arrival.iter_rows(named=True)
-            }
-        )
-        established_role_probabilities.update(
-            {
-                (player_type, int(row["player_id"])): float(
-                    row["predicted_six_year_nested_established_role_probability"]
-                )
-                for row in arrival.iter_rows(named=True)
-            }
-        )
+        for row in arrival.iter_rows(named=True):
+            key = (player_type, int(row["player_id"]))
+            raw_meaningful = float(
+                row["predicted_six_year_nested_meaningful_role_probability"]
+            )
+            raw_established = float(
+                row["predicted_six_year_nested_established_role_probability"]
+            )
+            meaningful, established = cap_nested_role_probabilities(
+                float(row["predicted_six_year_arrival_probability"]),
+                float(row["predicted_six_year_meaningful_role_probability"]),
+                float(row["predicted_six_year_established_role_probability"]),
+                raw_meaningful,
+                raw_established,
+            )
+            role_probability_cap_counts["meaningful"] += int(
+                meaningful < raw_meaningful
+            )
+            role_probability_cap_counts["established"] += int(
+                established < raw_established
+            )
+            meaningful_role_probabilities[key] = meaningful
+            established_role_probabilities[key] = established
     values = build_model_fv(
         pl.read_parquet(war_tables / "hitter_expected_war_paths.parquet"),
         pl.read_parquet(war_tables / "pitcher_expected_war_paths.parquet"),
@@ -109,6 +121,10 @@ def main() -> int:
         "report_schema_version": "0.1", "gate": "phase2_model_fv",
         "as_of_date": dated, "model_fv_id": MODEL_FV_ID, "players": values.height,
         "arrival_source": arrival_source,
+        "role_probability_safeguard": {
+            "method": "nested role masses capped by direct unconditional six-year estimates",
+            "players_capped": role_probability_cap_counts,
+        },
         "method": (
             "our production and historical cumulative MLB-arrival probability mapped "
             "to six team-control seasons, granular Model FV, and nearest-five display"
@@ -121,8 +137,8 @@ def main() -> int:
             "pre_mlb_calendar_horizon_truncation_used": False,
             "annual_active_probabilities_treated_as_independent_hazards": False,
             "historical_arrival_model_used": True,
-            "meaningful_role_probability_is_diagnostic_only": True,
-            "established_role_probability_is_diagnostic_only": True,
+            "meaningful_role_probability_is_diagnostic_only": False,
+            "established_role_probability_is_diagnostic_only": False,
             "role_workload_pa": {"catcher": 450.0, "other_hitter": 550.0},
         },
         "storage": storage,

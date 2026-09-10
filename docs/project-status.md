@@ -84,6 +84,22 @@ further depth work requires dated player-level roster competition rather than an
 aggregate share rule. See the
 [flexible result](flexible-team-capacity-replay-2025-result.md).
 
+The prospect top-end audit found a material integration error: separately extending
+two-year conditional arrival/role hurdles to six years compounded favorable states.
+The private preview now caps meaningful and established career masses at the model's
+direct unconditional six-year estimates. Fernando Gonzalez moves from 4.09 WAR,
+$24.7M and FV 50 to 1.63 WAR, $10.1M and FV 45. Across pre-MLB hitters, FV 50+ counts
+fall from 82 to 9; catcher FV 50+ counts fall from 19 to 2. This is a consistency
+safeguard, not a catcher penalty or final model. The next P0 is one year-by-year
+career-state transition model. See the
+[safeguard result](prospect-role-probability-safeguard-result.md).
+
+The cutoff-safe pitcher environment/role replay is also complete. Separating MLB mean
+BF per active pitcher and rotation/opener/bulk-relief paths improves conditional CRPS
+18.7%, but coverage falls from 78.8% to 74.3%. Preserve it as a dependent-path
+challenger; do not change current pitcher values yet. See the
+[pitcher workload result](pitcher-workload-environment-asof-result.md).
+
 The injury workload hierarchy is now validated out of time. Fit on 2022–2023 and
 scored unchanged on 548 players in 2024–2025, IL type plus elapsed time improves
 return Brier/log loss and remaining-availability MAE/RMSE versus a population-only

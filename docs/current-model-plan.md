@@ -75,6 +75,22 @@ and close aggregate position-share tuning on disclosed 2025 outcomes. The next d
 input, when pursued, must use dated player-level roster, option, IL and competition
 state. See the [flexible result](flexible-team-capacity-replay-2025-result.md).
 
+The first cutoff-safe pitcher environment/role challenger is now scored. Mapping
+complete historical paths through the forecast MLB workload environment and separating
+rotation, opener, bulk/swing and relief roles reduced conditional CRPS by 18.7% across
+2018-2019. It is not promoted because nominal 80% coverage fell from 78.8% to 74.3%
+and the replay conditions on eventual role. Carry this exact challenger into the next
+dependent path test with forecast role probabilities and environment uncertainty;
+do not use it to raise current pitcher BF. See the
+[result](pitcher-workload-environment-asof-result.md).
+
+The current prospect list also exposed a larger integration flaw: extrapolating each
+conditional two-year hurdle independently inflated six-year role probability. The
+preview now enforces a direct-evidence ceiling on meaningful and established career
+masses. This removes the catcher-heavy inflation without a catcher penalty or outside
+FV input. A coherent year-by-year career-state transition model is now the next P0
+replacement. See the [safeguard result](prospect-role-probability-safeguard-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

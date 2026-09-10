@@ -1,0 +1,268 @@
+{
+  "baseline": "raw_pooled_tier",
+  "boundaries": {
+    "complete_training_paths_end_before_forecast": true,
+    "conditional_on_eventual_tier_and_role": true,
+    "current_2026_outcomes_used": false,
+    "current_values_changed": false,
+    "development_evidence_only": true,
+    "environment_fit_uses_pre_forecast_seasons_only": true,
+    "outside_fv_used": false
+  },
+  "by_evaluation_year": [
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.7719298245614035,
+      "evaluation_year": 2018,
+      "mean_crps": 186.2901861501096,
+      "median_error": -26.532486338391436,
+      "players": 171
+    },
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.7158469945355191,
+      "evaluation_year": 2019,
+      "mean_crps": 185.95643018828696,
+      "median_error": -57.20787451564225,
+      "players": 183
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.7543859649122807,
+      "evaluation_year": 2018,
+      "mean_crps": 213.8941648201589,
+      "median_error": -61.676529367029445,
+      "players": 171
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.73224043715847,
+      "evaluation_year": 2019,
+      "mean_crps": 235.96026120089695,
+      "median_error": -34.99946934532284,
+      "players": 183
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.7719298245614035,
+      "evaluation_year": 2018,
+      "mean_crps": 221.96328470828996,
+      "median_error": 5.0,
+      "players": 171
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.8032786885245902,
+      "evaluation_year": 2019,
+      "mean_crps": 235.53423577864717,
+      "median_error": 11.5,
+      "players": 183
+    }
+  ],
+  "by_granular_role": [
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.6890756302521008,
+      "granular_role": "bulk_swing",
+      "mean_crps": 188.17090772677022,
+      "median_error": -101.71605142253111,
+      "players": 119
+    },
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.7953216374269005,
+      "granular_role": "relief",
+      "mean_crps": 78.65023369809569,
+      "median_error": 11.792125484357747,
+      "players": 171
+    },
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.703125,
+      "granular_role": "rotation",
+      "mean_crps": 469.43938397289423,
+      "median_error": -26.518559293270236,
+      "players": 64
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.6554621848739496,
+      "granular_role": "bulk_swing",
+      "mean_crps": 216.6872981923099,
+      "median_error": -121.97652936702946,
+      "players": 119
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.8070175438596491,
+      "granular_role": "relief",
+      "mean_crps": 97.46040558489929,
+      "median_error": 41.02347063297054,
+      "players": 171
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.734375,
+      "granular_role": "rotation",
+      "mean_crps": 582.8923772516978,
+      "median_error": -345.7931641181183,
+      "players": 64
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.7478991596638656,
+      "granular_role": "bulk_swing",
+      "mean_crps": 242.81551400923337,
+      "median_error": -63.099999999999994,
+      "players": 119
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.7953216374269005,
+      "granular_role": "relief",
+      "mean_crps": 120.70348119982613,
+      "median_error": 68.5,
+      "players": 171
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.84375,
+      "granular_role": "rotation",
+      "mean_crps": 492.54914656782785,
+      "median_error": -237.7,
+      "players": 64
+    }
+  ],
+  "by_outcome_tier": [
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.7727272727272727,
+      "mean_crps": 362.6021245732127,
+      "median_error": 7.303896783004518,
+      "outcome_tier_v2": "established",
+      "players": 132
+    },
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.7821229050279329,
+      "mean_crps": 66.53584781545412,
+      "median_error": -21.367676397376982,
+      "outcome_tier_v2": "fringe",
+      "players": 179
+    },
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.4883720930232558,
+      "mean_crps": 142.14538031383452,
+      "median_error": -170.99946934532278,
+      "outcome_tier_v2": "meaningful_only",
+      "players": 43
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.8484848484848485,
+      "mean_crps": 455.3521032651307,
+      "median_error": -28.378991876656187,
+      "outcome_tier_v2": "established",
+      "players": 132
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.7262569832402235,
+      "mean_crps": 75.82827312369675,
+      "median_error": -23.976529367029457,
+      "outcome_tier_v2": "fringe",
+      "players": 179
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.4883720930232558,
+      "mean_crps": 141.3230572993567,
+      "median_error": -170.99946934532278,
+      "outcome_tier_v2": "meaningful_only",
+      "players": 43
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.803030303030303,
+      "mean_crps": 479.67904816156215,
+      "median_error": 255.0999999999999,
+      "outcome_tier_v2": "established",
+      "players": 132
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.7988826815642458,
+      "mean_crps": 73.76662588013427,
+      "median_error": -6.0,
+      "outcome_tier_v2": "fringe",
+      "players": 179
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.6976744186046512,
+      "mean_crps": 105.50294052883214,
+      "median_error": -95.89999999999998,
+      "outcome_tier_v2": "meaningful_only",
+      "players": 43
+    }
+  ],
+  "chronology": [
+    {
+      "environment_slope": -0.027386327706031756,
+      "evaluation_year": 2018,
+      "maximum_training_window_end": 2017
+    },
+    {
+      "environment_slope": -0.0292245891222479,
+      "evaluation_year": 2019,
+      "maximum_training_window_end": 2018
+    }
+  ],
+  "contract": "docs/pitcher-workload-environment-asof-plan.md",
+  "decisions": [
+    {
+      "both_years_nonworse": true,
+      "candidate_id": "environment_granular_role",
+      "development_gate_passed": true,
+      "pooled_crps_improved": true
+    },
+    {
+      "both_years_nonworse": false,
+      "candidate_id": "environment_pooled_tier",
+      "development_gate_passed": false,
+      "pooled_crps_improved": true
+    },
+    {
+      "both_years_nonworse": true,
+      "candidate_id": "raw_pooled_tier",
+      "development_gate_passed": false,
+      "pooled_crps_improved": false
+    }
+  ],
+  "overall": [
+    {
+      "candidate_id": "environment_granular_role",
+      "coverage_80": 0.7429378531073446,
+      "mean_crps": 186.1176512884894,
+      "median_error": -31.834162834754267,
+      "players": 354
+    },
+    {
+      "candidate_id": "environment_pooled_tier",
+      "coverage_80": 0.7429378531073446,
+      "mean_crps": 225.3012146440998,
+      "median_error": -45.574091742283386,
+      "players": 354
+    },
+    {
+      "candidate_id": "raw_pooled_tier",
+      "coverage_80": 0.788135593220339,
+      "mean_crps": 228.9787763633052,
+      "median_error": 11.5,
+      "players": 354
+    }
+  ],
+  "report_schema_version": "0.1",
+  "status": "pitcher_environment_asof_development_scored"
+}

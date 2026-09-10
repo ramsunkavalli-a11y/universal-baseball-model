@@ -14,7 +14,27 @@ from universal_baseball.prospect_value import (
 from universal_baseball.prospect_outcome_quality import workload_prior
 
 
-MODEL_FV_ID = "phase2_production_outcome_model_fv_v3_path_role"
+MODEL_FV_ID = "phase2_production_outcome_model_fv_v4_direct_role_cap"
+
+
+def cap_nested_role_probabilities(
+    arrival: float,
+    direct_meaningful: float,
+    direct_established: float,
+    nested_meaningful: float,
+    nested_established: float,
+) -> tuple[float, float]:
+    """Keep extrapolated nested role masses inside direct unconditional estimates."""
+
+    values = (
+        arrival, direct_meaningful, direct_established,
+        nested_meaningful, nested_established,
+    )
+    if any(value < 0.0 or value > 1.0 for value in values):
+        raise ValueError("career probabilities must lie in [0, 1]")
+    meaningful = min(arrival, direct_meaningful, nested_meaningful)
+    established = min(meaningful, direct_established, nested_established)
+    return meaningful, established
 
 
 def _normal_tail(threshold: float, mean: float, variance: float) -> float:

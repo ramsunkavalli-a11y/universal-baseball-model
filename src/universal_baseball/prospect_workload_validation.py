@@ -12,6 +12,161 @@ ERA_WEIGHTING_RULES = ("equal", "half_life_1", "half_life_2", "latest_2")
 ROLE_RULES = ("supported_role", "pooled")
 
 
+def classify_pitcher_path_role(starts: float, games: float, workload: float) -> str:
+    """Classify a pitcher path without treating every recorded start as rotation work."""
+
+    if not all(math.isfinite(value) and value >= 0 for value in (starts, games, workload)):
+        raise ValueError("pitcher role inputs must be finite and nonnegative")
+    if workload <= 0 or games <= 0:
+        return "inactive"
+    if starts <= 0:
+        return "relief"
+    start_share = starts / games
+    workload_per_start = workload / starts
+    if start_share >= 0.5 and workload_per_start >= 18.0:
+        return "rotation"
+    if start_share >= 0.5:
+        return "opener"
+    return "bulk_swing"
+
+
+def build_pitcher_environment_asof_scores(
+    annual_paths: pl.DataFrame,
+    pitcher_seasons: pl.DataFrame,
+    *,
+    evaluation_years: tuple[int, ...] = (2018, 2019),
+    minimum_role_players: int = 30,
+    trend_years: int = 5,
+) -> pl.DataFrame:
+    """Score raw and league-environment-scaled complete pitcher workload paths."""
+
+    required_paths = {
+        "path_player_id", "player_type", "debut_year", "window_end_year",
+        "outcome_tier_v2", "path_year", "source_season", "adjusted_workload",
+        "games", "starts",
+    }
+    required_seasons = {"season", "player_id", "pitching_bf"}
+    if missing := sorted(required_paths - set(annual_paths.columns)):
+        raise ValueError(f"annual workload paths missing fields: {missing}")
+    if missing := sorted(required_seasons - set(pitcher_seasons.columns)):
+        raise ValueError(f"pitcher seasons missing fields: {missing}")
+    if not evaluation_years or minimum_role_players < 1 or trend_years < 3:
+        raise ValueError("invalid environment-score configuration")
+
+    paths = annual_paths.filter(pl.col("player_type") == "pitcher")
+    environment = (
+        pitcher_seasons.filter(pl.col("pitching_bf") > 0)
+        .group_by("season")
+        .agg(
+            pl.col("pitching_bf").sum().alias("league_bf"),
+            pl.col("player_id").n_unique().alias("active_pitchers"),
+        )
+        .with_columns(
+            (pl.col("league_bf") / pl.col("active_pitchers")).alias("mean_bf")
+        )
+        .sort("season")
+    )
+    environment_lookup = {
+        int(row["season"]): float(row["mean_bf"])
+        for row in environment.iter_rows(named=True)
+    }
+    rows: list[dict[str, object]] = []
+    for evaluation_year in evaluation_years:
+        training = paths.filter(pl.col("window_end_year") < evaluation_year)
+        evaluation = paths.filter(pl.col("debut_year") == evaluation_year)
+        if training.is_empty() or evaluation.is_empty():
+            raise ValueError(f"empty pitcher environment fold {evaluation_year}")
+        history = environment.filter(
+            (pl.col("season") < evaluation_year) & (pl.col("season") != 2020)
+        ).tail(trend_years)
+        if history.height < 3:
+            raise ValueError(f"insufficient environment history for {evaluation_year}")
+        years = history["season"].to_numpy().astype(float)
+        log_mean = np.log(history["mean_bf"].to_numpy().astype(float))
+        slope, intercept = np.polyfit(years, log_mean, 1)
+        slope = float(np.clip(slope, math.log(0.95), math.log(1.05)))
+        forecast_environment = {
+            season: float(math.exp(intercept + slope * season))
+            for season in range(evaluation_year, evaluation_year + 6)
+        }
+
+        training_players = []
+        for key, group in training.group_by("path_player_id", maintain_order=True):
+            player_id = int(key[0] if isinstance(key, tuple) else key)
+            first = group.row(0, named=True)
+            total_workload = float(group["adjusted_workload"].sum())
+            total_games = float(group["games"].sum())
+            total_starts = float(group["starts"].sum())
+            scaled_total = 0.0
+            for annual in group.iter_rows(named=True):
+                source_mean = environment_lookup.get(int(annual["source_season"]))
+                if source_mean is None or source_mean <= 0:
+                    raise ValueError("missing source-season pitcher environment")
+                target_season = evaluation_year + int(annual["path_year"]) - 1
+                scaled_total += (
+                    float(annual["adjusted_workload"])
+                    / source_mean
+                    * forecast_environment[target_season]
+                )
+            training_players.append(
+                {
+                    "path_player_id": player_id,
+                    "outcome_tier_v2": str(first["outcome_tier_v2"]),
+                    "role": classify_pitcher_path_role(
+                        total_starts, total_games, total_workload
+                    ),
+                    "raw_total": total_workload,
+                    "scaled_total": scaled_total,
+                }
+            )
+        samples = pl.DataFrame(training_players, infer_schema_length=None)
+        for player_id_group in evaluation.partition_by("path_player_id"):
+            first = player_id_group.row(0, named=True)
+            actual = float(player_id_group["adjusted_workload"].sum())
+            eval_role = classify_pitcher_path_role(
+                float(player_id_group["starts"].sum()),
+                float(player_id_group["games"].sum()),
+                actual,
+            )
+            pooled = samples.filter(
+                pl.col("outcome_tier_v2") == first["outcome_tier_v2"]
+            )
+            role = pooled.filter(pl.col("role") == eval_role)
+            for candidate_id, value_column, use_granular_role in (
+                ("raw_pooled_tier", "raw_total", False),
+                ("environment_pooled_tier", "scaled_total", False),
+                ("environment_granular_role", "scaled_total", True),
+            ):
+                selected = (
+                    role if use_granular_role and role.height >= minimum_role_players
+                    else pooled
+                )
+                values = selected[value_column].to_numpy()
+                weights = np.ones(selected.height)
+                p10, p50, p90 = np.quantile(values, (0.1, 0.5, 0.9))
+                rows.append(
+                    {
+                        "candidate_id": candidate_id,
+                        "evaluation_year": evaluation_year,
+                        "player_id": int(first["path_player_id"]),
+                        "outcome_tier_v2": str(first["outcome_tier_v2"]),
+                        "granular_role": eval_role,
+                        "sample_source": "role" if selected is role else "pooled",
+                        "training_players": selected.height,
+                        "maximum_training_window_end": int(training["window_end_year"].max()),
+                        "actual_workload": actual,
+                        "predicted_p50": float(p50),
+                        "crps": empirical_crps(values, weights, actual),
+                        "covered_80": bool(p10 <= actual <= p90),
+                        "median_error": float(p50) - actual,
+                        "environment_slope": slope,
+                    }
+                )
+    return pl.DataFrame(rows, infer_schema_length=None).sort(
+        "candidate_id", "evaluation_year", "player_id"
+    )
+
+
 def wilson_interval(successes: int, total: int, z: float = 1.959963984540054) -> tuple[float, float]:
     """Return a Wilson score interval for a binomial proportion."""
 

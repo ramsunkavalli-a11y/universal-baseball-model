@@ -3,12 +3,14 @@ import polars as pl
 import pytest
 
 from universal_baseball.prospect_workload_validation import (
+    build_pitcher_environment_asof_scores,
     build_pitcher_workload_era_scores,
     build_workload_asof_predictions,
     build_workload_holdout_predictions,
     empirical_crps,
     summarize_workload_coverage,
     wilson_interval,
+    classify_pitcher_path_role,
 )
 
 
@@ -100,3 +102,45 @@ def test_asof_workload_requires_training_window_to_end_before_evaluation() -> No
     assert result["maximum_training_window_end"] == 2015
     assert result["training_players"] == 1
     assert result["predicted_p50"] == 100.0
+
+
+def test_pitcher_path_role_separates_openers_from_rotation_starters() -> None:
+    assert classify_pitcher_path_role(20, 20, 500) == "rotation"
+    assert classify_pitcher_path_role(20, 20, 200) == "opener"
+    assert classify_pitcher_path_role(10, 30, 400) == "bulk_swing"
+    assert classify_pitcher_path_role(0, 40, 300) == "relief"
+
+
+def test_pitcher_environment_replay_is_cutoff_safe() -> None:
+    rows = []
+    for player_id, debut, workload in ((1, 2010, 100.0), (2, 2011, 200.0), (3, 2018, 999.0)):
+        for path_year in range(1, 7):
+            rows.append(
+                {
+                    "path_player_id": player_id,
+                    "player_type": "pitcher",
+                    "debut_year": debut,
+                    "window_end_year": debut + 5,
+                    "outcome_tier_v2": "fringe",
+                    "path_year": path_year,
+                    "source_season": debut + path_year - 1,
+                    "adjusted_workload": workload,
+                    "games": 10.0,
+                    "starts": 0.0,
+                }
+            )
+    seasons = pl.DataFrame(
+        {
+            "season": [year for year in range(2009, 2018) for _ in range(2)],
+            "player_id": [value for _ in range(2009, 2018) for value in (10, 11)],
+            "pitching_bf": [100.0] * 18,
+        }
+    )
+    result = build_pitcher_environment_asof_scores(
+        pl.DataFrame(rows), seasons, evaluation_years=(2018,), minimum_role_players=1
+    )
+    assert result["maximum_training_window_end"].max() == 2016
+    assert result["training_players"].max() == 2
+    assert result.filter(pl.col("candidate_id") == "raw_pooled_tier").item(
+        0, "predicted_p50"
+    ) == pytest.approx(900.0)

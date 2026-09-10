@@ -116,11 +116,17 @@ Promotion requires rolling-origin validation and a later untouched confirmation.
 See [the frozen implementation contract](dependent-career-path-value-plan.md).
 
 Historical arrival plus conditional meaningful and established-role hurdles are now
-integrated in the private preview. Organization remains excluded. The nested model
-reduces the hitter 50+ count from 352 to 86 without a quota and keeps Josuar Gonzalez
-at 45 FV with 1.83 expected six-year WAR. Workload-only uncertainty is displayed and
-preserves every point mean. A broader component-plus-workload distribution exists as
-research, but is not presented as calibrated.
+integrated in the private preview. Organization remains excluded. Workload-only
+uncertainty is displayed and preserves every point mean. A broader component-plus-
+workload distribution exists as research, but is not presented as calibrated.
+
+The repeated two-year conditional-hazard conversion was later found to overstate
+six-year meaningful and established career masses, especially in the catcher-heavy
+top end. The private preview now caps those nested masses at the model's direct
+unconditional six-year estimates. Hitter FV 50+ count falls from 82 to 9 and Fernando
+Gonzalez falls from 4.09 to 1.63 WAR. This is an immediate consistency safeguard, not
+a substitute for P0: replace it with one validated year-by-year career-state transition
+model. See the [impact result](prospect-role-probability-safeguard-result.md).
 
 A descriptive early-versus-late cohort comparison found 74.7% hitter and 66.3%
 pitcher coverage for nominal 80% ranges. It is not chronology-safe confirmation:

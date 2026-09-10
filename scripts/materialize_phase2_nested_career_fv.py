@@ -155,7 +155,7 @@ def main() -> int:
         "status": "private_nested_career_value_sensitivity_complete",
         "contract": "docs/prospect-nested-career-value-plan.md",
         "method": (
-            "arrival times meaningful-given-arrival times established-given-meaningful; "
+            "nested role masses capped by direct unconditional six-year estimates; "
             "disjoint tiers use mature workload priors and existing conditional WAR rates"
         ),
         "by_player_type": by_type,
@@ -171,6 +171,7 @@ def main() -> int:
                 pitcher_adjustment_id is not None
             ),
             "six_year_conditional_hazards_are_approximate": True,
+            "direct_unconditional_role_probability_cap_active": True,
             "fresh_confirmation_required": True,
         },
         "storage": storage,
