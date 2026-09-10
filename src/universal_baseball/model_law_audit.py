@@ -195,6 +195,120 @@ def audit_contract_economics_laws(annual: pl.DataFrame) -> list[dict[str, Any]]:
     return checks
 
 
+def audit_projection_statistical_laws(
+    frame: pl.DataFrame, *, player_type: str
+) -> list[dict[str, Any]]:
+    """Check the evidence shrinkage, aging and neutrality rules of a WAR path."""
+
+    if player_type not in {"hitter", "pitcher"}:
+        raise ValueError("player_type must be hitter or pitcher")
+    evidence_column = (
+        "weighted_history_pa" if player_type == "hitter" else "weighted_history_bf"
+    )
+    required = {
+        "player_id", "season", "target_age", "reliability", evidence_column,
+        "posterior_concentration", "event_run_variance",
+        "posterior_run_rate_variance", "uses_current_team_depth",
+    }
+    if missing := sorted(required - set(frame.columns)):
+        raise ValueError(f"{player_type} statistical path missing fields: {missing}")
+
+    reliability_failures = frame.filter(
+        pl.col("reliability").is_null()
+        | ~pl.col("reliability").is_finite()
+        | (pl.col("reliability") < 0.0)
+        | (pl.col("reliability") > 1.0)
+    ).height
+    evidence_failures = frame.filter(
+        pl.col(evidence_column).is_null()
+        | ~pl.col(evidence_column).is_finite()
+        | (pl.col(evidence_column) < 0.0)
+        | pl.col("posterior_concentration").is_null()
+        | ~pl.col("posterior_concentration").is_finite()
+        | (pl.col("posterior_concentration") <= 0.0)
+        | (
+            (pl.col("reliability") > 0.0)
+            & (
+                (
+                    pl.col("posterior_concentration")
+                    - pl.col(evidence_column) / pl.col("reliability")
+                ).abs()
+                > TOLERANCE
+            )
+        )
+        | (
+            (pl.col("reliability") == 0.0)
+            & (pl.col(evidence_column).abs() > TOLERANCE)
+        )
+    ).height
+    uncertainty_failures = frame.filter(
+        pl.col("event_run_variance").is_null()
+        | ~pl.col("event_run_variance").is_finite()
+        | (pl.col("event_run_variance") < 0.0)
+        | pl.col("posterior_run_rate_variance").is_null()
+        | ~pl.col("posterior_run_rate_variance").is_finite()
+        | (pl.col("posterior_run_rate_variance") < 0.0)
+        | (
+            (
+                pl.col("posterior_run_rate_variance")
+                - pl.col("event_run_variance")
+                / (pl.col("posterior_concentration") + 1.0)
+            ).abs()
+            > TOLERANCE
+        )
+    ).height
+    age_failures = (
+        frame.with_columns((pl.col("target_age") - pl.col("season")).alias("age_offset"))
+        .group_by("player_id")
+        .agg(
+            pl.col("age_offset").n_unique().alias("offsets"),
+            pl.col("target_age").null_count().alias("null_ages"),
+            pl.len().alias("rows"),
+        )
+        .filter(
+            (pl.col("offsets") > 1)
+            | (
+                (pl.col("null_ages") != 0)
+                & (pl.col("null_ages") != pl.col("rows"))
+            )
+        )
+        .height
+    )
+    depth_failures = frame.filter(
+        pl.col("uses_current_team_depth").is_null()
+        | pl.col("uses_current_team_depth")
+    ).height
+    checks = [
+        _check(f"{player_type}_reliability_bounds", reliability_failures, frame.height),
+        _check(
+            f"{player_type}_evidence_concentration_identity",
+            evidence_failures,
+            frame.height,
+        ),
+        _check(
+            f"{player_type}_posterior_variance_identity",
+            uncertainty_failures,
+            frame.height,
+        ),
+        _check(
+            f"{player_type}_age_advances_one_per_season",
+            age_failures,
+            frame.get_column("player_id").n_unique(),
+        ),
+        _check(f"{player_type}_team_depth_neutral", depth_failures, frame.height),
+    ]
+    if player_type == "pitcher":
+        if "aging_source" not in frame.columns:
+            raise ValueError("pitcher statistical path missing aging_source")
+        aging_failures = frame.filter(
+            pl.col("aging_source") != "tango_adjacent_pitching_regressed_part2"
+        ).height
+        checks.append(
+            _check("pitcher_tango_aging_source", aging_failures, frame.height)
+        )
+    return checks
+
+
 def audit_private_preview_laws(
     hitter_paths: pl.DataFrame,
     pitcher_paths: pl.DataFrame,
@@ -250,6 +364,16 @@ def audit_private_preview_laws(
                 frame.height,
             )
         )
+        statistical_fields = {
+            "target_age", "reliability", "posterior_concentration",
+            "event_run_variance", "posterior_run_rate_variance",
+            "uses_current_team_depth",
+            "weighted_history_pa" if player_type == "hitter" else "weighted_history_bf",
+        }
+        if statistical_fields <= set(frame.columns):
+            checks.extend(
+                audit_projection_statistical_laws(frame, player_type=player_type)
+            )
 
     hitter_component_columns = (
         "predicted_ubb_rate", "predicted_hbp_rate", "predicted_single_rate",

@@ -1,6 +1,6 @@
 # Private preview model-law audit
 
-Status: all 35 enforced structural and accounting checks pass.
+Status: all 46 enforced structural, statistical and accounting checks pass.
 
 The audit runs directly against the playable 2026-09-08 preview. It checks 23,640
 hitter player-years, 31,656 pitcher player-years, 6,719 modeled pre-MLB hurdle rows,
@@ -14,6 +14,11 @@ It enforces:
 - pitcher role probabilities summing to one;
 - expected workload equal to active probability times conditional workload;
 - expected WAR equal to conditional WAR rate times expected workload;
+- reliability inside zero and one, with evidence and posterior concentration agreeing;
+- posterior rate variance equal to event variance divided by posterior sample size;
+- age advancing exactly one year per forecast season;
+- organization depth absent from the neutral talent forecast;
+- the frozen, regressed Tango adjacent-pitching curve remaining the pitcher aging source;
 - hitter and pitcher run components converting exactly to conditional WAR;
 - controlled WAR retaining known controlled seasons while preserving unknown control
   as unknown;

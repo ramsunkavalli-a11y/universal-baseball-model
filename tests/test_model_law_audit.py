@@ -5,6 +5,7 @@ import polars as pl
 from universal_baseball.model_law_audit import (
     audit_contract_economics_laws,
     audit_private_preview_laws,
+    audit_projection_statistical_laws,
 )
 from universal_baseball.prospect_value import display_fv, model_fv_from_expected_war
 
@@ -208,3 +209,41 @@ def test_contract_laws_enforce_accounting_decisions_and_fail_closed_review() -> 
     assert "contract_review_outputs_fail_closed" in failed
     assert "contract_value_accounting_identities" in failed
     assert "contract_decision_matches_rights_state" in failed
+
+
+def test_projection_statistical_laws_catch_shrinkage_age_and_depth_breaks() -> None:
+    clean = pl.DataFrame(
+        {
+            "player_id": [1, 1],
+            "season": [2027, 2028],
+            "target_age": [20.0, 21.0],
+            "reliability": [0.5, 0.5],
+            "weighted_history_pa": [100.0, 100.0],
+            "posterior_concentration": [200.0, 200.0],
+            "event_run_variance": [4.0, 4.0],
+            "posterior_run_rate_variance": [4.0 / 201.0, 4.0 / 201.0],
+            "uses_current_team_depth": [False, False],
+        }
+    )
+    assert not [
+        check
+        for check in audit_projection_statistical_laws(clean, player_type="hitter")
+        if check["status"] == "fail"
+    ]
+
+    broken = clean.with_columns(
+        pl.Series("reliability", [1.2, 0.5]),
+        pl.Series("target_age", [20.0, 22.0]),
+        pl.Series("posterior_run_rate_variance", [1.0, 1.0]),
+        pl.Series("uses_current_team_depth", [True, False]),
+    )
+    failed = {
+        check["name"]
+        for check in audit_projection_statistical_laws(broken, player_type="hitter")
+        if check["status"] == "fail"
+    }
+    assert "hitter_reliability_bounds" in failed
+    assert "hitter_evidence_concentration_identity" in failed
+    assert "hitter_posterior_variance_identity" in failed
+    assert "hitter_age_advances_one_per_season" in failed
+    assert "hitter_team_depth_neutral" in failed

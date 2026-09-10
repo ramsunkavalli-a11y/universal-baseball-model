@@ -4,7 +4,7 @@ Status: clean handoff; private preview works, publication remains blocked.
 
 ## What is now in place
 
-- One playable local explorer for 8,393 rights-universe players, guarded by 35 model
+- One playable local explorer for 8,393 rights-universe players, guarded by 46 model
   identity checks.
 - A nested pre-MLB career model: arrival, meaningful given arrival, and established
   given meaningful. Probabilities are ordered by construction.
@@ -64,7 +64,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 Latest full suite: 1,424 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
-failure is present. The private build passes all 35 structural and accounting model-law checks.
+failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
 Protected partial-2026 outcomes remain closed. The next clean statistical stopping
 gate is a frozen pitcher environment/role candidate or a later complete historical
