@@ -2,12 +2,6 @@
 
 Status: **development replay complete; not promoted**.
 
-Methodology note (2026-09-10): MAE targets the conditional median and is not a valid
-promotion veto for this expected-WAR forecast in a mostly-zero cohort. The model still
-is not promoted because its paired MSE interval crosses zero, no complete predictive
-distribution was scored, and this cohort is not fresh. See
-[Expected-WAR validation law](expected-war-validation-law.md).
-
 The replay fits the hurdle on the 2018 snapshot, forecasts every eligible 2021
 pre-MLB pitcher, uses only six-year career paths complete by the 2021 cutoff, and
 scores actual 2022-2025 MLB component WAR. Non-arrivals remain zero.
@@ -39,14 +33,24 @@ uses only information available through 2021, including level translations fit o
 2018 and 2021, the deployed 800-BF regression, and Tango component aging.
 
 The common-cohort guardrail also shows that the small RMSE gain is not a broad error
-gain: MAE worsens from 0.150 to
-0.197, and its paired interval is entirely unfavorable.
-The path remains rejected pending a candidate that handles arrivals without adding
-too much value to the much larger non-arrival group.
+gain under absolute error: MAE worsens from 0.150 to
+0.197. MAE targets the cohort median, which is zero here, so
+it is descriptive and no longer a promotion veto for expected WAR.
+
+The complete zero-plus-positive-path distribution scores
+0.103 CRPS versus
+0.150 for the incumbent
+point mass. Candidate-minus-incumbent is
+-0.046155 with a 95%
+interval of [-0.049678,
+-0.042368]. This is the
+right zero-inclusive distribution diagnostic, but the cohort is not fresh and the
+incumbent does not yet have its own uncertainty distribution.
 
 This tradeoff persists at every tested prefix from one through four years: candidate
 MAE is worse at all four horizons, and no horizon has a reliably favorable paired MSE
 interval. The failure is not caused only by extending two-year odds to four years.
 
-Fixed 25%, 50%, and 75% linked blends improve RMSE and mean bias on this exposed
-cohort, but every blend has a reliably worse paired MAE. None is a promotion candidate.
+Fixed 25%, 50%, and 75% linked blends remain exposed-cohort sensitivities, not promotion
+candidates. The linked path remains unpromoted pending a proper common-distribution
+comparison and fresh confirmation.

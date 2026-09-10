@@ -32,6 +32,7 @@ from universal_baseball.prospect_arrival_validation import (
     continuous_scores,
     paired_continuous_bootstrap_difference,
 )
+from universal_baseball.prospect_workload_validation import empirical_crps
 from universal_baseball.storage import sha256_file
 
 
@@ -115,6 +116,74 @@ def _path_year_workload_means(paths: pl.DataFrame) -> dict[str, dict[int, float]
             .iter_rows(named=True)
         }
         for tier in TIERS
+    }
+
+
+def _pooled_path_prefix_samples(
+    paths: pl.DataFrame, *, horizon: int
+) -> dict[int, np.ndarray]:
+    """Return cutoff-valid pooled career WAR prefixes for distribution scoring."""
+
+    cutoff = paths.filter(pl.col("window_end_year") <= 2021)
+    result = {}
+    for years in range(1, horizon + 1):
+        values = (
+            cutoff.filter(pl.col("path_year") <= years)
+            .group_by("path_player_id")
+            .agg(pl.col("observed_component_war").sum().alias("war"))
+            .get_column("war")
+            .to_numpy()
+            .astype(float)
+        )
+        if values.size == 0 or not np.isfinite(values).all():
+            raise ValueError("pooled path prefix samples are empty or nonfinite")
+        result[years] = values
+    return result
+
+
+def _arrival_path_distribution(
+    arrival_probability: float,
+    prefix_samples: dict[int, np.ndarray],
+    *,
+    horizon: int,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Build the exact zero-plus-arrival-timing empirical forecast distribution."""
+
+    if not 0.0 <= arrival_probability <= 1.0:
+        raise ValueError("arrival probability must lie in [0, 1]")
+    if arrival_probability == 0.0:
+        return np.array([0.0]), np.array([1.0])
+    hazard = (
+        1.0
+        if arrival_probability == 1.0
+        else 1.0 - (1.0 - arrival_probability) ** (1.0 / horizon)
+    )
+    values = [np.array([0.0])]
+    weights = [np.array([1.0 - arrival_probability])]
+    for offset in range(horizon):
+        timing_probability = (1.0 - hazard) ** offset * hazard
+        samples = prefix_samples[horizon - offset]
+        values.append(samples)
+        weights.append(np.full(samples.size, timing_probability / samples.size))
+    result_values = np.concatenate(values)
+    result_weights = np.concatenate(weights)
+    if not np.isclose(result_weights.sum(), 1.0, atol=1e-9):
+        raise ValueError("arrival path distribution does not sum to one")
+    return result_values, result_weights
+
+
+def _paired_score_delta(
+    candidate: np.ndarray, baseline: np.ndarray, *, seed: int
+) -> dict[str, float]:
+    delta = np.asarray(candidate) - np.asarray(baseline)
+    rng = np.random.default_rng(seed)
+    indices = rng.integers(0, delta.size, size=(2000, delta.size))
+    means = delta[indices].mean(axis=1)
+    return {
+        "difference": float(delta.mean()),
+        "ci_low": float(np.quantile(means, 0.025)),
+        "ci_high": float(np.quantile(means, 0.975)),
+        "probability_candidate_better": float(np.mean(means < 0.0)),
     }
 
 
@@ -644,6 +713,42 @@ def main() -> int:
             fresh_confirmation=False,
         ),
     }
+    prefix_samples = _pooled_path_prefix_samples(performance_paths, horizon=4)
+    candidate_crps = []
+    candidate_distribution_means = []
+    for row in evaluated.select(
+        "four_year_arrival_probability", "observed_four_year_component_war"
+    ).iter_rows(named=True):
+        values, weights = _arrival_path_distribution(
+            float(row["four_year_arrival_probability"]),
+            prefix_samples,
+            horizon=4,
+        )
+        candidate_crps.append(
+            empirical_crps(
+                values, weights, float(row["observed_four_year_component_war"])
+            )
+        )
+        candidate_distribution_means.append(float(np.sum(values * weights)))
+    candidate_crps_values = np.asarray(candidate_crps)
+    incumbent_point_crps = np.abs(incumbent_values - observed_values)
+    zero_point_crps = np.abs(observed_values)
+    distribution_validation = {
+        "players": evaluated.height,
+        "candidate_mean_crps": float(candidate_crps_values.mean()),
+        "incumbent_degenerate_mean_crps": float(incumbent_point_crps.mean()),
+        "zero_degenerate_mean_crps": float(zero_point_crps.mean()),
+        "candidate_minus_incumbent": _paired_score_delta(
+            candidate_crps_values, incumbent_point_crps, seed=20261001
+        ),
+        "candidate_minus_zero": _paired_score_delta(
+            candidate_crps_values, zero_point_crps, seed=20261002
+        ),
+        "maximum_candidate_mean_difference": float(
+            np.max(np.abs(np.asarray(candidate_distribution_means) - pooled_values))
+        ),
+        "status": "development_distribution_score_not_fresh",
+    }
     blend_sensitivity = []
     for linked_weight in (0.25, 0.5, 0.75):
         blended = (
@@ -801,6 +906,7 @@ def main() -> int:
             capped_linked_vs_incumbent
         ),
         "continuous_validation_harness": continuous_validation,
+        "distribution_validation": distribution_validation,
         "blend_sensitivity": blend_sensitivity,
         "horizon_sensitivity": horizon_sensitivity,
         "zero_baseline": _metrics(evaluated, "zero_prediction"),
@@ -854,17 +960,27 @@ uses only information available through 2021, including level translations fit o
 2018 and 2021, the deployed 800-BF regression, and Tango component aging.
 
 The common-cohort guardrail also shows that the small RMSE gain is not a broad error
-gain: MAE worsens from {continuous_incumbent['mae']:.3f} to
-{continuous_pooled['mae']:.3f}, and its paired interval is entirely unfavorable.
-The path remains rejected pending a candidate that handles arrivals without adding
-too much value to the much larger non-arrival group.
+gain under absolute error: MAE worsens from {continuous_incumbent['mae']:.3f} to
+{continuous_pooled['mae']:.3f}. MAE targets the cohort median, which is zero here, so
+it is descriptive and no longer a promotion veto for expected WAR.
+
+The complete zero-plus-positive-path distribution scores
+{distribution_validation['candidate_mean_crps']:.3f} CRPS versus
+{distribution_validation['incumbent_degenerate_mean_crps']:.3f} for the incumbent
+point mass. Candidate-minus-incumbent is
+{distribution_validation['candidate_minus_incumbent']['difference']:+.6f} with a 95%
+interval of [{distribution_validation['candidate_minus_incumbent']['ci_low']:+.6f},
+{distribution_validation['candidate_minus_incumbent']['ci_high']:+.6f}]. This is the
+right zero-inclusive distribution diagnostic, but the cohort is not fresh and the
+incumbent does not yet have its own uncertainty distribution.
 
 This tradeoff persists at every tested prefix from one through four years: candidate
 MAE is worse at all four horizons, and no horizon has a reliably favorable paired MSE
 interval. The failure is not caused only by extending two-year odds to four years.
 
-Fixed 25%, 50%, and 75% linked blends improve RMSE and mean bias on this exposed
-cohort, but every blend has a reliably worse paired MAE. None is a promotion candidate.
+Fixed 25%, 50%, and 75% linked blends remain exposed-cohort sensitivities, not promotion
+candidates. The linked path remains unpromoted pending a proper common-distribution
+comparison and fresh confirmation.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)

@@ -178,6 +178,14 @@ pitcher challenger; its MSE interval crossed zero and it has not passed the requ
 distribution or fresh-confirmation gates. See the
 [Expected-WAR validation law](expected-war-validation-law.md).
 
+The first zero-inclusive distribution replay now favors the linked pitcher path. Its
+CRPS is 0.1035 versus 0.1134 for always zero, with a favorable paired interval; it also
+beats treating the incumbent mean as a point mass. This validates the path as a useful
+predictive distribution, not its promotion. The immediate next comparison must give
+the historical incumbent its own cutoff-safe participation and conditional-active
+uncertainty distribution, then compare both on identical players. Fresh confirmation
+remains mandatory.
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

@@ -374,9 +374,19 @@ def empirical_crps(
         raise ValueError("invalid empirical CRPS inputs")
     probability = probability / probability.sum()
     first = float(np.sum(probability * np.abs(values - observed)))
-    pairwise = np.abs(values[:, None] - values[None, :])
-    second = 0.5 * float(
-        np.sum(probability[:, None] * probability[None, :] * pairwise)
+    order = np.argsort(values, kind="stable")
+    ordered_values = values[order]
+    ordered_probability = probability[order]
+    prior_probability = np.cumsum(ordered_probability) - ordered_probability
+    prior_weighted_value = (
+        np.cumsum(ordered_probability * ordered_values)
+        - ordered_probability * ordered_values
+    )
+    second = float(
+        np.sum(
+            ordered_probability
+            * (ordered_values * prior_probability - prior_weighted_value)
+        )
     )
     return first - second
 

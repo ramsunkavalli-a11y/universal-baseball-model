@@ -33,3 +33,15 @@ This does not retroactively promote the linked pitcher path. Its existing paired
 interval against the historical incumbent crosses zero, it lacks a scored predictive
 distribution, and the cohort is not fresh. It only removes MAE as an invalid reason
 for rejection and states the correct next test.
+
+## First distribution result
+
+The cutoff-safe 2021 pitcher replay now scores the exact zero-plus-historical-path
+mixture. Its CRPS is 0.1035, versus 0.1134 for an all-zero point distribution and
+0.1496 when the historical incumbent mean is treated as a point distribution. The
+candidate-minus-zero paired interval is [-0.0138, -0.0061]. This supports the linked
+distribution structure. It still does not authorize promotion: the incumbent mean was
+not built as a distribution, this is an exposed development cohort, and the expected-
+WAR MSE interval against the incumbent still crosses zero. Next build the incumbent's
+cutoff-safe zero mass and conditional-active uncertainty for a common-distribution
+CRPS comparison.

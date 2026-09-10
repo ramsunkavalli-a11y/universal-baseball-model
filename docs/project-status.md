@@ -194,6 +194,13 @@ paired squared error for expected WAR, bias, supported subgroups and fresh confi
 No model is retroactively promoted. See the
 [Expected-WAR validation law](expected-war-validation-law.md).
 
+The corrected distribution score has now been run on the 3,642-player 2021 pitcher
+replay. The exact linked zero-plus-positive-path mixture scores 0.1035 CRPS, better
+than always zero at 0.1134 with a paired interval wholly below zero. It also beats the
+old incumbent when that mean is treated as a degenerate distribution. This is strong
+support for linked paths, but not promotion evidence: the incumbent needs a proper
+cutoff-safe uncertainty distribution and a genuinely fresh cohort is still required.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

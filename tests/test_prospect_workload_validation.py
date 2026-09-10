@@ -66,6 +66,17 @@ def test_empirical_crps_is_zero_for_perfect_point_distribution() -> None:
     ) == 0.0
 
 
+def test_empirical_crps_matches_weighted_pairwise_definition() -> None:
+    samples = np.array([2.0, 0.0, 4.0])
+    weights = np.array([0.2, 0.5, 0.3])
+    observed = 1.0
+    first = np.sum(weights * np.abs(samples - observed))
+    second = 0.5 * np.sum(
+        weights[:, None] * weights[None, :] * np.abs(samples[:, None] - samples)
+    )
+    assert empirical_crps(samples, weights, observed) == pytest.approx(first - second)
+
+
 def test_pitcher_era_scores_never_use_same_or_later_debut_cohort() -> None:
     paths = pl.DataFrame(
         {
