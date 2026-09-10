@@ -7,6 +7,7 @@ import argparse
 from datetime import date
 import json
 from pathlib import Path
+from statistics import NormalDist
 
 import numpy as np
 import polars as pl
@@ -169,6 +170,153 @@ def _arrival_path_distribution(
     result_weights = np.concatenate(weights)
     if not np.isclose(result_weights.sum(), 1.0, atol=1e-9):
         raise ValueError("arrival path distribution does not sum to one")
+    return result_values, result_weights
+
+
+def _tier_workload_path_samples(
+    paths: pl.DataFrame, *, horizon: int
+) -> dict[str, np.ndarray]:
+    """Return complete cutoff-valid annual workload matrices by outcome tier."""
+
+    cutoff = paths.filter(
+        (pl.col("window_end_year") <= 2021) & (pl.col("path_year") <= horizon)
+    )
+    result = {}
+    for tier in TIERS:
+        vectors = []
+        for group in cutoff.filter(
+            pl.col("outcome_tier_v2") == tier
+        ).partition_by("path_player_id", maintain_order=True):
+            ordered = group.sort("path_year")
+            if ordered.height == horizon:
+                vectors.append(
+                    ordered.get_column("adjusted_workload").to_numpy().astype(float)
+                )
+        if not vectors:
+            raise ValueError(f"no complete workload paths for {tier}")
+        result[tier] = np.stack(vectors)
+    return result
+
+
+def _incumbent_workload_distribution(
+    row: dict[str, object],
+    workload_paths: dict[str, np.ndarray],
+    annual_rates: dict[int, float],
+    *,
+    horizon: int,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Build the incumbent arrival/tier/workload distribution at fixed WAR rates."""
+
+    arrival = float(row["four_year_arrival_probability"])
+    if arrival == 0.0:
+        return np.array([0.0]), np.array([1.0])
+    meaningful = min(arrival, float(row["four_year_nested_meaningful_probability"]))
+    established = min(
+        meaningful, float(row["four_year_nested_established_probability"])
+    )
+    tier_mass = {
+        "fringe": arrival - meaningful,
+        "meaningful_only": meaningful - established,
+        "established": established,
+    }
+    hazard = 1.0 if arrival == 1.0 else 1.0 - (1.0 - arrival) ** (1.0 / horizon)
+    values = [np.array([0.0])]
+    weights = [np.array([1.0 - arrival])]
+    for offset in range(horizon):
+        timing = (1.0 - hazard) ** offset * hazard
+        remaining = horizon - offset
+        rate_vector = np.asarray(
+            [annual_rates[2022 + offset + index] for index in range(remaining)]
+        ) / 800.0
+        for tier in TIERS:
+            if tier_mass[tier] <= 0.0:
+                continue
+            paths = workload_paths[tier][:, :remaining]
+            outcomes = np.sum(paths * rate_vector[None, :], axis=1)
+            values.append(outcomes)
+            weights.append(
+                np.full(
+                    outcomes.size,
+                    timing * tier_mass[tier] / arrival / outcomes.size,
+                )
+            )
+    result_values = np.concatenate(values)
+    result_weights = np.concatenate(weights)
+    if not np.isclose(result_weights.sum(), 1.0, atol=1e-9):
+        raise ValueError("incumbent workload distribution does not sum to one")
+    return result_values, result_weights
+
+
+def _incumbent_workload_rate_distribution(
+    row: dict[str, object],
+    workload_paths: dict[str, np.ndarray],
+    annual_rates: dict[int, float],
+    annual_variances: dict[int, tuple[float, float]],
+    *,
+    horizon: int,
+    runs_per_win: float,
+    normal_nodes: int = 21,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Add incumbent event and posterior-rate uncertainty to workload paths."""
+
+    if normal_nodes < 3 or normal_nodes % 2 == 0:
+        raise ValueError("normal nodes must be odd and at least three")
+    arrival = float(row["four_year_arrival_probability"])
+    if arrival == 0.0:
+        return np.array([0.0]), np.array([1.0])
+    meaningful = min(arrival, float(row["four_year_nested_meaningful_probability"]))
+    established = min(
+        meaningful, float(row["four_year_nested_established_probability"])
+    )
+    tier_mass = {
+        "fringe": arrival - meaningful,
+        "meaningful_only": meaningful - established,
+        "established": established,
+    }
+    normal = NormalDist()
+    nodes = np.asarray(
+        [normal.inv_cdf((index + 0.5) / normal_nodes) for index in range(normal_nodes)]
+    )
+    hazard = 1.0 if arrival == 1.0 else 1.0 - (1.0 - arrival) ** (1.0 / horizon)
+    values = [np.array([0.0])]
+    weights = [np.array([1.0 - arrival])]
+    for offset in range(horizon):
+        timing = (1.0 - hazard) ** offset * hazard
+        remaining = horizon - offset
+        seasons = [2022 + offset + index for index in range(remaining)]
+        rate_vector = np.asarray([annual_rates[season] for season in seasons]) / 800.0
+        event_variance = float(np.mean([annual_variances[season][0] for season in seasons]))
+        posterior_variance = float(
+            np.mean([annual_variances[season][1] for season in seasons])
+        )
+        for tier in TIERS:
+            if tier_mass[tier] <= 0.0:
+                continue
+            paths = workload_paths[tier][:, :remaining]
+            means = np.sum(paths * rate_vector[None, :], axis=1)
+            total_workload = np.sum(paths, axis=1)
+            run_variance = (
+                total_workload * event_variance
+                + np.maximum(0.0, total_workload**2 - total_workload)
+                * posterior_variance
+            )
+            standard_deviation = np.sqrt(np.maximum(run_variance, 0.0)) / runs_per_win
+            outcomes = (means[:, None] + standard_deviation[:, None] * nodes).reshape(-1)
+            values.append(outcomes)
+            weights.append(
+                np.full(
+                    outcomes.size,
+                    timing
+                    * tier_mass[tier]
+                    / arrival
+                    / paths.shape[0]
+                    / normal_nodes,
+                )
+            )
+    result_values = np.concatenate(values)
+    result_weights = np.concatenate(weights)
+    if not np.isclose(result_weights.sum(), 1.0, atol=1e-9):
+        raise ValueError("incumbent rate distribution does not sum to one")
     return result_values, result_weights
 
 
@@ -519,6 +667,18 @@ def main() -> int:
             "player_id", as_dict=True
         ).items()
     }
+    incumbent_variance_lookup = {
+        int(player_id): {
+            int(row["season"]): (
+                float(row["event_run_variance"]),
+                float(row["posterior_run_rate_variance"]),
+            )
+            for row in group.iter_rows(named=True)
+        }
+        for (player_id,), group in incumbent_rates.partition_by(
+            "player_id", as_dict=True
+        ).items()
+    }
     player_years = (
         pl.DataFrame(
             [
@@ -714,10 +874,21 @@ def main() -> int:
         ),
     }
     prefix_samples = _pooled_path_prefix_samples(performance_paths, horizon=4)
+    incumbent_workload_paths = _tier_workload_path_samples(
+        performance_paths, horizon=4
+    )
     candidate_crps = []
+    incumbent_distribution_crps = []
+    incumbent_rate_distribution_crps = []
     candidate_distribution_means = []
+    incumbent_distribution_means = []
+    incumbent_rate_distribution_means = []
     for row in evaluated.select(
-        "four_year_arrival_probability", "observed_four_year_component_war"
+        "player_id",
+        "four_year_arrival_probability",
+        "four_year_nested_meaningful_probability",
+        "four_year_nested_established_probability",
+        "observed_four_year_component_war",
     ).iter_rows(named=True):
         values, weights = _arrival_path_distribution(
             float(row["four_year_arrival_probability"]),
@@ -730,16 +901,72 @@ def main() -> int:
             )
         )
         candidate_distribution_means.append(float(np.sum(values * weights)))
+        incumbent_values_dist, incumbent_weights_dist = _incumbent_workload_distribution(
+            row,
+            incumbent_workload_paths,
+            incumbent_rate_lookup[int(row["player_id"])],
+            horizon=4,
+        )
+        incumbent_distribution_crps.append(
+            empirical_crps(
+                incumbent_values_dist,
+                incumbent_weights_dist,
+                float(row["observed_four_year_component_war"]),
+            )
+        )
+        incumbent_distribution_means.append(
+            float(np.sum(incumbent_values_dist * incumbent_weights_dist))
+        )
+        incumbent_rate_values, incumbent_rate_weights = (
+            _incumbent_workload_rate_distribution(
+                row,
+                incumbent_workload_paths,
+                incumbent_rate_lookup[int(row["player_id"])],
+                incumbent_variance_lookup[int(row["player_id"])],
+                horizon=4,
+                runs_per_win=runs_per_win,
+            )
+        )
+        incumbent_rate_distribution_crps.append(
+            empirical_crps(
+                incumbent_rate_values,
+                incumbent_rate_weights,
+                float(row["observed_four_year_component_war"]),
+            )
+        )
+        incumbent_rate_distribution_means.append(
+            float(np.sum(incumbent_rate_values * incumbent_rate_weights))
+        )
     candidate_crps_values = np.asarray(candidate_crps)
+    incumbent_distribution_crps_values = np.asarray(incumbent_distribution_crps)
+    incumbent_rate_distribution_crps_values = np.asarray(
+        incumbent_rate_distribution_crps
+    )
     incumbent_point_crps = np.abs(incumbent_values - observed_values)
     zero_point_crps = np.abs(observed_values)
     distribution_validation = {
         "players": evaluated.height,
         "candidate_mean_crps": float(candidate_crps_values.mean()),
         "incumbent_degenerate_mean_crps": float(incumbent_point_crps.mean()),
+        "incumbent_workload_distribution_mean_crps": float(
+            incumbent_distribution_crps_values.mean()
+        ),
+        "incumbent_workload_rate_distribution_mean_crps": float(
+            incumbent_rate_distribution_crps_values.mean()
+        ),
         "zero_degenerate_mean_crps": float(zero_point_crps.mean()),
         "candidate_minus_incumbent": _paired_score_delta(
             candidate_crps_values, incumbent_point_crps, seed=20261001
+        ),
+        "candidate_minus_incumbent_workload_distribution": _paired_score_delta(
+            candidate_crps_values,
+            incumbent_distribution_crps_values,
+            seed=20261003,
+        ),
+        "candidate_minus_incumbent_workload_rate_distribution": _paired_score_delta(
+            candidate_crps_values,
+            incumbent_rate_distribution_crps_values,
+            seed=20261004,
         ),
         "candidate_minus_zero": _paired_score_delta(
             candidate_crps_values, zero_point_crps, seed=20261002
@@ -747,7 +974,22 @@ def main() -> int:
         "maximum_candidate_mean_difference": float(
             np.max(np.abs(np.asarray(candidate_distribution_means) - pooled_values))
         ),
-        "status": "development_distribution_score_not_fresh",
+        "maximum_incumbent_mean_difference": float(
+            np.max(
+                np.abs(
+                    np.asarray(incumbent_distribution_means) - incumbent_values
+                )
+            )
+        ),
+        "maximum_incumbent_rate_distribution_mean_difference": float(
+            np.max(
+                np.abs(
+                    np.asarray(incumbent_rate_distribution_means)
+                    - incumbent_values
+                )
+            )
+        ),
+        "status": "common_distribution_no_reliable_difference_not_fresh",
     }
     blend_sensitivity = []
     for linked_weight in (0.25, 0.5, 0.75):
@@ -971,16 +1213,29 @@ point mass. Candidate-minus-incumbent is
 {distribution_validation['candidate_minus_incumbent']['difference']:+.6f} with a 95%
 interval of [{distribution_validation['candidate_minus_incumbent']['ci_low']:+.6f},
 {distribution_validation['candidate_minus_incumbent']['ci_high']:+.6f}]. This is the
-right zero-inclusive distribution diagnostic, but the cohort is not fresh and the
-incumbent does not yet have its own uncertainty distribution.
+right zero-inclusive distribution diagnostic. A fairer workload-distribution incumbent
+scores {distribution_validation['incumbent_workload_distribution_mean_crps']:.3f};
+candidate-minus-incumbent is
+{distribution_validation['candidate_minus_incumbent_workload_distribution']['difference']:+.6f}
+with a 95% interval of
+[{distribution_validation['candidate_minus_incumbent_workload_distribution']['ci_low']:+.6f},
+{distribution_validation['candidate_minus_incumbent_workload_distribution']['ci_high']:+.6f}].
+The workload-only incumbent omits conditional rate-error uncertainty. Adding the
+incumbent's frozen event and posterior rate variance produces
+{distribution_validation['incumbent_workload_rate_distribution_mean_crps']:.3f} CRPS;
+candidate-minus-incumbent is
+{distribution_validation['candidate_minus_incumbent_workload_rate_distribution']['difference']:+.6f}
+with a 95% interval of
+[{distribution_validation['candidate_minus_incumbent_workload_rate_distribution']['ci_low']:+.6f},
+{distribution_validation['candidate_minus_incumbent_workload_rate_distribution']['ci_high']:+.6f}].
 
 This tradeoff persists at every tested prefix from one through four years: candidate
 MAE is worse at all four horizons, and no horizon has a reliably favorable paired MSE
 interval. The failure is not caused only by extending two-year odds to four years.
 
 Fixed 25%, 50%, and 75% linked blends remain exposed-cohort sensitivities, not promotion
-candidates. The linked path remains unpromoted pending a proper common-distribution
-comparison and fresh confirmation.
+candidates. The complete common-distribution interval crosses zero, so the linked path
+remains unpromoted pending genuinely new evidence and fresh confirmation.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)

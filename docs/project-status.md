@@ -197,9 +197,11 @@ No model is retroactively promoted. See the
 The corrected distribution score has now been run on the 3,642-player 2021 pitcher
 replay. The exact linked zero-plus-positive-path mixture scores 0.1035 CRPS, better
 than always zero at 0.1134 with a paired interval wholly below zero. It also beats the
-old incumbent when that mean is treated as a degenerate distribution. This is strong
-support for linked paths, but not promotion evidence: the incumbent needs a proper
-cutoff-safe uncertainty distribution and a genuinely fresh cohort is still required.
+old incumbent when that mean is treated as a degenerate distribution. The completed
+common-distribution test is closer: after tiered workload plus event and posterior rate
+uncertainty, the incumbent scores 0.1048 versus 0.1035 linked. The paired interval
+crosses zero. Keep both unchanged; there is no reliable winner and the cohort is not
+fresh.
 
 ## Latest P0 correction: true prospect eligibility
 

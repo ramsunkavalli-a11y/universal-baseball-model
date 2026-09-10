@@ -44,13 +44,26 @@ point mass. Candidate-minus-incumbent is
 -0.046155 with a 95%
 interval of [-0.049678,
 -0.042368]. This is the
-right zero-inclusive distribution diagnostic, but the cohort is not fresh and the
-incumbent does not yet have its own uncertainty distribution.
+right zero-inclusive distribution diagnostic. A fairer workload-distribution incumbent
+scores 0.108;
+candidate-minus-incumbent is
+-0.004232
+with a 95% interval of
+[-0.006687,
+-0.001852].
+The workload-only incumbent omits conditional rate-error uncertainty. Adding the
+incumbent's frozen event and posterior rate variance produces
+0.105 CRPS;
+candidate-minus-incumbent is
+-0.001331
+with a 95% interval of
+[-0.003110,
++0.000406].
 
 This tradeoff persists at every tested prefix from one through four years: candidate
 MAE is worse at all four horizons, and no horizon has a reliably favorable paired MSE
 interval. The failure is not caused only by extending two-year odds to four years.
 
 Fixed 25%, 50%, and 75% linked blends remain exposed-cohort sensitivities, not promotion
-candidates. The linked path remains unpromoted pending a proper common-distribution
-comparison and fresh confirmation.
+candidates. The complete common-distribution interval crosses zero, so the linked path
+remains unpromoted pending genuinely new evidence and fresh confirmation.

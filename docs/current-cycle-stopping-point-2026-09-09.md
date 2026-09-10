@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,519 passed. Four older research-contract tests fail because their
+Latest full suite: 1,520 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -170,7 +170,8 @@ together with CRPS, plus arrival probability and expected-WAR gates.
 
 That first full-distribution score is complete for the exposed 2021 pitcher replay.
 The linked zero-plus-path mixture scores 0.1035 CRPS and reliably beats always zero at
-0.1134. It also beats the incumbent if the incumbent mean is treated as a point mass,
-but that is not yet an equal uncertainty comparison. Next reconstruct the incumbent's
-cutoff-safe zero mass and conditional-active distribution, then score identical rows;
-fresh confirmation remains a separate requirement.
+0.1134. The equal uncertainty comparison is now complete: the incumbent scores 0.1048
+after tiered workload, event variance and posterior-rate variance, versus 0.1035 linked.
+The linked-minus-incumbent interval crosses zero. Stop tuning this exposed cohort;
+retain the challenger without changing values and wait for genuinely new evidence plus
+fresh confirmation.

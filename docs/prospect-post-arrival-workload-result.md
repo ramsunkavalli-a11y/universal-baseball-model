@@ -25,6 +25,6 @@ not evidence that playing time itself causes development; workload also measures
 close a player already is to the next cumulative state. The 2020 target, current 2026
 data, organization and outside FV are excluded.
 
-Verification: 1,519 tests pass. The only four failures are the already documented
+Verification: 1,520 tests pass. The only four failures are the already documented
 research contracts whose ignored generated artifacts are not present. Static checks
 and repository diff checks pass.

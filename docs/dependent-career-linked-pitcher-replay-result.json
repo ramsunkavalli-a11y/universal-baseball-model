@@ -1,21 +1,21 @@
 {
   "arrival_only_pooled_path": {
-    "bias": 0.03532839307163884,
+    "bias": 0.03532839307163887,
     "mae": 0.1971648765416348,
     "observed_mean": 0.08984663028326105,
     "players": 3642,
-    "predicted_mean": 0.12517502335489988,
+    "predicted_mean": 0.12517502335489994,
     "rmse": 0.5518767997451011
   },
   "arrival_only_vs_historical_incumbent_paired": {
-    "candidate_minus_baseline_mse": -0.008490253349410327,
-    "p025": -0.0212369413733168,
-    "p975": 0.002733376990302202
+    "candidate_minus_baseline_mse": -0.008490253349410334,
+    "p025": -0.02123694137331681,
+    "p975": 0.0027333769903021992
   },
   "arrival_only_vs_zero_paired": {
-    "candidate_minus_baseline_mse": -0.028084188787345088,
-    "p025": -0.04761654055492283,
-    "p975": -0.009531909253012243
+    "candidate_minus_baseline_mse": -0.028084188787345084,
+    "p025": -0.04761654055492282,
+    "p975": -0.009531909253012234
   },
   "as_of_date": "2026-09-10",
   "blend_sensitivity": [
@@ -23,25 +23,25 @@
       "linked_weight": 0.25,
       "paired_difference_vs_incumbent": {
         "mae": {
-          "ci_high": 0.0073603001440353324,
-          "ci_low": 0.004620136467577073,
-          "difference": 0.00596457519431733,
+          "ci_high": 0.007360300144035332,
+          "ci_low": 0.004620136467577068,
+          "difference": 0.0059645751943173285,
           "probability_candidate_better": 0.0
         },
         "mse": {
-          "ci_high": -0.005328548112974594,
-          "ci_low": -0.011887549298132767,
-          "difference": -0.0083870271299103,
+          "ci_high": -0.005328548112974597,
+          "ci_low": -0.011887549298132774,
+          "difference": -0.008387027129910303,
           "probability_candidate_better": 1.0
         },
         "resamples": 2000
       },
       "scores": {
-        "bias": -0.02733378581737051,
+        "bias": -0.02733378581737054,
         "mae": 0.15559413769663688,
         "observed_mean": 0.08984663028326105,
         "players": 3642,
-        "predicted_mean": 0.06251284446589055,
+        "predicted_mean": 0.06251284446589052,
         "rmse": 0.5519703147057771
       },
       "status": "exposed_cohort_sensitivity_not_candidate"
@@ -50,25 +50,25 @@
       "linked_weight": 0.5,
       "paired_difference_vs_incumbent": {
         "mae": {
-          "ci_high": 0.019853069407219554,
-          "ci_low": 0.014852605148649096,
+          "ci_high": 0.01985306940721955,
+          "ci_low": 0.014852605148649091,
           "difference": 0.01745316167635994,
           "probability_candidate_better": 0.0
         },
         "mse": {
-          "ci_high": -0.006715838360534308,
-          "ci_low": -0.0190700707986038,
-          "difference": -0.012597745064782128,
+          "ci_high": -0.0067158383605343186,
+          "ci_low": -0.019070070798603803,
+          "difference": -0.012597745064782142,
           "probability_candidate_better": 1.0
         },
         "resamples": 2000
       },
       "scores": {
-        "bias": -0.006446392854367394,
+        "bias": -0.0064463928543673985,
         "mae": 0.16708272417867948,
         "observed_mean": 0.08984663028326105,
         "players": 3642,
-        "predicted_mean": 0.08340023742889366,
+        "predicted_mean": 0.08340023742889364,
         "rmse": 0.5481427828417725
       },
       "status": "exposed_cohort_sensitivity_not_candidate"
@@ -77,59 +77,59 @@
       "linked_weight": 0.75,
       "paired_difference_vs_incumbent": {
         "mae": {
-          "ci_high": 0.03550250026131187,
-          "ci_low": 0.02884701214626025,
-          "difference": 0.032179936797010054,
+          "ci_high": 0.035502500261311874,
+          "ci_low": 0.028847012146260252,
+          "difference": 0.03217993679701007,
           "probability_candidate_better": 0.0
         },
         "mse": {
-          "ci_high": -0.003995803129843606,
-          "ci_low": -0.022150428175621066,
-          "difference": -0.012632153804615472,
+          "ci_high": -0.003995803129843615,
+          "ci_low": -0.022150428175621097,
+          "difference": -0.012632153804615487,
           "probability_candidate_better": 0.9985
         },
         "resamples": 2000
       },
       "scores": {
-        "bias": 0.014441000108635724,
+        "bias": 0.014441000108635733,
         "mae": 0.1818094992993296,
         "observed_mean": 0.08984663028326105,
         "players": 3642,
-        "predicted_mean": 0.10428763039189677,
-        "rmse": 0.548111395285383
+        "predicted_mean": 0.10428763039189681,
+        "rmse": 0.5481113952853829
       },
       "status": "exposed_cohort_sensitivity_not_candidate"
     }
   ],
   "continuous_validation_harness": {
     "candidate": {
-      "bias": 0.03532839307163884,
+      "bias": 0.03532839307163887,
       "mae": 0.1971648765416348,
       "observed_mean": 0.08984663028326105,
       "players": 3642,
-      "predicted_mean": 0.12517502335489988,
+      "predicted_mean": 0.1251750233548999,
       "rmse": 0.5518767997451012
     },
     "cohort_fingerprint": "482411807b2c2885cb6624d04467cedffbcfc249c2a9d37a165227899345461d",
     "incumbent": {
-      "bias": -0.04822117878037363,
+      "bias": -0.04822117878037366,
       "mae": 0.1496295625023195,
       "observed_mean": 0.08984663028326105,
       "players": 3642,
-      "predicted_mean": 0.04162545150288743,
+      "predicted_mean": 0.041625451502887385,
       "rmse": 0.5595160904266335
     },
     "paired_difference": {
       "mae": {
-        "ci_high": 0.051948705001342875,
-        "ci_low": 0.04330597580416146,
-        "difference": 0.047535314039315255,
+        "ci_high": 0.051948705001342896,
+        "ci_low": 0.043305975804161484,
+        "difference": 0.047535314039315275,
         "probability_candidate_better": 0.0
       },
       "mse": {
-        "ci_high": 0.002733376990302202,
-        "ci_low": -0.0212369413733168,
-        "difference": -0.008490253349410327,
+        "ci_high": 0.0027333769903021992,
+        "ci_low": -0.02123694137331681,
+        "difference": -0.008490253349410334,
         "probability_candidate_better": 0.9265
       },
       "resamples": 2000
@@ -148,76 +148,92 @@
   "decision": "promising_not_proven_no_promotion",
   "direct_capped_linked": {
     "bias": -0.03901652284496035,
-    "mae": 0.14303947227931055,
+    "mae": 0.1430394722793105,
     "observed_mean": 0.08984663028326105,
     "players": 3642,
-    "predicted_mean": 0.05083010743830071,
+    "predicted_mean": 0.05083010743830072,
     "rmse": 0.554242186369608
   },
   "direct_capped_linked_vs_historical_incumbent_paired": {
-    "candidate_minus_baseline_mse": -0.00587385429454148,
-    "p025": -0.015599379758877836,
-    "p975": 0.003970609174523534
+    "candidate_minus_baseline_mse": -0.005873854294541498,
+    "p025": -0.015599379758877862,
+    "p975": 0.0039706091745235275
   },
   "distribution_validation": {
     "candidate_mean_crps": 0.10347495373296292,
     "candidate_minus_incumbent": {
       "ci_high": -0.04236799001092621,
       "ci_low": -0.04967786251589917,
-      "difference": -0.04615460876935661,
+      "difference": -0.046154608769356606,
       "probability_candidate_better": 1.0
     },
+    "candidate_minus_incumbent_workload_distribution": {
+      "ci_high": -0.0018517255266304346,
+      "ci_low": -0.006687299659274205,
+      "difference": -0.004231616378474,
+      "probability_candidate_better": 0.9995
+    },
+    "candidate_minus_incumbent_workload_rate_distribution": {
+      "ci_high": 0.0004057782378498192,
+      "ci_low": -0.0031095721254061214,
+      "difference": -0.0013311512611373312,
+      "probability_candidate_better": 0.924
+    },
     "candidate_minus_zero": {
-      "ci_high": -0.0061224809179161125,
-      "ci_low": -0.013814072624052832,
+      "ci_high": -0.006122480917916111,
+      "ci_low": -0.013814072624052827,
       "difference": -0.009927584931947127,
       "probability_candidate_better": 1.0
     },
     "incumbent_degenerate_mean_crps": 0.1496295625023195,
+    "incumbent_workload_distribution_mean_crps": 0.10770657011143693,
+    "incumbent_workload_rate_distribution_mean_crps": 0.10480610499410024,
     "maximum_candidate_mean_difference": 2.220446049250313e-16,
+    "maximum_incumbent_mean_difference": 4.440892098500626e-16,
+    "maximum_incumbent_rate_distribution_mean_difference": 4.440892098500626e-16,
     "players": 3642,
-    "status": "development_distribution_score_not_fresh",
+    "status": "common_distribution_no_reliable_difference_not_fresh",
     "zero_degenerate_mean_crps": 0.11340253866491004
   },
   "forecast_snapshot": 2021,
   "historical_incumbent": {
-    "bias": -0.04822117878037362,
-    "mae": 0.1496295625023195,
+    "bias": -0.048221178780373665,
+    "mae": 0.14962956250231954,
     "observed_mean": 0.08984663028326105,
     "players": 3642,
-    "predicted_mean": 0.04162545150288743,
+    "predicted_mean": 0.041625451502887385,
     "rmse": 0.5595160904266335
   },
   "horizon_sensitivity": [
     {
       "arrival_only_candidate": {
-        "bias": 0.005523334904374963,
+        "bias": 0.005523334904374964,
         "mae": 0.021189639070296144,
         "observed_mean": 0.004931777564189279,
         "players": 3642,
-        "predicted_mean": 0.010455112468564244,
+        "predicted_mean": 0.010455112468564245,
         "rmse": 0.10207041713517397
       },
       "horizon_years": 1,
       "incumbent": {
-        "bias": -0.0013476824676440502,
+        "bias": -0.001347682467644053,
         "mae": 0.01614270031563921,
         "observed_mean": 0.004931777564189279,
         "players": 3642,
-        "predicted_mean": 0.003584095096545228,
+        "predicted_mean": 0.0035840950965452256,
         "rmse": 0.10142745747909857
       },
       "paired_difference": {
         "mae": {
-          "ci_high": 0.005435672011179706,
-          "ci_low": 0.004679398450047264,
-          "difference": 0.005046938754656936,
+          "ci_high": 0.005435672011179708,
+          "ci_low": 0.004679398450047265,
+          "difference": 0.005046938754656938,
           "probability_candidate_better": 0.0
         },
         "mse": {
-          "ci_high": 0.0003738392112077308,
-          "ci_low": -9.253792686033237e-05,
-          "difference": 0.00013084092347406942,
+          "ci_high": 0.00037383921120773,
+          "ci_low": -9.253792686033257e-05,
+          "difference": 0.00013084092347406871,
           "probability_candidate_better": 0.1285
         },
         "resamples": 2000
@@ -225,32 +241,32 @@
     },
     {
       "arrival_only_candidate": {
-        "bias": 0.011723275630548308,
+        "bias": 0.011723275630548317,
         "mae": 0.06380765680665425,
         "observed_mean": 0.02409762762980293,
         "players": 3642,
-        "predicted_mean": 0.03582090326035124,
+        "predicted_mean": 0.03582090326035125,
         "rmse": 0.2335296457441721
       },
       "horizon_years": 2,
       "incumbent": {
-        "bias": -0.012563088690331927,
+        "bias": -0.012563088690331936,
         "mae": 0.04832278201412946,
         "observed_mean": 0.02409762762980293,
         "players": 3642,
-        "predicted_mean": 0.011534538939471007,
+        "predicted_mean": 0.011534538939470996,
         "rmse": 0.2349606533970116
       },
       "paired_difference": {
         "mae": {
-          "ci_high": 0.016803221590571186,
-          "ci_low": 0.014106080995911978,
-          "difference": 0.01548487479252478,
+          "ci_high": 0.016803221590571196,
+          "ci_low": 0.014106080995911983,
+          "difference": 0.015484874792524788,
           "probability_candidate_better": 0.0
         },
         "mse": {
-          "ci_high": 0.000751082969113498,
-          "ci_low": -0.002201997920098605,
+          "ci_high": 0.0007510829691134991,
+          "ci_low": -0.002201997920098606,
           "difference": -0.000670413203352107,
           "probability_candidate_better": 0.815
         },
@@ -259,33 +275,33 @@
     },
     {
       "arrival_only_candidate": {
-        "bias": 0.01862263762235074,
+        "bias": 0.018622637622350762,
         "mae": 0.1260689940389245,
         "observed_mean": 0.05594397166730782,
         "players": 3642,
-        "predicted_mean": 0.07456660928965855,
+        "predicted_mean": 0.07456660928965858,
         "rmse": 0.39316628802290443
       },
       "horizon_years": 3,
       "incumbent": {
-        "bias": -0.031686053971105826,
+        "bias": -0.03168605397110585,
         "mae": 0.09642836544814584,
         "observed_mean": 0.05594397166730782,
         "players": 3642,
-        "predicted_mean": 0.024257917696201992,
+        "predicted_mean": 0.02425791769620197,
         "rmse": 0.39874699636389144
       },
       "paired_difference": {
         "mae": {
-          "ci_high": 0.03220861408156982,
-          "ci_low": 0.0270379375898267,
-          "difference": 0.02964062859077864,
+          "ci_high": 0.03220861408156983,
+          "ci_low": 0.02703793758982671,
+          "difference": 0.02964062859077865,
           "probability_candidate_better": 0.0
         },
         "mse": {
-          "ci_high": 0.00036159676272573923,
-          "ci_low": -0.009392899742123166,
-          "difference": -0.004419437071515873,
+          "ci_high": 0.00036159676272573484,
+          "ci_low": -0.00939289974212317,
+          "difference": -0.0044194370715158774,
           "probability_candidate_better": 0.965
         },
         "resamples": 2000
@@ -293,33 +309,33 @@
     },
     {
       "arrival_only_candidate": {
-        "bias": 0.03532839307163884,
-        "mae": 0.1971648765416348,
+        "bias": 0.035328393071638875,
+        "mae": 0.19716487654163484,
         "observed_mean": 0.08984663028326105,
         "players": 3642,
-        "predicted_mean": 0.12517502335489988,
+        "predicted_mean": 0.1251750233548999,
         "rmse": 0.5518767997451011
       },
       "horizon_years": 4,
       "incumbent": {
-        "bias": -0.04822117878037363,
+        "bias": -0.04822117878037367,
         "mae": 0.14962956250231954,
         "observed_mean": 0.08984663028326105,
         "players": 3642,
-        "predicted_mean": 0.04162545150288743,
+        "predicted_mean": 0.041625451502887385,
         "rmse": 0.5595160904266335
       },
       "paired_difference": {
         "mae": {
-          "ci_high": 0.05168343272597562,
-          "ci_low": 0.043157071997454555,
-          "difference": 0.04753531403931527,
+          "ci_high": 0.051683432725975656,
+          "ci_low": 0.04315707199745458,
+          "difference": 0.04753531403931528,
           "probability_candidate_better": 0.0
         },
         "mse": {
-          "ci_high": 0.0031757897043053107,
-          "ci_low": -0.0210153613642871,
-          "difference": -0.008490253349410327,
+          "ci_high": 0.00317578970430532,
+          "ci_low": -0.021015361364287114,
+          "difference": -0.008490253349410332,
           "probability_candidate_better": 0.9215
         },
         "resamples": 2000
@@ -335,22 +351,22 @@
     "Subgroups are prespecified diagnostics; no subgroup is used as a separate promotion opportunity."
   ],
   "linked": {
-    "bias": 0.005060209574110722,
+    "bias": 0.005060209574110733,
     "mae": 0.1712635699934167,
     "observed_mean": 0.08984663028326105,
     "players": 3642,
-    "predicted_mean": 0.09490683985737176,
+    "predicted_mean": 0.09490683985737178,
     "rmse": 0.5519259028800109
   },
   "linked_vs_arrival_only_paired": {
-    "candidate_minus_baseline_mse": 5.420017302077896e-05,
-    "p025": -0.0066573698167357335,
-    "p975": 0.0061217951453009884
+    "candidate_minus_baseline_mse": 5.4200173020770714e-05,
+    "p025": -0.006657369816735739,
+    "p975": 0.006121795145300984
   },
   "linked_vs_historical_incumbent_paired": {
-    "candidate_minus_baseline_mse": -0.00843605317638955,
-    "p025": -0.023630139470894308,
-    "p975": 0.005670977982968012
+    "candidate_minus_baseline_mse": -0.008436053176389562,
+    "p025": -0.023630139470894332,
+    "p975": 0.0056709779829679985
   },
   "model_effect": "none",
   "outcome_seasons": [
@@ -363,27 +379,27 @@
   "path_prefix_means": {
     "established": {
       "1": 0.4419404704100033,
-      "2": 1.2091569799559847,
+      "2": 1.209156979955985,
       "3": 2.0511603114967683,
-      "4": 2.909255952030975
+      "4": 2.9092559520309758
     },
     "fringe": {
-      "1": 0.036295546670295,
-      "2": 0.05009168329520471,
-      "3": 0.04839476801685589,
+      "1": 0.036295546670295005,
+      "2": 0.05009168329520472,
+      "3": 0.048394768016855896,
       "4": 0.05145766266284347
     },
     "meaningful_only": {
-      "1": 0.1782621225529287,
+      "1": 0.1782621225529286,
       "2": 0.38111215952792094,
       "3": 0.474163506161637,
       "4": 0.518219245325361
     },
     "pooled": {
-      "1": 0.21870835949077672,
-      "2": 0.563332724703813,
-      "3": 0.9196082098766717,
-      "4": 1.2795716411997509
+      "1": 0.21870835949077674,
+      "2": 0.5633327247038131,
+      "3": 0.9196082098766719,
+      "4": 1.279571641199751
     }
   },
   "report_schema_version": 1,
@@ -411,7 +427,7 @@
       "arrival_only_predicted_mean": 0.05119313169998236,
       "arrival_only_rmse": 0.31245771760791874,
       "group": "level_tier",
-      "incumbent_predicted_mean": 0.029151693241239608,
+      "incumbent_predicted_mean": 0.029151693241239604,
       "incumbent_rmse": 0.31364107225526455,
       "linked_predicted_mean": 0.0347272672310751,
       "linked_rmse": 0.31318143843485685,
@@ -423,8 +439,8 @@
       "arrival_only_predicted_mean": 0.31454438892514214,
       "arrival_only_rmse": 0.9291242075374584,
       "group": "level_tier",
-      "incumbent_predicted_mean": 0.08015438095128506,
-      "incumbent_rmse": 0.9493476321649458,
+      "incumbent_predicted_mean": 0.08015438095128494,
+      "incumbent_rmse": 0.9493476321649459,
       "linked_predicted_mean": 0.21204085096444109,
       "linked_rmse": 0.9202850125916489,
       "observed_mean": 0.23516777566601613,
@@ -432,11 +448,11 @@
       "value": "AA"
     },
     {
-      "arrival_only_predicted_mean": 0.3705497825604095,
+      "arrival_only_predicted_mean": 0.37054978256040955,
       "arrival_only_rmse": 0.9764638382080237,
       "group": "level_tier",
-      "incumbent_predicted_mean": 0.07555697240287447,
-      "incumbent_rmse": 0.9878818449739243,
+      "incumbent_predicted_mean": 0.07555697240287437,
+      "incumbent_rmse": 0.9878818449739242,
       "linked_predicted_mean": 0.3388358482984548,
       "linked_rmse": 0.9852735062858118,
       "observed_mean": 0.25491502966722707,
@@ -444,10 +460,10 @@
       "value": "AAA"
     },
     {
-      "arrival_only_predicted_mean": 0.0792384889408023,
+      "arrival_only_predicted_mean": 0.07923848894080232,
       "arrival_only_rmse": 0.3226610377088553,
       "group": "role_tier",
-      "incumbent_predicted_mean": 0.0255292714807244,
+      "incumbent_predicted_mean": 0.025529271480724394,
       "incumbent_rmse": 0.3190634991770974,
       "linked_predicted_mean": 0.02766523763767702,
       "linked_rmse": 0.3194876217303543,
@@ -456,22 +472,22 @@
       "value": "RELIEVER"
     },
     {
-      "arrival_only_predicted_mean": 0.2244292491051866,
-      "arrival_only_rmse": 0.8650504800816688,
+      "arrival_only_predicted_mean": 0.2244292491051867,
+      "arrival_only_rmse": 0.8650504800816687,
       "group": "role_tier",
-      "incumbent_predicted_mean": 0.07965429272411116,
+      "incumbent_predicted_mean": 0.07965429272411109,
       "incumbent_rmse": 0.8833868091277809,
-      "linked_predicted_mean": 0.23986050491775257,
+      "linked_predicted_mean": 0.2398605049177526,
       "linked_rmse": 0.8678071502918704,
       "observed_mean": 0.18359370323934865,
       "players": 1121,
       "value": "STARTER"
     },
     {
-      "arrival_only_predicted_mean": 0.08529943170929016,
+      "arrival_only_predicted_mean": 0.08529943170929018,
       "arrival_only_rmse": 0.3370577289868393,
       "group": "role_tier",
-      "incumbent_predicted_mean": 0.023523733103852154,
+      "incumbent_predicted_mean": 0.023523733103852137,
       "incumbent_rmse": 0.3349198883650382,
       "linked_predicted_mean": 0.035899899609536136,
       "linked_rmse": 0.33394516072207203,
@@ -480,58 +496,58 @@
       "value": "SWINGMAN"
     },
     {
-      "arrival_only_predicted_mean": 0.11963175259808738,
+      "arrival_only_predicted_mean": 0.11963175259808739,
       "arrival_only_rmse": 0.5509680022469742,
       "group": "pitch_hand",
-      "incumbent_predicted_mean": 0.040760968295017616,
-      "incumbent_rmse": 0.5581372452713461,
-      "linked_predicted_mean": 0.08913274018692845,
+      "incumbent_predicted_mean": 0.04076096829501758,
+      "incumbent_rmse": 0.5581372452713462,
+      "linked_predicted_mean": 0.08913274018692846,
       "linked_rmse": 0.5490739218029351,
       "observed_mean": 0.08569267045461026,
       "players": 2871,
       "value": "R"
     },
     {
-      "arrival_only_predicted_mean": 0.14581669695127963,
+      "arrival_only_predicted_mean": 0.14581669695127966,
       "arrival_only_rmse": 0.5552478390930891,
       "group": "pitch_hand",
-      "incumbent_predicted_mean": 0.044844558234138056,
+      "incumbent_predicted_mean": 0.044844558234138,
       "incumbent_rmse": 0.5646209309582313,
-      "linked_predicted_mean": 0.11640805925275803,
+      "linked_predicted_mean": 0.11640805925275804,
       "linked_rmse": 0.5624187458151995,
       "observed_mean": 0.10531487758294505,
       "players": 771,
       "value": "L"
     },
     {
-      "arrival_only_predicted_mean": 0.10102237438836022,
-      "arrival_only_rmse": 0.1661966165332118,
+      "arrival_only_predicted_mean": 0.10102237438836027,
+      "arrival_only_rmse": 0.16619661653321186,
       "group": "observed_arrival_group",
-      "incumbent_predicted_mean": 0.03208879575146813,
-      "incumbent_rmse": 0.08317679321878829,
+      "incumbent_predicted_mean": 0.0320887957514681,
+      "incumbent_rmse": 0.08317679321878828,
       "linked_predicted_mean": 0.06840749598899679,
-      "linked_rmse": 0.15160067036516325,
+      "linked_rmse": 0.15160067036516328,
       "observed_mean": 0.0,
       "players": 3195,
       "value": "did_not_arrive"
     },
     {
-      "arrival_only_predicted_mean": 0.29780972905533437,
+      "arrival_only_predicted_mean": 0.2978097290553344,
       "arrival_only_rmse": 1.5113193793667643,
       "group": "observed_arrival_group",
-      "incumbent_predicted_mean": 0.10979013858517975,
-      "incumbent_rmse": 1.5815306674299507,
-      "linked_predicted_mean": 0.2843149017353541,
+      "incumbent_predicted_mean": 0.10979013858517962,
+      "incumbent_rmse": 1.581530667429951,
+      "linked_predicted_mean": 0.28431490173535423,
       "linked_rmse": 1.5223937145407944,
       "observed_mean": 0.7320389876770397,
       "players": 447,
       "value": "arrived"
     },
     {
-      "arrival_only_predicted_mean": 0.011829766854071512,
+      "arrival_only_predicted_mean": 0.011829766854071515,
       "arrival_only_rmse": 0.08535788914988916,
       "group": "arrival_probability_quintile",
-      "incumbent_predicted_mean": 0.006323265344184938,
+      "incumbent_predicted_mean": 0.006323265344184937,
       "incumbent_rmse": 0.08497411176304989,
       "linked_predicted_mean": 0.003994290277168049,
       "linked_rmse": 0.08492355835737057,
@@ -540,7 +556,7 @@
       "value": "0"
     },
     {
-      "arrival_only_predicted_mean": 0.026878687305722307,
+      "arrival_only_predicted_mean": 0.02687868730572231,
       "arrival_only_rmse": 0.10498028013147573,
       "group": "arrival_probability_quintile",
       "incumbent_predicted_mean": 0.012989354453731191,
@@ -552,10 +568,10 @@
       "value": "1"
     },
     {
-      "arrival_only_predicted_mean": 0.054244981846306585,
+      "arrival_only_predicted_mean": 0.05424498184630659,
       "arrival_only_rmse": 0.3690066152094369,
       "group": "arrival_probability_quintile",
-      "incumbent_predicted_mean": 0.03202899186445898,
+      "incumbent_predicted_mean": 0.032028991864458976,
       "incumbent_rmse": 0.3714190777627931,
       "linked_predicted_mean": 0.030151726319813478,
       "linked_rmse": 0.37186751791058037,
@@ -564,12 +580,12 @@
       "value": "2"
     },
     {
-      "arrival_only_predicted_mean": 0.13394016010285031,
+      "arrival_only_predicted_mean": 0.13394016010285037,
       "arrival_only_rmse": 0.4517477165313637,
       "group": "arrival_probability_quintile",
-      "incumbent_predicted_mean": 0.06042038685058495,
+      "incumbent_predicted_mean": 0.060420386850584935,
       "incumbent_rmse": 0.44943087402731613,
-      "linked_predicted_mean": 0.09179066088558038,
+      "linked_predicted_mean": 0.09179066088558041,
       "linked_rmse": 0.44829363849155196,
       "observed_mean": 0.06967574161350343,
       "players": 728,
@@ -579,9 +595,9 @@
       "arrival_only_predicted_mean": 0.39923464607490244,
       "arrival_only_rmse": 1.0793196823010414,
       "group": "arrival_probability_quintile",
-      "incumbent_predicted_mean": 0.0964269329654841,
+      "incumbent_predicted_mean": 0.09642693296548395,
       "incumbent_rmse": 1.0991990520538741,
-      "linked_predicted_mean": 0.3392224162871251,
+      "linked_predicted_mean": 0.33922241628712513,
       "linked_rmse": 1.0801674627102007,
       "observed_mean": 0.31182081861956873,
       "players": 728,

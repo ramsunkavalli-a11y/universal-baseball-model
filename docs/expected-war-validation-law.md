@@ -40,8 +40,11 @@ The cutoff-safe 2021 pitcher replay now scores the exact zero-plus-historical-pa
 mixture. Its CRPS is 0.1035, versus 0.1134 for an all-zero point distribution and
 0.1496 when the historical incumbent mean is treated as a point distribution. The
 candidate-minus-zero paired interval is [-0.0138, -0.0061]. This supports the linked
-distribution structure. It still does not authorize promotion: the incumbent mean was
-not built as a distribution, this is an exposed development cohort, and the expected-
-WAR MSE interval against the incumbent still crosses zero. Next build the incumbent's
-cutoff-safe zero mass and conditional-active uncertainty for a common-distribution
-CRPS comparison.
+distribution structure.
+
+The fair common-distribution comparison is also complete. A tiered incumbent with the
+same cutoff-valid workload paths scores 0.1077; adding its frozen event and posterior
+rate uncertainty improves it to 0.1048. The linked candidate remains slightly better
+at 0.1035, but candidate-minus-incumbent is -0.00133 with a 95% interval of
+[-0.00311, +0.00041]. The methods are not reliably different. The cohort is exposed
+and the expected-WAR MSE interval also crosses zero, so no promotion is authorized.

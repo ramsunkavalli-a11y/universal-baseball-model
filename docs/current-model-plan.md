@@ -178,13 +178,13 @@ pitcher challenger; its MSE interval crossed zero and it has not passed the requ
 distribution or fresh-confirmation gates. See the
 [Expected-WAR validation law](expected-war-validation-law.md).
 
-The first zero-inclusive distribution replay now favors the linked pitcher path. Its
-CRPS is 0.1035 versus 0.1134 for always zero, with a favorable paired interval; it also
-beats treating the incumbent mean as a point mass. This validates the path as a useful
-predictive distribution, not its promotion. The immediate next comparison must give
-the historical incumbent its own cutoff-safe participation and conditional-active
-uncertainty distribution, then compare both on identical players. Fresh confirmation
-remains mandatory.
+The zero-inclusive distribution replay confirms that the linked pitcher path is useful:
+its CRPS is 0.1035 versus 0.1134 for always zero. The fairer incumbent distribution,
+including tiered workload plus frozen event and posterior rate uncertainty, scores
+0.1048. The linked-minus-incumbent interval crosses zero, so the methods are not
+reliably different. Do not tune this exposed cohort. Keep the linked architecture as a
+research challenger and require genuinely new evidence plus fresh confirmation before
+any promotion.
 
 ## Goal
 
