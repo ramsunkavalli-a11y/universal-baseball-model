@@ -134,6 +134,13 @@ the pitcher adjustment reverses on 2025 Brier. Neither changes production. The n
 credible park challenger requires explicit opponent/schedule control or supported
 venue eras, not another shrinkage search on the disclosed seasons.
 
+The prospect career-state replacement has also begun. A mutually exclusive
+next-season multinomial was tested against separately fit ordered cumulative logits
+using the same features and rolling 2024/2025 targets. It failed for hitters and was
+mixed for pitchers, despite a clean pitcher win on the latest target. It remains
+research-only. Continue with ordered discrete-time hazards plus post-arrival MLB
+progression; do not assume one multiclass fit solves the compounding problem.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

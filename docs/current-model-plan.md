@@ -105,6 +105,14 @@ masses. This removes the catcher-heavy inflation without a catcher penalty or ou
 FV input. A coherent year-by-year career-state transition model is now the next P0
 replacement. See the [safeguard result](prospect-role-probability-safeguard-result.md).
 
+The first structural challenger is now scored. A single four-class next-season model
+does not reliably beat separately estimated, ordered cumulative probabilities:
+hitters lose both 2025 scores, while pitchers win both 2025 scores but lose the
+earlier 2024 Brier check. Do not replace the safeguard with a multinomial shortcut.
+Build the full path as ordered discrete-time hazards conditional on the state already
+reached, with MLB progression and attrition after arrival. See the
+[state result](prospect-one-year-career-state-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

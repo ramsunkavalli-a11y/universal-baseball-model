@@ -27,6 +27,10 @@ Status: clean handoff; private preview works, publication remains blocked.
 - Exact home/away component splits then passed a team/venue persistence test, but
   failed the future MLB-player gate. Hitters lost 2025 log loss; pitchers lost 2025
   Brier. Keep the level-only player translation and do not rescue-tune this result.
+- The first coherent prospect-state challenger predicts four exclusive next-season
+  states. It fails for hitters and is mixed for pitchers, so the direct cap remains.
+  Its main design lesson is to retain ordered hazards and condition later transitions
+  on the state already reached rather than fit one flat multinomial shortcut.
 
 - The repo plan now includes lessons from comparable GitHub projection systems:
   component-specific reliability must earn its complexity, attrition belongs in the

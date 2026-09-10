@@ -1,0 +1,230 @@
+{
+  "boundary": "This tests the first pre-MLB-to-next-season transition only. MLB-state progression, future MiLB covariates, workload and WAR remain separate.",
+  "current_2026_used": false,
+  "hitter": {
+    "development_scores": {
+      "joint_multinomial": {
+        "0.03": {
+          "multiclass_brier": 0.056288110377951256,
+          "multiclass_log_loss": 0.12726913980781074,
+          "players": 3200
+        },
+        "0.1": {
+          "multiclass_brier": 0.05566142029766644,
+          "multiclass_log_loss": 0.12420110097186843,
+          "players": 3200
+        },
+        "0.3": {
+          "multiclass_brier": 0.055849698655380434,
+          "multiclass_log_loss": 0.12346861780479519,
+          "players": 3200
+        },
+        "1.0": {
+          "multiclass_brier": 0.05750921556012657,
+          "multiclass_log_loss": 0.12496600898131756,
+          "players": 3200
+        }
+      },
+      "ordered_binary": {
+        "0.03": {
+          "multiclass_brier": 0.05670650544044786,
+          "multiclass_log_loss": 0.12998612378087432,
+          "players": 3200
+        },
+        "0.1": {
+          "multiclass_brier": 0.05574505288574511,
+          "multiclass_log_loss": 0.1259474659556845,
+          "players": 3200
+        },
+        "0.3": {
+          "multiclass_brier": 0.05567339749249142,
+          "multiclass_log_loss": 0.12423938256570546,
+          "players": 3200
+        },
+        "1.0": {
+          "multiclass_brier": 0.0565124796519386,
+          "multiclass_log_loss": 0.12402613163146377,
+          "players": 3200
+        }
+      }
+    },
+    "development_snapshot": 2022,
+    "development_target": 2023,
+    "joint_structure_gate_passed": false,
+    "regularization_grid": [
+      0.03,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "rolling_confirmations": [
+      {
+        "joint_minus_ordered_brier": -2.0065209041443544e-05,
+        "joint_minus_ordered_log_loss": 0.0001288972543199013,
+        "joint_multinomial": {
+          "multiclass_brier": 0.0521884002407791,
+          "multiclass_log_loss": 0.10659324494734869,
+          "players": 3168
+        },
+        "ordered_binary": {
+          "multiclass_brier": 0.052208465449820544,
+          "multiclass_log_loss": 0.10646434769302879,
+          "players": 3168
+        },
+        "snapshot_year": 2023,
+        "target_year": 2024,
+        "training_snapshot_years": [
+          2018,
+          2019,
+          2021,
+          2022
+        ]
+      },
+      {
+        "joint_minus_ordered_brier": 0.00033709404934937487,
+        "joint_minus_ordered_log_loss": 0.00038000087085963974,
+        "joint_multinomial": {
+          "multiclass_brier": 0.05437486197046072,
+          "multiclass_log_loss": 0.1126070039617135,
+          "players": 2964
+        },
+        "ordered_binary": {
+          "multiclass_brier": 0.05403776792111135,
+          "multiclass_log_loss": 0.11222700309085386,
+          "players": 2964
+        },
+        "snapshot_year": 2024,
+        "target_year": 2025,
+        "training_snapshot_years": [
+          2018,
+          2019,
+          2021,
+          2022,
+          2023
+        ]
+      }
+    ],
+    "selected_regularization": {
+      "joint_multinomial": 0.3,
+      "ordered_binary": 1.0
+    }
+  },
+  "pitcher": {
+    "development_scores": {
+      "joint_multinomial": {
+        "0.03": {
+          "multiclass_brier": 0.06594600528460483,
+          "multiclass_log_loss": 0.1437040996463675,
+          "players": 3759
+        },
+        "0.1": {
+          "multiclass_brier": 0.06513141332465038,
+          "multiclass_log_loss": 0.139220618638969,
+          "players": 3759
+        },
+        "0.3": {
+          "multiclass_brier": 0.06477111934662184,
+          "multiclass_log_loss": 0.13655279927810607,
+          "players": 3759
+        },
+        "1.0": {
+          "multiclass_brier": 0.06472309952959811,
+          "multiclass_log_loss": 0.13570926895600896,
+          "players": 3759
+        }
+      },
+      "ordered_binary": {
+        "0.03": {
+          "multiclass_brier": 0.06636067409254001,
+          "multiclass_log_loss": 0.14794599527467747,
+          "players": 3759
+        },
+        "0.1": {
+          "multiclass_brier": 0.06530905195831639,
+          "multiclass_log_loss": 0.14170748522598123,
+          "players": 3759
+        },
+        "0.3": {
+          "multiclass_brier": 0.06481566111418077,
+          "multiclass_log_loss": 0.1379506381863607,
+          "players": 3759
+        },
+        "1.0": {
+          "multiclass_brier": 0.06455108794437422,
+          "multiclass_log_loss": 0.13603761159282943,
+          "players": 3759
+        }
+      }
+    },
+    "development_snapshot": 2022,
+    "development_target": 2023,
+    "joint_structure_gate_passed": false,
+    "regularization_grid": [
+      0.03,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "rolling_confirmations": [
+      {
+        "joint_minus_ordered_brier": 6.613784866493777e-05,
+        "joint_minus_ordered_log_loss": -0.0005860460283142466,
+        "joint_multinomial": {
+          "multiclass_brier": 0.05997118667215279,
+          "multiclass_log_loss": 0.1250372001748761,
+          "players": 3715
+        },
+        "ordered_binary": {
+          "multiclass_brier": 0.05990504882348785,
+          "multiclass_log_loss": 0.12562324620319035,
+          "players": 3715
+        },
+        "snapshot_year": 2023,
+        "target_year": 2024,
+        "training_snapshot_years": [
+          2018,
+          2019,
+          2021,
+          2022
+        ]
+      },
+      {
+        "joint_minus_ordered_brier": -0.00022587970575656258,
+        "joint_minus_ordered_log_loss": -0.001225945346241028,
+        "joint_multinomial": {
+          "multiclass_brier": 0.05923522010055404,
+          "multiclass_log_loss": 0.12052055798598389,
+          "players": 3497
+        },
+        "ordered_binary": {
+          "multiclass_brier": 0.059461099806310605,
+          "multiclass_log_loss": 0.12174650333222492,
+          "players": 3497
+        },
+        "snapshot_year": 2024,
+        "target_year": 2025,
+        "training_snapshot_years": [
+          2018,
+          2019,
+          2021,
+          2022,
+          2023
+        ]
+      }
+    ],
+    "selected_regularization": {
+      "joint_multinomial": 1.0,
+      "ordered_binary": 1.0
+    }
+  },
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "shortened_2020_snapshot_excluded": true,
+  "state_order": [
+    "NO_MLB",
+    "FRINGE_MLB",
+    "MEANINGFUL_MLB",
+    "ESTABLISHED_MLB"
+  ],
+  "status": "one_year_joint_career_state_outer_test_complete"
+}
