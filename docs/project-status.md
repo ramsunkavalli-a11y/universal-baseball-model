@@ -50,6 +50,11 @@ The locked evaluator is complete. It requires all-MLB 2026 pitcher component tot
 for the league environment and a schedule report proving the regular season is final;
 it rejects partial schedules and any changed frozen package or contract.
 
+The validated post-arrival progression models are now preserved as a durable package,
+including the hitter and pitcher workload-aware fringe equations and the conservative
+meaningful-state fallbacks. They are not yet in rankings. Their purpose is to remove
+the research simulator's eventual-tier-first shortcut in the next historical replay.
+
 The first Phase 2 survivor-bias test is complete. An age-by-prior-workload pitcher
 return model materially improves 2022–2025 probability scores over one population
 rate. Using it to reweight observed adjacent-season pairs slightly improves the fitted
@@ -1065,7 +1070,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,485 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,524 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
@@ -1152,7 +1157,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current verification is 46/46 model-law checks. The latest full suite is
-  1,485 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,524 passing tests plus four known missing-artifact failures; no new failure exists.
 
 The remaining universal event-context candidate is the strongly regressed pitcher
 platoon test. The compact pitcher-contact tables on disk retain pitcher identity and

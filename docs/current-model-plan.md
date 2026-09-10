@@ -169,6 +169,13 @@ did not consistently improve 2024/2025 confirmation. Keep role in pitcher opport
 and WAR paths, where it already belongs, and exclude it from the advancement hazard to
 avoid double counting. See the [role result](prospect-post-arrival-pitcher-role-result.md).
 
+The accepted progression equations are now durable, hash-bound simulation inputs.
+They cover 887 hitter and 1,132 pitcher fringe transitions through 2025 and retain the
+age/elapsed fallback for the smaller meaningful-to-established samples. The next
+simulator can therefore update a draw's following-year state from its own sampled
+workload instead of selecting the eventual tier first. See the
+[artifact note](prospect-post-arrival-progression-artifact.md).
+
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero
 prospect cohort. Future linked-path validation must pair arrival Brier/log loss, a
