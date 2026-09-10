@@ -123,6 +123,14 @@ required controls. Pulled air is treated as potential future pitcher damage, not
 assumed pitcher talent; each increment must be repeatable and improve later proper
 scores.
 
+The playable build now has an enforced
+[model-law audit](private-preview-model-law-audit-result.md). All 18 checks pass across
+probability simplexes, six-year path completeness, expected-workload/WAR identities,
+nested hurdle ordering, exact WAR-to-FV mapping, player type, uniqueness, and interval
+ordering. Its first run caught 23 MLB rows that mixed a Phase 2 WAR center with old
+Phase 1 WAR bounds; the builder now derives center and bounds from the same retained
+annual path. Central contract values did not change.
+
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
 arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top

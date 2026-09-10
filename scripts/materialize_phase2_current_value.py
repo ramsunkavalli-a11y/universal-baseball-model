@@ -157,36 +157,38 @@ def main() -> int:
         released = old["rights_state"] == "no_incumbent_rights"
         annual = annual_by_id.get(player_id)
         aggregate = aggregate_by_id.get(player_id)
-        controlled_war = None
+        controlled_war = war_lower = war_upper = None
         if annual is not None:
-            controlled_war = float(
-                annual.filter(
-                    ~pl.col("decision_at_mean").is_in(
-                        ["no_incumbent_rights", "prior_non_tender_no_incumbent_rights"]
-                    )
-                ).get_column("projected_war_mean").sum()
+            retained = annual.filter(
+                ~pl.col("decision_at_mean").is_in(
+                    ["no_incumbent_rights", "prior_non_tender_no_incumbent_rights"]
+                )
             )
+            controlled_war = float(retained.get_column("projected_war_mean").sum())
+            war_lower = float(retained.get_column("projected_war_lower").sum())
+            war_upper = float(retained.get_column("projected_war_upper").sum())
         if released:
             status = "available"
-            value = lower = upper = cost = controlled_war = 0.0
+            value = lower = upper = cost = controlled_war = war_lower = war_upper = 0.0
             method = "no_incumbent_rights"
             coverage = "talent_only_no_incumbent_rights"
         elif no_debut and fv is not None and nested is not None:
             status = "available"
             value = float(nested["nested_talent_benchmark_value_dollars"])
             lower = upper = None
+            war_lower = war_upper = None
             cost = None
             controlled_war = float(nested["three_tier_expected_six_year_war"])
             method = "nested_career_model_fv_pre_mlb_benchmark_value"
             coverage = "phase2_nested_career_model_fv_no_contract_interval"
         elif no_debut:
             status = "review"
-            value = lower = upper = cost = controlled_war = None
+            value = lower = upper = cost = controlled_war = war_lower = war_upper = None
             method = "missing_internal_model_fv"
             coverage = "review_non_debuted_without_model_fv"
         elif aggregate is None or aggregate["calculation_status"] != "available":
             status = "review"
-            value = lower = upper = cost = None
+            value = lower = upper = cost = war_lower = war_upper = None
             method = "phase2_mlb_contract_economics_review"
             coverage = "review_missing_or_blocked_economics"
         else:
@@ -205,6 +207,8 @@ def main() -> int:
                 "calculation_status": status,
                 "coverage_tier": coverage,
                 "expected_remaining_war": controlled_war,
+                "expected_remaining_war_lower": war_lower,
+                "expected_remaining_war_upper": war_upper,
                 "expected_controlled_war": controlled_war,
                 "statsapi_projected_war": (
                     None if fv is None else controlled_war if no_debut else fv["expected_six_year_war"]

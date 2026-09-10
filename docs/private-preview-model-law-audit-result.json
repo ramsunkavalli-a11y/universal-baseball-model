@@ -1,0 +1,128 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundaries": {
+    "contract_values_changed": false,
+    "current_2026_outcomes_read": false,
+    "model_refit": false,
+    "outside_fv_used": false
+  },
+  "checks": [
+    {
+      "failures": 0,
+      "name": "hitter_unique_player_season",
+      "rows_checked": 23640,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "hitter_complete_six_year_path",
+      "rows_checked": 3940,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "hitter_active_probability_bounds",
+      "rows_checked": 23640,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_unique_player_season",
+      "rows_checked": 31656,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_complete_six_year_path",
+      "rows_checked": 5276,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_active_probability_bounds",
+      "rows_checked": 31656,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "hitter_component_simplex",
+      "rows_checked": 23640,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_component_simplex",
+      "rows_checked": 31656,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_role_probability_simplex",
+      "rows_checked": 31656,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "hitter_expected_workload_identity",
+      "rows_checked": 23640,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "hitter_expected_war_identity",
+      "rows_checked": 23640,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_expected_workload_identity",
+      "rows_checked": 31656,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_expected_war_identity",
+      "rows_checked": 31656,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "nested_probability_order_and_partition",
+      "rows_checked": 6719,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "war_to_fv_mapping_exact",
+      "rows_checked": 9194,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "player_type_follows_available_path",
+      "rows_checked": 9194,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "current_value_unique_player",
+      "rows_checked": 8393,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "current_value_interval_order",
+      "rows_checked": 8393,
+      "status": "pass"
+    }
+  ],
+  "failed": 0,
+  "passed": 18,
+  "report_schema_version": "0.1",
+  "status": "private_preview_model_law_audit_complete",
+  "warnings": [
+    "The nested six-year hurdle repeats two-year hazards approximately; it is not a joint path simulation.",
+    "Organization-neutral value is not a current-team playing-time allocation; team capacity is a separate research view.",
+    "Passing identities does not replace prospective outcome validation after the protected 2026 season is complete."
+  ]
+}
