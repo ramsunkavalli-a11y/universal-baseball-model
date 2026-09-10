@@ -7,6 +7,7 @@ from universal_baseball.injury_return import (
     elapsed_days_band,
     fit_injury_return_references,
     normalize_injury_transaction_payload,
+    score_injury_return_references,
 )
 from universal_baseball.rights_transactions import project_transaction_payload
 
@@ -74,6 +75,13 @@ def test_reference_fit_shrinks_sparse_cells_to_population() -> None:
     cell = fit.references.filter(pl.col("injury_list_type") == "10_day")
     assert 0.5 < cell.item(0, "return_probability") < 1.0
     assert elapsed_days_band(60) == "60_plus"
+
+    scored, metrics = score_injury_return_references(cohort, fit)
+    assert scored.height == cohort.height
+    assert set(metrics) == {"cell_model", "population_baseline"}
+    assert scored.get_column("predicted_return_probability").is_between(
+        0.0, 1.0, closed="both"
+    ).all()
 
 
 def test_normalization_keeps_only_identifiable_injury_events() -> None:

@@ -169,6 +169,13 @@ fit a 2025-only correction. The next calibration challenger must learn a monoton
 mapping on earlier rolling origins and freeze it before later scoring. See the
 [probability calibration result](forecast-probability-calibration-2025-result.md).
 
+The existing injury-return hierarchy now has a true later-period test. Fit on
+2022–2023 and applied unchanged to 2024–2025, broad IL type plus elapsed days beats
+the population mean on return Brier/log loss and availability MAE/RMSE in each year.
+Keep it. Phase 2 may next add age and prior IL recurrence, but both must beat this
+validated baseline and remain cutoff-safe. See the
+[injury-return result](injury-return-out-of-time-result.md).
+
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.

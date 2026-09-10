@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+import math
 import re
 
 import polars as pl
@@ -295,3 +296,82 @@ def fit_injury_return_references(
         ),
         prior_players=prior_players,
     )
+
+
+def score_injury_return_references(
+    cohort: pl.DataFrame, fit: InjuryReturnFit
+) -> tuple[pl.DataFrame, dict[str, dict[str, float | int]]]:
+    """Score frozen IL cells against population-only return and availability means."""
+
+    missing = sorted(set(INJURY_RETURN_COHORT_SCHEMA) - set(cohort.columns))
+    if missing:
+        raise ValueError(f"injury-return scoring cohort missing fields: {missing}")
+    source = cohort.select(list(INJURY_RETURN_COHORT_SCHEMA)).cast(
+        INJURY_RETURN_COHORT_SCHEMA, strict=True
+    )
+    if source.is_empty():
+        raise ValueError("injury-return scoring cohort cannot be empty")
+    population = fit.references.filter(pl.col("reference_level") == "population")
+    if population.height != 1:
+        raise ValueError("injury-return fit requires one population reference")
+    population_probability = float(population.item(0, "return_probability"))
+    population_fraction = float(
+        population.item(0, "mean_remaining_availability_fraction")
+    )
+    cells = fit.references.filter(pl.col("reference_level") != "population")
+    lookup = {
+        (str(row["injury_list_type"]), str(row["elapsed_days_band"])): (
+            float(row["return_probability"]),
+            float(row["mean_remaining_availability_fraction"]),
+        )
+        for row in cells.iter_rows(named=True)
+    }
+    rows = []
+    for row in source.iter_rows(named=True):
+        key = (
+            str(row["injury_list_type"]),
+            elapsed_days_band(int(row["days_on_il_at_cutoff"])),
+        )
+        probability, fraction = lookup.get(
+            key, (population_probability, population_fraction)
+        )
+        rows.append(
+            {
+                **row,
+                "predicted_return_probability": probability,
+                "predicted_remaining_availability_fraction": fraction,
+                "population_return_probability": population_probability,
+                "population_remaining_availability_fraction": population_fraction,
+                "prediction_reference_level": "cell" if key in lookup else "population",
+            }
+        )
+    scored = pl.DataFrame(rows)
+
+    def metrics(probability: str, fraction: str) -> dict[str, float | int]:
+        p = scored.get_column(probability).clip(1e-12, 1.0 - 1e-12)
+        y = scored.get_column("returned_by_season_end").cast(pl.Float64)
+        predicted_fraction = scored.get_column(fraction)
+        actual_fraction = scored.get_column("remaining_season_availability_fraction")
+        error = predicted_fraction - actual_fraction
+        return {
+            "players": scored.height,
+            "brier": float(((p - y) ** 2).mean()),
+            "log_loss": float((-(y * p.log() + (1.0 - y) * (1.0 - p).log())).mean()),
+            "availability_mae": float(error.abs().mean()),
+            "availability_rmse": math.sqrt(float((error**2).mean())),
+            "predicted_return_rate": float(p.mean()),
+            "observed_return_rate": float(y.mean()),
+            "predicted_mean_availability": float(predicted_fraction.mean()),
+            "observed_mean_availability": float(actual_fraction.mean()),
+        }
+
+    return scored.sort(["season", "player_id"]), {
+        "cell_model": metrics(
+            "predicted_return_probability",
+            "predicted_remaining_availability_fraction",
+        ),
+        "population_baseline": metrics(
+            "population_return_probability",
+            "population_remaining_availability_fraction",
+        ),
+    }

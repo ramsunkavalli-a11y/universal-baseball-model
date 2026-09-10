@@ -40,6 +40,12 @@ and pitchers, but both underpredict the observed rate in the 30%–60% forecast 
 No one-season calibration was fitted. Earlier rolling origins are required before a
 monotone calibration challenger can be frozen.
 
+The injury workload hierarchy is now validated out of time. Fit on 2022–2023 and
+scored unchanged on 548 players in 2024–2025, IL type plus elapsed time improves
+return Brier/log loss and remaining-availability MAE/RMSE versus a population-only
+reference in both years. Keep this baseline. Age and prior recurrence are the next
+bounded additions; diagnosis remains deferred until its source is consistent.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

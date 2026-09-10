@@ -1,0 +1,97 @@
+{
+  "annual_validation": {
+    "2024": {
+      "cell_model": {
+        "availability_mae": 0.18252038842137464,
+        "availability_rmse": 0.249641229957798,
+        "brier": 0.15943757946962075,
+        "log_loss": 0.49116169172911095,
+        "observed_mean_availability": 0.12190082644628099,
+        "observed_return_rate": 0.2196969696969697,
+        "players": 264,
+        "predicted_mean_availability": 0.12759925150174878,
+        "predicted_return_rate": 0.22116756889538333
+      },
+      "population_baseline": {
+        "availability_mae": 0.1903095212204621,
+        "availability_rmse": 0.2551792013055686,
+        "brier": 0.17174056044773095,
+        "log_loss": 0.5274665764571628,
+        "observed_mean_availability": 0.12190082644628099,
+        "observed_return_rate": 0.2196969696969697,
+        "players": 264,
+        "predicted_mean_availability": 0.11904300450072139,
+        "predicted_return_rate": 0.20208023774145614
+      }
+    },
+    "2025": {
+      "cell_model": {
+        "availability_mae": 0.18804314011839082,
+        "availability_rmse": 0.26304429066033885,
+        "brier": 0.15965533207023433,
+        "log_loss": 0.4878119387667809,
+        "observed_mean_availability": 0.13257042253521129,
+        "observed_return_rate": 0.23591549295774647,
+        "players": 284,
+        "predicted_mean_availability": 0.13572225805903115,
+        "predicted_return_rate": 0.2315332511687166
+      },
+      "population_baseline": {
+        "availability_mae": 0.19752422788773036,
+        "availability_rmse": 0.2751324459963051,
+        "brier": 0.18140419763580148,
+        "log_loss": 0.5497401752336745,
+        "observed_mean_availability": 0.13257042253521129,
+        "observed_return_rate": 0.23591549295774647,
+        "players": 284,
+        "predicted_mean_availability": 0.11904300450072139,
+        "predicted_return_rate": 0.20208023774145614
+      }
+    }
+  },
+  "cell_model_selected": true,
+  "development_players": 673,
+  "development_seasons": [
+    2022,
+    2023
+  ],
+  "diagnosis_age_recurrence_used": false,
+  "features": [
+    "injury_list_type",
+    "days_on_il_at_cutoff"
+  ],
+  "pooled_validation": {
+    "cell_model": {
+      "availability_mae": 0.18538254441033922,
+      "availability_rmse": 0.2566747253123117,
+      "brier": 0.15955042935752997,
+      "log_loss": 0.48942568836907124,
+      "observed_mean_availability": 0.12743032514930328,
+      "observed_return_rate": 0.2281021897810219,
+      "players": 548,
+      "predicted_mean_availability": 0.1318089848270557,
+      "predicted_return_rate": 0.2265395648180597
+    },
+    "population_baseline": {
+      "availability_mae": 0.19404852978525078,
+      "availability_rmse": 0.2657070487300776,
+      "brier": 0.17674872278607406,
+      "log_loss": 0.5390098283778367,
+      "observed_mean_availability": 0.12743032514930328,
+      "observed_return_rate": 0.2281021897810219,
+      "players": 548,
+      "predicted_mean_availability": 0.1190430045007214,
+      "predicted_return_rate": 0.20208023774145614
+    }
+  },
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "selection_rule": "IL-type/elapsed cells must improve Brier, log loss, availability MAE and availability RMSE versus the development population mean",
+  "status": "out_of_time_injury_return_test_complete",
+  "validation_cell_coverage": 548,
+  "validation_players": 548,
+  "validation_seasons": [
+    2024,
+    2025
+  ]
+}
