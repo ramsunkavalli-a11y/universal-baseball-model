@@ -1,0 +1,41 @@
+{
+  "2026_outcomes_read": false,
+  "contract_path": "docs/prospect-pitcher-linked-2026-confirmation-contract.md",
+  "contract_sha256": "76ddab548d1a2b9231fcbe6cc1a4c29d6148af848ab13d319f977057da701f87",
+  "linked_positive_path_mean_war": 0.20328838799238189,
+  "linked_positive_paths": 1659,
+  "prospect_pitchers": 4171,
+  "report_schema_version": "0.1",
+  "runner_path": "scripts/freeze_prospect_pitcher_linked_2026_confirmation.py",
+  "runner_sha256": "3c14c46a109346e4ce357dd641a31c6f703d23ef42dad5be6949a8c4c87dd3d2",
+  "runs_per_win": 9.773975623911781,
+  "sources": {
+    "docs/prospect-component-uncertainty-result.json": "040042a58cde3aa6c7fe749949b79a0e3d1fd7344029f5fa006c25cfbe7c29d8",
+    "model_artifacts/opportunity-v2-2026-confirmation-forecast-2026-09-09/pitcher-selected.parquet": "633a1f1f9f0c657aad7e2ca2f9743f8a9e8c8d448ac210af443d286c9a48fbae",
+    "model_artifacts/pitcher-aging-2026-confirmation-forecast-2026-09-10/tango-aging.parquet": "940dda76794143447b16c962e3b97398cc6d1fc21fd5183332ce03823829f1ef",
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet": "2b623e7fcdcf74803f26f02c1ddc998dd543ef9fdf58c50cfef7934e74612c8d",
+    "reports/generated/prospect-outcome-quality-2009-2025/post-debut-pitcher-performance-paths.parquet": "efdb4e2061554c925a0c2dcea9e7d0902fdb1414739f694d4b6c2ae5cb6bf3db"
+  },
+  "status": "frozen_before_final_2026_outcomes",
+  "storage": {
+    "linked_positive_paths": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "7cd45d711cd35da398948bc9b637339bd804cfe247cdc8226c5943533870de2c",
+      "file_size_bytes": 22651,
+      "path": "model_artifacts\\prospect-pitcher-linked-2026-confirmation-forecast-2026-09-10\\linked-positive-paths.parquet",
+      "row_count": 1659,
+      "schema_sha256": "eafed100e630a5ad15a97cd6fe1ca911b8dfd5957d464b1cffd37378351883b0",
+      "table_name": "prospect_pitcher_linked_2026_positive_paths"
+    },
+    "prospects": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "930c58ec45e41f846ab835c2373349ea2b0f0eb02c6e6b1dd9e6bbb9c339e2bd",
+      "file_size_bytes": 156816,
+      "path": "model_artifacts\\prospect-pitcher-linked-2026-confirmation-forecast-2026-09-10\\prospect-forecast-inputs.parquet",
+      "row_count": 4171,
+      "schema_sha256": "c5254a65468c58b5404cf8e1b0e96fe1ea0af53de2fd009bd81c879de9518819",
+      "table_name": "prospect_pitcher_linked_2026_forecast_inputs"
+    }
+  },
+  "target_season": 2026
+}

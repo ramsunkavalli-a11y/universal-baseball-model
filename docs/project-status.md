@@ -41,6 +41,12 @@ retained only as a description of typical absolute error.
 The protected opportunity package now hashes that exact contract, and the future
 evaluator refuses a changed contract before reading outcomes.
 
+The first fresh linked pitcher confirmation input is also frozen. The protected package
+holds 4,171 non-debuted 2025-snapshot pitchers, 1,659 positive first-year historical
+paths, the shared opportunity probabilities, and every incumbent rate/variance field
+needed for an equal distribution comparison. It is hash-bound to its runner, inputs
+and contract and contains no 2026 outcome. Score only after final official 2026 totals.
+
 The first Phase 2 survivor-bias test is complete. An age-by-prior-workload pitcher
 return model materially improves 2022–2025 probability scores over one population
 rate. Using it to reweight observed adjacent-season pairs slightly improves the fitted

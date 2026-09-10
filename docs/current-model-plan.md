@@ -197,6 +197,13 @@ boundary. Full hurdle-count likelihood remains the primary distribution score;
 expected PA/BF now uses mean squared error and aggregate bias rather than a median-
 targeting MAE veto. The 3,907 hitter and 5,206 pitcher forecast rows are unchanged.
 
+A genuinely prospective pitcher-prospect linked-path test is now frozen for final
+2026 scoring. It contains 4,171 non-debuted pitchers from the protected 2025 snapshot,
+the incumbent's frozen opportunity/Tango rate uncertainty, and 1,659 cutoff-valid
+positive first-year historical pitcher paths. No 2026 outcome was read. After official
+regular-season totals stabilize, compare the two complete distributions by CRPS and
+their expected WAR by paired squared error under the fixed contract.
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

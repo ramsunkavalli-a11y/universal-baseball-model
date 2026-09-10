@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,520 passed. Four older research-contract tests fail because their
+Latest full suite: 1,521 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -185,3 +185,9 @@ The protected 2026 opportunity gate now follows the same rule without changing a
 forecast row: full hurdle-count likelihood remains primary, and expected PA/BF is
 guarded by mean squared error plus aggregate bias. MAE remains descriptive only.
 The forecast package and future evaluator now verify the amended contract hash.
+
+A protected fresh pitcher-prospect test is ready for the end of 2026: 4,171 non-
+debuted pitcher IDs and 1,659 positive historical first-year paths are frozen with the
+incumbent opportunity, Tango rate and uncertainty inputs. No 2026 outcome was read.
+Its contract requires paired CRPS and expected-WAR squared-error wins; do not score it
+on partial-season data.
