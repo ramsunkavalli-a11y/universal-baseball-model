@@ -26,6 +26,9 @@ Status: clean handoff; private preview works, publication remains blocked.
 - Exact home/away component splits then passed a team/venue persistence test, but
   failed the future MLB-player gate. Hitters lost 2025 log loss; pitchers lost 2025
   Brier. Keep the level-only player translation and do not rescue-tune this result.
+- Controlling actual home/road opponent mix does not rescue the player gate; the same
+  hitter log-loss and pitcher Brier reversals remain. Park work is closed on these
+  seasons until exact matchup exposure, venue-era evidence, or a new season exists.
 - The first coherent prospect-state challenger predicts four exclusive next-season
   states. It fails for hitters and is mixed for pitchers, so the direct cap remains.
   Its main design lesson is to retain ordered hazards and condition later transitions
@@ -117,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,508 passed. Four older research-contract tests fail because their
+Latest full suite: 1,509 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 

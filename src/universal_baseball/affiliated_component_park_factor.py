@@ -16,6 +16,7 @@ def build_component_park_observations(
     component_columns: tuple[str, ...],
     minimum_split_exposure: int = 100,
     pseudocount: float = 0.5,
+    opponent_adjustments: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build one centered home-minus-away CLR observation per team-season."""
 
@@ -92,6 +93,31 @@ def build_component_park_observations(
         })
         rows.append(base)
     result = pl.DataFrame(rows)
+    if opponent_adjustments is not None:
+        required_adjustments = {
+            "season", "sport_id", "team_id",
+            *(f"opponent_effect_{value}" for value in component_columns),
+        }
+        if missing := sorted(required_adjustments - set(opponent_adjustments.columns)):
+            raise ValueError(f"opponent adjustments missing fields: {missing}")
+        result = result.join(
+            opponent_adjustments.select(*required_adjustments),
+            on=["season", "sport_id", "team_id"], how="left", validate="1:1",
+        )
+        if result.filter(
+            pl.any_horizontal(*(
+                pl.col(f"opponent_effect_{value}").is_null()
+                for value in component_columns
+            ))
+        ).height:
+            raise ValueError("component park observations lack opponent adjustments")
+        result = result.with_columns(*[
+            (
+                pl.col(f"raw_effect_{value}")
+                - pl.col(f"opponent_effect_{value}")
+            ).alias(f"raw_effect_{value}")
+            for value in component_columns
+        ])
     # Remove the weighted league-season mean. This prevents league/ball conditions
     # from being mislabeled as physical venue effects.
     for component in component_columns:
@@ -108,6 +134,90 @@ def build_component_park_observations(
             )
         ).drop(mean_name)
     return result.sort(["season", "sport_id", "venue_id", "team_id"])
+
+
+def build_schedule_opponent_adjustments(
+    games: pl.DataFrame,
+    opponent_components: pl.DataFrame,
+    *,
+    exposure_column: str,
+    component_columns: tuple[str, ...],
+    pseudocount: float = 0.5,
+) -> pl.DataFrame:
+    """Estimate home-minus-road opponent mix from actual team schedules."""
+
+    required_games = {
+        "season", "sport_id", "home_team_id", "away_team_id"
+    }
+    if missing := sorted(required_games - set(games.columns)):
+        raise ValueError(f"opponent schedule missing fields: {missing}")
+    required_profile = {
+        "season", "sport_id", "team_id", exposure_column, *component_columns
+    }
+    if missing := sorted(required_profile - set(opponent_components.columns)):
+        raise ValueError(f"opponent component source missing fields: {missing}")
+    profiles = opponent_components.group_by("season", "sport_id", "team_id").agg(
+        pl.col(exposure_column).sum().alias(exposure_column),
+        *(pl.col(value).sum().alias(value) for value in component_columns),
+    )
+    if profiles.filter(
+        (pl.sum_horizontal(*component_columns) != pl.col(exposure_column))
+        | pl.any_horizontal(*(pl.col(value) < 0 for value in component_columns))
+    ).height:
+        raise ValueError("opponent component profiles do not reconcile")
+    profiles = profiles.with_columns(*[
+        (
+            (pl.col(value) + pseudocount)
+            / (pl.col(exposure_column) + pseudocount * len(component_columns))
+        ).log().alias(f"_log_{value}")
+        for value in component_columns
+    ]).with_columns(*[
+        (
+            pl.col(f"_log_{value}")
+            - pl.mean_horizontal(*(f"_log_{other}" for other in component_columns))
+        ).alias(f"opponent_clr_{value}")
+        for value in component_columns
+    ]).select(
+        "season", "sport_id", pl.col("team_id").alias("opponent_team_id"),
+        *(f"opponent_clr_{value}" for value in component_columns),
+    )
+    matchups = pl.concat([
+        games.select(
+            "season", "sport_id", pl.col("home_team_id").alias("team_id"),
+            pl.col("away_team_id").alias("opponent_team_id"),
+            pl.lit("h").alias("split_code"),
+        ),
+        games.select(
+            "season", "sport_id", pl.col("away_team_id").alias("team_id"),
+            pl.col("home_team_id").alias("opponent_team_id"),
+            pl.lit("a").alias("split_code"),
+        ),
+    ]).join(
+        profiles, on=["season", "sport_id", "opponent_team_id"], how="inner",
+        validate="m:1",
+    ).group_by("season", "sport_id", "team_id", "split_code").agg(
+        pl.len().alias("matched_games"),
+        *(pl.col(f"opponent_clr_{value}").mean() for value in component_columns),
+    )
+    home = matchups.filter(pl.col("split_code") == "h").drop("split_code").rename({
+        "matched_games": "home_matched_games",
+        **{f"opponent_clr_{value}": f"home_opponent_{value}" for value in component_columns},
+    })
+    away = matchups.filter(pl.col("split_code") == "a").drop("split_code").rename({
+        "matched_games": "away_matched_games",
+        **{f"opponent_clr_{value}": f"away_opponent_{value}" for value in component_columns},
+    })
+    return home.join(
+        away, on=["season", "sport_id", "team_id"], how="inner", validate="1:1"
+    ).with_columns(*[
+        (
+            pl.col(f"home_opponent_{value}") - pl.col(f"away_opponent_{value}")
+        ).alias(f"opponent_effect_{value}")
+        for value in component_columns
+    ]).select(
+        "season", "sport_id", "team_id", "home_matched_games",
+        "away_matched_games", *(f"opponent_effect_{value}" for value in component_columns),
+    ).sort(["season", "sport_id", "team_id"])
 
 
 def fit_component_park_factors(

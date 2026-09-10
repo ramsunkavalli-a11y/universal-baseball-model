@@ -50,6 +50,14 @@ mixed results. See the [component source](affiliated-home-away-component-source-
 [component factor test](affiliated-component-park-factor-result.md), and
 [player test](affiliated-player-park-adjustment-result.md).
 
+Actual schedule opponent mix is now tested too. Adjusting each team for the component
+quality of its home and road opponents preserves the outer venue signal but does not
+rescue future-player accuracy: hitters still lose 2025 log loss and pitchers still
+lose 2025 Brier. Close park work on this window. A later challenger needs exact
+matchup PA/BF, supported venue eras, or a new season—not another factor-strength
+search. See the [opponent factor result](affiliated-opponent-adjusted-park-factor-result.md)
+and [opponent player result](affiliated-opponent-adjusted-player-park-result.md).
+
 The next injury additions are also resolved. Broad age and recent-IL-recurrence
 cells, partially pooled toward the validated IL-type/elapsed baseline, failed the
 2024 four-metric gate. They are not promoted and were not tuned against 2025. Keep

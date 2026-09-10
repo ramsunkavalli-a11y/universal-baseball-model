@@ -14,7 +14,10 @@ def _split(code: str, group: str) -> dict:
             "triples": 1, "hitByPitch": 1,
         })
     else:
-        stat.update({"battersFaced": 35, "hitBatsmen": 1})
+        stat.update({
+            "battersFaced": 35, "hitBatsmen": 1, "hits": 6,
+            "doubles": 1, "triples": 0,
+        })
     return {
         "split": {"code": code}, "team": {"id": 10},
         "player": {"id": 20}, "stat": stat,

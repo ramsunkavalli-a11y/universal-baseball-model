@@ -1,0 +1,208 @@
+{
+  "boundary": "Opponent component quality is schedule-weighted by games, not exact matchup PA/BF; league-season centering and venue pooling remain active.",
+  "confirmation_season": 2025,
+  "current_2026_used": false,
+  "decision": {
+    "player_test_authorized": true,
+    "production_changed": false
+  },
+  "development_season": 2024,
+  "hitter": {
+    "development_grid": {
+      "100.0": {
+        "baseline_brier": 0.000832458073578533,
+        "baseline_log_loss": 1.1117933244271005,
+        "candidate_brier": 0.0008829775021555861,
+        "candidate_log_loss": 1.1118045503952876,
+        "home_exposure": 383560,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "1000.0": {
+        "baseline_brier": 0.000832458073578533,
+        "baseline_log_loss": 1.1117933244271005,
+        "candidate_brier": 0.0008376519750932175,
+        "candidate_log_loss": 1.1115701441989922,
+        "home_exposure": 383560,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "250.0": {
+        "baseline_brier": 0.000832458073578533,
+        "baseline_log_loss": 1.1117933244271005,
+        "candidate_brier": 0.0008724317432557544,
+        "candidate_log_loss": 1.1117462374876443,
+        "home_exposure": 383560,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "2500.0": {
+        "baseline_brier": 0.000832458073578533,
+        "baseline_log_loss": 1.1117933244271005,
+        "candidate_brier": 0.0008036529418158079,
+        "candidate_log_loss": 1.1114201470140426,
+        "home_exposure": 383560,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "500.0": {
+        "baseline_brier": 0.000832458073578533,
+        "baseline_log_loss": 1.1117933244271005,
+        "candidate_brier": 0.0008583112385803985,
+        "candidate_log_loss": 1.111671910955157,
+        "home_exposure": 383560,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "5000.0": {
+        "baseline_brier": 0.000832458073578533,
+        "baseline_log_loss": 1.1117933244271005,
+        "candidate_brier": 0.0007826023209629914,
+        "candidate_log_loss": 1.1113477742060571,
+        "home_exposure": 383560,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      }
+    },
+    "opponent_adjustment_team_seasons": 1010,
+    "outer_gate_passed": true,
+    "park_observations": 1010,
+    "selected_development": {
+      "baseline_brier": 0.000832458073578533,
+      "baseline_log_loss": 1.1117933244271005,
+      "candidate_brier": 0.0007826023209629914,
+      "candidate_log_loss": 1.1113477742060571,
+      "home_exposure": 383560,
+      "season": 2024,
+      "team_venue_cells": 201,
+      "venues": 180
+    },
+    "selected_prior_exposure": 5000.0,
+    "untouched_confirmation": {
+      "baseline_brier": 0.0009763826302879176,
+      "baseline_log_loss": 1.1133023403071378,
+      "candidate_brier": 0.0008694394948936628,
+      "candidate_log_loss": 1.1128651353886228,
+      "home_exposure": 385300,
+      "season": 2025,
+      "team_venue_cells": 202,
+      "venues": 180
+    }
+  },
+  "pitcher": {
+    "development_grid": {
+      "100.0": {
+        "baseline_brier": 0.0011010943244888873,
+        "baseline_log_loss": 1.0324106869699807,
+        "candidate_brier": 0.0010476681806759719,
+        "candidate_log_loss": 1.032178733730419,
+        "home_exposure": 400725,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "1000.0": {
+        "baseline_brier": 0.0011010943244888873,
+        "baseline_log_loss": 1.0324106869699807,
+        "candidate_brier": 0.0010004061152301747,
+        "candidate_log_loss": 1.032047451650232,
+        "home_exposure": 400725,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "250.0": {
+        "baseline_brier": 0.0011010943244888873,
+        "baseline_log_loss": 1.0324106869699807,
+        "candidate_brier": 0.001036082639818172,
+        "candidate_log_loss": 1.0321470309706515,
+        "home_exposure": 400725,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "2500.0": {
+        "baseline_brier": 0.0011010943244888873,
+        "baseline_log_loss": 1.0324106869699807,
+        "candidate_brier": 0.0009709065319934539,
+        "candidate_log_loss": 1.0319672822438983,
+        "home_exposure": 400725,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "500.0": {
+        "baseline_brier": 0.0011010943244888873,
+        "baseline_log_loss": 1.0324106869699807,
+        "candidate_brier": 0.0010210841513848758,
+        "candidate_log_loss": 1.0321053446618436,
+        "home_exposure": 400725,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      },
+      "5000.0": {
+        "baseline_brier": 0.0011010943244888873,
+        "baseline_log_loss": 1.0324106869699807,
+        "candidate_brier": 0.0009601019130943585,
+        "candidate_log_loss": 1.0319447351424693,
+        "home_exposure": 400725,
+        "season": 2024,
+        "team_venue_cells": 201,
+        "venues": 180
+      }
+    },
+    "opponent_adjustment_team_seasons": 1010,
+    "outer_gate_passed": true,
+    "park_observations": 1010,
+    "selected_development": {
+      "baseline_brier": 0.0011010943244888873,
+      "baseline_log_loss": 1.0324106869699807,
+      "candidate_brier": 0.0009601019130943585,
+      "candidate_log_loss": 1.0319447351424693,
+      "home_exposure": 400725,
+      "season": 2024,
+      "team_venue_cells": 201,
+      "venues": 180
+    },
+    "selected_prior_exposure": 5000.0,
+    "untouched_confirmation": {
+      "baseline_brier": 0.0012249656068475947,
+      "baseline_log_loss": 1.0283990733838353,
+      "candidate_brier": 0.00105153872951174,
+      "candidate_log_loss": 1.0278412971010584,
+      "home_exposure": 402575,
+      "season": 2025,
+      "team_venue_cells": 202,
+      "venues": 180
+    }
+  },
+  "report_schema_version": "0.1",
+  "status": "opponent_adjusted_component_park_outer_test_complete",
+  "storage": {
+    "hitter": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "78e732abc42c3e23e759bc1b7bca113816ec8e214615c1f769ec894a589da669",
+      "file_size_bytes": 14422,
+      "path": "reports\\generated\\affiliated-opponent-adjusted-park-factors\\hitter-factors-through-2024.parquet",
+      "row_count": 1358,
+      "schema_sha256": "435dfced9e1b57bfa52b6f3a5214427581c7ef9e3349762b59785c4df1207f16",
+      "table_name": "opponent_adjusted_hitter_park_factors_through_2024"
+    },
+    "pitcher": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "a48ff3a99d20ed491fb2d780e63d38db330c007610b897dd77813e758834b33c",
+      "file_size_bytes": 11376,
+      "path": "reports\\generated\\affiliated-opponent-adjusted-park-factors\\pitcher-factors-through-2024.parquet",
+      "row_count": 970,
+      "schema_sha256": "435dfced9e1b57bfa52b6f3a5214427581c7ef9e3349762b59785c4df1207f16",
+      "table_name": "opponent_adjusted_pitcher_park_factors_through_2024"
+    }
+  }
+}

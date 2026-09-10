@@ -35,6 +35,9 @@ HITTER_FIELDS = {
 }
 PITCHER_FIELDS = {
     "battersFaced": "batters_faced",
+    "hits": "hits",
+    "doubles": "doubles",
+    "triples": "triples",
     "strikeOuts": "strike_outs",
     "baseOnBalls": "base_on_balls",
     "intentionalWalks": "intentional_walks",

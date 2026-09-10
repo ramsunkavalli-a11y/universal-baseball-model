@@ -134,6 +134,12 @@ the pitcher adjustment reverses on 2025 Brier. Neither changes production. The n
 credible park challenger requires explicit opponent/schedule control or supported
 venue eras, not another shrinkage search on the disclosed seasons.
 
+An actual-schedule opponent correction is also complete. It controls each team for
+the component quality of the opponents on its home and road schedules and preserves
+the repeatable venue signal. It does not change the future-player verdict: hitters
+still lose 2025 log loss and pitchers still lose 2025 Brier. Close this park family
+until exact matchup exposure, venue-era evidence or a new outcome season is available.
+
 The prospect career-state replacement has also begun. A mutually exclusive
 next-season multinomial was tested against separately fit ordered cumulative logits
 using the same features and rolling 2024/2025 targets. It failed for hitters and was

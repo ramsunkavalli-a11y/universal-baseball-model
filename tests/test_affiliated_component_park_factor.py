@@ -3,6 +3,7 @@ import polars as pl
 from universal_baseball.affiliated_component_park_factor import (
     build_component_park_observations,
     build_park_neutral_player_rows,
+    build_schedule_opponent_adjustments,
     fit_component_park_factors,
     score_component_park_factors,
 )
@@ -72,3 +73,20 @@ def test_player_neutralization_changes_home_only_and_preserves_exposure() -> Non
     assert result["pa"] == 200
     assert result["hit"] < 50  # the hitter-friendly home split is neutralized
     assert abs(result["hit"] + result["out"] - 200) < 1e-9
+
+
+def test_schedule_opponent_adjustment_uses_home_and_away_mix() -> None:
+    games = pl.DataFrame([
+        {"season": 2024, "sport_id": 11, "home_team_id": 1, "away_team_id": 2},
+        {"season": 2024, "sport_id": 11, "home_team_id": 3, "away_team_id": 1},
+    ])
+    opponents = pl.DataFrame([
+        {"season": 2024, "sport_id": 11, "team_id": 2, "pa": 100, "hit": 10, "out": 90},
+        {"season": 2024, "sport_id": 11, "team_id": 3, "pa": 100, "hit": 40, "out": 60},
+    ])
+    result = build_schedule_opponent_adjustments(
+        games, opponents, exposure_column="pa", component_columns=COMPONENTS
+    ).filter(pl.col("team_id") == 1)
+
+    assert result.height == 1
+    assert result.item(0, "opponent_effect_hit") < 0

@@ -94,11 +94,15 @@ def _fold(
     split_source: pl.DataFrame, mlb_source: pl.DataFrame, context: pl.DataFrame,
     *, target_season: int, exposure: str, components: tuple[str, ...],
     regression_exposure: float, park_prior: float,
+    park_observations: pl.DataFrame | None = None,
 ) -> dict[str, object]:
     cutoff = target_season - 1
-    observations = build_component_park_observations(
-        split_source, context, exposure_column=exposure, component_columns=components
-    )
+    observations = park_observations
+    if observations is None:
+        observations = build_component_park_observations(
+            split_source, context, exposure_column=exposure,
+            component_columns=components,
+        )
     factors = fit_component_park_factors(
         observations, through_season=cutoff,
         component_columns=components, prior_exposure=park_prior,
