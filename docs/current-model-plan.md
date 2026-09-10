@@ -169,6 +169,11 @@ and uncertain MSE gains. Reject the ridge as a current replacement. Preserve the
 evidence that core features improve typical-player MAE, then move to a predeclared
 positive-tail hurdle rather than tuning this conditional mean.
 
+The next exact test is now frozen in the [positive-WAR hurdle plan](prospect-positive-war-hurdle-plan.md).
+It uses the supported `0.25` two-year component-WAR threshold, one fixed strongly
+regularized logistic model, unchanged 2018 group means and unchanged arrival odds.
+It must pass probability and continuous-value checks across 2021-2023 without refit.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and
