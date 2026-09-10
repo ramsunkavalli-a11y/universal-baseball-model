@@ -27,3 +27,9 @@ Against the cutoff-reconstructed incumbent, the arrival-only path changes MSE by
 [-0.020544, +0.002835]. The incumbent
 uses only information available through 2021, including level translations fit on
 2018 and 2021, the deployed 800-BF regression, and Tango component aging.
+
+The common-cohort guardrail also shows that the small RMSE gain is not a broad error
+gain: MAE worsens from 0.154 to
+0.199, and its paired interval is entirely unfavorable.
+The path remains rejected pending a candidate that handles arrivals without adding
+too much value to the much larger non-arrival group.

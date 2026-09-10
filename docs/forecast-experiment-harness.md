@@ -28,3 +28,23 @@ the machine-readable result. Scores and selected candidates are unchanged, so no
 player value changed. The audit remains retrospective development evidence and still
 requires a later untouched confirmation.
 
+The same common-cohort layer now supports continuous outcomes. It records mean scale,
+bias, MAE and RMSE, then bootstraps paired squared-error and absolute-error differences.
+The linked career replays expose why both views matter:
+
+- the arrival-only pitcher path improves RMSE from `0.558` to `0.551`, but worsens MAE
+  from `0.154` to `0.199`; the paired MAE interval is wholly unfavorable;
+- the arrival-only hitter path improves MAE from `0.310` to `0.220`, but worsens RMSE
+  from `0.955` to `0.978` and worsens absolute mean bias.
+
+Both therefore fail the reusable promotion gate. This protects against optimizing the
+many zero/failure outcomes at the expense of the smaller group with material MLB WAR,
+or optimizing the tail while making typical player error worse.
+
+The split is concrete. For pitchers who later arrived, the pooled path lowers RMSE
+`1.574 -> 1.509`; for the 3,201 non-arrivals it worsens RMSE `0.092 -> 0.166` by
+assigning too much expected value. For hitters, the pooled path greatly reduces error
+on 2,841 non-arrivals (`0.289 -> 0.087`) but predicts only `0.185` WAR for arrivals
+who actually averaged `1.117`, worsening their RMSE `2.556 -> 2.718`. The next useful
+career challenger must improve the arrival/quality dependence, not choose one side of
+this tradeoff.

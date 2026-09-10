@@ -24,6 +24,12 @@ from universal_baseball.prospect_arrival import (
     fit_arrival_model,
     predict_arrival,
 )
+from universal_baseball.prospect_arrival_validation import (
+    common_continuous_cohort_fingerprint,
+    continuous_promotion_gate,
+    continuous_scores,
+    paired_continuous_bootstrap_difference,
+)
 from universal_baseball.storage import sha256_file
 
 
@@ -311,6 +317,35 @@ def main() -> int:
         "tier_linked_vs_arrival_only": _bootstrap(evaluated, "tier_linked_prediction", "arrival_only_prediction"),
         "arrival_only_vs_zero": _bootstrap(evaluated, "arrival_only_prediction", "zero_prediction"),
     }
+    observed_values = evaluated["observed_four_year_component_war"].to_numpy()
+    incumbent_values = evaluated["historical_incumbent_prediction"].to_numpy()
+    candidate_values = evaluated["arrival_only_prediction"].to_numpy()
+    continuous_paired = paired_continuous_bootstrap_difference(
+        observed_values, incumbent_values, candidate_values
+    )
+    continuous_incumbent = continuous_scores(observed_values, incumbent_values)
+    continuous_candidate = continuous_scores(observed_values, candidate_values)
+    continuous_validation = {
+        "cohort_fingerprint": common_continuous_cohort_fingerprint(
+            evaluated["player_id"].to_numpy(),
+            observed_values,
+            {
+                "historical_incumbent": incumbent_values,
+                "arrival_only_path": candidate_values,
+                "tier_linked_path": evaluated["tier_linked_prediction"].to_numpy(),
+            },
+        ),
+        "incumbent": continuous_incumbent,
+        "candidate": continuous_candidate,
+        "paired_difference": continuous_paired,
+        "promotion_gate": continuous_promotion_gate(
+            continuous_incumbent,
+            continuous_candidate,
+            continuous_paired,
+            subgroup_review_passed=False,
+            fresh_confirmation=False,
+        ),
+    }
     subgroups = []
     for group in (
         "level_tier",
@@ -349,6 +384,7 @@ def main() -> int:
         "path_library_cutoff": "window_end_year <= 2021",
         "metrics": metrics,
         "paired_mse_bootstrap": comparisons,
+        "continuous_validation_harness": continuous_validation,
         "subgroups": subgroups,
         "decision": "reject_linked_hitter_replacement_retain_incumbent",
         "boundaries": {
@@ -381,6 +417,12 @@ The arrival-only linked path changes MSE versus the cutoff-reconstructed incumbe
 {comparison['candidate_minus_baseline_mse']:+.6f}, with a player-bootstrap 95% interval
 of [{comparison['p025']:+.6f}, {comparison['p975']:+.6f}]. The 2021 cohort has already
 been used in development, so this cannot promote a model or change current values.
+
+The common-cohort guardrail finds the opposite metric tradeoff from pitchers: MAE
+improves from {continuous_incumbent['mae']:.3f} to
+{continuous_candidate['mae']:.3f}, but RMSE and absolute mean bias worsen. The path
+mostly improves the large non-arrival group while underpredicting the smaller group
+that reaches MLB, so it remains rejected.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)

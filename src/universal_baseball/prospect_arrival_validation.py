@@ -131,6 +131,117 @@ def common_cohort_fingerprint(
     ).hexdigest()
 
 
+def continuous_scores(
+    observed: np.ndarray, prediction: np.ndarray
+) -> dict[str, float | int]:
+    """Return scale, bias, MAE, and RMSE on one fixed continuous-outcome cohort."""
+
+    y = np.asarray(observed, dtype=float)
+    p = np.asarray(prediction, dtype=float)
+    if y.ndim != 1 or p.shape != y.shape or y.size == 0:
+        raise ValueError("observed and prediction must be equal nonempty vectors")
+    if not np.isfinite(y).all() or not np.isfinite(p).all():
+        raise ValueError("continuous outcomes and predictions must be finite")
+    error = p - y
+    return {
+        "players": int(y.size),
+        "observed_mean": float(y.mean()),
+        "predicted_mean": float(p.mean()),
+        "bias": float(error.mean()),
+        "mae": float(np.abs(error).mean()),
+        "rmse": float(np.sqrt(np.mean(error**2))),
+    }
+
+
+def common_continuous_cohort_fingerprint(
+    player_ids: np.ndarray, observed: np.ndarray, predictions: dict[str, np.ndarray]
+) -> str:
+    """Validate common continuous-outcome rows and hash the evaluation cohort."""
+
+    ids = np.asarray(player_ids)
+    y = np.asarray(observed, dtype=float)
+    if ids.ndim != 1 or ids.size == 0 or y.shape != ids.shape:
+        raise ValueError("player IDs and outcomes must be equal nonempty vectors")
+    if np.unique(ids).size != ids.size:
+        raise ValueError("evaluation player IDs must be unique")
+    if not predictions:
+        raise ValueError("at least one prediction vector is required")
+    for model_id, prediction in predictions.items():
+        if np.asarray(prediction).shape != y.shape:
+            raise ValueError(f"{model_id} does not use the common evaluation cohort")
+        continuous_scores(y, np.asarray(prediction, dtype=float))
+    rows = sorted((str(player_id), float(outcome)) for player_id, outcome in zip(ids, y))
+    return sha256(
+        json.dumps(rows, separators=(",", ":")).encode()
+    ).hexdigest()
+
+
+def paired_continuous_bootstrap_difference(
+    observed: np.ndarray,
+    incumbent_prediction: np.ndarray,
+    candidate_prediction: np.ndarray,
+    *,
+    resamples: int = 2_000,
+    seed: int = 20260910,
+) -> dict[str, object]:
+    """Bootstrap candidate-minus-incumbent MSE and absolute-error differences."""
+
+    if resamples < 100:
+        raise ValueError("at least 100 bootstrap resamples are required")
+    y = np.asarray(observed, dtype=float)
+    incumbent = np.asarray(incumbent_prediction, dtype=float)
+    candidate = np.asarray(candidate_prediction, dtype=float)
+    continuous_scores(y, incumbent)
+    continuous_scores(y, candidate)
+    mse_delta = (candidate - y) ** 2 - (incumbent - y) ** 2
+    mae_delta = np.abs(candidate - y) - np.abs(incumbent - y)
+    rng = np.random.default_rng(seed)
+    indices = rng.integers(0, y.size, size=(resamples, y.size))
+
+    def summary(values: np.ndarray) -> dict[str, float]:
+        samples = values[indices].mean(axis=1)
+        return {
+            "difference": float(values.mean()),
+            "ci_low": float(np.quantile(samples, 0.025)),
+            "ci_high": float(np.quantile(samples, 0.975)),
+            "probability_candidate_better": float(np.mean(samples < 0.0)),
+        }
+
+    return {
+        "resamples": resamples,
+        "mse": summary(mse_delta),
+        "mae": summary(mae_delta),
+    }
+
+
+def continuous_promotion_gate(
+    incumbent_scores: dict[str, float | int],
+    candidate_scores: dict[str, float | int],
+    paired_difference: dict[str, object],
+    *,
+    subgroup_review_passed: bool,
+    fresh_confirmation: bool,
+) -> dict[str, object]:
+    """Require accuracy, scale, subgroup, and fresh-confirmation evidence."""
+
+    reasons: list[str] = []
+    for score in ("mse", "mae"):
+        result = paired_difference.get(score)
+        if not isinstance(result, dict):
+            raise ValueError(f"paired result is missing {score}")
+        if float(result["difference"]) >= 0:
+            reasons.append(f"{score} point estimate did not improve")
+        if float(result["ci_high"]) >= 0:
+            reasons.append(f"{score} paired interval includes no improvement")
+    if abs(float(candidate_scores["bias"])) > abs(float(incumbent_scores["bias"])):
+        reasons.append("absolute forecast bias worsened")
+    if not subgroup_review_passed:
+        reasons.append("supported-subgroup review did not pass")
+    if not fresh_confirmation:
+        reasons.append("fresh confirmation is still required")
+    return {"promote": not reasons, "reasons": reasons}
+
+
 def promotion_gate(
     paired_difference: dict[str, object],
     *,

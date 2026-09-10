@@ -5,8 +5,12 @@ from universal_baseball.prospect_arrival_validation import (
     ForecastExperimentProtocol,
     calibration_diagnostics,
     common_cohort_fingerprint,
+    common_continuous_cohort_fingerprint,
     completed_evaluation_years,
+    continuous_promotion_gate,
+    continuous_scores,
     paired_bootstrap_difference,
+    paired_continuous_bootstrap_difference,
     promotion_gate,
     proper_scores,
     select_nested_candidate,
@@ -137,3 +141,49 @@ def test_promotion_requires_both_scores_and_fresh_supported_confirmation() -> No
     )
     assert not held["promote"]
     assert held["reasons"] == ["fresh confirmation is still required"]
+
+
+def test_continuous_guardrails_reward_better_common_cohort_forecast() -> None:
+    ids = np.arange(200)
+    observed = np.tile(np.array([0.0, 1.0, 2.0, 3.0]), 50)
+    incumbent = observed + np.tile(np.array([1.0, -1.0]), 100)
+    candidate = observed + np.tile(np.array([0.25, -0.25]), 100)
+    fingerprint = common_continuous_cohort_fingerprint(
+        ids,
+        observed,
+        {"incumbent": incumbent, "candidate": candidate},
+    )
+    assert len(fingerprint) == 64
+    incumbent_scores = continuous_scores(observed, incumbent)
+    candidate_scores = continuous_scores(observed, candidate)
+    paired = paired_continuous_bootstrap_difference(
+        observed, incumbent, candidate, resamples=200, seed=9
+    )
+    assert paired["mse"]["ci_high"] < 0
+    assert paired["mae"]["ci_high"] < 0
+    assert continuous_promotion_gate(
+        incumbent_scores,
+        candidate_scores,
+        paired,
+        subgroup_review_passed=True,
+        fresh_confirmation=True,
+    )["promote"]
+
+
+def test_continuous_gate_rejects_bias_damage_and_missing_confirmation() -> None:
+    incumbent = {"bias": 0.05}
+    candidate = {"bias": 0.10}
+    paired = {
+        "mse": {"difference": -0.1, "ci_high": -0.01},
+        "mae": {"difference": -0.1, "ci_high": -0.01},
+    }
+    result = continuous_promotion_gate(
+        incumbent,
+        candidate,
+        paired,
+        subgroup_review_passed=True,
+        fresh_confirmation=False,
+    )
+    assert not result["promote"]
+    assert "absolute forecast bias worsened" in result["reasons"]
+    assert "fresh confirmation is still required" in result["reasons"]

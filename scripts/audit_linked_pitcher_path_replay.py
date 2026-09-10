@@ -26,6 +26,12 @@ from universal_baseball.prospect_arrival import (
     fit_arrival_model,
     predict_arrival,
 )
+from universal_baseball.prospect_arrival_validation import (
+    common_continuous_cohort_fingerprint,
+    continuous_promotion_gate,
+    continuous_scores,
+    paired_continuous_bootstrap_difference,
+)
 from universal_baseball.storage import sha256_file
 
 
@@ -546,6 +552,35 @@ def main() -> int:
     linked_vs_incumbent = _paired_bootstrap(
         evaluated, "linked_predicted_war", "historical_incumbent_prediction"
     )
+    observed_values = evaluated["observed_four_year_component_war"].to_numpy()
+    incumbent_values = evaluated["historical_incumbent_prediction"].to_numpy()
+    pooled_values = evaluated["arrival_only_pooled_path_prediction"].to_numpy()
+    continuous_paired = paired_continuous_bootstrap_difference(
+        observed_values, incumbent_values, pooled_values
+    )
+    continuous_incumbent = continuous_scores(observed_values, incumbent_values)
+    continuous_pooled = continuous_scores(observed_values, pooled_values)
+    continuous_validation = {
+        "cohort_fingerprint": common_continuous_cohort_fingerprint(
+            evaluated["player_id"].to_numpy(),
+            observed_values,
+            {
+                "historical_incumbent": incumbent_values,
+                "arrival_only_pooled_path": pooled_values,
+                "tier_linked_path": evaluated["linked_predicted_war"].to_numpy(),
+            },
+        ),
+        "incumbent": continuous_incumbent,
+        "candidate": continuous_pooled,
+        "paired_difference": continuous_paired,
+        "promotion_gate": continuous_promotion_gate(
+            continuous_incumbent,
+            continuous_pooled,
+            continuous_paired,
+            subgroup_review_passed=False,
+            fresh_confirmation=False,
+        ),
+    }
     report = {
         "report_schema_version": 1,
         "as_of_date": args.as_of_date.isoformat(),
@@ -576,6 +611,7 @@ def main() -> int:
         "arrival_only_vs_zero_paired": pooled_vs_zero,
         "arrival_only_vs_historical_incumbent_paired": pooled_vs_incumbent,
         "linked_vs_historical_incumbent_paired": linked_vs_incumbent,
+        "continuous_validation_harness": continuous_validation,
         "zero_baseline": _metrics(evaluated, "zero_prediction"),
         "subgroups": subgroup,
         "decision": "promising_not_proven_no_promotion",
@@ -621,6 +657,12 @@ Against the cutoff-reconstructed incumbent, the arrival-only path changes MSE by
 [{pooled_vs_incumbent["p025"]:+.6f}, {pooled_vs_incumbent["p975"]:+.6f}]. The incumbent
 uses only information available through 2021, including level translations fit on
 2018 and 2021, the deployed 800-BF regression, and Tango component aging.
+
+The common-cohort guardrail also shows that the small RMSE gain is not a broad error
+gain: MAE worsens from {continuous_incumbent['mae']:.3f} to
+{continuous_pooled['mae']:.3f}, and its paired interval is entirely unfavorable.
+The path remains rejected pending a candidate that handles arrivals without adding
+too much value to the much larger non-arrival group.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)

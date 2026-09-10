@@ -134,6 +134,12 @@ from the original StatsAPI captures and excludes unavailable historical defense,
 running and position inputs from both sides. Do not transfer the pitcher decision to
 hitters or use the disclosed subgroup results for post-hoc tuning.
 
+The reusable continuous-outcome gate adds a second reason not to promote the pitcher
+path from this evidence: its small RMSE gain comes with a clear MAE loss (`0.154` to
+`0.199`). The hitter path has the opposite tradeoff—better MAE but worse RMSE and
+absolute bias. Future path candidates must improve the declared integrated target
+without hiding typical-player damage behind a few large tail errors.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and
