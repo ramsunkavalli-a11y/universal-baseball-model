@@ -142,6 +142,16 @@ cohorts. The next valid transition evidence is a new completed cohort or genuine
 new timing/development evidence. See the
 [pooled result](prospect-pooled-progression-path-result.md).
 
+The next-season development-state test adds recent level movement, inactivity gap,
+historical workload and active-season count without using future information. It does
+not help hitters. The joint pitcher model beats the ordered level/exposure baseline on
+both proper scores with paired intervals below zero in both later evaluations, but its
+earlier selection-period Brier score is worse. The predeclared all-period gate rejects
+it. Preserve the exact pitcher candidate for a genuinely fresh confirmation; do not
+tune or promote it on these disclosed cohorts. See the
+[plan](prospect-development-state-plan.md) and
+[result](prospect-development-state-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

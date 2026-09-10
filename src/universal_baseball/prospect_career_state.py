@@ -128,6 +128,17 @@ def predict_independent_ordered_state(
 
 
 def career_state_scores(frame: pl.DataFrame) -> dict[str, float | int]:
+    losses = career_state_losses(frame)
+    return {
+        "players": losses.height,
+        "multiclass_log_loss": float(losses.get_column("multiclass_log_loss").mean()),
+        "multiclass_brier": float(losses.get_column("multiclass_brier").mean()),
+    }
+
+
+def career_state_losses(frame: pl.DataFrame) -> pl.DataFrame:
+    """Return player-paired proper-score losses for an ordered state forecast."""
+
     source = add_career_state(frame)
     state = source.get_column("career_state").to_numpy()
     probabilities = np.column_stack([
@@ -138,11 +149,10 @@ def career_state_scores(frame: pl.DataFrame) -> dict[str, float | int]:
         raise ValueError("career-state probabilities are not a simplex")
     truth = np.column_stack([state == value for value in CAREER_STATES]).astype(float)
     chosen = probabilities[np.arange(len(state)), np.argmax(truth, axis=1)]
-    return {
-        "players": len(state),
-        "multiclass_log_loss": float(-np.mean(np.log(np.clip(chosen, 1e-12, 1)))),
-        "multiclass_brier": float(np.mean(np.sum((probabilities - truth) ** 2, axis=1))),
-    }
+    return source.select("player_id").with_columns(
+        pl.Series("multiclass_log_loss", -np.log(np.clip(chosen, 1e-12, 1))),
+        pl.Series("multiclass_brier", np.sum((probabilities - truth) ** 2, axis=1)),
+    )
 
 
 def build_career_transition_rows(

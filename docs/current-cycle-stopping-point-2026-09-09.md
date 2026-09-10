@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,510 passed. Four older research-contract tests fail because their
+Latest full suite: 1,511 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -142,3 +142,9 @@ and the downstream value/explorer lineage is hash-checked.
 Protected partial-2026 outcomes remain closed. The next clean statistical stopping
 gate is a frozen pitcher environment/role candidate or a later complete historical
 cohort—not more tuning against the already inspected cohort-stability comparison.
+
+The frozen development-state test is now complete. Development-history facts do not
+improve hitters. A joint pitcher version wins both later proper-score comparisons with
+favorable paired intervals, but misses the earlier development Brier requirement. It
+is retained only as an unchanged future-confirmation candidate; current values did not
+move.

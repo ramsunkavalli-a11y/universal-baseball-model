@@ -161,6 +161,14 @@ groups. This argues against another complexity or regularization search on the s
 paths. Keep the direct safeguard until new cohort evidence or new timing/development
 inputs can distinguish the regimes.
 
+A bounded next-season test then added the existing cutoff-safe development-path facts
+to both ordered and joint career-state models. Hitter variants lose or remain
+uncertain. The joint pitcher development model wins both proper scores with favorable
+paired intervals in the 2024 and 2025 targets, but it slightly loses 2023 Brier in the
+selection period. The frozen consistency gate rejects it. Keep it unchanged for future
+confirmation; no current probability, FV or value changed. See the
+[development-state result](prospect-development-state-result.md).
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

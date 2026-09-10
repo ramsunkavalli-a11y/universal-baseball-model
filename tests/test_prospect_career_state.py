@@ -1,8 +1,11 @@
+import numpy as np
 import polars as pl
+import pytest
 
 from universal_baseball.prospect_career_state import (
     add_career_state,
     build_career_transition_rows,
+    career_state_losses,
 )
 
 
@@ -29,6 +32,26 @@ def test_add_career_state_rejects_impossible_order() -> None:
         assert "not ordered" in str(error)
     else:
         raise AssertionError("impossible outcome order should fail")
+
+
+def test_career_state_losses_preserve_player_grain() -> None:
+    frame = pl.DataFrame(
+        {
+            "player_id": [10, 20],
+            "arrived_within_horizon": [0, 1],
+            "meaningful_role_within_horizon": [0, 1],
+            "established_role_within_horizon": [0, 0],
+            "p_no_mlb": [0.8, 0.1],
+            "p_fringe_mlb": [0.1, 0.2],
+            "p_meaningful_mlb": [0.05, 0.6],
+            "p_established_mlb": [0.05, 0.1],
+        }
+    )
+    losses = career_state_losses(frame)
+    assert losses.get_column("player_id").to_list() == [10, 20]
+    assert losses.get_column("multiclass_log_loss").to_list() == pytest.approx(
+        [-np.log(0.8), -np.log(0.6)]
+    )
 
 
 def test_build_career_transition_rows_tracks_monotone_path() -> None:
