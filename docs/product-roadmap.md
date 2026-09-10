@@ -147,6 +147,17 @@ but did not improve the next untouched season; popup and pull-direction addition
 rescue it. This is exactly the unstable descriptive relationship the time-separated
 gate is intended to reject. No production values changed.
 
+A linked historical pitcher source now supplies annual component performance beside
+each retained workload and role path. Use it for the next dependent-career challenger:
+sample those three pieces together, keep cutoff-specific path libraries, and compare
+with the current constant-rate simulation before changing any value.
+
+The first current-date sensitivity confirms materiality: linked pitcher paths raise
+aggregate prospect WAR 16.4 times and materially reorder the list. A cutoff-safe 2021
+development replay supports the broader scale and the simpler arrival-only pooled
+path, but not tier splitting. Reconstruct the historical incumbent on identical rows
+and require fresh confirmation before promotion.
+
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.
 10. Improve defense, two-way-player handling, interval calibration, nonlinear buyer

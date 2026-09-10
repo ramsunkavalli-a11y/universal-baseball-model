@@ -103,6 +103,20 @@ improve 2023-to-2024 error under the unchanged 2021 fit. The later reversal cont
 no pitcher projection or value changed. Exact PBP asset hashes and results are in the
 [pitcher contact increment audit](pitcher-contact-increment-result.md).
 
+The linked [historical pitcher performance-path source](historical-pitcher-performance-paths-result.md)
+is also ready. The next career-value challenger must sample performance, workload and
+role from the same historical pitcher path. It must not keep the current constant
+prospect rate across every simulated year, and each replay may use only career paths
+fully observable by that forecast cutoff.
+
+The current-date linked-path sensitivity changes pitcher-prospect WAR from 64.6 to
+1,058.7 in total and the 99th percentile from 0.69 to 2.78. This establishes that the
+constant prospect-rate assumption is the main compression source, but it is not a
+promotion result. The cutoff-safe 2021 development replay finds plausible scale and a
+clear gain over zero for the simpler arrival-only pooled path; tier splitting adds no
+reliable gain. The next P0 is an identical-row comparison with a reconstructed
+historical incumbent, then fresh confirmation. Current rankings stay unchanged.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

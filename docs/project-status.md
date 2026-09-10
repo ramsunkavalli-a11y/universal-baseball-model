@@ -46,6 +46,32 @@ model. The next evidence should be genuinely new cutoff-safe pitch/process or
 contact-quality data, or broader mature cohorts—not another bonus, FV threshold
 change, or same-period rescue.
 
+The next career-simulation source is now built. The
+[historical pitcher performance paths](historical-pitcher-performance-paths-result.md)
+align annual component WAR with the existing workload and role vectors for 1,798
+pitchers. Established paths average 4.28 component WAR and 1,626 BF over six years;
+fringe paths average essentially zero WAR. The current simulation does not preserve
+that performance/workload/role dependence: it applies one prospect rate across the
+sampled workload path. The next challenger should resample all three from the same
+historical pitcher, using only paths observable at each replay cutoff. This source
+does not change current values by itself.
+
+The first [linked-path challenger](dependent-career-linked-pitcher-audit-result.md)
+has now been run as a sensitivity. It raises total expected controlled WAR for 3,849
+pitcher prospects from 64.6 to 1,058.7 and the 99th percentile from 0.69 to 2.78 WAR.
+That fixes the obvious scale compression but is far too large to promote without a
+cutoff-specific replay; rank correlation with the incumbent is only 0.667. Its ordering
+is driven mainly by hurdle and role probabilities because player-specific conditional
+quality failed validation, and the six-year hurdle is already known to be optimistic.
+
+The [cutoff-safe 2021 replay](dependent-career-linked-pitcher-replay-result.md) is
+promising on scale: across 3,649 pre-MLB pitchers, observed 2022-2025 component WAR
+averages 0.090 and the linked forecast predicts 0.105. The simpler arrival-only pooled
+path beats zero RMSE 0.551 to 0.576, with a fully favorable paired interval. Splitting
+paths into fringe/meaningful/established tiers does not beat the pooled path. Current
+rankings remain unchanged. The next P0 is an identical-row comparison with a
+reconstructed historical incumbent, followed by fresh confirmation.
+
 The earlier September 9 stopping point remains useful historical context in
 [the prior handoff](current-cycle-stopping-point-2026-09-09.md).
 
@@ -742,7 +768,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,429 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,432 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

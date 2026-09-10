@@ -69,6 +69,37 @@ def _rates() -> pl.DataFrame:
     )
 
 
+def _pitcher_inputs() -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]:
+    paths = []
+    performance = []
+    for index in range(1, 7):
+        paths.append(
+            {
+                "path_player_id": 20,
+                "player_type": "pitcher",
+                "outcome_tier_v2": "established",
+                "career_role": "starter",
+                "path_year": index,
+                "adjusted_workload": 800.0,
+                "annual_role": "starter",
+                "window_end_year": 2020,
+            }
+        )
+        performance.append(
+            {
+                **paths[-1],
+                "observed_conditional_war_per_800": 2.0,
+            }
+        )
+    nested = _nested().with_columns(
+        pl.lit("pitcher").alias("model_player_type"),
+        pl.lit(1.0).alias("starter_probability"),
+        pl.lit(0.0).alias("reliever_probability"),
+        pl.lit(600.0).alias("pitcher_six_control_year_war_if_arrived"),
+    )
+    return nested, pl.DataFrame(paths), pl.DataFrame(performance)
+
+
 def test_dependent_simulation_preserves_whole_career_shape_and_is_repeatable() -> None:
     market = {
         season: {"0-1": 10_000_000.0, "1-2": 10_000_000.0, "2+": 10_000_000.0}
@@ -101,8 +132,7 @@ def test_dependent_simulation_preserves_whole_career_shape_and_is_repeatable() -
 
 def test_zero_arrival_produces_zero_war_cost_and_value() -> None:
     market = {
-        season: {"0-1": 1.0, "1-2": 1.0, "2+": 1.0}
-        for season in range(2027, 2038)
+        season: {"0-1": 1.0, "1-2": 1.0, "2+": 1.0} for season in range(2027, 2038)
     }
     result = simulate_dependent_pre_mlb_value(
         _nested(0.0),
@@ -177,3 +207,52 @@ def test_extended_cba_scenario_preserves_declared_three_percent_path() -> None:
     assert scenario.ruleset_kind == "research_planning_scenario_not_cba_fact"
     assert scenario.minimum_salary(2027) == 803_400
     assert scenario.minimum_salary(2037) > scenario.minimum_salary(2032)
+
+
+def test_linked_pitcher_performance_path_replaces_current_constant_rate() -> None:
+    nested, paths, performance = _pitcher_inputs()
+    result = simulate_dependent_pre_mlb_value(
+        nested,
+        paths,
+        _rates(),
+        _rates(),
+        pitcher_performance_paths=performance,
+        forecast_seasons=tuple(range(2027, 2038)),
+        cba_ruleset=build_post_2026_cba_planning_scenario(end_year=2037),
+        market_rates={
+            season: {"0-1": 1.0, "1-2": 1.0, "2+": 1.0} for season in range(2027, 2038)
+        },
+        arbitration_shares={1: 0.15, 2: 0.35, 3: 0.50, 4: 0.75},
+        runs_per_win=10.0,
+        minimum_role_players=1,
+        draws=32,
+    )
+    assert result.item(0, "mean_controlled_war") == pytest.approx(12.0)
+    assert (
+        result.item(0, "performance_path_source")
+        == "linked_historical_pitcher_path_tier"
+    )
+
+    pooled = simulate_dependent_pre_mlb_value(
+        nested,
+        paths,
+        _rates(),
+        _rates(),
+        pitcher_performance_paths=performance,
+        pitcher_path_pooling="arrival_only",
+        forecast_seasons=tuple(range(2027, 2038)),
+        cba_ruleset=build_post_2026_cba_planning_scenario(end_year=2037),
+        market_rates={
+            season: {"0-1": 1.0, "1-2": 1.0, "2+": 1.0}
+            for season in range(2027, 2038)
+        },
+        arbitration_shares={1: 0.15, 2: 0.35, 3: 0.50, 4: 0.75},
+        runs_per_win=10.0,
+        minimum_role_players=1,
+        draws=32,
+    )
+    assert pooled.item(0, "mean_controlled_war") == pytest.approx(12.0)
+    assert (
+        pooled.item(0, "performance_path_source")
+        == "linked_historical_pitcher_path_arrival_only"
+    )

@@ -1,0 +1,158 @@
+{
+  "arrival_only_pooled_path": {
+    "bias": 0.037168072550359345,
+    "mae": 0.19862423177549332,
+    "observed_mean": 0.08959504999555999,
+    "players": 3649,
+    "predicted_mean": 0.12676312254591934,
+    "rmse": 0.5511267763664472
+  },
+  "arrival_only_vs_zero_paired": {
+    "candidate_minus_baseline_mse": -0.028296232322035233,
+    "p025": -0.04742510774947689,
+    "p975": -0.01167667456185705
+  },
+  "as_of_date": "2026-09-10",
+  "decision": "promising development replay; require fresh confirmation and current incumbent comparison before promotion",
+  "forecast_snapshot": 2021,
+  "limits": [
+    "The 2021 cohort and hurdle have appeared in prior development work; this is chronology-safe but not fresh confirmation.",
+    "This scores component WAR only, not defense-independent official WAR or trade value.",
+    "The constant-hazard four-year hurdle is tested as deployed and is already known to be optimistic.",
+    "All non-arrivals remain as zero observed WAR."
+  ],
+  "linked": {
+    "bias": 0.01582906932562609,
+    "mae": 0.17892904507101112,
+    "observed_mean": 0.08959504999555999,
+    "players": 3649,
+    "predicted_mean": 0.10542411932118609,
+    "rmse": 0.5531128514968542
+  },
+  "linked_vs_arrival_only_paired": {
+    "candidate_minus_baseline_mse": 0.002193102862909013,
+    "p025": -0.005169210237081489,
+    "p975": 0.008346079732468061
+  },
+  "model_effect": "none",
+  "outcome_seasons": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "path_library_cutoff": "window_end_year <= 2021",
+  "path_prefix_means": {
+    "established": {
+      "1": 0.4419404704100033,
+      "2": 1.2091569799559847,
+      "3": 2.0511603114967683,
+      "4": 2.9092559520309758
+    },
+    "fringe": {
+      "1": 0.03629554667029501,
+      "2": 0.05009168329520471,
+      "3": 0.04839476801685589,
+      "4": 0.051457662662843476
+    },
+    "meaningful_only": {
+      "1": 0.1782621225529286,
+      "2": 0.38111215952792094,
+      "3": 0.47416350616163716,
+      "4": 0.5182192453253609
+    },
+    "pooled": {
+      "1": 0.21870835949077674,
+      "2": 0.563332724703813,
+      "3": 0.9196082098766717,
+      "4": 1.279571641199751
+    }
+  },
+  "report_schema_version": 1,
+  "runs_per_win": 9.773975623911781,
+  "sources": {
+    "docs/prospect-component-uncertainty-result.json": "040042a58cde3aa6c7fe749949b79a0e3d1fd7344029f5fa006c25cfbe7c29d8",
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet": "a401f55b72bbc39ae0d967eed2bd4977fed126b24a27c672f76d98de509af7df",
+    "reports/generated/opportunity-40man-history/tables/historical_40man_membership.parquet": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421",
+    "reports/generated/opportunity-history-sources-v2/tables/2018/affiliated_season_stats.parquet": "e8f1a52f48d3f9aee6aca39207e82c39b1a6df9375b7a5025a54fe284a83fd04",
+    "reports/generated/opportunity-history-sources-v2/tables/2019/affiliated_season_stats.parquet": "0dd0a82eecbdbf15f67e74d2312bf8ecac91c2c6ed3645e103f4de82bea59021",
+    "reports/generated/opportunity-history-sources-v2/tables/2020/affiliated_season_stats.parquet": "332e1edc158ecfde8e503378d99f249681348c6174c0c60642c0f6ef09201a5d",
+    "reports/generated/opportunity-history-sources-v2/tables/2021/affiliated_season_stats.parquet": "55b727f4c9437f357f2a685841ff3fdec4c509a4f6d8d870e6fbf851977d9c9e",
+    "reports/generated/opportunity-history-sources-v2/tables/2022/affiliated_season_stats.parquet": "a3fca9b9a7d4df771c3d3aa9d44189cb085df8cb71ada83eae1c363ca62ebddc",
+    "reports/generated/opportunity-history-sources-v2/tables/2023/affiliated_season_stats.parquet": "a68647e3c5338db8ccb79e8c0ff4d721e6863b5fbe0ec22ae11d553882f8cc37",
+    "reports/generated/opportunity-history-sources-v2/tables/2024/affiliated_season_stats.parquet": "1ac6a4a6d045faf4157565103e821c0bb023869e54285025db7fa0dab2861bf5",
+    "reports/generated/opportunity-history-sources-v2/tables/2025/affiliated_season_stats.parquet": "c0663675bee3ccc7f567808b8e1856143d04b9ddba9f735a71252b9f3d2e3187",
+    "reports/generated/opportunity-history-sources-v2/tables/pitcher_snapshots.parquet": "3b80e560a6bebe6306f5c7be5c8bec0cb7f94fed5ef5f1edfaf3bd27e53396b3",
+    "reports/generated/phase2-arrival-skill-source/tables/affiliated_pitching_components.parquet": "3417215721a1f30541be9a7bbc2582b9d382569d1af9b34d0c4f7f592470f6bc",
+    "reports/generated/player-demographics/tables/player-demographics.parquet": "010bb368acc8465dc1c5ba21660dd32bdcf0e9132bc4824e39a491f11189f54f",
+    "reports/generated/prospect-outcome-quality-2009-2025/post-debut-pitcher-performance-paths.parquet": "efdb4e2061554c925a0c2dcea9e7d0902fdb1414739f694d4b6c2ae5cb6bf3db"
+  },
+  "status": "development_replay_complete_not_promoted",
+  "subgroups": [
+    {
+      "group": "level_tier",
+      "observed_mean": 0.23470846360416842,
+      "players": 512,
+      "predicted_mean": 0.236757095218484,
+      "value": "AA"
+    },
+    {
+      "group": "level_tier",
+      "observed_mean": 0.25068577330480446,
+      "players": 430,
+      "predicted_mean": 0.3595669465527879,
+      "value": "AAA"
+    },
+    {
+      "group": "level_tier",
+      "observed_mean": 0.03641619397735267,
+      "players": 2696,
+      "predicted_mean": 0.040372081268027334,
+      "value": "A_OR_BELOW"
+    },
+    {
+      "group": "role_tier",
+      "observed_mean": 0.04490448576938081,
+      "players": 1625,
+      "predicted_mean": 0.03595763742500143,
+      "value": "RELIEVER"
+    },
+    {
+      "group": "role_tier",
+      "observed_mean": 0.18310368445846076,
+      "players": 1124,
+      "predicted_mean": 0.26167732739341815,
+      "value": "STARTER"
+    },
+    {
+      "group": "role_tier",
+      "observed_mean": 0.05327935224160773,
+      "players": 889,
+      "predicted_mean": 0.036130566999251955,
+      "value": "SWINGMAN"
+    },
+    {
+      "group": "pitch_hand",
+      "observed_mean": 0.10517845934773395,
+      "players": 772,
+      "predicted_mean": 0.12728116885527124,
+      "value": "L"
+    },
+    {
+      "group": "pitch_hand",
+      "observed_mean": 0.085413474736652,
+      "players": 2877,
+      "predicted_mean": 0.09955910637703808,
+      "value": "R"
+    }
+  ],
+  "training_snapshot": 2018,
+  "zero_baseline": {
+    "bias": -0.08959504999555999,
+    "mae": 0.11326421920401225,
+    "observed_mean": 0.08959504999555999,
+    "players": 3649,
+    "predicted_mean": 0.0,
+    "rmse": 0.5762264797370104
+  }
+}

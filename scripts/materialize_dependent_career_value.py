@@ -27,6 +27,11 @@ def _args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--as-of-date", type=date.fromisoformat, required=True)
     parser.add_argument("--draws", type=int, default=DEFAULT_DRAWS)
+    parser.add_argument("--pitcher-performance-paths", type=Path)
+    parser.add_argument(
+        "--pitcher-path-pooling", choices=("tier", "arrival_only"), default="tier"
+    )
+    parser.add_argument("--output-subdir", default="phase2-dependent-career-value")
     parser.add_argument(
         "--generated-root", type=Path, default=Path("reports/generated")
     )
@@ -53,7 +58,9 @@ def main() -> int:
     rate_root = root / "phase2-conditional-war-paths" / dated / "tables"
     hitter_rate_path = rate_root / "hitter_conditional_war_rates.parquet"
     pitcher_rate_path = rate_root / "pitcher_conditional_war_rates.parquet"
-    conditional_report_path = root / "phase2-conditional-war-paths" / dated / "report.json"
+    conditional_report_path = (
+        root / "phase2-conditional-war-paths" / dated / "report.json"
+    )
     old_value_path = root / "phase2-current-value" / dated / "value-records.parquet"
     source_paths = (
         nested_path,
@@ -63,31 +70,37 @@ def main() -> int:
         conditional_report_path,
         old_value_path,
     )
+    if args.pitcher_performance_paths is not None:
+        source_paths = (*source_paths, args.pitcher_performance_paths)
     if missing := [path for path in source_paths if not path.exists()]:
         raise FileNotFoundError(f"dependent career-value inputs missing: {missing}")
     annual = pl.read_parquet(annual_path)
     first_forecast_year = args.as_of_date.year + 1
     if annual.filter(pl.col("window_end_year") >= first_forecast_year).height:
         raise ValueError("historical path outcome extends into the forecast period")
-    conditional_report = json.loads(
-        conditional_report_path.read_text(encoding="utf-8")
-    )
+    conditional_report = json.loads(conditional_report_path.read_text(encoding="utf-8"))
     source_forecast_seasons = tuple(
         int(value) for value in conditional_report["forecast_seasons"]
     )
     if source_forecast_seasons != tuple(
         range(first_forecast_year, first_forecast_year + 6)
     ):
-        raise ValueError("dependent career simulation requires six source projection years")
+        raise ValueError(
+            "dependent career simulation requires six source projection years"
+        )
     forecast_seasons = tuple(range(first_forecast_year, first_forecast_year + 11))
-    cba_scenario = build_post_2026_cba_planning_scenario(
-        end_year=forecast_seasons[-1]
-    )
+    cba_scenario = build_post_2026_cba_planning_scenario(end_year=forecast_seasons[-1])
     result = simulate_dependent_pre_mlb_value(
         pl.read_parquet(nested_path),
         annual,
         pl.read_parquet(hitter_rate_path),
         pl.read_parquet(pitcher_rate_path),
+        pitcher_performance_paths=(
+            pl.read_parquet(args.pitcher_performance_paths)
+            if args.pitcher_performance_paths is not None
+            else None
+        ),
+        pitcher_path_pooling=args.pitcher_path_pooling,
         forecast_seasons=forecast_seasons,
         cba_ruleset=cba_scenario,
         market_rates=build_fangraphs_2026_market_scenario(
@@ -105,7 +118,7 @@ def main() -> int:
         pl.col("expected_controlled_war").alias("old_expected_controlled_war"),
     )
     comparison = result.join(old, on="player_id", how="left", validate="1:1")
-    output = root / "phase2-dependent-career-value" / dated
+    output = root / args.output_subdir / dated
     output.mkdir(parents=True, exist_ok=True)
     storage = write_canonical_parquet(
         result,
@@ -115,7 +128,11 @@ def main() -> int:
     report = {
         "report_schema_version": "0.1",
         "as_of_date": dated,
-        "status": "dependent_career_value_research_not_promoted",
+        "status": (
+            "linked_pitcher_performance_research_not_promoted"
+            if args.pitcher_performance_paths is not None
+            else "dependent_career_value_research_not_promoted"
+        ),
         "contract": "docs/dependent-career-path-value-plan.md",
         "model_id": MODEL_ID,
         "players": result.height,
@@ -124,8 +141,16 @@ def main() -> int:
         "historical_path_players": annual.get_column("path_player_id").n_unique(),
         "historical_path_player_components": annual.select(
             "path_player_id", "player_type"
-        ).unique().height,
+        )
+        .unique()
+        .height,
         "historical_annual_rows": annual.height,
+        "pitcher_performance_path_source": (
+            args.pitcher_performance_paths.as_posix()
+            if args.pitcher_performance_paths is not None
+            else None
+        ),
+        "pitcher_path_pooling": args.pitcher_path_pooling,
         "maximum_historical_window_end_year": int(
             annual.get_column("window_end_year").max()
         ),
@@ -164,8 +189,15 @@ def main() -> int:
             "historical_failures_and_zero_years_retained": True,
             "whole_historical_paths_resampled": True,
             "arrival_timing_constant_annual_hazard_provisional": True,
-            "performance_posterior_shock_persistent_across_years": True,
-            "season_event_noise_independent_conditional_on_path": True,
+            "performance_posterior_shock_persistent_across_years": (
+                args.pitcher_performance_paths is None
+            ),
+            "season_event_noise_independent_conditional_on_path": (
+                args.pitcher_performance_paths is None
+            ),
+            "pitcher_performance_workload_role_linked_from_same_path": (
+                args.pitcher_performance_paths is not None
+            ),
             "control_accrues_only_in_simulated_active_seasons": True,
             "full_six_year_post_arrival_path_retained": True,
             "full_active_season_service_approximation": True,
@@ -177,15 +209,19 @@ def main() -> int:
             "market_value_uses_path_annual_war_tiers": True,
             "2025_is_development_not_confirmation": True,
         },
-        "source_files": {
-            path.as_posix(): sha256_file(path) for path in source_paths
-        },
+        "source_files": {path.as_posix(): sha256_file(path) for path in source_paths},
         "storage": storage,
     }
     args.output_json.write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
-    print(json.dumps({key: value for key, value in report.items() if key != "source_files"}, indent=2, sort_keys=True))
+    print(
+        json.dumps(
+            {key: value for key, value in report.items() if key != "source_files"},
+            indent=2,
+            sort_keys=True,
+        )
+    )
     return 0
 
 

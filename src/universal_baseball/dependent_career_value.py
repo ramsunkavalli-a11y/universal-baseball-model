@@ -31,8 +31,8 @@ def _path_library(
     *,
     seasons: int,
 ) -> tuple[
-    dict[tuple[str, str, str], tuple[np.ndarray, np.ndarray]],
-    dict[tuple[str, str], tuple[np.ndarray, np.ndarray]],
+    dict[tuple[str, str, str], tuple[np.ndarray, np.ndarray, np.ndarray]],
+    dict[tuple[str, str], tuple[np.ndarray, np.ndarray, np.ndarray]],
 ]:
     required = {
         "path_player_id",
@@ -49,15 +49,21 @@ def _path_library(
     if seasons < 1:
         raise ValueError("simulation seasons must be positive")
     source = annual_paths.filter(pl.col("path_year") <= seasons)
-    bad = source.group_by("path_player_id", "player_type").agg(
-        pl.len().alias("rows"),
-        pl.col("path_year").n_unique().alias("years"),
-    ).filter((pl.col("rows") != seasons) | (pl.col("years") != seasons))
+    bad = (
+        source.group_by("path_player_id", "player_type")
+        .agg(
+            pl.len().alias("rows"),
+            pl.col("path_year").n_unique().alias("years"),
+        )
+        .filter((pl.col("rows") != seasons) | (pl.col("years") != seasons))
+    )
     if bad.height:
         raise ValueError("annual career paths must contain one complete ordered vector")
 
-    role_cells: dict[tuple[str, str, str], list[tuple[np.ndarray, np.ndarray]]] = {}
-    pooled_cells: dict[tuple[str, str], list[tuple[np.ndarray, np.ndarray]]] = {}
+    role_cells: dict[
+        tuple[str, str, str], list[tuple[np.ndarray, np.ndarray, int]]
+    ] = {}
+    pooled_cells: dict[tuple[str, str], list[tuple[np.ndarray, np.ndarray, int]]] = {}
     for group in source.partition_by(
         ["path_player_id", "player_type"], maintain_order=True
     ):
@@ -76,18 +82,26 @@ def _path_library(
         player_type = str(first["player_type"])
         tier = str(first["outcome_tier_v2"])
         role = str(first["career_role"])
-        role_cells.setdefault((player_type, tier, role), []).append((vector, roles))
-        pooled_cells.setdefault((player_type, tier), []).append((vector, roles))
+        path_player_id = int(first["path_player_id"])
+        role_cells.setdefault((player_type, tier, role), []).append(
+            (vector, roles, path_player_id)
+        )
+        pooled_cells.setdefault((player_type, tier), []).append(
+            (vector, roles, path_player_id)
+        )
+
     def stack(
-        cells: dict[tuple[str, ...], list[tuple[np.ndarray, np.ndarray]]],
-    ) -> dict[tuple[str, ...], tuple[np.ndarray, np.ndarray]]:
+        cells: dict[tuple[str, ...], list[tuple[np.ndarray, np.ndarray, int]]],
+    ) -> dict[tuple[str, ...], tuple[np.ndarray, np.ndarray, np.ndarray]]:
         return {
             key: (
                 np.stack([value[0] for value in values]),
                 np.stack([value[1] for value in values]),
+                np.asarray([value[2] for value in values], dtype=np.int64),
             )
             for key, values in cells.items()
         }
+
     return (
         stack(role_cells),
         stack(pooled_cells),
@@ -109,12 +123,16 @@ def _rate_lookup(frame: pl.DataFrame) -> dict[int, tuple[float, float]]:
             float(row["posterior_run_rate_variance"]),
         )
         if any(not math.isfinite(value) or value < 0.0 for value in values):
-            raise ValueError("career performance variances must be finite and nonnegative")
+            raise ValueError(
+                "career performance variances must be finite and nonnegative"
+            )
         result[int(row["player_id"])] = values
     return result
 
 
-def _annual_arrival_probabilities(six_year_probability: float, seasons: int) -> np.ndarray:
+def _annual_arrival_probabilities(
+    six_year_probability: float, seasons: int
+) -> np.ndarray:
     if not 0.0 <= six_year_probability <= 1.0:
         raise ValueError("six-year arrival probability must lie in [0, 1]")
     if six_year_probability == 0.0:
@@ -157,9 +175,7 @@ def _player_rate(row: dict[str, object]) -> tuple[float, float]:
     if total <= 0.0:
         raise ValueError("pitcher role probabilities have no mass")
     assumed_workload = 6.0 * (
-        800.0 * starter / total
-        + 450.0 * swingman / total
-        + 250.0 * reliever / total
+        800.0 * starter / total + 450.0 * swingman / total + 250.0 * reliever / total
     )
     full_war = float(row.get("pitcher_six_control_year_war_if_arrived") or 0.0)
     return full_war / assumed_workload, 800.0
@@ -171,6 +187,8 @@ def simulate_dependent_pre_mlb_value(
     hitter_rates: pl.DataFrame,
     pitcher_rates: pl.DataFrame,
     *,
+    pitcher_performance_paths: pl.DataFrame | None = None,
+    pitcher_path_pooling: str = "tier",
     forecast_seasons: tuple[int, ...],
     cba_ruleset: CBARuleset,
     market_rates: Mapping[int, Mapping[str, float]],
@@ -204,6 +222,10 @@ def simulate_dependent_pre_mlb_value(
         raise ValueError("annual discount rate must be finite and nonnegative")
     if minimum_role_players < 1:
         raise ValueError("minimum role players must be positive")
+    if pitcher_path_pooling not in {"tier", "arrival_only"}:
+        raise ValueError("pitcher_path_pooling must be tier or arrival_only")
+    if pitcher_path_pooling == "arrival_only" and pitcher_performance_paths is None:
+        raise ValueError("arrival-only pitcher paths require performance paths")
     required = {
         "player_id",
         "model_player_type",
@@ -222,6 +244,47 @@ def simulate_dependent_pre_mlb_value(
     role_library, pooled_library = _path_library(
         annual_paths, seasons=career_path_years
     )
+    all_pitcher_paths = None
+    if pitcher_path_pooling == "arrival_only":
+        available_pitcher_tiers = [
+            key for key in pooled_library if key[0] == "pitcher"
+        ]
+        if not available_pitcher_tiers:
+            raise ValueError("arrival-only pitcher path pool is empty")
+        all_pitcher_paths = tuple(
+            np.concatenate(
+                [pooled_library[key][index] for key in available_pitcher_tiers], axis=0
+            )
+            for index in range(3)
+        )
+    pitcher_path_rates: dict[int, np.ndarray] = {}
+    if pitcher_performance_paths is not None:
+        required_performance = {
+            "path_player_id",
+            "path_year",
+            "observed_conditional_war_per_800",
+            "adjusted_workload",
+        }
+        if missing := sorted(
+            required_performance - set(pitcher_performance_paths.columns)
+        ):
+            raise ValueError(f"pitcher performance paths missing fields: {missing}")
+        performance = pitcher_performance_paths.filter(
+            pl.col("path_year") <= career_path_years
+        )
+        for group in performance.partition_by("path_player_id", maintain_order=True):
+            ordered = group.sort("path_year")
+            if ordered.height != career_path_years:
+                raise ValueError("pitcher performance path is not complete")
+            rates = (
+                ordered.get_column("observed_conditional_war_per_800")
+                .fill_null(0.0)
+                .to_numpy()
+            )
+            active = ordered.get_column("adjusted_workload").to_numpy() > 0.0
+            if np.any(active & ~np.isfinite(rates)):
+                raise ValueError("active pitcher performance rate is not finite")
+            pitcher_path_rates[int(ordered.item(0, "path_player_id"))] = rates / 800.0
     rate_lookups = {
         "hitter": _rate_lookup(hitter_rates),
         "pitcher": _rate_lookup(pitcher_rates),
@@ -243,7 +306,9 @@ def simulate_dependent_pre_mlb_value(
         if np.any(tier_masses < 0.0) or not math.isclose(
             float(tier_masses.sum()), arrival_probability, abs_tol=1e-8
         ):
-            raise ValueError(f"tier probabilities do not partition arrival for {player_id}")
+            raise ValueError(
+                f"tier probabilities do not partition arrival for {player_id}"
+            )
         annual_arrival = _annual_arrival_probabilities(
             arrival_probability, arrival_horizon_years
         )
@@ -274,9 +339,8 @@ def simulate_dependent_pre_mlb_value(
             roles = ("hitter",)
 
         workload_half = np.zeros((half, len(forecast_seasons)), dtype=float)
-        annual_role_half = np.zeros(
-            (half, len(forecast_seasons)), dtype=np.int8
-        )
+        empirical_rate_half = np.zeros((half, len(forecast_seasons)), dtype=float)
+        annual_role_half = np.zeros((half, len(forecast_seasons)), dtype=np.int8)
         role_fallback_draws = 0
         for tier_number, tier in enumerate(TIERS):
             for role_number, role in enumerate(roles):
@@ -289,38 +353,69 @@ def simulate_dependent_pre_mlb_value(
                 if not count:
                     continue
                 cell = role_library.get((player_type, tier, role))
-                if cell is None or cell[0].shape[0] < minimum_role_players:
+                if player_type == "pitcher" and pitcher_path_pooling == "arrival_only":
+                    if all_pitcher_paths is None:
+                        raise RuntimeError("arrival-only pitcher library was not built")
+                    cell = all_pitcher_paths
+                elif cell is None or cell[0].shape[0] < minimum_role_players:
                     cell = pooled_library.get((player_type, tier))
                     role_fallback_draws += count
                 if cell is None or not cell[0].shape[0]:
-                    raise ValueError(f"missing career paths for {player_type}/{tier}/{role}")
+                    raise ValueError(
+                        f"missing career paths for {player_type}/{tier}/{role}"
+                    )
                 selected_index = rng.integers(0, cell[0].shape[0], size=count)
                 selected_workload = cell[0][selected_index]
                 selected_roles = cell[1][selected_index]
+                selected_path_players = cell[2][selected_index]
                 target_rows = np.flatnonzero(mask)
-                for target, source_vector, source_roles in zip(
-                    target_rows, selected_workload, selected_roles, strict=True
+                for target, source_vector, source_roles, source_player in zip(
+                    target_rows,
+                    selected_workload,
+                    selected_roles,
+                    selected_path_players,
+                    strict=True,
                 ):
                     offset = int(arrival_index[target])
                     workload_half[target, offset : offset + career_path_years] = (
                         source_vector[:career_path_years]
                     )
-                    annual_role_half[
-                        target, offset : offset + career_path_years
-                    ] = source_roles[:career_path_years]
+                    annual_role_half[target, offset : offset + career_path_years] = (
+                        source_roles[:career_path_years]
+                    )
+                    if player_type == "pitcher" and pitcher_path_rates:
+                        source_rates = pitcher_path_rates.get(int(source_player))
+                        if source_rates is None:
+                            raise ValueError(
+                                f"missing pitcher performance path for {source_player}"
+                            )
+                        empirical_rate_half[
+                            target, offset : offset + career_path_years
+                        ] = source_rates[:career_path_years]
         workloads = np.repeat(workload_half, 2, axis=0)
         annual_roles = np.repeat(annual_role_half, 2, axis=0)
+        empirical_rates = np.repeat(empirical_rate_half, 2, axis=0)
         persistent_half = rng.standard_normal(half)
         persistent = np.column_stack((persistent_half, -persistent_half)).reshape(-1)
         event_half = rng.standard_normal((half, len(forecast_seasons)))
         event_noise = np.stack((event_half, -event_half), axis=1).reshape(
             draws, len(forecast_seasons)
         )
-        war = (
-            workloads * rate
-            + workloads * persistent[:, None] * math.sqrt(posterior_variance) / runs_per_win
-            + event_noise * np.sqrt(workloads * event_variance) / runs_per_win
-        )
+        if player_type == "pitcher" and pitcher_path_rates:
+            war = workloads * empirical_rates
+            performance_path_source = (
+                f"linked_historical_pitcher_path_{pitcher_path_pooling}"
+            )
+        else:
+            war = (
+                workloads * rate
+                + workloads
+                * persistent[:, None]
+                * math.sqrt(posterior_variance)
+                / runs_per_win
+                + event_noise * np.sqrt(workloads * event_variance) / runs_per_win
+            )
+            performance_path_source = "current_player_rate_with_simulated_noise"
 
         value = np.zeros(draws, dtype=float)
         cost = np.zeros(draws, dtype=float)
@@ -367,9 +462,7 @@ def simulate_dependent_pre_mlb_value(
             prior_market_value = np.where(active, market_value, 0.0)
 
         value_quantiles = np.quantile(value, [0.10, 0.50, 0.90], method="linear")
-        war_quantiles = np.quantile(
-            controlled_war, [0.10, 0.50, 0.90], method="linear"
-        )
+        war_quantiles = np.quantile(controlled_war, [0.10, 0.50, 0.90], method="linear")
         conditional_arrival_year = (
             float(
                 sum(
@@ -424,12 +517,14 @@ def simulate_dependent_pre_mlb_value(
                     (arrival_index < arrival_horizon_years).mean()
                 ),
                 "no_arrival_probability": 1.0 - arrival_probability,
-                "bust_probability": 1.0 - float(
-                    row["meaningful_only_probability"]
-                    + row["established_probability"]
+                "bust_probability": 1.0
+                - float(
+                    row["meaningful_only_probability"] + row["established_probability"]
                 ),
                 "limited_probability": float(row["fringe_probability"]),
-                "meaningful_only_probability": float(row["meaningful_only_probability"]),
+                "meaningful_only_probability": float(
+                    row["meaningful_only_probability"]
+                ),
                 "regular_probability": float(row["established_probability"]),
                 "star_probability": float(
                     (controlled_war >= star_war_threshold).mean()
@@ -439,6 +534,7 @@ def simulate_dependent_pre_mlb_value(
                 "active_role_transition_probability": role_transition_probability,
                 "simulation_draws": draws,
                 "role_fallback_draw_share": role_fallback_draws / half,
+                "performance_path_source": performance_path_source,
                 "model_id": MODEL_ID,
             }
         )
@@ -466,9 +562,7 @@ def simulate_dependent_pre_mlb_value(
         )
         | (
             (
-                pl.col("arrival_probability")
-                + pl.col("no_arrival_probability")
-                - 1.0
+                pl.col("arrival_probability") + pl.col("no_arrival_probability") - 1.0
             ).abs()
             > 1e-8
         )
@@ -481,10 +575,7 @@ def simulate_dependent_pre_mlb_value(
             ).abs()
             > 1e-8
         )
-        | (
-            pl.col("star_probability")
-            > pl.col("simulated_arrival_probability") + 1e-8
-        )
+        | (pl.col("star_probability") > pl.col("simulated_arrival_probability") + 1e-8)
     ).height:
         raise RuntimeError("dependent career output violates probability laws")
     numeric_columns = (

@@ -1,0 +1,51 @@
+{
+  "active_rows": 6372,
+  "annual_rows": 10788,
+  "by_tier": [
+    {
+      "mean_six_year_bf": 1626.3988636363638,
+      "mean_six_year_component_war": 4.275361025193261,
+      "median_six_year_component_war": 3.3348725261540615,
+      "outcome_tier_v2": "established",
+      "players": 704
+    },
+    {
+      "mean_six_year_bf": 130.0471055618615,
+      "mean_six_year_component_war": 0.006929955509324699,
+      "median_six_year_component_war": -0.008744550331800178,
+      "outcome_tier_v2": "fringe",
+      "players": 881
+    },
+    {
+      "mean_six_year_bf": 507.6868544600939,
+      "mean_six_year_component_war": 0.7827219049916991,
+      "median_six_year_component_war": 0.6702741294579714,
+      "outcome_tier_v2": "meaningful_only",
+      "players": 213
+    }
+  ],
+  "method": "same five-part neutral-wOBA pitcher run conversion as the current conditional WAR model; annual league environment and 2020 workload adjusted",
+  "model_effect": "none",
+  "players": 1798,
+  "purpose": "future challenger must resample performance, workload and role from the same historical player path",
+  "report_schema_version": 1,
+  "source_seasons": [
+    2009,
+    2025
+  ],
+  "sources": {
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet": "a401f55b72bbc39ae0d967eed2bd4977fed126b24a27c672f76d98de509af7df",
+    "reports/generated/phase2-conditional-war-paths/2026-09-08/report.json": "d94dd24072fb80ed91b6e80a7d42f5640b3732efe3d9b8bb2697bc5dbcd55063",
+    "reports/generated/prospect-outcome-quality-2009-2025/post-debut-annual-workload-paths.parquet": "dd8db40f740e3322e9748e6575ee6bb9e2d30d230131e7f7eb1305766edce7ec"
+  },
+  "status": "linked_pitcher_performance_path_source_ready_not_model_promoted",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "efdb4e2061554c925a0c2dcea9e7d0902fdb1414739f694d4b6c2ae5cb6bf3db",
+    "file_size_bytes": 280766,
+    "path": "reports\\generated\\prospect-outcome-quality-2009-2025\\post-debut-pitcher-performance-paths.parquet",
+    "row_count": 10788,
+    "schema_sha256": "4805323b378225ad9997aa73bb0447089d6efdbf647d67439b457b8e6abf324f",
+    "table_name": "historical_pitcher_component_performance_paths"
+  }
+}

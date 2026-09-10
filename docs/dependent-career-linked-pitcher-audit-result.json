@@ -1,0 +1,39 @@
+{
+  "decision": "do_not_promote_before_fresh_confirmation_and_incumbent_replay",
+  "incumbent_p99_expected_war": 0.6877038620804442,
+  "incumbent_total_expected_controlled_war": 64.59463198252513,
+  "incumbent_total_expected_value_dollars": 1165365191.2629979,
+  "limits": [
+    "The six-year constant-hazard arrival probabilities are already known to be optimistic.",
+    "Individual prospect conditional quality did not beat a population mean, so challenger ordering is mostly hurdle and role probability.",
+    "This current-date sensitivity is not predictive validation.",
+    "No outside FV opinion or 2026 partial outcome was used."
+  ],
+  "linked_p99_expected_war": 2.7833878388750017,
+  "linked_total_expected_controlled_war": 1058.6776104486357,
+  "linked_total_expected_value_dollars": 5830263584.175891,
+  "linked_value_threshold_counts": {
+    "10000000": 196,
+    "15000000": 60,
+    "20000000": 3,
+    "5000000": 310
+  },
+  "mean_established_probability": 0.05965853052775191,
+  "mean_six_year_arrival_probability": 0.1340821207713948,
+  "model_effect": "none",
+  "pitchers": 3849,
+  "pooled_p99_expected_war": 1.5126436029050254,
+  "pooled_total_expected_controlled_war": 916.0148658677529,
+  "pooled_total_expected_value_dollars": 5185315265.748673,
+  "replay_requirement": "The first cutoff-safe 2021 development replay is complete. Next compare the pooled challenger with a reconstructed incumbent on identical rows and reserve a later cohort for fresh confirmation.",
+  "report_schema_version": 1,
+  "sources": {
+    "reports/generated/phase2-dependent-career-value-linked-pitcher-pooled/2026-09-08/dependent-career-value.parquet": "7dd13e1e647cfedb7af32b8a3a47b2a087c425957ef5df1a83a6ece46e04f4fc",
+    "reports/generated/phase2-dependent-career-value-linked-pitcher/2026-09-08/dependent-career-value.parquet": "bc17bf2d6baf4ffea39ff226ab6578661412507bf88430138cd53173e05010ef",
+    "reports/generated/phase2-dependent-career-value/2026-09-08/dependent-career-value.parquet": "f3c984602e14fb01459855d3de47fb3681682961228dec9cabfd9000bcb796e7"
+  },
+  "status": "scale_challenger_ready_not_promoted",
+  "value_rank_correlation": 0.6674251677506758,
+  "value_ratio": 5.00294982884908,
+  "war_ratio": 16.38956021508167
+}
