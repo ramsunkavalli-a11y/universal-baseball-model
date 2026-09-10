@@ -1,0 +1,286 @@
+{
+  "boundaries": {
+    "country_effect_is_association_not_causal": true,
+    "current_2026_outcomes_used": false,
+    "current_height_or_weight_used": false,
+    "five_fold_player_cross_validation_2024": true,
+    "height_weight_excluded_as_historical_leakage": true,
+    "outside_fv_or_rank_used": false
+  },
+  "contract": "docs/pitcher-birth-country-breadth-plan.md",
+  "decision": {
+    "promoted": false,
+    "reason": "2025 is development evidence; later untouched origin required"
+  },
+  "development_2024_out_of_fold": {
+    "eligible_families": [],
+    "scores": {
+      "age_country_interactions": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.011677852460401822,
+            "rate_bias": 0.0005662609519059946
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.032224562971013664,
+            "rate_bias": 0.0011812839706245417
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6530225643859195,
+            "rate_bias": 0.00020575432063354076
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.2172480436796667,
+            "rate_bias": -0.002043754495784015
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08582697650299828,
+            "rate_bias": 9.045525261997008e-05
+          }
+        },
+        "component_brier_score": 0.5162956031063187,
+        "component_log_loss": 0.9776296985275413,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "age_hand": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.01206413544176078,
+            "rate_bias": 0.0009525439332649515
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.03431497966611438,
+            "rate_bias": 0.003271700665725256
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6487958020485179,
+            "rate_bias": -0.004021008016768009
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.21659792499076985,
+            "rate_bias": -0.002693873184680893
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08822715785283701,
+            "rate_bias": 0.0024906366024587023
+          }
+        },
+        "component_brier_score": 0.5162014994444586,
+        "component_log_loss": 0.9774943129725645,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "age_hand_country": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.01160293069921043,
+            "rate_bias": 0.0004913391907146019
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.03223972648073605,
+            "rate_bias": 0.0011964474803469328
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6512895616876934,
+            "rate_bias": -0.0015272483775926797
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.21848977489920157,
+            "rate_bias": -0.0008020232762491697
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08637800623315862,
+            "rate_bias": 0.0006414849827803121
+          }
+        },
+        "component_brier_score": 0.5163874397174639,
+        "component_log_loss": 0.977774243860238,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "country": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.011584758315492041,
+            "rate_bias": 0.0004731668069962131
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.0323183621921059,
+            "rate_bias": 0.001275083191716773
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.650306513989728,
+            "rate_bias": -0.002510296075557938
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.21925933013549023,
+            "rate_bias": -3.2468039960514276e-05
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08653103536718383,
+            "rate_bias": 0.0007945141168055227
+          }
+        },
+        "component_brier_score": 0.5159533745482578,
+        "component_log_loss": 0.9768742878304177,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "incumbent": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.012110166513361727,
+            "rate_bias": 0.000998575004865898
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.034915946894862444,
+            "rate_bias": 0.0038726678944733233
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6469270772086725,
+            "rate_bias": -0.005889732856613474
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.21646730784029186,
+            "rate_bias": -0.0028244903351588814
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08957950154281148,
+            "rate_bias": 0.003842980292433173
+          }
+        },
+        "component_brier_score": 0.5158063341546931,
+        "component_log_loss": 0.9766988849588337,
+        "players": 173,
+        "target_exposure": 23129
+      }
+    },
+    "selected_family": "incumbent"
+  },
+  "development_2025_already_inspected": {
+    "country_subgroups": [
+      {
+        "brier_delta": 0.0,
+        "country_group": "Dominican Republic",
+        "log_loss_delta": 0.0,
+        "players": 15,
+        "target_bf": 1046
+      },
+      {
+        "brier_delta": 0.0,
+        "country_group": "Other/unknown",
+        "log_loss_delta": 0.0,
+        "players": 7,
+        "target_bf": 457
+      },
+      {
+        "brier_delta": 0.0,
+        "country_group": "USA",
+        "log_loss_delta": 0.0,
+        "players": 117,
+        "target_bf": 15806
+      },
+      {
+        "brier_delta": 0.0,
+        "country_group": "Venezuela",
+        "log_loss_delta": 0.0,
+        "players": 7,
+        "target_bf": 543
+      }
+    ],
+    "incumbent_score": {
+      "calibration": {
+        "hbp": {
+          "observed_rate": 0.012323549182164464,
+          "predicted_rate": 0.013576193263131218,
+          "rate_bias": 0.0012526440809667557
+        },
+        "hr": {
+          "observed_rate": 0.030808872955411157,
+          "predicted_rate": 0.03341086141949886,
+          "rate_bias": 0.0026019884640876997
+        },
+        "other": {
+          "observed_rate": 0.6457539771454179,
+          "predicted_rate": 0.6561885854906933,
+          "rate_bias": 0.01043460834527539
+        },
+        "so": {
+          "observed_rate": 0.21863096571812682,
+          "predicted_rate": 0.20914407698251467,
+          "rate_bias": -0.009486888735612155
+        },
+        "ubb": {
+          "observed_rate": 0.09248263499887968,
+          "predicted_rate": 0.08768028284416203,
+          "rate_bias": -0.004802352154717647
+        }
+      },
+      "component_brier_score": 0.5247666981074987,
+      "component_log_loss": 0.994667028532838,
+      "players": 146,
+      "target_exposure": 17852
+    },
+    "selected_score": {
+      "calibration": {
+        "hbp": {
+          "observed_rate": 0.012323549182164464,
+          "predicted_rate": 0.013576193263131218,
+          "rate_bias": 0.0012526440809667557
+        },
+        "hr": {
+          "observed_rate": 0.030808872955411157,
+          "predicted_rate": 0.03341086141949886,
+          "rate_bias": 0.0026019884640876997
+        },
+        "other": {
+          "observed_rate": 0.6457539771454179,
+          "predicted_rate": 0.6561885854906933,
+          "rate_bias": 0.01043460834527539
+        },
+        "so": {
+          "observed_rate": 0.21863096571812682,
+          "predicted_rate": 0.20914407698251467,
+          "rate_bias": -0.009486888735612155
+        },
+        "ubb": {
+          "observed_rate": 0.09248263499887968,
+          "predicted_rate": 0.08768028284416203,
+          "rate_bias": -0.004802352154717647
+        }
+      },
+      "component_brier_score": 0.5247666981074987,
+      "component_log_loss": 0.994667028532838,
+      "players": 146,
+      "target_exposure": 17852
+    }
+  },
+  "report_schema_version": "0.1",
+  "status": "development_diagnostic_not_promoted"
+}
