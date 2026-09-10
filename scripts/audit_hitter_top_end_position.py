@@ -19,7 +19,7 @@ def _counts(frame: pl.DataFrame) -> list[dict[str, object]]:
         frame.group_by("primary_position")
         .len(name="players")
         .with_columns((pl.col("players") / total).alias("share"))
-        .sort("players", descending=True)
+        .sort(["players", "primary_position"], descending=[True, False])
         .to_dicts()
     )
 
