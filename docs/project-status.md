@@ -34,6 +34,12 @@ rate. Using it to reweight observed adjacent-season pairs slightly improves the 
 modern aging curve, but that curve still loses to Tango and is not promoted. The
 return model belongs in the opportunity/attrition path, not conditional skill.
 
+The parallel hitter test agrees. Its age/prior-PA return model is strong, and
+survivor weighting slightly improves the fitted component curve, but the curve still
+loses to no aging; Marcel also loses. No hitter skill-aging change is promoted. The
+validated lesson is to strengthen attrition paths without converting survival into a
+talent bonus or penalty.
+
 Uncertainty validation now includes a proper interval score and fixed forecast-time
 participation bands. Aggregate 2025 participation probability is close for hitters
 and pitchers, but both underpredict the observed rate in the 30%–60% forecast band.

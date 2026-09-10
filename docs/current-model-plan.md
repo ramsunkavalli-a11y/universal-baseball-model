@@ -162,6 +162,12 @@ Retain the return model for opportunity/attrition work; do not confuse a good re
 model with evidence that a new conditional skill curve won. See the
 [survivorship-adjusted result](survivorship-adjusted-pitcher-aging-result.md).
 
+The matching hitter test reaches the same structural lesson. Age and prior PA
+strongly predict next-season return, and survivor weighting slightly improves a new
+fitted component curve, but that curve and Marcel both lose to no aging on 2022–2025.
+Keep the no-aging hitter challenger and move the return signal into opportunity, not
+skill. See the [hitter result](survivorship-adjusted-hitter-aging-result.md).
+
 The frozen 2025 uncertainty replay now includes proper interval scores and fixed
 forecast-time participation calibration bands. Aggregate active probabilities are
 close, but both hitters and pitchers are underpredicted in the 30%–60% band. Do not

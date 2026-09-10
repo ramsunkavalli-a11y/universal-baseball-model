@@ -1,0 +1,41 @@
+{
+  "adjusted_selected": false,
+  "development_target_seasons": [
+    2016,
+    2021
+  ],
+  "log_loss": {
+    "raw_returner": {
+      "marcel": 1.0478657288480495,
+      "no_aging": 1.0478414075826143,
+      "survivorship_adjusted_fitted": 1.0480314685596428,
+      "unweighted_fitted": 1.0480548150246562
+    },
+    "survival_standardized": {
+      "marcel": 1.0447596397560446,
+      "no_aging": 1.0447298516454524,
+      "survivorship_adjusted_fitted": 1.0449289181002543,
+      "unweighted_fitted": 1.044952876890682
+    }
+  },
+  "outside_fv_used": false,
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "return_model": {
+    "development_population_probability": 0.6974866996881306,
+    "development_rows": 5451,
+    "model_brier": 0.1439371827673055,
+    "model_log_loss": 0.4339728373938789,
+    "population_brier": 0.21522685718185655,
+    "population_log_loss": 0.6219205980260017,
+    "validation_return_rate": 0.6867825516562808,
+    "validation_rows": 3049
+  },
+  "selection_rule": "adjusted curve must beat no aging, Marcel and the unweighted fitted curve on survival-standardized validation log loss",
+  "status": "survivorship_adjusted_hitter_aging_test_complete",
+  "validation_pairs": 2094,
+  "validation_target_seasons": [
+    2022,
+    2025
+  ]
+}
