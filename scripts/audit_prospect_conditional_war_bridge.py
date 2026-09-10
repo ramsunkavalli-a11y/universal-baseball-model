@@ -12,7 +12,7 @@ from pathlib import Path
 
 import numpy as np
 import polars as pl
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import LogisticRegression, Ridge
 from sklearn.preprocessing import StandardScaler
 
 from universal_baseball.historical_hitter_performance import (
@@ -30,8 +30,11 @@ from universal_baseball.prospect_arrival import (
 )
 from universal_baseball.prospect_arrival_validation import (
     common_continuous_cohort_fingerprint,
+    calibration_diagnostics,
     continuous_scores,
+    paired_bootstrap_difference,
     paired_continuous_bootstrap_difference,
+    proper_scores,
 )
 from universal_baseball.storage import sha256_file
 
@@ -42,6 +45,8 @@ HORIZON = 2
 RIDGE_ALPHA = 100.0
 RATE_REGRESSION = 200.0
 SHORTENED_2020_SCALE = 2.7
+POSITIVE_TAIL_THRESHOLD = 0.25
+TAIL_LOGISTIC_C = 0.1
 CORE_FEATURE_NAMES = (
     "age",
     "current_workload",
@@ -73,6 +78,10 @@ class BridgeFit:
     conditional_mean: float
     training_arrivals: int
     training_outcome_threshold_counts: dict[str, int]
+    tail_model: LogisticRegression
+    tail_rate: float
+    tail_mean_war: float
+    below_tail_mean_war: float
 
 
 def _args() -> argparse.Namespace:
@@ -231,7 +240,9 @@ def _summarize_paths(paths: pl.DataFrame) -> pl.DataFrame:
     )
 
 
-def _subgroups(frame: pl.DataFrame) -> list[dict[str, object]]:
+def _subgroups(
+    frame: pl.DataFrame, *, candidate_column: str = "ridge_prediction"
+) -> list[dict[str, object]]:
     workload = [
         "0" if value == 0 else "1-99" if value < 100 else "100-299" if value < 300 else "300+"
         for value in frame["current_milb_workload"].to_list()
@@ -244,7 +255,7 @@ def _subgroups(frame: pl.DataFrame) -> list[dict[str, object]]:
     }
     y = frame["observed_two_year_component_war"].to_numpy()
     baseline = frame["pooled_prediction"].to_numpy()
-    candidate = frame["ridge_prediction"].to_numpy()
+    candidate = frame[candidate_column].to_numpy()
     arrival_flags = frame["observed_arrival"].to_numpy()
     rows = []
     for dimension, labels in dimensions.items():
@@ -294,6 +305,12 @@ def _fit_bridge(training: pl.DataFrame, *, player_type: str) -> BridgeFit:
         training_arrivals["observed_two_year_component_war"].mean()
     )
     training_y = training_arrivals["observed_two_year_component_war"].to_numpy()
+    tail_target = (training_y >= POSITIVE_TAIL_THRESHOLD).astype(int)
+    if np.unique(tail_target).size != 2:
+        raise ValueError("positive-WAR hurdle requires both training outcomes")
+    tail_model = LogisticRegression(C=TAIL_LOGISTIC_C, max_iter=2_000).fit(
+        scaler.transform(x_train), tail_target
+    )
     return BridgeFit(
         arrival_fit=arrival_fit,
         scaler=scaler,
@@ -304,6 +321,10 @@ def _fit_bridge(training: pl.DataFrame, *, player_type: str) -> BridgeFit:
             f"war_at_least_{threshold:g}": int((training_y >= threshold).sum())
             for threshold in (0.0, 0.25, 0.5, 1.0, 2.0)
         },
+        tail_model=tail_model,
+        tail_rate=float(tail_target.mean()),
+        tail_mean_war=float(training_y[tail_target == 1].mean()),
+        below_tail_mean_war=float(training_y[tail_target == 0].mean()),
     )
 
 
@@ -319,6 +340,13 @@ def _score_bridge(evaluation: pl.DataFrame, fit: BridgeFit) -> dict[str, object]
         production_regression=RATE_REGRESSION,
     )
     conditional_candidate = fit.ridge.predict(fit.scaler.transform(x_outer))
+    tail_probability = fit.tail_model.predict_proba(fit.scaler.transform(x_outer))[
+        :, 1
+    ]
+    hurdle_conditional_war = (
+        tail_probability * fit.tail_mean_war
+        + (1.0 - tail_probability) * fit.below_tail_mean_war
+    )
     probability = scored["predicted_two_year_arrival_probability"].to_numpy()
     scored = scored.with_columns(
         pl.Series(
@@ -327,6 +355,9 @@ def _score_bridge(evaluation: pl.DataFrame, fit: BridgeFit) -> dict[str, object]
         pl.Series("ridge_conditional_war", conditional_candidate),
         pl.Series("pooled_prediction", probability * fit.conditional_mean),
         pl.Series("ridge_prediction", probability * conditional_candidate),
+        pl.Series("hurdle_tail_probability", tail_probability),
+        pl.Series("hurdle_conditional_war", hurdle_conditional_war),
+        pl.Series("hurdle_prediction", probability * hurdle_conditional_war),
     )
     y = scored["observed_two_year_component_war"].to_numpy()
     baseline = scored["pooled_prediction"].to_numpy()
@@ -365,6 +396,85 @@ def _score_bridge(evaluation: pl.DataFrame, fit: BridgeFit) -> dict[str, object]
         }
         for threshold in (0.0, 0.25, 0.5, 1.0, 2.0)
     }
+    outer_tail_target = (
+        outer_conditional_y >= POSITIVE_TAIL_THRESHOLD
+    ).astype(float)
+    outer_tail_probability = tail_probability[arrived]
+    outer_tail_baseline = np.full(arrived.sum(), fit.tail_rate)
+    hurdle_prediction = scored["hurdle_prediction"].to_numpy()
+    hurdle_end_to_end = continuous_scores(y, hurdle_prediction)
+    hurdle_conditional = continuous_scores(
+        outer_conditional_y, hurdle_conditional_war[arrived]
+    )
+    hurdle_decision_checks = {
+        "tail_log_loss_improved": bool(
+            proper_scores(outer_tail_target, outer_tail_probability)["log_loss"]
+            < proper_scores(outer_tail_target, outer_tail_baseline)["log_loss"]
+        ),
+        "tail_brier_improved": bool(
+            proper_scores(outer_tail_target, outer_tail_probability)["brier"]
+            < proper_scores(outer_tail_target, outer_tail_baseline)["brier"]
+        ),
+        "end_to_end_rmse_not_worse": bool(
+            hurdle_end_to_end["rmse"] <= end_to_end_baseline["rmse"]
+        ),
+        "end_to_end_mae_not_worse": bool(
+            hurdle_end_to_end["mae"] <= end_to_end_baseline["mae"]
+        ),
+        "absolute_bias_not_worse": bool(
+            abs(hurdle_end_to_end["bias"]) <= abs(end_to_end_baseline["bias"])
+        ),
+        "arrived_player_rmse_not_worse": bool(
+            hurdle_conditional["rmse"] <= conditional_baseline["rmse"]
+        ),
+    }
+    positive_tail_hurdle = {
+        "threshold_war": POSITIVE_TAIL_THRESHOLD,
+        "training_tail_rate": fit.tail_rate,
+        "training_tail_mean_war": fit.tail_mean_war,
+        "training_below_tail_mean_war": fit.below_tail_mean_war,
+        "logistic_c": TAIL_LOGISTIC_C,
+        "outer_tail_positives": int(outer_tail_target.sum()),
+        "tail_probability_baseline": proper_scores(
+            outer_tail_target, outer_tail_baseline
+        ),
+        "tail_probability_candidate": proper_scores(
+            outer_tail_target, outer_tail_probability
+        ),
+        "tail_probability_paired_difference": paired_bootstrap_difference(
+            outer_tail_target,
+            outer_tail_baseline,
+            outer_tail_probability,
+        ),
+        "tail_probability_calibration": calibration_diagnostics(
+            outer_tail_target, outer_tail_probability, bins=5
+        ),
+        "end_to_end_baseline": end_to_end_baseline,
+        "end_to_end_candidate": hurdle_end_to_end,
+        "end_to_end_paired_difference": paired_continuous_bootstrap_difference(
+            y, baseline, hurdle_prediction, seed=20261001
+        ),
+        "conditional_on_arrival_baseline": conditional_baseline,
+        "conditional_on_arrival_candidate": hurdle_conditional,
+        "decision_checks": hurdle_decision_checks,
+        "passed_point_stability_gate": all(hurdle_decision_checks.values()),
+        "cohort_fingerprint": common_continuous_cohort_fingerprint(
+            scored["player_id"].to_numpy(),
+            y,
+            {"pooled": baseline, "positive_tail_hurdle": hurdle_prediction},
+        ),
+        "standardized_logistic_coefficients": sorted(
+            (
+                {"feature": feature, "coefficient": float(coefficient)}
+                for feature, coefficient in zip(
+                    CORE_FEATURE_NAMES, fit.tail_model.coef_[0], strict=True
+                )
+            ),
+            key=lambda row: abs(row["coefficient"]),
+            reverse=True,
+        ),
+        "subgroups": _subgroups(scored, candidate_column="hurdle_prediction"),
+    }
     return {
         "players": scored.height,
         "training_arrivals": fit.training_arrivals,
@@ -383,6 +493,7 @@ def _score_bridge(evaluation: pl.DataFrame, fit: BridgeFit) -> dict[str, object]
         "decision_checks": decision_checks,
         "promising_development_evidence": all(decision_checks.values()),
         "observed_outcome_threshold_counts": outcome_thresholds,
+        "positive_tail_hurdle": positive_tail_hurdle,
         "cohort_fingerprint": common_continuous_cohort_fingerprint(
             scored["player_id"].to_numpy(),
             y,
@@ -426,6 +537,7 @@ def main() -> int:
     stability_plan_path = Path(
         "docs/prospect-conditional-war-bridge-stability-plan.md"
     )
+    tail_plan_path = Path("docs/prospect-positive-war-hurdle-plan.md")
     runs_per_win = float(
         json.loads(environment_path.read_text(encoding="utf-8"))["runs_per_win"]
     )
@@ -450,6 +562,7 @@ def main() -> int:
         environment_path,
         plan_path,
         stability_plan_path,
+        tail_plan_path,
     ]
     results = {}
     stability_results = {}
@@ -529,6 +642,17 @@ def main() -> int:
         for years in stability_results.values()
         for result in years.values()
     )
+    tail_stability_passed = all(
+        result["positive_tail_hurdle"]["passed_point_stability_gate"]
+        for result in (
+            *results.values(),
+            *(
+                result
+                for years in stability_results.values()
+                for result in years.values()
+            ),
+        )
+    )
     report = {
         "report_schema_version": 1,
         "as_of_date": args.as_of_date.isoformat(),
@@ -544,6 +668,16 @@ def main() -> int:
         },
         "stability_results": stability_results,
         "stability_passed": stability_passed,
+        "positive_tail_protocol": {
+            "fit_origin": TRAINING_ORIGIN,
+            "evaluation_origins": [2021, 2022, 2023],
+            "horizon_years": HORIZON,
+            "threshold_war": POSITIVE_TAIL_THRESHOLD,
+            "logistic_c": TAIL_LOGISTIC_C,
+            "refit_or_recalibration": False,
+            "frozen_plan_sha256": sha256_file(tail_plan_path),
+        },
+        "positive_tail_stability_passed": tail_stability_passed,
         "boundaries": {
             "all_non_arrivals_retained": True,
             "demographics_used_as_talent": False,
@@ -571,6 +705,24 @@ def main() -> int:
     hitter_2023 = stability_results["hitter"]["2023"]
     pitcher_2022 = stability_results["pitcher"]["2022"]
     pitcher_2023 = stability_results["pitcher"]["2023"]
+    tail_rows = []
+    for player_type, yearly in (
+        ("Hitter", {"2021": hitter, **stability_results["hitter"]}),
+        ("Pitcher", {"2021": pitcher, **stability_results["pitcher"]}),
+    ):
+        for origin, result in yearly.items():
+            tail = result["positive_tail_hurdle"]
+            tail_rows.append(
+                "| "
+                f"{player_type} {origin} | "
+                f"{tail['tail_probability_baseline']['log_loss']:.3f} | "
+                f"{tail['tail_probability_candidate']['log_loss']:.3f} | "
+                f"{tail['tail_probability_baseline']['brier']:.3f} | "
+                f"{tail['tail_probability_candidate']['brier']:.3f} | "
+                f"{tail['end_to_end_baseline']['rmse']:.3f} | "
+                f"{tail['end_to_end_candidate']['rmse']:.3f} |"
+            )
+    tail_table = "\n".join(tail_rows)
     markdown = f"""# Prospect conditional-WAR bridge result
 
 Status: **retrospective development; no production change**.
@@ -610,6 +762,17 @@ Stability gate: **{stability_passed}**. Hitter arrived-player RMSE worsens in bo
 later cohorts. Pitcher absolute bias worsens in both, and later paired MSE intervals
 cross zero. The unchanged bridge is rejected as a stable replacement; its typical-row
 MAE signal remains useful evidence for a later positive-tail model.
+
+## Positive-WAR hurdle
+
+| Type / origin | Base log loss | Hurdle log loss | Base Brier | Hurdle Brier | Base WAR RMSE | Hurdle WAR RMSE |
+|---|---:|---:|---:|---:|---:|---:|
+{tail_table}
+
+Positive-tail stability gate: **{tail_stability_passed}**. The hitter probability
+gain reverses in 2022 and is mixed in 2023. Pitcher probability gains are uncertain
+in 2021-2022 and reverse in 2023. The fixed hurdle is rejected. Its repeated MAE
+benefit does not establish stable positive-tail identification.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)

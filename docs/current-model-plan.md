@@ -174,6 +174,11 @@ It uses the supported `0.25` two-year component-WAR threshold, one fixed strongl
 regularized logistic model, unchanged 2018 group means and unchanged arrival odds.
 It must pass probability and continuous-value checks across 2021-2023 without refit.
 
+The fixed positive-WAR hurdle fails. Its 2021 hitter probability gain reverses in
+2022; pitcher probability gains are uncertain and reverse by 2023. Do not search more
+thresholds, penalties or aggregate-core interactions on these disclosed cohorts. The
+next positive-tail attempt requires a new evidence class or broader historical source.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

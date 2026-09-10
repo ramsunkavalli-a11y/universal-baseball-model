@@ -62,6 +62,14 @@ cohort contains 69 hitter and 114 pitcher positives; every 2021-2023 outer cohor
 at least 51 hitter and 68 pitcher positives. The `1+` and `2+` WAR tails are too sparse
 for the first universal hurdle. This inventory selects support, not a winning model.
 
+The precommitted [positive-WAR hurdle](prospect-positive-war-hurdle-plan.md) is also
+complete and rejected. Hitter tail probabilities improve in 2021, reverse in 2022 and
+are mixed in 2023. Pitcher gains are small and uncertain in 2021-2022, then reverse in
+2023. End-to-end MAE improves almost everywhere, but the classifier does not stably
+identify the material positive tail. This closes further penalty, threshold and
+recalibration searches on the same aggregate core inputs. A later tail challenger
+needs genuinely new cutoff-safe evidence or a broader older history.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still
@@ -849,7 +857,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,447 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,448 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

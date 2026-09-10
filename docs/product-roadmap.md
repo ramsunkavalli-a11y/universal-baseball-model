@@ -188,6 +188,12 @@ paired MSE gains are uncertain. Reject the ridge replacement. Its consistent
 typical-player MAE improvement motivates a separate positive-tail hurdle, not
 recalibration, clipping or penalty tuning on the disclosed cohorts.
 
+A separately frozen `0.25` WAR positive-tail hurdle also fails unchanged 2021-2023
+testing. Hitter probability gains reverse in 2022; pitcher gains are uncertain and
+reverse in 2023. This closes threshold and regularization searches on the same core
+aggregate inputs. New tail work must add cutoff-safe evidence rather than mine the
+disclosed cohorts.
+
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.
 10. Improve defense, two-way-player handling, interval calibration, nonlinear buyer

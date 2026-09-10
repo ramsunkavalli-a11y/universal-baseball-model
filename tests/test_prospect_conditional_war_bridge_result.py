@@ -74,3 +74,30 @@ def test_unchanged_bridge_fit_fails_later_stability_gate_as_declared() -> None:
         )
         assert pitcher["decision_checks"]["absolute_bias_not_worse"] is False
         assert pitcher["paired_difference"]["mse"]["ci_high"] >= 0
+
+
+def test_positive_war_hurdle_reverses_on_later_cohorts() -> None:
+    report = json.loads(REPORT.read_text(encoding="utf-8"))
+    protocol = report["positive_tail_protocol"]
+    assert protocol["threshold_war"] == 0.25
+    assert protocol["logistic_c"] == 0.1
+    assert protocol["evaluation_origins"] == [2021, 2022, 2023]
+    assert protocol["refit_or_recalibration"] is False
+    assert protocol["frozen_plan_sha256"] == sha256(
+        (ROOT / "docs/prospect-positive-war-hurdle-plan.md").read_bytes()
+    ).hexdigest()
+    assert report["positive_tail_stability_passed"] is False
+
+    hitter_2022 = report["stability_results"]["hitter"]["2022"][
+        "positive_tail_hurdle"
+    ]
+    pitcher_2023 = report["stability_results"]["pitcher"]["2023"][
+        "positive_tail_hurdle"
+    ]
+    for result in (hitter_2022, pitcher_2023):
+        assert result["tail_probability_candidate"]["log_loss"] > result[
+            "tail_probability_baseline"
+        ]["log_loss"]
+        assert result["tail_probability_candidate"]["brier"] > result[
+            "tail_probability_baseline"
+        ]["brier"]

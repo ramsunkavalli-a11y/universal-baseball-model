@@ -37,3 +37,19 @@ Stability gate: **False**. Hitter arrived-player RMSE worsens in both
 later cohorts. Pitcher absolute bias worsens in both, and later paired MSE intervals
 cross zero. The unchanged bridge is rejected as a stable replacement; its typical-row
 MAE signal remains useful evidence for a later positive-tail model.
+
+## Positive-WAR hurdle
+
+| Type / origin | Base log loss | Hurdle log loss | Base Brier | Hurdle Brier | Base WAR RMSE | Hurdle WAR RMSE |
+|---|---:|---:|---:|---:|---:|---:|
+| Hitter 2021 | 0.655 | 0.618 | 0.231 | 0.214 | 0.428 | 0.418 |
+| Hitter 2022 | 0.648 | 0.666 | 0.228 | 0.235 | 0.259 | 0.254 |
+| Hitter 2023 | 0.633 | 0.633 | 0.220 | 0.220 | 0.304 | 0.296 |
+| Pitcher 2021 | 0.663 | 0.659 | 0.235 | 0.234 | 0.234 | 0.232 |
+| Pitcher 2022 | 0.693 | 0.687 | 0.250 | 0.246 | 0.245 | 0.244 |
+| Pitcher 2023 | 0.688 | 0.701 | 0.247 | 0.252 | 0.269 | 0.270 |
+
+Positive-tail stability gate: **False**. The hitter probability
+gain reverses in 2022 and is mixed in 2023. Pitcher probability gains are uncertain
+in 2021-2022 and reverse in 2023. The fixed hurdle is rejected. Its repeated MAE
+benefit does not establish stable positive-tail identification.
