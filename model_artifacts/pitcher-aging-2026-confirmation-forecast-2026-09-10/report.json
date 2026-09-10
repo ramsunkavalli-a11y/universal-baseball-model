@@ -1,0 +1,39 @@
+{
+  "2026_outcomes_read": false,
+  "contract_path": "docs/pitcher-aging-2026-confirmation-contract.md",
+  "contract_sha256": "a1f8f86ceb2f0d3b8cb666cec4411aac2398eea6a68a13f156b65ef9bdcadb0f",
+  "forecast_as_of_date": "2025-10-15",
+  "no_aging_expected_war": 474.05153461009405,
+  "players": 5206,
+  "report_schema_version": "0.1",
+  "runner_path": "scripts/freeze_pitcher_aging_2026_confirmation.py",
+  "runner_sha256": "55797522975742db3a49610ee059f3fcb72270e5168b6830dc6650e67d0f8f60",
+  "source_files": {
+    "reports/generated/free-agent-historical-skill-source/2025-12-31/report.json": "ac671977128be5421f6b5fa942e6881da923a551def659914e56779bb2488f3b",
+    "reports/generated/free-agent-historical-skill-source/2025-12-31/tables/mlb_pitching_components.parquet": "58cad7d4e24e67331e36c7f9a6ddf30c7238cd6a7d3589f619d4bbcdacac35d3",
+    "reports/generated/historical-projection-paths/2025-10-15/tables/pitcher-expected-war-paths.parquet": "5779da1ac0fc04baaaaadf6d0bdae1fce6f1802748d276893e7a33a44d0a700a"
+  },
+  "status": "frozen_before_2026_outcome_access",
+  "storage": {
+    "no_aging": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "f9f0a16d7ab60f57d5bf0abb115284031d86261113385537c43b265e49725f41",
+      "file_size_bytes": 312497,
+      "path": "model_artifacts\\pitcher-aging-2026-confirmation-forecast-2026-09-10\\no-aging.parquet",
+      "row_count": 5206,
+      "schema_sha256": "1bcb672e6a3493d59c400b522e11ae3370ac8a305d46c6e35a05989dfe04bf31",
+      "table_name": "pitcher_aging_2026_no_aging_forecast"
+    },
+    "tango": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "940dda76794143447b16c962e3b97398cc6d1fc21fd5183332ce03823829f1ef",
+      "file_size_bytes": 292046,
+      "path": "model_artifacts\\pitcher-aging-2026-confirmation-forecast-2026-09-10\\tango-aging.parquet",
+      "row_count": 5206,
+      "schema_sha256": "1bcb672e6a3493d59c400b522e11ae3370ac8a305d46c6e35a05989dfe04bf31",
+      "table_name": "pitcher_aging_2026_tango_forecast"
+    }
+  },
+  "tango_expected_war": 449.65767274247213,
+  "target_season": 2026
+}

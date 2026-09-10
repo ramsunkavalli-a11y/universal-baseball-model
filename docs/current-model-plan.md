@@ -126,6 +126,12 @@ aging 581.5. The hashes and decision rule are locked in
 `model_artifacts/hitter-aging-2026-confirmation-forecast-2026-09-10/`. Do not score it
 until the regular season is complete and official totals have stabilized.
 
+The matching pitcher confirmation is frozen on 5,206 identical rows from the same
+October 15, 2025 evidence. Tango aging projects 449.7 pitcher WAR and no aging 474.1;
+only the age treatment differs. Its fixed gate tests component loss, zero-inclusive
+WAR error, aggregate bias and supported age bands after final 2026 totals. The frozen
+files live under `model_artifacts/pitcher-aging-2026-confirmation-forecast-2026-09-10/`.
+
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.
