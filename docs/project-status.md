@@ -70,6 +70,17 @@ identify the material positive tail. This closes further penalty, threshold and
 recalibration searches on the same aggregate core inputs. A later tail challenger
 needs genuinely new cutoff-safe evidence or a broader older history.
 
+That broader-history test is now complete. A chronology audit first removed 2011–2012
+from training because their outcomes overlap the first evaluation snapshot. One model
+was then fitted on 2008–2010 and applied unchanged to 2013–2017 and 2021–2023. Basic
+age, level, workload and role
+improve both probability scores in only 1/5 old hitter years and 0/3 modern hitter
+years; pitchers improve in 2/5 old years and 0/3 modern years. Pooled uncertainty
+crosses zero, and many supported groups reverse. The
+[full result](prospect-broad-history-positive-tail-result.md) rejects this basic tail
+family and makes no production change. Do not tune these inputs again against the
+disclosed years. The next tail test needs genuinely richer dated performance evidence.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still

@@ -179,6 +179,14 @@ The fixed positive-WAR hurdle fails. Its 2021 hitter probability gain reverses i
 thresholds, penalties or aggregate-core interactions on these disclosed cohorts. The
 next positive-tail attempt requires a new evidence class or broader historical source.
 
+The broader-history attempt is also complete and rejected. A chronology audit removed
+2011–2012 from training before corrected scoring because their outcomes overlap the
+first evaluation snapshot. The fixed 2008–2010 fit does not reliably carry into either
+2013–2017 or 2021–2023. This closes age, level, workload and broad role alone as the
+conditional positive-WAR solution. Preserve the
+[result](prospect-broad-history-positive-tail-result.md), leave production unchanged,
+and require richer cutoff-dated performance evidence for the next challenger.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and
