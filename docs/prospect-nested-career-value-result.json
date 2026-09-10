@@ -12,7 +12,7 @@
   },
   "by_player_type": {
     "hitter": {
-      "incumbent_expected_war": 3728.5967202968036,
+      "incumbent_expected_war": 3729.1002488693352,
       "incumbent_fv_counts": {
         "40": 1904,
         "45": 843,
@@ -20,10 +20,10 @@
         "55": 80,
         "60": 24
       },
-      "mean_arrival_probability": 0.15367906182618052,
-      "mean_established_probability": 0.025616411476077603,
-      "mean_meaningful_probability": 0.05372080999396217,
-      "nested_expected_war": 695.3231257462535,
+      "mean_arrival_probability": 0.15369470797328988,
+      "mean_established_probability": 0.025631714405265425,
+      "mean_meaningful_probability": 0.05373896405348782,
+      "nested_expected_war": 695.7036650042519,
       "nested_fv_counts": {
         "40": 545,
         "45": 119,
@@ -34,7 +34,7 @@
       "players": 2870
     },
     "pitcher": {
-      "incumbent_expected_war": 273.7314581778595,
+      "incumbent_expected_war": 276.44698582778864,
       "incumbent_fv_counts": {
         "40": 756,
         "45": 131,
@@ -42,10 +42,10 @@
         "55": 1,
         "60": 0
       },
-      "mean_arrival_probability": 0.12750636238722407,
-      "mean_established_probability": 0.021316022912488044,
-      "mean_meaningful_probability": 0.04535526455716475,
-      "nested_expected_war": 24.236710809953774,
+      "mean_arrival_probability": 0.12760845187231593,
+      "mean_established_probability": 0.021330721334398384,
+      "mean_meaningful_probability": 0.0453465746137549,
+      "nested_expected_war": 24.4644627148301,
       "nested_fv_counts": {
         "40": 57,
         "45": 7,
@@ -58,11 +58,11 @@
   },
   "contract": "docs/prospect-nested-career-value-plan.md",
   "external_fv_check": {
-    "incumbent_bias": -6.601837176972947,
-    "incumbent_mae": 9.302814506529854,
-    "nested_bias": -17.058985240878854,
-    "nested_mae": 17.058985240878854,
-    "players": 76,
+    "incumbent_bias": -6.013220838360269,
+    "incumbent_mae": 8.94117687660762,
+    "nested_bias": -16.40636047597836,
+    "nested_mae": 16.40636047597836,
+    "players": 83,
     "role": "diagnostic_only_not_model_input"
   },
   "method": "nested role masses capped by direct unconditional six-year estimates; disjoint tiers use mature workload priors and existing conditional WAR rates",
@@ -88,8 +88,8 @@
   "status": "private_nested_career_value_sensitivity_complete",
   "storage": {
     "canonical_schema_version": "0.1",
-    "file_sha256": "979b48ab4c5e9cf78e13d638c1877fbd3d47355c7da5adae577d68127180a14a",
-    "file_size_bytes": 1186586,
+    "file_sha256": "ab648af2f046b8b092219076087eb52f59be48aeb20383cdf4a70e8d24c0986a",
+    "file_size_bytes": 1241972,
     "path": "reports\\generated\\phase2-nested-career-fv\\2026-09-08\\nested-career-model-fv.parquet",
     "row_count": 9194,
     "schema_sha256": "814f7712f5df5c36279065d27c5f4efe0b7dff0c4783019582043a39c1d75892",

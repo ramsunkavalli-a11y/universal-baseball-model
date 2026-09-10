@@ -77,6 +77,11 @@ def _args() -> argparse.Namespace:
             "people-debut-dates.parquet"
         ),
     )
+    parser.add_argument(
+        "--draft-history-path",
+        type=Path,
+        default=Path("reports/generated/draft-history/draft-history.parquet"),
+    )
     return parser.parse_args()
 
 
@@ -209,6 +214,7 @@ def main() -> int:
     )
     demographics = pl.read_parquet(args.demographics_path)
     debut_dates = pl.read_parquet(args.debut_dates_path)
+    draft_history = pl.read_parquet(args.draft_history_path)
     output = args.output_root / dated
     output.mkdir(parents=True, exist_ok=True)
     reports: dict[str, object] = {}
@@ -224,6 +230,7 @@ def main() -> int:
                 snapshot_year=year, horizon=2,
                 player_type=player_type,
                 demographics=demographics,
+                draft_history=draft_history,
             )
             for year in TRAINING_YEARS
         }
@@ -277,6 +284,8 @@ def main() -> int:
         predictors = build_current_arrival_predictors(
             current_snapshot, current_stats, control, skill, player_type=player_type,
             demographics=demographics,
+            draft_history=draft_history,
+            as_of_date=args.as_of_date,
         )
         scored = predict_arrival(fit, predictors)
         role_fit = fit_arrival_model(
@@ -446,6 +455,7 @@ def main() -> int:
         "boundaries": {
             "publication_grades_used": False, "future_team_depth_used": False,
             "organization_feature_used": False,
+            "official_rule4_draft_fields_materialized": True,
             "features": (
                 "age, highest and workload-weighted primary level, primary-level "
                 "share, position/role, current and prior workload, "

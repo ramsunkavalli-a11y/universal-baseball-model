@@ -156,6 +156,7 @@ def _arrivals(root: Path, dated: str) -> pl.DataFrame:
                 "player_id",
                 pl.lit(player_type).alias("arrival_player_type"),
                 "age_years",
+                "age_evidence_source",
                 "level_tier",
                 "current_milb_workload",
                 "primary_level_tier",

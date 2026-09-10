@@ -40,6 +40,15 @@ def explain_player(row: dict[str, Any]) -> str:
         f"{_number(row.get('expected_workload'), 0)} expected six-year workload",
         f"{_number(row.get('expected_six_year_war'), 2)} expected WAR",
     ]
+    if row.get("rule4_drafted"):
+        parts.append(
+            "Rule 4 draft evidence present"
+            + (
+                f" (pick-quality score {_number(row.get('draft_pick_quality'), 2)})"
+                if row.get("draft_pick_quality") is not None
+                else ""
+            )
+        )
     if player_type == "hitter":
         parts.append(
             "runs/600: "
@@ -90,6 +99,8 @@ def review_flags(row: dict[str, Any]) -> list[str]:
     evidence = str(row.get("skill_evidence_tier") or "").lower()
     if any(word in evidence for word in ("fallback", "population", "missing")):
         flags.append("fallback_skill_evidence")
+    if row.get("age_evidence_source") == "missing_fallback_24":
+        flags.append("missing_age_fallback")
     rate = row.get("conditional_skill_war_rate")
     if rate is not None and (float(rate) > 5.0 or float(rate) < -1.5):
         flags.append("extreme_conditional_skill_rate")

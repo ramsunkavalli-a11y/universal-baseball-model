@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import date
 from hashlib import sha256
 from math import log
 
@@ -444,13 +445,14 @@ def _join_demographics(
     frame: pl.DataFrame, demographics: pl.DataFrame | None
 ) -> pl.DataFrame:
     columns = (
-        "height_inches", "weight_pounds", "bat_side", "pitch_hand",
+        "birth_date", "height_inches", "weight_pounds", "bat_side", "pitch_hand",
         "birth_country", "birth_city", "birth_state_province",
         "strike_zone_top", "strike_zone_bottom", "gender",
         "primary_position_code",
     )
     if demographics is None:
         return frame.with_columns(
+            pl.lit(None, dtype=pl.String).alias("birth_date"),
             pl.lit(None, dtype=pl.Float64).alias("height_inches"),
             pl.lit(None, dtype=pl.Float64).alias("weight_pounds"),
             pl.lit(None, dtype=pl.String).alias("bat_side"),
@@ -469,6 +471,30 @@ def _join_demographics(
     return frame.join(
         demographics.select("player_id", *columns),
         on="player_id", how="left", validate="m:1",
+    )
+
+
+def _add_current_age_evidence(
+    frame: pl.DataFrame, *, as_of_date: date
+) -> pl.DataFrame:
+    """Use stable birth date before the explicit missing-age fallback."""
+
+    if {"age_years", "birth_date"} - set(frame.columns):
+        raise ValueError("current age evidence requires age_years and birth_date")
+    birth_date = pl.col("birth_date").cast(pl.Date, strict=False)
+    derived_age = (
+        (pl.lit(as_of_date, dtype=pl.Date) - birth_date).dt.total_days() / 365.2425
+    )
+    return frame.with_columns(
+        pl.when(pl.col("age_years").is_not_null())
+        .then(pl.lit("snapshot"))
+        .when(birth_date.is_not_null())
+        .then(pl.lit("birth_date"))
+        .otherwise(pl.lit("missing_fallback_24"))
+        .alias("age_evidence_source"),
+        pl.coalesce(pl.col("age_years"), derived_age, pl.lit(24.0))
+        .clip(16.0, 30.0)
+        .alias("age_years"),
     )
 
 
@@ -678,12 +704,15 @@ def build_current_arrival_predictors(
     player_type: str,
     demographics: pl.DataFrame | None = None,
     draft_history: pl.DataFrame | None = None,
+    as_of_date: date | None = None,
 ) -> pl.DataFrame:
     """Build current features for players with an official no-debut state."""
 
     if player_type not in {"hitter", "pitcher"}:
         raise ValueError("player_type must be hitter or pitcher")
     snapshot_year = int(current_stats.get_column("season").max())
+    if as_of_date is None:
+        as_of_date = date(snapshot_year, 7, 1)
     production = _production_features(
         skill_stats, current_stats, snapshot_year=snapshot_year, player_type=player_type
     )
@@ -699,7 +728,6 @@ def build_current_arrival_predictors(
         .join(production, on="player_id", how="left", validate="1:1")
         .join(development, on="player_id", how="left", validate="1:1")
         .with_columns(
-            pl.col("age_years").fill_null(24.0).clip(16.0, 30.0),
             pl.col("on_40man").fill_null(False),
             pl.col("as_of_level_group").map_elements(
                 hitter_level_tier, return_dtype=pl.String
@@ -709,13 +737,17 @@ def build_current_arrival_predictors(
     return (
         _fill_predictor_nulls(
             _join_pedigree(
-                _join_demographics(result, demographics),
+                _add_current_age_evidence(
+                    _join_demographics(result, demographics),
+                    as_of_date=as_of_date,
+                ),
                 draft_history,
                 snapshot_year=snapshot_year,
             )
         )
         .select(
-            "player_id", "age_years", "level_tier", "current_milb_workload",
+            "player_id", "age_years", "age_evidence_source", "level_tier",
+            "current_milb_workload",
             "primary_level_tier",
             "primary_level_workload_share",
             "level_progression", "seasons_since_affiliated_activity",

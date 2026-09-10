@@ -1,6 +1,6 @@
 # Prospect top-50 ranking audit checkpoint
 
-**Status:** first comparison complete; ranking gate remains open  
+**Status:** first comparison and source-wiring repair complete; ranking gate remains open
 **As of:** 2026-09-08 model and FanGraphs snapshots
 
 ## What the first comparison says
@@ -70,6 +70,20 @@ production arrival model because subgroup and quality gates were mixed. The next
 candidate should use pedigree only for arrival/role probability, retain strong
 pooling, and never make it a WAR bonus or FV floor.
 
+The audit also found two source-wiring defects in this group. The current scorer used
+a blanket age-24 fallback before checking available birth dates, and it did not pass
+the already captured Rule 4 draft table into the current predictor builder. Birth-date
+age is now recovered for 822 modeled pre-MLB player/type rows; only one current hitter
+still needs the explicit age-24 fallback. Official draft fields are now materialized
+for explanation and future testing, but they do not affect the current production
+formula.
+
+The rebuild uses snapshot age for 6,165 player/type rows and birth-date age for the
+remaining 822. One hitter has neither and retains the explicit age-24 fallback. Rule 4
+history is attached to 1,029 hitters and 1,600 pitchers. Corrected ages flow through
+arrival and value; draft fields remain explanation-only and therefore do not change a
+projection.
+
 ### Open P1: proximity versus upside
 
 Most model-only top-50 hitters are at AA or AAA with high arrival odds. This is valid
@@ -83,4 +97,5 @@ Running `scripts/audit_prospect_top50_rankings.py` creates a local HTML comparis
 two CSV files, two canonical Parquet tables and a JSON report under
 `reports/generated/prospect-top50-ranking-audit/<date>/`.
 
-No player value or playable ranking changed at this checkpoint.
+Playable values were rebuilt only because the age-source defect was repaired. No
+formula, public-rank input, draft bonus, FV floor or named-player override was added.

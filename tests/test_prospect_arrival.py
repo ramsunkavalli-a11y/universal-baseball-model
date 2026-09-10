@@ -4,6 +4,7 @@ import polars as pl
 import pytest
 
 from universal_baseball.prospect_arrival import (
+    _add_current_age_evidence,
     arrival_design,
     build_arrival_cohort,
     fit_arrival_model,
@@ -14,6 +15,27 @@ from universal_baseball.prospect_arrival import (
     _primary_hitter_positions,
     _role_tier,
 )
+
+
+def test_current_age_uses_birth_date_before_missing_fallback() -> None:
+    frame = pl.DataFrame(
+        {
+            "player_id": [1, 2, 3],
+            "age_years": [21.0, None, None],
+            "birth_date": ["2000-01-01", "2005-05-24", None],
+        }
+    )
+
+    result = _add_current_age_evidence(frame, as_of_date=date(2026, 9, 8))
+
+    assert result.get_column("age_evidence_source").to_list() == [
+        "snapshot",
+        "birth_date",
+        "missing_fallback_24",
+    ]
+    assert result.item(0, "age_years") == 21.0
+    assert result.item(1, "age_years") == pytest.approx(21.29, abs=0.01)
+    assert result.item(2, "age_years") == 24.0
 
 
 def test_primary_affiliated_level_uses_workload_not_highest_level_touched() -> None:
