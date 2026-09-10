@@ -197,6 +197,14 @@ Sanchez's 2027 mutual option; the official Brewers announcement omits the amount
 FanGraphs reports `TBD`, and Spotrac has no exercise price. See the
 [contract review visibility result](contract-review-visibility-result-2026-09-10.md).
 
+The other twelve private-preview reviews are now diagnosed rather than grouped under
+a generic economics error. They are pre-2026 MLB players absent from the supplied
+opening service files, all currently off the 40-man roster. Their maximum six-year WAR
+projection is 0.302 and maximum separate talent benchmark is $2.02M. Keep them
+unranked, label the missing opening balance, and prioritize a dated service backfill
+only if roster status or materiality changes. See the
+[service review audit](unresolved-service-review-materiality-2026-09-10.md).
+
 The harness now covers continuous career WAR as well. On the common pitcher replay,
 the arrival-only linked path improves RMSE `0.558 -> 0.551` but worsens MAE
 `0.154 -> 0.199`, with a wholly unfavorable paired MAE interval. On hitters it

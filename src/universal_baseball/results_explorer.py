@@ -170,6 +170,7 @@ def build_explorer_payload(
                 "value_low": row["transferable_value_lower_dollars"],
                 "value_high": row["transferable_value_upper_dollars"],
                 "value_method": value_method,
+                "value_review_reason": row.get("value_review_reason"),
                 "model_fv": row.get("model_fv_display"),
                 "model_fv_granular": row.get("model_fv_granular"),
                 "model_role": row.get("model_role"),

@@ -130,6 +130,11 @@ and the exact unresolved reasons; they remain unranked. Gary Sanchez's 2027 mutu
 option salary remains undisclosed across the official Brewers announcement, FanGraphs
 (`TBD`) and Spotrac, so it is not estimated.
 
+The other twelve reviews are now labeled as missing opening service balances rather
+than generic contract failures. All are off the 40-man roster; the largest projects
+0.302 six-year WAR and a $2.02M separate talent benchmark. Leave them unranked until a
+dated service source exists or their roster/value materiality changes.
+
 The September 10 official-debut correction is also active: 104 hitter and 154 pitcher
 historical cohort records were removed, the arrival model was refit without retuning,
 and the downstream value/explorer lineage is hash-checked.

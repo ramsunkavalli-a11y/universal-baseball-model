@@ -157,6 +157,7 @@ def main() -> int:
         released = old["rights_state"] == "no_incumbent_rights"
         annual = annual_by_id.get(player_id)
         aggregate = aggregate_by_id.get(player_id)
+        value_review_reason = ""
         controlled_war = war_lower = war_upper = None
         calculated_years = review_years = 0
         calculated_cost = calculated_value = calculated_value_lower = calculated_value_upper = None
@@ -201,11 +202,29 @@ def main() -> int:
             value = lower = upper = cost = controlled_war = war_lower = war_upper = None
             method = "missing_internal_model_fv"
             coverage = "review_non_debuted_without_model_fv"
+            value_review_reason = "internal pre-MLB value model is missing"
         elif aggregate is None or aggregate["calculation_status"] != "available":
             status = "review"
             value = lower = upper = cost = war_lower = war_upper = None
-            method = "phase2_mlb_contract_economics_review"
-            coverage = "review_missing_or_blocked_economics"
+            if aggregate is None and player["service_days"] is None:
+                method = "review_unresolved_prior_mlb_service"
+                coverage = "review_missing_opening_service_balance"
+                value_review_reason = (
+                    "MLB service before 2026 is not present in the supplied "
+                    "FanGraphs opening files; no control path was guessed"
+                )
+            else:
+                method = "phase2_mlb_contract_economics_review"
+                coverage = "review_missing_or_blocked_economics"
+                if annual is not None:
+                    value_review_reason = "; ".join(
+                        annual.filter(pl.col("calculation_status") != "available")
+                        .get_column("review_reason")
+                        .unique(maintain_order=True)
+                        .to_list()
+                    )
+                else:
+                    value_review_reason = "contract economics path is unavailable"
         else:
             status = "available"
             value = float(aggregate["discounted_contract_value_dollars"])
@@ -239,6 +258,7 @@ def main() -> int:
                 "transferable_value_lower_dollars": lower,
                 "transferable_value_upper_dollars": upper,
                 "value_method": method,
+                "value_review_reason": value_review_reason,
                 "model_fv_granular": (
                     None if fv is None else nested["three_tier_model_fv_granular"]
                     if no_debut and nested is not None else fv["model_fv_granular"]

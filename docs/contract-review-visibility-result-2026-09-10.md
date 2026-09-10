@@ -20,7 +20,10 @@ The 2026-09-08 private preview still has 8,393 players, 8,370 usable values and 
 reviews. Eleven reviews are the known contract-option group: 16 annual rows consisting
 of 12 future vesting decisions, three linked Julio Rodriguez years and Gary Sanchez's
 2027 mutual option. The other 12 reviewed players have no joined economics path, so no
-subtotal is invented for them.
+subtotal is invented for them. Those rows are now labeled separately as missing an
+opening MLB service balance; they are not described as contract-option problems. The
+[materiality audit](unresolved-service-review-materiality-2026-09-10.md) confirms all
+twelve are off the 40-man roster and currently low-value.
 
 All eleven option-review players now expose their calculable-year subtotal. Their full
 value remains blank and they receive no rank. This preserves the existing fail-closed
@@ -46,4 +49,3 @@ Sources:
 - private-preview model laws: 46 passed; and
 - full suite: 1,510 passed, with the same four older missing generated-artifact
   failures (S0 age input, S0 predictions, G0 predictions and stage2f H0 report).
-

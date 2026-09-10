@@ -32,6 +32,7 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
             "transferable_value_lower_dollars": [10_000_000.0],
             "transferable_value_upper_dollars": [30_000_000.0],
             "coverage_tier": ["integrated"],
+            "value_review_reason": [""],
         }
     )
     annual = pl.DataFrame(
@@ -60,6 +61,7 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
     assert payload["players"][0]["years"][0]["season"] == 2027
     assert payload["players"][0]["calculated_contract_years"] == 1
     assert payload["players"][0]["calculated_years_value"] == 20_000_000.0
+    assert payload["players"][0]["value_review_reason"] == ""
 
     nested_values = values.with_columns(
         pl.lit(3.0).alias("expected_controlled_war"),
@@ -129,6 +131,7 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert "it does not set the ranking above" in rendered
     assert "Known contract years only" in rendered
     assert "does not receive a rank" in rendered
+    assert "Why this player is unranked" in rendered
 
 
 def test_latest_common_date_uses_only_complete_checkpoints(tmp_path) -> None:
