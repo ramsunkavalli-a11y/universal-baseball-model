@@ -187,6 +187,14 @@ conditional positive-WAR solution. Preserve the
 [result](prospect-broad-history-positive-tail-result.md), leave production unchanged,
 and require richer cutoff-dated performance evidence for the next challenger.
 
+Official 2008–2017 component totals were then added under a frozen Tango-style
+200-opportunity regression. They improve the basic candidate in 5/8 hitter and 6/8
+pitcher evaluation years, but uncertainty and subgroup gates fail and the complete
+candidate does not beat the population-rate baseline. Reject the tested combination.
+The useful forward hypothesis is that regressed component rates may work after
+removing unstable basic effects, but these outcomes are now disclosed and cannot be
+used to validate that change.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

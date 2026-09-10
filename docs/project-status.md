@@ -89,6 +89,14 @@ frozen before scoring. It adds only strongly regressed K/BB/power-type rates to 
 same corrected basic model and must beat both that model and the population-rate
 baseline across old and modern eras.
 
+That test is now complete and rejected. The skill rates improve both scores over the
+basic model in 5/8 hitter years and 6/8 pitcher years, with sensible leading
+directions, but the pooled intervals are not consistently favorable, supported groups
+reverse, and neither full candidate beats the population-rate baseline in either era.
+This is evidence that the component rates contain useful signal, not evidence that the
+tested combination is ready. Production remains unchanged. Do not tune a rate-only or
+interaction variant on these disclosed years; preserve it for genuinely fresh data.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still
