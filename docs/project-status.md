@@ -63,6 +63,12 @@ Pitcher prospect values remain compressed (one 50+), and the top hitter ordering
 needs model-based error review. This is private and provisional; MLB contract values
 and published outputs are unchanged.
 
+The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
+both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
+arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top
+decile was optimistic. Earlier-cohort calibration worsened later proper scores, so no
+manual probability cap or recalibration is applied.
+
 Latest: official StatsAPI Rule 4 draft history is now a structured, replayable source.
 A nested later-cohort audit supports draft pedigree more strongly for arrival than
 quality. A proper hurdle test conditions MLB component quality on meaningful playing

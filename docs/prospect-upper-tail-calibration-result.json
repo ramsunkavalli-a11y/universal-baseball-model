@@ -1,0 +1,1043 @@
+{
+  "as_of_date": "2026-09-09",
+  "boundaries": {
+    "current_probabilities_changed": false,
+    "demographic_or_organization_features_added": false,
+    "outside_fv_used": false
+  },
+  "chronology": {
+    "development_calibration": 2021,
+    "development_train": [
+      2018
+    ],
+    "horizon_years": 2,
+    "outer_evaluate": 2023,
+    "outer_train": [
+      2018,
+      2021
+    ]
+  },
+  "contract": "docs/prospect-upper-tail-calibration-plan.md",
+  "report_schema_version": "0.1",
+  "results": {
+    "hitter": {
+      "arrival": {
+        "calibration_parameters": {
+          "intercept_only": {
+            "intercept": 0.3949169648172761,
+            "slope": 1.0
+          },
+          "platt_c_1": {
+            "intercept": 0.36819236251209486,
+            "slope": 0.9864819360546732
+          }
+        },
+        "condition": null,
+        "development_candidates": {
+          "intercept_only": {
+            "brier": 0.053311279587826096,
+            "log_loss": 0.19043944208467367,
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.0794478527607362
+          },
+          "platt_c_1": {
+            "brier": 0.05334363753175564,
+            "log_loss": 0.19043346340527367,
+            "observed_rate": 0.0794478527607362,
+            "players": 3260,
+            "predicted_rate": 0.0794542365638007
+          }
+        },
+        "development_players": 3260,
+        "development_raw": {
+          "brier": 0.054452772237220275,
+          "log_loss": 0.19440958573456493,
+          "observed_rate": 0.0794478527607362,
+          "players": 3260,
+          "predicted_rate": 0.060053177939191967
+        },
+        "outer_candidate": {
+          "brier": 0.05261592380299728,
+          "log_loss": 0.18622748747854598,
+          "observed_rate": 0.06502525252525253,
+          "players": 3168,
+          "predicted_rate": 0.13332914858902986
+        },
+        "outer_candidate_calibration": {
+          "intercept": -1.0451301527400123,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.00473186119873817,
+              "players": 634,
+              "predicted_rate": 0.005162076640246597
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.007886435331230283,
+              "players": 634,
+              "predicted_rate": 0.01977391811864409
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.00473186119873817,
+              "players": 634,
+              "predicted_rate": 0.04417696699001072
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.03317535545023697,
+              "players": 633,
+              "predicted_rate": 0.11641348731159533
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.27488151658767773,
+              "players": 633,
+              "predicted_rate": 0.4816420023902105
+            }
+          ],
+          "slope": 1.1288341335468313
+        },
+        "outer_candidate_top_decile": {
+          "minimum_probability": 0.46386597775634236,
+          "observed_rate": 0.43217665615141954,
+          "players": 317,
+          "predicted_rate": 0.6180749874036476
+        },
+        "outer_candidate_top_one_percent": {
+          "minimum_probability": 0.8016594393844886,
+          "observed_rate": 0.8125,
+          "players": 32,
+          "predicted_rate": 0.9033129954435433
+        },
+        "outer_paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.007945881108535804,
+            "ci_low": 0.005555402344017885,
+            "difference": 0.006732144718342978,
+            "probability_candidate_better": 0.0
+          },
+          "log_loss": {
+            "ci_high": 0.023949960687534928,
+            "ci_low": 0.017969183343979876,
+            "difference": 0.02091432719461805,
+            "probability_candidate_better": 0.0
+          },
+          "resamples": 2000
+        },
+        "outer_players": 3168,
+        "outer_raw": {
+          "brier": 0.045883779084654304,
+          "log_loss": 0.16531316028392792,
+          "observed_rate": 0.06502525252525253,
+          "players": 3168,
+          "predicted_rate": 0.1055863652706791
+        },
+        "outer_raw_calibration": {
+          "intercept": -0.6288568497167312,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.00473186119873817,
+              "players": 634,
+              "predicted_rate": 0.0033273298549489293
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.007886435331230283,
+              "players": 634,
+              "predicted_rate": 0.013007628268018347
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.00473186119873817,
+              "players": 634,
+              "predicted_rate": 0.02963531417770618
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.03317535545023697,
+              "players": 633,
+              "predicted_rate": 0.08164100497860953
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.27488151658767773,
+              "players": 633,
+              "predicted_rate": 0.4007483355251573
+            }
+          ],
+          "slope": 1.1136338843289983
+        },
+        "outer_raw_top_decile": {
+          "minimum_probability": 0.37284980224761005,
+          "observed_rate": 0.43217665615141954,
+          "players": 317,
+          "predicted_rate": 0.5353056327693616
+        },
+        "outer_raw_top_one_percent": {
+          "minimum_probability": 0.7393513453378139,
+          "observed_rate": 0.8125,
+          "players": 32,
+          "predicted_rate": 0.8706079455121144
+        },
+        "passed_outer": false,
+        "selected_calibration": "platt_c_1",
+        "selected_parameters": {
+          "intercept": 0.36819236251209486,
+          "slope": 0.9864819360546732
+        }
+      },
+      "established_given_meaningful": {
+        "calibration_parameters": {
+          "intercept_only": {
+            "intercept": 0.45928771120390377,
+            "slope": 1.0
+          },
+          "platt_c_1": {
+            "intercept": 0.1584197687910816,
+            "slope": 0.27522259876496813
+          }
+        },
+        "condition": "meaningful_role_within_horizon",
+        "development_candidates": {
+          "intercept_only": {
+            "brier": 0.25061984640407253,
+            "log_loss": 0.6944448005569831,
+            "observed_rate": 0.5111111111111111,
+            "players": 90,
+            "predicted_rate": 0.5111111111111111
+          },
+          "platt_c_1": {
+            "brier": 0.2490628364378968,
+            "log_loss": 0.6912729790084887,
+            "observed_rate": 0.5111111111111111,
+            "players": 90,
+            "predicted_rate": 0.5111001853180586
+          }
+        },
+        "development_players": 90,
+        "development_raw": {
+          "brier": 0.26296917089368393,
+          "log_loss": 0.7201390287651169,
+          "observed_rate": 0.5111111111111111,
+          "players": 90,
+          "predicted_rate": 0.3999542160545373
+        },
+        "outer_candidate": {
+          "brier": 0.24996260926714872,
+          "log_loss": 0.6930668183662207,
+          "observed_rate": 0.47619047619047616,
+          "players": 63,
+          "predicted_rate": 0.5284540825996612
+        },
+        "outer_candidate_calibration": {
+          "intercept": -0.5770325661652407,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.38461538461538464,
+              "players": 13,
+              "predicted_rate": 0.5022549918872035
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.38461538461538464,
+              "players": 13,
+              "predicted_rate": 0.5215554561238288
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.46153846153846156,
+              "players": 13,
+              "predicted_rate": 0.5287709496722462
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.6666666666666666,
+              "players": 12,
+              "predicted_rate": 0.5397376833731659
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.5,
+              "players": 12,
+              "predicted_rate": 0.5526830694515041
+            }
+          ],
+          "slope": 4.203383979264524
+        },
+        "outer_candidate_top_decile": {
+          "minimum_probability": 0.551510300219191,
+          "observed_rate": 0.5714285714285714,
+          "players": 7,
+          "predicted_rate": 0.5547495656734981
+        },
+        "outer_candidate_top_one_percent": {
+          "minimum_probability": 0.5571405402289913,
+          "observed_rate": 0.0,
+          "players": 1,
+          "predicted_rate": 0.5571405402289913
+        },
+        "outer_paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.025416540573868725,
+            "ci_low": -0.014285572159292395,
+            "difference": 0.005465319912371717,
+            "probability_candidate_better": 0.311
+          },
+          "log_loss": {
+            "ci_high": 0.051437971910128485,
+            "ci_low": -0.02932059035817924,
+            "difference": 0.010845413878047196,
+            "probability_candidate_better": 0.318
+          },
+          "resamples": 2000
+        },
+        "outer_players": 63,
+        "outer_raw": {
+          "brier": 0.24449728935477702,
+          "log_loss": 0.6822214044881736,
+          "observed_rate": 0.47619047619047616,
+          "players": 63,
+          "predicted_rate": 0.46046839926016275
+        },
+        "outer_raw_calibration": {
+          "intercept": 0.08873651654703035,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.38461538461538464,
+              "players": 13,
+              "predicted_rate": 0.3676016845743467
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.38461538461538464,
+              "players": 13,
+              "predicted_rate": 0.4348667485625518
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.46153846153846156,
+              "players": 13,
+              "predicted_rate": 0.4608343152007483
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.6666666666666666,
+              "players": 12,
+              "predicted_rate": 0.5008130826052875
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.5,
+              "players": 12,
+              "predicted_rate": 0.5480680361447833
+            }
+          ],
+          "slope": 1.1559741091254265
+        },
+        "outer_raw_top_decile": {
+          "minimum_probability": 0.5438109252070606,
+          "observed_rate": 0.5714285714285714,
+          "players": 7,
+          "predicted_rate": 0.555590305510345
+        },
+        "outer_raw_top_one_percent": {
+          "minimum_probability": 0.5642677379882319,
+          "observed_rate": 0.0,
+          "players": 1,
+          "predicted_rate": 0.5642677379882319
+        },
+        "passed_outer": false,
+        "selected_calibration": "platt_c_1",
+        "selected_parameters": {
+          "intercept": 0.1584197687910816,
+          "slope": 0.27522259876496813
+        }
+      },
+      "meaningful_given_arrival": {
+        "calibration_parameters": {
+          "intercept_only": {
+            "intercept": -0.1340483583554134,
+            "slope": 1.0
+          },
+          "platt_c_1": {
+            "intercept": -0.33529248994666777,
+            "slope": 0.5502430725966151
+          }
+        },
+        "condition": "arrived_within_horizon",
+        "development_candidates": {
+          "intercept_only": {
+            "brier": 0.21920234524425283,
+            "log_loss": 0.6355875626645506,
+            "observed_rate": 0.3474903474903475,
+            "players": 259,
+            "predicted_rate": 0.3474903474903475
+          },
+          "platt_c_1": {
+            "brier": 0.21693499007970438,
+            "log_loss": 0.6251991828330016,
+            "observed_rate": 0.3474903474903475,
+            "players": 259,
+            "predicted_rate": 0.34747680586389695
+          }
+        },
+        "development_players": 259,
+        "development_raw": {
+          "brier": 0.22068934236709323,
+          "log_loss": 0.6374229299916377,
+          "observed_rate": 0.3474903474903475,
+          "players": 259,
+          "predicted_rate": 0.3750074306625886
+        },
+        "outer_candidate": {
+          "brier": 0.19855111458547384,
+          "log_loss": 0.583328262623152,
+          "observed_rate": 0.3058252427184466,
+          "players": 206,
+          "predicted_rate": 0.318956658953067
+        },
+        "outer_candidate_calibration": {
+          "intercept": 0.5798818192573499,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.14285714285714285,
+              "players": 42,
+              "predicted_rate": 0.21431264177273932
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.21951219512195122,
+              "players": 41,
+              "predicted_rate": 0.27673206283012847
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.2926829268292683,
+              "players": 41,
+              "predicted_rate": 0.3234777429513336
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.34146341463414637,
+              "players": 41,
+              "predicted_rate": 0.35828405076684705
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.5365853658536586,
+              "players": 41,
+              "predicted_rate": 0.42452908954624596
+            }
+          ],
+          "slope": 1.9003535775737943
+        },
+        "outer_candidate_top_decile": {
+          "minimum_probability": 0.4135873209625173,
+          "observed_rate": 0.6190476190476191,
+          "players": 21,
+          "predicted_rate": 0.4517653917007975
+        },
+        "outer_candidate_top_one_percent": {
+          "minimum_probability": 0.48119300577356855,
+          "observed_rate": 1.0,
+          "players": 3,
+          "predicted_rate": 0.5118582263868984
+        },
+        "outer_paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.009648638046520365,
+            "ci_low": -0.0035988434367904497,
+            "difference": 0.0029342047680231157,
+            "probability_candidate_better": 0.183
+          },
+          "log_loss": {
+            "ci_high": 0.02358566219365205,
+            "ci_low": -0.007128138564963259,
+            "difference": 0.008301530164791454,
+            "probability_candidate_better": 0.142
+          },
+          "resamples": 2000
+        },
+        "outer_players": 206,
+        "outer_raw": {
+          "brier": 0.19561690981745072,
+          "log_loss": 0.5750267324583606,
+          "observed_rate": 0.3058252427184466,
+          "players": 206,
+          "predicted_rate": 0.32323567608149795
+        },
+        "outer_raw_calibration": {
+          "intercept": -0.05729824316704151,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.14285714285714285,
+              "players": 42,
+              "predicted_rate": 0.1497257831391791
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.21951219512195122,
+              "players": 41,
+              "predicted_rate": 0.24338164555249342
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.2926829268292683,
+              "players": 41,
+              "predicted_rate": 0.324971513823012
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.34146341463414637,
+              "players": 41,
+              "predicted_rate": 0.38946002481158787
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.5365853658536586,
+              "players": 41,
+              "predicted_rate": 0.5128713616895662
+            }
+          ],
+          "slope": 1.045576562022942
+        },
+        "outer_raw_top_decile": {
+          "minimum_probability": 0.49370192815534525,
+          "observed_rate": 0.6190476190476191,
+          "players": 21,
+          "predicted_rate": 0.5627746450875242
+        },
+        "outer_raw_top_one_percent": {
+          "minimum_probability": 0.6159921337882005,
+          "observed_rate": 1.0,
+          "players": 3,
+          "predicted_rate": 0.6663267562240628
+        },
+        "passed_outer": false,
+        "selected_calibration": "platt_c_1",
+        "selected_parameters": {
+          "intercept": -0.33529248994666777,
+          "slope": 0.5502430725966151
+        }
+      }
+    },
+    "pitcher": {
+      "arrival": {
+        "calibration_parameters": {
+          "intercept_only": {
+            "intercept": -0.23306241406921974,
+            "slope": 1.0
+          },
+          "platt_c_1": {
+            "intercept": -0.009726150560172977,
+            "slope": 1.1399318011420356
+          }
+        },
+        "condition": null,
+        "development_candidates": {
+          "intercept_only": {
+            "brier": 0.05603580673652453,
+            "log_loss": 0.19746598000305024,
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07481501781309947
+          },
+          "platt_c_1": {
+            "brier": 0.05583321898776426,
+            "log_loss": 0.19668267821972735,
+            "observed_rate": 0.07481501781309947,
+            "players": 3649,
+            "predicted_rate": 0.07481845345414356
+          }
+        },
+        "development_players": 3649,
+        "development_raw": {
+          "brier": 0.056139754903761406,
+          "log_loss": 0.19913369923054536,
+          "observed_rate": 0.07481501781309947,
+          "players": 3649,
+          "predicted_rate": 0.0894758730718492
+        },
+        "outer_candidate": {
+          "brier": 0.04885852523861851,
+          "log_loss": 0.17168475642539852,
+          "observed_rate": 0.06777837547068316,
+          "players": 3718,
+          "predicted_rate": 0.05569961584116074
+        },
+        "outer_candidate_calibration": {
+          "intercept": 0.5107943373141299,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.005376344086021506,
+              "players": 744,
+              "predicted_rate": 0.002305432562275108
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.0013440860215053765,
+              "players": 744,
+              "predicted_rate": 0.006859057130357762
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.016129032258064516,
+              "players": 744,
+              "predicted_rate": 0.01613902869695782
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.05114401076716016,
+              "players": 743,
+              "predicted_rate": 0.0484848990056963
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.2651413189771198,
+              "players": 743,
+              "predicted_rate": 0.20490050343788402
+            }
+          ],
+          "slope": 1.1271052594576474
+        },
+        "outer_candidate_top_decile": {
+          "minimum_probability": 0.15684247528496498,
+          "observed_rate": 0.3736559139784946,
+          "players": 372,
+          "predicted_rate": 0.30294485114167
+        },
+        "outer_candidate_top_one_percent": {
+          "minimum_probability": 0.4414590791917037,
+          "observed_rate": 0.7368421052631579,
+          "players": 38,
+          "predicted_rate": 0.5453102930430864
+        },
+        "outer_paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.000574274347372405,
+            "ci_low": -7.30546413130567e-05,
+            "difference": 0.00024713495500870285,
+            "probability_candidate_better": 0.07
+          },
+          "log_loss": {
+            "ci_high": 0.0016778242426139015,
+            "ci_low": -0.002397630975602761,
+            "difference": -0.0003976962181532734,
+            "probability_candidate_better": 0.6605
+          },
+          "resamples": 2000
+        },
+        "outer_players": 3718,
+        "outer_raw": {
+          "brier": 0.04861139028360982,
+          "log_loss": 0.1720824526435518,
+          "observed_rate": 0.06777837547068316,
+          "players": 3718,
+          "predicted_rate": 0.06842864962860999
+        },
+        "outer_raw_calibration": {
+          "intercept": 0.4997294352596558,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.005376344086021506,
+              "players": 744,
+              "predicted_rate": 0.004796209579051591
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.0013440860215053765,
+              "players": 744,
+              "predicted_rate": 0.0126255270299611
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.016129032258064516,
+              "players": 744,
+              "predicted_rate": 0.026558587762794697
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.05114401076716016,
+              "players": 743,
+              "predicted_rate": 0.06850075249260193
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.2651413189771198,
+              "players": 743,
+              "predicted_rate": 0.2298792717154024
+            }
+          ],
+          "slope": 1.284658046604445
+        },
+        "outer_raw_top_decile": {
+          "minimum_probability": 0.18741161974655157,
+          "observed_rate": 0.3736559139784946,
+          "players": 372,
+          "predicted_rate": 0.32477391753154006
+        },
+        "outer_raw_top_one_percent": {
+          "minimum_probability": 0.45070236877102526,
+          "observed_rate": 0.7368421052631579,
+          "players": 38,
+          "predicted_rate": 0.5428530324186367
+        },
+        "passed_outer": false,
+        "selected_calibration": "platt_c_1",
+        "selected_parameters": {
+          "intercept": -0.009726150560172977,
+          "slope": 1.1399318011420356
+        }
+      },
+      "established_given_meaningful": {
+        "calibration_parameters": {
+          "intercept_only": {
+            "intercept": 0.5295176482699488,
+            "slope": 1.0
+          },
+          "platt_c_1": {
+            "intercept": 0.2559025551313057,
+            "slope": 0.5862838059344836
+          }
+        },
+        "condition": "meaningful_role_within_horizon",
+        "development_candidates": {
+          "intercept_only": {
+            "brier": 0.23969520028014793,
+            "log_loss": 0.6700104450167382,
+            "observed_rate": 0.4578313253012048,
+            "players": 83,
+            "predicted_rate": 0.45783132530120474
+          },
+          "platt_c_1": {
+            "brier": 0.23673702291557633,
+            "log_loss": 0.6643008777065673,
+            "observed_rate": 0.4578313253012048,
+            "players": 83,
+            "predicted_rate": 0.45783470113233715
+          }
+        },
+        "development_players": 83,
+        "development_raw": {
+          "brier": 0.25314372144073394,
+          "log_loss": 0.7009480940185702,
+          "observed_rate": 0.4578313253012048,
+          "players": 83,
+          "predicted_rate": 0.34245517956699595
+        },
+        "outer_candidate": {
+          "brier": 0.22786732557498984,
+          "log_loss": 0.6481894030223948,
+          "observed_rate": 0.4473684210526316,
+          "players": 76,
+          "predicted_rate": 0.5037128532333329
+        },
+        "outer_candidate_calibration": {
+          "intercept": -0.2718677595715698,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.3125,
+              "players": 16,
+              "predicted_rate": 0.3539253234079067
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.2,
+              "players": 15,
+              "predicted_rate": 0.448769170159126
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.4666666666666667,
+              "players": 15,
+              "predicted_rate": 0.5306807051936847
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.4666666666666667,
+              "players": 15,
+              "predicted_rate": 0.5720520798035902
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.8,
+              "players": 15,
+              "predicted_rate": 0.6231228229240521
+            }
+          ],
+          "slope": 1.7579612950168315
+        },
+        "outer_candidate_top_decile": {
+          "minimum_probability": 0.6048994062157559,
+          "observed_rate": 1.0,
+          "players": 8,
+          "predicted_rate": 0.6435024913527361
+        },
+        "outer_candidate_top_one_percent": {
+          "minimum_probability": 0.7059375837062849,
+          "observed_rate": 1.0,
+          "players": 1,
+          "predicted_rate": 0.7059375837062849
+        },
+        "outer_paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.031110301919587875,
+            "ci_low": -0.01419807046039186,
+            "difference": 0.008928394821969693,
+            "probability_candidate_better": 0.222
+          },
+          "log_loss": {
+            "ci_high": 0.06686088638774926,
+            "ci_low": -0.04682777685088164,
+            "difference": 0.012970009518929298,
+            "probability_candidate_better": 0.326
+          },
+          "resamples": 2000
+        },
+        "outer_players": 76,
+        "outer_raw": {
+          "brier": 0.21893893075302012,
+          "log_loss": 0.6352193935034655,
+          "observed_rate": 0.4473684210526316,
+          "players": 76,
+          "predicted_rate": 0.4103749822230075
+        },
+        "outer_raw_calibration": {
+          "intercept": 0.17780939822121092,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.3125,
+              "players": 16,
+              "predicted_rate": 0.19244360267131827
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.2,
+              "players": 15,
+              "predicted_rate": 0.31285809513423835
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.4666666666666667,
+              "players": 15,
+              "predicted_rate": 0.44356844100835924
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.4666666666666667,
+              "players": 15,
+              "predicted_rate": 0.514797801057638
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.8,
+              "players": 15,
+              "predicted_rate": 0.6027357298802631
+            }
+          ],
+          "slope": 1.0307447045761724
+        },
+        "outer_raw_top_decile": {
+          "minimum_probability": 0.5719948444451839,
+          "observed_rate": 1.0,
+          "players": 8,
+          "predicted_rate": 0.637383875508841
+        },
+        "outer_raw_top_one_percent": {
+          "minimum_probability": 0.7421593365077868,
+          "observed_rate": 1.0,
+          "players": 1,
+          "predicted_rate": 0.7421593365077868
+        },
+        "passed_outer": false,
+        "selected_calibration": "platt_c_1",
+        "selected_parameters": {
+          "intercept": 0.2559025551313057,
+          "slope": 0.5862838059344836
+        }
+      },
+      "meaningful_given_arrival": {
+        "calibration_parameters": {
+          "intercept_only": {
+            "intercept": -0.4309433021787637,
+            "slope": 1.0
+          },
+          "platt_c_1": {
+            "intercept": -0.47691019779970645,
+            "slope": 0.8628407538390086
+          }
+        },
+        "condition": "arrived_within_horizon",
+        "development_candidates": {
+          "intercept_only": {
+            "brier": 0.1997583226666743,
+            "log_loss": 0.5856650372403182,
+            "observed_rate": 0.304029304029304,
+            "players": 273,
+            "predicted_rate": 0.304029304029304
+          },
+          "platt_c_1": {
+            "brier": 0.19973267316527807,
+            "log_loss": 0.5855089281497541,
+            "observed_rate": 0.304029304029304,
+            "players": 273,
+            "predicted_rate": 0.3040385816368137
+          }
+        },
+        "development_players": 273,
+        "development_raw": {
+          "brier": 0.20863113622645796,
+          "log_loss": 0.6048383362004557,
+          "observed_rate": 0.304029304029304,
+          "players": 273,
+          "predicted_rate": 0.39467757327923286
+        },
+        "outer_candidate": {
+          "brier": 0.2038235340543405,
+          "log_loss": 0.596751602554097,
+          "observed_rate": 0.30158730158730157,
+          "players": 252,
+          "predicted_rate": 0.23054825674769688
+        },
+        "outer_candidate_calibration": {
+          "intercept": 0.4086191921442753,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.13725490196078433,
+              "players": 51,
+              "predicted_rate": 0.11483451622193934
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.2549019607843137,
+              "players": 51,
+              "predicted_rate": 0.15715987906039527
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.32,
+              "players": 50,
+              "predicted_rate": 0.232537096015299
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.34,
+              "players": 50,
+              "predicted_rate": 0.2963543406719746
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.46,
+              "players": 50,
+              "predicted_rate": 0.3556374941331374
+            }
+          ],
+          "slope": 1.0202116203161544
+        },
+        "outer_candidate_top_decile": {
+          "minimum_probability": 0.350763650134641,
+          "observed_rate": 0.5769230769230769,
+          "players": 26,
+          "predicted_rate": 0.37494753781428614
+        },
+        "outer_candidate_top_one_percent": {
+          "minimum_probability": 0.4047635704603179,
+          "observed_rate": 0.6666666666666666,
+          "players": 3,
+          "predicted_rate": 0.42363674333390455
+        },
+        "outer_paired_bootstrap": {
+          "brier": {
+            "ci_high": 0.014216414623261085,
+            "ci_low": -0.0036084764920050793,
+            "difference": 0.005231153173028265,
+            "probability_candidate_better": 0.124
+          },
+          "log_loss": {
+            "ci_high": 0.034578298646892984,
+            "ci_low": -0.00770987130518728,
+            "difference": 0.013534440443022815,
+            "probability_candidate_better": 0.099
+          },
+          "resamples": 2000
+        },
+        "outer_players": 252,
+        "outer_raw": {
+          "brier": 0.19859238088131226,
+          "log_loss": 0.5832171621110742,
+          "observed_rate": 0.30158730158730157,
+          "players": 252,
+          "predicted_rate": 0.29841611140576635
+        },
+        "outer_raw_calibration": {
+          "intercept": -0.07803687296167622,
+          "reliability_bins": [
+            {
+              "bin": 1,
+              "observed_rate": 0.13725490196078433,
+              "players": 51,
+              "predicted_rate": 0.1402498583520909
+            },
+            {
+              "bin": 2,
+              "observed_rate": 0.2549019607843137,
+              "players": 51,
+              "predicted_rate": 0.198814197405071
+            },
+            {
+              "bin": 3,
+              "observed_rate": 0.32,
+              "players": 50,
+              "predicted_rate": 0.30316609128147265
+            },
+            {
+              "bin": 4,
+              "observed_rate": 0.34,
+              "players": 50,
+              "predicted_rate": 0.38939057876688543
+            },
+            {
+              "bin": 5,
+              "observed_rate": 0.46,
+              "players": 50,
+              "predicted_rate": 0.46561519456439926
+            }
+          ],
+          "slope": 0.8801808707509158
+        },
+        "outer_raw_top_decile": {
+          "minimum_probability": 0.4598779905082109,
+          "observed_rate": 0.5769230769230769,
+          "players": 26,
+          "predicted_rate": 0.48980205207530414
+        },
+        "outer_raw_top_one_percent": {
+          "minimum_probability": 0.5264155540476303,
+          "observed_rate": 0.6666666666666666,
+          "players": 3,
+          "predicted_rate": 0.5485994357859711
+        },
+        "passed_outer": false,
+        "selected_calibration": "platt_c_1",
+        "selected_parameters": {
+          "intercept": -0.47691019779970645,
+          "slope": 0.8628407538390086
+        }
+      }
+    }
+  },
+  "status": "prospect_probability_calibration_outer_audit_complete"
+}
