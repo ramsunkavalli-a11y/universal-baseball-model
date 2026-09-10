@@ -39,6 +39,10 @@ The draw's state then controls the eligible historical workload/performance pool
 This removes the current circular shortcut of selecting an eventual tier first. It
 must be replayed against historical cutoffs before it can change rankings.
 
+The coefficients fitted through 2025 cannot be used unchanged in an older historical
+forecast. Every replay origin must refit on only the outcomes available at that date;
+the durable package is the current forward input and reproducibility reference.
+
 The deterministic state engine for that sequence is now implemented and tested. The
 first MLB season uses the frozen career definitions: positive workload is fringe,
 200+ PA/BF is meaningful and 400+ is established. After that initial classification,

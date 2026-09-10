@@ -137,7 +137,11 @@ Next connect state to whole historical workload/performance paths and replay it 
 historical cutoffs. Do not sample isolated seasons independently: that would discard
 the real within-career dependence this P0 is designed to retain. Do not select the
 eventual tier before the simulated years unfold: that is the circular shortcut being
-replaced. No current ranking changes until the linked replay passes.
+replaced. Historical origins must refit the progression inputs at their own cutoff;
+the 2025 coefficients may not leak into a 2021 replay. The locked construction and
+scoring rules are in the
+[annually linked replay plan](prospect-linked-career-state-replay-plan.md). No current
+ranking changes until the linked replay passes.
 
 A descriptive early-versus-late cohort comparison found 74.7% hitter and 66.3%
 pitcher coverage for nominal 80% ranges. It is not chronology-safe confirmation:

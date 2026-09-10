@@ -194,7 +194,9 @@ annual rows retain actual workload, inactivity, return, role, cumulative state a
 season-relative prior workload together. Birth dates cover 3,091 paths; 854 older
 paths remain available under an explicit missing-age fallback. See the
 [source note](linked-career-state-path-source.md). The remaining step is the actual
-whole-path linked replay, with a guard against counting prior workload twice.
+whole-path linked replay, with a guard against counting prior workload twice. Follow
+the [locked replay plan](prospect-linked-career-state-replay-plan.md), including its
+origin-specific refit rule.
 
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero
