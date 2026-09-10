@@ -158,6 +158,11 @@ misses the frozen gate only because absolute bias moves slightly farther from ze
 Keep the exact form as promising research; do not use the disclosed outer cohort to
 add a calibration correction. Current values remain unchanged.
 
+The next frozen gate is an unchanged-fit [2022/2023 stability extension](prospect-conditional-war-bridge-stability-plan.md).
+It must not refit or recenter the 2018 bridge. Later cohorts test whether the small
+bias failure and accuracy gains persist; they remain retrospective evidence because
+those seasons have been inspected elsewhere.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and
