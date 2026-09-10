@@ -6,12 +6,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import numpy as np
 import polars as pl
 
 from audit_prospect_post_arrival_workload import _rows
 from universal_baseball.prospect_mlb_progression import (
     PROGRESSION_FEATURE_NAMES,
     fit_progression,
+    progression_design,
 )
 from universal_baseball.storage import sha256_file, write_canonical_parquet
 
@@ -58,6 +60,7 @@ def main() -> int:
         raise ValueError("destination result does not support the player-type split")
     coefficient_rows: list[dict[str, object]] = []
     support_rows: list[dict[str, object]] = []
+    feature_support_rows: list[dict[str, object]] = []
     for player_type in ("hitter", "pitcher"):
         rows = _rows(player_type).filter(pl.col("outcome_year") <= 2025)
         for origin_state, feature_set in SELECTED_FEATURE.items():
@@ -107,10 +110,31 @@ def main() -> int:
                     "maximum_outcome_year": int(cell["outcome_year"].max()),
                 }
             )
+            design = progression_design(cell, feature_set=feature_set)
+            feature_support_rows.extend(
+                {
+                    "player_type": player_type,
+                    "origin_state": origin_state,
+                    "feature_set": feature_set,
+                    "term": term,
+                    "minimum": float(values.min()),
+                    "p01": float(np.quantile(values, 0.01)),
+                    "p99": float(np.quantile(values, 0.99)),
+                    "maximum": float(values.max()),
+                }
+                for term, values in zip(
+                    PROGRESSION_FEATURE_NAMES[feature_set],
+                    design.T,
+                    strict=True,
+                )
+            )
     coefficients = pl.DataFrame(coefficient_rows).sort(
         "player_type", "origin_state", "term"
     )
     support = pl.DataFrame(support_rows).sort("player_type", "origin_state")
+    feature_support = pl.DataFrame(feature_support_rows).sort(
+        "player_type", "origin_state", "term"
+    )
     destination_probabilities = pl.DataFrame(
         {
             "player_type": ["hitter", "pitcher"],
@@ -137,6 +161,11 @@ def main() -> int:
             OUTPUT / "destination-probabilities.parquet",
             table_name="prospect_post_arrival_destination_probabilities_2025",
         ).as_record(),
+        "feature_support": write_canonical_parquet(
+            feature_support,
+            OUTPUT / "feature-support.parquet",
+            table_name="prospect_post_arrival_progression_feature_support_2025",
+        ).as_record(),
     }
     report = {
         "report_schema_version": "0.1",
@@ -147,6 +176,7 @@ def main() -> int:
         "meaningful_uses_pooled_age_elapsed_fallback": True,
         "pitcher_role_used": False,
         "player_type_destination_split_used": True,
+        "training_feature_support_materialized": True,
         "outside_fv_used": False,
         "production_changed": False,
         "runner_path": RUNNER.as_posix(),

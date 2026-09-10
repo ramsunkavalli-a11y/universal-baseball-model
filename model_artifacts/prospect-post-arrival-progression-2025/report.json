@@ -7,7 +7,7 @@
   "production_changed": false,
   "report_schema_version": "0.1",
   "runner_path": "scripts/materialize_prospect_post_arrival_progression_model.py",
-  "runner_sha256": "f2d857133f46c34e361f2421cf9ef79cfa606e0ba251e4f7b5b49e17a4a17f9d",
+  "runner_sha256": "bcc54c122f83720ce37ea298d9b688dd678902c5ef4dc1f062406ee427f9a636",
   "shortened_2020_outcomes_excluded": true,
   "sources": {
     "docs/prospect-post-arrival-destination-result.json": "58ff250e2aae15db50e2f21e44ead45561aa6d7be5532666ef24f48f5ca7b8c4",
@@ -53,6 +53,15 @@
       "schema_sha256": "e6cf1ea2051736c80eb9c5755cb33bbfb66f34de5672fd4a8f181dce243f4442",
       "table_name": "prospect_post_arrival_destination_probabilities_2025"
     },
+    "feature_support": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "3bdaa5d459201713922256f995ffd4b5bfd2f841e928fad12e4963a833bb82b7",
+      "file_size_bytes": 3430,
+      "path": "model_artifacts\\prospect-post-arrival-progression-2025\\feature-support.parquet",
+      "row_count": 16,
+      "schema_sha256": "05aa25eacf19adc66b8bc6a23dbed115dd7227c00ea5130390b4da1d9d63e089",
+      "table_name": "prospect_post_arrival_progression_feature_support_2025"
+    },
     "support": {
       "canonical_schema_version": "0.1",
       "file_sha256": "6d6baf28aaa17762e139bddf254df9e45c5324570a1b680030d47099d88c11f8",
@@ -63,5 +72,6 @@
       "table_name": "prospect_post_arrival_progression_support_2025"
     }
   },
+  "training_feature_support_materialized": true,
   "training_outcomes_through": 2025
 }

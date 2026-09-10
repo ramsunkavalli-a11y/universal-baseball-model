@@ -184,6 +184,9 @@ does not change the separately predicted advancement probability or current rank
 The year-by-year state engine is implemented with a strict prior-year boundary and
 monotone states. The remaining P0 work is the workload/performance-pool integration
 and full historical replay; do not switch the playable values before that gate.
+Because the workload coefficients are strong, the durable package also freezes each
+training feature's minimum, P1, P99 and maximum. The replay must disclose its
+out-of-support share and may not treat extrapolated opportunity as new skill.
 
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero

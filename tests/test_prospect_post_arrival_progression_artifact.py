@@ -38,3 +38,9 @@ def test_progression_artifact_uses_workload_only_for_supported_transition() -> N
     assert destination[
         "direct_established_probability_given_fringe_advance"
     ].to_list() == [0.3380681818181818, 0.20679012345679013]
+    feature_support = pl.read_parquet(PACKAGE / "feature-support.parquet")
+    assert feature_support.height == 16
+    assert feature_support.filter(
+        (pl.col("p01") < pl.col("minimum"))
+        | (pl.col("p99") > pl.col("maximum"))
+    ).is_empty()

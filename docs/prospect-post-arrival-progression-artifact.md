@@ -25,6 +25,13 @@ established jump with 33.8% probability for hitters and 20.7% for pitchers; othe
 the destination is meaningful. This split improved log loss and Brier score versus one
 pooled probability in 2023, 2024 and 2025. The advancement chance itself is unchanged.
 
+The workload association is intentionally strong and must not be described as a
+causal talent gain. At age 24 and elapsed year two, the fitted fringe probability is
+6.5% with no prior workload versus 59.9% with one hitter active-season mean; the
+pitcher comparison is 3.6% versus 44.2%. The package therefore includes the training
+minimum, P1, P99 and maximum for every feature. The future replay must report draws
+outside those bounds rather than silently trust extrapolation.
+
 Next, the research simulator must begin each draw before MLB arrival, sample that
 draw's annual workload, normalize it to the matching active-player environment, and
 feed it to the following year's frozen fringe equation. State can move only forward.

@@ -205,3 +205,5 @@ share for hitters and 20.7% for pitchers; it beat the pooled rule in 2023–2025
 The state engine itself is implemented and tested with the required one-year lag,
 one transition per player-year and no backward movement. It is not yet connected to state-conditioned workload and
 performance sampling, so it does not change the private explorer.
+Feature-support bounds are frozen with the equations so that the next replay can
+report extrapolation explicitly.
