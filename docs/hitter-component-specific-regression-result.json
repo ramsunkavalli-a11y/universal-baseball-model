@@ -1,0 +1,2049 @@
+{
+  "candidate_grid_pa": [
+    400.0,
+    800.0,
+    1200.0,
+    1600.0,
+    2400.0,
+    3600.0
+  ],
+  "development": {
+    "incumbent": {
+      "calibration": {
+        "double": {
+          "observed_rate": 0.03970555431630605,
+          "predicted_rate": 0.04337566961438873,
+          "rate_bias": 0.0036701152980826864
+        },
+        "hbp": {
+          "observed_rate": 0.009368726299353113,
+          "predicted_rate": 0.012139940385517722,
+          "rate_bias": 0.0027712140861646107
+        },
+        "hr": {
+          "observed_rate": 0.02364488066027214,
+          "predicted_rate": 0.028779592037017673,
+          "rate_bias": 0.005134711376745534
+        },
+        "other": {
+          "observed_rate": 0.7126180385158748,
+          "predicted_rate": 0.6920806701987471,
+          "rate_bias": -0.020537368317127713
+        },
+        "single": {
+          "observed_rate": 0.1393412149602201,
+          "predicted_rate": 0.13851125469333464,
+          "rate_bias": -0.0008299602668854489
+        },
+        "triple": {
+          "observed_rate": 0.004610008179046769,
+          "predicted_rate": 0.004761669387109345,
+          "rate_bias": 0.00015166120806257543
+        },
+        "ubb": {
+          "observed_rate": 0.07071157706892706,
+          "predicted_rate": 0.08035120368388478,
+          "rate_bias": 0.009639626614957727
+        }
+      },
+      "component_brier_score": 0.46583982453082784,
+      "component_log_loss": 0.9880736774038835,
+      "players": 130,
+      "target_exposure": 13449
+    },
+    "one_component_at_a_time": {
+      "double": {
+        "1200": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04337566961438873,
+              "rate_bias": 0.0036701152980826864
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012139940385517722,
+              "rate_bias": 0.0027712140861646107
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028779592037017673,
+              "rate_bias": 0.005134711376745534
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6920806701987471,
+              "rate_bias": -0.020537368317127713
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13851125469333464,
+              "rate_bias": -0.0008299602668854489
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004761669387109345,
+              "rate_bias": 0.00015166120806257543
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08035120368388478,
+              "rate_bias": 0.009639626614957727
+            }
+          },
+          "component_brier_score": 0.46583982453082784,
+          "component_log_loss": 0.9880736774038835,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "1600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04360334861757233,
+              "rate_bias": 0.0038977943012662806
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.01213678428765778,
+              "rate_bias": 0.0027680579883046686
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028773301997694133,
+              "rate_bias": 0.005128421337421995
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6919154022015989,
+              "rate_bias": -0.02070263631427597
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13847805432612664,
+              "rate_bias": -0.0008631606340934577
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004760437173184532,
+              "rate_bias": 0.00015042899413776243
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.0803326713961658,
+              "rate_bias": 0.009621094327238748
+            }
+          },
+          "component_brier_score": 0.4658501875818709,
+          "component_log_loss": 0.988090315010884,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "2400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04387752924974944,
+              "rate_bias": 0.004171974933443399
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012132979084940085,
+              "rate_bias": 0.002764252785586974
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028765697825562462,
+              "rate_bias": 0.005120817165290324
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6917164390040287,
+              "rate_bias": -0.02090159951184614
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13843810704876197,
+              "rate_bias": -0.0009031079114581067
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004758957463642478,
+              "rate_bias": 0.00014894928459570876
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08031029032331484,
+              "rate_bias": 0.009598713254387785
+            }
+          },
+          "component_brier_score": 0.46586338576257336,
+          "component_log_loss": 0.9881194690515915,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "3600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04409336649103301,
+              "rate_bias": 0.004387812174726964
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012129979702681863,
+              "rate_bias": 0.002761253403328752
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.02875969236350428,
+              "rate_bias": 0.00511481170323214
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6915598482498045,
+              "rate_bias": -0.021058190266070236
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13840668898859082,
+              "rate_bias": -0.0009345259716292624
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.00475779612610617,
+              "rate_bias": 0.00014778794705940052
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08029262807827928,
+              "rate_bias": 0.009581051009352214
+            }
+          },
+          "component_brier_score": 0.465874338932944,
+          "component_log_loss": 0.9881488530266286,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04240254073868647,
+              "rate_bias": 0.0026969864223804255
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012153405964063405,
+              "rate_bias": 0.002784679664710293
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028806072059196795,
+              "rate_bias": 0.005161191398924655
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6927880172332993,
+              "rate_bias": -0.01983002128257546
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13865338997125287,
+              "rate_bias": -0.0006878249889672125
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004766969195358431,
+              "rate_bias": 0.00015696101631166166
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08042960483814261,
+              "rate_bias": 0.009718027769215558
+            }
+          },
+          "component_brier_score": 0.46580210052211657,
+          "component_log_loss": 0.9881086377236277,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "800": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043020737454771786,
+              "rate_bias": 0.003315183138465741
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012144854955593292,
+              "rate_bias": 0.0027761286562401804
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028789342064116836,
+              "rate_bias": 0.005144461403844698
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6923384340353261,
+              "rate_bias": -0.020279604480548635
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.1385630564658275,
+              "rate_bias": -0.0007781584943925839
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004763596115652912,
+              "rate_bias": 0.00015358793660614258
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08037997890871153,
+              "rate_bias": 0.009668401839784468
+            }
+          },
+          "component_brier_score": 0.46582475669722184,
+          "component_log_loss": 0.9880635228869478,
+          "players": 130,
+          "target_exposure": 13449
+        }
+      },
+      "hbp": {
+        "1200": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04337566961438873,
+              "rate_bias": 0.0036701152980826864
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012139940385517722,
+              "rate_bias": 0.0027712140861646107
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028779592037017673,
+              "rate_bias": 0.005134711376745534
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6920806701987471,
+              "rate_bias": -0.020537368317127713
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13851125469333464,
+              "rate_bias": -0.0008299602668854489
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004761669387109345,
+              "rate_bias": 0.00015166120806257543
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08035120368388478,
+              "rate_bias": 0.009639626614957727
+            }
+          },
+          "component_brier_score": 0.46583982453082784,
+          "component_log_loss": 0.9880736774038835,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "1600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043381174389106554,
+              "rate_bias": 0.00367562007280051
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012009571767677016,
+              "rate_bias": 0.0026408454683239037
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028783374046882877,
+              "rate_bias": 0.005138493386610738
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.692170998775042,
+              "rate_bias": -0.020447039740832784
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13852974201281312,
+              "rate_bias": -0.0008114729474069754
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004762364953169822,
+              "rate_bias": 0.00015235677412305302
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08036277405530863,
+              "rate_bias": 0.009651196986381576
+            }
+          },
+          "component_brier_score": 0.4658347710266793,
+          "component_log_loss": 0.9881732736807625,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "2400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04338744716756655,
+              "rate_bias": 0.0036818928512604996
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.011860287759279563,
+              "rate_bias": 0.0024915614599264513
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.02878768969575327,
+              "rate_bias": 0.005142809035481131
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6922744592573572,
+              "rate_bias": -0.020343579258517618
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13855090623597857,
+              "rate_bias": -0.0007903087242415161
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.0047631666290153035,
+              "rate_bias": 0.00015315844996853381
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08037604325504953,
+              "rate_bias": 0.00966446618612248
+            }
+          },
+          "component_brier_score": 0.46582989579743106,
+          "component_log_loss": 0.9883169832871527,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "3600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04339216169294113,
+              "rate_bias": 0.0036866073766350827
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.011747576386869567,
+              "rate_bias": 0.002378850087516454
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028790937781268247,
+              "rate_bias": 0.005146057120996107
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6923525934169051,
+              "rate_bias": -0.02026544509896963
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13856687922382582,
+              "rate_bias": -0.0007743357363942688
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004763775343994552,
+              "rate_bias": 0.0001537671649477826
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08038607615419553,
+              "rate_bias": 0.00967449908526847
+            }
+          },
+          "component_brier_score": 0.4658268998581479,
+          "component_log_loss": 0.9884495027922058,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04334690234868508,
+              "rate_bias": 0.003641348032379037
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012811722442762737,
+              "rate_bias": 0.0034429961434096256
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.02875989867635302,
+              "rate_bias": 0.005115018016080883
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6916154921277765,
+              "rate_bias": -0.021002546388098318
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.1384160021409189,
+              "rate_bias": -0.0009252128193011866
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004758156686003447,
+              "rate_bias": 0.00014814850695667745
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08029182557750045,
+              "rate_bias": 0.00958024850857339
+            }
+          },
+          "component_brier_score": 0.4658759220533012,
+          "component_log_loss": 0.9878579810514577,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "800": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04336638540442774,
+              "rate_bias": 0.0036608310881216933
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012358476516999046,
+              "rate_bias": 0.0029897502176459336
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028773223728522188,
+              "rate_bias": 0.005128343068250049
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6919292956944435,
+              "rate_bias": -0.020688742821431284
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13848026139348582,
+              "rate_bias": -0.0008609535667342801
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.0047605133849931485,
+              "rate_bias": 0.00015050520594637944
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08033184387712869,
+              "rate_bias": 0.009620266808201631
+            }
+          },
+          "component_brier_score": 0.4658498312506355,
+          "component_log_loss": 0.9879534462143258,
+          "players": 130,
+          "target_exposure": 13449
+        }
+      },
+      "hr": {
+        "1200": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04337566961438873,
+              "rate_bias": 0.0036701152980826864
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012139940385517722,
+              "rate_bias": 0.0027712140861646107
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028779592037017673,
+              "rate_bias": 0.005134711376745534
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6920806701987471,
+              "rate_bias": -0.020537368317127713
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13851125469333464,
+              "rate_bias": -0.0008299602668854489
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004761669387109345,
+              "rate_bias": 0.00015166120806257543
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08035120368388478,
+              "rate_bias": 0.009639626614957727
+            }
+          },
+          "component_brier_score": 0.46583982453082784,
+          "component_log_loss": 0.9880736774038835,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "1600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043350996026745706,
+              "rate_bias": 0.003645441710439663
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012132827754912492,
+              "rate_bias": 0.002764101455559381
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.029343782987899584,
+              "rate_bias": 0.005698902327627443
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6916790075899705,
+              "rate_bias": -0.020939030925904368
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13842979376280762,
+              "rate_bias": -0.0009114211974124834
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.00475866865758283,
+              "rate_bias": 0.00014866047853606055
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.0803049232200814,
+              "rate_bias": 0.009593346151154336
+            }
+          },
+          "component_brier_score": 0.4658609532199854,
+          "component_log_loss": 0.9882143900220367,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "2400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043321977421470495,
+              "rate_bias": 0.003616423105164452
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012124462445281868,
+              "rate_bias": 0.002755736145928756
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.030007497776801974,
+              "rate_bias": 0.006362617116529835
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6912064656650746,
+              "rate_bias": -0.021411572850800156
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.1383339847650503,
+              "rate_bias": -0.0010072301951698105
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004755137831030605,
+              "rate_bias": 0.00014512965198383573
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08025047409528997,
+              "rate_bias": 0.009538897026362913
+            }
+          },
+          "component_brier_score": 0.46588781936837975,
+          "component_log_loss": 0.9883958334277312,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "3600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04329956370644161,
+              "rate_bias": 0.0035940093901355693
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012118001456358852,
+              "rate_bias": 0.0027492751570057394
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.03052022578062473,
+              "rate_bias": 0.00687534512035259
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6908414039122822,
+              "rate_bias": -0.021776634603592623
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13825998860888933,
+              "rate_bias": -0.0010812263513307763
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004752410460282975,
+              "rate_bias": 0.00014240228123620633
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08020840607512036,
+              "rate_bias": 0.009496829006193303
+            }
+          },
+          "component_brier_score": 0.46591007763475306,
+          "component_log_loss": 0.9885469884625627,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04349166995593905,
+              "rate_bias": 0.0037861156396329994
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.01217336375651993,
+              "rate_bias": 0.0028046374571668183
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.02613069307580195,
+              "rate_bias": 0.0024858124155298124
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6939661384956557,
+              "rate_bias": -0.01865190002021913
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.1388938973596889,
+              "rate_bias": -0.000447317600531193
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004775723172886817,
+              "rate_bias": 0.00016571499384004728
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08056851418350779,
+              "rate_bias": 0.00985693711458073
+            }
+          },
+          "component_brier_score": 0.4657610871635875,
+          "component_log_loss": 0.9876092854736572,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "800": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04341552642688344,
+              "rate_bias": 0.003709972110577393
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012151428440761213,
+              "rate_bias": 0.0027827021414081016
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.027868640358381627,
+              "rate_bias": 0.004223759698109488
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6927291524698184,
+              "rate_bias": -0.01988888604605642
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13864281467117445,
+              "rate_bias": -0.0006984002890456387
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004766510902029396,
+              "rate_bias": 0.0001565027229826273
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08042592673095147,
+              "rate_bias": 0.009714349662024422
+            }
+          },
+          "component_brier_score": 0.46580897991503667,
+          "component_log_loss": 0.9878751268910306,
+          "players": 130,
+          "target_exposure": 13449
+        }
+      },
+      "other": {
+        "1200": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04337566961438873,
+              "rate_bias": 0.0036701152980826864
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012139940385517722,
+              "rate_bias": 0.0027712140861646107
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028779592037017673,
+              "rate_bias": 0.005134711376745534
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6920806701987471,
+              "rate_bias": -0.020537368317127713
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13851125469333464,
+              "rate_bias": -0.0008299602668854489
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004761669387109345,
+              "rate_bias": 0.00015166120806257543
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08035120368388478,
+              "rate_bias": 0.009639626614957727
+            }
+          },
+          "component_brier_score": 0.46583982453082784,
+          "component_log_loss": 0.9880736774038835,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "1600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.0434435615360933,
+              "rate_bias": 0.0037380072197872576
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.01215768285413013,
+              "rate_bias": 0.0027889565547770194
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028825291745583476,
+              "rate_bias": 0.005180411085311338
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6916020188368338,
+              "rate_bias": -0.021016019679041025
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13872981161453565,
+              "rate_bias": -0.000611403345684428
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004768929360504676,
+              "rate_bias": 0.00015892118145790734
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08047270405231893,
+              "rate_bias": 0.009761126983391868
+            }
+          },
+          "component_brier_score": 0.46585628331802775,
+          "component_log_loss": 0.9881087958823682,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "2400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04352521923611439,
+              "rate_bias": 0.0038196649198083414
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012179050061083507,
+              "rate_bias": 0.0028103237617303945
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.0288802761277082,
+              "rate_bias": 0.005235395467436061
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6910264921016301,
+              "rate_bias": -0.02159154641424461
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.1389924172260671,
+              "rate_bias": -0.0003487977341530092
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004777635537931575,
+              "rate_bias": 0.00016762735888480542
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.080618909709465,
+              "rate_bias": 0.009907332640537945
+            }
+          },
+          "component_brier_score": 0.4658776595949067,
+          "component_log_loss": 0.9881535762551381,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "3600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04358959325399058,
+              "rate_bias": 0.0038840389376845375
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012195917126909355,
+              "rate_bias": 0.0028271908275562434
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.02892364059703908,
+              "rate_bias": 0.005278759936766939
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6905729056186121,
+              "rate_bias": -0.022045132897262752
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13919925071812422,
+              "rate_bias": -0.0001419642420958724
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004784477221806292,
+              "rate_bias": 0.00017446904275952244
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08073421546351851,
+              "rate_bias": 0.010022638394591448
+            }
+          },
+          "component_brier_score": 0.4658957456607817,
+          "component_log_loss": 0.9881908569852293,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04307786722035443,
+              "rate_bias": 0.003372312904048386
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.01206234004781743,
+              "rate_bias": 0.002693613748464319
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028579207179771,
+              "rate_bias": 0.00493432651949886
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6941822848063944,
+              "rate_bias": -0.018435753709480317
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13754949123532537,
+              "rate_bias": -0.0017917237248947344
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.0047296415651568715,
+              "rate_bias": 0.00011963338611010245
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.07981916794518036,
+              "rate_bias": 0.009107590876253305
+            }
+          },
+          "component_brier_score": 0.4657820431520167,
+          "component_log_loss": 0.9879428587182626,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "800": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04326914972437637,
+              "rate_bias": 0.0035635954080703238
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012112142127324355,
+              "rate_bias": 0.0027434158279712436
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028707910303701914,
+              "rate_bias": 0.005063029643429774
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6928319606270188,
+              "rate_bias": -0.01978607788885595
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.1381678894824097,
+              "rate_bias": -0.0011733254778103829
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004750243971021383,
+              "rate_bias": 0.00014023579197461347
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08016070376414758,
+              "rate_bias": 0.009449126695220517
+            }
+          },
+          "component_brier_score": 0.46581640115889017,
+          "component_log_loss": 0.9880224461786103,
+          "players": 130,
+          "target_exposure": 13449
+        }
+      },
+      "single": {
+        "1200": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04337566961438873,
+              "rate_bias": 0.0036701152980826864
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012139940385517722,
+              "rate_bias": 0.0027712140861646107
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028779592037017673,
+              "rate_bias": 0.005134711376745534
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6920806701987471,
+              "rate_bias": -0.020537368317127713
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13851125469333464,
+              "rate_bias": -0.0008299602668854489
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004761669387109345,
+              "rate_bias": 0.00015166120806257543
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08035120368388478,
+              "rate_bias": 0.009639626614957727
+            }
+          },
+          "component_brier_score": 0.46583982453082784,
+          "component_log_loss": 0.9880736774038835,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "1600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043352443350374976,
+              "rate_bias": 0.003646889034068934
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012133586350535012,
+              "rate_bias": 0.0027648600511819012
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028763402024310446,
+              "rate_bias": 0.005118521364038309
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6917141105541874,
+              "rate_bias": -0.020903927961687323
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13896988060138782,
+              "rate_bias": -0.0003713343588322776
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.0047596558835301325,
+              "rate_bias": 0.00014964770448336293
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08030692123567425,
+              "rate_bias": 0.009595344166747182
+            }
+          },
+          "component_brier_score": 0.4658652498955652,
+          "component_log_loss": 0.9881263719065316,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "2400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043324934732885755,
+              "rate_bias": 0.0036193804165797114
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.01212605562695665,
+              "rate_bias": 0.0027573293276035374
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028744203426056512,
+              "rate_bias": 0.0050993227657843716
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6912792113076678,
+              "rate_bias": -0.02133882720820696
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13951389050074026,
+              "rate_bias": 0.00017267554052017092
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.0047572853687219375,
+              "rate_bias": 0.0001472771896751682
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08025441903697104,
+              "rate_bias": 0.009542841968043987
+            }
+          },
+          "component_brier_score": 0.46590113756050866,
+          "component_log_loss": 0.9882030208953968,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "3600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043303524219297444,
+              "rate_bias": 0.003597969902991396
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.01212018788280822,
+              "rate_bias": 0.002751461583455108
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028729243124105963,
+              "rate_bias": 0.005084362463833825
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6909401409653121,
+              "rate_bias": -0.021677897550562705
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13993793858056788,
+              "rate_bias": 0.0005967236203477984
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004755450540683089,
+              "rate_bias": 0.00014544236163631944
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08021351468722537,
+              "rate_bias": 0.009501937618298314
+            }
+          },
+          "component_brier_score": 0.46593348405501905,
+          "component_log_loss": 0.9882733073959888,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04348358197043362,
+              "rate_bias": 0.003778027654127579
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012169494386236417,
+              "rate_bias": 0.002800768086883305
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028854557310767116,
+              "rate_bias": 0.0052096766504949755
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6937761152415941,
+              "rate_bias": -0.01884192327428068
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13638872354139098,
+              "rate_bias": -0.0029524914188291227
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.00477118325488417,
+              "rate_bias": 0.0001611750758374008
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08055634429469347,
+              "rate_bias": 0.009844767225766403
+            }
+          },
+          "component_brier_score": 0.4657778782110156,
+          "component_log_loss": 0.9879752713975537,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "800": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04341293154040097,
+              "rate_bias": 0.0037073772240949258
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012150132994997752,
+              "rate_bias": 0.0027814066956446406
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028805526846790757,
+              "rate_bias": 0.005160646186518617
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.692667539748359,
+              "rate_bias": -0.01995049876751576
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13777679068567106,
+              "rate_bias": -0.0015644242745490222
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004764923920445228,
+              "rate_bias": 0.0001549157413984589
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08042215426333515,
+              "rate_bias": 0.0097105771944081
+            }
+          },
+          "component_brier_score": 0.4658081491309671,
+          "component_log_loss": 0.9880122983763637,
+          "players": 130,
+          "target_exposure": 13449
+        }
+      },
+      "triple": {
+        "1200": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04337566961438873,
+              "rate_bias": 0.0036701152980826864
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012139940385517722,
+              "rate_bias": 0.0027712140861646107
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028779592037017673,
+              "rate_bias": 0.005134711376745534
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6920806701987471,
+              "rate_bias": -0.020537368317127713
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13851125469333464,
+              "rate_bias": -0.0008299602668854489
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004761669387109345,
+              "rate_bias": 0.00015166120806257543
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08035120368388478,
+              "rate_bias": 0.009639626614957727
+            }
+          },
+          "component_brier_score": 0.46583982453082784,
+          "component_log_loss": 0.9880736774038835,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "1600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04338312949911681,
+              "rate_bias": 0.0036775751828107646
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012142117499513997,
+              "rate_bias": 0.002773391200160886
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.02878438028473624,
+              "rate_bias": 0.005139499624464102
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.692200662173171,
+              "rate_bias": -0.0204173763427038
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13853587819141014,
+              "rate_bias": -0.000805336768809946
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004588717306014147,
+              "rate_bias": -2.129087303262184e-05
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08036511504603773,
+              "rate_bias": 0.009653537977110674
+            }
+          },
+          "component_brier_score": 0.46583710227851705,
+          "component_log_loss": 0.988081972751209,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "2400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043391760122772106,
+              "rate_bias": 0.0036862058064660586
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012144641793286576,
+              "rate_bias": 0.0027759154939334648
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028789909905024898,
+              "rate_bias": 0.005145029244752757
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.692339689728706,
+              "rate_bias": -0.020278348787168773
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.1385644206367822,
+              "rate_bias": -0.0007767943234378926
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004388359356443111,
+              "rate_bias": -0.00022164882260365822
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08038121845698498,
+              "rate_bias": 0.009669641388057919
+            }
+          },
+          "component_brier_score": 0.4658341890162996,
+          "component_log_loss": 0.988108579138161,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "3600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.0433983229668981,
+              "rate_bias": 0.0036927686505920515
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012146565067280842,
+              "rate_bias": 0.0027778387679277313
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.02879410711761313,
+              "rate_bias": 0.005149226457340993
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6924455347366747,
+              "rate_bias": -0.02017250377920006
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.1385861610492852,
+              "rate_bias": -0.0007550539109348798
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004235839949827153,
+              "rate_bias": -0.0003741682292196167
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08039346911242086,
+              "rate_bias": 0.009681892043493807
+            }
+          },
+          "component_brier_score": 0.4658321509391841,
+          "component_log_loss": 0.9881434605289134,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04333893582105647,
+              "rate_bias": 0.003633381504750422
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012129290411932168,
+              "rate_bias": 0.002760564112579057
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028755905743364597,
+              "rate_bias": 0.005111025083092459
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6914930026216598,
+              "rate_bias": -0.021125035894214952
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13839076430709354,
+              "rate_bias": -0.0009504506531265574
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.005609266254716973,
+              "rate_bias": 0.0009992580756702034
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08028283484017643,
+              "rate_bias": 0.009571257771249373
+            }
+          },
+          "component_brier_score": 0.46585574561932097,
+          "component_log_loss": 0.9881768234711368,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "800": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.043363372203989635,
+              "rate_bias": 0.0036578178876835884
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012136361638047155,
+              "rate_bias": 0.002767635338694044
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028771681979709304,
+              "rate_bias": 0.005126801319437164
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6918832875849927,
+              "rate_bias": -0.02073475093088205
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13847076842419134,
+              "rate_bias": -0.0008704465360287448
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.005046238944474716,
+              "rate_bias": 0.00043623076542794636
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08032828922459496,
+              "rate_bias": 0.009616712155667905
+            }
+          },
+          "component_brier_score": 0.465844704093834,
+          "component_log_loss": 0.988084478546193,
+          "players": 130,
+          "target_exposure": 13449
+        }
+      },
+      "ubb": {
+        "1200": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04337566961438873,
+              "rate_bias": 0.0036701152980826864
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012139940385517722,
+              "rate_bias": 0.0027712140861646107
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028779592037017673,
+              "rate_bias": 0.005134711376745534
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6920806701987471,
+              "rate_bias": -0.020537368317127713
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13851125469333464,
+              "rate_bias": -0.0008299602668854489
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004761669387109345,
+              "rate_bias": 0.00015166120806257543
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08035120368388478,
+              "rate_bias": 0.009639626614957727
+            }
+          },
+          "component_brier_score": 0.46583982453082784,
+          "component_log_loss": 0.9880736774038835,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "1600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04335165281013376,
+              "rate_bias": 0.0036460984938277196
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012133950529435968,
+              "rate_bias": 0.0027652242300828574
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028763683086537283,
+              "rate_bias": 0.005118802426265143
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6916835533826522,
+              "rate_bias": -0.020934485133222592
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13843102633919402,
+              "rate_bias": -0.0009101886210260708
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004758896794419087,
+              "rate_bias": 0.0001488886153723182
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08087723705762766,
+              "rate_bias": 0.010165659988700606
+            }
+          },
+          "component_brier_score": 0.46587381083678076,
+          "component_log_loss": 0.9882337273951521,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "2400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04332354839572873,
+              "rate_bias": 0.0036179940794226844
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012126955023706358,
+              "rate_bias": 0.0027582287243532464
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028745082529408286,
+              "rate_bias": 0.005100201869136147
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.691219200200429,
+              "rate_bias": -0.02139883831544576
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13833724540254458,
+              "rate_bias": -0.0010039695576755255
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004755653752477342,
+              "rate_bias": 0.00014564557343057282
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08149231469570571,
+              "rate_bias": 0.01078073762677865
+            }
+          },
+          "component_brier_score": 0.46591903596585743,
+          "component_log_loss": 0.9884419590193194,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "3600": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04330197314334947,
+              "rate_bias": 0.0035964188270434265
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012121596835025653,
+              "rate_bias": 0.0027528705356725408
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028730815846844688,
+              "rate_bias": 0.005085935186572549
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.690862977532292,
+              "rate_bias": -0.021755060983582836
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13826533091186638,
+              "rate_bias": -0.0010758840483537004
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004753165823487329,
+              "rate_bias": 0.00014315764444055982
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.08196413990713461,
+              "rate_bias": 0.011252562838207544
+            }
+          },
+          "component_brier_score": 0.4659578883950078,
+          "component_log_loss": 0.9886174972814692,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "400": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04348896084848869,
+              "rate_bias": 0.003783406532182647
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012168276978664435,
+              "rate_bias": 0.002799550679311324
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.0288547887966414,
+              "rate_bias": 0.005209908136369262
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6939582739967777,
+              "rate_bias": -0.018659764519097115
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13889074725307038,
+              "rate_bias": -0.0004504677071497054
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004774738251112301,
+              "rate_bias": 0.00016473007206553163
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.0778642138752451,
+              "rate_bias": 0.007152636806318044
+            }
+          },
+          "component_brier_score": 0.46573599834429297,
+          "component_log_loss": 0.9875445317667748,
+          "players": 130,
+          "target_exposure": 13449
+        },
+        "800": {
+          "calibration": {
+            "double": {
+              "observed_rate": 0.03970555431630605,
+              "predicted_rate": 0.04341461363998752,
+              "rate_bias": 0.003709059323681471
+            },
+            "hbp": {
+              "observed_rate": 0.009368726299353113,
+              "predicted_rate": 0.012149670653739078,
+              "rate_bias": 0.0027809443543859655
+            },
+            "hr": {
+              "observed_rate": 0.02364488066027214,
+              "predicted_rate": 0.028805413847898573,
+              "rate_bias": 0.0051605331876264345
+            },
+            "other": {
+              "observed_rate": 0.7126180385158748,
+              "predicted_rate": 0.6927252317357521,
+              "rate_bias": -0.019892806780122767
+            },
+            "single": {
+              "observed_rate": 0.1393412149602201,
+              "predicted_rate": 0.13864151068553754,
+              "rate_bias": -0.0006997042746825625
+            },
+            "triple": {
+              "observed_rate": 0.004610008179046769,
+              "predicted_rate": 0.004766165642829719,
+              "rate_bias": 0.00015615746378295041
+            },
+            "ubb": {
+              "observed_rate": 0.07071157706892706,
+              "predicted_rate": 0.07949739379425552,
+              "rate_bias": 0.008785816725328468
+            }
+          },
+          "component_brier_score": 0.4657936084104824,
+          "component_log_loss": 0.9878489793627745,
+          "players": 130,
+          "target_exposure": 13449
+        }
+      }
+    },
+    "selected": {
+      "calibration": {
+        "double": {
+          "observed_rate": 0.03970555431630605,
+          "predicted_rate": 0.04305398227282783,
+          "rate_bias": 0.003348427956521779
+        },
+        "hbp": {
+          "observed_rate": 0.009368726299353113,
+          "predicted_rate": 0.012156310128351182,
+          "rate_bias": 0.00278758382899807
+        },
+        "hr": {
+          "observed_rate": 0.02364488066027214,
+          "predicted_rate": 0.02609419695125908,
+          "rate_bias": 0.0024493162909869377
+        },
+        "other": {
+          "observed_rate": 0.7126180385158748,
+          "predicted_rate": 0.6998704205818983,
+          "rate_bias": -0.012747617933976472
+        },
+        "single": {
+          "observed_rate": 0.1393412149602201,
+          "predicted_rate": 0.13624516441653645,
+          "rate_bias": -0.003096050543683647
+        },
+        "triple": {
+          "observed_rate": 0.004610008179046769,
+          "predicted_rate": 0.0047672778132781595,
+          "rate_bias": 0.00015726963423139047
+        },
+        "ubb": {
+          "observed_rate": 0.07071157706892706,
+          "predicted_rate": 0.07781264783584887,
+          "rate_bias": 0.007101070766921814
+        }
+      },
+      "component_brier_score": 0.4655917185727403,
+      "component_log_loss": 0.9869382848014916,
+      "players": 130,
+      "target_exposure": 13449
+    }
+  },
+  "incumbent_regression_pa": {
+    "double": 1200.0,
+    "hbp": 1200.0,
+    "hr": 1200.0,
+    "other": 1200.0,
+    "single": 1200.0,
+    "triple": 1200.0,
+    "ubb": 1200.0
+  },
+  "outside_fv_used": false,
+  "population": "affiliated hitters with no prior MLB PA who appear in MLB in target year",
+  "production_changed": false,
+  "promotion_blocker": "2025 was previously disclosed; this is stability evidence, not untouched confirmation",
+  "promotion_eligible": false,
+  "report_schema_version": "0.1",
+  "selected_regression_pa": {
+    "double": 800.0,
+    "hbp": 1200.0,
+    "hr": 400.0,
+    "other": 400.0,
+    "single": 400.0,
+    "triple": 1200.0,
+    "ubb": 400.0
+  },
+  "selection_year": 2024,
+  "stability": {
+    "incumbent": {
+      "calibration": {
+        "double": {
+          "observed_rate": 0.040392156862745096,
+          "predicted_rate": 0.04126741620055021,
+          "rate_bias": 0.0008752593378051113
+        },
+        "hbp": {
+          "observed_rate": 0.011830065359477124,
+          "predicted_rate": 0.012635036177597973,
+          "rate_bias": 0.0008049708181208498
+        },
+        "hr": {
+          "observed_rate": 0.025555555555555557,
+          "predicted_rate": 0.025980281126583234,
+          "rate_bias": 0.0004247255710276783
+        },
+        "other": {
+          "observed_rate": 0.698954248366013,
+          "predicted_rate": 0.699964962316394,
+          "rate_bias": 0.0010107139503810199
+        },
+        "single": {
+          "observed_rate": 0.1434640522875817,
+          "predicted_rate": 0.13976714295252105,
+          "rate_bias": -0.0036969093350606662
+        },
+        "triple": {
+          "observed_rate": 0.00392156862745098,
+          "predicted_rate": 0.004825658936784087,
+          "rate_bias": 0.0009040903093331063
+        },
+        "ubb": {
+          "observed_rate": 0.07588235294117647,
+          "predicted_rate": 0.07555950228956934,
+          "rate_bias": -0.0003228506516071243
+        }
+      },
+      "component_brier_score": 0.481807977660691,
+      "component_log_loss": 1.0175108981017325,
+      "players": 112,
+      "target_exposure": 15300
+    },
+    "player_bootstrap_selected_minus_incumbent": {
+      "component_brier": {
+        "lower_95": -0.0005403496142514665,
+        "median": -0.00025498213581458886,
+        "upper_95": 2.516134772476998e-05
+      },
+      "component_log_loss": {
+        "lower_95": -0.0025418509848015654,
+        "median": -0.0012461475300886385,
+        "upper_95": -0.00024183588452426859
+      }
+    },
+    "selected": {
+      "calibration": {
+        "double": {
+          "observed_rate": 0.040392156862745096,
+          "predicted_rate": 0.04098203629968821,
+          "rate_bias": 0.0005898794369431108
+        },
+        "hbp": {
+          "observed_rate": 0.011830065359477124,
+          "predicted_rate": 0.012659601033756018,
+          "rate_bias": 0.0008295356742788942
+        },
+        "hr": {
+          "observed_rate": 0.025555555555555557,
+          "predicted_rate": 0.023216036302117955,
+          "rate_bias": -0.0023395192534376016
+        },
+        "other": {
+          "observed_rate": 0.698954248366013,
+          "predicted_rate": 0.7068229594602664,
+          "rate_bias": 0.007868711094253349
+        },
+        "single": {
+          "observed_rate": 0.1434640522875817,
+          "predicted_rate": 0.1384531917575478,
+          "rate_bias": -0.005010860530033895
+        },
+        "triple": {
+          "observed_rate": 0.00392156862745098,
+          "predicted_rate": 0.004834275264191131,
+          "rate_bias": 0.0009127066367401501
+        },
+        "ubb": {
+          "observed_rate": 0.07588235294117647,
+          "predicted_rate": 0.07303189988243249,
+          "rate_bias": -0.0028504530587439843
+        }
+      },
+      "component_brier_score": 0.48155018867965227,
+      "component_log_loss": 1.0162086843598082,
+      "players": 112,
+      "target_exposure": 15300
+    },
+    "selected_minus_incumbent_brier": -0.00025778898103873127,
+    "selected_minus_incumbent_log_loss": -0.0013022137419242963
+  },
+  "stability_year": 2025,
+  "status": "diagnostic_complete_not_eligible_for_promotion"
+}

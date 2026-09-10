@@ -98,6 +98,12 @@ the 800-BF universal pitcher prior, do not search more combinations on those sea
 and proceed to attaching cutoff-safe age and incumbent opportunity predictions to the
 joint transition scoreboard.
 
+The parallel hitter component-specific test improves both 2024 and 2025 point scores,
+but it is mostly the previously tested 400-PA challenger and still misses the frozen
+2025 Brier uncertainty gate by a narrow margin. Retain 1,200 PA. Both hitter and
+pitcher regression searches are now closed on the disclosed 2024–2025 source; broader
+history or a future untouched season is required before revisiting them.
+
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->
 phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.
