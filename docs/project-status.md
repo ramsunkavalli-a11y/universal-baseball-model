@@ -16,6 +16,23 @@ compressed before FV or dollars are assigned. Low-level hitter evidence and
 proximity-versus-upside balance are the next two bounded checks. Playable values were
 rebuilt for the age correction only; no ranking formula changed.
 
+The follow-up [player-by-player casebook](prospect-player-casebook-result.md) now turns
+all 72 top-50 disagreements into a concrete issue queue. Ten public-list pitchers share
+the translated-rate problem. Eleven model-only position cases are all shortstops, not
+catchers, and receive at least 30% of expected WAR from position while modeled offense
+is below average. Twenty model-only players are driven mainly by advanced-level
+proximity, and 12 public-list players have sparse evidence. Raw versus projected pitcher
+rates and exact hitter position-WAR contributions are now visible in the generated
+casebook. Two simple pitcher-tail repairs failed proper historical scoring, so no rate
+boost was promoted.
+
+Official draft pedigree was also rerun inside the current arrival build. It improves
+both hitter scores in every historical fold, but a player-by-player production
+sensitivity creates near-certain six-year arrival for some drafted players and lowers
+international players because their signing path is absent. Top-50 overlap remains 10.
+The direct promotion is rejected; production values are restored. Keep the candidate
+visible in build reports and require entry-path and six-year-horizon safety before use.
+
 ## Latest model-method block: aging, attrition and shrinkage
 
 The [GitHub implementation review](github-projection-methods-review-2026-09-10.md)

@@ -11,7 +11,10 @@ from pathlib import Path
 
 import polars as pl
 
-from universal_baseball.prospect_ranking_audit import add_explanations
+from universal_baseball.prospect_ranking_audit import (
+    add_explanations,
+    build_recent_pitcher_evidence,
+)
 from universal_baseball.storage import write_canonical_parquet
 
 
@@ -47,6 +50,7 @@ def _write_html(
     summary: dict[str, object],
     source_top: pl.DataFrame,
     model_top: pl.DataFrame,
+    casebook: pl.DataFrame,
 ) -> None:
     source_columns = [
         ("source_rank", "FG", ""), ("player_name", "Player", ""),
@@ -56,6 +60,7 @@ def _write_html(
         ("model_arrival_probability", "MLB chance", "percent"),
         ("model_meaningful_role_probability", "Role chance", "percent"),
         ("expected_six_year_war", "Expected WAR", ""),
+        ("issue_priority", "Priority", ""),
         ("difference_reason", "Main reason", ""),
         ("baseball_explanation", "Model explanation", ""),
     ]
@@ -69,8 +74,24 @@ def _write_html(
         ("conditional_skill_war_rate", "WAR rate", ""),
         ("expected_six_year_war", "Expected WAR", ""),
         ("transferable_value_dollars", "Value", "money"),
+        ("issue_priority", "Priority", ""),
         ("difference_reason", "Main reason", ""),
         ("baseball_explanation", "Model explanation", ""),
+    ]
+    casebook_columns = [
+        ("issue_priority", "Priority", ""), ("player_name", "Player", ""),
+        ("source_rank", "FG", ""), ("model_rank", "Model", ""),
+        ("model_player_type", "Type", ""), ("level_tier", "Level", ""),
+        ("raw_pitcher_bf", "Raw BF", ""),
+        ("raw_pitcher_so_rate", "Raw K", "percent"),
+        ("raw_pitcher_ubb_rate", "Raw BB", "percent"),
+        ("raw_pitcher_hr_rate", "Raw HR", "percent"),
+        ("predicted_so_rate", "Projected K", "percent"),
+        ("predicted_ubb_rate", "Projected BB", "percent"),
+        ("predicted_hr_rate", "Projected HR", "percent"),
+        ("position_war_contribution", "Position WAR", ""),
+        ("difference_reason", "Main reason", ""),
+        ("baseball_explanation", "Full explanation", ""),
     ]
     cards = "".join(
         f"<div><b>{escape(str(value))}</b><span>{escape(key.replace('_', ' '))}</span></div>"
@@ -92,6 +113,7 @@ td:last-child{{white-space:normal;min-width:520px}} .note{{background:#fff4d6;pa
 <p>Checkpoint {escape(dated)}. FanGraphs is an outside diagnostic only. The model is not rewarded for agreement and no public rank or FV enters a projection.</p>
 <div class="note">A disagreement is acceptable only when the model can trace it to age, level, performance, opportunity, WAR and value using one consistent rule.</div>
 <div class="cards">{cards}</div>
+<h2>Disagreement casebook</h2><p>One row per top-50 disagreement, grouped into the issue queue using model evidence only.</p><div class="table-wrap">{_table(casebook.to_dicts(), casebook_columns)}</div>
 <h2>FanGraphs top 50 through the model</h2><div class="table-wrap">{_table(source_top.to_dicts(), source_columns)}</div>
 <h2>Model top 50 through the FanGraphs check</h2><div class="table-wrap">{_table(model_top.to_dicts(), model_columns)}</div>
 </body></html>"""
@@ -197,6 +219,19 @@ def _model_ranking(root: Path, dated: str) -> pl.DataFrame:
         "calculation_status",
         "coverage_tier",
     )
+    raw_pitcher = build_recent_pitcher_evidence(
+        pl.read_parquet(
+            root / "affiliated-skill-source" / "tables"
+            / "affiliated_pitching_components.parquet"
+        ),
+        current_season=int(dated[:4]),
+    )
+    war_report = json.loads(
+        (root / "phase2-conditional-war-paths" / dated / "report.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    runs_per_win = float(war_report["reference_environment"]["runs_per_win"])
     model = (
         nested.join(values, on="player_id", how="inner", validate="1:1")
         .join(_arrivals(root, dated), on="player_id", how="left", validate="1:m")
@@ -208,6 +243,7 @@ def _model_ranking(root: Path, dated: str) -> pl.DataFrame:
             how="left",
             validate="1:1",
         )
+        .join(raw_pitcher, on="player_id", how="left", validate="m:1")
         .with_columns(
             pl.col("three_tier_expected_workload").alias("expected_workload"),
             pl.col("three_tier_expected_six_year_war").alias(
@@ -215,6 +251,21 @@ def _model_ranking(root: Path, dated: str) -> pl.DataFrame:
             ),
             pl.col("three_tier_model_fv_granular").alias("model_fv_granular"),
             pl.col("three_tier_model_fv_display").alias("model_fv_display"),
+        )
+        .with_columns(
+            pl.when(pl.col("model_player_type") == "hitter")
+            .then(
+                pl.col("positional_runs_per_600")
+                * pl.col("expected_workload")
+                / 600.0
+                / runs_per_win
+            )
+            .otherwise(None)
+            .alias("position_war_contribution")
+        )
+        .with_columns(
+            (pl.col("expected_six_year_war") - pl.col("position_war_contribution"))
+            .alias("war_without_position")
         )
         .sort(
             ["transferable_value_dollars", "expected_six_year_war", "player_id"],
@@ -293,6 +344,15 @@ def main() -> int:
         .alias("comparison_status")
     )
     source_top = add_explanations(source_top)
+    casebook = pl.concat(
+        [
+            source_top.filter(
+                pl.col("comparison_status") == "source_top_50_model_lower"
+            ),
+            model_top.filter(pl.col("comparison_status") == "model_top_50_only"),
+        ],
+        how="diagonal_relaxed",
+    ).sort(["issue_priority", "source_rank", "model_rank"], nulls_last=True)
 
     overlap = source_top.filter(pl.col("model_rank") <= 50).height
     source_graduated = source_top.filter(
@@ -338,6 +398,9 @@ def main() -> int:
             "model_top_50_reason_counts": model_top.group_by(
                 "difference_reason"
             ).len().sort("len", descending=True).to_dicts(),
+            "casebook_issue_counts": casebook.group_by("issue_priority").len().sort(
+                ["issue_priority", "len"]
+            ).to_dicts(),
         },
         "structural_checks": {
             "model_prospect_pool": model.height,
@@ -369,6 +432,11 @@ def main() -> int:
             output / "model-top-50-comparison.parquet",
             table_name="prospect_model_top_50_comparison",
         ).as_record(),
+        "disagreement_casebook": write_canonical_parquet(
+            casebook,
+            output / "disagreement-casebook.parquet",
+            table_name="prospect_top_50_disagreement_casebook",
+        ).as_record(),
     }
     report["storage"] = storage
     source_top.with_columns(pl.col("review_flags").list.join("|")).write_csv(
@@ -377,12 +445,16 @@ def main() -> int:
     model_top.with_columns(pl.col("review_flags").list.join("|")).write_csv(
         output / "model-top-50-comparison.csv"
     )
+    casebook.with_columns(pl.col("review_flags").list.join("|")).write_csv(
+        output / "disagreement-casebook.csv"
+    )
     _write_html(
         output / "index.html",
         dated=dated,
         summary=report["summary"],
         source_top=source_top,
         model_top=model_top,
+        casebook=casebook,
     )
     (output / "report.json").write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"

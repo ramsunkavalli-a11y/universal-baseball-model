@@ -1,0 +1,322 @@
+{
+  "boundaries": {
+    "2026_outcomes_used": false,
+    "arrival_probability_changed": false,
+    "component_probabilities_remain_coherent": true,
+    "outside_rank_or_fv_used": false,
+    "target_year_team_or_contract_used": false
+  },
+  "candidate": "For pitchers with at least 300 prior MiLB BF, add one clipped, population-standardized raw K-BB residual to K and subtract it from BB in coherent component-logit space.",
+  "confirmation_2025": {
+    "candidate": {
+      "calibration": {
+        "hbp": {
+          "observed_rate": 0.012323549182164464,
+          "predicted_rate": 0.013576193263131218,
+          "rate_bias": 0.0012526440809667557
+        },
+        "hr": {
+          "observed_rate": 0.030808872955411157,
+          "predicted_rate": 0.03341086141949886,
+          "rate_bias": 0.0026019884640876997
+        },
+        "other": {
+          "observed_rate": 0.6457539771454179,
+          "predicted_rate": 0.6561885854906933,
+          "rate_bias": 0.01043460834527539
+        },
+        "so": {
+          "observed_rate": 0.21863096571812682,
+          "predicted_rate": 0.20914407698251467,
+          "rate_bias": -0.009486888735612155
+        },
+        "ubb": {
+          "observed_rate": 0.09248263499887968,
+          "predicted_rate": 0.08768028284416202,
+          "rate_bias": -0.004802352154717659
+        }
+      },
+      "component_brier_score": 0.5247666981074987,
+      "component_log_loss": 0.994667028532838,
+      "players": 146,
+      "target_exposure": 17852
+    },
+    "candidate_minus_incumbent_brier": 0.0,
+    "candidate_minus_incumbent_log_loss": 0.0,
+    "incumbent": {
+      "calibration": {
+        "hbp": {
+          "observed_rate": 0.012323549182164464,
+          "predicted_rate": 0.013576193263131218,
+          "rate_bias": 0.0012526440809667557
+        },
+        "hr": {
+          "observed_rate": 0.030808872955411157,
+          "predicted_rate": 0.03341086141949886,
+          "rate_bias": 0.0026019884640876997
+        },
+        "other": {
+          "observed_rate": 0.6457539771454179,
+          "predicted_rate": 0.6561885854906933,
+          "rate_bias": 0.01043460834527539
+        },
+        "so": {
+          "observed_rate": 0.21863096571812682,
+          "predicted_rate": 0.20914407698251467,
+          "rate_bias": -0.009486888735612155
+        },
+        "ubb": {
+          "observed_rate": 0.09248263499887968,
+          "predicted_rate": 0.08768028284416202,
+          "rate_bias": -0.004802352154717659
+        }
+      },
+      "component_brier_score": 0.5247666981074987,
+      "component_log_loss": 0.994667028532838,
+      "players": 146,
+      "target_exposure": 17852
+    }
+  },
+  "decision": {
+    "promoted": false,
+    "reason": "requires lower component log loss and Brier in untouched 2025"
+  },
+  "development_2024": {
+    "scores": {
+      "0.0": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.012110166513361727,
+            "rate_bias": 0.000998575004865898
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.034915946894862465,
+            "rate_bias": 0.003872667894473343
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6469270772086726,
+            "rate_bias": -0.005889732856613395
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.2164673078402918,
+            "rate_bias": -0.002824490335158921
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08957950154281148,
+            "rate_bias": 0.003842980292433173
+          }
+        },
+        "component_brier_score": 0.5158063341546931,
+        "component_log_loss": 0.9766988849588337,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "0.025": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.012100134118335687,
+            "rate_bias": 0.0009885426098398583
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.03488558261864915,
+            "rate_bias": 0.003842303618260027
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6464081225122487,
+            "rate_bias": -0.0064086875530373
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.21760436122484986,
+            "rate_bias": -0.0016874369506008659
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08900179952591666,
+            "rate_bias": 0.0032652782755383564
+          }
+        },
+        "component_brier_score": 0.5158470603058717,
+        "component_log_loss": 0.976763680686802,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "0.05": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.012089411389398954,
+            "rate_bias": 0.000977819880903125
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.03485313366834579,
+            "rate_bias": 0.0038098546679566684
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.645852440910675,
+            "rate_bias": -0.0069643691546110425
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.2187627043865673,
+            "rate_bias": -0.0005290937888834331
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08844230964501305,
+            "rate_bias": 0.0027057883946347435
+          }
+        },
+        "component_brier_score": 0.5159116346437995,
+        "component_log_loss": 0.9768894565998886,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "0.075": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.012078005635954661,
+            "rate_bias": 0.0009664141274588331
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.03481862194000719,
+            "rate_bias": 0.0037753429396180666
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6452604115866966,
+            "rate_bias": -0.007556398478589392
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.21994215297651248,
+            "rate_bias": 0.0006503548010617477
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08790080786082909,
+            "rate_bias": 0.002164286610450777
+          }
+        },
+        "component_brier_score": 0.5160009426642566,
+        "component_log_loss": 0.9770763013902135,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "0.1": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.012065924758787408,
+            "rate_bias": 0.0009543332502915807
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.0347820710740821,
+            "rate_bias": 0.00373879207369298
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6446324449494439,
+            "rate_bias": -0.008184365115842078
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.2211424933007262,
+            "rate_bias": 0.0018506951252754522
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08737706591696036,
+            "rate_bias": 0.0016405446665820431
+          }
+        },
+        "component_brier_score": 0.5161159128784913,
+        "component_log_loss": 0.9773243062021755,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "0.15": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.012039772173397988,
+            "rate_bias": 0.0009281806649021595
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.03470295515481591,
+            "rate_bias": 0.0036596761544267892
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6432704964423984,
+            "rate_bias": -0.00954631362288763
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.2236048456189225,
+            "rate_bias": 0.004313047443471756
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08638193061046541,
+            "rate_bias": 0.0006454093600870941
+          }
+        },
+        "component_brier_score": 0.5164267262694097,
+        "component_log_loss": 0.978004166511794,
+        "players": 173,
+        "target_exposure": 23129
+      },
+      "0.2": {
+        "calibration": {
+          "hbp": {
+            "observed_rate": 0.011111591508495828,
+            "predicted_rate": 0.012011028509790475,
+            "rate_bias": 0.0008994370012946485
+          },
+          "hr": {
+            "observed_rate": 0.031043279000389123,
+            "predicted_rate": 0.03461600946489603,
+            "rate_bias": 0.0035727304645069035
+          },
+          "other": {
+            "observed_rate": 0.652816810065286,
+            "predicted_rate": 0.6417704948646191,
+            "rate_bias": -0.011046315200666934
+          },
+          "so": {
+            "observed_rate": 0.21929179817545072,
+            "predicted_rate": 0.22614745447655546,
+            "rate_bias": 0.006855656301104715
+          },
+          "ubb": {
+            "observed_rate": 0.08573652125037831,
+            "predicted_rate": 0.08545501268413906,
+            "rate_bias": -0.00028150856623925587
+          }
+        },
+        "component_brier_score": 0.5168520856122055,
+        "component_log_loss": 0.9789297755528855,
+        "players": 173,
+        "target_exposure": 23129
+      }
+    },
+    "selected_alpha": 0.0
+  },
+  "report_schema_version": "0.1",
+  "status": "pitcher_dominance_residual_audit_complete"
+}

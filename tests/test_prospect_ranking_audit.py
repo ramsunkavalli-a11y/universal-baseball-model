@@ -1,6 +1,8 @@
 from universal_baseball.prospect_ranking_audit import (
+    build_recent_pitcher_evidence,
     difference_reason,
     explain_player,
+    issue_priority,
     review_flags,
 )
 
@@ -53,6 +55,24 @@ def test_review_flags_missing_and_large_difference() -> None:
         "skill_evidence_tier": "affiliated_history",
     }
     assert review_flags(complete) == ["large_external_rank_difference"]
+
+
+def test_review_flags_position_value_dominating_weak_offense() -> None:
+    row = {
+        "model_rank": 20,
+        "model_player_type": "hitter",
+        "age_years": 22.0,
+        "level_tier": "AAA",
+        "model_arrival_probability": 0.8,
+        "model_meaningful_role_probability": 0.5,
+        "conditional_skill_war_rate": 2.0,
+        "expected_workload": 900.0,
+        "expected_six_year_war": 2.0,
+        "position_war_contribution": 0.8,
+        "batting_runs_per_600": -4.0,
+    }
+
+    assert review_flags(row) == ["position_value_dominant"]
 
 
 def test_graduated_player_is_an_eligibility_difference_not_missing_data() -> None:
@@ -119,3 +139,37 @@ def test_difference_reason_identifies_advanced_level_model_preference() -> None:
     assert difference_reason(row) == (
         "Model higher: advanced level and high MLB arrival chance"
     )
+
+
+def test_issue_priority_turns_repeated_reasons_into_roadmap() -> None:
+    assert issue_priority(
+        "Model lower: translated pitcher run rate is weak"
+    ) == "P0 pitcher translation"
+    assert issue_priority(
+        "Model higher: premium-position value offsets limited offense"
+    ) == "P0 position persistence"
+
+
+def test_recent_pitcher_evidence_keeps_raw_rates_unadjusted() -> None:
+    import polars as pl
+
+    history = pl.DataFrame(
+        {
+            "season": [2023, 2024, 2025, 2026, 2026],
+            "player_id": [1, 1, 1, 1, 2],
+            "level_group": ["AA", "AA", "AAA", "AA", "MLB"],
+            "batters_faced": [100, 100, 200, 100, 100],
+            "strike_outs": [100, 20, 60, 40, 100],
+            "base_on_balls": [0, 10, 20, 5, 0],
+            "intentional_walks": [0, 1, 2, 0, 0],
+            "home_runs": [0, 3, 4, 3, 0],
+        }
+    )
+
+    result = build_recent_pitcher_evidence(history, current_season=2026)
+
+    assert result.height == 1
+    assert result.item(0, "raw_pitcher_bf") == 400
+    assert result.item(0, "raw_pitcher_so_rate") == 0.30
+    assert result.item(0, "raw_pitcher_ubb_rate") == 0.08
+    assert result.item(0, "raw_pitcher_hr_rate") == 0.025

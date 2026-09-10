@@ -57,6 +57,11 @@ def explain_player(row: dict[str, Any]) -> str:
             f"field {_number(row.get('defense_runs_per_600'))}, "
             f"position {_number(row.get('positional_runs_per_600'))}"
         )
+        if row.get("position_war_contribution") is not None:
+            parts.append(
+                f"position contributes {_number(row.get('position_war_contribution'), 2)} "
+                "of expected WAR"
+            )
     else:
         parts.append(
             "pitching runs above average/800 BF: "
@@ -68,6 +73,13 @@ def explain_player(row: dict[str, Any]) -> str:
             f"{_pct(row.get('predicted_ubb_rate'))}/"
             f"{_pct(row.get('predicted_hr_rate'))}"
         )
+        if row.get("raw_pitcher_bf") is not None:
+            parts.append(
+                f"raw recent {_number(row.get('raw_pitcher_bf'), 0)} BF "
+                f"K/BB/HR: {_pct(row.get('raw_pitcher_so_rate'))}/"
+                f"{_pct(row.get('raw_pitcher_ubb_rate'))}/"
+                f"{_pct(row.get('raw_pitcher_hr_rate'))}"
+            )
     return "; ".join(parts) + "."
 
 
@@ -104,6 +116,17 @@ def review_flags(row: dict[str, Any]) -> list[str]:
     rate = row.get("conditional_skill_war_rate")
     if rate is not None and (float(rate) > 5.0 or float(rate) < -1.5):
         flags.append("extreme_conditional_skill_rate")
+    position_war = row.get("position_war_contribution")
+    expected_war = row.get("expected_six_year_war")
+    if (
+        row.get("model_player_type") == "hitter"
+        and position_war is not None
+        and expected_war is not None
+        and float(expected_war) > 0
+        and float(position_war) / float(expected_war) >= 0.30
+        and float(row.get("batting_runs_per_600") or 0.0) <= 0.0
+    ):
+        flags.append("position_value_dominant")
     source_rank = row.get("source_rank")
     model_rank = row.get("model_rank")
     if source_rank is not None and model_rank is not None:
@@ -159,12 +182,69 @@ def difference_reason(row: dict[str, Any]) -> str:
     return "Model higher: combined opportunity, workload and WAR"
 
 
+def issue_priority(reason: str) -> str:
+    """Turn repeated player-level disagreement reasons into a work queue."""
+
+    if "translated pitcher run rate" in reason:
+        return "P0 pitcher translation"
+    if "premium-position value" in reason:
+        return "P0 position persistence"
+    if "little performance evidence" in reason or "low-level upside" in reason:
+        return "P1 sparse-evidence treatment"
+    if "advanced level" in reason:
+        return "P1 proximity versus upside"
+    if reason.startswith("Agreement") or reason.startswith("Eligibility"):
+        return "No structural action"
+    return "P2 cumulative-model review"
+
+
+def build_recent_pitcher_evidence(
+    history: pl.DataFrame, *, current_season: int
+) -> pl.DataFrame:
+    """Summarize unadjusted recent affiliated rates for player-by-player review."""
+
+    required = {
+        "season", "player_id", "level_group", "batters_faced", "strike_outs",
+        "base_on_balls", "intentional_walks", "home_runs",
+    }
+    if missing := sorted(required - set(history.columns)):
+        raise ValueError(f"recent pitcher evidence missing columns: {missing}")
+    totals = (
+        history.filter(
+            pl.col("season").is_between(current_season - 2, current_season)
+            & (pl.col("level_group") != "MLB")
+        )
+        .group_by("player_id")
+        .agg(
+            pl.col("batters_faced").sum().alias("raw_pitcher_bf"),
+            pl.col("strike_outs").sum().alias("raw_pitcher_so"),
+            (pl.col("base_on_balls").sum() - pl.col("intentional_walks").sum())
+            .alias("raw_pitcher_ubb"),
+            pl.col("home_runs").sum().alias("raw_pitcher_hr"),
+        )
+        .filter(pl.col("raw_pitcher_bf") > 0)
+    )
+    return totals.with_columns(
+        (pl.col("raw_pitcher_so") / pl.col("raw_pitcher_bf")).alias(
+            "raw_pitcher_so_rate"
+        ),
+        (pl.col("raw_pitcher_ubb") / pl.col("raw_pitcher_bf")).alias(
+            "raw_pitcher_ubb_rate"
+        ),
+        (pl.col("raw_pitcher_hr") / pl.col("raw_pitcher_bf")).alias(
+            "raw_pitcher_hr_rate"
+        ),
+    ).sort("player_id")
+
+
 def add_explanations(frame: pl.DataFrame) -> pl.DataFrame:
     """Attach deterministic explanation text and review flags."""
 
     rows = frame.to_dicts()
+    reasons = [difference_reason(row) for row in rows]
     return frame.with_columns(
-        pl.Series("difference_reason", [difference_reason(row) for row in rows]),
+        pl.Series("difference_reason", reasons),
+        pl.Series("issue_priority", [issue_priority(reason) for reason in reasons]),
         pl.Series("baseball_explanation", [explain_player(row) for row in rows]),
         pl.Series("review_flags", [review_flags(row) for row in rows]),
     )

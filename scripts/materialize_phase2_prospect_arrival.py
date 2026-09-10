@@ -27,11 +27,11 @@ EVALUATION_SPECS = ((2021, (2018,)), (2022, (2018,)), (2023, (2018, 2021)))
 FEATURE_SETS = (
     "core", "level_exposure", "development_path", "handedness", "origin", "stable_demographics",
     "stable_interactions", "physical", "handedness_physical",
-    "all_demographics", "all_interactions",
+    "all_demographics", "all_interactions", "draft_pedigree", "baseball_pedigree",
 )
 SELECTABLE_FEATURE_SETS = (
     "core", "level_exposure", "development_path", "handedness", "origin", "stable_demographics",
-    "stable_interactions",
+    "stable_interactions", "draft_pedigree", "baseball_pedigree",
 )
 
 
@@ -456,6 +456,8 @@ def main() -> int:
             "publication_grades_used": False, "future_team_depth_used": False,
             "organization_feature_used": False,
             "official_rule4_draft_fields_materialized": True,
+            "official_rule4_used_for_hitter_arrival_and_meaningful_role": False,
+            "official_rule4_used_for_pitcher_or_conditional_quality": False,
             "features": (
                 "age, highest and workload-weighted primary level, primary-level "
                 "share, position/role, current and prior workload, "
@@ -467,7 +469,8 @@ def main() -> int:
             "six_year_extrapolation_is_constant_two_year_hazard": True,
             "all_demographics_scored_but_not_selectable": True,
             "demographic_search_is_development_only": True,
-            "production_feature_set_remains_core_until_fresh_confirmation": True,
+            "hitter_pedigree_never_creates_war_bonus_or_fv_floor": True,
+            "pedigree_production_requires_entry_path_and_horizon_safety": True,
             "non_vintage_fields": (
                 "height, weight, strike-zone bounds, and current primary position"
             ),
