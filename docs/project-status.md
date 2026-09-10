@@ -64,6 +64,11 @@ blocks. Raw 2020 workload is used for environment-relative progression while its
 full-season equivalent remains limited to career-state thresholds. Missing historical
 birth dates are explicit for 854 paths rather than imputed or discarded.
 
+The cutoff-safe 2021 terminal-state replay is complete. Pitchers beat the direct
+ordered baseline on both proper scores with favorable paired intervals. Hitters trade
+better log loss for materially worse Brier, so the all-player candidate is rejected.
+No value changed; only the pitcher architecture advances to a WAR-distribution replay.
+
 The first Phase 2 survivor-bias test is complete. An age-by-prior-workload pitcher
 return model materially improves 2022–2025 probability scores over one population
 rate. Using it to reweight observed adjacent-season pairs slightly improves the fitted
@@ -1079,7 +1084,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,531 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,532 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 
@@ -1166,7 +1171,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current verification is 46/46 model-law checks. The latest full suite is
-  1,531 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,532 passing tests plus four known missing-artifact failures; no new failure exists.
 
 The remaining universal event-context candidate is the strongly regressed pitcher
 platoon test. The compact pitcher-contact tables on disk retain pitcher identity and

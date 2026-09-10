@@ -1,0 +1,59 @@
+{
+  "candidate_passed": false,
+  "current_2026_used": false,
+  "decision": "reject_terminal_state_candidate",
+  "forecast_origin": 2021,
+  "hitter": {
+    "baseline_brier": 0.20585738301284534,
+    "baseline_log_loss": 0.4973435987406404,
+    "candidate_brier": 0.20829747203458904,
+    "candidate_log_loss": 0.47241726078864216,
+    "candidate_minus_baseline_brier": {
+      "ci_high": 0.004640715991296491,
+      "ci_low": 4.362975736495053e-05,
+      "difference": 0.0024400890217436844
+    },
+    "candidate_minus_baseline_log_loss": {
+      "ci_high": 0.0013605988539609772,
+      "ci_low": -0.0546981020725504,
+      "difference": -0.024926337951998202
+    },
+    "destination_training_advances": 31,
+    "direct_established_probability": 0.171875,
+    "donor_paths": 1191,
+    "mean_tail_resamples_per_draw": 1.335925484466318,
+    "players": 3251,
+    "simulation_draws": 256
+  },
+  "pitcher": {
+    "baseline_brier": 0.21106849725320384,
+    "baseline_log_loss": 0.45259931737869213,
+    "candidate_brier": 0.20728929067291355,
+    "candidate_log_loss": 0.43818444656892336,
+    "candidate_minus_baseline_brier": {
+      "ci_high": -0.0021714785447386822,
+      "ci_low": -0.005470032626493625,
+      "difference": -0.0037792065802902436
+    },
+    "candidate_minus_baseline_log_loss": {
+      "ci_high": -0.0038205292465237875,
+      "ci_low": -0.024672860846421167,
+      "difference": -0.014414870809768733
+    },
+    "destination_training_advances": 21,
+    "direct_established_probability": 0.20454545454545456,
+    "donor_paths": 1053,
+    "mean_tail_resamples_per_draw": 0.8182210152388797,
+    "players": 3642,
+    "simulation_draws": 256
+  },
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "status": "annually_linked_terminal_state_replay_complete",
+  "target_years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ]
+}

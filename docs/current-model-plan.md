@@ -206,6 +206,13 @@ Each selected or replacement tail now carries its own source-season MLB environm
 Progression uses donor raw workload divided by that matching environment, avoiding an
 era-mixing error as league pitcher usage changes.
 
+The first cutoff-safe terminal-state replay rejects one universal promotion. Against
+the direct ordered-state baseline, pitchers improve log loss by 0.0144 and Brier by
+0.00378 with both paired intervals favorable. Hitters improve log loss by 0.0249 but
+worsen Brier by 0.00244, with the full Brier interval above zero. Preserve the pitcher
+candidate for the WAR replay; do not apply the linked state path to hitters or current
+rankings. See the [result](annually-linked-terminal-state-replay-result.md).
+
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero
 prospect cohort. Future linked-path validation must pair arrival Brier/log loss, a

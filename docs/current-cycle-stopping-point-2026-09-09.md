@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,531 passed. Four older research-contract tests fail because their
+Latest full suite: 1,532 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -220,3 +220,8 @@ The sampler carries the selected donor season's active-player environment with e
 tail, so relative workload never divides an older path by an unrelated modern mean.
 The donor matrices now compile once for repeated players. A real-library benchmark ran
 100 players at 256 draws in 0.83 seconds, making the full replay practical.
+
+That terminal-state replay is now scored on 3,251 hitters and 3,642 pitchers. Pitchers
+win log loss and Brier clearly; hitters lose Brier clearly despite better log loss.
+Reject the universal candidate, retain the pitcher branch for the next WAR replay and
+leave the playable explorer unchanged.
