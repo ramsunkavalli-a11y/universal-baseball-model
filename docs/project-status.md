@@ -88,6 +88,12 @@ is 0.757. Keep the monotonic mapping. The next challenger belongs upstream: test
 chronology-safe age-relative-to-level and stable handedness against later MLB pitcher
 components, with no target high-grade count.
 
+That [age-relative-to-level and handedness audit](pitcher-age-level-handedness-result.md)
+passes its frozen point-score gate on 2025: component log loss improves by 0.000171
+and Brier by 0.000052 after selection on 2024. Both bootstrap intervals cross zero,
+and the 36-pitcher left-handed subgroup worsens, so this is a cautious private-build
+promotion with explicit provenance—not a demographic law or value floor.
+
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
 arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top
