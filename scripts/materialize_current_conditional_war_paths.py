@@ -22,6 +22,10 @@ from universal_baseball.pitcher_demographic_adjustment import (
     apply_pitcher_demographic_adjustment,
     build_pitcher_age_level_features,
 )
+from universal_baseball.projection_lineage import (
+    PLAYABLE_OPPORTUNITY_MODEL_ID,
+    validate_opportunity_source,
+)
 from universal_baseball.storage import write_canonical_parquet
 
 
@@ -44,7 +48,12 @@ def _args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--opportunity-root", type=Path,
-        default=Path("reports/generated/current-opportunity-paths/2026-09-08/tables"),
+        default=Path("reports/generated/phase2-workload-paths/2026-09-08/tables"),
+    )
+    parser.add_argument(
+        "--expected-opportunity-model-id",
+        default=PLAYABLE_OPPORTUNITY_MODEL_ID,
+        help="Fail instead of silently joining an unexpected opportunity model",
     )
     parser.add_argument(
         "--affiliated-skill-root", type=Path,
@@ -60,11 +69,20 @@ def _args() -> argparse.Namespace:
             "reports/generated/player-demographics/tables/player-demographics.parquet"
         ),
     )
-    parser.add_argument(
+    demographic_group = parser.add_mutually_exclusive_group()
+    demographic_group.add_argument(
         "--disable-pitcher-demographic-adjustment",
+        dest="disable_pitcher_demographic_adjustment",
         action="store_true",
-        help="Build an audit counterfactual with the promoted private adjustment off",
+        help="Keep the weak private demographic adjustment off (the default)",
     )
+    demographic_group.add_argument(
+        "--enable-pitcher-demographic-adjustment",
+        dest="disable_pitcher_demographic_adjustment",
+        action="store_false",
+        help="Build the retained research counterfactual with the weak adjustment on",
+    )
+    parser.set_defaults(disable_pitcher_demographic_adjustment=True)
     parser.add_argument(
         "--control-path", type=Path,
         default=Path("reports/generated/league-control/2026-09-08/future-control-path.parquet"),
@@ -79,7 +97,7 @@ def _args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-root", type=Path,
-        default=Path("reports/generated/current-conditional-war-paths"),
+        default=Path("reports/generated/phase2-conditional-war-paths"),
     )
     return parser.parse_args()
 
@@ -245,6 +263,10 @@ def main() -> int:
     )
     hitter_opportunity = pl.read_parquet(args.opportunity_root / "hitter_opportunity_paths.parquet")
     pitcher_opportunity = pl.read_parquet(args.opportunity_root / "pitcher_opportunity_paths.parquet")
+    opportunity_source = validate_opportunity_source(
+        args.opportunity_root,
+        expected_model_id=args.expected_opportunity_model_id,
+    )
     hitter_expected = hitter_opportunity.join(
         hitter_rates, on=["player_id", "season"], how="inner", validate="1:1"
     ).with_columns(
@@ -290,6 +312,7 @@ def main() -> int:
         "current_season_included": False,
         "control_missing_policy": "null; never inferred uncontrolled",
         "ranking_status": "not_publishable_baseline",
+        "opportunity_source": opportunity_source,
         "affiliated_rate_evidence": {
             "hitter_regression_pa": 1200.0,
             "pitcher_regression_bf": 800.0,

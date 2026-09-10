@@ -135,10 +135,11 @@ An automated demographic feature harness now tests official age-adjacent profile
 handedness, physical, position and birthplace fields in stable and full groups. The
 strict nested search rejected demographic additions to prospect arrival/quality. A
 separate hitter component test also rejected age-for-level and batting-side effects
-after they reversed on 2025. The private pitcher age/hand adjustment remains explicitly
-provisional: its point gain is small, bootstrap intervals cross zero, and the
-left-handed subgroup worsens. Keep non-vintage physical measurements out of selected
-historical models until their timing is defensible.
+after they reversed on 2025. The pitcher age/hand adjustment has been removed from the
+playable build: its point gain is small, bootstrap intervals cross zero, the
+left-handed subgroup worsens, and its current top-end effect is disproportionate. Keep
+non-vintage physical measurements out of selected historical models until their timing
+is defensible.
 
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.

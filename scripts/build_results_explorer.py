@@ -4,11 +4,16 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import polars as pl
 
 from universal_baseball.model_law_audit import audit_private_preview_laws
+from universal_baseball.projection_lineage import (
+    PLAYABLE_OPPORTUNITY_MODEL_ID,
+    validate_recorded_opportunity_source,
+)
 from universal_baseball.results_explorer import write_explorer
 
 
@@ -35,6 +40,21 @@ def audit_phase2_checkpoint(as_of_date: str, value_path: Path) -> dict[str, obje
     if missing := [path for path in paths.values() if not path.exists()]:
         joined = "\n".join(f"- {path}" for path in missing)
         raise FileNotFoundError(f"Phase 2 law-audit inputs are missing:\n{joined}")
+    conditional_report = Path("reports/generated/phase2-conditional-war-paths")
+    conditional_report = conditional_report / as_of_date / "report.json"
+    if not conditional_report.exists():
+        raise FileNotFoundError(
+            f"Phase 2 projection-lineage report is missing: {conditional_report}"
+        )
+    recorded_source = json.loads(
+        conditional_report.read_text(encoding="utf-8")
+    ).get("opportunity_source")
+    if not isinstance(recorded_source, dict):
+        raise ValueError("Phase 2 projection-lineage record is missing")
+    validate_recorded_opportunity_source(
+        recorded_source,
+        expected_model_id=PLAYABLE_OPPORTUNITY_MODEL_ID,
+    )
     result = audit_private_preview_laws(
         pl.read_parquet(paths["hitter"]),
         pl.read_parquet(paths["pitcher"]),

@@ -27,8 +27,9 @@ Status: clean handoff; private preview works, publication remains blocked.
   scores but missed the predeclared bootstrap gate.
 - Pitcher role probabilities remain; broad suppression and hard role caps were not
   supported.
-- The private pitcher age/hand adjustment remains provisional, with its weak evidence
-  and left-handed warning preserved.
+- The private pitcher age/hand adjustment was provisional at this stopping point. It
+  was removed on September 10 after the full funnel audit exposed its disproportionate
+  current top-end effect relative to its weak validation.
 
 ## Rejected or blocked
 

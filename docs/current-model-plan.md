@@ -1,6 +1,6 @@
 # Current model plan
 
-Updated 2026-09-07. The user wants the model made credible before further interface
+Updated 2026-09-10. The user wants the model made credible before further interface
 work. The [product roadmap](product-roadmap.md) is now the authoritative active plan;
 this document retains detailed evidence from the current hitter/opportunity workstream.
 Earlier experiment contracts remain historical records.
@@ -69,6 +69,24 @@ terminal event equally under log loss need not optimize the batting-value estima
 Keep coherent probabilities and use event-score guardrails to detect harmful tradeoffs.
 
 ## Next sequence
+
+**Current P0:** use the corrected playable-build chain
+`current-opportunity-paths-v2 -> phase2-workload-paths ->
+phase2-conditional-war-paths -> phase2-war-uncertainty/model-fv -> current value`.
+The prior explorer silently joined the older generic opportunity paths. That defect
+reduced projected six-year WAR for 940 debuted pitchers from 1,325.5 to 1,108.1.
+The corrected materializer records both input hashes and the opportunity model ID;
+the explorer refuses to open a stale or changed source. See the
+[pitcher funnel audit](pitcher-value-funnel-audit-result.md).
+
+The correction materially repairs MLB pitchers but not prospect pitchers. The current
+nested result totals only 68.1 expected WAR across 3,849 pre-MLB pitchers and tops out
+at 2.66 WAR. Do not repair that output with an FV floor, a changed grade mapping, or
+the weak age/level/hand adjustment. A four-year replay finds the existing constant-
+hazard probabilities are already optimistic, so low arrival odds are not the cause.
+The next test targets conditional MLB WAR and linked career production, with failures
+retained, earlier-cohort selection, and one untouched later cohort. See the
+[horizon audit](prospect-horizon-extrapolation-result.md).
 
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory

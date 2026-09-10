@@ -1,8 +1,35 @@
 # Project status and handoff
 
-Updated 2026-09-09. This is the current start-here document. The cycle is at a clean
-stopping point summarized in
-[the September 9 stopping-point handoff](current-cycle-stopping-point-2026-09-09.md).
+Updated 2026-09-10. This is the current start-here document.
+
+## Current P0: pitcher value funnel
+
+The playable build had a material integration defect: its conditional WAR layer still
+joined the older generic opportunity paths after the better Phase 2 MLB workload model
+had been built. The corrected chain raises projected six-year WAR across 940 debuted
+pitchers from 1,108.1 to 1,325.5. Logan Webb moves from 7.45 to 9.21 path WAR, Tarik
+Skubal from 9.83 to 11.39, and Paul Skenes from 8.50 to 13.44. Webb's controlled value
+is now $10.2 million rather than the earlier near-zero result. Exact source hashes and
+the workload model ID are recorded, and the explorer now rejects stale lineage.
+
+This does not solve the prospect-pitcher problem. After removing the weak
+age-relative-to-level/hand adjustment, the nested model totals only 68.1 WAR across
+3,849 pre-MLB pitchers and has a 2.66-WAR maximum. That adjustment had a small 2025
+point-score gain, bootstrap intervals spanning zero, a worse left-handed subgroup,
+and a disproportionate current top-end effect. It is no longer in the playable build.
+No manual bonus, outside FV input, or altered grade threshold replaces it.
+
+The [stage-by-stage audit](pitcher-value-funnel-audit-result.md) is now the controlling
+pitcher handoff. A new [four-year horizon audit](prospect-horizon-extrapolation-result.md)
+fits only 2018 and evaluates 3,649 pitchers from the 2021 snapshot through 2025. The
+constant-hazard model predicts 15.7% arrival versus 12.3% observed, 9.2% meaningful
+roles versus 5.0%, and 4.5% established roles versus 3.0%. It is already optimistic,
+especially for AAA, older, and starter-classified pitchers. The hurdle therefore does
+not explain low pitcher values. The next P0 is conditional MLB WAR and linked career
+production, still retaining all failures and zeroes and using time-ordered selection.
+
+The earlier September 9 stopping point remains useful historical context in
+[the prior handoff](current-cycle-stopping-point-2026-09-09.md).
 
 The frozen [prospect PBP hurdle test](prospect-pbp-hurdle-test-result.md) found a small
 contact-shape improvement against a core aggregate comparator, but the required
@@ -93,17 +120,18 @@ components, with no target high-grade count.
 That [age-relative-to-level and handedness audit](pitcher-age-level-handedness-result.md)
 passes its frozen point-score gate on 2025: component log loss improves by 0.000171
 and Brier by 0.000052 after selection on 2024. Both bootstrap intervals cross zero,
-and the 36-pitcher left-handed subgroup worsens, so this is a cautious private-build
-promotion with explicit provenance—not a demographic law or value floor.
+and the 36-pitcher left-handed subgroup worsens. Its large current top-end effect is
+not supported by that weak validation, so it has been removed from the playable build.
 
 The integration replay exposed and corrected a separate
 [player-type source bug](model-player-type-source-correction.md): exclusive pitchers
 with negative WAR could be mislabeled hitters because missing hitter WAR was filled
 with zero. Player type now follows real path presence, using projected component only
 for actual two-way paths. The demographic [current-impact replay](pitcher-demographic-current-impact-result.md)
-now has zero type switches and zero hitter changes. On identical inputs it moves
-pitcher 45+ counts from 24 to 40 and 50+ from 1 to 2; the private pitcher total moves
-from 68.15 to 162.68 expected WAR across 3,849 players.
+has zero type switches and zero hitter changes. On identical inputs it moved pitcher
+45+ counts from 24 to 40 and 50+ from 1 to 2, while more than doubling the current
+pitcher total from 68.15 to 162.68 WAR. That disproportionate effect helped trigger
+the decision not to use it without stronger confirmation.
 
 The [pitcher contact-component expansion](pitcher-contact-components-result.md)
 was rejected before confirmation. Saved official data can split contact into singles,
@@ -695,7 +723,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,424 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,427 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.
