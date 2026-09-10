@@ -263,6 +263,9 @@ both pooled proper scores without losing either score in any required time-order
 fold for arrival and meaningful roles. Do not revert to highest-level-only labeling
 or replace it with primary level alone. See
 `prospect-primary-level-exposure-result.md`.
+Development-path features are additionally active only for pitcher established-role
+probability. Their broader use failed selection; see
+`prospect-development-path-result.md`.
 The prior explorer silently joined the older generic opportunity paths. That defect
 reduced projected six-year WAR for 940 debuted pitchers from 1,325.5 to 1,108.1.
 The corrected materializer records both input hashes and the opportunity model ID;

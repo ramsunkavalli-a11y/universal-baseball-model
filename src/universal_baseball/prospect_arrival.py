@@ -17,7 +17,7 @@ from universal_baseball.hitter_v2_evaluation import NEUTRAL_WOBA_WEIGHTS
 from universal_baseball.prospect_outcome_quality import SHORTENED_2020_SCALE
 
 
-ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v3_primary_level"
+ARRIVAL_MODEL_ID = "phase2_pre_mlb_two_year_arrival_v4_development_path"
 LEVELS = ("A_OR_BELOW", "AA", "AAA", "INACTIVE", "UNKNOWN")
 ROLES = ("C", "MIDDLE_INFIELD", "OUTFIELD", "CORNER", "STARTER", "SWINGMAN")
 COUNTRIES = (
@@ -96,6 +96,74 @@ def _primary_affiliated_level(
     )
 
 
+def _affiliated_development_path(
+    skill_stats: pl.DataFrame, *, snapshot_year: int, player_type: str
+) -> pl.DataFrame:
+    """Summarize progression and inactivity using only seasons known at cutoff."""
+
+    workload = "plate_appearances" if player_type == "hitter" else "batters_faced"
+    if "level_group" not in skill_stats.columns:
+        return pl.DataFrame(
+            schema={
+                "player_id": pl.Int64,
+                "level_progression": pl.Float64,
+                "seasons_since_affiliated_activity": pl.Float64,
+                "development_history_workload": pl.Float64,
+                "development_history_seasons": pl.Float64,
+            }
+        )
+    order = {"A_OR_BELOW": 1, "AA": 2, "AAA": 3, "MLB": 4, "UNKNOWN": 0}
+    by_level = (
+        skill_stats.filter(
+            (pl.col("season") <= snapshot_year)
+            & (pl.col("sport_id") != 1)
+            & (pl.col(workload) > 0)
+        )
+        .with_columns(
+            pl.col("level_group").map_elements(
+                hitter_level_tier, return_dtype=pl.String
+            ).alias("broad_level")
+        )
+        .group_by("player_id", "season", "broad_level")
+        .agg(pl.col(workload).sum().cast(pl.Float64).alias("level_workload"))
+        .with_columns(
+            pl.col("broad_level").replace_strict(order, default=0).alias("level_order"),
+            pl.col("level_workload").sum().over(["player_id", "season"])
+            .alias("season_workload"),
+        )
+        .sort(
+            ["player_id", "season", "level_workload", "level_order"],
+            descending=[False, False, True, True],
+        )
+        .unique(["player_id", "season"], keep="first", maintain_order=True)
+        .sort(["player_id", "season"])
+        .with_columns(
+            pl.col("level_order").shift(1).over("player_id").alias("prior_level_order")
+        )
+    )
+    return (
+        by_level.group_by("player_id")
+        .agg(
+            pl.col("season").max().alias("last_affiliated_season"),
+            pl.col("season_workload").sum().alias("development_history_workload"),
+            pl.col("season").n_unique().cast(pl.Float64).alias(
+                "development_history_seasons"
+            ),
+            pl.when(pl.col("season") == snapshot_year)
+            .then(pl.col("level_order") - pl.col("prior_level_order"))
+            .otherwise(None)
+            .drop_nulls()
+            .last()
+            .alias("level_progression"),
+        )
+        .with_columns(
+            (pl.lit(snapshot_year) - pl.col("last_affiliated_season"))
+            .cast(pl.Float64)
+            .alias("seasons_since_affiliated_activity"),
+            pl.col("level_progression").cast(pl.Float64).fill_null(0.0),
+        )
+        .drop("last_affiliated_season")
+    )
 def _primary_hitter_positions(
     basic_stats: pl.DataFrame, *, snapshot_year: int
 ) -> pl.DataFrame:
@@ -344,6 +412,10 @@ def _fill_predictor_nulls(frame: pl.DataFrame) -> pl.DataFrame:
         pl.col("prior_affiliated_seasons").fill_null(0.0),
         pl.col("primary_level_workload_share").fill_null(0.0),
         pl.col("primary_level_tier").fill_null(pl.col("level_tier")),
+        pl.col("level_progression").fill_null(0.0),
+        pl.col("seasons_since_affiliated_activity").fill_null(6.0),
+        pl.col("development_history_workload").fill_null(0.0),
+        pl.col("development_history_seasons").fill_null(0.0),
         pl.col("role_tier").fill_null("OTHER"),
         pl.col("height_inches").fill_null(72.0),
         pl.col("weight_pounds").fill_null(190.0),
@@ -470,6 +542,9 @@ def build_arrival_cohort(
     production = _production_features(
         skill_stats, stats, snapshot_year=snapshot_year, player_type=player_type
     )
+    development = _affiliated_development_path(
+        skill_stats, snapshot_year=snapshot_year, player_type=player_type
+    )
     future_stats = stats.filter(
         (pl.col("stat_group") == group)
         & (pl.col("sport_id") == 1)
@@ -531,6 +606,7 @@ def build_arrival_cohort(
         players.join(prior_mlb, on="player_id", how="left")
         .join(official_debut, on="player_id", how="left", validate="m:1")
         .join(production, on="player_id", how="left")
+        .join(development, on="player_id", how="left", validate="m:1")
         .join(on_40man, on="player_id", how="left")
         .join(future, on="player_id", how="left")
         .join(meaningful_role, on="player_id", how="left")
@@ -575,6 +651,8 @@ def build_arrival_cohort(
             "player_id", "age_years", "level_tier", "current_milb_workload",
             "primary_level_tier",
             "primary_level_workload_share",
+            "level_progression", "seasons_since_affiliated_activity",
+            "development_history_workload", "development_history_seasons",
             "prior_affiliated_workload", "prior_affiliated_seasons", "role_tier",
             *[f"production_rate_{index}" for index in range(1, 5)],
             "on_40man", "arrived_within_horizon", "meaningful_role_within_horizon",
@@ -609,6 +687,9 @@ def build_current_arrival_predictors(
     production = _production_features(
         skill_stats, current_stats, snapshot_year=snapshot_year, player_type=player_type
     )
+    development = _affiliated_development_path(
+        skill_stats, snapshot_year=snapshot_year, player_type=player_type
+    )
     eligible = current_control.filter(pl.col("mlb_debut_date").is_null()).select(
         "player_id", "on_40man"
     )
@@ -616,6 +697,7 @@ def build_current_arrival_predictors(
         snapshot.select("player_id", "age_years", "as_of_level_group")
         .join(eligible, on="player_id", how="inner", validate="1:1")
         .join(production, on="player_id", how="left", validate="1:1")
+        .join(development, on="player_id", how="left", validate="1:1")
         .with_columns(
             pl.col("age_years").fill_null(24.0).clip(16.0, 30.0),
             pl.col("on_40man").fill_null(False),
@@ -636,6 +718,8 @@ def build_current_arrival_predictors(
             "player_id", "age_years", "level_tier", "current_milb_workload",
             "primary_level_tier",
             "primary_level_workload_share",
+            "level_progression", "seasons_since_affiliated_activity",
+            "development_history_workload", "development_history_seasons",
             "prior_affiliated_workload", "prior_affiliated_seasons", "role_tier",
             *[f"production_rate_{index}" for index in range(1, 5)], "on_40man",
             "height_inches", "weight_pounds", "bat_side", "pitch_hand",
@@ -665,7 +749,7 @@ def arrival_design(
         "role_production_interactions", "baseball_interactions",
         "baseball_demographics",
         "draft_pedigree", "baseball_pedigree",
-        "level_exposure",
+        "level_exposure", "development_path",
     }
     if feature_set not in supported:
         raise ValueError(f"unsupported arrival feature set: {feature_set}")
@@ -707,7 +791,7 @@ def arrival_design(
         values.extend(level_flags)
         values.extend(role_flags)
         values.extend(production_rates)
-        if feature_set == "level_exposure":
+        if feature_set in {"level_exposure", "development_path"}:
             primary_level = hitter_level_tier(row["primary_level_tier"])
             primary_flags = [
                 float(primary_level == candidate) for candidate in LEVELS[:-1]
@@ -719,6 +803,16 @@ def arrival_design(
                     primary_share,
                     float(primary_level != level),
                     *[age_scaled * flag for flag in primary_flags],
+                ]
+            )
+        if feature_set == "development_path":
+            values.extend(
+                [
+                    max(-1.0, min(1.0, float(row["level_progression"]) / 2.0)),
+                    min(float(row["seasons_since_affiliated_activity"]), 3.0) / 3.0,
+                    log(1.0 + float(row["development_history_workload"]))
+                    / log(1801.0),
+                    min(float(row["development_history_seasons"]), 6.0) / 6.0,
                 ]
             )
         uses_development = feature_set in {

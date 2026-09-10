@@ -1,7 +1,7 @@
 {
   "status": "promoted_to_private_playable_build",
   "as_of_date": "2026-09-10",
-  "model_id": "phase2_pre_mlb_two_year_arrival_v3_primary_level",
+  "model_id": "phase2_pre_mlb_two_year_arrival_v4_development_path",
   "method": "highest level plus workload-weighted primary level and primary-level workload share",
   "current_level_disagreements": {
     "hitter": {"players": 2871, "disagreements": 336, "share": 0.1170323929, "at_least_75_percent_primary_workload": 182},
@@ -13,7 +13,7 @@
     "hitter_established": {"core_brier": 0.0106038103, "candidate_brier": 0.0102658453, "core_log_loss": 0.0505357845, "candidate_log_loss": 0.0485017932, "promoted": false},
     "pitcher_arrival": {"core_brier": 0.0520167046, "candidate_brier": 0.0509492523, "core_log_loss": 0.1846946831, "candidate_log_loss": 0.1801581469, "promoted": true},
     "pitcher_meaningful": {"core_brier": 0.0190168716, "candidate_brier": 0.0188232046, "core_log_loss": 0.0769707995, "candidate_log_loss": 0.0756997664, "promoted": true},
-    "pitcher_established": {"core_brier": 0.0089866735, "candidate_brier": 0.0088814188, "core_log_loss": 0.0389994438, "candidate_log_loss": 0.0382024442, "promoted": true}
+    "pitcher_established": {"core_brier": 0.0089866735, "candidate_brier": 0.0088889974, "core_log_loss": 0.0389994438, "candidate_log_loss": 0.0381628689, "promoted": true, "selected_feature_set": "development_path"}
   },
   "named_check": {
     "player_id": 692232,

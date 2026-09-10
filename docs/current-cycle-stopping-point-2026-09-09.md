@@ -11,6 +11,10 @@ Status: clean handoff; private preview works, publication remains blocked.
   `docs/prospect-primary-level-exposure-result.md`.
 - A primary-level-only replacement was rejected because it made aggregate historical
   accuracy worse. Highest level remains evidence; it no longer stands alone.
+- Advancement, stagnation, inactivity gap, and accumulated affiliated history were
+  tested together. They improve only pitcher established-role probability under the
+  fixed gate; the other five outcome models remain simpler. See
+  `docs/prospect-development-path-result.md`.
 
 - The repo plan now includes lessons from comparable GitHub projection systems:
   component-specific reliability must earn its complexity, attrition belongs in the
@@ -91,7 +95,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,464 passed. Four older research-contract tests fail because their
+Latest full suite: 1,497 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 

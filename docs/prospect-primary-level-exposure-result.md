@@ -30,7 +30,7 @@ score and log loss without losing either score in any evaluation fold.
 | Established role | Hitter | 0.01060 | 0.01027 | 0.05054 | 0.04850 | Keep core; one fold missed the strict gate |
 | Arrival | Pitcher | 0.05202 | 0.05095 | 0.18469 | 0.18016 | Promote |
 | Meaningful role | Pitcher | 0.01902 | 0.01882 | 0.07697 | 0.07570 | Promote |
-| Established role | Pitcher | 0.00899 | 0.00888 | 0.03900 | 0.03820 | Promote |
+| Established role | Pitcher | 0.00899 | 0.00889 | 0.03900 | 0.03816 | Promote development-path extension |
 
 Among current pre-MLB players, highest and primary level disagree for 336 of 2,871
 hitters and 357 of 4,117 pitchers. More than half of those disagreements have at
@@ -53,3 +53,6 @@ This repairs level evidence only. Constant-hazard six-year extrapolation and fut
 position retention remain separate research questions. The existing position-
 transition sensitivity is not promoted because it failed its downstream positional-
 runs test.
+
+The pitcher established-role model also retains advancement and inactivity history;
+see `prospect-development-path-result.md`.

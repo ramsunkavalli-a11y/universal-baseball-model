@@ -9,6 +9,7 @@ from universal_baseball.prospect_arrival import (
     fit_arrival_model,
     six_year_probability,
     _positive_component_roles,
+    _affiliated_development_path,
     _primary_affiliated_level,
     _primary_hitter_positions,
     _role_tier,
@@ -34,6 +35,30 @@ def test_primary_affiliated_level_uses_workload_not_highest_level_touched() -> N
     first = result.filter(pl.col("player_id") == 1).row(0, named=True)
     assert first["primary_level_tier"] == "A_OR_BELOW"
     assert first["primary_level_workload_share"] == pytest.approx(184 / 205)
+
+
+def test_development_path_tracks_progression_stagnation_and_total_workload() -> None:
+    skill = pl.DataFrame(
+        {
+            "season": [2024, 2025, 2025, 2019],
+            "player_id": [1, 1, 1, 2],
+            "sport_id": [14, 12, 11, 14],
+            "level_group": ["SINGLE_A", "AA", "AAA", "SINGLE_A"],
+            "plate_appearances": [200, 180, 20, 100],
+            "batters_faced": [0, 0, 0, 0],
+        }
+    )
+
+    result = _affiliated_development_path(
+        skill, snapshot_year=2025, player_type="hitter"
+    )
+
+    advancing = result.filter(pl.col("player_id") == 1).row(0, named=True)
+    assert advancing["level_progression"] == 1.0
+    assert advancing["seasons_since_affiliated_activity"] == 0.0
+    assert advancing["development_history_workload"] == 400.0
+    inactive = result.filter(pl.col("player_id") == 2).row(0, named=True)
+    assert inactive["seasons_since_affiliated_activity"] == 6.0
 
 
 def _debut_dates(*rows: tuple[int, str | None]) -> pl.DataFrame:

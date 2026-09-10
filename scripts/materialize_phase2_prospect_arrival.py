@@ -25,12 +25,12 @@ from universal_baseball.storage import write_canonical_parquet
 TRAINING_YEARS = (2018, 2021, 2022, 2023)
 EVALUATION_SPECS = ((2021, (2018,)), (2022, (2018,)), (2023, (2018, 2021)))
 FEATURE_SETS = (
-    "core", "level_exposure", "handedness", "origin", "stable_demographics",
+    "core", "level_exposure", "development_path", "handedness", "origin", "stable_demographics",
     "stable_interactions", "physical", "handedness_physical",
     "all_demographics", "all_interactions",
 )
 SELECTABLE_FEATURE_SETS = (
-    "core", "level_exposure", "handedness", "origin", "stable_demographics",
+    "core", "level_exposure", "development_path", "handedness", "origin", "stable_demographics",
     "stable_interactions",
 )
 
@@ -177,6 +177,21 @@ def _select_feature_set(
     )
 
 
+def _select_baseball_feature_set(
+    evaluations: dict[str, tuple[dict[str, object], bool]],
+) -> str:
+    incumbent = evaluations["core"][0]
+    eligible = [
+        feature_set for feature_set in ("level_exposure", "development_path")
+        if _beats(evaluations[feature_set][0], incumbent)
+    ]
+    return min(
+        eligible,
+        key=lambda feature_set: evaluations[feature_set][0]["pooled_model"]["log_loss"],
+        default="core",
+    )
+
+
 def main() -> int:
     args = _args()
     dated = args.as_of_date.isoformat()
@@ -221,11 +236,7 @@ def main() -> int:
         research_feature_set = _select_feature_set(
             {key: value[0] for key, value in evaluations.items()}
         )
-        selected_feature_set = (
-            "level_exposure"
-            if _beats(evaluations["level_exposure"][0], evaluations["core"][0])
-            else "core"
-        )
+        selected_feature_set = _select_baseball_feature_set(evaluations)
         evaluation, passed = evaluations[selected_feature_set]
         role_evaluations = {
             feature_set: _evaluate(
@@ -238,14 +249,7 @@ def main() -> int:
         research_role_feature_set = _select_feature_set(
             {key: value[0] for key, value in role_evaluations.items()}
         )
-        selected_role_feature_set = (
-            "level_exposure"
-            if _beats(
-                role_evaluations["level_exposure"][0],
-                role_evaluations["core"][0],
-            )
-            else "core"
-        )
+        selected_role_feature_set = _select_baseball_feature_set(role_evaluations)
         role_evaluation, role_passed = role_evaluations[selected_role_feature_set]
         established_evaluations = {
             feature_set: _evaluate(
@@ -255,15 +259,10 @@ def main() -> int:
                 outcome_name="established_role",
                 feature_set=feature_set,
             )
-            for feature_set in ("core", "level_exposure")
+            for feature_set in ("core", "level_exposure", "development_path")
         }
-        selected_established_feature_set = (
-            "level_exposure"
-            if _beats(
-                established_evaluations["level_exposure"][0],
-                established_evaluations["core"][0],
-            )
-            else "core"
+        selected_established_feature_set = _select_baseball_feature_set(
+            established_evaluations
         )
         established_evaluation, established_passed = established_evaluations[
             selected_established_feature_set
