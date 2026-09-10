@@ -1,0 +1,614 @@
+{
+  "as_of_date": "2026-09-10",
+  "boundaries": {
+    "all_non_arrivals_retained": true,
+    "demographics_used_as_talent": false,
+    "organization_used": false,
+    "outside_fv_used": false,
+    "predictions_clipped": false,
+    "production_values_changed": false
+  },
+  "protocol": {
+    "baseline": "arrival_probability_x_pooled_conditional_war",
+    "candidate": "arrival_probability_x_standardized_core_ridge_conditional_war",
+    "fingerprint": "86ed4bc98a90b67cf03947ea3dfcbb4b16c743a84dad596170bc5f11c571f507",
+    "frozen_plan_sha256": "8361d38b2614526d4135f3efa3db5e195b930c8660a83df3dfd7275bade210bc",
+    "horizon_years": 2,
+    "outer_origin": 2021,
+    "rate_regression_opportunities": 200.0,
+    "ridge_alpha": 100.0,
+    "training_origin": 2018
+  },
+  "report_schema_version": 1,
+  "results": {
+    "hitter": {
+      "cohort_fingerprint": "c37956bc759727bca02847991ed2364159b8e533c1e2d344e73f5211abee7464",
+      "conditional_on_observed_arrival_baseline": {
+        "bias": 0.05518121686681442,
+        "mae": 0.9951178990925452,
+        "observed_mean": 0.5536733326387457,
+        "players": 259,
+        "predicted_mean": 0.6088545495055601,
+        "rmse": 1.459210385426083
+      },
+      "conditional_on_observed_arrival_candidate": {
+        "bias": 0.21732386598969372,
+        "mae": 1.0132589828563956,
+        "observed_mean": 0.5536733326387457,
+        "players": 259,
+        "predicted_mean": 0.7709971986284394,
+        "rmse": 1.4080671506851228
+      },
+      "decision_checks": {
+        "absolute_bias_not_worse": false,
+        "arrived_player_rmse_not_worse": true,
+        "end_to_end_mae_improved": true,
+        "end_to_end_rmse_improved": true
+      },
+      "end_to_end_baseline": {
+        "bias": -0.007424506808485213,
+        "mae": 0.09091658666949552,
+        "observed_mean": 0.04398815740902918,
+        "players": 3260,
+        "predicted_mean": 0.036563650600543965,
+        "rmse": 0.4276836041367804
+      },
+      "end_to_end_candidate": {
+        "bias": -0.00895458917365416,
+        "mae": 0.08435780391552707,
+        "observed_mean": 0.04398815740902918,
+        "players": 3260,
+        "predicted_mean": 0.03503356823537502,
+        "rmse": 0.41356391375517343
+      },
+      "outer_arrivals": 259,
+      "paired_difference": {
+        "mae": {
+          "ci_high": -0.004724424710890006,
+          "ci_low": -0.008553153596955061,
+          "difference": -0.006558782753968466,
+          "probability_candidate_better": 1.0
+        },
+        "mse": {
+          "ci_high": -0.005792270233289101,
+          "ci_low": -0.019225709382603096,
+          "difference": -0.01187815448692982,
+          "probability_candidate_better": 1.0
+        },
+        "resamples": 2000
+      },
+      "players": 3260,
+      "promising_development_evidence": false,
+      "rate_regression_opportunities": 200.0,
+      "ridge_alpha": 100.0,
+      "ridge_coefficient_l2_norm": 0.3651640096487353,
+      "ridge_conditional_prediction_distribution": {
+        "maximum": 2.0598596396877342,
+        "median": 0.3576596029649014,
+        "minimum": -0.5543123640206631,
+        "negative_predictions": 359,
+        "p01": -0.31368344822024363,
+        "p99": 1.4169294496639167
+      },
+      "standardized_ridge_coefficients": [
+        {
+          "coefficient": 0.21038433607420742,
+          "feature": "production_rate_4"
+        },
+        {
+          "coefficient": 0.1942210969502052,
+          "feature": "production_rate_3"
+        },
+        {
+          "coefficient": -0.14027296038644455,
+          "feature": "age"
+        },
+        {
+          "coefficient": -0.10309731136382962,
+          "feature": "level_A_OR_BELOW"
+        },
+        {
+          "coefficient": 0.07789047879788341,
+          "feature": "role_CORNER"
+        },
+        {
+          "coefficient": -0.06642278666039364,
+          "feature": "production_rate_2"
+        },
+        {
+          "coefficient": 0.061397949342594314,
+          "feature": "level_AAA"
+        },
+        {
+          "coefficient": -0.04957391982836698,
+          "feature": "role_C"
+        },
+        {
+          "coefficient": 0.032833852862438145,
+          "feature": "production_rate_1"
+        },
+        {
+          "coefficient": -0.03010229092569549,
+          "feature": "prior_workload"
+        },
+        {
+          "coefficient": -0.03010229092569548,
+          "feature": "current_workload"
+        },
+        {
+          "coefficient": -0.02824991408458559,
+          "feature": "on_40man"
+        },
+        {
+          "coefficient": 0.020819143879101717,
+          "feature": "level_AA"
+        },
+        {
+          "coefficient": 0.014109591419456854,
+          "feature": "role_MIDDLE_INFIELD"
+        },
+        {
+          "coefficient": -0.005353864553328968,
+          "feature": "role_OUTFIELD"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "prior_affiliated_seasons"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "level_INACTIVE"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "role_STARTER"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "role_SWINGMAN"
+        }
+      ],
+      "subgroups": [
+        {
+          "arrivals": 72,
+          "baseline_mae": 0.1842878446244386,
+          "baseline_rmse": 0.6193283442814586,
+          "candidate_mae": 0.17729490435439035,
+          "candidate_rmse": 0.6067954624060137,
+          "dimension": "level",
+          "group": "AA",
+          "players": 442,
+          "supported": true
+        },
+        {
+          "arrivals": 122,
+          "baseline_mae": 0.35720435942169854,
+          "baseline_rmse": 0.8527096203993252,
+          "candidate_mae": 0.32860428691931653,
+          "candidate_rmse": 0.8061842964898646,
+          "dimension": "level",
+          "group": "AAA",
+          "players": 409,
+          "supported": true
+        },
+        {
+          "arrivals": 65,
+          "baseline_mae": 0.02864574330207696,
+          "baseline_rmse": 0.2320285117838339,
+          "candidate_mae": 0.025901783317397207,
+          "candidate_rmse": 0.23170206555979617,
+          "dimension": "level",
+          "group": "A_OR_BELOW",
+          "players": 2403,
+          "supported": true
+        },
+        {
+          "arrivals": 40,
+          "baseline_mae": 0.07617590566406938,
+          "baseline_rmse": 0.3555080935223331,
+          "candidate_mae": 0.06037647617808348,
+          "candidate_rmse": 0.3326289399608025,
+          "dimension": "role",
+          "group": "C",
+          "players": 601,
+          "supported": true
+        },
+        {
+          "arrivals": 55,
+          "baseline_mae": 0.09197142196592836,
+          "baseline_rmse": 0.4123690883828329,
+          "candidate_mae": 0.09528145781452949,
+          "candidate_rmse": 0.3971692086223602,
+          "dimension": "role",
+          "group": "CORNER",
+          "players": 714,
+          "supported": true
+        },
+        {
+          "arrivals": 76,
+          "baseline_mae": 0.10630794186170568,
+          "baseline_rmse": 0.4035458485911284,
+          "candidate_mae": 0.09494267385722542,
+          "candidate_rmse": 0.3838829792414239,
+          "dimension": "role",
+          "group": "MIDDLE_INFIELD",
+          "players": 730,
+          "supported": true
+        },
+        {
+          "arrivals": 2,
+          "baseline_mae": 0.029415470668973234,
+          "baseline_rmse": 0.15990524249893712,
+          "candidate_mae": 0.027685860168697358,
+          "candidate_rmse": 0.16085796722587184,
+          "dimension": "role",
+          "group": "OTHER",
+          "players": 141,
+          "supported": false
+        },
+        {
+          "arrivals": 86,
+          "baseline_mae": 0.09607670300875837,
+          "baseline_rmse": 0.5073386167820771,
+          "candidate_mae": 0.09076104236727661,
+          "candidate_rmse": 0.4988106336187012,
+          "dimension": "role",
+          "group": "OUTFIELD",
+          "players": 1074,
+          "supported": true
+        },
+        {
+          "arrivals": 11,
+          "baseline_mae": 0.014047920158768224,
+          "baseline_rmse": 0.18130609518058757,
+          "candidate_mae": 0.011895979119497213,
+          "candidate_rmse": 0.18072872715105703,
+          "dimension": "evidence",
+          "group": "1-99",
+          "players": 1022,
+          "supported": true
+        },
+        {
+          "arrivals": 50,
+          "baseline_mae": 0.0415199737491039,
+          "baseline_rmse": 0.16020710429983065,
+          "candidate_mae": 0.031888860013200085,
+          "candidate_rmse": 0.15284372534860405,
+          "dimension": "evidence",
+          "group": "100-299",
+          "players": 1506,
+          "supported": true
+        },
+        {
+          "arrivals": 198,
+          "baseline_mae": 0.3027606162829364,
+          "baseline_rmse": 0.8501916136148701,
+          "candidate_mae": 0.29630775243600044,
+          "candidate_rmse": 0.8212782560788842,
+          "dimension": "evidence",
+          "group": "300+",
+          "players": 725,
+          "supported": true
+        },
+        {
+          "arrivals": 31,
+          "baseline_mae": 0.1483699064482929,
+          "baseline_rmse": 0.6902518132934016,
+          "candidate_mae": 0.14135046314126157,
+          "candidate_rmse": 0.6761409414622541,
+          "dimension": "hand",
+          "group": "L",
+          "players": 314,
+          "supported": true
+        },
+        {
+          "arrivals": 228,
+          "baseline_mae": 0.0848523020966212,
+          "baseline_rmse": 0.38958929543497545,
+          "candidate_mae": 0.07832014042614661,
+          "candidate_rmse": 0.3750680507851145,
+          "dimension": "hand",
+          "group": "R",
+          "players": 2943,
+          "supported": true
+        }
+      ],
+      "training_arrivals": 194,
+      "training_conditional_mean_war": 0.6088545495055601
+    },
+    "pitcher": {
+      "cohort_fingerprint": "fa765b54d69f1d6d2b550c834bb2f6739a24535ba5671fd6c6f1187a5910c52d",
+      "conditional_on_observed_arrival_baseline": {
+        "bias": -0.021859587964846064,
+        "mae": 0.519651472791128,
+        "observed_mean": 0.32041930318646134,
+        "players": 273,
+        "predicted_mean": 0.2985597152216153,
+        "rmse": 0.8198242957635734
+      },
+      "conditional_on_observed_arrival_candidate": {
+        "bias": -0.10180487079861811,
+        "mae": 0.5061502249164849,
+        "observed_mean": 0.32041930318646134,
+        "players": 273,
+        "predicted_mean": 0.21861443238784325,
+        "rmse": 0.8002517416232029
+      },
+      "decision_checks": {
+        "absolute_bias_not_worse": false,
+        "arrived_player_rmse_not_worse": true,
+        "end_to_end_mae_improved": true,
+        "end_to_end_rmse_improved": true
+      },
+      "end_to_end_baseline": {
+        "bias": 0.002741715307980666,
+        "mae": 0.05724253151086223,
+        "observed_mean": 0.02397217587555603,
+        "players": 3649,
+        "predicted_mean": 0.02671389118353669,
+        "rmse": 0.23389701836323906
+      },
+      "end_to_end_candidate": {
+        "bias": -0.009348546226067041,
+        "mae": 0.04977999801913999,
+        "observed_mean": 0.02397217587555603,
+        "players": 3649,
+        "predicted_mean": 0.014623629649488986,
+        "rmse": 0.23091415807755325
+      },
+      "outer_arrivals": 273,
+      "paired_difference": {
+        "mae": {
+          "ci_high": -0.00673052387898148,
+          "ci_low": -0.008162224628312047,
+          "difference": -0.007462533491722236,
+          "probability_candidate_better": 1.0
+        },
+        "mse": {
+          "ci_high": -0.0001643869074150489,
+          "ci_low": -0.0029287693304204912,
+          "difference": -0.0013864667985481363,
+          "probability_candidate_better": 0.991
+        },
+        "resamples": 2000
+      },
+      "players": 3649,
+      "promising_development_evidence": false,
+      "rate_regression_opportunities": 200.0,
+      "ridge_alpha": 100.0,
+      "ridge_coefficient_l2_norm": 0.1860294805757886,
+      "ridge_conditional_prediction_distribution": {
+        "maximum": 0.6620032999295451,
+        "median": 0.03189357221929817,
+        "minimum": -0.8078945783116097,
+        "negative_predictions": 1608,
+        "p01": -0.4613353610943692,
+        "p99": 0.4707528737317518
+      },
+      "standardized_ridge_coefficients": [
+        {
+          "coefficient": -0.10819902819746409,
+          "feature": "production_rate_4"
+        },
+        {
+          "coefficient": 0.0918585006889647,
+          "feature": "role_STARTER"
+        },
+        {
+          "coefficient": -0.06744116209940254,
+          "feature": "production_rate_3"
+        },
+        {
+          "coefficient": 0.06148819757376945,
+          "feature": "production_rate_1"
+        },
+        {
+          "coefficient": 0.04720269304902807,
+          "feature": "age"
+        },
+        {
+          "coefficient": -0.034541162456295876,
+          "feature": "level_A_OR_BELOW"
+        },
+        {
+          "coefficient": -0.03446850485757495,
+          "feature": "production_rate_2"
+        },
+        {
+          "coefficient": 0.03017939015096782,
+          "feature": "level_AAA"
+        },
+        {
+          "coefficient": 0.021824400483143668,
+          "feature": "role_SWINGMAN"
+        },
+        {
+          "coefficient": 0.00801973960733983,
+          "feature": "prior_workload"
+        },
+        {
+          "coefficient": 0.008019739607339777,
+          "feature": "current_workload"
+        },
+        {
+          "coefficient": 0.0025394553278578146,
+          "feature": "level_AA"
+        },
+        {
+          "coefficient": -0.0011830963379512714,
+          "feature": "on_40man"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "prior_affiliated_seasons"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "level_INACTIVE"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "role_C"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "role_MIDDLE_INFIELD"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "role_OUTFIELD"
+        },
+        {
+          "coefficient": 0.0,
+          "feature": "role_CORNER"
+        }
+      ],
+      "subgroups": [
+        {
+          "arrivals": 87,
+          "baseline_mae": 0.14549478651105396,
+          "baseline_rmse": 0.4259273628393595,
+          "candidate_mae": 0.12853783890989418,
+          "candidate_rmse": 0.4189442588330094,
+          "dimension": "level",
+          "group": "AA",
+          "players": 512,
+          "supported": true
+        },
+        {
+          "arrivals": 108,
+          "baseline_mae": 0.188455824580445,
+          "baseline_rmse": 0.45578188602777303,
+          "candidate_mae": 0.17545558721892174,
+          "candidate_rmse": 0.45119880775222476,
+          "dimension": "level",
+          "group": "AAA",
+          "players": 430,
+          "supported": true
+        },
+        {
+          "arrivals": 78,
+          "baseline_mae": 0.019785137087305726,
+          "baseline_rmse": 0.08037795180705479,
+          "candidate_mae": 0.014980677410753401,
+          "candidate_rmse": 0.0797964905864637,
+          "dimension": "level",
+          "group": "A_OR_BELOW",
+          "players": 2696,
+          "supported": true
+        },
+        {
+          "arrivals": 74,
+          "baseline_mae": 0.03193565669016469,
+          "baseline_rmse": 0.1470578867763757,
+          "candidate_mae": 0.025235918789082445,
+          "candidate_rmse": 0.1457764173328371,
+          "dimension": "role",
+          "group": "RELIEVER",
+          "players": 1625,
+          "supported": true
+        },
+        {
+          "arrivals": 161,
+          "baseline_mae": 0.11419848937646364,
+          "baseline_rmse": 0.3654004307084504,
+          "candidate_mae": 0.10508457100272683,
+          "candidate_rmse": 0.36027040924479403,
+          "dimension": "role",
+          "group": "STARTER",
+          "players": 1124,
+          "supported": true
+        },
+        {
+          "arrivals": 38,
+          "baseline_mae": 0.032188437199060144,
+          "baseline_rmse": 0.12732819180823504,
+          "candidate_mae": 0.025333809320663,
+          "candidate_rmse": 0.12615178993119278,
+          "dimension": "role",
+          "group": "SWINGMAN",
+          "players": 889,
+          "supported": true
+        },
+        {
+          "arrivals": 36,
+          "baseline_mae": 0.024141917573063828,
+          "baseline_rmse": 0.13172745248323167,
+          "candidate_mae": 0.019631253990985417,
+          "candidate_rmse": 0.13048843280721412,
+          "dimension": "evidence",
+          "group": "1-99",
+          "players": 1253,
+          "supported": true
+        },
+        {
+          "arrivals": 117,
+          "baseline_mae": 0.049175552607747884,
+          "baseline_rmse": 0.2208704658794983,
+          "candidate_mae": 0.0413115962546062,
+          "candidate_rmse": 0.21803298280027736,
+          "dimension": "evidence",
+          "group": "100-299",
+          "players": 1916,
+          "supported": true
+        },
+        {
+          "arrivals": 120,
+          "baseline_mae": 0.17995710732437803,
+          "baseline_rmse": 0.4242563142178892,
+          "candidate_mae": 0.16608571993787444,
+          "candidate_rmse": 0.4185234992959871,
+          "dimension": "evidence",
+          "group": "300+",
+          "players": 469,
+          "supported": true
+        },
+        {
+          "arrivals": 71,
+          "baseline_mae": 0.05891640272582988,
+          "baseline_rmse": 0.1708034540929078,
+          "candidate_mae": 0.0521580164436134,
+          "candidate_rmse": 0.17225635894541821,
+          "dimension": "hand",
+          "group": "L",
+          "players": 772,
+          "supported": true
+        },
+        {
+          "arrivals": 202,
+          "baseline_mae": 0.05679337315912257,
+          "baseline_rmse": 0.24811183292857816,
+          "candidate_mae": 0.04914189227576375,
+          "candidate_rmse": 0.24426876600829708,
+          "dimension": "hand",
+          "group": "R",
+          "players": 2877,
+          "supported": true
+        }
+      ],
+      "training_arrivals": 293,
+      "training_conditional_mean_war": 0.2985597152216153
+    }
+  },
+  "sources": {
+    "docs/prospect-component-uncertainty-result.json": "040042a58cde3aa6c7fe749949b79a0e3d1fd7344029f5fa006c25cfbe7c29d8",
+    "docs/prospect-conditional-war-bridge-plan.md": "8361d38b2614526d4135f3efa3db5e195b930c8660a83df3dfd7275bade210bc",
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_hitting_components_2009_2025.parquet": "755b78517f52c3875fe7ea2877cbcb34a0cecd1a2fcb17ee05698cc55f2184a6",
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet": "a401f55b72bbc39ae0d967eed2bd4977fed126b24a27c672f76d98de509af7df",
+    "reports/generated/opportunity-40man-history/tables/historical_40man_membership.parquet": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421",
+    "reports/generated/opportunity-history-sources-v2/tables/2018/affiliated_season_stats.parquet": "e8f1a52f48d3f9aee6aca39207e82c39b1a6df9375b7a5025a54fe284a83fd04",
+    "reports/generated/opportunity-history-sources-v2/tables/2019/affiliated_season_stats.parquet": "0dd0a82eecbdbf15f67e74d2312bf8ecac91c2c6ed3645e103f4de82bea59021",
+    "reports/generated/opportunity-history-sources-v2/tables/2020/affiliated_season_stats.parquet": "332e1edc158ecfde8e503378d99f249681348c6174c0c60642c0f6ef09201a5d",
+    "reports/generated/opportunity-history-sources-v2/tables/2021/affiliated_season_stats.parquet": "55b727f4c9437f357f2a685841ff3fdec4c509a4f6d8d870e6fbf851977d9c9e",
+    "reports/generated/opportunity-history-sources-v2/tables/2022/affiliated_season_stats.parquet": "a3fca9b9a7d4df771c3d3aa9d44189cb085df8cb71ada83eae1c363ca62ebddc",
+    "reports/generated/opportunity-history-sources-v2/tables/2023/affiliated_season_stats.parquet": "a68647e3c5338db8ccb79e8c0ff4d721e6863b5fbe0ec22ae11d553882f8cc37",
+    "reports/generated/opportunity-history-sources-v2/tables/2024/affiliated_season_stats.parquet": "1ac6a4a6d045faf4157565103e821c0bb023869e54285025db7fa0dab2861bf5",
+    "reports/generated/opportunity-history-sources-v2/tables/2025/affiliated_season_stats.parquet": "c0663675bee3ccc7f567808b8e1856143d04b9ddba9f735a71252b9f3d2e3187",
+    "reports/generated/opportunity-history-sources-v2/tables/hitter_snapshots.parquet": "4480052b8a07fbb21366b54cc341630bbf29cf3be9d52ac1820f026c4efa90b3",
+    "reports/generated/opportunity-history-sources-v2/tables/pitcher_snapshots.parquet": "3b80e560a6bebe6306f5c7be5c8bec0cb7f94fed5ef5f1edfaf3bd27e53396b3",
+    "reports/generated/phase2-arrival-skill-source/tables/affiliated_hitting_components.parquet": "c7ac4b4a3bf2eac9013edbf010e8d0ac6e843175b0014261fbb3f41d425fccf0",
+    "reports/generated/phase2-arrival-skill-source/tables/affiliated_pitching_components.parquet": "3417215721a1f30541be9a7bbc2582b9d382569d1af9b34d0c4f7f592470f6bc",
+    "reports/generated/player-demographics/tables/player-demographics.parquet": "010bb368acc8465dc1c5ba21660dd32bdcf0e9132bc4824e39a491f11189f54f"
+  },
+  "status": "retrospective_development_not_confirmation"
+}

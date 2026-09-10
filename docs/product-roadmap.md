@@ -175,6 +175,13 @@ workload separate in the current model. A future hitter challenger must add a
 predeclared reason the dependence should help and must separately source vintage
 defense, running and position if it intends to forecast whole-player WAR.
 
+A fixed two-year conditional-WAR bridge is now promising development evidence for
+both player types. A strongly regressed core model fit on 2018 improves 2021-cohort
+end-to-end RMSE and MAE, paired uncertainty, and arrived-player RMSE without changing
+arrival odds or using demographics/FV as talent. It misses its frozen gate because
+absolute mean bias worsens slightly. Preserve the exact form for later confirmation;
+do not tune an outer-cohort calibration or change current values.
+
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.
 10. Improve defense, two-way-player handling, interval calibration, nonlinear buyer

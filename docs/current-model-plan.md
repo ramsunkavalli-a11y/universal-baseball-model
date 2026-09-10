@@ -152,6 +152,12 @@ the 2021 cohort, with all non-arrivals retained in the end-to-end score. It asks
 whether cutoff-known production, age, level, role and evidence volume can improve the
 positive MLB tail without using demographics as talent or changing arrival odds.
 
+That test is now complete. The regressed core candidate improves end-to-end RMSE and
+MAE, paired uncertainty, and arrived-player RMSE for both hitters and pitchers. It
+misses the frozen gate only because absolute bias moves slightly farther from zero.
+Keep the exact form as promising research; do not use the disclosed outer cohort to
+add a calibration correction. Current values remain unchanged.
+
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory
 the existing `playing_time_model.py` and dated 40-man source adapter; reuse and

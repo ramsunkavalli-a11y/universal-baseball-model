@@ -33,6 +33,21 @@ bias. Its paired RMSE evidence is uncertain and the weight was viewed on the exp
 cohort, so it remains research-only. All pitcher blends improve tail-sensitive RMSE
 but reliably worsen typical-player MAE; none is retained as a clean challenger.
 
+The frozen [conditional-WAR bridge](prospect-conditional-war-bridge-result.md) is the
+first simple cutoff-safe model to improve both RMSE and MAE for hitters and pitchers
+while also improving conditional-on-arrival RMSE. Hitter end-to-end RMSE changes
+`0.428 -> 0.414`; pitcher RMSE changes `0.234 -> 0.231`, and both paired MSE and MAE
+intervals are favorable. The strict prewritten gate still fails because absolute mean
+bias worsens slightly. This is promising development evidence only. Do not calibrate
+on the exposed 2021 cohort or change current values.
+
+The leading standardized coefficients are baseball-coherent. Hitter extra-base-hit
+and home-run rates are positive, while age, lower-level status and strikeout rate are
+negative. Pitcher home-run, HBP and walk rates are negative; strikeout rate and
+starter role are positive. Conditional pitcher age is also positive in the older fit,
+which is a selection warning rather than an aging claim. Coefficients are diagnostics,
+not causal effects or direct player bonuses.
+
 ## Current P0: pitcher value funnel
 
 The playable build had a material integration defect: its conditional WAR layer still
@@ -820,7 +835,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,444 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,446 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.
