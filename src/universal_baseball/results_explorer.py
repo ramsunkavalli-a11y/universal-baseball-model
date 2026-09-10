@@ -243,9 +243,10 @@ def build_explorer_payload(
             "phase": "Phase 2 preview" if phase2 else "Phase 1",
             "warning": (
                 "Private Phase 2 preview. MLB values use corrected market-tier and "
-                "sequential-decision logic. Model FV comes only from our projected "
-                "production and a provisional nested career hurdle; publication "
-                "player grades are validation only."
+                "sequential-decision and workload logic. Pre-MLB pitcher rankings "
+                "remain provisional because aggregate features did not validate "
+                "conditional MLB quality. Model FV comes only from our projections; "
+                "publication player grades are validation only."
                 if phase2
                 else "Research view only. Values use Phase 1 assumptions, uncalibrated "
                 "reference ranges and current CBA planning rules."
