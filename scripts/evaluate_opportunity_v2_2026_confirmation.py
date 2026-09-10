@@ -45,6 +45,10 @@ def _verify_forecast_package(root: Path) -> dict[str, object]:
         path = root / relative_path
         if path.stat().st_size != record["bytes"] or sha256_file(path) != record["sha256"]:
             raise ValueError(f"confirmation forecast package hash mismatch: {relative_path}")
+    report = json.loads((root / "report.json").read_text(encoding="utf-8"))
+    contract = Path(str(report["contract"]))
+    if sha256_file(contract) != report.get("contract_sha256"):
+        raise ValueError("confirmation contract hash mismatch")
     return manifest
 
 
@@ -177,4 +181,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

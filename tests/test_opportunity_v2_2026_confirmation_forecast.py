@@ -36,4 +36,4 @@ def test_confirmation_forecast_is_hash_bound_and_has_identical_component_rows() 
     assert report["boundary"]["any_2026_outcome_file_read"] is False
     assert manifest["target_outcomes_included"] is False
     assert manifest["immutable_confirmation_input"] is True
-
+    assert sha256_file(ROOT / report["contract"]) == report["contract_sha256"]

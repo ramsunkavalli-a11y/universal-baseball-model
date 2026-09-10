@@ -38,6 +38,8 @@ The protected 2026 opportunity evaluator is corrected too. Its frozen forecasts 
 unchanged. Full hurdle-count likelihood and participation scores still test the
 distribution; expected PA/BF now uses mean squared error and aggregate bias. MAE is
 retained only as a description of typical absolute error.
+The protected opportunity package now hashes that exact contract, and the future
+evaluator refuses a changed contract before reading outcomes.
 
 The first Phase 2 survivor-bias test is complete. An age-by-prior-workload pitcher
 return model materially improves 2022–2025 probability scores over one population

@@ -45,6 +45,7 @@ TRAINING_SNAPSHOT_YEARS = (2018, 2021, 2022, 2023, 2024)
 FORECAST_SNAPSHOT_YEAR = 2025
 FORECAST_TARGET_YEAR = 2026
 ROW_KEY_MULTIPLIER = 10_000_000
+CONTRACT = Path("docs/opportunity-v2-2026-confirmation-contract.md")
 
 
 def _args() -> argparse.Namespace:
@@ -307,7 +308,8 @@ def main() -> int:
     report = {
         "report_schema_version": "0.1",
         "gate": "opportunity_v2_2026_protected_confirmation_forecast_freeze",
-        "contract": "docs/opportunity-v2-2026-confirmation-contract.md",
+        "contract": CONTRACT.as_posix(),
+        "contract_sha256": sha256_file(CONTRACT),
         "snapshot_date": "2025-10-15",
         "target_season": 2026,
         "target_status": "not_read_waiting_for_completed_regular_season",
@@ -344,4 +346,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
