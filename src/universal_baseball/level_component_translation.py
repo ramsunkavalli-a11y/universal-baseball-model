@@ -91,7 +91,7 @@ def fit_same_season_component_translation(
         raise ValueError("translation source contains unsupported levels")
     if source.filter(
         pl.any_horizontal(*(pl.col(column) < 0 for column in component_columns))
-        | (pl.sum_horizontal(*component_columns) != pl.col(exposure_column))
+        | ((pl.sum_horizontal(*component_columns) - pl.col(exposure_column)).abs() > 1e-8)
     ).height:
         raise ValueError("translation components must be nonnegative and sum to exposure")
 
@@ -253,7 +253,7 @@ def build_translated_affiliated_profiles(
         *(pl.col(column).sum().alias(column) for column in component_columns),
     ).filter(pl.col(exposure_column) > 0)
     if source.filter(
-        (pl.sum_horizontal(*component_columns) != pl.col(exposure_column))
+        ((pl.sum_horizontal(*component_columns) - pl.col(exposure_column)).abs() > 1e-8)
         | pl.any_horizontal(*(pl.col(column) < 0 for column in component_columns))
     ).height:
         raise ValueError("translated profile components do not reconcile to exposure")
@@ -356,7 +356,7 @@ def score_component_profiles(
         *(pl.col(column).sum().alias(column) for column in component_columns),
     ).filter(pl.col(exposure_column) > 0)
     if target.filter(
-        (pl.sum_horizontal(*component_columns) != pl.col(exposure_column))
+        ((pl.sum_horizontal(*component_columns) - pl.col(exposure_column)).abs() > 1e-8)
         | pl.any_horizontal(*(pl.col(column) < 0 for column in component_columns))
     ).height:
         raise ValueError("component targets do not reconcile to exposure")

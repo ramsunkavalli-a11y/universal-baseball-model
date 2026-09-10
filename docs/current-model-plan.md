@@ -40,6 +40,16 @@ cutoff-safe and improve future player component forecasts. See the
 [league test](affiliated-league-translation-result.md), and
 [park test](affiliated-park-factor-result.md).
 
+That stricter integration is now complete. Exact StatsAPI home/away player splits
+support league-season-centered, component-specific venue effects for both hitters and
+pitchers. The venue effects repeat in 2024 and untouched 2025, but the player
+adjustment fails the two-score gate: hitters lose 2025 log loss and pitchers lose
+2025 Brier. Keep current player rates unchanged. Further park work must model
+opponent/schedule imbalance or venue eras; do not tune the shrinkage around these
+mixed results. See the [component source](affiliated-home-away-component-source-result.md),
+[component factor test](affiliated-component-park-factor-result.md), and
+[player test](affiliated-player-park-adjustment-result.md).
+
 The next injury additions are also resolved. Broad age and recent-IL-recurrence
 cells, partially pooled toward the validated IL-type/elapsed baseline, failed the
 2024 four-metric gate. They are not promoted and were not tuned against 2025. Keep

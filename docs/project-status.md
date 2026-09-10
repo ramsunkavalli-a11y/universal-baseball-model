@@ -128,6 +128,12 @@ in untouched 2025. This validates repeatable park environment, not a current pla
 adjustment. The next gate is a cutoff-safe player-level component forecast with the
 park correction; venue identity alone remains insufficient.
 
+That player gate has now been run with exact home/away exposure. Component venue
+effects repeat out of time, but the hitter adjustment reverses on 2025 log loss and
+the pitcher adjustment reverses on 2025 Brier. Neither changes production. The next
+credible park challenger requires explicit opponent/schedule control or supported
+venue eras, not another shrinkage search on the disclosed seasons.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

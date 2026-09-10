@@ -20,7 +20,7 @@ SKILL = Path("reports/generated/affiliated-skill-source/tables")
 
 
 def main() -> int:
-    context, captures = fetch_affiliated_team_context((2023, 2024, 2025))
+    context, captures = fetch_affiliated_team_context(range(2021, 2026))
     tables = OUTPUT / "tables"
     raw = OUTPUT / "captures"
     tables.mkdir(parents=True, exist_ok=True)
@@ -52,7 +52,7 @@ def main() -> int:
     report = {
         "report_schema_version": "0.1",
         "status": "league_venue_identity_source_ready",
-        "seasons": [2023, 2024, 2025],
+        "seasons": list(range(2021, 2026)),
         "requests": len(captures),
         "hitting_coverage": audit_skill_context_coverage(hitting, context),
         "pitching_coverage": audit_skill_context_coverage(pitching, context),
