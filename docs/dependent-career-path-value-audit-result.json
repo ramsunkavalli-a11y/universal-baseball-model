@@ -1,0 +1,296 @@
+{
+  "alternate_draws": 8192,
+  "alternate_seed": 20260910,
+  "as_of_date": "2026-09-08",
+  "base_draws": 2048,
+  "confirmation_outcomes_accessed": false,
+  "limits": [
+    "This checks numerical stability and mechanical subgroup behavior, not predictive accuracy.",
+    "No later outcome is used to choose a model or assumption.",
+    "Position differences may reflect real role/workload differences and are not causal effects."
+  ],
+  "numerical_stability": {
+    "mean_absolute_controlled_war_difference": 0.05552819584285327,
+    "mean_absolute_value_difference_dollars": 352554.5331083749,
+    "p90_absolute_controlled_war_difference": 0.16292358169719767,
+    "p90_absolute_value_difference_dollars": 1054955.377286002,
+    "value_rank_correlation": 0.9923938489997708
+  },
+  "outside_fv_or_rank_used": false,
+  "sample_design": "top_100_by_research_value_plus_even_player_id_spread",
+  "sample_players": 300,
+  "segments_by_arrival_band": [
+    {
+      "arrival_band": "00-10%",
+      "mean_arrival_probability": 0.029514500315687683,
+      "mean_controlled_war": 0.08364240091277109,
+      "mean_old_value_dollars": 1180752.7655539687,
+      "mean_research_value_dollars": 488619.8366885049,
+      "players": 4353,
+      "research_to_old_value_ratio": 0.4138206159180675
+    },
+    {
+      "arrival_band": "10-25%",
+      "mean_arrival_probability": 0.16335090588652204,
+      "mean_controlled_war": 0.37083237248433276,
+      "mean_old_value_dollars": 2990896.4086059746,
+      "mean_research_value_dollars": 2235732.7419512765,
+      "players": 1063,
+      "research_to_old_value_ratio": 0.7475125970656162
+    },
+    {
+      "arrival_band": "25-50%",
+      "mean_arrival_probability": 0.3536591202970021,
+      "mean_controlled_war": 0.4142778332918118,
+      "mean_old_value_dollars": 3389603.695286132,
+      "mean_research_value_dollars": 2585014.2747944035,
+      "players": 678,
+      "research_to_old_value_ratio": 0.7626302385701732
+    },
+    {
+      "arrival_band": "50-75%",
+      "mean_arrival_probability": 0.6165486325235109,
+      "mean_controlled_war": 0.7685881365502149,
+      "mean_old_value_dollars": 6525975.655716692,
+      "mean_research_value_dollars": 5547572.137325398,
+      "players": 439,
+      "research_to_old_value_ratio": 0.8500755182048185
+    },
+    {
+      "arrival_band": "75-100%",
+      "mean_arrival_probability": 0.8332879179288043,
+      "mean_controlled_war": 1.7544382164989234,
+      "mean_old_value_dollars": 12847984.969586788,
+      "mean_research_value_dollars": 11581059.074760156,
+      "players": 186,
+      "research_to_old_value_ratio": 0.9013910821171066
+    }
+  ],
+  "segments_by_player_type": [
+    {
+      "mean_arrival_probability": 0.15730795677923662,
+      "mean_controlled_war": 0.5399161346879019,
+      "mean_old_value_dollars": 4106869.1065227985,
+      "mean_research_value_dollars": 3279188.0234091496,
+      "model_player_type": "hitter",
+      "players": 2870,
+      "research_to_old_value_ratio": 0.7984642165003332
+    },
+    {
+      "mean_arrival_probability": 0.13408212077139492,
+      "mean_controlled_war": 0.039840724280605776,
+      "mean_old_value_dollars": 1061367.9287323775,
+      "mean_research_value_dollars": 372662.3177752278,
+      "model_player_type": "pitcher",
+      "players": 3849,
+      "research_to_old_value_ratio": 0.35111511068580076
+    }
+  ],
+  "segments_by_position": [
+    {
+      "mean_arrival_probability": 0.23698710650974672,
+      "mean_controlled_war": -0.0036744918013285246,
+      "mean_old_value_dollars": 1356405.3491399866,
+      "mean_research_value_dollars": 823279.3841968415,
+      "model_player_type": "hitter",
+      "players": 118,
+      "primary_position": "1B",
+      "research_to_old_value_ratio": 0.6069567513271991
+    },
+    {
+      "mean_arrival_probability": 0.26762643634100985,
+      "mean_controlled_war": 0.7106245362985305,
+      "mean_old_value_dollars": 5016169.700169082,
+      "mean_research_value_dollars": 4054111.339061248,
+      "model_player_type": "hitter",
+      "players": 167,
+      "primary_position": "2B",
+      "research_to_old_value_ratio": 0.8082085697628202
+    },
+    {
+      "mean_arrival_probability": 0.22532462081979093,
+      "mean_controlled_war": 0.6649100555611579,
+      "mean_old_value_dollars": 4882115.813350479,
+      "mean_research_value_dollars": 3838822.108942162,
+      "model_player_type": "hitter",
+      "players": 169,
+      "primary_position": "3B",
+      "research_to_old_value_ratio": 0.7863029587386355
+    },
+    {
+      "mean_arrival_probability": 0.1271676245142788,
+      "mean_controlled_war": 0.5984730931795093,
+      "mean_old_value_dollars": 4490993.63038018,
+      "mean_research_value_dollars": 3703280.4943402214,
+      "model_player_type": "hitter",
+      "players": 658,
+      "primary_position": "C",
+      "research_to_old_value_ratio": 0.8246015913468852
+    },
+    {
+      "mean_arrival_probability": 0.20438342278089178,
+      "mean_controlled_war": 0.5894828135198226,
+      "mean_old_value_dollars": 4360663.8268981455,
+      "mean_research_value_dollars": 3384938.5519600795,
+      "model_player_type": "hitter",
+      "players": 175,
+      "primary_position": "CF",
+      "research_to_old_value_ratio": 0.7762438670645875
+    },
+    {
+      "mean_arrival_probability": 0.22364250817801495,
+      "mean_controlled_war": 0.1606701783719161,
+      "mean_old_value_dollars": 1698718.9988063863,
+      "mean_research_value_dollars": 1131688.8853288775,
+      "model_player_type": "hitter",
+      "players": 64,
+      "primary_position": "LF",
+      "research_to_old_value_ratio": 0.6662013470880497
+    },
+    {
+      "mean_arrival_probability": 0.11248256505428637,
+      "mean_controlled_war": 0.33822392648207644,
+      "mean_old_value_dollars": 2739805.75714495,
+      "mean_research_value_dollars": 1978036.625145872,
+      "model_player_type": "hitter",
+      "players": 604,
+      "primary_position": "OF",
+      "research_to_old_value_ratio": 0.7219623580932653
+    },
+    {
+      "mean_arrival_probability": 0.24833703347327984,
+      "mean_controlled_war": 0.16021413120310227,
+      "mean_old_value_dollars": 1792534.0449523844,
+      "mean_research_value_dollars": 1302410.7842031938,
+      "model_player_type": "hitter",
+      "players": 85,
+      "primary_position": "RF",
+      "research_to_old_value_ratio": 0.7265752011074301
+    },
+    {
+      "mean_arrival_probability": 0.1693589100959029,
+      "mean_controlled_war": 0.8460212035254951,
+      "mean_old_value_dollars": 6072527.155651194,
+      "mean_research_value_dollars": 5120440.0058784755,
+      "model_player_type": "hitter",
+      "players": 608,
+      "primary_position": "SS",
+      "research_to_old_value_ratio": 0.8432140152907031
+    },
+    {
+      "mean_arrival_probability": 0.06739203010808323,
+      "mean_controlled_war": 0.35776926148791843,
+      "mean_old_value_dollars": 2872378.4501985162,
+      "mean_research_value_dollars": 2108593.096689915,
+      "model_player_type": "hitter",
+      "players": 222,
+      "primary_position": "unknown_average",
+      "research_to_old_value_ratio": 0.7340930637270954
+    },
+    {
+      "mean_arrival_probability": 0.1341165071490306,
+      "mean_controlled_war": 0.039850898371567134,
+      "mean_old_value_dollars": 1061435.85179078,
+      "mean_research_value_dollars": 372758.7479102399,
+      "model_player_type": "pitcher",
+      "players": 3848,
+      "primary_position": null,
+      "research_to_old_value_ratio": 0.35118349100545976
+    },
+    {
+      "mean_arrival_probability": 0.0017633396292039416,
+      "mean_controlled_war": 0.0006908222613347942,
+      "mean_old_value_dollars": 800000.0,
+      "mean_research_value_dollars": 1599.158249037339,
+      "model_player_type": "pitcher",
+      "players": 1,
+      "primary_position": "unknown_average",
+      "research_to_old_value_ratio": 0.0019989478112966736
+    }
+  ],
+  "status": "research_sensitivity_not_model_selection",
+  "top_100_old_composition": {
+    "hitter_position_counts": [
+      {
+        "len": 43,
+        "primary_position": "SS",
+        "share_of_hitters": 0.43434343434343436
+      },
+      {
+        "len": 23,
+        "primary_position": "C",
+        "share_of_hitters": 0.23232323232323235
+      },
+      {
+        "len": 11,
+        "primary_position": "3B",
+        "share_of_hitters": 0.11111111111111112
+      },
+      {
+        "len": 9,
+        "primary_position": "2B",
+        "share_of_hitters": 0.09090909090909091
+      },
+      {
+        "len": 7,
+        "primary_position": "CF",
+        "share_of_hitters": 0.07070707070707072
+      },
+      {
+        "len": 6,
+        "primary_position": "OF",
+        "share_of_hitters": 0.06060606060606061
+      }
+    ],
+    "player_type_counts": [
+      {
+        "len": 99,
+        "model_player_type": "hitter"
+      },
+      {
+        "len": 1,
+        "model_player_type": "pitcher"
+      }
+    ]
+  },
+  "top_100_research_composition": {
+    "hitter_position_counts": [
+      {
+        "len": 44,
+        "primary_position": "SS",
+        "share_of_hitters": 0.44
+      },
+      {
+        "len": 23,
+        "primary_position": "C",
+        "share_of_hitters": 0.23
+      },
+      {
+        "len": 11,
+        "primary_position": "3B",
+        "share_of_hitters": 0.11
+      },
+      {
+        "len": 9,
+        "primary_position": "2B",
+        "share_of_hitters": 0.09
+      },
+      {
+        "len": 7,
+        "primary_position": "CF",
+        "share_of_hitters": 0.07
+      },
+      {
+        "len": 6,
+        "primary_position": "OF",
+        "share_of_hitters": 0.06
+      }
+    ],
+    "player_type_counts": [
+      {
+        "len": 100,
+        "model_player_type": "hitter"
+      }
+    ]
+  }
+}
