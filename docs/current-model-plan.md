@@ -119,8 +119,11 @@ origin states have hundreds of real advancements, enough for pooled hazards but 
 unrestricted subgroup fits. A forward-only hazard path then beat the direct endpoint
 on both scores in the later 2021 cohort, but lost both scores in the 2019 development
 cohort. Retain it as the architecture, not production. The development horizon spans
-the 2020 disruption, so the clean decision requires more completed post-2020 paths,
-not rescue tuning. See the [support inventory](prospect-career-transition-support-result.md)
+the 2020 disruption, but a horizon diagnostic does not make that a sufficient
+explanation: hitter loss begins after its slight immediate-2020 win, and pitchers
+lose throughout the development path. The next challenger must update development
+or MLB evidence after the initial snapshot, not add a pandemic exception or rescue
+tuning. See the [support inventory](prospect-career-transition-support-result.md)
 and [path test](prospect-ordered-transition-path-result.md).
 
 ## Goal

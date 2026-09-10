@@ -82,7 +82,7 @@ def _transition_training(cohorts: dict[int, pl.DataFrame], year: int) -> pl.Data
 
 def _scores(
     data: dict[int, dict[int, pl.DataFrame]], *, player_type: str,
-    method: str, regularization_c: float, evaluation_year: int,
+    method: str, regularization_c: float, evaluation_year: int, horizon: int = 4,
 ) -> dict[str, float | int]:
     if method == "ordered_transition":
         training = _transition_training(data[2018], 2018)
@@ -91,9 +91,9 @@ def _scores(
             regularization_c=regularization_c,
         )
         prediction = predict_transition_path(
-            fit, data[evaluation_year][1], horizon=4
+            fit, data[evaluation_year][1], horizon=horizon
         ).join(
-            data[evaluation_year][4].select(
+            data[evaluation_year][horizon].select(
                 "player_id", "arrived_within_horizon",
                 "meaningful_role_within_horizon", "established_role_within_horizon",
             ), on="player_id", how="inner", validate="1:1", suffix="_target",
@@ -109,7 +109,7 @@ def _scores(
         })
     else:
         prediction = predict_independent_ordered_state(
-            data[2018][4], data[evaluation_year][4],
+            data[2018][horizon], data[evaluation_year][horizon],
             player_type=player_type, feature_set="level_exposure",
             regularization_c=regularization_c,
         )
@@ -163,6 +163,30 @@ def _one(player_type: str) -> dict[str, object]:
             - confirmation["direct_endpoint"]["multiclass_brier"]
         ),
     }
+    horizon_diagnostics = []
+    for evaluation_year in (2019, 2021):
+        for horizon in HORIZONS:
+            direct = _scores(
+                data, player_type=player_type, method="direct_endpoint",
+                regularization_c=selected["direct_endpoint"],
+                evaluation_year=evaluation_year, horizon=horizon,
+            )
+            transition = _scores(
+                data, player_type=player_type, method="ordered_transition",
+                regularization_c=selected["ordered_transition"],
+                evaluation_year=evaluation_year, horizon=horizon,
+            )
+            horizon_diagnostics.append({
+                "evaluation_snapshot": evaluation_year,
+                "horizon": horizon,
+                "target_through_year": evaluation_year + horizon,
+                "transition_minus_direct_log_loss": (
+                    transition["multiclass_log_loss"] - direct["multiclass_log_loss"]
+                ),
+                "transition_minus_direct_brier": (
+                    transition["multiclass_brier"] - direct["multiclass_brier"]
+                ),
+            })
     return {
         "training_snapshot": 2018, "development_snapshot": 2019,
         "confirmation_snapshot": 2021,
@@ -171,6 +195,7 @@ def _one(player_type: str) -> dict[str, object]:
         "selected_development": selected_development,
         "development_delta": development_delta,
         "confirmation": confirmation,
+        "horizon_diagnostics": horizon_diagnostics,
         **delta,
         "promotion_gate_passed": bool(
             development_delta["transition_minus_direct_log_loss"] < 0
@@ -225,6 +250,12 @@ cohort; the 2021 cohort and 2022-2025 outcomes were then scored unchanged.
 The path is coherent and cannot move backward. It does not yet model future MiLB
 production or post-arrival MLB skill, so it cannot replace the current safeguard
 unless both proper scores improve. No outside FV enters the test.
+
+The horizon diagnostic does not support blaming the full reversal on the shortened
+2020 season. The hitter path slightly wins the immediate 2020 target and then loses
+at years two through four; the pitcher path loses throughout that development cohort.
+The likely missing piece is updated development/MLB evidence after the initial
+snapshot, not a one-year exception.
 """, encoding="utf-8")
     print(json.dumps({name: report[name] for name in ("hitter", "pitcher")}, indent=2))
     return 0

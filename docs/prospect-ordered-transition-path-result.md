@@ -16,3 +16,9 @@ cohort; the 2021 cohort and 2022-2025 outcomes were then scored unchanged.
 The path is coherent and cannot move backward. It does not yet model future MiLB
 production or post-arrival MLB skill, so it cannot replace the current safeguard
 unless both proper scores improve. No outside FV enters the test.
+
+The horizon diagnostic does not support blaming the full reversal on the shortened
+2020 season. The hitter path slightly wins the immediate 2020 target and then loses
+at years two through four; the pitcher path loses throughout that development cohort.
+The likely missing piece is updated development/MLB evidence after the initial
+snapshot, not a one-year exception.
