@@ -75,6 +75,15 @@ sensitivity. Point WAR, Model FV, salary and contract status are unchanged. The 
 two-way players retain the prior independent-moments combination as a small explicit
 exception. See the [combined result](rolling-combined-war-uncertainty-result.md).
 
+Flexible within-team position and pitching-role allocation has now been tested on the
+same 2025 replay. It uses only pre-2025 supported movement, reassigns unused capacity
+before cutting workload and is far less destructive than rigid caps. It nevertheless
+fails to improve both RMSE and MAE versus the broad team cap for either component.
+Keep the broad cap only. Catcher crowding remains team context, not a talent penalty;
+further depth work requires dated player-level roster competition rather than another
+aggregate share rule. See the
+[flexible result](flexible-team-capacity-replay-2025-result.md).
+
 The injury workload hierarchy is now validated out of time. Fit on 2022–2023 and
 scored unchanged on 548 players in 2024–2025, IL type plus elapsed time improves
 return Brier/log loss and remaining-availability MAE/RMSE versus a population-only

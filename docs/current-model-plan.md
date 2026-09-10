@@ -67,6 +67,14 @@ is 19.5% for hitters and 19.2% for pitchers. Point WAR and Model FV do not chang
 WAR and contract-value ranges change. See the
 [combined result](rolling-combined-war-uncertainty-result.md).
 
+The required flexible team-depth challenger is also complete. Supported historical
+position and role movement reassigns unused group capacity before cuts, fixing the
+rigid model's structural flaw. It still produces a mixed RMSE/MAE tradeoff versus the
+simpler broad team cap for both hitters and pitchers. Retain only the broad team cap
+and close aggregate position-share tuning on disclosed 2025 outcomes. The next depth
+input, when pursued, must use dated player-level roster, option, IL and competition
+state. See the [flexible result](flexible-team-capacity-replay-2025-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

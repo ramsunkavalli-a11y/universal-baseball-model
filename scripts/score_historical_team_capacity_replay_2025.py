@@ -13,11 +13,14 @@ import polars as pl
 from universal_baseball.historical_replay_inputs import MLB_TEAM_ID_BY_ABBREVIATION
 from universal_baseball.opportunity_capacity import historical_mlb_workload_pools
 from universal_baseball.team_opportunity_allocation import (
+    allocate_flexible_group_capacity,
     allocate_current_organization_opportunity,
     allocate_hitter_position_capacity,
     allocate_pitcher_role_capacity,
     estimate_hitter_position_capacity_shares,
+    estimate_hitter_flexibility_edges,
     estimate_pitcher_role_capacity_shares,
+    estimate_pitcher_role_flexibility_edges,
     historical_hitter_position_shares,
     historical_pitcher_role_shares,
     position_group,
@@ -173,6 +176,16 @@ def main() -> int:
     pitcher_capacity = estimate_pitcher_role_capacity_shares(
         pitcher_shares, development_seasons=(2021, 2022, 2023, 2024)
     )
+    hitter_edges = estimate_hitter_flexibility_edges(
+        historical_fielding,
+        development_seasons=(2021, 2022, 2023, 2024),
+        minimum_player_seasons=30,
+    )
+    pitcher_edges = estimate_pitcher_role_flexibility_edges(
+        history,
+        development_seasons=(2021, 2022, 2023, 2024),
+        minimum_players=30,
+    )
 
     forecast_root = args.generated_root / "historical-projection-paths/2025-03-27/tables"
     hitters = pl.read_parquet(forecast_root / "hitter-expected-war-paths.parquet").filter(
@@ -203,6 +216,32 @@ def main() -> int:
     pitcher_final = allocate_pitcher_role_capacity(
         allocated.pitcher, pitcher_capacity, team_capacity=team_capacity
     )
+    hitter_flexible = allocate_flexible_group_capacity(
+        allocated.hitter.with_columns(
+            pl.col("primary_position")
+            .map_elements(position_group, return_dtype=pl.String)
+            .alias("flex_origin_group")
+        ),
+        hitter_capacity,
+        hitter_edges,
+        origin_column="flex_origin_group",
+        workload_column="current_org_expected_mlb_pa",
+        output_column="flexible_expected_mlb_pa",
+        capacity_group_column="position_group",
+        team_capacity=team_capacity,
+    )
+    pitcher_flexible = allocate_flexible_group_capacity(
+        allocated.pitcher.with_columns(
+            pl.col("projected_role").str.to_uppercase().alias("flex_origin_group")
+        ),
+        pitcher_capacity,
+        pitcher_edges,
+        origin_column="flex_origin_group",
+        workload_column="current_org_expected_mlb_bf",
+        output_column="flexible_expected_mlb_bf",
+        capacity_group_column="pitcher_role",
+        team_capacity=team_capacity,
+    )
 
     actual_hitter = (
         history.filter(
@@ -221,7 +260,15 @@ def main() -> int:
         .agg(pl.col("batters_faced").sum().cast(pl.Float64).alias("actual_mlb_bf"))
     )
     hitter_scored = (
-        hitter_final.players.join(actual_hitter, on="player_id", how="left", validate="m:1")
+        hitter_final.players.join(
+            hitter_flexible.players.select(
+                "player_id", "season", "flexible_expected_mlb_pa"
+            ),
+            on=["player_id", "season"],
+            how="left",
+            validate="1:1",
+        )
+        .join(actual_hitter, on="player_id", how="left", validate="m:1")
         .with_columns(
             pl.col("actual_mlb_pa").fill_null(0.0),
             pl.col("primary_position").map_elements(
@@ -230,7 +277,15 @@ def main() -> int:
         )
     )
     pitcher_scored = (
-        pitcher_final.players.join(actual_pitcher, on="player_id", how="left", validate="m:1")
+        pitcher_final.players.join(
+            pitcher_flexible.players.select(
+                "player_id", "season", "flexible_expected_mlb_bf"
+            ),
+            on=["player_id", "season"],
+            how="left",
+            validate="1:1",
+        )
+        .join(actual_pitcher, on="player_id", how="left", validate="m:1")
         .with_columns(
             pl.col("actual_mlb_bf").fill_null(0.0),
             pl.col("projected_role").str.to_uppercase().alias("diagnostic_group"),
@@ -276,6 +331,8 @@ def main() -> int:
             "team_workload": team_capacity,
             "hitter_position_shares": hitter_capacity.to_dicts(),
             "pitcher_role_shares": pitcher_capacity.to_dicts(),
+            "hitter_flexibility_edges": hitter_edges.to_dicts(),
+            "pitcher_flexibility_edges": pitcher_edges.to_dicts(),
         },
         "coverage": {
             "hitter_forecast_players": hitters.height,
@@ -296,6 +353,24 @@ def main() -> int:
             team="current_org_expected_mlb_bf", final="role_capped_expected_mlb_bf",
             repetitions=args.bootstrap_repetitions, seed=20250902,
         ),
+        "hitter_flexible": _score_layers(
+            hitter_scored,
+            actual="actual_mlb_pa",
+            original="expected_mlb_pa",
+            team="current_org_expected_mlb_pa",
+            final="flexible_expected_mlb_pa",
+            repetitions=args.bootstrap_repetitions,
+            seed=20250903,
+        ),
+        "pitcher_flexible": _score_layers(
+            pitcher_scored,
+            actual="actual_mlb_bf",
+            original="expected_mlb_bf",
+            team="current_org_expected_mlb_bf",
+            final="flexible_expected_mlb_bf",
+            repetitions=args.bootstrap_repetitions,
+            seed=20250904,
+        ),
         "hitter_position_diagnostics": subgroup_scores(
             hitter_scored, actual="actual_mlb_pa", original="expected_mlb_pa",
             final="position_capped_expected_mlb_pa",
@@ -310,7 +385,10 @@ def main() -> int:
             "pitcher_team_cap_evidence": "rmse_and_mae_improved",
             "rigid_hitter_position_cap": "reject_for_display",
             "rigid_pitcher_role_cap": "do_not_promote",
-            "next_challenger": "flexible_cross_position_and_cross_role_reallocation",
+            "flexible_challenger_scored": True,
+            "flexible_hitter_cap": "reject_mixed_and_no_gain_over_team_cap",
+            "flexible_pitcher_cap": "reject_mixed_vs_team_cap",
+            "next_challenger": "dated_opening_roster_and_depth_competition_not_more_aggregate_caps",
             "organization_neutral_value_changed": False,
         },
         "checks": {

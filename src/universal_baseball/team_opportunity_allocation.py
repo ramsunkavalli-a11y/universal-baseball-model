@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+import numpy as np
 import polars as pl
+from scipy.optimize import LinearConstraint, minimize
 
 
 POSITION_GROUPS = (
@@ -52,6 +54,13 @@ class PitcherRoleCapacityAllocation:
     players: pl.DataFrame
     components: pl.DataFrame
     groups: pl.DataFrame
+
+
+@dataclass(frozen=True, slots=True)
+class FlexibleCapacityAllocation:
+    players: pl.DataFrame
+    groups: pl.DataFrame
+    flows: pl.DataFrame
 
 
 def _allocate_side(
@@ -542,4 +551,333 @@ def allocate_pitcher_role_capacity(
         players=players.sort("season", "organization_id", "player_id"),
         components=components.sort("season", "organization_id", "player_id", "pitcher_role"),
         groups=groups.sort("season", "organization_id", "pitcher_role"),
+    )
+
+
+def estimate_hitter_flexibility_edges(
+    fielding_usage: pl.DataFrame,
+    *,
+    development_seasons: tuple[int, ...],
+    minimum_player_seasons: int = 30,
+) -> pl.DataFrame:
+    """Estimate supported primary-to-secondary position-group eligibility."""
+
+    required = {
+        "season",
+        "level_group",
+        "team_id",
+        "player_id",
+        "position_abbreviation",
+        "fielding_outs",
+    }
+    if missing := sorted(required - set(fielding_usage.columns)):
+        raise ValueError(f"hitter flexibility evidence missing fields: {missing}")
+    if not development_seasons or minimum_player_seasons < 1:
+        raise ValueError("hitter flexibility development settings are invalid")
+    usage = (
+        fielding_usage.filter(
+            pl.col("season").is_in(development_seasons)
+            & (pl.col("level_group") == "MLB")
+            & pl.col("position_abbreviation").is_in(list(POSITION_ORDER))
+            & (pl.col("fielding_outs") > 0)
+        )
+        .with_columns(
+            pl.col("position_abbreviation")
+            .map_elements(position_group, return_dtype=pl.String)
+            .alias("destination_group")
+        )
+        .group_by("season", "team_id", "player_id", "destination_group")
+        .agg(pl.col("fielding_outs").sum().alias("group_outs"))
+    )
+    primary = (
+        usage.sort(
+            ["season", "team_id", "player_id", "group_outs", "destination_group"],
+            descending=[False, False, False, True, False],
+        )
+        .unique(["season", "team_id", "player_id"], keep="first", maintain_order=True)
+        .select(
+            "season",
+            "team_id",
+            "player_id",
+            pl.col("destination_group").alias("origin_group"),
+        )
+    )
+    support = usage.join(
+        primary, on=["season", "team_id", "player_id"], validate="m:1"
+    ).group_by("origin_group", "destination_group").agg(
+        pl.len().alias("player_seasons"),
+        pl.col("group_outs").sum().alias("fielding_outs"),
+    )
+    universe = pl.DataFrame({"origin_group": POSITION_GROUPS}).join(
+        pl.DataFrame({"destination_group": POSITION_GROUPS}), how="cross"
+    )
+    return (
+        universe.join(support, on=["origin_group", "destination_group"], how="left")
+        .with_columns(
+            pl.col("player_seasons").fill_null(0),
+            pl.col("fielding_outs").fill_null(0),
+        )
+        .with_columns(
+            (
+                (pl.col("origin_group") == pl.col("destination_group"))
+                | (pl.col("destination_group") == "DH_FLEX")
+                | (
+                    (pl.col("origin_group") != "DH_FLEX")
+                    & (pl.col("player_seasons") >= minimum_player_seasons)
+                )
+            ).alias("eligible")
+        )
+        .sort("origin_group", "destination_group")
+    )
+
+
+def estimate_pitcher_role_flexibility_edges(
+    pitching_stats: pl.DataFrame,
+    *,
+    development_seasons: tuple[int, ...],
+    minimum_players: int = 30,
+) -> pl.DataFrame:
+    """Estimate supported adjacent-season pitcher-role transitions."""
+
+    required = {
+        "season",
+        "stat_group",
+        "sport_id",
+        "player_id",
+        "games",
+        "starts",
+        "batters_faced",
+    }
+    if missing := sorted(required - set(pitching_stats.columns)):
+        raise ValueError(f"pitcher flexibility evidence missing fields: {missing}")
+    if not development_seasons or minimum_players < 1:
+        raise ValueError("pitcher flexibility development settings are invalid")
+    roles = (
+        pitching_stats.filter(
+            pl.col("season").is_in(development_seasons)
+            & (pl.col("sport_id") == 1)
+            & (pl.col("stat_group") == "pitching")
+            & (pl.col("batters_faced") > 0)
+        )
+        .group_by("season", "player_id")
+        .agg(
+            pl.col("games").sum().alias("games"),
+            pl.col("starts").sum().alias("starts"),
+            pl.col("batters_faced").sum().alias("batters_faced"),
+        )
+        .with_columns(
+            pl.when(pl.col("starts") <= 0)
+            .then(pl.lit("RELIEVER"))
+            .when((pl.col("games") <= 0) | (2.0 * pl.col("starts") >= pl.col("games")))
+            .then(pl.lit("STARTER"))
+            .otherwise(pl.lit("SWINGMAN"))
+            .alias("origin_group")
+        )
+    )
+    following = roles.select(
+        "player_id",
+        (pl.col("season") - 1).alias("season"),
+        pl.col("origin_group").alias("destination_group"),
+    )
+    support = roles.join(following, on=["season", "player_id"], how="inner").group_by(
+        "origin_group", "destination_group"
+    ).agg(pl.col("player_id").n_unique().alias("players"))
+    universe = pl.DataFrame({"origin_group": PITCHER_ROLE_GROUPS}).join(
+        pl.DataFrame({"destination_group": PITCHER_ROLE_GROUPS}), how="cross"
+    )
+    return (
+        universe.join(support, on=["origin_group", "destination_group"], how="left")
+        .with_columns(pl.col("players").fill_null(0))
+        .with_columns(
+            (
+                (pl.col("origin_group") == pl.col("destination_group"))
+                | (pl.col("players") >= minimum_players)
+            ).alias("eligible")
+        )
+        .sort("origin_group", "destination_group")
+    )
+
+
+def _flexible_group_solution(
+    supplies: dict[str, float],
+    capacities: dict[str, float],
+    eligible_edges: set[tuple[str, str]],
+) -> tuple[dict[str, float], list[dict[str, object]]]:
+    edges = sorted(
+        (origin, destination)
+        for origin, supply in supplies.items()
+        for destination in capacities
+        if supply > 0 and (origin, destination) in eligible_edges
+    )
+    if any(
+        supply > 0 and not any(origin == edge[0] for edge in edges)
+        for origin, supply in supplies.items()
+    ):
+        raise ValueError("a positive-supply group has no eligible capacity")
+    if not edges:
+        return {group: 0.0 for group in supplies}, []
+    origins = sorted(group for group, supply in supplies.items() if supply > 0)
+    destinations = sorted(capacities)
+    origin_matrix = np.asarray(
+        [[float(edge[0] == origin) for edge in edges] for origin in origins]
+    )
+    destination_matrix = np.asarray(
+        [[float(edge[1] == destination) for edge in edges] for destination in destinations]
+    )
+    supply_vector = np.asarray([supplies[group] for group in origins], dtype=float)
+    capacity_vector = np.asarray([capacities[group] for group in destinations], dtype=float)
+
+    def objective(values: np.ndarray) -> float:
+        retained = origin_matrix @ values
+        denominators = np.maximum(supply_vector, 1.0)
+        return float(np.sum(np.square(retained - supply_vector) / denominators))
+
+    def gradient(values: np.ndarray) -> np.ndarray:
+        retained = origin_matrix @ values
+        denominators = np.maximum(supply_vector, 1.0)
+        return 2.0 * origin_matrix.T @ ((retained - supply_vector) / denominators)
+
+    constraints = (
+        LinearConstraint(origin_matrix, np.zeros(len(origins)), supply_vector),
+        LinearConstraint(
+            destination_matrix, np.zeros(len(destinations)), capacity_vector
+        ),
+    )
+    result = minimize(
+        objective,
+        np.zeros(len(edges), dtype=float),
+        jac=gradient,
+        method="SLSQP",
+        bounds=[(0.0, None)] * len(edges),
+        constraints=constraints,
+        options={"ftol": 1e-12, "maxiter": 1_000},
+    )
+    if not result.success:
+        raise RuntimeError(f"flexible capacity optimization failed: {result.message}")
+    values = np.maximum(result.x, 0.0)
+    retained_vector = origin_matrix @ values
+    retained = {group: 0.0 for group in supplies}
+    retained.update(
+        {group: float(retained_vector[index]) for index, group in enumerate(origins)}
+    )
+    flows = [
+        {
+            "origin_group": origin,
+            "destination_group": destination,
+            "allocated_workload": float(value),
+        }
+        for (origin, destination), value in zip(edges, values, strict=True)
+        if value > 1e-8
+    ]
+    return retained, flows
+
+
+def allocate_flexible_group_capacity(
+    players: pl.DataFrame,
+    capacity_shares: pl.DataFrame,
+    flexibility_edges: pl.DataFrame,
+    *,
+    origin_column: str,
+    workload_column: str,
+    output_column: str,
+    capacity_group_column: str,
+    team_capacity: float,
+) -> FlexibleCapacityAllocation:
+    """Allocate supported group flexibility before proportionally reducing supply."""
+
+    required = {"player_id", "season", "organization_id", origin_column, workload_column}
+    if missing := sorted(required - set(players.columns)):
+        raise ValueError(f"flexible capacity players missing fields: {missing}")
+    if team_capacity <= 0:
+        raise ValueError("flexible team capacity must be positive")
+    capacity = capacity_shares.select(
+        pl.col(capacity_group_column).alias("group"), "capacity_share"
+    )
+    groups = set(capacity.get_column("group"))
+    if abs(float(capacity.get_column("capacity_share").sum()) - 1.0) > 1e-10:
+        raise ValueError("flexible capacity shares must sum to one")
+    eligible = flexibility_edges.filter(pl.col("eligible")).select(
+        "origin_group", "destination_group"
+    )
+    eligible_set = set(eligible.iter_rows())
+    origins = set(players.get_column(origin_column).str.to_uppercase().unique())
+    if origins - groups:
+        raise ValueError(f"unsupported flexible capacity origins: {sorted(origins - groups)}")
+
+    player_frames = []
+    group_rows = []
+    flow_rows = []
+    for key, team in players.with_columns(
+        pl.col(origin_column).str.to_uppercase().alias("_origin_group")
+    ).group_by("season", "organization_id", maintain_order=True):
+        season, organization_id = int(key[0]), int(key[1])
+        supplies = {
+            str(row["_origin_group"]): float(row["raw_workload"])
+            for row in team.group_by("_origin_group").agg(
+                pl.col(workload_column).sum().alias("raw_workload")
+            ).iter_rows(named=True)
+        }
+        all_supplies = {group: supplies.get(group, 0.0) for group in sorted(groups)}
+        capacities = {
+            str(row["group"]): float(row["capacity_share"]) * team_capacity
+            for row in capacity.iter_rows(named=True)
+        }
+        retained, flows = _flexible_group_solution(
+            all_supplies, capacities, eligible_set
+        )
+        scales = pl.DataFrame(
+            {
+                "_origin_group": sorted(groups),
+                "flexible_group_scale": [
+                    (
+                        retained[group] / all_supplies[group]
+                        if all_supplies[group] > 0
+                        else 1.0
+                    )
+                    for group in sorted(groups)
+                ],
+            }
+        )
+        allocated = team.join(scales, on="_origin_group", validate="m:1").with_columns(
+            (pl.col(workload_column) * pl.col("flexible_group_scale")).alias(
+                output_column
+            )
+        )
+        player_frames.append(allocated.drop("_origin_group"))
+        for group in sorted(groups):
+            group_rows.append(
+                {
+                    "season": season,
+                    "organization_id": organization_id,
+                    "origin_group": group,
+                    "raw_workload": all_supplies[group],
+                    "allocated_workload": retained[group],
+                    "group_scale": (
+                        retained[group] / all_supplies[group]
+                        if all_supplies[group] > 0
+                        else 1.0
+                    ),
+                }
+            )
+        for flow in flows:
+            flow_rows.append(
+                {
+                    "season": season,
+                    "organization_id": organization_id,
+                    **flow,
+                }
+            )
+    allocated_players = pl.concat(player_frames).sort(
+        "season", "organization_id", "player_id"
+    )
+    if allocated_players.filter(
+        pl.col(output_column) > pl.col(workload_column) + 1e-6
+    ).height:
+        raise AssertionError("flexible capacity increased player opportunity")
+    return FlexibleCapacityAllocation(
+        players=allocated_players,
+        groups=pl.DataFrame(group_rows).sort("season", "organization_id", "origin_group"),
+        flows=pl.DataFrame(flow_rows).sort(
+            "season", "organization_id", "origin_group", "destination_group"
+        ),
     )

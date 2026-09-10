@@ -2,10 +2,12 @@ import polars as pl
 import pytest
 
 from universal_baseball.team_opportunity_allocation import (
+    allocate_flexible_group_capacity,
     allocate_current_organization_opportunity,
     allocate_hitter_position_capacity,
     allocate_pitcher_role_capacity,
     estimate_hitter_position_capacity_shares,
+    estimate_hitter_flexibility_edges,
     estimate_pitcher_role_capacity_shares,
     historical_hitter_position_shares,
     historical_pitcher_role_shares,
@@ -187,3 +189,71 @@ def test_pitcher_role_capacity_rejects_invalid_probability_sum() -> None:
     )
     with pytest.raises(ValueError, match="sum to one"):
         allocate_pitcher_role_capacity(current, capacity, team_capacity=100.0)
+
+
+def test_hitter_flexibility_requires_supported_cross_position_use() -> None:
+    fielding = pl.DataFrame(
+        {
+            "season": [2021, 2021, 2021, 2021],
+            "level_group": ["MLB"] * 4,
+            "team_id": [10] * 4,
+            "player_id": [1, 1, 2, 2],
+            "position_abbreviation": ["C", "1B", "SS", "OF"],
+            "fielding_outs": [100, 10, 100, 20],
+        }
+    )
+    edges = estimate_hitter_flexibility_edges(
+        fielding, development_seasons=(2021,), minimum_player_seasons=1
+    )
+    lookup = {
+        (row["origin_group"], row["destination_group"]): row["eligible"]
+        for row in edges.iter_rows(named=True)
+    }
+    assert lookup[("CATCHER", "CORNER_INFIELD")]
+    assert not lookup[("CATCHER", "OUTFIELD")]
+    assert lookup[("CATCHER", "DH_FLEX")]
+
+
+def test_flexible_capacity_moves_supported_overflow_before_cutting() -> None:
+    players = pl.DataFrame(
+        {
+            "player_id": [1, 2],
+            "season": [2027, 2027],
+            "organization_id": [10, 10],
+            "origin": ["CATCHER", "OUTFIELD"],
+            "workload": [20.0, 40.0],
+        }
+    )
+    capacity = pl.DataFrame(
+        {
+            "position_group": [
+                "CATCHER",
+                "MIDDLE_INFIELD",
+                "CORNER_INFIELD",
+                "OUTFIELD",
+                "DH_FLEX",
+            ],
+            "capacity_share": [0.10, 0.20, 0.20, 0.40, 0.10],
+        }
+    )
+    edges = pl.DataFrame(
+        {
+            "origin_group": ["CATCHER", "CATCHER", "OUTFIELD", "OUTFIELD"],
+            "destination_group": ["CATCHER", "DH_FLEX", "OUTFIELD", "DH_FLEX"],
+            "eligible": [True] * 4,
+        }
+    )
+    result = allocate_flexible_group_capacity(
+        players,
+        capacity,
+        edges,
+        origin_column="origin",
+        workload_column="workload",
+        output_column="allocated",
+        capacity_group_column="position_group",
+        team_capacity=100.0,
+    )
+    assert result.players.get_column("allocated").sum() == pytest.approx(60.0)
+    assert result.players.filter(pl.col("player_id") == 1).item(
+        0, "allocated"
+    ) == pytest.approx(20.0)

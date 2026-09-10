@@ -1,6 +1,6 @@
 # Historical team-capacity replay — 2025 result
 
-Status: broad team cap supported for continued use; rigid position and role caps rejected for display.
+Status: broad team cap supported; rigid and flexible group constraints rejected.
 
 ## What was tested
 
@@ -55,5 +55,10 @@ The next challenger should therefore:
 
 This remains team context only. No skill, WAR rate, contract value, Model FV, or organization-neutral trade value changed.
 
-Machine-readable detail: `docs/historical-team-capacity-replay-2025-result.json`.
+A later flexible challenger used supported 2021–2024 multi-position and adjacent-role
+movement to reassign unused capacity before cutting players. It removed most of the
+rigid-cap damage, but still did not beat the broad team cap on both RMSE and MAE for
+either component. Aggregate group-cap research is therefore closed on 2025. See the
+[flexible result](flexible-team-capacity-replay-2025-result.md).
 
+Machine-readable detail: `docs/historical-team-capacity-replay-2025-result.json`.
