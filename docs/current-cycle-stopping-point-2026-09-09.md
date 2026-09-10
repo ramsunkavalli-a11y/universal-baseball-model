@@ -31,6 +31,10 @@ Status: clean handoff; private preview works, publication remains blocked.
   states. It fails for hitters and is mixed for pitchers, so the direct cap remains.
   Its main design lesson is to retain ordered hazards and condition later transitions
   on the state already reached rather than fit one flat multinomial shortcut.
+- A real four-year forward-only transition table is now built: 39,352 hitter and
+  44,208 pitcher annual rows. The ordered path wins both scores for both groups on
+  the later 2021 cohort but loses both on the 2019 cohort whose horizon crosses 2020.
+  Keep the architecture in research and the current direct safeguard in production.
 
 - The repo plan now includes lessons from comparable GitHub projection systems:
   component-specific reliability must earn its complexity, attrition belongs in the
@@ -111,7 +115,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,505 passed. Four older research-contract tests fail because their
+Latest full suite: 1,508 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 

@@ -1,0 +1,184 @@
+{
+  "current_2026_used": false,
+  "hitter": {
+    "confirmation": {
+      "direct_endpoint": {
+        "multiclass_brier": 0.21161925556047526,
+        "multiclass_log_loss": 0.4543182604009705,
+        "players": 3251
+      },
+      "ordered_transition": {
+        "multiclass_brier": 0.20653600542087033,
+        "multiclass_log_loss": 0.4410586841760365,
+        "players": 3251
+      }
+    },
+    "confirmation_snapshot": 2021,
+    "development_delta": {
+      "transition_minus_direct_brier": 0.0034700982850656426,
+      "transition_minus_direct_log_loss": 0.015489488944908036
+    },
+    "development_grid": {
+      "direct_endpoint": {
+        "0.03": {
+          "multiclass_brier": 0.20495326527545318,
+          "multiclass_log_loss": 0.46345368950625565,
+          "players": 3304
+        },
+        "0.1": {
+          "multiclass_brier": 0.21693184254215644,
+          "multiclass_log_loss": 1.7520399255036945,
+          "players": 3304
+        },
+        "0.3": {
+          "multiclass_brier": 0.22298858369057353,
+          "multiclass_log_loss": 2.5526486794826257,
+          "players": 3304
+        },
+        "1.0": {
+          "multiclass_brier": 0.22482282283937957,
+          "multiclass_log_loss": 2.6106753862888317,
+          "players": 3304
+        }
+      },
+      "ordered_transition": {
+        "0.03": {
+          "multiclass_brier": 0.20842336356051883,
+          "multiclass_log_loss": 0.4789431784511637,
+          "players": 3304
+        },
+        "0.1": {
+          "multiclass_brier": 0.21947610790958835,
+          "multiclass_log_loss": 0.6238009516809397,
+          "players": 3304
+        },
+        "0.3": {
+          "multiclass_brier": 0.22324246888852314,
+          "multiclass_log_loss": 0.7990138747594953,
+          "players": 3304
+        },
+        "1.0": {
+          "multiclass_brier": 0.22425880010195365,
+          "multiclass_log_loss": 0.9718260263417904,
+          "players": 3304
+        }
+      }
+    },
+    "development_snapshot": 2019,
+    "promotion_gate_passed": false,
+    "selected_development": {
+      "direct_endpoint": {
+        "multiclass_brier": 0.20495326527545318,
+        "multiclass_log_loss": 0.46345368950625565,
+        "players": 3304
+      },
+      "ordered_transition": {
+        "multiclass_brier": 0.20842336356051883,
+        "multiclass_log_loss": 0.4789431784511637,
+        "players": 3304
+      }
+    },
+    "selected_regularization": {
+      "direct_endpoint": 0.03,
+      "ordered_transition": 0.03
+    },
+    "training_snapshot": 2018,
+    "transition_minus_direct_brier": -0.005083250139604922,
+    "transition_minus_direct_log_loss": -0.013259576224934011
+  },
+  "horizon_years": 4,
+  "limitations": [
+    "The transition fit uses initial prospect features advanced only by age and elapsed year.",
+    "Future minor-league production and post-arrival MLB skill are not forecast as covariates.",
+    "The 2021 confirmation cohort has appeared in earlier prospect diagnostics."
+  ],
+  "pitcher": {
+    "confirmation": {
+      "direct_endpoint": {
+        "multiclass_brier": 0.20522235777768266,
+        "multiclass_log_loss": 0.4343341385815694,
+        "players": 3642
+      },
+      "ordered_transition": {
+        "multiclass_brier": 0.20380946904484698,
+        "multiclass_log_loss": 0.42991415961971874,
+        "players": 3642
+      }
+    },
+    "confirmation_snapshot": 2021,
+    "development_delta": {
+      "transition_minus_direct_brier": 0.0030355763572574024,
+      "transition_minus_direct_log_loss": 0.014418539100312877
+    },
+    "development_grid": {
+      "direct_endpoint": {
+        "0.03": {
+          "multiclass_brier": 0.22107584781852507,
+          "multiclass_log_loss": 0.47917611594353676,
+          "players": 3762
+        },
+        "0.1": {
+          "multiclass_brier": 0.2300974047593567,
+          "multiclass_log_loss": 0.5366650031239082,
+          "players": 3762
+        },
+        "0.3": {
+          "multiclass_brier": 0.24027043321041172,
+          "multiclass_log_loss": 0.764637228255007,
+          "players": 3762
+        },
+        "1.0": {
+          "multiclass_brier": 0.2452184813842451,
+          "multiclass_log_loss": 2.2538674705983355,
+          "players": 3762
+        }
+      },
+      "ordered_transition": {
+        "0.03": {
+          "multiclass_brier": 0.22411142417578248,
+          "multiclass_log_loss": 0.49359465504384964,
+          "players": 3762
+        },
+        "0.1": {
+          "multiclass_brier": 0.23687117331002086,
+          "multiclass_log_loss": 0.5954384885641422,
+          "players": 3762
+        },
+        "0.3": {
+          "multiclass_brier": 0.24347171737415496,
+          "multiclass_log_loss": 0.7400592754885844,
+          "players": 3762
+        },
+        "1.0": {
+          "multiclass_brier": 0.2458223570998438,
+          "multiclass_log_loss": 0.9149850457874633,
+          "players": 3762
+        }
+      }
+    },
+    "development_snapshot": 2019,
+    "promotion_gate_passed": false,
+    "selected_development": {
+      "direct_endpoint": {
+        "multiclass_brier": 0.22107584781852507,
+        "multiclass_log_loss": 0.47917611594353676,
+        "players": 3762
+      },
+      "ordered_transition": {
+        "multiclass_brier": 0.22411142417578248,
+        "multiclass_log_loss": 0.49359465504384964,
+        "players": 3762
+      }
+    },
+    "selected_regularization": {
+      "direct_endpoint": 0.03,
+      "ordered_transition": 0.03
+    },
+    "training_snapshot": 2018,
+    "transition_minus_direct_brier": -0.001412888732835682,
+    "transition_minus_direct_log_loss": -0.004419978961850646
+  },
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "status": "ordered_four_year_transition_path_test_complete"
+}

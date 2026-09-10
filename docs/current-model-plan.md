@@ -113,6 +113,16 @@ Build the full path as ordered discrete-time hazards conditional on the state al
 reached, with MLB progression and attrition after arrival. See the
 [state result](prospect-one-year-career-state-result.md).
 
+The four-year transition table is now explicit and keeps non-advancers in every risk
+set. It contains 39,352 hitter and 44,208 pitcher annual rows; fringe and meaningful
+origin states have hundreds of real advancements, enough for pooled hazards but not
+unrestricted subgroup fits. A forward-only hazard path then beat the direct endpoint
+on both scores in the later 2021 cohort, but lost both scores in the 2019 development
+cohort. Retain it as the architecture, not production. The development horizon spans
+the 2020 disruption, so the clean decision requires more completed post-2020 paths,
+not rescue tuning. See the [support inventory](prospect-career-transition-support-result.md)
+and [path test](prospect-ordered-transition-path-result.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

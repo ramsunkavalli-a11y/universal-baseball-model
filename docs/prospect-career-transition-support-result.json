@@ -1,0 +1,220 @@
+{
+  "current_2026_used": false,
+  "hitter": {
+    "by_transition": [
+      {
+        "distinct_players": 150,
+        "from_state": "ESTABLISHED_MLB",
+        "to_state": "ESTABLISHED_MLB",
+        "transitions": 293
+      },
+      {
+        "distinct_players": 64,
+        "from_state": "FRINGE_MLB",
+        "to_state": "ESTABLISHED_MLB",
+        "transitions": 85
+      },
+      {
+        "distinct_players": 373,
+        "from_state": "FRINGE_MLB",
+        "to_state": "FRINGE_MLB",
+        "transitions": 993
+      },
+      {
+        "distinct_players": 134,
+        "from_state": "FRINGE_MLB",
+        "to_state": "MEANINGFUL_MLB",
+        "transitions": 176
+      },
+      {
+        "distinct_players": 92,
+        "from_state": "MEANINGFUL_MLB",
+        "to_state": "ESTABLISHED_MLB",
+        "transitions": 113
+      },
+      {
+        "distinct_players": 119,
+        "from_state": "MEANINGFUL_MLB",
+        "to_state": "MEANINGFUL_MLB",
+        "transitions": 236
+      },
+      {
+        "distinct_players": 51,
+        "from_state": "NO_MLB",
+        "to_state": "ESTABLISHED_MLB",
+        "transitions": 79
+      },
+      {
+        "distinct_players": 563,
+        "from_state": "NO_MLB",
+        "to_state": "FRINGE_MLB",
+        "transitions": 961
+      },
+      {
+        "distinct_players": 91,
+        "from_state": "NO_MLB",
+        "to_state": "MEANINGFUL_MLB",
+        "transitions": 149
+      },
+      {
+        "distinct_players": 5684,
+        "from_state": "NO_MLB",
+        "to_state": "NO_MLB",
+        "transitions": 36267
+      }
+    ],
+    "distinct_players": 5803,
+    "origin_state_support": [
+      {
+        "advancements": 0,
+        "distinct_players": 150,
+        "from_state": "ESTABLISHED_MLB",
+        "risk_rows": 293
+      },
+      {
+        "advancements": 261,
+        "distinct_players": 507,
+        "from_state": "FRINGE_MLB",
+        "risk_rows": 1254
+      },
+      {
+        "advancements": 113,
+        "distinct_players": 189,
+        "from_state": "MEANINGFUL_MLB",
+        "risk_rows": 349
+      },
+      {
+        "advancements": 1189,
+        "distinct_players": 5803,
+        "from_state": "NO_MLB",
+        "risk_rows": 37456
+      }
+    ],
+    "snapshot_cohort_sizes": {
+      "2018": 3283,
+      "2019": 3304,
+      "2021": 3251
+    },
+    "transition_rows": 39352
+  },
+  "horizons": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "outcome_years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "pitcher": {
+    "by_transition": [
+      {
+        "distinct_players": 177,
+        "from_state": "ESTABLISHED_MLB",
+        "to_state": "ESTABLISHED_MLB",
+        "transitions": 326
+      },
+      {
+        "distinct_players": 40,
+        "from_state": "FRINGE_MLB",
+        "to_state": "ESTABLISHED_MLB",
+        "transitions": 50
+      },
+      {
+        "distinct_players": 489,
+        "from_state": "FRINGE_MLB",
+        "to_state": "FRINGE_MLB",
+        "transitions": 1335
+      },
+      {
+        "distinct_players": 155,
+        "from_state": "FRINGE_MLB",
+        "to_state": "MEANINGFUL_MLB",
+        "transitions": 195
+      },
+      {
+        "distinct_players": 152,
+        "from_state": "MEANINGFUL_MLB",
+        "to_state": "ESTABLISHED_MLB",
+        "transitions": 201
+      },
+      {
+        "distinct_players": 114,
+        "from_state": "MEANINGFUL_MLB",
+        "to_state": "MEANINGFUL_MLB",
+        "transitions": 264
+      },
+      {
+        "distinct_players": 43,
+        "from_state": "NO_MLB",
+        "to_state": "ESTABLISHED_MLB",
+        "transitions": 59
+      },
+      {
+        "distinct_players": 690,
+        "from_state": "NO_MLB",
+        "to_state": "FRINGE_MLB",
+        "transitions": 1086
+      },
+      {
+        "distinct_players": 152,
+        "from_state": "NO_MLB",
+        "to_state": "MEANINGFUL_MLB",
+        "transitions": 259
+      },
+      {
+        "distinct_players": 6504,
+        "from_state": "NO_MLB",
+        "to_state": "NO_MLB",
+        "transitions": 40433
+      }
+    ],
+    "distinct_players": 6683,
+    "origin_state_support": [
+      {
+        "advancements": 0,
+        "distinct_players": 177,
+        "from_state": "ESTABLISHED_MLB",
+        "risk_rows": 326
+      },
+      {
+        "advancements": 245,
+        "distinct_players": 621,
+        "from_state": "FRINGE_MLB",
+        "risk_rows": 1580
+      },
+      {
+        "advancements": 201,
+        "distinct_players": 252,
+        "from_state": "MEANINGFUL_MLB",
+        "risk_rows": 465
+      },
+      {
+        "advancements": 1404,
+        "distinct_players": 6683,
+        "from_state": "NO_MLB",
+        "risk_rows": 41837
+      }
+    ],
+    "snapshot_cohort_sizes": {
+      "2018": 3648,
+      "2019": 3762,
+      "2021": 3642
+    },
+    "transition_rows": 44208
+  },
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "snapshots": [
+    2018,
+    2019,
+    2021
+  ],
+  "status": "career_transition_support_inventory_complete"
+}

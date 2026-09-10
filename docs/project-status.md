@@ -141,6 +141,14 @@ mixed for pitchers, despite a clean pitcher win on the latest target. It remains
 research-only. Continue with ordered discrete-time hazards plus post-arrival MLB
 progression; do not assume one multiclass fit solves the compounding problem.
 
+The ordered alternative is now concrete. Four-year annual paths supply 39,352 hitter
+and 44,208 pitcher transition rows, with explicit no-advance risk sets and no backward
+movement. A forward-only hazard model reverses its comparison: worse on the 2019
+development cohort, better on both proper scores for both groups on the 2021 cohort.
+It is not promoted. The path structure remains the preferred replacement, but it
+needs another completed post-2020 cohort or a predeclared pandemic treatment before
+the direct safeguard can be removed.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes
