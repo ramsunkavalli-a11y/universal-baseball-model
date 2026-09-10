@@ -1,6 +1,7 @@
 # Pitcher projection testing queue
 
-Status: queued research; no production values change.
+Status: first and third priorities tested and rejected; platoon source rebuild remains.
+No production values change.
 
 These tests follow the rejected eight-outcome contact expansion. Each candidate
 must improve future-player forecasts rather than merely describe past results.
@@ -29,16 +30,14 @@ For each useful claim, record the required fields, available coverage, expected
 direction, comparison baseline, and a frozen rejection rule. Literature proposes
 hypotheses; our later-season data decides whether they enter this model.
 
-## Priority 1: pooled extra-base hits
+## Priority 1: pooled extra-base hits — complete, rejected
 
-Test a seven-outcome profile using universally available official season totals:
+The seven-outcome profile using universally available official season totals tested:
 SO, UBB, HBP, 1B, non-HR XBH (`2B + 3B`), HR, and other out. Pooling doubles and
 triples reduces the rare-triple noise in the rejected eight-outcome model.
 
-- Compare several heavier contact priors with the current five-part incumbent.
-- Select only on chronological development data.
-- Require lower component log loss and Brier on a later frozen period.
-- Keep the 2026 regular season protected for final confirmation.
+It worsened both proper scores and is not in production. Keep the 2026 regular season
+protected; do not retry nearby pooling or regression variants on the disclosed years.
 
 ## Priority 2: lineup challenge and platoon balance
 
@@ -71,21 +70,23 @@ slots or tune the dividing line after results are visible. If available universa
 times-through-order exposure is a separate context variable rather than a substitute
 for lineup quality.
 
-## Priority 3: pitcher contact trajectory and direction
+## Priority 3: pitcher contact trajectory and direction — complete, rejected
 
 First certify comparable event-level coverage by league and season. Season-total
 `groundOuts` and `airOuts` are not valid event counts: double plays can record more
 than one out. Unsupported rows must fall back to the incumbent rather than receive
 imputed preferred contact.
 
-Test additions in this order, stopping when an increment fails:
+The frozen sequence tested additions in this order:
 
 1. ground-ball versus airborne-contact share;
 2. infield-fly share within airborne contact;
 3. pulled airborne contact within airborne contact;
 4. pulled ground balls within ground balls.
 
-Direction is defined from the batter's perspective. Models must account for batter
+The development-selected ground-ball signal failed to repeat in the untouched later
+period, so the sequence stopped and none of these inputs entered production. Direction
+is defined from the batter's perspective. Any future new candidate must account for batter
 side, pitcher hand, opponent mix, level, season, and park before treating a contact
 shape as pitcher skill. Frequency and damage are separate questions: historical
 pulled-air frequency may predict future HR/XBH risk, while historical pulled-ground

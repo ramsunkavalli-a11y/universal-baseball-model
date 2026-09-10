@@ -18,10 +18,10 @@ Brier score and log loss for arrival, meaningful-role, and established-role outc
 All 46 private-preview model-law checks pass.
 
 The corrected 176-combination feature search, recalibration check, conditional-hurdle
-test, and four-year horizon audit were rerun. They did not support promoting a richer
-feature family or a calibration layer. The longer horizon remains diagnostic because
-it is not a fresh untouched confirmation period. Production therefore stays on the
-simpler core specification.
+test, four-year horizon audit, and all-level hitter PBP hurdle were rerun. They did not
+support promoting a richer feature family, calibration layer, or contact-shape input.
+The longer horizon remains diagnostic because it is not a fresh untouched confirmation
+period. Production therefore stays on the simpler core specification.
 
 Current average six-year arrival probability changed from 15.73% to 15.41% for hitters
 and from 12.62% to 12.56% for pitchers. Josuar Gonzalez's direct model FV moved from 50

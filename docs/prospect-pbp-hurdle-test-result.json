@@ -7,8 +7,9 @@
     "outside_fv_used": false,
     "pitch_sequence_features_used": false
   },
-  "created_date": "2026-09-09",
+  "created_date": "2026-09-10",
   "fixed_settings": {
+    "base_feature_set": "core",
     "contact_regression": [
       50.0,
       200.0,
@@ -54,13 +55,13 @@
   "meaningful_opportunity": {
     "cohorts": {
       "2021": {
-        "pbp_observed_players": 3247,
-        "players": 3260,
-        "positives": 32
+        "pbp_observed_players": 3238,
+        "players": 3251,
+        "positives": 31
       },
       "2022": {
-        "pbp_observed_players": 3181,
-        "players": 3204,
+        "pbp_observed_players": 3177,
+        "players": 3200,
         "positives": 25
       },
       "2023": {
@@ -71,677 +72,677 @@
     },
     "conditioning_column": null,
     "outer_candidate": {
-      "brier": 0.004865200694016805,
-      "log_loss": 0.02237057399523759,
+      "brier": 0.004815209541158818,
+      "log_loss": 0.02208146717700014,
       "observed_rate": 0.005366161616161616,
       "players": 3168,
-      "predicted_rate": 0.007987811103404692
+      "predicted_rate": 0.008002639678649824
     },
     "outer_candidate_calibration": {
-      "intercept": 2.249155746215675,
+      "intercept": 1.981012670821031,
       "reliability_bins": [
         {
           "bin": 1,
           "observed_rate": 0.0,
           "players": 634,
-          "predicted_rate": 0.00031259335509829973
+          "predicted_rate": 0.0002744442989693547
         },
         {
           "bin": 2,
           "observed_rate": 0.0,
           "players": 634,
-          "predicted_rate": 0.0008597441382605824
+          "predicted_rate": 0.0007861227285891311
         },
         {
           "bin": 3,
           "observed_rate": 0.0,
           "players": 634,
-          "predicted_rate": 0.0016438157868647549
+          "predicted_rate": 0.0015522523275601327
         },
         {
           "bin": 4,
           "observed_rate": 0.0,
           "players": 633,
-          "predicted_rate": 0.003758717501709574
+          "predicted_rate": 0.003699708472733961
         },
         {
           "bin": 5,
           "observed_rate": 0.026856240126382307,
           "players": 633,
-          "predicted_rate": 0.03339759276041409
+          "predicted_rate": 0.03373447009095868
         }
       ],
-      "slope": 1.8618443027055853
+      "slope": 1.7861315774738074
     },
     "outer_gate_passed": true,
     "outer_incumbent": {
-      "brier": 0.004889881113415651,
-      "log_loss": 0.022747818539481313,
+      "brier": 0.00483051241581599,
+      "log_loss": 0.022447977879141084,
       "observed_rate": 0.005366161616161616,
       "players": 3168,
-      "predicted_rate": 0.008124879750662195
+      "predicted_rate": 0.008125651480874475
     },
     "outer_incumbent_calibration": {
-      "intercept": 2.710715891062603,
+      "intercept": 2.297623570340595,
       "reliability_bins": [
         {
           "bin": 1,
           "observed_rate": 0.0,
           "players": 634,
-          "predicted_rate": 0.0003815587892066366
+          "predicted_rate": 0.0003701233035280248
         },
         {
           "bin": 2,
           "observed_rate": 0.0,
           "players": 634,
-          "predicted_rate": 0.0008882354316802472
+          "predicted_rate": 0.0008939957210317646
         },
         {
           "bin": 3,
           "observed_rate": 0.0,
           "players": 634,
-          "predicted_rate": 0.0015805833217810896
+          "predicted_rate": 0.0016353956243376658
         },
         {
           "bin": 4,
           "observed_rate": 0.0,
           "players": 633,
-          "predicted_rate": 0.003912883378483182
+          "predicted_rate": 0.003966166517178758
         },
         {
           "bin": 5,
           "observed_rate": 0.026856240126382307,
           "players": 633,
-          "predicted_rate": 0.03389514140516032
+          "predicted_rate": 0.03379650584302559
         }
       ],
-      "slope": 2.0135135163697973
+      "slope": 1.8840416140042524
     },
     "paired_bootstrap": {
       "brier": {
-        "ci_high": 1.7632108492998348e-05,
-        "ci_low": -7.346997483549017e-05,
-        "difference": -2.4680419398845108e-05,
-        "probability_candidate_better": 0.847
+        "ci_high": 2.4668390389716632e-05,
+        "ci_low": -6.355346675416015e-05,
+        "difference": -1.5302874657172e-05,
+        "probability_candidate_better": 0.743
       },
       "log_loss": {
-        "ci_high": -0.00012063335966797059,
-        "ci_low": -0.0006534921160373207,
-        "difference": -0.00037724454424372175,
-        "probability_candidate_better": 0.997
+        "ci_high": -2.6118401568641742e-05,
+        "ci_low": -0.0006911614581236556,
+        "difference": -0.0003665107021409432,
+        "probability_candidate_better": 0.9825
       },
       "resamples": 2000
     },
     "production_change_authorized": false,
     "selected_candidate": {
-      "brier": 0.007277074729996453,
+      "brier": 0.0073482959891995195,
       "contact_regression": 50.0,
-      "family": "combined",
-      "log_loss": 0.034227723591681164,
-      "observed_rate": 0.007802746566791511,
-      "players": 3204,
-      "predicted_rate": 0.010751822587592075,
+      "family": "trajectory",
+      "log_loss": 0.03487146378920312,
+      "observed_rate": 0.0078125,
+      "players": 3200,
+      "predicted_rate": 0.010336121706552568,
       "regularization_c": 1.0
     },
     "selection_candidates": [
       {
-        "brier": 0.007653013958888336,
+        "brier": 0.007664169193465259,
         "contact_regression": 50.0,
         "family": "coverage",
-        "log_loss": 0.041750684142590026,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009908917832261235,
+        "log_loss": 0.04180658343304823,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009603602704666985,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007570762493294583,
+        "brier": 0.0075789929817988684,
         "contact_regression": 50.0,
         "family": "coverage",
-        "log_loss": 0.03895783744819087,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010028858261349628,
+        "log_loss": 0.03900767288423087,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.00970946981856462,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.0074514574654587044,
+        "brier": 0.0074658816229898825,
         "contact_regression": 50.0,
         "family": "coverage",
-        "log_loss": 0.03652407019088339,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.01027777480929376,
+        "log_loss": 0.036780359209851565,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.00994372687656325,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007287465731928205,
+        "brier": 0.0073507432568526085,
         "contact_regression": 50.0,
         "family": "coverage",
-        "log_loss": 0.034342681965518713,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.01081594824611808,
+        "log_loss": 0.034985991830556624,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010463868897269503,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.007653527792656707,
+        "brier": 0.007664823247006153,
         "contact_regression": 50.0,
         "family": "trajectory",
-        "log_loss": 0.04175522041118835,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.00987004579869591,
+        "log_loss": 0.04182386688707572,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009588385452349753,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007653640792024702,
+        "brier": 0.007664940191242146,
         "contact_regression": 200.0,
         "family": "trajectory",
-        "log_loss": 0.04175895191518676,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009869977853621956,
+        "log_loss": 0.04182791499398439,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.00958818338963,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007653704313035007,
+        "brier": 0.007665005686129945,
         "contact_regression": 600.0,
         "family": "trajectory",
-        "log_loss": 0.04176099669170472,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.00986998719036895,
+        "log_loss": 0.04183013791418915,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009588108286834684,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007569784028881782,
+        "brier": 0.007578709661957093,
         "contact_regression": 50.0,
         "family": "trajectory",
-        "log_loss": 0.03891215749790145,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010013906497487223,
+        "log_loss": 0.03897735292547759,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009677694991000687,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.007570175627516688,
+        "brier": 0.007579100279127856,
         "contact_regression": 200.0,
         "family": "trajectory",
-        "log_loss": 0.038921001968354275,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.01001248679980043,
+        "log_loss": 0.0389877866625679,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009676017173062363,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.007570412668709105,
+        "brier": 0.007579334744111921,
         "contact_regression": 600.0,
         "family": "trajectory",
-        "log_loss": 0.03892623369772784,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010011727317282927,
+        "log_loss": 0.03899405692160143,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.00967541944132688,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.007447539931149799,
+        "brier": 0.007466846445847625,
         "contact_regression": 50.0,
         "family": "trajectory",
-        "log_loss": 0.03651581617061512,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.01032315467149126,
+        "log_loss": 0.03678903358802117,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010063002984472304,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007449250322649067,
+        "brier": 0.007467120895849162,
         "contact_regression": 200.0,
         "family": "trajectory",
-        "log_loss": 0.03654854376529498,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010350879687785875,
+        "log_loss": 0.0367948595233846,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009992334838520647,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007450221971315368,
+        "brier": 0.007466563657894491,
         "contact_regression": 600.0,
         "family": "trajectory",
-        "log_loss": 0.036562249648651554,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010357035417399964,
+        "log_loss": 0.03678814243114972,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009966997899588421,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007275885285341611,
+        "brier": 0.0073482959891995195,
         "contact_regression": 50.0,
         "family": "trajectory",
-        "log_loss": 0.0342360417545154,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010758331616733311,
+        "log_loss": 0.03487146378920312,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010336121706552568,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.007279047319114345,
+        "brier": 0.007349582284411971,
         "contact_regression": 200.0,
         "family": "trajectory",
-        "log_loss": 0.03427196460256654,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010756402578801404,
+        "log_loss": 0.03491527577188667,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.01032035673766995,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.0072811582114351465,
+        "brier": 0.007352016497193899,
         "contact_regression": 600.0,
         "family": "trajectory",
-        "log_loss": 0.03429564949830499,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010752696622818912,
+        "log_loss": 0.03495785203986893,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010479172565692571,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.007653674374759503,
+        "brier": 0.0076650294360679945,
         "contact_regression": 50.0,
         "family": "direction",
-        "log_loss": 0.04176014815362607,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009872351628657143,
+        "log_loss": 0.04183046436699124,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.00958920378814334,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007653697486987804,
+        "brier": 0.007665053905209811,
         "contact_regression": 200.0,
         "family": "direction",
-        "log_loss": 0.04176100716638355,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.00987229665710741,
+        "log_loss": 0.04183144948188788,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.00958915465557612,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007653710297842211,
+        "brier": 0.007665066867631928,
         "contact_regression": 600.0,
         "family": "direction",
-        "log_loss": 0.04176145695605992,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009872274911808504,
+        "log_loss": 0.04183194276636318,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009589135374628601,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007569631058020907,
+        "brier": 0.0075792532774042855,
         "contact_regression": 50.0,
         "family": "direction",
-        "log_loss": 0.03890949431021014,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009975701752053182,
+        "log_loss": 0.03899322907300973,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009686580731891133,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.007569718402794054,
+        "brier": 0.007579337966249124,
         "contact_regression": 200.0,
         "family": "direction",
-        "log_loss": 0.038911723401389,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009975342907347773,
+        "log_loss": 0.038995937034340206,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009686341927886127,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.0075697740341148685,
+        "brier": 0.007579392166589649,
         "contact_regression": 600.0,
         "family": "direction",
-        "log_loss": 0.03891298066196942,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.00997510103105772,
+        "log_loss": 0.038997407239480794,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009686192827417952,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.007451558921781828,
+        "brier": 0.007468577708443269,
         "contact_regression": 50.0,
         "family": "direction",
-        "log_loss": 0.03654108244402476,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010286258190466451,
+        "log_loss": 0.0367998536851906,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010022391748890785,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007451676986075639,
+        "brier": 0.007469069564461911,
         "contact_regression": 200.0,
         "family": "direction",
-        "log_loss": 0.036545186104862626,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010286277860388368,
+        "log_loss": 0.03681100975116571,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.01002226546304168,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007451787246370385,
+        "brier": 0.007469335659729927,
         "contact_regression": 600.0,
         "family": "direction",
-        "log_loss": 0.03654763691830911,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010286179642750005,
+        "log_loss": 0.03681654277689567,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010021308200555962,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007279432801624282,
+        "brier": 0.007347821667323716,
         "contact_regression": 50.0,
         "family": "direction",
-        "log_loss": 0.03427304347630974,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010754964137602666,
+        "log_loss": 0.034925942723783535,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010420307307302465,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.00728621300520768,
+        "brier": 0.007351510424729901,
         "contact_regression": 200.0,
         "family": "direction",
-        "log_loss": 0.034313413941906595,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010793146646776388,
+        "log_loss": 0.034953168282220316,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.01040920698386187,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.007287614869063287,
+        "brier": 0.007350494155444973,
         "contact_regression": 600.0,
         "family": "direction",
-        "log_loss": 0.034333446932404296,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.01080577331489817,
+        "log_loss": 0.034939063863335916,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010367956418785245,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.007653328606132013,
+        "brier": 0.0076644590835918324,
         "contact_regression": 50.0,
         "family": "combined",
-        "log_loss": 0.04174900599020284,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009862027830297975,
+        "log_loss": 0.04181367412820905,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009587265700499583,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007653470974314563,
+        "brier": 0.007664601553031833,
         "contact_regression": 200.0,
         "family": "combined",
-        "log_loss": 0.04175374907829032,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009861772296471377,
+        "log_loss": 0.041818725588687544,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009586898946556696,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.007653550919976791,
+        "brier": 0.007664680499151191,
         "contact_regression": 600.0,
         "family": "combined",
-        "log_loss": 0.04175633152452653,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009861671497864894,
+        "log_loss": 0.04182144970917788,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.00958673011438341,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.00756967958596778,
+        "brier": 0.00757855980995775,
         "contact_regression": 50.0,
         "family": "combined",
-        "log_loss": 0.03890543427618095,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009973800793827923,
+        "log_loss": 0.03897290813046551,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009649670996661624,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.007570188820958997,
+        "brier": 0.007579068657944544,
         "contact_regression": 200.0,
         "family": "combined",
-        "log_loss": 0.03891948375732749,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009975877736310219,
+        "log_loss": 0.038986917195374414,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009648941411177892,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.0075705002634243995,
+        "brier": 0.007579380967261744,
         "contact_regression": 600.0,
         "family": "combined",
-        "log_loss": 0.03892801126504362,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.009977772971659872,
+        "log_loss": 0.038995239324982924,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009648977432289024,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.007449333337394447,
+        "brier": 0.007466499809293665,
         "contact_regression": 50.0,
         "family": "combined",
-        "log_loss": 0.03649911574920005,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010341745109994761,
+        "log_loss": 0.0367543064845173,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010022539619252894,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007450598560433253,
+        "brier": 0.007468257018751934,
         "contact_regression": 200.0,
         "family": "combined",
-        "log_loss": 0.03652225317102991,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.01033503031955358,
+        "log_loss": 0.03678141636722338,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009984624400487552,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007451437870853188,
+        "brier": 0.007469344752269129,
         "contact_regression": 600.0,
         "family": "combined",
-        "log_loss": 0.036535787909126996,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.0103292810498802,
+        "log_loss": 0.03679512202518915,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.009948809309907691,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.007277074729996453,
+        "brier": 0.007350511874158884,
         "contact_regression": 50.0,
         "family": "combined",
-        "log_loss": 0.034227723591681164,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010751822587592075,
+        "log_loss": 0.03487689489325983,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010408038371570814,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.007282364157782017,
+        "brier": 0.007351444888891211,
         "contact_regression": 200.0,
         "family": "combined",
-        "log_loss": 0.03429625437856484,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010799823620868948,
+        "log_loss": 0.03492715132031053,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010404146682289275,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.00728489823986454,
+        "brier": 0.00735201710532225,
         "contact_regression": 600.0,
         "family": "combined",
-        "log_loss": 0.034321848279644636,
-        "observed_rate": 0.007802746566791511,
-        "players": 3204,
-        "predicted_rate": 0.010791283246077471,
+        "log_loss": 0.03496192746654012,
+        "observed_rate": 0.0078125,
+        "players": 3200,
+        "predicted_rate": 0.010403514997624092,
         "regularization_c": 1.0
       }
     ],
     "selection_incumbent": {
-      "brier": 0.007346145419358467,
-      "log_loss": 0.03497929004822549,
-      "observed_rate": 0.007802746566791511,
-      "players": 3204,
-      "predicted_rate": 0.010602061707676708
+      "brier": 0.007406043886027035,
+      "log_loss": 0.03561851019083063,
+      "observed_rate": 0.0078125,
+      "players": 3200,
+      "predicted_rate": 0.010283810170823152
     },
     "subgroups": [
       {
-        "brier_difference": -3.873707839364797e-05,
+        "brier_difference": -4.506535347629029e-05,
         "dimension": "level",
         "group": "AA",
-        "log_loss_difference": -0.0012268229617836066,
+        "log_loss_difference": -0.0013419106971518033,
         "players": 479,
         "successes": 4,
         "supported": false
       },
       {
-        "brier_difference": -0.0001775872612392454,
+        "brier_difference": -7.899464247186627e-05,
         "dimension": "level",
         "group": "AAA",
-        "log_loss_difference": -0.0023985802002996215,
+        "log_loss_difference": -0.0012503503459440624,
         "players": 345,
         "successes": 13,
         "supported": true
       },
       {
-        "brier_difference": 6.999267187481143e-07,
+        "brier_difference": 1.5446713353974767e-07,
         "dimension": "level",
         "group": "A_OR_BELOW",
-        "log_loss_difference": 9.416731922663561e-05,
+        "log_loss_difference": -3.68073404623942e-05,
         "players": 2336,
         "successes": 0,
         "supported": false
       },
       {
-        "brier_difference": 8.525944937389222e-09,
+        "brier_difference": -1.1077124186734316e-07,
         "dimension": "level",
         "group": "INACTIVE",
-        "log_loss_difference": 9.099240022911854e-06,
+        "log_loss_difference": -0.00012223297199204816,
         "players": 8,
         "successes": 0,
         "supported": false
       },
       {
-        "brier_difference": -3.3473124818003165e-06,
+        "brier_difference": -1.9805731178362015e-05,
         "dimension": "age",
         "group": "16-19",
-        "log_loss_difference": 0.00012705056400351324,
+        "log_loss_difference": -0.0001231756240433592,
         "players": 1188,
         "successes": 2,
         "supported": false
       },
       {
-        "brier_difference": -2.7534063861681633e-05,
+        "brier_difference": -3.940121816451911e-06,
         "dimension": "age",
         "group": "20-22",
-        "log_loss_difference": -0.00026248235345205373,
+        "log_loss_difference": -8.322736303070094e-05,
         "players": 1063,
         "successes": 6,
         "supported": true
       },
       {
-        "brier_difference": -6.507492219802631e-05,
+        "brier_difference": -2.278814907313853e-05,
         "dimension": "age",
         "group": "23-25",
-        "log_loss_difference": -0.001238096107536349,
+        "log_loss_difference": -0.0010129924361357082,
         "players": 723,
         "successes": 7,
         "supported": true
       },
       {
-        "brier_difference": 1.0860397974115157e-05,
+        "brier_difference": -2.209338661473756e-05,
         "dimension": "age",
         "group": "26-30",
-        "log_loss_difference": -0.0008860028800617703,
+        "log_loss_difference": -0.000999531158717766,
         "players": 194,
         "successes": 2,
         "supported": false
       },
       {
-        "brier_difference": 8.525944937389222e-09,
+        "brier_difference": -1.1077124186734316e-07,
         "dimension": "workload",
         "group": "0",
-        "log_loss_difference": 9.099240022911854e-06,
+        "log_loss_difference": -0.00012223297199204816,
         "players": 8,
         "successes": 0,
         "supported": false
       },
       {
-        "brier_difference": -6.047738846241468e-06,
+        "brier_difference": -7.170144132814322e-06,
         "dimension": "workload",
         "group": "1-99",
-        "log_loss_difference": -0.00037624811614796584,
+        "log_loss_difference": -0.00047361186475279994,
         "players": 899,
         "successes": 0,
         "supported": false
       },
       {
-        "brier_difference": -2.3885993688544608e-05,
+        "brier_difference": -8.413289448858628e-06,
         "dimension": "workload",
         "group": "100-299",
-        "log_loss_difference": -0.00035818356962951693,
+        "log_loss_difference": -0.00032262549253412806,
         "players": 1415,
         "successes": 3,
         "supported": false
       },
       {
-        "brier_difference": -4.604259878373228e-05,
+        "brier_difference": -3.5612123638834384e-05,
         "dimension": "workload",
         "group": "300+",
-        "log_loss_difference": -0.0004138377099781321,
+        "log_loss_difference": -0.0003284112319834609,
         "players": 846,
         "successes": 14,
         "supported": true
       },
       {
-        "brier_difference": -8.129379700822035e-05,
+        "brier_difference": -7.54272746751241e-05,
         "dimension": "bat_side",
         "group": "L",
-        "log_loss_difference": -0.00033178850860467873,
+        "log_loss_difference": -0.00033023766838509785,
         "players": 898,
         "successes": 7,
         "supported": true
       },
       {
-        "brier_difference": -3.208958937733243e-06,
+        "brier_difference": 8.51793775158427e-06,
         "dimension": "bat_side",
         "group": "R",
-        "log_loss_difference": -0.00040575668102792173,
+        "log_loss_difference": -0.00038537207959876,
         "players": 1927,
         "successes": 9,
         "supported": true
       },
       {
-        "brier_difference": 2.909402130762441e-06,
+        "brier_difference": 8.280232352876355e-06,
         "dimension": "bat_side",
         "group": "S",
-        "log_loss_difference": -0.0003360685454702646,
+        "log_loss_difference": -0.0003555116057897302,
         "players": 343,
         "successes": 1,
         "supported": false
       },
       {
-        "brier_difference": -1.490579568071036e-07,
+        "brier_difference": -1.9734223343613667e-07,
         "dimension": "pbp_coverage",
         "group": "missing",
-        "log_loss_difference": -8.544954967802806e-05,
+        "log_loss_difference": -0.00016355276509128215,
         "players": 13,
         "successes": 0,
         "supported": false
       },
       {
-        "brier_difference": -2.4781499493534836e-05,
+        "brier_difference": -1.536511615368892e-05,
         "dimension": "pbp_coverage",
         "group": "observed",
-        "log_loss_difference": -0.0003784468691024681,
+        "log_loss_difference": -0.0003673469789021583,
         "players": 3155,
         "successes": 17,
         "supported": true
@@ -754,8 +755,8 @@
   "positive_component_given_meaningful": {
     "cohorts": {
       "2021": {
-        "pbp_observed_players": 32,
-        "players": 32,
+        "pbp_observed_players": 31,
+        "players": 31,
         "positives": 15
       },
       "2022": {
@@ -771,632 +772,632 @@
     },
     "conditioning_column": "meaningful_role_within_horizon",
     "outer_candidate": {
-      "brier": 0.20074089679965765,
-      "log_loss": 0.592965233386276,
+      "brier": 0.218400741049109,
+      "log_loss": 0.6269307503889882,
       "observed_rate": 0.23529411764705882,
       "players": 17,
-      "predicted_rate": 0.386793480435994
+      "predicted_rate": 0.3990528630521594
     },
     "outer_candidate_calibration": {
-      "intercept": 8.444702203323848,
+      "intercept": -1.3782212487982182,
       "reliability_bins": [
         {
           "bin": 1,
           "observed_rate": 0.0,
           "players": 4,
-          "predicted_rate": 0.37832190425760126
+          "predicted_rate": 0.31292405632348896
         },
         {
           "bin": 2,
-          "observed_rate": 0.5,
+          "observed_rate": 0.25,
           "players": 4,
-          "predicted_rate": 0.3813158098627867
+          "predicted_rate": 0.3592013518769823
         },
         {
           "bin": 3,
-          "observed_rate": 0.0,
+          "observed_rate": 0.6666666666666666,
           "players": 3,
-          "predicted_rate": 0.3866067009278403
+          "predicted_rate": 0.3896372215214019
         },
         {
           "bin": 4,
-          "observed_rate": 0.0,
+          "observed_rate": 0.3333333333333333,
           "players": 3,
-          "predicted_rate": 0.3919231652679198
+          "predicted_rate": 0.4332244622691496
         },
         {
           "bin": 5,
-          "observed_rate": 0.6666666666666666,
+          "observed_rate": 0.0,
           "players": 3,
-          "predicted_rate": 0.4004495707810219
+          "predicted_rate": 0.5422706625710569
         }
       ],
-      "slope": 21.163682199006427
+      "slope": -0.46122836093050634
     },
-    "outer_gate_passed": false,
+    "outer_gate_passed": true,
     "outer_incumbent": {
-      "brier": 0.22680291884049264,
-      "log_loss": 0.6446712918026083,
+      "brier": 0.2416354556645541,
+      "log_loss": 0.6736937342793649,
       "observed_rate": 0.23529411764705882,
       "players": 17,
-      "predicted_rate": 0.42517551387003677
+      "predicted_rate": 0.4155934814815401
     },
     "outer_incumbent_calibration": {
-      "intercept": -1.2447418880188543,
+      "intercept": -1.4026060962636528,
       "reliability_bins": [
         {
           "bin": 1,
           "observed_rate": 0.0,
           "players": 4,
-          "predicted_rate": 0.3328932852353728
+          "predicted_rate": 0.2730312205516473
         },
         {
           "bin": 2,
-          "observed_rate": 0.5,
+          "observed_rate": 0.75,
           "players": 4,
-          "predicted_rate": 0.35103201517597127
+          "predicted_rate": 0.35032496816823705
         },
         {
           "bin": 3,
           "observed_rate": 0.0,
           "players": 3,
-          "predicted_rate": 0.43611107703345126
+          "predicted_rate": 0.4098797783174623
         },
         {
           "bin": 4,
-          "observed_rate": 0.6666666666666666,
+          "observed_rate": 0.3333333333333333,
           "players": 3,
-          "predicted_rate": 0.5062206921226545
+          "predicted_rate": 0.49536702801924964
         },
         {
           "bin": 5,
           "observed_rate": 0.0,
           "players": 3,
-          "predicted_rate": 0.5550957422256438
+          "predicted_rate": 0.6186413370988362
         }
       ],
-      "slope": -0.2070895540668933
+      "slope": -0.5620535880301686
     },
     "paired_bootstrap": {
       "brier": {
-        "ci_high": 0.013858424575554201,
-        "ci_low": -0.06854983908551698,
-        "difference": -0.02606202204083501,
-        "probability_candidate_better": 0.8885
+        "ci_high": -0.0029706996839503667,
+        "ci_low": -0.04503287561966053,
+        "difference": -0.02323471461544509,
+        "probability_candidate_better": 0.988
       },
       "log_loss": {
-        "ci_high": 0.029519373488138007,
-        "ci_low": -0.13810078650450827,
-        "difference": -0.05170605841633216,
-        "probability_candidate_better": 0.8845
+        "ci_high": -0.003011298588047738,
+        "ci_low": -0.09369406734655436,
+        "difference": -0.04676298389037661,
+        "probability_candidate_better": 0.9815
       },
       "resamples": 2000
     },
     "production_change_authorized": false,
     "selected_candidate": {
-      "brier": 0.23753713408465893,
+      "brier": 0.23978173001433833,
       "contact_regression": 50.0,
       "family": "trajectory",
-      "log_loss": 0.6681916103841492,
+      "log_loss": 0.6724158241279778,
       "observed_rate": 0.28,
       "players": 25,
-      "predicted_rate": 0.46793959067364244,
-      "regularization_c": 0.03
+      "predicted_rate": 0.4737993422551966,
+      "regularization_c": 0.3
     },
     "selection_candidates": [
       {
-        "brier": 0.23755064891883884,
+        "brier": 0.24201099429003026,
         "contact_regression": 50.0,
         "family": "coverage",
-        "log_loss": 0.6682187512634775,
+        "log_loss": 0.6771562428730138,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46794411896887955,
+        "predicted_rate": 0.48176591492899634,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23815451072966914,
+        "brier": 0.24043604275876337,
         "contact_regression": 50.0,
         "family": "coverage",
-        "log_loss": 0.6694293435386562,
+        "log_loss": 0.6739513087311058,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46633933444354275,
+        "predicted_rate": 0.4783465080426762,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23912893337768362,
+        "brier": 0.23990975248554516,
         "contact_regression": 50.0,
         "family": "coverage",
-        "log_loss": 0.6713729771450647,
+        "log_loss": 0.6726759856523327,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4629920281835927,
+        "predicted_rate": 0.47395988149456064,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.2395438070897628,
+        "brier": 0.24634999456502082,
         "contact_regression": 50.0,
         "family": "coverage",
-        "log_loss": 0.6721223578971925,
+        "log_loss": 0.6855845447419684,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4575993315923319,
+        "predicted_rate": 0.47264918023853997,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.23753713408465893,
+        "brier": 0.24199990079442948,
         "contact_regression": 50.0,
         "family": "trajectory",
-        "log_loss": 0.6681916103841492,
+        "log_loss": 0.6771340272426936,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46793959067364244,
+        "predicted_rate": 0.48175936412904824,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23754294178639865,
+        "brier": 0.24200539118212283,
         "contact_regression": 200.0,
         "family": "trajectory",
-        "log_loss": 0.6682032730969891,
+        "log_loss": 0.6771450209217308,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4679423253770348,
+        "predicted_rate": 0.48176268079463214,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23754720310975333,
+        "brier": 0.24200933470582936,
         "contact_regression": 600.0,
         "family": "trajectory",
-        "log_loss": 0.6682118309232079,
+        "log_loss": 0.677152919031655,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4679446224480237,
+        "predicted_rate": 0.4817652440389939,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.2381157163148787,
+        "brier": 0.24040923990053376,
         "contact_regression": 50.0,
         "family": "trajectory",
-        "log_loss": 0.6693514036002958,
+        "log_loss": 0.6738973675258161,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4663192963854884,
+        "predicted_rate": 0.4783104691350439,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23813416632944892,
+        "brier": 0.24042729298392043,
         "contact_regression": 200.0,
         "family": "trajectory",
-        "log_loss": 0.6693884656894059,
+        "log_loss": 0.673933616694496,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46632896476752655,
+        "predicted_rate": 0.47832422193106966,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23814779563014482,
+        "brier": 0.24044033053458544,
         "contact_regression": 600.0,
         "family": "trajectory",
-        "log_loss": 0.669415850056815,
+        "log_loss": 0.673959813920159,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46633696365896526,
+        "predicted_rate": 0.4783341259872098,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23901022830037416,
+        "brier": 0.23978173001433833,
         "contact_regression": 50.0,
         "family": "trajectory",
-        "log_loss": 0.6711342665901249,
+        "log_loss": 0.6724158241279778,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4629056043500417,
+        "predicted_rate": 0.4737993422551966,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.23906287661375314,
+        "brier": 0.23983321220373832,
         "contact_regression": 200.0,
         "family": "trajectory",
-        "log_loss": 0.6712401129955677,
+        "log_loss": 0.6725205834897526,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4629398809033066,
+        "predicted_rate": 0.47384846059599417,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.23910206902833117,
+        "brier": 0.23986910924369972,
         "contact_regression": 600.0,
         "family": "trajectory",
-        "log_loss": 0.6713189638385282,
+        "log_loss": 0.6725937817808343,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46296642436631363,
+        "predicted_rate": 0.4738819492620236,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.23921080630428115,
+        "brier": 0.24605998750865904,
         "contact_regression": 50.0,
         "family": "trajectory",
-        "log_loss": 0.6714503021482389,
+        "log_loss": 0.684968032026817,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4573001312078189,
+        "predicted_rate": 0.47226956286118577,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.23938489662043289,
+        "brier": 0.2462296588384339,
         "contact_regression": 200.0,
         "family": "trajectory",
-        "log_loss": 0.6718012025576224,
+        "log_loss": 0.6853296843795633,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4574315430350247,
+        "predicted_rate": 0.4724187294931913,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.23951378743439086,
+        "brier": 0.2463416564230665,
         "contact_regression": 600.0,
         "family": "trajectory",
-        "log_loss": 0.6720613524003437,
+        "log_loss": 0.685567897095701,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.45752608821566004,
+        "predicted_rate": 0.47254070631197465,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.23757174252484156,
+        "brier": 0.2420268970368785,
         "contact_regression": 50.0,
         "family": "direction",
-        "log_loss": 0.6682611252288515,
+        "log_loss": 0.6771880774539811,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4679421393599695,
+        "predicted_rate": 0.4817602243935354,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23755932885317063,
+        "brier": 0.242018001322309,
         "contact_regression": 200.0,
         "family": "direction",
-        "log_loss": 0.6682361888790505,
+        "log_loss": 0.6771702704253939,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46794367935433484,
+        "predicted_rate": 0.48176280167208396,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23755226633205712,
+        "brier": 0.2420130725560581,
         "contact_regression": 600.0,
         "family": "direction",
-        "log_loss": 0.6682220010940781,
+        "log_loss": 0.6771604035281455,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46794526484513255,
+        "predicted_rate": 0.4817651066416728,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23823476922489234,
+        "brier": 0.24049910503472602,
         "contact_regression": 50.0,
         "family": "direction",
-        "log_loss": 0.6695907296306306,
+        "log_loss": 0.6740776019047892,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4663210624395724,
+        "predicted_rate": 0.47831965717970404,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23819019036362493,
+        "brier": 0.24046809086445115,
         "contact_regression": 200.0,
         "family": "direction",
-        "log_loss": 0.6695010957277217,
+        "log_loss": 0.6740154826214539,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4663296179021718,
+        "predicted_rate": 0.47832904826964706,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23816470969976603,
+        "brier": 0.24045126471577624,
         "contact_regression": 600.0,
         "family": "direction",
-        "log_loss": 0.6694498543364333,
+        "log_loss": 0.6739817681969462,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46633720984863186,
+        "predicted_rate": 0.4783366819672654,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23939172781722728,
+        "brier": 0.24006625422173067,
         "contact_regression": 50.0,
         "family": "direction",
-        "log_loss": 0.6719025312993258,
+        "log_loss": 0.6729926154859188,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46290168905291273,
+        "predicted_rate": 0.47384289291033643,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.2392431722034041,
+        "brier": 0.23996619277815834,
         "contact_regression": 200.0,
         "family": "direction",
-        "log_loss": 0.6716032561396722,
+        "log_loss": 0.6727904489441348,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4629387071380362,
+        "predicted_rate": 0.47387276899978475,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.23915721694425696,
+        "brier": 0.23990947438903507,
         "contact_regression": 600.0,
         "family": "direction",
-        "log_loss": 0.6714300388298873,
+        "log_loss": 0.6726757320494944,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4629677978612913,
+        "predicted_rate": 0.47389508107465034,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.24051942519501565,
+        "brier": 0.24702577439415793,
         "contact_regression": 50.0,
         "family": "direction",
-        "log_loss": 0.6740921672287575,
+        "log_loss": 0.6870136325547805,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.457253926065089,
+        "predicted_rate": 0.4723810142166217,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.24000167162135355,
+        "brier": 0.24659987388920357,
         "contact_regression": 200.0,
         "family": "direction",
-        "log_loss": 0.6730466161063218,
+        "log_loss": 0.686115073322981,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4573953535435406,
+        "predicted_rate": 0.47252168634956554,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.23969692391895914,
+        "brier": 0.24645078742650472,
         "contact_regression": 600.0,
         "family": "direction",
-        "log_loss": 0.6724310237158232,
+        "log_loss": 0.6857988217849362,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.457503176320327,
+        "predicted_rate": 0.47257988972976167,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.23755902657207517,
+        "brier": 0.2420162763687008,
         "contact_regression": 50.0,
         "family": "combined",
-        "log_loss": 0.6682355893622323,
+        "log_loss": 0.6771668089770502,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.467929907314069,
+        "predicted_rate": 0.48175484217592784,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23755233353221453,
+        "brier": 0.24201286871117447,
         "contact_regression": 200.0,
         "family": "combined",
-        "log_loss": 0.6682221407098043,
+        "log_loss": 0.6771599909404781,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4679352264059083,
+        "predicted_rate": 0.48176072443690754,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23754944230539732,
+        "brier": 0.24201188827931713,
         "contact_regression": 600.0,
         "family": "combined",
-        "log_loss": 0.6682163299314371,
+        "log_loss": 0.6771580317896785,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4679395946015124,
+        "predicted_rate": 0.4817656033387297,
         "regularization_c": 0.03
       },
       {
-        "brier": 0.23819582483227206,
+        "brier": 0.24045606272781406,
         "contact_regression": 50.0,
         "family": "combined",
-        "log_loss": 0.6695124892176529,
+        "log_loss": 0.6739912051805246,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4663009442826025,
+        "predicted_rate": 0.4782958741478182,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23816971447901417,
+        "brier": 0.240442256144863,
         "contact_regression": 200.0,
         "family": "combined",
-        "log_loss": 0.6694599538188782,
+        "log_loss": 0.6739636416351331,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46631914743612546,
+        "predicted_rate": 0.4783185062220352,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.23815787946449998,
+        "brier": 0.24043717407086784,
         "contact_regression": 600.0,
         "family": "combined",
-        "log_loss": 0.6694361296524319,
+        "log_loss": 0.6739535359345894,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4663346694017564,
+        "predicted_rate": 0.47833581572629674,
         "regularization_c": 0.1
       },
       {
-        "brier": 0.2392847355207912,
+        "brier": 0.23997769541317626,
         "contact_regression": 50.0,
         "family": "combined",
-        "log_loss": 0.671687370112358,
+        "log_loss": 0.6728116164034649,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4628525692975623,
+        "predicted_rate": 0.4737301228461293,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.23915052298345235,
+        "brier": 0.23993135606491622,
         "contact_regression": 200.0,
         "family": "combined",
-        "log_loss": 0.6714169410251972,
+        "log_loss": 0.6727187736551125,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4629182530722028,
+        "predicted_rate": 0.47381491321534575,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.23910788263424146,
+        "brier": 0.2399130708875754,
         "contact_regression": 600.0,
         "family": "combined",
-        "log_loss": 0.6713308634016149,
+        "log_loss": 0.6726823967355613,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.46297535436542914,
+        "predicted_rate": 0.47387800668231944,
         "regularization_c": 0.3
       },
       {
-        "brier": 0.24017535226264783,
+        "brier": 0.24653225498231637,
         "contact_regression": 50.0,
         "family": "combined",
-        "log_loss": 0.6733984422464211,
+        "log_loss": 0.6859709581409211,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.45696163305432863,
+        "predicted_rate": 0.471978132680893,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.23983188026427363,
+        "brier": 0.2463996462367859,
         "contact_regression": 200.0,
         "family": "combined",
-        "log_loss": 0.6727039213055218,
+        "log_loss": 0.6856933655714905,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.4572394885433427,
+        "predicted_rate": 0.4722315280782537,
         "regularization_c": 1.0
       },
       {
-        "brier": 0.23965235131840376,
+        "brier": 0.24634951778671713,
         "contact_regression": 600.0,
         "family": "combined",
-        "log_loss": 0.6723410945895448,
+        "log_loss": 0.6855879126757409,
         "observed_rate": 0.28,
         "players": 25,
-        "predicted_rate": 0.45744589832745075,
+        "predicted_rate": 0.47243806372047664,
         "regularization_c": 1.0
       }
     ],
     "selection_incumbent": {
-      "brier": 0.23987566393448595,
-      "log_loss": 0.6728351399151474,
+      "brier": 0.2464547000630518,
+      "log_loss": 0.6858750265642355,
       "observed_rate": 0.28,
       "players": 25,
-      "predicted_rate": 0.45724989485239165
+      "predicted_rate": 0.4723569798112367
     },
     "subgroups": [
       {
-        "brier_difference": 0.015883513769797658,
+        "brier_difference": -0.028158676939875837,
         "dimension": "level",
         "group": "AA",
-        "log_loss_difference": 0.03210282101320627,
+        "log_loss_difference": -0.06387310869423746,
         "players": 4,
         "successes": 2,
         "supported": false
       },
       {
-        "brier_difference": -0.03896834075179892,
+        "brier_difference": -0.021719649284850984,
         "dimension": "level",
         "group": "AAA",
-        "log_loss_difference": -0.07749340593311316,
+        "log_loss_difference": -0.041498330104573156,
         "players": 13,
         "successes": 2,
         "supported": false
       },
       {
-        "brier_difference": -0.005568740034526509,
+        "brier_difference": 0.004373163261541163,
         "dimension": "age",
         "group": "16-19",
-        "log_loss_difference": -0.011929948274369773,
+        "log_loss_difference": 0.01230820293782231,
         "players": 2,
         "successes": 1,
         "supported": false
       },
       {
-        "brier_difference": -0.023763274579785332,
+        "brier_difference": -0.015284747765037049,
         "dimension": "age",
         "group": "20-22",
-        "log_loss_difference": -0.048655289521546186,
+        "log_loss_difference": -0.030377738376930807,
         "players": 6,
         "successes": 3,
         "supported": false
       },
       {
-        "brier_difference": -0.05104160827846707,
+        "brier_difference": -0.03878731813372996,
         "dimension": "age",
         "group": "23-25",
-        "log_loss_difference": -0.10170566300159162,
+        "log_loss_difference": -0.08003384885948983,
         "players": 7,
         "successes": 0,
         "supported": false
       },
       {
-        "brier_difference": 0.03397700540141971,
+        "brier_difference": -0.020258380729658382,
         "dimension": "age",
         "group": "26-30",
-        "log_loss_difference": 0.07436414080575565,
+        "log_loss_difference": -0.03854187986701607,
         "players": 2,
         "successes": 0,
         "supported": false
       },
       {
-        "brier_difference": -0.05494438238193558,
+        "brier_difference": -0.022952932137496357,
         "dimension": "workload",
         "group": "100-299",
-        "log_loss_difference": -0.112012586390843,
+        "log_loss_difference": -0.04261006261478728,
         "players": 3,
         "successes": 1,
         "supported": false
       },
       {
-        "brier_difference": -0.01987294482488486,
+        "brier_difference": -0.023295096575005503,
         "dimension": "workload",
         "group": "300+",
-        "log_loss_difference": -0.03878323099322256,
+        "log_loss_difference": -0.04765289559228858,
         "players": 14,
         "successes": 3,
         "supported": false
       },
       {
-        "brier_difference": 0.019237773773780192,
+        "brier_difference": -0.008494416116929387,
         "dimension": "bat_side",
         "group": "L",
-        "log_loss_difference": 0.04122517287940919,
+        "log_loss_difference": -0.01393228374341049,
         "players": 7,
         "successes": 2,
         "supported": false
       },
       {
-        "brier_difference": -0.04650615040759823,
+        "brier_difference": -0.03354028071840626,
         "dimension": "bat_side",
         "group": "R",
-        "log_loss_difference": -0.09394957246275437,
+        "log_loss_difference": -0.06957315593174052,
         "players": 9,
         "successes": 2,
         "supported": false
       },
       {
-        "brier_difference": -0.15916343744227254,
+        "brier_difference": -0.03366670917840453,
         "dimension": "bat_side",
         "group": "S",
-        "log_loss_difference": -0.3220330510687207,
+        "log_loss_difference": -0.07128633654686423,
         "players": 1,
         "successes": 0,
         "supported": false
       },
       {
-        "brier_difference": -0.026062022040834992,
+        "brier_difference": -0.0232347146154451,
         "dimension": "pbp_coverage",
         "group": "observed",
-        "log_loss_difference": -0.051706058416332246,
+        "log_loss_difference": -0.0467629838903767,
         "players": 17,
         "successes": 4,
         "supported": false
