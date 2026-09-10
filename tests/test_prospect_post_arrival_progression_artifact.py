@@ -33,3 +33,8 @@ def test_progression_artifact_uses_workload_only_for_supported_transition() -> N
     assert fringe.filter(pl.col("term") == "prior_mlb_active").height == 2
     assert meaningful.filter(pl.col("term") == "prior_mlb_active").is_empty()
     assert coefficients.filter(pl.col("term").str.contains("role")).is_empty()
+    destination = pl.read_parquet(PACKAGE / "destination-probabilities.parquet")
+    assert destination["player_type"].to_list() == ["hitter", "pitcher"]
+    assert destination[
+        "direct_established_probability_given_fringe_advance"
+    ].to_list() == [0.3380681818181818, 0.20679012345679013]

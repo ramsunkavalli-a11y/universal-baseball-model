@@ -3,6 +3,7 @@ import pytest
 
 from universal_baseball.prospect_mlb_progression import (
     build_post_arrival_progression_rows,
+    predict_progression_from_coefficients,
     progression_design,
 )
 
@@ -93,3 +94,37 @@ def test_pitcher_role_is_validated_and_added_to_progression_design() -> None:
         build_post_arrival_progression_rows(
             [transitions], workload.drop("pitching_starts")
         )
+
+
+def test_durable_equation_uses_the_draws_own_prior_workload() -> None:
+    frame = pl.DataFrame(
+        {
+            "transition_age_years": [25.0, 25.0],
+            "elapsed_year": [2, 2],
+            "prior_mlb_active": [0, 1],
+            "prior_workload_vs_active_mean": [0.0, 1.0],
+        }
+    )
+    coefficients = pl.DataFrame(
+        {
+            "player_type": ["hitter"] * 6,
+            "origin_state": ["FRINGE_MLB"] * 6,
+            "feature_set": ["age_elapsed_prior_workload"] * 6,
+            "term": [
+                "intercept",
+                "transition_age_centered_scaled",
+                "elapsed_year_centered_scaled",
+                "elapsed_year_at_least_three",
+                "prior_mlb_active",
+                "log1p_prior_workload_vs_active_mean",
+            ],
+            "coefficient": [-2.0, 0.0, 0.0, 0.0, 1.0, 2.0],
+        }
+    )
+    probability = predict_progression_from_coefficients(
+        frame,
+        coefficients,
+        player_type="hitter",
+        origin_state="FRINGE_MLB",
+    )
+    assert probability[1] > probability[0]

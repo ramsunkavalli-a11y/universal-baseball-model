@@ -14,6 +14,29 @@ from universal_baseball.prospect_career_state import CAREER_STATE_ORDER
 
 
 ORIGINS = ("FRINGE_MLB", "MEANINGFUL_MLB")
+PROGRESSION_FEATURE_NAMES = {
+    "age_elapsed": (
+        "transition_age_centered_scaled",
+        "elapsed_year_centered_scaled",
+        "elapsed_year_at_least_three",
+    ),
+    "age_elapsed_prior_workload": (
+        "transition_age_centered_scaled",
+        "elapsed_year_centered_scaled",
+        "elapsed_year_at_least_three",
+        "prior_mlb_active",
+        "log1p_prior_workload_vs_active_mean",
+    ),
+    "age_elapsed_prior_workload_role": (
+        "transition_age_centered_scaled",
+        "elapsed_year_centered_scaled",
+        "elapsed_year_at_least_three",
+        "prior_mlb_active",
+        "log1p_prior_workload_vs_active_mean",
+        "prior_start_share",
+        "prior_bf_per_game_scaled",
+    ),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -202,3 +225,47 @@ def score_progression(fit: ProgressionFit, frame: pl.DataFrame) -> pl.DataFrame:
         pl.Series("log_loss", -np.log(np.clip(chosen, 1e-12, 1))),
         pl.Series("brier", (probability - truth) ** 2),
     )
+
+
+def predict_progression_from_coefficients(
+    frame: pl.DataFrame,
+    coefficients: pl.DataFrame,
+    *,
+    player_type: str,
+    origin_state: str,
+) -> np.ndarray:
+    """Apply one durable progression equation to simulated prior workloads."""
+
+    required = {
+        "player_type", "origin_state", "feature_set", "term", "coefficient",
+    }
+    if missing := sorted(required - set(coefficients.columns)):
+        raise ValueError(f"progression coefficients missing fields: {missing}")
+    cell = coefficients.filter(
+        (pl.col("player_type") == player_type)
+        & (pl.col("origin_state") == origin_state)
+    )
+    if cell.is_empty():
+        raise ValueError(f"missing progression equation: {player_type}/{origin_state}")
+    feature_sets = cell["feature_set"].unique().to_list()
+    if len(feature_sets) != 1:
+        raise ValueError("progression equation mixes feature sets")
+    feature_set = str(feature_sets[0])
+    names = PROGRESSION_FEATURE_NAMES.get(feature_set)
+    if names is None:
+        raise ValueError(f"unsupported durable progression feature set: {feature_set}")
+    lookup = {
+        str(row["term"]): float(row["coefficient"])
+        for row in cell.iter_rows(named=True)
+    }
+    if set(lookup) != {"intercept", *names}:
+        raise ValueError("progression equation terms do not match its feature set")
+    design = progression_design(frame, feature_set=feature_set)
+    beta = np.asarray([lookup[name] for name in names], dtype=float)
+    linear = np.clip(lookup["intercept"] + design @ beta, -30.0, 30.0)
+    probability = 1.0 / (1.0 + np.exp(-linear))
+    if np.any(~np.isfinite(probability)) or np.any(
+        (probability <= 0.0) | (probability >= 1.0)
+    ):
+        raise RuntimeError("progression equation produced invalid probabilities")
+    return probability

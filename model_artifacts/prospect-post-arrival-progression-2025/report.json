@@ -3,12 +3,14 @@
   "meaningful_uses_pooled_age_elapsed_fallback": true,
   "outside_fv_used": false,
   "pitcher_role_used": false,
+  "player_type_destination_split_used": true,
   "production_changed": false,
   "report_schema_version": "0.1",
   "runner_path": "scripts/materialize_prospect_post_arrival_progression_model.py",
-  "runner_sha256": "986d983ce13d56a0734b397c007c61c79734ea54b91362edb09fd6dcc64939e7",
+  "runner_sha256": "f2d857133f46c34e361f2421cf9ef79cfa606e0ba251e4f7b5b49e17a4a17f9d",
   "shortened_2020_outcomes_excluded": true,
   "sources": {
+    "docs/prospect-post-arrival-destination-result.json": "58ff250e2aae15db50e2f21e44ead45561aa6d7be5532666ef24f48f5ca7b8c4",
     "docs/prospect-post-arrival-workload-result.json": "747e30fa9c20908322e831bf5ecc95b89184deabcd1bd706451a92dcad9f58d3",
     "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_batting_2009_2025.parquet": "9cadaff34ee3068ec550f3692fe419187865acb5efb6c0b87edd4e5f415d6da4",
     "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet": "a401f55b72bbc39ae0d967eed2bd4977fed126b24a27c672f76d98de509af7df",
@@ -29,7 +31,7 @@
     "reports/generated/player-demographics/tables/player-demographics.parquet": "010bb368acc8465dc1c5ba21660dd32bdcf0e9132bc4824e39a491f11189f54f",
     "scripts/audit_prospect_ordered_transition_path.py": "dd3f61df52b174a65d2560608c21cca8c27a4cb4d0c9ee0c455ddf13cc2e7584",
     "scripts/audit_prospect_post_arrival_workload.py": "0405872987b9797ef5922e99cb68794c50aad038631b2e0c8975e6fdf841f715",
-    "src/universal_baseball/prospect_mlb_progression.py": "f2b711ef7a06ccfe97789a3c44deca8d3f8aa5528c66652b5cdd6ad1846a4a53"
+    "src/universal_baseball/prospect_mlb_progression.py": "1a7131c378c9382a38bbe7815e105e3134c5d7777ceb54e156f9186cf35bcf18"
   },
   "status": "validated_equations_materialized_not_integrated",
   "storage": {
@@ -41,6 +43,15 @@
       "row_count": 20,
       "schema_sha256": "be89a2b6b790dca7f059944fd821d74657cd1610e1f5f6209eaadda3048961ae",
       "table_name": "prospect_post_arrival_progression_coefficients_2025"
+    },
+    "destination_probabilities": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "7d3c1264fcc2c773783357356e21809df717db3dd7a29f6a41fb4e7f81f251d7",
+      "file_size_bytes": 1049,
+      "path": "model_artifacts\\prospect-post-arrival-progression-2025\\destination-probabilities.parquet",
+      "row_count": 2,
+      "schema_sha256": "e6cf1ea2051736c80eb9c5755cb33bbfb66f34de5672fd4a8f181dce243f4442",
+      "table_name": "prospect_post_arrival_destination_probabilities_2025"
     },
     "support": {
       "canonical_schema_version": "0.1",

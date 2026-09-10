@@ -1,0 +1,113 @@
+{
+  "current_2026_used": false,
+  "decision": "use_player_type_destination_split",
+  "folds": [
+    {
+      "outcome_year": 2023,
+      "player_type_probabilities": {
+        "hitter": 0.20491803278688525,
+        "pitcher": 0.19827586206896552
+      },
+      "player_type_split": {
+        "brier": 0.2319502469522926,
+        "direct_established": 28,
+        "log_loss": 0.6657363872379488,
+        "players": 87
+      },
+      "pooled": {
+        "brier": 0.2333106733763254,
+        "direct_established": 28,
+        "log_loss": 0.6699558655267537,
+        "players": 87
+      },
+      "pooled_probability": 0.19915254237288135,
+      "split_minus_pooled": {
+        "brier": -0.0013604264240328068,
+        "log_loss": -0.004219478288804868
+      },
+      "training_players": 117
+    },
+    {
+      "outcome_year": 2024,
+      "player_type_probabilities": {
+        "hitter": 0.2981651376146789,
+        "pitcher": 0.20103092783505155
+      },
+      "player_type_split": {
+        "brier": 0.22776598808484702,
+        "direct_established": 26,
+        "log_loss": 0.6505373694323962,
+        "players": 77
+      },
+      "pooled": {
+        "brier": 0.23111884546149858,
+        "direct_established": 26,
+        "log_loss": 0.6580767854007231,
+        "players": 77
+      },
+      "pooled_probability": 0.25121951219512195,
+      "split_minus_pooled": {
+        "brier": -0.003352857376651558,
+        "log_loss": -0.007539415968326968
+      },
+      "training_players": 204
+    },
+    {
+      "outcome_year": 2025,
+      "player_type_probabilities": {
+        "hitter": 0.3233333333333333,
+        "pitcher": 0.22180451127819548
+      },
+      "player_type_split": {
+        "brier": 0.18649283868134678,
+        "direct_established": 15,
+        "log_loss": 0.5558492225328973,
+        "players": 55
+      },
+      "pooled": {
+        "brier": 0.19835149823266612,
+        "direct_established": 15,
+        "log_loss": 0.5859636515798636,
+        "players": 55
+      },
+      "pooled_probability": 0.274822695035461,
+      "split_minus_pooled": {
+        "brier": -0.011858659551319345,
+        "log_loss": -0.030114429046966373
+      },
+      "training_players": 281
+    }
+  ],
+  "plan": "docs/prospect-post-arrival-destination-plan.md",
+  "production_changed": false,
+  "report_schema_version": "0.1",
+  "rows": 336,
+  "selected_direct_established_probability": {
+    "hitter": 0.3380681818181818,
+    "pitcher": 0.20679012345679013
+  },
+  "shortened_2020_outcomes_excluded": true,
+  "status": "post_arrival_destination_test_complete",
+  "support": [
+    {
+      "len": 59,
+      "player_type": "hitter",
+      "to_state": "ESTABLISHED_MLB"
+    },
+    {
+      "len": 116,
+      "player_type": "hitter",
+      "to_state": "MEANINGFUL_MLB"
+    },
+    {
+      "len": 33,
+      "player_type": "pitcher",
+      "to_state": "ESTABLISHED_MLB"
+    },
+    {
+      "len": 128,
+      "player_type": "pitcher",
+      "to_state": "MEANINGFUL_MLB"
+    }
+  ]
+}

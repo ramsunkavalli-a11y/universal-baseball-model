@@ -176,6 +176,12 @@ simulator can therefore update a draw's following-year state from its own sample
 workload instead of selecting the eventual tier first. See the
 [artifact note](prospect-post-arrival-progression-artifact.md).
 
+The remaining destination ambiguity is resolved with a simple conditional rule. A
+player-type-specific direct-to-established share beat one pooled share on both proper
+scores in 2023, 2024 and 2025. Freeze 33.8% for advancing fringe hitters and 20.7% for
+advancing fringe pitchers; otherwise the successful advance enters meaningful. This
+does not change the separately predicted advancement probability or current rankings.
+
 The linked-path promotion rule is corrected: MAE targets the conditional median, so
 it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero
 prospect cohort. Future linked-path validation must pair arrival Brier/log loss, a

@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,524 passed. Four older research-contract tests fail because their
+Latest full suite: 1,526 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -199,3 +199,6 @@ The accepted post-arrival advancement equations are also materialized in
 `model_artifacts/prospect-post-arrival-progression-2025/`. The package is ready for
 the next simulator build: sampled year-one workload must drive year-two fringe
 advancement inside each draw. Current rankings still use the prior coherent baseline.
+The stored equation now has a checked callable interface. Conditional on a successful
+fringe advance, the time-ordered destination test uses a 33.8% direct-established
+share for hitters and 20.7% for pitchers; it beat the pooled rule in 2023–2025.

@@ -9,27 +9,17 @@ from pathlib import Path
 import polars as pl
 
 from audit_prospect_post_arrival_workload import _rows
-from universal_baseball.prospect_mlb_progression import fit_progression
+from universal_baseball.prospect_mlb_progression import (
+    PROGRESSION_FEATURE_NAMES,
+    fit_progression,
+)
 from universal_baseball.storage import sha256_file, write_canonical_parquet
 
 
 OUTPUT = Path("model_artifacts/prospect-post-arrival-progression-2025")
 RESULT = Path("docs/prospect-post-arrival-workload-result.json")
+DESTINATION_RESULT = Path("docs/prospect-post-arrival-destination-result.json")
 RUNNER = Path("scripts/materialize_prospect_post_arrival_progression_model.py")
-FEATURE_NAMES = {
-    "age_elapsed": (
-        "transition_age_centered_scaled",
-        "elapsed_year_centered_scaled",
-        "elapsed_year_at_least_three",
-    ),
-    "age_elapsed_prior_workload": (
-        "transition_age_centered_scaled",
-        "elapsed_year_centered_scaled",
-        "elapsed_year_at_least_three",
-        "prior_mlb_active",
-        "log1p_prior_workload_vs_active_mean",
-    ),
-}
 SELECTED_FEATURE = {
     "FRINGE_MLB": "age_elapsed_prior_workload",
     "MEANINGFUL_MLB": "age_elapsed",
@@ -41,6 +31,7 @@ def _source_paths() -> list[Path]:
     history = root / "opportunity-history-sources-v2/tables"
     paths = [
         RESULT,
+        DESTINATION_RESULT,
         Path("scripts/audit_prospect_post_arrival_workload.py"),
         Path("scripts/audit_prospect_ordered_transition_path.py"),
         Path("src/universal_baseball/prospect_mlb_progression.py"),
@@ -62,6 +53,9 @@ def _source_paths() -> list[Path]:
 
 def main() -> int:
     selected = json.loads(RESULT.read_text(encoding="utf-8"))
+    destination = json.loads(DESTINATION_RESULT.read_text(encoding="utf-8"))
+    if destination["decision"] != "use_player_type_destination_split":
+        raise ValueError("destination result does not support the player-type split")
     coefficient_rows: list[dict[str, object]] = []
     support_rows: list[dict[str, object]] = []
     for player_type in ("hitter", "pitcher"):
@@ -97,7 +91,9 @@ def main() -> int:
                     "regularization_c": regularization,
                 }
                 for term, value in zip(
-                    FEATURE_NAMES[feature_set], fit.model.coef_[0], strict=True
+                    PROGRESSION_FEATURE_NAMES[feature_set],
+                    fit.model.coef_[0],
+                    strict=True,
                 )
             )
             support_rows.append(
@@ -115,6 +111,15 @@ def main() -> int:
         "player_type", "origin_state", "term"
     )
     support = pl.DataFrame(support_rows).sort("player_type", "origin_state")
+    destination_probabilities = pl.DataFrame(
+        {
+            "player_type": ["hitter", "pitcher"],
+            "direct_established_probability_given_fringe_advance": [
+                float(destination["selected_direct_established_probability"][player_type])
+                for player_type in ("hitter", "pitcher")
+            ],
+        }
+    )
     OUTPUT.mkdir(parents=True, exist_ok=True)
     storage = {
         "coefficients": write_canonical_parquet(
@@ -127,6 +132,11 @@ def main() -> int:
             OUTPUT / "support.parquet",
             table_name="prospect_post_arrival_progression_support_2025",
         ).as_record(),
+        "destination_probabilities": write_canonical_parquet(
+            destination_probabilities,
+            OUTPUT / "destination-probabilities.parquet",
+            table_name="prospect_post_arrival_destination_probabilities_2025",
+        ).as_record(),
     }
     report = {
         "report_schema_version": "0.1",
@@ -136,6 +146,7 @@ def main() -> int:
         "fringe_uses_prior_sampled_workload": True,
         "meaningful_uses_pooled_age_elapsed_fallback": True,
         "pitcher_role_used": False,
+        "player_type_destination_split_used": True,
         "outside_fv_used": False,
         "production_changed": False,
         "runner_path": RUNNER.as_posix(),
@@ -144,7 +155,9 @@ def main() -> int:
         "storage": storage,
     }
     (OUTPUT / "report.json").write_text(
-        json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
     print(json.dumps({**report, "sources": f"{len(report['sources'])} files"}, indent=2))
     return 0
