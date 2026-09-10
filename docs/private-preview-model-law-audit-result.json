@@ -21,6 +21,12 @@
     },
     {
       "failures": 0,
+      "name": "hitter_finite_nonnegative_opportunity",
+      "rows_checked": 23640,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
       "name": "hitter_active_probability_bounds",
       "rows_checked": 23640,
       "status": "pass"
@@ -35,6 +41,12 @@
       "failures": 0,
       "name": "pitcher_complete_six_year_path",
       "rows_checked": 5276,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_finite_nonnegative_opportunity",
+      "rows_checked": 31656,
       "status": "pass"
     },
     {
@@ -111,18 +123,25 @@
     },
     {
       "failures": 0,
+      "name": "current_value_interval_completeness",
+      "rows_checked": 8370,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
       "name": "current_value_interval_order",
-      "rows_checked": 8393,
+      "rows_checked": 1675,
       "status": "pass"
     }
   ],
   "failed": 0,
-  "passed": 18,
+  "passed": 21,
   "report_schema_version": "0.1",
   "status": "private_preview_model_law_audit_complete",
   "warnings": [
     "The nested six-year hurdle repeats two-year hazards approximately; it is not a joint path simulation.",
     "Organization-neutral value is not a current-team playing-time allocation; team capacity is a separate research view.",
+    "Annual WAR and value ranges are sensitivity bounds; their full-universe 2025 coverage was dominated by nonparticipants.",
     "Passing identities does not replace prospective outcome validation after the protected 2026 season is complete."
   ]
 }

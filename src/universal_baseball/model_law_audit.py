@@ -32,6 +32,22 @@ def _outside_unit_interval(frame: pl.DataFrame, columns: tuple[str, ...]) -> int
     return frame.filter(expression).height
 
 
+def _invalid_simplex(frame: pl.DataFrame, columns: tuple[str, ...]) -> int:
+    invalid_member = pl.any_horizontal(
+        pl.col(column).is_null()
+        | ~pl.col(column).is_finite()
+        | (pl.col(column) < 0.0)
+        | (pl.col(column) > 1.0)
+        for column in columns
+    )
+    invalid_sum = (
+        pl.sum_horizontal(*columns).is_null()
+        | ~pl.sum_horizontal(*columns).is_finite()
+        | ((pl.sum_horizontal(*columns) - 1.0).abs() > TOLERANCE)
+    )
+    return frame.filter(invalid_member | invalid_sum).height
+
+
 def audit_private_preview_laws(
     hitter_paths: pl.DataFrame,
     pitcher_paths: pl.DataFrame,
@@ -56,6 +72,27 @@ def audit_private_preview_laws(
                 frame.get_column("player_id").n_unique(),
             )
         )
+
+        workload_columns = (
+            ("conditional_mlb_pa", "conditional_mlb_pa_variance", "expected_mlb_pa")
+            if player_type == "hitter"
+            else ("conditional_mlb_bf", "conditional_mlb_bf_variance", "expected_mlb_bf")
+        )
+        invalid_workload = frame.filter(
+            pl.any_horizontal(
+                pl.col(column).is_null()
+                | ~pl.col(column).is_finite()
+                | (pl.col(column) < 0.0)
+                for column in workload_columns
+            )
+        ).height
+        checks.append(
+            _check(
+                f"{player_type}_finite_nonnegative_opportunity",
+                invalid_workload,
+                frame.height,
+            )
+        )
         checks.append(
             _check(
                 f"{player_type}_active_probability_bounds",
@@ -69,39 +106,21 @@ def audit_private_preview_laws(
         "predicted_double_rate", "predicted_triple_rate", "predicted_hr_rate",
         "predicted_other_rate",
     )
-    hitter_bad_components = hitter_paths.filter(
-        pl.any_horizontal(
-            (pl.col(column) < 0.0) | (pl.col(column) > 1.0)
-            for column in hitter_component_columns
-        )
-        | ((pl.sum_horizontal(*hitter_component_columns) - 1.0).abs() > TOLERANCE)
-    ).height
+    hitter_bad_components = _invalid_simplex(hitter_paths, hitter_component_columns)
     checks.append(_check("hitter_component_simplex", hitter_bad_components, hitter_paths.height))
 
     pitcher_component_columns = (
         "predicted_other_rate", "predicted_so_rate", "predicted_ubb_rate",
         "predicted_hbp_rate", "predicted_hr_rate",
     )
-    pitcher_bad_components = pitcher_paths.filter(
-        pl.any_horizontal(
-            (pl.col(column) < 0.0) | (pl.col(column) > 1.0)
-            for column in pitcher_component_columns
-        )
-        | ((pl.sum_horizontal(*pitcher_component_columns) - 1.0).abs() > TOLERANCE)
-    ).height
+    pitcher_bad_components = _invalid_simplex(pitcher_paths, pitcher_component_columns)
     checks.append(_check("pitcher_component_simplex", pitcher_bad_components, pitcher_paths.height))
 
     role_columns = (
         "starter_probability_if_active", "swingman_probability_if_active",
         "reliever_probability_if_active",
     )
-    pitcher_bad_roles = pitcher_paths.filter(
-        pl.any_horizontal(
-            (pl.col(column) < 0.0) | (pl.col(column) > 1.0)
-            for column in role_columns
-        )
-        | ((pl.sum_horizontal(*role_columns) - 1.0).abs() > TOLERANCE)
-    ).height
+    pitcher_bad_roles = _invalid_simplex(pitcher_paths, role_columns)
     checks.append(_check("pitcher_role_probability_simplex", pitcher_bad_roles, pitcher_paths.height))
 
     for player_type, frame, conditional, expected, denominator, rate in (
@@ -111,19 +130,50 @@ def audit_private_preview_laws(
          "conditional_war_per_800_bf"),
     ):
         bad_workload = frame.filter(
-            (pl.col(expected) - pl.col("mlb_active_probability") * pl.col(conditional)).abs()
-            > TOLERANCE
+            pl.col(expected).is_null()
+            | ~pl.col(expected).is_finite()
+            | (
+                (
+                    pl.col(expected)
+                    - pl.col("mlb_active_probability") * pl.col(conditional)
+                ).abs()
+                > TOLERANCE
+            )
         ).height
         bad_war = frame.filter(
-            (pl.col("expected_war") - pl.col(rate) * pl.col(expected) / denominator).abs()
-            > TOLERANCE
+            pl.col(rate).is_null()
+            | ~pl.col(rate).is_finite()
+            | pl.col("expected_war").is_null()
+            | ~pl.col("expected_war").is_finite()
+            | (
+                (
+                    pl.col("expected_war")
+                    - pl.col(rate) * pl.col(expected) / denominator
+                ).abs()
+                > TOLERANCE
+            )
         ).height
         checks.append(_check(f"{player_type}_expected_workload_identity", bad_workload, frame.height))
         checks.append(_check(f"{player_type}_expected_war_identity", bad_war, frame.height))
 
     applicable = nested.filter(pl.col("ordered_arrival_probability").is_not_null())
+    nested_probability_columns = (
+        "ordered_arrival_probability",
+        "ordered_meaningful_probability",
+        "ordered_established_probability",
+        "established_probability",
+        "meaningful_only_probability",
+        "fringe_probability",
+    )
     nested_failures = applicable.filter(
-        (pl.col("ordered_arrival_probability") < pl.col("ordered_meaningful_probability"))
+        pl.any_horizontal(
+            pl.col(column).is_null()
+            | ~pl.col(column).is_finite()
+            | (pl.col(column) < 0.0)
+            | (pl.col(column) > 1.0)
+            for column in nested_probability_columns
+        )
+        | (pl.col("ordered_arrival_probability") < pl.col("ordered_meaningful_probability"))
         | (pl.col("ordered_meaningful_probability") < pl.col("ordered_established_probability"))
         | (pl.col("established_probability") < 0.0)
         | (pl.col("meaningful_only_probability") < 0.0)
@@ -177,14 +227,53 @@ def audit_private_preview_laws(
     checks.append(_check("player_type_follows_available_path", source_type_failures, nested.height))
 
     duplicate_values = values.group_by("player_id").len().filter(pl.col("len") != 1).height
-    interval_failures = values.filter(
-        (pl.col("expected_remaining_war_lower") > pl.col("expected_remaining_war"))
+    available_values = (
+        values.filter(pl.col("calculation_status") == "available")
+        if "calculation_status" in values.columns
+        else values
+    )
+    war_bounds_present = pl.col("expected_remaining_war_lower").is_not_null()
+    value_bounds_present = pl.col("transferable_value_lower_dollars").is_not_null()
+    incomplete_intervals = available_values.filter(
+        (
+            pl.col("expected_remaining_war_lower").is_null()
+            != pl.col("expected_remaining_war_upper").is_null()
+        )
+        | (
+            pl.col("transferable_value_lower_dollars").is_null()
+            != pl.col("transferable_value_upper_dollars").is_null()
+        )
+        | (war_bounds_present != value_bounds_present)
+    ).height
+    bounded_values = available_values.filter(war_bounds_present & value_bounds_present)
+    interval_failures = bounded_values.filter(
+        pl.any_horizontal(
+            pl.col(column).is_null() | ~pl.col(column).is_finite()
+            for column in (
+                "expected_remaining_war_lower",
+                "expected_remaining_war",
+                "expected_remaining_war_upper",
+                "transferable_value_lower_dollars",
+                "transferable_value_dollars",
+                "transferable_value_upper_dollars",
+            )
+        )
+        | (pl.col("expected_remaining_war_lower") > pl.col("expected_remaining_war"))
         | (pl.col("expected_remaining_war") > pl.col("expected_remaining_war_upper"))
         | (pl.col("transferable_value_lower_dollars") > pl.col("transferable_value_dollars"))
         | (pl.col("transferable_value_dollars") > pl.col("transferable_value_upper_dollars"))
     ).height
     checks.append(_check("current_value_unique_player", duplicate_values, values.height))
-    checks.append(_check("current_value_interval_order", interval_failures, values.height))
+    checks.append(
+        _check(
+            "current_value_interval_completeness",
+            incomplete_intervals,
+            available_values.height,
+        )
+    )
+    checks.append(
+        _check("current_value_interval_order", interval_failures, bounded_values.height)
+    )
 
     return {
         "checks": checks,

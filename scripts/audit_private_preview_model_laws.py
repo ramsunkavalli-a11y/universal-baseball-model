@@ -39,6 +39,7 @@ def main() -> int:
             "warnings": [
                 "The nested six-year hurdle repeats two-year hazards approximately; it is not a joint path simulation.",
                 "Organization-neutral value is not a current-team playing-time allocation; team capacity is a separate research view.",
+                "Annual WAR and value ranges are sensitivity bounds; their full-universe 2025 coverage was dominated by nonparticipants.",
                 "Passing identities does not replace prospective outcome validation after the protected 2026 season is complete.",
             ],
             "boundaries": {
