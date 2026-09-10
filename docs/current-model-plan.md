@@ -181,8 +181,9 @@ player-type-specific direct-to-established share beat one pooled share on both p
 scores in 2023, 2024 and 2025. Freeze 33.8% for advancing fringe hitters and 20.7% for
 advancing fringe pitchers; otherwise the successful advance enters meaningful. This
 does not change the separately predicted advancement probability or current rankings.
-The year-by-year state engine is implemented with a strict prior-year boundary and
-monotone states. The remaining P0 work is the workload/performance-pool integration
+The year-by-year state engine is implemented with frozen workload thresholds for the
+initial MLB state, then a strict prior-year boundary and monotone states for later
+progression. The remaining P0 work is the workload/performance-pool integration
 and full historical replay; do not switch the playable values before that gate.
 Because the workload coefficients are strong, the durable package also freezes each
 training feature's minimum, P1, P99 and maximum. The replay must disclose its

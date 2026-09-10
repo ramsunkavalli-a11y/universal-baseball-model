@@ -286,6 +286,8 @@ def simulate_post_arrival_states(
     player_type: str,
     initial_age_years: float,
     direct_established_probability: float,
+    meaningful_workload_threshold: float = 200.0,
+    established_workload_threshold: float = 400.0,
 ) -> np.ndarray:
     """Advance career state using only each draw's previously sampled workload."""
 
@@ -306,6 +308,13 @@ def simulate_post_arrival_states(
         raise ValueError("initial age must be finite")
     if not 0.0 <= direct_established_probability <= 1.0:
         raise ValueError("direct-established probability must lie in [0, 1]")
+    if (
+        not np.isfinite(meaningful_workload_threshold)
+        or not np.isfinite(established_workload_threshold)
+        or meaningful_workload_threshold <= 0.0
+        or established_workload_threshold < meaningful_workload_threshold
+    ):
+        raise ValueError("career-state workload thresholds are invalid")
 
     states = np.zeros(sampled.shape, dtype=np.int8)
     current = np.zeros(sampled.shape[0], dtype=np.int8)
@@ -351,10 +360,17 @@ def simulate_post_arrival_states(
                     rng.random(meaningful.sum()) < probability
                 ]
                 current[targets] = SIMULATED_STATE_CODES["ESTABLISHED_MLB"]
-        arrival = (current == SIMULATED_STATE_CODES["NO_MLB"]) & (
-            sampled[:, year_index] > 0.0
-        )
-        current[arrival] = SIMULATED_STATE_CODES["FRINGE_MLB"]
+        no_mlb = current == SIMULATED_STATE_CODES["NO_MLB"]
+        arrival_workload = sampled[:, year_index]
+        current[
+            no_mlb & (arrival_workload > 0.0)
+        ] = SIMULATED_STATE_CODES["FRINGE_MLB"]
+        current[
+            no_mlb & (arrival_workload >= meaningful_workload_threshold)
+        ] = SIMULATED_STATE_CODES["MEANINGFUL_MLB"]
+        current[
+            no_mlb & (arrival_workload >= established_workload_threshold)
+        ] = SIMULATED_STATE_CODES["ESTABLISHED_MLB"]
         states[:, year_index] = current
     if np.any(np.diff(states, axis=1) < 0):
         raise RuntimeError("simulated career state moved backward")

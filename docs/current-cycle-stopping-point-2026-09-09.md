@@ -202,8 +202,9 @@ advancement inside each draw. Current rankings still use the prior coherent base
 The stored equation now has a checked callable interface. Conditional on a successful
 fringe advance, the time-ordered destination test uses a 33.8% direct-established
 share for hitters and 20.7% for pitchers; it beat the pooled rule in 2023–2025.
-The state engine itself is implemented and tested with the required one-year lag,
-one transition per player-year and no backward movement. It is not yet connected to state-conditioned workload and
+The state engine itself is implemented and tested. Initial arrival uses the frozen
+workload thresholds; later progression has the required one-year lag, one transition
+per player-year and no backward movement. It is not yet connected to state-conditioned workload and
 performance sampling, so it does not change the private explorer.
 Feature-support bounds are frozen with the equations so that the next replay can
 report extrapolation explicitly.

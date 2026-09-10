@@ -39,9 +39,10 @@ The draw's state then controls the eligible historical workload/performance pool
 This removes the current circular shortcut of selecting an eventual tier first. It
 must be replayed against historical cutoffs before it can change rankings.
 
-The deterministic state engine for that sequence is now implemented and tested. It
-uses no same-year workload to decide that year's state: a draw first arrives as fringe,
-then only its prior-year workload may affect the following transition, with at most
-one forward transition per player-year. The remaining
+The deterministic state engine for that sequence is now implemented and tested. The
+first MLB season uses the frozen career definitions: positive workload is fringe,
+200+ PA/BF is meaningful and 400+ is established. After that initial classification,
+only prior-year workload may affect the following transition, with at most one forward
+transition per player-year. The remaining
 integration is to let the simulated state select the appropriate historical workload
 and performance pool, then run the full cutoff replay.
