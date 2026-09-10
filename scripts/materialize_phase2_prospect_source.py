@@ -62,7 +62,11 @@ def main() -> int:
         "ranked_players": matched.height,
         "matched_mlbam": matched.filter(pl.col("player_id").is_not_null()).height,
         "unmatched_mlbam": matched.filter(pl.col("player_id").is_null()).height,
-        "identity_policy": "exact normalized player name plus current MLB organization",
+        "identity_policy": (
+            "exact normalized player name plus organization; exact unique normalized "
+            "name fallback when dated source organization no longer matches; ambiguous "
+            "names remain unmatched"
+        ),
         "capture_sha256": sha256_file(capture),
         "storage": storage,
     }

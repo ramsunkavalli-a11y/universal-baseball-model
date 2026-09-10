@@ -214,29 +214,40 @@ def normalized_person_name(value: str) -> str:
 
 
 def attach_mlbam_ids(rankings: pl.DataFrame, players: pl.DataFrame) -> pl.DataFrame:
-    """Use exact normalized name plus current organization; ambiguous rows fail."""
+    """Use exact name/org, then a unique-name fallback for organization changes."""
     required = {"player_id", "player_name", "organization_id"}
     if missing := sorted(required - set(players.columns)):
         raise ValueError(f"prospect identity players missing fields: {missing}")
     lookup: dict[tuple[str, int], list[int]] = {}
+    name_lookup: dict[str, list[int]] = {}
     for row in players.select(*sorted(required)).iter_rows(named=True):
+        normalized_name = normalized_person_name(str(row["player_name"]))
+        name_lookup.setdefault(normalized_name, []).append(int(row["player_id"]))
         if row["organization_id"] is None:
             continue
-        key = (normalized_person_name(str(row["player_name"])), int(row["organization_id"]))
+        key = (normalized_name, int(row["organization_id"]))
         lookup.setdefault(key, []).append(int(row["player_id"]))
     ids: list[int | None] = []
     statuses: list[str] = []
     for row in rankings.iter_rows(named=True):
         key = (normalized_person_name(str(row["player_name"])), int(row["organization_id"]))
-        matches = sorted(set(lookup.get(key, [])))
-        ids.append(matches[0] if len(matches) == 1 else None)
-        statuses.append(
-            "exact_name_and_organization"
-            if len(matches) == 1
-            else "ambiguous_name_and_organization"
-            if matches
-            else "unmatched"
-        )
+        organization_matches = sorted(set(lookup.get(key, [])))
+        name_matches = sorted(set(name_lookup.get(key[0], [])))
+        if len(organization_matches) == 1:
+            ids.append(organization_matches[0])
+            statuses.append("exact_name_and_organization")
+        elif organization_matches:
+            ids.append(None)
+            statuses.append("ambiguous_name_and_organization")
+        elif len(name_matches) == 1:
+            ids.append(name_matches[0])
+            statuses.append("exact_unique_name_organization_changed")
+        elif name_matches:
+            ids.append(None)
+            statuses.append("ambiguous_name")
+        else:
+            ids.append(None)
+            statuses.append("unmatched")
     return rankings.with_columns(
         pl.Series("player_id", ids, dtype=pl.Int64),
         pl.Series("identity_status", statuses, dtype=pl.String),

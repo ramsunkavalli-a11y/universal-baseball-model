@@ -1,5 +1,13 @@
 # Current model plan
 
+## Active P0: explanation-first prospect ranking audit
+
+Before further prospect-model complexity or any public ranking, complete the
+[prospect ranking sanity audit](prospect-ranking-sanity-audit-plan.md). Compare the
+frozen model and FanGraphs top 50 as diagnostic lists, explain large differences from
+the model's age/level, skill, opportunity, WAR and value components, and fix only
+general structural rules. Public FV and rank remain prohibited model inputs.
+
 Updated 2026-09-10. The user wants the model made credible before further interface
 work. The [product roadmap](product-roadmap.md) is now the authoritative active plan;
 this document retains detailed evidence from the current hitter/opportunity workstream.

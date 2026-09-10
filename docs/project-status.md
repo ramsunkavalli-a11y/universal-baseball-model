@@ -2,6 +2,17 @@
 
 Updated 2026-09-10. This is the current start-here document.
 
+## Active product gate: explainable prospect rankings
+
+The first [top-50 ranking audit](prospect-top50-ranking-audit-checkpoint.md) is now
+complete. It compares both directions against the captured FanGraphs list without
+using any outside rank or FV as a model input. The source identity pipeline now safely
+handles organization changes, and players who graduated to MLB are separated from
+true model omissions. The main open structural warning is the model top 50's 49 hitter
+to 1 pitcher split; conditional pitcher skill is compressed before FV or dollars are
+assigned. Low-level hitter evidence and proximity-versus-upside balance are the next
+two bounded checks. Current playable values are unchanged.
+
 ## Latest model-method block: aging, attrition and shrinkage
 
 The [GitHub implementation review](github-projection-methods-review-2026-09-10.md)

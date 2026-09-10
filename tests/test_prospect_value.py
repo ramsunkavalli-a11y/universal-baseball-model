@@ -29,7 +29,7 @@ def test_top100_parser_attaches_published_50_fv_hitter_value() -> None:
     assert josuar["expected_controlled_war"] == 7.0
 
 
-def test_prospect_identity_requires_name_and_organization() -> None:
+def test_prospect_identity_prefers_name_and_organization() -> None:
     rankings = parse_fangraphs_top100_html(_top100_html()).filter(pl.col("rank") == 30)
     players = pl.DataFrame(
         {
@@ -42,6 +42,38 @@ def test_prospect_identity_requires_name_and_organization() -> None:
 
     assert result.item(0, "player_id") == 829034
     assert result.item(0, "identity_status") == "exact_name_and_organization"
+
+
+def test_prospect_identity_allows_unique_name_after_organization_change() -> None:
+    rankings = parse_fangraphs_top100_html(_top100_html()).filter(pl.col("rank") == 30)
+    players = pl.DataFrame(
+        {
+            "player_id": [829034],
+            "player_name": ["Josuar González"],
+            "organization_id": [135],
+        }
+    )
+
+    result = attach_mlbam_ids(rankings, players)
+
+    assert result.item(0, "player_id") == 829034
+    assert result.item(0, "identity_status") == "exact_unique_name_organization_changed"
+
+
+def test_prospect_identity_rejects_ambiguous_name_fallback() -> None:
+    rankings = parse_fangraphs_top100_html(_top100_html()).filter(pl.col("rank") == 30)
+    players = pl.DataFrame(
+        {
+            "player_id": [829034, 10],
+            "player_name": ["Josuar González", "Josuar Gonzalez"],
+            "organization_id": [135, 116],
+        }
+    )
+
+    result = attach_mlbam_ids(rankings, players)
+
+    assert result.item(0, "player_id") is None
+    assert result.item(0, "identity_status") == "ambiguous_name"
 
 
 def test_model_fv_uses_our_war_and_only_benchmark_scale() -> None:
