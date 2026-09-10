@@ -1,38 +1,58 @@
 {
   "arrival_only_pooled_path": {
-    "bias": 0.037168072550359345,
-    "mae": 0.19862423177549332,
-    "observed_mean": 0.08959504999555999,
+    "bias": 0.03716807255035933,
+    "mae": 0.19862423177549327,
+    "observed_mean": 0.08959504999556,
     "players": 3649,
     "predicted_mean": 0.12676312254591934,
     "rmse": 0.5511267763664472
   },
+  "arrival_only_vs_historical_incumbent_paired": {
+    "candidate_minus_baseline_mse": -0.00793987872112793,
+    "p025": -0.020544446012659253,
+    "p975": 0.002835005726661032
+  },
   "arrival_only_vs_zero_paired": {
     "candidate_minus_baseline_mse": -0.028296232322035233,
-    "p025": -0.04742510774947689,
-    "p975": -0.01167667456185705
+    "p025": -0.04703313783542992,
+    "p975": -0.01074196926582575
   },
   "as_of_date": "2026-09-10",
-  "decision": "promising development replay; require fresh confirmation and current incumbent comparison before promotion",
+  "decision": "promising_not_proven_no_promotion",
   "forecast_snapshot": 2021,
+  "historical_incumbent": {
+    "bias": -0.042188779950017075,
+    "mae": 0.15383981464046742,
+    "observed_mean": 0.08959504999556,
+    "players": 3649,
+    "predicted_mean": 0.04740627004554292,
+    "rmse": 0.558283621781259
+  },
   "limits": [
     "The 2021 cohort and hurdle have appeared in prior development work; this is chronology-safe but not fresh confirmation.",
     "This scores component WAR only, not defense-independent official WAR or trade value.",
     "The constant-hazard four-year hurdle is tested as deployed and is already known to be optimistic.",
-    "All non-arrivals remain as zero observed WAR."
+    "All non-arrivals remain as zero observed WAR.",
+    "The historical incumbent uses cutoff-fitted level translations, the deployed 800-BF regression and Tango aging, but an analytic expected workload rather than Monte Carlo draws.",
+    "Subgroups are prespecified diagnostics; no subgroup is used as a separate promotion opportunity."
   ],
   "linked": {
-    "bias": 0.01582906932562609,
+    "bias": 0.015829069325626083,
     "mae": 0.17892904507101112,
-    "observed_mean": 0.08959504999555999,
+    "observed_mean": 0.08959504999556,
     "players": 3649,
     "predicted_mean": 0.10542411932118609,
-    "rmse": 0.5531128514968542
+    "rmse": 0.5531128514968541
   },
   "linked_vs_arrival_only_paired": {
-    "candidate_minus_baseline_mse": 0.002193102862909013,
-    "p025": -0.005169210237081489,
-    "p975": 0.008346079732468061
+    "candidate_minus_baseline_mse": 0.002193102862909006,
+    "p025": -0.004744033122232654,
+    "p975": 0.008620417355494986
+  },
+  "linked_vs_historical_incumbent_paired": {
+    "candidate_minus_baseline_mse": -0.005746775858218927,
+    "p025": -0.02194506129620448,
+    "p975": 0.008035712329201397
   },
   "model_effect": "none",
   "outcome_seasons": [
@@ -44,28 +64,28 @@
   "path_library_cutoff": "window_end_year <= 2021",
   "path_prefix_means": {
     "established": {
-      "1": 0.4419404704100033,
-      "2": 1.2091569799559847,
+      "1": 0.44194047041000334,
+      "2": 1.209156979955985,
       "3": 2.0511603114967683,
-      "4": 2.9092559520309758
+      "4": 2.909255952030975
     },
     "fringe": {
       "1": 0.03629554667029501,
       "2": 0.05009168329520471,
-      "3": 0.04839476801685589,
-      "4": 0.051457662662843476
+      "3": 0.048394768016855896,
+      "4": 0.05145766266284346
     },
     "meaningful_only": {
-      "1": 0.1782621225529286,
-      "2": 0.38111215952792094,
-      "3": 0.47416350616163716,
-      "4": 0.5182192453253609
+      "1": 0.17826212255292867,
+      "2": 0.3811121595279209,
+      "3": 0.47416350616163705,
+      "4": 0.518219245325361
     },
     "pooled": {
       "1": 0.21870835949077674,
-      "2": 0.563332724703813,
+      "2": 0.5633327247038129,
       "3": 0.9196082098766717,
-      "4": 1.279571641199751
+      "4": 1.2795716411997509
     }
   },
   "report_schema_version": 1,
@@ -90,67 +110,191 @@
   "status": "development_replay_complete_not_promoted",
   "subgroups": [
     {
+      "arrival_only_predicted_mean": 0.05428810083285619,
+      "arrival_only_rmse": 0.3126455025744027,
       "group": "level_tier",
-      "observed_mean": 0.23470846360416842,
-      "players": 512,
-      "predicted_mean": 0.236757095218484,
-      "value": "AA"
-    },
-    {
-      "group": "level_tier",
-      "observed_mean": 0.25068577330480446,
-      "players": 430,
-      "predicted_mean": 0.3595669465527879,
-      "value": "AAA"
-    },
-    {
-      "group": "level_tier",
-      "observed_mean": 0.03641619397735267,
+      "incumbent_predicted_mean": 0.03374785638228546,
+      "incumbent_rmse": 0.3135699364731047,
+      "linked_predicted_mean": 0.04037208126802732,
+      "linked_rmse": 0.31300598221592807,
+      "observed_mean": 0.036416193977352664,
       "players": 2696,
-      "predicted_mean": 0.040372081268027334,
       "value": "A_OR_BELOW"
     },
     {
+      "arrival_only_predicted_mean": 0.317343350358211,
+      "arrival_only_rmse": 0.928891302991285,
+      "group": "level_tier",
+      "incumbent_predicted_mean": 0.09051648044792113,
+      "incumbent_rmse": 0.947781305465877,
+      "linked_predicted_mean": 0.23675709521848404,
+      "linked_rmse": 0.9215294445590629,
+      "observed_mean": 0.23470846360416842,
+      "players": 512,
+      "value": "AA"
+    },
+    {
+      "arrival_only_predicted_mean": 0.3573919382224959,
+      "arrival_only_rmse": 0.9674146069572338,
+      "group": "level_tier",
+      "incumbent_predicted_mean": 0.08287021331290712,
+      "incumbent_rmse": 0.9784804684730422,
+      "linked_predicted_mean": 0.3595669465527879,
+      "linked_rmse": 0.9845307851997934,
+      "observed_mean": 0.2506857733048045,
+      "players": 430,
+      "value": "AAA"
+    },
+    {
+      "arrival_only_predicted_mean": 0.0822101255130601,
+      "arrival_only_rmse": 0.3237140335199529,
       "group": "role_tier",
-      "observed_mean": 0.04490448576938081,
+      "incumbent_predicted_mean": 0.03035679238006541,
+      "incumbent_rmse": 0.31841975772300585,
+      "linked_predicted_mean": 0.035957637425001424,
+      "linked_rmse": 0.31848339831926253,
+      "observed_mean": 0.044904485769380824,
       "players": 1625,
-      "predicted_mean": 0.03595763742500143,
       "value": "RELIEVER"
     },
     {
+      "arrival_only_predicted_mean": 0.22341583323172967,
+      "arrival_only_rmse": 0.8627039339065831,
       "group": "role_tier",
-      "observed_mean": 0.18310368445846076,
+      "incumbent_predicted_mean": 0.09092195769808534,
+      "incumbent_rmse": 0.8809984696805582,
+      "linked_predicted_mean": 0.26167732739341815,
+      "linked_rmse": 0.8707544538243316,
+      "observed_mean": 0.18310368445846073,
       "players": 1124,
-      "predicted_mean": 0.26167732739341815,
       "value": "STARTER"
     },
     {
+      "arrival_only_predicted_mean": 0.08752328251211558,
+      "arrival_only_rmse": 0.33689865213175824,
       "group": "role_tier",
+      "incumbent_predicted_mean": 0.024113366085796485,
+      "incumbent_rmse": 0.3346188774582254,
+      "linked_predicted_mean": 0.036130566999251934,
+      "linked_rmse": 0.33315904111562283,
       "observed_mean": 0.05327935224160773,
       "players": 889,
-      "predicted_mean": 0.036130566999251955,
       "value": "SWINGMAN"
     },
     {
+      "arrival_only_predicted_mean": 0.12154838090680738,
+      "arrival_only_rmse": 0.5505011634906645,
       "group": "pitch_hand",
-      "observed_mean": 0.10517845934773395,
+      "incumbent_predicted_mean": 0.04649388565130321,
+      "incumbent_rmse": 0.556676900146865,
+      "linked_predicted_mean": 0.09955910637703808,
+      "linked_rmse": 0.5503406352441139,
+      "observed_mean": 0.08541347473665199,
+      "players": 2877,
+      "value": "R"
+    },
+    {
+      "arrival_only_predicted_mean": 0.14619681645229884,
+      "arrival_only_rmse": 0.5534520093993008,
+      "group": "pitch_hand",
+      "incumbent_predicted_mean": 0.05080643831267719,
+      "incumbent_rmse": 0.5642310698627212,
+      "linked_predicted_mean": 0.12728116885527127,
+      "linked_rmse": 0.5633238821690775,
+      "observed_mean": 0.105178459347734,
       "players": 772,
-      "predicted_mean": 0.12728116885527124,
       "value": "L"
     },
     {
-      "group": "pitch_hand",
-      "observed_mean": 0.085413474736652,
-      "players": 2877,
-      "predicted_mean": 0.09955910637703808,
-      "value": "R"
+      "arrival_only_predicted_mean": 0.10287688628632562,
+      "arrival_only_rmse": 0.1659780620022113,
+      "group": "observed_arrival_group",
+      "incumbent_predicted_mean": 0.0367567835477408,
+      "incumbent_rmse": 0.09243211583996262,
+      "linked_predicted_mean": 0.07697272996053123,
+      "linked_rmse": 0.16675382825683022,
+      "observed_mean": 0.0,
+      "players": 3201,
+      "value": "did_not_arrive"
+    },
+    {
+      "arrival_only_predicted_mean": 0.29743241332038245,
+      "arrival_only_rmse": 1.509025271662006,
+      "group": "observed_arrival_group",
+      "incumbent_predicted_mean": 0.12349780191934788,
+      "incumbent_rmse": 1.5740460170316715,
+      "linked_predicted_mean": 0.3087118366056865,
+      "linked_rmse": 1.5143236058313445,
+      "observed_mean": 0.7297596817718714,
+      "players": 448,
+      "value": "arrived"
+    },
+    {
+      "arrival_only_predicted_mean": 0.012921113341564911,
+      "arrival_only_rmse": 0.08605048946185889,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.006900655723945705,
+      "incumbent_rmse": 0.0855693380489175,
+      "linked_predicted_mean": 0.004580786224707181,
+      "linked_rmse": 0.08548819653332095,
+      "observed_mean": 0.004812528421341775,
+      "players": 730,
+      "value": "0"
+    },
+    {
+      "arrival_only_predicted_mean": 0.029058345798880333,
+      "arrival_only_rmse": 0.10047589347328012,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.014154105806241804,
+      "incumbent_rmse": 0.09809616877669289,
+      "linked_predicted_mean": 0.011126899607335577,
+      "linked_rmse": 0.0980552390953676,
+      "observed_mean": 0.0074787447310526965,
+      "players": 730,
+      "value": "1"
+    },
+    {
+      "arrival_only_predicted_mean": 0.0578542010638558,
+      "arrival_only_rmse": 0.372083455573258,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.03622115754876688,
+      "incumbent_rmse": 0.37412079310940693,
+      "linked_predicted_mean": 0.0361771837722894,
+      "linked_rmse": 0.3748301023355781,
+      "observed_mean": 0.05476672625643716,
+      "players": 730,
+      "value": "2"
+    },
+    {
+      "arrival_only_predicted_mean": 0.13683183245573147,
+      "arrival_only_rmse": 0.45043683891548997,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.06591614086674673,
+      "incumbent_rmse": 0.44793363960642724,
+      "linked_predicted_mean": 0.10039288646560864,
+      "linked_rmse": 0.44640011614422476,
+      "observed_mean": 0.07289241364961747,
+      "players": 730,
+      "value": "3"
+    },
+    {
+      "arrival_only_predicted_mean": 0.3975210213007351,
+      "arrival_only_rmse": 1.0775149478943529,
+      "group": "arrival_probability_quintile",
+      "incumbent_predicted_mean": 0.11393041925353128,
+      "incumbent_rmse": 1.09638808623782,
+      "linked_predicted_mean": 0.3752124135417712,
+      "linked_rmse": 1.0835888329645842,
+      "observed_mean": 0.3083244662566949,
+      "players": 729,
+      "value": "4"
     }
   ],
   "training_snapshot": 2018,
   "zero_baseline": {
-    "bias": -0.08959504999555999,
+    "bias": -0.08959504999556,
     "mae": 0.11326421920401225,
-    "observed_mean": 0.08959504999555999,
+    "observed_mean": 0.08959504999556,
     "players": 3649,
     "predicted_mean": 0.0,
     "rmse": 0.5762264797370104

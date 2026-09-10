@@ -114,8 +114,12 @@ The current-date linked-path sensitivity changes pitcher-prospect WAR from 64.6 
 constant prospect-rate assumption is the main compression source, but it is not a
 promotion result. The cutoff-safe 2021 development replay finds plausible scale and a
 clear gain over zero for the simpler arrival-only pooled path; tier splitting adds no
-reliable gain. The next P0 is an identical-row comparison with a reconstructed
-historical incumbent, then fresh confirmation. Current rankings stay unchanged.
+reliable gain. The identical-row incumbent replay is also complete: the incumbent
+predicts 0.047 mean WAR and 0.558 RMSE versus 0.127 and 0.551 for the arrival-only
+path, with 0.090 observed. The paired improvement interval crosses zero, so no method
+is promoted. Prespecified subgroup diagnostics are retained as failure checks, not
+new model-selection opportunities. The next P0 is genuinely later confirmation.
+Current rankings stay unchanged.
 
 **Direction correction:** the sequence below is the batting/opportunity workstream,
 not the whole project roadmap. Before another opportunity challenger, inventory

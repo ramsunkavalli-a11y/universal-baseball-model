@@ -155,8 +155,11 @@ with the current constant-rate simulation before changing any value.
 The first current-date sensitivity confirms materiality: linked pitcher paths raise
 aggregate prospect WAR 16.4 times and materially reorder the list. A cutoff-safe 2021
 development replay supports the broader scale and the simpler arrival-only pooled
-path, but not tier splitting. Reconstruct the historical incumbent on identical rows
-and require fresh confirmation before promotion.
+path, but not tier splitting. The reconstructed historical incumbent underpredicts
+mean WAR (0.047 versus 0.090 observed); the pooled linked path overpredicts it (0.127)
+and improves RMSE from 0.558 to 0.551, but the paired interval crosses zero. Retain
+both results and require genuinely later confirmation before promotion. Do not tune
+to the disclosed level, role, hand, arrival, or probability-band diagnostics.
 
 9. Add pitch characteristics, batted-ball quality, scouting, injury, park, platoon and
    role-change evidence through bounded, population-specific ablations.

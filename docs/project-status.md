@@ -68,9 +68,18 @@ The [cutoff-safe 2021 replay](dependent-career-linked-pitcher-replay-result.md) 
 promising on scale: across 3,649 pre-MLB pitchers, observed 2022-2025 component WAR
 averages 0.090 and the linked forecast predicts 0.105. The simpler arrival-only pooled
 path beats zero RMSE 0.551 to 0.576, with a fully favorable paired interval. Splitting
-paths into fringe/meaningful/established tiers does not beat the pooled path. Current
-rankings remain unchanged. The next P0 is an identical-row comparison with a
-reconstructed historical incumbent, followed by fresh confirmation.
+paths into fringe/meaningful/established tiers does not beat the pooled path.
+
+The identical-row historical incumbent is now reconstructed with only 2018/2021
+level translations, evidence through 2021, the deployed 800-BF regression and Tango
+component aging. It predicts 0.047 mean WAR with 0.558 RMSE. The arrival-only linked
+path predicts 0.127 with 0.551 RMSE, closer to the observed mean, but its paired MSE
+interval versus the incumbent crosses zero. Diagnostics show the tradeoff: linked
+paths better capture later arrivals and higher-probability pitchers but overpredict
+non-arrivals and some low-probability groups; the incumbent remains better for the
+2021 reliever group. This is promising, not proven. Current rankings remain unchanged.
+The next valid gate is a predeclared genuinely later confirmation; do not tune a
+role fix on these disclosed subgroups and call it confirmation.
 
 The earlier September 9 stopping point remains useful historical context in
 [the prior handoff](current-cycle-stopping-point-2026-09-09.md).

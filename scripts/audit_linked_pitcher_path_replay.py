@@ -11,8 +11,15 @@ from pathlib import Path
 import numpy as np
 import polars as pl
 
+from universal_baseball.conditional_war_rates import (
+    build_pitcher_conditional_war_rates,
+)
 from universal_baseball.historical_pitcher_performance import (
     build_historical_pitcher_performance_paths,
+)
+from universal_baseball.level_component_translation import (
+    build_translated_affiliated_profiles,
+    fit_same_season_component_translation,
 )
 from universal_baseball.prospect_arrival import (
     build_arrival_cohort,
@@ -23,6 +30,7 @@ from universal_baseball.storage import sha256_file
 
 
 TIERS = ("fringe", "meaningful_only", "established")
+PITCHER_COMPONENTS = ("so", "ubb", "hbp", "hr", "other")
 
 
 def _history_stats(root: Path) -> pl.DataFrame:
@@ -37,6 +45,35 @@ def _history_stats(root: Path) -> pl.DataFrame:
 
 def _four_year_probability(two_year: pl.Expr) -> pl.Expr:
     return 1.0 - (1.0 - two_year) ** 2
+
+
+def _pitcher_components(frame: pl.DataFrame) -> pl.DataFrame:
+    return frame.with_columns(
+        pl.col("strike_outs").alias("so"),
+        (pl.col("base_on_balls") - pl.col("intentional_walks")).alias("ubb"),
+        pl.col("hit_batters").alias("hbp"),
+        pl.col("home_runs").alias("hr"),
+    ).with_columns(
+        (
+            pl.col("batters_faced")
+            - pl.sum_horizontal(*PITCHER_COMPONENTS[:-1])
+        ).alias("other")
+    )
+
+
+def _mlb_pitcher_history(frame: pl.DataFrame) -> pl.DataFrame:
+    return frame.select(
+        "season",
+        "player_id",
+        pl.col("pitching_games").alias("pitching_games_played"),
+        pl.col("pitching_starts").alias("pitching_games_started"),
+        pl.col("pitching_bf").alias("pitching_batters_faced"),
+        pl.col("pitching_so").alias("pitching_strike_outs"),
+        pl.col("pitching_ubb").alias("pitching_base_on_balls"),
+        pl.lit(0).cast(pl.Int64).alias("pitching_intentional_walks"),
+        pl.col("pitching_hbp").alias("pitching_hit_batsmen"),
+        pl.col("pitching_hr").alias("pitching_home_runs"),
+    )
 
 
 def _path_prefix_means(paths: pl.DataFrame) -> dict[str, dict[int, float]]:
@@ -59,6 +96,20 @@ def _path_prefix_means(paths: pl.DataFrame) -> dict[str, dict[int, float]]:
             )
             result[tier][years] = float(careers["war"].mean())
     return result
+
+
+def _path_year_workload_means(paths: pl.DataFrame) -> dict[str, dict[int, float]]:
+    cutoff = paths.filter(pl.col("window_end_year") <= 2021)
+    return {
+        tier: {
+            int(row["path_year"]): float(row["mean_adjusted_workload"])
+            for row in cutoff.filter(pl.col("outcome_tier_v2") == tier)
+            .group_by("path_year")
+            .agg(pl.col("adjusted_workload").mean().alias("mean_adjusted_workload"))
+            .iter_rows(named=True)
+        }
+        for tier in TIERS
+    }
 
 
 def _predict_war(row: dict[str, object], means: dict[str, dict[int, float]]) -> float:
@@ -94,6 +145,40 @@ def _predict_pooled_war(
         (1.0 - hazard) ** offset * hazard * means["pooled"][4 - offset]
         for offset in range(4)
     )
+
+
+def _predict_incumbent_war(
+    row: dict[str, object],
+    workloads: dict[str, dict[int, float]],
+    rates: dict[int, dict[int, float]],
+) -> float:
+    arrival = float(row["four_year_arrival_probability"])
+    if arrival <= 0.0:
+        return 0.0
+    player_rates = rates[int(row["player_id"])]
+    meaningful = float(row["four_year_nested_meaningful_probability"])
+    established = float(row["four_year_nested_established_probability"])
+    masses = {
+        "fringe": max(0.0, arrival - meaningful),
+        "meaningful_only": max(0.0, meaningful - established),
+        "established": max(0.0, established),
+    }
+    hazard = 1.0 - (1.0 - arrival) ** 0.25
+    expected = 0.0
+    for offset in range(4):
+        arrival_at_offset = (1.0 - hazard) ** offset * hazard
+        for tier in TIERS:
+            conditional_tier_mass = masses[tier] / arrival
+            for path_year in range(1, 5 - offset):
+                season = 2021 + offset + path_year
+                expected += (
+                    arrival_at_offset
+                    * conditional_tier_mass
+                    * workloads[tier][path_year]
+                    * player_rates[int(season)]
+                    / 800.0
+                )
+    return expected
 
 
 def _metrics(frame: pl.DataFrame, prediction: str) -> dict[str, float | int]:
@@ -271,6 +356,46 @@ def main() -> int:
     )
 
     pitching = pl.read_parquet(args.pitching)
+    component_skill = _pitcher_components(skill)
+    cutoff_translation = fit_same_season_component_translation(
+        component_skill,
+        exposure_column="batters_faced",
+        component_columns=PITCHER_COMPONENTS,
+        completed_seasons=(2018, 2021),
+        minimum_level_exposure=30,
+    )
+    incumbent_profiles = build_translated_affiliated_profiles(
+        scored.select("player_id"),
+        component_skill,
+        cutoff_translation.offsets,
+        exposure_column="batters_faced",
+        component_columns=PITCHER_COMPONENTS,
+        current_season=2021,
+        reference_season=2021,
+        regression_exposure=800.0,
+    )
+    incumbent_rates = build_pitcher_conditional_war_rates(
+        scored.select("player_id", "age_years"),
+        _mlb_pitcher_history(pitching),
+        current_season=2021,
+        forecast_seasons=(2022, 2023, 2024, 2025),
+        reference_batters_faced=int(
+            pitching.filter(pl.col("season") == 2021)["pitching_bf"].sum()
+        ),
+        runs_per_win=runs_per_win,
+        evidence_anchor_season=2021,
+        reference_season=2021,
+        affiliated_profiles=incumbent_profiles,
+    )
+    incumbent_rate_lookup = {
+        int(player_id): {
+            int(row["season"]): float(row["conditional_war_per_800_bf"])
+            for row in group.iter_rows(named=True)
+        }
+        for (player_id,), group in incumbent_rates.partition_by(
+            "player_id", as_dict=True
+        ).items()
+    }
     player_years = (
         pl.DataFrame(
             [
@@ -317,11 +442,14 @@ def main() -> int:
         .agg(
             pl.col("observed_component_war")
             .sum()
-            .alias("observed_four_year_component_war")
+            .alias("observed_four_year_component_war"),
+            pl.col("adjusted_workload").sum().alias("observed_four_year_bf"),
         )
         .rename({"path_player_id": "player_id"})
     )
-    means = _path_prefix_means(pl.read_parquet(args.performance_paths))
+    performance_paths = pl.read_parquet(args.performance_paths)
+    means = _path_prefix_means(performance_paths)
+    workload_means = _path_year_workload_means(performance_paths)
     evaluated = (
         scored.with_columns(
             pl.struct(
@@ -337,38 +465,86 @@ def main() -> int:
                 return_dtype=pl.Float64,
             )
             .alias("arrival_only_pooled_path_prediction"),
+            pl.struct(
+                "player_id",
+                "four_year_arrival_probability",
+                "four_year_nested_meaningful_probability",
+                "four_year_nested_established_probability",
+            )
+            .map_elements(
+                lambda row: _predict_incumbent_war(
+                    row, workload_means, incumbent_rate_lookup
+                ),
+                return_dtype=pl.Float64,
+            )
+            .alias("historical_incumbent_prediction"),
         )
         .join(observed, on="player_id", how="left", validate="1:1")
         .with_columns(
             pl.col("observed_four_year_component_war").fill_null(0.0),
+            pl.col("observed_four_year_bf").fill_null(0.0),
             pl.lit(0.0).alias("zero_prediction"),
         )
-    )
-    subgroup = []
-    for group in ("level_tier", "role_tier", "pitch_hand"):
-        subgroup.extend(
-            evaluated.group_by(group)
-            .agg(
-                pl.len().alias("players"),
-                pl.col("observed_four_year_component_war")
-                .mean()
-                .alias("observed_mean"),
-                pl.col("linked_predicted_war").mean().alias("predicted_mean"),
-            )
-            .filter(pl.col("players") >= 100)
-            .with_columns(pl.lit(group).alias("group"))
-            .rename({group: "value"})
-            .select("group", "value", "players", "observed_mean", "predicted_mean")
-            .sort("value")
-            .to_dicts()
+        .with_columns(
+            pl.when(pl.col("observed_four_year_bf") > 0)
+            .then(pl.lit("arrived"))
+            .otherwise(pl.lit("did_not_arrive"))
+            .alias("observed_arrival_group")
         )
+    )
+    ordered = evaluated.sort("four_year_arrival_probability").with_row_index(
+        "probability_order"
+    )
+    evaluated = ordered.with_columns(
+        (pl.col("probability_order") * 5 // evaluated.height)
+        .clip(upper_bound=4)
+        .cast(pl.String)
+        .alias("arrival_probability_quintile")
+    ).drop("probability_order")
+    subgroup = []
+    for group in (
+        "level_tier",
+        "role_tier",
+        "pitch_hand",
+        "observed_arrival_group",
+        "arrival_probability_quintile",
+    ):
+        for key, cell in evaluated.partition_by(group, as_dict=True).items():
+            if cell.height < 100:
+                continue
+            incumbent_cell = _metrics(cell, "historical_incumbent_prediction")
+            linked_cell = _metrics(cell, "linked_predicted_war")
+            pooled_cell = _metrics(cell, "arrival_only_pooled_path_prediction")
+            subgroup.append(
+                {
+                    "group": group,
+                    "value": str(key[0]),
+                    "players": cell.height,
+                    "observed_mean": linked_cell["observed_mean"],
+                    "incumbent_predicted_mean": incumbent_cell["predicted_mean"],
+                    "linked_predicted_mean": linked_cell["predicted_mean"],
+                    "arrival_only_predicted_mean": pooled_cell["predicted_mean"],
+                    "incumbent_rmse": incumbent_cell["rmse"],
+                    "linked_rmse": linked_cell["rmse"],
+                    "arrival_only_rmse": pooled_cell["rmse"],
+                }
+            )
     linked_metrics = _metrics(evaluated, "linked_predicted_war")
     pooled_metrics = _metrics(evaluated, "arrival_only_pooled_path_prediction")
+    incumbent_metrics = _metrics(evaluated, "historical_incumbent_prediction")
     paired = _paired_bootstrap(
         evaluated, "linked_predicted_war", "arrival_only_pooled_path_prediction"
     )
     pooled_vs_zero = _paired_bootstrap(
         evaluated, "arrival_only_pooled_path_prediction", "zero_prediction"
+    )
+    pooled_vs_incumbent = _paired_bootstrap(
+        evaluated,
+        "arrival_only_pooled_path_prediction",
+        "historical_incumbent_prediction",
+    )
+    linked_vs_incumbent = _paired_bootstrap(
+        evaluated, "linked_predicted_war", "historical_incumbent_prediction"
     )
     report = {
         "report_schema_version": 1,
@@ -395,19 +571,21 @@ def main() -> int:
         "path_prefix_means": means,
         "linked": linked_metrics,
         "arrival_only_pooled_path": pooled_metrics,
+        "historical_incumbent": incumbent_metrics,
         "linked_vs_arrival_only_paired": paired,
         "arrival_only_vs_zero_paired": pooled_vs_zero,
+        "arrival_only_vs_historical_incumbent_paired": pooled_vs_incumbent,
+        "linked_vs_historical_incumbent_paired": linked_vs_incumbent,
         "zero_baseline": _metrics(evaluated, "zero_prediction"),
         "subgroups": subgroup,
-        "decision": (
-            "promising development replay; require fresh confirmation and current "
-            "incumbent comparison before promotion"
-        ),
+        "decision": "promising_not_proven_no_promotion",
         "limits": [
             "The 2021 cohort and hurdle have appeared in prior development work; this is chronology-safe but not fresh confirmation.",
             "This scores component WAR only, not defense-independent official WAR or trade value.",
             "The constant-hazard four-year hurdle is tested as deployed and is already known to be optimistic.",
             "All non-arrivals remain as zero observed WAR.",
+            "The historical incumbent uses cutoff-fitted level translations, the deployed 800-BF regression and Tango aging, but an analytic expected workload rather than Monte Carlo draws.",
+            "Subgroups are prespecified diagnostics; no subgroup is used as a separate promotion opportunity.",
         ],
         "model_effect": "none",
     }
@@ -416,15 +594,15 @@ def main() -> int:
     )
     markdown = f"""# Linked pitcher path replay
 
-Status: **promising development replay; not promoted**.
+Status: **development replay complete; not promoted**.
 
 The replay fits the hurdle on the 2018 snapshot, forecasts every eligible 2021
 pre-MLB pitcher, uses only six-year career paths complete by the 2021 cutoff, and
 scores actual 2022-2025 MLB component WAR. Non-arrivals remain zero.
 
-| Players | Observed mean WAR | Linked predicted | Bias | Linked RMSE | Arrival-only RMSE | Zero RMSE |
-|---:|---:|---:|---:|---:|---:|---:|
-| {linked_metrics["players"]:,} | {linked_metrics["observed_mean"]:.3f} | {linked_metrics["predicted_mean"]:.3f} | {linked_metrics["bias"]:+.3f} | {linked_metrics["rmse"]:.3f} | {pooled_metrics["rmse"]:.3f} | {report["zero_baseline"]["rmse"]:.3f} |
+| Players | Observed mean WAR | Incumbent predicted | Linked predicted | Incumbent RMSE | Linked RMSE | Arrival-only RMSE | Zero RMSE |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| {linked_metrics["players"]:,} | {linked_metrics["observed_mean"]:.3f} | {incumbent_metrics["predicted_mean"]:.3f} | {linked_metrics["predicted_mean"]:.3f} | {incumbent_metrics["rmse"]:.3f} | {linked_metrics["rmse"]:.3f} | {pooled_metrics["rmse"]:.3f} | {report["zero_baseline"]["rmse"]:.3f} |
 
 The linked construction is directionally coherent and its broad scale is plausible in
 this replay: predicted mean WAR is close to observed and it beats predicting zero.
@@ -437,6 +615,12 @@ or rank changes.
 The simpler arrival-only path changes MSE versus zero by
 {pooled_vs_zero["candidate_minus_baseline_mse"]:+.6f}, with a 95% interval of
 [{pooled_vs_zero["p025"]:+.6f}, {pooled_vs_zero["p975"]:+.6f}].
+
+Against the cutoff-reconstructed incumbent, the arrival-only path changes MSE by
+{pooled_vs_incumbent["candidate_minus_baseline_mse"]:+.6f}, with a 95% interval of
+[{pooled_vs_incumbent["p025"]:+.6f}, {pooled_vs_incumbent["p975"]:+.6f}]. The incumbent
+uses only information available through 2021, including level translations fit on
+2018 and 2021, the deployed 800-BF regression, and Tango component aging.
 """
     args.output_md.write_text(markdown, encoding="utf-8")
     print(markdown)
