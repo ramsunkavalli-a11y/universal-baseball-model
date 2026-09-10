@@ -124,6 +124,13 @@ required controls. Pulled air is treated as potential future pitcher damage, not
 assumed pitcher talent; each increment must be repeatable and improve later proper
 scores.
 
+The [event-context source review](pitcher-event-context-readiness.md) confirms that
+the retained matchup design can support a universal platoon test after its ignored
+sidecar is rematerialized. It blocks lineup band because batting order was not
+retained, and blocks times-through-order/pitch-process work where lower-level feeds
+contain outcome-minimal sequences. Missing context must remain the exact aggregate
+baseline.
+
 The playable build now has an enforced
 [model-law audit](private-preview-model-law-audit-result.md). All 18 checks pass across
 probability simplexes, six-year path completeness, expected-workload/WAR identities,
@@ -578,7 +585,7 @@ branch-specific verification is recorded in the pull request.
 
 Current focused verification: opportunity, economics, guardrail, remaining-rights and
 current-availability tests pass; Ruff passes across the changed files. The latest full
-run has 1,394 passing tests. Four pre-existing hitter research-contract tests fail only
+run has 1,396 passing tests. Four pre-existing hitter research-contract tests fail only
 because their hash-bound ignored research artifacts are absent in this checkout. No new
 test failure was observed.
 

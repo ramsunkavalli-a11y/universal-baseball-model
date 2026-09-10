@@ -147,6 +147,8 @@ python scripts/build_results_explorer.py
 
 The builder automatically uses the newest dated checkpoint that has value, annual and
 player-name files, so the same launcher will follow later complete builds.
+Before a Phase 2 page opens, it reruns the structural model-law audit and stops if a
+probability, path, WAR/FV identity, player type, or displayed interval is inconsistent.
 
 The viewer deliberately labels these as research estimates. It does not remove review
 rows or turn reference ranges into calibrated confidence intervals.

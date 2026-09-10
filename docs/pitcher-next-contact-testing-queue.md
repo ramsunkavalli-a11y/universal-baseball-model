@@ -42,6 +42,11 @@ triples reduces the rare-triple noise in the rejected eight-outcome model.
 
 ## Priority 2: lineup challenge and platoon balance
 
+The [source-readiness review](pitcher-event-context-readiness.md) permits a platoon
+test after the ignored matchup sidecar is rematerialized. Lineup band is not yet a
+valid input because batting order was not retained. Times-through-order and
+intermediate pitch-process fields remain non-universal at lower levels.
+
 Apply the broader pitcher-projection review to times through the order, platoon
 splits, and starter-role forecasting before freezing this test. Then source-gate two
 simple event-level summaries:

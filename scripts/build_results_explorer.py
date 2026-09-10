@@ -6,6 +6,9 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+import polars as pl
+
+from universal_baseball.model_law_audit import audit_private_preview_laws
 from universal_baseball.results_explorer import write_explorer
 
 
@@ -15,6 +18,37 @@ REPORT_ROOTS = (
     Path("reports/generated/league-control"),
 )
 PHASE2_ROOT = Path("reports/generated/phase2-current-value")
+
+
+def audit_phase2_checkpoint(as_of_date: str, value_path: Path) -> dict[str, object]:
+    """Refuse to open a Phase 2 checkpoint that violates model identities."""
+
+    generated = Path("reports/generated")
+    conditional = generated / "phase2-conditional-war-paths" / as_of_date / "tables"
+    paths = {
+        "hitter": conditional / "hitter_expected_war_paths.parquet",
+        "pitcher": conditional / "pitcher_expected_war_paths.parquet",
+        "nested": generated / "phase2-nested-career-fv" / as_of_date
+        / "nested-career-model-fv.parquet",
+        "values": value_path,
+    }
+    if missing := [path for path in paths.values() if not path.exists()]:
+        joined = "\n".join(f"- {path}" for path in missing)
+        raise FileNotFoundError(f"Phase 2 law-audit inputs are missing:\n{joined}")
+    result = audit_private_preview_laws(
+        pl.read_parquet(paths["hitter"]),
+        pl.read_parquet(paths["pitcher"]),
+        pl.read_parquet(paths["nested"]),
+        pl.read_parquet(paths["values"]),
+    )
+    if result["failed"]:
+        failures = ", ".join(
+            str(check["name"])
+            for check in result["checks"]
+            if check["status"] == "fail"
+        )
+        raise RuntimeError(f"Phase 2 model-law audit failed: {failures}")
+    return result
 
 
 def _args() -> argparse.Namespace:
@@ -78,6 +112,9 @@ def main() -> int:
     if missing:
         joined = "\n".join(f"- {path}" for path in missing)
         raise FileNotFoundError(f"Required model outputs are missing:\n{joined}")
+    law_result = None
+    if (phase2_dated / "value-records.parquet").exists():
+        law_result = audit_phase2_checkpoint(as_of_date, value_path)
     payload = write_explorer(value_path, annual_path, names_path, args.output)
     print(f"Results explorer created: {args.output.resolve()}")
     print(
@@ -85,6 +122,8 @@ def main() -> int:
         f"usable: {payload['meta']['available_count']:,} | "
         f"review: {payload['meta']['review_count']:,}"
     )
+    if law_result is not None:
+        print(f"Model-law checks: {law_result['passed']} passed")
     return 0
 
 
