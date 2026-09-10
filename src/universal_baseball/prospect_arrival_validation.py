@@ -242,6 +242,36 @@ def continuous_promotion_gate(
     return {"promote": not reasons, "reasons": reasons}
 
 
+def expected_mean_promotion_gate(
+    incumbent_scores: dict[str, float | int],
+    candidate_scores: dict[str, float | int],
+    paired_difference: dict[str, object],
+    *,
+    distribution_score_passed: bool,
+    subgroup_review_passed: bool,
+    fresh_confirmation: bool,
+) -> dict[str, object]:
+    """Gate an expected-value forecast without treating median loss as mean loss."""
+
+    mse = paired_difference.get("mse")
+    if not isinstance(mse, dict):
+        raise ValueError("paired result is missing mse")
+    reasons: list[str] = []
+    if float(mse["difference"]) >= 0:
+        reasons.append("mse point estimate did not improve")
+    if float(mse["ci_high"]) >= 0:
+        reasons.append("mse paired interval includes no improvement")
+    if abs(float(candidate_scores["bias"])) > abs(float(incumbent_scores["bias"])):
+        reasons.append("absolute forecast bias worsened")
+    if not distribution_score_passed:
+        reasons.append("proper predictive-distribution score did not pass")
+    if not subgroup_review_passed:
+        reasons.append("supported-subgroup review did not pass")
+    if not fresh_confirmation:
+        reasons.append("fresh confirmation is still required")
+    return {"promote": not reasons, "reasons": reasons}
+
+
 def promotion_gate(
     paired_difference: dict[str, object],
     *,

@@ -169,6 +169,15 @@ did not consistently improve 2024/2025 confirmation. Keep role in pitcher opport
 and WAR paths, where it already belongs, and exclude it from the advancement hazard to
 avoid double counting. See the [role result](prospect-post-arrival-pitcher-role-result.md).
 
+The linked-path promotion rule is corrected: MAE targets the conditional median, so
+it cannot veto a forecast whose product target is expected WAR/value in a mostly-zero
+prospect cohort. Future linked-path validation must pair arrival Brier/log loss, a
+zero-inclusive proper distribution score such as CRPS, paired squared error for the
+mean, bias, supported subgroups and fresh confirmation. This does not promote the old
+pitcher challenger; its MSE interval crossed zero and it has not passed the required
+distribution or fresh-confirmation gates. See the
+[Expected-WAR validation law](expected-war-validation-law.md).
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game

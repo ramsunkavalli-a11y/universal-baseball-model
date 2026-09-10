@@ -8,6 +8,7 @@ from universal_baseball.prospect_arrival_validation import (
     common_continuous_cohort_fingerprint,
     completed_evaluation_years,
     continuous_promotion_gate,
+    expected_mean_promotion_gate,
     continuous_scores,
     paired_bootstrap_difference,
     paired_continuous_bootstrap_difference,
@@ -187,3 +188,37 @@ def test_continuous_gate_rejects_bias_damage_and_missing_confirmation() -> None:
     assert not result["promote"]
     assert "absolute forecast bias worsened" in result["reasons"]
     assert "fresh confirmation is still required" in result["reasons"]
+
+
+def test_expected_mean_gate_does_not_use_median_targeting_mae() -> None:
+    incumbent = {"bias": -0.05}
+    candidate = {"bias": -0.02}
+    paired = {
+        "mse": {"difference": -0.01, "ci_high": -0.001},
+        "mae": {"difference": 0.03, "ci_high": 0.04},
+    }
+    result = expected_mean_promotion_gate(
+        incumbent,
+        candidate,
+        paired,
+        distribution_score_passed=True,
+        subgroup_review_passed=True,
+        fresh_confirmation=True,
+    )
+    assert result["promote"]
+    assert result["reasons"] == []
+
+
+def test_expected_mean_gate_requires_a_proper_distribution_score() -> None:
+    result = expected_mean_promotion_gate(
+        {"bias": -0.05},
+        {"bias": -0.02},
+        {"mse": {"difference": -0.01, "ci_high": -0.001}},
+        distribution_score_passed=False,
+        subgroup_review_passed=True,
+        fresh_confirmation=True,
+    )
+    assert not result["promote"]
+    assert result["reasons"] == [
+        "proper predictive-distribution score did not pass"
+    ]

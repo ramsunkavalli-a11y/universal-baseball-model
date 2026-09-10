@@ -186,6 +186,14 @@ career-state advancement. Role remains an opportunity/WAR-path input, not an ext
 talent or advancement bonus. See the
 [post-arrival pitcher-role result](prospect-post-arrival-pitcher-role-result.md).
 
+The expected-WAR scoring rule is now explicit. The earlier linked-path gate incorrectly
+allowed MAE—a median-targeting loss—to veto an expected-value forecast in a cohort
+dominated by zeros. MAE remains descriptive but is removed from future promotion
+decisions. The replacement requires proper probability and full-distribution scores,
+paired squared error for expected WAR, bias, supported subgroups and fresh confirmation.
+No model is retroactively promoted. See the
+[Expected-WAR validation law](expected-war-validation-law.md).
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes

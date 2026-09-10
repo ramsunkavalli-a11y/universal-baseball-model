@@ -120,7 +120,7 @@ FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,514 passed. Four older research-contract tests fail because their
+Latest full suite: 1,516 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
 failure is present. The private build passes all 46 structural, statistical and accounting model-law checks.
 
@@ -160,3 +160,10 @@ The next pitcher-role increment was also closed cleanly. Prior games, starts, st
 share and batters faced per game do not consistently improve career-state advancement
 after total workload is known. Do not add a role bonus to advancement; preserve role
 only in the separate workload and WAR-rate paths.
+
+One validation rule was corrected before further linked-path work. MAE targets a
+median and therefore favors zero in the mostly-zero prospect cohort; it cannot veto
+an expected-WAR/value forecast. The old pitcher path remains unpromoted because its
+paired MSE interval crossed zero and it lacks both a proper full-distribution score and
+fresh confirmation. The next replay must score the exact zero mass and positive path
+together with CRPS, plus arrival probability and expected-WAR gates.

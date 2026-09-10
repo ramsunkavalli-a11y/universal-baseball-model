@@ -2,6 +2,12 @@
 
 Status: **development replay complete; not promoted**.
 
+Methodology note (2026-09-10): MAE targets the conditional median and is not a valid
+promotion veto for this expected-WAR forecast in a mostly-zero cohort. The model still
+is not promoted because its paired MSE interval crosses zero, no complete predictive
+distribution was scored, and this cohort is not fresh. See
+[Expected-WAR validation law](expected-war-validation-law.md).
+
 The replay fits the hurdle on the 2018 snapshot, forecasts every eligible 2021
 pre-MLB pitcher, uses only six-year career paths complete by the 2021 cutoff, and
 scores actual 2022-2025 MLB component WAR. Non-arrivals remain zero.
