@@ -88,6 +88,33 @@ Talent/FV remains separate from contract status and salary. League role and posi
 counts are diagnostics, never fixed quotas. See the
 [current Phase 2 preview](phase2-model-fv-and-workload-2026-09-09.md).
 
+### P0 — dependent career-path value distribution
+
+The highest-priority Phase 2 deliverable is one chronology-safe career-path model,
+not another symmetric multiplier on annual WAR. Each path must keep these linked:
+
+1. MLB arrival versus non-arrival and arrival timing;
+2. limited, meaningful and established career role;
+3. annual workload conditional on role, including inactive years and attrition;
+4. performance conditional on workload, with persistent talent uncertainty separated
+   from season event noise; and
+5. team control, pre-arbitration/arbitration/guaranteed cost, options, non-tender
+   decisions, present-value discounting and nonlinear market value for concentrated
+   star WAR.
+
+Reuse the validated talent, arrival and conditional-workload layers. Learn complete
+paths from historical players with failures, inactive seasons and zeroes retained.
+Preserve an observed player's annual sequence when resampling so survival, workload
+and role transitions do not become independent coin flips. Publication FV opinions
+remain excluded as predictors; FanGraphs, PECOTA, ZiPS and Steamer may be external
+reasonableness checks only.
+
+Required outputs are mean, median and P10-P90 surplus value; arrival, bust, regular
+and star probabilities; controlled WAR; expected cost; and the relevant control and
+source assumptions. Treat the already inspected 2025 season as development evidence.
+Promotion requires rolling-origin validation and a later untouched confirmation.
+See [the frozen implementation contract](dependent-career-path-value-plan.md).
+
 Historical arrival plus conditional meaningful and established-role hurdles are now
 integrated in the private preview. Organization remains excluded. The nested model
 reduces the hitter 50+ count from 352 to 86 without a quota and keeps Josuar Gonzalez
