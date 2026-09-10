@@ -87,6 +87,18 @@
     },
     {
       "failures": 0,
+      "name": "hitter_controlled_war_identity",
+      "rows_checked": 21504,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "hitter_unknown_control_preserved",
+      "rows_checked": 23640,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
       "name": "pitcher_expected_workload_identity",
       "rows_checked": 31656,
       "status": "pass"
@@ -94,6 +106,30 @@
     {
       "failures": 0,
       "name": "pitcher_expected_war_identity",
+      "rows_checked": 31656,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_controlled_war_identity",
+      "rows_checked": 28662,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_unknown_control_preserved",
+      "rows_checked": 31656,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "hitter_component_to_war_identity",
+      "rows_checked": 23640,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "pitcher_component_to_war_identity",
       "rows_checked": 31656,
       "status": "pass"
     },
@@ -132,10 +168,58 @@
       "name": "current_value_interval_order",
       "rows_checked": 1675,
       "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "contract_unique_player_team_season",
+      "rows_checked": 50898,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "contract_available_outputs_finite",
+      "rows_checked": 50882,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "contract_review_outputs_fail_closed",
+      "rows_checked": 16,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "contract_value_accounting_identities",
+      "rows_checked": 50882,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "contract_annual_interval_order",
+      "rows_checked": 50882,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "contract_decision_matches_rights_state",
+      "rows_checked": 50882,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "prior_non_tender_ends_later_rights",
+      "rows_checked": 50882,
+      "status": "pass"
+    },
+    {
+      "failures": 0,
+      "name": "free_agent_has_no_incumbent_value",
+      "rows_checked": 50882,
+      "status": "pass"
     }
   ],
   "failed": 0,
-  "passed": 21,
+  "passed": 35,
   "report_schema_version": "0.1",
   "status": "private_preview_model_law_audit_complete",
   "warnings": [

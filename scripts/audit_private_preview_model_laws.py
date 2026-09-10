@@ -25,11 +25,20 @@ def main() -> int:
     dated = args.as_of_date.isoformat()
     root = args.generated_root
     path_root = root / "phase2-conditional-war-paths" / dated / "tables"
+    conditional_report = json.loads(
+        (root / "phase2-conditional-war-paths" / dated / "report.json").read_text(
+            encoding="utf-8"
+        )
+    )
     report = audit_private_preview_laws(
         pl.read_parquet(path_root / "hitter_expected_war_paths.parquet"),
         pl.read_parquet(path_root / "pitcher_expected_war_paths.parquet"),
         pl.read_parquet(root / "phase2-nested-career-fv" / dated / "nested-career-model-fv.parquet"),
         pl.read_parquet(root / "phase2-current-value" / dated / "value-records.parquet"),
+        runs_per_win=float(conditional_report["reference_environment"]["runs_per_win"]),
+        annual_contract_economics=pl.read_parquet(
+            root / "phase2-current-value" / dated / "annual-contract-economics.parquet"
+        ),
     )
     report.update(
         {

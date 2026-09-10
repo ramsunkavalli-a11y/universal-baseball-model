@@ -296,7 +296,7 @@ contain outcome-minimal sequences. Missing context must remain the exact aggrega
 baseline.
 
 The playable build now has an enforced
-[model-law audit](private-preview-model-law-audit-result.md). All 18 checks pass across
+[model-law audit](private-preview-model-law-audit-result.md). All 35 checks pass across
 probability simplexes, six-year path completeness, expected-workload/WAR identities,
 nested hurdle ordering, exact WAR-to-FV mapping, player type, uniqueness, and interval
 ordering. Its first run caught 23 MLB rows that mixed a Phase 2 WAR center with old
@@ -320,7 +320,7 @@ and defense evidence, since the earlier coarse transition mixture failed validat
 The local explorer now exposes those drivers for every modeled pre-MLB player:
 expected six-year PA/BF, conditional WAR rate, and hitter batting/running/defense/
 position runs or pitcher runs above average. This is display-only transparency and
-does not change a forecast. The launcher still runs all 18 model-law checks before
+does not change a forecast. The launcher still runs all 35 model-law checks before
 opening the page.
 
 The first [nested prospect uncertainty layer](prospect-nested-workload-uncertainty-result.md)
@@ -856,8 +856,8 @@ The prior long status file is preserved in
   expired, along with upstream workflow artifacts needed to recreate it. Do not
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
-- Current structural verification is 21/21 model-law checks. The latest full suite is
-  1,448 passing tests plus four known missing-artifact failures; no new failure exists.
+- Current structural verification is 35/35 model-law checks. The latest full suite is
+  1,449 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

@@ -1,6 +1,6 @@
 # Private preview model-law audit
 
-Status: all 18 enforced structural checks pass.
+Status: all 35 enforced structural and accounting checks pass.
 
 The audit runs directly against the playable 2026-09-08 preview. It checks 23,640
 hitter player-years, 31,656 pitcher player-years, 6,719 modeled pre-MLB hurdle rows,
@@ -14,10 +14,17 @@ It enforces:
 - pitcher role probabilities summing to one;
 - expected workload equal to active probability times conditional workload;
 - expected WAR equal to conditional WAR rate times expected workload;
+- hitter and pitcher run components converting exactly to conditional WAR;
+- controlled WAR retaining known controlled seasons while preserving unknown control
+  as unknown;
 - ordered, disjoint prospect hurdles that sum back to arrival probability;
 - exact monotonic conversion from expected WAR to internal FV;
 - player type following the available hitter/pitcher path;
-- one current value record per player and ordered WAR/value intervals.
+- one current value record per player and ordered WAR/value intervals;
+- one annual contract row per player/team/season and fail-closed review rows;
+- free-agent market value, option premium, discount and interval accounting identities;
+- option/tender decisions compatible with the legal rights state; and
+- no incumbent value after free agency or a prior non-tender.
 
 The first run found 23 MLB records whose Phase 2 mean WAR was still displayed with
 old Phase 1 WAR bounds. The current-value builder now sums mean, lower, and upper WAR

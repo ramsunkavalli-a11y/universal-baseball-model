@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import polars as pl
 
-from universal_baseball.model_law_audit import audit_private_preview_laws
+from universal_baseball.model_law_audit import (
+    audit_contract_economics_laws,
+    audit_private_preview_laws,
+)
 from universal_baseball.prospect_value import display_fv, model_fv_from_expected_war
 
 
@@ -151,3 +154,57 @@ def test_private_preview_laws_reject_nan_simplex_and_negative_variance() -> None
     failed = {check["name"] for check in result["checks"] if check["status"] == "fail"}
     assert "hitter_finite_nonnegative_opportunity" in failed
     assert "hitter_component_simplex" in failed
+
+
+def test_contract_laws_enforce_accounting_decisions_and_fail_closed_review() -> None:
+    clean = pl.DataFrame(
+        {
+            "player_id": [1, 2],
+            "organization_id": [10, 10],
+            "season": [2027, 2027],
+            "projected_war_mean": [2.0, 2.0],
+            "projected_war_lower": [1.0, 1.0],
+            "projected_war_upper": [3.0, 3.0],
+            "control_status": ["guaranteed_contract", "vesting_option"],
+            "dollars_per_war": [10.0, 10.0],
+            "fa_equivalent_value_dollars": [20.0, 20.0],
+            "salary_cost_dollars": [8.0, None],
+            "static_surplus_dollars": [12.0, None],
+            "contract_control_value_dollars": [12.0, None],
+            "optionality_premium_dollars": [0.0, None],
+            "contract_value_lower_dollars": [2.0, None],
+            "contract_value_upper_dollars": [22.0, None],
+            "discount_factor": [0.5, 0.5],
+            "discounted_contract_value_dollars": [6.0, None],
+            "decision_at_mean": ["guaranteed", ""],
+            "calculation_status": ["available", "review"],
+        }
+    )
+    assert not [
+        check
+        for check in audit_contract_economics_laws(clean)
+        if check["status"] == "fail"
+    ]
+
+    broken = clean.with_columns(
+        pl.when(pl.col("player_id") == 1)
+        .then(13.0)
+        .otherwise(pl.col("contract_control_value_dollars"))
+        .alias("contract_control_value_dollars"),
+        pl.when(pl.col("player_id") == 1)
+        .then(pl.lit("player_leaves"))
+        .otherwise(pl.col("decision_at_mean"))
+        .alias("decision_at_mean"),
+        pl.when(pl.col("player_id") == 2)
+        .then(0.0)
+        .otherwise(pl.col("salary_cost_dollars"))
+        .alias("salary_cost_dollars"),
+    )
+    failed = {
+        check["name"]
+        for check in audit_contract_economics_laws(broken)
+        if check["status"] == "fail"
+    }
+    assert "contract_review_outputs_fail_closed" in failed
+    assert "contract_value_accounting_identities" in failed
+    assert "contract_decision_matches_rights_state" in failed
