@@ -159,6 +159,9 @@ The builder automatically uses the newest dated checkpoint that has value, annua
 player-name files, so the same launcher will follow later complete builds.
 Before a Phase 2 page opens, it reruns the structural model-law audit and stops if a
 probability, path, WAR/FV identity, player type, or displayed interval is inconsistent.
+When the dated dependent career simulation exists, the player detail panel also shows
+its research-only mean, median and P10/P90 outcomes. That optional panel does not set
+the main ranking and its absence does not prevent the viewer from opening.
 
 The viewer deliberately labels these as research estimates. It does not remove review
 rows or turn reference ranges into calibrated confidence intervals.

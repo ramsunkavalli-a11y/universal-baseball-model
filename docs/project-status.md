@@ -668,6 +668,34 @@ test failure was observed.
 
 The prior long status file is preserved in
 [project history through August 26](project-history-through-2026-08-26.md).
+
+### Dependent career-path value research
+
+- The first research engine now simulates arrival timing, a complete six-year
+  historical workload/role path, persistent skill uncertainty, annual event noise,
+  active-season control, cost, nonlinear market value and discounting together.
+- It covers 6,719 pre-MLB players with 2,048 deterministic draws. The historical
+  library retains 3,945 hitter/pitcher career paths, zero seasons, returns, attrition
+  and pitcher role transitions. No publication FV or rank is an input.
+- This remains separate from the main ranking. Any active season still counts as one
+  full service year; Super Two, partial service, forecast-time non-tenders,
+  guarantees/options and the successor CBA remain provisional or pending.
+- A separate 8,192-draw sensitivity on 300 players produced 0.9924 value-rank
+  correlation. Fine differences still move: the P90 absolute value change was
+  $1.05M. More draws or lower-variance integration is needed before promotion.
+- The simulator did not introduce a catcher preference. Catchers were 23% of the old
+  and new top-100 hitter lists. Pitcher compression predates it: the old pre-MLB top
+  100 already contained 99 hitters and one pitcher.
+- A five-fold 2024 pitcher demographic breadth audit rejected birth-country-only,
+  age/hand/country and age-by-country families because they worsened both proper
+  scores. Current height and weight were not tested against old outcomes because
+  using 2026 physical measurements would leak future information.
+- The accepted historical tracking artifact needed for a new pitch-quality tier has
+  expired, along with upstream workflow artifacts needed to recreate it. Do not
+  pretend the checkout contains that source. Rebuild the full source chain before a
+  tracked pitcher-quality challenger.
+- Current structural verification is 21/21 model-law checks. The latest full suite is
+  1,424 passing tests plus four known missing-artifact failures; no new failure exists.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

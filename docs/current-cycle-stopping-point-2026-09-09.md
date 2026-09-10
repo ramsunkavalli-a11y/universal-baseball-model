@@ -4,7 +4,7 @@ Status: clean handoff; private preview works, publication remains blocked.
 
 ## What is now in place
 
-- One playable local explorer for 8,393 rights-universe players, guarded by 18 model
+- One playable local explorer for 8,393 rights-universe players, guarded by 21 model
   identity checks.
 - A nested pre-MLB career model: arrival, meaningful given arrival, and established
   given meaningful. Probabilities are ordered by construction.
@@ -14,6 +14,9 @@ Status: clean handoff; private preview works, publication remains blocked.
   position components, pitcher RAA, and the source-limited workload range.
 - Current contract/control economics using the downloaded FanGraphs depth-chart and
   payroll workbooks as private reference inputs, with bounded reviews left explicit.
+- A separate dependent career simulation for all 6,719 pre-MLB players. It keeps
+  arrival, whole career workload, skill uncertainty, annual noise, control, cost and
+  value in the same path and appears only as a research comparison in player detail.
 
 ## Accepted or retained
 
@@ -35,27 +38,32 @@ Status: clean handoff; private preview works, publication remains blocked.
 - Simple pitcher workload recency weighting and always pooling roles did not jointly
   improve accuracy and coverage.
 - Component-plus-workload prospect ranges are research-only, not calibrated intervals.
+- Birth country and its age/hand combinations failed five-fold pitcher development
+  scoring. Current height/weight cannot be used in historical tests without dated
+  measurements.
 - Platoon is source-ready but waits for the certified sidecar to be rematerialized.
   Lineup slot and universal times-through-order are not yet certified.
 
 ## Main finding to carry forward
 
-Pitcher workload is the most important open modeling issue. In a descriptive cohort
-comparison, nominal 80% workload coverage was only 66.3%; this was not a chronology-
-safe forecast test. From 2015-2019 to 2021-2024, active MLB pitchers increased 13.2%,
-mean/median BF per pitcher fell about 13%, and P90 BF fell 16.3%. More pitchers recording
-a start partly reflects openers and bullpen games, not more traditional starters.
+Pitcher projection remains the most important modeling issue, but the valid as-of
+conditional workload replay passed: its nominal 80% range covered 81.1%. The deeper
+problem is top-end pitcher production before value mapping. The old pre-MLB top 100
+already had 99 hitters and one pitcher, so the dependent simulator did not cause the
+imbalance. Earlier tests retained role probabilities and 800-BF regression and
+rejected simple recency weighting, role pooling and birth-country adjustments.
 
-The next model should forecast the league-wide pitcher usage environment separately,
-then place a player within it using rotation-start share, BF per start, relief/bulk
-usage and role-transition evidence. Never raise workload simply to create familiar
-prospect values.
+The next performance challenger should add genuinely new, chronology-safe process or
+pitch-quality evidence. Minor-league Statcast is allowed only as a coverage-limited
+tier. Its accepted materialization artifact and required upstream workflow artifacts
+have expired, so the source chain must be rebuilt first. Never raise workload, change
+FV cutoffs or add a manual pitcher bonus to create a familiar ranking.
 
 ## Verification and known limitation
 
-Latest full suite: 1,408 passed. Four older research-contract tests fail because their
+Latest full suite: 1,424 passed. Four older research-contract tests fail because their
 hash-bound generated artifacts are intentionally absent from this checkout; no new
-failure is present. The private build passes all 18 structural model-law checks.
+failure is present. The private build passes all 21 structural model-law checks.
 
 Protected partial-2026 outcomes remain closed. The next clean statistical stopping
 gate is a frozen pitcher environment/role candidate or a later complete historical
