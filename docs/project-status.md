@@ -75,6 +75,12 @@ rejects weakening the 800-BF prior. A 600-BF candidate won narrowly in 2024 but 
 BF. The arriving cohort's implied run rate was too pessimistic overall, so a frozen
 component-profile calibration is the next targeted test.
 
+The [pitcher component-calibration audit](pitcher-affiliated-component-calibration-result.md)
+also rejects a tempting cosmetic fix. It improved the 2025 cohort's average neutral
+run estimate, but worsened both component log loss and Brier and made the top quintile
+too optimistic. Keep the existing talent probabilities. Audit the pitcher-specific
+controlled-WAR-to-FV mapping next.
+
 The [upper-tail calibration audit](prospect-upper-tail-calibration-result.md) rejects
 both intercept-only and Platt recalibration for every deployed hurdle stage. Hitter
 arrival's raw top 1% predicted 87.1% against 81.3% observed, while its broader top
