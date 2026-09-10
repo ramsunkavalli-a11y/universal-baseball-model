@@ -1,0 +1,99 @@
+{
+  "adjusted_parameters": {
+    "coefficients": {
+      "hbp": [
+        0.04585354882142099,
+        0.02746188949823187,
+        -0.018145086032671547
+      ],
+      "hr": [
+        0.07113558781570167,
+        0.01761373216527959,
+        0.00536551030661541
+      ],
+      "so": [
+        0.02480258384981947,
+        -0.03328141824511021,
+        0.0028664300347422044
+      ],
+      "ubb": [
+        0.03723312745245642,
+        0.013458697331718755,
+        -0.007244826480513461
+      ]
+    },
+    "maximum_age": 44.0,
+    "minimum_age": 19.0,
+    "model_id": "pitcher_adjacent_clr_survivorship_adjusted_development_v1",
+    "pair_count": 3346,
+    "pitcher_count": 1211,
+    "regression_bf": 200.0,
+    "ridge_weight": 20000.0
+  },
+  "adjusted_selected": false,
+  "as_of_date": "2026-09-08",
+  "development_target_seasons": [
+    2016,
+    2021
+  ],
+  "estimand_boundary": "inverse-return weighting changes the mix of observed adjacent rate pairs; non-returners remain zero only in the separate joint production score",
+  "outside_fv_used": false,
+  "production_changed": false,
+  "raw_returner_log_loss": {
+    "adjusted_curve_scoreboard": {
+      "fitted": 0.9654037088114835,
+      "no_aging": 0.9651145085439025,
+      "tango": 0.9650472760552883
+    },
+    "unweighted_curve_scoreboard": {
+      "fitted": 0.965438678491625,
+      "no_aging": 0.9651145085439025,
+      "tango": 0.9650472760552883
+    }
+  },
+  "report_schema_version": "0.1",
+  "return_model": {
+    "development_rows": 4597,
+    "fit": {
+      "age_band_width": 3,
+      "maximum_weight": 4.0,
+      "minimum_probability": 0.05,
+      "population_probability": 0.7278659995649337,
+      "prior_players": 50.0
+    },
+    "method": "age-by-source-BF cells shrink to BF band, then population",
+    "validation": {
+      "model_brier": 0.17555535272164519,
+      "model_log_loss": 0.5243669426640245,
+      "population_brier": 0.21163638562822434,
+      "population_log_loss": 0.6146412942080951,
+      "return_rate": 0.6981132075471698,
+      "rows": 3498
+    }
+  },
+  "selection_rule": "adjusted curve must beat the unweighted fitted curve, no aging and Tango on the survival-standardized score; avoid material raw-score damage; and the frozen return model must beat its population baseline",
+  "status": "survivorship_adjusted_pitcher_aging_test_complete",
+  "survival_standardized_log_loss": {
+    "adjusted_curve_scoreboard": {
+      "fitted": 0.9674860666666539,
+      "no_aging": 0.9672017911318497,
+      "tango": 0.9671417277038648
+    },
+    "unweighted_curve_scoreboard": {
+      "fitted": 0.9675209095131294,
+      "no_aging": 0.9672017911318497,
+      "tango": 0.9671417277038648
+    }
+  },
+  "survivorship_weight": {
+    "maximum": 1.7437699748242192,
+    "median": 0.8962113807377072,
+    "minimum": 0.7612820347028875
+  },
+  "validation_pairs": 2442,
+  "validation_pitchers": 1069,
+  "validation_target_seasons": [
+    2022,
+    2025
+  ]
+}

@@ -46,6 +46,11 @@ Do not advertise the Phase 1 output as an empirically calibrated central 80%
 probability interval. Keep its existing **sensitivity range** label. Do not tune a
 multiplier on this single 2025 result.
 
+The reusable audit now also reports the proper interval score and fixed forecast-time
+participation reliability bands. Overall participation probability is close, but both
+hitter and pitcher forecasts understate the observed return rate in the 30%–60% band.
+See the [probability calibration result](forecast-probability-calibration-2025-result.md).
+
 Phase 2 should represent the two-part process explicitly:
 
 1. a discrete probability of no MLB appearance;

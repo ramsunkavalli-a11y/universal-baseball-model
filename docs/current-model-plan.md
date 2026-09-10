@@ -5,6 +5,28 @@ work. The [product roadmap](product-roadmap.md) is now the authoritative active 
 this document retains detailed evidence from the current hitter/opportunity workstream.
 Earlier experiment contracts remain historical records.
 
+## Phase 2 priority update — 2026-09-10
+
+Proceed now with the broad, source-supported improvements that apply across the
+player universe:
+
+1. dropout-adjusted aging, while keeping conditional skill separate from return and
+   workload probability;
+2. explicit hierarchical fallback ladders for sparse coverage;
+3. component-level uncertainty followed by calibration of the combined ranges;
+4. dated injury and transaction hazards in the workload path;
+5. finer minor-league league, park and run-environment translations;
+6. partial pooling so small samples move toward the correct population rather than
+   an arbitrary zero; and
+7. rolling probability, quantile and interval calibration.
+
+Pitch-quality and command models are deferred until the next phase because their
+all-level source coverage is not ready. Transaction-price validation is also deferred;
+it is not required to make the present research preview more coherent. The existing
+age/level opportunity tables already provide a first hierarchical, partially pooled
+fallback. New work should measure and improve that foundation rather than create a
+parallel system.
+
 ## Goal
 
 Build a comparable trade-value estimate for every player, updated after each game
@@ -131,6 +153,21 @@ October 15, 2025 evidence. Tango aging projects 449.7 pitcher WAR and no aging 4
 only the age treatment differs. Its fixed gate tests component loss, zero-inclusive
 WAR error, aggregate bias and supported age bands after final 2026 totals. The frozen
 files live under `model_artifacts/pitcher-aging-2026-confirmation-forecast-2026-09-10/`.
+
+A first explicit survivor-bias correction is also complete for pitcher aging. An
+age-by-prior-BF return model materially beats a population-only return baseline on
+2022–2025, and bounded inverse-return weighting slightly improves the modern fitted
+aging curve. The adjusted curve still loses to Tango and no aging, so Tango remains.
+Retain the return model for opportunity/attrition work; do not confuse a good return
+model with evidence that a new conditional skill curve won. See the
+[survivorship-adjusted result](survivorship-adjusted-pitcher-aging-result.md).
+
+The frozen 2025 uncertainty replay now includes proper interval scores and fixed
+forecast-time participation calibration bands. Aggregate active probabilities are
+close, but both hitters and pitchers are underpredicted in the 30%–60% band. Do not
+fit a 2025-only correction. The next calibration challenger must learn a monotone
+mapping on earlier rolling origins and freeze it before later scoring. See the
+[probability calibration result](forecast-probability-calibration-2025-result.md).
 
 **Current P0:** use the corrected playable-build chain
 `current-opportunity-paths-v2 -> phase2-workload-paths ->

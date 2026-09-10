@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
-from typing import Mapping
+from typing import Collection, Mapping
 
 import numpy as np
 import polars as pl
@@ -26,6 +26,181 @@ class PitcherAgingParameters:
     pitcher_count: int
     minimum_age: float
     maximum_age: float
+
+
+@dataclass(frozen=True, slots=True)
+class PitcherReturnFit:
+    """Partially pooled next-season pitcher-return probabilities."""
+
+    references: pl.DataFrame
+    population_probability: float
+    age_band_width: int
+    prior_players: float
+    minimum_probability: float
+    maximum_weight: float
+
+
+def _workload_band(bf: float) -> str:
+    if bf < 100.0:
+        return "001_099"
+    if bf < 300.0:
+        return "100_299"
+    if bf < 600.0:
+        return "300_599"
+    return "600_plus"
+
+
+def build_pitcher_return_history(
+    history: pl.DataFrame,
+    ages: pl.DataFrame,
+    *,
+    complete_target_seasons: Collection[int],
+) -> pl.DataFrame:
+    """Retain every active pitcher and label next-year pitching return, including zero."""
+
+    profiles = _profiles(history, ages, regression_bf=200.0)
+    complete = {int(season) for season in complete_target_seasons}
+    if not complete:
+        raise ValueError("complete target seasons cannot be empty")
+    active_keys = set(profiles.select("season", "player_id").iter_rows())
+    rows = []
+    for row in profiles.iter_rows(named=True):
+        target_season = int(row["season"]) + 1
+        if target_season not in complete:
+            continue
+        rows.append(
+            {
+                "source_season": int(row["season"]),
+                "target_season": target_season,
+                "player_id": int(row["player_id"]),
+                "source_age": float(row["age"]),
+                "source_bf": float(row["bf"]),
+                "workload_band": _workload_band(float(row["bf"])),
+                "returned_pitching": (target_season, int(row["player_id"])) in active_keys,
+            }
+        )
+    if not rows:
+        raise ValueError("pitcher return history has no observed target seasons")
+    return pl.DataFrame(rows).sort(["target_season", "player_id"])
+
+
+def fit_pitcher_return_model(
+    history: pl.DataFrame,
+    *,
+    maximum_target_season: int,
+    age_band_width: int = 3,
+    prior_players: float = 50.0,
+    minimum_probability: float = 0.05,
+    maximum_weight: float = 4.0,
+) -> PitcherReturnFit:
+    """Fit age/workload return cells that shrink to workload and population rates."""
+
+    required = {
+        "target_season", "player_id", "source_age", "source_bf",
+        "workload_band", "returned_pitching",
+    }
+    if missing := sorted(required - set(history.columns)):
+        raise ValueError(f"pitcher return history missing columns: {missing}")
+    if age_band_width <= 0 or prior_players <= 0:
+        raise ValueError("return-model band width and prior strength must be positive")
+    if not 0 < minimum_probability < 1 or maximum_weight < 1:
+        raise ValueError("return-model clipping bounds are invalid")
+    train = history.filter(pl.col("target_season") <= maximum_target_season)
+    if train.height < 100:
+        raise ValueError("pitcher return model requires at least 100 observations")
+    if train.filter(
+        ~pl.col("source_age").is_finite()
+        | ~pl.col("source_bf").is_finite()
+        | (pl.col("source_bf") <= 0)
+    ).height:
+        raise ValueError("pitcher return model has invalid age or BF")
+    train = train.with_columns(
+        ((pl.col("source_age") / age_band_width).floor() * age_band_width)
+        .cast(pl.Int64)
+        .alias("age_band_start")
+    )
+    population = float(train.get_column("returned_pitching").mean())
+    rows: list[dict[str, object]] = []
+    for workload_rows in train.partition_by("workload_band", maintain_order=True):
+        band = str(workload_rows.item(0, "workload_band"))
+        count = workload_rows.height
+        successes = int(workload_rows.get_column("returned_pitching").sum())
+        workload_probability = (successes + prior_players * population) / (
+            count + prior_players
+        )
+        rows.append(
+            {
+                "workload_band": band,
+                "age_band_start": None,
+                "reference_level": "workload",
+                "observation_count": count,
+                "return_count": successes,
+                "return_probability": workload_probability,
+            }
+        )
+        for age_rows in workload_rows.partition_by("age_band_start", maintain_order=True):
+            age_band = int(age_rows.item(0, "age_band_start"))
+            age_count = age_rows.height
+            age_successes = int(age_rows.get_column("returned_pitching").sum())
+            rows.append(
+                {
+                    "workload_band": band,
+                    "age_band_start": age_band,
+                    "reference_level": "age_workload",
+                    "observation_count": age_count,
+                    "return_count": age_successes,
+                    "return_probability": (
+                        age_successes + prior_players * workload_probability
+                    ) / (age_count + prior_players),
+                }
+            )
+    references = pl.DataFrame(rows).sort(
+        ["workload_band", "age_band_start"], nulls_last=False
+    )
+    return PitcherReturnFit(
+        references=references,
+        population_probability=population,
+        age_band_width=age_band_width,
+        prior_players=float(prior_players),
+        minimum_probability=float(minimum_probability),
+        maximum_weight=float(maximum_weight),
+    )
+
+
+def attach_pitcher_survivorship_weights(
+    pairs: pl.DataFrame, fit: PitcherReturnFit
+) -> pl.DataFrame:
+    """Add stabilized inverse-return weights without fabricating rate outcomes."""
+
+    required = {"source_age", "source_bf"}
+    if missing := sorted(required - set(pairs.columns)):
+        raise ValueError(f"pitcher aging pairs missing columns: {missing}")
+    lookup = {
+        (str(row["workload_band"]), row["age_band_start"]): (
+            float(row["return_probability"]), str(row["reference_level"])
+        )
+        for row in fit.references.iter_rows(named=True)
+    }
+    probabilities = []
+    weights = []
+    levels = []
+    for row in pairs.iter_rows(named=True):
+        band = _workload_band(float(row["source_bf"]))
+        age_band = int(math.floor(float(row["source_age"]) / fit.age_band_width) * fit.age_band_width)
+        probability, level = lookup.get(
+            (band, age_band),
+            lookup.get((band, None), (fit.population_probability, "population")),
+        )
+        probability = min(1.0, max(fit.minimum_probability, probability))
+        weight = min(fit.maximum_weight, fit.population_probability / probability)
+        probabilities.append(probability)
+        weights.append(weight)
+        levels.append(level)
+    return pairs.with_columns(
+        pl.Series("predicted_pitcher_return_probability", probabilities, dtype=pl.Float64),
+        pl.Series("survivorship_weight", weights, dtype=pl.Float64),
+        pl.Series("return_reference_level", levels, dtype=pl.String),
+    )
 
 
 def _profiles(history: pl.DataFrame, ages: pl.DataFrame, regression_bf: float) -> pl.DataFrame:
@@ -119,6 +294,7 @@ def fit_pitcher_component_aging(
     regression_bf: float = 200.0,
     ridge_weight: float = 20_000.0,
     model_id: str = "pitcher_adjacent_clr_quadratic_v1",
+    selection_weight_column: str | None = None,
 ) -> PitcherAgingParameters:
     """Fit quadratic one-year CLR shifts with a zero-effect ridge prior."""
 
@@ -129,6 +305,13 @@ def fit_pitcher_component_aging(
     x = (age - AGE_CENTER) / AGE_SCALE
     design = np.column_stack([np.ones(len(x)), x, x * x])
     weights = train.get_column("pair_weight").to_numpy().astype(float)
+    if selection_weight_column is not None:
+        if selection_weight_column not in train.columns:
+            raise ValueError(f"missing selection weight column: {selection_weight_column}")
+        selection_weights = train.get_column(selection_weight_column).to_numpy().astype(float)
+        if np.any(~np.isfinite(selection_weights)) or np.any(selection_weights <= 0):
+            raise ValueError("selection weights must be finite and positive")
+        weights *= selection_weights
     weighted_design = design * weights[:, None]
     penalty = np.eye(3) * float(ridge_weight)
     coefficients: dict[str, tuple[float, float, float]] = {}
@@ -198,6 +381,8 @@ def apply_fitted_pitcher_aging(
 def component_log_loss(
     pairs: pl.DataFrame,
     predictor,
+    *,
+    selection_weight_column: str | None = None,
 ) -> float:
     """Return target-BF-weighted multinomial log loss for adjacent pairs."""
 
@@ -206,9 +391,20 @@ def component_log_loss(
     for row in pairs.iter_rows(named=True):
         source = {key: float(row[f"source_p_{key}"]) for key in COMPONENTS}
         predicted = predictor(source, float(row["source_age"]), float(row["target_age"]))
-        target_bf = float(row["target_bf"])
+        selection_weight = (
+            1.0
+            if selection_weight_column is None
+            else float(row[selection_weight_column])
+        )
+        if not math.isfinite(selection_weight) or selection_weight <= 0:
+            raise ValueError("selection weights must be finite and positive")
+        target_bf = float(row["target_bf"]) * selection_weight
         for key in COMPONENTS:
-            loss -= float(row[f"target_count_{key}"]) * math.log(float(predicted[key]))
+            loss -= (
+                float(row[f"target_count_{key}"])
+                * selection_weight
+                * math.log(float(predicted[key]))
+            )
         exposure += target_bf
     if exposure <= 0:
         raise ValueError("aging score requires positive target BF")

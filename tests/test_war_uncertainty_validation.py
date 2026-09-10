@@ -2,6 +2,7 @@ import polars as pl
 import pytest
 
 from universal_baseball.war_uncertainty_validation import (
+    summarize_binary_probability_calibration,
     summarize_interval_coverage,
     summarize_named_slices,
     wilson_interval,
@@ -33,6 +34,7 @@ def test_interval_summary_keeps_both_miss_tails_and_zero_variance() -> None:
     assert result["lower_tail_miss_rate"] == 0.25
     assert result["upper_tail_miss_rate"] == 0.25
     assert result["positive_variance_players"] == 3
+    assert result["mean_interval_score"] == pytest.approx(7.0)
     assert result["standardized_error_mean"] == 0.0
     assert result["standardized_error_rmse"] == pytest.approx((8 / 3) ** 0.5)
 
@@ -47,3 +49,22 @@ def test_interval_summary_rejects_inverted_bounds() -> None:
     frame = _frame().with_columns(pl.lit(2.0).alias("projected_war_lower"))
     with pytest.raises(ValueError, match="invalid intervals"):
         summarize_interval_coverage(frame)
+
+
+def test_probability_calibration_uses_fixed_forecast_bands() -> None:
+    frame = pl.DataFrame(
+        {
+            "probability": [0.05, 0.20, 0.50, 0.90],
+            "observed": [0, 0, 1, 1],
+        }
+    )
+    result = summarize_binary_probability_calibration(
+        frame,
+        probability_column="probability",
+        outcome_column="observed",
+        minimum_bin_size=1,
+    )
+    assert result["players"] == 4
+    assert result["brier"] == pytest.approx((0.05**2 + 0.20**2 + 0.50**2 + 0.10**2) / 4)
+    assert len(result["fixed_probability_bands"]) == 4
+    assert all(row["decision_eligible"] for row in result["fixed_probability_bands"])

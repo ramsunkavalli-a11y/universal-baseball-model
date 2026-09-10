@@ -10,6 +10,7 @@ import polars as pl
 
 from universal_baseball.storage import sha256_file
 from universal_baseball.war_uncertainty_validation import (
+    summarize_binary_probability_calibration,
     summarize_interval_coverage,
     summarize_named_slices,
 )
@@ -33,7 +34,9 @@ def _component_frame(component: str) -> pl.DataFrame:
         (pl.col("season") == TARGET_SEASON)
         & (pl.col("projection_component") == component)
     )
-    metadata = ["player_id", expected_column, "coverage_tier"]
+    metadata = [
+        "player_id", expected_column, "mlb_active_probability", "coverage_tier"
+    ]
     if component == "pitcher":
         metadata.append("projected_role")
     result = uncertainty.join(
@@ -50,6 +53,7 @@ def _component_frame(component: str) -> pl.DataFrame:
         (pl.col(observed_column) > 0).cast(pl.String).replace(
             {"true": "observed_active", "false": "observed_inactive"}
         ).alias("observed_activity"),
+        (pl.col(observed_column) > 0).cast(pl.Int64).alias("observed_active"),
         pl.col(expected_column).cut(thresholds[1:-1], labels=labels).alias(
             "expected_workload_band"
         ),
@@ -136,6 +140,11 @@ def main() -> int:
         }
         components[component] = {
             "all": summarize_interval_coverage(frame),
+            "forecast_participation_calibration": summarize_binary_probability_calibration(
+                frame,
+                probability_column="mlb_active_probability",
+                outcome_column="observed_active",
+            ),
             "slices": slices,
         }
     whole = _whole_player_frame()

@@ -28,6 +28,18 @@ compares Tango with no aging on 5,206. Do not score either until the regular sea
 complete and official totals have stabilized. Their fixed contracts prohibit rescue
 tuning and retain non-returners as zero production.
 
+The first Phase 2 survivor-bias test is complete. An age-by-prior-workload pitcher
+return model materially improves 2022–2025 probability scores over one population
+rate. Using it to reweight observed adjacent-season pairs slightly improves the fitted
+modern aging curve, but that curve still loses to Tango and is not promoted. The
+return model belongs in the opportunity/attrition path, not conditional skill.
+
+Uncertainty validation now includes a proper interval score and fixed forecast-time
+participation bands. Aggregate 2025 participation probability is close for hitters
+and pitchers, but both underpredict the observed rate in the 30%–60% forecast band.
+No one-season calibration was fitted. Earlier rolling origins are required before a
+monotone calibration challenger can be frozen.
+
 ## Latest P0 correction: true prospect eligibility
 
 The production arrival model now requires official StatsAPI debut dates and excludes
@@ -938,7 +950,7 @@ The prior long status file is preserved in
   pretend the checkout contains that source. Rebuild the full source chain before a
   tracked pitcher-quality challenger.
 - Current verification is 46/46 model-law checks. The latest full suite is
-  1,464 passing tests plus four known missing-artifact failures; no new failure exists.
+  1,476 passing tests plus four known missing-artifact failures; no new failure exists.
 
 The remaining universal event-context candidate is the strongly regressed pitcher
 platoon test. The compact pitcher-contact tables on disk retain pitcher identity and
