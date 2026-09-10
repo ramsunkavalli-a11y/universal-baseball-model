@@ -209,14 +209,41 @@ def main() -> int:
             fit_arrival_model(fit_data, player_type="hitter", target_column=target, outcome_name=outcome, feature_set="core"),
             scored,
         )
+    for target, outcome in (
+        ("meaningful_role_within_horizon", "meaningful_role"),
+        ("established_role_within_horizon", "established_role"),
+    ):
+        scored = predict_arrival(
+            fit_arrival_model(
+                train,
+                player_type="hitter",
+                target_column=target,
+                outcome_name=outcome,
+                feature_set="core",
+            ),
+            scored,
+        )
     scored = scored.with_columns(
         _probability(pl.col("predicted_two_year_arrival_probability")).alias("four_year_arrival_probability"),
         _probability(pl.col("predicted_two_year_meaningful_given_arrival_probability")).alias("four_year_meaningful_given_arrival_probability"),
         _probability(pl.col("predicted_two_year_established_given_meaningful_probability")).alias("four_year_established_given_meaningful_probability"),
+        _probability(pl.col("predicted_two_year_meaningful_role_probability")).alias("four_year_direct_meaningful_probability"),
+        _probability(pl.col("predicted_two_year_established_role_probability")).alias("four_year_direct_established_probability"),
     ).with_columns(
         (pl.col("four_year_arrival_probability") * pl.col("four_year_meaningful_given_arrival_probability")).alias("four_year_nested_meaningful_probability")
     ).with_columns(
         (pl.col("four_year_nested_meaningful_probability") * pl.col("four_year_established_given_meaningful_probability")).alias("four_year_nested_established_probability")
+    ).with_columns(
+        pl.min_horizontal(
+            "four_year_nested_meaningful_probability",
+            "four_year_direct_meaningful_probability",
+        ).alias("four_year_capped_meaningful_probability")
+    ).with_columns(
+        pl.min_horizontal(
+            "four_year_nested_established_probability",
+            "four_year_direct_established_probability",
+            "four_year_capped_meaningful_probability",
+        ).alias("four_year_capped_established_probability")
     )
 
     hitting = pl.read_parquet(args.hitting)
@@ -297,6 +324,11 @@ def main() -> int:
     ).rename({"path_player_id": "player_id"})
     evaluated = scored.with_columns(
         pl.struct("four_year_arrival_probability", "four_year_nested_meaningful_probability", "four_year_nested_established_probability").map_elements(lambda row: _predict_path(row, performance_means, pooled=False), return_dtype=pl.Float64).alias("tier_linked_prediction"),
+        pl.struct(
+            "four_year_arrival_probability",
+            pl.col("four_year_capped_meaningful_probability").alias("four_year_nested_meaningful_probability"),
+            pl.col("four_year_capped_established_probability").alias("four_year_nested_established_probability"),
+        ).map_elements(lambda row: _predict_path(row, performance_means, pooled=False), return_dtype=pl.Float64).alias("capped_tier_linked_prediction"),
         pl.struct("four_year_arrival_probability", "four_year_nested_meaningful_probability", "four_year_nested_established_probability").map_elements(lambda row: _predict_path(row, performance_means, pooled=True), return_dtype=pl.Float64).alias("arrival_only_prediction"),
         pl.struct("player_id", "four_year_arrival_probability", "four_year_nested_meaningful_probability", "four_year_nested_established_probability").map_elements(lambda row: _predict_incumbent(row, workload_means, rate_lookup), return_dtype=pl.Float64).alias("historical_incumbent_prediction"),
     ).join(observed, on="player_id", how="left", validate="1:1").with_columns(
@@ -318,12 +350,14 @@ def main() -> int:
     metrics = {name: _metrics(evaluated, column) for name, column in {
         "historical_incumbent": "historical_incumbent_prediction",
         "tier_linked": "tier_linked_prediction",
+        "direct_capped_tier_linked": "capped_tier_linked_prediction",
         "arrival_only": "arrival_only_prediction",
         "zero": "zero_prediction",
     }.items()}
     comparisons = {
         "arrival_only_vs_incumbent": _bootstrap(evaluated, "arrival_only_prediction", "historical_incumbent_prediction"),
         "tier_linked_vs_incumbent": _bootstrap(evaluated, "tier_linked_prediction", "historical_incumbent_prediction"),
+        "direct_capped_tier_linked_vs_incumbent": _bootstrap(evaluated, "capped_tier_linked_prediction", "historical_incumbent_prediction"),
         "tier_linked_vs_arrival_only": _bootstrap(evaluated, "tier_linked_prediction", "arrival_only_prediction"),
         "arrival_only_vs_zero": _bootstrap(evaluated, "arrival_only_prediction", "zero_prediction"),
     }
@@ -531,6 +565,7 @@ def main() -> int:
     args.output_json.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     incumbent = metrics["historical_incumbent"]
     linked = metrics["arrival_only"]
+    capped = metrics["direct_capped_tier_linked"]
     comparison = comparisons["arrival_only_vs_incumbent"]
     markdown = f"""# Linked hitter path replay
 
@@ -543,6 +578,10 @@ are not available at the required player-season grain.
 | Players | Observed mean WAR | Incumbent mean | Linked mean | Incumbent RMSE | Linked RMSE | Zero RMSE |
 |---:|---:|---:|---:|---:|---:|---:|
 | {incumbent['players']:,} | {incumbent['observed_mean']:.3f} | {incumbent['predicted_mean']:.3f} | {linked['predicted_mean']:.3f} | {incumbent['rmse']:.3f} | {linked['rmse']:.3f} | {metrics['zero']['rmse']:.3f} |
+
+The direct-evidence cap applied to the tier-linked path predicts
+{capped['predicted_mean']:.3f} mean WAR with {capped['rmse']:.3f} RMSE and
+{capped['mae']:.3f} MAE.
 
 The arrival-only linked path changes MSE versus the cutoff-reconstructed incumbent by
 {comparison['candidate_minus_baseline_mse']:+.6f}, with a player-bootstrap 95% interval

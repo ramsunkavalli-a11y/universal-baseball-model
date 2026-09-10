@@ -8,29 +8,33 @@ scores actual 2022-2025 MLB component WAR. Non-arrivals remain zero.
 
 | Players | Observed mean WAR | Incumbent predicted | Linked predicted | Incumbent RMSE | Linked RMSE | Arrival-only RMSE | Zero RMSE |
 |---:|---:|---:|---:|---:|---:|---:|---:|
-| 3,649 | 0.090 | 0.047 | 0.105 | 0.558 | 0.553 | 0.551 | 0.576 |
+| 3,642 | 0.090 | 0.042 | 0.095 | 0.560 | 0.552 | 0.552 | 0.577 |
+
+Applying the direct-evidence cap to the same linked path predicts
+0.051 mean WAR with
+0.554 RMSE and 0.143 MAE.
 
 The linked construction is directionally coherent and its broad scale is plausible in
 this replay: predicted mean WAR is close to observed and it beats predicting zero.
 The tiered path changes MSE versus an arrival-only pooled path by
-+0.002193, with a 95% interval of
-[-0.004744, +0.008620]. This cohort and hurdle have already
++0.000054, with a 95% interval of
+[-0.006657, +0.006122]. This cohort and hurdle have already
 been used in development, so this is not fresh confirmation. No current player value
 or rank changes.
 
 The simpler arrival-only path changes MSE versus zero by
--0.028296, with a 95% interval of
-[-0.047033, -0.010742].
+-0.028084, with a 95% interval of
+[-0.047617, -0.009532].
 
 Against the cutoff-reconstructed incumbent, the arrival-only path changes MSE by
--0.007940, with a 95% interval of
-[-0.020544, +0.002835]. The incumbent
+-0.008490, with a 95% interval of
+[-0.021237, +0.002733]. The incumbent
 uses only information available through 2021, including level translations fit on
 2018 and 2021, the deployed 800-BF regression, and Tango component aging.
 
 The common-cohort guardrail also shows that the small RMSE gain is not a broad error
-gain: MAE worsens from 0.154 to
-0.199, and its paired interval is entirely unfavorable.
+gain: MAE worsens from 0.150 to
+0.197, and its paired interval is entirely unfavorable.
 The path remains rejected pending a candidate that handles arrivals without adding
 too much value to the much larger non-arrival group.
 

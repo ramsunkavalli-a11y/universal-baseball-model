@@ -326,6 +326,26 @@ def main() -> int:
     )
     scored = predict_arrival(
         fit_arrival_model(
+            training,
+            player_type="pitcher",
+            target_column="meaningful_role_within_horizon",
+            outcome_name="meaningful_role",
+            feature_set="core",
+        ),
+        scored,
+    )
+    scored = predict_arrival(
+        fit_arrival_model(
+            training,
+            player_type="pitcher",
+            target_column="established_role_within_horizon",
+            outcome_name="established_role",
+            feature_set="core",
+        ),
+        scored,
+    )
+    scored = predict_arrival(
+        fit_arrival_model(
             training.filter(pl.col("arrived_within_horizon") == 1),
             player_type="pitcher",
             target_column="meaningful_role_within_horizon",
@@ -355,6 +375,12 @@ def main() -> int:
             _four_year_probability(
                 pl.col("predicted_two_year_established_given_meaningful_probability")
             ).alias("four_year_established_given_meaningful_probability"),
+            _four_year_probability(
+                pl.col("predicted_two_year_meaningful_role_probability")
+            ).alias("four_year_direct_meaningful_probability"),
+            _four_year_probability(
+                pl.col("predicted_two_year_established_role_probability")
+            ).alias("four_year_direct_established_probability"),
         )
         .with_columns(
             (
@@ -367,6 +393,19 @@ def main() -> int:
                 pl.col("four_year_nested_meaningful_probability")
                 * pl.col("four_year_established_given_meaningful_probability")
             ).alias("four_year_nested_established_probability")
+        )
+        .with_columns(
+            pl.min_horizontal(
+                "four_year_nested_meaningful_probability",
+                "four_year_direct_meaningful_probability",
+            ).alias("four_year_capped_meaningful_probability")
+        )
+        .with_columns(
+            pl.min_horizontal(
+                "four_year_nested_established_probability",
+                "four_year_direct_established_probability",
+                "four_year_capped_meaningful_probability",
+            ).alias("four_year_capped_established_probability")
         )
     )
 
@@ -474,6 +513,17 @@ def main() -> int:
             )
             .map_elements(lambda row: _predict_war(row, means), return_dtype=pl.Float64)
             .alias("linked_predicted_war"),
+            pl.struct(
+                "four_year_arrival_probability",
+                pl.col("four_year_capped_meaningful_probability").alias(
+                    "four_year_nested_meaningful_probability"
+                ),
+                pl.col("four_year_capped_established_probability").alias(
+                    "four_year_nested_established_probability"
+                ),
+            )
+            .map_elements(lambda row: _predict_war(row, means), return_dtype=pl.Float64)
+            .alias("capped_linked_predicted_war"),
             pl.struct("four_year_arrival_probability")
             .map_elements(
                 lambda row: _predict_pooled_war(row, means),
@@ -545,6 +595,7 @@ def main() -> int:
                 }
             )
     linked_metrics = _metrics(evaluated, "linked_predicted_war")
+    capped_linked_metrics = _metrics(evaluated, "capped_linked_predicted_war")
     pooled_metrics = _metrics(evaluated, "arrival_only_pooled_path_prediction")
     incumbent_metrics = _metrics(evaluated, "historical_incumbent_prediction")
     paired = _paired_bootstrap(
@@ -560,6 +611,9 @@ def main() -> int:
     )
     linked_vs_incumbent = _paired_bootstrap(
         evaluated, "linked_predicted_war", "historical_incumbent_prediction"
+    )
+    capped_linked_vs_incumbent = _paired_bootstrap(
+        evaluated, "capped_linked_predicted_war", "historical_incumbent_prediction"
     )
     observed_values = evaluated["observed_four_year_component_war"].to_numpy()
     incumbent_values = evaluated["historical_incumbent_prediction"].to_numpy()
@@ -736,12 +790,16 @@ def main() -> int:
         },
         "path_prefix_means": means,
         "linked": linked_metrics,
+        "direct_capped_linked": capped_linked_metrics,
         "arrival_only_pooled_path": pooled_metrics,
         "historical_incumbent": incumbent_metrics,
         "linked_vs_arrival_only_paired": paired,
         "arrival_only_vs_zero_paired": pooled_vs_zero,
         "arrival_only_vs_historical_incumbent_paired": pooled_vs_incumbent,
         "linked_vs_historical_incumbent_paired": linked_vs_incumbent,
+        "direct_capped_linked_vs_historical_incumbent_paired": (
+            capped_linked_vs_incumbent
+        ),
         "continuous_validation_harness": continuous_validation,
         "blend_sensitivity": blend_sensitivity,
         "horizon_sensitivity": horizon_sensitivity,
@@ -772,6 +830,10 @@ scores actual 2022-2025 MLB component WAR. Non-arrivals remain zero.
 | Players | Observed mean WAR | Incumbent predicted | Linked predicted | Incumbent RMSE | Linked RMSE | Arrival-only RMSE | Zero RMSE |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | {linked_metrics["players"]:,} | {linked_metrics["observed_mean"]:.3f} | {incumbent_metrics["predicted_mean"]:.3f} | {linked_metrics["predicted_mean"]:.3f} | {incumbent_metrics["rmse"]:.3f} | {linked_metrics["rmse"]:.3f} | {pooled_metrics["rmse"]:.3f} | {report["zero_baseline"]["rmse"]:.3f} |
+
+Applying the direct-evidence cap to the same linked path predicts
+{capped_linked_metrics['predicted_mean']:.3f} mean WAR with
+{capped_linked_metrics['rmse']:.3f} RMSE and {capped_linked_metrics['mae']:.3f} MAE.
 
 The linked construction is directionally coherent and its broad scale is plausible in
 this replay: predicted mean WAR is close to observed and it beats predicting zero.
