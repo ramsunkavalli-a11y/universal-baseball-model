@@ -4,6 +4,16 @@ Status: clean handoff; private preview works, publication remains blocked.
 
 ## September 10 continuation
 
+- A chronology-safe player-level position model passed overall and shortstop
+  next-season error checks, but remains private because 1B/3B subgroup errors worsen.
+- The position-adjusted top-50 casebook leaves 28 model-only hitters with
+  below-average translated batting and high total opportunity.
+- A clean 2024-to-2025 joint hitter audit found one-year arrival calibrated (3.57%
+  predicted, 3.51% observed) and positive MLB outcomes underpredicted. Do not lower
+  opportunity to reshape the list. The next hitter P0 is ceiling discrimination from
+  cutoff-safe process and entry-path evidence; pitcher translated skill remains the
+  parallel P0.
+
 - The playable prospect-arrival model now distinguishes highest level touched from
   workload-weighted primary level. The combined exposure model beat the old core on
   both pooled proper scores without losing either score in any required time-ordered

@@ -1232,6 +1232,13 @@ contact totals.
   predicted versus 0.144 observed), while its zero-leaning challenger missed the
   positive tail. The next test is therefore a chronology-safe joint expected-WAR
   calibration, not another arbitrary arrival haircut.
+- The chronology-safe 2024-to-2025 joint hitter audit rejects that haircut. One-year
+  arrival was nearly exact (3.57% predicted, 3.51% observed), while meaningful and
+  established roles and batting-plus-replacement WAR were underpredicted. The ten
+  historical high-arrival/below-average-batting cases were not overpredicted as a
+  group. The leading hitter gap is now ceiling discrimination between likely MLB
+  depth and impact outcomes, using entry-path-safe pedigree and broader process
+  evidence rather than suppressing valid proximity.
 ### Current-organization pitcher role capacity (research layer)
 
 - Frozen role definitions and a 2021-2024 development / 2025 confirmation split before scoring.

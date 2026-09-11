@@ -461,10 +461,10 @@ planning scenario until a successor CBA supplies facts.
 2. Completed: the rebuilt casebook holds position fixed and separates arrival,
    workload, translated batting, running, defense, and position for all 68 remaining
    disagreements.
-3. P0: run a chronology-safe next-season expected batting-plus-replacement WAR test
-   with non-arrivals retained. The 28 model-only hitters with below-average batting
-   and high total opportunity are the required subgroup; preserve the positive MLB
-   tail rather than solving average error by predicting zero.
+3. Completed: the chronology-safe next-season test found arrival almost exactly
+   calibrated and the positive MLB tail underpredicted. Do not suppress opportunity.
+   P0 becomes ceiling discrimination: distinguish likely depth from impact outcomes
+   using cutoff-safe process evidence and entry-path-safe pedigree.
 4. Test an entry-path-safe hitter arrival challenger using official draft data for
    Rule 4 players and a separate neutral path for international players. Never use
    draft status as a WAR bonus or FV floor.
