@@ -147,22 +147,17 @@ def _rate_rows(
     *,
     origin_root: Path,
     target_root: Path,
+    contact_weight: float = FROZEN_CONTACT_WEIGHT,
+    bip_prior_contacts: float | None = 100.0,
 ) -> pl.DataFrame:
+    if not 0.0 <= contact_weight <= 1.0:
+        raise ValueError("contact weight must be between zero and one")
     origin_profile, origin_outcomes = _load(origin_root, "pitcher")
     _, target_outcomes = _load(target_root, "pitcher")
     origin_year = int(origin_profile.get_column("season").max())
     target_year = int(target_outcomes.get_column("season").max())
     contact_offsets = _contact_offsets(contact_translation_source, origin_year)
-    bip = _neutral_bip_estimates(origin_profile, origin_outcomes, contact_offsets)
-    contact_target = _neutral_targets(target_outcomes, contact_offsets)
     main_offsets = _main_offsets(source, origin_year)
-    active = _active_profiles(
-        source,
-        bip.select("player_id"),
-        origin_year=origin_year,
-        offsets=main_offsets,
-    )
-    future = _future_profiles(source, target_year=target_year, offsets=main_offsets)
     reference = source.filter(
         (pl.col("season") == origin_year) & (pl.col("level_group") == "MLB")
     )
@@ -171,6 +166,25 @@ def _rate_rows(
         value: float(reference.get_column(value).sum()) / total
         for value in PITCHER_COMPONENTS
     }
+    effective_prior = (
+        800.0 * (rates["hr"] + rates["other"])
+        if bip_prior_contacts is None
+        else bip_prior_contacts
+    )
+    bip = _neutral_bip_estimates(
+        origin_profile,
+        origin_outcomes,
+        contact_offsets,
+        prior_contacts=effective_prior,
+    )
+    contact_target = _neutral_targets(target_outcomes, contact_offsets)
+    active = _active_profiles(
+        source,
+        bip.select("player_id"),
+        origin_year=origin_year,
+        offsets=main_offsets,
+    )
+    future = _future_profiles(source, target_year=target_year, offsets=main_offsets)
     known = (
         rates["ubb"] * NEUTRAL_WOBA_WEIGHTS["UBB"]
         + rates["hbp"] * NEUTRAL_WOBA_WEIGHTS["HBP"]
@@ -186,7 +200,7 @@ def _rate_rows(
     active_contact = (pl.col("p_hr") * 0.0 + pl.col("p_other") * other_value) / (
         pl.col("p_hr") + pl.col("p_other")
     )
-    blended_contact = active_contact + FROZEN_CONTACT_WEIGHT * (
+    blended_contact = active_contact + contact_weight * (
         pl.col("bip_contact_value") - active_contact
     )
     target_non_contact = (
@@ -233,6 +247,8 @@ def _rate_rows(
             (
                 -(pl.col("target_woba_allowed") - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE
             ).alias("target_runs_per_800"),
+            pl.lit(float(effective_prior)).alias("bip_prior_contacts"),
+            pl.lit(float(contact_weight)).alias("contact_weight"),
         )
     )
 

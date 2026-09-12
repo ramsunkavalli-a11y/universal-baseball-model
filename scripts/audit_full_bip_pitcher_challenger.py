@@ -254,7 +254,11 @@ def _neutral_bip_estimates(
     profile: pl.DataFrame,
     outcomes: pl.DataFrame,
     offsets: pl.DataFrame,
+    *,
+    prior_contacts: float = PRIOR_CONTACTS,
 ) -> pl.DataFrame:
+    if prior_contacts <= 0:
+        raise ValueError("BIP prior contacts must be positive")
     bin_values = _translated_contact_values(
         outcomes, offsets, group_columns=("core_bin",)
     )
@@ -295,7 +299,7 @@ def _neutral_bip_estimates(
         .with_columns(pl.col("player_bin_count").fill_null(0))
         .with_columns(
             (
-                PRIOR_CONTACTS * pl.col("level_contacts") / pl.col("origin_contacts")
+                prior_contacts * pl.col("level_contacts") / pl.col("origin_contacts")
             ).alias("level_prior")
         )
         .with_columns(

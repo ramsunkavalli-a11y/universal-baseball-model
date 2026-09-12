@@ -57,3 +57,7 @@ already-seen outcomes.
 The next candidate should reconcile BIP and aggregate-profile reliability before
 blending, then score both components and the complete rate. Its reliability rule must
 be learned from prior repeatability, not chosen to repair these disclosed subgroups.
+
+That [reliability-matched candidate](full-bip-reliability-bridge-2024-result.md) was
+subsequently frozen on 2021–2023 and failed on newly built 2024 outcomes with the same
+A/Rookie reversal. The global bridge is closed; no production change follows.

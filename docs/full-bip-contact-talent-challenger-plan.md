@@ -65,3 +65,9 @@ new rolling-origin Phase 2 level-reliability test, not rescue tuning.
 Phase 2 must also reconcile the BIP profile's 100-contact prior with the aggregate
 pitcher model's 800-BF prior before fitting any combined weight. Estimate that bridge
 from earlier repeatability and require both contact-component and complete-rate wins.
+
+That [reliability bridge](full-bip-reliability-bridge-2024-result.md) is now scored on
+newly built, previously untouched 2024 outcomes. It still fails overall RMSE and
+reverses at A and Rookie, while improving every measure at High-A, AA, and AAA. The
+global candidate is closed. A future level-specific challenger needs a new untouched
+full-season confirmation; the currently available 2025 public archive ends in May.

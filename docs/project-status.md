@@ -44,6 +44,14 @@ non-contact miss. The current bridge also mixes a 100-contact BIP prior with the
 promotion attempt, reconcile those reliabilities from earlier repeatability and score
 the complete rate on additional unseen origins.
 
+That Phase 2 [reliability-matched bridge](full-bip-reliability-bridge-2024-result.md)
+is complete. Its rule and `0.8137` weight were learned from 2021–2023, then scored once
+on a newly materialized full 2024 panel. Equal-player MAE improves slightly, RMSE
+worsens, and A/Rookie reverse again; High-A/AA/AAA improve across all errors for the
+third consecutive transition. The global BIP path remains rejected. A high-minors-only
+candidate now has a baseball and empirical basis, but needs a new untouched full
+season. The available 2025 public archive ends in May and is explicitly ineligible.
+
 ## Active product gate: explainable prospect rankings
 
 The first [top-50 ranking audit](prospect-top50-ranking-audit-checkpoint.md) is now
