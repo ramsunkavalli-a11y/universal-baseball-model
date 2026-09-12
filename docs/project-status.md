@@ -21,6 +21,17 @@ top 50. Explanations must distinguish relative prospect-pool strengths from actu
 MLB-quality rates. Below-AAA pitch velocity, movement and arsenal data remain the
 largest known missing pitcher evidence family.
 
+The first conditional upside layer is now available. It retains the shrunken mean and
+adds historically calibrated chances of an above-average or impact peak. Global
+residual probabilities beat constant base rates on both proper scores in every
+2023–2025 confirmation for hitters and pitchers. Hitter age/evidence refinements were
+rejected; pitcher age-band uncertainty passed. These are talent-if-observed
+probabilities, not arrival or playing-time odds.
+
+The same pass found and removed partial 2026 peak outcomes from the final hitter and
+pitcher fits. The live models now train only through completed 2025 peak windows; 2026
+remains current evidence only.
+
 ## Phase 2 talent component: full BIP profile
 
 The active peak-talent path currently relies mainly on aggregate strikeout, walk,

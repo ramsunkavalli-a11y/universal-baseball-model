@@ -39,6 +39,11 @@ from universal_baseball.projection_composition import sequential_helmert_ilr_bas
 
 ROOT = Path("reports/generated/age-to-peak-talent")
 INVALID_PEAK_END_YEARS = {2020, 2021, 2022}
+CURRENT_EVIDENCE_YEAR = 2026
+
+
+def _completed_fit_examples(examples: pl.DataFrame) -> pl.DataFrame:
+    return examples.filter(pl.col("peak_window_end_year") < CURRENT_EVIDENCE_YEAR)
 
 
 def _fit_peak(
@@ -425,7 +430,9 @@ def _evaluate(
                 components,
             ),
         })
-    final_rows = examples.to_dicts()
+    # The active season is current evidence only. Never let its incomplete peak
+    # window enter the fit used to score that same season's players.
+    final_rows = _completed_fit_examples(examples).to_dicts()
     final_model = _fit_peak(
         final_rows,
         components,
@@ -475,6 +482,7 @@ def _evaluate(
         "uncertainty_passes": uncertainty_passes,
         "promotion": promotion,
         "guardrail": None,
+        "current_fit_max_peak_window_end_year": CURRENT_EVIDENCE_YEAR - 1,
         "current_fit": _serialize_fitted_model(
             final_model,
             form=str(selected["form"]),

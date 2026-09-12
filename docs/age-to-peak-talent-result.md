@@ -63,6 +63,12 @@ reference, no component/age-level blend passed 2023–2025 confirmation. The com
 mean remains an inspection order only. See
 `docs/peak-talent-ranking-audit-result.md`.
 
+The final live fit now explicitly excludes partial 2026 peak targets. Its latest
+target window is 2025; 2026 data are current evidence only. A separate validated
+upside layer converts historical rolling forecast errors into above-average and impact
+peak probabilities without changing the mean. See
+`docs/peak-talent-upside-result.md`.
+
 Generated inspection files:
 
 - `reports/generated/current-peak-talent/2026-09-08/tables/current_peak_hitters_top100.csv`
@@ -71,7 +77,8 @@ Generated inspection files:
 
 ## Next talent work
 
-1. Add player-level peak uncertainty/upper-tail fields without changing the mean rank.
+1. Completed: add validated above-average and impact peak probabilities without
+   changing the mean.
 2. Continue the model top 25 and external top 50 player case audit while treating
    exact pitcher ranks as provisional.
 3. Determine whether official minor-league game feeds provide usable pitch velocity and

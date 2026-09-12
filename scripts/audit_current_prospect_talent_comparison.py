@@ -11,6 +11,7 @@ import polars as pl
 
 ROOT = Path("reports/generated/current-peak-talent/2026-09-08/tables")
 OUTPUT = Path("reports/generated/current-prospect-talent-comparison/2026-09-08")
+UPSIDE_ROOT = Path("reports/generated/peak-talent-upside")
 
 
 def _quality_percentiles(frame: pl.DataFrame, *, player_type: str) -> pl.DataFrame:
@@ -180,7 +181,16 @@ def _reason(frame: pl.DataFrame, *, player_type: str) -> pl.DataFrame:
 
 
 def _audit(path: Path, *, player_type: str) -> pl.DataFrame:
-    frame = _quality_percentiles(pl.read_parquet(path), player_type=player_type)
+    frame = pl.read_parquet(path)
+    upside_path = UPSIDE_ROOT / f"current_{player_type}_upside.parquet"
+    if upside_path.exists():
+        upside = pl.read_parquet(upside_path).select(
+            "player_id",
+            "peak_above_average_probability",
+            "peak_impact_probability",
+        )
+        frame = frame.join(upside, on="player_id", how="left", validate="1:1")
+    frame = _quality_percentiles(frame, player_type=player_type)
     union = frame.filter(
         (pl.col("prospect_peak_rate_rank").is_not_null()
          & (pl.col("prospect_peak_rate_rank") <= 25))

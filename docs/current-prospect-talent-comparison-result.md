@@ -26,11 +26,11 @@ level and evidence. The public list is joined only after every score is complete
 
 ## Important disagreements
 
-- Seth Hernandez is external #8 and model #101. The model sees good strikeouts, but
+- Seth Hernandez is external #8 and model #98. The model sees good strikeouts, but
   only 144 effective BF. Official lower-level data do not expose the raw pitch quality
   that can support an elite scouting grade. This is unresolved, not proof he lacks
   talent.
-- Gage Wood is external #45 and model #212. Strikeouts and walks are strong; translated
+- Gage Wood is external #45 and model #221. Strikeouts and walks are strong; translated
   home-run prevention is bottom-quartile. That is a direct performance disagreement.
 - Bryce Rainer is external #24 and model #205. Walks and home-run rate are strengths;
   strikeouts, singles and recent component direction are clear risks.

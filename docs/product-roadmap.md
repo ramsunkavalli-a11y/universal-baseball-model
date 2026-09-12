@@ -533,3 +533,9 @@ hitters and pitchers. The pitcher mean alone failed a new top-tail ordering test
 corrected fixed-MLB run-value replay also rejected the selected component/age-level
 blend on 2025 confirmation. Keep the current pitcher order provisional and continue
 the top-25/external-top-50 case review before reconnecting talent to FV or dollars.
+
+The next completed layer preserves the shrunken mean and adds validated conditional
+above-average and impact-peak probabilities from rolling historical errors. Use these
+probabilities to communicate ceiling; do not rank tiny differences in conservative
+means as if they were certain. The same work removed incomplete 2026 peak outcomes
+from live fitting.

@@ -9,7 +9,7 @@ import polars as pl
 
 sys.path.insert(0, str(Path("scripts").resolve()))
 
-from audit_age_to_peak_talent import _player_score  # noqa: E402
+from audit_age_to_peak_talent import _completed_fit_examples, _player_score  # noqa: E402
 from materialize_current_peak_talent import (  # noqa: E402
     _rank_prospects,
     _run_calibration,
@@ -30,6 +30,13 @@ def test_player_score_does_not_weight_a_player_by_future_workload() -> None:
 
     assert scaled["log_loss"] == original["log_loss"]
     assert scaled["brier"] == original["brier"]
+
+
+def test_current_partial_peak_window_is_excluded_from_live_fit() -> None:
+    examples = pl.DataFrame({"peak_window_end_year": [2024, 2025, 2026]})
+    assert _completed_fit_examples(examples).get_column(
+        "peak_window_end_year"
+    ).to_list() == [2024, 2025]
 
 
 def test_prospect_rank_excludes_mlb_unknown_age_and_age_over_23() -> None:

@@ -661,6 +661,16 @@ reference to a fixed MLB environment, the selected component/age-level blend fai
 its 2025 top-tail guardrail. No blend is promoted; continue player cases without
 fitting to the public list.
 
+The conditional upside layer is also complete. Future peak builds must run
+`audit_peak_talent_upside.py` after current peak materialization and before the public
+comparison. Show the conservative mean beside above-average and impact probabilities;
+never relabel the shrunken mean as a complete statement of talent. Hitter uncertainty
+uses the validated global residual pool and pitcher uncertainty uses validated age
+bands. Do not add an evidence-based upside bonus; that refinement failed confirmation.
+
+Partial 2026 peak outcomes are forbidden from the live fit. Current model training
+ends with completed 2025 peak windows while 2026 remains predictor evidence only.
+
 ### Paused here — 2026-09-12
 
 The run-scale centering audit is complete. Promote the fixed development-only age-band
