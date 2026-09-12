@@ -31,3 +31,9 @@ Keep the hitter candidate in research with a zero production weight. The next te
 the complete active hitter replay, with level movement and evidence bands reported.
 Do not tune specifically to remove the AA result and do not change hitter talent, WAR,
 FV, or value from this component test.
+
+That [active-model comparison](full-bip-active-model-result.md) is now complete. The
+overall errors improved, but AA and AAA reversed on both equal-player errors and the
+aggregate win was concentrated at Rookie level. The hitter production weight remains
+zero. Next diagnose the level interaction without using public FV or individual names
+as targets.

@@ -1,6 +1,6 @@
 # Full BIP contact-talent challenger
 
-**Status:** pitcher passed component confirmation; hitter improved overall but remains held back
+**Status:** pitcher passed active contact gate; hitter improved overall but remains held back
 **Priority:** P0 hitter and pitcher talent
 
 ## Existing work reused
@@ -55,5 +55,7 @@ directly change playing time, WAR, FV, or trade value.
   scores in confirmation, but a very small equal-player AA reversal failed the strict
   level guardrail. It remains research-only.
 
-Next, compare each candidate with the complete active rate model on identical
-historical rows. Preserve the frozen weights; do not rescue-tune either test.
+The [active-model comparison](full-bip-active-model-result.md) is complete on a shared
+cutoff-safe MLB-neutral scale. Pitcher passed at every supported level. Hitter reversed
+at AA and AAA and remains at zero production weight. Next, run the pitcher candidate
+through the full rate and WAR replay; diagnose hitter level interaction separately.

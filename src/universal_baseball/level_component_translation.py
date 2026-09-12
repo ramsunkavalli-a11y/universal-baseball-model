@@ -203,6 +203,37 @@ def translate_component_probabilities_to_mlb(
     return {component: float(translated[index]) for index, component in enumerate(components)}
 
 
+def translate_component_probabilities_from_mlb(
+    probabilities: dict[str, float],
+    *,
+    level_group: str,
+    offsets: pl.DataFrame,
+) -> dict[str, float]:
+    """Apply a fitted level environment to an MLB-scale component profile."""
+
+    components = tuple(sorted(probabilities))
+    values = np.asarray([float(probabilities[component]) for component in components])
+    if np.any(~np.isfinite(values)) or np.any(values <= 0) or not math.isclose(
+        float(values.sum()), 1.0, abs_tol=1e-9
+    ):
+        raise ValueError("translation probabilities must be positive and sum to one")
+    relevant = offsets.filter(pl.col("level_group") == level_group)
+    lookup = {
+        str(row["component"]): float(row["clr_environment_effect"])
+        for row in relevant.iter_rows(named=True)
+    }
+    if set(lookup) != set(components):
+        raise ValueError(f"missing translation offsets for {level_group}")
+    clr = np.log(values) - np.log(values).mean()
+    observed = clr + np.asarray([lookup[component] for component in components])
+    exponentials = np.exp(observed - observed.max())
+    translated = exponentials / exponentials.sum()
+    return {
+        component: float(translated[index])
+        for index, component in enumerate(components)
+    }
+
+
 def build_translated_affiliated_profiles(
     players: pl.DataFrame,
     history: pl.DataFrame,

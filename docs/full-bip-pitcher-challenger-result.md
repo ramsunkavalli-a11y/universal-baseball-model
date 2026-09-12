@@ -1,6 +1,6 @@
 # Full BIP pitcher contact-talent result
 
-**Status:** forecasting signal confirmed, including an HR-separated check; full active-model replay still required
+**Status:** contact signal and active-model contact comparison confirmed; full rate/WAR replay remains
 **Model effect:** none
 
 ## Source
@@ -60,8 +60,11 @@ This succeeds where individual ground/popup/pull increments failed because it va
 the coherent distribution rather than asking one isolated rate to move a broad
 outcome model.
 
-This is not yet a production promotion. The comparator is an equally regressed,
-one-year results-only contact-value estimate, not the complete active pitcher
-projection. Next, connect the HR-separated candidate to the complete active pitcher
-replay on identical historical rows. Do not change pitcher talent, WAR, FV, or value
-before that gate.
+The later [active-model comparison](full-bip-active-model-result.md) also passed after
+the active prediction, BIP estimate and future target were all put on one cutoff-safe
+MLB-neutral scale. The frozen weight was `0.7883`; every supported confirmation level
+improved.
+
+This is not yet a production promotion. Next, connect the contact adjustment to the
+complete pitcher rate and WAR replay. Do not change current pitcher talent, WAR, FV,
+or value before that gate.

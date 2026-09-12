@@ -155,6 +155,48 @@ def score_projected_bip_profile(
     )
 
 
+def score_active_contact_baseline(
+    profiles: pl.DataFrame,
+    *,
+    contact_components: tuple[str, ...],
+    component_weights: dict[str, float],
+) -> pl.DataFrame:
+    """Express an active component profile on the same per-BIP value scale."""
+
+    if not contact_components or set(contact_components) != set(component_weights):
+        raise ValueError("active contact components and weights must match")
+    required = {"player_id", *(f"p_{value}" for value in contact_components)}
+    if missing := sorted(required - set(profiles.columns)):
+        raise ValueError(f"active contact profile missing columns: {missing}")
+    if profiles.group_by("player_id").len().filter(pl.col("len") != 1).height:
+        raise ValueError("active contact profile must have one row per player")
+    denominator = pl.sum_horizontal(
+        *(pl.col(f"p_{value}") for value in contact_components)
+    )
+    numerator = pl.sum_horizontal(
+        *(
+            pl.col(f"p_{value}") * float(component_weights[value])
+            for value in contact_components
+        )
+    )
+    invalid = profiles.filter(
+        pl.any_horizontal(
+            *(
+                pl.col(f"p_{value}").is_null()
+                | ~pl.col(f"p_{value}").is_finite()
+                | (pl.col(f"p_{value}") < 0.0)
+                for value in contact_components
+            )
+        )
+        | (denominator <= 0.0)
+    )
+    if invalid.height:
+        raise ValueError("active contact profile contains invalid probabilities")
+    return profiles.select(
+        "player_id", (numerator / denominator).alias("baseline_contact_value")
+    ).sort("player_id")
+
+
 def fit_bip_residual_blend(training: pl.DataFrame) -> BipResidualBlend:
     """Fit a contact-weighted, nonnegative blend using earlier origins only.
 

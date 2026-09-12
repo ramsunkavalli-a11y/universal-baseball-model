@@ -6,6 +6,7 @@ from universal_baseball.bip_contact_talent import (
     apply_bip_residual_blend,
     estimate_neutral_bip_values,
     fit_bip_residual_blend,
+    score_active_contact_baseline,
     score_projected_bip_profile,
 )
 from universal_baseball.performance_season import CONTACT_CORE_BINS
@@ -65,6 +66,26 @@ def test_profile_must_be_complete_and_normalized() -> None:
     incomplete = _profile(probabilities).filter(pl.col("core_bin") != "IFFB")
     with pytest.raises(ValueError, match="ten bins summing to one"):
         score_projected_bip_profile(incomplete, _values())
+
+
+def test_active_contact_baseline_is_conditioned_on_bip() -> None:
+    profiles = pl.DataFrame(
+        {
+            "player_id": [7],
+            "p_single": [0.20],
+            "p_double": [0.05],
+            "p_hr": [0.05],
+            "p_other": [0.40],
+        }
+    )
+    result = score_active_contact_baseline(
+        profiles,
+        contact_components=("single", "double", "hr", "other"),
+        component_weights={"single": 0.9, "double": 1.3, "hr": 0.0, "other": 0.0},
+    )
+    assert result.item(0, "baseline_contact_value") == pytest.approx(
+        (0.20 * 0.9 + 0.05 * 1.3) / 0.70
+    )
 
 
 def test_residual_blend_learns_supported_increment() -> None:

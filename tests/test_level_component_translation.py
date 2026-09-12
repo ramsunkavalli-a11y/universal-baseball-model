@@ -9,6 +9,7 @@ from universal_baseball.level_component_translation import (
     build_translated_affiliated_profiles,
     fit_same_season_component_translation,
     score_component_profiles,
+    translate_component_probabilities_from_mlb,
     translate_component_probabilities_to_mlb,
 )
 
@@ -51,6 +52,10 @@ def test_translation_preserves_probability_and_removes_lower_level_boost() -> No
     )
     assert math.isclose(sum(translated.values()), 1.0)
     assert translated["good"] < 0.7
+    restored = translate_component_probabilities_from_mlb(
+        translated, level_group="AA", offsets=fit.offsets
+    )
+    assert restored == pytest.approx({"good": 0.7, "other": 0.3})
 
 
 def test_translation_fails_when_observed_level_graph_does_not_reach_mlb() -> None:

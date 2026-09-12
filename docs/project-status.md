@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Updated 2026-09-10. This is the current start-here document.
+Updated 2026-09-12. This is the current start-here document.
 
 ## Active talent component: full BIP profile
 
@@ -21,12 +21,17 @@ improving. A stricter test that removes home-run value from contact also passes,
 does not double-count the active home-run component.
 
 The matching [hitter result](full-bip-hitter-challenger-result.md) improves both
-overall confirmation errors with a much smaller frozen weight. Contact-weighted
-errors improve at every level, but equal-player AA errors reverse very slightly. The
-strict promotion gate therefore holds the hitter production weight at zero. No player
-value has changed. Next, replay the frozen candidates against the complete active
-hitter and pitcher rate models on identical historical rows; do not tune to the AA
-exception.
+overall confirmation errors in the preliminary comparison, but fails its strict level
+guardrail.
+
+The corrected [active-model comparison](full-bip-active-model-result.md) now puts the
+active prediction, BIP estimate and future target on one cutoff-safe MLB-neutral
+scale. Pitchers pass every supported confirmation level with a frozen `0.7883`
+incremental contact weight. Hitters improve overall but reverse at AA and AAA, with
+much of the gain concentrated at Rookie level, so their production weight remains
+zero. No player value has changed. Next, carry the pitcher adjustment through the full
+rate and WAR replay and separately diagnose the hitter level interaction without
+rescue tuning.
 
 ## Active product gate: explainable prospect rankings
 
