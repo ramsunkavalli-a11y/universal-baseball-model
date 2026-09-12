@@ -1,14 +1,15 @@
 # Current model plan
 
-## Active P0: direct pulled-air hitter recheck
+## Active P0: full-profile BIP contact talent
 
-Before declaring batted-ball shape exhausted, run the
-[matched pulled-air recheck](hitter-pulled-air-matched-recheck-plan.md). The prior
-Stage 2c code is behaving as specified, but its two additive, doubly shrunk inputs do
-not directly answer whether otherwise similar hitters with more pulled outfield flies
-per contact show more future power. This is a narrow talent diagnostic, not a playing-
-time change or permission to add an intuitive bonus. A production change still needs
-a frozen candidate and genuinely later confirmation.
+Run the [full BIP contact-talent challenger](full-bip-contact-talent-challenger-plan.md)
+for hitters and pitchers before declaring batted-ball evidence exhausted. Reuse the
+existing ten-bin profile and source work. Convert the complete projected profile to
+one neutral contact-value estimate, then learn one bounded residual weight against
+the active results-based estimate using earlier origins. This is a talent-component
+test, not a playing-time change or permission to add intuitive bonuses. The narrower
+[pulled-air matched recheck](hitter-pulled-air-matched-recheck-plan.md) remains a
+diagnostic rather than the governing candidate.
 
 ## Active P0: explanation-first prospect ranking audit
 

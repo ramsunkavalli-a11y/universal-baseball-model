@@ -1,6 +1,9 @@
 import polars as pl
 
-from universal_baseball.pitcher_contact_features import build_pitcher_contact_panel
+from universal_baseball.pitcher_contact_features import (
+    build_pitcher_contact_panel,
+    build_pitcher_full_bip_profile,
+)
 
 
 def test_pitcher_contact_panel_keeps_missingness_in_denominators_explicit() -> None:
@@ -43,3 +46,34 @@ def test_pitcher_contact_panel_excludes_noncontacts_and_missing_pitcher() -> Non
         }
     )
     assert build_pitcher_contact_panel(contacts).is_empty()
+
+
+def test_pitcher_full_bip_profile_reuses_hitter_classifier() -> None:
+    contacts = pl.DataFrame(
+        {
+            "game_date": ["2021-05-01", "2021-05-01", "2021-05-01"],
+            "league_id": [-2, -2, -2],
+            "source_level": ["aa", "aa", "aa"],
+            "game_pk": [1, 1, 1],
+            "at_bat_index": [1, 2, 3],
+            "pitch_number": [3, 2, 4],
+            "source_batter_id": [10, 11, 12],
+            "source_pitcher_id": [7, 7, 7],
+            "source_is_in_play": [True, True, True],
+            "conflict_field_count": [0, 0, 0],
+            "bb_type": ["fly_ball", "ground_ball", "bunt_grounder"],
+            "hc_x": [80.0, 170.0, 100.0],
+            "hc_y": [100.0, 100.0, 100.0],
+            "batter_side": ["R", "R", "R"],
+            "result_description": [
+                "Batter flies out to center fielder.",
+                "Batter grounds out to second baseman.",
+                "Batter is out on a bunt.",
+            ],
+        }
+    )
+    profile = build_pitcher_full_bip_profile(contacts)
+    counts = {
+        row["core_bin"]: row["occurrence_count"] for row in profile.to_dicts()
+    }
+    assert counts == {"PULL_OFFB": 1, "OPPO_GB": 1}

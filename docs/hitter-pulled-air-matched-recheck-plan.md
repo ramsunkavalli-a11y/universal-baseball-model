@@ -1,7 +1,7 @@
 # Hitter pulled-air matched recheck
 
-**Status:** active design review; no production change  
-**Priority:** P0 within hitter talent
+**Status:** superseded as the active design by the full-profile BIP challenger
+**Priority:** retained diagnostic within hitter talent
 
 ## Why reopen this narrowly
 

@@ -2,6 +2,22 @@
 
 Updated 2026-09-10. This is the current start-here document.
 
+## Active talent component: full BIP profile
+
+The active peak-talent path currently relies mainly on aggregate strikeout, walk,
+hit, extra-base-hit and home-run outcomes even though the earlier Current Talent
+pipeline already classified and projected ten non-bunt BIP types. The
+[full-profile challenger](full-bip-contact-talent-challenger-plan.md) now defines the
+missing bridge for hitters and pitchers: convert the complete projected BIP mix to
+one earlier-season neutral contact-value estimate and learn one bounded incremental
+weight against the active results-based estimate. Core scoring and exact zero-weight
+fallback primitives are implemented and tested. The pitcher source reducer now emits
+the same screened ten-bin profile used for hitters on its next materialization.
+
+No player value has changed. Next: materialize the compact historical hitter and
+pitcher profile inputs, fit only on earlier origins, and score the frozen later-period
+gate before deciding whether the BIP layer enters talent.
+
 ## Active product gate: explainable prospect rankings
 
 The first [top-50 ranking audit](prospect-top50-ranking-audit-checkpoint.md) is now
