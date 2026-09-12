@@ -21,8 +21,11 @@ from universal_baseball.certification import (
     read_quarantined_csv,
     sha256_file,
 )
-from universal_baseball.pitcher_contact_features import build_pitcher_contact_panel
-from universal_baseball.pitcher_contact_features import build_pitcher_full_bip_profile
+from universal_baseball.pitcher_contact_features import (
+    build_pitcher_contact_panel,
+    build_pitcher_full_bip_outcomes,
+    build_pitcher_full_bip_profile,
+)
 
 
 LEVEL_CODES = {"aaa": -1, "aa": -2, "a+": -3, "a": -4, "rk": -5}
@@ -121,12 +124,15 @@ def main() -> int:
     )
     panel = build_pitcher_contact_panel(resolved)
     full_bip = build_pitcher_full_bip_profile(resolved)
+    full_bip_outcomes = build_pitcher_full_bip_outcomes(resolved)
     table_dir = args.report_dir / "tables"
     table_dir.mkdir(parents=True, exist_ok=True)
     panel_path = table_dir / "pitcher_contact_panel.parquet"
     panel.write_parquet(panel_path)
     full_bip_path = table_dir / "pitcher_full_bip_profile.parquet"
     full_bip.write_parquet(full_bip_path)
+    full_bip_outcome_path = table_dir / "pitcher_full_bip_outcomes.parquet"
+    full_bip_outcomes.write_parquet(full_bip_outcome_path)
     payload = {
         "report_schema_version": 1,
         "status": "research_source_ready_not_model_promoted",
@@ -142,9 +148,11 @@ def main() -> int:
         "resolved_contacts": resolved.height,
         "panel_rows": panel.height,
         "full_bip_rows": full_bip.height,
+        "full_bip_outcome_rows": full_bip_outcomes.height,
         "distinct_pitchers": panel.get_column("player_id").n_unique(),
         "output": panel_path.as_posix(),
         "full_bip_output": full_bip_path.as_posix(),
+        "full_bip_outcome_output": full_bip_outcome_path.as_posix(),
         "model_effect": "none",
     }
     (args.report_dir / "report.json").write_text(

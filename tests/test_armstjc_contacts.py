@@ -31,6 +31,7 @@ def _raw() -> pl.DataFrame:
             "hc_x": [None, 125.42, None],
             "hc_y": [None, 100.0, None],
             "description": ["Batter singles.", "Batter grounds out.", None],
+            "events": ["single", "field_out", None],
             "hit_location": [None, None, None],
             "hit_distance_sc": [None, None, None],
             "launch_speed": [None, None, None],
@@ -68,6 +69,7 @@ def _certified_false_contact() -> pl.DataFrame:
             "description": [
                 "Julio Herrera caught stealing 2nd base, pitcher Royber Salinas to second baseman Joseph Fernando."
             ],
+            "events": [None],
             "hit_location": ["1"],
             "hit_distance_sc": [None],
             "launch_speed": [None],

@@ -98,6 +98,7 @@ CONTACT_RESOLVABLE_FIELDS: dict[str, pl.DataType] = {
     "bb_type": pl.String,
     "hc_x": pl.Float64,
     "hc_y": pl.Float64,
+    "structured_event": pl.String,
     "result_description": pl.String,
     "certified_contact_exclusion_policy": pl.String,
 }
@@ -309,6 +310,11 @@ def project_armstjc_contact_observations(
             pl.col("bb_type").cast(pl.String),
             pl.col("hc_x").cast(pl.Float64, strict=False),
             pl.col("hc_y").cast(pl.Float64, strict=False),
+            (
+                pl.col("events").cast(pl.String)
+                if "events" in frame.columns
+                else pl.lit(None, dtype=pl.String)
+            ).alias("structured_event"),
             pl.col("description").cast(pl.String).alias("result_description"),
             pl.when(certified_false_positive)
             .then(pl.lit(CERTIFIED_FALSE_POSITIVE_CONTACT_POLICY))

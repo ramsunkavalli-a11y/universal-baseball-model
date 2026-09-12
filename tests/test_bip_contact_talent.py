@@ -4,6 +4,7 @@ import pytest
 from universal_baseball.bip_contact_talent import (
     BipResidualBlend,
     apply_bip_residual_blend,
+    estimate_neutral_bip_values,
     fit_bip_residual_blend,
     score_projected_bip_profile,
 )
@@ -37,6 +38,21 @@ def test_full_profile_contact_value_uses_every_bin() -> None:
     scored = score_projected_bip_profile(_profile(probabilities), _values())
     assert scored["bip_contact_value"][0] == pytest.approx(4.5)
     assert scored["bip_profile_bins"][0] == 10
+
+
+def test_neutral_values_are_learned_from_terminal_outcomes() -> None:
+    rows = []
+    for core_bin in CONTACT_CORE_BINS:
+        rows.extend(
+            [
+                {"core_bin": core_bin, "canonical_outcome": "1B", "occurrence_count": 3},
+                {"core_bin": core_bin, "canonical_outcome": "OTHER_OUT", "occurrence_count": 1},
+            ]
+        )
+    values = estimate_neutral_bip_values(pl.DataFrame(rows))
+    assert values.height == 10
+    assert values["value_events"].to_list() == [4] * 10
+    assert values["neutral_run_value"].to_list() == pytest.approx([0.6582] * 10)
 
 
 def test_profile_must_be_complete_and_normalized() -> None:

@@ -14,9 +14,13 @@ weight against the active results-based estimate. Core scoring and exact zero-we
 fallback primitives are implemented and tested. The pitcher source reducer now emits
 the same screened ten-bin profile used for hitters on its next materialization.
 
-No player value has changed. Next: materialize the compact historical hitter and
-pitcher profile inputs, fit only on earlier origins, and score the frozen later-period
-gate before deciding whether the BIP layer enters talent.
+The first [pitcher forecast result](full-bip-pitcher-challenger-result.md) is now
+positive. The full profile improves future contact-value MAE and RMSE in both
+2021-to-2022 development and unchanged 2022-to-2023 confirmation, with all five
+supported levels improving. No player value has changed: the current comparator is a
+matched one-year results-only contact estimate, not yet the complete active pitcher
+projection. Next, run that active-model comparison and build the hitter equivalent
+before deciding whether the BIP layer enters talent.
 
 ## Active product gate: explainable prospect rankings
 

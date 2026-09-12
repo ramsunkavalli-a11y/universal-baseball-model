@@ -2,6 +2,7 @@ import polars as pl
 
 from universal_baseball.pitcher_contact_features import (
     build_pitcher_contact_panel,
+    build_pitcher_full_bip_outcomes,
     build_pitcher_full_bip_profile,
 )
 
@@ -70,6 +71,7 @@ def test_pitcher_full_bip_profile_reuses_hitter_classifier() -> None:
                 "Batter grounds out to second baseman.",
                 "Batter is out on a bunt.",
             ],
+            "structured_event": ["field_out", "field_out", "sac_bunt"],
         }
     )
     profile = build_pitcher_full_bip_profile(contacts)
@@ -77,3 +79,23 @@ def test_pitcher_full_bip_profile_reuses_hitter_classifier() -> None:
         row["core_bin"]: row["occurrence_count"] for row in profile.to_dicts()
     }
     assert counts == {"PULL_OFFB": 1, "OPPO_GB": 1}
+    outcomes = build_pitcher_full_bip_outcomes(contacts)
+    assert outcomes.select("core_bin", "canonical_outcome", "occurrence_count").to_dicts() == [
+        {"core_bin": "OPPO_GB", "canonical_outcome": "OTHER_OUT", "occurrence_count": 1},
+        {"core_bin": "PULL_OFFB", "canonical_outcome": "OTHER_OUT", "occurrence_count": 1},
+    ]
+
+
+def test_pitcher_bip_outcomes_exclude_noncontact_terminal_label() -> None:
+    contacts = pl.DataFrame(
+        {
+            "game_date": ["2021-05-01"], "league_id": [-2], "source_level": ["aa"],
+            "game_pk": [1], "at_bat_index": [1], "pitch_number": [3],
+            "source_batter_id": [10], "source_pitcher_id": [7],
+            "source_is_in_play": [True], "conflict_field_count": [0],
+            "bb_type": ["fly_ball"], "hc_x": [80.0], "hc_y": [100.0],
+            "batter_side": ["R"], "structured_event": ["hit_by_pitch"],
+            "result_description": ["Batter hit by pitch."],
+        }
+    )
+    assert build_pitcher_full_bip_outcomes(contacts).is_empty()
