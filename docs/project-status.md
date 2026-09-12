@@ -9,13 +9,12 @@ cohorts on player and event probability scores. A new pitcher ranking audit foun
 important distinction: the full component model is a valid mean forecast, but sorting
 that mean alone does not reliably identify the best future top decile.
 
-A chronology-safe ranking repair is now promoted. The 2018–2019 cohorts selected a
-50/50 blend of the component estimate and the age/level estimate. On untouched
-2023–2025 cohorts it improved top-decile precision twice and tied once, improved the
-realized quality of the selected top decile twice with one immaterial 0.06-run loss,
-and had no material rank-correlation loss. Pitcher board order now uses this blend;
-the component model remains the displayed mean projection. Public FanGraphs rank and
-FV remain audit-only.
+A chronology-safe ranking audit is now complete. The first result was invalid because
+it derived a ball-in-play run weight from the prospect target group. Correcting that
+weight to the fixed 2016–2020 MLB environment selected a 25% component blend on
+2018–2019, but it exceeded the frozen top-tail loss limit in 2025. No blend is
+promoted. The component model remains a validated mean and a provisional inspection
+order, not a validated exact ranking. Public FanGraphs rank and FV remain audit-only.
 
 The next action is player-by-player review of the refreshed model top 25 and external
 top 50. Explanations must distinguish relative prospect-pool strengths from actual

@@ -529,8 +529,7 @@ opportunity, control, cost, or dollar value.
    cannot be solved by lowering hitters until the list shape looks familiar.
 
 Update (2026-09-12): direct age-24-to-26 component rate models now pass for both
-hitters and pitchers. The pitcher mean alone failed a new top-tail ordering test, so
-a 50/50 component plus age/level ordering score was selected on 2018–2019 and passed
-2023–2025 confirmation. Use that score for the current pitcher board while retaining
-the validated component forecast as the displayed mean. Continue the refreshed
-top-25/external-top-50 case review before reconnecting talent to FV or dollars.
+hitters and pitchers. The pitcher mean alone failed a new top-tail ordering test. A
+corrected fixed-MLB run-value replay also rejected the selected component/age-level
+blend on 2025 confirmation. Keep the current pitcher order provisional and continue
+the top-25/external-top-50 case review before reconnecting talent to FV or dollars.

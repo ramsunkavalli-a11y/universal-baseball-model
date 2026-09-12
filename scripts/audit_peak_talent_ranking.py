@@ -29,6 +29,13 @@ EXAMPLES = Path(
 OUTPUT = Path("reports/generated/peak-talent-ranking-audit/report.json")
 REPLAY_END_YEARS = (2018, 2019, 2023, 2024, 2025)
 ALPHA = 100.0
+NEUTRAL_MLB_TOTALS_2016_2020 = {
+    "bf": 808_037,
+    "ubb": 64_804,
+    "hbp": 8_141,
+    "hr": 26_380,
+    "other": 530_010,
+}
 
 
 def _rates(rows: list[dict[str, object]], prefix: str) -> np.ndarray:
@@ -41,12 +48,15 @@ def _rates(rows: list[dict[str, object]], prefix: str) -> np.ndarray:
     return values
 
 
-def _run_weights(training_rows: list[dict[str, object]]) -> np.ndarray:
-    counts = np.asarray([
-        [float(row[f"target_{component}"]) for component in PITCHER_COMPONENTS]
-        for row in training_rows
-    ]).sum(axis=0)
-    reference = counts / counts.sum()
+def _run_weights() -> np.ndarray:
+    totals = NEUTRAL_MLB_TOTALS_2016_2020
+    reference = np.asarray([
+        1.0 - sum(totals[name] for name in ("ubb", "hbp", "hr", "other")) / totals["bf"],
+        totals["ubb"] / totals["bf"],
+        totals["hbp"] / totals["bf"],
+        totals["hr"] / totals["bf"],
+        totals["other"] / totals["bf"],
+    ])
     known = (
         reference[1] * NEUTRAL_WOBA_WEIGHTS["UBB"]
         + reference[2] * NEUTRAL_WOBA_WEIGHTS["HBP"]
@@ -100,7 +110,7 @@ def main() -> int:
     for end_year in REPLAY_END_YEARS:
         training = examples.filter(pl.col("peak_window_end_year") < end_year).to_dicts()
         target = examples.filter(pl.col("peak_window_end_year") == end_year).to_dicts()
-        weights = _run_weights(training)
+        weights = _run_weights()
         actual = _run_scores(_rates(target, "target_"), weights)
         age_level = _predict(
             _fit_peak(training, PITCHER_COMPONENTS, "age_level", ALPHA, basis),
@@ -194,7 +204,7 @@ def main() -> int:
         "question": "Does current component shape improve future peak pitcher ordering beyond age and level?",
         "public_rank_or_fv_used": False,
         "future_workload_used_as_weight": False,
-        "run_weights_fit_from_prior_rows_only": True,
+        "run_weight_reference": "fixed official MLB aggregate, 2016-2020",
         "replay": replay,
         "component_vs_age_level": comparison,
         "selection": {

@@ -1,7 +1,7 @@
 # Peak pitcher talent ranking audit
 
 Last updated: 2026-09-12  
-Status: **50/50 ranking blend promoted; component mean retained**
+Status: **PRECISE PITCHER ORDERING NOT VALIDATED; NO BLEND PROMOTED**
 
 ## Why this test was needed
 
@@ -30,25 +30,27 @@ correlation or top-decile precision.
 
 ## Result
 
-The 50/50 blend was selected. Against age/level alone on the confirmation cohorts:
+After correcting the run-value reference to the fixed 2016–2020 MLB environment, the
+25% component blend was selected. Against age/level alone on confirmation:
 
 | Peak window | Rank correlation change | Top-decile precision change | Actual runs in selected top decile |
 |---|---:|---:|---:|
-| 2023 | +0.0098 | +7.0 points | +5.86 runs |
-| 2024 | -0.0005 | 0.0 points | -0.06 runs |
-| 2025 | +0.0165 | +2.9 points | +0.89 runs |
+| 2023 | +0.0068 | +2.3 points | +1.71 runs |
+| 2024 | -0.0009 | 0.0 points | -0.01 runs |
+| 2025 | +0.0073 | 0.0 points | -0.78 runs |
 
 The full component model improved overall rank correlation in four of five replay
-cohorts, but it improved realized top-decile quality in only one of five. Precise
-ordering by the component mean alone is therefore rejected.
+cohorts, but it improved realized top-decile quality in only two of five. The selected
+blend exceeded the frozen 0.5-run non-inferiority limit in 2025. Precise ordering by
+either the component mean or a tested blend is therefore rejected.
 
 ## Product decision
 
 Pitcher peak rates continue to use the validated component model as the displayed
-mean. Pitcher prospect ordering now uses an equal blend of that estimate and the
-age/level estimate. This preserves real performance information while preventing
-small component differences from overwhelming the historically strong signal that a
-young pitcher has already reached an advanced level.
+mean. The current order remains an inspection aid, not a validated ordinal ranking,
+and no tested blend changes production. Age/level clearly identifies useful broad
+groups; measured components add some ordering information, but the correct balance is
+not yet stable at the top tail.
 
 The external FanGraphs list remains audit-only. Missing pitch velocity, movement and
 arsenal evidence remains the main reason some individual pitcher disagreements cannot

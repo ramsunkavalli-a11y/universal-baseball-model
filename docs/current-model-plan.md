@@ -656,10 +656,10 @@ recognizable elite prospects without using public rank as an input. Continue wit
 labels in every explanation.
 
 A direct historical ordering audit is now complete. Probability accuracy did not
-justify sorting pitchers by the component mean alone. A 50/50 component plus age/level
-ordering score was selected on 2018–2019 and passed 2023–2025 confirmation. Use that
-blend for pitcher board order, retain the component estimate as the displayed mean,
-and continue player cases without fitting to the public list.
+justify sorting pitchers by the component mean alone. After correcting the run-value
+reference to a fixed MLB environment, the selected component/age-level blend failed
+its 2025 top-tail guardrail. No blend is promoted; continue player cases without
+fitting to the public list.
 
 ### Paused here — 2026-09-12
 
