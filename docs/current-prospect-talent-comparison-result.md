@@ -38,6 +38,11 @@ level and evidence. The public list is joined only after every score is complete
 ## Boundaries
 
 Do not force the model toward public ranks. A disagreement is acceptable when the
-StatsAPI case is explicit. Raw pitch quality below AAA, hitter defense/position and
-physical tools remain missing. Older prospects are reported as outside the validated
+StatsAPI case is explicit. Raw pitch quality below AAA, peak hitter defense/positional
+value and physical tools remain missing. Older prospects are reported outside the validated
 pre-24 peak model rather than silently treated as failures.
+
+Current primary position and the frozen adjacent-year defense result are now displayed
+beside hitters but do not change peak offense rank. Most top prospects have a neutral
+defense value because the current defense method has no eligible MLB exposure for them.
+There is no catcher, shortstop or center-field preference hidden in this board.

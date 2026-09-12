@@ -29,6 +29,14 @@ OUTPUT_ROOT = Path("reports/generated/current-peak-talent/2026-09-08")
 PITCHER_ROLE_PATH = Path(
     "reports/generated/current-pitcher-opportunity-v2/2026-09-08/predictors.parquet"
 )
+FIELDING_PROFILE_PATH = Path(
+    "reports/generated/current-defense-rates/2026-09-08/tables/"
+    "current-fielding-profiles.parquet"
+)
+DEFENSE_RATE_PATH = Path(
+    "reports/generated/current-defense-rates/2026-09-08/tables/"
+    "hitter-defense-rates.parquet"
+)
 
 
 def _rank_prospects(frame: pl.DataFrame) -> pl.DataFrame:
@@ -129,6 +137,15 @@ def _materialize(
         *(column for column in ("as_of_role",) if column in frame.columns),
         *(
             column
+            for column in (
+                "current_primary_position",
+                "current_defense_runs_per_600",
+                "defense_evidence_tier",
+            )
+            if column in frame.columns
+        ),
+        *(
+            column
             for column in ("external_rank_audit_only", "external_fv_audit_only")
             if column in frame.columns
         ),
@@ -171,6 +188,37 @@ def main() -> int:
             HITTER_COMPONENTS,
             exposure="plate_appearances",
             regression=1200.0,
+        )
+    if FIELDING_PROFILE_PATH.exists():
+        primary_position = (
+            pl.read_parquet(FIELDING_PROFILE_PATH)
+            .sort(
+                ["player_id", "fielding_outs", "position_order"],
+                descending=[False, True, False],
+            )
+            .unique("player_id", keep="first")
+            .select(
+                "player_id",
+                pl.col("position").alias("current_primary_position"),
+            )
+        )
+        hitter_frame = hitter_frame.join(
+            primary_position, on="player_id", how="left", validate="1:1"
+        )
+    if DEFENSE_RATE_PATH.exists():
+        defense = (
+            pl.read_parquet(DEFENSE_RATE_PATH)
+            .filter(pl.col("season") == 2027)
+            .select(
+                "player_id",
+                pl.col("defense_runs_per_600").alias(
+                    "current_defense_runs_per_600"
+                ),
+                "defense_evidence_tier",
+            )
+        )
+        hitter_frame = hitter_frame.join(
+            defense, on="player_id", how="left", validate="1:1"
         )
     hitters = _materialize(
         hitter_frame,
@@ -228,6 +276,10 @@ def main() -> int:
         },
         "pitchers": {"validation": report["pitchers"]["promotion"]},
         "public_rank_role": "joined after scoring for audit only",
+        "hitter_position_and_defense_role": (
+            "visible current context only; excluded from peak offense rank because "
+            "prospect positional-run validation failed"
+        ),
         "run_rate_calibration": {
             "artifact": str(CALIBRATION_PATH),
             "method": calibration["method"],

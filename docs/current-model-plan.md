@@ -672,3 +672,9 @@ views in 5/5 later groups and paired uncertainty in 4/5. The fixed run correctio
 improves RMSE 5/5 and MAE 4/5. Reject the same change for pitchers, where Brier/event
 breadth and uncertainty fail. Current hitter output must expose recent direction as an
 explanation; current pitcher output remains on the prior peak model.
+
+Show current primary position and the already validated adjacent-year defense signal
+beside hitter results, but keep both outside the peak offense rank. The prior prospect
+positional-run conversion worsened RMSE and MAE on its outer cohort, so neither catcher
+nor shortstop receives a hidden value bonus. Revisit position only with a new validated
+peak-value target.

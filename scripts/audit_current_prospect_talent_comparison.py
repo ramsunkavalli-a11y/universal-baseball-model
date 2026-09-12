@@ -151,9 +151,13 @@ def _reason(frame: pl.DataFrame, *, player_type: str) -> pl.DataFrame:
             (pl.col("peak_hr_rate") - pl.col("present_hr_rate")).alias(
                 "home_run_rate_change"
             ),
-            pl.lit("position, defense, physical tools and scouting absent").alias(
+            pl.lit(
+                "current position/defense shown but unvalidated for peak; "
+                "physical tools and scouting absent"
+            ).alias(
                 "known_missing_evidence"
             ),
+            pl.lit(False).alias("current_defense_used_in_peak_rank"),
         )
     return frame.with_columns(
         status,
