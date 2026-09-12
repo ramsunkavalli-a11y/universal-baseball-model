@@ -198,6 +198,15 @@ pitchers are 586 and 931. Treat that as the measured present-versus-future gap. 
 P0 is a chronological one- and two-year component-development model, not playing time
 and not an assumed age bonus. See the [current basic talent checkpoint](current-basic-talent-checkpoint.md).
 
+The first chronological one-year development replay is now complete across official
+2003–2025 component history. A strongly regularized age/level/current-component model
+beats unchanged talent on log loss and Brier in all five later hitter and pitcher
+replays (targets 2019 and 2022–2025). It also broadly beats the simpler age/level-only
+form: hitters win 5/5 log loss and 4/5 Brier; pitchers win 4/5 and 5/5. This supports
+component-specific development rather than a blanket age bonus. Keep it out of current
+rankings until player-cluster uncertainty, subgroup reversals and a direct two-year
+model are checked. See the [one-year talent result](one-year-talent-development-result.md).
+
 The reusable search layer now records hashes for the complete candidate family and
 the exact outer cohort, enforces observable time origins and identical player rows,
 and supplies a conservative promotion gate across both proper scores, paired
