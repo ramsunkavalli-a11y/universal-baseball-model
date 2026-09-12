@@ -189,6 +189,15 @@ public FV. This is the fixed baseline for the next P0: learn one- and two-year f
 skill distributions from chronological history. Do not interpret present skill as
 future ceiling and do not resume opportunity work ahead of this talent test.
 
+The separate current aggregate path now confirms full dated-universe coverage for the
+talent foundation: 3,940 hitters and 5,690 pitchers, including all 50 players in the
+FanGraphs audit list. Forty-three of those 50 clear the fixed evidence line. The simple
+translated component rates deliberately do not force elite young prospects above
+current MLB players; median present-rate ranks for supported public top-50 hitters and
+pitchers are 586 and 931. Treat that as the measured present-versus-future gap. The next
+P0 is a chronological one- and two-year component-development model, not playing time
+and not an assumed age bonus. See the [current basic talent checkpoint](current-basic-talent-checkpoint.md).
+
 The reusable search layer now records hashes for the complete candidate family and
 the exact outer cohort, enforces observable time origins and identical player rows,
 and supplies a conservative promotion gate across both proper scores, paired
