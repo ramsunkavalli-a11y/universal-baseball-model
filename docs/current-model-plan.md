@@ -1,5 +1,15 @@
 # Current model plan
 
+## Active P0: direct pulled-air hitter recheck
+
+Before declaring batted-ball shape exhausted, run the
+[matched pulled-air recheck](hitter-pulled-air-matched-recheck-plan.md). The prior
+Stage 2c code is behaving as specified, but its two additive, doubly shrunk inputs do
+not directly answer whether otherwise similar hitters with more pulled outfield flies
+per contact show more future power. This is a narrow talent diagnostic, not a playing-
+time change or permission to add an intuitive bonus. A production change still needs
+a frozen candidate and genuinely later confirmation.
+
 ## Active P0: explanation-first prospect ranking audit
 
 Before further prospect-model complexity or any public ranking, complete the
