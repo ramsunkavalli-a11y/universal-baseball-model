@@ -630,3 +630,16 @@ former teenage-hitter reversal. Hitters and pitchers pass 5/5 player, uncertaint
 event gates. The current prospect-only inspection board is generated. Complete its top-25
 and external-top-50 error audit before any FV integration; minor-league pitch-quality
 evidence is the leading new pitcher input.
+
+The [current pitch-quality source check](minor-pitch-quality-source-check-2026.md)
+confirms complete tracking in sampled 2026 AAA games and no velocity/spin/movement or
+pitch type in sampled AA-through-DSL games. Add current role and within-role ranks to
+the pitcher audit immediately. Treat AAA tracking as a later optional evidence tier;
+do not impute it below AAA.
+
+The first model-top-25/external-top-50 audit is materialized. Correcting its universe
+from age 25-and-under to the peak model's supported pre-24 population removes older
+rate-first players from the ceiling board. The resulting top groups contain many
+recognizable elite prospects without using public rank as an input. Continue with the
+12 hitter and 21 pitcher model-high disagreements; preserve role and missing-tracking
+labels in every explanation.

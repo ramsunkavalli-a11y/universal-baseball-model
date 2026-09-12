@@ -28,12 +28,12 @@ def test_player_score_does_not_weight_a_player_by_future_workload() -> None:
     assert scaled["brier"] == original["brier"]
 
 
-def test_prospect_rank_excludes_mlb_unknown_age_and_age_over_25() -> None:
+def test_prospect_rank_excludes_mlb_unknown_age_and_age_over_23() -> None:
     frame = pl.DataFrame({
         "player_id": [1, 2, 3, 4],
         "ranking_status": ["ranked"] * 4,
         "as_of_level_group": ["AA", "MLB", "AAA", "AA"],
-        "age_years": [20.0, 20.0, None, 26.0],
+        "age_years": [20.0, 20.0, None, 24.0],
         "peak_runs_rate": [1.0, 4.0, 3.0, 2.0],
         "effective_evidence": [200.0] * 4,
     })

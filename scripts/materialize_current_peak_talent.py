@@ -22,6 +22,9 @@ from universal_baseball.storage import write_canonical_parquet
 BASIC_ROOT = Path("reports/generated/current-basic-talent/2026-09-08/tables")
 PEAK_REPORT = Path("reports/generated/age-to-peak-talent/report.json")
 OUTPUT_ROOT = Path("reports/generated/current-peak-talent/2026-09-08")
+PITCHER_ROLE_PATH = Path(
+    "reports/generated/current-pitcher-opportunity-v2/2026-09-08/predictors.parquet"
+)
 
 
 def _rank_prospects(frame: pl.DataFrame) -> pl.DataFrame:
@@ -30,7 +33,7 @@ def _rank_prospects(frame: pl.DataFrame) -> pl.DataFrame:
             (pl.col("ranking_status") == "ranked")
             & (pl.col("as_of_level_group") != "MLB")
             & pl.col("age_years").is_not_null()
-            & (pl.col("age_years") <= 25)
+            & (pl.col("age_years") <= 23)
         )
         .sort(
             ["peak_runs_rate", "effective_evidence", "player_id"],
@@ -38,11 +41,23 @@ def _rank_prospects(frame: pl.DataFrame) -> pl.DataFrame:
         )
         .with_row_index("prospect_peak_rate_rank", offset=1)
     )
+    if "as_of_role" in eligible.columns:
+        eligible = eligible.with_columns(
+            pl.col("peak_runs_rate")
+            .rank(method="ordinal", descending=True)
+            .over("as_of_role")
+            .cast(pl.UInt32)
+            .alias("prospect_role_peak_rate_rank")
+        )
     other = frame.join(
         eligible.select("player_id"),
         on="player_id",
         how="anti",
     ).with_columns(pl.lit(None, dtype=pl.UInt32).alias("prospect_peak_rate_rank"))
+    if "as_of_role" in other.columns:
+        other = other.with_columns(
+            pl.lit(None, dtype=pl.UInt32).alias("prospect_role_peak_rate_rank")
+        )
     return pl.concat([eligible, other], how="diagonal_relaxed")
 
 
@@ -84,6 +99,7 @@ def _materialize(
         "reliability",
         "evidence_band",
         "ranking_status",
+        *(column for column in ("as_of_role",) if column in frame.columns),
         *(
             column
             for column in ("external_rank_audit_only", "external_fv_audit_only")
@@ -113,12 +129,20 @@ def main() -> int:
         report["hitters"]["current_fit"],
         player_type="hitter",
     )
-    pitchers = _materialize(
-        _prepare(
+    pitcher_source = _prepare(
             BASIC_ROOT / "current_pitcher_talent.parquet",
             PITCHER_COMPONENTS,
             player_type="pitcher",
-        ),
+        )
+    if PITCHER_ROLE_PATH.exists():
+        pitcher_source = pitcher_source.join(
+            pl.read_parquet(PITCHER_ROLE_PATH).select("player_id", "as_of_role"),
+            on="player_id",
+            how="left",
+            validate="1:1",
+        )
+    pitchers = _materialize(
+        pitcher_source,
         PITCHER_COMPONENTS,
         report["pitchers"]["current_fit"],
         player_type="pitcher",
@@ -141,7 +165,7 @@ def main() -> int:
         "report_schema_version": "0.1",
         "status": "inspectable_prospect_peak_rate",
         "ranking_universe": (
-            "ranked non-MLB players age 25 or younger, separately for hitters and pitchers"
+            "ranked non-MLB players age 23 or younger, separately for hitters and pitchers"
         ),
         "hitters": {
             "validation": report["hitters"]["promotion"],
