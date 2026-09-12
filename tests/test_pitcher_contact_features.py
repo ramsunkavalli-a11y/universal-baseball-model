@@ -1,6 +1,8 @@
 import polars as pl
 
 from universal_baseball.pitcher_contact_features import (
+    build_hitter_full_bip_outcomes,
+    build_hitter_full_bip_profile,
     build_pitcher_contact_panel,
     build_pitcher_full_bip_outcomes,
     build_pitcher_full_bip_profile,
@@ -99,3 +101,30 @@ def test_pitcher_bip_outcomes_exclude_noncontact_terminal_label() -> None:
         }
     )
     assert build_pitcher_full_bip_outcomes(contacts).is_empty()
+
+
+def test_hitter_and_pitcher_profiles_share_event_classification() -> None:
+    contacts = pl.DataFrame(
+        {
+            "game_date": ["2021-05-01", "2021-05-01"],
+            "league_id": [-2, -2], "source_level": ["aa", "aa"],
+            "game_pk": [1, 1], "at_bat_index": [1, 2], "pitch_number": [3, 2],
+            "source_batter_id": [10, 11], "source_pitcher_id": [7, 7],
+            "source_is_in_play": [True, True], "conflict_field_count": [0, 0],
+            "bb_type": ["fly_ball", "ground_ball"], "hc_x": [80.0, 170.0],
+            "hc_y": [100.0, 100.0], "batter_side": ["R", "R"],
+            "structured_event": ["home_run", "field_out"],
+            "result_description": ["Batter homers.", "Batter grounds out."],
+        }
+    )
+    hitter = build_hitter_full_bip_profile(contacts)
+    pitcher = build_pitcher_full_bip_profile(contacts)
+    assert hitter.select("core_bin", "occurrence_count").group_by("core_bin").sum().sort(
+        "core_bin"
+    ).equals(
+        pitcher.select("core_bin", "occurrence_count").group_by("core_bin").sum().sort(
+            "core_bin"
+        )
+    )
+    outcomes = build_hitter_full_bip_outcomes(contacts)
+    assert set(outcomes["canonical_outcome"].to_list()) == {"HR", "OTHER_OUT"}

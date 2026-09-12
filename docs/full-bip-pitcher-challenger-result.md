@@ -1,6 +1,6 @@
 # Full BIP pitcher contact-talent result
 
-**Status:** forecasting signal confirmed; active-model comparison still required  
+**Status:** forecasting signal confirmed, including an HR-separated check; full active-model replay still required
 **Model effect:** none
 
 ## Source
@@ -38,6 +38,21 @@ was `0.9607` and was not changed for confirmation. Every supported origin level�
 High-A, AA, AAA, and Rookie—improved on both equal-player MAE and RMSE in both
 periods. There was no supported level reversal.
 
+## HR-separated compatibility check
+
+The active pitcher model already forecasts home runs separately. A stricter rerun
+therefore gave home runs zero value inside the BIP contact target rather than counting
+them twice. The weight was fit on 2021 predicting 2022 and frozen at `0.7611`.
+
+| Test | Players | Baseline MAE | BIP blend MAE | Baseline RMSE | BIP blend RMSE |
+|---|---:|---:|---:|---:|---:|
+| 2021 → 2022 development | 2,548 | 0.04048 | 0.03763 | 0.05144 | 0.04849 |
+| 2022 → 2023 confirmation | 2,512 | 0.04080 | 0.03788 | 0.05231 | 0.04942 |
+
+Contact-weighted errors and every supported level improved too. This confirms that
+the full BIP profile adds non-home-run contact information without taking credit for
+the separate home-run component.
+
 ## Interpretation and boundary
 
 The broad BIP profile carries repeatable future pitcher contact-quality information.
@@ -47,6 +62,6 @@ outcome model.
 
 This is not yet a production promotion. The comparator is an equally regressed,
 one-year results-only contact-value estimate, not the complete active pitcher
-projection. Next, compare the frozen BIP estimate against that active projection on
-identical historical rows and build the hitter version from the same source logic.
-Do not change pitcher talent, WAR, FV, or value before that gate.
+projection. Next, connect the HR-separated candidate to the complete active pitcher
+replay on identical historical rows. Do not change pitcher talent, WAR, FV, or value
+before that gate.

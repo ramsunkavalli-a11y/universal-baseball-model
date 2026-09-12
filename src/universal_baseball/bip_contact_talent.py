@@ -27,7 +27,11 @@ class BipResidualBlend:
     unconstrained_weight: float
 
 
-def estimate_neutral_bip_values(outcome_counts: pl.DataFrame) -> pl.DataFrame:
+def estimate_neutral_bip_values(
+    outcome_counts: pl.DataFrame,
+    *,
+    outcome_weights: dict[str, float] | None = None,
+) -> pl.DataFrame:
     """Estimate one context-neutral wOBA value per BIP bin from prior outcomes."""
 
     required = {"core_bin", "canonical_outcome", "occurrence_count"}
@@ -44,15 +48,16 @@ def estimate_neutral_bip_values(outcome_counts: pl.DataFrame) -> pl.DataFrame:
     invalid_bins = outcome_counts.filter(
         ~pl.col("core_bin").is_in(list(CONTACT_CORE_BINS))
     )
+    weights = NEUTRAL_WOBA_WEIGHTS if outcome_weights is None else outcome_weights
     invalid_outcomes = outcome_counts.filter(
-        ~pl.col("canonical_outcome").is_in(list(NEUTRAL_WOBA_WEIGHTS))
+        ~pl.col("canonical_outcome").is_in(list(weights))
     )
     invalid_counts = outcome_counts.filter(pl.col("occurrence_count") <= 0)
     if invalid_bins.height or invalid_outcomes.height or invalid_counts.height:
         raise ValueError("BIP outcome counts contain unsupported values")
     weighted = outcome_counts.with_columns(
         pl.col("canonical_outcome")
-        .replace_strict(NEUTRAL_WOBA_WEIGHTS, return_dtype=pl.Float64)
+        .replace_strict(weights, return_dtype=pl.Float64)
         .alias("_outcome_value")
     )
     result = (

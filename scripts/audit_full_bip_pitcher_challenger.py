@@ -18,20 +18,23 @@ from universal_baseball.bip_contact_talent import (
 from universal_baseball.hitter_v2_evaluation import NEUTRAL_WOBA_WEIGHTS
 PRIOR_CONTACTS = 100.0
 MIN_TARGET_CONTACTS = 50
+CONTACT_VALUE_WEIGHTS = dict(NEUTRAL_WOBA_WEIGHTS)
 
 
-def _load(root: Path) -> tuple[pl.DataFrame, pl.DataFrame]:
+def _load(root: Path, player_type: str) -> tuple[pl.DataFrame, pl.DataFrame]:
     tables = root / "tables"
     return (
-        pl.read_parquet(tables / "pitcher_full_bip_profile.parquet"),
-        pl.read_parquet(tables / "pitcher_full_bip_outcomes.parquet"),
+        pl.read_parquet(tables / f"{player_type}_full_bip_profile.parquet"),
+        pl.read_parquet(tables / f"{player_type}_full_bip_outcomes.parquet"),
     )
 
 
 def _player_estimates(profile: pl.DataFrame, outcomes: pl.DataFrame) -> pl.DataFrame:
     """Build equally regressed results-only and full-BIP estimates for one origin."""
 
-    bin_values = estimate_neutral_bip_values(outcomes)
+    bin_values = estimate_neutral_bip_values(
+        outcomes, outcome_weights=CONTACT_VALUE_WEIGHTS
+    )
     population_profile = (
         profile.group_by("source_level", "core_bin")
         .agg(pl.col("occurrence_count").sum())
@@ -44,7 +47,7 @@ def _player_estimates(profile: pl.DataFrame, outcomes: pl.DataFrame) -> pl.DataF
     )
     valued_outcomes = outcomes.with_columns(
         pl.col("canonical_outcome")
-        .replace_strict(NEUTRAL_WOBA_WEIGHTS, return_dtype=pl.Float64)
+        .replace_strict(CONTACT_VALUE_WEIGHTS, return_dtype=pl.Float64)
         .alias("outcome_value")
     )
     population_value = (
@@ -158,7 +161,7 @@ def _player_estimates(profile: pl.DataFrame, outcomes: pl.DataFrame) -> pl.DataF
 def _targets(outcomes: pl.DataFrame) -> pl.DataFrame:
     valued = outcomes.with_columns(
             pl.col("canonical_outcome")
-            .replace_strict(NEUTRAL_WOBA_WEIGHTS, return_dtype=pl.Float64)
+            .replace_strict(CONTACT_VALUE_WEIGHTS, return_dtype=pl.Float64)
             .alias("outcome_value")
         )
     target_level = (
@@ -225,9 +228,11 @@ def _by_origin_level(frame: pl.DataFrame) -> list[dict[str, object]]:
     return output
 
 
-def _transition(origin_root: Path, target_root: Path) -> pl.DataFrame:
-    origin_profile, origin_outcomes = _load(origin_root)
-    _, target_outcomes = _load(target_root)
+def _transition(
+    origin_root: Path, target_root: Path, player_type: str
+) -> pl.DataFrame:
+    origin_profile, origin_outcomes = _load(origin_root, player_type)
+    _, target_outcomes = _load(target_root, player_type)
     return _player_estimates(origin_profile, origin_outcomes).join(
         _targets(target_outcomes), on="player_id", how="inner", validate="1:1"
     )
@@ -238,12 +243,20 @@ def main() -> int:
     parser.add_argument("--origin-2021", type=Path, required=True)
     parser.add_argument("--target-2022", type=Path, required=True)
     parser.add_argument("--target-2023", type=Path)
+    parser.add_argument("--player-type", choices=("hitter", "pitcher"), default="pitcher")
+    parser.add_argument(
+        "--exclude-hr-value",
+        action="store_true",
+        help="set HR outcome value to zero so the active HR component remains separate",
+    )
     parser.add_argument(
         "--output", type=Path,
         default=Path("reports/generated/full-bip-pitcher-challenger/report.json"),
     )
     args = parser.parse_args()
-    development = _transition(args.origin_2021, args.target_2022)
+    if args.exclude_hr_value:
+        CONTACT_VALUE_WEIGHTS["HR"] = 0.0
+    development = _transition(args.origin_2021, args.target_2022, args.player_type)
     blend = fit_bip_residual_blend(development)
     developed = apply_bip_residual_blend(development, blend)
     development_levels = _by_origin_level(developed)
@@ -251,6 +264,8 @@ def main() -> int:
         "status": "development_only" if args.target_2023 is None else "confirmation_scored",
         "prior_contacts": PRIOR_CONTACTS,
         "minimum_target_contacts": MIN_TARGET_CONTACTS,
+        "hr_value_in_contact_target": not args.exclude_hr_value,
+        "player_type": args.player_type,
         "development": {
             "baseline": _metrics(developed, "baseline_contact_value"),
             "bip_only": _metrics(developed, "bip_contact_value"),
@@ -261,7 +276,9 @@ def main() -> int:
         },
     }
     if args.target_2023 is not None:
-        confirmation = _transition(args.target_2022, args.target_2023)
+        confirmation = _transition(
+            args.target_2022, args.target_2023, args.player_type
+        )
         confirmed = apply_bip_residual_blend(confirmation, blend)
         confirmation_levels = _by_origin_level(confirmed)
         supported_reversals = [

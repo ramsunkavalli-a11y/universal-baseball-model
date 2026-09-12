@@ -202,3 +202,106 @@ def build_pitcher_full_bip_outcomes(contacts: pl.DataFrame) -> pl.DataFrame:
         .cast(schema)
         .sort("season", "source_level", "player_id", "core_bin", "canonical_outcome")
     )
+
+
+def build_hitter_full_bip_profile_events(contacts: pl.DataFrame) -> pl.DataFrame:
+    """Return the hitter-keyed view of the shared screened BIP event source."""
+
+    required = {
+        "game_date", "league_id", "source_level", "game_pk", "at_bat_index",
+        "pitch_number", "source_batter_id", "batter_side", "bb_type", "hc_x",
+        "hc_y", "structured_event", "result_description", "source_is_in_play",
+    }
+    if missing := sorted(required - set(contacts.columns)):
+        raise ValueError(f"contacts missing full hitter BIP columns: {missing}")
+    eligible = contacts.filter(
+        (pl.col("source_is_in_play") == True)  # noqa: E712
+        & pl.col("source_batter_id").is_not_null()
+    )
+    if eligible.is_empty():
+        return pl.DataFrame()
+    canonical = eligible.select(
+        pl.col("game_date").str.slice(0, 4).cast(pl.Int64).alias("season"),
+        pl.col("league_id").cast(pl.Int64), "source_level", "game_pk",
+        "at_bat_index", "pitch_number",
+        pl.col("source_batter_id").alias("batter_mlbam_id"),
+        pl.lit("source_default").alias("participant_authority"),
+        pl.lit("source_certified_mirror").alias("result_description_authority"),
+        "batter_side", "bb_type", "hc_x", "hc_y", "structured_event",
+        "result_description",
+    )
+    sidecar = canonical.select(
+        "game_pk", "at_bat_index", "pitch_number", "source_level",
+        "structured_event", "result_description",
+    )
+    return (
+        classify_contact_profile_events(
+            canonical.drop("source_level", "structured_event")
+        )
+        .join(
+            sidecar,
+            on=["game_pk", "at_bat_index", "pitch_number"],
+            how="left",
+            validate="1:1",
+        )
+        .filter(pl.col("core_profile_eligible"))
+        .select(
+            "season", "source_level",
+            pl.col("batter_mlbam_id").alias("player_id"), "core_bin",
+            "structured_event", "result_description",
+        )
+    )
+
+
+def build_hitter_full_bip_profile(contacts: pl.DataFrame) -> pl.DataFrame:
+    """Build hitter-season-level counts from the shared ten-bin classifier."""
+
+    events = build_hitter_full_bip_profile_events(contacts)
+    if events.is_empty():
+        return pl.DataFrame(
+            schema={
+                "season": pl.Int64, "source_level": pl.String,
+                "player_id": pl.Int64, "core_bin": pl.String,
+                "occurrence_count": pl.Int64,
+            }
+        )
+    return (
+        events.group_by("season", "source_level", "player_id", "core_bin")
+        .len(name="occurrence_count")
+        .select("season", "source_level", "player_id", "core_bin", "occurrence_count")
+        .cast({"player_id": pl.Int64, "occurrence_count": pl.Int64})
+        .sort("season", "source_level", "player_id", "core_bin")
+    )
+
+
+def build_hitter_full_bip_outcomes(contacts: pl.DataFrame) -> pl.DataFrame:
+    """Count supported terminal outcomes within each hitter BIP bin."""
+
+    events = build_hitter_full_bip_profile_events(contacts)
+    schema = {
+        "season": pl.Int64, "source_level": pl.String, "player_id": pl.Int64,
+        "core_bin": pl.String, "canonical_outcome": pl.String,
+        "occurrence_count": pl.Int64,
+    }
+    if events.is_empty():
+        return pl.DataFrame(schema=schema)
+    rows = []
+    for row in events.iter_rows(named=True):
+        label = classify_terminal_pa(
+            event_type=row["structured_event"],
+            description=row["result_description"],
+        )
+        if label.outcome in CONTACT_OUTCOMES:
+            rows.append({**row, "canonical_outcome": label.outcome})
+    if not rows:
+        return pl.DataFrame(schema=schema)
+    return (
+        pl.DataFrame(rows)
+        .group_by(
+            "season", "source_level", "player_id", "core_bin", "canonical_outcome"
+        )
+        .len(name="occurrence_count")
+        .select(*schema)
+        .cast(schema)
+        .sort("season", "source_level", "player_id", "core_bin", "canonical_outcome")
+    )

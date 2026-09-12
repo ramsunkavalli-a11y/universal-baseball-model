@@ -1,6 +1,6 @@
 # Full BIP contact-talent challenger
 
-**Status:** implementation frozen before outcome scoring  
+**Status:** pitcher passed component confirmation; hitter improved overall but remains held back
 **Priority:** P0 hitter and pitcher talent
 
 ## Existing work reused
@@ -45,3 +45,15 @@ level reverses on both errors. Otherwise the fitted production weight is zero.
 
 Passing this component gate permits integration into the talent replay. It does not
 directly change playing time, WAR, FV, or trade value.
+
+## Scored result
+
+- [Pitcher result](full-bip-pitcher-challenger-result.md): passed both periods and
+  every supported level, including a stricter non-HR target compatible with the
+  separate home-run model.
+- [Hitter result](full-bip-hitter-challenger-result.md): improved both overall primary
+  scores in confirmation, but a very small equal-player AA reversal failed the strict
+  level guardrail. It remains research-only.
+
+Next, compare each candidate with the complete active rate model on identical
+historical rows. Preserve the frozen weights; do not rescue-tune either test.

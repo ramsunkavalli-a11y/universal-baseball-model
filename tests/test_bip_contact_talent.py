@@ -53,6 +53,11 @@ def test_neutral_values_are_learned_from_terminal_outcomes() -> None:
     assert values.height == 10
     assert values["value_events"].to_list() == [4] * 10
     assert values["neutral_run_value"].to_list() == pytest.approx([0.6582] * 10)
+    no_hits = estimate_neutral_bip_values(
+        pl.DataFrame(rows),
+        outcome_weights={"1B": 0.0, "OTHER_OUT": 0.0},
+    )
+    assert no_hits["neutral_run_value"].to_list() == [0.0] * 10
 
 
 def test_profile_must_be_complete_and_normalized() -> None:
