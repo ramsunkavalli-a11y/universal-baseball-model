@@ -433,6 +433,13 @@ def _evaluate(
         float(selected["alpha"]),
         basis,
     )
+    age_level_model = _fit_peak(
+        final_rows,
+        components,
+        "age_level",
+        100.0,
+        basis,
+    )
     log_wins = sum(row["log_loss_delta"] < 0 for row in replay)
     brier_wins = sum(row["brier_delta"] < 0 for row in replay)
     event_log_wins = sum(row["event_log_loss_delta"] < 0 for row in replay)
@@ -472,6 +479,14 @@ def _evaluate(
             final_model,
             form=str(selected["form"]),
             alpha=float(selected["alpha"]),
+            basis=basis,
+            training_rows=len(final_rows),
+            training_origins=sorted(set(row["origin_year"] for row in final_rows)),
+        ),
+        "age_level_current_fit": _serialize_fitted_model(
+            age_level_model,
+            form="age_level",
+            alpha=100.0,
             basis=basis,
             training_rows=len(final_rows),
             training_origins=sorted(set(row["origin_year"] for row in final_rows)),

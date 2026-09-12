@@ -527,3 +527,10 @@ opportunity, control, cost, or dollar value.
    draft status as a WAR bonus or FV floor.
 5. Keep the pitcher translation repair separate. Pitcher scarcity remains a P0 and
    cannot be solved by lowering hitters until the list shape looks familiar.
+
+Update (2026-09-12): direct age-24-to-26 component rate models now pass for both
+hitters and pitchers. The pitcher mean alone failed a new top-tail ordering test, so
+a 50/50 component plus age/level ordering score was selected on 2018–2019 and passed
+2023–2025 confirmation. Use that score for the current pitcher board while retaining
+the validated component forecast as the displayed mean. Continue the refreshed
+top-25/external-top-50 case review before reconnecting talent to FV or dollars.

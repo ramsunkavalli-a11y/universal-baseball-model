@@ -39,7 +39,10 @@ DEFENSE_RATE_PATH = Path(
 )
 
 
-def _rank_prospects(frame: pl.DataFrame) -> pl.DataFrame:
+def _rank_prospects(
+    frame: pl.DataFrame,
+    score_column: str = "peak_runs_rate",
+) -> pl.DataFrame:
     eligible = (
         frame.filter(
             (pl.col("ranking_status") == "ranked")
@@ -48,14 +51,14 @@ def _rank_prospects(frame: pl.DataFrame) -> pl.DataFrame:
             & (pl.col("age_years") <= 23)
         )
         .sort(
-            ["peak_runs_rate", "effective_evidence", "player_id"],
+            [score_column, "effective_evidence", "player_id"],
             descending=[True, True, False],
         )
         .with_row_index("prospect_peak_rate_rank", offset=1)
     )
     if "as_of_role" in eligible.columns:
         eligible = eligible.with_columns(
-            pl.col("peak_runs_rate")
+            pl.col(score_column)
             .rank(method="ordinal", descending=True)
             .over("as_of_role")
             .cast(pl.UInt32)
@@ -94,6 +97,7 @@ def _materialize(
     *,
     player_type: str,
     calibration: dict[str, float],
+    ranking_fit: dict[str, object] | None = None,
 ) -> pl.DataFrame:
     present = frame.select([f"p_{name}" for name in components]).to_numpy()
     peak = _model_predict(frame, components, fit)
@@ -113,6 +117,17 @@ def _materialize(
     component_peak_runs = np.where(apply_model, model_runs, present_runs)
     run_calibration = _run_calibration(age, apply_model, calibration)
     peak_runs = component_peak_runs + run_calibration
+    ranking_peak_runs = peak_runs.copy()
+    age_level_peak_runs = np.full(frame.height, np.nan)
+    if player_type == "pitcher" and ranking_fit is not None:
+        age_level_peak = _model_predict(frame, components, ranking_fit)
+        age_level_model_runs = _pitcher_runs(age_level_peak, present, present_runs)
+        age_level_peak_runs = np.where(
+            apply_model,
+            age_level_model_runs + run_calibration,
+            present_runs,
+        )
+        ranking_peak_runs = 0.5 * peak_runs + 0.5 * age_level_peak_runs
     model_name = str(fit.get("feature_family") or fit["form"])
     policy = np.where(
         apply_model,
@@ -154,6 +169,8 @@ def _materialize(
         pl.Series("component_peak_runs_rate", component_peak_runs),
         pl.Series("peak_run_calibration", run_calibration),
         pl.Series("peak_runs_rate", peak_runs),
+        pl.Series("age_level_peak_runs_rate", age_level_peak_runs),
+        pl.Series("ranking_peak_runs_rate", ranking_peak_runs),
         pl.Series("peak_runs_change", peak_runs - present_runs),
         pl.Series("recent_component_direction_runs", recent_direction),
         pl.Series("peak_policy", policy),
@@ -161,7 +178,10 @@ def _materialize(
         *(pl.Series(f"present_{name}_rate", present[:, index]) for index, name in enumerate(components)),
         *(pl.Series(f"peak_{name}_rate", peak[:, index]) for index, name in enumerate(components)),
     )
-    return _rank_prospects(output)
+    return _rank_prospects(
+        output,
+        "ranking_peak_runs_rate" if player_type == "pitcher" else "peak_runs_rate",
+    )
 
 
 def main() -> int:
@@ -245,6 +265,7 @@ def main() -> int:
         report["pitchers"]["current_fit"],
         player_type="pitcher",
         calibration=calibration["pitchers"],
+        ranking_fit=report["pitchers"]["age_level_current_fit"],
     )
     tables = OUTPUT_ROOT / "tables"
     tables.mkdir(parents=True, exist_ok=True)
@@ -274,7 +295,13 @@ def main() -> int:
                 "wins": trend_report["hitters"]["wins"],
             },
         },
-        "pitchers": {"validation": report["pitchers"]["promotion"]},
+        "pitchers": {
+            "validation": report["pitchers"]["promotion"],
+            "ordering_policy": (
+                "50% validated component-development peak rate and 50% age-level "
+                "peak rate; component peak rate remains the displayed mean"
+            ),
+        },
         "public_rank_role": "joined after scoring for audit only",
         "hitter_position_and_defense_role": (
             "visible current context only; excluded from peak offense rank because "

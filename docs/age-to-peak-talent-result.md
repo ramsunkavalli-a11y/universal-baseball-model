@@ -1,7 +1,7 @@
 # Age-to-peak talent result
 
 Last updated: 2026-09-12  
-Status: **HITTERS AND PITCHERS PASS; CURRENT BOARD AVAILABLE FOR INSPECTION**
+Status: **RATE MODELS PASS; PITCHER ORDERING BLEND PASSES**
 
 ## Question and target
 
@@ -57,6 +57,12 @@ rate. The aggregate-results model therefore ranks him low despite his strong pub
 standing. The likely missing evidence is pitch quality/velocity and starter traits;
 public opinion itself may not fill the gap.
 
+The separate ranking audit found that correct average probabilities were not enough
+to justify sorting pitchers by the component mean alone. A 50/50 blend of the
+component estimate and age/level estimate was selected on the 2018–2019 cohorts and
+passed 2023–2025 confirmation. The component model remains the displayed mean; the
+blend determines pitcher ordering. See `docs/peak-talent-ranking-audit-result.md`.
+
 Generated inspection files:
 
 - `reports/generated/current-peak-talent/2026-09-08/tables/current_peak_hitters_top100.csv`
@@ -66,7 +72,8 @@ Generated inspection files:
 ## Next talent work
 
 1. Add player-level peak uncertainty/upper-tail fields without changing the mean rank.
-2. Finish the model top 25 and external top 50 component-by-component audit.
+2. Continue the model top 25 and external top 50 player case audit using the validated
+   blended pitcher ordering.
 3. Determine whether official minor-league game feeds provide usable pitch velocity and
    pitch characteristics at scale; test them only as a new pitcher evidence family.
 4. Keep position, defense and catching separate until their existing model interfaces

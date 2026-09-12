@@ -96,9 +96,9 @@ def _logic_summary(row: dict[str, object], *, player_type: str) -> str:
     if relative_age is not None and float(relative_age) <= -1.0:
         facts.append("young for level")
     if strengths:
-        facts.append("strengths: " + ", ".join(strengths))
+        facts.append("relative strengths in the eligible prospect pool: " + ", ".join(strengths))
     if weaknesses:
-        facts.append("risks: " + ", ".join(weaknesses))
+        facts.append("relative risks in the eligible prospect pool: " + ", ".join(weaknesses))
     if float(row.get("effective_evidence") or 0.0) < 200.0:
         facts.append("limited performance sample")
     direction = row.get("recent_component_direction_runs")
@@ -224,6 +224,9 @@ def main() -> int:
         "status": "post_model_error_audit",
         "external_rank_used_in_model": False,
         "comparison": "union of model top 25 and external top 50",
+        "component_percentile_reference": (
+            "ranked non-MLB players age 23 or younger; relative description, not an MLB benchmark"
+        ),
         **summary,
     }
     (OUTPUT / "report.json").write_text(

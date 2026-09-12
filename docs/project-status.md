@@ -2,7 +2,27 @@
 
 Updated 2026-09-12. This is the current start-here document.
 
-## Active talent component: full BIP profile
+## Current P0: believable talent ordering
+
+The age-to-peak hitter and pitcher component forecasts pass five historical replay
+cohorts on player and event probability scores. A new pitcher ranking audit found an
+important distinction: the full component model is a valid mean forecast, but sorting
+that mean alone does not reliably identify the best future top decile.
+
+A chronology-safe ranking repair is now promoted. The 2018–2019 cohorts selected a
+50/50 blend of the component estimate and the age/level estimate. On untouched
+2023–2025 cohorts it improved top-decile precision twice and tied once, improved the
+realized quality of the selected top decile twice with one immaterial 0.06-run loss,
+and had no material rank-correlation loss. Pitcher board order now uses this blend;
+the component model remains the displayed mean projection. Public FanGraphs rank and
+FV remain audit-only.
+
+The next action is player-by-player review of the refreshed model top 25 and external
+top 50. Explanations must distinguish relative prospect-pool strengths from actual
+MLB-quality rates. Below-AAA pitch velocity, movement and arsenal data remain the
+largest known missing pitcher evidence family.
+
+## Phase 2 talent component: full BIP profile
 
 The active peak-talent path currently relies mainly on aggregate strikeout, walk,
 hit, extra-base-hit and home-run outcomes even though the earlier Current Talent
