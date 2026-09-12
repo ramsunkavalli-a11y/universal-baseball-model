@@ -13,10 +13,105 @@ ROOT = Path("reports/generated/current-peak-talent/2026-09-08/tables")
 OUTPUT = Path("reports/generated/current-prospect-talent-comparison/2026-09-08")
 
 
+def _quality_percentiles(frame: pl.DataFrame, *, player_type: str) -> pl.DataFrame:
+    eligible = frame.filter(pl.col("prospect_peak_rate_rank").is_not_null())
+    directions = (
+        {
+            "so": False,
+            "ubb": True,
+            "single": True,
+            "double": True,
+            "triple": True,
+            "hr": True,
+        }
+        if player_type == "hitter"
+        else {"so": True, "ubb": False, "hbp": False, "hr": False}
+    )
+    denominator = max(eligible.height - 1, 1)
+    quality = eligible.select(
+        "player_id",
+        *(
+            (
+                1.0
+                - (pl.col(f"peak_{component}_rate").rank(
+                    method="average", descending=descending
+                ) - 1.0)
+                / denominator
+            ).alias(f"{component}_quality_percentile")
+            for component, descending in directions.items()
+        ),
+    )
+    return frame.join(quality, on="player_id", how="left", validate="1:1")
+
+
+def _logic_summary(row: dict[str, object], *, player_type: str) -> str:
+    strength_labels = (
+        {
+            "so": "avoids strikeouts",
+            "ubb": "draws walks",
+            "single": "hits for average",
+            "double": "drives extra-base hits",
+            "triple": "adds triples",
+            "hr": "shows home-run power",
+        }
+        if player_type == "hitter"
+        else {
+            "so": "misses bats",
+            "ubb": "limits walks",
+            "hbp": "limits hit batters",
+            "hr": "limits home runs",
+        }
+    )
+    risk_labels = (
+        {
+            "so": "strikes out often",
+            "ubb": "rarely walks",
+            "single": "low singles rate",
+            "double": "low doubles rate",
+            "triple": "low triples rate",
+            "hr": "limited home-run rate",
+        }
+        if player_type == "hitter"
+        else {
+            "so": "misses few bats",
+            "ubb": "walks too many hitters",
+            "hbp": "hits too many batters",
+            "hr": "allows too many home runs",
+        }
+    )
+    strengths = [
+        label
+        for component, label in strength_labels.items()
+        if row.get(f"{component}_quality_percentile") is not None
+        and float(row[f"{component}_quality_percentile"]) >= 0.75
+    ]
+    weaknesses = [
+        risk_labels[component]
+        for component in strength_labels
+        if row.get(f"{component}_quality_percentile") is not None
+        and float(row[f"{component}_quality_percentile"]) <= 0.25
+    ]
+    facts = []
+    relative_age = row.get("age_relative_to_level")
+    if relative_age is not None and float(relative_age) <= -1.0:
+        facts.append("young for level")
+    if strengths:
+        facts.append("strengths: " + ", ".join(strengths))
+    if weaknesses:
+        facts.append("risks: " + ", ".join(weaknesses))
+    if float(row.get("effective_evidence") or 0.0) < 200.0:
+        facts.append("limited performance sample")
+    if player_type == "pitcher" and str(row.get("as_of_level_group")) != "AAA":
+        facts.append("raw pitch quality unavailable")
+    return "; ".join(facts) or "near the middle of the measured component distribution"
+
+
 def _reason(frame: pl.DataFrame, *, player_type: str) -> pl.DataFrame:
     status = (
         pl.when(pl.col("as_of_level_group") == "MLB")
         .then(pl.lit("promoted_to_mlb_outside_prospect_board"))
+        .when(pl.col("age_years") > 23)
+        .then(pl.lit("outside_peak_model_age_support"))
         .when(pl.col("ranking_status") != "ranked")
         .then(pl.lit("insufficient_effective_evidence"))
         .when(
@@ -76,14 +171,24 @@ def _reason(frame: pl.DataFrame, *, player_type: str) -> pl.DataFrame:
 
 
 def _audit(path: Path, *, player_type: str) -> pl.DataFrame:
-    frame = pl.read_parquet(path)
+    frame = _quality_percentiles(pl.read_parquet(path), player_type=player_type)
     union = frame.filter(
         (pl.col("prospect_peak_rate_rank").is_not_null()
          & (pl.col("prospect_peak_rate_rank") <= 25))
         | (pl.col("external_rank_audit_only").is_not_null()
            & (pl.col("external_rank_audit_only") <= 50))
     )
-    return _reason(union, player_type=player_type).sort(
+    explained = _reason(union, player_type=player_type)
+    explained = explained.with_columns(
+        pl.Series(
+            "baseball_logic_summary",
+            [
+                _logic_summary(row, player_type=player_type)
+                for row in explained.to_dicts()
+            ],
+        )
+    )
+    return explained.sort(
         ["comparison_status", "external_rank_audit_only", "prospect_peak_rate_rank"],
         nulls_last=True,
     )

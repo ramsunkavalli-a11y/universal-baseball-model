@@ -643,3 +643,17 @@ rate-first players from the ceiling board. The resulting top groups contain many
 recognizable elite prospects without using public rank as an input. Continue with the
 12 hitter and 21 pitcher model-high disagreements; preserve role and missing-tracking
 labels in every explanation.
+
+### Paused here — 2026-09-12
+
+The run-scale centering audit is complete. Promote the fixed development-only age-band
+correction: it improves MAE and RMSE in 5/5 later groups for both player types. Keep
+the raw component value and correction visible. Do not publish the empirical ranges;
+pitcher coverage is unstable.
+
+The comparison output now includes component-quality percentiles and a plain-language
+baseball explanation. On resume, inspect the remaining supported-age
+external-high/model-low cases and model top-25 outsiders. Do not tune toward public
+ranks. Below AAA, treat missing pitch quality as an explicit unresolved input. Do not
+reopen the eight-outcome pitcher contact split without new evidence; its frozen test
+already failed the development gate.

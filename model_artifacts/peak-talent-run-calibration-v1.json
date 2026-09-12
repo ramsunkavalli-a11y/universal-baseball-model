@@ -1,0 +1,23 @@
+{
+  "artifact_schema_version": "0.1",
+  "fit_data": "peak-window end years 2015-2017 only",
+  "replay_data": "peak-window end years 2018, 2019, 2023, 2024, 2025",
+  "unit": "runs per 600 PA for hitters; runs prevented per 800 BF for pitchers",
+  "method": "median actual-minus-component-model residual by origin age band",
+  "hitters": {
+    "under_20": 5.034927104282074,
+    "20_to_21": 6.217252520742248,
+    "22_to_23": 4.87611935325294
+  },
+  "pitchers": {
+    "under_20": -5.6261980279844135,
+    "20_to_21": -2.0238185584853152,
+    "22_to_23": -1.187359084250279
+  },
+  "promotion_gate": {
+    "mae_wins_vs_uncalibrated": {"hitters": 5, "pitchers": 5, "of": 5},
+    "rmse_wins_vs_uncalibrated": {"hitters": 5, "pitchers": 5, "of": 5},
+    "mae_wins_vs_carry_forward": {"hitters": 5, "pitchers": 5, "of": 5},
+    "rmse_wins_vs_carry_forward": {"hitters": 5, "pitchers": 5, "of": 5}
+  }
+}

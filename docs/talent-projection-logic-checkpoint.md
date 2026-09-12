@@ -43,3 +43,17 @@ strikeout outcome so contact skill is not buried among other outs. Hitters and p
 both pass every later player, uncertainty, and event gate. Under-20 hitters meet the
 fixed subgroup breadth rule without a guardrail.
 See [the result](age-to-peak-talent-result.md).
+
+## Current stopping point
+
+The peak component-to-run conversion now uses a frozen age-band correction estimated
+on 2015-2017 only. It improves equal-player MAE and RMSE in all five later replay
+groups for hitters and pitchers. This centers the scalar point estimate without
+changing strikeout, walk, contact or power forecasts. Empirical ranges remain
+diagnostic because pitcher coverage falls to 60% in the 2023 group.
+
+The model/public comparison now shows whole-population component percentiles and a
+plain-language baseball explanation for every reviewed player. Public ranks remain
+audit-only. A supported performance disagreement can stand; a low-level pitcher gap
+with no pitch-quality data must be labeled unresolved rather than forced to agree.
+See [the run-scale result](peak-talent-uncertainty-result.md).

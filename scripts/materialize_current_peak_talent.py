@@ -21,6 +21,7 @@ from universal_baseball.storage import write_canonical_parquet
 
 BASIC_ROOT = Path("reports/generated/current-basic-talent/2026-09-08/tables")
 PEAK_REPORT = Path("reports/generated/age-to-peak-talent/report.json")
+CALIBRATION_PATH = Path("model_artifacts/peak-talent-run-calibration-v1.json")
 OUTPUT_ROOT = Path("reports/generated/current-peak-talent/2026-09-08")
 PITCHER_ROLE_PATH = Path(
     "reports/generated/current-pitcher-opportunity-v2/2026-09-08/predictors.parquet"
@@ -61,12 +62,27 @@ def _rank_prospects(frame: pl.DataFrame) -> pl.DataFrame:
     return pl.concat([eligible, other], how="diagonal_relaxed")
 
 
+def _age_band(age: np.ndarray) -> np.ndarray:
+    return np.where(age < 20, "under_20", np.where(age < 22, "20_to_21", "22_to_23"))
+
+
+def _run_calibration(
+    age: np.ndarray,
+    apply_model: np.ndarray,
+    calibration: dict[str, float],
+) -> np.ndarray:
+    bands = _age_band(age)
+    adjustment = np.asarray([float(calibration[str(band)]) for band in bands])
+    return np.where(apply_model, adjustment, 0.0)
+
+
 def _materialize(
     frame: pl.DataFrame,
     components: tuple[str, ...],
     fit: dict[str, object],
     *,
     player_type: str,
+    calibration: dict[str, float],
 ) -> pl.DataFrame:
     present = frame.select([f"p_{name}" for name in components]).to_numpy()
     peak = _model_predict(frame, components, fit)
@@ -83,7 +99,9 @@ def _materialize(
         model_runs = _pitcher_runs(peak, present, present_runs)
         status = "historical_gate_passed"
     peak[~apply_model] = present[~apply_model]
-    peak_runs = np.where(apply_model, model_runs, present_runs)
+    component_peak_runs = np.where(apply_model, model_runs, present_runs)
+    run_calibration = _run_calibration(age, apply_model, calibration)
+    peak_runs = component_peak_runs + run_calibration
     policy = np.where(
         apply_model,
         f"age_24_to_26_{fit['form']}",
@@ -95,6 +113,7 @@ def _materialize(
         "player_type",
         "as_of_level_group",
         "age_years",
+        "age_relative_to_level",
         "effective_evidence",
         "reliability",
         "evidence_band",
@@ -107,6 +126,8 @@ def _materialize(
         ),
     ).with_columns(
         pl.Series("present_runs_rate", present_runs),
+        pl.Series("component_peak_runs_rate", component_peak_runs),
+        pl.Series("peak_run_calibration", run_calibration),
         pl.Series("peak_runs_rate", peak_runs),
         pl.Series("peak_runs_change", peak_runs - present_runs),
         pl.Series("peak_policy", policy),
@@ -119,6 +140,7 @@ def _materialize(
 
 def main() -> int:
     report = json.loads(PEAK_REPORT.read_text(encoding="utf-8"))
+    calibration = json.loads(CALIBRATION_PATH.read_text(encoding="utf-8"))
     hitters = _materialize(
         _prepare(
             BASIC_ROOT / "current_hitter_talent.parquet",
@@ -128,6 +150,7 @@ def main() -> int:
         HITTER_COMPONENTS,
         report["hitters"]["current_fit"],
         player_type="hitter",
+        calibration=calibration["hitters"],
     )
     pitcher_source = _prepare(
             BASIC_ROOT / "current_pitcher_talent.parquet",
@@ -146,6 +169,7 @@ def main() -> int:
         PITCHER_COMPONENTS,
         report["pitchers"]["current_fit"],
         player_type="pitcher",
+        calibration=calibration["pitchers"],
     )
     tables = OUTPUT_ROOT / "tables"
     tables.mkdir(parents=True, exist_ok=True)
@@ -173,6 +197,11 @@ def main() -> int:
         },
         "pitchers": {"validation": report["pitchers"]["promotion"]},
         "public_rank_role": "joined after scoring for audit only",
+        "run_rate_calibration": {
+            "artifact": str(CALIBRATION_PATH),
+            "method": calibration["method"],
+            "promotion_gate": calibration["promotion_gate"],
+        },
         "excluded": ["playing time", "arrival", "position", "defense", "contracts"],
         "storage": storage,
     }
