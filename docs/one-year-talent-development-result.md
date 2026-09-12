@@ -1,7 +1,7 @@
 # One-year talent development result
 
 Last updated: 2026-09-12  
-Status: **PROMISING HISTORICAL REPLAY; CURRENT RANKING NOT YET CHANGED**
+Status: **SUPPORTED NEAR-TERM RATE MODEL; NOT A PROSPECT CEILING**
 
 ## What was tested
 
@@ -43,6 +43,9 @@ Negative is better. Each hitter replay covers 2,731–2,951 players and roughly
 841,000–875,000 future PA. Each pitcher replay covers 2,927–3,288 players and roughly
 777,000–829,000 future BF.
 
+A 500-draw paired player bootstrap keeps the upper 95% bound below zero for both
+scores in every replay for both player types. The broad average result is not noise.
+
 ## Does the extra complexity earn its place?
 
 Mostly yes, but by a much smaller amount than the main gain over no development.
@@ -57,14 +60,15 @@ the player's current strikeout, walk, power and contact mix changes how that dev
 is distributed. It is not a single bonus for being young, and it does not assume every
 young player improves.
 
-## Boundary and next gate
+## Important boundary
 
-This is strong development evidence, not final promotion. Before current values change:
+The model loses both scores for MLB hitters in all five level checks. The same reversal
+appears for MLB hitters ages 23–25 and 26+ wherever the crossed subgroup has enough
+players. Therefore current MLB hitter rate is carried forward; the development change
+is not applied to them.
 
-1. add player-cluster uncertainty and age/level subgroup reversal checks;
-2. run the direct two-year version rather than chaining the one-year adjustment twice;
-3. fit the selected forms through completed 2025 and generate current 2027/2028 talent
-   profiles and ranges;
-4. only then attach the external top-50 list and explain agreements/disagreements.
+The larger limitation is conceptual. This predicts translated rate one season later.
+It does not estimate a young player's eventual peak. It belongs in a near-term talent
+path, not as the score used to order teenage prospects against current MLB stars.
 
 Public ranks/FV were not read by this test and cannot choose its form or parameters.

@@ -609,3 +609,17 @@ integration remain required modeling milestones. Quarantine bounded data excepti
 stop only for identity, leakage,
 denominator, coverage, scale, or material forecast errors. Track known omissions,
 including the players outside the original G0 forecast population.
+
+## Talent-first correction — 2026-09-12
+
+Playing-time refinement is paused. The active P0 is a logical, inspectable talent
+hierarchy: present translated rate, validated near-term development, and a separate
+age-24-to-26 peak-talent estimate. The one- and two-year models pass historical proper
+scores but current inspection proves they answer the wrong question for teenage
+prospects. They remain near-term diagnostics and may not drive FV.
+
+Build peak talent directly from StatsAPI component histories, using age, level, evidence
+and current component shape. Use chronological selection, player-cluster uncertainty,
+and age/level subgroup checks. Keep public prospect lists completely outside fitting;
+join them afterward to identify explainable disagreements and missing baseball inputs.
+See [the logic checkpoint](talent-projection-logic-checkpoint.md).

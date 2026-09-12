@@ -280,6 +280,95 @@ def _score(
     }
 
 
+def _paired_uncertainty(
+    candidate: np.ndarray,
+    baseline: np.ndarray,
+    rows: list[dict[str, object]],
+    components: tuple[str, ...],
+    *,
+    draws: int = 500,
+) -> dict[str, object]:
+    counts = np.asarray([
+        [float(row[f"target_{component}"]) for component in components] for row in rows
+    ])
+    exposure = counts.sum(axis=1)
+    target = counts / exposure[:, None]
+    candidate_log = -(counts * np.log(np.clip(candidate, 1e-12, 1.0))).sum(axis=1)
+    baseline_log = -(counts * np.log(np.clip(baseline, 1e-12, 1.0))).sum(axis=1)
+    candidate_brier = exposure * (
+        1.0 - 2.0 * (target * candidate).sum(axis=1) + (candidate**2).sum(axis=1)
+    )
+    baseline_brier = exposure * (
+        1.0 - 2.0 * (target * baseline).sum(axis=1) + (baseline**2).sum(axis=1)
+    )
+    rng = np.random.default_rng(20260912)
+    log_draws = np.empty(draws)
+    brier_draws = np.empty(draws)
+    for draw in range(draws):
+        indices = rng.integers(0, len(rows), size=len(rows))
+        denominator = exposure[indices].sum()
+        log_draws[draw] = (candidate_log[indices] - baseline_log[indices]).sum() / denominator
+        brier_draws[draw] = (
+            candidate_brier[indices] - baseline_brier[indices]
+        ).sum() / denominator
+    return {
+        "method": "paired player bootstrap",
+        "draws": draws,
+        "log_loss_delta_p025": float(np.quantile(log_draws, 0.025)),
+        "log_loss_delta_p975": float(np.quantile(log_draws, 0.975)),
+        "brier_delta_p025": float(np.quantile(brier_draws, 0.025)),
+        "brier_delta_p975": float(np.quantile(brier_draws, 0.975)),
+    }
+
+
+def _subgroup_scores(
+    candidate: np.ndarray,
+    baseline: np.ndarray,
+    rows: list[dict[str, object]],
+    components: tuple[str, ...],
+) -> list[dict[str, object]]:
+    labels: dict[str, list[str]] = {"level": [], "age": [], "level_age": []}
+    for row in rows:
+        level = str(row["level_group"])
+        labels["level"].append(level)
+        age = row.get("age_years")
+        if age is None:
+            age_band = "unknown"
+        elif float(age) < 20:
+            age_band = "under_20"
+        elif float(age) < 23:
+            age_band = "20_to_22"
+        elif float(age) < 26:
+            age_band = "23_to_25"
+        else:
+            age_band = "26_plus"
+        labels["age"].append(age_band)
+        labels["level_age"].append(f"{level}|{age_band}")
+    output = []
+    for dimension, values in labels.items():
+        value_array = np.asarray(values)
+        for value in sorted(set(values)):
+            indices = np.flatnonzero(value_array == value)
+            if len(indices) < 100:
+                continue
+            subset_rows = [rows[int(index)] for index in indices]
+            candidate_score = _score(candidate[indices], subset_rows, components)
+            baseline_score = _score(baseline[indices], subset_rows, components)
+            output.append({
+                "dimension": dimension,
+                "value": value,
+                "players": len(indices),
+                "target_exposure": candidate_score["target_exposure"],
+                "log_loss_delta": (
+                    float(candidate_score["log_loss"]) - float(baseline_score["log_loss"])
+                ),
+                "brier_delta": (
+                    float(candidate_score["brier"]) - float(baseline_score["brier"])
+                ),
+            })
+    return output
+
+
 def _fit(
     rows: list[dict[str, object]],
     components: tuple[str, ...],
@@ -296,6 +385,30 @@ def _fit(
         _responses(rows, components, basis),
         ridge__sample_weight=weights,
     )
+
+
+def _serialize_fitted_model(
+    model: object,
+    *,
+    form: str,
+    alpha: float,
+    basis: np.ndarray,
+    training_rows: int,
+    training_origins: list[int],
+) -> dict[str, object]:
+    scaler = model.named_steps["standardscaler"]
+    ridge = model.named_steps["ridge"]
+    return {
+        "form": form,
+        "alpha": alpha,
+        "training_rows": training_rows,
+        "training_origins": training_origins,
+        "ilr_basis": np.asarray(basis).tolist(),
+        "scaler_mean": scaler.mean_.tolist(),
+        "scaler_scale": scaler.scale_.tolist(),
+        "ridge_coefficients": ridge.coef_.tolist(),
+        "ridge_intercept": ridge.intercept_.tolist(),
+    }
 
 
 def _evaluate_player_type(
@@ -373,21 +486,25 @@ def _evaluate_player_type(
             float(simple_selection["alpha"]),
             basis,
         )
+        candidate_predictions = _predict(
+            model, target_rows, components, str(selected["form"]), basis
+        )
+        baseline_predictions = np.asarray([
+            _composition(row, components, "p_") for row in target_rows
+        ])
         candidate = _score(
-            _predict(model, target_rows, components, str(selected["form"]), basis),
+            candidate_predictions,
             target_rows,
             components,
         )
         simple = _score(
-            _predict(simple_model, target_rows, components, "age_level", basis),
+            simple_predictions := _predict(
+                simple_model, target_rows, components, "age_level", basis
+            ),
             target_rows,
             components,
         )
-        baseline = _score(
-            np.asarray([_composition(row, components, "p_") for row in target_rows]),
-            target_rows,
-            components,
-        )
+        baseline = _score(baseline_predictions, target_rows, components)
         replay.append({
             "origin_year": origin,
             "target_year": origin + horizon,
@@ -401,6 +518,36 @@ def _evaluate_player_type(
             ),
             "rich_minus_simple_brier": (
                 float(candidate["brier"]) - float(simple["brier"])
+            ),
+            "age_level_log_loss_delta": (
+                float(simple["log_loss"]) - float(baseline["log_loss"])
+            ),
+            "age_level_brier_delta": (
+                float(simple["brier"]) - float(baseline["brier"])
+            ),
+            "candidate_vs_carry_uncertainty": _paired_uncertainty(
+                candidate_predictions,
+                baseline_predictions,
+                target_rows,
+                components,
+            ),
+            "candidate_vs_carry_subgroups": _subgroup_scores(
+                candidate_predictions,
+                baseline_predictions,
+                target_rows,
+                components,
+            ),
+            "age_level_vs_carry_uncertainty": _paired_uncertainty(
+                simple_predictions,
+                baseline_predictions,
+                target_rows,
+                components,
+            ),
+            "age_level_vs_carry_subgroups": _subgroup_scores(
+                simple_predictions,
+                baseline_predictions,
+                target_rows,
+                components,
             ),
         })
     rich_log_wins = sum(row["rich_minus_simple_log_loss"] < 0 for row in replay)
@@ -424,6 +571,53 @@ def _evaluate_player_type(
             "alpha": selected["alpha"],
             "reason": "selected development form retained broad replay support",
         }
+    decision_is_simple = decision["form"] == "age_level"
+    for row in replay:
+        if decision_is_simple:
+            row["research_log_loss_delta"] = row["age_level_log_loss_delta"]
+            row["research_brier_delta"] = row["age_level_brier_delta"]
+            row["research_vs_carry_uncertainty"] = row[
+                "age_level_vs_carry_uncertainty"
+            ]
+            row["research_vs_carry_subgroups"] = row[
+                "age_level_vs_carry_subgroups"
+            ]
+        else:
+            row["research_log_loss_delta"] = row["log_loss_delta"]
+            row["research_brier_delta"] = row["brier_delta"]
+            row["research_vs_carry_uncertainty"] = row[
+                "candidate_vs_carry_uncertainty"
+            ]
+            row["research_vs_carry_subgroups"] = row[
+                "candidate_vs_carry_subgroups"
+            ]
+    supported_subgroups = [
+        subgroup for row in replay for subgroup in row["research_vs_carry_subgroups"]
+    ]
+    subgroup_reversals = [
+        subgroup
+        for subgroup in supported_subgroups
+        if subgroup["log_loss_delta"] > 0 and subgroup["brier_delta"] > 0
+    ]
+    uncertainty_passes = sum(
+        row["research_vs_carry_uncertainty"]["log_loss_delta_p975"] <= 0
+        and row["research_vs_carry_uncertainty"]["brier_delta_p975"] <= 0
+        for row in replay
+    )
+    current_training_origins = [
+        origin for origin in folds if origin + horizon <= 2025
+    ]
+    current_training_rows = pl.concat(
+        [folds[origin] for origin in current_training_origins],
+        how="vertical_relaxed",
+    ).to_dicts()
+    current_model = _fit(
+        current_training_rows,
+        components,
+        str(decision["form"]),
+        float(decision["alpha"]),
+        basis,
+    )
     return {
         "training_origins": [origin for origin in folds if origin <= TRAIN_MAX_ORIGIN],
         "development_origins": list(DEVELOPMENT_ORIGINS),
@@ -435,12 +629,30 @@ def _evaluate_player_type(
             "alpha": simple_selection["alpha"],
         },
         "research_decision": decision,
+        "current_fit": _serialize_fitted_model(
+            current_model,
+            form=str(decision["form"]),
+            alpha=float(decision["alpha"]),
+            basis=basis,
+            training_rows=len(current_training_rows),
+            training_origins=current_training_origins,
+        ),
         "replay": replay,
         "replay_log_loss_wins": sum(row["log_loss_delta"] < 0 for row in replay),
         "replay_brier_wins": sum(row["brier_delta"] < 0 for row in replay),
         "rich_vs_simple_log_loss_wins": rich_log_wins,
         "rich_vs_simple_brier_wins": rich_brier_wins,
         "required_rich_vs_simple_wins": required_rich_wins,
+        "replay_uncertainty_passes": uncertainty_passes,
+        "research_replay_log_loss_wins": sum(
+            row["research_log_loss_delta"] < 0 for row in replay
+        ),
+        "research_replay_brier_wins": sum(
+            row["research_brier_delta"] < 0 for row in replay
+        ),
+        "supported_subgroup_count": len(supported_subgroups),
+        "both_score_subgroup_reversal_count": len(subgroup_reversals),
+        "both_score_subgroup_reversals": subgroup_reversals,
     }
 
 
