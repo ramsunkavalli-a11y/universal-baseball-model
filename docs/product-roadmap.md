@@ -162,6 +162,18 @@ left-handed subgroup worsens, and its current top-end effect is disproportionate
 non-vintage physical measurements out of selected historical models until their timing
 is defensible.
 
+As of 2026-09-12, new playing-time work is paused behind prospect talent. A dedicated
+talent-first audit rejected the incumbent six-year WAR-rate ranking: it mixed future
+aging, replacement and position into talent, producing a top 50 made entirely of
+thin-evidence hitters with premium-position credit. The corrected diagnostic uses
+present age-neutral skill, excludes position/replacement, and leaves 5,048 of 6,719
+players unresolved below the fixed 0.20 reliability review line. This removes the
+catcher accounting leak but does not solve future ceiling: only 7 supported internal
+top-50 players overlap the eligible FanGraphs top 50. The next P0 is the frozen
+[prospect talent development plan](prospect-talent-development-plan.md): reproduce
+confirmed hitter Current Talent B2, establish the matching pitcher state, then learn
+future skill distributions from chronological history without public FV/rank inputs.
+
 The reusable search layer now records hashes for the complete candidate family and
 the exact outer cohort, enforces observable time origins and identical player rows,
 and supplies a conservative promotion gate across both proper scores, paired
@@ -455,6 +467,10 @@ Post-2026 minimum salaries and unchanged service rules are clearly marked as a 3
 planning scenario until a successor CBA supplies facts.
 
 ### Immediate prospect-ranking roadmap (2026-09-10)
+
+Direction update (2026-09-12): freeze new arrival and playing-time work. Talent order
+is the controlling P0. Build and review a conditional-rate top 50 before reconnecting
+opportunity, control, cost, or dollar value.
 
 1. Keep the chronology-safe player-level position model as a private sensitivity;
    resolve its 1B/3B subgroup regressions before promotion.

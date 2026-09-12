@@ -1,0 +1,60 @@
+{
+  "as_of_date": "2026-09-08",
+  "boundaries": {
+    "arrival_probability_used": false,
+    "contract_control_or_dollars_used": false,
+    "expected_workload_used": false,
+    "future_aging_used": false,
+    "outside_rank_used_as_model_input": false,
+    "position_or_replacement_used_in_talent": false,
+    "position_sensitivity_is_private": true,
+    "thin_evidence_ranked": false
+  },
+  "contract": "docs/prospect-talent-first-audit-plan.md",
+  "eligible_players": 6719,
+  "report_schema_version": "0.1",
+  "source_top_50_talent_rank_summary": {
+    "median_supported_talent_rank": 136.0,
+    "still_eligible": 42,
+    "supported_count": 29,
+    "unresolved_count": 13
+  },
+  "status": "prospect_talent_first_diagnostic_complete",
+  "storage": {
+    "canonical_schema_version": "0.1",
+    "file_sha256": "984c0c90718088167e9978e08b43f3e5a9dcbda69cecb49fe6e5dd99e0ef8d1d",
+    "file_size_bytes": 51252,
+    "path": "reports\\generated\\prospect-talent-first-audit\\2026-09-08\\talent-top-50.parquet",
+    "row_count": 50,
+    "schema_sha256": "9f1617171823e06d5583a5a6b2d78cf24925e25ff7a25249263d62489481497e",
+    "table_name": "prospect_talent_first_top_50"
+  },
+  "supported_players": 1671,
+  "supported_reliability_floor": 0.2,
+  "top_50_by_player_type": [
+    {
+      "len": 42,
+      "model_player_type": "hitter"
+    },
+    {
+      "len": 8,
+      "model_player_type": "pitcher"
+    }
+  ],
+  "top_50_flag_counts": [
+    {
+      "len": 31,
+      "review_flags": "below_average_batting"
+    },
+    {
+      "len": 5,
+      "review_flags": "premium_position_material"
+    },
+    {
+      "len": 5,
+      "review_flags": "below_average_pitching_raa"
+    }
+  ],
+  "top_50_source_overlap": 7,
+  "unresolved_thin_evidence_players": 5048
+}
