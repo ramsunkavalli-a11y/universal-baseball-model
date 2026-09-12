@@ -666,3 +666,9 @@ test passes. The next universal peak-talent challenger is higher priority: test 
 strongly regressed prior-to-current component-change vector to learn whether a player's
 improvement or decline adds repeatable information beyond current translated talent,
 age, level and evidence.
+
+That test is complete. Promote the trend vector for hitters: it wins all four scoring
+views in 5/5 later groups and paired uncertainty in 4/5. The fixed run correction still
+improves RMSE 5/5 and MAE 4/5. Reject the same change for pitchers, where Brier/event
+breadth and uncertainty fail. Current hitter output must expose recent direction as an
+explanation; current pitcher output remains on the prior peak model.

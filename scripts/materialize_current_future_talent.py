@@ -58,7 +58,12 @@ def _model_predict(
 ) -> np.ndarray:
     rows = frame.to_dicts()
     basis = np.asarray(fit["ilr_basis"], dtype=float)
-    features = _features(rows, components, str(fit["form"]), basis)
+    if fit.get("feature_family") == "component_development_plus_one_year_trend":
+        from audit_peak_talent_trend import _trend_features
+
+        features = _trend_features(rows, components, str(fit["form"]), basis)
+    else:
+        features = _features(rows, components, str(fit["form"]), basis)
     mean = np.asarray(fit["scaler_mean"], dtype=float)
     scale = np.asarray(fit["scaler_scale"], dtype=float)
     coefficients = np.asarray(fit["ridge_coefficients"], dtype=float)

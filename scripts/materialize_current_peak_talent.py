@@ -10,6 +10,8 @@ import numpy as np
 import polars as pl
 
 from audit_one_year_talent_development import HITTER_COMPONENTS, PITCHER_COMPONENTS
+from audit_one_year_talent_development import _hitter_components, _load_sources
+from audit_peak_talent_trend import _add_trend
 from materialize_current_future_talent import (
     _hitter_runs,
     _model_predict,
@@ -22,6 +24,7 @@ from universal_baseball.storage import write_canonical_parquet
 BASIC_ROOT = Path("reports/generated/current-basic-talent/2026-09-08/tables")
 PEAK_REPORT = Path("reports/generated/age-to-peak-talent/report.json")
 CALIBRATION_PATH = Path("model_artifacts/peak-talent-run-calibration-v1.json")
+TREND_REPORT = Path("reports/generated/peak-talent-trend/report.json")
 OUTPUT_ROOT = Path("reports/generated/current-peak-talent/2026-09-08")
 PITCHER_ROLE_PATH = Path(
     "reports/generated/current-pitcher-opportunity-v2/2026-09-08/predictors.parquet"
@@ -102,11 +105,16 @@ def _materialize(
     component_peak_runs = np.where(apply_model, model_runs, present_runs)
     run_calibration = _run_calibration(age, apply_model, calibration)
     peak_runs = component_peak_runs + run_calibration
+    model_name = str(fit.get("feature_family") or fit["form"])
     policy = np.where(
         apply_model,
-        f"age_24_to_26_{fit['form']}",
+        f"age_24_to_26_{model_name}",
         "carry_forward_outside_supported_age",
     )
+    recent_direction = np.full(frame.height, np.nan)
+    if player_type == "hitter" and "has_prior_profile" in frame.columns:
+        prior = frame.select([f"prior_{name}" for name in components]).to_numpy()
+        recent_direction = _hitter_runs(present, prior, np.zeros(frame.height))
     output = frame.select(
         "player_id",
         "player_name",
@@ -130,6 +138,7 @@ def _materialize(
         pl.Series("peak_run_calibration", run_calibration),
         pl.Series("peak_runs_rate", peak_runs),
         pl.Series("peak_runs_change", peak_runs - present_runs),
+        pl.Series("recent_component_direction_runs", recent_direction),
         pl.Series("peak_policy", policy),
         pl.lit(status).alias("peak_validation_status"),
         *(pl.Series(f"present_{name}_rate", present[:, index]) for index, name in enumerate(components)),
@@ -141,14 +150,32 @@ def _materialize(
 def main() -> int:
     report = json.loads(PEAK_REPORT.read_text(encoding="utf-8"))
     calibration = json.loads(CALIBRATION_PATH.read_text(encoding="utf-8"))
-    hitters = _materialize(
-        _prepare(
-            BASIC_ROOT / "current_hitter_talent.parquet",
-            HITTER_COMPONENTS,
-            player_type="hitter",
-        ),
+    trend_report = json.loads(TREND_REPORT.read_text(encoding="utf-8"))
+    hitter_fit = (
+        trend_report["hitters"]["current_fit"]
+        if trend_report["hitters"]["promoted"]
+        else report["hitters"]["current_fit"]
+    )
+    hitter_source = _hitter_components(
+        _load_sources("affiliated_hitting_components.parquet")
+    )
+    hitter_frame = _prepare(
+        BASIC_ROOT / "current_hitter_talent.parquet",
         HITTER_COMPONENTS,
-        report["hitters"]["current_fit"],
+        player_type="hitter",
+    ).with_columns(pl.lit(2026).alias("origin_year"))
+    if trend_report["hitters"]["promoted"]:
+        hitter_frame = _add_trend(
+            hitter_frame,
+            hitter_source,
+            HITTER_COMPONENTS,
+            exposure="plate_appearances",
+            regression=1200.0,
+        )
+    hitters = _materialize(
+        hitter_frame,
+        HITTER_COMPONENTS,
+        hitter_fit,
         player_type="hitter",
         calibration=calibration["hitters"],
     )
@@ -194,6 +221,10 @@ def main() -> int:
         "hitters": {
             "validation": report["hitters"]["promotion"],
             "under_20": "modeled; explicit strikeout component passes supported subgroup breadth",
+            "skill_direction": {
+                "promoted": trend_report["hitters"]["promoted"],
+                "wins": trend_report["hitters"]["wins"],
+            },
         },
         "pitchers": {"validation": report["pitchers"]["promotion"]},
         "public_rank_role": "joined after scoring for audit only",

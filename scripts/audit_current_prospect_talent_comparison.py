@@ -101,6 +101,11 @@ def _logic_summary(row: dict[str, object], *, player_type: str) -> str:
         facts.append("risks: " + ", ".join(weaknesses))
     if float(row.get("effective_evidence") or 0.0) < 200.0:
         facts.append("limited performance sample")
+    direction = row.get("recent_component_direction_runs")
+    if direction is not None and float(direction) >= 2.0:
+        facts.append("recent component direction improving")
+    elif direction is not None and float(direction) <= -2.0:
+        facts.append("recent component direction declining")
     if player_type == "pitcher" and str(row.get("as_of_level_group")) != "AAA":
         facts.append("raw pitch quality unavailable")
     return "; ".join(facts) or "near the middle of the measured component distribution"
