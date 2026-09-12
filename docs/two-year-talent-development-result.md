@@ -16,14 +16,15 @@ two-year replays. This is the richer form for hitters and the simpler form for p
 
 | Target | Hitter log-loss change | Hitter Brier change | Pitcher log-loss change | Pitcher Brier change |
 |---|---:|---:|---:|---:|
-| 2023 | -0.00528 | -0.00162 | -0.03156 | -0.00802 |
-| 2024 | -0.00768 | -0.00281 | -0.02857 | -0.00706 |
-| 2025 | -0.01014 | -0.00358 | -0.02913 | -0.00793 |
+| 2023 | -0.01397 | -0.00597 | -0.03156 | -0.00802 |
+| 2024 | -0.01768 | -0.00686 | -0.02857 | -0.00706 |
+| 2025 | -0.01697 | -0.00542 | -0.02913 | -0.00793 |
 
 ## Complexity decision
 
-- Hitters: the richer component form also beats age/level alone on both scores in all
-  3/3 replays. Retain it as the research two-year hitter form.
+- Hitters: explicit strikeouts improve the overall two-year component candidate, but
+  its extra interactions do not beat age/level alone on both scores in 3/3. Prefer the
+  simpler age/level form.
 - Pitchers: the richer form beats age/level alone on Brier in 3/3, but log loss in only
   2/3. Prefer the simpler age/level two-year pitcher form under the fixed 80% breadth
   rule.
@@ -37,7 +38,7 @@ and the loss is small.
 This gives the development layer a logical shape instead of one universal adjustment:
 
 - one-year hitters and pitchers can use current component shape after heavy shrinkage;
-- two-year hitters retain that component-specific signal;
+- two-year hitters and pitchers use the simpler age/level path;
 - two-year pitchers use the simpler age/level path until richer detail proves broader.
 
 Both horizons remain rate-only and conditional on a later observed season. Playing

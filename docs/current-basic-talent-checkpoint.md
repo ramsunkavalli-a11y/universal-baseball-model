@@ -11,8 +11,9 @@ in the dated roster universe:
 - all 50 FanGraphs comparison players are found (36 hitters and 14 pitchers);
 - 43 of those 50 have enough translated evidence to rank; seven remain unresolved.
 
-The hitter score uses translated and regressed UBB, HBP, single, double, triple, HR and
-other-event rates. The pitcher score uses translated and regressed K, UBB, HBP, HR and
+The hitter score uses translated and regressed strikeout, UBB, HBP, single, double,
+triple, HR and other-ball-in-play-out rates. The pitcher score uses translated and
+regressed K, UBB, HBP, HR and
 other-event rates. It does not include playing time, position, defense, arrival,
 contracts, replacement, organization, public rank or public FV. The public list is
 joined only after scoring.

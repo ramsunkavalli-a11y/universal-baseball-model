@@ -623,3 +623,10 @@ and current component shape. Use chronological selection, player-cluster uncerta
 and age/level subgroup checks. Keep public prospect lists completely outside fitting;
 join them afterward to identify explainable disagreements and missing baseball inputs.
 See [the logic checkpoint](talent-projection-logic-checkpoint.md).
+
+The first [age-to-peak result](age-to-peak-talent-result.md) now establishes equal-player
+talent scoring. Separating hitter strikeouts from other balls-in-play outs removes the
+former teenage-hitter reversal. Hitters and pitchers pass 5/5 player, uncertainty and
+event gates. The current prospect-only inspection board is generated. Complete its top-25
+and external-top-50 error audit before any FV integration; minor-league pitch-quality
+evidence is the leading new pitcher input.

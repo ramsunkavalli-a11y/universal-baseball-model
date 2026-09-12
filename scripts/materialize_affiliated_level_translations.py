@@ -15,7 +15,7 @@ from universal_baseball.level_component_translation import (
 from universal_baseball.storage import write_canonical_parquet
 
 
-HITTER_COMPONENTS = ("ubb", "hbp", "single", "double", "triple", "hr", "other")
+HITTER_COMPONENTS = ("so", "ubb", "hbp", "single", "double", "triple", "hr", "other")
 PITCHER_COMPONENTS = ("so", "ubb", "hbp", "hr", "other")
 
 
@@ -40,6 +40,7 @@ def _seasons(raw: str) -> tuple[int, ...]:
 
 def _hitter_components(frame: pl.DataFrame) -> pl.DataFrame:
     return frame.with_columns(
+        pl.col("strike_outs").alias("so"),
         (pl.col("base_on_balls") - pl.col("intentional_walks")).alias("ubb"),
         (pl.col("hits") - pl.col("doubles") - pl.col("triples") - pl.col("home_runs")).alias("single"),
         pl.col("doubles").alias("double"), pl.col("triples").alias("triple"),

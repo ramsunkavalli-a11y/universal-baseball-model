@@ -107,6 +107,7 @@ def _hitter_runs(
     present_runs: np.ndarray,
 ) -> np.ndarray:
     weights = np.asarray([
+        0.0,
         NEUTRAL_WOBA_WEIGHTS["UBB"],
         NEUTRAL_WOBA_WEIGHTS["HBP"],
         NEUTRAL_WOBA_WEIGHTS["1B"],
@@ -251,8 +252,8 @@ def main() -> int:
         "players": {"hitters": hitters.height, "pitchers": pitchers.height},
         "horizons": [1, 2],
         "hitter_mlb_guardrail": (
-            "carry forward present rate because the development model lost both proper "
-            "scores for MLB hitters in every one- and two-year replay"
+            "carry forward present rate because the development model did not retain "
+            "broad proper-score support for MLB hitters"
         ),
         "promotion": (
             "rejected as universal talent rank; teenage players require a separate "

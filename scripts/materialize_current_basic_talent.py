@@ -18,7 +18,7 @@ from universal_baseball.prospect_hitter_talent import (
 from universal_baseball.storage import write_canonical_parquet
 
 
-HITTER_COMPONENTS = ("ubb", "hbp", "single", "double", "triple", "hr", "other")
+HITTER_COMPONENTS = ("so", "ubb", "hbp", "single", "double", "triple", "hr", "other")
 PITCHER_COMPONENTS = ("so", "ubb", "hbp", "hr", "other")
 
 
@@ -55,6 +55,7 @@ def _args() -> argparse.Namespace:
 
 def _hitter_components(frame: pl.DataFrame) -> pl.DataFrame:
     return frame.with_columns(
+        pl.col("strike_outs").alias("so"),
         (pl.col("base_on_balls") - pl.col("intentional_walks")).alias("ubb"),
         (pl.col("hits") - pl.col("doubles") - pl.col("triples") - pl.col("home_runs")).alias("single"),
         pl.col("doubles").alias("double"),
@@ -109,6 +110,7 @@ def _score_hitters(
     reference: dict[str, float],
 ) -> pl.DataFrame:
     weights = {
+        "so": 0.0,
         "ubb": NEUTRAL_WOBA_WEIGHTS["UBB"],
         "hbp": NEUTRAL_WOBA_WEIGHTS["HBP"],
         "single": NEUTRAL_WOBA_WEIGHTS["1B"],

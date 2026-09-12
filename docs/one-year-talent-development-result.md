@@ -33,11 +33,11 @@ every later replay.
 
 | Target | Hitter log-loss change | Hitter Brier change | Pitcher log-loss change | Pitcher Brier change |
 |---|---:|---:|---:|---:|
-| 2019 | -0.01156 | -0.00421 | -0.02791 | -0.00752 |
-| 2022 | -0.00955 | -0.00348 | -0.03737 | -0.01016 |
-| 2023 | -0.00682 | -0.00241 | -0.04147 | -0.01093 |
-| 2024 | -0.01306 | -0.00469 | -0.03569 | -0.01008 |
-| 2025 | -0.01022 | -0.00340 | -0.04102 | -0.01138 |
+| 2019 | -0.02167 | -0.00747 | -0.02791 | -0.00752 |
+| 2022 | -0.02426 | -0.01002 | -0.03737 | -0.01016 |
+| 2023 | -0.02104 | -0.00896 | -0.04147 | -0.01093 |
+| 2024 | -0.02448 | -0.00858 | -0.03569 | -0.01008 |
+| 2025 | -0.01962 | -0.00679 | -0.04102 | -0.01138 |
 
 Negative is better. Each hitter replay covers 2,731–2,951 players and roughly
 841,000–875,000 future PA. Each pitcher replay covers 2,927–3,288 players and roughly
@@ -50,9 +50,11 @@ scores in every replay for both player types. The broad average result is not no
 
 Mostly yes, but by a much smaller amount than the main gain over no development.
 
-- Hitters: richer form beats age/level on log loss in 5/5 replays and Brier in 4/5.
+- Hitters: after separating strikeouts from other balls-in-play outs, the richer form
+  beats age/level on both scores in 5/5 replays.
 - Pitchers: richer form beats age/level on log loss in 4/5 and Brier in 5/5.
-- Selected hitter ridge strength: 1,000, which is intentionally heavy shrinkage.
+- Selected hitter ridge strength: 1; despite the lighter penalty, paired-player
+  uncertainty passes 5/5 and later subgroup review retains the MLB guardrail.
 - Selected pitcher ridge strength: 100.
 
 This is logical baseball structure: age and level set the broad expected development;
@@ -62,10 +64,10 @@ young player improves.
 
 ## Important boundary
 
-The model loses both scores for MLB hitters in all five level checks. The same reversal
-appears for MLB hitters ages 23–25 and 26+ wherever the crossed subgroup has enough
-players. Therefore current MLB hitter rate is carried forward; the development change
-is not applied to them.
+The model does not retain broad support for MLB hitters: it loses both scores in three
+of five one-year level checks, while the two-year form loses both in two of three.
+Therefore current MLB hitter rate is carried forward; the minor-league development
+change is not applied to them.
 
 The larger limitation is conceptual. This predicts translated rate one season later.
 It does not estimate a young player's eventual peak. It belongs in a near-term talent

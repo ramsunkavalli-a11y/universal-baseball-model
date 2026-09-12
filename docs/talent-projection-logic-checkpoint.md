@@ -36,3 +36,10 @@ to player value.
 Peak talent—not two-year rate—will drive the next prospect comparison. FanGraphs/MLB
 Pipeline can reveal suspicious agreements and disagreements after scoring, but no
 outside FV or rank may enter the model.
+
+The first age-to-peak test is now complete. Its crucial corrections are equal-player
+fitting/scoring so future workload cannot dominate talent, and a separate hitter
+strikeout outcome so contact skill is not buried among other outs. Hitters and pitchers
+both pass every later player, uncertainty, and event gate. Under-20 hitters meet the
+fixed subgroup breadth rule without a guardrail.
+See [the result](age-to-peak-talent-result.md).

@@ -12,7 +12,7 @@ from materialize_current_future_talent import _hitter_runs, _pitcher_runs  # noq
 
 
 def test_unchanged_hitter_components_preserve_present_run_rate() -> None:
-    present = np.asarray([[0.08, 0.01, 0.15, 0.05, 0.005, 0.04, 0.665]])
+    present = np.asarray([[0.22, 0.08, 0.01, 0.15, 0.05, 0.005, 0.04, 0.445]])
     present_runs = np.asarray([12.5])
 
     result = _hitter_runs(present.copy(), present, present_runs)

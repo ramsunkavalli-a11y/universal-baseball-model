@@ -28,7 +28,7 @@ from universal_baseball.projection_composition import (
 
 
 ROOT = Path("reports/generated")
-HITTER_COMPONENTS = ("ubb", "hbp", "single", "double", "triple", "hr", "other")
+HITTER_COMPONENTS = ("so", "ubb", "hbp", "single", "double", "triple", "hr", "other")
 PITCHER_COMPONENTS = ("so", "ubb", "hbp", "hr", "other")
 LEVELS = tuple(LEVEL_ORDER)
 ALPHAS = (1.0, 10.0, 100.0, 1000.0)
@@ -64,6 +64,7 @@ def _load_sources(name: str) -> pl.DataFrame:
 
 def _hitter_components(frame: pl.DataFrame) -> pl.DataFrame:
     return frame.with_columns(
+        pl.col("strike_outs").alias("so"),
         (pl.col("base_on_balls") - pl.col("intentional_walks")).alias("ubb"),
         (pl.col("hits") - pl.col("doubles") - pl.col("triples") - pl.col("home_runs")).alias("single"),
         pl.col("doubles").alias("double"),
