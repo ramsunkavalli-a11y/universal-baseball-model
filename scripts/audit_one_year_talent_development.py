@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 from pathlib import Path
@@ -27,7 +28,6 @@ from universal_baseball.projection_composition import (
 
 
 ROOT = Path("reports/generated")
-OUTPUT = ROOT / "one-year-talent-development"
 HITTER_COMPONENTS = ("ubb", "hbp", "single", "double", "triple", "hr", "other")
 PITCHER_COMPONENTS = ("so", "ubb", "hbp", "hr", "other")
 LEVELS = tuple(LEVEL_ORDER)
@@ -35,8 +35,13 @@ ALPHAS = (1.0, 10.0, 100.0, 1000.0)
 FORMS = ("age_level", "component_development")
 TRAIN_MAX_ORIGIN = 2014
 DEVELOPMENT_ORIGINS = (2015, 2016, 2017)
-REPLAY_ORIGINS = (2018, 2021, 2022, 2023, 2024)
 INVALID_TARGET_YEARS = {2020}
+
+
+def _args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--horizon", type=int, choices=(1, 2), default=1)
+    return parser.parse_args()
 
 
 def _load_sources(name: str) -> pl.DataFrame:
@@ -144,8 +149,9 @@ def _fold(
     exposure: str,
     components: tuple[str, ...],
     regression: float,
+    horizon: int,
 ) -> pl.DataFrame:
-    target_year = origin + 1
+    target_year = origin + horizon
     if target_year in INVALID_TARGET_YEARS:
         return pl.DataFrame()
     completed = tuple(
@@ -298,8 +304,9 @@ def _evaluate_player_type(
     exposure: str,
     components: tuple[str, ...],
     regression: float,
+    horizon: int,
 ) -> dict[str, object]:
-    origins = tuple(range(2005, 2025))
+    origins = tuple(range(2005, 2026 - horizon))
     folds = {
         origin: _fold(
             source,
@@ -307,9 +314,11 @@ def _evaluate_player_type(
             exposure=exposure,
             components=components,
             regression=regression,
+            horizon=horizon,
         )
         for origin in origins
         if origin not in INVALID_TARGET_YEARS and origin + 1 not in INVALID_TARGET_YEARS
+        and origin + horizon not in INVALID_TARGET_YEARS
     }
     basis = sequential_helmert_ilr_basis(len(components))
     training = pl.concat(
@@ -342,8 +351,9 @@ def _evaluate_player_type(
         key=lambda row: (row["log_loss_delta"], row["brier_delta"], row["alpha"]),
     )
 
+    replay_origins = (2018, 2021, 2022, 2023, 2024) if horizon == 1 else (2021, 2022, 2023)
     replay = []
-    for origin in REPLAY_ORIGINS:
+    for origin in replay_origins:
         train_rows = pl.concat(
             [frame for fold_origin, frame in folds.items() if fold_origin + 1 <= origin],
             how="vertical_relaxed",
@@ -380,7 +390,7 @@ def _evaluate_player_type(
         )
         replay.append({
             "origin_year": origin,
-            "target_year": origin + 1,
+            "target_year": origin + horizon,
             "candidate": candidate,
             "age_level_comparator": simple,
             "carry_forward": baseline,
@@ -395,14 +405,18 @@ def _evaluate_player_type(
         })
     rich_log_wins = sum(row["rich_minus_simple_log_loss"] < 0 for row in replay)
     rich_brier_wins = sum(row["rich_minus_simple_brier"] < 0 for row in replay)
+    required_rich_wins = math.ceil(0.8 * len(replay))
     selected_form = str(selected["form"])
     if selected_form == "component_development" and (
-        rich_log_wins < 4 or rich_brier_wins < 4
+        rich_log_wins < required_rich_wins or rich_brier_wins < required_rich_wins
     ):
         decision = {
             "form": "age_level",
             "alpha": simple_selection["alpha"],
-            "reason": "richer form did not beat the simpler form in at least four of five replay folds on both scores",
+            "reason": (
+                "richer form did not beat the simpler form in at least 80% "
+                "of replay folds on both scores"
+            ),
         }
     else:
         decision = {
@@ -413,7 +427,7 @@ def _evaluate_player_type(
     return {
         "training_origins": [origin for origin in folds if origin <= TRAIN_MAX_ORIGIN],
         "development_origins": list(DEVELOPMENT_ORIGINS),
-        "replay_origins": list(REPLAY_ORIGINS),
+        "replay_origins": list(replay_origins),
         "selection": selection,
         "selected": {"form": selected["form"], "alpha": selected["alpha"]},
         "simple_comparator": {
@@ -426,16 +440,21 @@ def _evaluate_player_type(
         "replay_brier_wins": sum(row["brier_delta"] < 0 for row in replay),
         "rich_vs_simple_log_loss_wins": rich_log_wins,
         "rich_vs_simple_brier_wins": rich_brier_wins,
+        "required_rich_vs_simple_wins": required_rich_wins,
     }
 
 
 def main() -> int:
+    args = _args()
+    horizon = int(args.horizon)
+    output = ROOT / ("one-year-talent-development" if horizon == 1 else "two-year-talent-development")
     hitters = _hitter_components(_load_sources("affiliated_hitting_components.parquet"))
     pitchers = _pitcher_components(_load_sources("affiliated_pitching_components.parquet"))
     report = {
         "report_schema_version": "0.1",
         "status": "historical_replay_not_current_ranking",
-        "question": "Can age, level, evidence and present components improve one-year future talent over carry-forward?",
+        "horizon_years": horizon,
+        "question": f"Can age, level, evidence and present components improve {horizon}-year future talent over carry-forward?",
         "rules": {
             "playing_time_used_as_feature": False,
             "public_rank_or_fv_used": False,
@@ -450,16 +469,18 @@ def main() -> int:
             exposure="plate_appearances",
             components=HITTER_COMPONENTS,
             regression=1200.0,
+            horizon=horizon,
         ),
         "pitchers": _evaluate_player_type(
             pitchers,
             exposure="batters_faced",
             components=PITCHER_COMPONENTS,
             regression=800.0,
+            horizon=horizon,
         ),
     }
-    OUTPUT.mkdir(parents=True, exist_ok=True)
-    (OUTPUT / "report.json").write_text(
+    output.mkdir(parents=True, exist_ok=True)
+    (output / "report.json").write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     print(json.dumps({

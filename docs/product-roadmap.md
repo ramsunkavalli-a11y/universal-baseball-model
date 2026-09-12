@@ -207,6 +207,14 @@ component-specific development rather than a blanket age bonus. Keep it out of c
 rankings until player-cluster uncertainty, subgroup reversals and a direct two-year
 model are checked. See the [one-year talent result](one-year-talent-development-result.md).
 
+The matching direct two-year replay also beats unchanged talent on both scores in all
+three later targets (2023–2025); the one-year effect is not compounded. Rich component
+development remains supported for hitters, winning both scores against age/level in
+3/3 replays. For pitchers, the richer form wins Brier 3/3 but log loss only 2/3, so the
+simpler age/level two-year form is preferred under the fixed 80% breadth rule. Current
+rankings still wait for player-cluster uncertainty and subgroup checks. See the
+[direct two-year result](two-year-talent-development-result.md).
+
 The reusable search layer now records hashes for the complete candidate family and
 the exact outer cohort, enforces observable time origins and identical player rows,
 and supplies a conservative promotion gate across both proper scores, paired
