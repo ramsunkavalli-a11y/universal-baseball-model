@@ -174,6 +174,14 @@ top-50 players overlap the eligible FanGraphs top 50. The next P0 is the frozen
 confirmed hitter Current Talent B2, establish the matching pitcher state, then learn
 future skill distributions from chronological history without public FV/rank inputs.
 
+The 2024 present-talent refresh now passes the full evidence gate for AAA, AA, High-A
+and Single-A: 151,212 player-games, 620,714 PA and 604,553 core events. Seven exact
+source-only games are excluded under date/type fingerprints; rookie/complex remains
+fail-closed on a separate player identity residual. The 2025 topology is stable, but
+its reusable PBP release ends in May at every level, so 2025 remains disabled as a
+complete talent season. Next materialize MLB 2024, then assemble the confirmed B2
+snapshot for supported populations while keeping incomplete tiers explicit.
+
 The reusable search layer now records hashes for the complete candidate family and
 the exact outer cohort, enforces observable time origins and identical player rows,
 and supplies a conservative promotion gate across both proper scores, paired

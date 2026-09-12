@@ -70,6 +70,9 @@ from universal_baseball.current_talent_official_outcomes import (
 from universal_baseball.current_talent_season_reconciliation import (
     reconcile_resolved_outcomes_to_season_aggregates,
 )
+from universal_baseball.current_talent_source_exclusions import (
+    apply_certified_historical_game_exclusions,
+)
 from universal_baseball.official import fetch_official_game_evidence
 from universal_baseball.official_capture import capture_official_json, new_official_session
 from universal_baseball.player_game_controls import resolve_player_game_contact_controls
@@ -145,11 +148,20 @@ def _load_player_game_sources(
     map_frames: list[pl.DataFrame] = []
     control_frames: list[pl.DataFrame] = []
     outcome_frames: list[pl.DataFrame] = []
+    exclusion_evidence: list[dict[str, Any]] = []
     for asset in assets:
         path = raw_dir / asset.name
         if not path.exists() or path.stat().st_size <= 0:
             download_file(asset.browser_download_url, path, timeout_seconds=240)
         raw = read_quarantined_csv(path)
+        raw, exclusions = apply_certified_historical_game_exclusions(
+            raw,
+            season=season,
+            source_kind="player_game",
+            game_id_column="game_id",
+            game_date_column="game_date",
+        )
+        exclusion_evidence.extend(exclusions)
         required_map = {"game_id", "league_id", "game_type"}
         missing = sorted(required_map - set(raw.columns))
         if missing:
@@ -230,6 +242,7 @@ def _load_player_game_sources(
             **identity_metrics,
             "evidence": identity_evidence.to_dicts(),
         },
+        "certified_game_exclusions": exclusion_evidence,
     }
 
 
@@ -411,11 +424,20 @@ def _load_contacts(
     raw_dir.mkdir(parents=True, exist_ok=True)
     projected_frames: list[pl.DataFrame] = []
     enrichment_metrics: list[dict[str, Any]] = []
+    exclusion_evidence: list[dict[str, Any]] = []
     for asset in assets:
         path = raw_dir / asset.name
         if not path.exists() or path.stat().st_size <= 0:
             download_file(asset.browser_download_url, path, timeout_seconds=300)
         raw = read_quarantined_csv(path)
+        raw, exclusions = apply_certified_historical_game_exclusions(
+            raw,
+            season=season,
+            source_kind="pbp",
+            game_id_column="game_pk",
+            game_date_column="game_date",
+        )
+        exclusion_evidence.extend(exclusions)
         enriched, enrichment = enrich_historical_pbp_league_id(
             raw,
             game_league_map,
@@ -454,6 +476,7 @@ def _load_contacts(
         "league_id_enrichment": enrichment_metrics,
         "resolution": resolution,
         "league_coverage": coverage,
+        "certified_game_exclusions": exclusion_evidence,
     }
 
 
