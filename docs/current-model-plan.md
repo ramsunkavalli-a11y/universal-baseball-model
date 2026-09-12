@@ -657,3 +657,12 @@ external-high/model-low cases and model top-25 outsiders. Do not tune toward pub
 ranks. Below AAA, treat missing pitch quality as an explicit unresolved input. Do not
 reopen the eight-outcome pitcher contact split without new evidence; its frozen test
 already failed the development gate.
+
+The 2024-2026 official pitch-sequence probe adds a new evidence boundary. AAA through
+Single-A look physical in all three sampled seasons. DSL is synthetic in 2024, then
+normal-looking in 2025 and 2026. Current whiff/called-strike summaries are feasible,
+but the shortest histories remain supporting evidence until a chronological forecast
+test passes. The next universal peak-talent challenger is higher priority: test one
+strongly regressed prior-to-current component-change vector to learn whether a player's
+improvement or decline adds repeatable information beyond current translated talent,
+age, level and evidence.
