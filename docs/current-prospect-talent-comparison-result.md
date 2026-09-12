@@ -1,7 +1,7 @@
 # Current prospect talent comparison
 
 Last updated: 2026-09-12  
-Status: **FIRST LOGICAL PEAK-TALENT BOARD COMPLETE**
+Status: **LOGICAL PEAK-TALENT BOARD WITH VALIDATED PITCHER ORDERING**
 
 This is a talent-rate board, not a playing-time or contract-value list. It ranks
 non-MLB players age 23 or younger using only translated StatsAPI performance, age,
@@ -17,8 +17,13 @@ level and evidence. The public list is joined only after every score is complete
   placement.
 - The pitcher top three are Braylon Doughty, Ryan Sloan and Anthony Eyanson. All three
   also appear on the external list; that agreement was not used to score them.
+- Pitcher order now uses a historically validated 50/50 blend of component talent and
+  age/level talent. The component model remains the displayed mean projection. This
+  prevents small differences in noisy result components from controlling the entire
+  top of the list.
 - Every compared player now has age/level context, evidence, component-quality
-  percentiles and a plain-language strength/risk explanation.
+  percentiles and a plain-language strength/risk explanation. Those percentiles are
+  relative to eligible prospects, not claims that a rate is already MLB quality.
 
 ## Important disagreements
 
