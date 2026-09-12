@@ -26,12 +26,16 @@ guardrail.
 
 The corrected [active-model comparison](full-bip-active-model-result.md) now puts the
 active prediction, BIP estimate and future target on one cutoff-safe MLB-neutral
-scale. Pitchers pass every supported confirmation level with a frozen `0.7883`
-incremental contact weight. Hitters improve overall but reverse at AA and AAA, with
-much of the gain concentrated at Rookie level, so their production weight remains
-zero. No player value has changed. Next, carry the pitcher adjustment through the full
-rate and WAR replay and separately diagnose the hitter level interaction without
-rescue tuning.
+scale. Pitchers pass every supported confirmation contact level with a frozen `0.7883`
+incremental weight. Hitters improve overall but reverse at AA and AAA, with much of
+the gain concentrated at Rookie level.
+
+The following [complete pitcher-rate replay](full-bip-pitcher-rate-replay-result.md)
+then fails: equal-player confirmation MAE and RMSE worsen, and A and Rookie reverse.
+This is the controlling decision. Both hitter and pitcher BIP production weights
+remain zero, and no player value changes. Phase 2 requires additional rolling-origin
+PBP seasons to test level-specific reliability under a new frozen rule; do not infer a
+high-minors-only adjustment from already-seen outcomes.
 
 ## Active product gate: explainable prospect rankings
 

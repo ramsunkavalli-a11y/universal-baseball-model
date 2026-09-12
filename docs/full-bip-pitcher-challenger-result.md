@@ -1,6 +1,6 @@
 # Full BIP pitcher contact-talent result
 
-**Status:** contact signal and active-model contact comparison confirmed; full rate/WAR replay remains
+**Status:** contact signal confirmed; full-rate promotion rejected
 **Model effect:** none
 
 ## Source
@@ -65,6 +65,6 @@ the active prediction, BIP estimate and future target were all put on one cutoff
 MLB-neutral scale. The frozen weight was `0.7883`; every supported confirmation level
 improved.
 
-This is not yet a production promotion. Next, connect the contact adjustment to the
-complete pitcher rate and WAR replay. Do not change current pitcher talent, WAR, FV,
-or value before that gate.
+The [complete pitcher-rate replay](full-bip-pitcher-rate-replay-result.md) is now
+finished and reverses on confirmation overall, at A, and at Rookie. The production
+decision is zero weight. No current pitcher talent, WAR, FV, or value changes.

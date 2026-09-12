@@ -1,6 +1,6 @@
 # Full BIP contact-talent challenger
 
-**Status:** pitcher passed active contact gate; hitter improved overall but remains held back
+**Status:** both production paths held back after complete rate gate
 **Priority:** P0 hitter and pitcher talent
 
 ## Existing work reused
@@ -56,6 +56,8 @@ directly change playing time, WAR, FV, or trade value.
   level guardrail. It remains research-only.
 
 The [active-model comparison](full-bip-active-model-result.md) is complete on a shared
-cutoff-safe MLB-neutral scale. Pitcher passed at every supported level. Hitter reversed
-at AA and AAA and remains at zero production weight. Next, run the pitcher candidate
-through the full rate and WAR replay; diagnose hitter level interaction separately.
+cutoff-safe MLB-neutral scale. Pitcher passed at every supported contact level, while
+hitter reversed at AA and AAA. The subsequent
+[complete pitcher-rate replay](full-bip-pitcher-rate-replay-result.md) reversed overall
+and at A and Rookie. Both production weights remain zero. Further work belongs in a
+new rolling-origin Phase 2 level-reliability test, not rescue tuning.

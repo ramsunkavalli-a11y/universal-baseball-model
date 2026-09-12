@@ -42,8 +42,9 @@ no-level-reversal rule and is not rescued by the strong overall score.
 
 ## Decision
 
-- Advance the pitcher weight to a full pitcher-rate and WAR replay. It is not yet a
-  current-player value change.
+- Advance the pitcher weight to a full pitcher-rate replay. That
+  [replay is now complete](full-bip-pitcher-rate-replay-result.md) and fails, so the
+  adjustment does not enter current-player values.
 - Keep hitter production weight at zero. Next diagnose why the candidate helps Rookie
   and lower levels but loses at AA/AAA; do not tune to individual prospects or public
   FV.
