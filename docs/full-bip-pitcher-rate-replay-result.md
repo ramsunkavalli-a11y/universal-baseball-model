@@ -28,6 +28,21 @@ High-A, AA and AAA improve on both equal-player errors in confirmation. A and Ro
 reverse on both. The same Rookie reversal was already visible in development, so the
 failure is structured rather than a few named outliers.
 
+## Why contact success did not survive
+
+At Rookie level, the BIP estimate is closer to the future contact target: its mean
+contact error is `-0.0135`, compared with `+0.0364` for the active contact assumption.
+But the active non-contact contribution is already too low by `-0.1547`. The old high
+contact estimate partly cancels that separate K/BB/HBP/HR error. Correcting contact
+makes total bias worse, from `-0.1251` to `-0.1520` wOBA. A has the same direction on
+a smaller scale. At AA and AAA, BIP instead repairs a large contact underprediction and
+improves the complete rate.
+
+The current bridge also joins a 100-contact Current Talent BIP prior to an aggregate
+pitcher profile regressed toward 800 BF, then gives the contact residual one global
+weight. Each prior has prior validation in its own model, but their combined
+reliability is not reconciled. The replay shows that one global bridge is not safe.
+
 ## Decision
 
 Do not change pitcher talent, WAR, FV or value. A contact component can forecast its
@@ -38,3 +53,7 @@ Phase 2 may test whether level-specific BIP reliability repeats over additional
 rolling origins. That requires more historical PBP seasons and a new rule frozen
 before confirmation. Do not create a High-A/AA/AAA-only production rule from these
 already-seen outcomes.
+
+The next candidate should reconcile BIP and aggregate-profile reliability before
+blending, then score both components and the complete rate. Its reliability rule must
+be learned from prior repeatability, not chosen to repair these disclosed subgroups.

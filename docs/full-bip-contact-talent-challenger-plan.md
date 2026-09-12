@@ -61,3 +61,7 @@ hitter reversed at AA and AAA. The subsequent
 [complete pitcher-rate replay](full-bip-pitcher-rate-replay-result.md) reversed overall
 and at A and Rookie. Both production weights remain zero. Further work belongs in a
 new rolling-origin Phase 2 level-reliability test, not rescue tuning.
+
+Phase 2 must also reconcile the BIP profile's 100-contact prior with the aggregate
+pitcher model's 800-BF prior before fitting any combined weight. Estimate that bridge
+from earlier repeatability and require both contact-component and complete-rate wins.

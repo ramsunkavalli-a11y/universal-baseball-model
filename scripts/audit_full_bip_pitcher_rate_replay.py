@@ -199,30 +199,41 @@ def _rate_rows(
         + pl.col("p_hbp") * NEUTRAL_WOBA_WEIGHTS["HBP"]
         + pl.col("p_hr") * NEUTRAL_WOBA_WEIGHTS["HR"]
     )
-    return joined.with_columns(
-        (
-            predicted_non_contact
-            + (pl.col("p_hr") + pl.col("p_other")) * active_contact
-        ).alias("baseline_woba_allowed"),
-        (
-            predicted_non_contact
-            + (pl.col("p_hr") + pl.col("p_other")) * blended_contact
-        ).alias("candidate_woba_allowed"),
-        (
-            target_non_contact
-            + (pl.col("target_p_hr") + pl.col("target_p_other"))
-            * pl.col("target_contact_value")
-        ).alias("target_woba_allowed"),
-    ).with_columns(
-        (
-            -(pl.col("baseline_woba_allowed") - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE
-        ).alias("baseline_runs_per_800"),
-        (
-            -(pl.col("candidate_woba_allowed") - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE
-        ).alias("candidate_runs_per_800"),
-        (-(pl.col("target_woba_allowed") - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE).alias(
-            "target_runs_per_800"
-        ),
+    return (
+        joined.with_columns(
+            active_contact.alias("active_contact_value"),
+            blended_contact.alias("candidate_contact_value"),
+            predicted_non_contact.alias("predicted_non_contact_value"),
+            target_non_contact.alias("target_non_contact_value"),
+        )
+        .with_columns(
+            (
+                pl.col("predicted_non_contact_value")
+                + (pl.col("p_hr") + pl.col("p_other")) * active_contact
+            ).alias("baseline_woba_allowed"),
+            (
+                pl.col("predicted_non_contact_value")
+                + (pl.col("p_hr") + pl.col("p_other")) * blended_contact
+            ).alias("candidate_woba_allowed"),
+            (
+                pl.col("target_non_contact_value")
+                + (pl.col("target_p_hr") + pl.col("target_p_other"))
+                * pl.col("target_contact_value")
+            ).alias("target_woba_allowed"),
+        )
+        .with_columns(
+            (
+                -(pl.col("baseline_woba_allowed") - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE
+            ).alias("baseline_runs_per_800"),
+            (
+                -(pl.col("candidate_woba_allowed") - 0.3188)
+                * 800.0
+                / NEUTRAL_WOBA_SCALE
+            ).alias("candidate_runs_per_800"),
+            (
+                -(pl.col("target_woba_allowed") - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE
+            ).alias("target_runs_per_800"),
+        )
     )
 
 
@@ -278,6 +289,58 @@ def _score(frame: pl.DataFrame) -> dict[str, object]:
     }
 
 
+def _decomposition(frame: pl.DataFrame) -> list[dict[str, float | int | str]]:
+    output = []
+    for level in sorted(frame.get_column("origin_level").unique().to_list()):
+        group = frame.filter(pl.col("origin_level") == level)
+        output.append(
+            {
+                "origin_level": level,
+                "players": group.height,
+                "baseline_total_bias": float(
+                    group.select(
+                        (
+                            pl.col("baseline_woba_allowed")
+                            - pl.col("target_woba_allowed")
+                        ).mean()
+                    ).item()
+                ),
+                "candidate_total_bias": float(
+                    group.select(
+                        (
+                            pl.col("candidate_woba_allowed")
+                            - pl.col("target_woba_allowed")
+                        ).mean()
+                    ).item()
+                ),
+                "active_minus_target_contact": float(
+                    group.select(
+                        (
+                            pl.col("active_contact_value")
+                            - pl.col("target_contact_value")
+                        ).mean()
+                    ).item()
+                ),
+                "bip_minus_target_contact": float(
+                    group.select(
+                        (
+                            pl.col("bip_contact_value") - pl.col("target_contact_value")
+                        ).mean()
+                    ).item()
+                ),
+                "predicted_minus_target_non_contact": float(
+                    group.select(
+                        (
+                            pl.col("predicted_non_contact_value")
+                            - pl.col("target_non_contact_value")
+                        ).mean()
+                    ).item()
+                ),
+            }
+        )
+    return output
+
+
 def main() -> int:
     args = _args()
     source = _source(args.pitching_source)
@@ -299,8 +362,14 @@ def main() -> int:
     report = {
         "status": "full_pitcher_rate_replay_scored",
         "frozen_contact_weight": FROZEN_CONTACT_WEIGHT,
-        "development": _score(development),
-        "confirmation": _score(confirmation),
+        "development": {
+            **_score(development),
+            "decomposition": _decomposition(development),
+        },
+        "confirmation": {
+            **_score(confirmation),
+            "decomposition": _decomposition(confirmation),
+        },
         "promotion_pass": False,
     }
     confirmation_score = report["confirmation"]

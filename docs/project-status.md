@@ -37,6 +37,13 @@ remain zero, and no player value changes. Phase 2 requires additional rolling-or
 PBP seasons to test level-specific reliability under a new frozen rule; do not infer a
 high-minors-only adjustment from already-seen outcomes.
 
+The rate decomposition explains the reversal. Rookie BIP contact is closer to its own
+future target, but it removes an error that was accidentally offsetting a much larger
+non-contact miss. The current bridge also mixes a 100-contact BIP prior with the
+800-BF aggregate pitcher prior under one global residual weight. Before any new BIP
+promotion attempt, reconcile those reliabilities from earlier repeatability and score
+the complete rate on additional unseen origins.
+
 ## Active product gate: explainable prospect rankings
 
 The first [top-50 ranking audit](prospect-top50-ranking-audit-checkpoint.md) is now
