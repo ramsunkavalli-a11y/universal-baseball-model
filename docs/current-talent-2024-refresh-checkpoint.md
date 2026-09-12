@@ -1,7 +1,7 @@
 # Current Talent 2024 refresh checkpoint
 
 Last updated: 2026-09-12  
-Status: **FOUR AFFILIATED LEVELS ACCEPTED; ROOKIE/COMPLEX AND MLB REMAIN.**
+Status: **FOUR AFFILIATED LEVELS AND MLB ACCEPTED; ROOKIE/COMPLEX REMAINS.**
 
 The validated game-evidence path now has accepted full-season 2024 outputs for
 Triple-A, Double-A, High-A and Single-A.
@@ -18,11 +18,14 @@ All four reports are accepted by the existing outcome, contact, identity, league
 accounting gates. The tiny Double-A +1 PA residual is within the already certified
 evidence contract and is not repaired synthetically.
 
+MLB 2024 is also accepted: 48,794 player-games, 2,429 observed games, 182,449 PA,
+177,696 core events, 49 unknown contacts and exact official outcome reconciliation.
+The independent MLB Performance reference contains 780 player-league rows and 24
+certified AL/NL bin values, with zero outcome mismatches.
+
 Rookie/complex is fail-closed on a separate identity residual after the exact weather
-and authority exclusions. MLB 2024 has not yet been materialized in this local refresh.
-Therefore a complete five-level-plus-MLB B2 snapshot is not claimed.
-
-The next broad step is MLB 2024 materialization. Rookie identity residuals should be
-audited as one bounded class in parallel with a later cycle; upper-level evidence does
-not need to be rebuilt.
-
+and authority exclusions. Therefore a complete five-level-plus-MLB B2 snapshot is not
+claimed. A partial supported snapshot now covers 2,609 hitters at MLB through Single-A.
+The next broad step is future talent development, not playing time. Rookie identity
+residuals should be audited as one bounded class later; accepted evidence does not need
+to be rebuilt.

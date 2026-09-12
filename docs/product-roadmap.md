@@ -174,13 +174,20 @@ top-50 players overlap the eligible FanGraphs top 50. The next P0 is the frozen
 confirmed hitter Current Talent B2, establish the matching pitcher state, then learn
 future skill distributions from chronological history without public FV/rank inputs.
 
-The 2024 present-talent refresh now passes the full evidence gate for AAA, AA, High-A
-and Single-A: 151,212 player-games, 620,714 PA and 604,553 core events. Seven exact
-source-only games are excluded under date/type fingerprints; rookie/complex remains
-fail-closed on a separate player identity residual. The 2025 topology is stable, but
-its reusable PBP release ends in May at every level, so 2025 remains disabled as a
-complete talent season. Next materialize MLB 2024, then assemble the confirmed B2
-snapshot for supported populations while keeping incomplete tiers explicit.
+The 2024 present-talent refresh now passes the full evidence gate for MLB, AAA, AA,
+High-A and Single-A. The accepted affiliated evidence contains 151,212 player-games,
+620,714 PA and 604,553 core events; the accepted MLB evidence contains 48,794
+player-games, 182,449 PA and 177,696 core events. Seven exact source-only games are
+excluded under date/type fingerprints; rookie/complex remains fail-closed on a separate
+player identity residual. The 2025 topology is stable, but its reusable PBP release ends
+in May at every level, so 2025 remains disabled as a complete talent season.
+
+A partial confirmed B2 snapshot now covers 2,609 hitters. Its present-batting output
+ranks only the 2,091 hitters with at least 100 effective events and leaves 518 unresolved.
+It excludes playing time, position, defense, aging, arrival, contracts, replacement and
+public FV. This is the fixed baseline for the next P0: learn one- and two-year future
+skill distributions from chronological history. Do not interpret present skill as
+future ceiling and do not resume opportunity work ahead of this talent test.
 
 The reusable search layer now records hashes for the complete candidate family and
 the exact outer cohort, enforces observable time origins and identical player rows,
