@@ -19,10 +19,11 @@ seasons stay in every expected-value score.
 ## What is accepted now
 
 - Six-year MLB arrival probability is separately validated.
-- Four-calendar-year partial batting/pitching outcomes beat population baselines in
-  four nonoverlapping historical folds.
-- Hitter conditional comparable quality is supported; pitcher comparable quality is
-  withheld. The separate peak-talent model remains the pitcher talent view.
+- A chronology-safe six-calendar-year partial-WAR model is now supported. Pitchers
+  pass all four historical folds. The hitter conditional blend passes a fresh 2017
+  confirmation after its weight was frozen on separate development folds.
+- Current outputs separate comparable MLB-arrival probability, partial batting or
+  pitching WAR conditional on arrival, and probability-weighted expected partial WAR.
 - Current MLB service and contract accounting is usable where exact source inputs
   exist.
 - A monotone workload-to-service-day challenger beats the old full-season shortcut
@@ -36,8 +37,9 @@ seasons stay in every expected-value score.
   against FanGraphs 2025 opening service. It cannot be the service truth by itself.
 - The older dependent career simulator's workload/performance path did not earn
   promotion and its one-active-season-equals-one-service-year rule is wrong.
-- A six-calendar-year comparable extension failed. Calendar years are not control
-  years.
+- The original six-calendar-year extension failed because it was not chronology safe.
+  It is superseded by the strict replay above. Calendar years still are not control
+  years, so this output cannot be called controlled WAR.
 
 ## Next gates
 
@@ -59,8 +61,9 @@ historical era, but fail the existing exact aggregate-bias guardrail in three. T
 effect is small, and broad historical non-steal advancement evidence is unavailable.
 Keep both running channels outside the Phase 1 foundation; revisit their materiality
 after the main talent, arrival and control-year structure is stable.
-4. Replay arrival, performance, workload and service jointly across strict historical
-   origins. Require proper distribution accuracy and expected-WAR squared error.
+4. Extend the validated six-calendar-year partial outcome into annual paths, then
+   replay workload and service jointly across strict historical origins. Require
+   proper distribution accuracy and expected-WAR squared error.
 5. Only after the path passes, apply versioned CBA rules, Super Two, minimum salary,
    arbitration, guarantees/options and discounting.
 6. Compare the resulting ordering with public top-50 lists as an audit. Never use

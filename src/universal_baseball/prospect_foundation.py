@@ -130,6 +130,8 @@ def build_prospect_foundation_payload(
     pitcher_comparables: pl.DataFrame | None = None,
     hitter_upside: pl.DataFrame | None = None,
     pitcher_upside: pl.DataFrame | None = None,
+    hitter_six_year_value: pl.DataFrame | None = None,
+    pitcher_six_year_value: pl.DataFrame | None = None,
     *,
     season: int,
 ) -> dict[str, Any]:
@@ -191,6 +193,20 @@ def build_prospect_foundation_payload(
             "player_id",
         ),
     }
+    six_year_lookup = {
+        "hitter": _row_lookup(
+            hitter_six_year_value
+            if hitter_six_year_value is not None
+            else pl.DataFrame(schema={"player_id": pl.Int64}),
+            "player_id",
+        ),
+        "pitcher": _row_lookup(
+            pitcher_six_year_value
+            if pitcher_six_year_value is not None
+            else pl.DataFrame(schema={"player_id": pl.Int64}),
+            "player_id",
+        ),
+    }
     players: list[dict[str, Any]] = []
     for arrival in arrivals.iter_rows(named=True):
         player_id = int(arrival["player_id"])
@@ -210,6 +226,7 @@ def build_prospect_foundation_payload(
         )
         comparable = comparable_lookup[player_type].get((player_id,), {})
         upside = upside_lookup[player_type].get((player_id,), {})
+        six_year = six_year_lookup[player_type].get((player_id,), {})
         conditional_rate_validated = (
             player_type == "hitter"
             and bool(comparable.get("historical_conditional_rate_supported"))
@@ -233,6 +250,20 @@ def build_prospect_foundation_payload(
             "modeled_six_year_arrival_probability": arrival.get(
                 "predicted_six_year_arrival_probability"
             ),
+            "comparable_six_year_arrival_probability": six_year.get(
+                "comparable_arrival_probability_6y"
+            ),
+            "conditional_partial_war_6y": six_year.get(
+                "conditional_partial_war_6y"
+            ),
+            "expected_partial_war_6y": six_year.get("expected_partial_war_6y"),
+            "six_year_historical_support": six_year.get(
+                "historical_conditional_arrival_support"
+            ),
+            "six_year_comparable_players": six_year.get(
+                "historical_comparable_players"
+            ),
+            "six_year_value_method": six_year.get("six_year_value_method"),
             "evidence": evidence,
             "current_raw_workload": sum(
                 int(level[current_workload_key]) for level in raw_levels
@@ -353,8 +384,8 @@ def build_prospect_foundation_payload(
             "player_count": len(players),
             "status": "foundation_only_fv_withdrawn",
             "warning": (
-                "Prospect FV, expected WAR and value are withdrawn until the complete "
-                "historical outcome model passes."
+                "Prospect FV, whole-player expected WAR and value remain withdrawn "
+                "until the complete outcome and control-year model passes."
             ),
             "output_contract": {
                 "raw_workload": "undiscounted official PA or BF",
@@ -364,10 +395,17 @@ def build_prospect_foundation_payload(
                     "and impact probabilities; comparable pitcher WAR rate remains withheld"
                 ),
                 "arrival": (
-                    "validated six-year arrival-model probability, shown separately "
-                    "from the historical four-year comparable share"
+                    "historical six-year comparable arrival probability, validated "
+                    "without using public prospect grades"
                 ),
-                "risk_adjusted_outcome": "all-player mean with non-arrivals retained as zero",
+                "conditional_outcome": (
+                    "six-year batting- or pitching-plus-replacement partial WAR among "
+                    "historical MLB arrivals"
+                ),
+                "risk_adjusted_outcome": (
+                    "arrival probability multiplied by conditional partial WAR; "
+                    "non-arrivals remain zero"
+                ),
             },
         },
         "players": players,

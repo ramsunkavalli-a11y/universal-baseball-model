@@ -174,7 +174,8 @@ def test_talent_value_explorer_withdraws_uncertified_fv() -> None:
     assert "Peak mean runs" in rendered
     assert "Above-average peak" in rendered
     assert "Raw PA/BF are never discounted" in rendered
-    assert "Expected 4-year partial WAR" in rendered
+    assert "6-year MLB chance" in rendered
+    assert "Expected partial WAR" in rendered
     assert "Translation confidence" in rendered
     assert "Public prospect ranks and FV are not model inputs" in rendered
 

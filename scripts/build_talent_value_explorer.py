@@ -17,6 +17,7 @@ from universal_baseball.prospect_foundation import (
 def _args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--as-of-date", default="2026-09-08")
+    parser.add_argument("--six-year-as-of-date", default="2026-09-13")
     parser.add_argument(
         "--output", type=Path,
         default=Path("reports/generated/talent-value-explorer/index.html"),
@@ -42,6 +43,7 @@ def main() -> int:
         / "pitcher-comparables.parquet"
     )
     upside = generated / "peak-talent-upside"
+    six_year = generated / "current-six-year-partial-value" / args.six_year_as_of_date
     required = (
         peak / "current_peak_hitters.parquet",
         peak / "current_peak_pitchers.parquet",
@@ -56,6 +58,8 @@ def main() -> int:
         pitcher_comparables,
         upside / "current_hitter_upside.parquet",
         upside / "current_pitcher_upside.parquet",
+        six_year / "hitter-six-year-partial-value.parquet",
+        six_year / "pitcher-six-year-partial-value.parquet",
     )
     if missing := [path for path in required if not path.exists()]:
         raise FileNotFoundError(
@@ -75,6 +79,8 @@ def main() -> int:
         pl.read_parquet(required[10]),
         pl.read_parquet(required[11]),
         pl.read_parquet(required[12]),
+        pl.read_parquet(required[13]),
+        pl.read_parquet(required[14]),
         season=int(dated[:4]),
     )
     write_prospect_foundation_explorer(

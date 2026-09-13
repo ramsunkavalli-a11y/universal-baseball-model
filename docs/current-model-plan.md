@@ -905,3 +905,20 @@ The old six-calendar-year comparable result was not chronology safe. A replaceme
 test is frozen in
 [the strict six-year contract](prospect-six-year-strict-confirmation-contract.md),
 using four nonoverlapping folds and removing every target from its own reference pool.
+
+The strict replay is complete. Pitcher expected six-year partial WAR passes all four
+historical folds. Hitters beat the population baseline on expected-WAR RMSE, arrival
+Brier/log loss and conditional RMSE in all four folds, but two folds narrowly miss the
+aggregate-bias rule because local comparable quality is too pessimistic. A hitter
+blend selected only on the exposed development folds uses local arrival probability
+and a conditional result of 40% local comparable quality plus 60% global arrived-player
+quality. Applied unchanged to the fresh 2017 cohort, it passes every frozen gate:
+expected-WAR RMSE is 1.733 versus 1.785, arrival Brier score is 0.096 versus 0.118,
+and conditional RMSE is 1.162 versus 1.281.
+
+Current hitter and pitcher results are now materialized as three separate fields:
+six-year MLB arrival probability, partial WAR conditional on arrival, and their
+product as expected partial WAR. The foundation explorer shows those fields and the
+historical support behind them. This retires the guessed 50-FV-to-3-WAR assumption.
+It does not restore FV: the result excludes defense, full baserunning, exact service
+timing, salary and years beyond the six-calendar-year window.

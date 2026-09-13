@@ -1,0 +1,47 @@
+{
+  "status": "prospect_six_year_hitter_blend_confirmation_scored",
+  "contract": "docs/prospect-six-year-hitter-blend-confirmation-contract.md",
+  "target_origin": 2017,
+  "reference_origins": [
+    2003,
+    2008
+  ],
+  "reference_players": 5127,
+  "target_players": 3312,
+  "local_conditional_weight": 0.4,
+  "global_conditional_weight": 0.6,
+  "global_conditional_war": 1.9577376961761592,
+  "blended_expected_war": {
+    "bias": -0.04079388610398303,
+    "mae": 0.44534886727244727,
+    "rmse": 1.732806007052249
+  },
+  "population_baseline": {
+    "bias": 0.03131898868543294,
+    "mae": 0.5452881993376869,
+    "rmse": 1.7852594579731118
+  },
+  "arrival": {
+    "candidate": {
+      "brier": 0.09632687868907676,
+      "log_loss": 0.32558357058475446
+    },
+    "baseline": {
+      "brier": 0.11808586373758603,
+      "log_loss": 0.3991413060319404
+    }
+  },
+  "supported_conditional_rate": {
+    "eligible_targets": 1927,
+    "arrivals": 419,
+    "minimum_neighbor_arrivals": 10,
+    "regression_exposure": 200,
+    "population_baseline_mae": 1.0204532104470034,
+    "historical_comparables_mae": 0.9036984366638263,
+    "population_baseline_rmse": 1.2814259558868386,
+    "historical_comparables_rmse": 1.1623295499986783
+  },
+  "passed": true,
+  "decision": "promote_hitter_six_year_mean",
+  "outside_fv_used": false
+}

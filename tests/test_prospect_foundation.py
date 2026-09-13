@@ -84,6 +84,15 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
             "peak_above_average_probability": [0.22],
             "peak_impact_probability": [0.08],
         }),
+        hitter_six_year_value=pl.DataFrame({
+            "player_id": [7],
+            "comparable_arrival_probability_6y": [0.2],
+            "conditional_partial_war_6y": [2.5],
+            "expected_partial_war_6y": [0.5],
+            "historical_conditional_arrival_support": [31],
+            "historical_comparable_players": [155],
+            "six_year_value_method": ["validated_test_method"],
+        }),
         season=2026,
     )
     player = payload["players"][0]
@@ -104,6 +113,10 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
     assert player["outcome_status"] == "historical_outcome_available"
     assert player["historical_conditional_rate_validated"] is True
     assert player["modeled_six_year_arrival_probability"] == 0.31
+    assert player["comparable_six_year_arrival_probability"] == 0.2
+    assert player["conditional_partial_war_6y"] == 2.5
+    assert player["expected_partial_war_6y"] == 0.5
+    assert player["six_year_historical_support"] == 31
     assert player["peak_runs_rate"] is None
     assert player["peak_above_average_probability"] is None
 

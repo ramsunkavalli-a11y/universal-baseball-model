@@ -1,0 +1,53 @@
+{
+  "status": "current_six_year_partial_value_materialized",
+  "as_of_date": "2026-09-13",
+  "reference_origins": [
+    2003,
+    2008,
+    2013,
+    2016,
+    2018
+  ],
+  "reference_outcomes_end_by": 2024,
+  "summaries": {
+    "hitter": {
+      "players": 2871,
+      "mean_comparable_arrival_probability": 0.16192964123998607,
+      "mean_expected_partial_war": 0.339222052581814,
+      "maximum_expected_partial_war": 2.7124488902866895
+    },
+    "pitcher": {
+      "players": 4117,
+      "mean_comparable_arrival_probability": 0.13554691927779125,
+      "mean_expected_partial_war": 0.1635111414303647,
+      "maximum_expected_partial_war": 1.576846970337199
+    }
+  },
+  "storage": {
+    "hitter": {
+      "table_name": "current_hitter_six_year_partial_value",
+      "canonical_schema_version": "0.1",
+      "path": "reports\\generated\\current-six-year-partial-value\\2026-09-13\\hitter-six-year-partial-value.parquet",
+      "row_count": 2871,
+      "file_size_bytes": 78690,
+      "file_sha256": "5a31ab7f4d714cc2ce37d96d8185e55aeb3f732945de3a7c1f5bef78bf22903b",
+      "schema_sha256": "4d68100bb547a6467359b7856dc8b7c5a721d28ac95dc356fcd8b669e4f90209"
+    },
+    "pitcher": {
+      "table_name": "current_pitcher_six_year_partial_value",
+      "canonical_schema_version": "0.1",
+      "path": "reports\\generated\\current-six-year-partial-value\\2026-09-13\\pitcher-six-year-partial-value.parquet",
+      "row_count": 4117,
+      "file_size_bytes": 108689,
+      "file_sha256": "9d1f683bdfb9c75688eb04c7419746ba6df7062080e0f1a65fdab1ff122bf7df",
+      "schema_sha256": "4d68100bb547a6467359b7856dc8b7c5a721d28ac95dc356fcd8b669e4f90209"
+    }
+  },
+  "boundaries": {
+    "whole_player_war": false,
+    "full_control_horizon": false,
+    "salary_or_dollars": false,
+    "fv_assigned": false,
+    "outside_fv_used": false
+  }
+}
