@@ -52,6 +52,12 @@ The explorer shows raw current and three-year workload. Its former effective-evi
 number is retained only as a plainly labeled translation-confidence diagnostic. It
 cannot suppress a player or erase historical outcomes.
 
+The all-player outcome is now a distribution rather than only a mean: P10, median,
+P90 and the historical probabilities of reaching 1, 3 and 6 partial WAR are retained
+from the same neighbor set, with non-arrivals still zero. These are four-calendar-year
+batting/pitching-plus-replacement outcomes, not whole-player or controlled WAR. They
+are foundation inputs for later calibration, not FV cutoffs.
+
 The fixed-neighbor sensitivity has been run at 25, 50, 100, 150 and 250 neighbors.
 No count dominates all held-out objectives. For hitters, smaller neighborhoods help
 the all-player outcome while larger neighborhoods help conditional-rate stability;

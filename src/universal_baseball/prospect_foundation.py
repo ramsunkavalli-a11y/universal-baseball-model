@@ -269,11 +269,35 @@ def build_prospect_foundation_payload(
             "historical_component_war_4y": comparable.get(
                 "historical_component_war_4y"
             ),
+            "historical_component_war_4y_p10": comparable.get(
+                "historical_component_war_4y_p10"
+            ),
+            "historical_component_war_4y_median": comparable.get(
+                "historical_component_war_4y_median"
+            ),
+            "historical_component_war_4y_p90": comparable.get(
+                "historical_component_war_4y_p90"
+            ),
+            "historical_conditional_component_war_4y_p10": comparable.get(
+                "historical_conditional_component_war_4y_p10"
+            ),
+            "historical_conditional_component_war_4y_median": comparable.get(
+                "historical_conditional_component_war_4y_median"
+            ),
+            "historical_conditional_component_war_4y_p90": comparable.get(
+                "historical_conditional_component_war_4y_p90"
+            ),
             "historical_positive_component_war_4y": comparable.get(
                 "historical_positive_component_war_4y"
             ),
             "historical_impact_rate_4y": comparable.get(
                 "historical_impact_rate_4y"
+            ),
+            "historical_three_war_rate_4y": comparable.get(
+                "historical_three_war_rate_4y"
+            ),
+            "historical_six_war_rate_4y": comparable.get(
+                "historical_six_war_rate_4y"
             ),
             "historical_expectation_identity_error": comparable.get(
                 "historical_expectation_identity_error"
@@ -305,7 +329,7 @@ def build_prospect_foundation_payload(
                 "raw_workload": "undiscounted official PA or BF",
                 "translation_confidence": "separate diagnostic; never an eligibility cutoff",
                 "conditional_talent": (
-                    "MLB batting-component WAR rate among arrivals; pitcher rate withheld "
+                    "MLB batting-plus-replacement WAR rate among supported arrivals; pitcher rate withheld "
                     "after failing held-out validation"
                 ),
                 "arrival": "historical share reaching MLB within four years",

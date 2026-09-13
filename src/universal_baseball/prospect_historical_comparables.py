@@ -165,6 +165,7 @@ def _score_comparables(
             neighbor_arrived = neighbor_workload > 0
             arrival_rate = float(neighbor_arrived.mean())
             conditional_war = float(neighbor_outcome[neighbor_arrived].mean()) if neighbor_arrived.any() else 0.0
+            conditional_outcome = neighbor_outcome[neighbor_arrived]
             conditional_rates = reference_group[
                 "later_component_war_rate_regressed"
             ].to_numpy().astype(float)[neighbor_index][neighbor_arrived]
@@ -205,15 +206,45 @@ def _score_comparables(
                 "historical_conditional_prior_players": conditional_prior_players,
                 "historical_conditional_component_war_4y": conditional_war,
                 "historical_component_war_4y": float(neighbor_outcome.mean()),
+                "historical_component_war_4y_p10": float(
+                    np.quantile(neighbor_outcome, 0.10)
+                ),
+                "historical_component_war_4y_median": float(
+                    np.quantile(neighbor_outcome, 0.50)
+                ),
+                "historical_component_war_4y_p90": float(
+                    np.quantile(neighbor_outcome, 0.90)
+                ),
+                "historical_conditional_component_war_4y_p10": (
+                    float(np.quantile(conditional_outcome, 0.10))
+                    if len(conditional_outcome)
+                    else None
+                ),
+                "historical_conditional_component_war_4y_median": (
+                    float(np.quantile(conditional_outcome, 0.50))
+                    if len(conditional_outcome)
+                    else None
+                ),
+                "historical_conditional_component_war_4y_p90": (
+                    float(np.quantile(conditional_outcome, 0.90))
+                    if len(conditional_outcome)
+                    else None
+                ),
                 "historical_positive_component_war_4y": float(
                     np.maximum(neighbor_outcome, 0.0).mean()
                 ),
                 "historical_impact_rate_4y": float((neighbor_outcome >= 1.0).mean()),
+                "historical_three_war_rate_4y": float(
+                    (neighbor_outcome >= 3.0).mean()
+                ),
+                "historical_six_war_rate_4y": float(
+                    (neighbor_outcome >= 6.0).mean()
+                ),
                 "historical_expectation_identity_error": abs(
                     float(neighbor_outcome.mean()) - arrival_rate * conditional_war
                 ),
             })
-    return pl.DataFrame(rows).sort("player_id")
+    return pl.DataFrame(rows, infer_schema_length=None).sort("player_id")
 
 
 def score_hitter_comparables(

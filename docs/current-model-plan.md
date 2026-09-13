@@ -811,3 +811,14 @@ baseline in both 2019 selection and 2021 confirmation. A direct shrinkage coeffi
 was rejected because its direction was not stable across those folds. Pitcher
 conditional quality remains withheld. Historical reference snapshots are deduplicated
 by player before current scoring.
+
+The first outside-only [top-50 audit](prospect-separated-outcome-top50-audit.md) now
+matches 42 current pre-MLB players; the other eight are MLB graduates or have prior
+MLB experience. Thirty-one are broad agreements, eight partial agreements and three
+are model-lower review cases. Willits is a broad agreement and Gonzalez a partial
+agreement. These labels only prioritize structural review and cannot fit the model.
+
+Historical neighbor outcomes now retain P10, median, P90 and 1/3/6-WAR frequencies.
+This replaces guessed point conversions with an empirical risk distribution. The
+horizon remains four calendar years and the scope excludes defense, baserunning and
+position, so it is not yet controlled WAR and cannot authorize FV.
