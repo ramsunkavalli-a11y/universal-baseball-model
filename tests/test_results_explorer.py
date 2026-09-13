@@ -171,11 +171,11 @@ def test_talent_value_explorer_withdraws_uncertified_fv() -> None:
     assert "__EXPLORER_DATA__" not in rendered
     assert "<\\/script><script>alert(1)<\\/script>" in rendered
     assert "Prospect FV and value are withdrawn" in rendered
-    assert "Peak mean runs" in rendered
-    assert "Above-average peak" in rendered
-    assert "Raw PA/BF are never discounted" in rendered
-    assert "6-year MLB chance" in rendered
-    assert "Expected partial WAR" in rendered
+    assert "2026-2031 Prospect Projection" in rendered
+    assert "Sort by Expected Partial WAR" in rendered
+    assert "MLB chance" in rendered
+    assert "Expected Partial WAR" in rendered
+    assert "Overall projection" in rendered
     assert "Translation confidence" in rendered
     assert "Public prospect ranks and FV are not model inputs" in rendered
 
