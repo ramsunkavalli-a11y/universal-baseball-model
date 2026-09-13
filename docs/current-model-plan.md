@@ -705,3 +705,11 @@ beside hitter results, but keep both outside the peak offense rank. The prior pr
 positional-run conversion worsened RMSE and MAE on its outer cohort, so neither catcher
 nor shortstop receives a hidden value bonus. Revisit position only with a new validated
 peak-value target.
+
+The first pitcher-structure challenger is complete. Origin starter share, level-specific
+component effects and their combination failed later equal-player peak validation. Do
+not add a starter talent bonus or a KATOH-shaped level interaction. The existing arrival
+and role models already carry those separate questions. For peak pitcher talent, move
+to genuinely new process evidence: first pitch-call summaries where official sequences
+are physical, then velocity/movement only where tracking exists. See
+`docs/peak-pitcher-structure-result.md`.
