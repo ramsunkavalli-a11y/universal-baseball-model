@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
-"""Build the separate prospect talent-versus-value explorer."""
+"""Build the safe prospect-talent foundation explorer."""
 
 from __future__ import annotations
 
 import argparse
 from pathlib import Path
 
-from build_results_explorer import (
-    PHASE2_ROOT,
-    audit_phase2_checkpoint,
-    phase2_model_details,
+import polars as pl
+
+from universal_baseball.prospect_foundation import (
+    build_prospect_foundation_payload,
+    write_prospect_foundation_explorer,
 )
-from universal_baseball.results_explorer import write_talent_value_explorer
 
 
 def _args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--as-of-date", default=None)
+    parser.add_argument("--as-of-date", default="2026-09-08")
     parser.add_argument(
-        "--output",
-        type=Path,
+        "--output", type=Path,
         default=Path("reports/generated/talent-value-explorer/index.html"),
     )
     return parser.parse_args()
@@ -27,28 +26,47 @@ def _args() -> argparse.Namespace:
 
 def main() -> int:
     args = _args()
-    dates = {child.name for child in PHASE2_ROOT.iterdir() if child.is_dir()}
-    if not dates:
-        raise FileNotFoundError("No Phase 2 value checkpoint was found")
-    as_of_date = args.as_of_date or max(dates)
-    dated = PHASE2_ROOT / as_of_date
-    value_path = dated / "value-records.parquet"
-    annual_path = dated / "annual-contract-economics.parquet"
-    names_path = (
-        Path("reports/generated/league-control") / as_of_date
-        / "league-control-snapshot.parquet"
+    dated = args.as_of_date
+    generated = Path("reports/generated")
+    peak = generated / "current-peak-talent" / dated / "tables"
+    future = generated / "current-future-talent" / dated / "tables"
+    arrival = generated / "phase2-prospect-arrival" / dated
+    control = generated / "league-control" / dated / "league-control-snapshot.parquet"
+    raw = generated / "affiliated-skill-source" / "tables"
+    required = (
+        peak / "current_peak_hitters.parquet",
+        peak / "current_peak_pitchers.parquet",
+        future / "current_future_hitters.parquet",
+        future / "current_future_pitchers.parquet",
+        arrival / "hitter-arrival-probabilities.parquet",
+        arrival / "pitcher-arrival-probabilities.parquet",
+        control,
+        raw / "affiliated_hitting_components.parquet",
+        raw / "affiliated_pitching_components.parquet",
     )
-    audit_phase2_checkpoint(as_of_date, value_path, annual_path)
-    payload = write_talent_value_explorer(
-        value_path,
-        annual_path,
-        names_path,
+    if missing := [path for path in required if not path.exists()]:
+        raise FileNotFoundError(
+            "Missing foundation inputs:\n" + "\n".join(map(str, missing))
+        )
+    payload = build_prospect_foundation_payload(
+        pl.read_parquet(required[0]),
+        pl.read_parquet(required[1]),
+        pl.read_parquet(required[2]),
+        pl.read_parquet(required[3]),
+        pl.read_parquet(required[4]),
+        pl.read_parquet(required[5]),
+        pl.read_parquet(required[6]),
+        pl.read_parquet(required[7]),
+        pl.read_parquet(required[8]),
+        season=int(dated[:4]),
+    )
+    write_prospect_foundation_explorer(
+        payload,
+        Path("src/universal_baseball/talent_value_explorer.html"),
         args.output,
-        model_details=phase2_model_details(as_of_date),
     )
-    prospects = sum(player["is_pre_mlb_value"] for player in payload["players"])
-    print(f"Talent-value explorer created: {args.output.resolve()}")
-    print(f"Prospects: {prospects:,}")
+    print(f"Prospect foundation explorer created: {args.output.resolve()}")
+    print(f"Player/type rows: {payload['meta']['player_count']:,} | FV withdrawn")
     return 0
 
 

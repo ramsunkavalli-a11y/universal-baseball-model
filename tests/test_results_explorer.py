@@ -128,6 +128,10 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
     assert nested["players"][0]["research_mean_value"] == 12_000_000.0
     assert nested["players"][0]["research_value_median"] == 4_000_000.0
     assert nested["players"][0]["conditional_career_war_if_arrived"] == 7.0
+    assert nested["players"][0]["war"] is None
+    assert nested["players"][0]["value"] is None
+    assert nested["players"][0]["coverage"] == "prospect_model_withdrawn"
+    assert nested["players"][0]["status"] == "review"
     assert nested["players"][0]["model_fv_label"] is None
     assert nested["players"][0]["skill_evidence_tier"] == "affiliated_translated"
     assert nested["players"][0]["primary_evidence_level"] == "AA"
@@ -156,7 +160,7 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert "does not set the rank or main value" in rendered
 
 
-def test_talent_value_explorer_treats_fv_as_risk_adjusted() -> None:
+def test_talent_value_explorer_withdraws_uncertified_fv() -> None:
     payload = {
         "meta": {"checkpoint": "test"},
         "players": [{"name": "</script><script>alert(1)</script>"}],
@@ -166,11 +170,11 @@ def test_talent_value_explorer_treats_fv_as_risk_adjusted() -> None:
 
     assert "__EXPLORER_DATA__" not in rendered
     assert "<\\/script><script>alert(1)<\\/script>" in rendered
-    assert "FV already includes risk" in rendered
-    assert "Model FV" in rendered
-    assert "Expected controlled WAR" in rendered
-    assert "Conditional MLB performance" in rendered
-    assert "Publication FV and rankings are not inputs" in rendered
+    assert "Prospect FV and value are withdrawn" in rendered
+    assert "Present runs" in rendered
+    assert "1-year runs" in rendered
+    assert "Peak runs" in rendered
+    assert "Public prospect ranks and FV are not model inputs" in rendered
 
 
 def test_latest_common_date_uses_only_complete_checkpoints(tmp_path) -> None:

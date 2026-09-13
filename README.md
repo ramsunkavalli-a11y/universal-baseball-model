@@ -156,11 +156,12 @@ published. Rebuild it directly with:
 python scripts/build_results_explorer.py
 ```
 
-For the prospect-only FV and valuation view, double-click
-`play-with-talent-value.cmd`. This separate page treats FV as a risk-adjusted future
-value grade and keeps the conditional MLB path visible only as a diagnostic. It also
-shows whether a listed level is supported by most of the player's actual workload.
-Build it directly with `python scripts/build_talent_value_explorer.py`.
+For the prospect talent-foundation view, double-click
+`play-with-talent-value.cmd`. Prospect FV, WAR and value are temporarily withdrawn:
+the prior assembly used a rejected conditional-WAR baseline. The replacement page
+shows raw level performance, translated present skill, validated one- and two-year
+rates, supported peak talent, evidence and the workload-supported level. Build it
+directly with `python scripts/build_talent_value_explorer.py`.
 
 The builder automatically uses the newest dated checkpoint that has value, annual and
 player-name files, so the same launcher will follow later complete builds.

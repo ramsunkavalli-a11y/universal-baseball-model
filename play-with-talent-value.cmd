@@ -9,7 +9,7 @@ if not exist ".venv\Scripts\python.exe" (
 ".venv\Scripts\python.exe" "scripts\build_talent_value_explorer.py"
 if errorlevel 1 (
   echo.
-  echo The talent and value viewer could not be created.
+  echo The prospect talent foundation viewer could not be created.
   pause
   exit /b 1
 )

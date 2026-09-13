@@ -757,3 +757,25 @@ bridge -> established-hitter probability bridge -> Phase 2 WAR uncertainty -> Mo
 FV/nested career/current value -> results explorer. The uncertainty materializer must
 receive `phase2-conditional-war-paths` explicitly; its legacy default is not the
 private-preview source.
+
+## Foundation reset — 2026-09-12
+
+The prospect FV and value output is withdrawn. The existing end-to-end assembly is
+not a valid prospect model even though its component identities reconcile. Do not use
+`phase2_production_outcome_model_fv_v4_direct_role_cap` for prospect grading.
+
+Rebuild in this order:
+
+1. start from the validated present and peak component outputs;
+2. estimate sparse-player priors from comparable age/level cohorts, retaining players
+   who never reach MLB;
+3. model annual development, attrition and position retention instead of repeating a
+   two-year probability or freezing a listed position;
+4. score later MLB production with every original player retained as a zero when
+   appropriate;
+5. require calibration, top-tail lift, age/level subgroup stability and named-rule
+   negative controls before mapping outcomes to FV;
+6. join outside rankings only after the model is frozen for disagreement review.
+
+Until that gate passes, the playable prospect page is a foundation evidence viewer,
+not a ranking or valuation product.

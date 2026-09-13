@@ -142,8 +142,7 @@ def build_explorer_payload(
         value_method = row.get("value_method") or "phase1_integrated_value"
         is_pre_mlb_value = value_method.endswith("pre_mlb_benchmark_value")
         detail = detail_lookup.get(player_id, {})
-        players.append(
-            {
+        player = {
                 "id": player_id,
                 "name": name_lookup.get(player_id, f"MLBAM {player_id}"),
                 "organization_id": organization_id,
@@ -261,7 +260,29 @@ def build_explorer_payload(
                 "is_pre_mlb_value": is_pre_mlb_value,
                 "years": [] if is_pre_mlb_value else annual_lookup.get(player_id, []),
             }
-        )
+        if is_pre_mlb_value:
+            player.update({
+                "status": "review",
+                "coverage": "prospect_model_withdrawn",
+                "war": None,
+                "projection_war": None,
+                "war_low": None,
+                "war_high": None,
+                "cost": None,
+                "value": None,
+                "value_low": None,
+                "value_high": None,
+                "value_review_reason": (
+                    "Prospect FV, WAR and value are withdrawn pending a complete "
+                    "historical outcome validation."
+                ),
+                "model_fv": None,
+                "model_fv_granular": None,
+                "model_fv_label": None,
+                "talent_value": None,
+                "star_probability": None,
+            })
+        players.append(player)
     players.sort(
         key=lambda player: (
             player["value"] is not None,
@@ -280,19 +301,25 @@ def build_explorer_payload(
             "checkpoint": values.item(0, "checkpoint_id") if values.height else "",
             "as_of": _json_value(as_of),
             "player_count": values.height,
-            "available_count": values.filter(
-                pl.col("calculation_status") == "available"
-            ).height,
-            "review_count": values.filter(pl.col("calculation_status") != "available").height,
-            "total_war": values.get_column("expected_remaining_war").sum(),
-            "total_value": values.get_column("transferable_value_dollars").sum(),
+            "available_count": sum(
+                player["status"] == "available" for player in players
+            ),
+            "review_count": sum(
+                player["status"] != "available" for player in players
+            ),
+            "total_war": sum(
+                float(player["war"]) for player in players
+                if player["war"] is not None
+            ),
+            "total_value": sum(
+                float(player["value"]) for player in players
+                if player["value"] is not None
+            ),
             "phase": "Phase 2 preview" if phase2 else "Phase 1",
             "warning": (
                 "Private Phase 2 preview. MLB values use corrected market-tier and "
-                "sequential-decision and workload logic. Pre-MLB pitcher rankings "
-                "remain provisional because aggregate features did not validate "
-                "conditional MLB quality. Model FV comes only from our projections; "
-                "publication player grades are validation only."
+                "sequential-decision and workload logic. Prospect FV, WAR and value "
+                "are withdrawn pending complete historical outcome validation."
                 if phase2
                 else "Research view only. Values use Phase 1 assumptions, uncalibrated "
                 "reference ranges and current CBA planning rules."

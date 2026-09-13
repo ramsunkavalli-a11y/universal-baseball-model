@@ -1367,3 +1367,22 @@ contact totals.
   modeled level progression. Yoxander Benitez displays as 30 and carries three DSL
   seasons with zero progression. Toran O'Harran displays as 20; his conditional path
   is hidden as ungraded because it is based on zero individual performance evidence.
+
+### 2026-09-12 foundation reset
+
+- The prospect FV/value explorer above is withdrawn. Reducing false 65 grades exposed
+  but did not repair the underlying assembly: it still connected a Phase 1 conditional
+  WAR baseline explicitly marked `not_publishable_baseline` to prospect FV.
+- Fernando Gonzalez proved the failure. His 168-PA Single-A line is
+  .232/.357/.304, his one-year MLB-equivalent batting projection is -26.7 runs per
+  600 PA, and his peak estimate is outside the supported age range. The old chain
+  nevertheless produced value by pulling him toward an MLB-average prior, repeating
+  one two-year arrival chance across six years, and granting fixed catcher and
+  replacement runs.
+- `play-with-talent-value.cmd` now opens a foundation-only evidence explorer. It shows
+  raw level lines, present, one-year, two-year and supported peak rates. FV, expected
+  WAR, position value and dollars are null until a complete historical outcome model
+  passes.
+- P0 is an end-to-end historical prospect outcome model. It must use comparable
+  age/level priors, include non-arrivals, learn yearly development and position
+  retention, and pass negative-control and top-tail tests before FV is restored.
