@@ -1,0 +1,59 @@
+{
+  "status": "prospect_cumulative_service_mapping_audited",
+  "label": "fangraphs_2025_opening_service_balance",
+  "players": 547,
+  "mapping_training_seasons": [
+    2022,
+    2023
+  ],
+  "raw_cumulative_service": {
+    "active_season_shortcut": {
+      "bias_days": 198.85557586837294,
+      "mae_days": 215.06032906764167,
+      "rmse_days": 270.09896622151393
+    },
+    "workload_mapping": {
+      "bias_days": -42.32732296736308,
+      "mae_days": 99.18178572589832,
+      "rmse_days": 136.827801621691
+    }
+  },
+  "six_year_control_cap": {
+    "active_season_shortcut": {
+      "bias_days": 92.13711151736746,
+      "mae_days": 97.23400365630712,
+      "rmse_days": 177.10226442881392
+    },
+    "workload_mapping": {
+      "bias_days": -11.736751504039937,
+      "mae_days": 47.80537789806857,
+      "rmse_days": 89.98962314166359
+    }
+  },
+  "control_exhaustion": {
+    "active_season_shortcut": {
+      "players": 547,
+      "actual_exhausted": 305,
+      "predicted_exhausted": 465,
+      "accuracy": 0.70018281535649,
+      "precision": 0.6516129032258065,
+      "recall": 0.9934426229508196
+    },
+    "workload_mapping": {
+      "players": 547,
+      "actual_exhausted": 305,
+      "predicted_exhausted": 278,
+      "accuracy": 0.9250457038391224,
+      "precision": 0.9748201438848921,
+      "recall": 0.8885245901639345
+    }
+  },
+  "decision": "diagnostic_only_pending_missing_zero_workload_state",
+  "boundaries": {
+    "zero_workload_service_days_forced_zero": true,
+    "injured_list_state_inferred": false,
+    "outside_fv_used": false,
+    "survivorship_selection_remains": true,
+    "salary_or_value_assigned": false
+  }
+}

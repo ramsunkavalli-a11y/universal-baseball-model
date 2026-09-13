@@ -892,3 +892,16 @@ forward test. First-year MAE falls from 102.3 to 22.4 days in 2023 and from 106.
 21.6 in 2024; returning-player MAE falls from 35.2 to 27.5 days in 2024. Retain this
 mapping for a complete joint-path replay, but do not promote it yet because players
 missing the next opening snapshot are unlabeled and create survivorship selection.
+
+The first cumulative endpoint replay materially improves on the rejected shortcut.
+Against 547 exact FanGraphs 2025 opening balances, raw cumulative MAE falls from 215.1
+to 99.2 days and six-year-capped MAE falls from 97.2 to 47.8 days. Control-exhaustion
+accuracy improves from 70.0% to 92.5%. The remaining mean error is a 42-day undercount
+because zero-workload seasons are conservatively assigned zero service; incomplete
+historical injured-list state is not inferred. Keep this as the Phase 1 service
+baseline and expose its uncertainty.
+
+The old six-calendar-year comparable result was not chronology safe. A replacement
+test is frozen in
+[the strict six-year contract](prospect-six-year-strict-confirmation-contract.md),
+using four nonoverlapping folds and removing every target from its own reference pool.
