@@ -10,6 +10,8 @@ from typing import Any
 
 import polars as pl
 
+from universal_baseball.prospect_value import display_fv_label
+
 
 MLB_ORGANIZATIONS = {
     108: "Angels",
@@ -173,10 +175,25 @@ def build_explorer_payload(
                 "value_review_reason": row.get("value_review_reason"),
                 "model_fv": row.get("model_fv_display"),
                 "model_fv_granular": row.get("model_fv_granular"),
-                "talent_fv": detail.get("talent_fv_display"),
-                "talent_fv_granular": detail.get("talent_fv_granular"),
+                "model_fv_label": (
+                    None
+                    if row.get("model_fv_granular") is None
+                    else display_fv_label(float(row["model_fv_granular"]))
+                ),
                 "conditional_career_war_if_arrived": detail.get(
                     "conditional_career_war_if_arrived"
+                ),
+                "skill_evidence_tier": detail.get("skill_evidence_tier"),
+                "effective_skill_evidence": detail.get("effective_skill_evidence"),
+                "skill_reliability": detail.get("skill_reliability"),
+                "listed_level": detail.get("level_tier"),
+                "primary_evidence_level": detail.get("primary_level_tier"),
+                "primary_level_workload_share": detail.get(
+                    "primary_level_workload_share"
+                ),
+                "level_progression": detail.get("level_progression"),
+                "development_history_seasons": detail.get(
+                    "development_history_seasons"
                 ),
                 "model_role": row.get("model_role"),
                 "model_player_type": row.get("model_player_type"),

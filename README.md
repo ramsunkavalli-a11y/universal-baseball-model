@@ -156,11 +156,11 @@ published. Rebuild it directly with:
 python scripts/build_results_explorer.py
 ```
 
-For the prospect-only talent and valuation view, double-click
-`play-with-talent-value.cmd`. This separate page keeps conditional Talent FV apart
-from risk-adjusted controlled WAR and surplus value. A 50 Talent FV therefore stays
-visible as 50 even when arrival, role, and career risk reduce its expected WAR. Build
-it directly with `python scripts/build_talent_value_explorer.py`.
+For the prospect-only FV and valuation view, double-click
+`play-with-talent-value.cmd`. This separate page treats FV as a risk-adjusted future
+value grade and keeps the conditional MLB path visible only as a diagnostic. It also
+shows whether a listed level is supported by most of the player's actual workload.
+Build it directly with `python scripts/build_talent_value_explorer.py`.
 
 The builder automatically uses the newest dated checkpoint that has value, annual and
 player-name files, so the same launcher will follow later complete builds.

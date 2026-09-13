@@ -5,8 +5,16 @@ from universal_baseball.prospect_value import (
     benchmark_value_from_model_fv,
     display_fv,
     model_fv_from_expected_war,
+    display_fv_label,
     parse_fangraphs_top100_html,
 )
+
+
+def test_display_fv_label_preserves_published_plus_tiers() -> None:
+    assert display_fv_label(42.89) == "40+"
+    assert display_fv_label(47.6) == "45+"
+    assert display_fv_label(49.0) == "50"
+    assert display_fv_label(28.7) == "30"
 
 
 def _top100_html() -> str:

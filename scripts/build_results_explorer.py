@@ -16,7 +16,6 @@ from universal_baseball.projection_lineage import (
     validate_recorded_opportunity_source,
 )
 from universal_baseball.prospect_arrival import ARRIVAL_MODEL_ID
-from universal_baseball.prospect_value import display_fv, model_fv_from_expected_war
 from universal_baseball.results_explorer import write_explorer
 
 
@@ -113,20 +112,6 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
         .then(pl.col("pitcher_six_control_year_war_if_arrived"))
         .otherwise(pl.col("hitter_six_control_year_war_if_arrived"))
         .alias("conditional_career_war_if_arrived")
-    ).with_columns(
-        pl.struct("conditional_career_war_if_arrived", "model_player_type")
-        .map_elements(
-            lambda row: model_fv_from_expected_war(
-                float(row["conditional_career_war_if_arrived"] or 0.0),
-                str(row["model_player_type"]),
-            ),
-            return_dtype=pl.Float64,
-        )
-        .alias("talent_fv_granular")
-    ).with_columns(
-        pl.col("talent_fv_granular")
-        .map_elements(display_fv, return_dtype=pl.Int64)
-        .alias("talent_fv_display")
     ).drop(
         "hitter_six_control_year_war_if_arrived",
         "pitcher_six_control_year_war_if_arrived",
@@ -140,6 +125,9 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
         pl.col("baserunning_runs_per_600").mean(),
         pl.col("defense_runs_per_600").mean(),
         pl.col("positional_runs_per_600").mean(),
+        pl.col("evidence_tier").first().alias("skill_evidence_tier"),
+        pl.col("weighted_history_pa").first().alias("effective_skill_evidence"),
+        pl.col("reliability").first().alias("skill_reliability"),
     )
     pitcher = pl.read_parquet(
         path_root / "pitcher_expected_war_paths.parquet"
@@ -147,6 +135,9 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
         pl.col("conditional_war_per_800_bf").mean().alias("conditional_war_rate"),
         pl.lit("WAR per 800 BF").alias("conditional_war_rate_unit"),
         pl.col("pitching_runs_above_average_per_800").mean(),
+        pl.col("evidence_tier").first().alias("skill_evidence_tier"),
+        pl.col("weighted_history_bf").first().alias("effective_skill_evidence"),
+        pl.col("reliability").first().alias("skill_reliability"),
     )
     details = nested.join(hitter, on="player_id", how="left", validate="1:1").join(
         pitcher,
@@ -163,7 +154,47 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
         .then(pl.col("conditional_war_rate_unit_pitcher"))
         .otherwise(pl.col("conditional_war_rate_unit"))
         .alias("conditional_war_rate_unit"),
+        pl.when(pl.col("model_player_type") == "pitcher")
+        .then(pl.col("skill_evidence_tier_pitcher"))
+        .otherwise(pl.col("skill_evidence_tier"))
+        .alias("skill_evidence_tier"),
+        pl.when(pl.col("model_player_type") == "pitcher")
+        .then(pl.col("effective_skill_evidence_pitcher"))
+        .otherwise(pl.col("effective_skill_evidence"))
+        .alias("effective_skill_evidence"),
+        pl.when(pl.col("model_player_type") == "pitcher")
+        .then(pl.col("skill_reliability_pitcher"))
+        .otherwise(pl.col("skill_reliability"))
+        .alias("skill_reliability"),
     ).drop("conditional_war_rate_pitcher", "conditional_war_rate_unit_pitcher")
+    details = details.drop(
+        "skill_evidence_tier_pitcher",
+        "effective_skill_evidence_pitcher",
+        "skill_reliability_pitcher",
+    )
+    arrival_root = generated / "phase2-prospect-arrival" / as_of_date
+    arrival = pl.concat(
+        [
+            pl.read_parquet(arrival_root / f"{player_type}-arrival-probabilities.parquet")
+            .select(
+                "player_id",
+                pl.lit(player_type).alias("model_player_type"),
+                "level_tier",
+                "primary_level_tier",
+                "primary_level_workload_share",
+                "level_progression",
+                "development_history_seasons",
+            )
+            for player_type in ("hitter", "pitcher")
+        ],
+        how="vertical_relaxed",
+    )
+    details = details.join(
+        arrival,
+        on=["player_id", "model_player_type"],
+        how="left",
+        validate="1:1",
+    )
     uncertainty_path = (
         generated / "phase2-prospect-workload-uncertainty" / as_of_date
         / "prospect-workload-uncertainty.parquet"

@@ -1347,13 +1347,23 @@ contact totals.
 - The rebuilt explorer passes all 46 model-law checks. See
   `docs/pitcher-process-and-established-hitter-bridge-result.md`.
 
-### 2026-09-12 prospect talent/value explorer
+### 2026-09-12 prospect FV/value explorer
 
-- Added a separate prospect-only explorer that does not convert risk-adjusted WAR
-  back into a misleading talent grade.
-- Talent FV is derived from six-control-year WAR conditional on reaching MLB.
-  Expected controlled WAR separately applies arrival, role, and career risk; surplus
-  value then applies the existing cost and market assumptions.
+- Added a separate prospect-only explorer. An initial conditional-career-WAR grade
+  was rejected immediately because it mislabeled accumulated conditional output as
+  FV and produced implausible 60-65 grades from regression priors and position.
+- Model FV is the risk-adjusted grade. Conditional MLB WAR remains visible only for
+  diagnosing skill/workload assumptions; surplus value applies the existing cost and
+  market assumptions to expected controlled WAR.
 - Public player FV and rankings remain excluded from every calculation.
-- Keyner Martinez is shown as 50 Talent FV, 4.76 conditional WAR if he reaches MLB,
-  0.15 risk-adjusted controlled WAR, and about $0.9 million of current modeled value.
+- The explorer exposes listed level, primary workload level, progression, evidence
+  volume, and reliability so temporary promotions and unsupported priors stay visible.
+- The first corrected distribution has 3 players at 50, 12 at 45+, 37 at 45, and
+  117 at 40+. This removes the false flood of 50-65 grades, but it is now too
+  compressed at the top and is not a finished calibration. Do not force a quota;
+  the next gate must replay model-generated grades against later MLB outcomes.
+- Fernando Gonzalez now displays as 40+, not 65. His 16-PA AAA stint does not define
+  his development level: 89.8% of current workload is A-ball or below, with zero
+  modeled level progression. Yoxander Benitez displays as 30 and carries three DSL
+  seasons with zero progression. Toran O'Harran displays as 20; his conditional path
+  is hidden as ungraded because it is based on zero individual performance evidence.

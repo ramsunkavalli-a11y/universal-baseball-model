@@ -77,6 +77,19 @@ def display_fv(granular_fv: float) -> int:
     return int(5 * floor((granular_fv + 2.5) / 5))
 
 
+def display_fv_label(granular_fv: float) -> str:
+    """Return the nearest published FV tier, preserving 35+/40+/45+."""
+
+    value = float(granular_fv)
+    if value < 36.25:
+        return str(int(5 * floor((value + 2.5) / 5)))
+    supported = (37.5, 40.0, 42.5, 45.0, 47.5, 50.0, 55.0, 60.0, 65.0, 70.0)
+    nearest = min(supported, key=lambda candidate: (abs(candidate - value), candidate))
+    if nearest in {37.5, 42.5, 47.5}:
+        return f"{int(nearest - 2.5)}+"
+    return str(int(nearest))
+
+
 def benchmark_value_from_model_fv(granular_fv: float, player_type: str) -> float:
     """Interpolate the current FV-to-dollar benchmark with our granular score."""
 

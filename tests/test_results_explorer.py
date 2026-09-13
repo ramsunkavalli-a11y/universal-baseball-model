@@ -82,8 +82,14 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
                 "conditional_war_rate": [3.0],
                 "conditional_war_rate_unit": ["WAR per 600 PA"],
                 "conditional_career_war_if_arrived": [7.0],
-                "talent_fv_granular": [50.0],
-                "talent_fv_display": [50],
+                "skill_evidence_tier": ["affiliated_translated"],
+                "effective_skill_evidence": [400.0],
+                "skill_reliability": [0.25],
+                "level_tier": ["AAA"],
+                "primary_level_tier": ["AA"],
+                "primary_level_workload_share": [0.8],
+                "level_progression": [1.0],
+                "development_history_seasons": [3.0],
                 "peak_talent_runs_rate": [-3.0],
                 "peak_above_average_probability": [0.35],
                 "peak_impact_probability": [0.15],
@@ -121,8 +127,10 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
     assert nested["players"][0]["peak_impact_probability"] == 0.15
     assert nested["players"][0]["research_mean_value"] == 12_000_000.0
     assert nested["players"][0]["research_value_median"] == 4_000_000.0
-    assert nested["players"][0]["talent_fv"] == 50
     assert nested["players"][0]["conditional_career_war_if_arrived"] == 7.0
+    assert nested["players"][0]["model_fv_label"] is None
+    assert nested["players"][0]["skill_evidence_tier"] == "affiliated_translated"
+    assert nested["players"][0]["primary_evidence_level"] == "AA"
 
 
 def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
@@ -148,7 +156,7 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert "does not set the rank or main value" in rendered
 
 
-def test_talent_value_explorer_separates_talent_from_risk_adjusted_war() -> None:
+def test_talent_value_explorer_treats_fv_as_risk_adjusted() -> None:
     payload = {
         "meta": {"checkpoint": "test"},
         "players": [{"name": "</script><script>alert(1)</script>"}],
@@ -158,9 +166,10 @@ def test_talent_value_explorer_separates_talent_from_risk_adjusted_war() -> None
 
     assert "__EXPLORER_DATA__" not in rendered
     assert "<\\/script><script>alert(1)<\\/script>" in rendered
-    assert "Talent is not value" in rendered
-    assert "Talent FV" in rendered
-    assert "Risk-adjusted WAR" in rendered
+    assert "FV already includes risk" in rendered
+    assert "Model FV" in rendered
+    assert "Expected controlled WAR" in rendered
+    assert "Conditional MLB performance" in rendered
     assert "Publication FV and rankings are not inputs" in rendered
 
 
