@@ -1,8 +1,14 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import polars as pl
 
-from universal_baseball.prospect_foundation import build_prospect_foundation_payload
+from universal_baseball.prospect_foundation import (
+    build_prospect_foundation_payload,
+    write_prospect_foundation_explorer,
+)
 
 
 def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
@@ -83,3 +89,20 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
     assert player["historical_comparable_players"] == 150
     assert player["historical_component_war_4y"] == 0.002
     assert player["historical_impact_rate_4y"] == 0.0
+
+
+def test_explorer_serialization_replaces_nonfinite_values(tmp_path: Path) -> None:
+    template = tmp_path / "template.html"
+    output = tmp_path / "output.html"
+    template.write_text("<script>__EXPLORER_DATA__</script>", encoding="utf-8")
+
+    write_prospect_foundation_explorer(
+        {"players": [{"value": float("nan"), "nested": [float("inf")]}]},
+        template,
+        output,
+    )
+
+    embedded = output.read_text(encoding="utf-8").removeprefix("<script>").removesuffix(
+        "</script>"
+    )
+    assert json.loads(embedded) == {"players": [{"value": None, "nested": [None]}]}

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -231,9 +232,23 @@ def build_prospect_foundation_payload(
 def write_prospect_foundation_explorer(
     payload: dict[str, Any], template_path: Path, output_path: Path
 ) -> None:
+    def json_safe(value: Any) -> Any:
+        if isinstance(value, float) and not math.isfinite(value):
+            return None
+        if isinstance(value, dict):
+            return {key: json_safe(item) for key, item in value.items()}
+        if isinstance(value, list):
+            return [json_safe(item) for item in value]
+        return value
+
     rendered = template_path.read_text(encoding="utf-8").replace(
         "__EXPLORER_DATA__",
-        json.dumps(payload, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/"),
+        json.dumps(
+            json_safe(payload),
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        ).replace("</", "<\\/"),
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(rendered, encoding="utf-8")
