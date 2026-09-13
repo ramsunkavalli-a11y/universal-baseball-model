@@ -839,6 +839,16 @@ arrival pass in all four, but conditional quality fails in 2008 and 2021. Contin
 display hitter conditional quality and withhold pitcher conditional quality. Do not
 restore FV until whole-player outcome and control-year gates pass.
 
+Official MLB position outcomes now cover 2004–2025, and official MiLB position usage
+covers the 2008, 2013, 2016, 2018 and 2021 historical origins. A first challenger that
+omitted origin position was correctly rejected. The hurdle-corrected position-history
+challenger lowers squared error in the position component across 2013, 2018 and 2021,
+but those years are now exposed and cannot confirm promotion. A 2020 confirmation is
+frozen in [the position-history contract](prospect-position-history-confirmation-contract.md).
+It separates MLB arrival from conditional position value and follows the repo's
+existing expected-WAR validation law rather than allowing MAE to reward an all-zero
+forecast.
+
 A frozen pitcher shrinkage rescue was also rejected. Selection on the 2008, 2013 and
 2018 folds chose 70% local comparable rate and 30% global mean. Applied unchanged to
 2021, RMSE improved from 1.075 to 1.066 but MAE worsened from 0.791 to 0.795. The two

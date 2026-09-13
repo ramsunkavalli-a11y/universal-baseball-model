@@ -1,0 +1,190 @@
+{
+  "status": "milb_fielding_origin_inventory_materialized",
+  "source": "official_mlb_statsapi_season_fielding",
+  "origin_seasons": [
+    2008,
+    2013,
+    2016,
+    2018,
+    2021
+  ],
+  "sport_levels": {
+    "11": "AAA",
+    "12": "AA",
+    "13": "HIGH_A",
+    "14": "SINGLE_A",
+    "16": "ROOKIE_COMPLEX"
+  },
+  "rows": 99715,
+  "players": 27234,
+  "coverage": [
+    {
+      "season": 2008,
+      "level_group": "AA",
+      "players": 1392,
+      "position_rows": 2570
+    },
+    {
+      "season": 2008,
+      "level_group": "AAA",
+      "players": 2158,
+      "position_rows": 4138
+    },
+    {
+      "season": 2008,
+      "level_group": "HIGH_A",
+      "players": 1560,
+      "position_rows": 2853
+    },
+    {
+      "season": 2008,
+      "level_group": "ROOKIE_COMPLEX",
+      "players": 3373,
+      "position_rows": 6398
+    },
+    {
+      "season": 2008,
+      "level_group": "SINGLE_A",
+      "players": 1395,
+      "position_rows": 2614
+    },
+    {
+      "season": 2013,
+      "level_group": "AA",
+      "players": 1490,
+      "position_rows": 2698
+    },
+    {
+      "season": 2013,
+      "level_group": "AAA",
+      "players": 2264,
+      "position_rows": 4275
+    },
+    {
+      "season": 2013,
+      "level_group": "HIGH_A",
+      "players": 1607,
+      "position_rows": 2831
+    },
+    {
+      "season": 2013,
+      "level_group": "ROOKIE_COMPLEX",
+      "players": 3519,
+      "position_rows": 6426
+    },
+    {
+      "season": 2013,
+      "level_group": "SINGLE_A",
+      "players": 1427,
+      "position_rows": 2515
+    },
+    {
+      "season": 2016,
+      "level_group": "AA",
+      "players": 1581,
+      "position_rows": 2886
+    },
+    {
+      "season": 2016,
+      "level_group": "AAA",
+      "players": 2428,
+      "position_rows": 4630
+    },
+    {
+      "season": 2016,
+      "level_group": "HIGH_A",
+      "players": 1680,
+      "position_rows": 3054
+    },
+    {
+      "season": 2016,
+      "level_group": "ROOKIE_COMPLEX",
+      "players": 3736,
+      "position_rows": 6928
+    },
+    {
+      "season": 2016,
+      "level_group": "SINGLE_A",
+      "players": 1507,
+      "position_rows": 2790
+    },
+    {
+      "season": 2018,
+      "level_group": "AA",
+      "players": 1645,
+      "position_rows": 3039
+    },
+    {
+      "season": 2018,
+      "level_group": "AAA",
+      "players": 1811,
+      "position_rows": 3469
+    },
+    {
+      "season": 2018,
+      "level_group": "HIGH_A",
+      "players": 1757,
+      "position_rows": 3204
+    },
+    {
+      "season": 2018,
+      "level_group": "ROOKIE_COMPLEX",
+      "players": 4013,
+      "position_rows": 7636
+    },
+    {
+      "season": 2018,
+      "level_group": "SINGLE_A",
+      "players": 1524,
+      "position_rows": 2845
+    },
+    {
+      "season": 2021,
+      "level_group": "AA",
+      "players": 1675,
+      "position_rows": 3224
+    },
+    {
+      "season": 2021,
+      "level_group": "AAA",
+      "players": 2083,
+      "position_rows": 4141
+    },
+    {
+      "season": 2021,
+      "level_group": "HIGH_A",
+      "players": 1763,
+      "position_rows": 3385
+    },
+    {
+      "season": 2021,
+      "level_group": "ROOKIE_COMPLEX",
+      "players": 3930,
+      "position_rows": 7493
+    },
+    {
+      "season": 2021,
+      "level_group": "SINGLE_A",
+      "players": 1983,
+      "position_rows": 3673
+    }
+  ],
+  "unavailable_origin": {
+    "season": 2003,
+    "reason": "StatsAPI returned zero fielding splits for all five affiliated sport levels"
+  },
+  "boundaries": {
+    "position_usage_only": true,
+    "outside_fv_used": false,
+    "model_fit": false
+  },
+  "storage": {
+    "table_name": "milb_fielding_usage_at_prospect_origins",
+    "canonical_schema_version": "0.1",
+    "path": "reports\\generated\\milb-fielding-origin-inventory\\tables\\milb_fielding_usage_at_origins.parquet",
+    "row_count": 99715,
+    "file_size_bytes": 1091957,
+    "file_sha256": "984768aa55989f20592e8bdd0823d0e41e0a9c49470e3e8a4d73db2d1a3a400b",
+    "schema_sha256": "d53c0281eb0594bc0ccd60120946cabbf18a890a26849dd1c805bf857a0b1e31"
+  }
+}

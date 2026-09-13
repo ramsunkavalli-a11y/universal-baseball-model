@@ -1,0 +1,122 @@
+{
+  "status": "prospect_position_history_challenger_audited",
+  "as_of_date": "2026-09-13",
+  "target_origins": [
+    2013,
+    2018,
+    2021
+  ],
+  "group_prior_players": 25.0,
+  "decision": "withhold_position_history",
+  "outside_fv_used": false,
+  "folds": {
+    "2013": {
+      "reference_origins": [
+        2008
+      ],
+      "reference_players": 3192,
+      "reference_position_coverage": 0.9987468671679198,
+      "target_players": 3183,
+      "target_position_players": 3177,
+      "target_position_coverage": 0.998114985862394,
+      "position_component": {
+        "level_baseline": {
+          "bias": 0.0008829686263917749,
+          "mae": 0.040420362686686355,
+          "rmse": 0.19930590773820342
+        },
+        "position_history_candidate": {
+          "bias": 0.0010910019496374187,
+          "mae": 0.04225894378180938,
+          "rmse": 0.19539203286377904
+        }
+      },
+      "position_adjusted_partial_war": {
+        "level_baseline": {
+          "bias": -0.05140896807583483,
+          "mae": 0.20111439094065364,
+          "rmse": 0.9119576611382635
+        },
+        "position_history_candidate": {
+          "bias": -0.05120093475258919,
+          "mae": 0.20130887718501167,
+          "rmse": 0.9115574291236498
+        }
+      },
+      "passed": false
+    },
+    "2018": {
+      "reference_origins": [
+        2008,
+        2013
+      ],
+      "reference_players": 5976,
+      "reference_position_coverage": 0.9983266398929049,
+      "target_players": 3270,
+      "target_position_players": 3263,
+      "target_position_coverage": 0.9978593272171253,
+      "position_component": {
+        "level_baseline": {
+          "bias": 0.010267020422121903,
+          "mae": 0.04091370426446658,
+          "rmse": 0.22916405139624818
+        },
+        "position_history_candidate": {
+          "bias": 0.010077366558957534,
+          "mae": 0.04511230684833354,
+          "rmse": 0.2229144436129794
+        }
+      },
+      "position_adjusted_partial_war": {
+        "level_baseline": {
+          "bias": -0.041529026614273136,
+          "mae": 0.21230974832551983,
+          "rmse": 0.9789444054124058
+        },
+        "position_history_candidate": {
+          "bias": -0.0417186804774375,
+          "mae": 0.2118298301844232,
+          "rmse": 0.976520074204019
+        }
+      },
+      "passed": false
+    },
+    "2021": {
+      "reference_origins": [
+        2008,
+        2013,
+        2016
+      ],
+      "reference_players": 8226,
+      "reference_position_coverage": 0.9984196450279601,
+      "target_players": 3244,
+      "target_position_players": 3243,
+      "target_position_coverage": 0.999691738594328,
+      "position_component": {
+        "level_baseline": {
+          "bias": 0.004103231207375195,
+          "mae": 0.05304292748863545,
+          "rmse": 0.25585178840226
+        },
+        "position_history_candidate": {
+          "bias": 0.0035349986152986867,
+          "mae": 0.057589704266181464,
+          "rmse": 0.24602069477299324
+        }
+      },
+      "position_adjusted_partial_war": {
+        "level_baseline": {
+          "bias": -0.03434663178256477,
+          "mae": 0.2370611049337578,
+          "rmse": 0.9446078631461872
+        },
+        "position_history_candidate": {
+          "bias": -0.03491486437464128,
+          "mae": 0.2360660483343688,
+          "rmse": 0.942105202458131
+        }
+      },
+      "passed": false
+    }
+  }
+}

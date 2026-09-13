@@ -1,0 +1,187 @@
+{
+  "status": "mlb_fielding_outcome_inventory_materialized",
+  "source": "official_mlb_statsapi_season_fielding",
+  "seasons": [
+    2004,
+    2025
+  ],
+  "rows": 53771,
+  "players": 6371,
+  "acquisition": "official_statsapi_capture_hash_verified",
+  "coverage": [
+    {
+      "season": 2004,
+      "players": 1244,
+      "position_rows": 2147,
+      "fielding_outs": 1171638,
+      "games_started": 45970
+    },
+    {
+      "season": 2005,
+      "players": 1230,
+      "position_rows": 2123,
+      "fielding_outs": 1167273,
+      "games_started": 46026
+    },
+    {
+      "season": 2006,
+      "players": 1236,
+      "position_rows": 2207,
+      "fielding_outs": 1167966,
+      "games_started": 45990
+    },
+    {
+      "season": 2007,
+      "players": 1273,
+      "position_rows": 2228,
+      "fielding_outs": 1172493,
+      "games_started": 46026
+    },
+    {
+      "season": 2008,
+      "players": 1280,
+      "position_rows": 2239,
+      "fielding_outs": 1170657,
+      "games_started": 45972
+    },
+    {
+      "season": 2009,
+      "players": 1260,
+      "position_rows": 2179,
+      "fielding_outs": 1168344,
+      "games_started": 46009
+    },
+    {
+      "season": 2010,
+      "players": 1249,
+      "position_rows": 2186,
+      "fielding_outs": 1169244,
+      "games_started": 46008
+    },
+    {
+      "season": 2011,
+      "players": 1289,
+      "position_rows": 2224,
+      "fielding_outs": 1175238,
+      "games_started": 45990
+    },
+    {
+      "season": 2012,
+      "players": 1281,
+      "position_rows": 2314,
+      "fielding_outs": 1170594,
+      "games_started": 46008
+    },
+    {
+      "season": 2013,
+      "players": 1303,
+      "position_rows": 2303,
+      "fielding_outs": 1178640,
+      "games_started": 46190
+    },
+    {
+      "season": 2014,
+      "players": 1316,
+      "position_rows": 2366,
+      "fielding_outs": 1177569,
+      "games_started": 46170
+    },
+    {
+      "season": 2015,
+      "players": 1343,
+      "position_rows": 2450,
+      "fielding_outs": 1172007,
+      "games_started": 46150
+    },
+    {
+      "season": 2016,
+      "players": 1347,
+      "position_rows": 2461,
+      "fielding_outs": 1169271,
+      "games_started": 46131
+    },
+    {
+      "season": 2017,
+      "players": 1355,
+      "position_rows": 2513,
+      "fielding_outs": 1167939,
+      "games_started": 46170
+    },
+    {
+      "season": 2018,
+      "players": 1376,
+      "position_rows": 2607,
+      "fielding_outs": 1174203,
+      "games_started": 46188
+    },
+    {
+      "season": 2019,
+      "players": 1405,
+      "position_rows": 2662,
+      "fielding_outs": 1172430,
+      "games_started": 46150
+    },
+    {
+      "season": 2020,
+      "players": 1288,
+      "position_rows": 2250,
+      "fielding_outs": 417654,
+      "games_started": 17960
+    },
+    {
+      "season": 2021,
+      "players": 1504,
+      "position_rows": 2842,
+      "fielding_outs": 1150605,
+      "games_started": 46133
+    },
+    {
+      "season": 2022,
+      "players": 1493,
+      "position_rows": 2970,
+      "fielding_outs": 1163034,
+      "games_started": 48572
+    },
+    {
+      "season": 2023,
+      "players": 1454,
+      "position_rows": 2854,
+      "fielding_outs": 1163358,
+      "games_started": 48577
+    },
+    {
+      "season": 2024,
+      "players": 1452,
+      "position_rows": 2779,
+      "fielding_outs": 1164141,
+      "games_started": 48580
+    },
+    {
+      "season": 2025,
+      "players": 1470,
+      "position_rows": 2867,
+      "fielding_outs": 1163025,
+      "games_started": 48586
+    }
+  ],
+  "boundaries": {
+    "complete_regular_seasons_only": true,
+    "position_usage_not_defensive_quality": true,
+    "outside_fv_used": false,
+    "war_or_value_assigned": false,
+    "later_retrieval_not_vintage_snapshot": true
+  },
+  "source_files": {
+    "reports/generated/position-capacity-source/historical/reports/generated/position-role-historical-source/tables/historical_fielding_usage.parquet": "fa84a74402390c62de06e174083810cfe668010d696a2c71a312347e95ef71f4",
+    "reports/generated/position-capacity-source/2025/reports/generated/position-role-2025-confirmation-source/tables/position_role_2025_fielding_usage.parquet": "372cd75d0f67217c7def51351e938a16b2584d30de374d9f5097a5d739f8f8d4"
+  },
+  "storage": {
+    "table_name": "mlb_fielding_outcome_inventory_2004_2025",
+    "canonical_schema_version": "0.1",
+    "path": "reports\\generated\\mlb-fielding-outcome-inventory-2004-2025\\tables\\mlb_fielding_usage_2004_2025.parquet",
+    "row_count": 53771,
+    "file_size_bytes": 529089,
+    "file_sha256": "d764ad9e71cddc7e23f0bc30ea5fd8b06502076dbddfd6f4c00969524842fbd8",
+    "schema_sha256": "d53c0281eb0594bc0ccd60120946cabbf18a890a26849dd1c805bf857a0b1e31"
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "status": "prospect_position_adjusted_outcome_audited",
+  "as_of_date": "2026-09-13",
+  "horizon_calendar_years": 4,
+  "position_schedule": "fangraphs_fixed_162_game_v1",
+  "shortened_2020_scale": 2.7,
+  "outside_fv_used": false,
+  "decision": "withhold_position_component",
+  "folds": {
+    "2008": {
+      "reference_origins": [
+        2003
+      ],
+      "target_players": 3192,
+      "reference_players": 2254,
+      "global_position_war_per_arrival": -0.030711078897307554,
+      "position_component": {
+        "global_baseline": {
+          "bias": -0.003948166143950266,
+          "mae": 0.03650762621115131,
+          "rmse": 0.20137657547672463
+        },
+        "local_comparables": {
+          "bias": -0.002066519860487301,
+          "mae": 0.041112096982102594,
+          "rmse": 0.2016727880783742
+        }
+      },
+      "position_adjusted_partial_war": {
+        "global_position_baseline": {
+          "bias": -0.013169051882431032,
+          "mae": 0.18263370391501393,
+          "rmse": 0.8121101021097421
+        },
+        "local_position_comparables": {
+          "bias": -0.011287405598968066,
+          "mae": 0.184250036940509,
+          "rmse": 0.8119772735294474
+        }
+      },
+      "passed": false
+    },
+    "2013": {
+      "reference_origins": [
+        2003,
+        2008
+      ],
+      "target_players": 3183,
+      "reference_players": 5195,
+      "global_position_war_per_arrival": -0.00897409385705076,
+      "position_component": {
+        "global_baseline": {
+          "bias": -0.0009811500600011081,
+          "mae": 0.03733695892883749,
+          "rmse": 0.19884444105150484
+        },
+        "local_comparables": {
+          "bias": 0.001946821517019998,
+          "mae": 0.04388007700592162,
+          "rmse": 0.19737335886917395
+        }
+      },
+      "position_adjusted_partial_war": {
+        "global_position_baseline": {
+          "bias": -0.04297964977857061,
+          "mae": 0.19757152847812562,
+          "rmse": 0.8945700751995008
+        },
+        "local_position_comparables": {
+          "bias": -0.0400516782015495,
+          "mae": 0.199863855404574,
+          "rmse": 0.8960390929329011
+        }
+      },
+      "passed": false
+    },
+    "2018": {
+      "reference_origins": [
+        2003,
+        2008,
+        2013
+      ],
+      "target_players": 3270,
+      "reference_players": 7976,
+      "global_position_war_per_arrival": -0.0052394503570077754,
+      "position_component": {
+        "global_baseline": {
+          "bias": 0.009332518022490058,
+          "mae": 0.040044722121304756,
+          "rmse": 0.22860041095241224
+        },
+        "local_comparables": {
+          "bias": 0.00970184706902644,
+          "mae": 0.046331100037958234,
+          "rmse": 0.22584155036764506
+        }
+      },
+      "position_adjusted_partial_war": {
+        "global_position_baseline": {
+          "bias": -0.037012933220863256,
+          "mae": 0.2115701482616245,
+          "rmse": 0.9671743030887356
+        },
+        "local_position_comparables": {
+          "bias": -0.03664360417432686,
+          "mae": 0.21258887096243087,
+          "rmse": 0.9707024695618542
+        }
+      },
+      "passed": false
+    },
+    "2021": {
+      "reference_origins": [
+        2003,
+        2008,
+        2013,
+        2016
+      ],
+      "target_players": 3244,
+      "reference_players": 10226,
+      "global_position_war_per_arrival": -0.021419552303632503,
+      "position_component": {
+        "global_baseline": {
+          "bias": 0.004083802799206326,
+          "mae": 0.05200221037565493,
+          "rmse": 0.2560805772441818
+        },
+        "local_comparables": {
+          "bias": -0.0007234974944807251,
+          "mae": 0.057702495152182016,
+          "rmse": 0.2520945539214708
+        }
+      },
+      "position_adjusted_partial_war": {
+        "global_position_baseline": {
+          "bias": -0.030698369461748778,
+          "mae": 0.237266968076392,
+          "rmse": 0.9397051505212465
+        },
+        "local_position_comparables": {
+          "bias": -0.03550566975543583,
+          "mae": 0.23518929296722627,
+          "rmse": 0.9435925823280831
+        }
+      },
+      "passed": false
+    }
+  },
+  "boundaries": {
+    "position_usage_only": true,
+    "defensive_quality_included": false,
+    "baserunning_included": false,
+    "player_specific_rules": false
+  }
+}
