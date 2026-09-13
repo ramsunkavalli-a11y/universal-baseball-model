@@ -1,0 +1,92 @@
+{
+  "acquisition": "official_statsapi_capture_hash_verified",
+  "active_years_without_service_evidence": 3301,
+  "boundaries": {
+    "2020_normalized_to_172_day_scale": true,
+    "first_active_season_not_assumed_full_service": true,
+    "later_retrieval_not_vintage_snapshot": true,
+    "outside_fv_used": false,
+    "salary_or_value_not_assigned_here": true,
+    "statsapi_roster_and_transaction_evidence": true,
+    "super_two_not_assigned_here": true
+  },
+  "classified_transaction_rows": 149234,
+  "cohort": {
+    "debut_years": [
+      2009,
+      2019
+    ],
+    "players": 2598,
+    "six_year_path_rows": 15588
+  },
+  "decision_rule": "Promote service-pattern donors only if active-season coverage is complete and opening-service validation is accurate enough for control-year timing.",
+  "fangraphs_2025_opening_validation": {
+    "exact_share": 0.009140767824497258,
+    "mean_absolute_error_days": 558.9926873857404,
+    "median_absolute_error_days": 524.0,
+    "players": 547,
+    "within_15_days_share": 0.025594149908592323
+  },
+  "first_year_service": {
+    "median_days": 28.0,
+    "share_below_100": 0.8614318706697459,
+    "share_below_172": 0.9772902232486528
+  },
+  "official_people_coverage": 2598,
+  "opening_state_review_rows": 9885,
+  "roster_entry_rows": 40581,
+  "source_files": {
+    "reports/generated/career-mlb-outcome-inventory-2009-2025/tables/people-debut-dates.parquet": "2b623e7fcdcf74803f26f02c1ddc998dd543ef9fdf58c50cfef7934e74612c8d",
+    "reports/generated/fangraphs-opening-day-control/2025/opening-day-control-baseline.parquet": "455ff12ba3018d4af121cd4a08e24be480cf9b5bd22b2ddb80c552a7cfc5a822"
+  },
+  "status": "historical_service_path_evidence_not_yet_promoted",
+  "storage": {
+    "annual_paths": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "a89e4784470d64a16ff64def24e5caf6c2bc3c82ad2d82440593654d9e0ba5b5",
+      "file_size_bytes": 70590,
+      "path": "reports\\generated\\prospect-historical-service-paths-2009-2019\\annual-service-paths.parquet",
+      "row_count": 15588,
+      "schema_sha256": "163130d18c087ef4dba64f4b1392991d1af3dd2a60932456ee0027c2c37dba02",
+      "table_name": "prospect_historical_annual_service_paths"
+    },
+    "event_reviews": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "712e2974fc604f79d908e1c14372a25305d23f34c44ca6136981b1bc4f0f9222",
+      "file_size_bytes": 125012,
+      "path": "reports\\generated\\prospect-historical-service-paths-2009-2019\\transaction-state-reviews.parquet",
+      "row_count": 19799,
+      "schema_sha256": "3805ffc3a4819da31d48bf190a6501aaa2db7b098a87fd4b2a486c04be07a244",
+      "table_name": "prospect_historical_transaction_state_reviews"
+    },
+    "fangraphs_validation": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "e3b1b7724d601c498fe02c8f2677254b58f82115907c46ed3052629c7e113ea9",
+      "file_size_bytes": 6426,
+      "path": "reports\\generated\\prospect-historical-service-paths-2009-2019\\fangraphs-service-validation.parquet",
+      "row_count": 547,
+      "schema_sha256": "c9bec05239d32fbe094dbb322c0058272715cf67e16555ae3beff6eeb4f06301",
+      "table_name": "prospect_historical_fangraphs_service_validation"
+    },
+    "opening_reviews": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "0d7a4d6b84d5614f226edcf6660d6ccdd73dae9887a362454129e3ade533bf33",
+      "file_size_bytes": 19791,
+      "path": "reports\\generated\\prospect-historical-service-paths-2009-2019\\opening-state-reviews.parquet",
+      "row_count": 9885,
+      "schema_sha256": "e7b609c931e487b49aaa36501238930f22b2cb5736fd4db0f77ad4e909e569db",
+      "table_name": "prospect_historical_opening_state_reviews"
+    },
+    "path_summary": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "1cca30bdb7b10dfc3c6f276da5213c7aae016cb9c7a4f1b914aa362526155aa0",
+      "file_size_bytes": 13989,
+      "path": "reports\\generated\\prospect-historical-service-paths-2009-2019\\service-path-summary.parquet",
+      "row_count": 2598,
+      "schema_sha256": "e604c3b9bf765c37166014fadd67b2deece9921f976833f07480540a20845d20",
+      "table_name": "prospect_historical_service_path_summary"
+    }
+  },
+  "transaction_rows": 149442,
+  "transaction_state_review_rows": 19799
+}

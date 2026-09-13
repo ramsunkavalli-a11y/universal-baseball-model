@@ -1,6 +1,12 @@
 # Dependent career-path value plan
 
-**Status:** authoritative Phase 2 P0 implementation contract
+**Status:** superseded research contract; do not use for player value
+
+The original implementation used rejected nested-career talent inputs and treated
+every active MLB season as one full service year. It also omitted Super Two. The
+[controlled-value rebuild plan](prospect-controlled-value-rebuild-plan.md) replaces
+this contract. The simulation remains in the repository only as research history and
+must not feed FV, ranking, controlled WAR or dollar value.
 
 ## Product question
 

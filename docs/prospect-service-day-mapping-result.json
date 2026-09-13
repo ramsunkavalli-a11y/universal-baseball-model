@@ -1,0 +1,91 @@
+{
+  "status": "workload_service_mapping_audited",
+  "decision": "retain_for_next_joint_path_replay",
+  "label_source": "year_over_year_fangraphs_opening_service_balance",
+  "rows": 3167,
+  "seasons": [
+    2022,
+    2023,
+    2024
+  ],
+  "folds": {
+    "2023_first_mlb_season": {
+      "target_season": 2023,
+      "first_mlb_season": true,
+      "training_seasons": [
+        2022
+      ],
+      "players": 243,
+      "first_mlb_season_players": 243,
+      "old_full_season_shortcut": {
+        "bias_days": 102.27160493827161,
+        "mae_days": 102.33744855967078,
+        "rmse_days": 113.6325751706688
+      },
+      "monotone_workload_mapping": {
+        "bias_days": -0.9132723943915568,
+        "mae_days": 22.370929554034763,
+        "rmse_days": 30.69753953456367
+      },
+      "passed": true
+    },
+    "2024_first_mlb_season": {
+      "target_season": 2024,
+      "first_mlb_season": true,
+      "training_seasons": [
+        2022,
+        2023
+      ],
+      "players": 235,
+      "first_mlb_season_players": 235,
+      "old_full_season_shortcut": {
+        "bias_days": 106.6,
+        "mae_days": 106.6,
+        "rmse_days": 118.85240265565217
+      },
+      "monotone_workload_mapping": {
+        "bias_days": -1.1475198586914952,
+        "mae_days": 21.61250116498517,
+        "rmse_days": 30.35478854035461
+      },
+      "passed": true
+    },
+    "2024_returning_player": {
+      "target_season": 2024,
+      "first_mlb_season": false,
+      "training_seasons": [
+        2023
+      ],
+      "players": 1217,
+      "first_mlb_season_players": 0,
+      "old_full_season_shortcut": {
+        "bias_days": 20.788824979457683,
+        "mae_days": 35.1569433032046,
+        "rmse_days": 66.16581098997094
+      },
+      "monotone_workload_mapping": {
+        "bias_days": -0.07911052586884648,
+        "mae_days": 27.53993515656302,
+        "rmse_days": 42.43679292944685
+      },
+      "passed": true
+    }
+  },
+  "model": {
+    "form": "monotone_isotonic_service_days_from_workload",
+    "cells": [
+      "player_type",
+      "first_mlb_season"
+    ],
+    "minimum_training_cell": 20,
+    "outside_fv_used": false
+  },
+  "boundaries": {
+    "opening_balance_source_is_later_retrieved": true,
+    "players_missing_next_opening_balance_are_not_labeled": true,
+    "survivorship_selection_remains": true,
+    "service_mapping_not_yet_joined_to_career_paths": true,
+    "super_two_and_salary_not_tested": true,
+    "player_value_unchanged": true
+  }
+}

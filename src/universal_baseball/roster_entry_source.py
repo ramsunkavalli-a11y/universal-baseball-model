@@ -143,17 +143,17 @@ def build_opening_control_states(
         )
     opening_rows: list[dict[str, object]] = []
     review_rows: list[dict[str, object]] = []
-    source_rows = list(roster_entries.iter_rows(named=True))
+    source_by_player: dict[int, list[dict[str, object]]] = {}
+    for row in roster_entries.iter_rows(named=True):
+        source_by_player.setdefault(int(row["player_id"]), []).append(row)
     for window in season_windows.iter_rows(named=True):
         season = int(window["season"])
         opening_date = window["start_date"]
-        player_ids = sorted({int(row["player_id"]) for row in source_rows})
-        for player_id in player_ids:
+        for player_id, source_rows in sorted(source_by_player.items()):
             candidates = [
                 row
                 for row in source_rows
-                if int(row["player_id"]) == player_id
-                and row["start_date"] <= opening_date
+                if row["start_date"] <= opening_date
                 and (row["end_date"] is None or row["end_date"] >= opening_date)
             ]
             classified = [

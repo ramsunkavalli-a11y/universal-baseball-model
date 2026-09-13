@@ -846,3 +846,23 @@ declared errors disagree, so individualized pitcher comparable WAR remains withh
 The validated age-24-to-26 peak run model and its above-average/impact probabilities
 are now the explicit conditional-talent view for both player types; they are not
 multiplied into arrival or labeled FV.
+
+## Active P0: empirically rebuild controlled value — 2026-09-13
+
+The guessed statement that a 50-FV prospect is worth about three controlled WAR is
+explicitly rejected as a model input. Follow the
+[controlled-value rebuild plan](prospect-controlled-value-rebuild-plan.md).
+
+The first service audit establishes two important facts. Hydrated StatsAPI roster and
+transaction history is not complete enough to reconstruct historical service by
+itself: 3,301 MLB-active seasons lack service evidence, and the median error against
+547 FanGraphs 2025 opening balances is 524 days. Do not repair those gaps by treating
+an active season as a full year.
+
+Consecutive 2023–2025 FanGraphs opening balances provide a stronger direct label. A
+simple monotone mapping from MLB workload to service days, separated by player type
+and first/returning season, beats the old full-season shortcut in every available
+forward test. First-year MAE falls from 102.3 to 22.4 days in 2023 and from 106.6 to
+21.6 in 2024; returning-player MAE falls from 35.2 to 27.5 days in 2024. Retain this
+mapping for a complete joint-path replay, but do not promote it yet because players
+missing the next opening snapshot are unlabeled and create survivorship selection.
