@@ -80,6 +80,9 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
                 "three_tier_expected_workload": [1200.0],
                 "conditional_war_rate": [3.0],
                 "conditional_war_rate_unit": ["WAR per 600 PA"],
+                "peak_talent_runs_rate": [-3.0],
+                "peak_above_average_probability": [0.35],
+                "peak_impact_probability": [0.15],
                 "batting_runs_per_600": [2.0],
                 "baserunning_runs_per_600": [0.0],
                 "defense_runs_per_600": [0.0],
@@ -110,6 +113,8 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
     assert nested["players"][0]["expected_workload"] == 1200.0
     assert nested["players"][0]["positional_runs_per_600"] == 12.5
     assert nested["players"][0]["workload_war_p90"] == 5.0
+    assert nested["players"][0]["peak_above_average_probability"] == 0.35
+    assert nested["players"][0]["peak_impact_probability"] == 0.15
     assert nested["players"][0]["research_mean_value"] == 12_000_000.0
     assert nested["players"][0]["research_value_median"] == 4_000_000.0
 
@@ -128,6 +133,7 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert "Established-role chance" in rendered
     assert "The conditional workload method passed an as-of replay" in rendered
     assert "Dependent career simulation (research)" in rendered
+    assert "Peak talent range" in rendered
     assert "it does not set the ranking above" in rendered
     assert "Known contract years only" in rendered
     assert "does not receive a rank" in rendered

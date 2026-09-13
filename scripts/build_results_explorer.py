@@ -199,6 +199,31 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
             pl.col("research_mean_value_dollars").is_null()
         ).height:
             raise ValueError("dependent career-value research coverage is incomplete")
+    upside_root = generated / "peak-talent-upside"
+    upside_paths = {
+        player_type: upside_root / f"current_{player_type}_upside.parquet"
+        for player_type in ("hitter", "pitcher")
+    }
+    if all(path.exists() for path in upside_paths.values()):
+        upside = pl.concat(
+            [
+                pl.read_parquet(path).select(
+                    "player_id",
+                    pl.lit(player_type).alias("model_player_type"),
+                    pl.col("peak_runs_rate").alias("peak_talent_runs_rate"),
+                    "peak_above_average_probability",
+                    "peak_impact_probability",
+                )
+                for player_type, path in upside_paths.items()
+            ],
+            how="vertical_relaxed",
+        )
+        details = details.join(
+            upside,
+            on=["player_id", "model_player_type"],
+            how="left",
+            validate="1:1",
+        )
     return details
 
 

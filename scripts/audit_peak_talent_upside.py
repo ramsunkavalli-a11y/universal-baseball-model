@@ -338,6 +338,20 @@ def main() -> int:
                 )
             )
         current = current.with_columns(*added)
+        supported = (
+            (pl.col("as_of_level_group") != "MLB")
+            & pl.col("age_years").is_not_null()
+            & pl.col("age_years").is_between(16, 23, closed="both")
+        )
+        current = current.with_columns(
+            *(
+                pl.when(supported)
+                .then(pl.col(f"peak_{name}_probability"))
+                .otherwise(None)
+                .alias(f"peak_{name}_probability")
+                for name in THRESHOLDS
+            )
+        )
         current.write_parquet(OUTPUT / f"current_{player_type}_upside.parquet")
         current.write_csv(OUTPUT / f"current_{player_type}_upside.csv")
         current.filter(pl.col("prospect_peak_rate_rank") <= 100).sort(
