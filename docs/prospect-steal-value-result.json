@@ -1,0 +1,154 @@
+{
+  "status": "prospect_steal_value_audited",
+  "as_of_date": "2026-09-13",
+  "model": {
+    "attempt": "B2_k5",
+    "success": "B2_k45"
+  },
+  "decision": "withhold_steal_value",
+  "outside_fv_used": false,
+  "environment_audit": {
+    "player_season_count": 111344,
+    "player_environment_stint_count": 151314,
+    "actual_environment_attempt_rows": 129908,
+    "level_fallback_attempt_rows": 0,
+    "actual_environment_success_rows": 94084,
+    "level_fallback_success_rows": 0
+  },
+  "folds": {
+    "2008": {
+      "reference_origins": [
+        2003
+      ],
+      "target_players": 3192,
+      "players_with_recent_steal_evidence": 3192,
+      "steal_war": {
+        "neutral_baseline": {
+          "bias": -0.0006610083533658518,
+          "mae": 0.007813914951283451,
+          "rmse": 0.04872070559538306
+        },
+        "candidate": {
+          "bias": -0.0007092703632541229,
+          "mae": 0.009908773777596426,
+          "rmse": 0.04753195386851825
+        }
+      },
+      "batting_plus_steal_war": {
+        "batting_only_baseline": {
+          "bias": -0.009881894091846612,
+          "mae": 0.1875445540852106,
+          "rmse": 0.7842280609327534
+        },
+        "candidate": {
+          "bias": -0.009930156101734883,
+          "mae": 0.18715322086992428,
+          "rmse": 0.7832673432913001
+        }
+      },
+      "passed": false
+    },
+    "2013": {
+      "reference_origins": [
+        2003,
+        2008
+      ],
+      "target_players": 3183,
+      "players_with_recent_steal_evidence": 3183,
+      "steal_war": {
+        "neutral_baseline": {
+          "bias": 5.416485625479901e-05,
+          "mae": 0.006825992380571875,
+          "rmse": 0.03820852114303385
+        },
+        "candidate": {
+          "bias": 0.00014645909594756786,
+          "mae": 0.00858308182809878,
+          "rmse": 0.03701564153448389
+        }
+      },
+      "batting_plus_steal_war": {
+        "batting_only_baseline": {
+          "bias": -0.0419443348623147,
+          "mae": 0.20119394975016427,
+          "rmse": 0.9004926015533947
+        },
+        "candidate": {
+          "bias": -0.04185204062262193,
+          "mae": 0.20078323344975058,
+          "rmse": 0.8992056443767685
+        }
+      },
+      "passed": false
+    },
+    "2018": {
+      "reference_origins": [
+        2003,
+        2008,
+        2013
+      ],
+      "target_players": 3270,
+      "players_with_recent_steal_evidence": 3270,
+      "steal_war": {
+        "neutral_baseline": {
+          "bias": 2.0246653482351526e-05,
+          "mae": 0.007945899995407462,
+          "rmse": 0.04249047364764749
+        },
+        "candidate": {
+          "bias": 5.546715589776023e-05,
+          "mae": 0.009641537777227722,
+          "rmse": 0.04118489027397197
+        }
+      },
+      "batting_plus_steal_war": {
+        "batting_only_baseline": {
+          "bias": -0.046325204589870946,
+          "mae": 0.21988453883040696,
+          "rmse": 1.0350960589970333
+        },
+        "candidate": {
+          "bias": -0.04628998408745555,
+          "mae": 0.21982481864866452,
+          "rmse": 1.034846828603284
+        }
+      },
+      "passed": false
+    },
+    "2021": {
+      "reference_origins": [
+        2003,
+        2008,
+        2013,
+        2016
+      ],
+      "target_players": 3244,
+      "players_with_recent_steal_evidence": 3244,
+      "steal_war": {
+        "neutral_baseline": {
+          "bias": -0.0017017421509164768,
+          "mae": 0.013648865140900707,
+          "rmse": 0.07370818905331272
+        },
+        "candidate": {
+          "bias": -0.001575980275448518,
+          "mae": 0.015105169027913612,
+          "rmse": 0.07115046776137182
+        }
+      },
+      "batting_plus_steal_war": {
+        "batting_only_baseline": {
+          "bias": -0.03648391441187158,
+          "mae": 0.24299667853640125,
+          "rmse": 0.957181850125169
+        },
+        "candidate": {
+          "bias": -0.03635815253640362,
+          "mae": 0.24284944300229344,
+          "rmse": 0.9567902800132768
+        }
+      },
+      "passed": true
+    }
+  }
+}

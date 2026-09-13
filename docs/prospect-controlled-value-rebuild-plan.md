@@ -46,7 +46,19 @@ seasons stay in every expected-value score.
 2. Remove survivorship selection by adding another opening-service source or a
    defensible missing-next-snapshot treatment.
 3. Build and validate annual whole-player WAR. Batting/pitching plus replacement is
-   not sufficient; hitter baserunning, defense and position must remain explicit.
+  not sufficient; hitter baserunning, defense and position must remain explicit.
+
+The first whole-player extension is now tested rather than assumed. Official MLB
+position outcomes cover 2004–2025 and official MiLB position origins cover five broad
+historical eras plus 2019. A fresh 2019 confirmation reduced squared error but failed
+its frozen aggregate-bias guardrail by less than 0.0001 WAR per player. Position stays
+out of the main model and must not be patched from current names or public rankings.
+
+The frozen portable stolen-base formulas also reduce squared error in every broad
+historical era, but fail the existing exact aggregate-bias guardrail in three. The
+effect is small, and broad historical non-steal advancement evidence is unavailable.
+Keep both running channels outside the Phase 1 foundation; revisit their materiality
+after the main talent, arrival and control-year structure is stable.
 4. Replay arrival, performance, workload and service jointly across strict historical
    origins. Require proper distribution accuracy and expected-WAR squared error.
 5. Only after the path passes, apply versioned CBA rules, Super Two, minimum salary,

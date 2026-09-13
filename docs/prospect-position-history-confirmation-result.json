@@ -1,0 +1,45 @@
+{
+  "status": "prospect_position_history_confirmation_scored",
+  "as_of_date": "2026-09-13",
+  "contract": "docs/prospect-position-history-confirmation-contract.md",
+  "reference_origins": [
+    2008,
+    2013
+  ],
+  "target_origin": 2019,
+  "decision": "withhold_position_history",
+  "passed": false,
+  "outside_fv_used": false,
+  "fold": {
+    "reference_players": 5976,
+    "reference_position_coverage": 0.9983266398929049,
+    "target_players": 3291,
+    "target_position_players": 3286,
+    "target_position_coverage": 0.9984807049529019,
+    "position_component": {
+      "level_baseline": {
+        "bias": 0.0035113050285550634,
+        "mae": 0.03440260597123067,
+        "rmse": 0.17605500154359732
+      },
+      "position_history_candidate": {
+        "bias": 0.0034341675141790757,
+        "mae": 0.03827038396895476,
+        "rmse": 0.16869804934098206
+      }
+    },
+    "position_adjusted_partial_war": {
+      "level_baseline": {
+        "bias": -0.014861167337587983,
+        "mae": 0.18106143353091803,
+        "rmse": 0.7067003981653911
+      },
+      "position_history_candidate": {
+        "bias": -0.01493830485196397,
+        "mae": 0.18046503855552998,
+        "rmse": 0.7039544271878299
+      }
+    },
+    "passed": false
+  }
+}

@@ -851,6 +851,20 @@ forecast. The initially named 2020 input failed before scoring because affiliate
 baseball was canceled; the contract now uses the nearest earlier unscored position
 cohort, 2019, with complete 2020–2023 outcomes.
 
+The frozen 2019 confirmation is complete and withholds position history. Coverage is
+99.8%, and the candidate lowers RMSE for both position WAR (`0.1687` vs `0.1761`) and
+position-adjusted partial WAR (`0.7040` vs `0.7067`). Position bias also improves, but
+combined absolute bias worsens slightly (`0.01494` vs `0.01486` WAR per player), so
+the predeclared rule does not pass. Do not tune this exposed cohort. Position remains
+a transparent sensitivity, not part of the main expected-value output.
+
+The already-frozen portable stolen-base model was also replayed against the four
+strict historical prospect folds. It lowers steal-WAR RMSE and combined batting-plus-
+steal RMSE in all four eras, but the exact no-worse-bias rule fails in three eras by
+small amounts. Keep stolen-base value as a tested sensitivity rather than forcing a
+small component into the foundation. Non-steal advancement is not available in the
+broad history and remains omitted rather than inferred.
+
 A frozen pitcher shrinkage rescue was also rejected. Selection on the 2008, 2013 and
 2018 folds chose 70% local comparable rate and 30% global mean. Applied unchanged to
 2021, RMSE improved from 1.075 to 1.066 but MAE worsened from 0.791 to 0.795. The two
