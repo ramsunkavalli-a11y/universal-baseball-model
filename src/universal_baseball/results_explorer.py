@@ -173,6 +173,11 @@ def build_explorer_payload(
                 "value_review_reason": row.get("value_review_reason"),
                 "model_fv": row.get("model_fv_display"),
                 "model_fv_granular": row.get("model_fv_granular"),
+                "talent_fv": detail.get("talent_fv_display"),
+                "talent_fv_granular": detail.get("talent_fv_granular"),
+                "conditional_career_war_if_arrived": detail.get(
+                    "conditional_career_war_if_arrived"
+                ),
                 "model_role": row.get("model_role"),
                 "model_player_type": row.get("model_player_type"),
                 "talent_value": row.get("talent_benchmark_value_dollars"),
@@ -308,4 +313,40 @@ def write_explorer(
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(render_explorer_html(payload), encoding="utf-8")
+    return payload
+
+
+def render_talent_value_explorer_html(payload: dict[str, Any]) -> str:
+    """Render the prospect talent-versus-value view as one portable file."""
+
+    payload_json = json.dumps(payload, separators=(",", ":"), default=_json_value).replace(
+        "</", "<\\/"
+    )
+    template_path = Path(__file__).with_name("talent_value_explorer.html")
+    template = template_path.read_text(encoding="utf-8")
+    return template.replace("__EXPLORER_DATA__", payload_json).replace(
+        "__CHECKPOINT__", html.escape(str(payload["meta"]["checkpoint"]))
+    )
+
+
+def write_talent_value_explorer(
+    values_path: Path,
+    annual_path: Path,
+    names_path: Path,
+    output_path: Path,
+    *,
+    model_details: pl.DataFrame,
+) -> dict[str, Any]:
+    """Write the separate prospect talent, risk, and value explorer."""
+
+    payload = build_explorer_payload(
+        pl.read_parquet(values_path),
+        pl.read_parquet(annual_path),
+        pl.read_parquet(names_path),
+        model_details,
+    )
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        render_talent_value_explorer_html(payload), encoding="utf-8"
+    )
     return payload

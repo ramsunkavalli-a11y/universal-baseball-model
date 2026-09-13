@@ -5,6 +5,7 @@ import polars as pl
 from universal_baseball.results_explorer import (
     build_explorer_payload,
     render_explorer_html,
+    render_talent_value_explorer_html,
 )
 from scripts.build_results_explorer import latest_common_date
 
@@ -80,6 +81,9 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
                 "three_tier_expected_workload": [1200.0],
                 "conditional_war_rate": [3.0],
                 "conditional_war_rate_unit": ["WAR per 600 PA"],
+                "conditional_career_war_if_arrived": [7.0],
+                "talent_fv_granular": [50.0],
+                "talent_fv_display": [50],
                 "peak_talent_runs_rate": [-3.0],
                 "peak_above_average_probability": [0.35],
                 "peak_impact_probability": [0.15],
@@ -117,6 +121,8 @@ def test_explorer_payload_joins_names_and_annual_paths() -> None:
     assert nested["players"][0]["peak_impact_probability"] == 0.15
     assert nested["players"][0]["research_mean_value"] == 12_000_000.0
     assert nested["players"][0]["research_value_median"] == 4_000_000.0
+    assert nested["players"][0]["talent_fv"] == 50
+    assert nested["players"][0]["conditional_career_war_if_arrived"] == 7.0
 
 
 def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
@@ -140,6 +146,22 @@ def test_rendered_explorer_is_portable_and_escapes_script_boundary() -> None:
     assert "Why this player is unranked" in rendered
     assert "Linked-path status:" in rendered
     assert "does not set the rank or main value" in rendered
+
+
+def test_talent_value_explorer_separates_talent_from_risk_adjusted_war() -> None:
+    payload = {
+        "meta": {"checkpoint": "test"},
+        "players": [{"name": "</script><script>alert(1)</script>"}],
+    }
+
+    rendered = render_talent_value_explorer_html(payload)
+
+    assert "__EXPLORER_DATA__" not in rendered
+    assert "<\\/script><script>alert(1)<\\/script>" in rendered
+    assert "Talent is not value" in rendered
+    assert "Talent FV" in rendered
+    assert "Risk-adjusted WAR" in rendered
+    assert "Publication FV and rankings are not inputs" in rendered
 
 
 def test_latest_common_date_uses_only_complete_checkpoints(tmp_path) -> None:

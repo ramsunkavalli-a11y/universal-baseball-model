@@ -156,6 +156,12 @@ published. Rebuild it directly with:
 python scripts/build_results_explorer.py
 ```
 
+For the prospect-only talent and valuation view, double-click
+`play-with-talent-value.cmd`. This separate page keeps conditional Talent FV apart
+from risk-adjusted controlled WAR and surplus value. A 50 Talent FV therefore stays
+visible as 50 even when arrival, role, and career risk reduce its expected WAR. Build
+it directly with `python scripts/build_talent_value_explorer.py`.
+
 The builder automatically uses the newest dated checkpoint that has value, annual and
 player-name files, so the same launcher will follow later complete builds.
 Before a Phase 2 page opens, it reruns the structural model-law audit and stops if a

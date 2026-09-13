@@ -16,6 +16,7 @@ from universal_baseball.projection_lineage import (
     validate_recorded_opportunity_source,
 )
 from universal_baseball.prospect_arrival import ARRIVAL_MODEL_ID
+from universal_baseball.prospect_value import display_fv, model_fv_from_expected_war
 from universal_baseball.results_explorer import write_explorer
 
 
@@ -105,6 +106,30 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
     ).select(
         "player_id", "model_player_type", "primary_position",
         "three_tier_expected_workload", "three_tier_expected_six_year_war",
+        "hitter_six_control_year_war_if_arrived",
+        "pitcher_six_control_year_war_if_arrived",
+    ).with_columns(
+        pl.when(pl.col("model_player_type") == "pitcher")
+        .then(pl.col("pitcher_six_control_year_war_if_arrived"))
+        .otherwise(pl.col("hitter_six_control_year_war_if_arrived"))
+        .alias("conditional_career_war_if_arrived")
+    ).with_columns(
+        pl.struct("conditional_career_war_if_arrived", "model_player_type")
+        .map_elements(
+            lambda row: model_fv_from_expected_war(
+                float(row["conditional_career_war_if_arrived"] or 0.0),
+                str(row["model_player_type"]),
+            ),
+            return_dtype=pl.Float64,
+        )
+        .alias("talent_fv_granular")
+    ).with_columns(
+        pl.col("talent_fv_granular")
+        .map_elements(display_fv, return_dtype=pl.Int64)
+        .alias("talent_fv_display")
+    ).drop(
+        "hitter_six_control_year_war_if_arrived",
+        "pitcher_six_control_year_war_if_arrived",
     )
     hitter = pl.read_parquet(path_root / "hitter_expected_war_paths.parquet").group_by(
         "player_id"

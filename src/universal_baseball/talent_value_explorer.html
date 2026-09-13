@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Universal Baseball Model — Prospect Talent & Value</title>
+  <style>
+    :root{--ink:#172126;--muted:#617078;--paper:#f3f0e8;--card:#fffdf8;--line:#d7d1c4;--navy:#173c4d;--orange:#e36c35;--green:#26705a;--amber:#a86618}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+    header{padding:25px 32px;color:white;background:linear-gradient(120deg,#102f3d,#1d5264);border-bottom:5px solid var(--orange)}
+    header h1{margin:0 0 4px;font:700 29px/1.15 Georgia,serif} header p{margin:0;color:#d9e8ec}
+    main{max-width:1550px;margin:auto;padding:20px 25px 45px}.explain{padding:14px 16px;background:#fff3dc;border:1px solid #e3b66b;border-left:5px solid var(--orange);border-radius:8px;margin-bottom:16px}
+    .explain strong{color:var(--navy)}.toolbar{display:grid;grid-template-columns:minmax(250px,2fr) minmax(150px,1fr) minmax(140px,1fr) auto;gap:10px;margin-bottom:10px}
+    input,select,button{min-height:42px;border:1px solid #aeb8ba;border-radius:7px;background:white;padding:8px 11px;color:var(--ink);font:inherit}button{background:var(--navy);color:white;border-color:var(--navy);font-weight:650;cursor:pointer}
+    .count{color:var(--muted);margin:8px 2px}.layout{display:grid;grid-template-columns:minmax(760px,2fr) minmax(355px,1fr);gap:15px;align-items:start}.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px #2632380d}
+    .table-wrap{overflow:auto;max-height:72vh}table{width:100%;border-collapse:collapse;white-space:nowrap}th{position:sticky;top:0;z-index:1;background:#e8e5dc;text-align:right;padding:10px 9px;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #beb9ae;cursor:pointer}th:nth-child(2),th:nth-child(3),td:nth-child(2),td:nth-child(3){text-align:left}td{text-align:right;padding:9px;border-bottom:1px solid #e7e2d8}tbody tr{cursor:pointer}tbody tr:hover,tbody tr.active{background:#fff0dc}.player{font-weight:700;color:var(--navy)}
+    #detail{padding:20px;min-height:390px}#detail h2{margin:0;color:var(--navy);font:700 25px Georgia,serif}#detail h3{margin:22px 0 9px;color:var(--navy)}.sub{color:var(--muted);margin:3px 0 17px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:9px}.card{padding:11px;border-radius:7px;background:#f1eee6}.card span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.03em}.card strong{font-size:18px}.talent{border-left:4px solid var(--navy)}.value{border-left:4px solid var(--green)}
+    .funnel{margin-top:10px}.funnel-row{display:grid;grid-template-columns:105px 1fr 48px;gap:8px;align-items:center;margin:8px 0}.track{height:10px;background:#e5e1d7;border-radius:99px;overflow:hidden}.fill{height:100%;background:var(--orange);border-radius:99px}.note{color:var(--muted);font-size:13px}.risk{font-weight:700;color:var(--amber)}
+    footer{margin-top:16px;color:var(--muted);font-size:12px}@media(max-width:1050px){.layout{grid-template-columns:1fr}.table-wrap{max-height:55vh}}@media(max-width:680px){main{padding:14px}.toolbar,.cards{grid-template-columns:1fr}.table-wrap{max-height:50vh}}
+  </style>
+</head>
+<body>
+  <header><h1>Prospect Talent & Value</h1><p>Private model view · __CHECKPOINT__</p></header>
+  <main>
+    <div class="explain"><strong>Talent is not value.</strong> Talent FV describes the modeled player if he reaches MLB. Expected controlled WAR then discounts that talent for arrival, role, and career risk. Surplus value converts the risk-adjusted WAR to dollars after expected cost.</div>
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Search prospect or MLBAM ID" aria-label="Search prospects">
+      <select id="team" aria-label="Filter by team"><option value="">All teams</option></select>
+      <select id="type" aria-label="Filter by player type"><option value="">Hitters and pitchers</option><option value="hitter">Hitters</option><option value="pitcher">Pitchers</option></select>
+      <button id="export">Export view</button>
+    </section>
+    <div class="count" id="count"></div>
+    <section class="layout">
+      <div class="panel table-wrap"><table><thead><tr>
+        <th data-key="value_rank">Value rank</th><th data-key="name">Player</th><th data-key="team">Team</th><th data-key="talent_fv">Talent FV</th><th data-key="conditional_career_war_if_arrived">WAR if MLB</th><th data-key="war">Expected WAR</th><th data-key="arrival_probability">MLB chance</th><th data-key="meaningful_role_probability">Role chance</th><th data-key="value">Surplus value</th>
+      </tr></thead><tbody id="rows"></tbody></table></div>
+      <aside class="panel" id="detail"><p class="note">Select a prospect.</p></aside>
+    </section>
+    <footer>All grades are generated from this model. Publication FV and rankings are not inputs. “WAR if MLB” is a conditional six-control-year estimate, not guaranteed production.</footer>
+  </main>
+  <script id="explorer-data" type="application/json">__EXPLORER_DATA__</script>
+  <script>
+    const DATA=JSON.parse(document.getElementById('explorer-data').textContent);
+    const prospects=DATA.players.filter(p=>p.is_pre_mlb_value&&p.talent_fv!=null);
+    const $=id=>document.getElementById(id);let shown=[];let sortKey='value';let sortDir=-1;
+    const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const num=(v,d=1)=>v==null?'—':Number(v).toFixed(d);const pct=v=>v==null?'—':`${num(100*v)}%`;const money=v=>v==null?'—':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',notation:'compact',maximumFractionDigits:1}).format(v);
+    [...prospects].sort((a,b)=>(b.value??-Infinity)-(a.value??-Infinity)).forEach((p,i)=>p.value_rank=i+1);
+    [...new Set(prospects.map(p=>p.team))].sort().forEach(t=>$('team').insertAdjacentHTML('beforeend',`<option>${esc(t)}</option>`));
+    function compare(a,b){let x=a[sortKey],y=b[sortKey];if(x==null)x=sortDir>0?Infinity:-Infinity;if(y==null)y=sortDir>0?Infinity:-Infinity;return(typeof x==='string'?x.localeCompare(y):x-y)*sortDir}
+    function filter(){const q=$('search').value.trim().toLowerCase(),team=$('team').value,type=$('type').value;shown=prospects.filter(p=>(!q||p.name.toLowerCase().includes(q)||String(p.id).includes(q))&&(!team||p.team===team)&&(!type||p.model_player_type===type)).sort(compare);render()}
+    function render(){$('count').textContent=`Showing ${shown.length.toLocaleString()} of ${prospects.length.toLocaleString()} prospects`;$('rows').innerHTML=shown.map(p=>`<tr data-id="${p.id}"><td>${p.value_rank}</td><td><span class="player">${esc(p.name)}</span><br><small>MLBAM ${p.id}</small></td><td>${esc(p.team)}</td><td><strong>${p.talent_fv}</strong></td><td>${num(p.conditional_career_war_if_arrived)}</td><td>${num(p.war)}</td><td>${pct(p.arrival_probability)}</td><td>${pct(p.meaningful_role_probability)}</td><td>${money(p.value)}</td></tr>`).join('');document.querySelectorAll('tbody tr').forEach(r=>r.onclick=()=>detail(Number(r.dataset.id)))}
+    function bar(label,value){return`<div class="funnel-row"><span>${label}</span><div class="track"><div class="fill" style="width:${Math.max(0,Math.min(100,100*(value??0)))}%"></div></div><strong>${pct(value)}</strong></div>`}
+    function detail(id){const p=prospects.find(x=>x.id===id);document.querySelectorAll('tbody tr').forEach(r=>r.classList.toggle('active',Number(r.dataset.id)===id));const ratio=p.conditional_career_war_if_arrived>0?p.war/p.conditional_career_war_if_arrived:null;const risk=ratio==null?'unknown':ratio<.2?'very high':ratio<.4?'high':ratio<.65?'moderate':'lower';$('detail').innerHTML=`<h2>${esc(p.name)}</h2><div class="sub">${esc(p.team)} · ${esc(p.model_role)} · MLBAM ${p.id}</div><div class="cards"><div class="card talent"><span>Talent FV</span><strong>${p.talent_fv} (${num(p.talent_fv_granular)})</strong></div><div class="card"><span>WAR if MLB</span><strong>${num(p.conditional_career_war_if_arrived)}</strong></div><div class="card"><span>Risk-adjusted WAR</span><strong>${num(p.war)}</strong></div><div class="card value"><span>Surplus value</span><strong>${money(p.value)}</strong></div><div class="card"><span>Expected cost</span><strong>${money(p.cost)}</strong></div><div class="card"><span>Risk level</span><strong class="risk">${risk}</strong></div></div><h3>Why talent becomes less value</h3><div class="funnel">${bar('Reach MLB',p.arrival_probability)}${bar('Meaningful role',p.meaningful_role_probability)}${bar('Established',p.established_role_probability)}</div><p class="note">Talent FV is based on ${num(p.conditional_career_war_if_arrived)} modeled WAR over six control years if he reaches MLB. The ${num(p.war)} expected WAR includes the chance of no arrival, a limited role, or a short career. These are separate numbers on purpose.</p><h3>Talent rate</h3><div class="cards"><div class="card"><span>${esc(p.conditional_war_rate_unit)}</span><strong>${num(p.conditional_war_rate)}</strong></div><div class="card"><span>Expected workload</span><strong>${num(p.expected_workload)} ${p.model_player_type==='pitcher'?'BF':'PA'}</strong></div></div>`}
+    function csv(){const cell=s=>`"${String(s??'').replaceAll('"','""')}"`;const lines=[['Value Rank','Player','MLBAM ID','Team','Type','Talent FV','Granular Talent FV','WAR if MLB','Risk-adjusted WAR','MLB chance','Meaningful-role chance','Established-role chance','Expected cost','Surplus value'].map(cell).join(',')];shown.forEach(p=>lines.push([p.value_rank,p.name,p.id,p.team,p.model_player_type,p.talent_fv,p.talent_fv_granular,p.conditional_career_war_if_arrived,p.war,p.arrival_probability,p.meaningful_role_probability,p.established_role_probability,p.cost,p.value].map(cell).join(',')));const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/csv'}));a.download='prospect-talent-and-value.csv';a.click();URL.revokeObjectURL(a.href)}
+    ['search','team','type'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',filter));$('export').onclick=csv;document.querySelectorAll('th[data-key]').forEach(th=>th.onclick=()=>{const key=th.dataset.key;if(sortKey===key)sortDir*=-1;else{sortKey=key;sortDir=['name','team'].includes(key)?1:-1}filter()});filter();if(shown.length)detail(shown[0].id);
+  </script>
+</body>
+</html>

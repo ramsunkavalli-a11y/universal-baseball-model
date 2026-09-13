@@ -1346,3 +1346,14 @@ contact totals.
   from 0.42 to 1.44 conditional WAR per 800 BF for 2027.
 - The rebuilt explorer passes all 46 model-law checks. See
   `docs/pitcher-process-and-established-hitter-bridge-result.md`.
+
+### 2026-09-12 prospect talent/value explorer
+
+- Added a separate prospect-only explorer that does not convert risk-adjusted WAR
+  back into a misleading talent grade.
+- Talent FV is derived from six-control-year WAR conditional on reaching MLB.
+  Expected controlled WAR separately applies arrival, role, and career risk; surplus
+  value then applies the existing cost and market assumptions.
+- Public player FV and rankings remain excluded from every calculation.
+- Keyner Martinez is shown as 50 Talent FV, 4.76 conditional WAR if he reaches MLB,
+  0.15 risk-adjusted controlled WAR, and about $0.9 million of current modeled value.
