@@ -21,6 +21,7 @@ from audit_one_year_talent_development import (
     _pitcher_components,
     _responses,
     _score,
+    _serialize_fitted_model,
 )
 from universal_baseball.certification import download_file
 from universal_baseball.projection_composition import (
@@ -37,6 +38,7 @@ LEVEL_GROUP = {"aaa": "AAA", "aa": "AA", "a+": "HIGH_A", "a": "SINGLE_A"}
 BASE_URL = "https://github.com/armstjc/milb-data-repository/releases/download/season_player_pitching"
 WORK = Path("data/quarantine/pitcher-process-season")
 OUT = Path("reports/generated/pitcher-process-challenger")
+ARTIFACT = Path("model_artifacts/pitcher-next-year-process-v1.json")
 ALPHAS = (10.0, 100.0, 1000.0)
 FEATURE_SETS = {
     "whiff": ("process_whiff",),
@@ -231,6 +233,31 @@ def main() -> int:
         and row["uncertainty"]["brier_delta_p975"] <= 0 for row in replay
     )
     passed = all(value == len(replay) for value in wins.values()) and uncertainty >= 1
+    final_rows = pl.concat([cohorts[year] for year in ORIGIN_YEARS]).to_dicts()
+    selected_alpha = float(selected["alpha"])
+    selected_features = str(selected["feature_set"])
+    final_candidate = _fit(final_rows, basis, selected_alpha, selected_features)
+    final_reference = _fit(final_rows, basis, selected_alpha, None)
+    current_fit = _serialize_fitted_model(
+        final_candidate,
+        form="component_development",
+        alpha=selected_alpha,
+        basis=basis,
+        training_rows=len(final_rows),
+        training_origins=list(ORIGIN_YEARS),
+    )
+    current_fit.update({
+        "feature_family": "component_development_plus_pitch_process",
+        "process_feature_set": selected_features,
+    })
+    current_reference_fit = _serialize_fitted_model(
+        final_reference,
+        form="component_development",
+        alpha=selected_alpha,
+        basis=basis,
+        training_rows=len(final_rows),
+        training_origins=list(ORIGIN_YEARS),
+    )
     ablations = []
     for feature_set in FEATURE_SETS:
         chosen = min(
@@ -270,9 +297,27 @@ def main() -> int:
         "boundary": "next-year component estimate only; not direct peak or FV evidence",
         "rookie_process_used": False, "public_rank_or_fv_used": False,
         "cohort_rows": {str(year): frame.height for year, frame in cohorts.items()},
+        "current_fit": current_fit,
+        "current_reference_fit": current_reference_fit,
     }
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "report.json").write_text(json.dumps(report, indent=2, sort_keys=True), encoding="utf-8")
+    (OUT / "report.json").write_text(
+        json.dumps(report, indent=2, sort_keys=True), encoding="utf-8", newline="\n"
+    )
+    if passed:
+        ARTIFACT.write_text(
+            json.dumps({
+                "artifact_schema_version": "0.1",
+                "status": "promoted_optional_high_minors_next_year_input",
+                "source_report": (OUT / "report.json").as_posix(),
+                "source_boundary": "certified full-season high-minors process only",
+                "fallback": "frozen results-only next-year component model",
+                "fit": current_fit,
+                "same_cohort_reference_fit": current_reference_fit,
+            }, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+            newline="\n",
+        )
     print(json.dumps({key: report[key] for key in (
         "selected", "replay", "wins", "uncertainty_passes", "promotion", "cohort_rows"
     )}, indent=2))

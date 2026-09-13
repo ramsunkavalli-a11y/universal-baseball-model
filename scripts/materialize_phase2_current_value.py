@@ -350,6 +350,8 @@ def main() -> int:
             "market_tier_anchor_is_current_first_future_year_proxy": True,
             "successor_cba_is_planning_scenario": True,
             "phase2_workload_correction_included": True,
+            "established_hitter_recent_history_probability_included": True,
+            "affiliated_pitcher_process_talent_included": True,
         },
         "storage": storage,
     }

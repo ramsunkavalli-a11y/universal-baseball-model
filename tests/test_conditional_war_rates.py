@@ -5,6 +5,7 @@ import math
 import polars as pl
 
 from universal_baseball.conditional_war_rates import (
+    apply_pitcher_next_year_profiles_to_rate_table,
     apply_tango_pitcher_aging,
     build_hitter_conditional_war_rates,
     build_pitcher_conditional_war_rates,
@@ -157,6 +158,83 @@ def test_pitcher_rates_cover_history_and_prior_players_and_age_components() -> N
     assert result.get_column("conditional_war_per_800_bf").is_finite().all()
     assert result.get_column("posterior_concentration").min() > 0.0
     assert result.get_column("posterior_run_rate_variance").min() >= 0.0
+
+
+def test_pitcher_next_year_profile_applies_only_to_affiliated_evidence() -> None:
+    players = pl.DataFrame({"player_id": [1, 2], "age_years": [25.0, 21.0]})
+    affiliated = pl.DataFrame({
+        "player_id": [2],
+        "weighted_affiliated_exposure": [150.0],
+        "affiliated_reliability": [0.15],
+        "p_so": [0.22],
+        "p_ubb": [0.09],
+        "p_hbp": [0.01],
+        "p_hr": [0.03],
+        "p_other": [0.65],
+    })
+    next_year = pl.DataFrame({
+        "player_id": [1, 2],
+        "next_p_so": [0.10, 0.30],
+        "next_p_ubb": [0.20, 0.07],
+        "next_p_hbp": [0.02, 0.01],
+        "next_p_hr": [0.06, 0.02],
+        "next_p_other": [0.62, 0.60],
+    })
+    result = build_pitcher_conditional_war_rates(
+        players,
+        _pitching_history(),
+        current_season=2026,
+        forecast_seasons=(2027, 2028),
+        reference_batters_faced=980,
+        runs_per_win=10.0,
+        affiliated_profiles=affiliated,
+        affiliated_next_year_profiles=next_year,
+    )
+    affiliated_result = result.filter(pl.col("player_id") == 2).sort("season")
+    assert affiliated_result.item(0, "pitch_process_applied") is True
+    assert math.isclose(affiliated_result.item(0, "predicted_so_rate"), 0.30)
+    assert affiliated_result.item(1, "predicted_so_rate") != 0.30
+    mlb_result = result.filter(pl.col("player_id") == 1)
+    assert not mlb_result.get_column("pitch_process_applied").any()
+
+
+def test_pitcher_process_bridge_preserves_uncovered_and_updates_covered() -> None:
+    affiliated = pl.DataFrame({
+        "player_id": [2],
+        "weighted_affiliated_exposure": [150.0],
+        "affiliated_reliability": [0.15],
+        "p_so": [0.22],
+        "p_ubb": [0.09],
+        "p_hbp": [0.01],
+        "p_hr": [0.03],
+        "p_other": [0.65],
+    })
+    base = build_pitcher_conditional_war_rates(
+        pl.DataFrame({"player_id": [1, 2], "age_years": [25.0, None]}),
+        _pitching_history(),
+        current_season=2026,
+        forecast_seasons=(2027, 2028),
+        reference_batters_faced=980,
+        runs_per_win=10.0,
+        affiliated_profiles=affiliated,
+    )
+    profiles = pl.DataFrame({
+        "player_id": [1, 2],
+        "next_p_so": [0.40, 0.32],
+        "next_p_ubb": [0.05, 0.06],
+        "next_p_hbp": [0.01, 0.01],
+        "next_p_hr": [0.02, 0.02],
+        "next_p_other": [0.52, 0.59],
+    })
+    adjusted = apply_pitcher_next_year_profiles_to_rate_table(
+        base, profiles, current_season=2026, runs_per_win=10.0
+    )
+    covered = adjusted.filter(pl.col("player_id") == 2)
+    assert covered.get_column("pitch_process_applied").all()
+    assert math.isclose(covered.item(0, "predicted_so_rate"), 0.32)
+    uncovered_before = base.filter(pl.col("player_id") == 1).select(base.columns)
+    uncovered_after = adjusted.filter(pl.col("player_id") == 1).select(base.columns)
+    assert uncovered_after.equals(uncovered_before)
 
 
 def test_offseason_rate_cutoff_uses_completed_prior_season() -> None:

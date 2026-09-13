@@ -355,6 +355,7 @@ def build_pitcher_conditional_war_rates(
     evidence_anchor_season: int | None = None,
     reference_season: int | None = None,
     affiliated_profiles: pl.DataFrame | None = None,
+    affiliated_next_year_profiles: pl.DataFrame | None = None,
 ) -> pl.DataFrame:
     """Build universal conditional pitcher WAR/800 BF rates.
 
@@ -412,6 +413,19 @@ def build_pitcher_conditional_war_rates(
     joined = players.join(base, on="player_id", how="left", validate="1:1")
     if affiliated_profiles is not None:
         joined = joined.join(affiliated_profiles, on="player_id", how="left", validate="1:1")
+    if affiliated_next_year_profiles is not None:
+        required_next = {
+            "player_id",
+            *(f"next_p_{key}" for key in ("so", "ubb", "hbp", "hr", "other")),
+        }
+        if missing := sorted(required_next - set(affiliated_next_year_profiles.columns)):
+            raise ValueError(f"pitcher next-year profiles missing columns: {missing}")
+        joined = joined.join(
+            affiliated_next_year_profiles.select(*sorted(required_next)),
+            on="player_id",
+            how="left",
+            validate="1:1",
+        )
     rows: list[dict[str, object]] = []
     for row in joined.iter_rows(named=True):
         mlb_evidence = float(row["weighted_history_bf"])
@@ -432,9 +446,31 @@ def build_pitcher_conditional_war_rates(
             reliability = 0.0
             evidence_tier = "population_prior"
         current_age = None if row["age_years"] is None else float(row["age_years"])
+        process_available = (
+            evidence_tier == "affiliated_translated"
+            and row.get("next_p_so") is not None
+        )
+        next_year_probabilities = (
+            {
+                key: float(row[f"next_p_{key}"])
+                for key in ("so", "ubb", "hbp", "hr", "other")
+            }
+            if process_available
+            else None
+        )
         for season in forecast_seasons:
             target_age = None if current_age is None else current_age + season - current_season
-            aged = apply_tango_pitcher_aging(probabilities, current_age=current_age, target_age=target_age)
+            if next_year_probabilities is not None:
+                next_year_age = None if current_age is None else current_age + 1.0
+                aged = apply_tango_pitcher_aging(
+                    next_year_probabilities,
+                    current_age=next_year_age,
+                    target_age=target_age,
+                )
+            else:
+                aged = apply_tango_pitcher_aging(
+                    probabilities, current_age=current_age, target_age=target_age
+                )
             woba_allowed = sum(aged[key] * weights[key] for key in aged)
             runs_above_average = -(woba_allowed - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE
             event_run_variance = _weighted_variance(
@@ -459,8 +495,104 @@ def build_pitcher_conditional_war_rates(
                     event_run_variance / (posterior_concentration + 1.0)
                 ),
                 "evidence_tier": evidence_tier,
-                "talent_model_id": PITCHER_RATE_MODEL_ID,
+                "talent_model_id": (
+                    PITCHER_RATE_MODEL_ID + "_validated_pitch_process_delta"
+                    if process_available else PITCHER_RATE_MODEL_ID
+                ),
+                "pitch_process_applied": process_available,
                 "aging_source": "tango_adjacent_pitching_regressed_part2",
                 **{f"predicted_{key}_rate": aged[key] for key in aged},
             })
     return pl.DataFrame(rows).sort(["player_id", "season"])
+
+
+def apply_pitcher_next_year_profiles_to_rate_table(
+    rates: pl.DataFrame,
+    next_year_profiles: pl.DataFrame,
+    *,
+    current_season: int,
+    runs_per_win: float,
+) -> pl.DataFrame:
+    """Add a validated next-year component profile to an existing pitcher path."""
+
+    components = ("so", "ubb", "hbp", "hr", "other")
+    required_rates = {
+        "player_id", "season", "target_age", "pitching_runs_above_average_per_800",
+        "replacement_runs_per_800", "posterior_concentration",
+        *(f"predicted_{key}_rate" for key in components),
+    }
+    if missing := sorted(required_rates - set(rates.columns)):
+        raise ValueError(f"pitcher rate table missing columns: {missing}")
+    required_next = {"player_id", *(f"next_p_{key}" for key in components)}
+    if missing := sorted(required_next - set(next_year_profiles.columns)):
+        raise ValueError(f"pitcher next-year profiles missing columns: {missing}")
+    rpw = _finite_positive(runs_per_win, "runs_per_win")
+    source = rates.join(next_year_profiles, on="player_id", how="left", validate="m:1")
+    implied_other_weight = (
+        0.3188
+        - pl.col("pitching_runs_above_average_per_800")
+        * NEUTRAL_WOBA_SCALE / 800.0
+        - pl.col("predicted_ubb_rate") * NEUTRAL_WOBA_WEIGHTS["UBB"]
+        - pl.col("predicted_hbp_rate") * NEUTRAL_WOBA_WEIGHTS["HBP"]
+        - pl.col("predicted_hr_rate") * NEUTRAL_WOBA_WEIGHTS["HR"]
+    ) / pl.col("predicted_other_rate")
+    other_weight = float(source.select(implied_other_weight.median()).item())
+    weights = {
+        "so": 0.0,
+        "ubb": NEUTRAL_WOBA_WEIGHTS["UBB"],
+        "hbp": NEUTRAL_WOBA_WEIGHTS["HBP"],
+        "hr": NEUTRAL_WOBA_WEIGHTS["HR"],
+        "other": other_weight,
+    }
+    rows = []
+    for row in source.iter_rows(named=True):
+        # The promoted process model was trained and validated on affiliated
+        # seasons. A pitcher can have both current minor-league process data
+        # and prior MLB history, so require the affiliated evidence tier here.
+        applicable = (
+            row.get("evidence_tier") == "affiliated_translated"
+            and row.get("next_p_so") is not None
+        )
+        if applicable:
+            next_profile = {
+                key: float(row[f"next_p_{key}"]) for key in components
+            }
+            target_age = row["target_age"]
+            next_age = (
+                None if target_age is None
+                else float(target_age) - (int(row["season"]) - current_season - 1)
+            )
+            predicted = apply_tango_pitcher_aging(
+                next_profile,
+                current_age=next_age,
+                target_age=None if target_age is None else float(target_age),
+            )
+            woba_allowed = sum(predicted[key] * weights[key] for key in components)
+            runs = -(woba_allowed - 0.3188) * 800.0 / NEUTRAL_WOBA_SCALE
+            event_variance = _weighted_variance(
+                predicted,
+                {key: weights[key] / NEUTRAL_WOBA_SCALE for key in components},
+            )
+            concentration = float(row["posterior_concentration"])
+            updates = {
+                "pitching_runs_above_average_per_800": runs,
+                "conditional_war_per_800_bf": (
+                    runs + float(row["replacement_runs_per_800"])
+                ) / rpw,
+                "event_run_variance": event_variance,
+                "posterior_run_rate_variance": event_variance / (concentration + 1.0),
+                "talent_model_id": PITCHER_RATE_MODEL_ID + "_validated_pitch_process_delta",
+                "pitch_process_applied": True,
+                **{f"predicted_{key}_rate": predicted[key] for key in components},
+            }
+        else:
+            updates = {"pitch_process_applied": False}
+        rows.append({
+            **{
+                column: row[column]
+                for column in rates.columns
+                if column not in updates
+            },
+            **updates,
+        })
+    return pl.DataFrame(rows, infer_schema_length=None).sort(["player_id", "season"])

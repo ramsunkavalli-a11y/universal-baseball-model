@@ -741,3 +741,19 @@ still provisional because public evaluators observe physical pitch traits that t
 feed does not. Next test a historical, pitcher-only top-tail presentation using the
 already validated mean and upside outputs; do not add public FV to the model. See
 `docs/current-pitcher-ranking-checkpoint.md`.
+
+The September 12 continuation closes two production-lineage gaps. The validated
+high-minors pitch-process challenger now changes only affiliated-evidence pitcher
+rates before frozen Tango aging; MLB-history and uncovered pitchers remain untouched.
+A separate established-hitter active-probability model adds the two prior MLB seasons
+and heavily regressed batting quality, improving both proper probability scores at
+every tested horizon from one through six years. It changes probability only, not
+conditional workload or talent. Both bridges rebuild from the current Phase 2
+workload source so an older opportunity table cannot silently return. See
+[the bridge result](pitcher-process-and-established-hitter-bridge-result.md).
+
+**Current P0 build order:** Phase 2 workload -> conditional rates -> pitcher process
+bridge -> established-hitter probability bridge -> Phase 2 WAR uncertainty -> Model
+FV/nested career/current value -> results explorer. The uncertainty materializer must
+receive `phase2-conditional-war-paths` explicitly; its legacy default is not the
+private-preview source.

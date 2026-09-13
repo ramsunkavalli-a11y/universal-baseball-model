@@ -47,6 +47,10 @@ def main() -> int:
     pitcher_adjustment_id = war_report.get("affiliated_rate_evidence", {}).get(
         "pitcher_demographic_adjustment_id"
     )
+    pitcher_process_active = (
+        war_report.get("pitcher_process_bridge", {}).get("status")
+        == "validated_next_year_delta_applied"
+    )
     pre_mlb = (
         pl.read_parquet(root / "league-control" / dated / "league-control-snapshot.parquet")
         .filter(pl.col("mlb_debut_date").is_null())
@@ -164,12 +168,15 @@ def main() -> int:
         "external_fv_check": external_check,
         "boundaries": {
             "outside_fv_used_for_selection": False,
-            "skill_or_role_rates_changed": pitcher_adjustment_id is not None,
+            "skill_or_role_rates_changed": (
+                pitcher_adjustment_id is not None or pitcher_process_active
+            ),
             "pitcher_demographic_adjustment_id": pitcher_adjustment_id,
             "contracts_or_costs_changed": False,
             "organization_neutral_product_values_changed": (
-                pitcher_adjustment_id is not None
+                pitcher_adjustment_id is not None or pitcher_process_active
             ),
+            "pitcher_process_bridge_active": pitcher_process_active,
             "six_year_conditional_hazards_are_approximate": True,
             "direct_unconditional_role_probability_cap_active": True,
             "fresh_confirmation_required": True,

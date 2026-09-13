@@ -46,6 +46,15 @@ def main() -> int:
     args = _args()
     dated = args.as_of_date.isoformat()
     root = args.generated_root
+    war_report = json.loads(
+        (root / "phase2-conditional-war-paths" / dated / "report.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    pitcher_process_active = (
+        war_report.get("pitcher_process_bridge", {}).get("status")
+        == "validated_next_year_delta_applied"
+    )
     control = pl.read_parquet(
         root / "league-control" / dated / "league-control-snapshot.parquet"
     )
@@ -179,9 +188,9 @@ def main() -> int:
         "boundaries": {
             "publication_grades_used_as_inputs": False,
             "outside_fv_used_for_selection": False,
-            "skill_rates_changed": False,
+            "skill_rates_changed": pitcher_process_active,
             "contract_values_changed": False,
-            "current_product_values_changed": False,
+            "current_product_values_changed": pitcher_process_active,
             "fresh_confirmation_required": True,
         },
         "probability_ordering_corrections": ordering,

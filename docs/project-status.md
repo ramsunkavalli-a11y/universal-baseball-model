@@ -1334,3 +1334,15 @@ contact totals.
 - Rejected rigid hitter-position caps: they materially worsened RMSE and created a large workload shortfall.
 - Did not promote rigid pitcher-role caps: MAE improved but RMSE did not, and every pitcher was reduced through fractional crowded-role exposure.
 - Next challenger must allow dated, evidence-based multi-position and pitcher-role flexibility before any within-team workload is discarded.
+
+### 2026-09-12 private-preview bridge update
+
+- Validated high-minors pitch-process evidence now flows through pitcher WAR and FV,
+  with strict affiliated-only coverage.
+- Current MLB hitter active probability now uses the prior two MLB seasons and a
+  heavily regressed batting-quality signal; every one-to-six-year probability check
+  improved.
+- Aaron Judge moved from 4.07 to 6.10 rest-of-contract WAR. Keyner Martinez moved
+  from 0.42 to 1.44 conditional WAR per 800 BF for 2027.
+- The rebuilt explorer passes all 46 model-law checks. See
+  `docs/pitcher-process-and-established-hitter-bridge-result.md`.

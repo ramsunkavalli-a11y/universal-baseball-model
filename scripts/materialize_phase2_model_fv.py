@@ -50,6 +50,9 @@ def main() -> int:
     args = _args()
     dated = args.as_of_date.isoformat()
     war_tables = args.war_root / dated / "tables"
+    war_report = json.loads(
+        (args.war_root / dated / "report.json").read_text(encoding="utf-8")
+    )
     uncertainty = (
         args.uncertainty_root / dated / "tables/whole-player-war-uncertainty.parquet"
     )
@@ -140,6 +143,14 @@ def main() -> int:
             "meaningful_role_probability_is_diagnostic_only": False,
             "established_role_probability_is_diagnostic_only": False,
             "role_workload_pa": {"catcher": 450.0, "other_hitter": 550.0},
+            "validated_pitcher_process_bridge_used": (
+                war_report.get("pitcher_process_bridge", {}).get("status")
+                == "validated_next_year_delta_applied"
+            ),
+            "validated_established_hitter_probability_bridge_used": (
+                war_report.get("established_hitter_opportunity_bridge", {}).get("status")
+                == "validated_active_probability_applied"
+            ),
         },
         "storage": storage,
     }

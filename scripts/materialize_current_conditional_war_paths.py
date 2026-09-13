@@ -8,9 +8,15 @@ from datetime import date
 import json
 from pathlib import Path
 
+import numpy as np
 import polars as pl
 
+from audit_one_year_talent_development import PITCHER_COMPONENTS as PROCESS_COMPONENTS
+from audit_pitcher_process_challenger import _load_process, _process_features
+from materialize_current_future_talent import _model_predict, _prepare
+
 from universal_baseball.conditional_war_rates import (
+    apply_tango_pitcher_aging,
     build_hitter_conditional_war_rates,
     build_pitcher_conditional_war_rates,
 )
@@ -27,6 +33,7 @@ from universal_baseball.projection_lineage import (
     validate_opportunity_source,
 )
 from universal_baseball.storage import write_canonical_parquet
+from universal_baseball.projection_composition import ilr_transform, inverse_ilr_transform
 
 
 NON_CONTROL_STATUSES = {"free_agent", "free_agent_eligible"}
@@ -99,7 +106,72 @@ def _args() -> argparse.Namespace:
         "--output-root", type=Path,
         default=Path("reports/generated/phase2-conditional-war-paths"),
     )
+    parser.add_argument(
+        "--pitcher-process-artifact",
+        type=Path,
+        default=Path("model_artifacts/pitcher-next-year-process-v1.json"),
+    )
+    parser.add_argument(
+        "--current-basic-talent-root",
+        type=Path,
+        default=Path("reports/generated/current-basic-talent/2026-09-08/tables"),
+    )
     return parser.parse_args()
+
+
+def _pitcher_process_next_year_profiles(
+    basic_path: Path, artifact_path: Path, *, current_season: int
+) -> pl.DataFrame | None:
+    if not artifact_path.exists():
+        return None
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    if artifact.get("status") != "promoted_optional_high_minors_next_year_input":
+        return None
+    frame = _prepare(
+        basic_path, PROCESS_COMPONENTS, player_type="pitcher"
+    ).with_columns(pl.lit(current_season).alias("origin_year"))
+    process = (
+        _process_features(_load_process())
+        .filter(pl.col("season") == current_season)
+        .drop("season", "bf")
+    )
+    frame = frame.join(
+        process,
+        on=["player_id", "level_group"],
+        how="inner",
+        validate="m:1",
+    )
+    candidate = _model_predict(frame, PROCESS_COMPONENTS, artifact["fit"])
+    reference = _model_predict(
+        frame, PROCESS_COMPONENTS, artifact["same_cohort_reference_fit"]
+    )
+    basis = np.asarray(artifact["fit"]["ilr_basis"], dtype=float)
+    present = frame.select([f"p_{key}" for key in PROCESS_COMPONENTS]).to_numpy()
+    ages = frame.get_column("age_years").to_numpy()
+    baseline_rows = []
+    for profile, age in zip(present, ages, strict=True):
+        aged = apply_tango_pitcher_aging(
+            dict(zip(PROCESS_COMPONENTS, profile, strict=True)),
+            current_age=float(age),
+            target_age=float(age) + 1.0,
+        )
+        baseline_rows.append([aged[key] for key in PROCESS_COMPONENTS])
+    baseline = np.asarray(baseline_rows)
+    adjusted = np.asarray([
+        inverse_ilr_transform(
+            np.asarray(ilr_transform(base, basis=basis))
+            + np.asarray(ilr_transform(candidate[index], basis=basis))
+            - np.asarray(ilr_transform(reference[index], basis=basis)),
+            basis=basis,
+        )
+        for index, base in enumerate(baseline)
+    ])
+    return frame.select("player_id").with_columns(
+        *(
+            pl.Series(f"next_p_{key}", adjusted[:, index])
+            for index, key in enumerate(PROCESS_COMPONENTS)
+        )
+    )
 
 
 def _parse_seasons(raw: str) -> tuple[int, ...]:
@@ -237,6 +309,11 @@ def main() -> int:
         args.defense_root / args.as_of_date.isoformat()
         / "tables/hitter-defense-rates.parquet"
     )
+    pitcher_process_profiles = _pitcher_process_next_year_profiles(
+        args.current_basic_talent_root / "current_pitcher_talent.parquet",
+        args.pitcher_process_artifact,
+        current_season=args.as_of_date.year,
+    )
     hitter_rates = build_hitter_conditional_war_rates(
         hitter_players, hitting, current_season=args.as_of_date.year,
         forecast_seasons=seasons,
@@ -252,6 +329,7 @@ def main() -> int:
         reference_batters_faced=int(reference["pitching_batters_faced"]),
         runs_per_win=float(reference["runs_per_win"]),
         affiliated_profiles=pitcher_profiles,
+        affiliated_next_year_profiles=pitcher_process_profiles,
     ).with_columns(
         pl.when(
             (pl.col("evidence_tier") == "affiliated_translated")
@@ -322,6 +400,15 @@ def main() -> int:
             ),
             "pitcher_demographic_adjustment_applied_players": (
                 demographic_adjustment_count
+            ),
+            "pitcher_process_artifact": (
+                str(args.pitcher_process_artifact)
+                if pitcher_process_profiles is not None else None
+            ),
+            "pitcher_process_applied_players": (
+                0 if pitcher_process_profiles is None else pitcher_rates.filter(
+                    pl.col("pitch_process_applied")
+                ).get_column("player_id").n_unique()
             ),
             "pitcher_demographic_adjustment_warning": (
                 "small 2025 point-score gain; player-bootstrap intervals cross zero; "
