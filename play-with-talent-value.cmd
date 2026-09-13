@@ -10,6 +10,8 @@ if not exist ".venv\Scripts\python.exe" (
 if errorlevel 1 goto :build_error
 ".venv\Scripts\python.exe" "scripts\materialize_prospect_pitcher_comparables.py" --as-of-date 2026-09-08
 if errorlevel 1 goto :build_error
+".venv\Scripts\python.exe" "scripts\materialize_current_six_year_partial_value.py" --as-of-date 2026-09-13
+if errorlevel 1 goto :build_error
 ".venv\Scripts\python.exe" "scripts\build_talent_value_explorer.py"
 if errorlevel 1 goto :build_error
 if /i "%~1"=="--build-only" (

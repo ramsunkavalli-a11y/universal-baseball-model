@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 from datetime import date
 import json
+import math
 from pathlib import Path
 
 import polars as pl
@@ -116,7 +117,8 @@ def _materialize_type(
         reference, target, comparable_count=DEFAULT_COMPARABLES
     )
     arrived = reference.filter(pl.col("later_mlb_workload") > 0)
-    global_conditional = float(arrived["later_component_war"].mean())
+    arrived_values = arrived.sort("player_id")["later_component_war"].to_list()
+    global_conditional = math.fsum(arrived_values) / len(arrived_values)
     if player_type == "hitter":
         scored = scored.with_columns(
             (
@@ -164,6 +166,10 @@ def _materialize_type(
             pl.lit(global_conditional).alias("global_conditional_partial_war_6y"),
             pl.lit(method).alias("six_year_value_method"),
         )
+        # Parallel historical reductions can differ below machine-meaningful
+        # precision.  Freeze the public interface at twelve decimal places so
+        # identical baseball inputs produce identical rows and artifact hashes.
+        .with_columns(pl.col(pl.Float64).round(12))
         .with_columns(
             (
                 pl.col("expected_partial_war_6y")
@@ -171,6 +177,7 @@ def _materialize_type(
                 * pl.col("conditional_partial_war_6y")
             )
             .abs()
+            .round(12)
             .alias("expectation_identity_error")
         )
         .sort("player_id")
@@ -201,11 +208,19 @@ def main() -> int:
         ).as_record()
         summaries[player_type] = {
             "players": frame.height,
-            "mean_comparable_arrival_probability": float(
-                frame["comparable_arrival_probability_6y"].mean()
+            "mean_comparable_arrival_probability": round(
+                math.fsum(frame["comparable_arrival_probability_6y"].to_list())
+                / frame.height,
+                12,
             ),
-            "mean_expected_partial_war": float(frame["expected_partial_war_6y"].mean()),
-            "maximum_expected_partial_war": float(frame["expected_partial_war_6y"].max()),
+            "mean_expected_partial_war": round(
+                math.fsum(frame["expected_partial_war_6y"].to_list())
+                / frame.height,
+                12,
+            ),
+            "maximum_expected_partial_war": round(
+                float(frame["expected_partial_war_6y"].max()), 12
+            ),
         }
     report = {
         "status": "current_six_year_partial_value_materialized",

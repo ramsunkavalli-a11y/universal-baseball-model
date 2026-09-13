@@ -1,6 +1,33 @@
 # Project status and handoff
 
-Updated 2026-09-12. This is the current start-here document.
+Updated 2026-09-13. This is the current start-here document.
+
+## Current stopping point: validated six-year partial prospect outcomes
+
+The former prospect FV output is withdrawn. Its conversion from talent to controlled
+WAR relied on an untested assumption and produced implausible grades. Public ranks and
+FV remain audit evidence only; they are not model inputs or corrective floors.
+
+The replacement separates three quantities for every current prospect over the six
+calendar seasons from 2026 through 2031:
+
+1. historical-comparable probability of reaching MLB;
+2. batting- or pitching-plus-replacement WAR conditional on reaching MLB;
+3. expected partial WAR, equal to the first quantity multiplied by the second, with
+   non-arrivals retained as zero.
+
+This structure has chronology-safe historical support. Pitchers pass all four strict
+replay folds. Hitters beat the population baseline in all four development folds; a
+conditional-quality blend selected on those folds passed every frozen gate on the
+previously untouched 2017 cohort. The current explorer contains 6,988 player/type rows,
+defaults to expected partial WAR, and labels conditional WAR as upside and MLB arrival
+as risk. Its published numeric interface is fixed at twelve decimal places, so
+identical inputs now reproduce identical player tables and artifact hashes.
+
+This is not FV, whole-player WAR, controlled WAR or dollar value. Defense, full
+baserunning, exact annual workload/service timing and salary remain outside the result.
+The next P0 is an annual, joint workload-and-service replay, followed by whole-player
+WAR. Only then may the model test an empirical mapping to the 20-80 scale.
 
 ## Current P0: believable talent ordering
 
