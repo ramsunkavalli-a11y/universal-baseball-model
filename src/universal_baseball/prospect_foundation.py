@@ -96,34 +96,6 @@ def _row_lookup(frame: pl.DataFrame, *keys: str) -> dict[tuple[Any, ...], dict[s
     }
 
 
-def _negative_control_summary(
-    evidence: dict[str, Any] | None,
-) -> tuple[dict[str, Any] | None, dict[str, float | int] | None]:
-    if not evidence:
-        return None, None
-    definition = evidence["definition"]
-    cohorts = [row["negative_control"] for row in evidence["results"].values()]
-    players = sum(int(row["players"]) for row in cohorts)
-    if players <= 0:
-        return definition, None
-    return definition, {
-        "players": players,
-        "arrivals": sum(int(row["arrivals"]) for row in cohorts),
-        "arrival_rate": sum(
-            float(row["arrival_rate"]) * int(row["players"]) for row in cohorts
-        ) / players,
-        "mean_positive_later_component_war": sum(
-            float(row["mean_positive_later_component_war"])
-            * int(row["players"])
-            for row in cohorts
-        ) / players,
-        "impact_rate_one_war": sum(
-            float(row["impact_rate_one_war"]) * int(row["players"])
-            for row in cohorts
-        ) / players,
-    }
-
-
 def build_prospect_foundation_payload(
     peak_hitters: pl.DataFrame,
     peak_pitchers: pl.DataFrame,
@@ -134,9 +106,9 @@ def build_prospect_foundation_payload(
     names: pl.DataFrame,
     raw_hitting: pl.DataFrame,
     raw_pitching: pl.DataFrame,
+    hitter_comparables: pl.DataFrame | None = None,
     *,
     season: int,
-    negative_control_evidence: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Join validated talent stages while keeping FV and value unavailable."""
 
@@ -160,8 +132,11 @@ def build_prospect_foundation_payload(
         hitter_arrival.with_columns(pl.lit("hitter").alias("player_type")),
         pitcher_arrival.with_columns(pl.lit("pitcher").alias("player_type")),
     ], how="diagonal_relaxed")
-    negative_definition, negative_history = _negative_control_summary(
-        negative_control_evidence
+    comparable_lookup = _row_lookup(
+        hitter_comparables
+        if hitter_comparables is not None
+        else pl.DataFrame(schema={"player_id": pl.Int64}),
+        "player_id",
     )
     players: list[dict[str, Any]] = []
     for arrival in arrivals.iter_rows(named=True):
@@ -180,18 +155,7 @@ def build_prospect_foundation_payload(
             and age is not None
             and 16.0 <= float(age) <= 23.0
         )
-        weak_low_level_hitter = bool(
-            player_type == "hitter"
-            and negative_definition
-            and age is not None
-            and float(age) >= float(negative_definition["minimum_age"])
-            and arrival.get("primary_level_tier")
-            == negative_definition["primary_level"]
-            and float(arrival.get("current_milb_workload") or 0.0)
-            >= float(negative_definition["minimum_current_pa"])
-            and float(arrival.get("production_rate_4") or 0.0)
-            <= float(negative_definition["maximum_xbh_per_pa"])
-        )
+        comparable = comparable_lookup.get((player_id,), {})
         players.append({
             "key": f"{player_id}:{player_type}",
             "id": player_id,
@@ -226,16 +190,20 @@ def build_prospect_foundation_payload(
             "pitch_process_applied": peak.get("pitch_process_applied"),
             "pitch_process_runs_change": peak.get("pitch_process_runs_change"),
             "raw_levels": raw_lookup[player_type].get(player_id, []),
-            "negative_control": weak_low_level_hitter,
-            "negative_control_history": (
-                negative_history if weak_low_level_hitter else None
+            "historical_comparable_players": comparable.get(
+                "historical_comparable_players"
             ),
-            "mlb_batting_outlook": (
-                "near_zero_supported_by_history"
-                if weak_low_level_hitter
-                else "not_classified_by_negative_control"
-                if player_type == "hitter"
-                else None
+            "historical_arrival_rate_4y": comparable.get(
+                "historical_arrival_rate_4y"
+            ),
+            "historical_component_war_4y": comparable.get(
+                "historical_component_war_4y"
+            ),
+            "historical_positive_component_war_4y": comparable.get(
+                "historical_positive_component_war_4y"
+            ),
+            "historical_impact_rate_4y": comparable.get(
+                "historical_impact_rate_4y"
             ),
             "fv": None,
             "expected_war": None,
@@ -255,7 +223,6 @@ def build_prospect_foundation_payload(
                 "Prospect FV, expected WAR and value are withdrawn until the complete "
                 "historical outcome model passes."
             ),
-            "negative_control_evidence": negative_control_evidence,
         },
         "players": players,
     }

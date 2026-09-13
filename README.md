@@ -160,8 +160,11 @@ For the prospect talent-foundation view, double-click
 `play-with-talent-value.cmd`. Prospect FV, WAR and value are temporarily withdrawn:
 the prior assembly used a rejected conditional-WAR baseline. The replacement page
 shows raw level performance, translated present skill, validated one- and two-year
-rates, supported peak talent, evidence and the workload-supported level. Build it
-directly with `python scripts/build_talent_value_explorer.py`.
+rates, supported peak talent, evidence, workload-supported level and the same
+historical-comparable outcome method for every hitter. The launcher creates that
+comparison automatically when needed. To rebuild it directly, first run
+`python scripts/materialize_prospect_hitter_comparables.py --as-of-date 2026-09-08`,
+then `python scripts/build_talent_value_explorer.py`.
 
 The builder automatically uses the newest dated checkpoint that has value, annual and
 player-name files, so the same launcher will follow later complete builds.

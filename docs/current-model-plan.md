@@ -787,3 +787,10 @@ batting-component WAR over the next four years; none reached 1 WAR. Use this as 
 approximately-zero MLB batting baseline, not as a total-value cap or a substitute for
 the full outcome model. See
 [the negative-control result](weak-low-level-hitter-negative-control-result.md).
+
+That narrow rule is only a named sanity check. It is not the scoring method. The
+foundation explorer now applies one [universal historical-comparable method](prospect-hitter-historical-comparables-result.md)
+to every hitter. The time-ordered 2021 test improved bias, MAE and RMSE versus the
+population baseline. Next, build the equivalent universal pitcher comparison, then
+test whether these four-year outcomes can support a stable FV mapping without adding
+position or playing-time assumptions prematurely.

@@ -6,6 +6,9 @@ if not exist ".venv\Scripts\python.exe" (
   pause
   exit /b 1
 )
+if not exist "reports\generated\prospect-historical-comparables\2026-09-08\hitter-comparables.parquet" (
+  ".venv\Scripts\python.exe" "scripts\materialize_prospect_hitter_comparables.py" --as-of-date 2026-09-08
+)
 ".venv\Scripts\python.exe" "scripts\build_talent_value_explorer.py"
 if errorlevel 1 (
   echo.

@@ -1,0 +1,42 @@
+{
+  "as_of_date": "2026-09-08",
+  "current_players": 2871,
+  "method": {
+    "comparable_count": 150,
+    "features": [
+      "age",
+      "primary level",
+      "current workload",
+      "walk rate",
+      "strikeout rate",
+      "home-run rate",
+      "extra-base-hit rate"
+    ],
+    "horizon_years": 4,
+    "nonarrivals_scored_zero": true,
+    "outside_fv_used": false,
+    "rate_regression_pa": 200.0,
+    "reference_origins": [
+      2018,
+      2021
+    ],
+    "same_primary_level": true
+  },
+  "reference_players": 6534,
+  "status": "universal_hitter_comparable_evidence_not_fv_model",
+  "time_ordered_2021_validation": {
+    "historical_comparables": {
+      "bias": -0.020429294879792243,
+      "mae": 0.26388202155646323,
+      "rmse": 0.9596446029592928
+    },
+    "players": 3251,
+    "population_baseline": {
+      "bias": 0.041749960028326955,
+      "mae": 0.34461970548208387,
+      "rmse": 0.9957384907977285
+    },
+    "reference_origin": 2018,
+    "same_player_overlap_removed": true
+  }
+}

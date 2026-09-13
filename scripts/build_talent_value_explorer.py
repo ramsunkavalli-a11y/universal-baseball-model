@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import json
 from pathlib import Path
 
 import polars as pl
@@ -34,8 +33,9 @@ def main() -> int:
     arrival = generated / "phase2-prospect-arrival" / dated
     control = generated / "league-control" / dated / "league-control-snapshot.parquet"
     raw = generated / "affiliated-skill-source" / "tables"
-    negative_control = Path(
-        "docs/weak-low-level-hitter-negative-control-result.json"
+    hitter_comparables = (
+        generated / "prospect-historical-comparables" / dated
+        / "hitter-comparables.parquet"
     )
     required = (
         peak / "current_peak_hitters.parquet",
@@ -47,7 +47,7 @@ def main() -> int:
         control,
         raw / "affiliated_hitting_components.parquet",
         raw / "affiliated_pitching_components.parquet",
-        negative_control,
+        hitter_comparables,
     )
     if missing := [path for path in required if not path.exists()]:
         raise FileNotFoundError(
@@ -63,8 +63,8 @@ def main() -> int:
         pl.read_parquet(required[6]),
         pl.read_parquet(required[7]),
         pl.read_parquet(required[8]),
+        pl.read_parquet(required[9]),
         season=int(dated[:4]),
-        negative_control_evidence=json.loads(negative_control.read_text(encoding="utf-8")),
     )
     write_prospect_foundation_explorer(
         payload,
