@@ -6,16 +6,12 @@ if not exist ".venv\Scripts\python.exe" (
   pause
   exit /b 1
 )
-if not exist "reports\generated\prospect-historical-comparables\2026-09-08\hitter-comparables.parquet" (
-  ".venv\Scripts\python.exe" "scripts\materialize_prospect_hitter_comparables.py" --as-of-date 2026-09-08
-)
+".venv\Scripts\python.exe" "scripts\materialize_prospect_hitter_comparables.py" --as-of-date 2026-09-08
+if errorlevel 1 goto :build_error
+".venv\Scripts\python.exe" "scripts\materialize_prospect_pitcher_comparables.py" --as-of-date 2026-09-08
+if errorlevel 1 goto :build_error
 ".venv\Scripts\python.exe" "scripts\build_talent_value_explorer.py"
-if errorlevel 1 (
-  echo.
-  echo The prospect talent foundation viewer could not be created.
-  pause
-  exit /b 1
-)
+if errorlevel 1 goto :build_error
 if /i "%~1"=="--build-only" (
   endlocal
   exit /b 0
@@ -38,3 +34,11 @@ echo %RESULT_PATH%
 explorer.exe /select,"%RESULT_PATH%"
 pause
 endlocal
+exit /b 0
+
+:build_error
+echo.
+echo The prospect talent foundation viewer could not be created.
+pause
+endlocal
+exit /b 1

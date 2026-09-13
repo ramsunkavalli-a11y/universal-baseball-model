@@ -5,7 +5,7 @@
     "comparable_count": 150,
     "features": [
       "age",
-      "primary level",
+      "primary exact level",
       "current workload",
       "walk rate",
       "strikeout rate",
@@ -20,15 +20,173 @@
       2018,
       2021
     ],
-    "same_primary_level": true
+    "same_primary_exact_level": true
   },
   "reference_players": 6534,
   "status": "universal_hitter_comparable_evidence_not_fv_model",
   "time_ordered_2021_validation": {
+    "arrival_historical_comparables": {
+      "brier": 0.08750740588761295,
+      "log_loss": 0.30173535077368757
+    },
+    "arrival_population_baseline": {
+      "brier": 0.11185743550201915,
+      "log_loss": 0.3832637573494113
+    },
+    "comparable_count_sensitivity": {
+      "100": {
+        "arrival_historical_comparables": {
+          "brier": 0.0831541371830206,
+          "log_loss": 0.3194074033505352
+        },
+        "arrival_population_baseline": {
+          "brier": 0.11185743550201915,
+          "log_loss": 0.3832637573494113
+        },
+        "conditional_component_rate": {
+          "arrivals": 417,
+          "historical_comparables_mae": 0.7782105195216583,
+          "historical_comparables_rmse": 1.0232377799201129,
+          "population_baseline_mae": 0.7956524203885208,
+          "population_baseline_rmse": 1.0115639375415866,
+          "regression_exposure": 200
+        },
+        "historical_comparables": {
+          "bias": -0.03209509896767107,
+          "mae": 0.24871495357474824,
+          "rmse": 0.9404077329113775
+        },
+        "population_baseline": {
+          "bias": 0.041749960028326955,
+          "mae": 0.34461970548208387,
+          "rmse": 0.9957384907977285
+        }
+      },
+      "150": {
+        "arrival_historical_comparables": {
+          "brier": 0.08750740588761295,
+          "log_loss": 0.30173535077368757
+        },
+        "arrival_population_baseline": {
+          "brier": 0.11185743550201915,
+          "log_loss": 0.3832637573494113
+        },
+        "conditional_component_rate": {
+          "arrivals": 417,
+          "historical_comparables_mae": 0.7603747487638485,
+          "historical_comparables_rmse": 1.0013759711907388,
+          "population_baseline_mae": 0.7956524203885208,
+          "population_baseline_rmse": 1.0115639375415866,
+          "regression_exposure": 200
+        },
+        "historical_comparables": {
+          "bias": -0.023221367087212914,
+          "mae": 0.26260837100219075,
+          "rmse": 0.9593053713894766
+        },
+        "population_baseline": {
+          "bias": 0.041749960028326955,
+          "mae": 0.34461970548208387,
+          "rmse": 0.9957384907977285
+        }
+      },
+      "25": {
+        "arrival_historical_comparables": {
+          "brier": 0.07768243615564442,
+          "log_loss": 0.40362977865175936
+        },
+        "arrival_population_baseline": {
+          "brier": 0.11185743550201915,
+          "log_loss": 0.3832637573494113
+        },
+        "conditional_component_rate": {
+          "arrivals": 417,
+          "historical_comparables_mae": 0.8527750327655448,
+          "historical_comparables_rmse": 1.0979160405716057,
+          "population_baseline_mae": 0.7956524203885208,
+          "population_baseline_rmse": 1.0115639375415866,
+          "regression_exposure": 200
+        },
+        "historical_comparables": {
+          "bias": -0.007589620811787135,
+          "mae": 0.2598759585680079,
+          "rmse": 0.9207230758840156
+        },
+        "population_baseline": {
+          "bias": 0.041749960028326955,
+          "mae": 0.34461970548208387,
+          "rmse": 0.9957384907977285
+        }
+      },
+      "250": {
+        "arrival_historical_comparables": {
+          "brier": 0.09421375183429603,
+          "log_loss": 0.3084750318187776
+        },
+        "arrival_population_baseline": {
+          "brier": 0.11185743550201915,
+          "log_loss": 0.3832637573494113
+        },
+        "conditional_component_rate": {
+          "arrivals": 417,
+          "historical_comparables_mae": 0.7547851683270199,
+          "historical_comparables_rmse": 0.9969073495542548,
+          "population_baseline_mae": 0.7956524203885208,
+          "population_baseline_rmse": 1.0115639375415866,
+          "regression_exposure": 200
+        },
+        "historical_comparables": {
+          "bias": -0.013907341746099757,
+          "mae": 0.2755694305891583,
+          "rmse": 0.9731415288206987
+        },
+        "population_baseline": {
+          "bias": 0.041749960028326955,
+          "mae": 0.34461970548208387,
+          "rmse": 0.9957384907977285
+        }
+      },
+      "50": {
+        "arrival_historical_comparables": {
+          "brier": 0.07855995077453093,
+          "log_loss": 0.3415245467530391
+        },
+        "arrival_population_baseline": {
+          "brier": 0.11185743550201915,
+          "log_loss": 0.3832637573494113
+        },
+        "conditional_component_rate": {
+          "arrivals": 417,
+          "historical_comparables_mae": 0.8000274073217334,
+          "historical_comparables_rmse": 1.0411519025218605,
+          "population_baseline_mae": 0.7956524203885208,
+          "population_baseline_rmse": 1.0115639375415866,
+          "regression_exposure": 200
+        },
+        "historical_comparables": {
+          "bias": -0.018330075954338335,
+          "mae": 0.2531452314284558,
+          "rmse": 0.927348366669351
+        },
+        "population_baseline": {
+          "bias": 0.041749960028326955,
+          "mae": 0.34461970548208387,
+          "rmse": 0.9957384907977285
+        }
+      }
+    },
+    "conditional_component_rate": {
+      "arrivals": 417,
+      "historical_comparables_mae": 0.7603747487638485,
+      "historical_comparables_rmse": 1.0013759711907388,
+      "population_baseline_mae": 0.7956524203885208,
+      "population_baseline_rmse": 1.0115639375415866,
+      "regression_exposure": 200
+    },
     "historical_comparables": {
-      "bias": -0.020429294879792243,
-      "mae": 0.26388202155646323,
-      "rmse": 0.9596446029592928
+      "bias": -0.023221367087212914,
+      "mae": 0.26260837100219075,
+      "rmse": 0.9593053713894766
     },
     "players": 3251,
     "population_baseline": {

@@ -159,11 +159,15 @@ python scripts/build_results_explorer.py
 For the prospect talent-foundation view, double-click
 `play-with-talent-value.cmd`. Prospect FV, WAR and value are temporarily withdrawn:
 the prior assembly used a rejected conditional-WAR baseline. The replacement page
-shows raw level performance, translated present skill, validated one- and two-year
-rates, supported peak talent, evidence, workload-supported level and the same
-historical-comparable outcome method for every hitter. The launcher creates that
-comparison automatically when needed. To rebuild it directly, first run
+shows undiscounted raw workload and performance, exact workload-supported level,
+translation confidence, historical MLB-arrival frequency, conditional MLB component
+quality when validated, and all-player expected component WAR. The same historical-
+comparable method now covers every hitter and pitcher. Pitcher conditional quality is
+withheld because it did not beat the held-out population baseline; pitcher arrival and
+expected outcome did. The launcher rebuilds both comparisons every time. To rebuild
+it directly, first run
 `python scripts/materialize_prospect_hitter_comparables.py --as-of-date 2026-09-08`,
+then `python scripts/materialize_prospect_pitcher_comparables.py --as-of-date 2026-09-08`,
 then `python scripts/build_talent_value_explorer.py`.
 
 The builder automatically uses the newest dated checkpoint that has value, annual and

@@ -17,6 +17,7 @@ from universal_baseball.historical_hitter_performance import (
 from universal_baseball.prospect_arrival import build_arrival_cohort
 from universal_baseball.prospect_historical_comparables import (
     DEFAULT_COMPARABLES,
+    primary_exact_level,
     score_hitter_comparables,
 )
 from universal_baseball.storage import write_canonical_parquet
@@ -114,6 +115,78 @@ def _metrics(actual: np.ndarray, prediction: np.ndarray) -> dict[str, float]:
     }
 
 
+def _probability_metrics(actual: np.ndarray, prediction: np.ndarray) -> dict[str, float]:
+    probability = np.clip(prediction.astype(float), 1e-9, 1.0 - 1e-9)
+    outcome = actual.astype(float)
+    return {
+        "brier": float(np.square(probability - outcome).mean()),
+        "log_loss": float(
+            -(outcome * np.log(probability) + (1.0 - outcome) * np.log(1.0 - probability)).mean()
+        ),
+    }
+
+
+def _conditional_rate_metrics(
+    validation: pl.DataFrame,
+    reference: pl.DataFrame,
+    *,
+    rate_basis: float,
+) -> dict[str, float | int]:
+    reference_arrivals = reference.filter(pl.col("later_mlb_workload") > 0)
+    prior = (
+        float(reference_arrivals["later_component_war"].sum())
+        * rate_basis
+        / float(reference_arrivals["later_mlb_workload"].sum())
+    )
+    arrived = validation.filter(pl.col("later_mlb_workload") > 0)
+    actual = (
+        (
+            arrived["later_component_war"] * rate_basis
+            + prior * 200.0
+        )
+        / (arrived["later_mlb_workload"] + 200.0)
+    ).to_numpy()
+    candidate = arrived["historical_conditional_component_war_rate"].to_numpy()
+    baseline = np.full(len(actual), prior)
+    return {
+        "arrivals": len(actual),
+        "regression_exposure": 200,
+        "population_baseline_mae": _metrics(actual, baseline)["mae"],
+        "historical_comparables_mae": _metrics(actual, candidate)["mae"],
+        "population_baseline_rmse": _metrics(actual, baseline)["rmse"],
+        "historical_comparables_rmse": _metrics(actual, candidate)["rmse"],
+    }
+
+
+def _validation_summary(
+    validation: pl.DataFrame,
+    reference: pl.DataFrame,
+    *,
+    rate_basis: float,
+) -> dict[str, object]:
+    actual = validation["later_component_war"].to_numpy()
+    candidate = validation["historical_component_war_4y"].to_numpy()
+    population = np.full(len(actual), float(reference["later_component_war"].mean()))
+    arrival_actual = (validation["later_mlb_workload"].to_numpy() > 0).astype(float)
+    arrival_candidate = validation["historical_arrival_rate_4y"].to_numpy()
+    arrival_population = np.full(
+        len(arrival_actual), float((reference["later_mlb_workload"] > 0).mean())
+    )
+    return {
+        "population_baseline": _metrics(actual, population),
+        "historical_comparables": _metrics(actual, candidate),
+        "arrival_population_baseline": _probability_metrics(
+            arrival_actual, arrival_population
+        ),
+        "arrival_historical_comparables": _probability_metrics(
+            arrival_actual, arrival_candidate
+        ),
+        "conditional_component_rate": _conditional_rate_metrics(
+            validation, reference, rate_basis=rate_basis
+        ),
+    }
+
+
 def main() -> int:
     args = _args()
     generated = Path("reports/generated")
@@ -155,6 +228,18 @@ def main() -> int:
         )
         cohorts[origin] = (
             cohort.join(
+                primary_exact_level(skill, season=origin, exposure="plate_appearances"),
+                on="player_id",
+                how="left",
+                validate="1:1",
+            )
+            .with_columns(
+                pl.col("primary_level_group").fill_null(pl.col("primary_level_tier")),
+                pl.col("primary_exact_level_workload_share").fill_null(
+                    pl.col("primary_level_workload_share")
+                ),
+            )
+            .join(
                 _outcomes(cohort, hitting, origin=origin, runs_per_win=runs_per_win),
                 on="player_id",
                 how="left",
@@ -170,18 +255,22 @@ def main() -> int:
     validation_reference = cohorts[2018].join(
         cohorts[2021].select("player_id"), on="player_id", how="anti"
     )
-    validation = score_hitter_comparables(
-        validation_reference,
-        cohorts[2021],
-        comparable_count=DEFAULT_COMPARABLES,
-    ).join(
-        cohorts[2021].select("player_id", "later_component_war"),
-        on="player_id",
-        validate="1:1",
-    )
-    actual = validation["later_component_war"].to_numpy()
-    candidate = validation["historical_component_war_4y"].to_numpy()
-    population = np.full(len(actual), float(validation_reference["later_component_war"].mean()))
+    validation_by_count: dict[str, dict[str, object]] = {}
+    for comparable_count in (25, 50, 100, 150, 250):
+        validation = score_hitter_comparables(
+            validation_reference,
+            cohorts[2021],
+            comparable_count=comparable_count,
+        ).join(
+            cohorts[2021].select(
+                "player_id", "later_component_war", "later_mlb_workload"
+            ),
+            on="player_id",
+            validate="1:1",
+        )
+        validation_by_count[str(comparable_count)] = _validation_summary(
+            validation, validation_reference, rate_basis=600.0
+        )
 
     reference = pl.concat([cohorts[2018], cohorts[2021]], how="vertical_relaxed")
     current_path = (
@@ -191,6 +280,27 @@ def main() -> int:
         / "hitter-arrival-probabilities.parquet"
     )
     current = pl.read_parquet(current_path)
+    current_skill = pl.read_parquet(
+        generated / "affiliated-skill-source/tables/affiliated_hitting_components.parquet"
+    )
+    current = (
+        current.join(
+            primary_exact_level(
+                current_skill,
+                season=args.as_of_date.year,
+                exposure="plate_appearances",
+            ),
+            on="player_id",
+            how="left",
+            validate="1:1",
+        )
+        .with_columns(
+            pl.col("primary_level_group").fill_null(pl.col("primary_level_tier")),
+            pl.col("primary_exact_level_workload_share").fill_null(
+                pl.col("primary_level_workload_share")
+            ),
+        )
+    )
     scored = score_hitter_comparables(reference, current)
     output = args.output_root / args.as_of_date.isoformat()
     output.mkdir(parents=True, exist_ok=True)
@@ -206,11 +316,11 @@ def main() -> int:
         "method": {
             "reference_origins": [2018, 2021],
             "horizon_years": HORIZON,
-            "same_primary_level": True,
+            "same_primary_exact_level": True,
             "comparable_count": DEFAULT_COMPARABLES,
             "rate_regression_pa": 200.0,
             "features": [
-                "age", "primary level", "current workload", "walk rate",
+                "age", "primary exact level", "current workload", "walk rate",
                 "strikeout rate", "home-run rate", "extra-base-hit rate",
             ],
             "nonarrivals_scored_zero": True,
@@ -222,8 +332,8 @@ def main() -> int:
             "players": validation.height,
             "reference_origin": 2018,
             "same_player_overlap_removed": True,
-            "population_baseline": _metrics(actual, population),
-            "historical_comparables": _metrics(actual, candidate),
+            **validation_by_count[str(DEFAULT_COMPARABLES)],
+            "comparable_count_sensitivity": validation_by_count,
         },
     }
     (output / "report.json").write_text(

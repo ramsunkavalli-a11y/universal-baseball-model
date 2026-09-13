@@ -37,6 +37,10 @@ def main() -> int:
         generated / "prospect-historical-comparables" / dated
         / "hitter-comparables.parquet"
     )
+    pitcher_comparables = (
+        generated / "prospect-historical-comparables" / dated
+        / "pitcher-comparables.parquet"
+    )
     required = (
         peak / "current_peak_hitters.parquet",
         peak / "current_peak_pitchers.parquet",
@@ -48,6 +52,7 @@ def main() -> int:
         raw / "affiliated_hitting_components.parquet",
         raw / "affiliated_pitching_components.parquet",
         hitter_comparables,
+        pitcher_comparables,
     )
     if missing := [path for path in required if not path.exists()]:
         raise FileNotFoundError(
@@ -64,6 +69,7 @@ def main() -> int:
         pl.read_parquet(required[7]),
         pl.read_parquet(required[8]),
         pl.read_parquet(required[9]),
+        pl.read_parquet(required[10]),
         season=int(dated[:4]),
     )
     write_prospect_foundation_explorer(

@@ -794,3 +794,12 @@ to every hitter. The time-ordered 2021 test improved bias, MAE and RMSE versus t
 population baseline. Next, build the equivalent universal pitcher comparison, then
 test whether these four-year outcomes can support a stable FV mapping without adding
 position or playing-time assumptions prematurely.
+
+The comparable foundation is now symmetric for hitters and pitchers and follows the
+[separated-outcome contract](prospect-separated-outcome-foundation-plan.md). Raw PA/BF,
+translation confidence, arrival, conditional MLB quality and all-player expected
+production are different fields. Exact primary level replaces the broad A-or-below
+group in comparable selection, and the old 100 weighted-evidence ranking cliff has no
+role in the foundation output. On the unchanged time-ordered 2021 test, hitter MAE is
+0.263 versus 0.345 for the population baseline; pitcher MAE is 0.191 versus 0.213.
+The expectation identity reconciles player by player. FV remains withdrawn.

@@ -97,6 +97,25 @@ def _row_lookup(frame: pl.DataFrame, *keys: str) -> dict[tuple[Any, ...], dict[s
     }
 
 
+def _raw_history_workload(
+    history: pl.DataFrame, *, season: int, player_type: str
+) -> dict[int, int]:
+    exposure = "plate_appearances" if player_type == "hitter" else "batters_faced"
+    return {
+        int(row["player_id"]): int(row["history_workload"])
+        for row in (
+            history.filter(
+                pl.col("season").is_between(season - 2, season)
+                & (pl.col("level_group") != "MLB")
+                & (pl.col(exposure) > 0)
+            )
+            .group_by("player_id")
+            .agg(pl.col(exposure).sum().alias("history_workload"))
+            .iter_rows(named=True)
+        )
+    }
+
+
 def build_prospect_foundation_payload(
     peak_hitters: pl.DataFrame,
     peak_pitchers: pl.DataFrame,
@@ -108,6 +127,7 @@ def build_prospect_foundation_payload(
     raw_hitting: pl.DataFrame,
     raw_pitching: pl.DataFrame,
     hitter_comparables: pl.DataFrame | None = None,
+    pitcher_comparables: pl.DataFrame | None = None,
     *,
     season: int,
 ) -> dict[str, Any]:
@@ -129,16 +149,32 @@ def build_prospect_foundation_payload(
         "hitter": _raw_hitter_levels(raw_hitting, season),
         "pitcher": _raw_pitcher_levels(raw_pitching, season),
     }
+    history_workload_lookup = {
+        "hitter": _raw_history_workload(
+            raw_hitting, season=season, player_type="hitter"
+        ),
+        "pitcher": _raw_history_workload(
+            raw_pitching, season=season, player_type="pitcher"
+        ),
+    }
     arrivals = pl.concat([
         hitter_arrival.with_columns(pl.lit("hitter").alias("player_type")),
         pitcher_arrival.with_columns(pl.lit("pitcher").alias("player_type")),
     ], how="diagonal_relaxed")
-    comparable_lookup = _row_lookup(
-        hitter_comparables
-        if hitter_comparables is not None
-        else pl.DataFrame(schema={"player_id": pl.Int64}),
-        "player_id",
-    )
+    comparable_lookup = {
+        "hitter": _row_lookup(
+            hitter_comparables
+            if hitter_comparables is not None
+            else pl.DataFrame(schema={"player_id": pl.Int64}),
+            "player_id",
+        ),
+        "pitcher": _row_lookup(
+            pitcher_comparables
+            if pitcher_comparables is not None
+            else pl.DataFrame(schema={"player_id": pl.Int64}),
+            "player_id",
+        ),
+    }
     players: list[dict[str, Any]] = []
     for arrival in arrivals.iter_rows(named=True):
         player_id = int(arrival["player_id"])
@@ -156,7 +192,10 @@ def build_prospect_foundation_payload(
             and age is not None
             and 16.0 <= float(age) <= 23.0
         )
-        comparable = comparable_lookup.get((player_id,), {})
+        comparable = comparable_lookup[player_type].get((player_id,), {})
+        conditional_rate_validated = player_type == "hitter"
+        raw_levels = raw_lookup[player_type].get(player_id, [])
+        current_workload_key = "pa" if player_type == "hitter" else "bf"
         players.append({
             "key": f"{player_id}:{player_type}",
             "id": player_id,
@@ -172,6 +211,12 @@ def build_prospect_foundation_payload(
             "level_progression": arrival.get("level_progression"),
             "development_seasons": arrival.get("development_history_seasons"),
             "evidence": evidence,
+            "current_raw_workload": sum(
+                int(level[current_workload_key]) for level in raw_levels
+            ),
+            "history_raw_workload": history_workload_lookup[player_type].get(
+                player_id, 0
+            ),
             "reliability": peak.get("reliability"),
             "evidence_band": peak.get("evidence_band"),
             "present_runs_rate": peak.get("present_runs_rate"),
@@ -190,12 +235,29 @@ def build_prospect_foundation_payload(
             "recent_direction_runs": peak.get("recent_component_direction_runs"),
             "pitch_process_applied": peak.get("pitch_process_applied"),
             "pitch_process_runs_change": peak.get("pitch_process_runs_change"),
-            "raw_levels": raw_lookup[player_type].get(player_id, []),
+            "raw_levels": raw_levels,
+            "historical_comparable_level": comparable.get(
+                "historical_comparable_level"
+            ),
             "historical_comparable_players": comparable.get(
                 "historical_comparable_players"
             ),
+            "historical_arrivals_4y": comparable.get("historical_arrivals_4y"),
             "historical_arrival_rate_4y": comparable.get(
                 "historical_arrival_rate_4y"
+            ),
+            "historical_conditional_component_war_per_600": comparable.get(
+                "historical_conditional_component_war_per_600"
+            ),
+            "historical_conditional_component_war_rate": comparable.get(
+                "historical_conditional_component_war_rate"
+            ) if conditional_rate_validated else None,
+            "historical_conditional_rate_basis": comparable.get(
+                "historical_conditional_rate_basis"
+            ) if conditional_rate_validated else None,
+            "historical_conditional_rate_validated": conditional_rate_validated,
+            "historical_conditional_component_war_4y": comparable.get(
+                "historical_conditional_component_war_4y"
             ),
             "historical_component_war_4y": comparable.get(
                 "historical_component_war_4y"
@@ -205,6 +267,14 @@ def build_prospect_foundation_payload(
             ),
             "historical_impact_rate_4y": comparable.get(
                 "historical_impact_rate_4y"
+            ),
+            "historical_expectation_identity_error": comparable.get(
+                "historical_expectation_identity_error"
+            ),
+            "outcome_status": (
+                "historical_outcome_available"
+                if comparable.get("historical_comparable_players")
+                else "historical_outcome_pending"
             ),
             "fv": None,
             "expected_war": None,
@@ -224,6 +294,16 @@ def build_prospect_foundation_payload(
                 "Prospect FV, expected WAR and value are withdrawn until the complete "
                 "historical outcome model passes."
             ),
+            "output_contract": {
+                "raw_workload": "undiscounted official PA or BF",
+                "translation_confidence": "separate diagnostic; never an eligibility cutoff",
+                "conditional_talent": (
+                    "MLB batting-component WAR rate among arrivals; pitcher rate withheld "
+                    "after failing held-out validation"
+                ),
+                "arrival": "historical share reaching MLB within four years",
+                "risk_adjusted_outcome": "all-player mean with non-arrivals retained as zero",
+            },
         },
         "players": players,
     }
