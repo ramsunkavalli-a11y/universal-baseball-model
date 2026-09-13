@@ -19,7 +19,7 @@ from universal_baseball.source_capture import (
 from universal_baseball.storage import write_canonical_parquet
 
 
-ORIGIN_SEASONS = (2008, 2013, 2016, 2018, 2021)
+ORIGIN_SEASONS = (2008, 2013, 2016, 2018, 2019, 2021)
 SPORT_LEVELS = {
     11: "AAA",
     12: "AA",
@@ -145,6 +145,14 @@ def main() -> int:
     capture_root = OUTPUT_ROOT / "captures"
     if capture_root.is_dir():
         grouped = _load_captures(capture_root)
+        required = {
+            (season, sport_id)
+            for season in ORIGIN_SEASONS
+            for sport_id in SPORT_LEVELS
+        }
+        if set(grouped) != required:
+            grouped, captures = _fetch_all()
+            persist_parsed_json_captures(captures, capture_root)
     else:
         grouped, captures = _fetch_all()
         persist_parsed_json_captures(captures, capture_root)
@@ -191,7 +199,7 @@ def main() -> int:
             [
                 "# MiLB fielding origin inventory",
                 "",
-                "Official position usage was retained at the 2008, 2013, 2016, 2018 and 2021 prospect origins.",
+                "Official position usage was retained at the 2008, 2013, 2016, 2018, 2019 and 2021 prospect origins.",
                 f"The source contains {result.height:,} player/team/position rows for {result['player_id'].n_unique():,} players.",
                 "StatsAPI returned no fielding splits at the five affiliated levels for 2003, so that origin is explicitly unavailable rather than inferred.",
                 "",

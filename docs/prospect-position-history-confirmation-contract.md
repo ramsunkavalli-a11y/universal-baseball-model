@@ -1,7 +1,13 @@
 # Prospect position-history confirmation contract
 
-**Frozen:** 2026-09-13, before scoring the 2020 prospect snapshot  
-**Confirmation target:** 2020 snapshot, complete 2021–2024 MLB outcomes
+**Frozen:** 2026-09-13, before scoring the confirmation snapshot  
+**Confirmation target:** 2019 snapshot, complete 2020–2023 MLB outcomes
+
+The initially named 2020 snapshot failed its input gate before outcome scoring because
+the 2020 minor-league season was canceled and therefore has no official origin-season
+position usage. The mechanical correction is the nearest earlier unscored position
+cohort, 2019. Its outcome window ends in 2023 and remains nonoverlapping with the
+2008 and 2013 references.
 
 ## Question
 
@@ -10,7 +16,7 @@ arrival risk and conditional position value are kept separate?
 
 ## Fixed candidate
 
-1. Use the player's most-used official 2020 MiLB position, with defensive outs as
+1. Use the player's most-used official 2019 MiLB position, with defensive outs as
    exposure and one DH start equal to 27 defensive outs.
 2. Estimate conditional four-year MLB positional WAR from chronology-safe 2008 and
    2013 reference cohorts at the same minor-league level and position.
@@ -32,7 +38,7 @@ point-forecast score under `docs/expected-war-validation-law.md`. MAE is reporte
 cannot veto a mean forecast because it targets the conditional median and rewards
 zero in this mostly-zero population.
 
-Promote only if, on the untouched 2020 cohort:
+Promote only if, on the untouched 2019 position cohort:
 
 - official origin-position coverage is at least 95%;
 - the position candidate has lower mean squared error than the level-only baseline;

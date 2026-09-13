@@ -847,7 +847,9 @@ but those years are now exposed and cannot confirm promotion. A 2020 confirmatio
 frozen in [the position-history contract](prospect-position-history-confirmation-contract.md).
 It separates MLB arrival from conditional position value and follows the repo's
 existing expected-WAR validation law rather than allowing MAE to reward an all-zero
-forecast.
+forecast. The initially named 2020 input failed before scoring because affiliated
+baseball was canceled; the contract now uses the nearest earlier unscored position
+cohort, 2019, with complete 2020–2023 outcomes.
 
 A frozen pitcher shrinkage rescue was also rejected. Selection on the 2008, 2013 and
 2018 folds chose 70% local comparable rate and 30% global mean. Applied unchanged to
