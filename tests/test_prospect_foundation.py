@@ -69,7 +69,8 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
         hitter_arrival, pitcher_arrival, names, raw_hitting, raw_pitching,
         pl.DataFrame({
             "player_id": [7], "historical_comparable_players": [150],
-            "historical_arrivals_4y": [6],
+            "historical_arrivals_4y": [10],
+            "historical_conditional_rate_supported": [True],
             "historical_arrival_rate_4y": [0.04],
             "historical_conditional_component_war_per_600": [0.08],
             "historical_conditional_component_war_4y": [0.05],
@@ -95,6 +96,7 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
     assert player["current_raw_workload"] == 40
     assert player["history_raw_workload"] == 40
     assert player["outcome_status"] == "historical_outcome_available"
+    assert player["historical_conditional_rate_validated"] is True
 
 
 def test_explorer_serialization_replaces_nonfinite_values(tmp_path: Path) -> None:

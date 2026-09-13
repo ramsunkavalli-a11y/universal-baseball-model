@@ -16,6 +16,7 @@ from universal_baseball.historical_hitter_performance import (
 )
 from universal_baseball.prospect_arrival import build_arrival_cohort
 from universal_baseball.prospect_historical_comparables import (
+    CONDITIONAL_MINIMUM_NEIGHBOR_ARRIVALS,
     DEFAULT_COMPARABLES,
     primary_exact_level,
     score_hitter_comparables,
@@ -131,6 +132,7 @@ def _conditional_rate_metrics(
     reference: pl.DataFrame,
     *,
     rate_basis: float,
+    minimum_neighbor_arrivals: int = 0,
 ) -> dict[str, float | int]:
     reference_arrivals = reference.filter(pl.col("later_mlb_workload") > 0)
     prior = (
@@ -138,7 +140,22 @@ def _conditional_rate_metrics(
         * rate_basis
         / float(reference_arrivals["later_mlb_workload"].sum())
     )
-    arrived = validation.filter(pl.col("later_mlb_workload") > 0)
+    eligible = validation.filter(
+        pl.col("historical_conditional_arrival_support")
+        >= minimum_neighbor_arrivals
+    )
+    arrived = eligible.filter(pl.col("later_mlb_workload") > 0)
+    if arrived.is_empty():
+        return {
+            "eligible_targets": eligible.height,
+            "arrivals": 0,
+            "minimum_neighbor_arrivals": minimum_neighbor_arrivals,
+            "regression_exposure": 200,
+            "population_baseline_mae": None,
+            "historical_comparables_mae": None,
+            "population_baseline_rmse": None,
+            "historical_comparables_rmse": None,
+        }
     actual = (
         (
             arrived["later_component_war"] * rate_basis
@@ -149,12 +166,31 @@ def _conditional_rate_metrics(
     candidate = arrived["historical_conditional_component_war_rate"].to_numpy()
     baseline = np.full(len(actual), prior)
     return {
+        "eligible_targets": eligible.height,
         "arrivals": len(actual),
+        "minimum_neighbor_arrivals": minimum_neighbor_arrivals,
         "regression_exposure": 200,
         "population_baseline_mae": _metrics(actual, baseline)["mae"],
         "historical_comparables_mae": _metrics(actual, candidate)["mae"],
         "population_baseline_rmse": _metrics(actual, baseline)["rmse"],
         "historical_comparables_rmse": _metrics(actual, candidate)["rmse"],
+    }
+
+
+def _conditional_support_sensitivity(
+    validation: pl.DataFrame,
+    reference: pl.DataFrame,
+    *,
+    rate_basis: float,
+) -> dict[str, dict[str, float | int]]:
+    return {
+        str(minimum): _conditional_rate_metrics(
+            validation,
+            reference,
+            rate_basis=rate_basis,
+            minimum_neighbor_arrivals=minimum,
+        )
+        for minimum in (0, 5, 10, 25, 50)
     }
 
 
@@ -182,6 +218,9 @@ def _validation_summary(
             arrival_actual, arrival_candidate
         ),
         "conditional_component_rate": _conditional_rate_metrics(
+            validation, reference, rate_basis=rate_basis
+        ),
+        "conditional_support_sensitivity": _conditional_support_sensitivity(
             validation, reference, rate_basis=rate_basis
         ),
     }
@@ -214,7 +253,7 @@ def main() -> int:
         ]
     )
     cohorts: dict[int, pl.DataFrame] = {}
-    for origin in (2018, 2021):
+    for origin in (2018, 2019, 2021):
         cohort = build_arrival_cohort(
             snapshots,
             stats,
@@ -271,8 +310,59 @@ def main() -> int:
         validation_by_count[str(comparable_count)] = _validation_summary(
             validation, validation_reference, rate_basis=600.0
         )
+    conditional_prior_sensitivity: dict[str, dict[str, float | int]] = {}
+    for prior_players in (0, 5, 10, 25, 50):
+        validation = score_hitter_comparables(
+            validation_reference,
+            cohorts[2021],
+            comparable_count=DEFAULT_COMPARABLES,
+            conditional_prior_players=float(prior_players),
+        ).join(
+            cohorts[2021].select(
+                "player_id", "later_component_war", "later_mlb_workload"
+            ),
+            on="player_id",
+            validate="1:1",
+        )
+        conditional_prior_sensitivity[str(prior_players)] = (
+            _conditional_rate_metrics(
+                validation, validation_reference, rate_basis=600.0
+            )
+        )
 
-    reference = pl.concat([cohorts[2018], cohorts[2021]], how="vertical_relaxed")
+    selection_reference = cohorts[2018].join(
+        cohorts[2019].select("player_id"), on="player_id", how="anti"
+    )
+    selection_prior_sensitivity: dict[str, dict[str, float | int]] = {}
+    selection_support_sensitivity: dict[str, dict[str, float | int]] = {}
+    for prior_players in (0, 5, 10, 25, 50):
+        selection = score_hitter_comparables(
+            selection_reference,
+            cohorts[2019],
+            comparable_count=DEFAULT_COMPARABLES,
+            conditional_prior_players=float(prior_players),
+        ).join(
+            cohorts[2019].select(
+                "player_id", "later_component_war", "later_mlb_workload"
+            ),
+            on="player_id",
+            validate="1:1",
+        )
+        selection_prior_sensitivity[str(prior_players)] = (
+            _conditional_rate_metrics(
+                selection, selection_reference, rate_basis=600.0
+            )
+        )
+        if prior_players == 0:
+            selection_support_sensitivity = _conditional_support_sensitivity(
+                selection, selection_reference, rate_basis=600.0
+            )
+
+    reference = (
+        pl.concat([cohorts[2018], cohorts[2019], cohorts[2021]], how="vertical_relaxed")
+        .sort(["player_id", "origin_year"])
+        .unique("player_id", keep="last", maintain_order=True)
+    )
     current_path = (
         generated
         / "phase2-prospect-arrival"
@@ -314,11 +404,15 @@ def main() -> int:
         "as_of_date": args.as_of_date.isoformat(),
         "status": "universal_hitter_comparable_evidence_not_fv_model",
         "method": {
-            "reference_origins": [2018, 2021],
+            "reference_origins": [2018, 2019, 2021],
+            "one_row_per_reference_player": True,
             "horizon_years": HORIZON,
             "same_primary_exact_level": True,
             "comparable_count": DEFAULT_COMPARABLES,
             "rate_regression_pa": 200.0,
+            "conditional_minimum_neighbor_arrivals": (
+                CONDITIONAL_MINIMUM_NEIGHBOR_ARRIVALS
+            ),
             "features": [
                 "age", "primary exact level", "current workload", "walk rate",
                 "strikeout rate", "home-run rate", "extra-base-hit rate",
@@ -334,6 +428,14 @@ def main() -> int:
             "same_player_overlap_removed": True,
             **validation_by_count[str(DEFAULT_COMPARABLES)],
             "comparable_count_sensitivity": validation_by_count,
+            "conditional_prior_player_sensitivity": conditional_prior_sensitivity,
+        },
+        "time_ordered_2019_selection": {
+            "players": cohorts[2019].height,
+            "reference_origin": 2018,
+            "same_player_overlap_removed": True,
+            "conditional_prior_player_sensitivity": selection_prior_sensitivity,
+            "conditional_support_sensitivity": selection_support_sensitivity,
         },
     }
     (output / "report.json").write_text(

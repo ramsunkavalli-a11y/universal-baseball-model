@@ -7,7 +7,7 @@ for hitters. Comparison stays within exact primary level and uses age, current B
 regressed strikeout, walk, home-run and other-outcome rates. Players who never reach
 MLB remain in the outcome population as zero.
 
-| Four-year pitching-component WAR | Bias | MAE | RMSE |
+| Four-year pitching-plus-replacement WAR | Bias | MAE | RMSE |
 |---|---:|---:|---:|
 | Population baseline | 0.028 | 0.213 | 0.570 |
 | Historical comparables | 0.022 | 0.191 | 0.557 |
@@ -21,7 +21,7 @@ population baseline and RMSE is 1.105 versus 1.070. That current field is theref
 withheld from the explorer. Descriptive conditional cumulative production remains
 visible to reconcile `arrival × conditional cumulative WAR = all-player expected
 WAR`; it is not accepted as a pitcher-talent estimate. Role, workload projection,
-total WAR and FV remain outside this foundation.
+whole-player WAR and FV remain outside this foundation.
 
 Machine-readable validation is in
 `docs/prospect-pitcher-historical-comparables-result.json`.

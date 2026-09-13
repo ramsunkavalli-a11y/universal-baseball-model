@@ -803,3 +803,11 @@ group in comparable selection, and the old 100 weighted-evidence ranking cliff h
 role in the foundation output. On the unchanged time-ordered 2021 test, hitter MAE is
 0.263 versus 0.345 for the population baseline; pitcher MAE is 0.191 versus 0.213.
 The expectation identity reconciles player by player. FV remains withdrawn.
+
+A second historical fold and upper-tail audit now prevent average accuracy from
+hiding unsupported individual rates. Conditional hitter quality requires ten actual
+MLB arrivals among the 150 neighbors; this support gate beats the population-rate
+baseline in both 2019 selection and 2021 confirmation. A direct shrinkage coefficient
+was rejected because its direction was not stable across those folds. Pitcher
+conditional quality remains withheld. Historical reference snapshots are deduplicated
+by player before current scoring.

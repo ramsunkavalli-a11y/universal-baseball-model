@@ -23,14 +23,18 @@ or calibration targets.
 5. Report separately:
    - probability of reaching MLB;
    - MLB component quality conditional on arrival;
-   - cumulative component production conditional on arrival;
-   - all-player expected component production.
+   - cumulative batting/pitching-plus-replacement production conditional on arrival;
+   - all-player expected batting/pitching-plus-replacement production.
 6. Enforce the identity `expected outcome = arrival probability × conditional
    cumulative outcome` within numerical tolerance.
 7. Conditional MLB rate outcomes are regressed by 200 MLB PA/BF toward the historical
    arrival-population rate before equal-player comparable averaging. This prevents a
    tiny MLB sample from defining conditional talent.
-8. No FV mapping is authorized until full historical distributions support stable
+8. A current hitter's conditional-rate estimate is displayable only when at least ten
+   of his historical neighbors reached MLB. This is an outcome-support gate, not a PA
+   eligibility gate. It passed both the 2019 selection and 2021 confirmation cohorts;
+   unsupported raw estimates remain diagnostic only.
+9. No FV mapping is authorized until full historical distributions support stable
    thresholds across time, player type, age and exact level.
 
 ## Current implementation
@@ -39,7 +43,9 @@ The universal 150-neighbor comparison uses exact primary level, age, current raw
 workload and regressed production components. It now runs for every current hitter
 and pitcher. Pitcher conditional rate is withheld because it failed its held-out
 baseline, while pitcher arrival and all-player expected outcome passed. The 2018
-origin is the reference for the time-ordered 2021 evaluation;
+origin is the reference for the time-ordered 2021 evaluation. The current reference
+uses 2018, 2019 and 2021 origins but keeps only the latest snapshot per player, so
+long-lived minor leaguers do not receive duplicate weight;
 players appearing in both cohorts are removed from the reference.
 
 The explorer shows raw current and three-year workload. Its former effective-evidence
@@ -63,8 +69,8 @@ rankings.
    resemblance.
 3. Validate conditional rate and cumulative outcomes among arrivals, including small-
    MLB-sample sensitivity.
-4. Add total-value components only after batting/pitching component outcomes are
-   stable: defense, baserunning and pitcher role remain separate.
+4. Add total-value components only after batting/pitching-plus-replacement outcomes
+   are stable: defense, baserunning, position and pitcher role remain separate.
 5. Run monotonic, brief-promotion, raw-workload, missing-data and leakage safeguards.
 6. Audit the frozen output against public top-50 lists and explain disagreements.
 7. Estimate an internal FV scale from historical outcome distributions. Do not assume

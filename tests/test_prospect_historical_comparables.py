@@ -28,9 +28,11 @@ def test_comparables_use_same_method_and_keep_zero_outcomes() -> None:
     )
 
     assert result["historical_comparable_players"] == 25
+    assert result["historical_outcome_scope"] == "batting_plus_replacement"
     assert 0.0 <= result["historical_arrival_rate_4y"] <= 0.04
     assert 0.0 <= result["historical_positive_component_war_4y"] <= 0.12
     assert result["historical_arrivals_4y"] in (0, 1)
+    assert result["historical_conditional_rate_supported"] is False
     assert result["historical_expectation_identity_error"] < 1e-12
 
 
@@ -59,6 +61,7 @@ def test_comparables_separate_arrival_conditional_talent_and_expectation() -> No
     assert result["historical_conditional_component_war_4y"] == 2.0
     assert result["historical_component_war_4y"] == 2 / 3
     assert result["historical_conditional_component_war_per_600"] == 1.0
+    assert result["historical_conditional_rate_supported"] is True
     assert result["historical_expectation_identity_error"] < 1e-12
 
 

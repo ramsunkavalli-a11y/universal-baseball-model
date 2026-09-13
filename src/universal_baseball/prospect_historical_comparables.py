@@ -16,6 +16,7 @@ FEATURE_COLUMNS = ("age_years", "log_workload", *RATE_COLUMNS)
 RATE_REGRESSION_PA = 200.0
 DEFAULT_COMPARABLES = 150
 CONDITIONAL_RATE_REGRESSION_PA = 200.0
+CONDITIONAL_MINIMUM_NEIGHBOR_ARRIVALS = 10
 EXACT_LEVEL_ORDER = {
     "ROOKIE_COMPLEX": 0,
     "SINGLE_A": 1,
@@ -95,6 +96,7 @@ def _score_comparables(
     *,
     comparable_count: int = DEFAULT_COMPARABLES,
     rate_basis: float,
+    conditional_prior_players: float = 0.0,
 ) -> pl.DataFrame:
     """Score every target from the same procedure and all-player outcomes.
 
@@ -114,6 +116,8 @@ def _score_comparables(
         raise ValueError(f"targets missing comparable fields: {missing}")
     if comparable_count < 25:
         raise ValueError("comparable_count must be at least 25")
+    if not np.isfinite(conditional_prior_players) or conditional_prior_players < 0:
+        raise ValueError("conditional_prior_players must be finite and nonnegative")
 
     rows: list[dict[str, float | int | str]] = []
     level_column = (
@@ -164,26 +168,41 @@ def _score_comparables(
             conditional_rates = reference_group[
                 "later_component_war_rate_regressed"
             ].to_numpy().astype(float)[neighbor_index][neighbor_arrived]
+            raw_conditional_rate = (
+                float(conditional_rates.mean()) if len(conditional_rates) else conditional_rate_prior
+            )
+            conditional_rate = (
+                float(conditional_rates.sum())
+                + conditional_prior_players * conditional_rate_prior
+            ) / (len(conditional_rates) + conditional_prior_players) if (
+                len(conditional_rates) + conditional_prior_players > 0
+            ) else conditional_rate_prior
             rows.append({
                 "player_id": int(target["player_id"]),
                 "historical_comparable_level": str(level),
                 "historical_comparable_players": int(k),
                 "historical_arrivals_4y": int(neighbor_arrived.sum()),
+                "historical_conditional_arrival_support": int(neighbor_arrived.sum()),
+                "historical_conditional_rate_supported": (
+                    int(neighbor_arrived.sum())
+                    >= CONDITIONAL_MINIMUM_NEIGHBOR_ARRIVALS
+                ),
                 "historical_arrival_rate_4y": arrival_rate,
                 "historical_conditional_component_war_per_600": (
-                    float(conditional_rates.mean())
-                    if len(conditional_rates) and rate_basis == 600.0
+                    conditional_rate
+                    if rate_basis == 600.0
                     else None
                 ),
                 "historical_conditional_component_war_per_800": (
-                    float(conditional_rates.mean())
-                    if len(conditional_rates) and rate_basis == 800.0
+                    conditional_rate
+                    if rate_basis == 800.0
                     else None
                 ),
-                "historical_conditional_component_war_rate": (
-                    float(conditional_rates.mean()) if len(conditional_rates) else 0.0
-                ),
+                "historical_conditional_component_war_rate_raw": raw_conditional_rate,
+                "historical_conditional_component_war_rate": conditional_rate,
                 "historical_conditional_rate_basis": int(rate_basis),
+                "historical_conditional_rate_prior": conditional_rate_prior,
+                "historical_conditional_prior_players": conditional_prior_players,
                 "historical_conditional_component_war_4y": conditional_war,
                 "historical_component_war_4y": float(neighbor_outcome.mean()),
                 "historical_positive_component_war_4y": float(
@@ -202,12 +221,17 @@ def score_hitter_comparables(
     targets: pl.DataFrame,
     *,
     comparable_count: int = DEFAULT_COMPARABLES,
+    conditional_prior_players: float = 0.0,
 ) -> pl.DataFrame:
     """Score hitter outcomes on a 600-PA conditional-rate basis."""
 
     return _score_comparables(
-        reference, targets, comparable_count=comparable_count, rate_basis=600.0
-    )
+        reference,
+        targets,
+        comparable_count=comparable_count,
+        rate_basis=600.0,
+        conditional_prior_players=conditional_prior_players,
+    ).with_columns(pl.lit("batting_plus_replacement").alias("historical_outcome_scope"))
 
 
 def score_pitcher_comparables(
@@ -215,9 +239,14 @@ def score_pitcher_comparables(
     targets: pl.DataFrame,
     *,
     comparable_count: int = DEFAULT_COMPARABLES,
+    conditional_prior_players: float = 0.0,
 ) -> pl.DataFrame:
     """Score pitcher outcomes on an 800-BF conditional-rate basis."""
 
     return _score_comparables(
-        reference, targets, comparable_count=comparable_count, rate_basis=800.0
-    )
+        reference,
+        targets,
+        comparable_count=comparable_count,
+        rate_basis=800.0,
+        conditional_prior_players=conditional_prior_players,
+    ).with_columns(pl.lit("pitching_plus_replacement").alias("historical_outcome_scope"))

@@ -193,7 +193,10 @@ def build_prospect_foundation_payload(
             and 16.0 <= float(age) <= 23.0
         )
         comparable = comparable_lookup[player_type].get((player_id,), {})
-        conditional_rate_validated = player_type == "hitter"
+        conditional_rate_validated = (
+            player_type == "hitter"
+            and bool(comparable.get("historical_conditional_rate_supported"))
+        )
         raw_levels = raw_lookup[player_type].get(player_id, [])
         current_workload_key = "pa" if player_type == "hitter" else "bf"
         players.append({
@@ -239,10 +242,14 @@ def build_prospect_foundation_payload(
             "historical_comparable_level": comparable.get(
                 "historical_comparable_level"
             ),
+            "historical_outcome_scope": comparable.get("historical_outcome_scope"),
             "historical_comparable_players": comparable.get(
                 "historical_comparable_players"
             ),
             "historical_arrivals_4y": comparable.get("historical_arrivals_4y"),
+            "historical_conditional_arrival_support": comparable.get(
+                "historical_conditional_arrival_support"
+            ),
             "historical_arrival_rate_4y": comparable.get(
                 "historical_arrival_rate_4y"
             ),
