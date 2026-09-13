@@ -171,7 +171,8 @@ def test_talent_value_explorer_withdraws_uncertified_fv() -> None:
     assert "__EXPLORER_DATA__" not in rendered
     assert "<\\/script><script>alert(1)<\\/script>" in rendered
     assert "Prospect FV and value are withdrawn" in rendered
-    assert "Conditional WAR rate" in rendered
+    assert "Peak mean runs" in rendered
+    assert "Above-average peak" in rendered
     assert "Raw PA/BF are never discounted" in rendered
     assert "Expected 4-year partial WAR" in rendered
     assert "Translation confidence" in rendered

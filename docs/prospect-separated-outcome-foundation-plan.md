@@ -32,7 +32,7 @@ or calibration targets.
    tiny MLB sample from defining conditional talent.
 8. A current hitter's conditional-rate estimate is displayable only when at least ten
    of his historical neighbors reached MLB. This is an outcome-support gate, not a PA
-   eligibility gate. It passed both the 2019 selection and 2021 confirmation cohorts;
+   eligibility gate. It passes strict nonoverlapping 2008, 2013, 2018 and 2021 folds;
    unsupported raw estimates remain diagnostic only.
 9. No FV mapping is authorized until full historical distributions support stable
    thresholds across time, player type, age and exact level.
@@ -42,15 +42,23 @@ or calibration targets.
 The universal 150-neighbor comparison uses exact primary level, age, current raw
 workload and regressed production components. It now runs for every current hitter
 and pitcher. Pitcher conditional rate is withheld because it failed its held-out
-baseline, while pitcher arrival and all-player expected outcome passed. The 2018
-origin is the reference for the time-ordered 2021 evaluation. The current reference
-uses 2018, 2019 and 2021 origins but keeps only the latest snapshot per player, so
+baseline, while pitcher arrival and all-player expected outcome passed. A strict
+chronology audit uses only references whose full four-year outcomes end before each
+2008, 2013, 2018 or 2021 target snapshot. Hitter conditional quality passes every
+fold; pitcher conditional quality fails two of four. The current reference uses 2018,
+2019 and 2021 origins but keeps only the latest snapshot per player, so
 long-lived minor leaguers do not receive duplicate weight;
 players appearing in both cohorts are removed from the reference.
 
 The explorer shows raw current and three-year workload. Its former effective-evidence
 number is retained only as a plainly labeled translation-confidence diagnostic. It
 cannot suppress a player or erase historical outcomes.
+
+Conditional talent is now shown directly from the separately validated age-24-to-26
+peak component model: mean runs above average plus above-average and impact
+probabilities. This is distinct from arrival and career value. The historical
+comparable WAR rate remains an additional validated hitter diagnostic and stays
+withheld for pitchers.
 
 The all-player outcome is now a distribution rather than only a mean: P10, median,
 P90 and the historical probabilities of reaching 1, 3 and 6 partial WAR are retained

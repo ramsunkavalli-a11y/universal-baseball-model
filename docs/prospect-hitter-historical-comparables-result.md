@@ -8,9 +8,10 @@ strikeout rate, home-run rate and extra-base-hit rate. Rate evidence is regresse
 200 PA before matching. Players who never reach MLB stay in the sample with zero MLB
 production.
 
-The time-ordered test trained only on the 2018 origin and evaluated all 3,251 players
-from the 2021 origin. Players appearing in both groups were removed from the reference
-set.
+The first retrospective test used a 2018 reference and 2021 target. A later strict
+chronology audit supersedes that evidence because the original reference outcome
+window overlapped the target snapshot. The strict audit requires every reference
+outcome window to end before its target snapshot.
 
 | Four-year batting-plus-replacement WAR | Bias | MAE | RMSE |
 |---|---:|---:|---:|
@@ -51,3 +52,12 @@ conditional-rate MAE/RMSE are 0.740/0.948 versus 0.900/1.150 for the population
 baseline. On the untouched 2021 confirmation cohort they are 0.700/0.916 versus
 0.795/1.019. Direct shrinkage-strength candidates were rejected because they improved
 2021 but worsened 2019.
+
+## Strict chronology confirmation
+
+The same method passes total outcome, arrival and supported conditional-rate gates in
+all four nonoverlapping targets: 2008, 2013, 2018 and 2021. Supported conditional-rate
+MAE is 0.709 versus 0.805, 0.762 versus 0.839, 0.855 versus 0.946 and 0.728 versus
+0.813, respectively. This strict audit, not the earlier overlapping comparison, is
+the authority for displaying hitter conditional talent. See
+`docs/prospect-comparable-chronology-result.md`.

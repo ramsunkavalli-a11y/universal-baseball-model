@@ -830,3 +830,19 @@ controlled WAR. The foundation explorer now exposes the separately validated
 six-year MLB-arrival probability alongside four-year comparable outcomes and
 conditional MLB quality. Exact control-year value still requires service/control
 mapping plus whole-player WAR; public FV cannot fill that gap.
+
+A strict [prospect comparable chronology audit](prospect-comparable-chronology-result.md)
+now supersedes the earlier overlapping reference/target evidence. Every training
+outcome ends before its target snapshot. Hitter total outcome, arrival and supported
+conditional quality pass in 2008, 2013, 2018 and 2021. Pitcher total outcome and
+arrival pass in all four, but conditional quality fails in 2008 and 2021. Continue to
+display hitter conditional quality and withhold pitcher conditional quality. Do not
+restore FV until whole-player outcome and control-year gates pass.
+
+A frozen pitcher shrinkage rescue was also rejected. Selection on the 2008, 2013 and
+2018 folds chose 70% local comparable rate and 30% global mean. Applied unchanged to
+2021, RMSE improved from 1.075 to 1.066 but MAE worsened from 0.791 to 0.795. The two
+declared errors disagree, so individualized pitcher comparable WAR remains withheld.
+The validated age-24-to-26 peak run model and its above-average/impact probabilities
+are now the explicit conditional-talent view for both player types; they are not
+multiplied into arrival or labeled FV.

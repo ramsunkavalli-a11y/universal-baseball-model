@@ -10,13 +10,22 @@ from pathlib import Path
 
 import polars as pl
 
-from materialize_prospect_hitter_comparables import (
-    HORIZON,
-    _conditional_rate_metrics,
-    _conditional_support_sensitivity,
-    _history_stats,
-    _validation_summary,
-)
+try:
+    from scripts.materialize_prospect_hitter_comparables import (
+        HORIZON,
+        _conditional_rate_metrics,
+        _conditional_support_sensitivity,
+        _history_stats,
+        _validation_summary,
+    )
+except ModuleNotFoundError:  # Direct ``python scripts/...`` execution.
+    from materialize_prospect_hitter_comparables import (
+        HORIZON,
+        _conditional_rate_metrics,
+        _conditional_support_sensitivity,
+        _history_stats,
+        _validation_summary,
+    )
 from universal_baseball.historical_pitcher_performance import (
     build_historical_pitcher_performance_paths,
 )

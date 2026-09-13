@@ -128,6 +128,8 @@ def build_prospect_foundation_payload(
     raw_pitching: pl.DataFrame,
     hitter_comparables: pl.DataFrame | None = None,
     pitcher_comparables: pl.DataFrame | None = None,
+    hitter_upside: pl.DataFrame | None = None,
+    pitcher_upside: pl.DataFrame | None = None,
     *,
     season: int,
 ) -> dict[str, Any]:
@@ -175,6 +177,20 @@ def build_prospect_foundation_payload(
             "player_id",
         ),
     }
+    upside_lookup = {
+        "hitter": _row_lookup(
+            hitter_upside
+            if hitter_upside is not None
+            else pl.DataFrame(schema={"player_id": pl.Int64}),
+            "player_id",
+        ),
+        "pitcher": _row_lookup(
+            pitcher_upside
+            if pitcher_upside is not None
+            else pl.DataFrame(schema={"player_id": pl.Int64}),
+            "player_id",
+        ),
+    }
     players: list[dict[str, Any]] = []
     for arrival in arrivals.iter_rows(named=True):
         player_id = int(arrival["player_id"])
@@ -193,6 +209,7 @@ def build_prospect_foundation_payload(
             and 16.0 <= float(age) <= 23.0
         )
         comparable = comparable_lookup[player_type].get((player_id,), {})
+        upside = upside_lookup[player_type].get((player_id,), {})
         conditional_rate_validated = (
             player_type == "hitter"
             and bool(comparable.get("historical_conditional_rate_supported"))
@@ -229,6 +246,17 @@ def build_prospect_foundation_payload(
             "one_year_runs_rate": one_year.get("projected_runs_rate"),
             "two_year_runs_rate": two_year.get("projected_runs_rate"),
             "peak_runs_rate": peak.get("peak_runs_rate") if peak_supported else None,
+            "peak_runs_rate_unit": 600 if player_type == "hitter" else 800,
+            "peak_above_average_probability": upside.get(
+                "peak_above_average_probability"
+            ) if peak_supported else None,
+            "peak_impact_probability": upside.get(
+                "peak_impact_probability"
+            ) if peak_supported else None,
+            "peak_talent_validated": bool(
+                peak_supported
+                and peak.get("peak_validation_status") == "historical_gate_passed"
+            ),
             "peak_rank": peak.get("prospect_peak_rate_rank") if peak_supported else None,
             "peak_supported": peak_supported,
             "foundation_status": (
@@ -332,8 +360,8 @@ def build_prospect_foundation_payload(
                 "raw_workload": "undiscounted official PA or BF",
                 "translation_confidence": "separate diagnostic; never an eligibility cutoff",
                 "conditional_talent": (
-                    "MLB batting-plus-replacement WAR rate among supported arrivals; pitcher rate withheld "
-                    "after failing held-out validation"
+                    "validated age-24-to-26 peak component run rate plus above-average "
+                    "and impact probabilities; comparable pitcher WAR rate remains withheld"
                 ),
                 "arrival": (
                     "validated six-year arrival-model probability, shown separately "

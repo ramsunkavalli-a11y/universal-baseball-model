@@ -79,6 +79,11 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
             "historical_positive_component_war_4y": [0.005],
             "historical_impact_rate_4y": [0.0],
         }),
+        hitter_upside=pl.DataFrame({
+            "player_id": [7],
+            "peak_above_average_probability": [0.22],
+            "peak_impact_probability": [0.08],
+        }),
         season=2026,
     )
     player = payload["players"][0]
@@ -99,6 +104,8 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
     assert player["outcome_status"] == "historical_outcome_available"
     assert player["historical_conditional_rate_validated"] is True
     assert player["modeled_six_year_arrival_probability"] == 0.31
+    assert player["peak_runs_rate"] is None
+    assert player["peak_above_average_probability"] is None
 
 
 def test_explorer_serialization_replaces_nonfinite_values(tmp_path: Path) -> None:
