@@ -38,6 +38,7 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
         "primary_level_tier": ["A_OR_BELOW"],
         "primary_level_workload_share": [0.9], "level_progression": [0.0],
         "development_history_seasons": [2.0],
+        "predicted_six_year_arrival_probability": [0.31],
     })
     pitcher_arrival = pl.DataFrame(schema={
         "player_id": pl.Int64, "level_tier": pl.String,
@@ -97,6 +98,7 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
     assert player["history_raw_workload"] == 40
     assert player["outcome_status"] == "historical_outcome_available"
     assert player["historical_conditional_rate_validated"] is True
+    assert player["modeled_six_year_arrival_probability"] == 0.31
 
 
 def test_explorer_serialization_replaces_nonfinite_values(tmp_path: Path) -> None:

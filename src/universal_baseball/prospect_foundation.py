@@ -213,6 +213,9 @@ def build_prospect_foundation_payload(
             "primary_level_share": arrival.get("primary_level_workload_share"),
             "level_progression": arrival.get("level_progression"),
             "development_seasons": arrival.get("development_history_seasons"),
+            "modeled_six_year_arrival_probability": arrival.get(
+                "predicted_six_year_arrival_probability"
+            ),
             "evidence": evidence,
             "current_raw_workload": sum(
                 int(level[current_workload_key]) for level in raw_levels
@@ -332,7 +335,10 @@ def build_prospect_foundation_payload(
                     "MLB batting-plus-replacement WAR rate among supported arrivals; pitcher rate withheld "
                     "after failing held-out validation"
                 ),
-                "arrival": "historical share reaching MLB within four years",
+                "arrival": (
+                    "validated six-year arrival-model probability, shown separately "
+                    "from the historical four-year comparable share"
+                ),
                 "risk_adjusted_outcome": "all-player mean with non-arrivals retained as zero",
             },
         },

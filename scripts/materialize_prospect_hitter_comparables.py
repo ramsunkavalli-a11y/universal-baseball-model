@@ -51,6 +51,7 @@ def _outcomes(
     *,
     origin: int,
     runs_per_win: float,
+    horizon: int = HORIZON,
 ) -> pl.DataFrame:
     annual = (
         pl.DataFrame(
@@ -66,7 +67,7 @@ def _outcomes(
                     "annual_role": "inactive",
                 }
                 for player_id in cohort["player_id"].to_list()
-                for season in range(origin + 1, origin + HORIZON + 1)
+                for season in range(origin + 1, origin + horizon + 1)
             ]
         )
         .join(

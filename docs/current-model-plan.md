@@ -822,3 +822,11 @@ Historical neighbor outcomes now retain P10, median, P90 and 1/3/6-WAR frequenci
 This replaces guessed point conversions with an empirical risk distribution. The
 horizon remains four calendar years and the scope excludes defense, baserunning and
 position, so it is not yet controlled WAR and cannot authorize FV.
+
+The guessed statement that a 50-FV prospect is worth roughly three controlled WAR is
+not a model rule. A direct six-calendar-year comparable extension failed the total
+outcome and arrival gates for both hitters and pitchers, so it is not promoted as
+controlled WAR. The foundation explorer now exposes the separately validated
+six-year MLB-arrival probability alongside four-year comparable outcomes and
+conditional MLB quality. Exact control-year value still requires service/control
+mapping plus whole-player WAR; public FV cannot fill that gap.

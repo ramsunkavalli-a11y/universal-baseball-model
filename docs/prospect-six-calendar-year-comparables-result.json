@@ -1,0 +1,189 @@
+{
+  "as_of_date": "2026-09-08",
+  "chronology_note": "The reference outcome window overlaps the diagnostic target origin. This is an optimistic retrospective diagnostic, not a held-out gate.",
+  "chronology_safe_validation": false,
+  "decision": "do_not_promote",
+  "horizon_calendar_years": 6,
+  "nonarrivals_scored_zero": true,
+  "one_row_per_reference_player": true,
+  "outside_fv_used": false,
+  "player_types": {
+    "hitter": {
+      "diagnostic_players": 3304,
+      "reference_players": 4427,
+      "retrospective_diagnostic": {
+        "arrival_historical_comparables": {
+          "brier": 0.12601225300280197,
+          "log_loss": 0.44308840645082104
+        },
+        "arrival_population_baseline": {
+          "brier": 0.11550769206131815,
+          "log_loss": 0.3931775454650109
+        },
+        "conditional_component_rate": {
+          "arrivals": 439,
+          "eligible_targets": 3304,
+          "historical_comparables_mae": 0.7666178461410799,
+          "historical_comparables_rmse": 0.9834337461015692,
+          "minimum_neighbor_arrivals": 0,
+          "population_baseline_mae": 0.9170667634620803,
+          "population_baseline_rmse": 1.1599505770490872,
+          "regression_exposure": 200
+        },
+        "conditional_support_sensitivity": {
+          "0": {
+            "arrivals": 439,
+            "eligible_targets": 3304,
+            "historical_comparables_mae": 0.7666178461410799,
+            "historical_comparables_rmse": 0.9834337461015692,
+            "minimum_neighbor_arrivals": 0,
+            "population_baseline_mae": 0.9170667634620803,
+            "population_baseline_rmse": 1.1599505770490872,
+            "regression_exposure": 200
+          },
+          "10": {
+            "arrivals": 227,
+            "eligible_targets": 946,
+            "historical_comparables_mae": 0.7492088644642089,
+            "historical_comparables_rmse": 0.9425724508164532,
+            "minimum_neighbor_arrivals": 10,
+            "population_baseline_mae": 0.9556689164444606,
+            "population_baseline_rmse": 1.204038401697125,
+            "regression_exposure": 200
+          },
+          "25": {
+            "arrivals": 227,
+            "eligible_targets": 946,
+            "historical_comparables_mae": 0.7492088644642089,
+            "historical_comparables_rmse": 0.9425724508164532,
+            "minimum_neighbor_arrivals": 25,
+            "population_baseline_mae": 0.9556689164444606,
+            "population_baseline_rmse": 1.204038401697125,
+            "regression_exposure": 200
+          },
+          "5": {
+            "arrivals": 227,
+            "eligible_targets": 946,
+            "historical_comparables_mae": 0.7492088644642089,
+            "historical_comparables_rmse": 0.9425724508164532,
+            "minimum_neighbor_arrivals": 5,
+            "population_baseline_mae": 0.9556689164444606,
+            "population_baseline_rmse": 1.204038401697125,
+            "regression_exposure": 200
+          },
+          "50": {
+            "arrivals": 0,
+            "eligible_targets": 0,
+            "historical_comparables_mae": null,
+            "historical_comparables_rmse": null,
+            "minimum_neighbor_arrivals": 50,
+            "population_baseline_mae": null,
+            "population_baseline_rmse": null,
+            "regression_exposure": 200
+          }
+        },
+        "historical_comparables": {
+          "bias": 0.2041447969265647,
+          "mae": 0.5797565365998624,
+          "rmse": 1.4077300162172728
+        },
+        "population_baseline": {
+          "bias": 0.20096327416820672,
+          "mae": 0.5956498297726899,
+          "rmse": 1.3241417024079178
+        }
+      }
+    },
+    "pitcher": {
+      "diagnostic_players": 3762,
+      "reference_players": 5123,
+      "retrospective_diagnostic": {
+        "arrival_historical_comparables": {
+          "brier": 0.14189936690126223,
+          "log_loss": 0.4714703513241824
+        },
+        "arrival_population_baseline": {
+          "brier": 0.125872176997225,
+          "log_loss": 0.4191933993048164
+        },
+        "conditional_component_rate": {
+          "arrivals": 554,
+          "eligible_targets": 3762,
+          "historical_comparables_mae": 0.8720412322526143,
+          "historical_comparables_rmse": 1.1607997066373952,
+          "minimum_neighbor_arrivals": 0,
+          "population_baseline_mae": 0.9129404234022783,
+          "population_baseline_rmse": 1.2120346636272885,
+          "regression_exposure": 200
+        },
+        "conditional_support_sensitivity": {
+          "0": {
+            "arrivals": 554,
+            "eligible_targets": 3762,
+            "historical_comparables_mae": 0.8720412322526143,
+            "historical_comparables_rmse": 1.1607997066373952,
+            "minimum_neighbor_arrivals": 0,
+            "population_baseline_mae": 0.9129404234022783,
+            "population_baseline_rmse": 1.2120346636272885,
+            "regression_exposure": 200
+          },
+          "10": {
+            "arrivals": 277,
+            "eligible_targets": 1062,
+            "historical_comparables_mae": 0.9216717776520157,
+            "historical_comparables_rmse": 1.219684436983071,
+            "minimum_neighbor_arrivals": 10,
+            "population_baseline_mae": 0.9907574177863097,
+            "population_baseline_rmse": 1.2941453087238812,
+            "regression_exposure": 200
+          },
+          "25": {
+            "arrivals": 277,
+            "eligible_targets": 1062,
+            "historical_comparables_mae": 0.9216717776520157,
+            "historical_comparables_rmse": 1.219684436983071,
+            "minimum_neighbor_arrivals": 25,
+            "population_baseline_mae": 0.9907574177863097,
+            "population_baseline_rmse": 1.2941453087238812,
+            "regression_exposure": 200
+          },
+          "5": {
+            "arrivals": 554,
+            "eligible_targets": 3762,
+            "historical_comparables_mae": 0.8720412322526143,
+            "historical_comparables_rmse": 1.1607997066373952,
+            "minimum_neighbor_arrivals": 5,
+            "population_baseline_mae": 0.9129404234022783,
+            "population_baseline_rmse": 1.2120346636272885,
+            "regression_exposure": 200
+          },
+          "50": {
+            "arrivals": 137,
+            "eligible_targets": 424,
+            "historical_comparables_mae": 0.9791809348582359,
+            "historical_comparables_rmse": 1.2300299722325971,
+            "minimum_neighbor_arrivals": 50,
+            "population_baseline_mae": 1.0261112163735466,
+            "population_baseline_rmse": 1.2887782717566645,
+            "regression_exposure": 200
+          }
+        },
+        "historical_comparables": {
+          "bias": 0.08439262745376334,
+          "mae": 0.3495796860637347,
+          "rmse": 0.8783899766764424
+        },
+        "population_baseline": {
+          "bias": 0.07131962514112927,
+          "mae": 0.35346108551043637,
+          "rmse": 0.8404354185017299
+        }
+      }
+    }
+  },
+  "reference_origins": [
+    2018,
+    2019
+  ],
+  "status": "six_calendar_year_partial_war_diagnostic_rejected"
+}
