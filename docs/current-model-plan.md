@@ -779,3 +779,11 @@ Rebuild in this order:
 
 Until that gate passes, the playable prospect page is a foundation evidence viewer,
 not a ranking or valuation product.
+
+The first foundation guardrail now passes for weak older low-level hitters. Across
+the 2018 and 2021 origin cohorts, 257 age-23-or-older A-or-below hitters with at least
+100 PA and no more than 0.06 extra-base hits per PA produced only 0.002 mean positive
+batting-component WAR over the next four years; none reached 1 WAR. Use this as an
+approximately-zero MLB batting baseline, not as a total-value cap or a substitute for
+the full outcome model. See
+[the negative-control result](weak-low-level-hitter-negative-control-result.md).

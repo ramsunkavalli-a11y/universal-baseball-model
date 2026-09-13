@@ -32,6 +32,8 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
         "primary_level_tier": ["A_OR_BELOW"],
         "primary_level_workload_share": [0.9], "level_progression": [0.0],
         "development_history_seasons": [2.0],
+        "current_milb_workload": [205.0],
+        "production_rate_4": [0.049],
     })
     pitcher_arrival = pl.DataFrame(schema={
         "player_id": pl.Int64, "level_tier": pl.String,
@@ -39,6 +41,8 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
         "primary_level_workload_share": pl.Float64,
         "level_progression": pl.Float64,
         "development_history_seasons": pl.Float64,
+        "current_milb_workload": pl.Float64,
+        "production_rate_4": pl.Float64,
     })
     names = pl.DataFrame({
         "player_id": [7], "player_name": ["Test Catcher"],
@@ -62,6 +66,26 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
         peak_hitters, peak_pitchers, future_hitters, future_pitchers,
         hitter_arrival, pitcher_arrival, names, raw_hitting, raw_pitching,
         season=2026,
+        negative_control_evidence={
+            "definition": {
+                "primary_level": "A_OR_BELOW",
+                "minimum_age": 23.0,
+                "minimum_current_pa": 100.0,
+                "maximum_xbh_per_pa": 0.06,
+            },
+            "results": {
+                "2018": {"negative_control": {
+                    "players": 100, "arrivals": 4, "arrival_rate": 0.04,
+                    "mean_positive_later_component_war": 0.0,
+                    "impact_rate_one_war": 0.0,
+                }},
+                "2021": {"negative_control": {
+                    "players": 100, "arrivals": 6, "arrival_rate": 0.06,
+                    "mean_positive_later_component_war": 0.01,
+                    "impact_rate_one_war": 0.0,
+                }},
+            },
+        },
     )
     player = payload["players"][0]
 
@@ -73,3 +97,7 @@ def test_foundation_withholds_fv_and_preserves_raw_level_performance() -> None:
     assert player["foundation_status"] == "peak_outside_supported_age"
     assert player["one_year_runs_rate"] == -26.7
     assert player["raw_levels"][0]["slg"] == 0.3
+    assert player["negative_control"] is True
+    assert player["mlb_batting_outlook"] == "near_zero_supported_by_history"
+    assert player["negative_control_history"]["players"] == 200
+    assert player["negative_control_history"]["arrival_rate"] == 0.05

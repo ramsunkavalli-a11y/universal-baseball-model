@@ -1,0 +1,51 @@
+{
+  "all_origin_players_retained": true,
+  "as_of_date": "2026-09-12",
+  "definition": {
+    "maximum_xbh_per_pa": 0.06,
+    "minimum_age": 23.0,
+    "minimum_current_pa": 100.0,
+    "primary_level": "A_OR_BELOW"
+  },
+  "horizon_years": 4,
+  "nonarrivals_scored_zero": true,
+  "results": {
+    "2018": {
+      "all": {
+        "arrival_rate": 0.12183978068839477,
+        "arrivals": 400,
+        "impact_rate_one_war": 0.030764544623819678,
+        "mean_later_component_war": 0.12445496616945026,
+        "mean_positive_later_component_war": 0.14942218506739727,
+        "players": 3283
+      },
+      "negative_control": {
+        "arrival_rate": 0.03571428571428571,
+        "arrivals": 5,
+        "impact_rate_one_war": 0.0,
+        "mean_later_component_war": -0.011157001808258772,
+        "mean_positive_later_component_war": 0.0,
+        "players": 140
+      }
+    },
+    "2021": {
+      "all": {
+        "arrival_rate": 0.12826822516148878,
+        "arrivals": 417,
+        "impact_rate_one_war": 0.03844970778222086,
+        "mean_later_component_war": 0.1439016022422296,
+        "mean_positive_later_component_war": 0.1632015171020812,
+        "players": 3251
+      },
+      "negative_control": {
+        "arrival_rate": 0.042735042735042736,
+        "arrivals": 5,
+        "impact_rate_one_war": 0.0,
+        "mean_later_component_war": 0.0019196066918283814,
+        "mean_positive_later_component_war": 0.004813395515665838,
+        "players": 117
+      }
+    }
+  },
+  "status": "negative_control_evidence_not_value_model"
+}
