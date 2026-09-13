@@ -213,10 +213,22 @@ def phase2_model_details(as_of_date: str) -> pl.DataFrame:
                     pl.col("peak_runs_rate").alias("peak_talent_runs_rate"),
                     "peak_above_average_probability",
                     "peak_impact_probability",
+                    *(
+                        column
+                        for column in (
+                            "pitch_process_applied",
+                            "pitch_process_runs_change",
+                            "process_whiff",
+                            "process_strike",
+                            "process_swing",
+                            "process_ppbf",
+                        )
+                        if column in pl.read_parquet(path).columns
+                    ),
                 )
                 for player_type, path in upside_paths.items()
             ],
-            how="vertical_relaxed",
+            how="diagonal_relaxed",
         )
         details = details.join(
             upside,

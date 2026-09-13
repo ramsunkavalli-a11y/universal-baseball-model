@@ -38,10 +38,18 @@ from universal_baseball.projection_composition import (
     inverse_ilr_transform,
     sequential_helmert_ilr_basis,
 )
+from universal_baseball.draft_source import draft_pedigree_as_of
 
 
 OUT = Path("reports/generated/peak-pitcher-structure")
-FORMS = ("starter_history", "level_components", "combined")
+FORMS = (
+    "starter_history",
+    "level_components",
+    "role_and_level",
+    "draft_pedigree",
+    "role_and_pedigree",
+    "all_structure",
+)
 
 
 def _attach_origin_role(examples: pl.DataFrame, source: pl.DataFrame) -> pl.DataFrame:
@@ -62,6 +70,23 @@ def _attach_origin_role(examples: pl.DataFrame, source: pl.DataFrame) -> pl.Data
     return result
 
 
+def _attach_origin_pedigree(
+    examples: pl.DataFrame, draft_history: pl.DataFrame
+) -> pl.DataFrame:
+    frames = []
+    for origin in sorted(examples.get_column("origin_year").unique().to_list()):
+        cohort = examples.filter(pl.col("origin_year") == origin)
+        pedigree = draft_pedigree_as_of(draft_history, int(origin))
+        frames.append(cohort.join(pedigree, on="player_id", how="left", validate="m:1"))
+    return pl.concat(frames, how="vertical_relaxed").with_columns(
+        pl.col("rule4_drafted").fill_null(False),
+        pl.col("draft_pick_quality").fill_null(0.0),
+        pl.col("signing_bonus_percentile").fill_null(0.0),
+        pl.col("signing_bonus_known").fill_null(False),
+        pl.col("high_school_draftee").fill_null(False),
+    ).sort(["player_id", "origin_age_band", "origin_year"])
+
+
 def _structure_features(
     rows: list[dict[str, object]], form: str, basis: np.ndarray
 ) -> np.ndarray:
@@ -75,9 +100,11 @@ def _structure_features(
             ilr_transform(_composition(row, PITCHER_COMPONENTS, "p_"), basis=basis)
         )
         values: list[float] = []
-        if form in {"starter_history", "combined"}:
+        if form in {
+            "starter_history", "role_and_level", "role_and_pedigree", "all_structure"
+        }:
             values.extend((start_share, start_share * start_share))
-        if form in {"level_components", "combined"}:
+        if form in {"level_components", "role_and_level", "all_structure"}:
             level_flags = np.asarray(
                 [float(row["level_group"] == level) for level in LEVELS[:-1]]
             )
@@ -86,6 +113,23 @@ def _structure_features(
             # rates. Test that single published nonlinearity without a broad search.
             values.append(
                 float(row["p_so"]) ** 2 * float(row["level_group"] == "AAA")
+            )
+        if form in {"draft_pedigree", "role_and_pedigree", "all_structure"}:
+            drafted = float(bool(row["rule4_drafted"]))
+            pick = float(row["draft_pick_quality"])
+            bonus_known = float(bool(row["signing_bonus_known"]))
+            bonus = float(row["signing_bonus_percentile"])
+            high_school = float(bool(row["high_school_draftee"]))
+            age = float(row["age_years"])
+            values.extend(
+                (
+                    drafted,
+                    pick,
+                    bonus_known,
+                    bonus * bonus_known,
+                    high_school * drafted,
+                    (age - 21.0) * pick,
+                )
             )
         extra.append(values)
     return np.column_stack((base, np.asarray(extra, dtype=float)))
@@ -142,6 +186,10 @@ def main() -> int:
     source = _pitcher_components(_load_sources("affiliated_pitching_components.parquet"))
     examples = pl.read_parquet(PEAK_ROOT / "tables" / "batters_faced_examples.parquet")
     examples = _attach_origin_role(examples, source)
+    examples = _attach_origin_pedigree(
+        examples,
+        pl.read_parquet("reports/generated/draft-history/draft-history.parquet"),
+    )
     basis = sequential_helmert_ilr_basis(len(PITCHER_COMPONENTS))
 
     train = examples.filter(pl.col("peak_window_end_year") <= 2014).to_dicts()
@@ -207,7 +255,10 @@ def main() -> int:
     gate = bool(eligible) and all(value >= 4 for value in wins.values()) and uncertainty_passes >= 4
     report = {
         "report_schema_version": "0.1",
-        "question": "Do starter history and level-specific components improve pitcher peak talent?",
+        "question": (
+            "Do starter history, level-specific components or objective Rule 4 draft "
+            "pedigree improve pitcher peak talent?"
+        ),
         "baseline": {"form": "component_development", "alpha": 100.0},
         "selection": selection,
         "selected": selected,

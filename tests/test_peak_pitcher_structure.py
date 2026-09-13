@@ -10,6 +10,7 @@ import polars as pl
 sys.path.insert(0, str(Path("scripts").resolve()))
 
 from audit_peak_pitcher_structure import (  # noqa: E402
+    _attach_origin_pedigree,
     _attach_origin_role,
     _structure_features,
 )
@@ -31,11 +32,29 @@ def test_combined_features_add_role_and_level_interactions() -> None:
         "age_years": 20.0, "age_relative_to_level": -2.0,
         "weighted_affiliated_exposure": 200.0, "level_group": "AA",
         "start_share": 0.8,
+        "rule4_drafted": True, "draft_pick_quality": 0.8,
+        "signing_bonus_percentile": 0.7, "signing_bonus_known": True,
+        "high_school_draftee": True,
         "p_so": 0.25, "p_ubb": 0.08, "p_hbp": 0.01, "p_hr": 0.02, "p_other": 0.64,
     }
     basis = sequential_helmert_ilr_basis(len(PITCHER_COMPONENTS))
     baseline_width = 6 + len(PITCHER_COMPONENTS) - 1 + (len(PITCHER_COMPONENTS) - 1)
-    result = _structure_features([row], "combined", basis)
+    result = _structure_features([row], "all_structure", basis)
     assert result.shape[0] == 1
     assert result.shape[1] > baseline_width
     assert np.isfinite(result).all()
+
+
+def test_pedigree_join_is_cutoff_safe() -> None:
+    examples = pl.DataFrame({
+        "player_id": [1, 1], "origin_year": [2023, 2024],
+        "origin_age_band": ["under_20", "20_to_21"],
+    })
+    history = pl.DataFrame({
+        "draft_year": [2024], "player_id": [1], "pick_number": [10],
+        "signing_bonus_dollars": [1_000_000], "school_class": ["HS"],
+        "drafted": [True],
+    })
+    result = _attach_origin_pedigree(examples, history)
+    assert not result.filter(pl.col("origin_year") == 2023).item(0, "rule4_drafted")
+    assert result.filter(pl.col("origin_year") == 2024).item(0, "rule4_drafted")

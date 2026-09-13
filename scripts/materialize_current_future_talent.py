@@ -62,6 +62,10 @@ def _model_predict(
         from audit_peak_talent_trend import _trend_features
 
         features = _trend_features(rows, components, str(fit["form"]), basis)
+    elif fit.get("feature_family") == "component_development_plus_pitch_process":
+        from audit_pitcher_process_challenger import _design
+
+        features = _design(rows, basis, str(fit["process_feature_set"]))
     else:
         features = _features(rows, components, str(fit["form"]), basis)
     mean = np.asarray(fit["scaler_mean"], dtype=float)

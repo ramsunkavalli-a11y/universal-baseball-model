@@ -35,6 +35,19 @@ class PitchProcessCapability:
 _ACL = 121
 _FCL = 124
 _DSL = 130
+_FULL_SEASON_LEAGUES = {
+    109: "Southern League",
+    110: "California League",
+    111: "Eastern League",
+    112: "International League",
+    113: "Texas League",
+    116: "South Atlantic League",
+    117: "Pacific Coast League",
+    118: "Midwest League",
+    122: "Carolina League",
+    123: "Florida State League",
+    126: "Northwest League",
+}
 
 
 _CERTIFIED: dict[tuple[int, int], PitchProcessCapability] = {
@@ -81,6 +94,39 @@ _CERTIFIED: dict[tuple[int, int], PitchProcessCapability] = {
         evidence="20-game June 2024 official-feed audit; outcome-minimal K/BB/BIP signatures",
     ),
 }
+
+# A 20-game-per-level August audit in each season sampled every actual full-season
+# affiliated league. All showed normal pitch-count distributions near the Single-A
+# control rather than the roughly 90% outcome-minimal Rookie signature.
+for _season in (2018, 2019, 2021, 2022, 2023, 2024):
+    for _league_id, _league_name in _FULL_SEASON_LEAGUES.items():
+        _CERTIFIED[(_season, _league_id)] = PitchProcessCapability(
+            season=_season,
+            league_id=_league_id,
+            league_name=_league_name,
+            status="eligible",
+            evidence=(
+                f"20-game-per-level August {_season} official-feed audit; "
+                "sequence distributions inconsistent with outcome-minimal entry"
+            ),
+        )
+    if _season not in {2021, 2022}:
+        continue
+    for _league_id, _league_name in {
+        _ACL: "Arizona Complex League",
+        _FCL: "Florida Complex League",
+        _DSL: "Dominican Summer League",
+    }.items():
+        _CERTIFIED[(_season, _league_id)] = PitchProcessCapability(
+            season=_season,
+            league_id=_league_id,
+            league_name=_league_name,
+            status="ineligible_synthetic_sequence",
+            evidence=(
+                f"20-game-per-level August {_season} official-feed audit; "
+                "outcome-minimal K/BB/BIP signatures"
+            ),
+        )
 
 
 def pitch_process_capability(season: int, league_id: int) -> PitchProcessCapability:

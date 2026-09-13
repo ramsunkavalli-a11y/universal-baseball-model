@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path("scripts").resolve()))
 
 from audit_age_to_peak_talent import _completed_fit_examples, _player_score  # noqa: E402
 from materialize_current_peak_talent import (  # noqa: E402
+    _apply_process_residual,
     _rank_prospects,
     _run_calibration,
 )
@@ -86,3 +87,13 @@ def test_pitcher_run_score_rewards_strikeouts_and_penalizes_walks() -> None:
 
     assert _pitcher_runs(more_strikeouts, present, np.asarray([0.0]))[0] > 0.0
     assert _pitcher_runs(more_walks, present, np.asarray([0.0]))[0] < 0.0
+
+
+def test_process_residual_does_not_import_same_cohort_intercept() -> None:
+    from universal_baseball.projection_composition import sequential_helmert_ilr_basis
+
+    basis = sequential_helmert_ilr_basis(3)
+    production = np.asarray([[0.2, 0.3, 0.5]])
+    same_cohort = np.asarray([[0.1, 0.2, 0.7]])
+    result = _apply_process_residual(production, same_cohort, same_cohort, basis)
+    np.testing.assert_allclose(result, production)

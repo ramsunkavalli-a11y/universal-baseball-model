@@ -107,8 +107,17 @@ def _logic_summary(row: dict[str, object], *, player_type: str) -> str:
         facts.append("recent component direction improving")
     elif direction is not None and float(direction) <= -2.0:
         facts.append("recent component direction declining")
-    if player_type == "pitcher" and str(row.get("as_of_level_group")) != "AAA":
-        facts.append("raw pitch quality unavailable")
+    if player_type == "pitcher":
+        process_change = float(row.get("pitch_process_runs_change") or 0.0)
+        if bool(row.get("pitch_process_applied")):
+            if process_change >= 2.0:
+                facts.append("pitch-call profile raises the projection")
+            elif process_change <= -2.0:
+                facts.append("pitch-call profile lowers the projection")
+            else:
+                facts.append("pitch-call profile is near neutral")
+        else:
+            facts.append("validated pitch-call profile unavailable")
     return "; ".join(facts) or "near the middle of the measured component distribution"
 
 
@@ -171,10 +180,10 @@ def _reason(frame: pl.DataFrame, *, player_type: str) -> pl.DataFrame:
         (pl.col("peak_hr_rate") - pl.col("present_hr_rate")).alias(
             "home_run_rate_change"
         ),
-        pl.when(pl.col("as_of_level_group") == "AAA")
-        .then(pl.lit("AAA pitch tracking exists but is not yet a validated peak input"))
+        pl.when(pl.col("pitch_process_applied"))
+        .then(pl.lit("velocity, movement and pitch type remain unavailable"))
         .otherwise(
-            pl.lit("official velocity, movement and pitch type unavailable below AAA")
+            pl.lit("validated pitch-call profile and physical pitch traits unavailable")
         )
         .alias("known_missing_evidence"),
     )

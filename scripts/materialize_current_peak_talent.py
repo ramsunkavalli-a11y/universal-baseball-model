@@ -12,6 +12,7 @@ import polars as pl
 from audit_one_year_talent_development import HITTER_COMPONENTS, PITCHER_COMPONENTS
 from audit_one_year_talent_development import _hitter_components, _load_sources
 from audit_peak_talent_trend import _add_trend
+from audit_pitcher_process_challenger import _load_process, _process_features
 from materialize_current_future_talent import (
     _hitter_runs,
     _model_predict,
@@ -19,6 +20,7 @@ from materialize_current_future_talent import (
     _prepare,
 )
 from universal_baseball.storage import write_canonical_parquet
+from universal_baseball.projection_composition import ilr_transform, inverse_ilr_transform
 
 
 BASIC_ROOT = Path("reports/generated/current-basic-talent/2026-09-08/tables")
@@ -29,6 +31,7 @@ OUTPUT_ROOT = Path("reports/generated/current-peak-talent/2026-09-08")
 PITCHER_ROLE_PATH = Path(
     "reports/generated/current-pitcher-opportunity-v2/2026-09-08/predictors.parquet"
 )
+PITCHER_PROCESS_ARTIFACT = Path("model_artifacts/peak-pitcher-process-v1.json")
 FIELDING_PROFILE_PATH = Path(
     "reports/generated/current-defense-rates/2026-09-08/tables/"
     "current-fielding-profiles.parquet"
@@ -90,6 +93,27 @@ def _run_calibration(
     return np.where(apply_model, adjustment, 0.0)
 
 
+def _apply_process_residual(
+    production_peak: np.ndarray,
+    process_peak: np.ndarray,
+    same_cohort_reference_peak: np.ndarray,
+    basis: np.ndarray,
+) -> np.ndarray:
+    """Apply only the incremental process signal, not a cohort intercept shift."""
+
+    return np.asarray([
+        inverse_ilr_transform(
+            np.asarray(ilr_transform(production_peak[index], basis=basis))
+            + np.asarray(ilr_transform(process_peak[index], basis=basis))
+            - np.asarray(
+                ilr_transform(same_cohort_reference_peak[index], basis=basis)
+            ),
+            basis=basis,
+        )
+        for index in range(len(production_peak))
+    ])
+
+
 def _materialize(
     frame: pl.DataFrame,
     components: tuple[str, ...],
@@ -98,9 +122,30 @@ def _materialize(
     player_type: str,
     calibration: dict[str, float],
     ranking_fit: dict[str, object] | None = None,
+    fallback_fit: dict[str, object] | None = None,
+    process_reference_fit: dict[str, object] | None = None,
 ) -> pl.DataFrame:
     present = frame.select([f"p_{name}" for name in components]).to_numpy()
     peak = _model_predict(frame, components, fit)
+    process_applied = np.zeros(frame.height, dtype=bool)
+    process_runs_change = np.zeros(frame.height, dtype=float)
+    if fallback_fit is not None:
+        process_applied = frame.get_column("pitch_process_available").to_numpy()
+        fallback_peak = _model_predict(frame, components, fallback_fit)
+        if process_reference_fit is None:
+            process_peak = peak
+        else:
+            reference_peak = _model_predict(frame, components, process_reference_fit)
+            basis = np.asarray(fit["ilr_basis"], dtype=float)
+            process_peak = _apply_process_residual(
+                fallback_peak, peak, reference_peak, basis
+            )
+        if player_type == "pitcher":
+            process_runs_change = (
+                _pitcher_runs(process_peak, present, np.zeros(frame.height))
+                - _pitcher_runs(fallback_peak, present, np.zeros(frame.height))
+            )
+        peak = np.where(process_applied[:, None], process_peak, fallback_peak)
     age = frame.get_column("age_years").to_numpy()
     minor = frame.get_column("as_of_level_group").to_numpy() != "MLB"
     if player_type == "hitter":
@@ -127,11 +172,25 @@ def _materialize(
             present_runs,
         )
     model_name = str(fit.get("feature_family") or fit["form"])
-    policy = np.where(
-        apply_model,
-        f"age_24_to_26_{model_name}",
-        "carry_forward_outside_supported_age",
-    )
+    if fallback_fit is None:
+        policy = np.where(
+            apply_model,
+            f"age_24_to_26_{model_name}",
+            "carry_forward_outside_supported_age",
+        )
+    else:
+        fallback_name = str(
+            fallback_fit.get("feature_family") or fallback_fit["form"]
+        )
+        policy = np.where(
+            apply_model,
+            np.where(
+                process_applied,
+                f"age_24_to_26_{model_name}",
+                f"age_24_to_26_{fallback_name}_missing_process_fallback",
+            ),
+            "carry_forward_outside_supported_age",
+        )
     recent_direction = np.full(frame.height, np.nan)
     if player_type == "hitter" and "has_prior_profile" in frame.columns:
         prior = frame.select([f"prior_{name}" for name in components]).to_numpy()
@@ -162,6 +221,16 @@ def _materialize(
             for column in ("external_rank_audit_only", "external_fv_audit_only")
             if column in frame.columns
         ),
+        *(
+            column
+            for column in (
+                "process_whiff",
+                "process_strike",
+                "process_swing",
+                "process_ppbf",
+            )
+            if column in frame.columns
+        ),
     ).with_columns(
         pl.Series("present_runs_rate", present_runs),
         pl.Series("component_peak_runs_rate", component_peak_runs),
@@ -170,6 +239,11 @@ def _materialize(
         pl.Series("age_level_peak_runs_rate", age_level_peak_runs),
         pl.Series("peak_runs_change", peak_runs - present_runs),
         pl.Series("recent_component_direction_runs", recent_direction),
+        pl.Series("pitch_process_applied", process_applied & apply_model),
+        pl.Series(
+            "pitch_process_runs_change",
+            np.where(process_applied & apply_model, process_runs_change, 0.0),
+        ),
         pl.Series("peak_policy", policy),
         pl.lit(status).alias("peak_validation_status"),
         *(pl.Series(f"present_{name}_rate", present[:, index]) for index, name in enumerate(components)),
@@ -246,6 +320,36 @@ def main() -> int:
             PITCHER_COMPONENTS,
             player_type="pitcher",
         )
+    pitcher_fit = report["pitchers"]["current_fit"]
+    pitcher_fallback_fit = None
+    pitcher_process_reference_fit = None
+    if PITCHER_PROCESS_ARTIFACT.exists():
+        process_artifact = json.loads(
+            PITCHER_PROCESS_ARTIFACT.read_text(encoding="utf-8")
+        )
+        if process_artifact.get("status") == "promoted_optional_high_minors_peak_input":
+            current_process = (
+                _process_features(_load_process())
+                .filter(pl.col("season") == 2026)
+                .drop("season", "bf")
+                .with_columns(pl.lit(True).alias("pitch_process_available"))
+            )
+            pitcher_source = pitcher_source.join(
+                current_process,
+                on=["player_id", "level_group"],
+                how="left",
+                validate="m:1",
+            ).with_columns(
+                pl.col("pitch_process_available").fill_null(False),
+                pl.col(
+                    "process_whiff", "process_strike", "process_swing", "process_ppbf"
+                ).fill_null(0.0),
+            )
+            pitcher_fit = process_artifact["fit"]
+            pitcher_fallback_fit = report["pitchers"]["current_fit"]
+            pitcher_process_reference_fit = process_artifact[
+                "same_cohort_reference_fit"
+            ]
     if PITCHER_ROLE_PATH.exists():
         pitcher_source = pitcher_source.join(
             pl.read_parquet(PITCHER_ROLE_PATH).select("player_id", "as_of_role"),
@@ -256,10 +360,12 @@ def main() -> int:
     pitchers = _materialize(
         pitcher_source,
         PITCHER_COMPONENTS,
-        report["pitchers"]["current_fit"],
+        pitcher_fit,
         player_type="pitcher",
         calibration=calibration["pitchers"],
         ranking_fit=report["pitchers"]["age_level_current_fit"],
+        fallback_fit=pitcher_fallback_fit,
+        process_reference_fit=pitcher_process_reference_fit,
     )
     tables = OUTPUT_ROOT / "tables"
     tables.mkdir(parents=True, exist_ok=True)
@@ -294,6 +400,11 @@ def main() -> int:
             "ordering_policy": (
                 "component-development peak mean remains the provisional inspection "
                 "order; no ranking blend passed the separate top-tail gate"
+            ),
+            "pitch_process": (
+                "validated high-minors optional input with results-only fallback"
+                if pitcher_fallback_fit is not None
+                else "not applied"
             ),
         },
         "public_rank_role": "joined after scoring for audit only",

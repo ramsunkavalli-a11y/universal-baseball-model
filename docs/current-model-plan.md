@@ -707,9 +707,37 @@ nor shortstop receives a hidden value bonus. Revisit position only with a new va
 peak-value target.
 
 The first pitcher-structure challenger is complete. Origin starter share, level-specific
-component effects and their combination failed later equal-player peak validation. Do
-not add a starter talent bonus or a KATOH-shaped level interaction. The existing arrival
-and role models already carry those separate questions. For peak pitcher talent, move
-to genuinely new process evidence: first pitch-call summaries where official sequences
-are physical, then velocity/movement only where tracking exists. See
+component effects, cutoff-safe Rule 4 draft pedigree and their combinations failed the
+complete later equal-player peak gate. Draft evidence improved log loss more often but
+worsened Brier calibration and cleared paired uncertainty in 0/5 groups. Do not add a
+starter, draft-pedigree or KATOH-shaped level bonus. The existing arrival and role models
+already carry those separate questions. For peak pitcher talent, move to genuinely new
+process evidence: first pitch-call summaries where official sequences are physical,
+then velocity/movement only where tracking exists. See
 `docs/peak-pitcher-structure-result.md`.
+
+The first genuinely new pitcher evidence family has now passed. Regressed,
+level-season-relative whiff, strike, swing and pitches-per-batter rates improved every
+next-year component score in both untouched 2023 and 2024 origin replays, with paired
+uncertainty entirely below zero. Promote this only as an optional 2021+ full-season
+high-minors current-component input. Rookie/complex synthetic feeds remain excluded and
+missing process data preserves the results-only fallback. Before changing peak ranks,
+route the improved current estimate through the frozen peak model and audit player-level
+changes. See `docs/pitcher-process-challenger-result.md`.
+
+That direct peak test now passes selectively. Both later origin groups improve all four
+scores; one clears paired uncertainty and the smaller second gain does not. Current
+integration applies only the process-versus-results difference from the same historical
+cohort on top of the broad production peak model. This avoids importing a cohort
+intercept: the current covered population has a +0.06 median and +0.14 mean run change,
+not the spurious broad downward shift caught by the integration audit. Keep the
+results-only fallback exact. See `docs/peak-pitcher-process-result.md`.
+
+The current player-level rebuild is complete. No eligible external top-50 pitcher is
+outside the model top 100, and the strongest remaining disagreements now carry basic
+baseball explanations plus the process-layer effect. Do not read the 22 pitcher-only
+top-25 names outside an overall top-50 list as 22 equivalent misses. The exact order is
+still provisional because public evaluators observe physical pitch traits that this
+feed does not. Next test a historical, pitcher-only top-tail presentation using the
+already validated mean and upside outputs; do not add public FV to the model. See
+`docs/current-pitcher-ranking-checkpoint.md`.

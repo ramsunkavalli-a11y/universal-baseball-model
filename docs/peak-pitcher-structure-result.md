@@ -5,35 +5,40 @@ Status: **REJECTED; KEEP THE EXISTING PEAK COMPONENT MODEL**
 
 ## Question
 
-Do two simple ideas found in public minor-league pitcher systems improve our
+Do three simple ideas found in public minor-league pitcher systems improve our
 age-24-to-26 talent forecast?
 
 1. origin-season starter share;
 2. different component relationships by minor-league level, including the published
    KATOH-style diminishing return for very high Triple-A strikeout rates.
+3. cutoff-safe Rule 4 draft position, signing bonus rank and school class.
 
 The test keeps translated K/BB/HBP/HR/other outcomes as the foundation. Public rank,
 FV, future workload and arrival are not inputs.
 
 ## Result
 
-The development period selected the combined version with strong ridge shrinkage.
+The development period selected the version containing all three groups with strong
+ridge shrinkage. Objective draft evidence improved equal-player log loss more
+consistently, but still failed the complete gate. Against the frozen
+component-development baseline, the selected model subsequently improved:
 Against the frozen component-development baseline, it subsequently improved:
 
-- equal-player log loss in 1 of 5 later groups;
+- equal-player log loss in 4 of 5 later groups;
 - equal-player Brier score in 1 of 5;
-- exposure-weighted event log loss and Brier score in 3 of 5;
+- exposure-weighted event log loss in 5 of 5 and Brier score in 3 of 5;
 - paired equal-player uncertainty in 0 of 5.
 
-The direction was inconsistent: it worsened both player scores in 2018, 2019, 2024
-and 2025. The isolated 2023 gain is not enough to promote it.
+The improvement is too small and poorly calibrated to treat draft selection as hidden
+pitching talent. Most equal-player Brier results worsened, and no later group had both
+paired uncertainty intervals below zero.
 
 ## Decision
 
-Do not add a starter bonus or level-specific component interactions to peak pitcher
-talent. Starter history remains useful for role and arrival, but it is not demonstrated
-additional evidence about pitching quality once age, level and translated component
-performance are known.
+Do not add a starter bonus, level-specific component interactions, or draft-pedigree
+talent bonus to peak pitcher talent. Starter and draft history remain useful for role
+and arrival, but neither is demonstrated additional evidence about pitching quality
+once age, level and translated component performance are known.
 
 This narrows the remaining gap. A richer results-only rearrangement is unlikely to fix
 low-minors pitcher ordering. The next useful challenger must add genuinely new evidence:

@@ -194,6 +194,14 @@ def build_explorer_payload(
                     "peak_above_average_probability"
                 ),
                 "peak_impact_probability": detail.get("peak_impact_probability"),
+                "pitch_process_applied": detail.get("pitch_process_applied"),
+                "pitch_process_runs_change": detail.get(
+                    "pitch_process_runs_change"
+                ),
+                "process_whiff": detail.get("process_whiff"),
+                "process_strike": detail.get("process_strike"),
+                "process_swing": detail.get("process_swing"),
+                "process_ppbf": detail.get("process_ppbf"),
                 "batting_runs_per_600": detail.get("batting_runs_per_600"),
                 "baserunning_runs_per_600": detail.get("baserunning_runs_per_600"),
                 "defense_runs_per_600": detail.get("defense_runs_per_600"),
