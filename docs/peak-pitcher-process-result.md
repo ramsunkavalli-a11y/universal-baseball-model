@@ -1,6 +1,6 @@
 # Peak pitcher pitch-process result
 
-Last updated: 2026-09-12  
+Last updated: 2026-09-12
 Status: **PROMOTED AS AN OPTIONAL HIGH-MINORS PEAK INPUT**
 
 ## Test
@@ -42,5 +42,5 @@ This materially separates pitchers with similar K/BB/HR results using basic proc
 logic while staying centered on the established model. It still cannot recover
 velocity, movement or arsenal information for lower-minors pitchers.
 
-Model artifact: `model_artifacts/peak-pitcher-process-v1.json`.  
+Model artifact: `model_artifacts/peak-pitcher-process-v1.json`.
 Machine-readable audit: `reports/generated/peak-pitcher-process/report.json`.

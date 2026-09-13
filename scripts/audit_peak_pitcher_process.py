@@ -148,7 +148,7 @@ def main() -> int:
     }
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "report.json").write_text(
-        json.dumps(report, indent=2, sort_keys=True), encoding="utf-8"
+        json.dumps(report, indent=2, sort_keys=True), encoding="utf-8", newline="\n"
     )
     if passed:
         ARTIFACT.write_text(
@@ -162,6 +162,7 @@ def main() -> int:
                 "same_cohort_reference_fit": current_reference_fit,
             }, indent=2, sort_keys=True) + "\n",
             encoding="utf-8",
+            newline="\n",
         )
     print(json.dumps(report, indent=2))
     return 0

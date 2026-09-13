@@ -1,6 +1,6 @@
 # Current pitcher ranking checkpoint
 
-Last updated: 2026-09-12  
+Last updated: 2026-09-12
 Status: **USEFUL FOR PLAYER REVIEW; EXACT ORDER REMAINS PROVISIONAL**
 
 ## What is now working
