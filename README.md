@@ -14,6 +14,14 @@ and Phase 2 sequence. Read it first, then the
 [status and handoff](docs/project-status.md). Component-specific plans are historical
 records when they conflict with that sequence.
 
+**Execution priority, 2026-09-22:** follow the
+[multi-year player-value plan](docs/multiyear-player-value-plan-2026-09-22.md).
+Connect the improved one-year models and earlier six-year prospect research to
+tested annual and cumulative forecasts. The
+[literature review](docs/multiyear-player-value-literature-2026-09-22.md) explains the
+design; the first milestone is Year 2/3 hitter value and the three-year total.
+The older previews described below do not establish current whole-career accuracy.
+
 Phase 2 now has a private [production-based Model FV and workload preview](docs/phase2-model-fv-and-workload-2026-09-09.md).
 It fixes the established-player workload tail, values pre-MLB players over six control
 years after arrival, and keeps Model FV separate from contract surplus. Publication

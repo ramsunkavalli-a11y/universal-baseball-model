@@ -122,6 +122,13 @@ it does not become projection talent until it improves a future player target.
 
 ## Development order while 2026 remains sealed
 
+**Priority update, 2026-09-22:** the
+[multi-year player-value plan](multiyear-player-value-plan-2026-09-22.md) is now the
+active sequence. Establish annual Year 2/3 and cumulative hitter value, then extend
+horizons and pitchers. Earlier six-year prospect means remain required benchmarks.
+The component work below records completed one-year development and its remaining
+limitations; it must not displace the multi-year milestone without a blocking defect.
+
 1. **Pitcher information-block ablations.** Exact prior-only opponent quality is
    complete and rejected for future value; earlier park adjustment also failed its
    player gate. Keep both for fair past-event measurement. Test any remaining compact

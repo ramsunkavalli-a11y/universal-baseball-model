@@ -4,6 +4,24 @@
 **Adopted:** 2026-09-07
 **Supersedes for prioritization:** component-specific "next experiment" lists
 
+## Active execution priority — 2026-09-22
+
+Follow the [multi-year player-value plan](multiyear-player-value-plan-2026-09-22.md)
+for the next sequence: certify annual/cumulative labels, compare direct Year 2/3
+hitter forecasts and linked development paths, extend supported horizons, then
+pitchers, whole-player components, and verified control/cost accounting. The
+[research review](multiyear-player-value-literature-2026-09-22.md) and reproducible
+source-support audit are part of that plan.
+
+Earlier six-year partial prospect models and career-path experiments exist; their
+documented decisions remain valid within their scope. The improved September 22
+one-year stack has not established integrated annual Years 2–6 performance. Earlier
+"complete" research-path statements below describe their dated versions and do not
+certify the current model. This section supersedes conflicting immediate execution
+orders below; retain the older sections as historical context. The 2026 test remains
+protected, and full controlled/economic value still requires validated production
+and service/cost paths.
+
 Historical experiment contracts and decisions remain binding records. They do not
 override this roadmap's product sequence. When another document conflicts with this
 one about what to build next, follow this roadmap and update `project-status.md`.

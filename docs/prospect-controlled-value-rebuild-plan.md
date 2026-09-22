@@ -1,6 +1,10 @@
 # Prospect controlled-value rebuild plan
 
-**Status:** active P0 after the separated talent foundation
+**Status:** retained control/service contract; execution order updated 2026-09-22
+
+Follow the [multi-year player-value plan](multiyear-player-value-plan-2026-09-22.md)
+for the current annual-production milestone. The accepted six-year evidence and
+service/control constraints below remain binding within their original scope.
 
 ## Rule
 

@@ -1,5 +1,15 @@
 # Current model plan
 
+## Active priority — 2026-09-22: annual and cumulative future value
+
+Follow the [multi-year plan](multiyear-player-value-plan-2026-09-22.md), beginning
+with certified labels and a direct Year 2/3 hitter comparison. Reuse the current
+one-year development stack and the accepted six-year partial prospect benchmarks.
+The [literature review](multiyear-player-value-literature-2026-09-22.md) explains why
+direct horizons and linked annual paths both need testing. Older "Active P0" headings
+below record prior priorities; they do not override this sequence. The current gap
+is tested year-by-year integration, not an absence of all multi-year research.
+
 ## Active P0: full-profile BIP contact talent
 
 Run the [full BIP contact-talent challenger](full-bip-contact-talent-challenger-plan.md)

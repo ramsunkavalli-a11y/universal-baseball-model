@@ -1,6 +1,26 @@
 # Project status and handoff
 
-Updated 2026-09-13. This is the current start-here document.
+Updated 2026-09-22. This is the current start-here document.
+
+## Current task: connect annual forecasts to multi-year player value
+
+The [active multi-year plan](multiyear-player-value-plan-2026-09-22.md) now governs
+execution. The [current one-year development result](player-value-development-baseline-v2-result.md)
+and accepted older six-year partial prospect means are distinct validated pieces;
+their connection into current annual Years 2–6 forecasts remains unvalidated.
+The earlier conversational claim that there was no multi-year work was incorrect.
+
+Completed at this checkpoint: literature review, prior-work reconciliation, and a
+reproducible hash-checked horizon-availability audit. The current rich hitter panel
+has no trainable five/six-year outer fold under the conservative full-window embargo,
+and no nested tuning support for three years. Older aggregate history is therefore
+needed for the longer-horizon base. These are source-availability findings, not new
+model performance results or a certification of complete player coverage.
+
+Next: M1 annual/cumulative label and denominator certification, followed by the M2
+Year 2/3 hitter and three-year cumulative comparison. Original 2026 predictions and
+outcomes remain protected. The stopping points and active-task headings below are
+historical records unless explicitly carried forward by the new plan.
 
 ## Current stopping point: validated six-year partial prospect outcomes
 

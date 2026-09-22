@@ -1,0 +1,1801 @@
+{
+  "embargo": "training_origin + horizon < scoring_origin",
+  "last_outcome_season": 2025,
+  "limitations": [
+    "Season presence is not source completeness certification.",
+    "Current panel membership is not a certified historical rights universe.",
+    "Potential folds are dependent when players/outcome years overlap.",
+    "Nested support means at least one inner split, not adequate sample size.",
+    "Excluded one-year origins may be recoverable from original features."
+  ],
+  "populations": {
+    "hitter": {
+      "horizons": [
+        {
+          "annual_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "cumulative_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2016,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2017,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": [
+                2015
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2017,
+                2018
+              ],
+              "origin": 2021,
+              "outcome_end": 2022,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2017,
+                2018
+              ],
+              "origin": 2022,
+              "outcome_end": 2023,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2017,
+                2018,
+                2021
+              ],
+              "origin": 2023,
+              "outcome_end": 2024,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017,
+                2018,
+                2021
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2017,
+                2018,
+                2021,
+                2022
+              ],
+              "origin": 2024,
+              "outcome_end": 2025,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017,
+                2018,
+                2021,
+                2022
+              ]
+            }
+          ],
+          "horizon": 1,
+          "outer_origins_with_nested_support": [
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "outer_origins_with_prior_training": [
+            2017,
+            2018,
+            2021,
+            2022,
+            2023,
+            2024
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023
+          ],
+          "cumulative_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2017,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": [
+                2015
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2018
+              ],
+              "origin": 2021,
+              "outcome_end": 2023,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2018
+              ],
+              "origin": 2022,
+              "outcome_end": 2024,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2018
+              ],
+              "origin": 2023,
+              "outcome_end": 2025,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            }
+          ],
+          "horizon": 2,
+          "outer_origins_with_nested_support": [
+            2021,
+            2022,
+            2023
+          ],
+          "outer_origins_with_prior_training": [
+            2018,
+            2021,
+            2022,
+            2023
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022
+          ],
+          "cumulative_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2021,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2021,
+              "outcome_end": 2024,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2022,
+              "outcome_end": 2025,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            }
+          ],
+          "horizon": 3,
+          "outer_origins_with_nested_support": [],
+          "outer_origins_with_prior_training": [
+            2021,
+            2022
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021
+          ],
+          "cumulative_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2021,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2022,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2021,
+              "outcome_end": 2025,
+              "touches_2020": false,
+              "training_origins": [
+                2015,
+                2016
+              ]
+            }
+          ],
+          "horizon": 4,
+          "outer_origins_with_nested_support": [],
+          "outer_origins_with_prior_training": [
+            2021
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018
+          ],
+          "cumulative_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2021,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2022,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2023,
+              "touches_2020": true,
+              "training_origins": []
+            }
+          ],
+          "horizon": 5,
+          "outer_origins_with_nested_support": [],
+          "outer_origins_with_prior_training": []
+        },
+        {
+          "annual_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018
+          ],
+          "cumulative_label_origins": [
+            2015,
+            2016,
+            2017,
+            2018
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2021,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2022,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2023,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2024,
+              "touches_2020": true,
+              "training_origins": []
+            }
+          ],
+          "horizon": 6,
+          "outer_origins_with_nested_support": [],
+          "outer_origins_with_prior_training": []
+        }
+      ],
+      "origin_counts": [
+        {
+          "len": 5320,
+          "origin_year": 2015
+        },
+        {
+          "len": 5383,
+          "origin_year": 2016
+        },
+        {
+          "len": 5419,
+          "origin_year": 2017
+        },
+        {
+          "len": 5212,
+          "origin_year": 2018
+        },
+        {
+          "len": 5196,
+          "origin_year": 2021
+        },
+        {
+          "len": 4243,
+          "origin_year": 2022
+        },
+        {
+          "len": 4184,
+          "origin_year": 2023
+        },
+        {
+          "len": 3929,
+          "origin_year": 2024
+        }
+      ],
+      "origin_players": 14604,
+      "origin_rows": 38886,
+      "source_artifacts": {
+        "modeling_panel": {
+          "path": "reports/generated/hitter-value-panel-v2/tables/modeling-panel.parquet",
+          "sha256": "c0296429b8d45fbdb72714a642aaa6a53b5d76866bd4a7ae13b49f759887f85b"
+        },
+        "value_targets": {
+          "path": "reports/generated/hitter-value-panel-v2/tables/hitter-value-targets.parquet",
+          "sha256": "b24f595362c3f8b1294918e4cf322c7d4ef3bce9e3be8434eb21570207f2f17b"
+        }
+      },
+      "target_seasons": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    "pitcher": {
+      "horizons": [
+        {
+          "annual_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "cumulative_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2009,
+              "outcome_end": 2010,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2010,
+              "outcome_end": 2011,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2011,
+              "outcome_end": 2012,
+              "touches_2020": false,
+              "training_origins": [
+                2009
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2012,
+              "outcome_end": 2013,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011
+              ],
+              "origin": 2013,
+              "outcome_end": 2014,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012
+              ],
+              "origin": 2014,
+              "outcome_end": 2015,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012,
+                2013
+              ],
+              "origin": 2015,
+              "outcome_end": 2016,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012,
+                2013,
+                2014
+              ],
+              "origin": 2016,
+              "outcome_end": 2017,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012,
+                2013,
+                2014,
+                2015
+              ],
+              "origin": 2017,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016
+              ],
+              "origin": 2018,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ],
+              "origin": 2021,
+              "outcome_end": 2022,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ],
+              "origin": 2022,
+              "outcome_end": 2023,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018,
+                2021
+              ],
+              "origin": 2023,
+              "outcome_end": 2024,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018,
+                2021
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018,
+                2021,
+                2022
+              ],
+              "origin": 2024,
+              "outcome_end": 2025,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018,
+                2021,
+                2022
+              ]
+            }
+          ],
+          "horizon": 1,
+          "outer_origins_with_nested_support": [
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "outer_origins_with_prior_training": [
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023,
+            2024
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023
+          ],
+          "cumulative_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2009,
+              "outcome_end": 2011,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2010,
+              "outcome_end": 2012,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2011,
+              "outcome_end": 2013,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2012,
+              "outcome_end": 2014,
+              "touches_2020": false,
+              "training_origins": [
+                2009
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2013,
+              "outcome_end": 2015,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2014,
+              "outcome_end": 2016,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2012
+              ],
+              "origin": 2015,
+              "outcome_end": 2017,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2012,
+                2013
+              ],
+              "origin": 2016,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2012,
+                2013,
+                2014
+              ],
+              "origin": 2017,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2012,
+                2013,
+                2014,
+                2015
+              ],
+              "origin": 2018,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ],
+              "origin": 2021,
+              "outcome_end": 2023,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ],
+              "origin": 2022,
+              "outcome_end": 2024,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ],
+              "origin": 2023,
+              "outcome_end": 2025,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            }
+          ],
+          "horizon": 2,
+          "outer_origins_with_nested_support": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023
+          ],
+          "outer_origins_with_prior_training": [
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022,
+            2023
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022
+          ],
+          "cumulative_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2009,
+              "outcome_end": 2012,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2010,
+              "outcome_end": 2013,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2011,
+              "outcome_end": 2014,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2012,
+              "outcome_end": 2015,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2013,
+              "outcome_end": 2016,
+              "touches_2020": false,
+              "training_origins": [
+                2009
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2014,
+              "outcome_end": 2017,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2013
+              ],
+              "origin": 2017,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2013,
+                2014
+              ],
+              "origin": 2018,
+              "outcome_end": 2021,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2013,
+                2014,
+                2015,
+                2016,
+                2017
+              ],
+              "origin": 2021,
+              "outcome_end": 2024,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ],
+              "origin": 2022,
+              "outcome_end": 2025,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016,
+                2017,
+                2018
+              ]
+            }
+          ],
+          "horizon": 3,
+          "outer_origins_with_nested_support": [
+            2017,
+            2018,
+            2021,
+            2022
+          ],
+          "outer_origins_with_prior_training": [
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021,
+            2022
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021
+          ],
+          "cumulative_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2009,
+              "outcome_end": 2013,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2010,
+              "outcome_end": 2014,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2011,
+              "outcome_end": 2015,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2012,
+              "outcome_end": 2016,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2013,
+              "outcome_end": 2017,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2014,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": [
+                2009
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2021,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2022,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013
+              ]
+            },
+            {
+              "inner_validation_origins": [
+                2014,
+                2015,
+                2016
+              ],
+              "origin": 2021,
+              "outcome_end": 2025,
+              "touches_2020": false,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012,
+                2013,
+                2014,
+                2015,
+                2016
+              ]
+            }
+          ],
+          "horizon": 4,
+          "outer_origins_with_nested_support": [
+            2021
+          ],
+          "outer_origins_with_prior_training": [
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2021
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018
+          ],
+          "cumulative_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2009,
+              "outcome_end": 2014,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2010,
+              "outcome_end": 2015,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2011,
+              "outcome_end": 2016,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2012,
+              "outcome_end": 2017,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2013,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2014,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": [
+                2009
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2021,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2022,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2023,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011,
+                2012
+              ]
+            }
+          ],
+          "horizon": 5,
+          "outer_origins_with_nested_support": [],
+          "outer_origins_with_prior_training": [
+            2015,
+            2016,
+            2017,
+            2018
+          ]
+        },
+        {
+          "annual_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018
+          ],
+          "cumulative_label_origins": [
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018
+          ],
+          "folds": [
+            {
+              "inner_validation_origins": [],
+              "origin": 2009,
+              "outcome_end": 2015,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2010,
+              "outcome_end": 2016,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2011,
+              "outcome_end": 2017,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2012,
+              "outcome_end": 2018,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2013,
+              "outcome_end": 2019,
+              "touches_2020": false,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2014,
+              "outcome_end": 2020,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2015,
+              "outcome_end": 2021,
+              "touches_2020": true,
+              "training_origins": []
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2016,
+              "outcome_end": 2022,
+              "touches_2020": true,
+              "training_origins": [
+                2009
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2017,
+              "outcome_end": 2023,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010
+              ]
+            },
+            {
+              "inner_validation_origins": [],
+              "origin": 2018,
+              "outcome_end": 2024,
+              "touches_2020": true,
+              "training_origins": [
+                2009,
+                2010,
+                2011
+              ]
+            }
+          ],
+          "horizon": 6,
+          "outer_origins_with_nested_support": [],
+          "outer_origins_with_prior_training": [
+            2016,
+            2017,
+            2018
+          ]
+        }
+      ],
+      "origin_counts": [
+        {
+          "len": 4419,
+          "origin_year": 2009
+        },
+        {
+          "len": 4436,
+          "origin_year": 2010
+        },
+        {
+          "len": 4444,
+          "origin_year": 2011
+        },
+        {
+          "len": 4527,
+          "origin_year": 2012
+        },
+        {
+          "len": 4634,
+          "origin_year": 2013
+        },
+        {
+          "len": 4739,
+          "origin_year": 2014
+        },
+        {
+          "len": 4779,
+          "origin_year": 2015
+        },
+        {
+          "len": 4857,
+          "origin_year": 2016
+        },
+        {
+          "len": 4977,
+          "origin_year": 2017
+        },
+        {
+          "len": 4818,
+          "origin_year": 2018
+        },
+        {
+          "len": 4899,
+          "origin_year": 2021
+        },
+        {
+          "len": 5038,
+          "origin_year": 2022
+        },
+        {
+          "len": 4987,
+          "origin_year": 2023
+        },
+        {
+          "len": 4772,
+          "origin_year": 2024
+        }
+      ],
+      "origin_players": 21729,
+      "origin_rows": 66326,
+      "source_artifacts": {
+        "modeling_panel": {
+          "path": "reports/generated/pitcher-value-panel-v2/tables/modeling-panel.parquet",
+          "sha256": "425aa188438270c0e7a0aed51ba3082c242e0429a6d32fefd3c469305e8c7008"
+        },
+        "value_targets": {
+          "path": "reports/generated/pitcher-value-panel-v2/tables/pitcher-value-targets.parquet",
+          "sha256": "2c90225a95c5ec5f53080b0b56660cf17ed2d527be23d98b0e90c47b663b037f"
+        }
+      },
+      "target_seasons": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    }
+  },
+  "status": "availability_audit_only_no_model_fit_or_score"
+}
