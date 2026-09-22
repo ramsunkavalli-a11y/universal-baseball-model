@@ -71,6 +71,7 @@ still treats all other contact at league-average value.
 | Pitcher target architecture | Use arrival chance x total value if active | Wins over direct and workload-times-rate targets for all four tested engines |
 | Pitcher model engine | Use role-enhanced chronology-pruned ensemble for development | Best RMSE is 0.31092; the simpler equal ensemble also improves with favorable uncertainty |
 | Pitcher role and workload transitions | Use in development ensemble | Improves ridge, CatBoost, LightGBM, and the equal ensemble |
+| Pitcher uncertainty ranges | Use role-aware 80% and 90% development ranges | Earlier-fold residual calibration achieves 79.7% and 89.8% coverage overall and corrects severe starter undercoverage |
 | Exact pitcher opponent quality | Descriptive adjustment only | Actual prior hitter quality covers 95% of scored rows but is flat to worse in ridge, CatBoost, and LightGBM future-value tests |
 | Raw pitcher hit-type detail | Do not use in the value model | Singles/doubles/triples slightly worsened three engines even when the target valued them |
 | Context-neutral pitcher contact value | Descriptive adjustment only | 4.52 million park/defense/batter-adjusted BIP modestly help one full-result learner but fail the separate contact-value reconciliation against the leading pitcher model |
@@ -120,9 +121,11 @@ it does not become projection talent until it improves a future player target.
    Keep battery familiarity separate from portable catcher talent and plan explicitly
    for reduced framing value under ABS. The remaining provisional throwing and MLB
    framing estimates should enter final reconciliation with conservative uncertainty.
-7. **Final reconciliation.** Combine batting, pitching, fielding, baserunning, role,
-   and opportunity; constrain team totals; calibrate uncertainty; and compare the
-   resulting player values with the strongest component-neutral alternatives.
+7. **Final reconciliation.** Pitcher uncertainty is now calibrated by player stage
+   and recent role; its 80% and 90% ranges are close to nominal overall and no longer
+   severely under-cover starters. Next combine batting, pitching, fielding,
+   baserunning, role, and opportunity; constrain team totals; and compare the final
+   player values with the strongest component-neutral alternatives.
 
 At each milestone, commit code, tests, and the decision report together. Negative
 results remain in the repository so the same attractive dead end is not retested.
