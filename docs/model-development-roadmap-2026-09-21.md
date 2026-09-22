@@ -44,6 +44,20 @@ ensemble. This is a strong development base, not a frozen forecast:
 the present target values strikeouts, walks, hit batters, home runs, and workload but
 still treats all other contact at league-average value.
 
+### Reconciled player value
+
+The first hitter-plus-pitcher development baseline now combines the accepted forecasts
+at player level, including players who appear on both sides. Across 25,671 player-season
+rows, RMSE improves from 0.39874 for the component-neutral comparison to 0.38807. The
+player-clustered 95% interval for the 0.01067 improvement is entirely favorable. The
+hitter additions supply nearly all of that gain; the pitcher role upgrade is still a
+small, uncertain improvement inside this shorter common sample.
+
+Combined 50/80/90% development ranges now cover 49.7%, 81.0%, and 91.1%. They use
+strictly earlier residuals, forecast-time player stage, and fixed development cushions
+that are now frozen for the protected test. This remains partial value because general
+non-catcher defense and a validated pitcher contact-value layer are still absent.
+
 ## Evidence decisions
 
 | Component | Current decision | Reason |
@@ -72,6 +86,8 @@ still treats all other contact at league-average value.
 | Pitcher model engine | Use role-enhanced chronology-pruned ensemble for development | Best RMSE is 0.31092; the simpler equal ensemble also improves with favorable uncertainty |
 | Pitcher role and workload transitions | Use in development ensemble | Improves ridge, CatBoost, LightGBM, and the equal ensemble |
 | Pitcher uncertainty ranges | Use role-aware 80% and 90% development ranges | Earlier-fold residual calibration achieves 79.7% and 89.8% coverage overall and corrects severe starter undercoverage |
+| Reconciled player-value baseline | Use for development | Accepted hitter and pitcher forecasts improve combined RMSE from 0.39874 to 0.38807 with a favorable clustered interval |
+| Combined player-value ranges | Use development-cushioned 50/80/90% ranges | Coverage is 49.7%, 81.0%, and 91.1% across the two scored combined seasons |
 | Exact pitcher opponent quality | Descriptive adjustment only | Actual prior hitter quality covers 95% of scored rows but is flat to worse in ridge, CatBoost, and LightGBM future-value tests |
 | Raw pitcher hit-type detail | Do not use in the value model | Singles/doubles/triples slightly worsened three engines even when the target valued them |
 | Context-neutral pitcher contact value | Descriptive adjustment only | 4.52 million park/defense/batter-adjusted BIP modestly help one full-result learner but fail the separate contact-value reconciliation against the leading pitcher model |
@@ -121,11 +137,12 @@ it does not become projection talent until it improves a future player target.
    Keep battery familiarity separate from portable catcher talent and plan explicitly
    for reduced framing value under ABS. The remaining provisional throwing and MLB
    framing estimates should enter final reconciliation with conservative uncertainty.
-7. **Final reconciliation.** Pitcher uncertainty is now calibrated by player stage
-   and recent role; its 80% and 90% ranges are close to nominal overall and no longer
-   severely under-cover starters. Next combine batting, pitching, fielding,
-   baserunning, role, and opportunity; constrain team totals; and compare the final
-   player values with the strongest component-neutral alternatives.
+7. **Final reconciliation.** The first player-level hitter-plus-pitcher reconciliation
+   is complete. It improves the component-neutral comparison clearly, preserves
+   two-way contributions, and has development-calibrated combined ranges. Next test
+   team and role capacity constraints on plate appearances, innings, starts, and
+   relief work. General non-catcher defense remains neutral, and the rejected contact,
+   blocking, deterrence, park, and opponent challengers remain outside projected WAR.
 
 At each milestone, commit code, tests, and the decision report together. Negative
 results remain in the repository so the same attractive dead end is not retested.

@@ -11,6 +11,7 @@ import numpy as np
 import polars as pl
 
 from universal_baseball.hitter_target_architecture import (
+    classification_metrics,
     paired_cluster_rmse_delta,
     regression_metrics,
 )
@@ -75,11 +76,26 @@ def _load_updated() -> tuple[pl.DataFrame, list[str]]:
 
 def main() -> int:
     frame, columns = _load_updated()
+    engines = [column.removeprefix("prediction__") for column in columns]
     frame = frame.with_columns(
         pl.Series(
             "prediction_role_all_equal",
             np.mean([frame[column].to_numpy() for column in columns], axis=0),
-        )
+        ),
+        pl.Series(
+            "probability_role_all_equal",
+            np.mean(
+                [frame[f"probability__{engine}"].to_numpy() for engine in engines],
+                axis=0,
+            ),
+        ),
+        pl.Series(
+            "conditional_role_all_equal",
+            np.mean(
+                [frame[f"conditional__{engine}"].to_numpy() for engine in engines],
+                axis=0,
+            ),
+        ),
     )
     chronology, selections = chronological_greedy_equal_ensemble(
         frame, columns, minimum_rmse_gain=MINIMUM_GAIN
@@ -110,8 +126,47 @@ def main() -> int:
         )
         .sort("origin_year", "player_id")
     )
+    auxiliary = []
+    for selection in selections:
+        origin = int(selection["test_origin"])
+        selected_engines = [
+            column.removeprefix("prediction__")
+            for column in selection["selected_members"]
+        ]
+        test = frame.filter(pl.col("origin_year") == origin)
+        auxiliary.append(
+            test.select("origin_year", "player_id").with_columns(
+                pl.Series(
+                    "probability_role_chronology_pruned_equal",
+                    np.mean(
+                        [
+                            test[f"probability__{engine}"].to_numpy()
+                            for engine in selected_engines
+                        ],
+                        axis=0,
+                    ),
+                ),
+                pl.Series(
+                    "conditional_role_chronology_pruned_equal",
+                    np.mean(
+                        [
+                            test[f"conditional__{engine}"].to_numpy()
+                            for engine in selected_engines
+                        ],
+                        axis=0,
+                    ),
+                ),
+            )
+        )
+    frame = frame.join(
+        pl.concat(auxiliary),
+        on=["origin_year", "player_id"],
+        validate="1:1",
+    )
     actual = frame["actual_component_war"].to_numpy()
     ids = frame["player_id"].to_numpy()
+    active = frame["actual_active"].to_numpy()
+    active_rows = active == 1
     methods = {
         "old_all_equal": "prediction_all_equal",
         "old_chronology_pruned": "prediction_chronology_pruned_equal",
@@ -131,6 +186,31 @@ def main() -> int:
         "metrics": {
             name: regression_metrics(actual, frame[column].to_numpy())
             for name, column in methods.items()
+        },
+        "ensemble_component_metrics": {
+            "role_all_equal": {
+                "arrival": classification_metrics(
+                    active, frame["probability_role_all_equal"].to_numpy()
+                ),
+                "conditional_value_active_pitchers": regression_metrics(
+                    actual[active_rows],
+                    frame["conditional_role_all_equal"].to_numpy()[active_rows],
+                ),
+            },
+            "role_chronology_pruned": {
+                "arrival": classification_metrics(
+                    active,
+                    frame[
+                        "probability_role_chronology_pruned_equal"
+                    ].to_numpy(),
+                ),
+                "conditional_value_active_pitchers": regression_metrics(
+                    actual[active_rows],
+                    frame[
+                        "conditional_role_chronology_pruned_equal"
+                    ].to_numpy()[active_rows],
+                ),
+            },
         },
         "comparisons": {
             "role_all_equal_minus_old_all_equal": paired_cluster_rmse_delta(
