@@ -1,3 +1,5 @@
 * text=auto eol=lf
 *.parquet binary
 model_artifacts/** -text -eol
+# This frozen contract is byte-hashed by the multi-year model artifacts.
+docs/multiyear-hitter-v1-contract.json -text -eol
