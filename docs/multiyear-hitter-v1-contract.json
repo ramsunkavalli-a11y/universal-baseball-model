@@ -1,0 +1,517 @@
+{
+  "version": "multiyear_hitter_v1",
+  "frozen_before_challenger_scores": true,
+  "seed": 417,
+  "folds": [
+    {
+      "origin": 2016,
+      "inner_origins": [
+        2012,
+        2013
+      ],
+      "test_rows": 4572,
+      "pandemic_window": false
+    },
+    {
+      "origin": 2017,
+      "inner_origins": [
+        2012,
+        2013,
+        2014
+      ],
+      "test_rows": 4580,
+      "pandemic_window": true
+    },
+    {
+      "origin": 2018,
+      "inner_origins": [
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "test_rows": 4348,
+      "pandemic_window": true
+    },
+    {
+      "origin": 2019,
+      "inner_origins": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "test_rows": 4752,
+      "pandemic_window": true
+    },
+    {
+      "origin": 2021,
+      "inner_origins": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "test_rows": 4164,
+      "pandemic_window": false
+    },
+    {
+      "origin": 2022,
+      "inner_origins": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "test_rows": 4155,
+      "pandemic_window": false
+    }
+  ],
+  "support": [
+    {
+      "origin": 2012,
+      "rows": 4466,
+      "train_rows_h3_player_disjoint": 2299,
+      "train_rows_h3": 4393,
+      "active_h3": 625
+    },
+    {
+      "origin": 2013,
+      "rows": 4476,
+      "train_rows_h3_player_disjoint": 5111,
+      "train_rows_h3": 8891,
+      "active_h3": 612
+    },
+    {
+      "origin": 2014,
+      "rows": 4516,
+      "train_rows_h3_player_disjoint": 8139,
+      "train_rows_h3": 13351,
+      "active_h3": 606
+    },
+    {
+      "origin": 2015,
+      "rows": 4512,
+      "train_rows_h3_player_disjoint": 11450,
+      "train_rows_h3": 17817,
+      "active_h3": 616
+    },
+    {
+      "origin": 2016,
+      "rows": 4572,
+      "train_rows_h3_player_disjoint": 15249,
+      "train_rows_h3": 22293,
+      "active_h3": 626
+    },
+    {
+      "origin": 2017,
+      "rows": 4580,
+      "train_rows_h3_player_disjoint": 18939,
+      "train_rows_h3": 26809,
+      "active_h3": 568
+    },
+    {
+      "origin": 2018,
+      "rows": 4348,
+      "train_rows_h3_player_disjoint": 24390,
+      "train_rows_h3": 31321,
+      "active_h3": 651
+    },
+    {
+      "origin": 2019,
+      "rows": 4752,
+      "train_rows_h3_player_disjoint": 27239,
+      "train_rows_h3": 35893,
+      "active_h3": 678
+    },
+    {
+      "origin": 2021,
+      "rows": 4164,
+      "train_rows_h3_player_disjoint": 36583,
+      "train_rows_h3": 44821,
+      "active_h3": 628
+    },
+    {
+      "origin": 2022,
+      "rows": 4155,
+      "train_rows_h3_player_disjoint": 41163,
+      "train_rows_h3": 49573,
+      "active_h3": 642
+    },
+    {
+      "origin": 2023,
+      "rows": 4093,
+      "train_rows_h3_player_disjoint": 43358,
+      "train_rows_h3": 49573,
+      "active_h3": null
+    },
+    {
+      "origin": 2024,
+      "rows": 3883,
+      "train_rows_h3_player_disjoint": 47398,
+      "train_rows_h3": 53737,
+      "active_h3": null
+    },
+    {
+      "origin": 2025,
+      "rows": 3907,
+      "train_rows_h3_player_disjoint": 51313,
+      "train_rows_h3": 57892,
+      "active_h3": null
+    }
+  ],
+  "features": [
+    "age_centered",
+    "age_squared",
+    "age_missing",
+    "reorganization_era",
+    "level_MLB",
+    "level_AAA",
+    "level_AA",
+    "level_A+",
+    "level_A",
+    "level_A-",
+    "level_RK",
+    "level_INACTIVE",
+    "level_UNKNOWN",
+    "missing_lag0",
+    "log_pa_lag0",
+    "log_mlb_pa_lag0",
+    "ubb_rate_lag0",
+    "strikeout_rate_lag0",
+    "single_rate_lag0",
+    "double_rate_lag0",
+    "triple_rate_lag0",
+    "home_run_rate_lag0",
+    "hbp_rate_lag0",
+    "stolen_base_rate_lag0",
+    "share_RK_lag0",
+    "share_ROOKIE_lag0",
+    "share_A-_lag0",
+    "share_A_lag0",
+    "share_A+_lag0",
+    "share_AA_lag0",
+    "share_AAA_lag0",
+    "share_MLB_lag0",
+    "observed_mlb_value_lag0",
+    "mlb_value_history_available_lag0",
+    "missing_lag1",
+    "log_pa_lag1",
+    "log_mlb_pa_lag1",
+    "ubb_rate_lag1",
+    "strikeout_rate_lag1",
+    "single_rate_lag1",
+    "double_rate_lag1",
+    "triple_rate_lag1",
+    "home_run_rate_lag1",
+    "hbp_rate_lag1",
+    "stolen_base_rate_lag1",
+    "share_RK_lag1",
+    "share_ROOKIE_lag1",
+    "share_A-_lag1",
+    "share_A_lag1",
+    "share_A+_lag1",
+    "share_AA_lag1",
+    "share_AAA_lag1",
+    "share_MLB_lag1",
+    "observed_mlb_value_lag1",
+    "mlb_value_history_available_lag1",
+    "missing_lag2",
+    "log_pa_lag2",
+    "log_mlb_pa_lag2",
+    "ubb_rate_lag2",
+    "strikeout_rate_lag2",
+    "single_rate_lag2",
+    "double_rate_lag2",
+    "triple_rate_lag2",
+    "home_run_rate_lag2",
+    "hbp_rate_lag2",
+    "stolen_base_rate_lag2",
+    "share_RK_lag2",
+    "share_ROOKIE_lag2",
+    "share_A-_lag2",
+    "share_A_lag2",
+    "share_A+_lag2",
+    "share_AA_lag2",
+    "share_AAA_lag2",
+    "share_MLB_lag2",
+    "observed_mlb_value_lag2",
+    "mlb_value_history_available_lag2",
+    "on_40man"
+  ],
+  "base_features": [
+    "age_centered",
+    "age_squared",
+    "age_missing",
+    "reorganization_era",
+    "level_MLB",
+    "level_AAA",
+    "level_AA",
+    "level_A+",
+    "level_A",
+    "level_A-",
+    "level_RK",
+    "level_INACTIVE",
+    "level_UNKNOWN",
+    "missing_lag0",
+    "log_pa_lag0",
+    "log_mlb_pa_lag0",
+    "missing_lag1",
+    "log_pa_lag1",
+    "log_mlb_pa_lag1",
+    "missing_lag2",
+    "log_pa_lag2",
+    "log_mlb_pa_lag2",
+    "on_40man"
+  ],
+  "source_hashes": {
+    "reports\\generated\\multiyear-hitter-v1\\panel.parquet": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+    "reports\\generated\\multiyear-hitter-v1\\targets.parquet": "54b7c51af42254ef44e36f6f5035d05334b368f128baa0280e9f98ff92e941e3",
+    "reports\\generated\\multiyear-hitter-v1\\schedules.parquet": "83c625b3e2afcf4a170a73ac637627f56229c9ed39f3b300394208c7c336c525",
+    "reports\\generated\\hitter-value-panel-v2\\tables\\modeling-panel.parquet": "c0296429b8d45fbdb72714a642aaa6a53b5d76866bd4a7ae13b49f759887f85b",
+    "model_artifacts\\hitter-full-2026-confirmation-forecast-2026-09-20\\forecast-inputs-2025.parquet": "bfd0032458496f80c8b71c2240bd0a7bcb67daf0f5f749cc8ea939ee8961ea6c"
+  },
+  "ridge_alpha": 20.0,
+  "catboost": {
+    "iterations": 400,
+    "learning_rate": 0.03,
+    "depth": 4,
+    "l2_leaf_reg": 8.0,
+    "thread_count": 4
+  },
+  "selection": "mean inner-origin cumulative-3 MSE, player-disjoint inner fit, mature labels; ties D1 then D2 then D3",
+  "inner_minimum": 2,
+  "primary": "equal-origin cumulative-3 MSE, selected procedure minus B0",
+  "year1": "refit fixed five-member existing batting ensemble when at least two rich-panel training origins exist; B0 fallback otherwise or for unmatched players; same in every annual form; all inner fit IDs excluded",
+  "target": "calendar_batting_plus_replacement_v1",
+  "cutoff": "Dec-31 reconstructed historical vintage; origin+h<=cutoff; fixed forecasts never receive intervening outcomes",
+  "forms": [
+    "B0",
+    "D1",
+    "D2",
+    "D3",
+    "C1_diagnostic_only"
+  ],
+  "calibration": "delivered activity/workload is the SAME separately refit accepted PT_FORM_U for all forms; zero permissible difference. D3 internal probabilities reported separately, not delivered",
+  "guardrails": {
+    "Current MLB": {
+      "pilot_rows": 632,
+      "pilot_active": 534,
+      "mse_worsening_margin": 1.1056423433200786,
+      "absolute_bias_worsening_margin": 0.32038113806468715
+    },
+    "Upper minors": {
+      "pilot_rows": 1193,
+      "pilot_active": 195,
+      "mse_worsening_margin": 0.02482640780849178,
+      "absolute_bias_worsening_margin": 0.0403685926514227
+    },
+    "Lower minors": {
+      "pilot_rows": 2282,
+      "pilot_active": 119,
+      "mse_worsening_margin": 0.009019542438861768,
+      "absolute_bias_worsening_margin": 0.02123622193195128
+    },
+    "age_under_23": {
+      "pilot_rows": 2116,
+      "pilot_active": 198,
+      "mse_worsening_margin": 0.06150798863936359,
+      "absolute_bias_worsening_margin": 0.055456283971865444
+    },
+    "age_23_29": {
+      "pilot_rows": 1604,
+      "pilot_active": 476,
+      "mse_worsening_margin": 0.2954459594856726,
+      "absolute_bias_worsening_margin": 0.12154134265460304
+    },
+    "age_30_plus": {
+      "pilot_rows": 415,
+      "pilot_active": 174,
+      "mse_worsening_margin": 0.3492054980756918,
+      "absolute_bias_worsening_margin": 0.24628905181246633
+    },
+    "current_PA_under_100": {
+      "pilot_rows": 1162,
+      "pilot_active": 39,
+      "mse_worsening_margin": 0.0179575437552789,
+      "absolute_bias_worsening_margin": 0.03503197403580683
+    },
+    "current_PA_100_plus": {
+      "pilot_rows": 3304,
+      "pilot_active": 826,
+      "mse_worsening_margin": 0.22338754842323333,
+      "absolute_bias_worsening_margin": 0.10568527532803076
+    }
+  },
+  "guardrail_basis": "2012 disjoint B0 pilot only; 5% of reference MSE, bias max(5% reference RMSE, two reference standard errors). Practical exploratory tolerances, not established domain standards.",
+  "annual_mse_worsening_relative_limit": 0.05,
+  "decision": "favorable paired player-cluster 95% interval, majority improving origins, all supported subgroup/annual guards, nonpandemic and predeclared nonoverlap [2016,2019,2022] no reversal; otherwise B0 later years",
+  "bootstrap_draws": 1000,
+  "subgroup_min_rows": 200,
+  "subgroup_min_active": 30,
+  "intervals": "stage-specific prior eligible selected/B0 outer residuals, minimum 2 origins and 200 rows; literal 10th/90th quantiles; cumulative uses cumulative residuals, never sum annual quantiles; exploratory",
+  "external_whole_WAR": "unavailable in recovered source inventory; no complete WAR claim",
+  "no_2026_results": true,
+  "coverage": [
+    {
+      "listed_on_40man": 608,
+      "missing_age": 281,
+      "no_current_components": 329,
+      "observed_c3": 4393,
+      "observed_h1": 4393,
+      "origin_year": 2009,
+      "players": 4393
+    },
+    {
+      "listed_on_40man": 604,
+      "missing_age": 325,
+      "no_current_components": 385,
+      "observed_c3": 4498,
+      "observed_h1": 4498,
+      "origin_year": 2010,
+      "players": 4498
+    },
+    {
+      "listed_on_40man": 613,
+      "missing_age": 342,
+      "no_current_components": 389,
+      "observed_c3": 4460,
+      "observed_h1": 4460,
+      "origin_year": 2011,
+      "players": 4460
+    },
+    {
+      "listed_on_40man": 619,
+      "missing_age": 331,
+      "no_current_components": 365,
+      "observed_c3": 4466,
+      "observed_h1": 4466,
+      "origin_year": 2012,
+      "players": 4466
+    },
+    {
+      "listed_on_40man": 598,
+      "missing_age": 340,
+      "no_current_components": 366,
+      "observed_c3": 4476,
+      "observed_h1": 4476,
+      "origin_year": 2013,
+      "players": 4476
+    },
+    {
+      "listed_on_40man": 602,
+      "missing_age": 344,
+      "no_current_components": 370,
+      "observed_c3": 4516,
+      "observed_h1": 4516,
+      "origin_year": 2014,
+      "players": 4516
+    },
+    {
+      "listed_on_40man": 608,
+      "missing_age": 330,
+      "no_current_components": 347,
+      "observed_c3": 4512,
+      "observed_h1": 4512,
+      "origin_year": 2015,
+      "players": 4512
+    },
+    {
+      "listed_on_40man": 584,
+      "missing_age": 332,
+      "no_current_components": 353,
+      "observed_c3": 4572,
+      "observed_h1": 4572,
+      "origin_year": 2016,
+      "players": 4572
+    },
+    {
+      "listed_on_40man": 593,
+      "missing_age": 324,
+      "no_current_components": 341,
+      "observed_c3": 4580,
+      "observed_h1": 4580,
+      "origin_year": 2017,
+      "players": 4580
+    },
+    {
+      "listed_on_40man": 593,
+      "missing_age": 300,
+      "no_current_components": 314,
+      "observed_c3": 4348,
+      "observed_h1": 4348,
+      "origin_year": 2018,
+      "players": 4348
+    },
+    {
+      "listed_on_40man": 593,
+      "missing_age": 555,
+      "no_current_components": 571,
+      "observed_c3": 4752,
+      "observed_h1": 4752,
+      "origin_year": 2019,
+      "players": 4752
+    },
+    {
+      "listed_on_40man": 586,
+      "missing_age": 132,
+      "no_current_components": 140,
+      "observed_c3": 4164,
+      "observed_h1": 4164,
+      "origin_year": 2021,
+      "players": 4164
+    },
+    {
+      "listed_on_40man": 598,
+      "missing_age": 135,
+      "no_current_components": 153,
+      "observed_c3": 4155,
+      "observed_h1": 4155,
+      "origin_year": 2022,
+      "players": 4155
+    },
+    {
+      "listed_on_40man": 596,
+      "missing_age": 117,
+      "no_current_components": 127,
+      "observed_c3": 0,
+      "observed_h1": 4093,
+      "origin_year": 2023,
+      "players": 4093
+    },
+    {
+      "listed_on_40man": 590,
+      "missing_age": 129,
+      "no_current_components": 140,
+      "observed_c3": 0,
+      "observed_h1": 3883,
+      "origin_year": 2024,
+      "players": 3883
+    },
+    {
+      "listed_on_40man": 580,
+      "missing_age": 177,
+      "no_current_components": 189,
+      "observed_c3": 0,
+      "observed_h1": 0,
+      "origin_year": 2025,
+      "players": 3907
+    }
+  ],
+  "calendar_2020": [
+    {
+      "component_war": 210.64197530864217,
+      "legacy_component_war": 570.0000000000002,
+      "schedule_fraction": 0.3695473251028807,
+      "season": 2020
+    }
+  ]
+}

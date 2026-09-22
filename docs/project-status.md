@@ -4,6 +4,13 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+M1 is now implemented: [source/target certification](multiyear-hitter-m1-result.md)
+and [frozen M2 contract](multiyear-hitter-v1-contract.json). The older aggregate history
+supports six nested three-year outer origins. Schedule-aware labels correct the 2020
+replacement allocation while preserving observed batting production. M2 fitting and
+the player report are in progress; no new challenger is selected yet. The paragraphs
+below describe the preceding planning checkpoint.
+
 The [active multi-year plan](multiyear-player-value-plan-2026-09-22.md) now governs
 execution. The [current one-year development result](player-value-development-baseline-v2-result.md)
 and accepted older six-year partial prospect means are distinct validated pieces;
