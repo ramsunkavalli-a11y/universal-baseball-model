@@ -95,6 +95,7 @@ non-catcher defense and a validated pitcher contact-value layer are still absent
 | Pitcher role and workload transitions | Use in development ensemble | Improves ridge, CatBoost, LightGBM, and the equal ensemble |
 | Pitcher expected workload | Use four-model base-feature ensemble for opportunity accounting | Improves BF RMSE by 11.70 in six forward tests; carry-forward has slightly better MAE |
 | Role features in pitcher workload | Do not use | Ensemble BF RMSE changes by less than 0.001 and the clustered interval spans meaningful help and harm |
+| Pitcher team-capacity scaling | Organization-context view only | Small workload and value gains have intervals spanning harm; forecast-time playing club is not verified future ownership |
 | Pitcher uncertainty ranges | Use role-aware 80% and 90% development ranges | Earlier-fold residual calibration achieves 79.7% and 89.8% coverage overall and corrects severe starter undercoverage |
 | Reconciled player-value baseline | Use for development | Accepted hitter and pitcher forecasts improve combined RMSE from 0.39874 to 0.38807 with a favorable clustered interval |
 | Combined player-value ranges | Use development-cushioned 50/80/90% ranges | Coverage is 49.7%, 81.0%, and 91.1% across the two scored combined seasons |
@@ -133,9 +134,11 @@ it does not become projection talent until it improves a future player target.
 3. **Pitcher opportunity and role integration.** Player-history integration is
    complete and promoted to the value ensemble. A separate expected-BF ensemble now
    strongly beats carry-forward RMSE and is exposed in the pitcher player table; role
-   features do not improve this workload component. Next add organization depth and
-   realistic team innings limits without using future role as an input or changing
-   portable talent.
+   features do not improve this workload component. A simple parent-organization team
+   cap has also been tested: it improves pooled workload and value slightly, but the
+   uncertainty spans harm and results are mixed by season. Keep it as a separate
+   organization-context view until historical rights and player-specific depth are
+   available; do not change portable talent.
 4. **General defense rebuild.** Infield and outfield RE24 conversion and full-value
    integration are complete. Both skills persist clearly in every later MiLB season,
    but neither the separate nor combined bridge improves 2025 MLB hitter value.
