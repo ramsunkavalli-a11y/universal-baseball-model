@@ -8,8 +8,9 @@
 
 Follow the [multi-year player-value plan](multiyear-player-value-plan-2026-09-22.md)
 for the next sequence: certify annual/cumulative labels, compare direct Year 2/3
-hitter forecasts and linked development paths, extend supported horizons, then
-pitchers, whole-player components, and verified control/cost accounting. The
+hitter forecasts and deliver a player report, extend to pitchers and supported longer
+horizons, then test linked paths only for a diagnosed gap. Whole-player components
+and verified control/cost accounting remain required for final value. The
 [research review](multiyear-player-value-literature-2026-09-22.md) and reproducible
 source-support audit are part of that plan.
 

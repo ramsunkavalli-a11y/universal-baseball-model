@@ -72,8 +72,9 @@ direct corrections to recursive forecasts. Their result concerns time series,
 not player careers, and motivates a comparison rather than a default winner.
 
 **Application:** test direct Year 2/3 forecasts against linked annual transitions on
-identical players and outcomes. A frozen one-year model repeatedly supplied with
-invented future observations is not a valid transition model. A possible later hybrid
+identical players and outcomes. Iterating a one-year model requires a declared way
+to update future features and a separate long-horizon test; one-year accuracy alone
+does not validate that recursion. A possible later hybrid
 must learn corrections from earlier out-of-sample predictions. Direct cumulative
 means are a check on the annual sum, not extra WAR to add to it.
 

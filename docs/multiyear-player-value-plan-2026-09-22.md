@@ -1,243 +1,238 @@
-# Multi-year player value: active execution plan
+# Multi-year player value: execution plan
 
-Adopted: 2026-09-22. Status: planning and initial source-support audit complete;
-label certification and model comparison next. This is the immediate execution order
-under the [product roadmap](product-roadmap.md). It supersedes older conflicting
-"next task" lists, not historical experiment results or frozen evaluation contracts.
+Version 1.1, reviewed 2026-09-22. Status: research and initial availability audit
+complete; label certification next. This is the immediate execution order under the
+[product roadmap](product-roadmap.md). Historical results and frozen forecast
+contracts retain their original scope. [Research and sources](multiyear-player-value-literature-2026-09-22.md).
 
-## Deliverable and scope
+## First deliverable
 
-For every player at a dated forecast cutoff, estimate MLB production in Years 1–6
-and cumulative production through Years 2, 3, 5 and 6, with uncertainty and an
-explanation of development, participation, workload, and position/role. Start with
-hitters and then use the same evaluation contract for pitchers and two-way players.
-The first useful milestone is an honest Year 1/2/3 hitter forecast and three-year
-total. Longer horizons follow as data and validation permit.
+Produce a usable hitter report with Year 1, Year 2, Year 3 and cumulative three-year
+MLB value, participation/workload, evidence status, and uncertainty where supported.
+Deliver it at M2; career simulation and a six-year model are not prerequisites.
+The first current report uses evidence through **2025-12-31** and forecasts
+**2026–2028** under a separate development version. Preserve the original frozen
+2026 forecast. No 2026 results enter this work.
 
-Keep three explicit quantities: calendar-year MLB production; production during
-actual remaining club control; and economic surplus after costs. Complete and test
-production first. Calendar seasons do not establish service or ownership. Six years
-from today do not capture all controlled production for a prospect who arrives later.
-Beyond-six-year production will need an explicitly supported tail before complete
-controlled value is claimed. No arbitrary terminal value or fixed FV-to-WAR rule.
+The destination remains annual Years 1–6 and cumulative value for all affiliated
+players, including pitchers and two-way players. Then connect production to actual
+remaining club control and costs. Calendar production, controlled production and
+economic surplus must have separate fields. A late-arriving prospect can have
+controlled production beyond six calendar years; that tail needs its own evidence.
 
-This task uses the previously agreed all-level, non-Statcast evidence. Sources and
-reasoning are in the [literature review](multiyear-player-value-literature-2026-09-22.md).
+Keep all-level, non-Statcast inputs. A limited historical denominator may support an
+initial restricted-population result, but it cannot establish universal coverage.
+Unsupported current players receive labeled priors, not zero talent or omission.
 
-## What already exists
+## Reuse before rebuilding
 
-| Existing work | Evidence/status | How to use it |
-|---|---|---|
-| Current one-year hitter/pitcher development stack | [Reconciled partial-value result](player-value-development-baseline-v2-result.md) | Year 1 benchmark; refit at historical cutoffs |
-| Six-year prospect comparable means | [Strict replay](prospect-six-year-strict-result.md); [subsequent hitter confirmation](prospect-six-year-hitter-blend-confirmation-result.md) | Required long-horizon benchmark; retain specific accepted decisions |
-| Current six-year output | [6,988 player/type rows](current-six-year-partial-value-result.md) | Partial batting/pitching plus replacement; no annual-path validation implied |
-| Direct two-year component development | [Rate-only result](two-year-talent-development-result.md) | Diagnostic among observed future players; not zero-inclusive WAR evidence |
-| Multi-year opportunity and rights/cost paths | [Opportunity](current-opportunity-paths-2026-09-08.md); [control rebuild](prospect-controlled-value-rebuild-plan.md) | Reuse source/identity interfaces; audit provenance and current applicability |
-| Career labels | [Censored panel contract](career-outcome-panel-contract.md), `career_outcomes.py` | Reuse zero/censoring logic and separate batting/pitching counts |
-| Linked historical careers | [Hitter replay](dependent-career-linked-hitter-replay-result.md); [pitcher replay](dependent-career-linked-pitcher-replay-result.md) | Rejected/unpromoted benchmarks, not selected engines |
-| Legacy dependent simulator | [Superseded contract](dependent-career-path-value-plan.md) | Do not restore its invalid talent inputs or active-season service shortcut |
+| Asset | Action |
+|---|---|
+| [Current one-year stack](player-value-development-baseline-v2-result.md) | Refit at each cutoff; mandatory Year 1 comparison on matching targets |
+| [Six-year prospect means](current-six-year-partial-value-result.md), [strict replay](prospect-six-year-strict-result.md), [hitter confirmation](prospect-six-year-hitter-blend-confirmation-result.md) | Required pre-MLB six-year benchmark; do not relabel as annual or full WAR |
+| [Direct opportunity horizons 2–4](opportunity-multihorizon-v2-development-result.md) | Recover source/fold builders and packages; verify hashes and refit at cutoffs before reuse |
+| [Career panel](career-outcome-panel-contract.md) and `career_outcomes.py` | Reuse player-by-calendar-year zero/censoring conventions |
+| [Two-year skill model](two-year-talent-development-result.md) | Conditional-rate diagnostic; does not establish expected WAR |
+| [Linked hitter](dependent-career-linked-hitter-replay-result.md) / [pitcher](dependent-career-linked-pitcher-replay-result.md) experiments | Retain failures; require a specific new hypothesis before another simulation |
+| [Control/service work](prospect-controlled-value-rebuild-plan.md) | Retain downstream interfaces; never equate one active season with one service year |
 
-The strict hitter six-year result initially withheld promotion; its later frozen
-blend confirmation is the accepted update. Neither that acceptance nor the older
-integrated research preview establishes current annual whole-player WAR accuracy.
-No earlier validation is discarded, and no earlier failure is silently promoted.
+Start source recovery with `evaluate_opportunity_multihorizon_v2.py` and `_sources`
+in `audit_prospect_comparable_chronology.py`. They already reference older snapshots,
+affiliated components and 2004–2025 MLB outcomes. Locate missing generated artifacts
+through recorded manifests and sibling workspaces, not invented paths or coefficients.
+Prior live previews using 2026 predictor evidence are outside this experiment.
 
-## Initial feasibility finding
+The [initial horizon audit](multiyear-horizon-support-2026-09-22.json) is a conservative
+inventory of the current one-year panels, not a complete inventory of this repo. It
+finds no trainable hitter five/six-year outer fold and no nested three-year tuning
+split within that rich panel under its strict year embargo. Older aggregate history
+and the existing opportunity folds must be examined before declaring a horizon
+unsupported. Rebuild eligible origins from source features: 2019 was excluded for
+one-year reasons that need not exclude all longer targets.
 
-The [reproducible horizon audit](multiyear-horizon-support-2026-09-22.json) verifies the
-four current panel/target hashes and inventories origin/season keys without scoring
-player outcomes. Under a conservative full-label-year-before-origin embargo:
+## M1: freeze labels, coverage and feasible tests
 
-| Horizon | Hitter mature origins / trainable outer origins / nested-supported origins | Pitcher equivalent |
-|---|---|---|
-| 1 | 8 / 6 / 4 | 14 / 12 / 10 |
-| 2 | 7 / 4 / 3 | 13 / 10 / 7 |
-| 3 | 6 / 2 / 0 | 12 / 8 / 4 |
-| 4 | 5 / 1 / 0 | 11 / 6 / 1 |
-| 5 | 4 / 0 / 0 | 10 / 4 / 0 |
-| 6 | 4 / 0 / 0 | 10 / 3 / 0 |
+Create one manifest with exact cohort cutoffs, source hashes, target formulas,
+feature availability, eligible training/validation rows and evidence status by horizon.
+One inventory and one bounded recovery pass precede the decision: proceed with
+certified cohorts, or record the precise missing source and use a restricted cohort
+or labeled baseline. A full historical rights reconstruction cannot indefinitely
+block the first production forecast.
 
-These are availability counts, not independent tests or completeness certification.
-The rich hitter panel begins in 2015; its five/six-year labels cannot train a model
-before any of its fully observed outer origins. Even the three-year problem lacks
-an inner tuning split within this panel under the declared embargo. Recover older
-aggregate features for the base model. Use rich PBP as a recent-horizon addition,
-or a fixed-form hypothesis where tuning support is absent. Older six-year comparable
-tests already demonstrate why aggregate history is valuable.
+**Population.** Freeze membership from evidence at the cutoff. Preserve MLB/MiLB,
+unranked, reserve and inactive players where sourced. Record participants-only
+restrictions and missing coverage explicitly. Future appearance, PA, survival or
+public rank cannot select the denominator. Report duplicate IDs, missing ages,
+unmatched players, and counts by level and origin.
 
-2019 features exist upstream but were excluded from the one-year panel because its
-next season was 2020. Reassess eligible origins from original features for each
-horizon; do not inherit that exclusion blindly. The audit does not certify inactive
-player coverage or a historical rights denominator.
+**Targets.** Maintain portable batting/pitching-plus-replacement value for long-history
+comparison and expanded partial value where position/running/catcher labels exist.
+Every prediction and comparison uses the same enumerated target version. Show missing
+components; neither track is complete WAR while general defense is unmodeled. Include
+the public whole-WAR label/source audit in M1 and a matched external comparison at M2
+where recoverable. If unavailable, name the missing source and withhold a whole-WAR
+claim; do not invent truth from our own model.
 
-Reproduce: `.venv/Scripts/python.exe scripts/audit_multiyear_horizon_support.py`.
+**A concrete accounting defect to resolve.** Current target builders allocate a fixed
+570 hitter / 430 pitcher replacement-WAR pool per year. Read-only inspection confirmed
+those same totals in 2019, 2020 and 2021. Thus the existing 2020 table cannot be reused
+as realized calendar production without review. Build a versioned target whose
+replacement budget respects completed MLB team-games, verify component sums, and
+rescore every comparator on that definition. Preserve existing artifacts. Revisit
+older comparable scaling too; do not compare its normalized six-year totals directly
+with new realized-calendar totals. Fixing labels is not a claimed forecast gain.
 
-## Target and data contract
+**Missingness.** A certified no-MLB season is zero MLB production. An unavailable
+source/year is null; cumulative labels require every year. Include small samples and
+negative WAR. Distinguish no recorded play from retirement and keep players eligible
+to return. Do not give an MLB-active label solely from future debut information.
 
-Each row records player ID, player type, exact cutoff, origin year, horizon, target
-year, evidence tier, model/target version, source hashes, follow-up status and last
-certified outcome year. Freeze a historical affiliated/MLB player denominator at
-each cutoff; preserve unranked players, inactive/reserve players and explicit priors.
-If a denominator is only prior-season participants, label it restricted and report
-what is missing. Future MLB appearance must never determine inclusion.
+**2020 and eras.** Age advances through the canceled MiLB season; missing MiLB play
+does not imply zero skill, release or a repeated full level. Main labels use actual
+MLB production, with pandemic-window scores reported separately and excluded in a
+sensitivity. A forecast made before cancellation cannot know the shortened schedule.
+No blanket 162/60 multiplication of realized value. Preserve historical A-/rookie
+levels, partial-season exposure, and dates of promotions/reorganization. Future
+ball/park/opponent/rule conditions are forecast scenarios, not realized predictors.
 
-Annual labels include MLB participation, PA or BF, role/position exposure, and each
-available value component. An observed no-MLB season has zero MLB production;
-unavailable source data and future seasons are null. Cumulative labels require every
-intervening season to be certified. No dropping future low-PA players from the main
-score; conditional skill scores are separately labeled diagnostics.
+**Acceptance evidence.** Audit zeros versus missing sources, player-year uniqueness,
+complete windows, no future-derived features, replacement/position counted once,
+two-way identity, and formula agreement on sampled player-seasons. The source
+certification must go beyond finding at least one row for a season.
 
-Keep two target versions: portable batting/pitching-plus-replacement for long-history
-comparisons, and the explicitly enumerated expanded partial-value stack where labels
-exist. Never compare an incomplete prediction to a differently defined target without
-identifying the missing components. Independent public whole-WAR labels, if sourced,
-are a separate external test; reconciling definitions is required. Current general
-defense neutrality and pitcher contact limitations remain visible. Account for
-replacement and position only once, including two-way players.
+## M2: bounded hitter comparison and first player report
 
-Predictive inputs include age, level and time at each level, prior PA/BF, talent rates,
-contact evidence where available, progression, workload interruptions, and dated
-roster information. Preserve partial-season promotions and actual exposure instead
-of counting every calendar return as a full repeated level. Fit translations, park
-and opponent adjustments using allowed history only. Unknown future park/opponents
-are integrated over a declared scenario, never replaced by realized destinations.
+Use the same players, targets and outer origins for every candidate. Freeze a simple
+age/level/recent-workload baseline **B0**, with regression and population fallbacks,
+before challenger scoring. Recover the existing multi-horizon opportunity benchmark;
+do not rebuild it merely because it predates this plan. Six-year comparable evidence
+is a later-horizon benchmark, not an annual forecast to divide by six.
 
-### Interrupted seasons and changing environments
+| Form | Question answered |
+|---|---|
+| D1: direct annual Ridge | Does a regularized snapshot forecast predict Year 2/3 total value? |
+| D2: direct annual CatBoost | Do nonlinear interactions improve those same annual targets? |
+| D3: annual CatBoost hurdle | Does MLB participation × total WAR conditional on activity improve them? |
+| C1: direct cumulative Ridge | Does direct three-year prediction expose errors in the annual sum? |
 
-- Calendar time advances through 2020. The missing MiLB season supplies no zero-skill
-  or retirement label and no synthetic PA. Track time since observed play.
-- Use actual 2020 MLB production for realized calendar-WAR targets, with a visible
-  shortened-schedule indicator. Do not multiply realized value by 162/60 in the main
-  target. Score windows crossing 2020 separately and repeat evaluation without them.
-- A normal-schedule sensitivity may standardize workload, clearly labeled; it cannot
-  repair a retrospective pre-pandemic forecast using advance knowledge of cancellation.
-- Preserve historical A-/rookie levels and league eras. Do not relabel eliminated
-  short-season leagues as modern A-ball. Rule/ball/ABS changes require dated inputs
-  or explicit future scenarios. No 2026 outcome-based environment fitting.
+These are the entire first batch. Each annual candidate is one pipeline across
+Years 2/3, sharing the same cutoff-refit Year 1 forecast within each outer cohort.
+Use that same Year 1 forecast in B0's cumulative comparison to isolate later-year gain.
+Where the modern one-year model lacks vintage support, all candidates use the same
+declared B0 Year 1 fallback. Report modern matched-cohort retention separately.
+At every inner cutoff, refit the entire pipeline there too: Year 1 forecast, generated
+skill/context inputs, imputation and preprocessing. Outer-fitted predictions or
+transforms cannot supply inner cumulative selection scores.
 
-## Small, ordered set of model tests
+Use one frozen core feature block and one preset per form: existing Ridge settings
+and the existing CatBoost `smooth` preset, copied with numeric parameters into the
+manifest. No hyperparameter, feature-family or engine sweep at M2. Aggregate history
+is the common base; add rich contact later on matched rows after this result. Player
+IDs/names/public FV are not predictors. Cutoff-estimated skill inputs must themselves
+be reconstructed without future fitting. Allow negative conditional WAR; separate
+PA/BF diagnostics do not impose independent workload-times-rate multiplication.
 
-1. **B0, transparent baseline.** Regress recent skill toward age/level populations,
-   apply conservative development/aging, and estimate future participation and
-   workload from earlier history. Include zero and carry-forward forecasts as
-   diagnostics. Reconstruct accepted legacy six-year comparables on matching cohorts.
-2. **D1, direct annual forecasts.** Predict each future year's zero-inclusive partial
-   WAR from the cutoff snapshot. Compare direct expected WAR with an MLB-active
-   hurdle times expected *total WAR conditional on activity*. Use regularized linear
-   models and a bounded CatBoost comparison first, reusing existing infrastructure.
-   Negative active-player WAR is allowed. PA/BF and skill remain reported diagnostics;
-   do not impose independent workload-times-rate multiplication.
-3. **D2, direct cumulative forecasts.** Predict cumulative two/three/six-year value
-   directly on mature windows as an independent benchmark for the sum of D1 means.
-   Test sharing information across horizons through a horizon feature with masks for
-   unavailable labels. If estimates disagree, diagnose timing/tail errors before
-   learning a reconciliation on earlier out-of-sample data.
-4. **T1, linked transitions.** Fit development, participation, promotion/demotion,
-   workload and role with explicit duration/history. Allow absence and return. Use
-   a compact regularized transition model and sample conditional performance/workload
-   together. Carry persistent talent uncertainty along a path and separate it from
-   annual noise. Updated features must arise from simulated observations; never feed
-   realized future level, statistics or role into a forecast. Replaying a selected
-   one-year mean unchanged is not T1.
-5. **J1, joint performance and continuation.** Only if residual tests expose relevant
-   dependence, add shared player effects to performance, workload and continuation
-   using mixed/state-space or joint longitudinal models. Compare to T1 and D1; no
-   assumption that greater complexity wins. Resampled complete careers are an
-   alternative only with cutoff-eligible donors and a new reason to expect improvement
-   after the documented linked-path failures.
-6. **E1, reconcile/ensemble.** Consider a simple blend only after constituents have
-   independent earlier predictions. Learn at most a strongly regularized weight or
-   select a fixed simple average using nested development. Freeze before evaluation.
+Select among D1–D3 using earlier inner-origin **three-year cumulative MSE**; compare
+the resulting selection procedure with B0 on outer predictions excluded from that
+run's fitting and selection. These historical outcomes remain development evidence.
+Freeze deterministic tie-breaking by simpler form. C1 is a diagnostic, not another
+chance to select the most favorable pooled result. The first delivered cumulative
+mean is the sum of delivered annual means. A C1 advantage motivates a separately
+frozen reconciliation test; it does not justify scaling annual paths after seeing
+outer outcomes.
 
-Candidate families, feature blocks, hyperparameter budget and loss priorities must
-be recorded before each run. No new XGBoost/LightGBM/NGBoost/EBM tournament unless a
-diagnosed limitation warrants it. CatBoost is a manageable nonlinear comparator,
-not a presumed winner. The first direct mean models do not establish path uncertainty.
+Deliver predictions and a compact explorer view for Years 1–3 and their sum at this
+milestone, even if B0 wins. Include target definition, skill-only evidence where
+already available, participation/workload, omitted components, coverage and model
+status. Apply accepted position/running/catcher forecasts only where their horizon
+and labels support it; never repeat a one-year addition unchanged for six years.
+Direct D1/D2 WAR regressions do not supply participation/workload. Display those from
+the separately cutoff-refit accepted opportunity model, or its explicit historical
+fallback; show D3's own activity probability separately when comparing architectures.
+Marginal annual and cumulative intervals may use earlier eligible residuals without
+a simulator. Unsupported ranges remain unavailable. Do not sum annual quantiles or
+present marginal intervals as a joint career distribution.
 
-## Validation contract
+## Common statistical rules
 
-For an outer origin `o` and horizon `h`, conservative training eligibility is
-`training_origin + h < o`; apply the same rule to inner tuning, donor paths,
-residual calibration and stacking. Exact publication dates may support a separately
-declared tighter rule later, but never change chronology after inspecting its scores.
-Retrospectively downloaded historical statistics must be marked reconstructed, not
-claimed to be archived vintage releases. Source lineage and current-profile fields
-need separate leakage checks.
+**Time.** End-of-season origins use December 31. Each feature and training label must
+be available by that exact cutoff; never use a label that extends beyond it. Direct
+Year 3 requires mature Year 3 labels, cumulative Year 3 requires the whole window,
+and a one-year transition fit can use recently completed one-year labels. Calibration,
+donors and stacking follow the maturity rule of their own target. The initial audit's
+`training_origin + h < origin` is a conservative fallback when availability dates
+are uncertified, not a universal extra year of waiting. Record the exact-date rule
+and any reconstructed-vintage assumptions before scoring; historical contracts stay
+unchanged. A fixed Year 3 forecast never receives realized Year 1/2 updates.
 
-Use rolling time splits. Within each selection fit, group players so the same player
-cannot supply both inner fitting and validation rows. Report an outer player-disjoint
-sensitivity as well as realistic returning-player forecasts using legitimate earlier
-history. Exclude self-donors. A fixed cutoff forecast for Year 3 may not incorporate
-Year 1/2 outcomes; annually refreshed forecasts are a different experiment.
+**Selection and support.** Use rolling chronological splits. Keep the same player
+out of inner fitting and validation; exclude self-donors. Outer returning-player
+forecasts may use legitimate earlier history, with a player-disjoint sensitivity.
+Freeze an adequacy table before model scoring: usable training/inner/outer origins,
+population sizes, active counts, 2020 overlap, and distinct outcome-year blocks.
+For the first batch, selection requires at least two usable inner origins per outer
+fold. A repeatability claim requires at least three scored outer origins and two
+nonoverlapping outcome windows. These are minimum safeguards, not a power guarantee.
+When unavailable, run the fixed D1/B0 comparison without selection and label it
+exploratory; deliver the supported baseline rather than mine the few outer folds.
 
-All previously inspected historical seasons, including 2025 and earlier confirmations,
-are development evidence for this new architecture. Preserve the original frozen
-2026 forecast. The new development version can be frozen separately; 2026 will only
-test its available annual outcomes/prefixes. It cannot confirm 2027–2031 in 2026.
-Previously seen 2026 facts in discussion do not authorize opening its evaluation data.
+**Primary decision.** Compare the predeclared inner-selected annual procedure against
+fixed B0 on **equal-weight mean outer-origin three-year MSE**. Show pooled player-row
+MSE, readable WAR RMSE, bias, Year 2/3 errors and Year 1 retention alongside it. Report
+existing stronger applicable benchmarks too: beating B0 alone cannot displace them.
+MAE is descriptive because mostly-zero predictions can miss valuable future players.
 
-Primary first gate: **three-year cumulative expected-WAR MSE**, with Year 2 and Year 3
-MSE as required companion results and Year 1 as a retention check. After that, five/six-
-year cumulative MSE has a separate gate and eligible population. Report RMSE in WAR
-for readability, MAE descriptively, bias, and errors across forecast-value bands.
-Do not average raw annual and six-year RMSE or select the most flattering horizon.
+Use paired player-cluster bootstrap intervals for the same weighted statistic,
+per-origin results, and nonoverlapping-window/calendar-block sensitivity for shared
+season shocks. The interval describes a frozen comparison, not immunity from earlier
+research reuse. Predeclare the materially supported stage/age/exposure subgroups,
+numeric bias/noninferiority margins and participation-calibration tolerances from
+baseline/training evidence in the M2 manifest. A run without those frozen values is
+exploratory. Avoid arbitrary newly invented WAR thresholds in this umbrella plan.
 
-For probabilities use Brier, log loss and calibration. For distributions use CRPS,
-50/80/90% coverage and interval width; score annual and cumulative draws. Include a
-joint-path score such as energy score plus annual covariance, return and workload-tail
-checks. Means sum across years; quantiles do not. Do not force cumulative WAR to rise:
-negative seasons exist. Cumulative first-arrival probability must be monotone.
+Development selection requires a favorable primary paired MSE interval, improvement
+in a majority of outer origins, no breach of frozen retention/subgroup/calibration
+limits, and no clear reversal in the season-block sensitivity. Otherwise retain B0
+or the existing stronger benchmark and record the diagnosis. Choosing the best outer
+score and bootstrapping it afterwards is not this test. One failed batch permits at
+most one specifically justified follow-up; stop tuning the same exposed result.
 
-Report by cutoff-known stage, age, exposure, position, pitcher role and evidence tier.
-Low-minor teenagers and current MLB players need separate results. Future arrivals,
-future regulars and realized high-value players are useful error diagnostics, never
-population-selection rules. This protects against a mostly-zero model looking good
-while missing future contributors.
+**Probability and uncertainty.** Score participation with Brier/log loss and calibration;
+score annual and cumulative distributions with CRPS, coverage and width against an
+equally specified distributional baseline. Future-arrival/regular/star subsets are
+diagnostics, not selection cohorts. First-arrival probability is cumulative and
+monotone; yearly activity and cumulative WAR need not be. Negative seasons and return
+remain possible. Joint paths later require covariance/return checks and a joint score.
 
-Use paired player-cluster bootstrap intervals and per-origin results. Overlapping
-multi-year windows share season shocks; add calendar-block or nonoverlapping-window
-sensitivity. Many players do not turn two time origins into many independent eras.
-If nested support is absent, freeze a simple form or expand older history instead of
-tuning on the outer fold.
+**Evidence status.** Historical seasons already inspected are development evidence,
+including older confirmations. “Development selected,” “provisional,” “exploratory”
+and “prospectively confirmed” are separate labels. Completion of 2026 can test only
+outcomes/prefixes then observable; it cannot validate 2027–2031. Full-calendar outcomes,
+age-relative skill and controlled value are distinct targets.
 
-Promote to **development selection** when the primary paired MSE interval is favorable,
-gain persists across origins, and supported subgroups/calibration show no material
-harm. Freeze numerical noninferiority and bias margins in the experiment manifest
-from baseline/training evidence before scoring; otherwise the run is exploratory.
-Uncertain results stay provisional. Prospective confirmation is a separate status.
-No requirement to prove every small component significant before testing the whole
-forecast, and no manual ranking fixes from familiar player names.
+## Subsequent milestones and stopping rules
 
-## Milestones and completion checks
+| Milestone | Required exit |
+|---|---|
+| M0 — Research/inventory | Complete; this reviewed plan and source audit |
+| M1 — Data/target contract | Versioned labels, coverage/source and fold manifest; resolve 2020 accounting before cumulative scoring |
+| M2 — First hitter product | Fixed four-form batch, decision report, reproducible Year 1–3 player table/explorer; ranges only where supported |
+| M3 — Extend delivered baseline | Pitcher Year 1–3 on the same contract; hitter/pitcher Years 4–6 as support permits; accepted legacy six-year benchmark retained |
+| M4 — Targeted path challenger | Only after M2: named error in timing, return, or cumulative distribution; one compact transition model against delivered baseline |
+| M5 — Whole-player/control integration | Expanded value and external whole-WAR comparison; two-way accounting; validated service/control then costs and separately justified post-Year-6 tail |
 
-| Milestone | Work and completion evidence | Status |
-|---|---|---|
-| M0 | Reconcile prior work, literature, links and present-panel horizon support | Initial audit done; full source certification remains M1 |
-| M1 | Build fixed denominators and annual/cumulative labels; certify missing/zero/censored cases, older aggregate support, and cutoff availability | Next |
-| M2 | Hitter B0/D1/D2 Year 1–3 comparison, frozen experiment manifest, per-origin/subgroup results, three-year total | First model milestone |
-| M3 | T1 and, only if warranted, J1; validate annual/cumulative distributions and compare to direct forecasts | Pending |
-| M4 | Extend supported hitter horizons to 4–6; publish fallback/uncertainty for unsupported horizons | Pending |
-| M5 | Pitcher equivalent with role/workload dependence; sum two-way contributions with explicit joint uncertainty | Pending |
-| M6 | Connect tested position/running/catcher components at each horizon; evaluate full-value gaps and control/service separately | Pending |
-| M7 | Explorer with annual value, cumulative value, skill-only view, opportunity, uncertainty and evidence status | Pending |
-| M8 | Freeze current multi-year version; connect verified rights/cost paths and schedule proper later outcome evaluation | Pending |
+M3 does not wait for M4, and delivery does not wait for every component to improve.
+At M4 use observable MLB, affiliated-MiLB, and no-recorded-play states with duration
+and prior exposure; absence is not an absorbing retirement state. A joint latent
+performance/continuation model or blend requires an identified remaining error and
+a new frozen contract. No broad algorithm tournament by default. Existing failed
+linked-path designs do not become selected because simulation sounds more complete.
 
-At each milestone commit the reproducible code, relevant tests, compact result and
-decision, and update this checklist. Push the research branch at meaningful milestones.
-Preserve failed experiments with reasons. Stop a candidate when it fails its gate;
-continue the sequence with the best supported fallback.
+Commit reproducible work and a brief decision at each milestone; push the research
+branch. Update this checklist and the status page. A failed challenger closes with
+the best supported baseline and a usable report. Reopen only for new evidence, a
+corrected defect, or a predeclared materially different hypothesis.
 
-The milestone is not complete merely because a simulator runs or a six-year table
-exists. Completion requires a reproducible forecast for every declared player,
-honest evidence status for each horizon, improved or justified retained benchmarks,
-and a visible account of what remains unknown. No change to published player numbers
-is implied by adopting this plan.
-
-## Immediate next run
-
-Recover older aggregate hitter snapshots and the missing eligible origin features;
-join the existing certified MLB target sources to a fixed player-by-year grid.
-Use the existing `career_outcomes.py` zero/censoring conventions. Produce a label and
-fold manifest before fitting. Freeze the first B0/D1/D2 contract, then run the hitter
-Year 2/3 and three-year cumulative comparison. This is the next modeling task; another
-one-year component sweep does not take precedence without a blocking defect.
+**Next action:** M1 source reuse and target certification, starting with the existing
+multi-horizon opportunity cohorts and the 2020 replacement accounting. No new model
+scores or player forecasts were generated during this plan review.

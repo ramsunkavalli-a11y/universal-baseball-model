@@ -18,9 +18,17 @@ needed for the longer-horizon base. These are source-availability findings, not 
 model performance results or a certification of complete player coverage.
 
 Next: M1 annual/cumulative label and denominator certification, followed by the M2
-Year 2/3 hitter and three-year cumulative comparison. Original 2026 predictions and
-outcomes remain protected. The stopping points and active-task headings below are
-historical records unless explicitly carried forward by the new plan.
+Year 2/3 hitter and three-year cumulative comparison **with a usable player report at
+M2**. Reviewed plan v1.1 limits the first batch to three annual forms plus one direct
+cumulative diagnostic, uses target-specific label availability, and reuses the existing
+direct opportunity horizons 2–4. Joint simulations are later, error-driven challengers.
+
+The review found a label-accounting issue for M1: existing hitter/pitcher target tables
+sum to the same 570/430 replacement-WAR allocation in 2020 as in full seasons. Before
+cumulative calendar-value scoring, version the schedule-aware target and rescore all
+comparators consistently. This planning review changed no labels or forecasts. Original
+2026 predictions and outcomes remain protected. The stopping points and active-task
+headings below are historical records unless carried forward by the new plan.
 
 ## Current stopping point: validated six-year partial prospect outcomes
 

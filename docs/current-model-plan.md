@@ -3,7 +3,9 @@
 ## Active priority — 2026-09-22: annual and cumulative future value
 
 Follow the [multi-year plan](multiyear-player-value-plan-2026-09-22.md), beginning
-with certified labels and a direct Year 2/3 hitter comparison. Reuse the current
+with certified labels, including the shortened-2020 replacement accounting, and a
+bounded direct Year 2/3 hitter comparison. Deliver the player report at that first
+model milestone; optional career simulations follow a diagnosed gap. Reuse the current
 one-year development stack and the accepted six-year partial prospect benchmarks.
 The [literature review](multiyear-player-value-literature-2026-09-22.md) explains why
 direct horizons and linked annual paths both need testing. Older "Active P0" headings
