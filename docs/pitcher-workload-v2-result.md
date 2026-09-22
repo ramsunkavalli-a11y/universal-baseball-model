@@ -59,10 +59,10 @@ pitcher talent or the better total-value forecast.
 
 The current workload model does not know the pitcher's future organization and does not
 use organization depth. Carry-forward has slightly better MAE, and role features do not
-provide a reliable incremental gain. The next experiment must apply team capacity only
-as a downward opportunity constraint, preserve an organization-neutral view, and test
-whether it improves future player-level BF and value for players whose current teams
-otherwise project excess innings.
+provide a reliable incremental gain. The subsequent team-capacity experiment applied
+only a downward constraint. It slightly improved pooled BF and value, but both results
+were mixed by season and the uncertainty included harm. That view therefore remains
+separate from organization-neutral value; another test requires dated rights and
+player-specific depth.
 
 The 2026 outcome season remains sealed.
-

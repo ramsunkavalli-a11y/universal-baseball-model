@@ -155,10 +155,12 @@ it does not become projection talent until it improves a future player target.
    framing estimates should enter final reconciliation with conservative uncertainty.
 7. **Final reconciliation.** The first player-level hitter-plus-pitcher reconciliation
    is complete. It improves the component-neutral comparison clearly, preserves
-   two-way contributions, and has development-calibrated combined ranges. Next test
-   team and role capacity constraints on plate appearances, innings, starts, and
-   relief work. General non-catcher defense remains neutral, and the rejected contact,
-   blocking, deterrence, park, and opponent challengers remain outside projected WAR.
+   two-way contributions, and has development-calibrated combined ranges. A first
+   pitcher team-capacity test is also complete and remains a separate context view
+   because its value gain is uncertain and historical playing club is not future
+   ownership. General non-catcher defense remains neutral, and the rejected contact,
+   blocking, deterrence, park, opponent, and forced-capacity challengers remain outside
+   portable projected WAR.
 
 At each milestone, commit code, tests, and the decision report together. Negative
 results remain in the repository so the same attractive dead end is not retested.

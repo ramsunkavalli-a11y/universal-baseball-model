@@ -93,10 +93,11 @@ forecast decomposable instead of exposing only its final product.
 
 This is still partial value, not complete WAR. General non-catcher defense remains
 neutral. Pitcher value is defense-independent and treats non-home-run contact at
-league-average value. Team plate-appearance and innings constraints are not applied.
-The pitcher forecast does not yet expose a separately calibrated batters-faced total.
+league-average value. Team plate-appearance and innings constraints are not applied to
+portable value. The later pitcher workload milestone now exposes separately validated
+expected batters faced for opportunity accounting.
 
-The next reconciliation milestone is team and role capacity: test whether constraining
-individual opportunity forecasts to realistic team plate appearances, innings, starts,
-and relief roles improves player-level future value without changing portable talent.
-
+A first pitcher team-capacity test is complete. Its small workload and value gains are
+uncertain, so it remains a separate organization-context scenario. The next version
+requires dated historical rights and a player-specific depth allocator before another
+portable-value test.
