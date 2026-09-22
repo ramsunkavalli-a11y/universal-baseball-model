@@ -277,6 +277,7 @@ def main() -> None:
         pl.col("prediction_mlb_active_probability").alias(
             "prediction_pitcher_mlb_active_probability"
         ),
+        "prediction_expected_mlb_bf",
         "prediction_component_war_if_active",
         "current_role",
     )
@@ -301,6 +302,7 @@ def main() -> None:
             ),
             "prediction_expected_mlb_pa",
             "prediction_pitcher_mlb_active_probability",
+            "prediction_expected_mlb_bf",
             "prediction_component_war_if_active",
             "prediction_hitter_batting_war",
             "prediction_hitter_selected_partial_war",

@@ -23,6 +23,7 @@ PREDICTION_PATH = Path(
 INTERVAL_PATH = Path(
     "reports/generated/pitcher-value-intervals-v2/interval-predictions.parquet"
 )
+WORKLOAD_PATH = Path("reports/generated/pitcher-workload-v2/predictions.parquet")
 PANEL_PATH = Path(
     "reports/generated/pitcher-value-panel-v2/tables/modeling-panel.parquet"
 )
@@ -43,6 +44,7 @@ REPORT_PATHS = {
     "role_block": Path("reports/generated/pitcher-role-block-v2/report.json"),
     "role_ensemble": Path("reports/generated/pitcher-role-ensemble-v2/report.json"),
     "intervals": Path("reports/generated/pitcher-value-intervals-v2/report.json"),
+    "workload": Path("reports/generated/pitcher-workload-v2/report.json"),
 }
 OUTPUT_ROOT = Path("reports/generated/pitcher-value-development-baseline-v2")
 FORECAST_ORIGIN = 2024
@@ -53,6 +55,9 @@ def main() -> None:
         pl.col("origin_year") == FORECAST_ORIGIN
     )
     intervals = pl.read_parquet(INTERVAL_PATH).filter(
+        pl.col("origin_year") == FORECAST_ORIGIN
+    )
+    workload = pl.read_parquet(WORKLOAD_PATH).filter(
         pl.col("origin_year") == FORECAST_ORIGIN
     )
     panel = pl.read_parquet(PANEL_PATH).filter(
@@ -82,6 +87,23 @@ def main() -> None:
             ),
         )
         .join(names, on="player_id", how="left", validate="1:1")
+        .join(
+            workload.select(
+                "player_id",
+                pl.col("probability_all_equal").alias(
+                    "prediction_workload_mlb_active_probability"
+                ),
+                pl.col("conditional_bf_all_equal").alias(
+                    "prediction_mlb_bf_if_active"
+                ),
+                pl.col("prediction_selected_expected_bf").alias(
+                    "prediction_expected_mlb_bf"
+                ),
+            ),
+            on="player_id",
+            how="left",
+            validate="1:1",
+        )
         .join(
             panel.select(
                 "player_id",
@@ -136,6 +158,9 @@ def main() -> None:
             "current_starts",
             "current_start_share",
             "prediction_mlb_active_probability",
+            "prediction_workload_mlb_active_probability",
+            "prediction_mlb_bf_if_active",
+            "prediction_expected_mlb_bf",
             "prediction_component_war_if_active",
             "prediction_selected_component_war",
             "actual_active",
@@ -159,6 +184,7 @@ def main() -> None:
         "player_stage",
         "current_role",
         "prediction_mlb_active_probability",
+        "prediction_expected_mlb_bf",
         "prediction_component_war_if_active",
         "prediction_selected_component_war",
         "selected_lower_80",
@@ -199,6 +225,10 @@ def main() -> None:
                 "mean of each selected member's arrival probability multiplied by "
                 "that member's conditional value"
             ),
+            "workload": (
+                "separate four-model arrival-times-conditional-BF ensemble used for "
+                "opportunity accounting, not multiplied into the selected value forecast"
+            ),
             "uncertainty": (
                 "earlier-fold residual ranges grouped by player stage and recent "
                 "starter/reliever role"
@@ -223,6 +253,10 @@ def main() -> None:
                 "path": str(INTERVAL_PATH),
                 "sha256": sha256_file(INTERVAL_PATH),
             },
+            "workload": {
+                "path": str(WORKLOAD_PATH),
+                "sha256": sha256_file(WORKLOAD_PATH),
+            },
             "panel": {"path": str(PANEL_PATH), "sha256": sha256_file(PANEL_PATH)},
             "names": {"path": str(NAME_PATH), "sha256": sha256_file(NAME_PATH)},
             "reports": {
@@ -233,7 +267,7 @@ def main() -> None:
         "limitations": [
             "This is an exposed 2025 development artifact, not a live forecast.",
             "The value target is defense-independent and still treats non-home-run contact at league-average value.",
-            "This version predicts arrival and total conditional value, not a separately calibrated batters-faced total.",
+            "Expected batters faced are separately validated for opportunity accounting and are not multiplied into the better total-value forecast.",
             "The final 2026 forecast must be rebuilt from the 2025 cutoff without opening 2026 outcomes.",
         ],
     }
