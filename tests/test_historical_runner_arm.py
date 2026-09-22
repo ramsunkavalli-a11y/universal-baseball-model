@@ -1,13 +1,64 @@
 from __future__ import annotations
 
 import polars as pl
+import pytest
 
 from universal_baseball.historical_runner_arm import (
+    add_advancement_re24,
     add_advancement_value,
+    build_run_expectancy_table,
     evaluate_effect_projection,
     fit_crossed_runner_arm_effects,
     score_contextual_advancement_residuals,
 )
+
+
+def test_re24_advancement_values_only_focal_runner_destination() -> None:
+    terminal = pl.DataFrame(
+        {
+            "season": [2024, 2024, 2024, 2024],
+            "level": ["aaa"] * 4,
+            "game_pk": [1] * 4,
+            "inning": [1] * 4,
+            "inning_top_bot": ["Top"] * 4,
+            "at_bat_index": [1, 2, 3, 4],
+            "outs_when_up": [0, 0, 1, 2],
+            "start_runner_1b": [None, 10, None, None],
+            "start_runner_2b": [None, None, 10, None],
+            "start_runner_3b": [None, None, None, None],
+            "bat_score": [0, 0, 0, 1],
+            "post_bat_score": [0, 0, 1, 1],
+        }
+    )
+    estimated = build_run_expectancy_table(terminal)
+    assert estimated.height > 0
+    re24 = pl.DataFrame(
+        {
+            "season": [2024, 2024],
+            "level": ["aaa", "aaa"],
+            "outs_when_up": [0, 0],
+            "base_state": [5, 3],
+            "run_expectancy": [1.4, 1.1],
+            "state_opportunities": [100, 100],
+        }
+    )
+    opportunity = pl.DataFrame(
+        {
+            "season": [2024],
+            "level": ["aaa"],
+            "runner_id": [10],
+            "origin_base": [1],
+            "opportunity_type": ["first_on_single"],
+            "destination_base": [3],
+            "outs_when_up": [0],
+            "terminal_outcome_group": ["1B"],
+            "on_1b": [20],
+            "on_2b": [None],
+            "on_3b": [10],
+        }
+    )
+    valued = add_advancement_re24(opportunity, re24)
+    assert valued["advancement_re24"][0] == pytest.approx(0.3)
 
 
 def _opportunities() -> pl.DataFrame:

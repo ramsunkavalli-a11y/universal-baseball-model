@@ -16,6 +16,162 @@ OUTFIELD_OPPORTUNITY_TYPES = (
 )
 
 
+def build_run_expectancy_table(terminal: pl.DataFrame) -> pl.DataFrame:
+    """Estimate season/level RE24 from runs remaining in each half-inning."""
+
+    required = {
+        "season",
+        "level",
+        "game_pk",
+        "inning",
+        "inning_top_bot",
+        "at_bat_index",
+        "outs_when_up",
+        "start_runner_1b",
+        "start_runner_2b",
+        "start_runner_3b",
+        "bat_score",
+        "post_bat_score",
+    }
+    if missing := sorted(required - set(terminal.columns)):
+        raise ValueError(f"terminal plays missing RE24 fields: {missing}")
+    half = ["game_pk", "inning", "inning_top_bot"]
+    states = terminal.with_columns(
+        pl.col("post_bat_score").max().over(half).alias("half_inning_final_score"),
+        (
+            pl.col("start_runner_1b").is_not_null().cast(pl.Int8)
+            + 2 * pl.col("start_runner_2b").is_not_null().cast(pl.Int8)
+            + 4 * pl.col("start_runner_3b").is_not_null().cast(pl.Int8)
+        ).alias("base_state"),
+    ).with_columns(
+        (pl.col("half_inning_final_score") - pl.col("bat_score")).alias(
+            "runs_remaining"
+        )
+    )
+    if states.filter(pl.col("runs_remaining") < 0).height:
+        raise ValueError("terminal plays contain invalid RE24 state")
+    states = states.filter(pl.col("outs_when_up").is_between(0, 2))
+    return (
+        states.group_by("season", "level", "outs_when_up", "base_state")
+        .agg(
+            pl.col("runs_remaining").mean().alias("run_expectancy"),
+            pl.len().alias("state_opportunities"),
+        )
+        .sort("season", "level", "outs_when_up", "base_state")
+    )
+
+
+def add_advancement_re24(
+    opportunities: pl.DataFrame, run_expectancy: pl.DataFrame
+) -> pl.DataFrame:
+    """Value only the focal runner's destination against an ordinary destination."""
+
+    required = {
+        "season",
+        "level",
+        "runner_id",
+        "opportunity_type",
+        "destination_base",
+        "outs_when_up",
+        "terminal_outcome_group",
+        "on_1b",
+        "on_2b",
+        "on_3b",
+    }
+    if missing := sorted(required - set(opportunities.columns)):
+        raise ValueError(f"runner opportunities missing RE24 fields: {missing}")
+    reference_destination = (
+        pl.when(pl.col("opportunity_type") == "first_on_single")
+        .then(2)
+        .when(pl.col("opportunity_type") == "first_on_double")
+        .then(3)
+        .when(pl.col("opportunity_type") == "second_on_single")
+        .then(3)
+        .when(pl.col("opportunity_type").is_in(["tag_on_air_out", "second_on_ground_out"]))
+        .then(pl.col("origin_base"))
+        .otherwise(None)
+    )
+    batter_out = pl.col("terminal_outcome_group").is_in(["OUT", "SF"]).cast(pl.Int8)
+    work = opportunities.with_columns(
+        reference_destination.cast(pl.Int8).alias("reference_destination"),
+        batter_out.alias("_batter_out"),
+        (
+            pl.col("on_1b").is_not_null()
+            & (pl.col("on_1b") != pl.col("runner_id"))
+        ).cast(pl.Int8).alias("_other_1b"),
+        (
+            pl.col("on_2b").is_not_null()
+            & (pl.col("on_2b") != pl.col("runner_id"))
+        ).cast(pl.Int8).alias("_other_2b"),
+        (
+            pl.col("on_3b").is_not_null()
+            & (pl.col("on_3b") != pl.col("runner_id"))
+        ).cast(pl.Int8).alias("_other_3b"),
+    ).with_columns(
+        (
+            pl.col("_other_1b")
+            + 2 * pl.col("_other_2b")
+            + 4 * pl.col("_other_3b")
+        ).alias("_other_base_state"),
+        (pl.col("outs_when_up") + pl.col("_batter_out")).alias("reference_outs"),
+        (
+            pl.col("outs_when_up")
+            + pl.col("_batter_out")
+            + (pl.col("destination_base") == 0).cast(pl.Int8)
+        ).alias("actual_outs"),
+    ).with_columns(
+        (
+            pl.col("_other_base_state")
+            + pl.when(pl.col("destination_base") == 1).then(1).otherwise(0)
+            + pl.when(pl.col("destination_base") == 2).then(2).otherwise(0)
+            + pl.when(pl.col("destination_base") == 3).then(4).otherwise(0)
+        ).alias("actual_base_state"),
+        (
+            pl.col("_other_base_state")
+            + pl.when(pl.col("reference_destination") == 1).then(1).otherwise(0)
+            + pl.when(pl.col("reference_destination") == 2).then(2).otherwise(0)
+            + pl.when(pl.col("reference_destination") == 3).then(4).otherwise(0)
+        ).alias("reference_base_state"),
+    )
+
+    lookup = run_expectancy.select(
+        "season", "level", "outs_when_up", "base_state", "run_expectancy"
+    )
+    work = work.join(
+        lookup.rename(
+            {
+                "outs_when_up": "actual_outs",
+                "base_state": "actual_base_state",
+                "run_expectancy": "actual_re",
+            }
+        ),
+        on=["season", "level", "actual_outs", "actual_base_state"],
+        how="left",
+        validate="m:1",
+    ).join(
+        lookup.rename(
+            {
+                "outs_when_up": "reference_outs",
+                "base_state": "reference_base_state",
+                "run_expectancy": "reference_re",
+            }
+        ),
+        on=["season", "level", "reference_outs", "reference_base_state"],
+        how="left",
+        validate="m:1",
+    ).with_columns(
+        pl.when(pl.col("actual_outs") >= 3).then(0.0).otherwise(pl.col("actual_re")).alias("actual_re"),
+        pl.when(pl.col("reference_outs") >= 3).then(0.0).otherwise(pl.col("reference_re")).alias("reference_re"),
+    )
+    return work.with_columns(
+        (
+            (pl.col("destination_base") == 4).cast(pl.Float64)
+            + pl.col("actual_re")
+            - pl.col("reference_re")
+        ).alias("advancement_re24")
+    )
+
+
 def add_advancement_value(opportunities: pl.DataFrame) -> pl.DataFrame:
     """Map a clean runner movement to an ordinal extra-base value.
 
@@ -61,12 +217,21 @@ def score_contextual_advancement_residuals(
     *,
     context_prior: float = 40.0,
     park_prior: float = 80.0,
+    value_column: str | None = None,
 ) -> pl.DataFrame:
     """Score runner outcomes against leave-one-out level/park expectations."""
 
     if context_prior <= 0 or park_prior <= 0:
         raise ValueError("runner context priors must be positive")
-    valued = add_advancement_value(opportunities).filter(
+    if value_column is None:
+        valued = add_advancement_value(opportunities)
+    else:
+        if value_column not in opportunities.columns:
+            raise ValueError(f"runner opportunities missing value column: {value_column}")
+        valued = opportunities.with_columns(
+            pl.col(value_column).cast(pl.Float64).alias("advancement_value")
+        )
+    valued = valued.filter(
         pl.col("advancement_value").is_not_null()
         & pl.col("destination_base").is_not_null()
     ).with_columns(
