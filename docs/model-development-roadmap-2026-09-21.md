@@ -70,6 +70,7 @@ still treats all other contact at league-average value.
 | Pitcher target architecture | Use arrival chance x total value if active | Wins over direct and workload-times-rate targets for all four tested engines |
 | Pitcher model engine | Use role-enhanced chronology-pruned ensemble for development | Best RMSE is 0.31092; the simpler equal ensemble also improves with favorable uncertainty |
 | Pitcher role and workload transitions | Use in development ensemble | Improves ridge, CatBoost, LightGBM, and the equal ensemble |
+| Exact pitcher opponent quality | Descriptive adjustment only | Actual prior hitter quality covers 95% of scored rows but is flat to worse in ridge, CatBoost, and LightGBM future-value tests |
 | Raw pitcher hit-type detail | Do not use in the value model | Singles/doubles/triples slightly worsened three engines even when the target valued them |
 | High-minors pitch process | Keep for component skill; not whole value | Component forecasts improve, but whole-value gains are tiny, mixed, and uncertain |
 
@@ -91,9 +92,10 @@ it does not become projection talent until it improves a future player target.
 
 ## Development order while 2026 remains sealed
 
-1. **Pitcher information-block ablations.** Add prior-only park, opponent, handedness,
-   and compact matchup context one block at a
-   time. Judge each block on later pitcher value, not only individual plate appearances.
+1. **Pitcher information-block ablations.** Exact prior-only opponent quality is
+   complete and rejected for future value; earlier park adjustment also failed its
+   player gate. Keep both for fair past-event measurement. Test any remaining compact
+   matchup signal only at the event level before another whole-value attempt.
 2. **Event-level pitcher contact separation.** Keep the defense-independent target as
    the base. Revisit contact only after separating pitcher, park, opponent, and team
    defense effects; raw season-total hit types did not improve the fuller value target.
