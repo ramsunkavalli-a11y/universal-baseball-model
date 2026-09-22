@@ -72,6 +72,7 @@ still treats all other contact at league-average value.
 | Pitcher role and workload transitions | Use in development ensemble | Improves ridge, CatBoost, LightGBM, and the equal ensemble |
 | Exact pitcher opponent quality | Descriptive adjustment only | Actual prior hitter quality covers 95% of scored rows but is flat to worse in ridge, CatBoost, and LightGBM future-value tests |
 | Raw pitcher hit-type detail | Do not use in the value model | Singles/doubles/triples slightly worsened three engines even when the target valued them |
+| Context-neutral pitcher contact value | Descriptive adjustment only | 4.52 million park/defense/batter-adjusted BIP modestly help one full-result learner but fail the separate contact-value reconciliation against the leading pitcher model |
 | High-minors pitch process | Keep for component skill; not whole value | Component forecasts improve, but whole-value gains are tiny, mixed, and uncertain |
 
 ## Statistical rule
@@ -96,9 +97,11 @@ it does not become projection talent until it improves a future player target.
    complete and rejected for future value; earlier park adjustment also failed its
    player gate. Keep both for fair past-event measurement. Test any remaining compact
    matchup signal only at the event level before another whole-value attempt.
-2. **Event-level pitcher contact separation.** Keep the defense-independent target as
-   the base. Revisit contact only after separating pitcher, park, opponent, and team
-   defense effects; raw season-total hit types did not improve the fuller value target.
+2. **Event-level pitcher contact separation.** Complete for the current all-level
+   source. The 4.52-million-event model separates contact shape, park, defense team,
+   and batter context, but its residual does not improve the final separate contact
+   reconciliation. Keep the defense-independent target as the base and wait for a new
+   untouched season or materially better portable contact evidence.
 3. **Pitcher opportunity and role integration.** Player-history integration is
    complete and promoted to the development ensemble. Next add organization depth and
    realistic team innings limits without using future role as an input.

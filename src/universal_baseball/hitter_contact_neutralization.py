@@ -262,6 +262,17 @@ def prepare_terminal_contacts(
     )
 
 
+def prepare_pitcher_terminal_contacts(
+    terminal: pl.DataFrame, game_context: pl.DataFrame
+) -> pl.DataFrame:
+    """Create the pitcher-keyed mirror of the certified hitter contact rows."""
+
+    contacts = prepare_terminal_contacts(terminal, game_context)
+    return contacts.rename({"player_id": "batter", "pitcher": "player_id"}).sort(
+        "game_pk", "at_bat_index"
+    )
+
+
 def encode_contact_matrix(
     frame: pl.DataFrame,
     *,
@@ -516,6 +527,8 @@ def crossfit_shrunk_context_probabilities(
     park_prior: float = 400.0,
     defense_prior: float = 800.0,
     pitcher_prior: float = 300.0,
+    opponent_column: str = "pitcher",
+    opponent_stage_name: str = "pitcher",
 ) -> tuple[dict[str, np.ndarray], dict[str, Any]]:
     """Layer conservative park and opponent corrections over contact expectations.
 
@@ -536,6 +549,10 @@ def crossfit_shrunk_context_probabilities(
         for value in (park_prior, defense_prior, pitcher_prior)
     ):
         raise ValueError("context priors must be finite and positive")
+    if opponent_column not in frame.columns:
+        raise ValueError(f"contact frame missing opponent column: {opponent_column}")
+    if not opponent_stage_name or "_" in opponent_stage_name:
+        raise ValueError("opponent stage name must be a non-empty simple label")
     outcome_to_index = {value: index for index, value in enumerate(CONTACT_OUTCOMES)}
     labels = np.array(
         [outcome_to_index[value] for value in frame["canonical_outcome"].to_list()],
@@ -544,7 +561,8 @@ def crossfit_shrunk_context_probabilities(
     one_hot = np.eye(len(CONTACT_OUTCOMES), dtype=np.float32)[labels]
     assignments = player_crossfit_fold(frame["player_id"].to_numpy(), folds)
     physical = encode_contact_matrix(frame, include_context=False)
-    context_stages = ("park", "park_defense", "park_defense_pitcher")
+    opponent_stage = f"park_defense_{opponent_stage_name}"
+    context_stages = ("park", "park_defense", opponent_stage)
     weights = (0.25, 0.50, 1.0)
     stage_names = ("physical",) + tuple(
         stage if weight == 1.0 else f"{stage}_w{int(weight * 100):03d}"
@@ -598,14 +616,14 @@ def crossfit_shrunk_context_probabilities(
             test,
             one_hot[train],
             train_physical,
-            ("pitcher", "core_bin"),
+            (opponent_column, "core_bin"),
             pitcher_prior,
         )
         probabilities["physical"][test] = test_physical
         corrections = {
             "park": park,
             "park_defense": park + defense,
-            "park_defense_pitcher": park + defense + pitcher,
+            opponent_stage: park + defense + pitcher,
         }
         for stage, correction in corrections.items():
             for weight in weights:
@@ -635,8 +653,9 @@ def crossfit_shrunk_context_probabilities(
         "priors": {
             "park": park_prior,
             "defense": defense_prior,
-            "pitcher": pitcher_prior,
+            opponent_stage_name: pitcher_prior,
         },
+        "opponent_column": opponent_column,
         "stage_metrics": {
             stage: multinomial_metrics(labels, probability)
             for stage, probability in probabilities.items()
