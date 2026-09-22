@@ -75,6 +75,10 @@ def _read_partitions(root: Path, family: str) -> pl.DataFrame:
             "sz_bot",
             "home_team",
             "start_runner_count",
+            "outs_continuity_ok",
+            "block_candidate",
+            "pa_has_passed_ball",
+            "pa_has_wild_pitch",
             "clean_block_opportunity",
             "block_result",
         ]

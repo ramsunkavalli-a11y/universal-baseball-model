@@ -61,7 +61,7 @@ still treats all other contact at league-average value.
 | Outfield arm | Experimental only | Barely positive after heavy regression |
 | Catcher throwing | Experimental only | Small positive caught-stealing signal; the separate attempt-deterrence model failed |
 | Catcher steal deterrence | Reject current form | 2.78 million eligible PA starts produce no later-season improvement after separating catcher, pitcher, and runner effects |
-| Catcher blocking from dirt-ball narratives | Reject current form | Worse than neutral next year |
+| Catcher blocking | Reject current form | A broader 240,201-PA target fixes the old single-pitch restriction but still shrinks nearly to zero and is statistically indistinguishable from neutral next year |
 | Catcher battery support | Retain as research evidence, not WAR | Walk effect is small and not decisive with new pitchers |
 | Hitter-pitcher profile interactions | Retain as compact context, not standalone talent | Improves individual PA forecasts but mostly washes out in next-season player rates |
 | Offseason injury history | Do not use yet | Small uncertain PA gain, worse arrival calibration and MAE |
@@ -110,10 +110,11 @@ it does not become projection talent until it improves a future player target.
    advancement component, but the chronology-safe bridge changes full hitter RMSE
    from 0.429098 to 0.429129. Retain it as a diagnostic and revisit only during final
    uncertainty-aware reconciliation.
-6. **Catcher completion.** The all-level steal-deterrence model is complete and
-   rejected; prior catcher effects do not beat neutral. Broader blocking still needs
-   a better target. Keep battery familiarity separate from portable catcher talent
-   and plan explicitly for reduced framing value under ABS.
+6. **Catcher completion.** The all-level steal-deterrence and broader blocking tests
+   are complete and rejected; neither prior catcher effect beats neutral reliably.
+   Keep battery familiarity separate from portable catcher talent and plan explicitly
+   for reduced framing value under ABS. The remaining provisional throwing and MLB
+   framing estimates should enter final reconciliation with conservative uncertainty.
 7. **Final reconciliation.** Combine batting, pitching, fielding, baserunning, role,
    and opportunity; constrain team totals; calibrate uncertainty; and compare the
    resulting player values with the strongest component-neutral alternatives.

@@ -3,12 +3,43 @@ from __future__ import annotations
 import polars as pl
 
 from universal_baseball.historical_catcher_pbp import (
+    extract_broad_catcher_blocking_opportunities,
     extract_catcher_blocking_opportunities,
     extract_catcher_deterrence_opportunities,
     extract_catcher_throwing_attempts,
     fit_crossed_catcher_pitcher_effects,
     score_binary_context_residuals,
 )
+
+
+def test_broad_blocking_keeps_multiple_dirt_pitches_in_one_pa() -> None:
+    rows = []
+    for pitch, failure in ((1, False), (2, True)):
+        rows.append(
+            {
+                "season": 2024,
+                "level": "aaa",
+                "game_pk": 1,
+                "at_bat_index": 2,
+                "fielder_2": 10,
+                "pitcher": 20,
+                "p_throws": "R",
+                "stand": "L",
+                "plate_z": 1.0 - pitch / 10,
+                "sz_top": 3.5,
+                "sz_bot": 1.5,
+                "home_team": "A",
+                "start_runner_count": 1,
+                "outs_continuity_ok": True,
+                "block_candidate": True,
+                "pa_has_passed_ball": failure,
+                "pa_has_wild_pitch": False,
+            }
+        )
+    result = extract_broad_catcher_blocking_opportunities(pl.DataFrame(rows))
+    assert result.height == 1
+    assert result.item(0, "dirt_pitch_count") == 2
+    assert result.item(0, "block_failure") == 1
 
 
 def test_extract_deterrence_includes_attempts_and_nonattempts() -> None:

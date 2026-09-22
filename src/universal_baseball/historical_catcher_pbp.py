@@ -244,6 +244,95 @@ def extract_catcher_blocking_opportunities(catcher_pitches: pl.DataFrame) -> pl.
     )
 
 
+def extract_broad_catcher_blocking_opportunities(
+    catcher_pitches: pl.DataFrame,
+) -> pl.DataFrame:
+    """Aggregate every runner-on dirt-ball PA without requiring one exact pitch."""
+
+    required = {
+        "season",
+        "level",
+        "game_pk",
+        "at_bat_index",
+        "fielder_2",
+        "pitcher",
+        "p_throws",
+        "stand",
+        "plate_z",
+        "sz_top",
+        "sz_bot",
+        "home_team",
+        "start_runner_count",
+        "outs_continuity_ok",
+        "block_candidate",
+        "pa_has_passed_ball",
+        "pa_has_wild_pitch",
+    }
+    if missing := sorted(required - set(catcher_pitches.columns)):
+        raise ValueError(f"catcher pitches missing broad blocking fields: {missing}")
+    candidates = catcher_pitches.filter(
+        pl.col("block_candidate")
+        & (pl.col("start_runner_count") > 0)
+        & pl.col("outs_continuity_ok").fill_null(False)
+        & pl.col("fielder_2").is_not_null()
+        & pl.col("pitcher").is_not_null()
+    ).with_columns(
+        pl.when(
+            pl.col("plate_z").is_not_null()
+            & pl.col("sz_bot").is_not_null()
+            & pl.col("sz_top").is_not_null()
+            & (pl.col("sz_top") > pl.col("sz_bot"))
+        )
+        .then(
+            (pl.col("plate_z") - pl.col("sz_bot"))
+            / (pl.col("sz_top") - pl.col("sz_bot"))
+        )
+        .otherwise(None)
+        .alias("normalized_plate_z")
+    )
+    grouped = candidates.group_by(
+        "season",
+        "level",
+        "game_pk",
+        "at_bat_index",
+        "fielder_2",
+        "pitcher",
+        "p_throws",
+        "stand",
+        "home_team",
+    ).agg(
+        pl.len().alias("dirt_pitch_count"),
+        pl.col("start_runner_count").max(),
+        pl.col("normalized_plate_z").min().alias("lowest_normalized_plate_z"),
+        pl.col("pa_has_passed_ball").any().alias("pa_has_passed_ball"),
+        pl.col("pa_has_wild_pitch").any().alias("pa_has_wild_pitch"),
+    )
+    return grouped.with_columns(
+        pl.col("fielder_2").alias("catcher_id"),
+        pl.col("pitcher").alias("pitcher_id"),
+        pl.col("p_throws").fill_null("U").alias("pitcher_hand"),
+        pl.col("stand").fill_null("U").alias("batter_side"),
+        pl.concat_str(
+            [pl.col("season"), pl.col("home_team").fill_null("unknown")],
+            separator=":",
+        ).alias("park_key"),
+        pl.col("dirt_pitch_count").clip(1, 4).alias("dirt_pitch_count_band"),
+        pl.when(pl.col("lowest_normalized_plate_z").is_null())
+        .then(pl.lit("missing"))
+        .when(pl.col("lowest_normalized_plate_z") < -0.5)
+        .then(pl.lit("below_-0.5"))
+        .when(pl.col("lowest_normalized_plate_z") < 0.0)
+        .then(pl.lit("-0.5_to_0"))
+        .when(pl.col("lowest_normalized_plate_z") < 0.5)
+        .then(pl.lit("0_to_0.5"))
+        .otherwise(pl.lit("above_0.5"))
+        .alias("dirt_severity_band"),
+        (pl.col("pa_has_passed_ball") | pl.col("pa_has_wild_pitch"))
+        .cast(pl.Int8)
+        .alias("block_failure"),
+    )
+
+
 def score_binary_context_residuals(
     events: pl.DataFrame,
     *,
