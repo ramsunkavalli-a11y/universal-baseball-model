@@ -1,7 +1,8 @@
 # Multi-year player value: execution plan
 
-Version 1.1, reviewed 2026-09-22. Status: research and initial availability audit
-complete; label certification next. This is the immediate execution order under the
+Version 1.1, reviewed 2026-09-22. Execution update: M1 and M2 complete;
+[three-year hitter result and limitations](multiyear-hitter-v1-result.md).
+This is the immediate execution order under the
 [product roadmap](product-roadmap.md). Historical results and frozen forecast
 contracts retain their original scope. [Research and sources](multiyear-player-value-literature-2026-09-22.md).
 
@@ -233,6 +234,17 @@ branch. Update this checklist and the status page. A failed challenger closes wi
 the best supported baseline and a usable report. Reopen only for new evidence, a
 corrected defect, or a predeclared materially different hypothesis.
 
-**Next action:** M1 source reuse and target certification, starting with the existing
-multi-horizon opportunity cohorts and the 2020 replacement accounting. No new model
-scores or player forecasts were generated during this plan review.
+**Execution checkpoint, 2026-09-22:** M1 and M2 are complete. D1 was selected by all
+inner tests and improves all six outer three-year tests. Current 2026–2028 player
+forecasts and an explorer are delivered under a separate development version. No
+protected outcomes or original frozen forecasts changed.
+
+**Next action:** a bounded opportunity-consistency audit identified in the player
+report: verify historical 40-man absence for established hitters and reuse the
+existing established-hitter opportunity work for a talent-aware challenger. Replace
+the failed stage-only uncertainty bands under a new conditional/distributional test;
+they are withheld because aggregate coverage concealed high-value undercoverage. Do not
+hand-correct player values or replace the selected procedure based on exposed outer
+scores. Then execute M3: pitchers Year 1–3 and longer horizons where support permits.
+This follow-up addresses a specific observed weakness; it does not reopen a broad
+algorithm tournament or postpone delivery of the supported hitter value means.

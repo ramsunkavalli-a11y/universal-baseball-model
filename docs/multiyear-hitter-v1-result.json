@@ -1,0 +1,731 @@
+{
+  "status": "development_selected",
+  "gates": {
+    "paired_interval_favorable": true,
+    "majority_origins": true,
+    "subgroups": true,
+    "annual_retention": true,
+    "season_sensitivities": true,
+    "year1_retained": true,
+    "shared_participation_unchanged": true
+  },
+  "equal_origin": {
+    "B0": {
+      "mse": 1.5625594663007645,
+      "rmse": 1.2500237862939907,
+      "bias": 0.06945528745708761
+    },
+    "D1": {
+      "mse": 1.2498739039195792,
+      "rmse": 1.1179775954461606,
+      "bias": 0.06332624223703273
+    },
+    "D2": {
+      "mse": 1.1713484064026787,
+      "rmse": 1.0822885042365915,
+      "bias": 0.04072428711014379
+    },
+    "D3": {
+      "mse": 1.1545888059806637,
+      "rmse": 1.0745179412092958,
+      "bias": 0.04096970448163357
+    },
+    "selected": {
+      "mse": 1.2498739039195792,
+      "rmse": 1.1179775954461606,
+      "bias": 0.06332624223703273
+    },
+    "C1": {
+      "mse": 1.3051693356778327,
+      "rmse": 1.142440079688135,
+      "bias": 0.05925037985766483
+    }
+  },
+  "pooled": {
+    "B0": {
+      "rows": 26571,
+      "mse": 1.5598585947951245,
+      "rmse": 1.2489429910108485,
+      "mae": 0.5101866536515214,
+      "bias": 0.07085389573366728
+    },
+    "D1": {
+      "rows": 26571,
+      "mse": 1.2462000769575579,
+      "rmse": 1.116333318036131,
+      "mae": 0.4519773829361282,
+      "bias": 0.06463907734600847
+    },
+    "D2": {
+      "rows": 26571,
+      "mse": 1.166973729017942,
+      "rmse": 1.0802655826313925,
+      "mae": 0.369508378305767,
+      "bias": 0.042921349080863015
+    },
+    "D3": {
+      "rows": 26571,
+      "mse": 1.1502868056426159,
+      "rmse": 1.0725142449602316,
+      "mae": 0.3581447299945926,
+      "bias": 0.04294448263697055
+    },
+    "selected": {
+      "rows": 26571,
+      "mse": 1.2462000769575579,
+      "rmse": 1.116333318036131,
+      "mae": 0.4519773829361282,
+      "bias": 0.06463907734600847
+    },
+    "C1": {
+      "rows": 26571,
+      "mse": 1.3005576835947643,
+      "rmse": 1.1404199593109392,
+      "mae": 0.4695260273691335,
+      "bias": 0.060469777633214775
+    }
+  },
+  "folds": [
+    {
+      "origin": 2016,
+      "selected": "D1",
+      "scores": {
+        "B0": {
+          "rows": 4572,
+          "mse": 2.2552546137960454,
+          "rmse": 1.501750516496014,
+          "mae": 0.5966030400066864,
+          "bias": 0.0028909483277612244
+        },
+        "D1": {
+          "rows": 4572,
+          "mse": 1.6956881152919807,
+          "rmse": 1.3021858988992243,
+          "mae": 0.5144452684146905,
+          "bias": -0.018280469355232885
+        },
+        "D2": {
+          "rows": 4572,
+          "mse": 1.5411045515878687,
+          "rmse": 1.2414123213452768,
+          "mae": 0.42718896841990156,
+          "bias": -0.015471934776045028
+        },
+        "D3": {
+          "rows": 4572,
+          "mse": 1.5319929019194325,
+          "rmse": 1.2377370083824077,
+          "mae": 0.4156607395372389,
+          "bias": -0.02164376585904691
+        },
+        "selected": {
+          "rows": 4572,
+          "mse": 1.6956881152919807,
+          "rmse": 1.3021858988992243,
+          "mae": 0.5144452684146905,
+          "bias": -0.018280469355232885
+        },
+        "C1": {
+          "rows": 4572,
+          "mse": 1.6354565344486152,
+          "rmse": 1.2788496918905736,
+          "mae": 0.5040251535866324,
+          "bias": -0.027822817464068544
+        }
+      }
+    },
+    {
+      "origin": 2017,
+      "selected": "D1",
+      "scores": {
+        "B0": {
+          "rows": 4580,
+          "mse": 1.1474024936952907,
+          "rmse": 1.0711687512690475,
+          "mae": 0.4482015189817534,
+          "bias": 0.10640101194551534
+        },
+        "D1": {
+          "rows": 4580,
+          "mse": 1.0074043211283648,
+          "rmse": 1.0036953328218503,
+          "mae": 0.40594646673739926,
+          "bias": 0.09464098608943336
+        },
+        "D2": {
+          "rows": 4580,
+          "mse": 0.9219749786854305,
+          "rmse": 0.9601952815367458,
+          "mae": 0.31748596391748335,
+          "bias": 0.0955637855433861
+        },
+        "D3": {
+          "rows": 4580,
+          "mse": 0.9128889247392562,
+          "rmse": 0.9554522095527627,
+          "mae": 0.30229489103928203,
+          "bias": 0.0931922012993039
+        },
+        "selected": {
+          "rows": 4580,
+          "mse": 1.0074043211283648,
+          "rmse": 1.0036953328218503,
+          "mae": 0.40594646673739926,
+          "bias": 0.09464098608943336
+        },
+        "C1": {
+          "rows": 4580,
+          "mse": 1.0804603217545226,
+          "rmse": 1.039451933354555,
+          "mae": 0.4398878545182978,
+          "bias": 0.07845023799407841
+        }
+      }
+    },
+    {
+      "origin": 2018,
+      "selected": "D1",
+      "scores": {
+        "B0": {
+          "rows": 4348,
+          "mse": 1.1553909735326944,
+          "rmse": 1.0748911449689658,
+          "mae": 0.45926708147881695,
+          "bias": 0.11343858765279717
+        },
+        "D1": {
+          "rows": 4348,
+          "mse": 1.0497021057206082,
+          "rmse": 1.024549708760199,
+          "mae": 0.4179884361940527,
+          "bias": 0.10327598836465562
+        },
+        "D2": {
+          "rows": 4348,
+          "mse": 1.0191995131890117,
+          "rmse": 1.009554116027968,
+          "mae": 0.3441657559330082,
+          "bias": 0.09059832003860636
+        },
+        "D3": {
+          "rows": 4348,
+          "mse": 0.9828741032980794,
+          "rmse": 0.9914000722705639,
+          "mae": 0.3278227305775728,
+          "bias": 0.08238690874959852
+        },
+        "selected": {
+          "rows": 4348,
+          "mse": 1.0497021057206082,
+          "rmse": 1.024549708760199,
+          "mae": 0.4179884361940527,
+          "bias": 0.10327598836465562
+        },
+        "C1": {
+          "rows": 4348,
+          "mse": 1.1862581777571883,
+          "rmse": 1.0891547997218707,
+          "mae": 0.45648596841606975,
+          "bias": 0.11326690592424313
+        }
+      }
+    },
+    {
+      "origin": 2019,
+      "selected": "D1",
+      "scores": {
+        "B0": {
+          "rows": 4752,
+          "mse": 1.3825362355922137,
+          "rmse": 1.1758130104707183,
+          "mae": 0.5252433666217633,
+          "bias": 0.1386073049235853
+        },
+        "D1": {
+          "rows": 4752,
+          "mse": 1.0089898643149933,
+          "rmse": 1.0044848751051423,
+          "mae": 0.4534207882848366,
+          "bias": 0.1445378780717147
+        },
+        "D2": {
+          "rows": 4752,
+          "mse": 0.9416608789351091,
+          "rmse": 0.9703921263773264,
+          "mae": 0.37031617302706,
+          "bias": 0.12396904121539634
+        },
+        "D3": {
+          "rows": 4752,
+          "mse": 0.9237026472376457,
+          "rmse": 0.9610945048420815,
+          "mae": 0.3593880295297671,
+          "bias": 0.12332377418370699
+        },
+        "selected": {
+          "rows": 4752,
+          "mse": 1.0089898643149933,
+          "rmse": 1.0044848751051423,
+          "mae": 0.4534207882848366,
+          "bias": 0.1445378780717147
+        },
+        "C1": {
+          "rows": 4752,
+          "mse": 1.0644512881673256,
+          "rmse": 1.0317224860238947,
+          "mae": 0.4501182479742064,
+          "bias": 0.144191278938223
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "selected": "D1",
+      "scores": {
+        "B0": {
+          "rows": 4164,
+          "mse": 1.7714892343754325,
+          "rmse": 1.3309730404389988,
+          "mae": 0.5116731393383268,
+          "bias": 0.007820360909827325
+        },
+        "D1": {
+          "rows": 4164,
+          "mse": 1.4686204630803075,
+          "rmse": 1.2118665203232193,
+          "mae": 0.45745609004761384,
+          "bias": -0.002126348722669715
+        },
+        "D2": {
+          "rows": 4164,
+          "mse": 1.3984630437520096,
+          "rmse": 1.1825662957111578,
+          "mae": 0.37954925670306744,
+          "bias": -0.050124072849333325
+        },
+        "D3": {
+          "rows": 4164,
+          "mse": 1.378640464445152,
+          "rmse": 1.1741552130979753,
+          "mae": 0.371018466190627,
+          "bias": -0.04478737172305476
+        },
+        "selected": {
+          "rows": 4164,
+          "mse": 1.4686204630803075,
+          "rmse": 1.2118665203232193,
+          "mae": 0.45745609004761384,
+          "bias": -0.002126348722669715
+        },
+        "C1": {
+          "rows": 4164,
+          "mse": 1.5156014882606597,
+          "rmse": 1.2310976761657295,
+          "mae": 0.4822977178483325,
+          "bias": -0.005716777099931106
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "selected": "D1",
+      "scores": {
+        "B0": {
+          "rows": 4155,
+          "mse": 1.66328324681291,
+          "rmse": 1.2896833901438407,
+          "mae": 0.5179977900520499,
+          "bias": 0.04757351098303929
+        },
+        "D1": {
+          "rows": 4155,
+          "mse": 1.2688385539812204,
+          "rmse": 1.126427340746495,
+          "mae": 0.46240577417257794,
+          "bias": 0.05790941897429528
+        },
+        "D2": {
+          "rows": 4155,
+          "mse": 1.2056874722666415,
+          "rmse": 1.0980380103924643,
+          "mae": 0.37891580641920297,
+          "bias": -0.00018941651114777504
+        },
+        "D3": {
+          "rows": 4155,
+          "mse": 1.197433794244416,
+          "rmse": 1.0942731808120019,
+          "mae": 0.3738257705096615,
+          "bias": 0.013346480239293681
+        },
+        "selected": {
+          "rows": 4155,
+          "mse": 1.2688385539812204,
+          "rmse": 1.126427340746495,
+          "mae": 0.46240577417257794,
+          "bias": 0.05790941897429528
+        },
+        "C1": {
+          "rows": 4155,
+          "mse": 1.3487882036786853,
+          "rmse": 1.1613734126794384,
+          "mae": 0.48727703854787047,
+          "bias": 0.05313345085344414
+        }
+      }
+    }
+  ],
+  "annual": {
+    "2": {
+      "B0": {
+        "mse": 0.30800452547032503,
+        "rmse": 0.5549815541712401,
+        "bias": 0.023291329643143607
+      },
+      "selected": {
+        "mse": 0.2516274643886738,
+        "rmse": 0.5016248243345556,
+        "bias": 0.020356701456055063
+      }
+    },
+    "3": {
+      "B0": {
+        "mse": 0.3220275853452295,
+        "rmse": 0.5674747442355734,
+        "bias": 0.02678532212647307
+      },
+      "selected": {
+        "mse": 0.27293916272614255,
+        "rmse": 0.5224357977073762,
+        "bias": 0.023590905093506736
+      }
+    }
+  },
+  "paired_player_cluster_MSE_delta_interval": [
+    -0.4041075617366345,
+    -0.23985323023416888
+  ],
+  "subgroups": {
+    "Current MLB": {
+      "rows": 3869,
+      "active": 3183,
+      "selected": {
+        "mse": 6.8122851950205074,
+        "rmse": 2.610035477732153,
+        "bias": 0.38487827030806226
+      },
+      "B0": {
+        "mse": 8.881394023872486,
+        "rmse": 2.9801667778620184,
+        "bias": 0.3915515264758527
+      },
+      "gate_supported": true,
+      "passed": true
+    },
+    "Upper minors": {
+      "rows": 6380,
+      "active": 1328,
+      "selected": {
+        "mse": 0.7862660145545384,
+        "rmse": 0.8867164228514878,
+        "bias": -0.001242690149371839
+      },
+      "B0": {
+        "mse": 0.8246932978907529,
+        "rmse": 0.9081262565804123,
+        "bias": 0.024416936710564035
+      },
+      "gate_supported": true,
+      "passed": true
+    },
+    "Lower minors": {
+      "rows": 14461,
+      "active": 617,
+      "selected": {
+        "mse": 0.11681850460883923,
+        "rmse": 0.34178722124859967,
+        "bias": 0.016871605448607312
+      },
+      "B0": {
+        "mse": 0.12116172795251841,
+        "rmse": 0.3480829325786003,
+        "bias": 0.01413294527055181
+      },
+      "gate_supported": true,
+      "passed": true
+    },
+    "Inactive / unknown": {
+      "rows": 1861,
+      "active": 59,
+      "selected": {
+        "mse": 0.08904820120208884,
+        "rmse": 0.2984094522666613,
+        "bias": 0.012420527677538243
+      },
+      "B0": {
+        "mse": 0.08890882968952966,
+        "rmse": 0.29817583686397137,
+        "bias": 0.02204334146906066
+      },
+      "gate_supported": false,
+      "passed": null
+    },
+    "age_under_23": {
+      "rows": 13621,
+      "active": 1130,
+      "selected": {
+        "mse": 0.44863145925505526,
+        "rmse": 0.6697995664787006,
+        "bias": 0.011600101090581636
+      },
+      "B0": {
+        "mse": 0.4913523322562375,
+        "rmse": 0.7009652860564762,
+        "bias": 0.0065475833973629655
+      },
+      "gate_supported": true,
+      "passed": true
+    },
+    "age_23_29": {
+      "rows": 9186,
+      "active": 3095,
+      "selected": {
+        "mse": 2.166501697227186,
+        "rmse": 1.471904105988969,
+        "bias": 0.09374900051689679
+      },
+      "B0": {
+        "mse": 2.8420708233354777,
+        "rmse": 1.6858442464639127,
+        "bias": 0.11113346923838248
+      },
+      "gate_supported": true,
+      "passed": true
+    },
+    "age_30_plus": {
+      "rows": 1986,
+      "active": 903,
+      "selected": {
+        "mse": 3.610248562002088,
+        "rmse": 1.900065409927271,
+        "bias": 0.3501569869174725
+      },
+      "B0": {
+        "mse": 4.393158451203681,
+        "rmse": 2.095986271711645,
+        "bias": 0.3904485647251313
+      },
+      "gate_supported": true,
+      "passed": true
+    },
+    "current_PA_under_100": {
+      "rows": 7145,
+      "active": 188,
+      "selected": {
+        "mse": 0.136151194694224,
+        "rmse": 0.36898671343860606,
+        "bias": -0.026580086974735923
+      },
+      "B0": {
+        "mse": 0.1569140610033056,
+        "rmse": 0.39612379504809553,
+        "bias": -0.06500164740349378
+      },
+      "gate_supported": true,
+      "passed": true
+    },
+    "current_PA_100_plus": {
+      "rows": 19426,
+      "active": 4999,
+      "selected": {
+        "mse": 1.6598012722397435,
+        "rmse": 1.2883327490364216,
+        "bias": 0.09640487165096401
+      },
+      "B0": {
+        "mse": 2.08200299843038,
+        "rmse": 1.442914757853138,
+        "bias": 0.1189464447598082
+      },
+      "gate_supported": true,
+      "passed": true
+    }
+  },
+  "sensitivity": {
+    "nonpandemic": {
+      "years": [
+        2016,
+        2021,
+        2022
+      ],
+      "selected": {
+        "mse": 1.477715710784503,
+        "rmse": 1.215613306436098,
+        "bias": 0.012500866965464227
+      },
+      "B0": {
+        "mse": 1.896675698328129,
+        "rmse": 1.3771984963425312,
+        "bias": 0.019428273406875946
+      }
+    },
+    "pandemic": {
+      "years": [
+        2017,
+        2018,
+        2019
+      ],
+      "selected": {
+        "mse": 1.0220320970546555,
+        "rmse": 1.0109560312173105,
+        "bias": 0.11415161750860121
+      },
+      "B0": {
+        "mse": 1.2284432342733995,
+        "rmse": 1.1083515842337213,
+        "bias": 0.11948230150729927
+      }
+    },
+    "nonoverlap": {
+      "years": [
+        2016,
+        2019,
+        2022
+      ],
+      "selected": {
+        "mse": 1.3245055111960646,
+        "rmse": 1.150871631067542,
+        "bias": 0.06138894256359236
+      },
+      "B0": {
+        "mse": 1.7670246987337233,
+        "rmse": 1.3292948125730888,
+        "bias": 0.06302392141146194
+      }
+    },
+    "nonoverlap_block_interval": [
+      -0.5595664985040647,
+      -0.37354637127722046
+    ],
+    "player_disjoint": {
+      "selected": {
+        "mse": 1.604630939157776,
+        "rmse": 1.2667402808617778,
+        "bias": -0.18817896235579143
+      },
+      "B0": {
+        "mse": 1.9814638642382623,
+        "rmse": 1.4076447933474774,
+        "bias": -0.18652881621101988
+      }
+    }
+  },
+  "participation": {
+    "1": {
+      "accepted_opportunity": {
+        "brier": 0.04099713322336474,
+        "log_loss": 0.14643840771768116,
+        "predicted_active": 0.1431852516282583,
+        "actual_active": 0.14259907417861578
+      }
+    },
+    "2": {
+      "accepted_opportunity": {
+        "brier": 0.060168238338207725,
+        "log_loss": 0.21119980446240863,
+        "predicted_active": 0.1442319563488159,
+        "actual_active": 0.1417711038350081
+      },
+      "D3_internal_diagnostic_only": {
+        "brier": 0.051882048962304146,
+        "log_loss": 0.1734666432133344,
+        "predicted_active": 0.13502462412932728,
+        "actual_active": 0.1417711038350081
+      }
+    },
+    "3": {
+      "accepted_opportunity": {
+        "brier": 0.07728680700992514,
+        "log_loss": 0.26980273554401524,
+        "predicted_active": 0.14392096213096128,
+        "actual_active": 0.14274961424108992
+      },
+      "D3_internal_diagnostic_only": {
+        "brier": 0.0650472270896842,
+        "log_loss": 0.21707427023260556,
+        "predicted_active": 0.1339099439356309,
+        "actual_active": 0.14274961424108992
+      }
+    }
+  },
+  "year1_matched": {
+    "rows": 16305,
+    "refit_modern": {
+      "rows": 16305,
+      "mse": 0.21746272205891884,
+      "rmse": 0.4663289847939101,
+      "mae": 0.14537188420948619,
+      "bias": 0.004380008052829179
+    },
+    "simple_B0": {
+      "rows": 16305,
+      "mse": 0.33443359162998154,
+      "rmse": 0.5783023358330671,
+      "mae": 0.21391097542035192,
+      "bias": 0.003888043939100621
+    },
+    "candidate_difference": 0.0,
+    "note": "Shared first year; no replacement of modern stack. Corrected target, same matching rows."
+  },
+  "scope": "batting plus replacement only; not whole WAR, service-controlled value, or dollars",
+  "historical_evidence": "exposed development, not prospective confirmation",
+  "protected_2026_used": false,
+  "interval_delivery": "withheld: post-fit display-safety audit finds severe undercoverage among high-predicted-value players; no interval retuning in this batch",
+  "delivered_later_year_form": "D1",
+  "contract_sha256": "d81e3a5514ef911e8414a8606d1c8da6e9abf2b01e308d6a2122b022a7867015",
+  "interval_note": "Raw stage-residual nominal 80% offsets retained for diagnosis only. Published player ranges are null because average stage coverage hid severe high-value-player undercoverage. This extra diagnostic does not alter point-model selection.",
+  "opportunity_limitations": {
+    "jointly_reconciled_with_value": false,
+    "current_MLB_rows_absent_40man_list": 106,
+    "note": "The reused opportunity form can discount established hitters, especially when absent from the reconstructed 40-man list. Do not divide direct value by these PA estimates to infer talent or treat the pair as a coherent joint distribution. No hand corrections applied.",
+    "examples": [
+      {
+        "player_name": "Aaron Judge",
+        "on_40man": 1,
+        "mlb_pa_lag0": 679,
+        "value_2028": 5.12137890913018,
+        "activity_h3": 0.5532424335425871,
+        "expected_pa_h3": 168.45439152211827
+      },
+      {
+        "player_name": "Pete Alonso",
+        "on_40man": 0,
+        "mlb_pa_lag0": 709,
+        "value_2028": 2.7010138300694706,
+        "activity_h3": 0.28126487756112833,
+        "expected_pa_h3": 88.49537548589312
+      }
+    ]
+  },
+  "artifact_hashes": {
+    "reports\\generated\\multiyear-hitter-v1\\player-forecast-2026-2028.parquet": "99d10377438fbede4d95d9c96d4252c3e9a557ceafa8a26843a18e67bf6bf883",
+    "reports\\generated\\multiyear-hitter-v1\\outer-predictions.parquet": "15534160bc8c17c3328383fd338ec28b8b8124d203cffa38e2f62478ddbe1568",
+    "reports\\generated\\multiyear-hitter-v1\\current-candidates.parquet": "728140eea999d0f4184aec3b8eca88367a5edbe1e0e33e916a82435194e61dda",
+    "reports\\generated\\multiyear-hitter-v1\\selection.json": "fbe68fc70cd8295a50ccc14bdfd1596995a39f83b12e9279e72158b0b53f6bef"
+  },
+  "source_code_hashes": {
+    "scripts\\materialize_multiyear_hitter_v1.py": "c8da21551f1269a3d97c25e0ac5ab84b81fd57319237a1366bca39ebd40618d9",
+    "scripts\\evaluate_multiyear_hitter_v1.py": "066a5980fad0a18b98bf6143fcc5e744852aa1401afd1c55e88714e13247c283",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\report_multiyear_hitter_v1.py": "be73652486a226d6973388858206f87a362b1a44922a0346a24f5d48971d3495",
+    "src\\universal_baseball\\multiyear_hitter_value.py": "b72aa067d881af342dd0a5db7475638038bd827e9ec161f4b557b6e6b473d32a"
+  },
+  "package_versions": {
+    "numpy": "2.5.3",
+    "polars": "1.44.2",
+    "scikit-learn": "1.7.2",
+    "catboost": "1.2.10",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1",
+    "interpret": "0.7.8"
+  }
+}

@@ -1,0 +1,731 @@
+{
+  "annual_target_totals": [
+    {
+      "component_war": 569.9999999999993,
+      "legacy_component_war": 569.9999999999993,
+      "schedule_fraction": 1.0,
+      "season": 2009
+    },
+    {
+      "component_war": 570.0000000000008,
+      "legacy_component_war": 570.0000000000008,
+      "schedule_fraction": 1.0,
+      "season": 2010
+    },
+    {
+      "component_war": 569.765432098765,
+      "legacy_component_war": 569.9999999999997,
+      "schedule_fraction": 0.9995884773662551,
+      "season": 2011
+    },
+    {
+      "component_war": 570.0,
+      "legacy_component_war": 570.0,
+      "schedule_fraction": 1.0,
+      "season": 2012
+    },
+    {
+      "component_war": 570.2345679012348,
+      "legacy_component_war": 570.0000000000002,
+      "schedule_fraction": 1.0004115226337449,
+      "season": 2013
+    },
+    {
+      "component_war": 570.0,
+      "legacy_component_war": 570.0,
+      "schedule_fraction": 1.0,
+      "season": 2014
+    },
+    {
+      "component_war": 569.765432098765,
+      "legacy_component_war": 569.9999999999997,
+      "schedule_fraction": 0.9995884773662551,
+      "season": 2015
+    },
+    {
+      "component_war": 569.5308641975304,
+      "legacy_component_war": 569.9999999999995,
+      "schedule_fraction": 0.9991769547325103,
+      "season": 2016
+    },
+    {
+      "component_war": 569.9999999999999,
+      "legacy_component_war": 569.9999999999999,
+      "schedule_fraction": 1.0,
+      "season": 2017
+    },
+    {
+      "component_war": 570.2345679012348,
+      "legacy_component_war": 570.0000000000001,
+      "schedule_fraction": 1.0004115226337449,
+      "season": 2018
+    },
+    {
+      "component_war": 569.7654320987659,
+      "legacy_component_war": 570.0000000000006,
+      "schedule_fraction": 0.9995884773662551,
+      "season": 2019
+    },
+    {
+      "component_war": 210.64197530864217,
+      "legacy_component_war": 570.0000000000002,
+      "schedule_fraction": 0.3695473251028807,
+      "season": 2020
+    },
+    {
+      "component_war": 569.7654320987656,
+      "legacy_component_war": 570.0000000000001,
+      "schedule_fraction": 0.9995884773662551,
+      "season": 2021
+    },
+    {
+      "component_war": 570.0000000000007,
+      "legacy_component_war": 570.0000000000007,
+      "schedule_fraction": 1.0,
+      "season": 2022
+    },
+    {
+      "component_war": 570.0000000000002,
+      "legacy_component_war": 570.0000000000002,
+      "schedule_fraction": 1.0,
+      "season": 2023
+    },
+    {
+      "component_war": 569.7654320987657,
+      "legacy_component_war": 570.0000000000005,
+      "schedule_fraction": 0.9995884773662551,
+      "season": 2024
+    },
+    {
+      "component_war": 570.0000000000006,
+      "legacy_component_war": 570.0000000000006,
+      "schedule_fraction": 1.0,
+      "season": 2025
+    }
+  ],
+  "artifacts": {
+    "panel": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+      "file_size_bytes": 7201540,
+      "path": "reports\\generated\\multiyear-hitter-v1\\panel.parquet",
+      "row_count": 69775,
+      "schema_sha256": "1ef34d8fce23766d7afd229608eed194362bd49e21d313b66453a37d204341a7",
+      "table_name": "multiyear_hitter_v1_panel"
+    },
+    "schedules": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "83c625b3e2afcf4a170a73ac637627f56229c9ed39f3b300394208c7c336c525",
+      "file_size_bytes": 1344,
+      "path": "reports\\generated\\multiyear-hitter-v1\\schedules.parquet",
+      "row_count": 17,
+      "schema_sha256": "cb6c003e463ed08ff98931a12515b345bc564efd798df4107f4c235b3860167f",
+      "table_name": "multiyear_hitter_v1_schedules"
+    },
+    "targets": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "54b7c51af42254ef44e36f6f5035d05334b368f128baa0280e9f98ff92e941e3",
+      "file_size_bytes": 346360,
+      "path": "reports\\generated\\multiyear-hitter-v1\\targets.parquet",
+      "row_count": 14857,
+      "schema_sha256": "8fe29ea5bc739354db1c5917a57ed3aeff8f5a2bebe07d8f3eca0201e06c45a1",
+      "table_name": "multiyear_hitter_v1_targets"
+    }
+  },
+  "availability": "reconstructed Dec-31 end-of-season vintage; historical season aggregates, not archived publication vintages",
+  "base_features": [
+    "age_centered",
+    "age_squared",
+    "age_missing",
+    "reorganization_era",
+    "level_MLB",
+    "level_AAA",
+    "level_AA",
+    "level_A+",
+    "level_A",
+    "level_A-",
+    "level_RK",
+    "level_INACTIVE",
+    "level_UNKNOWN",
+    "missing_lag0",
+    "log_pa_lag0",
+    "log_mlb_pa_lag0",
+    "missing_lag1",
+    "log_pa_lag1",
+    "log_mlb_pa_lag1",
+    "missing_lag2",
+    "log_pa_lag2",
+    "log_mlb_pa_lag2",
+    "on_40man"
+  ],
+  "coverage": [
+    {
+      "listed_on_40man": 608,
+      "missing_age": 281,
+      "no_current_components": 329,
+      "observed_c3": 4393,
+      "observed_h1": 4393,
+      "origin_year": 2009,
+      "players": 4393
+    },
+    {
+      "listed_on_40man": 604,
+      "missing_age": 325,
+      "no_current_components": 385,
+      "observed_c3": 4498,
+      "observed_h1": 4498,
+      "origin_year": 2010,
+      "players": 4498
+    },
+    {
+      "listed_on_40man": 613,
+      "missing_age": 342,
+      "no_current_components": 389,
+      "observed_c3": 4460,
+      "observed_h1": 4460,
+      "origin_year": 2011,
+      "players": 4460
+    },
+    {
+      "listed_on_40man": 619,
+      "missing_age": 331,
+      "no_current_components": 365,
+      "observed_c3": 4466,
+      "observed_h1": 4466,
+      "origin_year": 2012,
+      "players": 4466
+    },
+    {
+      "listed_on_40man": 598,
+      "missing_age": 340,
+      "no_current_components": 366,
+      "observed_c3": 4476,
+      "observed_h1": 4476,
+      "origin_year": 2013,
+      "players": 4476
+    },
+    {
+      "listed_on_40man": 602,
+      "missing_age": 344,
+      "no_current_components": 370,
+      "observed_c3": 4516,
+      "observed_h1": 4516,
+      "origin_year": 2014,
+      "players": 4516
+    },
+    {
+      "listed_on_40man": 608,
+      "missing_age": 330,
+      "no_current_components": 347,
+      "observed_c3": 4512,
+      "observed_h1": 4512,
+      "origin_year": 2015,
+      "players": 4512
+    },
+    {
+      "listed_on_40man": 584,
+      "missing_age": 332,
+      "no_current_components": 353,
+      "observed_c3": 4572,
+      "observed_h1": 4572,
+      "origin_year": 2016,
+      "players": 4572
+    },
+    {
+      "listed_on_40man": 593,
+      "missing_age": 324,
+      "no_current_components": 341,
+      "observed_c3": 4580,
+      "observed_h1": 4580,
+      "origin_year": 2017,
+      "players": 4580
+    },
+    {
+      "listed_on_40man": 593,
+      "missing_age": 300,
+      "no_current_components": 314,
+      "observed_c3": 4348,
+      "observed_h1": 4348,
+      "origin_year": 2018,
+      "players": 4348
+    },
+    {
+      "listed_on_40man": 593,
+      "missing_age": 555,
+      "no_current_components": 571,
+      "observed_c3": 4752,
+      "observed_h1": 4752,
+      "origin_year": 2019,
+      "players": 4752
+    },
+    {
+      "listed_on_40man": 586,
+      "missing_age": 132,
+      "no_current_components": 140,
+      "observed_c3": 4164,
+      "observed_h1": 4164,
+      "origin_year": 2021,
+      "players": 4164
+    },
+    {
+      "listed_on_40man": 598,
+      "missing_age": 135,
+      "no_current_components": 153,
+      "observed_c3": 4155,
+      "observed_h1": 4155,
+      "origin_year": 2022,
+      "players": 4155
+    },
+    {
+      "listed_on_40man": 596,
+      "missing_age": 117,
+      "no_current_components": 127,
+      "observed_c3": 0,
+      "observed_h1": 4093,
+      "origin_year": 2023,
+      "players": 4093
+    },
+    {
+      "listed_on_40man": 590,
+      "missing_age": 129,
+      "no_current_components": 140,
+      "observed_c3": 0,
+      "observed_h1": 3883,
+      "origin_year": 2024,
+      "players": 3883
+    },
+    {
+      "listed_on_40man": 580,
+      "missing_age": 177,
+      "no_current_components": 189,
+      "observed_c3": 0,
+      "observed_h1": 0,
+      "origin_year": 2025,
+      "players": 3907
+    }
+  ],
+  "full_features": [
+    "age_centered",
+    "age_squared",
+    "age_missing",
+    "reorganization_era",
+    "level_MLB",
+    "level_AAA",
+    "level_AA",
+    "level_A+",
+    "level_A",
+    "level_A-",
+    "level_RK",
+    "level_INACTIVE",
+    "level_UNKNOWN",
+    "missing_lag0",
+    "log_pa_lag0",
+    "log_mlb_pa_lag0",
+    "ubb_rate_lag0",
+    "strikeout_rate_lag0",
+    "single_rate_lag0",
+    "double_rate_lag0",
+    "triple_rate_lag0",
+    "home_run_rate_lag0",
+    "hbp_rate_lag0",
+    "stolen_base_rate_lag0",
+    "share_RK_lag0",
+    "share_ROOKIE_lag0",
+    "share_A-_lag0",
+    "share_A_lag0",
+    "share_A+_lag0",
+    "share_AA_lag0",
+    "share_AAA_lag0",
+    "share_MLB_lag0",
+    "observed_mlb_value_lag0",
+    "mlb_value_history_available_lag0",
+    "missing_lag1",
+    "log_pa_lag1",
+    "log_mlb_pa_lag1",
+    "ubb_rate_lag1",
+    "strikeout_rate_lag1",
+    "single_rate_lag1",
+    "double_rate_lag1",
+    "triple_rate_lag1",
+    "home_run_rate_lag1",
+    "hbp_rate_lag1",
+    "stolen_base_rate_lag1",
+    "share_RK_lag1",
+    "share_ROOKIE_lag1",
+    "share_A-_lag1",
+    "share_A_lag1",
+    "share_A+_lag1",
+    "share_AA_lag1",
+    "share_AAA_lag1",
+    "share_MLB_lag1",
+    "observed_mlb_value_lag1",
+    "mlb_value_history_available_lag1",
+    "missing_lag2",
+    "log_pa_lag2",
+    "log_mlb_pa_lag2",
+    "ubb_rate_lag2",
+    "strikeout_rate_lag2",
+    "single_rate_lag2",
+    "double_rate_lag2",
+    "triple_rate_lag2",
+    "home_run_rate_lag2",
+    "hbp_rate_lag2",
+    "stolen_base_rate_lag2",
+    "share_RK_lag2",
+    "share_ROOKIE_lag2",
+    "share_A-_lag2",
+    "share_A_lag2",
+    "share_A+_lag2",
+    "share_AA_lag2",
+    "share_AAA_lag2",
+    "share_MLB_lag2",
+    "observed_mlb_value_lag2",
+    "mlb_value_history_available_lag2",
+    "on_40man"
+  ],
+  "generated_at": "2026-09-22T23:17:17.563010+00:00",
+  "league_pa_bf": [
+    {
+      "bf": 187079,
+      "pa": 187079,
+      "season": 2009
+    },
+    {
+      "bf": 185553,
+      "pa": 185553,
+      "season": 2010
+    },
+    {
+      "bf": 185245,
+      "pa": 185245,
+      "season": 2011
+    },
+    {
+      "bf": 184179,
+      "pa": 184179,
+      "season": 2012
+    },
+    {
+      "bf": 184873,
+      "pa": 184873,
+      "season": 2013
+    },
+    {
+      "bf": 183929,
+      "pa": 183929,
+      "season": 2014
+    },
+    {
+      "bf": 183628,
+      "pa": 183628,
+      "season": 2015
+    },
+    {
+      "bf": 184580,
+      "pa": 184580,
+      "season": 2016
+    },
+    {
+      "bf": 185295,
+      "pa": 185295,
+      "season": 2017
+    },
+    {
+      "bf": 185139,
+      "pa": 185139,
+      "season": 2018
+    },
+    {
+      "bf": 186517,
+      "pa": 186517,
+      "season": 2019
+    },
+    {
+      "bf": 66506,
+      "pa": 66506,
+      "season": 2020
+    },
+    {
+      "bf": 181818,
+      "pa": 181818,
+      "season": 2021
+    },
+    {
+      "bf": 182052,
+      "pa": 182052,
+      "season": 2022
+    },
+    {
+      "bf": 184104,
+      "pa": 184104,
+      "season": 2023
+    },
+    {
+      "bf": 182449,
+      "pa": 182449,
+      "season": 2024
+    },
+    {
+      "bf": 182926,
+      "pa": 182926,
+      "season": 2025
+    }
+  ],
+  "limitations": [
+    "No 2020 origin; canceled MiLB season remains a missing lag.",
+    "Current published whole-WAR label files not located in recovered sources; public WAR comparison unavailable.",
+    "Position, baserunning and defense are absent from the common long-history target.",
+    "Original season source certification reused; complete schedule and MLB PA/BF conservation independently checked."
+  ],
+  "membership": "October-15 reconstructed 40-man lists; absent IDs treated as not listed, matching existing opportunity contract, not missing season coverage",
+  "outcome_max": 2025,
+  "protected_outcomes_used": false,
+  "schedule_captures": [
+    {
+      "completed_games": 2430,
+      "season": 2009,
+      "sha256": "afd769d1b98b9aaf696afccb42d490a761c39b3fa39f40fc147cf06eab6e6333",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2009-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2430,
+      "season": 2010,
+      "sha256": "0bf86c3cf80992692e02fd1e1be650571b3be470215b378dfb3de0f667dea141",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2010-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2429,
+      "season": 2011,
+      "sha256": "190aec3713260125dbdb27e9c3ef8e590e0a7bcfff91437dc95cb11c72498683",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2011-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2430,
+      "season": 2012,
+      "sha256": "ed1728221b44be02b43d59a7c5b855bb918fb758c821a1c2a9f3d3d4c984810d",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2012-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2431,
+      "season": 2013,
+      "sha256": "e460f0bad36e77c5e93bf18b1a144d79e4379df25f1ff6272dd876d0855aac28",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2013-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2430,
+      "season": 2014,
+      "sha256": "611f39028a492860152c1f8704df47df2ed04ee40e3161dea277d8f51965a598",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2014-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2429,
+      "season": 2015,
+      "sha256": "2acaa39a5a356d7f6aab0307ec3736118fb72c09a63802154070e224826b2490",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2015-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2428,
+      "season": 2016,
+      "sha256": "f4caf1b3f29437120f86fb4414263ce6814ab1fc8f88af125d91962f6eb81bed",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2016-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2430,
+      "season": 2017,
+      "sha256": "6e42c1d613648f65092889cf22a9f9139b6f6d0c4ae4a8b065041bfa301d2af0",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2017-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2431,
+      "season": 2018,
+      "sha256": "5844893303ef3d3cfa4ea2dd7912ef21240e75cb87d8fa0e8012e99b7558985d",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2018-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2429,
+      "season": 2019,
+      "sha256": "f97d1e3d5ac29bf17b1c302a83ead2fda1d0c223a58431c627109032d958363e",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2019-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 898,
+      "season": 2020,
+      "sha256": "a89823c58febab0d965baa79276d5d4e9fe4bccf9a324303b0e894cb119d695e",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2020-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2429,
+      "season": 2021,
+      "sha256": "49871fa684ec6f7ced2bb807da688c7340cee5f0400ada7e2a810c7d27a5e09d",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2021-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2430,
+      "season": 2022,
+      "sha256": "6494c307ff485ca037de87011bc18a5375ee7abb5ddec36531d1a999bf60b41b",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2022-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2430,
+      "season": 2023,
+      "sha256": "2198319cc99716e72cd439ce32f43c1b9f3f73cd63674a5233fef7ebc76efbd1",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2023-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2429,
+      "season": 2024,
+      "sha256": "9f269ffd72e35658795d0421617b88886f36d241c6d97ba48688414cacf41aa2",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2024-completed.json",
+      "teams": 30
+    },
+    {
+      "completed_games": 2430,
+      "season": 2025,
+      "sha256": "bc0ecdce50b842ecda2ffc0e798bd38eda8b94273c79e6ee2cebb938b5f4ce63",
+      "source": "reports/generated/multiyear-hitter-v1/raw/schedule-2025-completed.json",
+      "teams": 30
+    }
+  ],
+  "scope": "existing historical roster/stat-union hitter snapshots; does not certify all reserve rights",
+  "simple_pa_residuals": [
+    {
+      "len": 1,
+      "simple_pa_accounting_residual": -12
+    },
+    {
+      "len": 1,
+      "simple_pa_accounting_residual": -9
+    },
+    {
+      "len": 1,
+      "simple_pa_accounting_residual": -8
+    },
+    {
+      "len": 4,
+      "simple_pa_accounting_residual": -7
+    },
+    {
+      "len": 4,
+      "simple_pa_accounting_residual": -6
+    },
+    {
+      "len": 10,
+      "simple_pa_accounting_residual": -5
+    },
+    {
+      "len": 19,
+      "simple_pa_accounting_residual": -4
+    },
+    {
+      "len": 38,
+      "simple_pa_accounting_residual": -3
+    },
+    {
+      "len": 70,
+      "simple_pa_accounting_residual": -2
+    },
+    {
+      "len": 358,
+      "simple_pa_accounting_residual": -1
+    },
+    {
+      "len": 17929,
+      "simple_pa_accounting_residual": 0
+    }
+  ],
+  "source_certification_report": {
+    "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/career-mlb-outcome-inventory-2009-2025/report.json",
+    "sha256": "70258453e73ac8bbe3a824da43b15e587a493ff031d4e944cfb7d55e249889db"
+  },
+  "sources": [
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/opportunity-history-sources-pre2020/tables/hitter_snapshots.parquet",
+      "rows_used": 44900,
+      "sha256": "e2247db883c270e80fa977a7d7057e051e8a1de89567db65a4933a45beeb6055",
+      "year_filter": "through_2025"
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/opportunity-history-sources-v2/tables/hitter_snapshots.parquet",
+      "rows_used": 32719,
+      "sha256": "4480052b8a07fbb21366b54cc341630bbf29cf3be9d52ac1820f026c4efa90b3",
+      "year_filter": "through_2025"
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/affiliated-skill-source-2003-2007/tables/affiliated_hitting_components.parquet",
+      "rows_used": 6708,
+      "sha256": "8f47dc84f60bd9e542c6ea5ba76c4727aa7c3ef180703d9c0e3c3368947380f0",
+      "year_filter": [
+        2007
+      ]
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/affiliated-skill-source-2008-2017/tables/affiliated_hitting_components.parquet",
+      "rows_used": 70162,
+      "sha256": "a96e6a1a0e1b6f8dd4442770d92ff234addce218d656f5f031585d7d4de1feb2",
+      "year_filter": "through_2025"
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/affiliated-skill-source-2018-2022/tables/affiliated_hitting_components.parquet",
+      "rows_used": 28824,
+      "sha256": "754b37122bbbe29a93cb53dab872aadce060a9f8aa43b4dd24a64c2987aa6e43",
+      "year_filter": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ]
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/affiliated-skill-source/tables/affiliated_hitting_components.parquet",
+      "rows_used": 17515,
+      "sha256": "7235a83e73613108d56a0538b832ea1073b1d02324265b806979f9757b6fffde",
+      "year_filter": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/opportunity-40man-pre2020/tables/historical_40man_membership.parquet",
+      "rows_used": 12308,
+      "sha256": "2f92d5e19653e2aa9d815327f89d1eca5311a7f806daab547a044b72b0516b91",
+      "year_filter": "through_2025"
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/opportunity-40man-history/tables/historical_40man_membership.parquet",
+      "rows_used": 9342,
+      "sha256": "86f79803fac5eac1bbe86525a5a3953533d2a5d60c85c4051731690bfb984421",
+      "year_filter": "through_2025"
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_hitting_components_2009_2025.parquet",
+      "rows_used": 18435,
+      "sha256": "755b78517f52c3875fe7ea2877cbcb34a0cecd1a2fcb17ee05698cc55f2184a6",
+      "year_filter": "through_2025"
+    },
+    {
+      "path": "C:/Users/ramav/Documents/Codex/2026-09-07/new-chat-4/work/universal-baseball-model/reports/generated/career-mlb-outcome-inventory-2009-2025/tables/mlb_pitching_2009_2025.parquet",
+      "rows_used": 12962,
+      "sha256": "a401f55b72bbc39ae0d967eed2bd4977fed126b24a27c672f76d98de509af7df",
+      "year_filter": "through_2025"
+    }
+  ],
+  "status": "m1_calendar_target_and_cohort_certification",
+  "target": "calendar_batting_plus_replacement_v1"
+}

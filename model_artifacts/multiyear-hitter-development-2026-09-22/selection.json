@@ -1,0 +1,118 @@
+{
+  "folds": [
+    {
+      "origin": 2016,
+      "inner_origins": [
+        2012,
+        2013
+      ],
+      "test_rows": 4572,
+      "pandemic_window": false,
+      "selected_form": "D1",
+      "inner_losses": {
+        "D1": 3.1665779145002304,
+        "D2": 3.2132764309647714,
+        "D3": 3.2798416007860123
+      }
+    },
+    {
+      "origin": 2017,
+      "inner_origins": [
+        2012,
+        2013,
+        2014
+      ],
+      "test_rows": 4580,
+      "pandemic_window": true,
+      "selected_form": "D1",
+      "inner_losses": {
+        "D1": 3.0697682313145207,
+        "D2": 3.1095392638003805,
+        "D3": 3.1893327801954086
+      }
+    },
+    {
+      "origin": 2018,
+      "inner_origins": [
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "test_rows": 4348,
+      "pandemic_window": true,
+      "selected_form": "D1",
+      "inner_losses": {
+        "D1": 2.93920684664699,
+        "D2": 2.9975976864493035,
+        "D3": 3.0621033185191067
+      }
+    },
+    {
+      "origin": 2019,
+      "inner_origins": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "test_rows": 4752,
+      "pandemic_window": true,
+      "selected_form": "D1",
+      "inner_losses": {
+        "D1": 2.8418702116501207,
+        "D2": 2.9047535413563077,
+        "D3": 2.956618225006518
+      }
+    },
+    {
+      "origin": 2021,
+      "inner_origins": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "test_rows": 4164,
+      "pandemic_window": false,
+      "selected_form": "D1",
+      "inner_losses": {
+        "D1": 2.438035456054746,
+        "D2": 2.4912273204216193,
+        "D3": 2.5294403165814705
+      }
+    },
+    {
+      "origin": 2022,
+      "inner_origins": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "test_rows": 4155,
+      "pandemic_window": false,
+      "selected_form": "D1",
+      "inner_losses": {
+        "D1": 2.256103153805941,
+        "D2": 2.302083878833645,
+        "D3": 2.3343908001646563
+      }
+    }
+  ],
+  "current": "D1",
+  "current_inner_losses": {
+    "D1": 2.1384613021534618,
+    "D2": 2.1730863235288504,
+    "D3": 2.1970700952353797
+  },
+  "contract_sha256": "d81e3a5514ef911e8414a8606d1c8da6e9abf2b01e308d6a2122b022a7867015"
+}

@@ -4,12 +4,17 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-M1 is now implemented: [source/target certification](multiyear-hitter-m1-result.md)
-and [frozen M2 contract](multiyear-hitter-v1-contract.json). The older aggregate history
-supports six nested three-year outer origins. Schedule-aware labels correct the 2020
-replacement allocation while preserving observed batting production. M2 fitting and
-the player report are in progress; no new challenger is selected yet. The paragraphs
-below describe the preceding planning checkpoint.
+M1 and M2 are now complete: [three-year hitter result](multiyear-hitter-v1-result.md),
+[source/target certification](multiyear-hitter-m1-result.md), and
+[frozen comparison](multiyear-hitter-v1-contract.json). Selected three-year RMSE is
+1.1180 versus 1.2500 for the simple longer-range reference, improving all six origins.
+A 3,907-player 2026–2028 report is delivered; the existing 2026 freeze is unchanged.
+This is batting plus replacement, not full WAR. The player review exposed a separate
+playing-time/value consistency gap (including established hitters absent from the
+40-man source). Stage-residual uncertainty bands also badly under-covered higher-value
+players and are withheld. Audit those bounded issues next, then extend the annual system to
+pitchers and supported longer horizons. The paragraphs below describe the preceding
+planning checkpoint.
 
 The [active multi-year plan](multiyear-player-value-plan-2026-09-22.md) now governs
 execution. The [current one-year development result](player-value-development-baseline-v2-result.md)
