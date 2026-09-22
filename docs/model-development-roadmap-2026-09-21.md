@@ -55,7 +55,7 @@ still treats all other contact at league-average value.
 | Catcher defense | Use provisionally | Stronger component prediction and consistent but uncertain whole-model gain |
 | General non-catcher defense | Neutral | Better exposure estimates did not make the current skill layer improve total value |
 | Minor-league infield range | Advance to run-value integration | Repeatable next-year signal after visitor-anchored park adjustment |
-| Minor-league runner advancement | Advance to hitter-value integration | RE24 projection beats neutral clearly across 13,628 later player-seasons |
+| Minor-league runner advancement | Keep as diagnostic; do not add to projected WAR | Improves the advancement component clearly, but full hitter RMSE is effectively flat and slightly worse |
 | Outfield arm | Experimental only | Barely positive after heavy regression |
 | Catcher throwing | Experimental only | Small positive signal; deterrence is still missing |
 | Catcher blocking from dirt-ball narratives | Reject current form | Worse than neutral next year |
@@ -99,8 +99,10 @@ it does not become projection talent until it improves a future player target.
 4. **General defense rebuild.** Convert PBP range residuals to runs, add outfield range
    and throwing opportunities, project position-specific chances, and test the full
    component inside hitter value. Keep neutral defense if it still loses.
-5. **Baserunning completion.** Combine the validated minor-league RE24 runner prior
-   with the MLB advancement model, project opportunities, and retest the full stack.
+5. **Baserunning completion.** Complete. The minor-league RE24 prior improves the
+   advancement component, but the chronology-safe bridge changes full hitter RMSE
+   from 0.429098 to 0.429129. Retain it as a diagnostic and revisit only during final
+   uncertainty-aware reconciliation.
 6. **Catcher completion.** Add steal-attempt deterrence and broader blocking targets.
    Keep battery familiarity separate from portable catcher talent. Plan explicitly for
    reduced framing value under ABS.

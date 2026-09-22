@@ -116,6 +116,7 @@ def main() -> int:
         json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     re24.write_parquet(args.output_root / "run-expectancy.parquet")
+    runners.write_parquet(args.output_root / "runner-season-effects.parquet")
     if not pooled.is_empty():
         pooled.write_parquet(args.output_root / "runner-re24-predictions.parquet")
     print(json.dumps(report, indent=2, sort_keys=True))
