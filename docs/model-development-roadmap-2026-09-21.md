@@ -57,6 +57,7 @@ still treats all other contact at league-average value.
 | Catcher defense | Use provisionally | Stronger component prediction and consistent but uncertain whole-model gain |
 | General non-catcher defense | Neutral | Better exposure estimates did not make the current skill layer improve total value |
 | Minor-league infield range | Keep as diagnostic; do not add to projected WAR | RE24 range persists in every later MiLB season, but its MLB hitter-value fallback worsens the old model and neutral defense still wins |
+| Minor-league outfield range | Keep as diagnostic; do not add to projected WAR | Park-adjusted RE24 range persists in every later MiLB season, but outfield-only and combined MLB value bridges both lose to neutral general defense |
 | Minor-league runner advancement | Keep as diagnostic; do not add to projected WAR | Improves the advancement component clearly, but full hitter RMSE is effectively flat and slightly worse |
 | Outfield arm | Experimental only | Barely positive after heavy regression |
 | Catcher throwing | Experimental only | Small positive caught-stealing signal; the separate attempt-deterrence model failed |
@@ -105,10 +106,11 @@ it does not become projection talent until it improves a future player target.
 3. **Pitcher opportunity and role integration.** Player-history integration is
    complete and promoted to the development ensemble. Next add organization depth and
    realistic team innings limits without using future role as an input.
-4. **General defense rebuild.** Infield RE24 conversion and full-value integration are
-   complete: the component persists clearly but does not improve 2025 MLB hitter
-   value. General defense remains neutral. Add outfield range or throwing only after
-   each supplies stronger component evidence than the current weak arm result.
+4. **General defense rebuild.** Infield and outfield RE24 conversion and full-value
+   integration are complete. Both skills persist clearly in every later MiLB season,
+   but neither the separate nor combined bridge improves 2025 MLB hitter value.
+   General defense remains neutral; keep range and arm ratings as diagnostics until a
+   new target or independent confirmation improves the whole forecast.
 5. **Baserunning completion.** Complete. The minor-league RE24 prior improves the
    advancement component, but the chronology-safe bridge changes full hitter RMSE
    from 0.429098 to 0.429129. Retain it as a diagnostic and revisit only during final
