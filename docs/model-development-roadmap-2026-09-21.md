@@ -67,6 +67,7 @@ still treats all other contact at league-average value.
 | Pitcher target architecture | Use arrival chance x total value if active | Wins over direct and workload-times-rate targets for all four tested engines |
 | Pitcher model engine | Ridge leads; retain chronology-pruned ensemble as challenger | Ensemble gain is small and its uncertainty interval crosses zero |
 | Raw pitcher hit-type detail | Do not use in the value model | Singles/doubles/triples slightly worsened three engines even when the target valued them |
+| High-minors pitch process | Keep for component skill; not whole value | Component forecasts improve, but whole-value gains are tiny, mixed, and uncertain |
 
 ## Statistical rule
 
@@ -86,8 +87,8 @@ it does not become projection talent until it improves a future player target.
 
 ## Development order while 2026 remains sealed
 
-1. **Pitcher information-block ablations.** Add high-minors pitch process and
-   prior-only park, opponent, handedness, and compact matchup context one block at a
+1. **Pitcher information-block ablations.** Add prior-only park, opponent, handedness,
+   and compact matchup context one block at a
    time. Judge each block on later pitcher value, not only individual plate appearances.
 2. **Event-level pitcher contact separation.** Keep the defense-independent target as
    the base. Revisit contact only after separating pitcher, park, opponent, and team
