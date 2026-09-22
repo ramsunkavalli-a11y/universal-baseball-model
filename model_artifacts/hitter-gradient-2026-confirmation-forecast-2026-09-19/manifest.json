@@ -1,0 +1,290 @@
+{
+  "artifacts": {
+    "forecast": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "2766cde0e605e09e2c878d7e58a48cfb0c0b2bfb55b2347fb4ccfe428879e61b",
+      "file_size_bytes": 432059,
+      "path": "model_artifacts\\hitter-gradient-2026-confirmation-forecast-2026-09-19\\forecast-2026.parquet",
+      "row_count": 3115,
+      "schema_sha256": "fa1a3e0c5602f8e4505bf1fc8a2200ca47784ec41342e17e99b2bff1e0b5f7b6",
+      "table_name": "hitter_gradient_2026_frozen_forecast"
+    },
+    "forecast_inputs": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "ce3e4239af5e4124a0db3d708f3a2035343ec5103d516e067d6d034c939d1d4e",
+      "file_size_bytes": 2296617,
+      "path": "model_artifacts\\hitter-gradient-2026-confirmation-forecast-2026-09-19\\forecast-inputs-2025.parquet",
+      "row_count": 3115,
+      "schema_sha256": "97b1b35846c4a2bb76501f3c320b1d2bda7a2771c25ac87de6c2261c308f08aa",
+      "table_name": "hitter_gradient_2026_forecast_inputs"
+    }
+  },
+  "as_of_date": "2026-09-19",
+  "coverage": {
+    "contact_events": 479839,
+    "exact_opponent_context": 0.9994560675559927,
+    "park_factor_known": 0.9998020169265107,
+    "venue": 1.0
+  },
+  "forecast_players": 3115,
+  "forecast_season": 2026,
+  "input_files": [
+    {
+      "path": "reports\\generated\\hitter-gradient-dataset-v1\\tables\\modeling-rows.parquet",
+      "sha256": "687496193ddaef46c73ebfc5a014cc7cb97f0a4e4c9fb284ce89b50943c4a407"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-08-23\\do\\work\\universal-baseball-model\\reports\\generated\\hitter-v2-stage2d-inputs\\tables\\hitter_v2_stage2d_j0_event_inputs_2021_2024.parquet",
+      "sha256": "a6cd82a5ac8c9382dc474a968bad6b5e6b48599b7ccfc1c6cfbe7a9a1cba515d"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\official-full-bip-context-2025\\tables\\hitter_full_bip_event_outcomes.parquet",
+      "sha256": "a7cb318e5b5b3ac1ac908b6c2fe3a1b5a0edc8e2c57efc501bcaeae65fc82a9a"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-game-context\\tables\\affiliated-game-context.parquet",
+      "sha256": "7d0d570e4e8aa935b7bdc56885ea5b45bdb981fba56993183ab2f2c2e65b705d"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\player-demographics\\tables\\player-demographics.parquet",
+      "sha256": "010bb368acc8465dc1c5ba21660dd32bdcf0e9132bc4824e39a491f11189f54f"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2025.parquet",
+      "sha256": "583f6a2af8823d8da4ba41da35b65e31918cecd07f14b507b01fbb97d475c3c8"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2016.parquet",
+      "sha256": "b5b3b3e2437fcaa2da854c221ea29907db05f108e055361b97abb06082f1f2aa"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2017.parquet",
+      "sha256": "8ca51b90b940da0ce2ae78ed502fdf25626522eda6b5a04faef7a8466d8d8662"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2018.parquet",
+      "sha256": "18ef01219b2f7cf23c490252059f39c88a49d73aa52b573cfc8d29f376f02284"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2019.parquet",
+      "sha256": "4e0e363179ece1da8b411b243694059697af6c73c93b425ef4e3b89552ef41fa"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2021.parquet",
+      "sha256": "e4df34a10d230233272151af406c9af7f2e4e5ac9afe6daf801dd407bb3592e2"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2022.parquet",
+      "sha256": "45f0d290279a7705389e625cedb0c8f0849322a5f8df1b86e1353b4c9271bbd3"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2023.parquet",
+      "sha256": "c1827d5c57b6448b48327585d16b6c53ad17d0f21de94507573cca9ea5648de4"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2024.parquet",
+      "sha256": "6986bfca7d665993b93edc264b7cdaad48db845b561a4b24988e98b6cdc68e66"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2025.parquet",
+      "sha256": "583f6a2af8823d8da4ba41da35b65e31918cecd07f14b507b01fbb97d475c3c8"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-home-away-components\\tables\\affiliated-hitter-home-away.parquet",
+      "sha256": "1f314114ae466da35f2652728c46d184064e9d50375936bcd9967fa052368db7"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-home-away-components\\tables\\affiliated-pitcher-home-away.parquet",
+      "sha256": "f83be61770be359901b6c052140f632159391fdf5d1bc49e0936b64b5975f30f"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\tables\\affiliated-team-context.parquet",
+      "sha256": "47f1fbe63638a6f19c3d22813cd5d89276cd42c4ec2033ec3651d42877c469c4"
+    }
+  ],
+  "minimum_source_contacts": 30,
+  "opponent_context_2025": {
+    "HR_NON_HR_REACH_hit_composition": "strictly prior through each 2025 game, seeded by 2021-2024",
+    "K_UBB_HBP": "latest strictly-prior pitcher residual through 2024",
+    "reason": "2025 terminal contact source is complete; full non-contact PA sidecar was not available"
+  },
+  "protected_2026_participants_or_outcomes_opened": false,
+  "recipe": {
+    "base": "contact-only ridge, alpha 300",
+    "challenger": "nine fixed histogram gradient trees on residuals",
+    "contact_cell_prior": 100.0,
+    "feature_columns": [
+      "contacts__feature",
+      "log_contacts",
+      "age",
+      "relative_age",
+      "age_centered_sq",
+      "relative_age_sq",
+      "age_missing",
+      "materialized_contacts",
+      "overall__1B__feature",
+      "overall__2B__feature",
+      "overall__3B__feature",
+      "overall__HR__feature",
+      "overall__ROE__feature",
+      "overall__FC_REACH__feature",
+      "overall__SF__feature",
+      "overall__MULTI_OUT__feature",
+      "overall__OTHER_OUT__feature",
+      "share__PULL_GB",
+      "share__CENTER_GB",
+      "share__OPPO_GB",
+      "share__PULL_LD",
+      "share__CENTER_LD",
+      "share__OPPO_LD",
+      "share__PULL_OFFB",
+      "share__CENTER_OFFB",
+      "share__OPPO_OFFB",
+      "share__IFFB",
+      "contact_result__PULL_GB__1B",
+      "contact_result__PULL_GB__2B",
+      "contact_result__PULL_GB__3B",
+      "contact_result__PULL_GB__HR",
+      "contact_result__PULL_GB__ROE",
+      "contact_result__PULL_GB__FC_REACH",
+      "contact_result__PULL_GB__SF",
+      "contact_result__PULL_GB__MULTI_OUT",
+      "contact_result__PULL_GB__OTHER_OUT",
+      "contact_result__CENTER_GB__1B",
+      "contact_result__CENTER_GB__2B",
+      "contact_result__CENTER_GB__3B",
+      "contact_result__CENTER_GB__HR",
+      "contact_result__CENTER_GB__ROE",
+      "contact_result__CENTER_GB__FC_REACH",
+      "contact_result__CENTER_GB__SF",
+      "contact_result__CENTER_GB__MULTI_OUT",
+      "contact_result__CENTER_GB__OTHER_OUT",
+      "contact_result__OPPO_GB__1B",
+      "contact_result__OPPO_GB__2B",
+      "contact_result__OPPO_GB__3B",
+      "contact_result__OPPO_GB__HR",
+      "contact_result__OPPO_GB__ROE",
+      "contact_result__OPPO_GB__FC_REACH",
+      "contact_result__OPPO_GB__SF",
+      "contact_result__OPPO_GB__MULTI_OUT",
+      "contact_result__OPPO_GB__OTHER_OUT",
+      "contact_result__PULL_LD__1B",
+      "contact_result__PULL_LD__2B",
+      "contact_result__PULL_LD__3B",
+      "contact_result__PULL_LD__HR",
+      "contact_result__PULL_LD__ROE",
+      "contact_result__PULL_LD__FC_REACH",
+      "contact_result__PULL_LD__SF",
+      "contact_result__PULL_LD__MULTI_OUT",
+      "contact_result__PULL_LD__OTHER_OUT",
+      "contact_result__CENTER_LD__1B",
+      "contact_result__CENTER_LD__2B",
+      "contact_result__CENTER_LD__3B",
+      "contact_result__CENTER_LD__HR",
+      "contact_result__CENTER_LD__ROE",
+      "contact_result__CENTER_LD__FC_REACH",
+      "contact_result__CENTER_LD__SF",
+      "contact_result__CENTER_LD__MULTI_OUT",
+      "contact_result__CENTER_LD__OTHER_OUT",
+      "contact_result__OPPO_LD__1B",
+      "contact_result__OPPO_LD__2B",
+      "contact_result__OPPO_LD__3B",
+      "contact_result__OPPO_LD__HR",
+      "contact_result__OPPO_LD__ROE",
+      "contact_result__OPPO_LD__FC_REACH",
+      "contact_result__OPPO_LD__SF",
+      "contact_result__OPPO_LD__MULTI_OUT",
+      "contact_result__OPPO_LD__OTHER_OUT",
+      "contact_result__PULL_OFFB__1B",
+      "contact_result__PULL_OFFB__2B",
+      "contact_result__PULL_OFFB__3B",
+      "contact_result__PULL_OFFB__HR",
+      "contact_result__PULL_OFFB__ROE",
+      "contact_result__PULL_OFFB__FC_REACH",
+      "contact_result__PULL_OFFB__SF",
+      "contact_result__PULL_OFFB__MULTI_OUT",
+      "contact_result__PULL_OFFB__OTHER_OUT",
+      "contact_result__CENTER_OFFB__1B",
+      "contact_result__CENTER_OFFB__2B",
+      "contact_result__CENTER_OFFB__3B",
+      "contact_result__CENTER_OFFB__HR",
+      "contact_result__CENTER_OFFB__ROE",
+      "contact_result__CENTER_OFFB__FC_REACH",
+      "contact_result__CENTER_OFFB__SF",
+      "contact_result__CENTER_OFFB__MULTI_OUT",
+      "contact_result__CENTER_OFFB__OTHER_OUT",
+      "contact_result__OPPO_OFFB__1B",
+      "contact_result__OPPO_OFFB__2B",
+      "contact_result__OPPO_OFFB__3B",
+      "contact_result__OPPO_OFFB__HR",
+      "contact_result__OPPO_OFFB__ROE",
+      "contact_result__OPPO_OFFB__FC_REACH",
+      "contact_result__OPPO_OFFB__SF",
+      "contact_result__OPPO_OFFB__MULTI_OUT",
+      "contact_result__OPPO_OFFB__OTHER_OUT",
+      "contact_result__IFFB__1B",
+      "contact_result__IFFB__2B",
+      "contact_result__IFFB__3B",
+      "contact_result__IFFB__HR",
+      "contact_result__IFFB__ROE",
+      "contact_result__IFFB__FC_REACH",
+      "contact_result__IFFB__SF",
+      "contact_result__IFFB__MULTI_OUT",
+      "contact_result__IFFB__OTHER_OUT",
+      "contact_count__PULL_GB",
+      "contact_count__CENTER_GB",
+      "contact_count__OPPO_GB",
+      "contact_count__PULL_LD",
+      "contact_count__CENTER_LD",
+      "contact_count__OPPO_LD",
+      "contact_count__PULL_OFFB",
+      "contact_count__CENTER_OFFB",
+      "contact_count__OPPO_OFFB",
+      "contact_count__IFFB",
+      "opponent_context_known_rate",
+      "contact_share_vs_lhp",
+      "contact_share_vs_rhp",
+      "mean__K_prior_pitcher_log_odds_residual",
+      "mean__UBB_prior_pitcher_log_odds_residual",
+      "mean__HBP_prior_pitcher_log_odds_residual",
+      "mean__HR_prior_pitcher_log_odds_residual",
+      "mean__NON_HR_REACH_prior_pitcher_log_odds_residual",
+      "mean__HIT_COMPOSITION_prior_pitcher_alr_residual_1B",
+      "mean__HIT_COMPOSITION_prior_pitcher_alr_residual_2B",
+      "mean__HIT_COMPOSITION_prior_pitcher_alr_residual_3B",
+      "mean__K_prior_pitcher_denominator",
+      "mean__UBB_prior_pitcher_denominator",
+      "mean__HBP_prior_pitcher_denominator",
+      "mean__HR_prior_pitcher_denominator",
+      "mean__NON_HR_REACH_prior_pitcher_denominator",
+      "mean__HIT_COMPOSITION_prior_pitcher_denominator",
+      "venue_known_rate",
+      "park_factor_known_rate",
+      "mean_park_factor_reliability",
+      "mean_park_training_seasons",
+      "park_effect__ubb",
+      "park_effect__hbp",
+      "park_effect__single",
+      "park_effect__double",
+      "park_effect__triple",
+      "park_effect__hr",
+      "park_effect__other"
+    ],
+    "feature_count": 155,
+    "feature_family": "plus_park",
+    "park_prior_exposure": 5000.0,
+    "tree_parameters": {
+      "l2_regularization": 10.0,
+      "learning_rate": 0.04,
+      "max_depth": 3,
+      "max_iter": 150,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 50,
+      "random_state": 1729
+    }
+  },
+  "schema_version": "1.0",
+  "scoring_lock": "Do not evaluate, refit, select, or alter this forecast using 2026 participants or outcomes until the protected season is declared complete.",
+  "source_season": 2025,
+  "status": "frozen"
+}

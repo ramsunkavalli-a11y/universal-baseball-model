@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "status": "locked_before_2026_evaluation",
+  "forecast_path": "model_artifacts/hitter-full-2026-confirmation-forecast-2026-09-20/forecast-2026.parquet",
+  "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+  "manifest_path": "model_artifacts/hitter-full-2026-confirmation-forecast-2026-09-20/manifest.json",
+  "manifest_sha256": "aa816b2ca3eda082ac788fbf8949134c61cf23ed80bcd66162b0b6043984fb5b",
+  "locked_opportunity_path": "model_artifacts/opportunity-v2-2026-confirmation-forecast-2026-09-09/hitter-selected.parquet",
+  "locked_opportunity_sha256": "b83dedcc138fb9ef375eb56c1e3774b1fbe95aa7d189cc94d713a1471712449f",
+  "forecast_players": 3907,
+  "earliest_evaluation_date": "2026-10-01",
+  "bootstrap_repetitions": 5000,
+  "bootstrap_seed": 1729,
+  "minimum_supported_subgroup_players": 100,
+  "material_subgroup_rmse_harm": 0.05,
+  "routed_challenger_promotion_gates": [
+    "routed partial-WAR RMSE is lower than the selected model",
+    "the paired-player bootstrap 95% upper bound for routed-minus-selected partial-WAR RMSE is below zero",
+    "routed batting-plus-replacement RMSE is no worse than selected",
+    "no locked supported subgroup has routed partial-WAR RMSE more than 0.05 WAR worse"
+  ],
+  "locked_subgroups": [
+    "player stage",
+    "batting evidence tier",
+    "2025 contact availability",
+    "forecast playing-time band"
+  ],
+  "target_population_rule": "The completed target table must contain exactly the 3907 frozen forecast player IDs; players with no 2026 MLB appearance remain present with zero MLB outcomes.",
+  "general_defense_rule": "General non-catcher fielding remains zero because its development challenger failed; it is not silently imputed after the freeze.",
+  "protected_2026_opened_when_locked": false
+}

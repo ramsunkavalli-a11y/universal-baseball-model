@@ -1,0 +1,185 @@
+{
+  "artifacts": {
+    "forecast": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+      "file_size_bytes": 793602,
+      "path": "model_artifacts\\hitter-full-2026-confirmation-forecast-2026-09-20\\forecast-2026.parquet",
+      "row_count": 3907,
+      "schema_sha256": "58b7c6b1c4ecc23de4434a54560e3f13b3b9fdbd10e3f8492c3b17f236d31515",
+      "table_name": "hitter_full_2026_frozen_forecast"
+    },
+    "forecast_inputs": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "bfd0032458496f80c8b71c2240bd0a7bcb67daf0f5f749cc8ea939ee8961ea6c",
+      "file_size_bytes": 3529020,
+      "path": "model_artifacts\\hitter-full-2026-confirmation-forecast-2026-09-20\\forecast-inputs-2025.parquet",
+      "row_count": 3912,
+      "schema_sha256": "d83d1883fe2f29ce1918914e8fb8f2814a13ed033e68ec0f4c2eeb840b172d72",
+      "table_name": "hitter_full_2026_forecast_inputs"
+    },
+    "interval_offsets": {
+      "canonical_schema_version": "0.1",
+      "file_sha256": "aecd84848256e97a99b3c6a00f85b2b16d8780d49a5d941a4bc0d58c52e137f6",
+      "file_size_bytes": 2326,
+      "path": "model_artifacts\\hitter-full-2026-confirmation-forecast-2026-09-20\\interval-offsets.parquet",
+      "row_count": 12,
+      "schema_sha256": "831f3daba2b9412ce7dddff96e4dc33e22be497b658a6fdf4cf6b2dc23eb8d4f",
+      "table_name": "hitter_full_2026_interval_offsets"
+    }
+  },
+  "challengers_and_benchmarks": {
+    "batting": [
+      "previous-season WAR",
+      "training mean",
+      "zero"
+    ],
+    "opportunity": [
+      "parametric level baseline",
+      "incumbent cohort"
+    ],
+    "routed": "stats-only arrival probability with detailed-contact conditional value"
+  },
+  "fallback": {
+    "rows": 187,
+    "rule": "players in the locked opportunity universe without a 2025 batting record receive frozen expected PA times the development-population batting-plus-replacement WAR rate per 600",
+    "war_rate_per_600": 1.8679154618178428
+  },
+  "forecast_season": 2026,
+  "generated_at_utc": "2026-09-21T02:15:44.315660+00:00",
+  "input_files": [
+    {
+      "path": "reports\\generated\\hitter-value-panel-v2\\tables\\modeling-panel.parquet",
+      "sha256": "c0296429b8d45fbdb72714a642aaa6a53b5d76866bd4a7ae13b49f759887f85b"
+    },
+    {
+      "path": "reports\\generated\\hitter-value-panel-v2\\tables\\hitter-value-targets.parquet",
+      "sha256": "b24f595362c3f8b1294918e4cf322c7d4ef3bce9e3be8434eb21570207f2f17b"
+    },
+    {
+      "path": "reports\\generated\\hitter-value-panel-v2\\tables\\hitter-stat-features.parquet",
+      "sha256": "168df8398b3ae7303f281baee44cd4c4732e29d56b439ecb60d86f832872092c"
+    },
+    {
+      "path": "reports\\generated\\hitter-value-panel-v2\\tables\\hitter-contact-features.parquet",
+      "sha256": "cdd92faeedeb1852d94156c34d31d7f580ec4c57a37bdd1c65b21ee726b729fb"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\official-full-bip-context-2025\\tables\\hitter_full_bip_event_outcomes.parquet",
+      "sha256": "a7cb318e5b5b3ac1ac908b6c2fe3a1b5a0edc8e2c57efc501bcaeae65fc82a9a"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2015.parquet",
+      "sha256": "faf5ec6b16f149dc6804884f3ac10c42b70a5ab2158151f09c673751c4071eb5"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2016.parquet",
+      "sha256": "b5b3b3e2437fcaa2da854c221ea29907db05f108e055361b97abb06082f1f2aa"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2017.parquet",
+      "sha256": "8ca51b90b940da0ce2ae78ed502fdf25626522eda6b5a04faef7a8466d8d8662"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2018.parquet",
+      "sha256": "18ef01219b2f7cf23c490252059f39c88a49d73aa52b573cfc8d29f376f02284"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2019.parquet",
+      "sha256": "4e0e363179ece1da8b411b243694059697af6c73c93b425ef4e3b89552ef41fa"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2021.parquet",
+      "sha256": "e4df34a10d230233272151af406c9af7f2e4e5ac9afe6daf801dd407bb3592e2"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2022.parquet",
+      "sha256": "45f0d290279a7705389e625cedb0c8f0849322a5f8df1b86e1353b4c9271bbd3"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2023.parquet",
+      "sha256": "c1827d5c57b6448b48327585d16b6c53ad17d0f21de94507573cca9ea5648de4"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2024.parquet",
+      "sha256": "6986bfca7d665993b93edc264b7cdaad48db845b561a4b24988e98b6cdc68e66"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\hitter-multiyear-age-level-base\\tables\\annual-2025.parquet",
+      "sha256": "583f6a2af8823d8da4ba41da35b65e31918cecd07f14b507b01fbb97d475c3c8"
+    },
+    {
+      "path": "model_artifacts\\opportunity-v2-2026-confirmation-forecast-2026-09-09\\hitter-selected.parquet",
+      "sha256": "b83dedcc138fb9ef375eb56c1e3774b1fbe95aa7d189cc94d713a1471712449f"
+    },
+    {
+      "path": "model_artifacts\\opportunity-v2-2026-confirmation-forecast-2026-09-09\\hitter-incumbent.parquet",
+      "sha256": "aa318106c781595d95dc3746a1956544f0d16d983169ffa9c3bac92ed661da47"
+    },
+    {
+      "path": "model_artifacts\\opportunity-v2-2026-confirmation-forecast-2026-09-09\\hitter-parametric-baseline.parquet",
+      "sha256": "a2d42a0ba82a7532fd6250e0f8ee5347bcda76ef90cc74baf4e40c597150730c"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\position-capacity-source\\2025\\reports\\generated\\position-role-2025-confirmation-source\\tables\\position_role_2025_fielding_usage.parquet",
+      "sha256": "372cd75d0f67217c7def51351e938a16b2584d30de374d9f5097a5d739f8f8d4"
+    },
+    {
+      "path": "docs\\position-role-confirmation-parameters.json",
+      "sha256": "a27d3119f220b94d5ea2140cdff6103754045ac287fd4f2c36b6e2ad3f3706af"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\phase2-arrival-skill-source\\tables\\affiliated_hitting_components.parquet",
+      "sha256": "c7ac4b4a3bf2eac9013edbf010e8d0ac6e843175b0014261fbb3f41d425fccf0"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\current-baserunning-rates\\2026-09-08\\raw\\savant-baserunning-2023.csv.gz",
+      "sha256": "b74bef451976bf336a6423d3d1106b5ac7068aef2d794c97c4ff047d77beb6db"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\current-baserunning-rates\\2026-09-08\\raw\\savant-baserunning-2024.csv.gz",
+      "sha256": "2aa83d9243a21c1dcb6026fe5329ace3bfc1bac901a2dcb240d1002e83c0b94e"
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\current-baserunning-rates\\2026-09-08\\raw\\savant-baserunning-2025.csv.gz",
+      "sha256": "81b0cd1dc33b254cf579cec6e877af739128d902cee15db567def69bae055a6a"
+    },
+    {
+      "path": "docs\\player-value-v1-baserunning-run-conversion-2024.json",
+      "sha256": "40b08c811bcbde6a640c61d1745abe6cb87a9d65e40c71fb739d45706f2b1bd3"
+    },
+    {
+      "path": "reports\\generated\\hitter-catcher-defense-value-v2\\public-catcher-history-2022-2025.parquet",
+      "sha256": "cc38ea1f90e16019e823ea1d5b4bb39a22761f9ff7cdd07c970725df05f68d5d"
+    },
+    {
+      "path": "docs\\player-value-v1-defense-native-run-conversion-parameters.json",
+      "sha256": "c96336ce5af0dbf76599ab1aaec7c8803b6e84e914b9ca3196e3bbb7c0474af8"
+    },
+    {
+      "path": "reports\\generated\\hitter-catcher-defense-value-v2\\chronological-predictions.parquet",
+      "sha256": "95f23c25a64d02d61520cbaf3d80cf050cb757b95ea3db1e63334368ddaf223f"
+    }
+  ],
+  "packaging_as_of_date": "2026-09-20",
+  "population": {
+    "contact_available_rows": 3511,
+    "five_model_batting_rows": 3720,
+    "population_prior_rows": 187,
+    "rows": 3907
+  },
+  "protected_2026_participants_or_outcomes_opened": false,
+  "schema_version": "1.0",
+  "scoring_lock": "Do not evaluate, refit, select, or alter this forecast using any 2026 participant or outcome evidence until the regular season is complete and the separate confirmation contract authorizes one evaluation.",
+  "selected_stack": {
+    "baserunning": "B2_k5 attempts, B2_k45 success, A2_k25 advancement",
+    "batting_plus_replacement": "equal mean of direct LightGBM, three-part LightGBM, two-part XGBoost, two-part EBM, and two-part ridge",
+    "catcher_defense": "chronologically shrunk throwing, blocking, and framing skill with PA-scaled native opportunity",
+    "general_defense": "neutral zero; rejected development component",
+    "intervals": "stage-specific empirical residual quantiles from the exposed 2025 full-stack forecast",
+    "opportunity": "frozen opportunity-v2 selected hitter forecast",
+    "position": "frozen role transition scaled by expected MLB PA"
+  },
+  "source_season": 2025,
+  "status": "frozen_before_2026_evaluation"
+}
