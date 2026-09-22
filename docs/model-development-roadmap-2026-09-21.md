@@ -66,6 +66,7 @@ still treats all other contact at league-average value.
 | Learned ensemble weights | Do not use | Equal weights were more stable and more accurate |
 | Pitcher target architecture | Use arrival chance x total value if active | Wins over direct and workload-times-rate targets for all four tested engines |
 | Pitcher model engine | Ridge leads; retain chronology-pruned ensemble as challenger | Ensemble gain is small and its uncertainty interval crosses zero |
+| Raw pitcher hit-type detail | Do not use in the value model | Singles/doubles/triples slightly worsened three engines even when the target valued them |
 
 ## Statistical rule
 
@@ -85,13 +86,12 @@ it does not become projection talent until it improves a future player target.
 
 ## Development order while 2026 remains sealed
 
-1. **Pitcher target completion.** Build a fair ball-in-play/contact value outcome that
-   can measure weak-contact skill without confusing it with park, opponent, or team
-   defense. Compare it with the present defense-independent target before changing
-   the value definition.
-2. **Pitcher information-block ablations.** Add high-minors pitch process and
+1. **Pitcher information-block ablations.** Add high-minors pitch process and
    prior-only park, opponent, handedness, and compact matchup context one block at a
    time. Judge each block on later pitcher value, not only individual plate appearances.
+2. **Event-level pitcher contact separation.** Keep the defense-independent target as
+   the base. Revisit contact only after separating pitcher, park, opponent, and team
+   defense effects; raw season-total hit types did not improve the fuller value target.
 3. **Pitcher opportunity and role integration.** Test starter/reliever transitions,
    injuries or interrupted workloads, organization depth, and realistic team innings
    limits without using future role as an input.
