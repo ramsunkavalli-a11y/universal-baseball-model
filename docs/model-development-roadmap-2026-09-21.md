@@ -1,6 +1,6 @@
 # Universal Baseball Model development roadmap
 
-Last updated: 2026-09-21
+Last updated: 2026-09-22
 
 ## The goal
 
@@ -33,13 +33,14 @@ input and frozen 2026 challenger; it is not a replacement for the value ensemble
 
 ### Pitchers
 
-The pitcher system is less mature. Its current rate foundation regresses strikeout,
-walk, hit-batter, home-run, and other-contact results by role and recent workload.
-High-minors pitch-process rates add useful next-year information where official pitch
-sequences are trustworthy. A separate opportunity model estimates MLB participation
-and batters faced. Role, aging, and linked career paths exist, but they have not yet
-been rebuilt and compared as one clean-slate value tournament. The exact pitcher
-ranking therefore remains provisional.
+The clean-slate pitcher panel now covers 66,326 pitcher-seasons and has been tested in
+six later-season folds. The best architecture estimates MLB arrival, then total value
+conditional on pitching in MLB; separately multiplying arrival, workload, and rate is
+worse. Ridge is the best single engine at 0.3125 RMSE. A chronology-safe multi-model
+average reaches 0.3113 and improves five of six seasons, but its small gain remains
+statistically uncertain. This is a strong development base, not a frozen forecast:
+the present target values strikeouts, walks, hit batters, home runs, and workload but
+still treats all other contact at league-average value.
 
 ## Evidence decisions
 
@@ -63,6 +64,8 @@ ranking therefore remains provisional.
 | Offseason injury history | Do not use yet | Small uncertain PA gain, worse arrival calibration and MAE |
 | Explicit repeat-level penalty | Do not use | The base model already absorbs nearly all of the signal; overall result worsened |
 | Learned ensemble weights | Do not use | Equal weights were more stable and more accurate |
+| Pitcher target architecture | Use arrival chance x total value if active | Wins over direct and workload-times-rate targets for all four tested engines |
+| Pitcher model engine | Ridge leads; retain chronology-pruned ensemble as challenger | Ensemble gain is small and its uncertainty interval crosses zero |
 
 ## Statistical rule
 
@@ -82,18 +85,16 @@ it does not become projection talent until it improves a future player target.
 
 ## Development order while 2026 remains sealed
 
-1. **Pitcher clean-slate tournament.** Build the pitcher analogue of the hitter panel.
-   Compare direct value, participation-plus-value, and participation-plus-workload-plus-
-   rate targets across ridge, Extra Trees, histogram boosting, XGBoost, LightGBM,
-   CatBoost, EBM, GPBoost, and a probabilistic challenger. Start with broadly available
-   age, level, role, workload, and translated component results; add pitch-process and
-   detailed contact blocks only as explicit ablations.
-2. **Pitcher opportunity and role integration.** Test starter/reliever transitions,
+1. **Pitcher target completion.** Build a fair ball-in-play/contact value outcome that
+   can measure weak-contact skill without confusing it with park, opponent, or team
+   defense. Compare it with the present defense-independent target before changing
+   the value definition.
+2. **Pitcher information-block ablations.** Add high-minors pitch process and
+   prior-only park, opponent, handedness, and compact matchup context one block at a
+   time. Judge each block on later pitcher value, not only individual plate appearances.
+3. **Pitcher opportunity and role integration.** Test starter/reliever transitions,
    injuries or interrupted workloads, organization depth, and realistic team innings
    limits without using future role as an input.
-3. **Pitcher environment integration.** Feed prior-only park, opponent, handedness,
-   and compact matchup context into the rate layer. Judge them on later pitcher value,
-   not only on individual PA fit.
 4. **General defense rebuild.** Convert PBP range residuals to runs, add outfield range
    and throwing opportunities, project position-specific chances, and test the full
    component inside hitter value. Keep neutral defense if it still loses.
