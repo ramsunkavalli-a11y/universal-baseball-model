@@ -209,8 +209,9 @@ def build_hitter_full_bip_profile_events(contacts: pl.DataFrame) -> pl.DataFrame
 
     required = {
         "game_date", "league_id", "source_level", "game_pk", "at_bat_index",
-        "pitch_number", "source_batter_id", "batter_side", "bb_type", "hc_x",
-        "hc_y", "structured_event", "result_description", "source_is_in_play",
+        "pitch_number", "source_batter_id", "source_pitcher_id", "batter_side",
+        "bb_type", "hc_x", "hc_y", "structured_event", "result_description",
+        "source_is_in_play",
     }
     if missing := sorted(required - set(contacts.columns)):
         raise ValueError(f"contacts missing full hitter BIP columns: {missing}")
@@ -225,6 +226,12 @@ def build_hitter_full_bip_profile_events(contacts: pl.DataFrame) -> pl.DataFrame
         pl.col("league_id").cast(pl.Int64), "source_level", "game_pk",
         "at_bat_index", "pitch_number",
         pl.col("source_batter_id").alias("batter_mlbam_id"),
+        "source_pitcher_id",
+        (
+            pl.col("source_pitcher_hand").cast(pl.String)
+            if "source_pitcher_hand" in eligible.columns
+            else pl.lit(None, dtype=pl.String)
+        ).alias("source_pitcher_hand"),
         pl.lit("source_default").alias("participant_authority"),
         pl.lit("source_certified_mirror").alias("result_description_authority"),
         "batter_side", "bb_type", "hc_x", "hc_y", "structured_event",
@@ -232,11 +239,15 @@ def build_hitter_full_bip_profile_events(contacts: pl.DataFrame) -> pl.DataFrame
     )
     sidecar = canonical.select(
         "game_pk", "at_bat_index", "pitch_number", "source_level",
+        "source_pitcher_id", "source_pitcher_hand", "batter_side",
         "structured_event", "result_description",
     )
     return (
         classify_contact_profile_events(
-            canonical.drop("source_level", "structured_event")
+            canonical.drop(
+                "source_level", "source_pitcher_id", "source_pitcher_hand",
+                "structured_event"
+            )
         )
         .join(
             sidecar,
@@ -246,8 +257,9 @@ def build_hitter_full_bip_profile_events(contacts: pl.DataFrame) -> pl.DataFrame
         )
         .filter(pl.col("core_profile_eligible"))
         .select(
-            "season", "source_level",
-            pl.col("batter_mlbam_id").alias("player_id"), "core_bin",
+            "season", "league_id", "source_level", "game_pk", "at_bat_index",
+            "pitch_number", pl.col("batter_mlbam_id").alias("player_id"),
+            "source_pitcher_id", "source_pitcher_hand", "batter_side", "core_bin",
             "structured_event", "result_description",
         )
     )
@@ -304,4 +316,42 @@ def build_hitter_full_bip_outcomes(contacts: pl.DataFrame) -> pl.DataFrame:
         .select(*schema)
         .cast(schema)
         .sort("season", "source_level", "player_id", "core_bin", "canonical_outcome")
+    )
+
+
+def build_hitter_full_bip_event_outcomes(contacts: pl.DataFrame) -> pl.DataFrame:
+    """Return event-level hitter BIP outcomes with matchup keys retained."""
+
+    events = build_hitter_full_bip_profile_events(contacts)
+    schema = {
+        "season": pl.Int64,
+        "league_id": pl.Int64,
+        "source_level": pl.String,
+        "game_pk": pl.Int64,
+        "at_bat_index": pl.Int64,
+        "pitch_number": pl.Int64,
+        "player_id": pl.Int64,
+        "source_pitcher_id": pl.Int64,
+        "source_pitcher_hand": pl.String,
+        "batter_side": pl.String,
+        "core_bin": pl.String,
+        "canonical_outcome": pl.String,
+    }
+    if events.is_empty():
+        return pl.DataFrame(schema=schema)
+    rows = []
+    for row in events.iter_rows(named=True):
+        label = classify_terminal_pa(
+            event_type=row["structured_event"],
+            description=row["result_description"],
+        )
+        if label.outcome in CONTACT_OUTCOMES:
+            rows.append({**row, "canonical_outcome": label.outcome})
+    if not rows:
+        return pl.DataFrame(schema=schema)
+    return (
+        pl.DataFrame(rows)
+        .select(*schema)
+        .cast(schema)
+        .sort("season", "game_pk", "at_bat_index", "pitch_number")
     )

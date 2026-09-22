@@ -12,6 +12,7 @@ def test_old_leauge_columns_are_renamed_in_standardized_view() -> None:
             "game_pk": ["1"],
             "leauge_id": ["130"],
             "leauge_name": ["Dominican Summer League"],
+            "inning_topbot": ["Top"],
         }
     )
 
@@ -21,7 +22,8 @@ def test_old_leauge_columns_are_renamed_in_standardized_view() -> None:
     assert "leauge_name" not in result.columns
     assert result.get_column("league_id").to_list() == ["130"]
     assert result.get_column("league_name").to_list() == ["Dominican Summer League"]
-    assert report["action_count"] == 2
+    assert result.get_column("inning_top_bot").to_list() == ["Top"]
+    assert report["action_count"] == 3
 
 
 def test_coexisting_aliases_are_coalesced_when_values_do_not_conflict() -> None:

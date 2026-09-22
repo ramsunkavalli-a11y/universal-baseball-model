@@ -22,6 +22,7 @@ from universal_baseball.certification import (
     sha256_file,
 )
 from universal_baseball.pitcher_contact_features import (
+    build_hitter_full_bip_event_outcomes,
     build_hitter_full_bip_outcomes,
     build_hitter_full_bip_profile,
     build_pitcher_contact_panel,
@@ -30,7 +31,9 @@ from universal_baseball.pitcher_contact_features import (
 )
 
 
-LEVEL_CODES = {"aaa": -1, "aa": -2, "a+": -3, "a": -4, "rk": -5}
+# The pre-2021 affiliated structure includes Short-Season A. Keep it distinct
+# from both full-season Single-A and complex/rookie ball during materialization.
+LEVEL_CODES = {"aaa": -1, "aa": -2, "a+": -3, "a": -4, "rk": -5, "a-": -6}
 
 
 def main() -> int:
@@ -45,6 +48,11 @@ def main() -> int:
         default=Path("reports/generated/pitcher-contact-panel"),
     )
     parser.add_argument("--keep-raw", action="store_true")
+    parser.add_argument(
+        "--hitter-only",
+        action="store_true",
+        help="Build only hitter event/profile/outcome tables for historical expansion.",
+    )
     args = parser.parse_args()
     years = sorted(set(args.years))
     args.work_dir.mkdir(parents=True, exist_ok=True)
@@ -124,23 +132,52 @@ def main() -> int:
     resolved = resolved.with_columns(
         pl.col("league_id").replace_strict(level_by_code).alias("source_level")
     )
-    panel = build_pitcher_contact_panel(resolved)
-    full_bip = build_pitcher_full_bip_profile(resolved)
-    full_bip_outcomes = build_pitcher_full_bip_outcomes(resolved)
-    hitter_full_bip = build_hitter_full_bip_profile(resolved)
-    hitter_full_bip_outcomes = build_hitter_full_bip_outcomes(resolved)
+    hitter_full_bip_event_outcomes = build_hitter_full_bip_event_outcomes(resolved)
+    if args.hitter_only:
+        panel = pl.DataFrame()
+        full_bip = pl.DataFrame()
+        full_bip_outcomes = pl.DataFrame()
+        hitter_full_bip = (
+            hitter_full_bip_event_outcomes.group_by(
+                "season", "source_level", "player_id", "core_bin"
+            )
+            .len(name="occurrence_count")
+            .sort("season", "source_level", "player_id", "core_bin")
+        )
+        hitter_full_bip_outcomes = (
+            hitter_full_bip_event_outcomes.group_by(
+                "season", "source_level", "player_id", "core_bin",
+                "canonical_outcome"
+            )
+            .len(name="occurrence_count")
+            .sort(
+                "season", "source_level", "player_id", "core_bin",
+                "canonical_outcome"
+            )
+        )
+    else:
+        panel = build_pitcher_contact_panel(resolved)
+        full_bip = build_pitcher_full_bip_profile(resolved)
+        full_bip_outcomes = build_pitcher_full_bip_outcomes(resolved)
+        hitter_full_bip = build_hitter_full_bip_profile(resolved)
+        hitter_full_bip_outcomes = build_hitter_full_bip_outcomes(resolved)
     table_dir = args.report_dir / "tables"
     table_dir.mkdir(parents=True, exist_ok=True)
     panel_path = table_dir / "pitcher_contact_panel.parquet"
-    panel.write_parquet(panel_path)
     full_bip_path = table_dir / "pitcher_full_bip_profile.parquet"
-    full_bip.write_parquet(full_bip_path)
     full_bip_outcome_path = table_dir / "pitcher_full_bip_outcomes.parquet"
-    full_bip_outcomes.write_parquet(full_bip_outcome_path)
+    if not args.hitter_only:
+        panel.write_parquet(panel_path)
+        full_bip.write_parquet(full_bip_path)
+        full_bip_outcomes.write_parquet(full_bip_outcome_path)
     hitter_full_bip_path = table_dir / "hitter_full_bip_profile.parquet"
     hitter_full_bip.write_parquet(hitter_full_bip_path)
     hitter_full_bip_outcome_path = table_dir / "hitter_full_bip_outcomes.parquet"
     hitter_full_bip_outcomes.write_parquet(hitter_full_bip_outcome_path)
+    hitter_full_bip_event_outcome_path = (
+        table_dir / "hitter_full_bip_event_outcomes.parquet"
+    )
+    hitter_full_bip_event_outcomes.write_parquet(hitter_full_bip_event_outcome_path)
     payload = {
         "report_schema_version": 1,
         "status": "research_source_ready_not_model_promoted",
@@ -159,12 +196,23 @@ def main() -> int:
         "full_bip_outcome_rows": full_bip_outcomes.height,
         "hitter_full_bip_rows": hitter_full_bip.height,
         "hitter_full_bip_outcome_rows": hitter_full_bip_outcomes.height,
-        "distinct_pitchers": panel.get_column("player_id").n_unique(),
-        "output": panel_path.as_posix(),
-        "full_bip_output": full_bip_path.as_posix(),
-        "full_bip_outcome_output": full_bip_outcome_path.as_posix(),
+        "hitter_full_bip_event_outcome_rows": hitter_full_bip_event_outcomes.height,
+        "distinct_pitchers": (
+            panel.get_column("player_id").n_unique() if not args.hitter_only else None
+        ),
+        "output": panel_path.as_posix() if not args.hitter_only else None,
+        "full_bip_output": full_bip_path.as_posix() if not args.hitter_only else None,
+        "full_bip_outcome_output": (
+            full_bip_outcome_path.as_posix() if not args.hitter_only else None
+        ),
         "hitter_full_bip_output": hitter_full_bip_path.as_posix(),
         "hitter_full_bip_outcome_output": hitter_full_bip_outcome_path.as_posix(),
+        "hitter_full_bip_event_outcome_output": (
+            hitter_full_bip_event_outcome_path.as_posix()
+        ),
+        "hitter_full_bip_event_outcome_sha256": sha256_file(
+            hitter_full_bip_event_outcome_path
+        ),
         "model_effect": "none",
     }
     (args.report_dir / "report.json").write_text(

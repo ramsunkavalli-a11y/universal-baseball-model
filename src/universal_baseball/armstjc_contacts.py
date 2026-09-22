@@ -93,6 +93,7 @@ CONTACT_RESOLVABLE_FIELDS: dict[str, pl.DataType] = {
     "league_id": pl.Int64,
     "source_batter_id": pl.Int64,
     "source_pitcher_id": pl.Int64,
+    "source_pitcher_hand": pl.String,
     "batter_side": pl.String,
     "source_is_in_play": pl.Boolean,
     "bb_type": pl.String,
@@ -305,6 +306,11 @@ def project_armstjc_contact_observations(
             _int_expr("league_id"),
             _int_expr("batter", "source_batter_id"),
             _int_expr("pitcher", "source_pitcher_id"),
+            (
+                pl.col("p_throws").cast(pl.String)
+                if "p_throws" in frame.columns
+                else pl.lit(None, dtype=pl.String)
+            ).alias("source_pitcher_hand"),
             pl.col(batter_side_column).cast(pl.String).alias("batter_side"),
             positive_contact.alias("source_is_in_play"),
             pl.col("bb_type").cast(pl.String),

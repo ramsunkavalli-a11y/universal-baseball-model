@@ -18,6 +18,9 @@ KNOWN_COLUMN_ALIASES: dict[str, str] = {
     # the corrected spellings.
     "leauge_id": "league_id",
     "leauge_name": "league_name",
+    # Historical files use the compact Stats API spelling; current files use
+    # the snake-case spelling adopted by downstream canonical tables.
+    "inning_topbot": "inning_top_bot",
 }
 
 
