@@ -95,11 +95,12 @@ def _evaluate_nested(
     *,
     minimum_target_opportunities: int,
     minimum_prior_pairs: int,
+    regression_grid: tuple[float, ...] = REGRESSION_GRID,
 ) -> tuple[list[pl.DataFrame], list[dict[str, Any]], dict[str, Any]]:
     years = sorted(effects.get_column("season").unique().to_list())
     pairs: dict[tuple[int, float], pl.DataFrame] = {}
     for year in years:
-        for regression in REGRESSION_GRID:
+        for regression in regression_grid:
             paired, _ = evaluate_effect_projection(
                 effects,
                 target_season=int(year),
@@ -111,7 +112,7 @@ def _evaluate_nested(
     decisions: list[dict[str, Any]] = []
     for year in years:
         choices = []
-        for regression in REGRESSION_GRID:
+        for regression in regression_grid:
             older = [
                 frame
                 for (old, candidate), frame in pairs.items()

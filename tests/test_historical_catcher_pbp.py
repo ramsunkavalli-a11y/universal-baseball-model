@@ -4,10 +4,39 @@ import polars as pl
 
 from universal_baseball.historical_catcher_pbp import (
     extract_catcher_blocking_opportunities,
+    extract_catcher_deterrence_opportunities,
     extract_catcher_throwing_attempts,
     fit_crossed_catcher_pitcher_effects,
     score_binary_context_residuals,
 )
+
+
+def test_extract_deterrence_includes_attempts_and_nonattempts() -> None:
+    terminal = pl.DataFrame(
+        {
+            "season": [2024, 2024],
+            "level": ["aaa", "aaa"],
+            "game_pk": [1, 1],
+            "at_bat_index": [1, 2],
+            "terminal_pitch_number": [4, 2],
+            "pa_description": ["Runner A steals 2nd base.", "Batter flies out."],
+            "fielder_2": [10, 10],
+            "pitcher": [20, 20],
+            "p_throws": ["R", "R"],
+            "stand": ["L", "R"],
+            "outs_when_up": [0, 1],
+            "inning": [2, 2],
+            "bat_score": [0, 0],
+            "fld_score": [0, 0],
+            "park_key": ["p", "p"],
+            "start_runner_1b": [30, 31],
+            "start_runner_2b": [None, None],
+            "start_runner_3b": [None, None],
+        }
+    )
+    result = extract_catcher_deterrence_opportunities(terminal)
+    assert result["steal_attempted"].to_list() == [1, 0]
+    assert result["runner_id"].to_list() == [30, 31]
 
 
 def test_extract_throwing_attempts_excludes_pickoffs() -> None:

@@ -12,6 +12,91 @@ _STOLEN = re.compile(r"\b(?:steals|stolen base)\b", re.I)
 _PICKOFF = re.compile(r"\b(?:pickoff|picked off)\b", re.I)
 
 
+def extract_catcher_deterrence_opportunities(
+    terminal_plays: pl.DataFrame,
+) -> pl.DataFrame:
+    """Return steal-eligible PA starts, including the many non-attempts."""
+
+    required = {
+        "season",
+        "level",
+        "game_pk",
+        "at_bat_index",
+        "terminal_pitch_number",
+        "pa_description",
+        "fielder_2",
+        "pitcher",
+        "p_throws",
+        "stand",
+        "outs_when_up",
+        "inning",
+        "bat_score",
+        "fld_score",
+        "park_key",
+        "start_runner_1b",
+        "start_runner_2b",
+        "start_runner_3b",
+    }
+    if missing := sorted(required - set(terminal_plays.columns)):
+        raise ValueError(f"terminal plays missing deterrence fields: {missing}")
+    description = pl.col("pa_description").fill_null("").str.to_lowercase()
+    clean_attempt = description.str.contains(r"\b(?:caught stealing|steals|stolen base)\b") & ~description.str.contains(
+        r"\b(?:pickoff|picked off)\b"
+    )
+    common = terminal_plays.filter(
+        pl.col("fielder_2").is_not_null()
+        & pl.col("pitcher").is_not_null()
+        & pl.col("outs_when_up").is_between(0, 2)
+    ).with_columns(
+        pl.col("fielder_2").cast(pl.Int64).alias("catcher_id"),
+        pl.col("pitcher").cast(pl.Int64).alias("pitcher_id"),
+        pl.col("p_throws").fill_null("U").alias("pitcher_hand"),
+        pl.col("stand").fill_null("U").alias("batter_side"),
+        pl.col("park_key").fill_null("unknown_park").alias("park_key"),
+        pl.col("terminal_pitch_number").clip(1, 6).alias("pitch_window"),
+        pl.col("inning").clip(1, 10).alias("inning_band"),
+        (pl.col("bat_score") - pl.col("fld_score")).clip(-3, 3).alias(
+            "score_band"
+        ),
+        clean_attempt.alias("clean_steal_attempt"),
+    )
+    second = (
+        common.filter(
+            pl.col("start_runner_1b").is_not_null()
+            & pl.col("start_runner_2b").is_null()
+        )
+        .with_columns(
+            pl.col("start_runner_1b").cast(pl.Int64).alias("runner_id"),
+            pl.lit("2nd").alias("attempt_base"),
+            (
+                pl.col("clean_steal_attempt")
+                & description.str.contains(r"\b2nd\b")
+            )
+            .cast(pl.Int8)
+            .alias("steal_attempted"),
+        )
+    )
+    third = (
+        common.filter(
+            pl.col("start_runner_2b").is_not_null()
+            & pl.col("start_runner_3b").is_null()
+        )
+        .with_columns(
+            pl.col("start_runner_2b").cast(pl.Int64).alias("runner_id"),
+            pl.lit("3rd").alias("attempt_base"),
+            (
+                pl.col("clean_steal_attempt")
+                & description.str.contains(r"\b3rd\b")
+            )
+            .cast(pl.Int8)
+            .alias("steal_attempted"),
+        )
+    )
+    return pl.concat([second, third], how="vertical_relaxed").sort(
+        "season", "game_pk", "at_bat_index", "attempt_base"
+    )
+
+
 def _attempt_base(description: str) -> str | None:
     match = re.search(r"\b(2nd|3rd|home)\b", description, re.I)
     return match.group(1).lower() if match else None
@@ -294,3 +379,76 @@ def fit_crossed_catcher_pitcher_effects(
             pl.col("pitcher_effect").alias("effect"),
         ),
     )
+
+
+def fit_crossed_deterrence_effects(
+    scored: pl.DataFrame,
+    *,
+    catcher_prior: float = 500.0,
+    pitcher_prior: float = 500.0,
+    runner_prior: float = 100.0,
+    iterations: int = 12,
+) -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]:
+    """Separate catcher, pitcher, and runner effects on steal-attempt frequency."""
+
+    if min(catcher_prior, pitcher_prior, runner_prior) <= 0 or iterations <= 0:
+        raise ValueError("deterrence priors and iterations must be positive")
+    required = {
+        "season",
+        "catcher_id",
+        "pitcher_id",
+        "runner_id",
+        "context_residual",
+    }
+    if missing := sorted(required - set(scored.columns)):
+        raise ValueError(f"scored deterrence events missing fields: {missing}")
+    work = scored.drop_nulls(list(required)).select(*sorted(required))
+    effects = {
+        entity: work.select("season", f"{entity}_id")
+        .unique()
+        .with_columns(pl.lit(0.0).alias(f"{entity}_effect"))
+        for entity in ("catcher", "pitcher", "runner")
+    }
+    priors = {
+        "catcher": catcher_prior,
+        "pitcher": pitcher_prior,
+        "runner": runner_prior,
+    }
+    for _ in range(iterations):
+        for entity in ("catcher", "pitcher", "runner"):
+            joined = work
+            other_effects = []
+            for other in effects:
+                if other == entity:
+                    continue
+                joined = joined.join(
+                    effects[other], on=["season", f"{other}_id"], validate="m:1"
+                )
+                other_effects.append(pl.col(f"{other}_effect"))
+            effects[entity] = (
+                joined.group_by("season", f"{entity}_id")
+                .agg(
+                    pl.len().alias("opportunities"),
+                    (
+                        pl.col("context_residual") - pl.sum_horizontal(*other_effects)
+                    )
+                    .sum()
+                    .alias("numerator"),
+                )
+                .with_columns(
+                    (
+                        pl.col("numerator")
+                        / (pl.col("opportunities") + priors[entity])
+                    ).alias(f"{entity}_effect")
+                )
+            )
+
+    def finish(entity: str) -> pl.DataFrame:
+        return effects[entity].select(
+            "season",
+            pl.col(f"{entity}_id").alias("player_id"),
+            "opportunities",
+            pl.col(f"{entity}_effect").alias("effect"),
+        )
+
+    return finish("catcher"), finish("pitcher"), finish("runner")
