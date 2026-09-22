@@ -36,9 +36,11 @@ input and frozen 2026 challenger; it is not a replacement for the value ensemble
 The clean-slate pitcher panel now covers 66,326 pitcher-seasons and has been tested in
 six later-season folds. The best architecture estimates MLB arrival, then total value
 conditional on pitching in MLB; separately multiplying arrival, workload, and rate is
-worse. Ridge is the best single engine at 0.3125 RMSE. A chronology-safe multi-model
-average reaches 0.3113 and improves five of six seasons, but its small gain remains
-statistically uncertain. This is a strong development base, not a frozen forecast:
+worse. Ridge is the best original single engine at 0.3125 RMSE. A role-enhanced
+chronology-safe multi-model average now reaches 0.3109, improving on the previous
+0.3113 ensemble. Explicit starter/reliever movement, workload disruption, level
+movement, and prior MLB exposure improve the three tested engines and the equal
+ensemble. This is a strong development base, not a frozen forecast:
 the present target values strikeouts, walks, hit batters, home runs, and workload but
 still treats all other contact at league-average value.
 
@@ -65,7 +67,8 @@ still treats all other contact at league-average value.
 | Explicit repeat-level penalty | Do not use | The base model already absorbs nearly all of the signal; overall result worsened |
 | Learned ensemble weights | Do not use | Equal weights were more stable and more accurate |
 | Pitcher target architecture | Use arrival chance x total value if active | Wins over direct and workload-times-rate targets for all four tested engines |
-| Pitcher model engine | Ridge leads; retain chronology-pruned ensemble as challenger | Ensemble gain is small and its uncertainty interval crosses zero |
+| Pitcher model engine | Use role-enhanced chronology-pruned ensemble for development | Best RMSE is 0.31092; the simpler equal ensemble also improves with favorable uncertainty |
+| Pitcher role and workload transitions | Use in development ensemble | Improves ridge, CatBoost, LightGBM, and the equal ensemble |
 | Raw pitcher hit-type detail | Do not use in the value model | Singles/doubles/triples slightly worsened three engines even when the target valued them |
 | High-minors pitch process | Keep for component skill; not whole value | Component forecasts improve, but whole-value gains are tiny, mixed, and uncertain |
 
@@ -93,9 +96,9 @@ it does not become projection talent until it improves a future player target.
 2. **Event-level pitcher contact separation.** Keep the defense-independent target as
    the base. Revisit contact only after separating pitcher, park, opponent, and team
    defense effects; raw season-total hit types did not improve the fuller value target.
-3. **Pitcher opportunity and role integration.** Test starter/reliever transitions,
-   injuries or interrupted workloads, organization depth, and realistic team innings
-   limits without using future role as an input.
+3. **Pitcher opportunity and role integration.** Player-history integration is
+   complete and promoted to the development ensemble. Next add organization depth and
+   realistic team innings limits without using future role as an input.
 4. **General defense rebuild.** Infield RE24 conversion and full-value integration are
    complete: the component persists clearly but does not improve 2025 MLB hitter
    value. General defense remains neutral. Add outfield range or throwing only after
