@@ -4,7 +4,18 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest: the [multi-year hitter component milestone](multiyear-hitter-components-v1-result.md)
+Latest: the [six-year hitter extension](six-year-hitter-extension-v1-result.md)
+adds 2029–2031 to unchanged 2026–2028 forecasts, with the team-filter explorer at
+`http://127.0.0.1:8776/`. Richer long-horizon batting forecasts beat age/level/PA
+and Year-3 carry-forward benchmarks; six-calendar-year batting/replacement RMSE
+improves 2.252→2.179. All mature six-year paths cross 2020. Long-horizon component
+gains are small and provisional. **The user's full remaining-control objective
+is still open:** validated joint service paths and the post-2031 prospect tail
+are not complete. Control totals remain unavailable, never falsely zero or a
+renamed six-calendar-year sum. Service-accounting tests and a concrete next
+control milestone are in the result. No protected outcomes or old means changed.
+
+Previous: the [multi-year hitter component milestone](multiyear-hitter-components-v1-result.md)
 is delivered with a new team-filter explorer at `http://127.0.0.1:8775/`.
 Recovered position/running methods and broader native MLB defensive history add
 a provisional component ledger to unchanged batting/PA forecasts. Normal annual

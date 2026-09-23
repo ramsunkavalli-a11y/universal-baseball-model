@@ -22,7 +22,13 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
-**Latest hitter milestone:** the [three-year component ledger](docs/multiyear-hitter-components-v1-result.md)
+**Latest:** [six-calendar-year hitter forecasts](docs/six-year-hitter-extension-v1-result.md)
+now extend through 2031, with unchanged earlier means and a team-filter explorer.
+The longer batting models improve development tests, but pandemic-era coverage
+limits confidence. Full remaining-control value is **not yet complete**: service
+paths and the late-arrival prospect tail remain explicit open work.
+
+**Previous hitter milestone:** the [three-year component ledger](docs/multiyear-hitter-components-v1-result.md)
 adds provisional position, running and defensive estimates to unchanged batting
 and PA forecasts, with a player explorer and dated organization filter. Historical
 cumulative error improves, but only two complete normal three-year origins support
