@@ -22,7 +22,16 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
-**Latest research:** the [player-path/value bridge](docs/player-path-value-bridge-v1-result.md)
+**Latest research:** the [historical snapshot repair](docs/player-path-population-v1-result.md)
+restores earlier career states while giving each historical player equal total
+weight. Normal three-year distribution error improves about 8%; mean RMSE falls
+from 1.333 to 1.222, close to but still above the delivered 1.214. Prospect regular
+workload remains underpredicted (23.5 expected versus 44 observed player-origin
+cases), so the repair is not deployed. The next bounded prerequisite is the
+[dated talent/opportunity archive](docs/projection-path-anchor-rebuild-checklist.md),
+not a post-hoc blend or a new dollar ranking. Current forecasts remain unchanged.
+
+**Previous research:** the [player-path/value bridge](docs/player-path-value-bridge-v1-result.md)
 separates career outcomes from the value of acquiring a player's rights. Its new
 path model fails validation and is not deployed; the tested valuation interface
 withholds dollar values until production, control and costs are supported.
@@ -30,8 +39,8 @@ The next priority is prospect/young-MLB success and continuation, not merely low
 average error across non-arrivals. The [simulation literature review](docs/baseball-simulation-literature-2026-09-23.md)
 now informs a [bounded follow-up](docs/projection-anchored-path-next-checkpoint.md):
 audit/repair historical snapshot support first, then test at most one feasible
-projection-anchored development model. No new fits or live changes accompanied
-this review.
+projection-anchored development model. The population test is now documented above;
+the full projection-anchored path model still needs vintage-matched inputs.
 
 **Latest delivered forecast:** a [tested rookie-ball arrival correction](docs/hitter-arrival-coherence-v1-result.md)
 reduces inflated near-term prospect contributions in Years 1–3. The broader

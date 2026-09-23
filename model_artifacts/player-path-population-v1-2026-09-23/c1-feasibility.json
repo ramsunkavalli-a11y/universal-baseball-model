@@ -1,0 +1,384 @@
+{
+  "status": "not_ready_for_c1_fit",
+  "inventory": {
+    "conditional_h1_anchor": {
+      "path": "model_artifacts\\hitter-anchored-development-v1-2026-09-22\\historical-anchors.parquet",
+      "sha256": "513c3c295354f4e8901bbf85439bc8ff2ed33c3381ee551fcc1918d2ac4d0033",
+      "rows": 52541,
+      "columns": [
+        "origin_year",
+        "player_id",
+        "performance_anchor",
+        "anchor_cutoff",
+        "latest_anchor_target"
+      ],
+      "origins": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021,
+        2022,
+        2023,
+        2025
+      ],
+      "horizons": null
+    },
+    "anchored_h2": {
+      "path": "model_artifacts\\hitter-anchored-development-v1-2026-09-22\\historical-predictions.parquet",
+      "sha256": "52e40f8b00946baa48ed2b9fdf68d0715b720648e531fe07821d59237a754cbd",
+      "rows": 30664,
+      "columns": [
+        "origin_year",
+        "player_id",
+        "age",
+        "stage",
+        "war_h1",
+        "war_h2",
+        "war_h3",
+        "war_c3",
+        "ridge_h1",
+        "ridge_h2",
+        "ridge_h3",
+        "matched_ridge_h1",
+        "matched_ridge_h2",
+        "reference_h1",
+        "reference_h2",
+        "reference_c3",
+        "candidate_c3",
+        "performance_anchor",
+        "anchor_cutoff",
+        "activity_h2_challenger",
+        "conditional_pa_h2_challenger",
+        "expected_pa_h2_challenger",
+        "rate_delta",
+        "rate_A",
+        "rate_D",
+        "A_h2",
+        "D_h2",
+        "C_h2",
+        "pa_h2"
+      ],
+      "origins": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2021,
+        2022,
+        2023
+      ],
+      "horizons": null
+    },
+    "three_year_opportunity": {
+      "path": "model_artifacts\\hitter-three-year-opportunity-v1-2026-09-22\\predictions.parquet",
+      "sha256": "aeaa1ac2c1d0c118123d8f76fe6a8b848331708081baf5a00ec323e6b90f3398",
+      "rows": 79713,
+      "columns": [
+        "origin_year",
+        "player_id",
+        "age",
+        "stage",
+        "prior_debut",
+        "prospect",
+        "minor_returner",
+        "recent_debut",
+        "actual_pa",
+        "actual_value",
+        "horizon",
+        "pandemic",
+        "arrival_raw",
+        "candidate",
+        "candidate_p",
+        "ensemble",
+        "ensemble_p",
+        "member_lightgbm",
+        "member_xgboost",
+        "member_ebm",
+        "member_ridge",
+        "member_direct",
+        "accepted",
+        "accepted_p",
+        "delivered",
+        "reference_h1",
+        "performance_anchor",
+        "anchor_cutoff",
+        "latest_anchor_target",
+        "replacement",
+        "product_control",
+        "ensemble_product",
+        "reconciled",
+        "beta",
+        "arrival_by_h",
+        "actual_arrival_by_h"
+      ],
+      "origins": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2021,
+        2022
+      ],
+      "horizons": [
+        1,
+        2,
+        3
+      ]
+    },
+    "established_opportunity": {
+      "path": "model_artifacts\\multiyear-hitter-followup-v2-2026-09-22\\opportunity-predictions.parquet",
+      "sha256": "b7664986d516ced103d90ddd264f699fe52dfbfcaacb2489a3c8fd2d751d2882",
+      "rows": 7410,
+      "columns": [
+        "origin_year",
+        "player_id",
+        "stage",
+        "actual_pa",
+        "p1",
+        "conditional_pa2",
+        "horizon",
+        "p0",
+        "pa0",
+        "conditional_pa0",
+        "pa1",
+        "pa2"
+      ],
+      "origins": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2021,
+        2022,
+        2025
+      ],
+      "horizons": [
+        1,
+        2,
+        3
+      ]
+    },
+    "unconditional_quantiles": {
+      "path": "model_artifacts\\multiyear-hitter-followup-v2-2026-09-22\\raw-quantile-predictions.parquet",
+      "sha256": "b71aaae869c70e2fa20fb13802abf7e21640042802001ce991c8eb23dcffdebf",
+      "rows": 193792,
+      "columns": [
+        "origin_year",
+        "player_id",
+        "stage",
+        "actual",
+        "mean",
+        "horizon",
+        "raw_lo",
+        "raw_hi"
+      ],
+      "origins": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021,
+        2022,
+        2025
+      ],
+      "horizons": [
+        "c3",
+        "h1",
+        "h2",
+        "h3"
+      ]
+    },
+    "six_year_totals": {
+      "path": "model_artifacts\\six-year-hitter-v1-2026-09-22\\cumulative-predictions.parquet",
+      "sha256": "609b54c337b1fea5f816a99634679e2ac198e541e1d438b563b825d3ed1eee96",
+      "rows": 18252,
+      "columns": [
+        "origin_year",
+        "player_id",
+        "n_early",
+        "early_bat",
+        "early_actual_bat",
+        "early_integrated",
+        "early_actual",
+        "early_missing",
+        "n_later",
+        "direct",
+        "base",
+        "carry_h3",
+        "actual_batting",
+        "integrated",
+        "actual_integrated",
+        "late_missing",
+        "neutral_tail"
+      ],
+      "origins": [
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "horizons": null
+    }
+  },
+  "folds": [
+    {
+      "cutoff": 2016,
+      "horizon": 3,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 0,
+        "identities": 0,
+        "identity_ess": 0.0
+      },
+      "supported_donor_origins": []
+    },
+    {
+      "cutoff": 2019,
+      "horizon": 3,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 4572,
+        "identities": 4572,
+        "identity_ess": 2928.3655600321354
+      },
+      "supported_donor_origins": [
+        2016
+      ]
+    },
+    {
+      "cutoff": 2021,
+      "horizon": 3,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 4572,
+        "identities": 4572,
+        "identity_ess": 2928.3655600321345
+      },
+      "supported_donor_origins": [
+        2016
+      ]
+    },
+    {
+      "cutoff": 2022,
+      "horizon": 3,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 4572,
+        "identities": 4572,
+        "identity_ess": 2928.3655600321354
+      },
+      "supported_donor_origins": [
+        2016
+      ]
+    },
+    {
+      "cutoff": 2025,
+      "horizon": 3,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 12891,
+        "identities": 8361,
+        "identity_ess": 6705.86691198217
+      },
+      "supported_donor_origins": [
+        2016,
+        2021,
+        2022
+      ]
+    },
+    {
+      "cutoff": 2016,
+      "horizon": 6,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 0,
+        "identities": 0,
+        "identity_ess": 0.0
+      },
+      "supported_donor_origins": []
+    },
+    {
+      "cutoff": 2017,
+      "horizon": 6,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 0,
+        "identities": 0,
+        "identity_ess": 0.0
+      },
+      "supported_donor_origins": []
+    },
+    {
+      "cutoff": 2018,
+      "horizon": 6,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 0,
+        "identities": 0,
+        "identity_ess": 0.0
+      },
+      "supported_donor_origins": []
+    },
+    {
+      "cutoff": 2019,
+      "horizon": 6,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 0,
+        "identities": 0,
+        "identity_ess": 0.0
+      },
+      "supported_donor_origins": []
+    },
+    {
+      "cutoff": 2025,
+      "horizon": 6,
+      "cold": false,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 0,
+        "identities": 0,
+        "identity_ess": 0.0
+      },
+      "supported_donor_origins": []
+    },
+    {
+      "cutoff": 2022,
+      "horizon": 3,
+      "cold": true,
+      "h1_anchor_and_h1_h3_opportunity": {
+        "rows": 3676,
+        "identities": 3676,
+        "identity_ess": 2357.5294485634317
+      },
+      "supported_donor_origins": [
+        2016
+      ]
+    }
+  ],
+  "ess_scope": "Coverage ESS restricts the A1 eligible-pool weights to archived rows; it is not a separately normalized C1 training measure.",
+  "what_exists": "Cutoff-safe H1 conditional batting/replacement-rate anchors from 2012; H2 development challenger; H1-H3 opportunity replays from 2016; unconditional H1-H3 quantiles from 2012.",
+  "why_not_fit": "The conditional anchors are selected-MLB rate estimates, not universal latent ability. No accepted joint rate/opportunity path is archived at early donor cutoffs. The earliest normal outer fold has zero donors with both existing H1 anchor and complete H1-H3 opportunity replay. H6 2016/2017 has no eligible H1 anchors at all. Unconditional quantiles cannot be divided by expected PA and called talent, or independently sampled into coherent careers.",
+  "not_a_claim_of_impossibility": "The raw annual panel is available. Earlier vintage models and a coherent transition design can be rebuilt in a separately specified follow-up. This is an archive/readiness gate, not proof that anchoring cannot work.",
+  "next_prerequisites": [
+    "Rebuild cutoff-specific conditional-rate and opportunity baseline states at donor origins, starting with H3. Preserve inactive and never-debuted rows and unknown rates.",
+    "Freeze how baseline ability, development and availability interact before residual-path scoring; do not use a failed H2 challenger as an accepted anchor.",
+    "Verify vintage training cutoffs and predictive support for young brief-MLB and never-debuted states, then freeze one C1 experiment.",
+    "Keep six-year calibration explicitly pandemic-limited; do not synthesize a normal H6 test or full control tail."
+  ],
+  "direct_benchmarks_reviewed": {
+    "positive_tail": "docs/prospect-broad-history-positive-tail-result.md: rejected basic tail family.",
+    "skill_tail": "docs/prospect-broad-history-skill-tail-result.md: rejected aggregate skill-tail increment.",
+    "reuse_limit": "Different previously exposed targets/cohorts; not new matched distribution benchmarks. No threshold sweep added."
+  },
+  "protected_outcomes_used": false,
+  "new_models_fitted": false
+}

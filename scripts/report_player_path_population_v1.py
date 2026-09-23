@@ -40,6 +40,11 @@ def main():
     for name in m:
         lines.append(f"| {labels[name]} | {m[name]['crps']:.6f} | {m[name]['rmse']:.6f} |")
     lines.append(f"| Delivered mean forecast | — | {m['A1']['delivered_rmse']:.6f} |")
+    lines += ['',
+        f"Restoring snapshots reduces distribution error by {(1-m['A1']['crps']/m['F1']['crps'])*100:.1f}% versus F1.",
+        'That isolates a useful historical-population improvement. It does not establish a better production',
+        'point forecast: the delivered model still has lower mean error. Passing the 5% mean-error guard',
+        'means the candidate stays reasonably close; it is not a claim to beat the delivered model.']
     lines += ['','Paired player-cluster CRPS differences (A1 minus reference; negative favors repair):','']
     for ref,v in p['paired'].items():
         lines.append(f"- {ref}: {v['delta']:+.6f}, 95% interval [{v['interval95'][0]:+.6f}, {v['interval95'][1]:+.6f}].")
@@ -49,6 +54,14 @@ def main():
     for name in ('Never-debuted minors','Recent debut','Young brief MLB'):
         g=p['groups'][name]
         lines.append(f"| {name} | {g['A1']['rows']} | {g['A1']['events']['regular_workload']['observed']} | {g['F1']['events']['regular_workload']['predicted']:.2f} | {g['A1']['events']['regular_workload']['predicted']:.2f} |")
+    brief=p['groups']['Young brief MLB'];prospects=p['groups']['Never-debuted minors']
+    lines += ['',
+        f"For young brief-MLB cases, predicted no-further-MLB paths fall from {brief['F1']['events']['no_mlb']['predicted']:.1f} "
+        f"to {brief['A1']['events']['no_mlb']['predicted']:.1f}, versus {brief['A1']['events']['no_mlb']['observed']} observed.",
+        'That is an improvement, but still too pessimistic. Among never-debuted prospects, the expected',
+        'number of regular-workload paths moves farther below the observed count, and its Brier score',
+        'does not beat either forest control. This is a substantive supported failure, not merely a failure',
+        'to collect enough rare-star examples. Counts are player-origin outcomes, not distinct careers.']
     lines += ['','Regular-workload means at least 450 PA in two of three years. Other fixed events:',
         'no MLB play, six cumulative batting/replacement wins, and two four-win batting/replacement seasons.',
         'They overlap and are not scouting grades or All-Star probabilities. The exposed 98-row young brief-MLB',
@@ -56,18 +69,26 @@ def main():
         '## Acceptance checks','']
     for name,passed in p['gates'].items():
         lines.append(f"- {name}: {'PASS' if passed else 'NOT PASSED'}.")
-    lines += ['',f"Simulation stability: {report['numerical_stability']}.",
+    lines += ['',f"Simulation checks: {'stable' if report['numerical_stability']['stable'] else 'unstable'}; "
+        f"{len(report['numerical_stability']['changing_gates'])} acceptance checks change across sampled runs.",
         'Five fixed 400-draw seeds and one 1600-draw run reuse fitted models. CRPS, Brier and mean-MSE',
         'sampling estimates remove their IID finite-draw bias; log loss has a common fixed clipping rule.',
         'Exact means/probabilities/CRPS determine the main comparisons. Joint energy and intervals remain',
         'simulation diagnostics. Small negative corrected loss estimates are possible, not negative true risks.',
         'Whole-player bootstrapping does not remove common-season shocks. Nonoverlapping 2016/2021 results,',
         'fully player-disjoint 2022 sensitivity and pandemic stress tests are separately reported.',
+        f"With test identities excluded from training, CRPS improves from {report['cold']['F1']['crps']:.4f} "
+        f"to {report['cold']['A1']['crps']:.4f}. The inherited delivered reference is not player-disjoint,",
+        'so its error in that diagnostic is not an equally disjoint comparator.',
         'All historical H6 windows cross 2020 and cannot confirm ordinary six-year accuracy.','',
+        f"In that separate six-year stress test, mean RMSE is {report['stress']['6']['F1']['rmse']:.3f} for F1, "
+        f"{report['stress']['6']['A1']['rmse']:.3f} for A1, and {report['stress']['6']['A1']['delivered_rmse']:.3f} for the delivered reference.",
+        'The repair improves this weaker path benchmark too, but does not beat the delivered mean.','',
         '## Projection-anchored follow-up readiness','',
         feasibility['what_exists'],'',feasibility['why_not_fit'],'',feasibility['not_a_claim_of_impossibility'],'',
         'Next prerequisites:','']
     lines += [f'- {s}' for s in feasibility['next_prerequisites']]
+    lines += ['', 'See the [dated-anchor rebuild checklist](projection-path-anchor-rebuild-checklist.md) for the bounded next step.']
     lines += ['','Prior direct prospect-tail and component-tail tests were inspected and remain rejected;',
         'no new threshold search was added. Dollar valuation still needs whole-WAR accounting, dated rights/costs,',
         'and the beyond-six-calendar-year control/liability tail. No failures are rescued with a post-hoc blend.','',

@@ -24,6 +24,13 @@ def main():
     assert not f.select(keys).is_duplicated().any()
     current=f.filter(pl.col('origin_year')==2025)
     assert current['actual_batting'].null_count()==current.height
+    for h in (3,6):
+        g=f.filter(pl.col('horizon')==h)
+        for target in ('batting','pa'):
+            annual=g.select([f'mean_{target}_h{i}' for i in range(1,h+1)]).to_numpy().sum(axis=1)
+            np.testing.assert_allclose(annual,g[f'mean_{target}'],atol=1e-8,rtol=1e-8)
+    for c in [c for c in f.columns if c.startswith('p_')]:
+        assert f[c].min()>=-1e-6 and f[c].max()<=1+1e-6
     panel=panel_data()
     for note in fit['fits']:
         year,h,cold,method=(note[k] for k in ('origin','horizon','cold','method'))

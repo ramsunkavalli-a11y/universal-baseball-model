@@ -34,6 +34,7 @@ def main():
             'h1_anchor_and_h1_h3_opportunity':support(both),
             'supported_donor_origins':sorted(both['origin_year'].unique().to_list())})
     save(OUT/'c1-feasibility.json',{'status':'not_ready_for_c1_fit','inventory':inventory,'folds':folds,
+        'ess_scope':'Coverage ESS restricts the A1 eligible-pool weights to archived rows; it is not a separately normalized C1 training measure.',
         'what_exists':'Cutoff-safe H1 conditional batting/replacement-rate anchors from 2012; H2 development challenger; H1-H3 opportunity replays from 2016; unconditional H1-H3 quantiles from 2012.',
         'why_not_fit':'The conditional anchors are selected-MLB rate estimates, not universal latent ability. No accepted joint rate/opportunity path is archived at early donor cutoffs. The earliest normal outer fold has zero donors with both existing H1 anchor and complete H1-H3 opportunity replay. H6 2016/2017 has no eligible H1 anchors at all. Unconditional quantiles cannot be divided by expected PA and called talent, or independently sampled into coherent careers.',
         'not_a_claim_of_impossibility':'The raw annual panel is available. Earlier vintage models and a coherent transition design can be rebuilt in a separately specified follow-up. This is an archive/readiness gate, not proof that anchoring cannot work.',

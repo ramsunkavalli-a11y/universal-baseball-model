@@ -4,7 +4,30 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest direction review: the [baseball simulation literature note](baseball-simulation-literature-2026-09-23.md)
+Latest population result: the [fixed snapshot repair](player-path-population-v1-result.md)
+improves normal three-year distribution CRPS 0.2891 to 0.2661, with favorable
+player-cluster intervals and improvement at all three origins. Mean RMSE improves
+1.333 to 1.222; the delivered projection remains slightly better at 1.214. The
+improvement and failed acceptance decision are stable across five 400-draw seeds
+and a 1600-draw check. Earlier snapshots restore young-player support without
+giving longer historical careers greater total weight. Young brief-MLB no-play
+predictions fall from 46.7 to 25.1 versus 10 observed cases, still too pessimistic.
+Never-debuted regular-workload predictions worsen from 28.8 to 23.5 versus 44
+observed. This supported failure, plus sparse rare-success cohorts, prevents
+promotion. Live means, the 8777 explorer and the original freeze are unchanged.
+
+Next prerequisite: follow the [dated-anchor rebuild checklist](projection-path-anchor-rebuild-checklist.md).
+The existing H1 rate anchors start in 2012, but complete H1–H3 opportunity replays
+start in 2016. The earliest outer fold therefore has no eligible donors with both.
+Early H6 folds have no eligible rate anchors either. C1 is not ready to fit from
+the current archives; the underlying annual data can support a separately
+specified reconstruction. Do not call this impossible or fill the gap with
+future-fitted coefficients, unconditional WAR/PA ratios, or independent quantiles.
+Keep conditional rate, opportunity, persistent uncertainty and development
+explicitly distinct. Whole-WAR, rights/cost paths and the full control/liability
+tail still gate dollar values.
+
+Previous direction review: the [baseball simulation literature note](baseball-simulation-literature-2026-09-23.md)
 and [bounded next checkpoint](projection-anchored-path-next-checkpoint.md) tighten
 the next approach without fitting or changing any forecasts. First audit retained
 historical snapshots and test one identity-balanced population repair against the
@@ -15,7 +38,7 @@ donor careers. Require success/continuation calibration and Monte Carlo stabilit
 more draws do not fix model bias. This is our proposed design, not a claim to have
 reproduced proprietary ZiPS/PECOTA. Current dollar outputs remain unavailable.
 
-Latest completed experiment: the [player-path/value bridge](player-path-value-bridge-v1-result.md)
+Previous completed experiment: the [player-path/value bridge](player-path-value-bridge-v1-result.md)
 re-centers the project on outcome distributions and transferable rights, not just
 mean calendar production. A tested path-level valuation interface keeps control,
 cost, nonlinear production pricing and missing tails explicit. It does not yet

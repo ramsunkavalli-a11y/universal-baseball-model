@@ -34,6 +34,11 @@ players, even when it is evaluated as part of a useful all-player value model.
   recipe on existing overlap before claiming equivalent older forecasts.
 - Earlier unconditional quantiles exist, but they do not supply conditional rate
   states or joint career dependence. Reuse them only for their actual target.
+- Declare feature coverage by vintage. An older aggregate-stat model is not the
+  same anchor as a modern detailed-contact model. Use an explicit, validated
+  fallback where early inputs do not exist; do not backfill those features from
+  later seasons or claim that 77 aggregate/history features reproduce the full
+  richer one-year projection system.
 - The annual panel starts in 2009. Do not fabricate a trained 2009 anchor without
   earlier training data. Explicitly inventory which early donor origins must be
   unavailable, and whether the remaining support is sufficient before fitting.
