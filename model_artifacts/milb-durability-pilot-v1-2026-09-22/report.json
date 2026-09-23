@@ -1,0 +1,210 @@
+{
+  "status": "no_demonstrated_incremental_gain",
+  "forecast_changed": false,
+  "protected_outcomes_used": false,
+  "support": [
+    {
+      "origin": 2023,
+      "target": "arrival",
+      "training_rows": 83,
+      "training_events": 11,
+      "test_rows": 89,
+      "latest_training_label": 2023,
+      "status": "scored"
+    },
+    {
+      "origin": 2023,
+      "target": "mlb_200pa",
+      "training_rows": 83,
+      "training_events": 0,
+      "test_rows": 89,
+      "latest_training_label": 2023,
+      "status": "unsupported_one_class"
+    },
+    {
+      "origin": 2024,
+      "target": "arrival",
+      "training_rows": 172,
+      "training_events": 16,
+      "test_rows": 130,
+      "latest_training_label": 2024,
+      "status": "scored"
+    },
+    {
+      "origin": 2024,
+      "target": "mlb_200pa",
+      "training_rows": 172,
+      "training_events": 0,
+      "test_rows": 130,
+      "latest_training_label": 2024,
+      "status": "unsupported_one_class"
+    }
+  ],
+  "results": {
+    "arrival": {
+      "all": {
+        "rows": 219,
+        "players": 207,
+        "events": 14,
+        "by_origin": [
+          {
+            "origin_year": 2023,
+            "rows": 89,
+            "events": 5.0
+          },
+          {
+            "origin_year": 2024,
+            "rows": 130,
+            "events": 9.0
+          }
+        ],
+        "metrics": {
+          "base": {
+            "brier": 0.05189634429862503,
+            "log": 0.18789821493169823
+          },
+          "gap": {
+            "brier": 0.051064157268424615,
+            "log": 0.18335342259954718
+          }
+        },
+        "paired": {
+          "brier": {
+            "candidate": 0.051064157268424615,
+            "baseline": 0.05189634429862503,
+            "delta": -0.0008321870302004144,
+            "interval95": [
+              -0.0020933690704098085,
+              0.0006927147642435665
+            ],
+            "folds": [
+              {
+                "origin": 2023,
+                "candidate": 0.052445615637122626,
+                "baseline": 0.052771250574139894,
+                "delta": -0.00032563493701727155
+              },
+              {
+                "origin": 2024,
+                "candidate": 0.0496826988997266,
+                "baseline": 0.05102143802311017,
+                "delta": -0.0013387391233835573
+              }
+            ],
+            "improving_origins": 2
+          },
+          "log": {
+            "candidate": 0.18335342259954718,
+            "baseline": 0.18789821493169823,
+            "delta": -0.004544792332151035,
+            "interval95": [
+              -0.008418738410187015,
+              -0.0004264169805417123
+            ],
+            "folds": [
+              {
+                "origin": 2023,
+                "candidate": 0.19504340351402258,
+                "baseline": 0.19815785040508724,
+                "delta": -0.0031144468910646933
+              },
+              {
+                "origin": 2024,
+                "candidate": 0.1716634416850718,
+                "baseline": 0.1776385794583092,
+                "delta": -0.005975137773237377
+              }
+            ],
+            "improving_origins": 2
+          }
+        }
+      },
+      "productive": {
+        "rows": 37,
+        "players": 37,
+        "events": 6,
+        "by_origin": [
+          {
+            "origin_year": 2023,
+            "rows": 13,
+            "events": 3.0
+          },
+          {
+            "origin_year": 2024,
+            "rows": 24,
+            "events": 3.0
+          }
+        ],
+        "metrics": {
+          "base": {
+            "brier": 0.13373051163442085,
+            "log": 0.3976573684319801
+          },
+          "gap": {
+            "brier": 0.13112147050362674,
+            "log": 0.3904035328065475
+          }
+        },
+        "paired": {
+          "brier": {
+            "candidate": 0.13112147050362674,
+            "baseline": 0.13373051163442085,
+            "delta": -0.00260904113079413,
+            "interval95": [
+              -0.005864417251758908,
+              8.310664686826582e-05
+            ],
+            "folds": [
+              {
+                "origin": 2023,
+                "candidate": 0.16499373610294724,
+                "baseline": 0.16724841884245156,
+                "delta": -0.0022546827395043875
+              },
+              {
+                "origin": 2024,
+                "candidate": 0.09724920490430623,
+                "baseline": 0.10021260442639011,
+                "delta": -0.0029633995220838733
+              }
+            ],
+            "improving_origins": 2
+          },
+          "log": {
+            "candidate": 0.3904035328065475,
+            "baseline": 0.3976573684319801,
+            "delta": -0.007253835625432533,
+            "interval95": [
+              -0.0205616871131629,
+              0.006831377190270537
+            ],
+            "folds": [
+              {
+                "origin": 2023,
+                "candidate": 0.4851466286575658,
+                "baseline": 0.48591693268728864,
+                "delta": -0.0007703040297227805
+              },
+              {
+                "origin": 2024,
+                "candidate": 0.2956604369555292,
+                "baseline": 0.30939780417667145,
+                "delta": -0.013737367221142285
+              }
+            ],
+            "improving_origins": 2
+          }
+        }
+      }
+    },
+    "mlb_200pa": {}
+  },
+  "limitations": [
+    "Same-level full-season minor leaguers only",
+    "No verified full-year roster tenure",
+    "No diagnosis or career-survival conclusion",
+    "Unadjusted level-relative OPS",
+    "Two forward tests only",
+    "Below-100-PA injury spells excluded"
+  ]
+}

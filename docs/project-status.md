@@ -4,6 +4,13 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+The [small minor-league durability screen](milb-durability-pilot-v1-result.md)
+is complete: repeated position/level-relative workload gaps slightly improve
+next-year arrival scores in both chronological tests, but the productive subgroup
+has only 37 players/six arrivals and both intervals include zero. The >=200-MLB-PA
+target lacks positive training cases. Inconclusive; no durability labels, production
+changes or larger system. This is distinct from the preceding MLB-regular test.
+
 The [position-adjusted workload-shortfall test](hitter-availability-gap-v1-result.md)
 is complete. The user's simpler health proxy was tested for historically defined
 MLB regulars, not future-selected MLB survivors. It adds no Year-2 predictive gain
