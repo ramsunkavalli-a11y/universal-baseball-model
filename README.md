@@ -22,6 +22,13 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
+**Latest hitter milestone:** the [three-year component ledger](docs/multiyear-hitter-components-v1-result.md)
+adds provisional position, running and defensive estimates to unchanged batting
+and PA forecasts, with a player explorer and dated organization filter. Historical
+cumulative error improves, but only two complete normal three-year origins support
+the expanded target. The original 2026 forecast stays frozen; this is development,
+not independently confirmed full WAR.
+
 Phase 2 now has a private [production-based Model FV and workload preview](docs/phase2-model-fv-and-workload-2026-09-09.md).
 It fixes the established-player workload tail, values pre-MLB players over six control
 years after arrival, and keeps Model FV separate from contract surplus. Publication

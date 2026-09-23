@@ -94,3 +94,10 @@ unchanged-freeze verification, simple model/evidence summary, and a new local
 player explorer with 2025 organization filter, stage/search filters, annual and
 three-year values, PA and every component. Preserve original views. Commit/push
 the research/plan checkpoint and final evidence/code at separate milestones.
+
+Implementation clarification before any successful fit/scoring: component-only
+2023/24 diagnostics require a PA estimate not present in the delivered fold cache.
+Use a fixed chronological Ridge PA proxy there and exclude those folds from
+rolling model selection and all delivered-value gates. This is not evidence for
+changing the PA model. Steal labels use a fixed +.2/- .4 run conversion, centered
+in each target season; benchmark environments are recomputed at their cutoff.

@@ -1,0 +1,1039 @@
+{
+  "milb_origin_fielding": {
+    "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\milb-fielding-origin-inventory\\tables\\milb_fielding_usage_at_origins.parquet",
+    "sha256": "2eadb984bbf187cdffd6f5dd1254c54e3bfacc34f4a70e572874a934831ebab0",
+    "rows": 120967,
+    "columns": [
+      "season",
+      "league_id",
+      "level_group",
+      "team_id",
+      "team_name",
+      "player_id",
+      "player_name",
+      "position_code",
+      "position_abbreviation",
+      "position_name",
+      "position_type",
+      "games_played",
+      "games_started",
+      "source_innings",
+      "fielding_outs"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2008,
+        "len": 18573
+      },
+      {
+        "season": 2013,
+        "len": 18745
+      },
+      {
+        "season": 2016,
+        "len": 20288
+      },
+      {
+        "season": 2018,
+        "len": 20193
+      },
+      {
+        "season": 2019,
+        "len": 21252
+      },
+      {
+        "season": 2021,
+        "len": 21916
+      }
+    ],
+    "position_abbreviation": [
+      "1B",
+      "2B",
+      "3B",
+      "C",
+      "CF",
+      "DH",
+      "LF",
+      "P",
+      "RF",
+      "SS"
+    ],
+    "level_group": [
+      "AA",
+      "AAA",
+      "HIGH_A",
+      "ROOKIE_COMPLEX",
+      "SINGLE_A"
+    ]
+  },
+  "affiliated_fielding_2025": {
+    "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\position-capacity-source\\2025\\reports\\generated\\position-role-2025-confirmation-source\\tables\\position_role_2025_fielding_usage.parquet",
+    "sha256": "372cd75d0f67217c7def51351e938a16b2584d30de374d9f5097a5d739f8f8d4",
+    "rows": 24662,
+    "columns": [
+      "season",
+      "league_id",
+      "level_group",
+      "team_id",
+      "team_name",
+      "player_id",
+      "player_name",
+      "position_code",
+      "position_abbreviation",
+      "position_name",
+      "position_type",
+      "games_played",
+      "games_started",
+      "source_innings",
+      "fielding_outs"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2025,
+        "len": 24662
+      }
+    ],
+    "position_abbreviation": [
+      "1B",
+      "2B",
+      "3B",
+      "C",
+      "CF",
+      "DH",
+      "LF",
+      "P",
+      "RF",
+      "SS"
+    ],
+    "level_group": [
+      "AA",
+      "AAA",
+      "HIGH_A",
+      "MLB",
+      "ROOKIE_COMPLEX",
+      "SINGLE_A"
+    ]
+  },
+  "mlb_fielding": {
+    "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\mlb-fielding-outcome-inventory-2004-2025\\tables\\mlb_fielding_usage_2004_2025.parquet",
+    "sha256": "d764ad9e71cddc7e23f0bc30ea5fd8b06502076dbddfd6f4c00969524842fbd8",
+    "rows": 53771,
+    "columns": [
+      "season",
+      "league_id",
+      "level_group",
+      "team_id",
+      "team_name",
+      "player_id",
+      "player_name",
+      "position_code",
+      "position_abbreviation",
+      "position_name",
+      "position_type",
+      "games_played",
+      "games_started",
+      "source_innings",
+      "fielding_outs"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2004,
+        "len": 2147
+      },
+      {
+        "season": 2005,
+        "len": 2123
+      },
+      {
+        "season": 2006,
+        "len": 2207
+      },
+      {
+        "season": 2007,
+        "len": 2228
+      },
+      {
+        "season": 2008,
+        "len": 2239
+      },
+      {
+        "season": 2009,
+        "len": 2179
+      },
+      {
+        "season": 2010,
+        "len": 2186
+      },
+      {
+        "season": 2011,
+        "len": 2224
+      },
+      {
+        "season": 2012,
+        "len": 2314
+      },
+      {
+        "season": 2013,
+        "len": 2303
+      },
+      {
+        "season": 2014,
+        "len": 2366
+      },
+      {
+        "season": 2015,
+        "len": 2450
+      },
+      {
+        "season": 2016,
+        "len": 2461
+      },
+      {
+        "season": 2017,
+        "len": 2513
+      },
+      {
+        "season": 2018,
+        "len": 2607
+      },
+      {
+        "season": 2019,
+        "len": 2662
+      },
+      {
+        "season": 2020,
+        "len": 2250
+      },
+      {
+        "season": 2021,
+        "len": 2842
+      },
+      {
+        "season": 2022,
+        "len": 2970
+      },
+      {
+        "season": 2023,
+        "len": 2854
+      },
+      {
+        "season": 2024,
+        "len": 2779
+      },
+      {
+        "season": 2025,
+        "len": 2867
+      }
+    ],
+    "position_abbreviation": [
+      "1B",
+      "2B",
+      "3B",
+      "C",
+      "CF",
+      "DH",
+      "LF",
+      "P",
+      "RF",
+      "SS"
+    ],
+    "level_group": [
+      "MLB"
+    ]
+  },
+  "affiliated_fielding": {
+    "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\position-capacity-source\\historical\\reports\\generated\\position-role-historical-source\\tables\\historical_fielding_usage.parquet",
+    "sha256": "fa84a74402390c62de06e174083810cfe668010d696a2c71a312347e95ef71f4",
+    "rows": 100166,
+    "columns": [
+      "season",
+      "league_id",
+      "level_group",
+      "team_id",
+      "team_name",
+      "player_id",
+      "player_name",
+      "position_code",
+      "position_abbreviation",
+      "position_name",
+      "position_type",
+      "games_played",
+      "games_started",
+      "source_innings",
+      "fielding_outs"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2021,
+        "len": 24985
+      },
+      {
+        "season": 2022,
+        "len": 25801
+      },
+      {
+        "season": 2023,
+        "len": 25214
+      },
+      {
+        "season": 2024,
+        "len": 24166
+      }
+    ],
+    "position_abbreviation": [
+      "1B",
+      "2B",
+      "3B",
+      "C",
+      "CF",
+      "DH",
+      "LF",
+      "P",
+      "RF",
+      "SS"
+    ],
+    "level_group": [
+      "AA",
+      "AAA",
+      "HIGH_A",
+      "MLB",
+      "ROOKIE_COMPLEX",
+      "SINGLE_A"
+    ]
+  },
+  "mlb_batting": {
+    "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\tables\\mlb_hitting_components_2009_2025.parquet",
+    "sha256": "755b78517f52c3875fe7ea2877cbcb34a0cecd1a2fcb17ee05698cc55f2184a6",
+    "rows": 18435,
+    "columns": [
+      "season",
+      "player_id",
+      "player_name",
+      "batting_plate_appearances",
+      "batting_at_bats",
+      "batting_hits",
+      "batting_doubles",
+      "batting_triples",
+      "batting_home_runs",
+      "batting_base_on_balls",
+      "batting_intentional_walks",
+      "batting_hit_by_pitch",
+      "batting_strike_outs",
+      "batting_sac_bunts",
+      "batting_sac_flies",
+      "batting_stolen_bases",
+      "batting_caught_stealing",
+      "batting_ground_into_double_play",
+      "batting_balls_in_play",
+      "simple_pa_accounting_residual"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2009,
+        "len": 1156
+      },
+      {
+        "season": 2010,
+        "len": 1157
+      },
+      {
+        "season": 2011,
+        "len": 1173
+      },
+      {
+        "season": 2012,
+        "len": 1185
+      },
+      {
+        "season": 2013,
+        "len": 1202
+      },
+      {
+        "season": 2014,
+        "len": 1212
+      },
+      {
+        "season": 2015,
+        "len": 1252
+      },
+      {
+        "season": 2016,
+        "len": 1248
+      },
+      {
+        "season": 2017,
+        "len": 1229
+      },
+      {
+        "season": 2018,
+        "len": 1270
+      },
+      {
+        "season": 2019,
+        "len": 1287
+      },
+      {
+        "season": 2020,
+        "len": 620
+      },
+      {
+        "season": 2021,
+        "len": 1374
+      },
+      {
+        "season": 2022,
+        "len": 794
+      },
+      {
+        "season": 2023,
+        "len": 769
+      },
+      {
+        "season": 2024,
+        "len": 742
+      },
+      {
+        "season": 2025,
+        "len": 765
+      }
+    ]
+  },
+  "panel": {
+    "path": "reports\\generated\\multiyear-hitter-v1\\panel.parquet",
+    "sha256": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+    "rows": 69775,
+    "columns": [
+      "origin_year",
+      "player_id",
+      "age",
+      "as_of_level_group",
+      "level",
+      "age_missing",
+      "age_centered",
+      "age_squared",
+      "level_MLB",
+      "level_AAA",
+      "level_AA",
+      "level_A+",
+      "level_A",
+      "level_A-",
+      "level_RK",
+      "level_INACTIVE",
+      "level_UNKNOWN",
+      "reorganization_era",
+      "pa_lag0",
+      "mlb_pa_lag0",
+      "ubb_rate_lag0",
+      "strikeout_rate_lag0",
+      "single_rate_lag0",
+      "double_rate_lag0",
+      "triple_rate_lag0",
+      "home_run_rate_lag0",
+      "hbp_rate_lag0",
+      "stolen_base_rate_lag0",
+      "exposure_RK_lag0",
+      "exposure_ROOKIE_lag0",
+      "exposure_A-_lag0",
+      "exposure_A_lag0",
+      "exposure_A+_lag0",
+      "exposure_AA_lag0",
+      "exposure_AAA_lag0",
+      "exposure_MLB_lag0",
+      "missing_lag0",
+      "log_pa_lag0",
+      "log_mlb_pa_lag0",
+      "share_RK_lag0",
+      "share_ROOKIE_lag0",
+      "share_A-_lag0",
+      "share_A_lag0",
+      "share_A+_lag0",
+      "share_AA_lag0",
+      "share_AAA_lag0",
+      "share_MLB_lag0",
+      "observed_mlb_value_lag0",
+      "mlb_value_history_available_lag0",
+      "pa_lag1",
+      "mlb_pa_lag1",
+      "ubb_rate_lag1",
+      "strikeout_rate_lag1",
+      "single_rate_lag1",
+      "double_rate_lag1",
+      "triple_rate_lag1",
+      "home_run_rate_lag1",
+      "hbp_rate_lag1",
+      "stolen_base_rate_lag1",
+      "exposure_RK_lag1",
+      "exposure_ROOKIE_lag1",
+      "exposure_A-_lag1",
+      "exposure_A_lag1",
+      "exposure_A+_lag1",
+      "exposure_AA_lag1",
+      "exposure_AAA_lag1",
+      "exposure_MLB_lag1",
+      "missing_lag1",
+      "log_pa_lag1",
+      "log_mlb_pa_lag1",
+      "share_RK_lag1",
+      "share_ROOKIE_lag1",
+      "share_A-_lag1",
+      "share_A_lag1",
+      "share_A+_lag1",
+      "share_AA_lag1",
+      "share_AAA_lag1",
+      "share_MLB_lag1",
+      "observed_mlb_value_lag1",
+      "mlb_value_history_available_lag1",
+      "pa_lag2",
+      "mlb_pa_lag2",
+      "ubb_rate_lag2",
+      "strikeout_rate_lag2",
+      "single_rate_lag2",
+      "double_rate_lag2",
+      "triple_rate_lag2",
+      "home_run_rate_lag2",
+      "hbp_rate_lag2",
+      "stolen_base_rate_lag2",
+      "exposure_RK_lag2",
+      "exposure_ROOKIE_lag2",
+      "exposure_A-_lag2",
+      "exposure_A_lag2",
+      "exposure_A+_lag2",
+      "exposure_AA_lag2",
+      "exposure_AAA_lag2",
+      "exposure_MLB_lag2",
+      "missing_lag2",
+      "log_pa_lag2",
+      "log_mlb_pa_lag2",
+      "share_RK_lag2",
+      "share_ROOKIE_lag2",
+      "share_A-_lag2",
+      "share_A_lag2",
+      "share_A+_lag2",
+      "share_AA_lag2",
+      "share_AAA_lag2",
+      "share_MLB_lag2",
+      "observed_mlb_value_lag2",
+      "mlb_value_history_available_lag2",
+      "on_40man",
+      "stage",
+      "war_h1",
+      "pa_h1",
+      "complete_h1",
+      "war_h2",
+      "pa_h2",
+      "complete_h2",
+      "war_h3",
+      "pa_h3",
+      "complete_h3",
+      "war_c3",
+      "player_name",
+      "team_id"
+    ],
+    "year_column": "origin_year",
+    "by_year": [
+      {
+        "origin_year": 2009,
+        "len": 4393
+      },
+      {
+        "origin_year": 2010,
+        "len": 4498
+      },
+      {
+        "origin_year": 2011,
+        "len": 4460
+      },
+      {
+        "origin_year": 2012,
+        "len": 4466
+      },
+      {
+        "origin_year": 2013,
+        "len": 4476
+      },
+      {
+        "origin_year": 2014,
+        "len": 4516
+      },
+      {
+        "origin_year": 2015,
+        "len": 4512
+      },
+      {
+        "origin_year": 2016,
+        "len": 4572
+      },
+      {
+        "origin_year": 2017,
+        "len": 4580
+      },
+      {
+        "origin_year": 2018,
+        "len": 4348
+      },
+      {
+        "origin_year": 2019,
+        "len": 4752
+      },
+      {
+        "origin_year": 2021,
+        "len": 4164
+      },
+      {
+        "origin_year": 2022,
+        "len": 4155
+      },
+      {
+        "origin_year": 2023,
+        "len": 4093
+      },
+      {
+        "origin_year": 2024,
+        "len": 3883
+      },
+      {
+        "origin_year": 2025,
+        "len": 3907
+      }
+    ]
+  },
+  "targets": {
+    "path": "reports\\generated\\multiyear-hitter-v1\\targets.parquet",
+    "sha256": "54b7c51af42254ef44e36f6f5035d05334b368f128baa0280e9f98ff92e941e3",
+    "rows": 14857,
+    "columns": [
+      "season",
+      "player_id",
+      "mlb_pa",
+      "mlb_active",
+      "conditional_component_war_per_600",
+      "component_war",
+      "league_pa",
+      "completed_games",
+      "teams",
+      "schedule_fraction",
+      "legacy_component_war"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2009,
+        "len": 950
+      },
+      {
+        "season": 2010,
+        "len": 944
+      },
+      {
+        "season": 2011,
+        "len": 934
+      },
+      {
+        "season": 2012,
+        "len": 961
+      },
+      {
+        "season": 2013,
+        "len": 948
+      },
+      {
+        "season": 2014,
+        "len": 947
+      },
+      {
+        "season": 2015,
+        "len": 964
+      },
+      {
+        "season": 2016,
+        "len": 969
+      },
+      {
+        "season": 2017,
+        "len": 957
+      },
+      {
+        "season": 2018,
+        "len": 990
+      },
+      {
+        "season": 2019,
+        "len": 990
+      },
+      {
+        "season": 2020,
+        "len": 581
+      },
+      {
+        "season": 2021,
+        "len": 1049
+      },
+      {
+        "season": 2022,
+        "len": 693
+      },
+      {
+        "season": 2023,
+        "len": 656
+      },
+      {
+        "season": 2024,
+        "len": 651
+      },
+      {
+        "season": 2025,
+        "len": 673
+      }
+    ]
+  },
+  "catcher": {
+    "path": "reports\\generated\\hitter-catcher-defense-value-v2\\public-catcher-history-2022-2025.parquet",
+    "sha256": "cc38ea1f90e16019e823ea1d5b4bb39a22761f9ff7cdd07c970725df05f68d5d",
+    "rows": 861,
+    "columns": [
+      "season",
+      "component",
+      "player_id",
+      "opportunity",
+      "skill_z"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2022,
+        "len": 223
+      },
+      {
+        "season": 2023,
+        "len": 218
+      },
+      {
+        "season": 2024,
+        "len": 216
+      },
+      {
+        "season": 2025,
+        "len": 204
+      }
+    ],
+    "component": [
+      "blocking",
+      "framing",
+      "throwing"
+    ]
+  },
+  "catcher_predictions": {
+    "path": "reports\\generated\\hitter-catcher-defense-value-v2\\component-predictions.parquet",
+    "sha256": "706eea0996b19fe5eb26103bfc9b41e9d6b83ee4de9f697dac6d8c18a7f5bbeb",
+    "rows": 37068,
+    "columns": [
+      "origin_year",
+      "player_id",
+      "component",
+      "source_opportunity",
+      "source_skill_z",
+      "target_opportunity",
+      "target_skill_z",
+      "target_year",
+      "chronological_skill_slope",
+      "slope_training_rows",
+      "slope_source",
+      "prediction_candidate_expected_pa",
+      "source_mlb_pa",
+      "run_rate_per_z_opportunity",
+      "prediction_opportunity_pa_scaled",
+      "prediction_opportunity_raw",
+      "prediction_skill_z_chronological",
+      "prediction_skill_z_raw",
+      "prediction_opportunity_hybrid",
+      "actual_component_runs",
+      "prediction_runs_raw_skill_raw_opportunity",
+      "prediction_runs_raw_skill_pa_scaled_opportunity",
+      "prediction_runs_raw_skill_hybrid_opportunity",
+      "prediction_runs_chronological_skill_raw_opportunity",
+      "prediction_runs_chronological_skill_pa_scaled_opportunity",
+      "prediction_runs_chronological_skill_hybrid_opportunity"
+    ],
+    "year_column": "origin_year",
+    "by_year": [
+      {
+        "origin_year": 2022,
+        "len": 12729
+      },
+      {
+        "origin_year": 2023,
+        "len": 12552
+      },
+      {
+        "origin_year": 2024,
+        "len": 11787
+      }
+    ],
+    "component": [
+      "blocking",
+      "framing",
+      "throwing"
+    ]
+  },
+  "one_year_components": {
+    "path": "reports\\generated\\hitter-value-components-chronological-v2\\chronological-predictions.parquet",
+    "sha256": "03c9efcd846a8a625b62a163d885f4dcd63ad23d52b62a9aafba67475f31f372",
+    "rows": 17552,
+    "columns": [
+      "origin_year",
+      "player_id",
+      "player_stage",
+      "actual_component_war",
+      "prediction_batting_replacement_war",
+      "prediction_candidate_expected_pa",
+      "position_profile_available",
+      "current_position_runs_per_600",
+      "predicted_position_runs_per_600",
+      "later_position_runs",
+      "later_position_war",
+      "steal_runs_per_600",
+      "advancement_runs_per_600",
+      "baserunning_evidence_tier",
+      "later_steal_runs",
+      "later_steal_war",
+      "later_advancement_runs",
+      "later_advancement_war",
+      "prediction_carry_position_war",
+      "prediction_transition_position_war",
+      "prediction_steal_war",
+      "prediction_advancement_war",
+      "actual_baserunning_war",
+      "prediction_baserunning_war",
+      "actual_partial_war",
+      "prediction_batting_only_partial_war",
+      "prediction_carry_position_partial_war",
+      "prediction_transition_position_partial_war",
+      "prediction_position_plus_steal_partial_war",
+      "prediction_position_plus_advancement_partial_war",
+      "prediction_selected_partial_war"
+    ],
+    "year_column": "origin_year",
+    "by_year": [
+      {
+        "origin_year": 2021,
+        "len": 5196
+      },
+      {
+        "origin_year": 2022,
+        "len": 4243
+      },
+      {
+        "origin_year": 2023,
+        "len": 4184
+      },
+      {
+        "origin_year": 2024,
+        "len": 3929
+      }
+    ]
+  },
+  "infield_effects": {
+    "path": "reports\\generated\\pbp-infield-range-re24-v1\\player-position-season-effects.parquet",
+    "sha256": "a55acb85fda11a5b71a120c5ac8f2aa1cc8b9b3eced4df9d7efbb27247e9eec0",
+    "rows": 26330,
+    "columns": [
+      "season",
+      "responsible_fielder_id",
+      "responsible_position",
+      "fielding_opportunities",
+      "fielding_runs_above_expected",
+      "mean_out_run_swing",
+      "fielding_runs_above_expected_rate"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2016,
+        "len": 3230
+      },
+      {
+        "season": 2017,
+        "len": 3356
+      },
+      {
+        "season": 2018,
+        "len": 3463
+      },
+      {
+        "season": 2019,
+        "len": 3524
+      },
+      {
+        "season": 2021,
+        "len": 3213
+      },
+      {
+        "season": 2022,
+        "len": 3248
+      },
+      {
+        "season": 2023,
+        "len": 3218
+      },
+      {
+        "season": 2024,
+        "len": 3078
+      }
+    ]
+  },
+  "outfield_effects": {
+    "path": "reports\\generated\\pbp-outfield-range-re24-v1\\player-position-season-effects.parquet",
+    "sha256": "a3456318d4cb1d54c935274bb54bcbe0ae7b34d6a31d19329fa143fcf4f8cf74",
+    "rows": 32094,
+    "columns": [
+      "season",
+      "responsible_fielder_id",
+      "responsible_position",
+      "fielding_opportunities",
+      "fielding_runs_above_expected",
+      "mean_out_run_swing",
+      "fielding_runs_above_expected_rate"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2016,
+        "len": 4040
+      },
+      {
+        "season": 2017,
+        "len": 4125
+      },
+      {
+        "season": 2018,
+        "len": 4235
+      },
+      {
+        "season": 2019,
+        "len": 4235
+      },
+      {
+        "season": 2021,
+        "len": 3906
+      },
+      {
+        "season": 2022,
+        "len": 3926
+      },
+      {
+        "season": 2023,
+        "len": 3883
+      },
+      {
+        "season": 2024,
+        "len": 3744
+      }
+    ]
+  },
+  "runner_effects": {
+    "path": "reports\\generated\\pbp-runner-re24-v1\\runner-season-effects.parquet",
+    "sha256": "dab799d88792da7fe05cc5fb6bdcee697476dbe617dcb9f16f550fbd91bf2fcc",
+    "rows": 31640,
+    "columns": [
+      "season",
+      "player_id",
+      "opportunities",
+      "effect"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2016,
+        "len": 4267
+      },
+      {
+        "season": 2017,
+        "len": 4295
+      },
+      {
+        "season": 2018,
+        "len": 4361
+      },
+      {
+        "season": 2019,
+        "len": 4224
+      },
+      {
+        "season": 2021,
+        "len": 3745
+      },
+      {
+        "season": 2022,
+        "len": 3676
+      },
+      {
+        "season": 2023,
+        "len": 3634
+      },
+      {
+        "season": 2024,
+        "len": 3438
+      }
+    ]
+  },
+  "range_actual_2025": {
+    "path": "reports\\generated\\hitter-general-defense-value-v2\\actual-defense-by-position.parquet",
+    "sha256": "bba6f4194ffeef83f74276b4bcdb3100ec5136f0dd33b7a2f05d56405b7cd5e9",
+    "rows": 256,
+    "columns": [
+      "player_id",
+      "position",
+      "fielding_outs",
+      "range_target_z",
+      "exposure_weighted_target_center",
+      "run_rate_per_z_out",
+      "actual_general_defense_runs"
+    ],
+    "year_column": null,
+    "position": [
+      "1B",
+      "2B",
+      "3B",
+      "CF",
+      "LF",
+      "RF",
+      "SS"
+    ]
+  },
+  "mlb_range_2025": {
+    "path": "reports\\generated\\defense-v1-2025-target-source\\tables\\general_range_targets_2025.parquet",
+    "sha256": "1108ca1ad28405eb24d40590e2775635664f894f0183e4d87aaee61689d41244",
+    "rows": 256,
+    "columns": [
+      "season",
+      "player_id",
+      "position",
+      "target_raw",
+      "target_mean",
+      "target_sd",
+      "target_position_count",
+      "range_target_z"
+    ],
+    "year_column": "season",
+    "by_year": [
+      {
+        "season": 2025,
+        "len": 256
+      }
+    ],
+    "position": [
+      "1B",
+      "2B",
+      "3B",
+      "CF",
+      "LF",
+      "RF",
+      "SS"
+    ]
+  }
+}

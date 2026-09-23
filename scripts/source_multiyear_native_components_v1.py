@@ -65,8 +65,8 @@ def capture(kind, year):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--years", nargs="+", type=int, default=[2019])
-    parser.add_argument("--kinds", nargs="+", default=["fielding", "running", "framing"])
+    parser.add_argument("--years", nargs="+", type=int, default=list(range(2016,2026)))
+    parser.add_argument("--kinds", nargs="+", default=["fielding", "running"])
     args = parser.parse_args()
     with ThreadPoolExecutor(max_workers=3) as pool:
         list(pool.map(lambda item: capture(*item), [(k,y) for k in args.kinds for y in args.years]))

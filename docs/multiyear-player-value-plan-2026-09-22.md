@@ -319,3 +319,13 @@ hand-correct player values or replace the selected procedure based on exposed ou
 scores. Then execute M3: pitchers Year 1–3 and longer horizons where support permits.
 This follow-up addresses a specific observed weakness; it does not reopen a broad
 algorithm tournament or postpone delivery of the supported hitter value means.
+
+**Component integration checkpoint, 2026-09-22:** the first bounded M5 hitter
+component-ledger experiment and explorer are complete under a separate development
+version. See `multiyear-hitter-components-v1-result.md`. Position/running recovered
+winners help; native MLB range/arm/DP history supports a near-term defensive
+contribution. Cumulative error improves, but only two complete normal origins
+support the full measured ledger. Catcher channels have separate, mixed evidence;
+MiLB defensive transfer and joint position/PA reconciliation remain unresolved.
+This is not full M5 completion, does not modify the frozen 2026 forecast, and does
+not remove the outstanding pitcher/horizon/uncertainty milestones.

@@ -1,0 +1,4619 @@
+{
+  "plan_sha256": "e409556ece067f17d21700773518650c29be327411a7c1e0806237ca50314113",
+  "source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-skill-source-2008-2017\\tables\\affiliated_hitting_components.parquet": "a96e6a1a0e1b6f8dd4442770d92ff234addce218d656f5f031585d7d4de1feb2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-skill-source-2018-2022\\tables\\affiliated_hitting_components.parquet": "754b37122bbbe29a93cb53dab872aadce060a9f8aa43b4dd24a64c2987aa6e43",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-skill-source\\tables\\affiliated_hitting_components.parquet": "7235a83e73613108d56a0538b832ea1073b1d02324265b806979f9757b6fffde",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\mlb-fielding-outcome-inventory-2004-2025\\tables\\mlb_fielding_usage_2004_2025.parquet": "d764ad9e71cddc7e23f0bc30ea5fd8b06502076dbddfd6f4c00969524842fbd8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\milb-fielding-origin-inventory\\tables\\milb_fielding_usage_at_origins.parquet": "2eadb984bbf187cdffd6f5dd1254c54e3bfacc34f4a70e572874a934831ebab0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\position-capacity-source\\historical\\reports\\generated\\position-role-historical-source\\tables\\historical_fielding_usage.parquet": "fa84a74402390c62de06e174083810cfe668010d696a2c71a312347e95ef71f4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\position-capacity-source\\2025\\reports\\generated\\position-role-2025-confirmation-source\\tables\\position_role_2025_fielding_usage.parquet": "372cd75d0f67217c7def51351e938a16b2584d30de374d9f5097a5d739f8f8d4",
+    "docs\\multiyear-hitter-components-v1-plan.md": "e409556ece067f17d21700773518650c29be327411a7c1e0806237ca50314113",
+    "model_artifacts\\hitter-three-year-opportunity-v1-2026-09-22\\predictions.parquet": "aeaa1ac2c1d0c118123d8f76fe6a8b848331708081baf5a00ec323e6b90f3398",
+    "model_artifacts\\multiyear-hitter-followup-v2-2026-09-22\\forecast-2026-2028.parquet": "d041e2fc1da59cddf9f4712688ae7304999d329f85590eaa9ac35db1c53096df",
+    "reports\\generated\\multiyear-hitter-v1\\panel.parquet": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\tables\\mlb_hitting_components_2009_2025.parquet": "755b78517f52c3875fe7ea2877cbcb34a0cecd1a2fcb17ee05698cc55f2184a6",
+    "reports\\generated\\multiyear-hitter-components-v1\\native-fielding-history.parquet": "1585923a2ca63e083b8c143e0daf6b2bb054ad7ad0206d2bd9130683c45481d2",
+    "reports\\generated\\multiyear-hitter-components-v1\\native-advancement-history.parquet": "73dce04e21ee091ef9d2311047ed2a2e9654dcb24510bc97098c0a5c3e0594cb",
+    "reports\\generated\\multiyear-hitter-components-v1\\official-position-history.parquet": "f65c6ce4cbc916fc920db206eae2fcb20573c0eea52e0ee0cc47371e70680879"
+  },
+  "features": [
+    "age_missing",
+    "age_centered",
+    "age_squared",
+    "level_MLB",
+    "level_AAA",
+    "level_AA",
+    "level_A+",
+    "level_A",
+    "level_A-",
+    "level_RK",
+    "level_INACTIVE",
+    "level_UNKNOWN",
+    "log_pa_lag0",
+    "log_mlb_pa_lag0",
+    "share_RK_lag0",
+    "share_ROOKIE_lag0",
+    "share_A-_lag0",
+    "share_A_lag0",
+    "share_A+_lag0",
+    "share_AA_lag0",
+    "share_AAA_lag0",
+    "share_MLB_lag0",
+    "log_pa_lag1",
+    "log_mlb_pa_lag1",
+    "share_RK_lag1",
+    "share_ROOKIE_lag1",
+    "share_A-_lag1",
+    "share_A_lag1",
+    "share_A+_lag1",
+    "share_AA_lag1",
+    "share_AAA_lag1",
+    "share_MLB_lag1",
+    "log_pa_lag2",
+    "log_mlb_pa_lag2",
+    "share_RK_lag2",
+    "share_ROOKIE_lag2",
+    "share_A-_lag2",
+    "share_A_lag2",
+    "share_A+_lag2",
+    "share_AA_lag2",
+    "share_AAA_lag2",
+    "share_MLB_lag2",
+    "ubb_rate_lag0",
+    "strikeout_rate_lag0",
+    "single_rate_lag0",
+    "double_rate_lag0",
+    "triple_rate_lag0",
+    "home_run_rate_lag0",
+    "hbp_rate_lag0",
+    "stolen_base_rate_lag0",
+    "ubb_rate_lag1",
+    "strikeout_rate_lag1",
+    "single_rate_lag1",
+    "double_rate_lag1",
+    "triple_rate_lag1",
+    "home_run_rate_lag1",
+    "hbp_rate_lag1",
+    "stolen_base_rate_lag1",
+    "ubb_rate_lag2",
+    "strikeout_rate_lag2",
+    "single_rate_lag2",
+    "double_rate_lag2",
+    "triple_rate_lag2",
+    "home_run_rate_lag2",
+    "hbp_rate_lag2",
+    "stolen_base_rate_lag2",
+    "role_C",
+    "role_1B",
+    "role_2B",
+    "role_3B",
+    "role_SS",
+    "role_LF",
+    "role_CF",
+    "role_RF",
+    "role_DH",
+    "role_missing",
+    "position_lag0",
+    "position_lag0_available",
+    "position_lag0_rate",
+    "steals_lag0",
+    "steals_lag0_available",
+    "steals_lag0_rate",
+    "advancement_lag0",
+    "advancement_lag0_available",
+    "advancement_lag0_rate",
+    "general_lag0",
+    "general_lag0_available",
+    "general_lag0_rate",
+    "framing_lag0",
+    "framing_lag0_available",
+    "framing_lag0_rate",
+    "throwing_lag0",
+    "throwing_lag0_available",
+    "throwing_lag0_rate",
+    "blocking_lag0",
+    "blocking_lag0_available",
+    "blocking_lag0_rate",
+    "position_lag1",
+    "position_lag1_available",
+    "position_lag1_rate",
+    "steals_lag1",
+    "steals_lag1_available",
+    "steals_lag1_rate",
+    "advancement_lag1",
+    "advancement_lag1_available",
+    "advancement_lag1_rate",
+    "general_lag1",
+    "general_lag1_available",
+    "general_lag1_rate",
+    "framing_lag1",
+    "framing_lag1_available",
+    "framing_lag1_rate",
+    "throwing_lag1",
+    "throwing_lag1_available",
+    "throwing_lag1_rate",
+    "blocking_lag1",
+    "blocking_lag1_available",
+    "blocking_lag1_rate",
+    "position_lag2",
+    "position_lag2_available",
+    "position_lag2_rate",
+    "steals_lag2",
+    "steals_lag2_available",
+    "steals_lag2_rate",
+    "advancement_lag2",
+    "advancement_lag2_available",
+    "advancement_lag2_rate",
+    "general_lag2",
+    "general_lag2_available",
+    "general_lag2_rate",
+    "framing_lag2",
+    "framing_lag2_available",
+    "framing_lag2_rate",
+    "throwing_lag2",
+    "throwing_lag2_available",
+    "throwing_lag2_rate",
+    "blocking_lag2",
+    "blocking_lag2_available",
+    "blocking_lag2_rate"
+  ],
+  "fits": [
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 31321,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "no_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 31321,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "no_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": false,
+      "training_rows": 4512,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2015
+      ],
+      "selection": {
+        "reason": "no_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "component": "general",
+      "fitted": false,
+      "training_rows": 4510,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2015
+      ],
+      "selection": {
+        "reason": "no_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": false,
+      "training_rows": 4510,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2015
+      ],
+      "selection": {
+        "reason": "no_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": false,
+      "training_rows": 4510,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2015
+      ],
+      "selection": {
+        "reason": "no_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 0,
+      "latest_label_year": null,
+      "training_origins": [],
+      "selection": {
+        "reason": "no_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 26809,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 26809,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "component": "advancement",
+      "fitted": false,
+      "training_rows": 4516,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "component": "general",
+      "fitted": false,
+      "training_rows": 4514,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "component": "framing",
+      "fitted": false,
+      "training_rows": 4514,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "component": "throwing",
+      "fitted": false,
+      "training_rows": 4514,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 0,
+      "latest_label_year": null,
+      "training_origins": [],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 22293,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 22293,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "component": "advancement",
+      "fitted": false,
+      "training_rows": 4476,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2013
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "component": "general",
+      "fitted": false,
+      "training_rows": 4474,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2013
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "component": "framing",
+      "fitted": false,
+      "training_rows": 4474,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2013
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "component": "throwing",
+      "fitted": false,
+      "training_rows": 4474,
+      "latest_label_year": 2016,
+      "training_origins": [
+        2013
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 0,
+      "latest_label_year": null,
+      "training_origins": [],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 9084,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 9078,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 9078,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 9078,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 0,
+      "latest_label_year": null,
+      "training_origins": [],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 31321,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 31321,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 9028,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 9022,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 9022,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 9022,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 0,
+      "latest_label_year": null,
+      "training_origins": [],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 26809,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 26809,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 8992,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2013,
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 8986,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2013,
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 8986,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2013,
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 8986,
+      "latest_label_year": 2017,
+      "training_origins": [
+        2013,
+        2014
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 0,
+      "latest_label_year": null,
+      "training_origins": [],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 40473,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 2.2303063370782343,
+          "benchmark": 0.8350786170527233,
+          "direct": 0.7730572337097861
+        }
+      },
+      "selected": "direct",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 40473,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.09525163636824996,
+          "benchmark": 0.06950113969571682,
+          "direct": 0.07528024744613793
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 13664,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.30869546472471954,
+          "benchmark": 0.21454987715482782,
+          "direct": 0.22038572283803257
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 13655,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 2.644779327948079,
+          "benchmark": 1.9907865276689583,
+          "direct": 1.9998335975685153
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 13655,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.3793464427835118,
+          "benchmark": 0.3793464427835118,
+          "direct": 0.3793464427835118
+        }
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 13655,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.08089863803618656,
+          "benchmark": 0.07025666154441668,
+          "direct": 0.07201166062152276
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 4577,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2017
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2017
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 13600,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 13591,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 13591,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 13591,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 4569,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 31321,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 31321,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 13504,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 13495,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 13495,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 13495,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2013,
+        2014,
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "component": "blocking",
+      "fitted": false,
+      "training_rows": 4509,
+      "latest_label_year": 2018,
+      "training_origins": [
+        2015
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": []
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 44821,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 2.2245244929349703,
+          "benchmark": 0.8777537041014184,
+          "direct": 0.8324300800169634
+        }
+      },
+      "selected": "direct",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 44821,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.09646378810688773,
+          "benchmark": 0.07130448818548614,
+          "direct": 0.07782117283878397
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 18012,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.2951894955025575,
+          "benchmark": 0.20381019830869793,
+          "direct": 0.21113005650011477
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 18002,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 2.759088995340099,
+          "benchmark": 2.1054986224546353,
+          "direct": 2.126835297708967
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 18002,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.4918442650256461,
+          "benchmark": 0.447910735261084,
+          "direct": 0.515175302945181
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 18002,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.07948900787464325,
+          "benchmark": 0.06887967211319897,
+          "direct": 0.07191123243925839
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 8924,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.06876150330142242,
+          "benchmark": 0.06114761587647792,
+          "direct": 0.06114761587647792
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 40473,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 2.124272209789226,
+          "benchmark": 1.1873668757706772,
+          "direct": 1.1952898615683405
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 40473,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.09036273290632174,
+          "benchmark": 0.0753339498345002,
+          "direct": 0.08176492863029246
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 18180,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.2768664746545818,
+          "benchmark": 0.22613966385015985,
+          "direct": 0.23337036700476496
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 2.8286875209070415,
+          "benchmark": 2.3973751262055867,
+          "direct": 2.614292643964544
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.7202708710327862,
+          "benchmark": 0.7202708710327861,
+          "direct": 0.7202708710327861
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.06508031348440507,
+          "benchmark": 0.05959062066283155,
+          "direct": 0.06449615438925645
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 9148,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.06699188309099154,
+          "benchmark": 0.06699188309099154,
+          "direct": 0.06699188309099154
+        }
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 18076,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 9080,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 44821,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 2.2245244929349703,
+          "benchmark": 0.8777537041014184,
+          "direct": 0.8324300800169636
+        }
+      },
+      "selected": "direct",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 44821,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.09646378810688772,
+          "benchmark": 0.07130448818548614,
+          "direct": 0.07782117283878397
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 18012,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.2951894955025576,
+          "benchmark": 0.20381019830869793,
+          "direct": 0.21113005650011477
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 18002,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 2.759088995340099,
+          "benchmark": 2.1054986224546357,
+          "direct": 2.126835297708967
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 18002,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.4918442650256461,
+          "benchmark": 0.447910735261084,
+          "direct": 0.515175302945181
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 18002,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.07948900787464325,
+          "benchmark": 0.06887967211319897,
+          "direct": 0.07191123243925839
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 8924,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2017,
+        2018
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2017,
+          2018
+        ],
+        "mse": {
+          "neutral": 0.0687615033014224,
+          "benchmark": 0.06114761587647792,
+          "direct": 0.06114761587647792
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 40473,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 2.1242722097892264,
+          "benchmark": 1.1873668757706772,
+          "direct": 1.1952898615683392
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 40473,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.09036273290632174,
+          "benchmark": 0.07533394983450017,
+          "direct": 0.08176492863029242
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 18180,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.2768664746545818,
+          "benchmark": 0.22613966385015985,
+          "direct": 0.23337036700476493
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 2.8286875209070415,
+          "benchmark": 2.397375126205587,
+          "direct": 2.614292643964544
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.7202708710327861,
+          "benchmark": 0.7202708710327861,
+          "direct": 0.7202708710327861
+        }
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.06508031348440506,
+          "benchmark": 0.05959062066283155,
+          "direct": 0.06449615438925645
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 9148,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.06699188309099154,
+          "benchmark": 0.06699188309099154,
+          "direct": 0.06699188309099152
+        }
+      },
+      "selected": "direct",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 18076,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 9080,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 48985,
+      "latest_label_year": 2022,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021
+        ],
+        "mse": {
+          "neutral": 2.3147955501981934,
+          "benchmark": 0.8999882538119937,
+          "direct": 0.8570143957234686
+        }
+      },
+      "selected": "direct",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 48985,
+      "latest_label_year": 2022,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.09771677628324081,
+          "benchmark": 0.07489653807980817,
+          "direct": 0.08066466330423716
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 22176,
+      "latest_label_year": 2022,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.29031404668663036,
+          "benchmark": 0.20518149413541192,
+          "direct": 0.21023500326279365
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 22164,
+      "latest_label_year": 2022,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021
+        ],
+        "mse": {
+          "neutral": 2.7127464843509914,
+          "benchmark": 2.0998069569012103,
+          "direct": 2.1177151985810587
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 22164,
+      "latest_label_year": 2022,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.5424210605588351,
+          "benchmark": 0.47528290973862164,
+          "direct": 0.5462912424246443
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 22164,
+      "latest_label_year": 2022,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.07707523132927405,
+          "benchmark": 0.0670784080158565,
+          "direct": 0.06803107337312109
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 13086,
+      "latest_label_year": 2022,
+      "training_origins": [
+        2017,
+        2018,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2017,
+          2018,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.06271196273839962,
+          "benchmark": 0.055852439663823535,
+          "direct": 0.05800363752650395
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 40473,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 2.124272209789226,
+          "benchmark": 1.1873668757706772,
+          "direct": 1.195289861568339
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 40473,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.09036273290632174,
+          "benchmark": 0.07533394983450017,
+          "direct": 0.08176492863029242
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 18180,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.2768664746545818,
+          "benchmark": 0.22613966385015988,
+          "direct": 0.23337036700476496
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 2.8286875209070415,
+          "benchmark": 2.3973751262055876,
+          "direct": 2.6142926439645437
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.7202708710327861,
+          "benchmark": 0.7202708710327861,
+          "direct": 0.7202708710327861
+        }
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 18170,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.06508031348440507,
+          "benchmark": 0.05959062066283155,
+          "direct": 0.06449615438925645
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 9148,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2016,
+        2017
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017
+        ],
+        "mse": {
+          "neutral": 0.06699188309099152,
+          "benchmark": 0.06699188309099154,
+          "direct": 0.06699188309099154
+        }
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 35893,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 18076,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 18066,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 9080,
+      "latest_label_year": 2019,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "selection": {
+        "reason": "insufficient_mature_oof",
+        "origins": [
+          2016
+        ]
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2023,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 53140,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.386764195778052,
+          "benchmark": 0.9362368209284991,
+          "direct": 0.9084080374742044
+        }
+      },
+      "selected": "direct",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 53140,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.11778412905497797,
+          "benchmark": 0.09197113802615854,
+          "direct": 0.09762964327088029
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 26331,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.2841606360850019,
+          "benchmark": 0.20220485434774163,
+          "direct": 0.2109482113084587
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 1,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 26316,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.662644049973493,
+          "benchmark": 2.0677515211970965,
+          "direct": 2.0980791329787083
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 26316,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.5854642410934416,
+          "benchmark": 0.5077704677613687,
+          "direct": 0.6154730293964019
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 26316,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.08190278580910193,
+          "benchmark": 0.07274394713326024,
+          "direct": 0.07490214414088311
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 17238,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2017,
+        2018,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.05778401269391458,
+          "benchmark": 0.05124272926546228,
+          "direct": 0.05579647111719731
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 2,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 44637,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021
+        ],
+        "mse": {
+          "neutral": 2.303013805363254,
+          "benchmark": 1.303193659657181,
+          "direct": 1.3034670841610694
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 2,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 44637,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.12543223301184472,
+          "benchmark": 0.11002236955936562,
+          "direct": 0.11220448801502232
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 2,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 22344,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.27086327128638743,
+          "benchmark": 0.22697139051769277,
+          "direct": 0.23113813515477719
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 2,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 22331,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021
+        ],
+        "mse": {
+          "neutral": 2.7042454344313804,
+          "benchmark": 2.341466981964196,
+          "direct": 2.526198372395088
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 2,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 22331,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.732179993597177,
+          "benchmark": 0.7233181600491448,
+          "direct": 0.7343062318314154
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 2,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 22331,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.07705157096031336,
+          "benchmark": 0.07234138834257764,
+          "direct": 0.07563257273517768
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2023,
+      "horizon": 2,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 13309,
+      "latest_label_year": 2023,
+      "training_origins": [
+        2016,
+        2017,
+        2021
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021
+        ],
+        "mse": {
+          "neutral": 0.05896364063400298,
+          "benchmark": 0.0595472202415836,
+          "direct": 0.05917734244055358
+        }
+      },
+      "selected": "neutral",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2024,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 57233,
+      "latest_label_year": 2024,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.386764195778052,
+          "benchmark": 0.9362368209284991,
+          "direct": 0.9084080374742044
+        }
+      },
+      "selected": "direct",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2024,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 57233,
+      "latest_label_year": 2024,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.11778412905497797,
+          "benchmark": 0.09197113802615854,
+          "direct": 0.09762964327088029
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2024,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 30424,
+      "latest_label_year": 2024,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.28416063608500186,
+          "benchmark": 0.20220485434774163,
+          "direct": 0.21094821130845873
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2024,
+      "horizon": 1,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 30408,
+      "latest_label_year": 2024,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.662644049973493,
+          "benchmark": 2.0677515211970965,
+          "direct": 2.0980791329787083
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2024,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 30408,
+      "latest_label_year": 2024,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.5854642410934415,
+          "benchmark": 0.5077704677613687,
+          "direct": 0.6154730293964019
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2024,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 30408,
+      "latest_label_year": 2024,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.0819027858091019,
+          "benchmark": 0.07274394713326025,
+          "direct": 0.07490214414088311
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2024,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 21330,
+      "latest_label_year": 2024,
+      "training_origins": [
+        2017,
+        2018,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.05778401269391458,
+          "benchmark": 0.05124272926546228,
+          "direct": 0.05579647111719731
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "component_only_ridge_proxy"
+    },
+    {
+      "origin": 2025,
+      "horizon": 1,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 61116,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.3867641957780514,
+          "benchmark": 0.9362368209284991,
+          "direct": 0.9084080374742045
+        }
+      },
+      "selected": "direct",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 1,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 61116,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.11778412905497797,
+          "benchmark": 0.09197113802615856,
+          "direct": 0.09762964327088028
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 1,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 34307,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.28416063608500186,
+          "benchmark": 0.20220485434774163,
+          "direct": 0.2109482113084587
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 1,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 34290,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.662644049973493,
+          "benchmark": 2.0677515211970965,
+          "direct": 2.098079132978708
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 1,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 34290,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.5854642410934416,
+          "benchmark": 0.5077704677613686,
+          "direct": 0.6154730293964019
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 1,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 34290,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.08190278580910192,
+          "benchmark": 0.07274394713326025,
+          "direct": 0.07490214414088311
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 1,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 25212,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2017,
+        2018,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2017,
+          2018,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.05778401269391458,
+          "benchmark": 0.05124272926546228,
+          "direct": 0.05579647111719731
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 2,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 52885,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.4041151777685354,
+          "benchmark": 1.3464137159472096,
+          "direct": 1.3593847441066012
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 2,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 52885,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.14158510743247255,
+          "benchmark": 0.12618124255891905,
+          "direct": 0.1287543877039016
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 2,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 30592,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.2648734506502009,
+          "benchmark": 0.220006603523943,
+          "direct": 0.22499452777137768
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 2,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 30577,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.650462848310853,
+          "benchmark": 2.293315550380706,
+          "direct": 2.4420531874553157
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 2,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 30577,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.6965631146707896,
+          "benchmark": 0.6873137275147752,
+          "direct": 0.6988211142544727
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 2,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 30577,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.0838138676637599,
+          "benchmark": 0.07970919179892455,
+          "direct": 0.08169065835074726
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 2,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 21555,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2016,
+        2017,
+        2021,
+        2022,
+        2023
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2017,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.05577710330682245,
+          "benchmark": 0.055460196439587967,
+          "direct": 0.05620097412662244
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "component": "position",
+      "fitted": true,
+      "training_rows": 44212,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.496544626570121,
+          "benchmark": 1.6874579004269743,
+          "direct": 1.7594253178356911
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "component": "steals",
+      "fitted": true,
+      "training_rows": 44212,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.14466750843464002,
+          "benchmark": 0.13640886117641818,
+          "direct": 0.13514440860227736
+        }
+      },
+      "selected": "direct",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "component": "advancement",
+      "fitted": true,
+      "training_rows": 26395,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.2568248242076533,
+          "benchmark": 0.23366635982174447,
+          "direct": 0.2265729860167528
+        }
+      },
+      "selected": "direct",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "component": "general",
+      "fitted": true,
+      "training_rows": 26383,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 2.6264350193802777,
+          "benchmark": 2.412087157415349,
+          "direct": 2.4488369243973196
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "component": "framing",
+      "fitted": true,
+      "training_rows": 26383,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.6115215899125706,
+          "benchmark": 0.6176295426364589,
+          "direct": 0.6123147791452682
+        }
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "component": "throwing",
+      "fitted": true,
+      "training_rows": 26383,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.08898405204797111,
+          "benchmark": 0.08615438466723295,
+          "direct": 0.08677715036811261
+        }
+      },
+      "selected": "benchmark",
+      "pa_source": "delivered"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "component": "blocking",
+      "fitted": true,
+      "training_rows": 17397,
+      "latest_label_year": 2025,
+      "training_origins": [
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "selection": {
+        "reason": "earlier_oof_mse",
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "mse": {
+          "neutral": 0.052549309660799605,
+          "benchmark": 0.05267267623619417,
+          "direct": 0.05355632390558751
+        }
+      },
+      "selected": "neutral",
+      "pa_source": "delivered"
+    }
+  ],
+  "steal_environment_audit": {
+    "player_season_count": 85584,
+    "player_environment_stint_count": 116501,
+    "actual_environment_attempt_rows": 99896,
+    "level_fallback_attempt_rows": 0,
+    "actual_environment_success_rows": 72212,
+    "level_fallback_success_rows": 0
+  },
+  "code_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\fit_multiyear_hitter_components_v1.py": "690a3221ec6f8f1cb6618c7cac7ac11e37d5d4ca60a474e0473665f4237e3f1c",
+    "src/universal_baseball/multiyear_hitter_components.py": "66d8090f9d0498720993b8d01a61fcf6b02c5b1f18c5b1688b20418ce14dbce1"
+  },
+  "label_note": "steals fixed .2/- .4, season-centered; zero advancement when absent from unqualified n=1 export; missing active fielding preserved",
+  "caveat": "2023/24 component-only PA proxy is not the delivered workload model; score/selection must distinguish this"
+}

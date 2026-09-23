@@ -4,7 +4,20 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest: the [Years 1–3 confirmation](hitter-three-year-opportunity-confirmation-v1-result.md)
+Latest: the [multi-year hitter component milestone](multiyear-hitter-components-v1-result.md)
+is delivered with a new team-filter explorer at `http://127.0.0.1:8775/`.
+Recovered position/running methods and broader native MLB defensive history add
+a provisional component ledger to unchanged batting/PA forecasts. Normal annual
+expanded-target RMSE improves 0.513→0.486 / 0.582→0.564 / 0.612→0.599;
+cumulative 1.347→1.277, but only **two** complete normal three-year origins remain.
+General defense is useful near-term for MLB-history players; minor-league defense
+translation is not solved. Catcher throwing/blocking whole-value evidence is
+weak or mixed. This is not a replacement of the frozen one-year forecast or a
+confirmed full-WAR model. The literature review, source audit, fixed plan and
+component-by-component limitations are linked from the result. Next address
+joint role/exposure consistency alongside the prospect-arrival gap below.
+
+Previous: the [Years 1–3 confirmation](hitter-three-year-opportunity-confirmation-v1-result.md)
 is complete. Candidate PA beats delivered PA in each year (RMSE 62.63 / 79.40 /
 90.58 versus 69.26 / 86.39 / 98.34), but the same-input five-model ensemble is
 better still (62.33 / 78.85 / 89.63). The single candidate fails that confirmation

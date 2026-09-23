@@ -1,0 +1,166 @@
+{
+  "rows": 3907,
+  "organizations": [
+    "Arizona Diamondbacks",
+    "Athletics",
+    "Atlanta Braves",
+    "Baltimore Orioles",
+    "Boston Red Sox",
+    "Chicago Cubs",
+    "Chicago White Sox",
+    "Cincinnati Reds",
+    "Cleveland Guardians",
+    "Colorado Rockies",
+    "Detroit Tigers",
+    "Houston Astros",
+    "Kansas City Royals",
+    "Los Angeles Angels",
+    "Los Angeles Dodgers",
+    "Miami Marlins",
+    "Milwaukee Brewers",
+    "Minnesota Twins",
+    "New York Mets",
+    "New York Yankees",
+    "Philadelphia Phillies",
+    "Pittsburgh Pirates",
+    "San Diego Padres",
+    "San Francisco Giants",
+    "Seattle Mariners",
+    "St. Louis Cardinals",
+    "Tampa Bay Rays",
+    "Texas Rangers",
+    "Toronto Blue Jays",
+    "Unknown / no 2025 batting stint",
+    "Washington Nationals"
+  ],
+  "team_mapping": "Any 2025 batting stint's historical parent organization, not current roster or rights ownership",
+  "multiple_organizations": 85,
+  "unknown_organization": 187,
+  "no_recent_native_measurement": 3246,
+  "position_workload_review": 9,
+  "position_workload_note": "Diagnostic: direct position runs exceed the fixed 600-PA accounting envelope by >1 run; not a physical limit or post-hoc forecast correction.",
+  "missing_names": 0,
+  "display_only_identity_hash": "00f57fb65349580c15c5b16fac7cab737a22c736715205f02788ccb35e496538",
+  "display_only_name_capture_sha256": "16ee8b9a84ee3f80c45b775960de31a550de9f9ed3d5bf2bed475eb0a9b427e3",
+  "name_note": "ID/name-only public lookup fills missing display names; no stats, affiliations, roster status, or model inputs requested/changed.",
+  "batting_and_pa_unchanged": true,
+  "old_packages_unchanged": true,
+  "development_only": true,
+  "release_gate": true,
+  "confirmation_support": false,
+  "team_source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-1.json": "33aef8945f24a8294d8900e6dd44eb6e5df8db0740b74a8802e21370a194ffda",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-11.json": "153b5ee785f7d3ba8dc4c56031480e8c8eb01ead7c79461a3cb561daaa2e8f34",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-12.json": "43bc9cd0b0a9fe70545fd521fc7b0fe8267000d44534695203a494c6981398c5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-13.json": "175309b89122ed5d71f2d582982e8bc353a8d2eec5985121540dc630cf2fb1d4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-14.json": "fcfb2b6340fd0e1c839ee989ddbdad60fcedb010a09fb60f0290e2aa431bda47",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-16.json": "716254e643edaf6cf0a34500e1ed393b29bc3f6373c16660469b930db3c0779c"
+  },
+  "current_selections": [
+    {
+      "component": "advancement",
+      "horizon": 1,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "advancement",
+      "horizon": 2,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "advancement",
+      "horizon": 3,
+      "selected_model": "direct"
+    },
+    {
+      "component": "blocking",
+      "horizon": 1,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "blocking",
+      "horizon": 2,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "blocking",
+      "horizon": 3,
+      "selected_model": "neutral"
+    },
+    {
+      "component": "framing",
+      "horizon": 1,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "framing",
+      "horizon": 2,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "framing",
+      "horizon": 3,
+      "selected_model": "neutral"
+    },
+    {
+      "component": "general",
+      "horizon": 1,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "general",
+      "horizon": 2,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "general",
+      "horizon": 3,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "position",
+      "horizon": 1,
+      "selected_model": "direct"
+    },
+    {
+      "component": "position",
+      "horizon": 2,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "position",
+      "horizon": 3,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "steals",
+      "horizon": 1,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "steals",
+      "horizon": 2,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "steals",
+      "horizon": 3,
+      "selected_model": "direct"
+    },
+    {
+      "component": "throwing",
+      "horizon": 1,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "throwing",
+      "horizon": 2,
+      "selected_model": "benchmark"
+    },
+    {
+      "component": "throwing",
+      "horizon": 3,
+      "selected_model": "benchmark"
+    }
+  ]
+}
