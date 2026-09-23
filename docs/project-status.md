@@ -4,7 +4,27 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest experiment: [richer detail for future MLB arrival](hitter-detail-arrival-v1-result.md)
+Latest experiment: [history continuity and past-only calibration](hitter-history-calibration-v1-result.md)
+tests the miss diagnostic with two fixed feature arms and raw/calibrated probabilities.
+The primary combined arm is **not accepted**. History summaries alone improve
+next-year Brier/log loss by about 1.1%/1.2%, in 5/6 origins with favorable paired
+intervals, but do not repair 2021's missing arrivals (58 becomes 61 versus 157).
+Keep this diagnostic arm as a follow-up candidate, not a selected live replacement.
+Calibration overcorrects later annual cohorts. For regular workload, a nearly
+right combined count (29.9 versus 31) conceals underprediction in 2021 and
+overprediction in 2022; individual proper-score improvement is not established.
+Three-year arrival gains are concentrated in 2021, and the simpler logistic
+coverage reference remains better. Only two overlapping three-year tests exist.
+36 new fits plus inherited controls, immutable prefit/repair audit, future mutation
+checks and the original 2026 seal are retained. No live forecasts or explorer changed.
+
+Next bounded direction: retain uncalibrated observed-history summaries for a
+separately specified next-year/whole-value follow-up against stronger benchmarks.
+Before trying more three-year probability adjustments, audit era-specific
+training/outcome support; do not equate correct pooled totals with correct player
+value or tune a pandemic boost to the already-observed 2021 cohort.
+
+Previous experiment: [richer detail for future MLB arrival](hitter-detail-arrival-v1-result.md)
 completes 102 fixed matched-population fits. Full detail improves next-year prospect
 Brier 0.024284→0.023948 and log loss 0.085010→0.083329 versus aggregate history;
 paired intervals favor detail, including versus coverage controls. However, only
@@ -21,11 +41,10 @@ to have any mature three-year training observations and was dropped in those fit
 Cold-identity stress underpredicts severely in both arms and changes the training
 population by removing later survivors; it is not a random identity holdout.
 
-Direction update from the user's request: before fitting the path simulator,
-predeclare a compact arrival/continuation comparison and calibration using only
-earlier matured forecasts, retaining stronger references and checking era/cohort
-shift. Do not tune to current test counts or cherry-pick D/C after full-detail R
-fails its acceptance contract. A probability winner still needs delivered-value
+That experiment motivated the past-only calibration/history comparison now
+completed above. The broader arrival/continuation architecture is still open;
+do not tune to current test counts or cherry-pick D/C after full-detail R fails
+its acceptance contract. A probability winner still needs delivered-value
 validation. Live forecasts, explorer and original 2026 freeze are unchanged.
 
 Previous prerequisite completed: the [historical projection-state rebuild](historical-projection-state-v1-result.md)

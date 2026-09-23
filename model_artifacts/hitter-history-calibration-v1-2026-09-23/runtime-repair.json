@@ -1,0 +1,15 @@
+{
+  "reason": "After all fits and the mutation test, JSON serialization rejected a numpy boolean in calibration metadata. Convert fallback to a Python bool, and add immutable-amendment verification. No numerical recipe changed. Rewritten Parquet bytes changed on resume, so byte identity is not asserted: reconstruct the original module bytes, verify their original hash, and compare every calibrated probability with that frozen implementation within 1e-12. Raw cached fit hashes remain verified. No scores had been inspected. The original prefit manifest is retained untouched.",
+  "original_prefit_sha256": "11c86a8f4cdecfbe6f0e88875189a8621ec7de5c3ca104572d1c8cd14a57de04",
+  "predictions_before_repair_sha256": "167928d1de1f2d81bd4fb89109b608945b58e98da8c85b093748f8516af54b70",
+  "changes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\fit_hitter_history_calibration_v1.py": {
+      "before": "c612b8088c16df8985ec0869609ca18c60c15f6adf1502f2bb53683f5b381ef2",
+      "after": "7746dda1b4f6c142b3c61abb4fc4f401a84df3eebb15f3d3aeec11444df96de6"
+    },
+    "src\\universal_baseball\\hitter_history_calibration.py": {
+      "before": "c3527f71020f9fb5d33725f85005ce7a42d441802ed048ac44d87faeed3fdaf0",
+      "after": "5745c81414f4b588d0d1c74538af6f209baa3c05ecfb6f94667993b3f2d35855"
+    }
+  }
+}
