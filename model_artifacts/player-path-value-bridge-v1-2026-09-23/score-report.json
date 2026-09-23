@@ -1,0 +1,2612 @@
+{
+  "status": "reject_current_path_challenger",
+  "gates": {
+    "three_normal_origins": true,
+    "crps_intervals": true,
+    "majority_origins": true,
+    "mean_error": false,
+    "event_scores": true,
+    "upper_tail": false,
+    "starting_group_crps": true
+  },
+  "normal_h3": {
+    "B0": {
+      "rows": 12891,
+      "origins": [
+        2016,
+        2021,
+        2022
+      ],
+      "crps": 0.3640930181610506,
+      "mse": 2.7035243852903292,
+      "energy": 0.27521293446119327,
+      "coverage80": 0.8855266894771076,
+      "width80": 1.1343464171525168,
+      "delivered_mse": 1.4732643380258736,
+      "brier_no_mlb": 0.09910281217395318,
+      "brier_regular_workload": 0.029880195847484303,
+      "brier_substantial_batting": 0.021793524779273238,
+      "brier_sustained_high_batting": 0.00576063484719403,
+      "log_no_mlb": 0.34230568078127394,
+      "log_regular_workload": 0.10256494402514588,
+      "log_substantial_batting": 0.07951016156508993,
+      "log_sustained_high_batting": 0.02866712343590766,
+      "rmse": 1.6442397590650608,
+      "delivered_rmse": 1.2137810090893142,
+      "events": {
+        "no_mlb": {
+          "observed": 10260,
+          "predicted": 11173.1975,
+          "predicted_observed_ratio": 1.089005604288499
+        },
+        "regular_workload": {
+          "observed": 480,
+          "predicted": 385.88250000000005,
+          "predicted_observed_ratio": 0.8039218750000001
+        },
+        "substantial_batting": {
+          "observed": 323,
+          "predicted": 269.835,
+          "predicted_observed_ratio": 0.8354024767801856
+        },
+        "sustained_high_batting": {
+          "observed": 76,
+          "predicted": 78.15,
+          "predicted_observed_ratio": 1.0282894736842105
+        }
+      }
+    },
+    "F0": {
+      "rows": 12891,
+      "origins": [
+        2016,
+        2021,
+        2022
+      ],
+      "crps": 0.2968302068904895,
+      "mse": 1.8668721178247987,
+      "energy": 0.23719042704730345,
+      "coverage80": 0.8878458804214304,
+      "width80": 0.9654489403091192,
+      "delivered_mse": 1.4732643380258736,
+      "brier_no_mlb": 0.08959239742367635,
+      "brier_regular_workload": 0.02107256593847299,
+      "brier_substantial_batting": 0.01760264995278681,
+      "brier_sustained_high_batting": 0.004992762547320024,
+      "log_no_mlb": 0.31973936405345627,
+      "log_regular_workload": 0.07454812930374867,
+      "log_substantial_batting": 0.06304782383623825,
+      "log_sustained_high_batting": 0.021425548975130448,
+      "rmse": 1.3663352874842978,
+      "delivered_rmse": 1.2137810090893142,
+      "events": {
+        "no_mlb": {
+          "observed": 10260,
+          "predicted": 11187.485,
+          "predicted_observed_ratio": 1.0903981481481482
+        },
+        "regular_workload": {
+          "observed": 480,
+          "predicted": 403.17,
+          "predicted_observed_ratio": 0.8399375
+        },
+        "substantial_batting": {
+          "observed": 323,
+          "predicted": 276.47,
+          "predicted_observed_ratio": 0.8559442724458205
+        },
+        "sustained_high_batting": {
+          "observed": 76,
+          "predicted": 74.1875,
+          "predicted_observed_ratio": 0.9761513157894737
+        }
+      }
+    },
+    "F1": {
+      "rows": 12891,
+      "origins": [
+        2016,
+        2021,
+        2022
+      ],
+      "crps": 0.28937593388961913,
+      "mse": 1.7781170594753153,
+      "energy": 0.23357611767666633,
+      "coverage80": 0.890292103252211,
+      "width80": 0.9403337316037551,
+      "delivered_mse": 1.4732643380258736,
+      "brier_no_mlb": 0.08806798423471869,
+      "brier_regular_workload": 0.021490027997715173,
+      "brier_substantial_batting": 0.01727853688790779,
+      "brier_sustained_high_batting": 0.004922103622747687,
+      "log_no_mlb": 0.31490782036734216,
+      "log_regular_workload": 0.07615774359743345,
+      "log_substantial_batting": 0.0621538493822168,
+      "log_sustained_high_batting": 0.021054921851591597,
+      "rmse": 1.333460557900126,
+      "delivered_rmse": 1.2137810090893142,
+      "events": {
+        "no_mlb": {
+          "observed": 10260,
+          "predicted": 11170.43,
+          "predicted_observed_ratio": 1.0887358674463938
+        },
+        "regular_workload": {
+          "observed": 480,
+          "predicted": 407.2475,
+          "predicted_observed_ratio": 0.8484322916666667
+        },
+        "substantial_batting": {
+          "observed": 323,
+          "predicted": 283.3975,
+          "predicted_observed_ratio": 0.877391640866873
+        },
+        "sustained_high_batting": {
+          "observed": 76,
+          "predicted": 76.9,
+          "predicted_observed_ratio": 1.0118421052631579
+        }
+      }
+    }
+  },
+  "paired_crps": {
+    "B0": {
+      "candidate": 0.28937593388961913,
+      "baseline": 0.3640930181610506,
+      "delta": -0.07471708427143144,
+      "interval95": [
+        -0.08825432699853578,
+        -0.06122456419818232
+      ],
+      "folds": [
+        {
+          "origin": 2016,
+          "candidate": 0.2905373562594575,
+          "baseline": 0.35290195380362027,
+          "delta": -0.0623645975441628
+        },
+        {
+          "origin": 2021,
+          "candidate": 0.29766206112992216,
+          "baseline": 0.3731434743842088,
+          "delta": -0.07548141325428666
+        },
+        {
+          "origin": 2022,
+          "candidate": 0.27992838427947775,
+          "baseline": 0.3662336262953227,
+          "delta": -0.08630524201584486
+        }
+      ],
+      "improving_origins": 3
+    },
+    "F0": {
+      "candidate": 0.28937593388961913,
+      "baseline": 0.2968302068904895,
+      "delta": -0.007454273000870394,
+      "interval95": [
+        -0.011258503714805907,
+        -0.0033856052372321956
+      ],
+      "folds": [
+        {
+          "origin": 2016,
+          "candidate": 0.2905373562594575,
+          "baseline": 0.2931526801579619,
+          "delta": -0.0026153238985044897
+        },
+        {
+          "origin": 2021,
+          "candidate": 0.29766206112992216,
+          "baseline": 0.30978488898106255,
+          "delta": -0.01212282785114039
+        },
+        {
+          "origin": 2022,
+          "candidate": 0.27992838427947775,
+          "baseline": 0.2875530515324441,
+          "delta": -0.007624667252966303
+        }
+      ],
+      "improving_origins": 3
+    }
+  },
+  "by_origin": {
+    "2016": {
+      "B0": {
+        "rows": 4572,
+        "origins": [
+          2016
+        ],
+        "crps": 0.3529019538036205,
+        "mse": 2.659947991584662,
+        "energy": 0.2675438988798015,
+        "coverage80": 0.894575678040245,
+        "width80": 1.1287402662910877,
+        "delivered_mse": 1.6913610869249913,
+        "brier_no_mlb": 0.08403744395231862,
+        "brier_regular_workload": 0.028514756944444386,
+        "brier_substantial_batting": 0.022006073654855563,
+        "brier_sustained_high_batting": 0.00730067393919511,
+        "log_no_mlb": 0.2932654123313442,
+        "log_regular_workload": 0.09449287797078892,
+        "log_substantial_batting": 0.0797548779080896,
+        "log_sustained_high_batting": 0.03373774797272103,
+        "rmse": 1.630934698749359,
+        "delivered_rmse": 1.3005233896108872,
+        "events": {
+          "no_mlb": {
+            "observed": 3718,
+            "predicted": 3944.6825,
+            "predicted_observed_ratio": 1.0609689349112426
+          },
+          "regular_workload": {
+            "observed": 170,
+            "predicted": 132.8375,
+            "predicted_observed_ratio": 0.7813970588235295
+          },
+          "substantial_batting": {
+            "observed": 119,
+            "predicted": 90.6325,
+            "predicted_observed_ratio": 0.7616176470588235
+          },
+          "sustained_high_batting": {
+            "observed": 35,
+            "predicted": 21.672500000000003,
+            "predicted_observed_ratio": 0.6192142857142858
+          }
+        }
+      },
+      "F0": {
+        "rows": 4572,
+        "origins": [
+          2016
+        ],
+        "crps": 0.29315268015796203,
+        "mse": 1.9340019732448186,
+        "energy": 0.23542004690342297,
+        "coverage80": 0.8996062992125984,
+        "width80": 0.9853678505942994,
+        "delivered_mse": 1.6913610869249855,
+        "brier_no_mlb": 0.07643217136920417,
+        "brier_regular_workload": 0.019968383639545038,
+        "brier_substantial_batting": 0.018968223698600146,
+        "brier_sustained_high_batting": 0.006422536636045499,
+        "log_no_mlb": 0.2578588259604281,
+        "log_regular_workload": 0.06941229937912129,
+        "log_substantial_batting": 0.06880845150238693,
+        "log_sustained_high_batting": 0.02766506691219936,
+        "rmse": 1.3906839947467644,
+        "delivered_rmse": 1.300523389610885,
+        "events": {
+          "no_mlb": {
+            "observed": 3718,
+            "predicted": 3909.9000000000005,
+            "predicted_observed_ratio": 1.0516137708445403
+          },
+          "regular_workload": {
+            "observed": 170,
+            "predicted": 153.08499999999998,
+            "predicted_observed_ratio": 0.9004999999999999
+          },
+          "substantial_batting": {
+            "observed": 119,
+            "predicted": 106.99249999999999,
+            "predicted_observed_ratio": 0.8990966386554621
+          },
+          "sustained_high_batting": {
+            "observed": 35,
+            "predicted": 27.029999999999998,
+            "predicted_observed_ratio": 0.7722857142857142
+          }
+        }
+      },
+      "F1": {
+        "rows": 4572,
+        "origins": [
+          2016
+        ],
+        "crps": 0.29053735625945737,
+        "mse": 1.8740717938371303,
+        "energy": 0.23423642284469284,
+        "coverage80": 0.8958880139982502,
+        "width80": 0.9166597978194795,
+        "delivered_mse": 1.6913610869249858,
+        "brier_no_mlb": 0.0784943747265969,
+        "brier_regular_workload": 0.02141889216972877,
+        "brier_substantial_batting": 0.018806481025809247,
+        "brier_sustained_high_batting": 0.0063836942257217925,
+        "log_no_mlb": 0.26555505814665176,
+        "log_regular_workload": 0.07437342667602133,
+        "log_substantial_batting": 0.06836653604907501,
+        "log_sustained_high_batting": 0.027375260583138706,
+        "rmse": 1.3689674188369605,
+        "delivered_rmse": 1.300523389610885,
+        "events": {
+          "no_mlb": {
+            "observed": 3718,
+            "predicted": 3925.4974999999995,
+            "predicted_observed_ratio": 1.0558089026358255
+          },
+          "regular_workload": {
+            "observed": 170,
+            "predicted": 150.135,
+            "predicted_observed_ratio": 0.8831470588235294
+          },
+          "substantial_batting": {
+            "observed": 119,
+            "predicted": 105.9625,
+            "predicted_observed_ratio": 0.8904411764705883
+          },
+          "sustained_high_batting": {
+            "observed": 35,
+            "predicted": 26.764999999999997,
+            "predicted_observed_ratio": 0.7647142857142857
+          }
+        }
+      }
+    },
+    "2021": {
+      "B0": {
+        "rows": 4164,
+        "origins": [
+          2021
+        ],
+        "crps": 0.373143474384209,
+        "mse": 2.736439691843183,
+        "energy": 0.2805568656045582,
+        "coverage80": 0.8746397694524496,
+        "width80": 1.1144936586624783,
+        "delivered_mse": 1.464285471630097,
+        "brier_no_mlb": 0.11071398595100876,
+        "brier_regular_workload": 0.02919570725264162,
+        "brier_substantial_batting": 0.02160204580931792,
+        "brier_sustained_high_batting": 0.004861733009125849,
+        "log_no_mlb": 0.3841642025491123,
+        "log_regular_workload": 0.10381898130152371,
+        "log_substantial_batting": 0.07952156223305773,
+        "log_sustained_high_batting": 0.024919182399540905,
+        "rmse": 1.6542187557403594,
+        "delivered_rmse": 1.2100766387423967,
+        "events": {
+          "no_mlb": {
+            "observed": 3261,
+            "predicted": 3627.385,
+            "predicted_observed_ratio": 1.1123535725237659
+          },
+          "regular_workload": {
+            "observed": 146,
+            "predicted": 124.305,
+            "predicted_observed_ratio": 0.8514041095890411
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 88.37249999999999,
+            "predicted_observed_ratio": 0.8663970588235292
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 27.877500000000005,
+            "predicted_observed_ratio": 1.3938750000000002
+          }
+        }
+      },
+      "F0": {
+        "rows": 4164,
+        "origins": [
+          2021
+        ],
+        "crps": 0.3097848889810626,
+        "mse": 1.943789641123302,
+        "energy": 0.24446185754535563,
+        "coverage80": 0.8739193083573487,
+        "width80": 0.8775767781687345,
+        "delivered_mse": 1.4642854716300981,
+        "brier_no_mlb": 0.10431118365754118,
+        "brier_regular_workload": 0.02131939991594618,
+        "brier_substantial_batting": 0.01739933957732949,
+        "brier_sustained_high_batting": 0.00421370226945246,
+        "log_no_mlb": 0.3892791140272222,
+        "log_regular_workload": 0.07719675468205522,
+        "log_substantial_batting": 0.06167048395756659,
+        "log_sustained_high_batting": 0.018040896012238673,
+        "rmse": 1.3941985658876939,
+        "delivered_rmse": 1.2100766387423971,
+        "events": {
+          "no_mlb": {
+            "observed": 3261,
+            "predicted": 3687.0925000000007,
+            "predicted_observed_ratio": 1.1306631401410612
+          },
+          "regular_workload": {
+            "observed": 146,
+            "predicted": 113.1325,
+            "predicted_observed_ratio": 0.7748801369863013
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 75.56,
+            "predicted_observed_ratio": 0.7407843137254903
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 21.9775,
+            "predicted_observed_ratio": 1.098875
+          }
+        }
+      },
+      "F1": {
+        "rows": 4164,
+        "origins": [
+          2021
+        ],
+        "crps": 0.29766206112992216,
+        "mse": 1.8201325349547406,
+        "energy": 0.2387383189981539,
+        "coverage80": 0.8804034582132565,
+        "width80": 0.8925956693380793,
+        "delivered_mse": 1.4642854716300981,
+        "brier_no_mlb": 0.09991775036023086,
+        "brier_regular_workload": 0.021060191522574444,
+        "brier_substantial_batting": 0.0169907060518732,
+        "brier_sustained_high_batting": 0.004179483369356395,
+        "log_no_mlb": 0.3709076620004851,
+        "log_regular_workload": 0.07748998514571695,
+        "log_substantial_batting": 0.061031941657756085,
+        "log_sustained_high_batting": 0.01774131077445571,
+        "rmse": 1.3491228761512943,
+        "delivered_rmse": 1.2100766387423971,
+        "events": {
+          "no_mlb": {
+            "observed": 3261,
+            "predicted": 3660.4100000000003,
+            "predicted_observed_ratio": 1.1224808340999695
+          },
+          "regular_workload": {
+            "observed": 146,
+            "predicted": 122.42999999999999,
+            "predicted_observed_ratio": 0.8385616438356164
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 83.64499999999998,
+            "predicted_observed_ratio": 0.8200490196078429
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 24.127499999999998,
+            "predicted_observed_ratio": 1.206375
+          }
+        }
+      }
+    },
+    "2022": {
+      "B0": {
+        "rows": 4155,
+        "origins": [
+          2022
+        ],
+        "crps": 0.3662336262953227,
+        "mse": 2.714185472443138,
+        "energy": 0.27753803889922024,
+        "coverage80": 0.8873646209386281,
+        "width80": 1.1598053265039854,
+        "delivered_mse": 1.2641464555225352,
+        "brier_no_mlb": 0.10255700661853197,
+        "brier_regular_workload": 0.03193012334536694,
+        "brier_substantial_batting": 0.021772454873646152,
+        "brier_sustained_high_batting": 0.005119497593261146,
+        "log_no_mlb": 0.34948742746336786,
+        "log_regular_workload": 0.10938297280312519,
+        "log_substantial_batting": 0.07925404455412256,
+        "log_sustained_high_batting": 0.0273444399354612,
+        "rmse": 1.6474785195695687,
+        "delivered_rmse": 1.1243426770885,
+        "events": {
+          "no_mlb": {
+            "observed": 3281,
+            "predicted": 3601.129999999999,
+            "predicted_observed_ratio": 1.0975708625419076
+          },
+          "regular_workload": {
+            "observed": 164,
+            "predicted": 128.74,
+            "predicted_observed_ratio": 0.785
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 90.83,
+            "predicted_observed_ratio": 0.8904901960784314
+          },
+          "sustained_high_batting": {
+            "observed": 21,
+            "predicted": 28.6,
+            "predicted_observed_ratio": 1.361904761904762
+          }
+        }
+      },
+      "F0": {
+        "rows": 4155,
+        "origins": [
+          2022
+        ],
+        "crps": 0.2875530515324441,
+        "mse": 1.7228247391062725,
+        "energy": 0.23168937669313172,
+        "coverage80": 0.8900120336943441,
+        "width80": 1.033402192164325,
+        "delivered_mse": 1.2641464555225352,
+        "brier_no_mlb": 0.08803383724428425,
+        "brier_regular_workload": 0.021929914259927772,
+        "brier_substantial_batting": 0.016440386582430817,
+        "brier_sustained_high_batting": 0.004342048736462104,
+        "log_no_mlb": 0.31208015217272045,
+        "log_regular_workload": 0.07703533385006939,
+        "log_substantial_batting": 0.058664536048761075,
+        "log_sustained_high_batting": 0.01857068400095368,
+        "rmse": 1.312564184756796,
+        "delivered_rmse": 1.1243426770885,
+        "events": {
+          "no_mlb": {
+            "observed": 3281,
+            "predicted": 3590.4925000000003,
+            "predicted_observed_ratio": 1.094328710758915
+          },
+          "regular_workload": {
+            "observed": 164,
+            "predicted": 136.95250000000001,
+            "predicted_observed_ratio": 0.8350762195121952
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 93.9175,
+            "predicted_observed_ratio": 0.9207598039215686
+          },
+          "sustained_high_batting": {
+            "observed": 21,
+            "predicted": 25.18,
+            "predicted_observed_ratio": 1.1990476190476191
+          }
+        }
+      },
+      "F1": {
+        "rows": 4155,
+        "origins": [
+          2022
+        ],
+        "crps": 0.27992838427947786,
+        "mse": 1.6401468496340756,
+        "energy": 0.2277536111871523,
+        "coverage80": 0.8945848375451263,
+        "width80": 1.0117457276537059,
+        "delivered_mse": 1.264146455522535,
+        "brier_no_mlb": 0.08579182761732874,
+        "brier_regular_workload": 0.02199100030084232,
+        "brier_substantial_batting": 0.01603842358604092,
+        "brier_sustained_high_batting": 0.004203133273164865,
+        "log_no_mlb": 0.30826074095489164,
+        "log_regular_workload": 0.07660981897056207,
+        "log_substantial_batting": 0.05706307043981912,
+        "log_sustained_high_batting": 0.018048194197180265,
+        "rmse": 1.2806821813526086,
+        "delivered_rmse": 1.1243426770885,
+        "events": {
+          "no_mlb": {
+            "observed": 3281,
+            "predicted": 3584.5225,
+            "predicted_observed_ratio": 1.0925091435537946
+          },
+          "regular_workload": {
+            "observed": 164,
+            "predicted": 134.68249999999998,
+            "predicted_observed_ratio": 0.8212347560975608
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 93.78999999999999,
+            "predicted_observed_ratio": 0.9195098039215686
+          },
+          "sustained_high_batting": {
+            "observed": 21,
+            "predicted": 26.0075,
+            "predicted_observed_ratio": 1.2384523809523809
+          }
+        }
+      }
+    }
+  },
+  "subgroups": {
+    "Never-debuted minors": {
+      "B0": {
+        "rows": 9845,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.09384471933140431,
+        "mse": 0.3724884730619991,
+        "energy": 0.08241962235122154,
+        "coverage80": 0.9093767802409336,
+        "width80": 0.043353377368796076,
+        "delivered_mse": 0.34927801495668875,
+        "brier_no_mlb": 0.08166401096867106,
+        "brier_regular_workload": 0.004429396632335585,
+        "brier_substantial_batting": 0.002608992728384992,
+        "brier_sustained_high_batting": 0.00039382719592722786,
+        "log_no_mlb": 0.2999086786497522,
+        "log_regular_workload": 0.026667057230012215,
+        "log_substantial_batting": 0.017047462575106056,
+        "log_sustained_high_batting": 0.004241011968074919,
+        "rmse": 0.6103183374780731,
+        "delivered_rmse": 0.5909974745772513,
+        "events": {
+          "no_mlb": {
+            "observed": 8903,
+            "predicted": 9415.3925,
+            "predicted_observed_ratio": 1.0575527911939795
+          },
+          "regular_workload": {
+            "observed": 44,
+            "predicted": 19.5875,
+            "predicted_observed_ratio": 0.4451704545454545
+          },
+          "substantial_batting": {
+            "observed": 26,
+            "predicted": 15.9625,
+            "predicted_observed_ratio": 0.6139423076923077
+          },
+          "sustained_high_batting": {
+            "observed": 4,
+            "predicted": 5.8075,
+            "predicted_observed_ratio": 1.451875
+          }
+        }
+      },
+      "F0": {
+        "rows": 9845,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.09168308100516968,
+        "mse": 0.359926606896656,
+        "energy": 0.08088014330350378,
+        "coverage80": 0.9155649581560513,
+        "width80": 0.08222717175257459,
+        "delivered_mse": 0.34927801495668875,
+        "brier_no_mlb": 0.07724613716198424,
+        "brier_regular_workload": 0.0042974030910516055,
+        "brier_substantial_batting": 0.0025778391446310022,
+        "brier_sustained_high_batting": 0.0003955100605954037,
+        "log_no_mlb": 0.2907751078403517,
+        "log_regular_workload": 0.02358565942934482,
+        "log_substantial_batting": 0.015855426820447955,
+        "log_sustained_high_batting": 0.004039742666200848,
+        "rmse": 0.5999388359630138,
+        "delivered_rmse": 0.5909974745772513,
+        "events": {
+          "no_mlb": {
+            "observed": 8903,
+            "predicted": 9401.2025,
+            "predicted_observed_ratio": 1.055958946422554
+          },
+          "regular_workload": {
+            "observed": 44,
+            "predicted": 27.3975,
+            "predicted_observed_ratio": 0.6226704545454546
+          },
+          "substantial_batting": {
+            "observed": 26,
+            "predicted": 19.41,
+            "predicted_observed_ratio": 0.7465384615384616
+          },
+          "sustained_high_batting": {
+            "observed": 4,
+            "predicted": 4.9625,
+            "predicted_observed_ratio": 1.240625
+          }
+        }
+      },
+      "F1": {
+        "rows": 9845,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.09175577110765508,
+        "mse": 0.3620916605231681,
+        "energy": 0.08063640620311054,
+        "coverage80": 0.9177118669962122,
+        "width80": 0.09303182644803742,
+        "delivered_mse": 0.3492780149566887,
+        "brier_no_mlb": 0.07658270841847792,
+        "brier_regular_workload": 0.004325472602069647,
+        "brier_substantial_batting": 0.002580133026639124,
+        "brier_sustained_high_batting": 0.00039414632217003837,
+        "log_no_mlb": 0.28621376591335085,
+        "log_regular_workload": 0.023625893933838737,
+        "log_substantial_batting": 0.015603259869954006,
+        "log_sustained_high_batting": 0.004144046042604299,
+        "rmse": 0.6017405259106022,
+        "delivered_rmse": 0.5909974745772513,
+        "events": {
+          "no_mlb": {
+            "observed": 8903,
+            "predicted": 9372.13,
+            "predicted_observed_ratio": 1.0526934741098506
+          },
+          "regular_workload": {
+            "observed": 44,
+            "predicted": 28.695,
+            "predicted_observed_ratio": 0.652159090909091
+          },
+          "substantial_batting": {
+            "observed": 26,
+            "predicted": 18.175,
+            "predicted_observed_ratio": 0.6990384615384616
+          },
+          "sustained_high_batting": {
+            "observed": 4,
+            "predicted": 3.8525,
+            "predicted_observed_ratio": 0.963125
+          }
+        }
+      }
+    },
+    "Recent debut": {
+      "B0": {
+        "rows": 641,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 1.4238714739957918,
+        "mse": 9.905491633238482,
+        "energy": 1.0761970669035843,
+        "coverage80": 0.8017102267102266,
+        "width80": 7.74561640302587,
+        "delivered_mse": 6.741300438561854,
+        "brier_no_mlb": 0.16783732909179783,
+        "brier_regular_workload": 0.13478728711575585,
+        "brier_substantial_batting": 0.09668143334818334,
+        "brier_sustained_high_batting": 0.014655911255692504,
+        "log_no_mlb": 0.5342940202828738,
+        "log_regular_workload": 0.4291742765010412,
+        "log_substantial_batting": 0.33544361256177596,
+        "log_sustained_high_batting": 0.08881516851711717,
+        "rmse": 3.14729910133093,
+        "delivered_rmse": 2.5964014401786666,
+        "events": {
+          "no_mlb": {
+            "observed": 152,
+            "predicted": 194.3175,
+            "predicted_observed_ratio": 1.278404605263158
+          },
+          "regular_workload": {
+            "observed": 102,
+            "predicted": 137.9125,
+            "predicted_observed_ratio": 1.3520833333333333
+          },
+          "substantial_batting": {
+            "observed": 68,
+            "predicted": 94.3725,
+            "predicted_observed_ratio": 1.3878308823529413
+          },
+          "sustained_high_batting": {
+            "observed": 8,
+            "predicted": 30.465000000000003,
+            "predicted_observed_ratio": 3.8081250000000004
+          }
+        }
+      },
+      "F0": {
+        "rows": 641,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 1.2377302943451876,
+        "mse": 7.469273678564176,
+        "energy": 0.976536950964969,
+        "coverage80": 0.6823943173943174,
+        "width80": 4.186106854915475,
+        "delivered_mse": 6.741300438561854,
+        "brier_no_mlb": 0.1972357178930304,
+        "brier_regular_workload": 0.10807543353071476,
+        "brier_substantial_batting": 0.08323263901160775,
+        "brier_sustained_high_batting": 0.011992989422458173,
+        "log_no_mlb": 0.5884210858451326,
+        "log_regular_workload": 0.3481836340836022,
+        "log_substantial_batting": 0.29077135994265907,
+        "log_sustained_high_batting": 0.06551369994728695,
+        "rmse": 2.732997196955053,
+        "delivered_rmse": 2.5964014401786666,
+        "events": {
+          "no_mlb": {
+            "observed": 152,
+            "predicted": 308.27000000000004,
+            "predicted_observed_ratio": 2.028092105263158
+          },
+          "regular_workload": {
+            "observed": 102,
+            "predicted": 73.1275,
+            "predicted_observed_ratio": 0.7169362745098039
+          },
+          "substantial_batting": {
+            "observed": 68,
+            "predicted": 52.529999999999994,
+            "predicted_observed_ratio": 0.7725
+          },
+          "sustained_high_batting": {
+            "observed": 8,
+            "predicted": 12.2025,
+            "predicted_observed_ratio": 1.5253125
+          }
+        }
+      },
+      "F1": {
+        "rows": 641,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 1.2228544476357197,
+        "mse": 7.413233517033937,
+        "energy": 0.9705941666529561,
+        "coverage80": 0.6872606672606673,
+        "width80": 3.9167739064870672,
+        "delivered_mse": 6.741300438561854,
+        "brier_no_mlb": 0.183063828488516,
+        "brier_regular_workload": 0.11178418010593011,
+        "brier_substantial_batting": 0.08451650350212851,
+        "brier_sustained_high_batting": 0.011751543816825067,
+        "log_no_mlb": 0.5610925140588533,
+        "log_regular_workload": 0.3655197223686983,
+        "log_substantial_batting": 0.30022484768648133,
+        "log_sustained_high_batting": 0.06121629534449755,
+        "rmse": 2.722725384065374,
+        "delivered_rmse": 2.5964014401786666,
+        "events": {
+          "no_mlb": {
+            "observed": 152,
+            "predicted": 297.30000000000007,
+            "predicted_observed_ratio": 1.9559210526315793
+          },
+          "regular_workload": {
+            "observed": 102,
+            "predicted": 74.57749999999999,
+            "predicted_observed_ratio": 0.7311519607843135
+          },
+          "substantial_batting": {
+            "observed": 68,
+            "predicted": 50.267500000000005,
+            "predicted_observed_ratio": 0.7392279411764706
+          },
+          "sustained_high_batting": {
+            "observed": 8,
+            "predicted": 10.975,
+            "predicted_observed_ratio": 1.371875
+          }
+        }
+      }
+    },
+    "Current MLB": {
+      "B0": {
+        "rows": 1980,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 1.8730968678578315,
+        "mse": 15.646678384200207,
+        "energy": 1.3545808424315535,
+        "coverage80": 0.7482143863623781,
+        "width80": 7.184339062540463,
+        "delivered_mse": 7.819708507813,
+        "brier_no_mlb": 0.19696568276129067,
+        "brier_regular_workload": 0.17196100144848217,
+        "brier_substantial_batting": 0.1286318076559351,
+        "brier_sustained_high_batting": 0.03600436364230391,
+        "log_no_mlb": 0.5744872234764719,
+        "log_regular_workload": 0.5303117617976173,
+        "log_substantial_batting": 0.42913812818390956,
+        "log_sustained_high_batting": 0.1659321582779889,
+        "rmse": 3.9555882475556285,
+        "delivered_rmse": 2.7963741716395893,
+        "events": {
+          "no_mlb": {
+            "observed": 375,
+            "predicted": 720.94,
+            "predicted_observed_ratio": 1.9225066666666668
+          },
+          "regular_workload": {
+            "observed": 435,
+            "predicted": 366.0825,
+            "predicted_observed_ratio": 0.8415689655172414
+          },
+          "substantial_batting": {
+            "observed": 296,
+            "predicted": 253.6725,
+            "predicted_observed_ratio": 0.8570016891891893
+          },
+          "sustained_high_batting": {
+            "observed": 72,
+            "predicted": 72.31,
+            "predicted_observed_ratio": 1.0043055555555556
+          }
+        }
+      },
+      "F0": {
+        "rows": 1980,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 1.4495373246195946,
+        "mse": 10.304139713804801,
+        "energy": 1.1171998731151533,
+        "coverage80": 0.7307946120642356,
+        "width80": 5.873123841185364,
+        "delivered_mse": 7.819708507813,
+        "brier_no_mlb": 0.160575209299773,
+        "brier_regular_workload": 0.11534279258266418,
+        "brier_substantial_batting": 0.10193022748709589,
+        "brier_sustained_high_batting": 0.03095231763831377,
+        "log_no_mlb": 0.48538804291127097,
+        "log_regular_workload": 0.3651905576539254,
+        "log_substantial_batting": 0.331266943911503,
+        "log_sustained_high_batting": 0.12012226711937278,
+        "rmse": 3.2100061859449434,
+        "delivered_rmse": 2.7963741716395893,
+        "events": {
+          "no_mlb": {
+            "observed": 375,
+            "predicted": 758.4175,
+            "predicted_observed_ratio": 2.0224466666666667
+          },
+          "regular_workload": {
+            "observed": 435,
+            "predicted": 374.335,
+            "predicted_observed_ratio": 0.8605402298850574
+          },
+          "substantial_batting": {
+            "observed": 296,
+            "predicted": 255.82999999999998,
+            "predicted_observed_ratio": 0.8642905405405404
+          },
+          "sustained_high_batting": {
+            "observed": 72,
+            "predicted": 68.9375,
+            "predicted_observed_ratio": 0.9574652777777778
+          }
+        }
+      },
+      "F1": {
+        "rows": 1980,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 1.4015912564981308,
+        "mse": 9.717883730804308,
+        "energy": 1.0952227418720393,
+        "coverage80": 0.7285658732148463,
+        "width80": 5.622644439088661,
+        "delivered_mse": 7.819708507813,
+        "brier_no_mlb": 0.15676028424698724,
+        "brier_regular_workload": 0.11824576902512046,
+        "brier_substantial_batting": 0.09984324976205945,
+        "brier_sustained_high_batting": 0.030512639952093468,
+        "log_no_mlb": 0.48340294243292686,
+        "log_regular_workload": 0.37588182600020786,
+        "log_substantial_batting": 0.32646517878077025,
+        "log_sustained_high_batting": 0.11714985265865947,
+        "rmse": 3.1173520383178266,
+        "delivered_rmse": 2.7963741716395893,
+        "events": {
+          "no_mlb": {
+            "observed": 375,
+            "predicted": 783.005,
+            "predicted_observed_ratio": 2.0880133333333335
+          },
+          "regular_workload": {
+            "observed": 435,
+            "predicted": 375.96750000000003,
+            "predicted_observed_ratio": 0.8642931034482759
+          },
+          "substantial_batting": {
+            "observed": 296,
+            "predicted": 263.4575,
+            "predicted_observed_ratio": 0.8900591216216216
+          },
+          "sustained_high_batting": {
+            "observed": 72,
+            "predicted": 72.75,
+            "predicted_observed_ratio": 1.0104166666666667
+          }
+        }
+      }
+    },
+    "Upper minors": {
+      "B0": {
+        "rows": 3088,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.21979984154000332,
+        "mse": 0.9160715291198874,
+        "energy": 0.18727513129705908,
+        "coverage80": 0.7952285407263032,
+        "width80": 0.14113924293128832,
+        "delivered_mse": 0.8446827962626227,
+        "brier_no_mlb": 0.17834409351051952,
+        "brier_regular_workload": 0.01077677313107732,
+        "brier_substantial_batting": 0.00610431042124469,
+        "brier_sustained_high_batting": 0.0005657172662779451,
+        "log_no_mlb": 0.5731075051102325,
+        "log_regular_workload": 0.05936318874243585,
+        "log_substantial_batting": 0.036002034924118916,
+        "log_sustained_high_batting": 0.005403288892274848,
+        "rmse": 0.9571162568465168,
+        "delivered_rmse": 0.9190662632599581,
+        "events": {
+          "no_mlb": {
+            "observed": 2412,
+            "predicted": 2775.5099999999998,
+            "predicted_observed_ratio": 1.1507089552238805
+          },
+          "regular_workload": {
+            "observed": 33,
+            "predicted": 14.2375,
+            "predicted_observed_ratio": 0.43143939393939396
+          },
+          "substantial_batting": {
+            "observed": 19,
+            "predicted": 9.015,
+            "predicted_observed_ratio": 0.4744736842105263
+          },
+          "sustained_high_batting": {
+            "observed": 2,
+            "predicted": 1.74,
+            "predicted_observed_ratio": 0.87
+          }
+        }
+      },
+      "F0": {
+        "rows": 3088,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.212828337931667,
+        "mse": 0.8686545706214651,
+        "energy": 0.18277706115777528,
+        "coverage80": 0.8087939672496537,
+        "width80": 0.18525095040731485,
+        "delivered_mse": 0.8446827962626227,
+        "brier_no_mlb": 0.16921171734819732,
+        "brier_regular_workload": 0.01031537166567971,
+        "brier_substantial_batting": 0.005958814761281336,
+        "brier_sustained_high_batting": 0.0005725552189028313,
+        "log_no_mlb": 0.5986663981992223,
+        "log_regular_workload": 0.05097520473650472,
+        "log_substantial_batting": 0.032159146447690766,
+        "log_sustained_high_batting": 0.005073721213915043,
+        "rmse": 0.9320164004036974,
+        "delivered_rmse": 0.9190662632599581,
+        "events": {
+          "no_mlb": {
+            "observed": 2412,
+            "predicted": 2842.8550000000005,
+            "predicted_observed_ratio": 1.1786297678275293
+          },
+          "regular_workload": {
+            "observed": 33,
+            "predicted": 18.0475,
+            "predicted_observed_ratio": 0.5468939393939394
+          },
+          "substantial_batting": {
+            "observed": 19,
+            "predicted": 12.100000000000001,
+            "predicted_observed_ratio": 0.636842105263158
+          },
+          "sustained_high_batting": {
+            "observed": 2,
+            "predicted": 2.245,
+            "predicted_observed_ratio": 1.1225
+          }
+        }
+      },
+      "F1": {
+        "rows": 3088,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.21318451202207847,
+        "mse": 0.8789100498649653,
+        "energy": 0.18219090004124094,
+        "coverage80": 0.816910278646587,
+        "width80": 0.23307188213694177,
+        "delivered_mse": 0.8446827962626227,
+        "brier_no_mlb": 0.16573273100946065,
+        "brier_regular_workload": 0.010430875032644575,
+        "brier_substantial_batting": 0.005992997165742526,
+        "brier_sustained_high_batting": 0.0005692714335939164,
+        "log_no_mlb": 0.5803909600312167,
+        "log_regular_workload": 0.05189463251815952,
+        "log_substantial_batting": 0.032488776690860366,
+        "log_sustained_high_batting": 0.005553370317151894,
+        "rmse": 0.9375020265924577,
+        "delivered_rmse": 0.9190662632599581,
+        "events": {
+          "no_mlb": {
+            "observed": 2412,
+            "predicted": 2824.1,
+            "predicted_observed_ratio": 1.170854063018242
+          },
+          "regular_workload": {
+            "observed": 33,
+            "predicted": 20.227500000000003,
+            "predicted_observed_ratio": 0.6129545454545455
+          },
+          "substantial_batting": {
+            "observed": 19,
+            "predicted": 12.3975,
+            "predicted_observed_ratio": 0.6525000000000001
+          },
+          "sustained_high_batting": {
+            "observed": 2,
+            "predicted": 2.1450000000000005,
+            "predicted_observed_ratio": 1.0725000000000002
+          }
+        }
+      }
+    },
+    "Lower minors": {
+      "B0": {
+        "rows": 7183,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.04034243408415772,
+        "mse": 0.14080437951825578,
+        "energy": 0.03788994565261662,
+        "coverage80": 0.9543604450730913,
+        "width80": 0.0,
+        "delivered_mse": 0.13796749203056063,
+        "brier_no_mlb": 0.043952988566852154,
+        "brier_regular_workload": 0.0016688180765815207,
+        "brier_substantial_batting": 0.001113306497661392,
+        "brier_sustained_high_batting": 0.0002792862498884575,
+        "log_no_mlb": 0.19642603795025967,
+        "log_regular_workload": 0.012484493215633483,
+        "log_substantial_batting": 0.008902506681935792,
+        "log_sustained_high_batting": 0.0034581280753857124,
+        "rmse": 0.3752390964681796,
+        "delivered_rmse": 0.37143975558704084,
+        "events": {
+          "no_mlb": {
+            "observed": 6855,
+            "predicted": 7049.3525,
+            "predicted_observed_ratio": 1.0283519328956965
+          },
+          "regular_workload": {
+            "observed": 12,
+            "predicted": 5.5625,
+            "predicted_observed_ratio": 0.4635416666666667
+          },
+          "substantial_batting": {
+            "observed": 8,
+            "predicted": 7.1475,
+            "predicted_observed_ratio": 0.8934375
+          },
+          "sustained_high_batting": {
+            "observed": 2,
+            "predicted": 4.1000000000000005,
+            "predicted_observed_ratio": 2.0500000000000003
+          }
+        }
+      },
+      "F0": {
+        "rows": 7183,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.04009227649886574,
+        "mse": 0.14154783864387507,
+        "energy": 0.037613356381095524,
+        "coverage80": 0.9571428758170577,
+        "width80": 0.03488372259597357,
+        "delivered_mse": 0.13796749203056063,
+        "brier_no_mlb": 0.04158146875357462,
+        "brier_regular_workload": 0.0016699035296135914,
+        "brier_substantial_batting": 0.0011204316095359643,
+        "brier_sustained_high_batting": 0.0002791785945783698,
+        "log_no_mlb": 0.17231118313898444,
+        "log_regular_workload": 0.011482442529503758,
+        "log_substantial_batting": 0.008606953202451128,
+        "log_sustained_high_batting": 0.003359010849685916,
+        "rmse": 0.3762284394405546,
+        "delivered_rmse": 0.37143975558704084,
+        "events": {
+          "no_mlb": {
+            "observed": 6855,
+            "predicted": 6958.245000000001,
+            "predicted_observed_ratio": 1.0150612691466083
+          },
+          "regular_workload": {
+            "observed": 12,
+            "predicted": 10.55,
+            "predicted_observed_ratio": 0.8791666666666668
+          },
+          "substantial_batting": {
+            "observed": 8,
+            "predicted": 8.282499999999999,
+            "predicted_observed_ratio": 1.0353124999999999
+          },
+          "sustained_high_batting": {
+            "observed": 2,
+            "predicted": 2.8774999999999995,
+            "predicted_observed_ratio": 1.4387499999999998
+          }
+        }
+      },
+      "F1": {
+        "rows": 7183,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.04017525697681317,
+        "mse": 0.1417089372665378,
+        "energy": 0.037609154466579045,
+        "coverage80": 0.9576969308787987,
+        "width80": 0.036284652579075226,
+        "delivered_mse": 0.13796749203056063,
+        "brier_no_mlb": 0.04184553152520418,
+        "brier_regular_workload": 0.0016725335668434588,
+        "brier_substantial_batting": 0.0011145852798659284,
+        "brier_sustained_high_batting": 0.0002784536824853747,
+        "log_no_mlb": 0.17352607068705675,
+        "log_regular_workload": 0.011328673425848522,
+        "log_substantial_batting": 0.008230619261414156,
+        "log_sustained_high_batting": 0.003282561695161988,
+        "rmse": 0.37644247537510667,
+        "delivered_rmse": 0.37143975558704084,
+        "events": {
+          "no_mlb": {
+            "observed": 6855,
+            "predicted": 6939.9475,
+            "predicted_observed_ratio": 1.012392049598833
+          },
+          "regular_workload": {
+            "observed": 12,
+            "predicted": 10.615,
+            "predicted_observed_ratio": 0.8845833333333334
+          },
+          "substantial_batting": {
+            "observed": 8,
+            "predicted": 7.17,
+            "predicted_observed_ratio": 0.89625
+          },
+          "sustained_high_batting": {
+            "observed": 2,
+            "predicted": 1.9525000000000001,
+            "predicted_observed_ratio": 0.9762500000000001
+          }
+        }
+      }
+    },
+    "Age under 23": {
+      "B0": {
+        "rows": 6738,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.12187221779366303,
+        "mse": 0.6971990642723919,
+        "energy": 0.10244493187665797,
+        "coverage80": 0.9309420470535731,
+        "width80": 0.17168013378695723,
+        "delivered_mse": 0.5348393272616384,
+        "brier_no_mlb": 0.06203067367127099,
+        "brier_regular_workload": 0.0085178529366401,
+        "brier_substantial_batting": 0.00502551868981107,
+        "brier_sustained_high_batting": 0.0012909453391487563,
+        "log_no_mlb": 0.23591893605290626,
+        "log_regular_workload": 0.037116456901418536,
+        "log_substantial_batting": 0.02422536534861519,
+        "log_sustained_high_batting": 0.008096863647484525,
+        "rmse": 0.8349844694797574,
+        "delivered_rmse": 0.7313271000459634,
+        "events": {
+          "no_mlb": {
+            "observed": 6157,
+            "predicted": 6429.35,
+            "predicted_observed_ratio": 1.044234204969953
+          },
+          "regular_workload": {
+            "observed": 69,
+            "predicted": 33.302499999999995,
+            "predicted_observed_ratio": 0.4826449275362318
+          },
+          "substantial_batting": {
+            "observed": 38,
+            "predicted": 23.377499999999998,
+            "predicted_observed_ratio": 0.6151973684210525
+          },
+          "sustained_high_batting": {
+            "observed": 9,
+            "predicted": 8.3525,
+            "predicted_observed_ratio": 0.9280555555555554
+          }
+        }
+      },
+      "F0": {
+        "rows": 6738,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.11679956669830083,
+        "mse": 0.6174633418972283,
+        "energy": 0.09929002721956247,
+        "coverage80": 0.9325800056865942,
+        "width80": 0.15990100955171183,
+        "delivered_mse": 0.5348393272616384,
+        "brier_no_mlb": 0.059224938197404396,
+        "brier_regular_workload": 0.00785728119289424,
+        "brier_substantial_batting": 0.004667959749001908,
+        "brier_sustained_high_batting": 0.001137314076788117,
+        "log_no_mlb": 0.22425489895019743,
+        "log_regular_workload": 0.03436657319705196,
+        "log_substantial_batting": 0.023135202918486013,
+        "log_sustained_high_batting": 0.007193528189572729,
+        "rmse": 0.7857883569366679,
+        "delivered_rmse": 0.7313271000459634,
+        "events": {
+          "no_mlb": {
+            "observed": 6157,
+            "predicted": 6421.5325,
+            "predicted_observed_ratio": 1.042964511937632
+          },
+          "regular_workload": {
+            "observed": 69,
+            "predicted": 35.115,
+            "predicted_observed_ratio": 0.5089130434782609
+          },
+          "substantial_batting": {
+            "observed": 38,
+            "predicted": 24.38,
+            "predicted_observed_ratio": 0.641578947368421
+          },
+          "sustained_high_batting": {
+            "observed": 9,
+            "predicted": 7.295,
+            "predicted_observed_ratio": 0.8105555555555556
+          }
+        }
+      },
+      "F1": {
+        "rows": 6738,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.11651048127516217,
+        "mse": 0.6178091974816815,
+        "energy": 0.09883277943200842,
+        "coverage80": 0.9330217374100634,
+        "width80": 0.1591926571784987,
+        "delivered_mse": 0.5348393272616384,
+        "brier_no_mlb": 0.0586299596513109,
+        "brier_regular_workload": 0.008107720565754546,
+        "brier_substantial_batting": 0.0047649807019091404,
+        "brier_sustained_high_batting": 0.001135760824901761,
+        "log_no_mlb": 0.22223737236824284,
+        "log_regular_workload": 0.0350366063429611,
+        "log_substantial_batting": 0.023465404876972296,
+        "log_sustained_high_batting": 0.00682713939418268,
+        "rmse": 0.7860083952997459,
+        "delivered_rmse": 0.7313271000459634,
+        "events": {
+          "no_mlb": {
+            "observed": 6157,
+            "predicted": 6396.4800000000005,
+            "predicted_observed_ratio": 1.0388955660224135
+          },
+          "regular_workload": {
+            "observed": 69,
+            "predicted": 34.155,
+            "predicted_observed_ratio": 0.495
+          },
+          "substantial_batting": {
+            "observed": 38,
+            "predicted": 22.57,
+            "predicted_observed_ratio": 0.5939473684210527
+          },
+          "sustained_high_batting": {
+            "observed": 9,
+            "predicted": 5.775,
+            "predicted_observed_ratio": 0.6416666666666667
+          }
+        }
+      }
+    },
+    "Age 23+": {
+      "B0": {
+        "rows": 5554,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.6939122251737103,
+        "mse": 5.425652070234626,
+        "energy": 0.5111837647047546,
+        "coverage80": 0.8217389830432231,
+        "width80": 2.425813073361279,
+        "delivered_mse": 2.760231234235117,
+        "brier_no_mlb": 0.15126966629412206,
+        "brier_regular_workload": 0.059073665993289594,
+        "brier_substantial_batting": 0.04456486038369728,
+        "brier_sustained_high_batting": 0.011828395381038047,
+        "log_no_mlb": 0.49155631543579686,
+        "log_regular_workload": 0.19300440773662642,
+        "log_substantial_batting": 0.15537607624332062,
+        "log_sustained_high_batting": 0.056811644546801064,
+        "rmse": 2.3293029150873927,
+        "delivered_rmse": 1.6613943644526779,
+        "events": {
+          "no_mlb": {
+            "observed": 3526,
+            "predicted": 4157.23,
+            "predicted_observed_ratio": 1.1790215541690299
+          },
+          "regular_workload": {
+            "observed": 411,
+            "predicted": 352.58000000000004,
+            "predicted_observed_ratio": 0.857858880778589
+          },
+          "substantial_batting": {
+            "observed": 285,
+            "predicted": 246.4575,
+            "predicted_observed_ratio": 0.8647631578947369
+          },
+          "sustained_high_batting": {
+            "observed": 67,
+            "predicted": 69.7975,
+            "predicted_observed_ratio": 1.0417537313432836
+          }
+        }
+      },
+      "F0": {
+        "rows": 5554,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.5435957901617273,
+        "mse": 3.5771972087911243,
+        "energy": 0.42654329168403476,
+        "coverage80": 0.8255114606500209,
+        "width80": 2.0511203658443287,
+        "delivered_mse": 2.7602312342351176,
+        "brier_no_mlb": 0.13235119165465892,
+        "brier_regular_workload": 0.03939197892765389,
+        "brier_substantial_batting": 0.03524166084494021,
+        "brier_sustained_high_batting": 0.010235605107374243,
+        "log_no_mlb": 0.4527053077820269,
+        "log_regular_workload": 0.13109496592365114,
+        "log_substantial_batting": 0.11829105933841476,
+        "log_sustained_high_batting": 0.041064270825825665,
+        "rmse": 1.8913479872279253,
+        "delivered_rmse": 1.6613943644526779,
+        "events": {
+          "no_mlb": {
+            "observed": 3526,
+            "predicted": 4178.175,
+            "predicted_observed_ratio": 1.184961712989223
+          },
+          "regular_workload": {
+            "observed": 411,
+            "predicted": 367.83,
+            "predicted_observed_ratio": 0.894963503649635
+          },
+          "substantial_batting": {
+            "observed": 285,
+            "predicted": 251.84250000000003,
+            "predicted_observed_ratio": 0.8836578947368422
+          },
+          "sustained_high_batting": {
+            "observed": 67,
+            "predicted": 66.77,
+            "predicted_observed_ratio": 0.9965671641791044
+          }
+        }
+      },
+      "F1": {
+        "rows": 5554,
+        "origins": [
+          2016,
+          2021,
+          2022
+        ],
+        "crps": 0.5266308660049563,
+        "mse": 3.3694810336126544,
+        "energy": 0.4187521028360763,
+        "coverage80": 0.8298943032259848,
+        "width80": 1.9910274845502398,
+        "delivered_mse": 2.760231234235117,
+        "brier_no_mlb": 0.13001015210999206,
+        "brier_regular_workload": 0.04003815622102899,
+        "brier_substantial_batting": 0.03435673110029255,
+        "brier_sustained_high_batting": 0.01007037732604518,
+        "log_no_mlb": 0.44623601691331194,
+        "log_regular_workload": 0.13397303559505866,
+        "log_substantial_batting": 0.11578488912786085,
+        "log_sustained_high_batting": 0.04063893141338567,
+        "rmse": 1.835614620123912,
+        "delivered_rmse": 1.6613943644526779,
+        "events": {
+          "no_mlb": {
+            "observed": 3526,
+            "predicted": 4190.745000000001,
+            "predicted_observed_ratio": 1.1885266591038006
+          },
+          "regular_workload": {
+            "observed": 411,
+            "predicted": 372.675,
+            "predicted_observed_ratio": 0.9067518248175183
+          },
+          "substantial_batting": {
+            "observed": 285,
+            "predicted": 260.4675,
+            "predicted_observed_ratio": 0.9139210526315789
+          },
+          "sustained_high_batting": {
+            "observed": 67,
+            "predicted": 71.0775,
+            "predicted_observed_ratio": 1.0608582089552239
+          }
+        }
+      }
+    }
+  },
+  "tail": {
+    "no_mlb": {
+      "supported": true,
+      "observed": 10260,
+      "predicted": 11170.43,
+      "predicted_observed_ratio": 1.0887358674463938,
+      "brier_not_worse_than_F0": true,
+      "log_not_worse_than_F0": true
+    },
+    "regular_workload": {
+      "supported": true,
+      "observed": 480,
+      "predicted": 407.2475,
+      "predicted_observed_ratio": 0.8484322916666667,
+      "brier_not_worse_than_F0": false,
+      "log_not_worse_than_F0": false
+    },
+    "substantial_batting": {
+      "supported": true,
+      "observed": 323,
+      "predicted": 283.3975,
+      "predicted_observed_ratio": 0.877391640866873,
+      "brier_not_worse_than_F0": true,
+      "log_not_worse_than_F0": true
+    },
+    "sustained_high_batting": {
+      "supported": true,
+      "observed": 76,
+      "predicted": 76.9,
+      "predicted_observed_ratio": 1.0118421052631579,
+      "brier_not_worse_than_F0": true,
+      "log_not_worse_than_F0": true
+    }
+  },
+  "top_decile": [
+    {
+      "origin": 2016,
+      "method": "B0",
+      "event": "no_mlb",
+      "n": 458,
+      "predicted": 456.24000000000007,
+      "observed": 455
+    },
+    {
+      "origin": 2016,
+      "method": "B0",
+      "event": "regular_workload",
+      "n": 458,
+      "predicted": 99.155,
+      "observed": 122
+    },
+    {
+      "origin": 2016,
+      "method": "B0",
+      "event": "substantial_batting",
+      "n": 458,
+      "predicted": 65.42500000000001,
+      "observed": 82
+    },
+    {
+      "origin": 2016,
+      "method": "B0",
+      "event": "sustained_high_batting",
+      "n": 458,
+      "predicted": 17.039999999999992,
+      "observed": 29
+    },
+    {
+      "origin": 2016,
+      "method": "F0",
+      "event": "no_mlb",
+      "n": 458,
+      "predicted": 454.5175,
+      "observed": 452
+    },
+    {
+      "origin": 2016,
+      "method": "F0",
+      "event": "regular_workload",
+      "n": 458,
+      "predicted": 136.5825,
+      "observed": 153
+    },
+    {
+      "origin": 2016,
+      "method": "F0",
+      "event": "substantial_batting",
+      "n": 458,
+      "predicted": 96.12500000000003,
+      "observed": 101
+    },
+    {
+      "origin": 2016,
+      "method": "F0",
+      "event": "sustained_high_batting",
+      "n": 458,
+      "predicted": 26.057499999999997,
+      "observed": 30
+    },
+    {
+      "origin": 2016,
+      "method": "F1",
+      "event": "no_mlb",
+      "n": 458,
+      "predicted": 452.5325,
+      "observed": 449
+    },
+    {
+      "origin": 2016,
+      "method": "F1",
+      "event": "regular_workload",
+      "n": 458,
+      "predicted": 134.8875,
+      "observed": 149
+    },
+    {
+      "origin": 2016,
+      "method": "F1",
+      "event": "substantial_batting",
+      "n": 458,
+      "predicted": 97.5,
+      "observed": 102
+    },
+    {
+      "origin": 2016,
+      "method": "F1",
+      "event": "sustained_high_batting",
+      "n": 458,
+      "predicted": 25.949999999999992,
+      "observed": 29
+    },
+    {
+      "origin": 2021,
+      "method": "B0",
+      "event": "no_mlb",
+      "n": 417,
+      "predicted": 415.73,
+      "observed": 402
+    },
+    {
+      "origin": 2021,
+      "method": "B0",
+      "event": "regular_workload",
+      "n": 417,
+      "predicted": 93.2625,
+      "observed": 96
+    },
+    {
+      "origin": 2021,
+      "method": "B0",
+      "event": "substantial_batting",
+      "n": 417,
+      "predicted": 67.0075,
+      "observed": 64
+    },
+    {
+      "origin": 2021,
+      "method": "B0",
+      "event": "sustained_high_batting",
+      "n": 417,
+      "predicted": 22.737500000000004,
+      "observed": 16
+    },
+    {
+      "origin": 2021,
+      "method": "F0",
+      "event": "no_mlb",
+      "n": 417,
+      "predicted": 414.61999999999995,
+      "observed": 400
+    },
+    {
+      "origin": 2021,
+      "method": "F0",
+      "event": "regular_workload",
+      "n": 417,
+      "predicted": 102.88999999999999,
+      "observed": 124
+    },
+    {
+      "origin": 2021,
+      "method": "F0",
+      "event": "substantial_batting",
+      "n": 417,
+      "predicted": 66.89500000000001,
+      "observed": 90
+    },
+    {
+      "origin": 2021,
+      "method": "F0",
+      "event": "sustained_high_batting",
+      "n": 417,
+      "predicted": 19.970000000000002,
+      "observed": 20
+    },
+    {
+      "origin": 2021,
+      "method": "F1",
+      "event": "no_mlb",
+      "n": 417,
+      "predicted": 413.3525,
+      "observed": 402
+    },
+    {
+      "origin": 2021,
+      "method": "F1",
+      "event": "regular_workload",
+      "n": 417,
+      "predicted": 109.8375,
+      "observed": 124
+    },
+    {
+      "origin": 2021,
+      "method": "F1",
+      "event": "substantial_batting",
+      "n": 417,
+      "predicted": 75.61250000000001,
+      "observed": 91
+    },
+    {
+      "origin": 2021,
+      "method": "F1",
+      "event": "sustained_high_batting",
+      "n": 417,
+      "predicted": 22.912499999999998,
+      "observed": 19
+    },
+    {
+      "origin": 2022,
+      "method": "B0",
+      "event": "no_mlb",
+      "n": 416,
+      "predicted": 414.75500000000005,
+      "observed": 406
+    },
+    {
+      "origin": 2022,
+      "method": "B0",
+      "event": "regular_workload",
+      "n": 416,
+      "predicted": 94.19,
+      "observed": 107
+    },
+    {
+      "origin": 2022,
+      "method": "B0",
+      "event": "substantial_batting",
+      "n": 416,
+      "predicted": 67.24000000000001,
+      "observed": 62
+    },
+    {
+      "origin": 2022,
+      "method": "B0",
+      "event": "sustained_high_batting",
+      "n": 416,
+      "predicted": 22.835,
+      "observed": 10
+    },
+    {
+      "origin": 2022,
+      "method": "F0",
+      "event": "no_mlb",
+      "n": 416,
+      "predicted": 413.215,
+      "observed": 405
+    },
+    {
+      "origin": 2022,
+      "method": "F0",
+      "event": "regular_workload",
+      "n": 416,
+      "predicted": 115.4825,
+      "observed": 147
+    },
+    {
+      "origin": 2022,
+      "method": "F0",
+      "event": "substantial_batting",
+      "n": 416,
+      "predicted": 75.9,
+      "observed": 96
+    },
+    {
+      "origin": 2022,
+      "method": "F0",
+      "event": "sustained_high_batting",
+      "n": 416,
+      "predicted": 22.8,
+      "observed": 20
+    },
+    {
+      "origin": 2022,
+      "method": "F1",
+      "event": "no_mlb",
+      "n": 416,
+      "predicted": 412.3725,
+      "observed": 403
+    },
+    {
+      "origin": 2022,
+      "method": "F1",
+      "event": "regular_workload",
+      "n": 416,
+      "predicted": 113.63999999999999,
+      "observed": 141
+    },
+    {
+      "origin": 2022,
+      "method": "F1",
+      "event": "substantial_batting",
+      "n": 416,
+      "predicted": 79.31,
+      "observed": 93
+    },
+    {
+      "origin": 2022,
+      "method": "F1",
+      "event": "sustained_high_batting",
+      "n": 416,
+      "predicted": 23.852500000000003,
+      "observed": 20
+    }
+  ],
+  "nonoverlapping_origin_check": {
+    "2016": {
+      "B0": {
+        "rows": 4572,
+        "origins": [
+          2016
+        ],
+        "crps": 0.3529019538036205,
+        "mse": 2.659947991584662,
+        "energy": 0.2675438988798015,
+        "coverage80": 0.894575678040245,
+        "width80": 1.1287402662910877,
+        "delivered_mse": 1.6913610869249913,
+        "brier_no_mlb": 0.08403744395231862,
+        "brier_regular_workload": 0.028514756944444386,
+        "brier_substantial_batting": 0.022006073654855563,
+        "brier_sustained_high_batting": 0.00730067393919511,
+        "log_no_mlb": 0.2932654123313442,
+        "log_regular_workload": 0.09449287797078892,
+        "log_substantial_batting": 0.0797548779080896,
+        "log_sustained_high_batting": 0.03373774797272103,
+        "rmse": 1.630934698749359,
+        "delivered_rmse": 1.3005233896108872,
+        "events": {
+          "no_mlb": {
+            "observed": 3718,
+            "predicted": 3944.6825,
+            "predicted_observed_ratio": 1.0609689349112426
+          },
+          "regular_workload": {
+            "observed": 170,
+            "predicted": 132.8375,
+            "predicted_observed_ratio": 0.7813970588235295
+          },
+          "substantial_batting": {
+            "observed": 119,
+            "predicted": 90.6325,
+            "predicted_observed_ratio": 0.7616176470588235
+          },
+          "sustained_high_batting": {
+            "observed": 35,
+            "predicted": 21.672500000000003,
+            "predicted_observed_ratio": 0.6192142857142858
+          }
+        }
+      },
+      "F0": {
+        "rows": 4572,
+        "origins": [
+          2016
+        ],
+        "crps": 0.29315268015796203,
+        "mse": 1.9340019732448186,
+        "energy": 0.23542004690342297,
+        "coverage80": 0.8996062992125984,
+        "width80": 0.9853678505942994,
+        "delivered_mse": 1.6913610869249855,
+        "brier_no_mlb": 0.07643217136920417,
+        "brier_regular_workload": 0.019968383639545038,
+        "brier_substantial_batting": 0.018968223698600146,
+        "brier_sustained_high_batting": 0.006422536636045499,
+        "log_no_mlb": 0.2578588259604281,
+        "log_regular_workload": 0.06941229937912129,
+        "log_substantial_batting": 0.06880845150238693,
+        "log_sustained_high_batting": 0.02766506691219936,
+        "rmse": 1.3906839947467644,
+        "delivered_rmse": 1.300523389610885,
+        "events": {
+          "no_mlb": {
+            "observed": 3718,
+            "predicted": 3909.9000000000005,
+            "predicted_observed_ratio": 1.0516137708445403
+          },
+          "regular_workload": {
+            "observed": 170,
+            "predicted": 153.08499999999998,
+            "predicted_observed_ratio": 0.9004999999999999
+          },
+          "substantial_batting": {
+            "observed": 119,
+            "predicted": 106.99249999999999,
+            "predicted_observed_ratio": 0.8990966386554621
+          },
+          "sustained_high_batting": {
+            "observed": 35,
+            "predicted": 27.029999999999998,
+            "predicted_observed_ratio": 0.7722857142857142
+          }
+        }
+      },
+      "F1": {
+        "rows": 4572,
+        "origins": [
+          2016
+        ],
+        "crps": 0.29053735625945737,
+        "mse": 1.8740717938371303,
+        "energy": 0.23423642284469284,
+        "coverage80": 0.8958880139982502,
+        "width80": 0.9166597978194795,
+        "delivered_mse": 1.6913610869249858,
+        "brier_no_mlb": 0.0784943747265969,
+        "brier_regular_workload": 0.02141889216972877,
+        "brier_substantial_batting": 0.018806481025809247,
+        "brier_sustained_high_batting": 0.0063836942257217925,
+        "log_no_mlb": 0.26555505814665176,
+        "log_regular_workload": 0.07437342667602133,
+        "log_substantial_batting": 0.06836653604907501,
+        "log_sustained_high_batting": 0.027375260583138706,
+        "rmse": 1.3689674188369605,
+        "delivered_rmse": 1.300523389610885,
+        "events": {
+          "no_mlb": {
+            "observed": 3718,
+            "predicted": 3925.4974999999995,
+            "predicted_observed_ratio": 1.0558089026358255
+          },
+          "regular_workload": {
+            "observed": 170,
+            "predicted": 150.135,
+            "predicted_observed_ratio": 0.8831470588235294
+          },
+          "substantial_batting": {
+            "observed": 119,
+            "predicted": 105.9625,
+            "predicted_observed_ratio": 0.8904411764705883
+          },
+          "sustained_high_batting": {
+            "observed": 35,
+            "predicted": 26.764999999999997,
+            "predicted_observed_ratio": 0.7647142857142857
+          }
+        }
+      }
+    },
+    "2021": {
+      "B0": {
+        "rows": 4164,
+        "origins": [
+          2021
+        ],
+        "crps": 0.373143474384209,
+        "mse": 2.736439691843183,
+        "energy": 0.2805568656045582,
+        "coverage80": 0.8746397694524496,
+        "width80": 1.1144936586624783,
+        "delivered_mse": 1.464285471630097,
+        "brier_no_mlb": 0.11071398595100876,
+        "brier_regular_workload": 0.02919570725264162,
+        "brier_substantial_batting": 0.02160204580931792,
+        "brier_sustained_high_batting": 0.004861733009125849,
+        "log_no_mlb": 0.3841642025491123,
+        "log_regular_workload": 0.10381898130152371,
+        "log_substantial_batting": 0.07952156223305773,
+        "log_sustained_high_batting": 0.024919182399540905,
+        "rmse": 1.6542187557403594,
+        "delivered_rmse": 1.2100766387423967,
+        "events": {
+          "no_mlb": {
+            "observed": 3261,
+            "predicted": 3627.385,
+            "predicted_observed_ratio": 1.1123535725237659
+          },
+          "regular_workload": {
+            "observed": 146,
+            "predicted": 124.305,
+            "predicted_observed_ratio": 0.8514041095890411
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 88.37249999999999,
+            "predicted_observed_ratio": 0.8663970588235292
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 27.877500000000005,
+            "predicted_observed_ratio": 1.3938750000000002
+          }
+        }
+      },
+      "F0": {
+        "rows": 4164,
+        "origins": [
+          2021
+        ],
+        "crps": 0.3097848889810626,
+        "mse": 1.943789641123302,
+        "energy": 0.24446185754535563,
+        "coverage80": 0.8739193083573487,
+        "width80": 0.8775767781687345,
+        "delivered_mse": 1.4642854716300981,
+        "brier_no_mlb": 0.10431118365754118,
+        "brier_regular_workload": 0.02131939991594618,
+        "brier_substantial_batting": 0.01739933957732949,
+        "brier_sustained_high_batting": 0.00421370226945246,
+        "log_no_mlb": 0.3892791140272222,
+        "log_regular_workload": 0.07719675468205522,
+        "log_substantial_batting": 0.06167048395756659,
+        "log_sustained_high_batting": 0.018040896012238673,
+        "rmse": 1.3941985658876939,
+        "delivered_rmse": 1.2100766387423971,
+        "events": {
+          "no_mlb": {
+            "observed": 3261,
+            "predicted": 3687.0925000000007,
+            "predicted_observed_ratio": 1.1306631401410612
+          },
+          "regular_workload": {
+            "observed": 146,
+            "predicted": 113.1325,
+            "predicted_observed_ratio": 0.7748801369863013
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 75.56,
+            "predicted_observed_ratio": 0.7407843137254903
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 21.9775,
+            "predicted_observed_ratio": 1.098875
+          }
+        }
+      },
+      "F1": {
+        "rows": 4164,
+        "origins": [
+          2021
+        ],
+        "crps": 0.29766206112992216,
+        "mse": 1.8201325349547406,
+        "energy": 0.2387383189981539,
+        "coverage80": 0.8804034582132565,
+        "width80": 0.8925956693380793,
+        "delivered_mse": 1.4642854716300981,
+        "brier_no_mlb": 0.09991775036023086,
+        "brier_regular_workload": 0.021060191522574444,
+        "brier_substantial_batting": 0.0169907060518732,
+        "brier_sustained_high_batting": 0.004179483369356395,
+        "log_no_mlb": 0.3709076620004851,
+        "log_regular_workload": 0.07748998514571695,
+        "log_substantial_batting": 0.061031941657756085,
+        "log_sustained_high_batting": 0.01774131077445571,
+        "rmse": 1.3491228761512943,
+        "delivered_rmse": 1.2100766387423971,
+        "events": {
+          "no_mlb": {
+            "observed": 3261,
+            "predicted": 3660.4100000000003,
+            "predicted_observed_ratio": 1.1224808340999695
+          },
+          "regular_workload": {
+            "observed": 146,
+            "predicted": 122.42999999999999,
+            "predicted_observed_ratio": 0.8385616438356164
+          },
+          "substantial_batting": {
+            "observed": 102,
+            "predicted": 83.64499999999998,
+            "predicted_observed_ratio": 0.8200490196078429
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 24.127499999999998,
+            "predicted_observed_ratio": 1.206375
+          }
+        }
+      }
+    }
+  },
+  "stress": {
+    "3": {
+      "B0": {
+        "rows": 4752,
+        "origins": [
+          2019
+        ],
+        "crps": 0.2706133080931857,
+        "mse": 1.608779182439364,
+        "energy": 0.21615725793621404,
+        "coverage80": 0.8958333333333334,
+        "width80": 0.988048359222869,
+        "delivered_mse": 1.0023129544641856,
+        "brier_no_mlb": 0.09162115556607761,
+        "brier_regular_workload": 0.020196635627104317,
+        "brier_substantial_batting": 0.015809886626683523,
+        "brier_sustained_high_batting": 0.004177293771043783,
+        "log_no_mlb": 0.3239082526310261,
+        "log_regular_workload": 0.07076331494963488,
+        "log_substantial_batting": 0.058431007654653096,
+        "log_sustained_high_batting": 0.021294103920716158,
+        "rmse": 1.2683765933031734,
+        "delivered_rmse": 1.0011558092845416,
+        "events": {
+          "no_mlb": {
+            "observed": 3859,
+            "predicted": 4195.8775000000005,
+            "predicted_observed_ratio": 1.0872965794247216
+          },
+          "regular_workload": {
+            "observed": 107,
+            "predicted": 126.93500000000002,
+            "predicted_observed_ratio": 1.1863084112149533
+          },
+          "substantial_batting": {
+            "observed": 84,
+            "predicted": 90.0075,
+            "predicted_observed_ratio": 1.071517857142857
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 29.355000000000004,
+            "predicted_observed_ratio": 1.46775
+          }
+        }
+      },
+      "F0": {
+        "rows": 4752,
+        "origins": [
+          2019
+        ],
+        "crps": 0.22022976126418056,
+        "mse": 1.1082640642136958,
+        "energy": 0.1908249507551618,
+        "coverage80": 0.9042508417508418,
+        "width80": 0.9473291277279647,
+        "delivered_mse": 1.0023129544641851,
+        "brier_no_mlb": 0.07969301609848525,
+        "brier_regular_workload": 0.01636837515782825,
+        "brier_substantial_batting": 0.013235708648989899,
+        "brier_sustained_high_batting": 0.0038253209175084252,
+        "log_no_mlb": 0.2835780835448516,
+        "log_regular_workload": 0.05627798931551823,
+        "log_substantial_batting": 0.047030425343536846,
+        "log_sustained_high_batting": 0.01646941377954002,
+        "rmse": 1.0527412142657357,
+        "delivered_rmse": 1.0011558092845414,
+        "events": {
+          "no_mlb": {
+            "observed": 3859,
+            "predicted": 4155.095,
+            "predicted_observed_ratio": 1.0767284270536408
+          },
+          "regular_workload": {
+            "observed": 107,
+            "predicted": 144.31750000000002,
+            "predicted_observed_ratio": 1.3487616822429909
+          },
+          "substantial_batting": {
+            "observed": 84,
+            "predicted": 98.97500000000001,
+            "predicted_observed_ratio": 1.1782738095238097
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 29.654999999999998,
+            "predicted_observed_ratio": 1.4827499999999998
+          }
+        }
+      },
+      "F1": {
+        "rows": 4752,
+        "origins": [
+          2019
+        ],
+        "crps": 0.20966950125648548,
+        "mse": 1.0124571572077,
+        "energy": 0.18726633506058404,
+        "coverage80": 0.9107744107744108,
+        "width80": 0.9224206360899796,
+        "delivered_mse": 1.0023129544641844,
+        "brier_no_mlb": 0.07727301399410805,
+        "brier_regular_workload": 0.015913998053451166,
+        "brier_substantial_batting": 0.01243820102062291,
+        "brier_sustained_high_batting": 0.003748829440235703,
+        "log_no_mlb": 0.27741306326780085,
+        "log_regular_workload": 0.055049206395177956,
+        "log_substantial_batting": 0.043962573725104453,
+        "log_sustained_high_batting": 0.015980846167162693,
+        "rmse": 1.0062093008950472,
+        "delivered_rmse": 1.0011558092845412,
+        "events": {
+          "no_mlb": {
+            "observed": 3859,
+            "predicted": 4146.18,
+            "predicted_observed_ratio": 1.0744182430681524
+          },
+          "regular_workload": {
+            "observed": 107,
+            "predicted": 143.3175,
+            "predicted_observed_ratio": 1.3394158878504672
+          },
+          "substantial_batting": {
+            "observed": 84,
+            "predicted": 99.20250000000003,
+            "predicted_observed_ratio": 1.1809821428571432
+          },
+          "sustained_high_batting": {
+            "observed": 20,
+            "predicted": 28.924999999999997,
+            "predicted_observed_ratio": 1.4462499999999998
+          }
+        }
+      }
+    },
+    "6": {
+      "B0": {
+        "rows": 18252,
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2019
+        ],
+        "crps": 0.5926149439820163,
+        "mse": 7.0531940846139065,
+        "energy": 0.3746651070747451,
+        "coverage80": 0.859696672234332,
+        "width80": 1.8823508844068582,
+        "delivered_mse": 4.721101012530743,
+        "brier_no_mlb": 0.11612706152332301,
+        "brier_regular_workload": 0.037625643746320506,
+        "brier_substantial_batting": 0.03243872509931578,
+        "brier_sustained_high_batting": 0.009625215445777355,
+        "log_no_mlb": 0.393893609200867,
+        "log_regular_workload": 0.13703225651027956,
+        "log_substantial_batting": 0.12103188869877013,
+        "log_sustained_high_batting": 0.044305631063120444,
+        "rmse": 2.6557850222888724,
+        "delivered_rmse": 2.1728094745123747,
+        "events": {
+          "no_mlb": {
+            "observed": 14058,
+            "predicted": 14946.2775,
+            "predicted_observed_ratio": 1.06318661971831
+          },
+          "regular_workload": {
+            "observed": 864,
+            "predicted": 828.6875,
+            "predicted_observed_ratio": 0.9591290509259259
+          },
+          "substantial_batting": {
+            "observed": 717,
+            "predicted": 726.6025,
+            "predicted_observed_ratio": 1.0133926080892608
+          },
+          "sustained_high_batting": {
+            "observed": 186,
+            "predicted": 183.72500000000002,
+            "predicted_observed_ratio": 0.9877688172043012
+          }
+        }
+      },
+      "F0": {
+        "rows": 18252,
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2019
+        ],
+        "crps": 0.518429734058371,
+        "mse": 5.615445088338813,
+        "energy": 0.3442520093746195,
+        "coverage80": 0.8691325782696039,
+        "width80": 1.7235104148469627,
+        "delivered_mse": 4.721101012530743,
+        "brier_no_mlb": 0.10521470025163566,
+        "brier_regular_workload": 0.030684377200208505,
+        "brier_substantial_batting": 0.028304133287774737,
+        "brier_sustained_high_batting": 0.008773909660604158,
+        "log_no_mlb": 0.3524400117108183,
+        "log_regular_workload": 0.11654650142348408,
+        "log_substantial_batting": 0.10874954257412553,
+        "log_sustained_high_batting": 0.037507273941554134,
+        "rmse": 2.3696930367325666,
+        "delivered_rmse": 2.1728094745123747,
+        "events": {
+          "no_mlb": {
+            "observed": 14058,
+            "predicted": 14964.384999999998,
+            "predicted_observed_ratio": 1.0644746763408734
+          },
+          "regular_workload": {
+            "observed": 864,
+            "predicted": 872.3950000000001,
+            "predicted_observed_ratio": 1.0097164351851853
+          },
+          "substantial_batting": {
+            "observed": 717,
+            "predicted": 760.7225,
+            "predicted_observed_ratio": 1.0609797768479776
+          },
+          "sustained_high_batting": {
+            "observed": 186,
+            "predicted": 201.03500000000003,
+            "predicted_observed_ratio": 1.0808333333333335
+          }
+        }
+      },
+      "F1": {
+        "rows": 18252,
+        "origins": [
+          2016,
+          2017,
+          2018,
+          2019
+        ],
+        "crps": 0.5010252047799523,
+        "mse": 5.239064748221315,
+        "energy": 0.33874873045672876,
+        "coverage80": 0.8734726754906186,
+        "width80": 1.7039687295883326,
+        "delivered_mse": 4.721101012530743,
+        "brier_no_mlb": 0.10410425424264488,
+        "brier_regular_workload": 0.030545606250285035,
+        "brier_substantial_batting": 0.027114186735271446,
+        "brier_sustained_high_batting": 0.008527694868120968,
+        "log_no_mlb": 0.3548666077470054,
+        "log_regular_workload": 0.11735328579049618,
+        "log_substantial_batting": 0.10497515354897685,
+        "log_sustained_high_batting": 0.036567285149247765,
+        "rmse": 2.2889003360175635,
+        "delivered_rmse": 2.1728094745123747,
+        "events": {
+          "no_mlb": {
+            "observed": 14058,
+            "predicted": 15003.63,
+            "predicted_observed_ratio": 1.0672663252240717
+          },
+          "regular_workload": {
+            "observed": 864,
+            "predicted": 860.1324999999999,
+            "predicted_observed_ratio": 0.9955237268518518
+          },
+          "substantial_batting": {
+            "observed": 717,
+            "predicted": 757.0799999999999,
+            "predicted_observed_ratio": 1.0558995815899581
+          },
+          "sustained_high_batting": {
+            "observed": 186,
+            "predicted": 203.25500000000002,
+            "predicted_observed_ratio": 1.0927688172043013
+          }
+        }
+      }
+    }
+  },
+  "cold": {
+    "B0": {
+      "rows": 4155,
+      "origins": [
+        2022
+      ],
+      "crps": 0.39841305860284754,
+      "mse": 2.9975526891063886,
+      "energy": 0.29540822381973897,
+      "coverage80": 0.8570397111913357,
+      "width80": 0.4920385819032233,
+      "delivered_mse": 1.264146455522535,
+      "brier_no_mlb": 0.11626654332129949,
+      "brier_regular_workload": 0.035354608904933804,
+      "brier_substantial_batting": 0.02314219013237065,
+      "brier_sustained_high_batting": 0.005037035198555961,
+      "log_no_mlb": 0.4461581032142603,
+      "log_regular_workload": 0.1318271930090036,
+      "log_substantial_batting": 0.09447659568017126,
+      "log_sustained_high_batting": 0.03293963731976485,
+      "rmse": 1.7313441856275686,
+      "delivered_rmse": 1.1243426770885,
+      "events": {
+        "no_mlb": {
+          "observed": 3281,
+          "predicted": 3772.875,
+          "predicted_observed_ratio": 1.1499161840902163
+        },
+        "regular_workload": {
+          "observed": 164,
+          "predicted": 45.14000000000001,
+          "predicted_observed_ratio": 0.2752439024390244
+        },
+        "substantial_batting": {
+          "observed": 102,
+          "predicted": 22.97,
+          "predicted_observed_ratio": 0.22519607843137254
+        },
+        "sustained_high_batting": {
+          "observed": 21,
+          "predicted": 0.8575,
+          "predicted_observed_ratio": 0.04083333333333333
+        }
+      }
+    },
+    "F0": {
+      "rows": 4155,
+      "origins": [
+        2022
+      ],
+      "crps": 0.3470996769087505,
+      "mse": 2.4579124475224727,
+      "energy": 0.26628489545524237,
+      "coverage80": 0.8447653429602888,
+      "width80": 0.43540954170058915,
+      "delivered_mse": 1.2641464555225357,
+      "brier_no_mlb": 0.11072991726835131,
+      "brier_regular_workload": 0.028733348375451263,
+      "brier_substantial_batting": 0.021227919675090256,
+      "brier_sustained_high_batting": 0.004984981949458486,
+      "log_no_mlb": 0.41815761062627266,
+      "log_regular_workload": 0.10893155681025618,
+      "log_substantial_batting": 0.08003380938782528,
+      "log_sustained_high_batting": 0.028139043815036163,
+      "rmse": 1.5677730854694734,
+      "delivered_rmse": 1.1243426770885003,
+      "events": {
+        "no_mlb": {
+          "observed": 3281,
+          "predicted": 3778.7075,
+          "predicted_observed_ratio": 1.151693843340445
+        },
+        "regular_workload": {
+          "observed": 164,
+          "predicted": 53.38,
+          "predicted_observed_ratio": 0.3254878048780488
+        },
+        "substantial_batting": {
+          "observed": 102,
+          "predicted": 26.1725,
+          "predicted_observed_ratio": 0.25659313725490196
+        },
+        "sustained_high_batting": {
+          "observed": 21,
+          "predicted": 1.41,
+          "predicted_observed_ratio": 0.06714285714285714
+        }
+      }
+    },
+    "F1": {
+      "rows": 4155,
+      "origins": [
+        2022
+      ],
+      "crps": 0.34324256439205897,
+      "mse": 2.4148778135557714,
+      "energy": 0.26426612454588383,
+      "coverage80": 0.8445246690734055,
+      "width80": 0.40987779724879714,
+      "delivered_mse": 1.264146455522535,
+      "brier_no_mlb": 0.11142326865222632,
+      "brier_regular_workload": 0.02974058814681106,
+      "brier_substantial_batting": 0.021244951865222624,
+      "brier_sustained_high_batting": 0.004994141095066186,
+      "log_no_mlb": 0.4205396961530677,
+      "log_regular_workload": 0.11451011982150068,
+      "log_substantial_batting": 0.08117212898882921,
+      "log_sustained_high_batting": 0.02863966579816128,
+      "rmse": 1.5539877134507116,
+      "delivered_rmse": 1.1243426770885,
+      "events": {
+        "no_mlb": {
+          "observed": 3281,
+          "predicted": 3781.7475000000004,
+          "predicted_observed_ratio": 1.152620390124962
+        },
+        "regular_workload": {
+          "observed": 164,
+          "predicted": 51.11749999999999,
+          "predicted_observed_ratio": 0.31169207317073166
+        },
+        "substantial_batting": {
+          "observed": 102,
+          "predicted": 25.19,
+          "predicted_observed_ratio": 0.2469607843137255
+        },
+        "sustained_high_batting": {
+          "observed": 21,
+          "predicted": 1.5524999999999998,
+          "predicted_observed_ratio": 0.07392857142857141
+        }
+      }
+    }
+  },
+  "target": "batting_plus_replacement_not_whole_war",
+  "production_forecasts_changed": false,
+  "dollar_values_available": false,
+  "protected_outcomes_used": false,
+  "source_sha256": "282cfad6f7b60a1a5a154774fa3ef314cef0c8591095428adb725e3db0811d75"
+}

@@ -1,0 +1,1056 @@
+{
+  "source_hashes": {
+    "docs\\player-path-value-bridge-v1-plan.md": "b968987997bbc2c9c7ed85160ea6d8d143051038b1e66a3de504dab0aa96265d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\fit_player_path_value_bridge_v1.py": "cfc626ac11b9ad5b199c47ae376bbf9f588b6446ad0004386be2f4f973adc973",
+    "src\\universal_baseball\\player_path_distribution.py": "4d23c76721d6a09d925f4cfd803e7f3f65c06e2ce28745f4bc366585ec53644e",
+    "reports\\generated\\multiyear-hitter-v1\\panel.parquet": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+    "reports\\generated\\multiyear-hitter-v1\\targets.parquet": "54b7c51af42254ef44e36f6f5035d05334b368f128baa0280e9f98ff92e941e3",
+    "reports\\generated\\multiyear-hitter-v1\\manifest.json": "5a88939fd3e0841dc63d004ca2b3d83410fd0662013d7ea8aece58f0ad1db63e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\tables\\people-debut-dates.parquet": "2b623e7fcdcf74803f26f02c1ddc998dd543ef9fdf58c50cfef7934e74612c8d",
+    "model_artifacts\\hitter-arrival-coherence-v1-2026-09-23\\predictions.parquet": "5a9ee95e680943762ff598b47141ac9bcc655ac8a4286f4ba7e78bf7f30a386f"
+  },
+  "fingerprint": "7742eece0e890f27",
+  "core_features": [
+    "age_centered",
+    "age_squared",
+    "age_missing",
+    "reorganization_era",
+    "level_MLB",
+    "level_AAA",
+    "level_AA",
+    "level_A+",
+    "level_A",
+    "level_A-",
+    "level_RK",
+    "level_INACTIVE",
+    "level_UNKNOWN",
+    "missing_lag0",
+    "log_pa_lag0",
+    "log_mlb_pa_lag0",
+    "missing_lag1",
+    "log_pa_lag1",
+    "log_mlb_pa_lag1",
+    "missing_lag2",
+    "log_pa_lag2",
+    "log_mlb_pa_lag2"
+  ],
+  "full_features": [
+    "age_centered",
+    "age_squared",
+    "age_missing",
+    "reorganization_era",
+    "level_MLB",
+    "level_AAA",
+    "level_AA",
+    "level_A+",
+    "level_A",
+    "level_A-",
+    "level_RK",
+    "level_INACTIVE",
+    "level_UNKNOWN",
+    "missing_lag0",
+    "log_pa_lag0",
+    "log_mlb_pa_lag0",
+    "ubb_rate_lag0",
+    "strikeout_rate_lag0",
+    "single_rate_lag0",
+    "double_rate_lag0",
+    "triple_rate_lag0",
+    "home_run_rate_lag0",
+    "hbp_rate_lag0",
+    "stolen_base_rate_lag0",
+    "share_RK_lag0",
+    "share_ROOKIE_lag0",
+    "share_A-_lag0",
+    "share_A_lag0",
+    "share_A+_lag0",
+    "share_AA_lag0",
+    "share_AAA_lag0",
+    "share_MLB_lag0",
+    "observed_mlb_value_lag0",
+    "mlb_value_history_available_lag0",
+    "missing_lag1",
+    "log_pa_lag1",
+    "log_mlb_pa_lag1",
+    "ubb_rate_lag1",
+    "strikeout_rate_lag1",
+    "single_rate_lag1",
+    "double_rate_lag1",
+    "triple_rate_lag1",
+    "home_run_rate_lag1",
+    "hbp_rate_lag1",
+    "stolen_base_rate_lag1",
+    "share_RK_lag1",
+    "share_ROOKIE_lag1",
+    "share_A-_lag1",
+    "share_A_lag1",
+    "share_A+_lag1",
+    "share_AA_lag1",
+    "share_AAA_lag1",
+    "share_MLB_lag1",
+    "observed_mlb_value_lag1",
+    "mlb_value_history_available_lag1",
+    "missing_lag2",
+    "log_pa_lag2",
+    "log_mlb_pa_lag2",
+    "ubb_rate_lag2",
+    "strikeout_rate_lag2",
+    "single_rate_lag2",
+    "double_rate_lag2",
+    "triple_rate_lag2",
+    "home_run_rate_lag2",
+    "hbp_rate_lag2",
+    "stolen_base_rate_lag2",
+    "share_RK_lag2",
+    "share_ROOKIE_lag2",
+    "share_A-_lag2",
+    "share_A_lag2",
+    "share_A+_lag2",
+    "share_AA_lag2",
+    "share_AAA_lag2",
+    "share_MLB_lag2",
+    "observed_mlb_value_lag2",
+    "mlb_value_history_available_lag2",
+    "on_40man"
+  ],
+  "fits": [
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2016,
+      "query_players_in_training": 2181,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2016-h3-cold0-B0.npz",
+      "draw_sha256": "ff4252219e515bfe76163704f0527286f6d4018f966165d9b709b371678a361b"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2016,
+      "query_players_in_training": 2181,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        },
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2016-h3-cold0-F0.npz",
+      "draw_sha256": "9537583a5f8b77836563a326f327c0d3ef2d886d6168c7c957e831ef7acff6b1"
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2016,
+      "query_players_in_training": 2181,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        },
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2016-h3-cold0-F1.npz",
+      "draw_sha256": "6fe3e7a2d7d85d52cd7958acb1c207418cf6398267bf282f92ef1cfe36ee441d"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 2161,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2019-h3-cold0-B0.npz",
+      "draw_sha256": "140a64482e81cc7efbdcc8d92b3a5071a110a15a50be3ef4348862bad7911490"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 2161,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        },
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2019-h3-cold0-F0.npz",
+      "draw_sha256": "4086ac367b7452e626975f6bc1119d44bb19f9df3764f429ba5c7ba4c58b6c2c"
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 2161,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        },
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2019-h3-cold0-F1.npz",
+      "draw_sha256": "f5eb9b608b6c7ff10c47a93ff633303c4a94e034bda9bca889c3791dcbb8325e"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 1188,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2021-h3-cold0-B0.npz",
+      "draw_sha256": "df3549d199ab967e57e2ae7f6ecc77478700a1339f7ab6a9e423b8399b0e00df"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 1188,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        },
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2021-h3-cold0-F0.npz",
+      "draw_sha256": "20cb52406f91c1eeed6600b4d2b6d214891e89acc7a2134fea3148ac7324ca5e"
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 1188,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        },
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2021-h3-cold0-F1.npz",
+      "draw_sha256": "b1733d0c85092b0beef3d60d8439237a2c6a1ba2d77abff481655f4ba8224f5c"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 900,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2022-h3-cold0-B0.npz",
+      "draw_sha256": "1e562f6ac6cfb60b87a4212f74b7a0011530c13d4ee844b76a9b8630e735cd24"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 900,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        },
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2022-h3-cold0-F0.npz",
+      "draw_sha256": "cd9950669be25866c0fbb0258969f7a1ba0bf33a501609ee508d3314142efa91"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 11026,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 900,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        },
+        {
+          "structure_players": 5513,
+          "donor_players": 5513,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2022-h3-cold0-F1.npz",
+      "draw_sha256": "f439c57d15df9556f9b956b2107ca020a3a61a058fafdd35704452a508d9a37f"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 14811,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "latest_training_outcome": 2025,
+      "query_players_in_training": 1839,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2025-h3-cold0-B0.npz",
+      "draw_sha256": "9e6fc2087a43144cdc42f2a255765b78c64180a7e2de4b3151170e3d11bb7f31"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 14811,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "latest_training_outcome": 2025,
+      "query_players_in_training": 1839,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 7406,
+          "donor_players": 7405,
+          "overlap": 0
+        },
+        {
+          "structure_players": 7405,
+          "donor_players": 7406,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2025-h3-cold0-F0.npz",
+      "draw_sha256": "073e5e0a122bba4b6004599f9c1c7b20bb033499af29516e5fd3dedc43614ef5"
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 14811,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "latest_training_outcome": 2025,
+      "query_players_in_training": 1839,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 7406,
+          "donor_players": 7405,
+          "overlap": 0
+        },
+        {
+          "structure_players": 7405,
+          "donor_players": 7406,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2025-h3-cold0-F1.npz",
+      "draw_sha256": "6fa522e119292d1c7dc60abd1f4cbed06e1c4fbedfc4e2ed9f568840482ca29a"
+    },
+    {
+      "origin": 2016,
+      "horizon": 6,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 5451,
+      "training_origins": [
+        2009,
+        2010
+      ],
+      "latest_training_outcome": 2016,
+      "query_players_in_training": 1074,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2016-h6-cold0-B0.npz",
+      "draw_sha256": "6594d331c9a84b7972ee809f5b4e501964d627e6ecdeb7f0d8e2f16c0569b14c"
+    },
+    {
+      "origin": 2016,
+      "horizon": 6,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 5451,
+      "training_origins": [
+        2009,
+        2010
+      ],
+      "latest_training_outcome": 2016,
+      "query_players_in_training": 1074,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 2726,
+          "donor_players": 2725,
+          "overlap": 0
+        },
+        {
+          "structure_players": 2725,
+          "donor_players": 2726,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2016-h6-cold0-F0.npz",
+      "draw_sha256": "0c85a884b0e73526a22b51349a857972acb1d90becc13002cb0cd1bb8cab9854"
+    },
+    {
+      "origin": 2016,
+      "horizon": 6,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 5451,
+      "training_origins": [
+        2009,
+        2010
+      ],
+      "latest_training_outcome": 2016,
+      "query_players_in_training": 1074,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 2726,
+          "donor_players": 2725,
+          "overlap": 0
+        },
+        {
+          "structure_players": 2725,
+          "donor_players": 2726,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2016-h6-cold0-F1.npz",
+      "draw_sha256": "9b845c887fdd65662d08173bb0ea0bc54e51c04f7b24af4e87416ba6160e9d6a"
+    },
+    {
+      "origin": 2017,
+      "horizon": 6,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 6388,
+      "training_origins": [
+        2009,
+        2010,
+        2011
+      ],
+      "latest_training_outcome": 2017,
+      "query_players_in_training": 1085,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2017-h6-cold0-B0.npz",
+      "draw_sha256": "ef3735f89429df5f7b278deba1091e94b6bf1c56029a49d9596badc9b9b9e92c"
+    },
+    {
+      "origin": 2017,
+      "horizon": 6,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 6388,
+      "training_origins": [
+        2009,
+        2010,
+        2011
+      ],
+      "latest_training_outcome": 2017,
+      "query_players_in_training": 1085,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 3194,
+          "donor_players": 3194,
+          "overlap": 0
+        },
+        {
+          "structure_players": 3194,
+          "donor_players": 3194,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2017-h6-cold0-F0.npz",
+      "draw_sha256": "c7004fbf2717249fc3b02809d185b73944a4d70e66eacc12b89a856535daf0a1"
+    },
+    {
+      "origin": 2017,
+      "horizon": 6,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 6388,
+      "training_origins": [
+        2009,
+        2010,
+        2011
+      ],
+      "latest_training_outcome": 2017,
+      "query_players_in_training": 1085,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 3194,
+          "donor_players": 3194,
+          "overlap": 0
+        },
+        {
+          "structure_players": 3194,
+          "donor_players": 3194,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2017-h6-cold0-F1.npz",
+      "draw_sha256": "f4f8736149313672c1e03e2f95ae8a2a8ce0faad0235c9bf32fa2ae6396b80c8"
+    },
+    {
+      "origin": 2018,
+      "horizon": 6,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 7324,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012
+      ],
+      "latest_training_outcome": 2018,
+      "query_players_in_training": 877,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2018-h6-cold0-B0.npz",
+      "draw_sha256": "522ae66cd99887363486d7eb5d4ee99f374a9bb0b3fb3bc95d9769503f6e6912"
+    },
+    {
+      "origin": 2018,
+      "horizon": 6,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 7324,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012
+      ],
+      "latest_training_outcome": 2018,
+      "query_players_in_training": 877,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 3662,
+          "donor_players": 3662,
+          "overlap": 0
+        },
+        {
+          "structure_players": 3662,
+          "donor_players": 3662,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2018-h6-cold0-F0.npz",
+      "draw_sha256": "2a1e5af6b7573aeda4cddf2bbf90ef723f19a2418c80a9346c4858b07110994a"
+    },
+    {
+      "origin": 2018,
+      "horizon": 6,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 7324,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012
+      ],
+      "latest_training_outcome": 2018,
+      "query_players_in_training": 877,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 3662,
+          "donor_players": 3662,
+          "overlap": 0
+        },
+        {
+          "structure_players": 3662,
+          "donor_players": 3662,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2018-h6-cold0-F1.npz",
+      "draw_sha256": "2d471799d80dcae198050a3141e7cd7dd7c15223df58b4c722f500f362be0ad0"
+    },
+    {
+      "origin": 2019,
+      "horizon": 6,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 1089,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2019-h6-cold0-B0.npz",
+      "draw_sha256": "fe15865e9d25f1ba9c661f753b3f35ea982f0f47692754970212843515a2586c"
+    },
+    {
+      "origin": 2019,
+      "horizon": 6,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 1089,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        },
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2019-h6-cold0-F0.npz",
+      "draw_sha256": "d31dd6ec4012d233ae33a05bf33114d1c926d54e24a0d4cb90fd973439abfa60"
+    },
+    {
+      "origin": 2019,
+      "horizon": 6,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 1089,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        },
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2019-h6-cold0-F1.npz",
+      "draw_sha256": "4f837bb1a00195c711a327c0321251931f2ffa17d2f4bda71cff9b837cb17bbd"
+    },
+    {
+      "origin": 2025,
+      "horizon": 6,
+      "cold": false,
+      "method": "B0",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 178,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2025-h6-cold0-B0.npz",
+      "draw_sha256": "b9337563f6ddce6553e772e99a42dc05858dc02821ba971a849e83ea3539f256"
+    },
+    {
+      "origin": 2025,
+      "horizon": 6,
+      "cold": false,
+      "method": "F0",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 178,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        },
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2025-h6-cold0-F0.npz",
+      "draw_sha256": "866a9c5b3cf2e62975825bd3430bc9ce5a8f095c68a0ae5aa321758f94721ee1"
+    },
+    {
+      "origin": 2025,
+      "horizon": 6,
+      "cold": false,
+      "method": "F1",
+      "train_rows": 8230,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 178,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        },
+        {
+          "structure_players": 4115,
+          "donor_players": 4115,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2025-h6-cold0-F1.npz",
+      "draw_sha256": "7c4258cbe73aff871b7efe775f625f33265f7959c1501c4a653e0478322221e4"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold": true,
+      "method": "B0",
+      "train_rows": 10126,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 0,
+      "self_donors": 0,
+      "honest_splits": [],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2022-h3-cold1-B0.npz",
+      "draw_sha256": "500399214ce2acae8f25d54fed5e8cbca42dc58ddc0c3b4250f4ab53a07a8f3d"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold": true,
+      "method": "F0",
+      "train_rows": 10126,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 0,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 5063,
+          "donor_players": 5063,
+          "overlap": 0
+        },
+        {
+          "structure_players": 5063,
+          "donor_players": 5063,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2022-h3-cold1-F0.npz",
+      "draw_sha256": "5f6fca3422c548522fbd956c1829d15dfeed88cdc9ae10308325667ea6da87f0"
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold": true,
+      "method": "F1",
+      "train_rows": 10126,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_training_outcome": 2019,
+      "query_players_in_training": 0,
+      "self_donors": 0,
+      "honest_splits": [
+        {
+          "structure_players": 5063,
+          "donor_players": 5063,
+          "overlap": 0
+        },
+        {
+          "structure_players": 5063,
+          "donor_players": 5063,
+          "overlap": 0
+        }
+      ],
+      "draw_path": "reports\\generated\\player-path-value-bridge-v1\\cache\\7742eece0e890f27\\2022-h3-cold1-F1.npz",
+      "draw_sha256": "f048cff083ebbfc4d369e0c8dc2d853af9abea43f9e5640dd4afd773a98f4428"
+    }
+  ],
+  "protected_outcomes_used": false,
+  "current_forecasts_changed": false,
+  "target": "batting_plus_replacement_not_whole_war"
+}

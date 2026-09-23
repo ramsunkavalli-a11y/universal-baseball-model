@@ -6,6 +6,30 @@
 
 ## Active execution priority — 2026-09-22
 
+### User clarification and value milestone — 2026-09-23
+
+The destination is model-oriented player valuation, centered on our independent
+projection system. Predict possible careers first; price the team's transferable
+rights, obligations and choices in each path, then average. Mean calendar WAR,
+controlled WAR, economic surplus and likely trade-market return stay distinct.
+Neither public FV nor a desired trade return may set our talent forecast.
+
+The [first path/value bridge](player-path-value-bridge-v1-result.md) delivers a
+tested valuation interface but rejects the new empirical-path model. Hitting
+history improves distribution scores; prospect regular outcomes remain too low,
+and mean accuracy trails the delivered model. Old career simulators remain
+rejected. The live forecast is unchanged and player dollar values are unavailable.
+
+Immediate priority: audit young/brief-MLB career continuation and historical donor
+support, then predeclare one revised distribution test with prospect success
+calibration and strong mean-model comparators. Complete whole-WAR and joint
+service/rights/cost validation before connecting the value interface to real player
+prices. Preserve the existing models as benchmarks; do not spend the next cycle
+solely shaving overall mean error across mostly-zero players. Future entrants are
+a separate league/roster reserve, not hidden extra value assigned to today's assets.
+This clarification supersedes conflicting immediate next-experiment suggestions
+below; earlier failed results and source constraints remain binding.
+
 Follow the [multi-year player-value plan](multiyear-player-value-plan-2026-09-22.md)
 for the next sequence: certify annual/cumulative labels, compare direct Year 2/3
 hitter forecasts and deliver a player report, extend to pitchers and supported longer

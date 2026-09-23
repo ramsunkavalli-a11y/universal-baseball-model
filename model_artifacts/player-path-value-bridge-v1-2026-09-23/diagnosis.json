@@ -1,0 +1,202 @@
+{
+  "post_score_diagnostic_not_selection": true,
+  "young_brief_mlb_definition": "age<=23 and current MLB PA in [1,99]",
+  "young_brief_mlb": [
+    {
+      "method": "F0",
+      "player_origin_rows": 98,
+      "actual_regular_workload": 16,
+      "expected_regular": 7.1375,
+      "actual_no_mlb": 10,
+      "expected_no_mlb": 53.825,
+      "actual_batting": 1.5077767538932214,
+      "mean_batting": 0.7376865957131243,
+      "delivered_mean": 1.0948739780492913
+    },
+    {
+      "method": "F1",
+      "player_origin_rows": 98,
+      "actual_regular_workload": 16,
+      "expected_regular": 6.75,
+      "actual_no_mlb": 10,
+      "expected_no_mlb": 46.805,
+      "actual_batting": 1.5077767538932214,
+      "mean_batting": 0.7053293730448525,
+      "delivered_mean": 1.0948739780492913
+    },
+    {
+      "method": "B0",
+      "player_origin_rows": 98,
+      "actual_regular_workload": 16,
+      "expected_regular": 22.4325,
+      "actual_no_mlb": 10,
+      "expected_no_mlb": 25.955,
+      "actual_batting": 1.5077767538932214,
+      "mean_batting": 2.3679414750268624,
+      "delivered_mean": 1.0948739780492913
+    }
+  ],
+  "donor_support": [
+    {
+      "horizon": 3,
+      "training_current_mlb_age19_22": 43,
+      "eldridge_sampled_donor_stages": [
+        {
+          "stage": "Current MLB",
+          "len": 278
+        },
+        {
+          "stage": "Upper minors",
+          "len": 90
+        },
+        {
+          "stage": "Lower minors",
+          "len": 28
+        },
+        {
+          "stage": "Inactive / unknown",
+          "len": 4
+        }
+      ],
+      "eldridge_sampled_donor_age_mean": 25.68686868686869
+    },
+    {
+      "horizon": 6,
+      "training_current_mlb_age19_22": 34,
+      "eldridge_sampled_donor_stages": [
+        {
+          "stage": "Lower minors",
+          "len": 151
+        },
+        {
+          "stage": "Upper minors",
+          "len": 136
+        },
+        {
+          "stage": "Current MLB",
+          "len": 113
+        }
+      ],
+      "eldridge_sampled_donor_age_mean": 24.59
+    }
+  ],
+  "eldridge_rejected_research_only": [
+    {
+      "player_id": 805811,
+      "player_name": "Bryce Eldridge",
+      "age": 20.0,
+      "stage": "Current MLB",
+      "level": "MLB",
+      "horizon": 3,
+      "method": "B0",
+      "mean_batting": 3.595820119812678,
+      "batting_p10": -0.1499007514576193,
+      "batting_p50": 2.614074404948642,
+      "batting_p90": 10.182644931384825,
+      "mean_pa": 979.13,
+      "p_no_mlb": 0.125,
+      "p_regular_workload": 0.3925,
+      "p_substantial_batting": 0.2025,
+      "p_sustained_high_batting": 0.045,
+      "distinct_donors": 43
+    },
+    {
+      "player_id": 805811,
+      "player_name": "Bryce Eldridge",
+      "age": 20.0,
+      "stage": "Current MLB",
+      "level": "MLB",
+      "horizon": 3,
+      "method": "F0",
+      "mean_batting": 0.8344223370647225,
+      "batting_p10": -0.21188171425069485,
+      "batting_p50": 0.0,
+      "batting_p90": 4.0289159552029465,
+      "mean_pa": 292.95,
+      "p_no_mlb": 0.4625,
+      "p_regular_workload": 0.0675,
+      "p_substantial_batting": 0.0375,
+      "p_sustained_high_batting": 0.01,
+      "distinct_donors": 261
+    },
+    {
+      "player_id": 805811,
+      "player_name": "Bryce Eldridge",
+      "age": 20.0,
+      "stage": "Current MLB",
+      "level": "MLB",
+      "horizon": 3,
+      "method": "F1",
+      "mean_batting": 0.7352686070347794,
+      "batting_p10": -0.3317896283166393,
+      "batting_p50": 0.0,
+      "batting_p90": 3.652819062368735,
+      "mean_pa": 283.505,
+      "p_no_mlb": 0.4525,
+      "p_regular_workload": 0.085,
+      "p_substantial_batting": 0.0375,
+      "p_sustained_high_batting": 0.0025,
+      "distinct_donors": 278
+    },
+    {
+      "player_id": 805811,
+      "player_name": "Bryce Eldridge",
+      "age": 20.0,
+      "stage": "Current MLB",
+      "level": "MLB",
+      "horizon": 6,
+      "method": "B0",
+      "mean_batting": 3.061360608439713,
+      "batting_p10": -0.36861399180151777,
+      "batting_p50": 0.0,
+      "batting_p90": 10.92007308906289,
+      "mean_pa": 851.915,
+      "p_no_mlb": 0.3175,
+      "p_regular_workload": 0.225,
+      "p_substantial_batting": 0.1925,
+      "p_sustained_high_batting": 0.045,
+      "distinct_donors": 326
+    },
+    {
+      "player_id": 805811,
+      "player_name": "Bryce Eldridge",
+      "age": 20.0,
+      "stage": "Current MLB",
+      "level": "MLB",
+      "horizon": 6,
+      "method": "F0",
+      "mean_batting": 1.9826768425709198,
+      "batting_p10": -0.3279562277378175,
+      "batting_p50": 0.0,
+      "batting_p90": 8.206835727526277,
+      "mean_pa": 571.37,
+      "p_no_mlb": 0.43,
+      "p_regular_workload": 0.16,
+      "p_substantial_batting": 0.1325,
+      "p_sustained_high_batting": 0.0275,
+      "distinct_donors": 228
+    },
+    {
+      "player_id": 805811,
+      "player_name": "Bryce Eldridge",
+      "age": 20.0,
+      "stage": "Current MLB",
+      "level": "MLB",
+      "horizon": 6,
+      "method": "F1",
+      "mean_batting": 1.142646787543775,
+      "batting_p10": -0.23358569825117545,
+      "batting_p50": 0.0,
+      "batting_p90": 3.275311069673002,
+      "mean_pa": 358.0975,
+      "p_no_mlb": 0.585,
+      "p_regular_workload": 0.0925,
+      "p_substantial_batting": 0.0825,
+      "p_sustained_high_batting": 0.02,
+      "distinct_donors": 310
+    }
+  ],
+  "interpretation": "Sparse young-MLB donor support and broad-pool borrowing are hypotheses, not proven causes. Do not publish these probabilities as player forecasts.",
+  "independent_horizon_warning": "H3 and H6 are separate experiments, not a single coherent six-year distribution.",
+  "next_candidate_requires_new_contract": true
+}

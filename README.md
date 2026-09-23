@@ -22,7 +22,14 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
-**Latest:** a [tested rookie-ball arrival correction](docs/hitter-arrival-coherence-v1-result.md)
+**Latest research:** the [player-path/value bridge](docs/player-path-value-bridge-v1-result.md)
+separates career outcomes from the value of acquiring a player's rights. Its new
+path model fails validation and is not deployed; the tested valuation interface
+withholds dollar values until production, control and costs are supported.
+The next priority is prospect/young-MLB success and continuation, not merely lower
+average error across non-arrivals.
+
+**Latest delivered forecast:** a [tested rookie-ball arrival correction](docs/hitter-arrival-coherence-v1-result.md)
 reduces inflated near-term prospect contributions in Years 1–3. The broader
 minor-league change failed and was rejected. The updated team-filter explorer
 at `http://127.0.0.1:8777/` shows selected-player and league totals; those totals

@@ -4,7 +4,19 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest: the [rookie-ball arrival repair](hitter-arrival-coherence-v1-result.md)
+Latest: the [player-path/value bridge](player-path-value-bridge-v1-result.md)
+re-centers the project on outcome distributions and transferable rights, not just
+mean calendar production. A tested path-level valuation interface keeps control,
+cost, nonlinear production pricing and missing tails explicit. It does not yet
+supply real player dollar values. A 33-run empirical-path experiment is rejected:
+hitting history improves normal three-year distribution error in all three origins,
+but its mean RMSE is 1.333 versus 1.214 delivered, and it predicts only 28.7 prospect
+regular-workload outcomes versus 44 observed. Young brief-MLB cases expose excessive
+predicted disappearance. Sparse donor support and latest-snapshot selection need
+a bounded audit before the next fixed distribution test. Live forecasts and the
+8777 explorer remain unchanged. See the result for the next milestone and caveats.
+
+Previous: the [rookie-ball arrival repair](hitter-arrival-coherence-v1-result.md)
 passes its predeclared Years 1–3 development checks. A shared annual participation
 probability now connects rookie-ball PA and batting value. Affected players'
 three-year RMSE improves 0.237→0.206 across three normal historical origins;
