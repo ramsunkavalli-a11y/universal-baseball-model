@@ -4,6 +4,16 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+The [anchored-development experiment](hitter-anchored-development-v1-result.md)
+is complete and rejected for delivery. Learning rate changes worsened overall
+Year-2 error; simply retaining the estimated rate improved six of seven origins
+but failed high-end full-sample checks. Nonpandemic young-star forecasts improved
+substantially, so the result does not establish that their projected decline is
+appropriate. New opportunity heads also worsened top-player PA errors. Keep the
+v2 explorer unchanged. Next: distinguish normal-season opportunity errors from
+pandemic/calendar exposure before a further combined challenger; no manual uplift
+or post-score substitution of the carry-forward diagnostic.
+
 The [Year-1/Year-2 consistency test](hitter-horizon-consistency-v1-result.md) now
 explains part of the visible decline among stars: switching from the rich first-year
 model to aggregate Ridge accounts for roughly 0.28 of their 0.68 average decline.
@@ -12,8 +22,8 @@ five-model recipe to Year 2 fails the frozen improvement and high-value subgroup
 gates, so the v2 explorer stays unchanged. Nonpandemic young-top-player actual
 production is nearly flat while both tested procedures decline; long-horizon
 high-end calibration remains an open gap, not a validated aging conclusion.
-Next targeted work should distinguish persistent talent, subsequent change and
-playing opportunity, rather than hand-boost youth or lower Year 1 for a smoother line.
+That finding motivated the now-completed anchored-development test above, rather
+than a hand-boost to youth or a lower Year 1 for a smoother line.
 
 The [bounded hitter follow-up](multiyear-hitter-followup-v2-result.md) is complete.
 386 established hitters receive chronology-tested recent-history/talent MLB

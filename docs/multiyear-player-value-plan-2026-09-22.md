@@ -11,6 +11,13 @@ The subsequent [horizon consistency test](hitter-horizon-consistency-v1-result.m
 rejects a fixed rich-model extension to Year 2. The year-to-year model switch
 explains only part of high-value-player declines; young-star later-year calibration
 remains a named gap. No trajectory-smoothing change is delivered.
+The [anchored-development follow-up](hitter-anchored-development-v1-result.md)
+also fails delivery gates. Carrying the estimated rate forward is promising overall,
+but learned change adds no overall benefit, and new opportunity heads worsen
+top-player PA errors. Nonpandemic young-star results improve; full-calendar and
+normal-season conclusions must remain distinct. Next bounded checkpoint is the
+opportunity/calendar error decomposition, with its target rules fixed before
+another fit. The explorer and original freezes remain unchanged.
 This is the immediate execution order under the
 [product roadmap](product-roadmap.md). Historical results and frozen forecast
 contracts retain their original scope. [Research and sources](multiyear-player-value-literature-2026-09-22.md).
