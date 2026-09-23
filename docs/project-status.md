@@ -4,6 +4,16 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+The [contract/reserve follow-up](hitter-contract-reserve-v2-result.md) is complete
+for the pitcher-batting screen; the salary test is source-blocked, not rejected.
+DH-aware reserve estimates drop to 2,214/2,118 PA against actual 2,981/2,290 for
+2024/2025. Allocation still worsens fixed-rate value and top-player PA, so there
+is no forecast change. An exact accepted-v2 opportunity replay for origin 2023
+is now saved. Loaded contract costs are current 2026 terms plus a post-season
+2025 bridge, not earlier salary snapshots. Next obtain certified historical
+salary/guarantee evidence before testing contract-aware PA; do not backdate
+current workbooks or use internally estimated arbitration costs as observed pay.
+
 The [league allocation screen](hitter-league-allocation-v1-result.md) is complete
 and rejected: ordinary-season PA RMSE improves 90.03 to 89.48, but fixed-rate
 partial-value error and top-50 PA/value worsen. Only two ordinary test origins

@@ -1,0 +1,243 @@
+{
+  "status": "contract_test_blocked_historical_source_gap",
+  "sources": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\historical-contract-bridge\\2025\\report.json": "9db7e67e3ae49d1780993016d513c9e8f9b969b722caabc92f9f173b560a7b78",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\historical-contract-bridge\\2025\\valuation-ready-terms.parquet": "90488817c377fc9fdc04ebb935fcfa47c8f05bf0d0033ee0a0da7a6c74c2e32d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\league-control\\2026-09-08\\contract-year-liabilities.parquet": "dd225048e8cb689ab5c4071083149a6a98d26663a76e886d76036b23db5c5427",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\fangraphs-opening-day-workbooks\\2023\\opening-day-control-baseline.parquet": "ad24d31fb228b2b7f1a4dd481fefde6320b572ea58264ef3463a646038ac017c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\fangraphs-opening-day-workbooks\\2024\\opening-day-control-baseline.parquet": "5117afacaf8bb5b4a8ea3fec44ca3db5cc4ea5a0bd7d5ac090a6ba4e5b072959",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\fangraphs-opening-day-workbooks\\2025\\opening-day-control-baseline.parquet": "635c270d975d916cfd38e731ee0fae732cd9efe637879b89fc31ac9efc3afde3",
+    "scripts\\audit_hitter_contract_opportunity_sources_v1.py": "e086cac0c3a03c0ef354ff96d726d1c8af2fc0b6b8aba39d431bff56fdcd97e0",
+    "src\\universal_baseball\\hitter_contract_reserve.py": "a5cc37880ad9907aac787b8ff1da084a52ea0510d2d1981a93e312dbdea9c75f",
+    "docs\\hitter-contract-reserve-v2-plan.md": "f90adfdade88e01809ec6eeedd86c08832973d75da8c80765fd1c9b8e1c78243"
+  },
+  "loaded_sources": [
+    {
+      "source": "2025 Cot's retrospective bridge",
+      "snapshot_created": "2026-01-31T16:51:13Z",
+      "player_rows": 1289,
+      "accepted_identity_rows": 1192,
+      "annual_term_rows": 6445,
+      "term_counts": [
+        {
+          "payroll_year": 2025,
+          "valuation_treatment": "defer_to_cba_control_path",
+          "len": 260
+        },
+        {
+          "payroll_year": 2025,
+          "valuation_treatment": "review_not_valuation_ready",
+          "len": 113
+        },
+        {
+          "payroll_year": 2025,
+          "valuation_treatment": "use_known_guaranteed_salary",
+          "len": 916
+        },
+        {
+          "payroll_year": 2026,
+          "valuation_treatment": "calculate_arbitration_from_cba_path",
+          "len": 299
+        },
+        {
+          "payroll_year": 2026,
+          "valuation_treatment": "defer_to_cba_control_path",
+          "len": 532
+        },
+        {
+          "payroll_year": 2026,
+          "valuation_treatment": "end_incumbent_control",
+          "len": 142
+        },
+        {
+          "payroll_year": 2026,
+          "valuation_treatment": "review_not_valuation_ready",
+          "len": 155
+        },
+        {
+          "payroll_year": 2026,
+          "valuation_treatment": "use_known_guaranteed_salary",
+          "len": 161
+        },
+        {
+          "payroll_year": 2027,
+          "valuation_treatment": "calculate_arbitration_from_cba_path",
+          "len": 366
+        },
+        {
+          "payroll_year": 2027,
+          "valuation_treatment": "defer_to_cba_control_path",
+          "len": 588
+        },
+        {
+          "payroll_year": 2027,
+          "valuation_treatment": "end_incumbent_control",
+          "len": 105
+        },
+        {
+          "payroll_year": 2027,
+          "valuation_treatment": "review_not_valuation_ready",
+          "len": 121
+        },
+        {
+          "payroll_year": 2027,
+          "valuation_treatment": "use_known_guaranteed_salary",
+          "len": 109
+        },
+        {
+          "payroll_year": 2028,
+          "valuation_treatment": "calculate_arbitration_from_cba_path",
+          "len": 296
+        },
+        {
+          "payroll_year": 2028,
+          "valuation_treatment": "defer_to_cba_control_path",
+          "len": 717
+        },
+        {
+          "payroll_year": 2028,
+          "valuation_treatment": "end_incumbent_control",
+          "len": 89
+        },
+        {
+          "payroll_year": 2028,
+          "valuation_treatment": "review_not_valuation_ready",
+          "len": 116
+        },
+        {
+          "payroll_year": 2028,
+          "valuation_treatment": "use_known_guaranteed_salary",
+          "len": 71
+        },
+        {
+          "payroll_year": 2029,
+          "valuation_treatment": "calculate_arbitration_from_cba_path",
+          "len": 164
+        },
+        {
+          "payroll_year": 2029,
+          "valuation_treatment": "defer_to_cba_control_path",
+          "len": 832
+        },
+        {
+          "payroll_year": 2029,
+          "valuation_treatment": "end_incumbent_control",
+          "len": 137
+        },
+        {
+          "payroll_year": 2029,
+          "valuation_treatment": "review_not_valuation_ready",
+          "len": 105
+        },
+        {
+          "payroll_year": 2029,
+          "valuation_treatment": "use_known_guaranteed_salary",
+          "len": 51
+        }
+      ],
+      "has_signing_amendment_dates": false,
+      "event_history_certified_for_opportunity": false,
+      "reason": "2025-2029 payroll years from a post-2025 snapshot, not a historical salary training panel",
+      "eligible_origins_2016_2023": []
+    },
+    {
+      "source": "2026 FanGraphs imported payroll liabilities",
+      "as_of": "2026-09-08",
+      "rows": 3720,
+      "unique_ids": 894,
+      "first_payroll_year": 2026,
+      "last_payroll_year": 2032,
+      "has_signing_amendment_dates": false,
+      "eligible_origins_2016_2023": [],
+      "reason": "Current contract-cost inputs do not reconstruct what was known at older forecast cutoffs"
+    },
+    {
+      "source": "2023 Opening Day control",
+      "rows": 2065,
+      "columns": [
+        "season",
+        "player_id",
+        "fangraphs_id",
+        "player_name",
+        "team_abbreviation",
+        "fangraphs_team_id",
+        "service_time",
+        "service_days",
+        "options_remaining",
+        "rule5_status",
+        "rule5_eligibility_year",
+        "on_40man",
+        "roster_status",
+        "projected_opening_day_role",
+        "source_snapshot_id"
+      ],
+      "has_salary_or_guarantee": false,
+      "reason": "Service/options/role information, not salaries or remaining guaranteed money"
+    },
+    {
+      "source": "2024 Opening Day control",
+      "rows": 2009,
+      "columns": [
+        "season",
+        "player_id",
+        "fangraphs_id",
+        "player_name",
+        "team_abbreviation",
+        "fangraphs_team_id",
+        "service_time",
+        "service_days",
+        "options_remaining",
+        "rule5_status",
+        "rule5_eligibility_year",
+        "on_40man",
+        "roster_status",
+        "projected_opening_day_role",
+        "source_snapshot_id"
+      ],
+      "has_salary_or_guarantee": false,
+      "reason": "Service/options/role information, not salaries or remaining guaranteed money"
+    },
+    {
+      "source": "2025 Opening Day control",
+      "rows": 2019,
+      "columns": [
+        "season",
+        "player_id",
+        "fangraphs_id",
+        "player_name",
+        "team_abbreviation",
+        "fangraphs_team_id",
+        "service_time",
+        "service_days",
+        "options_remaining",
+        "rule5_status",
+        "rule5_eligibility_year",
+        "on_40man",
+        "roster_status",
+        "projected_opening_day_role",
+        "source_snapshot_id"
+      ],
+      "has_salary_or_guarantee": false,
+      "reason": "Service/options/role information, not salaries or remaining guaranteed money"
+    }
+  ],
+  "eligible_historical_forecast_origins": [],
+  "contract_model_fitted": false,
+  "private_player_terms_published": false,
+  "protected_outcomes_used": false,
+  "forecast_changed": false,
+  "user_confirmation": "User confirmed no earlier payroll files are available locally",
+  "not_a_negative_model_result": true,
+  "needed": [
+    "Stable player IDs plus salary amounts and effective/announcement dates for earlier cohorts",
+    "Guaranteed versus option/opt-out years; all amendments and missing/unsigned states",
+    "Retired/released/injured players retained, not a present-day survivor list",
+    "At least one training origin preceding two completed chronological test origins"
+  ],
+  "public_source_check": {
+    "historical_payroll_url": "https://www.fangraphs.com/roster-resource/payroll/giants?season=2023",
+    "result": "Web access returned HTTP 403; no download or bypass attempted",
+    "documentation": "https://blogs.fangraphs.com/the-2025-rosterresource-payroll-pages-are-live/",
+    "limitation": "A historical season view still requires event-date and cohort-coverage certification"
+  }
+}

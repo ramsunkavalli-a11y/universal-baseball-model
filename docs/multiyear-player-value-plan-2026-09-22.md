@@ -39,6 +39,12 @@ finds old outsider reserves include pitcher batting. Immediate next checkpoint:
 separate that component under cutoff-known DH rules and cohort coverage, then
 predeclare a talent-aware opportunity test with more mature historical replays.
 Do not silently retune the failed allocation screen. Accepted forecasts unchanged.
+The [DH-aware reserve follow-up](hitter-contract-reserve-v2-result.md) now completes
+that accounting test and adds accepted opportunity at origin 2023. The corrected
+reserve is materially closer, but allocation still fails value/top-player guards.
+The user-requested salary challenger awaits earlier cutoff-certified contract
+history; existing 2026 payroll and post-season 2025 terms cannot supply its training
+folds. Acquire that evidence before fitting, retaining current forecasts meanwhile.
 This is the immediate execution order under the
 [product roadmap](product-roadmap.md). Historical results and frozen forecast
 contracts retain their original scope. [Research and sources](multiyear-player-value-literature-2026-09-22.md).
