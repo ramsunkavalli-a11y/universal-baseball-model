@@ -12,7 +12,10 @@ from universal_baseball.storage import sha256_file
 
 
 def mean_origin(frame,col):
-    return float(frame.group_by("origin_year").agg(pl.col(col).mean())[col].mean())
+    # Fix reduction order so repeated audits retain identical artifact hashes.
+    ordered=frame.sort(["origin_year","player_id"])
+    return float(np.mean([f[col].to_numpy().mean()
+        for f in ordered.partition_by("origin_year",maintain_order=True)]))
 
 
 def opportunity_metrics(frame,pcol,pacol):

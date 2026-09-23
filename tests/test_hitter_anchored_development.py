@@ -91,3 +91,12 @@ def test_saved_package_recomposes_and_preserves_protected_labels():
 def test_protected_cutoffs_are_rejected():
     with pytest.raises(ValueError):active_rate_rows(pl.DataFrame(),2026,1)
     with pytest.raises(ValueError):later_training(pl.DataFrame(),2026)
+
+
+def test_audit_aggregation_is_stable_under_input_order(monkeypatch):
+    from pathlib import Path
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1]/"scripts"))
+    from audit_hitter_anchored_development_v1 import mean_origin
+    f=pl.DataFrame({"origin_year":[2016]*4+[2017]*4,"player_id":[1,2,3,4]*2,
+        "loss":[1e15,.01,.02,.03,1.,2.,3.,4.]})
+    assert mean_origin(f,"loss")==mean_origin(f.reverse(),"loss")

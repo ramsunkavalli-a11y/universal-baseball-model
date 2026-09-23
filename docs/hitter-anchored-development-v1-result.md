@@ -91,9 +91,10 @@ Current examples are diagnostics, not accuracy evidence.
 Added a reproducible anchored-development experiment, cutoff-specific anchors,
 separate rate/opportunity diagnostics, and a verified artifact package. No player
 forecast, explorer, or original frozen package was replaced. No 2026 outcomes
-were opened. Seven new tests cover future-label mutation through both fitting
+were opened. Eight new tests cover future-label mutation through both fitting
 paths, chronology, PA weighting, keyed joins, composition, and protected cutoffs.
 The original 31-file freeze and prior horizon package also verify unchanged.
+Audit aggregation uses a fixed row/reduction order for repeatable artifact hashes.
 
 Next bounded work: decompose high-value-player opportunity errors by ordinary
 versus disrupted calendar exposure and compare the accepted and challenger
