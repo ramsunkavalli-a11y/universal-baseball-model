@@ -22,13 +22,23 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
-**Latest milestone:** the [dated forecast archive](docs/historical-projection-state-v1-result.md)
+**Latest experiment:** [richer hitter detail and MLB arrival](docs/hitter-detail-arrival-v1-result.md)
+holds players, years and model settings fixed. Extra detail improves pooled next-year
+prospect-arrival Brier by 1.4% and log loss by 2.0% versus aggregate history, but only
+three of six years improve and the logistic check reverses. It does not beat the
+stronger earlier ensemble on both scores or solve regular-workload underprediction
+(19 expected versus 31 observed; coverage control expects 23 and scores better).
+Keep this as a useful arrival lead, not a deployed update. Three-year evidence is
+limited to two overlapping normal origins. Next specify compact arrival/continuation
+and chronology-safe calibration tests before returning to the career simulator.
+
+**Previous milestone:** the [dated forecast archive](docs/historical-projection-state-v1-result.md)
 now includes 53,910 reconstructed Years 1–3 records for 2012–2015. Overlap forecasts
 reproduce the saved versions, and changing unavailable future information leaves
 the tested forecasts unchanged. This closes the earliest test's missing-history
 gap: 8,942 usable snapshots from 5,428 players at the 2016 cutoff. It is an input
-repair, not a proven projection improvement. Next freeze one three-year anchored
-career-path test; live forecasts, the explorer and 2026 outcomes remain unchanged.
+repair, not a proven projection improvement. The subsequent detail test above now
+informs the next priority; live forecasts, the explorer and 2026 outcomes remain unchanged.
 
 **Previous research:** the [historical snapshot repair](docs/player-path-population-v1-result.md)
 restores earlier career states while giving each historical player equal total

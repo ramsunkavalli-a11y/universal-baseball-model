@@ -4,7 +4,31 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest prerequisite completed: the [historical projection-state rebuild](historical-projection-state-v1-result.md)
+Latest experiment: [richer detail for future MLB arrival](hitter-detail-arrival-v1-result.md)
+completes 102 fixed matched-population fits. Full detail improves next-year prospect
+Brier 0.024284→0.023948 and log loss 0.085010→0.083329 versus aggregate history;
+paired intervals favor detail, including versus coverage controls. However, only
+3/6 normal origins improve, logistic detail reverses, and the stronger inherited
+probability ensemble is not beaten on both scores. Keep as promising research,
+not an accepted universal arrival replacement.
+
+Three-year arrival improves versus aggregate history but the gain beyond coverage
+controls is uncertain and counts remain low (460 expected / 649 observed snapshots).
+Regular-workload detail is not supported: 19.2 expected / 31 observed, versus
+23.2 for the coverage control, which also scores better. Only two overlapping
+normal origins support these endpoints. Prior-opponent context begins too late
+to have any mature three-year training observations and was dropped in those fits.
+Cold-identity stress underpredicts severely in both arms and changes the training
+population by removing later survivors; it is not a random identity holdout.
+
+Direction update from the user's request: before fitting the path simulator,
+predeclare a compact arrival/continuation comparison and calibration using only
+earlier matured forecasts, retaining stronger references and checking era/cohort
+shift. Do not tune to current test counts or cherry-pick D/C after full-detail R
+fails its acceptance contract. A probability winner still needs delivered-value
+validation. Live forecasts, explorer and original 2026 freeze are unchanged.
+
+Previous prerequisite completed: the [historical projection-state rebuild](historical-projection-state-v1-result.md)
 adds 53,910 Years 1–3 forecast records for 2012–2015. The combined archive has
 145,344 records, with independently fitted conditional-rate anchors, opportunity
 and unconditional batting/replacement value kept distinct. Overlap replays pass
@@ -15,7 +39,7 @@ not forecasts published historically or a new accuracy result.
 
 The 2016 outer cutoff now has 8,942 matched mature snapshots from 5,428 identities
 instead of zero; 2025 has 30,861 from 12,048. Some age/stage pools remain sparse.
-Next: freeze one numeric three-year projection-anchored path contract before
+After the arrival work above, freeze one numeric three-year projection-anchored path contract before
 fitting. Specify skill/opportunity dependence, persistent uncertainty, development,
 fallbacks and the older-to-modern feature change; retain success-calibration gates.
 No new path model was fitted in this input milestone. Years 4–6 were not rebuilt.

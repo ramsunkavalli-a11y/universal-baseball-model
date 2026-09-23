@@ -1,0 +1,47 @@
+{
+  "rows": [
+    {
+      "target": "next_year",
+      "cold": false,
+      "prospect_training_rows": 36766,
+      "positive_rows": 1142,
+      "observed_rate": 0.031061306642006202
+    },
+    {
+      "target": "next_year",
+      "cold": true,
+      "prospect_training_rows": 29928,
+      "positive_rows": 519,
+      "observed_rate": 0.017341619887730555
+    },
+    {
+      "target": "arrival_three",
+      "cold": false,
+      "prospect_training_rows": 26827,
+      "positive_rows": 2216,
+      "observed_rate": 0.08260334737391434
+    },
+    {
+      "target": "arrival_three",
+      "cold": true,
+      "prospect_training_rows": 24530,
+      "positive_rows": 1219,
+      "observed_rate": 0.0496942519364044
+    },
+    {
+      "target": "regular_three",
+      "cold": false,
+      "prospect_training_rows": 26827,
+      "positive_rows": 89,
+      "observed_rate": 0.003317553211316957
+    },
+    {
+      "target": "regular_three",
+      "cold": true,
+      "prospect_training_rows": 24530,
+      "positive_rows": 23,
+      "observed_rate": 0.0009376273950264982
+    }
+  ],
+  "interpretation": "Excluding every 2022 query identity changes the historical training population, removing many later survivors. This is not a random identity holdout; low probabilities alone do not prove identity leakage."
+}
