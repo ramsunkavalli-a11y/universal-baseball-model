@@ -1,0 +1,101 @@
+{
+  "status": "post_score_descriptive_diagnosis",
+  "sources": {
+    "scripts\\audit_league_allocation_reserve_v1.py": "73138aea8083c80fbb3f4f11354b93ee3a55b034500c49cebcbdbaa9a836db6f",
+    "reports\\generated\\multiyear-hitter-v1\\panel.parquet": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+    "reports\\generated\\multiyear-hitter-v1\\targets.parquet": "54b7c51af42254ef44e36f6f5035d05334b368f128baa0280e9f98ff92e941e3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\tables\\mlb_pitching_2009_2025.parquet": "a401f55b72bbc39ae0d967eed2bd4977fed126b24a27c672f76d98de509af7df",
+    "model_artifacts\\hitter-league-allocation-v1-2026-09-22\\manifest.json": "d7faca21d7ab597c7f56950907d85fa6edd02f3197a99204152f7b10d96a92f2",
+    "model_artifacts\\hitter-league-allocation-v1-2026-09-22\\report.json": "a6adeae03de0e20569b38239f0077861d7f68bd2420a44407e3e151d71314667",
+    "model_artifacts\\hitter-league-allocation-v1-2026-09-22\\predictions.parquet": "3f3805f47bea9293d60d3dacacabfb0758d1aef6cab1be4c0f802d189f9e5415"
+  },
+  "rows": [
+    {
+      "origin": 2012,
+      "target": 2014,
+      "outside_pa": 6255,
+      "outside_pa_players_with_100_bf": 5439,
+      "outside_other_pa": 816
+    },
+    {
+      "origin": 2013,
+      "target": 2015,
+      "outside_pa": 8635,
+      "outside_pa_players_with_100_bf": 5307,
+      "outside_other_pa": 3328
+    },
+    {
+      "origin": 2014,
+      "target": 2016,
+      "outside_pa": 8024,
+      "outside_pa_players_with_100_bf": 5258,
+      "outside_other_pa": 2766
+    },
+    {
+      "origin": 2015,
+      "target": 2017,
+      "outside_pa": 7412,
+      "outside_pa_players_with_100_bf": 5159,
+      "outside_other_pa": 2253
+    },
+    {
+      "origin": 2016,
+      "target": 2018,
+      "outside_pa": 6368,
+      "outside_pa_players_with_100_bf": 5382,
+      "outside_other_pa": 986
+    },
+    {
+      "origin": 2017,
+      "target": 2019,
+      "outside_pa": 5749,
+      "outside_pa_players_with_100_bf": 5052,
+      "outside_other_pa": 697
+    },
+    {
+      "origin": 2018,
+      "target": 2020,
+      "outside_pa": 472,
+      "outside_pa_players_with_100_bf": 2,
+      "outside_other_pa": 470
+    },
+    {
+      "origin": 2019,
+      "target": 2021,
+      "outside_pa": 5846,
+      "outside_pa_players_with_100_bf": 4629,
+      "outside_other_pa": 1217
+    },
+    {
+      "origin": 2021,
+      "target": 2023,
+      "outside_pa": 2147,
+      "outside_pa_players_with_100_bf": 5,
+      "outside_other_pa": 2142
+    },
+    {
+      "origin": 2022,
+      "target": 2024,
+      "outside_pa": 2981,
+      "outside_pa_players_with_100_bf": 2,
+      "outside_other_pa": 2979
+    },
+    {
+      "origin": 2023,
+      "target": 2025,
+      "outside_pa": 2290,
+      "outside_pa_players_with_100_bf": 7,
+      "outside_other_pa": 2283
+    }
+  ],
+  "pitcher_definition": "At least 100 batters faced in the SAME target season; descriptive only",
+  "interpretation": "Old outside-cohort PA includes substantial pitcher batting; not a stationary hitter-entrant reserve",
+  "limits": [
+    "Not a definitive pitcher/position-player classifier",
+    "Universal-DH regime requires cutoff-known treatment; do not retroactively assume it in 2021",
+    "No refit, rescoring, or claim that subtracting pitcher PA fixes individual predictions"
+  ],
+  "rule_source": "https://www.mlb.com/news/mlb-rule-changes-for-2022",
+  "forecast_changed": false,
+  "protected_outcomes_used": false
+}

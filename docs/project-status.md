@@ -4,6 +4,16 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+The [league allocation screen](hitter-league-allocation-v1-result.md) is complete
+and rejected: ordinary-season PA RMSE improves 90.03 to 89.48, but fixed-rate
+partial-value error and top-50 PA/value worsen. Only two ordinary test origins
+have mature saved calibration support. No forecast or explorer changes. A
+post-score audit identifies a concrete reserve mismatch: old outsider PA includes
+about 5,000 pitcher batting PA/year, unlike the universal-DH era. Next separate
+pitcher batting from unlisted-hitter reserve using cutoff-known rules, then test
+talent-aware opportunity allocation with more historical replays. Do not tune
+this failed candidate or force total partial WAR to 570.
+
 The [small minor-league durability screen](milb-durability-pilot-v1-result.md)
 is complete: repeated position/level-relative workload gaps slightly improve
 next-year arrival scores in both chronological tests, but the productive subgroup
@@ -18,8 +28,9 @@ beyond position/role controls and PA history; next-season/minor-league use remai
 untested. The league ledger finds named-player PA of 184,724/189,695/191,607 against
 a cutoff-known 182,926 expected pool, before reserving opportunity for outsiders.
 Do not blanket-boost PA or force named-cohort partial WAR to a whole-league total.
-Next: short-horizon availability validation and a cutoff-safe opportunity allocation
-test with outsider reserve and individual-error guards. Original forecasts unchanged.
+The short-horizon MiLB screen and cutoff-safe allocation screen are now complete
+as described above; neither changes the forecast. Their new findings supersede
+the earlier next-step wording below.
 
 The [opportunity/calendar decomposition](hitter-opportunity-calendar-v1-result.md)
 is complete. Top-50 PA RMSE improves 188.6 to 174.9 in ordinary windows, but the

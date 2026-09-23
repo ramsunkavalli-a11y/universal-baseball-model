@@ -32,6 +32,13 @@ The new league ledger flags excess named-cohort PA versus the fixed expected poo
 while preserving signed outsider value and distinguishing partial value from full WAR.
 Next: one-year proxy validation and separate league allocation with an explicit
 outsider reserve. No automatic total normalization or current forecast change.
+Both bounded screens are now complete: the [MiLB proxy](milb-durability-pilot-v1-result.md)
+is inconclusive, and [league allocation](hitter-league-allocation-v1-result.md)
+improves PA slightly but fails value and top-player guards. Its post-score audit
+finds old outsider reserves include pitcher batting. Immediate next checkpoint:
+separate that component under cutoff-known DH rules and cohort coverage, then
+predeclare a talent-aware opportunity test with more mature historical replays.
+Do not silently retune the failed allocation screen. Accepted forecasts unchanged.
 This is the immediate execution order under the
 [product roadmap](product-roadmap.md). Historical results and frozen forecast
 contracts retain their original scope. [Research and sources](multiyear-player-value-literature-2026-09-22.md).
