@@ -1,0 +1,26 @@
+{
+  "plan": "docs\\multiyear-hitter-followup-v2-plan.md",
+  "hashes": {
+    "docs\\multiyear-hitter-followup-v2-plan.md": "c68923faa0fc806f36632bb4b8d8abdea5884ccdf211955b7ef3a0eb598a18de",
+    "reports\\generated\\multiyear-hitter-v1\\panel.parquet": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+    "reports\\generated\\multiyear-hitter-v1\\outer-predictions.parquet": "15534160bc8c17c3328383fd338ec28b8b8124d203cffa38e2f62478ddbe1568",
+    "reports\\generated\\multiyear-hitter-v1\\player-forecast-2026-2028.parquet": "99d10377438fbede4d95d9c96d4252c3e9a557ceafa8a26843a18e67bf6bf883",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\tables\\mlb_hitting_components_2009_2025.parquet": "755b78517f52c3875fe7ea2877cbcb34a0cecd1a2fcb17ee05698cc55f2184a6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_multiyear_hitter_followup_v2.py": "f81e1b59c748962f252e3da12ee17efddd09e5e2d3cb6503b808a5b5a5e57613",
+    "src\\universal_baseball\\multiyear_hitter_followup.py": "540c49b166ab5c3d5f9195e614b533951942ba0a88fdcb97f10bdfd2020ed2de"
+  },
+  "cache_key": "27cf7b99daa94b51",
+  "protected_2026_used": false,
+  "outer_origins": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2021,
+    2022
+  ],
+  "bootstrap_draws": 1000,
+  "stage_threshold": "within stage, calibration-pool 80th percentile",
+  "Q0": "all mature origins >=2, stage >=200 rows, same residual recipe as v1",
+  "evidence": "exposed chronological development; no independent prospective confirmation"
+}

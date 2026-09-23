@@ -3,6 +3,16 @@
 **Status:** active in the private preview  
 **As of:** 2026-09-08
 
+> **Validation correction, 2026-09-22:** The established-hitter rolling audit below
+> did not require longer-horizon training outcomes to be known at the forecast
+> cutoff. Its hitter validation figures and resulting Years 1–6 validation claim
+> are withdrawn; the original saved artifact is retained for provenance, not as
+> valid confirmation. The [chronology-correct v2 comparison](multiyear-hitter-followup-v2-result.md)
+> supports the feature idea for Years 1–3 in a separate, <=2025 development package.
+> It does not revalidate Years 4–6 or the live 2026 preview. This issue does not
+> concern the separate pitcher-process test. The old script's maturity/unknown-zero
+> handling is now repaired; it has not been rerun against live 2026 inputs.
+
 ## What changed
 
 The validated high-minors pitch-process model now feeds the next-year pitcher

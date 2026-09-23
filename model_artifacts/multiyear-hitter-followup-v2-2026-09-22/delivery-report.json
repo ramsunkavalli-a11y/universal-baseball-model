@@ -1,0 +1,1092 @@
+{
+  "opportunity": {
+    "selected": "P1",
+    "comparisons": {
+      "brier": {
+        "candidate": 0.1287541191499791,
+        "baseline": 0.13674536326063275,
+        "delta": -0.007991244110653621,
+        "interval95": [
+          -0.012060478097634384,
+          -0.0036393421999441965
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 0.12705419121429204,
+            "baseline": 0.13838740590010726,
+            "delta": -0.011333214685815187
+          },
+          {
+            "origin": 2017,
+            "candidate": 0.12490986096609331,
+            "baseline": 0.12894811373751633,
+            "delta": -0.004038252771423037
+          },
+          {
+            "origin": 2018,
+            "candidate": 0.13340701875722746,
+            "baseline": 0.14350170175334861,
+            "delta": -0.010094682996121132
+          },
+          {
+            "origin": 2019,
+            "candidate": 0.13203458703478824,
+            "baseline": 0.13803160543267093,
+            "delta": -0.005997018397882683
+          },
+          {
+            "origin": 2021,
+            "candidate": 0.12503639529126245,
+            "baseline": 0.14000025225039298,
+            "delta": -0.014963856959130536
+          },
+          {
+            "origin": 2022,
+            "candidate": 0.13008266163621116,
+            "baseline": 0.1316031004897603,
+            "delta": -0.0015204388535491513
+          }
+        ],
+        "improving_origins": 6
+      },
+      "log_loss": {
+        "candidate": 0.3992284530753736,
+        "baseline": 0.43159347034495,
+        "delta": -0.032365017269576336,
+        "interval95": [
+          -0.04388638613259689,
+          -0.02001509158009216
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 0.3956064506300978,
+            "baseline": 0.4391952329936208,
+            "delta": -0.043588782363522954
+          },
+          {
+            "origin": 2017,
+            "candidate": 0.386132988344414,
+            "baseline": 0.4060816203275235,
+            "delta": -0.019948631983109463
+          },
+          {
+            "origin": 2018,
+            "candidate": 0.4103001871936579,
+            "baseline": 0.44797414968969446,
+            "delta": -0.03767396249603654
+          },
+          {
+            "origin": 2019,
+            "candidate": 0.41026909374127724,
+            "baseline": 0.43629158959518555,
+            "delta": -0.02602249585390833
+          },
+          {
+            "origin": 2021,
+            "candidate": 0.38947352472891233,
+            "baseline": 0.4390206818506288,
+            "delta": -0.049547157121716534
+          },
+          {
+            "origin": 2022,
+            "candidate": 0.40358847381388246,
+            "baseline": 0.4209975476130466,
+            "delta": -0.017409073799164183
+          }
+        ],
+        "improving_origins": 6
+      },
+      "pa_mse": {
+        "candidate": 34086.47586815268,
+        "baseline": 34706.41284324567,
+        "delta": -619.9369750929891,
+        "interval95": [
+          -1423.9357110347526,
+          191.80522929737035
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 30100.704342250734,
+            "baseline": 31840.299488632038,
+            "delta": -1739.595146381307
+          },
+          {
+            "origin": 2017,
+            "candidate": 34533.38751670738,
+            "baseline": 32776.309895633654,
+            "delta": 1757.0776210737213
+          },
+          {
+            "origin": 2018,
+            "candidate": 40523.40721820931,
+            "baseline": 38644.25889368279,
+            "delta": 1879.1483245265172
+          },
+          {
+            "origin": 2019,
+            "candidate": 41801.268774870565,
+            "baseline": 40337.59824859405,
+            "delta": 1463.6705262765142
+          },
+          {
+            "origin": 2021,
+            "candidate": 29977.58798429656,
+            "baseline": 33009.50499714796,
+            "delta": -3031.9170128514047
+          },
+          {
+            "origin": 2022,
+            "candidate": 27582.499372581562,
+            "baseline": 31630.50553578354,
+            "delta": -4048.0061632019756
+          }
+        ],
+        "improving_origins": 3
+      },
+      "pa_mae": {
+        "candidate": 149.18792201252162,
+        "baseline": 153.17578662234675,
+        "delta": -3.9878646098251345,
+        "interval95": [
+          -5.838094562108286,
+          -2.2488647987901946
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 137.32778456656024,
+            "baseline": 145.62774092959657,
+            "delta": -8.299956363036339
+          },
+          {
+            "origin": 2017,
+            "candidate": 149.18148217296778,
+            "baseline": 149.6607580063278,
+            "delta": -0.4792758333600015
+          },
+          {
+            "origin": 2018,
+            "candidate": 164.0486739648134,
+            "baseline": 162.3667273540528,
+            "delta": 1.6819466107605854
+          },
+          {
+            "origin": 2019,
+            "candidate": 169.14154651109666,
+            "baseline": 167.92091855446986,
+            "delta": 1.2206279566267983
+          },
+          {
+            "origin": 2021,
+            "candidate": 140.099699914271,
+            "baseline": 148.0541876368694,
+            "delta": -7.954487722598404
+          },
+          {
+            "origin": 2022,
+            "candidate": 135.32834494542064,
+            "baseline": 145.4243872527641,
+            "delta": -10.096042307343446
+          }
+        ],
+        "improving_origins": 4
+      }
+    },
+    "horizons": {
+      "1": {
+        "brier0": 0.0918517127667876,
+        "brier1": 0.09474483472443475,
+        "log0": 0.3141669169701011,
+        "log1": 0.30795813743881206,
+        "mse0": 33035.00295273768,
+        "mse1": 32170.21231412383,
+        "mse2": 31692.98814586758,
+        "mae0": 150.9448229317003,
+        "mae1": 148.7527895521782,
+        "mae2": 143.69225785636448
+      },
+      "2": {
+        "brier0": 0.1424208658688956,
+        "brier1": 0.13561024126732915,
+        "log0": 0.4496749098792711,
+        "log1": 0.41787501793586945,
+        "mse0": 38036.98033626387,
+        "mse1": 36287.16470704411,
+        "mse2": 35737.394544581075,
+        "mae0": 162.31784915179082,
+        "mae1": 157.70334345495291,
+        "mae2": 153.61612439021914
+      },
+      "3": {
+        "brier0": 0.17596351114621492,
+        "brier1": 0.15590728145817342,
+        "log0": 0.5309385841854776,
+        "log1": 0.4718522038514394,
+        "mse0": 38814.342802294785,
+        "mse1": 35661.86150856907,
+        "mse2": 34829.0449140094,
+        "mae0": 161.27573979830257,
+        "mae1": 153.07122685990913,
+        "mae2": 150.25538379098128
+      }
+    },
+    "P1_gates": {
+      "brier_interval": true,
+      "log_loss_interval": true,
+      "four_origins_both": true,
+      "horizon_guards": true,
+      "nonpandemic_both": true
+    },
+    "P2_gates": {
+      "p1_passes": true,
+      "mse_interval": false,
+      "mae_lower": true,
+      "majority_origins": false,
+      "horizon_mae_guards": true
+    },
+    "rows": 6252,
+    "players": 703,
+    "nonpandemic": {
+      "brier0": 0.12260333852304313,
+      "brier1": 0.11614177821831415,
+      "log0": 0.3947869012458146,
+      "log1": 0.36350953075966963,
+      "mse1": 31682.417975747296,
+      "mse2": 29366.84917312872,
+      "mae1": 145.86264999058844,
+      "mae2": 137.47015506211648
+    }
+  },
+  "uncertainty": {
+    "h1": {
+      "accepted": false,
+      "gates": {
+        "three_origins": true,
+        "paired_interval": true,
+        "majority_origins": true,
+        "overall_coverage": true,
+        "supported_group_coverage": false,
+        "nonpandemic": true
+      },
+      "comparison": {
+        "candidate": 0.6262677581868678,
+        "baseline": 0.8643485388605529,
+        "delta": -0.2380807806736851,
+        "interval95": [
+          -0.25269465376813327,
+          -0.22400361668679175
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 0.6200661409768241,
+            "baseline": 0.9691055876442749,
+            "delta": -0.3490394466674509
+          },
+          {
+            "origin": 2017,
+            "candidate": 0.5993001744556392,
+            "baseline": 0.8502334889979057,
+            "delta": -0.25093331454226653
+          },
+          {
+            "origin": 2018,
+            "candidate": 0.7328889266088174,
+            "baseline": 0.9099555563663577,
+            "delta": -0.1770666297575402
+          },
+          {
+            "origin": 2019,
+            "candidate": 0.44052540355759523,
+            "baseline": 0.7053371349555918,
+            "delta": -0.26481173139799663
+          },
+          {
+            "origin": 2021,
+            "candidate": 0.6960753873933588,
+            "baseline": 0.8940586755485813,
+            "delta": -0.19798328815522231
+          },
+          {
+            "origin": 2022,
+            "candidate": 0.6687505161289722,
+            "baseline": 0.8574007896506062,
+            "delta": -0.18865027352163408
+          }
+        ],
+        "improving_origins": 6
+      },
+      "overall": {
+        "q0": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.8862118717971694,
+          "width": 0.5813044206669489,
+          "score": 0.8643485388605545
+        },
+        "raw": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.9408757267605669,
+          "width": 0.34140666525870084,
+          "score": 0.6268829875891128
+        },
+        "q2": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.9453139084844505,
+          "width": 0.35680772549770756,
+          "score": 0.626267758186868
+        }
+      },
+      "groups": {
+        "Current MLB / all": {
+          "rows": 3869,
+          "origins": 6,
+          "coverage": 0.7999241368787843,
+          "width": 2.3680651940682447,
+          "score": 3.4205299146790273,
+          "supported": true
+        },
+        "Current MLB / high_prior": {
+          "rows": 775,
+          "origins": 6,
+          "coverage": 0.7988344889725797,
+          "width": 4.294014129728484,
+          "score": 5.870826274427444,
+          "supported": true
+        },
+        "Current MLB / high_current": {
+          "rows": 776,
+          "origins": 6,
+          "coverage": 0.8009703748174841,
+          "width": 4.2561497335892975,
+          "score": 5.815554094995062,
+          "supported": true
+        },
+        "Inactive / unknown / all": {
+          "rows": 1861,
+          "origins": 6,
+          "coverage": 0.9949157074475337,
+          "width": 0.012917202695560341,
+          "score": 0.03198721234632631,
+          "supported": true
+        },
+        "Inactive / unknown / high_prior": {
+          "rows": 210,
+          "origins": 6,
+          "coverage": 0.9646425026185401,
+          "width": 0.10647266218574597,
+          "score": 0.2431406006589729,
+          "supported": true
+        },
+        "Inactive / unknown / high_current": {
+          "rows": 986,
+          "origins": 6,
+          "coverage": 0.9879562750837546,
+          "width": 0.030677998008189555,
+          "score": 0.06721386408645418,
+          "supported": true
+        },
+        "Lower minors / all": {
+          "rows": 14461,
+          "origins": 6,
+          "coverage": 0.9961788383438152,
+          "width": 0.0014725491667051907,
+          "score": 0.017356848416031294,
+          "supported": true
+        },
+        "Lower minors / high_prior": {
+          "rows": 1489,
+          "origins": 6,
+          "coverage": 0.9568765461780515,
+          "width": 0.0308157335576347,
+          "score": 0.21538941955965443,
+          "supported": true
+        },
+        "Lower minors / high_current": {
+          "rows": 2895,
+          "origins": 6,
+          "coverage": 0.986100533512539,
+          "width": 0.004492390567323644,
+          "score": 0.07133067980514511,
+          "supported": true
+        },
+        "Upper minors / all": {
+          "rows": 6380,
+          "origins": 6,
+          "coverage": 0.9024653237038117,
+          "width": 0.04460311960964123,
+          "score": 0.4991676761055977,
+          "supported": true
+        },
+        "Upper minors / high_prior": {
+          "rows": 1043,
+          "origins": 6,
+          "coverage": 0.6646067849590146,
+          "width": 0.15800095833917602,
+          "score": 2.414922879639818,
+          "supported": true
+        },
+        "Upper minors / high_current": {
+          "rows": 1279,
+          "origins": 6,
+          "coverage": 0.7241284882703217,
+          "width": 0.13865236995025426,
+          "score": 1.7690393956113286,
+          "supported": true
+        }
+      },
+      "nonpandemic_score_delta": -0.23273459052882395,
+      "unscored_rows": 0
+    },
+    "h2": {
+      "accepted": false,
+      "gates": {
+        "three_origins": true,
+        "paired_interval": true,
+        "majority_origins": true,
+        "overall_coverage": true,
+        "supported_group_coverage": false,
+        "nonpandemic": true
+      },
+      "comparison": {
+        "candidate": 0.7420150595417051,
+        "baseline": 1.071241222065986,
+        "delta": -0.3292261625242808,
+        "interval95": [
+          -0.34568654852328085,
+          -0.31203639946982337
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 0.7631571722684969,
+            "baseline": 1.0923579982351215,
+            "delta": -0.32920082596662464
+          },
+          {
+            "origin": 2017,
+            "candidate": 0.8272410455392907,
+            "baseline": 1.1803296187377448,
+            "delta": -0.35308857319845405
+          },
+          {
+            "origin": 2018,
+            "candidate": 0.5196323664734027,
+            "baseline": 0.9296622674481404,
+            "delta": -0.41002990097473774
+          },
+          {
+            "origin": 2019,
+            "candidate": 0.6833664775466645,
+            "baseline": 0.9915176979407068,
+            "delta": -0.3081512203940424
+          },
+          {
+            "origin": 2021,
+            "candidate": 0.8826747585265929,
+            "baseline": 1.1649233013653506,
+            "delta": -0.28224854283875783
+          },
+          {
+            "origin": 2022,
+            "candidate": 0.776018536895783,
+            "baseline": 1.0686564486688515,
+            "delta": -0.2926379117730683
+          }
+        ],
+        "improving_origins": 6
+      },
+      "overall": {
+        "q0": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.8212541660440896,
+          "width": 0.5845874256761248,
+          "score": 1.0712412220659953
+        },
+        "raw": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.9339511130175343,
+          "width": 0.363673410299969,
+          "score": 0.7442323035197651
+        },
+        "q2": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.9370201790458936,
+          "width": 0.375120178521489,
+          "score": 0.7420150595417044
+        }
+      },
+      "groups": {
+        "Current MLB / all": {
+          "rows": 3869,
+          "origins": 6,
+          "coverage": 0.8094101836001698,
+          "width": 2.3135836097793465,
+          "score": 3.4657219838732938,
+          "supported": true
+        },
+        "Current MLB / high_prior": {
+          "rows": 678,
+          "origins": 6,
+          "coverage": 0.8121444228342156,
+          "width": 4.662575270077699,
+          "score": 6.0942057905160825,
+          "supported": true
+        },
+        "Current MLB / high_current": {
+          "rows": 776,
+          "origins": 6,
+          "coverage": 0.7910282700118266,
+          "width": 4.529033075571566,
+          "score": 6.037453475786756,
+          "supported": true
+        },
+        "Inactive / unknown / all": {
+          "rows": 1861,
+          "origins": 6,
+          "coverage": 0.992902229472517,
+          "width": 0.01968853970711945,
+          "score": 0.06336617160837926,
+          "supported": true
+        },
+        "Inactive / unknown / high_prior": {
+          "rows": 396,
+          "origins": 6,
+          "coverage": 0.9859144753881596,
+          "width": 0.08872572371224142,
+          "score": 0.1457980534336845,
+          "supported": true
+        },
+        "Inactive / unknown / high_current": {
+          "rows": 438,
+          "origins": 6,
+          "coverage": 0.9811499126448388,
+          "width": 0.07345933279135276,
+          "score": 0.14072826042357092,
+          "supported": true
+        },
+        "Lower minors / all": {
+          "rows": 14461,
+          "origins": 6,
+          "coverage": 0.9841381335197736,
+          "width": 0.010054085256279037,
+          "score": 0.10628813084377699,
+          "supported": true
+        },
+        "Lower minors / high_prior": {
+          "rows": 3428,
+          "origins": 6,
+          "coverage": 0.9477240076098369,
+          "width": 0.029465710788988037,
+          "score": 0.3942826942128959,
+          "supported": true
+        },
+        "Lower minors / high_current": {
+          "rows": 2895,
+          "origins": 6,
+          "coverage": 0.9439549634090602,
+          "width": 0.03229662564440954,
+          "score": 0.42134813280254435,
+          "supported": true
+        },
+        "Upper minors / all": {
+          "rows": 6380,
+          "origins": 6,
+          "coverage": 0.890348924525061,
+          "width": 0.1338562812433998,
+          "score": 0.7319968059753488,
+          "supported": true
+        },
+        "Upper minors / high_prior": {
+          "rows": 1310,
+          "origins": 6,
+          "coverage": 0.7340291887245138,
+          "width": 0.4775745816425343,
+          "score": 2.5940733727684395,
+          "supported": true
+        },
+        "Upper minors / high_current": {
+          "rows": 1279,
+          "origins": 6,
+          "coverage": 0.7329335201818158,
+          "width": 0.4491044191005396,
+          "score": 2.343386587675615,
+          "supported": true
+        }
+      },
+      "nonpandemic_score_delta": -0.314293963444228,
+      "unscored_rows": 0
+    },
+    "h3": {
+      "accepted": false,
+      "gates": {
+        "three_origins": true,
+        "paired_interval": true,
+        "majority_origins": true,
+        "overall_coverage": true,
+        "supported_group_coverage": false,
+        "nonpandemic": true
+      },
+      "comparison": {
+        "candidate": 0.8368876818402469,
+        "baseline": 1.213343656780525,
+        "delta": -0.37645597494027805,
+        "interval95": [
+          -0.3932152104792248,
+          -0.3593410465174234
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 0.9829216982502527,
+            "baseline": 1.374019363733086,
+            "delta": -0.39109766548283337
+          },
+          {
+            "origin": 2017,
+            "candidate": 0.5168510754646122,
+            "baseline": 0.9708244143653249,
+            "delta": -0.45397333890071256
+          },
+          {
+            "origin": 2018,
+            "candidate": 0.904759212622683,
+            "baseline": 1.2590843737599355,
+            "delta": -0.3543251611372523
+          },
+          {
+            "origin": 2019,
+            "candidate": 0.7834847577699261,
+            "baseline": 1.1203968037628864,
+            "delta": -0.33691204599296054
+          },
+          {
+            "origin": 2021,
+            "candidate": 0.9328294932339275,
+            "baseline": 1.284587498916815,
+            "delta": -0.35175800568288723
+          },
+          {
+            "origin": 2022,
+            "candidate": 0.9004798537000802,
+            "baseline": 1.2711494861451023,
+            "delta": -0.3706696324450223
+          }
+        ],
+        "improving_origins": 6
+      },
+      "overall": {
+        "q0": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.8248703751324457,
+          "width": 0.6342306475533407,
+          "score": 1.2133436567805271
+        },
+        "raw": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.9219681993083033,
+          "width": 0.3616320134457258,
+          "score": 0.8407825352896063
+        },
+        "q2": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.9257628265458004,
+          "width": 0.3764401121759184,
+          "score": 0.836887681840247
+        }
+      },
+      "groups": {
+        "Current MLB / all": {
+          "rows": 3869,
+          "origins": 6,
+          "coverage": 0.8113774483643871,
+          "width": 2.1006283546822573,
+          "score": 3.221685886955223,
+          "supported": true
+        },
+        "Current MLB / high_prior": {
+          "rows": 688,
+          "origins": 6,
+          "coverage": 0.8334763717881127,
+          "width": 4.660325425015327,
+          "score": 5.876799592498315,
+          "supported": true
+        },
+        "Current MLB / high_current": {
+          "rows": 776,
+          "origins": 6,
+          "coverage": 0.8219184751475813,
+          "width": 4.504986308180889,
+          "score": 5.736770696417255,
+          "supported": true
+        },
+        "Inactive / unknown / all": {
+          "rows": 1861,
+          "origins": 6,
+          "coverage": 0.9784540276113312,
+          "width": 0.013719597046480838,
+          "score": 0.15367135015376301,
+          "supported": true
+        },
+        "Inactive / unknown / high_prior": {
+          "rows": 425,
+          "origins": 6,
+          "coverage": 0.9837477106598161,
+          "width": 0.021073941120832215,
+          "score": 0.05623671573183356,
+          "supported": true
+        },
+        "Inactive / unknown / high_current": {
+          "rows": 437,
+          "origins": 6,
+          "coverage": 0.9803312629399586,
+          "width": 0.02370841272114434,
+          "score": 0.0711474136416761,
+          "supported": true
+        },
+        "Lower minors / all": {
+          "rows": 14461,
+          "origins": 6,
+          "coverage": 0.9662716824754108,
+          "width": 0.04426237677430777,
+          "score": 0.2535463791643123,
+          "supported": true
+        },
+        "Lower minors / high_prior": {
+          "rows": 3338,
+          "origins": 6,
+          "coverage": 0.8981124001434395,
+          "width": 0.13822870669569245,
+          "score": 0.8353063149660187,
+          "supported": true
+        },
+        "Lower minors / high_current": {
+          "rows": 2895,
+          "origins": 6,
+          "coverage": 0.8947722308305872,
+          "width": 0.14365372712529131,
+          "score": 0.8935236831942198,
+          "supported": true
+        },
+        "Upper minors / all": {
+          "rows": 6380,
+          "origins": 6,
+          "coverage": 0.8873687891379124,
+          "width": 0.19645165718855348,
+          "score": 0.9352745495292497,
+          "supported": true
+        },
+        "Upper minors / high_prior": {
+          "rows": 1273,
+          "origins": 6,
+          "coverage": 0.7215354992787518,
+          "width": 0.6529611110641925,
+          "score": 3.2167437620414003,
+          "supported": true
+        },
+        "Upper minors / high_current": {
+          "rows": 1279,
+          "origins": 6,
+          "coverage": 0.7235343967231582,
+          "width": 0.6326313279747285,
+          "score": 3.15476761071203,
+          "supported": true
+        }
+      },
+      "nonpandemic_score_delta": -0.3711751012035768,
+      "unscored_rows": 0
+    },
+    "c3": {
+      "accepted": false,
+      "gates": {
+        "three_origins": true,
+        "paired_interval": true,
+        "majority_origins": true,
+        "overall_coverage": true,
+        "supported_group_coverage": false,
+        "nonpandemic": true
+      },
+      "comparison": {
+        "candidate": 1.76150916758296,
+        "baseline": 2.486775088766866,
+        "delta": -0.7252659211839063,
+        "interval95": [
+          -0.7547298054138228,
+          -0.6945648218943862
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 1.9553117819676875,
+            "baseline": 2.792106949109007,
+            "delta": -0.8367951671413191
+          },
+          {
+            "origin": 2017,
+            "candidate": 1.525452081528041,
+            "baseline": 2.281421549567715,
+            "delta": -0.7559694680396735
+          },
+          {
+            "origin": 2018,
+            "candidate": 1.6515914721195708,
+            "baseline": 2.3252577571120607,
+            "delta": -0.67366628499249
+          },
+          {
+            "origin": 2019,
+            "candidate": 1.4626652183914293,
+            "baseline": 2.2450586521194964,
+            "delta": -0.7823934337280669
+          },
+          {
+            "origin": 2021,
+            "candidate": 2.0858001753578606,
+            "baseline": 2.7474891086200897,
+            "delta": -0.6616889332622297
+          },
+          {
+            "origin": 2022,
+            "candidate": 1.8882342761331707,
+            "baseline": 2.5293165160728295,
+            "delta": -0.6410822399396588
+          }
+        ],
+        "improving_origins": 6
+      },
+      "overall": {
+        "q0": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.8390970331761167,
+          "width": 1.4717312428294715,
+          "score": 2.4867750887668834
+        },
+        "raw": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.9120706771460436,
+          "width": 0.9168276367606355,
+          "score": 1.7667185656686286
+        },
+        "q2": {
+          "rows": 26571,
+          "origins": 6,
+          "coverage": 0.9212979874446697,
+          "width": 0.9694230090621431,
+          "score": 1.7615091675829555
+        }
+      },
+      "groups": {
+        "Current MLB / all": {
+          "rows": 3869,
+          "origins": 6,
+          "coverage": 0.820931189174923,
+          "width": 5.679728861605569,
+          "score": 7.825716806461997,
+          "supported": true
+        },
+        "Current MLB / high_prior": {
+          "rows": 708,
+          "origins": 6,
+          "coverage": 0.8230317498615526,
+          "width": 11.003052403247663,
+          "score": 14.488721764980534,
+          "supported": true
+        },
+        "Current MLB / high_current": {
+          "rows": 776,
+          "origins": 6,
+          "coverage": 0.8153303638325676,
+          "width": 10.844278532317768,
+          "score": 14.26709317365328,
+          "supported": true
+        },
+        "Inactive / unknown / all": {
+          "rows": 1861,
+          "origins": 6,
+          "coverage": 0.9759502817152406,
+          "width": 0.04415268960517451,
+          "score": 0.23833380882147473,
+          "supported": true
+        },
+        "Inactive / unknown / high_prior": {
+          "rows": 411,
+          "origins": 6,
+          "coverage": 0.9653766788009155,
+          "width": 0.22403723096743844,
+          "score": 0.4031335498026647,
+          "supported": true
+        },
+        "Inactive / unknown / high_current": {
+          "rows": 439,
+          "origins": 6,
+          "coverage": 0.9704680516432846,
+          "width": 0.1941548970890233,
+          "score": 0.31854091987758465,
+          "supported": true
+        },
+        "Lower minors / all": {
+          "rows": 14461,
+          "origins": 6,
+          "coverage": 0.9655687383401572,
+          "width": 0.07774813754234976,
+          "score": 0.351945893486892,
+          "supported": true
+        },
+        "Lower minors / high_prior": {
+          "rows": 2961,
+          "origins": 6,
+          "coverage": 0.8952497525997773,
+          "width": 0.26433678999650495,
+          "score": 1.3018171016781264,
+          "supported": true
+        },
+        "Lower minors / high_current": {
+          "rows": 2895,
+          "origins": 6,
+          "coverage": 0.8954648773592503,
+          "width": 0.25922499118560854,
+          "score": 1.2875115459587567,
+          "supported": true
+        },
+        "Upper minors / all": {
+          "rows": 6380,
+          "origins": 6,
+          "coverage": 0.8654893851001214,
+          "width": 0.4230736329964824,
+          "score": 1.7457727875445084,
+          "supported": true
+        },
+        "Upper minors / high_prior": {
+          "rows": 1192,
+          "origins": 6,
+          "coverage": 0.7341421682096,
+          "width": 1.4737194805640483,
+          "score": 6.515313406972446,
+          "supported": true
+        },
+        "Upper minors / high_current": {
+          "rows": 1279,
+          "origins": 6,
+          "coverage": 0.7313782998181139,
+          "width": 1.3573182465990452,
+          "score": 5.896966070323713,
+          "supported": true
+        }
+      },
+      "nonpandemic_score_delta": -0.7131887801143919,
+      "unscored_rows": 0
+    }
+  },
+  "source_manifest": {
+    "plan": "docs\\multiyear-hitter-followup-v2-plan.md",
+    "hashes": {
+      "docs\\multiyear-hitter-followup-v2-plan.md": "c68923faa0fc806f36632bb4b8d8abdea5884ccdf211955b7ef3a0eb598a18de",
+      "reports\\generated\\multiyear-hitter-v1\\panel.parquet": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+      "reports\\generated\\multiyear-hitter-v1\\outer-predictions.parquet": "15534160bc8c17c3328383fd338ec28b8b8124d203cffa38e2f62478ddbe1568",
+      "reports\\generated\\multiyear-hitter-v1\\player-forecast-2026-2028.parquet": "99d10377438fbede4d95d9c96d4252c3e9a557ceafa8a26843a18e67bf6bf883",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\tables\\mlb_hitting_components_2009_2025.parquet": "755b78517f52c3875fe7ea2877cbcb34a0cecd1a2fcb17ee05698cc55f2184a6",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_multiyear_hitter_followup_v2.py": "f81e1b59c748962f252e3da12ee17efddd09e5e2d3cb6503b808a5b5a5e57613",
+      "src\\universal_baseball\\multiyear_hitter_followup.py": "540c49b166ab5c3d5f9195e614b533951942ba0a88fdcb97f10bdfd2020ed2de"
+    },
+    "cache_key": "27cf7b99daa94b51",
+    "protected_2026_used": false,
+    "outer_origins": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2021,
+      2022
+    ],
+    "bootstrap_draws": 1000,
+    "stage_threshold": "within stage, calibration-pool 80th percentile",
+    "Q0": "all mature origins >=2, stage >=200 rows, same residual recipe as v1",
+    "evidence": "exposed chronological development; no independent prospective confirmation"
+  },
+  "means_changed": false,
+  "protected_2026_used": false,
+  "delivery": {
+    "rows": 3907,
+    "established_players": 386,
+    "mean_arrays_byte_identical_to_v1": true,
+    "original_packages_untouched": true,
+    "scope": "MLB batting + replacement only; not full WAR. Workload and value not jointly reconciled.",
+    "historical_source_issue": "Alonso absent in raw historical roster endpoint; no manual repair. New established probability does not use membership.",
+    "intervals": "withheld: all four horizons fail upper-minors high-value coverage guard",
+    "implementation_audit": "Caught current forecast row-order mismatch in first candidate build before delivery. Attached arrays to player IDs before joining and reran. Historical scores unchanged; model/parameters unchanged.",
+    "legacy_audit": "Old established-hitter rolling validation did not embargo immature multi-year labels; those validation claims are withdrawn. Original legacy artifact preserved. V2 replaces that evidence for Years 1-3 only.",
+    "examples": [
+      {
+        "player_id": 592450,
+        "player_name": "Aaron Judge",
+        "value_three_years": 18.208664675613225,
+        "activity_h1_v1": 0.8931547731698544,
+        "activity_h1": 0.9991674464280391,
+        "activity_h3_v1": 0.5532424335425871,
+        "activity_h3": 0.9623987995672139,
+        "expected_pa_h1": 392.58519251077064,
+        "expected_pa_h3": 293.03664063619317
+      },
+      {
+        "player_id": 624413,
+        "player_name": "Pete Alonso",
+        "value_three_years": 9.987918550055628,
+        "activity_h1_v1": 0.6205627645805636,
+        "activity_h1": 0.9954300358218343,
+        "activity_h3_v1": 0.28126487756112833,
+        "activity_h3": 0.9371447819420929,
+        "expected_pa_h1": 356.9414027991586,
+        "expected_pa_h3": 294.85721815581763
+      },
+      {
+        "player_id": 665742,
+        "player_name": "Juan Soto",
+        "value_three_years": 14.998301077966113,
+        "activity_h1_v1": 0.9558180937574463,
+        "activity_h1": 0.9989410931736231,
+        "activity_h3_v1": 0.8247128662040607,
+        "activity_h3": 0.9875358465711586,
+        "expected_pa_h1": 554.8737552389039,
+        "expected_pa_h3": 486.7268342442166
+      },
+      {
+        "player_id": 691422,
+        "player_name": "Kevin Rivas",
+        "value_three_years": 1.593089000675505,
+        "activity_h1_v1": 0.09332009478418352,
+        "activity_h1": 0.09332009478418352,
+        "activity_h3_v1": 0.18921737450896983,
+        "activity_h3": 0.18921737450896983,
+        "expected_pa_h1": 11.06076989488669,
+        "expected_pa_h3": 41.64196375084794
+      }
+    ]
+  },
+  "package_versions": {
+    "numpy": "2.5.3",
+    "polars": "1.44.2",
+    "scikit-learn": "1.7.2",
+    "lightgbm": "4.7.0"
+  },
+  "supplemental_code_hashes": {
+    "scripts/audit_established_hitter_opportunity.py": "75490a682c7fb74663cb065503e8d5f59f0ed02bc69c3d94d9d02c5f8f47851d",
+    "scripts/audit_multiyear_hitter_rosters_v2.py": "d4c6cffc04dc918c86201a6ff835351f905849e6796698b68836309f9d4a98fb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\report_multiyear_hitter_followup_v2.py": "cbbc36a42525eca6aa9e75552cc23855032022aef26d822621f42d5b541408b8",
+    "templates/multiyear-hitter-followup-v2-explorer.html": "fc5845a6e195d4a0efcf2d5c35bcae0f3612fb34ce7e59fd51cdb2587f99e47f",
+    "src/universal_baseball/multiyear_hitter_value.py": "b72aa067d881af342dd0a5db7475638038bd827e9ec161f4b557b6e6b473d32a",
+    "scripts/evaluate_multiyear_hitter_v1.py": "066a5980fad0a18b98bf6143fcc5e744852aa1401afd1c55e88714e13247c283"
+  }
+}

@@ -126,16 +126,30 @@ def _features(raw: pl.DataFrame, demographics: pl.DataFrame) -> pl.DataFrame:
     )
 
 
-def _dataset(features: pl.DataFrame, outcomes: pl.DataFrame, horizon: int) -> pl.DataFrame:
+def _dataset(features: pl.DataFrame, outcomes: pl.DataFrame, horizon: int,
+             complete_seasons: tuple[int, ...] = tuple(range(2009, 2026))) -> pl.DataFrame:
     future = outcomes.select(
         "player_id", (pl.col("season") - horizon).alias("season"), pl.col("pa").alias("future_pa")
     )
     return (
         features.join(future, on=["season", "player_id"], how="left", validate="1:1")
         .with_columns(
-            pl.col("future_pa").fill_null(0.0),
+            # An absent player in a certified complete season is zero PA. An
+            # unobserved future season is unknown, not an attrition outcome.
+            pl.when((pl.col("season") + horizon).is_in(complete_seasons))
+            .then(pl.col("future_pa").fill_null(0.0))
+            .otherwise(None).alias("future_pa"),
             (pl.col("origin_age") + horizon).alias("target_age"),
         )
+    )
+
+
+def _mature_training(data: pl.DataFrame, origin: int, horizon: int) -> pl.DataFrame:
+    return data.filter(
+        (pl.col("season") >= 2012)
+        & (pl.col("season") + horizon <= origin)
+        & (pl.col("season") != 2020)
+        & pl.col("future_pa").is_not_null()
     )
 
 
@@ -204,11 +218,7 @@ def main() -> int:
         for origin in EVALUATION_ORIGINS:
             if origin + horizon > 2025:
                 continue
-            train = data.filter(
-                (pl.col("season") >= 2012)
-                & (pl.col("season") < origin)
-                & (pl.col("season") != 2020)
-            )
+            train = _mature_training(data, origin, horizon)
             test = data.filter(pl.col("season") == origin)
             if train.is_empty() or test.is_empty():
                 continue
@@ -246,11 +256,7 @@ def main() -> int:
     current_features = _features(all_current, demographics).filter(pl.col("season") == 2026)
     for horizon in HORIZONS:
         data = _dataset(features, season_rows, horizon)
-        train = data.filter(
-            (pl.col("season") >= 2012)
-            & (pl.col("season") + horizon <= 2025)
-            & (pl.col("season") != 2020)
-        )
+        train = _mature_training(data, 2025, horizon)
         fit = _fit(train, CANDIDATE_FEATURES)
         final_fits[str(horizon)] = asdict(fit)
         score_input = current_features.with_columns(

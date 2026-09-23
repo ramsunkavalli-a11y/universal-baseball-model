@@ -4,6 +4,18 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+The [bounded hitter follow-up](multiyear-hitter-followup-v2-result.md) is complete.
+386 established hitters receive chronology-tested recent-history/talent MLB
+probabilities; 3,907 value means and all original frozen packages remain unchanged.
+The new conditional-PA model failed its uncertainty/consistency gate. Conditional
+quantile intervals improved overall but still under-cover higher-value upper-minors
+players, so no ranges are published. The historical roster endpoint omission was
+confirmed, not hand-repaired. An older hitter audit's multi-year timing leak is
+documented and its validation claim withdrawn; v2 supports Years 1–3 only.
+Next: a bounded participation/conditional-value error decomposition before any
+joint distribution challenger, and the pitcher annual/cumulative source audit.
+The local v2 player report includes previous versus updated MLB chances.
+
 M1 and M2 are now complete: [three-year hitter result](multiyear-hitter-v1-result.md),
 [source/target certification](multiyear-hitter-m1-result.md), and
 [frozen comparison](multiyear-hitter-v1-contract.json). Selected three-year RMSE is

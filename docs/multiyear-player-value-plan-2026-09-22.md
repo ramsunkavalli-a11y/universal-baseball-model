@@ -2,6 +2,11 @@
 
 Version 1.1, reviewed 2026-09-22. Execution update: M1 and M2 complete;
 [three-year hitter result and limitations](multiyear-hitter-v1-result.md).
+The [bounded M2 follow-up](multiyear-hitter-followup-v2-result.md) is also complete:
+established-hitter participation improved; conditional PA retained; uncertainty
+ranges still withheld after upper-minors subgroup failure. Original value means
+and the protected season remain untouched. These remaining weaknesses do not
+justify relabeling the current output as full WAR or career value.
 This is the immediate execution order under the
 [product roadmap](product-roadmap.md). Historical results and frozen forecast
 contracts retain their original scope. [Research and sources](multiyear-player-value-literature-2026-09-22.md).
