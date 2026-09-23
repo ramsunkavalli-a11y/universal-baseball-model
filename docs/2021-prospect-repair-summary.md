@@ -2,6 +2,45 @@
 
 2026-09-23. Diagnosis supported; useful partial repairs, no production replacement.
 
+## Latest follow-up: schedules and the era flag
+
+The [fixed follow-up](hitter-era-schedule-v1-result.md) is complete: 20 new fits,
+two future-data mutation replays, and 20 focused unit tests. No live forecast
+changed. These are still exposed development results, not fresh confirmation.
+
+**Shorter schedules are real, but this encoding did not fix the forecasts.**
+The typical Double-A team played 118 completed regular games in 2021 versus 139
+in 2019; High-A and Single-A were also shorter. Actual captured schedules match
+3,249 of 3,250 prospects at the 2021 origin. We retained real PA as the sample
+size and added PA relative to full team schedules. In four matched annual tests,
+Brier improves slightly and uncertainly, while pooled log loss gets slightly
+worse. The difficult 2021 forecast worsens. This fails the fixed evidence rule;
+it does not establish that schedules are irrelevant or justify calling low PA
+an injury. The test uses a 2015-onward training control because earlier local
+schedule captures are absent, so comparing it directly with the original model
+would mix schedule and training-history effects.
+
+**The explicit modern-era flag accounts for a small part of the next-cohort
+overshoot, not most of it.** Removing it from the outage-aware candidate changes
+the 2022-origin estimate from 159.7 to 155.0 against 106 arrivals in 2023. Both
+proper scores improve. Removing the flag from the original model alone does not
+improve pooled scores, so this is an interaction with the outage treatment, not
+evidence to delete all era information everywhere. At the 2021 origin there is
+no mature modern training cohort, so removing the constant flag changes nothing.
+
+Across six annual tests, the combined outage-aware/no-era model improves Brier
+1.45% and log loss 2.12% versus the original rich model, with favorable paired
+player-cluster intervals. However, the gain is concentrated in 2021; only three
+of six origins improve and the three latest origins remain worse than the
+original. The 2021 count remains 83.9 versus 157. This is a retained research
+candidate, not a solved 2021 problem or a validated player-value replacement.
+
+The sensible next gate is stronger-benchmark, Year 1–3 and delivered-value
+testing of retained candidates, with later-year harm checked explicitly. A
+shared-year opportunity model with partial pooling remains a possible separate
+experiment, not a conclusion from this test. Do not keep adding calendar fixes
+until the exposed 2021 answer is reproduced.
+
 ## The issue we actually found
 
 The model receives an ordinary missing-history signal for a canceled league-wide

@@ -4,7 +4,33 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest milestone: [2021 prospect failure diagnosis and repair tests](2021-prospect-repair-summary.md).
+Latest milestone: [era and actual-schedule diagnostics](hitter-era-schedule-v1-result.md).
+Completed 20 fixed fits plus two exact future-mutation replays. Removing the
+explicit era flag from the outage-aware model reduces its 2022-origin forecast
+from 159.7 to 155.0 arrivals versus 106, improving both scores. This supports a
+small contribution from the flag, not the claim that it explains most of the
+error. Removing it from the original model alone slightly worsens pooled scores.
+The combined outage-aware/no-era arm improves pooled Brier/log loss by 1.45%/2.12%
+versus R with favorable player-cluster intervals, but improves only 3/6 origins;
+all three later origins remain worse than R. Retain as research, not deployment.
+
+Actual schedules were reconstructed and matched to almost every prospect from
+2015 onward. Double-A's median completed schedule was 118 games in 2021 versus
+139 in 2019. Adding current schedule-relative workload in a matched 2015-onward
+training test gives uncertain Brier improvement and slightly worse pooled log
+loss; 2021 worsens. Its fixed acceptance gates fail. Schedule-relative workload
+is not a diagnosis of individual health and does not identify roster tenure.
+20 focused unit tests pass; new artifacts and the original 2026 seal verify.
+No live forecasts or explorer changes. See the [plain summary](2021-prospect-repair-summary.md).
+
+Next: do not add another calendar tweak to fit the exposed 2021 count. A separate
+predeclared follow-up can compare the retained no-era outage/history candidates
+against the stronger opportunity benchmark, across available Year 1–3 endpoints
+and delivered value, with explicit later-origin harm checks. Any shared-year
+opportunity/partial-pooling model is still untested, not an implemented repair.
+Do not infer that the failed schedule encoding disproves the relevance of schedules.
+
+Previous milestone: [2021 prospect failure diagnosis and repair tests](2021-prospect-repair-summary.md).
 Treating the canceled 2020 annual block as ordinary personal missingness is a
 supported source of error. Removing it improves 2021 next-year Brier/log loss by
 13.1%/15.3% and raises expected arrivals 58→93 versus 157, with 4/4 older-source
@@ -16,10 +42,11 @@ their acceptance contracts; neither is deployed. The second candidate's pooled
 40 total fits/replays including mutation refits, 23 unit tests and both packages
 verify; the original 2026 seal and live explorer are unchanged.
 
-Next: distinguish structural data loss from personal absence, audit dated
+That milestone proposed: distinguish structural data loss from personal absence, audit dated
 schedule-relative opportunity, and isolate transient year effects from persistent
 post-reorganization effects. At the 2022 annual cutoff only one modern origin
-has mature labels. That is a specific era-transfer hypothesis, not proved causal.
+has mature labels. The follow-up above tests the explicit flag, not a causal
+decomposition of all era effects.
 Do not pick the favorable 2021-only routing post hoc, discard the difficult cohort,
 inflate probabilities, or make further tuning rounds against the same exposed test.
 Retain the earlier history-summary candidate for its separate whole-value follow-up.
