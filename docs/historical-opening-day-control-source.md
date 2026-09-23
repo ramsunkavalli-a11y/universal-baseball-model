@@ -3,6 +3,17 @@
 **Status:** accepted as a retrospective Phase 1 service/options baseline source  
 **Captured:** 2026-09-09
 
+**2026-09-22 correction: PA/IP projection columns are quarantined.** Every nonnull
+shared workload projection is identical between archive years: PA 451/451
+(2023–24), 462/462 (2023–25), 532/532 (2024–25); IP 460/460, 467/467 and 558/558.
+Ages change with the historical year. These workload columns cannot be treated as
+original historical projections or used for historical fitting, cohort selection,
+or an external accuracy benchmark. Their exact forecast vintage is unknown; the
+values are consistent with a shared later projection lookup. This does not by
+itself invalidate independently checked historical service/options/role controls.
+See the [role/workload audit](hitter-role-workload-v1-result.md). Older workload
+availability claims below are superseded by this correction.
+
 FanGraphs' historical RosterResource Opening Day Tracker exposes a league-wide,
 MLBAM-keyed control snapshot. The row contract includes pre-season service time,
 options or Rule 5 status, 40-man status, organization and projected opening role.
@@ -22,8 +33,9 @@ and future `Dec'YY` Rule 5 labels.
 
 ## Member workbook validation
 
-User-downloaded member workbooks add a 2023 source and preserve historical projected
-PA, projected IP and age. The private normalized coverage is:
+User-downloaded member workbooks add a 2023 control source and contain projected
+PA/IP fields and historical age. The workload fields are **not certified historical
+forecasts**; the private normalized field coverage is:
 
 | Season | Unique players | Service balances | Option counts | Projected PA | Projected IP |
 |---|---:|---:|---:|---:|---:|
@@ -36,7 +48,7 @@ rows agree on service, options/Rule 5 state, projected role, team, name and FanG
 ID. The 2025 workbook has the same exact agreement for all 2,019 common rows. The
 public captures contain three and five additional players, respectively, so they
 remain the primary 2024–2025 control source. The workbooks are independent validation
-copies and add historical workload projections. The 2023 workbook is the primary
+copies of control facts, not validated workload vintages. The 2023 workbook is the primary
 available Opening Day source for that earlier retrospective checkpoint.
 
 Workbook rows do not expose FanGraphs team ID, 40-man flag or raw roster status.

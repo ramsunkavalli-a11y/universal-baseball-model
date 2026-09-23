@@ -2,6 +2,14 @@
 
 Status: first scored Phase 1 historical checkpoint; not a publishable ranking.
 
+**2026-09-22 correction:** the FanGraphs accuracy comparison below is withdrawn.
+The workbook PA/IP columns are identical for every shared nonnull player across
+2023–2025 and cannot establish historical forecast vintage. See the
+[source audit](hitter-role-workload-v1-result.md). The old path builder also uses
+nonnull projection presence to extend hitter/pitcher cohorts; replay that extension
+using dated role facts before treating the full old checkpoint as cutoff-certified.
+This correction does not change archived numbers or the independent current model.
+
 ## Forecast score
 
 The frozen March 27, 2025 model was scored without refitting or changing thresholds.
@@ -14,15 +22,15 @@ Missing MLB outcomes remain observed zeroes.
 - Pitcher workload totaled 180,383 projected BF versus 182,108 observed, a 0.9%
   shortfall. The model expected 784.5 active pitchers versus 801 observed. BF RMSE
   was 76.01, better than the carry-forward 84.50; MAE was 28.76, worse than 26.48.
-- On the players FanGraphs explicitly projected, its depth-chart allocation was
+- Withdrawn comparison (retained for audit only): on the players FanGraphs explicitly projected, its depth-chart allocation was
   materially better: hitter PA MAE was 92.81 versus 139.89 and pitcher implied-BF
   MAE was 103.67 versus 138.97. FanGraphs remains an external, team-context
   comparator and was not inserted into the universal model.
 
-The interpretation is mixed but clear: the universal model closes league workload
-and reduces large errors, while simple recent workload and FanGraphs assign individual
-playing time better on average. This result is frozen evidence, not an invitation to
-retune against 2025.
+The non-external comparison is mixed: the universal model closes league workload
+and reduces large errors, while simple recent workload has lower MAE. The earlier
+claim about historical FanGraphs superiority is unsupported by the source vintage.
+These exposed results are not an invitation to retune against 2025.
 
 ## Neutral WAR score
 

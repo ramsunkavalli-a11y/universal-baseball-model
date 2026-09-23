@@ -4,6 +4,26 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+Latest: the [literature-informed role/workload screen](hitter-role-workload-v1-result.md)
+is complete. A fixed 77-feature LightGBM hurdle improves normal-season PA RMSE
+69.30→62.88 next year and 86.65→79.22 in Year 2 versus the current multi-year PA
+model, with fixed-rate batting/replacement value gains and better top-player PA.
+Added MLB starts/position features and explicit workload buckets do not improve
+on that base. Against the stronger old roster ensemble, the PA advantage is only
+65.48→64.85 on matched rows and the value gain is uncertain. Keep this as a
+confirmation candidate, not a production or full-WAR upgrade; older-player value,
+young-star uncertainty and pandemic stress still need attention. Forecasts unchanged.
+
+Important source correction: **all common nonnull workbook PA/IP projections are
+identical across 2023–2025**. They are quarantined, not historical human forecasts.
+The previous external FanGraphs accuracy claim is withdrawn. Old replay/cap cohort
+extensions that use projection availability require a dated-role rebuild; service
+and options controls are separately validated and not automatically rejected.
+Next: same-cutoff/same-cohort Years 1–3 confirmation of the fixed base challenger
+against the existing roster ensemble, plus actual value-component integration.
+Obtain genuinely dated external forecasts before a human benchmark. This supersedes
+older next-step wording below; do not resume cap tuning or backdate workbooks.
+
 The [contract/reserve follow-up](hitter-contract-reserve-v2-result.md) is complete
 for the pitcher-batting screen; the salary test is source-blocked, not rejected.
 DH-aware reserve estimates drop to 2,214/2,118 PA against actual 2,981/2,290 for

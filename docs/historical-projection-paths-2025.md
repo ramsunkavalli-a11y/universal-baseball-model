@@ -2,6 +2,14 @@
 
 Status: Phase 1 retrospective replay input, not a promoted ranking.
 
+**2026-09-22 source correction:** workbook PA/IP fields are quarantined after
+cross-year invariance was discovered. The external scale comparison below is not a
+comparison to certified historical forecasts. `_extend_universes` also uses
+nonnull PA/IP presence to supplement position-based selection: rebuild that cohort
+extension from dated role facts before reusing this as cutoff-certified evidence.
+Existing frozen outputs remain archived, not silently overwritten. See the
+[source audit and current independent experiment](hitter-role-workload-v1-result.md).
+
 The first 2025 Opening Day projection path is now materialized at the March 27,
 2025 event cutoff. It covers 3,891 hitters and 5,090 pitchers for 2025–2029.
 Thirty-five two-way players retain separate hitter and pitcher components.

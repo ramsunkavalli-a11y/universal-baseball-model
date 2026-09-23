@@ -2,6 +2,13 @@
 
 Status: broad team cap supported; rigid and flexible group constraints rejected.
 
+2026-09-22 qualification: the upstream historical path cohort used nonnull workbook
+PA/IP presence when extending player universes. Those fields now fail historical
+vintage checks. Treat the paired cap scores as conditional on that archived cohort,
+not a clean cutoff-certified validation, until the cohort is rebuilt from dated
+roles. No cap weights or scores are changed. See the
+[source correction](hitter-role-workload-v1-result.md).
+
 ## What was tested
 
 The already frozen 2025 Opening Day forecasts were assigned to their known Opening Day organizations and scored against full-season 2025 MLB PA or BF. Capacity and position/role shares came only from 2021-2024. Missing outcome rows stayed zero.

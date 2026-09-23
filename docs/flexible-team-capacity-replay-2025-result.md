@@ -2,6 +2,11 @@
 
 Status: flexible position/role constraints rejected; broad team cap retained.
 
+2026-09-22 qualification: upstream cohort certification is pending correction of
+the workbook PA/IP vintage issue. These remain paired comparisons on an archived
+cohort, not independent cutoff-certified validation. See the
+[historical source correction](hitter-role-workload-v1-result.md).
+
 The rigid position and pitcher-role caps failed because unused workload could not move
 between buckets. This challenger fixes that structural problem before considering any
 cuts.

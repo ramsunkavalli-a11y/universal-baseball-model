@@ -2,6 +2,18 @@
 
 Version 1.1, reviewed 2026-09-22. Execution update: M1 and M2 complete;
 [three-year hitter result and limitations](multiyear-hitter-v1-result.md).
+
+Latest execution checkpoint: [role/workload literature screen](hitter-role-workload-v1-result.md).
+The fixed base LightGBM hurdle passes this development screen against the current
+multi-year PA model, but its value advantage over the older roster ensemble is
+uncertain. New MLB starts/position features and workload bins add no improvement.
+Next confirm the fixed base on harmonized Years 1–3 cohorts/cutoffs and test its
+integration into delivered value; retain original forecasts meanwhile. Workbook
+PA/IP fields are quarantined after all shared forecasts proved identical across
+2023–2025. Withdraw that historical human benchmark and repair any old cohort
+extension relying on projection availability. Do not confuse validated historical
+control facts with unverified forecast columns in the same workbook.
+
 The [bounded M2 follow-up](multiyear-hitter-followup-v2-result.md) is also complete:
 established-hitter participation improved; conditional PA retained; uncertainty
 ranges still withheld after upper-minors subgroup failure. Original value means
