@@ -4,7 +4,25 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest population result: the [fixed snapshot repair](player-path-population-v1-result.md)
+Latest prerequisite completed: the [historical projection-state rebuild](historical-projection-state-v1-result.md)
+adds 53,910 Years 1–3 forecast records for 2012–2015. The combined archive has
+145,344 records, with independently fitted conditional-rate anchors, opportunity
+and unconditional batting/replacement value kept distinct. Overlap replays pass
+at 2016/2022; early means and H1 anchors reproduce their archives; a future-data
+mutation leaves the tested forecasts unchanged. Full populations and missing
+outcomes are preserved. This is a retrospective fixed-recipe reconstruction,
+not forecasts published historically or a new accuracy result.
+
+The 2016 outer cutoff now has 8,942 matched mature snapshots from 5,428 identities
+instead of zero; 2025 has 30,861 from 12,048. Some age/stage pools remain sparse.
+Next: freeze one numeric three-year projection-anchored path contract before
+fitting. Specify skill/opportunity dependence, persistent uncertainty, development,
+fallbacks and the older-to-modern feature change; retain success-calibration gates.
+No new path model was fitted in this input milestone. Years 4–6 were not rebuilt.
+The stronger research PA ensemble remains a comparator, not the backfilled recipe.
+Live means, the 8777 explorer and protected 2026 outcomes remain unchanged.
+
+Previous population result: the [fixed snapshot repair](player-path-population-v1-result.md)
 improves normal three-year distribution CRPS 0.2891 to 0.2661, with favorable
 player-cluster intervals and improvement at all three origins. Mean RMSE improves
 1.333 to 1.222; the delivered projection remains slightly better at 1.214. The
@@ -16,12 +34,11 @@ Never-debuted regular-workload predictions worsen from 28.8 to 23.5 versus 44
 observed. This supported failure, plus sparse rare-success cohorts, prevents
 promotion. Live means, the 8777 explorer and the original freeze are unchanged.
 
-Next prerequisite: follow the [dated-anchor rebuild checklist](projection-path-anchor-rebuild-checklist.md).
-The existing H1 rate anchors start in 2012, but complete H1–H3 opportunity replays
-start in 2016. The earliest outer fold therefore has no eligible donors with both.
-Early H6 folds have no eligible rate anchors either. C1 is not ready to fit from
-the current archives; the underlying annual data can support a separately
-specified reconstruction. Do not call this impossible or fill the gap with
+The [dated-anchor rebuild checklist](projection-path-anchor-rebuild-checklist.md)
+is now completed for the bounded Years 1–3 scope, under the separate frozen
+[reconstruction contract](historical-projection-state-v1-plan.md). The former
+2016 archive gap is closed; early H6 gaps remain. The next architecture is still
+unvalidated and requires a numeric contract. Do not fill unsupported scopes with
 future-fitted coefficients, unconditional WAR/PA ratios, or independent quantiles.
 Keep conditional rate, opportunity, persistent uncertainty and development
 explicitly distinct. Whole-WAR, rights/cost paths and the full control/liability

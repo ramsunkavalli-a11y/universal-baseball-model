@@ -22,14 +22,23 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
-**Latest research:** the [historical snapshot repair](docs/player-path-population-v1-result.md)
+**Latest milestone:** the [dated forecast archive](docs/historical-projection-state-v1-result.md)
+now includes 53,910 reconstructed Years 1–3 records for 2012–2015. Overlap forecasts
+reproduce the saved versions, and changing unavailable future information leaves
+the tested forecasts unchanged. This closes the earliest test's missing-history
+gap: 8,942 usable snapshots from 5,428 players at the 2016 cutoff. It is an input
+repair, not a proven projection improvement. Next freeze one three-year anchored
+career-path test; live forecasts, the explorer and 2026 outcomes remain unchanged.
+
+**Previous research:** the [historical snapshot repair](docs/player-path-population-v1-result.md)
 restores earlier career states while giving each historical player equal total
 weight. Normal three-year distribution error improves about 8%; mean RMSE falls
 from 1.333 to 1.222, close to but still above the delivered 1.214. Prospect regular
 workload remains underpredicted (23.5 expected versus 44 observed player-origin
-cases), so the repair is not deployed. The next bounded prerequisite is the
-[dated talent/opportunity archive](docs/projection-path-anchor-rebuild-checklist.md),
-not a post-hoc blend or a new dollar ranking. Current forecasts remain unchanged.
+cases), so the repair is not deployed. The
+[dated talent/opportunity archive](docs/projection-path-anchor-rebuild-checklist.md)
+prerequisite is now completed for Years 1–3 as described above. No post-hoc blend
+or new dollar ranking was introduced. Current forecasts remain unchanged.
 
 **Previous research:** the [player-path/value bridge](docs/player-path-value-bridge-v1-result.md)
 separates career outcomes from the value of acquiring a player's rights. Its new
