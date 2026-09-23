@@ -4,7 +4,27 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest experiment: [history continuity and past-only calibration](hitter-history-calibration-v1-result.md)
+Latest milestone: [2021 prospect failure diagnosis and repair tests](2021-prospect-repair-summary.md).
+Treating the canceled 2020 annual block as ordinary personal missingness is a
+supported source of error. Removing it improves 2021 next-year Brier/log loss by
+13.1%/15.3% and raises expected arrivals 58→93 versus 157, with 4/4 older-source
+outage stress wins. But applying this routing to 2022 overpredicts 176 versus 106.
+A separately specified source-outage augmentation conserves snapshot/identity/
+class weights and improves 2021 to 84, but overpredicts 2022 to 160. Both fail
+their acceptance contracts; neither is deployed. The second candidate's pooled
+676/677 count masks cohort errors, and regular-workload underprediction persists.
+40 total fits/replays including mutation refits, 23 unit tests and both packages
+verify; the original 2026 seal and live explorer are unchanged.
+
+Next: distinguish structural data loss from personal absence, audit dated
+schedule-relative opportunity, and isolate transient year effects from persistent
+post-reorganization effects. At the 2022 annual cutoff only one modern origin
+has mature labels. That is a specific era-transfer hypothesis, not proved causal.
+Do not pick the favorable 2021-only routing post hoc, discard the difficult cohort,
+inflate probabilities, or make further tuning rounds against the same exposed test.
+Retain the earlier history-summary candidate for its separate whole-value follow-up.
+
+Previous experiment: [history continuity and past-only calibration](hitter-history-calibration-v1-result.md)
 tests the miss diagnostic with two fixed feature arms and raw/calibrated probabilities.
 The primary combined arm is **not accepted**. History summaries alone improve
 next-year Brier/log loss by about 1.1%/1.2%, in 5/6 origins with favorable paired
