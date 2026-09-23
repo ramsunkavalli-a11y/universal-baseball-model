@@ -4,6 +4,17 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+The [Year-1/Year-2 consistency test](hitter-horizon-consistency-v1-result.md) now
+explains part of the visible decline among stars: switching from the rich first-year
+model to aggregate Ridge accounts for roughly 0.28 of their 0.68 average decline.
+Same-family and matched-training-row diagnostics still decline. Extending the fixed
+five-model recipe to Year 2 fails the frozen improvement and high-value subgroup
+gates, so the v2 explorer stays unchanged. Nonpandemic young-top-player actual
+production is nearly flat while both tested procedures decline; long-horizon
+high-end calibration remains an open gap, not a validated aging conclusion.
+Next targeted work should distinguish persistent talent, subsequent change and
+playing opportunity, rather than hand-boost youth or lower Year 1 for a smoother line.
+
 The [bounded hitter follow-up](multiyear-hitter-followup-v2-result.md) is complete.
 386 established hitters receive chronology-tested recent-history/talent MLB
 probabilities; 3,907 value means and all original frozen packages remain unchanged.
