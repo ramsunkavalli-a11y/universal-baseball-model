@@ -3,7 +3,23 @@
 Version 1.1, reviewed 2026-09-22. Execution update: M1 and M2 complete;
 [three-year hitter result and limitations](multiyear-hitter-v1-result.md).
 
-Latest execution checkpoint: [role/workload literature screen](hitter-role-workload-v1-result.md).
+Latest execution checkpoint: [Years 1–3 opportunity/value confirmation](hitter-three-year-opportunity-confirmation-v1-result.md).
+The fixed candidate improves PA in every horizon versus delivered forecasts, but
+the same-input five-model ensemble is better in all three. Full rate-product
+integration improves overall cumulative batting/replacement RMSE 1.216 to 1.147,
+yet fails the young upper-minors Year-1 value guard; the learned correction also
+fails. Retain delivered forecasts. Prospects are included, but three-year collective
+PA and arrival are underforecast despite better individual PA accuracy.
+Next bounded plan: earlier-out-of-time-only, level-aware arrival calibration and
+conditional workload/performance integration, tested against the harmonized ensemble
+and direct delivered value. Keep all non-arrivals, explicit entrant accounting,
+group harms, total opportunity calibration and individual value accuracy in the
+decision. No blanket uplift or post-score retuning; Year-3 calibration support
+must be expanded before claiming a learned multi-year correction is validated.
+This supersedes the earlier execution instructions below; the original 2026 season
+remains protected and the multi-year target remains batting plus replacement.
+
+Previous execution checkpoint: [role/workload literature screen](hitter-role-workload-v1-result.md).
 The fixed base LightGBM hurdle passes this development screen against the current
 multi-year PA model, but its value advantage over the older roster ensemble is
 uncertain. New MLB starts/position features and workload bins add no improvement.

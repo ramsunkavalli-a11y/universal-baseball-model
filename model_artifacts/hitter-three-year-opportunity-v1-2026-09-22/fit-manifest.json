@@ -1,0 +1,689 @@
+{
+  "sources": {
+    "docs\\hitter-three-year-opportunity-confirmation-v1-plan.md": "ba65c160b311933f4467e80141465ff293312a9a7f4c24b3dd2b8eeb65100e02",
+    "scripts\\fit_hitter_three_year_opportunity_v1.py": "dc698a554d7017ffa5f0d033d96eb346aaf7c4fbc577a6457d2cc7f7787b732b",
+    "reports\\generated\\multiyear-hitter-v1\\panel.parquet": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+    "reports\\generated\\multiyear-hitter-v1\\manifest.json": "5a88939fd3e0841dc63d004ca2b3d83410fd0662013d7ea8aece58f0ad1db63e",
+    "reports\\generated\\multiyear-hitter-v1\\outer-predictions.parquet": "15534160bc8c17c3328383fd338ec28b8b8124d203cffa38e2f62478ddbe1568",
+    "reports\\generated\\multiyear-hitter-v1\\targets.parquet": "54b7c51af42254ef44e36f6f5035d05334b368f128baa0280e9f98ff92e941e3",
+    "model_artifacts\\multiyear-hitter-followup-v2-2026-09-22\\opportunity-predictions.parquet": "b7664986d516ced103d90ddd264f699fe52dfbfcaacb2489a3c8fd2d751d2882",
+    "model_artifacts\\multiyear-hitter-followup-v2-2026-09-22\\forecast-2026-2028.parquet": "d041e2fc1da59cddf9f4712688ae7304999d329f85590eaa9ac35db1c53096df",
+    "model_artifacts\\hitter-anchored-development-v1-2026-09-22\\historical-anchors.parquet": "513c3c295354f4e8901bbf85439bc8ff2ed33c3381ee551fcc1918d2ac4d0033",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\tables\\people-debut-dates.parquet": "2b623e7fcdcf74803f26f02c1ddc998dd543ef9fdf58c50cfef7934e74612c8d",
+    "reports\\generated\\hitter-roster-feature-challenger-v2\\chronological-predictions.parquet": "c5eea53e19adfc443237805ccebb26f17ea903df15b9dd62da6cf7446a3d8af9",
+    "model_artifacts\\hitter-role-workload-v1-2026-09-22\\predictions.parquet": "5a5deb4f540c9813223806c98706a03e08da921708ff13f3855ebe830b823191",
+    "src\\universal_baseball\\hitter_three_year_opportunity.py": "3274a07b2332fa0cac6fbed266f0aa9f43f721a7696872baaa571dee7b84655d",
+    "src\\universal_baseball\\hitter_model_tournament.py": "4983958cd5da7826bf3c60329756d668ed2a90ed50f5a0c94121ded9b2d860ed",
+    "src\\universal_baseball\\hitter_horizon_consistency.py": "04105b7d12d565d978c4b0047428a9acd06b2200f86d1f28a2304189ba89adfe",
+    "tests\\test_hitter_three_year_opportunity.py": "0405f68fcfc07f5c86a072a6085d634b6fb4fdeca0ebb00f6accadb7573ce805"
+  },
+  "fingerprint": "e6e2bd3375d4407a",
+  "fits": [
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "cold_start": false,
+      "train_rows": 31321,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "last_target": 2016,
+      "evaluation_rows": 4572,
+      "train_players": 10057,
+      "test_train_shared_players": 3603,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "cold_start": false,
+      "train_rows": 26809,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "last_target": 2016,
+      "evaluation_rows": 4572,
+      "train_players": 9145,
+      "test_train_shared_players": 2801,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "cold_start": false,
+      "train_rows": 22293,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "last_target": 2016,
+      "evaluation_rows": 4572,
+      "train_players": 8230,
+      "test_train_shared_players": 2181,
+      "prior_screen_reproduced": false
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "cold_start": false,
+      "train_rows": 35893,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "last_target": 2017,
+      "evaluation_rows": 4580,
+      "train_players": 11026,
+      "test_train_shared_players": 3628,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "cold_start": false,
+      "train_rows": 31321,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "last_target": 2017,
+      "evaluation_rows": 4580,
+      "train_players": 10057,
+      "test_train_shared_players": 2804,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "cold_start": false,
+      "train_rows": 26809,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "last_target": 2017,
+      "evaluation_rows": 4580,
+      "train_players": 9145,
+      "test_train_shared_players": 2217,
+      "prior_screen_reproduced": false
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "cold_start": false,
+      "train_rows": 40473,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "last_target": 2018,
+      "evaluation_rows": 4348,
+      "train_players": 11978,
+      "test_train_shared_players": 3316,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "cold_start": false,
+      "train_rows": 35893,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "last_target": 2018,
+      "evaluation_rows": 4348,
+      "train_players": 11026,
+      "test_train_shared_players": 2527,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "cold_start": false,
+      "train_rows": 31321,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "last_target": 2018,
+      "evaluation_rows": 4348,
+      "train_players": 10057,
+      "test_train_shared_players": 1903,
+      "prior_screen_reproduced": false
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "cold_start": false,
+      "train_rows": 44821,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4752,
+      "train_players": 13010,
+      "test_train_shared_players": 3728,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "cold_start": false,
+      "train_rows": 40473,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4752,
+      "train_players": 11978,
+      "test_train_shared_players": 2799,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "cold_start": false,
+      "train_rows": 35893,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4752,
+      "train_players": 11026,
+      "test_train_shared_players": 2161,
+      "prior_screen_reproduced": false
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "cold_start": false,
+      "train_rows": 44821,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4164,
+      "train_players": 13010,
+      "test_train_shared_players": 2156,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "cold_start": false,
+      "train_rows": 40473,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4164,
+      "train_players": 11978,
+      "test_train_shared_players": 1570,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "cold_start": false,
+      "train_rows": 35893,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4164,
+      "train_players": 11026,
+      "test_train_shared_players": 1188,
+      "prior_screen_reproduced": false
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "cold_start": false,
+      "train_rows": 48985,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "last_target": 2022,
+      "evaluation_rows": 4155,
+      "train_players": 15018,
+      "test_train_shared_players": 3349,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "cold_start": false,
+      "train_rows": 40473,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4155,
+      "train_players": 11978,
+      "test_train_shared_players": 1193,
+      "prior_screen_reproduced": true
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold_start": false,
+      "train_rows": 35893,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4155,
+      "train_players": 11026,
+      "test_train_shared_players": 900,
+      "prior_screen_reproduced": false
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "cold_start": true,
+      "train_rows": 39450,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "last_target": 2022,
+      "evaluation_rows": 4155,
+      "train_players": 11669,
+      "test_train_shared_players": 0,
+      "prior_screen_reproduced": false
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "cold_start": true,
+      "train_rows": 35898,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4155,
+      "train_players": 10785,
+      "test_train_shared_players": 0,
+      "prior_screen_reproduced": false
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold_start": true,
+      "train_rows": 32503,
+      "train_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "last_target": 2019,
+      "evaluation_rows": 4155,
+      "train_players": 10126,
+      "test_train_shared_players": 0,
+      "prior_screen_reproduced": false
+    }
+  ],
+  "calibration": [
+    {
+      "cutoff": 2016,
+      "horizon": 1,
+      "origins": [],
+      "rows": 0,
+      "latest_target": null,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2017,
+      "horizon": 1,
+      "origins": [
+        2016
+      ],
+      "rows": 4572,
+      "latest_target": 2017,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2018,
+      "horizon": 1,
+      "origins": [
+        2016,
+        2017
+      ],
+      "rows": 9152,
+      "latest_target": 2018,
+      "beta": 0.808907256110983,
+      "fallback": false,
+      "unconstrained_slope": 0.8177458406401678
+    },
+    {
+      "cutoff": 2019,
+      "horizon": 1,
+      "origins": [
+        2016,
+        2017,
+        2018
+      ],
+      "rows": 13500,
+      "latest_target": 2019,
+      "beta": 0.709994297629834,
+      "fallback": false,
+      "unconstrained_slope": 0.7152535146493143
+    },
+    {
+      "cutoff": 2021,
+      "horizon": 1,
+      "origins": [
+        2016,
+        2017,
+        2018
+      ],
+      "rows": 13500,
+      "latest_target": 2019,
+      "beta": 0.709994297629834,
+      "fallback": false,
+      "unconstrained_slope": 0.7152535146493143
+    },
+    {
+      "cutoff": 2022,
+      "horizon": 1,
+      "origins": [
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "rows": 17664,
+      "latest_target": 2022,
+      "beta": 0.6733477341126838,
+      "fallback": false,
+      "unconstrained_slope": 0.6771597117741007
+    },
+    {
+      "cutoff": 2016,
+      "horizon": 2,
+      "origins": [],
+      "rows": 0,
+      "latest_target": null,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2017,
+      "horizon": 2,
+      "origins": [],
+      "rows": 0,
+      "latest_target": null,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2018,
+      "horizon": 2,
+      "origins": [
+        2016
+      ],
+      "rows": 4572,
+      "latest_target": 2018,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2019,
+      "horizon": 2,
+      "origins": [
+        2016,
+        2017
+      ],
+      "rows": 9152,
+      "latest_target": 2019,
+      "beta": 0.0,
+      "fallback": false,
+      "unconstrained_slope": -0.09569180716203649
+    },
+    {
+      "cutoff": 2021,
+      "horizon": 2,
+      "origins": [
+        2016,
+        2017
+      ],
+      "rows": 9152,
+      "latest_target": 2019,
+      "beta": 0.0,
+      "fallback": false,
+      "unconstrained_slope": -0.09569180716203649
+    },
+    {
+      "cutoff": 2022,
+      "horizon": 2,
+      "origins": [
+        2016,
+        2017
+      ],
+      "rows": 9152,
+      "latest_target": 2019,
+      "beta": 0.0,
+      "fallback": false,
+      "unconstrained_slope": -0.09569180716203649
+    },
+    {
+      "cutoff": 2016,
+      "horizon": 3,
+      "origins": [],
+      "rows": 0,
+      "latest_target": null,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2017,
+      "horizon": 3,
+      "origins": [],
+      "rows": 0,
+      "latest_target": null,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2018,
+      "horizon": 3,
+      "origins": [],
+      "rows": 0,
+      "latest_target": null,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2019,
+      "horizon": 3,
+      "origins": [
+        2016
+      ],
+      "rows": 4572,
+      "latest_target": 2019,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2021,
+      "horizon": 3,
+      "origins": [
+        2016
+      ],
+      "rows": 4572,
+      "latest_target": 2019,
+      "beta": 0.0,
+      "fallback": true
+    },
+    {
+      "cutoff": 2022,
+      "horizon": 3,
+      "origins": [
+        2016
+      ],
+      "rows": 4572,
+      "latest_target": 2019,
+      "beta": 0.0,
+      "fallback": true
+    }
+  ],
+  "versions": {
+    "numpy": "2.5.3",
+    "polars": "1.44.2",
+    "scikit-learn": "1.7.2",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1",
+    "interpret": "0.7.8"
+  },
+  "files": {
+    "predictions.parquet": "aeaa1ac2c1d0c118123d8f76fe6a8b848331708081baf5a00ec323e6b90f3398",
+    "cold-start.parquet": "9c7bd2a5ae38796477ef93bb8d2b0b278c27ae6c9182b19bba3daaee9b805597"
+  },
+  "protected_outcomes_used": false,
+  "forecasts_changed": false
+}

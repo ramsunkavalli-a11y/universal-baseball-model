@@ -4,7 +4,26 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest: the [literature-informed role/workload screen](hitter-role-workload-v1-result.md)
+Latest: the [Years 1–3 confirmation](hitter-three-year-opportunity-confirmation-v1-result.md)
+is complete. Candidate PA beats delivered PA in each year (RMSE 62.63 / 79.40 /
+90.58 versus 69.26 / 86.39 / 98.34), but the same-input five-model ensemble is
+better still (62.33 / 78.85 / 89.63). The single candidate fails that confirmation
+gate. Connecting candidate PA to independently forecast hitting rate improves
+three-year batting/replacement RMSE 1.216 to 1.147, but young upper-minors Year-1
+value MSE worsens 8.5%, failing the predeclared 5% guard. The learned correction
+also fails; no forecast or explorer change. No full-WAR improvement is claimed.
+
+The prospective minor-league cohort includes non-arrivals. Its future opportunity
+grows, but candidate three-year PA averages 21.60 versus 31.09 actual; cumulative
+arrival is 7.2% versus 9.6% actual. Upper-minors arrival is a particular gap.
+Next predeclare earlier-fold-only prospect arrival calibration and joint
+opportunity/performance integration against the stronger ensemble and delivered
+value. Evaluate collective opportunity as well as individual error; do not apply
+a blanket PA uplift. Only three normal Year-3 origins support this development
+test. The original 2026 and current multi-year v2 packages remain unchanged.
+This checkpoint supersedes the prior confirmation next step below.
+
+Previous: the [literature-informed role/workload screen](hitter-role-workload-v1-result.md)
 is complete. A fixed 77-feature LightGBM hurdle improves normal-season PA RMSE
 69.30→62.88 next year and 86.65→79.22 in Year 2 versus the current multi-year PA
 model, with fixed-rate batting/replacement value gains and better top-player PA.
