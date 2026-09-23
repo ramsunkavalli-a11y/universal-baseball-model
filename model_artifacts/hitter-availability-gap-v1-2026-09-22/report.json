@@ -1,0 +1,1251 @@
+{
+  "eligible_for_further_validation": false,
+  "gates": {
+    "paired_pa": false,
+    "majority_origins": false,
+    "ordinary_mae": true,
+    "regular_pair": false,
+    "regular_mae": false,
+    "ordinary_value": true,
+    "supported_group_value": true,
+    "calendar_stress": true
+  },
+  "scores": {
+    "all": {
+      "overall": {
+        "rows": 17164,
+        "origins": 4,
+        "E": {
+          "pa_mse": 6509.875438602656,
+          "pa_rmse": 80.68379910863553,
+          "pa_mae": 31.374193140288856,
+          "pa_bias": 1.8840703936914214,
+          "fixed_rate_value_mse": 0.23987319240340632
+        },
+        "T": {
+          "pa_mse": 6487.901230940192,
+          "pa_rmse": 80.54750915416436,
+          "pa_mae": 31.176502024079483,
+          "pa_bias": 2.0286228244457014,
+          "fixed_rate_value_mse": 0.23852502423657232
+        },
+        "P": {
+          "pa_mse": 6492.935956586992,
+          "pa_rmse": 80.57875623628719,
+          "pa_mae": 31.165775531753482,
+          "pa_bias": 2.070253483445529,
+          "fixed_rate_value_mse": 0.23875578746130416
+        }
+      },
+      "Current MLB": {
+        "rows": 2635,
+        "origins": 4,
+        "E": {
+          "pa_mse": 28069.97756744904,
+          "pa_rmse": 167.54097280202546,
+          "pa_mae": 129.3607334052839,
+          "pa_bias": 7.8443896672951,
+          "fixed_rate_value_mse": 1.2765930472392162
+        },
+        "T": {
+          "pa_mse": 27977.117219143573,
+          "pa_rmse": 167.26361594543977,
+          "pa_mae": 128.3838811006703,
+          "pa_bias": 9.10282431355658,
+          "fixed_rate_value_mse": 1.2683924337633892
+        },
+        "P": {
+          "pa_mse": 28037.929066814053,
+          "pa_rmse": 167.44530171615463,
+          "pa_mae": 128.38557779330384,
+          "pa_bias": 9.497788176805019,
+          "fixed_rate_value_mse": 1.2696978758794573
+        }
+      },
+      "Inactive / unknown": {
+        "rows": 989,
+        "origins": 4,
+        "E": {
+          "pa_mse": 889.0904497665599,
+          "pa_rmse": 29.81761978707489,
+          "pa_mae": 4.568470448302157,
+          "pa_bias": -0.6335783513845875,
+          "fixed_rate_value_mse": 0.02621866766147217
+        },
+        "T": {
+          "pa_mse": 890.9861971010492,
+          "pa_rmse": 29.849391905046396,
+          "pa_mae": 4.587365591185765,
+          "pa_bias": -0.601567446730958,
+          "fixed_rate_value_mse": 0.02617336789050432
+        },
+        "P": {
+          "pa_mse": 871.3188994740017,
+          "pa_rmse": 29.51811138054062,
+          "pa_mae": 4.479988867733903,
+          "pa_bias": -0.5489517898069309,
+          "fixed_rate_value_mse": 0.025720297977599206
+        }
+      },
+      "Lower minors": {
+        "rows": 9463,
+        "origins": 4,
+        "E": {
+          "pa_mse": 879.2783241777015,
+          "pa_rmse": 29.652627610006192,
+          "pa_mae": 5.3865581042377375,
+          "pa_bias": 0.7569617784484594,
+          "fixed_rate_value_mse": 0.016082156817978945
+        },
+        "T": {
+          "pa_mse": 870.2517727770739,
+          "pa_rmse": 29.500030047053748,
+          "pa_mae": 5.353801382588479,
+          "pa_bias": 0.7381624018881765,
+          "fixed_rate_value_mse": 0.01595643793353905
+        },
+        "P": {
+          "pa_mse": 873.9325854720871,
+          "pa_rmse": 29.56235081099078,
+          "pa_mae": 5.3752402854104355,
+          "pa_bias": 0.7565646567118143,
+          "fixed_rate_value_mse": 0.01605091757827599
+        }
+      },
+      "Upper minors": {
+        "rows": 4077,
+        "origins": 4,
+        "E": {
+          "pa_mse": 6983.021130171712,
+          "pa_rmse": 83.56447289471592,
+          "pa_mae": 34.74130627694008,
+          "pa_bias": 1.0213285933196334,
+          "fixed_rate_value_mse": 0.14480058533781553
+        },
+        "T": {
+          "pa_mse": 6982.136410973543,
+          "pa_rmse": 83.55917909466046,
+          "pa_mae": 34.65032644965449,
+          "pa_bias": 0.8990929072683558,
+          "fixed_rate_value_mse": 0.14449345527939073
+        },
+        "P": {
+          "pa_mse": 6953.962396175759,
+          "pa_rmse": 83.39042148937585,
+          "pa_mae": 34.56103127884012,
+          "pa_bias": 0.7600449494130586,
+          "fixed_rate_value_mse": 0.14434835431752902
+        }
+      },
+      "MLB under26": {
+        "rows": 771,
+        "origins": 4,
+        "E": {
+          "pa_mse": 36849.097336470164,
+          "pa_rmse": 191.96118705735844,
+          "pa_mae": 156.11402414399464,
+          "pa_bias": 17.28160617273339,
+          "fixed_rate_value_mse": 1.732193232636738
+        },
+        "T": {
+          "pa_mse": 36924.574142526486,
+          "pa_rmse": 192.15768041513846,
+          "pa_mae": 155.97297056673554,
+          "pa_bias": 16.2463445764859,
+          "fixed_rate_value_mse": 1.7204740261525975
+        },
+        "P": {
+          "pa_mse": 36860.847092779506,
+          "pa_rmse": 191.99178912854453,
+          "pa_mae": 155.6890068023067,
+          "pa_bias": 16.580496333463564,
+          "fixed_rate_value_mse": 1.719143272844296
+        }
+      },
+      "MLB 26to29": {
+        "rows": 1090,
+        "origins": 4,
+        "E": {
+          "pa_mse": 25467.63418875203,
+          "pa_rmse": 159.5858207634752,
+          "pa_mae": 123.36003981913657,
+          "pa_bias": 9.744688038921801,
+          "fixed_rate_value_mse": 1.1846335607749527
+        },
+        "T": {
+          "pa_mse": 25448.335227198582,
+          "pa_rmse": 159.52534352634564,
+          "pa_mae": 122.3408913440636,
+          "pa_bias": 12.161266284535044,
+          "fixed_rate_value_mse": 1.1684963494203946
+        },
+        "P": {
+          "pa_mse": 25634.11942056932,
+          "pa_rmse": 160.1065876863576,
+          "pa_mae": 122.56066929208006,
+          "pa_bias": 12.587793919757958,
+          "fixed_rate_value_mse": 1.1718040113931685
+        }
+      },
+      "MLB 30plus": {
+        "rows": 774,
+        "origins": 4,
+        "E": {
+          "pa_mse": 23073.304136528986,
+          "pa_rmse": 151.89899320446133,
+          "pa_mae": 111.25584095400079,
+          "pa_bias": -6.041252572941041,
+          "fixed_rate_value_mse": 0.9269092478436508
+        },
+        "T": {
+          "pa_mse": 22685.824477574348,
+          "pa_rmse": 150.61814126317702,
+          "pa_mae": 109.49372931417125,
+          "pa_bias": -4.39786458124132,
+          "fixed_rate_value_mse": 0.9324817736469202
+        },
+        "P": {
+          "pa_mse": 22716.14925907947,
+          "pa_rmse": 150.7187754033301,
+          "pa_mae": 109.5107392622474,
+          "pa_bias": -4.018302017763673,
+          "fixed_rate_value_mse": 0.9333699724010011
+        }
+      },
+      "Top50": {
+        "rows": 200,
+        "origins": 4,
+        "E": {
+          "pa_mse": 32516.40871869546,
+          "pa_rmse": 180.32306762778705,
+          "pa_mae": 145.76595315870057,
+          "pa_bias": -56.151008654323164,
+          "fixed_rate_value_mse": 4.20501493576146
+        },
+        "T": {
+          "pa_mse": 30822.575371499785,
+          "pa_rmse": 175.56359352525166,
+          "pa_mae": 138.1161553388658,
+          "pa_bias": -44.326534522567364,
+          "fixed_rate_value_mse": 4.110219115745222
+        },
+        "P": {
+          "pa_mse": 30759.448237476106,
+          "pa_rmse": 175.3837171389525,
+          "pa_mae": 137.19328696604578,
+          "pa_bias": -43.591514159749366,
+          "fixed_rate_value_mse": 4.11749885344574
+        }
+      },
+      "Top50 under26": {
+        "rows": 57,
+        "origins": 4,
+        "E": {
+          "pa_mse": 30159.73750546598,
+          "pa_rmse": 173.6655910232824,
+          "pa_mae": 140.03234065268265,
+          "pa_bias": -7.083482564545975,
+          "fixed_rate_value_mse": 4.3831833345911555
+        },
+        "T": {
+          "pa_mse": 28426.042924936406,
+          "pa_rmse": 168.60024592193335,
+          "pa_mae": 134.6165317204138,
+          "pa_bias": 4.4317498860559335,
+          "fixed_rate_value_mse": 4.344376796750853
+        },
+        "P": {
+          "pa_mse": 27427.66806953097,
+          "pa_rmse": 165.61300694550224,
+          "pa_mae": 131.01560185605422,
+          "pa_bias": 9.507471061554305,
+          "fixed_rate_value_mse": 4.329998253170469
+        }
+      },
+      "measured_regular": {
+        "rows": 856,
+        "origins": 4,
+        "E": {
+          "pa_mse": 34257.719230116534,
+          "pa_rmse": 185.08840922682472,
+          "pa_mae": 149.88653961588574,
+          "pa_bias": -17.52767117295989,
+          "fixed_rate_value_mse": 2.034321225764472
+        },
+        "T": {
+          "pa_mse": 34527.01447693055,
+          "pa_rmse": 185.81446250744463,
+          "pa_mae": 148.1166794638812,
+          "pa_bias": -4.402255594709303,
+          "fixed_rate_value_mse": 2.0226312216879028
+        },
+        "P": {
+          "pa_mse": 34892.686975680794,
+          "pa_rmse": 186.79584303640377,
+          "pa_mae": 148.6811247543281,
+          "pa_bias": -3.0955592819271867,
+          "fixed_rate_value_mse": 2.0299128083624294
+        }
+      }
+    },
+    "ordinary": {
+      "overall": {
+        "rows": 12412,
+        "origins": 3,
+        "E": {
+          "pa_mse": 7051.385242321031,
+          "pa_rmse": 83.97252671154436,
+          "pa_mae": 33.50497819511806,
+          "pa_bias": 1.5780660244854294,
+          "fixed_rate_value_mse": 0.2420081955996316
+        },
+        "T": {
+          "pa_mse": 7009.634920126159,
+          "pa_rmse": 83.72356251454043,
+          "pa_mae": 33.2251224597932,
+          "pa_bias": 1.6699947844349987,
+          "fixed_rate_value_mse": 0.2411869868426124
+        },
+        "P": {
+          "pa_mse": 7018.659888852882,
+          "pa_rmse": 83.77744260153136,
+          "pa_mae": 33.2139689454631,
+          "pa_bias": 1.7282681507128412,
+          "fixed_rate_value_mse": 0.24162397807368788
+        }
+      },
+      "Current MLB": {
+        "rows": 1999,
+        "origins": 3,
+        "E": {
+          "pa_mse": 28194.051160288032,
+          "pa_rmse": 167.91084289076758,
+          "pa_mae": 129.97175753163398,
+          "pa_bias": 8.266192566044234,
+          "fixed_rate_value_mse": 1.1916654096256059
+        },
+        "T": {
+          "pa_mse": 27981.46974828602,
+          "pa_rmse": 167.27662642546932,
+          "pa_mae": 128.61893164678406,
+          "pa_bias": 9.234535072444949,
+          "fixed_rate_value_mse": 1.1878024196924502
+        },
+        "P": {
+          "pa_mse": 28074.532694504873,
+          "pa_rmse": 167.55456631946763,
+          "pa_mae": 128.6383641386467,
+          "pa_bias": 9.77642921603841,
+          "fixed_rate_value_mse": 1.1903089878876019
+        }
+      },
+      "Inactive / unknown": {
+        "rows": 418,
+        "origins": 3,
+        "E": {
+          "pa_mse": 980.2750839834929,
+          "pa_rmse": 31.309344994481965,
+          "pa_mae": 5.172497393917356,
+          "pa_bias": -1.0352218944793479,
+          "fixed_rate_value_mse": 0.024253151785344058
+        },
+        "T": {
+          "pa_mse": 984.1568207884411,
+          "pa_rmse": 31.371273815202997,
+          "pa_mae": 5.19315190781971,
+          "pa_bias": -0.9988921824013991,
+          "fixed_rate_value_mse": 0.02423486021637908
+        },
+        "P": {
+          "pa_mse": 963.7735699036435,
+          "pa_rmse": 31.044702767197556,
+          "pa_mae": 5.054629456288331,
+          "pa_bias": -0.9342926598011873,
+          "fixed_rate_value_mse": 0.023803490771086417
+        }
+      },
+      "Lower minors": {
+        "rows": 7116,
+        "origins": 3,
+        "E": {
+          "pa_mse": 1081.3168299873744,
+          "pa_rmse": 32.88338227718332,
+          "pa_mae": 6.054478328636697,
+          "pa_bias": 0.3723309022831313,
+          "fixed_rate_value_mse": 0.019829637682837676
+        },
+        "T": {
+          "pa_mse": 1069.9206188259475,
+          "pa_rmse": 32.7096410684365,
+          "pa_mae": 6.008556077721529,
+          "pa_bias": 0.3435899722819535,
+          "fixed_rate_value_mse": 0.019677461157554785
+        },
+        "P": {
+          "pa_mse": 1074.3697550415911,
+          "pa_rmse": 32.77758006689315,
+          "pa_mae": 6.035242939509357,
+          "pa_bias": 0.36650652306661474,
+          "fixed_rate_value_mse": 0.01979170448326652
+        }
+      },
+      "Upper minors": {
+        "rows": 2879,
+        "origins": 3,
+        "E": {
+          "pa_mse": 8028.890018629725,
+          "pa_rmse": 89.60407367206987,
+          "pa_mae": 38.50516473833292,
+          "pa_bias": 0.15969815312495741,
+          "fixed_rate_value_mse": 0.16363252866637648
+        },
+        "T": {
+          "pa_mse": 8023.548368561479,
+          "pa_rmse": 89.57426175281311,
+          "pa_mae": 38.35262922275209,
+          "pa_bias": -0.016220856665710492,
+          "fixed_rate_value_mse": 0.1632915103450748
+        },
+        "P": {
+          "pa_mse": 7986.908622240636,
+          "pa_rmse": 89.36950610941427,
+          "pa_mae": 38.238446737454304,
+          "pa_bias": -0.1929359696642757,
+          "fixed_rate_value_mse": 0.1631449606120089
+        }
+      },
+      "MLB under26": {
+        "rows": 569,
+        "origins": 3,
+        "E": {
+          "pa_mse": 38585.30193377149,
+          "pa_rmse": 196.43141788871628,
+          "pa_mae": 159.90422082684776,
+          "pa_bias": 15.568821758763148,
+          "fixed_rate_value_mse": 1.5796708667410273
+        },
+        "T": {
+          "pa_mse": 38191.024838733465,
+          "pa_rmse": 195.4252410481652,
+          "pa_mae": 158.88683158287122,
+          "pa_bias": 13.135855066633694,
+          "fixed_rate_value_mse": 1.5566350601703933
+        },
+        "P": {
+          "pa_mse": 38152.5713908434,
+          "pa_rmse": 195.32683223470195,
+          "pa_mae": 158.63228562567994,
+          "pa_bias": 13.517600618285845,
+          "fixed_rate_value_mse": 1.5566686389821303
+        }
+      },
+      "MLB 26to29": {
+        "rows": 831,
+        "origins": 3,
+        "E": {
+          "pa_mse": 25498.995741606836,
+          "pa_rmse": 159.68404974075162,
+          "pa_mae": 124.6270426906802,
+          "pa_bias": 12.159490665863077,
+          "fixed_rate_value_mse": 1.1029428490493347
+        },
+        "T": {
+          "pa_mse": 25526.64000272965,
+          "pa_rmse": 159.7705855366677,
+          "pa_mae": 123.26646017782677,
+          "pa_bias": 14.755224811445622,
+          "fixed_rate_value_mse": 1.101703365771148
+        },
+        "P": {
+          "pa_mse": 25759.401250177107,
+          "pa_rmse": 160.49735589777518,
+          "pa_mae": 123.50497395692655,
+          "pa_bias": 15.42129008160802,
+          "fixed_rate_value_mse": 1.107248260751464
+        }
+      },
+      "MLB 30plus": {
+        "rows": 599,
+        "origins": 3,
+        "E": {
+          "pa_mse": 21902.222061200893,
+          "pa_rmse": 147.99399332811078,
+          "pa_mae": 108.5246838559255,
+          "pa_bias": -6.165151116075385,
+          "fixed_rate_value_mse": 0.9285842378220672
+        },
+        "T": {
+          "pa_mse": 21555.249669859495,
+          "pa_rmse": 146.81706191672512,
+          "pa_mae": 106.95200520925609,
+          "pa_bias": -4.410698862145243,
+          "fixed_rate_value_mse": 0.940256716753075
+        },
+        "P": {
+          "pa_mse": 21607.65800558652,
+          "pa_rmse": 146.99543532227972,
+          "pa_mae": 106.97456644402071,
+          "pa_bias": -3.9195627043963768,
+          "fixed_rate_value_mse": 0.940458590033069
+        }
+      },
+      "Top50": {
+        "rows": 150,
+        "origins": 3,
+        "E": {
+          "pa_mse": 31217.34446828775,
+          "pa_rmse": 176.6843073628435,
+          "pa_mae": 146.77678866468912,
+          "pa_bias": -81.72519085947825,
+          "fixed_rate_value_mse": 3.797651823756357
+        },
+        "T": {
+          "pa_mse": 28853.53743392638,
+          "pa_rmse": 169.86329042476004,
+          "pa_mae": 135.64829783662063,
+          "pa_bias": -67.5416030036979,
+          "fixed_rate_value_mse": 3.7078372416757825
+        },
+        "P": {
+          "pa_mse": 28979.598236749996,
+          "pa_rmse": 170.23395148074897,
+          "pa_mae": 134.61843196248284,
+          "pa_bias": -65.79789349708328,
+          "fixed_rate_value_mse": 3.7335909997509416
+        }
+      },
+      "Top50 under26": {
+        "rows": 42,
+        "origins": 3,
+        "E": {
+          "pa_mse": 26988.629535798216,
+          "pa_rmse": 164.28216438736803,
+          "pa_mae": 130.84314648128745,
+          "pa_bias": -25.384024214905107,
+          "fixed_rate_value_mse": 3.3428476930972106
+        },
+        "T": {
+          "pa_mse": 24334.88611027639,
+          "pa_rmse": 155.99642979977583,
+          "pa_mae": 122.86344749625111,
+          "pa_bias": -14.907594551277908,
+          "fixed_rate_value_mse": 3.2145593032879494
+        },
+        "P": {
+          "pa_mse": 23216.136002412077,
+          "pa_rmse": 152.36842193319478,
+          "pa_mae": 118.61035626989803,
+          "pa_bias": -7.986462866368917,
+          "fixed_rate_value_mse": 3.212836531149055
+        }
+      },
+      "measured_regular": {
+        "rows": 637,
+        "origins": 3,
+        "E": {
+          "pa_mse": 32892.32265704969,
+          "pa_rmse": 181.36240695648505,
+          "pa_mae": 149.06730287863846,
+          "pa_bias": -22.859231967968338,
+          "fixed_rate_value_mse": 1.8373501467740725
+        },
+        "T": {
+          "pa_mse": 33092.20591826512,
+          "pa_rmse": 181.91263265168013,
+          "pa_mae": 146.64423734873387,
+          "pa_bias": -9.05728225785877,
+          "fixed_rate_value_mse": 1.8396081100481236
+        },
+        "P": {
+          "pa_mse": 33622.93706376801,
+          "pa_rmse": 183.36558309499634,
+          "pa_mae": 147.43217015901723,
+          "pa_bias": -7.252659323758587,
+          "fixed_rate_value_mse": 1.8519401235357786
+        }
+      }
+    }
+  },
+  "ordinary_paired": {
+    "E": {
+      "candidate": 7018.659888852882,
+      "baseline": 7051.385242321031,
+      "delta": -32.72535346814848,
+      "interval95": [
+        -117.49132928167947,
+        62.78244317395787
+      ],
+      "folds": [
+        {
+          "origin": 2021,
+          "candidate": 7431.146724937515,
+          "baseline": 7442.794717827998,
+          "delta": -11.64799289048209
+        },
+        {
+          "origin": 2022,
+          "candidate": 6857.106860821975,
+          "baseline": 6799.267728924921,
+          "delta": 57.83913189705308
+        },
+        {
+          "origin": 2023,
+          "candidate": 6767.726080799158,
+          "baseline": 6912.093280210174,
+          "delta": -144.36719941101643
+        }
+      ],
+      "improving_origins": 2
+    },
+    "T": {
+      "candidate": 7018.659888852882,
+      "baseline": 7009.634920126159,
+      "delta": 9.024968726723204,
+      "interval95": [
+        -22.525152089792243,
+        39.04236926546382
+      ],
+      "folds": [
+        {
+          "origin": 2021,
+          "candidate": 7431.146724937515,
+          "baseline": 7448.972873559313,
+          "delta": -17.82614862179729
+        },
+        {
+          "origin": 2022,
+          "candidate": 6857.106860821975,
+          "baseline": 6836.465011995276,
+          "delta": 20.641848826699512
+        },
+        {
+          "origin": 2023,
+          "candidate": 6767.726080799158,
+          "baseline": 6743.466874823891,
+          "delta": 24.259205975267392
+        }
+      ],
+      "improving_origins": 1
+    }
+  },
+  "regular_paired": {
+    "candidate": 33622.93706376801,
+    "baseline": 33092.20591826512,
+    "delta": 530.7311455028938,
+    "interval95": [
+      82.9400046160633,
+      966.4594369897311
+    ],
+    "folds": [
+      {
+        "origin": 2021,
+        "candidate": 36148.99067643706,
+        "baseline": 36494.06758598789,
+        "delta": -345.07690955083604
+      },
+      {
+        "origin": 2022,
+        "candidate": 33546.87507956544,
+        "baseline": 32477.576316743733,
+        "delta": 1069.2987628217088
+      },
+      {
+        "origin": 2023,
+        "candidate": 31172.94543530154,
+        "baseline": 30304.97385206373,
+        "delta": 867.9715832378084
+      }
+    ],
+    "improving_origins": 1
+  },
+  "per_origin": {
+    "2019": {
+      "E": {
+        "pa_mse": 4885.346027447529,
+        "pa_rmse": 69.89525039262345,
+        "pa_mae": 24.981837975801234,
+        "pa_bias": 2.802083501309397,
+        "fixed_rate_value_mse": 0.23346818281473042
+      },
+      "T": {
+        "pa_mse": 4922.700163382292,
+        "pa_rmse": 70.16195666728724,
+        "pa_mae": 25.03064071693835,
+        "pa_bias": 3.1045069444778104,
+        "fixed_rate_value_mse": 0.23053913641845208
+      },
+      "P": {
+        "pa_mse": 4915.764159789318,
+        "pa_rmse": 70.11251072233341,
+        "pa_mae": 25.02119529062464,
+        "pa_bias": 3.096209481643591,
+        "fixed_rate_value_mse": 0.230151215624153
+      }
+    },
+    "2021": {
+      "E": {
+        "pa_mse": 7442.794717827998,
+        "pa_rmse": 86.27163333233003,
+        "pa_mae": 30.966152638901228,
+        "pa_bias": -10.68072753870308,
+        "fixed_rate_value_mse": 0.23736244133998063
+      },
+      "T": {
+        "pa_mse": 7448.972873559313,
+        "pa_rmse": 86.30743231935077,
+        "pa_mae": 30.808889220735438,
+        "pa_bias": -8.30029741956955,
+        "fixed_rate_value_mse": 0.24064981550626355
+      },
+      "P": {
+        "pa_mse": 7431.146724937515,
+        "pa_rmse": 86.20409923511477,
+        "pa_mae": 30.705742666259805,
+        "pa_bias": -7.753415538917722,
+        "fixed_rate_value_mse": 0.24053579326538038
+      }
+    },
+    "2022": {
+      "E": {
+        "pa_mse": 6799.267728924921,
+        "pa_rmse": 82.4576723472408,
+        "pa_mae": 34.331985385924746,
+        "pa_bias": 5.845699131298217,
+        "fixed_rate_value_mse": 0.24207768906762817
+      },
+      "T": {
+        "pa_mse": 6836.465011995276,
+        "pa_rmse": 82.6829185019208,
+        "pa_mae": 34.21472753419923,
+        "pa_bias": 6.093359456279112,
+        "fixed_rate_value_mse": 0.24012860644976453
+      },
+      "P": {
+        "pa_mse": 6857.106860821975,
+        "pa_rmse": 82.80764977236086,
+        "pa_mae": 34.28676611277569,
+        "pa_bias": 6.045952171441266,
+        "fixed_rate_value_mse": 0.24151049982401168
+      }
+    },
+    "2023": {
+      "E": {
+        "pa_mse": 6912.093280210174,
+        "pa_rmse": 83.13899975468898,
+        "pa_mae": 35.21679656052821,
+        "pa_bias": 9.56922648086115,
+        "fixed_rate_value_mse": 0.24658445639128598
+      },
+      "T": {
+        "pa_mse": 6743.466874823891,
+        "pa_rmse": 82.11861466697968,
+        "pa_mae": 34.65175062444492,
+        "pa_bias": 7.216922316595434,
+        "fixed_rate_value_mse": 0.24278253857180906
+      },
+      "P": {
+        "pa_mse": 6767.726080799158,
+        "pa_rmse": 82.26619038705486,
+        "pa_mae": 34.64939805735381,
+        "pa_bias": 6.89226781961498,
+        "fixed_rate_value_mse": 0.24282564113167163
+      }
+    }
+  },
+  "direct_reference_value_mse": 0.2511537726689105,
+  "fit_support": [
+    {
+      "origin": 2019,
+      "form": "E",
+      "train_rows": 1255,
+      "train_origins": [
+        2016,
+        2017
+      ],
+      "latest_target": 2019,
+      "feature_count": 81,
+      "iterations": 128,
+      "clipped": 6
+    },
+    {
+      "origin": 2019,
+      "form": "T",
+      "train_rows": 1255,
+      "train_origins": [
+        2016,
+        2017
+      ],
+      "latest_target": 2019,
+      "feature_count": 97,
+      "iterations": 196,
+      "clipped": 7
+    },
+    {
+      "origin": 2019,
+      "form": "P",
+      "train_rows": 1255,
+      "train_origins": [
+        2016,
+        2017
+      ],
+      "latest_target": 2019,
+      "feature_count": 100,
+      "iterations": 171,
+      "clipped": 5
+    },
+    {
+      "origin": 2021,
+      "form": "E",
+      "train_rows": 2483,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "latest_target": 2021,
+      "feature_count": 81,
+      "iterations": 125,
+      "clipped": 2
+    },
+    {
+      "origin": 2021,
+      "form": "T",
+      "train_rows": 2483,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "latest_target": 2021,
+      "feature_count": 97,
+      "iterations": 185,
+      "clipped": 4
+    },
+    {
+      "origin": 2021,
+      "form": "P",
+      "train_rows": 2483,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "latest_target": 2021,
+      "feature_count": 100,
+      "iterations": 203,
+      "clipped": 5
+    },
+    {
+      "origin": 2022,
+      "form": "E",
+      "train_rows": 2483,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "latest_target": 2021,
+      "feature_count": 81,
+      "iterations": 125,
+      "clipped": 0
+    },
+    {
+      "origin": 2022,
+      "form": "T",
+      "train_rows": 2483,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "latest_target": 2021,
+      "feature_count": 97,
+      "iterations": 185,
+      "clipped": 0
+    },
+    {
+      "origin": 2022,
+      "form": "P",
+      "train_rows": 2483,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "latest_target": 2021,
+      "feature_count": 100,
+      "iterations": 203,
+      "clipped": 0
+    },
+    {
+      "origin": 2023,
+      "form": "E",
+      "train_rows": 3127,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2021
+      ],
+      "latest_target": 2023,
+      "feature_count": 81,
+      "iterations": 126,
+      "clipped": 5
+    },
+    {
+      "origin": 2023,
+      "form": "T",
+      "train_rows": 3127,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2021
+      ],
+      "latest_target": 2023,
+      "feature_count": 97,
+      "iterations": 176,
+      "clipped": 3
+    },
+    {
+      "origin": 2023,
+      "form": "P",
+      "train_rows": 3127,
+      "train_origins": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2021
+      ],
+      "latest_target": 2023,
+      "feature_count": 100,
+      "iterations": 181,
+      "clipped": 4
+    }
+  ],
+  "feature_support": [
+    {
+      "origin_year": 2016,
+      "rows": 4572,
+      "measured_regulars": 218.0,
+      "unknown_prior_position": 3979
+    },
+    {
+      "origin_year": 2017,
+      "rows": 4580,
+      "measured_regulars": 205.0,
+      "unknown_prior_position": 3998
+    },
+    {
+      "origin_year": 2018,
+      "rows": 4348,
+      "measured_regulars": 233.0,
+      "unknown_prior_position": 3768
+    },
+    {
+      "origin_year": 2019,
+      "rows": 4752,
+      "measured_regulars": 219.0,
+      "unknown_prior_position": 4164
+    },
+    {
+      "origin_year": 2021,
+      "rows": 4164,
+      "measured_regulars": 219.0,
+      "unknown_prior_position": 3620
+    },
+    {
+      "origin_year": 2022,
+      "rows": 4155,
+      "measured_regulars": 198.0,
+      "unknown_prior_position": 3560
+    },
+    {
+      "origin_year": 2023,
+      "rows": 4093,
+      "measured_regulars": 220.0,
+      "unknown_prior_position": 3466
+    }
+  ],
+  "budget_audit": {
+    "scope": "Partial batting-plus-replacement only; not full WAR",
+    "league_pa_bf_verified_seasons": 17,
+    "current_budget_years": [
+      2023,
+      2024,
+      2025
+    ],
+    "current": [
+      {
+        "season": 2026,
+        "named_player_pa": 184723.7894519637,
+        "league_pa_budget": 182926.0,
+        "unallocated_pa": 0.0,
+        "pa_excess": 1797.7894519637048,
+        "named_player_partial_value": 523.8460775293703,
+        "partial_value_budget": 570.0,
+        "signed_value_gap_not_pure_outsider_value": 46.15392247062971
+      },
+      {
+        "season": 2027,
+        "named_player_pa": 189695.09119695262,
+        "league_pa_budget": 182926.0,
+        "unallocated_pa": 0.0,
+        "pa_excess": 6769.0911969526205,
+        "named_player_partial_value": 601.1399995140351,
+        "partial_value_budget": 570.0,
+        "signed_value_gap_not_pure_outsider_value": -31.13999951403514
+      },
+      {
+        "season": 2028,
+        "named_player_pa": 191607.01086551914,
+        "league_pa_budget": 182926.0,
+        "unallocated_pa": 0.0,
+        "pa_excess": 8681.010865519143,
+        "named_player_partial_value": 615.4437791843723,
+        "partial_value_budget": 570.0,
+        "signed_value_gap_not_pure_outsider_value": -45.44377918437226
+      }
+    ],
+    "current_by_cutoff_stage": [
+      {
+        "stage": "Current MLB",
+        "players": 667,
+        "expected_pa_h1": 171801.4850811773,
+        "expected_pa_h2": 157923.3263969993,
+        "expected_pa_h3": 140390.04171029673,
+        "value_2026": 507.32328744619883,
+        "value_2027": 500.42908797741455,
+        "value_2028": 436.7468611193942
+      },
+      {
+        "stage": "Inactive / unknown",
+        "players": 187,
+        "expected_pa_h1": 324.0557253391173,
+        "expected_pa_h2": 600.9827042896327,
+        "expected_pa_h3": 1113.0212862632566,
+        "value_2026": 1.8724653030935312,
+        "value_2027": -0.3263746308139979,
+        "value_2028": 0.7787677778479062
+      },
+      {
+        "stage": "Lower minors",
+        "players": 2132,
+        "expected_pa_h1": 1032.5473183824274,
+        "expected_pa_h2": 8470.919599135279,
+        "expected_pa_h3": 22056.994975834907,
+        "value_2026": 1.6094950999806794,
+        "value_2027": 46.02185596239069,
+        "value_2028": 99.90902864887224
+      },
+      {
+        "stage": "Upper minors",
+        "players": 921,
+        "expected_pa_h1": 11565.701327064842,
+        "expected_pa_h2": 22699.86249652839,
+        "expected_pa_h3": 28046.952893124253,
+        "value_2026": 13.04082968009723,
+        "value_2027": 55.01543020504391,
+        "value_2028": 78.00912163825782
+      }
+    ],
+    "historical": [
+      {
+        "origin": 2019,
+        "target": 2021,
+        "known_pool_years": [
+          2017,
+          2018,
+          2019
+        ],
+        "actual_league_pa": 181818,
+        "actual_cohort_pa": 175972,
+        "actual_outsider_pa": 5846,
+        "actual_outsider_partial_value": -59.07204893863903,
+        "forms": {
+          "E": {
+            "named_player_pa": 189287.50079822226,
+            "league_pa_budget": 185295.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 3992.5007982222596,
+            "named_player_partial_value": 680.5279787040446,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -110.52797870404459
+          },
+          "T": {
+            "named_player_pa": 190724.61700015856,
+            "league_pa_budget": 185295.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 5429.617000158556,
+            "named_player_partial_value": 687.9796302318539,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -117.97963023185389
+          },
+          "P": {
+            "named_player_pa": 190685.18745677036,
+            "league_pa_budget": 185295.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 5390.1874567703635,
+            "named_player_partial_value": 687.6864854192563,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -117.68648541925631
+          }
+        }
+      },
+      {
+        "origin": 2021,
+        "target": 2023,
+        "known_pool_years": [
+          2018,
+          2019,
+          2021
+        ],
+        "actual_league_pa": 184104,
+        "actual_cohort_pa": 181957,
+        "actual_outsider_pa": 2147,
+        "actual_outsider_partial_value": 6.38681049431626,
+        "forms": {
+          "E": {
+            "named_player_pa": 137482.4505288404,
+            "league_pa_budget": 185062.842451666,
+            "unallocated_pa": 47580.3919228256,
+            "pa_excess": 0.0,
+            "named_player_partial_value": 492.229373034768,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": 77.770626965232
+          },
+          "T": {
+            "named_player_pa": 147394.56154491237,
+            "league_pa_budget": 185062.842451666,
+            "unallocated_pa": 37668.280906753615,
+            "pa_excess": 0.0,
+            "named_player_partial_value": 531.0800894874726,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": 38.919910512527395
+          },
+          "P": {
+            "named_player_pa": 149671.7776959466,
+            "league_pa_budget": 185062.842451666,
+            "unallocated_pa": 35391.06475571939,
+            "pa_excess": 0.0,
+            "named_player_partial_value": 540.3212459935255,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": 29.67875400647449
+          }
+        }
+      },
+      {
+        "origin": 2022,
+        "target": 2024,
+        "known_pool_years": [
+          2019,
+          2021,
+          2022
+        ],
+        "actual_league_pa": 182449,
+        "actual_cohort_pa": 179468,
+        "actual_outsider_pa": 2981,
+        "actual_outsider_partial_value": 11.025987109948812,
+        "forms": {
+          "E": {
+            "named_player_pa": 203756.87989054414,
+            "league_pa_budget": 182052.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 21704.879890544136,
+            "named_player_partial_value": 670.4301853487123,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -100.43018534871226
+          },
+          "T": {
+            "named_player_pa": 204785.9085408397,
+            "league_pa_budget": 182052.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 22733.908540839708,
+            "named_player_partial_value": 675.983461519239,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -105.98346151923897
+          },
+          "P": {
+            "named_player_pa": 204588.93127233846,
+            "league_pa_budget": 182052.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 22536.931272338465,
+            "named_player_partial_value": 674.417626056015,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -104.41762605601502
+          }
+        }
+      },
+      {
+        "origin": 2023,
+        "target": 2025,
+        "known_pool_years": [
+          2021,
+          2022,
+          2023
+        ],
+        "actual_league_pa": 182926,
+        "actual_cohort_pa": 180636,
+        "actual_outsider_pa": 2290,
+        "actual_outsider_partial_value": 9.074072657360734,
+        "forms": {
+          "E": {
+            "named_player_pa": 219802.8439861647,
+            "league_pa_budget": 182052.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 37750.84398616469,
+            "named_player_partial_value": 690.0908226082854,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -120.09082260828541
+          },
+          "T": {
+            "named_player_pa": 210174.86304182507,
+            "league_pa_budget": 182052.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 28122.86304182507,
+            "named_player_partial_value": 660.3116672090306,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -90.31166720903059
+          },
+          "P": {
+            "named_player_pa": 208846.05218568412,
+            "league_pa_budget": 182052.0,
+            "unallocated_pa": 0.0,
+            "pa_excess": 26794.052185684122,
+            "named_player_partial_value": 655.9857146474001,
+            "partial_value_budget": 570.0,
+            "signed_value_gap_not_pure_outsider_value": -85.98571464740007
+          }
+        }
+      }
+    ],
+    "rescaled_or_redistributed": false,
+    "full_war_budget_verified": false
+  },
+  "transaction_source_audit_not_a_health_fit": {
+    "raw_rows": 127945,
+    "date_disagreements": 10710,
+    "cross_year_dates": 2009,
+    "beyond_maximum": 8,
+    "non_mlb_or_missing_team": 22362,
+    "injury_events": 13301
+  },
+  "forecast_changed": false,
+  "protected_outcomes_used": false,
+  "limitations": [
+    "Workload gap is not a diagnosis",
+    "MLB positional proxy; minors unsupported",
+    "Exposed development folds",
+    "No model promotion",
+    "League residuals are not pure outsider talent"
+  ]
+}

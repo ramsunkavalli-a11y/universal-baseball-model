@@ -25,6 +25,13 @@ individual errors and weak transfer to value remain unresolved. Next test explic
 training-season exposure in conditional PA while fixing activity/performance;
 declare normal-season and calendar-stress criteria before fitting. Do not promote
 head-swap diagnostics or hindsight-adjusted predictions.
+The subsequent [user-proposed regular-player workload gap](hitter-availability-gap-v1-result.md)
+also fails the Year-2 incremental test against position/context controls. It is an
+availability proxy, not diagnosed health; next-season and MiLB versions remain open.
+The new league ledger flags excess named-cohort PA versus the fixed expected pool,
+while preserving signed outsider value and distinguishing partial value from full WAR.
+Next: one-year proxy validation and separate league allocation with an explicit
+outsider reserve. No automatic total normalization or current forecast change.
 This is the immediate execution order under the
 [product roadmap](product-roadmap.md). Historical results and frozen forecast
 contracts retain their original scope. [Research and sources](multiyear-player-value-literature-2026-09-22.md).

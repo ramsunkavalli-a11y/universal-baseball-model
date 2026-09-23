@@ -4,6 +4,16 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+The [position-adjusted workload-shortfall test](hitter-availability-gap-v1-result.md)
+is complete. The user's simpler health proxy was tested for historically defined
+MLB regulars, not future-selected MLB survivors. It adds no Year-2 predictive gain
+beyond position/role controls and PA history; next-season/minor-league use remains
+untested. The league ledger finds named-player PA of 184,724/189,695/191,607 against
+a cutoff-known 182,926 expected pool, before reserving opportunity for outsiders.
+Do not blanket-boost PA or force named-cohort partial WAR to a whole-league total.
+Next: short-horizon availability validation and a cutoff-safe opportunity allocation
+test with outsider reserve and individual-error guards. Original forecasts unchanged.
+
 The [opportunity/calendar decomposition](hitter-opportunity-calendar-v1-result.md)
 is complete. Top-50 PA RMSE improves 188.6 to 174.9 in ordinary windows, but the
 uncertain subgroup gain reverses in 2020 and 2021 targets. Conditional workload,
