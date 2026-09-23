@@ -1,0 +1,7798 @@
+{
+  "source_hashes": {
+    "docs\\hitter-arrival-coherence-v1-plan.md": "36980b4ea0e409fab4d43c8fe8ee85b348384c11153cdf2843e48bad0bc147ce",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\fit_hitter_arrival_coherence_v1.py": "d77019e7b75172d5fe216fec6e98e58f6b4311a1fa8bfffdc73e402c2bb1106c",
+    "src\\universal_baseball\\hitter_arrival_coherence.py": "7f5586dbd49284adf259962c350ea5e121524693fa7523c552a050150e0ae3fe",
+    "reports\\generated\\multiyear-hitter-v1\\panel.parquet": "fd637525a46fbcd4bd6dd98562fd4217a914da4c8eeb16b000927ce2c6a74147",
+    "reports\\generated\\multiyear-hitter-v1\\targets.parquet": "54b7c51af42254ef44e36f6f5035d05334b368f128baa0280e9f98ff92e941e3",
+    "reports\\generated\\multiyear-hitter-v1\\manifest.json": "5a88939fd3e0841dc63d004ca2b3d83410fd0662013d7ea8aece58f0ad1db63e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\tables\\people-debut-dates.parquet": "2b623e7fcdcf74803f26f02c1ddc998dd543ef9fdf58c50cfef7934e74612c8d",
+    "model_artifacts\\hitter-three-year-opportunity-v1-2026-09-22\\predictions.parquet": "aeaa1ac2c1d0c118123d8f76fe6a8b848331708081baf5a00ec323e6b90f3398",
+    "model_artifacts\\six-year-hitter-v1-2026-09-22\\predictions.parquet": "e6f867f3933a6c492d6f27b65f215499976c8a63579d387c942099f21b4a9e0c",
+    "model_artifacts\\six-year-hitter-v1-2026-09-22\\forecast-2026-2031.parquet": "a22a5fe02b0a12df07cccbdc2594529ebf707a4bc371d6f30d3700086ded0021",
+    "src\\universal_baseball\\hitter_model_tournament.py": "4983958cd5da7826bf3c60329756d668ed2a90ed50f5a0c94121ded9b2d860ed"
+  },
+  "fingerprint": "da515808d2a8f720",
+  "fits": [
+    {
+      "origin": 2014,
+      "horizon": 4,
+      "cold": false,
+      "training_rows": 8891,
+      "training_origins": [
+        2009,
+        2010
+      ],
+      "latest_label": 2014,
+      "shared_players": 1735,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 240,
+          "active": 43,
+          "level_n": 907,
+          "level_active": 93
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 404,
+          "active": 34,
+          "level_n": 907,
+          "level_active": 93
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 239,
+          "active": 6,
+          "level_n": 907,
+          "level_active": 93
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 10,
+          "level_n": 907,
+          "level_active": 93
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 98,
+          "active": 25,
+          "level_n": 916,
+          "level_active": 108
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 362,
+          "active": 56,
+          "level_n": 916,
+          "level_active": 108
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 441,
+          "active": 21,
+          "level_n": 916,
+          "level_active": 108
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 15,
+          "active": 6,
+          "level_n": 916,
+          "level_active": 108
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 36,
+          "active": 25,
+          "level_n": 861,
+          "level_active": 144
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 177,
+          "active": 53,
+          "level_n": 861,
+          "level_active": 144
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 647,
+          "active": 66,
+          "level_n": 861,
+          "level_active": 144
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 1,
+          "active": 0,
+          "level_n": 861,
+          "level_active": 144
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 46,
+          "active": 4,
+          "level_n": 1307,
+          "level_active": 84
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 115,
+          "active": 21,
+          "level_n": 1307,
+          "level_active": 84
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 1136,
+          "active": 58,
+          "level_n": 1307,
+          "level_active": 84
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 10,
+          "active": 1,
+          "level_n": 1307,
+          "level_active": 84
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 997,
+          "active": 22,
+          "level_n": 2818,
+          "level_active": 69
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 571,
+          "active": 17,
+          "level_n": 2818,
+          "level_active": 69
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 121,
+          "active": 1,
+          "level_n": 2818,
+          "level_active": 69
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 1129,
+          "active": 29,
+          "level_n": 2818,
+          "level_active": 69
+        }
+      ],
+      "conditional_pa_clipped": 22,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2015,
+      "horizon": 4,
+      "cold": false,
+      "training_rows": 13351,
+      "training_origins": [
+        2009,
+        2010,
+        2011
+      ],
+      "latest_label": 2015,
+      "shared_players": 1725,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 363,
+          "active": 74,
+          "level_n": 1355,
+          "level_active": 153
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 594,
+          "active": 53,
+          "level_n": 1355,
+          "level_active": 153
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 363,
+          "active": 9,
+          "level_n": 1355,
+          "level_active": 153
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 35,
+          "active": 17,
+          "level_n": 1355,
+          "level_active": 153
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 147,
+          "active": 41,
+          "level_n": 1384,
+          "level_active": 164
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 555,
+          "active": 88,
+          "level_n": 1384,
+          "level_active": 164
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 664,
+          "active": 28,
+          "level_n": 1384,
+          "level_active": 164
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 18,
+          "active": 7,
+          "level_n": 1384,
+          "level_active": 164
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 48,
+          "active": 29,
+          "level_n": 1265,
+          "level_active": 204
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 242,
+          "active": 71,
+          "level_n": 1265,
+          "level_active": 204
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 973,
+          "active": 103,
+          "level_n": 1265,
+          "level_active": 204
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 1265,
+          "level_active": 204
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 71,
+          "active": 4,
+          "level_n": 1885,
+          "level_active": 121
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 172,
+          "active": 30,
+          "level_n": 1885,
+          "level_active": 121
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 1627,
+          "active": 86,
+          "level_n": 1885,
+          "level_active": 121
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 15,
+          "active": 1,
+          "level_n": 1885,
+          "level_active": 121
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 1532,
+          "active": 34,
+          "level_n": 4240,
+          "level_active": 105
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 871,
+          "active": 22,
+          "level_n": 4240,
+          "level_active": 105
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 193,
+          "active": 1,
+          "level_n": 4240,
+          "level_active": 105
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 1644,
+          "active": 48,
+          "level_n": 4240,
+          "level_active": 105
+        }
+      ],
+      "conditional_pa_clipped": 12,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2015,
+      "horizon": 5,
+      "cold": false,
+      "training_rows": 8891,
+      "training_origins": [
+        2009,
+        2010
+      ],
+      "latest_label": 2015,
+      "shared_players": 1407,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 240,
+          "active": 51,
+          "level_n": 907,
+          "level_active": 99
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 404,
+          "active": 32,
+          "level_n": 907,
+          "level_active": 99
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 239,
+          "active": 5,
+          "level_n": 907,
+          "level_active": 99
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 11,
+          "level_n": 907,
+          "level_active": 99
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 98,
+          "active": 26,
+          "level_n": 916,
+          "level_active": 113
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 362,
+          "active": 54,
+          "level_n": 916,
+          "level_active": 113
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 441,
+          "active": 27,
+          "level_n": 916,
+          "level_active": 113
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 15,
+          "active": 6,
+          "level_n": 916,
+          "level_active": 113
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 36,
+          "active": 21,
+          "level_n": 861,
+          "level_active": 138
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 177,
+          "active": 54,
+          "level_n": 861,
+          "level_active": 138
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 647,
+          "active": 63,
+          "level_n": 861,
+          "level_active": 138
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 1,
+          "active": 0,
+          "level_n": 861,
+          "level_active": 138
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 46,
+          "active": 4,
+          "level_n": 1307,
+          "level_active": 70
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 115,
+          "active": 19,
+          "level_n": 1307,
+          "level_active": 70
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 1136,
+          "active": 47,
+          "level_n": 1307,
+          "level_active": 70
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 10,
+          "active": 0,
+          "level_n": 1307,
+          "level_active": 70
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 997,
+          "active": 26,
+          "level_n": 2818,
+          "level_active": 108
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 571,
+          "active": 15,
+          "level_n": 2818,
+          "level_active": 108
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 121,
+          "active": 1,
+          "level_n": 2818,
+          "level_active": 108
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 1129,
+          "active": 66,
+          "level_n": 2818,
+          "level_active": 108
+        }
+      ],
+      "conditional_pa_clipped": 18,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2016,
+      "horizon": 1,
+      "cold": false,
+      "training_rows": 31321,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "latest_label": 2016,
+      "shared_players": 3603,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 843,
+          "active": 10,
+          "level_n": 3140,
+          "level_active": 15
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1386,
+          "active": 4,
+          "level_n": 3140,
+          "level_active": 15
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 830,
+          "active": 0,
+          "level_n": 3140,
+          "level_active": 15
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 81,
+          "active": 1,
+          "level_n": 3140,
+          "level_active": 15
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 340,
+          "active": 8,
+          "level_n": 3229,
+          "level_active": 60
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1228,
+          "active": 32,
+          "level_n": 3229,
+          "level_active": 60
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1629,
+          "active": 18,
+          "level_n": 3229,
+          "level_active": 60
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 2,
+          "level_n": 3229,
+          "level_active": 60
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 108,
+          "active": 32,
+          "level_n": 2949,
+          "level_active": 321
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 571,
+          "active": 126,
+          "level_n": 2949,
+          "level_active": 321
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2266,
+          "active": 162,
+          "level_n": 2949,
+          "level_active": 321
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2949,
+          "level_active": 321
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 181,
+          "active": 6,
+          "level_n": 4151,
+          "level_active": 280
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 391,
+          "active": 50,
+          "level_n": 4151,
+          "level_active": 280
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3542,
+          "active": 224,
+          "level_n": 4151,
+          "level_active": 280
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 0,
+          "level_n": 4151,
+          "level_active": 280
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3597,
+          "active": 0,
+          "level_n": 9951,
+          "level_active": 0
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1982,
+          "active": 0,
+          "level_n": 9951,
+          "level_active": 0
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 404,
+          "active": 0,
+          "level_n": 9951,
+          "level_active": 0
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3968,
+          "active": 0,
+          "level_n": 9951,
+          "level_active": 0
+        }
+      ],
+      "conditional_pa_clipped": 14,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2016,
+      "horizon": 2,
+      "cold": false,
+      "training_rows": 26809,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "latest_label": 2016,
+      "shared_players": 2801,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 719,
+          "active": 44,
+          "level_n": 2683,
+          "level_active": 81
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1175,
+          "active": 28,
+          "level_n": 2683,
+          "level_active": 81
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 721,
+          "active": 4,
+          "level_n": 2683,
+          "level_active": 81
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 68,
+          "active": 5,
+          "level_n": 2683,
+          "level_active": 81
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 278,
+          "active": 46,
+          "level_n": 2767,
+          "level_active": 223
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1057,
+          "active": 125,
+          "level_n": 2767,
+          "level_active": 223
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1403,
+          "active": 49,
+          "level_n": 2767,
+          "level_active": 223
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 29,
+          "active": 3,
+          "level_n": 2767,
+          "level_active": 223
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 94,
+          "active": 55,
+          "level_n": 2544,
+          "level_active": 439
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 492,
+          "active": 168,
+          "level_n": 2544,
+          "level_active": 439
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1954,
+          "active": 215,
+          "level_n": 2544,
+          "level_active": 439
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2544,
+          "level_active": 439
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 156,
+          "active": 8,
+          "level_n": 3586,
+          "level_active": 248
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 335,
+          "active": 45,
+          "level_n": 3586,
+          "level_active": 248
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3063,
+          "active": 195,
+          "level_n": 3586,
+          "level_active": 248
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 0,
+          "level_n": 3586,
+          "level_active": 248
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3112,
+          "active": 4,
+          "level_n": 8505,
+          "level_active": 17
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1687,
+          "active": 9,
+          "level_n": 8505,
+          "level_active": 17
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 353,
+          "active": 0,
+          "level_n": 8505,
+          "level_active": 17
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3353,
+          "active": 4,
+          "level_n": 8505,
+          "level_active": 17
+        }
+      ],
+      "conditional_pa_clipped": 32,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2016,
+      "horizon": 3,
+      "cold": false,
+      "training_rows": 22293,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_label": 2016,
+      "shared_players": 2181,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 592,
+          "active": 98,
+          "level_n": 2237,
+          "level_active": 188
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 983,
+          "active": 64,
+          "level_n": 2237,
+          "level_active": 188
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 605,
+          "active": 8,
+          "level_n": 2237,
+          "level_active": 188
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 57,
+          "active": 18,
+          "level_n": 2237,
+          "level_active": 188
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 238,
+          "active": 65,
+          "level_n": 2305,
+          "level_active": 265
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 885,
+          "active": 133,
+          "level_n": 2305,
+          "level_active": 265
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1158,
+          "active": 60,
+          "level_n": 2305,
+          "level_active": 265
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 7,
+          "level_n": 2305,
+          "level_active": 265
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 83,
+          "active": 52,
+          "level_n": 2119,
+          "level_active": 388
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 415,
+          "active": 149,
+          "level_n": 2119,
+          "level_active": 388
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1619,
+          "active": 186,
+          "level_n": 2119,
+          "level_active": 388
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 2119,
+          "level_active": 388
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 135,
+          "active": 8,
+          "level_n": 3046,
+          "level_active": 204
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 281,
+          "active": 47,
+          "level_n": 3046,
+          "level_active": 204
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 2606,
+          "active": 149,
+          "level_n": 3046,
+          "level_active": 204
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 0,
+          "level_n": 3046,
+          "level_active": 204
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 2588,
+          "active": 19,
+          "level_n": 7049,
+          "level_active": 67
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1411,
+          "active": 26,
+          "level_n": 7049,
+          "level_active": 67
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 300,
+          "active": 2,
+          "level_n": 7049,
+          "level_active": 67
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 2750,
+          "active": 20,
+          "level_n": 7049,
+          "level_active": 67
+        }
+      ],
+      "conditional_pa_clipped": 6,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2016,
+      "horizon": 4,
+      "cold": false,
+      "training_rows": 17817,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012
+      ],
+      "latest_label": 2016,
+      "shared_players": 1696,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 468,
+          "active": 98,
+          "level_n": 1799,
+          "level_active": 204
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 800,
+          "active": 75,
+          "level_n": 1799,
+          "level_active": 204
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 486,
+          "active": 10,
+          "level_n": 1799,
+          "level_active": 204
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 45,
+          "active": 21,
+          "level_n": 1799,
+          "level_active": 204
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 200,
+          "active": 58,
+          "level_n": 1833,
+          "level_active": 220
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 707,
+          "active": 110,
+          "level_n": 1833,
+          "level_active": 220
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 904,
+          "active": 45,
+          "level_n": 1833,
+          "level_active": 220
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 22,
+          "active": 7,
+          "level_n": 1833,
+          "level_active": 220
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 66,
+          "active": 40,
+          "level_n": 1702,
+          "level_active": 288
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 326,
+          "active": 109,
+          "level_n": 1702,
+          "level_active": 288
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1308,
+          "active": 138,
+          "level_n": 1702,
+          "level_active": 288
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 1702,
+          "level_active": 288
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 106,
+          "active": 6,
+          "level_n": 2488,
+          "level_active": 151
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 228,
+          "active": 39,
+          "level_n": 2488,
+          "level_active": 151
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 2134,
+          "active": 105,
+          "level_n": 2488,
+          "level_active": 151
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 20,
+          "active": 1,
+          "level_n": 2488,
+          "level_active": 151
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 2065,
+          "active": 42,
+          "level_n": 5627,
+          "level_active": 139
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1144,
+          "active": 28,
+          "level_n": 5627,
+          "level_active": 139
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 237,
+          "active": 1,
+          "level_n": 5627,
+          "level_active": 139
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 2181,
+          "active": 68,
+          "level_n": 5627,
+          "level_active": 139
+        }
+      ],
+      "conditional_pa_clipped": 11,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2016,
+      "horizon": 5,
+      "cold": false,
+      "training_rows": 13351,
+      "training_origins": [
+        2009,
+        2010,
+        2011
+      ],
+      "latest_label": 2016,
+      "shared_players": 1332,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 363,
+          "active": 82,
+          "level_n": 1355,
+          "level_active": 164
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 594,
+          "active": 54,
+          "level_n": 1355,
+          "level_active": 164
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 363,
+          "active": 9,
+          "level_n": 1355,
+          "level_active": 164
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 35,
+          "active": 19,
+          "level_n": 1355,
+          "level_active": 164
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 147,
+          "active": 41,
+          "level_n": 1384,
+          "level_active": 172
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 555,
+          "active": 89,
+          "level_n": 1384,
+          "level_active": 172
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 664,
+          "active": 35,
+          "level_n": 1384,
+          "level_active": 172
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 18,
+          "active": 7,
+          "level_n": 1384,
+          "level_active": 172
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 48,
+          "active": 25,
+          "level_n": 1265,
+          "level_active": 185
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 242,
+          "active": 71,
+          "level_n": 1265,
+          "level_active": 185
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 973,
+          "active": 88,
+          "level_n": 1265,
+          "level_active": 185
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 1265,
+          "level_active": 185
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 71,
+          "active": 4,
+          "level_n": 1885,
+          "level_active": 93
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 172,
+          "active": 28,
+          "level_n": 1885,
+          "level_active": 93
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 1627,
+          "active": 61,
+          "level_n": 1885,
+          "level_active": 93
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 15,
+          "active": 0,
+          "level_n": 1885,
+          "level_active": 93
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 1532,
+          "active": 41,
+          "level_n": 4240,
+          "level_active": 162
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 871,
+          "active": 22,
+          "level_n": 4240,
+          "level_active": 162
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 193,
+          "active": 4,
+          "level_n": 4240,
+          "level_active": 162
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 1644,
+          "active": 95,
+          "level_n": 4240,
+          "level_active": 162
+        }
+      ],
+      "conditional_pa_clipped": 18,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2016,
+      "horizon": 6,
+      "cold": false,
+      "training_rows": 8891,
+      "training_origins": [
+        2009,
+        2010
+      ],
+      "latest_label": 2016,
+      "shared_players": 1074,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 240,
+          "active": 51,
+          "level_n": 907,
+          "level_active": 102
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 404,
+          "active": 36,
+          "level_n": 907,
+          "level_active": 102
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 239,
+          "active": 3,
+          "level_n": 907,
+          "level_active": 102
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 12,
+          "level_n": 907,
+          "level_active": 102
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 98,
+          "active": 26,
+          "level_n": 916,
+          "level_active": 104
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 362,
+          "active": 49,
+          "level_n": 916,
+          "level_active": 104
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 441,
+          "active": 23,
+          "level_n": 916,
+          "level_active": 104
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 15,
+          "active": 6,
+          "level_n": 916,
+          "level_active": 104
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 36,
+          "active": 17,
+          "level_n": 861,
+          "level_active": 113
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 177,
+          "active": 47,
+          "level_n": 861,
+          "level_active": 113
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 647,
+          "active": 49,
+          "level_n": 861,
+          "level_active": 113
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 1,
+          "active": 0,
+          "level_n": 861,
+          "level_active": 113
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 46,
+          "active": 3,
+          "level_n": 1307,
+          "level_active": 57
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 115,
+          "active": 19,
+          "level_n": 1307,
+          "level_active": 57
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 1136,
+          "active": 35,
+          "level_n": 1307,
+          "level_active": 57
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 10,
+          "active": 0,
+          "level_n": 1307,
+          "level_active": 57
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 997,
+          "active": 26,
+          "level_n": 2818,
+          "level_active": 127
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 571,
+          "active": 22,
+          "level_n": 2818,
+          "level_active": 127
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 121,
+          "active": 1,
+          "level_n": 2818,
+          "level_active": 127
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 1129,
+          "active": 78,
+          "level_n": 2818,
+          "level_active": 127
+        }
+      ],
+      "conditional_pa_clipped": 2,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2017,
+      "horizon": 1,
+      "cold": false,
+      "training_rows": 35893,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_label": 2017,
+      "shared_players": 3628,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 953,
+          "active": 12,
+          "level_n": 3590,
+          "level_active": 18
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1609,
+          "active": 4,
+          "level_n": 3590,
+          "level_active": 18
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 938,
+          "active": 1,
+          "level_n": 3590,
+          "level_active": 18
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 90,
+          "active": 1,
+          "level_n": 3590,
+          "level_active": 18
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 399,
+          "active": 11,
+          "level_n": 3680,
+          "level_active": 69
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1403,
+          "active": 37,
+          "level_n": 3680,
+          "level_active": 69
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1845,
+          "active": 19,
+          "level_n": 3680,
+          "level_active": 69
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 33,
+          "active": 2,
+          "level_n": 3680,
+          "level_active": 69
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 119,
+          "active": 35,
+          "level_n": 3350,
+          "level_active": 359
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 667,
+          "active": 140,
+          "level_n": 3350,
+          "level_active": 359
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2560,
+          "active": 183,
+          "level_n": 3350,
+          "level_active": 359
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 3350,
+          "level_active": 359
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 209,
+          "active": 9,
+          "level_n": 4753,
+          "level_active": 335
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 440,
+          "active": 61,
+          "level_n": 4753,
+          "level_active": 335
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4063,
+          "active": 265,
+          "level_n": 4753,
+          "level_active": 335
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 0,
+          "level_n": 4753,
+          "level_active": 335
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4135,
+          "active": 1,
+          "level_n": 11454,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2255,
+          "active": 0,
+          "level_n": 11454,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 469,
+          "active": 0,
+          "level_n": 11454,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4595,
+          "active": 0,
+          "level_n": 11454,
+          "level_active": 1
+        }
+      ],
+      "conditional_pa_clipped": 7,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2017,
+      "horizon": 2,
+      "cold": false,
+      "training_rows": 31321,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "latest_label": 2017,
+      "shared_players": 2804,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 843,
+          "active": 51,
+          "level_n": 3140,
+          "level_active": 96
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1386,
+          "active": 33,
+          "level_n": 3140,
+          "level_active": 96
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 830,
+          "active": 5,
+          "level_n": 3140,
+          "level_active": 96
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 81,
+          "active": 7,
+          "level_n": 3140,
+          "level_active": 96
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 340,
+          "active": 58,
+          "level_n": 3229,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1228,
+          "active": 143,
+          "level_n": 3229,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1629,
+          "active": 55,
+          "level_n": 3229,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 3,
+          "level_n": 3229,
+          "level_active": 259
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 108,
+          "active": 62,
+          "level_n": 2949,
+          "level_active": 506
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 571,
+          "active": 198,
+          "level_n": 2949,
+          "level_active": 506
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2266,
+          "active": 245,
+          "level_n": 2949,
+          "level_active": 506
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2949,
+          "level_active": 506
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 181,
+          "active": 9,
+          "level_n": 4151,
+          "level_active": 305
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 391,
+          "active": 54,
+          "level_n": 4151,
+          "level_active": 305
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3542,
+          "active": 242,
+          "level_n": 4151,
+          "level_active": 305
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 0,
+          "level_n": 4151,
+          "level_active": 305
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3597,
+          "active": 5,
+          "level_n": 9951,
+          "level_active": 21
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1982,
+          "active": 10,
+          "level_n": 9951,
+          "level_active": 21
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 404,
+          "active": 1,
+          "level_n": 9951,
+          "level_active": 21
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3968,
+          "active": 5,
+          "level_n": 9951,
+          "level_active": 21
+        }
+      ],
+      "conditional_pa_clipped": 37,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2017,
+      "horizon": 3,
+      "cold": false,
+      "training_rows": 26809,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "latest_label": 2017,
+      "shared_players": 2217,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 719,
+          "active": 114,
+          "level_n": 2683,
+          "level_active": 219
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1175,
+          "active": 76,
+          "level_n": 2683,
+          "level_active": 219
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 721,
+          "active": 9,
+          "level_n": 2683,
+          "level_active": 219
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 68,
+          "active": 20,
+          "level_n": 2683,
+          "level_active": 219
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 278,
+          "active": 78,
+          "level_n": 2767,
+          "level_active": 326
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1057,
+          "active": 166,
+          "level_n": 2767,
+          "level_active": 326
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1403,
+          "active": 74,
+          "level_n": 2767,
+          "level_active": 326
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 29,
+          "active": 8,
+          "level_n": 2767,
+          "level_active": 326
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 94,
+          "active": 62,
+          "level_n": 2544,
+          "level_active": 465
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 492,
+          "active": 182,
+          "level_n": 2544,
+          "level_active": 465
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1954,
+          "active": 220,
+          "level_n": 2544,
+          "level_active": 465
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2544,
+          "level_active": 465
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 156,
+          "active": 10,
+          "level_n": 3586,
+          "level_active": 253
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 335,
+          "active": 54,
+          "level_n": 3586,
+          "level_active": 253
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3063,
+          "active": 189,
+          "level_n": 3586,
+          "level_active": 253
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 0,
+          "level_n": 3586,
+          "level_active": 253
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3112,
+          "active": 20,
+          "level_n": 8505,
+          "level_active": 78
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1687,
+          "active": 28,
+          "level_n": 8505,
+          "level_active": 78
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 353,
+          "active": 2,
+          "level_n": 8505,
+          "level_active": 78
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3353,
+          "active": 28,
+          "level_n": 8505,
+          "level_active": 78
+        }
+      ],
+      "conditional_pa_clipped": 1,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2017,
+      "horizon": 4,
+      "cold": false,
+      "training_rows": 22293,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_label": 2017,
+      "shared_players": 1741,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 592,
+          "active": 129,
+          "level_n": 2237,
+          "level_active": 257
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 983,
+          "active": 89,
+          "level_n": 2237,
+          "level_active": 257
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 605,
+          "active": 11,
+          "level_n": 2237,
+          "level_active": 257
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 57,
+          "active": 28,
+          "level_n": 2237,
+          "level_active": 257
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 238,
+          "active": 69,
+          "level_n": 2305,
+          "level_active": 269
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 885,
+          "active": 137,
+          "level_n": 2305,
+          "level_active": 269
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1158,
+          "active": 56,
+          "level_n": 2305,
+          "level_active": 269
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 7,
+          "level_n": 2305,
+          "level_active": 269
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 83,
+          "active": 53,
+          "level_n": 2119,
+          "level_active": 383
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 415,
+          "active": 145,
+          "level_n": 2119,
+          "level_active": 383
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1619,
+          "active": 184,
+          "level_n": 2119,
+          "level_active": 383
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 2119,
+          "level_active": 383
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 135,
+          "active": 7,
+          "level_n": 3046,
+          "level_active": 179
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 281,
+          "active": 45,
+          "level_n": 3046,
+          "level_active": 179
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 2606,
+          "active": 126,
+          "level_n": 3046,
+          "level_active": 179
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 1,
+          "level_n": 3046,
+          "level_active": 179
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 2588,
+          "active": 51,
+          "level_n": 7049,
+          "level_active": 172
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1411,
+          "active": 35,
+          "level_n": 7049,
+          "level_active": 172
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 300,
+          "active": 1,
+          "level_n": 7049,
+          "level_active": 172
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 2750,
+          "active": 85,
+          "level_n": 7049,
+          "level_active": 172
+        }
+      ],
+      "conditional_pa_clipped": 3,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2017,
+      "horizon": 5,
+      "cold": false,
+      "training_rows": 17817,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012
+      ],
+      "latest_label": 2017,
+      "shared_players": 1388,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 468,
+          "active": 106,
+          "level_n": 1799,
+          "level_active": 214
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 800,
+          "active": 76,
+          "level_n": 1799,
+          "level_active": 214
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 486,
+          "active": 9,
+          "level_n": 1799,
+          "level_active": 214
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 45,
+          "active": 23,
+          "level_n": 1799,
+          "level_active": 214
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 200,
+          "active": 60,
+          "level_n": 1833,
+          "level_active": 238
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 707,
+          "active": 118,
+          "level_n": 1833,
+          "level_active": 238
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 904,
+          "active": 53,
+          "level_n": 1833,
+          "level_active": 238
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 22,
+          "active": 7,
+          "level_n": 1833,
+          "level_active": 238
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 66,
+          "active": 36,
+          "level_n": 1702,
+          "level_active": 256
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 326,
+          "active": 109,
+          "level_n": 1702,
+          "level_active": 256
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1308,
+          "active": 110,
+          "level_n": 1702,
+          "level_active": 256
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 1702,
+          "level_active": 256
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 106,
+          "active": 5,
+          "level_n": 2488,
+          "level_active": 120
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 228,
+          "active": 35,
+          "level_n": 2488,
+          "level_active": 120
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 2134,
+          "active": 80,
+          "level_n": 2488,
+          "level_active": 120
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 20,
+          "active": 0,
+          "level_n": 2488,
+          "level_active": 120
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 2065,
+          "active": 56,
+          "level_n": 5627,
+          "level_active": 214
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1144,
+          "active": 29,
+          "level_n": 5627,
+          "level_active": 214
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 237,
+          "active": 4,
+          "level_n": 5627,
+          "level_active": 214
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 2181,
+          "active": 125,
+          "level_n": 5627,
+          "level_active": 214
+        }
+      ],
+      "conditional_pa_clipped": 10,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2017,
+      "horizon": 6,
+      "cold": false,
+      "training_rows": 13351,
+      "training_origins": [
+        2009,
+        2010,
+        2011
+      ],
+      "latest_label": 2017,
+      "shared_players": 1085,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 363,
+          "active": 85,
+          "level_n": 1355,
+          "level_active": 171
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 594,
+          "active": 60,
+          "level_n": 1355,
+          "level_active": 171
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 363,
+          "active": 6,
+          "level_n": 1355,
+          "level_active": 171
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 35,
+          "active": 20,
+          "level_n": 1355,
+          "level_active": 171
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 147,
+          "active": 42,
+          "level_n": 1384,
+          "level_active": 154
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 555,
+          "active": 78,
+          "level_n": 1384,
+          "level_active": 154
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 664,
+          "active": 27,
+          "level_n": 1384,
+          "level_active": 154
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 18,
+          "active": 7,
+          "level_n": 1384,
+          "level_active": 154
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 48,
+          "active": 20,
+          "level_n": 1265,
+          "level_active": 154
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 242,
+          "active": 63,
+          "level_n": 1265,
+          "level_active": 154
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 973,
+          "active": 70,
+          "level_n": 1265,
+          "level_active": 154
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 1265,
+          "level_active": 154
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 71,
+          "active": 3,
+          "level_n": 1885,
+          "level_active": 77
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 172,
+          "active": 26,
+          "level_n": 1885,
+          "level_active": 77
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 1627,
+          "active": 48,
+          "level_n": 1885,
+          "level_active": 77
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 15,
+          "active": 0,
+          "level_n": 1885,
+          "level_active": 77
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 1532,
+          "active": 43,
+          "level_n": 4240,
+          "level_active": 188
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 871,
+          "active": 32,
+          "level_n": 4240,
+          "level_active": 188
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 193,
+          "active": 4,
+          "level_n": 4240,
+          "level_active": 188
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 1644,
+          "active": 109,
+          "level_n": 4240,
+          "level_active": 188
+        }
+      ],
+      "conditional_pa_clipped": 3,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2018,
+      "horizon": 1,
+      "cold": false,
+      "training_rows": 40473,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "latest_label": 2018,
+      "shared_players": 3316,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1063,
+          "active": 13,
+          "level_n": 4036,
+          "level_active": 20
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1816,
+          "active": 4,
+          "level_n": 4036,
+          "level_active": 20
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1044,
+          "active": 1,
+          "level_n": 4036,
+          "level_active": 20
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 113,
+          "active": 2,
+          "level_n": 4036,
+          "level_active": 20
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 444,
+          "active": 11,
+          "level_n": 4151,
+          "level_active": 70
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1605,
+          "active": 38,
+          "level_n": 4151,
+          "level_active": 70
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2065,
+          "active": 19,
+          "level_n": 4151,
+          "level_active": 70
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 2,
+          "level_n": 4151,
+          "level_active": 70
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 134,
+          "active": 37,
+          "level_n": 3789,
+          "level_active": 399
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 775,
+          "active": 156,
+          "level_n": 3789,
+          "level_active": 399
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2875,
+          "active": 205,
+          "level_n": 3789,
+          "level_active": 399
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 5,
+          "active": 1,
+          "level_n": 3789,
+          "level_active": 399
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 229,
+          "active": 11,
+          "level_n": 5338,
+          "level_active": 387
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 514,
+          "active": 74,
+          "level_n": 5338,
+          "level_active": 387
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4551,
+          "active": 302,
+          "level_n": 5338,
+          "level_active": 387
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 44,
+          "active": 0,
+          "level_n": 5338,
+          "level_active": 387
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4623,
+          "active": 1,
+          "level_n": 12929,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2524,
+          "active": 0,
+          "level_n": 12929,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 536,
+          "active": 0,
+          "level_n": 12929,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 5246,
+          "active": 0,
+          "level_n": 12929,
+          "level_active": 1
+        }
+      ],
+      "conditional_pa_clipped": 9,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2018,
+      "horizon": 2,
+      "cold": false,
+      "training_rows": 35893,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_label": 2018,
+      "shared_players": 2527,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 953,
+          "active": 52,
+          "level_n": 3590,
+          "level_active": 100
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1609,
+          "active": 35,
+          "level_n": 3590,
+          "level_active": 100
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 938,
+          "active": 5,
+          "level_n": 3590,
+          "level_active": 100
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 90,
+          "active": 8,
+          "level_n": 3590,
+          "level_active": 100
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 399,
+          "active": 67,
+          "level_n": 3680,
+          "level_active": 290
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1403,
+          "active": 160,
+          "level_n": 3680,
+          "level_active": 290
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1845,
+          "active": 60,
+          "level_n": 3680,
+          "level_active": 290
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 33,
+          "active": 3,
+          "level_n": 3680,
+          "level_active": 290
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 119,
+          "active": 68,
+          "level_n": 3350,
+          "level_active": 579
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 667,
+          "active": 236,
+          "level_n": 3350,
+          "level_active": 579
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2560,
+          "active": 274,
+          "level_n": 3350,
+          "level_active": 579
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 3350,
+          "level_active": 579
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 209,
+          "active": 13,
+          "level_n": 4753,
+          "level_active": 370
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 440,
+          "active": 69,
+          "level_n": 4753,
+          "level_active": 370
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4063,
+          "active": 288,
+          "level_n": 4753,
+          "level_active": 370
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 0,
+          "level_n": 4753,
+          "level_active": 370
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4135,
+          "active": 6,
+          "level_n": 11454,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2255,
+          "active": 10,
+          "level_n": 11454,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 469,
+          "active": 1,
+          "level_n": 11454,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4595,
+          "active": 6,
+          "level_n": 11454,
+          "level_active": 23
+        }
+      ],
+      "conditional_pa_clipped": 22,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2018,
+      "horizon": 3,
+      "cold": false,
+      "training_rows": 31321,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "latest_label": 2018,
+      "shared_players": 1903,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 843,
+          "active": 129,
+          "level_n": 3140,
+          "level_active": 255
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1386,
+          "active": 92,
+          "level_n": 3140,
+          "level_active": 255
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 830,
+          "active": 11,
+          "level_n": 3140,
+          "level_active": 255
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 81,
+          "active": 23,
+          "level_n": 3140,
+          "level_active": 255
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 340,
+          "active": 105,
+          "level_n": 3229,
+          "level_active": 394
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1228,
+          "active": 195,
+          "level_n": 3229,
+          "level_active": 394
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1629,
+          "active": 85,
+          "level_n": 3229,
+          "level_active": 394
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 9,
+          "level_n": 3229,
+          "level_active": 394
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 108,
+          "active": 72,
+          "level_n": 2949,
+          "level_active": 546
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 571,
+          "active": 220,
+          "level_n": 2949,
+          "level_active": 546
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2266,
+          "active": 253,
+          "level_n": 2949,
+          "level_active": 546
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2949,
+          "level_active": 546
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 181,
+          "active": 11,
+          "level_n": 4151,
+          "level_active": 299
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 391,
+          "active": 62,
+          "level_n": 4151,
+          "level_active": 299
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3542,
+          "active": 226,
+          "level_n": 4151,
+          "level_active": 299
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 0,
+          "level_n": 4151,
+          "level_active": 299
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3597,
+          "active": 22,
+          "level_n": 9951,
+          "level_active": 85
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1982,
+          "active": 28,
+          "level_n": 9951,
+          "level_active": 85
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 404,
+          "active": 3,
+          "level_n": 9951,
+          "level_active": 85
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3968,
+          "active": 32,
+          "level_n": 9951,
+          "level_active": 85
+        }
+      ],
+      "conditional_pa_clipped": 8,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2018,
+      "horizon": 4,
+      "cold": false,
+      "training_rows": 26809,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "latest_label": 2018,
+      "shared_players": 1477,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 719,
+          "active": 161,
+          "level_n": 2683,
+          "level_active": 316
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1175,
+          "active": 108,
+          "level_n": 2683,
+          "level_active": 316
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 721,
+          "active": 13,
+          "level_n": 2683,
+          "level_active": 316
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 68,
+          "active": 34,
+          "level_n": 2683,
+          "level_active": 316
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 278,
+          "active": 88,
+          "level_n": 2767,
+          "level_active": 342
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1057,
+          "active": 175,
+          "level_n": 2767,
+          "level_active": 342
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1403,
+          "active": 71,
+          "level_n": 2767,
+          "level_active": 342
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 29,
+          "active": 8,
+          "level_n": 2767,
+          "level_active": 342
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 94,
+          "active": 62,
+          "level_n": 2544,
+          "level_active": 463
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 492,
+          "active": 182,
+          "level_n": 2544,
+          "level_active": 463
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1954,
+          "active": 218,
+          "level_n": 2544,
+          "level_active": 463
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2544,
+          "level_active": 463
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 156,
+          "active": 9,
+          "level_n": 3586,
+          "level_active": 216
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 335,
+          "active": 52,
+          "level_n": 3586,
+          "level_active": 216
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3063,
+          "active": 154,
+          "level_n": 3586,
+          "level_active": 216
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 1,
+          "level_n": 3586,
+          "level_active": 216
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3112,
+          "active": 60,
+          "level_n": 8505,
+          "level_active": 197
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1687,
+          "active": 39,
+          "level_n": 8505,
+          "level_active": 197
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 353,
+          "active": 1,
+          "level_n": 8505,
+          "level_active": 197
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3353,
+          "active": 97,
+          "level_n": 8505,
+          "level_active": 197
+        }
+      ],
+      "conditional_pa_clipped": 1,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2018,
+      "horizon": 5,
+      "cold": false,
+      "training_rows": 22293,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_label": 2018,
+      "shared_players": 1132,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 592,
+          "active": 150,
+          "level_n": 2237,
+          "level_active": 286
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 983,
+          "active": 91,
+          "level_n": 2237,
+          "level_active": 286
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 605,
+          "active": 11,
+          "level_n": 2237,
+          "level_active": 286
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 57,
+          "active": 34,
+          "level_n": 2237,
+          "level_active": 286
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 238,
+          "active": 74,
+          "level_n": 2305,
+          "level_active": 290
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 885,
+          "active": 148,
+          "level_n": 2305,
+          "level_active": 290
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1158,
+          "active": 61,
+          "level_n": 2305,
+          "level_active": 290
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 7,
+          "level_n": 2305,
+          "level_active": 290
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 83,
+          "active": 50,
+          "level_n": 2119,
+          "level_active": 342
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 415,
+          "active": 141,
+          "level_n": 2119,
+          "level_active": 342
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1619,
+          "active": 150,
+          "level_n": 2119,
+          "level_active": 342
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 2119,
+          "level_active": 342
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 135,
+          "active": 7,
+          "level_n": 3046,
+          "level_active": 141
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 281,
+          "active": 40,
+          "level_n": 3046,
+          "level_active": 141
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 2606,
+          "active": 94,
+          "level_n": 3046,
+          "level_active": 141
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 0,
+          "level_n": 3046,
+          "level_active": 141
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 2588,
+          "active": 68,
+          "level_n": 7049,
+          "level_active": 275
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1411,
+          "active": 39,
+          "level_n": 7049,
+          "level_active": 275
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 300,
+          "active": 5,
+          "level_n": 7049,
+          "level_active": 275
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 2750,
+          "active": 163,
+          "level_n": 7049,
+          "level_active": 275
+        }
+      ],
+      "conditional_pa_clipped": 3,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2018,
+      "horizon": 6,
+      "cold": false,
+      "training_rows": 17817,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012
+      ],
+      "latest_label": 2018,
+      "shared_players": 877,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 468,
+          "active": 110,
+          "level_n": 1799,
+          "level_active": 222
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 800,
+          "active": 82,
+          "level_n": 1799,
+          "level_active": 222
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 486,
+          "active": 6,
+          "level_n": 1799,
+          "level_active": 222
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 45,
+          "active": 24,
+          "level_n": 1799,
+          "level_active": 222
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 200,
+          "active": 60,
+          "level_n": 1833,
+          "level_active": 210
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 707,
+          "active": 105,
+          "level_n": 1833,
+          "level_active": 210
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 904,
+          "active": 38,
+          "level_n": 1833,
+          "level_active": 210
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 22,
+          "active": 7,
+          "level_n": 1833,
+          "level_active": 210
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 66,
+          "active": 29,
+          "level_n": 1702,
+          "level_active": 215
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 326,
+          "active": 97,
+          "level_n": 1702,
+          "level_active": 215
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1308,
+          "active": 88,
+          "level_n": 1702,
+          "level_active": 215
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 1702,
+          "level_active": 215
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 106,
+          "active": 5,
+          "level_n": 2488,
+          "level_active": 99
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 228,
+          "active": 33,
+          "level_n": 2488,
+          "level_active": 99
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 2134,
+          "active": 61,
+          "level_n": 2488,
+          "level_active": 99
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 20,
+          "active": 0,
+          "level_n": 2488,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 2065,
+          "active": 66,
+          "level_n": 5627,
+          "level_active": 265
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1144,
+          "active": 39,
+          "level_n": 5627,
+          "level_active": 265
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 237,
+          "active": 4,
+          "level_n": 5627,
+          "level_active": 265
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 2181,
+          "active": 156,
+          "level_n": 5627,
+          "level_active": 265
+        }
+      ],
+      "conditional_pa_clipped": 2,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2019,
+      "horizon": 1,
+      "cold": false,
+      "training_rows": 44821,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "latest_label": 2019,
+      "shared_players": 3728,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1186,
+          "active": 13,
+          "level_n": 4506,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 2058,
+          "active": 5,
+          "level_n": 4506,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1135,
+          "active": 1,
+          "level_n": 4506,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 127,
+          "active": 2,
+          "level_n": 4506,
+          "level_active": 21
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 500,
+          "active": 11,
+          "level_n": 4629,
+          "level_active": 73
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1812,
+          "active": 39,
+          "level_n": 4629,
+          "level_active": 73
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2276,
+          "active": 21,
+          "level_n": 4629,
+          "level_active": 73
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 2,
+          "level_n": 4629,
+          "level_active": 73
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 152,
+          "active": 41,
+          "level_n": 4205,
+          "level_active": 438
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 855,
+          "active": 167,
+          "level_n": 4205,
+          "level_active": 438
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 3191,
+          "active": 229,
+          "level_n": 4205,
+          "level_active": 438
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 7,
+          "active": 1,
+          "level_n": 4205,
+          "level_active": 438
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 232,
+          "active": 12,
+          "level_n": 5663,
+          "level_active": 452
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 553,
+          "active": 89,
+          "level_n": 5663,
+          "level_active": 452
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4831,
+          "active": 351,
+          "level_n": 5663,
+          "level_active": 452
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 47,
+          "active": 0,
+          "level_n": 5663,
+          "level_active": 452
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 5071,
+          "active": 1,
+          "level_n": 14513,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2826,
+          "active": 0,
+          "level_n": 14513,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 585,
+          "active": 0,
+          "level_n": 14513,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 6031,
+          "active": 0,
+          "level_n": 14513,
+          "level_active": 1
+        }
+      ],
+      "conditional_pa_clipped": 10,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2019,
+      "horizon": 2,
+      "cold": false,
+      "training_rows": 40473,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "latest_label": 2019,
+      "shared_players": 2799,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1063,
+          "active": 58,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1816,
+          "active": 37,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1044,
+          "active": 5,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 113,
+          "active": 9,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 444,
+          "active": 72,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1605,
+          "active": 171,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2065,
+          "active": 70,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 4,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 134,
+          "active": 75,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 775,
+          "active": 278,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2875,
+          "active": 311,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 5,
+          "active": 2,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 229,
+          "active": 15,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 514,
+          "active": 84,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4551,
+          "active": 331,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 44,
+          "active": 0,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4623,
+          "active": 6,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2524,
+          "active": 10,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 536,
+          "active": 1,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 5246,
+          "active": 6,
+          "level_n": 12929,
+          "level_active": 23
+        }
+      ],
+      "conditional_pa_clipped": 32,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2019,
+      "horizon": 3,
+      "cold": false,
+      "training_rows": 35893,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_label": 2019,
+      "shared_players": 2161,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 953,
+          "active": 140,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1609,
+          "active": 106,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 938,
+          "active": 11,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 90,
+          "active": 24,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 399,
+          "active": 121,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1403,
+          "active": 226,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1845,
+          "active": 95,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 33,
+          "active": 9,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 119,
+          "active": 78,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 667,
+          "active": 264,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2560,
+          "active": 287,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 209,
+          "active": 15,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 440,
+          "active": 77,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4063,
+          "active": 270,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 0,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4135,
+          "active": 26,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2255,
+          "active": 32,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 469,
+          "active": 3,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4595,
+          "active": 38,
+          "level_n": 11454,
+          "level_active": 99
+        }
+      ],
+      "conditional_pa_clipped": 2,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2019,
+      "horizon": 4,
+      "cold": false,
+      "training_rows": 31321,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "latest_label": 2019,
+      "shared_players": 1671,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 843,
+          "active": 186,
+          "level_n": 3140,
+          "level_active": 371
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1386,
+          "active": 131,
+          "level_n": 3140,
+          "level_active": 371
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 830,
+          "active": 16,
+          "level_n": 3140,
+          "level_active": 371
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 81,
+          "active": 38,
+          "level_n": 3140,
+          "level_active": 371
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 340,
+          "active": 117,
+          "level_n": 3229,
+          "level_active": 411
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1228,
+          "active": 202,
+          "level_n": 3229,
+          "level_active": 411
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1629,
+          "active": 83,
+          "level_n": 3229,
+          "level_active": 411
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 9,
+          "level_n": 3229,
+          "level_active": 411
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 108,
+          "active": 72,
+          "level_n": 2949,
+          "level_active": 542
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 571,
+          "active": 217,
+          "level_n": 2949,
+          "level_active": 542
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2266,
+          "active": 252,
+          "level_n": 2949,
+          "level_active": 542
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2949,
+          "level_active": 542
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 181,
+          "active": 11,
+          "level_n": 4151,
+          "level_active": 256
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 391,
+          "active": 60,
+          "level_n": 4151,
+          "level_active": 256
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3542,
+          "active": 184,
+          "level_n": 4151,
+          "level_active": 256
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 1,
+          "level_n": 4151,
+          "level_active": 256
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3597,
+          "active": 63,
+          "level_n": 9951,
+          "level_active": 218
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1982,
+          "active": 46,
+          "level_n": 9951,
+          "level_active": 218
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 404,
+          "active": 2,
+          "level_n": 9951,
+          "level_active": 218
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3968,
+          "active": 107,
+          "level_n": 9951,
+          "level_active": 218
+        }
+      ],
+      "conditional_pa_clipped": 1,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2019,
+      "horizon": 5,
+      "cold": false,
+      "training_rows": 26809,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "latest_label": 2019,
+      "shared_players": 1350,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 719,
+          "active": 185,
+          "level_n": 2683,
+          "level_active": 347
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1175,
+          "active": 109,
+          "level_n": 2683,
+          "level_active": 347
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 721,
+          "active": 13,
+          "level_n": 2683,
+          "level_active": 347
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 68,
+          "active": 40,
+          "level_n": 2683,
+          "level_active": 347
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 278,
+          "active": 92,
+          "level_n": 2767,
+          "level_active": 357
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1057,
+          "active": 182,
+          "level_n": 2767,
+          "level_active": 357
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1403,
+          "active": 74,
+          "level_n": 2767,
+          "level_active": 357
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 29,
+          "active": 9,
+          "level_n": 2767,
+          "level_active": 357
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 94,
+          "active": 60,
+          "level_n": 2544,
+          "level_active": 418
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 492,
+          "active": 178,
+          "level_n": 2544,
+          "level_active": 418
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1954,
+          "active": 179,
+          "level_n": 2544,
+          "level_active": 418
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2544,
+          "level_active": 418
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 156,
+          "active": 9,
+          "level_n": 3586,
+          "level_active": 170
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 335,
+          "active": 47,
+          "level_n": 3586,
+          "level_active": 170
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3063,
+          "active": 114,
+          "level_n": 3586,
+          "level_active": 170
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 0,
+          "level_n": 3586,
+          "level_active": 170
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3112,
+          "active": 82,
+          "level_n": 8505,
+          "level_active": 319
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1687,
+          "active": 44,
+          "level_n": 8505,
+          "level_active": 319
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 353,
+          "active": 5,
+          "level_n": 8505,
+          "level_active": 319
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3353,
+          "active": 188,
+          "level_n": 8505,
+          "level_active": 319
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2019,
+      "horizon": 6,
+      "cold": false,
+      "training_rows": 22293,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_label": 2019,
+      "shared_players": 1089,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 592,
+          "active": 152,
+          "level_n": 2237,
+          "level_active": 287
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 983,
+          "active": 95,
+          "level_n": 2237,
+          "level_active": 287
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 605,
+          "active": 7,
+          "level_n": 2237,
+          "level_active": 287
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 57,
+          "active": 33,
+          "level_n": 2237,
+          "level_active": 287
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 238,
+          "active": 74,
+          "level_n": 2305,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 885,
+          "active": 132,
+          "level_n": 2305,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1158,
+          "active": 46,
+          "level_n": 2305,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 7,
+          "level_n": 2305,
+          "level_active": 259
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 83,
+          "active": 42,
+          "level_n": 2119,
+          "level_active": 287
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 415,
+          "active": 125,
+          "level_n": 2119,
+          "level_active": 287
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1619,
+          "active": 119,
+          "level_n": 2119,
+          "level_active": 287
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 2119,
+          "level_active": 287
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 135,
+          "active": 6,
+          "level_n": 3046,
+          "level_active": 114
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 281,
+          "active": 37,
+          "level_n": 3046,
+          "level_active": 114
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 2606,
+          "active": 71,
+          "level_n": 3046,
+          "level_active": 114
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 0,
+          "level_n": 3046,
+          "level_active": 114
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 2588,
+          "active": 75,
+          "level_n": 7049,
+          "level_active": 337
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1411,
+          "active": 51,
+          "level_n": 7049,
+          "level_active": 337
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 300,
+          "active": 5,
+          "level_n": 7049,
+          "level_active": 337
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 2750,
+          "active": 206,
+          "level_n": 7049,
+          "level_active": 337
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2021,
+      "horizon": 1,
+      "cold": false,
+      "training_rows": 44821,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "latest_label": 2019,
+      "shared_players": 2156,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1186,
+          "active": 13,
+          "level_n": 4506,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 2058,
+          "active": 5,
+          "level_n": 4506,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1135,
+          "active": 1,
+          "level_n": 4506,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 127,
+          "active": 2,
+          "level_n": 4506,
+          "level_active": 21
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 500,
+          "active": 11,
+          "level_n": 4629,
+          "level_active": 73
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1812,
+          "active": 39,
+          "level_n": 4629,
+          "level_active": 73
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2276,
+          "active": 21,
+          "level_n": 4629,
+          "level_active": 73
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 2,
+          "level_n": 4629,
+          "level_active": 73
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 152,
+          "active": 41,
+          "level_n": 4205,
+          "level_active": 438
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 855,
+          "active": 167,
+          "level_n": 4205,
+          "level_active": 438
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 3191,
+          "active": 229,
+          "level_n": 4205,
+          "level_active": 438
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 7,
+          "active": 1,
+          "level_n": 4205,
+          "level_active": 438
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 232,
+          "active": 12,
+          "level_n": 5663,
+          "level_active": 452
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 553,
+          "active": 89,
+          "level_n": 5663,
+          "level_active": 452
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4831,
+          "active": 351,
+          "level_n": 5663,
+          "level_active": 452
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 47,
+          "active": 0,
+          "level_n": 5663,
+          "level_active": 452
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 5071,
+          "active": 1,
+          "level_n": 14513,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2826,
+          "active": 0,
+          "level_n": 14513,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 585,
+          "active": 0,
+          "level_n": 14513,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 6031,
+          "active": 0,
+          "level_n": 14513,
+          "level_active": 1
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2021,
+      "horizon": 2,
+      "cold": false,
+      "training_rows": 40473,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "latest_label": 2019,
+      "shared_players": 1570,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1063,
+          "active": 58,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1816,
+          "active": 37,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1044,
+          "active": 5,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 113,
+          "active": 9,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 444,
+          "active": 72,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1605,
+          "active": 171,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2065,
+          "active": 70,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 4,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 134,
+          "active": 75,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 775,
+          "active": 278,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2875,
+          "active": 311,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 5,
+          "active": 2,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 229,
+          "active": 15,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 514,
+          "active": 84,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4551,
+          "active": 331,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 44,
+          "active": 0,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4623,
+          "active": 6,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2524,
+          "active": 10,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 536,
+          "active": 1,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 5246,
+          "active": 6,
+          "level_n": 12929,
+          "level_active": 23
+        }
+      ],
+      "conditional_pa_clipped": 8,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2021,
+      "horizon": 3,
+      "cold": false,
+      "training_rows": 35893,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_label": 2019,
+      "shared_players": 1188,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 953,
+          "active": 140,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1609,
+          "active": 106,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 938,
+          "active": 11,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 90,
+          "active": 24,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 399,
+          "active": 121,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1403,
+          "active": 226,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1845,
+          "active": 95,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 33,
+          "active": 9,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 119,
+          "active": 78,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 667,
+          "active": 264,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2560,
+          "active": 287,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 209,
+          "active": 15,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 440,
+          "active": 77,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4063,
+          "active": 270,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 0,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4135,
+          "active": 26,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2255,
+          "active": 32,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 469,
+          "active": 3,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4595,
+          "active": 38,
+          "level_n": 11454,
+          "level_active": 99
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2021,
+      "horizon": 4,
+      "cold": false,
+      "training_rows": 31321,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "latest_label": 2019,
+      "shared_players": 893,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 843,
+          "active": 186,
+          "level_n": 3140,
+          "level_active": 371
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1386,
+          "active": 131,
+          "level_n": 3140,
+          "level_active": 371
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 830,
+          "active": 16,
+          "level_n": 3140,
+          "level_active": 371
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 81,
+          "active": 38,
+          "level_n": 3140,
+          "level_active": 371
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 340,
+          "active": 117,
+          "level_n": 3229,
+          "level_active": 411
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1228,
+          "active": 202,
+          "level_n": 3229,
+          "level_active": 411
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1629,
+          "active": 83,
+          "level_n": 3229,
+          "level_active": 411
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 9,
+          "level_n": 3229,
+          "level_active": 411
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 108,
+          "active": 72,
+          "level_n": 2949,
+          "level_active": 542
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 571,
+          "active": 217,
+          "level_n": 2949,
+          "level_active": 542
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2266,
+          "active": 252,
+          "level_n": 2949,
+          "level_active": 542
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2949,
+          "level_active": 542
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 181,
+          "active": 11,
+          "level_n": 4151,
+          "level_active": 256
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 391,
+          "active": 60,
+          "level_n": 4151,
+          "level_active": 256
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3542,
+          "active": 184,
+          "level_n": 4151,
+          "level_active": 256
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 1,
+          "level_n": 4151,
+          "level_active": 256
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3597,
+          "active": 63,
+          "level_n": 9951,
+          "level_active": 218
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1982,
+          "active": 46,
+          "level_n": 9951,
+          "level_active": 218
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 404,
+          "active": 2,
+          "level_n": 9951,
+          "level_active": 218
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3968,
+          "active": 107,
+          "level_n": 9951,
+          "level_active": 218
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "cold": false,
+      "training_rows": 48985,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "latest_label": 2022,
+      "shared_players": 3349,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1361,
+          "active": 13,
+          "level_n": 5021,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 2287,
+          "active": 5,
+          "level_n": 5021,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1221,
+          "active": 1,
+          "level_n": 5021,
+          "level_active": 21
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 152,
+          "active": 2,
+          "level_n": 5021,
+          "level_active": 21
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 561,
+          "active": 18,
+          "level_n": 5125,
+          "level_active": 88
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 2002,
+          "active": 44,
+          "level_n": 5125,
+          "level_active": 88
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2521,
+          "active": 24,
+          "level_n": 5125,
+          "level_active": 88
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 2,
+          "level_n": 5125,
+          "level_active": 88
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 169,
+          "active": 44,
+          "level_n": 4645,
+          "level_active": 481
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 932,
+          "active": 183,
+          "level_n": 4645,
+          "level_active": 481
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 3537,
+          "active": 253,
+          "level_n": 4645,
+          "level_active": 481
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 7,
+          "active": 1,
+          "level_n": 4645,
+          "level_active": 481
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 239,
+          "active": 13,
+          "level_n": 6070,
+          "level_active": 551
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 607,
+          "active": 115,
+          "level_n": 6070,
+          "level_active": 551
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 5176,
+          "active": 423,
+          "level_n": 6070,
+          "level_active": 551
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 48,
+          "active": 0,
+          "level_n": 6070,
+          "level_active": 551
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 5530,
+          "active": 1,
+          "level_n": 15905,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2965,
+          "active": 0,
+          "level_n": 15905,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 622,
+          "active": 0,
+          "level_n": 15905,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 6788,
+          "active": 0,
+          "level_n": 15905,
+          "level_active": 1
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "cold": false,
+      "training_rows": 40473,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "latest_label": 2019,
+      "shared_players": 1193,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1063,
+          "active": 58,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1816,
+          "active": 37,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1044,
+          "active": 5,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 113,
+          "active": 9,
+          "level_n": 4036,
+          "level_active": 109
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 444,
+          "active": 72,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1605,
+          "active": 171,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2065,
+          "active": 70,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 37,
+          "active": 4,
+          "level_n": 4151,
+          "level_active": 317
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 134,
+          "active": 75,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 775,
+          "active": 278,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2875,
+          "active": 311,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 5,
+          "active": 2,
+          "level_n": 3789,
+          "level_active": 666
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 229,
+          "active": 15,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 514,
+          "active": 84,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4551,
+          "active": 331,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 44,
+          "active": 0,
+          "level_n": 5338,
+          "level_active": 430
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4623,
+          "active": 6,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2524,
+          "active": 10,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 536,
+          "active": 1,
+          "level_n": 12929,
+          "level_active": 23
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 5246,
+          "active": 6,
+          "level_n": 12929,
+          "level_active": 23
+        }
+      ],
+      "conditional_pa_clipped": 6,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold": false,
+      "training_rows": 35893,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_label": 2019,
+      "shared_players": 900,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 953,
+          "active": 140,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1609,
+          "active": 106,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 938,
+          "active": 11,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 90,
+          "active": 24,
+          "level_n": 3590,
+          "level_active": 281
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 399,
+          "active": 121,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1403,
+          "active": 226,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1845,
+          "active": 95,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 33,
+          "active": 9,
+          "level_n": 3680,
+          "level_active": 451
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 119,
+          "active": 78,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 667,
+          "active": 264,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2560,
+          "active": 287,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 3350,
+          "level_active": 630
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 209,
+          "active": 15,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 440,
+          "active": 77,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4063,
+          "active": 270,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 0,
+          "level_n": 4753,
+          "level_active": 362
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4135,
+          "active": 26,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2255,
+          "active": 32,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 469,
+          "active": 3,
+          "level_n": 11454,
+          "level_active": 99
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4595,
+          "active": 38,
+          "level_n": 11454,
+          "level_active": 99
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2025,
+      "horizon": 1,
+      "cold": false,
+      "training_rows": 61116,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "latest_label": 2025,
+      "shared_players": 3055,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1965,
+          "active": 13,
+          "level_n": 6706,
+          "level_active": 24
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 3017,
+          "active": 7,
+          "level_n": 6706,
+          "level_active": 24
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1441,
+          "active": 1,
+          "level_n": 6706,
+          "level_active": 24
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 283,
+          "active": 3,
+          "level_n": 6706,
+          "level_active": 24
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 802,
+          "active": 25,
+          "level_n": 6531,
+          "level_active": 103
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 2583,
+          "active": 50,
+          "level_n": 6531,
+          "level_active": 103
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 3097,
+          "active": 26,
+          "level_n": 6531,
+          "level_active": 103
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 49,
+          "active": 2,
+          "level_n": 6531,
+          "level_active": 103
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 260,
+          "active": 58,
+          "level_n": 6003,
+          "level_active": 579
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 1246,
+          "active": 224,
+          "level_n": 6003,
+          "level_active": 579
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 4483,
+          "active": 296,
+          "level_n": 6003,
+          "level_active": 579
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 14,
+          "active": 1,
+          "level_n": 6003,
+          "level_active": 579
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 257,
+          "active": 20,
+          "level_n": 7143,
+          "level_active": 752
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 750,
+          "active": 159,
+          "level_n": 7143,
+          "level_active": 752
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 6088,
+          "active": 573,
+          "level_n": 7143,
+          "level_active": 752
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 48,
+          "active": 0,
+          "level_n": 7143,
+          "level_active": 752
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 6713,
+          "active": 1,
+          "level_n": 19691,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 3239,
+          "active": 0,
+          "level_n": 19691,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 699,
+          "active": 0,
+          "level_n": 19691,
+          "level_active": 1
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 9040,
+          "active": 0,
+          "level_n": 19691,
+          "level_active": 1
+        }
+      ],
+      "conditional_pa_clipped": 3,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2025,
+      "horizon": 2,
+      "cold": false,
+      "training_rows": 52885,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2021,
+        2022,
+        2023
+      ],
+      "latest_label": 2025,
+      "shared_players": 2433,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1636,
+          "active": 73,
+          "level_n": 5691,
+          "level_active": 147
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 2543,
+          "active": 53,
+          "level_n": 5691,
+          "level_active": 147
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1285,
+          "active": 7,
+          "level_n": 5691,
+          "level_active": 147
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 227,
+          "active": 14,
+          "level_n": 5691,
+          "level_active": 147
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 653,
+          "active": 107,
+          "level_n": 5564,
+          "level_active": 409
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 2181,
+          "active": 210,
+          "level_n": 5564,
+          "level_active": 409
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2689,
+          "active": 88,
+          "level_n": 5564,
+          "level_active": 409
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 41,
+          "active": 4,
+          "level_n": 5564,
+          "level_active": 409
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 215,
+          "active": 105,
+          "level_n": 5134,
+          "level_active": 879
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 1048,
+          "active": 350,
+          "level_n": 5134,
+          "level_active": 879
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 3863,
+          "active": 420,
+          "level_n": 5134,
+          "level_active": 879
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 8,
+          "active": 4,
+          "level_n": 5134,
+          "level_active": 879
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 245,
+          "active": 22,
+          "level_n": 6488,
+          "level_active": 680
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 659,
+          "active": 144,
+          "level_n": 6488,
+          "level_active": 680
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 5539,
+          "active": 514,
+          "level_n": 6488,
+          "level_active": 680
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 45,
+          "active": 0,
+          "level_n": 6488,
+          "level_active": 680
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 5931,
+          "active": 6,
+          "level_n": 16967,
+          "level_active": 26
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2881,
+          "active": 11,
+          "level_n": 16967,
+          "level_active": 26
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 643,
+          "active": 1,
+          "level_n": 16967,
+          "level_active": 26
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 7512,
+          "active": 8,
+          "level_n": 16967,
+          "level_active": 26
+        }
+      ],
+      "conditional_pa_clipped": 13,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2025,
+      "horizon": 3,
+      "cold": false,
+      "training_rows": 44212,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2021,
+        2022
+      ],
+      "latest_label": 2025,
+      "shared_players": 1839,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1318,
+          "active": 174,
+          "level_n": 4686,
+          "level_active": 365
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 2097,
+          "active": 141,
+          "level_n": 4686,
+          "level_active": 365
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1112,
+          "active": 17,
+          "level_n": 4686,
+          "level_active": 365
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 159,
+          "active": 33,
+          "level_n": 4686,
+          "level_active": 365
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 533,
+          "active": 156,
+          "level_n": 4635,
+          "level_active": 559
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1783,
+          "active": 271,
+          "level_n": 4635,
+          "level_active": 559
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2285,
+          "active": 123,
+          "level_n": 4635,
+          "level_active": 559
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 34,
+          "active": 9,
+          "level_n": 4635,
+          "level_active": 559
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 169,
+          "active": 98,
+          "level_n": 4216,
+          "level_active": 794
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 829,
+          "active": 320,
+          "level_n": 4216,
+          "level_active": 794
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 3213,
+          "active": 374,
+          "level_n": 4216,
+          "level_active": 794
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 5,
+          "active": 2,
+          "level_n": 4216,
+          "level_active": 794
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 220,
+          "active": 19,
+          "level_n": 5555,
+          "level_active": 523
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 540,
+          "active": 118,
+          "level_n": 5555,
+          "level_active": 523
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4753,
+          "active": 386,
+          "level_n": 5555,
+          "level_active": 523
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 42,
+          "active": 0,
+          "level_n": 5555,
+          "level_active": 523
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 5031,
+          "active": 30,
+          "level_n": 14173,
+          "level_active": 116
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2518,
+          "active": 36,
+          "level_n": 14173,
+          "level_active": 116
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 540,
+          "active": 3,
+          "level_n": 14173,
+          "level_active": 116
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 6084,
+          "active": 47,
+          "level_n": 14173,
+          "level_active": 116
+        }
+      ],
+      "conditional_pa_clipped": 3,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2025,
+      "horizon": 4,
+      "cold": false,
+      "training_rows": 35485,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2021
+      ],
+      "latest_label": 2025,
+      "shared_players": 1378,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 1018,
+          "active": 209,
+          "level_n": 3655,
+          "level_active": 424
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1615,
+          "active": 155,
+          "level_n": 3655,
+          "level_active": 424
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 916,
+          "active": 17,
+          "level_n": 3655,
+          "level_active": 424
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 106,
+          "active": 43,
+          "level_n": 3655,
+          "level_active": 424
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 401,
+          "active": 138,
+          "level_n": 3725,
+          "level_active": 491
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1418,
+          "active": 237,
+          "level_n": 3725,
+          "level_active": 491
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1874,
+          "active": 107,
+          "level_n": 3725,
+          "level_active": 491
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 9,
+          "level_n": 3725,
+          "level_active": 491
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 125,
+          "active": 78,
+          "level_n": 3389,
+          "level_active": 618
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 648,
+          "active": 241,
+          "level_n": 3389,
+          "level_active": 618
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2612,
+          "active": 298,
+          "level_n": 3389,
+          "level_active": 618
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 3389,
+          "level_active": 618
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 188,
+          "active": 13,
+          "level_n": 4558,
+          "level_active": 325
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 445,
+          "active": 82,
+          "level_n": 4558,
+          "level_active": 325
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3887,
+          "active": 229,
+          "level_n": 4558,
+          "level_active": 325
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 38,
+          "active": 1,
+          "level_n": 4558,
+          "level_active": 325
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4056,
+          "active": 68,
+          "level_n": 11343,
+          "level_active": 251
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2121,
+          "active": 53,
+          "level_n": 11343,
+          "level_active": 251
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 441,
+          "active": 2,
+          "level_n": 11343,
+          "level_active": 251
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4725,
+          "active": 128,
+          "level_n": 11343,
+          "level_active": 251
+        }
+      ],
+      "conditional_pa_clipped": 2,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2025,
+      "horizon": 5,
+      "cold": false,
+      "training_rows": 26809,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "latest_label": 2019,
+      "shared_players": 220,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 719,
+          "active": 185,
+          "level_n": 2683,
+          "level_active": 347
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1175,
+          "active": 109,
+          "level_n": 2683,
+          "level_active": 347
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 721,
+          "active": 13,
+          "level_n": 2683,
+          "level_active": 347
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 68,
+          "active": 40,
+          "level_n": 2683,
+          "level_active": 347
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 278,
+          "active": 92,
+          "level_n": 2767,
+          "level_active": 357
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1057,
+          "active": 182,
+          "level_n": 2767,
+          "level_active": 357
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1403,
+          "active": 74,
+          "level_n": 2767,
+          "level_active": 357
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 29,
+          "active": 9,
+          "level_n": 2767,
+          "level_active": 357
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 94,
+          "active": 60,
+          "level_n": 2544,
+          "level_active": 418
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 492,
+          "active": 178,
+          "level_n": 2544,
+          "level_active": 418
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1954,
+          "active": 179,
+          "level_n": 2544,
+          "level_active": 418
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 4,
+          "active": 1,
+          "level_n": 2544,
+          "level_active": 418
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 156,
+          "active": 9,
+          "level_n": 3586,
+          "level_active": 170
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 335,
+          "active": 47,
+          "level_n": 3586,
+          "level_active": 170
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3063,
+          "active": 114,
+          "level_n": 3586,
+          "level_active": 170
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 32,
+          "active": 0,
+          "level_n": 3586,
+          "level_active": 170
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3112,
+          "active": 82,
+          "level_n": 8505,
+          "level_active": 319
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1687,
+          "active": 44,
+          "level_n": 8505,
+          "level_active": 319
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 353,
+          "active": 5,
+          "level_n": 8505,
+          "level_active": 319
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 3353,
+          "active": 188,
+          "level_n": 8505,
+          "level_active": 319
+        }
+      ],
+      "conditional_pa_clipped": 1,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2025,
+      "horizon": 6,
+      "cold": false,
+      "training_rows": 22293,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013
+      ],
+      "latest_label": 2019,
+      "shared_players": 178,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 592,
+          "active": 152,
+          "level_n": 2237,
+          "level_active": 287
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 983,
+          "active": 95,
+          "level_n": 2237,
+          "level_active": 287
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 605,
+          "active": 7,
+          "level_n": 2237,
+          "level_active": 287
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 57,
+          "active": 33,
+          "level_n": 2237,
+          "level_active": 287
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 238,
+          "active": 74,
+          "level_n": 2305,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 885,
+          "active": 132,
+          "level_n": 2305,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1158,
+          "active": 46,
+          "level_n": 2305,
+          "level_active": 259
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 7,
+          "level_n": 2305,
+          "level_active": 259
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 83,
+          "active": 42,
+          "level_n": 2119,
+          "level_active": 287
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 415,
+          "active": 125,
+          "level_n": 2119,
+          "level_active": 287
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 1619,
+          "active": 119,
+          "level_n": 2119,
+          "level_active": 287
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 2,
+          "active": 1,
+          "level_n": 2119,
+          "level_active": 287
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 135,
+          "active": 6,
+          "level_n": 3046,
+          "level_active": 114
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 281,
+          "active": 37,
+          "level_n": 3046,
+          "level_active": 114
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 2606,
+          "active": 71,
+          "level_n": 3046,
+          "level_active": 114
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 0,
+          "level_n": 3046,
+          "level_active": 114
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 2588,
+          "active": 75,
+          "level_n": 7049,
+          "level_active": 337
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 1411,
+          "active": 51,
+          "level_n": 7049,
+          "level_active": 337
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 300,
+          "active": 5,
+          "level_n": 7049,
+          "level_active": 337
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 2750,
+          "active": 206,
+          "level_n": 7049,
+          "level_active": 337
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2022,
+      "horizon": 1,
+      "cold": true,
+      "training_rows": 39450,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2021
+      ],
+      "latest_label": 2022,
+      "shared_players": 0,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 804,
+          "active": 4,
+          "level_n": 3782,
+          "level_active": 6
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1795,
+          "active": 1,
+          "level_n": 3782,
+          "level_active": 6
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1137,
+          "active": 1,
+          "level_n": 3782,
+          "level_active": 6
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 46,
+          "active": 0,
+          "level_n": 3782,
+          "level_active": 6
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 301,
+          "active": 0,
+          "level_n": 4013,
+          "level_active": 29
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1468,
+          "active": 16,
+          "level_n": 4013,
+          "level_active": 29
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 2220,
+          "active": 13,
+          "level_n": 4013,
+          "level_active": 29
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 24,
+          "active": 0,
+          "level_n": 4013,
+          "level_active": 29
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 71,
+          "active": 11,
+          "level_n": 3623,
+          "level_active": 212
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 567,
+          "active": 65,
+          "level_n": 3623,
+          "level_active": 212
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2984,
+          "active": 136,
+          "level_n": 3623,
+          "level_active": 212
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 1,
+          "active": 0,
+          "level_n": 3623,
+          "level_active": 212
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 211,
+          "active": 2,
+          "level_n": 5402,
+          "level_active": 272
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 470,
+          "active": 35,
+          "level_n": 5402,
+          "level_active": 272
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4677,
+          "active": 235,
+          "level_n": 5402,
+          "level_active": 272
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 44,
+          "active": 0,
+          "level_n": 5402,
+          "level_active": 272
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4863,
+          "active": 0,
+          "level_n": 13108,
+          "level_active": 0
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2688,
+          "active": 0,
+          "level_n": 13108,
+          "level_active": 0
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 590,
+          "active": 0,
+          "level_n": 13108,
+          "level_active": 0
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4967,
+          "active": 0,
+          "level_n": 13108,
+          "level_active": 0
+        }
+      ],
+      "conditional_pa_clipped": 0,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2022,
+      "horizon": 2,
+      "cold": true,
+      "training_rows": 35898,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "latest_label": 2019,
+      "shared_players": 0,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 744,
+          "active": 16,
+          "level_n": 3427,
+          "level_active": 34
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1612,
+          "active": 14,
+          "level_n": 3427,
+          "level_active": 34
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 1027,
+          "active": 4,
+          "level_n": 3427,
+          "level_active": 34
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 44,
+          "active": 0,
+          "level_n": 3427,
+          "level_active": 34
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 281,
+          "active": 15,
+          "level_n": 3594,
+          "level_active": 121
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1324,
+          "active": 71,
+          "level_n": 3594,
+          "level_active": 121
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1967,
+          "active": 35,
+          "level_n": 3594,
+          "level_active": 121
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 22,
+          "active": 0,
+          "level_n": 3594,
+          "level_active": 121
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 68,
+          "active": 25,
+          "level_n": 3268,
+          "level_active": 332
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 532,
+          "active": 108,
+          "level_n": 3268,
+          "level_active": 332
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2667,
+          "active": 199,
+          "level_n": 3268,
+          "level_active": 332
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 1,
+          "active": 0,
+          "level_n": 3268,
+          "level_active": 332
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 208,
+          "active": 4,
+          "level_n": 5084,
+          "level_active": 269
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 449,
+          "active": 38,
+          "level_n": 5084,
+          "level_active": 269
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 4384,
+          "active": 227,
+          "level_n": 5084,
+          "level_active": 269
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 43,
+          "active": 0,
+          "level_n": 5084,
+          "level_active": 269
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 4395,
+          "active": 1,
+          "level_n": 11781,
+          "level_active": 6
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2393,
+          "active": 3,
+          "level_n": 11781,
+          "level_active": 6
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 531,
+          "active": 1,
+          "level_n": 11781,
+          "level_active": 6
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4462,
+          "active": 1,
+          "level_n": 11781,
+          "level_active": 6
+        }
+      ],
+      "conditional_pa_clipped": 25,
+      "rate_clipped": 0
+    },
+    {
+      "origin": 2022,
+      "horizon": 3,
+      "cold": true,
+      "training_rows": 32503,
+      "training_origins": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "latest_label": 2019,
+      "shared_players": 0,
+      "probability_cells": [
+        {
+          "level": "A",
+          "age_band": "19-20",
+          "n": 691,
+          "active": 40,
+          "level_n": 3118,
+          "level_active": 93
+        },
+        {
+          "level": "A",
+          "age_band": "21-22",
+          "n": 1461,
+          "active": 40,
+          "level_n": 3118,
+          "level_active": 93
+        },
+        {
+          "level": "A",
+          "age_band": "23+",
+          "n": 927,
+          "active": 9,
+          "level_n": 3118,
+          "level_active": 93
+        },
+        {
+          "level": "A",
+          "age_band": "<=18",
+          "n": 39,
+          "active": 4,
+          "level_n": 3118,
+          "level_active": 93
+        },
+        {
+          "level": "A+",
+          "age_band": "19-20",
+          "n": 260,
+          "active": 25,
+          "level_n": 3249,
+          "level_active": 170
+        },
+        {
+          "level": "A+",
+          "age_band": "21-22",
+          "n": 1192,
+          "active": 95,
+          "level_n": 3249,
+          "level_active": 170
+        },
+        {
+          "level": "A+",
+          "age_band": "23+",
+          "n": 1775,
+          "active": 49,
+          "level_n": 3249,
+          "level_active": 170
+        },
+        {
+          "level": "A+",
+          "age_band": "<=18",
+          "n": 22,
+          "active": 1,
+          "level_n": 3249,
+          "level_active": 170
+        },
+        {
+          "level": "AA",
+          "age_band": "19-20",
+          "n": 65,
+          "active": 30,
+          "level_n": 2967,
+          "level_active": 339
+        },
+        {
+          "level": "AA",
+          "age_band": "21-22",
+          "n": 487,
+          "active": 115,
+          "level_n": 2967,
+          "level_active": 339
+        },
+        {
+          "level": "AA",
+          "age_band": "23+",
+          "n": 2414,
+          "active": 194,
+          "level_n": 2967,
+          "level_active": 339
+        },
+        {
+          "level": "AA",
+          "age_band": "<=18",
+          "n": 1,
+          "active": 0,
+          "level_n": 2967,
+          "level_active": 339
+        },
+        {
+          "level": "AAA",
+          "age_band": "19-20",
+          "n": 191,
+          "active": 5,
+          "level_n": 4568,
+          "level_active": 232
+        },
+        {
+          "level": "AAA",
+          "age_band": "21-22",
+          "n": 391,
+          "active": 39,
+          "level_n": 4568,
+          "level_active": 232
+        },
+        {
+          "level": "AAA",
+          "age_band": "23+",
+          "n": 3946,
+          "active": 188,
+          "level_n": 4568,
+          "level_active": 232
+        },
+        {
+          "level": "AAA",
+          "age_band": "<=18",
+          "n": 40,
+          "active": 0,
+          "level_n": 4568,
+          "level_active": 232
+        },
+        {
+          "level": "RK",
+          "age_band": "19-20",
+          "n": 3967,
+          "active": 9,
+          "level_n": 10628,
+          "level_active": 30
+        },
+        {
+          "level": "RK",
+          "age_band": "21-22",
+          "n": 2167,
+          "active": 13,
+          "level_n": 10628,
+          "level_active": 30
+        },
+        {
+          "level": "RK",
+          "age_band": "23+",
+          "n": 467,
+          "active": 3,
+          "level_n": 10628,
+          "level_active": 30
+        },
+        {
+          "level": "RK",
+          "age_band": "<=18",
+          "n": 4027,
+          "active": 5,
+          "level_n": 10628,
+          "level_active": 30
+        }
+      ],
+      "conditional_pa_clipped": 2,
+      "rate_clipped": 0
+    }
+  ],
+  "protected_outcomes_used": false,
+  "forecasts_changed": false
+}

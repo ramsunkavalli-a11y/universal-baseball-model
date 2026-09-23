@@ -1,10 +1,27 @@
 # Project status and handoff
 
-Updated 2026-09-22. This is the current start-here document.
+Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest: the [six-year hitter extension](six-year-hitter-extension-v1-result.md)
+Latest: the [rookie-ball arrival repair](hitter-arrival-coherence-v1-result.md)
+passes its predeclared Years 1–3 development checks. A shared annual participation
+probability now connects rookie-ball PA and batting value. Affected players'
+three-year RMSE improves 0.237→0.206 across three normal historical origins;
+whole-population improvement is small. The broader all-minors candidate fails,
+and the stronger earlier opportunity ensemble remains slightly better on pooled
+PA error. This is a targeted repair, not a new universal playing-time winner.
+The explorer at `http://127.0.0.1:8777/` includes selected-player and unique-player
+league totals. Giants rookie-ball 2027 contributions fall from 184 to 5 PA;
+league PA falls from 189,695 to 184,389 without forced rescaling. Only eligible
+rookie-ball players in Years 1–3 change; the old packages, MLB/upper-minors means,
+and Years 4–6 stay unchanged. Later arrival calibration, unseen future entrants,
+standard-WAR accounting and full remaining-control value are still open.
+Next predeclare a stronger-ensemble-based, chronology-safe joint opportunity/value
+candidate with level/age and aggregate checks, rather than scaling everyone to
+a league budget or extending this short-horizon repair automatically.
+
+Previous: the [six-year hitter extension](six-year-hitter-extension-v1-result.md)
 adds 2029–2031 to unchanged 2026–2028 forecasts, with the team-filter explorer at
 `http://127.0.0.1:8776/`. Richer long-horizon batting forecasts beat age/level/PA
 and Year-3 carry-forward benchmarks; six-calendar-year batting/replacement RMSE

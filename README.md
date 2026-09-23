@@ -22,7 +22,15 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
-**Latest:** [six-calendar-year hitter forecasts](docs/six-year-hitter-extension-v1-result.md)
+**Latest:** a [tested rookie-ball arrival correction](docs/hitter-arrival-coherence-v1-result.md)
+reduces inflated near-term prospect contributions in Years 1–3. The broader
+minor-league change failed and was rejected. The updated team-filter explorer
+at `http://127.0.0.1:8777/` shows selected-player and league totals; those totals
+are not forcibly balanced, and combined value is not normalized full WAR.
+MLB/upper-minors forecasts and Years 4–6 are unchanged. The original 2026
+forecast stays frozen.
+
+**Previous:** [six-calendar-year hitter forecasts](docs/six-year-hitter-extension-v1-result.md)
 now extend through 2031, with unchanged earlier means and a team-filter explorer.
 The longer batting models improve development tests, but pandemic-era coverage
 limits confidence. Full remaining-control value is **not yet complete**: service
