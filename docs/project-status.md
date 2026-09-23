@@ -4,7 +4,18 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest: the [player-path/value bridge](player-path-value-bridge-v1-result.md)
+Latest direction review: the [baseball simulation literature note](baseball-simulation-literature-2026-09-23.md)
+and [bounded next checkpoint](projection-anchored-path-next-checkpoint.md) tighten
+the next approach without fitting or changing any forecasts. First audit retained
+historical snapshots and test one identity-balanced population repair against the
+rejected path model. Only then, if cutoff-safe anchors and adequate support can be
+recovered, test one projection-anchored development-path challenger. Preserve the
+stronger existing projection instead of replacing its talent estimate with whole
+donor careers. Require success/continuation calibration and Monte Carlo stability;
+more draws do not fix model bias. This is our proposed design, not a claim to have
+reproduced proprietary ZiPS/PECOTA. Current dollar outputs remain unavailable.
+
+Latest completed experiment: the [player-path/value bridge](player-path-value-bridge-v1-result.md)
 re-centers the project on outcome distributions and transferable rights, not just
 mean calendar production. A tested path-level valuation interface keeps control,
 cost, nonlinear production pricing and missing tails explicit. It does not yet

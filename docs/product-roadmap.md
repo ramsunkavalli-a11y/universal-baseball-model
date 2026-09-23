@@ -20,9 +20,16 @@ history improves distribution scores; prospect regular outcomes remain too low,
 and mean accuracy trails the delivered model. Old career simulators remain
 rejected. The live forecast is unchanged and player dollar values are unavailable.
 
-Immediate priority: audit young/brief-MLB career continuation and historical donor
-support, then predeclare one revised distribution test with prospect success
-calibration and strong mean-model comparators. Complete whole-WAR and joint
+Immediate priority follows the [bounded next checkpoint](projection-anchored-path-next-checkpoint.md),
+informed by the [baseball simulation review](baseball-simulation-literature-2026-09-23.md):
+audit young/brief-MLB continuation and historical snapshot support; test one
+identity-balanced population repair against the rejected control; then, only if
+cutoff-safe anchors and adequate support exist, predeclare one projection-anchored
+development-path challenger. Keep our validated projection central, shrink uncertain
+development appropriately, and distinguish persistent ability from availability
+and event noise. Require prospect-success calibration, strong mean-model comparators
+and repeated-draw stability. The literature review itself makes no model changes.
+Complete whole-WAR and joint
 service/rights/cost validation before connecting the value interface to real player
 prices. Preserve the existing models as benchmarks; do not spend the next cycle
 solely shaving overall mean error across mostly-zero players. Future entrants are

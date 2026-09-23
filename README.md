@@ -27,7 +27,11 @@ separates career outcomes from the value of acquiring a player's rights. Its new
 path model fails validation and is not deployed; the tested valuation interface
 withholds dollar values until production, control and costs are supported.
 The next priority is prospect/young-MLB success and continuation, not merely lower
-average error across non-arrivals.
+average error across non-arrivals. The [simulation literature review](docs/baseball-simulation-literature-2026-09-23.md)
+now informs a [bounded follow-up](docs/projection-anchored-path-next-checkpoint.md):
+audit/repair historical snapshot support first, then test at most one feasible
+projection-anchored development model. No new fits or live changes accompanied
+this review.
 
 **Latest delivered forecast:** a [tested rookie-ball arrival correction](docs/hitter-arrival-coherence-v1-result.md)
 reduces inflated near-term prospect contributions in Years 1–3. The broader
