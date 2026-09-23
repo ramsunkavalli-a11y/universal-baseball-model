@@ -4,15 +4,25 @@ Updated 2026-09-22. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
+The [opportunity/calendar decomposition](hitter-opportunity-calendar-v1-result.md)
+is complete. Top-50 PA RMSE improves 188.6 to 174.9 in ordinary windows, but the
+uncertain subgroup gain reverses in 2020 and 2021 targets. Conditional workload,
+not participation, explains most of the difference. Hindsight exposure scaling
+largely explains the 2020 reversal, but is not an ex-ante prediction. Young-star
+PA errors still worsen in ordinary windows and fixed-rate value barely improves.
+Next: a predeclared schedule-exposure-aware conditional-PA challenger with activity
+and performance held fixed, testing individual allocation and total value. No
+forecast or acceptance gate changed; the v2 explorer remains current.
+
 The [anchored-development experiment](hitter-anchored-development-v1-result.md)
 is complete and rejected for delivery. Learning rate changes worsened overall
 Year-2 error; simply retaining the estimated rate improved six of seven origins
 but failed high-end full-sample checks. Nonpandemic young-star forecasts improved
 substantially, so the result does not establish that their projected decline is
 appropriate. New opportunity heads also worsened top-player PA errors. Keep the
-v2 explorer unchanged. Next: distinguish normal-season opportunity errors from
-pandemic/calendar exposure before a further combined challenger; no manual uplift
-or post-score substitution of the carry-forward diagnostic.
+v2 explorer unchanged. The decomposition above now distinguishes normal-season
+errors from calendar exposure; no manual uplift or post-score substitution of
+the carry-forward diagnostic is justified.
 
 The [Year-1/Year-2 consistency test](hitter-horizon-consistency-v1-result.md) now
 explains part of the visible decline among stars: switching from the rich first-year
