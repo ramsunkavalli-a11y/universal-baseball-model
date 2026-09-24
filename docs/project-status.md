@@ -4,7 +4,25 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest milestone: [conditional workload comparison](hitter-conditional-workload-v1-result.md).
+Latest milestone: [explicit talent and draft pedigree workload test](hitter-talent-workload-v1-result.md).
+The predeclared combined TP challenger fails: three-year prospect PA RMSE barely
+changes from 121.668 (D) to 121.534, with an uncertain paired difference; only
+one of three origins improves versus D. Aggregate PA error worsens, especially
+the already-low 2021 cohort. Talent-only and draft-only gains are also uncertain.
+Retain D; do not select an ablation after the primary failure. This does not
+refute quality-dependent playing time: it rejects this particular incremental
+encoding. D already captures some quality association, but missed regulars remain.
+
+Built 20 supported historical-cutoff talent heads and 36 workload fits; four
+future-label replays, exact D replay, 28 focused tests and archive/freeze checks
+pass. Narrow official draft evidence was recovered from the earlier checkout;
+public historical grades were not certified and were not substituted with current
+FV. Participation probabilities stayed fixed; no live or component-value changes.
+Next research must distinguish the participation/promotion bottleneck from
+conditional workload, preserve cohort totals/non-arrivers, and keep D/F as the
+control. The separate safe PA-to-value integration remains outstanding.
+
+Previous milestone: [conditional workload comparison](hitter-conditional-workload-v1-result.md).
 Detailed direct conditional PA (D), with repaired participation held fixed,
 passes all predeclared workload gates. Prospect three-year PA RMSE is 121.67
 versus 126.18 for the stronger ensemble, 127.03 for inherited workload and

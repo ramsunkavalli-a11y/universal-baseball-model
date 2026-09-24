@@ -2,7 +2,20 @@
 
 2026-09-23. Diagnosis supported; useful partial repairs, no production replacement.
 
-## Latest follow-up: a better conditional playing-time model
+## Latest follow-up: explicit talent and pedigree did not fix the shortfall
+
+The [talent/workload test](hitter-talent-workload-v1-result.md) adds past-only
+batting-talent forecasts and official draft pedigree to D. The combined candidate
+does not reliably improve prediction: three-year PA RMSE is 121.53 versus 121.67,
+and the 2021 cohort total falls from 72,078 to 65,952 versus 121,444 actual.
+Pena changes from 92 to 93 expected next-year PA, versus 558 actual. Retain D.
+
+This is not evidence that prospect quality does not matter. These are imperfect
+batting-rate and draft proxies, not dated FV/ceiling or all-around talent grades.
+Participation was held fixed to isolate workload; some misses are still strongly
+limited by low participation probabilities. No manual bonus or explorer change.
+
+## Previous follow-up: a better conditional playing-time model
 
 The [workload comparison](hitter-conditional-workload-v1-result.md) finds a
 useful improvement. With participation probabilities unchanged, the detailed
