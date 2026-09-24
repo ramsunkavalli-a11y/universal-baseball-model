@@ -4,7 +4,23 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest milestone: [Years 1–3 arrival-to-value transfer](hitter-arrival-value-transfer-v1-result.md).
+Latest milestone: [conditional workload comparison](hitter-conditional-workload-v1-result.md).
+Detailed direct conditional PA (D), with repaired participation held fixed,
+passes all predeclared workload gates. Prospect three-year PA RMSE is 121.67
+versus 126.18 for the stronger ensemble, 127.03 for inherited workload and
+123.53 for the basic feature control. D beats the ensemble in each horizon;
+the cumulative paired 97.5% MSE interval is wholly favorable. All 23 supported
+harm checks pass. The role-mixture candidate fails; do not promote it.
+
+This selects a research workload head for never-debuted prospects, not a full
+WAR/value model. The 2021 cohort remains substantially underpredicted (72,078
+three-year PA versus 121,444 actual). 36 fits, four future-mutation replays,
+23 focused tests and archive/freeze checks verify. No live forecasts, explorer
+or 2026 outcomes changed. Next: predeclare the safe Years 1–3 PA-to-value
+connection, auditing component exposure definitions before refitting rates or
+direct totals. Never scale old direct nonbatting totals by new/old tiny PA.
+
+Previous milestone: [Years 1–3 arrival-to-value transfer](hitter-arrival-value-transfer-v1-result.md).
 The repaired probabilities improve prospect PA prediction versus both accepted
 C2 and original-detail R in every annual fold. Three-year PA RMSE is 144.96→127.03
 versus C2, but the existing harmonized ensemble remains slightly better at 126.18.

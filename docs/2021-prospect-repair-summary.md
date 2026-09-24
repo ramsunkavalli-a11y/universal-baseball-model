@@ -2,7 +2,22 @@
 
 2026-09-23. Diagnosis supported; useful partial repairs, no production replacement.
 
-## Latest follow-up: does the improvement reach playing time and value?
+## Latest follow-up: a better conditional playing-time model
+
+The [workload comparison](hitter-conditional-workload-v1-result.md) finds a
+useful improvement. With participation probabilities unchanged, the detailed
+direct PA model beats the stronger ensemble in all three horizons. Three-year
+prospect PA RMSE falls from 126.18 to 121.67 and passes the fixed evidence rule.
+The brief/part-time/regular mixture does not pass. Keep the direct model as a
+research candidate, not a deployed value model.
+
+This is a partial repair: the 2021 cohort's three-year PA rises from 65,943 to
+72,078 versus 121,444 actual. Pena's next-year expected PA rises from 76 to 92
+versus 558 actual. Future regulars remain difficult to identify. No explorer
+or frozen forecast changed. Next test the value connection without the invalid
+new-PA/old-PA scaling of direct nonbatting totals.
+
+## Previous follow-up: does the improvement reach playing time and value?
 
 The [fixed transfer test](hitter-arrival-value-transfer-v1-result.md) improves
 prospect PA prediction in Years 1–3; cumulative PA RMSE falls 144.96→127.03 versus
