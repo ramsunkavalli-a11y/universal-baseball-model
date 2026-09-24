@@ -4,7 +4,30 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest milestone: [historical arrival source repairs](hitter-arrival-source-repair-v1-result.md).
+Latest milestone: [Years 1–3 arrival-to-value transfer](hitter-arrival-value-transfer-v1-result.md).
+The repaired probabilities improve prospect PA prediction versus both accepted
+C2 and original-detail R in every annual fold. Three-year PA RMSE is 144.96→127.03
+versus C2, but the existing harmonized ensemble remains slightly better at 126.18.
+Three-year batting/replacement RMSE improves 0.59038→0.57211 versus C2, but R
+already gives 0.57201: the repair's incremental batting-value gain is uncertain.
+Value MAE and aggregate value error worsen. Full transfer gates fail; no deployment.
+
+Important integration failure: scaling direct nonbatting totals by new PA / tiny
+old PA produces implausible forecasts. Next-year lower-minors expanded-value
+RMSE worsens 0.0726→0.1008 despite a small cumulative gain. These are rejected
+experimental outputs, not live explorer values. Keep the repaired source/arrival
+candidate; do not promote this connector or select its fixed-component diagnostic
+after the primary failure. 16 new fits, 8 inherited prediction sets, two future-
+data replays, two conditional-head replays and 34 tests verify. All freezes intact.
+
+Next bounded direction: refit conditional workload using corrected evidence,
+with the ensemble mandatory; separately connect nonbatting value using supported
+opportunity/rate models or refitted direct totals. Do not infer talent by dividing
+direct component totals by tiny expected PA. Predeclare the next integration;
+retain annual/cumulative, totals and lower-minors harm checks. No global boost
+or post-hoc ratio cap. Full value, Years 4–6 and control/trade value remain open.
+
+Previous milestone: [historical arrival source repairs](hitter-arrival-source-repair-v1-result.md).
 Rebuilt older debut evidence, December 31 roster membership and dated Mexican
 League context without deleting players or changing the frozen 2026 forecast.
 The combined fixed candidate improves next-year prospect Brier/log loss by

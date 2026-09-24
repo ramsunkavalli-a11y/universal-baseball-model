@@ -2,7 +2,22 @@
 
 2026-09-23. Diagnosis supported; useful partial repairs, no production replacement.
 
-## Latest follow-up: correct the historical inputs
+## Latest follow-up: does the improvement reach playing time and value?
+
+The [fixed transfer test](hitter-arrival-value-transfer-v1-result.md) improves
+prospect PA prediction in Years 1–3; cumulative PA RMSE falls 144.96→127.03 versus
+accepted C2, though the stronger ensemble is still slightly better (126.18).
+The repaired probabilities' incremental batting-value benefit over original R
+is uncertain. The old conditional workload is still low for many eventual
+regulars; the 2021-origin cohort predicts 20.3 total PA per prospect versus 37.4.
+
+An automatic value transfer fails: multiplying old direct nonbatting totals by
+large new/old PA ratios creates implausible values and worsens next-year lower-
+minors error. Those experimental values were not deployed. Keep the source and
+arrival repairs, but next test corrected conditional workload and an explicit
+opportunity-aware component connection before changing player-value forecasts.
+
+## Previous follow-up: correct the historical inputs
 
 The [source-repair experiment](hitter-arrival-source-repair-v1-result.md) finds
 a larger, more consistent improvement than the calendar tweaks. Complete older
