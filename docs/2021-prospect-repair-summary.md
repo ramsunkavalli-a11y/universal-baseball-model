@@ -2,7 +2,25 @@
 
 2026-09-23. Diagnosis supported; useful partial repairs, no production replacement.
 
-## Latest follow-up: schedules and the era flag
+## Latest follow-up: correct the historical inputs
+
+The [source-repair experiment](hitter-arrival-source-repair-v1-result.md) finds
+a larger, more consistent improvement than the calendar tweaks. Complete older
+debut records, year-end rather than October roster status, and dated Mexican
+League context improve next-year Brier/log loss 11.2%/9.5% versus the original
+detailed model, in all six tested origins. Both stronger annual benchmarks are
+beaten in the four years where matched predictions exist. This is now the
+preferred research arrival candidate, pending delivered-value testing.
+
+The 2021-origin estimate rises from 58.1 to 84.7 versus 157 actual arrivals in
+2022. Peña's individual estimate rises 3.9%→64.8%; Duran's 1.2%→22.1%. Their
+November roster additions are now available at the year-end cutoff, as they
+should be. Training and test sources are repaired together, not player-by-player.
+But 2021 remains substantially underpredicted, and three-year regular-workload
+improvement remains uncertain. All-player regular Brier slightly worsens.
+The frozen forecast and explorer remain unchanged; no 2026 outcomes were used.
+
+## Previous follow-up: schedules and the era flag
 
 The [fixed follow-up](hitter-era-schedule-v1-result.md) is complete: 20 new fits,
 two future-data mutation replays, and 20 focused unit tests. No live forecast

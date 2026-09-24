@@ -4,7 +4,33 @@ Updated 2026-09-23. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest milestone: [era and actual-schedule diagnostics](hitter-era-schedule-v1-result.md).
+Latest milestone: [historical arrival source repairs](hitter-arrival-source-repair-v1-result.md).
+Rebuilt older debut evidence, December 31 roster membership and dated Mexican
+League context without deleting players or changing the frozen 2026 forecast.
+The combined fixed candidate improves next-year prospect Brier/log loss by
+11.2%/9.5% versus R in all six origins, with favorable paired intervals, passing
+harm guards and stronger-reference comparisons. It beats the earlier ensemble
+on both scores in all four matched origins. This is the preferred research
+arrival candidate, not a deployed player-value model. Year-end roster timing
+provides the larger improvement; debut/league repairs add further pooled gain.
+
+The 2021-origin count improves 58.1→84.7 versus 157, but remains badly low;
+2022's count overshoots more despite better individual probability scores.
+Three-year arrival improves versus R, but superiority to the stronger logistic
+control is uncertain. Regular-workload Brier improvement is uncertain; all-player
+regular Brier slightly worsens. Do not call this solved calibration or validated
+WAR/trade-value improvement. 30 fits + three replays, 32 focused tests and the
+source/prediction archive verify; earlier research and original 2026 seal remain
+unchanged. Corrected research inputs are versioned, not retroactively substituted
+into archived experiments. See the linked report for source-provenance limits.
+
+Next: lock this corrected-source baseline and test its effect on delivered
+PA/player value across Years 1–3 before promoting anything. Keep arrival and
+conditional workload distinct. Then separately test defensive access to an MLB
+job/promotion depth against this control; do not combine the earlier failed
+calendar adjustments post hoc or claim extrapolated Years 4–6 gains.
+
+Previous milestone: [era and actual-schedule diagnostics](hitter-era-schedule-v1-result.md).
 Completed 20 fixed fits plus two exact future-mutation replays. Removing the
 explicit era flag from the outage-aware model reduces its 2022-origin forecast
 from 159.7 to 155.0 arrivals versus 106, improving both scores. This supports a
