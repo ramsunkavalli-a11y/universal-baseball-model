@@ -8,11 +8,18 @@ connected in earlier research prototypes, including named uncertainty and
 market-price assumptions. The current projection stack has not validated full
 remaining-control value or dollar rankings.
 
-**Latest repair — September 25:** the [fixed historical source check](docs/defensive-event-source-repair-v1-result.md)
+**Latest repair — September 25:** the [batting-connection diagnostic](docs/hitter-batting-factorial-v1-result.md)
+identifies inherited baseline accounting as most of the earlier integration
+loss. At fixed PA/rate, explicit multiplication improves 1.21044→1.12944
+three-year batting-value RMSE. The primary PA-only change is effectively tied;
+this is a diagnosis, not selection or release of the best-looking cell.
+The [weighting test](docs/hitter-workload-common-weight-v1-result.md) gives a small
+cumulative PA gain but mixed annual/cohort results. D remains the reference.
+
+The [fixed historical source check](docs/defensive-event-source-repair-v1-result.md)
 confirms severe catcher-event loss in terminal-PA narratives. Full-event
 extraction matches 1,024 same-game box checks, but battery attribution and
-infield range semantics still need certification. The controlled workload-
-weighting experiment is now underway; no frozen projections changed.
+infield range semantics still need certification. No frozen projections changed.
 
 **Deep review:** the
 [baseball-methodology review](docs/baseball-methodology-deep-review-2026-09-25.md)
@@ -27,8 +34,8 @@ maps the frozen forecast, delivered explorer and newer research separately.
 The [evidence ledger](docs/model-evidence-ledger-2026-09-25.md) records what worked
 and what remains unproven. The [decision standard](docs/model-decision-standard.md)
 governs future tests. The [batting-connection diagnostic](docs/hitter-value-factorial-v1-plan.md)
-is specified but remains unexecuted; the repair program now sets its place in
-the sequence. No engine search or automatic forecast replacement.
+has now been executed under its original archived-input contract; see the result
+above. No engine search or automatic forecast replacement.
 The [product roadmap](docs/product-roadmap.md) retains the destination;
 [status](docs/project-status.md) records the latest handoff. Older priorities below
 are historical, not competing instructions.
@@ -41,7 +48,7 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
-**Latest experiment:** [opportunity/value integration](docs/hitter-integrated-opportunity-value-v1-result.md)
+**Preceding experiment:** [opportunity/value integration](docs/hitter-integrated-opportunity-value-v1-result.md)
 improves three-year playing-time RMSE from 193.22 to 190.97, but its batting
 construction trails an existing reference (1.210 versus 1.140 RMSE). The audit
 separates this genuine value gap from sparse lower-minors uncertainty and

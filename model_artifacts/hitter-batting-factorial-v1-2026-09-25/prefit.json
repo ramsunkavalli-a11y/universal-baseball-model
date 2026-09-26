@@ -1,0 +1,32 @@
+{
+  "hashes": {
+    "docs\\hitter-value-factorial-v1-plan.md": "ea3d6e9ae275986af6397c90f92882f52d9dd2cd24fc0711b88edc5317bb92fe",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_hitter_batting_factorial_v1.py": "36236d7fd4d8d517f2b75b5525d5e3452fe1a6a278c8288c17c4619e4656e38c",
+    "src\\universal_baseball\\hitter_batting_factorial.py": "da572328aa8f6679b2c06602930fd91c8e5e9df2534eeeada98e44ba1a6c0111",
+    "src\\universal_baseball\\hitter_common_weight.py": "6ef4ebdbedb2f9232e0b2c0b07652a6b9e9fa0b98a96a7d6487b502e802f0949",
+    "src\\universal_baseball\\methodology_review.py": "3d4a3226a59ffcb2fdb0fac297ce0f2d24de9da32fe6f31f8c66fbe2c725df88",
+    "src\\universal_baseball\\hitter_integrated_opportunity_value.py": "dfd58001a249e47658a5dac3fff19014ff96abeda28bc06913d92b11adaa8c18",
+    "tests\\test_hitter_batting_factorial.py": "e4534f2ad2c538e58cd8e8c8cc32cd7bc4dcd80e8c017f732dade8eeb4d02ccb",
+    "model_artifacts\\multiyear-hitter-components-v1-2026-09-22\\component-predictions.parquet": "49e2d38728644a1b596bd870f882855bd2d66fffc51825232a9402d2e43056c0",
+    "reports\\generated\\milb-outfield-range-hitter-value-v1\\predictions.parquet": "e9ca70af7b924a428dcefd46452a0641fe5f4f87f8d96bd2865196c0334a4d94",
+    "model_artifacts\\hitter-integrated-opportunity-value-v1-2026-09-25\\predictions.parquet": "ef6aa08662b164833aea6893884acf5323387b05027d31546e4291d111f7fd47",
+    "model_artifacts\\hitter-integrated-opportunity-value-v1-2026-09-25\\cumulative-predictions.parquet": "55d6b6324bfc9e0bb394dfbb5cd3dff1c8b2f8f29160bdee377331dfc8796adb",
+    "model_artifacts\\hitter-integrated-opportunity-value-v1-2026-09-25\\score-report.json": "fb5024bbd6999a78c18486a04deddcab3ee1790cb40cff729aef83a05357f1f8",
+    "model_artifacts\\hitter-integrated-opportunity-value-v1-2026-09-25\\component-predictions.parquet": "82cf84afff03e775d2f804886973bdec15706b865f3d903d2bbd40459bb5d0b0",
+    "model_artifacts\\hitter-anchored-development-v1-2026-09-22\\historical-anchors.parquet": "513c3c295354f4e8901bbf85439bc8ff2ed33c3381ee551fcc1918d2ac4d0033"
+  },
+  "cells": [
+    "E_anchor_product",
+    "E_anchor_marginal",
+    "E_horizon_product",
+    "E_horizon_marginal",
+    "H_anchor_product",
+    "H_anchor_marginal",
+    "H_horizon_product",
+    "H_horizon_marginal"
+  ],
+  "new_fits": 0,
+  "primary": "H_anchor_product minus E_anchor_product, equal-origin cumulative batting MSE",
+  "protected_outcomes_used": false,
+  "production_changed": false
+}

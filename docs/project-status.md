@@ -2,7 +2,28 @@
 
 Updated 2026-09-25. This is the current start-here document.
 
-## Latest checkpoint: defensive event source repair
+## Latest checkpoint: three repair diagnostics completed; forecasts unchanged
+
+The [batting factorial](hitter-batting-factorial-v1-result.md) explains most of
+the prior integration failure: at fixed H PA and horizon rate, product assembly
+has three-year batting-value RMSE 1.12944 versus marginal assembly 1.21044.
+The inherited baseline residual hurts in all three complete origins. The
+declared primary workload-only change at anchor/product is effectively tied
+(1.13984→1.13999); no new forecast or best-looking-cell selection follows.
+
+The [common-weight test](hitter-workload-common-weight-v1-result.md) improves
+three-year prospect PA RMSE 121.67→120.85, but slightly worsens Year 1 and
+inflates 2022 cohort totals. Retain D pending a justified transfer/release test;
+do not mix heads by horizon after seeing results. Twelve exact legacy replays,
+twelve candidate heads and one future-mutation replay verify.
+
+The source checkpoint below is retained. The independent repair verifier and
+61 focused tests pass; original and delivered freezes remain unchanged.
+Goal work still includes event-time battery attribution and outcome-comparable
+infield chances. Sample counting/conservation did not certify those. The
+factorial is complete and its contract says stop, not launch another learner.
+
+## Source checkpoint: defensive event source repair
 
 The [128-game source check](defensive-event-source-repair-v1-result.md) confirms
 outcome-dependent loss in old terminal-narrative catcher data: at most 18/268
@@ -12,9 +33,9 @@ infield range opportunities remain explicitly uncertified; no catcher/range
 model is promoted. All 2,875 sample GBs are conserved in a diagnostic ledger.
 
 The [fixed common-weight workload experiment](hitter-workload-common-weight-v1-plan.md)
-is now locked and running legacy replay before candidate fitting. It changes
-one weighting choice, not probabilities or model inputs. Frozen forecasts stay
-unchanged. The repair goal remains active.
+is completed, with the mixed result above. It changed one weighting choice,
+not probabilities or model inputs. The repair goal remains active for the
+uncertified defensive attribution/opportunity layer.
 
 ## Preceding checkpoint: deep baseball-methodology review
 

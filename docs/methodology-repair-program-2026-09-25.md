@@ -79,8 +79,8 @@ Do not immediately optimize a new set of weights.
 
 ## Milestone 3 — Return to value integration with identified comparisons
 
-The [eight-cell batting diagnostic](hitter-value-factorial-v1-plan.md) remains
-specified but unexecuted. It continues to use its **original archived** E/H
+The [eight-cell batting diagnostic](hitter-value-factorial-v1-plan.md) is now
+[completed](hitter-batting-factorial-v1-result.md). It used its **original archived** E/H
 inputs; do not quietly substitute a successful new workload candidate into that
 contract. It isolates rate block, workload and marginal/product accounting.
 If Milestone 2 justifies a new workload candidate, give its subsequent transfer
@@ -124,4 +124,11 @@ complete, with 18 new semantic tests. Old catcher capture fails; replacement
 sample event accounting passes. Battery timeline and ex-ante fielding
 responsibility remain uncertified, so no defensive skill fitting is justified.
 The [Milestone 2 weighting contract](hitter-workload-common-weight-v1-plan.md) is
-locked and in legacy replay. Production forecasts remain unchanged.
+completed: small cumulative gain but annual/cohort conflicts, so no replacement.
+The [batting factorial](hitter-batting-factorial-v1-result.md) also completed and
+identified inherited baseline accounting as the main earlier integration loss.
+The primary workload transfer was tied. Sixty-one focused tests and independent
+artifact checks pass. Production forecasts remain unchanged. The active goal's
+remaining substantive source work is certifying event-time battery attribution
+and comparable infield responsibility; do not call those repaired merely
+because sample event counts or responsibility totals now reconcile.

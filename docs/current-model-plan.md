@@ -4,22 +4,25 @@
 
 Source-check checkpoint: [catcher event loss confirmed](defensive-event-source-repair-v1-result.md).
 The replacement matches sample box scores; range semantics and battery timeline
-remain bounded open issues. Proceed with the independently
-[locked common-weight comparison](hitter-workload-common-weight-v1-plan.md), then
-the original archived-input batting diagnostic. No model promotion from source
-accounting alone.
+remain bounded open issues. The [weight comparison](hitter-workload-common-weight-v1-result.md)
+and [original-input batting diagnostic](hitter-batting-factorial-v1-result.md)
+are complete. The first is mixed; the second identifies a large inherited-
+residual accounting problem. No model promotion from source accounting or the
+best-looking secondary cell. Next source work is battery/fielding attribution;
+next integration work needs a fixed product-connector release contract before
+any new fits. Do not rerun the completed factorial or start an engine search.
 
 The subsequent [deep review](baseball-methodology-deep-review-2026-09-25.md)
 found concrete measurement and training-objective issues. Follow the
 [repair program](methodology-repair-program-2026-09-25.md) first. It pauses
-immediate execution of the batting diagnostic below while source gates are
-resolved, without changing that diagnostic's archived inputs or scores.
+integration while source gates are resolved, without replacing historical
+diagnostic inputs with later winners.
 
 Start with the [model audit](model-decision-audit-2026-09-25.md),
 [evidence ledger](model-evidence-ledger-2026-09-25.md) and
-[decision standard](model-decision-standard.md). Next execute only the
-[fixed batting-connection diagnostic](hitter-value-factorial-v1-plan.md) at the
-repair program's integration milestone.
+[decision standard](model-decision-standard.md). The completed
+[fixed batting-connection diagnostic](hitter-value-factorial-v1-plan.md) defines
+the integration evidence; its report, not a fresh run, is the next starting point.
 It isolates workload, rate-block and inherited-residual effects on matched
 archived predictions; no new learner or automatic deployment. The audit itself
 does not change forecasts. The research connector and delivered explorer remain
