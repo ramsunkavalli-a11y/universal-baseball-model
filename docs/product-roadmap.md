@@ -1,12 +1,14 @@
 # Product roadmap: universal, continuously updated trade value
 
-**Status:** Product destination; current research sequencing is in the September 25 audit
+**Status:** Product destination; current research sequencing is in the September 26 repair checkpoint
 **Adopted:** 2026-09-07
 **Current execution:** [deep baseball-methodology review](baseball-methodology-deep-review-2026-09-25.md)
 and [ordered repair program](methodology-repair-program-2026-09-25.md), under the
-[decision standard](model-decision-standard.md). The previously specified
-[batting-connection diagnostic](hitter-value-factorial-v1-plan.md) stays unchanged
-and belongs after the measurement/weighting checkpoints.
+[decision standard](model-decision-standard.md). The first three repair milestones
+have [evidence-backed dispositions](repair-program-checkpoint-2026-09-26.md),
+including explicit range-measurement limits. The fixed batting diagnostic is
+completed; do not rerun it as an open-ended search. Next source work is catcher
+exposure; explicit batting assembly needs its own release contract.
 Older immediate priorities below are historical. No new engine tournament,
 career simulator or dollar release is implied. Preserve frozen forecasts.
 

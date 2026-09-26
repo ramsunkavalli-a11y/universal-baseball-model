@@ -1,8 +1,31 @@
 # Project status and handoff
 
-Updated 2026-09-25. This is the current start-here document.
+Updated 2026-09-26. This is the current start-here document.
 
-## Latest checkpoint: three repair diagnostics completed; forecasts unchanged
+## Current checkpoint: first three repair milestones resolved, with explicit limits
+
+Read [what actually changed](repair-program-checkpoint-2026-09-26.md) before the
+historical checkpoints below. The full archived GB ledger preserves 2,026,088
+keys and matches all 5,742 official sample GB keys. It repairs missing-play
+accounting; it does not certify individual range responsibility. The separate
+frozen timeline validation reconstructs 127/128 games, with 662/673 catcher/
+pitcher events attributed. One delayed LF substitution remains quarantined.
+
+This closes the first three milestones with scoped source decisions and the
+already completed workload/factorial tests—not a repaired full-defensive model.
+Next source priority is catcher pitch/runner-at-risk exposure. Next integration
+priority is a separately specified release check for the explicit batting
+connector; no repeat of the completed factorial or automatic minimum-score
+selection. The exact remaining range blocker is in the
+[GB result](ground-ball-ledger-v2-result.md). Current forecasts remain unchanged.
+
+59 current focused tests and both independent repair verifiers pass. Original
+and delivered freezes verify; no protected 2026 results were accessed. Fifteen
+new tests cover timeline and ledger semantics. Full-control values remain
+unavailable. Older active-goal/next-step statements below describe earlier
+checkpoints and are superseded by this section.
+
+## September 25 checkpoint: three repair diagnostics completed; forecasts unchanged
 
 The [batting factorial](hitter-batting-factorial-v1-result.md) explains most of
 the prior integration failure: at fixed H PA and horizon rate, product assembly

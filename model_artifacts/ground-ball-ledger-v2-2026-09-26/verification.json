@@ -1,0 +1,483 @@
+{
+  "verified": true,
+  "timeline_validation_games": 128,
+  "timeline_reconstructed": 127,
+  "validation_positive_checks": [
+    {
+      "metric": "PB",
+      "checks": 269,
+      "nonzero_checks": 39,
+      "event_total": 50
+    },
+    {
+      "metric": "WP",
+      "checks": 942,
+      "nonzero_checks": 175,
+      "event_total": 218
+    },
+    {
+      "metric": "catcher_CS_presence",
+      "checks": 269,
+      "nonzero_checks": 93,
+      "event_total": 108
+    },
+    {
+      "metric": "catcher_SB",
+      "checks": 269,
+      "nonzero_checks": 143,
+      "event_total": 286
+    },
+    {
+      "metric": "pitcher_CS",
+      "checks": 942,
+      "nonzero_checks": 100,
+      "event_total": 108
+    },
+    {
+      "metric": "pitcher_SB",
+      "checks": 942,
+      "nonzero_checks": 198,
+      "event_total": 286
+    }
+  ],
+  "timeline_failed_game": {
+    "season": 2024,
+    "level": "a",
+    "league_id": 110,
+    "game_pk": 756445,
+    "game_date": "2024-04-24",
+    "game_type": "R",
+    "selection_hash": "00f7841b57c4b2691cd44b708887d6d903d8af23a92cd532c4732608ae8dcfaf",
+    "status": "reconstruction_failed",
+    "reason": "Incomplete defense at pitch 10/0"
+  },
+  "failed_game_events_without_certified_battery": {
+    "SB": 3,
+    "PB": 2,
+    "WP": 6
+  },
+  "battery_attributed_events": 662,
+  "validation_all_events": 673,
+  "ground_ball_totals": [
+    {
+      "season": 2016,
+      "balls": 314383,
+      "conflicts": 58,
+      "unknown_candidate_identity": 0,
+      "unassigned_share": 2885.0,
+      "unassigned_sensitivity_share": 55593.0
+    },
+    {
+      "season": 2017,
+      "balls": 305823,
+      "conflicts": 21,
+      "unknown_candidate_identity": 0,
+      "unassigned_share": 2927.0,
+      "unassigned_sensitivity_share": 57605.0
+    },
+    {
+      "season": 2018,
+      "balls": 295601,
+      "conflicts": 0,
+      "unknown_candidate_identity": 0,
+      "unassigned_share": 2474.0,
+      "unassigned_sensitivity_share": 51168.0
+    },
+    {
+      "season": 2019,
+      "balls": 278276,
+      "conflicts": 193,
+      "unknown_candidate_identity": 0,
+      "unassigned_share": 2715.0,
+      "unassigned_sensitivity_share": 51887.0
+    },
+    {
+      "season": 2021,
+      "balls": 190695,
+      "conflicts": 1455,
+      "unknown_candidate_identity": 0,
+      "unassigned_share": 3401.0,
+      "unassigned_sensitivity_share": 34203.0
+    },
+    {
+      "season": 2022,
+      "balls": 215946,
+      "conflicts": 16,
+      "unknown_candidate_identity": 0,
+      "unassigned_share": 2244.0,
+      "unassigned_sensitivity_share": 36714.0
+    },
+    {
+      "season": 2023,
+      "balls": 212950,
+      "conflicts": 831,
+      "unknown_candidate_identity": 0,
+      "unassigned_share": 3165.0,
+      "unassigned_sensitivity_share": 37903.0
+    },
+    {
+      "season": 2024,
+      "balls": 212414,
+      "conflicts": 0,
+      "unknown_candidate_identity": 6,
+      "unassigned_share": 2324.0,
+      "unassigned_sensitivity_share": 35933.0
+    }
+  ],
+  "allocation": [
+    {
+      "allocation_basis": "assumed_adjacent_single_equal_share",
+      "len": 299238
+    },
+    {
+      "allocation_basis": "assumed_corner_XBH",
+      "len": 39633
+    },
+    {
+      "allocation_basis": "observed_IF_touch_not_ex_ante",
+      "len": 1665082
+    },
+    {
+      "allocation_basis": "unassigned_FC",
+      "len": 14945
+    },
+    {
+      "allocation_basis": "unassigned_bunt",
+      "len": 33
+    },
+    {
+      "allocation_basis": "unassigned_other",
+      "len": 4583
+    },
+    {
+      "allocation_basis": "unassigned_source_conflict",
+      "len": 2574
+    }
+  ],
+  "source_trajectory_inventory_distinct_key_type": [
+    {
+      "bb_type": null,
+      "len": 301245,
+      "season": 2016
+    },
+    {
+      "bb_type": "bunt_line_drive",
+      "len": 49,
+      "season": 2016
+    },
+    {
+      "bb_type": "popup",
+      "len": 50752,
+      "season": 2016
+    },
+    {
+      "bb_type": "bunt_grounder",
+      "len": 15172,
+      "season": 2016
+    },
+    {
+      "bb_type": "fly_ball",
+      "len": 172117,
+      "season": 2016
+    },
+    {
+      "bb_type": "ground_ball",
+      "len": 314383,
+      "season": 2016
+    },
+    {
+      "bb_type": "line_drive",
+      "len": 133991,
+      "season": 2016
+    },
+    {
+      "bb_type": "bunt_popup",
+      "len": 1053,
+      "season": 2016
+    },
+    {
+      "bb_type": null,
+      "len": 305362,
+      "season": 2017
+    },
+    {
+      "bb_type": "bunt_grounder",
+      "len": 13194,
+      "season": 2017
+    },
+    {
+      "bb_type": "ground_ball",
+      "len": 305823,
+      "season": 2017
+    },
+    {
+      "bb_type": "fly_ball",
+      "len": 175423,
+      "season": 2017
+    },
+    {
+      "bb_type": "bunt_line_drive",
+      "len": 67,
+      "season": 2017
+    },
+    {
+      "bb_type": "bunt_popup",
+      "len": 1018,
+      "season": 2017
+    },
+    {
+      "bb_type": "line_drive",
+      "len": 127012,
+      "season": 2017
+    },
+    {
+      "bb_type": "popup",
+      "len": 50690,
+      "season": 2017
+    },
+    {
+      "bb_type": null,
+      "len": 320097,
+      "season": 2018
+    },
+    {
+      "bb_type": "line_drive",
+      "len": 130961,
+      "season": 2018
+    },
+    {
+      "bb_type": "bunt_line_drive",
+      "len": 60,
+      "season": 2018
+    },
+    {
+      "bb_type": "bunt_popup",
+      "len": 875,
+      "season": 2018
+    },
+    {
+      "bb_type": "ground_ball",
+      "len": 295601,
+      "season": 2018
+    },
+    {
+      "bb_type": "popup",
+      "len": 51409,
+      "season": 2018
+    },
+    {
+      "bb_type": "fly_ball",
+      "len": 181137,
+      "season": 2018
+    },
+    {
+      "bb_type": "bunt_grounder",
+      "len": 11977,
+      "season": 2018
+    },
+    {
+      "bb_type": null,
+      "len": 323166,
+      "season": 2019
+    },
+    {
+      "bb_type": "ground_ball",
+      "len": 278276,
+      "season": 2019
+    },
+    {
+      "bb_type": "bunt_grounder",
+      "len": 10561,
+      "season": 2019
+    },
+    {
+      "bb_type": "fly_ball",
+      "len": 176158,
+      "season": 2019
+    },
+    {
+      "bb_type": "bunt_popup",
+      "len": 760,
+      "season": 2019
+    },
+    {
+      "bb_type": "bunt_line_drive",
+      "len": 45,
+      "season": 2019
+    },
+    {
+      "bb_type": "popup",
+      "len": 49934,
+      "season": 2019
+    },
+    {
+      "bb_type": "line_drive",
+      "len": 119242,
+      "season": 2019
+    },
+    {
+      "bb_type": null,
+      "len": 267823,
+      "season": 2021
+    },
+    {
+      "bb_type": "popup",
+      "len": 34735,
+      "season": 2021
+    },
+    {
+      "bb_type": "bunt_grounder",
+      "len": 4613,
+      "season": 2021
+    },
+    {
+      "bb_type": "bunt_line_drive",
+      "len": 35,
+      "season": 2021
+    },
+    {
+      "bb_type": "fly_ball",
+      "len": 121096,
+      "season": 2021
+    },
+    {
+      "bb_type": "ground_ball",
+      "len": 190695,
+      "season": 2021
+    },
+    {
+      "bb_type": "bunt_popup",
+      "len": 378,
+      "season": 2021
+    },
+    {
+      "bb_type": "line_drive",
+      "len": 87397,
+      "season": 2021
+    },
+    {
+      "bb_type": "fly_ball",
+      "len": 138529,
+      "season": 2022
+    },
+    {
+      "bb_type": null,
+      "len": 297544,
+      "season": 2022
+    },
+    {
+      "bb_type": "popup",
+      "len": 39065,
+      "season": 2022
+    },
+    {
+      "bb_type": "bunt_line_drive",
+      "len": 27,
+      "season": 2022
+    },
+    {
+      "bb_type": "bunt_popup",
+      "len": 342,
+      "season": 2022
+    },
+    {
+      "bb_type": "ground_ball",
+      "len": 215946,
+      "season": 2022
+    },
+    {
+      "bb_type": "line_drive",
+      "len": 98957,
+      "season": 2022
+    },
+    {
+      "bb_type": "bunt_grounder",
+      "len": 4599,
+      "season": 2022
+    },
+    {
+      "bb_type": null,
+      "len": 296554,
+      "season": 2023
+    },
+    {
+      "bb_type": "fly_ball",
+      "len": 136858,
+      "season": 2023
+    },
+    {
+      "bb_type": "ground_ball",
+      "len": 212950,
+      "season": 2023
+    },
+    {
+      "bb_type": "bunt_grounder",
+      "len": 4421,
+      "season": 2023
+    },
+    {
+      "bb_type": "popup",
+      "len": 37788,
+      "season": 2023
+    },
+    {
+      "bb_type": "bunt_line_drive",
+      "len": 30,
+      "season": 2023
+    },
+    {
+      "bb_type": "line_drive",
+      "len": 101682,
+      "season": 2023
+    },
+    {
+      "bb_type": "bunt_popup",
+      "len": 374,
+      "season": 2023
+    },
+    {
+      "bb_type": null,
+      "len": 292430,
+      "season": 2024
+    },
+    {
+      "bb_type": "bunt_popup",
+      "len": 377,
+      "season": 2024
+    },
+    {
+      "bb_type": "ground_ball",
+      "len": 212414,
+      "season": 2024
+    },
+    {
+      "bb_type": "popup",
+      "len": 38339,
+      "season": 2024
+    },
+    {
+      "bb_type": "bunt_line_drive",
+      "len": 26,
+      "season": 2024
+    },
+    {
+      "bb_type": "bunt_grounder",
+      "len": 5130,
+      "season": 2024
+    },
+    {
+      "bb_type": "line_drive",
+      "len": 107068,
+      "season": 2024
+    },
+    {
+      "bb_type": "fly_ball",
+      "len": 131437,
+      "season": 2024
+    }
+  ],
+  "scope": "All archived ground_ball keys, not all ground-contact types or all scheduled games",
+  "new_fits": 0,
+  "production_changed": false,
+  "protected_outcomes_used": false
+}

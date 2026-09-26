@@ -5,6 +5,16 @@ Numbers below retain the original experiment's population and target. Historical
 decisions remain recorded; this ledger corrects over-broad interpretations,
 not the scores or their predeclared gates. All results are development evidence.
 
+September 26 addendum: the [repair checkpoint](repair-program-checkpoint-2026-09-26.md)
+supersedes prospective "next test" language below. The batting factorial is
+complete; it isolates the inherited-residual loss. Common workload weights had
+mixed results and were not promoted. Catcher event capture is repaired on the
+source sample and event-time attribution passes 127/128 independent-source-
+sample games. Complete GB accounting is rebuilt, while individual responsibility
+remains unvalidated. Old negative catcher/IF claims cannot reject those skills;
+the changed-player MiLB OF replacement still fails and stays rejected. No
+production forecast or protected outcome was changed/used.
+
 | Work / source | Supported finding | What it does not establish / next implication |
 |---|---|---|
 | [Arrival source repair](hitter-arrival-source-repair-v1-result.md) | Corrected debut history, year-end roster support and league context; next-year Brier/log loss improve about 11.2%/9.5% over the unrepaired reference. | 2021 participants still undercounted, 2022 overcounted. Better probability scores do not prove better workload or value. Retrospectively captured source facts are not guaranteed historical publication vintages. |

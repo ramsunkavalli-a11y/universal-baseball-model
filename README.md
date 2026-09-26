@@ -8,7 +8,15 @@ connected in earlier research prototypes, including named uncertainty and
 market-price assumptions. The current projection stack has not validated full
 remaining-control value or dollar rankings.
 
-**Latest repair — September 25:** the [batting-connection diagnostic](docs/hitter-batting-factorial-v1-result.md)
+**Latest checkpoint — September 26:** the [repair-program summary](docs/repair-program-checkpoint-2026-09-26.md)
+records the first three milestones' decisions. The new ground-ball ledger retains
+2,026,088 balls; all 5,742 official GB keys in the source sample are present.
+Event-time fielders validate in 127/128 separately selected games, with the
+remaining game's delayed substitution and 11 events explicitly unresolved.
+Individual range remains a bounded measurement blocker, not a failed baseball
+skill. No frozen forecast changed.
+
+**September 25 diagnostics:** the [batting-connection diagnostic](docs/hitter-batting-factorial-v1-result.md)
 identifies inherited baseline accounting as most of the earlier integration
 loss. At fixed PA/rate, explicit multiplication improves 1.21044→1.12944
 three-year batting-value RMSE. The primary PA-only change is effectively tied;
@@ -18,8 +26,10 @@ cumulative PA gain but mixed annual/cohort results. D remains the reference.
 
 The [fixed historical source check](docs/defensive-event-source-repair-v1-result.md)
 confirms severe catcher-event loss in terminal-PA narratives. Full-event
-extraction matches 1,024 same-game box checks, but battery attribution and
-infield range semantics still need certification. No frozen projections changed.
+extraction matches 1,024 same-game box checks. The subsequent
+[timeline validation](docs/defensive-timeline-v1-result.md) gives coverage-gated
+battery attribution; [infield responsibility](docs/ground-ball-ledger-v2-result.md)
+still needs a defensible range measurement. No frozen projections changed.
 
 **Deep review:** the
 [baseball-methodology review](docs/baseball-methodology-deep-review-2026-09-25.md)

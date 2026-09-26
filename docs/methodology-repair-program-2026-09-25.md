@@ -119,16 +119,24 @@ Do not call the program complete until the measurement gates and declared tests
 have an evidence-backed resolution; unsupported data can remain an explicitly
 bounded blocker, not a fabricated zero or a claim that the baseball skill fails.
 
-Current status: [Milestone 1 source decision](defensive-event-source-repair-v1-result.md)
-complete, with 18 new semantic tests. Old catcher capture fails; replacement
-sample event accounting passes. Battery timeline and ex-ante fielding
-responsibility remain uncertified, so no defensive skill fitting is justified.
-The [Milestone 2 weighting contract](hitter-workload-common-weight-v1-plan.md) is
+Current status, September 26: the first three milestones have evidence-backed
+dispositions; see the [completion/limitations record](repair-program-checkpoint-2026-09-26.md).
+Milestone 1 delivers the [event source](defensive-event-source-repair-v1-result.md),
+[disjoint frozen timeline validation](defensive-timeline-v1-result.md) and
+[full archived GB candidate](ground-ball-ledger-v2-result.md). Ball accounting
+passes; timeline certification is coverage-gated (127/128 games, 662/673 events).
+Comparable individual range responsibility remains an explicitly bounded
+measurement blocker. This fulfills the milestone's source-decision/candidate-
+or-blocker deliverable; it does NOT certify a range metric or justify skill fitting.
+Runner/pitch exposure requires its own catcher gate. Persistence/transport tests
+are conditional on a defensible skill proxy, not automatically launched after
+responsibility shares merely add to one.
+
+The [Milestone 2 weighting contract](hitter-workload-common-weight-v1-plan.md)
 completed: small cumulative gain but annual/cohort conflicts, so no replacement.
-The [batting factorial](hitter-batting-factorial-v1-result.md) also completed and
-identified inherited baseline accounting as the main earlier integration loss.
-The primary workload transfer was tied. Sixty-one focused tests and independent
-artifact checks pass. Production forecasts remain unchanged. The active goal's
-remaining substantive source work is certifying event-time battery attribution
-and comparable infield responsibility; do not call those repaired merely
-because sample event counts or responsibility totals now reconcile.
+The [Milestone 3 batting factorial](hitter-batting-factorial-v1-result.md)
+identified inherited baseline accounting as the main earlier integration loss;
+the primary workload transfer was tied. Component cross-errors and the changed-
+player OF contrast are reported. Fifty-nine current focused tests and both
+independent repair verifiers pass. Production forecasts remain unchanged.
+Milestone 4 and the larger whole-player-value project are NOT completed.
