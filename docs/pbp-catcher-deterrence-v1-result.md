@@ -1,5 +1,9 @@
 # Minor-league catcher steal deterrence result
 
+Source check now completed: [128-game reconciliation](defensive-event-source-repair-v1-result.md)
+confirms severe, outcome-dependent missing attempts. The old implementation's
+negative result is not a valid general rejection of catcher deterrence.
+
 Review qualification (2026-09-25): the [deep review](baseball-methodology-deep-review-2026-09-25.md)
 flags narrative-only attempt capture and outcome-dependent pitch-window exposure.
 The rejected implementation remains rejected; it is not an adequate general

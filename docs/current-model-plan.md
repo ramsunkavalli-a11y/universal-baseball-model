@@ -2,6 +2,13 @@
 
 ## Current priority — 2026-09-25: identifiable evidence before more fitting
 
+Source-check checkpoint: [catcher event loss confirmed](defensive-event-source-repair-v1-result.md).
+The replacement matches sample box scores; range semantics and battery timeline
+remain bounded open issues. Proceed with the independently
+[locked common-weight comparison](hitter-workload-common-weight-v1-plan.md), then
+the original archived-input batting diagnostic. No model promotion from source
+accounting alone.
+
 The subsequent [deep review](baseball-methodology-deep-review-2026-09-25.md)
 found concrete measurement and training-objective issues. Follow the
 [repair program](methodology-repair-program-2026-09-25.md) first. It pauses

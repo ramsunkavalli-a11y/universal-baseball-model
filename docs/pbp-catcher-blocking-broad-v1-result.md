@@ -1,5 +1,10 @@
 # Broad minor-league catcher blocking result
 
+Source check now completed: [128-game reconciliation](defensive-event-source-repair-v1-result.md)
+finds at most 3/28 PB and 21/230 WP in the old terminal narratives, before
+additional blocking filters. Reopen event/exposure construction, not a shrinkage
+grid on the same biased data. No new blocking skill result has yet been fitted.
+
 Review qualification (2026-09-25): narrative failure capture and dirt/continuity
 selection still need an independent coverage check; broadening the PA sample did
 not supply one. The [deep review](baseball-methodology-deep-review-2026-09-25.md)

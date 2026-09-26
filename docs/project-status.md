@@ -2,7 +2,21 @@
 
 Updated 2026-09-25. This is the current start-here document.
 
-## Latest checkpoint: deep baseball-methodology review
+## Latest checkpoint: defensive event source repair
+
+The [128-game source check](defensive-event-source-repair-v1-result.md) confirms
+outcome-dependent loss in old terminal-narrative catcher data: at most 18/268
+SB, 30/90 ordinary CS, 3/28 PB and 21/230 WP match. The new full-event ledger
+matches all 1,024 same-game box-score checks. Battery attribution and comparable
+infield range opportunities remain explicitly uncertified; no catcher/range
+model is promoted. All 2,875 sample GBs are conserved in a diagnostic ledger.
+
+The [fixed common-weight workload experiment](hitter-workload-common-weight-v1-plan.md)
+is now locked and running legacy replay before candidate fitting. It changes
+one weighting choice, not probabilities or model inputs. Frozen forecasts stay
+unchanged. The repair goal remains active.
+
+## Preceding checkpoint: deep baseball-methodology review
 
 The [deep review](baseball-methodology-deep-review-2026-09-25.md) extends the
 accounting audit into measurement, failed-test interpretation and training
@@ -25,11 +39,11 @@ too high; a blanket PA boost is not an identified fix.
 Read the failed-approach triage in the review before repeating a rejected test.
 New evidence is in `model_artifacts/baseball-methodology-review-v1-2026-09-25/`.
 
-## Current checkpoint: model and decision audit completed
+## Preceding checkpoint: model and decision audit completed
 
 Read the [audit and exact output map](model-decision-audit-2026-09-25.md),
 [evidence ledger](model-evidence-ledger-2026-09-25.md), and
-[decision standard](model-decision-standard.md). The next task is the
+[decision standard](model-decision-standard.md). The integration task is the
 [fixed batting-connection diagnostic](hitter-value-factorial-v1-plan.md), not
 more fits. It is specified but has not been run or selected.
 

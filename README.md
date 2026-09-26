@@ -8,7 +8,13 @@ connected in earlier research prototypes, including named uncertainty and
 market-price assumptions. The current projection stack has not validated full
 remaining-control value or dollar rankings.
 
-**Start here — September 25, deep review:** the
+**Latest repair — September 25:** the [fixed historical source check](docs/defensive-event-source-repair-v1-result.md)
+confirms severe catcher-event loss in terminal-PA narratives. Full-event
+extraction matches 1,024 same-game box checks, but battery attribution and
+infield range semantics still need certification. The controlled workload-
+weighting experiment is now underway; no frozen projections changed.
+
+**Deep review:** the
 [baseball-methodology review](docs/baseball-methodology-deep-review-2026-09-25.md)
 identifies incomplete infield opportunities, restricted catcher event capture,
 inconsistent activity/workload weighting, and component-error interactions.

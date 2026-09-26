@@ -119,5 +119,9 @@ Do not call the program complete until the measurement gates and declared tests
 have an evidence-backed resolution; unsupported data can remain an explicitly
 bounded blocker, not a fabricated zero or a claim that the baseball skill fails.
 
-Current status: deep review complete; six new diagnostic tests pass. Production
-repairs and new candidate fits have **not** been performed. Begin Milestone 1.
+Current status: [Milestone 1 source decision](defensive-event-source-repair-v1-result.md)
+complete, with 18 new semantic tests. Old catcher capture fails; replacement
+sample event accounting passes. Battery timeline and ex-ante fielding
+responsibility remain uncertified, so no defensive skill fitting is justified.
+The [Milestone 2 weighting contract](hitter-workload-common-weight-v1-plan.md) is
+locked and in legacy replay. Production forecasts remain unchanged.
