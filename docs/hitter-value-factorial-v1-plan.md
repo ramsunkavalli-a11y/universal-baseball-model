@@ -5,6 +5,10 @@ experiment, not another learner tournament. Governed by the
 [decision standard](model-decision-standard.md) and motivated by the
 [audit](model-decision-audit-2026-09-25.md). No live update authorized by its scores.
 
+Sequencing update: the [deep-review repair program](methodology-repair-program-2026-09-25.md)
+now puts measurement and a controlled workload-weighting test first. This
+contract's original archived inputs/contrasts are not replaced by later winners.
+
 ## Question and competing explanations
 
 Does the improved H workload help delivered batting value when connected to

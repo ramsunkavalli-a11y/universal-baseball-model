@@ -1,5 +1,11 @@
 # Minor-league infield range RE24 and hitter-value result
 
+Review qualification (2026-09-25): the [deep audit](baseball-methodology-deep-review-2026-09-25.md)
+finds that first-touch attribution excludes many through-ground-ball hits from
+infield chances. The scores below stand for that restricted measurement, not
+certified complete range skill. Reopen the opportunity definition before drawing
+a broad conclusion from the failed MLB bridge. No forecast is promoted.
+
 Date: 2026-09-22
 Status: **retain as a diagnostic; keep general defense neutral in projected WAR**
 

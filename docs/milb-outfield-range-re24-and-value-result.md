@@ -1,5 +1,11 @@
 # Minor-league outfield range RE24 and hitter-value result
 
+Review qualification (2026-09-25): [error decomposition](baseball-methodology-deep-review-2026-09-25.md)
+confirms that the whole arm's better component score is outweighed by interaction
+with other-component errors. The no-deployment decision stands, but is not a
+finding that defense has no predictive signal. Separate the fallback's changed
+players and audit opportunity attribution before repeating this bridge.
+
 Date: 2026-09-22
 Status: **retain as a diagnostic; keep general defense neutral in projected WAR**
 

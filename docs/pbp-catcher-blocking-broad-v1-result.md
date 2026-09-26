@@ -1,5 +1,11 @@
 # Broad minor-league catcher blocking result
 
+Review qualification (2026-09-25): narrative failure capture and dirt/continuity
+selection still need an independent coverage check; broadening the PA sample did
+not supply one. The [deep review](baseball-methodology-deep-review-2026-09-25.md)
+narrows the conclusion to this extractor and test, not all possible use of the
+available feeds for blocking. Existing scores and no-deployment decision stand.
+
 Date: 2026-09-22
 Status: **reject current form**
 

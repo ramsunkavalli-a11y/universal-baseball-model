@@ -1,5 +1,11 @@
 # Clean-slate hitter model: blind-spot audit
 
+Later qualification (2026-09-25): the [deep review](baseball-methodology-deep-review-2026-09-25.md)
+finds that improved defensive-component error can be offset by other-component
+error interaction, and identifies measurement limitations in later MiLB tests.
+Statements below locating the remaining issue solely in defensive skill/value
+are too strong. Preserve their dated scores, not that exclusive causal diagnosis.
+
 Status: **major forecast paths audited; 2026 remains sealed**
 
 ## Bottom line

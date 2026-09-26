@@ -2,10 +2,17 @@
 
 ## Current priority — 2026-09-25: identifiable evidence before more fitting
 
+The subsequent [deep review](baseball-methodology-deep-review-2026-09-25.md)
+found concrete measurement and training-objective issues. Follow the
+[repair program](methodology-repair-program-2026-09-25.md) first. It pauses
+immediate execution of the batting diagnostic below while source gates are
+resolved, without changing that diagnostic's archived inputs or scores.
+
 Start with the [model audit](model-decision-audit-2026-09-25.md),
 [evidence ledger](model-evidence-ledger-2026-09-25.md) and
 [decision standard](model-decision-standard.md). Next execute only the
-[fixed batting-connection diagnostic](hitter-value-factorial-v1-plan.md).
+[fixed batting-connection diagnostic](hitter-value-factorial-v1-plan.md) at the
+repair program's integration milestone.
 It isolates workload, rate-block and inherited-residual effects on matched
 archived predictions; no new learner or automatic deployment. The audit itself
 does not change forecasts. The research connector and delivered explorer remain

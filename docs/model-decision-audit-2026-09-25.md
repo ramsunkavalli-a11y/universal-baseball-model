@@ -1,6 +1,9 @@
 # Model audit: what exists, what the evidence says, and what happens next
 
-2026-09-25. **Current research entry point.** This audit supersedes immediate
+2026-09-25. **Accounting/decision audit.** The later
+[deep review](baseball-methodology-deep-review-2026-09-25.md) adds source and
+estimand findings; its [repair program](methodology-repair-program-2026-09-25.md)
+now controls the immediate sequence. This audit supersedes older immediate
 experiment priorities in the roadmap and older logs, not their historical
 results or the locked 2026 contract. No models were fitted, forecasts replaced,
 2026 outcomes opened, or dollar values released.

@@ -1,5 +1,10 @@
 # Minor-league catcher steal deterrence result
 
+Review qualification (2026-09-25): the [deep review](baseball-methodology-deep-review-2026-09-25.md)
+flags narrative-only attempt capture and outcome-dependent pitch-window exposure.
+The rejected implementation remains rejected; it is not an adequate general
+negative test of catcher deterrence until same-game event coverage is certified.
+
 Date: 2026-09-22
 Status: **reject current form**
 

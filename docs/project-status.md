@@ -2,6 +2,29 @@
 
 Updated 2026-09-25. This is the current start-here document.
 
+## Latest checkpoint: deep baseball-methodology review
+
+The [deep review](baseball-methodology-deep-review-2026-09-25.md) extends the
+accounting audit into measurement, failed-test interpretation and training
+objectives. It directly checks historical PBP, the 2025 defensive bridge and
+activity/workload training weights. See the
+[repair program](methodology-repair-program-2026-09-25.md) for the controlling
+sequence: defensive/catcher source certification, a controlled weighting test,
+then identified value integration. No repaired forecast or new model was fitted.
+
+Key findings: 57.4% of reviewed non-out ground balls are assigned first touch
+to OF, excluding them from the old 2B/3B/SS range denominator; catcher narratives
+produce an unusual 67.6% caught share requiring source reconciliation; the
+2025 defensive arm improves component MSE but loses through other-error
+interaction. Recomputing player weights among active outcomes changes the 2021
+training mean from 268 to 212 conditional PA. These are measurements/diagnoses,
+not claims that every repaired model must improve. In 2021-origin Year 1,
+activity is too low while conditional workload on actual arrivers is already
+too high; a blanket PA boost is not an identified fix.
+
+Read the failed-approach triage in the review before repeating a rejected test.
+New evidence is in `model_artifacts/baseball-methodology-review-v1-2026-09-25/`.
+
 ## Current checkpoint: model and decision audit completed
 
 Read the [audit and exact output map](model-decision-audit-2026-09-25.md),

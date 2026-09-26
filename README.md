@@ -8,12 +8,21 @@ connected in earlier research prototypes, including named uncertainty and
 market-price assumptions. The current projection stack has not validated full
 remaining-control value or dollar rankings.
 
-**Start here — September 25:** the [model and decision audit](docs/model-decision-audit-2026-09-25.md)
+**Start here — September 25, deep review:** the
+[baseball-methodology review](docs/baseball-methodology-deep-review-2026-09-25.md)
+identifies incomplete infield opportunities, restricted catcher event capture,
+inconsistent activity/workload weighting, and component-error interactions.
+Failed tests with these limitations do not disprove the underlying baseball idea.
+Follow the [ordered repair program](docs/methodology-repair-program-2026-09-25.md)
+before new integration fits. Forecasts remain unchanged.
+
+The preceding [model and decision audit](docs/model-decision-audit-2026-09-25.md)
 maps the frozen forecast, delivered explorer and newer research separately.
 The [evidence ledger](docs/model-evidence-ledger-2026-09-25.md) records what worked
 and what remains unproven. The [decision standard](docs/model-decision-standard.md)
-governs future tests. Next is one [batting-connection diagnostic](docs/hitter-value-factorial-v1-plan.md),
-not another engine search. It is specified, not yet run. Forecasts are unchanged.
+governs future tests. The [batting-connection diagnostic](docs/hitter-value-factorial-v1-plan.md)
+is specified but remains unexecuted; the repair program now sets its place in
+the sequence. No engine search or automatic forecast replacement.
 The [product roadmap](docs/product-roadmap.md) retains the destination;
 [status](docs/project-status.md) records the latest handoff. Older priorities below
 are historical, not competing instructions.
