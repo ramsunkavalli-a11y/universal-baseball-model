@@ -1,10 +1,46 @@
 # Project status and handoff
 
-Updated 2026-09-23. This is the current start-here document.
+Updated 2026-09-25. This is the current start-here document.
 
 ## Current task: connect annual forecasts to multi-year player value
 
-Latest milestone: [explicit talent and draft pedigree workload test](hitter-talent-workload-v1-result.md).
+Latest milestone: [integrated opportunity/value test](hitter-integrated-opportunity-value-v1-result.md).
+The fixed hybrid combines F/D prospects with the stronger existing E playing-time
+ensemble for prior major leaguers. Three-year all-player PA RMSE improves from
+208.12 (retained prospect update) and 193.22 (ensemble) to 190.97, with favorable
+paired intervals against both. But cohort-total error worsens and next-year
+lower-minors MSE is 5.50% worse than E, failing the fixed 5% harm guard. No PA
+deployment. Existing MLB allocation bias is substantially reduced in the test.
+
+The new connector replays all seven component heads and changes exposure only
+for explicitly archived rate heads; direct totals are never scaled by tiny old
+PA. This removes the earlier amplification error. It does not rescue the value
+model: three-year expanded RMSE is 1.270 versus 1.264 for the prospect update
+and 1.213 for the mandatory ensemble/native-batting-product reference N. Both
+promotion gates fail. The stronger batting reference already existed; its safe
+expanded ledger is a new comparison, not an automatically selected live model.
+
+52,181 annual rows and 365,267 component records are assembled without new fits;
+input hashes, inherited cutoff/selection provenance, independent accounting and
+outcome-mutation invariance verify. Direct components remain an explicit exposure
+limitation. E also has 285 records (two retained by H) where PA exceeds 750 times
+its separately averaged participation probability; the PA ensemble includes a
+direct member and is not one coherent hurdle distribution. Do not divide those
+outputs to create conditional career simulations.
+
+Next: audit nested PA/rate support, then predeclare a value-connection test that
+separates talent-anchor choice from product/marginal construction, using the
+stronger N reference. Any learned reconciliation must use genuinely earlier
+out-of-time forecasts. Resolve probability/workload consistency explicitly;
+keep cohort totals, lower-minors and age/career-stage checks. No new post-hoc
+scope, cap, calibration or engine search. Live forecasts/explorer and the frozen
+3,907-player 2026 package are unchanged; no protected outcomes were opened.
+
+The preceding [all-cohort audit](hitter-cohort-profile-audit-v1-result.md) is now
+committed. It documents the prior regular/partial-workload compression, brief-
+debut boundary and returner failures that motivated this fixed integration.
+
+Previous milestone: [explicit talent and draft pedigree workload test](hitter-talent-workload-v1-result.md).
 The predeclared combined TP challenger fails: three-year prospect PA RMSE barely
 changes from 121.668 (D) to 121.534, with an uncertain paired difference; only
 one of three origins improves versus D. Aggregate PA error worsens, especially
