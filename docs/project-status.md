@@ -2,7 +2,33 @@
 
 Updated 2026-09-25. This is the current start-here document.
 
-## Current task: connect annual forecasts to multi-year player value
+## Current checkpoint: model and decision audit completed
+
+Read the [audit and exact output map](model-decision-audit-2026-09-25.md),
+[evidence ledger](model-evidence-ledger-2026-09-25.md), and
+[decision standard](model-decision-standard.md). The next task is the
+[fixed batting-connection diagnostic](hitter-value-factorial-v1-plan.md), not
+more fits. It is specified but has not been run or selected.
+
+The audit preserves the real H playing-time gain and the real batting gap to N.
+The lower-minors Year-1 warning is sparse and largely 2021-driven; the tiny
+aggregate-error increase versus E is not the same issue as the material 2021
+cohort shortfall. The older D total benefited from prospect/MLB error cancellation.
+Rate choice and accounting were confounded in the earlier value comparison.
+PA-weighted rate multiplication does not inherently assume independent talent
+and workload. These are interpretation corrections, not retrospective promotion.
+
+The safe component connector is research-only. Explorer 8777 still rescales
+selected direct component totals for repaired rookie players; forecasts are
+unchanged and this semantic limitation is recorded rather than called fixed.
+All 3,907 full-control values remain unavailable. No 2026 results were opened.
+
+Reproducible diagnostic evidence is in
+`model_artifacts/model-decision-audit-v1-2026-09-25/audit-evidence.json`;
+rerun `scripts/audit_model_decisions_v1.py`. Older "next" statements below
+document their original milestones and do not override the current contract.
+
+## Prior milestone: connect annual forecasts to multi-year player value
 
 Latest milestone: [integrated opportunity/value test](hitter-integrated-opportunity-value-v1-result.md).
 The fixed hybrid combines F/D prospects with the stronger existing E playing-time

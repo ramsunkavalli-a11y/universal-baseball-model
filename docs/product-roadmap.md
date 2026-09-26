@@ -1,10 +1,14 @@
 # Product roadmap: universal, continuously updated trade value
 
-**Status:** Authoritative active plan
+**Status:** Product destination; current research sequencing is in the September 25 audit
 **Adopted:** 2026-09-07
-**Supersedes for prioritization:** component-specific "next experiment" lists
+**Current execution:** [model audit](model-decision-audit-2026-09-25.md),
+[decision standard](model-decision-standard.md), then the single
+[batting-connection diagnostic](hitter-value-factorial-v1-plan.md).
+Older immediate priorities below are historical. No new engine tournament,
+career simulator or dollar release is implied. Preserve frozen forecasts.
 
-## Active execution priority — 2026-09-22
+## Historical execution priority — 2026-09-22
 
 ### User clarification and value milestone — 2026-09-23
 
@@ -20,7 +24,7 @@ history improves distribution scores; prospect regular outcomes remain too low,
 and mean accuracy trails the delivered model. Old career simulators remain
 rejected. The live forecast is unchanged and player dollar values are unavailable.
 
-Immediate priority follows the [bounded next checkpoint](projection-anchored-path-next-checkpoint.md),
+The immediate priority at that time followed the [bounded next checkpoint](projection-anchored-path-next-checkpoint.md),
 informed by the [baseball simulation review](baseball-simulation-literature-2026-09-23.md):
 audit young/brief-MLB continuation and historical snapshot support; test one
 identity-balanced population repair against the rejected control; then, only if

@@ -1,6 +1,17 @@
 # Current model plan
 
-## Active priority — 2026-09-22: annual and cumulative future value
+## Current priority — 2026-09-25: identifiable evidence before more fitting
+
+Start with the [model audit](model-decision-audit-2026-09-25.md),
+[evidence ledger](model-evidence-ledger-2026-09-25.md) and
+[decision standard](model-decision-standard.md). Next execute only the
+[fixed batting-connection diagnostic](hitter-value-factorial-v1-plan.md).
+It isolates workload, rate-block and inherited-residual effects on matched
+archived predictions; no new learner or automatic deployment. The audit itself
+does not change forecasts. The research connector and delivered explorer remain
+different versions. All older priorities below are retained as historical logs.
+
+## Historical priority — 2026-09-22: annual and cumulative future value
 
 Follow the [multi-year plan](multiyear-player-value-plan-2026-09-22.md), beginning
 with certified labels, including the shortened-2020 replacement accounting, and a
@@ -12,7 +23,7 @@ direct horizons and linked annual paths both need testing. Older "Active P0" hea
 below record prior priorities; they do not override this sequence. The current gap
 is tested year-by-year integration, not an absence of all multi-year research.
 
-## Active P0: full-profile BIP contact talent
+## Historical P0: full-profile BIP contact talent
 
 Run the [full BIP contact-talent challenger](full-bip-contact-talent-challenger-plan.md)
 for hitters and pitchers before declaring batted-ball evidence exhausted. Reuse the
@@ -23,7 +34,7 @@ test, not a playing-time change or permission to add intuitive bonuses. The narr
 [pulled-air matched recheck](hitter-pulled-air-matched-recheck-plan.md) remains a
 diagnostic rather than the governing candidate.
 
-## Active P0: explanation-first prospect ranking audit
+## Historical P0: explanation-first prospect ranking audit
 
 Before further prospect-model complexity or any public ranking, complete the
 [prospect ranking sanity audit](prospect-ranking-sanity-audit-plan.md). Compare the
@@ -41,7 +52,7 @@ premium-position value despite limited offense. Do not fix these with list quota
 named-player overrides, or public FV targets.
 
 Updated 2026-09-10. The user wants the model made credible before further interface
-work. The [product roadmap](product-roadmap.md) is now the authoritative active plan;
+work. At that date, the [product roadmap](product-roadmap.md) was the active plan;
 this document retains detailed evidence from the current hitter/opportunity workstream.
 Earlier experiment contracts remain historical records.
 
@@ -885,7 +896,7 @@ The validated age-24-to-26 peak run model and its above-average/impact probabili
 are now the explicit conditional-talent view for both player types; they are not
 multiplied into arrival or labeled FV.
 
-## Active P0: empirically rebuild controlled value — 2026-09-13
+## Historical P0: empirically rebuild controlled value — 2026-09-13
 
 The guessed statement that a 50-FV prospect is worth about three controlled WAR is
 explicitly rejected as a model input. Follow the

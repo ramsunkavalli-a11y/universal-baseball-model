@@ -1,0 +1,991 @@
+{
+  "audit_only": true,
+  "new_candidate_scores": false,
+  "new_fits": 0,
+  "protected_outcomes_used": false,
+  "production_forecasts_changed": false,
+  "source_hashes": {
+    "model_artifacts\\hitter-integrated-opportunity-value-v1-2026-09-25\\predictions.parquet": "ef6aa08662b164833aea6893884acf5323387b05027d31546e4291d111f7fd47",
+    "model_artifacts\\hitter-integrated-opportunity-value-v1-2026-09-25\\cumulative-predictions.parquet": "55d6b6324bfc9e0bb394dfbb5cd3dff1c8b2f8f29160bdee377331dfc8796adb",
+    "model_artifacts\\hitter-integrated-opportunity-value-v1-2026-09-25\\score-report.json": "fb5024bbd6999a78c18486a04deddcab3ee1790cb40cff729aef83a05357f1f8",
+    "model_artifacts\\hitter-anchored-development-v1-2026-09-22\\historical-anchors.parquet": "513c3c295354f4e8901bbf85439bc8ff2ed33c3381ee551fcc1918d2ac4d0033",
+    "model_artifacts\\hitter-arrival-coherence-v1-2026-09-23\\forecast-2026-2031.parquet": "af1c786e0b5aef7148b05e4d673f58a3b7eed099e82f8d4e4bcaa49f7e4096de",
+    "model_artifacts\\multiyear-hitter-components-v1-2026-09-22\\component-predictions.parquet": "49e2d38728644a1b596bd870f882855bd2d66fffc51825232a9402d2e43056c0",
+    "model_artifacts\\historical-projection-state-v1-2026-09-23\\states.parquet": "af471514e47ef0b871eb591516416ed0b481a6da74c6dc001a5f769e7d597648",
+    "model_artifacts\\hitter-three-year-opportunity-v1-2026-09-22\\predictions.parquet": "aeaa1ac2c1d0c118123d8f76fe6a8b848331708081baf5a00ec323e6b90f3398",
+    "model_artifacts\\hitter-arrival-value-transfer-v1-2026-09-23\\fit-manifest.json": "de54ad4521cc6c8c9666e04d0e0cc4ce1c87a53b7b8146958d754026c02a77ba",
+    "model_artifacts\\hitter-conditional-workload-v1-2026-09-23\\fit-manifest.json": "76d27c5ed4884662630643c74611eb03afcbe3f770edc8b3175e222c36718f72",
+    "scripts\\report_hitter_arrival_coherence_v1.py": "3fa171b5be918ff0d790c4553cc8a3994457878b39dac2eac334fc6a4548cc43",
+    "scripts\\evaluate_hitter_anchored_development_v1.py": "a81a970f2f2b95c04704f713bd83fd690ac1d38b743516c405dd4b15fa8a1658",
+    "src\\universal_baseball\\hitter_anchored_development.py": "02d7277e9900bb51ae1824604cb7248a95cfeb0aa6326aacb62f051082c19da9",
+    "scripts\\fit_hitter_arrival_coherence_v1.py": "d77019e7b75172d5fe216fec6e98e58f6b4311a1fa8bfffdc73e402c2bb1106c",
+    "scripts\\audit_model_decisions_v1.py": "1d08045ae054c964931fa92e5639de1318dfd13af7de33ed9a95524c6d462ab7",
+    "src\\universal_baseball\\model_decision_audit.py": "d65c21bc8865b9d3cecf28e015f041b73aad01068a11879b78a6d4382f6a3ddf",
+    "src\\universal_baseball\\hitter_value_panel.py": "e6f2e4f842f6fb88a9d160508163fb9249289385f84eb96da853e0d492d6dc8a",
+    "src\\universal_baseball\\multiyear_hitter_value.py": "b72aa067d881af342dd0a5db7475638038bd827e9ec161f4b557b6e6b473d32a",
+    "src\\universal_baseball\\multiyear_hitter_followup.py": "540c49b166ab5c3d5f9195e614b533951942ba0a88fdcb97f10bdfd2020ed2de"
+  },
+  "lower_minor_H1": {
+    "rows": 12098,
+    "players": 7037,
+    "participants": 45,
+    "participant_players": 45,
+    "all_origins": {
+      "candidate": 85.65245926117939,
+      "baseline": 81.18763853019175,
+      "delta": 4.464820730987654,
+      "interval95": [
+        0.09246691209906796,
+        8.679795627777215
+      ],
+      "folds": [
+        {
+          "origin": 2016,
+          "candidate": 60.187686977312225,
+          "baseline": 57.35963618744518,
+          "delta": 2.828050789867043
+        },
+        {
+          "origin": 2017,
+          "candidate": 109.16800144201818,
+          "baseline": 103.00266280634898,
+          "delta": 6.165338635669223
+        },
+        {
+          "origin": 2018,
+          "candidate": 5.753095049363023,
+          "baseline": 4.5180241924511755,
+          "delta": 1.2350708569118474
+        },
+        {
+          "origin": 2021,
+          "candidate": 160.51463322761407,
+          "baseline": 138.58117701324704,
+          "delta": 21.93345621436705
+        },
+        {
+          "origin": 2022,
+          "candidate": 92.63887960958944,
+          "baseline": 102.47669245146635,
+          "delta": -9.837812841876897
+        }
+      ],
+      "improving_origins": 1
+    },
+    "without2021_diagnostic": {
+      "candidate": 66.93691576957072,
+      "baseline": 66.83925390942792,
+      "delta": 0.09766186014280409,
+      "interval95": [
+        -3.4957817188246416,
+        3.675241281841145
+      ],
+      "folds": [
+        {
+          "origin": 2016,
+          "candidate": 60.187686977312225,
+          "baseline": 57.35963618744518,
+          "delta": 2.828050789867043
+        },
+        {
+          "origin": 2017,
+          "candidate": 109.16800144201818,
+          "baseline": 103.00266280634898,
+          "delta": 6.165338635669223
+        },
+        {
+          "origin": 2018,
+          "candidate": 5.753095049363023,
+          "baseline": 4.5180241924511755,
+          "delta": 1.2350708569118474
+        },
+        {
+          "origin": 2022,
+          "candidate": 92.63887960958944,
+          "baseline": 102.47669245146635,
+          "delta": -9.837812841876897
+        }
+      ],
+      "improving_origins": 1
+    }
+  },
+  "lower_minor_horizons": {
+    "1": {
+      "L": {
+        "mse": 82.34380831377422,
+        "mae": 0.8296480112963177,
+        "bias": 0.12105964403920093,
+        "aggregate_absolute_error": 487.92384739686077,
+        "rmse": 9.074348919551982
+      },
+      "B": {
+        "mse": 82.17086158397535,
+        "mae": 0.5087791803014114,
+        "bias": -0.19988996319364358,
+        "aggregate_absolute_error": 573.0509885228107,
+        "rmse": 9.064814481497972
+      },
+      "D": {
+        "mse": 85.65245926117939,
+        "mae": 0.7477209396801852,
+        "bias": 0.12723639992349475,
+        "aggregate_absolute_error": 439.05494155423105,
+        "rmse": 9.254861385303368
+      },
+      "E": {
+        "mse": 81.18763853019175,
+        "mae": 0.7991434798198586,
+        "bias": 0.12477053881682594,
+        "aggregate_absolute_error": 437.67094569746877,
+        "rmse": 9.010418332696421
+      },
+      "N": {
+        "mse": 81.18763853019175,
+        "mae": 0.7991434798198586,
+        "bias": 0.12477053881682594,
+        "aggregate_absolute_error": 437.67094569746877,
+        "rmse": 9.010418332696421
+      },
+      "H": {
+        "mse": 85.65245926117939,
+        "mae": 0.7477209396801852,
+        "bias": 0.12723639992349475,
+        "aggregate_absolute_error": 439.05494155423105,
+        "rmse": 9.254861385303368
+      }
+    },
+    "2": {
+      "L": {
+        "mse": 1060.5827680725304,
+        "mae": 6.623819751359096,
+        "bias": 0.4010267677078808,
+        "aggregate_absolute_error": 3303.5935404491897,
+        "rmse": 32.56658975196099
+      },
+      "B": {
+        "mse": 1049.6562039570958,
+        "mae": 4.296734429447849,
+        "bias": -1.9303531889466696,
+        "aggregate_absolute_error": 4621.632369269037,
+        "rmse": 32.39839816961783
+      },
+      "D": {
+        "mse": 899.1739119129181,
+        "mae": 4.685117934625895,
+        "bias": -0.5370905334346707,
+        "aggregate_absolute_error": 2681.97750540347,
+        "rmse": 29.986228704405598
+      },
+      "E": {
+        "mse": 907.9223038859441,
+        "mae": 4.802860806251397,
+        "bias": -0.6718506272341788,
+        "aggregate_absolute_error": 2438.4122817836974,
+        "rmse": 30.13174910100547
+      },
+      "N": {
+        "mse": 907.9223038859441,
+        "mae": 4.802860806251397,
+        "bias": -0.6718506272341788,
+        "aggregate_absolute_error": 2438.4122817836974,
+        "rmse": 30.13174910100547
+      },
+      "H": {
+        "mse": 899.1739119129181,
+        "mae": 4.685117934625895,
+        "bias": -0.5370905334346707,
+        "aggregate_absolute_error": 2681.97750540347,
+        "rmse": 29.986228704405598
+      }
+    },
+    "3": {
+      "L": {
+        "mse": 3204.391638184559,
+        "mae": 16.73849908147273,
+        "bias": 0.566021247014496,
+        "aggregate_absolute_error": 3811.4937495747668,
+        "rmse": 56.60734615034129
+      },
+      "B": {
+        "mse": 3147.70425181385,
+        "mae": 11.209901229030654,
+        "bias": -5.0382150886778945,
+        "aggregate_absolute_error": 12059.940061644897,
+        "rmse": 56.10440492344474
+      },
+      "D": {
+        "mse": 2645.504648539079,
+        "mae": 11.882181634418473,
+        "bias": -1.3512929357248629,
+        "aggregate_absolute_error": 3247.547910158961,
+        "rmse": 51.43446945909989
+      },
+      "E": {
+        "mse": 2690.530487802851,
+        "mae": 12.614504320505162,
+        "bias": -1.0346502909656659,
+        "aggregate_absolute_error": 2877.8679488272064,
+        "rmse": 51.870323768054995
+      },
+      "N": {
+        "mse": 2690.530487802851,
+        "mae": 12.614504320505162,
+        "bias": -1.0346502909656659,
+        "aggregate_absolute_error": 2877.8679488272064,
+        "rmse": 51.870323768054995
+      },
+      "H": {
+        "mse": 2645.504648539079,
+        "mae": 11.882181634418473,
+        "bias": -1.3512929357248629,
+        "aggregate_absolute_error": 3247.547910158961,
+        "rmse": 51.43446945909989
+      }
+    }
+  },
+  "lower_minor_cumulative": {
+    "rows": 7174,
+    "players": 5542,
+    "origins": 3,
+    "active": 326,
+    "arms": {
+      "L": {
+        "mse": 7514.459584238262,
+        "mae": 24.21281280771719,
+        "bias": 0.747807169874346,
+        "aggregate_absolute_error": 7646.673508668086,
+        "rmse": 86.685982628325
+      },
+      "B": {
+        "mse": 7390.487497039976,
+        "mae": 16.117113313900376,
+        "bias": -7.463088249558544,
+        "aggregate_absolute_error": 17865.801182985055,
+        "rmse": 85.96794459006203
+      },
+      "D": {
+        "mse": 5975.228338398568,
+        "mae": 16.505667114165238,
+        "bias": -2.110722272125597,
+        "aggregate_absolute_error": 5248.19617434796,
+        "rmse": 77.29960115290743
+      },
+      "E": {
+        "mse": 6163.877220566491,
+        "mae": 17.718449159954687,
+        "bias": -1.7921114304171617,
+        "aggregate_absolute_error": 4843.073156625204,
+        "rmse": 78.51036377808022
+      },
+      "N": {
+        "mse": 6163.877220566491,
+        "mae": 17.718449159954687,
+        "bias": -1.7921114304171617,
+        "aggregate_absolute_error": 4843.073156625204,
+        "rmse": 78.51036377808022
+      },
+      "H": {
+        "mse": 5975.228338398568,
+        "mae": 16.505667114165238,
+        "bias": -2.110722272125597,
+        "aggregate_absolute_error": 5248.19617434796,
+        "rmse": 77.29960115290743
+      }
+    },
+    "by_origin": [
+      {
+        "origin": 2016,
+        "rows": 2404,
+        "actual_total": 22956.0,
+        "arms": {
+          "L": {
+            "mse": 5004.290473704592,
+            "mae": 21.51684597465843,
+            "bias": 3.539033447446918,
+            "predicted_total": 31463.836407662395,
+            "aggregate_absolute_error": 8507.836407662391
+          },
+          "B": {
+            "mse": 4901.694619353449,
+            "mae": 13.174481043902013,
+            "bias": -4.973587830234893,
+            "predicted_total": 10999.494856115318,
+            "aggregate_absolute_error": 11956.505143884682
+          },
+          "D": {
+            "mse": 4023.761773982509,
+            "mae": 13.144370604719464,
+            "bias": -0.7068649317311135,
+            "predicted_total": 21256.696704118407,
+            "aggregate_absolute_error": 1699.303295881597
+          },
+          "E": {
+            "mse": 3971.6463317474477,
+            "mae": 14.284827260980007,
+            "bias": -0.12499747761913885,
+            "predicted_total": 22655.506063803587,
+            "aggregate_absolute_error": 300.4939361964098
+          },
+          "N": {
+            "mse": 3971.6463317474477,
+            "mae": 14.284827260980007,
+            "bias": -0.12499747761913885,
+            "predicted_total": 22655.506063803587,
+            "aggregate_absolute_error": 300.4939361964098
+          },
+          "H": {
+            "mse": 4023.761773982509,
+            "mae": 13.144370604719464,
+            "bias": -0.7068649317311135,
+            "predicted_total": 21256.696704118407,
+            "aggregate_absolute_error": 1699.303295881597
+          }
+        }
+      },
+      {
+        "origin": 2021,
+        "rows": 2403,
+        "actual_total": 39422.0,
+        "arms": {
+          "L": {
+            "mse": 10850.573806094868,
+            "mae": 27.913810119036373,
+            "bias": -3.668531986409012,
+            "predicted_total": 30606.517636659148,
+            "aggregate_absolute_error": 8815.482363340856
+          },
+          "B": {
+            "mse": 10731.495914891524,
+            "mae": 20.097066573489183,
+            "bias": -11.610864975590202,
+            "predicted_total": 11521.091463656745,
+            "aggregate_absolute_error": 27900.908536343253
+          },
+          "D": {
+            "mse": 8438.38319008158,
+            "mae": 20.00572838503378,
+            "bias": -5.735927628536395,
+            "predicted_total": 25638.56590862704,
+            "aggregate_absolute_error": 13783.434091372957
+          },
+          "E": {
+            "mse": 8599.536736355478,
+            "mae": 21.138319705037265,
+            "bias": -5.588813369297059,
+            "predicted_total": 25992.081473579165,
+            "aggregate_absolute_error": 13429.918526420832
+          },
+          "N": {
+            "mse": 8599.536736355478,
+            "mae": 21.138319705037265,
+            "bias": -5.588813369297059,
+            "predicted_total": 25992.081473579165,
+            "aggregate_absolute_error": 13429.918526420832
+          },
+          "H": {
+            "mse": 8438.38319008158,
+            "mae": 20.00572838503378,
+            "bias": -5.735927628536395,
+            "predicted_total": 25638.56590862704,
+            "aggregate_absolute_error": 13783.434091372957
+          }
+        }
+      },
+      {
+        "origin": 2022,
+        "rows": 2367,
+        "actual_total": 25868.0,
+        "arms": {
+          "L": {
+            "mse": 6688.514472915325,
+            "mae": 23.207782329456766,
+            "bias": 2.372920048585132,
+            "predicted_total": 31484.701755001006,
+            "aggregate_absolute_error": 5616.701755001008
+          },
+          "B": {
+            "mse": 6538.271956874957,
+            "mae": 15.079792324309937,
+            "bias": -5.804811942850537,
+            "predicted_total": 12128.01013127278,
+            "aggregate_absolute_error": 13739.989868727222
+          },
+          "D": {
+            "mse": 5463.540051131616,
+            "mae": 16.366902352742475,
+            "bias": 0.11062574389071604,
+            "predicted_total": 26129.851135789322,
+            "aggregate_absolute_error": 261.85113578932487
+          },
+          "E": {
+            "mse": 5920.448593596549,
+            "mae": 17.732200513846795,
+            "bias": 0.33747655566471196,
+            "predicted_total": 26666.807007258372,
+            "aggregate_absolute_error": 798.8070072583732
+          },
+          "N": {
+            "mse": 5920.448593596549,
+            "mae": 17.732200513846795,
+            "bias": 0.33747655566471196,
+            "predicted_total": 26666.807007258372,
+            "aggregate_absolute_error": 798.8070072583732
+          },
+          "H": {
+            "mse": 5463.540051131616,
+            "mae": 16.366902352742475,
+            "bias": 0.11062574389071604,
+            "predicted_total": 26129.851135789322,
+            "aggregate_absolute_error": 261.85113578932487
+          }
+        }
+      }
+    ]
+  },
+  "comparability": {
+    "N_replays_independent_rate_product": true,
+    "rate_anchor_rows_matched": 52181,
+    "E_N_PA_max_difference": 0.0,
+    "E_N_other_runs_max_difference": 0.0,
+    "marginal_identity_verified": true
+  },
+  "value_groups": {
+    "value": {
+      "prospects": {
+        "candidate": 0.3284169254278574,
+        "baseline": 0.32420851659317085,
+        "delta": 0.004208408834686517,
+        "interval95": [
+          -0.016520073895342456,
+          0.022590580301547033
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 0.3844460655693374,
+            "baseline": 0.3652245364756614,
+            "delta": 0.01922152909367596
+          },
+          {
+            "origin": 2021,
+            "candidate": 0.35687162368021824,
+            "baseline": 0.4019572742477972,
+            "delta": -0.045085650567578996
+          },
+          {
+            "origin": 2022,
+            "candidate": 0.24393308703401653,
+            "baseline": 0.20544373905605398,
+            "delta": 0.038489347977962586
+          }
+        ],
+        "improving_origins": 1
+      },
+      "prior_MLB": {
+        "candidate": 6.379785882350224,
+        "baseline": 5.513796667909322,
+        "delta": 0.8659892144409023,
+        "interval95": [
+          0.6050532623013866,
+          1.1331116412884596
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 7.561688388994652,
+            "baseline": 6.242746107891173,
+            "delta": 1.3189422811034794
+          },
+          {
+            "origin": 2021,
+            "candidate": 6.093235277285206,
+            "baseline": 5.2305083797823775,
+            "delta": 0.862726897502828
+          },
+          {
+            "origin": 2022,
+            "candidate": 5.484433980770816,
+            "baseline": 5.068135516054416,
+            "delta": 0.4162984647163996
+          }
+        ],
+        "improving_origins": 0
+      },
+      "without2021": {
+        "candidate": 1.4822302270630325,
+        "baseline": 1.2972190376091843,
+        "delta": 0.18501118945384853,
+        "interval95": [
+          0.1251441234269164,
+          0.24384744054893998
+        ],
+        "folds": [
+          {
+            "origin": 2016,
+            "candidate": 1.686593887212478,
+            "baseline": 1.4290018706888026,
+            "delta": 0.25759201652367575
+          },
+          {
+            "origin": 2022,
+            "candidate": 1.2778665669135871,
+            "baseline": 1.1654362045295659,
+            "delta": 0.11243036238402135
+          }
+        ],
+        "improving_origins": 0
+      }
+    },
+    "expanded": {
+      "prospects": {
+        "candidate": 0.4767637515918276,
+        "baseline": 0.4874272257724749,
+        "delta": -0.010663474180647302,
+        "interval95": [
+          -0.05093664364361877,
+          0.02253941344270887
+        ],
+        "folds": [
+          {
+            "origin": 2021,
+            "candidate": 0.5520757288984677,
+            "baseline": 0.6014336125967181,
+            "delta": -0.04935788369825048
+          },
+          {
+            "origin": 2022,
+            "candidate": 0.4014517742851875,
+            "baseline": 0.37342083894823164,
+            "delta": 0.02803093533695588
+          }
+        ],
+        "improving_origins": 1
+      },
+      "prior_MLB": {
+        "candidate": 6.446369265663047,
+        "baseline": 5.659900683984283,
+        "delta": 0.7864685816787633,
+        "interval95": [
+          0.4433648716572804,
+          1.1334636840997392
+        ],
+        "folds": [
+          {
+            "origin": 2021,
+            "candidate": 6.726544758065614,
+            "baseline": 5.773386551277884,
+            "delta": 0.9531582067877299
+          },
+          {
+            "origin": 2022,
+            "candidate": 6.1661937732604795,
+            "baseline": 5.546414816690683,
+            "delta": 0.6197789565697968
+          }
+        ],
+        "improving_origins": 0
+      },
+      "without2021": {
+        "candidate": 1.5287578507320698,
+        "baseline": 1.3843929927204346,
+        "delta": 0.1443648580116352,
+        "interval95": [
+          0.0535938393462489,
+          0.24259174767509853
+        ],
+        "folds": [
+          {
+            "origin": 2022,
+            "candidate": 1.5287578507320698,
+            "baseline": 1.3843929927204346,
+            "delta": 0.1443648580116352
+          }
+        ],
+        "improving_origins": 0
+      }
+    }
+  },
+  "cohort_errors": {
+    "all": [
+      {
+        "origin_year": 2016,
+        "actual_pa": 537238,
+        "D_error": -12237.531363011316,
+        "E_error": -24575.28734035016,
+        "H_error": -27004.25339399873
+      },
+      {
+        "origin_year": 2021,
+        "actual_pa": 541029,
+        "D_error": -14668.033931393245,
+        "E_error": -80464.9760388922,
+        "H_error": -72770.08241420916
+      },
+      {
+        "origin_year": 2022,
+        "actual_pa": 537465,
+        "D_error": 38012.06226251756,
+        "E_error": 9356.675798533775,
+        "H_error": 15798.81644808489
+      }
+    ],
+    "prospects": [
+      {
+        "origin_year": 2016,
+        "actual_pa": 86494,
+        "D_error": -20527.732797172197,
+        "E_error": -16974.092497433554,
+        "H_error": -20527.732797172197
+      },
+      {
+        "origin_year": 2021,
+        "actual_pa": 121444,
+        "D_error": -49366.31136119189,
+        "E_error": -56742.08974514045,
+        "H_error": -49366.31136119189
+      },
+      {
+        "origin_year": 2022,
+        "actual_pa": 97303,
+        "D_error": 1691.091996176141,
+        "E_error": -4468.3002211314015,
+        "H_error": 1691.091996176141
+      }
+    ],
+    "prior_MLB": [
+      {
+        "origin_year": 2016,
+        "actual_pa": 448332,
+        "D_error": 6933.869250219382,
+        "E_error": -7832.852780768062,
+        "H_error": -7832.852780768062
+      },
+      {
+        "origin_year": 2021,
+        "actual_pa": 418833,
+        "D_error": 34193.201351438205,
+        "E_error": -23908.847131377785,
+        "H_error": -23908.847131377785
+      },
+      {
+        "origin_year": 2022,
+        "actual_pa": 439679,
+        "D_error": 35445.88968229094,
+        "E_error": 13232.643867858284,
+        "H_error": 13232.643867858284
+      }
+    ],
+    "remaining": [
+      {
+        "origin_year": 2016,
+        "actual_pa": 2412,
+        "D_error": 1356.3321839414905,
+        "E_error": 231.65793785148037,
+        "H_error": 1356.3321839414905
+      },
+      {
+        "origin_year": 2021,
+        "actual_pa": 752,
+        "D_error": 505.0760783604625,
+        "E_error": 185.9608376260131,
+        "H_error": 505.0760783604625
+      },
+      {
+        "origin_year": 2022,
+        "actual_pa": 483,
+        "D_error": 875.0805840504823,
+        "E_error": 592.3321518069193,
+        "H_error": 875.0805840504823
+      }
+    ]
+  },
+  "examples": [
+    {
+      "player_name": "Maikel Garcia",
+      "actual_pa": 1164,
+      "H_pa": 461.8689441705926,
+      "E_pa": 149.2535554160913,
+      "actual_value": 0.7951757786381323,
+      "H_value": 1.4031660986879015,
+      "N_value": 0.39782639605235104
+    },
+    {
+      "player_name": "Jorbit Vivas",
+      "actual_pa": 0,
+      "H_pa": 508.8888484847448,
+      "E_pa": 194.80409740760007,
+      "actual_value": 0.0,
+      "H_value": 2.3963558804182816,
+      "N_value": 0.9101141073731791
+    },
+    {
+      "player_name": "Ezequiel Tovar",
+      "actual_pa": 1345,
+      "H_pa": 564.763894218337,
+      "E_pa": 288.30609742313163,
+      "actual_value": 3.741673498595575,
+      "H_value": 2.653151361670374,
+      "N_value": 1.5025184545528982
+    },
+    {
+      "player_name": "Eddys Leonard",
+      "actual_pa": 0,
+      "H_pa": 388.4473880066302,
+      "E_pa": 126.31912875743141,
+      "actual_value": 0.0,
+      "H_value": 1.9885544982356658,
+      "N_value": 0.5833685402289129
+    }
+  ],
+  "display": {
+    "package": "model_artifacts\\hitter-arrival-coherence-v1-2026-09-23\\forecast-2026-2031.parquet",
+    "players": 3907,
+    "full_control_value_missing": 3907,
+    "horizons": {
+      "1": {
+        "repaired_players": 1093,
+        "ratio_min": 9.86763405651631e-05,
+        "ratio_max": 0.07953222131473973,
+        "selected_direct_component_records_rescaled": 1093,
+        "direct_components": [
+          "position"
+        ],
+        "direct_rescaling_sum_absolute_runs": 114.18136686191728,
+        "direct_rescaling_max_absolute_runs": 0.4474406674080182,
+        "PA_total": 184089.39418577592,
+        "batting_total": 523.5135558628846
+      },
+      "2": {
+        "repaired_players": 1093,
+        "ratio_min": 0.00634388230555168,
+        "ratio_max": 0.8081511816917277,
+        "selected_direct_component_records_rescaled": 0,
+        "direct_components": [],
+        "direct_rescaling_sum_absolute_runs": 0.0,
+        "direct_rescaling_max_absolute_runs": null,
+        "PA_total": 184389.28982140167,
+        "batting_total": 580.352725269026
+      },
+      "3": {
+        "repaired_players": 1093,
+        "ratio_min": 0.0007725679304166754,
+        "ratio_max": 1.0797095945677528,
+        "selected_direct_component_records_rescaled": 2186,
+        "direct_components": [
+          "advancement",
+          "steals"
+        ],
+        "direct_rescaling_sum_absolute_runs": 120.42908481447591,
+        "direct_rescaling_max_absolute_runs": 0.39915217083817556,
+        "PA_total": 178389.33580435425,
+        "batting_total": 578.0702032407487
+      },
+      "4": {
+        "repaired_players": 0,
+        "ratio_min": null,
+        "ratio_max": null,
+        "selected_direct_component_records_rescaled": 0,
+        "direct_components": [],
+        "direct_rescaling_sum_absolute_runs": 0.0,
+        "direct_rescaling_max_absolute_runs": null,
+        "PA_total": 182178.00754906892,
+        "batting_total": 614.7928727722455
+      },
+      "5": {
+        "repaired_players": 0,
+        "ratio_min": null,
+        "ratio_max": null,
+        "selected_direct_component_records_rescaled": 0,
+        "direct_components": [],
+        "direct_rescaling_sum_absolute_runs": 0.0,
+        "direct_rescaling_max_absolute_runs": null,
+        "PA_total": 174203.59226299849,
+        "batting_total": 668.6382509130295
+      },
+      "6": {
+        "repaired_players": 0,
+        "ratio_min": null,
+        "ratio_max": null,
+        "selected_direct_component_records_rescaled": 0,
+        "direct_components": [],
+        "direct_rescaling_sum_absolute_runs": 0.0,
+        "direct_rescaling_max_absolute_runs": null,
+        "PA_total": 161382.74703974713,
+        "batting_total": 610.7746615130538
+      }
+    }
+  },
+  "nested_support": {
+    "historical_state_rows": 145344,
+    "state_columns": [
+      "origin_year",
+      "player_id",
+      "horizon",
+      "age",
+      "age_missing",
+      "level",
+      "stage",
+      "prospect",
+      "prior_debut",
+      "recent_debut",
+      "minor_returner",
+      "mlb_pa_lag0",
+      "pa_lag0",
+      "delivered_p",
+      "delivered_pa",
+      "delivered_conditional_pa",
+      "delivered_value",
+      "unrepaired_value",
+      "unrepaired_p",
+      "unrepaired_pa",
+      "research_conditional_rate",
+      "research_conditional_pa",
+      "h1_rate_anchor",
+      "anchor_latest_label",
+      "C2_affected",
+      "year1_evidence",
+      "provenance",
+      "source_cutoff",
+      "target",
+      "value_vintage_provenance",
+      "conditional_pa_provenance",
+      "rate_role",
+      "opportunity_latest_label",
+      "rate_latest_label",
+      "value_latest_label"
+    ],
+    "state_origins": [
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2021,
+      2022,
+      2025
+    ],
+    "ensemble_origins": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2021,
+      2022
+    ],
+    "common_integration_folds": [
+      {
+        "origin_year": 2016,
+        "horizon": 1
+      },
+      {
+        "origin_year": 2017,
+        "horizon": 1
+      },
+      {
+        "origin_year": 2018,
+        "horizon": 1
+      },
+      {
+        "origin_year": 2021,
+        "horizon": 1
+      },
+      {
+        "origin_year": 2022,
+        "horizon": 1
+      },
+      {
+        "origin_year": 2016,
+        "horizon": 2
+      },
+      {
+        "origin_year": 2017,
+        "horizon": 2
+      },
+      {
+        "origin_year": 2021,
+        "horizon": 2
+      },
+      {
+        "origin_year": 2022,
+        "horizon": 2
+      },
+      {
+        "origin_year": 2016,
+        "horizon": 3
+      },
+      {
+        "origin_year": 2021,
+        "horizon": 3
+      },
+      {
+        "origin_year": 2022,
+        "horizon": 3
+      }
+    ],
+    "rate_anchor_origins": [
+      {
+        "origin_year": 2012,
+        "rows": 4466,
+        "latest_anchor_target": 2012
+      },
+      {
+        "origin_year": 2013,
+        "rows": 4476,
+        "latest_anchor_target": 2013
+      },
+      {
+        "origin_year": 2014,
+        "rows": 4516,
+        "latest_anchor_target": 2014
+      },
+      {
+        "origin_year": 2015,
+        "rows": 4512,
+        "latest_anchor_target": 2015
+      },
+      {
+        "origin_year": 2016,
+        "rows": 4572,
+        "latest_anchor_target": 2016
+      },
+      {
+        "origin_year": 2017,
+        "rows": 4580,
+        "latest_anchor_target": 2017
+      },
+      {
+        "origin_year": 2018,
+        "rows": 4348,
+        "latest_anchor_target": 2018
+      },
+      {
+        "origin_year": 2019,
+        "rows": 4752,
+        "latest_anchor_target": 2019
+      },
+      {
+        "origin_year": 2021,
+        "rows": 4164,
+        "latest_anchor_target": 2020
+      },
+      {
+        "origin_year": 2022,
+        "rows": 4155,
+        "latest_anchor_target": 2022
+      },
+      {
+        "origin_year": 2023,
+        "rows": 4093,
+        "latest_anchor_target": 2023
+      },
+      {
+        "origin_year": 2025,
+        "rows": 3907,
+        "latest_anchor_target": 2025
+      }
+    ]
+  }
+}

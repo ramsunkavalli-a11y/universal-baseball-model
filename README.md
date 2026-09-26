@@ -4,17 +4,21 @@ Public-data baseball research working toward a trade-value estimate for every
 player, refreshed after each game and material transaction, beginning with MLB
 organizations and affiliated players. The team-control/payroll foundation, first
 every-player multi-year WAR input and static contract-economics engine are now
-connected, including named uncertainty and market-price assumptions. Historical
-end-to-end replay is still required before dollar rankings.
+connected in earlier research prototypes, including named uncertainty and
+market-price assumptions. The current projection stack has not validated full
+remaining-control value or dollar rankings.
 
-**Current priority: get the model right before building a public tool.** The
-[authoritative product roadmap](docs/product-roadmap.md) defines the active Phase 1
-and Phase 2 sequence. Read it first, then the
-[current model plan](docs/current-model-plan.md) and
-[status and handoff](docs/project-status.md). Component-specific plans are historical
-records when they conflict with that sequence.
+**Start here — September 25:** the [model and decision audit](docs/model-decision-audit-2026-09-25.md)
+maps the frozen forecast, delivered explorer and newer research separately.
+The [evidence ledger](docs/model-evidence-ledger-2026-09-25.md) records what worked
+and what remains unproven. The [decision standard](docs/model-decision-standard.md)
+governs future tests. Next is one [batting-connection diagnostic](docs/hitter-value-factorial-v1-plan.md),
+not another engine search. It is specified, not yet run. Forecasts are unchanged.
+The [product roadmap](docs/product-roadmap.md) retains the destination;
+[status](docs/project-status.md) records the latest handoff. Older priorities below
+are historical, not competing instructions.
 
-**Execution priority, 2026-09-22:** follow the
+**Historical execution priority, 2026-09-22:** follow the
 [multi-year player-value plan](docs/multiyear-player-value-plan-2026-09-22.md).
 Connect the improved one-year models and earlier six-year prospect research to
 tested annual and cumulative forecasts. The
@@ -22,7 +26,14 @@ tested annual and cumulative forecasts. The
 design; the first milestone is Year 2/3 hitter value and the three-year total.
 The older previews described below do not establish current whole-career accuracy.
 
-**Latest experiment:** [richer hitter detail and MLB arrival](docs/hitter-detail-arrival-v1-result.md)
+**Latest experiment:** [opportunity/value integration](docs/hitter-integrated-opportunity-value-v1-result.md)
+improves three-year playing-time RMSE from 193.22 to 190.97, but its batting
+construction trails an existing reference (1.210 versus 1.140 RMSE). The audit
+separates this genuine value gap from sparse lower-minors uncertainty and
+offsetting cohort errors. No live update was made. The next diagnostic changes
+workload, rate and accounting separately to identify the cause.
+
+**Earlier experiment:** [richer hitter detail and MLB arrival](docs/hitter-detail-arrival-v1-result.md)
 holds players, years and model settings fixed. Extra detail improves pooled next-year
 prospect-arrival Brier by 1.4% and log loss by 2.0% versus aggregate history, but only
 three of six years improve and the logistic check reverses. It does not beat the
