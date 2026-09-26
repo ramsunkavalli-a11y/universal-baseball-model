@@ -15,6 +15,13 @@ remains unvalidated. Old negative catcher/IF claims cannot reject those skills;
 the changed-player MiLB OF replacement still fails and stays rejected. No
 production forecast or protected outcome was changed/used.
 
+Subsequent [catcher exposure validation](catcher-exposure-v1-result.md): all 128
+newly selected games reconcile recorded pitches, runner states and event counts;
+WP/PB exact-pitch linkage is complete in validation. Development failures remain
+explicit. This reopens fair blocking/conditional-battery tests after historical
+scaling, not a claim of improved catcher prediction. Deterrence cannot yet use a
+pitch-only denominator for all attempts, and C/P presence is not causal credit.
+
 | Work / source | Supported finding | What it does not establish / next implication |
 |---|---|---|
 | [Arrival source repair](hitter-arrival-source-repair-v1-result.md) | Corrected debut history, year-end roster support and league context; next-year Brier/log loss improve about 11.2%/9.5% over the unrepaired reference. | 2021 participants still undercounted, 2022 overcounted. Better probability scores do not prove better workload or value. Retrospectively captured source facts are not guaranteed historical publication vintages. |

@@ -8,7 +8,15 @@ connected in earlier research prototypes, including named uncertainty and
 market-price assumptions. The current projection stack has not validated full
 remaining-control value or dollar rankings.
 
-**Latest checkpoint — September 26:** the [repair-program summary](docs/repair-program-checkpoint-2026-09-26.md)
+**Latest checkpoint — September 26:** the [catcher-exposure source test](docs/catcher-exposure-v1-result.md)
+passes all 128 newly selected validation games: 32,864 recorded pitches,
+9,534 end-of-PA runner states, and 624 scored events reconcile. All 248 WP/PB
+events link to exact pitches; nine began with empty bases. Pitch exposures are
+not a complete deterrence denominator: 14 ordinary SB/CS lack a pitch link.
+Next is coverage-gated historical extraction before a fixed catcher test, not
+an immediate catcher-WAR addition. Forecasts remain unchanged.
+
+The preceding [repair-program summary](docs/repair-program-checkpoint-2026-09-26.md)
 records the first three milestones' decisions. The new ground-ball ledger retains
 2,026,088 balls; all 5,742 official GB keys in the source sample are present.
 Event-time fielders validate in 127/128 separately selected games, with the

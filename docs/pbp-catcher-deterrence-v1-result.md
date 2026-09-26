@@ -1,5 +1,11 @@
 # Minor-league catcher steal deterrence result
 
+September 26 source follow-through: the [new exposure validation](catcher-exposure-v1-result.md)
+supplies complete event capture and pre-event runners on its sample. Fourteen
+ordinary validation attempts do not link to a pitch. A runner-PA/risk-window
+definition covering nonpitch events is still needed; neither the old terminal
+PA test nor an all-attempts/per-pitch rate establishes deterrence talent.
+
 Source check now completed: [128-game reconciliation](defensive-event-source-repair-v1-result.md)
 confirms severe, outcome-dependent missing attempts. The old implementation's
 negative result is not a valid general rejection of catcher deterrence.

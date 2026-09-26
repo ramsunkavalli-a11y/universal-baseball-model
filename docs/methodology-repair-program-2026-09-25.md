@@ -140,3 +140,11 @@ the primary workload transfer was tied. Component cross-errors and the changed-
 player OF contrast are reported. Fifty-nine current focused tests and both
 independent repair verifiers pass. Production forecasts remain unchanged.
 Milestone 4 and the larger whole-player-value project are NOT completed.
+
+Subsequent September 26 source checkpoint: [catcher exposure validation](catcher-exposure-v1-result.md)
+passes all 128 newly selected validation games, including pitch counts, pre-event
+runner states, and exact WP/PB pitch linkage. This resolves the sampled exposure
+gate stated above, not full historical coverage or catcher skill. Next is
+coverage-gated historical extraction followed by a predeclared blocking/conditional-
+battery-outcome test. Deterrence still needs a risk-window definition that covers
+nonpitch events. Do not repeat this completed source validation as the next task.

@@ -2,7 +2,24 @@
 
 Updated 2026-09-26. This is the current start-here document.
 
-## Current checkpoint: first three repair milestones resolved, with explicit limits
+## Latest checkpoint: catcher pitch and runner exposure passes new source validation
+
+The [catcher-exposure result](catcher-exposure-v1-result.md) supersedes the source
+next-step below. A frozen decoder passes all 128 new validation games: 32,864
+pitch events, 9,534 post-PA states, 934 pitcher pitch counts, and 624 scored
+events reconcile. All 248 WP/PB link exactly to pitches; nine began with empty
+bases. Development retains four runner-state failures and one extra unlinked-WP
+game. The new C/P-only timeline does not retroactively change full-nine validation.
+
+This is source certification on covered games, not predictive catcher skill.
+Next: scale historical extraction with explicit coverage/failure checks, then
+predeclare a chronological blocking/conditional-battery-outcome test. Deterrence
+still needs a denominator covering nonpitch attempts; do not divide all attempts
+by the 21,474 runner-pitch exposures or call 14 unlinked ordinary SB/CS all proven
+between-pitch plays. No frozen forecast, explorer or protected outcome changed.
+The result states exact ready/not-ready quantities and reproduction commands.
+
+## Preceding checkpoint: first three repair milestones resolved, with explicit limits
 
 Read [what actually changed](repair-program-checkpoint-2026-09-26.md) before the
 historical checkpoints below. The full archived GB ledger preserves 2,026,088

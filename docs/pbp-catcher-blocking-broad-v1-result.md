@@ -1,5 +1,11 @@
 # Broad minor-league catcher blocking result
 
+September 26 source follow-through: the [new exposure validation](catcher-exposure-v1-result.md)
+reconciles every WP/PB and exact pitch link in 128 new games, including empty-base
+third-strike opportunities. The historical decision text below describes the old
+extractor only. It does not establish that public feeds cannot measure blocking.
+No replacement skill test has been fitted; scale/check historical coverage first.
+
 Source check now completed: [128-game reconciliation](defensive-event-source-repair-v1-result.md)
 finds at most 3/28 PB and 21/230 WP in the old terminal narratives, before
 additional blocking filters. Reopen event/exposure construction, not a shrinkage

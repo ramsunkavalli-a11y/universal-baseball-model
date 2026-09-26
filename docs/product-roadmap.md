@@ -7,8 +7,11 @@ and [ordered repair program](methodology-repair-program-2026-09-25.md), under th
 [decision standard](model-decision-standard.md). The first three repair milestones
 have [evidence-backed dispositions](repair-program-checkpoint-2026-09-26.md),
 including explicit range-measurement limits. The fixed batting diagnostic is
-completed; do not rerun it as an open-ended search. Next source work is catcher
-exposure; explicit batting assembly needs its own release contract.
+completed; do not rerun it as an open-ended search. The
+[catcher exposure source gate](catcher-exposure-v1-result.md) now passes its new
+historical sample. Next source work is scaling the checked extraction and auditing
+coverage before a fixed catcher test; explicit batting assembly still needs its
+own release contract.
 Older immediate priorities below are historical. No new engine tournament,
 career simulator or dollar release is implied. Preserve frozen forecasts.
 
