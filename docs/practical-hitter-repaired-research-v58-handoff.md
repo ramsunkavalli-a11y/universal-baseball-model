@@ -70,6 +70,14 @@ It reports possible-duration bounds, not invented exact injury days, and does
 not change forecasts. Use it under a substantive workload contract; the prior
 four-state/direct tests are anchors, not untried architectures to rename.
 
+The [V61 reference comparison](hitter-workload-anchor-v61-result.md) is now
+closed after fourteen actual reviews. Universal reference anchoring loses;
+its apparent comeback RMSE gain masks 75% excess comeback PA. Direct is nearly
+unchanged publicly and produces many negative raw means. Do not select a
+post-result comeback boost or tune the peak/floor. Keep V53. The next bounded
+alternative should model a smooth nonnegative workload mean with career/role
+evidence and actual stage support, before claiming arrival/value uncertainty.
+
 1. Keep batting talent fixed while addressing **timely opportunity information**.
    Identify actual December-known role, finite absences and exits in the large
    workload misses. The 386 one-PA public forecasts may contain later job/health

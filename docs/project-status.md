@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: observation-state defect repaired, not a forecast upgrade.**
+**Current checkpoint: workload reference comparison closed without promotion.**
+The [matched direct/anchored comparison](hitter-workload-anchor-v61-result.md)
+replays 70 heads and completes fourteen actual reviews with reconstructed counts.
+Public PA RMSE is 138.49 baseline, 138.50 direct, 140.50 anchored; direct MAE
+improves only 0.12 PA. Anchored helps Tatis 35 to 322 versus 635, but worsens Lux
+and brief-debut growth. Its apparent absence-group RMSE win coexists with 7,974
+expected PA versus 4,556 actual, about 75% too high, and worse MAE. No subgroup
+boost or post-result blend is adopted. Direct has 8,847 negative raw outputs,
+anchored 3,053; clipping is not an appearance model. Keep V53 and the source
+repair. Next one substantive smooth bounded-mean opportunity alternative,
+not a reference-floor sweep or another tree library. Full value/uncertainty,
+prospect readiness and public playing-time gaps remain. Goal active.
+
+**Previous checkpoint: observation-state defect repaired, not a forecast upgrade.**
 The [observed-return repair](hitter-observed-return-v60-result.md) reconstructs
 all 63,282 source identities without importing the legacy modeling runners.
 48 of 81 old-open source rows (41 people), including 45 of 72 evaluation rows,

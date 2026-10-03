@@ -1,0 +1,54 @@
+{
+  "player_walkthrough_status": "complete",
+  "decision": "retain_V53_withhold_both_global_workload_replacements",
+  "research_baseline": "corrected V53",
+  "not_deployment_approval": true,
+  "integrity": {
+    "replayed_heads": 70,
+    "evaluation_rows": 30506,
+    "clipping_by_arm": {
+      "direct61": [
+        8847,
+        0
+      ],
+      "anchor61": [
+        3053,
+        0
+      ]
+    },
+    "baseline_columns_bit_exact": true,
+    "batting_rate_bit_exact": true,
+    "reference_addback_verified": true,
+    "probabilities_fitted": false,
+    "cases": 14,
+    "player_walkthrough_status": "complete",
+    "protected_outcomes_used": false,
+    "frozen_forecast_changed": false,
+    "pooled_counts_independently_reconstructed": true
+  },
+  "full_cohort_profile_certification": false,
+  "predictive_result": "neither whole-population arm earns adoption; absence and large-regular slices have useful differences",
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-numeric-repair-v53\\features.parquet": "f2c719c401a8d35ef4dd59e20f16beaa46f4b1fb66d0a70a1a9192950a82af4e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-numeric-repair-v53\\scored-predictions.parquet": "be840078e873e3f70677f9949b83540126293e788c2205c480443887d83c290c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-numeric-repair-v53\\preflight.json": "0be89ca50288fc050f8ba0b4e4ddab46d19654f2c142d69550ee2360337793e2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-observed-return-v60\\report.json": "80ca9392b9614d65352975d212385308831f488d3308c75d59b72ea35384b977",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-observed-return-v60\\observation-states.parquet": "5a897266a973065fd491a26bc2927de553f8fd9a97787a90717f5d0eb04610a9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\features.parquet": "0908428bf35e9008ddb0f9136b8da3289a3225dd2b3d59aa830b77d9fbdb64c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-late-role-v46\\source-manifest.json": "1d9d7b56b5702f7138bbfd5980c6d4707b2b54744471262756d228de0d407d63",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\multiyear-hitter-v1\\raw\\schedule-2009-completed.json": "afd769d1b98b9aaf696afccb42d490a761c39b3fa39f40fc147cf06eab6e6333",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-workload-anchor-v61\\features.parquet": "0a38f14eefbdd96b5df6ecc73853c24751413265f5e029c1cd5be05b8b7db276",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_hitter_workload_anchor_v61.py": "42c0d05c33b74c604ab251b6f60e9668229b7c01a703a310a8368c3af9017a3a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_workload_anchor.py": "691fb7a98ebed7b2bb631728ee1240e940071830636987a3d3cb570832836dc1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-workload-anchor-v61-contract.md": "04f75b3314dc701d087d47239486b18f9f6153cfca09e6b354507d3b140eb469"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-workload-anchor-v61\\scores.json": "ce0b565d430a3ad9edca17c99c2ecfca5ec3ead8074002ee54aab6a5a33b868f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-workload-anchor-v61\\intervals.json": "15416a3f222f5ec736e90deb69852b2bf5be063ed7201ff4bb4cabf371d8bb43",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-workload-anchor-v61\\verification.json": "fc62ca78c621be486d7a4eca73282f92bcc1c981797618740dd99e5583704e8a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-workload-anchor-v61\\player-walkthrough.md": "1daf7b87cecac0a75933aa51ad8db6100b1b9ab35983747efbaedc0b6f8c95a2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-workload-anchor-v61\\reviewed-cases.json": "a75a2c122bae0f151cd90ee2d9fd58e45e4eef28d8c56d675f53461c92dac279",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-workload-anchor-v61\\predictions.parquet": "c4162efefa4b0a63c0cbc507b645942885481f249952e2f1ccc00186b65d8c60"
+  },
+  "reviewer_hash": "943b5ca3e996208086a6001a98daf94de595096b763900417d85864966d2e82b"
+}
