@@ -24,7 +24,17 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V39 dedicated current-MLB head reviewed and not adopted; close this workload batch.**
+**Current checkpoint: V40 contact-source review complete; earlier contact gains are not a future-MLB result.**
+See [the source and target review](practical-hitter-contact-v40-result.md).
+The earlier positive gradient test predicts future observed minor-league contact,
+not future MLB batting, arrival or delivered value. A separate universal source
+has 475,972 MLB contacts in 2021–24, including established players absent from the
+minor-only feature table. Preserve exact baseline fallbacks for unsupported years;
+next test these measurements directly against future MLB batting with workload
+fixed. Raw shrunk contact cells plus context covariates are not already neutralized
+talent. V33b remains working; no new forecast adopted or protected outcomes used.
+
+**V39 dedicated current-MLB head reviewed and not adopted; close this workload batch.**
 See [the result and 17 player paths](practical-hitter-v39-result.md).
 Public PA RMSE/MAE worsen 143.191/111.320→143.668/111.774 versus the shared
 games challenger. Story/Steer improve but Vientos/Torkelson/Votto lose useful

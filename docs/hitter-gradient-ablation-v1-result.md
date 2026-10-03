@@ -1,5 +1,13 @@
 # Hitter gradient feature-ablation result
 
+2026-10-03 scope clarification: the result below concerns next-year observed
+minor-league contact outcomes, not future MLB batting, arrival or delivered player
+value. It remains evidence for that original target, not a certified upgrade to
+the broad MLB hitter model. The source probabilities are shrunk raw contact cells;
+park/opponent context enters separately. See
+[the verified source/target review](practical-hitter-contact-v40-result.md) before
+transferring this result or its weights to a different projection objective.
+
 Status: **full model passes the development gate and becomes the leading hitter
 candidate; 2026 remains protected for final confirmation**
 
