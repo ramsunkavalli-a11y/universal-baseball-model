@@ -24,7 +24,19 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: dated opportunity contrast reviewed; source defect identified.**
+**Current checkpoint: observation-state defect repaired, not a forecast upgrade.**
+The [observed-return repair](hitter-observed-return-v60-result.md) reconstructs
+all 63,282 source identities without importing the legacy modeling runners.
+48 of 81 old-open source rows (41 people), including 45 of 72 evaluation rows,
+have observed roster closure. Eight actual source reviews cover prior injuries,
+plain activations, overlapping windows and late injuries. Possible absence
+duration remains a bound, not measured missed days; recovery stays unproven.
+No predictive model was fitted or forecast changed. Keep corrected V53. The next
+substantive workload comparison must use proper return/coverage semantics,
+not rerun a sparse injury sweep or rename the old four-state/direct tests.
+The practical hitter goal remains active; protected 2026 stays closed.
+
+**Previous checkpoint: dated opportunity contrast reviewed; source defect identified.**
 The [status comparison and source audit](practical-hitter-opportunity-status-v59-result.md)
 replay all 70 heads and complete twelve forecast plus six source reviews.
 Public PA RMSE barely changes (138.49 to 138.38), MAE slightly worsens

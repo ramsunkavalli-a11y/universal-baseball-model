@@ -63,6 +63,13 @@ absence duration before further status fitting. Six source controls prevent
 clearing injuries that started during/after the late PA window. The following
 sequence remains the coherent direction, not another sparse-feature sweep.
 
+The [V60 source adapter](hitter-observed-return-v60-result.md) now corrects
+those stale observation states using safe roster activations and disjoint
+actual MLB windows. Eight reviewed cases preserve late-injury counterexamples.
+It reports possible-duration bounds, not invented exact injury days, and does
+not change forecasts. Use it under a substantive workload contract; the prior
+four-state/direct tests are anchors, not untried architectures to rename.
+
 1. Keep batting talent fixed while addressing **timely opportunity information**.
    Identify actual December-known role, finite absences and exits in the large
    workload misses. The 386 one-PA public forecasts may contain later job/health
