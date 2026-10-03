@@ -1,0 +1,3 @@
+# V31 prefit source correction
+
+Before any model fitting, review found that cumulative observed MLB PA summed only season-primary stints, omitting MLB work in split-level seasons. Recompute it directly from all MLB season counts at/before each origin. Save original features and preflight unchanged; `features-ready.parquet` / `preflight-ready.json` are the corrected inputs and actual 35-cell checks. No forecasts/results drove this correction. Other source fields/targets, the contract and intended comparisons remain unchanged. This is the full observed history since 2008, not invented pre-2008 career totals.

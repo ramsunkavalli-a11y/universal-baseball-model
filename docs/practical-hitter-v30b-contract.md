@@ -1,0 +1,5 @@
+# V30b: repair the invalid linear workload comparison
+
+Before fitting, 2026-10-02. V30's complete 27-player review found that a lagged global schedule fraction varies by only 0.000377 in training, then encounters 2020's 0.369547 at forecast time. Raw linear forecasts become thousands of PA. Preserve V30; its ridge result cannot reject linear regression.
+
+Only the ridge arm is refitted, on exactly the same saved training/test rows and targets. Remove the six redundant global `fraction_*`/`league_rate_*` predictors; schedule-normalized player workload, known canceled-MiLB flags, observed shrinkage-adjusted quality and all player counts remain. No parameters, penalties, memberships or scoring rules change. This is a representation repair, not tuned to names or outcome improvements. Re-run actual preflight for the 98-feature vector before all 35 fits. Save models/predictions separately, replay all outputs and walk the same fixed cases plus this arm's extremes before disposition. No automatic promotion.

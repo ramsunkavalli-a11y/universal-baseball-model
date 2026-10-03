@@ -1,6 +1,833 @@
 # Project status and handoff
 
-Updated 2026-09-26. This is the current start-here document.
+Updated 2026-10-02. This is the current start-here document.
+
+## Standing requirement: player walkthrough after every test
+
+The user requires every model/component test—successful, failed or inconclusive—to
+be followed by a handful of concrete stats-to-forecast player walkthroughs before
+final disposition or another modeling experiment. See
+[the required checkpoint](required-player-walkthrough.md). Include gains, losses,
+false highs/lows, ordinary cases and origin-known comparisons; explain what the
+model actually used and why it changed the forecast. Scores without that review
+remain provisional. This applies across components, not just hitter opportunity.
+
+## Controlling next-work plan
+
+New user direction (2026-10-02): finish a practical hitter model, revisit important
+assumptions and earlier failed tests, and avoid endless marginal repairs.
+Follow [the practical model goal/plan](practical-hitter-model-v30-plan.md).
+It supersedes the narrow next-experiment queue below, not old results or source,
+chronology and player-review safeguards. First compare direct expected-PA
+architectures with the existing class/conditional construction; then revisit
+talent and complete population coverage, integrate value/uncertainty and expose
+a clearly labeled development candidate. This is not another injury-cap sweep
+or an assertion that the post-debut research slice is the full hitter model.
+
+**Current checkpoint: V33b corrected and reviewed; working research baseline retained.** See
+[the current model card, concrete comparisons and misses](practical-hitter-v33b-result.md).
+PA RMSE is 124.65 versus earlier V24 128.62; public matched error is 143.96
+versus Steamer 135.02. Public PA MAE still fails the declared tolerance.
+The pooled/draft workload plus fixed-scale linear batting assembly improves
+contribution against the corrected same-fold direct control, but gains over
+the strongest older batting anchors remain uncertain. Twenty-six actual player
+walkthroughs are complete; 315 saved heads replay. A separate team-filtered
+historical explorer is available locally on port 8783. Protected 2026 unchanged.
+The goal is not complete: 2021 PA totals, upper-/lower-minor allocation, fast
+entrants, brief-debut talent and temporary absence remain material gaps.
+Next: complete 2020-origin reconstruction and dated status meaning, then one
+opportunity/reliability assembly—not a new model-library tournament.
+
+V30–V32 historical development checkpoint (V31/V32 qualified): see
+[the concrete results and remaining gaps](practical-hitter-v31-v32-result.md).
+Broad source reconstruction retains all old forecasts and adds established MLB
+players/minor-league non-arrivals. PA RMSE improves 128.62 → 126.07 against V24;
+public PA error 145.23 versus Steamer 135.02 still leaves a meaningful MAE gap.
+New contribution heads fail to improve the older anchors. Preserving V24 yield
+recovers a small uncertain gain, but the stronger broad N approach still wins.
+V31's 27 and V32's 20 complete player reviews expose opportunity/context and
+thin-entry gaps; neither is promoted. Protected 2026 unchanged.
+
+Source correction found during V33: 597 incomplete origin-2020 rows entered
+twenty later training cells despite V31's declared exclusion. Their unavailable
+roster capture became listing=0. The reproduced V31/V32 scores above are not
+adopted gains. V33 stopped before complete scoring; preserve its partial outputs.
+[V33b](practical-hitter-v33b-training-repair.md) excludes those training rows,
+rechecks support and has refitted a matched direct control without changing test IDs.
+
+The completed bounded batch is [V33](practical-hitter-v33-contract.md), amended by
+V33b: pooled actual
+count evidence, existing dated draft pedigree and fixed-scale ridge diagnostics.
+All actual folds and active-rate support audited before fits. No new college
+collection, roster-rights invention, outcome-total rescaling or new library sweep.
+The larger practical hitter goal remains active and incomplete.
+
+V29/V29b scoped availability repairs completed (2026-10-02):
+[what changed, what failed and 34 player checks](availability-context-v29-result.md).
+Keep the source ledger and definitive-status rule; withhold the learned correction.
+Options/outrights now recognize the departing MLB team, resolving stale IL scope
+without asserting recovery. 529 historical source rows change; minor/foreign
+medical history remains unknown. Finite suspensions, indefinite leave and
+permanent ineligibility are separated; resolved Duran suspension clears while
+Franco requires an explicit unresolved-availability scenario. Marcano's permanent
+status fixes 126 research PA to zero, not a rule for every inactive player.
+
+Fixed held-player chronological correction lowers PA RMSE 128.62 → 127.91 and
+log loss 0.81862 → 0.80930, primarily by better marginal-exit probabilities.
+But minor-contract regular Brier worsens 4.3% (small absolute loss), total PA
+shortfall grows, and Tatis' generic-exit penalty lowers his return forecast
+333 → 242 versus 635 actual. Rooker/Steer opportunity misses remain largely
+unresolved. Medical and nonmedical specific coefficients are unsupported in
+every fold, not rejected hypotheses. Batting-value benefit is statistically
+uncertain. All 4,396 forecasts retained; 3,182 exact fallbacks; 20 correction
+fits and 34 complete source-to-forecast cases replay. No frozen forecast changes.
+
+Next: improve the meaning/support of opportunity context before further fitting:
+separate temporary regulatory absence from ordinary demotion/exit, dated finite
+eligibility and actual role/commitment evidence, then small-MLB/upper-minor sample
+reconciliation. Keep the full-history baseline and failed peers; do not impose
+blanket comeback, signing or prospect boosts, or switch algorithms to avoid
+these gaps. V28's authorized source/context test below has now been performed.
+
+V28 large-miss fixability diagnosis completed (2026-10-02):
+[findings, concrete cases and repair order](big-miss-fixability-v28-result.md).
+No fits, promotions or forecast changes. All 4,396 next-year research forecasts
+and 35 saved classifiers/conditional heads replay; sixteen source-to-forecast
+walkthroughs and four diagnostic unit tests complete. Steer/Winn/Rooker are
+primarily opportunity misses with plausible regular batting rates. Lux/McLain's
+prior talent survives; medical-profile support is sparse, and McLain's low PA
+partly hides an overoptimistic batting rate. Known Franco restricted status,
+Marcano ineligibility and Thames' MLB signing are absent from this branch.
+The 16-row reported-IL comeback proxy is context-contaminated: releases,
+demotions, foreign activity, ineligibility and unresolved MLB-only interval scope
+are mixed with genuine recovery. Do not interpret it as a certified medical cohort.
+Other inactive players already have too much projected PA. Public preseason
+archives are not certified identical-information December snapshots (Hoskins
+Steamer one PA is a concrete timing warning); keep external claims qualified.
+
+Next authorized repair should first audit/build as-of availability/activity
+context, including non-IL statuses and foreign/domestic missingness, then test
+opportunity AND delivered value with full-history anchors and opposite-risk
+cases. Do not repeat failed generic debut interactions or blanket health boosts.
+Small-sample cross-level interpretation and high-talent rate/tail calibration
+follow that bounded context test. No implementation is claimed by this diagnostic.
+
+V27 small health correction completed (2026-10-02):
+[full results and 23 player checks](health-offset-v27-result.md).
+Full-history V24 is preserved; new C=0.1 double-held histories train only a
+bounded, pooled health offset. Player review exposed a second source issue:
+Meyers' June 24 effective activation was treated as August 29 occurrence.
+V27b separates knowledge eligibility and event dates, preserves V27, and reruns
+the fixed test. 872 historical panel rows (673 evaluation rows) change source
+features; Meyers' captured in-season absence falls 145 to 79 days.
+
+Corrected PA RMSE 128.6215 → 128.5472 is a 0.0743-PA gain; probability benefit
+is uncertain and batting-value RMSE is unchanged/slightly worse. Public PA RMSE
+149.12 → 148.98 remains well behind Steamer 135.02 on matched rows. Lux/McLain
+get only nine additional projected PA, far short of their actual returns;
+Urias/Gonzalez worsen. Rare illness no longer creates a 300-PA Machin forecast.
+No offset promotion or forecast deployment. All 4,396 identities stay; 3,451
+exact fallbacks. 90 inner fits/20,932 probabilities and 20 offset fits/all
+evaluation rows independently replay; 20 focused tests pass. Final decision
+requires and records the completed 23-case manual walkthrough.
+
+Next: close the health-cap/category sweep and audit opportunity-versus-talent
+representation. Compare injured full-year absences, strong brief-debut hitters,
+ordinary unsuccessful peers and marginal exits on actual current inputs and
+fixed conditional heads before proposing another feature. Missing output is
+not automatically poor talent; check this in the code and full cohort rather
+than assuming it explains every miss. Preserve public comparisons and future
+risk. Minor injury coverage remains uncertified; protected 2026 untouched.
+The prior V26 next step below has now been tested under V27/V27b.
+
+V26 injury-history/type comparison completed (2026-10-02):
+[results, source repair and 18 player checks](injury-detail-v26-result.md).
+The matched control, corrected IL history and coarse injury-type extension were
+tested on identical eligible training histories, with full V19b/V24 anchors and
+all 4,396 evaluation identities retained. The player review found IL spells
+bridging explicit MLB recalls; a separate V26b source repair and identical rerun
+are preserved. Soler's recorded in-season interval falls 370 to 214 days.
+The correction affects 308 evaluated rows; neither forecast arm is deployed.
+
+After repair, IL history changes matched PA RMSE 131.40 to 131.28 (uncertain)
+but does not improve log loss/value. Injury detail worsens log loss 0.84544 to
+0.85853, paired 95% deterioration +0.00692 to +0.01927. Full-history V24 remains
+better at 128.62 PA RMSE. Lux/McLain comeback estimates improve; Judge worsens;
+six illness examples drive an implausible Machin opportunity boost. Retain source
+infrastructure, not a blanket conclusion against injuries. The first run is
+source-defective; final limited-scope evidence is in `injury-detail-v26b`.
+
+Next work must preserve the full-history baseline and audit held-out support for
+a small, pooled health adjustment before fitting; no category/penalty sweep on
+these exposed names. All-level minor injury coverage is unverified and requires
+a separate level/year source audit. Current results concern post-debut hitters,
+not minor-league non-arrivals. 24 focused tests pass; 75 fits/9,552 rows replay;
+18 player-origin reviews completed. Protected 2026 forecasts/outcomes unchanged.
+The older V25 next step below has now been tested under this limited contract.
+
+V25 source/export repair completed (2026-10-01):
+[injury-state reconstruction and seven-player review](absence-evidence-v25-result.md).
+The old parser missed unqualified MLB activations, leaving stale injury spells
+open: Tauchman 549 → 16 reported days, Lux 675 → 222, McLain 316 → 252.
+Versioned repair changes 434 evaluated player-origins/201 players; ambiguities
+remain explicit, activation is not medical recovery. Independent interval checks
+cover 4,536 auditable historical rows. Older failed injury-feature tests do not
+rule out the repaired source; V19b/V24 do not use those fields and their scores
+stand. New namespaced audit exports replay all forecasts from actual features,
+preventing stale inherited minor-update fields from masquerading as fitted inputs.
+44 focused tests pass; no forecast, explorer or protected-outcome change.
+
+Controlling next step: isolate repaired cutoff-known return-state evidence
+against unchanged V19b and retained V24. Before fitting, predeclare early-fold
+fallback or a limited later population: all 2016-origin training folds have zero
+mature rows with full two-year injury capture. Preserve exits, unknown overseas/
+medical scope, and all retained player cases. No generic return bonus, no more
+penalty search, and no multiyear promotion before annual validation. V24's source
+audit next step below is now complete. Machine dispositions are in the V23/V24/V25
+generated report folders; the local repository handoff is current, not deployed.
+
+V24 completed (2026-10-01): [stronger coefficient shrinkage](opportunity-shrinkage-v24-result.md)
+improves log loss in all seven years (.82323 → .81862), regular Brier and
+delivered batting-value error slightly. PA RMSE 128.86 → 128.62 is uncertain;
+public PA 149.62 → 149.12 remains behind Steamer 135.02. One predeclared guardrail
+fails: recent inactive-origin regular Brier +3.24%, an uncertain absolute .000147.
+The 23-player-origin review identifies worse return forecasts for Tatis, Lux and
+McLain after a zero season; Tauchman/Lopez have different source/evidence gaps.
+Retain research candidate, NOT deployment or automatic multiyear confirmation.
+All 35 control fits, independent replays and 232 cohort scores verified.
+An unused imputer-flag difference was tested with 35 exact-contract refits:
+all finite inputs, maximum prediction difference zero; see result qualification.
+
+Next: audit existing cutoff-known absence/availability sources and earlier health
+experiments, distinguishing temporary gaps, domestic minors, overseas activity
+and exits without inferring causes from future returns. Enforce unambiguous actual
+fitted features in new audit exports. No second penalty search or blanket return
+boost. V23's proposed single contrast below is now completed; older next steps
+are historical. Protected 2026 forecasts remain unchanged.
+
+V23 probability-calibration checkpoint completed (2026-10-01):
+[result and seventeen-player review](opportunity-calibration-v23-result.md).
+The rebuilt double-held history and triple-excluded learned inputs pass independent
+reconstruction, but the fixed global adjustment loses log loss (.82323 → .83532,
+paired 95% deterioration +.00420 to +.01998) and PA RMSE (128.86 → 129.77).
+Totals improve while individuals worsen. Regulars lose too much workload;
+inactive players gain speculative comeback PA. On matched histories the smaller
+inner classifiers are more confident and less accurate than the outer model:
+training-size/era transfer remains a limitation, not a universal rejection of
+calibration. All seventeen player-origin walkthroughs completed; no deployment.
+
+Next is one predeclared tenfold coefficient-shrinkage contrast inside the same
+opportunity classifier, with the exact same features, conditional heads,
+populations and public anchors. It tests a variance-control hypothesis supported
+by the transfer diagnosis, not a new algorithm tournament or prospect boost.
+Do not repeatedly tune shrinkage if it loses. The V22 next step below is historical
+and completed by V23; no frozen forecast or protected 2026 outcome has changed.
+
+V22 follow-through source audit completed (2026-09-27): read
+[minor-summary centering and fourteen retained cases](minor-centering-v22-audit-result.md).
+The old all-batting versus hitter-role baseline difference is real (~.26–.30
+batting-value units/600 in many pre-2022 seasons), but changes to the minor
+**update** largely cancel. Fixed-fit PA movement averages under .4 in every
+audited origin and under .001 in 2023–24 origins. Steer changes by .002 PA;
+established Judge/Tatis exactly zero. This does not explain those missed
+opportunities. Ninety peer means independently reconstructed, 4,396 algebraic
+checks, fourteen player-origin reviews. No fit or forecast change. Full nested
+retraining under consistent input/target centering remains untested.
+An inherited forecast-table `minor_update` column is not the V19b fit input;
+the audit replay caught that join ambiguity and now explicitly selects the
+actual feature table. V21 fits/replays already used actual inputs; cohort
+`quality_0` is identical and scores stand. Machine review:
+`reports/generated/minor-centering-v22-audit/decision.json`.
+
+Next: a properly predeclared, past-only probability-calibration test, preceded
+by a nested-prediction provenance check. Do not calibrate directly on all the
+archived single-held-fold forecasts: a different fold's base fit may have
+included the current held players. Generate or verify outer+inner exclusions
+and the corresponding generated-feature exclusions before any calibration
+fit. Retain all exit/regular/value/public-score checks and player walkthroughs.
+No floor learned from exposed tail cases. Keep a coupled centering refit as
+separate methodological work, not an assumed rescue for the recent misses.
+
+V21 production/opportunity review and fixed newcomer-context test completed
+(2026-09-27): read [the eight-case diagnosis](production-opportunity-v21-diagnosis.md)
+and [the result with fourteen player-origin walkthroughs](newcomer-context-v21-result.md).
+The minor evidence is present; a negative summary update is a change from a
+same-fit MLB-only estimate, not a minor talent rating. Steer's training profile
+does not make a 15% regular probability self-evidently unreasonable; the broader
+productive-debut shortfall is concentrated in 2023–24. A 31-column binary-debut
+context extension loses log loss in every tested year (.82323→.84275; paired
+95% deterioration +.01353 to +.02529), PA RMSE 128.86→129.68. No adoption.
+Witt improves, Santander collapses (15.7%→.75% regular), Steer barely changes;
+the intended beneficiary cohort worsens. All 4,396 rows retained; 718 fail
+added contextual/component support checks. Thirty-five control refits and
+challenger fits, 232 score checks and fourteen cases independently verified.
+Frozen forecasts unchanged. Machine disposition:
+`reports/generated/newcomer-context-v21/decision.json`.
+
+Additional tail review: among old-model regulars assigned <1% chance of no MLB
+PA next year, 1.41 such seasons were expected versus six observed. Descriptive,
+few events, no fitted floor or claim their causes were knowable. Ordinary totals
+can improve while individual probability forecasts get worse. The binary-debut
+test is closed; no Years 2–3 extension or post-result feature sweep.
+
+The V21 handoff, now completed by V22 above, was to audit the inherited minor-summary
+level/MLB centering (component priors already use hitter-role peers, old summary
+still differs), then design a past-held-out-only opportunity calibration contrast.
+Do not set a floor from the six exposed absences. Keep sample-aware reliability
+distinct from calendar debut status; the latter fails Santander's 31-PA prior
+debut. Draft source stops in 2019, so recent pedigree is not complete. These
+source/target checks precede another fit; no generic prospect boost or algorithm
+sweep. The V20 next-work paragraphs below are historical and superseded here.
+
+V20 diagnosis and bounded repair completed (2026-09-27): read
+[the allocation diagnosis](post-arrival-allocation-v20-diagnosis.md) and
+[the test with ten player walkthroughs](conditional-pa-v20-result.md).
+Conditional regular PA is not globally too low (550 predicted / 548 actual),
+but 600+ origin workloads are underallocated while older weak regulars are
+overallocated. Realized-environment public conversion does not explain the
+hitting-rate offset. A fixed direct-PA regular head, holding probabilities and
+state yields unchanged, fails: primary PA RMSE 149.619→149.637; batting-value
+1.02518→1.02495, both paired differences uncertain. No adoption. All 35 fits,
+4,396 forecasts and 88 RMSE checks independently verify; prior forecasts unchanged.
+Conditional sparse-profile warnings remain; all test rows retained.
+
+Next remains the production-to-opportunity / cross-level reliability diagnosis,
+now focused on how brief MLB samples and substantial minor production become
+regular probabilities. Steer has 23 AA/AAA HR in 492 PA but only 14.9% regular probability;
+Miranda's substantial current MLB work still leads to a false high. Both sides
+and ordinary cases must stay in the test. Trace the existing minor summary and
+component representation in actual held-player chronological training sets before
+another fit. The direct-PA test does not show the classifier is the sole problem.
+No further conditional-head sweep or generic PA increase. Machine disposition:
+`reports/generated/conditional-pa-v20/decision.json`.
+
+Public comparison completed (2026-09-27): read
+[matched Steamer/ZiPS results](public-benchmark-v2-result.md) and
+[seven complete player walkthroughs](public-benchmark-v2-player-walkthrough.md).
+On 1,789 origin-active player-seasons, V19b PA RMSE is 149.62 versus Steamer's
+135.02; the paired deficit is clear. Converted batting-value RMSE is 1.0252
+versus 1.0435, a small uncertain difference. Raw hitting-rate advantage reverses
+after retrospective within-year centering; no pure hitting-talent superiority
+claim. Public exact snapshot dates and rate-environment mapping limit inference.
+Witt/Rodriguez/Judge show opportunity underallocation; Acuna's apparent win is
+still a large injury-shortened-season miss. All seven saved forecasts replay;
+294 input checks and 4,519 public conversions verify. No fit or promotion.
+The final decision is `reports/generated/public-benchmark-v2/decision.json`.
+This supersedes the pending-scoring statements in the historical updates below.
+
+Next: stay within the existing cross-level reliability / production-to-opportunity
+diagnosis. Before another fit, separate low regular probabilities from low PA
+conditional on being regular, retain opposite-risk/exit cases, and resolve the
+public-rate conversion offset before claiming a hitting gain. Judge's substantial
+MLB sample shows minor reliability alone cannot explain every miss. No blanket
+PA increase, retrospective centering as a fix, named-player boost or algorithm sweep.
+
+Signed-in archive verification update (2026-09-27): labels now resolved for all
+eight unique exports: ZiPS and Steamer, 2022–25. All 21,662 player rows match the
+corresponding historical archive by FG ID and six displayed counting stats.
+See the follow-up in [the intake report](public-benchmark-v2-intake.md) and
+`model_artifacts/public-benchmark-intake-v2/verified-archive-manifest.json`.
+Clearly named raw copies are private/Git-ignored under
+`data/raw/public-projections/preseason-2022-2025/`. Browser export did not complete;
+used hash-matched originals still in Downloads. Exact snapshot days remain
+unknown; workload semantics and the matched scoring contract still need review.
+No public accuracy scores or forecast changes yet. The earlier pending-label
+note below is superseded by this verification, not a claim of model validation.
+
+Export intake update (2026-09-27): user supplied twelve historical FanGraphs CSVs.
+[Intake findings](public-benchmark-v2-intake.md): eight unique datasets, four exact
+duplicate pairs, complete batting count fields, but no system/year/vintage labels
+inside the CSVs. Asked user to confirm download selections/order. No public scores
+computed yet; do not guess labels or count duplicate exports as different systems.
+
+User-authorized accuracy checkpoint (2026-09-27): before another model fit,
+establish a matched external yardstick. Read
+[public benchmark status and eight player walkthroughs](public-benchmark-v1-result.md).
+The reconstructed Marcel-style competence floor is scored and reviewed; this is
+not an archived-public-system comparison. Across 3,064 origin-active player-seasons,
+V19b PA RMSE is 151.70 versus 192.51 for the reconstruction; batting-plus-replacement
+value RMSE is 1.0919 versus 1.1831. The much smaller gap for 400+ PA incumbents,
+baseline's generous 200-PA allowance, and retained Judge/Walker/Mullins misses
+prevent a sweeping quality claim. Eight saved case forecasts replay exactly;
+336 count-to-input checks pass without fitting. ZiPS/Steamer competitiveness is
+**pending**: user has a FanGraphs membership and offered historical exports.
+Requested 2023–25 preseason batting files plus Depth Charts if available. Check
+vintage, IDs, coverage, workload semantics and exact target compatibility before
+scoring. Do not compare full WAR or standard wOBA directly with our component target.
+No frozen forecast/explorer changed. The reliability diagnosis below follows this
+external checkpoint; no algorithm or feature expansion is authorized by a floor win.
+
+Follow [the prospect execution plan](prospect-model-execution-plan.md): first
+trace the existing level/value errors and inventory available evidence; then
+one bounded corrected-fold benchmark batch; then the specific repair supported
+by that diagnosis. Additional feature suggestions enter that plan, not a new
+direction. Do not restart an algorithm tournament or broad collection effort.
+The v9–v18 checkpoints below execute bounded diagnosis/benchmark/repair cycles
+under this plan; they do not complete the full player-value model.
+
+## Latest checkpoint: component restoration and repair (v19/v19b), not promoted
+
+Read [the corrected result and twelve player-origin walkthroughs](post-arrival-components-v19b-result.md).
+Restored separate MLB/AAA/AA K, walk, power and BABIP evidence; then corrected
+MLB peer priors contaminated by pitcher batting and duplicate/inconsistent
+workload columns found in the first run's player review. Both235-cell batches
+verified, with every original forecast retained.29focused tests pass. Neither
+run is promoted: corrected annualRMSE .91780→.91893; six-year3.97159→3.96060,
+but excluding2020 3.62483→3.63886. Gains are uncertain;20/105checks fail.
+Non2020cohort value is still6.6%high. The yield-only diagnostic is more promising
+than the probability change, but not independently validated or selectable.
+
+Concrete cases: McNeil improves; Judge's small strikeout-heavy debut still
+overwhelms much larger AAA evidence; Hiura remains a false high; Mullins is
+overestimated immediately and underestimated when his later breakout arrives.
+Do not assume these misses are all avoidable: Judge's2016training fold has no
+next-year regulars among34roughly similar high-K/AAA-power rows. Broad sign-bin
+support misses such distinctions. Keep failures and successes in the next audit.
+
+Next permitted work: test **component reliability across levels and sample
+sizes** using actual historical training folds and already-available age/pedigree,
+before another forecast fit. Determine whether tiny MLB samples are calibrated
+conditional on longer minor history. Do not hand-boost famous players, switch
+algorithms, or reject component evidence from this defective/uncertain test.
+Career-path consistency and park/opponent context remain unresolved. Frozen
+2026forecast/explorer unchanged; no2026outcomes accessed.
+
+## Previous checkpoint: individualized workload (v18), not promoted
+
+Input inventory complete: [detailed-input readiness](post-arrival-detailed-input-readiness.md).
+Prepared 122,790 level-specific component-count rows from 2008–25; all three
+MLB/minor PA histories reconcile for 8,409 complete-window rows. The saved recent
+contact surfaces have zero matching inputs in every Year-6 training cell, and
+their old two-fold adjustment provenance differs from the repaired five-fold
+design. They cannot simply be joined and declared six-year tested. Raw components
+support the broad-history backbone; recent contact/context needs a separately
+supported, correctly nested layer. No new candidate fitted or forecast changed.
+
+Follow-up: [six-player stats-to-forecast trace](post-arrival-player-trace-v18-result.md)
+replays Judge, Muncy, Walker, Arozarena, Hiura and Khris Davis. Their AAA stats
+are present. This simplified branch discards separate strikeout/BABIP profile
+information and does not use explicit park/opponent adjustments in its minor
+input path. Walker's strong translated minor signal barely changes regular-work
+probability; Judge/Arozarena's improvement is heavily averaged with the prior
+season. Hiura shows why universally favoring recent results can worsen false
+highs. Davis's immediate miss is mainly batting collapse, not workload. No new
+candidate or promotion; audit/reconnect existing detailed adjusted evidence
+before another bounded representation-versus-opportunity comparison. These
+case diagnoses are not independent confirmation or proof of predictable stars.
+
+Read [V18 repair and matched tests](post-arrival-opportunity-v18-result.md).
+Individual PA within workload brackets replaces the common class mean; batting
+value uses consistent PA-weighted yield. Conditional PA now distinguishes brief
+call-ups becoming regulars (515 predicted vs 503 actual) from continuing regulars
+(576 vs 577). The empirical PA/value bound failures are eliminated in this path.
+
+Same evaluation rows: annual RMSE .91939 → .91780, six-calendar-year 3.98605 →
+3.97159. Gains remain uncertain; 12/105 predeclared checks fail. The probability
+repair still predicts only 117 brief-appearance players becoming regulars versus
+140 actual. No-2020 cumulative value remains 10.5% high; weak-batting regulars
+remain overvalued. Judge/Walker/Arozarena breakouts are not fixed; Hiura's false
+high worsens. Conditional training classes have substantial sparse support,
+documented before fitting. No claim that small error gains solve player value.
+
+Keep the structural implementation as research, not a deployed winner. Next
+work must trace whether actual nested batting signals or their conversion into
+regular-work probabilities loses the evidence; compare matched origin-known
+profiles before another fit. Do not start another algorithm/weight sweep or
+promote a diagnostic arm. Frozen forecast and explorer unchanged. Verification
+evidence is separate from predictive acceptance in the result/artifact files.
+
+## Previous checkpoint: coverage/process repair (v17), model not promoted
+
+Read [V17 repair and matched comparison](post-arrival-support-v17-result.md).
+The specific long-horizon career-stage gap is fixed in the new development path:
+Year-6 elapsed-range violations fall from 911 to zero, keeping all 1,846 test
+rows. Existing records supply 408 older hitters, including 27 inactive in 2009.
+Incomplete early histories stay unknown; 300 complete-window older examples
+are available at the crucial 2011 origin, including 84 inactive players.
+
+New mandatory preflight code stops leakage, changed evaluation membership and
+uncertified history; profile gaps block unqualified validation claims without
+dropping difficult players. Read the new repository `AGENTS.md` and
+[experiment-review gate](model-experiment-review-gate.md) before further modeling.
+This is enforced in the V17 runner, not a claim that all legacy code was changed.
+
+The matched comparison is complete. Expanded annual RMSE .91939 versus .92045
+restricted / .92211 saved V14; six-year 3.98605 versus 4.01617 / 4.00242.
+Both matched improvement intervals include zero. No-2020 six-year value totals
+are 10.4% high; current regulars remain overallocated, inactive-player PA too high.
+510/1,846 Year-6 rows still fail the broader conservative profile checks.
+44 forecasts trigger the empirical conditional-rate bound guard (not necessarily
+physical impossibilities). No candidate promotion or explorer change.
+
+Retain the coverage repair and executable review infrastructure. All 470
+preflights reconstructed, six first-stage /24 second-stage fits replayed, four
+bootstrap intervals recomputed, 46 focused tests pass. Inherited predictions and
+protected forecast unchanged. Local only. The data/process defect is repaired;
+the final player-value model and full-cohort validation are not complete.
+
+Follow-up diagnosis (no new fit): [large-player miss classification](post-arrival-miss-classification-v17.md).
+Distinguishes missed regular pathways, batting breakouts/declines, lost opportunity,
+exit persistence and missing international/activity information. Origin-defined
+groups show too few regulars from brief MLB appearances, too many returns from
+inactivity, and excessive long-run staying power for weaker-batting regulars.
+The fixed within-PA-bracket workload mean is a verified structural limitation.
+Do not infer that all strong hitters need higher value: their origin-defined
+group is not underpredicted in aggregate. This is post-hoc diagnosis, not a new
+validated candidate; detailed evidence, caveats and priorities are in the report.
+
+## Previous checkpoint: joint outcomes (v16), not adopted; support gap discovered
+
+Read [V16 results and training-support audit](post-arrival-joint-v16-result.md).
+Sharing historical PA/value pairs eliminates incompatible expectations, but
+annual value RMSE worsens .92211 -> .96504; the adaptive diagnostic also loses.
+Six-year RMSE worsens 4.00242 -> 4.51615; cohort allocation remains poor even
+when the target-2020 contribution is omitted. No adoption or explorer change.
+
+More importantly, the long-horizon training panel has a previously unchecked
+career-stage gap. For the 2017 Year-6 test it contains nobody more than one year
+past MLB debut, although test players are up to five years past debut. Across
+2017–19, 911 / 1,846 Year-6 forecasts exceed their training elapsed range. This
+affects V15 references too. Numerical comparisons remain recorded, but cannot
+cleanly resolve architecture versus missing training experience. The later
+annual comparison has no such elapsed-range gap and remains negative for V16.
+
+Next: repair historical training support, not another algorithm/weight search.
+Existing 2009 snapshots contain 381 potentially useful older entrants; 277 can
+be carried to 2011 origins without selecting future survivors. However older
+career totals are left-censored and early value lags missing. Follow the
+source-coverage and matched-comparison sequence in the controlling plan. Never
+fill unobserved early career history with zero or change evaluation membership
+to hide difficult players.
+
+235 provenance checks, 24 exact forest replays, 52 score records and 1,846
+six-year sums checked; 33 focused tests pass. Protected forecast unchanged.
+New code/results saved locally, not committed/pushed. The full model is not
+complete; no six-year candidate is certified by this batch.
+
+## Previous checkpoint: end-to-end closeout (v15), promotion rejected
+
+Read [the closeout decision](post-arrival-closeout-v15-result.md) and its
+[pre-fit contract](post-arrival-closeout-v15-contract.md). The user broadened
+the task from the next incremental test to a complete integration decision.
+Tested production-only, opportunity-only and combined repairs, plus mandatory
+references/direct models, from fixed origins over Years 1–6. No actual future
+histories were supplied. 235 supported fits; 1,846 complete six-year forecasts
+from 2017–19. Annual anchors reproduce exactly.
+
+Production-only improves annual value RMSE .92211 -> .91623 but still
+underallocates fringe-player value. Combined .91739 and six-year 3.98418 are
+not a supported incremental win over V14 (.92211 / 4.00242). The full calendar
+six-year value total is 19.7% high; 77.7% of that error is the unknown-at-origin
+2020 schedule shock. Excluding that target contribution leaves 4.8% overall
+excess but substantial group misallocation. Do not blame all errors on COVID
+or dismiss the ordinary-year problems because the pooled total is close.
+
+The opportunity package improves current-return/regular PA totals but loses
+fringe PA and regular probability accuracy. A separate reasonability audit also
+finds 181 combined short-opportunity forecast rows with implausibly incompatible
+conditional value/PA expectations, mostly at longer horizons; none are in the
+later-normal annual subset. That package is rejected, not silently patched.
+
+Disposition: retain the fading MLB/MiLB evidence method and production-interaction
+finding as research; do not adopt the automatic minor cutoff or the new
+opportunity/combined package. V11 remains the unchanged experimental reference,
+not a certified final model. This experiment is CLOSED. Do not automatically
+schedule another weight sweep or regression tweak; the unresolved requirement
+is a jointly consistent opportunity/performance model, not one more pooled
+RMSE victory. Full WAR, prospect arrival, service-value and career distribution
+validation remain outside what these post-debut mean forecasts establish.
+
+79 fits independently replayed, 30 tests pass; all 31 protected forecast files
+unchanged. No explorer promotion. Work saved locally, not committed/pushed.
+
+## Previous checkpoint: incremental minor correction (v14), research candidate
+
+Read [v14 results and allocation warning](post-arrival-minor-update-v14-result.md).
+Tested the user's concern about remaining minor influence after three substantial
+MLB seasons (three actual >=400-PA seasons, not years since debut). Removing
+minor evidence worsens future MLB hitting-rate RMSE 2.6% equal-player / 1.8%
+PA-weighted among participating established hitters. Evidence is stronger at
+exactly three seasons; four-plus results are uncertain. The ~10% evidence share
+is not 10% of WAR: average same-fit annual-value effect is .039 wins.
+
+Preserving all v11 MLB-quality history and adding only the same-fit minor update
+improves later annual value RMSE .93493 -> .92211 (1.37%), beating same-input
+direct value too. Earlier value improves; earlier probability scores worsen.
+Do not mark the integration complete: the current 1–199-PA group's total value
+underprediction grows from 5.8% to 16.1%, despite better individual RMSE. Current
+zero-MLB return PA remains too high; established PA remains too low. Named
+Wilson/Carroll/Rice gains and Reed/Judge/Muncy misses are documented.
+
+Keep v11 unchanged as the reference, V14 as a research candidate; do not adopt
+the automatic established-removal rule. Next isolate quality-by-future-PA-class
+effects in the conditional value head with V14 opportunity forecasts fixed.
+Predeclare before fitting; do not claim that restriction explains all remaining
+bias. No new collection or algorithm tournament. 120 annual candidate fits
+replayed, 26 focused tests pass; frozen forecast/explorer untouched. Local only.
+
+## Previous checkpoint: learned MLB/MiLB handoff (v13), integration not adopted
+
+Read [v13 handoff evidence and integration limits](post-arrival-handoff-v13-result.md).
+The user prioritized explicit fading of minor evidence as MLB evidence grows.
+The learned, nested/cutoff-safe handoff implements that: average minor evidence
+share falls from 60% below 200 career MLB PA to 10% at 1,800+. Compared with its
+matched MLB-only rate estimator, MLB hitting-rate RMSE improves 3.0% equal-player
+and 3.9% PA-weighted, among actual future participants. Not a claim versus the
+whole existing model or about unobserved rates of nonparticipants.
+
+Replacing the existing three MLB-quality histories with this scalar worsens
+annual value RMSE .93493 -> .94504; the matched MLB-only replacement also loses.
+Established-player errors and total-value bias worsen. Keep v11 reference;
+retain handoff/nested infrastructure as research evidence. Next isolate the
+weighted minor update without discarding the existing MLB representation.
+Quantified shared-slope talent-to-total restriction and return PA calibration
+remain integration blockers; do not silently change both in the next test.
+No forecast/explorer changes, no six-year claim, saved locally not pushed.
+
+## Previous checkpoint: minor history after entry (v12), not adopted
+
+Read [v12 results and traced baseball concerns](post-arrival-history-v12-result.md).
+Same annual cohort/folds/settings as v11; separate minor activity from production.
+Adding both reduces value RMSE .93493 -> .93038 (0.49%), but the paired interval
+crosses zero. Regular-playing-time scores worsen, return PA remains far too high,
+and aggregate value bias grows. Judge's value rises but MLB participation drops;
+same-fit coefficient tracing identifies the opposing class responses. Reed is
+overpromoted by older minor power. These are investigated warnings, not assertions
+that all surprising coefficients are invalid or minor performance is unhelpful.
+
+Keep v11 as annual reference; retain v12 source/diagnostics, not its integration.
+Its proposed head-isolation was superseded by the user's explicit handoff
+request, tested in v13 above. Do not run a new feature/algorithm search or roll
+this into six-year paths yet. Return PA calibration is still a known blocker.
+No frozen/explorer change; saved locally, not committed/pushed.
+
+## Previous checkpoint: annual post-arrival quality link (v11)
+
+Read [v11 annual results and limitations](post-arrival-annual-v11-result.md).
+Reused prior progression/quality work, separated ever-achieved career milestones
+from current opportunity, and retained zero-PA years/returns. 60 chronology-safe,
+fixed-player folds. Adding past MLB batting quality improves next-year value
+RMSE 1.0262 -> .9349 (8.9%) versus workload-only across all seven later normal
+origins; earlier 2013–15 results also improve. >=400-PA probability scores improve.
+It does NOT clearly beat direct value on the same inputs (.9373 RMSE). This is
+annual evidence after debut, not improvement to the six-year prospect model.
+
+Retain for development only. Zero-current-PA returns are overpredicted (159 vs
+119); Judge's first post-debut breakout and Muncy's return remain large misses.
+The MLB-only annual talent history omits relevant pre-MLB/non-MLB evidence.
+V12 tests carrying existing minor evidence through entry and gaps; its integration
+is not adopted. Later separately validate generated-history career rollouts.
+No feature tournament, new data collection, explorer update or protected outcomes.
+
+## Previous checkpoint: opportunity diagnosis; arrival-only repair rejected (v10)
+
+Read [v10 diagnosis and decision](prospect-opportunity-v10-result.md).
+Triple-A's main class-mean shortfall is too few projected substantial careers
+(58.72 vs 96), not primarily too little PA within a realized substantial career.
+Rookie has both too many such careers and overly long opportunities. Reproducing
+the v9 personalized fits shows exposure/age/draft context pushing AAA value
+down while batting-rate contributions push it up; do not blame production
+detail or remove those context variables on that attribution alone.
+
+One predeclared composition reused the existing stronger v8 arrival probability
+while keeping v9's conditional opportunity mix/class means fixed. It adds 53.87
+AAA arrivals but only 2.03 substantial careers. Value RMSE does not improve
+(1.255437 -> 1.256199, paired interval [-.00440,+.00642]); inactive RMSE worsens
+3.2%. Closer AAA/Rookie totals do not override that failure. No adoption and no
+second candidate tried. Saved v9 references and frozen/explorer forecasts stay.
+
+Method correction: no fully mature earlier six-year inner-validation forecasts
+exist before 2016–2019 in this panel (first origin 2009; earliest such validation
+matures 2021). No random split was represented as chronology-safe calibration.
+Next: audit/reuse existing annual post-arrival components and test the timing /
+continued-opportunity / production link on earlier annual transitions before
+claiming a multiyear gain. No new feature tournament or data collection.
+
+## Previous checkpoint: opportunity-linked prospect value (v9)
+
+Read [the v9 results](prospect-value-v9-result.md) and
+[source inventory / ZiPS-KATOH checks](prospect-value-v9-evidence.md).
+On the same 15,117 corrected-fold observations, linking value to no/brief/
+substantial MLB opportunity improves value RMSE from 1.338015 to 1.255437 with
+class means, or 1.245868 with conditional values. The latter gain is 6.9%, with
+paired difference interval [-.12749, -.05738], and improves every tested origin
+and level. Its extra advantage over class means is uncertain. Arrival/role
+probabilities are unchanged by the value repair; this is not an arrival win.
+
+**No promotion.** Non-Mexican AAA totals are direct 276, class means 508,
+conditional 288 versus 677 actual. Rookie totals remain too high. DSL value
+looks calibrated while expected PA is too high. Brief-career error worsens.
+Retain the simple mixture as the mandatory development reference and inspect
+opportunity-size/conditional-value calibration on earlier held-out data before
+one bounded refinement. Do not fit corrections to these exposed test totals.
+
+Label audit passes, but "neutral" target naming was misleading: the six-year
+batting-plus-replacement proxy is not individually park-neutral, full WAR,
+six service years or trade value. ZiPS/KATOH provide historical reasonability
+checks, not interchangeable targets. No protected 2026 outcomes or forecast/
+explorer changes; no additional college data.
+
+## Previous checkpoint: corrected prospect validation and integration milestone
+
+Read [the v8 result and decisions](prospect-integration-v8-result.md).
+**Important methodological correction:** purging every still-active prospect
+from all training origins removed historical negatives selectively (2016:
+21,587 rows, zero events). Fixed outcome-independent player groups now preserve
+strict player separation and chronology without that selection. The recent
+v2–v7 prospect comparisons below are historical development evidence requiring
+reconfirmation, not clean promotion evidence.
+
+Under corrected folds, new-entry/return history plus a learned fallback improves
+six-year batting-arrival Brier .068097 -> .067741 and component-proxy RMSE
+1.339908 -> 1.336402. For 211 newly observed 1–29 PA observations, predicted
+arrivals improve 2.62 -> 7.68 versus ten actual. Declining versus constant weights
+is not independently established; sustained-opportunity gains remain uncertain.
+
+No promotion: the pooled value total hides Rookie overprediction (592 vs 270)
+and Triple-A underprediction (149 vs 693). Pitching conversions, international
+entry misses and moderate-probability arrivals remain gaps. Explicit 2020-gap
+context fixes labels but has mixed/worse forecast effects; 2022 paired predictions
+are unchanged. 50 focused tests, 48 source-hash checks, 214 recomputed metrics and
+the frozen forecast verification pass. No additional college data, no protected
+2026 outcomes, no explorer/deployed forecast changes.
+
+Next priority: reconfirm simple benchmarks under corrected folds, then coherent
+arrival/opportunity/value and role-path modeling, with year/level totals and
+named misses. Do not substitute another small average gain for those checks.
+
+## Latest checkpoint: tiny-sample fallback and workload context
+
+Read [the workload-context result](prospect-workload-context-v6-result.md).
+**User direction: no further college-background collection.** Tested equal-window
+draft/activity context and a restricted fallback that excludes PA quantities and
+batting rates. For 269 tiny-sample eligible observations, expected six-year batting
+arrivals improve 2.41 -> 11.93 versus 10 actual; Brier .03442 -> .02399 and batting-
+value proxy RMSE .93043 -> .85295. The gain survives removing Casas/Kirk as a
+post-result sensitivity. It does not establish sustained-career accuracy (only
+three >=1,000 PA outcomes) and the fallback loses across the full eligible group.
+
+Joint context+pedigree improves overall arrival Brier .068214 -> .067697 and
+value RMSE 1.347985 -> 1.344658, but next-year timing, DSL totals, newcomer value
+and role conversions still fail checks. No promotion. The next integration must
+separate new arrivals from returns after gaps and learn fallback reliance without
+choosing an arbitrary PA threshold. The module refuses 2021 rather than treating
+the missing 2020 MiLB season as everybody being new. 44 focused tests, source/
+artifact checks and frozen forecast verification pass; explorer unchanged.
+
+## Latest checkpoint: isolate pedigree fading; no forecast promotion
+
+Read [the entry/reliability result](prospect-entry-reliability-v4-result.md) and
+[international/lineup source readiness](prospect-international-lineup-readiness-v4.md).
+The first entry/role blend worsened arrivals and overpredicted delivered-value
+totals. A separately declared clean comparison shows gradual blending beats a
+constant blend (.069747 versus .070235 Brier), but both lose to the existing
+joint draft/production model (.068214). This does **not** disprove fading pedigree;
+the context fallback itself badly misses tiny-sample Casas/Kirk/Alvarez. No
+universal 100-PA threshold or distinct JC/junior/senior curves was established.
+
+Direct six-year opportunity probabilities are now internally coherent in the
+experiment. No reliable delivered-value gain: blend RMSE improves slightly but
+uncertainly, while its total is 4,931 versus 3,015 observed. Existing DSL and
+next-year arrival calibration also remain unsatisfactory. Every number is a
+player-origin observation or component proxy, not unique MLB arrivals/full WAR.
+
+Retained 2016–2018 feeds now provide 78,440 complete team orders from 39,222 games,
+including DSL; four incomplete orders remain missing. Covered player-season
+summaries and source verification are saved; no lineup fit is claimed. International
+bonus research found a broad FanGraphs database lead but no verified usable
+download; BA's country-dependent reporting omissions must not become low-bonus
+labels. Next work is a genuine entry prior and exposure-timing distinction, not
+another arbitrary blend. 39 focused tests and independent artifact/freeze checks
+pass; deployed forecasts and explorer unchanged.
+
+## Latest checkpoint: pedigree, usage, and a missing-2019-leagues repair
+
+Read [the pedigree/usage result](prospect-pedigree-usage-v3-result.md). Player
+review found the 2019 Appalachian/Pioneer source omission (sport 5442): 48,484
+PA/BF restored across 18 teams; Baty 42->228 PA, Francisco Alvarez 31->182 PA.
+All pre-2019 panel values are unchanged. Initial pedigree/usage results and the
+previous all-level scores are superseded by the separately versioned rerun.
+
+Draft/exposure improves six-year arrival Brier .071172->.068214 and log loss
+.236507->.227697 across all four origins. **Development candidate only:** the
+sustained-role gain is uncertain, usage adds little reliable increment, DSL is
+still overpredicted and genuinely tiny samples underpredicted. Hunter Greene
+exposes hitter/pitcher pathway confusion; separate arrival/role probabilities
+still have logical inconsistencies. No full-value improvement is established.
+
+Actual C/SS/CF exposure was tested; lineup and international bonus effects were
+not. Sampled boxscores contain starting orders, but full-season lineup coverage
+must precede fitting. Missing bonuses are unknown, not zero. All frozen forecasts
+and the explorer remain unchanged; 46 focused tests and artifact/freeze checks pass.
+
+## Latest checkpoint: all-level source repair and explicit missed-player checks
+
+Read [the all-level prospect result](prospect-destination-v2-result.md). The full
+2008–2019 sport-15 hitter and pitcher reconstruction passes 12 season checks:
+753,736 PA equals BF, all 22 teams/year covered, non-sport-15 records unchanged.
+Request code now includes historical short-season A. Versioned hitter/pitcher
+snapshots and full components exist; deployed forecasts remain unchanged.
+
+The censored arrival pilot and four targeted repair contrasts improve aggregate
+six-year Brier from .075924 to .071624 and expected/actual arrivals from
+2,140/1,965 to 2,033/1,965. Mexican League routing and level-dependent timing
+repair specific mistakes; count reliability removes several tiny-sample extremes.
+**No promotion:** long-run DSL probabilities worsen despite improved ranking,
+tiny-sample Casas/Kirk/Alvarez cases remain badly missed, and false near-certainties
+remain for non-arrivals. The separate upside fit has only one mature scored origin,
+mixed scores and logical probability inconsistencies. Named Made/De Vries/Josuar
+2025 examples are explicitly illustrative, not published star probabilities.
+
+Mandatory checks and concrete false-positive/false-negative cases are now part
+of the [development contract](prospect-destination-v2-contract.md). Next: repair
+the distinction between limited evidence and low talent with cutoff-safe early-
+career context/pedigree already available where possible, tighten full-game debut
+eligibility, and require level/year/tail calibration. This is not authorization
+to tune to famous players, open 2026 outcomes or repeat an engine tournament.
+
+## Latest implementation: rookie/DSL destination pilot and missing-level discovery
+
+The [repaired six-year rookie test](rookie-mlb-destination-v1-result.md) preserves
+real future MLB outcomes and recovers historical DSL/position metadata. Detailed
+performance/history improves DSL top-fifth arrival capture from 23/42 to 31/42,
+but absolute arrival counts and PA remain too high and batting-value RMSE does
+not improve. No promotion: independent probability heads also violate milestone
+ordering in a small number of rows. Six years is not eventual success; mature
+DSL cases increase from 101 arrivals at six years to 144 at eight.
+
+**Source priority supersedes another component fit:** old affiliated aggregate
+requests omitted sport 15, short-season A. A new official supplement recovers
+5,919 hitting splits over 2008–2019, checks all 22 teams/year, and repairs this
+pilot's eligibility/prior exposure. The existing 2009–2019 snapshot panel still
+contains 2,306 "inactive" rows with short-season PA, 1,084 rookie rows with that
+higher exposure, and omits 227 active short-season player-origins (including 14
+pitcher-position batting records requiring role review). These are repeated
+player-seasons. Rebuild/version affected source cohorts and components
+before interpreting their inactivity, path, or long-run value tests. Do not assume
+separately sourced PBP shares the omission. Full hitting-component materialization
+and pitcher coverage repair are still pending; the pilot does not fix production.
+
+Initial same-day scores are explicitly superseded, not erased. Detailed results,
+individual misses (including Alvarez), uncertainty, source limitations and next
+steps are recorded. No frozen forecast/explorer or protected 2026 outcome changed.
+
+## Latest review: MLB destination, opportunity and value are distinct tests
+
+The [projection-objective audit](projection-objective-review-2026-09-26.md)
+reviews the major historical test families against the project's MLB-value goal.
+Recent zero-inclusive MLB-output gains remain valid within their stated scope;
+all-level translated performance and event persistence are supporting evidence,
+not independent validation of eventual MLB ability. The old one-year panel has
+8,440 rookie rows and zero next-year MLB participants, so it cannot validate
+rookie batting-talent rankings. The translated path/ball test has 17,552 rows,
+only 4,050 with any next-year MLB PA. Inactive snapshot coverage and constructed
+target semantics are separately checked. No model was fitted or promoted.
+
+Before the next catcher or other component fit, specify the MLB destination-skill
+endpoint and the zero-inclusive opportunity/value endpoint separately. The source
+milestone below remains valid. The new report lists retained findings, limited
+negatives, invalid measurements and the recommended repair order. It does not
+rewrite old contracts or authorize changes to the protected forecast.
 
 ## Latest checkpoint: catcher pitch and runner exposure passes new source validation
 
