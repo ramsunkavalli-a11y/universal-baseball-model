@@ -1,7 +1,7 @@
 # The current hitter model, plainly
 
 2026-10-03. This is a useful historical research baseline, not a finished front-
-office valuation system. The goal remains active. Do not replace the frozen 2026
+office valuation system. The goal remains incomplete. Do not replace the frozen 2026
 forecast or imply protected-season validation from these development results.
 
 ## What it predicts
@@ -29,6 +29,13 @@ plus-replacement value; this is an approximation, not a coherent joint career
 distribution. The stronger working assembly is V33b. V34 carries a completed
 2020 source extension; V38 adds games/PA-per-game to that extension. These are
 separate reviewed comparisons, not silently mixed winning pieces.
+
+The working research assembly now includes the V44 reported-retirement policy:
+eligible recorded retirement sets next-year delivered PA/value to zero without
+changing hitting ability. Dated return evidence clears it. This is reversible,
+not permanent ineligibility or a calibrated zero comeback probability. Public
+matched scores below do not change. The earlier separate explorer is preserved
+and does not silently become this updated assembly.
 
 ## How good is it?
 
@@ -63,6 +70,13 @@ valuable without its newly fitted forecast being a statistically proven upgrade.
 Raw contact now has a source-reviewed 2016+ minor/2021+ MLB assembly. Ambiguous
 plays and uncorroborated player/league joins are quarantined, not passed off as
 talent. No forecast upgrade was claimed from that preparation alone.
+
+A retrospective full-roster request can return membership from after its
+requested date. Hyeseong Kim's Dodgers entry is a confirmed counterexample.
+All original forecasts remain scored, but 218 roster-only rows now carry an
+unverified-origin qualification. Foreign production and new international
+player eligibility remain incomplete; zero forecasts are not reliable talent
+grades for these players.
 
 ## What did not work
 

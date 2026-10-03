@@ -24,7 +24,19 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: joint opportunity and contribution reviewed; no mean promotion.**
+**Current checkpoint: dated retirement policy retained in the research assembly.**
+See [the source-policy result and seventeen player reviews](practical-hitter-retirement-v44-result.md).
+Fourteen eligible forecasts for ten retired players now have zero expected
+following-year PA/contribution without changing hitting ability or ordinary
+inactive/injured players. A later eligible return clears the state. Working PA
+RMSE improves slightly 61.619 to 61.543; public matches are unchanged and still
+miss the practical MAE tolerance. Roster-only eligibility remains qualified,
+not silently deleted. Working assembly: V33b plus the reversible reported-
+retirement policy. V38 remains research; practical goal incomplete. Next one
+substantial PA objective contrast on complete games/count evidence, not further
+status-source polishing or another library tournament.
+
+**Joint opportunity and contribution reviewed; no mean promotion.**
 See [the paired model result and sixteen actual player walks](practical-hitter-joint-forest-v43-result.md).
 The joint empirical forest worsens expected PA and contribution. Upper-minor PA
 allocation falls farther below actual, and elite batting value is compressed;
