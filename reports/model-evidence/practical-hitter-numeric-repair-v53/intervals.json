@@ -1,0 +1,167 @@
+[
+  {
+    "scope": "all",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "pa_mse",
+    "difference": 4.289622275638789,
+    "lower": -3.085428584377508,
+    "upper": 10.794104526885782,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "value_mse",
+    "difference": -4.0027047745912965e-05,
+    "lower": -0.0004471868640668311,
+    "upper": 0.00036674312142109437,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "arm": "repaired",
+    "reference": "old",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.0050682179078504015,
+    "lower": -0.009666406543078036,
+    "upper": -0.0009730945739248464,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "pa_mse",
+    "difference": 1.844636859723056,
+    "lower": -1.296358758049135,
+    "upper": 5.087204611042394,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "value_mse",
+    "difference": 2.4525731908891587e-05,
+    "lower": -4.486054240315221e-05,
+    "upper": 9.986518759863517e-05,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "arm": "repaired",
+    "reference": "old",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.009922184030169255,
+    "lower": -0.003285642690120042,
+    "upper": 0.022905209868510593,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "pa_mse",
+    "difference": 8.173579001023446,
+    "lower": -5.797332488659967,
+    "upper": 23.04401896333817,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "value_mse",
+    "difference": 0.00010706518292540664,
+    "lower": -0.00017019130737495715,
+    "upper": 0.00042275668355267886,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "arm": "repaired",
+    "reference": "old",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.0069411536007531905,
+    "lower": -0.007027365230612567,
+    "upper": 0.019804463501429715,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_broad",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "pa_mse",
+    "difference": 58.02312928762979,
+    "lower": 1.3960816660909772,
+    "upper": 116.33697481193987,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_broad",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "value_mse",
+    "difference": 0.00011511536381612832,
+    "lower": -0.003079369290661486,
+    "upper": 0.003269870872558173,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_broad",
+    "arm": "repaired",
+    "reference": "old",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.0060828045898599515,
+    "lower": -0.012903605072913797,
+    "upper": 0.00041216751696093154,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_legacy",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "pa_mse",
+    "difference": 63.517146612107716,
+    "lower": -9.005621408514163,
+    "upper": 141.25907649173968,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_legacy",
+    "candidate": "repaired",
+    "benchmark": "old",
+    "metric": "value_mse",
+    "difference": -0.0023042876510740323,
+    "lower": -0.005519809011744785,
+    "upper": 0.0005184961572322254,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_legacy",
+    "arm": "repaired",
+    "reference": "old",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.008475067130883725,
+    "lower": -0.013082596921775056,
+    "upper": -0.004332847971206767,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]

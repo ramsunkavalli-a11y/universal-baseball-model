@@ -1,0 +1,430 @@
+{
+  "changes": [
+    {
+      "feature": "pooled_DSL_pa",
+      "old_dtype": "Int64",
+      "corrected_dtype": "Float64",
+      "changed_rows": 7775,
+      "maximum_absolute_difference": 0.9999999999999716
+    },
+    {
+      "feature": "pooled_RK120_pa",
+      "old_dtype": "Int64",
+      "corrected_dtype": "Float64",
+      "changed_rows": 2031,
+      "maximum_absolute_difference": 0.8000000000000114
+    },
+    {
+      "feature": "pooled_RK128_pa",
+      "old_dtype": "Float64",
+      "corrected_dtype": "Float64",
+      "changed_rows": 229,
+      "maximum_absolute_difference": 0.8000000000000114
+    },
+    {
+      "feature": "pooled_RK134_pa",
+      "old_dtype": "Int64",
+      "corrected_dtype": "Float64",
+      "changed_rows": 442,
+      "maximum_absolute_difference": 0.8000000000000682
+    },
+    {
+      "feature": "draft_elapsed",
+      "old_dtype": "Int64",
+      "corrected_dtype": "Float64",
+      "changed_rows": 23401,
+      "maximum_absolute_difference": 0.9
+    }
+  ],
+  "source_rows": 63282,
+  "fixed_diagnostics": [
+    {
+      "player_id": 701762,
+      "origin_year": 2024,
+      "name": "Nick Kurtz",
+      "old_inputs": {
+        "pooled_DSL_pa": 0,
+        "pooled_RK120_pa": 0,
+        "pooled_RK128_pa": 0.0,
+        "pooled_RK134_pa": 0,
+        "draft_elapsed": 0
+      },
+      "new_inputs": {
+        "pooled_DSL_pa": 0.0,
+        "pooled_RK120_pa": 0.0,
+        "pooled_RK128_pa": 0.0,
+        "pooled_RK134_pa": 0.0,
+        "draft_elapsed": 0.0
+      },
+      "draft_year": 2024,
+      "draft_pick": 4,
+      "school": "4YR JR",
+      "origin_history": [
+        {
+          "season": 2024,
+          "player_id": 701762,
+          "bucket": "A",
+          "plate_appearances": 35,
+          "strike_outs": 7,
+          "unintentional_walks": 10,
+          "hit_by_pitch": 0,
+          "home_runs": 4,
+          "babip_hits": 6,
+          "doubles": 2,
+          "triples": 0,
+          "babip_opportunities": 14
+        },
+        {
+          "season": 2024,
+          "player_id": 701762,
+          "bucket": "AA",
+          "plate_appearances": 15,
+          "strike_outs": 3,
+          "unintentional_walks": 2,
+          "hit_by_pitch": 0,
+          "home_runs": 0,
+          "babip_hits": 4,
+          "doubles": 1,
+          "triples": 0,
+          "babip_opportunities": 10
+        }
+      ]
+    },
+    {
+      "player_id": 694671,
+      "origin_year": 2023,
+      "name": "Wyatt Langford",
+      "old_inputs": {
+        "pooled_DSL_pa": 0,
+        "pooled_RK120_pa": 0,
+        "pooled_RK128_pa": 0.0,
+        "pooled_RK134_pa": 0,
+        "draft_elapsed": 0
+      },
+      "new_inputs": {
+        "pooled_DSL_pa": 0.0,
+        "pooled_RK120_pa": 0.0,
+        "pooled_RK128_pa": 0.0,
+        "pooled_RK134_pa": 0.0,
+        "draft_elapsed": 0.0
+      },
+      "draft_year": 2023,
+      "draft_pick": 4,
+      "school": "4YR JR",
+      "origin_history": [
+        {
+          "season": 2023,
+          "player_id": 694671,
+          "bucket": "AA",
+          "plate_appearances": 54,
+          "strike_outs": 7,
+          "unintentional_walks": 11,
+          "hit_by_pitch": 0,
+          "home_runs": 4,
+          "babip_hits": 13,
+          "doubles": 3,
+          "triples": 0,
+          "babip_opportunities": 32
+        },
+        {
+          "season": 2023,
+          "player_id": 694671,
+          "bucket": "AAA",
+          "plate_appearances": 26,
+          "strike_outs": 6,
+          "unintentional_walks": 6,
+          "hit_by_pitch": 1,
+          "home_runs": 0,
+          "babip_hits": 7,
+          "doubles": 3,
+          "triples": 0,
+          "babip_opportunities": 13
+        },
+        {
+          "season": 2023,
+          "player_id": 694671,
+          "bucket": "Aplus",
+          "plate_appearances": 106,
+          "strike_outs": 18,
+          "unintentional_walks": 18,
+          "hit_by_pitch": 1,
+          "home_runs": 5,
+          "babip_hits": 24,
+          "doubles": 8,
+          "triples": 2,
+          "babip_opportunities": 64
+        },
+        {
+          "season": 2023,
+          "player_id": 694671,
+          "bucket": "RK121",
+          "plate_appearances": 14,
+          "strike_outs": 3,
+          "unintentional_walks": 1,
+          "hit_by_pitch": 0,
+          "home_runs": 1,
+          "babip_hits": 4,
+          "doubles": 3,
+          "triples": 0,
+          "babip_opportunities": 9
+        }
+      ]
+    },
+    {
+      "player_id": 641355,
+      "origin_year": 2016,
+      "name": "Cody Bellinger",
+      "old_inputs": {
+        "pooled_DSL_pa": 0,
+        "pooled_RK120_pa": 0,
+        "pooled_RK128_pa": 139.79999999999998,
+        "pooled_RK134_pa": 0,
+        "draft_elapsed": 0
+      },
+      "new_inputs": {
+        "pooled_DSL_pa": 0.0,
+        "pooled_RK120_pa": 0.0,
+        "pooled_RK128_pa": 139.79999999999998,
+        "pooled_RK134_pa": 0.0,
+        "draft_elapsed": 0.3
+      },
+      "draft_year": 2013,
+      "draft_pick": 124,
+      "school": "",
+      "origin_history": [
+        {
+          "season": 2014,
+          "player_id": 641355,
+          "bucket": "RK128",
+          "plate_appearances": 233,
+          "strike_outs": 40,
+          "unintentional_walks": 15,
+          "hit_by_pitch": 0,
+          "home_runs": 3,
+          "babip_hits": 64,
+          "doubles": 14,
+          "triples": 6,
+          "babip_opportunities": 175
+        },
+        {
+          "season": 2015,
+          "player_id": 641355,
+          "bucket": "Aplus",
+          "plate_appearances": 544,
+          "strike_outs": 150,
+          "unintentional_walks": 51,
+          "hit_by_pitch": 4,
+          "home_runs": 30,
+          "babip_hits": 96,
+          "doubles": 33,
+          "triples": 4,
+          "babip_opportunities": 306
+        },
+        {
+          "season": 2016,
+          "player_id": 641355,
+          "bucket": "AA",
+          "plate_appearances": 465,
+          "strike_outs": 94,
+          "unintentional_walks": 57,
+          "hit_by_pitch": 3,
+          "home_runs": 23,
+          "babip_hits": 82,
+          "doubles": 17,
+          "triples": 1,
+          "babip_opportunities": 286
+        },
+        {
+          "season": 2016,
+          "player_id": 641355,
+          "bucket": "AAA",
+          "plate_appearances": 12,
+          "strike_outs": 0,
+          "unintentional_walks": 1,
+          "hit_by_pitch": 0,
+          "home_runs": 3,
+          "babip_hits": 3,
+          "doubles": 0,
+          "triples": 0,
+          "babip_opportunities": 8
+        }
+      ]
+    },
+    {
+      "player_id": 624413,
+      "origin_year": 2018,
+      "name": "Pete Alonso",
+      "old_inputs": {
+        "pooled_DSL_pa": 0,
+        "pooled_RK120_pa": 0,
+        "pooled_RK128_pa": 0.0,
+        "pooled_RK134_pa": 0,
+        "draft_elapsed": 0
+      },
+      "new_inputs": {
+        "pooled_DSL_pa": 0.0,
+        "pooled_RK120_pa": 0.0,
+        "pooled_RK128_pa": 0.0,
+        "pooled_RK134_pa": 0.0,
+        "draft_elapsed": 0.2
+      },
+      "draft_year": 2016,
+      "draft_pick": 64,
+      "school": "",
+      "origin_history": [
+        {
+          "season": 2016,
+          "player_id": 624413,
+          "bucket": "Aminus",
+          "plate_appearances": 123,
+          "strike_outs": 22,
+          "unintentional_walks": 11,
+          "hit_by_pitch": 1,
+          "home_runs": 5,
+          "babip_hits": 30,
+          "doubles": 12,
+          "triples": 1,
+          "babip_opportunities": 84
+        },
+        {
+          "season": 2017,
+          "player_id": 624413,
+          "bucket": "AA",
+          "plate_appearances": 47,
+          "strike_outs": 7,
+          "unintentional_walks": 2,
+          "hit_by_pitch": 0,
+          "home_runs": 2,
+          "babip_hits": 12,
+          "doubles": 4,
+          "triples": 1,
+          "babip_opportunities": 36
+        },
+        {
+          "season": 2017,
+          "player_id": 624413,
+          "bucket": "Aplus",
+          "plate_appearances": 346,
+          "strike_outs": 64,
+          "unintentional_walks": 24,
+          "hit_by_pitch": 12,
+          "home_runs": 16,
+          "babip_hits": 72,
+          "doubles": 23,
+          "triples": 0,
+          "babip_opportunities": 229
+        },
+        {
+          "season": 2018,
+          "player_id": 624413,
+          "bucket": "AA",
+          "plate_appearances": 273,
+          "strike_outs": 50,
+          "unintentional_walks": 40,
+          "hit_by_pitch": 8,
+          "home_runs": 15,
+          "babip_hits": 54,
+          "doubles": 12,
+          "triples": 0,
+          "babip_opportunities": 157
+        },
+        {
+          "season": 2018,
+          "player_id": 624413,
+          "bucket": "AAA",
+          "plate_appearances": 301,
+          "strike_outs": 78,
+          "unintentional_walks": 33,
+          "hit_by_pitch": 7,
+          "home_runs": 21,
+          "babip_hits": 46,
+          "doubles": 19,
+          "triples": 1,
+          "babip_opportunities": 162
+        }
+      ]
+    },
+    {
+      "player_id": 806956,
+      "origin_year": 2024,
+      "name": "Ethan Salas",
+      "old_inputs": {
+        "pooled_DSL_pa": 0,
+        "pooled_RK120_pa": 0,
+        "pooled_RK128_pa": 0.0,
+        "pooled_RK134_pa": 0,
+        "draft_elapsed": 0
+      },
+      "new_inputs": {
+        "pooled_DSL_pa": 0.0,
+        "pooled_RK120_pa": 0.0,
+        "pooled_RK128_pa": 0.0,
+        "pooled_RK134_pa": 0.0,
+        "draft_elapsed": 0.0
+      },
+      "draft_year": null,
+      "draft_pick": null,
+      "school": "",
+      "origin_history": [
+        {
+          "season": 2023,
+          "player_id": 806956,
+          "bucket": "A",
+          "plate_appearances": 220,
+          "strike_outs": 57,
+          "unintentional_walks": 24,
+          "hit_by_pitch": 2,
+          "home_runs": 9,
+          "babip_hits": 42,
+          "doubles": 11,
+          "triples": 2,
+          "babip_opportunities": 128
+        },
+        {
+          "season": 2023,
+          "player_id": 806956,
+          "bucket": "AA",
+          "plate_appearances": 33,
+          "strike_outs": 8,
+          "unintentional_walks": 4,
+          "hit_by_pitch": 1,
+          "home_runs": 0,
+          "babip_hits": 5,
+          "doubles": 1,
+          "triples": 0,
+          "babip_opportunities": 20
+        },
+        {
+          "season": 2023,
+          "player_id": 806956,
+          "bucket": "Aplus",
+          "plate_appearances": 37,
+          "strike_outs": 10,
+          "unintentional_walks": 2,
+          "hit_by_pitch": 0,
+          "home_runs": 0,
+          "babip_hits": 7,
+          "doubles": 1,
+          "triples": 0,
+          "babip_opportunities": 25
+        },
+        {
+          "season": 2024,
+          "player_id": 806956,
+          "bucket": "Aplus",
+          "plate_appearances": 469,
+          "strike_outs": 98,
+          "unintentional_walks": 47,
+          "hit_by_pitch": 3,
+          "home_runs": 4,
+          "babip_hits": 81,
+          "doubles": 27,
+          "triples": 2,
+          "babip_opportunities": 317
+        }
+      ]
+    }
+  ],
+  "only_declared_numeric_inputs_changed": true,
+  "labels_and_membership_unchanged": true
+}

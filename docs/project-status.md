@@ -24,7 +24,21 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: selected practical candidate and corrected public comparison.**
+**Current checkpoint: numeric history repair reviewed and retained.**
+See [the source correction and ten actual reviews](practical-hitter-numeric-repair-v53-result.md).
+Draft elapsed time was truncated in 23,401 source rows; four pooled lower-level
+PA fields also lost fractional counts. Explicit numeric reconstruction changes
+no component rates, outcomes or evaluation membership. All 105 heads replay.
+Public hitting RMSE improves only 1.7452 to 1.7435; PA is effectively unchanged
+and slightly worse. Fast-entry misses remain: Kurtz 2 PA versus 489, Langford 43
+versus 557, Bellinger 15 versus 548. This real data bug is not the explanation
+for the whole prospect failure. Corrected research source becomes the next
+baseline; old candidate/explorer and frozen forecasts remain unchanged.
+Next one regularized prospect-specific hurdle comparison, sharing strength
+across profiles rather than fitting a tiny unsupported fast-draft branch.
+MLB availability and joint uncertainty remain separate material gaps.
+
+**Previous checkpoint: selected practical candidate and corrected public comparison.**
 See [the same-event public review](practical-hitter-public-units-v51-result.md)
 and [the candidate handoff](practical-hitter-candidate-v52-handoff.md).
 Existing batting rate plus reviewed binary scouting readiness is the selected
