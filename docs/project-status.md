@@ -24,7 +24,30 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: numeric history repair reviewed and retained.**
+**Current checkpoint: prospect representation batch closed, corrected baseline retained.**
+The [shared prospect model](practical-hitter-prospect-pooling-v54-result.md),
+[fixed-unit follow-up](practical-hitter-prospect-units-v55-result.md), and
+[head assembly](practical-hitter-head-assembly-v56-result.md) have seven, nine
+and eight actual player reviews respectively. None earns a new hitting model.
+Shared opportunity partly repairs Langford (43 to 214 PA versus 557), but rare
+rookie rates still dominate conditional PA. Fixed units remove extremes but
+excessively shrink useful readiness signal; changing units also changes effective
+regularization under unchanged numeric penalties. The combined model is
+effectively tied with keeping baseline hitting and has unresolved false highs.
+Corrected V53 stays the research baseline; older candidate/explorers stay exact.
+The [compact opportunity comparison](practical-hitter-compact-readiness-v57-result.md)
+has all 70 heads replayed and eight actual reviews. It removes 92 fragile rate
+inputs, but slightly worsens individual errors. Langford gets 212 versus 557 PA;
+Julio Rodriguez falls 224 to 143 versus 560. Opposite cohort errors persist:
+2021-origin PA 6,326 versus 18,944, 2023-origin 22,091 versus 11,697. Presence of
+cancellation flags does not certify their treatment. No forecast upgrade adopted.
+Close this representation batch; no more scale/penalty sweeps on the same cases.
+The [current research handoff](practical-hitter-repaired-research-v58-handoff.md)
+fixes the next priorities: timely MLB opportunity/availability and role uncertainty,
+then compatible delivered-value uncertainty. Public MAE remains 106.87 versus
+Steamer 92.08; exact dates remain qualified. Goal active, no full-WAR/value claim.
+
+**Previous checkpoint: numeric history repair reviewed and retained.**
 See [the source correction and ten actual reviews](practical-hitter-numeric-repair-v53-result.md).
 Draft elapsed time was truncated in 23,401 source rows; four pooled lower-level
 PA fields also lost fractional counts. Explicit numeric reconstruction changes
