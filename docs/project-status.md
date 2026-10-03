@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: historical scouting readiness tested and fifteen players reviewed.**
+**Current checkpoint: positive scouting fallback reviewed and readiness separated from quality.**
+See [the fallback result and twenty actual cases](practical-hitter-scouting-v48-result.md).
+Use ranking head only for 450 current verified listings, otherwise preserve the
+count/games mean. Broad workload/value nominal intervals improve; unlisted
+Kurtz/Langford/Bellinger/Alonso are restored to their original forecasts, still
+large misses. Never-debut upper-minor totals improve, but seventy ranked lower-
+minor forecasts predict 3,769 PA versus 836 actual. Salas/Mayer show immediate-
+readiness overprediction; Devers prevents a simplistic universal lower-level ban.
+Public PA MAE remains 20.1 percent above Steamer. No whole-model promotion; goal
+incomplete. Next one binary MLB-participation/conditional-PA comparison with and
+without rankings, using the same audited population—not another arbitrary gate.
+Working V33b plus reversible retirement and protected 2026 remain unchanged.
+
+**Previous checkpoint: historical scouting readiness tested and fifteen players reviewed.**
 See [the ranking result](practical-hitter-scouting-v47-result.md). Same 30,506
 forecasts and 35 fits, twelve genuinely historical ranking inputs, batting rate
 held fixed. Top20 PA RMSE improves 214.524 to 176.055; broad incremental intervals
