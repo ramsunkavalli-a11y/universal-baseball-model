@@ -1,0 +1,152 @@
+{
+  "requested_url": "https://statsapi.mlb.com/api/v1/teams/119/roster?rosterType=fullRoster&season=2024&date=2024-10-15",
+  "stored_snapshot_date": "2024-10-15",
+  "raw_returned_row": [
+    {
+      "jerseyNumber": "3",
+      "parentTeamId": 119,
+      "person": {
+        "fullName": "Hyeseong Kim",
+        "id": 808975,
+        "link": "/api/v1/people/808975"
+      },
+      "position": {
+        "abbreviation": "2B",
+        "code": "4",
+        "name": "Second Base",
+        "type": "Infielder"
+      },
+      "status": {
+        "code": "A",
+        "description": "Active"
+      }
+    }
+  ],
+  "projected_roster_row": [
+    {
+      "snapshot_date": "2024-10-15",
+      "snapshot_year": 2024,
+      "candidate_organization_id": 119,
+      "player_id": 808975,
+      "player_name": "Hyeseong Kim",
+      "position_codes": "4",
+      "source_row_count": 1
+    }
+  ],
+  "source_feature_row": [
+    {
+      "row_id": 58060,
+      "player_id": 808975,
+      "player_name": null,
+      "age": 27.0,
+      "age_unknown": 1,
+      "source_position": "UNKNOWN",
+      "team_id": null,
+      "on_40man": 0,
+      "draft_known": 0,
+      "prior_debut": 0,
+      "origin_evidence_bridge": false,
+      "next_pa": 170
+    }
+  ],
+  "separate_40man_row": [],
+  "signing_date": "2025-01-03",
+  "signing_source": "https://www.mlb.com/press-release/press-release-dodgers-sign-hyeseong-kim",
+  "source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\opportunity-history-sources-v2\\captures\\2024\\full-roster-119.json.gz": "78f054f65738eb228445c93407d8ab2a4a8f14f817f5c574ae57fdbaa076ef60",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\opportunity-history-sources-v2\\tables\\2024\\full_roster_details.parquet": "a35cdc09a36835e421fe462d1c72c6bae8b83b621c15ed7caf5d375fff87a660",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-arrival-source-repair-v1\\year-end-rosters.parquet": "24382cc70508404feff0017595baaa72f56cde124d52d232f151f4633a0475fd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-joint-forest-v43\\features.parquet": "fa79b025915d5abff23296fa48d36be9980805e44a52c65beb2c83e1a39236b2"
+  },
+  "groups": [
+    {
+      "origin_year": 2011,
+      "rows": 4497,
+      "unverified_roster_only_rows": 32,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2012,
+      "rows": 4515,
+      "unverified_roster_only_rows": 29,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2013,
+      "rows": 4550,
+      "unverified_roster_only_rows": 30,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2014,
+      "rows": 4598,
+      "unverified_roster_only_rows": 19,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2015,
+      "rows": 4599,
+      "unverified_roster_only_rows": 13,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2016,
+      "rows": 4663,
+      "unverified_roster_only_rows": 34,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2017,
+      "rows": 4691,
+      "unverified_roster_only_rows": 28,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2018,
+      "rows": 4478,
+      "unverified_roster_only_rows": 18,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2019,
+      "rows": 4884,
+      "unverified_roster_only_rows": 32,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2020,
+      "rows": 5133,
+      "unverified_roster_only_rows": 185,
+      "unverified_next_pa": 298
+    },
+    {
+      "origin_year": 2021,
+      "rows": 4242,
+      "unverified_roster_only_rows": 44,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2022,
+      "rows": 4244,
+      "unverified_roster_only_rows": 35,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2023,
+      "rows": 4196,
+      "unverified_roster_only_rows": 24,
+      "unverified_next_pa": 0
+    },
+    {
+      "origin_year": 2024,
+      "rows": 3992,
+      "unverified_roster_only_rows": 35,
+      "unverified_next_pa": 170
+    }
+  ],
+  "eligibility_changed": false,
+  "forecast_inputs_changed": false,
+  "protected_outcomes_used": false,
+  "interpretation": "FullRoster request date is not sufficient membership proof. No equivalent behavior of 40Man established from this case. Unverified rows retained; origin-supported subset is a qualification diagnostic, not improved eligibility."
+}

@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V42 source-consistent draft-age comparison reviewed; no promotion.**
+**Current checkpoint: joint opportunity and contribution reviewed; no mean promotion.**
+See [the paired model result and sixteen actual player walks](practical-hitter-joint-forest-v43-result.md).
+The joint empirical forest worsens expected PA and contribution. Upper-minor PA
+allocation falls farther below actual, and elite batting value is compressed;
+better total league PA does not fix those errors. Risk scores beat a coarse
+stage/debut reference but upper-minor participation is underpredicted and lower-
+minor rare-event log loss worsens. Retain risk research, not validated ranges
+attached to a different working model. A retrospective full-roster response
+misdates Hyeseong Kim's Dodgers membership: 218 evaluated roster-only rows remain
+in primary scoring but are explicitly unverified. Next inspect existing dated
+retirement/return evidence and scope roster-only eligibility, not another library
+tournament. V33b working, V38 research; practical goal remains incomplete.
+
+**V42 source-consistent draft-age comparison reviewed; no promotion.**
 See [the result and 15 player walks](practical-hitter-draft-age-v42-result.md).
 School metadata varies sharply by draft vintage; replacing four flags with a
 known approximate draft age yields essentially unchanged PA, slightly improved

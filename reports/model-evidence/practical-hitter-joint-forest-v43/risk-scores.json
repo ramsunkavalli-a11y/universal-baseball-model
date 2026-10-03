@@ -1,0 +1,1550 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.034345110582585804,
+            "log_loss": 0.11625352273812486,
+            "expected": 4463.329398491605,
+            "actual": 4538
+          },
+          "reference": {
+            "brier": 0.05187863424785376,
+            "log_loss": 0.17662108537601298,
+            "expected": 4559.010869852671,
+            "actual": 4538
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.019745871864867526,
+            "log_loss": 0.06563346717777374,
+            "expected": 1428.3433893970537,
+            "actual": 1473
+          },
+          "reference": {
+            "brier": 0.0342286596453089,
+            "log_loss": 0.10605102651646772,
+            "expected": 1465.4069104757536,
+            "actual": 1473
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.03840565851270865,
+            "log_loss": 0.12475316582478234,
+            "expected": 1492.9559038068708,
+            "actual": 1604
+          },
+          "reference": {
+            "brier": 0.04273851820612985,
+            "log_loss": 0.14544223414177934,
+            "expected": 1538.3922265913552,
+            "actual": 1604
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.016963462545823857,
+            "log_loss": 0.05745006625143904,
+            "expected": 938.3867937333994,
+            "actual": 912
+          },
+          "reference": {
+            "brier": 0.02456128900307226,
+            "log_loss": 0.08245050537407307,
+            "expected": 957.4748730085174,
+            "actual": 912
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9660986071542268,
+      "mean_width": 63.768570899488836,
+      "pinball": {
+        "0.1": 3.393798509535159,
+        "0.5": 9.5901194484138,
+        "0.9": 5.703166657571564
+      },
+      "median_rmse": 65.22108161815875,
+      "median_mae": 19.1802388968276,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "public_active",
+    "rows": 1789,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.09044001596932705,
+            "log_loss": 0.2973689036340002,
+            "expected": 1425.9140849153337,
+            "actual": 1450
+          },
+          "reference": {
+            "brier": 0.15373710141462377,
+            "log_loss": 0.48615649379997006,
+            "expected": 1422.200548373487,
+            "actual": 1450
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.12234701931885433,
+            "log_loss": 0.37638099654644014,
+            "expected": 489.4133957030533,
+            "actual": 507
+          },
+          "reference": {
+            "brier": 0.20407907651452387,
+            "log_loss": 0.5984665352364577,
+            "expected": 554.5604523277055,
+            "actual": 507
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.1785966014550746,
+            "log_loss": 0.5299266819718896,
+            "expected": 460.3051572903153,
+            "actual": 474
+          },
+          "reference": {
+            "brier": 0.19556738509847765,
+            "log_loss": 0.5803553005297081,
+            "expected": 428.66673977485,
+            "actual": 474
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.10056398114418941,
+            "log_loss": 0.319803928381321,
+            "expected": 307.3763835274832,
+            "actual": 300
+          },
+          "reference": {
+            "brier": 0.14068702610396516,
+            "log_loss": 0.4558238459104303,
+            "expected": 357.35360149466703,
+            "actual": 300
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.8705973374756988,
+      "mean_width": 369.83705394538674,
+      "pinball": {
+        "0.1": 19.779016091548435,
+        "0.5": 53.29630635928802,
+        "0.9": 24.353162157247652
+      },
+      "median_rmse": 149.26564255062186,
+      "median_mae": 106.59261271857604,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "source_supported_diagnostic",
+    "rows": 30288,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.034563809585916504,
+            "log_loss": 0.11611815984751937,
+            "expected": 4463.3293984916045,
+            "actual": 4537
+          },
+          "reference": {
+            "brier": 0.052227880342075206,
+            "log_loss": 0.1776926343952856,
+            "expected": 4557.683595890459,
+            "actual": 4537
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.01988957110930471,
+            "log_loss": 0.06610914271252769,
+            "expected": 1428.3433893970537,
+            "actual": 1473
+          },
+          "reference": {
+            "brier": 0.03447958764586204,
+            "log_loss": 0.1068235159106233,
+            "expected": 1465.204713570176,
+            "actual": 1473
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.03868972813662029,
+            "log_loss": 0.12567455570551261,
+            "expected": 1492.9559038068708,
+            "actual": 1604
+          },
+          "reference": {
+            "brier": 0.043055324351921116,
+            "log_loss": 0.14650377743260173,
+            "expected": 1537.92365494238,
+            "actual": 1604
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.01708638770410211,
+            "log_loss": 0.0578657424588049,
+            "expected": 938.3867937333993,
+            "actual": 912
+          },
+          "reference": {
+            "brier": 0.024740023299483823,
+            "log_loss": 0.08304123171326946,
+            "expected": 957.157751457308,
+            "actual": 912
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9658865644550544,
+      "mean_width": 64.23448123127402,
+      "pinball": {
+        "0.1": 3.4178674882364954,
+        "0.5": 9.65705517798539,
+        "0.9": 5.739418378668148
+      },
+      "median_rmse": 65.44909396911842,
+      "median_mae": 19.31411035597078,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "roster_only_unverified_diagnostic",
+    "rows": 218,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.004081632653061224,
+            "log_loss": 0.11277967802519404,
+            "expected": 0.0,
+            "actual": 1
+          },
+          "reference": {
+            "brier": 0.004084790132778516,
+            "log_loss": 0.028305722265127453,
+            "expected": 1.3272739622096252,
+            "actual": 1
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.0,
+            "log_loss": 1.0000000000005e-12,
+            "expected": 0.0,
+            "actual": 0
+          },
+          "reference": {
+            "brier": 1.0232535399865157e-06,
+            "log_loss": 0.0009500024890007911,
+            "expected": 0.20219690557783884,
+            "actual": 0
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.0,
+            "log_loss": 1.0000000000005e-12,
+            "expected": 0.0,
+            "actual": 0
+          },
+          "reference": {
+            "brier": 5.015496103550832e-06,
+            "log_loss": 0.0021573790550499608,
+            "expected": 0.46857164897509584,
+            "actual": 0
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.0,
+            "log_loss": 1.0000000000005e-12,
+            "expected": 0.0,
+            "actual": 0
+          },
+          "reference": {
+            "brier": 2.749074476625101e-06,
+            "log_loss": 0.001482977362383873,
+            "expected": 0.3171215512092661,
+            "actual": 0
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9959183673469388,
+      "mean_width": 0.0,
+      "pinball": {
+        "0.1": 0.06938775510204082,
+        "0.5": 0.3469387755102041,
+        "0.9": 0.6244897959183673
+      },
+      "median_rmse": 10.860901604998979,
+      "median_mae": 0.6938775510204082,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "brief_debut",
+    "rows": 1194,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.14061956364431108,
+            "log_loss": 0.44748759864058424,
+            "expected": 798.2559541454223,
+            "actual": 814
+          },
+          "reference": {
+            "brier": 0.22829285109754607,
+            "log_loss": 0.6572399745073866,
+            "expected": 946.9830579307411,
+            "actual": 814
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.07043448588102522,
+            "log_loss": 0.2473743035356331,
+            "expected": 94.55165774570457,
+            "actual": 103
+          },
+          "reference": {
+            "brier": 0.12920934288417665,
+            "log_loss": 0.44079472194984304,
+            "expected": 370.5532535110526,
+            "actual": 103
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.20794844309699045,
+            "log_loss": 0.601995672599072,
+            "expected": 367.02734783239544,
+            "actual": 387
+          },
+          "reference": {
+            "brier": 0.2268328482053228,
+            "log_loss": 0.6498998463656799,
+            "expected": 283.14241682118774,
+            "actual": 387
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.04969350584097138,
+            "log_loss": 0.1841547160328079,
+            "expected": 60.73659538025417,
+            "actual": 68
+          },
+          "reference": {
+            "brier": 0.07457015586749781,
+            "log_loss": 0.30327797624324304,
+            "expected": 240.1290625155633,
+            "actual": 68
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.8998503827608497,
+      "mean_width": 302.34920620226234,
+      "pinball": {
+        "0.1": 11.751192524623658,
+        "0.5": 44.9883649578411,
+        "0.9": 27.827850083983
+      },
+      "median_rmse": 143.67153597373272,
+      "median_mae": 89.9767299156822,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "limited_drafted_never",
+    "rows": 1850,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.0034781726887226465,
+            "log_loss": 0.014589583905398698,
+            "expected": 6.536650295545003,
+            "actual": 7
+          },
+          "reference": {
+            "brier": 0.004174050675016428,
+            "log_loss": 0.024584420432991607,
+            "expected": 15.56397517431271,
+            "actual": 7
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.0012385298564432695,
+            "log_loss": 0.005422845466455916,
+            "expected": 0.49976480311733906,
+            "actual": 2
+          },
+          "reference": {
+            "brier": 0.0012635191376407285,
+            "log_loss": 0.006747040869187339,
+            "expected": 0.9410979638265888,
+            "actual": 2
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.00111578070990978,
+            "log_loss": 0.006598568765915129,
+            "expected": 1.8850158813578337,
+            "actual": 2
+          },
+          "reference": {
+            "brier": 0.0012546803585267812,
+            "log_loss": 0.010997881391862118,
+            "expected": 6.426635118135563,
+            "actual": 2
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.00061995821080987,
+            "log_loss": 0.0028016587489537934,
+            "expected": 0.5143478206101924,
+            "actual": 1
+          },
+          "reference": {
+            "brier": 0.000634833274508027,
+            "log_loss": 0.003843313611596566,
+            "expected": 0.9457927174720377,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9965056333759694,
+      "mean_width": 0.5078653830391232,
+      "pinball": {
+        "0.1": 0.10263886232445986,
+        "0.5": 0.5131943116222992,
+        "0.9": 0.7733831922413476
+      },
+      "median_rmse": 19.398836222620037,
+      "median_mae": 1.0263886232445985,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "absent_prior_debut",
+    "rows": 1766,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.06354864040141503,
+            "log_loss": 0.22073371609806652,
+            "expected": 190.0437196146189,
+            "actual": 155
+          },
+          "reference": {
+            "brier": 0.07758797678852018,
+            "log_loss": 0.284008869288812,
+            "expected": 193.17577261429332,
+            "actual": 155
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.004341929881998963,
+            "log_loss": 0.020252014234223858,
+            "expected": 9.212209907275172,
+            "actual": 9
+          },
+          "reference": {
+            "brier": 0.0049314479602460114,
+            "log_loss": 0.03213253648719601,
+            "expected": 14.483042348903215,
+            "actual": 9
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.04467684757729779,
+            "log_loss": 0.1658227657161006,
+            "expected": 100.6538633810699,
+            "actual": 92
+          },
+          "reference": {
+            "brier": 0.04789254556599719,
+            "log_loss": 0.18982491077842112,
+            "expected": 99.91366562407187,
+            "actual": 92
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.002521965217058409,
+            "log_loss": 0.012982997392227653,
+            "expected": 7.431445630542399,
+            "actual": 5
+          },
+          "reference": {
+            "brier": 0.002704608457113284,
+            "log_loss": 0.021583089394815586,
+            "expected": 11.172776869083217,
+            "actual": 5
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9600288848305686,
+      "mean_width": 27.454220876653157,
+      "pinball": {
+        "0.1": 0.8579601832470191,
+        "0.5": 4.218404247354648,
+        "0.9": 5.145716648097713
+      },
+      "median_rmse": 46.38225080731155,
+      "median_mae": 8.436808494709297,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.03268775043116394,
+            "log_loss": 0.10963419967948816,
+            "expected": 621.1535757052663,
+            "actual": 624
+          },
+          "reference": {
+            "brier": 0.048503051373680675,
+            "log_loss": 0.16780526172376609,
+            "expected": 630.4004511171081,
+            "actual": 624
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.01736023909192757,
+            "log_loss": 0.05688804150274955,
+            "expected": 201.33486513643695,
+            "actual": 216
+          },
+          "reference": {
+            "brier": 0.031404027804148416,
+            "log_loss": 0.09364527509730489,
+            "expected": 202.27725041257227,
+            "actual": 216
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.03300709724088145,
+            "log_loss": 0.10825673550562077,
+            "expected": 203.21402786859556,
+            "actual": 214
+          },
+          "reference": {
+            "brier": 0.03772763766858066,
+            "log_loss": 0.13357745377725358,
+            "expected": 208.34337375262675,
+            "actual": 214
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.01782714588245544,
+            "log_loss": 0.05805519672788417,
+            "expected": 134.63328500909407,
+            "actual": 139
+          },
+          "reference": {
+            "brier": 0.023773919953258567,
+            "log_loss": 0.07706912666604504,
+            "expected": 133.91050222307496,
+            "actual": 139
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9701908642504825,
+      "mean_width": 58.04696547287154,
+      "pinball": {
+        "0.1": 3.154063907355783,
+        "0.5": 8.853527771820715,
+        "0.9": 4.865086853956679
+      },
+      "median_rmse": 62.854894180932696,
+      "median_mae": 17.70705554364143,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.03115449860468131,
+            "log_loss": 0.10486031470373745,
+            "expected": 619.5532860267406,
+            "actual": 628
+          },
+          "reference": {
+            "brier": 0.045054948458056514,
+            "log_loss": 0.15246916285146078,
+            "expected": 626.9632233114845,
+            "actual": 628
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.016771422649164928,
+            "log_loss": 0.060696672310701826,
+            "expected": 207.93391507709123,
+            "actual": 214
+          },
+          "reference": {
+            "brier": 0.031233310662921877,
+            "log_loss": 0.0959755678564417,
+            "expected": 201.7447215026504,
+            "actual": 214
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.03219097585456747,
+            "log_loss": 0.10457790998657167,
+            "expected": 201.02702494625152,
+            "actual": 210
+          },
+          "reference": {
+            "brier": 0.036557161659254864,
+            "log_loss": 0.12405783138302807,
+            "expected": 209.69354393666518,
+            "actual": 210
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.015518276865613589,
+            "log_loss": 0.05550612097460762,
+            "expected": 138.0370578033712,
+            "actual": 133
+          },
+          "reference": {
+            "brier": 0.02289048637111267,
+            "log_loss": 0.07672755265157995,
+            "expected": 132.9784511957494,
+            "actual": 133
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9686633979961629,
+      "mean_width": 57.69580046898316,
+      "pinball": {
+        "0.1": 3.1365806864208077,
+        "0.5": 8.188552547431252,
+        "0.9": 5.15527606054146
+      },
+      "median_rmse": 59.81976945572501,
+      "median_mae": 16.377105094862504,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.030685597149329377,
+            "log_loss": 0.10272963828113642,
+            "expected": 621.0441439001653,
+            "actual": 638
+          },
+          "reference": {
+            "brier": 0.04633743136242617,
+            "log_loss": 0.15798782421243687,
+            "expected": 628.607937365618,
+            "actual": 638
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.020144474112279116,
+            "log_loss": 0.06915018346018433,
+            "expected": 208.27410520850847,
+            "actual": 207
+          },
+          "reference": {
+            "brier": 0.03263216544742893,
+            "log_loss": 0.10149035790411481,
+            "expected": 205.02477518649064,
+            "actual": 207
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.036194529112044724,
+            "log_loss": 0.11661423847818041,
+            "expected": 200.63416039967467,
+            "actual": 225
+          },
+          "reference": {
+            "brier": 0.03971956705335849,
+            "log_loss": 0.13344819809178948,
+            "expected": 209.38968258688033,
+            "actual": 225
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.01721385073446049,
+            "log_loss": 0.06017296040036562,
+            "expected": 137.9165163501442,
+            "actual": 131
+          },
+          "reference": {
+            "brier": 0.024207244074874595,
+            "log_loss": 0.08332963472335743,
+            "expected": 134.05502442279348,
+            "actual": 131
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9662795891022778,
+      "mean_width": 60.815096025011165,
+      "pinball": {
+        "0.1": 3.4652746761947335,
+        "0.5": 9.756364448414471,
+        "0.9": 5.954108977221972
+      },
+      "median_rmse": 68.21233891306666,
+      "median_mae": 19.512728896828943,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.04044851653847707,
+            "log_loss": 0.1342507038842635,
+            "expected": 626.5684459975341,
+            "actual": 686
+          },
+          "reference": {
+            "brier": 0.06293250730595379,
+            "log_loss": 0.21197842001657116,
+            "expected": 668.5134079592349,
+            "actual": 686
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.01947282717222832,
+            "log_loss": 0.0646616793240732,
+            "expected": 193.51635697208673,
+            "actual": 204
+          },
+          "reference": {
+            "brier": 0.03534816006588998,
+            "log_loss": 0.11306792055353675,
+            "expected": 215.27835066421318,
+            "actual": 204
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.04282820985386708,
+            "log_loss": 0.13887743571435798,
+            "expected": 211.06947628844716,
+            "actual": 255
+          },
+          "reference": {
+            "brier": 0.048670108885696034,
+            "log_loss": 0.16456283222395612,
+            "expected": 225.62274076473656,
+            "actual": 255
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.016610703963326673,
+            "log_loss": 0.057779884847592396,
+            "expected": 132.51819244267207,
+            "actual": 122
+          },
+          "reference": {
+            "brier": 0.02448600853138424,
+            "log_loss": 0.08613527785128126,
+            "expected": 141.2349808995992,
+            "actual": 122
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9627534181989628,
+      "mean_width": 64.24681753889675,
+      "pinball": {
+        "0.1": 3.461763319189064,
+        "0.5": 9.589462517680339,
+        "0.9": 6.207142857142854
+      },
+      "median_rmse": 64.13090506488507,
+      "median_mae": 19.178925035360677,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.03534139439260585,
+            "log_loss": 0.12128465351584916,
+            "expected": 661.5451125309319,
+            "actual": 649
+          },
+          "reference": {
+            "brier": 0.054898056313206066,
+            "log_loss": 0.18740846159072924,
+            "expected": 690.7278496431605,
+            "actual": 649
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.0209200191407331,
+            "log_loss": 0.0673173985978937,
+            "expected": 197.78954574500185,
+            "actual": 210
+          },
+          "reference": {
+            "brier": 0.03595986501558855,
+            "log_loss": 0.11244462381470036,
+            "expected": 222.19312404111537,
+            "actual": 210
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.03935033204509312,
+            "log_loss": 0.12929869955300077,
+            "expected": 230.63841459042814,
+            "actual": 226
+          },
+          "reference": {
+            "brier": 0.043028024190771876,
+            "log_loss": 0.1475395197001623,
+            "expected": 235.07419847223954,
+            "actual": 226
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.017100345211583632,
+            "log_loss": 0.056552969509124244,
+            "expected": 128.4626577416787,
+            "actual": 131
+          },
+          "reference": {
+            "brier": 0.025509843029050135,
+            "log_loss": 0.08535394700736387,
+            "expected": 144.37434556997488,
+            "actual": 131
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9646559849198869,
+      "mean_width": 66.55065975494816,
+      "pinball": {
+        "0.1": 3.4789585296889713,
+        "0.5": 10.11204052780396,
+        "0.9": 5.975353440150802
+      },
+      "median_rmse": 67.23022502861849,
+      "median_mae": 20.22408105560792,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.034035162273438085,
+            "log_loss": 0.11696006574027414,
+            "expected": 663.2971920199757,
+            "actual": 647
+          },
+          "reference": {
+            "brier": 0.05344372727036293,
+            "log_loss": 0.18075625419252922,
+            "expected": 662.7740682127655,
+            "actual": 647
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.0216351607277054,
+            "log_loss": 0.06915370369867566,
+            "expected": 211.3696722552072,
+            "actual": 207
+          },
+          "reference": {
+            "brier": 0.03517462050056305,
+            "log_loss": 0.10893239619188264,
+            "expected": 210.17015358892598,
+            "actual": 207
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.03998105087682012,
+            "log_loss": 0.13352684589544062,
+            "expected": 223.80205117425487,
+            "actual": 218
+          },
+          "reference": {
+            "brier": 0.043228444947683894,
+            "log_loss": 0.1496301997666794,
+            "expected": 228.03035480495961,
+            "actual": 218
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.017572726560283237,
+            "log_loss": 0.05748721895718049,
+            "expected": 136.4716755765812,
+            "actual": 132
+          },
+          "reference": {
+            "brier": 0.02551730608689347,
+            "log_loss": 0.08376842693173886,
+            "expected": 136.0455761186747,
+            "actual": 132
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9649666348903718,
+      "mean_width": 68.98808388941849,
+      "pinball": {
+        "0.1": 3.5136558627264045,
+        "0.5": 9.901930409914204,
+        "0.9": 5.530529075309821
+      },
+      "median_rmse": 65.776101069294,
+      "median_mae": 19.803860819828408,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.036062854688404936,
+            "log_loss": 0.12405508336212519,
+            "expected": 650.1676423109911,
+            "actual": 666
+          },
+          "reference": {
+            "brier": 0.05198071765129016,
+            "log_loss": 0.17794221304459737,
+            "expected": 651.0239322432985,
+            "actual": 666
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.021916960160034235,
+            "log_loss": 0.07156659135013796,
+            "expected": 208.1249290027212,
+            "actual": 215
+          },
+          "reference": {
+            "brier": 0.03784846802062144,
+            "log_loss": 0.11680104419729288,
+            "expected": 208.7185350797859,
+            "actual": 215
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.0452874146056866,
+            "log_loss": 0.14212029564030415,
+            "expected": 222.57074853921887,
+            "actual": 256
+          },
+          "reference": {
+            "brier": 0.05023868303756316,
+            "log_loss": 0.16527960404958633,
+            "expected": 222.23833227324718,
+            "actual": 256
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.016901188603043942,
+            "log_loss": 0.056596112343318655,
+            "expected": 130.34740880985774,
+            "actual": 124
+          },
+          "reference": {
+            "brier": 0.02554421497493214,
+            "log_loss": 0.08476957178714506,
+            "expected": 134.87599257865077,
+            "actual": 124
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9651803607214429,
+      "mean_width": 70.03657314629258,
+      "pinball": {
+        "0.1": 3.546292585170344,
+        "0.5": 10.728957915831664,
+        "0.9": 6.2346693386773575
+      },
+      "median_rmse": 68.08295732528305,
+      "median_mae": 21.45791583166333,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "stage_Current MLB",
+    "rows": 4541,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.09763501966287393,
+            "log_loss": 0.3133913648281106,
+            "expected": 3567.656128393527,
+            "actual": 3596
+          },
+          "reference": {
+            "brier": 0.16467500893590495,
+            "log_loss": 0.511214603254793,
+            "expected": 3600.574795930923,
+            "actual": 3596
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.11765443086774553,
+            "log_loss": 0.3702229102218353,
+            "expected": 1379.521116734605,
+            "actual": 1403
+          },
+          "reference": {
+            "brier": 0.2139701716872269,
+            "log_loss": 0.6193148595246499,
+            "expected": 1407.8101799392384,
+            "actual": 1403
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.16769110684938052,
+            "log_loss": 0.5028239092422745,
+            "expected": 1063.4201896704794,
+            "actual": 1122
+          },
+          "reference": {
+            "brier": 0.1862153860467875,
+            "log_loss": 0.5596115026288919,
+            "expected": 1076.9671399978633,
+            "actual": 1122
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.10451810486250769,
+            "log_loss": 0.33381774473634457,
+            "expected": 897.6207154066649,
+            "actual": 867
+          },
+          "reference": {
+            "brier": 0.1549595642178286,
+            "log_loss": 0.4889479577139722,
+            "expected": 911.5647058266529,
+            "actual": 867
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.8758318070552151,
+      "mean_width": 372.82964887075923,
+      "pinball": {
+        "0.1": 20.270390571729603,
+        "0.5": 51.968975215949236,
+        "0.9": 24.801680197283865
+      },
+      "median_rmse": 148.54558023171396,
+      "median_mae": 103.93795043189847,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "stage_Inactive / unknown",
+    "rows": 1586,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.011196801914213727,
+            "log_loss": 0.05813351107791804,
+            "expected": 38.11853533284322,
+            "actual": 26
+          },
+          "reference": {
+            "brier": 0.016236616191337244,
+            "log_loss": 0.08038468793585386,
+            "expected": 48.77709793788332,
+            "actual": 26
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.002636596768811779,
+            "log_loss": 0.010979350986796721,
+            "expected": 2.677057573507514,
+            "actual": 5
+          },
+          "reference": {
+            "brier": 0.003057122804421886,
+            "log_loss": 0.019792128488456278,
+            "expected": 11.109108796923074,
+            "actual": 5
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.004064710352855475,
+            "log_loss": 0.019635963263200957,
+            "expected": 18.757510049689422,
+            "actual": 6
+          },
+          "reference": {
+            "brier": 0.003850862080465807,
+            "log_loss": 0.02575381303323448,
+            "expected": 18.136280631411328,
+            "actual": 6
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.0007278783804234064,
+            "log_loss": 0.004256100996744059,
+            "expected": 2.516972602420097,
+            "actual": 1
+          },
+          "reference": {
+            "brier": 0.0006948781144760502,
+            "log_loss": 0.008962261464292449,
+            "expected": 10.072511843254851,
+            "actual": 1
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9920638259107302,
+      "mean_width": 6.28990671928311,
+      "pinball": {
+        "0.1": 0.2835660673806625,
+        "0.5": 1.4087702725880384,
+        "0.9": 1.4302903387594037
+      },
+      "median_rmse": 30.507921203349323,
+      "median_mae": 2.817540545176077,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "stage_Lower minors",
+    "rows": 17962,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.0027755850300803337,
+            "log_loss": 0.01316881916440987,
+            "expected": 83.58416365282369,
+            "actual": 58
+          },
+          "reference": {
+            "brier": 0.0032089685102655537,
+            "log_loss": 0.021595315577137977,
+            "expected": 76.43963653379856,
+            "actual": 58
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.0001434673218063401,
+            "log_loss": 0.002080237730822808,
+            "expected": 3.9875253197664478,
+            "actual": 3
+          },
+          "reference": {
+            "brier": 0.00015526886255969751,
+            "log_loss": 0.0014108191014331802,
+            "expected": 4.3170741453104,
+            "actual": 3
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.001428727232081545,
+            "log_loss": 0.007706527539158238,
+            "expected": 32.88081499611965,
+            "actual": 28
+          },
+          "reference": {
+            "brier": 0.00153899868325532,
+            "log_loss": 0.011496196544465922,
+            "expected": 25.307940425610674,
+            "actual": 28
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.0001473701421145341,
+            "log_loss": 0.002099418549341907,
+            "expected": 4.006665140443861,
+            "actual": 3
+          },
+          "reference": {
+            "brier": 0.0001553510282654848,
+            "log_loss": 0.0014407499471755737,
+            "expected": 4.389535032648698,
+            "actual": 3
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9977790693543422,
+      "mean_width": 0.719604647565343,
+      "pinball": {
+        "0.1": 0.03374763456399711,
+        "0.5": 0.16718305884913312,
+        "0.9": 0.27809069416645615
+      },
+      "median_rmse": 8.787029775309994,
+      "median_mae": 0.33436611769826624,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  },
+  {
+    "scope": "stage_Upper minors",
+    "rows": 6417,
+    "events": [
+      {
+        "event": "active",
+        "models": {
+          "joint": {
+            "brier": 0.08317033222903132,
+            "log_loss": 0.27741240849633636,
+            "expected": 773.9705711124111,
+            "actual": 858
+          },
+          "reference": {
+            "brier": 0.11595877344403553,
+            "log_loss": 0.3940023205635184,
+            "expected": 833.219339450065,
+            "actual": 858
+          }
+        }
+      },
+      {
+        "event": "400",
+        "models": {
+          "joint": {
+            "brier": 0.009071440730377054,
+            "log_loss": 0.040027607730077616,
+            "expected": 42.157689769174766,
+            "actual": 62
+          },
+          "reference": {
+            "brier": 0.009512807955527055,
+            "log_loss": 0.05455743074121899,
+            "expected": 42.17054759428184,
+            "actual": 62
+          }
+        }
+      },
+      {
+        "event": "negative",
+        "models": {
+          "joint": {
+            "brier": 0.057589450042032864,
+            "log_loss": 0.20701315553981003,
+            "expected": 377.8973890905822,
+            "actual": 448
+          },
+          "reference": {
+            "brier": 0.06477501163422314,
+            "log_loss": 0.2525944353502254,
+            "expected": 417.98086553646976,
+            "actual": 448
+          }
+        }
+      },
+      {
+        "event": "2wins",
+        "models": {
+          "joint": {
+            "brier": 0.006168150875303496,
+            "log_loss": 0.02997424288539621,
+            "expected": 34.24244058387036,
+            "actual": 41
+          },
+          "reference": {
+            "brier": 0.006373744997865928,
+            "log_loss": 0.03906257979755858,
+            "expected": 31.448120305960963,
+            "actual": 41
+          }
+        }
+      }
+    ],
+    "pa_range": {
+      "coverage": 0.9352736513192966,
+      "mean_width": 34.628165118664754,
+      "pinball": {
+        "0.1": 1.6033450426568283,
+        "0.5": 7.82582749213765,
+        "0.9": 8.347043434854479
+      },
+      "median_rmse": 63.97108401621335,
+      "median_mae": 15.6516549842753,
+      "interpretation": "Equal years; inclusive discrete 10th\u201390th interval. Zero mass can force overcoverage; median is not expected PA."
+    }
+  }
+]
