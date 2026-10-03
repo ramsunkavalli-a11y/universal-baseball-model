@@ -24,7 +24,16 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V34 source repair and fixed comparison reviewed; V33b working forecast retained.**
+**Current checkpoint: V35 relative-exposure test reviewed and not adopted; V33b working forecast retained.**
+See [the exact negative result and 17 player checks](practical-hitter-v35-result.md).
+Shared-denominator batting-rate RMSE rises 1.82465→1.83112 wins/600; brief-debut
+rate/value both worsen. PA-only differences are small and uncertain. Winn/Steer
+lose useful minor-rate signals while legacy MLB-quality inputs remain; Judge
+2024 improves through refitted mapping even though his own inputs are unchanged.
+This is not a rejection of components or minor history. Next: coherent MLB
+event-outcome likelihood, fixed workload and both rate/contribution scoring.
+
+**V34 source repair and fixed comparison reviewed; V33b working forecast retained.**
 See [the source repair, exact comparison and unresolved misses](practical-hitter-v34-result.md).
 5,133 observable origin-2020 hitters replace an incomplete 597-row subset; every
 2021 MLB hitter in the audited targets is covered. Forty new heads replay and
