@@ -1,0 +1,90 @@
+[
+  {
+    "scope": "all",
+    "candidate": "cohort",
+    "benchmark": "safe_ridge",
+    "metric": "pa_mse",
+    "difference": 4.078642607513217,
+    "lower": -14.094424231322808,
+    "upper": 21.77787708699151,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "candidate": "cohort",
+    "benchmark": "safe_ridge",
+    "metric": "value_mse",
+    "difference": -0.0005393241961112427,
+    "lower": -0.0012899958783256667,
+    "upper": 0.00016250063192915692,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "v24_matched",
+    "candidate": "cohort",
+    "benchmark": "safe_ridge",
+    "metric": "pa_mse",
+    "difference": 59.35239680329413,
+    "lower": -34.032775117206604,
+    "upper": 152.69922664567693,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "v24_matched",
+    "candidate": "cohort",
+    "benchmark": "safe_ridge",
+    "metric": "value_mse",
+    "difference": -0.0011749517587330126,
+    "lower": -0.004649577606046888,
+    "upper": 0.002205311648025761,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "legacy_n_matched",
+    "candidate": "cohort",
+    "benchmark": "safe_ridge",
+    "metric": "pa_mse",
+    "difference": 5.598175946095415,
+    "lower": -12.512552530600605,
+    "upper": 24.40102914930092,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "legacy_n_matched",
+    "candidate": "cohort",
+    "benchmark": "safe_ridge",
+    "metric": "value_mse",
+    "difference": -0.0003022329281958608,
+    "lower": -0.0011500631895932688,
+    "upper": 0.0004824371308348438,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_active",
+    "candidate": "cohort",
+    "benchmark": "safe_ridge",
+    "metric": "pa_mse",
+    "difference": 150.65341436118536,
+    "lower": -78.07882353476315,
+    "upper": 422.49003700693623,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_active",
+    "candidate": "cohort",
+    "benchmark": "safe_ridge",
+    "metric": "value_mse",
+    "difference": -0.003028194898733509,
+    "lower": -0.012124246677000348,
+    "upper": 0.004766149807924142,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]

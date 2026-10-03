@@ -24,7 +24,18 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V33b corrected and reviewed; working research baseline retained.** See
+**Current checkpoint: V34 source repair and fixed comparison reviewed; V33b working forecast retained.**
+See [the source repair, exact comparison and unresolved misses](practical-hitter-v34-result.md).
+5,133 observable origin-2020 hitters replace an incomplete 597-row subset; every
+2021 MLB hitter in the audited targets is covered. Forty new heads replay and
+15 player walkthroughs are complete. The repaired training year increases 2021
+PA by 1,713 but still leaves a 12,950 shortfall. Public PA RMSE slightly worsens
+143.965→144.487 versus Steamer 135.019; contribution differences are uncertain.
+Keep the source repair, not a claim that it solves the forecast. Next: one
+MLB/MiLB evidence-reliability representation comparison, keeping source-repaired
+V34 and V33b visible. No new algorithm tournament or protected 2026 changes.
+
+**V33b corrected and reviewed; working research baseline retained.** See
 [the current model card, concrete comparisons and misses](practical-hitter-v33b-result.md).
 PA RMSE is 124.65 versus earlier V24 128.62; public matched error is 143.96
 versus Steamer 135.02. Public PA MAE still fails the declared tolerance.
