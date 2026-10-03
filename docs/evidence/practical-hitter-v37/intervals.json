@@ -1,0 +1,112 @@
+[
+  {
+    "scope": "all",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.008086607879590835,
+    "lower": 0.005091552594059919,
+    "upper": 0.011182938847074105,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.22680846138512292,
+    "lower": 0.16978239556393607,
+    "upper": 0.2846271760215356,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "v24_matched",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.04630324377342183,
+    "lower": 0.029005994264848376,
+    "upper": 0.06412327969907998,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "v24_matched",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.3035182742610956,
+    "lower": 0.21618300351972375,
+    "upper": 0.3887302909472878,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "legacy_n_matched",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.006056097167182958,
+    "lower": 0.0026842265260297905,
+    "upper": 0.009528519092174467,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "legacy_n_matched",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.20118058714659845,
+    "lower": 0.13259481715758348,
+    "upper": 0.2784677802766436,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_active",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.0848640664585131,
+    "lower": 0.053187811841901175,
+    "upper": 0.11727038047266955,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_active",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.29828623970811113,
+    "lower": 0.20051353319507276,
+    "upper": 0.40391905699005254,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "brief_debut",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.050962965803876326,
+    "lower": 0.023325004062067674,
+    "upper": 0.080728719405024,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "brief_debut",
+    "candidate": "anchored",
+    "benchmark": "cohort",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.6030029140652207,
+    "lower": 0.28860167169901624,
+    "upper": 0.8989985306374597,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]

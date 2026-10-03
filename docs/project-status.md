@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Updated 2026-10-02. This is the current start-here document.
+Updated 2026-10-03. This is the current start-here document.
 
 ## Standing requirement: player walkthrough after every test
 
@@ -24,7 +24,26 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V35 relative-exposure test reviewed and not adopted; V33b working forecast retained.**
+**Current checkpoint: V37 empirical event-anchor repair reviewed and not adopted; V33b working forecast retained.**
+See [what the repair fixed and why it still loses](practical-hitter-v37-result.md).
+Established Judge power is restored, but tiny MLB debuts get excessive influence
+over longer minor history. Conditional rate RMSE 1.88577 still loses to working
+1.82465; contribution 0.44969 versus 0.44060. Fifteen complete player reviews.
+Close the event-reweighting batch; next audit games/role evidence for workload,
+without treating missing games as diagnosed injury. The existing batting head
+remains the strongest coherent working assembly. Practical goal incomplete;
+public PA MAE/cohort allocation and prospect/return opportunity remain gaps.
+
+**V36 coherent-event comparison reviewed and not adopted; V33b working forecast retained.**
+See [the exact result and 13 event-to-runs cases](practical-hitter-v36-result.md).
+Correct event accounting/count likelihood does not ensure accurate batting:
+conditional rate RMSE rises 1.82465→1.90816; contribution 0.44060→0.45923.
+Judge's established power is badly compressed while Davis' declining power is
+overstated. Next: direct empirical MLB-count anchor plus learned residual odds,
+same likelihood/settings and fixed workload, rather than another library sweep.
+Protected 2026 and frozen forecast remain unchanged; practical goal incomplete.
+
+**V35 relative-exposure test reviewed and not adopted; V33b working forecast retained.**
 See [the exact negative result and 17 player checks](practical-hitter-v35-result.md).
 Shared-denominator batting-rate RMSE rises 1.82465→1.83112 wins/600; brief-debut
 rate/value both worsen. PA-only differences are small and uncertain. Winn/Steer

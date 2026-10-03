@@ -1,0 +1,102 @@
+[
+  {
+    "scope": "all",
+    "candidate": "event",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.016763312026343995,
+    "lower": 0.010612211680628177,
+    "upper": 0.023663649920208495,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.31175352766532605,
+    "lower": 0.21689199501546036,
+    "upper": 0.41596504500436227,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "v24_matched",
+    "candidate": "event",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.047824955278927425,
+    "lower": 0.02686402275123311,
+    "upper": 0.07045239433511509,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "v24_matched",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.26663315958945366,
+    "lower": 0.17396038637722036,
+    "upper": 0.35523921645744116,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "legacy_n_matched",
+    "candidate": "event",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.017170077000888857,
+    "lower": 0.011267969973109554,
+    "upper": 0.02331330632593211,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "legacy_n_matched",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.3072873013416565,
+    "lower": 0.21223735703126825,
+    "upper": 0.41946700692754585,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_active",
+    "candidate": "event",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.06682786400871157,
+    "lower": 0.026234433910927158,
+    "upper": 0.10928812915963824,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_active",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.2559735468811178,
+    "lower": 0.14323180019701792,
+    "upper": 0.3713145670596912,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "brief_debut",
+    "candidate": "event",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.004611080247890467,
+    "lower": -0.007752126513008673,
+    "upper": 0.017135730774876737,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "brief_debut",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.012866160130267507,
+    "lower": -0.15996656497836578,
+    "upper": 0.1786013262980016,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]
