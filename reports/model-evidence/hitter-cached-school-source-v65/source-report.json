@@ -1,0 +1,832 @@
+{
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-compatible-value-v63\\features.parquet": "06698fe08ef8c8074213a0071bb9d210eb35230b2a7de06c1f9eaafaed22a288",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2006.json": "d5539f3f6593ceacfddb49e3e47772cfda47caae8117dbed3e6806af4d98f3f3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2007.json": "4a283df8ea48b1a4718cf6e82cd20dbfc30889bdfb705bc99e0fb4a8ccf16c3a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2008.json": "a79e95e225ed8b6d51258c5443709e2b064fcb4e2ddf2cf240adf815d53e4b48",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2009.json": "16662d59217e9cd3d5dab055fd1116048ce34d6db8b11f7f39a1aaf56bc0e7a5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2010.json": "ddfe63d3c8657478568bc52efc451d9ee9366ce20a99f449ecf6cd074dae2fb2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2011.json": "ab776235b765fd32f0e913e8b137852fee024b59d07cfe6ffc839bc1fe5c3f12",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2012.json": "3816d7d00ea7ae5ba005adf1f8d13061da279cde1ddcdb7ec8f3eb4396ba5466",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2013.json": "16fc800e76510e8e43cdb7bc43f2ee72d604bd58fea8d6dcd86c77363c9ba7e7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2014.json": "2a9e10865fea9d39c43358b90b31796c593bceb678187637b47b689ad5f35654",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2015.json": "81c008397db93c58fcbfa165374fe86ffac7a959fbfbd407ce1a832ef9b7a332",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2016.json": "955d93e33a57c453c539e49275b1b2cce15afe8cbbb10a585ca08fd90a0c0465",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2017.json": "1efd60292617272a72c191d614b36fca7d075f361762eb50c34e9fe3e4211037",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2018.json": "60ab4a996a1ec7b5be22cee687b7f3c338b91ea981f344bdda1eb58bbfab09dd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2019.json": "232cabb9af437045d8360d4724cb2c98442c654cd97d92917042a17e7a822a94",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2020.json": "9e7356537ec3019f5be2f45d933235fabe286b0cb6700165680765d8e205e719",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2021.json": "98d2524a59110dcc7451c7c2648c051e2c055a5996fcece9b01bac3ea0fec5e8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2022.json": "8fa3709ef7c57cf4a8dc6097bd3c6e3ff9c9c2054179d7d999b63e1798e5fa0a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2023.json": "9557ab0b35fd26b9f28f3f098bc58277bcea33e0a9ab9ac2a27eb1dd113bb98f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\draft-history\\captures\\draft-2024.json": "110498801b85d7f37ca97653f8491ecfae9245999d58548c779d9d81c496272e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-cached-school-source-v65-contract.md": "04d8d6c1047e81c2983a724766b0fa8fcd8af35c43effbedc1c8914ee7fd02c9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-cached-school-source-v65-result.md": "bf6dc117d4d3624ac9fcd293d3a0a5b40207080573f9962f8ccceb3cc47fd1b1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\cached_school_background.py": "ed7728076bcc8439ce4d071cdf92b8379f694a3563739fdb95d1541a4a92d2e9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_cached_school_background.py": "fef824b3eef0555c996506b24057c062251ecadc2dd0f84ba636d5dc5e92e371",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\prepare_cached_school_source_v65.py": "14f3fea9762608434fe96bd2e97580e1ad3d31b618d77e51863a2fdd478158c3"
+  },
+  "all": {
+    "rows": 63282,
+    "people": 15794,
+    "known_background": 24526,
+    "class_unknown": 56982,
+    "recovered_unknown_background": 18280,
+    "college_flag_changes": 11348,
+    "backgrounds": [
+      {
+        "school_background": "college",
+        "len": 15574
+      },
+      {
+        "school_background": "hs",
+        "len": 7422
+      },
+      {
+        "school_background": "jc",
+        "len": 1530
+      },
+      {
+        "school_background": "unknown",
+        "len": 38756
+      }
+    ]
+  },
+  "evaluation": {
+    "rows": 30506,
+    "people": 11020,
+    "known_background": 12340,
+    "class_unknown": 26339,
+    "recovered_unknown_background": 8179,
+    "college_flag_changes": 5039,
+    "backgrounds": [
+      {
+        "school_background": "college",
+        "len": 7910
+      },
+      {
+        "school_background": "hs",
+        "len": 3690
+      },
+      {
+        "school_background": "jc",
+        "len": 740
+      },
+      {
+        "school_background": "unknown",
+        "len": 18166
+      }
+    ]
+  },
+  "origins": [
+    {
+      "origin_year": 2011,
+      "rows": 4497,
+      "people": 4497,
+      "known_background": 1473,
+      "class_unknown": 4157,
+      "recovered_unknown_background": 1148,
+      "college_flag_changes": 766,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 975
+        },
+        {
+          "school_background": "hs",
+          "len": 404
+        },
+        {
+          "school_background": "jc",
+          "len": 94
+        },
+        {
+          "school_background": "unknown",
+          "len": 3024
+        }
+      ]
+    },
+    {
+      "origin_year": 2012,
+      "rows": 4515,
+      "people": 4515,
+      "known_background": 1557,
+      "class_unknown": 4256,
+      "recovered_unknown_background": 1310,
+      "college_flag_changes": 813,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 967
+        },
+        {
+          "school_background": "hs",
+          "len": 485
+        },
+        {
+          "school_background": "jc",
+          "len": 105
+        },
+        {
+          "school_background": "unknown",
+          "len": 2958
+        }
+      ]
+    },
+    {
+      "origin_year": 2013,
+      "rows": 4550,
+      "people": 4550,
+      "known_background": 1613,
+      "class_unknown": 4349,
+      "recovered_unknown_background": 1420,
+      "college_flag_changes": 871,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 983
+        },
+        {
+          "school_background": "hs",
+          "len": 531
+        },
+        {
+          "school_background": "jc",
+          "len": 99
+        },
+        {
+          "school_background": "unknown",
+          "len": 2937
+        }
+      ]
+    },
+    {
+      "origin_year": 2014,
+      "rows": 4598,
+      "people": 4598,
+      "known_background": 1676,
+      "class_unknown": 4437,
+      "recovered_unknown_background": 1521,
+      "college_flag_changes": 918,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1004
+        },
+        {
+          "school_background": "hs",
+          "len": 573
+        },
+        {
+          "school_background": "jc",
+          "len": 99
+        },
+        {
+          "school_background": "unknown",
+          "len": 2922
+        }
+      ]
+    },
+    {
+      "origin_year": 2015,
+      "rows": 4599,
+      "people": 4599,
+      "known_background": 1648,
+      "class_unknown": 4464,
+      "recovered_unknown_background": 1518,
+      "college_flag_changes": 929,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1003
+        },
+        {
+          "school_background": "hs",
+          "len": 548
+        },
+        {
+          "school_background": "jc",
+          "len": 97
+        },
+        {
+          "school_background": "unknown",
+          "len": 2951
+        }
+      ]
+    },
+    {
+      "origin_year": 2016,
+      "rows": 4663,
+      "people": 4663,
+      "known_background": 1675,
+      "class_unknown": 4559,
+      "recovered_unknown_background": 1572,
+      "college_flag_changes": 960,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1020
+        },
+        {
+          "school_background": "hs",
+          "len": 544
+        },
+        {
+          "school_background": "jc",
+          "len": 111
+        },
+        {
+          "school_background": "unknown",
+          "len": 2988
+        }
+      ]
+    },
+    {
+      "origin_year": 2017,
+      "rows": 4691,
+      "people": 4691,
+      "known_background": 1722,
+      "class_unknown": 4598,
+      "recovered_unknown_background": 1630,
+      "college_flag_changes": 995,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1046
+        },
+        {
+          "school_background": "hs",
+          "len": 555
+        },
+        {
+          "school_background": "jc",
+          "len": 121
+        },
+        {
+          "school_background": "unknown",
+          "len": 2969
+        }
+      ]
+    },
+    {
+      "origin_year": 2018,
+      "rows": 4478,
+      "people": 4478,
+      "known_background": 1980,
+      "class_unknown": 3955,
+      "recovered_unknown_background": 1458,
+      "college_flag_changes": 894,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1267
+        },
+        {
+          "school_background": "hs",
+          "len": 568
+        },
+        {
+          "school_background": "jc",
+          "len": 145
+        },
+        {
+          "school_background": "unknown",
+          "len": 2498
+        }
+      ]
+    },
+    {
+      "origin_year": 2019,
+      "rows": 4884,
+      "people": 4884,
+      "known_background": 2064,
+      "class_unknown": 4400,
+      "recovered_unknown_background": 1581,
+      "college_flag_changes": 1001,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1340
+        },
+        {
+          "school_background": "hs",
+          "len": 578
+        },
+        {
+          "school_background": "jc",
+          "len": 146
+        },
+        {
+          "school_background": "unknown",
+          "len": 2820
+        }
+      ]
+    },
+    {
+      "origin_year": 2020,
+      "rows": 5133,
+      "people": 5133,
+      "known_background": 2155,
+      "class_unknown": 4580,
+      "recovered_unknown_background": 1603,
+      "college_flag_changes": 1011,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1392
+        },
+        {
+          "school_background": "hs",
+          "len": 613
+        },
+        {
+          "school_background": "jc",
+          "len": 150
+        },
+        {
+          "school_background": "unknown",
+          "len": 2978
+        }
+      ]
+    },
+    {
+      "origin_year": 2021,
+      "rows": 4242,
+      "people": 4242,
+      "known_background": 1798,
+      "class_unknown": 3626,
+      "recovered_unknown_background": 1182,
+      "college_flag_changes": 747,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1160
+        },
+        {
+          "school_background": "hs",
+          "len": 524
+        },
+        {
+          "school_background": "jc",
+          "len": 114
+        },
+        {
+          "school_background": "unknown",
+          "len": 2444
+        }
+      ]
+    },
+    {
+      "origin_year": 2022,
+      "rows": 4244,
+      "people": 4244,
+      "known_background": 1753,
+      "class_unknown": 3460,
+      "recovered_unknown_background": 970,
+      "college_flag_changes": 599,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1133
+        },
+        {
+          "school_background": "hs",
+          "len": 520
+        },
+        {
+          "school_background": "jc",
+          "len": 100
+        },
+        {
+          "school_background": "unknown",
+          "len": 2491
+        }
+      ]
+    },
+    {
+      "origin_year": 2023,
+      "rows": 4196,
+      "people": 4196,
+      "known_background": 1746,
+      "class_unknown": 3216,
+      "recovered_unknown_background": 767,
+      "college_flag_changes": 475,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1155
+        },
+        {
+          "school_background": "hs",
+          "len": 506
+        },
+        {
+          "school_background": "jc",
+          "len": 85
+        },
+        {
+          "school_background": "unknown",
+          "len": 2450
+        }
+      ]
+    },
+    {
+      "origin_year": 2024,
+      "rows": 3992,
+      "people": 3992,
+      "known_background": 1666,
+      "class_unknown": 2925,
+      "recovered_unknown_background": 600,
+      "college_flag_changes": 369,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 1129
+        },
+        {
+          "school_background": "hs",
+          "len": 473
+        },
+        {
+          "school_background": "jc",
+          "len": 64
+        },
+        {
+          "school_background": "unknown",
+          "len": 2326
+        }
+      ]
+    }
+  ],
+  "first_year_drafted": [
+    {
+      "origin_year": 2011,
+      "rows": 424,
+      "people": 424,
+      "known_background": 312,
+      "class_unknown": 424,
+      "recovered_unknown_background": 312,
+      "college_flag_changes": 228,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 228
+        },
+        {
+          "school_background": "hs",
+          "len": 63
+        },
+        {
+          "school_background": "jc",
+          "len": 21
+        },
+        {
+          "school_background": "unknown",
+          "len": 112
+        }
+      ]
+    },
+    {
+      "origin_year": 2012,
+      "rows": 443,
+      "people": 443,
+      "known_background": 317,
+      "class_unknown": 443,
+      "recovered_unknown_background": 317,
+      "college_flag_changes": 196,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 196
+        },
+        {
+          "school_background": "hs",
+          "len": 97
+        },
+        {
+          "school_background": "jc",
+          "len": 24
+        },
+        {
+          "school_background": "unknown",
+          "len": 126
+        }
+      ]
+    },
+    {
+      "origin_year": 2013,
+      "rows": 403,
+      "people": 403,
+      "known_background": 311,
+      "class_unknown": 403,
+      "recovered_unknown_background": 311,
+      "college_flag_changes": 196,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 196
+        },
+        {
+          "school_background": "hs",
+          "len": 98
+        },
+        {
+          "school_background": "jc",
+          "len": 17
+        },
+        {
+          "school_background": "unknown",
+          "len": 92
+        }
+      ]
+    },
+    {
+      "origin_year": 2014,
+      "rows": 400,
+      "people": 400,
+      "known_background": 303,
+      "class_unknown": 400,
+      "recovered_unknown_background": 303,
+      "college_flag_changes": 195,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 195
+        },
+        {
+          "school_background": "hs",
+          "len": 89
+        },
+        {
+          "school_background": "jc",
+          "len": 19
+        },
+        {
+          "school_background": "unknown",
+          "len": 97
+        }
+      ]
+    },
+    {
+      "origin_year": 2015,
+      "rows": 437,
+      "people": 437,
+      "known_background": 284,
+      "class_unknown": 437,
+      "recovered_unknown_background": 284,
+      "college_flag_changes": 213,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 213
+        },
+        {
+          "school_background": "hs",
+          "len": 56
+        },
+        {
+          "school_background": "jc",
+          "len": 15
+        },
+        {
+          "school_background": "unknown",
+          "len": 153
+        }
+      ]
+    },
+    {
+      "origin_year": 2016,
+      "rows": 426,
+      "people": 426,
+      "known_background": 301,
+      "class_unknown": 426,
+      "recovered_unknown_background": 301,
+      "college_flag_changes": 212,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 212
+        },
+        {
+          "school_background": "hs",
+          "len": 60
+        },
+        {
+          "school_background": "jc",
+          "len": 29
+        },
+        {
+          "school_background": "unknown",
+          "len": 125
+        }
+      ]
+    },
+    {
+      "origin_year": 2017,
+      "rows": 427,
+      "people": 427,
+      "known_background": 328,
+      "class_unknown": 427,
+      "recovered_unknown_background": 328,
+      "college_flag_changes": 223,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 223
+        },
+        {
+          "school_background": "hs",
+          "len": 73
+        },
+        {
+          "school_background": "jc",
+          "len": 32
+        },
+        {
+          "school_background": "unknown",
+          "len": 99
+        }
+      ]
+    },
+    {
+      "origin_year": 2018,
+      "rows": 448,
+      "people": 448,
+      "known_background": 446,
+      "class_unknown": 5,
+      "recovered_unknown_background": 3,
+      "college_flag_changes": 3,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 332
+        },
+        {
+          "school_background": "hs",
+          "len": 83
+        },
+        {
+          "school_background": "jc",
+          "len": 31
+        },
+        {
+          "school_background": "unknown",
+          "len": 2
+        }
+      ]
+    },
+    {
+      "origin_year": 2019,
+      "rows": 438,
+      "people": 438,
+      "known_background": 383,
+      "class_unknown": 438,
+      "recovered_unknown_background": 383,
+      "college_flag_changes": 289,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 289
+        },
+        {
+          "school_background": "hs",
+          "len": 69
+        },
+        {
+          "school_background": "jc",
+          "len": 25
+        },
+        {
+          "school_background": "unknown",
+          "len": 55
+        }
+      ]
+    },
+    {
+      "origin_year": 2020,
+      "rows": 67,
+      "people": 67,
+      "known_background": 67,
+      "class_unknown": 0,
+      "recovered_unknown_background": 0,
+      "college_flag_changes": 0,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 41
+        },
+        {
+          "school_background": "hs",
+          "len": 26
+        }
+      ]
+    },
+    {
+      "origin_year": 2021,
+      "rows": 229,
+      "people": 229,
+      "known_background": 229,
+      "class_unknown": 2,
+      "recovered_unknown_background": 2,
+      "college_flag_changes": 1,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 167
+        },
+        {
+          "school_background": "hs",
+          "len": 50
+        },
+        {
+          "school_background": "jc",
+          "len": 12
+        }
+      ]
+    },
+    {
+      "origin_year": 2022,
+      "rows": 235,
+      "people": 235,
+      "known_background": 234,
+      "class_unknown": 0,
+      "recovered_unknown_background": 0,
+      "college_flag_changes": 0,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 175
+        },
+        {
+          "school_background": "hs",
+          "len": 46
+        },
+        {
+          "school_background": "jc",
+          "len": 13
+        },
+        {
+          "school_background": "unknown",
+          "len": 1
+        }
+      ]
+    },
+    {
+      "origin_year": 2023,
+      "rows": 245,
+      "people": 245,
+      "known_background": 245,
+      "class_unknown": 0,
+      "recovered_unknown_background": 0,
+      "college_flag_changes": 1,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 180
+        },
+        {
+          "school_background": "hs",
+          "len": 55
+        },
+        {
+          "school_background": "jc",
+          "len": 10
+        }
+      ]
+    },
+    {
+      "origin_year": 2024,
+      "rows": 195,
+      "people": 195,
+      "known_background": 195,
+      "class_unknown": 0,
+      "recovered_unknown_background": 0,
+      "college_flag_changes": 1,
+      "backgrounds": [
+        {
+          "school_background": "college",
+          "len": 157
+        },
+        {
+          "school_background": "hs",
+          "len": 36
+        },
+        {
+          "school_background": "jc",
+          "len": 2
+        }
+      ]
+    }
+  ],
+  "ambiguity_rows": 33,
+  "identical_school_duplicates": 1,
+  "player_walkthrough_status": "complete",
+  "no_models_fitted": true,
+  "new_college_information_collected": false,
+  "original_sources_and_forecasts_unchanged": true,
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-cached-school-source-v65\\school-overlay.parquet": "dd41442593cd099dabd776f8efdfaaca3581aee86fdaaec2a8b139829ef445e3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-cached-school-source-v65\\unresolved-drafted-backgrounds.parquet": "71e0778eff7b94c080987071b7c4d684fa5f2684b48554a72bddd0f2ecff93c3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-cached-school-source-v65\\source-cases.json": "878e04ab05f59786c6110a8e2789cdf7456e68a92cf152020ac62568c475fe0a"
+  }
+}

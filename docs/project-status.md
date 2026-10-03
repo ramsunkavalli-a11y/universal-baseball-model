@@ -24,7 +24,21 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: usable historical hitter research handoff completed.**
+**Current checkpoint: cached draft background source repair reviewed.**
+The [source repair](hitter-cached-school-source-v65-result.md) uses only existing
+dated school names/classes, with no new college collection or model fits.
+It recovers broad background in 18,280 input rows and 8,179 evaluation rows;
+precise class stays unknown. Ten source reviews trace older college examples,
+Kurtz's already known class, Salas's missing draft, HS/JC and conflicting names.
+Zunino, Schwarber, Conforto and Swanson can be identified as college background
+using 2009 records; Bregman's LSU alias deliberately remains unknown. All
+63,282 identities and original fields are preserved in a separate overlay.
+Next one matched opportunity-source comparison with retained learners/settings,
+actual training-support checks and failed high-pedigree peers. This is a new
+source representation, not repetition of the losing draft-age/compact fits.
+No forecast improvement claimed; current candidate and protected 2026 unchanged.
+
+**Previous checkpoint: usable historical hitter research handoff completed.**
 The [model card](practical-hitter-model-card.md) explains the retained coherent
 next-year hitting, appearance and PA construction; the
 [handoff review](practical-hitter-handoff-v64-result.md) documents eight exact
