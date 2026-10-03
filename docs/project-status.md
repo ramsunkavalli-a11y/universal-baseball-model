@@ -24,7 +24,18 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: dated retirement policy retained in the research assembly.**
+**Current checkpoint: count-link workload comparison rejected after fourteen player reviews.**
+See [the fixed loss/link result](practical-hitter-poisson-v45-result.md). Same
+239 games/count inputs and 35 chronological player folds; PA RMSE worsens
+61.149 to 62.317 and contribution .43947 to .44225 versus the games control.
+Public PA does not improve and all seven origin PA errors worsen. Swanson's
+workload gain coexists with worse contribution; Ritter's near-exact contribution
+hides two offsetting errors. Keep V33b plus reversible retirement as the working
+research assembly. Practical goal incomplete. Next inspect available historical
+within-season job/role evidence and earlier tests before any further fit, rather
+than cycling losses or libraries on the same annual summaries.
+
+**Dated retirement policy retained in the research assembly.**
 See [the source-policy result and seventeen player reviews](practical-hitter-retirement-v44-result.md).
 Fourteen eligible forecasts for ten retired players now have zero expected
 following-year PA/contribution without changing hitting ability or ordinary
