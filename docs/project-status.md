@@ -24,7 +24,21 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: verified late-season PA source and modest timing candidate reviewed.**
+**Current checkpoint: historical scouting readiness tested and fifteen players reviewed.**
+See [the ranking result](practical-hitter-scouting-v47-result.md). Same 30,506
+forecasts and 35 fits, twelve genuinely historical ranking inputs, batting rate
+held fixed. Top20 PA RMSE improves 214.524 to 176.055; broad incremental intervals
+include no gain and public PA MAE remains 19.6 percent above Steamer. Upper-minor
+individual errors improve but their PA total becomes too low; lower-minor totals
+remain too high. Volpe/Rodriguez improve on readiness, Brinson/Frazier worsen,
+and stale preseason absence harms Kurtz/Langford/Bellinger/Alonso. Mixed-vintage
+grades and current biographies are withheld, partial lists retain unknown absence,
+and retrospective ranking editions remain qualified. Retain rank evidence as
+research; no whole-model promotion. Next the reviewed positive-rank/count-fallback
+policy, not another library sweep. Working V33b plus reversible retirement;
+practical goal incomplete, protected 2026 unchanged.
+
+**Previous checkpoint: verified late-season PA source and modest timing candidate reviewed.**
 See [the result and eighteen actual player reviews](practical-hitter-late-role-v46-result.md).
 All fifteen annual MLB PA reconstructions match old counts; ambiguous new window
 games were withheld before fits. Ten timing features improve broad PA RMSE
