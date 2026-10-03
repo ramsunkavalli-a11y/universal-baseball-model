@@ -24,7 +24,17 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V37 empirical event-anchor repair reviewed and not adopted; V33b working forecast retained.**
+**Current checkpoint: V38 game/role evidence reviewed; retain research extension, V33b working forecast unchanged.**
+See [the workload result and concrete player changes](practical-hitter-v38-result.md).
+All historical stints have reconciled games counts; fixed batting head.
+Public PA RMSE improves 144.487→143.191, but MAE 111.320 still misses the
+practical tolerance versus Steamer 92.399. Upper-minor PA allocation improves,
+2023 cohort excess grows. Fifteen complete player reviews show sensible AAA-use
+signals alongside unresolved newcomer/return and job-retention misses. Next:
+one origin-known current-MLB workload head, same non-MLB head/batting/settings,
+not another algorithm/event-prior tournament. Practical goal remains incomplete.
+
+**V37 empirical event-anchor repair reviewed and not adopted; V33b working forecast retained.**
 See [what the repair fixed and why it still loses](practical-hitter-v37-result.md).
 Established Judge power is restored, but tiny MLB debuts get excessive influence
 over longer minor history. Conditional rate RMSE 1.88577 still loses to working
