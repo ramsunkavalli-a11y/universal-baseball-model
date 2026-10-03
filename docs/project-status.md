@@ -24,7 +24,21 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: positive scouting fallback reviewed and readiness separated from quality.**
+**Current checkpoint: binary readiness reviewed; move to the talent milestone.**
+See [the probability/conditional-use result and 31 actual reviews](practical-hitter-readiness-v49-result.md).
+Same 30,506 forecasts, 140 saved/replayed heads and fixed batting rate. Scouting
+binary PA RMSE is 60.650 versus direct games 61.149; public 142.110 versus
+Steamer 135.019. Public MAE 110.087 versus 92.399 still misses the practical
+tolerance. Ranked lower-minor PA falls from fallback 3,769 to 1,044 versus 836
+actual, but arrivals remain low and never-debut upper-minor PA is too low.
+Salas readiness improves; Brinson/Mayer remain false highs. Langford/Kurtz/
+Bellinger fast entry and Judge/Votto hitting rates remain major misses. Retain
+qualified binary research; no whole-model promotion. New historical explorer
+adds explicit MLB chance and PA if active with team filter. Next the controlling
+plan's talent milestone, not another marginal PA gate/library sweep. Working
+V33b plus reversible retirement and protected 2026 remain unchanged; goal active.
+
+**Previous checkpoint: positive scouting fallback reviewed and readiness separated from quality.**
 See [the fallback result and twenty actual cases](practical-hitter-scouting-v48-result.md).
 Use ranking head only for 450 current verified listings, otherwise preserve the
 count/games mean. Broad workload/value nominal intervals improve; unlisted

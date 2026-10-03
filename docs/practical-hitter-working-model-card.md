@@ -39,6 +39,15 @@ and does not silently become this updated assembly.
 
 ## How good is it?
 
+The reviewed V49 research alternative separates MLB appearance probability from
+PA conditional on appearing and adds historical prospect rankings. Its matched
+public PA RMSE/MAE are 142.11/110.09, versus Steamer 135.02/92.40. This improves
+the point scores modestly and repairs some lower-minor immediate-readiness
+excess, but underpredicts upper-minor arrivals and fast new draftees. It does not
+change hitting ability or replace the working forecast. The [31 actual player
+reviews and result](practical-hitter-readiness-v49-result.md) are complete; the
+goal remains active and talent work is next.
+
 | Same 1,789 public-matched forecasts | PA RMSE | Average absolute PA error |
 |---|---:|---:|
 | Working count/draft baseline | 143.96 | 110.56 |

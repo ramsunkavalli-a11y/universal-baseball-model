@@ -1,0 +1,278 @@
+[
+  {
+    "scope": "current_MLB_not40man",
+    "diagnostic_origin_only_group": true,
+    "rows": 1411,
+    "players": 924,
+    "actual_pa": 119496.0,
+    "actual_value": 277.3063662993352,
+    "scores": {
+      "binary_count": {
+        "pa_rmse": 105.33206617280527,
+        "pa_mae": 72.57594677455859,
+        "pa_bias": 9.004833780467944,
+        "value_rmse": 0.6296327997097806,
+        "value_mae": 0.32164613113516705,
+        "value_bias": 0.04295315179690518,
+        "pa_total": 132222.20477379547,
+        "value_total": 339.65999831421016
+      },
+      "binary_scout": {
+        "pa_rmse": 105.18441647236581,
+        "pa_mae": 71.95175626555674,
+        "pa_bias": 7.564400722940001,
+        "value_rmse": 0.6284513607238845,
+        "value_mae": 0.319757322338683,
+        "value_bias": 0.04032823370851133,
+        "pa_total": 129979.13757350808,
+        "value_total": 335.55960091966404
+      },
+      "retired_games": {
+        "pa_rmse": 106.47171925774387,
+        "pa_mae": 71.48821765818693,
+        "pa_bias": 6.313992152963908,
+        "value_rmse": 0.635230909180063,
+        "value_mae": 0.32247556570869845,
+        "value_bias": 0.04207491039531886,
+        "pa_total": 128405.23725508897,
+        "value_total": 338.24494077550645
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 104.54365805896848,
+        "pa_mae": 69.75615758192832,
+        "pa_bias": 3.2082373320597846,
+        "value_rmse": 0.6303660493775224,
+        "value_mae": 0.316982185920922,
+        "value_bias": 0.03568641087277288,
+        "pa_total": 123483.77645624745,
+        "value_total": 327.4322989904412
+      }
+    },
+    "probabilities": {
+      "binary_count": {
+        "brier": 0.19660842480172744,
+        "log_loss": 0.5738093906700991,
+        "actual_participants": 640,
+        "expected_participants": 650.9123146882955,
+        "weighted_actual_probability": 0.4546755089579635,
+        "weighted_expected_probability": 0.4629617147831772
+      },
+      "binary_scout": {
+        "brier": 0.19569057438731297,
+        "log_loss": 0.5718704984915542,
+        "actual_participants": 640,
+        "expected_participants": 642.9752577680913,
+        "weighted_actual_probability": 0.4546755089579635,
+        "weighted_expected_probability": 0.45829202382293893
+      }
+    },
+    "interpretation": "Roster absence is not certified free agency, injury, release or permanent unavailability; no causes assigned from this diagnostic."
+  },
+  {
+    "scope": "current_400PA_not40man",
+    "diagnostic_origin_only_group": true,
+    "rows": 190,
+    "players": 151,
+    "actual_pa": 60860.0,
+    "actual_value": 203.2869615737968,
+    "scores": {
+      "binary_count": {
+        "pa_rmse": 175.5591062081379,
+        "pa_mae": 146.60249186988625,
+        "pa_bias": 0.600950254703337,
+        "value_rmse": 1.2711940459381603,
+        "value_mae": 0.9831792214885218,
+        "value_bias": 0.10661351520885194,
+        "pa_total": 61249.13329625751,
+        "value_total": 221.41552279658188
+      },
+      "binary_scout": {
+        "pa_rmse": 175.46200581638178,
+        "pa_mae": 146.80856358227555,
+        "pa_bias": -1.0406425564956276,
+        "value_rmse": 1.2674474095593362,
+        "value_mae": 0.9794251436497586,
+        "value_bias": 0.10250736825937899,
+        "pa_total": 60954.060382370444,
+        "value_total": 220.73031144633538
+      },
+      "retired_games": {
+        "pa_rmse": 178.08867876205713,
+        "pa_mae": 149.02842182282203,
+        "pa_bias": 6.2568646727160475,
+        "value_rmse": 1.2954922773775124,
+        "value_mae": 1.0078244810519474,
+        "value_bias": 0.12176571529474016,
+        "pa_total": 62173.41967589967,
+        "value_total": 223.5682774039015
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 174.76044297533022,
+        "pa_mae": 146.65626439544394,
+        "pa_bias": 5.902713861434818,
+        "value_rmse": 1.285513156179135,
+        "value_mae": 0.9933333440291016,
+        "value_bias": 0.10814732943637174,
+        "pa_total": 62201.32375952994,
+        "value_total": 221.42207769933964
+      }
+    },
+    "probabilities": {
+      "binary_count": {
+        "brier": 0.09734119549276518,
+        "log_loss": 0.3294974433969298,
+        "actual_participants": 165,
+        "expected_participants": 147.88226669893564,
+        "weighted_actual_probability": 0.866532937961509,
+        "weighted_expected_probability": 0.7723186159023352
+      },
+      "binary_scout": {
+        "brier": 0.09709420693018048,
+        "log_loss": 0.32814536521145066,
+        "actual_participants": 165,
+        "expected_participants": 147.7713764314062,
+        "weighted_actual_probability": 0.866532937961509,
+        "weighted_expected_probability": 0.7716548805437763
+      }
+    },
+    "interpretation": "Roster absence is not certified free agency, injury, release or permanent unavailability; no causes assigned from this diagnostic."
+  },
+  {
+    "scope": "current_400PA_listed",
+    "diagnostic_origin_only_group": true,
+    "rows": 1255,
+    "players": 530,
+    "actual_pa": 611651.0,
+    "actual_value": 2649.953926867641,
+    "scores": {
+      "binary_count": {
+        "pa_rmse": 148.66807929030503,
+        "pa_mae": 118.91223426850217,
+        "pa_bias": -12.540609830483449,
+        "value_rmse": 1.4833143909885953,
+        "value_mae": 1.1626404990510175,
+        "value_bias": -0.042436148428705515,
+        "pa_total": 596277.1721739208,
+        "value_total": 2595.947231185776
+      },
+      "binary_scout": {
+        "pa_rmse": 148.75878880817987,
+        "pa_mae": 118.84863114838465,
+        "pa_bias": -12.61170785484465,
+        "value_rmse": 1.484252114311675,
+        "value_mae": 1.1621996458461592,
+        "value_bias": -0.041975638655211554,
+        "pa_total": 596184.2472498696,
+        "value_total": 2596.4541198648913
+      },
+      "retired_games": {
+        "pa_rmse": 148.54381649722492,
+        "pa_mae": 117.79443339809453,
+        "pa_bias": -9.085590262705173,
+        "value_rmse": 1.4803493352572499,
+        "value_mae": 1.1612714396370412,
+        "value_bias": -0.02025989171207308,
+        "pa_total": 600641.1289386131,
+        "value_total": 2623.9261883505865
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 149.43158371223885,
+        "pa_mae": 118.77821301161168,
+        "pa_bias": -10.207720919135827,
+        "value_rmse": 1.4893412730841213,
+        "value_mae": 1.164751583292843,
+        "value_bias": -0.040936319085842963,
+        "pa_total": 599433.2907503303,
+        "value_total": 2599.9926506205393
+      }
+    },
+    "probabilities": {
+      "binary_count": {
+        "brier": 0.008757191086919275,
+        "log_loss": 0.0515918956875505,
+        "actual_participants": 1244,
+        "expected_participants": 1233.6485572684671,
+        "weighted_actual_probability": 0.9913154543540379,
+        "weighted_expected_probability": 0.9830133734096055
+      },
+      "binary_scout": {
+        "brier": 0.008751376168007672,
+        "log_loss": 0.05165652891210838,
+        "actual_participants": 1244,
+        "expected_participants": 1233.5739592133418,
+        "weighted_actual_probability": 0.9913154543540379,
+        "weighted_expected_probability": 0.9829577606127472
+      }
+    },
+    "interpretation": "Roster absence is not certified free agency, injury, release or permanent unavailability; no causes assigned from this diagnostic."
+  },
+  {
+    "scope": "absent_prior_regular",
+    "diagnostic_origin_only_group": true,
+    "rows": 54,
+    "players": 54,
+    "actual_pa": 3892.0,
+    "actual_value": 12.4204456472168,
+    "scores": {
+      "binary_count": {
+        "pa_rmse": 161.0949160309974,
+        "pa_mae": 81.81609227532132,
+        "pa_bias": -38.96601965886085,
+        "value_rmse": 0.6943452651892746,
+        "value_mae": 0.3125876206249699,
+        "value_bias": -0.1696680644499934,
+        "pa_total": 2100.692779484143,
+        "value_total": 4.317065466139061
+      },
+      "binary_scout": {
+        "pa_rmse": 162.4276503374633,
+        "pa_mae": 81.62467581051172,
+        "pa_bias": -40.200241311954265,
+        "value_rmse": 0.6960396294741212,
+        "value_mae": 0.3109209420804745,
+        "value_bias": -0.17222798587433416,
+        "pa_total": 2051.961972910237,
+        "value_total": 4.209969806422721
+      },
+      "retired_games": {
+        "pa_rmse": 152.3994206831491,
+        "pa_mae": 92.77578619533085,
+        "pa_bias": -15.648939699435578,
+        "value_rmse": 0.6468804408228709,
+        "value_mae": 0.32394157152689795,
+        "value_bias": -0.12436707140567538,
+        "pa_total": 3360.1069379801143,
+        "value_total": 6.7255595756157565
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 152.43728378570393,
+        "pa_mae": 90.7217534574069,
+        "pa_bias": -20.305859373535387,
+        "value_rmse": 0.6431075886721731,
+        "value_mae": 0.3213012780245344,
+        "value_bias": -0.12478551214217336,
+        "pa_total": 3139.452229273656,
+        "value_total": 6.817003737400416
+      }
+    },
+    "probabilities": {
+      "binary_count": {
+        "brier": 0.203813293132315,
+        "log_loss": 0.6143314685044368,
+        "actual_participants": 15,
+        "expected_participants": 12.298017037666407,
+        "weighted_actual_probability": 0.28126635269492417,
+        "weighted_expected_probability": 0.2311719537929587
+      },
+      "binary_scout": {
+        "brier": 0.2011385976261953,
+        "log_loss": 0.6065130321351504,
+        "actual_participants": 15,
+        "expected_participants": 11.978843747410997,
+        "weighted_actual_probability": 0.28126635269492417,
+        "weighted_expected_probability": 0.22404947473355213
+      }
+    },
+    "interpretation": "Roster absence is not certified free agency, injury, release or permanent unavailability; no causes assigned from this diagnostic."
+  }
+]

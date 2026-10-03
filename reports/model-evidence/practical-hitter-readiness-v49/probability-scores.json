@@ -1,0 +1,398 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "scores": {
+      "binary_count": {
+        "brier": 0.03396310611360684,
+        "log_loss": 0.11613829651557295,
+        "actual_participants": 4538,
+        "expected_participants": 4446.566866616228,
+        "weighted_actual_probability": 0.14940474354013838,
+        "weighted_expected_probability": 0.14638003266962818
+      },
+      "binary_scout": {
+        "brier": 0.03371232086595454,
+        "log_loss": 0.11547927987208209,
+        "actual_participants": 4538,
+        "expected_participants": 4408.995458893985,
+        "weighted_actual_probability": 0.14940474354013838,
+        "weighted_expected_probability": 0.1451101961115336
+      }
+    }
+  },
+  {
+    "scope": "public_active",
+    "rows": 1789,
+    "scores": {
+      "binary_count": {
+        "brier": 0.09123335786063311,
+        "log_loss": 0.299558731804128,
+        "actual_participants": 1450,
+        "expected_participants": 1427.7191437339084,
+        "weighted_actual_probability": 0.8109292472089029,
+        "weighted_expected_probability": 0.7982864327345904
+      },
+      "binary_scout": {
+        "brier": 0.09085098541355063,
+        "log_loss": 0.29885172466133425,
+        "actual_participants": 1450,
+        "expected_participants": 1420.279740538226,
+        "weighted_actual_probability": 0.8109292472089029,
+        "weighted_expected_probability": 0.7943476931669626
+      }
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "scores": {
+      "binary_count": {
+        "brier": 0.07960634205106618,
+        "log_loss": 0.2673417563046221,
+        "actual_participants": 730,
+        "expected_participants": 616.0822539550056,
+        "weighted_actual_probability": 0.1335969837303775,
+        "weighted_expected_probability": 0.112842680816199
+      },
+      "binary_scout": {
+        "brier": 0.07885507732840541,
+        "log_loss": 0.2657155831435817,
+        "actual_participants": 730,
+        "expected_participants": 593.7044345773392,
+        "weighted_actual_probability": 0.1335969837303775,
+        "weighted_expected_probability": 0.10891880493741503
+      }
+    }
+  },
+  {
+    "scope": "brief_debut",
+    "rows": 1194,
+    "scores": {
+      "binary_count": {
+        "brier": 0.14106160058587922,
+        "log_loss": 0.44675810443023234,
+        "actual_participants": 814,
+        "expected_participants": 799.5601214743508,
+        "weighted_actual_probability": 0.6841058549493534,
+        "weighted_expected_probability": 0.6721192555875224
+      },
+      "binary_scout": {
+        "brier": 0.14059751756545735,
+        "log_loss": 0.44530713765659535,
+        "actual_participants": 814,
+        "expected_participants": 795.5285340713697,
+        "weighted_actual_probability": 0.6841058549493534,
+        "weighted_expected_probability": 0.6693663198398803
+      }
+    }
+  },
+  {
+    "scope": "listed_current",
+    "rows": 450,
+    "scores": {
+      "binary_count": {
+        "brier": 0.12474021887473363,
+        "log_loss": 0.3974272391257001,
+        "actual_participants": 317,
+        "expected_participants": 275.1719877839239,
+        "weighted_actual_probability": 0.7044161494641705,
+        "weighted_expected_probability": 0.6087897310923035
+      },
+      "binary_scout": {
+        "brier": 0.11358700474371672,
+        "log_loss": 0.3666363945722828,
+        "actual_participants": 317,
+        "expected_participants": 295.54839975130363,
+        "weighted_actual_probability": 0.7044161494641705,
+        "weighted_expected_probability": 0.6539221109891662
+      }
+    }
+  },
+  {
+    "scope": "top20_current",
+    "rows": 105,
+    "scores": {
+      "binary_count": {
+        "brier": 0.12636895880009072,
+        "log_loss": 0.3890544648549336,
+        "actual_participants": 89,
+        "expected_participants": 74.72545040978632,
+        "weighted_actual_probability": 0.8480780166317544,
+        "weighted_expected_probability": 0.7078392014654417
+      },
+      "binary_scout": {
+        "brier": 0.10068416605174524,
+        "log_loss": 0.3231996799255872,
+        "actual_participants": 89,
+        "expected_participants": 81.18308212134771,
+        "weighted_actual_probability": 0.8480780166317544,
+        "weighted_expected_probability": 0.7700620293973716
+      }
+    }
+  },
+  {
+    "scope": "lower_ranked",
+    "rows": 70,
+    "scores": {
+      "binary_count": {
+        "brier": 0.08956952632113914,
+        "log_loss": 0.3754863932261674,
+        "actual_participants": 9,
+        "expected_participants": 3.9393653434041607,
+        "weighted_actual_probability": 0.11616161616161616,
+        "weighted_expected_probability": 0.054074199537423866
+      },
+      "binary_scout": {
+        "brier": 0.08478765516317603,
+        "log_loss": 0.35568071015172953,
+        "actual_participants": 9,
+        "expected_participants": 5.546240528240968,
+        "weighted_actual_probability": 0.11616161616161616,
+        "weighted_expected_probability": 0.07539418334066794
+      }
+    }
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "scores": {
+      "binary_count": {
+        "brier": 0.03178196773220933,
+        "log_loss": 0.10794456914956288,
+        "actual_participants": 624,
+        "expected_participants": 621.0952469475326,
+        "weighted_actual_probability": 0.13381942955179066,
+        "weighted_expected_probability": 0.1331964930189862
+      },
+      "binary_scout": {
+        "brier": 0.03153325977672956,
+        "log_loss": 0.10713995457186146,
+        "actual_participants": 624,
+        "expected_participants": 621.8657407708992,
+        "weighted_actual_probability": 0.13381942955179066,
+        "weighted_expected_probability": 0.13336172866628762
+      }
+    }
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "scores": {
+      "binary_count": {
+        "brier": 0.03066000951838793,
+        "log_loss": 0.10419784845170071,
+        "actual_participants": 628,
+        "expected_participants": 618.3681829732013,
+        "weighted_actual_probability": 0.13387337454700496,
+        "weighted_expected_probability": 0.13182012001134114
+      },
+      "binary_scout": {
+        "brier": 0.030734697936302614,
+        "log_loss": 0.10427302278110406,
+        "actual_participants": 628,
+        "expected_participants": 617.1619325712857,
+        "weighted_actual_probability": 0.13387337454700496,
+        "weighted_expected_probability": 0.1315629785911928
+      }
+    }
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "scores": {
+      "binary_count": {
+        "brier": 0.029744561893811798,
+        "log_loss": 0.10236252834089059,
+        "actual_participants": 638,
+        "expected_participants": 615.2569984785936,
+        "weighted_actual_probability": 0.14247431889236256,
+        "weighted_expected_probability": 0.13739548871786367
+      },
+      "binary_scout": {
+        "brier": 0.029674662443892476,
+        "log_loss": 0.1020637142851678,
+        "actual_participants": 638,
+        "expected_participants": 615.6824757467451,
+        "weighted_actual_probability": 0.14247431889236256,
+        "weighted_expected_probability": 0.13749050373978228
+      }
+    }
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "scores": {
+      "binary_count": {
+        "brier": 0.04061902709561435,
+        "log_loss": 0.1392994460326177,
+        "actual_participants": 686,
+        "expected_participants": 581.7776884843049,
+        "weighted_actual_probability": 0.16171617161716176,
+        "weighted_expected_probability": 0.137147026988285
+      },
+      "binary_scout": {
+        "brier": 0.04016514211865944,
+        "log_loss": 0.13816628538775153,
+        "actual_participants": 686,
+        "expected_participants": 587.5179617395478,
+        "weighted_actual_probability": 0.16171617161716176,
+        "weighted_expected_probability": 0.1385002267184225
+      }
+    }
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "scores": {
+      "binary_count": {
+        "brier": 0.03587214670571534,
+        "log_loss": 0.12290215295210538,
+        "actual_participants": 649,
+        "expected_participants": 686.6378084684259,
+        "weighted_actual_probability": 0.15292177191328937,
+        "weighted_expected_probability": 0.16179024704722572
+      },
+      "binary_scout": {
+        "brier": 0.03496273835357595,
+        "log_loss": 0.12062970767297032,
+        "actual_participants": 649,
+        "expected_participants": 651.2705360959588,
+        "weighted_actual_probability": 0.15292177191328937,
+        "weighted_expected_probability": 0.15345677099339275
+      }
+    }
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "scores": {
+      "binary_count": {
+        "brier": 0.03386851032809603,
+        "log_loss": 0.11815923357990565,
+        "actual_participants": 647,
+        "expected_participants": 674.1165348975438,
+        "weighted_actual_probability": 0.1541944709246902,
+        "weighted_expected_probability": 0.1606569434932183
+      },
+      "binary_scout": {
+        "brier": 0.033713396783220606,
+        "log_loss": 0.11786056025491351,
+        "actual_participants": 647,
+        "expected_participants": 667.8910803190628,
+        "weighted_actual_probability": 0.1541944709246902,
+        "weighted_expected_probability": 0.15917327938967177
+      }
+    }
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "scores": {
+      "binary_count": {
+        "brier": 0.03519551952141309,
+        "log_loss": 0.1181022971022277,
+        "actual_participants": 666,
+        "expected_participants": 649.3144063666264,
+        "weighted_actual_probability": 0.16683366733466942,
+        "weighted_expected_probability": 0.16265390941047744
+      },
+      "binary_scout": {
+        "brier": 0.03520234864930113,
+        "log_loss": 0.11822171415080593,
+        "actual_participants": 666,
+        "expected_participants": 647.6057316504865,
+        "weighted_actual_probability": 0.16683366733466942,
+        "weighted_expected_probability": 0.1622258846819856
+      }
+    }
+  },
+  {
+    "scope": "stage_Current MLB",
+    "rows": 4541,
+    "scores": {
+      "binary_count": {
+        "brier": 0.09535831646591025,
+        "log_loss": 0.30715272167600915,
+        "actual_participants": 3596,
+        "expected_participants": 3565.2772049350688,
+        "weighted_actual_probability": 0.7922331457193111,
+        "weighted_expected_probability": 0.7855025737612744
+      },
+      "binary_scout": {
+        "brier": 0.09495368048244565,
+        "log_loss": 0.3061861068039514,
+        "actual_participants": 3596,
+        "expected_participants": 3555.564059817725,
+        "weighted_actual_probability": 0.7922331457193111,
+        "weighted_expected_probability": 0.7834990984318277
+      }
+    }
+  },
+  {
+    "scope": "stage_Inactive / unknown",
+    "rows": 1586,
+    "scores": {
+      "binary_count": {
+        "brier": 0.011675749193362204,
+        "log_loss": 0.049131198630366815,
+        "actual_participants": 26,
+        "expected_participants": 36.3649853725353,
+        "weighted_actual_probability": 0.016308227383550054,
+        "weighted_expected_probability": 0.022833208305185124
+      },
+      "binary_scout": {
+        "brier": 0.011585412069383853,
+        "log_loss": 0.04880713376133544,
+        "actual_participants": 26,
+        "expected_participants": 36.029794574064965,
+        "weighted_actual_probability": 0.016308227383550054,
+        "weighted_expected_probability": 0.02266602037555633
+      }
+    }
+  },
+  {
+    "scope": "stage_Lower minors",
+    "rows": 17962,
+    "scores": {
+      "binary_count": {
+        "brier": 0.0027666065106191507,
+        "log_loss": 0.015059161261646074,
+        "actual_participants": 58,
+        "expected_participants": 91.54027150688299,
+        "weighted_actual_probability": 0.003222871349307074,
+        "weighted_expected_probability": 0.005032016629199299
+      },
+      "binary_scout": {
+        "brier": 0.002723790205144053,
+        "log_loss": 0.014852775362557295,
+        "actual_participants": 58,
+        "expected_participants": 88.981662635366,
+        "weighted_actual_probability": 0.003222871349307074,
+        "weighted_expected_probability": 0.0048728523831807966
+      }
+    }
+  },
+  {
+    "scope": "stage_Upper minors",
+    "rows": 6417,
+    "scores": {
+      "binary_count": {
+        "brier": 0.0826720135089045,
+        "log_loss": 0.27811039586319397,
+        "actual_participants": 858,
+        "expected_participants": 753.3844048017411,
+        "weighted_actual_probability": 0.13364374796920353,
+        "weighted_expected_probability": 0.11728171006446922
+      },
+      "binary_scout": {
+        "brier": 0.08194441799572458,
+        "log_loss": 0.2763896107325942,
+        "actual_participants": 858,
+        "expected_participants": 728.4199418668297,
+        "weighted_actual_probability": 0.13364374796920353,
+        "weighted_expected_probability": 0.11350744210969248
+      }
+    }
+  }
+]
