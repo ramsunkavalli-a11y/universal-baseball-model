@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: count-link workload comparison rejected after fourteen player reviews.**
+**Current checkpoint: verified late-season PA source and modest timing candidate reviewed.**
+See [the result and eighteen actual player reviews](practical-hitter-late-role-v46-result.md).
+All fifteen annual MLB PA reconstructions match old counts; ambiguous new window
+games were withheld before fits. Ten timing features improve broad PA RMSE
+61.149 to 60.944 versus games and contribution .43947 to .43887, but incremental
+intervals include no gain. Public MAE remains worse than working V33b and about
+20% above Steamer. The 2021 origin and never-debut upper minors worsen; lower-
+minor totals remain high. Keep timing as research, not a working/frozen promotion.
+Next meaningful information need: dated prospect readiness/scouting and finite-
+absence/job context, not another library sweep. Current ranking audits are not
+a historical scouting training panel. No new college collection. Working V33b
+plus reversible retirement; goal incomplete.
+
+**Count-link workload comparison rejected after fourteen player reviews.**
 See [the fixed loss/link result](practical-hitter-poisson-v45-result.md). Same
 239 games/count inputs and 35 chronological player folds; PA RMSE worsens
 61.149 to 62.317 and contribution .43947 to .44225 versus the games control.

@@ -52,6 +52,21 @@ absolute-error tolerance still fails. Public snapshots may have later roster/
 injury information than the December cutoff. Converted public contribution has
 a run-environment mismatch, so its score cannot prove better batting talent.
 
+The newer verified late-season-PA research candidate reaches public PA RMSE
+142.82, versus 143.96 working and 135.02 Steamer, but PA MAE 111.05 is slightly
+worse than working 110.56. Its small incremental gain versus games is uncertain;
+2021-origin and never-debut upper-minor errors worsen. It remains a separate
+reviewed research choice, not the working default or a finished model. A new
+local explorer shows this comparison and the reversible retirement policy
+without changing frozen/deployed forecasts. See
+[the timing result](practical-hitter-late-role-v46-result.md).
+
+The [local research explorer](http://127.0.0.1:8785/) has team and stage filters,
+actual historical outcomes, raw player histories and reviewed forecast cases.
+An information year of 2024 means a forecast for 2025. Organization membership
+is historical, not a projection of future team rosters. This display is batting
+plus replacement, not full WAR or the protected 2026 forecast.
+
 The 2024-origin whole cohort predicts 179,762 PA versus 182,880 actual and 556.7
 batting-plus-replacement wins versus 570.2 actual. Those sensible aggregate totals
 do not prove accurate individual forecasts or resolve other origins. The games
