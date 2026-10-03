@@ -39,6 +39,24 @@ and does not silently become this updated assembly.
 
 ## How good is it?
 
+The latest [common-event public audit](practical-hitter-public-units-v51-result.md)
+puts the existing hitting estimate close to public systems: conditional rate
+RMSE 1.745 versus Steamer 1.775 and ZiPS 1.753 on 2,627 broader current-MLB
+matches (2,088 with observed future PA). This is a fixed-weight event index,
+not official wOBA or a certified park-neutral talent comparison. Target 2023
+loses to both; unknown archive dates and repeated development tests qualify it.
+The original 1,789-public PA scores below are preserved, not silently replaced.
+
+The selected **development candidate**, separate from the working default,
+combines V34 existing rate with V49 binary scouting readiness. Its broader PA
+RMSE/MAE are 138.28/106.79 versus Steamer 135.38/92.08. That absolute-error gap
+still misses the practical tolerance. Public one-PA forecasts explain part of
+the gap, but no player is dropped and potential timing advantages are not proved
+for every row. The new [historical candidate explorer](http://127.0.0.1:8787/)
+shows team filters, counts, appearance probabilities, conditional PA and common
+event comparisons. Forecast years stop at 2025. See
+[the handoff and remaining work](practical-hitter-candidate-v52-handoff.md).
+
 The reviewed V49 research alternative separates MLB appearance probability from
 PA conditional on appearing and adds historical prospect rankings. Its matched
 public PA RMSE/MAE are 142.11/110.09, versus Steamer 135.02/92.40. This improves
@@ -46,7 +64,8 @@ the point scores modestly and repairs some lower-minor immediate-readiness
 excess, but underpredicts upper-minor arrivals and fast new draftees. It does not
 change hitting ability or replace the working forecast. The [31 actual player
 reviews and result](practical-hitter-readiness-v49-result.md) are complete; the
-goal remains active and talent work is next.
+goal remains active. The subsequent skill-specific reliability test completed
+25 reviews but did not improve on existing talent; its two arms remain research.
 
 | Same 1,789 public-matched forecasts | PA RMSE | Average absolute PA error |
 |---|---:|---:|
@@ -103,6 +122,12 @@ player eligibility remain incomplete; zero forecasts are not reliable talent
 grades for these players.
 
 ## What did not work
+
+The new learned per-skill shrinkage model improves its fixed-100 counterpart,
+but loses to existing rate on the same population and workload. It better
+retains established Judge/Votto, yet worsens Judge's debut, Winn, Steer and
+Betts. Those tradeoffs reject this specification, not all predictive shrinkage.
+See [the result and actual calculations](practical-hitter-reliability-v50-result.md).
 
 Shared cross-level exposure encoding, the first coherent event model, its
 empirical-anchor repair, a dedicated current-MLB workload head, and the new

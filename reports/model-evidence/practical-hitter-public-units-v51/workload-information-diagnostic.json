@@ -1,0 +1,111 @@
+{
+  "groups": [
+    {
+      "scope": "all_current_common",
+      "rows": 2627,
+      "actual_pa": 660776.0,
+      "zero_actual_pa": 539,
+      "scores": {
+        "working": {
+          "pa_rmse": 139.48137299581765,
+          "pa_mae": 106.96361170328939,
+          "pa_bias": -8.234552789633877,
+          "pa_total": 639066.7359094279
+        },
+        "binary": {
+          "pa_rmse": 138.27797114762313,
+          "pa_mae": 106.79040798825991,
+          "pa_bias": -3.0794820849751035,
+          "pa_total": 652655.5186496947
+        },
+        "steamer": {
+          "pa_rmse": 135.37946341946525,
+          "pa_mae": 92.08284699683804,
+          "pa_bias": 13.030477094490262,
+          "pa_total": 695054.8730400801
+        }
+      }
+    },
+    {
+      "scope": "legacy_common",
+      "rows": 1789,
+      "actual_pa": 433126.0,
+      "zero_actual_pa": 339,
+      "scores": {
+        "working": {
+          "pa_rmse": 143.96451016836915,
+          "pa_mae": 110.56303401128281,
+          "pa_bias": -6.386094309933375,
+          "pa_total": 421690.106701638
+        },
+        "binary": {
+          "pa_rmse": 142.11040483054066,
+          "pa_mae": 110.0869540208673,
+          "pa_bias": -1.4136328581140443,
+          "pa_total": 430653.56201184035
+        },
+        "steamer": {
+          "pa_rmse": 135.01874334527147,
+          "pa_mae": 92.3985469954093,
+          "pa_bias": -0.8003021823514425,
+          "pa_total": 431614.5181462765
+        }
+      }
+    },
+    {
+      "scope": "public_one_PA_diagnostic",
+      "rows": 386,
+      "actual_pa": 5354.0,
+      "zero_actual_pa": 302,
+      "scores": {
+        "working": {
+          "pa_rmse": 74.91097134878314,
+          "pa_mae": 44.12132022925315,
+          "pa_bias": 32.359931348542396,
+          "pa_total": 19883.95426006685
+        },
+        "binary": {
+          "pa_rmse": 80.34929574162427,
+          "pa_mae": 52.58291415653136,
+          "pa_bias": 42.12845301562098,
+          "pa_total": 22283.258102873337
+        },
+        "steamer": {
+          "pa_rmse": 38.81057047960493,
+          "pa_mae": 11.115071428571428,
+          "pa_bias": -9.44152380952381,
+          "pa_total": 386.0
+        }
+      }
+    },
+    {
+      "scope": "public_more_PA_diagnostic",
+      "rows": 2241,
+      "actual_pa": 655422.0,
+      "zero_actual_pa": 237,
+      "scores": {
+        "working": {
+          "pa_rmse": 146.9677169668563,
+          "pa_mae": 116.51514050804941,
+          "pa_bias": -16.932923886856663,
+          "pa_total": 619182.7816493609
+        },
+        "binary": {
+          "pa_rmse": 145.2644403181717,
+          "pa_mae": 115.4972971799442,
+          "pa_bias": -11.882796391584055,
+          "pa_total": 630372.2605468213
+        },
+        "steamer": {
+          "pa_rmse": 146.46529343689218,
+          "pa_mae": 106.22757567199368,
+          "pa_bias": 18.392281479916782,
+          "pa_total": 694668.8730400801
+        }
+      }
+    }
+  ],
+  "interpretation": "Archive one-PA grouping is a post-score diagnostic, not origin UBM eligibility or a replacement headline. Exact public dates are unknown; information advantage is a hypothesis, not proven for every one-PA row.",
+  "no_new_fits": true,
+  "evaluation_rows_dropped": false
+}

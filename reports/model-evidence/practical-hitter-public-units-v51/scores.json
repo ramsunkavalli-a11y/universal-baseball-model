@@ -1,0 +1,962 @@
+[
+  {
+    "scope": "legacy_public",
+    "rows": 1789,
+    "people": 820,
+    "conditional_rows": 1450,
+    "actual_pa": 433126.0,
+    "actual_value": 1304.663727758809,
+    "rates": {
+      "working": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.7611266673276331,
+        "mae": 1.3121613699355517,
+        "bias": 0.19832632228082323,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.7609174452919663,
+        "mae": 1.3143213774458367,
+        "bias": 0.1982515275823245,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.8838382709261456,
+        "mae": 1.4359426296176852,
+        "bias": 0.16047912985717738,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.7861264335772244,
+        "mae": 1.3424738916107735,
+        "bias": 0.017663562993253695,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.7837737379197394,
+        "mae": 1.350270722546032,
+        "bias": 0.4834855499280887,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.7526161742136364,
+        "mae": 1.3196260198876832,
+        "bias": 0.461809283777459,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.047727387197451,
+        "mae": 0.7032086855518671,
+        "bias": 0.057328467090222934,
+        "expected_total": 1396.7737246021984
+      },
+      "binary": {
+        "rmse": 1.0418571064226099,
+        "mae": 0.7044578778780425,
+        "bias": 0.0690803565919104,
+        "expected_total": 1417.7736511798546
+      },
+      "fixed": {
+        "rmse": 1.1026053135112768,
+        "mae": 0.7272505553207661,
+        "bias": 0.06298981248045267,
+        "expected_total": 1407.7046278451194
+      },
+      "learned": {
+        "rmse": 1.0571526258327881,
+        "mae": 0.6953492085013874,
+        "bias": 0.0003589363151389052,
+        "expected_total": 1295.631456616517
+      },
+      "steamer": {
+        "rmse": 1.0731810887325608,
+        "mae": 0.701716675931723,
+        "bias": 0.2345916767778059,
+        "expected_total": 1713.9659349967749
+      }
+    }
+  },
+  {
+    "scope": "all_current_common_public",
+    "rows": 2627,
+    "people": 1044,
+    "conditional_rows": 2088,
+    "actual_pa": 660776.0,
+    "actual_value": 2124.2311444814422,
+    "rates": {
+      "working": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.7442283249564907,
+        "mae": 1.313596508649628,
+        "bias": 0.13646778356503997,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.7452445905925238,
+        "mae": 1.315246638616234,
+        "bias": 0.15532420514240103,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.866522945525077,
+        "mae": 1.427876503324263,
+        "bias": 0.27401340504209015,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.7665989897825936,
+        "mae": 1.337109022492704,
+        "bias": 0.06661412528768308,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.774588665893598,
+        "mae": 1.3480724289008517,
+        "bias": 0.4814129460336777,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.753361454551248,
+        "mae": 1.3265481210958279,
+        "bias": 0.46993403690129854,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.0667653585050334,
+        "mae": 0.7115621172939878,
+        "bias": 0.01977530950779908,
+        "expected_total": 2168.299924548599
+      },
+      "binary": {
+        "rmse": 1.06130908518615,
+        "mae": 0.7136420442688055,
+        "bias": 0.039946453358767925,
+        "expected_total": 2221.3399400791754
+      },
+      "fixed": {
+        "rmse": 1.1121447123647492,
+        "mae": 0.7411858812361449,
+        "bias": 0.09429504673418043,
+        "expected_total": 2364.337984436284
+      },
+      "learned": {
+        "rmse": 1.0716643151984229,
+        "mae": 0.7079219994489716,
+        "bias": 0.004894168297313636,
+        "expected_total": 2128.7627651992952
+      },
+      "steamer": {
+        "rmse": 1.1187137543262544,
+        "mae": 0.7426223383850871,
+        "bias": 0.2800270664281728,
+        "expected_total": 2851.5110234429535
+      }
+    }
+  },
+  {
+    "scope": "elapsed_6plus",
+    "rows": 831,
+    "people": 352,
+    "conditional_rows": 634,
+    "actual_pa": 226804.0,
+    "actual_value": 818.3786033819292,
+    "rates": {
+      "working": {
+        "rows": 634,
+        "players": 269,
+        "rmse": 1.7068920568163943,
+        "mae": 1.3106622511336086,
+        "bias": 0.011237815438031318,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 634,
+        "players": 269,
+        "rmse": 1.7103374054803613,
+        "mae": 1.3114083619233001,
+        "bias": 0.0655372004289318,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 634,
+        "players": 269,
+        "rmse": 1.8261817534769045,
+        "mae": 1.4046952366998524,
+        "bias": 0.4852198036512494,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 634,
+        "players": 269,
+        "rmse": 1.7231666445905565,
+        "mae": 1.3199856648318453,
+        "bias": 0.1521887944212999,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 634,
+        "players": 269,
+        "rmse": 1.7479163876018435,
+        "mae": 1.3347834451338778,
+        "bias": 0.46741632923961557,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 634,
+        "players": 269,
+        "rmse": 1.746028360614306,
+        "mae": 1.331129612779371,
+        "bias": 0.4768869389042085,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.106949425393534,
+        "mae": 0.7292821183624061,
+        "bias": -0.06450899177417405,
+        "expected_total": 767.7427504057831
+      },
+      "binary": {
+        "rmse": 1.1019320078964336,
+        "mae": 0.7329146705030681,
+        "bias": -0.026971590251286516,
+        "expected_total": 799.2815678797391
+      },
+      "fixed": {
+        "rmse": 1.1315342910939432,
+        "mae": 0.7695411763543372,
+        "bias": 0.15836622639166573,
+        "expected_total": 952.9207045778012
+      },
+      "learned": {
+        "rmse": 1.1015475863273108,
+        "mae": 0.7336779684286371,
+        "bias": 0.009684166793351115,
+        "expected_total": 828.9986233979647
+      },
+      "steamer": {
+        "rmse": 1.205649562030531,
+        "mae": 0.8274769015960076,
+        "bias": 0.37138311560976633,
+        "expected_total": 1129.9595006096479
+      }
+    }
+  },
+  {
+    "scope": "year_2022",
+    "rows": 647,
+    "people": 647,
+    "conditional_rows": 511,
+    "actual_pa": 160811.0,
+    "actual_value": 429.43712496621964,
+    "rates": {
+      "working": {
+        "rows": 511,
+        "players": 511,
+        "rmse": 1.8155585255450695,
+        "mae": 1.342780808745293,
+        "bias": 0.6147811393532391,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 511,
+        "players": 511,
+        "rmse": 1.829454470230813,
+        "mae": 1.358385616693964,
+        "bias": 0.6674650274848007,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 511,
+        "players": 511,
+        "rmse": 1.9008395300192888,
+        "mae": 1.4673920537373992,
+        "bias": 0.7302982670891668,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 511,
+        "players": 511,
+        "rmse": 1.7520066117855841,
+        "mae": 1.3075435453125013,
+        "bias": 0.4417636136533503,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 511,
+        "players": 511,
+        "rmse": 1.957305337465092,
+        "mae": 1.4945789357742847,
+        "bias": 0.9990585634693435,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 511,
+        "players": 511,
+        "rmse": 1.90426509379453,
+        "mae": 1.4684294860025113,
+        "bias": 0.8556768754561778,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.0055140443102981,
+        "mae": 0.6881451354296244,
+        "bias": 0.18797348823871537,
+        "expected_total": 551.0559718566685
+      },
+      "binary": {
+        "rmse": 1.0126877848606077,
+        "mae": 0.6974197727453114,
+        "bias": 0.23163716825703073,
+        "expected_total": 579.3063728285185
+      },
+      "fixed": {
+        "rmse": 1.0512188743832087,
+        "mae": 0.7062768525025469,
+        "bias": 0.25502712688242446,
+        "expected_total": 594.4396760591483
+      },
+      "learned": {
+        "rmse": 0.9863854298280162,
+        "mae": 0.6642044613852093,
+        "bias": 0.13935100649277432,
+        "expected_total": 519.5972261670446
+      },
+      "steamer": {
+        "rmse": 1.2283265355191408,
+        "mae": 0.8310473618398779,
+        "bias": 0.5468171551750101,
+        "expected_total": 783.2278243644511
+      }
+    }
+  },
+  {
+    "scope": "year_2023",
+    "rows": 681,
+    "people": 681,
+    "conditional_rows": 526,
+    "actual_pa": 166122.0,
+    "actual_value": 698.6239199380213,
+    "rates": {
+      "working": {
+        "rows": 526,
+        "players": 526,
+        "rmse": 1.7333926756775135,
+        "mae": 1.32660043589779,
+        "bias": -0.45163898876803116,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 526,
+        "players": 526,
+        "rmse": 1.7260380614554893,
+        "mae": 1.320273872568771,
+        "bias": -0.4317491514868471,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 526,
+        "players": 526,
+        "rmse": 1.838063435847317,
+        "mae": 1.4057892622965147,
+        "bias": -0.2903164189211462,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 526,
+        "players": 526,
+        "rmse": 1.8266147239035428,
+        "mae": 1.4046168530764773,
+        "bias": -0.5688433887553748,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 526,
+        "players": 526,
+        "rmse": 1.6684152302124582,
+        "mae": 1.2808730348726987,
+        "bias": -0.13631186444908458,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 526,
+        "players": 526,
+        "rmse": 1.6729598823525746,
+        "mae": 1.2828626509555892,
+        "bias": 0.10016362790276837,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.1390303320143638,
+        "mae": 0.7324102189558201,
+        "bias": -0.24076848835685533,
+        "expected_total": 534.6605793670029
+      },
+      "binary": {
+        "rmse": 1.1220239860604047,
+        "mae": 0.7314155191741047,
+        "bias": -0.21725992548342027,
+        "expected_total": 550.6699106838123
+      },
+      "fixed": {
+        "rmse": 1.157455916325183,
+        "mae": 0.7613671375746879,
+        "bias": -0.15562524265273564,
+        "expected_total": 592.6431296915085
+      },
+      "learned": {
+        "rmse": 1.165918134496434,
+        "mae": 0.7452143825092229,
+        "bias": -0.26731356686377516,
+        "expected_total": 516.5833809037905
+      },
+      "steamer": {
+        "rmse": 1.0554769647517916,
+        "mae": 0.6943328571946753,
+        "bias": 0.020873788906738865,
+        "expected_total": 712.8389701835106
+      }
+    }
+  },
+  {
+    "scope": "year_2024",
+    "rows": 652,
+    "people": 652,
+    "conditional_rows": 515,
+    "actual_pa": 167741.0,
+    "actual_value": 414.89575376571133,
+    "rates": {
+      "working": {
+        "rows": 515,
+        "players": 515,
+        "rmse": 1.7622113361516136,
+        "mae": 1.3578791585701107,
+        "bias": 0.529479720091409,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 515,
+        "players": 515,
+        "rmse": 1.7618100527159533,
+        "mae": 1.3575891668007742,
+        "bias": 0.5316519230236937,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 515,
+        "players": 515,
+        "rmse": 1.9349427357865443,
+        "mae": 1.5071439473657968,
+        "bias": 0.6171690418461477,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 515,
+        "players": 515,
+        "rmse": 1.7880801558212116,
+        "mae": 1.3781130050270027,
+        "bias": 0.4550499841610111,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 515,
+        "players": 515,
+        "rmse": 1.7860519171978153,
+        "mae": 1.3741936610251013,
+        "bias": 0.6585464568149079,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 515,
+        "players": 515,
+        "rmse": 1.7697507274705147,
+        "mae": 1.343137457838424,
+        "bias": 0.5766317252508618,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.0568616467451317,
+        "mae": 0.7271551252018934,
+        "bias": 0.2152815330211682,
+        "expected_total": 555.2593132955129
+      },
+      "binary": {
+        "rmse": 1.060081841685579,
+        "mae": 0.7278892371706971,
+        "bias": 0.22284235433565125,
+        "expected_total": 560.1889687925559
+      },
+      "fixed": {
+        "rmse": 1.1522780159826915,
+        "mae": 0.7706509689666555,
+        "bias": 0.2725034513951386,
+        "expected_total": 592.5680040753416
+      },
+      "learned": {
+        "rmse": 1.0724802218995315,
+        "mae": 0.7181856136322793,
+        "bias": 0.19083488755474368,
+        "expected_total": 539.3201004514042
+      },
+      "steamer": {
+        "rmse": 1.1463092975511986,
+        "mae": 0.7482285180553353,
+        "bias": 0.37202444451420263,
+        "expected_total": 657.4556915889715
+      }
+    }
+  },
+  {
+    "scope": "year_2025",
+    "rows": 647,
+    "people": 647,
+    "conditional_rows": 536,
+    "actual_pa": 166102.0,
+    "actual_value": 581.2743458114898,
+    "rates": {
+      "working": {
+        "rows": 536,
+        "players": 536,
+        "rmse": 1.6622388749181063,
+        "mae": 1.2271256313853183,
+        "bias": -0.14675073641645703,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 536,
+        "players": 536,
+        "rmse": 1.6593459596715643,
+        "mae": 1.224737898401427,
+        "bias": -0.1460709784520432,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 536,
+        "players": 536,
+        "rmse": 1.7888432353983754,
+        "mae": 1.331180749897342,
+        "bias": 0.038902730154192364,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 536,
+        "players": 536,
+        "rmse": 1.69711779256488,
+        "mae": 1.2581626865548348,
+        "bias": -0.06151370790825436,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 536,
+        "players": 536,
+        "rmse": 1.6709352821314962,
+        "mae": 1.242644083931322,
+        "bias": 0.40435862829954416,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 536,
+        "players": 536,
+        "rmse": 1.6553149574737802,
+        "mae": 1.2117628895867874,
+        "bias": 0.347263918995386,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.0613897443967757,
+        "mae": 0.6985379895886129,
+        "bias": -0.08338529487183194,
+        "expected_total": 527.3240600294146
+      },
+      "binary": {
+        "rmse": 1.0475017953313486,
+        "mae": 0.6978436479851089,
+        "bias": -0.07743378367419003,
+        "expected_total": 531.1746877742889
+      },
+      "fixed": {
+        "rmse": 1.0839527197949206,
+        "mae": 0.7264485659006893,
+        "bias": 0.0052748513118943356,
+        "expected_total": 584.6871746102854
+      },
+      "learned": {
+        "rmse": 1.0541928092092574,
+        "mae": 0.7040835402691751,
+        "bias": -0.04329565399448828,
+        "expected_total": 553.262057677056
+      },
+      "steamer": {
+        "rmse": 1.0340402070715342,
+        "mae": 0.6968806164504598,
+        "bias": 0.1803928771167398,
+        "expected_total": 697.9885373060205
+      }
+    }
+  },
+  {
+    "scope": "current_PA_1_199",
+    "rows": 1185,
+    "people": 771,
+    "conditional_rows": 736,
+    "actual_pa": 125720.0,
+    "actual_value": 213.91539480311306,
+    "rates": {
+      "working": {
+        "rows": 736,
+        "players": 502,
+        "rmse": 2.1955796555715916,
+        "mae": 1.631805024451952,
+        "bias": 0.3313936201293829,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 736,
+        "players": 502,
+        "rmse": 2.19373997262871,
+        "mae": 1.6334719361944847,
+        "bias": 0.32871063919652754,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 736,
+        "players": 502,
+        "rmse": 2.3502264063609246,
+        "mae": 1.786297503124736,
+        "bias": 0.10688009277468238,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 736,
+        "players": 502,
+        "rmse": 2.2224496477655937,
+        "mae": 1.6630056062924925,
+        "bias": 0.10421881132762587,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 736,
+        "players": 502,
+        "rmse": 2.2043164432576194,
+        "mae": 1.6559746046689736,
+        "bias": 0.5589401715182166,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 736,
+        "players": 502,
+        "rmse": 2.1785066083701348,
+        "mae": 1.6214858327181276,
+        "bias": 0.5220678463617789,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 0.6697714251231489,
+        "mae": 0.3843493810161419,
+        "bias": 0.038328808934130085,
+        "expected_total": 254.36380964274036
+      },
+      "binary": {
+        "rmse": 0.6576848257362999,
+        "mae": 0.38611638467304593,
+        "bias": 0.05229195012947704,
+        "expected_total": 271.0382102841299
+      },
+      "fixed": {
+        "rmse": 0.7036611490425394,
+        "mae": 0.3986594472642213,
+        "bias": 0.023275420203558165,
+        "expected_total": 237.06474827504113
+      },
+      "learned": {
+        "rmse": 0.6663980912655545,
+        "mae": 0.3715957410605643,
+        "bias": 0.012153985210348968,
+        "expected_total": 222.70648544879543
+      },
+      "steamer": {
+        "rmse": 0.6702324498965039,
+        "mae": 0.3662147189192682,
+        "bias": 0.07636857768005982,
+        "expected_total": 299.4178253914697
+      }
+    }
+  },
+  {
+    "scope": "current_PA_200_399",
+    "rows": 632,
+    "people": 432,
+    "conditional_rows": 556,
+    "actual_pa": 157384.0,
+    "actual_value": 366.82536702893054,
+    "rates": {
+      "working": {
+        "rows": 556,
+        "players": 387,
+        "rmse": 1.8302321167079816,
+        "mae": 1.4105633021154114,
+        "bias": 0.18030117952713523,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 556,
+        "players": 387,
+        "rmse": 1.8332724717030757,
+        "mae": 1.4108996775955491,
+        "bias": 0.1883018786441655,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 556,
+        "players": 387,
+        "rmse": 1.9994217962647285,
+        "mae": 1.582930951898687,
+        "bias": 0.35574914911141947,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 556,
+        "players": 387,
+        "rmse": 1.8759027412506457,
+        "mae": 1.4581824935989331,
+        "bias": 0.16833409315164838,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 556,
+        "players": 387,
+        "rmse": 1.8593385789903885,
+        "mae": 1.4130731867314446,
+        "bias": 0.5719216680731354,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 556,
+        "players": 387,
+        "rmse": 1.7992678477857644,
+        "mae": 1.3636015613664587,
+        "bias": 0.5285934414299899,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.0355102989989515,
+        "mae": 0.7616438000684174,
+        "bias": 0.049870174014678643,
+        "expected_total": 400.411025359683
+      },
+      "binary": {
+        "rmse": 1.040287330367804,
+        "mae": 0.771187562944629,
+        "bias": 0.07125070500877169,
+        "expected_total": 414.34575068662195
+      },
+      "fixed": {
+        "rmse": 1.1237167070014538,
+        "mae": 0.8098006391716364,
+        "bias": 0.13910222536329692,
+        "expected_total": 457.17659579791655
+      },
+      "learned": {
+        "rmse": 1.062088804556271,
+        "mae": 0.7683597436629608,
+        "bias": 0.06447458988685681,
+        "expected_total": 409.52236141453204
+      },
+      "steamer": {
+        "rmse": 1.1365053691038303,
+        "mae": 0.8279865886932617,
+        "bias": 0.34104085647844695,
+        "expected_total": 587.7613038744701
+      }
+    }
+  },
+  {
+    "scope": "current_PA_400_2000",
+    "rows": 810,
+    "people": 372,
+    "conditional_rows": 796,
+    "actual_pa": 377672.0,
+    "actual_value": 1543.4903826493987,
+    "rates": {
+      "working": {
+        "rows": 796,
+        "players": 367,
+        "rmse": 1.5233328626263318,
+        "mae": 1.1675298543757593,
+        "bias": 0.05614491129105788,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary": {
+        "rows": 796,
+        "players": 367,
+        "rmse": 1.5246767189573305,
+        "mae": 1.1697625062048587,
+        "bias": 0.08675601395852148,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 796,
+        "players": 367,
+        "rmse": 1.6065640544363877,
+        "mae": 1.2425362245427665,
+        "bias": 0.29722886757610956,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned": {
+        "rows": 796,
+        "players": 367,
+        "rmse": 1.5302067317246129,
+        "mae": 1.177226294234648,
+        "bias": 0.015261203765561115,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 796,
+        "players": 367,
+        "rmse": 1.564350628439345,
+        "mae": 1.2175080353500227,
+        "bias": 0.42122650317107657,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 796,
+        "players": 367,
+        "rmse": 1.564206074387504,
+        "mae": 1.2122202648631673,
+        "bias": 0.43085247391299775,
+        "unit": "fixed-event batting wins per 600 PA centered on the shared origin-season MLB environment",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "delivered": {
+      "working": {
+        "rmse": 1.4818559508508693,
+        "mae": 1.1506897070844406,
+        "bias": -0.03421683891071674,
+        "expected_total": 1513.5250895461756
+      },
+      "binary": {
+        "rmse": 1.4744589393817475,
+        "mae": 1.147433991624622,
+        "bias": -0.0045155674710126575,
+        "expected_total": 1535.9559791084234
+      },
+      "fixed": {
+        "rmse": 1.5157433571790924,
+        "mae": 1.1881738638346064,
+        "bias": 0.16033579838205161,
+        "expected_total": 1670.0966403633263
+      },
+      "learned": {
+        "rmse": 1.4802267297231504,
+        "mae": 1.1523903599435652,
+        "bias": -0.05581075802036433,
+        "expected_total": 1496.5339183359677
+      },
+      "steamer": {
+        "rmse": 1.5433383444751037,
+        "mae": 1.2239342067396208,
+        "bias": 0.5290434975305827,
+        "expected_total": 1964.331894177014
+      }
+    }
+  }
+]

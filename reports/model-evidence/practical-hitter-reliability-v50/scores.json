@@ -1,0 +1,3490 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "players": 11020,
+    "actual_pa": 1270493.0,
+    "actual_value": 4176.605053737596,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 60.650287297628374,
+        "pa_mae": 20.761017434382012,
+        "pa_bias": -1.188805215919033,
+        "value_rmse": 0.4537913590714391,
+        "value_mae": 0.1290925171528817,
+        "value_bias": 0.009012785783984683,
+        "pa_total": 1233395.314334956,
+        "value_total": 4446.089717532084
+      },
+      "learned_reliability": {
+        "pa_rmse": 60.65028729762837,
+        "pa_mae": 20.761017434382012,
+        "pa_bias": -1.1888052159190328,
+        "value_rmse": 0.4435088282837879,
+        "value_mae": 0.12480853026515246,
+        "value_bias": -0.005019900373193888,
+        "pa_total": 1233395.314334956,
+        "value_total": 4017.719606752919
+      },
+      "binary_scout": {
+        "pa_rmse": 60.650287297628374,
+        "pa_mae": 20.761017434382012,
+        "pa_bias": -1.1888052159190328,
+        "value_rmse": 0.43815039202974837,
+        "value_mae": 0.1259002007108835,
+        "value_bias": 0.0006698697745242865,
+        "pa_total": 1233395.314334956,
+        "value_total": 4190.700983828612
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 61.54263849358969,
+        "pa_mae": 21.289894884189913,
+        "pa_bias": -1.1945351159099888,
+        "value_rmse": 0.4409696324073561,
+        "value_mae": 0.12710572525610386,
+        "value_bias": 0.0003866681610780382,
+        "pa_total": 1234304.1778044207,
+        "value_total": 4185.449957485017
+      },
+      "learned_working": {
+        "pa_rmse": 61.5426384935897,
+        "pa_mae": 21.28989488418991,
+        "pa_bias": -1.1945351159099888,
+        "value_rmse": 0.4450152873317602,
+        "value_mae": 0.12547514301355964,
+        "value_bias": -0.005284587196819719,
+        "pa_total": 1234304.1778044207,
+        "value_total": 4012.6919781256
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.9320196096516227,
+        "mae": 1.4495260990276038,
+        "bias": 0.19819690362477357,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8534625683431019,
+        "mae": 1.3806527727571425,
+        "bias": -0.005672698773345699,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8246450214710326,
+        "mae": 1.3527215597904676,
+        "bias": 0.08180989778315675,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8253240902668852,
+        "mae": 1.3526021329550293,
+        "bias": 0.07425678769201724,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.477365962121389,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 581695.5236186979,
+            "actual": 588574.0
+          },
+          "K": {
+            "expected": 285210.9926786815,
+            "actual": 281663.0
+          },
+          "UBB": {
+            "expected": 103953.6079784432,
+            "actual": 103044.0
+          },
+          "HBP": {
+            "expected": 14268.72636057863,
+            "actual": 13710.0
+          },
+          "1B": {
+            "expected": 181152.7097501168,
+            "actual": 181376.0
+          },
+          "2B": {
+            "expected": 57172.81612481347,
+            "actual": 56540.0
+          },
+          "3B": {
+            "expected": 6092.173531272255,
+            "actual": 5084.0
+          },
+          "HR": {
+            "expected": 40946.44995739628,
+            "actual": 40502.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4763355063792036,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 584401.7428774135,
+            "actual": 588574.0
+          },
+          "K": {
+            "expected": 286368.5151867559,
+            "actual": 281663.0
+          },
+          "UBB": {
+            "expected": 104552.01469983158,
+            "actual": 103044.0
+          },
+          "HBP": {
+            "expected": 13778.9714909682,
+            "actual": 13710.0
+          },
+          "1B": {
+            "expected": 179611.47960536787,
+            "actual": 181376.0
+          },
+          "2B": {
+            "expected": 56269.25082365275,
+            "actual": 56540.0
+          },
+          "3B": {
+            "expected": 5402.624039864293,
+            "actual": 5084.0
+          },
+          "HR": {
+            "expected": 40108.40127614576,
+            "actual": 40502.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "public_active",
+    "rows": 1789,
+    "players": 820,
+    "actual_pa": 433126.0,
+    "actual_value": 1327.213925942292,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 142.11040483054066,
+        "pa_mae": 110.0869540208673,
+        "pa_bias": -1.4136328581140443,
+        "value_rmse": 1.0767664035247544,
+        "value_mae": 0.7117192783090482,
+        "value_bias": 0.045542715686745755,
+        "pa_total": 430653.5620118404,
+        "value_total": 1407.7046278451194
+      },
+      "learned_reliability": {
+        "pa_rmse": 142.11040483054066,
+        "pa_mae": 110.0869540208673,
+        "pa_bias": -1.4136328581140443,
+        "value_rmse": 1.0324774139430963,
+        "value_mae": 0.6782093615408651,
+        "value_bias": -0.01708816047856799,
+        "pa_total": 430653.5620118404,
+        "value_total": 1295.631456616517
+      },
+      "binary_scout": {
+        "pa_rmse": 142.11040483054066,
+        "pa_mae": 110.0869540208673,
+        "pa_bias": -1.4136328581140443,
+        "value_rmse": 1.011724913478148,
+        "value_mae": 0.6842649642659333,
+        "value_bias": 0.05163325979820349,
+        "pa_total": 430653.5620118404,
+        "value_total": 1417.7736511798546
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 143.96451016836915,
+        "pa_mae": 110.56303401128281,
+        "pa_bias": -6.386094309933375,
+        "value_rmse": 1.01787282419783,
+        "value_mae": 0.6833136977934342,
+        "value_bias": 0.03988137029651603,
+        "pa_total": 421690.1067016382,
+        "value_total": 1396.7737246021986
+      },
+      "learned_working": {
+        "pa_rmse": 143.96451016836915,
+        "pa_mae": 110.56303401128281,
+        "pa_bias": -6.386094309933375,
+        "value_rmse": 1.035515920701362,
+        "value_mae": 0.6757004147513378,
+        "value_bias": -0.02783459806626726,
+        "pa_total": 421690.1067016382,
+        "value_total": 1276.3257908517144
+      },
+      "steamer": {
+        "pa_rmse": 135.01874334527147,
+        "pa_mae": 92.3985469954093,
+        "pa_bias": -0.8003021823514425,
+        "value_rmse": 1.0434804085671603,
+        "value_mae": 0.6848231006375775,
+        "value_bias": 0.21698811696952292,
+        "pa_total": 431614.5181462765,
+        "value_total": 1713.6889455737053
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.83032193744537,
+        "mae": 1.3820880320850004,
+        "bias": 0.12700203507811555,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.7303259871213406,
+        "mae": 1.2907108587494303,
+        "bias": -0.01581353178580814,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.6933688074575124,
+        "mae": 1.2558833853791964,
+        "bias": 0.16477443280326265,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.6943487451352506,
+        "mae": 1.255964959060318,
+        "bias": 0.16484922750176143,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.7266844826082057,
+        "mae": 1.2912674189666462,
+        "bias": 0.44962208700956025,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "zips": {
+        "rows": 1450,
+        "players": 660,
+        "rmse": 1.7242973664543813,
+        "mae": 1.296773641784906,
+        "bias": 0.4279458208589306,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4704799814640113,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 196985.60465844322,
+            "actual": 201575.0
+          },
+          "K": {
+            "expected": 100762.46760155426,
+            "actual": 97013.0
+          },
+          "UBB": {
+            "expected": 34763.90162731017,
+            "actual": 34119.0
+          },
+          "HBP": {
+            "expected": 5246.540094536871,
+            "actual": 4880.0
+          },
+          "1B": {
+            "expected": 61021.92689929389,
+            "actual": 62089.0
+          },
+          "2B": {
+            "expected": 19011.245526026927,
+            "actual": 18902.0
+          },
+          "3B": {
+            "expected": 2059.8076104622787,
+            "actual": 1813.0
+          },
+          "HR": {
+            "expected": 13274.50598237239,
+            "actual": 12735.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4692129227397681,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 197436.56735014042,
+            "actual": 201575.0
+          },
+          "K": {
+            "expected": 101219.35021294159,
+            "actual": 97013.0
+          },
+          "UBB": {
+            "expected": 35362.15647021952,
+            "actual": 34119.0
+          },
+          "HBP": {
+            "expected": 5089.975986018419,
+            "actual": 4880.0
+          },
+          "1B": {
+            "expected": 60133.4800769766,
+            "actual": 62089.0
+          },
+          "2B": {
+            "expected": 18911.051427665814,
+            "actual": 18902.0
+          },
+          "3B": {
+            "expected": 1806.2106702741967,
+            "actual": 1813.0
+          },
+          "HR": {
+            "expected": 13167.207805763424,
+            "actual": 12735.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "players": 3055,
+    "actual_pa": 92891.0,
+    "actual_value": 195.99378984036073,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 56.16944588240069,
+        "pa_mae": 19.12551719851052,
+        "pa_bias": -3.4818823741822595,
+        "value_rmse": 0.3074967781047009,
+        "value_mae": 0.07616817864482928,
+        "value_bias": -0.00862019420287719,
+        "pa_total": 73988.83638001567,
+        "value_total": 149.00303871729596
+      },
+      "learned_reliability": {
+        "pa_rmse": 56.16944588240067,
+        "pa_mae": 19.125517198510515,
+        "pa_bias": -3.4818823741822595,
+        "value_rmse": 0.3075881426148106,
+        "value_mae": 0.07437702886930846,
+        "value_bias": -0.012183259409125093,
+        "pa_total": 73988.83638001567,
+        "value_total": 129.85900017074187
+      },
+      "binary_scout": {
+        "pa_rmse": 56.16944588240069,
+        "pa_mae": 19.125517198510515,
+        "pa_bias": -3.4818823741822595,
+        "value_rmse": 0.30698629829583685,
+        "value_mae": 0.07849049510841631,
+        "value_bias": -0.004394886801088147,
+        "pa_total": 73988.83638001567,
+        "value_total": 174.20875324150956
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 58.6897170305729,
+        "pa_mae": 21.04045193044414,
+        "pa_bias": -2.9207535244378033,
+        "value_rmse": 0.311954372630816,
+        "value_mae": 0.08273146363477932,
+        "value_bias": -0.003240006624832793,
+        "pa_total": 77106.33743111088,
+        "value_total": 180.963823661064
+      },
+      "learned_working": {
+        "pa_rmse": 58.6897170305729,
+        "pa_mae": 21.040451930444135,
+        "pa_bias": -2.9207535244378033,
+        "value_rmse": 0.31217903930864166,
+        "value_mae": 0.07635378699198593,
+        "value_bias": -0.01405126719474674,
+        "pa_total": 77106.33743111088,
+        "value_total": 119.64728136085964
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6441581897697013,
+        "mae": 1.9636605727591607,
+        "bias": 0.06901164341857292,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6139029143552306,
+        "mae": 1.9543422599172602,
+        "bias": -0.08415196966263998,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.589782603661619,
+        "mae": 1.922968063191213,
+        "bias": 0.24593328261993,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.5963555207502993,
+        "mae": 1.9281468171121077,
+        "bias": 0.2721480968980831,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4824119190325058,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 40175.92955053471,
+            "actual": 41067.0
+          },
+          "K": {
+            "expected": 24676.741181578534,
+            "actual": 23676.0
+          },
+          "UBB": {
+            "expected": 7439.857151480736,
+            "actual": 7159.0
+          },
+          "HBP": {
+            "expected": 1035.9538375791394,
+            "actual": 1015.0
+          },
+          "1B": {
+            "expected": 12478.146576067862,
+            "actual": 12997.0
+          },
+          "2B": {
+            "expected": 3846.5672841840496,
+            "actual": 3916.0
+          },
+          "3B": {
+            "expected": 525.4032832128153,
+            "actual": 449.0
+          },
+          "HR": {
+            "expected": 2712.401135362147,
+            "actual": 2612.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4819686616753975,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 40314.44660700146,
+            "actual": 41067.0
+          },
+          "K": {
+            "expected": 24748.3511224168,
+            "actual": 23676.0
+          },
+          "UBB": {
+            "expected": 7486.1349042875245,
+            "actual": 7159.0
+          },
+          "HBP": {
+            "expected": 950.5106100893415,
+            "actual": 1015.0
+          },
+          "1B": {
+            "expected": 12431.915505392655,
+            "actual": 12997.0
+          },
+          "2B": {
+            "expected": 3839.2299171040295,
+            "actual": 3916.0
+          },
+          "3B": {
+            "expected": 438.86213935418266,
+            "actual": 449.0
+          },
+          "HR": {
+            "expected": 2681.5491943540087,
+            "actual": 2612.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "brief_debut",
+    "rows": 1194,
+    "players": 811,
+    "actual_pa": 140642.0,
+    "actual_value": 271.80968871408794,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 130.36393504080175,
+        "pa_mae": 94.69940674446757,
+        "pa_bias": -2.0386086930135674,
+        "value_rmse": 0.802793951661166,
+        "value_mae": 0.4657987353479541,
+        "value_bias": 0.005847034957010076,
+        "pa_total": 138224.85717652456,
+        "value_total": 279.9509426473867
+      },
+      "learned_reliability": {
+        "pa_rmse": 130.36393504080175,
+        "pa_mae": 94.69940674446755,
+        "pa_bias": -2.0386086930135674,
+        "value_rmse": 0.7663276125307599,
+        "value_mae": 0.43816039215906194,
+        "value_bias": -0.012641755388802285,
+        "pa_total": 138224.85717652456,
+        "value_total": 256.90537241093773
+      },
+      "binary_scout": {
+        "pa_rmse": 130.36393504080175,
+        "pa_mae": 94.69940674446755,
+        "pa_bias": -2.0386086930135674,
+        "value_rmse": 0.7516501878002801,
+        "value_mae": 0.45319190012120825,
+        "value_bias": 0.028369880483753086,
+        "pa_total": 138224.85717652456,
+        "value_total": 307.61033840772706
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 132.75378411573007,
+        "pa_mae": 95.55115668538288,
+        "pa_bias": -4.932341476308652,
+        "value_rmse": 0.7629309899970117,
+        "value_mae": 0.45423479140228423,
+        "value_bias": 0.023854803166076247,
+        "pa_total": 134629.609284079,
+        "value_total": 301.96826269736243
+      },
+      "learned_working": {
+        "pa_rmse": 132.75378411573007,
+        "pa_mae": 95.55115668538288,
+        "pa_bias": -4.932341476308651,
+        "value_rmse": 0.772167321905049,
+        "value_mae": 0.43777745578322,
+        "value_bias": -0.01668677070924145,
+        "pa_total": 134629.609284079,
+        "value_total": 251.58528361171795
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 814,
+        "players": 584,
+        "rmse": 2.4976493391002488,
+        "mae": 1.9074684579152377,
+        "bias": 0.10969282425834448,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 814,
+        "players": 584,
+        "rmse": 2.3317260715972052,
+        "mae": 1.753008324388852,
+        "bias": 0.02528319969361074,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 814,
+        "players": 584,
+        "rmse": 2.278100550772997,
+        "mae": 1.7006576488527148,
+        "bias": 0.23398456000867976,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 814,
+        "players": 584,
+        "rmse": 2.2799837496774407,
+        "mae": 1.7008323605650748,
+        "bias": 0.24239987036630462,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4728745184155934,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 63096.68435151546,
+            "actual": 63570.0
+          },
+          "K": {
+            "expected": 35098.73117614152,
+            "actual": 34671.0
+          },
+          "UBB": {
+            "expected": 10993.239173038171,
+            "actual": 10649.0
+          },
+          "HBP": {
+            "expected": 1655.4883923743794,
+            "actual": 1583.0
+          },
+          "1B": {
+            "expected": 19092.911029323288,
+            "actual": 19660.0
+          },
+          "2B": {
+            "expected": 6033.020736705901,
+            "actual": 5921.0
+          },
+          "3B": {
+            "expected": 747.9602236088404,
+            "actual": 656.0
+          },
+          "HR": {
+            "expected": 3923.9649172924364,
+            "actual": 3932.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.470131233268337,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 63126.65840732529,
+            "actual": 63570.0
+          },
+          "K": {
+            "expected": 35263.020583153135,
+            "actual": 34671.0
+          },
+          "UBB": {
+            "expected": 11136.497192384655,
+            "actual": 10649.0
+          },
+          "HBP": {
+            "expected": 1517.6549299364924,
+            "actual": 1583.0
+          },
+          "1B": {
+            "expected": 19034.009206150742,
+            "actual": 19660.0
+          },
+          "2B": {
+            "expected": 6000.155079135475,
+            "actual": 5921.0
+          },
+          "3B": {
+            "expected": 625.7826084153843,
+            "actual": 656.0
+          },
+          "HR": {
+            "expected": 3938.221993498827,
+            "actual": 3932.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "current_regular",
+    "rows": 1445,
+    "players": 559,
+    "actual_pa": 672511.0,
+    "actual_value": 2853.240888441437,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 152.43968202704698,
+        "pa_mae": 122.41557143807391,
+        "pa_bias": -10.943050952756604,
+        "value_rmse": 1.5033930533948525,
+        "value_mae": 1.1767360073584814,
+        "value_bias": 0.12977757363462697,
+        "pa_total": 657138.3076322401,
+        "value_total": 3040.093475016089
+      },
+      "learned_reliability": {
+        "pa_rmse": 152.43968202704698,
+        "pa_mae": 122.41557143807391,
+        "pa_bias": -10.943050952756604,
+        "value_rmse": 1.4781882790619219,
+        "value_mae": 1.1513282071445556,
+        "value_bias": -0.07490901705488769,
+        "pa_total": 657138.3076322401,
+        "value_total": 2746.2534469810853
+      },
+      "binary_scout": {
+        "pa_rmse": 152.43968202704698,
+        "pa_mae": 122.41557143807391,
+        "pa_bias": -10.943050952756604,
+        "value_rmse": 1.4562432858814727,
+        "value_mae": 1.1369354810669994,
+        "value_bias": -0.024433870063773372,
+        "pa_total": 657138.3076322401,
+        "value_total": 2817.184431311227
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 152.9699930748182,
+        "pa_mae": 122.36839745745199,
+        "pa_bias": -8.057994345929131,
+        "value_rmse": 1.4621276433640102,
+        "value_mae": 1.1404835407248217,
+        "value_bias": -0.023359265580250445,
+        "pa_total": 661634.6145098603,
+        "value_total": 2821.4147283198786
+      },
+      "learned_working": {
+        "pa_rmse": 152.9699930748182,
+        "pa_mae": 122.36839745745199,
+        "pa_bias": -8.057994345929131,
+        "value_rmse": 1.480351993883204,
+        "value_mae": 1.154218130025546,
+        "value_bias": -0.062212310808824875,
+        "pa_total": 661634.6145098603,
+        "value_total": 2766.163930890493
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 1409,
+        "players": 549,
+        "rmse": 1.5614188319921487,
+        "mae": 1.2063871781667694,
+        "bias": 0.22969127370063785,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 1409,
+        "players": 549,
+        "rmse": 1.5088436123401625,
+        "mae": 1.160353382981198,
+        "bias": -0.03479835779871774,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 1409,
+        "players": 549,
+        "rmse": 1.4836264419305283,
+        "mae": 1.1405088638455363,
+        "bias": 0.03793124420954913,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 1409,
+        "players": 549,
+        "rmse": 1.4841658056647509,
+        "mae": 1.1399063562451741,
+        "bias": 0.020439185542427095,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4827322266345795,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 311283.98028004664,
+            "actual": 315403.0
+          },
+          "K": {
+            "expected": 140996.99750327226,
+            "actual": 138960.0
+          },
+          "UBB": {
+            "expected": 56358.28250750814,
+            "actual": 56788.0
+          },
+          "HBP": {
+            "expected": 7339.9909220381805,
+            "actual": 7048.0
+          },
+          "1B": {
+            "expected": 98296.62068195651,
+            "actual": 97138.0
+          },
+          "2B": {
+            "expected": 31478.965183632943,
+            "actual": 31187.0
+          },
+          "3B": {
+            "expected": 3060.819738066317,
+            "actual": 2553.0
+          },
+          "HR": {
+            "expected": 23695.34318347901,
+            "actual": 23434.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.482132370258974,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 313228.9050858127,
+            "actual": 315403.0
+          },
+          "K": {
+            "expected": 141663.54407244257,
+            "actual": 138960.0
+          },
+          "UBB": {
+            "expected": 56573.99766613062,
+            "actual": 56788.0
+          },
+          "HBP": {
+            "expected": 7243.55193590294,
+            "actual": 7048.0
+          },
+          "1B": {
+            "expected": 97325.48823893572,
+            "actual": 97138.0
+          },
+          "2B": {
+            "expected": 30618.415641710257,
+            "actual": 31187.0
+          },
+          "3B": {
+            "expected": 2817.5822877709097,
+            "actual": 2553.0
+          },
+          "HR": {
+            "expected": 23039.51507129431,
+            "actual": 23434.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "listed_current",
+    "rows": 450,
+    "players": 286,
+    "actual_pa": 101410.0,
+    "actual_value": 347.48448830204086,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 157.13655145182787,
+        "pa_mae": 117.95898026886763,
+        "pa_bias": -15.013828133093085,
+        "value_rmse": 1.1161512060971182,
+        "value_mae": 0.7005666588354448,
+        "value_bias": -0.04691582517340326,
+        "pa_total": 94839.1770672971,
+        "value_total": 325.56292731718173
+      },
+      "learned_reliability": {
+        "pa_rmse": 157.13655145182787,
+        "pa_mae": 117.95898026886765,
+        "pa_bias": -15.013828133093085,
+        "value_rmse": 1.0910399040041208,
+        "value_mae": 0.6907691541333209,
+        "value_bias": -0.08944328544083079,
+        "pa_total": 94839.1770672971,
+        "value_total": 307.7445011841974
+      },
+      "binary_scout": {
+        "pa_rmse": 157.13655145182787,
+        "pa_mae": 117.95898026886763,
+        "pa_bias": -15.013828133093085,
+        "value_rmse": 1.0545351704282544,
+        "value_mae": 0.6918798282589788,
+        "value_bias": -0.08119523745352093,
+        "pa_total": 94839.1770672971,
+        "value_total": 313.8959279107381
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 171.946122808635,
+        "pa_mae": 125.27092151564294,
+        "pa_bias": -49.53475643376039,
+        "value_rmse": 1.1020046895850253,
+        "value_mae": 0.6941492526199742,
+        "value_bias": -0.18354438354148606,
+        "pa_total": 79211.56235548499,
+        "value_total": 267.66545517489993
+      },
+      "learned_working": {
+        "pa_rmse": 171.946122808635,
+        "pa_mae": 125.27092151564294,
+        "pa_bias": -49.53475643376039,
+        "value_rmse": 1.1279475292892365,
+        "value_mae": 0.695052350564123,
+        "value_bias": -0.18735723999733747,
+        "pa_total": 79211.56235548499,
+        "value_total": 263.92063729651915
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 317,
+        "players": 210,
+        "rmse": 1.9137870794694851,
+        "mae": 1.466906968291114,
+        "bias": -0.007107230832084025,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 317,
+        "players": 210,
+        "rmse": 1.8324005031535704,
+        "mae": 1.354580895241197,
+        "bias": -0.13122101865835362,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 317,
+        "players": 210,
+        "rmse": 1.74523222323058,
+        "mae": 1.2842812803400003,
+        "bias": -0.0774275715571424,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 317,
+        "players": 210,
+        "rmse": 1.746131917859963,
+        "mae": 1.284126680608967,
+        "bias": -0.0744283956188926,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.496266774205871,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 44644.92761111043,
+            "actual": 45279.0
+          },
+          "K": {
+            "expected": 25076.8870188883,
+            "actual": 24393.0
+          },
+          "UBB": {
+            "expected": 8202.718121798038,
+            "actual": 7921.0
+          },
+          "HBP": {
+            "expected": 1035.803019321062,
+            "actual": 1004.0
+          },
+          "1B": {
+            "expected": 14054.032995943604,
+            "actual": 14346.0
+          },
+          "2B": {
+            "expected": 4487.67285456034,
+            "actual": 4522.0
+          },
+          "3B": {
+            "expected": 632.65746064979,
+            "actual": 555.0
+          },
+          "HR": {
+            "expected": 3275.3009177284357,
+            "actual": 3390.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4945559674900308,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 44764.25760984325,
+            "actual": 45279.0
+          },
+          "K": {
+            "expected": 25113.41348837096,
+            "actual": 24393.0
+          },
+          "UBB": {
+            "expected": 8280.074528823681,
+            "actual": 7921.0
+          },
+          "HBP": {
+            "expected": 999.2251699632527,
+            "actual": 1004.0
+          },
+          "1B": {
+            "expected": 13986.364491859633,
+            "actual": 14346.0
+          },
+          "2B": {
+            "expected": 4472.463185395078,
+            "actual": 4522.0
+          },
+          "3B": {
+            "expected": 529.2316122733969,
+            "actual": 555.0
+          },
+          "HR": {
+            "expected": 3264.969913470748,
+            "actual": 3390.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "top20_current",
+    "rows": 105,
+    "players": 77,
+    "actual_pa": 38273.0,
+    "actual_value": 150.90920676833056,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 182.7488665316282,
+        "pa_mae": 148.10291438343117,
+        "pa_bias": -35.80657717873918,
+        "value_rmse": 1.339959900128724,
+        "value_mae": 0.98375360831288,
+        "value_bias": -0.15968114833304373,
+        "pa_total": 34634.07185922898,
+        "value_total": 133.96876185708626
+      },
+      "learned_reliability": {
+        "pa_rmse": 182.7488665316282,
+        "pa_mae": 148.10291438343117,
+        "pa_bias": -35.80657717873918,
+        "value_rmse": 1.340272171545188,
+        "value_mae": 0.9802110837267891,
+        "value_bias": -0.21400862748353097,
+        "pa_total": 34634.07185922898,
+        "value_total": 128.9965263428054
+      },
+      "binary_scout": {
+        "pa_rmse": 182.7488665316282,
+        "pa_mae": 148.10291438343117,
+        "pa_bias": -35.80657717873918,
+        "value_rmse": 1.2907657872197846,
+        "value_mae": 0.9567070635890965,
+        "value_bias": -0.217353218716745,
+        "pa_total": 34634.07185922898,
+        "value_total": 129.2067467882435
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 222.94200697659753,
+        "pa_mae": 178.12785012963874,
+        "pa_bias": -117.69073748920059,
+        "value_rmse": 1.4108638492206498,
+        "value_mae": 0.996090406763164,
+        "value_bias": -0.47564031837888743,
+        "pa_total": 26091.22536616278,
+        "value_total": 102.38707767970917
+      },
+      "learned_working": {
+        "pa_rmse": 222.94200697659758,
+        "pa_mae": 178.12785012963872,
+        "pa_bias": -117.69073748920059,
+        "value_rmse": 1.4420659370719184,
+        "value_mae": 1.0051821765559505,
+        "value_bias": -0.46901262801950944,
+        "pa_total": 26091.22536616278,
+        "value_total": 102.56965174349693
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 89,
+        "players": 70,
+        "rmse": 1.6166556249198865,
+        "mae": 1.3086162882125483,
+        "bias": -0.056131781203314426,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 89,
+        "players": 70,
+        "rmse": 1.6129957704914566,
+        "mae": 1.220521496692388,
+        "bias": -0.16819653902134352,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 89,
+        "players": 70,
+        "rmse": 1.4977716287695404,
+        "mae": 1.1273613425616047,
+        "bias": -0.14079507136542807,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 89,
+        "players": 70,
+        "rmse": 1.4966861495774697,
+        "mae": 1.1232201402528827,
+        "bias": -0.13899704246997185,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.502666768633633,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 16870.559178064676,
+            "actual": 17272.0
+          },
+          "K": {
+            "expected": 9302.033135520902,
+            "actual": 8912.0
+          },
+          "UBB": {
+            "expected": 3104.3803678194727,
+            "actual": 2989.0
+          },
+          "HBP": {
+            "expected": 388.46846370693686,
+            "actual": 353.0
+          },
+          "1B": {
+            "expected": 5358.494827924681,
+            "actual": 5402.0
+          },
+          "2B": {
+            "expected": 1675.392714960342,
+            "actual": 1727.0
+          },
+          "3B": {
+            "expected": 285.95152878406367,
+            "actual": 258.0
+          },
+          "HR": {
+            "expected": 1287.7197832189263,
+            "actual": 1360.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.5012157835509752,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 16904.29859713486,
+            "actual": 17272.0
+          },
+          "K": {
+            "expected": 9300.947898446992,
+            "actual": 8912.0
+          },
+          "UBB": {
+            "expected": 3150.8689324923685,
+            "actual": 2989.0
+          },
+          "HBP": {
+            "expected": 373.07225426451055,
+            "actual": 353.0
+          },
+          "1B": {
+            "expected": 5331.348318642391,
+            "actual": 5402.0
+          },
+          "2B": {
+            "expected": 1708.9089177869241,
+            "actual": 1727.0
+          },
+          "3B": {
+            "expected": 222.19070755508392,
+            "actual": 258.0
+          },
+          "HR": {
+            "expected": 1281.364373676869,
+            "actual": 1360.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "no_own_MLB",
+    "rows": 24852,
+    "players": 10351,
+    "actual_pa": 100179.0,
+    "actual_value": 209.15099149038397,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 27.709219962137077,
+        "pa_mae": 4.866569370894095,
+        "pa_bias": -0.6579286878196687,
+        "value_rmse": 0.15079322026230912,
+        "value_mae": 0.018695509557835905,
+        "value_bias": -0.0014530957203355596,
+        "pa_total": 83729.14303681311,
+        "value_total": 172.11447182201545
+      },
+      "learned_reliability": {
+        "pa_rmse": 27.709219962137077,
+        "pa_mae": 4.866569370894093,
+        "pa_bias": -0.6579286878196687,
+        "value_rmse": 0.15085672188540003,
+        "value_mae": 0.018218595310499526,
+        "value_bias": -0.002335883245342361,
+        "pa_total": 83729.14303681311,
+        "value_total": 150.1439303892436
+      },
+      "binary_scout": {
+        "pa_rmse": 27.709219962137077,
+        "pa_mae": 4.866569370894095,
+        "pa_bias": -0.6579286878196687,
+        "value_rmse": 0.15067401380738613,
+        "value_mae": 0.019311872215822683,
+        "value_bias": -0.0003533212812755026,
+        "pa_total": 83729.14303681311,
+        "value_total": 198.2788324315229
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 28.936762725737356,
+        "pa_mae": 5.388276144343989,
+        "pa_bias": -0.4094140325840036,
+        "value_rmse": 0.1533086866393188,
+        "value_mae": 0.020606672909433976,
+        "value_bias": 0.0002816255024565758,
+        "pa_total": 90158.74708498217,
+        "value_total": 214.36319413768018
+      },
+      "learned_working": {
+        "pa_rmse": 28.936762725737356,
+        "pa_mae": 5.388276144343989,
+        "pa_bias": -0.4094140325840036,
+        "value_rmse": 0.15316558793662688,
+        "value_mae": 0.018876024679451923,
+        "value_bias": -0.0025088850847433965,
+        "pa_total": 90158.74708498217,
+        "value_total": 146.3506479982954
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 803,
+        "players": 802,
+        "rmse": 2.672196719872786,
+        "mae": 1.9944525207685728,
+        "bias": 0.09060817138784695,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 803,
+        "players": 802,
+        "rmse": 2.6426046749165435,
+        "mae": 1.984965184030407,
+        "bias": -0.06524295105286466,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 803,
+        "players": 802,
+        "rmse": 2.617632291352342,
+        "mae": 1.9572031272241617,
+        "bias": 0.2550264939432208,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 803,
+        "players": 802,
+        "rmse": 2.623757966094284,
+        "mae": 1.9619231146665896,
+        "bias": 0.281296532392863,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4812380290827443,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 43418.492784883434,
+            "actual": 44418.0
+          },
+          "K": {
+            "expected": 26515.74574605497,
+            "actual": 25441.0
+          },
+          "UBB": {
+            "expected": 8009.814120359421,
+            "actual": 7661.0
+          },
+          "HBP": {
+            "expected": 1119.2589285750976,
+            "actual": 1086.0
+          },
+          "1B": {
+            "expected": 13467.216670692467,
+            "actual": 14059.0
+          },
+          "2B": {
+            "expected": 4150.64039624753,
+            "actual": 4221.0
+          },
+          "3B": {
+            "expected": 566.9850538342986,
+            "actual": 484.0
+          },
+          "HR": {
+            "expected": 2930.846299352778,
+            "actual": 2809.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4808136390920421,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 43567.20545653357,
+            "actual": 44418.0
+          },
+          "K": {
+            "expected": 26599.608960748505,
+            "actual": 25441.0
+          },
+          "UBB": {
+            "expected": 8051.508891309399,
+            "actual": 7661.0
+          },
+          "HBP": {
+            "expected": 1024.0947207510947,
+            "actual": 1086.0
+          },
+          "1B": {
+            "expected": 13421.727036241367,
+            "actual": 14059.0
+          },
+          "2B": {
+            "expected": 4149.141843730789,
+            "actual": 4221.0
+          },
+          "3B": {
+            "expected": 471.39877511519467,
+            "actual": 484.0
+          },
+          "HR": {
+            "expected": 2894.3143155700827,
+            "actual": 2809.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "substantial_own_MLB",
+    "rows": 1043,
+    "players": 381,
+    "actual_pa": 494844.0,
+    "actual_value": 2242.4864411961753,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 150.41845476760022,
+        "pa_mae": 120.98341041741308,
+        "pa_bias": -15.403406847247112,
+        "value_rmse": 1.4838663425040688,
+        "value_mae": 1.1515447071002811,
+        "value_bias": 0.10690345940053247,
+        "pa_total": 480608.010494993,
+        "value_total": 2354.5705942052978
+      },
+      "learned_reliability": {
+        "pa_rmse": 150.41845476760022,
+        "pa_mae": 120.98341041741308,
+        "pa_bias": -15.40340684724711,
+        "value_rmse": 1.4751999493126766,
+        "value_mae": 1.1408396204821079,
+        "value_bias": -0.11522271585938719,
+        "pa_total": 480608.010494993,
+        "value_total": 2136.468265062817
+      },
+      "binary_scout": {
+        "pa_rmse": 150.41845476760022,
+        "pa_mae": 120.9834104174131,
+        "pa_bias": -15.40340684724711,
+        "value_rmse": 1.4626059081372067,
+        "value_mae": 1.13035149907846,
+        "value_bias": -0.0614690632833751,
+        "pa_total": 480608.010494993,
+        "value_total": 2181.0820266620585
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 150.96212802881186,
+        "pa_mae": 120.5607998427901,
+        "pa_bias": -13.784320452435704,
+        "value_rmse": 1.4686418332740458,
+        "value_mae": 1.1325444534071574,
+        "value_bias": -0.06963859874520581,
+        "pa_total": 483751.1269137084,
+        "value_total": 2186.3997103271126
+      },
+      "learned_working": {
+        "pa_rmse": 150.96212802881186,
+        "pa_mae": 120.5607998427901,
+        "pa_bias": -13.784320452435704,
+        "value_rmse": 1.4754431541495545,
+        "value_mae": 1.1408711465497203,
+        "value_bias": -0.10587913111157836,
+        "pa_total": 483751.1269137084,
+        "value_total": 2153.4354234185616
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 998,
+        "players": 370,
+        "rmse": 1.50509442460144,
+        "mae": 1.158194889949297,
+        "bias": 0.242132738229482,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 998,
+        "players": 370,
+        "rmse": 1.459282042002762,
+        "mae": 1.1217402419070992,
+        "bias": -0.04378443506625108,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 998,
+        "players": 370,
+        "rmse": 1.4460735467008947,
+        "mae": 1.1100387281193749,
+        "bias": 0.02548133376204648,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 998,
+        "players": 370,
+        "rmse": 1.4474291422204257,
+        "mae": 1.109944721736335,
+        "bias": 0.0004067818443306311,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4843667382967698,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 231190.52997840793,
+            "actual": 233228.0
+          },
+          "K": {
+            "expected": 99676.46855731588,
+            "actual": 99200.0
+          },
+          "UBB": {
+            "expected": 42350.815064689334,
+            "actual": 42778.0
+          },
+          "HBP": {
+            "expected": 5245.348658482241,
+            "actual": 5103.0
+          },
+          "1B": {
+            "expected": 73090.44808091005,
+            "actual": 71954.0
+          },
+          "2B": {
+            "expected": 23389.57462438166,
+            "actual": 23127.0
+          },
+          "3B": {
+            "expected": 2187.3640516927076,
+            "actual": 1759.0
+          },
+          "HR": {
+            "expected": 17713.450984120194,
+            "actual": 17695.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.483931369917442,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 232676.9493726521,
+            "actual": 233228.0
+          },
+          "K": {
+            "expected": 100239.84209466093,
+            "actual": 99200.0
+          },
+          "UBB": {
+            "expected": 42378.5281261141,
+            "actual": 42778.0
+          },
+          "HBP": {
+            "expected": 5198.146847900845,
+            "actual": 5103.0
+          },
+          "1B": {
+            "expected": 72399.41923261227,
+            "actual": 71954.0
+          },
+          "2B": {
+            "expected": 22696.813736856555,
+            "actual": 23127.0
+          },
+          "3B": {
+            "expected": 2034.3404362207,
+            "actual": 1759.0
+          },
+          "HR": {
+            "expected": 17219.960152982487,
+            "actual": 17695.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "players": 4663,
+    "actual_pa": 179968.0,
+    "actual_value": 636.6179760161788,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 57.9255912819625,
+        "pa_mae": 18.866536105012514,
+        "pa_bias": -1.7750465188427225,
+        "value_rmse": 0.4526000434185743,
+        "value_mae": 0.12260988398286286,
+        "value_bias": 0.003689640304671186,
+        "pa_total": 171690.9580826364,
+        "value_total": 653.8227687568605
+      },
+      "learned_reliability": {
+        "pa_rmse": 57.9255912819625,
+        "pa_mae": 18.866536105012514,
+        "pa_bias": -1.7750465188427225,
+        "value_rmse": 0.4440407168421217,
+        "value_mae": 0.11907062141884628,
+        "value_bias": -0.010013576287020425,
+        "pa_total": 171690.9580826364,
+        "value_total": 589.9246697898024
+      },
+      "binary_scout": {
+        "pa_rmse": 57.9255912819625,
+        "pa_mae": 18.866536105012514,
+        "pa_bias": -1.7750465188427225,
+        "value_rmse": 0.436094425795813,
+        "value_mae": 0.1175919396455367,
+        "value_bias": -0.008159370121115252,
+        "pa_total": 171690.9580826364,
+        "value_total": 598.5708331414182
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 58.665469196491905,
+        "pa_mae": 19.371968702514017,
+        "pa_bias": -1.0267474708321558,
+        "value_rmse": 0.44111753689329497,
+        "value_mae": 0.11971376563164782,
+        "value_bias": -0.005745339350303822,
+        "pa_total": 175180.27654350965,
+        "value_total": 609.8274586257121
+      },
+      "learned_working": {
+        "pa_rmse": 58.665469196491905,
+        "pa_mae": 19.371968702514017,
+        "pa_bias": -1.0267474708321558,
+        "value_rmse": 0.4487441337001184,
+        "value_mae": 0.12103007859548588,
+        "value_bias": -0.007569008316514987,
+        "pa_total": 175180.27654350965,
+        "value_total": 601.3236902362692
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 624,
+        "players": 624,
+        "rmse": 2.020373646822552,
+        "mae": 1.509440737604765,
+        "bias": 0.13802733939724385,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 624,
+        "players": 624,
+        "rmse": 1.9428257886823572,
+        "mae": 1.4385487185510586,
+        "bias": -0.0749501980566401,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 624,
+        "players": 624,
+        "rmse": 1.8807692497005795,
+        "mae": 1.389879201315929,
+        "bias": -0.03744293854636813,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 624,
+        "players": 624,
+        "rmse": 1.8807692497005795,
+        "mae": 1.389879201315929,
+        "bias": -0.03744293854636813,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.480161220887066,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 84125.68765283268,
+            "actual": 83834.0
+          },
+          "K": {
+            "expected": 37977.38839083522,
+            "actual": 38064.0
+          },
+          "UBB": {
+            "expected": 14153.98642850409,
+            "actual": 14692.0
+          },
+          "HBP": {
+            "expected": 1711.2380428111305,
+            "actual": 1747.0
+          },
+          "1B": {
+            "expected": 26964.83069760441,
+            "actual": 26449.0
+          },
+          "2B": {
+            "expected": 8296.494781190011,
+            "actual": 8317.0
+          },
+          "3B": {
+            "expected": 1013.4730624618899,
+            "actual": 788.0
+          },
+          "HR": {
+            "expected": 5724.900943760554,
+            "actual": 6077.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.479292379957911,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 84615.72926338017,
+            "actual": 83834.0
+          },
+          "K": {
+            "expected": 38065.25806128119,
+            "actual": 38064.0
+          },
+          "UBB": {
+            "expected": 14107.958760769887,
+            "actual": 14692.0
+          },
+          "HBP": {
+            "expected": 1648.8809799657902,
+            "actual": 1747.0
+          },
+          "1B": {
+            "expected": 26883.704747276934,
+            "actual": 26449.0
+          },
+          "2B": {
+            "expected": 8152.049946452373,
+            "actual": 8317.0
+          },
+          "3B": {
+            "expected": 898.5023617345191,
+            "actual": 788.0
+          },
+          "HR": {
+            "expected": 5595.915879139126,
+            "actual": 6077.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "players": 4691,
+    "actual_pa": 179643.0,
+    "actual_value": 631.9639029970557,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 56.53395780961635,
+        "pa_mae": 18.119845941325703,
+        "pa_bias": -1.2295730944448888,
+        "value_rmse": 0.43386358730143654,
+        "value_mae": 0.11761055783870827,
+        "value_bias": 0.005948817212405167,
+        "pa_total": 173875.07261395903,
+        "value_total": 659.8698045404484
+      },
+      "learned_reliability": {
+        "pa_rmse": 56.53395780961635,
+        "pa_mae": 18.119845941325703,
+        "pa_bias": -1.2295730944448888,
+        "value_rmse": 0.4326239822946312,
+        "value_mae": 0.11543488997140396,
+        "value_bias": -0.006298571102613451,
+        "pa_total": 173875.07261395903,
+        "value_total": 602.417305954696
+      },
+      "binary_scout": {
+        "pa_rmse": 56.53395780961635,
+        "pa_mae": 18.119845941325703,
+        "pa_bias": -1.2295730944448888,
+        "value_rmse": 0.42596448802110204,
+        "value_mae": 0.11529828152818612,
+        "value_bias": -0.002877608171902038,
+        "pa_total": 173875.07261395903,
+        "value_total": 618.4650430626632
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 56.76698817179885,
+        "pa_mae": 18.469686230112604,
+        "pa_bias": -0.5663911537466362,
+        "value_rmse": 0.42380405643817565,
+        "value_mae": 0.11578417860693703,
+        "value_bias": -0.0006307445266177699,
+        "pa_total": 176986.0590977745,
+        "value_total": 629.0050804226917
+      },
+      "learned_working": {
+        "pa_rmse": 56.76698817179885,
+        "pa_mae": 18.469686230112604,
+        "pa_bias": -0.5663911537466362,
+        "value_rmse": 0.42946382293037716,
+        "value_mae": 0.11545191728856186,
+        "value_bias": -0.0046895507693677976,
+        "pa_total": 176986.0590977745,
+        "value_total": 609.9652203379513
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 628,
+        "players": 628,
+        "rmse": 1.8149858783804713,
+        "mae": 1.3776771688868652,
+        "bias": 0.14247429971878828,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 628,
+        "players": 628,
+        "rmse": 1.7783821411031304,
+        "mae": 1.3431727001732396,
+        "bias": -0.06044933010454045,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 628,
+        "players": 628,
+        "rmse": 1.7481792926411617,
+        "mae": 1.3102499143938962,
+        "bias": 0.017324826919450746,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 628,
+        "players": 628,
+        "rmse": 1.7481792926411617,
+        "mae": 1.3102499143938962,
+        "bias": 0.017324826919450746,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.476351858400404,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 82404.86515460545,
+            "actual": 83815.0
+          },
+          "K": {
+            "expected": 39029.75417856444,
+            "actual": 38942.0
+          },
+          "UBB": {
+            "expected": 14628.044870882957,
+            "actual": 14573.0
+          },
+          "HBP": {
+            "expected": 1839.0297584831362,
+            "actual": 1910.0
+          },
+          "1B": {
+            "expected": 26276.186419494254,
+            "actual": 25854.0
+          },
+          "2B": {
+            "expected": 8344.567975604552,
+            "actual": 8167.0
+          },
+          "3B": {
+            "expected": 925.0847703081228,
+            "actual": 842.0
+          },
+          "HR": {
+            "expected": 6195.466872057085,
+            "actual": 5540.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4752092270477126,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 82879.74950578873,
+            "actual": 83815.0
+          },
+          "K": {
+            "expected": 39107.8772433276,
+            "actual": 38942.0
+          },
+          "UBB": {
+            "expected": 14606.567843637662,
+            "actual": 14573.0
+          },
+          "HBP": {
+            "expected": 1767.5924052070905,
+            "actual": 1910.0
+          },
+          "1B": {
+            "expected": 26151.170959678362,
+            "actual": 25854.0
+          },
+          "2B": {
+            "expected": 8249.915307088637,
+            "actual": 8167.0
+          },
+          "3B": {
+            "expected": 817.4481762600365,
+            "actual": 842.0
+          },
+          "HR": {
+            "expected": 6062.678559011876,
+            "actual": 5540.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "players": 4478,
+    "actual_pa": 181308.0,
+    "actual_value": 635.0323599592017,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 62.69520305173228,
+        "pa_mae": 20.285612366226246,
+        "pa_bias": -1.9959458217506636,
+        "value_rmse": 0.48125014122658255,
+        "value_mae": 0.13549299073724724,
+        "value_bias": 0.005147699900965173,
+        "pa_total": 172370.15461020055,
+        "value_total": 658.0837601157237
+      },
+      "learned_reliability": {
+        "pa_rmse": 62.69520305173228,
+        "pa_mae": 20.285612366226246,
+        "pa_bias": -1.9959458217506636,
+        "value_rmse": 0.47753878970261177,
+        "value_mae": 0.13378128962002045,
+        "value_bias": -0.008141583015266936,
+        "pa_total": 172370.15461020055,
+        "value_total": 598.5743512168364
+      },
+      "binary_scout": {
+        "pa_rmse": 62.69520305173228,
+        "pa_mae": 20.285612366226246,
+        "pa_bias": -1.9959458217506636,
+        "value_rmse": 0.47477487430871046,
+        "value_mae": 0.13455818699696498,
+        "value_bias": -0.005691122876473707,
+        "pa_total": 172370.15461020055,
+        "value_total": 609.5475117183524
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 64.33589038024796,
+        "pa_mae": 21.138931302845247,
+        "pa_bias": -1.0116336755448505,
+        "value_rmse": 0.47916549646225576,
+        "value_mae": 0.13717297584983323,
+        "value_bias": -0.002492829784264764,
+        "pa_total": 176777.90440091016,
+        "value_total": 623.869468185264
+      },
+      "learned_working": {
+        "pa_rmse": 64.33589038024796,
+        "pa_mae": 21.138931302845247,
+        "pa_bias": -1.0116336755448505,
+        "value_rmse": 0.4813247766842212,
+        "value_mae": 0.13615542492923416,
+        "value_bias": -0.005543238344303291,
+        "pa_total": 176777.90440091016,
+        "value_total": 610.2097386534116
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 638,
+        "players": 638,
+        "rmse": 2.079751742549298,
+        "mae": 1.5492511440827028,
+        "bias": 0.13870432802935662,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 638,
+        "players": 638,
+        "rmse": 2.0154975592379496,
+        "mae": 1.5049175475441372,
+        "bias": -0.06564164955558402,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 638,
+        "players": 638,
+        "rmse": 1.994070929352313,
+        "mae": 1.486492286973573,
+        "bias": -0.026476140558253727,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 638,
+        "players": 638,
+        "rmse": 1.994070929352313,
+        "mae": 1.486492286973573,
+        "bias": -0.026476140558253727,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4986379580916243,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 83348.82927316718,
+            "actual": 82354.0
+          },
+          "K": {
+            "expected": 40191.193470990336,
+            "actual": 40558.0
+          },
+          "UBB": {
+            "expected": 14754.629735802633,
+            "actual": 14975.0
+          },
+          "HBP": {
+            "expected": 2045.7917784820222,
+            "actual": 1972.0
+          },
+          "1B": {
+            "expected": 25908.65572750198,
+            "actual": 25469.0
+          },
+          "2B": {
+            "expected": 8400.92103876967,
+            "actual": 8453.0
+          },
+          "3B": {
+            "expected": 989.9052638872146,
+            "actual": 779.0
+          },
+          "HR": {
+            "expected": 5668.073711398969,
+            "actual": 6748.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4975918585342394,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 83810.66503364503,
+            "actual": 82354.0
+          },
+          "K": {
+            "expected": 40292.705082211934,
+            "actual": 40558.0
+          },
+          "UBB": {
+            "expected": 14781.834641732394,
+            "actual": 14975.0
+          },
+          "HBP": {
+            "expected": 1954.284101704928,
+            "actual": 1972.0
+          },
+          "1B": {
+            "expected": 25798.61355650011,
+            "actual": 25469.0
+          },
+          "2B": {
+            "expected": 8223.657045265842,
+            "actual": 8453.0
+          },
+          "3B": {
+            "expected": 880.472172391838,
+            "actual": 779.0
+          },
+          "HR": {
+            "expected": 5565.768366547935,
+            "actual": 6748.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "players": 4242,
+    "actual_pa": 181583.0,
+    "actual_value": 567.8470247026873,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 59.419515451213705,
+        "pa_mae": 20.24191429642659,
+        "pa_bias": -3.653258038609684,
+        "value_rmse": 0.437230882246012,
+        "value_mae": 0.12700762361142828,
+        "value_bias": 0.011773527631714227,
+        "pa_total": 166085.8794002177,
+        "value_total": 617.7903289164192
+      },
+      "learned_reliability": {
+        "pa_rmse": 59.419515451213705,
+        "pa_mae": 20.24191429642659,
+        "pa_bias": -3.653258038609684,
+        "value_rmse": 0.4252059515902998,
+        "value_mae": 0.12250456204790688,
+        "value_bias": -0.0062302064250986154,
+        "pa_total": 166085.8794002177,
+        "value_total": 541.418489047419
+      },
+      "binary_scout": {
+        "pa_rmse": 59.419515451213705,
+        "pa_mae": 20.24191429642659,
+        "pa_bias": -3.653258038609684,
+        "value_rmse": 0.42870279770164427,
+        "value_mae": 0.12766708798115803,
+        "value_bias": 0.010520799660003565,
+        "pa_total": 166085.8794002177,
+        "value_total": 612.4762568604224
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 60.24800881356193,
+        "pa_mae": 21.29242078729651,
+        "pa_bias": -3.517587962815285,
+        "value_rmse": 0.43291889669682376,
+        "value_mae": 0.12956054636879855,
+        "value_bias": 0.006470126784676013,
+        "pa_total": 166661.39186173756,
+        "value_total": 595.293302523283
+      },
+      "learned_working": {
+        "pa_rmse": 60.24800881356193,
+        "pa_mae": 21.29242078729651,
+        "pa_bias": -3.517587962815285,
+        "value_rmse": 0.42844490666208607,
+        "value_mae": 0.12308877909637717,
+        "value_bias": -0.009186492080699323,
+        "pa_total": 166661.39186173756,
+        "value_total": 528.8779252963607
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 686,
+        "players": 686,
+        "rmse": 1.8963027723420236,
+        "mae": 1.4300386229753028,
+        "bias": 0.328251208139592,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 686,
+        "players": 686,
+        "rmse": 1.8108844271923081,
+        "mae": 1.3436645341016968,
+        "bias": 0.06056156430942732,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 686,
+        "players": 686,
+        "rmse": 1.842657220229687,
+        "mae": 1.3437072625818394,
+        "bias": 0.3216902963292715,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 686,
+        "players": 686,
+        "rmse": 1.8404424324878232,
+        "mae": 1.3398658073900958,
+        "bias": 0.2804486891556098,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4641808972288353,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 81932.22334637071,
+            "actual": 84945.0
+          },
+          "K": {
+            "expected": 42020.85601597061,
+            "actual": 40693.0
+          },
+          "UBB": {
+            "expected": 15394.825383475945,
+            "actual": 14337.0
+          },
+          "HBP": {
+            "expected": 2237.7641353024164,
+            "actual": 2041.0
+          },
+          "1B": {
+            "expected": 25075.24383032699,
+            "actual": 25807.0
+          },
+          "2B": {
+            "expected": 7991.149484426643,
+            "actual": 7918.0
+          },
+          "3B": {
+            "expected": 774.6788223508075,
+            "actual": 641.0
+          },
+          "HR": {
+            "expected": 6156.258981775877,
+            "actual": 5201.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4632694449678534,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 82447.14506525008,
+            "actual": 84945.0
+          },
+          "K": {
+            "expected": 42209.512995405064,
+            "actual": 40693.0
+          },
+          "UBB": {
+            "expected": 15516.297407866454,
+            "actual": 14337.0
+          },
+          "HBP": {
+            "expected": 2160.461505069974,
+            "actual": 2041.0
+          },
+          "1B": {
+            "expected": 24775.811870249898,
+            "actual": 25807.0
+          },
+          "2B": {
+            "expected": 7835.939567106002,
+            "actual": 7918.0
+          },
+          "3B": {
+            "expected": 675.8028989939671,
+            "actual": 641.0
+          },
+          "HR": {
+            "expected": 5962.028690058575,
+            "actual": 5201.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "players": 4244,
+    "actual_pa": 182917.0,
+    "actual_value": 565.3858240685531,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 62.037141056858886,
+        "pa_mae": 21.894475078031864,
+        "pa_bias": -0.655982624234145,
+        "value_rmse": 0.44487333684047575,
+        "value_mae": 0.13136831332734664,
+        "value_bias": 0.012061494632422008,
+        "pa_total": 180133.0097427503,
+        "value_total": 616.5748072885522
+      },
+      "learned_reliability": {
+        "pa_rmse": 62.037141056858886,
+        "pa_mae": 21.894475078031864,
+        "pa_bias": -0.655982624234145,
+        "value_rmse": 0.43153626300763626,
+        "value_mae": 0.12407333552956414,
+        "value_bias": -0.006874726868002713,
+        "pa_total": 180133.0097427503,
+        "value_total": 536.2094832407495
+      },
+      "binary_scout": {
+        "pa_rmse": 62.037141056858886,
+        "pa_mae": 21.894475078031864,
+        "pa_bias": -0.655982624234145,
+        "value_rmse": 0.41839285739128684,
+        "value_mae": 0.12651104850755882,
+        "value_bias": 0.006200066477158886,
+        "pa_total": 180133.0097427503,
+        "value_total": 591.6989061976153
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 62.846189947256164,
+        "pa_mae": 22.315917641297908,
+        "pa_bias": -1.540511255677165,
+        "value_rmse": 0.4210387639813216,
+        "value_mae": 0.12713934835117022,
+        "value_bias": 0.0031020661631459678,
+        "pa_total": 176379.0702309061,
+        "value_total": 578.5509928649445
+      },
+      "learned_working": {
+        "pa_rmse": 62.846189947256164,
+        "pa_mae": 22.315917641297908,
+        "pa_bias": -1.540511255677165,
+        "value_rmse": 0.43149496582443947,
+        "value_mae": 0.12404926415572351,
+        "value_bias": -0.009318638596512888,
+        "pa_total": 176379.0702309061,
+        "value_total": 525.8375218649524
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 649,
+        "players": 649,
+        "rmse": 1.9051854741211134,
+        "mae": 1.4405992471100288,
+        "bias": 0.24959751214232626,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 649,
+        "players": 649,
+        "rmse": 1.8136839379386198,
+        "mae": 1.3616065530159474,
+        "bias": -0.0208365496988733,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 649,
+        "players": 649,
+        "rmse": 1.7701448247723504,
+        "mae": 1.3259859361376867,
+        "bias": 0.17041383996876605,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 649,
+        "players": 649,
+        "rmse": 1.7722846248355377,
+        "mae": 1.3258142857301474,
+        "bias": 0.15597468581575719,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4863079569443323,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 83912.93383248191,
+            "actual": 83388.0
+          },
+          "K": {
+            "expected": 41882.368887130564,
+            "actual": 41634.0
+          },
+          "UBB": {
+            "expected": 14890.447420150955,
+            "actual": 15243.0
+          },
+          "HBP": {
+            "expected": 2176.8992035356355,
+            "actual": 2095.0
+          },
+          "1B": {
+            "expected": 25815.336875529258,
+            "actual": 25833.0
+          },
+          "2B": {
+            "expected": 8030.166823328578,
+            "actual": 8178.0
+          },
+          "3B": {
+            "expected": 749.4603355007239,
+            "actual": 709.0
+          },
+          "HR": {
+            "expected": 5459.386622342392,
+            "actual": 5837.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4854848293936491,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 84304.92839884048,
+            "actual": 83388.0
+          },
+          "K": {
+            "expected": 42245.536354129625,
+            "actual": 41634.0
+          },
+          "UBB": {
+            "expected": 15062.38083605246,
+            "actual": 15243.0
+          },
+          "HBP": {
+            "expected": 2098.702016099171,
+            "actual": 2095.0
+          },
+          "1B": {
+            "expected": 25407.212012675816,
+            "actual": 25833.0
+          },
+          "2B": {
+            "expected": 7833.064058475611,
+            "actual": 8178.0
+          },
+          "3B": {
+            "expected": 656.5540509290536,
+            "actual": 709.0
+          },
+          "HR": {
+            "expected": 5308.622272797802,
+            "actual": 5837.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "players": 4196,
+    "actual_pa": 182194.0,
+    "actual_value": 569.5824545348951,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 62.92643041240412,
+        "pa_mae": 22.801986385326373,
+        "pa_bias": 1.0856220396482374,
+        "value_rmse": 0.4726589795666056,
+        "value_mae": 0.13383820300160196,
+        "value_bias": 0.01231737874385513,
+        "pa_total": 186749.27007836403,
+        "value_total": 621.2661757441111
+      },
+      "learned_reliability": {
+        "pa_rmse": 62.92643041240412,
+        "pa_mae": 22.801986385326373,
+        "pa_bias": 1.0856220396482374,
+        "value_rmse": 0.45288068395940567,
+        "value_mae": 0.12730393258382455,
+        "value_bias": -0.001180136982345089,
+        "pa_total": 186749.27007836403,
+        "value_total": 564.630599756975
+      },
+      "binary_scout": {
+        "pa_rmse": 62.92643041240412,
+        "pa_mae": 22.801986385326373,
+        "pa_bias": 1.0856220396482374,
+        "value_rmse": 0.4456565850427347,
+        "value_mae": 0.1299706575470346,
+        "value_bias": 0.007042860911072207,
+        "pa_total": 186749.27007836403,
+        "value_total": 599.1342989177541
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 63.154326510194856,
+        "pa_mae": 22.89228117575611,
+        "pa_bias": 0.17344042282338062,
+        "value_rmse": 0.44506008816651005,
+        "value_mae": 0.13003345491682836,
+        "value_bias": 0.005628062197483013,
+        "pa_total": 182921.7560141669,
+        "value_total": 593.1978035155338
+      },
+      "learned_working": {
+        "pa_rmse": 63.154326510194856,
+        "pa_mae": 22.89228117575611,
+        "pa_bias": 0.17344042282338062,
+        "value_rmse": 0.450195307229873,
+        "value_mae": 0.12667334828741786,
+        "value_bias": -0.0026707678140609334,
+        "pa_total": 182921.7560141669,
+        "value_total": 558.3759127870954
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 647,
+        "players": 647,
+        "rmse": 1.9097620777814317,
+        "mae": 1.441441065231049,
+        "bias": 0.17798181230492066,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 647,
+        "players": 647,
+        "rmse": 1.8080592463812333,
+        "mae": 1.3535675971200645,
+        "bias": 0.014858128903156942,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 647,
+        "players": 647,
+        "rmse": 1.7721091590784375,
+        "mae": 1.3310574474700478,
+        "bias": 0.11153035952640956,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 647,
+        "players": 647,
+        "rmse": 1.774323885168201,
+        "mae": 1.332528852143674,
+        "bias": 0.11171049120747552,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4681900360659617,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 81891.29456957045,
+            "actual": 84862.0
+          },
+          "K": {
+            "expected": 42200.08345612777,
+            "actual": 41146.0
+          },
+          "UBB": {
+            "expected": 15464.461487251676,
+            "actual": 14401.0
+          },
+          "HBP": {
+            "expected": 2197.2627142418223,
+            "actual": 2017.0
+          },
+          "1B": {
+            "expected": 25357.248839463296,
+            "actual": 25858.0
+          },
+          "2B": {
+            "expected": 8241.61743801783,
+            "actual": 7764.0
+          },
+          "3B": {
+            "expected": 804.8015952204971,
+            "actual": 697.0
+          },
+          "HR": {
+            "expected": 6037.22990010665,
+            "actual": 5449.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4669571922926128,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 82112.23537471985,
+            "actual": 84862.0
+          },
+          "K": {
+            "expected": 42416.533512635964,
+            "actual": 41146.0
+          },
+          "UBB": {
+            "expected": 15654.089483742275,
+            "actual": 14401.0
+          },
+          "HBP": {
+            "expected": 2134.132201739179,
+            "actual": 2017.0
+          },
+          "1B": {
+            "expected": 25066.429321086733,
+            "actual": 25858.0
+          },
+          "2B": {
+            "expected": 8122.386142651058,
+            "actual": 7764.0
+          },
+          "3B": {
+            "expected": 731.153410457371,
+            "actual": 697.0
+          },
+          "HR": {
+            "expected": 5957.040552967575,
+            "actual": 5449.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "players": 3992,
+    "actual_pa": 182880.0,
+    "actual_value": 570.1755114590245,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 62.67399075293409,
+        "pa_mae": 23.11675186832479,
+        "pa_bias": -0.09745245319936406,
+        "value_rmse": 0.4520071146232147,
+        "value_mae": 0.13572004757097655,
+        "value_bias": 0.012150942061859904,
+        "pa_total": 182490.96980682813,
+        "value_total": 618.6820721699692
+      },
+      "learned_reliability": {
+        "pa_rmse": 62.67399075293409,
+        "pa_mae": 23.11675186832479,
+        "pa_bias": -0.09745245319936406,
+        "value_rmse": 0.43863086981754507,
+        "value_mae": 0.13149108068450094,
+        "value_bias": 0.0035994980679900047,
+        "pa_total": 182490.96980682813,
+        "value_total": 584.5447077464405
+      },
+      "binary_scout": {
+        "pa_rmse": 62.67399075293409,
+        "pa_mae": 23.11675186832479,
+        "pa_bias": -0.09745245319936406,
+        "value_rmse": 0.43513977529689135,
+        "value_mae": 0.12970420276974526,
+        "value_bias": -0.002346537457073655,
+        "pa_total": 182490.96980682813,
+        "value_total": 560.8081339303864
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 64.35296684897881,
+        "pa_mae": 23.548058349506963,
+        "pa_bias": -0.8723147155772106,
+        "value_rmse": 0.4411513236512789,
+        "value_mae": 0.13033580706751183,
+        "value_bias": -0.0036246643565723707,
+        "pa_total": 179397.71965541577,
+        "value_total": 555.7058513475874
+      },
+      "learned_working": {
+        "pa_rmse": 64.35296684897881,
+        "pa_mae": 23.548058349506963,
+        "pa_bias": -0.8723147155772106,
+        "value_rmse": 0.4431224098351453,
+        "value_mae": 0.13187718874211707,
+        "value_bias": 0.0019855855437211924,
+        "pa_total": 179397.71965541577,
+        "value_total": 578.1019689495594
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 666,
+        "players": 666,
+        "rmse": 1.8853542355457333,
+        "mae": 1.3982347073025123,
+        "bias": 0.21234182564118742,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 666,
+        "players": 666,
+        "rmse": 1.7916441822181985,
+        "mae": 1.3190917587938529,
+        "bias": 0.10674914278963372,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 666,
+        "players": 666,
+        "rmse": 1.751112302482032,
+        "mae": 1.2816788696603023,
+        "bias": 0.01562904084282124,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 666,
+        "players": 666,
+        "rmse": 1.7539860809668013,
+        "mae": 1.2833845827378894,
+        "bias": 0.018257899850449295,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.467731807231499,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 84079.6897896694,
+            "actual": 85376.0
+          },
+          "K": {
+            "expected": 41909.348279062615,
+            "actual": 40626.0
+          },
+          "UBB": {
+            "expected": 14667.212652374956,
+            "actual": 14823.0
+          },
+          "HBP": {
+            "expected": 2060.740727722468,
+            "actual": 1928.0
+          },
+          "1B": {
+            "expected": 25755.207360196626,
+            "actual": 26106.0
+          },
+          "2B": {
+            "expected": 7867.898583476182,
+            "actual": 7743.0
+          },
+          "3B": {
+            "expected": 834.769681542999,
+            "actual": 628.0
+          },
+          "HR": {
+            "expected": 5705.132925954756,
+            "actual": 5650.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4665436124604474,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 84231.29023578929,
+            "actual": 85376.0
+          },
+          "K": {
+            "expected": 42031.09193776453,
+            "actual": 40626.0
+          },
+          "UBB": {
+            "expected": 14822.885726030445,
+            "actual": 14823.0
+          },
+          "HBP": {
+            "expected": 2014.9182811820694,
+            "actual": 1928.0
+          },
+          "1B": {
+            "expected": 25528.53713790005,
+            "actual": 26106.0
+          },
+          "2B": {
+            "expected": 7852.2387566132265,
+            "actual": 7743.0
+          },
+          "3B": {
+            "expected": 742.6909690975083,
+            "actual": 628.0
+          },
+          "HR": {
+            "expected": 5656.34695562287,
+            "actual": 5650.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "stage_Current MLB",
+    "rows": 4541,
+    "players": 1521,
+    "actual_pa": 1156856.0,
+    "actual_value": 3946.8317499722125,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 140.91729743497936,
+        "pa_mae": 107.96143281119963,
+        "pa_bias": -5.228681520099564,
+        "value_rmse": 1.1158919962263758,
+        "value_mae": 0.7487595452372683,
+        "value_bias": 0.06572272306221136,
+        "pa_total": 1133211.574608172,
+        "value_total": 4246.882598598437
+      },
+      "learned_reliability": {
+        "pa_rmse": 140.9172974349794,
+        "pa_mae": 107.96143281119963,
+        "pa_bias": -5.228681520099564,
+        "value_rmse": 1.0886599530435555,
+        "value_mae": 0.7238688451710045,
+        "value_bias": -0.023224015439748166,
+        "pa_total": 1133211.574608172,
+        "value_total": 3841.8432076349877
+      },
+      "binary_scout": {
+        "pa_rmse": 140.9172974349794,
+        "pa_mae": 107.96143281119963,
+        "pa_bias": -5.228681520099564,
+        "value_rmse": 1.074020877122541,
+        "value_mae": 0.7244560058442415,
+        "value_bias": 0.0030141564443975583,
+        "pa_total": 1133211.574608172,
+        "value_total": 3963.334044448386
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 142.23857369628558,
+        "pa_mae": 108.30667091739883,
+        "pa_bias": -6.8117893826813685,
+        "value_rmse": 1.0798728681515894,
+        "value_mae": 0.7249896226066449,
+        "value_bias": -0.0021163577699961885,
+        "pa_total": 1125504.6893126746,
+        "value_total": 3937.7273049306814
+      },
+      "learned_working": {
+        "pa_rmse": 142.23857369628558,
+        "pa_mae": 108.30667091739883,
+        "pa_bias": -6.8117893826813685,
+        "value_rmse": 1.091382500867122,
+        "value_mae": 0.7243043939521449,
+        "value_bias": -0.024233266660369086,
+        "pa_total": 1125504.6893126746,
+        "value_total": 3835.5652814668592
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 3596,
+        "players": 1207,
+        "rmse": 1.8392942352293167,
+        "mae": 1.3942226684014511,
+        "bias": 0.20744415533021307,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 3596,
+        "players": 1207,
+        "rmse": 1.7547102624547875,
+        "mae": 1.3210808510760115,
+        "bias": -0.0012681002479920695,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 3596,
+        "players": 1207,
+        "rmse": 1.724362940799905,
+        "mae": 1.2936501465258596,
+        "bias": 0.06723140950547332,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 3596,
+        "players": 1207,
+        "rmse": 1.724464106012671,
+        "mae": 1.2930773356916079,
+        "bias": 0.05649349232238562,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.477205312154299,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 532199.6859377609,
+            "actual": 538075.0
+          },
+          "K": {
+            "expected": 255445.28547936422,
+            "actual": 252856.0
+          },
+          "UBB": {
+            "expected": 94865.02016184224,
+            "actual": 94319.0
+          },
+          "HBP": {
+            "expected": 13007.809521661848,
+            "actual": 12501.0
+          },
+          "1B": {
+            "expected": 165810.11873797045,
+            "actual": 165444.0
+          },
+          "2B": {
+            "expected": 52442.08035863714,
+            "actual": 51774.0
+          },
+          "3B": {
+            "expected": 5455.012776385996,
+            "actual": 4562.0
+          },
+          "HR": {
+            "expected": 37630.98702637722,
+            "actual": 37325.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4761367426450527,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 534733.6759026278,
+            "actual": 538075.0
+          },
+          "K": {
+            "expected": 256496.5184632902,
+            "actual": 252856.0
+          },
+          "UBB": {
+            "expected": 95421.7967870917,
+            "actual": 94319.0
+          },
+          "HBP": {
+            "expected": 12620.649375352508,
+            "actual": 12501.0
+          },
+          "1B": {
+            "expected": 164334.9559034732,
+            "actual": 165444.0
+          },
+          "2B": {
+            "expected": 51539.52568394826,
+            "actual": 51774.0
+          },
+          "3B": {
+            "expected": 4875.31089099081,
+            "actual": 4562.0
+          },
+          "HR": {
+            "expected": 36833.5669932255,
+            "actual": 37325.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "stage_Inactive / unknown",
+    "rows": 1586,
+    "players": 1168,
+    "actual_pa": 4614.0,
+    "actual_value": 13.523205971205353,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 27.248599757479024,
+        "pa_mae": 3.8470024690259814,
+        "pa_bias": -0.21865484681168004,
+        "value_rmse": 0.13257758077627696,
+        "value_mae": 0.01384469012796785,
+        "value_bias": -0.0014827112879080282,
+        "pa_total": 4159.133148008398,
+        "value_total": 10.89624909578814
+      },
+      "learned_reliability": {
+        "pa_rmse": 27.248599757479024,
+        "pa_mae": 3.8470024690259814,
+        "pa_bias": -0.21865484681168004,
+        "value_rmse": 0.12928020357310474,
+        "value_mae": 0.012843487405633717,
+        "value_bias": -0.0027034943959240304,
+        "pa_total": 4159.133148008398,
+        "value_total": 8.963345891100028
+      },
+      "binary_scout": {
+        "pa_rmse": 27.248599757479024,
+        "pa_mae": 3.8470024690259814,
+        "pa_bias": -0.21865484681168004,
+        "value_rmse": 0.1283830484043529,
+        "value_mae": 0.012377704099270345,
+        "value_bias": -0.003314933321328633,
+        "pa_total": 4159.133148008398,
+        "value_total": 7.977981920137147
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 26.831606604049014,
+        "pa_mae": 4.365835926093868,
+        "pa_bias": 0.5132895535614145,
+        "value_rmse": 0.12598557616884823,
+        "value_mae": 0.0135612795498851,
+        "value_bias": -0.0017817882328753653,
+        "pa_total": 5314.643701828848,
+        "value_total": 10.381113475896795
+      },
+      "learned_working": {
+        "pa_rmse": 26.831606604049014,
+        "pa_mae": 4.365835926093868,
+        "pa_bias": 0.5132895535614145,
+        "value_rmse": 0.1259224891632449,
+        "value_mae": 0.014015594763592265,
+        "value_bias": -0.0009594762680232598,
+        "pa_total": 5314.643701828848,
+        "value_total": 11.697855482496454
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 26,
+        "players": 26,
+        "rmse": 2.8702123124168857,
+        "mae": 2.269626204645999,
+        "bias": 0.8244797605721806,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 26,
+        "players": 26,
+        "rmse": 2.522696051629756,
+        "mae": 2.007074840267232,
+        "bias": 0.3411345601795463,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 26,
+        "players": 26,
+        "rmse": 2.4114903120404887,
+        "mae": 1.793562489442289,
+        "bias": 0.004599432531261748,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 26,
+        "players": 26,
+        "rmse": 2.3773439521262745,
+        "mae": 1.7772784305839355,
+        "bias": 0.0012127018803827691,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4792887312193395,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 2023.2212575146305,
+            "actual": 1941.0
+          },
+          "K": {
+            "expected": 1127.3170146930293,
+            "actual": 1239.0
+          },
+          "UBB": {
+            "expected": 402.4419337674023,
+            "actual": 426.0
+          },
+          "HBP": {
+            "expected": 49.395088429032064,
+            "actual": 42.0
+          },
+          "1B": {
+            "expected": 634.6121503776995,
+            "actual": 609.0
+          },
+          "2B": {
+            "expected": 205.5138269824747,
+            "actual": 178.0
+          },
+          "3B": {
+            "expected": 29.18033717406965,
+            "actual": 15.0
+          },
+          "HR": {
+            "expected": 142.31839106166206,
+            "actual": 164.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4764838844122714,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 2052.276627588137,
+            "actual": 1941.0
+          },
+          "K": {
+            "expected": 1132.6130448507647,
+            "actual": 1239.0
+          },
+          "UBB": {
+            "expected": 397.20803231765586,
+            "actual": 426.0
+          },
+          "HBP": {
+            "expected": 46.882336234322906,
+            "actual": 42.0
+          },
+          "1B": {
+            "expected": 625.1450840765485,
+            "actual": 609.0
+          },
+          "2B": {
+            "expected": 202.76976970462343,
+            "actual": 178.0
+          },
+          "3B": {
+            "expected": 20.993948846648745,
+            "actual": 15.0
+          },
+          "HR": {
+            "expected": 136.11115638129831,
+            "actual": 164.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "stage_Lower minors",
+    "rows": 17962,
+    "players": 9055,
+    "actual_pa": 6072.0,
+    "actual_value": 13.140789346326814,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 8.538521828495345,
+        "pa_mae": 0.7008591756783209,
+        "pa_bias": 0.11199445545954724,
+        "value_rmse": 0.04832101533953081,
+        "value_mae": 0.00222598786699629,
+        "value_bias": 0.0003708515707587558,
+        "pa_total": 8164.724586887905,
+        "value_total": 19.450921861432207
+      },
+      "learned_reliability": {
+        "pa_rmse": 8.538521828495345,
+        "pa_mae": 0.7008591756783209,
+        "pa_bias": 0.11199445545954724,
+        "value_rmse": 0.04816643573617372,
+        "value_mae": 0.002142274573929888,
+        "value_bias": 0.0002848735676465225,
+        "pa_total": 8164.724586887905,
+        "value_total": 17.880080028263606
+      },
+      "binary_scout": {
+        "pa_rmse": 8.538521828495345,
+        "pa_mae": 0.7008591756783209,
+        "pa_bias": 0.11199445545954724,
+        "value_rmse": 0.04829550727988504,
+        "value_mae": 0.00232975841604077,
+        "value_bias": 0.0005083992998827485,
+        "pa_total": 8164.724586887905,
+        "value_total": 21.818912657657158
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 9.004003928654248,
+        "pa_mae": 0.8035845501369405,
+        "pa_bias": 0.25526625922909396,
+        "value_rmse": 0.04994229253839796,
+        "value_mae": 0.0027593952808922127,
+        "value_bias": 0.0009597717074866149,
+        "pa_total": 10839.811728770183,
+        "value_total": 30.08785531404851
+      },
+      "learned_working": {
+        "pa_rmse": 9.004003928654248,
+        "pa_mae": 0.8035845501369405,
+        "pa_bias": 0.25526625922909396,
+        "value_rmse": 0.04913285720266181,
+        "value_mae": 0.0024059965073441074,
+        "value_bias": 0.0005740928278893048,
+        "pa_total": 10839.811728770183,
+        "value_total": 23.27532309850922
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 58,
+        "players": 57,
+        "rmse": 3.1123914281456475,
+        "mae": 2.359476174628272,
+        "bias": 0.8182138958364991,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 58,
+        "players": 57,
+        "rmse": 3.112993683936244,
+        "mae": 2.3512608975162026,
+        "bias": 0.8422235447549463,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 58,
+        "players": 57,
+        "rmse": 3.059359518775869,
+        "mae": 2.3580488301038325,
+        "bias": 1.0512194604423761,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 58,
+        "players": 57,
+        "rmse": 3.07216926789635,
+        "mae": 2.373428998486651,
+        "bias": 1.0892759597647648,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4408202547237354,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 2732.586495446974,
+            "actual": 2808.0
+          },
+          "K": {
+            "expected": 1493.1171340341546,
+            "actual": 1379.0
+          },
+          "UBB": {
+            "expected": 468.2402074377349,
+            "actual": 449.0
+          },
+          "HBP": {
+            "expected": 63.7075552353672,
+            "actual": 65.0
+          },
+          "1B": {
+            "expected": 859.1383258842889,
+            "actual": 952.0
+          },
+          "2B": {
+            "expected": 248.4908517833449,
+            "actual": 258.0
+          },
+          "3B": {
+            "expected": 34.695028460734775,
+            "actual": 29.0
+          },
+          "HR": {
+            "expected": 172.0244017174012,
+            "actual": 132.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4404439656306172,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 2734.4383126333823,
+            "actual": 2808.0
+          },
+          "K": {
+            "expected": 1497.1307725138338,
+            "actual": 1379.0
+          },
+          "UBB": {
+            "expected": 470.13804837921487,
+            "actual": 449.0
+          },
+          "HBP": {
+            "expected": 59.26873676989319,
+            "actual": 65.0
+          },
+          "1B": {
+            "expected": 848.8298483652436,
+            "actual": 952.0
+          },
+          "2B": {
+            "expected": 259.66606760902323,
+            "actual": 258.0
+          },
+          "3B": {
+            "expected": 28.952072632329052,
+            "actual": 29.0
+          },
+          "HR": {
+            "expected": 173.57614109707953,
+            "actual": 132.0
+          }
+        }
+      }
+    }
+  },
+  {
+    "scope": "stage_Upper minors",
+    "rows": 6417,
+    "players": 3494,
+    "actual_pa": 102951.0,
+    "actual_value": 203.10930844785193,
+    "scores": {
+      "fixed_reliability": {
+        "pa_rmse": 54.73733309084774,
+        "pa_mae": 18.960655811444177,
+        "pa_bias": -2.3856259195341516,
+        "value_rmse": 0.2977886694016421,
+        "value_mae": 0.07366472547500522,
+        "value_bias": -0.0054345099163494726,
+        "pa_total": 87859.88199188747,
+        "value_total": 168.85994797642667
+      },
+      "learned_reliability": {
+        "pa_rmse": 54.73733309084774,
+        "pa_mae": 18.960655811444177,
+        "pa_bias": -2.385625919534152,
+        "value_rmse": 0.29833548017616224,
+        "value_mae": 0.0718987338594752,
+        "value_bias": -0.008549757348178009,
+        "pa_total": 87859.88199188747,
+        "value_total": 149.03297319856784
+      },
+      "binary_scout": {
+        "pa_rmse": 54.73733309084774,
+        "pa_mae": 18.960655811444177,
+        "pa_bias": -2.385625919534152,
+        "value_rmse": 0.29805604315583856,
+        "value_mae": 0.07589171652115678,
+        "value_bias": -0.0012257948888166695,
+        "pa_total": 87859.88199188747,
+        "value_total": 197.57004480243208
+      },
+      "retired_safe_ridge": {
+        "pa_rmse": 56.78049482147479,
+        "pa_mae": 20.806085933762848,
+        "pa_bias": -1.6350279508047874,
+        "value_rmse": 0.30184307791950205,
+        "value_mae": 0.0798607271822132,
+        "value_bias": 0.0002538639559263748,
+        "pa_total": 92645.03306114716,
+        "value_total": 207.25368376439025
+      },
+      "learned_working": {
+        "pa_rmse": 56.78049482147479,
+        "pa_mae": 20.806085933762848,
+        "pa_bias": -1.6350279508047874,
+        "value_rmse": 0.3016669266162787,
+        "value_mae": 0.07390732781144148,
+        "value_bias": -0.009604002862665453,
+        "pa_total": 92645.03306114716,
+        "value_total": 142.15351807773573
+      }
+    },
+    "rate_scores": {
+      "fixed_reliability": {
+        "rows": 858,
+        "players": 821,
+        "rmse": 2.717719130642203,
+        "mae": 2.01075927102567,
+        "bias": 0.13680792847977694,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "learned_reliability": {
+        "rows": 858,
+        "players": 821,
+        "rmse": 2.6802535552964373,
+        "mae": 1.9912468391044897,
+        "bias": -0.017144576330460865,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "binary_scout": {
+        "rows": 858,
+        "players": 821,
+        "rmse": 2.6672485014020775,
+        "mae": 1.965000840154588,
+        "bias": 0.29300035054495105,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "safe_ridge": {
+        "rows": 858,
+        "players": 821,
+        "rmse": 2.6721650053019212,
+        "mae": 1.969067306825314,
+        "bias": 0.31449331207164366,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "components": {
+      "fixed_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4781512290130998,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 44740.029927975294,
+            "actual": 45750.0
+          },
+          "K": {
+            "expected": 27145.273050590135,
+            "actual": 26189.0
+          },
+          "UBB": {
+            "expected": 8217.905675395832,
+            "actual": 7850.0
+          },
+          "HBP": {
+            "expected": 1147.8141952523838,
+            "actual": 1102.0
+          },
+          "1B": {
+            "expected": 13848.840535884396,
+            "actual": 14371.0
+          },
+          "2B": {
+            "expected": 4276.731087410508,
+            "actual": 4330.0
+          },
+          "3B": {
+            "expected": 573.2853892514539,
+            "actual": 478.0
+          },
+          "HR": {
+            "expected": 3001.1201382399986,
+            "actual": 2881.0
+          }
+        }
+      },
+      "learned_reliability": {
+        "equal_origin_PA_count_log_loss": 1.4775311822110313,
+        "calibration_actual_PA": {
+          "other": {
+            "expected": 44881.352034564276,
+            "actual": 45750.0
+          },
+          "K": {
+            "expected": 27242.25290610111,
+            "actual": 26189.0
+          },
+          "UBB": {
+            "expected": 8262.87183204299,
+            "actual": 7850.0
+          },
+          "HBP": {
+            "expected": 1052.1710426114778,
+            "actual": 1102.0
+          },
+          "1B": {
+            "expected": 13802.548769452915,
+            "actual": 14371.0
+          },
+          "2B": {
+            "expected": 4267.289302390838,
+            "actual": 4330.0
+          },
+          "3B": {
+            "expected": 477.36712739450616,
+            "actual": 478.0
+          },
+          "HR": {
+            "expected": 2965.146985441885,
+            "actual": 2881.0
+          }
+        }
+      }
+    }
+  }
+]

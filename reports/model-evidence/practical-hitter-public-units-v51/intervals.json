@@ -1,0 +1,101 @@
+[
+  {
+    "scope": "legacy_public",
+    "arm": "binary",
+    "reference": "steamer",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.08101849895857388,
+    "lower": -0.19872335516773323,
+    "upper": 0.03884055971487505,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "legacy_public",
+    "arm": "binary",
+    "reference": "zips",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.029166795018342278,
+    "lower": -0.08419629979708478,
+    "upper": 0.14848342605382348,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "legacy_public",
+    "candidate": "binary",
+    "benchmark": "steamer",
+    "metric": "value_mse",
+    "difference": -0.06625141900991101,
+    "lower": -0.14115392808941477,
+    "upper": 0.00982301562342693,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all_current_common_public",
+    "arm": "binary",
+    "reference": "steamer",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.10328625212555428,
+    "lower": -0.19127364944306052,
+    "upper": -0.004760558148276585,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all_current_common_public",
+    "arm": "binary",
+    "reference": "zips",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.028397709313601624,
+    "lower": -0.12298386976565184,
+    "upper": 0.08254499339124242,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all_current_common_public",
+    "candidate": "binary",
+    "benchmark": "steamer",
+    "metric": "value_mse",
+    "difference": -0.12514348982008056,
+    "lower": -0.19505996360282066,
+    "upper": -0.04969061312827966,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "elapsed_6plus",
+    "arm": "binary",
+    "reference": "steamer",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.12995765746178398,
+    "lower": -0.28656668810626396,
+    "upper": 0.026139891984718482,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "elapsed_6plus",
+    "arm": "binary",
+    "reference": "zips",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.12336099548418747,
+    "lower": -0.30008144789276164,
+    "upper": 0.06320313761488543,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "elapsed_6plus",
+    "candidate": "binary",
+    "benchmark": "steamer",
+    "metric": "value_mse",
+    "difference": -0.2393367163977453,
+    "lower": -0.40264811044006854,
+    "upper": -0.08671425782183134,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]

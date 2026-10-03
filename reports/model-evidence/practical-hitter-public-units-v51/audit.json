@@ -1,0 +1,159 @@
+{
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\public-benchmark-intake-v2\\verified-archive-manifest.json": "8c3902553b4aad9f78f129ae083020baa42db6e765e6c711b3764b2eb1b32caa",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-reliability-v50\\scored-predictions.parquet": "65af927499c8b929c402ccbb7e8ed954d94442a978ef91b444d02a5c77408744",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-reliability-v50\\features.parquet": "37b0986222c2b6b67f914c3bf19b9adb95ce0b5d163e0a366587e0d274c06af8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\audit_hitter_public_units_v51.py": "37b3ac177578c3e1b21c4806551de989302cf072404ed9ae51cf9a1eb48fefbc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\practical-hitter-public-units-v51-contract.md": "17db5cb99243e744aaa4a38181dbcd5c68464a331891a8608d8f3118a556c66b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\data\\raw\\public-projections\\preseason-2022-2025\\steamer_2022_preseason_batters.csv": "94c8ccc67756c1e39fd7f1268ebdde05fa27c9b0930860b481fe5851e37de732",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\data\\raw\\public-projections\\preseason-2022-2025\\steamer_2023_preseason_batters.csv": "8b90599b0d7e6af95f18f5996d9405e1fad70b483e03371d32d23698274828a4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\data\\raw\\public-projections\\preseason-2022-2025\\steamer_2024_preseason_batters.csv": "a880dc8da320dd013e30877bceff81f552bbe84a801c68199ea98881694717a6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\data\\raw\\public-projections\\preseason-2022-2025\\steamer_2025_preseason_batters.csv": "ef630b821889d508bd725c14e527e577bec764bc6a2b094764178a9ce00713d9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\data\\raw\\public-projections\\preseason-2022-2025\\zips_2022_preseason_batters.csv": "73ba574f65aef83d8e18faea1376143073f3dda06c768801e52a352bc0f8c6f9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\data\\raw\\public-projections\\preseason-2022-2025\\zips_2023_preseason_batters.csv": "144f282e1b1f5913f6076884661b2733f0efb230a35e855116e717ceaf7510e2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\data\\raw\\public-projections\\preseason-2022-2025\\zips_2024_preseason_batters.csv": "f2f3b6868a7a48fda6536fb30f9a81378644a592b39759d3bd5f8eb53ef0194f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\data\\raw\\public-projections\\preseason-2022-2025\\zips_2025_preseason_batters.csv": "fbe7edd84a5602e0caf33e66e8e71b3eeb6738916ecea4dee66a5e4a51773503"
+  },
+  "locked_rows": 16674,
+  "common_current_rows": 2627,
+  "legacy_rows": 1789,
+  "intake": [
+    {
+      "system": "steamer",
+      "year": 2022,
+      "rows": 3304,
+      "valid": 3303,
+      "invalid_ids": 1,
+      "zero_forecast_pa": 0
+    },
+    {
+      "system": "steamer",
+      "year": 2023,
+      "rows": 3591,
+      "valid": 3590,
+      "invalid_ids": 1,
+      "zero_forecast_pa": 0
+    },
+    {
+      "system": "steamer",
+      "year": 2024,
+      "rows": 3711,
+      "valid": 3710,
+      "invalid_ids": 1,
+      "zero_forecast_pa": 0
+    },
+    {
+      "system": "steamer",
+      "year": 2025,
+      "rows": 4140,
+      "valid": 4138,
+      "invalid_ids": 2,
+      "zero_forecast_pa": 0
+    },
+    {
+      "system": "zips",
+      "year": 2022,
+      "rows": 1504,
+      "valid": 1504,
+      "invalid_ids": 0,
+      "zero_forecast_pa": 0
+    },
+    {
+      "system": "zips",
+      "year": 2023,
+      "rows": 1716,
+      "valid": 1716,
+      "invalid_ids": 0,
+      "zero_forecast_pa": 0
+    },
+    {
+      "system": "zips",
+      "year": 2024,
+      "rows": 1733,
+      "valid": 1733,
+      "invalid_ids": 0,
+      "zero_forecast_pa": 0
+    },
+    {
+      "system": "zips",
+      "year": 2025,
+      "rows": 1963,
+      "valid": 1963,
+      "invalid_ids": 0,
+      "zero_forecast_pa": 0
+    }
+  ],
+  "coverage": [
+    {
+      "target_year": 2022,
+      "locked_rows": 4242,
+      "current_mlb_rows": 662,
+      "missing": {
+        "steamer": {
+          "rows": 1282,
+          "actual_pa": 448.0
+        },
+        "zips": {
+          "rows": 2742,
+          "actual_pa": 1143.0
+        }
+      }
+    },
+    {
+      "target_year": 2025,
+      "locked_rows": 3992,
+      "current_mlb_rows": 649,
+      "missing": {
+        "steamer": {
+          "rows": 599,
+          "actual_pa": 489.0
+        },
+        "zips": {
+          "rows": 2032,
+          "actual_pa": 17.0
+        }
+      }
+    },
+    {
+      "target_year": 2023,
+      "locked_rows": 4244,
+      "current_mlb_rows": 688,
+      "missing": {
+        "steamer": {
+          "rows": 1089,
+          "actual_pa": 64.0
+        },
+        "zips": {
+          "rows": 2532,
+          "actual_pa": 775.0
+        }
+      }
+    },
+    {
+      "target_year": 2024,
+      "locked_rows": 4196,
+      "current_mlb_rows": 652,
+      "missing": {
+        "steamer": {
+          "rows": 994,
+          "actual_pa": 0.0
+        },
+        "zips": {
+          "rows": 2469,
+          "actual_pa": 139.0
+        }
+      }
+    }
+  ],
+  "raw_count_sums_and_rate_reconstruction": true,
+  "common_units_verified": true,
+  "no_model_fits": true,
+  "no_forecast_calibration": true,
+  "forecasts_use_origin_environment_only": true,
+  "player_walkthrough_status": "complete",
+  "cases": 11,
+  "protected_outcomes_used": false,
+  "frozen_forecast_changed": false,
+  "notes_sha256": "09f7385a9a852fc432729a1fb3eddd5ea67706d3c44a6cf0821277d42574a055",
+  "walkthrough_sha256": "b9bbfd812d9196e231a9c9a440b2b90170b85381621a08580d9791b8d555fa77"
+}

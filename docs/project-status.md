@@ -24,7 +24,26 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: binary readiness reviewed; move to the talent milestone.**
+**Current checkpoint: selected practical candidate and corrected public comparison.**
+See [the same-event public review](practical-hitter-public-units-v51-result.md)
+and [the candidate handoff](practical-hitter-candidate-v52-handoff.md).
+Existing batting rate plus reviewed binary scouting readiness is the selected
+historical development assembly. Broader public rate RMSE is 1.745 versus
+Steamer 1.775 and ZiPS 1.753 on a common fixed-event metric; exact public dates,
+parks and repeated development exposure prevent superiority claims. PA RMSE
+is 138.28 versus 135.38, MAE 106.79 versus 92.08. Some gap comes from 386
+one-PA public forecasts; that diagnostic does not remove rows or prove equal
+availability information. Actual cohort totals and player failures remain visible.
+The [learned reliability comparison](practical-hitter-reliability-v50-result.md)
+improves fixed-100 but loses to existing talent; 25 actual reviews complete.
+The public audit adds eleven reviews and older players without new fits.
+New team-filtered local candidate explorer uses common forecast/actual units;
+older explorers, working V33b and protected 2026 remain unchanged. The goal
+remains active: practical availability, fast-entry prospects, conditional minor
+talent and delivered-value uncertainty remain material gaps. Follow the bounded
+next-work sequence in the handoff, not another undirected library sweep.
+
+**Previous checkpoint: binary readiness reviewed; move to the talent milestone.**
 See [the probability/conditional-use result and 31 actual reviews](practical-hitter-readiness-v49-result.md).
 Same 30,506 forecasts, 140 saved/replayed heads and fixed batting rate. Scouting
 binary PA RMSE is 60.650 versus direct games 61.149; public 142.110 versus

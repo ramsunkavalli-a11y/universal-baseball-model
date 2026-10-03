@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "arm": "fixed_reliability",
+      "selection": "largest gain",
+      "player_id": 592450,
+      "origin_year": 2023,
+      "player_name": "Aaron Judge",
+      "actual_pa": 704,
+      "weighted_gain": 7381.8110917110225
+    },
+    {
+      "arm": "fixed_reliability",
+      "selection": "largest harm",
+      "player_id": 592450,
+      "origin_year": 2016,
+      "player_name": "Aaron Judge",
+      "actual_pa": 678,
+      "weighted_gain": -7760.373055380507
+    },
+    {
+      "arm": "learned_reliability",
+      "selection": "largest gain",
+      "player_id": 592450,
+      "origin_year": 2023,
+      "player_name": "Aaron Judge",
+      "actual_pa": 704,
+      "weighted_gain": 4667.168968463149
+    },
+    {
+      "arm": "learned_reliability",
+      "selection": "largest harm",
+      "player_id": 592450,
+      "origin_year": 2016,
+      "player_name": "Aaron Judge",
+      "actual_pa": 678,
+      "weighted_gain": -6286.517182866281
+    }
+  ],
+  "interpretation": "PA-weighted error-squared contribution check, not a new fitted model or independent validation. Equal-origin headline weights are preserved in scores."
+}
