@@ -1,0 +1,222 @@
+[
+  {
+    "scope": "all",
+    "candidate": "common_rate",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.0038215854031877464,
+    "lower": 0.0027483656261262433,
+    "upper": 0.004932952997747609,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "candidate": "relative_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.010056010407494617,
+    "lower": 0.006971778303130832,
+    "upper": 0.013344787989459688,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "candidate": "common_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.012278532547947698,
+    "lower": 0.008770940445185985,
+    "upper": 0.015960256742632434,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "arm": "common_rate",
+    "reference": "baseline",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.0883929207704439,
+    "lower": 0.06981364537817004,
+    "upper": 0.10640139101236938,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_broad",
+    "candidate": "common_rate",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.038722230439002775,
+    "lower": 0.029231499281971208,
+    "upper": 0.04849426756460972,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_broad",
+    "candidate": "relative_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.06433926345025438,
+    "lower": 0.03645377161137576,
+    "upper": 0.0940240109518183,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_broad",
+    "candidate": "common_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.07909905271443549,
+    "lower": 0.049903280370656514,
+    "upper": 0.10833503686391052,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_broad",
+    "arm": "common_rate",
+    "reference": "baseline",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.1342767359635226,
+    "lower": 0.1113806296867717,
+    "upper": 0.1612040945508064,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "candidate": "common_rate",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 4.386270541814788e-05,
+    "lower": -4.926777987592922e-05,
+    "upper": 0.00014350085261120608,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "candidate": "relative_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": -8.700359952652849e-05,
+    "lower": -0.0010677276566545405,
+    "upper": 0.0007721508831715758,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "candidate": "common_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": -9.19379320016884e-07,
+    "lower": -0.0010691703168639254,
+    "upper": 0.0009336494853423449,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "arm": "common_rate",
+    "reference": "baseline",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.07441683149539569,
+    "lower": 0.02053256203855632,
+    "upper": 0.1359941697812081,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "candidate": "common_rate",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.00016671590245936503,
+    "lower": -0.00021798993235498735,
+    "upper": 0.0005596489361932228,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "candidate": "relative_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": -0.0017578099090074521,
+    "lower": -0.006047627860513706,
+    "upper": 0.002232211858886889,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "candidate": "common_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": -0.0015920541851897664,
+    "lower": -0.006140445711788491,
+    "upper": 0.0025921287919008665,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "arm": "common_rate",
+    "reference": "baseline",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": 0.08442689588829162,
+    "lower": 0.030505326277976034,
+    "upper": 0.14181856769426493,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "candidate": "common_rate",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 1.6098098199543427e-06,
+    "lower": -1.4413511220332852e-06,
+    "upper": 5.5149761879873175e-06,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "candidate": "relative_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.000283214483080883,
+    "lower": 9.102785810213137e-05,
+    "upper": 0.0005450248761100326,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "candidate": "common_direct",
+    "benchmark": "baseline",
+    "metric": "value_mse",
+    "difference": 0.0003316787274683396,
+    "lower": 0.0001326374380112882,
+    "upper": 0.000604933393174272,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "arm": "common_rate",
+    "reference": "baseline",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.1488676981814904,
+    "lower": -0.2690159013777619,
+    "upper": 0.27392362120971775,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]

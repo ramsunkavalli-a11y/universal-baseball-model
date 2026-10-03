@@ -24,7 +24,23 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: smooth workload comparison closed without promotion.**
+**Current checkpoint: compatible hitting/value comparison closed; value reference repaired.**
+The [matched comparison](hitter-compatible-value-v63-result.md) retains every
+forecast and independently matches eight MLB event counts across 63,282 source
+rows. The 2020-origin replacement reference was over-normalized: .00857066
+per PA instead of .00316726. Correct research conversion; preserve old results
+and unchanged V53 PA/hitting. This is measurement repair, not predictive gain.
+All 105 heads replay and nineteen actual reviews are complete. Whole offense
+RMSE worsens .45381 to .45800 common conditional, .46476 relative direct and
+.46714 common direct. Direct models help Tatis but nearly miss Kurtz, worsen
+established Judge, and give Salas impossible value at retained PA. Keep V53;
+withhold the alternatives without rejecting all joint/event models. Next freeze
+the coherent next-year research candidate and complete uncertainty/model-card
+and team-filtered historical handoff, not another library/penalty/health sweep.
+Public PA MAE, elite readiness and final valuation gaps remain. Goal active;
+protected 2026 and frozen/deployed forecasts unchanged.
+
+**Previous checkpoint: smooth workload comparison closed without promotion.**
 The [smooth comparison](hitter-bounded-workload-v62-result.md) replays seventy
 heads and completes seventeen actual reviews, including never-arrived Soto and
 Alford. Public PA RMSE worsens from 138.49 to 147.05 smooth squared and 155.74
