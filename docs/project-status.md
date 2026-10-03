@@ -24,7 +24,21 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: preseason ranking vintage source review complete.**
+**Current checkpoint: fresher preseason ranking comparison reviewed.**
+The [comparison](hitter-preseason-readiness-v68-result.md) replays 140 saved
+heads and completes eleven actual player reviews. Never-debut upper-minor PA
+RMSE improves 56.24 to 55.13; offense .31706 to .31283, with favorable nominal
+development intervals. Langford 43 to 215 PA, Bellinger 15 to 103, Alonso 127
+to 215, but Kurtz remains ten versus 489. Overall intervals span zero, public
+PA MAE remains 15.6% worse than Steamer, and 2021 arrival underprediction worsens.
+Meadows exposes a specific flaw: prospect-list absence after 178 MLB AB is
+graduation, yet the model cuts expected PA 327 to 248 versus 591. Rortvedt's
+accurate offense masks underpredicted PA offset by optimistic hitting. Keep the
+fresher source/readiness evidence, not a deployed replacement. Next one
+graduation-aware representation check with raw AB coverage and failed peers,
+not another ranking/algorithm sweep. Goal active; protected 2026 unchanged.
+
+**Previous checkpoint: preseason ranking vintage source review complete.**
 The [source checkpoint](hitter-preseason-readiness-v67-source-result.md) preserves
 all 63,282 identities and non-scouting fields. New preseason lists recognize
 Kurtz 38, Langford six, Bellinger 13 and Alonso 51 where old inputs were unlisted.
