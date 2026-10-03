@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: workload reference comparison closed without promotion.**
+**Current checkpoint: smooth workload comparison closed without promotion.**
+The [smooth comparison](hitter-bounded-workload-v62-result.md) replays seventy
+heads and completes seventeen actual reviews, including never-arrived Soto and
+Alford. Public PA RMSE worsens from 138.49 to 147.05 smooth squared and 155.74
+bounded. The bounded mean eliminates negative outputs but lower-minor totals
+remain 27,106 versus 6,072 actual; smooth squared allocates 199,534. Saved terms
+show reorganization becoming a uniform raw PA award in the additive model;
+2021 has no mature contrast for the new context. Do not reject all bounded
+models on this representation or adopt a favorable comeback slice. Keep V53
+and close the workload architecture batch. Next compatible talent and delivered
+value, with reused target units checked and calendar context interpreted
+properly, not another penalty/library/health sweep. Goal active; 2026 closed.
+
+**Previous checkpoint: workload reference comparison closed without promotion.**
 The [matched direct/anchored comparison](hitter-workload-anchor-v61-result.md)
 replays 70 heads and completes fourteen actual reviews with reconstructed counts.
 Public PA RMSE is 138.49 baseline, 138.50 direct, 140.50 anchored; direct MAE
