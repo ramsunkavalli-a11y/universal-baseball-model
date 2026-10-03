@@ -1,0 +1,1881 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "actual_pa": 1270493.0,
+    "actual_value": 4264.883988242579,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 60.68564057139464,
+        "pa_mae": 20.745056120979974,
+        "pa_bias": -1.2487983082560283,
+        "value_rmse": 0.4538263908271684,
+        "value_mae": 0.12916348185378465,
+        "value_bias": -0.0029549056366240836,
+        "pa_total": 1231572.5317840378,
+        "value_total": 4167.965734791675
+      },
+      "standardized": {
+        "pa_rmse": 60.612786853906954,
+        "pa_mae": 20.697195004162023,
+        "pa_bias": -1.1339263876909893,
+        "value_rmse": 0.45544503386976004,
+        "value_mae": 0.1298130866781445,
+        "value_bias": -0.002150192345917181,
+        "pa_total": 1234936.4144839623,
+        "value_total": 4191.94517043554
+      },
+      "fixed": {
+        "pa_rmse": 61.3865945327679,
+        "pa_mae": 21.206819615045827,
+        "pa_bias": -1.4170337659670993,
+        "value_rmse": 0.4547016867245382,
+        "value_mae": 0.13021365105612018,
+        "value_bias": -0.0032492213740837306,
+        "pa_total": 1226417.9576791117,
+        "value_total": 4159.451368940709
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 60.612786853906954,
+        "pa_mae": 20.697195004162023,
+        "pa_bias": -1.1339263876909893,
+        "value_rmse": 0.4537915859398513,
+        "value_mae": 0.12913149080900904,
+        "value_bias": -0.002559378859753687,
+        "pa_total": 1234936.4144839623,
+        "value_total": 4179.658039358059
+      },
+      "assembled": {
+        "pa_rmse": 60.612786853906954,
+        "pa_mae": 20.697195004162023,
+        "pa_bias": -1.1339263876909893,
+        "value_rmse": 0.45379072387971514,
+        "value_mae": 0.12940058105626298,
+        "value_bias": -0.0021167969297315983,
+        "pa_total": 1234936.4144839623,
+        "value_total": 4193.460659237313
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8782226983867298,
+        "mae": 1.4017619541540522,
+        "bias": 0.0366339437360443,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.9064516097803672,
+        "mae": 1.4185715390253637,
+        "bias": 0.04870364978937471,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8789704701080305,
+        "mae": 1.4038490360093392,
+        "bias": 0.04417911458969425,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8782226983867298,
+        "mae": 1.4017619541540522,
+        "bias": 0.0366339437360443,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8789704701080305,
+        "mae": 1.4038490360093392,
+        "bias": 0.04417911458969425,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.033697531638012576,
+        "log_loss": 0.11541580213815184,
+        "actual_participants": 4538,
+        "expected_participants": 4404.793307391361,
+        "weighted_actual_probability": 0.14940474354013838,
+        "weighted_expected_probability": 0.14497399212739834
+      },
+      "assembled": {
+        "brier": 0.033739886767466365,
+        "log_loss": 0.11558323632498639,
+        "actual_participants": 4538,
+        "expected_participants": 4387.523311980354,
+        "weighted_actual_probability": 0.14940474354013838,
+        "weighted_expected_probability": 0.14439891226501733
+      }
+    }
+  },
+  {
+    "scope": "never_debut",
+    "rows": 24199,
+    "people": 10076,
+    "actual_pa": 98328.0,
+    "actual_value": 214.8011379217408,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 27.744999960386764,
+        "pa_mae": 4.875082602942877,
+        "pa_bias": -0.6807507362584916,
+        "value_rmse": 0.15407228883754998,
+        "value_mae": 0.019659767002985575,
+        "value_bias": -0.0007208827858828822,
+        "pa_total": 81815.28088631316,
+        "value_total": 195.4153959077902
+      },
+      "standardized": {
+        "pa_rmse": 27.54651818314372,
+        "pa_mae": 4.816486841677421,
+        "pa_bias": -0.5320833366538148,
+        "value_rmse": 0.1600748401718004,
+        "value_mae": 0.020488293407656972,
+        "value_bias": 0.00029324256687772037,
+        "pa_total": 85179.16358623758,
+        "value_total": 219.39483155165487
+      },
+      "fixed": {
+        "pa_rmse": 29.62267621094941,
+        "pa_mae": 5.460198553792249,
+        "pa_bias": -0.8890085573341926,
+        "value_rmse": 0.1572821022627192,
+        "value_mae": 0.02098709954902873,
+        "value_bias": -0.001088866746188396,
+        "pa_total": 76660.70678138705,
+        "value_total": 186.90103005682272
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 27.54651818314372,
+        "pa_mae": 4.816486841677421,
+        "pa_bias": -0.5320833366538148,
+        "value_rmse": 0.15397757281028124,
+        "value_mae": 0.019628359709588976,
+        "value_bias": -0.00021254894210268694,
+        "pa_total": 85179.16358623758,
+        "value_total": 207.10770047417316
+      },
+      "assembled": {
+        "pa_rmse": 27.54651818314372,
+        "pa_mae": 4.816486841677421,
+        "pa_bias": -0.5320833366538148,
+        "value_rmse": 0.15397777159856124,
+        "value_mae": 0.019964625252527426,
+        "value_bias": 0.000339938439305364,
+        "pa_total": 85179.16358623758,
+        "value_total": 220.91032035342715
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.6467324047645544,
+        "mae": 1.9769348072175668,
+        "bias": 0.2297626545059728,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.8690086267871155,
+        "mae": 2.172222901627912,
+        "bias": 0.30693131913731125,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.6508475090529426,
+        "mae": 1.9963220077224924,
+        "bias": 0.31603498401711744,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.6467324047645544,
+        "mae": 1.9769348072175668,
+        "bias": 0.22976265450597275,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.6508475090529426,
+        "mae": 1.9963220077224926,
+        "bias": 0.31603498401711744,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.020002691101791266,
+        "log_loss": 0.07183406803303202,
+        "actual_participants": 787,
+        "expected_participants": 683.2044116972008,
+        "weighted_actual_probability": 0.03274431100873984,
+        "weighted_expected_probability": 0.028461140781915115
+      },
+      "assembled": {
+        "brier": 0.020048988532258546,
+        "log_loss": 0.07201280971027528,
+        "actual_participants": 787,
+        "expected_participants": 665.9344162861939,
+        "weighted_actual_probability": 0.03274431100873984,
+        "weighted_expected_probability": 0.0277485276179349
+      }
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "people": 3055,
+    "actual_pa": 92891.0,
+    "actual_value": 203.98535225784494,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 56.24215705088987,
+        "pa_mae": 19.097284785508442,
+        "pa_bias": -3.555104624502557,
+        "value_rmse": 0.31706870723614805,
+        "value_mae": 0.07954282008139206,
+        "value_bias": -0.006259527358998744,
+        "pa_total": 73593.42016267168,
+        "value_total": 173.47557004528002
+      },
+      "standardized": {
+        "pa_rmse": 55.79202042495295,
+        "pa_mae": 18.945292350517775,
+        "pa_bias": -2.733593832174052,
+        "value_rmse": 0.3278139745396989,
+        "value_mae": 0.08127910703754625,
+        "value_bias": -0.002977630861011419,
+        "pa_total": 78028.83914991972,
+        "value_total": 191.94694627233042
+      },
+      "fixed": {
+        "pa_rmse": 60.14060738158207,
+        "pa_mae": 20.758871493303467,
+        "pa_bias": -5.1526662157693295,
+        "value_rmse": 0.32369675882686805,
+        "value_mae": 0.08056124060885349,
+        "value_bias": -0.012208938527043443,
+        "pa_total": 64273.75219074232,
+        "value_total": 138.99526170402055
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 55.79202042495295,
+        "pa_mae": 18.945292350517775,
+        "pa_bias": -2.733593832174052,
+        "value_rmse": 0.3161675553461348,
+        "value_mae": 0.07946699979903923,
+        "value_bias": -0.003704696427424605,
+        "pa_total": 78028.83914991972,
+        "value_total": 187.42122222732917
+      },
+      "assembled": {
+        "pa_rmse": 55.79202042495295,
+        "pa_mae": 18.945292350517775,
+        "pa_bias": -2.733593832174052,
+        "value_rmse": 0.31597391726600993,
+        "value_mae": 0.07975664484317731,
+        "value_bias": -0.0025204345064223097,
+        "pa_total": 78028.83914991972,
+        "value_total": 193.51242382896316
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6319533338665884,
+        "mae": 1.9595045720833046,
+        "bias": 0.21482409322207188,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.864699977133406,
+        "mae": 2.183134380128835,
+        "bias": 0.26135773258521633,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6319044294549694,
+        "mae": 1.9810928513610715,
+        "bias": 0.2775487105074973,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6319533338665884,
+        "mae": 1.9595045720833044,
+        "bias": 0.21482409322207183,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6319044294549694,
+        "mae": 1.9810928513610715,
+        "bias": 0.27754871050749735,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.07883410203197774,
+        "log_loss": 0.26540925715081987,
+        "actual_participants": 730,
+        "expected_participants": 592.8105644692986,
+        "weighted_actual_probability": 0.1335969837303775,
+        "weighted_expected_probability": 0.10876170559713046
+      },
+      "assembled": {
+        "brier": 0.07855672997865054,
+        "log_loss": 0.2680077810381327,
+        "actual_participants": 730,
+        "expected_participants": 597.5886138508636,
+        "weighted_actual_probability": 0.1335969837303775,
+        "weighted_expected_probability": 0.11008562238272745
+      }
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "rows": 17852,
+    "people": 8974,
+    "actual_pa": 5194.0,
+    "actual_value": 9.565002079859191,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 7.8282953805778215,
+        "pa_mae": 0.6561883484032958,
+        "pa_bias": 0.12995956029566674,
+        "value_rmse": 0.04282408147553555,
+        "value_mae": 0.002149543461076734,
+        "value_bias": 0.0006330948310004775,
+        "pa_total": 7651.947720558621,
+        "value_total": 20.83465780263757
+      },
+      "standardized": {
+        "pa_rmse": 7.9228885984718795,
+        "pa_mae": 0.6338483599803826,
+        "pa_bias": 0.08132742350861785,
+        "value_rmse": 0.043641053589695486,
+        "value_mae": 0.002656303738357535,
+        "value_bias": 0.0009168778828147625,
+        "pa_total": 6762.40078445938,
+        "value_total": 25.759467760003147
+      },
+      "fixed": {
+        "pa_rmse": 7.88039370434818,
+        "pa_mae": 0.942605605240446,
+        "pa_bias": 0.3698484870407726,
+        "value_rmse": 0.042911356045331285,
+        "value_mae": 0.003674961078678228,
+        "value_bias": 0.0020753054171148044,
+        "pa_total": 11915.317544380221,
+        "value_total": 46.644594706781625
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 7.9228885984718795,
+        "pa_mae": 0.6338483599803826,
+        "pa_bias": 0.08132742350861785,
+        "value_rmse": 0.04301206082762188,
+        "value_mae": 0.002104811395607396,
+        "value_bias": 0.0005272324309696916,
+        "pa_total": 6762.40078445938,
+        "value_total": 18.899694270440204
+      },
+      "assembled": {
+        "pa_rmse": 7.9228885984718795,
+        "pa_mae": 0.6338483599803825,
+        "pa_bias": 0.08132742350861785,
+        "value_rmse": 0.04330962673885193,
+        "value_mae": 0.0024930823043839744,
+        "value_bias": 0.0009394314154291033,
+        "pa_total": 6762.40078445938,
+        "value_total": 26.3155140487177
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.1284339539595694,
+        "mae": 2.4220168465237917,
+        "bias": 1.0716173567809533,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.185918383888429,
+        "mae": 2.245997398383643,
+        "bias": 1.3524892908927801,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.2184358312770844,
+        "mae": 2.4848037725433123,
+        "bias": 1.5790865091561195,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.1284339539595694,
+        "mae": 2.4220168465237917,
+        "bias": 1.0716173567809533,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.2184358312770844,
+        "mae": 2.4848037725433127,
+        "bias": 1.5790865091561195,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.0026706604718136897,
+        "log_loss": 0.014655095496352941,
+        "actual_participants": 54,
+        "expected_participants": 84.92244770685447,
+        "weighted_actual_probability": 0.0030421002969197187,
+        "weighted_expected_probability": 0.00469938911940104
+      },
+      "assembled": {
+        "brier": 0.0027754078625874686,
+        "log_loss": 0.013850348863393295,
+        "actual_participants": 54,
+        "expected_participants": 65.78212398186047,
+        "weighted_actual_probability": 0.0030421002969197187,
+        "weighted_expected_probability": 0.0036026019517716554
+      }
+    }
+  },
+  {
+    "scope": "public_broad_unchanged",
+    "rows": 2627,
+    "people": 1044,
+    "actual_pa": 660776.0,
+    "actual_value": 2124.2311444814422,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 138.48761834182335,
+        "pa_mae": 106.87120401723617,
+        "pa_bias": -3.406637026352263,
+        "value_rmse": 1.0613633165238372,
+        "value_mae": 0.7124619672947053,
+        "value_bias": 0.03500871133980891,
+        "pa_total": 651785.278332935,
+        "value_total": 2208.3271199623164
+      },
+      "standardized": {
+        "pa_rmse": 138.48761834182335,
+        "pa_mae": 106.87120401723617,
+        "pa_bias": -3.406637026352263,
+        "value_rmse": 1.0613633165238372,
+        "value_mae": 0.7124619672947053,
+        "value_bias": 0.03500871133980891,
+        "pa_total": 651785.278332935,
+        "value_total": 2208.3271199623164
+      },
+      "fixed": {
+        "pa_rmse": 138.48761834182335,
+        "pa_mae": 106.87120401723617,
+        "pa_bias": -3.406637026352263,
+        "value_rmse": 1.0613633165238372,
+        "value_mae": 0.7124619672947053,
+        "value_bias": 0.03500871133980891,
+        "pa_total": 651785.278332935,
+        "value_total": 2208.3271199623164
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 138.48761834182335,
+        "pa_mae": 106.87120401723617,
+        "pa_bias": -3.406637026352263,
+        "value_rmse": 1.0613633165238372,
+        "value_mae": 0.7124619672947053,
+        "value_bias": 0.03500871133980891,
+        "pa_total": 651785.278332935,
+        "value_total": 2208.3271199623164
+      },
+      "assembled": {
+        "pa_rmse": 138.48761834182335,
+        "pa_mae": 106.87120401723617,
+        "pa_bias": -3.406637026352263,
+        "value_rmse": 1.0613633165238372,
+        "value_mae": 0.7124619672947053,
+        "value_bias": 0.03500871133980891,
+        "pa_total": 651785.278332935,
+        "value_total": 2208.3271199623164
+      },
+      "steamer": {
+        "pa_rmse": 135.37946341946525,
+        "pa_mae": 92.08284699683804,
+        "pa_bias": 13.030477094490262,
+        "value_rmse": 1.1187137543262544,
+        "value_mae": 0.7426223383850871,
+        "value_bias": 0.2800270664281728,
+        "pa_total": 695054.8730400801,
+        "value_total": 2851.511023442953
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.7435010399774948,
+        "mae": 1.3135247101255814,
+        "bias": 0.14475313739559054,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.7435010399774948,
+        "mae": 1.3135247101255814,
+        "bias": 0.14475313739559054,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.7435010399774948,
+        "mae": 1.3135247101255814,
+        "bias": 0.14475313739559054,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.7435010399774948,
+        "mae": 1.3135247101255814,
+        "bias": 0.14475313739559054,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.7435010399774948,
+        "mae": 1.3135247101255814,
+        "bias": 0.14475313739559054,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "steamer": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.774588665893598,
+        "mae": 1.3480724289008517,
+        "bias": 0.4814129460336777,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.09164388563060068,
+        "log_loss": 0.29720530104157167,
+        "actual_participants": 2088,
+        "expected_participants": 2047.7851346645593,
+        "weighted_actual_probability": 0.7951272152912965,
+        "weighted_expected_probability": 0.7798035094921075
+      },
+      "assembled": {
+        "brier": 0.09164388563060068,
+        "log_loss": 0.29720530104157167,
+        "actual_participants": 2088,
+        "expected_participants": 2047.7851346645593,
+        "weighted_actual_probability": 0.7951272152912965,
+        "weighted_expected_probability": 0.7798035094921075
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2016",
+    "rows": 3745,
+    "people": 3745,
+    "actual_pa": 10735.0,
+    "actual_value": 21.30986461595552,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 22.126578208175896,
+        "pa_mae": 3.762916321813155,
+        "pa_bias": 0.04314741673028333,
+        "value_rmse": 0.1319234922410054,
+        "value_mae": 0.015952127773244316,
+        "value_bias": 0.0012893239801379103,
+        "pa_total": 10896.58707565491,
+        "value_total": 26.138382921571996
+      },
+      "standardized": {
+        "pa_rmse": 21.88011127999769,
+        "pa_mae": 3.558474250876137,
+        "pa_bias": -0.023551130153926663,
+        "value_rmse": 0.13443498247849028,
+        "value_mae": 0.01643301968958269,
+        "value_bias": 0.0011035576681646718,
+        "pa_total": 10646.801017573544,
+        "value_total": 25.442688083232213
+      },
+      "fixed": {
+        "pa_rmse": 21.970237020862708,
+        "pa_mae": 4.2093587196335385,
+        "pa_bias": 0.01660088533671627,
+        "value_rmse": 0.12997340955506986,
+        "value_mae": 0.017640978701527376,
+        "value_bias": 0.0021646641718311836,
+        "pa_total": 10797.170315586003,
+        "value_total": 29.416531939463304
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 21.88011127999769,
+        "pa_mae": 3.558474250876137,
+        "pa_bias": -0.023551130153926663,
+        "value_rmse": 0.12828285778982515,
+        "value_mae": 0.01528942652539276,
+        "value_bias": 0.0011081292056076804,
+        "pa_total": 10646.801017573544,
+        "value_total": 25.459808490956277
+      },
+      "assembled": {
+        "pa_rmse": 21.88011127999769,
+        "pa_mae": 3.558474250876137,
+        "pa_bias": -0.023551130153926663,
+        "value_rmse": 0.1293935916592264,
+        "value_mae": 0.016106493225206627,
+        "value_bias": 0.00212378293135355,
+        "pa_total": 10646.801017573544,
+        "value_total": 29.263431693874566
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.879267824619523,
+        "mae": 2.1361284313492503,
+        "bias": 0.33455555623719463,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 3.1972830250770246,
+        "mae": 2.4960909302378465,
+        "bias": 0.1612890295509891,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.969604975689461,
+        "mae": 2.1856514802440214,
+        "bias": 0.5126030706481679,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.879267824619523,
+        "mae": 2.1361284313492503,
+        "bias": 0.33455555623719463,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.969604975689461,
+        "mae": 2.1856514802440214,
+        "bias": 0.5126030706481679,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.016839947929655194,
+        "log_loss": 0.06080636163029583,
+        "actual_participants": 108,
+        "expected_participants": 97.28224395121416,
+        "weighted_actual_probability": 0.02883845126835781,
+        "weighted_expected_probability": 0.02597656714318134
+      },
+      "assembled": {
+        "brier": 0.017071986324975013,
+        "log_loss": 0.0599378863986586,
+        "actual_participants": 108,
+        "expected_participants": 96.7203728455441,
+        "weighted_actual_probability": 0.02883845126835781,
+        "weighted_expected_probability": 0.025826534805218727
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2017",
+    "rows": 3776,
+    "people": 3776,
+    "actual_pa": 11854.0,
+    "actual_value": 23.570596116878193,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 24.572063883625688,
+        "pa_mae": 3.830875592571875,
+        "pa_bias": -0.6393193212136613,
+        "value_rmse": 0.12999317155498974,
+        "value_mae": 0.014944292956749324,
+        "value_bias": -0.00056187182070146,
+        "pa_total": 9439.930243097215,
+        "value_total": 21.448968121909488
+      },
+      "standardized": {
+        "pa_rmse": 23.94033292487634,
+        "pa_mae": 3.815649709499617,
+        "pa_bias": -0.5419091116600104,
+        "value_rmse": 0.13116188797244976,
+        "value_mae": 0.015378399063114351,
+        "value_bias": -0.00034969851639553464,
+        "pa_total": 9807.751194371798,
+        "value_total": 22.250134518968657
+      },
+      "fixed": {
+        "pa_rmse": 24.77200340550547,
+        "pa_mae": 4.36598964296062,
+        "pa_bias": -0.460038762352989,
+        "value_rmse": 0.12957249115777464,
+        "value_mae": 0.016499462278373827,
+        "value_bias": 0.00020389601950040554,
+        "pa_total": 10116.893633355112,
+        "value_total": 24.340507486511726
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 23.94033292487634,
+        "pa_mae": 3.815649709499617,
+        "pa_bias": -0.5419091116600104,
+        "value_rmse": 0.1270006432985776,
+        "value_mae": 0.01494316412539962,
+        "value_bias": -0.00016050300574273476,
+        "pa_total": 9807.751194371798,
+        "value_total": 22.964536767193632
+      },
+      "assembled": {
+        "pa_rmse": 23.94033292487634,
+        "pa_mae": 3.815649709499617,
+        "pa_bias": -0.5419091116600104,
+        "value_rmse": 0.12741619239840798,
+        "value_mae": 0.015231725961711585,
+        "value_bias": 0.0002824505601146285,
+        "pa_total": 9807.751194371798,
+        "value_total": 24.63712943187104
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.4786574112958886,
+        "mae": 1.8995356126711984,
+        "bias": 0.15494491114517395,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.50596129444687,
+        "mae": 1.9035976870336595,
+        "bias": 0.055693343093293254,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.4190056084294107,
+        "mae": 1.8341285921653732,
+        "bias": 0.2283375167561699,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.4786574112958886,
+        "mae": 1.8995356126711984,
+        "bias": 0.15494491114517395,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.4190056084294107,
+        "mae": 1.8341285921653732,
+        "bias": 0.2283375167561699,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.016273853497919176,
+        "log_loss": 0.05856078539080462,
+        "actual_participants": 95,
+        "expected_participants": 90.20777987687079,
+        "weighted_actual_probability": 0.025158898305084748,
+        "weighted_expected_probability": 0.023889772213154345
+      },
+      "assembled": {
+        "brier": 0.016325408533312775,
+        "log_loss": 0.05844906324996501,
+        "actual_participants": 95,
+        "expected_participants": 93.21016863871027,
+        "weighted_actual_probability": 0.025158898305084748,
+        "weighted_expected_probability": 0.02468489635559065
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2018",
+    "rows": 3603,
+    "people": 3603,
+    "actual_pa": 15836.0,
+    "actual_value": 64.25718346434229,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 29.357458143037274,
+        "pa_mae": 4.579046823439449,
+        "pa_bias": -1.6885039866616782,
+        "value_rmse": 0.2222940321912123,
+        "value_mae": 0.02454261575360306,
+        "value_bias": -0.01137980807180988,
+        "pa_total": 9752.320136057973,
+        "value_total": 23.25573498161128
+      },
+      "standardized": {
+        "pa_rmse": 29.58699641490455,
+        "pa_mae": 4.7128227339727315,
+        "pa_bias": -1.3781825686731934,
+        "value_rmse": 0.2128764672573754,
+        "value_mae": 0.024829923640450842,
+        "value_bias": -0.008886528833942486,
+        "pa_total": 10870.408205070484,
+        "value_total": 32.23902007564752
+      },
+      "fixed": {
+        "pa_rmse": 31.935250363960883,
+        "pa_mae": 5.472417142047601,
+        "pa_bias": -1.4950751682209864,
+        "value_rmse": 0.22900160733929853,
+        "value_mae": 0.02768540624349478,
+        "value_bias": -0.010032164857758019,
+        "pa_total": 10449.244168899788,
+        "value_total": 28.111293481840146
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 29.58699641490455,
+        "pa_mae": 4.7128227339727315,
+        "pa_bias": -1.3781825686731934,
+        "value_rmse": 0.22039540515798675,
+        "value_mae": 0.024461794148097408,
+        "value_bias": -0.010541750485678453,
+        "pa_total": 10870.408205070484,
+        "value_total": 26.275256464442823
+      },
+      "assembled": {
+        "pa_rmse": 29.58699641490455,
+        "pa_mae": 4.7128227339727315,
+        "pa_bias": -1.3781825686731934,
+        "value_rmse": 0.2184941438886294,
+        "value_mae": 0.025028077578778816,
+        "value_bias": -0.009470263090722889,
+        "pa_total": 10870.408205070484,
+        "value_total": 30.135825548467714
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.900513083372003,
+        "mae": 2.2620040890602784,
+        "bias": -0.987603178043896,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.7624943906062387,
+        "mae": 2.1579495630200674,
+        "bias": -0.7269348356425244,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.8036865484157296,
+        "mae": 2.2040402282009905,
+        "bias": -0.8772559631357683,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.900513083372003,
+        "mae": 2.2620040890602784,
+        "bias": -0.987603178043896,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.8036865484157296,
+        "mae": 2.2040402282009905,
+        "bias": -0.8772559631357683,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.01712870278267334,
+        "log_loss": 0.06062721179958344,
+        "actual_participants": 108,
+        "expected_participants": 89.96546924655932,
+        "weighted_actual_probability": 0.029975020815986683,
+        "weighted_expected_probability": 0.024969600123940977
+      },
+      "assembled": {
+        "brier": 0.01627246403343915,
+        "log_loss": 0.05845107809458188,
+        "actual_participants": 108,
+        "expected_participants": 94.27940539005306,
+        "weighted_actual_probability": 0.029975020815986683,
+        "weighted_expected_probability": 0.0261669179544971
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2021",
+    "rows": 3379,
+    "people": 3379,
+    "actual_pa": 18944.0,
+    "actual_value": 35.386053307159756,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 32.23724899763048,
+        "pa_mae": 5.612362257951868,
+        "pa_bias": -2.509885950467056,
+        "value_rmse": 0.1551019222683759,
+        "value_mae": 0.02325427478945733,
+        "value_bias": -0.001747254381315777,
+        "pa_total": 10463.095373371818,
+        "value_total": 29.482080752693747
+      },
+      "standardized": {
+        "pa_rmse": 30.972144590612086,
+        "pa_mae": 4.825543273361096,
+        "pa_bias": -3.442121695389384,
+        "value_rmse": 0.1693066481822537,
+        "value_mae": 0.02342928265051035,
+        "value_bias": 0.0013821921285547079,
+        "pa_total": 7313.070791279271,
+        "value_total": 40.05648050954611
+      },
+      "fixed": {
+        "pa_rmse": 37.92241346194511,
+        "pa_mae": 5.613694827664628,
+        "pa_bias": -4.630723751304967,
+        "value_rmse": 0.16585974932335565,
+        "value_mae": 0.021744898059695997,
+        "value_bias": -0.00700829950650414,
+        "pa_total": 3296.7844443405143,
+        "value_total": 11.705009274682268
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 30.972144590612086,
+        "pa_mae": 4.825543273361096,
+        "pa_bias": -3.442121695389384,
+        "value_rmse": 0.1547774457457747,
+        "value_mae": 0.021106384511515548,
+        "value_bias": -0.003782698770531515,
+        "pa_total": 7313.070791279271,
+        "value_total": 22.604314161533765
+      },
+      "assembled": {
+        "pa_rmse": 30.972144590612086,
+        "pa_mae": 4.825543273361096,
+        "pa_bias": -3.442121695389384,
+        "value_rmse": 0.15600388230004184,
+        "value_mae": 0.021663066529529894,
+        "value_bias": -0.002525257919267185,
+        "pa_total": 7313.070791279271,
+        "value_total": 26.85320679795594
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 2.560453528824028,
+        "mae": 1.9314089811127193,
+        "bias": 0.6024267234469475,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 3.3424511206884278,
+        "mae": 2.5951076429887983,
+        "bias": 1.8863886000218753,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 2.631463168176932,
+        "mae": 2.0489290046464212,
+        "bias": 0.7926221929361315,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 2.560453528824028,
+        "mae": 1.9314089811127193,
+        "bias": 0.6024267234469475,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 2.631463168176932,
+        "mae": 2.0489290046464212,
+        "bias": 0.7926221929361315,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.02968897065945429,
+        "log_loss": 0.1045983615853573,
+        "actual_participants": 158,
+        "expected_participants": 79.86011921106642,
+        "weighted_actual_probability": 0.046759396271086114,
+        "weighted_expected_probability": 0.023634246585103994
+      },
+      "assembled": {
+        "brier": 0.032912547905100814,
+        "log_loss": 0.12123776965439727,
+        "actual_participants": 158,
+        "expected_participants": 49.79355573007576,
+        "weighted_actual_probability": 0.046759396271086114,
+        "weighted_expected_probability": 0.014736181038791285
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2022",
+    "rows": 3330,
+    "people": 3330,
+    "actual_pa": 14072.0,
+    "actual_value": 31.070038518696343,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 27.667090262659325,
+        "pa_mae": 5.385250387056951,
+        "pa_bias": 0.13461036543169103,
+        "value_rmse": 0.13866875947573193,
+        "value_mae": 0.020295004425660394,
+        "value_bias": 0.0016404642458779338,
+        "pa_total": 14520.25251688753,
+        "value_total": 36.53278445746986
+      },
+      "standardized": {
+        "pa_rmse": 27.228963364894778,
+        "pa_mae": 4.9955451273053715,
+        "pa_bias": -0.06342480831356624,
+        "value_rmse": 0.1425114775994765,
+        "value_mae": 0.020027707425416458,
+        "value_bias": -6.012341562758841e-06,
+        "pa_total": 13860.795388315824,
+        "value_total": 31.050017421292353
+      },
+      "fixed": {
+        "pa_rmse": 29.483908407517795,
+        "pa_mae": 5.198381460957117,
+        "pa_bias": -1.4522724260295043,
+        "value_rmse": 0.1404588663296214,
+        "value_mae": 0.020430253496876844,
+        "value_bias": -0.0007525880284385553,
+        "pa_total": 9235.93282132175,
+        "value_total": 28.563920383995956
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 27.228963364894778,
+        "pa_mae": 4.9955451273053715,
+        "pa_bias": -0.06342480831356624,
+        "value_rmse": 0.13892242104331465,
+        "value_mae": 0.01992343781348698,
+        "value_bias": 0.0016752945183631277,
+        "pa_total": 13860.795388315824,
+        "value_total": 36.64876926484556
+      },
+      "assembled": {
+        "pa_rmse": 27.228963364894778,
+        "pa_mae": 4.9955451273053715,
+        "pa_bias": -0.06342480831356624,
+        "value_rmse": 0.1418406379989781,
+        "value_mae": 0.021486811725790544,
+        "value_bias": 0.003987140356086387,
+        "pa_total": 13860.795388315824,
+        "value_total": 44.347215904464015
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.500013530044279,
+        "mae": 1.8322718698915597,
+        "bias": 0.3019479967292118,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.6667364829495166,
+        "mae": 1.9221691892203063,
+        "bias": -0.06484399807613819,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.592730737184297,
+        "mae": 1.9362246391601716,
+        "bias": 0.5785864782194997,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.500013530044279,
+        "mae": 1.8322718698915597,
+        "bias": 0.3019479967292118,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.592730737184297,
+        "mae": 1.9362246391601716,
+        "bias": 0.5785864782194997,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.018849443615720305,
+        "log_loss": 0.0706283275020707,
+        "actual_participants": 106,
+        "expected_participants": 110.79775632779527,
+        "weighted_actual_probability": 0.03183183183183183,
+        "weighted_expected_probability": 0.03327259949783641
+      },
+      "assembled": {
+        "brier": 0.01792475358128407,
+        "log_loss": 0.06486682772419472,
+        "actual_participants": 106,
+        "expected_participants": 93.29352775902676,
+        "weighted_actual_probability": 0.03183183183183183,
+        "weighted_expected_probability": 0.028016074402110132
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2023",
+    "rows": 3280,
+    "people": 3280,
+    "actual_pa": 11697.0,
+    "actual_value": 5.118642596467498,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 25.75194609941259,
+        "pa_mae": 5.126053117624734,
+        "pa_bias": 0.9333128371488636,
+        "value_rmse": 0.10548562894995565,
+        "value_mae": 0.016866847989627672,
+        "value_bias": 0.008865092839801775,
+        "pa_total": 14758.26610584827,
+        "value_total": 34.196147111017325
+      },
+      "standardized": {
+        "pa_rmse": 26.98485137531098,
+        "pa_mae": 5.9912687094488,
+        "pa_bias": 2.428881466143137,
+        "value_rmse": 0.14153680173209365,
+        "value_mae": 0.019804434390110367,
+        "value_bias": 0.010123377824932915,
+        "pa_total": 19663.73120894949,
+        "value_total": 38.32332186224745
+      },
+      "fixed": {
+        "pa_rmse": 26.630294718172777,
+        "pa_mae": 6.228532249840866,
+        "pa_bias": 1.6890040853646873,
+        "value_rmse": 0.10268261668248009,
+        "value_mae": 0.017201431641067178,
+        "value_bias": 0.007618979945140188,
+        "pa_total": 17236.933399996175,
+        "value_total": 30.108896816527317
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 26.98485137531098,
+        "pa_mae": 5.9912687094488,
+        "pa_bias": 2.428881466143137,
+        "value_rmse": 0.11485682540457794,
+        "value_mae": 0.01956598716477062,
+        "value_bias": 0.012516384564858193,
+        "pa_total": 19663.73120894949,
+        "value_total": 46.17238396920237
+      },
+      "assembled": {
+        "pa_rmse": 26.98485137531098,
+        "pa_mae": 5.9912687094488,
+        "pa_bias": 2.428881466143137,
+        "value_rmse": 0.1097516507645928,
+        "value_mae": 0.017384152277987862,
+        "value_bias": 0.0094563544790448,
+        "pa_total": 19663.73120894949,
+        "value_total": 36.13548528773444
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.702779942502408,
+        "mae": 1.8849248329951311,
+        "bias": 1.2562729218770272,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.7701145414847956,
+        "mae": 1.9113959120850323,
+        "bias": 1.0866352868029028,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.584522416326184,
+        "mae": 1.79127334639495,
+        "bias": 0.977629459907179,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.702779942502408,
+        "mae": 1.8849248329951311,
+        "bias": 1.2562729218770272,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.584522416326184,
+        "mae": 1.79127334639495,
+        "bias": 0.977629459907179,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.019933694875920057,
+        "log_loss": 0.07407829238322075,
+        "actual_participants": 107,
+        "expected_participants": 115.50530416286786,
+        "weighted_actual_probability": 0.032621951219512196,
+        "weighted_expected_probability": 0.035215031756971896
+      },
+      "assembled": {
+        "brier": 0.01984965313057484,
+        "log_loss": 0.07161864979702605,
+        "actual_participants": 107,
+        "expected_participants": 131.4796112185916,
+        "weighted_actual_probability": 0.032621951219512196,
+        "weighted_expected_probability": 0.04008524732274134
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2024",
+    "rows": 3086,
+    "people": 3086,
+    "actual_pa": 15190.0,
+    "actual_value": 34.08875930224122,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 31.070761011679803,
+        "pa_mae": 5.829073720142111,
+        "pa_bias": -1.0386165147778834,
+        "value_rmse": 0.16744662746327021,
+        "value_mae": 0.02176320533255694,
+        "value_bias": -0.0031521262931706773,
+        "pa_total": 11984.829435395452,
+        "value_total": 24.361297561516515
+      },
+      "standardized": {
+        "pa_rmse": 30.911698284777433,
+        "pa_mae": 5.816104087278194,
+        "pa_bias": -0.7042755085297591,
+        "value_rmse": 0.1725345092985073,
+        "value_mae": 0.023515286994413735,
+        "value_bias": -0.001314189961607473,
+        "pa_total": 13016.60578067716,
+        "value_total": 30.033169080720562
+      },
+      "fixed": {
+        "pa_rmse": 31.77631261598422,
+        "pa_mae": 7.133015833441376,
+        "pa_bias": 0.10944523586769415,
+        "value_rmse": 0.1710493925160491,
+        "value_mae": 0.02570726642216512,
+        "value_bias": 0.000183445032910168,
+        "pa_total": 15527.747997887704,
+        "value_total": 34.65487067380201
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 30.911698284777433,
+        "pa_mae": 5.816104087278194,
+        "pa_bias": -0.7042755085297591,
+        "value_rmse": 0.16839321174545044,
+        "value_mae": 0.022108323678459874,
+        "value_bias": -0.0023026986215951054,
+        "pa_total": 13016.60578067716,
+        "value_total": 26.982631355998734
+      },
+      "assembled": {
+        "pa_rmse": 30.911698284777433,
+        "pa_mae": 5.816104087278194,
+        "pa_bias": -0.7042755085297591,
+        "value_rmse": 0.16954467770356996,
+        "value_mae": 0.022852049468686644,
+        "value_bias": -0.0014746382414717438,
+        "pa_total": 13016.60578067716,
+        "value_total": 29.538025689059427
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.465448377167263,
+        "mae": 1.8922698334428292,
+        "bias": -0.05420634984984974,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.743654489468192,
+        "mae": 2.2192493868096745,
+        "bias": -0.2497081917892188,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.516255214647541,
+        "mae": 1.9740067632455198,
+        "bias": -0.0002778672115573634,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.465448377167263,
+        "mae": 1.8922698334428292,
+        "bias": -0.05420634984984974,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.516255214647541,
+        "mae": 1.9740067632455198,
+        "bias": -0.0002778672115573634,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.021304224351196506,
+        "log_loss": 0.0735391359398915,
+        "actual_participants": 105,
+        "expected_participants": 99.58573892082713,
+        "weighted_actual_probability": 0.034024627349319506,
+        "weighted_expected_probability": 0.03227016815321683
+      },
+      "assembled": {
+        "brier": 0.01998610621712316,
+        "log_loss": 0.06952839305310343,
+        "actual_participants": 105,
+        "expected_participants": 107.15777470419246,
+        "weighted_actual_probability": 0.034024627349319506,
+        "weighted_expected_probability": 0.0347238414465951
+      }
+    }
+  },
+  {
+    "scope": "never_stage_Inactive / unknown",
+    "rows": 893,
+    "people": 745,
+    "actual_pa": 243.0,
+    "actual_value": 1.2507835840367025,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 7.949532802026023,
+        "pa_mae": 0.8002392929831327,
+        "pa_bias": 0.3656953872040864,
+        "value_rmse": 0.022158631642144763,
+        "value_mae": 0.0018890039956446743,
+        "value_bias": -0.00012862398519300128,
+        "pa_total": 569.9130030828642,
+        "value_total": 1.105168059872602
+      },
+      "standardized": {
+        "pa_rmse": 6.137663667039872,
+        "pa_mae": 0.6010159620863502,
+        "pa_bias": 0.16304127959376968,
+        "value_rmse": 0.02201401409959265,
+        "value_mae": 0.002685284804436311,
+        "value_bias": 0.0005431711213695673,
+        "pa_total": 387.9236518584891,
+        "value_total": 1.6884175193212867
+      },
+      "fixed": {
+        "pa_rmse": 5.778818703122766,
+        "pa_mae": 0.7419136316855257,
+        "pa_bias": 0.26066879426527095,
+        "value_rmse": 0.02332315815721683,
+        "value_mae": 0.0026224838605490484,
+        "value_bias": 4.9742314549157804e-05,
+        "pa_total": 471.63704626450897,
+        "value_total": 1.261173646020523
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 6.137663667039872,
+        "pa_mae": 0.6010159620863502,
+        "pa_bias": 0.16304127959376968,
+        "value_rmse": 0.022070478119154958,
+        "value_mae": 0.0017424017960190215,
+        "value_bias": -0.00048320993253868073,
+        "pa_total": 387.9236518584891,
+        "value_total": 0.7867839764038107
+      },
+      "assembled": {
+        "pa_rmse": 6.137663667039872,
+        "pa_mae": 0.6010159620863502,
+        "pa_bias": 0.16304127959376968,
+        "value_rmse": 0.021859711517852543,
+        "value_mae": 0.0018791159955565881,
+        "value_bias": -0.00015677950180109274,
+        "pa_total": 387.9236518584891,
+        "value_total": 1.0823824757462845
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 3,
+        "players": 3,
+        "rmse": 4.913238180585445,
+        "mae": 4.025026663829471,
+        "bias": -4.025026663829471,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 3,
+        "players": 3,
+        "rmse": 3.7004172715065393,
+        "mae": 3.2523353814469917,
+        "bias": -3.2523353814469917,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 3,
+        "players": 3,
+        "rmse": 4.632288162340897,
+        "mae": 3.555038916950189,
+        "bias": -3.555038916950189,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 3,
+        "players": 3,
+        "rmse": 4.913238180585445,
+        "mae": 4.025026663829471,
+        "bias": -4.025026663829471,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 3,
+        "players": 3,
+        "rmse": 4.632288162340897,
+        "mae": 3.555038916950189,
+        "bias": -3.555038916950189,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.0022373982357749354,
+        "log_loss": 0.015104010819694168,
+        "actual_participants": 3,
+        "expected_participants": 5.471399521047891,
+        "weighted_actual_probability": 0.003248222365869425,
+        "weighted_expected_probability": 0.006094779684572592
+      },
+      "assembled": {
+        "brier": 0.002518593172068518,
+        "log_loss": 0.015149336572366827,
+        "actual_participants": 3,
+        "expected_participants": 2.5636784534699486,
+        "weighted_actual_probability": 0.003248222365869425,
+        "weighted_expected_probability": 0.0028514207670719224
+      }
+    }
+  },
+  {
+    "scope": "never_stage_Lower minors",
+    "rows": 17852,
+    "people": 8974,
+    "actual_pa": 5194.0,
+    "actual_value": 9.565002079859191,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 7.828295380577822,
+        "pa_mae": 0.6561883484032958,
+        "pa_bias": 0.12995956029566674,
+        "value_rmse": 0.04282408147553555,
+        "value_mae": 0.002149543461076734,
+        "value_bias": 0.0006330948310004775,
+        "pa_total": 7651.947720558621,
+        "value_total": 20.83465780263757
+      },
+      "standardized": {
+        "pa_rmse": 7.9228885984718795,
+        "pa_mae": 0.6338483599803825,
+        "pa_bias": 0.08132742350861785,
+        "value_rmse": 0.043641053589695486,
+        "value_mae": 0.002656303738357535,
+        "value_bias": 0.0009168778828147625,
+        "pa_total": 6762.40078445938,
+        "value_total": 25.759467760003147
+      },
+      "fixed": {
+        "pa_rmse": 7.880393704348181,
+        "pa_mae": 0.942605605240446,
+        "pa_bias": 0.3698484870407726,
+        "value_rmse": 0.042911356045331285,
+        "value_mae": 0.003674961078678228,
+        "value_bias": 0.0020753054171148044,
+        "pa_total": 11915.317544380221,
+        "value_total": 46.644594706781625
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 7.9228885984718795,
+        "pa_mae": 0.6338483599803826,
+        "pa_bias": 0.08132742350861785,
+        "value_rmse": 0.04301206082762188,
+        "value_mae": 0.002104811395607396,
+        "value_bias": 0.0005272324309696917,
+        "pa_total": 6762.40078445938,
+        "value_total": 18.899694270440204
+      },
+      "assembled": {
+        "pa_rmse": 7.9228885984718795,
+        "pa_mae": 0.6338483599803826,
+        "pa_bias": 0.08132742350861785,
+        "value_rmse": 0.04330962673885193,
+        "value_mae": 0.0024930823043839744,
+        "value_bias": 0.0009394314154291033,
+        "pa_total": 6762.40078445938,
+        "value_total": 26.3155140487177
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.1284339539595694,
+        "mae": 2.4220168465237912,
+        "bias": 1.071617356780953,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.1859183838884286,
+        "mae": 2.245997398383643,
+        "bias": 1.3524892908927801,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.2184358312770844,
+        "mae": 2.4848037725433123,
+        "bias": 1.5790865091561195,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.1284339539595694,
+        "mae": 2.4220168465237917,
+        "bias": 1.0716173567809533,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.2184358312770844,
+        "mae": 2.484803772543312,
+        "bias": 1.5790865091561195,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.0026706604718136897,
+        "log_loss": 0.014655095496352941,
+        "actual_participants": 54,
+        "expected_participants": 84.92244770685447,
+        "weighted_actual_probability": 0.0030421002969197187,
+        "weighted_expected_probability": 0.00469938911940104
+      },
+      "assembled": {
+        "brier": 0.0027754078625874686,
+        "log_loss": 0.013850348863393295,
+        "actual_participants": 54,
+        "expected_participants": 65.78212398186047,
+        "weighted_actual_probability": 0.0030421002969197187,
+        "weighted_expected_probability": 0.0036026019517716554
+      }
+    }
+  },
+  {
+    "scope": "never_stage_Upper minors",
+    "rows": 5454,
+    "people": 3055,
+    "actual_pa": 92891.0,
+    "actual_value": 203.98535225784494,
+    "scores": {
+      "repaired": {
+        "pa_rmse": 56.24215705088987,
+        "pa_mae": 19.097284785508442,
+        "pa_bias": -3.555104624502557,
+        "value_rmse": 0.31706870723614805,
+        "value_mae": 0.07954282008139206,
+        "value_bias": -0.006259527358998744,
+        "pa_total": 73593.42016267168,
+        "value_total": 173.47557004528002
+      },
+      "standardized": {
+        "pa_rmse": 55.79202042495295,
+        "pa_mae": 18.945292350517775,
+        "pa_bias": -2.733593832174052,
+        "value_rmse": 0.3278139745396989,
+        "value_mae": 0.08127910703754626,
+        "value_bias": -0.0029776308610114195,
+        "pa_total": 78028.83914991972,
+        "value_total": 191.94694627233042
+      },
+      "fixed": {
+        "pa_rmse": 60.14060738158207,
+        "pa_mae": 20.758871493303467,
+        "pa_bias": -5.1526662157693295,
+        "value_rmse": 0.32369675882686805,
+        "value_mae": 0.08056124060885349,
+        "value_bias": -0.012208938527043443,
+        "pa_total": 64273.75219074232,
+        "value_total": 138.99526170402055
+      },
+      "prospect_pa_only": {
+        "pa_rmse": 55.79202042495295,
+        "pa_mae": 18.945292350517775,
+        "pa_bias": -2.733593832174052,
+        "value_rmse": 0.3161675553461348,
+        "value_mae": 0.07946699979903923,
+        "value_bias": -0.003704696427424605,
+        "pa_total": 78028.83914991972,
+        "value_total": 187.42122222732917
+      },
+      "assembled": {
+        "pa_rmse": 55.79202042495295,
+        "pa_mae": 18.945292350517775,
+        "pa_bias": -2.733593832174052,
+        "value_rmse": 0.31597391726600993,
+        "value_mae": 0.07975664484317731,
+        "value_bias": -0.0025204345064223097,
+        "pa_total": 78028.83914991972,
+        "value_total": 193.51242382896316
+      }
+    },
+    "rates": {
+      "repaired": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6319533338665884,
+        "mae": 1.9595045720833046,
+        "bias": 0.21482409322207188,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "standardized": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.864699977133406,
+        "mae": 2.183134380128835,
+        "bias": 0.2613577325852164,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "fixed": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.63190442945497,
+        "mae": 1.9810928513610715,
+        "bias": 0.27754871050749735,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "prospect_pa_only": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6319533338665884,
+        "mae": 1.9595045720833046,
+        "bias": 0.21482409322207183,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "assembled": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.6319044294549694,
+        "mae": 1.9810928513610715,
+        "bias": 0.2775487105074973,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "probabilities": {
+      "repaired": {
+        "brier": 0.07883410203197774,
+        "log_loss": 0.26540925715081987,
+        "actual_participants": 730,
+        "expected_participants": 592.8105644692986,
+        "weighted_actual_probability": 0.1335969837303775,
+        "weighted_expected_probability": 0.10876170559713046
+      },
+      "assembled": {
+        "brier": 0.07855672997865054,
+        "log_loss": 0.2680077810381327,
+        "actual_participants": 730,
+        "expected_participants": 597.5886138508636,
+        "weighted_actual_probability": 0.1335969837303775,
+        "weighted_expected_probability": 0.11008562238272745
+      }
+    }
+  }
+]

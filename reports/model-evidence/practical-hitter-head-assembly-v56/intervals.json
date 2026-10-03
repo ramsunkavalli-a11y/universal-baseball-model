@@ -1,0 +1,90 @@
+[
+  {
+    "scope": "all",
+    "candidate": "assembled",
+    "benchmark": "repaired",
+    "metric": "value_mse",
+    "difference": -3.237193193798921e-05,
+    "lower": -0.0006018662810496333,
+    "upper": 0.0004855538070257097,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "candidate": "assembled",
+    "benchmark": "prospect_pa_only",
+    "metric": "value_mse",
+    "difference": -7.823905296445844e-07,
+    "lower": -0.0002951388092074406,
+    "upper": 0.00029704884709091267,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "candidate": "assembled",
+    "benchmark": "repaired",
+    "metric": "value_mse",
+    "difference": -2.9116041182734435e-05,
+    "lower": -0.0007088928044781603,
+    "upper": 0.0006279560864295428,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "candidate": "assembled",
+    "benchmark": "prospect_pa_only",
+    "metric": "value_mse",
+    "difference": 6.121791323129658e-08,
+    "lower": -0.00035514066869444437,
+    "upper": 0.00036693605057325576,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "candidate": "assembled",
+    "benchmark": "repaired",
+    "metric": "value_mse",
+    "difference": -0.0006930487159748946,
+    "lower": -0.003648942345197095,
+    "upper": 0.002289267001809047,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "candidate": "assembled",
+    "benchmark": "prospect_pa_only",
+    "metric": "value_mse",
+    "difference": -0.00012240666112393376,
+    "lower": -0.0017267361703852836,
+    "upper": 0.0013800901098243825,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "candidate": "assembled",
+    "benchmark": "repaired",
+    "metric": "value_mse",
+    "difference": 4.182181403537053e-05,
+    "lower": -1.178925756987347e-05,
+    "upper": 0.00011426629394841164,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "candidate": "assembled",
+    "benchmark": "prospect_pa_only",
+    "metric": "value_mse",
+    "difference": 2.5686391619632774e-05,
+    "lower": 5.908249167980326e-07,
+    "upper": 6.27868074395584e-05,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]
