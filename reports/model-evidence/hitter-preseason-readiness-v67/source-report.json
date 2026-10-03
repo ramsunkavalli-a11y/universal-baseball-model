@@ -1,0 +1,764 @@
+{
+  "rows": 63282,
+  "scouting_columns": [
+    "scout_list_available_0",
+    "scout_list_capacity_0",
+    "scout_listed_0",
+    "scout_rank_score_0",
+    "scout_list_available_1",
+    "scout_list_capacity_1",
+    "scout_listed_1",
+    "scout_rank_score_1",
+    "scout_list_available_2",
+    "scout_list_capacity_2",
+    "scout_listed_2",
+    "scout_rank_score_2"
+  ],
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-numeric-repair-v53\\features.parquet": "f2c719c401a8d35ef4dd59e20f16beaa46f4b1fb66d0a70a1a9192950a82af4e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2011.html": "2bce791472746f068e1d4fb4a9081a5131baac4206acd24be2dcee46f55c2fea",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2012.html": "4740250407dc1f862e772c98764fe649994ec0768cfa641a56d7799b18aaa166",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2013.html": "70bf54ac907b4fc43e52485e3e8e0acf5fcfa40a75244ad47dc1e69e390b4d54",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2014.html": "dfd12cb9c4026a4ce257ad2135d29848eda267382bee677cbe97e44ec796ebc8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2015.html": "bf08bcae8639f77ac5c78ff3f61fb3ce23907db7b63f88c3b544aa6a97caa8a1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2016.html": "102e31ed9863dbbdfc764743d91d89789fefc76cd73dffa619090902993b0808",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2017.html": "38691fdd36808d30d5d61c6ad2aa8ff0ebb006c4d859f0f5c4c6bc940cc31a23",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2018.html": "4968de6f7e5f3dc24d6089f62e28550442c33ccdb8c1c72e6f00c506f8545e91",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2019.html": "6f80690bef4ecc54c2ac064d7076b42d400bf3f90a86a01292aabb840970b972",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2020.html": "085ecd0a7e9170cc366c952e5d58202feda2a4eeea2139c63e25d8c185744afa",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2021.html": "8df8b873ca077d9c7728498b0d349e1b98c4a2d0ed32ee52745fca27f7c02981",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2022.html": "e34d4960509d1452089a9109bfaafb2670dfa8569194e7191fcce6f69adc1e39",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2023.html": "1080f7bd67bf803221e84337f45d7892f81cf91ea603a5c85db25bbf07768ffd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-scouting-v47\\captures\\mlb-top100-2024.html": "fa8894828e3c519d04e394b77c8450ac67224a81674d26163017dc579b2de85a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v67\\captures\\mlb-top100-2025.html": "2abe1cc75981c0111231990c66eb8ccccbcdf6d297455e9eae0a0e45f540b852"
+  },
+  "sources": [
+    {
+      "year": 2011,
+      "url": "https://www.mlb.com/prospects/2011/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2011/top100/",
+      "captured_utc": "2026-10-03T15:00:20.476748+00:00",
+      "sha256": "2bce791472746f068e1d4fb4a9081a5131baac4206acd24be2dcee46f55c2fea",
+      "bytes": 855742
+    },
+    {
+      "year": 2012,
+      "url": "https://www.mlb.com/prospects/2012/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2012/top100/",
+      "captured_utc": "2026-10-03T15:00:21.898423+00:00",
+      "sha256": "4740250407dc1f862e772c98764fe649994ec0768cfa641a56d7799b18aaa166",
+      "bytes": 1208941
+    },
+    {
+      "year": 2013,
+      "url": "https://www.mlb.com/prospects/2013/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2013/top100/",
+      "captured_utc": "2026-10-03T14:55:47.710148+00:00",
+      "sha256": "70bf54ac907b4fc43e52485e3e8e0acf5fcfa40a75244ad47dc1e69e390b4d54",
+      "bytes": 1305635
+    },
+    {
+      "year": 2014,
+      "url": "https://www.mlb.com/prospects/2014/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2014/top100/",
+      "captured_utc": "2026-10-03T15:00:23.636576+00:00",
+      "sha256": "dfd12cb9c4026a4ce257ad2135d29848eda267382bee677cbe97e44ec796ebc8",
+      "bytes": 1382728
+    },
+    {
+      "year": 2015,
+      "url": "https://www.mlb.com/prospects/2015/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2015/top100/",
+      "captured_utc": "2026-10-03T15:00:25.393542+00:00",
+      "sha256": "bf08bcae8639f77ac5c78ff3f61fb3ce23907db7b63f88c3b544aa6a97caa8a1",
+      "bytes": 1485243
+    },
+    {
+      "year": 2016,
+      "url": "https://www.mlb.com/prospects/2016/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2016/top100/",
+      "captured_utc": "2026-10-03T14:55:49.418621+00:00",
+      "sha256": "102e31ed9863dbbdfc764743d91d89789fefc76cd73dffa619090902993b0808",
+      "bytes": 1632311
+    },
+    {
+      "year": 2017,
+      "url": "https://www.mlb.com/prospects/2017/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2017/top100/",
+      "captured_utc": "2026-10-03T15:00:26.698515+00:00",
+      "sha256": "38691fdd36808d30d5d61c6ad2aa8ff0ebb006c4d859f0f5c4c6bc940cc31a23",
+      "bytes": 1751159
+    },
+    {
+      "year": 2018,
+      "url": "https://www.mlb.com/prospects/2018/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2018/top100/",
+      "captured_utc": "2026-10-03T15:00:28.023694+00:00",
+      "sha256": "4968de6f7e5f3dc24d6089f62e28550442c33ccdb8c1c72e6f00c506f8545e91",
+      "bytes": 1813891
+    },
+    {
+      "year": 2019,
+      "url": "https://www.mlb.com/prospects/2019/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2019/top100/",
+      "captured_utc": "2026-10-03T15:00:29.460482+00:00",
+      "sha256": "6f80690bef4ecc54c2ac064d7076b42d400bf3f90a86a01292aabb840970b972",
+      "bytes": 1807882
+    },
+    {
+      "year": 2020,
+      "url": "https://www.mlb.com/prospects/2020/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2020/top100/",
+      "captured_utc": "2026-10-03T15:00:30.799052+00:00",
+      "sha256": "085ecd0a7e9170cc366c952e5d58202feda2a4eeea2139c63e25d8c185744afa",
+      "bytes": 1893702
+    },
+    {
+      "year": 2021,
+      "url": "https://www.mlb.com/prospects/2021/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2021/top100/",
+      "captured_utc": "2026-10-03T15:00:35.136172+00:00",
+      "sha256": "8df8b873ca077d9c7728498b0d349e1b98c4a2d0ed32ee52745fca27f7c02981",
+      "bytes": 1953268
+    },
+    {
+      "year": 2022,
+      "url": "https://www.mlb.com/prospects/2022/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2022/top100/",
+      "captured_utc": "2026-10-03T15:00:36.425771+00:00",
+      "sha256": "e34d4960509d1452089a9109bfaafb2670dfa8569194e7191fcce6f69adc1e39",
+      "bytes": 1960816
+    },
+    {
+      "year": 2023,
+      "url": "https://www.mlb.com/prospects/2023/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2023/top100/",
+      "captured_utc": "2026-10-03T15:00:37.447360+00:00",
+      "sha256": "1080f7bd67bf803221e84337f45d7892f81cf91ea603a5c85db25bbf07768ffd",
+      "bytes": 1921085
+    },
+    {
+      "year": 2024,
+      "url": "https://www.mlb.com/prospects/2024/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2024/top100/",
+      "captured_utc": "2026-10-03T14:55:50.727862+00:00",
+      "sha256": "fa8894828e3c519d04e394b77c8450ac67224a81674d26163017dc579b2de85a",
+      "bytes": 2002062
+    },
+    {
+      "year": 2025,
+      "url": "https://www.mlb.com/prospects/2025/top100/",
+      "final_url": "https://www.mlb.com/milb/prospects/2025/top100/",
+      "captured_utc": "2026-10-03T22:50:21.799797+00:00",
+      "sha256": "2abe1cc75981c0111231990c66eb8ccccbcdf6d297455e9eae0a0e45f540b852",
+      "bytes": 1931855
+    }
+  ],
+  "groups": [
+    {
+      "origin_year": 2011,
+      "stage": "Current MLB",
+      "rows": 640,
+      "newly_listed": 4,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 12,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2011,
+      "stage": "Inactive / unknown",
+      "rows": 195,
+      "newly_listed": 2,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2011,
+      "stage": "Lower minors",
+      "rows": 2833,
+      "newly_listed": 21,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2011,
+      "stage": "Upper minors",
+      "rows": 829,
+      "newly_listed": 10,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2012,
+      "stage": "Current MLB",
+      "rows": 634,
+      "newly_listed": 3,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 19,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2012,
+      "stage": "Inactive / unknown",
+      "rows": 180,
+      "newly_listed": 1,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2012,
+      "stage": "Lower minors",
+      "rows": 2829,
+      "newly_listed": 16,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 2,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2012,
+      "stage": "Upper minors",
+      "rows": 872,
+      "newly_listed": 7,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 6,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2013,
+      "stage": "Current MLB",
+      "rows": 635,
+      "newly_listed": 3,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 13,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2013,
+      "stage": "Inactive / unknown",
+      "rows": 211,
+      "newly_listed": 1,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 1,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2013,
+      "stage": "Lower minors",
+      "rows": 2866,
+      "newly_listed": 13,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 4,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2013,
+      "stage": "Upper minors",
+      "rows": 838,
+      "newly_listed": 6,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 5,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2014,
+      "stage": "Current MLB",
+      "rows": 644,
+      "newly_listed": 6,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 19,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2014,
+      "stage": "Inactive / unknown",
+      "rows": 211,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 2,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2014,
+      "stage": "Lower minors",
+      "rows": 2903,
+      "newly_listed": 15,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 1,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2014,
+      "stage": "Upper minors",
+      "rows": 840,
+      "newly_listed": 8,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 7,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2015,
+      "stage": "Current MLB",
+      "rows": 638,
+      "newly_listed": 3,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 21,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2015,
+      "stage": "Inactive / unknown",
+      "rows": 207,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2015,
+      "stage": "Lower minors",
+      "rows": 2904,
+      "newly_listed": 21,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2015,
+      "stage": "Upper minors",
+      "rows": 850,
+      "newly_listed": 10,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 5,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2016,
+      "stage": "Current MLB",
+      "rows": 634,
+      "newly_listed": 3,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 19,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2016,
+      "stage": "Inactive / unknown",
+      "rows": 224,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2016,
+      "stage": "Lower minors",
+      "rows": 2955,
+      "newly_listed": 13,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 6,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2016,
+      "stage": "Upper minors",
+      "rows": 850,
+      "newly_listed": 10,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 5,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2017,
+      "stage": "Current MLB",
+      "rows": 625,
+      "newly_listed": 3,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 23,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2017,
+      "stage": "Inactive / unknown",
+      "rows": 203,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 1,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2017,
+      "stage": "Lower minors",
+      "rows": 2974,
+      "newly_listed": 18,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 3,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2017,
+      "stage": "Upper minors",
+      "rows": 889,
+      "newly_listed": 7,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 3,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2018,
+      "stage": "Current MLB",
+      "rows": 631,
+      "newly_listed": 1,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 19,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2018,
+      "stage": "Inactive / unknown",
+      "rows": 226,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2018,
+      "stage": "Lower minors",
+      "rows": 2749,
+      "newly_listed": 19,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 5,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2018,
+      "stage": "Upper minors",
+      "rows": 872,
+      "newly_listed": 8,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 7,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2019,
+      "stage": "Current MLB",
+      "rows": 640,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 634
+    },
+    {
+      "origin_year": 2019,
+      "stage": "Inactive / unknown",
+      "rows": 255,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 255
+    },
+    {
+      "origin_year": 2019,
+      "stage": "Lower minors",
+      "rows": 3117,
+      "newly_listed": 27,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 3087
+    },
+    {
+      "origin_year": 2019,
+      "stage": "Upper minors",
+      "rows": 872,
+      "newly_listed": 7,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 846
+    },
+    {
+      "origin_year": 2020,
+      "stage": "Current MLB",
+      "rows": 577,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 3,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 564
+    },
+    {
+      "origin_year": 2020,
+      "stage": "Inactive / unknown",
+      "rows": 529,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 7,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 521
+    },
+    {
+      "origin_year": 2020,
+      "stage": "Lower minors",
+      "rows": 3111,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 1,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 3084
+    },
+    {
+      "origin_year": 2020,
+      "stage": "Upper minors",
+      "rows": 916,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 903
+    },
+    {
+      "origin_year": 2021,
+      "stage": "Current MLB",
+      "rows": 662,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 2,
+      "no_longer_listed": 18,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2021,
+      "stage": "Inactive / unknown",
+      "rows": 214,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 2,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2021,
+      "stage": "Lower minors",
+      "rows": 2402,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 25,
+      "no_longer_listed": 2,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2021,
+      "stage": "Upper minors",
+      "rows": 964,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 14,
+      "no_longer_listed": 10,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2022,
+      "stage": "Current MLB",
+      "rows": 688,
+      "newly_listed": 4,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 27,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2022,
+      "stage": "Inactive / unknown",
+      "rows": 240,
+      "newly_listed": 2,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2022,
+      "stage": "Lower minors",
+      "rows": 2369,
+      "newly_listed": 20,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 5,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2022,
+      "stage": "Upper minors",
+      "rows": 947,
+      "newly_listed": 14,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 8,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2023,
+      "stage": "Current MLB",
+      "rows": 652,
+      "newly_listed": 2,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 24,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2023,
+      "stage": "Inactive / unknown",
+      "rows": 230,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2023,
+      "stage": "Lower minors",
+      "rows": 2338,
+      "newly_listed": 16,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 4,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2023,
+      "stage": "Upper minors",
+      "rows": 976,
+      "newly_listed": 20,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 10,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2024,
+      "stage": "Current MLB",
+      "rows": 649,
+      "newly_listed": 0,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 28,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2024,
+      "stage": "Inactive / unknown",
+      "rows": 249,
+      "newly_listed": 3,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 0,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2024,
+      "stage": "Lower minors",
+      "rows": 2175,
+      "newly_listed": 26,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 4,
+      "unknown_preseason_absence": 0
+    },
+    {
+      "origin_year": 2024,
+      "stage": "Upper minors",
+      "rows": 919,
+      "newly_listed": 12,
+      "previously_unknown_now_listed": 0,
+      "no_longer_listed": 5,
+      "unknown_preseason_absence": 0
+    }
+  ],
+  "source_review_status": "complete",
+  "release_date_review_status": "complete_with_retrospective_table_qualification",
+  "outside_membership_rows": 551,
+  "retrospective_tables": true,
+  "non_scouting_fields_unchanged": true,
+  "fitted": false,
+  "protected_outcomes_used": false,
+  "information_cutoff": "Coming-season preseason rankings; other inputs through prior December; not a December forecast",
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v67\\features.parquet": "a9c1bc927adcbb07742080297e2c513ec2de1a5800d2d5e9b01652cd828ffcfc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v67\\ranks.parquet": "23ba344c160a7d2d54b52a4c7e03fc50f9ec4ef078f01e9070faad4c16ac5443",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v67\\source-cases.json": "46bd509aec131ae0fd625a31f2efed7204c4337624c9dfe1772a4a407432d45d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v67\\ranked-outside-source.parquet": "6be501e887424044f1772e2bd37b3db574a96c1318955c7ae53d6817f4d24275",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v67\\reviewed-source-cases.json": "6a4cfdf7f3f866419dfd1002dd8360644cc7147271de9887832d2df65811352c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v67\\source-walkthrough.md": "5ea9520b02501ad267c46d353aa26e4aa284b3b9ccb790d3e09061ecde18cb97"
+  },
+  "release_evidence": {
+    "2011": {
+      "date": "2011-01-22",
+      "url": "https://www.mlb.com/video/top-50-mike-trout-laa-c13095367",
+      "basis": "Dated preseason Top 50 video; archive explicitly labels the 2011 list preseason, not a complete contemporary page capture"
+    },
+    "2012": {
+      "date": "2012-01-25",
+      "url": "https://www.mlb.com/news/mlb-network-reveals-mlbcoms-top-50-prospects-on-january-25-at-1000-pm-et/c-26452232",
+      "basis": "Publisher announcement includes expansion to the complete Top 100"
+    },
+    "2013": {
+      "date": "2013-01-29",
+      "url": "https://www.mlb.com/news/mlb-network-reveals-mlbcoms-50-prospects-on-tuesday/c-41162648",
+      "basis": "Publisher release announcement includes complete Top 100"
+    },
+    "2014": {
+      "date": "2014-01-23",
+      "url": "https://www.mlb.com/news/breaking-down-the-top-100-prospects-list/c-66929504",
+      "basis": "Contemporaneous publisher release article"
+    },
+    "2015": {
+      "date": "2015-01-30",
+      "url": "https://www.mlb.com/news/shortstop-orlando-arcia-represents-brewers-on-top-100-prospects-list/c-107831704",
+      "basis": "Contemporaneous publisher article states list unveiled that Friday"
+    },
+    "2016": {
+      "date": "2016-01-29",
+      "url": "https://www.mlb.com/news/prospect-watch-top-10-1b-for-2016-c162516062",
+      "basis": "Publisher release announcement"
+    },
+    "2017": {
+      "date": "2017-01-28",
+      "url": "https://www.mlb.com/news/2017-top-10-first-base-prospects-c213931912",
+      "basis": "Publisher release announcement; subsequent unveiling article independently reports Bellinger at 13"
+    },
+    "2018": {
+      "date": "2018-01-27",
+      "url": "https://www.mlb.com/amp/news/breaking-down-the-top-100-prospects-list-c265365394.html",
+      "basis": "Contemporaneous publisher unveiling article"
+    },
+    "2019": {
+      "date": "2019-01-27",
+      "url": "https://www.mlb.com/news/mlb-s-top-100-prospects-list-for-2019-c303182822",
+      "basis": "List-live publication date is a conservative availability bound"
+    },
+    "2020": {
+      "date": "2020-01-25",
+      "url": "https://www.mlb.com/news/2020-top-100-prospects-list-breakdown?t=mlb-pipeline-coverage",
+      "basis": "Contemporaneous publisher list breakdown; incomplete reproduced table remains qualified"
+    },
+    "2021": {
+      "date": "2021-01-28",
+      "url": "https://www.mlb.com/amp/news/2021-top-100-prospects-list-breakdown.html",
+      "basis": "Contemporaneous publisher list breakdown; incomplete reproduced table remains qualified"
+    },
+    "2022": {
+      "date": "2022-03-18",
+      "url": "https://www.mlb.com/es/news/los-100-mejores-prospectos-del-2022",
+      "basis": "Contemporaneous publisher unveiling article; explicitly unavailable at a January cutoff"
+    },
+    "2023": {
+      "date": "2023-01-26",
+      "url": "https://www.mlb.com/amp/news/top-100-prospects-list-mlb-pipeline-preseason-2023.html",
+      "basis": "Contemporaneous publisher preseason unveiling article"
+    },
+    "2024": {
+      "date": "2024-01-26",
+      "url": "https://www.mlb.com/video/live-top-100-prospects-show-90429",
+      "basis": "Dated publisher unveiling broadcast"
+    },
+    "2025": {
+      "date": "2025-01-24",
+      "url": "https://www.mlb.com/mets/news/mlb-pipeline-prospect-rankings-dates-for-2025?t=mlb-pipeline-coverage",
+      "basis": "Publisher release calendar confirmed by January 26 list-live article"
+    }
+  },
+  "all_encoded_rows_reconstructed": true,
+  "review_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\config\\hitter_preseason_rank_v67_source_review.json": "e9f54142dc168cc083a9a3a3f37d82eb6852b5e3e58cedc871a51249f847a85c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\config\\hitter_preseason_rank_v67_release_evidence.json": "679ab91ddc75dd87e514dae93b9d5d7416b336a9718adae7232f0f91a0c11426",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_preseason_source_v67.py": "e327d19f70121e66c189b8e7831de17241ccd94292432646c535ca7a236e764f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\prepare_hitter_preseason_readiness_v67.py": "d03c664b67b4763d0a141ff066f1fc40121e81e333be2958d4e74d173b5f631f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\historical_prospect_rank.py": "b66073219556ddbeda4b683f9ea7f771f6e22af034fbd4cd54853efe7bddf443"
+  }
+}

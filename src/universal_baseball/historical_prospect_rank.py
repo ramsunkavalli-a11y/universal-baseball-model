@@ -14,8 +14,8 @@ class _State(HTMLParser):
                 self.states.append(json.loads(value))
 
 
-def project(html, year):
-    if not 2011 <= year <= 2024:
+def project(html, year, *, allow_2025=False):
+    if not 2011 <= year <= (2025 if allow_2025 else 2024):
         raise ValueError('Only declared historical development years are allowed')
     parser = _State(); parser.feed(html)
     if len(parser.states) != 1:

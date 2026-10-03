@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: recovered school-background forecast comparison closed.**
+**Current checkpoint: preseason ranking vintage source review complete.**
+The [source checkpoint](hitter-preseason-readiness-v67-source-result.md) preserves
+all 63,282 identities and non-scouting fields. New preseason lists recognize
+Kurtz 38, Langford six, Bellinger 13 and Alonso 51 where old inputs were unlisted.
+Moniak becomes 19 despite delayed arrival; Judge falls 31 to 45. Eight source
+reviews include their old forecasts, actual statistics and origin-selected peers.
+Bellinger's suspected roster omission was disproved: keep his zero. This is a
+later preseason information cutoff, not a December-source fix. Release evidence
+includes March 2022; retrospective-table dating remains qualified. Next the one
+locked matched readiness comparison after actual support checks, holding hitting,
+school flags, cohorts and settings fixed. No new forecasts or improvement claimed
+yet; no protected 2026 or deployed changes. Overall hitter goal remains active.
+
+**Previous checkpoint: recovered school-background forecast comparison closed.**
 The [matched comparison](hitter-school-opportunity-v66-result.md) replays all
 140 saved heads and completes thirteen actual player walkthroughs. Only three
 school indicators change; hitting, cohorts and other inputs remain fixed.
