@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: prospect representation batch closed, corrected baseline retained.**
+**Current checkpoint: dated opportunity contrast reviewed; source defect identified.**
+The [status comparison and source audit](practical-hitter-opportunity-status-v59-result.md)
+replay all 70 heads and complete twelve forecast plus six source reviews.
+Public PA RMSE barely changes (138.49 to 138.38), MAE slightly worsens
+(106.87 to 106.91) and delivered offense slightly worsens. No upgrade adopted.
+More importantly, 44 of 72 evaluation player-years labeled with an open injury
+spell have actual MLB PA in a later, non-overlapping window. Some stale spells
+persist across seasons. This is not a clean rejection of health information.
+Repair observed roster-return state, retaining interval uncertainty and late
+injury counterexamples, before a substantive role-to-workload comparison.
+Do not infer full recovery or convert temporary restrictions into permanent exits.
+Corrected V53 stays the baseline; protected 2026 remains untouched. Goal active.
+
+**Previous checkpoint: prospect representation batch closed, corrected baseline retained.**
 The [shared prospect model](practical-hitter-prospect-pooling-v54-result.md),
 [fixed-unit follow-up](practical-hitter-prospect-units-v55-result.md), and
 [head assembly](practical-hitter-head-assembly-v56-result.md) have seven, nine

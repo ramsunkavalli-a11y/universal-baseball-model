@@ -1,0 +1,5942 @@
+{
+  "decision": "retain_context_sources_as_qualified_research_withhold_workload_upgrade",
+  "player_walkthrough_status": "complete",
+  "cases": 12,
+  "source_rows": 63282,
+  "replayed_heads": 70,
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source-2015\\captures\\transactions-2015.json": "ca9742bf56b527da15045e6ead04e2f9a130f15f209c6c265d91d0cd2629d25b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source-2015\\captures\\schedule-2015.json": "74eb0e14985b7379b56a09a8ae68d9de0224865984bf999ec3e56f89df7cae7b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2016.json": "e9a79160fa4f08bd26961b90a969626d16d87ed41e982ce47661950f258199ce",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2016.json": "875e3e873d4ace45b29fd69b8c72c51b31b93cfcf215d42aeb57ba99a46c5c10",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2017.json": "a14b6bbd9d9dbd060164be326f0e9121a708d35f883c683df679d79f4e271307",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2017.json": "b875b64d57e3b007f386c6075f845a46b0d7b18ab887fcd45dbb17c3e79517b5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2018.json": "3006f798ce58ca813fad4202562e0e2368b4eb561a68de6f8b79f2febe1de16f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2018.json": "1e4f07f54161e93bcfe4823d923fc868ba1cf0d42ecd39ff4d5db7382759aa9c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2019.json": "9c4241f9b65cda06335b6e0ab200daa287442073ea76cdd8b43d0009d63e1dcb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2019.json": "18191944f9a672af4f4f161388f4ed16f8bc26356e06c203a8af04cd44ead810",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2020.json": "30645635fd4c98c0cab70f7c2f315722045a9f57969b6b4bac8aed96b664780a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2020.json": "f16bed1f2c142b2a5b975be5fc5491d82a93e6b4ff761a8d511c77fcb8f0a093",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2021.json": "2dd6fc479fe36992b0a70e850b66d89f0eda5086a86860fe9510e2af5df1fbc7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2021.json": "30f58024eda83d94d03ee3d097bd5bf28760d7931eb28edb5770272d0fb44059",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2022.json": "8118c71f76bc509d7c941d660a1ab19d7083efcbc87fdfc4c40408a9716afccf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2022.json": "11eeea60d8fa2616e66a191d9e0d3b0c30185c6e5fc3d5786884a0c4b1e1ba86",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2023.json": "ae4f66d71d83b98c4c7f0858a18f87b9031472866b0235bf78fa813dfafa364c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2023.json": "eb8b18a8a25c1bf017f6512b7770f0ecfcc0f69c04dac38707e874046788ef68",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\transactions-2024.json": "7080fb46adb9438399b5837910cecae5e1e86ecc35bac7a066b06907facf508b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-injury-history-v2\\source\\captures\\schedule-2024.json": "9733d248b6a6d1635eb91802f504d70ebedc49b5aa87e7ae962cafb40b18879b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\config\\availability_facts_v29b.json": "92444d26313e504122f949e55708b67b357f7e56c87b2a01299fd0310aa0df9e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\availability_context_v29.py": "8be01e4a9773cf98e62c2b57bb0a375568505a4cbe613d013a6519548a6aeb1b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\availability-context-v29b-amendment.md": "023615a0db4d2063eee888d13e980ae0a1261d53f51d708a56eb9cb2351e06d0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_availability_context_v29b.py": "0f1971b4722dac7dacb9cba04339c03d0c343248c8c0b2f16ea694c17e5cf871",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_hitter_opportunity_status_v59.py": "29a28c1edae7c665e5e665d9611db11e2be6d63bf1634f713eaf1c43e118ac48",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\practical-hitter-opportunity-status-v59-contract.md": "a4cdbe0e4a743270a9be93745c11ec48d156ebd01c0433e327ac1777552d9ac2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-numeric-repair-v53\\features.parquet": "f2c719c401a8d35ef4dd59e20f16beaa46f4b1fb66d0a70a1a9192950a82af4e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-numeric-repair-v53\\scored-predictions.parquet": "be840078e873e3f70677f9949b83540126293e788c2205c480443887d83c290c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-numeric-repair-v53\\preflight.json": "0be89ca50288fc050f8ba0b4e4ddab46d19654f2c142d69550ee2360337793e2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\features.parquet": "0908428bf35e9008ddb0f9136b8da3289a3225dd2b3d59aa830b77d9fbdb64c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\context.parquet": "e7e88bbd78e93ee0ddc68b7c4435cd6afb276611b997c8f4bb823068c590ef35",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\records.json": "2b6db802d38f07b569f428ee22c570395569bd3aa60cc45802284e37ff440db9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\injury_detail_v26.py": "d0114b7f604e19ac13f08bc7a7810679f6541c50d1e2f0dc4a6e1e20cb9e71b6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_health_budget.py": "45b35cc922826f4f1e7c07e0bcc8f5f6c49da4178c198586c96d3202ab021e34"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\predictions.parquet": "01e48b0416a4752e1d8a3aa6e642728e09b05c974359fa27c5e363110a200825",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\scores.json": "12c77dbdf176cd087907f3ea30f424e57a363e36c9705ab98bec235bbe3af0ff",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\intervals.json": "b37f0d88b97d4ba6fc5ad642d47ea0fc687bdc40f762ecb3b5c26c72d3b5251e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\cases.json": "0fe96344c3c64bd92c1451e149b40303934000267fbd829c3a10324c595a22c8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\player-walkthrough.md": "753bef90776ed5ce08e329ae076419cf5f971f588efdea2ffbd88273c9442f94",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\verification.json": "49d97938b303b3d4a634128d69e5407043b84ff742a18c427e627e9fdd9adac3"
+  },
+  "source_audit": {
+    "future_excluded_before_description": 9,
+    "normalized_versions": 93595,
+    "departure_or_reassignment_boundaries": 19168
+  },
+  "source_publication_vintages_verified": false,
+  "protected_outcomes_used": false,
+  "frozen_forecast_changed": false,
+  "clinical_recovery_inferred": false,
+  "cells": [
+    {
+      "year": 2016,
+      "fold": 0,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 3704,
+            "origins": 1,
+            "positive_players": 498,
+            "zero_players": 3206
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 545,
+            "origins": 1,
+            "positive_players": 140,
+            "zero_players": 405
+          },
+          "status_minor_contract": {
+            "players": 380,
+            "origins": 1,
+            "positive_players": 39,
+            "zero_players": 341
+          },
+          "status_ordinary_departure": {
+            "players": 173,
+            "origins": 1,
+            "positive_players": 94,
+            "zero_players": 79
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 4,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 4
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 498,
+            "origins": 1,
+            "positive_players": 498,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 140,
+            "origins": 1,
+            "positive_players": 140,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 39,
+            "origins": 1,
+            "positive_players": 39,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 94,
+            "origins": 1,
+            "positive_players": 94,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 18447,
+          "training_players": 6658,
+          "test_rows": 893,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 166,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 13,
+          "extrapolation": 0,
+          "profile_check_pass": 880,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 2487,
+          "training_players": 846,
+          "test_rows": 893,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 163,
+          "elapsed_outside": 0,
+          "age_outside": 63,
+          "quality_outside": 0,
+          "unseen_profile": 1,
+          "sparse_profile": 44,
+          "extrapolation": 64,
+          "profile_check_pass": 786,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2016,
+      "fold": 1,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 3689,
+            "origins": 1,
+            "positive_players": 503,
+            "zero_players": 3186
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 545,
+            "origins": 1,
+            "positive_players": 144,
+            "zero_players": 401
+          },
+          "status_minor_contract": {
+            "players": 380,
+            "origins": 1,
+            "positive_players": 38,
+            "zero_players": 342
+          },
+          "status_ordinary_departure": {
+            "players": 169,
+            "origins": 1,
+            "positive_players": 96,
+            "zero_players": 73
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 3,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 3
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 503,
+            "origins": 1,
+            "positive_players": 503,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 144,
+            "origins": 1,
+            "positive_players": 144,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 38,
+            "origins": 1,
+            "positive_players": 38,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 96,
+            "origins": 1,
+            "positive_players": 96,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 18315,
+          "training_players": 6666,
+          "test_rows": 933,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 179,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 3,
+          "sparse_profile": 17,
+          "extrapolation": 3,
+          "profile_check_pass": 916,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 2562,
+          "training_players": 869,
+          "test_rows": 933,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 176,
+          "elapsed_outside": 0,
+          "age_outside": 61,
+          "quality_outside": 0,
+          "unseen_profile": 3,
+          "sparse_profile": 69,
+          "extrapolation": 64,
+          "profile_check_pass": 803,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2016,
+      "fold": 2,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 3611,
+            "origins": 1,
+            "positive_players": 499,
+            "zero_players": 3112
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 566,
+            "origins": 1,
+            "positive_players": 146,
+            "zero_players": 420
+          },
+          "status_minor_contract": {
+            "players": 400,
+            "origins": 1,
+            "positive_players": 48,
+            "zero_players": 352
+          },
+          "status_ordinary_departure": {
+            "players": 183,
+            "origins": 1,
+            "positive_players": 100,
+            "zero_players": 83
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 3,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 3
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 499,
+            "origins": 1,
+            "positive_players": 499,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 146,
+            "origins": 1,
+            "positive_players": 146,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 48,
+            "origins": 1,
+            "positive_players": 48,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 100,
+            "origins": 1,
+            "positive_players": 100,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 17910,
+          "training_players": 6500,
+          "test_rows": 989,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 186,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 6,
+          "extrapolation": 0,
+          "profile_check_pass": 983,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 2578,
+          "training_players": 866,
+          "test_rows": 989,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 182,
+          "elapsed_outside": 0,
+          "age_outside": 52,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 47,
+          "extrapolation": 52,
+          "profile_check_pass": 890,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2016,
+      "fold": 3,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 3686,
+            "origins": 1,
+            "positive_players": 502,
+            "zero_players": 3184
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 530,
+            "origins": 1,
+            "positive_players": 135,
+            "zero_players": 395
+          },
+          "status_minor_contract": {
+            "players": 368,
+            "origins": 1,
+            "positive_players": 40,
+            "zero_players": 328
+          },
+          "status_ordinary_departure": {
+            "players": 166,
+            "origins": 1,
+            "positive_players": 89,
+            "zero_players": 77
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 4,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 4
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 502,
+            "origins": 1,
+            "positive_players": 502,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 135,
+            "origins": 1,
+            "positive_players": 135,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 40,
+            "origins": 1,
+            "positive_players": 40,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 89,
+            "origins": 1,
+            "positive_players": 89,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 18139,
+          "training_players": 6604,
+          "test_rows": 937,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 21,
+          "three_regular_training_players": 161,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 12,
+          "extrapolation": 0,
+          "profile_check_pass": 925,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 2513,
+          "training_players": 856,
+          "test_rows": 937,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 21,
+          "three_regular_training_players": 158,
+          "elapsed_outside": 0,
+          "age_outside": 55,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 50,
+          "extrapolation": 55,
+          "profile_check_pass": 832,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2016,
+      "fold": 4,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 3706,
+            "origins": 1,
+            "positive_players": 510,
+            "zero_players": 3196
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 562,
+            "origins": 1,
+            "positive_players": 151,
+            "zero_players": 411
+          },
+          "status_minor_contract": {
+            "players": 400,
+            "origins": 1,
+            "positive_players": 43,
+            "zero_players": 357
+          },
+          "status_ordinary_departure": {
+            "players": 161,
+            "origins": 1,
+            "positive_players": 97,
+            "zero_players": 64
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 2,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 2
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 510,
+            "origins": 1,
+            "positive_players": 510,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 151,
+            "origins": 1,
+            "positive_players": 151,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 43,
+            "origins": 1,
+            "positive_players": 43,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 97,
+            "origins": 1,
+            "positive_players": 97,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 18225,
+          "training_players": 6616,
+          "test_rows": 911,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 168,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 10,
+          "extrapolation": 0,
+          "profile_check_pass": 901,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 2496,
+          "training_players": 847,
+          "test_rows": 911,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 165,
+          "elapsed_outside": 0,
+          "age_outside": 56,
+          "quality_outside": 0,
+          "unseen_profile": 1,
+          "sparse_profile": 39,
+          "extrapolation": 57,
+          "profile_check_pass": 816,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2017,
+      "fold": 0,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 4556,
+            "origins": 2,
+            "positive_players": 613,
+            "zero_players": 4159
+          },
+          "status_medical_scope": {
+            "players": 586,
+            "origins": 1,
+            "positive_players": 411,
+            "zero_players": 175
+          },
+          "status_acquired": {
+            "players": 949,
+            "origins": 2,
+            "positive_players": 219,
+            "zero_players": 764
+          },
+          "status_minor_contract": {
+            "players": 704,
+            "origins": 2,
+            "positive_players": 71,
+            "zero_players": 651
+          },
+          "status_ordinary_departure": {
+            "players": 310,
+            "origins": 2,
+            "positive_players": 169,
+            "zero_players": 162
+          },
+          "status_log_absence730": {
+            "players": 235,
+            "origins": 1,
+            "positive_players": 190,
+            "zero_players": 45
+          },
+          "status_open_medical": {
+            "players": 11,
+            "origins": 1,
+            "positive_players": 10,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 1,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 1
+          },
+          "status_offseason_activation": {
+            "players": 19,
+            "origins": 1,
+            "positive_players": 14,
+            "zero_players": 5
+          },
+          "status_nonmedical_unresolved": {
+            "players": 10,
+            "origins": 2,
+            "positive_players": 3,
+            "zero_players": 7
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 613,
+            "origins": 2,
+            "positive_players": 613,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 411,
+            "origins": 1,
+            "positive_players": 411,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 219,
+            "origins": 2,
+            "positive_players": 219,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 71,
+            "origins": 2,
+            "positive_players": 71,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 169,
+            "origins": 2,
+            "positive_players": 169,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 190,
+            "origins": 1,
+            "positive_players": 190,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 10,
+            "origins": 1,
+            "positive_players": 10,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 14,
+            "origins": 1,
+            "positive_players": 14,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 3,
+            "origins": 1,
+            "positive_players": 3,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 22217,
+          "training_players": 7464,
+          "test_rows": 904,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 184,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 1,
+          "sparse_profile": 6,
+          "extrapolation": 1,
+          "profile_check_pass": 898,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 2993,
+          "training_players": 941,
+          "test_rows": 904,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 181,
+          "elapsed_outside": 0,
+          "age_outside": 61,
+          "quality_outside": 0,
+          "unseen_profile": 1,
+          "sparse_profile": 38,
+          "extrapolation": 62,
+          "profile_check_pass": 805,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2017,
+      "fold": 1,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 4508,
+            "origins": 2,
+            "positive_players": 609,
+            "zero_players": 4112
+          },
+          "status_medical_scope": {
+            "players": 592,
+            "origins": 1,
+            "positive_players": 409,
+            "zero_players": 183
+          },
+          "status_acquired": {
+            "players": 967,
+            "origins": 2,
+            "positive_players": 231,
+            "zero_players": 773
+          },
+          "status_minor_contract": {
+            "players": 713,
+            "origins": 2,
+            "positive_players": 73,
+            "zero_players": 658
+          },
+          "status_ordinary_departure": {
+            "players": 298,
+            "origins": 2,
+            "positive_players": 155,
+            "zero_players": 161
+          },
+          "status_log_absence730": {
+            "players": 238,
+            "origins": 1,
+            "positive_players": 190,
+            "zero_players": 48
+          },
+          "status_open_medical": {
+            "players": 13,
+            "origins": 1,
+            "positive_players": 12,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 1,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 1
+          },
+          "status_offseason_activation": {
+            "players": 22,
+            "origins": 1,
+            "positive_players": 18,
+            "zero_players": 4
+          },
+          "status_nonmedical_unresolved": {
+            "players": 7,
+            "origins": 2,
+            "positive_players": 2,
+            "zero_players": 5
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 609,
+            "origins": 2,
+            "positive_players": 609,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 409,
+            "origins": 1,
+            "positive_players": 409,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 231,
+            "origins": 2,
+            "positive_players": 231,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 73,
+            "origins": 2,
+            "positive_players": 73,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 155,
+            "origins": 2,
+            "positive_players": 155,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 190,
+            "origins": 1,
+            "positive_players": 190,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 12,
+            "origins": 1,
+            "positive_players": 12,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 18,
+            "origins": 1,
+            "positive_players": 18,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 2,
+            "origins": 1,
+            "positive_players": 2,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 22045,
+          "training_players": 7439,
+          "test_rows": 937,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 196,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 1,
+          "sparse_profile": 6,
+          "extrapolation": 1,
+          "profile_check_pass": 931,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3058,
+          "training_players": 955,
+          "test_rows": 937,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 193,
+          "elapsed_outside": 0,
+          "age_outside": 66,
+          "quality_outside": 0,
+          "unseen_profile": 2,
+          "sparse_profile": 56,
+          "extrapolation": 68,
+          "profile_check_pass": 815,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2017,
+      "fold": 2,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 4434,
+            "origins": 2,
+            "positive_players": 606,
+            "zero_players": 4049
+          },
+          "status_medical_scope": {
+            "players": 591,
+            "origins": 1,
+            "positive_players": 396,
+            "zero_players": 195
+          },
+          "status_acquired": {
+            "players": 973,
+            "origins": 2,
+            "positive_players": 228,
+            "zero_players": 783
+          },
+          "status_minor_contract": {
+            "players": 726,
+            "origins": 2,
+            "positive_players": 77,
+            "zero_players": 668
+          },
+          "status_ordinary_departure": {
+            "players": 323,
+            "origins": 2,
+            "positive_players": 169,
+            "zero_players": 175
+          },
+          "status_log_absence730": {
+            "players": 236,
+            "origins": 1,
+            "positive_players": 179,
+            "zero_players": 57
+          },
+          "status_open_medical": {
+            "players": 10,
+            "origins": 1,
+            "positive_players": 9,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 1,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 1
+          },
+          "status_offseason_activation": {
+            "players": 24,
+            "origins": 1,
+            "positive_players": 17,
+            "zero_players": 7
+          },
+          "status_nonmedical_unresolved": {
+            "players": 8,
+            "origins": 2,
+            "positive_players": 3,
+            "zero_players": 5
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 606,
+            "origins": 2,
+            "positive_players": 606,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 396,
+            "origins": 1,
+            "positive_players": 396,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 228,
+            "origins": 2,
+            "positive_players": 228,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 77,
+            "origins": 2,
+            "positive_players": 77,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 169,
+            "origins": 2,
+            "positive_players": 169,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 179,
+            "origins": 1,
+            "positive_players": 179,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 9,
+            "origins": 1,
+            "positive_players": 9,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 17,
+            "origins": 1,
+            "positive_players": 17,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 3,
+            "origins": 1,
+            "positive_players": 3,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 21584,
+          "training_players": 7271,
+          "test_rows": 990,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 200,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 6,
+          "extrapolation": 0,
+          "profile_check_pass": 984,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3064,
+          "training_players": 958,
+          "test_rows": 990,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 196,
+          "elapsed_outside": 0,
+          "age_outside": 42,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 47,
+          "extrapolation": 42,
+          "profile_check_pass": 901,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2017,
+      "fold": 3,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 4495,
+            "origins": 2,
+            "positive_players": 611,
+            "zero_players": 4096
+          },
+          "status_medical_scope": {
+            "players": 587,
+            "origins": 1,
+            "positive_players": 413,
+            "zero_players": 174
+          },
+          "status_acquired": {
+            "players": 941,
+            "origins": 2,
+            "positive_players": 222,
+            "zero_players": 754
+          },
+          "status_minor_contract": {
+            "players": 696,
+            "origins": 2,
+            "positive_players": 77,
+            "zero_players": 640
+          },
+          "status_ordinary_departure": {
+            "players": 303,
+            "origins": 2,
+            "positive_players": 161,
+            "zero_players": 156
+          },
+          "status_log_absence730": {
+            "players": 234,
+            "origins": 1,
+            "positive_players": 187,
+            "zero_players": 47
+          },
+          "status_open_medical": {
+            "players": 11,
+            "origins": 1,
+            "positive_players": 11,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 1,
+            "origins": 1,
+            "positive_players": 0,
+            "zero_players": 1
+          },
+          "status_offseason_activation": {
+            "players": 22,
+            "origins": 1,
+            "positive_players": 16,
+            "zero_players": 6
+          },
+          "status_nonmedical_unresolved": {
+            "players": 8,
+            "origins": 2,
+            "positive_players": 2,
+            "zero_players": 6
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 611,
+            "origins": 2,
+            "positive_players": 611,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 413,
+            "origins": 1,
+            "positive_players": 413,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 222,
+            "origins": 2,
+            "positive_players": 222,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 77,
+            "origins": 2,
+            "positive_players": 77,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 161,
+            "origins": 2,
+            "positive_players": 161,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 187,
+            "origins": 1,
+            "positive_players": 187,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 11,
+            "origins": 1,
+            "positive_players": 11,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 16,
+            "origins": 1,
+            "positive_players": 16,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 2,
+            "origins": 1,
+            "positive_players": 2,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 21865,
+          "training_players": 7367,
+          "test_rows": 950,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 178,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 9,
+          "extrapolation": 0,
+          "profile_check_pass": 941,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3017,
+          "training_players": 946,
+          "test_rows": 950,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 21,
+          "three_regular_training_players": 175,
+          "elapsed_outside": 0,
+          "age_outside": 62,
+          "quality_outside": 0,
+          "unseen_profile": 1,
+          "sparse_profile": 47,
+          "extrapolation": 63,
+          "profile_check_pass": 841,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2017,
+      "fold": 4,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 4539,
+            "origins": 2,
+            "positive_players": 617,
+            "zero_players": 4136
+          },
+          "status_medical_scope": {
+            "players": 580,
+            "origins": 1,
+            "positive_players": 411,
+            "zero_players": 169
+          },
+          "status_acquired": {
+            "players": 994,
+            "origins": 2,
+            "positive_players": 244,
+            "zero_players": 786
+          },
+          "status_minor_contract": {
+            "players": 733,
+            "origins": 2,
+            "positive_players": 74,
+            "zero_players": 675
+          },
+          "status_ordinary_departure": {
+            "players": 298,
+            "origins": 2,
+            "positive_players": 166,
+            "zero_players": 150
+          },
+          "status_log_absence730": {
+            "players": 241,
+            "origins": 1,
+            "positive_players": 198,
+            "zero_players": 43
+          },
+          "status_open_medical": {
+            "players": 15,
+            "origins": 1,
+            "positive_players": 14,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 25,
+            "origins": 1,
+            "positive_players": 19,
+            "zero_players": 6
+          },
+          "status_nonmedical_unresolved": {
+            "players": 7,
+            "origins": 2,
+            "positive_players": 2,
+            "zero_players": 5
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 617,
+            "origins": 2,
+            "positive_players": 617,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 411,
+            "origins": 1,
+            "positive_players": 411,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 244,
+            "origins": 2,
+            "positive_players": 244,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 74,
+            "origins": 2,
+            "positive_players": 74,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 166,
+            "origins": 2,
+            "positive_players": 166,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 198,
+            "origins": 1,
+            "positive_players": 198,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 14,
+            "origins": 1,
+            "positive_players": 14,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 19,
+            "origins": 1,
+            "positive_players": 19,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 2,
+            "origins": 1,
+            "positive_players": 2,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 21977,
+          "training_players": 7399,
+          "test_rows": 910,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 186,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 2,
+          "extrapolation": 0,
+          "profile_check_pass": 908,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3000,
+          "training_players": 940,
+          "test_rows": 910,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 183,
+          "elapsed_outside": 0,
+          "age_outside": 61,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 34,
+          "extrapolation": 61,
+          "profile_check_pass": 815,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2018,
+      "fold": 0,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 5329,
+            "origins": 3,
+            "positive_players": 697,
+            "zero_players": 5005
+          },
+          "status_medical_scope": {
+            "players": 682,
+            "origins": 2,
+            "positive_players": 503,
+            "zero_players": 281
+          },
+          "status_acquired": {
+            "players": 1285,
+            "origins": 3,
+            "positive_players": 287,
+            "zero_players": 1082
+          },
+          "status_minor_contract": {
+            "players": 976,
+            "origins": 3,
+            "positive_players": 98,
+            "zero_players": 914
+          },
+          "status_ordinary_departure": {
+            "players": 440,
+            "origins": 3,
+            "positive_players": 255,
+            "zero_players": 234
+          },
+          "status_log_absence730": {
+            "players": 324,
+            "origins": 2,
+            "positive_players": 263,
+            "zero_players": 89
+          },
+          "status_open_medical": {
+            "players": 22,
+            "origins": 2,
+            "positive_players": 20,
+            "zero_players": 2
+          },
+          "status_medical_full_absence": {
+            "players": 3,
+            "origins": 2,
+            "positive_players": 1,
+            "zero_players": 2
+          },
+          "status_offseason_activation": {
+            "players": 39,
+            "origins": 2,
+            "positive_players": 30,
+            "zero_players": 11
+          },
+          "status_nonmedical_unresolved": {
+            "players": 12,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 7
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 697,
+            "origins": 3,
+            "positive_players": 697,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 503,
+            "origins": 2,
+            "positive_players": 503,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 287,
+            "origins": 3,
+            "positive_players": 287,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 98,
+            "origins": 3,
+            "positive_players": 98,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 255,
+            "origins": 3,
+            "positive_players": 255,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 263,
+            "origins": 2,
+            "positive_players": 263,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 20,
+            "origins": 2,
+            "positive_players": 20,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 1,
+            "origins": 1,
+            "positive_players": 1,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 30,
+            "origins": 2,
+            "positive_players": 30,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 5,
+            "origins": 2,
+            "positive_players": 5,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 26004,
+          "training_players": 8222,
+          "test_rows": 862,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 206,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 4,
+          "extrapolation": 0,
+          "profile_check_pass": 858,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3498,
+          "training_players": 1021,
+          "test_rows": 862,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 203,
+          "elapsed_outside": 0,
+          "age_outside": 65,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 16,
+          "extrapolation": 65,
+          "profile_check_pass": 781,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2018,
+      "fold": 1,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 5286,
+            "origins": 3,
+            "positive_players": 697,
+            "zero_players": 4951
+          },
+          "status_medical_scope": {
+            "players": 680,
+            "origins": 2,
+            "positive_players": 496,
+            "zero_players": 274
+          },
+          "status_acquired": {
+            "players": 1310,
+            "origins": 3,
+            "positive_players": 308,
+            "zero_players": 1084
+          },
+          "status_minor_contract": {
+            "players": 986,
+            "origins": 3,
+            "positive_players": 103,
+            "zero_players": 919
+          },
+          "status_ordinary_departure": {
+            "players": 421,
+            "origins": 3,
+            "positive_players": 235,
+            "zero_players": 231
+          },
+          "status_log_absence730": {
+            "players": 338,
+            "origins": 2,
+            "positive_players": 272,
+            "zero_players": 95
+          },
+          "status_open_medical": {
+            "players": 24,
+            "origins": 2,
+            "positive_players": 22,
+            "zero_players": 2
+          },
+          "status_medical_full_absence": {
+            "players": 2,
+            "origins": 2,
+            "positive_players": 0,
+            "zero_players": 2
+          },
+          "status_offseason_activation": {
+            "players": 41,
+            "origins": 2,
+            "positive_players": 31,
+            "zero_players": 10
+          },
+          "status_nonmedical_unresolved": {
+            "players": 8,
+            "origins": 3,
+            "positive_players": 3,
+            "zero_players": 5
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 697,
+            "origins": 3,
+            "positive_players": 697,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 496,
+            "origins": 2,
+            "positive_players": 496,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 308,
+            "origins": 3,
+            "positive_players": 308,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 103,
+            "origins": 3,
+            "positive_players": 103,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 235,
+            "origins": 3,
+            "positive_players": 235,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 272,
+            "origins": 2,
+            "positive_players": 272,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 22,
+            "origins": 2,
+            "positive_players": 22,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 0,
+            "origins": 0,
+            "positive_players": 0,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 31,
+            "origins": 2,
+            "positive_players": 31,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 3,
+            "origins": 2,
+            "positive_players": 3,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 25799,
+          "training_players": 8200,
+          "test_rows": 883,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 216,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 3,
+          "extrapolation": 0,
+          "profile_check_pass": 880,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3573,
+          "training_players": 1037,
+          "test_rows": 883,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 213,
+          "elapsed_outside": 0,
+          "age_outside": 78,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 9,
+          "extrapolation": 78,
+          "profile_check_pass": 796,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2018,
+      "fold": 2,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 5238,
+            "origins": 3,
+            "positive_players": 686,
+            "zero_players": 4924
+          },
+          "status_medical_scope": {
+            "players": 681,
+            "origins": 2,
+            "positive_players": 483,
+            "zero_players": 297
+          },
+          "status_acquired": {
+            "players": 1303,
+            "origins": 3,
+            "positive_players": 301,
+            "zero_players": 1090
+          },
+          "status_minor_contract": {
+            "players": 992,
+            "origins": 3,
+            "positive_players": 109,
+            "zero_players": 922
+          },
+          "status_ordinary_departure": {
+            "players": 443,
+            "origins": 3,
+            "positive_players": 245,
+            "zero_players": 248
+          },
+          "status_log_absence730": {
+            "players": 330,
+            "origins": 2,
+            "positive_players": 259,
+            "zero_players": 100
+          },
+          "status_open_medical": {
+            "players": 21,
+            "origins": 2,
+            "positive_players": 19,
+            "zero_players": 2
+          },
+          "status_medical_full_absence": {
+            "players": 2,
+            "origins": 2,
+            "positive_players": 1,
+            "zero_players": 1
+          },
+          "status_offseason_activation": {
+            "players": 38,
+            "origins": 2,
+            "positive_players": 30,
+            "zero_players": 10
+          },
+          "status_nonmedical_unresolved": {
+            "players": 10,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 5
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 686,
+            "origins": 3,
+            "positive_players": 686,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 483,
+            "origins": 2,
+            "positive_players": 483,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 301,
+            "origins": 3,
+            "positive_players": 301,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 109,
+            "origins": 3,
+            "positive_players": 109,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 245,
+            "origins": 3,
+            "positive_players": 245,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 259,
+            "origins": 2,
+            "positive_players": 259,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 19,
+            "origins": 2,
+            "positive_players": 19,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 1,
+            "origins": 1,
+            "positive_players": 1,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 30,
+            "origins": 2,
+            "positive_players": 30,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 5,
+            "origins": 2,
+            "positive_players": 5,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 25285,
+          "training_players": 8060,
+          "test_rows": 936,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 219,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 6,
+          "extrapolation": 0,
+          "profile_check_pass": 930,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3548,
+          "training_players": 1032,
+          "test_rows": 936,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 215,
+          "elapsed_outside": 0,
+          "age_outside": 93,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 20,
+          "extrapolation": 93,
+          "profile_check_pass": 823,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2018,
+      "fold": 3,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 5264,
+            "origins": 3,
+            "positive_players": 687,
+            "zero_players": 4938
+          },
+          "status_medical_scope": {
+            "players": 679,
+            "origins": 2,
+            "positive_players": 505,
+            "zero_players": 278
+          },
+          "status_acquired": {
+            "players": 1281,
+            "origins": 3,
+            "positive_players": 297,
+            "zero_players": 1065
+          },
+          "status_minor_contract": {
+            "players": 958,
+            "origins": 3,
+            "positive_players": 108,
+            "zero_players": 889
+          },
+          "status_ordinary_departure": {
+            "players": 441,
+            "origins": 3,
+            "positive_players": 251,
+            "zero_players": 236
+          },
+          "status_log_absence730": {
+            "players": 334,
+            "origins": 2,
+            "positive_players": 271,
+            "zero_players": 92
+          },
+          "status_open_medical": {
+            "players": 23,
+            "origins": 2,
+            "positive_players": 22,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 3,
+            "origins": 2,
+            "positive_players": 1,
+            "zero_players": 2
+          },
+          "status_offseason_activation": {
+            "players": 35,
+            "origins": 2,
+            "positive_players": 28,
+            "zero_players": 9
+          },
+          "status_nonmedical_unresolved": {
+            "players": 9,
+            "origins": 3,
+            "positive_players": 3,
+            "zero_players": 6
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 687,
+            "origins": 3,
+            "positive_players": 687,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 505,
+            "origins": 2,
+            "positive_players": 505,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 297,
+            "origins": 3,
+            "positive_players": 297,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 108,
+            "origins": 3,
+            "positive_players": 108,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 251,
+            "origins": 3,
+            "positive_players": 251,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 271,
+            "origins": 2,
+            "positive_players": 271,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 22,
+            "origins": 2,
+            "positive_players": 22,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 1,
+            "origins": 1,
+            "positive_players": 1,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 28,
+            "origins": 2,
+            "positive_players": 28,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 3,
+            "origins": 2,
+            "positive_players": 3,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 25606,
+          "training_players": 8123,
+          "test_rows": 898,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 196,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 11,
+          "extrapolation": 0,
+          "profile_check_pass": 887,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3516,
+          "training_players": 1019,
+          "test_rows": 898,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 21,
+          "three_regular_training_players": 193,
+          "elapsed_outside": 0,
+          "age_outside": 89,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 21,
+          "extrapolation": 89,
+          "profile_check_pass": 788,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2018,
+      "fold": 4,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 5319,
+            "origins": 3,
+            "positive_players": 697,
+            "zero_players": 4986
+          },
+          "status_medical_scope": {
+            "players": 674,
+            "origins": 2,
+            "positive_players": 505,
+            "zero_players": 266
+          },
+          "status_acquired": {
+            "players": 1321,
+            "origins": 3,
+            "positive_players": 315,
+            "zero_players": 1083
+          },
+          "status_minor_contract": {
+            "players": 992,
+            "origins": 3,
+            "positive_players": 102,
+            "zero_players": 924
+          },
+          "status_ordinary_departure": {
+            "players": 423,
+            "origins": 3,
+            "positive_players": 246,
+            "zero_players": 219
+          },
+          "status_log_absence730": {
+            "players": 338,
+            "origins": 2,
+            "positive_players": 283,
+            "zero_players": 88
+          },
+          "status_open_medical": {
+            "players": 26,
+            "origins": 2,
+            "positive_players": 25,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 2,
+            "origins": 1,
+            "positive_players": 1,
+            "zero_players": 1
+          },
+          "status_offseason_activation": {
+            "players": 43,
+            "origins": 2,
+            "positive_players": 33,
+            "zero_players": 12
+          },
+          "status_nonmedical_unresolved": {
+            "players": 9,
+            "origins": 3,
+            "positive_players": 4,
+            "zero_players": 5
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 697,
+            "origins": 3,
+            "positive_players": 697,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 505,
+            "origins": 2,
+            "positive_players": 505,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 315,
+            "origins": 3,
+            "positive_players": 315,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 102,
+            "origins": 3,
+            "positive_players": 102,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 246,
+            "origins": 3,
+            "positive_players": 246,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 283,
+            "origins": 2,
+            "positive_players": 283,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 25,
+            "origins": 2,
+            "positive_players": 25,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 1,
+            "origins": 1,
+            "positive_players": 1,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 33,
+            "origins": 2,
+            "positive_players": 33,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 4,
+            "origins": 2,
+            "positive_players": 4,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 25758,
+          "training_players": 8163,
+          "test_rows": 899,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 207,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 5,
+          "extrapolation": 0,
+          "profile_check_pass": 894,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 3509,
+          "training_players": 1015,
+          "test_rows": 899,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 204,
+          "elapsed_outside": 0,
+          "age_outside": 84,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 15,
+          "extrapolation": 84,
+          "profile_check_pass": 800,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2021,
+      "fold": 0,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7196,
+            "origins": 5,
+            "positive_players": 938,
+            "zero_players": 7002
+          },
+          "status_medical_scope": {
+            "players": 924,
+            "origins": 4,
+            "positive_players": 712,
+            "zero_players": 500
+          },
+          "status_acquired": {
+            "players": 1927,
+            "origins": 5,
+            "positive_players": 446,
+            "zero_players": 1674
+          },
+          "status_minor_contract": {
+            "players": 1464,
+            "origins": 5,
+            "positive_players": 136,
+            "zero_players": 1392
+          },
+          "status_ordinary_departure": {
+            "players": 636,
+            "origins": 5,
+            "positive_players": 373,
+            "zero_players": 404
+          },
+          "status_log_absence730": {
+            "players": 498,
+            "origins": 4,
+            "positive_players": 421,
+            "zero_players": 180
+          },
+          "status_open_medical": {
+            "players": 33,
+            "origins": 3,
+            "positive_players": 30,
+            "zero_players": 3
+          },
+          "status_medical_full_absence": {
+            "players": 11,
+            "origins": 4,
+            "positive_players": 7,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 113,
+            "origins": 4,
+            "positive_players": 97,
+            "zero_players": 23
+          },
+          "status_nonmedical_unresolved": {
+            "players": 27,
+            "origins": 5,
+            "positive_players": 11,
+            "zero_players": 21
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 938,
+            "origins": 5,
+            "positive_players": 938,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 712,
+            "origins": 4,
+            "positive_players": 712,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 446,
+            "origins": 5,
+            "positive_players": 446,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 136,
+            "origins": 5,
+            "positive_players": 136,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 373,
+            "origins": 5,
+            "positive_players": 373,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 421,
+            "origins": 4,
+            "positive_players": 421,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 30,
+            "origins": 3,
+            "positive_players": 30,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 7,
+            "origins": 3,
+            "positive_players": 7,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 97,
+            "origins": 4,
+            "positive_players": 97,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 11,
+            "origins": 4,
+            "positive_players": 11,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 33756,
+          "training_players": 10076,
+          "test_rows": 848,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 250,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 5,
+          "extrapolation": 0,
+          "profile_check_pass": 843,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 4545,
+          "training_players": 1262,
+          "test_rows": 848,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 247,
+          "elapsed_outside": 0,
+          "age_outside": 80,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 14,
+          "extrapolation": 80,
+          "profile_check_pass": 754,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2021,
+      "fold": 1,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7157,
+            "origins": 5,
+            "positive_players": 925,
+            "zero_players": 6945
+          },
+          "status_medical_scope": {
+            "players": 922,
+            "origins": 4,
+            "positive_players": 705,
+            "zero_players": 490
+          },
+          "status_acquired": {
+            "players": 1929,
+            "origins": 5,
+            "positive_players": 470,
+            "zero_players": 1653
+          },
+          "status_minor_contract": {
+            "players": 1456,
+            "origins": 5,
+            "positive_players": 145,
+            "zero_players": 1380
+          },
+          "status_ordinary_departure": {
+            "players": 618,
+            "origins": 5,
+            "positive_players": 353,
+            "zero_players": 395
+          },
+          "status_log_absence730": {
+            "players": 528,
+            "origins": 4,
+            "positive_players": 444,
+            "zero_players": 186
+          },
+          "status_open_medical": {
+            "players": 40,
+            "origins": 3,
+            "positive_players": 37,
+            "zero_players": 3
+          },
+          "status_medical_full_absence": {
+            "players": 9,
+            "origins": 4,
+            "positive_players": 5,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 118,
+            "origins": 4,
+            "positive_players": 99,
+            "zero_players": 24
+          },
+          "status_nonmedical_unresolved": {
+            "players": 19,
+            "origins": 5,
+            "positive_players": 6,
+            "zero_players": 15
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 925,
+            "origins": 5,
+            "positive_players": 925,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 705,
+            "origins": 4,
+            "positive_players": 705,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 470,
+            "origins": 5,
+            "positive_players": 470,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 145,
+            "origins": 5,
+            "positive_players": 145,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 353,
+            "origins": 5,
+            "positive_players": 353,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 444,
+            "origins": 4,
+            "positive_players": 444,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 37,
+            "origins": 3,
+            "positive_players": 37,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 5,
+            "origins": 2,
+            "positive_players": 5,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 99,
+            "origins": 4,
+            "positive_players": 99,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 6,
+            "origins": 4,
+            "positive_players": 6,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 33519,
+          "training_players": 10055,
+          "test_rows": 824,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 269,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 6,
+          "extrapolation": 0,
+          "profile_check_pass": 818,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 4642,
+          "training_players": 1264,
+          "test_rows": 824,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 266,
+          "elapsed_outside": 0,
+          "age_outside": 61,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 17,
+          "extrapolation": 61,
+          "profile_check_pass": 746,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2021,
+      "fold": 2,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7091,
+            "origins": 5,
+            "positive_players": 901,
+            "zero_players": 6902
+          },
+          "status_medical_scope": {
+            "players": 898,
+            "origins": 4,
+            "positive_players": 668,
+            "zero_players": 508
+          },
+          "status_acquired": {
+            "players": 1894,
+            "origins": 5,
+            "positive_players": 441,
+            "zero_players": 1651
+          },
+          "status_minor_contract": {
+            "players": 1447,
+            "origins": 5,
+            "positive_players": 144,
+            "zero_players": 1371
+          },
+          "status_ordinary_departure": {
+            "players": 640,
+            "origins": 5,
+            "positive_players": 358,
+            "zero_players": 419
+          },
+          "status_log_absence730": {
+            "players": 495,
+            "origins": 4,
+            "positive_players": 404,
+            "zero_players": 193
+          },
+          "status_open_medical": {
+            "players": 34,
+            "origins": 3,
+            "positive_players": 31,
+            "zero_players": 3
+          },
+          "status_medical_full_absence": {
+            "players": 8,
+            "origins": 4,
+            "positive_players": 5,
+            "zero_players": 3
+          },
+          "status_offseason_activation": {
+            "players": 107,
+            "origins": 4,
+            "positive_players": 90,
+            "zero_players": 24
+          },
+          "status_nonmedical_unresolved": {
+            "players": 21,
+            "origins": 5,
+            "positive_players": 10,
+            "zero_players": 15
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 901,
+            "origins": 5,
+            "positive_players": 901,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 668,
+            "origins": 4,
+            "positive_players": 668,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 441,
+            "origins": 5,
+            "positive_players": 441,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 144,
+            "origins": 5,
+            "positive_players": 144,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 358,
+            "origins": 5,
+            "positive_players": 358,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 404,
+            "origins": 4,
+            "positive_players": 404,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 31,
+            "origins": 3,
+            "positive_players": 31,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 5,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 90,
+            "origins": 4,
+            "positive_players": 90,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 10,
+            "origins": 4,
+            "positive_players": 10,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 32883,
+          "training_players": 9902,
+          "test_rows": 883,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 266,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 1,
+          "unseen_profile": 0,
+          "sparse_profile": 7,
+          "extrapolation": 1,
+          "profile_check_pass": 876,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 4526,
+          "training_players": 1246,
+          "test_rows": 883,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 262,
+          "elapsed_outside": 0,
+          "age_outside": 75,
+          "quality_outside": 1,
+          "unseen_profile": 0,
+          "sparse_profile": 25,
+          "extrapolation": 76,
+          "profile_check_pass": 783,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2021,
+      "fold": 3,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7113,
+            "origins": 5,
+            "positive_players": 922,
+            "zero_players": 6911
+          },
+          "status_medical_scope": {
+            "players": 915,
+            "origins": 4,
+            "positive_players": 711,
+            "zero_players": 489
+          },
+          "status_acquired": {
+            "players": 1895,
+            "origins": 5,
+            "positive_players": 451,
+            "zero_players": 1635
+          },
+          "status_minor_contract": {
+            "players": 1425,
+            "origins": 5,
+            "positive_players": 144,
+            "zero_players": 1347
+          },
+          "status_ordinary_departure": {
+            "players": 630,
+            "origins": 5,
+            "positive_players": 355,
+            "zero_players": 407
+          },
+          "status_log_absence730": {
+            "players": 520,
+            "origins": 4,
+            "positive_players": 441,
+            "zero_players": 178
+          },
+          "status_open_medical": {
+            "players": 35,
+            "origins": 3,
+            "positive_players": 33,
+            "zero_players": 2
+          },
+          "status_medical_full_absence": {
+            "players": 9,
+            "origins": 4,
+            "positive_players": 6,
+            "zero_players": 3
+          },
+          "status_offseason_activation": {
+            "players": 115,
+            "origins": 4,
+            "positive_players": 101,
+            "zero_players": 19
+          },
+          "status_nonmedical_unresolved": {
+            "players": 22,
+            "origins": 5,
+            "positive_players": 9,
+            "zero_players": 18
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 922,
+            "origins": 5,
+            "positive_players": 922,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 711,
+            "origins": 4,
+            "positive_players": 711,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 451,
+            "origins": 5,
+            "positive_players": 451,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 144,
+            "origins": 5,
+            "positive_players": 144,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 355,
+            "origins": 5,
+            "positive_players": 355,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 441,
+            "origins": 4,
+            "positive_players": 441,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 33,
+            "origins": 3,
+            "positive_players": 33,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 6,
+            "origins": 3,
+            "positive_players": 6,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 101,
+            "origins": 4,
+            "positive_players": 101,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 9,
+            "origins": 4,
+            "positive_players": 9,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 33282,
+          "training_players": 9957,
+          "test_rows": 846,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 245,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 1,
+          "sparse_profile": 4,
+          "extrapolation": 1,
+          "profile_check_pass": 842,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 4563,
+          "training_players": 1253,
+          "test_rows": 846,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 21,
+          "three_regular_training_players": 242,
+          "elapsed_outside": 0,
+          "age_outside": 58,
+          "quality_outside": 0,
+          "unseen_profile": 1,
+          "sparse_profile": 15,
+          "extrapolation": 59,
+          "profile_check_pass": 773,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2021,
+      "fold": 4,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7163,
+            "origins": 5,
+            "positive_players": 934,
+            "zero_players": 6968
+          },
+          "status_medical_scope": {
+            "players": 905,
+            "origins": 4,
+            "positive_players": 712,
+            "zero_players": 485
+          },
+          "status_acquired": {
+            "players": 1935,
+            "origins": 5,
+            "positive_players": 472,
+            "zero_players": 1659
+          },
+          "status_minor_contract": {
+            "players": 1456,
+            "origins": 5,
+            "positive_players": 143,
+            "zero_players": 1382
+          },
+          "status_ordinary_departure": {
+            "players": 616,
+            "origins": 5,
+            "positive_players": 361,
+            "zero_players": 395
+          },
+          "status_log_absence730": {
+            "players": 507,
+            "origins": 4,
+            "positive_players": 438,
+            "zero_players": 179
+          },
+          "status_open_medical": {
+            "players": 38,
+            "origins": 3,
+            "positive_players": 37,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 7,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 2
+          },
+          "status_offseason_activation": {
+            "players": 119,
+            "origins": 4,
+            "positive_players": 101,
+            "zero_players": 26
+          },
+          "status_nonmedical_unresolved": {
+            "players": 19,
+            "origins": 5,
+            "positive_players": 8,
+            "zero_players": 15
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 934,
+            "origins": 5,
+            "positive_players": 934,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 712,
+            "origins": 4,
+            "positive_players": 712,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 472,
+            "origins": 5,
+            "positive_players": 472,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 143,
+            "origins": 5,
+            "positive_players": 143,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 361,
+            "origins": 5,
+            "positive_players": 361,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 438,
+            "origins": 4,
+            "positive_players": 438,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 37,
+            "origins": 3,
+            "positive_players": 37,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 5,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 101,
+            "origins": 4,
+            "positive_players": 101,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 8,
+            "origins": 4,
+            "positive_players": 8,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 33456,
+          "training_players": 9994,
+          "test_rows": 841,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 254,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 4,
+          "extrapolation": 0,
+          "profile_check_pass": 837,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 4568,
+          "training_players": 1251,
+          "test_rows": 841,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 251,
+          "elapsed_outside": 0,
+          "age_outside": 63,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 10,
+          "extrapolation": 63,
+          "profile_check_pass": 768,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "fold": 0,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7987,
+            "origins": 6,
+            "positive_players": 1070,
+            "zero_players": 7834
+          },
+          "status_medical_scope": {
+            "players": 1011,
+            "origins": 5,
+            "positive_players": 777,
+            "zero_players": 608
+          },
+          "status_acquired": {
+            "players": 2467,
+            "origins": 6,
+            "positive_players": 541,
+            "zero_players": 2189
+          },
+          "status_minor_contract": {
+            "players": 1889,
+            "origins": 6,
+            "positive_players": 167,
+            "zero_players": 1799
+          },
+          "status_ordinary_departure": {
+            "players": 701,
+            "origins": 6,
+            "positive_players": 399,
+            "zero_players": 482
+          },
+          "status_log_absence730": {
+            "players": 596,
+            "origins": 5,
+            "positive_players": 502,
+            "zero_players": 233
+          },
+          "status_open_medical": {
+            "players": 34,
+            "origins": 4,
+            "positive_players": 31,
+            "zero_players": 3
+          },
+          "status_medical_full_absence": {
+            "players": 11,
+            "origins": 4,
+            "positive_players": 7,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 158,
+            "origins": 5,
+            "positive_players": 136,
+            "zero_players": 30
+          },
+          "status_nonmedical_unresolved": {
+            "players": 34,
+            "origins": 6,
+            "positive_players": 18,
+            "zero_players": 27
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1070,
+            "origins": 6,
+            "positive_players": 1070,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 777,
+            "origins": 5,
+            "positive_players": 777,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 541,
+            "origins": 6,
+            "positive_players": 541,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 167,
+            "origins": 6,
+            "positive_players": 167,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 399,
+            "origins": 6,
+            "positive_players": 399,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 502,
+            "origins": 5,
+            "positive_players": 502,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 31,
+            "origins": 4,
+            "positive_players": 31,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 7,
+            "origins": 3,
+            "positive_players": 7,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 136,
+            "origins": 5,
+            "positive_players": 136,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 18,
+            "origins": 5,
+            "positive_players": 18,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 37150,
+          "training_players": 10867,
+          "test_rows": 875,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 271,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 3,
+          "extrapolation": 0,
+          "profile_check_pass": 872,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5103,
+          "training_players": 1394,
+          "test_rows": 875,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 268,
+          "elapsed_outside": 0,
+          "age_outside": 91,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 4,
+          "extrapolation": 91,
+          "profile_check_pass": 780,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "fold": 1,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7979,
+            "origins": 6,
+            "positive_players": 1051,
+            "zero_players": 7814
+          },
+          "status_medical_scope": {
+            "players": 1000,
+            "origins": 5,
+            "positive_players": 763,
+            "zero_players": 601
+          },
+          "status_acquired": {
+            "players": 2482,
+            "origins": 6,
+            "positive_players": 563,
+            "zero_players": 2186
+          },
+          "status_minor_contract": {
+            "players": 1899,
+            "origins": 6,
+            "positive_players": 174,
+            "zero_players": 1809
+          },
+          "status_ordinary_departure": {
+            "players": 688,
+            "origins": 6,
+            "positive_players": 386,
+            "zero_players": 474
+          },
+          "status_log_absence730": {
+            "players": 612,
+            "origins": 5,
+            "positive_players": 511,
+            "zero_players": 237
+          },
+          "status_open_medical": {
+            "players": 41,
+            "origins": 4,
+            "positive_players": 38,
+            "zero_players": 3
+          },
+          "status_medical_full_absence": {
+            "players": 9,
+            "origins": 4,
+            "positive_players": 5,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 163,
+            "origins": 5,
+            "positive_players": 138,
+            "zero_players": 32
+          },
+          "status_nonmedical_unresolved": {
+            "players": 26,
+            "origins": 6,
+            "positive_players": 13,
+            "zero_players": 19
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1051,
+            "origins": 6,
+            "positive_players": 1051,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 763,
+            "origins": 5,
+            "positive_players": 763,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 563,
+            "origins": 6,
+            "positive_players": 563,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 174,
+            "origins": 6,
+            "positive_players": 174,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 386,
+            "origins": 6,
+            "positive_players": 386,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 511,
+            "origins": 5,
+            "positive_players": 511,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 38,
+            "origins": 4,
+            "positive_players": 38,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 5,
+            "origins": 2,
+            "positive_players": 5,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 138,
+            "origins": 5,
+            "positive_players": 138,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 13,
+            "origins": 5,
+            "positive_players": 13,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 36937,
+          "training_players": 10877,
+          "test_rows": 801,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 289,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 6,
+          "extrapolation": 0,
+          "profile_check_pass": 795,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5197,
+          "training_players": 1390,
+          "test_rows": 801,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 286,
+          "elapsed_outside": 0,
+          "age_outside": 56,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 12,
+          "extrapolation": 56,
+          "profile_check_pass": 733,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "fold": 2,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7902,
+            "origins": 6,
+            "positive_players": 1026,
+            "zero_players": 7750
+          },
+          "status_medical_scope": {
+            "players": 982,
+            "origins": 5,
+            "positive_players": 730,
+            "zero_players": 611
+          },
+          "status_acquired": {
+            "players": 2414,
+            "origins": 6,
+            "positive_players": 526,
+            "zero_players": 2143
+          },
+          "status_minor_contract": {
+            "players": 1848,
+            "origins": 6,
+            "positive_players": 169,
+            "zero_players": 1759
+          },
+          "status_ordinary_departure": {
+            "players": 706,
+            "origins": 6,
+            "positive_players": 390,
+            "zero_players": 489
+          },
+          "status_log_absence730": {
+            "players": 581,
+            "origins": 5,
+            "positive_players": 473,
+            "zero_players": 239
+          },
+          "status_open_medical": {
+            "players": 35,
+            "origins": 4,
+            "positive_players": 32,
+            "zero_players": 3
+          },
+          "status_medical_full_absence": {
+            "players": 8,
+            "origins": 4,
+            "positive_players": 5,
+            "zero_players": 3
+          },
+          "status_offseason_activation": {
+            "players": 154,
+            "origins": 5,
+            "positive_players": 129,
+            "zero_players": 33
+          },
+          "status_nonmedical_unresolved": {
+            "players": 26,
+            "origins": 6,
+            "positive_players": 14,
+            "zero_players": 21
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1026,
+            "origins": 6,
+            "positive_players": 1026,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 730,
+            "origins": 5,
+            "positive_players": 730,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 526,
+            "origins": 6,
+            "positive_players": 526,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 169,
+            "origins": 6,
+            "positive_players": 169,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 390,
+            "origins": 6,
+            "positive_players": 390,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 473,
+            "origins": 5,
+            "positive_players": 473,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 32,
+            "origins": 4,
+            "positive_players": 32,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 5,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 129,
+            "origins": 5,
+            "positive_players": 129,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 14,
+            "origins": 5,
+            "positive_players": 14,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 36242,
+          "training_players": 10713,
+          "test_rows": 873,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 284,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 6,
+          "extrapolation": 0,
+          "profile_check_pass": 867,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5053,
+          "training_players": 1371,
+          "test_rows": 873,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 280,
+          "elapsed_outside": 0,
+          "age_outside": 84,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 19,
+          "extrapolation": 84,
+          "profile_check_pass": 770,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "fold": 3,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7935,
+            "origins": 6,
+            "positive_players": 1047,
+            "zero_players": 7783
+          },
+          "status_medical_scope": {
+            "players": 997,
+            "origins": 5,
+            "positive_players": 771,
+            "zero_players": 603
+          },
+          "status_acquired": {
+            "players": 2444,
+            "origins": 6,
+            "positive_players": 543,
+            "zero_players": 2169
+          },
+          "status_minor_contract": {
+            "players": 1852,
+            "origins": 6,
+            "positive_players": 167,
+            "zero_players": 1764
+          },
+          "status_ordinary_departure": {
+            "players": 699,
+            "origins": 6,
+            "positive_players": 388,
+            "zero_players": 486
+          },
+          "status_log_absence730": {
+            "players": 609,
+            "origins": 5,
+            "positive_players": 516,
+            "zero_players": 233
+          },
+          "status_open_medical": {
+            "players": 36,
+            "origins": 4,
+            "positive_players": 34,
+            "zero_players": 2
+          },
+          "status_medical_full_absence": {
+            "players": 9,
+            "origins": 4,
+            "positive_players": 6,
+            "zero_players": 3
+          },
+          "status_offseason_activation": {
+            "players": 161,
+            "origins": 5,
+            "positive_players": 140,
+            "zero_players": 28
+          },
+          "status_nonmedical_unresolved": {
+            "players": 28,
+            "origins": 6,
+            "positive_players": 14,
+            "zero_players": 24
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1047,
+            "origins": 6,
+            "positive_players": 1047,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 771,
+            "origins": 5,
+            "positive_players": 771,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 543,
+            "origins": 6,
+            "positive_players": 543,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 167,
+            "origins": 6,
+            "positive_players": 167,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 388,
+            "origins": 6,
+            "positive_players": 388,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 516,
+            "origins": 5,
+            "positive_players": 516,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 34,
+            "origins": 4,
+            "positive_players": 34,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 6,
+            "origins": 3,
+            "positive_players": 6,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 140,
+            "origins": 5,
+            "positive_players": 140,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 14,
+            "origins": 5,
+            "positive_players": 14,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 36678,
+          "training_players": 10779,
+          "test_rows": 851,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 269,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 5,
+          "extrapolation": 0,
+          "profile_check_pass": 846,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5106,
+          "training_players": 1378,
+          "test_rows": 851,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 21,
+          "three_regular_training_players": 266,
+          "elapsed_outside": 0,
+          "age_outside": 75,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 14,
+          "extrapolation": 75,
+          "profile_check_pass": 762,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "fold": 4,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 7973,
+            "origins": 6,
+            "positive_players": 1070,
+            "zero_players": 7819
+          },
+          "status_medical_scope": {
+            "players": 994,
+            "origins": 5,
+            "positive_players": 779,
+            "zero_players": 593
+          },
+          "status_acquired": {
+            "players": 2481,
+            "origins": 6,
+            "positive_players": 559,
+            "zero_players": 2189
+          },
+          "status_minor_contract": {
+            "players": 1888,
+            "origins": 6,
+            "positive_players": 171,
+            "zero_players": 1797
+          },
+          "status_ordinary_departure": {
+            "players": 690,
+            "origins": 6,
+            "positive_players": 397,
+            "zero_players": 477
+          },
+          "status_log_absence730": {
+            "players": 602,
+            "origins": 5,
+            "positive_players": 518,
+            "zero_players": 230
+          },
+          "status_open_medical": {
+            "players": 38,
+            "origins": 3,
+            "positive_players": 37,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 7,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 2
+          },
+          "status_offseason_activation": {
+            "players": 164,
+            "origins": 5,
+            "positive_players": 141,
+            "zero_players": 33
+          },
+          "status_nonmedical_unresolved": {
+            "players": 22,
+            "origins": 6,
+            "positive_players": 13,
+            "zero_players": 17
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1070,
+            "origins": 6,
+            "positive_players": 1070,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 779,
+            "origins": 5,
+            "positive_players": 779,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 559,
+            "origins": 6,
+            "positive_players": 559,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 171,
+            "origins": 6,
+            "positive_players": 171,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 397,
+            "origins": 6,
+            "positive_players": 397,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 518,
+            "origins": 5,
+            "positive_players": 518,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 37,
+            "origins": 3,
+            "positive_players": 37,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 5,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 141,
+            "origins": 5,
+            "positive_players": 141,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 13,
+            "origins": 5,
+            "positive_players": 13,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 36857,
+          "training_players": 10804,
+          "test_rows": 844,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 275,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 7,
+          "extrapolation": 0,
+          "profile_check_pass": 837,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5129,
+          "training_players": 1387,
+          "test_rows": 844,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 272,
+          "elapsed_outside": 0,
+          "age_outside": 70,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 8,
+          "extrapolation": 70,
+          "profile_check_pass": 766,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "fold": 0,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 8610,
+            "origins": 7,
+            "positive_players": 1160,
+            "zero_players": 8486
+          },
+          "status_medical_scope": {
+            "players": 1142,
+            "origins": 6,
+            "positive_players": 873,
+            "zero_players": 729
+          },
+          "status_acquired": {
+            "players": 3025,
+            "origins": 7,
+            "positive_players": 630,
+            "zero_players": 2717
+          },
+          "status_minor_contract": {
+            "players": 2391,
+            "origins": 7,
+            "positive_players": 191,
+            "zero_players": 2300
+          },
+          "status_ordinary_departure": {
+            "players": 788,
+            "origins": 7,
+            "positive_players": 432,
+            "zero_players": 568
+          },
+          "status_log_absence730": {
+            "players": 656,
+            "origins": 6,
+            "positive_players": 549,
+            "zero_players": 295
+          },
+          "status_open_medical": {
+            "players": 38,
+            "origins": 5,
+            "positive_players": 34,
+            "zero_players": 4
+          },
+          "status_medical_full_absence": {
+            "players": 12,
+            "origins": 5,
+            "positive_players": 8,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 197,
+            "origins": 6,
+            "positive_players": 170,
+            "zero_players": 38
+          },
+          "status_nonmedical_unresolved": {
+            "players": 38,
+            "origins": 7,
+            "positive_players": 20,
+            "zero_players": 31
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1160,
+            "origins": 7,
+            "positive_players": 1160,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 873,
+            "origins": 6,
+            "positive_players": 873,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 630,
+            "origins": 7,
+            "positive_players": 630,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 191,
+            "origins": 7,
+            "positive_players": 191,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 432,
+            "origins": 7,
+            "positive_players": 432,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 549,
+            "origins": 6,
+            "positive_players": 549,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 34,
+            "origins": 5,
+            "positive_players": 34,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 8,
+            "origins": 4,
+            "positive_players": 8,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 170,
+            "origins": 6,
+            "positive_players": 170,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 20,
+            "origins": 6,
+            "positive_players": 20,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 40519,
+          "training_players": 11489,
+          "test_rows": 872,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 286,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 3,
+          "extrapolation": 0,
+          "profile_check_pass": 869,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5627,
+          "training_players": 1483,
+          "test_rows": 872,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 283,
+          "elapsed_outside": 0,
+          "age_outside": 75,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 4,
+          "extrapolation": 75,
+          "profile_check_pass": 793,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "fold": 1,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 8646,
+            "origins": 7,
+            "positive_players": 1132,
+            "zero_players": 8514
+          },
+          "status_medical_scope": {
+            "players": 1124,
+            "origins": 6,
+            "positive_players": 858,
+            "zero_players": 718
+          },
+          "status_acquired": {
+            "players": 3069,
+            "origins": 7,
+            "positive_players": 649,
+            "zero_players": 2753
+          },
+          "status_minor_contract": {
+            "players": 2451,
+            "origins": 7,
+            "positive_players": 201,
+            "zero_players": 2356
+          },
+          "status_ordinary_departure": {
+            "players": 766,
+            "origins": 7,
+            "positive_players": 414,
+            "zero_players": 559
+          },
+          "status_log_absence730": {
+            "players": 665,
+            "origins": 6,
+            "positive_players": 552,
+            "zero_players": 303
+          },
+          "status_open_medical": {
+            "players": 47,
+            "origins": 5,
+            "positive_players": 43,
+            "zero_players": 4
+          },
+          "status_medical_full_absence": {
+            "players": 10,
+            "origins": 5,
+            "positive_players": 6,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 205,
+            "origins": 6,
+            "positive_players": 175,
+            "zero_players": 40
+          },
+          "status_nonmedical_unresolved": {
+            "players": 30,
+            "origins": 7,
+            "positive_players": 15,
+            "zero_players": 23
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1132,
+            "origins": 7,
+            "positive_players": 1132,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 858,
+            "origins": 6,
+            "positive_players": 858,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 649,
+            "origins": 7,
+            "positive_players": 649,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 201,
+            "origins": 7,
+            "positive_players": 201,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 414,
+            "origins": 7,
+            "positive_players": 414,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 552,
+            "origins": 6,
+            "positive_players": 552,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 43,
+            "origins": 5,
+            "positive_players": 43,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 6,
+            "origins": 3,
+            "positive_players": 6,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 175,
+            "origins": 6,
+            "positive_players": 175,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 15,
+            "origins": 6,
+            "positive_players": 15,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 40380,
+          "training_players": 11543,
+          "test_rows": 773,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 305,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 1,
+          "extrapolation": 0,
+          "profile_check_pass": 772,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5714,
+          "training_players": 1471,
+          "test_rows": 773,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 302,
+          "elapsed_outside": 0,
+          "age_outside": 76,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 1,
+          "extrapolation": 76,
+          "profile_check_pass": 696,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "fold": 2,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 8537,
+            "origins": 7,
+            "positive_players": 1112,
+            "zero_players": 8410
+          },
+          "status_medical_scope": {
+            "players": 1105,
+            "origins": 6,
+            "positive_players": 824,
+            "zero_players": 722
+          },
+          "status_acquired": {
+            "players": 2964,
+            "origins": 7,
+            "positive_players": 611,
+            "zero_players": 2671
+          },
+          "status_minor_contract": {
+            "players": 2356,
+            "origins": 7,
+            "positive_players": 192,
+            "zero_players": 2264
+          },
+          "status_ordinary_departure": {
+            "players": 791,
+            "origins": 7,
+            "positive_players": 424,
+            "zero_players": 570
+          },
+          "status_log_absence730": {
+            "players": 631,
+            "origins": 6,
+            "positive_players": 513,
+            "zero_players": 298
+          },
+          "status_open_medical": {
+            "players": 40,
+            "origins": 5,
+            "positive_players": 36,
+            "zero_players": 4
+          },
+          "status_medical_full_absence": {
+            "players": 8,
+            "origins": 4,
+            "positive_players": 5,
+            "zero_players": 3
+          },
+          "status_offseason_activation": {
+            "players": 193,
+            "origins": 6,
+            "positive_players": 164,
+            "zero_players": 40
+          },
+          "status_nonmedical_unresolved": {
+            "players": 31,
+            "origins": 7,
+            "positive_players": 17,
+            "zero_players": 25
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1112,
+            "origins": 7,
+            "positive_players": 1112,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 824,
+            "origins": 6,
+            "positive_players": 824,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 611,
+            "origins": 7,
+            "positive_players": 611,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 192,
+            "origins": 7,
+            "positive_players": 192,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 424,
+            "origins": 7,
+            "positive_players": 424,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 513,
+            "origins": 6,
+            "positive_players": 513,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 36,
+            "origins": 5,
+            "positive_players": 36,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 5,
+            "origins": 3,
+            "positive_players": 5,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 164,
+            "origins": 6,
+            "positive_players": 164,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 17,
+            "origins": 6,
+            "positive_players": 17,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 39613,
+          "training_players": 11348,
+          "test_rows": 874,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 292,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 2,
+          "extrapolation": 0,
+          "profile_check_pass": 872,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5553,
+          "training_players": 1456,
+          "test_rows": 874,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 288,
+          "elapsed_outside": 0,
+          "age_outside": 89,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 5,
+          "extrapolation": 89,
+          "profile_check_pass": 780,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "fold": 3,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 8581,
+            "origins": 7,
+            "positive_players": 1138,
+            "zero_players": 8457
+          },
+          "status_medical_scope": {
+            "players": 1121,
+            "origins": 6,
+            "positive_players": 868,
+            "zero_players": 716
+          },
+          "status_acquired": {
+            "players": 3004,
+            "origins": 7,
+            "positive_players": 631,
+            "zero_players": 2698
+          },
+          "status_minor_contract": {
+            "players": 2366,
+            "origins": 7,
+            "positive_players": 193,
+            "zero_players": 2271
+          },
+          "status_ordinary_departure": {
+            "players": 787,
+            "origins": 7,
+            "positive_players": 422,
+            "zero_players": 572
+          },
+          "status_log_absence730": {
+            "players": 662,
+            "origins": 6,
+            "positive_players": 559,
+            "zero_players": 291
+          },
+          "status_open_medical": {
+            "players": 41,
+            "origins": 5,
+            "positive_players": 38,
+            "zero_players": 3
+          },
+          "status_medical_full_absence": {
+            "players": 10,
+            "origins": 5,
+            "positive_players": 7,
+            "zero_players": 3
+          },
+          "status_offseason_activation": {
+            "players": 196,
+            "origins": 6,
+            "positive_players": 173,
+            "zero_players": 32
+          },
+          "status_nonmedical_unresolved": {
+            "players": 31,
+            "origins": 7,
+            "positive_players": 16,
+            "zero_players": 25
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1138,
+            "origins": 7,
+            "positive_players": 1138,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 868,
+            "origins": 6,
+            "positive_players": 868,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 631,
+            "origins": 7,
+            "positive_players": 631,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 193,
+            "origins": 7,
+            "positive_players": 193,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 422,
+            "origins": 7,
+            "positive_players": 422,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 559,
+            "origins": 6,
+            "positive_players": 559,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 38,
+            "origins": 5,
+            "positive_players": 38,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 7,
+            "origins": 4,
+            "positive_players": 7,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 173,
+            "origins": 6,
+            "positive_players": 173,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 16,
+            "origins": 6,
+            "positive_players": 16,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 40071,
+          "training_players": 11424,
+          "test_rows": 834,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 288,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 5,
+          "extrapolation": 0,
+          "profile_check_pass": 829,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5628,
+          "training_players": 1468,
+          "test_rows": 834,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 21,
+          "three_regular_training_players": 285,
+          "elapsed_outside": 0,
+          "age_outside": 93,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 15,
+          "extrapolation": 93,
+          "profile_check_pass": 726,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "fold": 4,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 8614,
+            "origins": 7,
+            "positive_players": 1154,
+            "zero_players": 8485
+          },
+          "status_medical_scope": {
+            "players": 1128,
+            "origins": 6,
+            "positive_players": 881,
+            "zero_players": 707
+          },
+          "status_acquired": {
+            "players": 3054,
+            "origins": 7,
+            "positive_players": 647,
+            "zero_players": 2729
+          },
+          "status_minor_contract": {
+            "players": 2420,
+            "origins": 7,
+            "positive_players": 199,
+            "zero_players": 2321
+          },
+          "status_ordinary_departure": {
+            "players": 772,
+            "origins": 7,
+            "positive_players": 432,
+            "zero_players": 555
+          },
+          "status_log_absence730": {
+            "players": 662,
+            "origins": 6,
+            "positive_players": 567,
+            "zero_players": 293
+          },
+          "status_open_medical": {
+            "players": 42,
+            "origins": 4,
+            "positive_players": 41,
+            "zero_players": 1
+          },
+          "status_medical_full_absence": {
+            "players": 8,
+            "origins": 4,
+            "positive_players": 6,
+            "zero_players": 2
+          },
+          "status_offseason_activation": {
+            "players": 205,
+            "origins": 6,
+            "positive_players": 178,
+            "zero_players": 38
+          },
+          "status_nonmedical_unresolved": {
+            "players": 26,
+            "origins": 7,
+            "positive_players": 16,
+            "zero_players": 20
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1154,
+            "origins": 7,
+            "positive_players": 1154,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 881,
+            "origins": 6,
+            "positive_players": 881,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 647,
+            "origins": 7,
+            "positive_players": 647,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 199,
+            "origins": 7,
+            "positive_players": 199,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 432,
+            "origins": 7,
+            "positive_players": 432,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 567,
+            "origins": 6,
+            "positive_players": 567,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 41,
+            "origins": 4,
+            "positive_players": 41,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 6,
+            "origins": 4,
+            "positive_players": 6,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 178,
+            "origins": 6,
+            "positive_players": 178,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 16,
+            "origins": 6,
+            "positive_players": 16,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 40257,
+          "training_players": 11444,
+          "test_rows": 843,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 293,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 3,
+          "extrapolation": 0,
+          "profile_check_pass": 840,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 5662,
+          "training_players": 1470,
+          "test_rows": 843,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 290,
+          "elapsed_outside": 0,
+          "age_outside": 76,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 6,
+          "extrapolation": 76,
+          "profile_check_pass": 761,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "fold": 0,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 9245,
+            "origins": 8,
+            "positive_players": 1248,
+            "zero_players": 9149
+          },
+          "status_medical_scope": {
+            "players": 1232,
+            "origins": 7,
+            "positive_players": 952,
+            "zero_players": 833
+          },
+          "status_acquired": {
+            "players": 3547,
+            "origins": 8,
+            "positive_players": 690,
+            "zero_players": 3252
+          },
+          "status_minor_contract": {
+            "players": 2916,
+            "origins": 8,
+            "positive_players": 223,
+            "zero_players": 2808
+          },
+          "status_ordinary_departure": {
+            "players": 839,
+            "origins": 8,
+            "positive_players": 451,
+            "zero_players": 640
+          },
+          "status_log_absence730": {
+            "players": 709,
+            "origins": 7,
+            "positive_players": 598,
+            "zero_players": 353
+          },
+          "status_open_medical": {
+            "players": 43,
+            "origins": 6,
+            "positive_players": 37,
+            "zero_players": 6
+          },
+          "status_medical_full_absence": {
+            "players": 15,
+            "origins": 6,
+            "positive_players": 9,
+            "zero_players": 6
+          },
+          "status_offseason_activation": {
+            "players": 217,
+            "origins": 7,
+            "positive_players": 187,
+            "zero_players": 44
+          },
+          "status_nonmedical_unresolved": {
+            "players": 39,
+            "origins": 8,
+            "positive_players": 20,
+            "zero_players": 35
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1248,
+            "origins": 8,
+            "positive_players": 1248,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 952,
+            "origins": 7,
+            "positive_players": 952,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 690,
+            "origins": 8,
+            "positive_players": 690,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 223,
+            "origins": 8,
+            "positive_players": 223,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 451,
+            "origins": 8,
+            "positive_players": 451,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 598,
+            "origins": 7,
+            "positive_players": 598,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 37,
+            "origins": 6,
+            "positive_players": 37,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 9,
+            "origins": 5,
+            "positive_players": 9,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 187,
+            "origins": 7,
+            "positive_players": 187,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 20,
+            "origins": 7,
+            "positive_players": 20,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 43843,
+          "training_players": 12124,
+          "test_rows": 807,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 305,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 0,
+          "extrapolation": 0,
+          "profile_check_pass": 807,
+          "full_cohort_profile_check_pass": true,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 6151,
+          "training_players": 1571,
+          "test_rows": 807,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 302,
+          "elapsed_outside": 0,
+          "age_outside": 71,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 3,
+          "extrapolation": 71,
+          "profile_check_pass": 733,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "fold": 1,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 9285,
+            "origins": 8,
+            "positive_players": 1220,
+            "zero_players": 9187
+          },
+          "status_medical_scope": {
+            "players": 1206,
+            "origins": 7,
+            "positive_players": 928,
+            "zero_players": 817
+          },
+          "status_acquired": {
+            "players": 3591,
+            "origins": 8,
+            "positive_players": 703,
+            "zero_players": 3290
+          },
+          "status_minor_contract": {
+            "players": 2972,
+            "origins": 8,
+            "positive_players": 228,
+            "zero_players": 2866
+          },
+          "status_ordinary_departure": {
+            "players": 822,
+            "origins": 8,
+            "positive_players": 438,
+            "zero_players": 633
+          },
+          "status_log_absence730": {
+            "players": 721,
+            "origins": 7,
+            "positive_players": 603,
+            "zero_players": 370
+          },
+          "status_open_medical": {
+            "players": 53,
+            "origins": 6,
+            "positive_players": 48,
+            "zero_players": 5
+          },
+          "status_medical_full_absence": {
+            "players": 13,
+            "origins": 6,
+            "positive_players": 7,
+            "zero_players": 6
+          },
+          "status_offseason_activation": {
+            "players": 221,
+            "origins": 7,
+            "positive_players": 188,
+            "zero_players": 46
+          },
+          "status_nonmedical_unresolved": {
+            "players": 31,
+            "origins": 8,
+            "positive_players": 15,
+            "zero_players": 26
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1220,
+            "origins": 8,
+            "positive_players": 1220,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 928,
+            "origins": 7,
+            "positive_players": 928,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 703,
+            "origins": 8,
+            "positive_players": 703,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 228,
+            "origins": 8,
+            "positive_players": 228,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 438,
+            "origins": 8,
+            "positive_players": 438,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 603,
+            "origins": 7,
+            "positive_players": 603,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 48,
+            "origins": 6,
+            "positive_players": 48,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 7,
+            "origins": 4,
+            "positive_players": 7,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 188,
+            "origins": 7,
+            "positive_players": 188,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 15,
+            "origins": 7,
+            "positive_players": 15,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 43803,
+          "training_players": 12182,
+          "test_rows": 734,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 322,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 2,
+          "extrapolation": 0,
+          "profile_check_pass": 732,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 6224,
+          "training_players": 1559,
+          "test_rows": 734,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 319,
+          "elapsed_outside": 0,
+          "age_outside": 73,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 5,
+          "extrapolation": 73,
+          "profile_check_pass": 656,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "fold": 2,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 9167,
+            "origins": 8,
+            "positive_players": 1201,
+            "zero_players": 9066
+          },
+          "status_medical_scope": {
+            "players": 1191,
+            "origins": 7,
+            "positive_players": 898,
+            "zero_players": 813
+          },
+          "status_acquired": {
+            "players": 3482,
+            "origins": 8,
+            "positive_players": 674,
+            "zero_players": 3192
+          },
+          "status_minor_contract": {
+            "players": 2870,
+            "origins": 8,
+            "positive_players": 221,
+            "zero_players": 2766
+          },
+          "status_ordinary_departure": {
+            "players": 838,
+            "origins": 8,
+            "positive_players": 444,
+            "zero_players": 640
+          },
+          "status_log_absence730": {
+            "players": 685,
+            "origins": 7,
+            "positive_players": 564,
+            "zero_players": 351
+          },
+          "status_open_medical": {
+            "players": 47,
+            "origins": 6,
+            "positive_players": 41,
+            "zero_players": 6
+          },
+          "status_medical_full_absence": {
+            "players": 10,
+            "origins": 5,
+            "positive_players": 6,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 208,
+            "origins": 7,
+            "positive_players": 178,
+            "zero_players": 44
+          },
+          "status_nonmedical_unresolved": {
+            "players": 31,
+            "origins": 8,
+            "positive_players": 17,
+            "zero_players": 27
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1201,
+            "origins": 8,
+            "positive_players": 1201,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 898,
+            "origins": 7,
+            "positive_players": 898,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 674,
+            "origins": 8,
+            "positive_players": 674,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 221,
+            "origins": 8,
+            "positive_players": 221,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 444,
+            "origins": 8,
+            "positive_players": 444,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 564,
+            "origins": 7,
+            "positive_players": 564,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 41,
+            "origins": 6,
+            "positive_players": 41,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 6,
+            "origins": 4,
+            "positive_players": 6,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 178,
+            "origins": 7,
+            "positive_players": 178,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 17,
+            "origins": 7,
+            "positive_players": 17,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 42935,
+          "training_players": 11978,
+          "test_rows": 841,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 23,
+          "three_regular_training_players": 310,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 3,
+          "extrapolation": 0,
+          "profile_check_pass": 838,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 6061,
+          "training_players": 1545,
+          "test_rows": 841,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 306,
+          "elapsed_outside": 0,
+          "age_outside": 107,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 7,
+          "extrapolation": 107,
+          "profile_check_pass": 727,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "fold": 3,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 9207,
+            "origins": 8,
+            "positive_players": 1224,
+            "zero_players": 9110
+          },
+          "status_medical_scope": {
+            "players": 1211,
+            "origins": 7,
+            "positive_players": 945,
+            "zero_players": 811
+          },
+          "status_acquired": {
+            "players": 3524,
+            "origins": 8,
+            "positive_players": 691,
+            "zero_players": 3228
+          },
+          "status_minor_contract": {
+            "players": 2888,
+            "origins": 8,
+            "positive_players": 223,
+            "zero_players": 2779
+          },
+          "status_ordinary_departure": {
+            "players": 830,
+            "origins": 8,
+            "positive_players": 444,
+            "zero_players": 637
+          },
+          "status_log_absence730": {
+            "players": 722,
+            "origins": 7,
+            "positive_players": 614,
+            "zero_players": 347
+          },
+          "status_open_medical": {
+            "players": 47,
+            "origins": 6,
+            "positive_players": 42,
+            "zero_players": 5
+          },
+          "status_medical_full_absence": {
+            "players": 11,
+            "origins": 6,
+            "positive_players": 7,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 213,
+            "origins": 7,
+            "positive_players": 188,
+            "zero_players": 35
+          },
+          "status_nonmedical_unresolved": {
+            "players": 32,
+            "origins": 8,
+            "positive_players": 16,
+            "zero_players": 29
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1224,
+            "origins": 8,
+            "positive_players": 1224,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 945,
+            "origins": 7,
+            "positive_players": 945,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 691,
+            "origins": 8,
+            "positive_players": 691,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 223,
+            "origins": 8,
+            "positive_players": 223,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 444,
+            "origins": 8,
+            "positive_players": 444,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 614,
+            "origins": 7,
+            "positive_players": 614,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 42,
+            "origins": 6,
+            "positive_players": 42,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 7,
+            "origins": 4,
+            "positive_players": 7,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 188,
+            "origins": 7,
+            "positive_players": 188,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 16,
+            "origins": 7,
+            "positive_players": 16,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 43433,
+          "training_players": 12050,
+          "test_rows": 812,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 300,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 1,
+          "unseen_profile": 0,
+          "sparse_profile": 4,
+          "extrapolation": 1,
+          "profile_check_pass": 807,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 6145,
+          "training_players": 1554,
+          "test_rows": 812,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 21,
+          "three_regular_training_players": 297,
+          "elapsed_outside": 0,
+          "age_outside": 80,
+          "quality_outside": 1,
+          "unseen_profile": 0,
+          "sparse_profile": 11,
+          "extrapolation": 81,
+          "profile_check_pass": 720,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "fold": 4,
+      "feature_support": {
+        "participation": {
+          "status_capture_scope": {
+            "players": 9240,
+            "origins": 8,
+            "positive_players": 1239,
+            "zero_players": 9140
+          },
+          "status_medical_scope": {
+            "players": 1212,
+            "origins": 7,
+            "positive_players": 953,
+            "zero_players": 806
+          },
+          "status_acquired": {
+            "players": 3588,
+            "origins": 8,
+            "positive_players": 710,
+            "zero_players": 3278
+          },
+          "status_minor_contract": {
+            "players": 2946,
+            "origins": 8,
+            "positive_players": 229,
+            "zero_players": 2837
+          },
+          "status_ordinary_departure": {
+            "players": 815,
+            "origins": 8,
+            "positive_players": 451,
+            "zero_players": 622
+          },
+          "status_log_absence730": {
+            "players": 719,
+            "origins": 7,
+            "positive_players": 621,
+            "zero_players": 355
+          },
+          "status_open_medical": {
+            "players": 46,
+            "origins": 5,
+            "positive_players": 44,
+            "zero_players": 2
+          },
+          "status_medical_full_absence": {
+            "players": 11,
+            "origins": 5,
+            "positive_players": 7,
+            "zero_players": 4
+          },
+          "status_offseason_activation": {
+            "players": 225,
+            "origins": 7,
+            "positive_players": 195,
+            "zero_players": 43
+          },
+          "status_nonmedical_unresolved": {
+            "players": 27,
+            "origins": 8,
+            "positive_players": 16,
+            "zero_players": 23
+          }
+        },
+        "conditional_pa": {
+          "status_capture_scope": {
+            "players": 1239,
+            "origins": 8,
+            "positive_players": 1239,
+            "zero_players": 0
+          },
+          "status_medical_scope": {
+            "players": 953,
+            "origins": 7,
+            "positive_players": 953,
+            "zero_players": 0
+          },
+          "status_acquired": {
+            "players": 710,
+            "origins": 8,
+            "positive_players": 710,
+            "zero_players": 0
+          },
+          "status_minor_contract": {
+            "players": 229,
+            "origins": 8,
+            "positive_players": 229,
+            "zero_players": 0
+          },
+          "status_ordinary_departure": {
+            "players": 451,
+            "origins": 8,
+            "positive_players": 451,
+            "zero_players": 0
+          },
+          "status_log_absence730": {
+            "players": 621,
+            "origins": 7,
+            "positive_players": 621,
+            "zero_players": 0
+          },
+          "status_open_medical": {
+            "players": 44,
+            "origins": 5,
+            "positive_players": 44,
+            "zero_players": 0
+          },
+          "status_medical_full_absence": {
+            "players": 7,
+            "origins": 5,
+            "positive_players": 7,
+            "zero_players": 0
+          },
+          "status_offseason_activation": {
+            "players": 195,
+            "origins": 7,
+            "positive_players": 195,
+            "zero_players": 0
+          },
+          "status_nonmedical_unresolved": {
+            "players": 16,
+            "origins": 7,
+            "positive_players": 16,
+            "zero_players": 0
+          }
+        }
+      },
+      "checks": {
+        "participation": {
+          "integrity_pass": true,
+          "training_rows": 43610,
+          "training_players": 12070,
+          "test_rows": 798,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 25,
+          "three_regular_training_players": 311,
+          "elapsed_outside": 0,
+          "age_outside": 0,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 2,
+          "extrapolation": 0,
+          "profile_check_pass": 796,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        },
+        "conditional_pa": {
+          "integrity_pass": true,
+          "training_rows": 6191,
+          "training_players": 1555,
+          "test_rows": 798,
+          "min_training_elapsed": -1,
+          "max_training_elapsed": 22,
+          "three_regular_training_players": 308,
+          "elapsed_outside": 0,
+          "age_outside": 80,
+          "quality_outside": 0,
+          "unseen_profile": 0,
+          "sparse_profile": 3,
+          "extrapolation": 80,
+          "profile_check_pass": 715,
+          "full_cohort_profile_check_pass": false,
+          "claim": "profile_checks_only_not_predictive_validation"
+        }
+      }
+    }
+  ]
+}

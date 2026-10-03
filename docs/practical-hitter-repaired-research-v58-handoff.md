@@ -54,6 +54,15 @@ representation/penalty micro-sweeps in this batch.
 
 ## Next material work, in order
 
+Update after the [V59 status review](practical-hitter-opportunity-status-v59-result.md):
+captured transaction status alone does not earn an upgrade. Public PA error is
+essentially unchanged and whole offense slightly worsens. The medical source
+has 44 evaluation open-spell rows contradicted by later MLB use, so that result
+does not reject health information. Repair observed-return state and uncertain
+absence duration before further status fitting. Six source controls prevent
+clearing injuries that started during/after the late PA window. The following
+sequence remains the coherent direction, not another sparse-feature sweep.
+
 1. Keep batting talent fixed while addressing **timely opportunity information**.
    Identify actual December-known role, finite absences and exits in the large
    workload misses. The 386 one-PA public forecasts may contain later job/health
