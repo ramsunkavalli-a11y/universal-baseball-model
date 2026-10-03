@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: fresher preseason ranking comparison reviewed.**
+**Current checkpoint: graduation representation comparison reviewed.**
+The [bounded comparison](hitter-graduation-v69-result.md) replays 140 saved heads
+and completes twelve actual player reviews. Graduate PA RMSE improves 178.907
+to 177.953 versus the fresher-list model, but remains worse than original 177.598.
+Meadows is not repaired: 247 expected PA versus 591. Soto after debut improves,
+Carroll worsens, and Bader/Rortvedt's accurate offense totals still hide offsetting
+workload/talent errors. Public PA MAE 106.321 remains 15.46% worse than Steamer;
+overall/public intervals span zero. Preserve the source/evidence, not a deployed
+replacement. Close the ranking patch queue. Next audit broad roster/employment
+semantics, including unsigned established hitters and failed peers, before one
+matched correction and a coherent comparative handoff. Goal active; protected
+2026 unchanged.
+
+**Previous checkpoint: fresher preseason ranking comparison reviewed.**
 The [comparison](hitter-preseason-readiness-v68-result.md) replays 140 saved
 heads and completes eleven actual player reviews. Never-debut upper-minor PA
 RMSE improves 56.24 to 55.13; offense .31706 to .31283, with favorable nominal
