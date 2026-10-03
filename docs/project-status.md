@@ -24,7 +24,26 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: compatible hitting/value comparison closed; value reference repaired.**
+**Current checkpoint: usable historical hitter research handoff completed.**
+The [model card](practical-hitter-model-card.md) explains the retained coherent
+next-year hitting, appearance and PA construction; the
+[handoff review](practical-hitter-handoff-v64-result.md) documents eight exact
+probability-to-PA checks, source-selected peers and team-context evidence.
+Separate local explorer at port 8790 shows all 30,506 historical forecasts,
+team/stage/year filters, hitting-only sorting and nineteen completed source/fit
+reviews. Actual outcomes are hidden by default. Missing names and older MLB
+team lookups were repaired; inactive club labels show their actual context year.
+No forecasts refitted, no continuous intervals certified, no production promotion.
+On 2,627 public matches hitting RMSE is 1.7435 versus Steamer 1.7746 and ZiPS
+1.7534 in custom-event units with archive-date limits. PA RMSE is 138.49 versus
+135.38; PA MAE 106.87 versus 92.08 remains 16.1% worse. Elite entry readiness
+is materially weak: Kurtz 2 expected PA versus 489, Langford 43 versus 557;
+draft information was present. Overall appearance counts hide upper-minor
+underprediction and lower-minor overprediction. Next address entry readiness
+and actual historical support as one bounded study, not another generic model
+tournament or player-specific override. Goal active; protected 2026 unchanged.
+
+**Previous checkpoint: compatible hitting/value comparison closed; value reference repaired.**
 The [matched comparison](hitter-compatible-value-v63-result.md) retains every
 forecast and independently matches eight MLB event counts across 63,282 source
 rows. The 2020-origin replacement reference was over-normalized: .00857066

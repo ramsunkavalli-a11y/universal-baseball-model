@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "date": "2026-10-03",
+  "url": "http://127.0.0.1:8790/",
+  "template_sha256": "338f710e4d97f43f9fd07e0cecde7762639ea9a00f692494ee364a12feac4be4",
+  "actual_results_hidden_by_default": true,
+  "all_seven_years_checked": true,
+  "years": [2017, 2018, 2019, 2022, 2023, 2024, 2025],
+  "checks": [
+    "2025 Giants Upper minors: 34 players, Eldridge highest hitting estimate 0.31; no actual columns",
+    "Kurtz name search: 1.7 percent times 115.97 conditional PA equals 2.00 expected PA",
+    "Kurtz source history only 2024 A 35 and AA 15 PA; no target outcome in default dialog",
+    "Actual toggle exposes Kurtz 489 PA, 5.838 offense and Montgomery/Moore/Smith/Williams peer outcomes",
+    "Expected PA descending puts Witt 657, Soto 632, Happ 625 at top; Next shows page 2 of 54",
+    "2017 Yankees and MLBAM 592450 search gives Judge 281 PA; history contains 2014-2016 only",
+    "Each of seven forecast seasons renders the correct preceding information year and cohort totals",
+    "2018 Unknown affiliation search retains Juan Soto among unknown-team records",
+    "2025 Judge shows only 2022-2024 known history, 99.2 percent chance and 530.54 expected PA",
+    "Rendered screenshot inspected: controls and separate mean columns readable; no actual data displayed",
+    "Final state: 2025 Giants, all stages, hitting sort, actual outcomes off; deliverable tab retained"
+  ],
+  "defects_repaired": [
+    "Null historical player name threw during search; explicit MLBAM fallback repaired and search rechecked",
+    "Blank earlier MLB team lookup supplemented by season-specific existing registry",
+    "Inactive affiliation mislabeled as origin-year club; now uses actual context year and last-observed basis"
+  ],
+  "limits": ["No mobile-specific viewport test", "Historical API affiliation remains reconstructed, not contemporary snapshot evidence", "No forecast promotion"]
+}
