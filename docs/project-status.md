@@ -24,7 +24,21 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: cached draft background source repair reviewed.**
+**Current checkpoint: recovered school-background forecast comparison closed.**
+The [matched comparison](hitter-school-opportunity-v66-result.md) replays all
+140 saved heads and completes thirteen actual player walkthroughs. Only three
+school indicators change; hitting, cohorts and other inputs remain fixed.
+PA RMSE changes 60.686 to 60.662, but MAE and appearance scores slightly worsen;
+nominal intervals span zero. Langford moves 43 to 45 PA, Kurtz stays near two;
+draft-year top picks still get 514 versus 3,126 actual PA. Henry Davis's accurate
+offense total hides underpredicted PA offset by optimistic hitting. Do not
+promote this refit; keep recovered school facts and retained V53/V63 candidate.
+Public PA MAE remains 16.1% worse than Steamer. Next verify origin-time roster
+and scouting evidence, including Bellinger's retained on-40-man zero and new
+draftee ranking coverage, before another fit. These are source hypotheses,
+not yet certified errors. No protected 2026 or deployed forecast changes.
+
+**Previous checkpoint: cached draft background source repair reviewed.**
 The [source repair](hitter-cached-school-source-v65-result.md) uses only existing
 dated school names/classes, with no new college collection or model fits.
 It recovers broad background in 18,280 input rows and 8,179 evaluation rows;

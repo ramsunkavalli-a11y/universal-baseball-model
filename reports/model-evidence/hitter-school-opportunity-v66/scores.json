@@ -1,0 +1,905 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "actual_pa": 1270493.0,
+    "actual_value": 4264.186901827925,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 60.68564057139464,
+        "pa_mae": 20.745056120979978,
+        "pa_bias": -1.2487983082560283,
+        "value_rmse": 0.4538099980250096,
+        "value_mae": 0.12915643414733072,
+        "value_bias": -0.0029538855971261743,
+        "pa_total": 1231572.5317840378,
+        "value_total": 4167.3002757742925
+      },
+      "school": {
+        "pa_rmse": 60.661638653117585,
+        "pa_mae": 20.748192338566678,
+        "pa_bias": -1.242938645907887,
+        "value_rmse": 0.45369763877472435,
+        "value_mae": 0.12914492406738462,
+        "value_bias": -0.0029448156884741518,
+        "pa_total": 1231762.3599999545,
+        "value_total": 4167.613403460148
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.033697531638012576,
+        "log_loss": 0.11541580213815184,
+        "actual_participants": 4538,
+        "expected_participants": 4404.793307391361,
+        "weighted_actual_probability": 0.14940474354013883,
+        "weighted_expected_probability": 0.14497399212739837
+      },
+      "school": {
+        "brier": 0.03370580482644125,
+        "log_loss": 0.11544882393058836,
+        "actual_participants": 4538,
+        "expected_participants": 4404.408849409579,
+        "weighted_actual_probability": 0.14940474354013883,
+        "weighted_expected_probability": 0.1449601231726772
+      }
+    }
+  },
+  {
+    "scope": "public_broad",
+    "rows": 2627,
+    "people": 1044,
+    "actual_pa": 660776.0,
+    "actual_value": 2123.810127060133,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 138.48761834182335,
+        "pa_mae": 106.87120401723617,
+        "pa_bias": -3.406637026352263,
+        "value_rmse": 1.0613148510560788,
+        "value_mae": 0.7124190840013558,
+        "value_bias": 0.0350118412836415,
+        "pa_total": 651785.278332935,
+        "value_total": 2207.914202835646
+      },
+      "school": {
+        "pa_rmse": 138.38671628460165,
+        "pa_mae": 106.89026165397702,
+        "pa_bias": -3.4228162301383778,
+        "value_rmse": 1.0608001566433578,
+        "value_mae": 0.7121445923496782,
+        "value_bias": 0.03488607416665405,
+        "pa_total": 651743.2450839683,
+        "value_total": 2207.5712711528454
+      },
+      "steamer": {
+        "pa_rmse": 135.37946341946525,
+        "pa_mae": 92.08284699683804,
+        "pa_bias": 13.030477094490262,
+        "value_rmse": 1.1186590721165148,
+        "value_mae": 0.7425820935639561,
+        "value_bias": 0.28001886722216474,
+        "pa_total": 695054.8730400801,
+        "value_total": 2851.068786476495
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.09164388563060068,
+        "log_loss": 0.29720530104157167,
+        "actual_participants": 2088,
+        "expected_participants": 2047.7851346645593,
+        "weighted_actual_probability": 0.7951272152912965,
+        "weighted_expected_probability": 0.7798035094921075
+      },
+      "school": {
+        "brier": 0.09179957463929381,
+        "log_loss": 0.297724232073641,
+        "actual_participants": 2088,
+        "expected_participants": 2047.2742784710003,
+        "weighted_actual_probability": 0.7951272152912965,
+        "weighted_expected_probability": 0.7796004720823132
+      }
+    }
+  },
+  {
+    "scope": "never_debut",
+    "rows": 24199,
+    "people": 10076,
+    "actual_pa": 98328.0,
+    "actual_value": 214.74994801805383,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 27.744999960386764,
+        "pa_mae": 4.875082602942878,
+        "pa_bias": -0.6807507362584916,
+        "value_rmse": 0.15406611425582062,
+        "value_mae": 0.019658184756725008,
+        "value_bias": -0.0007205507278528,
+        "pa_total": 81815.28088631316,
+        "value_total": 195.37114958483102
+      },
+      "school": {
+        "pa_rmse": 27.728484298559525,
+        "pa_mae": 4.8766441826661975,
+        "pa_bias": -0.6765868391698862,
+        "value_rmse": 0.15399469681539682,
+        "value_mae": 0.019657254377918293,
+        "value_bias": -0.0007079439504808756,
+        "pa_total": 81924.73296546325,
+        "value_total": 195.69390773042267
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.020002691101791266,
+        "log_loss": 0.07183406803303202,
+        "actual_participants": 787,
+        "expected_participants": 683.2044116972008,
+        "weighted_actual_probability": 0.03274431100873984,
+        "weighted_expected_probability": 0.02846114078191512
+      },
+      "school": {
+        "brier": 0.020000277814513905,
+        "log_loss": 0.07181106254675773,
+        "actual_participants": 787,
+        "expected_participants": 683.5504658007943,
+        "weighted_actual_probability": 0.03274431100873984,
+        "weighted_expected_probability": 0.028474389009174827
+      }
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "people": 3055,
+    "actual_pa": 92891.0,
+    "actual_value": 203.93926446318383,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 56.24215705088987,
+        "pa_mae": 19.09728478550844,
+        "pa_bias": -3.555104624502556,
+        "value_rmse": 0.31705792757999035,
+        "value_mae": 0.07953705692228243,
+        "value_bias": -0.006258379598502264,
+        "pa_total": 73593.42016267168,
+        "value_total": 173.43696922831182
+      },
+      "school": {
+        "pa_rmse": 56.211777504193215,
+        "pa_mae": 19.105029324892055,
+        "pa_bias": -3.539306071221892,
+        "value_rmse": 0.31691869512225934,
+        "value_mae": 0.07952242003397807,
+        "value_bias": -0.006215460813213033,
+        "pa_total": 73682.85405389452,
+        "value_total": 173.68440033358326
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.07883410203197774,
+        "log_loss": 0.26540925715081987,
+        "actual_participants": 730,
+        "expected_participants": 592.8105644692986,
+        "weighted_actual_probability": 0.1335969837303775,
+        "weighted_expected_probability": 0.10876170559713046
+      },
+      "school": {
+        "brier": 0.07884484536557393,
+        "log_loss": 0.2654706106234229,
+        "actual_participants": 730,
+        "expected_participants": 592.9226888596623,
+        "weighted_actual_probability": 0.1335969837303775,
+        "weighted_expected_probability": 0.10878442155128396
+      }
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "rows": 17852,
+    "people": 8974,
+    "actual_pa": 5194.0,
+    "actual_value": 9.56025276109348,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 7.828295380577822,
+        "pa_mae": 0.6561883484032958,
+        "pa_bias": 0.12995956029566674,
+        "value_rmse": 0.04282074779620598,
+        "value_mae": 0.0021492325001669864,
+        "value_bias": 0.0006330769840832157,
+        "pa_total": 7651.947720558621,
+        "value_total": 20.82949136075217
+      },
+      "school": {
+        "pa_rmse": 7.830197754016965,
+        "pa_mae": 0.6568037480840069,
+        "pa_bias": 0.13147689804538812,
+        "value_rmse": 0.0428406397037775,
+        "value_mae": 0.0021539430927013012,
+        "value_bias": 0.0006378715848112494,
+        "pa_total": 7682.673780384557,
+        "value_total": 20.925246522424974
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.0026706604718136897,
+        "log_loss": 0.014655095496352941,
+        "actual_participants": 54,
+        "expected_participants": 84.92244770685447,
+        "weighted_actual_probability": 0.0030421002969197187,
+        "weighted_expected_probability": 0.004699389119401041
+      },
+      "school": {
+        "brier": 0.0026635512930677013,
+        "log_loss": 0.014606068097555599,
+        "actual_participants": 54,
+        "expected_participants": 85.18604106745605,
+        "weighted_actual_probability": 0.0030421002969197187,
+        "weighted_expected_probability": 0.004712286871014505
+      }
+    }
+  },
+  {
+    "scope": "current_MLB",
+    "rows": 4541,
+    "people": 1521,
+    "actual_pa": 1156856.0,
+    "actual_value": 4027.1318440354066,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 140.9804972981948,
+        "pa_mae": 107.89957413405091,
+        "pa_bias": -5.503392258496585,
+        "value_rmse": 1.1137232860190815,
+        "value_mae": 0.7449781748411095,
+        "value_bias": -0.018427188341584272,
+        "pa_total": 1131945.0115196472,
+        "value_total": 3941.4474450592106
+      },
+      "school": {
+        "pa_rmse": 140.93878554138135,
+        "pa_mae": 107.91187551451087,
+        "pa_bias": -5.492925066995857,
+        "value_rmse": 1.1134891305461716,
+        "value_mae": 0.744930035471608,
+        "value_bias": -0.018436931508036315,
+        "pa_total": 1131985.9941633076,
+        "value_total": 3941.369049099555
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.09489273361243138,
+        "log_loss": 0.30606802190482507,
+        "actual_participants": 3596,
+        "expected_participants": 3552.9090374163757,
+        "weighted_actual_probability": 0.7922331457193111,
+        "weighted_expected_probability": 0.7829205750266021
+      },
+      "school": {
+        "brier": 0.09498568475858045,
+        "log_loss": 0.3063295754573663,
+        "actual_participants": 3596,
+        "expected_participants": 3552.104926048253,
+        "weighted_actual_probability": 0.7922331457193111,
+        "weighted_expected_probability": 0.7827429514050204
+      }
+    }
+  },
+  {
+    "scope": "recovered_school",
+    "rows": 8179,
+    "people": 2458,
+    "actual_pa": 564975.0,
+    "actual_value": 1921.6292235258802,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 79.61637190930134,
+        "pa_mae": 37.53959580820251,
+        "pa_bias": -2.1838949139684005,
+        "value_rmse": 0.6125863466396555,
+        "value_mae": 0.24059757348884805,
+        "value_bias": -0.007236893865292514,
+        "pa_total": 542947.9283349542,
+        "value_total": 1841.8739077838566
+      },
+      "school": {
+        "pa_rmse": 79.63038926456274,
+        "pa_mae": 37.571176307763956,
+        "pa_bias": -2.1614260287048155,
+        "value_rmse": 0.6124916734929703,
+        "value_mae": 0.24060157125819587,
+        "value_bias": -0.00720132855704933,
+        "pa_total": 543098.8442109778,
+        "value_total": 1842.0679108855056
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.06302761325373013,
+        "log_loss": 0.21167250663655413,
+        "actual_participants": 2136,
+        "expected_participants": 2024.2890117853462,
+        "weighted_actual_probability": 0.2937280854330806,
+        "weighted_expected_probability": 0.27984355909775555
+      },
+      "school": {
+        "brier": 0.0630900678570221,
+        "log_loss": 0.21188278394159765,
+        "actual_participants": 2136,
+        "expected_participants": 2024.092832107526,
+        "weighted_actual_probability": 0.2937280854330806,
+        "weighted_expected_probability": 0.2798409265562887
+      }
+    }
+  },
+  {
+    "scope": "first_year_top_picks",
+    "rows": 68,
+    "people": 68,
+    "actual_pa": 3126.0,
+    "actual_value": 11.02535281124963,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 113.74062620645485,
+        "pa_mae": 35.747922902033324,
+        "pa_bias": -32.315903099492935,
+        "value_rmse": 0.6852866311299185,
+        "value_mae": 0.13530108506140603,
+        "value_bias": -0.1093260678668052,
+        "pa_total": 509.5086922470866,
+        "value_total": 2.014643299781373
+      },
+      "school": {
+        "pa_rmse": 113.62581531121009,
+        "pa_mae": 35.74722535050251,
+        "pa_bias": -32.255731488094774,
+        "value_rmse": 0.685083218413123,
+        "value_mae": 0.1351857053718712,
+        "value_bias": -0.10909775302129965,
+        "pa_total": 513.9032581287315,
+        "value_total": 2.031769833840424
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.08544841735816255,
+        "log_loss": 0.3229822758092565,
+        "actual_participants": 9,
+        "expected_participants": 2.530873827295679,
+        "weighted_actual_probability": 0.11255411255411255,
+        "weighted_expected_probability": 0.03430033444991641
+      },
+      "school": {
+        "brier": 0.08545980735514562,
+        "log_loss": 0.32316906734389883,
+        "actual_participants": 9,
+        "expected_participants": 2.5585188244673183,
+        "weighted_actual_probability": 0.11255411255411255,
+        "weighted_expected_probability": 0.03467706368127082
+      }
+    }
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "people": 4663,
+    "actual_pa": 179968.0,
+    "actual_value": 706.5549375611811,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 57.94257707439154,
+        "pa_mae": 18.81862890919818,
+        "pa_bias": -1.8646783896989045,
+        "value_rmse": 0.45656050865500786,
+        "value_mae": 0.12120282090355992,
+        "value_bias": -0.023964341885638007,
+        "pa_total": 171273.00466883398,
+        "value_total": 594.8092113484511
+      },
+      "school": {
+        "pa_rmse": 57.89015493464597,
+        "pa_mae": 18.805940856860325,
+        "pa_bias": -1.8319410836375019,
+        "value_rmse": 0.4563932850189419,
+        "value_mae": 0.12121303185095243,
+        "value_bias": -0.02385189036215704,
+        "pa_total": 171425.6587269983,
+        "value_total": 595.3335728024429
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.03156111116992062,
+        "log_loss": 0.10708129264120289,
+        "actual_participants": 624,
+        "expected_participants": 621.1646251259334,
+        "weighted_actual_probability": 0.13381942955179066,
+        "weighted_expected_probability": 0.13321137146170559
+      },
+      "school": {
+        "brier": 0.03153973629476882,
+        "log_loss": 0.10708551343544026,
+        "actual_participants": 624,
+        "expected_participants": 621.3090050232101,
+        "weighted_actual_probability": 0.13381942955179066,
+        "weighted_expected_probability": 0.13324233433909718
+      }
+    }
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "people": 4691,
+    "actual_pa": 179643.0,
+    "actual_value": 505.4608400276606,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 56.43213235495089,
+        "pa_mae": 18.072419914789315,
+        "pa_bias": -1.2417305383358805,
+        "value_rmse": 0.40692358947214563,
+        "value_mae": 0.11217345230571342,
+        "value_bias": 0.02333191214569772,
+        "pa_total": 173818.0420446664,
+        "value_total": 614.9108399031286
+      },
+      "school": {
+        "pa_rmse": 56.468054302995,
+        "pa_mae": 18.082230379259904,
+        "pa_bias": -1.2297368018809376,
+        "value_rmse": 0.4068562833272123,
+        "value_mae": 0.11218296982703191,
+        "value_bias": 0.023356734510856975,
+        "pa_total": 173874.30466237653,
+        "value_total": 615.0272816180906
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.030670878476797656,
+        "log_loss": 0.10394242299212866,
+        "actual_participants": 628,
+        "expected_participants": 616.7674448356282,
+        "weighted_actual_probability": 0.13387337454700496,
+        "weighted_expected_probability": 0.13147888399821533
+      },
+      "school": {
+        "brier": 0.030695545330276512,
+        "log_loss": 0.10410026590667684,
+        "actual_participants": 628,
+        "expected_participants": 616.8798777977875,
+        "weighted_actual_probability": 0.13387337454700496,
+        "weighted_expected_probability": 0.13150285180084997
+      }
+    }
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "people": 4478,
+    "actual_pa": 181308.0,
+    "actual_value": 815.4233629440128,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 62.66387232054148,
+        "pa_mae": 20.244883315901987,
+        "pa_bias": -2.0379129623368826,
+        "value_rmse": 0.532880852360224,
+        "value_mae": 0.14662717017485555,
+        "value_bias": -0.04644273195696254,
+        "pa_total": 172182.22575465543,
+        "value_total": 607.4528092407345
+      },
+      "school": {
+        "pa_rmse": 62.70287157143202,
+        "pa_mae": 20.256629188334212,
+        "pa_bias": -2.050817021158789,
+        "value_rmse": 0.5331970451094432,
+        "value_mae": 0.14671770479868568,
+        "value_bias": -0.04649249372133905,
+        "pa_total": 172124.44137925096,
+        "value_total": 607.2299760598564
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.029623811159476425,
+        "log_loss": 0.10193351643480375,
+        "actual_participants": 638,
+        "expected_participants": 615.2956245225288,
+        "weighted_actual_probability": 0.14247431889236256,
+        "weighted_expected_probability": 0.13740411445344547
+      },
+      "school": {
+        "brier": 0.02959679616533582,
+        "log_loss": 0.10181637142109665,
+        "actual_participants": 638,
+        "expected_participants": 615.2545653146414,
+        "weighted_actual_probability": 0.14247431889236256,
+        "weighted_expected_probability": 0.13739494535833888
+      }
+    }
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "people": 4242,
+    "actual_pa": 181583.0,
+    "actual_value": 463.9060836443723,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 59.47740255184155,
+        "pa_mae": 20.23777557090107,
+        "pa_bias": -3.7148919965744245,
+        "value_rmse": 0.41965134804706344,
+        "value_mae": 0.12652546485201918,
+        "value_bias": 0.03378506948038913,
+        "pa_total": 165824.42815053128,
+        "value_total": 607.222348380183
+      },
+      "school": {
+        "pa_rmse": 59.44196410612158,
+        "pa_mae": 20.222941999966363,
+        "pa_bias": -3.7298084864531234,
+        "value_rmse": 0.4192573782518538,
+        "value_mae": 0.1263816488772578,
+        "value_bias": 0.033786607759101604,
+        "pa_total": 165761.15240046583,
+        "value_total": 607.2288737584813
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.04014832358590963,
+        "log_loss": 0.13808642029027995,
+        "actual_participants": 686,
+        "expected_participants": 587.5187511029065,
+        "weighted_actual_probability": 0.16171617161716176,
+        "weighted_expected_probability": 0.13850041280125103
+      },
+      "school": {
+        "brier": 0.04017556334005711,
+        "log_loss": 0.13806873687919843,
+        "actual_participants": 686,
+        "expected_participants": 586.3714931285822,
+        "weighted_actual_probability": 0.16171617161716176,
+        "weighted_expected_probability": 0.13822996066208915
+      }
+    }
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "people": 4244,
+    "actual_pa": 182917.0,
+    "actual_value": 737.652583233729,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 62.13880856528928,
+        "pa_mae": 21.878758646154495,
+        "pa_bias": -0.831582213960275,
+        "value_rmse": 0.47134551100410255,
+        "value_mae": 0.13654974409970108,
+        "value_bias": -0.03550779423931918,
+        "pa_total": 179387.76508395257,
+        "value_total": 586.9575044820584
+      },
+      "school": {
+        "pa_rmse": 62.1667964868987,
+        "pa_mae": 21.91786629990967,
+        "pa_bias": -0.8120972326242382,
+        "value_rmse": 0.4713902957256461,
+        "value_mae": 0.13662678002880005,
+        "value_bias": -0.03554675496510087,
+        "pa_total": 179470.45934474273,
+        "value_total": 586.7921551618409
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.03501251489470866,
+        "log_loss": 0.12084515739994697,
+        "actual_participants": 649,
+        "expected_participants": 647.9481407770996,
+        "weighted_actual_probability": 0.15292177191328937,
+        "weighted_expected_probability": 0.1526739257250471
+      },
+      "school": {
+        "brier": 0.03499144525425526,
+        "log_loss": 0.12081725029854803,
+        "actual_participants": 649,
+        "expected_participants": 648.7626368859119,
+        "weighted_actual_probability": 0.15292177191328937,
+        "weighted_expected_probability": 0.15286584281006416
+      }
+    }
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "people": 4196,
+    "actual_pa": 182194.0,
+    "actual_value": 421.33608454352634,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 63.14080581366533,
+        "pa_mae": 22.85649907399944,
+        "pa_bias": 1.0971959435606673,
+        "value_rmse": 0.4299269220857442,
+        "value_mae": 0.12915928120349165,
+        "value_bias": 0.04167002155478629,
+        "pa_total": 186797.83417918056,
+        "value_total": 596.1834949874095
+      },
+      "school": {
+        "pa_rmse": 62.988392525232776,
+        "pa_mae": 22.83206174446557,
+        "pa_bias": 1.1012436733219566,
+        "value_rmse": 0.4296616018456624,
+        "value_mae": 0.12911324377488653,
+        "value_bias": 0.04167242402384509,
+        "pa_total": 186814.81845325895,
+        "value_total": 596.1935757475804
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.03371306355822715,
+        "log_loss": 0.11791143811763773,
+        "actual_participants": 647,
+        "expected_participants": 667.949086211666,
+        "weighted_actual_probability": 0.1541944709246902,
+        "weighted_expected_probability": 0.1591871034822846
+      },
+      "school": {
+        "brier": 0.03369689938208544,
+        "log_loss": 0.11785223239201151,
+        "actual_participants": 647,
+        "expected_participants": 667.7284386005816,
+        "weighted_actual_probability": 0.1541944709246902,
+        "weighted_expected_probability": 0.15913451825562
+      }
+    }
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "people": 3992,
+    "actual_pa": 182880.0,
+    "actual_value": 613.853009873443,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 62.64970713054773,
+        "pa_mae": 23.10642741591536,
+        "pa_bias": -0.1479880004464977,
+        "value_rmse": 0.4477692358930915,
+        "value_mae": 0.13185710549197419,
+        "value_bias": -0.01354933427883664,
+        "pa_total": 182289.23190221758,
+        "value_total": 559.7640674323272
+      },
+      "school": {
+        "pa_rmse": 62.62335231360047,
+        "pa_mae": 23.119675901170748,
+        "pa_bias": -0.14741356892257515,
+        "value_rmse": 0.44740387233254425,
+        "value_mae": 0.1317790893140781,
+        "value_bias": -0.013538337064525787,
+        "pa_total": 182291.52503286107,
+        "value_total": 559.8079683118561
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.0351530186210479,
+        "log_loss": 0.11811036709106286,
+        "actual_participants": 666,
+        "expected_participants": 648.1496348155986,
+        "weighted_actual_probability": 0.16683366733466942,
+        "weighted_expected_probability": 0.1623621329698392
+      },
+      "school": {
+        "brier": 0.03524464801830978,
+        "log_loss": 0.1184013971811467,
+        "actual_participants": 666,
+        "expected_participants": 648.1028326588638,
+        "weighted_actual_probability": 0.16683366733466942,
+        "weighted_expected_probability": 0.16235040898268135
+      }
+    }
+  },
+  {
+    "scope": "stage_Current MLB",
+    "rows": 4541,
+    "people": 1521,
+    "actual_pa": 1156856.0,
+    "actual_value": 4027.1318440354066,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 140.9804972981948,
+        "pa_mae": 107.89957413405091,
+        "pa_bias": -5.503392258496585,
+        "value_rmse": 1.1137232860190815,
+        "value_mae": 0.7449781748411096,
+        "value_bias": -0.018427188341584275,
+        "pa_total": 1131945.0115196472,
+        "value_total": 3941.4474450592106
+      },
+      "school": {
+        "pa_rmse": 140.93878554138135,
+        "pa_mae": 107.91187551451087,
+        "pa_bias": -5.492925066995857,
+        "value_rmse": 1.1134891305461716,
+        "value_mae": 0.744930035471608,
+        "value_bias": -0.018436931508036315,
+        "pa_total": 1131985.9941633076,
+        "value_total": 3941.369049099555
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.09489273361243138,
+        "log_loss": 0.30606802190482507,
+        "actual_participants": 3596,
+        "expected_participants": 3552.9090374163757,
+        "weighted_actual_probability": 0.7922331457193111,
+        "weighted_expected_probability": 0.7829205750266021
+      },
+      "school": {
+        "brier": 0.09498568475858045,
+        "log_loss": 0.3063295754573663,
+        "actual_participants": 3596,
+        "expected_participants": 3552.104926048253,
+        "weighted_actual_probability": 0.7922331457193111,
+        "weighted_expected_probability": 0.7827429514050204
+      }
+    }
+  },
+  {
+    "scope": "stage_Inactive / unknown",
+    "rows": 1586,
+    "people": 1168,
+    "actual_pa": 4614.0,
+    "actual_value": 14.382031519847878,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 27.154057954933574,
+        "pa_mae": 3.79766478488438,
+        "pa_bias": -0.25274447430754426,
+        "value_rmse": 0.13422497760422356,
+        "value_mae": 0.01252858054249495,
+        "value_bias": -0.003930849830665308,
+        "pa_total": 4106.339316160169,
+        "value_total": 7.791388774651461
+      },
+      "school": {
+        "pa_rmse": 27.04343200946075,
+        "pa_mae": 3.790284142078877,
+        "pa_bias": -0.25664709047322093,
+        "value_rmse": 0.13416319870387883,
+        "value_mae": 0.012491145214371216,
+        "value_bias": -0.003934255483179874,
+        "pa_total": 4101.594251624979,
+        "value_total": 7.788671205421922
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.011618551439481983,
+        "log_loss": 0.04893985540817878,
+        "actual_participants": 26,
+        "expected_participants": 35.751309027854525,
+        "weighted_actual_probability": 0.016308227383550054,
+        "weighted_expected_probability": 0.022492231841924625
+      },
+      "school": {
+        "brier": 0.011616778227462439,
+        "log_loss": 0.04892976746014569,
+        "actual_participants": 26,
+        "expected_participants": 35.73417993405859,
+        "weighted_actual_probability": 0.016308227383550054,
+        "weighted_expected_probability": 0.022474190406366872
+      }
+    }
+  },
+  {
+    "scope": "stage_Lower minors",
+    "rows": 17962,
+    "people": 9055,
+    "actual_pa": 6072.0,
+    "actual_value": 13.000665043104945,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 8.521939488035708,
+        "pa_mae": 0.6985691480030221,
+        "pa_bias": 0.10985418710580741,
+        "value_rmse": 0.04510019887808198,
+        "value_mae": 0.0023008703040641254,
+        "value_bias": 0.0005070660925661203,
+        "pa_total": 8128.550269817849,
+        "value_total": 21.715844583691798
+      },
+      "school": {
+        "pa_rmse": 8.530693760820304,
+        "pa_mae": 0.6996076747775869,
+        "pa_bias": 0.11162661140836241,
+        "value_rmse": 0.04512867661210977,
+        "value_mae": 0.0023062578047223945,
+        "value_bias": 0.0005120568331786082,
+        "pa_total": 8164.978590684748,
+        "value_total": 21.81684684864645
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.002726888534926874,
+        "log_loss": 0.014858485973657867,
+        "actual_participants": 58,
+        "expected_participants": 88.6028946249946,
+        "weighted_actual_probability": 0.003222871349307074,
+        "weighted_expected_probability": 0.004850204560479008
+      },
+      "school": {
+        "brier": 0.0027186590741867587,
+        "log_loss": 0.01480777020728909,
+        "actual_participants": 58,
+        "expected_participants": 88.90509461923108,
+        "weighted_actual_probability": 0.003222871349307074,
+        "weighted_expected_probability": 0.004864774125769117
+      }
+    }
+  },
+  {
+    "scope": "stage_Upper minors",
+    "rows": 6417,
+    "people": 3494,
+    "actual_pa": 102951.0,
+    "actual_value": 209.6723612295656,
+    "scores": {
+      "baseline": {
+        "pa_rmse": 54.80383146372823,
+        "pa_mae": 18.936331280089217,
+        "pa_bias": -2.4593526332315845,
+        "value_rmse": 0.3069471139750087,
+        "value_mae": 0.07681101986878261,
+        "value_bias": -0.002692481739118615,
+        "pa_total": 87392.63067841278,
+        "value_total": 196.34559735673793
+      },
+      "school": {
+        "pa_rmse": 54.770955538856626,
+        "pa_mae": 18.939956520648106,
+        "pa_bias": -2.4412270486140835,
+        "value_rmse": 0.306813918873662,
+        "value_mae": 0.07679548083150414,
+        "value_bias": -0.0026474210176389464,
+        "pa_total": 87509.79299433695,
+        "value_total": 196.6388363065255
+      }
+    },
+    "probability": {
+      "baseline": {
+        "brier": 0.08189331607731934,
+        "log_loss": 0.2760808546212861,
+        "actual_participants": 858,
+        "expected_participants": 727.5300663221365,
+        "weighted_actual_probability": 0.13364374796920353,
+        "weighted_expected_probability": 0.11337507643082806
+      },
+      "school": {
+        "brier": 0.08188955402730691,
+        "log_loss": 0.27619337196335303,
+        "actual_participants": 858,
+        "expected_participants": 727.6646488080355,
+        "weighted_actual_probability": 0.13364374796920353,
+        "weighted_expected_probability": 0.11339845453237242
+      }
+    }
+  }
+]
