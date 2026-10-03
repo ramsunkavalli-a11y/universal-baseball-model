@@ -4,6 +4,13 @@
 stats-to-forecast player walkthroughs. Neither challenger is adopted. V33b remains
 the working research forecast; V38 games/involvement remains a research extension.
 
+Later interpretation qualification: [V42](practical-hitter-draft-age-v42-result.md)
+reviewed the full origin-selected early-top-draft cohort. Kurtz's large realized
+miss is real, but it does not by itself establish that his low next-year mean was
+illogical. Most similar earlier first-season college-age top picks did not reach
+MLB the following year. Separate rare upside, long-run promise and annual expected
+opportunity; do not infer a required systematic upward adjustment from one star.
+
 ## What changed
 
 The reconstructed source now combines minor contact from 2016–19/2021–24 with

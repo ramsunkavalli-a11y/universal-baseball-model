@@ -24,7 +24,19 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V41 direct MLB contact comparison completed; close the contact/library batch.**
+**Current checkpoint: V42 source-consistent draft-age comparison reviewed; no promotion.**
+See [the result and 15 player walks](practical-hitter-draft-age-v42-result.md).
+School metadata varies sharply by draft vintage; replacing four flags with a
+known approximate draft age yields essentially unchanged PA, slightly improved
+conditional batting and tiny/uncertain whole-value gains. Public scores worsen
+slightly. Retain source diagnostics, not a new working forecast. Kurtz/Volpe
+opportunity remains missed, but early top-draft cohort outcomes show why a rare
+breakout does not automatically invalidate a low annual mean. Close this age-
+representation batch; next test a coherent opportunity/performance distribution,
+with paired outcomes and actual probability/coverage checks, not more feature
+tweaks. V33b working, V38 research; practical goal remains incomplete.
+
+**V41 direct MLB contact comparison completed; close the contact/library batch.**
 See [the completed result and 16 actual player reviews](practical-hitter-contact-v41-result.md)
 and [the plain-language working model card](practical-hitter-working-model-card.md).
 Reconstructed minor contact reaches 2016; separate MLB shape reaches 2021.
