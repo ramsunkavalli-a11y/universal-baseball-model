@@ -1,0 +1,112 @@
+[
+  {
+    "scope": "all",
+    "candidate": "contact_ridge",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.0003527576826610684,
+    "lower": -0.000367747413318921,
+    "upper": 0.0010473068754272652,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "all",
+    "candidate": "contact_hist",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.0038618003883772838,
+    "lower": 0.0014113726059712117,
+    "upper": 0.0063475824046475456,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "contact_supported",
+    "candidate": "contact_ridge",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.0003903784505796133,
+    "lower": -0.0004371705426433832,
+    "upper": 0.0013338759725769417,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "contact_supported",
+    "candidate": "contact_hist",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.004929100603422508,
+    "lower": 0.0019120873183785761,
+    "upper": 0.008235051517859127,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_active",
+    "candidate": "contact_ridge",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.007041894679347271,
+    "lower": -0.0006967459038338432,
+    "upper": 0.014476013064848735,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "public_active",
+    "candidate": "contact_hist",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.022382469742781512,
+    "lower": 0.0008394984886425413,
+    "upper": 0.04455090232350697,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "current_mlb",
+    "candidate": "contact_ridge",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.002292886781928015,
+    "lower": -0.0024345764164610062,
+    "upper": 0.006578268335887525,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "current_mlb",
+    "candidate": "contact_hist",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.024808416769209897,
+    "lower": 0.009364494458700889,
+    "upper": 0.04089640802409835,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "brief_debut",
+    "candidate": "contact_ridge",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": -0.0006253408860845728,
+    "lower": -0.0053601111988585875,
+    "upper": 0.003835423567711487,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "brief_debut",
+    "candidate": "contact_hist",
+    "benchmark": "cohort",
+    "metric": "value_mse",
+    "difference": 0.008648791022537539,
+    "lower": -0.00381402905343944,
+    "upper": 0.020609204101242517,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]

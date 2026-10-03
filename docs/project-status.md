@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V40 contact-source review complete; earlier contact gains are not a future-MLB result.**
+**Current checkpoint: V41 direct MLB contact comparison completed; close the contact/library batch.**
+See [the completed result and 16 actual player reviews](practical-hitter-contact-v41-result.md)
+and [the plain-language working model card](practical-hitter-working-model-card.md).
+Reconstructed minor contact reaches 2016; separate MLB shape reaches 2021.
+Raw source ambiguities and 953 uncorroborated player/league/seasons are quarantined
+before fitting. Both locked rate candidates lose overall with workload fixed;
+the 60 saved rate heads replay and 7,625 unsupported forecasts stay exact baseline.
+V33b remains working, V38 research. Separate team-filtered reviewed explorer:
+http://127.0.0.1:8784/ . Public PA-MAE tolerance and fast-entry/return gaps remain;
+the practical goal is incomplete. Next focus on those opportunity/prospect-rate
+mechanisms, not contact-prior tuning or another library tournament. Protected 2026
+and production/deployed forecast remain unchanged.
+
+**V40 contact-source review complete; earlier gradient gains are not a future-MLB result.**
 See [the source and target review](practical-hitter-contact-v40-result.md).
 The earlier positive gradient test predicts future observed minor-league contact,
 not future MLB batting, arrival or delivered value. A separate universal source
