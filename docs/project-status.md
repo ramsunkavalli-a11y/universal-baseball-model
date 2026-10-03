@@ -24,7 +24,20 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: graduation representation comparison reviewed.**
+**Current checkpoint: broad employment source audit reviewed.**
+The [audit](hitter-employment-v70-result.md) completes nine actual player reviews
+and eighteen saved-head replays without a new fit. Explicit signing-date repair
+reduces eight source/roster conflicts to two, retained as warnings. Unsigned
+current hitters have 281 expected appearances versus 313 actual, but PA totals
+are nearly right (82,189 versus 83,028); blanket probability boosts would risk
+overallocating workload. Bader and Wieters are too low, Bradley's PA reasonable,
+and Belt shows both a low forecast before a return and a false high before exit.
+Next one matched employment-evidence representation in both heads, preserving
+independent roster status, missingness and failed peers. The broader listed-hitter
+shortfall and preseason/December information mismatch stay visible. No forecast
+changed; protected 2026 closed and overall goal active.
+
+**Previous checkpoint: graduation representation comparison reviewed.**
 The [bounded comparison](hitter-graduation-v69-result.md) replays 140 saved heads
 and completes twelve actual player reviews. Graduate PA RMSE improves 178.907
 to 177.953 versus the fresher-list model, but remains worse than original 177.598.

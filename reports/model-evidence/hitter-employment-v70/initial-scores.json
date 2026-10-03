@@ -1,0 +1,352 @@
+[
+  {
+    "scope": "current_MLB",
+    "rows": 4541,
+    "people": 1521,
+    "actual_pa": 1156856,
+    "actual_offense": 4027.1318440354066,
+    "existing": {
+      "pa_rmse": 140.95127598087853,
+      "pa_mae": 107.69713732752815,
+      "pa_bias": -5.977975688254114,
+      "value_rmse": 1.1139627411591428,
+      "value_mae": 0.7443174838338961,
+      "value_bias": -0.01934038846462794,
+      "pa_total": 1129696.858368429,
+      "value_total": 3937.085881124297
+    },
+    "probability": {
+      "brier": 0.09495244796104105,
+      "log_loss": 0.3064014203848211,
+      "actual_participants": 3596,
+      "expected_participants": 3547.8661756996835,
+      "weighted_actual_probability": 0.7922331457193111,
+      "weighted_expected_probability": 0.7818598168719538
+    }
+  },
+  {
+    "scope": "documented_FA_unlisted",
+    "rows": 469,
+    "people": 335,
+    "actual_pa": 85086,
+    "actual_offense": 235.83422555537302,
+    "existing": {
+      "pa_rmse": 143.28270640929645,
+      "pa_mae": 110.19018854317312,
+      "pa_bias": -3.7599594888793506,
+      "value_rmse": 0.9741229736480783,
+      "value_mae": 0.623714626886241,
+      "value_bias": 0.026517401692679826,
+      "pa_total": 83471.46523489093,
+      "value_total": 252.3283395824118
+    },
+    "probability": {
+      "brier": 0.17109795546162637,
+      "log_loss": 0.5106053832176161,
+      "actual_participants": 318,
+      "expected_participants": 285.8776439194163,
+      "weighted_actual_probability": 0.6792029600746309,
+      "weighted_expected_probability": 0.6098023492010173
+    }
+  },
+  {
+    "scope": "other_current_unlisted",
+    "rows": 942,
+    "people": 725,
+    "actual_pa": 34410,
+    "actual_offense": 50.58438729657771,
+    "existing": {
+      "pa_rmse": 79.84054644979426,
+      "pa_mae": 51.69445175856223,
+      "pa_bias": 11.267679223210616,
+      "value_rmse": 0.3888148240889548,
+      "value_mae": 0.17051852215979496,
+      "value_bias": 0.026804041192097203,
+      "pa_total": 44810.6567068749,
+      "value_total": 75.63578087514797
+    },
+    "probability": {
+      "brier": 0.20883242963793025,
+      "log_loss": 0.6049582653153477,
+      "actual_participants": 322,
+      "expected_participants": 352.7988763126168,
+      "weighted_actual_probability": 0.34099443789964057,
+      "weighted_expected_probability": 0.3766320215681501
+    }
+  },
+  {
+    "scope": "current_listed",
+    "rows": 3130,
+    "people": 1176,
+    "actual_pa": 1037360,
+    "actual_offense": 3740.713231183456,
+    "existing": {
+      "pa_rmse": 154.2343803967332,
+      "pa_mae": 123.9835372540124,
+      "pa_bias": -11.633028017820779,
+      "value_rmse": 1.268906072647914,
+      "value_mae": 0.9335494014832152,
+      "value_bias": -0.0415807790225831,
+      "pa_total": 1001414.7364266631,
+      "value_total": 3609.121760666737
+    },
+    "probability": {
+      "brier": 0.04968680262803703,
+      "log_loss": 0.1871766768891657,
+      "actual_participants": 2956,
+      "expected_participants": 2909.1896554676505,
+      "weighted_actual_probability": 0.9444374136467673,
+      "weighted_expected_probability": 0.9293796423182934
+    }
+  },
+  {
+    "scope": "FA_origin_2016",
+    "rows": 63,
+    "people": 63,
+    "actual_pa": 10369,
+    "actual_offense": 29.734250395251685,
+    "existing": {
+      "pa_rmse": 146.82264565326804,
+      "pa_mae": 119.61064640380746,
+      "pa_bias": -2.217607137629306,
+      "value_rmse": 0.9560389734876452,
+      "value_mae": 0.5979422890420505,
+      "value_bias": 0.013811413711931878,
+      "pa_total": 10229.290750329354,
+      "value_total": 30.604369459103395
+    },
+    "probability": {
+      "brier": 0.18605984402252437,
+      "log_loss": 0.5482121816921658,
+      "actual_participants": 39,
+      "expected_participants": 37.54673449185103,
+      "weighted_actual_probability": 0.6190476190476186,
+      "weighted_expected_probability": 0.5959799125690639
+    }
+  },
+  {
+    "scope": "FA_origin_2017",
+    "rows": 77,
+    "people": 77,
+    "actual_pa": 13542,
+    "actual_offense": 20.459017909390624,
+    "existing": {
+      "pa_rmse": 118.72216690180194,
+      "pa_mae": 95.139562699721,
+      "pa_bias": 3.9439708312249175,
+      "value_rmse": 0.8240637116953052,
+      "value_mae": 0.5514861195127018,
+      "value_bias": 0.3256547786572439,
+      "pa_total": 13845.68575400432,
+      "value_total": 45.534435865998404
+    },
+    "probability": {
+      "brier": 0.18429507942870638,
+      "log_loss": 0.5301682729867696,
+      "actual_participants": 52,
+      "expected_participants": 45.18028329632408,
+      "weighted_actual_probability": 0.6753246753246753,
+      "weighted_expected_probability": 0.5867569259262866
+    }
+  },
+  {
+    "scope": "FA_origin_2018",
+    "rows": 69,
+    "people": 69,
+    "actual_pa": 14437,
+    "actual_offense": 64.74731147020437,
+    "existing": {
+      "pa_rmse": 147.23641791384176,
+      "pa_mae": 114.04411476507885,
+      "pa_bias": 7.435893652777135,
+      "value_rmse": 1.124175845188322,
+      "value_mae": 0.7125465611193595,
+      "value_bias": -0.24314001875060276,
+      "pa_total": 14950.076662041625,
+      "value_total": 47.970650176412775
+    },
+    "probability": {
+      "brier": 0.1446728533290946,
+      "log_loss": 0.45041074927224056,
+      "actual_participants": 45,
+      "expected_participants": 45.358583551526344,
+      "weighted_actual_probability": 0.652173913043478,
+      "weighted_expected_probability": 0.6573707761090776
+    }
+  },
+  {
+    "scope": "FA_origin_2021",
+    "rows": 69,
+    "people": 69,
+    "actual_pa": 11615,
+    "actual_offense": 30.77831225141947,
+    "existing": {
+      "pa_rmse": 141.22769643258954,
+      "pa_mae": 99.93297790812981,
+      "pa_bias": 6.535806760150609,
+      "value_rmse": 0.9882079193429049,
+      "value_mae": 0.6646555293370706,
+      "value_bias": 0.21903463743590548,
+      "pa_total": 12065.970666450394,
+      "value_total": 45.89170223449696
+    },
+    "probability": {
+      "brier": 0.18877517393972557,
+      "log_loss": 0.5502769690298503,
+      "actual_participants": 49,
+      "expected_participants": 40.360860849449054,
+      "weighted_actual_probability": 0.7101449275362317,
+      "weighted_expected_probability": 0.5849400123108559
+    }
+  },
+  {
+    "scope": "FA_origin_2022",
+    "rows": 59,
+    "people": 59,
+    "actual_pa": 10358,
+    "actual_offense": 29.28408289395834,
+    "existing": {
+      "pa_rmse": 153.3476873204049,
+      "pa_mae": 110.89523009245714,
+      "pa_bias": -18.029197609678004,
+      "value_rmse": 0.933437461893331,
+      "value_mae": 0.589966331464625,
+      "value_bias": -0.0942499249017298,
+      "pa_total": 9294.277341028997,
+      "value_total": 23.723337324756276
+    },
+    "probability": {
+      "brier": 0.19023376822007756,
+      "log_loss": 0.5621359279611681,
+      "actual_participants": 44,
+      "expected_participants": 35.226500645165004,
+      "weighted_actual_probability": 0.7457627118644063,
+      "weighted_expected_probability": 0.5970593329688981
+    }
+  },
+  {
+    "scope": "FA_origin_2023",
+    "rows": 69,
+    "people": 69,
+    "actual_pa": 13651,
+    "actual_offense": 27.469620652021145,
+    "existing": {
+      "pa_rmse": 140.8475763375548,
+      "pa_mae": 111.04462376622374,
+      "pa_bias": -27.925869177781745,
+      "value_rmse": 0.9341971395973366,
+      "value_mae": 0.6045096560994992,
+      "value_bias": 0.0014009279411431332,
+      "pa_total": 11724.115026733061,
+      "value_total": 27.566284679960013
+    },
+    "probability": {
+      "brier": 0.1393489881002784,
+      "log_loss": 0.4420868823218714,
+      "actual_participants": 44,
+      "expected_participants": 42.2577109417906,
+      "weighted_actual_probability": 0.6376811594202897,
+      "weighted_expected_probability": 0.612430593359284
+    }
+  },
+  {
+    "scope": "FA_origin_2024",
+    "rows": 63,
+    "people": 63,
+    "actual_pa": 11114,
+    "actual_offense": 33.361629983127386,
+    "existing": {
+      "pa_rmse": 151.92207718066828,
+      "pa_mae": 120.6641641667939,
+      "pa_bias": 3.9372862587809396,
+      "value_rmse": 1.031969690014125,
+      "value_mae": 0.6448959016283797,
+      "value_bias": -0.036890002245133106,
+      "pa_total": 11362.0490343032,
+      "value_total": 31.037559841683994
+    },
+    "probability": {
+      "brier": 0.16429998119097775,
+      "log_loss": 0.4909466992592472,
+      "actual_participants": 45,
+      "expected_participants": 39.94697014331022,
+      "weighted_actual_probability": 0.7142857142857135,
+      "weighted_expected_probability": 0.6340788911636542
+    }
+  },
+  {
+    "scope": "FA_PA_1_199",
+    "rows": 125,
+    "people": 112,
+    "actual_pa": 5912,
+    "actual_offense": 0.5018966537617038,
+    "existing": {
+      "pa_rmse": 87.44699382489311,
+      "pa_mae": 57.524907920015835,
+      "pa_bias": 1.0984208339393233,
+      "value_rmse": 0.34396683885829643,
+      "value_mae": 0.18331272209369026,
+      "value_bias": 0.05176641872950748,
+      "pa_total": 6003.901071663564,
+      "value_total": 8.007082857484162
+    },
+    "probability": {
+      "brier": 0.217560675345243,
+      "log_loss": 0.6220725586751752,
+      "actual_participants": 53,
+      "expected_participants": 50.62790736424609,
+      "weighted_actual_probability": 0.4249682648178891,
+      "weighted_expected_probability": 0.4119413585540474
+    }
+  },
+  {
+    "scope": "FA_PA_200_399",
+    "rows": 172,
+    "people": 150,
+    "actual_pa": 22519,
+    "actual_offense": 42.50675187370004,
+    "existing": {
+      "pa_rmse": 133.72507960556817,
+      "pa_mae": 107.99515945697233,
+      "pa_bias": -9.450598656121743,
+      "value_rmse": 0.8947674182143504,
+      "value_mae": 0.5746268785409968,
+      "value_bias": -0.016361772214773234,
+      "pa_total": 21594.590168191684,
+      "value_total": 43.88176518565963
+    },
+    "probability": {
+      "brier": 0.20461370223917175,
+      "log_loss": 0.5950064533887992,
+      "actual_participants": 115,
+      "expected_participants": 100.06567342652512,
+      "weighted_actual_probability": 0.6827882983857152,
+      "weighted_expected_probability": 0.5828463300028377
+    }
+  },
+  {
+    "scope": "FA_PA_400_plus",
+    "rows": 172,
+    "people": 137,
+    "actual_pa": 56655,
+    "actual_offense": 192.82557702791132,
+    "existing": {
+      "pa_rmse": 181.43438349435777,
+      "pa_mae": 152.44364647153796,
+      "pa_bias": -3.443947832831451,
+      "value_rmse": 1.3159284300708312,
+      "value_mae": 1.0161429732022276,
+      "value_bias": 0.07406808909676829,
+      "pa_total": 55872.973995035696,
+      "value_total": 200.43949153926803
+    },
+    "probability": {
+      "brier": 0.1048683242241194,
+      "log_loss": 0.34759104883085473,
+      "actual_participants": 150,
+      "expected_participants": 135.1840631286451,
+      "weighted_actual_probability": 0.8735120310750564,
+      "weighted_expected_probability": 0.7835702044384256
+    }
+  }
+]
