@@ -24,7 +24,17 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: V38 game/role evidence reviewed; retain research extension, V33b working forecast unchanged.**
+**Current checkpoint: V39 dedicated current-MLB head reviewed and not adopted; close this workload batch.**
+See [the result and 17 player paths](practical-hitter-v39-result.md).
+Public PA RMSE/MAE worsen 143.191/111.320→143.668/111.774 versus the shared
+games challenger. Story/Steer improve but Vientos/Torkelson/Votto lose useful
+opportunity forecasts; noncurrent-MLB entrants/returns remain bit-exact.
+V33b remains working; V38 is a promising research extension. Next verify
+compatible target/source provenance for earlier park/opponent-adjusted contact
+and PBP winners before integrating them into the broad batting target. No
+another PA cutoff/event-prior tournament. Practical goal remains incomplete.
+
+**V38 game/role evidence reviewed; retain research extension, V33b working forecast unchanged.**
 See [the workload result and concrete player changes](practical-hitter-v38-result.md).
 All historical stints have reconciled games counts; fixed batting head.
 Public PA RMSE improves 144.487→143.191, but MAE 111.320 still misses the
