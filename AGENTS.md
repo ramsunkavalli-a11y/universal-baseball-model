@@ -1,5 +1,13 @@
 # Model-development guardrails
 
+## Closed testing topic
+
+User instruction, 2026-10-04: stop testing team record as a predictor of young
+prospects' playing time. Do not rerun or tune this idea, add standings variants,
+or put it back in the experiment queue without explicit user authorization.
+Use the existing completed evidence when asked about it; do not launch new fits
+or substitute adjacent team-context experiments to get around this instruction.
+
 Before designing or interpreting a model experiment, read
 `docs/model-experiment-review-gate.md` and `docs/project-status.md`. Follow the
 controlling execution plan linked there, not an old conversational next step.

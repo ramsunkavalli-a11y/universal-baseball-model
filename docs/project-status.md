@@ -2,6 +2,17 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Team record testing is closed
+
+On 2026-10-04 the user explicitly directed us to stop repeatedly testing team
+record for young prospects' playing time. Do not rerun, tune or reopen this idea,
+including standings variants, without explicit user authorization. Preserve the
+[completed comparison](hitter-team-record-v75-result.md) as existing evidence;
+it is not a reason to schedule another test. Do not route around the stop
+instruction by proposing adjacent team-context variants as the next experiment.
+The latest answer inspected saved evidence only and ran no new model fits.
+Other model work remains governed by the current plan below.
+
 ## Standing requirement: player walkthrough after every test
 
 The user requires every model/component test—successful, failed or inconclusive—to
@@ -24,7 +35,29 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: workload and production error accounting reviewed.**
+**Current checkpoint: conditional workload capacity comparison closed.**
+The [completed comparison](hitter-positive-workload-capacity-result.md) keeps
+all 30,506 forecasts, 251 inputs and exact current appearance/hitting estimates.
+Deeper histogram and LightGBM heads worsen public PA RMSE 138.330 to
+138.797/138.943 and MAE 106.411 to 106.572/106.671; all-player contribution
+RMSE worsens .453384 to .454681/.454954. Current public MAE remains 15.56%
+above Steamer, so the practical benchmark gap is not declared solved.
+All seventy preflights precede fits, thirty-five saved anchor heads reproduce,
+all seventy new heads replay, and final independent checks recompute 110 score
+components. Twenty complete player walks retain Judge's workload gain, Turner/
+Bregman/Blackmon harms, Kurtz/Reynolds misses and Urías/Rortvedt value cancellation.
+The initial row-order scoring failure is preserved and repaired in a separate
+sealed reporting script; no fits or comparison definitions change. Thirteen
+focused tests pass and all 31 protected files remain unchanged.
+Keep the current candidate; no forecast/explorer promotion, favorable-subgroup
+hybrid or repeated capacity sweep. Next return to the practical plan's talent
+and population-coverage milestone: reconcile the current hitting inputs with
+the strongest completed compatible talent experiments before choosing a
+substantive replacement, not another opportunity/context feature sweep. Current
+thin-entry, return and production gaps remain explicit. Team-record testing is
+closed as instructed above. The full goal remains active.
+
+**Previous checkpoint: workload and production error accounting reviewed.**
 The [completed diagnostic](hitter-error-budget-result.md) retains all 30,506
 forecasts, recomposes event labels and all PA/value/error identities, and replays
 36 saved heads for twelve actual player walks. Public PA squared-error allocation
