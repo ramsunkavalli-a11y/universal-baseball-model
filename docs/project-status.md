@@ -2,6 +2,34 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Current checkpoint on the precision repair
+
+The [precision-aware minor comparison](hitter-minor-statcast-precision-result.md)
+and eighteen full player-origin walks are complete. The prior combined forecast
+and current PA are fixed; contact noise and an information-share guard constrain
+minor adjustments. Bichette's six AAA contacts now barely move his forecast
+instead of overwhelming years of MLB history. Thirty-five base test cells and
+twenty additive heads replay, all 4,255 annual sample means/counts match source,
+nineteen sort-based bootstrap checks pass, 367 endpoint score components are
+independently checked, thirty-nine focused tests pass and protected files remain
+unchanged. Do not rerun either completed fixed comparison.
+
+The adjusted rate error improves 1.85225 to 1.84259 among eligible MLB participants,
+but exposure-only gets 1.84303. Incremental measurement and contribution intervals
+versus that matched control span zero. Caminero and Elly still receive negative
+IL adjustments with thin comparable support. Cohort total shortfall and current
+PA's public benchmark gap remain. Retain the precision representation/evidence,
+not a promoted fixed adjustment or a claim that minor tracking is useless.
+The already positive MLB branch and prospect alternative remain research inputs.
+
+The next milestone is a clearly labeled historical research candidate and
+team-filtered explorer showing rate, opportunity, contribution, named gains/misses
+and source/support limits. Keep this uncertain minor head as a visible comparison,
+not silently in the main forecast. Do not overwrite the frozen 2026 forecast or
+its explorer, claim full WAR or certified control-year value, repeat closed tests,
+or tune to the reviewed names. Overall practical hitter/value completion remains
+unproven. The older checkpoint below describes the preserved first joint test.
+
 ## Current checkpoint on minor league Statcast
 
 The [bounded future MLB comparison and full player review](hitter-minor-statcast-next-year-result.md)
