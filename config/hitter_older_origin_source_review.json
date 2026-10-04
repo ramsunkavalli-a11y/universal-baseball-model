@@ -1,0 +1,65 @@
+{
+  "scope": "Source and potential training support, not a fitted forecast comparison",
+  "cases": [
+    {
+      "player_id": 545361,
+      "origin_year": 2009,
+      "assessment": "Trout is age 17, with 187 Arizona rookie PA and a 20-PA A-ball finish. The snapshot calls his highest level A, while the exposure-based profile is RK121. Both pieces must survive feature construction. One HR, 22 total walks and 34 K over 207 PA is not an observed MLB talent estimate. His next-year MLB PA is correctly zero, followed by 135 and 639. Exact dominant/highest-level peers Camargo and Baker also have zero immediate PA but never arrive within this three-year window. That makes timing uncertain, not Trout a failed prospect. The original sport-only peers were DSL players and are weaker comparisons; the stricter review preserves that limitation and does not pretend pedigree is matched. No forecast is fitted or improved here."
+    },
+    {
+      "player_id": 547180,
+      "origin_year": 2010,
+      "assessment": "Harper is present as a roster-only inactive hitter, with no regular affiliated batting counts in the audited three-year window. His original reported age is null. Cached official birth date restores age 17 rather than assigning the old fallback age 27. His MLB PA path is zero, 597, 497: the Year-1 zero must not be interpreted as lack of long-term ability. Zero affiliated counts do not mean zero amateur or other professional activity. The roster-only peers have equal age/exposure but not Harper's draft pedigree, so their zero outcomes cannot explain away his potential. Draft and ranking inputs still need origin-compatible reconstruction. The age repair changes a supplemental source table, not an existing forecast."
+    },
+    {
+      "player_id": 543333,
+      "origin_year": 2008,
+      "assessment": "Hosmer has only 15 Pioneer rookie PA, with zero HR, three walks and two K, at age 18. This is legitimately a very thin affiliated sample, not a missing modern MLB row. His next three MLB PA totals are zero, zero, 563. The exact rookie-bucket peers include Salvador Perez, who has 158 PA in Year 3, and several non-arrivals. These cases demonstrate delayed timing and the need for pedigree/reliability, but no rate or readiness forecast has been estimated. Do not train zero MLB hitting talent from the first two inactive years."
+    },
+    {
+      "player_id": 519058,
+      "origin_year": 2008,
+      "assessment": "Moustakas has 47 Pioneer PA in 2007 and 549 A-ball PA in 2008, with 22 HR, 43 total walks but 39 unintentional walks, and 86 K in the origin season. The walk distinction matters for reproducing current event definitions. His MLB PA path is zero, zero, 365. Noonan, Jackson, Angelini and Gindl match age and A exposure, not his exact performance or pedigree, and have no MLB PA in this three-year window. Retain all of them; the source is not an eventual-success-only cohort. The later 2010 source case shows why a year's actual advancement is more informative than assigning Moustakas the same readiness in 2008 and 2010."
+    },
+    {
+      "player_id": 524968,
+      "origin_year": 2008,
+      "assessment": "Montero is age 18 with 569 A-ball PA, 17 HR, 37 total walks (35 unintentional) and 83 K, following 123 Gulf Coast rookie PA. The 2009 MLB target is zero; later Years 2 and 3 are zero and 69 PA. Strict same-level age/exposure peers include Freeman and Stanton, who arrive sooner or with much more playing time, plus Beltre and Galvis, who have zero in this window. There is real outcome dispersion among useful baseball profiles. This is source evidence about timing and counts, not an argument to use future arrival in peer selection or to infer equivalent defensive roles. The broader support analysis includes Montero's other origin rows without selecting only his successful year."
+    },
+    {
+      "player_id": 474832,
+      "origin_year": 2010,
+      "assessment": "Belt's complete origin exposure is 333 A-plus, 201 AA and 61 AAA PA, totaling 595 with 23 HR, 93 total walks (89 unintentional) and 99 K. Highest level is AAA but dominant exposure is A-plus. Current model inputs already separate levels; this audit does not claim they were absent. A coarse support label alone cannot describe his rapid advancement. His next MLB PA totals are 209, 472, 571, not immediate full-season work. The stricter peers reach AAA but are not performance/pedigree matches; their zero outcomes do not invalidate Belt's projection. This earlier Belt case is separate from his much later unsigned-season outlier."
+    },
+    {
+      "player_id": 405395,
+      "origin_year": 2008,
+      "assessment": "Pujols supplies an established star rather than a prospect: 634, 679, 641 MLB PA and 49, 32, 37 HR across the three input years. Official debut in 2001 is prior to origin even though this statistics window starts 2006. He must not be declared a prospect because his debut year is outside the new history table. Total walks are 92, 99, 104; intentional walks are 28, 22, 34, so the usable UBB inputs differ substantially. His next three MLB PA totals are 700, 700, 651. Age/exposure peers provide workload context but do not certify equivalent star hitting talent. No rate formula or forecast is being judged from these PA labels alone."
+    },
+    {
+      "player_id": 113845,
+      "origin_year": 2008,
+      "assessment": "Encarnacion is the outcome-blind first inactive roster case, not a hand-picked success. Official birth date restores age 32. He has 598 MLB PA in 2006, then 307 MLB and 65 AA PA in 2007, and no observed affiliated batting in 2008. He has zero MLB PA in each of the following three years. Alex Gonzalez and Wilson Valdez return with substantial PA while other controls do not. Thus inactivity must remain in the population and cannot be interpreted automatically as retirement or health failure. The source audit does not retrieve injury explanations or claim to have predicted this absence."
+    },
+    {
+      "player_id": 110189,
+      "origin_year": 2008,
+      "assessment": "Alou was selected by the lowest-ID rule for a 2008 hitter with restored 2006/07 A-minus exposure. The repair adds four A-minus PA in 2007, not a missing full prospect season. His full history includes MLB and rookie/AA/A-plus work; 2008 has only 54 MLB PA plus 12 minor PA. Age is 41 and the following three MLB outcomes are zero. Vizquel and Stairs still play while Thomas and Gonzalez do not. The restored count illustrates that missing short-season history affects established players too, but this tiny addition cannot be credited with improving a forecast. Total career PA remains left-truncated and medical/retirement provenance is not established by this source."
+    },
+    {
+      "player_id": 545361,
+      "origin_year": 2010,
+      "assessment": "Trout's later source origin is materially different: age 18, 368 A and 233 A-plus PA, ten HR, 73 total walks (70 unintentional) and 85 K over 601 PA. He reaches 135 MLB PA in the next year, followed by 639 and 716. Flores, Tovar, Villar and Davidson have no immediate MLB PA but arrive with smaller workloads in Year 3. This adds a genuine young fast-track training observation; it does not establish that all comparable teenagers are immediate regulars. Its selection as an illustrative extra case is outcome-informed and explicitly not independent validation. The full source cohort, not just Trout, is what may be added to training."
+    },
+    {
+      "player_id": 543333,
+      "origin_year": 2010,
+      "assessment": "Hosmer at age 20 has advanced to 375 A-plus and 211 AA PA, with 20 HR, 59 total walks (51 unintentional) and 66 K. The next-year MLB workload is 563 PA, followed by 598 and 680. Avery, Pastornicky, Beltre and Hoes reach similar levels at similar ages but have zero immediate PA and much smaller later opportunities. Preserve the different exposure and production rather than flattening both Hosmer source origins into one rookie profile. This case is a useful additional early entrant, not proof that age/level alone identifies stars or that older samples will improve a modern fit."
+    },
+    {
+      "player_id": 519058,
+      "origin_year": 2010,
+      "assessment": "Moustakas at age 21 now has 298 AA and 236 AAA PA, with 36 HR, 34 total walks (24 unintentional) and 67 K. His next-year MLB PA is 365 and the next two are 614 and 514. Nieuwenhuis and Cardenas have zero immediate PA, Laird 25 and Ackley 376, giving plausible arrival/workload variation without changing the peer set based on those outcomes. His dominant AA label differs from highest AAA; both counts remain available. Source support improves by adding this complete year, but no current ranking, status or learned translation has yet been reconstructed for the augmented model."
+    }
+  ]
+}

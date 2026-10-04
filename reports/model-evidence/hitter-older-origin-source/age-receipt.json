@@ -1,0 +1,52 @@
+{
+  "original_missing_age_rows": 237,
+  "missing_after": 1,
+  "requested_identities": 193,
+  "age_bases": [
+    {
+      "age_basis": "cached_official_birth_date",
+      "len": 31
+    },
+    {
+      "age_basis": "season_reported",
+      "len": 13120
+    },
+    {
+      "age_basis": "unknown",
+      "len": 1
+    },
+    {
+      "age_basis": "official_birth_date_capture",
+      "len": 205
+    }
+  ],
+  "captures": [
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-older-origin-source\\raw\\birth-dates-000.json.gz",
+      "sha256": "d08738f68151e4ab118d94cfa235e13e591417730b5527da99515fcc7b86a8c3",
+      "parameters": {
+        "personIds": "113845,114932,136300,136460,282597,400071,400128,407832,425667,431170,435520,435539,444568,446088,447748,448214,448616,450196,450270,450303,450870,451116,451119,452050,453287,453534,454971,454977,455390,456065,456663,457613,457718,457753,457756,457780,458711,459341,460014,460276,461436,462944,467132,468334,468521,468526,469177,469205,471880,473234,474370,474447,474686,474900,475108,475661,488703,488864,488881,489004,489764,491679,491716,492734,499522,499723,499850,499864,500758,500759,500913,501211,501240,501243,501471,501545,501589,501788,501857,501922,501941,501963,502200,502346,502580,502612,504263,505830,506729,514643,514711,514889,514906,514930,514969,516469,516659,516750,516798,516955",
+        "fields": "people,id,fullName,birthDate"
+      },
+      "returned": 100
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-older-origin-source\\raw\\birth-dates-001.json.gz",
+      "sha256": "720c7e42a04afdc8a69cd182e41c073fe3df6223132f3bea27f895b9df2f7d9a",
+      "parameters": {
+        "personIds": "516999,517003,517357,518407,518450,518584,518811,518822,518855,518965,519014,519286,519320,519360,519379,519439,520810,521091,521654,521836,522488,523261,525468,525489,525719,527035,541651,542154,542200,542202,542299,542335,542339,542352,542422,542433,542519,542569,542571,542574,542626,542660,542666,542975,543075,543095,543395,543567,543666,543817,543910,544013,547530,547799,548091,553872,553910,554040,554060,554190,554233,554349,570728,571070,571408,571457,571549,571892,572670,572695,572723,572736,572836,573157,573177,573635,573788,573848,573989,574869,574870,575071,575608,576668,578569,579208,591699,593430,593628,595325,596876,598216,598461",
+        "fields": "people,id,fullName,birthDate"
+      },
+      "returned": 93
+    }
+  ],
+  "input_and_output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\player-demographics\\report.json": "35185cecb0dc287d56f6c6c99660a0c04da553a6e3ea1dbe376714c9fb10709f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\player-demographics\\tables\\player-demographics.parquet": "010bb368acc8465dc1c5ba21660dd32bdcf0e9132bc4824e39a491f11189f54f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_hitter_older_origins.py": "9f2acf9f8279c28aa792569c1dd1327b1b5f9c8de82673d178974acb9c6dc8c3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-older-origin-age-amendment.md": "829f5e24146d3f3376c4be5ce13594af3788c4ebf502e28fc1b781f77ea6628a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-older-origin-source\\population-with-ages.parquet": "f3ce6afc2fe84d06624d6549f7355369184ae899f759b8e28f55fb248a86fbf1"
+  },
+  "protected_outcomes_used": false,
+  "current_forecasts_changed": false
+}

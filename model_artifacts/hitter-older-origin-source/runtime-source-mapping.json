@@ -1,0 +1,15 @@
+{
+  "purpose": "Document the existing local mapping used by the sealed source audit without staging or overwriting its pre-existing source edit",
+  "module": "src/universal_baseball/opportunity_history_source.py",
+  "affiliated_sport_ids": [1, 11, 12, 13, 14, 15, 16],
+  "sport_level": {
+    "1": "MLB",
+    "11": "AAA",
+    "12": "AA",
+    "13": "HIGH_A",
+    "14": "SINGLE_A",
+    "15": "A-",
+    "16": "ROOKIE_COMPLEX"
+  },
+  "limitation": "The audit receipts hash the full local module. Its existing sport-15 mapping change remains unstaged. A bare checkout without that mapping is not the recorded runtime and must not silently claim an exact source replay. The source counts and reviewed artifacts are versioned separately."
+}

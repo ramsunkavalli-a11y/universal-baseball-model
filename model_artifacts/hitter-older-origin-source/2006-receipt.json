@@ -1,0 +1,54 @@
+{
+  "season": 2006,
+  "teams": 22,
+  "pa": 62149,
+  "bf": 62149,
+  "pa_minus_bf": 0,
+  "captures": [
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-older-origin-source\\raw\\2006\\teams.json.gz",
+      "sha256": "8e1f9386ae6f821f08061098176b40145d4cc956684014f13c093633c015ad4a",
+      "route": "teams",
+      "parameters": {
+        "sportId": 15,
+        "season": 2006
+      }
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-older-origin-source\\raw\\2006\\hitting-0.json.gz",
+      "sha256": "44cd8ceced334c45bc05b26160c8de89cb9cd0c915d912db2f4acf997d0a88db",
+      "route": "stats",
+      "parameters": {
+        "stats": "season",
+        "group": "hitting",
+        "playerPool": "ALL",
+        "season": 2006,
+        "sportIds": "15",
+        "gameType": "R",
+        "limit": 5000,
+        "offset": 0
+      }
+    },
+    {
+      "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-older-origin-source\\raw\\2006\\pitching-0.json.gz",
+      "sha256": "e0d6bdec91c63aeb64def1d9a23c16df3964f1c8ef9339c362de73225c1582e4",
+      "route": "stats",
+      "parameters": {
+        "stats": "season",
+        "group": "pitching",
+        "playerPool": "ALL",
+        "season": 2006,
+        "sportIds": "15",
+        "gameType": "R",
+        "limit": 5000,
+        "offset": 0
+      }
+    }
+  ],
+  "protected_outcomes_used": false,
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-older-origin-source\\2006-basic.parquet": "0d25514c28b65bc551e7f74c055b5d6b1227813e6b593127d6a2281a7a6c116b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-older-origin-source\\2006-hitting.parquet": "299219604eab42339c7038ae890859668f2f58fca928691c2b443c56bda3848d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-older-origin-source\\2006-pitching.parquet": "a3305bca8bdeefdfc1b4eb8c530ac436787bc568e330ad13630c30994591a5af"
+  }
+}

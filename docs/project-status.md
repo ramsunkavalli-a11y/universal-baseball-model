@@ -24,7 +24,30 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: shared development hitting comparison and fourteen walks completed.**
+**Current checkpoint: older training sources repaired and twelve source walks completed.**
+The [completed source review](hitter-older-origin-source-result.md) rebuilds all
+13,357 origin-2008–2010 hitter rows, retaining 11,497 zero next-year outcomes and
+1,860 positive MLB labels. Missing short-season history in 2006–2007 is restored
+with 125,182 PA across 22 teams per year and exact hitting/pitching conservation.
+Official birth dates recover 236 of 237 missing-age rows, including Harper at
+17 rather than the old default 27; one age remains unknown. Twelve actual source
+walks preserve Trout's 2009 rookie/A finish, Belt's split A-plus/AA/AAA exposure,
+Hosmer/Moustakas advancement, inactive Encarnacion and Alou's repaired history.
+All labels independently reproduce the completed MLB target table. Actual-fold
+potential support closes 495 empty coarse profiles, but teenage DSL remains
+empty and Acuna-like teenage AAA gains only one active person. The
+[count clarification](hitter-older-origin-source-count-clarification.md) records
+that the 279 positive pre-debut labels are 279 distinct people already present
+at later origins in current data, not independent new identities. No model,
+forecast, frozen outcome or explorer changed; seven focused tests pass. Next
+reconcile compatible input definitions and cutoff provenance for a matched
+restricted-versus-extended training comparison, keeping current and translated
+anchors and every evaluation player. Do not turn absent old rankings, status,
+prior-debut records or histories into false zeros or default age. Pre-2006 DSL
+coverage and exact early multi-club rookie context are not certified. The full
+practical model goal remains active; source improvement is not predictive success.
+
+**Previous checkpoint: shared development hitting comparison and fourteen walks completed.**
 The [completed comparison](hitter-shared-development-result.md) keeps all 30,506
 forecasts and current playing time, replaying 35 translated anchors and seventy
 new Ridge heads. New next-year level/age control and annual Years 1–6 sharing
