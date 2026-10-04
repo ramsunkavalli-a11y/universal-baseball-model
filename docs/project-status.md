@@ -36,6 +36,17 @@ a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
 **Current checkpoint: conditional workload capacity comparison closed.**
+The [candidate selection note](hitter-candidate-selection.md) also reconciles
+the already completed translated-linear prospect alternative: 304 prior hashes,
+35 saved head replays, exact current identities/opportunity and established rates,
+and independently reconstructed response units. No new fits or scores are claimed
+for that reconciliation. Preserve the modest positive debutant-hitting result
+without promoting it as a solved player-value model or rerunning the same test.
+Use current `preseason_*` columns; inherited `baseline_pa/value` name older
+opportunity, not the current anchor. Future-season-relative rate and common-origin
+delivered value remain distinct. Closed opportunities stay closed; substantive
+talent representation and mature lower-level follow-up are the remaining queue.
+
 The [completed comparison](hitter-positive-workload-capacity-result.md) keeps
 all 30,506 forecasts, 251 inputs and exact current appearance/hitting estimates.
 Deeper histogram and LightGBM heads worsen public PA RMSE 138.330 to
