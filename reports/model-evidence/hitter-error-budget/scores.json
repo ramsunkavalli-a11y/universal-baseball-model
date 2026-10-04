@@ -1,0 +1,1922 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "predicted_pa": 1228732.5119559553,
+    "actual_pa": 1270493,
+    "predicted_value": 4165.848839961402,
+    "actual_value": 4264.186901827925,
+    "pa": {
+      "mse": 3660.1413217847053,
+      "rmse": 60.49910182626437,
+      "mae": 20.612358229964123,
+      "bias": -1.347824154615159,
+      "cross_product_matrix": [
+        [
+          783.2060964835644,
+          -45.383967805895644
+        ],
+        [
+          -45.383967805895644,
+          2967.703160912932
+        ]
+      ],
+      "mean_cancellation": 4.930264325335889,
+      "components": {
+        "participation": {
+          "bias": -1.1068615636703834,
+          "mean_absolute": 8.912799032908115,
+          "own_square": 783.2060964835644,
+          "mse_allocation": 737.8221286776687,
+          "mae_allocation": 5.477142255767846,
+          "raw_sum": -33174.12208463571
+        },
+        "workload": {
+          "bias": -0.24096259094477568,
+          "mean_absolute": 16.629823522391906,
+          "own_square": 2967.703160912932,
+          "mse_allocation": 2922.3191931070364,
+          "mae_allocation": 15.135215974196267,
+          "raw_sum": -8586.365959409008
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.2055568323322733,
+      "rmse": 0.453383758346363,
+      "mae": 0.1287883541154738,
+      "bias": -0.0030119173650265886,
+      "cross_product_matrix": [
+        [
+          0.006397963705261349,
+          0.00010547207026593536,
+          -0.000466683019824183
+        ],
+        [
+          0.00010547207026593536,
+          0.02986816353239674,
+          0.01862145332548588
+        ],
+        [
+          -0.000466683019824183,
+          0.01862145332548588,
+          0.13277022034275995
+        ]
+      ],
+      "mean_cancellation": 0.034546993884336984,
+      "components": {
+        "participation": {
+          "bias": -0.003392926291235359,
+          "mean_absolute": 0.019590116538154043,
+          "own_square": 0.006397963705261349,
+          "mse_allocation": 0.006036752755703101,
+          "mae_allocation": 0.006584744166310488,
+          "raw_sum": -102.43794329749852
+        },
+        "workload": {
+          "bias": -0.0023554471085190155,
+          "mean_absolute": 0.04625854562880268,
+          "own_square": 0.02986816353239674,
+          "mse_allocation": 0.04859508892814855,
+          "mae_allocation": 0.03126647182599671,
+          "raw_sum": -72.604545942159
+        },
+        "production": {
+          "bias": 0.002736456034727786,
+          "mean_absolute": 0.09748668583285407,
+          "own_square": 0.13277022034275995,
+          "mse_allocation": 0.15092499064842166,
+          "mae_allocation": 0.0909371381231666,
+          "raw_sum": 76.70442737313337
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "public",
+    "rows": 2627,
+    "people": 1044,
+    "predicted_pa": 649254.8423971365,
+    "actual_pa": 660776,
+    "predicted_value": 2202.932588584372,
+    "actual_value": 2123.810127060133,
+    "pa": {
+      "mse": 19135.146700592486,
+      "rmse": 138.32984746826148,
+      "mae": 106.41075374670471,
+      "bias": -4.363012023141178,
+      "cross_product_matrix": [
+        [
+          3307.2641514672778,
+          -292.7901330739994
+        ],
+        [
+          -292.7901330739994,
+          16413.462815273208
+        ]
+      ],
+      "mean_cancellation": 20.289408505118566,
+      "components": {
+        "participation": {
+          "bias": -5.211203238879735,
+          "mean_absolute": 33.77690129381206,
+          "own_square": 3307.2641514672778,
+          "mse_allocation": 3014.474018393278,
+          "mae_allocation": 16.78919742211912,
+          "raw_sum": -13679.38207994962
+        },
+        "workload": {
+          "bias": 0.8481912157385564,
+          "mean_absolute": 92.92326095801126,
+          "own_square": 16413.462815273208,
+          "mse_allocation": 16120.672682199209,
+          "mae_allocation": 89.62155632458563,
+          "raw_sum": 2158.2244770860807
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 1.1246695102617206,
+      "rmse": 1.0605043659795657,
+      "mae": 0.7106946389775699,
+      "bias": 0.03313663767441988,
+      "cross_product_matrix": [
+        [
+          0.03366493037090451,
+          -0.00024709327901803013,
+          -0.003569216962800046
+        ],
+        [
+          -0.00024709327901803013,
+          0.16870518259461692,
+          0.09638074975748723
+        ],
+        [
+          -0.003569216962800046,
+          0.09638074975748723,
+          0.7371705182648609
+        ]
+      ],
+      "mean_cancellation": 0.1753730743931829,
+      "components": {
+        "participation": {
+          "bias": -0.013493757587106596,
+          "mean_absolute": 0.07267021302417633,
+          "own_square": 0.03366493037090451,
+          "mse_allocation": 0.02984862012908644,
+          "mae_allocation": 0.021048115275795535,
+          "raw_sum": -35.57255907128672
+        },
+        "workload": {
+          "bias": -0.015573455799187766,
+          "mean_absolute": 0.26271482622094694,
+          "own_square": 0.16870518259461692,
+          "mse_allocation": 0.26483883907308614,
+          "mae_allocation": 0.1730723614007153,
+          "raw_sum": -41.26342587680884
+        },
+        "production": {
+          "bias": 0.062203851060714244,
+          "mean_absolute": 0.5506826741256297,
+          "own_square": 0.7371705182648609,
+          "mse_allocation": 0.8299820510595481,
+          "mae_allocation": 0.5165741623010593,
+          "raw_sum": 155.95844647233469
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "current_MLB",
+    "rows": 4541,
+    "people": 1521,
+    "predicted_pa": 1129696.858368429,
+    "actual_pa": 1156856,
+    "predicted_value": 3937.085881124297,
+    "actual_value": 4027.1318440354066,
+    "pa": {
+      "mse": 19867.262200637786,
+      "rmse": 140.95127598087853,
+      "mae": 107.69713732752815,
+      "bias": -5.977975688254114,
+      "cross_product_matrix": [
+        [
+          3576.1344521249193,
+          -266.4265441475336
+        ],
+        [
+          -266.4265441475336,
+          16823.980836807936
+        ]
+      ],
+      "mean_cancellation": 19.11906250744638,
+      "components": {
+        "participation": {
+          "bias": -3.7404119132299676,
+          "mean_absolute": 34.23589726400065,
+          "own_square": 3576.1344521249193,
+          "mse_allocation": 3309.7079079773857,
+          "mae_allocation": 18.247501838343815,
+          "raw_sum": -17179.41759560169
+        },
+        "workload": {
+          "bias": -2.2375637750241464,
+          "mean_absolute": 92.5803025709739,
+          "own_square": 16823.980836807936,
+          "mse_allocation": 16557.554292660403,
+          "mae_allocation": 89.44963548918437,
+          "raw_sum": -9979.724035969386
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 1.2409129886907913,
+      "rmse": 1.1139627411591428,
+      "mae": 0.7443174838338962,
+      "bias": -0.01934038846462793,
+      "cross_product_matrix": [
+        [
+          0.03129483905864552,
+          4.1613029095643236e-06,
+          -0.0023510961425025393
+        ],
+        [
+          4.1613029095643236e-06,
+          0.18058546502615452,
+          0.1121192624451619
+        ],
+        [
+          -0.0023510961425025393,
+          0.1121192624451619,
+          0.8094880293948533
+        ]
+      ],
+      "mean_cancellation": 0.1695703048257364,
+      "components": {
+        "participation": {
+          "bias": -0.01255118194124647,
+          "mean_absolute": 0.07529945491647795,
+          "own_square": 0.03129483905864552,
+          "mse_allocation": 0.02894790421905254,
+          "mae_allocation": 0.02427154454467464,
+          "raw_sum": -57.26970410570508
+        },
+        "workload": {
+          "bias": -0.014968756189396507,
+          "mean_absolute": 0.2669934546904412,
+          "own_square": 0.18058546502615452,
+          "mse_allocation": 0.29270888877422596,
+          "mae_allocation": 0.1827715804038108,
+          "raw_sum": -68.83681703402456
+        },
+        "production": {
+          "bias": 0.008179549666015046,
+          "mean_absolute": 0.5715948790527132,
+          "own_square": 0.8094880293948533,
+          "mse_allocation": 0.9192561956975127,
+          "mae_allocation": 0.5372743588854105,
+          "raw_sum": 36.06055822861971
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "absent_prior_debut",
+    "rows": 1766,
+    "people": 937,
+    "predicted_pa": 17186.64704682621,
+    "actual_pa": 15309,
+    "predicted_value": 29.223721530169993,
+    "actual_value": 22.305109774464587,
+    "pa": {
+      "mse": 1922.3221646841594,
+      "rmse": 43.84429455110618,
+      "mae": 13.138739065535423,
+      "bias": 1.035334800508133,
+      "cross_product_matrix": [
+        [
+          758.7297179964719,
+          -16.10658755846976
+        ],
+        [
+          -16.10658755846976,
+          1195.805621804627
+        ]
+      ],
+      "mean_cancellation": 6.769049214966521,
+      "components": {
+        "participation": {
+          "bias": 0.108698133409118,
+          "mean_absolute": 12.467738060204551,
+          "own_square": 758.7297179964719,
+          "mse_allocation": 742.6231304380021,
+          "mae_allocation": 9.117725507872343,
+          "raw_sum": 244.4760896696775
+        },
+        "workload": {
+          "bias": 0.9266366670990152,
+          "mean_absolute": 7.440050220297395,
+          "own_square": 1195.805621804627,
+          "mse_allocation": 1179.6990342461572,
+          "mae_allocation": 4.021013557663082,
+          "raw_sum": 1633.170957156532
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.04830615886818339,
+      "rmse": 0.2197866212220011,
+      "mae": 0.04492560970688298,
+      "bias": 0.004162841749501846,
+      "cross_product_matrix": [
+        [
+          0.00412915381065924,
+          0.0016286970337240918,
+          -0.0008334255637247396
+        ],
+        [
+          0.0016286970337240918,
+          0.007062837586501771,
+          0.003921267084852201
+        ],
+        [
+          -0.0008334255637247396,
+          0.003921267084852201,
+          0.027681090361319268
+        ]
+      ],
+      "mean_cancellation": 0.01816776589226712,
+      "components": {
+        "participation": {
+          "bias": -0.0010191677327542445,
+          "mean_absolute": 0.02052662537968262,
+          "own_square": 0.00412915381065924,
+          "mse_allocation": 0.004924425280658593,
+          "mae_allocation": 0.008836140203307264,
+          "raw_sum": -1.655986176059661
+        },
+        "workload": {
+          "bias": 5.426283065781682e-05,
+          "mean_absolute": 0.013700706389583503,
+          "own_square": 0.007062837586501771,
+          "mse_allocation": 0.012612801705078064,
+          "mae_allocation": 0.01104620556540821,
+          "raw_sum": 0.13256364949616795
+        },
+        "production": {
+          "bias": 0.0051277466515982735,
+          "mean_absolute": 0.02886604382988398,
+          "own_square": 0.027681090361319268,
+          "mse_allocation": 0.03076893188244673,
+          "mae_allocation": 0.0250432639381675,
+          "raw_sum": 8.442034282268901
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "people": 3055,
+    "predicted_pa": 74239.03857057953,
+    "actual_pa": 92891,
+    "predicted_value": 179.01457512848606,
+    "actual_value": 203.93926446318383,
+    "pa": {
+      "mse": 3038.958036940262,
+      "rmse": 55.126745205392474,
+      "mae": 18.732137202600434,
+      "bias": -3.4169789018468144,
+      "cross_product_matrix": [
+        [
+          1019.7297189327775,
+          15.6843165674599
+        ],
+        [
+          15.6843165674599,
+          1987.8596848725647
+        ]
+      ],
+      "mean_cancellation": 8.15363732256361,
+      "components": {
+        "participation": {
+          "bias": -3.089241069317995,
+          "mean_absolute": 14.812502622602164,
+          "own_square": 1019.7297189327775,
+          "mse_allocation": 1035.4140355002373,
+          "mae_allocation": 10.578069102674888,
+          "raw_sum": -17147.469019092685
+        },
+        "workload": {
+          "bias": -0.32773783252881966,
+          "mean_absolute": 12.073271902561872,
+          "own_square": 1987.8596848725647,
+          "mse_allocation": 2003.5440014400247,
+          "mae_allocation": 8.15406809992555,
+          "raw_sum": -1504.492410327795
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.09786379622244079,
+      "rmse": 0.3128318977061655,
+      "mae": 0.07856357155993558,
+      "bias": -0.005198053547361465,
+      "cross_product_matrix": [
+        [
+          0.0069829619413042466,
+          0.0004367811406523482,
+          -4.178850852336659e-05
+        ],
+        [
+          0.0004367811406523482,
+          0.013126770027102375,
+          0.009218394912406206
+        ],
+        [
+          -4.178850852336659e-05,
+          0.009218394912406206,
+          0.05852728916496378
+        ]
+      ],
+      "mean_cancellation": 0.03934952180989299,
+      "components": {
+        "participation": {
+          "bias": -0.008037431380779933,
+          "mean_absolute": 0.03369250643993008,
+          "own_square": 0.0069829619413042466,
+          "mse_allocation": 0.007377954573433228,
+          "mae_allocation": 0.010722859800445282,
+          "raw_sum": -44.887695903993325
+        },
+        "workload": {
+          "bias": -0.001496060034689075,
+          "mean_absolute": 0.028358537533060783,
+          "own_square": 0.013126770027102375,
+          "mse_allocation": 0.02278194608016093,
+          "mae_allocation": 0.01760647955621526,
+          "raw_sum": -7.614516545340555
+        },
+        "production": {
+          "bias": 0.004335437868107543,
+          "mean_absolute": 0.0558620493968377,
+          "own_square": 0.05852728916496378,
+          "mse_allocation": 0.06770389556884662,
+          "mae_allocation": 0.05023423220327504,
+          "raw_sum": 27.577523114636087
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "rows": 17852,
+    "people": 8974,
+    "predicted_pa": 7054.64556931176,
+    "actual_pa": 5194,
+    "predicted_value": 19.472943221761007,
+    "actual_value": 9.56025276109348,
+    "pa": {
+      "mse": 63.4629347257713,
+      "rmse": 7.9663627036290094,
+      "mae": 0.6216744545061627,
+      "bias": 0.0958899452112506,
+      "cross_product_matrix": [
+        [
+          39.11834294318634,
+          -9.941080091481272
+        ],
+        [
+          -9.941080091481272,
+          44.2267519655475
+        ]
+      ],
+      "mean_cancellation": 0.29294628092366315,
+      "components": {
+        "participation": {
+          "bias": 0.04044439445925669,
+          "mean_absolute": 0.6363884870845296,
+          "own_square": 39.11834294318634,
+          "mse_allocation": 29.17726285170507,
+          "mae_allocation": 0.5369838842931217,
+          "raw_sum": 788.5026491047097
+        },
+        "workload": {
+          "bias": 0.055445550751993915,
+          "mean_absolute": 0.27823224834529753,
+          "own_square": 44.2267519655475,
+          "mse_allocation": 34.285671874066225,
+          "mae_allocation": 0.08469057021304315,
+          "raw_sum": 1072.1429202070508
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.0018523198256493016,
+      "rmse": 0.04303858531189544,
+      "mae": 0.0020659169234858647,
+      "bias": 0.000554853903661186,
+      "cross_product_matrix": [
+        [
+          0.0003559327299172292,
+          -9.416392177944735e-05,
+          -4.3221252773393733e-05
+        ],
+        [
+          -9.416392177944735e-05,
+          0.0003955955927119553,
+          0.00019980188140369273
+        ],
+        [
+          -4.3221252773393733e-05,
+          0.00019980188140369273,
+          0.0009759580893184139
+        ]
+      ],
+      "mean_cancellation": 0.0015837478559680214,
+      "components": {
+        "participation": {
+          "bias": 5.24022675416472e-05,
+          "mean_absolute": 0.0018007704621008885,
+          "own_square": 0.0003559327299172292,
+          "mse_allocation": 0.0002185475553643881,
+          "mae_allocation": 0.0009768051679169105,
+          "raw_sum": 1.1142863693587814
+        },
+        "workload": {
+          "bias": 0.00016993554652043095,
+          "mean_absolute": 0.0008004447163658384,
+          "own_square": 0.0003955955927119553,
+          "mse_allocation": 0.0005012335523362007,
+          "mae_allocation": 0.00027705680309955715,
+          "raw_sum": 3.249295870628588
+        },
+        "production": {
+          "bias": 0.00033251608959910785,
+          "mean_absolute": 0.0010484496009871595,
+          "own_square": 0.0009759580893184139,
+          "mse_allocation": 0.0011325387179487128,
+          "mae_allocation": 0.0008120549524693972,
+          "raw_sum": 5.549108220680157
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "thin_new_draftee",
+    "rows": 1429,
+    "people": 1429,
+    "predicted_pa": 746.1939838705712,
+    "actual_pa": 1647,
+    "predicted_value": 2.2410265009422914,
+    "actual_value": 6.84410121270769,
+    "pa": {
+      "mse": 411.7051286369376,
+      "rmse": 20.29051819537731,
+      "mae": 1.6197168802101853,
+      "bias": -0.6770185196457745,
+      "cross_product_matrix": [
+        [
+          104.69785023959422,
+          75.05737456149743
+        ],
+        [
+          75.05737456149743,
+          156.89252927434856
+        ]
+      ],
+      "mean_cancellation": 0.14270752794940383,
+      "components": {
+        "participation": {
+          "bias": -0.21749150513805962,
+          "mean_absolute": 1.1601898657024705,
+          "own_square": 104.69785023959422,
+          "mse_allocation": 179.75522480109163,
+          "mae_allocation": 1.1601898657024705,
+          "raw_sum": -287.97706297415834
+        },
+        "workload": {
+          "bias": -0.4595270145077149,
+          "mean_absolute": 0.6022345424571186,
+          "own_square": 156.89252927434856,
+          "mse_allocation": 231.949903835846,
+          "mae_allocation": 0.4595270145077149,
+          "raw_sum": -612.8289531552705
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.02597331631828774,
+      "rmse": 0.1611623911410095,
+      "mae": 0.007256857396869906,
+      "bias": -0.0034780944859405753,
+      "cross_product_matrix": [
+        [
+          0.0009502884429855347,
+          0.0006269432168631975,
+          0.0006830282365083855
+        ],
+        [
+          0.0006269432168631975,
+          0.0012950736389228871,
+          0.002812895992219834
+        ],
+        [
+          0.0006830282365083855,
+          0.002812895992219834,
+          0.015482219345196484
+        ]
+      ],
+      "mean_cancellation": 0.002896407685273821,
+      "components": {
+        "participation": {
+          "bias": -0.0006707733483521237,
+          "mean_absolute": 0.0034931019363027296,
+          "own_square": 0.0009502884429855347,
+          "mse_allocation": 0.0022602598963571176,
+          "mae_allocation": 0.0020733032233292035,
+          "raw_sum": -0.8848463465799823
+        },
+        "workload": {
+          "bias": -0.001322603168990717,
+          "mean_absolute": 0.0017533534248496115,
+          "own_square": 0.0012950736389228871,
+          "mse_allocation": 0.004734912848005918,
+          "mae_allocation": 0.001320226452586167,
+          "raw_sum": -1.7614930489832457
+        },
+        "production": {
+          "bias": -0.0014847179685977346,
+          "mean_absolute": 0.004906809720991387,
+          "own_square": 0.015482219345196484,
+          "mse_allocation": 0.018978143573924702,
+          "mae_allocation": 0.003863327720954536,
+          "raw_sum": -1.9567353162021701
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "current_MLB_listing0",
+    "rows": 1411,
+    "people": 924,
+    "predicted_pa": 128282.12194176583,
+    "actual_pa": 119496,
+    "predicted_value": 327.9641204575598,
+    "actual_value": 286.41861285195074,
+    "pa": {
+      "mse": 11068.35200798636,
+      "rmse": 105.20623559459942,
+      "mae": 71.48071956628502,
+      "bias": 6.419605370191547,
+      "cross_product_matrix": [
+        [
+          5546.5852588276275,
+          -904.8214124648339
+        ],
+        [
+          -904.8214124648339,
+          7331.4095740884
+        ]
+      ],
+      "mean_cancellation": 30.87688243855235,
+      "components": {
+        "participation": {
+          "bias": -2.7827633684133244,
+          "mean_absolute": 57.68684939995412,
+          "own_square": 5546.5852588276275,
+          "mse_allocation": 4641.763846362794,
+          "mae_allocation": 35.32469825078802,
+          "raw_sum": -4243.803481885821
+        },
+        "workload": {
+          "bias": 9.202368738604871,
+          "mean_absolute": 44.67075260488325,
+          "own_square": 7331.4095740884,
+          "mse_allocation": 6426.5881616235665,
+          "mae_allocation": 36.156021315497,
+          "raw_sum": 13029.925423651664
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.42121986529618066,
+      "rmse": 0.6490145339637478,
+      "mae": 0.3244653778354344,
+      "bias": 0.029264367679338255,
+      "cross_product_matrix": [
+        [
+          0.03587257800600503,
+          -0.002278600214001284,
+          -0.006580044098343505
+        ],
+        [
+          -0.002278600214001284,
+          0.05698636394714685,
+          0.035833469074354814
+        ],
+        [
+          -0.006580044098343505,
+          0.035833469074354814,
+          0.2744112738190087
+        ]
+      ],
+      "mean_cancellation": 0.11170054062009536,
+      "components": {
+        "participation": {
+          "bias": -0.013876638086887449,
+          "mean_absolute": 0.10658475871047948,
+          "own_square": 0.03587257800600503,
+          "mse_allocation": 0.027013933693660244,
+          "mae_allocation": 0.036811987610750496,
+          "raw_sum": -20.39965470699635
+        },
+        "workload": {
+          "bias": 0.01849680055786711,
+          "mean_absolute": 0.09720492545874306,
+          "own_square": 0.05698636394714685,
+          "mse_allocation": 0.09054123280750037,
+          "mae_allocation": 0.06789045662094186,
+          "raw_sum": 26.315730258832687
+        },
+        "production": {
+          "bias": 0.024644205208358593,
+          "mean_absolute": 0.23237623428630716,
+          "own_square": 0.2744112738190087,
+          "mse_allocation": 0.30366469879502,
+          "mae_allocation": 0.21976293360374202,
+          "raw_sum": 35.629432053772746
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "current_MLB_listing1",
+    "rows": 3130,
+    "people": 1176,
+    "predicted_pa": 1001414.7364266632,
+    "actual_pa": 1037360,
+    "predicted_value": 3609.1217606667365,
+    "actual_value": 3740.7132311834557,
+    "pa": {
+      "mse": 23788.244096364193,
+      "rmse": 154.23438039673317,
+      "mae": 123.98353725401239,
+      "bias": -11.633028017820784,
+      "cross_product_matrix": [
+        [
+          2688.1665793418,
+          12.060815301407843
+        ],
+        [
+          12.060815301407843,
+          21075.95588641958
+        ]
+      ],
+      "mean_cancellation": 13.848254517672888,
+      "components": {
+        "participation": {
+          "bias": -4.152463090427533,
+          "mean_absolute": 23.751257109078466,
+          "own_square": 2688.1665793418,
+          "mse_allocation": 2700.227394643208,
+          "mae_allocation": 10.62272501155262,
+          "raw_sum": -12935.61411371587
+        },
+        "workload": {
+          "bias": -7.480564927393251,
+          "mean_absolute": 114.08053466260685,
+          "own_square": 21075.95588641958,
+          "mse_allocation": 21088.016701720986,
+          "mae_allocation": 113.36081224245982,
+          "raw_sum": -23009.64945962105
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 1.6101226212027533,
+      "rmse": 1.268906072647914,
+      "mae": 0.9335494014832152,
+      "bias": -0.04158077902258313,
+      "cross_product_matrix": [
+        [
+          0.02953403904262189,
+          0.001046514637320933,
+          -0.0005425241236118811
+        ],
+        [
+          0.001046514637320933,
+          0.23571696412696938,
+          0.14609332505590847
+        ],
+        [
+          -0.0005425241236118811,
+          0.14609332505590847,
+          1.0516769868939269
+        ]
+      ],
+      "mean_cancellation": 0.19611775208578028,
+      "components": {
+        "participation": {
+          "bias": -0.011819579083507021,
+          "mean_absolute": 0.0612926581671701,
+          "own_square": 0.02953403904262189,
+          "mse_allocation": 0.030038029556330944,
+          "mae_allocation": 0.018643233567641266,
+          "raw_sum": -36.87004939870872
+        },
+        "workload": {
+          "bias": -0.030841292439625415,
+          "mean_absolute": 0.3434010418061102,
+          "own_square": 0.23571696412696938,
+          "mse_allocation": 0.3828568038201988,
+          "mae_allocation": 0.23406775547285982,
+          "raw_sum": -95.15254729285725
+        },
+        "production": {
+          "bias": 0.001080092500549305,
+          "mean_absolute": 0.724973453595715,
+          "own_square": 1.0516769868939269,
+          "mse_allocation": 1.1972277878262234,
+          "mae_allocation": 0.680838412442714,
+          "raw_sum": 0.43112617484698035
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "current_PA_1_199",
+    "rows": 2037,
+    "people": 1192,
+    "predicted_pa": 213812.7264442218,
+    "actual_pa": 220390,
+    "predicted_value": 447.99461079432814,
+    "actual_value": 433.50949911919236,
+    "pa": {
+      "mse": 14832.666710972277,
+      "rmse": 121.78943595801844,
+      "mae": 86.41546484911221,
+      "bias": -3.237722795959034,
+      "cross_product_matrix": [
+        [
+          2775.884163169586,
+          -158.5125294386082
+        ],
+        [
+          -158.5125294386082,
+          12373.807606679906
+        ]
+      ],
+      "mean_cancellation": 22.851949412364398,
+      "components": {
+        "participation": {
+          "bias": -1.9554582933089162,
+          "mean_absolute": 39.4148021817082,
+          "own_square": 2775.884163169586,
+          "mse_allocation": 2617.371633730978,
+          "mae_allocation": 20.753559862790848,
+          "raw_sum": -4134.9965133566275
+        },
+        "workload": {
+          "bias": -1.2822645026501178,
+          "mean_absolute": 69.8526120797684,
+          "own_square": 12373.807606679906,
+          "mse_allocation": 12215.295077241297,
+          "mae_allocation": 65.66190498632135,
+          "raw_sum": -2442.2770424215496
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.5265367918175492,
+      "rmse": 0.725628549478002,
+      "mae": 0.4120392792571508,
+      "bias": 0.0077943791607393564,
+      "cross_product_matrix": [
+        [
+          0.012802673448442768,
+          -2.661847495871963e-05,
+          -0.0015076972260548716
+        ],
+        [
+          -2.661847495871963e-05,
+          0.06671276154954618,
+          0.0529350178415711
+        ],
+        [
+          -0.0015076972260548716,
+          0.0529350178415711,
+          0.34421995253844523
+        ]
+      ],
+      "mean_cancellation": 0.10544742976724604,
+      "components": {
+        "participation": {
+          "bias": -0.007036418531175188,
+          "mean_absolute": 0.06972707673674315,
+          "own_square": 0.012802673448442768,
+          "mse_allocation": 0.011268357747429177,
+          "mae_allocation": 0.020473180053530247,
+          "raw_sum": -14.843273759558663
+        },
+        "workload": {
+          "bias": -0.006433712061779921,
+          "mean_absolute": 0.1421456260347083,
+          "own_square": 0.06671276154954618,
+          "mse_allocation": 0.11962116091615857,
+          "mae_allocation": 0.10224121927614331,
+          "raw_sum": -13.130667325116221
+        },
+        "production": {
+          "bias": 0.021264509753694465,
+          "mean_absolute": 0.30561400625294527,
+          "own_square": 0.34421995253844523,
+          "mse_allocation": 0.3956472731539615,
+          "mae_allocation": 0.2893248799274772,
+          "raw_sum": 42.459052759810774
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "current_PA_200_399",
+    "rows": 1059,
+    "people": 677,
+    "predicted_pa": 258980.8944258385,
+    "actual_pa": 263955,
+    "predicted_value": 684.2203491249961,
+    "actual_value": 698.2129130525544,
+    "pa": {
+      "mse": 24916.243145806497,
+      "rmse": 157.84879836668537,
+      "mae": 128.75110323629903,
+      "bias": -4.813374219151626,
+      "cross_product_matrix": [
+        [
+          5267.486334097952,
+          -251.49648488645272
+        ],
+        [
+          -251.49648488645272,
+          20151.749781481452
+        ]
+      ],
+      "mean_cancellation": 20.7087011297832,
+      "components": {
+        "participation": {
+          "bias": -1.3955711149550751,
+          "mean_absolute": 42.01239692987367,
+          "own_square": 5267.486334097952,
+          "mse_allocation": 5015.989849211499,
+          "mae_allocation": 24.482151844500176,
+          "raw_sum": -1869.7306888571716
+        },
+        "workload": {
+          "bias": -3.4178031041965506,
+          "mean_absolute": 107.44740743620856,
+          "own_square": 20151.749781481452,
+          "mse_allocation": 19900.253296595,
+          "mae_allocation": 104.26895139179888,
+          "raw_sum": -3104.374885304324
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 1.1855499665316083,
+      "rmse": 1.0888296315455455,
+      "mae": 0.7951640735860855,
+      "bias": -0.01919821298770213,
+      "cross_product_matrix": [
+        [
+          0.033652710740168255,
+          1.0275836316282723e-05,
+          0.0009681071317429563
+        ],
+        [
+          1.0275836316282723e-05,
+          0.1581006402588738,
+          0.12093620376511618
+        ],
+        [
+          0.0009681071317429563,
+          0.12093620376511618,
+          0.7499674420662154
+        ]
+      ],
+      "mean_cancellation": 0.15549181046824972,
+      "components": {
+        "participation": {
+          "bias": -0.004311808687893879,
+          "mean_absolute": 0.09161855947603971,
+          "own_square": 0.033652710740168255,
+          "mse_allocation": 0.0346310937082275,
+          "mae_allocation": 0.03565684408227657,
+          "raw_sum": -5.491799751613321
+        },
+        "workload": {
+          "bias": -0.011910157803420683,
+          "mean_absolute": 0.26498532876999936,
+          "own_square": 0.1581006402588738,
+          "mse_allocation": 0.2790471198603063,
+          "mae_allocation": 0.1932308914424942,
+          "raw_sum": -11.194584960322844
+        },
+        "production": {
+          "bias": -0.0029762464963875696,
+          "mean_absolute": 0.594051995808296,
+          "own_square": 0.7499674420662154,
+          "mse_allocation": 0.8718717529630745,
+          "mae_allocation": 0.5662763380613146,
+          "raw_sum": 2.6938207843780653
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "current_PA_400_599",
+    "rows": 938,
+    "people": 505,
+    "predicted_pa": 382930.9616135882,
+    "actual_pa": 385438,
+    "predicted_value": 1389.7242444541355,
+    "actual_value": 1394.6041146390114,
+    "pa": {
+      "mse": 25849.908509386165,
+      "rmse": 160.7790673856089,
+      "mae": 130.27826954270571,
+      "bias": -3.175030387240187,
+      "cross_product_matrix": [
+        [
+          4407.112657143693,
+          -457.9716368694317
+        ],
+        [
+          -457.9716368694317,
+          22358.739125981338
+        ]
+      ],
+      "mean_cancellation": 15.355017550316036,
+      "components": {
+        "participation": {
+          "bias": -7.76495144473336,
+          "mean_absolute": 25.98302955582914,
+          "own_square": 4407.112657143693,
+          "mse_allocation": 3949.141020274261,
+          "mae_allocation": 12.678088067192872,
+          "raw_sum": -7310.1054028239905
+        },
+        "workload": {
+          "bias": 4.589921057493173,
+          "mean_absolute": 119.65025753719262,
+          "own_square": 22358.739125981338,
+          "mse_allocation": 21900.767489111906,
+          "mae_allocation": 117.60018147551285,
+          "raw_sum": 4803.067016412176
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 1.9299726356403712,
+      "rmse": 1.3892345502615357,
+      "mae": 1.0776050338900944,
+      "bias": -0.005916383450177816,
+      "cross_product_matrix": [
+        [
+          0.06966932682647681,
+          0.00085167767037068,
+          -0.008306726560615462
+        ],
+        [
+          0.00085167767037068,
+          0.2918633455240072,
+          0.17316485492626985
+        ],
+        [
+          -0.008306726560615462,
+          0.17316485492626985,
+          1.237020351217837
+        ]
+      ],
+      "mean_cancellation": 0.2432273882708965,
+      "components": {
+        "participation": {
+          "bias": -0.0213125828878294,
+          "mean_absolute": 0.08057031514812983,
+          "own_square": 0.06966932682647681,
+          "mse_allocation": 0.06221427793623203,
+          "mae_allocation": 0.026260482451135547,
+          "raw_sum": -19.870391964238358
+        },
+        "workload": {
+          "bias": 0.003954111711384129,
+          "mean_absolute": 0.4051310016906227,
+          "own_square": 0.2918633455240072,
+          "mse_allocation": 0.4658798781206478,
+          "mae_allocation": 0.2748773798114025,
+          "raw_sum": 5.343912990585719
+        },
+        "production": {
+          "bias": 0.011442087726267456,
+          "mean_absolute": 0.8351311053222383,
+          "own_square": 1.237020351217837,
+          "mse_allocation": 1.4018784795834915,
+          "mae_allocation": 0.7764671716275563,
+          "raw_sum": 9.646608788776469
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "current_PA_600_10000",
+    "rows": 507,
+    "people": 243,
+    "predicted_pa": 273972.2758847804,
+    "actual_pa": 287073,
+    "predicted_value": 1415.1466767508366,
+    "actual_value": 1500.8053172246484,
+    "pa": {
+      "mse": 18582.051560551696,
+      "rmse": 136.31599891631097,
+      "mae": 107.95887483761737,
+      "bias": -26.667998289130317,
+      "cross_product_matrix": [
+        [
+          2064.764250832097,
+          -267.6882523808501
+        ],
+        [
+          -267.6882523808501,
+          17052.6638144813
+        ]
+      ],
+      "mean_cancellation": 6.914081178135197,
+      "components": {
+        "participation": {
+          "bias": -6.846512111072443,
+          "mean_absolute": 13.071946832533808,
+          "own_square": 2064.764250832097,
+          "mse_allocation": 1797.0759984512467,
+          "mae_allocation": 6.681889534250983,
+          "raw_sum": -3864.5849905639016
+        },
+        "workload": {
+          "bias": -19.821486178057874,
+          "mean_absolute": 101.80100918321875,
+          "own_square": 17052.6638144813,
+          "mse_allocation": 16784.97556210045,
+          "mae_allocation": 101.27698530336637,
+          "raw_sum": -9236.139124655689
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 2.9576123418916938,
+      "rmse": 1.7197710143771159,
+      "mae": 1.3549149708496135,
+      "bias": -0.1835556965112999,
+      "cross_product_matrix": [
+        [
+          0.037576230192876654,
+          -7.101324799947312e-05,
+          -0.001973178614221547
+        ],
+        [
+          -7.101324799947312e-05,
+          0.4650245144143229,
+          0.214017204102328
+        ],
+        [
+          -0.001973178614221547,
+          0.214017204102328,
+          2.0310655728042804
+        ]
+      ],
+      "mean_cancellation": 0.3165143908961693,
+      "components": {
+        "participation": {
+          "bias": -0.030498963429665467,
+          "mean_absolute": 0.055306522234344575,
+          "own_square": 0.037576230192876654,
+          "mse_allocation": 0.03553203833065564,
+          "mae_allocation": 0.015747652994564886,
+          "raw_sum": -17.06423863029474
+        },
+        "workload": {
+          "bias": -0.10799575595724493,
+          "mean_absolute": 0.5101465757150672,
+          "own_square": 0.4650245144143229,
+          "mse_allocation": 0.6789707052686514,
+          "mae_allocation": 0.3040149369952685,
+          "raw_sum": -49.855477739171214
+        },
+        "production": {
+          "bias": -0.04506097712438951,
+          "mean_absolute": 1.1059762637963713,
+          "own_square": 2.0310655728042804,
+          "mse_allocation": 2.2431095982923868,
+          "mae_allocation": 1.0351523808597802,
+          "raw_sum": -18.738924104345546
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "people": 4663,
+    "predicted_pa": 171709.23525463397,
+    "actual_pa": 179968,
+    "predicted_value": 596.683351243409,
+    "actual_value": 706.5549375611811,
+    "pa": {
+      "mse": 3323.297997875644,
+      "rmse": 57.648052854156695,
+      "mae": 18.69264024690857,
+      "bias": -1.771126902287374,
+      "cross_product_matrix": [
+        [
+          802.4260468142943,
+          -30.18359235413626
+        ],
+        [
+          -30.18359235413626,
+          2581.239135769622
+        ]
+      ],
+      "mean_cancellation": 3.9382511992578157,
+      "components": {
+        "participation": {
+          "bias": -0.22117611162127576,
+          "mean_absolute": 8.119197255450574,
+          "own_square": 802.4260468142943,
+          "mse_allocation": 772.242454460158,
+          "mae_allocation": 5.315444422627461,
+          "raw_sum": -1031.344208490012
+        },
+        "workload": {
+          "bias": -1.549950790666098,
+          "mean_absolute": 14.511694190715776,
+          "own_square": 2581.239135769622,
+          "mse_allocation": 2551.0555434154858,
+          "mae_allocation": 13.377195824281074,
+          "raw_sum": -7227.420536876017
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.20770086833186135,
+      "rmse": 0.4557421072622776,
+      "mae": 0.12097406336433757,
+      "bias": -0.023562424687491305,
+      "cross_product_matrix": [
+        [
+          0.006255906853001711,
+          0.00025274923979743134,
+          -0.0005016350753082602
+        ],
+        [
+          0.00025274923979743134,
+          0.025067471524953703,
+          0.019198944758165176
+        ],
+        [
+          -0.0005016350753082602,
+          0.019198944758165176,
+          0.13847737210859726
+        ]
+      ],
+      "mean_cancellation": 0.029494907425290637,
+      "components": {
+        "participation": {
+          "bias": -0.0015347556234124606,
+          "mean_absolute": 0.01866573454952778,
+          "own_square": 0.006255906853001711,
+          "mse_allocation": 0.006007021017490882,
+          "mae_allocation": 0.007660925388878626,
+          "raw_sum": -7.156565471972339
+        },
+        "workload": {
+          "bias": -0.004453419947956562,
+          "mean_absolute": 0.04062799262392939,
+          "own_square": 0.025067471524953703,
+          "mse_allocation": 0.04451916552291631,
+          "mae_allocation": 0.027498607742699396,
+          "raw_sum": -20.766297217321473
+        },
+        "production": {
+          "bias": -0.017574249116122282,
+          "mean_absolute": 0.09117524361617106,
+          "own_square": 0.13847737210859726,
+          "mse_allocation": 0.15717468179145416,
+          "mae_allocation": 0.08581453023275952,
+          "raw_sum": -81.9487236284782
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "people": 4691,
+    "predicted_pa": 174316.4618598693,
+    "actual_pa": 179643,
+    "predicted_value": 616.2698739623663,
+    "actual_value": 505.4608400276606,
+    "pa": {
+      "mse": 3208.681293957646,
+      "rmse": 56.64522304623441,
+      "mae": 18.133965410644336,
+      "bias": -1.1354803112621414,
+      "cross_product_matrix": [
+        [
+          735.4293983878744,
+          -62.71972023669363
+        ],
+        [
+          -62.71972023669363,
+          2598.691336043159
+        ]
+      ],
+      "mean_cancellation": 4.132738765246859,
+      "components": {
+        "participation": {
+          "bias": -0.5205079520200802,
+          "mean_absolute": 7.856265340930412,
+          "own_square": 735.4293983878744,
+          "mse_allocation": 672.7096781511807,
+          "mae_allocation": 4.923458399467673,
+          "raw_sum": -2441.7028029261905
+        },
+        "workload": {
+          "bias": -0.6149723592420613,
+          "mean_absolute": 14.410438834960756,
+          "own_square": 2598.691336043159,
+          "mse_allocation": 2535.9716158064653,
+          "mae_allocation": 13.21050701117669,
+          "raw_sum": -2884.835337204512
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.16541613342496098,
+      "rmse": 0.40671382251524346,
+      "mae": 0.11240268169050038,
+      "bias": 0.023621623094160226,
+      "cross_product_matrix": [
+        [
+          0.004620120459411168,
+          -0.00016546861377603195,
+          -0.00148386308269628
+        ],
+        [
+          -0.00016546861377603195,
+          0.029192363352598526,
+          0.012867926988056827
+        ],
+        [
+          -0.00148386308269628,
+          0.012867926988056827,
+          0.10916645902978224
+        ]
+      ],
+      "mean_cancellation": 0.032229519583224175,
+      "components": {
+        "participation": {
+          "bias": -0.0020454421573727227,
+          "mean_absolute": 0.01725475914055045,
+          "own_square": 0.004620120459411168,
+          "mse_allocation": 0.0029707887629388564,
+          "mae_allocation": 0.0056621126351138985,
+          "raw_sum": -9.595169160235374
+        },
+        "workload": {
+          "bias": -0.0016145767751963626,
+          "mean_absolute": 0.041508005120332134,
+          "own_square": 0.029192363352598526,
+          "mse_allocation": 0.04189482172687932,
+          "mae_allocation": 0.02795552312351447,
+          "raw_sum": -7.573979652446137
+        },
+        "production": {
+          "bias": 0.02728164202672931,
+          "mean_absolute": 0.08586943701284196,
+          "own_square": 0.10916645902978224,
+          "mse_allocation": 0.12055052293514279,
+          "mae_allocation": 0.07878504593187198,
+          "raw_sum": 127.97818274738727
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "people": 4478,
+    "predicted_pa": 172104.99899229084,
+    "actual_pa": 181308,
+    "predicted_value": 607.7074660017038,
+    "actual_value": 815.4233629440128,
+    "pa": {
+      "mse": 3898.7163139548893,
+      "rmse": 62.439701424293254,
+      "mae": 20.15274309227662,
+      "bias": -2.0551587779609495,
+      "cross_product_matrix": [
+        [
+          677.2000257250718,
+          2.6058305063334926
+        ],
+        [
+          2.6058305063334926,
+          3216.3046272171505
+        ]
+      ],
+      "mean_cancellation": 4.177402929100505,
+      "components": {
+        "participation": {
+          "bias": -1.2377468446135051,
+          "mean_absolute": 7.859072460843747,
+          "own_square": 677.2000257250718,
+          "mse_allocation": 679.8058562314053,
+          "mae_allocation": 4.965122600337456,
+          "raw_sum": -5542.630370179288
+        },
+        "workload": {
+          "bias": -0.8174119333474441,
+          "mean_absolute": 16.471073560533373,
+          "own_square": 3216.3046272171505,
+          "mse_allocation": 3218.910457723484,
+          "mae_allocation": 15.187620491939152,
+          "raw_sum": -3660.370637529855
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.2841001719002298,
+      "rmse": 0.5330104801035621,
+      "mae": 0.14662468612484694,
+      "bias": -0.04638586354227532,
+      "cross_product_matrix": [
+        [
+          0.00478833593648827,
+          7.379023091139886e-05,
+          0.003961048833191015
+        ],
+        [
+          7.379023091139886e-05,
+          0.0345793892648703,
+          0.03206774571218069
+        ],
+        [
+          0.003961048833191015,
+          0.03206774571218069,
+          0.172527277146305
+        ]
+      ],
+      "mean_cancellation": 0.025105820932854798,
+      "components": {
+        "participation": {
+          "bias": -0.003948766425706934,
+          "mean_absolute": 0.017514304389320733,
+          "own_square": 0.00478833593648827,
+          "mse_allocation": 0.008823175000590685,
+          "mae_allocation": 0.00826928756721503,
+          "raw_sum": -17.682576054315653
+        },
+        "workload": {
+          "bias": -0.0008747947892783857,
+          "mean_absolute": 0.04706208316632875,
+          "own_square": 0.0345793892648703,
+          "mse_allocation": 0.06672092520796238,
+          "mae_allocation": 0.03522123980131976,
+          "raw_sum": -3.917331066388618
+        },
+        "production": {
+          "bias": -0.04156230232729,
+          "mean_absolute": 0.10715411950205221,
+          "own_square": 0.172527277146305,
+          "mse_allocation": 0.20855607169167673,
+          "mae_allocation": 0.103134158756312,
+          "raw_sum": -186.11598982160478
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "people": 4242,
+    "predicted_pa": 164798.0764167206,
+    "actual_pa": 181583,
+    "predicted_value": 605.4415460179416,
+    "actual_value": 463.9060836443723,
+    "pa": {
+      "mse": 3517.3865505468098,
+      "rmse": 59.3075589663477,
+      "mae": 20.099963073205597,
+      "bias": -3.956841957397308,
+      "cross_product_matrix": [
+        [
+          804.21786293733,
+          -59.61307225726848
+        ],
+        [
+          -59.61307225726848,
+          2832.394832124017
+        ]
+      ],
+      "mean_cancellation": 6.230134456060488,
+      "components": {
+        "participation": {
+          "bias": -3.4786463017836686,
+          "mean_absolute": 9.345041539597709,
+          "own_square": 804.21786293733,
+          "mse_allocation": 744.6047906800615,
+          "mae_allocation": 5.239598937494473,
+          "raw_sum": -14756.417612166351
+        },
+        "workload": {
+          "bias": -0.47819565561363947,
+          "mean_absolute": 16.98505598966843,
+          "own_square": 2832.394832124017,
+          "mse_allocation": 2772.7817598667484,
+          "mae_allocation": 14.860364135711123,
+          "raw_sum": -2028.50597111306
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.17579765176018688,
+      "rmse": 0.4192823055653397,
+      "mae": 0.12580064822479284,
+      "bias": 0.03336526694332136,
+      "cross_product_matrix": [
+        [
+          0.010595270872621538,
+          -7.571232120384433e-06,
+          -0.004381453536083249
+        ],
+        [
+          -7.571232120384433e-06,
+          0.031380219284132274,
+          0.009449986106260569
+        ],
+        [
+          -0.004381453536083249,
+          0.009449986106260569,
+          0.12370023892731921
+        ]
+      ],
+      "mean_cancellation": 0.04956392947949474,
+      "components": {
+        "participation": {
+          "bias": -0.008553365281066488,
+          "mean_absolute": 0.023399679732654898,
+          "own_square": 0.010595270872621538,
+          "mse_allocation": 0.0062062461044179035,
+          "mae_allocation": 0.002778494757288993,
+          "raw_sum": -36.28337552228392
+        },
+        "workload": {
+          "bias": -0.004655401919049376,
+          "mean_absolute": 0.050842434686180576,
+          "own_square": 0.031380219284132274,
+          "mse_allocation": 0.04082263415827246,
+          "mae_allocation": 0.030696232375946052,
+          "raw_sum": -19.74821494060743
+        },
+        "production": {
+          "bias": 0.04657403414343723,
+          "mean_absolute": 0.10112246328545209,
+          "own_square": 0.12370023892731921,
+          "mse_allocation": 0.12876877149749652,
+          "mae_allocation": 0.09232592109155784,
+          "raw_sum": 197.56705283646068
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "people": 4244,
+    "predicted_pa": 177294.80709346556,
+    "actual_pa": 182917,
+    "predicted_value": 582.4557464048191,
+    "actual_value": 737.652583233729,
+    "pa": {
+      "mse": 3838.52870838508,
+      "rmse": 61.955860968798426,
+      "mae": 21.51016204341408,
+      "bias": -1.3247391391457166,
+      "cross_product_matrix": [
+        [
+          903.6063933268777,
+          -57.34775597747584
+        ],
+        [
+          -57.34775597747584,
+          3049.617827013154
+        ]
+      ],
+      "mean_cancellation": 5.637214208627586,
+      "components": {
+        "participation": {
+          "bias": -1.0642547097363864,
+          "mean_absolute": 9.972644151017628,
+          "own_square": 903.6063933268777,
+          "mse_allocation": 846.2586373494019,
+          "mae_allocation": 6.3678490462313775,
+          "raw_sum": -4516.696988121232
+        },
+        "workload": {
+          "bias": -0.2604844294093302,
+          "mean_absolute": 17.174732101024073,
+          "own_square": 3049.617827013154,
+          "mse_allocation": 2992.270071035678,
+          "mae_allocation": 15.142312997182696,
+          "raw_sum": -1105.4959184132017
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.2221895569242629,
+      "rmse": 0.4713698727371775,
+      "mae": 0.13582840649110942,
+      "bias": -0.03656852894177897,
+      "cross_product_matrix": [
+        [
+          0.007820657276555693,
+          0.00024573707491556436,
+          0.0015127629702107199
+        ],
+        [
+          0.00024573707491556436,
+          0.02942329846512655,
+          0.023820485837098032
+        ],
+        [
+          0.0015127629702107199,
+          0.023820485837098032,
+          0.13378762941813202
+        ]
+      ],
+      "mean_cancellation": 0.03295437248601667,
+      "components": {
+        "participation": {
+          "bias": -0.004029731986103613,
+          "mean_absolute": 0.022631085087384834,
+          "own_square": 0.007820657276555693,
+          "mse_allocation": 0.009579157321681978,
+          "mae_allocation": 0.00972230061928247,
+          "raw_sum": -17.10218254902361
+        },
+        "workload": {
+          "bias": -0.004912929244734409,
+          "mean_absolute": 0.04852068516540517,
+          "own_square": 0.02942329846512655,
+          "mse_allocation": 0.053489521377140144,
+          "mae_allocation": 0.03500433242462226,
+          "raw_sum": -20.85047171465284
+        },
+        "production": {
+          "bias": -0.027625867710940947,
+          "mean_absolute": 0.09763100872433625,
+          "own_square": 0.13378762941813202,
+          "mse_allocation": 0.15912087822544077,
+          "mae_allocation": 0.09110177344720469,
+          "raw_sum": -117.24418256523329
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "people": 4196,
+    "predicted_pa": 186453.53525672553,
+    "actual_pa": 182194,
+    "predicted_value": 597.0602789324156,
+    "actual_value": 421.33608454352634,
+    "pa": {
+      "mse": 3901.983842915971,
+      "rmse": 62.46586141978649,
+      "mae": 22.694332851213332,
+      "bias": 1.0151418628993176,
+      "cross_product_matrix": [
+        [
+          862.2354661056529,
+          -52.044078418968795
+        ],
+        [
+          -52.044078418968795,
+          3143.836533648255
+        ]
+      ],
+      "mean_cancellation": 4.914663964539929,
+      "components": {
+        "participation": {
+          "bias": 0.03755102309352937,
+          "mean_absolute": 9.81652411021518,
+          "own_square": 862.2354661056529,
+          "mse_allocation": 810.1913876866842,
+          "mae_allocation": 6.25324945643488,
+          "raw_sum": 157.56409290044922
+        },
+        "workload": {
+          "bias": 0.9775908398057882,
+          "mean_absolute": 17.792472705538113,
+          "own_square": 3143.836533648255,
+          "mse_allocation": 3091.7924552292866,
+          "mae_allocation": 16.441083394778406,
+          "raw_sum": 4101.971163825087
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.1837211744346699,
+      "rmse": 0.4286270808461242,
+      "mae": 0.12865979393693006,
+      "bias": 0.0418789786436819,
+      "cross_product_matrix": [
+        [
+          0.00738461233981794,
+          0.0002076560538033829,
+          -0.0025251559288310475
+        ],
+        [
+          0.0002076560538033829,
+          0.03102844653985774,
+          0.011963486815619095
+        ],
+        [
+          -0.0025251559288310475,
+          0.011963486815619095,
+          0.12601614167381134
+        ]
+      ],
+      "mean_cancellation": 0.04039963300748617,
+      "components": {
+        "participation": {
+          "bias": -0.00045829245218792454,
+          "mean_absolute": 0.020316935101223146,
+          "own_square": 0.00738461233981794,
+          "mse_allocation": 0.005067112464790276,
+          "mae_allocation": 0.007070334112706584,
+          "raw_sum": -1.9229951293805367
+        },
+        "workload": {
+          "bias": 0.0007841221875598068,
+          "mean_absolute": 0.04777980958845112,
+          "own_square": 0.03102844653985774,
+          "mse_allocation": 0.04319958940928022,
+          "mae_allocation": 0.027963853336744615,
+          "raw_sum": 3.2901766990009516
+        },
+        "production": {
+          "bias": 0.041553148908310016,
+          "mean_absolute": 0.10096268225474193,
+          "own_square": 0.12601614167381134,
+          "mse_allocation": 0.1354544725605994,
+          "mae_allocation": 0.09362560648747886,
+          "raw_sum": 174.35701281926876
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "people": 3992,
+    "predicted_pa": 182055.39708224946,
+    "actual_pa": 182880,
+    "predicted_value": 560.2305773987455,
+    "actual_value": 613.853009873443,
+    "pa": {
+      "mse": 3932.3945448568943,
+      "rmse": 62.708807554097966,
+      "mae": 23.00270089208631,
+      "bias": -0.20656385715194192,
+      "cross_product_matrix": [
+        [
+          697.3274820878495,
+          -58.38538590306002
+        ],
+        [
+          -58.38538590306002,
+          3351.837834575165
+        ]
+      ],
+      "mean_cancellation": 5.481444754518039,
+      "components": {
+        "participation": {
+          "bias": -1.2632500490112972,
+          "mean_absolute": 9.420848372301563,
+          "own_square": 697.3274820878495,
+          "mse_allocation": 638.9420961847894,
+          "mae_allocation": 5.2752729277816,
+          "raw_sum": -5042.894195653091
+        },
+        "workload": {
+          "bias": 1.0566861918593553,
+          "mean_absolute": 19.063297274302805,
+          "own_square": 3351.837834575165,
+          "mse_allocation": 3293.4524486721048,
+          "mae_allocation": 17.727427964304738,
+          "raw_sum": 4218.291277902549
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    },
+    "value": {
+      "mse": 0.1999722695497415,
+      "rmse": 0.44718259083929185,
+      "mae": 0.13122819897579938,
+      "bias": -0.013432473064804003,
+      "cross_product_matrix": [
+        [
+          0.003320842198933118,
+          0.00013141173833018652,
+          0.00015151468074782066
+        ],
+        [
+          0.00013141173833018652,
+          0.0284059562952381,
+          0.020981597061020797
+        ],
+        [
+          0.00015151468074782066,
+          0.020981597061020797,
+          0.12571642409537268
+        ]
+      ],
+      "mean_cancellation": 0.03208077427599172,
+      "components": {
+        "participation": {
+          "bias": -0.003180130112797367,
+          "mean_absolute": 0.017348317766416453,
+          "own_square": 0.003320842198933118,
+          "mse_allocation": 0.003603768618011125,
+          "mae_allocation": 0.004929754083687809,
+          "raw_sum": -12.695079410287104
+        },
+        "workload": {
+          "bias": -0.0007611292709778181,
+          "mean_absolute": 0.04746880905099164,
+          "own_square": 0.0284059562952381,
+          "mse_allocation": 0.049518965094589085,
+          "mae_allocation": 0.03452551397713041,
+          "raw_sum": -3.0384280497434464
+        },
+        "production": {
+          "bias": -0.009491213681028818,
+          "mean_absolute": 0.09849184643438298,
+          "own_square": 0.12571642409537268,
+          "mse_allocation": 0.1468495358371413,
+          "mae_allocation": 0.09177293091498123,
+          "raw_sum": -37.88892501466706
+        }
+      },
+      "limit": "An exact signed-error allocation; negative terms and offsets are not causal removable error"
+    }
+  }
+]

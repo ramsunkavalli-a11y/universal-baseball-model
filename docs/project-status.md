@@ -24,7 +24,29 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: expected versus typical workload reviewed without new fits.**
+**Current checkpoint: workload and production error accounting reviewed.**
+The [completed diagnostic](hitter-error-budget-result.md) retains all 30,506
+forecasts, recomposes event labels and all PA/value/error identities, and replays
+36 saved heads for twelve actual player walks. Public PA squared-error allocation
+is 3,014 participation and 16,121 active workload; upper-never-debut PA total
+error instead splits -17,147 participation and -1,504 active workload. Mean bias
+and individual error are different problems; neither implies a global PA boost.
+Production supplies the largest signed contribution-MSE allocation, but includes
+unpredictable realized performance, not just removable talent defects. Bautista's
+5.718 component cancellation and Rortvedt's nearly exact value with major PA/rate
+errors expose unsafe value-only selection. Judge, Kurtz, Reynolds and Solano
+reinforcing misses remain; Belt is not hindsight evidence of zero talent.
+Five arithmetic tests pass; all 31 protected files verify unchanged. No new fit,
+forecast, explorer or threshold change; full goal active. Next the
+[bounded matched positive-workload comparison](hitter-positive-workload-capacity-contract.md)
+on current inputs, keeping appearance and
+batting fixed: deeper histogram trees and matched-capacity LightGBM versus the
+saved shallow conditional head. Earlier unconditional direct-PA and 77-input
+multi-year role comparisons do not settle this conditional-head contrast.
+Preserve whole-player chronology, all non-arrivals, profile gaps and player harms;
+no tuned bins, blanket arrival boost or employment-feature sweep.
+
+**Previous checkpoint: expected versus typical workload reviewed without new fits.**
 The [completed diagnostic](hitter-workload-location-diagnostic-result.md) retains
 all 30,506 forecasts and verifies exact current columns, every saved median,
 26 case heads and thirteen independent scalar CDF crossings. Public median PA
