@@ -2,6 +2,25 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Completed Korean history and international source options
+
+The [complete KBO source review](hitter-kbo-history-source-result.md) supersedes
+the pending collection status below. All twenty seasons from 2005–2024 are
+collected: 6,473 player-season rows, 976,828 PA and 1,460 zero-PA rows. Independent
+reconstruction checks all seventeen count fields per row and reconciles sixteen
+summable fields to official team totals in every season. Seven player source
+walks and sixteen recent English count-line comparisons are complete. The
+combined source suite passes 42 tests and all 31 protected files are unchanged.
+
+The [international source options](international-league-source-options.md) also
+identify official Taiwan, Mexico and Dominican winter sources, without claiming
+their historical downloads are qualified. Full KBO identity mapping, historical
+roles, league/park translation and a matched forecast comparison remain required.
+Kim's missing age/position/foreign history and dated roster context need cutoff
+review, not a forced PA increase. No original forecast, explorer or protected
+outcome changed. Continue the existing integration plan, not a new algorithm
+or closed team-record sweep. Earlier receipts and corrections remain intact.
+
 ## Current checkpoint on Korean source qualification
 
 The [official KBO source test](hitter-kbo-source-probe-result.md) is complete for
