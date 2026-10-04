@@ -1,0 +1,538 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "actual_pa": 1270493,
+    "actual_appearances": 4538,
+    "expected_appearances": 4391.863787413928,
+    "zero_medians": 26424,
+    "scores": {
+      "mean": {
+        "rmse": 60.499101826264365,
+        "mae": 20.61235822996412,
+        "bias": -1.3478241546151608,
+        "total": 1228732.5119559553
+      },
+      "median": {
+        "rmse": 62.54730221382175,
+        "mae": 18.764112288223124,
+        "bias": -5.958548733576093,
+        "total": 1088806.0
+      }
+    }
+  },
+  {
+    "scope": "public",
+    "rows": 2627,
+    "people": 1044,
+    "actual_pa": 660776,
+    "actual_appearances": 2088,
+    "expected_appearances": 2041.5174668228374,
+    "zero_medians": 536,
+    "scores": {
+      "mean": {
+        "rmse": 138.32984746826148,
+        "mae": 106.41075374670471,
+        "bias": -4.36301202314118,
+        "total": 649254.8423971365
+      },
+      "median": {
+        "rmse": 141.00386588267665,
+        "mae": 100.61761758642473,
+        "bias": -19.946328138561665,
+        "total": 608295.0
+      },
+      "steamer": {
+        "rmse": 135.37946341946525,
+        "mae": 92.08284699683804,
+        "bias": 13.030477094490262,
+        "total": 695054.8730400801
+      }
+    }
+  },
+  {
+    "scope": "current_MLB",
+    "rows": 4541,
+    "people": 1521,
+    "actual_pa": 1156856,
+    "actual_appearances": 3596,
+    "expected_appearances": 3547.8661756996835,
+    "zero_medians": 885,
+    "scores": {
+      "mean": {
+        "rmse": 140.95127598087853,
+        "mae": 107.69713732752815,
+        "bias": -5.977975688254114,
+        "total": 1129696.858368429
+      },
+      "median": {
+        "rmse": 144.2098548587226,
+        "mae": 102.34005295935405,
+        "bias": -21.36725384176942,
+        "total": 1059736.0
+      }
+    }
+  },
+  {
+    "scope": "absent_prior_debut",
+    "rows": 1766,
+    "people": 937,
+    "actual_pa": 15309,
+    "actual_appearances": 155,
+    "expected_appearances": 166.96460077785784,
+    "zero_medians": 1715,
+    "scores": {
+      "mean": {
+        "rmse": 43.84429455110618,
+        "mae": 13.138739065535422,
+        "bias": 1.0353348005081338,
+        "total": 17186.64704682621
+      },
+      "median": {
+        "rmse": 45.922321641637836,
+        "mae": 8.35689113176464,
+        "bias": -6.810275620202426,
+        "total": 3237.0
+      }
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "people": 3055,
+    "actual_pa": 92891,
+    "actual_appearances": 730,
+    "expected_appearances": 589.4630023430029,
+    "zero_medians": 5083,
+    "scores": {
+      "mean": {
+        "rmse": 55.12674520539247,
+        "mae": 18.732137202600434,
+        "bias": -3.416978901846813,
+        "total": 74239.03857057953
+      },
+      "median": {
+        "rmse": 60.22801194841451,
+        "mae": 15.665445232161568,
+        "bias": -12.348029341575138,
+        "total": 25451.0
+      }
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "rows": 17852,
+    "people": 8974,
+    "actual_pa": 5194,
+    "actual_appearances": 54,
+    "expected_appearances": 81.99030198386187,
+    "zero_medians": 17849,
+    "scores": {
+      "mean": {
+        "rmse": 7.96636270362901,
+        "mae": 0.6216744545061628,
+        "bias": 0.09588994521125105,
+        "total": 7054.64556931176
+      },
+      "median": {
+        "rmse": 7.96381124957412,
+        "mae": 0.3032602428117583,
+        "bias": -0.2856966796149246,
+        "total": 203.0
+      }
+    }
+  },
+  {
+    "scope": "thin_new_draftee",
+    "rows": 1429,
+    "people": 1429,
+    "actual_pa": 1647,
+    "actual_appearances": 7,
+    "expected_appearances": 7.39167903190059,
+    "zero_medians": 1429,
+    "scores": {
+      "mean": {
+        "rmse": 20.290518195377306,
+        "mae": 1.6197168802101856,
+        "bias": -0.6770185196457744,
+        "total": 746.1939838705712
+      },
+      "median": {
+        "rmse": 20.777070201637443,
+        "mae": 1.1893467267543623,
+        "bias": -1.1893467267543623,
+        "total": 0.0
+      }
+    }
+  },
+  {
+    "scope": "current_PA_1_199",
+    "rows": 2037,
+    "people": 1192,
+    "actual_pa": 220390,
+    "actual_appearances": 1280,
+    "expected_appearances": 1269.1077537246022,
+    "zero_medians": 788,
+    "scores": {
+      "mean": {
+        "rmse": 121.78943595801843,
+        "mae": 86.41546484911221,
+        "bias": -3.2377227959590336,
+        "total": 213812.7264442218
+      },
+      "median": {
+        "rmse": 127.06630985820817,
+        "mae": 78.1411783821068,
+        "bias": -35.949876440670934,
+        "total": 147217.0
+      }
+    }
+  },
+  {
+    "scope": "current_PA_200_399",
+    "rows": 1059,
+    "people": 677,
+    "actual_pa": 263955,
+    "actual_appearances": 907,
+    "expected_appearances": 897.5232716776546,
+    "zero_medians": 79,
+    "scores": {
+      "mean": {
+        "rmse": 157.8487983666854,
+        "mae": 128.75110323629903,
+        "bias": -4.813374219151625,
+        "total": 258980.8944258385
+      },
+      "median": {
+        "rmse": 161.14385406552856,
+        "mae": 126.25582200996216,
+        "bias": -25.914234040491824,
+        "total": 236629.0
+      }
+    }
+  },
+  {
+    "scope": "current_PA_400_599",
+    "rows": 938,
+    "people": 505,
+    "actual_pa": 385438,
+    "actual_appearances": 906,
+    "expected_appearances": 885.5427429050105,
+    "zero_medians": 15,
+    "scores": {
+      "mean": {
+        "rmse": 160.77906738560887,
+        "mae": 130.27826954270577,
+        "bias": -3.1750303872401875,
+        "total": 382930.9616135882
+      },
+      "median": {
+        "rmse": 162.4531824884815,
+        "mae": 129.18415282940788,
+        "bias": 3.2713760345431733,
+        "total": 389036.0
+      }
+    }
+  },
+  {
+    "scope": "current_PA_600_10000",
+    "rows": 507,
+    "people": 243,
+    "actual_pa": 287073,
+    "actual_appearances": 503,
+    "expected_appearances": 495.6924073924167,
+    "zero_medians": 3,
+    "scores": {
+      "mean": {
+        "rmse": 136.31599891631097,
+        "mae": 107.95887483761737,
+        "bias": -26.66799828913032,
+        "total": 273972.2758847804
+      },
+      "median": {
+        "rmse": 135.5905867887961,
+        "mae": 100.21999515129055,
+        "bias": -1.3338851023475724,
+        "total": 286854.0
+      }
+    }
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "people": 4663,
+    "actual_pa": 179968,
+    "actual_appearances": 624,
+    "expected_appearances": 623.4261676611462,
+    "zero_medians": 4073,
+    "scores": {
+      "mean": {
+        "rmse": 57.64805285415668,
+        "mae": 18.69264024690857,
+        "bias": -1.7711269022873755,
+        "total": 171709.23525463397
+      },
+      "median": {
+        "rmse": 60.001560134123544,
+        "mae": 17.14625777396526,
+        "bias": -6.098005575809565,
+        "total": 151533.0
+      }
+    }
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "people": 4691,
+    "actual_pa": 179643,
+    "actual_appearances": 628,
+    "expected_appearances": 616.2927241842597,
+    "zero_medians": 4123,
+    "scores": {
+      "mean": {
+        "rmse": 56.64522304623441,
+        "mae": 18.133965410644336,
+        "bias": -1.135480311262141,
+        "total": 174316.4618598693
+      },
+      "median": {
+        "rmse": 58.51089136598157,
+        "mae": 16.734384992538903,
+        "bias": -4.98635685354935,
+        "total": 156252.0
+      }
+    }
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "people": 4478,
+    "actual_pa": 181308,
+    "actual_appearances": 638,
+    "expected_appearances": 615.0841701700679,
+    "zero_medians": 3895,
+    "scores": {
+      "mean": {
+        "rmse": 62.439701424293254,
+        "mae": 20.15274309227662,
+        "bias": -2.0551587779609526,
+        "total": 172104.99899229084
+      },
+      "median": {
+        "rmse": 65.09615658778263,
+        "mae": 18.6681554265297,
+        "bias": -6.082626172398392,
+        "total": 154070.0
+      }
+    }
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "people": 4242,
+    "actual_pa": 181583,
+    "actual_appearances": 686,
+    "expected_appearances": 581.3609535170974,
+    "zero_medians": 3694,
+    "scores": {
+      "mean": {
+        "rmse": 59.3075589663477,
+        "mae": 20.099963073205597,
+        "bias": -3.956841957397314,
+        "total": 164798.0764167206
+      },
+      "median": {
+        "rmse": 62.40496216019953,
+        "mae": 19.00966525223951,
+        "bias": -8.49057048561999,
+        "total": 145566.0
+      }
+    }
+  },
+  {
+    "scope": "public_origin_2021",
+    "rows": 647,
+    "people": 647,
+    "actual_pa": 160811,
+    "actual_appearances": 511,
+    "expected_appearances": 487.38649184245463,
+    "zero_medians": 142,
+    "scores": {
+      "mean": {
+        "rmse": 131.47690822757903,
+        "mae": 99.1587522701076,
+        "bias": -12.440811346482247,
+        "total": 152761.79505882598
+      },
+      "median": {
+        "rmse": 136.07935906266505,
+        "mae": 95.72797527047913,
+        "bias": -28.704791344667697,
+        "total": 142239.0
+      },
+      "steamer": {
+        "rmse": 143.60799796019458,
+        "mae": 97.20429052783311,
+        "bias": 23.379442796456573,
+        "total": 175937.4994893074
+      }
+    }
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "people": 4244,
+    "actual_pa": 182917,
+    "actual_appearances": 649,
+    "expected_appearances": 641.2617474184858,
+    "zero_medians": 3662,
+    "scores": {
+      "mean": {
+        "rmse": 61.955860968798426,
+        "mae": 21.510162043414077,
+        "bias": -1.3247391391457195,
+        "total": 177294.80709346556
+      },
+      "median": {
+        "rmse": 64.28050092559947,
+        "mae": 19.42530631479736,
+        "bias": -6.556786050895382,
+        "total": 155090.0
+      }
+    }
+  },
+  {
+    "scope": "public_origin_2022",
+    "rows": 681,
+    "people": 681,
+    "actual_pa": 166122,
+    "actual_appearances": 526,
+    "expected_appearances": 511.7516266471585,
+    "zero_medians": 170,
+    "scores": {
+      "mean": {
+        "rmse": 138.162566087966,
+        "mae": 103.46932376396204,
+        "bias": -6.913287077330274,
+        "total": 161414.05150033807
+      },
+      "median": {
+        "rmse": 142.1259653078363,
+        "mae": 98.03964757709251,
+        "bias": -23.2143906020558,
+        "total": 150313.0
+      },
+      "steamer": {
+        "rmse": 130.23673251790154,
+        "mae": 86.68591672488421,
+        "bias": 14.570048024825939,
+        "total": 176044.20270490646
+      }
+    }
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "people": 4196,
+    "actual_pa": 182194,
+    "actual_appearances": 647,
+    "expected_appearances": 667.3895516797581,
+    "zero_medians": 3593,
+    "scores": {
+      "mean": {
+        "rmse": 62.465861419786485,
+        "mae": 22.694332851213332,
+        "bias": 1.0151418628993178,
+        "total": 186453.53525672553
+      },
+      "median": {
+        "rmse": 63.395448107894644,
+        "mae": 19.783603431839847,
+        "bias": -4.279313632030505,
+        "total": 164238.0
+      }
+    }
+  },
+  {
+    "scope": "public_origin_2023",
+    "rows": 652,
+    "people": 652,
+    "actual_pa": 167741,
+    "actual_appearances": 515,
+    "expected_appearances": 521.7720320515634,
+    "zero_medians": 122,
+    "scores": {
+      "mean": {
+        "rmse": 145.3395711568556,
+        "mae": 113.90188327547308,
+        "bias": 1.073854731012696,
+        "total": 168441.15328462026
+      },
+      "median": {
+        "rmse": 147.05557982709195,
+        "mae": 106.25153374233129,
+        "bias": -14.122699386503067,
+        "total": 158533.0
+      },
+      "steamer": {
+        "rmse": 142.70144681152934,
+        "mae": 94.0085020474861,
+        "bias": 12.123337339038498,
+        "total": 175645.4159450531
+      }
+    }
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "people": 3992,
+    "actual_pa": 182880,
+    "actual_appearances": 666,
+    "expected_appearances": 647.0484727831126,
+    "zero_medians": 3384,
+    "scores": {
+      "mean": {
+        "rmse": 62.70880755409797,
+        "mae": 23.00270089208631,
+        "bias": -0.2065638571519394,
+        "total": 182055.39708224946
+      },
+      "median": {
+        "rmse": 63.8638311398221,
+        "mae": 20.581412825651302,
+        "bias": -5.216182364729459,
+        "total": 162057.0
+      }
+    }
+  },
+  {
+    "scope": "public_origin_2024",
+    "rows": 647,
+    "people": 647,
+    "actual_pa": 166102,
+    "actual_appearances": 536,
+    "expected_appearances": 520.6073162816609,
+    "zero_medians": 102,
+    "scores": {
+      "mean": {
+        "rmse": 137.99247730661426,
+        "mae": 109.11305567727611,
+        "bias": 0.8281956002351079,
+        "total": 166637.8425533521
+      },
+      "median": {
+        "rmse": 138.5122205423306,
+        "mae": 102.45131375579598,
+        "bias": -13.743431221020092,
+        "total": 157210.0
+      },
+      "steamer": {
+        "rmse": 123.9428495952505,
+        "mae": 90.43267868714871,
+        "bias": 2.0490802176400353,
+        "total": 167427.7549008131
+      }
+    }
+  }
+]

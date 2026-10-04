@@ -24,7 +24,23 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: local hitter research explorer and model card verified.**
+**Current checkpoint: expected versus typical workload reviewed without new fits.**
+The [completed diagnostic](hitter-workload-location-diagnostic-result.md) retains
+all 30,506 forecasts and verifies exact current columns, every saved median,
+26 case heads and thirteen independent scalar CDF crossings. Public median PA
+reduces absolute error 106.411 to 100.618, versus Steamer 92.083, but worsens
+RMSE 138.330 to 141.004 and lowers totals to 608,295 versus 660,776 actual.
+The mean-MAE practical threshold remains unmet; a different summary does not
+improve expected player value or establish what Steamer reports. Thirteen actual
+walks retain Judge/Castro/Votto gains, Solano/McLain harms, Kurtz/Reynolds entry
+misses, Tatis return error and Belt's reasonable nonzero forecast. No new fits,
+point forecast changes, explorer changes or protected outcome access. Next make
+a fixed-cohort error budget across participation, active workload and hitting
+yield, reconciling completed specialized-workload, employment, direct-value and
+arrival-history tests before choosing a structural repair. No median routing,
+generic PA boost or repeated marginal feature sweep. The whole goal stays active.
+
+**Previous checkpoint: local hitter research explorer and model card verified.**
 The [plain-language model card](hitter-research-candidate-model-card.md) explains
 the current 199-input hitting model, 251-input opportunity heads, common offense
 units and selected integer-count risk. The separate local explorer at
