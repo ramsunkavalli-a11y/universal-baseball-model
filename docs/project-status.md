@@ -24,7 +24,27 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: team-record opportunity comparison completed; no promotion.**
+**Current checkpoint: delivered-value integration comparison underway.**
+The [fixed comparison](hitter-value-integration-v76-contract.md) tests direct
+signed contribution, current arrival probability times active contribution,
+and coherent expected event counts, using the same fresh rankings and
+fold/own-origin translated evidence. The [eight-case source review](hitter-value-integration-v76-source-review.md)
+reconstructs all 63,282 responses and verifies 70 full/active checks plus 105
+current saved-head replays before new fits. All 30,506 forecasts remain; the
+272 predictor columns exclude future environment and outcomes. The source
+and scoring gates are sealed; the 350 fixed heads are being fitted/replayed.
+No new predictive disposition or candidate change is authorized yet.
+The [pre-score environment sensitivity](hitter-value-integration-v76-environment-supplement.md)
+separates common-origin production from season-relative contribution without
+giving forecasts the future league average. The existing ZiPS artifact has
+rate, not PA context; no ZiPS season value is invented. Raw origin-only peer
+matching now includes upper-level exposure and production profile. After the
+fits, independently score/replay and complete actual player reviews before
+selecting any next experiment. Full/active sparse profiles, foreign/roster-only
+coverage, public snapshot dates and uncertainty remain qualified. Current
+candidate, explorer, protected 2026 and frozen forecast are unchanged.
+
+**Previous checkpoint: team-record opportunity comparison completed; no promotion.**
 The user's hypothesis now has a [completed result and sixteen actual player reviews](hitter-team-record-v75-result.md),
 following the [locked contract](hitter-team-record-v75-contract.md),
 [reviewed dated source](hitter-team-record-v75-source-review.md) and
