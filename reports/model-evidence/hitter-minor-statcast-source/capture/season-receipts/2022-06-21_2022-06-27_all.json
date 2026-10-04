@@ -1,0 +1,87 @@
+{
+  "start": "2022-06-21",
+  "end": "2022-06-27",
+  "tracked_flag": false,
+  "requested_url": "https://baseballsavant.mlb.com/statcast-search-minors/csv?all=true&player_type=batter&hfGT=R%7C&game_date_gt=2022-06-21&game_date_lt=2022-06-27&type=details&minors=true&hfPR=hit%5C.%5C.into%5C.%5C.play%7C",
+  "returned_url": "https://baseballsavant.mlb.com/statcast-search-minors/csv?all=true&player_type=batter&hfGT=R%7C&game_date_gt=2022-06-21&game_date_lt=2022-06-27&type=details&minors=true&hfPR=hit%5C.%5C.into%5C.%5C.play%7C",
+  "captured_at": "2026-10-04 18:41:51.565491+00:00",
+  "response_sha256": "5928bd0840ba37d214e4a6f5c9f7cfb21a6bac4a893bdb0562ba432399ddc4ef",
+  "response_bytes": 3288707,
+  "contract_sha256": "4dd179bcd8186c7c7f499f6c3c1c77f07a0cc4f1f9dfb0eeedaf640353c45ac7",
+  "amendment_sha256": "ac29ba6e3584e4dd55b4158b16248a8667139afefc46a1c1be8bba8e0f73971c",
+  "collector_sha256": "9ddda6214700aa1bef9c6a4294a7745a8fac3d4d373d6f6f44a0fd043ec1512f",
+  "module_sha256": "18fbd52d1e93418fb3ed5141b3b75fd90ddb064122b239fe7c7a0f36c93e01be",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-minor-statcast-capture\\seasons\\2022-06-21_2022-06-27_all.csv.gz": "08ac2e60fa328ea39458d7969f0bdf2f7afafb4a3f79b6dc3f80c7f1ccc88ec1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-minor-statcast-capture\\seasons\\2022-06-21_2022-06-27_all.parquet": "440f3fb4f82913030f8f1b2830df03faf07f374d66557d1e7d19130f3bf85bd5"
+  },
+  "reused_rejected_response": null,
+  "model_fits": 0,
+  "protected_outcomes_used": false,
+  "raw_rows": 5688,
+  "terminal_rows": 5688,
+  "capped": false,
+  "accepted": true,
+  "returned_date_min": "2022-06-21",
+  "returned_date_max": "2022-06-26",
+  "games": 119,
+  "events": [
+    {
+      "events": "double",
+      "len": 406
+    },
+    {
+      "events": "double_play",
+      "len": 26
+    },
+    {
+      "events": "field_error",
+      "len": 67
+    },
+    {
+      "events": "field_out",
+      "len": 3158
+    },
+    {
+      "events": "fielders_choice",
+      "len": 15
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 10
+    },
+    {
+      "events": "force_out",
+      "len": 183
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 165
+    },
+    {
+      "events": "home_run",
+      "len": 240
+    },
+    {
+      "events": "sac_bunt",
+      "len": 15
+    },
+    {
+      "events": "sac_fly",
+      "len": 59
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 2
+    },
+    {
+      "events": "single",
+      "len": 1294
+    },
+    {
+      "events": "triple",
+      "len": 48
+    }
+  ],
+  "nonterminal_rows": 0
+}

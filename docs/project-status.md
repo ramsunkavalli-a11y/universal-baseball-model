@@ -78,6 +78,26 @@ The next Statcast phase is covered minor-source recovery and league/source
 calibration, using this MLB-only candidate and the existing prospect alternative
 as separate benchmarks. No additional college collection or team-record testing.
 
+Additive completion: the [minor source recovery and player review](hitter-minor-statcast-source-result.md)
+recovers 361,530 complete 2021–24 pairs. All covered league games match official
+schedules, twenty-four count residuals are explained, six split parks are assigned
+per PA and 4,255 annual summaries are independently checked. The older eleven
+weekly pitcher extracts hit the 25,000-pitch cap and are not full histories;
+preserve them rather than reusing or overwriting them. Eleven player-origin walks
+replay the current rate heads and retain gains/misses, sparse samples, untracked
+prospects and original peers. No new predictive fit or forecast/explorer change.
+
+The corrected source is qualified for a bounded future-MLB experiment, not
+universal tracking or profile validation. Earlier folds have no mature tracked
+minor labels; 2022 Triple-A has none, and 2022 International measurements cover
+only 5.4% of terminal nonbunt opportunities. Langford's coarse AAA peers have only
+1–5 AAA PA, so level labels cannot certify comparable support. The next contrast
+must learn league-specific measurements inside held-player chronological training,
+explicitly handle absent/sparse contexts and retain the existing MLB-only and
+positive prospect benchmarks. Freeze that contract before fits. Do not rerun
+the closed MLB algorithm contrast, old contact-shape challengers or team record.
+The overall hitter-model goal remains active and unresolved.
+
 The mature lower-level follow-up and shared development-rate comparisons already
 exist. Their source/target findings must be carried forward, not rediscovered by
 another age-to-peak or shared-horizon sweep. Own-MLB contact representation,
