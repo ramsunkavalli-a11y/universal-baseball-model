@@ -56,3 +56,17 @@ tests/test_hitter_statcast_history.py -text -eol
 reports/model-evidence/hitter-statcast-historical-capture/** -text -eol
 scripts/audit_hitter_statcast_capture.py -text -eol
 docs/hitter-statcast-historical-capture-result.md -text -eol
+reports/model-evidence/hitter-statcast-full-history/** -text -eol
+docs/hitter-statcast-official-context-contract.md -text -eol
+docs/hitter-statcast-played-venue-amendment.md -text -eol
+docs/hitter-statcast-measurement-boundary.md -text -eol
+docs/hitter-statcast-full-history-review.md -text -eol
+scripts/capture_hitter_statcast_official_context.py -text -eol
+scripts/resume_hitter_statcast_official_context.py -text -eol
+scripts/resume_hitter_statcast_official_context_v2.py -text -eol
+scripts/resume_hitter_statcast_official_context_v3.py -text -eol
+scripts/review_hitter_statcast_contact_residuals.py -text -eol
+scripts/materialize_hitter_statcast_full_history.py -text -eol
+scripts/finalize_hitter_statcast_full_history.py -text -eol
+src/universal_baseball/hitter_statcast_measurement.py -text -eol
+tests/test_hitter_statcast_measurement.py -text -eol

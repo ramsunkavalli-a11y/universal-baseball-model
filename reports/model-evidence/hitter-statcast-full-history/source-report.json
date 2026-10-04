@@ -1,0 +1,1357 @@
+{
+  "source_only": true,
+  "new_model_fits": 0,
+  "forecasts_changed": false,
+  "protected_outcomes_used": false,
+  "source_walkthrough_status": "pending_readable_review",
+  "source_approval": false,
+  "years": [
+    {
+      "season": 2015,
+      "nonbunt_contacts": 128184,
+      "complete_pairs": 125365,
+      "missing_pairs": 2819,
+      "people": 896,
+      "games": 2429,
+      "interference_awards": 1,
+      "exact_corrected_normal_contact_reconciliation": true,
+      "split_game_venue_contacts": []
+    },
+    {
+      "season": 2016,
+      "nonbunt_contacts": 126796,
+      "complete_pairs": 124625,
+      "missing_pairs": 2171,
+      "people": 892,
+      "games": 2428,
+      "interference_awards": 3,
+      "exact_corrected_normal_contact_reconciliation": true,
+      "split_game_venue_contacts": []
+    },
+    {
+      "season": 2017,
+      "nonbunt_contacts": 125761,
+      "complete_pairs": 124974,
+      "missing_pairs": 787,
+      "people": 894,
+      "games": 2430,
+      "interference_awards": 0,
+      "exact_corrected_normal_contact_reconciliation": true,
+      "split_game_venue_contacts": []
+    },
+    {
+      "season": 2018,
+      "nonbunt_contacts": 124549,
+      "complete_pairs": 123826,
+      "missing_pairs": 723,
+      "people": 898,
+      "games": 2431,
+      "interference_awards": 1,
+      "exact_corrected_normal_contact_reconciliation": true,
+      "split_game_venue_contacts": []
+    },
+    {
+      "season": 2019,
+      "nonbunt_contacts": 124233,
+      "complete_pairs": 123272,
+      "missing_pairs": 961,
+      "people": 895,
+      "games": 2429,
+      "interference_awards": 1,
+      "exact_corrected_normal_contact_reconciliation": true,
+      "split_game_venue_contacts": [
+        {
+          "game_pk": 565534,
+          "venue_id": 10,
+          "venue_name": "Oakland Coliseum",
+          "len": 8
+        },
+        {
+          "game_pk": 565534,
+          "venue_id": 2394,
+          "venue_name": "Comerica Park",
+          "len": 44
+        }
+      ]
+    },
+    {
+      "season": 2020,
+      "nonbunt_contacts": 43598,
+      "complete_pairs": 43301,
+      "missing_pairs": 297,
+      "people": 575,
+      "games": 898,
+      "interference_awards": 0,
+      "exact_corrected_normal_contact_reconciliation": true,
+      "split_game_venue_contacts": [
+        {
+          "game_pk": 630882,
+          "venue_id": 2,
+          "venue_name": "Oriole Park at Camden Yards",
+          "len": 14
+        },
+        {
+          "game_pk": 630882,
+          "venue_id": 3309,
+          "venue_name": "Nationals Park",
+          "len": 32
+        }
+      ]
+    },
+    {
+      "season": 2021,
+      "nonbunt_contacts": 120286,
+      "complete_pairs": 119919,
+      "missing_pairs": 367,
+      "people": 923,
+      "games": 2429,
+      "interference_awards": 1,
+      "exact_corrected_normal_contact_reconciliation": true,
+      "split_game_venue_contacts": [
+        {
+          "game_pk": 633224,
+          "venue_id": 2680,
+          "venue_name": "Petco Park",
+          "len": 12
+        },
+        {
+          "game_pk": 633224,
+          "venue_id": 4705,
+          "venue_name": "Truist Park",
+          "len": 27
+        }
+      ]
+    },
+    {
+      "season": 2022,
+      "nonbunt_contacts": 123209,
+      "complete_pairs": 122683,
+      "missing_pairs": 526,
+      "people": 685,
+      "games": 2430,
+      "interference_awards": 0,
+      "exact_corrected_normal_contact_reconciliation": true,
+      "split_game_venue_contacts": []
+    },
+    {
+      "season": 2023,
+      "nonbunt_contacts": 123206,
+      "complete_pairs": 122857,
+      "missing_pairs": 349,
+      "people": 650,
+      "games": 2430,
+      "interference_awards": 0,
+      "exact_corrected_normal_contact_reconciliation": "previous_accepted_pilot",
+      "split_game_venue_contacts": []
+    },
+    {
+      "season": 2024,
+      "nonbunt_contacts": 123095,
+      "complete_pairs": 122732,
+      "missing_pairs": 363,
+      "people": 647,
+      "games": 2429,
+      "interference_awards": 0,
+      "exact_corrected_normal_contact_reconciliation": "previous_accepted_pilot",
+      "split_game_venue_contacts": []
+    }
+  ],
+  "actual_fold_support": [
+    {
+      "origin_year": 2016,
+      "fold": 0,
+      "active_training_rows": 404,
+      "active_training_people": 404,
+      "tracked_test_people": 148,
+      "training_origins": [
+        2015
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 209
+        },
+        {
+          "sample_band": "under50",
+          "people": 79
+        },
+        {
+          "sample_band": "50to199",
+          "people": 116
+        }
+      ]
+    },
+    {
+      "origin_year": 2016,
+      "fold": 1,
+      "active_training_rows": 416,
+      "active_training_people": 416,
+      "tracked_test_people": 142,
+      "training_origins": [
+        2015
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 121
+        },
+        {
+          "sample_band": "200plus",
+          "people": 214
+        },
+        {
+          "sample_band": "under50",
+          "people": 81
+        }
+      ]
+    },
+    {
+      "origin_year": 2016,
+      "fold": 2,
+      "active_training_rows": 406,
+      "active_training_people": 406,
+      "tracked_test_people": 141,
+      "training_origins": [
+        2015
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 204
+        },
+        {
+          "sample_band": "under50",
+          "people": 78
+        },
+        {
+          "sample_band": "50to199",
+          "people": 124
+        }
+      ]
+    },
+    {
+      "origin_year": 2016,
+      "fold": 3,
+      "active_training_rows": 403,
+      "active_training_people": 403,
+      "tracked_test_people": 147,
+      "training_origins": [
+        2015
+      ],
+      "sample_support": [
+        {
+          "sample_band": "under50",
+          "people": 73
+        },
+        {
+          "sample_band": "50to199",
+          "people": 130
+        },
+        {
+          "sample_band": "200plus",
+          "people": 200
+        }
+      ]
+    },
+    {
+      "origin_year": 2016,
+      "fold": 4,
+      "active_training_rows": 407,
+      "active_training_people": 407,
+      "tracked_test_people": 152,
+      "training_origins": [
+        2015
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 213
+        },
+        {
+          "sample_band": "under50",
+          "people": 69
+        },
+        {
+          "sample_band": "50to199",
+          "people": 125
+        }
+      ]
+    },
+    {
+      "origin_year": 2017,
+      "fold": 0,
+      "active_training_rows": 813,
+      "active_training_people": 491,
+      "tracked_test_people": 155,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 178
+        },
+        {
+          "sample_band": "200plus",
+          "people": 294
+        },
+        {
+          "sample_band": "under50",
+          "people": 118
+        }
+      ]
+    },
+    {
+      "origin_year": 2017,
+      "fold": 1,
+      "active_training_rows": 823,
+      "active_training_people": 492,
+      "tracked_test_people": 166,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 176
+        },
+        {
+          "sample_band": "200plus",
+          "people": 297
+        },
+        {
+          "sample_band": "under50",
+          "people": 116
+        }
+      ]
+    },
+    {
+      "origin_year": 2017,
+      "fold": 2,
+      "active_training_rows": 801,
+      "active_training_people": 484,
+      "tracked_test_people": 165,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 182
+        },
+        {
+          "sample_band": "under50",
+          "people": 112
+        },
+        {
+          "sample_band": "200plus",
+          "people": 287
+        }
+      ]
+    },
+    {
+      "origin_year": 2017,
+      "fold": 3,
+      "active_training_rows": 814,
+      "active_training_people": 489,
+      "tracked_test_people": 156,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 183
+        },
+        {
+          "sample_band": "under50",
+          "people": 117
+        },
+        {
+          "sample_band": "200plus",
+          "people": 288
+        }
+      ]
+    },
+    {
+      "origin_year": 2017,
+      "fold": 4,
+      "active_training_rows": 817,
+      "active_training_people": 492,
+      "tracked_test_people": 159,
+      "training_origins": [
+        2015,
+        2016
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 185
+        },
+        {
+          "sample_band": "under50",
+          "people": 109
+        },
+        {
+          "sample_band": "200plus",
+          "people": 302
+        }
+      ]
+    },
+    {
+      "origin_year": 2018,
+      "fold": 0,
+      "active_training_rows": 1236,
+      "active_training_people": 573,
+      "tracked_test_people": 153,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 349
+        },
+        {
+          "sample_band": "50to199",
+          "people": 229
+        },
+        {
+          "sample_band": "under50",
+          "people": 163
+        }
+      ]
+    },
+    {
+      "origin_year": 2018,
+      "fold": 1,
+      "active_training_rows": 1252,
+      "active_training_people": 568,
+      "tracked_test_people": 151,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 359
+        },
+        {
+          "sample_band": "under50",
+          "people": 159
+        },
+        {
+          "sample_band": "50to199",
+          "people": 219
+        }
+      ]
+    },
+    {
+      "origin_year": 2018,
+      "fold": 2,
+      "active_training_rows": 1208,
+      "active_training_people": 559,
+      "tracked_test_people": 167,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "sample_support": [
+        {
+          "sample_band": "under50",
+          "people": 153
+        },
+        {
+          "sample_band": "50to199",
+          "people": 224
+        },
+        {
+          "sample_band": "200plus",
+          "people": 350
+        }
+      ]
+    },
+    {
+      "origin_year": 2018,
+      "fold": 3,
+      "active_training_rows": 1237,
+      "active_training_people": 567,
+      "tracked_test_people": 154,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 233
+        },
+        {
+          "sample_band": "200plus",
+          "people": 347
+        },
+        {
+          "sample_band": "under50",
+          "people": 161
+        }
+      ]
+    },
+    {
+      "origin_year": 2018,
+      "fold": 4,
+      "active_training_rows": 1247,
+      "active_training_people": 573,
+      "tracked_test_people": 154,
+      "training_origins": [
+        2015,
+        2016,
+        2017
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 235
+        },
+        {
+          "sample_band": "under50",
+          "people": 156
+        },
+        {
+          "sample_band": "200plus",
+          "people": 359
+        }
+      ]
+    },
+    {
+      "origin_year": 2021,
+      "fold": 0,
+      "active_training_rows": 2098,
+      "active_training_people": 778,
+      "tracked_test_people": 143,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 353
+        },
+        {
+          "sample_band": "200plus",
+          "people": 475
+        },
+        {
+          "sample_band": "under50",
+          "people": 255
+        }
+      ]
+    },
+    {
+      "origin_year": 2021,
+      "fold": 1,
+      "active_training_rows": 2145,
+      "active_training_people": 773,
+      "tracked_test_people": 141,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 346
+        },
+        {
+          "sample_band": "200plus",
+          "people": 481
+        },
+        {
+          "sample_band": "under50",
+          "people": 250
+        }
+      ]
+    },
+    {
+      "origin_year": 2021,
+      "fold": 2,
+      "active_training_rows": 2024,
+      "active_training_people": 742,
+      "tracked_test_people": 181,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 332
+        },
+        {
+          "sample_band": "200plus",
+          "people": 459
+        },
+        {
+          "sample_band": "under50",
+          "people": 248
+        }
+      ]
+    },
+    {
+      "origin_year": 2021,
+      "fold": 3,
+      "active_training_rows": 2110,
+      "active_training_people": 770,
+      "tracked_test_people": 152,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "sample_support": [
+        {
+          "sample_band": "under50",
+          "people": 253
+        },
+        {
+          "sample_band": "50to199",
+          "people": 360
+        },
+        {
+          "sample_band": "200plus",
+          "people": 473
+        }
+      ]
+    },
+    {
+      "origin_year": 2021,
+      "fold": 4,
+      "active_training_rows": 2115,
+      "active_training_people": 777,
+      "tracked_test_people": 149,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 488
+        },
+        {
+          "sample_band": "under50",
+          "people": 246
+        },
+        {
+          "sample_band": "50to199",
+          "people": 361
+        }
+      ]
+    },
+    {
+      "origin_year": 2022,
+      "fold": 0,
+      "active_training_rows": 2524,
+      "active_training_people": 843,
+      "tracked_test_people": 146,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 409
+        },
+        {
+          "sample_band": "under50",
+          "people": 291
+        },
+        {
+          "sample_band": "200plus",
+          "people": 532
+        }
+      ]
+    },
+    {
+      "origin_year": 2022,
+      "fold": 1,
+      "active_training_rows": 2574,
+      "active_training_people": 832,
+      "tracked_test_people": 159,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 534
+        },
+        {
+          "sample_band": "under50",
+          "people": 287
+        },
+        {
+          "sample_band": "50to199",
+          "people": 393
+        }
+      ]
+    },
+    {
+      "origin_year": 2022,
+      "fold": 2,
+      "active_training_rows": 2427,
+      "active_training_people": 805,
+      "tracked_test_people": 184,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 386
+        },
+        {
+          "sample_band": "under50",
+          "people": 284
+        },
+        {
+          "sample_band": "200plus",
+          "people": 511
+        }
+      ]
+    },
+    {
+      "origin_year": 2022,
+      "fold": 3,
+      "active_training_rows": 2527,
+      "active_training_people": 829,
+      "tracked_test_people": 172,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 531
+        },
+        {
+          "sample_band": "under50",
+          "people": 281
+        },
+        {
+          "sample_band": "50to199",
+          "people": 416
+        }
+      ]
+    },
+    {
+      "origin_year": 2022,
+      "fold": 4,
+      "active_training_rows": 2540,
+      "active_training_people": 843,
+      "tracked_test_people": 154,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "sample_support": [
+        {
+          "sample_band": "under50",
+          "people": 281
+        },
+        {
+          "sample_band": "200plus",
+          "people": 548
+        },
+        {
+          "sample_band": "50to199",
+          "people": 420
+        }
+      ]
+    },
+    {
+      "origin_year": 2023,
+      "fold": 0,
+      "active_training_rows": 2958,
+      "active_training_people": 939,
+      "tracked_test_people": 155,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 472
+        },
+        {
+          "sample_band": "200plus",
+          "people": 591
+        },
+        {
+          "sample_band": "under50",
+          "people": 330
+        }
+      ]
+    },
+    {
+      "origin_year": 2023,
+      "fold": 1,
+      "active_training_rows": 3008,
+      "active_training_people": 927,
+      "tracked_test_people": 167,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 584
+        },
+        {
+          "sample_band": "under50",
+          "people": 329
+        },
+        {
+          "sample_band": "50to199",
+          "people": 455
+        }
+      ]
+    },
+    {
+      "origin_year": 2023,
+      "fold": 2,
+      "active_training_rows": 2841,
+      "active_training_people": 899,
+      "tracked_test_people": 187,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "sample_support": [
+        {
+          "sample_band": "under50",
+          "people": 325
+        },
+        {
+          "sample_band": "200plus",
+          "people": 562
+        },
+        {
+          "sample_band": "50to199",
+          "people": 448
+        }
+      ]
+    },
+    {
+      "origin_year": 2023,
+      "fold": 3,
+      "active_training_rows": 2957,
+      "active_training_people": 926,
+      "tracked_test_people": 176,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 588
+        },
+        {
+          "sample_band": "50to199",
+          "people": 465
+        },
+        {
+          "sample_band": "under50",
+          "people": 330
+        }
+      ]
+    },
+    {
+      "origin_year": 2023,
+      "fold": 4,
+      "active_training_rows": 2988,
+      "active_training_people": 945,
+      "tracked_test_people": 158,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "sample_support": [
+        {
+          "sample_band": "under50",
+          "people": 326
+        },
+        {
+          "sample_band": "50to199",
+          "people": 484
+        },
+        {
+          "sample_band": "200plus",
+          "people": 607
+        }
+      ]
+    },
+    {
+      "origin_year": 2024,
+      "fold": 0,
+      "active_training_rows": 3394,
+      "active_training_people": 1020,
+      "tracked_test_people": 151,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 644
+        },
+        {
+          "sample_band": "50to199",
+          "people": 525
+        },
+        {
+          "sample_band": "under50",
+          "people": 365
+        }
+      ]
+    },
+    {
+      "origin_year": 2024,
+      "fold": 1,
+      "active_training_rows": 3429,
+      "active_training_people": 998,
+      "tracked_test_people": 173,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "sample_support": [
+        {
+          "sample_band": "200plus",
+          "people": 645
+        },
+        {
+          "sample_band": "50to199",
+          "people": 502
+        },
+        {
+          "sample_band": "under50",
+          "people": 358
+        }
+      ]
+    },
+    {
+      "origin_year": 2024,
+      "fold": 2,
+      "active_training_rows": 3260,
+      "active_training_people": 975,
+      "tracked_test_people": 177,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 497
+        },
+        {
+          "sample_band": "under50",
+          "people": 354
+        },
+        {
+          "sample_band": "200plus",
+          "people": 616
+        }
+      ]
+    },
+    {
+      "origin_year": 2024,
+      "fold": 3,
+      "active_training_rows": 3387,
+      "active_training_people": 1005,
+      "tracked_test_people": 167,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "sample_support": [
+        {
+          "sample_band": "50to199",
+          "people": 521
+        },
+        {
+          "sample_band": "200plus",
+          "people": 641
+        },
+        {
+          "sample_band": "under50",
+          "people": 362
+        }
+      ]
+    },
+    {
+      "origin_year": 2024,
+      "fold": 4,
+      "active_training_rows": 3434,
+      "active_training_people": 1022,
+      "tracked_test_people": 154,
+      "training_origins": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "sample_support": [
+        {
+          "sample_band": "under50",
+          "people": 361
+        },
+        {
+          "sample_band": "50to199",
+          "people": 531
+        },
+        {
+          "sample_band": "200plus",
+          "people": 666
+        }
+      ]
+    }
+  ],
+  "complete_pairs_total": 1153554,
+  "provider_imputation_flags_available": false,
+  "original_publication_vintage_known": false,
+  "raw_metrics_not_park_or_opponent_adjusted": true,
+  "source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-statcast-measurement-boundary.md": "1423e43c87e717d9e12b69a5d7842975967094bebec3f290baececa4801c9e44",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\materialize_hitter_statcast_full_history.py": "16d01beaeca71ee36ce415a0e3cfbd5e8bbe7c19ce507d8a0387c880a508655f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_statcast_measurement.py": "1bf2812ce27e6b060a37ce467fb718fb74d81363a911d3740ccb42c15dde88b6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_statcast_history.py": "c5f3f6fdf09e8b968c494c45abdfcfd114bdeb970ee6331b6abd70ea8712d734",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\report.json": "a721e8e7f48808d1a021f828c46a4db65a0f5a37fe8f4be2bc7306f792b991d9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\capture-report.json": "2e0072b6c384bda1b779b05d47c8df3112887fd20b05d6cd70e05d47f2a762c1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\contact-residual-play-review.json": "0748359870e787ee4aa53bb60e93ddd05eb129fc1872673631fe59c5eaeecfb0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-history\\source-report.json": "cc5395b5e3319ac6057fdce227351bcd2fc0a5f6ca33a544d62bf062ca78b48f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\cases.json": "b369fbe2d1cc40f91b5cf93eeab84f578ba10254c2b21d4fc27df315120c6884",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\features.parquet": "a9c1bc927adcbb07742080297e2c513ec2de1a5800d2d5e9b01652cd828ffcfc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\preflight.json": "a6f4ab4548193194a95d878c462edee6dc1d9ce7b3a81a15ed93f1fed8e2429a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-schedule-review-2015.json": "94fb019d9c4da2ac1e523906824cfb9114345a9064c7c61e166477659ea863b1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-schedule-review-2016.json": "c7be94790d0d807004f446b5398fe9a6f943b13970b5a902475392ae11cc786c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-schedule-review-2017.json": "e7aa84e3f17320387c4c19faf8329ce3c2e0d974d91d77b847dc1dc8b0ef7c79",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-schedule-review-2018.json": "07039f91939d5d5e766a8a26dc3ea660c7643563a6dc7a38197cdaa99cf2df5c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-schedule-review-2019.json": "fa5726e8c5cdc7da364e99b434fb14438a973a2b34e6c923d5761a77ac4b77c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-schedule-review-2020.json": "24bcf69ddbcfe4fb4245eec4fc91364aed13fc3720d1085cbd60a9bab17a3411",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-schedule-review-2021.json": "3a8994bcf5a3ea50b5e8bc4fac796d5447c54efa4f0e5e98bde43eb4a1ef8b73",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-schedule-review-2022.json": "5cf6355a9e525bf40a9539c55b7bf4488c366554104897584e91ba7f3c1fdaf0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-venues-2015.parquet": "96a3cabe5ecdc5adb742ecae105bd9c35f5cb900affd089750b91a944a726bc5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-venues-2016.parquet": "e80da7022affce611874b2a4cc9a3209b1e6688e3c1fa8adf00b0b7924d3b225",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-venues-2017.parquet": "c2ea280326c950e8fb471ae321c47ee49cb3ded908b58086b91b575a672343ef",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-venues-2018.parquet": "135a14b07ce639485df8c42f5d9fbfb38ed9647bc86decd09cb2eb7704a2186b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-venues-2019.parquet": "dad209f7bed283f0ce7d82084721ca70d0fbc2953d7c8099195b7cc87de45677",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-venues-2020.parquet": "b05ca8e1277ecfc46cb8207131d356519901b551558af14a3de2404020221199",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-venues-2021.parquet": "42efe074a630c276b5a13597898a4748a77fb8ee35cd7ffb36dd460bcad5f65a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\actual-venues-2022.parquet": "e9c313a432e88dc571a48dc4dd71dac5c681594cb55ce6111aaa37a5ae53e85a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2015-414096.json": "eba3bb162ae8da39a558ca6a1b5f1cac1a14f3f5bc0097c4fd4c404e0b6bd1ca",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2015-414096.receipt.json": "7122f0bc35f3d6083173ca98d863dbc25cdfb7e94146070c60b1dfa96bdf8e49",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2015-415861.json": "575e85b97edea8bb9166af7d5a6d9f3ad26177a8adc41cd0d5d709e863652adf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2015-415861.receipt.json": "0729e3561180ac26541b13192bd5d5d30a67c9631c63af03ce4e8c4f05a4cfa6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-446876.json": "b892f6d0840a59e8aa7301dbe484a6bb8ed6f738def97a72158e5d3d75e95563",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-446876.receipt.json": "791449e634910091dd91fa48537cec4b04e0900bb317ff0ef404edec61c552c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-447552.json": "d8aa999c9452fa2c3686e1c7a95badd5cd4d5fa0b44b6f224cb02fc9ec10515e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-447552.receipt.json": "1afdfd7f972d6e8ba99bad68a9eef0c5afdc1abd55484383886b54fceafd5613",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-447870.json": "b36eed22be0141e40967bce44c9da666015722882feb88ab1db96f5767cc047a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-447870.receipt.json": "12dc2c18d5d2269eb8f5ef2b0d6a688ec89f33466f3494f723cda30fbfe11d0c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-448126.json": "b0a7eda6a796797041456fe3b2a1348a506a2c37ff939cf9f3be223623108fef",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-448126.receipt.json": "d8f116a9122ab4147bad24384a761d3697f01a857661811176fab3c692752649",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-449065.json": "128d2b90c982ad3957efb301e1117daa33fc7d7936c99819365e69657fa66397",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2016-449065.receipt.json": "d91a8196304934970ab5970bcd9d5cf08fbbe9d0be423083c816ac069fdf1bb2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2017-492177.json": "ace4bef2f56b034518b5a7a981ec2004d5403fb4681d4b252c8a25a65adeb475",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2017-492177.receipt.json": "a562a15f1b78ff3f6d98ca872a1bbeea37dd0c9a199e09260ec0f80fbe4a3dfe",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2018-530985.json": "feb538653cc3f5dc856c3538cac66f4665acb8ba8b3870c796c1639e86469f10",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2018-530985.receipt.json": "1511e64708f9ff1541b5ff8cde0d033408dba38843b8217f735c7e9d9f80d035",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2018-531811.json": "9d1994dcd9b8aa3b5ddb10593700052b0078bef70ea1575cab3db687b6d8bdac",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2018-531811.receipt.json": "f97b0ccfe2ec5e3373b4fb46c83398ce9cbc56840017f6b8a78630c36c6ca7d6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-565071.json": "e1fe15beef600751609f20d384971cc8645ef1fab9e3e3332b50825300ba6551",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-565071.receipt.json": "de39b248145ae9f0c7eb9192c8ff93c9c28ec8b5ed6bac58a32c3f9b3fb6b7a9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-565534.json": "e3382f0f420f11e549e551f25963ea6c6da07e87585756404be39425fc091ec7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-565534.receipt.json": "ad593df221b6d6f370f984cee98932a0a0dc4e6ef7a00c456af3d1328b211681",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-565613.json": "d405a808d0cb08eb8e0b13d59b634c392cdf0845e8fd1108b90fe2a6c42b457a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-565613.receipt.json": "c35bda38c49719b07dabac66921c06e398b1cd34191347589859a7036138f51e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-566884.json": "acf3dcb4632f56a932c4a32c06c7d199f3072101526f1b23f794db0bb48750c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-566884.receipt.json": "01003d17b5a105022ddf8a485105fdd213684e684260e1f5582cce571bdedcb4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-567423.json": "ecd70b2289a2975185bb1891cd11076aaaafa36c04ec4fd3dede1eadf59fccd8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-567423.receipt.json": "42b035607560432ef271b9c0c0e1ff5614c6afb89f59d95cfe8384fcb6b5a4f6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-567513.json": "3da1c8f47327ed0597a6a763177671b37ec2f104f6e441a631fe7fdcb47a6871",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2019-567513.receipt.json": "ed614356f8359527fd70ee30592990e2dc5102cceb04b4130248bc2b447a98e4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2020-630882.json": "cc2b6cc32c83e36d18d7be6bef8b2d8c2cdf180304365f683cab62d3ea37f493",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2020-630882.receipt.json": "dbdc30017f995135e1d2fed0920764cdec6d4bad5f8c32abd02136d17e40773d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-632674.json": "ad277a3d110b63579c6307ddefa66a37694849af75ba2432f5c66eeafda0762c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-632674.receipt.json": "c2497f772aab12b1185654c00b60fd51568b08bcc5709f144957b3a03bbe455a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-633224.json": "921fd3db03f2570424a738ae1b7995912b279c6758d9d8a69a29323554f161b6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-633224.receipt.json": "b839e3e59741ff972a006bf2f007daefc8719567e5469988a863775b6714735b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-633826.json": "ea22070c5813ed5d68f61b65002a34714d981c9511e216e2b78fc0f50c513399",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-633826.receipt.json": "918fb9301310a9b0adc4f436c2af3f2aef7a9b16138b34ea769e83952a440ec0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-633891.json": "f6408164c9f94ddde42a325ecae2e7be00128b8e4ed97457b69939dee57c3971",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-633891.receipt.json": "b7ecb88290e3815a61f68b35d5dc44bf2ddec5a7b6949bfc8c7bf553a4fc79d5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-634317.json": "b7cc38d53940dabb37b20281b02ed6443f5e62d079ff8c155656d00fcd44f577",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2021-634317.receipt.json": "8e0a5dc932e11e3d5c6c448d8deac4b4298849f78ae1287a9fcc06b6a010aca4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2022-662422.json": "ff4f2809ecb5d5d8c77c4ce879a533523e453e4f117322e2512471f042b964c7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\feed-2022-662422.receipt.json": "8d412b251570d6f0209f1d2be8ef7bb966fe0c05df50725e0b2a9cc0122eb7d9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2015-446334.json": "69a6f7755f8a43042a629f432f4d7e58f1c26f119f44188f5815b0e8b80ff803",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2015-446334.parquet": "f72a5ffb8f06cccae63b391dee9185a12f0c89042619ed17ec3d466249a18bab",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2015-581527.json": "984f948343f7409d71aee6281fab03212694c4c9f947f758ff9eb8fec1cd218b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2015-581527.parquet": "f2e5fc8cb1e0f3fafb9f0234e2a36b73b26eb8999d7239b816e8317ea98a987e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-425902.json": "434e1d6b5a1db2d9be8e44214785849ea6f3abe9157380c87f012d53f7d76cb9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-425902.parquet": "04793d5d247a381fa9d1423c9210f44cbc0bd6b606965fb38479b4354cc580e8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-445055.json": "df0183c923ffbd3008adf7a18bae35d3c05e7dc3eeeb60047a86cfdd7e61778e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-445055.parquet": "99345058c226b251341727f03083c5c0683d853f2d636c3d70fad6b9a28a03a9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-543829.json": "608980e37d3ceac911e49132fac65d148d11a09e74c1f95378f948c0c705d404",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-543829.parquet": "0bc75b89955ac97acb133a3556422ea0c77273cd23b047b1ba781f0f95bce215",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-591720.json": "15692d725d67d74b3afa22e7c7b465efa527c42536f69e2cc9a01067c42605e4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-591720.parquet": "0b6dea1d889a503bd821e8820d206819da4852834e0e7e56d609572e1a9cec5c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-594828.json": "319e59a2d35371b6c8867256fc772e52907dc6865226f60da64c19929957d4c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2016-594828.parquet": "07afcea12cf8799a3a18ed85f647787be4d4a6acf7c56257972ee64c8bc34940",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2017-518618.json": "328fb48f414636509f9c4591fc78759a22561744a9f677b1cb7a0ef2dc83eecf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2017-518618.parquet": "fdabafbc53316b5149e2baedbad8043369eaa82a65e2d633de5fb94927b47bea",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2018-460086.json": "759ec69e9a56009140d7fba7cd6e15f59410861081f6435e799bfc2728806ef6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2018-460086.parquet": "5521f23e84f5a38adc518cf4a4f04e191115a97bdad710af4b38a468593c583b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2018-500743.json": "c4cfdaf4a3c8245c205a2d23d40b843b03079b48f3f7869417bd0521fc11d08e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2018-500743.parquet": "faba07d02a856ada7640eb9ca10db4815a07074b0448babcba68083889ae2c00",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-621043.json": "2d90cb31fca8378b9d48bd174abcc4cba79bc75e0ebdf4caea7848d7362f6fa9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-621043.parquet": "17da443004994796924b907813181ed914e5861a4dd24d98c384a02d6955caa6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-630111.json": "fd8675d71f967414102c15177846feb0e4503af5e54955253ebdce64f94ef9bf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-630111.parquet": "27aa969f38294e01ef636fe60be5aef2becc282371721a5e2a0db36e35210f15",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-641355.json": "4299b0cbf6e936902e71931ad8439c39cf7f58bf4e0e57135ff691f101781b6b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-641355.parquet": "2da0ec3dd527efeaec8403e2a147f3c55469d3cda2127b03afde7142e4a3a4d1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-641477.json": "31f7538094821d7e89a76b62e90c8c5cb91b27eca36c9635374dcd26b1e84437",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-641477.parquet": "04a3da7b176bc5ec00207c36f465344d47d2cad58dcf4eef90c8e851fb1de51f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-643265.json": "a2dc4b2fcebcb43d4fb2f6b6968052acc99f296d7c5403442e6554a1c8609aed",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2019-643265.parquet": "82693dcaf403a79e73cf362b9f0ef5218308c34c1b20af376f419f94ef4abf79",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2021-467793.json": "c2d4d6878f5b29f9be49b3686c17a9bc11fcecc36dcbaa63fb41cafbc8719658",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2021-467793.parquet": "46e3123d7607fe1867ac4fa5801e4942d27c3194f91bdb9538b01183e3d6b8fd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2021-624585.json": "d4226f3ac5dd8a71b67e2c3a5543fc0607f54c3b2004ad9aff954be4b0d866e6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2021-624585.parquet": "ca766c8e242d0ac1fb59abc25e1e1b51c2a9d3b5c6c147adf01e92022e9b7ac9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2021-656371.json": "df7e7900d95e9fe0f6658147fcd84b38d50f593d3391054843e6efffa5e5ba6c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2021-656371.parquet": "67437d229d52b7076c4ca37cb4bda301482970d0e7848d626274351df9998381",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2021-668804.json": "b48b3b23dc71dd4ce536345379dcb9584b4ba623df0dc05f0bc452087ec1ce54",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2021-668804.parquet": "c824f50d6edce02c48c1adea7004d2369305e4dbb526d33978bb74353e235275",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2022-623520.json": "9701b3a62f46f359c6da72ece52a4333b02e49a6e728ee30a4e7125ed1fe5bf4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\game-residuals-2022-623520.parquet": "d2345c32f314ed13f7a7c50f4b417f5a887e6d9acf805c636951863859158468",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2015-446334.json": "59868e2cbce4c43ad07afc36ab02cc8317246133c681c9beab4b9369f32552d5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2015-446334.receipt.json": "c44286f5e0de66e07164add34cfc8f80ca844085bb1a4789082ded26662de255",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2015-581527.json": "90361d8ccc1002892bbe308b39db865f57f53beceaff3ef36f7e1a927680562e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2015-581527.receipt.json": "768dd695682d7b9754d879924df42066a9adea35910001c3744da9d3cb0d4d94",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-425902.json": "bfcc34f630f4fa80c53748cc5834c63bbc47c9534252b7dc294fd0cab260913c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-425902.receipt.json": "eb373d1c411fe3aea92de50b00eb20064958d41f6447320d38f3977f896a83ab",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-445055.json": "ac8c88916bcc81608a85ec973564f65e19e1adcfa2dfb954fa9c762cbf12adaf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-445055.receipt.json": "6caaa5749abe0b30f12ce0fc528244f75b16fbd83646387b38661af0cf175152",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-543829.json": "aad0501705649cb5a8735edfa09e084f28cad1ef90d96bce2aeaa3f08bc10f53",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-543829.receipt.json": "d7d708e3fa984ab10f0dc38fd2a1a62c06409dea5e99a15894c2d53639899e86",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-591720.json": "cd6976fe27c0b72f23c6735f59dd7fcd49cf3ce661a0ee715345cbf8cc9a35db",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-591720.receipt.json": "aacb441586e3af8b66f92d2ab0094dd169f78c8cc85a76a34237455dfa5a09de",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-594828.json": "b6683dbb42ad848b45b98ff6d7024c069a1b7d9d69113cafce537de8b6e3b49f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2016-594828.receipt.json": "09982fb30466b1a0bbeb011b6da512753275d4b8a2129f155e7a98e3d28a890e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2017-518618.json": "5a35cf108267fe9eddc961379fc99c9085ea19934aca46a41976dae010a26dcc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2017-518618.receipt.json": "14edefe3cbe53de7a152d4f9768b78d0b57edf387730c09d62a77a3e7b6995be",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2018-460086.json": "612a8e135c13bdcf2037b76a22baf2be94f0cac10cf193398babc7dad341144e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2018-460086.receipt.json": "f560197041aabeaf4a1d7834ef570bf8ca5a2c8a6db351d2bc712cce7a33a8b7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2018-500743.json": "46c3827e927499a608524acb118f5d9f60f6500256d41b678467765e01f5113c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2018-500743.receipt.json": "2e4550f9c6d66a79ac76236bce3b57d22ca7577d62eb134ffbd0b54a20fd2e1e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-621043.json": "81cb1e5bdfaeef65995c99031de6b059d3c9b81a67eb8ba1bbfe88e7747faac1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-621043.receipt.json": "1cd29fbbd666ae3fd7d0a44e3df7b417470edd6935e6c141f584305c0ab86fe7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-630111.json": "99a756e9caba48b4df3986d98fbcb20093cdbe31805853ffec55ad25d74a08da",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-630111.receipt.json": "002eb4097fb8013f1c85536932fe8c331a91d77b15d171fff41ce9944a063163",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-641355.json": "83269a6cd1ba018c01b554570a22a2fb8a0c71a8350545b3f5fde064896e0c33",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-641355.receipt.json": "78042695b504a9a27dc35d1b847c6433032b03b56a95498e32cf71a5afbdcc29",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-641477.json": "689ef33dda8d20a60ddfa7828f78d2f4b3e4ae7f14bfb54278e1733f8f2f2c01",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-641477.receipt.json": "ccd944ef9bbd1677cbad0e8d055af3887ea3cd4016ff57021a1abd6db79f886c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-643265.json": "007f9c09270c07ecd7cc90a4bb7ce1f6ccd7a13add7e55e7a8da91e230d6a67e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2019-643265.receipt.json": "f9b83ec572b389bc161d25ed7c07fdb58e42b099572bd060b0729c5cb60784f1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2021-467793.json": "8d5451d83988c18e16a0ba24e38ec21d1009a997323045a850ce4448bc864c59",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2021-467793.receipt.json": "5f0ca58eb850bb073d84a288e6461e2a9a922441e0a69d3559b266743706ac6a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2021-624585.json": "84e416a9230d5ec856e50597beaebc36c83a5cd8a53de7495f0c6f9f0b25e999",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2021-624585.receipt.json": "ac64671c7d3c517205e8d6a9c115c74de04d4979e6d8fb41737df30511ffe741",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2021-656371.json": "4a5a3fc700086697247d3c6f58cfa8dadda71a94f196b10b76535e21d9a503c1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2021-656371.receipt.json": "13d5210c0d8f361608635b2acbf953a071f6480524628e57c08dcaae0d86ce88",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2021-668804.json": "3c0c16ce684c8e73abc994f3bf1079338b91ee4312eab0a1f5728dbf8699bcfb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2021-668804.receipt.json": "04a6249b2f8784f070ab676d2b478eb9db17acb8aba1efbd07825643b548b975",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2022-623520.json": "a2df782a7b55d57edad5339b9f75119ac3c142ca4ed0cb5e83a0aa577c8b552d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\gamelog-2022-623520.receipt.json": "f088a14aa5a34ccd31442d194c65fe13968f4a6698cfbb249773b745c8bb6bcb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\played-schedule-review-2015.json": "24cf005bc6c7064dfd1e195628818d21f313c3ea9b412fc99405ed927a0589b9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\played-schedule-review-2016.json": "87eee9f7d483d0ec17afd306de3e0a9bf6de1b91193489868258c5c4daec749f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\played-schedule-review-2017.json": "45e6b0c4303e9ce65ad170924ce9928aaf373863965cb3db3f8c796fad879d64",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\played-schedule-review-2018.json": "6163c4d2c7bca5218c31e5a3c95b7095d1acbd32dc6ed59e8d65b29abaf07628",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\played-venues-2015.parquet": "3e1f3815f05309308064644bcf42cbfa53fc42079c1869389a0afda75dc7a5cf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\played-venues-2016.parquet": "0898319ca8e4e7586095a268eec478afc475fab9e843662cf51efec472a3ca26",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\played-venues-2017.parquet": "c2ea280326c950e8fb471ae321c47ee49cb3ded908b58086b91b575a672343ef",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\played-venues-2018.parquet": "782abf0bac48541e30957944cce4a6ba89784edb6a196368e88c5edfa5ee8de8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\resume-receipt-v3.json": "8b812eda9a4de53d4aaec269e8e9691f7cd7afee4e15dbed7a9e905a93be1733",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2015.json": "0ac988e9372a4ba4cbdfbb8ff2e845ec6a8a451adfbfb8f85c88741a5849caed",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2015.receipt.json": "ad03eea5379e89b93178a61ef835c09a86fadca45c8285f96ed3d0e9c9565831",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2016.json": "d655215be6336d014e5e8369fafd6c42497877b68d01a5909405b35ff7db02b2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2016.receipt.json": "8dd1a7f66011ccac76651e1d63ba9788647724e411c79ea86ef0d7861609dc89",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2017.json": "d9e6f8b79b988a916c7efbffe9894e2dc576c47cc01eff98be15efe4cad33400",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2017.receipt.json": "be107660ee8e4c175ab3549581afe38662d7e2252b60b97b2dc933265207b61e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2018.json": "badd074ab9e151b1ec9d65a73f969f3c090856dd5b3fb822d2099d208bcb4399",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2018.receipt.json": "142a58c64d5c50e9473265fcc9273c0473c9fd04433745260f6610c6e9f89a08",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2019.json": "36843afcce7c642731b2cc013d9cef2f2406fb777333fbc09348ebcc99c8daf9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2019.receipt.json": "f5f537ddbc4298e762e97fe15a2d891db895dd6ecd316836b78363ab5485e755",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2020.json": "610231bfb65fdb4615badd275782079bdc503be326d31cedc260285d68383d08",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2020.receipt.json": "49700b3cf13fc379c712620cdd77c2c306e42df91a8a756302216593d5ae445d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2021.json": "2dbe4e8ff62db1d75d23f3a7138e798a16253688cf217d8061de38358cc90e53",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2021.receipt.json": "3deecddf15810f5a3eb3a949e90576401f9f8debb1ad71bb3064600c40bdceaa",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2022.json": "7e699aea797d27541b47b541959d2629b1da393e2d6143bc96b52b4fe4efd4ff",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-2022.receipt.json": "6a128f84382930c0251a49591ca6b62b09ff77443e7d64d4b85094849996fefb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-review-2015.json": "4e122bfce497338fa6a6d9dcdff591a4264ab51ce659dfe110eee81bd84eeeca",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-review-2016.json": "14b70fbd537a38c6f20a75cf71ee4b7d80c44bc27465d40153296b507ccd4bdd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-review-2017.json": "ddfd5d2e4b4cde53428eaf613c2dabd086d8ae88bb49e13d59816041ec4316f2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\schedule-review-2018.json": "d91ea2f4d5e6a2fd22ae7ffc86b8e303d03abe341f13ff50eef3668bdf04aa7c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2015.json": "8beb541f913636cc5d7b41405555db973c39b8c89a46da555166193e7772aa78",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2015.receipt.json": "9f479e8512862dda881ee20ab2ec5cf6db15e0a8982befd64b0a1bea3ded7ef9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2016.json": "aeff2052bf87f19047eac367ea99c3fbc3b89b60b1b7f80637489b5741c65967",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2016.receipt.json": "fc8241c001dbebf111be65f3db84c9d5fdf1b58ad9e92f9e3dfd13a74dfa1814",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2017.json": "34f619104faa560d8184a5aaf1d17d304a7a1b3f1c8bd12fc1cf8c321c97aeb3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2017.receipt.json": "01f77788cd39596697ebf4bf6be86db7bfdf087fe5e693f8d7163694489da2c8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2018.json": "8d3618f31d461c3076ebc3053fd0c470887f4ef440ffafbcf68a97e7d3f2ead2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2018.receipt.json": "63787c473f9f6f7b5465110805507b0aacca86ccedcda54ca71633cc3c18fe47",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2019.json": "d0e4d718501c319c0e4c20baa14c061ca9af789fdfc6f2228e37bff3b5028667",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2019.receipt.json": "661be3709fbaba0eb68d3287df5f2ac9aa9841f7c8c72b06aaa011f0c8d43060",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2020.json": "fedc6911a4f81d47c30d57495d70ee53be5159cd3c2d68bb787e0ebb8341492c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2020.receipt.json": "c5e5aeda02f77a8601c6f9c73009a8ab0229a5c118b80d6db5aa9471421ef1bb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2021.json": "1379aca0eaf41114a158401b6cbfc9520107f9bb98cc41e276872f70b0fdf971",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2021.receipt.json": "9bc5a162aabe97c90bd5f254fce0c7e6dee745085bcea89bfad919bc244f92bd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2022.json": "e9b8f74a520f55c790ec0348b90a678850c96ccec29efccc017b602ddba42242",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-official-context\\teams-2022.receipt.json": "52af9bc4a855afcca28d673e388853f995d5cb0b1b70ae77dd67e5e33591e0ce"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\annual-launch-features.parquet": "a1de503ee1651c0767ea70dd255c1aa5f8e1f193dee13a7df58d1f008199cdc9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\cases.json": "c8dc3a8eb301a398cce3924bf3a085f6d0bf3a4c6f9519595b9509876972f7e3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2015.parquet": "ab4003d04958e7e1c15640039ad1febeeb025ce05a8458b2f47a07a880c8a1b3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2016.parquet": "d795069a5ca3ccc45ae7782f239a2ba2c903406f4dbb0a22b9483af54e8215b8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2017.parquet": "5cfbe2de494a0c96076efab1b16cbcec2851cdd6baa31e5e8b5cb3a626278ea0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2018.parquet": "f3864bd07b98828ee266746a78662976ef2a71ce1dae5906430205a6aab1ff0f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2019.parquet": "07503656bdde38532280edd658cbc5f56477e078a135260b3ea6b94ea7b4e1d5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2020.parquet": "ccd99b45cb23d6a47968a60e67507f17ea94c0134a1a529c00cb53005e05b817",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2021.parquet": "2dfc9cfde5019c272733ca5b3d469d84472624ca154870258bfed28af995340f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2022.parquet": "2152aebd05ced62ae2d4a4c9f9f75d45384a45f92ffa63217228c8c018a4a8db",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2023.parquet": "b8045ad8763d82a22d0fb18543f38155f598fe80e3be1cf4417094c4be8f58f3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\excluded-2024.parquet": "19aac4b6443a2ee5a5d568a43c32f0f67a2a47ba00208fe49a5f524a5cd41da4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\forecast-source-coverage.parquet": "a1042c9e69c4a647bc39b19b6bf7fd824da37d7de89a8d1255c20c420d67df22",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2015.parquet": "e66e4d189cf949908afe9b7c7e0a4184a3dcd6e7f3f5d8163adfb3c18dec5a66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2016.parquet": "3825a0795488e393a61b4a24cb4e0782fd524287e58dbf38b2d419f33e8ebfdc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2017.parquet": "5776a7a4938e4aeba3435f56ce382e1eb1c0ea24ad6a467c54016fe0562569f0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2018.parquet": "f0f9a578778b7949642e5c86bbf54e9fcac78f56698b4a514664188efa45e4c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2019.parquet": "1b282de8bb50c0a4de0a0ffbbe93f127185581ab4cf3a3007034c6214ad2a516",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2020.parquet": "6c5609ddb512d5312b98a2812bb2c23068536e409bc297972082e0f804ce42cd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2021.parquet": "f09a3cb6f2d681143295eebb29a23284c908bbe2451ccdd7e44eb804a8c6a3b1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2022.parquet": "74277f1c856d613b69879f3fed6672fd2849d84774e2ad50f4be74cbb98d01ef",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2023.parquet": "708cb69b6d35b548a999fd8a9ed97eba97d91d48fd3b07039f9cf1de30682907",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\launch-events-2024.parquet": "a02ba91696868a78a9adff5a95dee1910a3d192a1a8ec86a5277469567f7fe6a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\residual-classifications.json": "83fd4104c33b296a646fee8607cbb02f2e8bfe820117d93470ba7138ec4b07fa",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-full-history\\split-game-venue-overrides.json": "cbe95effa793fcc1947006ebbbac95e992a97fad3d649fdc4909104c942e3aa3"
+  }
+}

@@ -44,6 +44,19 @@ collector or describe these earlier years as approved for fitting: historical
 venue authority, complete source/player review, unresolved denominator semantics
 and actual outer-fold support precede the separately frozen forecast contrast.
 
+Additive completion: the [full historical source review](hitter-statcast-full-history-review.md)
+now explains all twenty residuals from official game logs and terminal plays,
+reconciles every earlier player's normal-contact counts under the explicit
+measurement boundary, and supplies 1,153,554 complete 2015–24 launch pairs.
+Three split-venue suspended games use per-PA played-park overrides. Twenty focused
+tests, 7,955 independently recomputed annual summaries, the same ten source/player
+walks and all thirty-one protected hashes pass. Every chronological outer fold
+now has tracked active training people; profile sufficiency remains a separate
+forecast preflight. The additive final source receipt approves a qualified MLB
+provider-data experiment, not original-vintage camera-only data, minor tracking,
+predictive improvement or deployment. Original pending/failed receipts remain
+preserved. No new model fits or forecast/explorer changes at this checkpoint.
+
 The mature lower-level follow-up and shared development-rate comparisons already
 exist. Their source/target findings must be carried forward, not rediscovered by
 another age-to-peak or shared-horizon sweep. Own-MLB contact representation,
