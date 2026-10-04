@@ -1,0 +1,1580 @@
+[
+  {
+    "player": "Nick Kurtz",
+    "player_id": 701762,
+    "origin_year": 2024,
+    "arms": {
+      "original": {
+        "p": 0.017252205959482278,
+        "conditional_pa": 115.97291582487993,
+        "pa": 2.00078862953253,
+        "value": 0.006037387969036923,
+        "scout_listed_0": 0.0,
+        "scout_rank_score_0": 0.0,
+        "support": {
+          "participation": 14,
+          "conditional_pa": 0,
+          "rate": 0
+        }
+      },
+      "candidate": {
+        "p": 0.060561165996151405,
+        "conditional_pa": 168.16035507755498,
+        "pa": 10.18398717782357,
+        "value": 0.030730223451231706,
+        "scout_listed_0": 1.0,
+        "scout_rank_score_0": 0.63,
+        "support": {
+          "participation": 1,
+          "conditional_pa": 0,
+          "rate": 0
+        }
+      }
+    },
+    "actual_PA": 489,
+    "completed_reviews": [
+      {
+        "source": "hitter-preseason-readiness-v68",
+        "note": "Kurtz has 50 pro PA, four HR, pick four and rank 38 in the coming preseason. The saved candidate rewards current rank by 1.24 log-odds units and about 71 conditional PA; reverting all rankings in that fixed model gives only .77% arrival and 92 conditional PA. Thus newer reputation genuinely enters the mechanism. Arrival rises 1.73% to 6.06%, conditional PA 116 to 168 and expected PA two to ten, still nowhere near 489 actual with 36 HR. There are zero refined earlier active examples and only one matching participation example. Moore and Smith also remain far too low, while Williams becomes a larger false high at 101 versus zero. The new source helps, but cannot cure unsupported fast-entry workload or the nearly average fixed hitting estimate. No player-specific override is justified.",
+        "saved_terms": {
+          "participation": {
+            "baseline": {
+              "reference": -4.0137580371259745,
+              "raw_prediction": -4.042412502608926,
+              "largest_terms": [
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.8330552091046826
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.3259458510429585
+                },
+                {
+                  "feature": "games_mlb_0",
+                  "input": 0.0,
+                  "path_effect": -0.1982178289403651
+                },
+                {
+                  "feature": "games_pool_MLB",
+                  "input": 0.0,
+                  "path_effect": -0.18869182025301093
+                },
+                {
+                  "feature": "role_pool_A",
+                  "input": 4.411764705882353,
+                  "path_effect": 0.18653062308132912
+                },
+                {
+                  "feature": "pooled_AA_pa",
+                  "input": 15.0,
+                  "path_effect": -0.15249541171538672
+                },
+                {
+                  "feature": "games_pool_DSL",
+                  "input": 0.0,
+                  "path_effect": 0.11490271354843652
+                },
+                {
+                  "feature": "role_minor_0",
+                  "input": 4.090909090909091,
+                  "path_effect": 0.11252589595935499
+                },
+                {
+                  "feature": "draft_rank_low_exposure",
+                  "input": 0.5450763363518277,
+                  "path_effect": 0.10051675434678274
+                },
+                {
+                  "feature": "pooled_AAA_pa",
+                  "input": 0.0,
+                  "path_effect": -0.09996073614024838
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_listed_0",
+                  "input": 0.0,
+                  "path_effect": -0.03634394302650338
+                },
+                {
+                  "feature": "scout_list_capacity_0",
+                  "input": 100.0,
+                  "path_effect": -0.0213879130172859
+                },
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.0,
+                  "path_effect": -0.018261975533774448
+                }
+              ],
+              "linked_probability": 0.017252205959482125
+            },
+            "preseason": {
+              "reference": -4.096228292318348,
+              "raw_prediction": -2.741628849382137,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 1.2439405368819731
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.4500117133095135
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 0.3965785432052498
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.33418498329981394
+                },
+                {
+                  "feature": "games_mlb_0",
+                  "input": 0.0,
+                  "path_effect": -0.20262468533414538
+                },
+                {
+                  "feature": "games_pool_MLB",
+                  "input": 0.0,
+                  "path_effect": -0.19803608219802407
+                },
+                {
+                  "feature": "games_minor_0",
+                  "input": 12.0,
+                  "path_effect": 0.16235091062084192
+                },
+                {
+                  "feature": "role_pool_A",
+                  "input": 4.411764705882353,
+                  "path_effect": 0.16230159463573166
+                },
+                {
+                  "feature": "pooled_AA_pa",
+                  "input": 15.0,
+                  "path_effect": -0.15412197775336986
+                },
+                {
+                  "feature": "age_squared",
+                  "input": 1.44,
+                  "path_effect": 0.15402247136876315
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 1.2439405368819731
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 0.3965785432052498
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.032307341632344076
+                },
+                {
+                  "feature": "scout_list_capacity_1",
+                  "input": 100.0,
+                  "path_effect": -0.01579900902225148
+                }
+              ],
+              "linked_probability": 0.060561165996151925
+            }
+          },
+          "conditional_pa": {
+            "baseline": {
+              "reference": 278.5751910462801,
+              "raw_prediction": 115.9729158248802,
+              "largest_terms": [
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -99.49011637719445
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -23.436218384156746
+                },
+                {
+                  "feature": "quality_0",
+                  "input": 0.0,
+                  "path_effect": -13.148362713227769
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 10.742505918623346
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -10.311596034357246
+                },
+                {
+                  "feature": "age_centered",
+                  "input": -1.2,
+                  "path_effect": 10.178578492518167
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.0,
+                  "path_effect": -9.519541484543506
+                },
+                {
+                  "feature": "pooled_A_HBP",
+                  "input": 0.007407407407407408,
+                  "path_effect": 7.396880277901683
+                },
+                {
+                  "feature": "draft_rank_low_exposure",
+                  "input": 0.5450763363518277,
+                  "path_effect": 6.514764256795328
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 3.6666666666666665,
+                  "path_effect": -6.360385213365197
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.0,
+                  "path_effect": -6.033927767210174
+                }
+              ],
+              "linked_probability": null
+            },
+            "preseason": {
+              "reference": 278.55497076472517,
+              "raw_prediction": 168.16035507755504,
+              "largest_terms": [
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -99.71981602669351
+                },
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 71.23471863609
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -22.649740266203256
+                },
+                {
+                  "feature": "quality_0",
+                  "input": 0.0,
+                  "path_effect": -12.276285496523911
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -11.785064714030275
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.0,
+                  "path_effect": -9.248723204857887
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 3.6666666666666665,
+                  "path_effect": -6.964107187364826
+                },
+                {
+                  "feature": "pooled_A_HBP",
+                  "input": 0.007407407407407408,
+                  "path_effect": 6.906688629755602
+                },
+                {
+                  "feature": "draft_college",
+                  "input": 1.0,
+                  "path_effect": 6.358415859065834
+                },
+                {
+                  "feature": "pooled_mlb_quality",
+                  "input": 0.0,
+                  "path_effect": -5.923630979339958
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 71.23471863609
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -2.953893359363807
+                },
+                {
+                  "feature": "scout_list_capacity_2",
+                  "input": 100.0,
+                  "path_effect": 1.3550542765479698
+                },
+                {
+                  "feature": "scout_rank_score_2",
+                  "input": 0.0,
+                  "path_effect": -0.288105795627787
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.058577565231899144
+                }
+              ],
+              "linked_probability": null
+            }
+          }
+        }
+      },
+      {
+        "source": "hitter-graduation-v69",
+        "note": "Kurtz has only 50 professional PA, four HR and ten strikeouts, no MLB AB and zero graduation inputs. The fresher rank 38 is present, as are pick four and college background. Appearance falls .06056 to .05610, conditional PA rises 168.16 to 170.25, and the product falls 10.18 to 9.55 versus 489 actual. Zeroing the new features gives the same outputs: this is a shared refit effect, not a personal graduation penalty. The fixed hitting -.063/600 also misses actual +5.289. Broad support 944 participation/176 active is not evidence of a matched elite recent-draftee sample; V68 had no matching active refined profile. Montgomery and Williams do not arrive, but Moore gets 184 PA and Cam Smith 493 versus forecasts 22 and nine. The paired successful and failed new-draftee examples retain the unresolved rapid-entry issue. Do not manufacture a Kurtz star forecast or infer that all tiny pro samples deserve an MLB season.",
+        "saved_terms": {
+          "participation": {
+            "preseason": {
+              "reference": -4.096228292318348,
+              "raw_prediction": -2.741628849382137,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 1.2439405368819731
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.4500117133095135
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 0.3965785432052498
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.33418498329981394
+                },
+                {
+                  "feature": "games_mlb_0",
+                  "input": 0.0,
+                  "path_effect": -0.20262468533414538
+                },
+                {
+                  "feature": "games_pool_MLB",
+                  "input": 0.0,
+                  "path_effect": -0.19803608219802407
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 1.2439405368819731
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 0.3965785432052498
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.032307341632344076
+                },
+                {
+                  "feature": "scout_list_capacity_1",
+                  "input": 100.0,
+                  "path_effect": -0.01579900902225148
+                }
+              ],
+              "linked_probability": 0.060561165996151925
+            },
+            "graduation": {
+              "reference": -4.082397675304499,
+              "raw_prediction": -2.8228882080442372,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 1.2026967929481924
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.41993999448582464
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 0.4143548504325281
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.33418498329981394
+                },
+                {
+                  "feature": "games_mlb_0",
+                  "input": 0.0,
+                  "path_effect": -0.20175513585959948
+                },
+                {
+                  "feature": "games_pool_MLB",
+                  "input": 0.0,
+                  "path_effect": -0.19504664270336827
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 1.2026967929481924
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 0.4143548504325281
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.03947497557591787
+                },
+                {
+                  "feature": "scout_list_capacity_1",
+                  "input": 100.0,
+                  "path_effect": -0.018461798421269368
+                }
+              ],
+              "linked_probability": 0.05609979919054436
+            }
+          },
+          "conditional_pa": {
+            "preseason": {
+              "reference": 278.55497076472517,
+              "raw_prediction": 168.16035507755504,
+              "largest_terms": [
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -99.71981602669351
+                },
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 71.23471863609
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -22.649740266203256
+                },
+                {
+                  "feature": "quality_0",
+                  "input": 0.0,
+                  "path_effect": -12.276285496523911
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -11.785064714030275
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.0,
+                  "path_effect": -9.248723204857887
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 71.23471863609
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -2.953893359363807
+                },
+                {
+                  "feature": "scout_list_capacity_2",
+                  "input": 100.0,
+                  "path_effect": 1.3550542765479698
+                },
+                {
+                  "feature": "scout_rank_score_2",
+                  "input": 0.0,
+                  "path_effect": -0.288105795627787
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.058577565231899144
+                }
+              ],
+              "linked_probability": null
+            },
+            "graduation": {
+              "reference": 278.5692729289026,
+              "raw_prediction": 170.25187838172633,
+              "largest_terms": [
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -99.43924146725713
+                },
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 71.43334044276621
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -23.533752638133574
+                },
+                {
+                  "feature": "quality_0",
+                  "input": 0.0,
+                  "path_effect": -12.451747800119822
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -11.033506189163248
+                },
+                {
+                  "feature": "pooled_A_HBP",
+                  "input": 0.007407407407407408,
+                  "path_effect": 9.796326194461162
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 71.43334044276621
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -2.6287520008358687
+                },
+                {
+                  "feature": "scout_graduated_prior_score",
+                  "input": 0.0,
+                  "path_effect": -1.0801866926497596
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.05985613158693854
+                }
+              ],
+              "linked_probability": null
+            }
+          }
+        }
+      },
+      {
+        "source": "hitter-employment-v71",
+        "note": "Kurtz has exactly 50 pro PA, four HR, ten K and twelve UBB at A/AA, age 21 and fourth overall pick, with preseason rank 38. No classified employment event means covered-but-unknown 1/0/0, not unsigned or no investment. New .058430 times 169.927 gives 9.929 PA versus 489, nearly the same as fresher-list 10.184 and original two. Current rank/draft paths add 1.26794/.41909 log-odds but known-current-zero subtracts .03103; work_0 remains -99.85940 conditional PA. Zero-new-input mechanics leaves chance unchanged and conditional PA 169.506. Refined status support 503 participation/47 active people is a broad source-status/workload group, not comparable elite college stars. Montgomery 5/0 and Williams 109/0 fail while Moore 17/184 and Cam Smith 11/493 show other rapid arrivals being missed. The near-average fixed hitting -.0632 versus actual 5.2892 is an independent talent miss. Employment data does not remedy the readiness or talent extrapolation.",
+        "saved_terms": {
+          "participation": {
+            "preseason": {
+              "reference": -4.096228292318348,
+              "raw_prediction": -2.741628849382137,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 1.2439405368819731
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.4500117133095135
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 0.3965785432052498
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.33418498329981394
+                },
+                {
+                  "feature": "games_mlb_0",
+                  "input": 0.0,
+                  "path_effect": -0.20262468533414538
+                },
+                {
+                  "feature": "games_pool_MLB",
+                  "input": 0.0,
+                  "path_effect": -0.19803608219802407
+                }
+              ],
+              "employment_roster_terms": [
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.33418498329981394
+                }
+              ],
+              "linked_probability": 0.060561165996151925
+            },
+            "employment": {
+              "reference": -4.091086301330476,
+              "raw_prediction": -2.779713110543661,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 1.2679423446269642
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 0.49077486743685467
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.41908979120895046
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.3393302381631716
+                },
+                {
+                  "feature": "games_mlb_0",
+                  "input": 0.0,
+                  "path_effect": -0.20141352782409694
+                },
+                {
+                  "feature": "games_pool_MLB",
+                  "input": 0.0,
+                  "path_effect": -0.19079764944996097
+                }
+              ],
+              "employment_roster_terms": [
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.3393302381631716
+                },
+                {
+                  "feature": "employment_year_known",
+                  "input": 0.0,
+                  "path_effect": -0.031029508836065426
+                }
+              ],
+              "linked_probability": 0.058430337120175965
+            }
+          },
+          "conditional_pa": {
+            "preseason": {
+              "reference": 278.55497076472517,
+              "raw_prediction": 168.16035507755504,
+              "largest_terms": [
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -99.71981602669351
+                },
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 71.23471863609
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -22.649740266203256
+                },
+                {
+                  "feature": "quality_0",
+                  "input": 0.0,
+                  "path_effect": -12.276285496523911
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -11.785064714030275
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.0,
+                  "path_effect": -9.248723204857887
+                }
+              ],
+              "employment_roster_terms": [
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -22.649740266203256
+                }
+              ],
+              "linked_probability": null
+            },
+            "employment": {
+              "reference": 278.5445216526072,
+              "raw_prediction": 169.92696140965535,
+              "largest_terms": [
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -99.85940048586272
+                },
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.63,
+                  "path_effect": 71.1549362268022
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -22.649740266203256
+                },
+                {
+                  "feature": "quality_0",
+                  "input": 0.0,
+                  "path_effect": -12.264887498236217
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -11.785064714030275
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.0,
+                  "path_effect": -9.18621668936921
+                }
+              ],
+              "employment_roster_terms": [
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -22.649740266203256
+                },
+                {
+                  "feature": "employment_year_known",
+                  "input": 0.0,
+                  "path_effect": -0.22356928535449586
+                },
+                {
+                  "feature": "employment_capture_scope",
+                  "input": 1.0,
+                  "path_effect": 0.13625595812217517
+                }
+              ],
+              "linked_probability": null
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "player": "Wyatt Langford",
+    "player_id": 694671,
+    "origin_year": 2023,
+    "arms": {
+      "original": {
+        "p": 0.20182913810319345,
+        "conditional_pa": 213.55555304966717,
+        "pa": 43.101733209165126,
+        "value": 0.18287165433974314,
+        "scout_listed_0": 0.0,
+        "scout_rank_score_0": 0.0,
+        "support": {
+          "participation": 18,
+          "conditional_pa": 2,
+          "rate": 2
+        }
+      },
+      "candidate": {
+        "p": 0.5990982716360018,
+        "conditional_pa": 358.7353771422553,
+        "pa": 214.9177444206144,
+        "value": 0.9118511146277205,
+        "scout_listed_0": 1.0,
+        "scout_rank_score_0": 0.95,
+        "support": {
+          "participation": 0,
+          "conditional_pa": 0,
+          "rate": 2
+        }
+      }
+    },
+    "actual_PA": 557,
+    "completed_reviews": [
+      {
+        "source": "hitter-preseason-readiness-v68",
+        "note": "Langford retains 200 pro PA spanning four levels and ten HR. His new sixth-place rank contributes 1.30 plus 1.17 log-odds units through score/listing paths and roughly 147 conditional PA. The old-vintage reversion probe reduces the candidate to 12% arrival and 194 conditional PA, compared with 60% and 359 for current rankings. Expected PA rises 43 to 215 versus 557 actual. Both heads improve his point forecast through a baseball-relevant source, not offsetting hitting changes, but refined training support is zero: the model borrows from other ranked profiles. Veen's false high declines 85 to 16, Crews rises 13 to 50 versus 132, and Shaw worsens 34 to 101 versus zero. New pedigree is not a job guarantee. Keep this evidence as a qualified readiness gain, not solved fast college entry.",
+        "saved_terms": {
+          "participation": {
+            "baseline": {
+              "reference": -4.088718362499703,
+              "raw_prediction": -1.3749011986904778,
+              "largest_terms": [
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 0.9658409270969954
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.7163858382498574
+                },
+                {
+                  "feature": "pooled_AA_pa",
+                  "input": 54.0,
+                  "path_effect": 0.4522369418019925
+                },
+                {
+                  "feature": "role_minor_0",
+                  "input": 4.444444444444445,
+                  "path_effect": 0.4051937575130151
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.4042575073446507
+                },
+                {
+                  "feature": "games_mlb_0",
+                  "input": 0.0,
+                  "path_effect": -0.23041762408433605
+                },
+                {
+                  "feature": "pooled_AAA_pa",
+                  "input": 26.0,
+                  "path_effect": 0.22930243097874153
+                },
+                {
+                  "feature": "pooled_AA_HR",
+                  "input": 0.045454545454545456,
+                  "path_effect": 0.1761580559940719
+                },
+                {
+                  "feature": "games_pool_MLB",
+                  "input": 0.0,
+                  "path_effect": -0.17194180989148475
+                },
+                {
+                  "feature": "age_centered",
+                  "input": -1.2,
+                  "path_effect": 0.1692367664287595
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_listed_0",
+                  "input": 0.0,
+                  "path_effect": -0.08710381900027389
+                },
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.0,
+                  "path_effect": -0.00798158506972449
+                },
+                {
+                  "feature": "scout_list_capacity_2",
+                  "input": 99.0,
+                  "path_effect": 0.007886100964836558
+                }
+              ],
+              "linked_probability": 0.20182913810319378
+            },
+            "preseason": {
+              "reference": -4.136149425431078,
+              "raw_prediction": 0.4017093133027103,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 1.300232583630407
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 1.1731100622601913
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 0.9204094602312557
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.44399734812934144
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.40693884780043577
+                },
+                {
+                  "feature": "pooled_AA_pa",
+                  "input": 54.0,
+                  "path_effect": 0.3974499014981487
+                },
+                {
+                  "feature": "role_minor_0",
+                  "input": 4.444444444444445,
+                  "path_effect": 0.33519727274628663
+                },
+                {
+                  "feature": "pooled_AAA_pa",
+                  "input": 26.0,
+                  "path_effect": 0.2704388137081358
+                },
+                {
+                  "feature": "games_mlb_0",
+                  "input": 0.0,
+                  "path_effect": -0.22999986440658976
+                },
+                {
+                  "feature": "games_pool_MLB",
+                  "input": 0.0,
+                  "path_effect": -0.15978034612596403
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 1.300232583630407
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 1.1731100622601913
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.04601635338912652
+                },
+                {
+                  "feature": "scout_list_capacity_2",
+                  "input": 100.0,
+                  "path_effect": 0.005640793222627442
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -0.0014002335249221163
+                }
+              ],
+              "linked_probability": 0.5990982716360015
+            }
+          },
+          "conditional_pa": {
+            "baseline": {
+              "reference": 279.21520235794054,
+              "raw_prediction": 213.5555530496677,
+              "largest_terms": [
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -99.86508603742682
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.4,
+                  "path_effect": 37.07012891851993
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -18.288035347895168
+                },
+                {
+                  "feature": "age_centered",
+                  "input": -1.2,
+                  "path_effect": 14.860034640959464
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 13.29360612222986
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -9.672346009970827
+                },
+                {
+                  "feature": "draft_rank_low_exposure",
+                  "input": 0.27253816817591386,
+                  "path_effect": 9.077034576124136
+                },
+                {
+                  "feature": "pooled_mlb_quality",
+                  "input": 0.0,
+                  "path_effect": -8.911445870034447
+                },
+                {
+                  "feature": "quality_0",
+                  "input": 0.0,
+                  "path_effect": -7.904250048120838
+                },
+                {
+                  "feature": "role_pool_Aplus",
+                  "input": 4.294117647058823,
+                  "path_effect": 6.6308019288059565
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.0,
+                  "path_effect": -5.611711596884151
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -0.39876491599063246
+                }
+              ],
+              "linked_probability": null
+            },
+            "preseason": {
+              "reference": 279.2035286230166,
+              "raw_prediction": 358.73537714225495,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 147.24976164209835
+                },
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -94.00471202393284
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.4,
+                  "path_effect": 34.80664347389699
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -19.53785366020845
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 15.145308197278595
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -10.037674637980354
+                },
+                {
+                  "feature": "pooled_mlb_quality",
+                  "input": 0.0,
+                  "path_effect": -9.740587560674014
+                },
+                {
+                  "feature": "draft_rank_low_exposure",
+                  "input": 0.27253816817591386,
+                  "path_effect": 9.170773273876902
+                },
+                {
+                  "feature": "quality_0",
+                  "input": 0.0,
+                  "path_effect": -8.224310237144941
+                },
+                {
+                  "feature": "age_centered",
+                  "input": -1.2,
+                  "path_effect": 7.4718731125194795
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 147.24976164209835
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -2.9484166182728666
+                }
+              ],
+              "linked_probability": null
+            }
+          }
+        }
+      },
+      {
+        "source": "hitter-graduation-v69",
+        "note": "Langford's 200 professional PA span four levels and include ten HR; he has no MLB AB and all three added graduation inputs are zero. His appearance forecast remains exactly .59910 and conditional PA moves 358.74 to 363.41 through the changed shared training mapping, so expected PA rises only 214.92 to 217.72 versus 557. Zeroing the added inputs changes nothing for him. The much larger gain from the original 43 PA still belongs to fresher ranking information, not graduation. His fixed +.688/600 rate is optimistic versus actual +.077, partly cushioning the workload miss. Broad graduation-profile support 865/186 does not resolve V68's zero precisely matched recent-draft/top-rank profile; no finer new-entry support is claimed. Peers Veen and Shaw receive low opportunity and do not arrive, Crews plays 132 PA, Wilken stays in the minors. Preserve these distinctions and the remaining elite-entry weakness rather than presenting a small refit movement as solving readiness.",
+        "saved_terms": {
+          "participation": {
+            "preseason": {
+              "reference": -4.136149425431078,
+              "raw_prediction": 0.4017093133027103,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 1.300232583630407
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 1.1731100622601913
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 0.9204094602312557
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.44399734812934144
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.40693884780043577
+                },
+                {
+                  "feature": "pooled_AA_pa",
+                  "input": 54.0,
+                  "path_effect": 0.3974499014981487
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 1.300232583630407
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 1.1731100622601913
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.04601635338912652
+                },
+                {
+                  "feature": "scout_list_capacity_2",
+                  "input": 100.0,
+                  "path_effect": 0.005640793222627442
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -0.0014002335249221163
+                }
+              ],
+              "linked_probability": 0.5990982716360015
+            },
+            "graduation": {
+              "reference": -4.136149425431078,
+              "raw_prediction": 0.4017093133027103,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 1.300232583630407
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 1.1731100622601913
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 0.9204094602312557
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.44399734812934144
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.40693884780043577
+                },
+                {
+                  "feature": "pooled_AA_pa",
+                  "input": 54.0,
+                  "path_effect": 0.3974499014981487
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 1.300232583630407
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 1.1731100622601913
+                },
+                {
+                  "feature": "scout_listed_1",
+                  "input": 0.0,
+                  "path_effect": -0.04601635338912652
+                },
+                {
+                  "feature": "scout_list_capacity_2",
+                  "input": 100.0,
+                  "path_effect": 0.005640793222627442
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -0.0014002335249221163
+                }
+              ],
+              "linked_probability": 0.5990982716360015
+            }
+          },
+          "conditional_pa": {
+            "preseason": {
+              "reference": 279.2035286230166,
+              "raw_prediction": 358.73537714225495,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 147.24976164209835
+                },
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -94.00471202393284
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.4,
+                  "path_effect": 34.80664347389699
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -19.53785366020845
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 15.145308197278595
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -10.037674637980354
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 147.24976164209835
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -2.9484166182728666
+                }
+              ],
+              "linked_probability": null
+            },
+            "graduation": {
+              "reference": 279.21070244625906,
+              "raw_prediction": 363.4108261697085,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 149.68913969903332
+                },
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -94.5197066014314
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.4,
+                  "path_effect": 35.27888309880259
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -20.375878325218558
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 13.651395791865204
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -10.037674637980354
+                }
+              ],
+              "scouting_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 149.68913969903332
+                },
+                {
+                  "feature": "scout_rank_score_1",
+                  "input": 0.0,
+                  "path_effect": -2.896499648335497
+                },
+                {
+                  "feature": "scout_graduated_prior_score",
+                  "input": 0.0,
+                  "path_effect": -0.22327279533326214
+                }
+              ],
+              "linked_probability": null
+            }
+          }
+        }
+      },
+      {
+        "source": "hitter-employment-v71",
+        "note": "Langford had 200 professional PA across rookie/A-plus/AA/AAA, ten HR, 34 K and 36 UBB, age 21, fourth pick and preseason rank six. His three new employment inputs are 1/0/0: covered capture era but no current classified employment event, not a missing contract interpreted as zero talent. Candidate participation falls .599098 to .554102, conditional PA 358.735 to 352.193, and expected PA 214.918 to 195.150 versus 557 actual. A known-current-zero path subtracts .07037 log-odds and capture scope subtracts 2.07820 conditional PA; zero-new-input mechanics leaves chance identical and raises conditional PA to 358.712. Broad/refined new status counts 560/466 participation and 123/48 active people do not establish elite new-draftee support. Veen 16/0, Crews 35/132, Shaw 88/0 and Wilken 3/0 remain peers. Fresh ranking still improves substantially over original 43 PA, but this employment refit harms this clear readiness miss. Fixed hitting .6880 versus .0770 partly offsets workload; offense .828 versus 1.796 does not certify his talent forecast.",
+        "saved_terms": {
+          "participation": {
+            "preseason": {
+              "reference": -4.136149425431078,
+              "raw_prediction": 0.4017093133027103,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 1.300232583630407
+                },
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 1.1731100622601913
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 0.9204094602312557
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.44399734812934144
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.40693884780043577
+                },
+                {
+                  "feature": "pooled_AA_pa",
+                  "input": 54.0,
+                  "path_effect": 0.3974499014981487
+                }
+              ],
+              "employment_roster_terms": [
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.40693884780043577
+                }
+              ],
+              "linked_probability": 0.5990982716360015
+            },
+            "employment": {
+              "reference": -4.1416029487051835,
+              "raw_prediction": 0.2172569980480663,
+              "largest_terms": [
+                {
+                  "feature": "scout_listed_0",
+                  "input": 1.0,
+                  "path_effect": 1.1988872843996798
+                },
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 1.1723796050471251
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 0.8611570559952356
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.4153353033729299
+                },
+                {
+                  "feature": "pooled_AA_pa",
+                  "input": 54.0,
+                  "path_effect": 0.3899156088600672
+                },
+                {
+                  "feature": "draft_rank",
+                  "input": 0.8176145045277415,
+                  "path_effect": 0.38529181953331487
+                }
+              ],
+              "employment_roster_terms": [
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -0.4153353033729299
+                },
+                {
+                  "feature": "employment_year_known",
+                  "input": 0.0,
+                  "path_effect": -0.07037183131829068
+                }
+              ],
+              "linked_probability": 0.5541016143282625
+            }
+          },
+          "conditional_pa": {
+            "preseason": {
+              "reference": 279.2035286230166,
+              "raw_prediction": 358.73537714225495,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 147.24976164209835
+                },
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -94.00471202393284
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.4,
+                  "path_effect": 34.80664347389699
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -19.53785366020845
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 15.145308197278595
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -10.037674637980354
+                }
+              ],
+              "employment_roster_terms": [
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -19.53785366020845
+                }
+              ],
+              "linked_probability": null
+            },
+            "employment": {
+              "reference": 279.2044886076032,
+              "raw_prediction": 352.1925052318378,
+              "largest_terms": [
+                {
+                  "feature": "scout_rank_score_0",
+                  "input": 0.95,
+                  "path_effect": 147.56526352539052
+                },
+                {
+                  "feature": "work_0",
+                  "input": 0.0,
+                  "path_effect": -94.00471202393284
+                },
+                {
+                  "feature": "role_pool_AAA",
+                  "input": 4.4,
+                  "path_effect": 34.95588516530942
+                },
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -19.53785366020845
+                },
+                {
+                  "feature": "role_pool_AA",
+                  "input": 4.2727272727272725,
+                  "path_effect": 15.130375080461455
+                },
+                {
+                  "feature": "regular_window_scaled",
+                  "input": 0.0,
+                  "path_effect": -10.037674637980354
+                }
+              ],
+              "employment_roster_terms": [
+                {
+                  "feature": "on_40man",
+                  "input": 0.0,
+                  "path_effect": -19.53785366020845
+                },
+                {
+                  "feature": "employment_capture_scope",
+                  "input": 1.0,
+                  "path_effect": -2.078199801064473
+                }
+              ],
+              "linked_probability": null
+            }
+          }
+        }
+      }
+    ]
+  }
+]

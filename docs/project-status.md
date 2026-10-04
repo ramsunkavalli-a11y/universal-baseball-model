@@ -24,7 +24,21 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: employment comparison reviewed and feature queue closed.**
+**Current checkpoint: coherent candidate and comparative handoff sealed.**
+The [handoff](hitter-comparative-handoff-v72-result.md) selects fresher preseason
+rankings with unchanged V53/V63 hitting as the research candidate, with original
+forecasts visible alongside it. All 30,506 historical rows and both arms'
+arithmetic/source metadata are verified; browser checks cover seven seasons,
+team/stage filters, model switching, source histories and results hidden by
+default. Local explorer: `http://127.0.0.1:8791/`. See the [candidate model
+card](practical-hitter-candidate-v72-model-card.md). Langford 43 to 215 PA is a
+useful readiness improvement, not a solved 557-PA miss; Kurtz remains ten before
+489. Public average PA error is still 15.56% worse than Steamer. No new fits,
+protected 2026 access or production promotion. The graduation/employment patch
+queue is closed; next address supported thin-sample readiness/talent coherently,
+preserving established-player benchmarks and failed peers. Whole goal active.
+
+**Previous checkpoint: employment comparison reviewed and feature queue closed.**
 The [matched comparison](hitter-employment-v71-result.md) replays 140 saved heads
 and completes thirteen actual player walkthroughs. Overall PA RMSE 60.499 to
 60.470 is tiny; public MAE worsens 106.411 to 106.559, still 15.72% worse than
