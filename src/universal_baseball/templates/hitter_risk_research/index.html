@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hitter research — forecasts, ranges and actual results</title>
+<link rel="stylesheet" href="app.css"><script defer src="app.js"></script></head>
+<body>
+<main>
+<header><div><p class="eyebrow">Universal baseball model · research candidate</p><h1>Hitting ability, opportunity and risk</h1>
+<p>Separate what a player could hit from how much he might play. Click a player to inspect the evidence.</p></div><span class="status">Historical tests only</span></header>
+<p class="notice">These are forecasts for <strong>2017–2019 and 2022–2025</strong> made without the tested player's future results. <strong>This is not a new 2026 forecast.</strong> All years have already been used for development.</p>
+<section class="controls" aria-label="Player filters">
+<label>Season being predicted<select id="year"></select></label>
+<label><span id="orgLabel">Origin-year organization</span><select id="org"><option value="">All organizations</option></select></label>
+<label>Stage at forecast<select id="stage"><option value="">All stages</option></select></label>
+<label>Find a player<input id="search" type="search" placeholder="Name or MLBAM ID" autocomplete="off"></label>
+<label>Evidence filter<select id="evidence"><option value="">All players</option><option value="reviewed">Reviewed players</option><option value="missing">No matching risk-calibration players</option><option value="sparse">Fewer than 20 risk-calibration players</option><option value="public">Matched public projections</option></select></label>
+<label>Range comparison<select id="law"><option value="associated">Linked workload + hitting counts</option><option value="independent">Independent hitting counts</option><option value="normal">Previous Normal law — physical failures</option><option value="fixed">Playing-time uncertainty only</option></select></label>
+<label class="check"><input id="actual" type="checkbox" checked>Show player results</label>
+<button id="reset" type="button">Reset filters</button>
+</section>
+<p id="timing" class="muted"></p><p id="loadError" role="alert"></p>
+<section id="totals" class="totals" aria-live="polite"></section>
+<p class="muted">Totals follow the selected historical cohort and origin-year organization. They are <strong>not a future team roster or league budget</strong>. Defense, running, position, salary, trade value and club control are not included.</p>
+<div class="tablewrap"><table id="players"><thead><tr>
+<th><button data-sort="player_name" type="button">Player</button></th><th>Stage</th>
+<th class="num"><button data-sort="rate" type="button">Batting /600</button></th>
+<th class="num"><button data-sort="p" type="button">MLB PA chance</button></th>
+<th class="num"><button data-sort="pa" type="button">Expected PA</button></th>
+<th class="num"><button data-sort="value" type="button">Expected offense</button></th>
+<th class="num">P10 to P90 offense</th>
+<th class="num actualcol"><button data-sort="next_pa" type="button">Actual PA</button></th>
+<th class="num actualcol"><button data-sort="next_rate" type="button">Actual /600</button></th>
+<th class="num actualcol"><button data-sort="next_value" type="button">Actual offense</button></th>
+<th>Evidence</th></tr></thead><tbody id="rows"><tr><td colspan="11">Loading historical forecasts…</td></tr></tbody></table></div>
+<div class="pager"><button id="prev" type="button">Previous</button><span id="page" aria-live="polite"></span><button id="next" type="button">Next</button><button id="download" type="button">Download filtered rows</button></div>
+<p class="definition"><strong>Batting /600</strong> is predicted hitting contribution above the origin league reference per 600 MLB PA, in custom win units. It excludes replacement, position and defense. <strong>Expected offense</strong> adds replacement and scales by expected PA; it is not full WAR. The range includes the chance of no MLB PA.</p>
+<section class="explain"><details open><summary>What the current model uses</summary><div id="modelCard"></div></details>
+<details open><summary>Public benchmark and known gaps</summary><div id="benchmark"></div></details>
+<details><summary>Range accuracy by cohort and year</summary><div id="riskScores"></div></details></section>
+</main>
+<dialog id="detail" aria-labelledby="detailTitle"><div class="dialoghead"><div><h2 id="detailTitle"></h2><p id="detailSubtitle"></p></div><button id="close" type="button" aria-label="Close player details">Close</button></div><div id="detailBody"></div></dialog>
+</body></html>

@@ -24,7 +24,30 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: coherent event count risk and eighteen player walks complete.**
+**Current checkpoint: local hitter research explorer and model card verified.**
+The [plain-language model card](hitter-research-candidate-model-card.md) explains
+the current 199-input hitting model, 251-input opportunity heads, common offense
+units and selected integer-count risk. The separate local explorer at
+`http://127.0.0.1:8860/` displays all 30,506 historical forecasts for 11,020
+people, a reconstructed organization filter, hitting-only sorting, four saved
+range comparisons, complete source histories/encoded inputs and eighteen actual
+reviews. Every exported forecast, source-history join and encoded input is
+independently checked; all 105 saved heads reproduce during export. The matched
+Steamer/ZiPS hitting scores independently recompute and render beside the
+qualified workload/value comparison. Browser checks cover Giants, same-name IDs,
+Eldridge, Kurtz, Gore, hiding player results, filters, pagination and 320px layout.
+The in-app-browser CSV download event timed out; saving a CSV file is not claimed
+verified. Nine focused tests pass and all 31 frozen files remain unchanged.
+The [milestone receipts](../reports/model-evidence/hitter-risk-research-explorer)
+separate export, data verification and browser handoff. This is a historical
+research view, not a new 2026 forecast or published-site replacement. No new fits.
+The full goal remains active: public PA MAE, elite readiness/cohort errors,
+fielding/running/catching/position, supported multi-year paths and control/value
+remain unresolved. Next substantive model work must target the remaining large
+readiness/workload errors under the practical plan, not further range-width
+tuning or relabeling this offense-only view as the completed player-value model.
+
+**Previous checkpoint: coherent event count risk and eighteen player walks complete.**
 The [completed comparison](hitter-event-count-risk-result.md) retains all 30,506
 forecasts and current means. Associated integer counts eliminate impossible
 outcomes and improve range loss .041233 to .041071 overall, .221910 to .221180
