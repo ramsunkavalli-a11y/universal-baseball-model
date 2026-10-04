@@ -24,7 +24,25 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: Belt interpretation corrected and smooth ranking comparison reviewed.**
+**Current checkpoint: prospect hitting bridge tested and evaluation units audited.**
+The [hitting comparison](hitter-talent-bridge-v74-result.md) completes 105 fixed
+heads and sixteen actual player reviews. Rankings plus fold/own-origin level
+translations improve debutant rate RMSE 2.6144 to 2.5831; delivered-value RMSE
+improves only 0.152257 to 0.151662 with an interval including no gain. Kurtz's
+rate rises -0.063 to +1.024 but expected PA stays ten; Langford becomes too
+optimistic, and trees help Merrill while hurting Chourio. The [unit correction](hitter-talent-bridge-v74-score-unit-correction.md)
+restores the declared future-season-centered rate response, separating inherited
+origin-centered scores and season-value bounds; no fits or predictions change.
+All 105 heads are independently replayed. Sparse active profiles, the 2018/2023
+cohort errors, 2021 readiness deficit and public PA MAE gap remain. Retain the
+translated linear model as a tested hitting alternative, not a full model win.
+Keep the V68/V53/V63 candidate and 8791 research explorer unchanged. Next the
+controlling practical plan's bounded delivered-value integration comparison,
+with explicit response-unit reconstruction, fixed anchors and all non-arrivals.
+No parameter sweep or blanket unsigned penalty. Protected 2026 and deployment
+unchanged; whole goal active.
+
+**Previous checkpoint: Belt interpretation corrected and smooth ranking comparison reviewed.**
 The [judgment correction](hitter-review-judgment-v73.md) keeps Belt in scores but
 does not use his unusual exit to impose an unsigned-player penalty. The
 productive free-agent control expects 37,299 PA versus 37,613 actual. The

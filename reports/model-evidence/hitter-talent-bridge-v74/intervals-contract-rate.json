@@ -1,0 +1,101 @@
+[
+  {
+    "scope": "never_debut",
+    "arm": "scout_ridge",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.0740025336345679,
+    "lower": -0.1430741903548474,
+    "upper": -0.005189802880246223,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "arm": "translated_ridge",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.16267177163698038,
+    "lower": -0.30108616813046907,
+    "upper": -0.05597423624051041,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "never_debut",
+    "arm": "translated_hist",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.0638443032903288,
+    "lower": -0.3262129052463703,
+    "upper": 0.1718552051419864,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "arm": "scout_ridge",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.06422488602066295,
+    "lower": -0.13713160782453704,
+    "upper": 0.0074406451602797375,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "arm": "translated_ridge",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.14526279260076008,
+    "lower": -0.28200305936947556,
+    "upper": -0.034736855752056706,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "upper_never_debut",
+    "arm": "translated_hist",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.08364698794249932,
+    "lower": -0.3218009249718209,
+    "upper": 0.14648497706556982,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "arm": "scout_ridge",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.19074893973165669,
+    "lower": -0.6023030607995578,
+    "upper": 0.04884441051352783,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "arm": "translated_ridge",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.5568946671781764,
+    "lower": -1.59221627936348,
+    "upper": -0.19470383151577195,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  },
+  {
+    "scope": "lower_never_debut",
+    "arm": "translated_hist",
+    "reference": "preseason",
+    "metric": "actual_PA_weighted_conditional_rate_mse",
+    "difference": -0.23739106833483697,
+    "lower": -2.6434248684982125,
+    "upper": 0.8807554256018957,
+    "repeats": 1000,
+    "nominal_development_interval": true
+  }
+]
