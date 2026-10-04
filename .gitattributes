@@ -119,3 +119,15 @@ scripts/review_hitter_minor_statcast_players.py -text -eol
 scripts/verify_hitter_minor_statcast_review.py -text -eol
 tests/test_hitter_minor_statcast_source.py -text -eol
 tests/test_hitter_minor_statcast_review.py -text -eol
+docs/hitter-foreign-history-source-contract.md -text -eol
+docs/hitter-foreign-history-source-probe-correction.md -text -eol
+docs/hitter-foreign-history-name-amendment.md -text -eol
+docs/hitter-foreign-history-language-review-amendment.md -text -eol
+docs/hitter-foreign-history-source-result.md -text -eol
+src/universal_baseball/npb_history.py -text -eol
+src/universal_baseball/npb_identity_overlay.py -text -eol
+scripts/capture_npb_hitting_history.py -text -eol
+scripts/review_npb_hitting_history.py -text -eol
+tests/test_npb_history.py -text -eol
+tests/test_npb_identity_overlay.py -text -eol
+reports/model-evidence/npb-hitting-history/** -text -eol

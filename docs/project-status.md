@@ -2,6 +2,32 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Current checkpoint on international professional history
+
+The [foreign-history source milestone](hitter-foreign-history-source-result.md)
+collected official NPB first-team batting for every club in 2005–2024: 240 tables,
+13,154 player-team-season rows and 1,287,308 PA. It preserves low/zero-PA players
+and NPB-only identities. All archived Japanese count rows are independently
+reconstructed; nine player walks, thirteen tests and the unchanged 31-file
+protected-forecast check are complete. English verification is explicitly partial
+(24 matched recent lines; three early Fukudome renderings unavailable).
+
+The reviewed identity overlay fixes published-initial abbreviations, but 215 rows
+remain without an NPB identity and 642 identified rows lack a register link. A
+cutoff-bounded input overlay joins 693 source player-origins/241 identities, not
+241 newly approved hitters; pitcher batting is included in the raw source.
+Ohtani, Suzuki and Yoshida now have real foreign performance histories, not empty
+domestic-history stand-ins. No fit, original forecast, eligibility or explorer
+changed. Raw and bulk data remain private; aggregate evidence and code are saved.
+
+KBO is still pending: FanGraphs offers 2002 onward, but member export is signed
+out and its new UI ignored a proposed historical URL's year parameters. Official
+KBO controls are accessible; their bulk extraction/ID joins are not yet qualified.
+Next is the same bounded foreign-history/population integration comparison already
+planned, after KBO qualification and component-wise league translation. This
+source improvement does not close the public playing-time gap or certify the
+practical hitter model. Keep protected 2026 and closed team-record tests untouched.
+
 ## Current checkpoint on preseason population and foreign professionals
 
 The [preseason source refresh](hitter-preseason-population-source-result.md)
