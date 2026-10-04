@@ -24,18 +24,24 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: prospect hitting bridge tested and evaluation units audited.**
-The user's team-record hypothesis has a [reviewed historical source](hitter-team-record-v75-source-review.md)
-and [locked bounded comparison](hitter-team-record-v75-contract.md), with its
-[source amendment](hitter-team-record-v75-source-amendment.md). No fits have
-started: the candidate is unchanged. Record joins use dated organizations,
-not arbitrary minor club IDs or the target season's record. The source review
-found and repaired last-club versus year-end ownership errors, including Maitan,
-using a general transaction rule. Context is available for 23,174 of 24,199
-never-debut evaluation rows; missing ownership remains qualified, not inferred.
-Finish the locked full/active support checks and one coverage-control versus
-record comparison, including saved-model player review, before the integration
-comparison. Do not expand this into a new context-feature sweep.
+**Current checkpoint: team-record opportunity comparison completed; no promotion.**
+The user's hypothesis now has a [completed result and sixteen actual player reviews](hitter-team-record-v75-result.md),
+following the [locked contract](hitter-team-record-v75-contract.md),
+[reviewed dated source](hitter-team-record-v75-source-review.md) and
+[source amendment](hitter-team-record-v75-source-amendment.md). All 140 new
+heads and 70 current heads were replayed. Prospect PA RMSE moves 27.2521 to
+27.1748, but MAE and appearance probability scores worsen; paired player and
+shared-organization intervals include harm. Four of seven origin contrasts
+worsen; 2024 supplies most of the small net gain. Ramírez improves 113 to 143
+expected PA against 585 actual; Senzel worsens 292 to 239 against 414. Kurtz
+stays near ten. Lower-minors/new-draftee errors, readiness and cohort totals
+are not repaired. Broad age/PA/rank peers are not equivalent batting talent.
+Primary established-player/public forecasts are unchanged; the all-player
+sensitivity still misses the public MAE allowance. Keep the source machinery
+and narrower opportunity hypothesis, not this feature in the candidate.
+Resume the practical plan's delivered-value integration comparison; do not
+expand this into another context-feature sweep. Protected 2026, deployment and
+the frozen forecast remain unchanged; whole goal active.
 
 The [hitting comparison](hitter-talent-bridge-v74-result.md) completes 105 fixed
 heads and sixteen actual player reviews. Rankings plus fold/own-origin level
