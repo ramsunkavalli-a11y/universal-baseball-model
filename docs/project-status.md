@@ -2,6 +2,30 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Current checkpoint on Korean source qualification
+
+The [official KBO source test](hitter-kbo-source-probe-result.md) is complete for
+2005, 2015, 2020, 2023 and 2024, without a FanGraphs login. Both stat groups have
+matching membership; all sixteen summable count fields reconcile to official
+team totals. The 1,777 player-season rows include zero and limited PA. Six player
+walks, static identity/DOB joins for five fixed cases, independent reconstruction
+and focused tests are complete; all 31 frozen files remain unchanged.
+
+Hyeseong Kim's actual 2024 KBO history is 567 PA, while the saved candidate's
+baseline expected MLB PA remains 0.3409. Park/Thames power profiles have different
+K rates. Source qualification exposes missing professional evidence; it does not
+repair those forecasts or provide a fitted MLB translation. English year-heading,
+retired-link and form-session corrections are recorded without erasing failures.
+
+The [2005–2024 collection contract](hitter-kbo-history-collection-contract.md)
+now controls collection of the remaining seasons, with sealed resumable year
+artifacts and no stale-session replay. Inspect its actual process handle or
+completed year/final receipts before claiming progress or restarting. Full
+collection, all-league DOB/MLBAM joins, role/stint exposure and translation remain
+unqualified. Raw/bulk data stay private, and no original forecast or explorer
+changes. Continue the existing foreign-history/population integration sequence;
+do not restart a model-library or closed team-record sweep.
+
 ## Current checkpoint on international professional history
 
 The [foreign-history source milestone](hitter-foreign-history-source-result.md)
