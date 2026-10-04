@@ -2,6 +2,38 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Current checkpoint on minor league Statcast
+
+The [bounded future MLB comparison and full player review](hitter-minor-statcast-next-year-result.md)
+is complete. Keep the previously positive MLB Statcast research branch; do not
+adopt this new joint minor head. Among 970 eligible next-year MLB participants,
+measurement rate RMSE worsens 1.85225 to 1.89579 versus the combined prospect/MLB
+benchmark, and also loses to coverage-only 1.85069. Both supported origins worsen.
+Never-debuted participants show a small uncertain gain, not a validated prospect
+replacement. All 30,506 forecasts and current playing time remain in the test;
+27,390 predictions use exact combined fallback. No protected outcomes, explorer
+changes or deployment. Twenty saved new heads are replayed, 306 endpoint scores
+are independently checked, thirty-three focused tests pass, and thirty-one
+protected files remain unchanged. These execution checks are not model approval.
+
+Sixteen player origins expose the substantive design defect: six AAA contacts
+move Bichette sharply despite almost 2,000 recent MLB PA. That happens to help
+before his poor 2024 season, but the same short-sample mechanism badly hurts his
+2025 forecast. Caminero's strong measured contact is also pushed down before
+his breakout. Coverage selection, correlated conditional terms and unshrunk
+sample summaries make this a flawed integration, not evidence against Statcast.
+Counts and sample products did not enforce measurement precision. Sparse refined
+profiles, park/opponent separation and provider vintage remain limitations.
+
+The [reporting amendment](hitter-minor-statcast-reporting-amendment.md) preserves
+original stale peer labels and rebuilds comparisons from actual fitted inputs;
+fitting, primary scores and selected cases are unchanged. Code, contracts,
+calibration, support, original/corrected cases, twenty heads and compact predictions
+are preserved in `reports/model-evidence/hitter-minor-statcast-next-year`.
+The next coherent step is a separately frozen precision-aware integration and
+role separation, not another algorithm sweep, team-record test or college capture.
+Do not tune to the named cases or claim the overall hitter/value goal is complete.
+
 ## Team record testing is closed
 
 On 2026-10-04 the user explicitly directed us to stop repeatedly testing team
