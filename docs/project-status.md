@@ -24,7 +24,27 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: all eight contact seasons repaired and player review complete.**
+**Current checkpoint: repaired raw contact comparison and nineteen player walks complete.**
+The [matched information result](hitter-repaired-contact-information-result.md)
+keeps all 30,506 forecasts and fixed playing time. All 210 checks and 35 anchor
+replays precede ninety Ridge fits; five unsupported 2016 folds retain the anchor.
+Never-debut rate RMSE is 2.5831 translated, 2.5924 coverage, 2.5892 mix and
+2.5886 joint; delivered offense .151662 becomes .151685. Paired intervals cross
+zero. The all-player sensitivity has a small uncertain full-population gain,
+but public offense worsens. Nineteen actual walks retain Carroll/McNeil gains,
+Torkelson/Holliday harms, unchanged Judge/Soto, unsupported Kurtz, and Azocar/
+Collins compensating component errors. Raw minor contact is not park-neutral or
+own MLB contact; this result does not reject adjusted/nonlinear contact models.
+Do not promote this bundle or cherry-pick its favorable cases. Eleven focused
+tests pass, every new head replays and all 31 frozen files remain unchanged.
+Next develop useful predictive uncertainty and support-aware explanations under
+the practical plan. The available-season result already scored the translated
+hitting combination; do not repeat that assembly as a new experiment.
+Public workload, readiness/cohort errors
+and full value remain unresolved. Full goal stays active; no protected outcome
+or deployed explorer change.
+
+**Previous checkpoint: all eight contact seasons repaired and player review complete.**
 The [completed source review](hitter-contact-identity-rebuild-result.md) retains
 4,591,561 physical contacts across 2016–19 and 2021–24 and corrects 12,100
 participant credits. All 14,212 selected games have official sequence authority;
