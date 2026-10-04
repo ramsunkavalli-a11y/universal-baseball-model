@@ -1,0 +1,79 @@
+{
+  "rows": 30506,
+  "exact_original_row_and_forecast_preservation": true,
+  "source_counts": {
+    "event_listing_conflict": 1165,
+    "medical_scope": 5216,
+    "foreign_performance_missing": 7,
+    "origin_evidence_bridge": 30288
+  },
+  "availability_counts": {
+    "unknown": 11551,
+    "retired": 14,
+    "mlb_scope_exit": 1780,
+    "reported_mlb_return": 2773,
+    "organization_acquired": 14270,
+    "reported_IL": 69,
+    "restricted": 14,
+    "reported_return": 27,
+    "foreign_departure": 3,
+    "suspended_unspecified": 2,
+    "administrative_leave": 1,
+    "permanent_ineligible": 1,
+    "finite_ineligible": 1
+  },
+  "no_new_fits": true,
+  "actual_results_hidden_by_default": true,
+  "team_filter": true,
+  "calibrated_continuous_intervals_available": false,
+  "browser_verification": "complete",
+  "protected_outcomes_used_in_calculations": false,
+  "incidental_search_exposure": "A historical-source search unexpectedly returned a current McLain profile with a 2026 summary. Those data were not retained, used in source states, fitting, scoring or forecast changes. Later protected-test claims must acknowledge this exposure.",
+  "frozen_forecast_changed": false,
+  "deployed_explorer_changed": false,
+  "whole_goal_complete": false,
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\features.parquet": "a9c1bc927adcbb07742080297e2c513ec2de1a5800d2d5e9b01652cd828ffcfc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-opportunity-status-v59\\context.parquet": "e7e88bbd78e93ee0ddc68b7c4435cd6afb276611b997c8f4bb823068c590ef35",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-observed-return-v60\\observation-states.parquet": "5a897266a973065fd491a26bc2927de553f8fd9a97787a90717f5d0eb04610a9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-roster-provenance-audit\\states.parquet": "9ab1149870e17c10ac9c9b59f54f70cb4216a749116b0689b56894507e61caa4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-comparative-handoff-v72\\manifest.json": "086e821309263869e143d1601956c73ad9a08287ccb7f1ffb8aba7212cf5f845",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-roster-provenance-audit\\final-report.json": "90a72ba93eb5b26e8e9e33aa48e34e0cf29871a59921bc27487f8b580fd74a27",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-candidate-integration-audit\\final-report.json": "2b65c43d0e9e45faa766ca548b52ded2cfa33cabc55f654110cf6b00449c2adb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\build_hitter_qualified_handoff.py": "b147efe2d297151386bb0a40c7d4e6e38e9e79a0a2e36864680dfa1b5d770f9c"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-qualified-handoff\\explorer\\comparison-reviews.json": "73e19b682ac0a83700f3404974d001eb02de8922e64f6bfc2ee02bd597daff3c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-qualified-handoff\\explorer\\data.json": "8517020d4308a1a2fa7816521202e8ecf91628502faa7ff6f664a85a81a40346",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-qualified-handoff\\explorer\\history.json": "ec3d6282e2650cfdccbcec8e7abbf3e8a30fa9267a09c11565dfd5cb1ed00aff",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-qualified-handoff\\explorer\\index.html": "ca6a9f6521947db4480b64218776c99b6fe9e83746d8498ebbe23721e25fb35d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-qualified-handoff\\explorer\\probability.json": "ab62c4cf467c303d3bfdde86eea261bcf2dcbb7a4e17482bbd2468f755f8773e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-qualified-handoff\\explorer\\reviews.json": "a0c38fa0fcf97c1fdf7576367a32e9a1546d84fa74b4bec168cee35efe134ddd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-qualified-handoff\\explorer\\scores.json": "f1640f8a48f070a65233d4344edf0c9cbef3ede50f2d1417ca45799a77aeadcd"
+  },
+  "saved_v68_forecasts_independently_matched": 30506,
+  "reviewed_browser_cases": [
+    "McLain 2025",
+    "Franco 2024",
+    "Thames 2017",
+    "Belt 2024",
+    "MLBAM 808975 2025"
+  ],
+  "reviewed_controls": [
+    "Giants upper minors 2025: 34 rows",
+    "original 293 PA versus candidate 322 PA",
+    "listing mismatch 2025: 168 rows",
+    "actual results off/on/off",
+    "hitting-only sort and origin/source panels"
+  ],
+  "screenshot_sha256": "2a568c1512785ec075a0f59209630dd88e6fae4dea0287555061ed5c0e87029d",
+  "predictive_validation_changed": false,
+  "completed_source_review": "hitter-roster-provenance-audit: nine player walks",
+  "current_handoff_is_not_new_model_experiment": true,
+  "result_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\verify_hitter_qualified_handoff.py": "f4c19d2aefb54f3a389fc30df7b6cc3563312829e5406bed036525b1b08fc3e6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\scored-predictions.parquet": "9a08f2a4bea18d9fb14313fedd904ddd98f009331ed89bd607f3aeac34f750f8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-qualified-handoff-result.md": "4cd99723e004011da1382a964b301947ed8b0935d0ba7598f2c612f8c03a57dd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_hitter_qualified_handoff.py": "b3b81497ca8196c53820f972f944692c332329069352c3740ba3dac8fd55659e"
+  }
+}

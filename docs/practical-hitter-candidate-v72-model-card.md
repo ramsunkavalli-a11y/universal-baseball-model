@@ -62,7 +62,8 @@ The broad development test contains 30,506 forecasts for 2017–2019 and 2022–
 with whole-player chronological folds and only mature training outcomes.
 Repeated historical inspection means these are development results, not a new
 independent test. All arithmetic and source metadata are checked against saved
-forecasts. The protected 2026 season remains closed.
+forecasts. Protected 2026 outcomes were not used in these calculations; the
+incidental search exposure disclosed below qualifies future unseen-test claims.
 
 ## Important misses and limits
 
@@ -99,6 +100,13 @@ must acknowledge that exposure.
 
 ## Explorer and next milestone
 
+The [source-qualified handoff](hitter-qualified-handoff-result.md) now carries
+the completed roster and availability review into a separate local explorer.
+Its evidence filter and player panel distinguish returned listings, unresolved
+availability, unknown medical coverage and missing foreign production. All
+30,506 original forecasts remain identical. This does not repair those gaps or
+add calibrated ranges. Actual results and outcome-informed reviews remain opt-in.
+
 The comparative local explorer has a team filter, season and stage selectors,
 hitting-only sorting and a candidate/original switch. Each player shows both
 forecasts and the actual source statistics. Actual outcomes and outcome-informed
@@ -106,10 +114,13 @@ reviews are hidden by default. Organization is the requested historical year-end
 roster when available, otherwise the last observed club, not his future employer.
 Filtered totals cover known players, not a complete future team budget.
 
-The next substantive problem is supported immediate-readiness and talent
-extrapolation for thin professional samples. Address that as one coherent
-modeling decision with pedigree/level/age evidence and failed peers, not another
-status flag queue or a new library tournament. Preserve the established-player
-benchmark and distinguish uncertain prospect ceilings from next-year use.
+The controlling practical plan now proceeds to useful uncertainty after the
+completed delivered-value and source comparisons. Test active-workload spread
+with fixed current participation probabilities and means before claiming risk
+is usable. Earlier distributions cannot simply be attached to this candidate.
+Supported immediate-readiness and talent extrapolation for thin professional
+samples remain substantive unresolved problems, not solved by wider intervals.
+Preserve the established-player benchmark and distinguish uncertain prospect
+ceilings from next-year use; do not reopen a status-flag or library tournament.
 The historical handoff does not change the frozen 2026 forecast or deployed
 explorers, and does not complete the broader hitter goal.

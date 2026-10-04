@@ -24,7 +24,32 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: historical listing provenance reviewed across the population.**
+**Current checkpoint: source-qualified research explorer built and browser checked.**
+The [handoff review](hitter-qualified-handoff-result.md) exposes the completed
+source audit on all 30,506 historical forecasts, with exact original row and
+forecast preservation. The local research explorer at port 8792 retains team,
+season and stage filters, hitting-only sort, and both reviewed models. Evidence
+filters and player panels distinguish 1,165 listing/event mismatches from proven
+errors, unknown medical scope from healthy, and missing foreign production from
+zero talent. McLain, Franco, Thames, Belt, the unnamed MLBAM 808975 row and Giants
+upper minors were checked in the live browser; actual outcomes remain opt-in.
+Four focused tests pass. No new models, improved forecasts, calibrated intervals,
+frozen forecast changes or deployed explorer changes are claimed. Prior joint
+forest and exact-mixture research was reviewed: the next bounded test concerns
+active-workload spread with fixed current probabilities/means and genuinely
+nested player-separated estimation, not attaching old ranges to new means.
+The [locked workload-risk comparison](hitter-workload-risk-contract.md) now has
+[actual pre-fit memberships](hitter-workload-risk-readiness.md): 95 nested heads,
+153–217 distinct active calibration people per outer cell, no outer-player
+contamination, and the original 30,506 forecasts. No new risk fit has run.
+8,420 outer forecasts lack an earlier active analogue in the refined profile;
+retain and qualify them rather than claiming all-level calibration. Two nested
+selection tests and eleven handoff/source tests pass. Fit, distribution scoring
+and actual player walks are next, with current means and probabilities fixed.
+Public workload error, prospect readiness, cohort allocation, full player value
+and the active whole goal remain unresolved.
+
+**Previous checkpoint: historical listing provenance reviewed across the population.**
 The [completed source review](hitter-roster-provenance-audit-result.md) reconciles
 480 saved team/date captures and 18,708 unique memberships, including the separate
 2020 source, with every one of the 63,282 current inputs. All 30,506 forecasts
