@@ -25,6 +25,18 @@ a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
 **Current checkpoint: prospect hitting bridge tested and evaluation units audited.**
+The user's team-record hypothesis has a [reviewed historical source](hitter-team-record-v75-source-review.md)
+and [locked bounded comparison](hitter-team-record-v75-contract.md), with its
+[source amendment](hitter-team-record-v75-source-amendment.md). No fits have
+started: the candidate is unchanged. Record joins use dated organizations,
+not arbitrary minor club IDs or the target season's record. The source review
+found and repaired last-club versus year-end ownership errors, including Maitan,
+using a general transaction rule. Context is available for 23,174 of 24,199
+never-debut evaluation rows; missing ownership remains qualified, not inferred.
+Finish the locked full/active support checks and one coverage-control versus
+record comparison, including saved-model player review, before the integration
+comparison. Do not expand this into a new context-feature sweep.
+
 The [hitting comparison](hitter-talent-bridge-v74-result.md) completes 105 fixed
 heads and sixteen actual player reviews. Rankings plus fold/own-origin level
 translations improve debutant rate RMSE 2.6144 to 2.5831; delivered-value RMSE
