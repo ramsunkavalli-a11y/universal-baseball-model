@@ -24,7 +24,25 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: generated hitting and opportunity comparison reviewed.**
+**Current checkpoint: actual age and level support of hitting estimates audited.**
+The [completed audit](hitter-rate-support-audit-result.md) replays 35 current
+rate heads across all 30,506 forecasts and 48 alternative heads for sixteen
+reassessed player cases. Of 5,591 positive-rate forecasts with predominantly
+lower-level exposure below age 21, 4,852 have no earlier active age/level/debut
+analogue in their own fold. Caceres's .499 rate is mostly +1.486 from age;
+the refined DSL profile has zero active support. This is an extrapolation,
+not validated latent MLB ability; next-year absence cannot validate it.
+Kurtz has fifteen coarse active analogues but no fine elite-entry analogue,
+while Peña has 59 coarse AAA/age analogues and still badly misses arrival.
+The translated/ranking linear alternative remains useful development evidence:
+it lowers Caceres's rate to -.142 and improves debutant hitting modestly,
+but neither graph connectivity nor that lower number creates direct support.
+Retain the reviewed alternative, not a new combined winner. Before another fit,
+lock a target/support repair for cross-level talent that distinguishes next-year
+contribution from eventual-arrival ability. No new models, forecasts, explorer
+changes or protected 2026 access. The full practical goal remains active.
+
+**Previous checkpoint: generated hitting and opportunity comparison reviewed.**
 The [completed test](hitter-talent-opportunity-result.md) adds the current
 MLB hitting estimate to both arrival and active-workload models using strictly
 earlier, whole-player-separated training predictions. All 30,506 forecasts
