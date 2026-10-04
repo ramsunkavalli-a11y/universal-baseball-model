@@ -24,7 +24,21 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: broad employment source audit reviewed.**
+**Current checkpoint: employment comparison reviewed and feature queue closed.**
+The [matched comparison](hitter-employment-v71-result.md) replays 140 saved heads
+and completes thirteen actual player walkthroughs. Overall PA RMSE 60.499 to
+60.470 is tiny; public MAE worsens 106.411 to 106.559, still 15.72% worse than
+Steamer. Unsigned PA error does not improve. Bader remains 137 versus 437 PA,
+Wieters unchanged, Belt 116 versus 404 then 239 versus zero, and Kurtz ten versus
+489. Generic assignment also includes All-Star records; do not call it contract
+evidence. Preserve local upper-minor evidence, not a deployed addition. Close
+the graduation/employment patch queue. Select V68 fresher-preseason rankings
+with unchanged V53/V63 hitting as the coherent next research handoff candidate,
+keeping original forecasts visible. Next finish the comparative team-filtered
+handoff, with public workload/readiness and uncertainty gaps explicit. Protected
+2026 unchanged; whole goal active, no production adoption.
+
+**Previous checkpoint: broad employment source audit reviewed.**
 The [audit](hitter-employment-v70-result.md) completes nine actual player reviews
 and eighteen saved-head replays without a new fit. Explicit signing-date repair
 reduces eight source/roster conflicts to two, retained as warnings. Unsigned
