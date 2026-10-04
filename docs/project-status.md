@@ -24,7 +24,26 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: older training sources repaired and twelve source walks completed.**
+**Current checkpoint: matched earlier-training comparison and fourteen model walks completed.**
+The [completed comparison](hitter-extended-training-result.md) adds all 13,357
+reviewed origins, retains all 30,506 forecasts, saves 210 actual head preflights
+before fitting and replays every saved head. Restricted outputs reproduce current
+forecasts exactly to rounding; current inputs, labels and anchors remain exact.
+Extended prospect rate RMSE improves 2.61438 to 2.59872, but the reviewed
+translated/ranking alternative remains better at 2.58308. Whole value .453384
+to .453140 is tiny and uncertain; PA MAE worsens and public MAE is 15.90% above
+Steamer, outside the plan allowance. See the [exact-number clarification](hitter-extended-training-number-clarification.md).
+Acuna PA improves 102 to 173 against 487,
+but Bellinger falls 103 to 46 against 548; Langford/Julio/Kurtz also worsen.
+Bautista shows better PA but worse value; Demeritte's nearly exact value hides
+major PA/rate errors. Lower-minors PA overforecast grows; 2021 and 2023 cohort
+failures remain. Do not promote an extended arm or post-result hybrid. Preserve
+the repaired earlier data and both current/translated anchors. Next reconcile
+prior workload tests, then predeclare a genuinely different prospect/readiness
+construction rather than another source/algorithm micro-sweep. Protected 2026,
+frozen forecasts and deployed explorer remain unchanged; the full goal is active.
+
+**Previous checkpoint: older training sources repaired and twelve source walks completed.**
 The [completed source review](hitter-older-origin-source-result.md) rebuilds all
 13,357 origin-2008–2010 hitter rows, retaining 11,497 zero next-year outcomes and
 1,860 positive MLB labels. Missing short-season history in 2006–2007 is restored
