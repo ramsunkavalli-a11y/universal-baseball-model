@@ -1,0 +1,1138 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "scores": {
+      "fixed": {
+        "pinball": 0.04718987277731362,
+        "interval_score": 0.7999430827353082,
+        "coverage": 0.8936525628807898,
+        "width": 0.16592829483354582,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.05269663427327247,
+        "log_negative": 1.4235811229783424,
+        "brier_two": 0.01798721647313711,
+        "log_two": 0.1675266730380036
+      },
+      "normal": {
+        "pinball": 0.04123307030418877,
+        "interval_score": 0.6325732584969191,
+        "coverage": 0.9438108439929369,
+        "width": 0.33973101953388535,
+        "impossible_mass": 0.0017830061301862797,
+        "brier_negative": 0.03952967934616549,
+        "log_negative": 0.1294442277417715,
+        "brier_two": 0.016442625662833325,
+        "log_two": 0.05526448203039917
+      },
+      "independent": {
+        "pinball": 0.04125775868438471,
+        "interval_score": 0.6329154915252924,
+        "coverage": 0.942640485584718,
+        "width": 0.33836712848374584,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.0393687069639057,
+        "log_negative": 0.12886513752656906,
+        "brier_two": 0.016467573328609923,
+        "log_two": 0.055396989232126
+      },
+      "associated": {
+        "pinball": 0.041070814565601646,
+        "interval_score": 0.6291796510862069,
+        "coverage": 0.9453498012636278,
+        "width": 0.35138180238620226,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03860539754009607,
+        "log_negative": 0.12633187818785807,
+        "brier_two": 0.016429998975036855,
+        "log_two": 0.054716310073352085
+      }
+    },
+    "expected_pa": 1228732.5119559553,
+    "actual_pa": 1270493,
+    "expected_value": 4165.848839961402,
+    "actual_value": 4264.186901827925,
+    "zero_calibration_people": 19800,
+    "below20_calibration_people": 30322,
+    "expected_negative": {
+      "fixed": 74.92541517526037,
+      "normal": 1104.043061945571,
+      "independent": 1142.6371707552378,
+      "associated": 1318.98881140343
+    },
+    "actual_negative": 1610,
+    "expected_two": {
+      "fixed": 690.4135615304622,
+      "normal": 823.1941905287836,
+      "independent": 809.3914156159946,
+      "associated": 842.0987604088148
+    },
+    "actual_two": 928
+  },
+  {
+    "scope": "public",
+    "rows": 2627,
+    "people": 1044,
+    "scores": {
+      "fixed": {
+        "pinball": 0.25856864570128896,
+        "interval_score": 4.279375664662972,
+        "coverage": 0.4631018847451399,
+        "width": 0.9683142335098147,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.25793199197437194,
+        "log_negative": 6.9069614637287815,
+        "brier_two": 0.10099584854926097,
+        "log_two": 0.8626220173311415
+      },
+      "normal": {
+        "pinball": 0.22191043906885294,
+        "interval_score": 3.2674948513865236,
+        "coverage": 0.785844755424617,
+        "width": 2.091284318742103,
+        "impossible_mass": 0.004622918619514365,
+        "brier_negative": 0.17969060317991012,
+        "log_negative": 0.5356211117849696,
+        "brier_two": 0.09278013727233546,
+        "log_two": 0.29942061830569644
+      },
+      "independent": {
+        "pinball": 0.22212757437322803,
+        "interval_score": 3.2743851028263036,
+        "coverage": 0.776701750412889,
+        "width": 2.0707017302481323,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.1793664770487627,
+        "log_negative": 0.5349295212829092,
+        "brier_two": 0.09296337215480084,
+        "log_two": 0.300333616297062
+      },
+      "associated": {
+        "pinball": 0.22118046103252217,
+        "interval_score": 3.2628791563952846,
+        "coverage": 0.7873844241173091,
+        "width": 2.1575507190625216,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.1749987057928487,
+        "log_negative": 0.5224144180658525,
+        "brier_two": 0.09295410702609688,
+        "log_two": 0.2990594972676166
+      }
+    },
+    "expected_pa": 649254.8423971365,
+    "actual_pa": 660776,
+    "expected_value": 2202.932588584372,
+    "actual_value": 2123.810127060133,
+    "zero_calibration_people": 101,
+    "below20_calibration_people": 2545,
+    "expected_negative": {
+      "fixed": 49.073644185552936,
+      "normal": 471.1757779305206,
+      "independent": 477.1984110499462,
+      "associated": 546.9067284797717
+    },
+    "actual_negative": 680,
+    "expected_two": {
+      "fixed": 378.4220752805727,
+      "normal": 448.0424768254322,
+      "independent": 438.4218092050456,
+      "associated": 453.4250586041695
+    },
+    "actual_two": 473
+  },
+  {
+    "scope": "current_MLB",
+    "rows": 4541,
+    "people": 1521,
+    "scores": {
+      "fixed": {
+        "pinball": 0.27310159020512553,
+        "interval_score": 4.55495884286083,
+        "coverage": 0.4594046237997788,
+        "width": 0.9980774669055055,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.2455371463786453,
+        "log_negative": 6.606498243492025,
+        "brier_two": 0.1120906725906075,
+        "log_two": 1.0174802045122306
+      },
+      "normal": {
+        "pinball": 0.2345399999953397,
+        "interval_score": 3.465422844077325,
+        "coverage": 0.7678924663561487,
+        "width": 2.10498292866406,
+        "impossible_mass": 0.005204704757031718,
+        "brier_negative": 0.17272419707918402,
+        "log_negative": 0.5169319850613628,
+        "brier_two": 0.10201833440605135,
+        "log_two": 0.32880730476636455
+      },
+      "independent": {
+        "pinball": 0.23474361291112805,
+        "interval_score": 3.4686901879973706,
+        "coverage": 0.7625096955496681,
+        "width": 2.104690530656,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.17197666243031007,
+        "log_negative": 0.5151000819460313,
+        "brier_two": 0.10216820748683146,
+        "log_two": 0.3296265413197016
+      },
+      "associated": {
+        "pinball": 0.2335871991435545,
+        "interval_score": 3.4462091031299633,
+        "coverage": 0.7767560707694576,
+        "width": 2.184855176051251,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.1682050103635979,
+        "log_negative": 0.5044487495090277,
+        "brier_two": 0.10193350695219704,
+        "log_two": 0.3258977456323534
+      }
+    },
+    "expected_pa": 1129696.858368429,
+    "actual_pa": 1156856,
+    "expected_value": 3937.085881124297,
+    "actual_value": 4027.1318440354066,
+    "zero_calibration_people": 164,
+    "below20_calibration_people": 4357,
+    "expected_negative": {
+      "fixed": 67.2955733476692,
+      "normal": 806.7561613438271,
+      "independent": 826.8975384888349,
+      "associated": 947.7524817697766
+    },
+    "actual_negative": 1125,
+    "expected_two": {
+      "fixed": 687.2753146944302,
+      "normal": 800.1600480456376,
+      "independent": 786.5624275833943,
+      "associated": 811.3342746877706
+    },
+    "actual_two": 886
+  },
+  {
+    "scope": "upper_never",
+    "rows": 5454,
+    "people": 3055,
+    "scores": {
+      "fixed": {
+        "pinball": 0.029150760122677633,
+        "interval_score": 0.5382014886207851,
+        "coverage": 0.8910310043903787,
+        "width": 0.07926920384011164,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.06707888416144041,
+        "log_negative": 1.852886730471854,
+        "brier_two": 0.006483971743400591,
+        "log_two": 0.0754139898349447
+      },
+      "normal": {
+        "pinball": 0.028081831959914233,
+        "interval_score": 0.5117206399991164,
+        "coverage": 0.909238168650505,
+        "width": 0.11841217730449165,
+        "impossible_mass": 0.0034517291470152335,
+        "brier_negative": 0.056708727190949604,
+        "log_negative": 0.20888312250306568,
+        "brier_two": 0.006119319610345167,
+        "log_two": 0.02824888573345499
+      },
+      "independent": {
+        "pinball": 0.02806192661359829,
+        "interval_score": 0.5113135733708466,
+        "coverage": 0.9083904338232563,
+        "width": 0.11430373808390629,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.056460098072515376,
+        "log_negative": 0.20711310770619384,
+        "brier_two": 0.006123179811540397,
+        "log_two": 0.02828753240132987
+      },
+      "associated": {
+        "pinball": 0.02797485552078466,
+        "interval_score": 0.5089131187328172,
+        "coverage": 0.9117218652857673,
+        "width": 0.119120125612762,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.05553435158802923,
+        "log_negative": 0.20231545167483858,
+        "brier_two": 0.006090764386580851,
+        "log_two": 0.02759901174792711
+      }
+    },
+    "expected_pa": 74239.03857057953,
+    "actual_pa": 92891,
+    "expected_value": 179.01457512848606,
+    "actual_value": 203.93926446318383,
+    "zero_calibration_people": 1508,
+    "below20_calibration_people": 5454,
+    "expected_negative": {
+      "fixed": 1.6049532634858739,
+      "normal": 200.4674892628065,
+      "independent": 211.29526842662625,
+      "associated": 249.3927227180794
+    },
+    "actual_negative": 368,
+    "expected_two": {
+      "fixed": 2.8587663103800294,
+      "normal": 18.838896750063974,
+      "independent": 18.652756157975688,
+      "associated": 24.549027841488876
+    },
+    "actual_two": 36
+  },
+  {
+    "scope": "lower_never",
+    "rows": 17852,
+    "people": 8974,
+    "scores": {
+      "fixed": {
+        "pinball": 0.0005608810262504474,
+        "interval_score": 0.011136789063412898,
+        "coverage": 0.9973062399677391,
+        "width": 0.0011691595905623773,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.0014510037401167738,
+        "log_negative": 0.0400963427058521,
+        "brier_two": 0.0001083549949712906,
+        "log_two": 0.001131026285257997
+      },
+      "normal": {
+        "pinball": 0.0005592320795093144,
+        "interval_score": 0.011148737908645552,
+        "coverage": 0.9972959758967528,
+        "width": 0.001160006127627377,
+        "impossible_mass": 0.0002472936422299176,
+        "brier_negative": 0.0013855770261231748,
+        "log_negative": 0.007780650308635061,
+        "brier_two": 0.00010921500521682367,
+        "log_two": 0.0008722499564541065
+      },
+      "independent": {
+        "pinball": 0.0005586834897639099,
+        "interval_score": 0.011131327086615564,
+        "coverage": 0.997236501649102,
+        "width": 0.0011205970803251904,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.0013840631187130848,
+        "log_negative": 0.00784174397916865,
+        "brier_two": 0.00010924400374920579,
+        "log_two": 0.0008880893214437491
+      },
+      "associated": {
+        "pinball": 0.0005587115077009325,
+        "interval_score": 0.011158000153454485,
+        "coverage": 0.9972857118257666,
+        "width": 0.0010553805084643798,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.0013757821186386582,
+        "log_negative": 0.007887235176937813,
+        "brier_two": 0.0001095863327719069,
+        "log_two": 0.0008729695430148651
+      }
+    },
+    "expected_pa": 7054.64556931176,
+    "actual_pa": 5194,
+    "expected_value": 19.472943221761007,
+    "actual_value": 9.56025276109348,
+    "zero_calibration_people": 15960,
+    "below20_calibration_people": 17852,
+    "expected_negative": {
+      "fixed": 0.08471310739274256,
+      "normal": 28.458800190920474,
+      "independent": 31.212848547890292,
+      "associated": 36.9286007345869
+    },
+    "actual_negative": 26,
+    "expected_two": {
+      "fixed": 0.09975315415099033,
+      "normal": 1.5419013706936568,
+      "independent": 1.5533522282869257,
+      "associated": 2.29642170765142
+    },
+    "actual_two": 2
+  },
+  {
+    "scope": "absent_prior",
+    "rows": 1766,
+    "people": 937,
+    "scores": {
+      "fixed": {
+        "pinball": 0.01685835589024461,
+        "interval_score": 0.3264431185283661,
+        "coverage": 0.924715645562437,
+        "width": 0.03766325561699824,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.05031678975438938,
+        "log_negative": 1.306136141112358,
+        "brier_two": 0.0022129785827537402,
+        "log_two": 0.0425135312167955
+      },
+      "normal": {
+        "pinball": 0.0163755766054467,
+        "interval_score": 0.3165694079017124,
+        "coverage": 0.9360616645607104,
+        "width": 0.05759167236334924,
+        "impossible_mass": 0.004131448906302313,
+        "brier_negative": 0.043977220235745976,
+        "log_negative": 0.16374500434066316,
+        "brier_two": 0.0022542235715356414,
+        "log_two": 0.014490415554603448
+      },
+      "independent": {
+        "pinball": 0.016344401025472178,
+        "interval_score": 0.3154640806788855,
+        "coverage": 0.9340867100035342,
+        "width": 0.0544495402311202,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.04375988999602012,
+        "log_negative": 0.16280977463748575,
+        "brier_two": 0.002252712501840172,
+        "log_two": 0.014291278107779944
+      },
+      "associated": {
+        "pinball": 0.016331406414613534,
+        "interval_score": 0.31478724483961357,
+        "coverage": 0.9341818558651249,
+        "width": 0.05570365030054543,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.043329723503005624,
+        "log_negative": 0.16131048683313334,
+        "brier_two": 0.002268321849495865,
+        "log_two": 0.01402034963175025
+      }
+    },
+    "expected_pa": 17186.64704682621,
+    "actual_pa": 15309,
+    "expected_value": 29.223721530169993,
+    "actual_value": 22.305109774464587,
+    "zero_calibration_people": 1275,
+    "below20_calibration_people": 1766,
+    "expected_negative": {
+      "fixed": 5.925376069897075,
+      "normal": 66.19364689868264,
+      "independent": 70.88704545413557,
+      "associated": 82.19747355552765
+    },
+    "actual_negative": 91,
+    "expected_two": {
+      "fixed": 0.17957485062824427,
+      "normal": 2.5485974723035616,
+      "independent": 2.5213240443916756,
+      "associated": 3.7795437991122762
+    },
+    "actual_two": 4
+  },
+  {
+    "scope": "thin_new_draft",
+    "rows": 1429,
+    "people": 1429,
+    "scores": {
+      "fixed": {
+        "pinball": 0.002925273544836272,
+        "interval_score": 0.05818575605837008,
+        "coverage": 0.9950834776881575,
+        "width": 0.0005713177229670862,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.001370355834641549,
+        "log_negative": 0.037864331004315,
+        "brier_two": 0.0007325611587000291,
+        "log_two": 0.007558108027188364
+      },
+      "normal": {
+        "pinball": 0.002959483217429322,
+        "interval_score": 0.05921204623616157,
+        "coverage": 0.9950834776881575,
+        "width": 0.00036562759434969217,
+        "impossible_mass": 0.00019647147614551005,
+        "brier_negative": 0.001355612700760479,
+        "log_negative": 0.008088476017928668,
+        "brier_two": 0.0007287998408804242,
+        "log_two": 0.0044163957755018685
+      },
+      "independent": {
+        "pinball": 0.0029605609819783733,
+        "interval_score": 0.0592443791726331,
+        "coverage": 0.9950834776881575,
+        "width": 0.0003542064173925478,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.001356913374736275,
+        "log_negative": 0.008243042110721117,
+        "brier_two": 0.0007286692182754672,
+        "log_two": 0.0043916822653122045
+      },
+      "associated": {
+        "pinball": 0.002966789879724836,
+        "interval_score": 0.059431246105027015,
+        "coverage": 0.9950834776881575,
+        "width": 0.0002863455315908554,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.0013556373595604917,
+        "log_negative": 0.008282119676955437,
+        "brier_two": 0.0007272071580285966,
+        "log_two": 0.004206327565534352
+      }
+    },
+    "expected_pa": 746.1939838705712,
+    "actual_pa": 1647,
+    "expected_value": 2.2410265009422914,
+    "actual_value": 6.84410121270769,
+    "zero_calibration_people": 1420,
+    "below20_calibration_people": 1429,
+    "expected_negative": {
+      "fixed": 0.0,
+      "normal": 2.345184529011367,
+      "independent": 2.4913403945446806,
+      "associated": 2.9901991164580135
+    },
+    "actual_negative": 2,
+    "expected_two": {
+      "fixed": 0.01590828067698092,
+      "normal": 0.1867592600037984,
+      "independent": 0.1867024132629827,
+      "associated": 0.2690585680504221
+    },
+    "actual_two": 1
+  },
+  {
+    "scope": "active_outcomes_diagnostic",
+    "rows": 4538,
+    "people": 1493,
+    "scores": {
+      "fixed": {
+        "pinball": 0.30829858383884184,
+        "interval_score": 5.225974820551026,
+        "coverage": 0.3002928932596775,
+        "width": 0.9981309929361466,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.3486297126409566,
+        "log_negative": 9.484621577458174,
+        "brier_two": 0.12059793759926642,
+        "log_two": 1.1291273907438966
+      },
+      "normal": {
+        "pinball": 0.2678057618873662,
+        "interval_score": 4.0381876544528215,
+        "coverage": 0.6233943365732333,
+        "width": 2.0703400098600615,
+        "impossible_mass": 0.00439201999239003,
+        "brier_negative": 0.25353379128816333,
+        "log_negative": 0.7798917985410456,
+        "brier_two": 0.10992889323150516,
+        "log_two": 0.3655448617582932
+      },
+      "independent": {
+        "pinball": 0.2683601904486624,
+        "interval_score": 4.049509223957194,
+        "coverage": 0.6161137352557388,
+        "width": 2.072067235099188,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.25144657102275864,
+        "log_negative": 0.7704324060764794,
+        "brier_two": 0.11011616861054326,
+        "log_two": 0.36651076514469566
+      },
+      "associated": {
+        "pinball": 0.2672407256282522,
+        "interval_score": 4.0183220054529665,
+        "coverage": 0.6345236470481185,
+        "width": 2.153160119279129,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.24261628201096225,
+        "log_negative": 0.7377434756184044,
+        "brier_two": 0.10977011136644603,
+        "log_two": 0.3599781322779278
+      }
+    },
+    "expected_pa": 1109984.4660719174,
+    "actual_pa": 1270493,
+    "expected_value": 3921.577091310229,
+    "actual_value": 4264.186901827924,
+    "zero_calibration_people": 512,
+    "below20_calibration_people": 4395,
+    "expected_negative": {
+      "fixed": 45.611411445013154,
+      "normal": 753.9762620008296,
+      "independent": 770.7447548624386,
+      "associated": 885.8127857271799
+    },
+    "actual_negative": 1610,
+    "expected_two": {
+      "fixed": 682.7979512534292,
+      "normal": 795.5038288180384,
+      "independent": 781.9530648267283,
+      "associated": 806.6458007049882
+    },
+    "actual_two": 928
+  },
+  {
+    "scope": "no_calibration_profile",
+    "rows": 19800,
+    "people": 9850,
+    "scores": {
+      "fixed": {
+        "pinball": 0.007707080034428154,
+        "interval_score": 0.13615737143269194,
+        "coverage": 0.9802936773356116,
+        "width": 0.02352727128207158,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.01058785921251276,
+        "log_negative": 0.2897924567083982,
+        "brier_two": 0.0023700023902961348,
+        "log_two": 0.02198158464776173
+      },
+      "normal": {
+        "pinball": 0.00706760729703341,
+        "interval_score": 0.11849968860595772,
+        "coverage": 0.9847110563665883,
+        "width": 0.03867569945651911,
+        "impossible_mass": 0.0006434226990322464,
+        "brier_negative": 0.008875597536557643,
+        "log_negative": 0.0339067445101262,
+        "brier_two": 0.0021794082944726545,
+        "log_two": 0.008957139542332434
+      },
+      "independent": {
+        "pinball": 0.007070046898637661,
+        "interval_score": 0.11856758108884459,
+        "coverage": 0.9844712153339082,
+        "width": 0.03801703982175876,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.008853174884713991,
+        "log_negative": 0.03385558996951958,
+        "brier_two": 0.0021825850881514756,
+        "log_two": 0.008962465882375733
+      },
+      "associated": {
+        "pinball": 0.007032814665179183,
+        "interval_score": 0.11758154784997223,
+        "coverage": 0.9847705308850389,
+        "width": 0.03995960052466228,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.00872171696405717,
+        "log_negative": 0.03340514789794276,
+        "brier_two": 0.002172688604238652,
+        "log_two": 0.0088025297107187
+      }
+    },
+    "expected_pa": 91837.97201032596,
+    "actual_pa": 101720,
+    "expected_value": 281.7629082459855,
+    "actual_value": 316.87552680035895,
+    "zero_calibration_people": 19800,
+    "below20_calibration_people": 19800,
+    "expected_negative": {
+      "fixed": 3.2153476279335917,
+      "normal": 146.9753159016534,
+      "independent": 154.29944854169761,
+      "associated": 181.69130969249696
+    },
+    "actual_negative": 212,
+    "expected_two": {
+      "fixed": 25.88538171665641,
+      "normal": 44.86408003923092,
+      "independent": 44.22848040208126,
+      "associated": 49.15156166694381
+    },
+    "actual_two": 61
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "people": 4663,
+    "scores": {
+      "fixed": {
+        "pinball": 0.04475644300098949,
+        "interval_score": 0.7656729142128827,
+        "coverage": 0.9058546000428909,
+        "width": 0.15454854173423613,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.04241658657848191,
+        "log_negative": 1.1625748443577475,
+        "brier_two": 0.02044084558210143,
+        "log_two": 0.20190542843536638
+      },
+      "normal": {
+        "pinball": 0.03936398631476357,
+        "interval_score": 0.6039074026798422,
+        "coverage": 0.9476731717778254,
+        "width": 0.3061772343360768,
+        "impossible_mass": 0.0019273349476987367,
+        "brier_negative": 0.0318803138913847,
+        "log_negative": 0.10641047050161122,
+        "brier_two": 0.01774052717746528,
+        "log_two": 0.05727041782891863
+      },
+      "independent": {
+        "pinball": 0.039409533438322826,
+        "interval_score": 0.6025896073630451,
+        "coverage": 0.9478876259918507,
+        "width": 0.3117279716716411,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03163055511874033,
+        "log_negative": 0.10558559239734508,
+        "brier_two": 0.01775888159180562,
+        "log_two": 0.05726805676929888
+      },
+      "associated": {
+        "pinball": 0.03924983849697267,
+        "interval_score": 0.5972864340879162,
+        "coverage": 0.9513188934162556,
+        "width": 0.3228061394719912,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03127050941102871,
+        "log_negative": 0.10460709384032382,
+        "brier_two": 0.01760028629822128,
+        "log_two": 0.05619644903362486
+      }
+    },
+    "expected_pa": 171709.23525463397,
+    "actual_pa": 179968,
+    "expected_value": 596.683351243409,
+    "actual_value": 706.5549375611811,
+    "zero_calibration_people": 2890,
+    "below20_calibration_people": 4642,
+    "expected_negative": {
+      "fixed": 3.880637935340957,
+      "normal": 155.32380229621418,
+      "independent": 165.03998940767664,
+      "associated": 191.04032469928768
+    },
+    "actual_negative": 198,
+    "expected_two": {
+      "fixed": 99.93736050492994,
+      "normal": 117.00575364604602,
+      "independent": 116.19402501090667,
+      "associated": 120.6439794648085
+    },
+    "actual_two": 153
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "people": 4691,
+    "scores": {
+      "fixed": {
+        "pinball": 0.04045609689370194,
+        "interval_score": 0.6743257009419185,
+        "coverage": 0.9025794073758261,
+        "width": 0.15564179772500644,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.052055250349983054,
+        "log_negative": 1.416287921869963,
+        "brier_two": 0.014141687934261371,
+        "log_two": 0.10277209700519141
+      },
+      "normal": {
+        "pinball": 0.03520749674573254,
+        "interval_score": 0.5404501065287195,
+        "coverage": 0.9464932850138563,
+        "width": 0.31325349669779284,
+        "impossible_mass": 0.001779796284421158,
+        "brier_negative": 0.03766810733393564,
+        "log_negative": 0.12006351745323308,
+        "brier_two": 0.013036043466075255,
+        "log_two": 0.0437168923866088
+      },
+      "independent": {
+        "pinball": 0.0351759774947677,
+        "interval_score": 0.5414120417607439,
+        "coverage": 0.9479855041568962,
+        "width": 0.3197327605973477,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03719141087564355,
+        "log_negative": 0.11866108530498647,
+        "brier_two": 0.012996924374192689,
+        "log_two": 0.04366947460641693
+      },
+      "associated": {
+        "pinball": 0.034928258470222025,
+        "interval_score": 0.5380598883397277,
+        "coverage": 0.9507567682796845,
+        "width": 0.3282330894406504,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03613330730306741,
+        "log_negative": 0.11571755206781385,
+        "brier_two": 0.013010500058549835,
+        "log_two": 0.04358176805740811
+      }
+    },
+    "expected_pa": 174316.4618598693,
+    "actual_pa": 179643,
+    "expected_value": 616.2698739623663,
+    "actual_value": 505.4608400276606,
+    "zero_calibration_people": 3026,
+    "below20_calibration_people": 4637,
+    "expected_negative": {
+      "fixed": 7.1103956757408024,
+      "normal": 152.016280145974,
+      "independent": 161.2877846375384,
+      "associated": 185.15941817109496
+    },
+    "actual_negative": 247,
+    "expected_two": {
+      "fixed": 105.9929651177578,
+      "normal": 122.74654428076636,
+      "independent": 121.67598070392465,
+      "associated": 125.61635279182616
+    },
+    "actual_two": 103
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "people": 4478,
+    "scores": {
+      "fixed": {
+        "pinball": 0.05604022386496678,
+        "interval_score": 0.9744819115778848,
+        "coverage": 0.8950424296560965,
+        "width": 0.16216437572625708,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03992404756961527,
+        "log_negative": 1.071492456732816,
+        "brier_two": 0.02258567504684798,
+        "log_two": 0.26295379839282645
+      },
+      "normal": {
+        "pinball": 0.04900596432265933,
+        "interval_score": 0.7581285806656145,
+        "coverage": 0.9405984814649397,
+        "width": 0.3230263548966305,
+        "impossible_mass": 0.0019150300700812586,
+        "brier_negative": 0.031535650750261955,
+        "log_negative": 0.10470053692547572,
+        "brier_two": 0.02096991994500491,
+        "log_two": 0.07275256527131753
+      },
+      "independent": {
+        "pinball": 0.049075594465667845,
+        "interval_score": 0.7580410271432199,
+        "coverage": 0.9388119696292988,
+        "width": 0.3208482146543006,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03148769506175172,
+        "log_negative": 0.10452408165313311,
+        "brier_two": 0.02104436592875607,
+        "log_two": 0.07314725693898304
+      },
+      "associated": {
+        "pinball": 0.04885469205945575,
+        "interval_score": 0.7500293996671832,
+        "coverage": 0.9426083072800358,
+        "width": 0.3328569832034478,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.031168670046243,
+        "log_negative": 0.10341531266308455,
+        "brier_two": 0.020941584038011052,
+        "log_two": 0.07061284008376006
+      }
+    },
+    "expected_pa": 172104.99899229084,
+    "actual_pa": 181308,
+    "expected_value": 607.7074660017038,
+    "actual_value": 815.4233629440128,
+    "zero_calibration_people": 2805,
+    "below20_calibration_people": 4452,
+    "expected_negative": {
+      "fixed": 9.812748346240632,
+      "normal": 152.24284819018203,
+      "independent": 158.09836525891563,
+      "associated": 182.77461029623703
+    },
+    "actual_negative": 183,
+    "expected_two": {
+      "fixed": 103.63571303923962,
+      "normal": 120.65913267469571,
+      "independent": 118.76046199980532,
+      "associated": 123.17822291194095
+    },
+    "actual_two": 178
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "people": 4242,
+    "scores": {
+      "fixed": {
+        "pinball": 0.04479716460178156,
+        "interval_score": 0.7437139854381576,
+        "coverage": 0.8861386138613861,
+        "width": 0.17874471086864627,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.06657682532859532,
+        "log_negative": 1.837312052627907,
+        "brier_two": 0.014699633667607445,
+        "log_two": 0.0920001874699385
+      },
+      "normal": {
+        "pinball": 0.03973389160905781,
+        "interval_score": 0.6176997955066764,
+        "coverage": 0.9354078264969354,
+        "width": 0.35144498812793296,
+        "impossible_mass": 0.0014600683888725118,
+        "brier_negative": 0.049917893282600136,
+        "log_negative": 0.16342548919432012,
+        "brier_two": 0.013761372199485023,
+        "log_two": 0.04844390881826538
+      },
+      "independent": {
+        "pinball": 0.03984899297084059,
+        "interval_score": 0.6216031537848352,
+        "coverage": 0.9325789721829326,
+        "width": 0.3508804312213135,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.049762649768279855,
+        "log_negative": 0.16247355115158507,
+        "brier_two": 0.01369119202095559,
+        "log_two": 0.04832511963364817
+      },
+      "associated": {
+        "pinball": 0.03962217462542144,
+        "interval_score": 0.6197869625976373,
+        "coverage": 0.9342291371994342,
+        "width": 0.36175213586454985,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.04818693174767662,
+        "log_negative": 0.1565259873741311,
+        "brier_two": 0.013736510328798772,
+        "log_two": 0.048310581852532244
+      }
+    },
+    "expected_pa": 164798.0764167206,
+    "actual_pa": 181583,
+    "expected_value": 605.4415460179416,
+    "actual_value": 463.9060836443723,
+    "zero_calibration_people": 3128,
+    "below20_calibration_people": 4242,
+    "expected_negative": {
+      "fixed": 2.9452144834395177,
+      "normal": 137.151595115134,
+      "independent": 141.26965129840949,
+      "associated": 162.5330299367879
+    },
+    "actual_negative": 284,
+    "expected_two": {
+      "fixed": 105.39680199706845,
+      "normal": 121.39043131935529,
+      "independent": 119.03163370272055,
+      "associated": 123.12531451967106
+    },
+    "actual_two": 100
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "people": 4244,
+    "scores": {
+      "fixed": {
+        "pinball": 0.04999465030210337,
+        "interval_score": 0.8502686017296242,
+        "coverage": 0.8937323279924599,
+        "width": 0.17206797841848157,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.04295792262431369,
+        "log_negative": 1.161961033953854,
+        "brier_two": 0.02088271475067931,
+        "log_two": 0.18869946893479775
+      },
+      "normal": {
+        "pinball": 0.043976672100809126,
+        "interval_score": 0.6680843942867842,
+        "coverage": 0.9465127238454288,
+        "width": 0.3486999401917153,
+        "impossible_mass": 0.0018189021212997372,
+        "brier_negative": 0.03335508775193233,
+        "log_negative": 0.11281057779199903,
+        "brier_two": 0.019090880844242614,
+        "log_two": 0.06355133746847852
+      },
+      "independent": {
+        "pinball": 0.044022157137476994,
+        "interval_score": 0.6671307707722205,
+        "coverage": 0.9436852026390198,
+        "width": 0.339391906078997,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03338451418691339,
+        "log_negative": 0.1130265364101754,
+        "brier_two": 0.01927919327920328,
+        "log_two": 0.0639981533985501
+      },
+      "associated": {
+        "pinball": 0.04390253412328951,
+        "interval_score": 0.6614914081311742,
+        "coverage": 0.9450989632422243,
+        "width": 0.3570571609178403,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.03313812031530043,
+        "log_negative": 0.11228978653215474,
+        "brier_two": 0.019166520108450436,
+        "log_two": 0.06312086256524202
+      }
+    },
+    "expected_pa": 177294.80709346556,
+    "actual_pa": 182917,
+    "expected_value": 582.4557464048191,
+    "actual_value": 737.652583233729,
+    "zero_calibration_people": 2886,
+    "below20_calibration_people": 4244,
+    "expected_negative": {
+      "fixed": 10.0832047078089,
+      "normal": 160.44049234211494,
+      "independent": 161.2613190317496,
+      "associated": 188.70894808070017
+    },
+    "actual_negative": 184,
+    "expected_two": {
+      "fixed": 91.32903987428043,
+      "normal": 114.03529124412806,
+      "independent": 110.82368092229558,
+      "associated": 116.27337399090035
+    },
+    "actual_two": 163
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "people": 4196,
+    "scores": {
+      "fixed": {
+        "pinball": 0.045744765862147874,
+        "interval_score": 0.7610375622583162,
+        "coverage": 0.8887035271687321,
+        "width": 0.17204081892096076,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.06417464139052116,
+        "log_negative": 1.7014872310115743,
+        "brier_two": 0.014840313357024253,
+        "log_two": 0.11343712394179908
+      },
+      "normal": {
+        "pinball": 0.03894184811351564,
+        "interval_score": 0.5847368740006709,
+        "coverage": 0.9468541468064824,
+        "width": 0.36547526009458703,
+        "impossible_mass": 0.0016649833764929968,
+        "brier_negative": 0.047258227997378006,
+        "log_negative": 0.1554479082789552,
+        "brier_two": 0.01350098479700104,
+        "log_two": 0.04394103402555013
+      },
+      "independent": {
+        "pinball": 0.038820373027958245,
+        "interval_score": 0.5839094070099462,
+        "coverage": 0.9459008579599618,
+        "width": 0.36296896209277185,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.04714898281475021,
+        "log_negative": 0.1549525410827738,
+        "brier_two": 0.01342298358984381,
+        "log_two": 0.043770914512291245
+      },
+      "associated": {
+        "pinball": 0.03861977417100872,
+        "interval_score": 0.583188937419054,
+        "coverage": 0.948045757864633,
+        "width": 0.3775432931026532,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.046168974774909305,
+        "log_negative": 0.15145419578510938,
+        "brier_two": 0.01348705609859443,
+        "log_two": 0.044332200039742364
+      }
+    },
+    "expected_pa": 186453.53525672553,
+    "actual_pa": 182194,
+    "expected_value": 597.0602789324156,
+    "actual_value": 421.33608454352634,
+    "zero_calibration_people": 2655,
+    "below20_calibration_people": 4175,
+    "expected_negative": {
+      "fixed": 18.469184376797728,
+      "normal": 173.16406335563295,
+      "independent": 177.9228531011415,
+      "associated": 204.25786468382884
+    },
+    "actual_negative": 268,
+    "expected_two": {
+      "fixed": 96.47964708959981,
+      "normal": 117.03726941053309,
+      "independent": 115.07408092294575,
+      "associated": 120.29575407710719
+    },
+    "actual_two": 94
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "people": 3992,
+    "scores": {
+      "fixed": {
+        "pinball": 0.048539764915504255,
+        "interval_score": 0.8301009029883738,
+        "coverage": 0.8835170340681363,
+        "width": 0.1662898404412319,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.06077116607139692,
+        "log_negative": 1.613952320294858,
+        "brier_two": 0.018319644973438114,
+        "log_two": 0.21091860708607454
+      },
+      "normal": {
+        "pinball": 0.04240163292278334,
+        "interval_score": 0.655005655810127,
+        "coverage": 0.9431362725450901,
+        "width": 0.3700398623924623,
+        "impossible_mass": 0.0019149277224375573,
+        "brier_negative": 0.045092474415665745,
+        "log_negative": 0.14325109404680644,
+        "brier_two": 0.016998651210559185,
+        "log_two": 0.05717521841365504
+      },
+      "independent": {
+        "pinball": 0.04245168225565866,
+        "interval_score": 0.655722432843036,
+        "coverage": 0.9416332665330661,
+        "width": 0.36301965306984835,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.044975140921260745,
+        "log_negative": 0.14283257468598531,
+        "brier_two": 0.017079472515512447,
+        "log_two": 0.057599948765693514
+      },
+      "associated": {
+        "pinball": 0.04231843001284146,
+        "interval_score": 0.6544145273607544,
+        "coverage": 0.9453907815631263,
+        "width": 0.3794238147022834,
+        "impossible_mass": 0.0,
+        "brier_negative": 0.0441712691824471,
+        "log_negative": 0.14031321905238894,
+        "brier_two": 0.01706753589463227,
+        "log_two": 0.056859468881155145
+      }
+    },
+    "expected_pa": 182055.39708224946,
+    "actual_pa": 182880,
+    "expected_value": 560.2305773987455,
+    "actual_value": 613.853009873443,
+    "zero_calibration_people": 2410,
+    "below20_calibration_people": 3930,
+    "expected_negative": {
+      "fixed": 22.624029649891828,
+      "normal": 173.70398050031872,
+      "independent": 177.7572080198065,
+      "associated": 204.51461553549333
+    },
+    "actual_negative": 246,
+    "expected_two": {
+      "fixed": 87.64203390758603,
+      "normal": 110.3197679532591,
+      "independent": 107.83155235339605,
+      "associated": 112.96576265256049
+    },
+    "actual_two": 137
+  }
+]

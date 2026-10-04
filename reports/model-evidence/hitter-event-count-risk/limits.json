@@ -1,0 +1,1098 @@
+{
+  "associated_beta_bound_cells": 35,
+  "cells": 35,
+  "beta_restriction_preserved": true,
+  "point_PA_RMSE": 138.3298474682615,
+  "point_PA_MAE": 106.41075374670467,
+  "public_rows": 2627,
+  "paired_monte_carlo_directions": [
+    {
+      "arm": "associated",
+      "reference": "normal",
+      "main_difference": -0.0007299780363308195,
+      "audit_difference": -0.0010280424271038036,
+      "direction_stable": true,
+      "qualification": "Additional matched public direction check, not a tuned model-selection threshold"
+    },
+    {
+      "arm": "independent",
+      "reference": "normal",
+      "main_difference": 0.00021713530437508788,
+      "audit_difference": 2.3527411155910283e-05,
+      "direction_stable": true,
+      "qualification": "Additional matched public direction check, not a tuned model-selection threshold"
+    },
+    {
+      "arm": "associated",
+      "reference": "independent",
+      "main_difference": -0.0009471133407058518,
+      "audit_difference": -0.0010515698382597138,
+      "direction_stable": true,
+      "qualification": "Additional matched public direction check, not a tuned model-selection threshold"
+    }
+  ],
+  "calibration_bias_diagnostics": [
+    {
+      "year": 2016,
+      "fold": 0,
+      "actual_pa_band": "1to49",
+      "rows": 70,
+      "people": 56,
+      "independent_mean_residual": -3.7855750640115184,
+      "associated_mean_residual": -1.3029609376194327,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 0,
+      "actual_pa_band": "50to299",
+      "rows": 145,
+      "people": 96,
+      "independent_mean_residual": -0.9114085836784945,
+      "associated_mean_residual": -0.3917469401489851,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 0,
+      "actual_pa_band": "300plus",
+      "rows": 140,
+      "people": 70,
+      "independent_mean_residual": 0.1791755889848992,
+      "associated_mean_residual": 0.03421293521873765,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 1,
+      "actual_pa_band": "1to49",
+      "rows": 82,
+      "people": 69,
+      "independent_mean_residual": -3.5059610223369244,
+      "associated_mean_residual": -0.8768405930451,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 1,
+      "actual_pa_band": "50to299",
+      "rows": 129,
+      "people": 96,
+      "independent_mean_residual": -0.7258083581317647,
+      "associated_mean_residual": -0.19340914751314042,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 1,
+      "actual_pa_band": "300plus",
+      "rows": 160,
+      "people": 78,
+      "independent_mean_residual": 0.3779274448496686,
+      "associated_mean_residual": 0.2274272998805083,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 2,
+      "actual_pa_band": "1to49",
+      "rows": 66,
+      "people": 52,
+      "independent_mean_residual": -3.1086507673321826,
+      "associated_mean_residual": -0.6506862702277116,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 2,
+      "actual_pa_band": "50to299",
+      "rows": 142,
+      "people": 98,
+      "independent_mean_residual": -0.7965014212031454,
+      "associated_mean_residual": -0.30192603220122144,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 2,
+      "actual_pa_band": "300plus",
+      "rows": 179,
+      "people": 81,
+      "independent_mean_residual": 0.37611176073788116,
+      "associated_mean_residual": 0.22863179453083168,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 3,
+      "actual_pa_band": "1to49",
+      "rows": 88,
+      "people": 73,
+      "independent_mean_residual": -4.200691579650436,
+      "associated_mean_residual": -1.57654788323312,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 3,
+      "actual_pa_band": "50to299",
+      "rows": 144,
+      "people": 96,
+      "independent_mean_residual": -0.7761972960229165,
+      "associated_mean_residual": -0.1951365271019942,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 3,
+      "actual_pa_band": "300plus",
+      "rows": 155,
+      "people": 71,
+      "independent_mean_residual": 0.4322920368123518,
+      "associated_mean_residual": 0.29330353421925814,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 4,
+      "actual_pa_band": "1to49",
+      "rows": 89,
+      "people": 74,
+      "independent_mean_residual": -3.880959406813811,
+      "associated_mean_residual": -1.1757191980702313,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 4,
+      "actual_pa_band": "50to299",
+      "rows": 150,
+      "people": 101,
+      "independent_mean_residual": -0.7076347600193037,
+      "associated_mean_residual": -0.14335628145352147,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2016,
+      "fold": 4,
+      "actual_pa_band": "300plus",
+      "rows": 159,
+      "people": 76,
+      "independent_mean_residual": 0.3679322738608464,
+      "associated_mean_residual": 0.2477368575305206,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 0,
+      "actual_pa_band": "1to49",
+      "rows": 77,
+      "people": 66,
+      "independent_mean_residual": -3.742557516358361,
+      "associated_mean_residual": -1.22529333503657,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 0,
+      "actual_pa_band": "50to299",
+      "rows": 146,
+      "people": 94,
+      "independent_mean_residual": -0.7341760706246628,
+      "associated_mean_residual": -0.20305319540754607,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 0,
+      "actual_pa_band": "300plus",
+      "rows": 146,
+      "people": 67,
+      "independent_mean_residual": 0.246676979075552,
+      "associated_mean_residual": 0.11633121274286853,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 1,
+      "actual_pa_band": "1to49",
+      "rows": 80,
+      "people": 67,
+      "independent_mean_residual": -1.5587906793583302,
+      "associated_mean_residual": 0.9064510718273343,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 1,
+      "actual_pa_band": "50to299",
+      "rows": 134,
+      "people": 102,
+      "independent_mean_residual": -0.8282528124901336,
+      "associated_mean_residual": -0.352103220119777,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 1,
+      "actual_pa_band": "300plus",
+      "rows": 174,
+      "people": 81,
+      "independent_mean_residual": 0.5917333063432403,
+      "associated_mean_residual": 0.4628175793507096,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 2,
+      "actual_pa_band": "1to49",
+      "rows": 64,
+      "people": 55,
+      "independent_mean_residual": -3.577309479234442,
+      "associated_mean_residual": -0.9955165520041127,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 2,
+      "actual_pa_band": "50to299",
+      "rows": 133,
+      "people": 93,
+      "independent_mean_residual": -0.7014998830210885,
+      "associated_mean_residual": -0.16907881628020474,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 2,
+      "actual_pa_band": "300plus",
+      "rows": 178,
+      "people": 83,
+      "independent_mean_residual": 0.568521666393,
+      "associated_mean_residual": 0.4052769392323201,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 3,
+      "actual_pa_band": "1to49",
+      "rows": 88,
+      "people": 67,
+      "independent_mean_residual": -4.341830497721727,
+      "associated_mean_residual": -1.7448455690865718,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 3,
+      "actual_pa_band": "50to299",
+      "rows": 129,
+      "people": 92,
+      "independent_mean_residual": -0.758227288488296,
+      "associated_mean_residual": -0.17155762376429926,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 3,
+      "actual_pa_band": "300plus",
+      "rows": 162,
+      "people": 77,
+      "independent_mean_residual": 0.6371814792784126,
+      "associated_mean_residual": 0.4740022321030879,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 4,
+      "actual_pa_band": "1to49",
+      "rows": 76,
+      "people": 63,
+      "independent_mean_residual": -3.644705975160117,
+      "associated_mean_residual": -1.1074587792542263,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 4,
+      "actual_pa_band": "50to299",
+      "rows": 141,
+      "people": 96,
+      "independent_mean_residual": -0.7790267461664874,
+      "associated_mean_residual": -0.1908965748223459,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2017,
+      "fold": 4,
+      "actual_pa_band": "300plus",
+      "rows": 159,
+      "people": 79,
+      "independent_mean_residual": 0.6109315346202839,
+      "associated_mean_residual": 0.48285518675733624,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 0,
+      "actual_pa_band": "1to49",
+      "rows": 80,
+      "people": 66,
+      "independent_mean_residual": -3.2045132455333367,
+      "associated_mean_residual": -0.641187259081158,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 0,
+      "actual_pa_band": "50to299",
+      "rows": 141,
+      "people": 95,
+      "independent_mean_residual": -1.2340843417982446,
+      "associated_mean_residual": -0.7308869240950395,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 0,
+      "actual_pa_band": "300plus",
+      "rows": 145,
+      "people": 72,
+      "independent_mean_residual": -0.014408602639095125,
+      "associated_mean_residual": -0.13873257759934704,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 1,
+      "actual_pa_band": "1to49",
+      "rows": 79,
+      "people": 64,
+      "independent_mean_residual": -2.7782191579477926,
+      "associated_mean_residual": -0.4151963548997067,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 1,
+      "actual_pa_band": "50to299",
+      "rows": 152,
+      "people": 106,
+      "independent_mean_residual": -1.1152128146518492,
+      "associated_mean_residual": -0.6191413764067241,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 1,
+      "actual_pa_band": "300plus",
+      "rows": 180,
+      "people": 82,
+      "independent_mean_residual": 0.3229337444405424,
+      "associated_mean_residual": 0.2024864374726337,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 2,
+      "actual_pa_band": "1to49",
+      "rows": 64,
+      "people": 57,
+      "independent_mean_residual": -4.790883783919998,
+      "associated_mean_residual": -2.2183101685794524,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 2,
+      "actual_pa_band": "50to299",
+      "rows": 136,
+      "people": 95,
+      "independent_mean_residual": -0.7251457363109461,
+      "associated_mean_residual": -0.22695651765124594,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 2,
+      "actual_pa_band": "300plus",
+      "rows": 175,
+      "people": 82,
+      "independent_mean_residual": 0.2591119855540563,
+      "associated_mean_residual": 0.12423078986012838,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 3,
+      "actual_pa_band": "1to49",
+      "rows": 73,
+      "people": 57,
+      "independent_mean_residual": -4.160132176619545,
+      "associated_mean_residual": -1.657883891578281,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 3,
+      "actual_pa_band": "50to299",
+      "rows": 120,
+      "people": 88,
+      "independent_mean_residual": -1.0328047774061622,
+      "associated_mean_residual": -0.49647774274456563,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 3,
+      "actual_pa_band": "300plus",
+      "rows": 164,
+      "people": 78,
+      "independent_mean_residual": 0.3967741871470099,
+      "associated_mean_residual": 0.21205341426838917,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 4,
+      "actual_pa_band": "1to49",
+      "rows": 74,
+      "people": 63,
+      "independent_mean_residual": -3.539789090217675,
+      "associated_mean_residual": -1.1214064607591496,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 4,
+      "actual_pa_band": "50to299",
+      "rows": 131,
+      "people": 94,
+      "independent_mean_residual": -1.3269858941413557,
+      "associated_mean_residual": -0.7853032942919589,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2018,
+      "fold": 4,
+      "actual_pa_band": "300plus",
+      "rows": 166,
+      "people": 78,
+      "independent_mean_residual": 0.421959046715237,
+      "associated_mean_residual": 0.2991642414789079,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 0,
+      "actual_pa_band": "1to49",
+      "rows": 41,
+      "people": 38,
+      "independent_mean_residual": -4.79324435398337,
+      "associated_mean_residual": -2.2319330700157005,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 0,
+      "actual_pa_band": "50to299",
+      "rows": 107,
+      "people": 87,
+      "independent_mean_residual": -0.7714538764026071,
+      "associated_mean_residual": -0.2585098665985475,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 0,
+      "actual_pa_band": "300plus",
+      "rows": 83,
+      "people": 61,
+      "independent_mean_residual": 0.5276482749016164,
+      "associated_mean_residual": 0.21396413139746326,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 1,
+      "actual_pa_band": "1to49",
+      "rows": 59,
+      "people": 55,
+      "independent_mean_residual": -3.9709448481792733,
+      "associated_mean_residual": -1.4416758223762678,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 1,
+      "actual_pa_band": "50to299",
+      "rows": 134,
+      "people": 112,
+      "independent_mean_residual": -1.16216264227517,
+      "associated_mean_residual": -0.6993442282288233,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 1,
+      "actual_pa_band": "300plus",
+      "rows": 129,
+      "people": 90,
+      "independent_mean_residual": 0.44792593528810304,
+      "associated_mean_residual": 0.24467665806244798,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 2,
+      "actual_pa_band": "1to49",
+      "rows": 50,
+      "people": 49,
+      "independent_mean_residual": -3.462339479630222,
+      "associated_mean_residual": -1.1111803445937398,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 2,
+      "actual_pa_band": "50to299",
+      "rows": 101,
+      "people": 85,
+      "independent_mean_residual": -1.2037609971265502,
+      "associated_mean_residual": -0.7353254458709789,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 2,
+      "actual_pa_band": "300plus",
+      "rows": 102,
+      "people": 72,
+      "independent_mean_residual": 0.2770970634881107,
+      "associated_mean_residual": 0.054881744336586075,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 3,
+      "actual_pa_band": "1to49",
+      "rows": 51,
+      "people": 45,
+      "independent_mean_residual": -6.468524245493445,
+      "associated_mean_residual": -4.000451757225757,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 3,
+      "actual_pa_band": "50to299",
+      "rows": 84,
+      "people": 67,
+      "independent_mean_residual": -0.8405490763634589,
+      "associated_mean_residual": -0.45055398706738503,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 3,
+      "actual_pa_band": "300plus",
+      "rows": 106,
+      "people": 65,
+      "independent_mean_residual": 0.4402504044653109,
+      "associated_mean_residual": 0.21437010301773135,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 4,
+      "actual_pa_band": "1to49",
+      "rows": 48,
+      "people": 45,
+      "independent_mean_residual": -2.6748295254724956,
+      "associated_mean_residual": -0.4391438303954946,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 4,
+      "actual_pa_band": "50to299",
+      "rows": 90,
+      "people": 79,
+      "independent_mean_residual": -1.2768415586258255,
+      "associated_mean_residual": -0.7605891907578515,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2021,
+      "fold": 4,
+      "actual_pa_band": "300plus",
+      "rows": 115,
+      "people": 78,
+      "independent_mean_residual": 0.6762622329151141,
+      "associated_mean_residual": 0.41493391918680045,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 0,
+      "actual_pa_band": "1to49",
+      "rows": 51,
+      "people": 47,
+      "independent_mean_residual": -2.9622782437319737,
+      "associated_mean_residual": -0.488097253787501,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 0,
+      "actual_pa_band": "50to299",
+      "rows": 113,
+      "people": 84,
+      "independent_mean_residual": -1.3877809135771242,
+      "associated_mean_residual": -0.8710938583401955,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 0,
+      "actual_pa_band": "300plus",
+      "rows": 91,
+      "people": 60,
+      "independent_mean_residual": -0.23228396455608755,
+      "associated_mean_residual": -0.5370962984386141,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 1,
+      "actual_pa_band": "1to49",
+      "rows": 63,
+      "people": 57,
+      "independent_mean_residual": -4.585875268236274,
+      "associated_mean_residual": -1.8098451770163224,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 1,
+      "actual_pa_band": "50to299",
+      "rows": 123,
+      "people": 99,
+      "independent_mean_residual": -1.6467443640829638,
+      "associated_mean_residual": -1.1863822689032428,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 1,
+      "actual_pa_band": "300plus",
+      "rows": 131,
+      "people": 85,
+      "independent_mean_residual": -0.3257352349813469,
+      "associated_mean_residual": -0.5175707908604816,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 2,
+      "actual_pa_band": "1to49",
+      "rows": 53,
+      "people": 49,
+      "independent_mean_residual": -5.004686703994226,
+      "associated_mean_residual": -2.7706427193217937,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 2,
+      "actual_pa_band": "50to299",
+      "rows": 111,
+      "people": 92,
+      "independent_mean_residual": -1.7588076624057596,
+      "associated_mean_residual": -1.3498438182290349,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 2,
+      "actual_pa_band": "300plus",
+      "rows": 107,
+      "people": 68,
+      "independent_mean_residual": -0.13218374765566246,
+      "associated_mean_residual": -0.3988482824502342,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 3,
+      "actual_pa_band": "1to49",
+      "rows": 61,
+      "people": 50,
+      "independent_mean_residual": -4.948062867408463,
+      "associated_mean_residual": -2.2897905738456985,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 3,
+      "actual_pa_band": "50to299",
+      "rows": 89,
+      "people": 71,
+      "independent_mean_residual": -1.4708069427357018,
+      "associated_mean_residual": -0.9782279054268205,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 3,
+      "actual_pa_band": "300plus",
+      "rows": 102,
+      "people": 66,
+      "independent_mean_residual": -0.10728285250251399,
+      "associated_mean_residual": -0.32228252879538366,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 4,
+      "actual_pa_band": "1to49",
+      "rows": 47,
+      "people": 45,
+      "independent_mean_residual": -4.158442687470098,
+      "associated_mean_residual": -1.8027158881192897,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 4,
+      "actual_pa_band": "50to299",
+      "rows": 99,
+      "people": 80,
+      "independent_mean_residual": -1.2027735334476657,
+      "associated_mean_residual": -0.733404147134231,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2022,
+      "fold": 4,
+      "actual_pa_band": "300plus",
+      "rows": 107,
+      "people": 67,
+      "independent_mean_residual": -0.128263275821433,
+      "associated_mean_residual": -0.34621425344514195,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 0,
+      "actual_pa_band": "1to49",
+      "rows": 81,
+      "people": 69,
+      "independent_mean_residual": -2.5863742472983042,
+      "associated_mean_residual": -0.0905529497910146,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 0,
+      "actual_pa_band": "50to299",
+      "rows": 163,
+      "people": 109,
+      "independent_mean_residual": -1.2778114288021594,
+      "associated_mean_residual": -0.7349831028490074,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 0,
+      "actual_pa_band": "300plus",
+      "rows": 143,
+      "people": 74,
+      "independent_mean_residual": -0.022605782885009452,
+      "associated_mean_residual": -0.2831860012819205,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 1,
+      "actual_pa_band": "1to49",
+      "rows": 84,
+      "people": 73,
+      "independent_mean_residual": -3.9149272482737736,
+      "associated_mean_residual": -1.2374839523093415,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 1,
+      "actual_pa_band": "50to299",
+      "rows": 177,
+      "people": 125,
+      "independent_mean_residual": -1.4139043595615086,
+      "associated_mean_residual": -0.8886870047001332,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 1,
+      "actual_pa_band": "300plus",
+      "rows": 205,
+      "people": 104,
+      "independent_mean_residual": 9.772444952979749e-05,
+      "associated_mean_residual": -0.17547159943442858,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 2,
+      "actual_pa_band": "1to49",
+      "rows": 77,
+      "people": 67,
+      "independent_mean_residual": -3.951302572004782,
+      "associated_mean_residual": -1.6856603776945016,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 2,
+      "actual_pa_band": "50to299",
+      "rows": 156,
+      "people": 110,
+      "independent_mean_residual": -1.426370981268521,
+      "associated_mean_residual": -0.9350963624150624,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 2,
+      "actual_pa_band": "300plus",
+      "rows": 165,
+      "people": 81,
+      "independent_mean_residual": 0.20064310393750986,
+      "associated_mean_residual": -0.03049634483323928,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 3,
+      "actual_pa_band": "1to49",
+      "rows": 78,
+      "people": 64,
+      "independent_mean_residual": -5.046381552038268,
+      "associated_mean_residual": -2.436494443272625,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 3,
+      "actual_pa_band": "50to299",
+      "rows": 142,
+      "people": 100,
+      "independent_mean_residual": -1.1263237319488728,
+      "associated_mean_residual": -0.5829312098667723,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 3,
+      "actual_pa_band": "300plus",
+      "rows": 148,
+      "people": 77,
+      "independent_mean_residual": 0.04710785710729591,
+      "associated_mean_residual": -0.15308405834949707,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 4,
+      "actual_pa_band": "1to49",
+      "rows": 65,
+      "people": 56,
+      "independent_mean_residual": -3.994449677465227,
+      "associated_mean_residual": -1.694064473947716,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 4,
+      "actual_pa_band": "50to299",
+      "rows": 145,
+      "people": 104,
+      "independent_mean_residual": -1.1155110196314122,
+      "associated_mean_residual": -0.5695802907701327,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2023,
+      "fold": 4,
+      "actual_pa_band": "300plus",
+      "rows": 168,
+      "people": 83,
+      "independent_mean_residual": 0.15743434519459656,
+      "associated_mean_residual": -0.03856397731042449,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 0,
+      "actual_pa_band": "1to49",
+      "rows": 88,
+      "people": 71,
+      "independent_mean_residual": -2.5759178669786493,
+      "associated_mean_residual": 0.06402475385497777,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 0,
+      "actual_pa_band": "50to299",
+      "rows": 157,
+      "people": 117,
+      "independent_mean_residual": -1.4166027369791032,
+      "associated_mean_residual": -0.7413643441269367,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 0,
+      "actual_pa_band": "300plus",
+      "rows": 155,
+      "people": 83,
+      "independent_mean_residual": -0.16385573069658171,
+      "associated_mean_residual": -0.33609815284338845,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 1,
+      "actual_pa_band": "1to49",
+      "rows": 71,
+      "people": 65,
+      "independent_mean_residual": -3.8245088622999353,
+      "associated_mean_residual": -1.3247461263243057,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 1,
+      "actual_pa_band": "50to299",
+      "rows": 158,
+      "people": 110,
+      "independent_mean_residual": -1.406793334740821,
+      "associated_mean_residual": -0.7836541755688741,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 1,
+      "actual_pa_band": "300plus",
+      "rows": 218,
+      "people": 107,
+      "independent_mean_residual": -0.12116059637557715,
+      "associated_mean_residual": -0.2593616012099069,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 2,
+      "actual_pa_band": "1to49",
+      "rows": 78,
+      "people": 66,
+      "independent_mean_residual": -3.578765251341125,
+      "associated_mean_residual": -1.3200494690266409,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 2,
+      "actual_pa_band": "50to299",
+      "rows": 153,
+      "people": 106,
+      "independent_mean_residual": -1.3100742186519774,
+      "associated_mean_residual": -0.8024721989582365,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 2,
+      "actual_pa_band": "300plus",
+      "rows": 169,
+      "people": 82,
+      "independent_mean_residual": 0.09867374380350821,
+      "associated_mean_residual": -0.05867075603189322,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 3,
+      "actual_pa_band": "1to49",
+      "rows": 71,
+      "people": 63,
+      "independent_mean_residual": -4.75687633783093,
+      "associated_mean_residual": -2.220062467853063,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 3,
+      "actual_pa_band": "50to299",
+      "rows": 142,
+      "people": 98,
+      "independent_mean_residual": -1.589335893096775,
+      "associated_mean_residual": -0.9882403553221625,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 3,
+      "actual_pa_band": "300plus",
+      "rows": 146,
+      "people": 76,
+      "independent_mean_residual": -0.19628702565238215,
+      "associated_mean_residual": -0.3480524585277398,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 4,
+      "actual_pa_band": "1to49",
+      "rows": 65,
+      "people": 55,
+      "independent_mean_residual": -4.661759288563076,
+      "associated_mean_residual": -2.2667444664727627,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 4,
+      "actual_pa_band": "50to299",
+      "rows": 146,
+      "people": 105,
+      "independent_mean_residual": -0.990680970366508,
+      "associated_mean_residual": -0.3836589153720201,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    },
+    {
+      "year": 2024,
+      "fold": 4,
+      "actual_pa_band": "300plus",
+      "rows": 165,
+      "people": 83,
+      "independent_mean_residual": 0.03748814433661247,
+      "associated_mean_residual": -0.09868599081804051,
+      "qualification": "Realized PA diagnostic, never forecast-time routing"
+    }
+  ],
+  "numerical_ranking_stable": true,
+  "finite_simulation_event_probability_limit": "Rare-event Brier/log scores use finite Monte Carlo probabilities, not exact Dirichlet-multinomial tail sums",
+  "working_event_profile_limit": "Origin MLB reference tilted to scalar rate, not own-player K/BB/HR or park-neutral forecast",
+  "calibration_support_limit": "Global borrowing remains for sparse and absent refined profiles",
+  "mean_forecast_and_readiness_unchanged": true,
+  "player_walkthrough_status": "pending",
+  "protected_outcomes_used": false,
+  "source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-event-count-risk\\scoring-verification.json": "c16e5d072ebcffce2311e75940c3c070cdc27bba6a7f749a9268d4a8b370550f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-event-count-risk\\monte-carlo-audit.json": "e45d2a8b3009ce0d39c38c635fc2d4e4a50e73e51b5cba15804ad3c677fde7c8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_hitter_event_count_limits.py": "c7efa0f96dba1dc1d224eb726b7c74a1bfcee79caf34b68e63a26d146ce5aa97"
+  }
+}

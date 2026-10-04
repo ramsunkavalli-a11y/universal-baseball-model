@@ -1,5 +1,9 @@
 # Progress on physically possible hitting uncertainty
 
+This is the initial execution snapshot. The later
+[completed comparison and player review](hitter-event-count-risk-result.md)
+supersedes its pending-work status; the original checkpoint is preserved below.
+
 2026-10-04. The new comparison is running, not validated or adopted. It fixes a
 specific design defect in the previous uncertainty test: a simulated one-PA
 outcome must consist of an actual baseball event, not an arbitrary continuous

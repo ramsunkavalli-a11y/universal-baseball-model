@@ -1,0 +1,2254 @@
+{
+  "cells": [
+    {
+      "year": 2016,
+      "fold": 0,
+      "parameters": {
+        "independent": {
+          "phi": 1345.074448194013,
+          "beta": 0.0,
+          "objective": 1.2991071365113716
+        },
+        "associated": {
+          "phi": 2674.1091443088417,
+          "beta": 1.0,
+          "objective": 1.2090380582989546,
+          "start_beta": 0.0,
+          "iterations": 8
+        },
+        "optimizer_checks": [
+          {
+            "phi": 2674.1091443088417,
+            "beta": 1.0,
+            "objective": 1.2090380582989546,
+            "start_beta": 0.0,
+            "iterations": 8
+          },
+          {
+            "phi": 2674.0839370300178,
+            "beta": 1.0,
+            "objective": 1.2090380582998248,
+            "start_beta": 0.2,
+            "iterations": 8
+          },
+          {
+            "phi": 2674.103690486859,
+            "beta": 1.0,
+            "objective": 1.2090380582991014,
+            "start_beta": -0.2,
+            "iterations": 8
+          }
+        ],
+        "residual_bias": -1.0989928029610974,
+        "associated_residual_bias": -0.45528952197750117,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 893,
+      "total_positive_draws": 7315456,
+      "calibration_people": 162,
+      "workload_concentration": 4.642697934403188,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2016-0.parquet": "86a958727f19e74e3683b5a76cd5555acefba1020a89a1ef8d0f8fe2e1ecfe26",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2016-0.json": "4b1b83f0a76fc69ecd3411ede1e2a90c52d7cadaf0ef07224a712f8540327dd9"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2016,
+      "fold": 1,
+      "parameters": {
+        "independent": {
+          "phi": 588.5791463874716,
+          "beta": 0.0,
+          "objective": 1.3695497729578943
+        },
+        "associated": {
+          "phi": 753.8341378112983,
+          "beta": 1.0,
+          "objective": 1.2940497394200459,
+          "start_beta": -0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 753.8344039421111,
+            "beta": 1.0,
+            "objective": 1.294049739420046,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 753.8334979593806,
+            "beta": 1.0,
+            "objective": 1.2940497394200667,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 753.8341378112983,
+            "beta": 1.0,
+            "objective": 1.2940497394200459,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -0.8437315758276399,
+        "associated_residual_bias": -0.14582025683037603,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 933,
+      "total_positive_draws": 7643136,
+      "calibration_people": 170,
+      "workload_concentration": 4.637677647306281,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2016-1.parquet": "e7556c72ca87998014029669de868cc323dc61a6ad67f884119b7630dbaaf1f0",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2016-1.json": "bd80fda5c1d25aeb41356ef06977e820651cb5b1bef3f7a4ac813653c5a5fb1f"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2016,
+      "fold": 2,
+      "parameters": {
+        "independent": {
+          "phi": 389.71731687977575,
+          "beta": 0.0,
+          "objective": 1.4107289345210483
+        },
+        "associated": {
+          "phi": 542.0515327248165,
+          "beta": 1.0,
+          "objective": 1.3333579446620947,
+          "start_beta": -0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 542.0517828045175,
+            "beta": 1.0,
+            "objective": 1.3333579446621013,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 542.0519747910123,
+            "beta": 1.0,
+            "objective": 1.333357944662115,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 542.0515327248165,
+            "beta": 1.0,
+            "objective": 1.3333579446620947,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -0.6303434033156334,
+        "associated_residual_bias": -0.09986731476208043,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 989,
+      "total_positive_draws": 8101888,
+      "calibration_people": 173,
+      "workload_concentration": 5.581613544869293,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2016-2.parquet": "5a3c48f942fc8184cd053a7e68fea5e775039f6e34acdb5eb82d22a805252731",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2016-2.json": "df39a773e8eaba16b33fcbdc5896c409b7cf47abbefa34a29411fd9642b239af"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2016,
+      "fold": 3,
+      "parameters": {
+        "independent": {
+          "phi": 796.7887978119143,
+          "beta": 0.0,
+          "objective": 1.4175058862106396
+        },
+        "associated": {
+          "phi": 1425.4658328254877,
+          "beta": 1.0,
+          "objective": 1.322009941856199,
+          "start_beta": 0.0,
+          "iterations": 8
+        },
+        "optimizer_checks": [
+          {
+            "phi": 1425.4658328254877,
+            "beta": 1.0,
+            "objective": 1.322009941856199,
+            "start_beta": 0.0,
+            "iterations": 8
+          },
+          {
+            "phi": 1425.4665876224615,
+            "beta": 1.0,
+            "objective": 1.3220099418562066,
+            "start_beta": 0.2,
+            "iterations": 8
+          },
+          {
+            "phi": 1425.4559032396016,
+            "beta": 1.0,
+            "objective": 1.3220099418565137,
+            "start_beta": -0.2,
+            "iterations": 7
+          }
+        ],
+        "residual_bias": -1.0654021017455353,
+        "associated_residual_bias": -0.3146529313996621,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 937,
+      "total_positive_draws": 7675904,
+      "calibration_people": 184,
+      "workload_concentration": 4.5666506270324705,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2016-3.parquet": "4683c8650c07f92c749a6ee62b53c1d42d019c8577a5f2d637e5bfa6d4595830",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2016-3.json": "e6c794f4958031d20c8242f94b29e5ccabce5ee1225d64ea70faf2799758bf65"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2016,
+      "fold": 4,
+      "parameters": {
+        "independent": {
+          "phi": 358.11162405331373,
+          "beta": 0.0,
+          "objective": 1.4878381178355413
+        },
+        "associated": {
+          "phi": 500.8444128121422,
+          "beta": 1.0,
+          "objective": 1.388228128562872,
+          "start_beta": -0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 500.84453185429373,
+            "beta": 1.0,
+            "objective": 1.3882281285628753,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 500.84451262426285,
+            "beta": 1.0,
+            "objective": 1.3882281285628744,
+            "start_beta": 0.2,
+            "iterations": 4
+          },
+          {
+            "phi": 500.8444128121422,
+            "beta": 1.0,
+            "objective": 1.388228128562872,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -0.9754559586548067,
+        "associated_residual_bias": -0.20650580963901669,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 911,
+      "total_positive_draws": 7462912,
+      "calibration_people": 182,
+      "workload_concentration": 4.243643613552253,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2016-4.parquet": "24b0c9ae683d535f3863d27e4a0355e27b896e2d403e1b1e5560e73e425ed067",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2016-4.json": "9a0b36fa76ca5348c8441337e1c92368650726c9395c399f4594c532c35a9f59"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2017,
+      "fold": 0,
+      "parameters": {
+        "independent": {
+          "phi": 960.3850997216409,
+          "beta": 0.0,
+          "objective": 1.3506117912136193
+        },
+        "associated": {
+          "phi": 1506.780047575355,
+          "beta": 1.0,
+          "objective": 1.2668596424651986,
+          "start_beta": -0.2,
+          "iterations": 7
+        },
+        "optimizer_checks": [
+          {
+            "phi": 1506.777120328556,
+            "beta": 1.0,
+            "objective": 1.2668596424652543,
+            "start_beta": 0.0,
+            "iterations": 7
+          },
+          {
+            "phi": 1506.774592541824,
+            "beta": 1.0,
+            "objective": 1.266859642465343,
+            "start_beta": 0.2,
+            "iterations": 7
+          },
+          {
+            "phi": 1506.780047575355,
+            "beta": 1.0,
+            "objective": 1.2668596424651986,
+            "start_beta": -0.2,
+            "iterations": 7
+          }
+        ],
+        "residual_bias": -1.032666966345624,
+        "associated_residual_bias": -0.35312872327623457,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 904,
+      "total_positive_draws": 7405568,
+      "calibration_people": 177,
+      "workload_concentration": 4.4895244729931205,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2017-0.parquet": "81de000e8af291d95b68d752b628a218701b1cb66436d8f991321d40dca18da8",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2017-0.json": "98fdf29943aabab1724b0be598d64311aba59b04814f0f2c958955a6bd64db0c"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2017,
+      "fold": 1,
+      "parameters": {
+        "independent": {
+          "phi": 528.7134766193628,
+          "beta": 0.0,
+          "objective": 1.3771570110183742
+        },
+        "associated": {
+          "phi": 662.5352055424785,
+          "beta": 1.0,
+          "objective": 1.3165410354937113,
+          "start_beta": 0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 662.5348836702909,
+            "beta": 1.0,
+            "objective": 1.3165410354937181,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 662.5352055424785,
+            "beta": 1.0,
+            "objective": 1.3165410354937113,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 662.535731742021,
+            "beta": 1.0,
+            "objective": 1.3165410354937264,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -0.38211752015157346,
+        "associated_residual_bias": 0.234825957655011,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 937,
+      "total_positive_draws": 7675904,
+      "calibration_people": 172,
+      "workload_concentration": 5.034086103591683,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2017-1.parquet": "80b23ca1a439dc4e44ecb1f297b2128fe64bb96fdf88e3f00e729ed817c5c552",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2017-1.json": "cff7bbb19468644f9d301a829afdf2d3b5f9cfe00b3bf8b3ebfcd8b03852890d"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2017,
+      "fold": 2,
+      "parameters": {
+        "independent": {
+          "phi": 390.83519250614364,
+          "beta": 0.0,
+          "objective": 1.4300763095672053
+        },
+        "associated": {
+          "phi": 598.2852130586758,
+          "beta": 1.0,
+          "objective": 1.3433989682201364,
+          "start_beta": -0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 598.2849593604583,
+            "beta": 1.0,
+            "objective": 1.3433989682201408,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 598.2845937737021,
+            "beta": 1.0,
+            "objective": 1.3433989682201652,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 598.2852130586758,
+            "beta": 1.0,
+            "objective": 1.3433989682201364,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -0.565684328182793,
+        "associated_residual_bias": -0.015491483716701586,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 990,
+      "total_positive_draws": 8110080,
+      "calibration_people": 174,
+      "workload_concentration": 5.1575088561502245,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2017-2.parquet": "7323279cad54bd9c1d35d07f58cf0bc03485f19378a442c7a28c6777740faf57",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2017-2.json": "158ef54ccc30fe50bdc849d61c3f130020cd466baa21612d26e7c1f4a890e51c"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2017,
+      "fold": 3,
+      "parameters": {
+        "independent": {
+          "phi": 600.1938567298363,
+          "beta": 0.0,
+          "objective": 1.4442887079443145
+        },
+        "associated": {
+          "phi": 1118.573805657268,
+          "beta": 1.0,
+          "objective": 1.3375018260295828,
+          "start_beta": 0.2,
+          "iterations": 7
+        },
+        "optimizer_checks": [
+          {
+            "phi": 1118.5739709281484,
+            "beta": 1.0,
+            "objective": 1.3375018260295863,
+            "start_beta": 0.0,
+            "iterations": 7
+          },
+          {
+            "phi": 1118.573805657268,
+            "beta": 1.0,
+            "objective": 1.3375018260295828,
+            "start_beta": 0.2,
+            "iterations": 7
+          },
+          {
+            "phi": 1118.5705467240198,
+            "beta": 1.0,
+            "objective": 1.3375018260296172,
+            "start_beta": -0.2,
+            "iterations": 7
+          }
+        ],
+        "residual_bias": -0.9608897152534979,
+        "associated_residual_bias": -0.2377853857788471,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 950,
+      "total_positive_draws": 7782400,
+      "calibration_people": 180,
+      "workload_concentration": 4.628863993411627,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2017-3.parquet": "06252b69b488d454b3223ef57288f78e7731fd119768382da9e1f4fc2dd71bc8",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2017-3.json": "04139df2178514323e5ba68d54ea986bc2abfa20f899ab8d8ce7a31a2d80cdd5"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2017,
+      "fold": 4,
+      "parameters": {
+        "independent": {
+          "phi": 400.1689075191747,
+          "beta": 0.0,
+          "objective": 1.446134077034103
+        },
+        "associated": {
+          "phi": 556.9434926915262,
+          "beta": 1.0,
+          "objective": 1.3520653774920406,
+          "start_beta": 0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 556.9434934488082,
+            "beta": 1.0,
+            "objective": 1.3520653774920408,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 556.9434926915262,
+            "beta": 1.0,
+            "objective": 1.3520653774920406,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 556.943431586423,
+            "beta": 1.0,
+            "objective": 1.352065377492041,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -0.7607880783667434,
+        "associated_residual_bias": -0.08382950590502342,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 910,
+      "total_positive_draws": 7454720,
+      "calibration_people": 172,
+      "workload_concentration": 4.7410260225069445,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2017-4.parquet": "424b6e456cd298a46baadfed3311259adb190b5a3b2fa847a78742d540a64715",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2017-4.json": "49b172c5d9aae6b0b7ed4349057d820297ecd4127cd8beac1c4770348e9e2291"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2018,
+      "fold": 0,
+      "parameters": {
+        "independent": {
+          "phi": 1259.183781099876,
+          "beta": 0.0,
+          "objective": 1.3753258625348364
+        },
+        "associated": {
+          "phi": 2740.64258485484,
+          "beta": 1.0,
+          "objective": 1.2775776984464713,
+          "start_beta": 0.0,
+          "iterations": 9
+        },
+        "optimizer_checks": [
+          {
+            "phi": 2740.64258485484,
+            "beta": 1.0,
+            "objective": 1.2775776984464713,
+            "start_beta": 0.0,
+            "iterations": 9
+          },
+          {
+            "phi": 2740.6554031092746,
+            "beta": 1.0,
+            "objective": 1.2775776984465268,
+            "start_beta": 0.2,
+            "iterations": 9
+          },
+          {
+            "phi": 2740.627070993004,
+            "beta": 1.0,
+            "objective": 1.2775776984465517,
+            "start_beta": -0.2,
+            "iterations": 9
+          }
+        ],
+        "residual_bias": -1.2172379239731324,
+        "associated_residual_bias": -0.5124746244914826,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 862,
+      "total_positive_draws": 7061504,
+      "calibration_people": 169,
+      "workload_concentration": 4.668928573354509,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2018-0.parquet": "9aba9fd6309bbad3d1eec8933cd1d9b2ff3c5045742f8d711876e2b8b99f860a",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2018-0.json": "21f6a438b131f703fc6a2d23776d3a4feabfccffba54fdff67aa2314d468e76e"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2018,
+      "fold": 1,
+      "parameters": {
+        "independent": {
+          "phi": 678.395737069282,
+          "beta": 0.0,
+          "objective": 1.3713036819302256
+        },
+        "associated": {
+          "phi": 905.5646599890994,
+          "beta": 1.0,
+          "objective": 1.2992135183326703,
+          "start_beta": -0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 905.5659980571673,
+            "beta": 1.0,
+            "objective": 1.2992135183326734,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 905.5662811370116,
+            "beta": 1.0,
+            "objective": 1.2992135183326827,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 905.5646599890994,
+            "beta": 1.0,
+            "objective": 1.2992135183326703,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -0.7872399067594469,
+        "associated_residual_bias": -0.19370565990251543,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 883,
+      "total_positive_draws": 7233536,
+      "calibration_people": 180,
+      "workload_concentration": 5.264681131041979,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2018-1.parquet": "fccac4e41ac52f2192fe5418be8eacbe2eafd1e67bbac8691ddbe9eaf813de6b",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2018-1.json": "0c1d1af8a329d6e4a21400ae37e318b32c42dc0aded3bcb9cf53e90a507fd598"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2018,
+      "fold": 2,
+      "parameters": {
+        "independent": {
+          "phi": 460.7402214558737,
+          "beta": 0.0,
+          "objective": 1.4170273850012314
+        },
+        "associated": {
+          "phi": 684.739508711303,
+          "beta": 1.0,
+          "objective": 1.3286368683343799,
+          "start_beta": 0.0,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 684.739508711303,
+            "beta": 1.0,
+            "objective": 1.3286368683343799,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 684.7390552301135,
+            "beta": 1.0,
+            "objective": 1.3286368683344003,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 684.7392596050727,
+            "beta": 1.0,
+            "objective": 1.3286368683343885,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -0.9481470369266775,
+        "associated_residual_bias": -0.39383577139248005,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 936,
+      "total_positive_draws": 7667712,
+      "calibration_people": 179,
+      "workload_concentration": 5.289497345001557,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2018-2.parquet": "a43c8f2de965fcc1c58c3d34cb8cd55a6c40e574df3f6ab525d7ede7cec8d535",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2018-2.json": "f9cadd097bca8e1bd0ba0bc623dd3bba88301f59555bec324cd360ce3fbe71a2"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2018,
+      "fold": 3,
+      "parameters": {
+        "independent": {
+          "phi": 676.1910356414007,
+          "beta": 0.0,
+          "objective": 1.3737439838407313
+        },
+        "associated": {
+          "phi": 1173.2050553363993,
+          "beta": 1.0,
+          "objective": 1.2713227783677137,
+          "start_beta": 0.2,
+          "iterations": 7
+        },
+        "optimizer_checks": [
+          {
+            "phi": 1173.2024674004049,
+            "beta": 1.0,
+            "objective": 1.2713227783677312,
+            "start_beta": 0.0,
+            "iterations": 7
+          },
+          {
+            "phi": 1173.2050553363993,
+            "beta": 1.0,
+            "objective": 1.2713227783677137,
+            "start_beta": 0.2,
+            "iterations": 7
+          },
+          {
+            "phi": 1173.2028924794406,
+            "beta": 1.0,
+            "objective": 1.2713227783677197,
+            "start_beta": -0.2,
+            "iterations": 7
+          }
+        ],
+        "residual_bias": -1.0091774600247405,
+        "associated_residual_bias": -0.40280845860232734,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 898,
+      "total_positive_draws": 7356416,
+      "calibration_people": 169,
+      "workload_concentration": 4.777377561314592,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2018-3.parquet": "7e26d69606fed8be834a142d299583e9417656e4a0484d8611b99645e86eeccd",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2018-3.json": "f02236ae14991a1e81610404d76eba6e3c0981437d6f5b1f8b9d35d7f0b98278"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2018,
+      "fold": 4,
+      "parameters": {
+        "independent": {
+          "phi": 463.8493867265349,
+          "beta": 0.0,
+          "objective": 1.4232515806510373
+        },
+        "associated": {
+          "phi": 642.1425443171394,
+          "beta": 1.0,
+          "objective": 1.3251121399011072,
+          "start_beta": 0.0,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 642.1425443171394,
+            "beta": 1.0,
+            "objective": 1.3251121399011072,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 642.1425059398335,
+            "beta": 1.0,
+            "objective": 1.3251121399011079,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 642.1427134815091,
+            "beta": 1.0,
+            "objective": 1.3251121399011072,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -1.0025278246185616,
+        "associated_residual_bias": -0.38364427529724554,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 899,
+      "total_positive_draws": 7364608,
+      "calibration_people": 169,
+      "workload_concentration": 5.090438974287942,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2018-4.parquet": "f9c9228d2a1cbbb16f2a5c30deac475742dd0917dd9af46b0da2829f85115c65",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2018-4.json": "9e5f3a8cb264f838cbab250d74c815d511edb38380b3012be93873e370b487d5"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2021,
+      "fold": 0,
+      "parameters": {
+        "independent": {
+          "phi": 504.223122435658,
+          "beta": 0.0,
+          "objective": 1.447562375413663
+        },
+        "associated": {
+          "phi": 784.5010355210577,
+          "beta": 1.0,
+          "objective": 1.3523900777504683,
+          "start_beta": 0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 784.4992751240305,
+            "beta": 1.0,
+            "objective": 1.3523900777505595,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 784.5010355210577,
+            "beta": 1.0,
+            "objective": 1.3523900777504683,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 784.4988228141028,
+            "beta": 1.0,
+            "objective": 1.352390077750612,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -0.9866757834079336,
+        "associated_residual_bias": -0.4091237538344852,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 848,
+      "total_positive_draws": 6946816,
+      "calibration_people": 153,
+      "workload_concentration": 4.897110840494483,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2021-0.parquet": "b1f9fb390f7b36541e67f632835a10791ea44ef676c88eb8d98226a3fc74eb8c",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2021-0.json": "24da1179bbdd529168c77dc41648babee100b4f75a7f03a5d055fd26f908a771"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2021,
+      "fold": 1,
+      "parameters": {
+        "independent": {
+          "phi": 343.8185989509635,
+          "beta": 0.0,
+          "objective": 1.5065660696351815
+        },
+        "associated": {
+          "phi": 449.9617433529293,
+          "beta": 1.0,
+          "objective": 1.4167148868326997,
+          "start_beta": -0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 449.96189039151517,
+            "beta": 1.0,
+            "objective": 1.4167148868327155,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 449.9618734670498,
+            "beta": 1.0,
+            "objective": 1.4167148868327133,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 449.9617433529293,
+            "beta": 1.0,
+            "objective": 1.4167148868326997,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -1.031562506399093,
+        "associated_residual_bias": -0.4569324629479589,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 824,
+      "total_positive_draws": 6750208,
+      "calibration_people": 201,
+      "workload_concentration": 4.882649900452405,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2021-1.parquet": "c37ffad2fa664f794009a2608d8b04ab37161149594f0976a67d0077d321c5cb",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2021-1.json": "248206ee92aa9b7f84dd8b5258535a941c220b9118c517face8ffcb7bd480904"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2021,
+      "fold": 2,
+      "parameters": {
+        "independent": {
+          "phi": 477.5986108615993,
+          "beta": 0.0,
+          "objective": 1.4618535264672574
+        },
+        "associated": {
+          "phi": 698.1161160886583,
+          "beta": 1.0,
+          "objective": 1.3819247082387418,
+          "start_beta": -0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 698.1165058433158,
+            "beta": 1.0,
+            "objective": 1.3819247082387462,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 698.1159156084364,
+            "beta": 1.0,
+            "objective": 1.3819247082387438,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 698.1161160886583,
+            "beta": 1.0,
+            "objective": 1.3819247082387418,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.052509374443472,
+        "associated_residual_bias": -0.49300746375352306,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 883,
+      "total_positive_draws": 7233536,
+      "calibration_people": 165,
+      "workload_concentration": 5.309688438481122,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2021-2.parquet": "7f8c683b3368fbbcd69d4fbfd581253bb803c77c89bdbd8d29ee42596c5fe55d",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2021-2.json": "f54c93787cfa6dddafce643e1a62c0359ef8d00a3f7ad35ea3aee08d3bcd9082"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2021,
+      "fold": 3,
+      "parameters": {
+        "independent": {
+          "phi": 533.3009688885909,
+          "beta": 0.0,
+          "objective": 1.4418505544162497
+        },
+        "associated": {
+          "phi": 795.5320469392435,
+          "beta": 1.0,
+          "objective": 1.329462797414944,
+          "start_beta": -0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 795.5313251537634,
+            "beta": 1.0,
+            "objective": 1.329462797414955,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 795.5313457625347,
+            "beta": 1.0,
+            "objective": 1.3294627974149542,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 795.5320469392435,
+            "beta": 1.0,
+            "objective": 1.329462797414944,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.446196558275863,
+        "associated_residual_bias": -0.8896013805527604,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 846,
+      "total_positive_draws": 6930432,
+      "calibration_people": 154,
+      "workload_concentration": 4.880159658377873,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2021-3.parquet": "46012441615c9cebffbdeafe32b87521a2ae52f49caedcc18f423e24a887f9b5",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2021-3.json": "157acdd590ee89745e7525033409e176f4c258559757c718998e06423cd46877"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2021,
+      "fold": 4,
+      "parameters": {
+        "independent": {
+          "phi": 344.5794173224232,
+          "beta": 0.0,
+          "objective": 1.469177646078876
+        },
+        "associated": {
+          "phi": 472.1563601311282,
+          "beta": 1.0,
+          "objective": 1.381138480743827,
+          "start_beta": 0.0,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 472.1563601311282,
+            "beta": 1.0,
+            "objective": 1.381138480743827,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 472.1560497668829,
+            "beta": 1.0,
+            "objective": 1.3811384807438454,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 472.15643351460994,
+            "beta": 1.0,
+            "objective": 1.381138480743827,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -0.643548604737489,
+        "associated_residual_bias": -0.15632012643530835,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 841,
+      "total_positive_draws": 6889472,
+      "calibration_people": 160,
+      "workload_concentration": 4.888941610377173,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2021-4.parquet": "401edb505086ab612477143209c940d876f05b189ade6221ba94356119d11390",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2021-4.json": "f206ebb6ceae83c8bfb0827d7025b83729da129ad51c32a9964519a082bd4195"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2022,
+      "fold": 0,
+      "parameters": {
+        "independent": {
+          "phi": 1010.1335225253315,
+          "beta": 0.0,
+          "objective": 1.4385627182817915
+        },
+        "associated": {
+          "phi": 1474.7506806685192,
+          "beta": 1.0,
+          "objective": 1.3587925054604117,
+          "start_beta": 0.0,
+          "iterations": 7
+        },
+        "optimizer_checks": [
+          {
+            "phi": 1474.7506806685192,
+            "beta": 1.0,
+            "objective": 1.3587925054604117,
+            "start_beta": 0.0,
+            "iterations": 7
+          },
+          {
+            "phi": 1474.7506290829183,
+            "beta": 1.0,
+            "objective": 1.3587925054604126,
+            "start_beta": 0.2,
+            "iterations": 7
+          },
+          {
+            "phi": 1474.749031917019,
+            "beta": 1.0,
+            "objective": 1.358792505460458,
+            "start_beta": -0.2,
+            "iterations": 7
+          }
+        ],
+        "residual_bias": -1.2869523960774916,
+        "associated_residual_bias": -0.6730999710439783,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 875,
+      "total_positive_draws": 7168000,
+      "calibration_people": 161,
+      "workload_concentration": 5.064756074688892,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2022-0.parquet": "bfde96cf99f0d68748a56517d7b6d61e495240adc5129aa42487a5d8744ea348",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2022-0.json": "1d18dd2b904a5b1a194906e91c86c23582cc0b842d8dc09be03e0c2620d4b6c6"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2022,
+      "fold": 1,
+      "parameters": {
+        "independent": {
+          "phi": 573.3554692912778,
+          "beta": 0.0,
+          "objective": 1.4694857651257283
+        },
+        "associated": {
+          "phi": 685.1350599662375,
+          "beta": 1.0,
+          "objective": 1.392610909188162,
+          "start_beta": 0.0,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 685.1350599662375,
+            "beta": 1.0,
+            "objective": 1.392610909188162,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 685.1361873548216,
+            "beta": 1.0,
+            "objective": 1.392610909188233,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 685.1350475121844,
+            "beta": 1.0,
+            "objective": 1.3926109091881622,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.7075323996615228,
+        "associated_residual_bias": -1.0614518917667073,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 801,
+      "total_positive_draws": 6561792,
+      "calibration_people": 194,
+      "workload_concentration": 4.743253164005806,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2022-1.parquet": "06d93c972bd7fe94bcf78ee208ed9911186a42beeaa2e68346d01de1cb043ead",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2022-1.json": "b51dc20a33843399a7ba7d403f5f457b3f5be74091721ef9fbb7f04c82165798"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2022,
+      "fold": 2,
+      "parameters": {
+        "independent": {
+          "phi": 554.8361056750031,
+          "beta": 0.0,
+          "objective": 1.4923361641289312
+        },
+        "associated": {
+          "phi": 807.5370513830769,
+          "beta": 1.0,
+          "objective": 1.3917936791473116,
+          "start_beta": 0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 807.5362389194887,
+            "beta": 1.0,
+            "objective": 1.3917936791473124,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 807.5370513830769,
+            "beta": 1.0,
+            "objective": 1.3917936791473116,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 807.5378234840244,
+            "beta": 1.0,
+            "objective": 1.3917936791473378,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.7314066558114263,
+        "associated_residual_bias": -1.2326184265692282,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 873,
+      "total_positive_draws": 7151616,
+      "calibration_people": 169,
+      "workload_concentration": 5.8213750445193,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2022-2.parquet": "2bbf9c2f1f3039f4cefd4d980a5a01645c1e8378d128cb89786d776c9ef778d9",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2022-2.json": "9f4530c3b8a7fbfb6e9380eaf6a8754316bacdb4c9dcf550bbe23d9596ce397f"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2022,
+      "fold": 3,
+      "parameters": {
+        "independent": {
+          "phi": 632.6081041278181,
+          "beta": 0.0,
+          "objective": 1.4942756183493708
+        },
+        "associated": {
+          "phi": 908.1547810355476,
+          "beta": 1.0,
+          "objective": 1.3910908907090451,
+          "start_beta": -0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 908.1535577698957,
+            "beta": 1.0,
+            "objective": 1.3910908907090653,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 908.1531463334021,
+            "beta": 1.0,
+            "objective": 1.3910908907090838,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 908.1547810355476,
+            "beta": 1.0,
+            "objective": 1.3910908907090451,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.7512707470788773,
+        "associated_residual_bias": -1.0198872279302327,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 851,
+      "total_positive_draws": 6971392,
+      "calibration_people": 155,
+      "workload_concentration": 4.745411619376991,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2022-3.parquet": "048999aa82fcdf730b2788c6ea563e5e16dd616580014073be73106465545b1f",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2022-3.json": "6ecf261f2e0bedadd92bba61d8ac39892558e6fab20b82b9e0d21775f041efac"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2022,
+      "fold": 4,
+      "parameters": {
+        "independent": {
+          "phi": 596.3629172139033,
+          "beta": 0.0,
+          "objective": 1.416809669651513
+        },
+        "associated": {
+          "phi": 730.3653618156188,
+          "beta": 1.0,
+          "objective": 1.3411645600279813,
+          "start_beta": 0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 730.3642475803588,
+            "beta": 1.0,
+            "objective": 1.3411645600280173,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 730.3653618156188,
+            "beta": 1.0,
+            "objective": 1.3411645600279813,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 730.3653906782436,
+            "beta": 1.0,
+            "objective": 1.3411645600279816,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.285363975682837,
+        "associated_residual_bias": -0.7563959549200605,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 844,
+      "total_positive_draws": 6914048,
+      "calibration_people": 157,
+      "workload_concentration": 5.614353613239044,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2022-4.parquet": "e75ba3bc52e5fa211a2a53c3f23899e33ff4e5df949a8c04019aa1f48eaef5e3",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2022-4.json": "86cfafe4f4d772e924d8f941710190b560defc69e882b65c285c300645107aa3"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2023,
+      "fold": 0,
+      "parameters": {
+        "independent": {
+          "phi": 804.2256350554503,
+          "beta": 0.0,
+          "objective": 1.4332103595995263
+        },
+        "associated": {
+          "phi": 1157.6287568295802,
+          "beta": 1.0,
+          "objective": 1.354537616423065,
+          "start_beta": 0.2,
+          "iterations": 7
+        },
+        "optimizer_checks": [
+          {
+            "phi": 1157.6302427201824,
+            "beta": 1.0,
+            "objective": 1.3545376164230685,
+            "start_beta": 0.0,
+            "iterations": 7
+          },
+          {
+            "phi": 1157.6287568295802,
+            "beta": 1.0,
+            "objective": 1.354537616423065,
+            "start_beta": 0.2,
+            "iterations": 7
+          },
+          {
+            "phi": 1157.6301918577776,
+            "beta": 1.0,
+            "objective": 1.354537616423068,
+            "start_beta": -0.2,
+            "iterations": 7
+          }
+        ],
+        "residual_bias": -1.0784217499399662,
+        "associated_residual_bias": -0.4242968575523725,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 872,
+      "total_positive_draws": 7143424,
+      "calibration_people": 188,
+      "workload_concentration": 5.0881906871543885,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2023-0.parquet": "b51d1acc5b02daf0c166ba91fe94b85642d797c0858739d8652d1aca7a649b22",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2023-0.json": "b6ec2601c21ecc2828271f592af8d0a2ec55cbd6feb66483ed64657da310d90e"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2023,
+      "fold": 1,
+      "parameters": {
+        "independent": {
+          "phi": 546.3299864548744,
+          "beta": 0.0,
+          "objective": 1.4302366366097115
+        },
+        "associated": {
+          "phi": 713.0899217189905,
+          "beta": 1.0,
+          "objective": 1.3525796095546299,
+          "start_beta": 0.2,
+          "iterations": 4
+        },
+        "optimizer_checks": [
+          {
+            "phi": 713.0903527129193,
+            "beta": 1.0,
+            "objective": 1.3525796095546447,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 713.0899217189905,
+            "beta": 1.0,
+            "objective": 1.3525796095546299,
+            "start_beta": 0.2,
+            "iterations": 4
+          },
+          {
+            "phi": 713.0903050695221,
+            "beta": 1.0,
+            "objective": 1.3525796095546423,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -1.2658879548040876,
+        "associated_residual_bias": -0.6637549058329887,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 773,
+      "total_positive_draws": 6332416,
+      "calibration_people": 217,
+      "workload_concentration": 4.9707275299268,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2023-1.parquet": "49f167403d97105abec4c0e1baeb3edefacee5add6653d1accc911290bed1f3d",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2023-1.json": "05ab0c345dc7c7f7fd3afd3ce68db87eda8228c15e991faa39204ed2b536ea62"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2023,
+      "fold": 2,
+      "parameters": {
+        "independent": {
+          "phi": 631.3022430070531,
+          "beta": 0.0,
+          "objective": 1.4162685081132655
+        },
+        "associated": {
+          "phi": 989.9654181663387,
+          "beta": 1.0,
+          "objective": 1.316381627338991,
+          "start_beta": 0.2,
+          "iterations": 7
+        },
+        "optimizer_checks": [
+          {
+            "phi": 989.9609942809661,
+            "beta": 1.0,
+            "objective": 1.3163816273393372,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 989.9654181663387,
+            "beta": 1.0,
+            "objective": 1.316381627338991,
+            "start_beta": 0.2,
+            "iterations": 7
+          },
+          {
+            "phi": 989.9684144106823,
+            "beta": 1.0,
+            "objective": 1.3163816273390487,
+            "start_beta": -0.2,
+            "iterations": 7
+          }
+        ],
+        "residual_bias": -1.2285257008143622,
+        "associated_residual_bias": -0.6957240210434068,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 874,
+      "total_positive_draws": 7159808,
+      "calibration_people": 186,
+      "workload_concentration": 5.435682858824338,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2023-2.parquet": "905a6df996e5f0bec190a179896ec72746c30ce471216e50be30157ec604c58e",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2023-2.json": "7d3ca27601499522dba9ca90779c7ad27637a374290edb7d75c55fbed4200cd6"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2023,
+      "fold": 3,
+      "parameters": {
+        "independent": {
+          "phi": 598.0090075523265,
+          "beta": 0.0,
+          "objective": 1.4696177216015451
+        },
+        "associated": {
+          "phi": 833.0399655137517,
+          "beta": 1.0,
+          "objective": 1.3782376748462606,
+          "start_beta": 0.0,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 833.0399655137517,
+            "beta": 1.0,
+            "objective": 1.3782376748462606,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 833.0397856375652,
+            "beta": 1.0,
+            "objective": 1.3782376748462637,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 833.0406500961317,
+            "beta": 1.0,
+            "objective": 1.3782376748462628,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.4432044992046305,
+        "associated_residual_bias": -0.7574635466655877,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 834,
+      "total_positive_draws": 6832128,
+      "calibration_people": 179,
+      "workload_concentration": 4.969190209276177,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2023-3.parquet": "ff637669a1798b1fa1fc4043d7d7f3771e8db52e0f92103c39910fda7a490d42",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2023-3.json": "9df7cc3cd84215c2b232d1e263cd48f64a71610c53c49801f8738c9a9f360b85"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2023,
+      "fold": 4,
+      "parameters": {
+        "independent": {
+          "phi": 643.5516849709355,
+          "beta": 0.0,
+          "objective": 1.353695210829121
+        },
+        "associated": {
+          "phi": 832.8324784141278,
+          "beta": 1.0,
+          "objective": 1.2783498635430988,
+          "start_beta": -0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 832.8319646250309,
+            "beta": 1.0,
+            "objective": 1.2783498635431207,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 832.8338167553238,
+            "beta": 1.0,
+            "objective": 1.2783498635431036,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 832.8324784141278,
+            "beta": 1.0,
+            "objective": 1.2783498635430988,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -1.0297709081760849,
+        "associated_residual_bias": -0.5108650240668328,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 843,
+      "total_positive_draws": 6905856,
+      "calibration_people": 176,
+      "workload_concentration": 5.513228323864157,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2023-4.parquet": "ce0499a2e029d642b4f16f5855be2b9d2f48b6b316f8f150c15a9a6ce2a34644",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2023-4.json": "7addac5ac348f1a29cd3ceba7633f924d5fd002629fb0ef3835221cf662ffde5"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2024,
+      "fold": 0,
+      "parameters": {
+        "independent": {
+          "phi": 653.4548895137116,
+          "beta": 0.0,
+          "objective": 1.4546009428168927
+        },
+        "associated": {
+          "phi": 852.2582693887194,
+          "beta": 1.0,
+          "objective": 1.3770014547288618,
+          "start_beta": 0.0,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 852.2582693887194,
+            "beta": 1.0,
+            "objective": 1.3770014547288618,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 852.2577842391662,
+            "beta": 1.0,
+            "objective": 1.3770014547288714,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 852.2581570631827,
+            "beta": 1.0,
+            "objective": 1.3770014547288634,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.18982734473059,
+        "associated_residual_bias": -0.40934682051477633,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 807,
+      "total_positive_draws": 6610944,
+      "calibration_people": 185,
+      "workload_concentration": 4.373088397102079,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2024-0.parquet": "9725e26d7efbadc849d44ac3c1bba0dcb0b540c8a62cd271e62e3fdfaac73e48",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2024-0.json": "cc1a76eab4a4a275eb251876218d834946a4262b8a490bfff5bc5dee3a97325d"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2024,
+      "fold": 1,
+      "parameters": {
+        "independent": {
+          "phi": 632.0230948220841,
+          "beta": 0.0,
+          "objective": 1.3596011104052586
+        },
+        "associated": {
+          "phi": 812.5132369899137,
+          "beta": 1.0,
+          "objective": 1.2834978169158036,
+          "start_beta": 0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 812.5124625738864,
+            "beta": 1.0,
+            "objective": 1.2834978169158042,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 812.5132369899137,
+            "beta": 1.0,
+            "objective": 1.2834978169158036,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 812.5137006370833,
+            "beta": 1.0,
+            "objective": 1.2834978169158195,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -1.1991382488922628,
+        "associated_residual_bias": -0.6508908167706333,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 734,
+      "total_positive_draws": 6012928,
+      "calibration_people": 205,
+      "workload_concentration": 5.102922438602695,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2024-1.parquet": "d46b283d6dd3d4d9b4ee407c53774ab7e850a0ca176e29373b541f787f55e154",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2024-1.json": "3ade4f45465f0a74a45074b24ac1c2f1ff42bc956e368cd500aca91c95f2d8b2"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2024,
+      "fold": 2,
+      "parameters": {
+        "independent": {
+          "phi": 679.2093129086738,
+          "beta": 0.0,
+          "objective": 1.3793415234948763
+        },
+        "associated": {
+          "phi": 1021.3420977912174,
+          "beta": 1.0,
+          "objective": 1.28132894391756,
+          "start_beta": -0.2,
+          "iterations": 6
+        },
+        "optimizer_checks": [
+          {
+            "phi": 1021.3416293335016,
+            "beta": 1.0,
+            "objective": 1.281328943917591,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 1021.3419444032414,
+            "beta": 1.0,
+            "objective": 1.2813289439175695,
+            "start_beta": 0.2,
+            "iterations": 6
+          },
+          {
+            "phi": 1021.3420977912174,
+            "beta": 1.0,
+            "objective": 1.28132894391756,
+            "start_beta": -0.2,
+            "iterations": 6
+          }
+        ],
+        "residual_bias": -1.1373577404916746,
+        "associated_residual_bias": -0.5727113448117991,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 841,
+      "total_positive_draws": 6889472,
+      "calibration_people": 186,
+      "workload_concentration": 5.690394295764811,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2024-2.parquet": "7df291aebb6b0b37f605e0f18168c3b2bfc9683c45d7077ccdb36a0e8f9fa25b",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2024-2.json": "a83e649b9d4ba9cf6c2b45645bb511e61b271bc797d60ecc8ad8b0895a268b24"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2024,
+      "fold": 3,
+      "parameters": {
+        "independent": {
+          "phi": 464.22154481041395,
+          "beta": 0.0,
+          "objective": 1.4953237165991942
+        },
+        "associated": {
+          "phi": 603.118720796962,
+          "beta": 1.0,
+          "objective": 1.3991882572558627,
+          "start_beta": 0.2,
+          "iterations": 5
+        },
+        "optimizer_checks": [
+          {
+            "phi": 603.1196682379398,
+            "beta": 1.0,
+            "objective": 1.3991882572558985,
+            "start_beta": 0.0,
+            "iterations": 5
+          },
+          {
+            "phi": 603.118720796962,
+            "beta": 1.0,
+            "objective": 1.3991882572558627,
+            "start_beta": 0.2,
+            "iterations": 5
+          },
+          {
+            "phi": 603.1204441583426,
+            "beta": 1.0,
+            "objective": 1.399188257256012,
+            "start_beta": -0.2,
+            "iterations": 5
+          }
+        ],
+        "residual_bias": -1.5892899313054045,
+        "associated_residual_bias": -0.9062981091472189,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 812,
+      "total_positive_draws": 6651904,
+      "calibration_people": 177,
+      "workload_concentration": 5.362273902359982,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2024-3.parquet": "984ee4c59d1cc590fe85a5715ea6886a56d126b0fc498f72699744faf6f0a4eb",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2024-3.json": "8692bb9e39c62eb23f2d69d015a2cbd9932a2b199d368167a418110a31f4248e"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    },
+    {
+      "year": 2024,
+      "fold": 4,
+      "parameters": {
+        "independent": {
+          "phi": 874.4632484181824,
+          "beta": 0.0,
+          "objective": 1.3292985840748637
+        },
+        "associated": {
+          "phi": 1191.618252618041,
+          "beta": 1.0,
+          "objective": 1.250781050387103,
+          "start_beta": 0.2,
+          "iterations": 7
+        },
+        "optimizer_checks": [
+          {
+            "phi": 1191.6151696447332,
+            "beta": 1.0,
+            "objective": 1.2507810503871823,
+            "start_beta": 0.0,
+            "iterations": 6
+          },
+          {
+            "phi": 1191.618252618041,
+            "beta": 1.0,
+            "objective": 1.250781050387103,
+            "start_beta": 0.2,
+            "iterations": 7
+          },
+          {
+            "phi": 1191.6201943566598,
+            "beta": 1.0,
+            "objective": 1.250781050387124,
+            "start_beta": -0.2,
+            "iterations": 7
+          }
+        ],
+        "residual_bias": -1.170871113024158,
+        "associated_residual_bias": -0.5792775718631472,
+        "phi_bounds": [
+          0.1,
+          1000000
+        ],
+        "beta_bounds": [
+          -1.0,
+          1.0
+        ],
+        "associated_beta_at_bound": true
+      },
+      "forecast_rows": 798,
+      "total_positive_draws": 6537216,
+      "calibration_people": 172,
+      "workload_concentration": 5.342508813190355,
+      "output_hashes": {
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\forecast-2024-4.parquet": "bbd13d6dc2bd0c01e4ce6ab799173a887a38b26a8717ad72237e8f73a989a6e8",
+        "D:\\UBM-Source-Cache\\hitter-event-count-risk\\parameters-2024-4.json": "92528b0c77bf5e7a1b5fef1b21200410af929bb3f670d60bd630ca4a1a96f996"
+      },
+      "integer_event_checks_pass": true,
+      "sampled_envelope_failures": 0,
+      "theoretical_means_exact": true,
+      "player_walkthrough_status": "pending"
+    }
+  ],
+  "forecasts": 30506,
+  "new_point_models": 0,
+  "new_count_calibrations": 70,
+  "positive_draws": 4096,
+  "output_sha256": "026ddfe228fc10c42fe69855bebaef6cbeb0da4545b5a800d96a5bb003510a31",
+  "theoretical_means_exact": true,
+  "physical_envelope_failures": 0,
+  "player_walkthrough_status": "pending",
+  "current_candidate_changed": false,
+  "protected_outcomes_used": false
+}

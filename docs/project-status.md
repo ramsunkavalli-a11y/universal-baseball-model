@@ -24,16 +24,25 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current work: coherent event count risk comparison running.**
-The [progress checkpoint](hitter-event-count-risk-progress.md) records the fixed
-integer-count implementation, all 130 prefit checks and fifty rate plus fifty PA
-head replays. The experiment preserves all 30,506 forecasts and current means.
-Twelve focused tests cover support, exact mean identity and independent scoring
-and covariance checks. Early associated fits reach the predeclared slope bound;
-retain that restriction and qualify it rather than tune after results. Prediction
-scores, independent numerical audit and required player reviews remain pending.
-No adoption, protected outcome access or deployed forecast change is claimed.
-Finish this same comparison and its player walkthrough before another model test.
+**Current checkpoint: coherent event count risk and eighteen player walks complete.**
+The [completed comparison](hitter-event-count-risk-result.md) retains all 30,506
+forecasts and current means. Associated integer counts eliminate impossible
+outcomes and improve range loss .041233 to .041071 overall, .221910 to .221180
+on public matches; all seven origins improve against both declared references.
+The independent count version is physically valid but slightly worsens pooled
+range loss. All 130 checks precede fitting; fifty rate and fifty PA heads,
+seventy count calibrations, 147,456 case draws and 108 case quantiles reproduce.
+The independent 2,870-row simulation audit retains public comparison directions.
+Eighteen walks preserve Judge/Soler gains, Hedges/Marte/Gore harms, unchanged
+Kurtz/Reynolds readiness, Soto/Langford tradeoffs and Rortvedt's compensating
+errors. All 35 associated slopes reach the predeclared bound; residual bias and
+19,800 absent calibration profiles remain. Retain associated counts only as the
+next-year offense-risk research candidate, not a point forecast improvement or
+deployment. Twelve tests and all 31 frozen files verify. Public point MAE,
+cohort readiness, complete value and the full goal remain unresolved. Next
+expose a qualified coherent candidate, model card and team-filtered research
+explorer under the practical plan, not more uncertainty-width tuning. No
+protected outcomes or deployed forecast changes.
 
 **Previous checkpoint: joint offense risk comparison and seventeen player walks complete.**
 The [offense uncertainty result](hitter-offense-risk-result.md) retains all 30,506
