@@ -2,6 +2,33 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Current checkpoint: historical hitter research explorer
+
+The [integrated historical explorer](hitter-integrated-research-explorer-result.md)
+now reproduces all 30,506 saved forecasts, with exact fitted inputs, raw source
+history, reviewed players, contrary cases, a team filter and separate hitting,
+opportunity and contribution measures. It is served locally at
+<http://127.0.0.1:8801/>; default target is 2025, not a new 2026 forecast.
+The main assembly combines the reviewed prospect branch, positive MLB Statcast
+branch and exact current fallback. No new models were fitted. Current PA remains
+unchanged; uncertain minor exposure/measurement updates are comparisons only.
+
+All 35 selected-rate/PA cells replay; all row values/inputs and reconstructed
+outcome labels verify, 244 endpoint components are independently checked,
+seven focused tests pass and 31 protected files remain unchanged. Eight display
+walks plus earlier full reviews are preserved. Browser filters, sorting, details,
+non-arrivals and result hiding are verified; CSV download remains unverified.
+These execution/display checks do not establish model approval.
+
+Main hitting RMSE improves 1.8233 to 1.8048 and contribution RMSE 0.4534 to
+0.4512, but the unchanged PA absolute error is 15.56% worse than matched Steamer,
+outside the declared 15% allowance. Kurtz, Kwan, Bichette, Caminero and Thames
+still show consequential misses; annual contribution totals still swing too far.
+Do not claim a finished hitter, full WAR, uncertainty distribution or six-year
+value model. The broad goal remains active. Do not refit these completed exports,
+reopen team-record testing, alter protected forecasts or treat exposed results as
+new independent validation. The preceding precision checkpoint is retained below.
+
 ## Current checkpoint on the precision repair
 
 The [precision-aware minor comparison](hitter-minor-statcast-precision-result.md)

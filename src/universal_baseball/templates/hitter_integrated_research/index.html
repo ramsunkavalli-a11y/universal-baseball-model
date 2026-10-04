@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hitter candidate — ability, playing time and actual results</title>
+<link rel="stylesheet" href="app.css"><script defer src="app.js"></script></head>
+<body><main>
+<header><p class="eyebrow">Universal baseball model · historical research</p><h1>How good could he hit, and how much might he play?</h1>
+<p>Inspect the reviewed hitter branches, their evidence, and their misses. Click a player for his statistics and actual fitted inputs.</p></header>
+<p class="notice">Historical forecasts for <strong>2017–2019 and 2022–2025</strong>. This is <strong>not a new 2026 forecast</strong>, full WAR, or trade value. These results have already been used for model development.</p>
+<section class="controls" aria-label="Player filters">
+<label>Season being predicted<select id="year"></select></label>
+<label><span id="orgLabel">Origin organization</span><select id="org"><option value="">All organizations</option></select></label>
+<label>Stage at forecast<select id="stage"><option value="">All stages</option></select></label>
+<label>Find a player<input id="search" type="search" placeholder="Name or MLBAM ID" autocomplete="off"></label>
+<label>Forecast comparison<select id="arm"></select></label>
+<label>Evidence<select id="evidence"><option value="">All players</option><option value="reviewed">Reviewed players</option><option value="public">Matched public projections</option><option value="sparse">Thin or undocumented hitting support</option><option value="untracked">No own MLB launch measurements</option><option value="minor">Minor adjustment enabled</option></select></label>
+<label class="check"><input id="actual" type="checkbox" checked>Show later results and reviews</label>
+<button id="reset" type="button">Reset filters</button>
+</section>
+<p id="timing" class="muted"></p><p id="loadError" role="alert"></p><p id="comparison" class="warning"></p>
+<section id="totals" class="totals" aria-live="polite"></section>
+<p class="muted">Totals are for this selected known cohort, not a complete future team roster. Future trades, new entrants, defense, running and position value are not included.</p>
+<div class="tablewrap"><table><thead><tr>
+<th><button data-sort="player_name">Player</button></th><th>Stage</th>
+<th class="num"><button data-sort="rate">Hitting /600</button></th>
+<th class="num"><button data-sort="p">MLB PA chance</button></th>
+<th class="num"><button data-sort="pa">Expected PA</button></th>
+<th class="num"><button data-sort="value">Batting contribution</button></th>
+<th class="num actualcol"><button data-sort="next_pa">Actual PA</button></th>
+<th class="num actualcol"><button data-sort="next_rate">Actual hitting /600</button></th>
+<th class="num actualcol"><button data-sort="next_value">Actual contribution</button></th>
+<th class="num actualcol"><button data-sort="miss">Largest contribution miss</button></th><th>Evidence</th>
+</tr></thead><tbody id="rows"><tr><td colspan="11">Loading forecasts…</td></tr></tbody></table></div>
+<div class="pager"><button id="prev">Previous</button><span id="page" aria-live="polite"></span><button id="next">Next</button><button id="download">Download filtered rows</button></div>
+<p class="definition"><strong>Hitting /600</strong> isolates expected MLB hitting above league average per 600 PA, in custom win units. It has no position bonus. <strong>Batting contribution</strong> adds replacement and scales by expected PA; it is not full WAR. A player with no later MLB PA has no observed hitting rate. Rate errors use the later season's league reference; contribution outcomes use a fixed origin reference, so the two actual columns do not directly multiply into one another.</p>
+<section class="explain"><details open><summary>What this model uses and what remains unfinished</summary><div id="modelCard"></div></details>
+<details open><summary>Matched public benchmark and cohort checks</summary><div id="benchmark"></div></details></section>
+</main><dialog id="detail" aria-labelledby="detailTitle"><div class="dialoghead"><div><h2 id="detailTitle"></h2><p id="detailSubtitle"></p></div><button id="close">Close</button></div><div id="detailBody"></div></dialog>
+</body></html>
