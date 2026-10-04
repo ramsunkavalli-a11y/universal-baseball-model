@@ -24,7 +24,24 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: historical contact controls rebuilt and 2016 identity repair reviewed.**
+**Current checkpoint: all eight contact seasons repaired and player review complete.**
+The [completed source review](hitter-contact-identity-rebuild-result.md) retains
+4,591,561 physical contacts across 2016–19 and 2021–24 and corrects 12,100
+participant credits. All 14,212 selected games have official sequence authority;
+none of the 2,520 unflagged audit games disagrees. Controlled absolute player
+count residuals fall from 24,987 to 893; remaining gaps are preserved, not
+fabricated away. Sixteen actual source walks include restored Martin/Kokoska/
+Leonard HR, unchanged Kurtz/Langford records and Reynolds gaining one contact.
+Those readiness misses are not resolved by the identity repair. Actual league
+identities, including Mexico and separate rookie leagues, remain explicit.
+Thirty-four focused checks pass and all 31 frozen files remain unchanged.
+The final receipt accepts raw measurements for a matched modeling test, not
+park-neutral talent, complete schedule coverage or deployment. No new forecast
+gain is claimed. Next contract a bounded future-MLB hitting comparison with
+unchanged opportunity, preserved current/translated anchors, explicit contact
+coverage and adjustment limits, and player walkthroughs. Full goal remains active.
+
+**Previous checkpoint: historical contact controls rebuilt and 2016 identity repair reviewed.**
 The [source milestone](hitter-contact-identity-rebuild-progress.md) assembles
 3,983,836 independent player-game controls across eight seasons and retains
 4,591,561 physical contacts with actual league identity. It locks 11,692
