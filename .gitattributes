@@ -1,4 +1,15 @@
 * text=auto eol=lf
+
+# Preserve bytes in the reviewed preseason-source provenance chain.
+reports/model-evidence/hitter-preseason-population-source/** -text -eol
+docs/hitter-preseason-population-* -text -eol
+scripts/capture_hitter_preseason_population*.py -text -eol
+scripts/materialize_hitter_preseason_population.py -text -eol
+scripts/review_hitter_preseason_population.py -text -eol
+src/universal_baseball/hitter_preseason_population.py -text -eol
+src/universal_baseball/hitter_preseason_role.py -text -eol
+tests/test_hitter_preseason_population.py -text -eol
+tests/test_hitter_preseason_role.py -text -eol
 # Preserve byte-hashed, sealed no-fit accounting and population-audit evidence.
 reports/model-evidence/hitter-season-value-ledger/** -text -eol
 reports/model-evidence/hitter-returner-coverage/** -text -eol

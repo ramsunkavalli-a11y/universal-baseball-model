@@ -2,6 +2,40 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Current checkpoint on preseason population and foreign professionals
+
+The [preseason source refresh](hitter-preseason-population-source-result.md)
+is collected and independently reviewed for all 2012–2025 information dates.
+It preserves 63,282 original source origins and 30,506 current forecasts.
+There are 420 dated 40Man listings and 126,077 transaction rows, reconciled
+against monthly windows without dropping players sharing a trade ID. The old
+Ohtani positive-control expectation was wrong: his January 2018 reserve-list
+absence is consistent with his minor agreement and later contract selection.
+Both original failures and their additive corrections remain available.
+
+Fourteen source/player walks are complete, twenty focused tests pass and all
+31 protected files remain unchanged. Conforto and Alfaro are recovered source
+candidates. Ohtani, Suzuki, Yoshida and Jung Hoo Lee have dated signing context
+but lacked original forecast rows. Sanó's reported-versus-official timing gap
+remains. Hyeseong Kim already has a forecast, but missing Korean performance
+leaves only 0.36 expected PA; source inclusion alone does not fix that model.
+
+The broad 83,300-origin source ledger is not an approved hitter universe.
+Most additions are pitchers or unresolved roles. An additive review recognizes
+generic OF/IF codes and dated two-way evidence, without inventing specific
+positions or talent. FullRoster still cannot admit new origins by itself.
+Historical rights, health and publication vintages remain qualified.
+
+Next: integrate the dated population/role evidence under one fixed comparison,
+with unchanged original rows and additions reported separately. Experienced
+NPB/KBO professionals require translated performance, age/experience, supported
+scouting and dated role/contract context; a nationality bonus or domestic
+empty-history fallback is not sufficient. Acquire and qualify that evidence
+before certifying their forecasts. Preserve unsigned/non-arrival cases, mature
+training support and the existing public PA accuracy gap. Do not resume closed
+team-record or Statcast comparisons, promote protected forecasts, or declare the
+practical hitter goal complete from this source milestone.
+
 ## Current checkpoint on missing returners
 
 The [returner population audit](hitter-returner-coverage-result.md) confirms a
