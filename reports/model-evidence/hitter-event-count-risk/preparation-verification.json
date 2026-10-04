@@ -1,0 +1,47 @@
+{
+  "actual_forecasts": 30506,
+  "cells": 35,
+  "actual_nested_subsets": 95,
+  "actual_source_reference_replays": 130,
+  "reference_counts_and_people_exact": true,
+  "whole_player_exclusions_checked": true,
+  "physical_rate_bound_checks_repeated": true,
+  "focused_tests": 12,
+  "frozen_verification": {
+    "contact_available_rows": 3511,
+    "five_model_rows": 3720,
+    "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+    "players": 3907,
+    "population_prior_rows": 187,
+    "protected_2026_opened": false,
+    "status": "verified",
+    "verified_files": 31
+  },
+  "player_walkthrough_status": "pending",
+  "predictive_status": "not assessed",
+  "candidate_changed": false,
+  "source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_hitter_event_count_risk.py": "880b053bd150719f9485a1cbf8faca6e5809db2f3b63116226b2a5b7530777a6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_event_count_risk.py": "b559b386cd9600dc6f86a501eb95a76dcb6fd1f1ba45439ae403b59880804f7e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_hitter_event_count_risk.py": "7ffe525ece8edd2b09f6b971a72c79cbd4cfeee24325276fa5b6e208d673c785",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-event-count-risk-contract.md": "2c478c041b2be867d2702a1dff6835560d281d8dbc3b846adb9e8a50933a6a74",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-offense-risk\\preflight.json": "c6408ab03353a1cc7f6f9864fc06145ecc83593eb61bee4f8bd22e879dec23f4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-offense-risk\\final-report.json": "9ce5fb70c5ecd6a84ef79d742e5671c9bd49c70dc21d6b0a5f23d4825f34d540",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-offense-risk\\review-verification.json": "98345a032e511c4d828f4db73323336c16230ab2b7b8c97a7a4f8d5385d2dd44",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-offense-risk\\fit-report.json": "ee64328eefc9f10f63ddc1d908ffbae5fdabe05341c3aa6e985b345cf42c7934",
+    "D:\\UBM-Source-Cache\\hitter-offense-risk\\scored-predictions.parquet": "fe82c9644168df23b6eff149a2fefec94b691c54a68f11d568272b47ec0a8825",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\scored-predictions.parquet": "9a08f2a4bea18d9fb14313fedd904ddd98f009331ed89bd607f3aeac34f750f8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\features.parquet": "a9c1bc927adcbb07742080297e2c513ec2de1a5800d2d5e9b01652cd828ffcfc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-compatible-value-v63\\features.parquet": "06698fe08ef8c8074213a0071bb9d210eb35230b2a7de06c1f9eaafaed22a288",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\counts.parquet": "62de048f7eb6cae53dd29755e26953c31b204fbdfc0e6be261b63acd42da5e66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-event-count-risk\\outer-support.parquet": "58dde47677ff258448e201fb69564294808d3700366a27483fd447bcc43ae777",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-event-count-risk\\calibration-profile-support.parquet": "6a936e4fc09d64be0609ada16488e57959fb8c30ca7502b9ed0e5a4b53e20176"
+  },
+  "audit_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\verify_hitter_event_count_preparation.py": "70584f7e46d29429b809b32d66ef2ca992135a878c02e971483e3f2afbd3e208",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-event-count-risk\\preflight.json": "5f0eeb5b30c7a143efb4b0f4aa9cfa6dfd63a344a905d461764d1b792077de33",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-event-count-risk\\preparation-tests.txt": "785ce0de31731fecee268abc65e266e9c8f07842c5c58149d34a13545eda3fa6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\score_hitter_event_count_risk.py": "c3d9921db377f65547b936e9b950036226c286e9d1c611e0f5f124ad07511c14",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_hitter_event_count_risk_review.py": "708beb70bbef395529eccc60c4d01dec4876cdf9c226b198a6d8527d44d7cae4"
+  }
+}

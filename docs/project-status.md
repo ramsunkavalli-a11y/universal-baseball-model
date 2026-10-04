@@ -24,7 +24,18 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: joint offense risk comparison and seventeen player walks complete.**
+**Current work: coherent event count risk comparison running.**
+The [progress checkpoint](hitter-event-count-risk-progress.md) records the fixed
+integer-count implementation, all 130 prefit checks and fifty rate plus fifty PA
+head replays. The experiment preserves all 30,506 forecasts and current means.
+Twelve focused tests cover support, exact mean identity and independent scoring
+and covariance checks. Early associated fits reach the predeclared slope bound;
+retain that restriction and qualify it rather than tune after results. Prediction
+scores, independent numerical audit and required player reviews remain pending.
+No adoption, protected outcome access or deployed forecast change is claimed.
+Finish this same comparison and its player walkthrough before another model test.
+
+**Previous checkpoint: joint offense risk comparison and seventeen player walks complete.**
 The [offense uncertainty result](hitter-offense-risk-result.md) retains all 30,506
 forecasts and every current mean. Fifty genuinely nested Ridge heads, 35 variance
 fits and all risk rows replay after 130 actual prefit checks. Adding hitting
