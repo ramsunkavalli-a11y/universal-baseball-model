@@ -24,7 +24,27 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: delivered-value comparison and fifteen player reviews completed.**
+**Current checkpoint: candidate integration inventory completed with seven actual reviews.**
+The [source and current-model inventory](hitter-candidate-integration-audit.md)
+reconciles all 63,282 source identities and 30,506 forecasts, replays 21 saved
+heads for seven players, and records actual predictor lists and requested roster
+captures. Current opportunity heads do not use repaired medical/return states;
+earlier V61/V62 alternatives did, without a sound overall replacement. Permanent
+ineligibility and reported-retirement rules remain separate. Do not reopen a
+blanket comeback boost: previously debuted, currently absent players with a
+captured return state receive 4,717 expected PA against 4,186 actual, despite
+Lux's 222 versus 487 and McLain's 132 versus 577 individual misses. Belt stays a
+reasonable forecast that missed an unusual unsigned outcome, not a hard-zero
+case. Franco needs qualified availability scenarios; Thames lacks foreign
+production, not talent known to be zero. McLain's October activation conflicts
+with absence from the raw requested year-end 40Man capture. Reconcile historical
+listing provenance across the cohort before any membership repair or new fit;
+endpoint absence is not certified nonmembership. Current batting also does not
+inherit park-neutralized contact/opponent, defense or baserunning branches.
+Three review-gate tests pass. No new model or forecast changed; public MAE gap,
+profile/cohort limits, protected 2026 and the active whole goal remain unchanged.
+
+**Previous checkpoint: delivered-value comparison and fifteen player reviews completed.**
 The [completed comparison](hitter-value-integration-v76-result.md) retains all
 30,506 forecasts and independently replays 350 new heads plus 105 baseline
 heads. The [source review](hitter-value-integration-v76-source-review.md)
