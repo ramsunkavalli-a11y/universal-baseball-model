@@ -2,6 +2,68 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Current checkpoint on missing returners
+
+The [returner population audit](hitter-returner-coverage-result.md) confirms a
+small but genuine preseason coverage gap. Rankings advance to January dates,
+while eligibility and other features intentionally remain through prior December.
+Older missing snapshot people are not rescued by elapsed-0–5 support; year-end
+roster status is only a feature. Conforto, Sanó and Alfaro have no forecast row,
+despite signing/agreement evidence before the later ranking dates. They are not
+zero-talent predictions, and official transaction dates differ from reported
+agreements. Precise preseason roster reconstruction remains pending.
+
+All 6,248 permissive recent-MLB review origins reconstruct. Of 610 omitted
+origins, 607 never return the following year; the three returners supply only
+604 PA. Nine distinct player-origin walks include retained older absent hitters
+and omitted non-returners. The membership union and future-blind rule verify,
+earlier ledger hashes verify, sixteen focused tests pass and 31 protected files
+remain unchanged. No fits or forecast/explorer changes. This small coverage hole
+cannot explain existing within-cohort playing-time errors or justify adding all
+former hitters. The review rule is not approved model eligibility.
+
+Next: a systematic population refresh through the actual preseason information
+date, under a separate source contract, with original rows retained and additions
+separately audited/scored. Do not tune named exceptions, assume missing roster
+means retired, repeat closed team-record/capacity/Statcast comparisons or forget
+foreign entrants and the much larger already-covered player misses. The practical
+hitter goal remains active; no full WAR or long-term value approval is claimed.
+
+## Current checkpoint on batting value accounting
+
+The [season-relative ledger audit](hitter-season-value-ledger-result.md) extends
+the previously documented environment sensitivity to the reviewed hitter assembly.
+No fits, predictions or explorer changed. The major annual contribution swings
+mostly reflect prior-year versus same-season league references; early full-MLB
+totals also include about 5,100-5,300 omitted pitcher batting PA. Do not force
+the known hitter cohort to that complete-league budget or cite the older raw
+annual swings as proof of equally large model calibration failure.
+
+All 30,506 rows reconstruct, 154 endpoint components are independently checked,
+thirteen player-origin walks are complete, sixteen focused tests pass and all
+31 protected files remain unchanged. Main season-relative contribution RMSE
+improves .43795 to .43513, but never-debut improvement and minor measurements
+versus exposure remain uncertain. PA's public MAE failure is unchanged.
+The 30.00 pooled shortfall hides +188.73 opportunity and -158.73 hitting terms;
+Brian Anderson's near-perfect value similarly hides offsetting errors. Execution
+and review do not certify a finished model or native WAR superiority.
+
+For future WAR-like development interpretation use explicit same-season relative
+value, with the old fixed-baseline production response separate. Preserve each
+old experiment's contract/primary result; never rescore failures to manufacture
+a win or give predictions the realized target environment. The current explorer
+still shows its original common-reference contribution with the existing warning.
+
+Next: reconcile cutoff-known returns/temporary absences with actual eligibility
+and roster inputs before another fit, then use existing availability evidence to
+choose a bounded integration repair. Conforto's 2022 origin is absent from both
+the current feature panel and stored year-end roster; the exact dated-source
+cause remains unverified. Ohtani, Suzuki and other outside-cohort hitters further
+qualify universal coverage. Retain all current identities and audit additions
+separately. Keep elite thin entrants, public workload error and long-term value
+in scope; do not reopen team-record testing or repeat completed source/model
+comparisons. The broad goal remains active.
+
 ## Current checkpoint: historical hitter research explorer
 
 The [integrated historical explorer](hitter-integrated-research-explorer-result.md)

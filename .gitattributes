@@ -1,4 +1,15 @@
 * text=auto eol=lf
+# Preserve byte-hashed, sealed no-fit accounting and population-audit evidence.
+reports/model-evidence/hitter-season-value-ledger/** -text -eol
+reports/model-evidence/hitter-returner-coverage/** -text -eol
+docs/hitter-season-value-ledger-contract.md -text -eol
+docs/hitter-returner-coverage-contract.md -text -eol
+scripts/audit_hitter_season_value_ledger.py -text -eol
+scripts/review_hitter_season_value_ledger.py -text -eol
+scripts/audit_hitter_returner_coverage.py -text -eol
+scripts/review_hitter_returner_coverage.py -text -eol
+src/universal_baseball/hitter_value_ledger.py -text -eol
+tests/test_hitter_value_ledger.py -text -eol
 *.parquet binary
 model_artifacts/** -text -eol
 # This frozen contract is byte-hashed by the multi-year model artifacts.
