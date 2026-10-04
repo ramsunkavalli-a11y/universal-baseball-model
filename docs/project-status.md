@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Updated 2026-10-03. This is the current start-here document.
+Updated 2026-10-04. This is the current start-here document.
 
 ## Standing requirement: player walkthrough after every test
 
@@ -24,7 +24,26 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: actual age and level support of hitting estimates audited.**
+**Current checkpoint: longer future MLB labels and eleven source walks checked.**
+The [follow-up audit](hitter-followup-support-result.md) preserves the current
+63,282 source origins and 30,506 forecasts, reproduces every next-year PA and
+active batting-rate label, and leaves 63,093 annual observations after 2025 null.
+Teenage DSL actual-fold coarse active support has median zero for Year 1, one
+using annual Years 1–3, and 33 using completed annual Years 1–6; refined support
+remains only three. Six-year cumulative training windows have none at the 2016
+cutoff, so pool completed annual labels with explicit horizons rather than reuse
+that old maturity failure. Nunez, Candelario, Sosa and Sierra reveal delayed
+arrival; Siri's Year-8 entry shows even six-year absence is not career failure.
+Kurtz still has zero refined elite-entry support; Alonso already has immediate
+coarse support and his workload miss remains. Eleven actual source/player walks
+and three focused tests are complete. No new model, forecast, protected outcome
+or explorer changed. Next compare a level-specific next-year age representation
+with a horizon-aware shared annual hitting model, retaining the full-history
+and translated/ranking anchors. Lock its own contract and actual preflights
+before fitting; distant-arrival labels cannot certify immediate DSL ability.
+The practical hitter goal remains active.
+
+**Previous checkpoint: actual age and level support of hitting estimates audited.**
 The [completed audit](hitter-rate-support-audit-result.md) replays 35 current
 rate heads across all 30,506 forecasts and 48 alternative heads for sixteen
 reassessed player cases. Of 5,591 positive-rate forecasts with predominantly

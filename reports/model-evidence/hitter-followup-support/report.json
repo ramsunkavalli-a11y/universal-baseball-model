@@ -1,0 +1,8828 @@
+{
+  "no_new_fits": true,
+  "source_rows": 63282,
+  "evaluation_rows": 30506,
+  "annual_rows": 379692,
+  "right_censored_annual_rows": 63093,
+  "all_next_year_pa_and_active_rates_reproduced": true,
+  "all_inventory_pa_reconciled": true,
+  "extra_raw_zero_pa_person_seasons": 3578,
+  "cohorts": [
+    {
+      "scope": "DSL_at_most_17",
+      "rows": 2293,
+      "people": 2225,
+      "support": [
+        {
+          "horizon": 1,
+          "design": "annual",
+          "no_coarse_support": 2293,
+          "sparse_coarse_support": 2293,
+          "median_coarse_people": 0.0,
+          "no_refined_support": 2293,
+          "median_refined_people": 0.0
+        },
+        {
+          "horizon": 1,
+          "design": "complete_window",
+          "no_coarse_support": 2293,
+          "sparse_coarse_support": 2293,
+          "median_coarse_people": 0.0,
+          "no_refined_support": 2293,
+          "median_refined_people": 0.0
+        },
+        {
+          "horizon": 3,
+          "design": "annual",
+          "no_coarse_support": 504,
+          "sparse_coarse_support": 2293,
+          "median_coarse_people": 1.0,
+          "no_refined_support": 1476,
+          "median_refined_people": 0.0
+        },
+        {
+          "horizon": 3,
+          "design": "complete_window",
+          "no_coarse_support": 586,
+          "sparse_coarse_support": 2293,
+          "median_coarse_people": 1.0,
+          "no_refined_support": 1513,
+          "median_refined_people": 0.0
+        },
+        {
+          "horizon": 6,
+          "design": "annual",
+          "no_coarse_support": 0,
+          "sparse_coarse_support": 755,
+          "median_coarse_people": 33.0,
+          "no_refined_support": 226,
+          "median_refined_people": 3.0
+        },
+        {
+          "horizon": 6,
+          "design": "complete_window",
+          "no_coarse_support": 247,
+          "sparse_coarse_support": 831,
+          "median_coarse_people": 27.0,
+          "no_refined_support": 377,
+          "median_refined_people": 3.0
+        }
+      ]
+    },
+    {
+      "scope": "lower_under_21",
+      "rows": 10344,
+      "people": 5423,
+      "support": [
+        {
+          "horizon": 1,
+          "design": "annual",
+          "no_coarse_support": 8131,
+          "sparse_coarse_support": 10177,
+          "median_coarse_people": 0.0,
+          "no_refined_support": 8544,
+          "median_refined_people": 0.0
+        },
+        {
+          "horizon": 1,
+          "design": "complete_window",
+          "no_coarse_support": 8131,
+          "sparse_coarse_support": 10177,
+          "median_coarse_people": 0.0,
+          "no_refined_support": 8544,
+          "median_refined_people": 0.0
+        },
+        {
+          "horizon": 3,
+          "design": "annual",
+          "no_coarse_support": 1142,
+          "sparse_coarse_support": 8655,
+          "median_coarse_people": 3.0,
+          "no_refined_support": 3054,
+          "median_refined_people": 1.0
+        },
+        {
+          "horizon": 3,
+          "design": "complete_window",
+          "no_coarse_support": 1232,
+          "sparse_coarse_support": 8709,
+          "median_coarse_people": 3.0,
+          "no_refined_support": 3101,
+          "median_refined_people": 1.0
+        },
+        {
+          "horizon": 6,
+          "design": "annual",
+          "no_coarse_support": 9,
+          "sparse_coarse_support": 3416,
+          "median_coarse_people": 29.0,
+          "no_refined_support": 556,
+          "median_refined_people": 13.0
+        },
+        {
+          "horizon": 6,
+          "design": "complete_window",
+          "no_coarse_support": 1444,
+          "sparse_coarse_support": 4752,
+          "median_coarse_people": 20.0,
+          "no_refined_support": 1950,
+          "median_refined_people": 8.0
+        }
+      ]
+    },
+    {
+      "scope": "all",
+      "rows": 30506,
+      "people": 11020,
+      "support": [
+        {
+          "horizon": 1,
+          "design": "annual",
+          "no_coarse_support": 11457,
+          "sparse_coarse_support": 18684,
+          "median_coarse_people": 8.0,
+          "no_refined_support": 13714,
+          "median_refined_people": 5.0
+        },
+        {
+          "horizon": 1,
+          "design": "complete_window",
+          "no_coarse_support": 11457,
+          "sparse_coarse_support": 18684,
+          "median_coarse_people": 8.0,
+          "no_refined_support": 13714,
+          "median_refined_people": 5.0
+        },
+        {
+          "horizon": 3,
+          "design": "annual",
+          "no_coarse_support": 2224,
+          "sparse_coarse_support": 12928,
+          "median_coarse_people": 51.0,
+          "no_refined_support": 5847,
+          "median_refined_people": 16.0
+        },
+        {
+          "horizon": 3,
+          "design": "complete_window",
+          "no_coarse_support": 2401,
+          "sparse_coarse_support": 13505,
+          "median_coarse_people": 45.0,
+          "no_refined_support": 6034,
+          "median_refined_people": 14.0
+        },
+        {
+          "horizon": 6,
+          "design": "annual",
+          "no_coarse_support": 956,
+          "sparse_coarse_support": 7618,
+          "median_coarse_people": 72.0,
+          "no_refined_support": 2884,
+          "median_refined_people": 34.0
+        },
+        {
+          "horizon": 6,
+          "design": "complete_window",
+          "no_coarse_support": 5641,
+          "sparse_coarse_support": 12575,
+          "median_coarse_people": 34.0,
+          "no_refined_support": 7311,
+          "median_refined_people": 14.0
+        }
+      ]
+    }
+  ],
+  "cells": [
+    {
+      "origin": 2016,
+      "fold": 0,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 18447,
+      "training_people": 6658,
+      "active_observations": 2487,
+      "active_people": 846,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 846,
+          "observations": 2487,
+          "mlb_pa": 699659
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 0,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 18447,
+      "training_people": 6658,
+      "active_observations": 2487,
+      "active_people": 846,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 846,
+          "observations": 2487,
+          "mlb_pa": 699659
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 0,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 44214,
+      "training_people": 6658,
+      "active_observations": 5950,
+      "active_people": 849,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 846,
+          "observations": 2487,
+          "mlb_pa": 699659
+        },
+        {
+          "followup_year": 2,
+          "people": 768,
+          "observations": 1985,
+          "mlb_pa": 556510
+        },
+        {
+          "followup_year": 3,
+          "people": 682,
+          "observations": 1478,
+          "mlb_pa": 414248
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 0,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013
+      ],
+      "training_observations": 33072,
+      "training_people": 5198,
+      "active_observations": 4451,
+      "active_people": 837,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 676,
+          "observations": 1482,
+          "mlb_pa": 416605
+        },
+        {
+          "followup_year": 2,
+          "people": 683,
+          "observations": 1491,
+          "mlb_pa": 415055
+        },
+        {
+          "followup_year": 3,
+          "people": 682,
+          "observations": 1478,
+          "mlb_pa": 414248
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 0,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 55198,
+      "training_people": 6658,
+      "active_observations": 7327,
+      "active_people": 852,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 846,
+          "observations": 2487,
+          "mlb_pa": 699659
+        },
+        {
+          "followup_year": 2,
+          "people": 768,
+          "observations": 1985,
+          "mlb_pa": 556510
+        },
+        {
+          "followup_year": 3,
+          "people": 682,
+          "observations": 1478,
+          "mlb_pa": 414248
+        },
+        {
+          "followup_year": 4,
+          "people": 578,
+          "observations": 948,
+          "mlb_pa": 270041
+        },
+        {
+          "followup_year": 5,
+          "people": 429,
+          "observations": 429,
+          "mlb_pa": 128463
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 0,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [],
+      "training_observations": 0,
+      "training_people": 0,
+      "active_observations": 0,
+      "active_people": 0,
+      "by_horizon": []
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 18315,
+      "training_people": 6666,
+      "active_observations": 2562,
+      "active_people": 869,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 869,
+          "observations": 2562,
+          "mlb_pa": 726197
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 18315,
+      "training_people": 6666,
+      "active_observations": 2562,
+      "active_people": 869,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 869,
+          "observations": 2562,
+          "mlb_pa": 726197
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 43867,
+      "training_people": 6666,
+      "active_observations": 6128,
+      "active_people": 872,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 869,
+          "observations": 2562,
+          "mlb_pa": 726197
+        },
+        {
+          "followup_year": 2,
+          "people": 789,
+          "observations": 2045,
+          "mlb_pa": 579137
+        },
+        {
+          "followup_year": 3,
+          "people": 702,
+          "observations": 1521,
+          "mlb_pa": 428441
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013
+      ],
+      "training_observations": 32778,
+      "training_people": 5196,
+      "active_observations": 4609,
+      "active_people": 860,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 705,
+          "observations": 1540,
+          "mlb_pa": 437980
+        },
+        {
+          "followup_year": 2,
+          "people": 717,
+          "observations": 1548,
+          "mlb_pa": 436736
+        },
+        {
+          "followup_year": 3,
+          "people": 702,
+          "observations": 1521,
+          "mlb_pa": 428441
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 54761,
+      "training_people": 6666,
+      "active_observations": 7520,
+      "active_people": 874,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 869,
+          "observations": 2562,
+          "mlb_pa": 726197
+        },
+        {
+          "followup_year": 2,
+          "people": 789,
+          "observations": 2045,
+          "mlb_pa": 579137
+        },
+        {
+          "followup_year": 3,
+          "people": 702,
+          "observations": 1521,
+          "mlb_pa": 428441
+        },
+        {
+          "followup_year": 4,
+          "people": 576,
+          "observations": 958,
+          "mlb_pa": 276586
+        },
+        {
+          "followup_year": 5,
+          "people": 434,
+          "observations": 434,
+          "mlb_pa": 130608
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [],
+      "training_observations": 0,
+      "training_people": 0,
+      "active_observations": 0,
+      "active_people": 0,
+      "by_horizon": []
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 17910,
+      "training_people": 6500,
+      "active_observations": 2578,
+      "active_people": 866,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 866,
+          "observations": 2578,
+          "mlb_pa": 725672
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 17910,
+      "training_people": 6500,
+      "active_observations": 2578,
+      "active_people": 866,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 866,
+          "observations": 2578,
+          "mlb_pa": 725672
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 42905,
+      "training_people": 6500,
+      "active_observations": 6122,
+      "active_people": 869,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 866,
+          "observations": 2578,
+          "mlb_pa": 725672
+        },
+        {
+          "followup_year": 2,
+          "people": 779,
+          "observations": 2037,
+          "mlb_pa": 572590
+        },
+        {
+          "followup_year": 3,
+          "people": 693,
+          "observations": 1507,
+          "mlb_pa": 421429
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013
+      ],
+      "training_observations": 32088,
+      "training_people": 5060,
+      "active_observations": 4615,
+      "active_people": 857,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 705,
+          "observations": 1565,
+          "mlb_pa": 441535
+        },
+        {
+          "followup_year": 2,
+          "people": 707,
+          "observations": 1543,
+          "mlb_pa": 430977
+        },
+        {
+          "followup_year": 3,
+          "people": 693,
+          "observations": 1507,
+          "mlb_pa": 421429
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 53573,
+      "training_people": 6500,
+      "active_observations": 7509,
+      "active_people": 872,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 866,
+          "observations": 2578,
+          "mlb_pa": 725672
+        },
+        {
+          "followup_year": 2,
+          "people": 779,
+          "observations": 2037,
+          "mlb_pa": 572590
+        },
+        {
+          "followup_year": 3,
+          "people": 693,
+          "observations": 1507,
+          "mlb_pa": 421429
+        },
+        {
+          "followup_year": 4,
+          "people": 582,
+          "observations": 956,
+          "mlb_pa": 271505
+        },
+        {
+          "followup_year": 5,
+          "people": 431,
+          "observations": 431,
+          "mlb_pa": 129168
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [],
+      "training_observations": 0,
+      "training_people": 0,
+      "active_observations": 0,
+      "active_people": 0,
+      "by_horizon": []
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 18139,
+      "training_people": 6604,
+      "active_observations": 2513,
+      "active_people": 856,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 856,
+          "observations": 2513,
+          "mlb_pa": 696057
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 18139,
+      "training_people": 6604,
+      "active_observations": 2513,
+      "active_people": 856,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 856,
+          "observations": 2513,
+          "mlb_pa": 696057
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 43372,
+      "training_people": 6604,
+      "active_observations": 6001,
+      "active_people": 859,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 856,
+          "observations": 2513,
+          "mlb_pa": 696057
+        },
+        {
+          "followup_year": 2,
+          "people": 773,
+          "observations": 1999,
+          "mlb_pa": 553073
+        },
+        {
+          "followup_year": 3,
+          "people": 689,
+          "observations": 1489,
+          "mlb_pa": 412256
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013
+      ],
+      "training_observations": 32340,
+      "training_people": 5097,
+      "active_observations": 4495,
+      "active_people": 847,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 686,
+          "observations": 1505,
+          "mlb_pa": 416341
+        },
+        {
+          "followup_year": 2,
+          "people": 688,
+          "observations": 1501,
+          "mlb_pa": 413882
+        },
+        {
+          "followup_year": 3,
+          "people": 689,
+          "observations": 1489,
+          "mlb_pa": 412256
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 54119,
+      "training_people": 6604,
+      "active_observations": 7379,
+      "active_people": 860,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 856,
+          "observations": 2513,
+          "mlb_pa": 696057
+        },
+        {
+          "followup_year": 2,
+          "people": 773,
+          "observations": 1999,
+          "mlb_pa": 553073
+        },
+        {
+          "followup_year": 3,
+          "people": 689,
+          "observations": 1489,
+          "mlb_pa": 412256
+        },
+        {
+          "followup_year": 4,
+          "people": 581,
+          "observations": 951,
+          "mlb_pa": 268475
+        },
+        {
+          "followup_year": 5,
+          "people": 427,
+          "observations": 427,
+          "mlb_pa": 126158
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [],
+      "training_observations": 0,
+      "training_people": 0,
+      "active_observations": 0,
+      "active_people": 0,
+      "by_horizon": []
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 18225,
+      "training_people": 6616,
+      "active_observations": 2496,
+      "active_people": 847,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 847,
+          "observations": 2496,
+          "mlb_pa": 706039
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 18225,
+      "training_people": 6616,
+      "active_observations": 2496,
+      "active_people": 847,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 847,
+          "observations": 2496,
+          "mlb_pa": 706039
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 43566,
+      "training_people": 6616,
+      "active_observations": 5983,
+      "active_people": 851,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 847,
+          "observations": 2496,
+          "mlb_pa": 706039
+        },
+        {
+          "followup_year": 2,
+          "people": 767,
+          "observations": 1998,
+          "mlb_pa": 563718
+        },
+        {
+          "followup_year": 3,
+          "people": 682,
+          "observations": 1489,
+          "mlb_pa": 418614
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013
+      ],
+      "training_observations": 32466,
+      "training_people": 5125,
+      "active_observations": 4474,
+      "active_people": 839,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 688,
+          "observations": 1492,
+          "mlb_pa": 420575
+        },
+        {
+          "followup_year": 2,
+          "people": 685,
+          "observations": 1493,
+          "mlb_pa": 422130
+        },
+        {
+          "followup_year": 3,
+          "people": 682,
+          "observations": 1489,
+          "mlb_pa": 418614
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 54309,
+      "training_people": 6616,
+      "active_observations": 7365,
+      "active_people": 854,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 847,
+          "observations": 2496,
+          "mlb_pa": 706039
+        },
+        {
+          "followup_year": 2,
+          "people": 767,
+          "observations": 1998,
+          "mlb_pa": 563718
+        },
+        {
+          "followup_year": 3,
+          "people": 682,
+          "observations": 1489,
+          "mlb_pa": 418614
+        },
+        {
+          "followup_year": 4,
+          "people": 575,
+          "observations": 947,
+          "mlb_pa": 272689
+        },
+        {
+          "followup_year": 5,
+          "people": 435,
+          "observations": 435,
+          "mlb_pa": 127415
+        }
+      ]
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [],
+      "training_observations": 0,
+      "training_people": 0,
+      "active_observations": 0,
+      "active_people": 0,
+      "by_horizon": []
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 22217,
+      "training_people": 7464,
+      "active_observations": 2993,
+      "active_people": 941,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 941,
+          "observations": 2993,
+          "mlb_pa": 844188
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 22217,
+      "training_people": 7464,
+      "active_observations": 2993,
+      "active_people": 941,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 941,
+          "observations": 2993,
+          "mlb_pa": 844188
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 55407,
+      "training_people": 7464,
+      "active_observations": 7454,
+      "active_people": 943,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 941,
+          "observations": 2993,
+          "mlb_pa": 844188
+        },
+        {
+          "followup_year": 2,
+          "people": 862,
+          "observations": 2487,
+          "mlb_pa": 700043
+        },
+        {
+          "followup_year": 3,
+          "people": 775,
+          "observations": 1974,
+          "mlb_pa": 555545
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "training_observations": 44229,
+      "training_people": 5931,
+      "active_observations": 5948,
+      "active_people": 930,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 763,
+          "observations": 1989,
+          "mlb_pa": 557102
+        },
+        {
+          "followup_year": 2,
+          "people": 768,
+          "observations": 1985,
+          "mlb_pa": 556510
+        },
+        {
+          "followup_year": 3,
+          "people": 775,
+          "observations": 1974,
+          "mlb_pa": 555545
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 77415,
+      "training_people": 7464,
+      "active_observations": 10129,
+      "active_people": 945,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 941,
+          "observations": 2993,
+          "mlb_pa": 844188
+        },
+        {
+          "followup_year": 2,
+          "people": 862,
+          "observations": 2487,
+          "mlb_pa": 700043
+        },
+        {
+          "followup_year": 3,
+          "people": 775,
+          "observations": 1974,
+          "mlb_pa": 555545
+        },
+        {
+          "followup_year": 4,
+          "people": 668,
+          "observations": 1425,
+          "mlb_pa": 407859
+        },
+        {
+          "followup_year": 5,
+          "people": 529,
+          "observations": 866,
+          "mlb_pa": 258647
+        },
+        {
+          "followup_year": 6,
+          "people": 384,
+          "observations": 384,
+          "mlb_pa": 120686
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011
+      ],
+      "training_observations": 21912,
+      "training_people": 3652,
+      "active_observations": 2758,
+      "active_people": 800,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 491,
+          "observations": 491,
+          "mlb_pa": 138649
+        },
+        {
+          "followup_year": 2,
+          "people": 491,
+          "observations": 491,
+          "mlb_pa": 137094
+        },
+        {
+          "followup_year": 3,
+          "people": 490,
+          "observations": 490,
+          "mlb_pa": 136411
+        },
+        {
+          "followup_year": 4,
+          "people": 473,
+          "observations": 473,
+          "mlb_pa": 132815
+        },
+        {
+          "followup_year": 5,
+          "people": 429,
+          "observations": 429,
+          "mlb_pa": 128463
+        },
+        {
+          "followup_year": 6,
+          "people": 384,
+          "observations": 384,
+          "mlb_pa": 120686
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 22045,
+      "training_people": 7439,
+      "active_observations": 3058,
+      "active_people": 955,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 955,
+          "observations": 3058,
+          "mlb_pa": 875313
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 22045,
+      "training_people": 7439,
+      "active_observations": 3058,
+      "active_people": 955,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 955,
+          "observations": 3058,
+          "mlb_pa": 875313
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 54986,
+      "training_people": 7439,
+      "active_observations": 7598,
+      "active_people": 958,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 955,
+          "observations": 3058,
+          "mlb_pa": 875313
+        },
+        {
+          "followup_year": 2,
+          "people": 876,
+          "observations": 2537,
+          "mlb_pa": 726933
+        },
+        {
+          "followup_year": 3,
+          "people": 784,
+          "observations": 2003,
+          "mlb_pa": 573031
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "training_observations": 43878,
+      "training_people": 5935,
+      "active_observations": 6107,
+      "active_people": 942,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 797,
+          "observations": 2059,
+          "mlb_pa": 582712
+        },
+        {
+          "followup_year": 2,
+          "people": 789,
+          "observations": 2045,
+          "mlb_pa": 579137
+        },
+        {
+          "followup_year": 3,
+          "people": 784,
+          "observations": 2003,
+          "mlb_pa": 573031
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 76806,
+      "training_people": 7439,
+      "active_observations": 10258,
+      "active_people": 959,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 955,
+          "observations": 3058,
+          "mlb_pa": 875313
+        },
+        {
+          "followup_year": 2,
+          "people": 876,
+          "observations": 2537,
+          "mlb_pa": 726933
+        },
+        {
+          "followup_year": 3,
+          "people": 784,
+          "observations": 2003,
+          "mlb_pa": 573031
+        },
+        {
+          "followup_year": 4,
+          "people": 659,
+          "observations": 1423,
+          "mlb_pa": 417641
+        },
+        {
+          "followup_year": 5,
+          "people": 526,
+          "observations": 861,
+          "mlb_pa": 263766
+        },
+        {
+          "followup_year": 6,
+          "people": 376,
+          "observations": 376,
+          "mlb_pa": 121871
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011
+      ],
+      "training_observations": 21774,
+      "training_people": 3629,
+      "active_observations": 2825,
+      "active_people": 818,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 506,
+          "observations": 506,
+          "mlb_pa": 143581
+        },
+        {
+          "followup_year": 2,
+          "people": 509,
+          "observations": 509,
+          "mlb_pa": 146377
+        },
+        {
+          "followup_year": 3,
+          "people": 517,
+          "observations": 517,
+          "mlb_pa": 144197
+        },
+        {
+          "followup_year": 4,
+          "people": 483,
+          "observations": 483,
+          "mlb_pa": 137579
+        },
+        {
+          "followup_year": 5,
+          "people": 434,
+          "observations": 434,
+          "mlb_pa": 130608
+        },
+        {
+          "followup_year": 6,
+          "people": 376,
+          "observations": 376,
+          "mlb_pa": 121871
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 21584,
+      "training_people": 7271,
+      "active_observations": 3064,
+      "active_people": 958,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 958,
+          "observations": 3064,
+          "mlb_pa": 865202
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 21584,
+      "training_people": 7271,
+      "active_observations": 3064,
+      "active_people": 958,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 958,
+          "observations": 3064,
+          "mlb_pa": 865202
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 53793,
+      "training_people": 7271,
+      "active_observations": 7559,
+      "active_people": 960,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 958,
+          "observations": 3064,
+          "mlb_pa": 865202
+        },
+        {
+          "followup_year": 2,
+          "people": 871,
+          "observations": 2517,
+          "mlb_pa": 710694
+        },
+        {
+          "followup_year": 3,
+          "people": 780,
+          "observations": 1978,
+          "mlb_pa": 556750
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "training_observations": 42897,
+      "training_people": 5781,
+      "active_observations": 6094,
+      "active_people": 944,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 793,
+          "observations": 2079,
+          "mlb_pa": 582741
+        },
+        {
+          "followup_year": 2,
+          "people": 779,
+          "observations": 2037,
+          "mlb_pa": 572590
+        },
+        {
+          "followup_year": 3,
+          "people": 780,
+          "observations": 1978,
+          "mlb_pa": 556750
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 75157,
+      "training_people": 7271,
+      "active_observations": 10182,
+      "active_people": 962,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 958,
+          "observations": 3064,
+          "mlb_pa": 865202
+        },
+        {
+          "followup_year": 2,
+          "people": 871,
+          "observations": 2517,
+          "mlb_pa": 710694
+        },
+        {
+          "followup_year": 3,
+          "people": 780,
+          "observations": 1978,
+          "mlb_pa": 556750
+        },
+        {
+          "followup_year": 4,
+          "people": 664,
+          "observations": 1410,
+          "mlb_pa": 403052
+        },
+        {
+          "followup_year": 5,
+          "people": 518,
+          "observations": 846,
+          "mlb_pa": 253345
+        },
+        {
+          "followup_year": 6,
+          "people": 367,
+          "observations": 367,
+          "mlb_pa": 114706
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011
+      ],
+      "training_observations": 21348,
+      "training_people": 3558,
+      "active_observations": 2834,
+      "active_people": 818,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 528,
+          "observations": 528,
+          "mlb_pa": 148631
+        },
+        {
+          "followup_year": 2,
+          "people": 517,
+          "observations": 517,
+          "mlb_pa": 146658
+        },
+        {
+          "followup_year": 3,
+          "people": 511,
+          "observations": 511,
+          "mlb_pa": 142167
+        },
+        {
+          "followup_year": 4,
+          "people": 480,
+          "observations": 480,
+          "mlb_pa": 133546
+        },
+        {
+          "followup_year": 5,
+          "people": 431,
+          "observations": 431,
+          "mlb_pa": 129168
+        },
+        {
+          "followup_year": 6,
+          "people": 367,
+          "observations": 367,
+          "mlb_pa": 114706
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 21865,
+      "training_people": 7367,
+      "active_observations": 3017,
+      "active_people": 946,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 946,
+          "observations": 3017,
+          "mlb_pa": 839482
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 21865,
+      "training_people": 7367,
+      "active_observations": 3017,
+      "active_people": 946,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 946,
+          "observations": 3017,
+          "mlb_pa": 839482
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 54457,
+      "training_people": 7367,
+      "active_observations": 7502,
+      "active_people": 948,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 946,
+          "observations": 3017,
+          "mlb_pa": 839482
+        },
+        {
+          "followup_year": 2,
+          "people": 864,
+          "observations": 2501,
+          "mlb_pa": 695410
+        },
+        {
+          "followup_year": 3,
+          "people": 778,
+          "observations": 1984,
+          "mlb_pa": 552607
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "training_observations": 43359,
+      "training_people": 5861,
+      "active_observations": 5994,
+      "active_people": 936,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 774,
+          "observations": 2011,
+          "mlb_pa": 555790
+        },
+        {
+          "followup_year": 2,
+          "people": 773,
+          "observations": 1999,
+          "mlb_pa": 553073
+        },
+        {
+          "followup_year": 3,
+          "people": 778,
+          "observations": 1984,
+          "mlb_pa": 552607
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 75984,
+      "training_people": 7367,
+      "active_observations": 10183,
+      "active_people": 949,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 946,
+          "observations": 3017,
+          "mlb_pa": 839482
+        },
+        {
+          "followup_year": 2,
+          "people": 864,
+          "observations": 2501,
+          "mlb_pa": 695410
+        },
+        {
+          "followup_year": 3,
+          "people": 778,
+          "observations": 1984,
+          "mlb_pa": 552607
+        },
+        {
+          "followup_year": 4,
+          "people": 668,
+          "observations": 1428,
+          "mlb_pa": 404789
+        },
+        {
+          "followup_year": 5,
+          "people": 530,
+          "observations": 869,
+          "mlb_pa": 256314
+        },
+        {
+          "followup_year": 6,
+          "people": 384,
+          "observations": 384,
+          "mlb_pa": 118712
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011
+      ],
+      "training_observations": 21498,
+      "training_people": 3583,
+      "active_observations": 2778,
+      "active_people": 804,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 501,
+          "observations": 501,
+          "mlb_pa": 138638
+        },
+        {
+          "followup_year": 2,
+          "people": 496,
+          "observations": 496,
+          "mlb_pa": 137225
+        },
+        {
+          "followup_year": 3,
+          "people": 497,
+          "observations": 497,
+          "mlb_pa": 136868
+        },
+        {
+          "followup_year": 4,
+          "people": 473,
+          "observations": 473,
+          "mlb_pa": 132391
+        },
+        {
+          "followup_year": 5,
+          "people": 427,
+          "observations": 427,
+          "mlb_pa": 126158
+        },
+        {
+          "followup_year": 6,
+          "people": 384,
+          "observations": 384,
+          "mlb_pa": 118712
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 21977,
+      "training_people": 7399,
+      "active_observations": 3000,
+      "active_people": 940,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 940,
+          "observations": 3000,
+          "mlb_pa": 849311
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 21977,
+      "training_people": 7399,
+      "active_observations": 3000,
+      "active_people": 940,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 940,
+          "observations": 3000,
+          "mlb_pa": 849311
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 54721,
+      "training_people": 7399,
+      "active_observations": 7479,
+      "active_people": 943,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 940,
+          "observations": 3000,
+          "mlb_pa": 849311
+        },
+        {
+          "followup_year": 2,
+          "people": 859,
+          "observations": 2498,
+          "mlb_pa": 706132
+        },
+        {
+          "followup_year": 3,
+          "people": 771,
+          "observations": 1981,
+          "mlb_pa": 558455
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "training_observations": 43557,
+      "training_people": 5876,
+      "active_observations": 5965,
+      "active_people": 928,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 765,
+          "observations": 1986,
+          "mlb_pa": 563675
+        },
+        {
+          "followup_year": 2,
+          "people": 767,
+          "observations": 1998,
+          "mlb_pa": 563718
+        },
+        {
+          "followup_year": 3,
+          "people": 771,
+          "observations": 1981,
+          "mlb_pa": 558455
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 76286,
+      "training_people": 7399,
+      "active_observations": 10152,
+      "active_people": 945,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 940,
+          "observations": 3000,
+          "mlb_pa": 849311
+        },
+        {
+          "followup_year": 2,
+          "people": 859,
+          "observations": 2498,
+          "mlb_pa": 706132
+        },
+        {
+          "followup_year": 3,
+          "people": 771,
+          "observations": 1981,
+          "mlb_pa": 558455
+        },
+        {
+          "followup_year": 4,
+          "people": 661,
+          "observations": 1422,
+          "mlb_pa": 408863
+        },
+        {
+          "followup_year": 5,
+          "people": 537,
+          "observations": 874,
+          "mlb_pa": 257072
+        },
+        {
+          "followup_year": 6,
+          "people": 377,
+          "observations": 377,
+          "mlb_pa": 116693
+        }
+      ]
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011
+      ],
+      "training_observations": 21396,
+      "training_people": 3566,
+      "active_observations": 2749,
+      "active_people": 796,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 486,
+          "observations": 486,
+          "mlb_pa": 137865
+        },
+        {
+          "followup_year": 2,
+          "people": 491,
+          "observations": 491,
+          "mlb_pa": 139702
+        },
+        {
+          "followup_year": 3,
+          "people": 501,
+          "observations": 501,
+          "mlb_pa": 137685
+        },
+        {
+          "followup_year": 4,
+          "people": 459,
+          "observations": 459,
+          "mlb_pa": 134177
+        },
+        {
+          "followup_year": 5,
+          "people": 435,
+          "observations": 435,
+          "mlb_pa": 127415
+        },
+        {
+          "followup_year": 6,
+          "people": 377,
+          "observations": 377,
+          "mlb_pa": 116693
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 26004,
+      "training_people": 8222,
+      "active_observations": 3498,
+      "active_people": 1021,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1021,
+          "observations": 3498,
+          "mlb_pa": 986833
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 26004,
+      "training_people": 8222,
+      "active_observations": 3498,
+      "active_people": 1021,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1021,
+          "observations": 3498,
+          "mlb_pa": 986833
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 66668,
+      "training_people": 8222,
+      "active_observations": 8961,
+      "active_people": 1023,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1021,
+          "observations": 3498,
+          "mlb_pa": 986833
+        },
+        {
+          "followup_year": 2,
+          "people": 942,
+          "observations": 2990,
+          "mlb_pa": 842548
+        },
+        {
+          "followup_year": 3,
+          "people": 857,
+          "observations": 2473,
+          "mlb_pa": 697249
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 55341,
+      "training_people": 6658,
+      "active_observations": 7447,
+      "active_people": 1015,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 846,
+          "observations": 2487,
+          "mlb_pa": 699659
+        },
+        {
+          "followup_year": 2,
+          "people": 862,
+          "observations": 2487,
+          "mlb_pa": 700043
+        },
+        {
+          "followup_year": 3,
+          "people": 857,
+          "observations": 2473,
+          "mlb_pa": 697249
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 99767,
+      "training_people": 8222,
+      "active_observations": 12966,
+      "active_people": 1027,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1021,
+          "observations": 3498,
+          "mlb_pa": 986833
+        },
+        {
+          "followup_year": 2,
+          "people": 942,
+          "observations": 2990,
+          "mlb_pa": 842548
+        },
+        {
+          "followup_year": 3,
+          "people": 857,
+          "observations": 2473,
+          "mlb_pa": 697249
+        },
+        {
+          "followup_year": 4,
+          "people": 752,
+          "observations": 1905,
+          "mlb_pa": 544891
+        },
+        {
+          "followup_year": 5,
+          "people": 628,
+          "observations": 1319,
+          "mlb_pa": 388405
+        },
+        {
+          "followup_year": 6,
+          "people": 487,
+          "observations": 781,
+          "mlb_pa": 237871
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012
+      ],
+      "training_observations": 43992,
+      "training_people": 4465,
+      "active_observations": 5561,
+      "active_people": 901,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 594,
+          "observations": 987,
+          "mlb_pa": 277920
+        },
+        {
+          "followup_year": 2,
+          "people": 598,
+          "observations": 989,
+          "mlb_pa": 276276
+        },
+        {
+          "followup_year": 3,
+          "people": 595,
+          "observations": 990,
+          "mlb_pa": 274769
+        },
+        {
+          "followup_year": 4,
+          "people": 578,
+          "observations": 948,
+          "mlb_pa": 270041
+        },
+        {
+          "followup_year": 5,
+          "people": 529,
+          "observations": 866,
+          "mlb_pa": 258647
+        },
+        {
+          "followup_year": 6,
+          "people": 487,
+          "observations": 781,
+          "mlb_pa": 237871
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 25799,
+      "training_people": 8200,
+      "active_observations": 3573,
+      "active_people": 1037,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1037,
+          "observations": 3573,
+          "mlb_pa": 1025806
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 25799,
+      "training_people": 8200,
+      "active_observations": 3573,
+      "active_people": 1037,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1037,
+          "observations": 3573,
+          "mlb_pa": 1025806
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 66159,
+      "training_people": 8200,
+      "active_observations": 9132,
+      "active_people": 1040,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1037,
+          "observations": 3573,
+          "mlb_pa": 1025806
+        },
+        {
+          "followup_year": 2,
+          "people": 957,
+          "observations": 3049,
+          "mlb_pa": 877023
+        },
+        {
+          "followup_year": 3,
+          "people": 869,
+          "observations": 2510,
+          "mlb_pa": 721521
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 54945,
+      "training_people": 6666,
+      "active_observations": 7609,
+      "active_people": 1029,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 869,
+          "observations": 2562,
+          "mlb_pa": 726197
+        },
+        {
+          "followup_year": 2,
+          "people": 876,
+          "observations": 2537,
+          "mlb_pa": 726933
+        },
+        {
+          "followup_year": 3,
+          "people": 869,
+          "observations": 2510,
+          "mlb_pa": 721521
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 98976,
+      "training_people": 8200,
+      "active_observations": 13146,
+      "active_people": 1043,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1037,
+          "observations": 3573,
+          "mlb_pa": 1025806
+        },
+        {
+          "followup_year": 2,
+          "people": 957,
+          "observations": 3049,
+          "mlb_pa": 877023
+        },
+        {
+          "followup_year": 3,
+          "people": 869,
+          "observations": 2510,
+          "mlb_pa": 721521
+        },
+        {
+          "followup_year": 4,
+          "people": 748,
+          "observations": 1912,
+          "mlb_pa": 560695
+        },
+        {
+          "followup_year": 5,
+          "people": 629,
+          "observations": 1324,
+          "mlb_pa": 400405
+        },
+        {
+          "followup_year": 6,
+          "people": 482,
+          "observations": 778,
+          "mlb_pa": 245725
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012
+      ],
+      "training_observations": 43590,
+      "training_people": 4439,
+      "active_observations": 5678,
+      "active_people": 913,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 615,
+          "observations": 1019,
+          "mlb_pa": 291473
+        },
+        {
+          "followup_year": 2,
+          "people": 626,
+          "observations": 1033,
+          "mlb_pa": 293031
+        },
+        {
+          "followup_year": 3,
+          "people": 628,
+          "observations": 1029,
+          "mlb_pa": 287185
+        },
+        {
+          "followup_year": 4,
+          "people": 576,
+          "observations": 958,
+          "mlb_pa": 276586
+        },
+        {
+          "followup_year": 5,
+          "people": 526,
+          "observations": 861,
+          "mlb_pa": 263766
+        },
+        {
+          "followup_year": 6,
+          "people": 482,
+          "observations": 778,
+          "mlb_pa": 245725
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 25285,
+      "training_people": 8060,
+      "active_observations": 3548,
+      "active_people": 1032,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1032,
+          "observations": 3548,
+          "mlb_pa": 1003990
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 25285,
+      "training_people": 8060,
+      "active_observations": 3548,
+      "active_people": 1032,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1032,
+          "observations": 3548,
+          "mlb_pa": 1003990
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 64779,
+      "training_people": 8060,
+      "active_observations": 9001,
+      "active_people": 1034,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1032,
+          "observations": 3548,
+          "mlb_pa": 1003990
+        },
+        {
+          "followup_year": 2,
+          "people": 945,
+          "observations": 2998,
+          "mlb_pa": 849079
+        },
+        {
+          "followup_year": 3,
+          "people": 860,
+          "observations": 2455,
+          "mlb_pa": 693699
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 53730,
+      "training_people": 6500,
+      "active_observations": 7550,
+      "active_people": 1025,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 866,
+          "observations": 2578,
+          "mlb_pa": 725672
+        },
+        {
+          "followup_year": 2,
+          "people": 871,
+          "observations": 2517,
+          "mlb_pa": 710694
+        },
+        {
+          "followup_year": 3,
+          "people": 860,
+          "observations": 2455,
+          "mlb_pa": 693699
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 96884,
+      "training_people": 8060,
+      "active_observations": 12896,
+      "active_people": 1037,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1032,
+          "observations": 3548,
+          "mlb_pa": 1003990
+        },
+        {
+          "followup_year": 2,
+          "people": 945,
+          "observations": 2998,
+          "mlb_pa": 849079
+        },
+        {
+          "followup_year": 3,
+          "people": 860,
+          "observations": 2455,
+          "mlb_pa": 693699
+        },
+        {
+          "followup_year": 4,
+          "people": 748,
+          "observations": 1870,
+          "mlb_pa": 535295
+        },
+        {
+          "followup_year": 5,
+          "people": 616,
+          "observations": 1280,
+          "mlb_pa": 378568
+        },
+        {
+          "followup_year": 6,
+          "people": 461,
+          "observations": 745,
+          "mlb_pa": 228186
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012
+      ],
+      "training_observations": 42660,
+      "training_people": 4326,
+      "active_observations": 5650,
+      "active_people": 913,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 630,
+          "observations": 1051,
+          "mlb_pa": 297363
+        },
+        {
+          "followup_year": 2,
+          "people": 621,
+          "observations": 1034,
+          "mlb_pa": 291282
+        },
+        {
+          "followup_year": 3,
+          "people": 616,
+          "observations": 1018,
+          "mlb_pa": 281441
+        },
+        {
+          "followup_year": 4,
+          "people": 582,
+          "observations": 956,
+          "mlb_pa": 271505
+        },
+        {
+          "followup_year": 5,
+          "people": 518,
+          "observations": 846,
+          "mlb_pa": 253345
+        },
+        {
+          "followup_year": 6,
+          "people": 461,
+          "observations": 745,
+          "mlb_pa": 228186
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 25606,
+      "training_people": 8123,
+      "active_observations": 3516,
+      "active_people": 1019,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1019,
+          "observations": 3516,
+          "mlb_pa": 982012
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 25606,
+      "training_people": 8123,
+      "active_observations": 3516,
+      "active_people": 1019,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1019,
+          "observations": 3516,
+          "mlb_pa": 982012
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 65610,
+      "training_people": 8123,
+      "active_observations": 8989,
+      "active_people": 1021,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1019,
+          "observations": 3516,
+          "mlb_pa": 982012
+        },
+        {
+          "followup_year": 2,
+          "people": 938,
+          "observations": 2998,
+          "mlb_pa": 837554
+        },
+        {
+          "followup_year": 3,
+          "people": 855,
+          "observations": 2475,
+          "mlb_pa": 693119
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 54417,
+      "training_people": 6604,
+      "active_observations": 7489,
+      "active_people": 1014,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 856,
+          "observations": 2513,
+          "mlb_pa": 696057
+        },
+        {
+          "followup_year": 2,
+          "people": 864,
+          "observations": 2501,
+          "mlb_pa": 695410
+        },
+        {
+          "followup_year": 3,
+          "people": 855,
+          "observations": 2475,
+          "mlb_pa": 693119
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 98007,
+      "training_people": 8123,
+      "active_observations": 12986,
+      "active_people": 1024,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1019,
+          "observations": 3516,
+          "mlb_pa": 982012
+        },
+        {
+          "followup_year": 2,
+          "people": 938,
+          "observations": 2998,
+          "mlb_pa": 837554
+        },
+        {
+          "followup_year": 3,
+          "people": 855,
+          "observations": 2475,
+          "mlb_pa": 693119
+        },
+        {
+          "followup_year": 4,
+          "people": 743,
+          "observations": 1898,
+          "mlb_pa": 540699
+        },
+        {
+          "followup_year": 5,
+          "people": 619,
+          "observations": 1316,
+          "mlb_pa": 384920
+        },
+        {
+          "followup_year": 6,
+          "people": 488,
+          "observations": 783,
+          "mlb_pa": 236760
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012
+      ],
+      "training_observations": 42984,
+      "training_people": 4371,
+      "active_observations": 5603,
+      "active_people": 907,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 604,
+          "observations": 1002,
+          "mlb_pa": 277614
+        },
+        {
+          "followup_year": 2,
+          "people": 603,
+          "observations": 1001,
+          "mlb_pa": 276424
+        },
+        {
+          "followup_year": 3,
+          "people": 602,
+          "observations": 997,
+          "mlb_pa": 274586
+        },
+        {
+          "followup_year": 4,
+          "people": 581,
+          "observations": 951,
+          "mlb_pa": 268475
+        },
+        {
+          "followup_year": 5,
+          "people": 530,
+          "observations": 869,
+          "mlb_pa": 256314
+        },
+        {
+          "followup_year": 6,
+          "people": 488,
+          "observations": 783,
+          "mlb_pa": 236760
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 25758,
+      "training_people": 8163,
+      "active_observations": 3509,
+      "active_people": 1015,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1015,
+          "observations": 3509,
+          "mlb_pa": 993427
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 25758,
+      "training_people": 8163,
+      "active_observations": 3509,
+      "active_people": 1015,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1015,
+          "observations": 3509,
+          "mlb_pa": 993427
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 65960,
+      "training_people": 8163,
+      "active_observations": 8997,
+      "active_people": 1018,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1015,
+          "observations": 3509,
+          "mlb_pa": 993427
+        },
+        {
+          "followup_year": 2,
+          "people": 934,
+          "observations": 3005,
+          "mlb_pa": 849968
+        },
+        {
+          "followup_year": 3,
+          "people": 851,
+          "observations": 2483,
+          "mlb_pa": 701232
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 54675,
+      "training_people": 6616,
+      "active_observations": 7477,
+      "active_people": 1009,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 847,
+          "observations": 2496,
+          "mlb_pa": 706039
+        },
+        {
+          "followup_year": 2,
+          "people": 859,
+          "observations": 2498,
+          "mlb_pa": 706132
+        },
+        {
+          "followup_year": 3,
+          "people": 851,
+          "observations": 2483,
+          "mlb_pa": 701232
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 98478,
+      "training_people": 8163,
+      "active_observations": 13006,
+      "active_people": 1021,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1015,
+          "observations": 3509,
+          "mlb_pa": 993427
+        },
+        {
+          "followup_year": 2,
+          "people": 934,
+          "observations": 3005,
+          "mlb_pa": 849968
+        },
+        {
+          "followup_year": 3,
+          "people": 851,
+          "observations": 2483,
+          "mlb_pa": 701232
+        },
+        {
+          "followup_year": 4,
+          "people": 741,
+          "observations": 1903,
+          "mlb_pa": 545924
+        },
+        {
+          "followup_year": 5,
+          "people": 628,
+          "observations": 1329,
+          "mlb_pa": 387806
+        },
+        {
+          "followup_year": 6,
+          "people": 482,
+          "observations": 777,
+          "mlb_pa": 237002
+        }
+      ]
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012
+      ],
+      "training_observations": 43062,
+      "training_people": 4383,
+      "active_observations": 5576,
+      "active_people": 898,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 597,
+          "observations": 985,
+          "mlb_pa": 280074
+        },
+        {
+          "followup_year": 2,
+          "people": 608,
+          "observations": 1003,
+          "mlb_pa": 280747
+        },
+        {
+          "followup_year": 3,
+          "people": 595,
+          "observations": 990,
+          "mlb_pa": 278683
+        },
+        {
+          "followup_year": 4,
+          "people": 575,
+          "observations": 947,
+          "mlb_pa": 272689
+        },
+        {
+          "followup_year": 5,
+          "people": 537,
+          "observations": 874,
+          "mlb_pa": 257072
+        },
+        {
+          "followup_year": 6,
+          "people": 482,
+          "observations": 777,
+          "mlb_pa": 237002
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 33756,
+      "training_people": 10076,
+      "active_observations": 4545,
+      "active_people": 1262,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1262,
+          "observations": 4545,
+          "mlb_pa": 1271697
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 33756,
+      "training_people": 10076,
+      "active_observations": 4545,
+      "active_people": 1262,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1262,
+          "observations": 4545,
+          "mlb_pa": 1271697
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 89522,
+      "training_people": 10076,
+      "active_observations": 12081,
+      "active_people": 1264,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1262,
+          "observations": 4545,
+          "mlb_pa": 1271697
+        },
+        {
+          "followup_year": 2,
+          "people": 1182,
+          "observations": 4029,
+          "mlb_pa": 1126000
+        },
+        {
+          "followup_year": 3,
+          "people": 1098,
+          "observations": 3507,
+          "mlb_pa": 979703
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 81457,
+      "training_people": 9059,
+      "active_observations": 11010,
+      "active_people": 1260,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1116,
+          "observations": 4008,
+          "mlb_pa": 1130041
+        },
+        {
+          "followup_year": 2,
+          "people": 1033,
+          "observations": 3495,
+          "mlb_pa": 985216
+        },
+        {
+          "followup_year": 3,
+          "people": 1098,
+          "observations": 3507,
+          "mlb_pa": 979703
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 144997,
+      "training_people": 10076,
+      "active_observations": 18793,
+      "active_people": 1267,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1262,
+          "observations": 4545,
+          "mlb_pa": 1271697
+        },
+        {
+          "followup_year": 2,
+          "people": 1182,
+          "observations": 4029,
+          "mlb_pa": 1126000
+        },
+        {
+          "followup_year": 3,
+          "people": 1098,
+          "observations": 3507,
+          "mlb_pa": 979703
+        },
+        {
+          "followup_year": 4,
+          "people": 989,
+          "observations": 2888,
+          "mlb_pa": 817343
+        },
+        {
+          "followup_year": 5,
+          "people": 859,
+          "observations": 2234,
+          "mlb_pa": 647501
+        },
+        {
+          "followup_year": 6,
+          "people": 701,
+          "observations": 1590,
+          "mlb_pa": 468236
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 103259,
+      "training_people": 6658,
+      "active_observations": 13165,
+      "active_people": 1140,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 846,
+          "observations": 2487,
+          "mlb_pa": 699659
+        },
+        {
+          "followup_year": 2,
+          "people": 862,
+          "observations": 2487,
+          "mlb_pa": 700043
+        },
+        {
+          "followup_year": 3,
+          "people": 857,
+          "observations": 2473,
+          "mlb_pa": 697249
+        },
+        {
+          "followup_year": 4,
+          "people": 830,
+          "observations": 2376,
+          "mlb_pa": 680254
+        },
+        {
+          "followup_year": 5,
+          "people": 697,
+          "observations": 1752,
+          "mlb_pa": 515158
+        },
+        {
+          "followup_year": 6,
+          "people": 701,
+          "observations": 1590,
+          "mlb_pa": 468236
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 33519,
+      "training_people": 10055,
+      "active_observations": 4642,
+      "active_people": 1264,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1264,
+          "observations": 4642,
+          "mlb_pa": 1324486
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 33519,
+      "training_people": 10055,
+      "active_observations": 4642,
+      "active_people": 1264,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1264,
+          "observations": 4642,
+          "mlb_pa": 1324486
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 88884,
+      "training_people": 10055,
+      "active_observations": 12317,
+      "active_people": 1267,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1264,
+          "observations": 4642,
+          "mlb_pa": 1324486
+        },
+        {
+          "followup_year": 2,
+          "people": 1183,
+          "observations": 4110,
+          "mlb_pa": 1174533
+        },
+        {
+          "followup_year": 3,
+          "people": 1099,
+          "observations": 3565,
+          "mlb_pa": 1017811
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 80833,
+      "training_people": 9030,
+      "active_observations": 11245,
+      "active_people": 1263,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1131,
+          "observations": 4104,
+          "mlb_pa": 1177773
+        },
+        {
+          "followup_year": 2,
+          "people": 1049,
+          "observations": 3576,
+          "mlb_pa": 1028875
+        },
+        {
+          "followup_year": 3,
+          "people": 1099,
+          "observations": 3565,
+          "mlb_pa": 1017811
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 143924,
+      "training_people": 10055,
+      "active_observations": 19126,
+      "active_people": 1268,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1264,
+          "observations": 4642,
+          "mlb_pa": 1324486
+        },
+        {
+          "followup_year": 2,
+          "people": 1183,
+          "observations": 4110,
+          "mlb_pa": 1174533
+        },
+        {
+          "followup_year": 3,
+          "people": 1099,
+          "observations": 3565,
+          "mlb_pa": 1017811
+        },
+        {
+          "followup_year": 4,
+          "people": 975,
+          "observations": 2921,
+          "mlb_pa": 847589
+        },
+        {
+          "followup_year": 5,
+          "people": 847,
+          "observations": 2264,
+          "mlb_pa": 673618
+        },
+        {
+          "followup_year": 6,
+          "people": 700,
+          "observations": 1624,
+          "mlb_pa": 491762
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 102501,
+      "training_people": 6666,
+      "active_observations": 13420,
+      "active_people": 1152,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 869,
+          "observations": 2562,
+          "mlb_pa": 726197
+        },
+        {
+          "followup_year": 2,
+          "people": 876,
+          "observations": 2537,
+          "mlb_pa": 726933
+        },
+        {
+          "followup_year": 3,
+          "people": 869,
+          "observations": 2510,
+          "mlb_pa": 721521
+        },
+        {
+          "followup_year": 4,
+          "people": 829,
+          "observations": 2406,
+          "mlb_pa": 704371
+        },
+        {
+          "followup_year": 5,
+          "people": 701,
+          "observations": 1781,
+          "mlb_pa": 535691
+        },
+        {
+          "followup_year": 6,
+          "people": 700,
+          "observations": 1624,
+          "mlb_pa": 491762
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 32883,
+      "training_people": 9902,
+      "active_observations": 4526,
+      "active_people": 1246,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1246,
+          "observations": 4526,
+          "mlb_pa": 1275945
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 32883,
+      "training_people": 9902,
+      "active_observations": 4526,
+      "active_people": 1246,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1246,
+          "observations": 4526,
+          "mlb_pa": 1275945
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 87157,
+      "training_people": 9902,
+      "active_observations": 11919,
+      "active_people": 1248,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1246,
+          "observations": 4526,
+          "mlb_pa": 1275945
+        },
+        {
+          "followup_year": 2,
+          "people": 1160,
+          "observations": 3971,
+          "mlb_pa": 1120313
+        },
+        {
+          "followup_year": 3,
+          "people": 1077,
+          "observations": 3422,
+          "mlb_pa": 963361
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 79238,
+      "training_people": 8875,
+      "active_observations": 10912,
+      "active_people": 1246,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1106,
+          "observations": 4022,
+          "mlb_pa": 1142550
+        },
+        {
+          "followup_year": 2,
+          "people": 1017,
+          "observations": 3468,
+          "mlb_pa": 987101
+        },
+        {
+          "followup_year": 3,
+          "people": 1077,
+          "observations": 3422,
+          "mlb_pa": 963361
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 141048,
+      "training_people": 9902,
+      "active_observations": 18379,
+      "active_people": 1251,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1246,
+          "observations": 4526,
+          "mlb_pa": 1275945
+        },
+        {
+          "followup_year": 2,
+          "people": 1160,
+          "observations": 3971,
+          "mlb_pa": 1120313
+        },
+        {
+          "followup_year": 3,
+          "people": 1077,
+          "observations": 3422,
+          "mlb_pa": 963361
+        },
+        {
+          "followup_year": 4,
+          "people": 964,
+          "observations": 2797,
+          "mlb_pa": 796428
+        },
+        {
+          "followup_year": 5,
+          "people": 821,
+          "observations": 2145,
+          "mlb_pa": 627191
+        },
+        {
+          "followup_year": 6,
+          "people": 661,
+          "observations": 1518,
+          "mlb_pa": 453445
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 100246,
+      "training_people": 6500,
+      "active_observations": 13075,
+      "active_people": 1138,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 866,
+          "observations": 2578,
+          "mlb_pa": 725672
+        },
+        {
+          "followup_year": 2,
+          "people": 871,
+          "observations": 2517,
+          "mlb_pa": 710694
+        },
+        {
+          "followup_year": 3,
+          "people": 860,
+          "observations": 2455,
+          "mlb_pa": 693699
+        },
+        {
+          "followup_year": 4,
+          "people": 816,
+          "observations": 2314,
+          "mlb_pa": 667507
+        },
+        {
+          "followup_year": 5,
+          "people": 680,
+          "observations": 1693,
+          "mlb_pa": 503234
+        },
+        {
+          "followup_year": 6,
+          "people": 661,
+          "observations": 1518,
+          "mlb_pa": 453445
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 33282,
+      "training_people": 9957,
+      "active_observations": 4563,
+      "active_people": 1253,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1253,
+          "observations": 4563,
+          "mlb_pa": 1272212
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 33282,
+      "training_people": 9957,
+      "active_observations": 4563,
+      "active_people": 1253,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1253,
+          "observations": 4563,
+          "mlb_pa": 1272212
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 88224,
+      "training_people": 9957,
+      "active_observations": 12108,
+      "active_people": 1255,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1253,
+          "observations": 4563,
+          "mlb_pa": 1272212
+        },
+        {
+          "followup_year": 2,
+          "people": 1169,
+          "observations": 4037,
+          "mlb_pa": 1126241
+        },
+        {
+          "followup_year": 3,
+          "people": 1090,
+          "observations": 3508,
+          "mlb_pa": 980128
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 80237,
+      "training_people": 8960,
+      "active_observations": 11044,
+      "active_people": 1250,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1111,
+          "observations": 4029,
+          "mlb_pa": 1128987
+        },
+        {
+          "followup_year": 2,
+          "people": 1027,
+          "observations": 3507,
+          "mlb_pa": 984071
+        },
+        {
+          "followup_year": 3,
+          "people": 1090,
+          "observations": 3508,
+          "mlb_pa": 980128
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 142749,
+      "training_people": 9957,
+      "active_observations": 18826,
+      "active_people": 1257,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1253,
+          "observations": 4563,
+          "mlb_pa": 1272212
+        },
+        {
+          "followup_year": 2,
+          "people": 1169,
+          "observations": 4037,
+          "mlb_pa": 1126241
+        },
+        {
+          "followup_year": 3,
+          "people": 1090,
+          "observations": 3508,
+          "mlb_pa": 980128
+        },
+        {
+          "followup_year": 4,
+          "people": 981,
+          "observations": 2889,
+          "mlb_pa": 818892
+        },
+        {
+          "followup_year": 5,
+          "people": 841,
+          "observations": 2231,
+          "mlb_pa": 648995
+        },
+        {
+          "followup_year": 6,
+          "people": 692,
+          "observations": 1598,
+          "mlb_pa": 473052
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 101475,
+      "training_people": 6604,
+      "active_observations": 13218,
+      "active_people": 1136,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 856,
+          "observations": 2513,
+          "mlb_pa": 696057
+        },
+        {
+          "followup_year": 2,
+          "people": 864,
+          "observations": 2501,
+          "mlb_pa": 695410
+        },
+        {
+          "followup_year": 3,
+          "people": 855,
+          "observations": 2475,
+          "mlb_pa": 693119
+        },
+        {
+          "followup_year": 4,
+          "people": 829,
+          "observations": 2378,
+          "mlb_pa": 679402
+        },
+        {
+          "followup_year": 5,
+          "people": 687,
+          "observations": 1753,
+          "mlb_pa": 515066
+        },
+        {
+          "followup_year": 6,
+          "people": 692,
+          "observations": 1598,
+          "mlb_pa": 473052
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 33456,
+      "training_people": 9994,
+      "active_observations": 4568,
+      "active_people": 1251,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1251,
+          "observations": 4568,
+          "mlb_pa": 1281104
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "training_observations": 33456,
+      "training_people": 9994,
+      "active_observations": 4568,
+      "active_people": 1251,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1251,
+          "observations": 4568,
+          "mlb_pa": 1281104
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 88697,
+      "training_people": 9994,
+      "active_observations": 12155,
+      "active_people": 1254,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1251,
+          "observations": 4568,
+          "mlb_pa": 1281104
+        },
+        {
+          "followup_year": 2,
+          "people": 1170,
+          "observations": 4057,
+          "mlb_pa": 1136081
+        },
+        {
+          "followup_year": 3,
+          "people": 1088,
+          "observations": 3530,
+          "mlb_pa": 986057
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 80651,
+      "training_people": 8976,
+      "active_observations": 11089,
+      "active_people": 1249,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1112,
+          "observations": 4033,
+          "mlb_pa": 1137949
+        },
+        {
+          "followup_year": 2,
+          "people": 1030,
+          "observations": 3526,
+          "mlb_pa": 993981
+        },
+        {
+          "followup_year": 3,
+          "people": 1088,
+          "observations": 3530,
+          "mlb_pa": 986057
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 143502,
+      "training_people": 9994,
+      "active_observations": 18904,
+      "active_people": 1257,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1251,
+          "observations": 4568,
+          "mlb_pa": 1281104
+        },
+        {
+          "followup_year": 2,
+          "people": 1170,
+          "observations": 4057,
+          "mlb_pa": 1136081
+        },
+        {
+          "followup_year": 3,
+          "people": 1088,
+          "observations": 3530,
+          "mlb_pa": 986057
+        },
+        {
+          "followup_year": 4,
+          "people": 979,
+          "observations": 2901,
+          "mlb_pa": 820128
+        },
+        {
+          "followup_year": 5,
+          "people": 856,
+          "observations": 2250,
+          "mlb_pa": 647807
+        },
+        {
+          "followup_year": 6,
+          "people": 702,
+          "observations": 1598,
+          "mlb_pa": 468749
+        }
+      ]
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "training_observations": 101947,
+      "training_people": 6616,
+      "active_observations": 13238,
+      "active_people": 1134,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 847,
+          "observations": 2496,
+          "mlb_pa": 706039
+        },
+        {
+          "followup_year": 2,
+          "people": 859,
+          "observations": 2498,
+          "mlb_pa": 706132
+        },
+        {
+          "followup_year": 3,
+          "people": 851,
+          "observations": 2483,
+          "mlb_pa": 701232
+        },
+        {
+          "followup_year": 4,
+          "people": 828,
+          "observations": 2390,
+          "mlb_pa": 682010
+        },
+        {
+          "followup_year": 5,
+          "people": 699,
+          "observations": 1773,
+          "mlb_pa": 514687
+        },
+        {
+          "followup_year": 6,
+          "people": 702,
+          "observations": 1598,
+          "mlb_pa": 468749
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 37150,
+      "training_people": 10867,
+      "active_observations": 5103,
+      "active_people": 1394,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1394,
+          "observations": 5103,
+          "mlb_pa": 1419529
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 37150,
+      "training_people": 10867,
+      "active_observations": 5103,
+      "active_people": 1394,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1394,
+          "observations": 5103,
+          "mlb_pa": 1419529
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 100981,
+      "training_people": 10867,
+      "active_observations": 13750,
+      "active_people": 1396,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1394,
+          "observations": 5103,
+          "mlb_pa": 1419529
+        },
+        {
+          "followup_year": 2,
+          "people": 1316,
+          "observations": 4588,
+          "mlb_pa": 1273849
+        },
+        {
+          "followup_year": 3,
+          "people": 1227,
+          "observations": 4059,
+          "mlb_pa": 1125624
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_observations": 89315,
+      "training_people": 9872,
+      "active_observations": 12096,
+      "active_people": 1390,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1116,
+          "observations": 4008,
+          "mlb_pa": 1130041
+        },
+        {
+          "followup_year": 2,
+          "people": 1182,
+          "observations": 4029,
+          "mlb_pa": 1126000
+        },
+        {
+          "followup_year": 3,
+          "people": 1227,
+          "observations": 4059,
+          "mlb_pa": 1125624
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 167629,
+      "training_people": 10867,
+      "active_observations": 21916,
+      "active_people": 1399,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1394,
+          "observations": 5103,
+          "mlb_pa": 1419529
+        },
+        {
+          "followup_year": 2,
+          "people": 1316,
+          "observations": 4588,
+          "mlb_pa": 1273849
+        },
+        {
+          "followup_year": 3,
+          "people": 1227,
+          "observations": 4059,
+          "mlb_pa": 1125624
+        },
+        {
+          "followup_year": 4,
+          "people": 1114,
+          "observations": 3419,
+          "mlb_pa": 958405
+        },
+        {
+          "followup_year": 5,
+          "people": 970,
+          "observations": 2725,
+          "mlb_pa": 779773
+        },
+        {
+          "followup_year": 6,
+          "people": 810,
+          "observations": 2022,
+          "mlb_pa": 590176
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 122109,
+      "training_people": 7464,
+      "active_observations": 15591,
+      "active_people": 1262,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 941,
+          "observations": 2993,
+          "mlb_pa": 844188
+        },
+        {
+          "followup_year": 2,
+          "people": 942,
+          "observations": 2990,
+          "mlb_pa": 842548
+        },
+        {
+          "followup_year": 3,
+          "people": 950,
+          "observations": 2976,
+          "mlb_pa": 839508
+        },
+        {
+          "followup_year": 4,
+          "people": 830,
+          "observations": 2376,
+          "mlb_pa": 680254
+        },
+        {
+          "followup_year": 5,
+          "people": 859,
+          "observations": 2234,
+          "mlb_pa": 647501
+        },
+        {
+          "followup_year": 6,
+          "people": 810,
+          "observations": 2022,
+          "mlb_pa": 590176
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 36937,
+      "training_people": 10877,
+      "active_observations": 5197,
+      "active_people": 1390,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1390,
+          "observations": 5197,
+          "mlb_pa": 1473335
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 36937,
+      "training_people": 10877,
+      "active_observations": 5197,
+      "active_people": 1390,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1390,
+          "observations": 5197,
+          "mlb_pa": 1473335
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 100353,
+      "training_people": 10877,
+      "active_observations": 13976,
+      "active_people": 1393,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1390,
+          "observations": 5197,
+          "mlb_pa": 1473335
+        },
+        {
+          "followup_year": 2,
+          "people": 1311,
+          "observations": 4666,
+          "mlb_pa": 1323399
+        },
+        {
+          "followup_year": 3,
+          "people": 1221,
+          "observations": 4113,
+          "mlb_pa": 1164416
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_observations": 88685,
+      "training_people": 9860,
+      "active_observations": 12327,
+      "active_people": 1386,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1131,
+          "observations": 4104,
+          "mlb_pa": 1177773
+        },
+        {
+          "followup_year": 2,
+          "people": 1183,
+          "observations": 4110,
+          "mlb_pa": 1174533
+        },
+        {
+          "followup_year": 3,
+          "people": 1221,
+          "observations": 4113,
+          "mlb_pa": 1164416
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 166472,
+      "training_people": 10877,
+      "active_observations": 22226,
+      "active_people": 1394,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1390,
+          "observations": 5197,
+          "mlb_pa": 1473335
+        },
+        {
+          "followup_year": 2,
+          "people": 1311,
+          "observations": 4666,
+          "mlb_pa": 1323399
+        },
+        {
+          "followup_year": 3,
+          "people": 1221,
+          "observations": 4113,
+          "mlb_pa": 1164416
+        },
+        {
+          "followup_year": 4,
+          "people": 1090,
+          "observations": 3448,
+          "mlb_pa": 990556
+        },
+        {
+          "followup_year": 5,
+          "people": 953,
+          "observations": 2753,
+          "mlb_pa": 809212
+        },
+        {
+          "followup_year": 6,
+          "people": 790,
+          "observations": 2049,
+          "mlb_pa": 616692
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 121151,
+      "training_people": 7439,
+      "active_observations": 15859,
+      "active_people": 1254,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 955,
+          "observations": 3058,
+          "mlb_pa": 875313
+        },
+        {
+          "followup_year": 2,
+          "people": 957,
+          "observations": 3049,
+          "mlb_pa": 877023
+        },
+        {
+          "followup_year": 3,
+          "people": 963,
+          "observations": 3033,
+          "mlb_pa": 872273
+        },
+        {
+          "followup_year": 4,
+          "people": 829,
+          "observations": 2406,
+          "mlb_pa": 704371
+        },
+        {
+          "followup_year": 5,
+          "people": 847,
+          "observations": 2264,
+          "mlb_pa": 673618
+        },
+        {
+          "followup_year": 6,
+          "people": 790,
+          "observations": 2049,
+          "mlb_pa": 616692
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 36242,
+      "training_people": 10713,
+      "active_observations": 5053,
+      "active_people": 1371,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1371,
+          "observations": 5053,
+          "mlb_pa": 1412944
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 36242,
+      "training_people": 10713,
+      "active_observations": 5053,
+      "active_people": 1371,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1371,
+          "observations": 5053,
+          "mlb_pa": 1412944
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 98435,
+      "training_people": 10713,
+      "active_observations": 13499,
+      "active_people": 1373,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1371,
+          "observations": 5053,
+          "mlb_pa": 1412944
+        },
+        {
+          "followup_year": 2,
+          "people": 1285,
+          "observations": 4499,
+          "mlb_pa": 1257329
+        },
+        {
+          "followup_year": 3,
+          "people": 1201,
+          "observations": 3947,
+          "mlb_pa": 1099400
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_observations": 86964,
+      "training_people": 9712,
+      "active_observations": 11940,
+      "active_people": 1370,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1106,
+          "observations": 4022,
+          "mlb_pa": 1142550
+        },
+        {
+          "followup_year": 2,
+          "people": 1160,
+          "observations": 3971,
+          "mlb_pa": 1120313
+        },
+        {
+          "followup_year": 3,
+          "people": 1201,
+          "observations": 3947,
+          "mlb_pa": 1099400
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 163243,
+      "training_people": 10713,
+      "active_observations": 21330,
+      "active_people": 1376,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1371,
+          "observations": 5053,
+          "mlb_pa": 1412944
+        },
+        {
+          "followup_year": 2,
+          "people": 1285,
+          "observations": 4499,
+          "mlb_pa": 1257329
+        },
+        {
+          "followup_year": 3,
+          "people": 1201,
+          "observations": 3947,
+          "mlb_pa": 1099400
+        },
+        {
+          "followup_year": 4,
+          "people": 1083,
+          "observations": 3302,
+          "mlb_pa": 927967
+        },
+        {
+          "followup_year": 5,
+          "people": 927,
+          "observations": 2609,
+          "mlb_pa": 749930
+        },
+        {
+          "followup_year": 6,
+          "people": 748,
+          "observations": 1920,
+          "mlb_pa": 567041
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 118616,
+      "training_people": 7271,
+      "active_observations": 15362,
+      "active_people": 1239,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 958,
+          "observations": 3064,
+          "mlb_pa": 865202
+        },
+        {
+          "followup_year": 2,
+          "people": 945,
+          "observations": 2998,
+          "mlb_pa": 849079
+        },
+        {
+          "followup_year": 3,
+          "people": 932,
+          "observations": 2921,
+          "mlb_pa": 830621
+        },
+        {
+          "followup_year": 4,
+          "people": 816,
+          "observations": 2314,
+          "mlb_pa": 667507
+        },
+        {
+          "followup_year": 5,
+          "people": 821,
+          "observations": 2145,
+          "mlb_pa": 627191
+        },
+        {
+          "followup_year": 6,
+          "people": 748,
+          "observations": 1920,
+          "mlb_pa": 567041
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 36678,
+      "training_people": 10779,
+      "active_observations": 5106,
+      "active_people": 1378,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1378,
+          "observations": 5106,
+          "mlb_pa": 1416328
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 36678,
+      "training_people": 10779,
+      "active_observations": 5106,
+      "active_people": 1378,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1378,
+          "observations": 5106,
+          "mlb_pa": 1416328
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 99607,
+      "training_people": 10779,
+      "active_observations": 13731,
+      "active_people": 1380,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1378,
+          "observations": 5106,
+          "mlb_pa": 1416328
+        },
+        {
+          "followup_year": 2,
+          "people": 1296,
+          "observations": 4580,
+          "mlb_pa": 1270357
+        },
+        {
+          "followup_year": 3,
+          "people": 1214,
+          "observations": 4045,
+          "mlb_pa": 1122627
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_observations": 88019,
+      "training_people": 9754,
+      "active_observations": 12111,
+      "active_people": 1375,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1111,
+          "observations": 4029,
+          "mlb_pa": 1128987
+        },
+        {
+          "followup_year": 2,
+          "people": 1169,
+          "observations": 4037,
+          "mlb_pa": 1126241
+        },
+        {
+          "followup_year": 3,
+          "people": 1214,
+          "observations": 4045,
+          "mlb_pa": 1122627
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 165179,
+      "training_people": 10779,
+      "active_observations": 21866,
+      "active_people": 1382,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1378,
+          "observations": 5106,
+          "mlb_pa": 1416328
+        },
+        {
+          "followup_year": 2,
+          "people": 1296,
+          "observations": 4580,
+          "mlb_pa": 1270357
+        },
+        {
+          "followup_year": 3,
+          "people": 1214,
+          "observations": 4045,
+          "mlb_pa": 1122627
+        },
+        {
+          "followup_year": 4,
+          "people": 1100,
+          "observations": 3408,
+          "mlb_pa": 957370
+        },
+        {
+          "followup_year": 5,
+          "people": 950,
+          "observations": 2713,
+          "mlb_pa": 780074
+        },
+        {
+          "followup_year": 6,
+          "people": 786,
+          "observations": 2014,
+          "mlb_pa": 593074
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 120105,
+      "training_people": 7367,
+      "active_observations": 15619,
+      "active_people": 1243,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 946,
+          "observations": 3017,
+          "mlb_pa": 839482
+        },
+        {
+          "followup_year": 2,
+          "people": 938,
+          "observations": 2998,
+          "mlb_pa": 837554
+        },
+        {
+          "followup_year": 3,
+          "people": 947,
+          "observations": 2981,
+          "mlb_pa": 838547
+        },
+        {
+          "followup_year": 4,
+          "people": 829,
+          "observations": 2378,
+          "mlb_pa": 679402
+        },
+        {
+          "followup_year": 5,
+          "people": 841,
+          "observations": 2231,
+          "mlb_pa": 648995
+        },
+        {
+          "followup_year": 6,
+          "people": 786,
+          "observations": 2014,
+          "mlb_pa": 593074
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 36857,
+      "training_people": 10804,
+      "active_observations": 5129,
+      "active_people": 1387,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1387,
+          "observations": 5129,
+          "mlb_pa": 1429640
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021
+      ],
+      "training_observations": 36857,
+      "training_people": 10804,
+      "active_observations": 5129,
+      "active_people": 1387,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1387,
+          "observations": 5129,
+          "mlb_pa": 1429640
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 100144,
+      "training_people": 10804,
+      "active_observations": 13832,
+      "active_people": 1390,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1387,
+          "observations": 5129,
+          "mlb_pa": 1429640
+        },
+        {
+          "followup_year": 2,
+          "people": 1308,
+          "observations": 4619,
+          "mlb_pa": 1284634
+        },
+        {
+          "followup_year": 3,
+          "people": 1221,
+          "observations": 4084,
+          "mlb_pa": 1132349
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_observations": 88505,
+      "training_people": 9806,
+      "active_observations": 12174,
+      "active_people": 1383,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1112,
+          "observations": 4033,
+          "mlb_pa": 1137949
+        },
+        {
+          "followup_year": 2,
+          "people": 1170,
+          "observations": 4057,
+          "mlb_pa": 1136081
+        },
+        {
+          "followup_year": 3,
+          "people": 1221,
+          "observations": 4084,
+          "mlb_pa": 1132349
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 166061,
+      "training_people": 10804,
+      "active_observations": 22030,
+      "active_people": 1393,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1387,
+          "observations": 5129,
+          "mlb_pa": 1429640
+        },
+        {
+          "followup_year": 2,
+          "people": 1308,
+          "observations": 4619,
+          "mlb_pa": 1284634
+        },
+        {
+          "followup_year": 3,
+          "people": 1221,
+          "observations": 4084,
+          "mlb_pa": 1132349
+        },
+        {
+          "followup_year": 4,
+          "people": 1109,
+          "observations": 3435,
+          "mlb_pa": 962762
+        },
+        {
+          "followup_year": 5,
+          "people": 968,
+          "observations": 2740,
+          "mlb_pa": 780659
+        },
+        {
+          "followup_year": 6,
+          "people": 802,
+          "observations": 2023,
+          "mlb_pa": 591021
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "training_observations": 120707,
+      "training_people": 7399,
+      "active_observations": 15669,
+      "active_people": 1246,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 940,
+          "observations": 3000,
+          "mlb_pa": 849311
+        },
+        {
+          "followup_year": 2,
+          "people": 934,
+          "observations": 3005,
+          "mlb_pa": 849968
+        },
+        {
+          "followup_year": 3,
+          "people": 948,
+          "observations": 3001,
+          "mlb_pa": 844543
+        },
+        {
+          "followup_year": 4,
+          "people": 828,
+          "observations": 2390,
+          "mlb_pa": 682010
+        },
+        {
+          "followup_year": 5,
+          "people": 856,
+          "observations": 2250,
+          "mlb_pa": 647807
+        },
+        {
+          "followup_year": 6,
+          "people": 802,
+          "observations": 2023,
+          "mlb_pa": 591021
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 40519,
+      "training_people": 11489,
+      "active_observations": 5627,
+      "active_people": 1483,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1483,
+          "observations": 5627,
+          "mlb_pa": 1566432
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 40519,
+      "training_people": 11489,
+      "active_observations": 5627,
+      "active_people": 1483,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1483,
+          "observations": 5627,
+          "mlb_pa": 1566432
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 111880,
+      "training_people": 11489,
+      "active_observations": 15307,
+      "active_people": 1485,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1483,
+          "observations": 5627,
+          "mlb_pa": 1566432
+        },
+        {
+          "followup_year": 2,
+          "people": 1402,
+          "observations": 5109,
+          "mlb_pa": 1420141
+        },
+        {
+          "followup_year": 3,
+          "people": 1308,
+          "observations": 4571,
+          "mlb_pa": 1270438
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 101723,
+      "training_people": 10076,
+      "active_observations": 13704,
+      "active_people": 1472,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1262,
+          "observations": 4545,
+          "mlb_pa": 1271697
+        },
+        {
+          "followup_year": 2,
+          "people": 1316,
+          "observations": 4588,
+          "mlb_pa": 1273849
+        },
+        {
+          "followup_year": 3,
+          "people": 1308,
+          "observations": 4571,
+          "mlb_pa": 1270438
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 189860,
+      "training_people": 11489,
+      "active_observations": 24811,
+      "active_people": 1488,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1483,
+          "observations": 5627,
+          "mlb_pa": 1566432
+        },
+        {
+          "followup_year": 2,
+          "people": 1402,
+          "observations": 5109,
+          "mlb_pa": 1420141
+        },
+        {
+          "followup_year": 3,
+          "people": 1308,
+          "observations": 4571,
+          "mlb_pa": 1270438
+        },
+        {
+          "followup_year": 4,
+          "people": 1199,
+          "observations": 3912,
+          "mlb_pa": 1098830
+        },
+        {
+          "followup_year": 5,
+          "people": 1049,
+          "observations": 3175,
+          "mlb_pa": 908112
+        },
+        {
+          "followup_year": 6,
+          "people": 881,
+          "observations": 2417,
+          "mlb_pa": 705577
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 141044,
+      "training_people": 8222,
+      "active_observations": 17999,
+      "active_people": 1351,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1021,
+          "observations": 3498,
+          "mlb_pa": 986833
+        },
+        {
+          "followup_year": 2,
+          "people": 1033,
+          "observations": 3495,
+          "mlb_pa": 985216
+        },
+        {
+          "followup_year": 3,
+          "people": 950,
+          "observations": 2976,
+          "mlb_pa": 839508
+        },
+        {
+          "followup_year": 4,
+          "people": 989,
+          "observations": 2888,
+          "mlb_pa": 817343
+        },
+        {
+          "followup_year": 5,
+          "people": 970,
+          "observations": 2725,
+          "mlb_pa": 779773
+        },
+        {
+          "followup_year": 6,
+          "people": 881,
+          "observations": 2417,
+          "mlb_pa": 705577
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 40380,
+      "training_people": 11543,
+      "active_observations": 5714,
+      "active_people": 1471,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1471,
+          "observations": 5714,
+          "mlb_pa": 1622310
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 40380,
+      "training_people": 11543,
+      "active_observations": 5714,
+      "active_people": 1471,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1471,
+          "observations": 5714,
+          "mlb_pa": 1622310
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 111339,
+      "training_people": 11543,
+      "active_observations": 15519,
+      "active_people": 1474,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1471,
+          "observations": 5714,
+          "mlb_pa": 1622310
+        },
+        {
+          "followup_year": 2,
+          "people": 1391,
+          "observations": 5183,
+          "mlb_pa": 1472581
+        },
+        {
+          "followup_year": 3,
+          "people": 1298,
+          "observations": 4622,
+          "mlb_pa": 1312024
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 101060,
+      "training_people": 10055,
+      "active_observations": 13930,
+      "active_people": 1465,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1264,
+          "observations": 4642,
+          "mlb_pa": 1324486
+        },
+        {
+          "followup_year": 2,
+          "people": 1311,
+          "observations": 4666,
+          "mlb_pa": 1323399
+        },
+        {
+          "followup_year": 3,
+          "people": 1298,
+          "observations": 4622,
+          "mlb_pa": 1312024
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 188733,
+      "training_people": 11543,
+      "active_observations": 25104,
+      "active_people": 1475,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1471,
+          "observations": 5714,
+          "mlb_pa": 1622310
+        },
+        {
+          "followup_year": 2,
+          "people": 1391,
+          "observations": 5183,
+          "mlb_pa": 1472581
+        },
+        {
+          "followup_year": 3,
+          "people": 1298,
+          "observations": 4622,
+          "mlb_pa": 1312024
+        },
+        {
+          "followup_year": 4,
+          "people": 1172,
+          "observations": 3937,
+          "mlb_pa": 1132938
+        },
+        {
+          "followup_year": 5,
+          "people": 1025,
+          "observations": 3201,
+          "mlb_pa": 941094
+        },
+        {
+          "followup_year": 6,
+          "people": 866,
+          "observations": 2447,
+          "mlb_pa": 736674
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 139921,
+      "training_people": 8200,
+      "active_observations": 18303,
+      "active_people": 1345,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1037,
+          "observations": 3573,
+          "mlb_pa": 1025806
+        },
+        {
+          "followup_year": 2,
+          "people": 1049,
+          "observations": 3576,
+          "mlb_pa": 1028875
+        },
+        {
+          "followup_year": 3,
+          "people": 963,
+          "observations": 3033,
+          "mlb_pa": 872273
+        },
+        {
+          "followup_year": 4,
+          "people": 975,
+          "observations": 2921,
+          "mlb_pa": 847589
+        },
+        {
+          "followup_year": 5,
+          "people": 953,
+          "observations": 2753,
+          "mlb_pa": 809212
+        },
+        {
+          "followup_year": 6,
+          "people": 866,
+          "observations": 2447,
+          "mlb_pa": 736674
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 39613,
+      "training_people": 11348,
+      "active_observations": 5553,
+      "active_people": 1456,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1456,
+          "observations": 5553,
+          "mlb_pa": 1550664
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 39613,
+      "training_people": 11348,
+      "active_observations": 5553,
+      "active_people": 1456,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1456,
+          "observations": 5553,
+          "mlb_pa": 1550664
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 109221,
+      "training_people": 11348,
+      "active_observations": 14981,
+      "active_people": 1458,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1456,
+          "observations": 5553,
+          "mlb_pa": 1550664
+        },
+        {
+          "followup_year": 2,
+          "people": 1366,
+          "observations": 4994,
+          "mlb_pa": 1393705
+        },
+        {
+          "followup_year": 3,
+          "people": 1275,
+          "observations": 4434,
+          "mlb_pa": 1234517
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 99132,
+      "training_people": 9902,
+      "active_observations": 13459,
+      "active_people": 1445,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1246,
+          "observations": 4526,
+          "mlb_pa": 1275945
+        },
+        {
+          "followup_year": 2,
+          "people": 1285,
+          "observations": 4499,
+          "mlb_pa": 1257329
+        },
+        {
+          "followup_year": 3,
+          "people": 1275,
+          "observations": 4434,
+          "mlb_pa": 1234517
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 185135,
+      "training_people": 11348,
+      "active_observations": 24096,
+      "active_people": 1461,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1456,
+          "observations": 5553,
+          "mlb_pa": 1550664
+        },
+        {
+          "followup_year": 2,
+          "people": 1366,
+          "observations": 4994,
+          "mlb_pa": 1393705
+        },
+        {
+          "followup_year": 3,
+          "people": 1275,
+          "observations": 4434,
+          "mlb_pa": 1234517
+        },
+        {
+          "followup_year": 4,
+          "people": 1166,
+          "observations": 3775,
+          "mlb_pa": 1059426
+        },
+        {
+          "followup_year": 5,
+          "people": 1004,
+          "observations": 3041,
+          "mlb_pa": 869843
+        },
+        {
+          "followup_year": 6,
+          "people": 823,
+          "observations": 2299,
+          "mlb_pa": 673517
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 137121,
+      "training_people": 8060,
+      "active_observations": 17642,
+      "active_people": 1332,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1032,
+          "observations": 3548,
+          "mlb_pa": 1003990
+        },
+        {
+          "followup_year": 2,
+          "people": 1017,
+          "observations": 3468,
+          "mlb_pa": 987101
+        },
+        {
+          "followup_year": 3,
+          "people": 932,
+          "observations": 2921,
+          "mlb_pa": 830621
+        },
+        {
+          "followup_year": 4,
+          "people": 964,
+          "observations": 2797,
+          "mlb_pa": 796428
+        },
+        {
+          "followup_year": 5,
+          "people": 927,
+          "observations": 2609,
+          "mlb_pa": 749930
+        },
+        {
+          "followup_year": 6,
+          "people": 823,
+          "observations": 2299,
+          "mlb_pa": 673517
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 40071,
+      "training_people": 11424,
+      "active_observations": 5628,
+      "active_people": 1468,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1468,
+          "observations": 5628,
+          "mlb_pa": 1562872
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 40071,
+      "training_people": 11424,
+      "active_observations": 5628,
+      "active_people": 1468,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1468,
+          "observations": 5628,
+          "mlb_pa": 1562872
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 110492,
+      "training_people": 11424,
+      "active_observations": 15280,
+      "active_people": 1470,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1468,
+          "observations": 5628,
+          "mlb_pa": 1562872
+        },
+        {
+          "followup_year": 2,
+          "people": 1382,
+          "observations": 5098,
+          "mlb_pa": 1416027
+        },
+        {
+          "followup_year": 3,
+          "people": 1293,
+          "observations": 4554,
+          "mlb_pa": 1266673
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 100307,
+      "training_people": 9957,
+      "active_observations": 13697,
+      "active_people": 1456,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1253,
+          "observations": 4563,
+          "mlb_pa": 1272212
+        },
+        {
+          "followup_year": 2,
+          "people": 1296,
+          "observations": 4580,
+          "mlb_pa": 1270357
+        },
+        {
+          "followup_year": 3,
+          "people": 1293,
+          "observations": 4554,
+          "mlb_pa": 1266673
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 187276,
+      "training_people": 11424,
+      "active_observations": 24762,
+      "active_people": 1472,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1468,
+          "observations": 5628,
+          "mlb_pa": 1562872
+        },
+        {
+          "followup_year": 2,
+          "people": 1382,
+          "observations": 5098,
+          "mlb_pa": 1416027
+        },
+        {
+          "followup_year": 3,
+          "people": 1293,
+          "observations": 4554,
+          "mlb_pa": 1266673
+        },
+        {
+          "followup_year": 4,
+          "people": 1182,
+          "observations": 3899,
+          "mlb_pa": 1098136
+        },
+        {
+          "followup_year": 5,
+          "people": 1026,
+          "observations": 3166,
+          "mlb_pa": 909926
+        },
+        {
+          "followup_year": 6,
+          "people": 871,
+          "observations": 2417,
+          "mlb_pa": 710604
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 138810,
+      "training_people": 8123,
+      "active_observations": 18023,
+      "active_people": 1342,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1019,
+          "observations": 3516,
+          "mlb_pa": 982012
+        },
+        {
+          "followup_year": 2,
+          "people": 1027,
+          "observations": 3507,
+          "mlb_pa": 984071
+        },
+        {
+          "followup_year": 3,
+          "people": 947,
+          "observations": 2981,
+          "mlb_pa": 838547
+        },
+        {
+          "followup_year": 4,
+          "people": 981,
+          "observations": 2889,
+          "mlb_pa": 818892
+        },
+        {
+          "followup_year": 5,
+          "people": 950,
+          "observations": 2713,
+          "mlb_pa": 780074
+        },
+        {
+          "followup_year": 6,
+          "people": 871,
+          "observations": 2417,
+          "mlb_pa": 710604
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 40257,
+      "training_people": 11444,
+      "active_observations": 5662,
+      "active_people": 1470,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1470,
+          "observations": 5662,
+          "mlb_pa": 1581166
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 40257,
+      "training_people": 11444,
+      "active_observations": 5662,
+      "active_people": 1470,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1470,
+          "observations": 5662,
+          "mlb_pa": 1581166
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 111064,
+      "training_people": 11444,
+      "active_observations": 15417,
+      "active_people": 1473,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1470,
+          "observations": 5662,
+          "mlb_pa": 1581166
+        },
+        {
+          "followup_year": 2,
+          "people": 1387,
+          "observations": 5148,
+          "mlb_pa": 1435286
+        },
+        {
+          "followup_year": 3,
+          "people": 1298,
+          "observations": 4607,
+          "mlb_pa": 1282132
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "training_observations": 100862,
+      "training_people": 9994,
+      "active_observations": 13794,
+      "active_people": 1462,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1251,
+          "observations": 4568,
+          "mlb_pa": 1281104
+        },
+        {
+          "followup_year": 2,
+          "people": 1308,
+          "observations": 4619,
+          "mlb_pa": 1284634
+        },
+        {
+          "followup_year": 3,
+          "people": 1298,
+          "observations": 4607,
+          "mlb_pa": 1282132
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_observations": 188268,
+      "training_people": 11444,
+      "active_observations": 24983,
+      "active_people": 1476,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1470,
+          "observations": 5662,
+          "mlb_pa": 1581166
+        },
+        {
+          "followup_year": 2,
+          "people": 1387,
+          "observations": 5148,
+          "mlb_pa": 1435286
+        },
+        {
+          "followup_year": 3,
+          "people": 1298,
+          "observations": 4607,
+          "mlb_pa": 1282132
+        },
+        {
+          "followup_year": 4,
+          "people": 1189,
+          "observations": 3937,
+          "mlb_pa": 1107394
+        },
+        {
+          "followup_year": 5,
+          "people": 1044,
+          "observations": 3201,
+          "mlb_pa": 915281
+        },
+        {
+          "followup_year": 6,
+          "people": 879,
+          "observations": 2428,
+          "mlb_pa": 711264
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "training_observations": 139612,
+      "training_people": 8163,
+      "active_observations": 18105,
+      "active_people": 1338,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1015,
+          "observations": 3509,
+          "mlb_pa": 993427
+        },
+        {
+          "followup_year": 2,
+          "people": 1030,
+          "observations": 3526,
+          "mlb_pa": 993981
+        },
+        {
+          "followup_year": 3,
+          "people": 948,
+          "observations": 3001,
+          "mlb_pa": 844543
+        },
+        {
+          "followup_year": 4,
+          "people": 979,
+          "observations": 2901,
+          "mlb_pa": 820128
+        },
+        {
+          "followup_year": 5,
+          "people": 968,
+          "observations": 2740,
+          "mlb_pa": 780659
+        },
+        {
+          "followup_year": 6,
+          "people": 879,
+          "observations": 2428,
+          "mlb_pa": 711264
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 43843,
+      "training_people": 12124,
+      "active_observations": 6151,
+      "active_people": 1571,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1571,
+          "observations": 6151,
+          "mlb_pa": 1713555
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 43843,
+      "training_people": 12124,
+      "active_observations": 6151,
+      "active_people": 1571,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1571,
+          "observations": 6151,
+          "mlb_pa": 1713555
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 121967,
+      "training_people": 12124,
+      "active_observations": 16856,
+      "active_people": 1573,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1571,
+          "observations": 6151,
+          "mlb_pa": 1713555
+        },
+        {
+          "followup_year": 2,
+          "people": 1487,
+          "observations": 5628,
+          "mlb_pa": 1565051
+        },
+        {
+          "followup_year": 3,
+          "people": 1388,
+          "observations": 5077,
+          "mlb_pa": 1412908
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 111905,
+      "training_people": 10867,
+      "active_observations": 15289,
+      "active_people": 1554,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1394,
+          "observations": 5103,
+          "mlb_pa": 1419529
+        },
+        {
+          "followup_year": 2,
+          "people": 1402,
+          "observations": 5109,
+          "mlb_pa": 1420141
+        },
+        {
+          "followup_year": 3,
+          "people": 1388,
+          "observations": 5077,
+          "mlb_pa": 1412908
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 211628,
+      "training_people": 12124,
+      "active_observations": 27696,
+      "active_people": 1576,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1571,
+          "observations": 6151,
+          "mlb_pa": 1713555
+        },
+        {
+          "followup_year": 2,
+          "people": 1487,
+          "observations": 5628,
+          "mlb_pa": 1565051
+        },
+        {
+          "followup_year": 3,
+          "people": 1388,
+          "observations": 5077,
+          "mlb_pa": 1412908
+        },
+        {
+          "followup_year": 4,
+          "people": 1272,
+          "observations": 4395,
+          "mlb_pa": 1236629
+        },
+        {
+          "followup_year": 5,
+          "people": 1136,
+          "observations": 3630,
+          "mlb_pa": 1039753
+        },
+        {
+          "followup_year": 6,
+          "people": 961,
+          "observations": 2815,
+          "mlb_pa": 821464
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 159124,
+      "training_people": 9059,
+      "active_observations": 20419,
+      "active_people": 1441,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1116,
+          "observations": 4008,
+          "mlb_pa": 1130041
+        },
+        {
+          "followup_year": 2,
+          "people": 1033,
+          "observations": 3495,
+          "mlb_pa": 985216
+        },
+        {
+          "followup_year": 3,
+          "people": 1098,
+          "observations": 3507,
+          "mlb_pa": 979703
+        },
+        {
+          "followup_year": 4,
+          "people": 1114,
+          "observations": 3419,
+          "mlb_pa": 958405
+        },
+        {
+          "followup_year": 5,
+          "people": 1049,
+          "observations": 3175,
+          "mlb_pa": 908112
+        },
+        {
+          "followup_year": 6,
+          "people": 961,
+          "observations": 2815,
+          "mlb_pa": 821464
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 43803,
+      "training_people": 12182,
+      "active_observations": 6224,
+      "active_people": 1559,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1559,
+          "observations": 6224,
+          "mlb_pa": 1770059
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 43803,
+      "training_people": 12182,
+      "active_observations": 6224,
+      "active_people": 1559,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1559,
+          "observations": 6224,
+          "mlb_pa": 1770059
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 121623,
+      "training_people": 12182,
+      "active_observations": 17032,
+      "active_people": 1562,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1559,
+          "observations": 6224,
+          "mlb_pa": 1770059
+        },
+        {
+          "followup_year": 2,
+          "people": 1477,
+          "observations": 5689,
+          "mlb_pa": 1618732
+        },
+        {
+          "followup_year": 3,
+          "people": 1381,
+          "observations": 5119,
+          "mlb_pa": 1457539
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 111314,
+      "training_people": 10877,
+      "active_observations": 15499,
+      "active_people": 1549,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1390,
+          "observations": 5197,
+          "mlb_pa": 1473335
+        },
+        {
+          "followup_year": 2,
+          "people": 1391,
+          "observations": 5183,
+          "mlb_pa": 1472581
+        },
+        {
+          "followup_year": 3,
+          "people": 1381,
+          "observations": 5119,
+          "mlb_pa": 1457539
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 210663,
+      "training_people": 12182,
+      "active_observations": 27918,
+      "active_people": 1563,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1559,
+          "observations": 6224,
+          "mlb_pa": 1770059
+        },
+        {
+          "followup_year": 2,
+          "people": 1477,
+          "observations": 5689,
+          "mlb_pa": 1618732
+        },
+        {
+          "followup_year": 3,
+          "people": 1381,
+          "observations": 5119,
+          "mlb_pa": 1457539
+        },
+        {
+          "followup_year": 4,
+          "people": 1247,
+          "observations": 4409,
+          "mlb_pa": 1274136
+        },
+        {
+          "followup_year": 5,
+          "people": 1112,
+          "observations": 3642,
+          "mlb_pa": 1075821
+        },
+        {
+          "followup_year": 6,
+          "people": 942,
+          "observations": 2835,
+          "mlb_pa": 855257
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 157896,
+      "training_people": 9030,
+      "active_observations": 20729,
+      "active_people": 1434,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1131,
+          "observations": 4104,
+          "mlb_pa": 1177773
+        },
+        {
+          "followup_year": 2,
+          "people": 1049,
+          "observations": 3576,
+          "mlb_pa": 1028875
+        },
+        {
+          "followup_year": 3,
+          "people": 1099,
+          "observations": 3565,
+          "mlb_pa": 1017811
+        },
+        {
+          "followup_year": 4,
+          "people": 1090,
+          "observations": 3448,
+          "mlb_pa": 990556
+        },
+        {
+          "followup_year": 5,
+          "people": 1025,
+          "observations": 3201,
+          "mlb_pa": 941094
+        },
+        {
+          "followup_year": 6,
+          "people": 942,
+          "observations": 2835,
+          "mlb_pa": 855257
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 42935,
+      "training_people": 11978,
+      "active_observations": 6061,
+      "active_people": 1545,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1545,
+          "observations": 6061,
+          "mlb_pa": 1688216
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 42935,
+      "training_people": 11978,
+      "active_observations": 6061,
+      "active_people": 1545,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1545,
+          "observations": 6061,
+          "mlb_pa": 1688216
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 119273,
+      "training_people": 11978,
+      "active_observations": 16484,
+      "active_people": 1547,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1545,
+          "observations": 6061,
+          "mlb_pa": 1688216
+        },
+        {
+          "followup_year": 2,
+          "people": 1453,
+          "observations": 5498,
+          "mlb_pa": 1529532
+        },
+        {
+          "followup_year": 3,
+          "people": 1358,
+          "observations": 4925,
+          "mlb_pa": 1367656
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 109209,
+      "training_people": 10713,
+      "active_observations": 14972,
+      "active_people": 1529,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1371,
+          "observations": 5053,
+          "mlb_pa": 1412944
+        },
+        {
+          "followup_year": 2,
+          "people": 1366,
+          "observations": 4994,
+          "mlb_pa": 1393705
+        },
+        {
+          "followup_year": 3,
+          "people": 1358,
+          "observations": 4925,
+          "mlb_pa": 1367656
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 206648,
+      "training_people": 11978,
+      "active_observations": 26893,
+      "active_people": 1550,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1545,
+          "observations": 6061,
+          "mlb_pa": 1688216
+        },
+        {
+          "followup_year": 2,
+          "people": 1453,
+          "observations": 5498,
+          "mlb_pa": 1529532
+        },
+        {
+          "followup_year": 3,
+          "people": 1358,
+          "observations": 4925,
+          "mlb_pa": 1367656
+        },
+        {
+          "followup_year": 4,
+          "people": 1237,
+          "observations": 4243,
+          "mlb_pa": 1187649
+        },
+        {
+          "followup_year": 5,
+          "people": 1090,
+          "observations": 3482,
+          "mlb_pa": 993047
+        },
+        {
+          "followup_year": 6,
+          "people": 899,
+          "observations": 2684,
+          "mlb_pa": 780661
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 154831,
+      "training_people": 8875,
+      "active_observations": 19939,
+      "active_people": 1419,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1106,
+          "observations": 4022,
+          "mlb_pa": 1142550
+        },
+        {
+          "followup_year": 2,
+          "people": 1017,
+          "observations": 3468,
+          "mlb_pa": 987101
+        },
+        {
+          "followup_year": 3,
+          "people": 1077,
+          "observations": 3422,
+          "mlb_pa": 963361
+        },
+        {
+          "followup_year": 4,
+          "people": 1083,
+          "observations": 3302,
+          "mlb_pa": 927967
+        },
+        {
+          "followup_year": 5,
+          "people": 1004,
+          "observations": 3041,
+          "mlb_pa": 869843
+        },
+        {
+          "followup_year": 6,
+          "people": 899,
+          "observations": 2684,
+          "mlb_pa": 780661
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 43433,
+      "training_people": 12050,
+      "active_observations": 6145,
+      "active_people": 1554,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1554,
+          "observations": 6145,
+          "mlb_pa": 1708353
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 43433,
+      "training_people": 12050,
+      "active_observations": 6145,
+      "active_people": 1554,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1554,
+          "observations": 6145,
+          "mlb_pa": 1708353
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 120643,
+      "training_people": 12050,
+      "active_observations": 16815,
+      "active_people": 1556,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1554,
+          "observations": 6145,
+          "mlb_pa": 1708353
+        },
+        {
+          "followup_year": 2,
+          "people": 1468,
+          "observations": 5612,
+          "mlb_pa": 1559848
+        },
+        {
+          "followup_year": 3,
+          "people": 1377,
+          "observations": 5058,
+          "mlb_pa": 1408426
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 110495,
+      "training_people": 10779,
+      "active_observations": 15262,
+      "active_people": 1542,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1378,
+          "observations": 5106,
+          "mlb_pa": 1416328
+        },
+        {
+          "followup_year": 2,
+          "people": 1382,
+          "observations": 5098,
+          "mlb_pa": 1416027
+        },
+        {
+          "followup_year": 3,
+          "people": 1377,
+          "observations": 5058,
+          "mlb_pa": 1408426
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 208994,
+      "training_people": 12050,
+      "active_observations": 27625,
+      "active_people": 1558,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1554,
+          "observations": 6145,
+          "mlb_pa": 1708353
+        },
+        {
+          "followup_year": 2,
+          "people": 1468,
+          "observations": 5612,
+          "mlb_pa": 1559848
+        },
+        {
+          "followup_year": 3,
+          "people": 1377,
+          "observations": 5058,
+          "mlb_pa": 1408426
+        },
+        {
+          "followup_year": 4,
+          "people": 1256,
+          "observations": 4378,
+          "mlb_pa": 1234385
+        },
+        {
+          "followup_year": 5,
+          "people": 1110,
+          "observations": 3617,
+          "mlb_pa": 1040335
+        },
+        {
+          "followup_year": 6,
+          "people": 949,
+          "observations": 2815,
+          "mlb_pa": 826773
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 156710,
+      "training_people": 8960,
+      "active_observations": 20433,
+      "active_people": 1429,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1111,
+          "observations": 4029,
+          "mlb_pa": 1128987
+        },
+        {
+          "followup_year": 2,
+          "people": 1027,
+          "observations": 3507,
+          "mlb_pa": 984071
+        },
+        {
+          "followup_year": 3,
+          "people": 1090,
+          "observations": 3508,
+          "mlb_pa": 980128
+        },
+        {
+          "followup_year": 4,
+          "people": 1100,
+          "observations": 3408,
+          "mlb_pa": 957370
+        },
+        {
+          "followup_year": 5,
+          "people": 1026,
+          "observations": 3166,
+          "mlb_pa": 909926
+        },
+        {
+          "followup_year": 6,
+          "people": 949,
+          "observations": 2815,
+          "mlb_pa": 826773
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "horizon": 1,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 43610,
+      "training_people": 12070,
+      "active_observations": 6191,
+      "active_people": 1555,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1555,
+          "observations": 6191,
+          "mlb_pa": 1732037
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "horizon": 1,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 43610,
+      "training_people": 12070,
+      "active_observations": 6191,
+      "active_people": 1555,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1555,
+          "observations": 6191,
+          "mlb_pa": 1732037
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "horizon": 3,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 121218,
+      "training_people": 12070,
+      "active_observations": 16985,
+      "active_people": 1558,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1555,
+          "observations": 6191,
+          "mlb_pa": 1732037
+        },
+        {
+          "followup_year": 2,
+          "people": 1471,
+          "observations": 5673,
+          "mlb_pa": 1584501
+        },
+        {
+          "followup_year": 3,
+          "people": 1376,
+          "observations": 5121,
+          "mlb_pa": 1429267
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "horizon": 3,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_observations": 111065,
+      "training_people": 10804,
+      "active_observations": 15398,
+      "active_people": 1542,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1387,
+          "observations": 5129,
+          "mlb_pa": 1429640
+        },
+        {
+          "followup_year": 2,
+          "people": 1387,
+          "observations": 5148,
+          "mlb_pa": 1435286
+        },
+        {
+          "followup_year": 3,
+          "people": 1376,
+          "observations": 5121,
+          "mlb_pa": 1429267
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "horizon": 6,
+      "design": "annual",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_observations": 210047,
+      "training_people": 12070,
+      "active_observations": 27916,
+      "active_people": 1561,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1555,
+          "observations": 6191,
+          "mlb_pa": 1732037
+        },
+        {
+          "followup_year": 2,
+          "people": 1471,
+          "observations": 5673,
+          "mlb_pa": 1584501
+        },
+        {
+          "followup_year": 3,
+          "people": 1376,
+          "observations": 5121,
+          "mlb_pa": 1429267
+        },
+        {
+          "followup_year": 4,
+          "people": 1264,
+          "observations": 4431,
+          "mlb_pa": 1249765
+        },
+        {
+          "followup_year": 5,
+          "people": 1132,
+          "observations": 3665,
+          "mlb_pa": 1051480
+        },
+        {
+          "followup_year": 6,
+          "people": 961,
+          "observations": 2835,
+          "mlb_pa": 832481
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "horizon": 6,
+      "design": "complete_window",
+      "training_origins": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_observations": 157507,
+      "training_people": 8976,
+      "active_observations": 20560,
+      "active_people": 1429,
+      "by_horizon": [
+        {
+          "followup_year": 1,
+          "people": 1112,
+          "observations": 4033,
+          "mlb_pa": 1137949
+        },
+        {
+          "followup_year": 2,
+          "people": 1030,
+          "observations": 3526,
+          "mlb_pa": 993981
+        },
+        {
+          "followup_year": 3,
+          "people": 1088,
+          "observations": 3530,
+          "mlb_pa": 986057
+        },
+        {
+          "followup_year": 4,
+          "people": 1109,
+          "observations": 3435,
+          "mlb_pa": 962762
+        },
+        {
+          "followup_year": 5,
+          "people": 1044,
+          "observations": 3201,
+          "mlb_pa": 915281
+        },
+        {
+          "followup_year": 6,
+          "people": 961,
+          "observations": 2835,
+          "mlb_pa": 832481
+        }
+      ]
+    }
+  ],
+  "young_DSL_timing": [
+    {
+      "followup_year": 1,
+      "origin_observations": 1673,
+      "origin_people": 1603,
+      "active_people_including_2020": 0,
+      "active_people_excluding_2020": 0,
+      "mlb_pa": 0,
+      "pa_in_2020": 0
+    },
+    {
+      "followup_year": 2,
+      "origin_observations": 1673,
+      "origin_people": 1603,
+      "active_people_including_2020": 0,
+      "active_people_excluding_2020": 0,
+      "mlb_pa": 0,
+      "pa_in_2020": 0
+    },
+    {
+      "followup_year": 3,
+      "origin_observations": 1673,
+      "origin_people": 1603,
+      "active_people_including_2020": 1,
+      "active_people_excluding_2020": 1,
+      "mlb_pa": 27,
+      "pa_in_2020": 0
+    },
+    {
+      "followup_year": 4,
+      "origin_observations": 1673,
+      "origin_people": 1603,
+      "active_people_including_2020": 14,
+      "active_people_excluding_2020": 11,
+      "mlb_pa": 1539,
+      "pa_in_2020": 162
+    },
+    {
+      "followup_year": 5,
+      "origin_observations": 1673,
+      "origin_people": 1603,
+      "active_people_including_2020": 38,
+      "active_people_excluding_2020": 33,
+      "mlb_pa": 6347,
+      "pa_in_2020": 127
+    },
+    {
+      "followup_year": 6,
+      "origin_observations": 1673,
+      "origin_people": 1603,
+      "active_people_including_2020": 49,
+      "active_people_excluding_2020": 44,
+      "mlb_pa": 10995,
+      "pa_in_2020": 385
+    }
+  ],
+  "player_walkthrough_status": "pending",
+  "protected_outcomes_used": false,
+  "current_forecasts_changed": false,
+  "input_and_output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\audit_hitter_followup_support.py": "f801f6e341017a5acc81023d59b290de57de8552b734393dad6bc5cbbd94d3ed",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_followup.py": "8f15a2618bcb4fd4b45f593420e2fc680afa649cfa2875337489b62846f0ebea",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-followup-support-contract.md": "600eae538387553d56198486b741a66c239c43c70804a69a5cafbe22e7c39e1b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\multiyear-hitter-v1\\manifest.json": "5a88939fd3e0841dc63d004ca2b3d83410fd0662013d7ea8aece58f0ad1db63e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\multiyear-hitter-v1\\targets.parquet": "54b7c51af42254ef44e36f6f5035d05334b368f128baa0280e9f98ff92e941e3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\career-mlb-outcome-inventory-2009-2025\\report.json": "70258453e73ac8bbe3a824da43b15e587a493ff031d4e944cfb7d55e249889db",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\counts.parquet": "62de048f7eb6cae53dd29755e26953c31b204fbdfc0e6be261b63acd42da5e66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\features.parquet": "a9c1bc927adcbb07742080297e2c513ec2de1a5800d2d5e9b01652cd828ffcfc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\preflight.json": "a6f4ab4548193194a95d878c462edee6dc1d9ce7b3a81a15ed93f1fed8e2429a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\scored-predictions.parquet": "9a08f2a4bea18d9fb14313fedd904ddd98f009331ed89bd607f3aeac34f750f8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rate-support-audit\\final-report.json": "a934ceeb4825a0afe98cede477d83efaf9b8921b49b2f4293835b3ae253cfa26",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-followup-support\\annual.parquet": "a82b73d9382ef4ce2f450941778a01413a91e4ddb81c5b814f3fad7e4f19a944",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-followup-support\\support.parquet": "913b434601dd2f2647b1da8ed43529af0784816ea5c1fa08c025f38f157d8d5c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-followup-support\\cases.json": "75b8b1486fb0980f64875b96d6f5a06d7fc39449271b5016accb3e9fd9d8ed3d"
+  }
+}
