@@ -70,3 +70,11 @@ scripts/materialize_hitter_statcast_full_history.py -text -eol
 scripts/finalize_hitter_statcast_full_history.py -text -eol
 src/universal_baseball/hitter_statcast_measurement.py -text -eol
 tests/test_hitter_statcast_measurement.py -text -eol
+reports/model-evidence/hitter-statcast-next-year/** -text -eol
+docs/hitter-statcast-next-year-contract.md -text -eol
+docs/hitter-statcast-next-year-result.md -text -eol
+scripts/prepare_hitter_statcast_next_year.py -text -eol
+scripts/fit_hitter_statcast_next_year.py -text -eol
+scripts/score_hitter_statcast_next_year.py -text -eol
+scripts/finalize_hitter_statcast_next_year.py -text -eol
+tests/test_hitter_statcast_next_year.py -text -eol

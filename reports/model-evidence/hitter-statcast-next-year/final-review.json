@@ -1,0 +1,76 @@
+{
+  "execution_integrity": true,
+  "independent_primary_and_contribution_scores_verified": true,
+  "population_unchanged": true,
+  "playing_time_unchanged": true,
+  "untracked_rate_exact_fallback": true,
+  "replayed_heads": 140,
+  "player_walkthrough_status": "complete",
+  "walkthrough_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-statcast-next-year-result.md",
+  "walkthrough_sha256": "00b2d3385fae94869ab9c5a28f7dd681d6894f51b3985736a971f80a4c309fad",
+  "decisions": {
+    "ridge_measurements": {
+      "gates": {
+        "primary_beats_current": true,
+        "primary_beats_coverage": true,
+        "primary_nominal_interval_below_zero": true,
+        "mae_within_tolerance": true,
+        "contribution_within_tolerance": true,
+        "origin_tolerance_pass": true
+      },
+      "numeric_gates_pass": true,
+      "origin_failures": [],
+      "disposition": "retain_qualified_research_candidate"
+    },
+    "hist_measurements": {
+      "gates": {
+        "primary_beats_current": false,
+        "primary_beats_coverage": true,
+        "primary_nominal_interval_below_zero": false,
+        "mae_within_tolerance": false,
+        "contribution_within_tolerance": false,
+        "origin_tolerance_pass": false
+      },
+      "numeric_gates_pass": false,
+      "origin_failures": [
+        "tracked_origin_2022"
+      ],
+      "disposition": "do_not_replace_current_with_this_fixed_arm"
+    }
+  },
+  "reasonability": "qualified_with_calibration_and_prospect_limits",
+  "full_profile_validation": false,
+  "original_provider_vintage_known": false,
+  "independent_confirmation": false,
+  "deployment_approved": false,
+  "protected_freeze": {
+    "contact_available_rows": 3511,
+    "five_model_rows": 3720,
+    "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+    "players": 3907,
+    "population_prior_rows": 187,
+    "protected_2026_opened": false,
+    "status": "verified",
+    "verified_files": 31
+  },
+  "latest_protected_freeze": {
+    "contact_available_rows": 3511,
+    "five_model_rows": 3720,
+    "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+    "players": 3907,
+    "population_prior_rows": 187,
+    "protected_2026_opened": false,
+    "status": "verified",
+    "verified_files": 31
+  },
+  "focused_tests": ".......................                                                  [100%]\n23 passed in 1.36s\n",
+  "reviewer_sha256": "9d2a04a3d373fa5801c23975266759501800bc055e8e5a7203df4f4f502874ec",
+  "artifact_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-next-year\\preflight.json": "4e94dc013fa8d5e92c43128541a3a28393f2b6c57c8934edc0baaaa1dec9eb07",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-next-year\\fit-report.json": "6d4aa258c36a6f1f1d618884610fffb9157158f99f81f387deb3cbcdae45a453",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-next-year\\scores.json": "fec12b7a2601d2e42a16b97be7258e703d5e6639c882e8bb17151ff2d488c845",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-next-year\\cases.json": "073d5e80bc9593ea584c30af34062df961cb84cdcf75810f2a48f677b9336cc7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-next-year\\reviewed-cases.json": "8ea1087e4699e2702503a8bc31612d0df94de246a9bfc5b955ebb85f2cf15388",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-next-year\\scored-predictions.parquet": "d5f59d11864f332218598d52b3eed8f28e315d4c1773748942257e82b596be5d"
+  }
+}

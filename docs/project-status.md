@@ -57,6 +57,27 @@ provider-data experiment, not original-vintage camera-only data, minor tracking,
 predictive improvement or deployment. Original pending/failed receipts remain
 preserved. No new model fits or forecast/explorer changes at this checkpoint.
 
+The subsequent [fixed next-year comparison](hitter-statcast-next-year-result.md)
+is now reviewed: 140 saved rate heads, thirty-five current-anchor replays, all
+30,506 forecasts retained, and sixteen full player-origin walks including gains
+and harms. Regularized launch measurements reduce tracked participant rate RMSE
+1.73894 to 1.72178 and all-player batting-contribution RMSE .453384 to .451314;
+the nominal player-cluster intervals favor the candidate. Every origin improves
+on these losses. The tested shallow boosting replacement still loses to current,
+although measurements improve it relative to its own coverage control.
+Retain the regularized MLB Statcast branch as qualified development research,
+not a promoted forecast or full-WAR improvement. All 24,950 untracked forecasts,
+current opportunity and thirty-one protected files remain unchanged. The test
+does not solve prospect arrivals, opportunity, calibration totals or provider
+vintage: 1,030 tracked forecasts have sparse broad tracking profiles, and generic
+rate support warnings remain recorded rather than removed. Aggregate bias and
+some total shortfalls worsen despite better errors. Twenty-three focused tests
+and independently recomputed endpoint scores pass; full-profile/deployment
+approval remain false. Do not rerun these fixed heads or tune to named misses.
+The next Statcast phase is covered minor-source recovery and league/source
+calibration, using this MLB-only candidate and the existing prospect alternative
+as separate benchmarks. No additional college collection or team-record testing.
+
 The mature lower-level follow-up and shared development-rate comparisons already
 exist. Their source/target findings must be carried forward, not rediscovered by
 another age-to-peak or shared-horizon sweep. Own-MLB contact representation,
