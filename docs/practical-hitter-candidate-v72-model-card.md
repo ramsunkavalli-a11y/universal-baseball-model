@@ -87,6 +87,16 @@ calibrated; support flags and descriptive probability bands are not confidence
 intervals. Do not interpret next-year appearance chance as eventual MLB success
 or use low immediate PA to erase long-term prospect value.
 
+The [completed listing review](hitter-roster-provenance-audit-result.md) confirms
+that the input matches the saved requested sets, not that those sets completely
+describe historical reserve rights. Missing listing is a proxy, not certified
+nonmembership; listed status is not health or playing eligibility. The last
+explicit transaction cannot replace it without an ordered reconstruction of
+intervening moves, later signings and missing coverage. Current forecast values
+are unchanged. A historical search incidentally displayed one current McLain
+2026 summary; those outcomes were not used, but a future wholly-unseen-test claim
+must acknowledge that exposure.
+
 ## Explorer and next milestone
 
 The comparative local explorer has a team filter, season and stage selectors,

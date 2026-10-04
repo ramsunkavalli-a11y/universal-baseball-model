@@ -24,7 +24,28 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: candidate integration inventory completed with seven actual reviews.**
+**Current checkpoint: historical listing provenance reviewed across the population.**
+The [completed source review](hitter-roster-provenance-audit-result.md) reconciles
+480 saved team/date captures and 18,708 unique memberships, including the separate
+2020 source, with every one of the 63,282 current inputs. All 30,506 forecasts
+are retained; nine actual player walks and 27 saved-head replays are complete.
+The narrow transaction diagnostic flags 1,165 evaluation forecasts, not 1,165
+proven errors. Old positive events and later ambiguous signings explain why the
+last explicit event cannot replace the listing: Beltran's November free agency
+is followed by a December signing, and the Houston listing agrees. McLain's
+synthetic listing toggle moves 132 to 296 PA versus 577 actual; Albies's moves
+565 to 613 versus 269, so retrospective score improvement cannot choose source
+truth. Pena already has correct listing evidence yet receives 47 PA versus 558.
+Keep listing as a qualified returned-set proxy; no blanket flag flips or new
+status-feature sweep. Four new source tests and three review tests pass. Carry
+source ambiguity into the research handoff and the practical plan's useful
+uncertainty stage; no synthetic toggles as selectable improved forecasts. The
+current model, public benchmark gap, protected forecast and full goal remain
+unchanged. A historical web search incidentally returned a current McLain 2026
+summary; it was not retained or used, but future wholly-unseen-test claims must
+acknowledge this exposure. No 2026 outcome dataset entered the calculations.
+
+**Previous checkpoint: candidate integration inventory completed with seven actual reviews.**
 The [source and current-model inventory](hitter-candidate-integration-audit.md)
 reconciles all 63,282 source identities and 30,506 forecasts, replays 21 saved
 heads for seven players, and records actual predictor lists and requested roster
