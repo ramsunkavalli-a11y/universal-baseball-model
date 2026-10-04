@@ -1,0 +1,872 @@
+{
+  "new_model_fits": 0,
+  "source_walkthrough_status": "pending",
+  "source_seasons": [
+    2023,
+    2024
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot"
+  ],
+  "tracking_predictors_used": false,
+  "forecasts_changed": false,
+  "protected_outcomes_used": false,
+  "deployment_approved": false,
+  "years": [
+    {
+      "season": 2023,
+      "official_counts_exact": true,
+      "legacy_profiles_and_summaries_exact": true,
+      "physical_contacts": 124236,
+      "geometry_core_contacts": 119823,
+      "classified_contacts": 119823,
+      "physical_outcome_residual": 2,
+      "missing_venue_contacts": 0,
+      "missing_batter_hand": 0,
+      "missing_pitcher_hand": 0,
+      "contact_people": 651,
+      "contact_games": 2430,
+      "outcome_substitutions": 4,
+      "first_date": "2023-03-30",
+      "last_date": "2023-10-01"
+    },
+    {
+      "season": 2024,
+      "official_counts_exact": true,
+      "legacy_profiles_and_summaries_exact": true,
+      "physical_contacts": 124204,
+      "geometry_core_contacts": 119550,
+      "classified_contacts": 119550,
+      "physical_outcome_residual": 1,
+      "missing_venue_contacts": 0,
+      "missing_batter_hand": 0,
+      "missing_pitcher_hand": 0,
+      "contact_people": 647,
+      "contact_games": 2429,
+      "outcome_substitutions": 0,
+      "first_date": "2024-03-20",
+      "last_date": "2024-09-30"
+    }
+  ],
+  "exclusions": [
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "1B",
+      "len": 25684
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "3B",
+      "len": 711
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 72886
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "HR",
+      "len": 5834
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "FC_REACH",
+      "len": 377
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "ROE",
+      "len": 1066
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "2B",
+      "len": 8226
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "SF",
+      "len": 1190
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "MULTI_OUT",
+      "len": 3849
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "foul_air_excluded",
+      "cell_eligible": false,
+      "canonical_outcome": "MULTI_OUT",
+      "len": 14
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "foul_air_excluded",
+      "cell_eligible": false,
+      "canonical_outcome": "SF",
+      "len": 16
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "foul_air_excluded",
+      "cell_eligible": false,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 3299
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": "MULTI_OUT",
+      "len": 6
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": null,
+      "len": 428
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": "2B",
+      "len": 1
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": "1B",
+      "len": 343
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 249
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "2B",
+      "len": 1
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 13
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "3B",
+      "len": 1
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "HR",
+      "len": 34
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "1B",
+      "len": 4
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": null,
+      "len": 2
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "unknown_missing_trajectory",
+      "cell_eligible": false,
+      "canonical_outcome": null,
+      "len": 1
+    },
+    {
+      "season": 2023,
+      "contact_profile_status": "unknown_missing_trajectory",
+      "cell_eligible": false,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 1
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "HR",
+      "len": 5418
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 73849
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "1B",
+      "len": 25527
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "MULTI_OUT",
+      "len": 3567
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "FC_REACH",
+      "len": 378
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "2B",
+      "len": 7769
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "3B",
+      "len": 696
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "SF",
+      "len": 1234
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "core_contact",
+      "cell_eligible": true,
+      "canonical_outcome": "ROE",
+      "len": 1112
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "foul_air_excluded",
+      "cell_eligible": false,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 3480
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "foul_air_excluded",
+      "cell_eligible": false,
+      "canonical_outcome": "MULTI_OUT",
+      "len": 3
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "foul_air_excluded",
+      "cell_eligible": false,
+      "canonical_outcome": "SF",
+      "len": 14
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": null,
+      "len": 452
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 280
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": "MULTI_OUT",
+      "len": 5
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "special_bunt",
+      "cell_eligible": false,
+      "canonical_outcome": "1B",
+      "len": 371
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": null,
+      "len": 1
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "2B",
+      "len": 2
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "HR",
+      "len": 35
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "MULTI_OUT",
+      "len": 1
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "3B",
+      "len": 1
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 3
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "unknown_missing_direction",
+      "cell_eligible": false,
+      "canonical_outcome": "1B",
+      "len": 4
+    },
+    {
+      "season": 2024,
+      "contact_profile_status": "unknown_missing_trajectory",
+      "cell_eligible": false,
+      "canonical_outcome": "OTHER_OUT",
+      "len": 2
+    }
+  ],
+  "actual_outer_cells": [
+    {
+      "year": 2016,
+      "fold": 0,
+      "training_rows": 18447,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 893,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2016,
+      "fold": 1,
+      "training_rows": 18315,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 933,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2016,
+      "fold": 2,
+      "training_rows": 17910,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 989,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2016,
+      "fold": 3,
+      "training_rows": 18139,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 937,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2016,
+      "fold": 4,
+      "training_rows": 18225,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 911,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2017,
+      "fold": 0,
+      "training_rows": 22217,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 904,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2017,
+      "fold": 1,
+      "training_rows": 22045,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 937,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2017,
+      "fold": 2,
+      "training_rows": 21584,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 990,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2017,
+      "fold": 3,
+      "training_rows": 21865,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 950,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2017,
+      "fold": 4,
+      "training_rows": 21977,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 910,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2018,
+      "fold": 0,
+      "training_rows": 26004,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 862,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2018,
+      "fold": 1,
+      "training_rows": 25799,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 883,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2018,
+      "fold": 2,
+      "training_rows": 25285,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 936,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2018,
+      "fold": 3,
+      "training_rows": 25606,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 898,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2018,
+      "fold": 4,
+      "training_rows": 25758,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 899,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2021,
+      "fold": 0,
+      "training_rows": 33756,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 848,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2021,
+      "fold": 1,
+      "training_rows": 33519,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 824,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2021,
+      "fold": 2,
+      "training_rows": 32883,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 883,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2021,
+      "fold": 3,
+      "training_rows": 33282,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 846,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2021,
+      "fold": 4,
+      "training_rows": 33456,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 841,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2022,
+      "fold": 0,
+      "training_rows": 37150,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 875,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2022,
+      "fold": 1,
+      "training_rows": 36937,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 801,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2022,
+      "fold": 2,
+      "training_rows": 36242,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 873,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2022,
+      "fold": 3,
+      "training_rows": 36678,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 851,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2022,
+      "fold": 4,
+      "training_rows": 36857,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 844,
+      "test_with_own_mlb_contact": 0
+    },
+    {
+      "year": 2023,
+      "fold": 0,
+      "training_rows": 40519,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 872,
+      "test_with_own_mlb_contact": 125
+    },
+    {
+      "year": 2023,
+      "fold": 1,
+      "training_rows": 40380,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 773,
+      "test_with_own_mlb_contact": 131
+    },
+    {
+      "year": 2023,
+      "fold": 2,
+      "training_rows": 39613,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 874,
+      "test_with_own_mlb_contact": 149
+    },
+    {
+      "year": 2023,
+      "fold": 3,
+      "training_rows": 40071,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 834,
+      "test_with_own_mlb_contact": 128
+    },
+    {
+      "year": 2023,
+      "fold": 4,
+      "training_rows": 40257,
+      "active_contact_training_people": 0,
+      "active_contact_training_rows": 0,
+      "test_rows": 843,
+      "test_with_own_mlb_contact": 115
+    },
+    {
+      "year": 2024,
+      "fold": 0,
+      "training_rows": 43843,
+      "active_contact_training_people": 415,
+      "active_contact_training_rows": 415,
+      "test_rows": 807,
+      "test_with_own_mlb_contact": 140
+    },
+    {
+      "year": 2024,
+      "fold": 1,
+      "training_rows": 43803,
+      "active_contact_training_people": 404,
+      "active_contact_training_rows": 404,
+      "test_rows": 734,
+      "test_with_own_mlb_contact": 155
+    },
+    {
+      "year": 2024,
+      "fold": 2,
+      "training_rows": 42935,
+      "active_contact_training_people": 398,
+      "active_contact_training_rows": 398,
+      "test_rows": 841,
+      "test_with_own_mlb_contact": 161
+    },
+    {
+      "year": 2024,
+      "fold": 3,
+      "training_rows": 43433,
+      "active_contact_training_people": 415,
+      "active_contact_training_rows": 415,
+      "test_rows": 812,
+      "test_with_own_mlb_contact": 147
+    },
+    {
+      "year": 2024,
+      "fold": 4,
+      "training_rows": 43610,
+      "active_contact_training_people": 424,
+      "active_contact_training_rows": 424,
+      "test_rows": 798,
+      "test_with_own_mlb_contact": 132
+    }
+  ],
+  "limits": [
+    "Only two cached MLB seasons; earlier source gaps remain missing.",
+    "Raw observations, not park-neutral or opponent-neutral skill.",
+    "A source pass does not establish future MLB forecast improvement."
+  ],
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-own-mlb-contact-source-contract.md": "fcf06753f95ad144ea814ed8919e79911cd5b2a18988f082f9f03048d6a79a30",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\recover_hitter_own_mlb_contact.py": "a96a137697b88c3b9eb91c2ae15e52ac2dd7cc95d5ce0baacf9a16c28ccef5ee",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\mlb_contact_history.py": "30fdfeeae51e9e2afe55306e05298fb211dfc590495322623931f2b23cc9673c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\savant.py": "3927a8f4c76ca80ca647651db303c18779502d4a82aa28cd5b812c1dd5900194",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\contact_profile.py": "d87f1b482c681606493a6e42f910c8d69ca03a7ae1019b65dc1362f703aa7e75",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\current_talent_mlb_evidence.py": "f6940839d20418bec15278306ce7488987893d310c1faf6a44f555558bb27528",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\mlb_performance.py": "bad4c6aa8109d2b8de2ac4c91823ab8f8e99d8bbd94e506da1f346df39d5de3a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\batted_ball_direction.py": "194a2a10d471d7186f29e24d59c07dc78799b9cdfbfc6ccdf384489c5185ae37",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\mlb_performance_materialization.py": "edca497af77ba70d5f5dafb52046347d0c1fd0cc7f1b4e0e1674a7e57a54ca1a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\current_talent_contact_value_source.py": "90cafb0594f20b86a9c243ac5258f45c391c8248833430eb76ddf3a8665f01f8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\counts.parquet": "62de048f7eb6cae53dd29755e26953c31b204fbdfc0e6be261b63acd42da5e66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\reports\\generated\\current-talent-historical-mlb-game-evidence\\2023\\report.json": "d7e2e05254ce600ada964b9479ab0400e63497ff13b288bdf2bbfe031014388c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\official\\teams_2023.json": "0779fa33912189d1fa9baac46e9ac0080bbadda16f8f726649076f58b75c1847",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\schedule\\schedule_2023_regular.json": "eb8b18a8a25c1bf017f6512b7770f0ecfcc0f69c04dac38707e874046788ef68",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-03-30_2023-04-02.csv": "ba2768f6932e073d34d456d62202237fe34f09e1fc223a5bc887e664eb5c2c59",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-04-03_2023-04-06.csv": "df6d13ac0ac778587b13f0b4eb5695a933538c7a5b06167eb392f1bf5113112d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-04-07_2023-04-10.csv": "932a2fd43bb29682de63225f092cba7a048465a6404b66681eb9e8bc55ed81c5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-04-11_2023-04-14.csv": "afcfb452a5e6165afc891eb21cb154665552e1324e0a6156b48b9785e90ba5b3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-04-15_2023-04-18.csv": "9c7411b5aaa875ef82f147066d2c107bd64f8e0a79252bc39647ceefbabcc88d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-04-19_2023-04-22.csv": "ed410db0def5f1b27928dfbc26c21a879ecdecd3b8a6815e57a6e08a58a06e50",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-04-23_2023-04-26.csv": "8446745ee961f78c7ab689adf70cdc0d37ec9e219a231e07eee9a570275954fc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-04-27_2023-04-30.csv": "560e9136086cb22af2541c0f110bc34527c23b8f0c55851cd03d8bd22d963414",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-05-01_2023-05-04.csv": "1cd46cf1d185af7e25b3af613db6772bcc6b72bf8e91c2d61efee326cfbe789f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-05-05_2023-05-08.csv": "649179b1180d411e88fd995620da9929a3887ff804c5acbda254334a0389803c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-05-09_2023-05-12.csv": "c53a6402af8ad66a3c37041b306f41e79d0ec7ed6e4e0556cc4352be96ac416f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-05-13_2023-05-16.csv": "53355c56d9b3eb701bcd99760bc1d61441ee01dad376d4f2b07e4f42582a396c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-05-17_2023-05-20.csv": "13502d2eff3645353a703d0671be30f034cd3db5c582be1ea49ed90b59d876a1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-05-21_2023-05-24.csv": "f76e4c2fab77bfecac4fecb4d9e3ab5eab82d64c3212ca551a93120e7453fa38",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-05-25_2023-05-28.csv": "f734d601ec2bb9236e5d88c0b29bf39e111ebd9a184c28e0ef75610b2a7b2ed6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-05-29_2023-06-01.csv": "229ed4fa4d397c5458c731d673371ff6e906aa0821040bc7b516a3a464a26efb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-06-02_2023-06-05.csv": "89c67d2b872e6e0848e14be9fa80c87bd046a1dcd3db8b7fcc9033d8e16e7561",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-06-06_2023-06-09.csv": "e35dbaf12a6f69186586de9bb85ca9979037e9b6b5c54dcdf3c2085db177f1a1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-06-10_2023-06-13.csv": "b54279ff78f7a4793c481b2fde62c4bc92b8efae275ba85c66da4e238b15da44",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-06-14_2023-06-17.csv": "65886c28f9da45eb02a869e2bce5ac0f49c917d698ba7eaa59447c2eabf15bfb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-06-18_2023-06-21.csv": "1fdd136f4560706ef6bbae522f9fc9f4395ce5f995ab26e4e83854d2afff62f3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-06-22_2023-06-25.csv": "8c1137c728e50c49a83d7695a453e4bfc2eac2d1b67e9086ef9d25977f0432d4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-06-26_2023-06-29.csv": "9255cbf4d669bf2bdb01f0464168cd574409eb8bee30066b2aca04ea06492bc8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-06-30_2023-07-03.csv": "00a6ce6f1cb059fad0ca8ebc9d1a7246cddbf1e7d72af81b01d55a18045cfec2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-07-04_2023-07-07.csv": "bc6c983d0a6e0344afda905a0ec9ca68c019975f5bc5f383b1405137521e9e84",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-07-08_2023-07-11.csv": "4101d65576d519f0bcc994985291e00cca0d55c2b01794db7c2c4e4dfc2c7af0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-07-12_2023-07-15.csv": "da15f2f607f34003b59a4327a37d8d9fa5360723e241b770f10d25c973265e50",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-07-16_2023-07-19.csv": "86d8dd5a466a5faf063ea598f0b2551dafc6c1e607b21a9cc610cad01afd42c3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-07-20_2023-07-23.csv": "c8b3a21d8c7ddf1a4a5567ae60469e8ed124f9790fc17df2b29b4c82e9f849e5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-07-24_2023-07-27.csv": "157824473ec4475b17c5101ca4eb90680b4d43cf5058eef7b03649ff6a4afe4e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-07-28_2023-07-31.csv": "7af6564c01602a9b2cbe69b93b999ebb919d84993b2eb80da0b164b442d75499",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-08-01_2023-08-04.csv": "a65492f8478992735a9cf02ffc3d134400120c542722bd76174769c208b6f2a5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-08-05_2023-08-08.csv": "9e3752ec405baddb8f577dbb84db8a7d042cc895eac06590ca2426a04abb632f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-08-09_2023-08-12.csv": "7c6c0b3bc6840ed5dd87a09cf7d3ed472fda71ec4e82940bd5c542af7f63ac76",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-08-13_2023-08-16.csv": "88a6c457b684d1a256911f38511b329e0039a05ba94f3ba0f91ec47fdfab839e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-08-17_2023-08-20.csv": "1792086d2eb8ad598f2a0865de194d0a69f74d0cd26c81f343c1b940a7a15507",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-08-21_2023-08-24.csv": "5f9c949f2ad0ca9be838410cbafe2e71754c5bf83e0015aa76d6d63cb87988fe",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-08-25_2023-08-28.csv": "850481938a899a233dfad9c1685df801c4fc31bea22cd22ca1e1196b81e2fa58",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-08-29_2023-09-01.csv": "e05d36ae656cb39e93ec825f01bdadcd8ead797e1dcdc073ed625c9c2e04871e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-09-02_2023-09-05.csv": "15a0e86a916a818ff2ae0ca9a2463658b055e9a1d171cf7559008181850aafad",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-09-06_2023-09-09.csv": "034f2b35e88906ba5542a66b95263dc0fd4df725a87991ce0cf4f477f7377065",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-09-10_2023-09-13.csv": "39e3a4883aee945c4d14671eeaff6fd352352a1c86782ea7f043f641037a409f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-09-14_2023-09-17.csv": "35dc24f6e10d61739b340e36168048b0fe15c1564cd1659cad6caacfcb067d4e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-09-18_2023-09-21.csv": "98b4ee18152082156d96cf3ac528fdcccb16a06aae3591f635d07bd343d37311",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-09-22_2023-09-25.csv": "5e7c737d8911ac5c6aac2cf9068e76cb4455baadb89050e4ddc63405471c81b6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-09-26_2023-09-29.csv": "ebe7a17e8bd22fa5b81433d3b4668597f5f44b0760d86e7c50ed5c2245a8654e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2023\\raw\\savant\\savant_2023-09-30_2023-10-01.csv": "424ec790a38e26389e2635e5301608e15a4396d54a274c02d8c9a52f3c5bdee6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\reports\\generated\\current-talent-historical-mlb-game-evidence\\2023\\tables\\current_talent_game_profile_2023_mlb.parquet": "f119db90398e293c7c3cc18b01b25ba732fb51e3c554e35d568381ebf880fd6e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2023\\reports\\generated\\current-talent-historical-mlb-game-evidence\\2023\\tables\\current_talent_game_summary_2023_mlb.parquet": "f88fe70751961785cd139bc2e58a2359ff252785a667b721782783989f5070ce",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\reports\\generated\\current-talent-historical-mlb-game-evidence\\2024\\report.json": "d40a790f15858b049a83389d4503efcde61480991d13d467d0d0df041cd8490d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\official\\teams_2024.json": "69104633fe22b752a3d45b585ebebd28200ebda15e25f63faba20a491bc63b0a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\schedule\\schedule_2024_regular.json": "9733d248b6a6d1635eb91802f504d70ebedc49b5aa87e7ae962cafb40b18879b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-03-20_2024-03-23.csv": "bbfc2260823eff3d906d3198ee741820985a0b18c405d896ed25ce423b72bdbe",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-03-24_2024-03-27.csv": "94915de6f8abdb2b23d384a1c43f2583b980bd10b6cc95716b4ba2eb2429c31c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-03-28_2024-03-31.csv": "d2a749175b1cc9b91469d97c451056a4051653513b9399d7546b68e2245c959c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-04-01_2024-04-04.csv": "b7c9b62ca30d4858e05511347fcef34fdda7c9531d9b67008aa1ca895d3e7c55",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-04-05_2024-04-08.csv": "5bac12dfb6eaed4fed1ab99c2672e83ff6e9297dc4a34c91d3e939f00c56241a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-04-09_2024-04-12.csv": "2e64969d6ee2ba814eb660c7a474f97ff5fc75e8fd2bffea2155a75dc2bef214",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-04-13_2024-04-16.csv": "2b0c5d10e31ee928513d29aa920aedc2b365848593a4b54336954703d8e4a214",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-04-17_2024-04-20.csv": "d3ee118c37712873b73dd2bff95aeb02f1f072292e4006b7ab33f245df78f080",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-04-21_2024-04-24.csv": "b27801b54e1c6403c3060c6abd4d03de1bae808fa50aeaadf84b9ce2af4e5ca0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-04-25_2024-04-28.csv": "bdbc8efd4cc5aab951cd6112cc984c55392f104aecf3773acfa900304bbe165d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-04-29_2024-05-02.csv": "67109236b751d5be702fbb5d7a95fa5fd14b5c1b0b6e52f38ce0c0fd00104edf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-05-03_2024-05-06.csv": "07dfca9afd5f70260ac069c65816dd4dadaad577eb6d10ccf38b02e578f2b57d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-05-07_2024-05-10.csv": "c990cc96cec664859e3d343514dbef6755bb76f8ae79a23719704e83f105c415",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-05-11_2024-05-14.csv": "676c261d8f38b7033e0b557ca0af6e41964a4ffd1abb613a734c6fd7872f6474",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-05-15_2024-05-18.csv": "1b990d6159523e8b3fdda8514e6a554b6a80a1f3a6e21439f63a77debb1da5c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-05-19_2024-05-22.csv": "0e335126823f27dd157f73381cbbe3d61fc05c9013e87c1db3116d202771a73f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-05-23_2024-05-26.csv": "33b6ac7c06bef6941d4a36c963863883287faf697541047eb18755a76eec9db0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-05-27_2024-05-30.csv": "b1facaea698ddc2dd21864057f107f936247dbdb895e9c412fcecae05a0e7337",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-05-31_2024-06-03.csv": "6d9c4cd3c9611ee8cfc084aef42463a2a9cea96025eec43e54cdf2d15beebbd7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-06-04_2024-06-07.csv": "eee1a68e86aa12561489a0d253f6d73c263997d762950fb79f08682b44248c17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-06-08_2024-06-11.csv": "0deeedb6e41b7c348ca2e80ce3f6ea66a23c864fea944246bd6aebc662f73144",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-06-12_2024-06-15.csv": "00d4ee6225610b4775192ce1733bb6aed412f2704a01436ba3ef6c1be987c94e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-06-16_2024-06-19.csv": "cf5e28539700254c4b1315b2687009a3a4ae06a8f9961d88487082e53c786de3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-06-20_2024-06-23.csv": "1f7a12cc9612c90263a7da157c266525f67fbc544d3d0df5085810608233e29d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-06-24_2024-06-27.csv": "42e199ea539c56905e8daced51836ffced04843fb620341f135674612a00103b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-06-28_2024-07-01.csv": "cf1335a4fce799db1255a270c825022257319d0e3f6a6b38cea73e095d1f95f8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-07-02_2024-07-05.csv": "b5c74328a07939e0fb808369fb4076392b938f9ceae0b9d9a18fcc5538519f2c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-07-06_2024-07-09.csv": "843e8e2bde41e78162d791e35a1a48df0ddc37520c7920625d8634a24220dbcc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-07-10_2024-07-13.csv": "a5dc158c516e6bb8b85da4e22f340c17bb32c6595fcd0d9a967b3e58ad190f0c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-07-14_2024-07-17.csv": "4c5e7db1d9d972dcb3bda4fd7f2bab5a40653cce74729f8364b4499630436183",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-07-18_2024-07-21.csv": "96115912f8f9e9e48f9f5c70d10fd3e17640ea5f226cd27c32305fa7848b6018",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-07-22_2024-07-25.csv": "be05dce02db18dcd2f3c6dd2781fd932136a1576269ea62d397f532f867d2798",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-07-26_2024-07-29.csv": "cb4e84a60ec0dfb513622df3d104c641d52fcf7c88e89df01a3152f919705c9f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-07-30_2024-08-02.csv": "9b2febd27483488e905bd05d2bd6a4b89505b64c99e0cdfdea4527f31bee5a3c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-08-03_2024-08-06.csv": "2ea9a8ecc34c6a5c470a654b1122296d8479e5f350823de8bd1ccc9abf4f42c4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-08-07_2024-08-10.csv": "2045ca156f8976998b52c9e472755e850bbe9e61e518db7214afea31b4785195",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-08-11_2024-08-14.csv": "76ec9344a22b8d3ac459499798bdfd94ee874555e755efbcabd75a272c5e363f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-08-15_2024-08-18.csv": "944aa02848fe8b716b46eab2e7fa7957f70c38253f803c8e886d5a737a83e008",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-08-19_2024-08-22.csv": "149e3bef93fedaa13d9cc70c31bc654c941136f2174739515f5bd2867aa0d0b3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-08-23_2024-08-26.csv": "9e2f0680c0f8bdc6f77188b6d3bc0313ccc5e5e25b785b7990c853795bd342f1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-08-27_2024-08-30.csv": "b285a601c60c52265e41f2b5efb180695126213bff5898df9217e2d499a216a0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-08-31_2024-09-03.csv": "0545d885a31ae009c2319d2f9514960ab9ae58ac555a0c1839920a4aafc06451",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-09-04_2024-09-07.csv": "42ac5e53c844d8c694ad5c4ca6d891b39b8349c18dde33deb03b97575dbbc798",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-09-08_2024-09-11.csv": "b66ec260d314dfada2d47c94a1e39e32941857750bc71ef8b973b629e639af94",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-09-12_2024-09-15.csv": "0d77eaa17997fb6bffe624af1aff4b3ce7757e6ab4043902b18067f79ffe15f1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-09-16_2024-09-19.csv": "285dfda762f6d87c1d0ceb0ad9dbbcd26cbd5bfbc4917ce6401f6ee3bdda9bd3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-09-20_2024-09-23.csv": "618ab1c2c8570541f56a0235b30c51d93101c238b365b9a9e4f7711352a19de2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-09-24_2024-09-27.csv": "24a4d0c6cfa6263faf7e86f417aa0127e710e810eede187d5e59627d23d4ae8c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\data\\quarantine\\current-talent-historical-mlb-game-evidence\\2024\\raw\\savant\\savant_2024-09-28_2024-09-30.csv": "bfc29b3ef055f7024040eeea6ad72e82b9d72e8645b73d7e34198266f491915d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\reports\\generated\\current-talent-historical-mlb-game-evidence\\2024\\tables\\current_talent_game_profile_2024_mlb.parquet": "9dd15404e3d5b39e59d9a6309dd8650d581c9b2d2c54ba0b6df935400f04f4bb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-08-20\\i-ve-been-using-online-chatgpt\\work\\park-inputs\\mlb-2024\\reports\\generated\\current-talent-historical-mlb-game-evidence\\2024\\tables\\current_talent_game_summary_2024_mlb.parquet": "5e8ae1eccdeebc0e6f73a1157b743ff49155da1344d37ac45eb1e7722e750bc0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\features.parquet": "a9c1bc927adcbb07742080297e2c513ec2de1a5800d2d5e9b01652cd828ffcfc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\scored-predictions.parquet": "9a08f2a4bea18d9fb14313fedd904ddd98f009331ed89bd607f3aeac34f750f8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\preflight.json": "a6f4ab4548193194a95d878c462edee6dc1d9ce7b3a81a15ed93f1fed8e2429a"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\annual-cells.parquet": "da3cec31dd7abf2ff849616d4c0cc24648804bbe7352aad57078998fb66eeb75",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\cells-2023.parquet": "4cdf8296e6fd60035feca7aa00f17bb57fc64d48227f9909a28df5a0b0b998b1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\cells-2024.parquet": "b512408157125be88ad3699922e0b5c75cc8d8515f30fd0a4c2ca270e2e55033",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\events-2023.parquet": "85a3124d2e7dc049fdd769796b7423ca9db1bd8f0c12b3032088d6e8264e08fd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\events-2024.parquet": "5d3060e9cce81ed9864716201e74afda612402be71a0a74052d1b8c0d6a844e6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\forecast-source-coverage.parquet": "13e25d82938e47f501280266f94092f4a427b76e6cd4f6ed88f56accbf133920",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\outcome-substitutions-2023.parquet": "f52adaee1923020df6d559661a0f43e13ea592774ff5d0f9c3553f89b7fea834",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\outcome-substitutions-2024.parquet": "1439db886850337515572c6c7e8cbb1d5026d7a8c537b2dd122b102f98ffe84c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\outcomes-2023.parquet": "91307b6d48643a6ab504019f9368fa7d751bea6a0bbe392d206d441a9b54b945",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-own-mlb-contact-source\\outcomes-2024.parquet": "0c8adbecaddb882184eabcf7af1a9b6564085146337f51e30d69df91ef9a85d5"
+  }
+}

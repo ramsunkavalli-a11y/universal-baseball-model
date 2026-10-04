@@ -80,6 +80,23 @@ simply multiplying weighted events by 600 does not produce batting wins/600.
 
 ## Coherent next work
 
+The new user direction permits Statcast where available. The
+[integration plan](hitter-statcast-integration-plan.md) defines the material
+extension: direct future MLB hitting using measured power and usable contact
+quality, not a rerun of the two closed Current Talent contact residuals. The
+[ordinary MLB source](hitter-own-mlb-contact-source-result.md) and
+[launch source review](hitter-statcast-history-result.md) recover cached 2023 and
+2024 evidence without changing any forecast. Earlier MLB measurement history,
+covered minor sources, clean league/park/opponent handling and actual fold support
+are required before the bounded hitting comparison. Untracked players retain
+the current forecast; source availability itself is not a talent bonus.
+
+The lower-level follow-up and shared-development-rate comparisons are already
+completed in `hitter-followup-support-result.md` and
+`hitter-shared-development-result.md`. Do not put those same experiments back in
+the queue. Their mature-follow-up and target limitations remain unresolved model
+questions, not authorization to repeat the identical comparison.
+
 Close the generic opportunity/head-capacity queue and carry the translated linear
 prospect branch as an evaluated alternative. Before any new fit, identify a
 substantive representation or coverage change that the completed talent work has

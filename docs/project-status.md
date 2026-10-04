@@ -13,6 +13,41 @@ instruction by proposing adjacent team-context variants as the next experiment.
 The latest answer inspected saved evidence only and ran no new model fits.
 Other model work remains governed by the current plan below.
 
+## Statcast addition and recovered MLB contact source
+
+The user has reopened tracking evidence where available. Follow the
+[Statcast integration plan](hitter-statcast-integration-plan.md): test direct
+future MLB hitting, not another contact-shape residual, and retain exact existing
+forecasts for untracked players in the incremental comparison. The two older
+Current Talent challengers remain closed; their limited contact targets did not
+settle whether tracking helps this next-year hitting model.
+
+The [ordinary MLB source review](hitter-own-mlb-contact-source-result.md) is now
+complete: 248,440 physical contacts from 2023 and 2024, exact official batting
+counts and accepted player-game profiles, ten full source/player walks and thirty
+saved-head replays. The [launch source](hitter-statcast-history-result.md) recovers
+245,589 complete non-bunt terminal EV/angle pairs, including all 69 homers lacking
+direction geometry. Fifteen focused tests and the independent final source review
+pass; all 31 protected files remain unchanged. No new fits, scores, forecast
+changes or predictive improvement are claimed. Original pending receipts are
+preserved with additive final receipts in `reports/model-evidence`.
+
+Two source years leave every earlier fold without tracked active training
+profiles. A bounded [historical source capture](hitter-statcast-historical-capture-contract.md)
+is recovering MLB 2015 through 2022, including the short 2020 MLB season, with
+missing readings retained. A [source-code amendment](hitter-statcast-capture-source-semantics-amendment.md)
+preserves exceptional pitch codes instead of mistaking the contact query for
+an all-X guarantee. Reuse completed chunks; inspect the actual process and saved
+receipts before resuming. Collection is not yet approved for fitting: independent
+per-player hit and in-play denominator reconciliation, source/player review and
+actual outer-fold support must precede the separately frozen forecast contrast.
+
+The mature lower-level follow-up and shared development-rate comparisons already
+exist. Their source/target findings must be carried forward, not rediscovered by
+another age-to-peak or shared-horizon sweep. Own-MLB contact representation,
+covered minor tracking and properly separated park/opponent measurement are the
+material extension now under construction. The overall model goal stays active.
+
 ## Standing requirement: player walkthrough after every test
 
 The user requires every model/component test—successful, failed or inconclusive—to
