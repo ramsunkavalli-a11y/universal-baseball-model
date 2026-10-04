@@ -24,25 +24,31 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: delivered-value integration comparison underway.**
-The [fixed comparison](hitter-value-integration-v76-contract.md) tests direct
-signed contribution, current arrival probability times active contribution,
-and coherent expected event counts, using the same fresh rankings and
-fold/own-origin translated evidence. The [eight-case source review](hitter-value-integration-v76-source-review.md)
-reconstructs all 63,282 responses and verifies 70 full/active checks plus 105
-current saved-head replays before new fits. All 30,506 forecasts remain; the
-272 predictor columns exclude future environment and outcomes. The source
-and scoring gates are sealed; the 350 fixed heads are being fitted/replayed.
-No new predictive disposition or candidate change is authorized yet.
-The [pre-score environment sensitivity](hitter-value-integration-v76-environment-supplement.md)
-separates common-origin production from season-relative contribution without
-giving forecasts the future league average. The existing ZiPS artifact has
-rate, not PA context; no ZiPS season value is invented. Raw origin-only peer
-matching now includes upper-level exposure and production profile. After the
-fits, independently score/replay and complete actual player reviews before
-selecting any next experiment. Full/active sparse profiles, foreign/roster-only
+**Current checkpoint: delivered-value comparison and fifteen player reviews completed.**
+The [completed comparison](hitter-value-integration-v76-result.md) retains all
+30,506 forecasts and independently replays 350 new heads plus 105 baseline
+heads. The [source review](hitter-value-integration-v76-source-review.md)
+reconstructs all 63,282 responses before fitting. Direct contribution, current
+arrival times active contribution and coherent expected event counts all lose
+overall: contribution RMSE .453384 current versus .464296/.461887/.491055.
+Signed-head prospect gains are small and uncertain. Count PA totals improve,
+but player errors worsen; Langford extrapolates to 1,760 raw PA before an 800
+cap with negative contribution, Kurtz remains at seven PA, and Knapp gets PA
+right while missing production. Tatis's direct-value gain leaves his return
+workload wrong. Fifteen actual stats/input/saved-fit/outcome reviews are complete.
+The [declared environment sensitivity](hitter-value-integration-v76-environment-supplement.md)
+does not reverse the loss and gives forecasts no future league average.
+Common-origin production still includes league-condition changes and is not
+published WAR. Public PA MAE remains 15.56% above Steamer, outside the practical
+15% allowance. No candidate promotion or new blend; keep V68 opportunity and
+V53/V63 batting/value, with V74 translated hitting as a tested alternative.
+Next complete the practical plan's candidate integration audit: reconcile
+the actual opportunity, batting and availability branches with prior tested
+evidence, especially known temporary absence versus permanent exit, before
+designing another fit. Sparse profiles, cohort totals, foreign/roster-only
 coverage, public snapshot dates and uncertainty remain qualified. Current
-candidate, explorer, protected 2026 and frozen forecast are unchanged.
+candidate, explorer, protected 2026 and frozen forecast are unchanged; whole
+goal active. Do not start another library or marginal-feature sweep.
 
 **Previous checkpoint: team-record opportunity comparison completed; no promotion.**
 The user's hypothesis now has a [completed result and sixteen actual player reviews](hitter-team-record-v75-result.md),
